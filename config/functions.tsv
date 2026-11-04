@@ -10511,11 +10511,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306d2d	0xc4	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint17hasCloseNeighborsEv	SpawnPoint::hasCloseNeighbors() const
 0x00306df1	0x34	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointC2Ei	SpawnPoint::SpawnPoint(int)
 0x00306df1	0x34	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointC1Ei	SpawnPoint::SpawnPoint(int)
-0x00306e25	0x1c0	SpawnPoint.cpp	game	world	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x00306fe5	0x14	SpawnPoint.cpp	game	world	pending	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE
-0x00306ff9	0x30	SpawnPoint.cpp	game	world	pending	__tcf_5	__tcf_5
+0x00306e25	0x1c0	SpawnPoint.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
+0x00306fe5	0x14	SpawnPoint.cpp	game	world	matched	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE
+0x00306ff9	0x30	SpawnPoint.cpp	game	world	matched	__tcf_5	__tcf_5
 0x00307029	0xa4	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint22ClearAllSpawnInstancesEv	SpawnPoint::ClearAllSpawnInstances()
-0x003070cd	0x34	SpawnPoint.cpp	game	world	pending	__tcf_6	__tcf_6
+0x003070cd	0x34	SpawnPoint.cpp	game	world	matched	__tcf_6	__tcf_6
 0x00307101	0x350	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint18UpdateSpawnCentersEv	SpawnPoint::UpdateSpawnCenters()
 0x00307451	0x330	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint8canSpawnEv	SpawnPoint::canSpawn() const
 0x00307781	0x60	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint6UpdateEi	SpawnPoint::Update(int)
