@@ -43,10 +43,17 @@ void SoundManager::enableMusic() { flags &= ~256u; }
 int SoundManager::getNumRadioStations() const { return radioStationCount; }
 
 extern "C" {
+void nativePlaySoundBig(int id, float volume, bool loop);
 void nativeSetVolumeBig(int id, float volume);
 void nativeStopSoundBig(int id);
 void nativeResumeSoundBig(int id);
 void nativePauseSoundBig(int id);
+}
+
+void SoundManager::playLowFpsMusic(int id, bool loop)
+{
+    if (flags & 2)
+        nativePlaySoundBig(id, playbackVolume, loop);
 }
 
 void SoundManager::setVolume(int id, int, float volume)
@@ -97,6 +104,57 @@ void SoundManager::pause(int id)
 {
     if (flags & 2)
         nativePauseSoundBig(id);
+}
+
+void SoundManager::playRadio(int station)
+{
+    if (!(flags & 1)) {
+        if (station != -1)
+            radioStation = station;
+        radioTrack = _getRadioTrack(radioStation);
+        nativePlaySoundBig(radioTrack, playbackVolume, false);
+        flags |= 1;
+    }
+}
+
+void SoundManager::stopRadio()
+{
+    if (flags & 1) {
+        stop(radioTrack, soundEntries[radioTrack].channel, 2000);
+        flags &= ~1u;
+    }
+}
+
+void SoundManager::changeRadioStation(int station)
+{
+    if (flags & 1) {
+        stop(radioTrack, soundEntries[radioTrack].channel, 0);
+        radioTrack = 124;
+        unknown140 = true;
+        playEx(124, 0, false, 1.0f, 2000, true, 1.0f, 0);
+        unknown140 = false;
+        radioStation = station;
+    }
+}
+
+void SoundManager::lastRadioStation()
+{
+    if (flags & 1) {
+        int station = radioStation - 1;
+        if (station < 0)
+            station = radioStationCount - 1;
+        changeRadioStation(station);
+    }
+}
+
+void SoundManager::nextRadioStation()
+{
+    if (flags & 1) {
+        int station = radioStation + 1;
+        if (station >= radioStationCount)
+            station = 0;
+        changeRadioStation(station);
+    }
 }
 
 void operator delete(void*) throw();
