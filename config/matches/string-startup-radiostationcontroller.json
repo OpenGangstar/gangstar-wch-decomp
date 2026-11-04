@@ -36,7 +36,11 @@
         {
             "name": "_GLOBAL__I__ZN22RadioStationControllerC2Ev",
             "address": "0x0035229d"
-        }
+        },
+        "_ZN22RadioStationController14selectRandomAdEv",
+        "_ZN22RadioStationControllerD1Ev",
+        "_ZN22RadioStationControllerD2Ev",
+        "_ZN7Structs12RadioStation4ReadER10DataStream"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -46,7 +50,14 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".radio_function_0",
+        ".radio_function_2",
+        ".radio_function_3"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN3irr2os10Randomizer4randEv",
+        "_ZN10DataStream7ReadIntEv"
+    ]
 }
