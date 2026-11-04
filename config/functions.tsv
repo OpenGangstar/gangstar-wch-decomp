@@ -1243,20 +1243,20 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x001e025d	0x34	COSOperator.cpp	irrlicht	-	matched	_ZN3irr11IOSOperatorD0Ev	irr::IOSOperator::~IOSOperator()
 0x001e0291	0x14	COSOperator.cpp	irrlicht	-	matched	_ZTv0_n12_N3irr11IOSOperatorD1Ev	virtual thunk to irr::IOSOperator::~IOSOperator()
 0x001e02a5	0x28	COSOperator.cpp	irrlicht	-	matched	_ZN3irr11IOSOperatorD1Ev	irr::IOSOperator::~IOSOperator()
-0x001e02cd	0x30	Irrlicht.cpp	game	app	pending	__tcf_0	__tcf_0
+0x001e02cd	0x30	Irrlicht.cpp	game	app	matched	__tcf_0	__tcf_0
 0x001e02fd	0x6c	Irrlicht.cpp	irrlicht	-	matched	_ZN3irr12createDeviceENS_5video13E_DRIVER_TYPEERKNS_4core11dimension2dIiEEjbbbPNS_14IEventReceiverE	irr::createDevice(irr::video::E_DRIVER_TYPE, irr::core::dimension2d<int> const&, unsigned int, bool, bool, bool, irr::IEventReceiver*)
-0x001e0369	0xc	Irrlicht.cpp	game	app	pending	_ZdaPvN3irr7MemHintEiPKci	operator delete[](void*, irr::MemHint, int, char const*, int)
-0x001e0375	0xc	Irrlicht.cpp	game	app	pending	_ZdlPvN3irr7MemHintEiPKci	operator delete(void*, irr::MemHint, int, char const*, int)
-0x001e0381	0xe	Irrlicht.cpp	game	app	pending	irr_free	irr_free
-0x001e0391	0xc	Irrlicht.cpp	game	app	pending	_ZdaPvN3irr7MemHintE	operator delete[](void*, irr::MemHint)
-0x001e039d	0xc	Irrlicht.cpp	game	app	pending	_ZdlPvN3irr7MemHintE	operator delete(void*, irr::MemHint)
-0x001e03a9	0x10	Irrlicht.cpp	game	app	pending	_ZnajN3irr7MemHintEiPKci	operator new[](unsigned int, irr::MemHint, int, char const*, int)
-0x001e03b9	0x10	Irrlicht.cpp	game	app	pending	_ZnwjN3irr7MemHintEiPKci	operator new(unsigned int, irr::MemHint, int, char const*, int)
-0x001e03c9	0xe	Irrlicht.cpp	game	app	pending	irr_malloc	irr_malloc
-0x001e03d9	0xc	Irrlicht.cpp	game	app	pending	_ZnajN3irr7MemHintE	operator new[](unsigned int, irr::MemHint)
-0x001e03e5	0xc	Irrlicht.cpp	game	app	pending	_ZnwjN3irr7MemHintE	operator new(unsigned int, irr::MemHint)
-0x001e03f1	0x84	Irrlicht.cpp	game	app	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x001e0475	0x14	Irrlicht.cpp	game	app	pending	_GLOBAL__I__ZnwjN3irr7MemHintE	_GLOBAL__I__ZnwjN3irr7MemHintE
+0x001e0369	0xc	Irrlicht.cpp	game	app	matched	_ZdaPvN3irr7MemHintEiPKci	operator delete[](void*, irr::MemHint, int, char const*, int)
+0x001e0375	0xc	Irrlicht.cpp	game	app	matched	_ZdlPvN3irr7MemHintEiPKci	operator delete(void*, irr::MemHint, int, char const*, int)
+0x001e0381	0xe	Irrlicht.cpp	game	app	matched	irr_free	irr_free
+0x001e0391	0xc	Irrlicht.cpp	game	app	matched	_ZdaPvN3irr7MemHintE	operator delete[](void*, irr::MemHint)
+0x001e039d	0xc	Irrlicht.cpp	game	app	matched	_ZdlPvN3irr7MemHintE	operator delete(void*, irr::MemHint)
+0x001e03a9	0x10	Irrlicht.cpp	game	app	matched	_ZnajN3irr7MemHintEiPKci	operator new[](unsigned int, irr::MemHint, int, char const*, int)
+0x001e03b9	0x10	Irrlicht.cpp	game	app	matched	_ZnwjN3irr7MemHintEiPKci	operator new(unsigned int, irr::MemHint, int, char const*, int)
+0x001e03c9	0xe	Irrlicht.cpp	game	app	matched	irr_malloc	irr_malloc
+0x001e03d9	0xc	Irrlicht.cpp	game	app	matched	_ZnajN3irr7MemHintE	operator new[](unsigned int, irr::MemHint)
+0x001e03e5	0xc	Irrlicht.cpp	game	app	matched	_ZnwjN3irr7MemHintE	operator new(unsigned int, irr::MemHint)
+0x001e03f1	0x84	Irrlicht.cpp	game	app	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
+0x001e0475	0x14	Irrlicht.cpp	game	app	matched	_GLOBAL__I__ZnwjN3irr7MemHintE	_GLOBAL__I__ZnwjN3irr7MemHintE
 0x001e0489	0x2	IrrlichtDevice.cpp	irrlicht	-	matched	_ZN3irr14IrrlichtDevice16setScreenCaptureEb	irr::IrrlichtDevice::setScreenCapture(bool)
 0x001e048d	0x58	IrrlichtDevice.cpp	irrlicht	-	matched	_ZN3irr14IrrlichtDeviceC1Ev	irr::IrrlichtDevice::IrrlichtDevice()
 0x001e04e5	0x3c	IrrlichtDevice.cpp	irrlicht	-	matched	_ZN3irr14IrrlichtDeviceC2Ev	irr::IrrlichtDevice::IrrlichtDevice()
