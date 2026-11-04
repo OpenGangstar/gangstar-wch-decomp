@@ -1,0 +1,59 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "src/game/vehicles/Vehicle.cpp",
+    "linker_script": "config/linker/VehicleCleanup.ld",
+    "functions": [
+        {
+            "name": "__tcf_4",
+            "address": "0x00308015"
+        },
+        {
+            "name": "__tcf_3",
+            "address": "0x00308211"
+        },
+        {
+            "name": "__tcf_1",
+            "address": "0x0030b5dd"
+        },
+        {
+            "name": "__tcf_2",
+            "address": "0x0030b625"
+        }
+    ],
+    "sections": [
+        ".vehicle_cleanup_0",
+        ".vehicle_cleanup_1",
+        ".vehicle_cleanup_2",
+        ".vehicle_cleanup_3",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN9AIManagerD1Ev"
+    ]
+}

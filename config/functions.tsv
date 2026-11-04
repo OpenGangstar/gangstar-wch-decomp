@@ -10585,13 +10585,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307fad	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16getHasBeenStolenEv	Vehicle::getHasBeenStolen()
 0x00307fb5	0x10	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11getUniqueIdEv	Vehicle::getUniqueId()
 0x00307fc5	0x50	Vehicle.cpp	game	vehicles	pending	_ZNK26CustomSkinnedMeshSceneNode25getTransformedBoundingBoxEv	CustomSkinnedMeshSceneNode::getTransformedBoundingBox() const
-0x00308015	0x30	Vehicle.cpp	game	vehicles	pending	__tcf_4	__tcf_4
+0x00308015	0x30	Vehicle.cpp	game	vehicles	matched	__tcf_4	__tcf_4
 0x00308045	0x18	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle21enableBackfaceCullingEb	Vehicle::enableBackfaceCulling(bool)
 0x0030805d	0xca	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12_resetLightsEv	Vehicle::_resetLights()
 0x00308129	0x48	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4rentEb	Vehicle::rent(bool)
 0x00308171	0x44	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle9stopSirenEv	Vehicle::stopSiren()
 0x003081b5	0x5c	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactory11getInstanceEv	CCarFactory::getInstance()
-0x00308211	0x1c	Vehicle.cpp	game	vehicles	pending	__tcf_3	__tcf_3
+0x00308211	0x1c	Vehicle.cpp	game	vehicles	matched	__tcf_3	__tcf_3
 0x0030822d	0x16c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15UpdateCarSoundsEv	Vehicle::UpdateCarSounds()
 0x00308399	0xc	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv	Vehicle::UnRegisterCarSoundsCallbacks()
 0x003083a5	0x68	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle26RegisterCarSoundsCallbacksEv	Vehicle::RegisterCarSoundsCallbacks()
@@ -10678,9 +10678,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030b311	0x28c	Vehicle.cpp	game	vehicles	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0030b59d	0x14	Vehicle.cpp	game	vehicles	pending	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE
 0x0030b5b1	0x2c	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactoryD0Ev	CCarFactory::~CCarFactory()
-0x0030b5dd	0x24	Vehicle.cpp	game	vehicles	pending	__tcf_1	__tcf_1
+0x0030b5dd	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_1	__tcf_1
 0x0030b601	0x24	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactoryD1Ev	CCarFactory::~CCarFactory()
-0x0030b625	0x24	Vehicle.cpp	game	vehicles	pending	__tcf_2	__tcf_2
+0x0030b625	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_2	__tcf_2
 0x0030b649	0x44	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11SetRotationERKN3irr4core10quaternionE	Vehicle::SetRotation(irr::core::quaternion const&)
 0x0030b68d	0x318	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle17ResetBodyPositionEv	Vehicle::ResetBodyPosition()
 0x0030b9a5	0x1c0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6repairEv	Vehicle::repair()
