@@ -4,6 +4,9 @@
 namespace irr { namespace core { template<class T> class vector3d; } }
 
 // Partial call interface and observed byte at 140; not a complete manager.
+class CSound;
+class CSoundData;
+
 class SoundManager {
 public:
     static SoundManager* getInstance() __attribute__((weak));
@@ -41,6 +44,11 @@ public:
     void pause(int id);
 
     void playLowFpsMusic(int id, bool loop);
+    void pauseLowFpsMusic();
+    void _cleanupLowFpsMusic();
+    void setLowFpsMusicVolume(float volume);
+    void resumeLowFpsMusic();
+    bool isLowFpsMusicPlaying() const;
     void playRadio(int station);
     void stopRadio();
     void changeRadioStation(int station);
@@ -54,7 +62,9 @@ public:
         unsigned char unknown8[4];
     };
 
-    unsigned char unknown0[48];
+    unsigned char unknown0[40];
+    CSound* lowFpsSound;
+    CSoundData* lowFpsData;
     int radioTrack;
     int radioStation;
     unsigned int flags;

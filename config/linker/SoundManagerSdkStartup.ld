@@ -47,6 +47,11 @@ SECTIONS
     .sound_manager_radio_3 0x003539dc : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager18changeRadioStationEi) }
     .sound_manager_radio_4 0x00353a34 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager16lastRadioStationEv) }
     .sound_manager_radio_5 0x00353a54 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager16nextRadioStationEv) }
+    .sound_manager_lowfps_0 0x003527a0 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager16pauseLowFpsMusicEv) }
+    .sound_manager_lowfps_1 0x003527bc : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager19_cleanupLowFpsMusicEv) }
+    .sound_manager_lowfps_2 0x003527e4 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager20setLowFpsMusicVolumeEf) }
+    .sound_manager_lowfps_3 0x00352cfc : { *sdk-startup-soundmanager.o(.text._ZNK12SoundManager20isLowFpsMusicPlayingEv) }
+    .sound_manager_lowfps_4 0x00352da4 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17resumeLowFpsMusicEv) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

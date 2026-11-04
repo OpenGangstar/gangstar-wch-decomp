@@ -10,6 +10,8 @@
 
 // Recovered translation-unit SDK startup callbacks.
 #include "SoundManager.h"
+#include "CSound.h"
+#include "CSoundData.h"
 #include "../app/NativeMedia.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -54,6 +56,42 @@ void SoundManager::playLowFpsMusic(int id, bool loop)
 {
     if (flags & 2)
         nativePlaySoundBig(id, playbackVolume, loop);
+}
+
+void SoundManager::pauseLowFpsMusic()
+{
+    if ((flags & 2) && lowFpsSound)
+        lowFpsSound->Pause();
+}
+
+void SoundManager::_cleanupLowFpsMusic()
+{
+    if ((flags & 2) && lowFpsSound) {
+        delete lowFpsSound;
+        delete lowFpsData;
+        lowFpsSound = 0;
+    }
+}
+
+void SoundManager::setLowFpsMusicVolume(float volume)
+{
+    if ((flags & 2) && lowFpsSound)
+        lowFpsSound->SetVolume(volume);
+}
+
+void SoundManager::resumeLowFpsMusic()
+{
+    if ((flags & 2) && lowFpsSound && lowFpsSound->GetStatus() == 1)
+        lowFpsSound->Resume();
+}
+
+bool SoundManager::isLowFpsMusicPlaying() const
+{
+    if (lowFpsSound && (lowFpsSound->GetStatus() == 0 || lowFpsSound->GetStatus() == 1)) {
+        lowFpsSound->GetStatus();
+        return true;
+    }
+    return false;
 }
 
 void SoundManager::setVolume(int id, int, float volume)
