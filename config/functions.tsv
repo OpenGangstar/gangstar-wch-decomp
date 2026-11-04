@@ -13161,30 +13161,30 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352709	0x48	SoundBuffersPool.cpp	game	audio	pending	_ZN13CSoundBuffersD1Ev	CSoundBuffers::~CSoundBuffers()
 0x00352709	0x48	SoundBuffersPool.cpp	game	audio	pending	_ZN13CSoundBuffersD2Ev	CSoundBuffers::~CSoundBuffers()
 0x00352751	0x24	SoundManager.cpp	game	audio	pending	_ZN12SoundManager5clearEv	SoundManager::clear()
-0x00352775	0x10	SoundManager.cpp	game	audio	pending	_ZN12SoundManager4initEv	SoundManager::init()
-0x00352785	0x2	SoundManager.cpp	game	audio	pending	_ZN12SoundManager6unInitEv	SoundManager::unInit()
+0x00352775	0x10	SoundManager.cpp	game	audio	matched	_ZN12SoundManager4initEv	SoundManager::init()
+0x00352785	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager6unInitEv	SoundManager::unInit()
 0x00352789	0x18	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11toggleSoundEv	SoundManager::toggleSound()
 0x003527a1	0x1a	SoundManager.cpp	game	audio	pending	_ZN12SoundManager16pauseLowFpsMusicEv	SoundManager::pauseLowFpsMusic()
 0x003527bd	0x28	SoundManager.cpp	game	audio	pending	_ZN12SoundManager19_cleanupLowFpsMusicEv	SoundManager::_cleanupLowFpsMusic()
 0x003527e5	0x1a	SoundManager.cpp	game	audio	pending	_ZN12SoundManager20setLowFpsMusicVolumeEf	SoundManager::setLowFpsMusicVolume(float)
-0x00352801	0x2	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12useIPodRadioEv	SoundManager::useIPodRadio()
-0x00352805	0xa	SoundManager.cpp	game	audio	pending	_ZN12SoundManager15useBuiltInRadioEv	SoundManager::useBuiltInRadio()
-0x00352811	0x4	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager10canUseIPodEv	SoundManager::canUseIPod() const
-0x00352815	0x2	SoundManager.cpp	game	audio	pending	_ZN12SoundManager8initIPodEv	SoundManager::initIPod()
-0x00352819	0x2	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11cleanupIPodEv	SoundManager::cleanupIPod()
-0x0035281d	0x4	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager17iPodIsInitializedEv	SoundManager::iPodIsInitialized() const
-0x00352821	0x6	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager16getPlaylistCountEv	SoundManager::getPlaylistCount() const
-0x00352829	0x2	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager15getPlaylistNameEiPc	SoundManager::getPlaylistName(int, char*) const
-0x0035282d	0x6	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager26getPlaylistIndexFromStringEPKc	SoundManager::getPlaylistIndexFromString(char const*) const
-0x00352835	0x6	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager14getCurPlaylistEv	SoundManager::getCurPlaylist() const
-0x0035283d	0x2	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11setPlaylistEi	SoundManager::setPlaylist(int)
-0x00352841	0x2	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14setListenerPosERKN3irr4core8vector3dIfEES5_S5_	SoundManager::setListenerPos(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&)
+0x00352801	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12useIPodRadioEv	SoundManager::useIPodRadio()
+0x00352805	0xa	SoundManager.cpp	game	audio	matched	_ZN12SoundManager15useBuiltInRadioEv	SoundManager::useBuiltInRadio()
+0x00352811	0x4	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager10canUseIPodEv	SoundManager::canUseIPod() const
+0x00352815	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager8initIPodEv	SoundManager::initIPod()
+0x00352819	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11cleanupIPodEv	SoundManager::cleanupIPod()
+0x0035281d	0x4	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager17iPodIsInitializedEv	SoundManager::iPodIsInitialized() const
+0x00352821	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager16getPlaylistCountEv	SoundManager::getPlaylistCount() const
+0x00352829	0x2	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager15getPlaylistNameEiPc	SoundManager::getPlaylistName(int, char*) const
+0x0035282d	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager26getPlaylistIndexFromStringEPKc	SoundManager::getPlaylistIndexFromString(char const*) const
+0x00352835	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager14getCurPlaylistEv	SoundManager::getCurPlaylist() const
+0x0035283d	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11setPlaylistEi	SoundManager::setPlaylist(int)
+0x00352841	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager14setListenerPosERKN3irr4core8vector3dIfEES5_S5_	SoundManager::setListenerPos(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&)
 0x00352845	0x30	SoundManager.cpp	game	audio	pending	_ZN12SoundManager26getNumberOfAllocatedSoundsEv	SoundManager::getNumberOfAllocatedSounds()
-0x00352875	0x8	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11_getSoundIdEi	SoundManager::_getSoundId(int)
-0x0035287d	0x8	SoundManager.cpp	game	audio	pending	_ZN12SoundManager9_getResIdEi	SoundManager::_getResId(int)
-0x00352885	0xc	SoundManager.cpp	game	audio	pending	_ZN12SoundManager13_getSoundTypeEi	SoundManager::_getSoundType(int)
-0x00352891	0xc	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12disableMusicEv	SoundManager::disableMusic()
-0x0035289d	0x10	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11enableMusicEv	SoundManager::enableMusic()
+0x00352875	0x8	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11_getSoundIdEi	SoundManager::_getSoundId(int)
+0x0035287d	0x8	SoundManager.cpp	game	audio	matched	_ZN12SoundManager9_getResIdEi	SoundManager::_getResId(int)
+0x00352885	0xc	SoundManager.cpp	game	audio	matched	_ZN12SoundManager13_getSoundTypeEi	SoundManager::_getSoundType(int)
+0x00352891	0xc	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12disableMusicEv	SoundManager::disableMusic()
+0x0035289d	0x10	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11enableMusicEv	SoundManager::enableMusic()
 0x003528ad	0x74	SoundManager.cpp	game	audio	pending	_ZN12SoundManager17_resetFrequenciesEv	SoundManager::_resetFrequencies()
 0x00352921	0x2c	SoundManager.cpp	game	audio	pending	_ZN12SoundManager8setPitchEiif	SoundManager::setPitch(int, int, float)
 0x0035294d	0x2c	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE	SoundManager::setSourcePos(int, int, irr::core::vector3d<float> const&)
@@ -13194,7 +13194,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352b69	0x3e	SoundManager.cpp	game	audio	pending	_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE	SoundManager::playEx(int, irr::core::vector3d<float> const*, bool, float, int, bool, float, void (*)())
 0x00352ba9	0x14	SoundManager.cpp	game	audio	pending	_ZN12SoundManager15playLowFpsMusicEib	SoundManager::playLowFpsMusic(int, bool)
 0x00352bbd	0x68	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12setSfxVolumeEf	SoundManager::setSfxVolume(float)
-0x00352c25	0x18	SoundManager.cpp	game	audio	pending	_ZN12SoundManager9setVolumeEiif	SoundManager::setVolume(int, int, float)
+0x00352c25	0x18	SoundManager.cpp	game	audio	matched	_ZN12SoundManager9setVolumeEiif	SoundManager::setVolume(int, int, float)
 0x00352c3d	0x34	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14isSoundPlayingEi	SoundManager::isSoundPlaying(int)
 0x00352c71	0x3a	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14isSoundPlayingEii	SoundManager::isSoundPlaying(int, int)
 0x00352cad	0x50	SoundManager.cpp	game	audio	pending	_ZN12SoundManager24getNumberOfPlayingSoundsEv	SoundManager::getNumberOfPlayingSounds()
@@ -13208,16 +13208,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00353051	0x44	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12allocBuffersEv	SoundManager::allocBuffers()
 0x00353095	0xe0	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14_getReadySoundEi	SoundManager::_getReadySound(int)
 0x00353175	0x1ac	SoundManager.cpp	game	audio	pending	_ZN12SoundManager6updateEd	SoundManager::update(double)
-0x00353321	0x12	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12stopAllMusicEv	SoundManager::stopAllMusic()
-0x00353335	0x12	SoundManager.cpp	game	audio	pending	_ZN12SoundManager13stopAllSoundsEv	SoundManager::stopAllSounds()
-0x00353349	0x18	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14pauseAllSoundsEv	SoundManager::pauseAllSounds()
-0x00353361	0x12	SoundManager.cpp	game	audio	pending	_ZN12SoundManager15stopLowFpsMusicEv	SoundManager::stopLowFpsMusic()
-0x00353375	0x14	SoundManager.cpp	game	audio	pending	_ZN12SoundManager4stopEiii	SoundManager::stop(int, int, int)
+0x00353321	0x12	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12stopAllMusicEv	SoundManager::stopAllMusic()
+0x00353335	0x12	SoundManager.cpp	game	audio	matched	_ZN12SoundManager13stopAllSoundsEv	SoundManager::stopAllSounds()
+0x00353349	0x18	SoundManager.cpp	game	audio	matched	_ZN12SoundManager14pauseAllSoundsEv	SoundManager::pauseAllSounds()
+0x00353361	0x12	SoundManager.cpp	game	audio	matched	_ZN12SoundManager15stopLowFpsMusicEv	SoundManager::stopLowFpsMusic()
+0x00353375	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager4stopEiii	SoundManager::stop(int, int, int)
 0x00353389	0x2e	SoundManager.cpp	game	audio	pending	_ZN12SoundManager9stopRadioEv	SoundManager::stopRadio()
 0x003533b9	0xbc	SoundManager.cpp	game	audio	pending	_ZN12SoundManager13beginCutsceneEv	SoundManager::beginCutscene()
-0x00353475	0x14	SoundManager.cpp	game	audio	pending	_ZN12SoundManager6resumeEi	SoundManager::resume(int)
-0x00353489	0x14	SoundManager.cpp	game	audio	pending	_ZN12SoundManager5pauseEi	SoundManager::pause(int)
-0x0035349d	0x6	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager19getNumRadioStationsEv	SoundManager::getNumRadioStations() const
+0x00353475	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager6resumeEi	SoundManager::resume(int)
+0x00353489	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager5pauseEi	SoundManager::pause(int)
+0x0035349d	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager19getNumRadioStationsEv	SoundManager::getNumRadioStations() const
 0x003534a5	0x6c	SoundManager.cpp	game	audio	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00353511	0x14	SoundManager.cpp	game	audio	matched	_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE	_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE
 0x00353525	0x2a8	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerC1Ev	SoundManager::SoundManager()
