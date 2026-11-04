@@ -1,0 +1,72 @@
+{
+    "source": "src/game/audio/CSoundDecoderADPCM.cpp",
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "retail_got": true,
+    "linker_script": "config/linker/AdpcmStream.ld",
+    "sections": [
+        ".adpcm_stream_0",
+        ".adpcm_stream_1",
+        ".adpcm_stream_2",
+        ".adpcm_stream_3",
+        ".adpcm_stream_4",
+        ".adpcm_stream_5",
+        ".adpcm_stream_6",
+        ".adpcm_stream_7",
+        ".adpcm_stream_8",
+        ".adpcm_stream_9",
+        ".adpcm_stream_10",
+        ".adpcm_stream_11",
+        ".adpcm_stream_12",
+        ".adpcm_stream_13",
+        ".adpcm_base_vtable",
+        ".adpcm_stream_vtable",
+        ".adpcm_mode",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "functions": [
+        "_ZN13ISoundDecoder22GetNumSamplesPerDecodeEi",
+        "_ZNK13ISoundDecoder15GetSamplingRateEv",
+        "_ZNK13ISoundDecoder10GetChannelEv",
+        "_ZNK13ISoundDecoder10GetPCMSizeEv",
+        "_ZNK13ISoundDecoder21GetNbEffectiveSamplesEv",
+        "_ZNK13ISoundDecoder15GetTotalSamplesEv",
+        "_ZNK13ISoundDecoder11HasMoreDataEv",
+        "_ZN18CSoundDecoderADPCM4GoToEi",
+        "_ZN13ISoundDecoderD0Ev",
+        "_ZN13ISoundDecoderD1Ev",
+        "_ZN18CSoundDecoderADPCM6DecodeEPsib",
+        "_ZN18CSoundDecoderADPCMC1EPKc",
+        "_ZN18CSoundDecoderADPCMC2EPKc",
+        "_ZN18CSoundDecoderADPCMD0Ev",
+        "_ZN18CSoundDecoderADPCMD1Ev",
+        "_ZN18CSoundDecoderADPCMD2Ev"
+    ],
+    "external_thumb_functions": [
+        "_ZN10AdpcmStateC1Ev",
+        "_ZN10AdpcmStateD1Ev"
+    ]
+}
