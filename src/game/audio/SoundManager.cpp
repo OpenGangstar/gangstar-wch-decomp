@@ -66,7 +66,7 @@ int SoundManager::_getResId(int soundId) { return soundId + resourceIdBase; }
 int SoundManager::_getSoundType(int soundId) { return soundEntries[soundId].type; }
 void SoundManager::disableMusic() { flags |= 256; }
 void SoundManager::enableMusic() { flags &= ~256u; }
-int SoundManager::getNumRadioStations() const { return radioStationCount; }
+int SoundManager::getNumRadioStations() const { return radio.stationCount; }
 
 extern "C" {
 void nativePlaySoundBig(int id, float volume, bool loop);
@@ -204,7 +204,7 @@ void SoundManager::lastRadioStation()
     if (flags & 1) {
         int station = radioStation - 1;
         if (station < 0)
-            station = radioStationCount - 1;
+            station = radio.stationCount - 1;
         changeRadioStation(station);
     }
 }
@@ -213,7 +213,7 @@ void SoundManager::nextRadioStation()
 {
     if (flags & 1) {
         int station = radioStation + 1;
-        if (station >= radioStationCount)
+        if (station >= radio.stationCount)
             station = 0;
         changeRadioStation(station);
     }
@@ -347,6 +347,16 @@ bool SoundManager::playSoundCallback(int id, bool loop, float volume, float pitc
     SoundManager* manager = getInstance();
     float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
     return manager->playEx(id, 0, loop, gain, 0, pitch != 0.0f, 1.0f, 0);
+}
+
+SoundManager::~SoundManager()
+{
+    unInit();
+    delete[] soundEntries;
+    for (int i = 0; i < 4; ++i)
+        delete[] soundSlots[i];
+    delete[] soundSlots;
+    delete[] trackFrequencies;
 }
 
 void operator delete(void*) throw();

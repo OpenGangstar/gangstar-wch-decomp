@@ -1,16 +1,26 @@
 #ifndef WCH_AUDIO_SOUND_MANAGER_H
 #define WCH_AUDIO_SOUND_MANAGER_H
 
+#include "../core/FrameInterfaces.h"
+
 namespace irr { namespace core { template<class T> class vector3d; } }
 
 // Partial call interface and observed byte at 140; not a complete manager.
 class CSound;
 class CSoundData;
 
-class SoundManager {
+class RadioStationController {
+public:
+    ~RadioStationController();
+    unsigned char unknown0[28];
+    int stationCount;
+};
+
+class SoundManager : public IUpdatable {
 public:
     SoundManager();
     virtual ~SoundManager();
+    virtual void update(double elapsed);
     static SoundManager* s_soundManager;
     void clear();
     void toggleSound();
@@ -89,15 +99,16 @@ public:
     int radioTrack;
     int radioStation;
     unsigned int flags;
-    unsigned char unknown60[24];
+    unsigned char unknown60[12];
+    int* trackFrequencies;
+    unsigned char unknown76[8];
     SoundEntry* soundEntries;
     float sfxVolume;
     float playbackVolume;
     float effectsPlaybackVolume;
     int soundCount;
     int resourceIdBase;
-    unsigned char unknown108[28];
-    int radioStationCount;
+    RadioStationController radio;
     bool unknown140;
     unsigned char unknown141[7];
 };

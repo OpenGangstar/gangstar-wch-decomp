@@ -13233,9 +13233,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003539dd	0x58	SoundManager.cpp	game	audio	matched	_ZN12SoundManager18changeRadioStationEi	SoundManager::changeRadioStation(int)
 0x00353a35	0x20	SoundManager.cpp	game	audio	matched	_ZN12SoundManager16lastRadioStationEv	SoundManager::lastRadioStation()
 0x00353a55	0x22	SoundManager.cpp	game	audio	matched	_ZN12SoundManager16nextRadioStationEv	SoundManager::nextRadioStation()
-0x00353a79	0x70	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerD0Ev	SoundManager::~SoundManager()
-0x00353ae9	0x68	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerD2Ev	SoundManager::~SoundManager()
-0x00353ae9	0x68	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerD1Ev	SoundManager::~SoundManager()
+0x00353a79	0x70	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerD0Ev	SoundManager::~SoundManager()
+0x00353ae9	0x68	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerD2Ev	SoundManager::~SoundManager()
+0x00353ae9	0x68	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerD1Ev	SoundManager::~SoundManager()
 0x00353b51	0x30	StaticSound.cpp	game	audio	matched	__tcf_0	__tcf_0
 0x00353b81	0x4a	StaticSound.cpp	game	audio	pending	_ZN17CStaticSoundsPoolD1Ev	CStaticSoundsPool::~CStaticSoundsPool()
 0x00353b81	0x4a	StaticSound.cpp	game	audio	pending	_ZN17CStaticSoundsPoolD2Ev	CStaticSoundsPool::~CStaticSoundsPool()
