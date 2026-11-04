@@ -38,10 +38,10 @@ def run(command: list[str], environment: dict[str, str]) -> None:
     subprocess.run(command, cwd=ROOT, env=environment, check=True)
 
 
-def comparison_arguments(entry) -> list[str]:
-    """Translate a manifest function selector into the checker's CLI options."""
+def function_selector(entry) -> tuple[str, int | None, str | None]:
+    """Validate a manifest selector for either CLI or in-memory comparison."""
     if isinstance(entry, str) and entry:
-        return ["--func", entry]
+        return entry, None, None
     if not isinstance(entry, dict) or set(entry) not in ({"name", "address"}, {"name", "address", "compiled_name"}):
         raise ValueError("function selector must be a name or {name, address[, compiled_name]}")
     name, address = entry["name"], entry["address"]
@@ -51,11 +51,21 @@ def comparison_arguments(entry) -> list[str]:
         address = int(address, 0)
     if not isinstance(address, int) or not 0 <= address <= 0xffffffff:
         raise ValueError("function address must be a 32-bit integer")
-    arguments = ["--func", name, "--address", f"0x{address:08x}"]
+    compiled_name = None
     if "compiled_name" in entry:
         compiled_name = entry["compiled_name"]
         if not isinstance(compiled_name, str) or not compiled_name:
             raise ValueError("compiled_name must be a nonempty callback name")
+    return name, address, compiled_name
+
+
+def comparison_arguments(entry) -> list[str]:
+    """Translate a validated manifest selector into the checker's CLI options."""
+    name, address, compiled_name = function_selector(entry)
+    arguments = ["--func", name]
+    if address is not None:
+        arguments += ["--address", f"0x{address:08x}"]
+    if compiled_name is not None:
         arguments += ["--compiled-func", compiled_name]
     return arguments
 
@@ -166,10 +176,13 @@ def _build_unit(name: str, compiler_root: Path | None, base_library: Path,
              "-c", manifest["source"], "-o", obj], environment)
 
     objects = [obj, *dependency_objects] if source_first else [*dependency_objects, obj]
-    if manifest.get("retail_got"):
-        retail, _ = load_base_library(base_library)
+    retail, _ = load_base_library(base_library)
+    compiled_source = ElfFile.load(str(ROOT / obj))
+    dependencies = ()
+    if manifest.get("retail_got") or manifest.get("external_thumb_functions"):
         dependencies = tuple(ElfFile.load(str(ROOT / path)) for path in dependency_objects)
-        harness_source, _ = write_harness(retail, ElfFile.load(str(ROOT / obj)), output, dependencies)
+    if manifest.get("retail_got"):
+        harness_source, _ = write_harness(retail, compiled_source, output, dependencies)
         harness_obj = output / "retail-got.o"
         harness_flags = ["-O0", "-fpic", "-fno-exceptions", "-fno-rtti",
                          "-fno-unwind-tables", "-fno-asynchronous-unwind-tables",
@@ -189,8 +202,7 @@ def _build_unit(name: str, compiler_root: Path | None, base_library: Path,
     if manifest.get("external_thumb_functions"):
         if not manifest.get("linker_script"):
             raise ValueError("external Thumb functions require a linked verification image")
-        retail, _ = load_base_library(base_library)
-        compiled = tuple(ElfFile.load(str(ROOT / path)) for path in [*dependency_objects, obj])
+        compiled = (*dependencies, compiled_source)
         binding_source = write_bindings(retail, compiled,
                                         manifest["external_thumb_functions"], output)
         binding_object = output / "external-thumb.o"
@@ -205,15 +217,15 @@ def _build_unit(name: str, compiler_root: Path | None, base_library: Path,
              "-o", image, *objects], environment)
         comparison_file = image
 
+    linked = (ElfFile.load(str(ROOT / comparison_file))
+              if manifest.get("linker_script") else compiled_source)
     passed = True
     for symbol in manifest["functions"]:
-        arguments = comparison_arguments(symbol)
-        result = check.main([str(ROOT / comparison_file), *arguments,
-                             "--baselib", str(base_library)])
+        function, address, compiled_func = function_selector(symbol)
+        result = check.check_function(retail, linked, function, address=address,
+                                      compiled_func=compiled_func)
         passed = result == 0 and passed
     if manifest.get("sections"):
-        retail, _ = load_base_library(base_library)
-        linked = ElfFile.load(str(ROOT / comparison_file))
         for section in manifest["sections"]:
             if isinstance(section, str):
                 passed = check_section(retail, linked, section) and passed

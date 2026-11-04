@@ -160,26 +160,38 @@ def main(argv: list[str] | None = None) -> int:
     retail, _ = load_base_library(args.baselib)
     obj = ElfFile.load(str(args.object))
 
+    return check_function(retail, obj, args.func, address=args.address,
+                          compiled_func=args.compiled_func)
+
+
+def check_function(retail: ElfFile, obj: ElfFile, func: str, *,
+                   address: int | None = None, compiled_func: str | None = None) -> int:
+    """Compare one function in freshly parsed, immutable images.
+
+    The CLI loads its files before calling this same verifier. A build may reuse
+    these images for its remaining functions/sections; nothing persists between
+    build invocations and every complete function still goes through every check.
+    """
     if obj.e_machine != retail.e_machine or obj.e_type not in (ET_REL, ET_EXEC, ET_DYN):
         print("expected an ARM relocatable object or linked image", file=sys.stderr)
         return 2
 
-    compiled_name = args.func if args.compiled_func is None else args.compiled_func
-    mapping_suffix = f" (compiled: {compiled_name})" if args.compiled_func is not None else ""
-    if args.compiled_func is not None:
+    compiled_name = func if compiled_func is None else compiled_func
+    mapping_suffix = f" (compiled: {compiled_name})" if compiled_func is not None else ""
+    if compiled_func is not None:
         import re
-        if (args.address is None or obj.e_type not in (ET_EXEC, ET_DYN)
-                or not re.fullmatch(r"__tcf_[0-9]+", args.func)
+        if (address is None or obj.e_type not in (ET_EXEC, ET_DYN)
+                or not re.fullmatch(r"__tcf_[0-9]+", func)
                 or not re.fullmatch(r"__tcf_[0-9]+", compiled_name)):
             print("compiled-name mappings require two __tcf_N callback names, "
                   "--address, and a linked image", file=sys.stderr)
             return 2
 
     try:
-        retail_symbol = select_function(retail, args.func, args.address)
+        retail_symbol = select_function(retail, func, address)
         if retail_symbol is None:
-            suffix = f" at 0x{args.address:08x}" if args.address is not None else ""
-            print(f"{args.func}{suffix} is not in the retail library", file=sys.stderr)
+            suffix = f" at 0x{address:08x}" if address is not None else ""
+            print(f"{func}{suffix} is not in the retail library", file=sys.stderr)
             return 2
         symbol = None
         if obj.e_type in (ET_EXEC, ET_DYN):
@@ -191,20 +203,20 @@ def main(argv: list[str] | None = None) -> int:
         print(str(error), file=sys.stderr)
         return 2
     if symbol is None:
-        print(f"{compiled_name} is not in {args.object}", file=sys.stderr)
+        print(f"{compiled_name} is not in {obj.path}", file=sys.stderr)
         return 2
 
     relocations = relocations_for(obj, compiled_name, symbol=symbol)
     if relocations:
         print(
-            f"{args.func} has {len(relocations)} relocation(s); the bytes cannot be "
+            f"{func} has {len(relocations)} relocation(s); the bytes cannot be "
             f"compared until they are resolved:\n  "
             + ", ".join(relocations[:16])
         )
         return 1
 
     if obj.e_type in (ET_EXEC, ET_DYN) and symbol.st_value != retail_symbol.st_value:
-        print(f"{args.func} is linked at 0x{symbol.st_value:08x}; "
+        print(f"{func} is linked at 0x{symbol.st_value:08x}; "
               f"expected 0x{retail_symbol.st_value:08x}", file=sys.stderr)
         return 1
 
@@ -214,12 +226,12 @@ def main(argv: list[str] | None = None) -> int:
     ok, detail = compare(expected, actual)
     if ok:
         print(
-            "OK  %s  0x%08x  %d bytes%s" % (args.func, retail_symbol.st_value, len(actual), mapping_suffix)
+            "OK  %s  0x%08x  %d bytes%s" % (func, retail_symbol.st_value, len(actual), mapping_suffix)
         )
         return 0
 
     print(
-        "MISMATCH  %s  0x%08x%s" % (args.func, retail_symbol.st_value, mapping_suffix),
+        "MISMATCH  %s  0x%08x%s" % (func, retail_symbol.st_value, mapping_suffix),
         file=sys.stderr,
     )
     print(detail, file=sys.stderr)

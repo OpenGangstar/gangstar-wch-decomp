@@ -1,6 +1,7 @@
 """Regression checks for ARM symbol extraction and relocation boundaries."""
 
 import struct
+import argparse
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 import io
@@ -8,7 +9,7 @@ from pathlib import Path
 from unittest.mock import patch
 from types import SimpleNamespace
 
-from tools.check import main, relocations_for, select_function, symbol_bytes
+from tools.check import check_function, main, relocations_for, select_function, symbol_bytes
 from tools.elf import EM_ARM, EM_386, ET_EXEC, ElfFile, Section, STT_FUNC, STT_OBJECT, Symbol
 
 
@@ -98,7 +99,47 @@ class DuplicateFunctionTests(unittest.TestCase):
              patch("tools.check.Path.exists", return_value=True), \
              redirect_stdout(stdout), redirect_stderr(stderr):
             code = main(["synthetic.elf", "--func", "__tcf_3", *arguments])
+        # Run every success/failure fixture through the loaded-image entry too.
+        # The file loader must remain a CLI responsibility, with identical
+        # diagnostics and verification after loading.
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--func", default="__tcf_3")
+        parser.add_argument("--address", type=lambda value: int(value, 0))
+        parser.add_argument("--compiled-func")
+        args = parser.parse_args(arguments)
+        loaded_stdout, loaded_stderr = io.StringIO(), io.StringIO()
+        with patch("tools.check.load_base_library") as retail_load, \
+             patch("tools.check.ElfFile.load") as image_load, \
+             redirect_stdout(loaded_stdout), redirect_stderr(loaded_stderr):
+            loaded_code = check_function(self.image(), image, args.func,
+                                         address=args.address,
+                                         compiled_func=args.compiled_func)
+        retail_load.assert_not_called()
+        image_load.assert_not_called()
+        self.assertEqual((loaded_code, loaded_stdout.getvalue(), loaded_stderr.getvalue()),
+                         (code, stdout.getvalue(), stderr.getvalue()))
         return code, stdout.getvalue(), stderr.getvalue()
+
+    def test_machine_and_file_type_checks_have_loaded_cli_parity(self):
+        for machine, kind in ((EM_386, ET_EXEC), (EM_ARM, 0)):
+            image = self.image()
+            image.e_machine, image.e_type = machine, kind
+            with self.subTest(machine=machine, kind=kind):
+                code, stdout, stderr = self.invoke(image, "--address", "0x8001")
+                self.assertEqual((code, stdout), (2, ""))
+                self.assertIn("expected an ARM relocatable object or linked image", stderr)
+
+    def test_cli_rejects_missing_object_before_loading_or_comparing(self):
+        with patch("tools.check.Path.exists", return_value=False), \
+             patch("tools.check.load_base_library") as retail_load, \
+             patch("tools.check.ElfFile.load") as image_load, \
+             patch("tools.check.check_function") as compare, \
+             redirect_stderr(io.StringIO()) as stderr:
+            self.assertEqual(main(["missing.o", "--func", "probe"]), 2)
+        self.assertEqual(stderr.getvalue(), "missing.o does not exist\n")
+        retail_load.assert_not_called()
+        image_load.assert_not_called()
+        compare.assert_not_called()
 
     def test_ambiguous_retail_name_is_rejected(self):
         code, stdout, stderr = self.invoke(self.image())

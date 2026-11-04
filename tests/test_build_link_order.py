@@ -28,14 +28,14 @@ class BuildLinkOrderTests(unittest.TestCase):
                     patch.object(build, 'load_base_library', return_value=(object(), None)), \
                     patch.object(build.ElfFile, 'load', return_value=object()), \
                     patch.object(build, 'write_harness', return_value=(harness, 0)), \
-                    patch.object(build.check, 'main', return_value=0) as comparisons:
+                    patch.object(build.check, 'check_function', return_value=0) as comparisons:
                 passed = build.build_unit('primary', root / 'compiler', root / 'retail.so')
                 self.assertTrue(passed)
                 links = [call.args[0] for call in commands.call_args_list
                          if Path(call.args[0][0]).name.startswith('arm-eabi-ld')]
                 self.assertEqual(len(links), 2)
                 # Both images must still be checked after the ordering change.
-                self.assertEqual([call.args[0][call.args[0].index('--func') + 1]
+                self.assertEqual([call.args[2]
                                   for call in comparisons.call_args_list],
                                  ['dependency_probe', 'primary_probe'])
                 command = links[-1]

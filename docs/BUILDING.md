@@ -91,6 +91,11 @@ The exact set is still to be determined; record what works in
 
 ## The comparison
 
+The builder reuses freshly parsed images within each unit for all function and
+section checks. Every invocation still compiles from source; no persistent cache
+is used. [Verifier performance](VERIFIER-PERFORMANCE.md) records the measured
+improvement and regression checks.
+
 The tooling in this repository gives you everything you need to read the
 retail bytes:
 
