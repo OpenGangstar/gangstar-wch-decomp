@@ -8,6 +8,51 @@
  * functions of CSound.cpp here, in the order they appear in the library.
  */
 
+#include "CSound.h"
+#include "SoundManager.h"
+
+ALSourcesPool* CSound::s_pALSourcesPool;
+
+CSound::CSound() {}
+
+CSound::CSound(CSoundData* soundData)
+    : data(soundData), unknown8(false), unknown9(true), status(4),
+      unknown20(0), unknown24(0), unknown28(0), fadeActive(0),
+      fadeRemaining(0), fadeDuration(0), unknown44(0)
+{
+}
+
+void CSound::Init(CSoundData*) {}
+void CSound::InitALSource() {}
+void CSound::InitStaticParameters(ALSourcesPool* pool) { s_pALSourcesPool = pool; }
+void CSound::UnInit() {}
+int CSound::GetStatus() const { return status; }
+void CSound::Play(bool, float, int) {}
+void CSound::Stop(int) {}
+void CSound::Pause() {}
+void CSound::Resume() {}
+void CSound::SetPosition(const irr::core::vector3d<float>&) {}
+void CSound::Update(int) {}
+void CSound::_performFade(int) {}
+void CSound::QueueStreamBuffer(char*, int, int) {}
+int CSound::GetProcessedBuffer() { return 0; }
+void CSound::SetVolume(float) {}
+void CSound::SetPitch(float) {}
+CSoundData* CSound::GetSoundData() { return data; }
+
+ALSourcesPool::ALSourcesPool(int, int) {}
+ALSourcesPool::~ALSourcesPool() {}
+
+CSound::~CSound() {}
+
+float CSound::GetAbsoluteVolume() const
+{
+    float gain = volume * SoundManager::getInstance()->sfxVolume;
+    if (fadeActive)
+        gain = (float)fadeRemaining * gain / (float)fadeDuration;
+    return gain;
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
