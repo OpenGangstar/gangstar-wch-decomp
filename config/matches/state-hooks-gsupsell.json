@@ -88,6 +88,22 @@
             "name": "__tcf_0",
             "address": "0x002e3a5d",
             "compiled_name": "__tcf_5"
+        },
+        {
+            "name": "__tcf_8",
+            "address": "0x002e4cc5"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x002e4aa9"
+        },
+        {
+            "name": "_GLOBAL__I__Z16SwfTextureLoaderPKcii",
+            "address": "0x002e4c45"
+        },
+        {
+            "name": "__tcf_9",
+            "address": "0x002e3fe9"
         }
     ],
     "sections": [
@@ -143,7 +159,11 @@
         ".local_startup_function_1",
         ".local_startup_function_2",
         ".local_startup_function_3",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".menu_startup_function_0",
+        ".menu_startup_function_1",
+        ".menu_startup_function_2",
+        ".menu_startup_function_3"
     ],
     "retail_got": true,
     "external_thumb_functions": [

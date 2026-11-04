@@ -9,9 +9,17 @@ struct MenuFXPrefix {
 
 // Partial member layout and shop-record stride. Do not instantiate or use sizeof.
 // Word-valued flag/map accessors retain provisional return types.
+struct MenuCheatZone {
+    float left;
+    float top;
+    float right;
+    float bottom;
+};
+
 class MenuManager {
 public:
     static MenuManager* getInstance();
+    static MenuCheatZone s_cheatActivationZones[2];
     int getDepth() const;
     void showTexts();
     void hideTexts();

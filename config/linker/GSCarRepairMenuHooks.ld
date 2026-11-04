@@ -38,6 +38,16 @@ _ZN32retail_scriptmanager_transitions17civ_vehicle_transE = 0x0042f7f4;
 _ZN32retail_scriptmanager_transitions17cop_vehicle_transE = 0x0042f884;
 _ZN32retail_scriptmanager_transitions11guard_transE = 0x0042f938;
 _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
+_ZN30retail_menumanager_transitions16civPassive_transE = 0x00419250;
+_ZN30retail_menumanager_transitions17scriptedNpc_transE = 0x0041937c;
+_ZN30retail_menumanager_transitions19civAggressive_transE = 0x004193ac;
+_ZN30retail_menumanager_transitions16gangMember_transE = 0x00419490;
+_ZN30retail_menumanager_transitions9cop_transE = 0x0041949c;
+_ZN30retail_menumanager_transitions10swat_transE = 0x004195d4;
+_ZN30retail_menumanager_transitions17civ_vehicle_transE = 0x004195e0;
+_ZN30retail_menumanager_transitions17cop_vehicle_transE = 0x00419670;
+_ZN30retail_menumanager_transitions11guard_transE = 0x00419724;
+_ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
 SECTIONS
 {
     .hook_0 0x002e156c : { *state-hooks-gscarrepairmenu.o(.text._ZN15GSCarRepairMenu4drawEPK12StateMachine .gnu.linkonce.t._ZN15GSCarRepairMenu4drawEPK12StateMachine) }
@@ -147,6 +157,24 @@ SECTIONS
     .module_startup_script_manager_helpers_storage_11 0x004ba610 (NOLOAD) : { *script-manager-helpers.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
 
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+    .menu_startup_function_0 0x002e4cc4 : { *menu-manager-helpers.o(.text.__tcf_8) }
+    .menu_startup_function_1 0x002e4aa8 : { *menu-manager-helpers.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .menu_startup_function_2 0x002e4c44 : { *menu-manager-helpers.o(.text._GLOBAL__I__Z16SwfTextureLoaderPKcii) }
+    .menu_startup_function_3 0x002e3fe8 : { *menu-manager-helpers.o(.text.__tcf_9) }
+    .menu_startup_storage_0 0x004b7210 (NOLOAD) : { *menu-manager-helpers.o(.bss.s_textures) }
+    .menu_startup_storage_1 0x004b7194 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
+    .menu_startup_storage_2 0x004b71b4 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN3irr2ps5vHalfE) }
+    .menu_startup_storage_3 0x004b71c0 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai11civ_passiveE) }
+    .menu_startup_storage_4 0x004b71c8 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai12npc_scriptedE) }
+    .menu_startup_storage_5 0x004b71d0 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai13civ_agressiveE) }
+    .menu_startup_storage_6 0x004b71d8 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai11gang_memberE) }
+    .menu_startup_storage_7 0x004b71e0 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai3copE) }
+    .menu_startup_storage_8 0x004b71e8 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai4swatE) }
+    .menu_startup_storage_9 0x004b71f0 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai11civ_vehicleE) }
+    .menu_startup_storage_10 0x004b71f8 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai11cop_vehicleE) }
+    .menu_startup_storage_11 0x004b7200 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai5guardE) }
+    .menu_startup_storage_12 0x004b7208 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
+    .menu_startup_storage_13 0x004b7170 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN11MenuManager22s_cheatActivationZonesE) }
 }
 ASSERT(SIZEOF(.state_instance_guard) == 4, "StateMachine instance guard extent");
 ASSERT(SIZEOF(.state_instance_storage) == 40, "StateMachine instance storage extent");
@@ -186,3 +214,17 @@ ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_8) == 8, "script-ma
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_9) == 8, "script-manager-helpers _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_10) == 8, "script-manager-helpers _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_11) == 8, "script-manager-helpers _ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.menu_startup_storage_0) == 12, "MenuManager s_textures extent");
+ASSERT(SIZEOF(.menu_startup_storage_1) == 32, "MenuManager _ZN3irr5scene6quake315irrEmptyStringcE extent");
+ASSERT(SIZEOF(.menu_startup_storage_2) == 12, "MenuManager _ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.menu_startup_storage_3) == 8, "MenuManager _ZN8gameloft2ai11civ_passiveE extent");
+ASSERT(SIZEOF(.menu_startup_storage_4) == 8, "MenuManager _ZN8gameloft2ai12npc_scriptedE extent");
+ASSERT(SIZEOF(.menu_startup_storage_5) == 8, "MenuManager _ZN8gameloft2ai13civ_agressiveE extent");
+ASSERT(SIZEOF(.menu_startup_storage_6) == 8, "MenuManager _ZN8gameloft2ai11gang_memberE extent");
+ASSERT(SIZEOF(.menu_startup_storage_7) == 8, "MenuManager _ZN8gameloft2ai3copE extent");
+ASSERT(SIZEOF(.menu_startup_storage_8) == 8, "MenuManager _ZN8gameloft2ai4swatE extent");
+ASSERT(SIZEOF(.menu_startup_storage_9) == 8, "MenuManager _ZN8gameloft2ai11civ_vehicleE extent");
+ASSERT(SIZEOF(.menu_startup_storage_10) == 8, "MenuManager _ZN8gameloft2ai11cop_vehicleE extent");
+ASSERT(SIZEOF(.menu_startup_storage_11) == 8, "MenuManager _ZN8gameloft2ai5guardE extent");
+ASSERT(SIZEOF(.menu_startup_storage_12) == 8, "MenuManager _ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.menu_startup_storage_13) == 32, "MenuManager _ZN11MenuManager22s_cheatActivationZonesE extent");

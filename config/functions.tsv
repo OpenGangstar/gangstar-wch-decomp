@@ -9469,7 +9469,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e3f91	0x20	MenuManager.cpp	stlport	-	matched	_ZN9stlp_priv12_List_globalIbE9_TransferEPNS_15_List_node_baseES3_S3_	stlp_priv::_List_global<bool>::_Transfer(stlp_priv::_List_node_base*, stlp_priv::_List_node_base*, stlp_priv::_List_node_base*)
 0x002e3fb1	0x22	MenuManager.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIlSaIlEE5clearEv	stlp_priv::_List_base<long, std::allocator<long> >::clear()
 0x002e3fd5	0x12	MenuManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN3irr5video8ITextureESaIS4_EED1Ev	stlp_priv::_Vector_base<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::~_Vector_base()
-0x002e3fe9	0x24	MenuManager.cpp	game	ui	pending	__tcf_9	__tcf_9
+0x002e3fe9	0x24	MenuManager.cpp	game	ui	matched	__tcf_9	__tcf_9
 0x002e400d	0x34	MenuManager.cpp	gameswf	-	matched	_ZNK7gameswf8weak_ptrINS_6playerEE11check_proxyEv	gameswf::weak_ptr<gameswf::player>::check_proxy() const
 0x002e4041	0x34	MenuManager.cpp	game	ui	pending	_Z10StrToLowerPc	StrToLower(char*)
 0x002e4075	0x18	MenuManager.cpp	game	ui	pending	_Z13fs_close_funcPv	fs_close_func(void*)
@@ -9514,11 +9514,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e49ad	0x68	MenuManager.cpp	game	ui	pending	_ZN11MenuManager22updateWidgetVisibilityEv	MenuManager::updateWidgetVisibility()
 0x002e4a15	0x80	MenuManager.cpp	game	ui	pending	_ZN11MenuManager11freeTextureEPKc	MenuManager::freeTexture(char const*)
 0x002e4a95	0x12	MenuManager.cpp	stlport	-	matched	_ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE8_M_clearEv	std::vector<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::_M_clear()
-0x002e4aa9	0x19c	MenuManager.cpp	game	ui	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x002e4c45	0x14	MenuManager.cpp	game	ui	pending	_GLOBAL__I__Z16SwfTextureLoaderPKcii	_GLOBAL__I__Z16SwfTextureLoaderPKcii
+0x002e4aa9	0x19c	MenuManager.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
+0x002e4c45	0x14	MenuManager.cpp	game	ui	matched	_GLOBAL__I__Z16SwfTextureLoaderPKcii	_GLOBAL__I__Z16SwfTextureLoaderPKcii
 0x002e4c59	0x2c	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf5arrayIP10MenuWidgetE14release_bufferEv	gameswf::array<MenuWidget*>::release_buffer()
 0x002e4c85	0x40	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerD0Ev	MenuManager::~MenuManager()
-0x002e4cc5	0x30	MenuManager.cpp	game	ui	pending	__tcf_8	__tcf_8
+0x002e4cc5	0x30	MenuManager.cpp	game	ui	matched	__tcf_8	__tcf_8
 0x002e4cf5	0x74	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE25_M_splice_insert_dispatchIN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEEEEvS7_T_S8_RKSt12__false_type	void std::list<long, std::allocator<long> >::_M_splice_insert_dispatch<stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> > >(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::__false_type const&)
 0x002e4d69	0x20	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE6spliceEN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEERS1_	std::list<long, std::allocator<long> >::splice(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::list<long, std::allocator<long> >&)
 0x002e4d89	0x90	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE25_M_splice_insert_dispatchIN9stlp_priv14_List_iteratorIlSt13_Const_traitsIlEEEEEvNS4_IlSt16_Nonconst_traitsIlEEET_SB_RKSt12__false_type	void std::list<long, std::allocator<long> >::_M_splice_insert_dispatch<stlp_priv::_List_iterator<long, std::_Const_traits<long> > >(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Const_traits<long> >, stlp_priv::_List_iterator<long, std::_Const_traits<long> >, std::__false_type const&)
