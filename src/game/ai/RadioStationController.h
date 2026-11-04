@@ -19,6 +19,8 @@ class RadioStationController {
 public:
     ~RadioStationController();
     int selectRandomAd();
+    int selectRandomSong(int station);
+    int selectRandomJingle(int station);
 
 private:
     struct StationQueue {

@@ -94,7 +94,9 @@
         "_ZN12SoundManager11toggleSoundEv",
         "_ZN12SoundManagerD0Ev",
         "_ZN12SoundManagerD1Ev",
-        "_ZN12SoundManagerD2Ev"
+        "_ZN12SoundManagerD2Ev",
+        "_ZN12SoundManager17_resetFrequenciesEv",
+        "_ZN12SoundManager14_getRadioTrackEi"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -163,7 +165,10 @@
         ".sound_manager_d0",
         ".sound_manager_d1",
         ".sound_manager_vtable",
-        ".sound_updatable_vtable"
+        ".sound_updatable_vtable",
+        ".sound_manager_frequencies",
+        ".sound_manager_frequency_counts",
+        ".sound_manager_radio_track"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -173,11 +178,14 @@
         "nativeResumeSoundBig",
         "nativePauseSoundBig",
         "nativePlaySoundBig",
-        "_ZN12SoundManager14_getRadioTrackEi",
         "_ZNK6CSound9GetStatusEv",
         "_ZN12SoundManager11endCutsceneEv",
         "_ZN12SoundManagerC1Ev",
         "_ZN22RadioStationControllerD1Ev",
-        "_ZN12SoundManager6updateEd"
+        "_ZN12SoundManager6updateEd",
+        "_ZN3irr2os10Randomizer4randEv",
+        "_ZN22RadioStationController14selectRandomAdEv",
+        "_ZN22RadioStationController16selectRandomSongEi",
+        "_ZN22RadioStationController18selectRandomJingleEi"
     ]
 }
