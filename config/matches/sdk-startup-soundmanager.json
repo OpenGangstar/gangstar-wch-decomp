@@ -78,7 +78,11 @@
         "_ZN12SoundManager17resumeLowFpsMusicEv",
         "_ZN12SoundManager26getNumberOfAllocatedSoundsEv",
         "_ZN12SoundManager14isSoundPlayingEi",
-        "_ZN12SoundManager14isSoundPlayingEii"
+        "_ZN12SoundManager14isSoundPlayingEii",
+        "_ZN12SoundManager8setPitchEiif",
+        "_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -130,7 +134,11 @@
         ".sound_manager_lowfps_4",
         ".sound_manager_slots_0",
         ".sound_manager_slots_1",
-        ".sound_manager_slots_2"
+        ".sound_manager_slots_2",
+        ".sound_manager_dispatch_0",
+        ".sound_manager_dispatch_1",
+        ".sound_manager_dispatch_2",
+        ".sound_manager_dispatch_3"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -141,7 +149,6 @@
         "nativePauseSoundBig",
         "nativePlaySoundBig",
         "_ZN12SoundManager14_getRadioTrackEi",
-        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZNK6CSound9GetStatusEv"
     ]
 }

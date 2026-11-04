@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "SoundManager.h"
 #include "CSound.h"
+#include "../core/Vector3.h"
 #include "CSoundData.h"
 #include "../app/NativeMedia.h"
 #include "../core/LocalSdkStartupStorage.h"
@@ -232,6 +233,52 @@ bool SoundManager::isSoundPlaying(int resourceId, int channel)
         }
     }
     return false;
+}
+
+void SoundManager::setPitch(int resourceId, int channel, float pitch)
+{
+    if (flags & 2) {
+        int soundId = _getSoundId(resourceId);
+        CSound* sound = soundSlots[soundId][channel];
+        if (sound)
+            sound->SetPitch(pitch);
+    }
+}
+
+void SoundManager::setSourcePos(int resourceId, int channel,
+                                const irr::core::vector3d<float>& position)
+{
+    if (flags & 2) {
+        int soundId = _getSoundId(resourceId);
+        CSound* sound = soundSlots[soundId][channel];
+        if (sound)
+            sound->SetPosition(position);
+    }
+}
+
+namespace irr { namespace core {
+template<class Scalar, class T>
+vector3d<T> operator*(Scalar scalar, const vector3d<T>& vector) __attribute__((weak));
+} }
+
+irr::core::vector3d<float> SoundManager::convertVisual3DToSound3D(
+    const irr::core::vector3d<float>& position)
+{
+    return 0.01f * position;
+}
+
+bool SoundManager::playEx(int id, const irr::core::vector3d<float>*, bool loop,
+                          float volume, int, bool, float, void (*)())
+{
+    if (flags & 2) {
+        float gain;
+        if (soundEntries[id].type & 0x400000)
+            gain = volume * playbackVolume;
+        else
+            gain = volume * effectsPlaybackVolume;
+        nativePlaySoundBig(id, gain, loop);
+    }
+    return true;
 }
 
 void operator delete(void*) throw();
