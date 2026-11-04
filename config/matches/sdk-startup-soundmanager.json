@@ -36,7 +36,35 @@
         {
             "name": "_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE",
             "address": "0x00353511"
-        }
+        },
+        "_ZN12SoundManager4initEv",
+        "_ZN12SoundManager6unInitEv",
+        "_ZN12SoundManager12useIPodRadioEv",
+        "_ZN12SoundManager15useBuiltInRadioEv",
+        "_ZNK12SoundManager10canUseIPodEv",
+        "_ZN12SoundManager8initIPodEv",
+        "_ZN12SoundManager11cleanupIPodEv",
+        "_ZNK12SoundManager17iPodIsInitializedEv",
+        "_ZNK12SoundManager16getPlaylistCountEv",
+        "_ZNK12SoundManager15getPlaylistNameEiPc",
+        "_ZNK12SoundManager26getPlaylistIndexFromStringEPKc",
+        "_ZNK12SoundManager14getCurPlaylistEv",
+        "_ZN12SoundManager11setPlaylistEi",
+        "_ZN12SoundManager14setListenerPosERKN3irr4core8vector3dIfEES5_S5_",
+        "_ZN12SoundManager11_getSoundIdEi",
+        "_ZN12SoundManager9_getResIdEi",
+        "_ZN12SoundManager13_getSoundTypeEi",
+        "_ZN12SoundManager12disableMusicEv",
+        "_ZN12SoundManager11enableMusicEv",
+        "_ZNK12SoundManager19getNumRadioStationsEv",
+        "_ZN12SoundManager9setVolumeEiif",
+        "_ZN12SoundManager12stopAllMusicEv",
+        "_ZN12SoundManager13stopAllSoundsEv",
+        "_ZN12SoundManager14pauseAllSoundsEv",
+        "_ZN12SoundManager15stopLowFpsMusicEv",
+        "_ZN12SoundManager4stopEiii",
+        "_ZN12SoundManager6resumeEi",
+        "_ZN12SoundManager5pauseEi"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -46,7 +74,42 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".sound_manager_helper_0",
+        ".sound_manager_helper_1",
+        ".sound_manager_helper_2",
+        ".sound_manager_helper_3",
+        ".sound_manager_helper_4",
+        ".sound_manager_helper_5",
+        ".sound_manager_helper_6",
+        ".sound_manager_helper_7",
+        ".sound_manager_helper_8",
+        ".sound_manager_helper_9",
+        ".sound_manager_helper_10",
+        ".sound_manager_helper_11",
+        ".sound_manager_helper_12",
+        ".sound_manager_helper_13",
+        ".sound_manager_helper_14",
+        ".sound_manager_helper_15",
+        ".sound_manager_helper_16",
+        ".sound_manager_helper_17",
+        ".sound_manager_helper_18",
+        ".sound_manager_helper_19",
+        ".sound_manager_helper_20",
+        ".sound_manager_helper_21",
+        ".sound_manager_helper_22",
+        ".sound_manager_helper_23",
+        ".sound_manager_helper_24",
+        ".sound_manager_helper_25",
+        ".sound_manager_helper_26",
+        ".sound_manager_helper_27"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "nativeSetVolumeBig",
+        "nativeStopAllSounds",
+        "nativeStopSoundBig",
+        "nativeResumeSoundBig",
+        "nativePauseSoundBig"
+    ]
 }
