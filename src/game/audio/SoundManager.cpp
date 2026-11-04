@@ -17,6 +17,29 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
+SoundManager* SoundManager::s_soundManager;
+
+SoundManager* SoundManager::getInstance()
+{
+    if (!s_soundManager)
+        s_soundManager = new SoundManager;
+    return s_soundManager;
+}
+
+void SoundManager::clear()
+{
+    delete this;
+    s_soundManager = 0;
+}
+
+void SoundManager::toggleSound()
+{
+    if (flags & 2)
+        unInit();
+    else
+        init();
+}
+
 void SoundManager::init()
 {
     if (!(flags & 2))

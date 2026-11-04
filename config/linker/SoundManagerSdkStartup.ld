@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fcmpeq = 0x001c470c;
+_Znwj = 0x001c4814;
 SECTIONS
 {
     .sdk_startup_function_0 0x003539ac : { *sdk-startup-soundmanager.o(.text.__tcf_2) }
@@ -68,6 +69,10 @@ SECTIONS
     .sound_manager_callback_4 0x00353820 : { *sdk-startup-soundmanager.o(.text._Z16soundEndCallbackv) }
     .sound_manager_callback_5 0x00353900 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17playSoundCallbackEibff) }
     .sound_manager_playing 0x004bc1f0 (NOLOAD) : { *sdk-startup-soundmanager.o(.bss._ZN12SoundManager15s_soundsPlayingE) }
+    .sound_manager_lifecycle_0 0x002d40cc : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager11getInstanceEv) }
+    .sound_manager_lifecycle_1 0x00352750 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager5clearEv) }
+    .sound_manager_lifecycle_2 0x00352788 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager11toggleSoundEv) }
+    .sound_manager_instance 0x004bc1f4 (NOLOAD) : { *sdk-startup-soundmanager.o(.bss._ZN12SoundManager14s_soundManagerE) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

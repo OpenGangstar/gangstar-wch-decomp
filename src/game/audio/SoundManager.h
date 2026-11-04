@@ -9,6 +9,11 @@ class CSoundData;
 
 class SoundManager {
 public:
+    SoundManager();
+    virtual ~SoundManager();
+    static SoundManager* s_soundManager;
+    void clear();
+    void toggleSound();
     static SoundManager* getInstance() __attribute__((weak));
     bool playEx(int id, const irr::core::vector3d<float>* position, bool flag,
                 float value1, int value2, bool flag2, float value3, void (*callback)());
@@ -77,7 +82,7 @@ public:
         unsigned char unknown8[4];
     };
 
-    unsigned char unknown0[36];
+    unsigned char unknown4[32];
     CSound*** soundSlots;
     CSound* lowFpsSound;
     CSoundData* lowFpsData;
@@ -94,6 +99,7 @@ public:
     unsigned char unknown108[28];
     int radioStationCount;
     bool unknown140;
+    unsigned char unknown141[7];
 };
 
 #endif
