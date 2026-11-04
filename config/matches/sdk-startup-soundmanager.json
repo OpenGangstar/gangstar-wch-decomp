@@ -75,7 +75,10 @@
         "_ZN12SoundManager19_cleanupLowFpsMusicEv",
         "_ZN12SoundManager20setLowFpsMusicVolumeEf",
         "_ZNK12SoundManager20isLowFpsMusicPlayingEv",
-        "_ZN12SoundManager17resumeLowFpsMusicEv"
+        "_ZN12SoundManager17resumeLowFpsMusicEv",
+        "_ZN12SoundManager26getNumberOfAllocatedSoundsEv",
+        "_ZN12SoundManager14isSoundPlayingEi",
+        "_ZN12SoundManager14isSoundPlayingEii"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -124,7 +127,10 @@
         ".sound_manager_lowfps_1",
         ".sound_manager_lowfps_2",
         ".sound_manager_lowfps_3",
-        ".sound_manager_lowfps_4"
+        ".sound_manager_lowfps_4",
+        ".sound_manager_slots_0",
+        ".sound_manager_slots_1",
+        ".sound_manager_slots_2"
     ],
     "retail_got": true,
     "external_thumb_functions": [
