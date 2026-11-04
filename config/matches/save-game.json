@@ -238,7 +238,11 @@
         ".module_startup_path_name_function_0",
         ".module_startup_path_name_function_1",
         ".module_startup_path_name_function_2",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".gs3d_startup_function_0",
+        ".gs3d_startup_function_1",
+        ".gs3d_startup_function_2",
+        ".gs3d_startup_function_3"
     ],
     "functions": [
         "_ZN8SaveGame12SampleObjectEP11LevelObject",
@@ -299,6 +303,22 @@
         {
             "name": "_GLOBAL__I_mouseLButtHeld",
             "address": "0x002d2985"
+        },
+        {
+            "name": "__tcf_9",
+            "address": "0x002dd091"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x002dcec5"
+        },
+        {
+            "name": "_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE",
+            "address": "0x002dd035"
+        },
+        {
+            "name": "__tcf_10",
+            "address": "0x002df605"
         }
     ],
     "dependencies": [

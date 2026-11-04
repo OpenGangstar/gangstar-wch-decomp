@@ -9189,11 +9189,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dcd15	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP4ItemSaIS1_EE8_M_clearEv	std::vector<Item*, std::allocator<Item*> >::_M_clear()
 0x002dcd29	0x174	GS3DStuff.cpp	game	rendering	pending	_ZNSs9_M_appendEPKcS0_	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, char const*)
 0x002dce9d	0x28	GS3DStuff.cpp	game	rendering	pending	_ZNSs6appendEPKc	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*)
-0x002dcec5	0x170	GS3DStuff.cpp	game	rendering	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x002dd035	0x14	GS3DStuff.cpp	game	rendering	pending	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE
+0x002dcec5	0x170	GS3DStuff.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
+0x002dd035	0x14	GS3DStuff.cpp	game	rendering	matched	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE
 0x002dd049	0x24	GS3DStuff.cpp	game	rendering	matched	_ZN12CGameFactoryD1Ev	CGameFactory::~CGameFactory()
 0x002dd06d	0x24	GS3DStuff.cpp	game	rendering	matched	__tcf_2	__tcf_2
-0x002dd091	0x30	GS3DStuff.cpp	game	rendering	pending	__tcf_9	__tcf_9
+0x002dd091	0x30	GS3DStuff.cpp	game	rendering	matched	__tcf_9	__tcf_9
 0x002dd0c1	0x27c	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff15checkForDespawnEP11LevelObject	GS3DStuff::checkForDespawn(LevelObject*)
 0x002dd33d	0x26c	GS3DStuff.cpp	game	rendering	pending	_ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE	OctTreeAABB::OctTreeAABBNode::getPolysIter(irr::core::aabbox3d<float> const&, irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*, irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> >*, irr::core::array<irr::scene::ISceneNode*, irr::core::irrAllocator<irr::scene::ISceneNode*> >*) const
 0x002dd5a9	0x74	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABB14calculatePolysERKN3irr4core8aabbox3dIfEEPNS1_5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS8_EEEEPNS6_IP10SpawnPointNS9_ISE_EEEEPNS6_IPNS0_5scene10ISceneNodeENS9_ISK_EEEE	OctTreeAABB::calculatePolys(irr::core::aabbox3d<float> const&, irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*, irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> >*, irr::core::array<irr::scene::ISceneNode*, irr::core::irrAllocator<irr::scene::ISceneNode*> >*)
@@ -9219,7 +9219,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002df34d	0xa8	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE	GS3DStuff::SetAlpha(irr::scene::ISceneNode*, unsigned char, GS3DStuff::eColorType)
 0x002df3f5	0x24	GS3DStuff.cpp	game	rendering	pending	_ZN12b2PolygonDefD1Ev	b2PolygonDef::~b2PolygonDef()
 0x002df419	0x1ec	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8tearDownEv	GS3DStuff::tearDown()
-0x002df605	0x24	GS3DStuff.cpp	game	rendering	pending	__tcf_10	__tcf_10
+0x002df605	0x24	GS3DStuff.cpp	game	rendering	matched	__tcf_10	__tcf_10
 0x002df629	0x2c	GS3DStuff.cpp	game	rendering	pending	_ZN12b2PolygonDefD0Ev	b2PolygonDef::~b2PolygonDef()
 0x002df655	0x340	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE	OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(int&, int, irr::core::array<OctTreeAABB::RootNode*, irr::core::irrAllocator<OctTreeAABB::RootNode*> >*, unsigned int, irr::core::aabbox3d<float>)
 0x002df995	0x180	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj	OctTreeAABB::OctTreeAABB(irr::scene::ISceneNode*, unsigned int)
