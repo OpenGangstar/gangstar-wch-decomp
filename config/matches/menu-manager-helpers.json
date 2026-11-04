@@ -42,7 +42,23 @@
         "_ZN11MenuManager11enableAnimsEb",
         "_ZNK11MenuManager15areAnimsEnabledEv",
         "_ZNK11MenuManager8getDepthEv",
-        "_ZNK11MenuManager10getMapModeEv"
+        "_ZNK11MenuManager10getMapModeEv",
+        {
+            "name": "__tcf_8",
+            "address": "0x002e4cc5"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x002e4aa9"
+        },
+        {
+            "name": "_GLOBAL__I__Z16SwfTextureLoaderPKcii",
+            "address": "0x002e4c45"
+        },
+        {
+            "name": "__tcf_9",
+            "address": "0x002e3fe9"
+        }
     ],
     "sections": [
         ".helper_0",
@@ -62,6 +78,16 @@
         ".helper_14",
         ".helper_15",
         ".helper_16",
-        ".helper_17"
-    ]
+        ".helper_17",
+        ".menu_startup_function_0",
+        ".menu_startup_function_1",
+        ".menu_startup_function_2",
+        ".menu_startup_function_3",
+        {
+            "name": ".got",
+            "offset": 864
+        },
+        ".shared_startup_empty_text"
+    ],
+    "retail_got": true
 }
