@@ -60,6 +60,7 @@ public:
     void _cleanupLowFpsMusic();
     void setLowFpsMusicVolume(float volume);
     void resumeLowFpsMusic();
+    void resumeAllSounds();
     bool isLowFpsMusicPlaying() const;
     void playRadio(int station);
     void stopRadio();

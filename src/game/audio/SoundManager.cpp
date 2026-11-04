@@ -505,6 +505,33 @@ void SoundManager::beginCutscene()
     stop(radioTrack, -1, 0);
 }
 
+void SoundManager::resumeAllSounds()
+{
+    if (flags & 2) {
+        flags &= ~128u;
+        resumeLowFpsMusic();
+        for (int id = 0; id < soundCount; ++id) {
+            if (id != radioTrack) {
+                for (int channel = 0; channel < 4; ++channel) {
+                    CSound* sound = soundSlots[id][channel];
+                    if (sound) {
+                        if ((soundEntries[id].type & 0x400000) && (flags & 256))
+                            sound->Stop(0);
+                        else if (sound->GetStatus() == 1)
+                            soundSlots[id][channel]->Resume();
+                    }
+                }
+            }
+        }
+        if ((flags & 1) && !(flags & 256)) {
+            if (flags & 64)
+                flags &= ~64u;
+        } else {
+            flags &= ~64u;
+        }
+    }
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));
