@@ -36,7 +36,22 @@
         {
             "name": "_GLOBAL__I__ZN10CSoundDataC2Ev",
             "address": "0x00350d79"
-        }
+        },
+        "_ZN10CSoundDataC1Ev",
+        "_ZN10CSoundDataC2Ev",
+        "_ZN10CSoundDataC1EiiiiPcib",
+        "_ZN10CSoundDataC2EiiiiPcib",
+        "_ZN10CSoundData4InitEiiiiPci",
+        "_ZN10CSoundData6UnInitEv",
+        "_ZN10CSoundDataD0Ev",
+        "_ZN10CSoundDataD2Ev",
+        "_ZN10CSoundDataD1Ev",
+        "_ZN14CSoundDataPool16ReleaseSoundDataEP10CSoundData",
+        "_ZN14CSoundDataPool12GetSoundDataEiiiiPci",
+        "_ZN14CSoundDataPoolD1Ev",
+        "_ZN14CSoundDataPoolD2Ev",
+        "_ZN14CSoundDataPoolC1Eii",
+        "_ZN14CSoundDataPoolC2Eii"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -46,7 +61,18 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".csounddata_function_0",
+        ".csounddata_function_1",
+        ".csounddata_function_2",
+        ".csounddata_function_3",
+        ".csounddata_function_4",
+        ".csounddata_function_5",
+        ".csounddata_vtable",
+        ".csounddata_pool_0",
+        ".csounddata_pool_1",
+        ".csounddata_pool_2",
+        ".csounddata_pool_3"
     ],
     "retail_got": true
 }
