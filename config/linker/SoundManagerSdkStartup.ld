@@ -91,6 +91,8 @@ SECTIONS
     .sound_manager_setup_1 0x00353050 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager12allocBuffersEv) }
     .sound_manager_setup_2 0x003537cc : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17playPriorityAudioEib) }
     .sound_manager_setup_3 0x00352d28 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14setMusicVolumeEf) }
+    .sound_manager_cutscene_0 0x00352978 : { *sdk-startup-soundmanager.o(.text._ZNK12SoundManager15isRestrictedSfxEi) }
+    .sound_manager_cutscene_1 0x003533b8 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager13beginCutsceneEv) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

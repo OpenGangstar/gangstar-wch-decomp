@@ -467,6 +467,44 @@ void SoundManager::setMusicVolume(float volume)
     }
 }
 
+bool SoundManager::isRestrictedSfx(int id) const
+{
+    return id == 241 || id == 123 || id == 106 || id == 119 ||
+           id == 111 || id == 103 || id == 167 || id == 159 ||
+           id == 157 || id == 168 || id == 163 || id == 165 ||
+           id == 160 || id == 158 || id == 164 || id == 162 ||
+           id == 161 || id == 166 || id == 180 || id == 173 ||
+           id == 174 || id == 181 || id == 169 || id == 170 ||
+           id == 177 || id == 179 || id == 172 || id == 171 ||
+           id == 178 || id == 176 || id == 190 || id == 182 ||
+           id == 186 || id == 183 || id == 191 || id == 187 ||
+           id == 189 || id == 192 || id == 193 || id == 184 ||
+           id == 185 || id == 188 || id == 197 || id == 208 ||
+           id == 203 || id == 209 || id == 199 || id == 205 ||
+           id == 194 || id == 198 || id == 195 || id == 206 ||
+           id == 202;
+}
+
+extern bool bIsInCutscene;
+
+void SoundManager::beginCutscene()
+{
+    stop(radioTrack, -1, 0);
+    bIsInCutscene = true;
+    ++s_soundsPlaying;
+    if (!(flags & 16)) {
+        flags |= 16;
+        for (int id = 0; id < soundCount; ++id) {
+            if ((soundEntries[id].type & 0x400000) || isRestrictedSfx(id)) {
+                for (int channel = 0; channel < 4; ++channel)
+                    if (soundSlots[id][channel])
+                        nativeSetVolumeBig(id, 0.0f);
+            }
+        }
+    }
+    stop(radioTrack, -1, 0);
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));

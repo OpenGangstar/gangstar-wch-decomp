@@ -13188,7 +13188,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003528ad	0x74	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17_resetFrequenciesEv	SoundManager::_resetFrequencies()
 0x00352921	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager8setPitchEiif	SoundManager::setPitch(int, int, float)
 0x0035294d	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE	SoundManager::setSourcePos(int, int, irr::core::vector3d<float> const&)
-0x00352979	0xdc	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager15isRestrictedSfxEi	SoundManager::isRestrictedSfx(int) const
+0x00352979	0xdc	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager15isRestrictedSfxEi	SoundManager::isRestrictedSfx(int) const
 0x00352a55	0xec	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11endCutsceneEv	SoundManager::endCutscene()
 0x00352b41	0x28	SoundManager.cpp	game	audio	matched	_ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE	SoundManager::convertVisual3DToSound3D(irr::core::vector3d<float> const&)
 0x00352b69	0x3e	SoundManager.cpp	game	audio	matched	_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE	SoundManager::playEx(int, irr::core::vector3d<float> const*, bool, float, int, bool, float, void (*)())
@@ -13214,7 +13214,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00353361	0x12	SoundManager.cpp	game	audio	matched	_ZN12SoundManager15stopLowFpsMusicEv	SoundManager::stopLowFpsMusic()
 0x00353375	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager4stopEiii	SoundManager::stop(int, int, int)
 0x00353389	0x2e	SoundManager.cpp	game	audio	matched	_ZN12SoundManager9stopRadioEv	SoundManager::stopRadio()
-0x003533b9	0xbc	SoundManager.cpp	game	audio	pending	_ZN12SoundManager13beginCutsceneEv	SoundManager::beginCutscene()
+0x003533b9	0xbc	SoundManager.cpp	game	audio	matched	_ZN12SoundManager13beginCutsceneEv	SoundManager::beginCutscene()
 0x00353475	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager6resumeEi	SoundManager::resume(int)
 0x00353489	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager5pauseEi	SoundManager::pause(int)
 0x0035349d	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager19getNumRadioStationsEv	SoundManager::getNumRadioStations() const

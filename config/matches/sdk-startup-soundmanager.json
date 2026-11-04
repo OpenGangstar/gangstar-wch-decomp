@@ -100,7 +100,9 @@
         "_ZN12SoundManager12setSfxVolumeEf",
         "_ZN12SoundManager12allocBuffersEv",
         "_ZN12SoundManager17playPriorityAudioEib",
-        "_ZN12SoundManager14setMusicVolumeEf"
+        "_ZN12SoundManager14setMusicVolumeEf",
+        "_ZNK12SoundManager15isRestrictedSfxEi",
+        "_ZN12SoundManager13beginCutsceneEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -176,7 +178,9 @@
         ".sound_manager_setup_0",
         ".sound_manager_setup_1",
         ".sound_manager_setup_2",
-        ".sound_manager_setup_3"
+        ".sound_manager_setup_3",
+        ".sound_manager_cutscene_0",
+        ".sound_manager_cutscene_1"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -187,7 +191,6 @@
         "nativePauseSoundBig",
         "nativePlaySoundBig",
         "_ZNK6CSound9GetStatusEv",
-        "_ZN12SoundManager11endCutsceneEv",
         "_ZN12SoundManagerC1Ev",
         "_ZN22RadioStationControllerD1Ev",
         "_ZN12SoundManager6updateEd",
@@ -195,7 +198,7 @@
         "_ZN22RadioStationController14selectRandomAdEv",
         "_ZN22RadioStationController16selectRandomSongEi",
         "_ZN22RadioStationController18selectRandomJingleEi",
-        "_ZN12SoundManager13beginCutsceneEv",
-        "_ZN12SoundManager13_getSoundDataEi"
+        "_ZN12SoundManager13_getSoundDataEi",
+        "_ZN12SoundManager11endCutsceneEv"
     ]
 }
