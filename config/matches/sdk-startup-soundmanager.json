@@ -88,7 +88,10 @@
         "_ZN12SoundManager17stopSoundCallbackEii",
         "_ZN12SoundManager22isSoundPlayingCallbackEii",
         "_Z16soundEndCallbackv",
-        "_ZN12SoundManager17playSoundCallbackEibff"
+        "_ZN12SoundManager17playSoundCallbackEibff",
+        "_ZN12SoundManager11getInstanceEv",
+        "_ZN12SoundManager5clearEv",
+        "_ZN12SoundManager11toggleSoundEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -150,7 +153,10 @@
         ".sound_manager_callback_2",
         ".sound_manager_callback_3",
         ".sound_manager_callback_4",
-        ".sound_manager_callback_5"
+        ".sound_manager_callback_5",
+        ".sound_manager_lifecycle_0",
+        ".sound_manager_lifecycle_1",
+        ".sound_manager_lifecycle_2"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -162,6 +168,7 @@
         "nativePlaySoundBig",
         "_ZN12SoundManager14_getRadioTrackEi",
         "_ZNK6CSound9GetStatusEv",
-        "_ZN12SoundManager11endCutsceneEv"
+        "_ZN12SoundManager11endCutsceneEv",
+        "_ZN12SoundManagerC1Ev"
     ]
 }
