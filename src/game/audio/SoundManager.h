@@ -77,6 +77,12 @@ public:
     static bool playSoundCallback(int id, bool loop, float volume, float pitch);
     static int s_soundsPlaying;
     void endCutscene();
+    void beginCutscene();
+    bool playPriorityAudio(int id, bool loop);
+    void allocBuffers();
+    CSoundData* _getSoundData(int soundId);
+    void setSfxVolume(float volume);
+    void setMusicVolume(float volume);
     static void setPitchCallback(int id, int channel, float pitch);
     static void setVolumeCallback(int id, int channel, float volume);
     static void stopSoundCallback(int id, int channel);
@@ -85,7 +91,7 @@ public:
     struct SoundEntry {
         int type;
         int channel;
-        unsigned char unknown8[4];
+        CSoundData* data;
     };
 
     unsigned char unknown4[32];

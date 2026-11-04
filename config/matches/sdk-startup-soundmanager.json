@@ -96,7 +96,11 @@
         "_ZN12SoundManagerD1Ev",
         "_ZN12SoundManagerD2Ev",
         "_ZN12SoundManager17_resetFrequenciesEv",
-        "_ZN12SoundManager14_getRadioTrackEi"
+        "_ZN12SoundManager14_getRadioTrackEi",
+        "_ZN12SoundManager12setSfxVolumeEf",
+        "_ZN12SoundManager12allocBuffersEv",
+        "_ZN12SoundManager17playPriorityAudioEib",
+        "_ZN12SoundManager14setMusicVolumeEf"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -168,7 +172,11 @@
         ".sound_updatable_vtable",
         ".sound_manager_frequencies",
         ".sound_manager_frequency_counts",
-        ".sound_manager_radio_track"
+        ".sound_manager_radio_track",
+        ".sound_manager_setup_0",
+        ".sound_manager_setup_1",
+        ".sound_manager_setup_2",
+        ".sound_manager_setup_3"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -186,6 +194,8 @@
         "_ZN3irr2os10Randomizer4randEv",
         "_ZN22RadioStationController14selectRandomAdEv",
         "_ZN22RadioStationController16selectRandomSongEi",
-        "_ZN22RadioStationController18selectRandomJingleEi"
+        "_ZN22RadioStationController18selectRandomJingleEi",
+        "_ZN12SoundManager13beginCutsceneEv",
+        "_ZN12SoundManager13_getSoundDataEi"
     ]
 }
