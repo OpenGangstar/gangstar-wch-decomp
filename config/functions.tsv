@@ -13054,23 +13054,23 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00350c99	0x88	CSoundData.cpp	game	audio	matched	_ZN14CSoundDataPoolC2Eii	CSoundDataPool::CSoundDataPool(int, int)
 0x00350d21	0x58	CSoundData.cpp	game	audio	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00350d79	0x14	CSoundData.cpp	game	audio	matched	_GLOBAL__I__ZN10CSoundDataC2Ev	_GLOBAL__I__ZN10CSoundDataC2Ev
-0x00350d8d	0x4	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN13ISoundDecoder22GetNumSamplesPerDecodeEi	ISoundDecoder::GetNumSamplesPerDecode(int)
-0x00350d91	0x6	CSoundDecoderADPCM.cpp	game	audio	pending	_ZNK13ISoundDecoder15GetSamplingRateEv	ISoundDecoder::GetSamplingRate() const
-0x00350d99	0x6	CSoundDecoderADPCM.cpp	game	audio	pending	_ZNK13ISoundDecoder10GetChannelEv	ISoundDecoder::GetChannel() const
-0x00350da1	0x6	CSoundDecoderADPCM.cpp	game	audio	pending	_ZNK13ISoundDecoder10GetPCMSizeEv	ISoundDecoder::GetPCMSize() const
-0x00350da9	0x6	CSoundDecoderADPCM.cpp	game	audio	pending	_ZNK13ISoundDecoder21GetNbEffectiveSamplesEv	ISoundDecoder::GetNbEffectiveSamples() const
-0x00350db1	0x6	CSoundDecoderADPCM.cpp	game	audio	pending	_ZNK13ISoundDecoder15GetTotalSamplesEv	ISoundDecoder::GetTotalSamples() const
-0x00350db9	0x4	CSoundDecoderADPCM.cpp	game	audio	pending	_ZNK13ISoundDecoder11HasMoreDataEv	ISoundDecoder::HasMoreData() const
+0x00350d8d	0x4	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN13ISoundDecoder22GetNumSamplesPerDecodeEi	ISoundDecoder::GetNumSamplesPerDecode(int)
+0x00350d91	0x6	CSoundDecoderADPCM.cpp	game	audio	matched	_ZNK13ISoundDecoder15GetSamplingRateEv	ISoundDecoder::GetSamplingRate() const
+0x00350d99	0x6	CSoundDecoderADPCM.cpp	game	audio	matched	_ZNK13ISoundDecoder10GetChannelEv	ISoundDecoder::GetChannel() const
+0x00350da1	0x6	CSoundDecoderADPCM.cpp	game	audio	matched	_ZNK13ISoundDecoder10GetPCMSizeEv	ISoundDecoder::GetPCMSize() const
+0x00350da9	0x6	CSoundDecoderADPCM.cpp	game	audio	matched	_ZNK13ISoundDecoder21GetNbEffectiveSamplesEv	ISoundDecoder::GetNbEffectiveSamples() const
+0x00350db1	0x6	CSoundDecoderADPCM.cpp	game	audio	matched	_ZNK13ISoundDecoder15GetTotalSamplesEv	ISoundDecoder::GetTotalSamples() const
+0x00350db9	0x4	CSoundDecoderADPCM.cpp	game	audio	matched	_ZNK13ISoundDecoder11HasMoreDataEv	ISoundDecoder::HasMoreData() const
 0x00350dbd	0x78	AdpcmDecoder.cpp	game	audio	matched	_ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState	AdpcmDecoder::DecodeAdpcm(int, AdpcmState*)
-0x00350e35	0x2a	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCM4GoToEi	CSoundDecoderADPCM::GoTo(int)
-0x00350e61	0x20	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN13ISoundDecoderD0Ev	ISoundDecoder::~ISoundDecoder()
-0x00350e81	0x18	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN13ISoundDecoderD1Ev	ISoundDecoder::~ISoundDecoder()
-0x00350e99	0xd8	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCM6DecodeEPsib	CSoundDecoderADPCM::Decode(short*, int, bool)
-0x00350f71	0x6c	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCMC1EPKc	CSoundDecoderADPCM::CSoundDecoderADPCM(char const*)
-0x00350f71	0x6c	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCMC2EPKc	CSoundDecoderADPCM::CSoundDecoderADPCM(char const*)
-0x00350fdd	0x4c	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCMD0Ev	CSoundDecoderADPCM::~CSoundDecoderADPCM()
-0x00351029	0x48	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCMD1Ev	CSoundDecoderADPCM::~CSoundDecoderADPCM()
-0x00351029	0x48	CSoundDecoderADPCM.cpp	game	audio	pending	_ZN18CSoundDecoderADPCMD2Ev	CSoundDecoderADPCM::~CSoundDecoderADPCM()
+0x00350e35	0x2a	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCM4GoToEi	CSoundDecoderADPCM::GoTo(int)
+0x00350e61	0x20	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN13ISoundDecoderD0Ev	ISoundDecoder::~ISoundDecoder()
+0x00350e81	0x18	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN13ISoundDecoderD1Ev	ISoundDecoder::~ISoundDecoder()
+0x00350e99	0xd8	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCM6DecodeEPsib	CSoundDecoderADPCM::Decode(short*, int, bool)
+0x00350f71	0x6c	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCMC1EPKc	CSoundDecoderADPCM::CSoundDecoderADPCM(char const*)
+0x00350f71	0x6c	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCMC2EPKc	CSoundDecoderADPCM::CSoundDecoderADPCM(char const*)
+0x00350fdd	0x4c	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCMD0Ev	CSoundDecoderADPCM::~CSoundDecoderADPCM()
+0x00351029	0x48	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCMD1Ev	CSoundDecoderADPCM::~CSoundDecoderADPCM()
+0x00351029	0x48	CSoundDecoderADPCM.cpp	game	audio	matched	_ZN18CSoundDecoderADPCMD2Ev	CSoundDecoderADPCM::~CSoundDecoderADPCM()
 0x00351071	0x6	CSoundDecoderMSADPCM.cpp	game	audio	pending	_ZNK20CSoundDecoderMSADPCM15GetSamplingRateEv	CSoundDecoderMSADPCM::GetSamplingRate() const
 0x00351079	0x6	CSoundDecoderMSADPCM.cpp	game	audio	pending	_ZNK20CSoundDecoderMSADPCM10GetChannelEv	CSoundDecoderMSADPCM::GetChannel() const
 0x00351081	0x4	CSoundDecoderMSADPCM.cpp	game	audio	pending	_ZNK20CSoundDecoderMSADPCM10GetPCMSizeEv	CSoundDecoderMSADPCM::GetPCMSize() const
