@@ -8,6 +8,7 @@ __aeabi_fcmpeq = 0x001c470c;
 _Znwj = 0x001c4814;
 _ZdaPv = 0x001c461c;
 __cxa_pure_virtual = 0;
+__aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
     .sdk_startup_function_0 0x003539ac : { *sdk-startup-soundmanager.o(.text.__tcf_2) }
@@ -81,6 +82,9 @@ SECTIONS
     .sound_updatable_vtable 0x004a6290 : { *sdk-startup-soundmanager.o(.gnu.linkonce.d.rel.ro._ZTV10IUpdatable .data.rel.ro._ZTV10IUpdatable) }
     .sound_updatable_d0 0x002d62b8 : { *sdk-startup-soundmanager.o(.gnu.linkonce.t._ZN10IUpdatableD0Ev) }
     .sound_updatable_d1 0x002d62d8 : { *sdk-startup-soundmanager.o(.gnu.linkonce.t._ZN10IUpdatableD1Ev .gnu.linkonce.t._ZN10IUpdatableD2Ev) }
+    .sound_manager_frequencies 0x003528ac : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17_resetFrequenciesEv) }
+    .sound_manager_frequency_counts 0x00436390 : { *sdk-startup-soundmanager.o(.rodata._ZN12SoundManager11s_playFreqsE) }
+    .sound_manager_radio_track 0x00352e60 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14_getRadioTrackEi) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

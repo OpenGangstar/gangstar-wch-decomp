@@ -13185,7 +13185,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352885	0xc	SoundManager.cpp	game	audio	matched	_ZN12SoundManager13_getSoundTypeEi	SoundManager::_getSoundType(int)
 0x00352891	0xc	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12disableMusicEv	SoundManager::disableMusic()
 0x0035289d	0x10	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11enableMusicEv	SoundManager::enableMusic()
-0x003528ad	0x74	SoundManager.cpp	game	audio	pending	_ZN12SoundManager17_resetFrequenciesEv	SoundManager::_resetFrequencies()
+0x003528ad	0x74	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17_resetFrequenciesEv	SoundManager::_resetFrequencies()
 0x00352921	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager8setPitchEiif	SoundManager::setPitch(int, int, float)
 0x0035294d	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE	SoundManager::setSourcePos(int, int, irr::core::vector3d<float> const&)
 0x00352979	0xdc	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager15isRestrictedSfxEi	SoundManager::isRestrictedSfx(int) const
@@ -13202,7 +13202,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352d29	0x7c	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14setMusicVolumeEf	SoundManager::setMusicVolume(float)
 0x00352da5	0x24	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17resumeLowFpsMusicEv	SoundManager::resumeLowFpsMusic()
 0x00352dc9	0x98	SoundManager.cpp	game	audio	pending	_ZN12SoundManager15resumeAllSoundsEv	SoundManager::resumeAllSounds()
-0x00352e61	0xc0	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14_getRadioTrackEi	SoundManager::_getRadioTrack(int)
+0x00352e61	0xc0	SoundManager.cpp	game	audio	matched	_ZN12SoundManager14_getRadioTrackEi	SoundManager::_getRadioTrack(int)
 0x00352f21	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager9playRadioEi	SoundManager::playRadio(int)
 0x00352f4d	0x104	SoundManager.cpp	game	audio	pending	_ZN12SoundManager13_getSoundDataEi	SoundManager::_getSoundData(int)
 0x00353051	0x44	SoundManager.cpp	game	audio	pending	_ZN12SoundManager12allocBuffersEv	SoundManager::allocBuffers()

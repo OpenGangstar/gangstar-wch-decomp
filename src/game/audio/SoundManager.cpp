@@ -359,6 +359,67 @@ SoundManager::~SoundManager()
     delete[] trackFrequencies;
 }
 
+namespace irr { namespace os {
+class Randomizer {
+public:
+    static int rand();
+};
+} }
+
+int SoundManager::_getRadioTrack(int station)
+{
+    if (!frequenciesRemaining)
+        _resetFrequencies();
+    int index = irr::os::Randomizer::rand() % frequenciesRemaining;
+    int type = trackFrequencies[index];
+    if (type == 2) {
+        if (previousJingle) {
+            if (frequenciesRemaining == 1) {
+                _resetFrequencies();
+                index = irr::os::Randomizer::rand() % frequenciesRemaining;
+                type = trackFrequencies[index];
+            }
+            if (type == 2) {
+                ++index;
+                if (index >= frequenciesRemaining)
+                    index = 0;
+                type = trackFrequencies[index];
+            }
+            previousJingle = false;
+        } else {
+            previousJingle = true;
+        }
+    }
+    --frequenciesRemaining;
+    for (; index < frequenciesRemaining; ++index)
+        trackFrequencies[index] = trackFrequencies[index + 1];
+    switch (type) {
+    case 0:
+        return radio.selectRandomSong(station);
+    case 1:
+        return radio.selectRandomAd();
+    default:
+        return radio.selectRandomJingle(station);
+    }
+}
+
+void SoundManager::_resetFrequencies()
+{
+    int index = 0;
+    int end = s_playFreqs[0];
+    for (; index < end; ++index)
+        trackFrequencies[index] = 0;
+    end += s_playFreqs[1];
+    for (; index < end; ++index)
+        trackFrequencies[index] = 1;
+    end += s_playFreqs[2];
+    for (; index < end; ++index)
+        trackFrequencies[index] = 2;
+    frequenciesRemaining = frequencyCount;
+}
+
+const int SoundManager::s_playFreqs[3] = {3, 1, 2};
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));

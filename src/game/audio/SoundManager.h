@@ -67,6 +67,8 @@ public:
     void lastRadioStation();
     void nextRadioStation();
     int _getRadioTrack(int station);
+    void _resetFrequencies();
+    static const int s_playFreqs[3];
 
     bool isSoundPlaying(int resourceId);
     bool isSoundPlaying(int resourceId, int channel);
@@ -93,9 +95,12 @@ public:
     int radioTrack;
     int radioStation;
     unsigned int flags;
-    unsigned char unknown60[12];
+    unsigned char unknown60[4];
+    int frequencyCount;
+    int frequenciesRemaining;
     int* trackFrequencies;
-    unsigned char unknown76[8];
+    bool previousJingle;
+    unsigned char unknown77[7];
     SoundEntry* soundEntries;
     float sfxVolume;
     float playbackVolume;
