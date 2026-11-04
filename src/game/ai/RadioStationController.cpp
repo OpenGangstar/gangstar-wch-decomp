@@ -9,6 +9,60 @@
  */
 
 // Recovered translation-unit SDK string startup callbacks.
+#include "RadioStationController.h"
+#include "../persistence/DataStream.h"
+
+namespace irr { namespace os {
+class Randomizer {
+public:
+    static int rand();
+};
+} }
+
+int RadioStationController::selectRandomAd()
+{
+    if (!adsRemaining) {
+        for (int i = 0; i < adCount; ++i)
+            availableAds[i] = ads[i];
+        adsRemaining = adCount;
+    }
+    int index = irr::os::Randomizer::rand() % adsRemaining;
+    int ad = availableAds[index];
+    --adsRemaining;
+    for (int i = index; i < adsRemaining; ++i)
+        availableAds[i] = availableAds[i + 1];
+    return ad;
+}
+
+RadioStationController::~RadioStationController()
+{
+    for (int i = 0; i < stationCount; ++i) {
+        delete[] stations[i]->songs;
+        delete[] stations[i]->jingles;
+        delete stations[i];
+        delete[] queues[i]->songs;
+        delete[] queues[i]->jingles;
+        delete queues[i];
+    }
+    delete[] stations;
+    delete[] queues;
+    delete[] availableAds;
+    delete[] ads;
+}
+
+void Structs::RadioStation::Read(DataStream& stream)
+{
+    jingleCount = stream.ReadInt();
+    jingles = new int[jingleCount];
+    for (int i = 0; i < jingleCount; ++i)
+        jingles[i] = stream.ReadInt();
+    songCount = stream.ReadInt();
+    songs = new int[songCount];
+    for (int i = 0; i < songCount; ++i)
+        songs[i] = stream.ReadInt();
+    unknown16 = stream.ReadInt();
+}
+
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
 

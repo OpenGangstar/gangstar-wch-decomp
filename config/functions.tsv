@@ -13144,11 +13144,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352015	0x24	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMD1Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
 0x00352015	0x24	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMD2Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
 0x00352039	0x30	RadioStationController.cpp	game	ai	matched	__tcf_0	__tcf_0
-0x00352069	0x58	RadioStationController.cpp	game	ai	pending	_ZN22RadioStationController14selectRandomAdEv	RadioStationController::selectRandomAd()
+0x00352069	0x58	RadioStationController.cpp	game	ai	matched	_ZN22RadioStationController14selectRandomAdEv	RadioStationController::selectRandomAd()
 0x003520c1	0x82	RadioStationController.cpp	game	ai	pending	_ZN22RadioStationController18selectRandomJingleEi	RadioStationController::selectRandomJingle(int)
-0x00352145	0x90	RadioStationController.cpp	game	ai	pending	_ZN22RadioStationControllerD1Ev	RadioStationController::~RadioStationController()
-0x00352145	0x90	RadioStationController.cpp	game	ai	pending	_ZN22RadioStationControllerD2Ev	RadioStationController::~RadioStationController()
-0x003521d5	0x70	RadioStationController.cpp	game	ai	pending	_ZN7Structs12RadioStation4ReadER10DataStream	Structs::RadioStation::Read(DataStream&)
+0x00352145	0x90	RadioStationController.cpp	game	ai	matched	_ZN22RadioStationControllerD1Ev	RadioStationController::~RadioStationController()
+0x00352145	0x90	RadioStationController.cpp	game	ai	matched	_ZN22RadioStationControllerD2Ev	RadioStationController::~RadioStationController()
+0x003521d5	0x70	RadioStationController.cpp	game	ai	matched	_ZN7Structs12RadioStation4ReadER10DataStream	Structs::RadioStation::Read(DataStream&)
 0x00352245	0x58	RadioStationController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0035229d	0x14	RadioStationController.cpp	game	ai	matched	_GLOBAL__I__ZN22RadioStationControllerC2Ev	_GLOBAL__I__ZN22RadioStationControllerC2Ev
 0x003522b1	0x82	RadioStationController.cpp	game	ai	pending	_ZN22RadioStationController16selectRandomSongEi	RadioStationController::selectRandomSong(int)

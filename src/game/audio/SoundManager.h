@@ -2,19 +2,13 @@
 #define WCH_AUDIO_SOUND_MANAGER_H
 
 #include "../core/FrameInterfaces.h"
+#include "../ai/RadioStationController.h"
 
 namespace irr { namespace core { template<class T> class vector3d; } }
 
 // Partial call interface and observed byte at 140; not a complete manager.
 class CSound;
 class CSoundData;
-
-class RadioStationController {
-public:
-    ~RadioStationController();
-    unsigned char unknown0[28];
-    int stationCount;
-};
 
 class SoundManager : public IUpdatable {
 public:
