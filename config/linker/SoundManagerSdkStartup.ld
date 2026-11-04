@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-soundmanager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__aeabi_fmul = 0x001c4724;
 SECTIONS
 {
     .sdk_startup_function_0 0x003539ac : { *sdk-startup-soundmanager.o(.text.__tcf_2) }
@@ -55,6 +56,10 @@ SECTIONS
     .sound_manager_slots_0 0x00352844 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager26getNumberOfAllocatedSoundsEv) }
     .sound_manager_slots_1 0x00352c3c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14isSoundPlayingEi) }
     .sound_manager_slots_2 0x00352c70 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14isSoundPlayingEii) }
+    .sound_manager_dispatch_0 0x00352920 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager8setPitchEiif) }
+    .sound_manager_dispatch_1 0x0035294c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE) }
+    .sound_manager_dispatch_2 0x00352b68 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE) }
+    .sound_manager_dispatch_3 0x00352b40 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

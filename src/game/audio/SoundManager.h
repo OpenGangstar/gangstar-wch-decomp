@@ -35,6 +35,9 @@ public:
     void enableMusic();
     int getNumRadioStations() const;
     void setVolume(int id, int channel, float volume);
+    static irr::core::vector3d<float> convertVisual3DToSound3D(const irr::core::vector3d<float>& position);
+    void setPitch(int resourceId, int channel, float pitch);
+    void setSourcePos(int resourceId, int channel, const irr::core::vector3d<float>& position);
     void stopAllMusic();
     void stopAllSounds();
     void pauseAllSounds();
@@ -77,7 +80,7 @@ public:
     SoundEntry* soundEntries;
     float sfxVolume;
     float playbackVolume;
-    unsigned char unknown96[4];
+    float effectsPlaybackVolume;
     int soundCount;
     int resourceIdBase;
     unsigned char unknown108[28];
