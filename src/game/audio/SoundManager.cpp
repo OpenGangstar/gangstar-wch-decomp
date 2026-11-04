@@ -420,6 +420,53 @@ void SoundManager::_resetFrequencies()
 
 const int SoundManager::s_playFreqs[3] = {3, 1, 2};
 
+bool SoundManager::playPriorityAudio(int id, bool loop)
+{
+    getInstance()->beginCutscene();
+    return getInstance()->playEx(id, 0, loop, 1.0f, 0, true, 1.0f, soundEndCallback);
+}
+
+void SoundManager::allocBuffers()
+{
+    for (int id = 0; id < soundCount; ++id)
+        if (_getSoundType(id) & 0x100000)
+            soundEntries[id].data = _getSoundData(id);
+}
+
+void SoundManager::setSfxVolume(float volume)
+{
+    if (volume < 0.0f)
+        effectsPlaybackVolume = 0.0f;
+    else if (volume > 1.0f)
+        effectsPlaybackVolume = 1.0f;
+    else
+        effectsPlaybackVolume = volume;
+
+    if (flags & 2) {
+        for (int id = 0; id < soundCount; ++id)
+            if (!(soundEntries[id].type & 0x400000))
+                nativeSetVolumeBig(id, effectsPlaybackVolume);
+    }
+}
+
+void SoundManager::setMusicVolume(float volume)
+{
+    if (volume < 0.0f)
+        playbackVolume = 0.0f;
+    else if (volume > 1.0f)
+        playbackVolume = 1.0f;
+    else
+        playbackVolume = volume;
+
+    if (flags & 2) {
+        for (int id = 0; id < soundCount; ++id)
+            if (soundEntries[id].type & 0x400000)
+                nativeSetVolumeBig(id, playbackVolume);
+        if (isLowFpsMusicPlaying())
+            setLowFpsMusicVolume(playbackVolume);
+    }
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));
