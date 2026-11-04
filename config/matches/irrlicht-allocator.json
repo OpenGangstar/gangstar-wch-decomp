@@ -1,0 +1,107 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "src/game/app/Irrlicht.cpp",
+    "linker_script": "config/linker/IrrlichtAllocator.ld",
+    "functions": [
+        {
+            "name": "__tcf_0",
+            "address": "0x001e02cd"
+        },
+        {
+            "name": "_ZdaPvN3irr7MemHintEiPKci",
+            "address": "0x001e0369"
+        },
+        {
+            "name": "_ZdlPvN3irr7MemHintEiPKci",
+            "address": "0x001e0375"
+        },
+        {
+            "name": "irr_free",
+            "address": "0x001e0381"
+        },
+        {
+            "name": "_ZdaPvN3irr7MemHintE",
+            "address": "0x001e0391"
+        },
+        {
+            "name": "_ZdlPvN3irr7MemHintE",
+            "address": "0x001e039d"
+        },
+        {
+            "name": "_ZnajN3irr7MemHintEiPKci",
+            "address": "0x001e03a9"
+        },
+        {
+            "name": "_ZnwjN3irr7MemHintEiPKci",
+            "address": "0x001e03b9"
+        },
+        {
+            "name": "irr_malloc",
+            "address": "0x001e03c9"
+        },
+        {
+            "name": "_ZnajN3irr7MemHintE",
+            "address": "0x001e03d9"
+        },
+        {
+            "name": "_ZnwjN3irr7MemHintE",
+            "address": "0x001e03e5"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x001e03f1"
+        },
+        {
+            "name": "_GLOBAL__I__ZnwjN3irr7MemHintE",
+            "address": "0x001e0475"
+        }
+    ],
+    "sections": [
+        ".allocator_function_0",
+        ".allocator_function_1",
+        ".allocator_function_2",
+        ".allocator_function_3",
+        ".allocator_function_4",
+        ".allocator_function_5",
+        ".allocator_function_6",
+        ".allocator_function_7",
+        ".allocator_function_8",
+        ".allocator_function_9",
+        ".allocator_function_10",
+        ".allocator_function_11",
+        ".allocator_function_12",
+        ".shared_startup_empty_text",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_Z7IrrFreePv",
+        "_Z8IrrAllocjN3irr7MemHintE",
+        "_Z8IrrAllocjN3irr7MemHintEiPKci"
+    ]
+}
