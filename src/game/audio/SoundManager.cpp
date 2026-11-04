@@ -195,6 +195,45 @@ void SoundManager::nextRadioStation()
     }
 }
 
+bool SoundManager::isSoundPlaying(int resourceId)
+{
+    if (flags & 2) {
+        int soundId = _getSoundId(resourceId);
+        for (int channel = 0; channel < 4; ++channel) {
+            CSound* sound = soundSlots[soundId][channel];
+            if (sound && static_cast<unsigned int>(sound->GetStatus()) <= 1)
+                return true;
+        }
+    }
+    return false;
+}
+
+int SoundManager::getNumberOfAllocatedSounds()
+{
+    int count = 0;
+    for (int id = 0; id < soundCount; ++id)
+        for (int channel = 0; channel < 4; ++channel)
+            if (soundSlots[id][channel])
+                ++count;
+    return count;
+}
+
+bool SoundManager::isSoundPlaying(int resourceId, int channel)
+{
+    if (flags & 2) {
+        int soundId = _getSoundId(resourceId);
+        CSound* sound = soundSlots[soundId][channel];
+        if (sound) {
+            int status = sound->GetStatus();
+            bool playing = false;
+            if (status == 0 || status == 1)
+                playing = true;
+            return playing;
+        }
+    }
+    return false;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));

@@ -56,13 +56,18 @@ public:
     void nextRadioStation();
     int _getRadioTrack(int station);
 
+    bool isSoundPlaying(int resourceId);
+    bool isSoundPlaying(int resourceId, int channel);
+    int getNumberOfAllocatedSounds();
+
     struct SoundEntry {
         int type;
         int channel;
         unsigned char unknown8[4];
     };
 
-    unsigned char unknown0[40];
+    unsigned char unknown0[36];
+    CSound*** soundSlots;
     CSound* lowFpsSound;
     CSoundData* lowFpsData;
     int radioTrack;
@@ -72,7 +77,8 @@ public:
     SoundEntry* soundEntries;
     float sfxVolume;
     float playbackVolume;
-    unsigned char unknown96[8];
+    unsigned char unknown96[4];
+    int soundCount;
     int resourceIdBase;
     unsigned char unknown108[28];
     int radioStationCount;
