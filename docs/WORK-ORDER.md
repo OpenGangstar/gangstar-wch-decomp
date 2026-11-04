@@ -30,8 +30,19 @@ outside that budget. No verification rule is relaxed.
    toolchain or catalogue problems out of the ordinary matching queue until
    their prerequisites are addressed.
 
-Re-rank after each landed family: its source, recovered types and prototypes
-may make other functions substantially easier. All areas remain eligible.
+## Running a batch
+
+- Prepare a short batch of candidates in priority order. For each candidate,
+  gather its retail assembly, called symbols, relevant types and closest
+  matched source before the first compile. Use `config/functions.tsv` and
+  the existing assembly files as the queue.
+- After a representative matches, check its remaining relatives for source
+  reuse before starting another family. Verify each candidate against its own
+  retail bytes. Re-rank after the family lands so newly matched source and
+  recovered types feed directly into the next batch.
+- Record attempts, exact matches and matched bytes for each batch. Include
+  time spent preparing or integrating candidates so the next batch can be
+  chosen using actual throughput.
 
 ## Attempt limits and handoff
 
