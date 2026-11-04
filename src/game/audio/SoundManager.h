@@ -60,7 +60,7 @@ public:
     unsigned int flags;
     unsigned char unknown60[24];
     SoundEntry* soundEntries;
-    unsigned char unknown88[4];
+    float sfxVolume;
     float playbackVolume;
     unsigned char unknown96[8];
     int resourceIdBase;
