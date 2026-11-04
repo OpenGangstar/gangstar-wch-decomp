@@ -78,6 +78,7 @@ public:
     static int s_soundsPlaying;
     void endCutscene();
     void beginCutscene();
+    bool isRestrictedSfx(int id) const;
     bool playPriorityAudio(int id, bool loop);
     void allocBuffers();
     CSoundData* _getSoundData(int soundId);
