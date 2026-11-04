@@ -82,7 +82,13 @@
         "_ZN12SoundManager8setPitchEiif",
         "_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
-        "_ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE"
+        "_ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE",
+        "_ZN12SoundManager16setPitchCallbackEiif",
+        "_ZN12SoundManager17setVolumeCallbackEiif",
+        "_ZN12SoundManager17stopSoundCallbackEii",
+        "_ZN12SoundManager22isSoundPlayingCallbackEii",
+        "_Z16soundEndCallbackv",
+        "_ZN12SoundManager17playSoundCallbackEibff"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -138,7 +144,13 @@
         ".sound_manager_dispatch_0",
         ".sound_manager_dispatch_1",
         ".sound_manager_dispatch_2",
-        ".sound_manager_dispatch_3"
+        ".sound_manager_dispatch_3",
+        ".sound_manager_callback_0",
+        ".sound_manager_callback_1",
+        ".sound_manager_callback_2",
+        ".sound_manager_callback_3",
+        ".sound_manager_callback_4",
+        ".sound_manager_callback_5"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -149,6 +161,7 @@
         "nativePauseSoundBig",
         "nativePlaySoundBig",
         "_ZN12SoundManager14_getRadioTrackEi",
-        "_ZNK6CSound9GetStatusEv"
+        "_ZNK6CSound9GetStatusEv",
+        "_ZN12SoundManager11endCutsceneEv"
     ]
 }

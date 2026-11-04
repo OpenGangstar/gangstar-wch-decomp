@@ -281,6 +281,51 @@ bool SoundManager::playEx(int id, const irr::core::vector3d<float>*, bool loop,
     return true;
 }
 
+void SoundManager::setPitchCallback(int id, int channel, float pitch)
+{
+    if (channel >= 0)
+        getInstance()->setPitch(id, channel, pitch);
+}
+
+void SoundManager::setVolumeCallback(int id, int channel, float volume)
+{
+    if (channel >= 0) {
+        SoundManager* manager = getInstance();
+        float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
+        manager->setVolume(id, channel, gain);
+    }
+}
+
+void SoundManager::stopSoundCallback(int id, int channel)
+{
+    if (channel >= 0) {
+        getInstance()->setVolume(id, channel, 0.0f);
+        getInstance()->stop(id, channel, 0);
+    }
+}
+
+bool SoundManager::isSoundPlayingCallback(int id, int channel)
+{
+    if (channel >= 0)
+        return getInstance()->isSoundPlaying(id, channel);
+    return false;
+}
+
+int SoundManager::s_soundsPlaying;
+
+void soundEndCallback()
+{
+    if (SoundManager::s_soundsPlaying > 0)
+        SoundManager::getInstance()->endCutscene();
+}
+
+bool SoundManager::playSoundCallback(int id, bool loop, float volume, float pitch)
+{
+    SoundManager* manager = getInstance();
+    float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
+    return manager->playEx(id, 0, loop, gain, 0, pitch != 0.0f, 1.0f, 0);
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));

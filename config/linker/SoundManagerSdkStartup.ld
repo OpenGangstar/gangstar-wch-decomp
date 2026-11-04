@@ -4,6 +4,7 @@ INCLUDE build/matches/sdk-startup-soundmanager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 __aeabi_fmul = 0x001c4724;
+__aeabi_fcmpeq = 0x001c470c;
 SECTIONS
 {
     .sdk_startup_function_0 0x003539ac : { *sdk-startup-soundmanager.o(.text.__tcf_2) }
@@ -60,6 +61,13 @@ SECTIONS
     .sound_manager_dispatch_1 0x0035294c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE) }
     .sound_manager_dispatch_2 0x00352b68 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE) }
     .sound_manager_dispatch_3 0x00352b40 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE) }
+    .sound_manager_callback_0 0x0035384c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager16setPitchCallbackEiif) }
+    .sound_manager_callback_1 0x0035387c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17setVolumeCallbackEiif) }
+    .sound_manager_callback_2 0x003538c8 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17stopSoundCallbackEii) }
+    .sound_manager_callback_3 0x0035397c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager22isSoundPlayingCallbackEii) }
+    .sound_manager_callback_4 0x00353820 : { *sdk-startup-soundmanager.o(.text._Z16soundEndCallbackv) }
+    .sound_manager_callback_5 0x00353900 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager17playSoundCallbackEibff) }
+    .sound_manager_playing 0x004bc1f0 (NOLOAD) : { *sdk-startup-soundmanager.o(.bss._ZN12SoundManager15s_soundsPlayingE) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
