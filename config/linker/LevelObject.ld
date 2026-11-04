@@ -42,6 +42,16 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_fcmpgt = 0x001c419c;
 __aeabi_fcmpeq = 0x001c470c;
 __aeabi_fcmplt = 0x001c479c;
+_ZN28retail_gs3dstuff_transitions16civPassive_transE = 0x0041467c;
+_ZN28retail_gs3dstuff_transitions17scriptedNpc_transE = 0x004147a8;
+_ZN28retail_gs3dstuff_transitions19civAggressive_transE = 0x004147d8;
+_ZN28retail_gs3dstuff_transitions16gangMember_transE = 0x004148bc;
+_ZN28retail_gs3dstuff_transitions9cop_transE = 0x004148c8;
+_ZN28retail_gs3dstuff_transitions10swat_transE = 0x00414a00;
+_ZN28retail_gs3dstuff_transitions17civ_vehicle_transE = 0x00414a0c;
+_ZN28retail_gs3dstuff_transitions17cop_vehicle_transE = 0x00414a9c;
+_ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
+_ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 SECTIONS {
     .level_get_speed 0x2f1430 : { *level-object.o(.text._ZNK11LevelObject8GetSpeedEv .gnu.linkonce.t._ZNK11LevelObject8GetSpeedEv) }
     .level_get_material_id 0x316830 : { *level-object.o(.text._ZNK11LevelObject8GetMatIDEv .gnu.linkonce.t._ZNK11LevelObject8GetMatIDEv) }
@@ -223,4 +233,34 @@ SECTIONS {
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+    .gs3d_startup_function_0 0x002dd090 : { *gs3d-stuff.o(.text.__tcf_9) }
+    .gs3d_startup_function_1 0x002dcec4 : { *gs3d-stuff.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .gs3d_startup_function_2 0x002dd034 : { *gs3d-stuff.o(.text._GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE) }
+    .gs3d_startup_function_3 0x002df604 : { *gs3d-stuff.o(.text.__tcf_10) }
+    .gs3d_startup_storage_0 0x004b69f0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
+    .gs3d_startup_storage_1 0x004b6a10 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai11civ_passiveE) }
+    .gs3d_startup_storage_2 0x004b6a18 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai12npc_scriptedE) }
+    .gs3d_startup_storage_3 0x004b6a20 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai13civ_agressiveE) }
+    .gs3d_startup_storage_4 0x004b6a28 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai11gang_memberE) }
+    .gs3d_startup_storage_5 0x004b6a30 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai3copE) }
+    .gs3d_startup_storage_6 0x004b6a38 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai4swatE) }
+    .gs3d_startup_storage_7 0x004b6a40 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai11civ_vehicleE) }
+    .gs3d_startup_storage_8 0x004b6a48 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai11cop_vehicleE) }
+    .gs3d_startup_storage_9 0x004b6a50 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai5guardE) }
+    .gs3d_startup_storage_10 0x004b6a58 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
+    .gs3d_startup_storage_11 0x004b6a60 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN3irr2ps5vHalfE) }
+    .gs3d_startup_storage_12 0x004b69a0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff11lightsNodesE) }
 }
+ASSERT(SIZEOF(.gs3d_startup_storage_0) == 32, "GS3DStuff _ZN3irr5scene6quake315irrEmptyStringcE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_1) == 8, "GS3DStuff _ZN8gameloft2ai11civ_passiveE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_2) == 8, "GS3DStuff _ZN8gameloft2ai12npc_scriptedE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_3) == 8, "GS3DStuff _ZN8gameloft2ai13civ_agressiveE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_4) == 8, "GS3DStuff _ZN8gameloft2ai11gang_memberE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_5) == 8, "GS3DStuff _ZN8gameloft2ai3copE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_6) == 8, "GS3DStuff _ZN8gameloft2ai4swatE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_7) == 8, "GS3DStuff _ZN8gameloft2ai11civ_vehicleE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_8) == 8, "GS3DStuff _ZN8gameloft2ai11cop_vehicleE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_9) == 8, "GS3DStuff _ZN8gameloft2ai5guardE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_10) == 8, "GS3DStuff _ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_11) == 12, "GS3DStuff _ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.gs3d_startup_storage_12) == 20, "GS3DStuff _ZN9GS3DStuff11lightsNodesE extent");

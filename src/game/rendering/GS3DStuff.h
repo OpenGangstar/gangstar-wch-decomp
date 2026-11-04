@@ -33,8 +33,12 @@ enum E_MATERIAL_TYPE { MaterialType13 = 13 };
 } }
 // Observed 28-byte prefix, two bases and their virtual slots only.
 // Do not instantiate or infer complete scene-state layout from this prefix.
+struct GS3DLightNodes;
+
 class GS3DStuff : public StateBase, public IEventReceiver {
 public:
+    static GS3DLightNodes lightsNodes;
+
     GS3DStuff();
     virtual ~GS3DStuff();
     virtual void ctor(const StateMachine*);

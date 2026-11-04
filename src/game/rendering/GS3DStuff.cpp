@@ -9,6 +9,8 @@
  */
 
 #include "GS3DStuff.h"
+#include "../core/LocalStartupStorage.h"
+#include "../core/LocalStartupText.h"
 #include "../app/CGameFactory.h"
 #include "CustomBillboardSceneNode.h"
 #include "../core/NativeStdio.h"
@@ -121,3 +123,96 @@ irr::video::ITexture* GS3DStuff::getSkyBoxTexture() { return skyBoxTexture; }
 char* GS3DStuff::getTextureNameSuffix() { return s_phonePerformanceProfile.textureNameSuffix; }
 OctTreeAABB* GS3DStuff::getSceneOctTree() { return sceneOcttree; }
 void GS3DStuff::draw2d(const StateMachine*) {}
+
+struct GS3DLightNodes {
+    void* data;
+    unsigned int allocated;
+    unsigned int used;
+    bool ownsData;
+    bool sorted;
+    unsigned int reserved;
+};
+
+GS3DLightNodes GS3DStuff::lightsNodes;
+
+void operator delete(void*) throw();
+extern "C" {
+static void __tcf_9() __attribute__((used));
+static void __tcf_10() __attribute__((used));
+static void __tcf_9()
+{
+    irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
+    if (!value.reference && value.array && value.array != value.inlineBuffer)
+        ::operator delete(value.array);
+}
+}
+
+// Scoped imports distinguish the original TU-local transition tables.
+namespace retail_gs3dstuff_transitions {
+extern const unsigned int civPassive_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int scriptedNpc_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int civAggressive_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int gangMember_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int cop_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int swat_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int civ_vehicle_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int cop_vehicle_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int guard_trans[] __attribute__((visibility("hidden")));
+extern const unsigned int scripted_vehicle_trans[] __attribute__((visibility("hidden")));
+}
+
+extern void* __dso_handle;
+extern "C" {
+int __aeabi_atexit(void*, void (*)(void*), void*);
+void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
+}
+
+static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
+static void __static_initialization_and_destruction_0(int initialize, int priority)
+{
+    if (initialize == 1 && priority == 65535) {
+        irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
+        value.array = 0;
+        value.allocated = 0;
+        value.used = 0;
+        value.reference = false;
+        _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(&value, localStartupEmptyText);
+        __aeabi_atexit(0, reinterpret_cast<void (*)(void*)>(__tcf_9), &__dso_handle);
+        new (gameloft::ai::civ_passive) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::civPassive_trans, 75);
+        new (gameloft::ai::npc_scripted) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::scriptedNpc_trans, 12);
+        new (gameloft::ai::civ_agressive) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::civAggressive_trans, 57);
+        new (gameloft::ai::gang_member) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::gangMember_trans, 3);
+        new (gameloft::ai::cop) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::cop_trans, 78);
+        new (gameloft::ai::swat) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::swat_trans, 3);
+        new (gameloft::ai::civ_vehicle) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::civ_vehicle_trans, 36);
+        new (gameloft::ai::cop_vehicle) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::cop_vehicle_trans, 45);
+        new (gameloft::ai::guard) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::guard_trans, 42);
+        new (gameloft::ai::scripted_vehicle) gameloft::ai::LocalTransitionList(retail_gs3dstuff_transitions::scripted_vehicle_trans, 21);
+        new (irr::ps::vHalf) irr::ps::LocalVector3(0.5f, 0.5f, 0.5f);
+        GS3DLightNodes& nodes = GS3DStuff::lightsNodes;
+        nodes.data = 0;
+        nodes.allocated = 0;
+        nodes.used = 0;
+        nodes.ownsData = true;
+        nodes.sorted = true;
+        nodes.reserved = 1;
+        __aeabi_atexit(0, reinterpret_cast<void (*)(void*)>(__tcf_10), &__dso_handle);
+    }
+}
+
+extern "C" {
+static void _GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE() __attribute__((used));
+static void _GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE()
+{
+    __static_initialization_and_destruction_0(1, 65535);
+}
+}
+
+extern "C" {
+static void __tcf_10()
+{
+    GS3DLightNodes& nodes = GS3DStuff::lightsNodes;
+    if (nodes.ownsData)
+        ::operator delete(nodes.data);
+}
+}
