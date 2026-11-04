@@ -102,7 +102,8 @@
         "_ZN12SoundManager17playPriorityAudioEib",
         "_ZN12SoundManager14setMusicVolumeEf",
         "_ZNK12SoundManager15isRestrictedSfxEi",
-        "_ZN12SoundManager13beginCutsceneEv"
+        "_ZN12SoundManager13beginCutsceneEv",
+        "_ZN12SoundManager15resumeAllSoundsEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -180,7 +181,8 @@
         ".sound_manager_setup_2",
         ".sound_manager_setup_3",
         ".sound_manager_cutscene_0",
-        ".sound_manager_cutscene_1"
+        ".sound_manager_cutscene_1",
+        ".sound_manager_resume"
     ],
     "retail_got": true,
     "external_thumb_functions": [
