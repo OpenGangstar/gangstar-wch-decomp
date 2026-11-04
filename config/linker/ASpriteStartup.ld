@@ -1,0 +1,19 @@
+OUTPUT_FORMAT("elf32-littlearm")
+OUTPUT_ARCH(arm)
+INCLUDE build/matches/asprite-startup/retail-symbols.ld
+_ZdlPv = 0x001c42b0;
+__aeabi_atexit = 0x001c494c;
+memset = 0x001c45d4;
+SECTIONS
+{
+    .asprite_function_0 0x00349848 : { *asprite-startup.o(.text.__tcf_2) }
+    .asprite_function_1 0x0034a184 : { *asprite-startup.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .asprite_function_2 0x0034a21c : { *asprite-startup.o(.text._GLOBAL__I__ZN7ASprite18s_global_transformE) }
+    .asprite_storage_0 0x004bb77c (NOLOAD) : { *asprite-startup.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
+    .asprite_storage_1 0x004bb79c (NOLOAD) : { *asprite-startup.o(.bss._ZN3irr2ps5vHalfE) }
+    .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+    .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
+    .verification 0x00600000 : { *retail-got.o(.text) }
+}
+ASSERT(SIZEOF(.asprite_storage_0) == 32, "local string extent");
+ASSERT(SIZEOF(.asprite_storage_1) == 12, "half-vector extent");

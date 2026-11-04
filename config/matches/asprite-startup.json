@@ -1,0 +1,52 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "src/game/rendering/ASprite.cpp",
+    "linker_script": "config/linker/ASpriteStartup.ld",
+    "functions": [
+        {
+            "name": "__tcf_2",
+            "address": "0x00349849"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x0034a185"
+        },
+        {
+            "name": "_GLOBAL__I__ZN7ASprite18s_global_transformE",
+            "address": "0x0034a21d"
+        }
+    ],
+    "sections": [
+        ".asprite_function_0",
+        ".asprite_function_1",
+        ".asprite_function_2",
+        ".shared_startup_empty_text",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "retail_got": true
+}

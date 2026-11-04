@@ -12597,7 +12597,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349805	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite20GetFrameBoundingRectEi	ASprite::GetFrameBoundingRect(int) const
 0x00349815	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite9GetModuleEi	ASprite::GetModule(int) const
 0x00349825	0x22	ASprite.cpp	game	rendering	pending	_ZNK7ASprite12GetFrameRectEii	ASprite::GetFrameRect(int, int) const
-0x00349849	0x30	ASprite.cpp	game	rendering	pending	__tcf_2	__tcf_2
+0x00349849	0x30	ASprite.cpp	game	rendering	matched	__tcf_2	__tcf_2
 0x00349879	0x20	ASprite.cpp	game	rendering	pending	_ZN7ASprite9_erasePtrEv	ASprite::_erasePtr()
 0x00349899	0x98	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1EP11IFileStream	ASprite::ASprite(IFileStream*)
 0x00349899	0x98	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2EP11IFileStream	ASprite::ASprite(IFileStream*)
@@ -12621,8 +12621,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034a015	0xdc	ASprite.cpp	game	rendering	pending	_ZNK7ASprite12PaintFModuleEiiiii	ASprite::PaintFModule(int, int, int, int, int) const
 0x0034a0f1	0x54	ASprite.cpp	game	rendering	pending	_ZNK7ASprite10PaintFrameEiiii	ASprite::PaintFrame(int, int, int, int) const
 0x0034a145	0x40	ASprite.cpp	game	rendering	pending	_ZNK7ASprite11PaintAFrameEiiiii	ASprite::PaintAFrame(int, int, int, int, int) const
-0x0034a185	0x98	ASprite.cpp	game	rendering	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x0034a21d	0x14	ASprite.cpp	game	rendering	pending	_GLOBAL__I__ZN7ASprite18s_global_transformE	_GLOBAL__I__ZN7ASprite18s_global_transformE
+0x0034a185	0x98	ASprite.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
+0x0034a21d	0x14	ASprite.cpp	game	rendering	matched	_GLOBAL__I__ZN7ASprite18s_global_transformE	_GLOBAL__I__ZN7ASprite18s_global_transformE
 0x0034a231	0x5c	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6__rect14isIntersectingEii	ASpriteData::__rect::isIntersecting(int, int)
 0x0034a28d	0x128	ASprite.cpp	game	rendering	pending	_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_	ASprite::GetPixelInfoInFrame(int, int, int, int&, int&)
 0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteDataC2Ev	ASpriteData::ASpriteData()
