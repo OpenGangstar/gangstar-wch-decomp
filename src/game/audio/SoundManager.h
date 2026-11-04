@@ -40,16 +40,29 @@ public:
     void resume(int id);
     void pause(int id);
 
+    void playLowFpsMusic(int id, bool loop);
+    void playRadio(int station);
+    void stopRadio();
+    void changeRadioStation(int station);
+    void lastRadioStation();
+    void nextRadioStation();
+    int _getRadioTrack(int station);
+
     struct SoundEntry {
         int type;
-        unsigned char unknown4[8];
+        int channel;
+        unsigned char unknown8[4];
     };
 
-    unsigned char unknown0[56];
+    unsigned char unknown0[48];
+    int radioTrack;
+    int radioStation;
     unsigned int flags;
     unsigned char unknown60[24];
     SoundEntry* soundEntries;
-    unsigned char unknown88[16];
+    unsigned char unknown88[4];
+    float playbackVolume;
+    unsigned char unknown96[8];
     int resourceIdBase;
     unsigned char unknown108[28];
     int radioStationCount;

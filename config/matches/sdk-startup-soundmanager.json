@@ -64,7 +64,13 @@
         "_ZN12SoundManager15stopLowFpsMusicEv",
         "_ZN12SoundManager4stopEiii",
         "_ZN12SoundManager6resumeEi",
-        "_ZN12SoundManager5pauseEi"
+        "_ZN12SoundManager5pauseEi",
+        "_ZN12SoundManager15playLowFpsMusicEib",
+        "_ZN12SoundManager9playRadioEi",
+        "_ZN12SoundManager9stopRadioEv",
+        "_ZN12SoundManager18changeRadioStationEi",
+        "_ZN12SoundManager16lastRadioStationEv",
+        "_ZN12SoundManager16nextRadioStationEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -102,7 +108,13 @@
         ".sound_manager_helper_24",
         ".sound_manager_helper_25",
         ".sound_manager_helper_26",
-        ".sound_manager_helper_27"
+        ".sound_manager_helper_27",
+        ".sound_manager_radio_0",
+        ".sound_manager_radio_1",
+        ".sound_manager_radio_2",
+        ".sound_manager_radio_3",
+        ".sound_manager_radio_4",
+        ".sound_manager_radio_5"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -110,6 +122,9 @@
         "nativeStopAllSounds",
         "nativeStopSoundBig",
         "nativeResumeSoundBig",
-        "nativePauseSoundBig"
+        "nativePauseSoundBig",
+        "nativePlaySoundBig",
+        "_ZN12SoundManager14_getRadioTrackEi",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE"
     ]
 }
