@@ -13164,9 +13164,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352775	0x10	SoundManager.cpp	game	audio	matched	_ZN12SoundManager4initEv	SoundManager::init()
 0x00352785	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager6unInitEv	SoundManager::unInit()
 0x00352789	0x18	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11toggleSoundEv	SoundManager::toggleSound()
-0x003527a1	0x1a	SoundManager.cpp	game	audio	pending	_ZN12SoundManager16pauseLowFpsMusicEv	SoundManager::pauseLowFpsMusic()
-0x003527bd	0x28	SoundManager.cpp	game	audio	pending	_ZN12SoundManager19_cleanupLowFpsMusicEv	SoundManager::_cleanupLowFpsMusic()
-0x003527e5	0x1a	SoundManager.cpp	game	audio	pending	_ZN12SoundManager20setLowFpsMusicVolumeEf	SoundManager::setLowFpsMusicVolume(float)
+0x003527a1	0x1a	SoundManager.cpp	game	audio	matched	_ZN12SoundManager16pauseLowFpsMusicEv	SoundManager::pauseLowFpsMusic()
+0x003527bd	0x28	SoundManager.cpp	game	audio	matched	_ZN12SoundManager19_cleanupLowFpsMusicEv	SoundManager::_cleanupLowFpsMusic()
+0x003527e5	0x1a	SoundManager.cpp	game	audio	matched	_ZN12SoundManager20setLowFpsMusicVolumeEf	SoundManager::setLowFpsMusicVolume(float)
 0x00352801	0x2	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12useIPodRadioEv	SoundManager::useIPodRadio()
 0x00352805	0xa	SoundManager.cpp	game	audio	matched	_ZN12SoundManager15useBuiltInRadioEv	SoundManager::useBuiltInRadio()
 0x00352811	0x4	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager10canUseIPodEv	SoundManager::canUseIPod() const
@@ -13198,9 +13198,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352c3d	0x34	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14isSoundPlayingEi	SoundManager::isSoundPlaying(int)
 0x00352c71	0x3a	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14isSoundPlayingEii	SoundManager::isSoundPlaying(int, int)
 0x00352cad	0x50	SoundManager.cpp	game	audio	pending	_ZN12SoundManager24getNumberOfPlayingSoundsEv	SoundManager::getNumberOfPlayingSounds()
-0x00352cfd	0x2a	SoundManager.cpp	game	audio	pending	_ZNK12SoundManager20isLowFpsMusicPlayingEv	SoundManager::isLowFpsMusicPlaying() const
+0x00352cfd	0x2a	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager20isLowFpsMusicPlayingEv	SoundManager::isLowFpsMusicPlaying() const
 0x00352d29	0x7c	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14setMusicVolumeEf	SoundManager::setMusicVolume(float)
-0x00352da5	0x24	SoundManager.cpp	game	audio	pending	_ZN12SoundManager17resumeLowFpsMusicEv	SoundManager::resumeLowFpsMusic()
+0x00352da5	0x24	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17resumeLowFpsMusicEv	SoundManager::resumeLowFpsMusic()
 0x00352dc9	0x98	SoundManager.cpp	game	audio	pending	_ZN12SoundManager15resumeAllSoundsEv	SoundManager::resumeAllSounds()
 0x00352e61	0xc0	SoundManager.cpp	game	audio	pending	_ZN12SoundManager14_getRadioTrackEi	SoundManager::_getRadioTrack(int)
 0x00352f21	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager9playRadioEi	SoundManager::playRadio(int)
