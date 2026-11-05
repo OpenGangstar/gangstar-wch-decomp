@@ -40,6 +40,8 @@ public:
     bool isEnabled() const;
 
 private:
+    void _trace(const char* message) const;
+
     struct _TouchPointInfo {
         ~_TouchPointInfo() __attribute__((used));
 
@@ -51,13 +53,15 @@ private:
         int numPoints;
         int swipeDirection;
         bool active;
-        unsigned char unknown45[11];
+        long externalId;
+        unsigned char unknown52[4];
     };
 
     unsigned char unknown4[4];
     _TouchPointInfo points[8];
     unsigned char unknown456[8];
     bool enabled;
+    int slotCount;
 };
 
 #endif

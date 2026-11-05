@@ -96,6 +96,18 @@
         {
             "name": "_ZN15TouchScreenBase12ConvertCoordER7Point2DIsE",
             "address": "0x0034c33d"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase6_traceEPKc",
+            "address": "0x0034c395"
+        },
+        {
+            "name": "_ZN15TouchScreenBase10touchEndedERK7Point2DIsEl",
+            "address": "0x0034c3c9"
+        },
+        {
+            "name": "_ZN15TouchScreenBase14touchCancelledERK7Point2DIsEl",
+            "address": "0x0034c401"
         }
     ],
     "sections": [
@@ -125,7 +137,12 @@
         ".touchscreen_point2d_d0",
         ".touchscreen_point2d_d1",
         ".touchscreen_point2d_vtable",
-        ".touchscreen_convert_coord"
+        ".touchscreen_convert_coord",
+        ".touchscreen_trace",
+        ".touchscreen_touch_ended",
+        ".touchscreen_touch_cancelled",
+        ".touchscreen_release_message",
+        ".touchscreen_cancel_message"
     ],
     "retail_got": true
 }
