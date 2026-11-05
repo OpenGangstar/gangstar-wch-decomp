@@ -36,7 +36,13 @@
         {
             "name": "_GLOBAL__I__ZN10CCameraHudC2EP11CHudManager",
             "address": "0x00322f45"
-        }
+        },
+        "_ZNK4IHud9isVisibleEv",
+        "_ZNK4IHud12isWalkingHudEv",
+        "_ZN10CCameraHudC2EP11CHudManager",
+        "_ZN10CCameraHudC1EP11CHudManager",
+        "_ZN10CCameraHudD2Ev",
+        "_ZN10CCameraHudD1Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -46,7 +52,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".ihud_vtable"
     ],
     "retail_got": true
 }

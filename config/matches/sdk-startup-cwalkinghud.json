@@ -36,7 +36,12 @@
         {
             "name": "_GLOBAL__I__ZN11CWalkingHudC2EP11CHudManager",
             "address": "0x00325ac9"
-        }
+        },
+        "_ZNK11CWalkingHud12isWalkingHudEv",
+        "_ZN11CWalkingHudC1EP11CHudManager",
+        "_ZN11CWalkingHudC2EP11CHudManager",
+        "_ZN11CWalkingHudD1Ev",
+        "_ZN11CWalkingHudD2Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",

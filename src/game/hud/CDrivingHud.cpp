@@ -8,6 +8,23 @@
  * functions of CDrivingHud.cpp here, in the order they appear in the library.
  */
 
+#include "IHud.h"
+
+class CDrivingHud : public IHud {
+public:
+    explicit CDrivingHud(CHudManager* manager);
+    ~CDrivingHud();
+    virtual void show();
+    virtual void hide();
+};
+
+CDrivingHud::CDrivingHud(CHudManager* hudManager) : IHud(hudManager)
+{
+    unknown8 = 0x19c0e198;
+}
+
+CDrivingHud::~CDrivingHud() {}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
