@@ -13,6 +13,8 @@
 #include "CSound.h"
 #include "../core/Vector3.h"
 #include "CSoundData.h"
+#include "CSoundDecoderMSWAV.h"
+#include "../persistence/FileManager.h"
 #include "../app/NativeMedia.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -424,6 +426,36 @@ bool SoundManager::playPriorityAudio(int id, bool loop)
 {
     getInstance()->beginCutscene();
     return getInstance()->playEx(id, 0, loop, 1.0f, 0, true, 1.0f, soundEndCallback);
+}
+
+CSoundData* SoundManager::_getSoundData(int soundId)
+{
+    int resourceId = _getResId(soundId);
+    int type = _getSoundType(soundId);
+    const char* name = FileManager::s_mgr->_GetDvdName(resourceId);
+    // The retail caller must supply an entry with an ADPCM or WAV codec flag.
+    CSoundData* result;
+    if (type & 0x20000) {
+        result = soundDataPool->GetSoundData(type, resourceId, 22050, 2, 0, 0);
+    } else if (type & 0x40000) {
+        ISoundDecoder* decoder = wavPool->GetMSWAVDecoder(name);
+        if (!decoder)
+            return 0;
+        int rate = decoder->GetSamplingRate();
+        int channels = decoder->GetChannel();
+        if (type & 1) {
+            char* samples = new char[decoder->GetPCMSize()];
+            decoder->Decode(reinterpret_cast<short*>(samples), decoder->GetTotalSamples(), false);
+            int sampleCount = decoder->GetNbEffectiveSamples();
+            int interleavedSamples = channels * sampleCount;
+            int byteCount = static_cast<unsigned int>(interleavedSamples) << 1;
+            result = soundDataPool->GetSoundData(type, resourceId, rate, channels, samples, byteCount);
+        } else {
+            result = soundDataPool->GetSoundData(type, resourceId, rate, channels, 0, 0);
+        }
+        wavPool->ReleaseMSWAVDecoder(static_cast<CSoundDecoderMSWAV*>(decoder));
+    }
+    return result;
 }
 
 void SoundManager::allocBuffers()
