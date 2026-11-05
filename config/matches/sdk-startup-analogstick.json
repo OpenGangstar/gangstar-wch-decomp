@@ -36,6 +36,14 @@
         {
             "name": "_GLOBAL__I__ZN11AnalogStickC2EP7ASpriteii",
             "address": "0x00326755"
+        },
+        {
+            "name": "_ZN7Point2DIsED0Ev",
+            "address": "0x00326375"
+        },
+        {
+            "name": "_ZN7Point2DIsED1Ev",
+            "address": "0x00326395"
         }
     ],
     "sections": [
@@ -46,7 +54,10 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".point2d_d0",
+        ".point2d_d1",
+        ".point2d_vtable"
     ],
     "retail_got": true
 }
