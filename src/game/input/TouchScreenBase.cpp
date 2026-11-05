@@ -77,6 +77,24 @@ void TouchScreenBase::touchCancelled(const Point2D<short>&, long id)
         --slotCount;
 }
 
+void TouchScreenBase::update(double elapsed)
+{
+    currentTime = elapsed;
+    for (int i = 0; i < 8; ++i) {
+        _TouchPointInfo& slot = points[i];
+        if (!slot.hasPoints && slot.lastTouchTime + 0.5 < currentTime) {
+            if (slot.active) {
+                slot.active = false;
+                slot.externalId = -1;
+                if (slotCount == i)
+                    slotCount = i - 1;
+            }
+        } else if (slot.active) {
+            slotCount = i + 1;
+        }
+    }
+}
+
 void TouchScreenBase::_trace(const char*) const
 {
 }
