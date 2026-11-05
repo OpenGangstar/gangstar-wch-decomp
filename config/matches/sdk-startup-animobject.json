@@ -36,17 +36,55 @@
         {
             "name": "_GLOBAL__I__Z7FSelectfff",
             "address": "0x003496b1"
-        }
+        },
+        "_Z18PlayPolicy_Onetimefff",
+        "_ZN10AnimObject6UnloadEv",
+        "_ZN10AnimObject4LoadEv",
+        "_ZN10AnimObjectC2Ev",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10AnimObjectD1Ev",
+        "_ZN10AnimObjectD2Ev",
+        "_ZN10AnimObject11SetPositionEfff",
+        "_ZN10AnimObject10ChangeAnimEi",
+        "_ZN10AnimObject7RestartEv",
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN10AnimObject7SetAnimEii",
+        "_ZN10AnimObject4DrawEv",
+        "_ZN10AnimObject6UpdateEi",
+        "_Z15PlayPolicy_Loopfff",
+        "_ZN10AnimObject11UpdateFrameEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
         ".shared_startup_empty_text",
+        ".anim_method_0",
+        ".anim_method_1",
+        ".anim_method_2",
+        ".anim_method_4",
+        ".anim_method_5",
+        ".anim_method_6",
+        ".anim_method_7",
+        ".anim_method_8",
+        ".anim_method_9",
+        ".anim_method_10",
+        ".anim_method_11",
+        ".anim_method_12",
+        ".anim_vtable",
+        ".anim_timing_1",
+        ".anim_timing_2",
         {
             "name": ".got",
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN7ASprite9GetAFrameEii",
+        "_ZNK7ASprite11PaintAFrameEiiiii",
+        "_ZN7ASprite15GetAnimDurationEi",
+        "_Z7FSelectfff",
+        "_ZN10AnimObject5ResetEv"
+    ]
 }

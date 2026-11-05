@@ -10,19 +10,8 @@
 
 #include "SoundManager.h"
 #include "../core/ASprite.h"
+#include "../characters/AnimObject.h"
 #include "../ui/SwipeButton.h"
-
-class AnimObject {
-public:
-    AnimObject();
-    ~AnimObject();
-    virtual void Update(int elapsed);
-    void SetAnim(int animation);
-    void Draw();
-
-    unsigned char animationState[36];
-    ASprite* sprite;
-};
 
 class Radio : public SwipeButton {
 public:

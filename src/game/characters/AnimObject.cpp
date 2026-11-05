@@ -8,6 +8,87 @@
  * functions of AnimObject.cpp here, in the order they appear in the library.
  */
 
+#include "AnimObject.h"
+#include "../core/ASprite.h"
+
+float PlayPolicy_Onetime(float, float, float end) { return end; }
+
+void AnimObject::Unload() { sprite = 0; }
+void AnimObject::Load() { Unload(); }
+
+AnimObject::AnimObject() : sprite(0)
+{
+    Reset();
+    frameStep = 0.5f;
+}
+
+AnimObject::~AnimObject() { Unload(); }
+
+void AnimObject::SetPosition(float px, float py, float pz)
+{
+    x = px;
+    y = py;
+    z = pz;
+}
+
+void AnimObject::ChangeAnim(int id) { animation = id; }
+void AnimObject::Restart() { frame = 0.0f; }
+
+void AnimObject::SetAnim(int id)
+{
+    if (id != animation || id + 1 <= 0) {
+        ChangeAnim(id);
+        Restart();
+        frameLimit = 0x00ffffff;
+    }
+}
+
+void AnimObject::SetAnim(int id, int limit)
+{
+    SetAnim(id);
+    frameLimit = limit;
+}
+
+void AnimObject::Draw()
+{
+    if (sprite && animation >= 0) {
+        int animationFrame = sprite->GetAFrame(animation, static_cast<int>(frame));
+        int px = static_cast<int>(x);
+        int py = static_cast<int>(y);
+        sprite->PaintAFrame(animation, animationFrame, px, py, 0);
+    }
+}
+
+extern "C" float fmodf(float value, float divisor);
+float FSelect(float value, float positive, float negative);
+
+float PlayPolicy_Loop(float start, float end, float next)
+{
+    float duration = end - start;
+    if (next >= 0.0f)
+        return fmodf(next, duration);
+    float wrapped = fmodf(next + duration, duration);
+    return wrapped + FSelect(wrapped, 0.0f, duration);
+}
+
+void AnimObject::UpdateFrame()
+{
+    if (!sprite || animation < 0)
+        return;
+    float duration = static_cast<float>(sprite->GetAnimDuration(animation));
+    float next = frameStep * speed + frame;
+    if (frameLimit)
+        frame = PlayPolicy_Loop(0.0f, duration, next);
+    else
+        frame = PlayPolicy_Onetime(0.0f, duration, next);
+    if (duration <= frame)
+        frame = duration - 1.0f;
+    else if (frame < 0.0f)
+        frame = 0.0f;
+}
+
+void AnimObject::Update(int) { UpdateFrame(); }
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
