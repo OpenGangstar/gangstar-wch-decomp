@@ -41,7 +41,9 @@
         "_ZN12CMSAdpcmPoolC2Eii",
         "_ZN20CSoundDecoderMSADPCMD0Ev",
         "_ZN20CSoundDecoderMSADPCMD2Ev",
-        "_ZN20CSoundDecoderMSADPCMD1Ev"
+        "_ZN20CSoundDecoderMSADPCMD1Ev",
+        "_ZN20CSoundDecoderMSADPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader",
+        "_ZN20CSoundDecoderMSADPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader"
     ],
     "linker_script": "config/linker/MSAdpcmDecoderPool.ld",
     "sections": [
@@ -61,6 +63,7 @@
         ".msadpcm_method_14",
         ".msadpcm_method_15",
         ".msadpcm_method_16",
+        ".msadpcm_stream_constructor",
         ".msadpcm_vtable",
         {
             "name": ".got",

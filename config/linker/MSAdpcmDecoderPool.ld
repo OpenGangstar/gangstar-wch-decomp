@@ -28,6 +28,7 @@ SECTIONS
     .msadpcm_method_14 0x00351350 : { *msadpcm-decoder-pool.o(.text._ZN12CMSAdpcmPoolC1Eii .text._ZN12CMSAdpcmPoolC2Eii) }
     .msadpcm_method_15 0x00351744 : { *msadpcm-decoder-pool.o(.text._ZN20CSoundDecoderMSADPCMD0Ev) }
     .msadpcm_method_16 0x00351790 : { *msadpcm-decoder-pool.o(.text._ZN20CSoundDecoderMSADPCMD2Ev .text._ZN20CSoundDecoderMSADPCMD1Ev) }
+    .msadpcm_stream_constructor 0x003513d8 : { *msadpcm-decoder-pool.o(.text._ZN20CSoundDecoderMSADPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader .text._ZN20CSoundDecoderMSADPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader) }
     .msadpcm_vtable 0x004ad7a8 : { *msadpcm-decoder-pool.o(.data.rel.ro._ZTV20CSoundDecoderMSADPCM .gnu.linkonce.d.rel.ro._ZTV20CSoundDecoderMSADPCM) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
