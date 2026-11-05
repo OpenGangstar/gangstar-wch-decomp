@@ -3,7 +3,7 @@
 On 2026-10-29 the maintainer replaced the strict smallest-area-to-100% schedule
 with a workflow based on OpenRAC's
 [family selection](https://github.com/OpenRAC/rac1-decomp/blob/main/docs/AGENT_WORKFLOW.md#picking-functions-family-order)
-and [bounded worker attempts](https://github.com/OpenRAC/rac1-decomp/blob/main/docs/QUEUE.md).
+and [bounded worker attempts](https://github.com/OpenRAC/rac1-decomp/blob/main/docs/AGENT_WORKFLOW.md#what-a-worker-does).
 Select work for the matched bytes and reusable knowledge it can unlock. Work may
 cross gameplay areas. The full objective is still all 4,661 game functions,
 575,264 retail code bytes, matched byte for byte; vendored dependencies stay

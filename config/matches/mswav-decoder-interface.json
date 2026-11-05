@@ -36,7 +36,13 @@
         "_ZN18CSoundDecoderMSWAV20InitStaticParametersEP8CPcmPoolP12CMSAdpcmPool",
         "_ZN18CSoundDecoderMSWAVD0Ev",
         "_ZN18CSoundDecoderMSWAVD1Ev",
-        "_ZN18CSoundDecoderMSWAVD2Ev"
+        "_ZN18CSoundDecoderMSWAVD2Ev",
+        "_ZN10CMSWavPoolD1Ev",
+        "_ZN10CMSWavPoolD2Ev",
+        "_ZN10CMSWavPoolC1Eii",
+        "_ZN10CMSWavPoolC2Eii",
+        "_ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV",
+        "_ZN10CMSWavPool15GetMSWAVDecoderEPKc"
     ],
     "linker_script": "config/linker/MSWavDecoderInterface.ld",
     "sections": [
@@ -53,6 +59,10 @@
         ".mswav_lifecycle_1",
         ".mswav_lifecycle_2",
         ".mswav_lifecycle_3",
+        ".mswav_pool_0",
+        ".mswav_pool_1",
+        ".mswav_pool_2",
+        ".mswav_pool_3",
         ".mswav_vtable",
         {
             "name": ".got",
@@ -60,5 +70,9 @@
         }
     ],
     "retail_got": true,
-    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1"
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "external_thumb_functions": [
+        "_ZN18CSoundDecoderMSWAV4InitEPKc",
+        "_ZN18CSoundDecoderMSWAV6UnInitEv"
+    ]
 }
