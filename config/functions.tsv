@@ -12680,19 +12680,19 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c2e1	0x5c	DataReloaderManager.cpp	game	world	pending	_ZN19DataReloaderManagerD0Ev	DataReloaderManager::~DataReloaderManager()
 0x0034c33d	0x58	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase12ConvertCoordER7Point2DIsE	TouchScreenBase::ConvertCoord(Point2D<short>&)
 0x0034c395	0x2	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase6_traceEPKc	TouchScreenBase::_trace(char const*) const
-0x0034c399	0x20	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase5clearEv	TouchScreenBase::clear()
-0x0034c3b9	0x10	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase15clearTouchPointEl	TouchScreenBase::clearTouchPoint(long)
+0x0034c399	0x20	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase5clearEv	TouchScreenBase::clear()
+0x0034c3b9	0x10	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase15clearTouchPointEl	TouchScreenBase::clearTouchPoint(long)
 0x0034c3c9	0x38	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase10touchEndedERK7Point2DIsEl	TouchScreenBase::touchEnded(Point2D<short> const&, long)
 0x0034c401	0x4c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase14touchCancelledERK7Point2DIsEl	TouchScreenBase::touchCancelled(Point2D<short> const&, long)
-0x0034c44d	0x2a	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase13getTouchPointEl	TouchScreenBase::getTouchPoint(long)
-0x0034c479	0x2a	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase18getFirstTouchPointEl	TouchScreenBase::getFirstTouchPoint(long)
+0x0034c44d	0x2a	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase13getTouchPointEl	TouchScreenBase::getTouchPoint(long)
+0x0034c479	0x2a	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase18getFirstTouchPointEl	TouchScreenBase::getFirstTouchPoint(long)
 0x0034c4a5	0x26	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase12getNumPointsEl	TouchScreenBase::getNumPoints(long) const
-0x0034c4cd	0x26	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase17getSwipeDirectionEl	TouchScreenBase::getSwipeDirection(long) const
+0x0034c4cd	0x26	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase17getSwipeDirectionEl	TouchScreenBase::getSwipeDirection(long) const
 0x0034c4f9	0xa0	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase6updateEd	TouchScreenBase::update(double)
 0x0034c599	0x44	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase5getIDEl	TouchScreenBase::getID(long)
-0x0034c5dd	0xa	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase6enableEv	TouchScreenBase::enable()
-0x0034c5e9	0xa	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase7disableEv	TouchScreenBase::disable()
-0x0034c5f5	0x8	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase9isEnabledEv	TouchScreenBase::isEnabled() const
+0x0034c5dd	0xa	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase6enableEv	TouchScreenBase::enable()
+0x0034c5e9	0xa	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase7disableEv	TouchScreenBase::disable()
+0x0034c5f5	0x8	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase9isEnabledEv	TouchScreenBase::isEnabled() const
 0x0034c5fd	0x4e	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase12getDimensionER3RctIsE	TouchScreenBase::getDimension(Rct<short>&) const
 0x0034c64d	0x58	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsE9_validateEv	Rct<short>::_validate()
 0x0034c6a5	0x80	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase12getDimensionEv	TouchScreenBase::getDimension() const

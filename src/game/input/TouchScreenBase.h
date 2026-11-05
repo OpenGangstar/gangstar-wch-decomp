@@ -7,7 +7,7 @@ template<class T> struct Point2D;
 struct TouchPoint;
 struct TouchIDList;
 
-// Virtual call interface. Touch-point storage remains unrecovered.
+// Virtual call interface and recovered touch-slot layout.
 class TouchScreenBase {
 public:
     virtual ~TouchScreenBase();
@@ -34,6 +34,26 @@ public:
 
     void clear();
     void clearTouchPoint(long id);
+    void enable();
+    void disable();
+    bool isEnabled() const;
+
+private:
+    struct _TouchPointInfo {
+        unsigned char first[8];
+        unsigned char current[8];
+        unsigned char unknown16[16];
+        bool hasPoints;
+        int numPoints;
+        int swipeDirection;
+        bool active;
+        unsigned char unknown45[11];
+    };
+
+    unsigned char unknown4[4];
+    _TouchPointInfo points[8];
+    unsigned char unknown456[8];
+    bool enabled;
 };
 
 #endif

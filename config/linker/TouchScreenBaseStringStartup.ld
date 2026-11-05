@@ -5,6 +5,14 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .touchscreen_clear 0x0034c398 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase5clearEv) }
+    .touchscreen_clear_point 0x0034c3b8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase15clearTouchPointEl) }
+    .touchscreen_point 0x0034c44c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase13getTouchPointEl) }
+    .touchscreen_first_point 0x0034c478 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase18getFirstTouchPointEl) }
+    .touchscreen_swipe_direction 0x0034c4cc : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase17getSwipeDirectionEl) }
+    .touchscreen_enable 0x0034c5dc : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase6enableEv) }
+    .touchscreen_disable 0x0034c5e8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase7disableEv) }
+    .touchscreen_is_enabled 0x0034c5f4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase9isEnabledEv) }
     .touchscreen_dimension_out 0x0034c5fc : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getDimensionER3RctIsE) }
     .touchscreen_rct_validate 0x0034c64c : { *string-startup-touchscreenbase.o(.text._ZN3RctIsE9_validateEv .gnu.linkonce.t._ZN3RctIsE9_validateEv) }
     .touchscreen_dimension_value 0x0034c6a4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getDimensionEv) }
