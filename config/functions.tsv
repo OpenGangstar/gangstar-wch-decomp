@@ -12693,7 +12693,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c5dd	0xa	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase6enableEv	TouchScreenBase::enable()
 0x0034c5e9	0xa	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase7disableEv	TouchScreenBase::disable()
 0x0034c5f5	0x8	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase9isEnabledEv	TouchScreenBase::isEnabled() const
-0x0034c5fd	0x4e	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase12getDimensionER3RctIsE	TouchScreenBase::getDimension(Rct<short>&) const
+0x0034c5fd	0x4e	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase12getDimensionER3RctIsE	TouchScreenBase::getDimension(Rct<short>&) const
 0x0034c64d	0x58	TouchScreenBase.cpp	game	input	pending	_ZN3RctIsE9_validateEv	Rct<short>::_validate()
 0x0034c6a5	0x80	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase12getDimensionEv	TouchScreenBase::getDimension() const
 0x0034c725	0x30	TouchScreenBase.cpp	game	input	matched	__tcf_0	__tcf_0
