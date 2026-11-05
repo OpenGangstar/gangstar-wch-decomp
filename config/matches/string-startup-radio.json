@@ -36,17 +36,53 @@
         {
             "name": "_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii",
             "address": "0x0032a94d"
-        }
+        },
+        "_ZN5Radio4showEv",
+        "_ZThn4_N5RadioD0Ev",
+        "_ZN5RadioD0Ev",
+        "_ZThn4_N5RadioD1Ev",
+        "_ZN5RadioD1Ev",
+        "_ZThn4_NK5Radio6draw2dEv",
+        "_ZNK5Radio6draw2dEv",
+        "_ZN5RadioC2EP7ASpriteiiiiii",
+        "_ZN5RadioC1EP7ASpriteiiiiii",
+        "_ZThn8_N5Radio12processTouchEl",
+        "_ZN5Radio12processTouchEl",
+        "_ZN11SwipeButtonD1Ev",
+        "_ZThn4_N11SwipeButtonD1Ev"
     ],
     "sections": [
         ".string_startup_function_0",
         ".string_startup_function_1",
         ".string_startup_function_2",
         ".shared_startup_empty_text",
+        ".radio_method_0",
+        ".radio_method_1",
+        ".radio_method_3",
+        ".radio_method_5",
+        ".radio_method_6",
+        ".radio_method_7",
+        ".radio_method_8",
+        ".radio_method_9",
+        ".radio_vtable",
+        ".radio_swipe_destructor",
         {
             "name": ".got",
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11SwipeButtonC1EP7ASpritei",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10AnimObjectD1Ev",
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN10AnimObject4DrawEv",
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZNK11SwipeButton6draw2dEv",
+        "_ZN11SwipeButton12processTouchEl",
+        "_ZN12SoundManager16lastRadioStationEv",
+        "_ZN12SoundManager16nextRadioStationEv",
+        "_ZN10HudElementD1Ev"
+    ]
 }
