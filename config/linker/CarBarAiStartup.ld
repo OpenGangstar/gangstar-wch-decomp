@@ -30,6 +30,12 @@ SECTIONS
     .ai_startup_storage_9 0x004b93b0 (NOLOAD) : { *ai-startup-carbar.o(.bss._ZN8gameloft2ai11cop_vehicleE) }
     .ai_startup_storage_10 0x004b93b8 (NOLOAD) : { *ai-startup-carbar.o(.bss._ZN8gameloft2ai5guardE) }
     .ai_startup_storage_11 0x004b93c0 (NOLOAD) : { *ai-startup-carbar.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
+    .bar_entry_0 0x00327790 : { *ai-startup-carbar.o(.text._ZThn4_N6CarBarD0Ev) }
+    .bar_entry_1 0x003277a4 : { *ai-startup-carbar.o(.text._ZN6CarBarD0Ev) }
+    .bar_entry_2 0x003277d4 : { *ai-startup-carbar.o(.text._ZThn4_N6CarBarD1Ev) }
+    .bar_entry_3 0x003277e8 : { *ai-startup-carbar.o(.text._ZN6CarBarD1Ev) }
+    .bar_entry_4 0x00327814 : { *ai-startup-carbar.o(.text._ZN6CarBarC1EP7ASpriteiii) }
+    .bar_vtable 0x004ac118 : { *ai-startup-carbar.o(.data.rel.ro._ZTV6CarBar) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

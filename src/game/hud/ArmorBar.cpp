@@ -8,6 +8,32 @@
  * functions of ArmorBar.cpp here, in the order they appear in the library.
  */
 
+#include "Gauge.h"
+
+class ArmorBar : public Gauge {
+public:
+    ArmorBar(ASprite*, int, int, int);
+    virtual ~ArmorBar();
+    virtual void update(double);
+    virtual void draw2d() const;
+    virtual void show();
+};
+
+inline void ArmorBar::show() {}
+
+void ArmorBar::draw2d() const
+{
+    if (flags & 1)
+        Gauge::draw2d();
+}
+
+ArmorBar::~ArmorBar() {}
+
+ArmorBar::ArmorBar(ASprite* image, int firstFrame, int fill, int overlay)
+    : Gauge(image, firstFrame, fill, overlay)
+{
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
