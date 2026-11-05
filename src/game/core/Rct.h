@@ -12,4 +12,9 @@ struct Rct {
     T bottom;
 };
 
+template<class T>
+Rct<T>::~Rct()
+{
+}
+
 #endif

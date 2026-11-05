@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/Rct.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -31,6 +32,8 @@ static void __tcf_0()
         ::operator delete(value.array);
 }
 }
+
+template struct Rct<short>;
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)
