@@ -2,7 +2,11 @@
 #define WCH_AUDIO_WAV_HEADERS_H
 
 struct __sFILE;
-struct RiffHeader;
+struct RiffHeader {
+    char id[4];
+    unsigned int size;
+    char type[4];
+};
 
 struct FormatHeader {
     char id[4];

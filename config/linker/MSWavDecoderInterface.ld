@@ -7,6 +7,9 @@ fclose = 0x001c4628;
 _Znwj = 0x001c4814;
 _Znaj = 0x001c3ff8;
 _ZdaPv = 0x001c461c;
+fopen = 0x001c45bc;
+fread = 0x001c4598;
+printf = 0x001c4058;
 SECTIONS
 {
     .mswav_method_0 0x003517d4 : { *mswav-decoder-interface.o(.text._ZNK18CSoundDecoderMSWAV15GetSamplingRateEv) }
@@ -26,6 +29,11 @@ SECTIONS
     .mswav_pool_1 0x00351910 : { *mswav-decoder-interface.o(.text._ZN10CMSWavPoolC1Eii .text._ZN10CMSWavPoolC2Eii) }
     .mswav_pool_2 0x003519e0 : { *mswav-decoder-interface.o(.text._ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV) }
     .mswav_pool_3 0x00351af4 : { *mswav-decoder-interface.o(.text._ZN10CMSWavPool15GetMSWAVDecoderEPKc) }
+    .mswav_stream_0 0x00351998 : { *mswav-decoder-interface.o(.text._ZN18CSoundDecoderMSWAV6UnInitEv) }
+    .mswav_stream_1 0x00351a6c : { *mswav-decoder-interface.o(.text._ZN18CSoundDecoderMSWAV4InitEPKc) }
+    .mswav_stream_2 0x00351b78 : { *mswav-decoder-interface.o(.text._ZN18CSoundDecoderMSWAVC1EPKc .text._ZN18CSoundDecoderMSWAVC2EPKc) }
+    .mswav_read_mode 0x004014f0 : { *mswav-decoder-interface.o(.rodata.wav_read_mode) }
+    .mswav_unknown_format 0x004362d8 : { *mswav-decoder-interface.o(.rodata.wav_unknown_format) }
     .mswav_vtable 0x004ad7e0 : { *mswav-decoder-interface.o(.data.rel.ro._ZTV18CSoundDecoderMSWAV .gnu.linkonce.d.rel.ro._ZTV18CSoundDecoderMSWAV) }
     .mswav_pcm_pool 0x004bc1cc (NOLOAD) : { *mswav-decoder-interface.o(.bss._ZN18CSoundDecoderMSWAV11s_msPcmPoolE) }
     .mswav_adpcm_pool 0x004bc1c8 (NOLOAD) : { *mswav-decoder-interface.o(.bss._ZN18CSoundDecoderMSWAV13s_msAdpcmPoolE) }
