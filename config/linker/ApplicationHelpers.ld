@@ -13,6 +13,7 @@ _ZN30retail_application_transitions11guard_transE = 0x004142cc;
 _ZN30retail_application_transitions22scripted_vehicle_transE = 0x00414374;
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
     .screen_dimensions 0x002d483c : { *application-helpers.o(.text._ZNK11Application19GetScreenDimensionsERiS0_) }
