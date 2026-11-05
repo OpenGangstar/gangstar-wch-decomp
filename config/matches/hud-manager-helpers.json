@@ -48,7 +48,9 @@
         "_ZN11CHudManager10notNearCarEv",
         "_ZN11CHudManager8nearShopEv",
         "_ZNK11CHudManager10isNearShopEv",
-        "_ZN11CHudManager11notNearShopEv"
+        "_ZN11CHudManager11notNearShopEv",
+        "_ZN11CHudManager8showCashEb",
+        "_ZN11CHudManager12showSpyGaugeEb"
     ],
     "sections": [
         ".helper_0",
@@ -70,7 +72,9 @@
         ".walking_notNearCar",
         ".walking_nearShop",
         ".walking_isNearShop",
-        ".walking_notNearShop"
+        ".walking_notNearShop",
+        ".hud_showCash",
+        ".hud_showSpyGauge"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -81,6 +85,10 @@
         "_ZN11CWalkingHud10notNearCarEv",
         "_ZN11CWalkingHud8nearShopEv",
         "_ZNK11CWalkingHud10isNearShopEv",
-        "_ZN11CWalkingHud11notNearShopEv"
+        "_ZN11CWalkingHud11notNearShopEv",
+        "_ZN11CWalkingHud12showSpyGaugeEb",
+        "_ZN11CWalkingHud8showCashEb",
+        "_ZN11CDrivingHud12showSpyGaugeEb",
+        "_ZN11CDrivingHud8showCashEb"
     ]
 }

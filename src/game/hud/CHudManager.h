@@ -26,7 +26,7 @@ public:
     unsigned char unknown0[4];
     IHud* activeHud;
     IHud* initialHud;
-    void* unknownHud12;
+    IHud* drivingHud;
     unsigned char unknown16[52];
     HudElement* enterCarButton;
     HudElement* enterShopButton;
@@ -43,6 +43,8 @@ public:
     void nearShop();
     bool isNearShop() const;
     void notNearShop();
+    void showSpyGauge(bool show);
+    void showCash(bool show);
 };
 
 #endif

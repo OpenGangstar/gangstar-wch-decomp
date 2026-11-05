@@ -11,6 +11,7 @@
 #include "CWalkingHud.h"
 #include "CHudManager.h"
 #include "HudElement.h"
+#include "SpyGauge.h"
 
 inline bool CWalkingHud::isWalkingHud() const { return true; }
 
@@ -50,6 +51,25 @@ void CWalkingHud::notNearShop()
 {
     manager->enterShopButton->hide();
     unknown8 &= ~0x04000000u;
+}
+
+void CWalkingHud::showSpyGauge(bool show)
+{
+    if (show) {
+        manager->spyGauge->show();
+        unknown8 |= 0x02000000;
+    } else {
+        manager->spyGauge->hide();
+        unknown8 &= ~0x02000000u;
+    }
+}
+
+void CWalkingHud::showCash(bool show)
+{
+    if (show)
+        unknown8 |= 0x8000;
+    else
+        unknown8 &= ~0x8000u;
 }
 
 // Recovered translation-unit SDK startup callbacks.
