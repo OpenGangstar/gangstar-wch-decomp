@@ -14,6 +14,7 @@ _ZN30retail_chudmanager_transitions22scripted_vehicle_transE = 0x00422360;
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/CHudManagerSpySections.ld
+INCLUDE config/linker/CHudManagerWalkingSections.ld
 SECTIONS
 {
     .helper_0 0x003235a4 : { *hud-manager-helpers.o(.text._ZN11CHudManager4initEv .gnu.linkonce.t._ZN11CHudManager4initEv) }

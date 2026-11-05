@@ -9,6 +9,7 @@
  */
 
 #include "CHudManager.h"
+#include "CWalkingHud.h"
 #include "SpyGauge.h"
 
 void CHudManager::init()
@@ -28,6 +29,37 @@ void CHudManager::useSpyBGInSpyGauge() { spyGauge->useSpyBG(); }
 void CHudManager::useDriveBadBGInSpyGauge() { spyGauge->useDriveBadBG(); }
 
 void CHudManager::useDriveWellBGInSpyGauge() { spyGauge->useDriveWellBG(); }
+
+bool CHudManager::isNearShop() const
+{
+    if (activeHud->isWalkingHud())
+        return static_cast<const CWalkingHud*>(activeHud)->isNearShop();
+    return false;
+}
+
+void CHudManager::notNearShop()
+{
+    if (activeHud->isWalkingHud())
+        static_cast<CWalkingHud*>(activeHud)->notNearShop();
+}
+
+void CHudManager::nearShop()
+{
+    if (activeHud->isWalkingHud())
+        static_cast<CWalkingHud*>(activeHud)->nearShop();
+}
+
+void CHudManager::notNearCar()
+{
+    if (activeHud->isWalkingHud())
+        static_cast<CWalkingHud*>(activeHud)->notNearCar();
+}
+
+void CHudManager::nearCar()
+{
+    if (activeHud->isWalkingHud())
+        static_cast<CWalkingHud*>(activeHud)->nearCar();
+}
 
 // Recovered module startup family; storage remains local to this TU.
 #include "../core/LocalStartupStorage.h"

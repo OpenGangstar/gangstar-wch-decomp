@@ -43,7 +43,12 @@
         },
         "_ZN11CHudManager18useSpyBGInSpyGaugeEv",
         "_ZN11CHudManager23useDriveBadBGInSpyGaugeEv",
-        "_ZN11CHudManager24useDriveWellBGInSpyGaugeEv"
+        "_ZN11CHudManager24useDriveWellBGInSpyGaugeEv",
+        "_ZN11CHudManager7nearCarEv",
+        "_ZN11CHudManager10notNearCarEv",
+        "_ZN11CHudManager8nearShopEv",
+        "_ZNK11CHudManager10isNearShopEv",
+        "_ZN11CHudManager11notNearShopEv"
     ],
     "sections": [
         ".helper_0",
@@ -60,12 +65,22 @@
         ".shared_startup_empty_text",
         ".spy_gauge_spy",
         ".spy_gauge_drive_bad",
-        ".spy_gauge_drive_well"
+        ".spy_gauge_drive_well",
+        ".walking_nearCar",
+        ".walking_notNearCar",
+        ".walking_nearShop",
+        ".walking_isNearShop",
+        ".walking_notNearShop"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN8SpyGauge8useSpyBGEv",
         "_ZN8SpyGauge13useDriveBadBGEv",
-        "_ZN8SpyGauge14useDriveWellBGEv"
+        "_ZN8SpyGauge14useDriveWellBGEv",
+        "_ZN11CWalkingHud7nearCarEv",
+        "_ZN11CWalkingHud10notNearCarEv",
+        "_ZN11CWalkingHud8nearShopEv",
+        "_ZNK11CWalkingHud10isNearShopEv",
+        "_ZN11CWalkingHud11notNearShopEv"
     ]
 }

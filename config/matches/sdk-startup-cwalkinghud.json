@@ -41,7 +41,12 @@
         "_ZN11CWalkingHudC1EP11CHudManager",
         "_ZN11CWalkingHudC2EP11CHudManager",
         "_ZN11CWalkingHudD1Ev",
-        "_ZN11CWalkingHudD2Ev"
+        "_ZN11CWalkingHudD2Ev",
+        "_ZN11CWalkingHud7nearCarEv",
+        "_ZN11CWalkingHud10notNearCarEv",
+        "_ZN11CWalkingHud8nearShopEv",
+        "_ZNK11CWalkingHud10isNearShopEv",
+        "_ZN11CWalkingHud11notNearShopEv"
     ],
     "sections": [
         ".sdk_startup_function_0",

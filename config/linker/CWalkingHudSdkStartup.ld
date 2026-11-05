@@ -13,6 +13,11 @@ SECTIONS
     .hud_entry_0 0x00325690 : { *sdk-startup-cwalkinghud.o(.gnu.linkonce.t._ZNK11CWalkingHud12isWalkingHudEv) }
     .hud_entry_1 0x00325694 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHudC1EP11CHudManager) }
     .hud_entry_2 0x003256c4 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHudD1Ev) }
+    .walking_nearCar 0x003258c0 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud7nearCarEv) }
+    .walking_notNearCar 0x003258e4 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud10notNearCarEv) }
+    .walking_nearShop 0x003258fc : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud8nearShopEv) }
+    .walking_isNearShop 0x00325920 : { *sdk-startup-cwalkinghud.o(.text._ZNK11CWalkingHud10isNearShopEv) }
+    .walking_notNearShop 0x00325934 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud11notNearShopEv) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
