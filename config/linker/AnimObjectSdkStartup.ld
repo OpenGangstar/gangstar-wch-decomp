@@ -12,6 +12,7 @@ __aeabi_fcmple = 0x001c43ac;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fcmpge = 0x001c4364;
 fmodf = 0x001c3fec;
+memmove = 0x001c40ac;
 SECTIONS
 {
     .sdk_startup_function_0 0x00349414 : { *sdk-startup-animobject.o(.text.__tcf_2) }
@@ -33,6 +34,8 @@ SECTIONS
     .anim_method_12 0x00349638 : { *sdk-startup-animobject.o(.text._ZN10AnimObject6UpdateEi) }
     .anim_timing_1 0x00349560 : { *sdk-startup-animobject.o(.text._Z15PlayPolicy_Loopfff) }
     .anim_timing_2 0x003495b0 : { *sdk-startup-animobject.o(.text._ZN10AnimObject11UpdateFrameEv) }
+    .anim_bounds 0x003494b4 : { *sdk-startup-animobject.o(.text._ZN10AnimObject22GetCurrentBoundingRectEv) }
+    .anim_empty_bounds 0x00435a60 : { *sdk-startup-animobject.o(.rodata.empty_anim_bounds) }
     .anim_vtable 0x004ad2a8 : { *sdk-startup-animobject.o(.data.rel.ro._ZTV10AnimObject .gnu.linkonce.d.rel.ro._ZTV10AnimObject) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
