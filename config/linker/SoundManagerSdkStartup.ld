@@ -11,6 +11,7 @@ __cxa_pure_virtual = 0;
 __aeabi_idivmod = 0x001c4934;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fcmpgt = 0x001c419c;
+_Znaj = 0x001c3ff8;
 SECTIONS
 {
     .sdk_startup_function_0 0x003539ac : { *sdk-startup-soundmanager.o(.text.__tcf_2) }
@@ -94,6 +95,7 @@ SECTIONS
     .sound_manager_cutscene_0 0x00352978 : { *sdk-startup-soundmanager.o(.text._ZNK12SoundManager15isRestrictedSfxEi) }
     .sound_manager_cutscene_1 0x003533b8 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager13beginCutsceneEv) }
     .sound_manager_resume 0x00352dc8 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager15resumeAllSoundsEv) }
+    .sound_manager_data_load 0x00352f4c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager13_getSoundDataEi) }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

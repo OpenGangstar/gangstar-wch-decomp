@@ -47,6 +47,7 @@ public:
 
 private:
     friend class StreamingSound;
+    friend class SoundManager;
 
     struct MappingIndex { int count; Structs::FileEntry* entries; };
     struct ResourceState {

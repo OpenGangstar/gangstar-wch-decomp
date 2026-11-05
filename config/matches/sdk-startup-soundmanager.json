@@ -103,7 +103,8 @@
         "_ZN12SoundManager14setMusicVolumeEf",
         "_ZNK12SoundManager15isRestrictedSfxEi",
         "_ZN12SoundManager13beginCutsceneEv",
-        "_ZN12SoundManager15resumeAllSoundsEv"
+        "_ZN12SoundManager15resumeAllSoundsEv",
+        "_ZN12SoundManager13_getSoundDataEi"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -182,7 +183,8 @@
         ".sound_manager_setup_3",
         ".sound_manager_cutscene_0",
         ".sound_manager_cutscene_1",
-        ".sound_manager_resume"
+        ".sound_manager_resume",
+        ".sound_manager_data_load"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -200,7 +202,10 @@
         "_ZN22RadioStationController14selectRandomAdEv",
         "_ZN22RadioStationController16selectRandomSongEi",
         "_ZN22RadioStationController18selectRandomJingleEi",
-        "_ZN12SoundManager13_getSoundDataEi",
-        "_ZN12SoundManager11endCutsceneEv"
+        "_ZN12SoundManager11endCutsceneEv",
+        "_ZN11FileManager11_GetDvdNameEi",
+        "_ZN14CSoundDataPool12GetSoundDataEiiiiPci",
+        "_ZN10CMSWavPool15GetMSWAVDecoderEPKc",
+        "_ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV"
     ]
 }
