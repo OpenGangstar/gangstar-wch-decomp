@@ -64,7 +64,11 @@
         "_ZN7ASpriteD1Ev",
         "_ZN7ASpriteD2Ev",
         "_ZN7ASpriteC1EPKc",
-        "_ZN7ASpriteC2EPKc"
+        "_ZN7ASpriteC2EPKc",
+        "_ZN7ASprite21GetTransformFromFlagsEj",
+        "_ZNK3RctIiE14isIntersectingEii",
+        "_ZNK7ASprite15GetFrameMarkersEiPi",
+        "_ZNK7ASprite23GetNumberOfFrameMarkersEi"
     ],
     "sections": [
         ".asprite_function_0",
@@ -97,12 +101,18 @@
         ".asprite_destruct",
         ".asprite_vtable",
         ".asprite_filename",
-        ".asprite_extension"
+        ".asprite_extension",
+        ".asprite_geometry_0",
+        ".asprite_geometry_1",
+        ".asprite_geometry_2",
+        ".asprite_geometry_3"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZNK7ASprite8GetFrameEi",
         "_ZNK7ASprite12PaintFModuleEiiiii",
-        "_ZN11Application11GetInstanceEv"
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7ASprite10GetFModuleEi"
     ]
 }

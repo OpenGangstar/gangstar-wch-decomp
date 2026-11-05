@@ -38,6 +38,10 @@ SECTIONS
     .asprite_vtable 0x004ad2b8 : { *asprite-startup.o(.data.rel.ro._ZTV7ASprite .gnu.linkonce.d.rel.ro._ZTV7ASprite) }
     .asprite_filename 0x00349ac0 : { *asprite-startup.o(.text._ZN7ASpriteC1EPKc .text._ZN7ASpriteC2EPKc) }
     .asprite_extension 0x0044de24 : { *asprite-startup.o(.rodata.sprite_extension) }
+    .asprite_geometry_0 0x003496c4 : { *asprite-startup.o(.text._ZN7ASprite21GetTransformFromFlagsEj .gnu.linkonce.t._ZN7ASprite21GetTransformFromFlagsEj) }
+    .asprite_geometry_1 0x003497b8 : { *asprite-startup.o(.text._ZNK3RctIiE14isIntersectingEii .gnu.linkonce.t._ZNK3RctIiE14isIntersectingEii) }
+    .asprite_geometry_2 0x00349c94 : { *asprite-startup.o(.text._ZNK7ASprite15GetFrameMarkersEiPi .gnu.linkonce.t._ZNK7ASprite15GetFrameMarkersEiPi) }
+    .asprite_geometry_3 0x00349d04 : { *asprite-startup.o(.text._ZNK7ASprite23GetNumberOfFrameMarkersEi .gnu.linkonce.t._ZNK7ASprite23GetNumberOfFrameMarkersEi) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
