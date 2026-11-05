@@ -12,6 +12,7 @@
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/Rct.h"
+#include "TouchScreenBase.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -22,6 +23,19 @@ extern void* __dso_handle;
 extern "C" {
 int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
+}
+
+void TouchScreenBase::getDimension(Rct<short>& result) const
+{
+    const short left = getLeftBound();
+    const short top = getTopBound();
+    const short right = getRightBound();
+    const short bottom = getBottomBound();
+
+    result.left = left;
+    result.top = top;
+    result.right = right;
+    result.bottom = bottom;
 }
 
 extern "C" {
