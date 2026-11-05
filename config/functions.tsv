@@ -12740,15 +12740,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d03d	0x30	TouchScreenWin32.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0034d06d	0xc	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3218getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenWin32::getTouchIDInRegion(irr::core::rect<float> const&) const
 0x0034d079	0xc	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3215isRegionPressedERKN3irr4core4rectIfEE	TouchScreenWin32::isRegionPressed(irr::core::rect<float> const&) const
-0x0034d085	0x3c	TouchScreenWin32.cpp	game	input	pending	_ZN16TouchScreenWin32C1Ev	TouchScreenWin32::TouchScreenWin32()
-0x0034d085	0x3c	TouchScreenWin32.cpp	game	input	pending	_ZN16TouchScreenWin32C2Ev	TouchScreenWin32::TouchScreenWin32()
+0x0034d085	0x3c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin32C1Ev	TouchScreenWin32::TouchScreenWin32()
+0x0034d085	0x3c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin32C2Ev	TouchScreenWin32::TouchScreenWin32()
 0x0034d0c1	0x6c	TouchScreenWin32.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034d12d	0x14	TouchScreenWin32.cpp	game	input	matched	_GLOBAL__I__ZN16TouchScreenWin32C2Ev	_GLOBAL__I__ZN16TouchScreenWin32C2Ev
-0x0034d140	0x14	TouchScreenWin32.cpp	game	input	pending	_ZThn472_N16TouchScreenWin32D0Ev	non-virtual thunk to TouchScreenWin32::~TouchScreenWin32()
-0x0034d155	0x3c	TouchScreenWin32.cpp	game	input	pending	_ZN16TouchScreenWin32D0Ev	TouchScreenWin32::~TouchScreenWin32()
-0x0034d190	0x14	TouchScreenWin32.cpp	game	input	pending	_ZThn472_N16TouchScreenWin32D1Ev	non-virtual thunk to TouchScreenWin32::~TouchScreenWin32()
-0x0034d1a5	0x38	TouchScreenWin32.cpp	game	input	pending	_ZN16TouchScreenWin32D2Ev	TouchScreenWin32::~TouchScreenWin32()
-0x0034d1a5	0x38	TouchScreenWin32.cpp	game	input	pending	_ZN16TouchScreenWin32D1Ev	TouchScreenWin32::~TouchScreenWin32()
+0x0034d140	0x14	TouchScreenWin32.cpp	game	input	matched	_ZThn472_N16TouchScreenWin32D0Ev	non-virtual thunk to TouchScreenWin32::~TouchScreenWin32()
+0x0034d155	0x3c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin32D0Ev	TouchScreenWin32::~TouchScreenWin32()
+0x0034d190	0x14	TouchScreenWin32.cpp	game	input	matched	_ZThn472_N16TouchScreenWin32D1Ev	non-virtual thunk to TouchScreenWin32::~TouchScreenWin32()
+0x0034d1a5	0x38	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin32D2Ev	TouchScreenWin32::~TouchScreenWin32()
+0x0034d1a5	0x38	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin32D1Ev	TouchScreenWin32::~TouchScreenWin32()
 0x0034d1dd	0x5c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3214touchCancelledEffi	TouchScreenWin32::touchCancelled(float, float, int)
 0x0034d239	0x5c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3210touchEndedEffi	TouchScreenWin32::touchEnded(float, float, int)
 0x0034d295	0x5c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3210touchMovedEffi	TouchScreenWin32::touchMoved(float, float, int)
