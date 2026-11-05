@@ -65,6 +65,15 @@ public:
     void PaintFrame(int frame, int x, int y, int flags) const;
 
 private:
+    friend class Gauge;
+    void setClip(int left, int top, int right, int bottom)
+    {
+        unknown36 = left;
+        unknown40 = top;
+        unknown44 = right;
+        unknown48 = bottom;
+    }
+
     SpriteData* data;
     bool ownsData;
     unsigned char unknown9[3];

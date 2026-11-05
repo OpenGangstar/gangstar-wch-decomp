@@ -36,7 +36,18 @@
         {
             "name": "_GLOBAL__I__ZN5GaugeC2EP7ASpriteiii",
             "address": "0x003281b5"
-        }
+        },
+        "_ZN5Gauge6updateEd",
+        "_ZN5Gauge13setPercentageEf",
+        "_ZThn4_NK5Gauge6draw2dEv",
+        "_ZNK5Gauge6draw2dEv",
+        "_ZThn4_N5GaugeD0Ev",
+        "_ZN5GaugeD0Ev",
+        "_ZThn4_N5GaugeD1Ev",
+        "_ZN5GaugeD1Ev",
+        "_ZN5GaugeD2Ev",
+        "_ZN5GaugeC1EP7ASpriteiii",
+        "_ZN5GaugeC2EP7ASpriteiii"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -46,7 +57,17 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".gauge_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7ASprite10PaintFrameEiiii"
+    ],
+    "dependencies": [
+        "hud-element"
+    ]
 }
