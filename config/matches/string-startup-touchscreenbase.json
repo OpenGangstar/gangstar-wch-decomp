@@ -116,6 +116,18 @@
         {
             "name": "_ZN15TouchScreenBase10touchMovedERK7Point2DIsEl",
             "address": "0x0034c78d"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase27getTouchIDInitiatedInRegionERKN3irr4core4rectIfEE",
+            "address": "0x0034c831"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase15isRegionPressedERKN3irr4core4rectIfEE",
+            "address": "0x0034c969"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE",
+            "address": "0x0034c9fd"
         }
     ],
     "sections": [
@@ -153,7 +165,10 @@
         ".touchscreen_cancel_message",
         ".touchscreen_update",
         ".touchscreen_moved",
-        ".touchscreen_move_message"
+        ".touchscreen_move_message",
+        ".touchscreen_initiated_in_region",
+        ".touchscreen_region_pressed",
+        ".touchscreen_id_in_region"
     ],
     "retail_got": true
 }

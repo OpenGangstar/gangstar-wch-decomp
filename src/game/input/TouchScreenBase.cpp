@@ -12,6 +12,7 @@
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/Rct.h"
+#include "../core/Rect.h"
 #include "../rendering/GS3DStuff.h"
 #include "TouchScreenBase.h"
 
@@ -202,6 +203,54 @@ static void __tcf_0()
 }
 
 template struct Rct<short>;
+
+static inline bool containsTouchPoint(const irr::core::rect<float>& region,
+                                      const Point2D<short>& point)
+{
+    const float x = point.x;
+    const float y = point.y;
+    const float left = region.UpperLeftCorner.X;
+    if (!(x >= left))
+        return false;
+    const float top = region.UpperLeftCorner.Y;
+    if (!(y >= top))
+        return false;
+    const float right = region.LowerRightCorner.X;
+    if (!(x <= right))
+        return false;
+    const float bottom = region.LowerRightCorner.Y;
+    return y <= bottom;
+}
+
+long TouchScreenBase::getTouchIDInitiatedInRegion(const irr::core::rect<float>& region) const
+{
+    for (int i = 0; i < slotCount; ++i) {
+        const _TouchPointInfo& slot = points[i];
+        if (containsTouchPoint(region, slot.first) && slot.hasPoints && slot.active)
+            return i;
+    }
+    return -1;
+}
+
+bool TouchScreenBase::isRegionPressed(const irr::core::rect<float>& region) const
+{
+    for (int i = 0; i < slotCount; ++i) {
+        const _TouchPointInfo& slot = points[i];
+        if (containsTouchPoint(region, slot.current) && slot.hasPoints && slot.active)
+            return true;
+    }
+    return false;
+}
+
+long TouchScreenBase::getTouchIDInRegion(const irr::core::rect<float>& region) const
+{
+    for (int i = 0; i < slotCount; ++i) {
+        const _TouchPointInfo& slot = points[i];
+        if (containsTouchPoint(region, slot.current) && slot.hasPoints && slot.active)
+            return i;
+    }
+    return -1;
+}
 
 inline TouchScreenBase::_TouchPointInfo::~_TouchPointInfo()
 {

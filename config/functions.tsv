@@ -12700,10 +12700,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c755	0x20	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsED0Ev	Rct<short>::~Rct()
 0x0034c775	0x18	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsED1Ev	Rct<short>::~Rct()
 0x0034c78d	0xa4	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase10touchMovedERK7Point2DIsEl	TouchScreenBase::touchMoved(Point2D<short> const&, long)
-0x0034c831	0x94	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase27getTouchIDInitiatedInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInitiatedInRegion(irr::core::rect<float> const&) const
+0x0034c831	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase27getTouchIDInitiatedInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInitiatedInRegion(irr::core::rect<float> const&) const
 0x0034c8c5	0xa4	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase20getTouchDisplacementEl	TouchScreenBase::getTouchDisplacement(long) const
-0x0034c969	0x92	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenBase::isRegionPressed(irr::core::rect<float> const&) const
-0x0034c9fd	0x94	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInRegion(irr::core::rect<float> const&) const
+0x0034c969	0x92	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenBase::isRegionPressed(irr::core::rect<float> const&) const
+0x0034c9fd	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInRegion(irr::core::rect<float> const&) const
 0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseC1Ev	TouchScreenBase::TouchScreenBase()
 0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseC2Ev	TouchScreenBase::TouchScreenBase()
 0x0034cb11	0x58	TouchScreenBase.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
