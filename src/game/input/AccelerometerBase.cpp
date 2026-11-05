@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/GameEventMethods.h"
 #include "AccelerometerBase.h"
 #include "../core/Logs.h"
 
@@ -45,6 +46,12 @@ void AccelerometerBase::_trace(const char* message) const
 {
     Logs::trace(traceCategory, message);
 }
+
+// Event declarations for the recovered destructor and vtable layout.
+class EvAcceleration : public IEvent {
+public:
+    virtual ~EvAcceleration() __attribute__((used)) {}
+};
 
 void operator delete(void*) throw();
 extern "C" {

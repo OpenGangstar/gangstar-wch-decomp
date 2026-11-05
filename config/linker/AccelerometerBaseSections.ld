@@ -1,7 +1,11 @@
 puts = 0x001c41b4;
 printf = 0x001c4058;
+INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .input_EvAcceleration_D0 0x0034d638 : { *sdk-startup-accelerometerbase.o(.gnu.linkonce.t._ZN14EvAccelerationD0Ev) }
+    .input_EvAcceleration_D1 0x0034d664 : { *sdk-startup-accelerometerbase.o(.gnu.linkonce.t._ZN14EvAccelerationD1Ev) }
+    .input_EvAcceleration_vtable 0x004ad460 : { *sdk-startup-accelerometerbase.o(.gnu.linkonce.d.rel.ro._ZTV14EvAcceleration) }
     .accelerometer_base_constructor 0x0034d580 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBaseC1Ev .text._ZN17AccelerometerBaseC2Ev) }
     .accelerometer_base_delete 0x0034d7d4 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBaseD0Ev) }
     .accelerometer_base_destructor 0x0034d800 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBaseD1Ev .text._ZN17AccelerometerBaseD2Ev) }

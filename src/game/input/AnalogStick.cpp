@@ -11,7 +11,39 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/GameEventMethods.h"
 #include "../core/Point2D.h"
+
+// Event declarations for the recovered destructor and vtable layout.
+class EvStickMove : public IEvent {
+public:
+    virtual ~EvStickMove() __attribute__((used)) {}
+};
+
+class EvStickReleased : public IEvent {
+public:
+    virtual ~EvStickReleased() __attribute__((used)) {}
+};
+
+class EvUpDownStickMove : public IEvent {
+public:
+    virtual ~EvUpDownStickMove() __attribute__((used)) {}
+};
+
+class EvUpDownStickReleased : public IEvent {
+public:
+    virtual ~EvUpDownStickReleased() __attribute__((used)) {}
+};
+
+class EvLeftRightStickMove : public IEvent {
+public:
+    virtual ~EvLeftRightStickMove() __attribute__((used)) {}
+};
+
+class EvLeftRightStickReleased : public IEvent {
+public:
+    virtual ~EvLeftRightStickReleased() __attribute__((used)) {}
+};
 
 void operator delete(void*) throw();
 extern "C" {
