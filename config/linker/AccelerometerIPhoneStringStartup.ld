@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .accelerometer_moved 0x0034d854 : { *string-startup-accelerometeriphone.o(.text._ZN19AccelerometerIPhone5movedEfff) }
     .string_startup_function_0 0x0034d824 : { *string-startup-accelerometeriphone.o(.text.__tcf_0) }
     .string_startup_function_1 0x0034d8d4 : { *string-startup-accelerometeriphone.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .string_startup_function_2 0x0034d92c : { *string-startup-accelerometeriphone.o(.text._GLOBAL__I__ZN19AccelerometerIPhoneC2Ev) }

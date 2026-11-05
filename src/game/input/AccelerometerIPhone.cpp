@@ -11,6 +11,18 @@
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "AccelerometerBase.h"
+
+class AccelerometerIPhone : public AccelerometerBase {
+public:
+    virtual ~AccelerometerIPhone();
+    virtual void moved(float x, float y, float z);
+};
+
+void AccelerometerIPhone::moved(float x, float y, float z)
+{
+    AccelerometerBase::moved(-x, -y, -z);
+}
 
 void operator delete(void*) throw();
 extern "C" {

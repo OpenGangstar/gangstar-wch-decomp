@@ -5,6 +5,8 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .accelerometer_update 0x0034d420 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBase6updateEd) }
+    .accelerometer_clear 0x0034d40c : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBase5clearEv) }
     .sdk_startup_function_0 0x0034d42c : { *sdk-startup-accelerometerbase.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x0034d5b8 : { *sdk-startup-accelerometerbase.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x0034d624 : { *sdk-startup-accelerometerbase.o(.text._GLOBAL__I__ZN17AccelerometerBaseC2Ev) }
