@@ -11,6 +11,50 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "TouchScreenBase.h"
+
+template<class T>
+inline Point2D<T>::Point2D(T x, T y)
+    : x(x), y(y)
+{
+}
+
+class TouchScreenWin32 : public TouchScreenBase {
+public:
+    void touchCancelled(float x, float y, int externalId);
+    void touchEnded(float x, float y, int externalId);
+    void touchMoved(float x, float y, int externalId);
+    void touchBegan(float x, float y, int externalId);
+};
+
+void TouchScreenWin32::touchCancelled(float x, float y, int externalId)
+{
+    const long id = getID(externalId);
+    Point2D<short> point(static_cast<short>(x), static_cast<short>(y));
+    TouchScreenBase::touchCancelled(point, id);
+}
+
+void TouchScreenWin32::touchEnded(float x, float y, int externalId)
+{
+    const long id = getID(externalId);
+    Point2D<short> point(static_cast<short>(x), static_cast<short>(y));
+    TouchScreenBase::touchEnded(point, id);
+}
+
+void TouchScreenWin32::touchMoved(float x, float y, int externalId)
+{
+    const long id = getID(externalId);
+    Point2D<short> point(static_cast<short>(x), static_cast<short>(y));
+    TouchScreenBase::touchMoved(point, id);
+}
+
+void TouchScreenWin32::touchBegan(float x, float y, int externalId)
+{
+    const long id = getID(externalId);
+    Point2D<short> point(static_cast<short>(x), static_cast<short>(y));
+    ConvertCoord(point);
+    TouchScreenBase::touchBegan(point, id);
+}
 
 void operator delete(void*) throw();
 extern "C" {

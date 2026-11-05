@@ -36,6 +36,22 @@
         {
             "name": "_GLOBAL__I__ZN16TouchScreenWin32C2Ev",
             "address": "0x0034d12d"
+        },
+        {
+            "name": "_ZN16TouchScreenWin3214touchCancelledEffi",
+            "address": "0x0034d1dd"
+        },
+        {
+            "name": "_ZN16TouchScreenWin3210touchEndedEffi",
+            "address": "0x0034d239"
+        },
+        {
+            "name": "_ZN16TouchScreenWin3210touchMovedEffi",
+            "address": "0x0034d295"
+        },
+        {
+            "name": "_ZN16TouchScreenWin3210touchBeganEffi",
+            "address": "0x0034d2f1"
         }
     ],
     "sections": [
@@ -46,7 +62,17 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".win32_touchCancelled",
+        ".win32_touchEnded",
+        ".win32_touchMoved",
+        ".win32_touchBegan"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "dependencies": [
+        "string-startup-touchscreenbase"
+    ],
+    "external_thumb_functions": [
+        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl"
+    ]
 }
