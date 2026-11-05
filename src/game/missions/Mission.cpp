@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/Rct.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -36,6 +37,13 @@ extern "C" {
 int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
 }
+
+template<class T>
+Rct<T>::~Rct()
+{
+}
+
+template struct Rct<int>;
 
 extern "C" {
 static void __tcf_4()

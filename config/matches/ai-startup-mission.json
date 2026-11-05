@@ -36,6 +36,14 @@
         {
             "name": "_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii",
             "address": "0x0033694d"
+        },
+        {
+            "name": "_ZN3RctIiED0Ev",
+            "address": "0x00335d55"
+        },
+        {
+            "name": "_ZN3RctIiED1Ev",
+            "address": "0x00335d75"
         }
     ],
     "sections": [
@@ -46,7 +54,10 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".mission_rct_1",
+        ".mission_rct_2",
+        ".mission_rct_vtable"
     ],
     "retail_got": true
 }

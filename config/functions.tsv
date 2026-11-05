@@ -11828,8 +11828,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00335cbd	0x6	Mission.cpp	game	missions	pending	_ZN7Mission15setFailureCountEi	Mission::setFailureCount(int)
 0x00335cc5	0x60	Mission.cpp	game	missions	pending	_ZN3RctIiE9_validateEv	Rct<int>::_validate()
 0x00335d25	0x30	Mission.cpp	game	missions	matched	__tcf_4	__tcf_4
-0x00335d55	0x20	Mission.cpp	game	missions	pending	_ZN3RctIiED0Ev	Rct<int>::~Rct()
-0x00335d75	0x18	Mission.cpp	game	missions	pending	_ZN3RctIiED1Ev	Rct<int>::~Rct()
+0x00335d55	0x20	Mission.cpp	game	missions	matched	_ZN3RctIiED0Ev	Rct<int>::~Rct()
+0x00335d75	0x18	Mission.cpp	game	missions	matched	_ZN3RctIiED1Ev	Rct<int>::~Rct()
 0x00335d8d	0x64	Mission.cpp	game	missions	pending	_ZN7Mission4failEv	Mission::fail()
 0x00335df1	0x1c	Mission.cpp	game	missions	pending	__tcf_3	__tcf_3
 0x00335e0d	0x54	Mission.cpp	game	missions	pending	_ZN7Structs7Mission4ReadER10DataStream	Structs::Mission::Read(DataStream&)

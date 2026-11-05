@@ -10,6 +10,7 @@
 
 #include "../core/ASprite.h"
 #include "../core/Matrix4.h"
+#include "../core/Rct.h"
 #include "../core/SceneNode.h"
 #include "../core/VideoDriver.h"
 #include "../app/Application.h"
@@ -42,17 +43,6 @@ struct SpriteFrameModule {
 
 struct SpriteModule {
     unsigned char kind;
-};
-
-template<class T>
-struct Rct {
-    virtual ~Rct();
-    bool isIntersecting(T x, T y) const;
-
-    T left;
-    T top;
-    T right;
-    T bottom;
 };
 
 template<class T>
