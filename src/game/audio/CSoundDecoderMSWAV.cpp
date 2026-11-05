@@ -8,15 +8,18 @@
  * functions of CSoundDecoderMSWAV.cpp here, in the order they appear in the library.
  */
 
-#include "ISoundDecoder.h"
+#include "CSoundDecoderMSADPCM.h"
+#include "CSoundDecoderPCM.h"
 #include "../core/NativeStdio.h"
 
-class CPcmPool;
-class CMSAdpcmPool;
+static const char wavReadMode[] __attribute__((section(".rodata.wav_read_mode"))) = "rb";
+static const char unknownWavFormat[] __attribute__((section(".rodata.wav_unknown_format"))) =
+    "CSoundDecoderMSWAV::CSoundDecoderMSWAV: asked to decompess unknown format: %i\n";
 
 class CSoundDecoderMSWAV : public ISoundDecoder {
 public:
     CSoundDecoderMSWAV();
+    CSoundDecoderMSWAV(const char* filename);
     virtual ~CSoundDecoderMSWAV();
     void Init(const char* filename);
     void UnInit();
@@ -34,17 +37,8 @@ public:
 private:
     ISoundDecoder* decoder;
     NativeFile* file;
-    char riffId[4];
-    unsigned int riffSize;
-    char waveId[4];
-    char formatId[4];
-    unsigned int formatSize;
-    unsigned short formatTag;
-    unsigned short channels;
-    unsigned int sampleRate;
-    unsigned int bytesPerSecond;
-    unsigned short blockAlignment;
-    unsigned short bitsPerSample;
+    RiffHeader riff;
+    FormatHeader format;
 
     static CPcmPool* s_msPcmPool;
     static CMSAdpcmPool* s_msAdpcmPool;
@@ -58,9 +52,7 @@ int CSoundDecoderMSWAV::GetTotalSamples() const { return decoder->GetTotalSample
 bool CSoundDecoderMSWAV::HasMoreData() const { return decoder->HasMoreData(); }
 
 CSoundDecoderMSWAV::CSoundDecoderMSWAV()
-    : file(0), riffId(), riffSize(0), waveId(), formatId(), formatSize(0),
-      formatTag(0), channels(0), sampleRate(0), bytesPerSecond(0),
-      blockAlignment(0), bitsPerSample(0)
+    : file(0), riff(), format()
 {
 }
 
@@ -124,6 +116,16 @@ CMSWavPool::CMSWavPool(int maxCount, int preallocate)
     lastUsed = -1;
 }
 
+void CSoundDecoderMSWAV::UnInit()
+{
+    if (format.tag == 17)
+        s_msAdpcmPool->ReleaseMSADPCMDecoder(static_cast<CSoundDecoderMSADPCM*>(decoder));
+    else if (format.tag == 1)
+        s_msPcmPool->ReleasePCMDecoder(static_cast<CSoundDecoderPCM*>(decoder));
+    if (file)
+        fclose(file);
+}
+
 void CMSWavPool::ReleaseMSWAVDecoder(CSoundDecoderMSWAV* data)
 {
     if (!data)
@@ -145,6 +147,23 @@ void CMSWavPool::ReleaseMSWAVDecoder(CSoundDecoderMSWAV* data)
     state[index] = 0;
 }
 
+void CSoundDecoderMSWAV::Init(const char* filename)
+{
+    file = fopen(filename, wavReadMode);
+    fread(&riff, sizeof(riff), 1, file);
+    fread(&format, sizeof(format), 1, file);
+    switch (format.tag) {
+    case 1:
+        decoder = s_msPcmPool->GetPCMDecoder(reinterpret_cast<__sFILE*>(file), &riff, &format);
+        break;
+    case 17:
+        decoder = s_msAdpcmPool->GetMSADPCMDecoder(reinterpret_cast<__sFILE*>(file), &riff, &format);
+        break;
+    default:
+        printf(unknownWavFormat, format.tag);
+    }
+}
+
 CSoundDecoderMSWAV* CMSWavPool::GetMSWAVDecoder(const char* filename)
 {
     if (firstFree >= capacity)
@@ -161,6 +180,24 @@ CSoundDecoderMSWAV* CMSWavPool::GetMSWAVDecoder(const char* filename)
     firstFree = i;
     data->Init(filename);
     return data;
+}
+
+CSoundDecoderMSWAV::CSoundDecoderMSWAV(const char* filename)
+    : file(0), riff(), format()
+{
+    file = fopen(filename, wavReadMode);
+    fread(&riff, sizeof(riff), 1, file);
+    fread(&format, sizeof(format), 1, file);
+    switch (format.tag) {
+    case 1:
+        decoder = new CSoundDecoderPCM(reinterpret_cast<__sFILE*>(file), &riff, &format);
+        break;
+    case 17:
+        decoder = new CSoundDecoderMSADPCM(reinterpret_cast<__sFILE*>(file), &riff, &format);
+        break;
+    default:
+        printf(unknownWavFormat, format.tag);
+    }
 }
 
 CSoundDecoderMSWAV::~CSoundDecoderMSWAV()

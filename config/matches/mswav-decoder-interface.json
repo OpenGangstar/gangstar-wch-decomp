@@ -42,7 +42,11 @@
         "_ZN10CMSWavPoolC1Eii",
         "_ZN10CMSWavPoolC2Eii",
         "_ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV",
-        "_ZN10CMSWavPool15GetMSWAVDecoderEPKc"
+        "_ZN10CMSWavPool15GetMSWAVDecoderEPKc",
+        "_ZN18CSoundDecoderMSWAV6UnInitEv",
+        "_ZN18CSoundDecoderMSWAV4InitEPKc",
+        "_ZN18CSoundDecoderMSWAVC1EPKc",
+        "_ZN18CSoundDecoderMSWAVC2EPKc"
     ],
     "linker_script": "config/linker/MSWavDecoderInterface.ld",
     "sections": [
@@ -63,6 +67,11 @@
         ".mswav_pool_1",
         ".mswav_pool_2",
         ".mswav_pool_3",
+        ".mswav_stream_0",
+        ".mswav_stream_1",
+        ".mswav_stream_2",
+        ".mswav_read_mode",
+        ".mswav_unknown_format",
         ".mswav_vtable",
         {
             "name": ".got",
@@ -72,7 +81,11 @@
     "retail_got": true,
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "external_thumb_functions": [
-        "_ZN18CSoundDecoderMSWAV4InitEPKc",
-        "_ZN18CSoundDecoderMSWAV6UnInitEv"
+        "_ZN8CPcmPool17ReleasePCMDecoderEP16CSoundDecoderPCM",
+        "_ZN12CMSAdpcmPool21ReleaseMSADPCMDecoderEP20CSoundDecoderMSADPCM",
+        "_ZN8CPcmPool13GetPCMDecoderEP7__sFILEP10RiffHeaderP12FormatHeader",
+        "_ZN12CMSAdpcmPool17GetMSADPCMDecoderEP7__sFILEP10RiffHeaderP12FormatHeader",
+        "_ZN16CSoundDecoderPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader",
+        "_ZN20CSoundDecoderMSADPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader"
     ]
 }
