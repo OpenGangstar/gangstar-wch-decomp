@@ -68,6 +68,14 @@
         {
             "name": "_ZNK17AccelerometerBase6_traceEPKc",
             "address": "0x0034d45d"
+        },
+        {
+            "name": "_ZN14EvAccelerationD0Ev",
+            "address": "0x0034d639"
+        },
+        {
+            "name": "_ZN14EvAccelerationD1Ev",
+            "address": "0x0034d665"
         }
     ],
     "sections": [
@@ -89,7 +97,14 @@
         ".accelerometer_updatable_d1",
         ".accelerometer_updatable_vtable",
         ".accelerometer_trace",
-        ".accelerometer_trace_category"
+        ".accelerometer_trace_category",
+        ".input_EvAcceleration_D0",
+        ".input_EvAcceleration_D1",
+        ".input_EvAcceleration_vtable",
+        ".event_id",
+        ".event_delete",
+        ".event_destructor",
+        ".event_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [

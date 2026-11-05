@@ -9,18 +9,9 @@
  */
 
 #include "Application.h"
-#include "../core/GameEvents.h"
+#include "../core/GameEventMethods.h"
 #include "../core/SceneNode.h"
 #include "../core/VideoDriver.h"
-
-inline int IEvent::getEventID() const
-{
-    return eventID;
-}
-
-inline IEvent::~IEvent()
-{
-}
 
 void Application::GetScreenDimensions(int& width, int& height) const
 {

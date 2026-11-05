@@ -44,6 +44,54 @@
         {
             "name": "_ZN7Point2DIsED1Ev",
             "address": "0x00326395"
+        },
+        {
+            "name": "_ZN11EvStickMoveD0Ev",
+            "address": "0x00326e15"
+        },
+        {
+            "name": "_ZN11EvStickMoveD1Ev",
+            "address": "0x00326795"
+        },
+        {
+            "name": "_ZN15EvStickReleasedD0Ev",
+            "address": "0x00326cd9"
+        },
+        {
+            "name": "_ZN15EvStickReleasedD1Ev",
+            "address": "0x00326d05"
+        },
+        {
+            "name": "_ZN17EvUpDownStickMoveD0Ev",
+            "address": "0x003267dd"
+        },
+        {
+            "name": "_ZN17EvUpDownStickMoveD1Ev",
+            "address": "0x00326809"
+        },
+        {
+            "name": "_ZN21EvUpDownStickReleasedD0Ev",
+            "address": "0x00326769"
+        },
+        {
+            "name": "_ZN21EvUpDownStickReleasedD1Ev",
+            "address": "0x003267b9"
+        },
+        {
+            "name": "_ZN20EvLeftRightStickMoveD0Ev",
+            "address": "0x0032687d"
+        },
+        {
+            "name": "_ZN20EvLeftRightStickMoveD1Ev",
+            "address": "0x003268a9"
+        },
+        {
+            "name": "_ZN24EvLeftRightStickReleasedD0Ev",
+            "address": "0x0032682d"
+        },
+        {
+            "name": "_ZN24EvLeftRightStickReleasedD1Ev",
+            "address": "0x00326859"
         }
     ],
     "sections": [
@@ -57,7 +105,29 @@
         },
         ".point2d_d0",
         ".point2d_d1",
-        ".point2d_vtable"
+        ".point2d_vtable",
+        ".input_EvStickMove_D0",
+        ".input_EvStickMove_D1",
+        ".input_EvStickMove_vtable",
+        ".input_EvStickReleased_D0",
+        ".input_EvStickReleased_D1",
+        ".input_EvStickReleased_vtable",
+        ".input_EvUpDownStickMove_D0",
+        ".input_EvUpDownStickMove_D1",
+        ".input_EvUpDownStickMove_vtable",
+        ".input_EvUpDownStickReleased_D0",
+        ".input_EvUpDownStickReleased_D1",
+        ".input_EvUpDownStickReleased_vtable",
+        ".input_EvLeftRightStickMove_D0",
+        ".input_EvLeftRightStickMove_D1",
+        ".input_EvLeftRightStickMove_vtable",
+        ".input_EvLeftRightStickReleased_D0",
+        ".input_EvLeftRightStickReleased_D1",
+        ".input_EvLeftRightStickReleased_vtable",
+        ".event_id",
+        ".event_delete",
+        ".event_destructor",
+        ".event_vtable"
     ],
     "retail_got": true
 }
