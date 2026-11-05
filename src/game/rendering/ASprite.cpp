@@ -32,6 +32,49 @@ struct SpriteData {
     unsigned int animationFrames;
 };
 
+struct SpriteFrameModule {
+    unsigned short module;
+    short x;
+    short y;
+    unsigned char unknown6;
+    unsigned char flags;
+};
+
+struct SpriteModule {
+    unsigned char kind;
+};
+
+template<class T>
+struct Rct {
+    virtual ~Rct();
+    bool isIntersecting(T x, T y) const;
+
+    T left;
+    T top;
+    T right;
+    T bottom;
+};
+
+template<class T>
+bool Rct<T>::isIntersecting(T x, T y) const
+{
+    return left <= x && x <= right && top <= y && y <= bottom;
+}
+
+template bool Rct<int>::isIntersecting(int, int) const;
+
+int ASprite::GetTransformFromFlags(unsigned int flags)
+{
+    if (flags & 16) {
+        if (flags & 32)
+            return 2;
+        return 1;
+    }
+    if (flags & 32)
+        return 3;
+    return 0;
+}
+
 ASprite::ASprite()
     : data(0), ownsData(false), texture(0), unknown32(false), unknown33(true),
       unknown36(0), unknown40(0), unknown44(-1), unknown48(-1)
@@ -189,6 +232,33 @@ int ASprite::GetFrameFromAFrame(int animation, int frame) const
 const SpriteBounds& ASprite::GetAnimFrameBoundingRect(int animation, int frame) const
 {
     return GetFrameBoundingRect(GetFrameFromAFrame(animation, frame));
+}
+
+void ASprite::GetFrameMarkers(int frame, int* output) const
+{
+    const SpriteFrame* entry = GetFrame(frame);
+    if (entry->moduleCount <= 0)
+        return;
+    int* cursor = output;
+    for (int i = 0; i < entry->moduleCount; ++i) {
+        const SpriteFrameModule* record = GetFModule(entry->firstModule + i);
+        if (!(record->flags & 8) && GetModule(record->module)->kind == 5) {
+            *cursor++ = record->x;
+            *cursor++ = record->y;
+        }
+    }
+}
+
+int ASprite::GetNumberOfFrameMarkers(int frame) const
+{
+    const SpriteFrame* entry = GetFrame(frame);
+    int count = 0;
+    for (int i = 0; i < entry->moduleCount; ++i) {
+        const SpriteFrameModule* record = GetFModule(entry->firstModule + i);
+        if (!(record->flags & 8) && GetModule(record->module)->kind == 5)
+            ++count;
+    }
+    return count;
 }
 
 void ASprite::PaintFrame(int frame, int x, int y, int flags) const

@@ -15,6 +15,8 @@ struct SpriteFrame {
     unsigned char unknown22[6];
 };
 struct SpriteData;
+struct SpriteModule;
+struct SpriteFrameModule;
 class IFileStream;
 class ASprite {
 public:
@@ -31,6 +33,11 @@ public:
     void MakeImage(int image, unsigned int flags);
     static irr::video::SColor* s_global_color;
     static irr::core::CMatrix4<float> s_global_transform;
+    static int GetTransformFromFlags(unsigned int flags);
+    const SpriteModule* GetModule(int module) const;
+    const SpriteFrameModule* GetFModule(int index) const;
+    void GetFrameMarkers(int frame, int* output) const;
+    int GetNumberOfFrameMarkers(int frame) const;
     const SpriteFrame* GetFrame(int frame) const;
     int GetFrameFromAFrame(int animation, int frame) const;
     const SpriteBounds& GetFrameBoundingRect(int frame) const;
