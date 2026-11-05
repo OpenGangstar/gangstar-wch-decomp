@@ -156,6 +156,21 @@ int TouchScreenBase::getSwipeDirection(long id) const
     return 0;
 }
 
+long TouchScreenBase::getID(long externalId)
+{
+    long freeSlot = -1;
+    for (long i = 0; i < 8; ++i) {
+        if (points[i].externalId == externalId)
+            return i;
+        if (!points[i].active && freeSlot == -1)
+            freeSlot = i;
+    }
+
+    // A new external ID requires a free touch slot.
+    points[freeSlot].externalId = externalId;
+    return freeSlot;
+}
+
 void TouchScreenBase::enable()
 {
     enabled = true;
