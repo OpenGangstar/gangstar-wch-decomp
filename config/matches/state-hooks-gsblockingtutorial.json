@@ -219,7 +219,12 @@
         ".walking_notNearShop",
         ".hud_showCash",
         ".hud_showSpyGauge",
-        ".hud_weapon_selector"
+        ".hud_weapon_selector",
+        ".hud_show",
+        ".hud_visible",
+        ".hud_minimap_visible",
+        ".hud_weapon_visible",
+        ".hud_hide"
     ],
     "retail_got": true,
     "dependencies": [

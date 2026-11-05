@@ -221,7 +221,12 @@
         ".walking_notNearShop",
         ".hud_showCash",
         ".hud_showSpyGauge",
-        ".hud_weapon_selector"
+        ".hud_weapon_selector",
+        ".hud_show",
+        ".hud_visible",
+        ".hud_minimap_visible",
+        ".hud_weapon_visible",
+        ".hud_hide"
     ],
     "retail_got": true,
     "dependencies": [
@@ -234,10 +239,8 @@
         "_ZN11MenuManager9showTextsEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN13ScriptManager11getInstanceEv",
-        "_ZN11CHudManager4showEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
-        "_ZN11CHudManager4hideEv",
         "_ZN11MenuManager9hideTextsEv",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZN5Menus6Dialog10SetMessageEi",

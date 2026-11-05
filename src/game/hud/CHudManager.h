@@ -32,13 +32,17 @@ public:
     HudElement* enterShopButton;
     unsigned char unknown76[40];
     HudComponent116* component116;
-    unsigned char unknown120[32];
+    unsigned char unknown120[16];
+    HudElement* minimap;
+    unsigned char unknown140[12];
     SpyGauge* spyGauge;
     HudElement* weaponSelectorControl;
     unsigned char unknown160[24];
     HudElement* weaponSelector;
     HudElement* weaponSelectorExtra;
-    unsigned char unknown192[12];
+    HudElement** resetElementsBegin;
+    HudElement** resetElementsEnd;
+    HudElement** resetElementsCapacity;
     unsigned int unknown204;
     bool locked;
 
@@ -49,6 +53,9 @@ public:
     void notNearShop();
     void showSpyGauge(bool show);
     void showCash(bool show);
+    bool isVisible() const;
+    bool isMinimapVisible();
+    bool isWeaponVisible() const;
 };
 
 #endif
