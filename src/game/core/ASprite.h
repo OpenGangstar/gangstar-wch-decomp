@@ -15,8 +15,20 @@ struct SpriteFrame {
     unsigned char unknown22[6];
 };
 struct SpriteData;
-struct SpriteModule;
-struct SpriteFrameModule;
+struct SpriteFrameModule {
+    unsigned short module;
+    short x;
+    short y;
+    unsigned char unknown6;
+    unsigned char flags;
+};
+
+struct SpriteModule {
+    unsigned char kind;
+    unsigned char unknown1[5];
+    short width;
+    short height;
+};
 class IFileStream;
 class ASprite {
 public:

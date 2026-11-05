@@ -45,7 +45,9 @@
         "_ZNK11SwipeButton6draw2dEv",
         "_ZThn8_N11SwipeButton12processTouchEl",
         "_ZN11SwipeButton12processTouchEl",
-        "_ZN11SwipeButton6updateEd"
+        "_ZN11SwipeButton6updateEd",
+        "_ZN11SwipeButtonC1EP7ASpritei",
+        "_ZN11SwipeButtonC2EP7ASpritei"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -70,6 +72,10 @@
     "external_thumb_functions": [
         "_ZN10HudElementD1Ev",
         "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZN10HudElementC1EP7ASpriteib",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7ASprite10GetFModuleEi",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase15clearTouchPointEl"
     ]

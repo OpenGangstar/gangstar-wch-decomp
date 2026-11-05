@@ -33,18 +33,6 @@ struct SpriteData {
     unsigned int animationFrames;
 };
 
-struct SpriteFrameModule {
-    unsigned short module;
-    short x;
-    short y;
-    unsigned char unknown6;
-    unsigned char flags;
-};
-
-struct SpriteModule {
-    unsigned char kind;
-};
-
 template<class T>
 bool Rct<T>::isIntersecting(T x, T y) const
 {
