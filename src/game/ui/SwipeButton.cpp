@@ -8,6 +8,43 @@
  * functions of SwipeButton.cpp here, in the order they appear in the library.
  */
 
+#include "SwipeButton.h"
+#include "../app/Application.h"
+#include "../core/ASprite.h"
+#include "../input/TouchScreenBase.h"
+
+void SwipeButton::processTouchRelease() {}
+
+void SwipeButton::draw2d() const
+{
+    if (flags & 1)
+        sprite->PaintFrame(frame, 0, 0, 0);
+}
+
+void SwipeButton::processTouch(long touch)
+{
+    if (flags & 1) {
+        TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+        int direction = screen->getSwipeDirection(touch);
+        if (direction == 0) {
+            swipeDirection = 0;
+        } else {
+            swipeDirection = direction;
+            screen->clearTouchPoint(touch);
+        }
+    }
+}
+
+void SwipeButton::update(double)
+{
+    if (flags & 1) {
+        long touch = Application::GetInstance()->GetTouchScreen()->getTouchIDInitiatedInRegion(
+            reinterpret_cast<const irr::core::rect<float>&>(touchRegion));
+        if (touch != -1)
+            processTouch(touch);
+    }
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
