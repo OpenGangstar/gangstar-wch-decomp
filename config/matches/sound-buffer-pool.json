@@ -1,0 +1,40 @@
+{
+    "source": "src/game/audio/SoundBuffersPool.cpp",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "functions": [
+        "_ZN13CSoundBuffers18ReleaseSoundBufferEPc",
+        "_ZN13CSoundBuffers14GetSoundBufferEv",
+        "_ZN13CSoundBuffersC2Eiii",
+        "_ZN13CSoundBuffersC1Eiii",
+        "_ZN13CSoundBuffersD1Ev",
+        "_ZN13CSoundBuffersD2Ev"
+    ],
+    "linker_script": "config/linker/SoundBuffersPool.ld",
+    "sections": [
+        ".sound_buffers_release",
+        ".sound_buffers_acquire",
+        ".sound_buffers_constructor",
+        ".sound_buffers_destructor"
+    ],
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1"
+}
