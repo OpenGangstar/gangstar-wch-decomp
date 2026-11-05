@@ -92,6 +92,10 @@
         {
             "name": "_ZN15TouchScreenBase15_TouchPointInfoD1Ev",
             "address": "0x0034cc19"
+        },
+        {
+            "name": "_ZN15TouchScreenBase12ConvertCoordER7Point2DIsE",
+            "address": "0x0034c33d"
         }
     ],
     "sections": [
@@ -120,7 +124,8 @@
         ".touchscreen_slot_destructor",
         ".touchscreen_point2d_d0",
         ".touchscreen_point2d_d1",
-        ".touchscreen_point2d_vtable"
+        ".touchscreen_point2d_vtable",
+        ".touchscreen_convert_coord"
     ],
     "retail_got": true
 }

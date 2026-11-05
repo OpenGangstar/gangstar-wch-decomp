@@ -38,6 +38,7 @@ struct GS3DLightNodes;
 class GS3DStuff : public StateBase, public IEventReceiver {
 public:
     static GS3DLightNodes lightsNodes;
+    static int s_orientation;
 
     GS3DStuff();
     virtual ~GS3DStuff();

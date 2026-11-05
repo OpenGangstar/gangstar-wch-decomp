@@ -12,6 +12,7 @@
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/Rct.h"
+#include "../rendering/GS3DStuff.h"
 #include "TouchScreenBase.h"
 
 void operator delete(void*) throw();
@@ -23,6 +24,28 @@ extern void* __dso_handle;
 extern "C" {
 int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
+}
+
+void TouchScreenBase::ConvertCoord(Point2D<short>& point)
+{
+    switch (GS3DStuff::s_orientation) {
+    case 1: {
+        const short x = point.x;
+        point.x = 480 - point.y;
+        point.y = x;
+        break;
+    }
+    case 3: {
+        const short x = point.x;
+        point.x = point.y;
+        point.y = 320 - x;
+        break;
+    }
+    case 2:
+        point.x = 480 - point.x;
+        point.y = 320 - point.y;
+        break;
+    }
 }
 
 void TouchScreenBase::clear()
