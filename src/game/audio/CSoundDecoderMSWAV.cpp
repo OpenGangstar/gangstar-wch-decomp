@@ -18,6 +18,8 @@ class CSoundDecoderMSWAV : public ISoundDecoder {
 public:
     CSoundDecoderMSWAV();
     virtual ~CSoundDecoderMSWAV();
+    void Init(const char* filename);
+    void UnInit();
     static void InitStaticParameters(CPcmPool* pcmPool, CMSAdpcmPool* adpcmPool);
     virtual int Decode(short* output, int count, bool loop);
     virtual void GoTo(int position);
@@ -79,6 +81,87 @@ int CSoundDecoderMSWAV::Decode(short* output, int count, bool loop)
 void CSoundDecoderMSWAV::GoTo(int position) { decoder->GoTo(position); }
 int CSoundDecoderMSWAV::GetNumSamplesPerDecode(int count) { return decoder->GetNumSamplesPerDecode(count); }
 
+class CMSWavPool {
+public:
+    CMSWavPool(int capacity, int initialCount);
+    ~CMSWavPool();
+    CSoundDecoderMSWAV* GetMSWAVDecoder(const char* filename);
+    void ReleaseMSWAVDecoder(CSoundDecoderMSWAV* decoder);
+
+private:
+    CSoundDecoderMSWAV** slots;
+    int capacity;
+    int initialCount;
+    int firstFree;
+    int lastUsed;
+    int* state;
+};
+
+CMSWavPool::~CMSWavPool()
+{
+    for (int i = 0; i < capacity; ++i)
+        delete slots[i];
+    delete[] slots;
+    slots = 0;
+    delete[] state;
+}
+
+CMSWavPool::CMSWavPool(int maxCount, int preallocate)
+    : capacity(maxCount), initialCount(preallocate)
+{
+    slots = new CSoundDecoderMSWAV*[maxCount];
+    state = new int[maxCount];
+    int i = 0;
+    for (; i < preallocate; ++i) {
+        state[i] = 0;
+        slots[i] = new CSoundDecoderMSWAV;
+    }
+    for (int i = preallocate; i < maxCount; ++i) {
+        state[i] = -1;
+        slots[i] = 0;
+    }
+    firstFree = 0;
+    lastUsed = -1;
+}
+
+void CMSWavPool::ReleaseMSWAVDecoder(CSoundDecoderMSWAV* data)
+{
+    if (!data)
+        return;
+    data->UnInit();
+    int index = -1;
+    for (int i = 0; i <= lastUsed && index < 0; ++i)
+        if (slots[i] == data)
+            index = i;
+    if (index < 0)
+        return;
+    if (firstFree > index)
+        firstFree = index;
+    if (index == lastUsed) {
+        --lastUsed;
+        while (lastUsed >= 0 && state[lastUsed] != 1)
+            --lastUsed;
+    }
+    state[index] = 0;
+}
+
+CSoundDecoderMSWAV* CMSWavPool::GetMSWAVDecoder(const char* filename)
+{
+    if (firstFree >= capacity)
+        return 0;
+    if (state[firstFree] == -1)
+        slots[firstFree] = new CSoundDecoderMSWAV;
+    CSoundDecoderMSWAV* data = slots[firstFree];
+    state[firstFree] = 1;
+    if (firstFree > lastUsed)
+        lastUsed = firstFree;
+    int i = firstFree + 1;
+    while (i < capacity && state[i] == 1)
+        ++i;
+    firstFree = i;
+    data->Init(filename);
+    return data;
+}
 
 CSoundDecoderMSWAV::~CSoundDecoderMSWAV()
 {
