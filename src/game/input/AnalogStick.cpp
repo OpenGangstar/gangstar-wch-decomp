@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/Point2D.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -31,6 +32,8 @@ static void __tcf_2()
         ::operator delete(value.array);
 }
 }
+
+template struct Point2D<short>;
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)

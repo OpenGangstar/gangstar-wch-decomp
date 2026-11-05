@@ -13,6 +13,9 @@ SECTIONS
     .touchscreen_enable 0x0034c5dc : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase6enableEv) }
     .touchscreen_disable 0x0034c5e8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase7disableEv) }
     .touchscreen_is_enabled 0x0034c5f4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase9isEnabledEv) }
+    .touchscreen_point2d_d0 0x00326374 : { *string-startup-touchscreenbase.o(.gnu.linkonce.t._ZN7Point2DIsED0Ev) }
+    .touchscreen_point2d_d1 0x00326394 : { *string-startup-touchscreenbase.o(.gnu.linkonce.t._ZN7Point2DIsED1Ev) }
+    .touchscreen_point2d_vtable 0x004abf88 : { *string-startup-touchscreenbase.o(.gnu.linkonce.d.rel.ro._ZTV7Point2DIsE) }
     .touchscreen_dimension_out 0x0034c5fc : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getDimensionER3RctIsE) }
     .touchscreen_rct_validate 0x0034c64c : { *string-startup-touchscreenbase.o(.text._ZN3RctIsE9_validateEv .gnu.linkonce.t._ZN3RctIsE9_validateEv) }
     .touchscreen_dimension_value 0x0034c6a4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getDimensionEv) }
@@ -22,6 +25,7 @@ SECTIONS
     .touchscreen_rct_d0 0x0034c754 : { *string-startup-touchscreenbase.o(.text._ZN3RctIsED0Ev .gnu.linkonce.t._ZN3RctIsED0Ev) }
     .touchscreen_rct_d1 0x0034c774 : { *string-startup-touchscreenbase.o(.text._ZN3RctIsED1Ev .gnu.linkonce.t._ZN3RctIsED1Ev) }
     .touchscreen_rct_vtable 0x004ad348 : { *string-startup-touchscreenbase.o(.gnu.linkonce.d.rel.ro._ZTV3RctIsE) }
+    .touchscreen_slot_destructor 0x0034cc18 : { *string-startup-touchscreenbase.o(.gnu.linkonce.t._ZN15TouchScreenBase15_TouchPointInfoD1Ev .gnu.linkonce.t._ZN15TouchScreenBase15_TouchPointInfoD2Ev) }
     .string_startup_storage_0 0x004bc060 (NOLOAD) : { *string-startup-touchscreenbase.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }

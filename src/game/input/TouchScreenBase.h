@@ -1,10 +1,10 @@
 #ifndef WCH_INPUT_TOUCH_SCREEN_BASE_H
 #define WCH_INPUT_TOUCH_SCREEN_BASE_H
 
+#include "../core/Point2D.h"
+
 namespace irr { namespace core { template<class T> class rect; } }
 template<class T> struct Rct;
-template<class T> struct Point2D;
-struct TouchPoint;
 struct TouchIDList;
 
 // Virtual call interface and recovered touch-slot layout.
@@ -25,8 +25,8 @@ public:
     virtual bool isRegionPressed(const irr::core::rect<float>& region) const;
     virtual long getTouchIDInitiatedInRegion(const irr::core::rect<float>& region) const;
     virtual long getTouchIDInRegion(const irr::core::rect<float>& region) const;
-    virtual TouchPoint* getTouchPoint(long id);
-    virtual TouchPoint* getFirstTouchPoint(long id);
+    virtual Point2D<short>* getTouchPoint(long id);
+    virtual Point2D<short>* getFirstTouchPoint(long id);
     virtual int getNumPoints(long id) const;
     virtual Point2D<short> getTouchDisplacement(long id) const;
     virtual int getSwipeDirection(long id) const;
@@ -40,9 +40,12 @@ public:
 
 private:
     struct _TouchPointInfo {
-        unsigned char first[8];
-        unsigned char current[8];
-        unsigned char unknown16[16];
+        ~_TouchPointInfo() __attribute__((used));
+
+        Point2D<short> first;
+        Point2D<short> current;
+        Point2D<short> previous;
+        unsigned char unknown24[8];
         bool hasPoints;
         int numPoints;
         int swipeDirection;

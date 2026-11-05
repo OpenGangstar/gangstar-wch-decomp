@@ -36,17 +36,17 @@ void TouchScreenBase::clearTouchPoint(long id)
     points[id].active = false;
 }
 
-TouchPoint* TouchScreenBase::getTouchPoint(long id)
+Point2D<short>* TouchScreenBase::getTouchPoint(long id)
 {
     if (points[id].active && points[id].hasPoints)
-        return reinterpret_cast<TouchPoint*>(points[id].current);
+        return &points[id].current;
     return 0;
 }
 
-TouchPoint* TouchScreenBase::getFirstTouchPoint(long id)
+Point2D<short>* TouchScreenBase::getFirstTouchPoint(long id)
 {
     if (points[id].active && points[id].hasPoints)
-        return reinterpret_cast<TouchPoint*>(points[id].first);
+        return &points[id].first;
     return 0;
 }
 
@@ -112,6 +112,10 @@ static void __tcf_0()
 }
 
 template struct Rct<short>;
+
+inline TouchScreenBase::_TouchPointInfo::~_TouchPointInfo()
+{
+}
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)

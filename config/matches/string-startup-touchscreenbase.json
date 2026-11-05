@@ -88,6 +88,10 @@
         {
             "name": "_ZNK15TouchScreenBase9isEnabledEv",
             "address": "0x0034c5f5"
+        },
+        {
+            "name": "_ZN15TouchScreenBase15_TouchPointInfoD1Ev",
+            "address": "0x0034cc19"
         }
     ],
     "sections": [
@@ -112,7 +116,11 @@
         ".touchscreen_swipe_direction",
         ".touchscreen_enable",
         ".touchscreen_disable",
-        ".touchscreen_is_enabled"
+        ".touchscreen_is_enabled",
+        ".touchscreen_slot_destructor",
+        ".touchscreen_point2d_d0",
+        ".touchscreen_point2d_d1",
+        ".touchscreen_point2d_vtable"
     ],
     "retail_got": true
 }
