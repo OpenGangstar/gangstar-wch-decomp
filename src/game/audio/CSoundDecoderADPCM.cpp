@@ -46,8 +46,6 @@ void CSoundDecoderADPCM::GoTo(int)
     state = 0;
 }
 
-inline ISoundDecoder::~ISoundDecoder() {}
-
 int CSoundDecoderADPCM::Decode(short* output, int count, bool loop)
 {
     if (!state) {

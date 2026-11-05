@@ -3,7 +3,7 @@
 
 class ISoundDecoder {
 public:
-    virtual ~ISoundDecoder();
+    virtual ~ISoundDecoder() {}
     virtual int Decode(short* output, int count, bool loop) = 0;
     virtual void GoTo(int position) = 0;
     virtual int GetNumSamplesPerDecode(int count);

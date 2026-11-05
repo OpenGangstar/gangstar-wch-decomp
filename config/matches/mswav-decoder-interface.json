@@ -12,7 +12,8 @@
         "-march=armv5te",
         "-mtune=xscale",
         "-mfloat-abi=softfp",
-        "-ffunction-sections"
+        "-ffunction-sections",
+        "-fdata-sections"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -29,7 +30,13 @@
         "_ZNK18CSoundDecoderMSWAV11HasMoreDataEv",
         "_ZN18CSoundDecoderMSWAV6DecodeEPsib",
         "_ZN18CSoundDecoderMSWAV4GoToEi",
-        "_ZN18CSoundDecoderMSWAV22GetNumSamplesPerDecodeEi"
+        "_ZN18CSoundDecoderMSWAV22GetNumSamplesPerDecodeEi",
+        "_ZN18CSoundDecoderMSWAVC1Ev",
+        "_ZN18CSoundDecoderMSWAVC2Ev",
+        "_ZN18CSoundDecoderMSWAV20InitStaticParametersEP8CPcmPoolP12CMSAdpcmPool",
+        "_ZN18CSoundDecoderMSWAVD0Ev",
+        "_ZN18CSoundDecoderMSWAVD1Ev",
+        "_ZN18CSoundDecoderMSWAVD2Ev"
     ],
     "linker_script": "config/linker/MSWavDecoderInterface.ld",
     "sections": [
@@ -41,6 +48,17 @@
         ".mswav_method_5",
         ".mswav_method_6",
         ".mswav_method_7",
-        ".mswav_method_8"
-    ]
+        ".mswav_method_8",
+        ".mswav_lifecycle_0",
+        ".mswav_lifecycle_1",
+        ".mswav_lifecycle_2",
+        ".mswav_lifecycle_3",
+        ".mswav_vtable",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "retail_got": true,
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1"
 }
