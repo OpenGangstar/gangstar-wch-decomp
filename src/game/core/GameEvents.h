@@ -4,8 +4,11 @@
 // Dispatch slots observed at the call sites; no complete event layout is claimed.
 class IEvent {
 public:
-    virtual ~IEvent();
-    virtual int getEventID() const;
+    virtual ~IEvent() __attribute__((used));
+    virtual int getEventID() const __attribute__((used));
+
+protected:
+    int eventID;
 };
 class EventManager;
 class IEventReceiver {

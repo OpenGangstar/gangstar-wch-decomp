@@ -8800,7 +8800,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3be9	0x1c	MediaPlayerIPhone.cpp	game	app	pending	_ZNK17MediaPlayerIPhone6_traceEPKc	MediaPlayerIPhone::_trace(char const*) const
 0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhoneC1Ev	MediaPlayerIPhone::MediaPlayerIPhone()
 0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhoneC2Ev	MediaPlayerIPhone::MediaPlayerIPhone()
-0x002d3c35	0x4	Application.cpp	game	app	pending	_ZNK6IEvent10getEventIDEv	IEvent::getEventID() const
+0x002d3c35	0x4	Application.cpp	game	app	matched	_ZNK6IEvent10getEventIDEv	IEvent::getEventID() const
 0x002d3c39	0x6	Application.cpp	game	app	pending	_ZN11Application16SetIsDemoVersionEb	Application::SetIsDemoVersion(bool)
 0x002d3c41	0x6	Application.cpp	game	app	pending	_ZN11Application16GetIsDemoVersionEv	Application::GetIsDemoVersion()
 0x002d3c49	0x14	Application.cpp	game	app	pending	_ZN11Application19GetMaterialRendererEv	Application::GetMaterialRenderer()
@@ -8822,8 +8822,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3ff1	0x24	Application.cpp	game	app	pending	_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable	Application::UnRegisterForDrawingInScene(IDrawable*)
 0x002d4015	0x30	Application.cpp	game	app	pending	_ZN11Application19UnRegisterForUpdateEP10IUpdatable	Application::UnRegisterForUpdate(IUpdatable*)
 0x002d4045	0x30	Application.cpp	game	app	matched	__tcf_5	__tcf_5
-0x002d4075	0x20	Application.cpp	game	app	pending	_ZN6IEventD0Ev	IEvent::~IEvent()
-0x002d4095	0x18	Application.cpp	game	app	pending	_ZN6IEventD1Ev	IEvent::~IEvent()
+0x002d4075	0x20	Application.cpp	game	app	matched	_ZN6IEventD0Ev	IEvent::~IEvent()
+0x002d4095	0x18	Application.cpp	game	app	matched	_ZN6IEventD1Ev	IEvent::~IEvent()
 0x002d40ad	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI12GSInGameMenuEEPT_v	GSInGameMenu* StateMachine::pushState<GSInGameMenu>()
 0x002d40cd	0x30	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11getInstanceEv	SoundManager::getInstance()
 0x002d40fd	0x10c	Application.cpp	game	app	pending	_ZN11Application15ProcessKeyEventEbi	Application::ProcessKeyEvent(bool, int)

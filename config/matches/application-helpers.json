@@ -37,6 +37,18 @@
         {
             "name": "_GLOBAL__I_iAdditionMenuDepth",
             "address": "0x002d5545"
+        },
+        {
+            "name": "_ZNK6IEvent10getEventIDEv",
+            "address": "0x002d3c35"
+        },
+        {
+            "name": "_ZN6IEventD0Ev",
+            "address": "0x002d4075"
+        },
+        {
+            "name": "_ZN6IEventD1Ev",
+            "address": "0x002d4095"
         }
     ],
     "sections": [
@@ -48,7 +60,11 @@
             "name": ".got",
             "offset": 864
         },
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".event_id",
+        ".event_delete",
+        ".event_destructor",
+        ".event_vtable"
     ],
     "retail_got": true
 }
