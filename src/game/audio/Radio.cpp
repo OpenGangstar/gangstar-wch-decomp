@@ -8,6 +8,86 @@
  * functions of Radio.cpp here, in the order they appear in the library.
  */
 
+#include "SoundManager.h"
+#include "../core/ASprite.h"
+#include "../ui/SwipeButton.h"
+
+class AnimObject {
+public:
+    AnimObject();
+    ~AnimObject();
+    virtual void Update(int elapsed);
+    void SetAnim(int animation);
+    void Draw();
+
+    unsigned char animationState[36];
+    ASprite* sprite;
+};
+
+class Radio : public SwipeButton {
+public:
+    Radio(ASprite* sprite, int frame, int stationAnimation, int value1,
+          int value2, int disabledFrame, int mutedAnimation);
+    virtual inline ~Radio();
+    virtual inline void show();
+    virtual void draw2d() const;
+    virtual void processTouch(long touch);
+
+private:
+    AnimObject* animation;
+    int stationAnimation;
+    int unknown68;
+    int unknown72;
+    int disabledFrame;
+    int mutedAnimation;
+    unsigned int radioFlags;
+};
+
+void Radio::show()
+{
+    flags |= 1;
+    if (SoundManager::getInstance()->flags & 0x20)
+        animation->SetAnim(mutedAnimation);
+    else
+        animation->SetAnim(stationAnimation + SoundManager::getInstance()->radioStation);
+}
+
+Radio::~Radio() { delete animation; }
+
+void Radio::draw2d() const
+{
+    if (flags & 1) {
+        if (radioFlags & 1) {
+            sprite->PaintFrame(disabledFrame, 0, 0, 0);
+        } else {
+            SwipeButton::draw2d();
+            animation->Draw();
+        }
+    }
+}
+
+Radio::Radio(ASprite* sprite, int frame, int firstStation, int value1,
+             int value2, int disabled, int muted)
+    : SwipeButton(sprite, frame), animation(new AnimObject), stationAnimation(firstStation),
+      unknown68(value1), unknown72(value2), disabledFrame(disabled),
+      mutedAnimation(muted), radioFlags(0)
+{
+    animation->sprite = sprite;
+}
+
+void Radio::processTouch(long touch)
+{
+    if (!(flags & 1) || (radioFlags & 1))
+        return;
+    SwipeButton::processTouch(touch);
+    if (swipeDirection == 1)
+        SoundManager::getInstance()->lastRadioStation();
+    else if (swipeDirection == 2)
+        SoundManager::getInstance()->nextRadioStation();
+    if (!(SoundManager::getInstance()->flags & 0x20))
+        animation->SetAnim(stationAnimation + SoundManager::getInstance()->radioStation);
+}
+
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"

@@ -11338,20 +11338,20 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00329901	0x7dc	MiniMap.cpp	game	hud	pending	_ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb	MiniMap::_calculateXYOffset(irr::core::vector3d<float> const&, irr::core::rect<int> const&, bool, bool) const
 0x0032a0e0	0x14	MiniMap.cpp	game	hud	pending	_ZThn4_NK7MiniMap6draw2dEv	non-virtual thunk to MiniMap::draw2d() const
 0x0032a0f9	0x564	MiniMap.cpp	game	hud	pending	_ZNK7MiniMap6draw2dEv	MiniMap::draw2d() const
-0x0032a661	0x44	Radio.cpp	game	audio	pending	_ZN5Radio4showEv	Radio::show()
+0x0032a661	0x44	Radio.cpp	game	audio	matched	_ZN5Radio4showEv	Radio::show()
 0x0032a6a5	0x30	Radio.cpp	game	core	matched	__tcf_0	__tcf_0
-0x0032a6d4	0x14	SwipeButton.cpp	game	ui	pending	_ZThn4_N11SwipeButtonD1Ev	non-virtual thunk to SwipeButton::~SwipeButton()
-0x0032a6e9	0x2c	SwipeButton.cpp	game	ui	pending	_ZN11SwipeButtonD1Ev	SwipeButton::~SwipeButton()
-0x0032a714	0x14	Radio.cpp	game	audio	pending	_ZThn4_N5RadioD0Ev	non-virtual thunk to Radio::~Radio()
-0x0032a729	0x4c	Radio.cpp	game	audio	pending	_ZN5RadioD0Ev	Radio::~Radio()
-0x0032a774	0x14	Radio.cpp	game	audio	pending	_ZThn4_N5RadioD1Ev	non-virtual thunk to Radio::~Radio()
-0x0032a789	0x44	Radio.cpp	game	audio	pending	_ZN5RadioD1Ev	Radio::~Radio()
-0x0032a7cc	0x14	Radio.cpp	game	audio	pending	_ZThn4_NK5Radio6draw2dEv	non-virtual thunk to Radio::draw2d() const
-0x0032a7e1	0x32	Radio.cpp	game	audio	pending	_ZNK5Radio6draw2dEv	Radio::draw2d() const
-0x0032a815	0x64	Radio.cpp	game	audio	pending	_ZN5RadioC2EP7ASpriteiiiiii	Radio::Radio(ASprite*, int, int, int, int, int, int)
-0x0032a815	0x64	Radio.cpp	game	audio	pending	_ZN5RadioC1EP7ASpriteiiiiii	Radio::Radio(ASprite*, int, int, int, int, int, int)
-0x0032a878	0x14	Radio.cpp	game	audio	pending	_ZThn8_N5Radio12processTouchEl	non-virtual thunk to Radio::processTouch(long)
-0x0032a88d	0x68	Radio.cpp	game	audio	pending	_ZN5Radio12processTouchEl	Radio::processTouch(long)
+0x0032a6d4	0x14	SwipeButton.cpp	game	ui	matched	_ZThn4_N11SwipeButtonD1Ev	non-virtual thunk to SwipeButton::~SwipeButton()
+0x0032a6e9	0x2c	SwipeButton.cpp	game	ui	matched	_ZN11SwipeButtonD1Ev	SwipeButton::~SwipeButton()
+0x0032a714	0x14	Radio.cpp	game	audio	matched	_ZThn4_N5RadioD0Ev	non-virtual thunk to Radio::~Radio()
+0x0032a729	0x4c	Radio.cpp	game	audio	matched	_ZN5RadioD0Ev	Radio::~Radio()
+0x0032a774	0x14	Radio.cpp	game	audio	matched	_ZThn4_N5RadioD1Ev	non-virtual thunk to Radio::~Radio()
+0x0032a789	0x44	Radio.cpp	game	audio	matched	_ZN5RadioD1Ev	Radio::~Radio()
+0x0032a7cc	0x14	Radio.cpp	game	audio	matched	_ZThn4_NK5Radio6draw2dEv	non-virtual thunk to Radio::draw2d() const
+0x0032a7e1	0x32	Radio.cpp	game	audio	matched	_ZNK5Radio6draw2dEv	Radio::draw2d() const
+0x0032a815	0x64	Radio.cpp	game	audio	matched	_ZN5RadioC2EP7ASpriteiiiiii	Radio::Radio(ASprite*, int, int, int, int, int, int)
+0x0032a815	0x64	Radio.cpp	game	audio	matched	_ZN5RadioC1EP7ASpriteiiiiii	Radio::Radio(ASprite*, int, int, int, int, int, int)
+0x0032a878	0x14	Radio.cpp	game	audio	matched	_ZThn8_N5Radio12processTouchEl	non-virtual thunk to Radio::processTouch(long)
+0x0032a88d	0x68	Radio.cpp	game	audio	matched	_ZN5Radio12processTouchEl	Radio::processTouch(long)
 0x0032a8f5	0x58	Radio.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032a94d	0x14	Radio.cpp	game	core	matched	_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii	_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii
 0x0032a961	0x30	RetroEffect.cpp	game	rendering	matched	__tcf_2	__tcf_2
