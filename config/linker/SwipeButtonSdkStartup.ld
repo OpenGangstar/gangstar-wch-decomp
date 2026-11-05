@@ -2,6 +2,8 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-swipebutton/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__aeabi_fadd = 0x001c4154;
+__aeabi_i2f = 0x001c41e4;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
@@ -19,6 +21,7 @@ SECTIONS
     .swipe_method_7 0x0032bc9c : { *sdk-startup-swipebutton.o(.text._ZN11SwipeButton12processTouchEl) }
     .swipe_method_8 0x0032bcd0 : { *sdk-startup-swipebutton.o(.text._ZN11SwipeButton6updateEd) }
     .swipe_base_destructor 0x0032a6d4 : { *sdk-startup-swipebutton.o(.gnu.linkonce.t._ZN11SwipeButtonD1Ev) }
+    .swipe_constructor 0x0032bcfc : { *sdk-startup-swipebutton.o(.text._ZN11SwipeButtonC1EP7ASpritei) }
     .swipe_vtable 0x004ac7b0 : { *sdk-startup-swipebutton.o(.data.rel.ro._ZTV11SwipeButton .gnu.linkonce.d.rel.ro._ZTV11SwipeButton) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }

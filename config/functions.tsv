@@ -11424,8 +11424,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032bc88	0x14	SwipeButton.cpp	game	ui	matched	_ZThn8_N11SwipeButton12processTouchEl	non-virtual thunk to SwipeButton::processTouch(long)
 0x0032bc9d	0x32	SwipeButton.cpp	game	ui	matched	_ZN11SwipeButton12processTouchEl	SwipeButton::processTouch(long)
 0x0032bcd1	0x2c	SwipeButton.cpp	game	ui	matched	_ZN11SwipeButton6updateEd	SwipeButton::update(double)
-0x0032bcfd	0xa4	SwipeButton.cpp	game	ui	pending	_ZN11SwipeButtonC2EP7ASpritei	SwipeButton::SwipeButton(ASprite*, int)
-0x0032bcfd	0xa4	SwipeButton.cpp	game	ui	pending	_ZN11SwipeButtonC1EP7ASpritei	SwipeButton::SwipeButton(ASprite*, int)
+0x0032bcfd	0xa4	SwipeButton.cpp	game	ui	matched	_ZN11SwipeButtonC2EP7ASpritei	SwipeButton::SwipeButton(ASprite*, int)
+0x0032bcfd	0xa4	SwipeButton.cpp	game	ui	matched	_ZN11SwipeButtonC1EP7ASpritei	SwipeButton::SwipeButton(ASprite*, int)
 0x0032bda1	0x6c	SwipeButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032be0d	0x14	SwipeButton.cpp	game	core	matched	_GLOBAL__I__ZN11SwipeButtonC2EP7ASpritei	_GLOBAL__I__ZN11SwipeButtonC2EP7ASpritei
 0x0032be21	0x2	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarkerD2Ev	TargetMarker::~TargetMarker()

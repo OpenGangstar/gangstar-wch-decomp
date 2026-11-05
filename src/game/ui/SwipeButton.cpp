@@ -45,6 +45,24 @@ void SwipeButton::update(double)
     }
 }
 
+SwipeButton::SwipeButton(ASprite* image, int firstFrame)
+    : HudElement(image, firstFrame, false), swipeDirection(0)
+{
+    const SpriteFrame* entry = sprite->GetFrame(firstFrame);
+    const SpriteFrameModule* part = sprite->GetFModule(entry->firstModule);
+    const SpriteModule* module = sprite->GetModule(part->module);
+    const float x = part->x;
+    const float y = part->y;
+    const float width = module->width;
+    const short height = module->height;
+    const float right = x + width;
+    touchRegion.coordinates[0] = x;
+    touchRegion.coordinates[1] = y;
+    touchRegion.coordinates[2] = right;
+    const float heightFloat = height;
+    touchRegion.coordinates[3] = y + heightFloat;
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
