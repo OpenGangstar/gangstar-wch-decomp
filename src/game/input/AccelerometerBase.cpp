@@ -12,6 +12,7 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "AccelerometerBase.h"
+#include "../core/Logs.h"
 
 AccelerometerBase::AccelerometerBase()
 {
@@ -36,6 +37,13 @@ void AccelerometerBase::clear()
     baselineY = y;
     baselineZ = z;
     minX = maxX = z;
+}
+
+static const char traceCategory[] = "AccelerometerBase";
+
+void AccelerometerBase::_trace(const char* message) const
+{
+    Logs::trace(traceCategory, message);
 }
 
 void operator delete(void*) throw();

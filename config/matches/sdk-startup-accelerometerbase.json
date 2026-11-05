@@ -64,6 +64,10 @@
         {
             "name": "_ZN17AccelerometerBaseD2Ev",
             "address": "0x0034d801"
+        },
+        {
+            "name": "_ZNK17AccelerometerBase6_traceEPKc",
+            "address": "0x0034d45d"
         }
     ],
     "sections": [
@@ -83,11 +87,16 @@
         ".accelerometer_base_vtable",
         ".accelerometer_updatable_d0",
         ".accelerometer_updatable_d1",
-        ".accelerometer_updatable_vtable"
+        ".accelerometer_updatable_vtable",
+        ".accelerometer_trace",
+        ".accelerometer_trace_category"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN17AccelerometerBase11_calcAnglesEv",
         "_ZN17AccelerometerBase5movedEfff"
+    ],
+    "dependencies": [
+        "logs"
     ]
 }
