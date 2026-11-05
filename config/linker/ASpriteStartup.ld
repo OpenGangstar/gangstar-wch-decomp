@@ -18,6 +18,8 @@ SECTIONS
     .asprite_animation_1 0x002d4550 : { *asprite-startup.o(.text._ZN7ASprite13GetFrameWidthEi) }
     .asprite_animation_2 0x0034979c : { *asprite-startup.o(.text._ZNK7ASprite9GetAFrameEi) }
     .asprite_animation_5 0x00349d60 : { *asprite-startup.o(.text._ZNK7ASprite19GetModuleFromAFrameEii) }
+    .asprite_paint_frame 0x0034a0f0 : { *asprite-startup.o(.text._ZNK7ASprite10PaintFrameEiiii) }
+    .asprite_paint_animation 0x0034a144 : { *asprite-startup.o(.text._ZNK7ASprite11PaintAFrameEiiiii) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

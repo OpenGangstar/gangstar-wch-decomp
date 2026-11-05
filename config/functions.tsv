@@ -12619,8 +12619,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349dd5	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASprite10GetAnimIdxEPKc	ASprite::GetAnimIdx(char const*)
 0x00349e15	0x200	ASprite.cpp	game	rendering	pending	_ZNK7ASprite11PaintModuleEiiii	ASprite::PaintModule(int, int, int, int) const
 0x0034a015	0xdc	ASprite.cpp	game	rendering	pending	_ZNK7ASprite12PaintFModuleEiiiii	ASprite::PaintFModule(int, int, int, int, int) const
-0x0034a0f1	0x54	ASprite.cpp	game	rendering	pending	_ZNK7ASprite10PaintFrameEiiii	ASprite::PaintFrame(int, int, int, int) const
-0x0034a145	0x40	ASprite.cpp	game	rendering	pending	_ZNK7ASprite11PaintAFrameEiiiii	ASprite::PaintAFrame(int, int, int, int, int) const
+0x0034a0f1	0x54	ASprite.cpp	game	rendering	matched	_ZNK7ASprite10PaintFrameEiiii	ASprite::PaintFrame(int, int, int, int) const
+0x0034a145	0x40	ASprite.cpp	game	rendering	matched	_ZNK7ASprite11PaintAFrameEiiiii	ASprite::PaintAFrame(int, int, int, int, int) const
 0x0034a185	0x98	ASprite.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034a21d	0x14	ASprite.cpp	game	rendering	matched	_GLOBAL__I__ZN7ASprite18s_global_transformE	_GLOBAL__I__ZN7ASprite18s_global_transformE
 0x0034a231	0x5c	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6__rect14isIntersectingEii	ASpriteData::__rect::isIntersecting(int, int)

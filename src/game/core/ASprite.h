@@ -8,7 +8,8 @@ namespace core { template<class T> class CMatrix4; }
 }
 struct SpriteBounds { int left, right, top, bottom; };
 struct SpriteFrame {
-    unsigned char unknown0[4];
+    short moduleCount;
+    unsigned char unknown2[2];
     SpriteBounds bounds;
     short firstModule;
     unsigned char unknown22[6];
@@ -29,6 +30,7 @@ public:
     const SpriteBounds& GetAnimFrameBoundingRect(int animation, int frame) const;
     int GetAFrame(int animation, int frame);
     void PaintAFrame(int animation, int frame, int x, int y, int flags) const;
+    void PaintFModule(int frame, int module, int x, int y, int flags) const;
     void PaintFrame(int frame, int x, int y, int flags) const;
 
 private:
