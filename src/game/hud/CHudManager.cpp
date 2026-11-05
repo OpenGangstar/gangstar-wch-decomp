@@ -9,6 +9,7 @@
  */
 
 #include "CHudManager.h"
+#include "SpyGauge.h"
 
 void CHudManager::init()
 {
@@ -21,6 +22,12 @@ void CHudManager::lock() { locked = true; }
 void CHudManager::unlock() { locked = false; }
 
 bool CHudManager::isLocked() const { return locked; }
+
+void CHudManager::useSpyBGInSpyGauge() { spyGauge->useSpyBG(); }
+
+void CHudManager::useDriveBadBGInSpyGauge() { spyGauge->useDriveBadBG(); }
+
+void CHudManager::useDriveWellBGInSpyGauge() { spyGauge->useDriveWellBG(); }
 
 // Recovered module startup family; storage remains local to this TU.
 #include "../core/LocalStartupStorage.h"

@@ -141,7 +141,10 @@
         ".module_startup_script_manager_helpers_function_0",
         ".module_startup_script_manager_helpers_function_1",
         ".module_startup_script_manager_helpers_function_2",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".spy_gauge_spy",
+        ".spy_gauge_drive_bad",
+        ".spy_gauge_drive_well"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -157,7 +160,10 @@
         "_ZN13CameraManager11getInstanceEv",
         "_ZN13CameraManager20setTouchScreenInputsEb",
         "_ZN11MenuManager9showTextsEv",
-        "_ZN11CHudManager4showEv"
+        "_ZN11CHudManager4showEv",
+        "_ZN8SpyGauge8useSpyBGEv",
+        "_ZN8SpyGauge13useDriveBadBGEv",
+        "_ZN8SpyGauge14useDriveWellBGEv"
     ],
     "dependencies": [
         "hud-manager-helpers",
