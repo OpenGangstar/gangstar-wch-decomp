@@ -10,6 +10,7 @@ struct TouchIDList;
 // Virtual call interface and recovered touch-slot layout.
 class TouchScreenBase {
 public:
+    TouchScreenBase();
     virtual ~TouchScreenBase();
     virtual void update(double elapsed);
     virtual short getLeftBound() const = 0;

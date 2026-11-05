@@ -48,6 +48,7 @@ extern int __pointerId;
 
 class TouchScreenWin32 : public TouchScreenBase, public irr::IEventReceiver {
 public:
+    TouchScreenWin32();
     virtual ~TouchScreenWin32();
     virtual bool OnEvent(const irr::SEvent& event);
     virtual short getLeftBound() const __attribute__((used)) { return 0; }
@@ -62,6 +63,14 @@ public:
     void touchMoved(float x, float y, int externalId);
     void touchBegan(float x, float y, int externalId);
 };
+
+TouchScreenWin32::TouchScreenWin32()
+{
+}
+
+TouchScreenWin32::~TouchScreenWin32()
+{
+}
 
 long TouchScreenWin32::getTouchIDInRegion(const irr::core::rect<float>& region) const
 {

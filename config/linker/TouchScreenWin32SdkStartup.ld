@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-touchscreenwin32/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__cxa_pure_virtual = 0;
 __aeabi_atexit = 0x001c494c;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fcmpge = 0x001c4364;
@@ -24,6 +25,15 @@ SECTIONS
     .win32_isRegionPressed 0x0034d078 : { *sdk-startup-touchscreenwin32.o(.text._ZNK16TouchScreenWin3215isRegionPressedERKN3irr4core4rectIfEE) }
     .win32_on_event 0x0034d350 : { *sdk-startup-touchscreenwin32.o(.text._ZThn472_N16TouchScreenWin327OnEventERKN3irr6SEventE .text._ZN16TouchScreenWin327OnEventERKN3irr6SEventE) }
     .win32_mouse_down 0x004bc0dc (NOLOAD) : { *sdk-startup-touchscreenwin32.o(.bss._ZZN16TouchScreenWin327OnEventERKN3irr6SEventEE6isDown) }
+    .win32_constructor 0x0034d084 : { *sdk-startup-touchscreenwin32.o(.text._ZN16TouchScreenWin32C1Ev .text._ZN16TouchScreenWin32C2Ev) }
+    .win32_deleting_destructor 0x0034d154 : { *sdk-startup-touchscreenwin32.o(.text._ZN16TouchScreenWin32D0Ev) }
+    .win32_destructor 0x0034d1a4 : { *sdk-startup-touchscreenwin32.o(.text._ZN16TouchScreenWin32D1Ev .text._ZN16TouchScreenWin32D2Ev) }
+    .win32_deleting_thunk 0x0034d140 : { *sdk-startup-touchscreenwin32.o(.text._ZThn472_N16TouchScreenWin32D0Ev) }
+    .win32_destructor_thunk 0x0034d190 : { *sdk-startup-touchscreenwin32.o(.text._ZThn472_N16TouchScreenWin32D1Ev) }
+    .win32_vtable 0x004ad3d0 : { *sdk-startup-touchscreenwin32.o(.data.rel.ro._ZTV16TouchScreenWin32 .gnu.linkonce.d.rel.ro._ZTV16TouchScreenWin32) }
+    .win32_receiver_d0 0x002537d8 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZN3irr14IEventReceiverD0Ev) }
+    .win32_receiver_d1 0x002537f8 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZN3irr14IEventReceiverD1Ev) }
+    .win32_receiver_vtable 0x00488968 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.d.rel.ro._ZTVN3irr14IEventReceiverE) }
     .sdk_startup_function_0 0x0034d03c : { *sdk-startup-touchscreenwin32.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x0034d0c0 : { *sdk-startup-touchscreenwin32.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x0034d12c : { *sdk-startup-touchscreenwin32.o(.text._GLOBAL__I__ZN16TouchScreenWin32C2Ev) }

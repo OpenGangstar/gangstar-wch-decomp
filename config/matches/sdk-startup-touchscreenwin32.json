@@ -84,6 +84,34 @@
         {
             "name": "_ZN16TouchScreenWin327OnEventERKN3irr6SEventE",
             "address": "0x0034d365"
+        },
+        {
+            "name": "_ZN16TouchScreenWin32C1Ev",
+            "address": "0x0034d085"
+        },
+        {
+            "name": "_ZN16TouchScreenWin32C2Ev",
+            "address": "0x0034d085"
+        },
+        {
+            "name": "_ZN16TouchScreenWin32D0Ev",
+            "address": "0x0034d155"
+        },
+        {
+            "name": "_ZN16TouchScreenWin32D1Ev",
+            "address": "0x0034d1a5"
+        },
+        {
+            "name": "_ZN16TouchScreenWin32D2Ev",
+            "address": "0x0034d1a5"
+        },
+        {
+            "name": "_ZThn472_N16TouchScreenWin32D0Ev",
+            "address": "0x0034d140"
+        },
+        {
+            "name": "_ZThn472_N16TouchScreenWin32D1Ev",
+            "address": "0x0034d190"
         }
     ],
     "sections": [
@@ -105,13 +133,26 @@
         ".win32_getBottomBound",
         ".win32_getTouchIDInRegion",
         ".win32_isRegionPressed",
-        ".win32_on_event"
+        ".win32_on_event",
+        ".win32_constructor",
+        ".win32_deleting_destructor",
+        ".win32_destructor",
+        ".win32_deleting_thunk",
+        ".win32_destructor_thunk",
+        ".win32_vtable",
+        ".win32_receiver_d0",
+        ".win32_receiver_d1",
+        ".win32_receiver_vtable"
     ],
     "retail_got": true,
     "dependencies": [
         "string-startup-touchscreenbase"
     ],
     "external_thumb_functions": [
-        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl"
+        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
+        "_ZN15TouchScreenBaseC1Ev",
+        "_ZN15TouchScreenBaseD1Ev",
+        "_ZNK15TouchScreenBase20getTouchDisplacementEl",
+        "_ZNK15TouchScreenBase14getTouchIDListEv"
     ]
 }
