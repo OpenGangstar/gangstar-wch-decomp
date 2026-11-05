@@ -42,7 +42,8 @@
         "_ZN11CDrivingHudD2Ev",
         "_ZN11CDrivingHudD1Ev",
         "_ZN11CDrivingHud12showSpyGaugeEb",
-        "_ZN11CDrivingHud8showCashEb"
+        "_ZN11CDrivingHud8showCashEb",
+        "_ZN11CDrivingHud20toggleWeaponSelectorEb"
     ],
     "sections": [
         ".ai_startup_function_0",

@@ -17,6 +17,7 @@ public:
     void notNearShop();
     void showSpyGauge(bool show);
     void showCash(bool show);
+    void toggleWeaponSelector(bool show);
 };
 
 #endif

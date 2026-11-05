@@ -220,7 +220,8 @@
         ".walking_isNearShop",
         ".walking_notNearShop",
         ".hud_showCash",
-        ".hud_showSpyGauge"
+        ".hud_showSpyGauge",
+        ".hud_weapon_selector"
     ],
     "retail_got": true,
     "dependencies": [
@@ -263,6 +264,8 @@
         "_ZN11CWalkingHud12showSpyGaugeEb",
         "_ZN11CWalkingHud8showCashEb",
         "_ZN11CDrivingHud12showSpyGaugeEb",
-        "_ZN11CDrivingHud8showCashEb"
+        "_ZN11CDrivingHud8showCashEb",
+        "_ZN11CWalkingHud20toggleWeaponSelectorEb",
+        "_ZN11CDrivingHud20toggleWeaponSelectorEb"
     ]
 }

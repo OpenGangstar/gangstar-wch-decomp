@@ -25,6 +25,12 @@ void CHudManager::unlock() { locked = false; }
 
 bool CHudManager::isLocked() const { return locked; }
 
+void CHudManager::toggleWeaponSelector(bool show)
+{
+    static_cast<CWalkingHud*>(initialHud)->toggleWeaponSelector(show);
+    static_cast<CDrivingHud*>(drivingHud)->toggleWeaponSelector(show);
+}
+
 void CHudManager::showCash(bool show)
 {
     if (activeHud->isWalkingHud())

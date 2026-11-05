@@ -72,6 +72,23 @@ void CWalkingHud::showCash(bool show)
         unknown8 &= ~0x8000u;
 }
 
+void CWalkingHud::toggleWeaponSelector(bool show)
+{
+    if (show) {
+        unknown8 |= 0x100;
+        manager->weaponSelector->show();
+        manager->weaponSelectorExtra->show();
+        unknown8 |= 0x2000;
+        manager->weaponSelectorControl->show();
+    } else {
+        unknown8 &= ~0x100u;
+        manager->weaponSelector->hide();
+        manager->weaponSelectorExtra->hide();
+        unknown8 &= ~0x2000u;
+        manager->weaponSelectorControl->hide();
+    }
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

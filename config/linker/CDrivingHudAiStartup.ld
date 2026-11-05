@@ -34,6 +34,7 @@ SECTIONS
     .hud_entry_1 0x00322f88 : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHudD1Ev) }
     .hud_showSpyGauge 0x00322fa0 : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud12showSpyGaugeEb) }
     .hud_showCash 0x00322fdc : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud8showCashEb) }
+    .hud_weapon_selector 0x00322ffc : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud20toggleWeaponSelectorEb) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

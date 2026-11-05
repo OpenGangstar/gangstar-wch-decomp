@@ -8,4 +8,5 @@ SECTIONS
     .walking_notNearShop 0x00323a5c : { *hud-manager-helpers.o(.text._ZN11CHudManager11notNearShopEv) }
     .hud_showCash 0x003237e0 : { *hud-manager-helpers.o(.text._ZN11CHudManager8showCashEb) }
     .hud_showSpyGauge 0x00323840 : { *hud-manager-helpers.o(.text._ZN11CHudManager12showSpyGaugeEb) }
+    .hud_weapon_selector 0x003236e8 : { *hud-manager-helpers.o(.text._ZN11CHudManager20toggleWeaponSelectorEb) }
 }
