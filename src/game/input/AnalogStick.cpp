@@ -41,6 +41,10 @@ private:
     Mode mode;
 };
 
+inline AnalogStick::~AnalogStick()
+{
+}
+
 void AnalogStick::switchMode(Mode value)
 {
     mode = value;
