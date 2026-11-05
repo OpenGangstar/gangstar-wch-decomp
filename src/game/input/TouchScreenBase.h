@@ -39,6 +39,9 @@ public:
     void disable();
     bool isEnabled() const;
 
+protected:
+    long getID(long externalId);
+
 private:
     void _trace(const char* message) const;
 
