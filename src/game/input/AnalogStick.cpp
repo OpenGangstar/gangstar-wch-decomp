@@ -13,6 +13,61 @@
 #include "../core/LocalStartupText.h"
 #include "../core/GameEventMethods.h"
 #include "../core/Point2D.h"
+#include "../app/Application.h"
+#include "../core/Rect.h"
+#include "../hud/HudElement.h"
+#include "TouchScreenBase.h"
+
+class AnalogStick : public HudElement {
+public:
+    enum Mode { Mode0, Mode1, Mode2, ModeForceWidth = 0x7fffffff };
+
+    virtual ~AnalogStick();
+    void switchMode(Mode value);
+    virtual void reset();
+    virtual void update(double elapsed);
+    virtual void draw2d() const;
+    virtual void processTouch(long id);
+    virtual void processTouchRelease();
+
+private:
+    unsigned char unknown56[8];
+    float displacement;
+    unsigned char unknown68[4];
+    float displacementX;
+    float displacementY;
+    float magnitude;
+    unsigned char unknown84[16];
+    Mode mode;
+};
+
+void AnalogStick::switchMode(Mode value)
+{
+    mode = value;
+}
+
+void AnalogStick::reset()
+{
+    flags &= ~2u;
+    displacement = 0.0f;
+    displacementX = 0.0f;
+    displacementY = 0.0f;
+    magnitude = 0.0f;
+}
+
+void AnalogStick::update(double)
+{
+    if (flags & 1u) {
+        TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+        const irr::core::rect<float>& region =
+            reinterpret_cast<const irr::core::rect<float>&>(touchRegion);
+        const long id = screen->getTouchIDInitiatedInRegion(region);
+        if (id != -1)
+            processTouch(id);
+        else
+            processTouchRelease();
+    }
+}
 
 // Event declarations for the recovered destructor and vtable layout.
 class EvStickMove : public IEvent {

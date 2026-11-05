@@ -92,6 +92,18 @@
         {
             "name": "_ZN24EvLeftRightStickReleasedD1Ev",
             "address": "0x00326859"
+        },
+        {
+            "name": "_ZN11AnalogStick10switchModeENS_4ModeE",
+            "address": "0x00326341"
+        },
+        {
+            "name": "_ZN11AnalogStick5resetEv",
+            "address": "0x00326431"
+        },
+        {
+            "name": "_ZN11AnalogStick6updateEd",
+            "address": "0x00326449"
         }
     ],
     "sections": [
@@ -127,7 +139,13 @@
         ".event_id",
         ".event_delete",
         ".event_destructor",
-        ".event_vtable"
+        ".event_vtable",
+        ".analog_stick_mode",
+        ".analog_stick_reset",
+        ".analog_stick_update"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv"
+    ]
 }

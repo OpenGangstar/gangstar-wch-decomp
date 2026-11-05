@@ -6,6 +6,9 @@ __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .analog_stick_mode 0x00326340 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick10switchModeENS_4ModeE) }
+    .analog_stick_reset 0x00326430 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick5resetEv) }
+    .analog_stick_update 0x00326448 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick6updateEd) }
     .input_EvStickMove_D0 0x00326e14 : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11EvStickMoveD0Ev) }
     .input_EvStickMove_D1 0x00326794 : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11EvStickMoveD1Ev) }
     .input_EvStickMove_vtable 0x004abf70 : { *sdk-startup-analogstick.o(.gnu.linkonce.d.rel.ro._ZTV11EvStickMove) }
