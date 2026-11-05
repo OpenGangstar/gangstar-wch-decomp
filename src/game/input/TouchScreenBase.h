@@ -32,6 +32,7 @@ public:
     virtual int getSwipeDirection(long id) const;
     virtual TouchIDList getTouchIDList() const;
 
+    static void ConvertCoord(Point2D<short>& point);
     void clear();
     void clearTouchPoint(long id);
     void enable();
