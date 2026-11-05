@@ -120,6 +120,14 @@
         {
             "name": "_ZN11AnalogStickD1Ev",
             "address": "0x00326405"
+        },
+        {
+            "name": "_ZThn4_NK11AnalogStick6draw2dEv",
+            "address": "0x00326480"
+        },
+        {
+            "name": "_ZNK11AnalogStick6draw2dEv",
+            "address": "0x00326495"
         }
     ],
     "sections": [

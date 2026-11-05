@@ -15,6 +15,8 @@
 #include "../core/Point2D.h"
 #include "../app/Application.h"
 #include "../core/Rect.h"
+#include "../core/ASprite.h"
+#include "../core/Color.h"
 #include "../hud/HudElement.h"
 #include "TouchScreenBase.h"
 
@@ -39,6 +41,7 @@ private:
     float magnitude;
     unsigned char unknown84[16];
     Mode mode;
+    int stickFrame;
 };
 
 inline AnalogStick::~AnalogStick()
@@ -71,6 +74,33 @@ void AnalogStick::update(double)
         else
             processTouchRelease();
     }
+}
+
+static inline void setStickColor(irr::video::SColor& color, unsigned int alpha, unsigned int red)
+{
+    color.b = 255; color.g = 255; color.a = alpha; color.r = red;
+}
+
+void AnalogStick::draw2d() const
+{
+    if (!(flags & 1)) return;
+    irr::video::SColor colors[4];
+    if ((flags & 16) && (unknown52 & 256)) {
+        setStickColor(colors[0],191,51);
+        setStickColor(colors[1],191,51);
+        setStickColor(colors[2],191,51);
+        setStickColor(colors[3],191,51);
+        ASprite::s_global_color = colors;
+    } else if (!(flags & 2)) {
+        setStickColor(colors[0],128,255);
+        setStickColor(colors[1],128,255);
+        setStickColor(colors[2],128,255);
+        setStickColor(colors[3],128,255);
+        ASprite::s_global_color = colors;
+    }
+    sprite->PaintFrame(frame,0,0,0);
+    sprite->PaintFrame(stickFrame,static_cast<int>(displacementY),static_cast<int>(magnitude),0);
+    ASprite::s_global_color = 0;
 }
 
 // Event declarations for the recovered destructor and vtable layout.
