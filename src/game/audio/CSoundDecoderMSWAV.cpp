@@ -8,6 +8,7 @@
  * functions of CSoundDecoderMSWAV.cpp here, in the order they appear in the library.
  */
 
+#include "CSoundDecoderMSWAV.h"
 #include "CSoundDecoderMSADPCM.h"
 #include "CSoundDecoderPCM.h"
 #include "../core/NativeStdio.h"
@@ -15,34 +16,6 @@
 static const char wavReadMode[] __attribute__((section(".rodata.wav_read_mode"))) = "rb";
 static const char unknownWavFormat[] __attribute__((section(".rodata.wav_unknown_format"))) =
     "CSoundDecoderMSWAV::CSoundDecoderMSWAV: asked to decompess unknown format: %i\n";
-
-class CSoundDecoderMSWAV : public ISoundDecoder {
-public:
-    CSoundDecoderMSWAV();
-    CSoundDecoderMSWAV(const char* filename);
-    virtual ~CSoundDecoderMSWAV();
-    void Init(const char* filename);
-    void UnInit();
-    static void InitStaticParameters(CPcmPool* pcmPool, CMSAdpcmPool* adpcmPool);
-    virtual int Decode(short* output, int count, bool loop);
-    virtual void GoTo(int position);
-    virtual int GetNumSamplesPerDecode(int count);
-    virtual int GetSamplingRate() const __attribute__((weak));
-    virtual int GetChannel() const __attribute__((weak));
-    virtual int GetPCMSize() const __attribute__((weak));
-    virtual int GetNbEffectiveSamples() const __attribute__((weak));
-    virtual int GetTotalSamples() const __attribute__((weak));
-    virtual bool HasMoreData() const __attribute__((weak));
-
-private:
-    ISoundDecoder* decoder;
-    NativeFile* file;
-    RiffHeader riff;
-    FormatHeader format;
-
-    static CPcmPool* s_msPcmPool;
-    static CMSAdpcmPool* s_msAdpcmPool;
-};
 
 int CSoundDecoderMSWAV::GetSamplingRate() const { return decoder->GetSamplingRate(); }
 int CSoundDecoderMSWAV::GetChannel() const { return decoder->GetChannel(); }
@@ -72,22 +45,6 @@ int CSoundDecoderMSWAV::Decode(short* output, int count, bool loop)
 
 void CSoundDecoderMSWAV::GoTo(int position) { decoder->GoTo(position); }
 int CSoundDecoderMSWAV::GetNumSamplesPerDecode(int count) { return decoder->GetNumSamplesPerDecode(count); }
-
-class CMSWavPool {
-public:
-    CMSWavPool(int capacity, int initialCount);
-    ~CMSWavPool();
-    CSoundDecoderMSWAV* GetMSWAVDecoder(const char* filename);
-    void ReleaseMSWAVDecoder(CSoundDecoderMSWAV* decoder);
-
-private:
-    CSoundDecoderMSWAV** slots;
-    int capacity;
-    int initialCount;
-    int firstFree;
-    int lastUsed;
-    int* state;
-};
 
 CMSWavPool::~CMSWavPool()
 {

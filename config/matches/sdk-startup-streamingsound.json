@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -47,7 +48,18 @@
         "_ZN14CStreamingPoolC2Eii",
         "_ZN14CStreamingPoolC1Eii",
         "_ZN14CStreamingPool21ReleaseStreamingSoundEP14StreamingSound",
-        "_ZN14CStreamingPool17GetStreamingSoundEP10CSoundData"
+        "_ZN14CStreamingPool17GetStreamingSoundEP10CSoundData",
+        "_ZN14StreamingSound4PlayEbfi",
+        "_ZN14StreamingSound6UnInitEv",
+        "_ZN14StreamingSoundD0Ev",
+        "_ZN14StreamingSoundD2Ev",
+        "_ZN14StreamingSoundD1Ev",
+        "_ZN14StreamingSound5FlushEi",
+        "_ZN14StreamingSound14UpdateDecodingEv",
+        "_ZN14StreamingSound21_SaturateAndFlushLiteEv",
+        "_ZN14StreamingSoundC1EP10CSoundDatai",
+        "_ZN14StreamingSoundC2EP10CSoundDatai",
+        "_ZN14StreamingSound4InitEP10CSoundData"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -62,6 +74,16 @@
         ".streaming_method_5",
         ".streaming_method_6",
         ".streaming_method_7",
+        ".streaming_playback_0",
+        ".streaming_playback_1",
+        ".streaming_playback_2",
+        ".streaming_playback_3",
+        ".streaming_playback_4",
+        ".streaming_playback_5",
+        ".streaming_playback_6",
+        ".streaming_vtable",
+        ".streaming_open_0",
+        ".streaming_open_1",
         {
             "name": ".got",
             "offset": 864
@@ -70,7 +92,19 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN6CSoundC1Ev",
-        "_ZN14StreamingSound4InitEP10CSoundData",
-        "_ZN14StreamingSound6UnInitEv"
+        "_ZN6CSound4PlayEbfi",
+        "_ZN6CSoundD1Ev",
+        "_ZN6CSoundD2Ev",
+        "_ZN6CSound6UnInitEv",
+        "_ZN13CSoundBuffers18ReleaseSoundBufferEPc",
+        "_ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV",
+        "_ZN6CSound17QueueStreamBufferEPcii",
+        "_ZN6CSoundC1EP10CSoundData",
+        "_ZN6CSound4InitEP10CSoundData",
+        "_ZN11FileManager8_GetNameEi",
+        "_ZN18CSoundDecoderADPCMC1EPKc",
+        "_ZN18CSoundDecoderMSWAVC1EPKc",
+        "_ZN10CMSWavPool15GetMSWAVDecoderEPKc",
+        "_ZN13CSoundBuffers14GetSoundBufferEv"
     ]
 }

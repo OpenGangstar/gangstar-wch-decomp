@@ -46,6 +46,8 @@ public:
     static const char* GetDvdName(const char* name);
 
 private:
+    friend class StreamingSound;
+
     struct MappingIndex { int count; Structs::FileEntry* entries; };
     struct ResourceState {
         ResourceState() : references(0), data(0), size(0), loaded(false) {}

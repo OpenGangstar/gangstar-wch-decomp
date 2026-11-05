@@ -9,14 +9,24 @@
  */
 
 #include "CSound.h"
-#include "ISoundDecoder.h"
+#include "CSoundData.h"
+#include "CSoundDecoderADPCM.h"
+#include "CSoundDecoderMSWAV.h"
+#include "../core/NativeStdio.h"
+#include "../persistence/FileManager.h"
 
-class CSoundBuffers;
-class CMSWavPool;
+class CSoundBuffers {
+public:
+    char* GetSoundBuffer();
+    void ReleaseSoundBuffer(char* buffer);
+};
+
+extern "C" const char* _ZN11FileManager10GetDvdNameEPKc(const char* name) __attribute__((weak));
 
 class StreamingSound : public CSound {
 public:
     StreamingSound(int bufferSize);
+    StreamingSound(CSoundData* soundData, int decodeRate);
     virtual ~StreamingSound();
     virtual void Play(bool loop, float volume, int fade);
     virtual void Update(int elapsed);
@@ -24,15 +34,22 @@ public:
     void SaturateBuffersAndFlush();
     void Init(CSoundData* soundData);
     void UnInit();
+    void Flush(int buffer);
+    bool UpdateDecoding();
+    void _SaturateAndFlushLite();
 
 private:
     ISoundDecoder* decoder;
     int bufferSize;
     char* buffers[5];
-    int bufferLengths[5];
+    int bufferIndex;
+    int samplesPerDecode;
+    int decodesPerBuffer;
+    int decodedChunks;
+    int decodedSamples;
     unsigned int flags;
-    int queuedBuffers;
-    int ownedBuffers;
+    int streamState;
+    int localBufferCount;
     static CSoundBuffers* s_pBuffersPool;
     static CMSWavPool* s_pMsWavPool;
 };
@@ -49,8 +66,23 @@ void StreamingSound::InitStaticParameters(CSoundBuffers* buffers, CMSWavPool* wa
 void StreamingSound::SaturateBuffersAndFlush() {}
 void StreamingSound::Update(int) {}
 
+void StreamingSound::Play(bool loop, float volume, int fade)
+{
+    if (status == 2) {
+        status = 3;
+    } else {
+        decoder->GoTo(0);
+        SaturateBuffersAndFlush();
+        CSound::Play(false, volume, fade);
+        if (loop)
+            flags |= 1;
+        else
+            flags &= ~1u;
+    }
+}
+
 StreamingSound::StreamingSound(int size)
-    : decoder(0), bufferSize(size), flags(0), queuedBuffers(0), ownedBuffers(0)
+    : decoder(0), bufferSize(size), flags(0), streamState(0), localBufferCount(0)
 {
     if (!s_pBuffersPool)
         for (int i = 0; i < 5; ++i)
@@ -138,6 +170,110 @@ StreamingSound* CStreamingPool::GetStreamingSound(CSoundData* soundData)
     firstFree = i;
     data->Init(soundData);
     return data;
+}
+
+void StreamingSound::UnInit()
+{
+    if (s_pBuffersPool)
+        for (int i = 0; i < 5; ++i)
+            s_pBuffersPool->ReleaseSoundBuffer(buffers[i]);
+
+    if (data->format & 0x20000)
+        delete decoder;
+    else if (data->format & 0x40000)
+        s_pMsWavPool->ReleaseMSWAVDecoder(static_cast<CSoundDecoderMSWAV*>(decoder));
+
+    CSound::UnInit();
+    flags = 0;
+}
+
+StreamingSound::~StreamingSound()
+{
+    if (!s_pBuffersPool)
+        for (int i = 0; i < 5; ++i)
+            delete[] buffers[i];
+
+    if (data) {
+        if (data->format & 0x20000)
+            delete decoder;
+        if (localBufferCount)
+            for (int i = 0; i < 5; ++i)
+                delete[] buffers[i];
+    }
+}
+
+void StreamingSound::Flush(int buffer)
+{
+    QueueStreamBuffer(buffers[bufferIndex], buffer, decodedSamples * data->size * 2);
+    decodedChunks = 0;
+    decodedSamples = 0;
+    bufferIndex = (bufferIndex + 1) % 5;
+}
+
+bool StreamingSound::UpdateDecoding()
+{
+    if (decodedChunks < decodesPerBuffer) {
+        int samples = decodedSamples;
+        int offset = data->size * samples * 2;
+        int count = decoder->Decode(reinterpret_cast<short*>(buffers[bufferIndex] + offset),
+                                    samplesPerDecode, flags & 1);
+        decodedSamples = samples + count;
+        ++decodedChunks;
+    }
+    return decodedChunks >= decodesPerBuffer;
+}
+
+void StreamingSound::_SaturateAndFlushLite()
+{
+    char silence[32656];
+    memset(silence, 0, sizeof(silence));
+    for (int i = 0; i < 3; ++i)
+        QueueStreamBuffer(silence, i, sizeof(silence));
+    decodedChunks = 0;
+    decodedSamples = 0;
+    while (!UpdateDecoding()) {}
+    Flush(3);
+}
+
+StreamingSound::StreamingSound(CSoundData* soundData, int decodeRate)
+    : CSound(soundData), decoder(0), bufferSize(0), bufferIndex(0), flags(0),
+      streamState(0), localBufferCount(decodeRate)
+{
+    const char* name = _ZN11FileManager10GetDvdNameEPKc(FileManager::s_mgr->_GetName(data->sampleRate));
+    if (soundData->format & 0x20000)
+        decoder = new CSoundDecoderADPCM(name);
+    else if (soundData->format & 0x40000)
+        decoder = new CSoundDecoderMSWAV(name);
+
+    samplesPerDecode = data->channels / (localBufferCount ? localBufferCount : 22);
+    samplesPerDecode = decoder->GetNumSamplesPerDecode(samplesPerDecode);
+    decodesPerBuffer = 4;
+    bufferSize = samplesPerDecode * data->size * 8;
+    for (int i = 0; i < 5; ++i)
+        buffers[i] = new char[bufferSize];
+    status = 4;
+}
+
+void StreamingSound::Init(CSoundData* soundData)
+{
+    CSound::Init(soundData);
+    bufferIndex = 0;
+    decoder = 0;
+    flags = 0;
+    streamState = 0;
+    const char* name = _ZN11FileManager10GetDvdNameEPKc(FileManager::s_mgr->_GetName(data->sampleRate));
+    if (soundData->format & 0x20000)
+        decoder = new CSoundDecoderADPCM(name);
+    else if (soundData->format & 0x40000)
+        decoder = s_pMsWavPool->GetMSWAVDecoder(name);
+
+    samplesPerDecode = data->channels / 22;
+    samplesPerDecode = decoder->GetNumSamplesPerDecode(samplesPerDecode);
+    decodesPerBuffer = 4;
+    if (s_pBuffersPool)
+        for (int i = 0; i < 5; ++i)
+            buffers[i] = s_pBuffersPool->GetSoundBuffer();
+    status = 4;
 }
 
 // Recovered translation-unit SDK startup callbacks.

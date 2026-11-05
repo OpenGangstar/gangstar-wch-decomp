@@ -31,7 +31,7 @@ public:
     void UnInit();
     int GetStatus() const;
     void _performFade(int elapsed);
-    void QueueStreamBuffer(char* data, int length, int format);
+    void QueueStreamBuffer(char* data, int buffer, int length);
     int GetProcessedBuffer();
     CSoundData* GetSoundData();
     float GetAbsoluteVolume() const;
@@ -39,6 +39,8 @@ public:
     static ALSourcesPool* s_pALSourcesPool;
 
 private:
+    friend class StreamingSound;
+
     CSoundData* data;
     bool unknown8;
     bool unknown9;
