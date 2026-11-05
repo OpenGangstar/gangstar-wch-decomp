@@ -6,7 +6,7 @@ namespace irr {
 namespace video { class SColor; }
 namespace core { template<class T> class CMatrix4; }
 }
-struct SpriteBounds { int left, top, right, bottom; };
+struct SpriteBounds { int left, right, top, bottom; };
 struct SpriteFrame {
     unsigned char unknown0[4];
     SpriteBounds bounds;
@@ -21,6 +21,9 @@ public:
     const SpriteFrame* GetFrame(int frame) const;
     int GetFrameFromAFrame(int animation, int frame) const;
     const SpriteBounds& GetFrameBoundingRect(int frame) const;
+    const unsigned char* GetAFrame(int index) const;
+    int GetModuleFromAFrame(int frame, int module) const;
+    int GetFrameHeight(int frame) __attribute__((weak));
     int GetFrameWidth(int frame) __attribute__((weak));
     int GetAnimDuration(int animation);
     const SpriteBounds& GetAnimFrameBoundingRect(int animation, int frame) const;

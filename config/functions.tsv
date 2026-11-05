@@ -8840,8 +8840,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d446d	0x58	Application.cpp	game	app	pending	_ZN11Application16startSoundThreadEv	Application::startSoundThread()
 0x002d44c5	0x54	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11getInstanceEv	StateMachine::getInstance()
 0x002d4519	0x1c	Application.cpp	game	app	pending	__tcf_2	__tcf_2
-0x002d4535	0x1c	ASprite.cpp	game	rendering	pending	_ZN7ASprite14GetFrameHeightEi	ASprite::GetFrameHeight(int)
-0x002d4551	0x1c	ASprite.cpp	game	rendering	pending	_ZN7ASprite13GetFrameWidthEi	ASprite::GetFrameWidth(int)
+0x002d4535	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite14GetFrameHeightEi	ASprite::GetFrameHeight(int)
+0x002d4551	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite13GetFrameWidthEi	ASprite::GetFrameWidth(int)
 0x002d456d	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11switchStateI13GSMoviePlayerEEPT_v	GSMoviePlayer* StateMachine::switchState<GSMoviePlayer>()
 0x002d458d	0x20	Application.cpp	game	app	pending	_Z10SafeDeleteI15CControlManagerEvRPT_	void SafeDelete<CControlManager>(CControlManager*&)
 0x002d45ad	0x15c	Application.cpp	game	app	pending	_ZN11Application14appKeyReleasedEi	Application::appKeyReleased(int)
@@ -12588,7 +12588,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349759	0x4	ASprite.cpp	game	rendering	pending	_ZN7ASprite7_setPtrEPh	ASprite::_setPtr(unsigned char*)
 0x0034975d	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2EPh	ASprite::ASprite(unsigned char*)
 0x0034975d	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1EPh	ASprite::ASprite(unsigned char*)
-0x0034979d	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite9GetAFrameEi	ASprite::GetAFrame(int) const
+0x0034979d	0xe	ASprite.cpp	game	rendering	matched	_ZNK7ASprite9GetAFrameEi	ASprite::GetAFrame(int) const
 0x003497ad	0x6	ASprite.cpp	game	rendering	pending	_ZN7ASprite12GetModuleIdxEPKc	ASprite::GetModuleIdx(char const*)
 0x003497b5	0x2	ASprite.cpp	game	rendering	pending	_ZN7ASprite9MakeImageEij	ASprite::MakeImage(int, unsigned int)
 0x003497b9	0x2a	ASprite.cpp	game	rendering	pending	_ZNK3RctIiE14isIntersectingEii	Rct<int>::isIntersecting(int, int) const
@@ -12614,7 +12614,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349c85	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite10GetFModuleEi	ASprite::GetFModule(int) const
 0x00349c95	0x6e	ASprite.cpp	game	rendering	pending	_ZNK7ASprite15GetFrameMarkersEiPi	ASprite::GetFrameMarkers(int, int*) const
 0x00349d05	0x5a	ASprite.cpp	game	rendering	pending	_ZNK7ASprite23GetNumberOfFrameMarkersEi	ASprite::GetNumberOfFrameMarkers(int) const
-0x00349d61	0x20	ASprite.cpp	game	rendering	pending	_ZNK7ASprite19GetModuleFromAFrameEii	ASprite::GetModuleFromAFrame(int, int) const
+0x00349d61	0x20	ASprite.cpp	game	rendering	matched	_ZNK7ASprite19GetModuleFromAFrameEii	ASprite::GetModuleFromAFrame(int, int) const
 0x00349d81	0x52	ASprite.cpp	game	rendering	pending	_ZN7ASprite15GetAnimDurationEi	ASprite::GetAnimDuration(int)
 0x00349dd5	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASprite10GetAnimIdxEPKc	ASprite::GetAnimIdx(char const*)
 0x00349e15	0x200	ASprite.cpp	game	rendering	pending	_ZNK7ASprite11PaintModuleEiiii	ASprite::PaintModule(int, int, int, int) const

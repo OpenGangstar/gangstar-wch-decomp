@@ -27,6 +27,29 @@ struct SpriteData {
     unsigned int animationFrames;
 };
 
+const unsigned char* ASprite::GetAFrame(int index) const
+{
+    return reinterpret_cast<const unsigned char*>(data) + data->animationFrames + index * 9;
+}
+
+int ASprite::GetFrameHeight(int frame)
+{
+    return GetFrameBoundingRect(frame).bottom - GetFrameBoundingRect(frame).top;
+}
+
+int ASprite::GetFrameWidth(int frame)
+{
+    return GetFrameBoundingRect(frame).right - GetFrameBoundingRect(frame).left;
+}
+
+int ASprite::GetModuleFromAFrame(int frame, int module) const
+{
+    const char* bytes = reinterpret_cast<const char*>(data);
+    const SpriteFrame* entry = reinterpret_cast<const SpriteFrame*>(bytes + (data->frames + frame * 28));
+    int index = entry->firstModule + module;
+    return *reinterpret_cast<const unsigned short*>(bytes + (data->frameModules + index * 8));
+}
+
 const SpriteBounds& ASprite::GetFrameBoundingRect(int frame) const
 {
     return GetFrame(frame)->bounds;
