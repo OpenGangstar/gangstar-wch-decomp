@@ -38,6 +38,23 @@ void TouchScreenBase::getDimension(Rct<short>& result) const
     result.bottom = bottom;
 }
 
+template<class T>
+inline Rct<T>::Rct(T left, T top, T right, T bottom)
+    : left(left), top(top), right(right), bottom(bottom)
+{
+    _validate();
+}
+
+Rct<short> TouchScreenBase::getDimension() const
+{
+    const short left = getLeftBound();
+    const short top = getTopBound();
+    const short right = getRightBound();
+    const short bottom = getBottomBound();
+
+    return Rct<short>(left, top, right, bottom);
+}
+
 extern "C" {
 static void __tcf_0()
 {

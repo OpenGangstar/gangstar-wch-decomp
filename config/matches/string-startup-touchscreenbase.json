@@ -48,6 +48,10 @@
         {
             "name": "_ZNK15TouchScreenBase12getDimensionER3RctIsE",
             "address": "0x0034c5fd"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase12getDimensionEv",
+            "address": "0x0034c6a5"
         }
     ],
     "sections": [
@@ -62,7 +66,8 @@
         ".touchscreen_rct_d0",
         ".touchscreen_rct_d1",
         ".touchscreen_rct_vtable",
-        ".touchscreen_dimension_out"
+        ".touchscreen_dimension_out",
+        ".touchscreen_dimension_value"
     ],
     "retail_got": true
 }
