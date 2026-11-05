@@ -20,6 +20,7 @@ SECTIONS
     .walking_notNearShop 0x00325934 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud11notNearShopEv) }
     .hud_showSpyGauge 0x00325950 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud12showSpyGaugeEb) }
     .hud_showCash 0x0032598c : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud8showCashEb) }
+    .hud_weapon_selector 0x003259ac : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud20toggleWeaponSelectorEb) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

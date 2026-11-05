@@ -11,6 +11,7 @@
 #include "CDrivingHud.h"
 #include "CHudManager.h"
 #include "SpyGauge.h"
+#include "HudElement.h"
 
 CDrivingHud::CDrivingHud(CHudManager* hudManager) : IHud(hudManager)
 {
@@ -36,6 +37,23 @@ void CDrivingHud::showCash(bool show)
         unknown8 |= 0x8000;
     else
         unknown8 &= ~0x8000u;
+}
+
+void CDrivingHud::toggleWeaponSelector(bool show)
+{
+    if (show) {
+        unknown8 |= 0x100;
+        manager->weaponSelector->show();
+        manager->weaponSelectorExtra->show();
+        unknown8 |= 0x2000;
+        manager->weaponSelectorControl->show();
+    } else {
+        unknown8 &= ~0x100u;
+        manager->weaponSelector->hide();
+        manager->weaponSelectorExtra->hide();
+        unknown8 &= ~0x2000u;
+        manager->weaponSelectorControl->hide();
+    }
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.

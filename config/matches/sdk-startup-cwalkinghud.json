@@ -48,7 +48,8 @@
         "_ZNK11CWalkingHud10isNearShopEv",
         "_ZN11CWalkingHud11notNearShopEv",
         "_ZN11CWalkingHud12showSpyGaugeEb",
-        "_ZN11CWalkingHud8showCashEb"
+        "_ZN11CWalkingHud8showCashEb",
+        "_ZN11CWalkingHud20toggleWeaponSelectorEb"
     ],
     "sections": [
         ".sdk_startup_function_0",

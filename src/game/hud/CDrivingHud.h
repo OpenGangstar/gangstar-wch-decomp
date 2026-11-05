@@ -11,6 +11,7 @@ public:
     virtual void hide();
     void showSpyGauge(bool show);
     void showCash(bool show);
+    void toggleWeaponSelector(bool show);
 };
 
 #endif

@@ -34,7 +34,11 @@ public:
     HudComponent116* component116;
     unsigned char unknown120[32];
     SpyGauge* spyGauge;
-    unsigned char unknown156[48];
+    HudElement* weaponSelectorControl;
+    unsigned char unknown160[24];
+    HudElement* weaponSelector;
+    HudElement* weaponSelectorExtra;
+    unsigned char unknown192[12];
     unsigned int unknown204;
     bool locked;
 
