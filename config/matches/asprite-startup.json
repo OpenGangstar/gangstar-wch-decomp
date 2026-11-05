@@ -45,7 +45,18 @@
         "_ZNK7ASprite9GetAFrameEi",
         "_ZNK7ASprite19GetModuleFromAFrameEii",
         "_ZNK7ASprite10PaintFrameEiiii",
-        "_ZNK7ASprite11PaintAFrameEiiiii"
+        "_ZNK7ASprite11PaintAFrameEiiiii",
+        "_ZN7ASpriteC1Ev",
+        "_ZN7ASpriteC2Ev",
+        "_ZN7ASpriteC1ERKS_",
+        "_ZN7ASpriteC2ERKS_",
+        "_ZNK7ASprite6_traceEPKc",
+        "_ZN7ASprite7_setPtrEPh",
+        "_ZN7ASpriteC2EPh",
+        "_ZN7ASpriteC1EPh",
+        "_ZN7ASprite12GetModuleIdxEPKc",
+        "_ZN7ASprite9MakeImageEij",
+        "_ZN7ASprite9_erasePtrEv"
     ],
     "sections": [
         ".asprite_function_0",
@@ -64,7 +75,15 @@
         ".asprite_animation_2",
         ".asprite_animation_5",
         ".asprite_paint_frame",
-        ".asprite_paint_animation"
+        ".asprite_paint_animation",
+        ".asprite_storage_method_0",
+        ".asprite_storage_method_1",
+        ".asprite_storage_method_2",
+        ".asprite_storage_method_3",
+        ".asprite_storage_method_4",
+        ".asprite_storage_method_5",
+        ".asprite_storage_method_6",
+        ".asprite_storage_method_7"
     ],
     "retail_got": true,
     "external_thumb_functions": [

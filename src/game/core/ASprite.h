@@ -17,6 +17,15 @@ struct SpriteFrame {
 struct SpriteData;
 class ASprite {
 public:
+    ASprite();
+    ASprite(const ASprite& other);
+    ASprite(unsigned char* bytes);
+    virtual ~ASprite();
+    void _trace(const char* text) const;
+    void _setPtr(unsigned char* bytes);
+    void _erasePtr();
+    int GetModuleIdx(const char* name);
+    void MakeImage(int image, unsigned int flags);
     static irr::video::SColor* s_global_color;
     static irr::core::CMatrix4<float> s_global_transform;
     const SpriteFrame* GetFrame(int frame) const;
@@ -34,8 +43,18 @@ public:
     void PaintFrame(int frame, int x, int y, int flags) const;
 
 private:
-    unsigned char unknown0[4];
     SpriteData* data;
+    bool ownsData;
+    unsigned char unknown9[3];
+    void* texture;
+    unsigned char unknown16[16];
+    bool unknown32;
+    bool unknown33;
+    unsigned char unknown34[2];
+    int unknown36;
+    int unknown40;
+    int unknown44;
+    int unknown48;
 };
 
 #endif
