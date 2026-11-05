@@ -14,6 +14,10 @@ SECTIONS
     .asprite_lookup_1 0x00349804 : { *asprite-startup.o(.text._ZNK7ASprite20GetFrameBoundingRectEi) }
     .asprite_lookup_3 0x00349a48 : { *asprite-startup.o(.text._ZNK7ASprite18GetFrameFromAFrameEii) }
     .asprite_lookup_4 0x00349a6c : { *asprite-startup.o(.text._ZNK7ASprite24GetAnimFrameBoundingRectEii) }
+    .asprite_animation_0 0x002d4534 : { *asprite-startup.o(.text._ZN7ASprite14GetFrameHeightEi) }
+    .asprite_animation_1 0x002d4550 : { *asprite-startup.o(.text._ZN7ASprite13GetFrameWidthEi) }
+    .asprite_animation_2 0x0034979c : { *asprite-startup.o(.text._ZNK7ASprite9GetAFrameEi) }
+    .asprite_animation_5 0x00349d60 : { *asprite-startup.o(.text._ZNK7ASprite19GetModuleFromAFrameEii) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

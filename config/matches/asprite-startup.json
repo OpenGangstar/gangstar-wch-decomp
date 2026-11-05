@@ -39,7 +39,11 @@
         },
         "_ZNK7ASprite20GetFrameBoundingRectEi",
         "_ZNK7ASprite18GetFrameFromAFrameEii",
-        "_ZNK7ASprite24GetAnimFrameBoundingRectEii"
+        "_ZNK7ASprite24GetAnimFrameBoundingRectEii",
+        "_ZN7ASprite14GetFrameHeightEi",
+        "_ZN7ASprite13GetFrameWidthEi",
+        "_ZNK7ASprite9GetAFrameEi",
+        "_ZNK7ASprite19GetModuleFromAFrameEii"
     ],
     "sections": [
         ".asprite_function_0",
@@ -52,7 +56,11 @@
         },
         ".asprite_lookup_1",
         ".asprite_lookup_3",
-        ".asprite_lookup_4"
+        ".asprite_lookup_4",
+        ".asprite_animation_0",
+        ".asprite_animation_1",
+        ".asprite_animation_2",
+        ".asprite_animation_5"
     ],
     "retail_got": true,
     "external_thumb_functions": [
