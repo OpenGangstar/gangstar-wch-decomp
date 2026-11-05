@@ -23,6 +23,7 @@ SECTIONS
     .touchscreen_clear_point 0x0034c3b8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase15clearTouchPointEl) }
     .touchscreen_point 0x0034c44c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase13getTouchPointEl) }
     .touchscreen_first_point 0x0034c478 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase18getFirstTouchPointEl) }
+    .touchscreen_num_points 0x0034c4a4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getNumPointsEl) }
     .touchscreen_swipe_direction 0x0034c4cc : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase17getSwipeDirectionEl) }
     .touchscreen_enable 0x0034c5dc : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase6enableEv) }
     .touchscreen_disable 0x0034c5e8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase7disableEv) }

@@ -141,6 +141,14 @@ Point2D<short>* TouchScreenBase::getFirstTouchPoint(long id)
     return 0;
 }
 
+int TouchScreenBase::getNumPoints(long id) const
+{
+    int count = 0;
+    if (points[id].active && points[id].hasPoints)
+        count = points[id].numPoints;
+    return count;
+}
+
 int TouchScreenBase::getSwipeDirection(long id) const
 {
     if (points[id].active && points[id].hasPoints)

@@ -128,6 +128,10 @@
         {
             "name": "_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE",
             "address": "0x0034c9fd"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase12getNumPointsEl",
+            "address": "0x0034c4a5"
         }
     ],
     "sections": [
@@ -168,7 +172,8 @@
         ".touchscreen_move_message",
         ".touchscreen_initiated_in_region",
         ".touchscreen_region_pressed",
-        ".touchscreen_id_in_region"
+        ".touchscreen_id_in_region",
+        ".touchscreen_num_points"
     ],
     "retail_got": true
 }
