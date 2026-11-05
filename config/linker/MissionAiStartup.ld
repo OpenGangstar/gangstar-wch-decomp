@@ -18,6 +18,9 @@ SECTIONS
     .ai_startup_function_0 0x00335d24 : { *ai-startup-mission.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00336808 : { *ai-startup-mission.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0033694c : { *ai-startup-mission.o(.text._GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii) }
+    .mission_rct_1 0x00335d54 : { *ai-startup-mission.o(.text._ZN3RctIiED0Ev .gnu.linkonce.t._ZN3RctIiED0Ev) }
+    .mission_rct_2 0x00335d74 : { *ai-startup-mission.o(.text._ZN3RctIiED1Ev .gnu.linkonce.t._ZN3RctIiED1Ev) }
+    .mission_rct_vtable 0x004ace10 : { *ai-startup-mission.o(.data.rel.ro._ZTV3RctIiE .gnu.linkonce.d._ZTV3RctIiE .gnu.linkonce.d.rel.ro._ZTV3RctIiE .rodata._ZTV3RctIiE .gnu.linkonce.r._ZTV3RctIiE) }
     .ai_startup_storage_0 0x004b9f88 (NOLOAD) : { *ai-startup-mission.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
     .ai_startup_storage_1 0x004b9fa8 (NOLOAD) : { *ai-startup-mission.o(.bss._ZN3irr2ps5vHalfE) }
     .ai_startup_storage_2 0x004b9fb4 (NOLOAD) : { *ai-startup-mission.o(.bss._ZN8gameloft2ai11civ_passiveE) }
