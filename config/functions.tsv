@@ -11029,11 +11029,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003238ad	0x46	CHudManager.cpp	game	hud	pending	_ZN11CHudManager12switchWeaponEv	CHudManager::switchWeapon()
 0x003238f5	0xa8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager24unregUpdatableComponentsEv	CHudManager::unregUpdatableComponents()
 0x0032399d	0xa8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager22regUpdatableComponentsEv	CHudManager::regUpdatableComponents()
-0x00323a45	0x18	CHudManager.cpp	game	hud	pending	_ZNK11CHudManager10isNearShopEv	CHudManager::isNearShop() const
-0x00323a5d	0x18	CHudManager.cpp	game	hud	pending	_ZN11CHudManager11notNearShopEv	CHudManager::notNearShop()
-0x00323a75	0x18	CHudManager.cpp	game	hud	pending	_ZN11CHudManager8nearShopEv	CHudManager::nearShop()
-0x00323a8d	0x18	CHudManager.cpp	game	hud	pending	_ZN11CHudManager10notNearCarEv	CHudManager::notNearCar()
-0x00323aa5	0x18	CHudManager.cpp	game	hud	pending	_ZN11CHudManager7nearCarEv	CHudManager::nearCar()
+0x00323a45	0x18	CHudManager.cpp	game	hud	matched	_ZNK11CHudManager10isNearShopEv	CHudManager::isNearShop() const
+0x00323a5d	0x18	CHudManager.cpp	game	hud	matched	_ZN11CHudManager11notNearShopEv	CHudManager::notNearShop()
+0x00323a75	0x18	CHudManager.cpp	game	hud	matched	_ZN11CHudManager8nearShopEv	CHudManager::nearShop()
+0x00323a8d	0x18	CHudManager.cpp	game	hud	matched	_ZN11CHudManager10notNearCarEv	CHudManager::notNearCar()
+0x00323aa5	0x18	CHudManager.cpp	game	hud	matched	_ZN11CHudManager7nearCarEv	CHudManager::nearCar()
 0x00323abd	0x44	CHudManager.cpp	game	hud	pending	_ZN11CHudManager7snipingEv	CHudManager::sniping()
 0x00323b01	0x34	CHudManager.cpp	game	hud	pending	_ZN11CHudManager7walkingEv	CHudManager::walking()
 0x00323b35	0x34	CHudManager.cpp	game	hud	pending	_ZN11CHudManager7drivingEv	CHudManager::driving()
@@ -11067,11 +11067,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003256c5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudD2Ev	CWalkingHud::~CWalkingHud()
 0x003256dd	0x12a	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud4showEv	CWalkingHud::show()
 0x00325809	0xb6	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud4hideEv	CWalkingHud::hide()
-0x003258c1	0x22	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud7nearCarEv	CWalkingHud::nearCar()
-0x003258e5	0x18	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud10notNearCarEv	CWalkingHud::notNearCar()
-0x003258fd	0x24	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud8nearShopEv	CWalkingHud::nearShop()
-0x00325921	0x12	CWalkingHud.cpp	game	hud	pending	_ZNK11CWalkingHud10isNearShopEv	CWalkingHud::isNearShop() const
-0x00325935	0x1c	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud11notNearShopEv	CWalkingHud::notNearShop()
+0x003258c1	0x22	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud7nearCarEv	CWalkingHud::nearCar()
+0x003258e5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud10notNearCarEv	CWalkingHud::notNearCar()
+0x003258fd	0x24	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud8nearShopEv	CWalkingHud::nearShop()
+0x00325921	0x12	CWalkingHud.cpp	game	hud	matched	_ZNK11CWalkingHud10isNearShopEv	CWalkingHud::isNearShop() const
+0x00325935	0x1c	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud11notNearShopEv	CWalkingHud::notNearShop()
 0x00325951	0x3c	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud12showSpyGaugeEb	CWalkingHud::showSpyGauge(bool)
 0x0032598d	0x20	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud8showCashEb	CWalkingHud::showCash(bool)
 0x003259ad	0x80	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud20toggleWeaponSelectorEb	CWalkingHud::toggleWeaponSelector(bool)

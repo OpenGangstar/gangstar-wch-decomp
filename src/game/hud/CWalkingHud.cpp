@@ -8,16 +8,9 @@
  * functions of CWalkingHud.cpp here, in the order they appear in the library.
  */
 
-#include "IHud.h"
-
-class CWalkingHud : public IHud {
-public:
-    explicit CWalkingHud(CHudManager* manager);
-    ~CWalkingHud();
-    virtual void show();
-    virtual void hide();
-    virtual bool isWalkingHud() const __attribute__((used));
-};
+#include "CWalkingHud.h"
+#include "CHudManager.h"
+#include "HudElement.h"
 
 inline bool CWalkingHud::isWalkingHud() const { return true; }
 
@@ -27,6 +20,37 @@ CWalkingHud::CWalkingHud(CHudManager* hudManager) : IHud(hudManager)
 }
 
 CWalkingHud::~CWalkingHud() {}
+
+void CWalkingHud::nearCar()
+{
+    if (isVisible())
+        manager->enterCarButton->show();
+    unknown8 |= 0x20;
+}
+
+void CWalkingHud::notNearCar()
+{
+    manager->enterCarButton->hide();
+    unknown8 &= ~0x20u;
+}
+
+void CWalkingHud::nearShop()
+{
+    if (isVisible())
+        manager->enterShopButton->show();
+    unknown8 |= 0x04000000;
+}
+
+bool CWalkingHud::isNearShop() const
+{
+    return manager->enterShopButton->isVisible();
+}
+
+void CWalkingHud::notNearShop()
+{
+    manager->enterShopButton->hide();
+    unknown8 &= ~0x04000000u;
+}
 
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
