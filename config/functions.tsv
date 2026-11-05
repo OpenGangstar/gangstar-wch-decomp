@@ -11398,20 +11398,20 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032b5ad	0xa4	SlideControl.cpp	game	ui	pending	_ZN12SlideControl19processTouchReleaseEv	SlideControl::processTouchRelease()
 0x0032b650	0x14	SlideControl.cpp	game	ui	pending	_ZThn8_N12SlideControl12processTouchEl	non-virtual thunk to SlideControl::processTouch(long)
 0x0032b665	0x29c	SlideControl.cpp	game	ui	pending	_ZN12SlideControl12processTouchEl	SlideControl::processTouch(long)
-0x0032b901	0x2	SpyGauge.cpp	game	hud	pending	_ZN8SpyGauge6updateEd	SpyGauge::update(double)
-0x0032b905	0x6	SpyGauge.cpp	game	hud	pending	_ZN8SpyGauge14useDriveWellBGEv	SpyGauge::useDriveWellBG()
-0x0032b90d	0x6	SpyGauge.cpp	game	hud	pending	_ZN8SpyGauge13useDriveBadBGEv	SpyGauge::useDriveBadBG()
-0x0032b915	0x6	SpyGauge.cpp	game	hud	pending	_ZN8SpyGauge8useSpyBGEv	SpyGauge::useSpyBG()
+0x0032b901	0x2	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge6updateEd	SpyGauge::update(double)
+0x0032b905	0x6	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge14useDriveWellBGEv	SpyGauge::useDriveWellBG()
+0x0032b90d	0x6	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge13useDriveBadBGEv	SpyGauge::useDriveBadBG()
+0x0032b915	0x6	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge8useSpyBGEv	SpyGauge::useSpyBG()
 0x0032b91d	0x30	SpyGauge.cpp	game	hud	matched	__tcf_3	__tcf_3
-0x0032b94c	0x14	SpyGauge.cpp	game	hud	pending	_ZThn4_NK8SpyGauge6draw2dEv	non-virtual thunk to SpyGauge::draw2d() const
-0x0032b961	0x4c	SpyGauge.cpp	game	hud	pending	_ZNK8SpyGauge6draw2dEv	SpyGauge::draw2d() const
-0x0032b9ac	0x14	SpyGauge.cpp	game	hud	pending	_ZThn4_N8SpyGaugeD0Ev	non-virtual thunk to SpyGauge::~SpyGauge()
-0x0032b9c1	0x30	SpyGauge.cpp	game	hud	pending	_ZN8SpyGaugeD0Ev	SpyGauge::~SpyGauge()
-0x0032b9f0	0x14	SpyGauge.cpp	game	hud	pending	_ZThn4_N8SpyGaugeD1Ev	non-virtual thunk to SpyGauge::~SpyGauge()
-0x0032ba05	0x2c	SpyGauge.cpp	game	hud	pending	_ZN8SpyGaugeD1Ev	SpyGauge::~SpyGauge()
-0x0032ba05	0x2c	SpyGauge.cpp	game	hud	pending	_ZN8SpyGaugeD2Ev	SpyGauge::~SpyGauge()
-0x0032ba31	0x40	SpyGauge.cpp	game	hud	pending	_ZN8SpyGaugeC1EP7ASpriteiiiii	SpyGauge::SpyGauge(ASprite*, int, int, int, int, int)
-0x0032ba31	0x40	SpyGauge.cpp	game	hud	pending	_ZN8SpyGaugeC2EP7ASpriteiiiii	SpyGauge::SpyGauge(ASprite*, int, int, int, int, int)
+0x0032b94c	0x14	SpyGauge.cpp	game	hud	matched	_ZThn4_NK8SpyGauge6draw2dEv	non-virtual thunk to SpyGauge::draw2d() const
+0x0032b961	0x4c	SpyGauge.cpp	game	hud	matched	_ZNK8SpyGauge6draw2dEv	SpyGauge::draw2d() const
+0x0032b9ac	0x14	SpyGauge.cpp	game	hud	matched	_ZThn4_N8SpyGaugeD0Ev	non-virtual thunk to SpyGauge::~SpyGauge()
+0x0032b9c1	0x30	SpyGauge.cpp	game	hud	matched	_ZN8SpyGaugeD0Ev	SpyGauge::~SpyGauge()
+0x0032b9f0	0x14	SpyGauge.cpp	game	hud	matched	_ZThn4_N8SpyGaugeD1Ev	non-virtual thunk to SpyGauge::~SpyGauge()
+0x0032ba05	0x2c	SpyGauge.cpp	game	hud	matched	_ZN8SpyGaugeD1Ev	SpyGauge::~SpyGauge()
+0x0032ba05	0x2c	SpyGauge.cpp	game	hud	matched	_ZN8SpyGaugeD2Ev	SpyGauge::~SpyGauge()
+0x0032ba31	0x40	SpyGauge.cpp	game	hud	matched	_ZN8SpyGaugeC1EP7ASpriteiiiii	SpyGauge::SpyGauge(ASprite*, int, int, int, int, int)
+0x0032ba31	0x40	SpyGauge.cpp	game	hud	matched	_ZN8SpyGaugeC2EP7ASpriteiiiii	SpyGauge::SpyGauge(ASprite*, int, int, int, int, int)
 0x0032ba71	0x144	SpyGauge.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032bbb5	0x14	SpyGauge.cpp	game	hud	matched	_GLOBAL__I__ZN8SpyGaugeC2EP7ASpriteiiiii	_GLOBAL__I__ZN8SpyGaugeC2EP7ASpriteiiiii
 0x0032bbc8	0x14	SwipeButton.cpp	game	ui	matched	_ZThn8_N11SwipeButton19processTouchReleaseEv	non-virtual thunk to SwipeButton::processTouchRelease()
