@@ -21,11 +21,29 @@ inline Point2D<T>::Point2D(T x, T y)
 
 class TouchScreenWin32 : public TouchScreenBase {
 public:
+    virtual ~TouchScreenWin32();
+    virtual short getLeftBound() const __attribute__((used)) { return 0; }
+    virtual short getRightBound() const __attribute__((used)) { return 0; }
+    virtual short getTopBound() const __attribute__((used)) { return 0; }
+    virtual short getBottomBound() const __attribute__((used)) { return 0; }
+    virtual long getTouchIDInRegion(const irr::core::rect<float>& region) const;
+    virtual bool isRegionPressed(const irr::core::rect<float>& region) const;
+
     void touchCancelled(float x, float y, int externalId);
     void touchEnded(float x, float y, int externalId);
     void touchMoved(float x, float y, int externalId);
     void touchBegan(float x, float y, int externalId);
 };
+
+long TouchScreenWin32::getTouchIDInRegion(const irr::core::rect<float>& region) const
+{
+    return TouchScreenBase::getTouchIDInRegion(region);
+}
+
+bool TouchScreenWin32::isRegionPressed(const irr::core::rect<float>& region) const
+{
+    return TouchScreenBase::isRegionPressed(region);
+}
 
 void TouchScreenWin32::touchCancelled(float x, float y, int externalId)
 {

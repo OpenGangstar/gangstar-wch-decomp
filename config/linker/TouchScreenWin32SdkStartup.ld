@@ -16,6 +16,12 @@ SECTIONS
     .win32_touchEnded 0x0034d238 : { *sdk-startup-touchscreenwin32.o(.text._ZN16TouchScreenWin3210touchEndedEffi) }
     .win32_touchMoved 0x0034d294 : { *sdk-startup-touchscreenwin32.o(.text._ZN16TouchScreenWin3210touchMovedEffi) }
     .win32_touchBegan 0x0034d2f0 : { *sdk-startup-touchscreenwin32.o(.text._ZN16TouchScreenWin3210touchBeganEffi) }
+    .win32_getLeftBound 0x0034d02c : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZNK16TouchScreenWin3212getLeftBoundEv) }
+    .win32_getRightBound 0x0034d030 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZNK16TouchScreenWin3213getRightBoundEv) }
+    .win32_getTopBound 0x0034d034 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZNK16TouchScreenWin3211getTopBoundEv) }
+    .win32_getBottomBound 0x0034d038 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZNK16TouchScreenWin3214getBottomBoundEv) }
+    .win32_getTouchIDInRegion 0x0034d06c : { *sdk-startup-touchscreenwin32.o(.text._ZNK16TouchScreenWin3218getTouchIDInRegionERKN3irr4core4rectIfEE) }
+    .win32_isRegionPressed 0x0034d078 : { *sdk-startup-touchscreenwin32.o(.text._ZNK16TouchScreenWin3215isRegionPressedERKN3irr4core4rectIfEE) }
     .sdk_startup_function_0 0x0034d03c : { *sdk-startup-touchscreenwin32.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x0034d0c0 : { *sdk-startup-touchscreenwin32.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x0034d12c : { *sdk-startup-touchscreenwin32.o(.text._GLOBAL__I__ZN16TouchScreenWin32C2Ev) }

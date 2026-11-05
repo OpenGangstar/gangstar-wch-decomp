@@ -52,6 +52,30 @@
         {
             "name": "_ZN16TouchScreenWin3210touchBeganEffi",
             "address": "0x0034d2f1"
+        },
+        {
+            "name": "_ZNK16TouchScreenWin3212getLeftBoundEv",
+            "address": "0x0034d02d"
+        },
+        {
+            "name": "_ZNK16TouchScreenWin3213getRightBoundEv",
+            "address": "0x0034d031"
+        },
+        {
+            "name": "_ZNK16TouchScreenWin3211getTopBoundEv",
+            "address": "0x0034d035"
+        },
+        {
+            "name": "_ZNK16TouchScreenWin3214getBottomBoundEv",
+            "address": "0x0034d039"
+        },
+        {
+            "name": "_ZNK16TouchScreenWin3218getTouchIDInRegionERKN3irr4core4rectIfEE",
+            "address": "0x0034d06d"
+        },
+        {
+            "name": "_ZNK16TouchScreenWin3215isRegionPressedERKN3irr4core4rectIfEE",
+            "address": "0x0034d079"
         }
     ],
     "sections": [
@@ -66,7 +90,13 @@
         ".win32_touchCancelled",
         ".win32_touchEnded",
         ".win32_touchMoved",
-        ".win32_touchBegan"
+        ".win32_touchBegan",
+        ".win32_getLeftBound",
+        ".win32_getRightBound",
+        ".win32_getTopBound",
+        ".win32_getBottomBound",
+        ".win32_getTouchIDInRegion",
+        ".win32_isRegionPressed"
     ],
     "retail_got": true,
     "dependencies": [
