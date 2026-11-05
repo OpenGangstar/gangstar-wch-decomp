@@ -9,22 +9,8 @@
  */
 
 #include "AdpcmState.h"
-#include "ISoundDecoder.h"
+#include "CSoundDecoderADPCM.h"
 #include "../core/NativeStdio.h"
-
-class CSoundDecoderADPCM : public ISoundDecoder {
-public:
-    CSoundDecoderADPCM(const char* name);
-    virtual ~CSoundDecoderADPCM();
-    virtual int Decode(short* output, int count, bool loop);
-    virtual void GoTo(int position);
-
-private:
-    AdpcmState* state;
-    NativeFile* file;
-    unsigned char* buffer;
-    int bufferSize;
-};
 
 extern "C" short _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState(int code, AdpcmState* state)
     __attribute__((weak));

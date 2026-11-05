@@ -6,6 +6,10 @@ __aeabi_atexit = 0x001c494c;
 _Znwj = 0x001c4814;
 _Znaj = 0x001c3ff8;
 _ZdaPv = 0x001c461c;
+__aeabi_idivmod = 0x001c4934;
+memset = 0x001c45d4;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_idiv = 0x001c43dc;
 SECTIONS
 {
     .sdk_startup_function_0 0x00353eac : { *sdk-startup-streamingsound.o(.text.__tcf_2) }
@@ -23,6 +27,16 @@ SECTIONS
     .streaming_method_7 0x0035453c : { *sdk-startup-streamingsound.o(.text._ZN14CStreamingPool17GetStreamingSoundEP10CSoundData) }
     .streaming_buffers_pool 0x004bc244 (NOLOAD) : { *sdk-startup-streamingsound.o(.bss._ZN14StreamingSound14s_pBuffersPoolE) }
     .streaming_mswav_pool 0x004bc248 (NOLOAD) : { *sdk-startup-streamingsound.o(.bss._ZN14StreamingSound12s_pMsWavPoolE) }
+    .streaming_playback_0 0x00353f28 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSound4PlayEbfi) }
+    .streaming_playback_1 0x00354094 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSound6UnInitEv) }
+    .streaming_playback_2 0x00354190 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSoundD0Ev) }
+    .streaming_playback_3 0x00354214 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSoundD2Ev .text._ZN14StreamingSoundD1Ev) }
+    .streaming_playback_4 0x00354290 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSound5FlushEi) }
+    .streaming_playback_5 0x003542c4 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSound14UpdateDecodingEv) }
+    .streaming_playback_6 0x00354310 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSound21_SaturateAndFlushLiteEv) }
+    .streaming_open_0 0x003543b8 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSoundC1EP10CSoundDatai .text._ZN14StreamingSoundC2EP10CSoundDatai) }
+    .streaming_open_1 0x00354484 : { *sdk-startup-streamingsound.o(.text._ZN14StreamingSound4InitEP10CSoundData) }
+    .streaming_vtable 0x004ad898 : { *sdk-startup-streamingsound.o(.data.rel.ro._ZTV14StreamingSound .gnu.linkonce.d.rel.ro._ZTV14StreamingSound) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
