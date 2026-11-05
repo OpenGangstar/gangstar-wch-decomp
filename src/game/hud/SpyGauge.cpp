@@ -8,25 +8,9 @@
  * functions of SpyGauge.cpp here, in the order they appear in the library.
  */
 
-#include "Gauge.h"
+#include "SpyGauge.h"
 #include "../characters/PlayerTest.h"
 #include "../core/ASprite.h"
-
-class SpyGauge : public Gauge {
-public:
-    SpyGauge(ASprite*, int, int, int, int, int);
-    virtual ~SpyGauge();
-    virtual void update(double);
-    virtual void draw2d() const;
-    void useDriveWellBG();
-    void useDriveBadBG();
-    void useSpyBG();
-
-private:
-    int driveWellFrame;
-    int driveBadFrame;
-    int spyFrame;
-};
 
 void SpyGauge::update(double) {}
 

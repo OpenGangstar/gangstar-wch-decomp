@@ -172,7 +172,10 @@
         ".module_startup_script_manager_helpers_function_0",
         ".module_startup_script_manager_helpers_function_1",
         ".module_startup_script_manager_helpers_function_2",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".spy_gauge_spy",
+        ".spy_gauge_drive_bad",
+        ".spy_gauge_drive_well"
     ],
     "retail_got": true,
     "dependencies": [
@@ -197,6 +200,9 @@
         "_ZNK12StateMachine12getTimeStampEv",
         "_ZN12StateMachine8popStateEv",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN8SpyGauge8useSpyBGEv",
+        "_ZN8SpyGauge13useDriveBadBGEv",
+        "_ZN8SpyGauge14useDriveWellBGEv"
     ]
 }

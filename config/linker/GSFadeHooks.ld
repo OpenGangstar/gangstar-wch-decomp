@@ -50,6 +50,7 @@ _ZN32retail_scriptmanager_transitions17cop_vehicle_transE = 0x0042f884;
 _ZN32retail_scriptmanager_transitions11guard_transE = 0x0042f938;
 _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
 INCLUDE config/linker/ApplicationEventSections.ld
+INCLUDE config/linker/CHudManagerSpySections.ld
 SECTIONS
 {
     .hook_0 0x002e1a5c : { *state-hooks-gsfade.o(.text._ZN6GSFade4drawEPK12StateMachine .gnu.linkonce.t._ZN6GSFade4drawEPK12StateMachine) }

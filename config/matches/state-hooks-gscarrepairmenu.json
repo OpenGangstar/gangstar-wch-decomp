@@ -210,7 +210,10 @@
         ".menu_startup_function_0",
         ".menu_startup_function_1",
         ".menu_startup_function_2",
-        ".menu_startup_function_3"
+        ".menu_startup_function_3",
+        ".spy_gauge_spy",
+        ".spy_gauge_drive_bad",
+        ".spy_gauge_drive_well"
     ],
     "retail_got": true,
     "dependencies": [
@@ -241,6 +244,9 @@
         "_ZNK12StateMachine12getTimeStampEv",
         "_ZN12StateMachine8popStateEv",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN8SpyGauge8useSpyBGEv",
+        "_ZN8SpyGauge13useDriveBadBGEv",
+        "_ZN8SpyGauge14useDriveWellBGEv"
     ]
 }

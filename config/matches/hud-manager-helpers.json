@@ -40,7 +40,10 @@
         {
             "name": "_GLOBAL__I__ZN11CHudManagerC2Ev",
             "address": "0x0032401d"
-        }
+        },
+        "_ZN11CHudManager18useSpyBGInSpyGaugeEv",
+        "_ZN11CHudManager23useDriveBadBGInSpyGaugeEv",
+        "_ZN11CHudManager24useDriveWellBGInSpyGaugeEv"
     ],
     "sections": [
         ".helper_0",
@@ -54,7 +57,15 @@
             "name": ".got",
             "offset": 864
         },
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".spy_gauge_spy",
+        ".spy_gauge_drive_bad",
+        ".spy_gauge_drive_well"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN8SpyGauge8useSpyBGEv",
+        "_ZN8SpyGauge13useDriveBadBGEv",
+        "_ZN8SpyGauge14useDriveWellBGEv"
+    ]
 }
