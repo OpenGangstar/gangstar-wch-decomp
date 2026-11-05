@@ -61,6 +61,7 @@ void TouchScreenBase::clearTouchPoint(long id)
 
 static const char releaseMessage[] = "Finger removal detected";
 static const char cancelMessage[] = "INTERRUPTED";
+static const char moveMessage[] = "Finger movement detected";
 
 void TouchScreenBase::touchEnded(const Point2D<short>& point, long id)
 {
@@ -92,6 +93,32 @@ void TouchScreenBase::update(double elapsed)
         } else if (slot.active) {
             slotCount = i + 1;
         }
+    }
+}
+
+void TouchScreenBase::touchMoved(const Point2D<short>& point, long id)
+{
+    _trace(moveMessage);
+    _TouchPointInfo& slot = points[id];
+    if (!slot.active)
+        return;
+
+    slot.previous = slot.current;
+    slot.current = point;
+    slot.lastTouchTime = currentTime;
+    ++slot.numPoints;
+
+    const short firstX = slot.first.x;
+    const short currentX = slot.current.x;
+    const int firstY = slot.first.y;
+    const int currentY = slot.current.y;
+    const int dx = firstX - currentX;
+    const int dy = firstY - currentY;
+    if (dx * dx + dy * dy >= 144 && slot.swipeDirection == 0) {
+        if (firstX < currentX)
+            slot.swipeDirection = 2;
+        else
+            slot.swipeDirection = 1;
     }
 }
 

@@ -14,6 +14,8 @@ SECTIONS
     .touchscreen_release_message 0x0043600c : { *string-startup-touchscreenbase.o(.rodata.releaseMessage) }
     .touchscreen_cancel_message 0x00436024 : { *string-startup-touchscreenbase.o(.rodata.cancelMessage) }
     .touchscreen_update 0x0034c4f8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase6updateEd) }
+    .touchscreen_moved 0x0034c78c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase10touchMovedERK7Point2DIsEl) }
+    .touchscreen_move_message 0x00436030 : { *string-startup-touchscreenbase.o(.rodata.moveMessage) }
     .touchscreen_clear 0x0034c398 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase5clearEv) }
     .touchscreen_clear_point 0x0034c3b8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase15clearTouchPointEl) }
     .touchscreen_point 0x0034c44c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase13getTouchPointEl) }
