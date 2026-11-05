@@ -2,9 +2,15 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/string-startup-accelerometeriphone/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__cxa_pure_virtual = 0;
 __aeabi_atexit = 0x001c494c;
+INCLUDE config/linker/AccelerometerBaseSections.ld
 SECTIONS
 {
+    .accelerometer_constructor 0x0034d8b0 : { *string-startup-accelerometeriphone.o(.text._ZN19AccelerometerIPhoneC1Ev .text._ZN19AccelerometerIPhoneC2Ev) }
+    .accelerometer_delete 0x0034d868 : { *string-startup-accelerometeriphone.o(.text._ZN19AccelerometerIPhoneD0Ev) }
+    .accelerometer_destructor 0x0034d890 : { *string-startup-accelerometeriphone.o(.text._ZN19AccelerometerIPhoneD1Ev .text._ZN19AccelerometerIPhoneD2Ev) }
+    .accelerometer_vtable 0x004ad478 : { *string-startup-accelerometeriphone.o(.data.rel.ro._ZTV19AccelerometerIPhone) }
     .accelerometer_moved 0x0034d854 : { *string-startup-accelerometeriphone.o(.text._ZN19AccelerometerIPhone5movedEfff) }
     .string_startup_function_0 0x0034d824 : { *string-startup-accelerometeriphone.o(.text.__tcf_0) }
     .string_startup_function_1 0x0034d8d4 : { *string-startup-accelerometeriphone.o(.text._Z41__static_initialization_and_destruction_0ii) }

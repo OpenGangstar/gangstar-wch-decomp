@@ -44,6 +44,26 @@
         {
             "name": "_ZN17AccelerometerBase5clearEv",
             "address": "0x0034d40d"
+        },
+        {
+            "name": "_ZN17AccelerometerBaseC1Ev",
+            "address": "0x0034d581"
+        },
+        {
+            "name": "_ZN17AccelerometerBaseC2Ev",
+            "address": "0x0034d581"
+        },
+        {
+            "name": "_ZN17AccelerometerBaseD0Ev",
+            "address": "0x0034d7d5"
+        },
+        {
+            "name": "_ZN17AccelerometerBaseD1Ev",
+            "address": "0x0034d801"
+        },
+        {
+            "name": "_ZN17AccelerometerBaseD2Ev",
+            "address": "0x0034d801"
         }
     ],
     "sections": [
@@ -56,7 +76,18 @@
             "offset": 864
         },
         ".accelerometer_update",
-        ".accelerometer_clear"
+        ".accelerometer_clear",
+        ".accelerometer_base_constructor",
+        ".accelerometer_base_delete",
+        ".accelerometer_base_destructor",
+        ".accelerometer_base_vtable",
+        ".accelerometer_updatable_d0",
+        ".accelerometer_updatable_d1",
+        ".accelerometer_updatable_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN17AccelerometerBase11_calcAnglesEv",
+        "_ZN17AccelerometerBase5movedEfff"
+    ]
 }
