@@ -12686,7 +12686,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c401	0x4c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase14touchCancelledERK7Point2DIsEl	TouchScreenBase::touchCancelled(Point2D<short> const&, long)
 0x0034c44d	0x2a	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase13getTouchPointEl	TouchScreenBase::getTouchPoint(long)
 0x0034c479	0x2a	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase18getFirstTouchPointEl	TouchScreenBase::getFirstTouchPoint(long)
-0x0034c4a5	0x26	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase12getNumPointsEl	TouchScreenBase::getNumPoints(long) const
+0x0034c4a5	0x26	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase12getNumPointsEl	TouchScreenBase::getNumPoints(long) const
 0x0034c4cd	0x26	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase17getSwipeDirectionEl	TouchScreenBase::getSwipeDirection(long) const
 0x0034c4f9	0xa0	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase6updateEd	TouchScreenBase::update(double)
 0x0034c599	0x44	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase5getIDEl	TouchScreenBase::getID(long)
