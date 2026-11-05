@@ -12755,8 +12755,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d2f1	0x60	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3210touchBeganEffi	TouchScreenWin32::touchBegan(float, float, int)
 0x0034d350	0x14	TouchScreenWin32.cpp	game	input	matched	_ZThn472_N16TouchScreenWin327OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenWin32::OnEvent(irr::SEvent const&)
 0x0034d365	0xa8	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin327OnEventERKN3irr6SEventE	TouchScreenWin32::OnEvent(irr::SEvent const&)
-0x0034d40d	0x12	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase5clearEv	AccelerometerBase::clear()
-0x0034d421	0xc	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase6updateEd	AccelerometerBase::update(double)
+0x0034d40d	0x12	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase5clearEv	AccelerometerBase::clear()
+0x0034d421	0xc	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase6updateEd	AccelerometerBase::update(double)
 0x0034d42d	0x30	AccelerometerBase.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0034d45d	0x1c	AccelerometerBase.cpp	game	input	pending	_ZNK17AccelerometerBase6_traceEPKc	AccelerometerBase::_trace(char const*) const
 0x0034d479	0x108	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
@@ -12771,7 +12771,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d801	0x24	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseD1Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d801	0x24	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseD2Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d825	0x30	AccelerometerIPhone.cpp	game	input	matched	__tcf_0	__tcf_0
-0x0034d855	0x14	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhone5movedEfff	AccelerometerIPhone::moved(float, float, float)
+0x0034d855	0x14	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhone5movedEfff	AccelerometerIPhone::moved(float, float, float)
 0x0034d869	0x28	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneD0Ev	AccelerometerIPhone::~AccelerometerIPhone()
 0x0034d891	0x20	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneD1Ev	AccelerometerIPhone::~AccelerometerIPhone()
 0x0034d891	0x20	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneD2Ev	AccelerometerIPhone::~AccelerometerIPhone()

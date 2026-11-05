@@ -11,6 +11,20 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "AccelerometerBase.h"
+
+void AccelerometerBase::update(double)
+{
+    clear();
+}
+
+void AccelerometerBase::clear()
+{
+    baselineX = x;
+    baselineY = y;
+    baselineZ = z;
+    minX = maxX = z;
+}
 
 void operator delete(void*) throw();
 extern "C" {

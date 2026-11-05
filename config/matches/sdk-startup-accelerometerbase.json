@@ -36,6 +36,14 @@
         {
             "name": "_GLOBAL__I__ZN17AccelerometerBaseC2Ev",
             "address": "0x0034d625"
+        },
+        {
+            "name": "_ZN17AccelerometerBase6updateEd",
+            "address": "0x0034d421"
+        },
+        {
+            "name": "_ZN17AccelerometerBase5clearEv",
+            "address": "0x0034d40d"
         }
     ],
     "sections": [
@@ -46,7 +54,9 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".accelerometer_update",
+        ".accelerometer_clear"
     ],
     "retail_got": true
 }
