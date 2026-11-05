@@ -10,6 +10,10 @@
 
 #include "../core/ASprite.h"
 #include "../core/Matrix4.h"
+#include "../core/SceneNode.h"
+#include "../core/VideoDriver.h"
+#include "../app/Application.h"
+#include "../persistence/IFileStream.h"
 
 struct SpriteAnimation {
     short count;
@@ -61,6 +65,27 @@ void ASprite::_erasePtr()
         ownsData = false;
     }
     data = 0;
+}
+
+ASprite::ASprite(IFileStream* stream)
+    : data(0), ownsData(true), texture(0), unknown32(false), unknown33(true),
+      unknown36(0), unknown40(0), unknown44(-1), unknown48(-1)
+{
+    unsigned long long savedPosition = stream->tell();
+    stream->seek(0);
+    unsigned char* bytes = new unsigned char[stream->size()];
+    stream->read(bytes, stream->size());
+    stream->seek(savedPosition);
+    _setPtr(bytes);
+}
+
+ASprite::~ASprite()
+{
+    if (texture) {
+        Application::GetInstance()->GetDevice()->getVideoDriver()->removeTexture(texture);
+        texture = 0;
+    }
+    _erasePtr();
 }
 
 const unsigned char* ASprite::GetAFrame(int index) const

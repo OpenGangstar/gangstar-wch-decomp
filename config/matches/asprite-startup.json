@@ -56,7 +56,12 @@
         "_ZN7ASpriteC1EPh",
         "_ZN7ASprite12GetModuleIdxEPKc",
         "_ZN7ASprite9MakeImageEij",
-        "_ZN7ASprite9_erasePtrEv"
+        "_ZN7ASprite9_erasePtrEv",
+        "_ZN7ASpriteC1EP11IFileStream",
+        "_ZN7ASpriteC2EP11IFileStream",
+        "_ZN7ASpriteD0Ev",
+        "_ZN7ASpriteD1Ev",
+        "_ZN7ASpriteD2Ev"
     ],
     "sections": [
         ".asprite_function_0",
@@ -83,11 +88,16 @@
         ".asprite_storage_method_4",
         ".asprite_storage_method_5",
         ".asprite_storage_method_6",
-        ".asprite_storage_method_7"
+        ".asprite_storage_method_7",
+        ".asprite_stream",
+        ".asprite_delete",
+        ".asprite_destruct",
+        ".asprite_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZNK7ASprite8GetFrameEi",
-        "_ZNK7ASprite12PaintFModuleEiiiii"
+        "_ZNK7ASprite12PaintFModuleEiiiii",
+        "_ZN11Application11GetInstanceEv"
     ]
 }
