@@ -38,7 +38,7 @@ void ArmorBar::update(double)
         fillLeft = fillWidth - fillWidth * armor / 200;
         if (armor > 0) {
             const CHudManager* hud = Application::GetInstance()->GetHudManager();
-            if (hud->activeHud != hud->unknownHud12) {
+            if (hud->activeHud != hud->drivingHud) {
                 flags |= 1;
                 return;
             }

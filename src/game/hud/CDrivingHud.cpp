@@ -8,15 +8,9 @@
  * functions of CDrivingHud.cpp here, in the order they appear in the library.
  */
 
-#include "IHud.h"
-
-class CDrivingHud : public IHud {
-public:
-    explicit CDrivingHud(CHudManager* manager);
-    ~CDrivingHud();
-    virtual void show();
-    virtual void hide();
-};
+#include "CDrivingHud.h"
+#include "CHudManager.h"
+#include "SpyGauge.h"
 
 CDrivingHud::CDrivingHud(CHudManager* hudManager) : IHud(hudManager)
 {
@@ -24,6 +18,25 @@ CDrivingHud::CDrivingHud(CHudManager* hudManager) : IHud(hudManager)
 }
 
 CDrivingHud::~CDrivingHud() {}
+
+void CDrivingHud::showSpyGauge(bool show)
+{
+    if (show) {
+        manager->spyGauge->show();
+        unknown8 |= 0x02000000;
+    } else {
+        manager->spyGauge->hide();
+        unknown8 &= ~0x02000000u;
+    }
+}
+
+void CDrivingHud::showCash(bool show)
+{
+    if (show)
+        unknown8 |= 0x8000;
+    else
+        unknown8 &= ~0x8000u;
+}
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"

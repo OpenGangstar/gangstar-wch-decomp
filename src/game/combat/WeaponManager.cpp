@@ -339,9 +339,8 @@ int WeaponManager::getKeepWeaponsWhenBustedCost()
     PlayerTest* value = PlayerTest::GetPlayer();
     PlayerTest::eContext context = value->context;
     int count = MenuManager::s_WeaponShopDataCount;
-    int i = 0;
     int total = 0;
-    for (; i < count; ++i) {
+    for (int i = 0; i < count; ++i) {
         unsigned short category = MenuManager::s_WeaponShopData[i].category;
         int index = MenuManager::s_WeaponShopData[i].code >> 16;
         if (category == 163) {

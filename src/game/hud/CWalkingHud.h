@@ -15,6 +15,8 @@ public:
     void nearShop();
     bool isNearShop() const;
     void notNearShop();
+    void showSpyGauge(bool show);
+    void showCash(bool show);
 };
 
 #endif

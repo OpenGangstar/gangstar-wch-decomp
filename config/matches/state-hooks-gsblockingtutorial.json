@@ -216,7 +216,9 @@
         ".walking_notNearCar",
         ".walking_nearShop",
         ".walking_isNearShop",
-        ".walking_notNearShop"
+        ".walking_notNearShop",
+        ".hud_showCash",
+        ".hud_showSpyGauge"
     ],
     "retail_got": true,
     "dependencies": [
@@ -244,6 +246,10 @@
         "_ZN11CWalkingHud10notNearCarEv",
         "_ZN11CWalkingHud8nearShopEv",
         "_ZNK11CWalkingHud10isNearShopEv",
-        "_ZN11CWalkingHud11notNearShopEv"
+        "_ZN11CWalkingHud11notNearShopEv",
+        "_ZN11CWalkingHud12showSpyGaugeEb",
+        "_ZN11CWalkingHud8showCashEb",
+        "_ZN11CDrivingHud12showSpyGaugeEb",
+        "_ZN11CDrivingHud8showCashEb"
     ]
 }

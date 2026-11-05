@@ -18,6 +18,8 @@ SECTIONS
     .walking_nearShop 0x003258fc : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud8nearShopEv) }
     .walking_isNearShop 0x00325920 : { *sdk-startup-cwalkinghud.o(.text._ZNK11CWalkingHud10isNearShopEv) }
     .walking_notNearShop 0x00325934 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud11notNearShopEv) }
+    .hud_showSpyGauge 0x00325950 : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud12showSpyGaugeEb) }
+    .hud_showCash 0x0032598c : { *sdk-startup-cwalkinghud.o(.text._ZN11CWalkingHud8showCashEb) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

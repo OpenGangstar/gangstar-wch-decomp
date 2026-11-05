@@ -32,6 +32,8 @@ SECTIONS
     .ai_startup_storage_11 0x004b9100 (NOLOAD) : { *ai-startup-cdrivinghud.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
     .hud_entry_0 0x00322f58 : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHudC1EP11CHudManager) }
     .hud_entry_1 0x00322f88 : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHudD1Ev) }
+    .hud_showSpyGauge 0x00322fa0 : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud12showSpyGaugeEb) }
+    .hud_showCash 0x00322fdc : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud8showCashEb) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

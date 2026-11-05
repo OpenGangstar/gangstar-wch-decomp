@@ -9,6 +9,7 @@
  */
 
 #include "CHudManager.h"
+#include "CDrivingHud.h"
 #include "CWalkingHud.h"
 #include "SpyGauge.h"
 
@@ -24,11 +25,25 @@ void CHudManager::unlock() { locked = false; }
 
 bool CHudManager::isLocked() const { return locked; }
 
+void CHudManager::showCash(bool show)
+{
+    if (activeHud->isWalkingHud())
+        static_cast<CWalkingHud*>(activeHud)->showCash(show);
+    else if (activeHud)
+        static_cast<CDrivingHud*>(activeHud)->showCash(show);
+}
+
 void CHudManager::useSpyBGInSpyGauge() { spyGauge->useSpyBG(); }
 
 void CHudManager::useDriveBadBGInSpyGauge() { spyGauge->useDriveBadBG(); }
 
 void CHudManager::useDriveWellBGInSpyGauge() { spyGauge->useDriveWellBG(); }
+
+void CHudManager::showSpyGauge(bool show)
+{
+    static_cast<CWalkingHud*>(initialHud)->showSpyGauge(show);
+    static_cast<CDrivingHud*>(drivingHud)->showSpyGauge(show);
+}
 
 bool CHudManager::isNearShop() const
 {
