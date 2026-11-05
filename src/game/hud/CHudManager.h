@@ -19,7 +19,8 @@ public:
     unsigned char unknown0[4];
     void* activeHud;
     void* initialHud;
-    unsigned char unknown12[104];
+    void* unknownHud12;
+    unsigned char unknown16[100];
     HudComponent116* component116;
     unsigned char unknown120[84];
     unsigned int unknown204;

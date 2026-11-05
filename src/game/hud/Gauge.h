@@ -16,7 +16,7 @@ protected:
     int fillLeft;
     int fillRight;
     unsigned char unknown68[4];
-    double unknown72;
+    double blinkElapsed;
     bool hideFill;
     int fillFrame;
     int overlayFrame;

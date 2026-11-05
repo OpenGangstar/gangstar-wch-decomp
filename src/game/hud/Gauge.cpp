@@ -36,7 +36,7 @@ Gauge::Gauge(ASprite* image, int firstFrame, int fill, int overlay)
     : HudElement(image, firstFrame, false)
 {
     fillRight = -1;
-    unknown72 = 0.0;
+    blinkElapsed = 0.0;
     hideFill = false;
     fillLeft = 0;
     fillFrame = fill;

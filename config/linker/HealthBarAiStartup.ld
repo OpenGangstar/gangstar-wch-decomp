@@ -13,6 +13,9 @@ _ZN28retail_healthbar_transitions17civ_vehicle_transE = 0x00423f50;
 _ZN28retail_healthbar_transitions17cop_vehicle_transE = 0x00423fe0;
 _ZN28retail_healthbar_transitions11guard_transE = 0x00424094;
 _ZN28retail_healthbar_transitions22scripted_vehicle_transE = 0x0042413c;
+__aeabi_idiv = 0x001c43dc;
+__aeabi_dadd = 0x001c4394;
+__aeabi_dcmpge = 0x001c4448;
 SECTIONS
 {
     .ai_startup_function_0 0x003281c8 : { *ai-startup-healthbar.o(.text.__tcf_3) }
@@ -37,6 +40,7 @@ SECTIONS
     .bar_entry_4 0x0032831c : { *ai-startup-healthbar.o(.text._ZThn4_N9HealthBarD1Ev) }
     .bar_entry_5 0x00328330 : { *ai-startup-healthbar.o(.text._ZN9HealthBarD1Ev) }
     .bar_entry_6 0x0032835c : { *ai-startup-healthbar.o(.text._ZN9HealthBarC1EP7ASpriteiii) }
+    .bar_update 0x00328220 : { *ai-startup-healthbar.o(.text._ZN9HealthBar6updateEd) }
     .bar_vtable 0x004ac298 : { *ai-startup-healthbar.o(.data.rel.ro._ZTV9HealthBar) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }

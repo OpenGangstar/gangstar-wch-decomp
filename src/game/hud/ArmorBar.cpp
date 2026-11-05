@@ -9,6 +9,9 @@
  */
 
 #include "Gauge.h"
+#include "../characters/PlayerTest.h"
+#include "../app/Application.h"
+#include "CHudManager.h"
 
 class ArmorBar : public Gauge {
 public:
@@ -25,6 +28,23 @@ void ArmorBar::draw2d() const
 {
     if (flags & 1)
         Gauge::draw2d();
+}
+
+void ArmorBar::update(double)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (player) {
+        const int armor = player->getContextArmor();
+        fillLeft = fillWidth - fillWidth * armor / 200;
+        if (armor > 0) {
+            const CHudManager* hud = Application::GetInstance()->GetHudManager();
+            if (hud->activeHud != hud->unknownHud12) {
+                flags |= 1;
+                return;
+            }
+        }
+    }
+    flags &= ~1u;
 }
 
 ArmorBar::~ArmorBar() {}

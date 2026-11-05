@@ -9,6 +9,8 @@
  */
 
 #include "Gauge.h"
+#include "../characters/PlayerTest.h"
+#include "../vehicles/Vehicle.h"
 
 class CarBar : public Gauge {
 public:
@@ -18,11 +20,30 @@ public:
     virtual void draw2d() const;
 };
 
+void CarBar::update(double)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (player && (player->flags240 & 1024) && player->getVehicle()) {
+        const int width = fillWidth;
+        const int health = static_cast<SavePrimaryInterface*>(player)->getVehicle()->getHealth();
+        const int maximum = static_cast<SavePrimaryInterface*>(player)->getVehicle()->getMaxHealth();
+        fillLeft = width - width * health / maximum;
+    }
+}
+
 CarBar::~CarBar() {}
 
 CarBar::CarBar(ASprite* image, int firstFrame, int fill, int overlay)
     : Gauge(image, firstFrame, fill, overlay)
 {
+}
+
+void CarBar::draw2d() const
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    // The retail short-circuit reaches the vehicle test when player is null.
+    if ((flags & 1) && (player || ((player->flags240 & 1024) && player->getVehicle())))
+        Gauge::draw2d();
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.

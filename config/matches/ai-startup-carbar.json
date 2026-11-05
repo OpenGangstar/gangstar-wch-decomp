@@ -43,7 +43,10 @@
         "_ZN6CarBarD2Ev",
         "_ZN6CarBarD1Ev",
         "_ZN6CarBarC1EP7ASpriteiii",
-        "_ZN6CarBarC2EP7ASpriteiii"
+        "_ZN6CarBarC2EP7ASpriteiii",
+        "_ZN6CarBar6updateEd",
+        "_ZThn4_NK6CarBar6draw2dEv",
+        "_ZNK6CarBar6draw2dEv"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -59,6 +62,8 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN5GaugeC1EP7ASpriteiii",
-        "_ZN5GaugeD1Ev"
+        "_ZN5GaugeD1Ev",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZNK5Gauge6draw2dEv"
     ]
 }

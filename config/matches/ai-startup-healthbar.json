@@ -45,7 +45,8 @@
         "_ZN9HealthBarD1Ev",
         "_ZN9HealthBarD2Ev",
         "_ZN9HealthBarC2EP7ASpriteiii",
-        "_ZN9HealthBarC1EP7ASpriteiii"
+        "_ZN9HealthBarC1EP7ASpriteiii",
+        "_ZN9HealthBar6updateEd"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -62,6 +63,7 @@
     "external_thumb_functions": [
         "_ZN5GaugeC1EP7ASpriteiii",
         "_ZN5GaugeD1Ev",
-        "_ZNK5Gauge6draw2dEv"
+        "_ZNK5Gauge6draw2dEv",
+        "_ZN10PlayerTest9GetPlayerEv"
     ]
 }
