@@ -8,6 +8,52 @@
  * functions of SpyGauge.cpp here, in the order they appear in the library.
  */
 
+#include "Gauge.h"
+#include "../characters/PlayerTest.h"
+#include "../core/ASprite.h"
+
+class SpyGauge : public Gauge {
+public:
+    SpyGauge(ASprite*, int, int, int, int, int);
+    virtual ~SpyGauge();
+    virtual void update(double);
+    virtual void draw2d() const;
+    void useDriveWellBG();
+    void useDriveBadBG();
+    void useSpyBG();
+
+private:
+    int driveWellFrame;
+    int driveBadFrame;
+    int spyFrame;
+};
+
+void SpyGauge::update(double) {}
+
+void SpyGauge::useDriveWellBG() { fillFrame = driveWellFrame; }
+void SpyGauge::useDriveBadBG() { fillFrame = driveBadFrame; }
+void SpyGauge::useSpyBG() { fillFrame = spyFrame; }
+
+void SpyGauge::draw2d() const
+{
+    if (PlayerTest::GetPlayer() && (flags & 1)) {
+        HudElement::draw2d();
+        sprite->PaintFrame(fillFrame, 0, 0, 0);
+        sprite->PaintFrame(overlayFrame, 0, 0, 0);
+        sprite->PaintFrame(142, fillRight, 0, 0);
+    }
+}
+
+SpyGauge::~SpyGauge() {}
+
+SpyGauge::SpyGauge(ASprite* image, int firstFrame, int spy, int overlay, int driveWell, int driveBad)
+    : Gauge(image, firstFrame, spy, overlay)
+{
+    spyFrame = spy;
+    driveWellFrame = driveWell;
+    driveBadFrame = driveBad;
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

@@ -36,7 +36,20 @@
         {
             "name": "_GLOBAL__I__ZN8SpyGaugeC2EP7ASpriteiiiii",
             "address": "0x0032bbb5"
-        }
+        },
+        "_ZN8SpyGauge6updateEd",
+        "_ZN8SpyGauge14useDriveWellBGEv",
+        "_ZN8SpyGauge13useDriveBadBGEv",
+        "_ZN8SpyGauge8useSpyBGEv",
+        "_ZThn4_NK8SpyGauge6draw2dEv",
+        "_ZNK8SpyGauge6draw2dEv",
+        "_ZThn4_N8SpyGaugeD0Ev",
+        "_ZN8SpyGaugeD0Ev",
+        "_ZThn4_N8SpyGaugeD1Ev",
+        "_ZN8SpyGaugeD1Ev",
+        "_ZN8SpyGaugeD2Ev",
+        "_ZN8SpyGaugeC1EP7ASpriteiiiii",
+        "_ZN8SpyGaugeC2EP7ASpriteiiiii"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +59,15 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".spy_gauge_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN5GaugeC1EP7ASpriteiii",
+        "_ZN5GaugeD1Ev",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZNK10HudElement6draw2dEv",
+        "_ZNK7ASprite10PaintFrameEiiii"
+    ]
 }
