@@ -12,14 +12,9 @@
 #include "CSoundData.h"
 #include "CSoundDecoderADPCM.h"
 #include "CSoundDecoderMSWAV.h"
+#include "SoundBuffersPool.h"
 #include "../core/NativeStdio.h"
 #include "../persistence/FileManager.h"
-
-class CSoundBuffers {
-public:
-    char* GetSoundBuffer();
-    void ReleaseSoundBuffer(char* buffer);
-};
 
 extern "C" const char* _ZN11FileManager10GetDvdNameEPKc(const char* name) __attribute__((weak));
 
