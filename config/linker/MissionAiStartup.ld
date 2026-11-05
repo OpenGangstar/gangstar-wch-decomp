@@ -15,6 +15,7 @@ _ZN26retail_mission_transitions11guard_transE = 0x0042ac00;
 _ZN26retail_mission_transitions22scripted_vehicle_transE = 0x0042aca8;
 SECTIONS
 {
+    .mission_rct_validate 0x00335cc4 : { *ai-startup-mission.o(.text._ZN3RctIiE9_validateEv .gnu.linkonce.t._ZN3RctIiE9_validateEv) }
     .ai_startup_function_0 0x00335d24 : { *ai-startup-mission.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00336808 : { *ai-startup-mission.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0033694c : { *ai-startup-mission.o(.text._GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii) }

@@ -6,6 +6,7 @@ __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
     .touchscreen_dimension_out 0x0034c5fc : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getDimensionER3RctIsE) }
+    .touchscreen_rct_validate 0x0034c64c : { *string-startup-touchscreenbase.o(.text._ZN3RctIsE9_validateEv .gnu.linkonce.t._ZN3RctIsE9_validateEv) }
     .touchscreen_dimension_value 0x0034c6a4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase12getDimensionEv) }
     .string_startup_function_0 0x0034c724 : { *string-startup-touchscreenbase.o(.text.__tcf_0) }
     .string_startup_function_1 0x0034cb10 : { *string-startup-touchscreenbase.o(.text._Z41__static_initialization_and_destruction_0ii) }

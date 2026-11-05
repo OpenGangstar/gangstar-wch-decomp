@@ -44,6 +44,10 @@
         {
             "name": "_ZN3RctIiED1Ev",
             "address": "0x00335d75"
+        },
+        {
+            "name": "_ZN3RctIiE9_validateEv",
+            "address": "0x00335cc5"
         }
     ],
     "sections": [
@@ -57,7 +61,8 @@
         },
         ".mission_rct_1",
         ".mission_rct_2",
-        ".mission_rct_vtable"
+        ".mission_rct_vtable",
+        ".mission_rct_validate"
     ],
     "retail_got": true
 }

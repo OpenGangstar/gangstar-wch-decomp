@@ -11826,7 +11826,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00335cad	0x8	Mission.cpp	game	missions	pending	_ZN7Mission11skipFadeOutEv	Mission::skipFadeOut()
 0x00335cb5	0x8	Mission.cpp	game	missions	pending	_ZN7Mission13resumeFadeOutEv	Mission::resumeFadeOut()
 0x00335cbd	0x6	Mission.cpp	game	missions	pending	_ZN7Mission15setFailureCountEi	Mission::setFailureCount(int)
-0x00335cc5	0x60	Mission.cpp	game	missions	pending	_ZN3RctIiE9_validateEv	Rct<int>::_validate()
+0x00335cc5	0x60	Mission.cpp	game	missions	matched	_ZN3RctIiE9_validateEv	Rct<int>::_validate()
 0x00335d25	0x30	Mission.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00335d55	0x20	Mission.cpp	game	missions	matched	_ZN3RctIiED0Ev	Rct<int>::~Rct()
 0x00335d75	0x18	Mission.cpp	game	missions	matched	_ZN3RctIiED1Ev	Rct<int>::~Rct()
@@ -12694,7 +12694,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c5e9	0xa	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase7disableEv	TouchScreenBase::disable()
 0x0034c5f5	0x8	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase9isEnabledEv	TouchScreenBase::isEnabled() const
 0x0034c5fd	0x4e	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase12getDimensionER3RctIsE	TouchScreenBase::getDimension(Rct<short>&) const
-0x0034c64d	0x58	TouchScreenBase.cpp	game	input	pending	_ZN3RctIsE9_validateEv	Rct<short>::_validate()
+0x0034c64d	0x58	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsE9_validateEv	Rct<short>::_validate()
 0x0034c6a5	0x80	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase12getDimensionEv	TouchScreenBase::getDimension() const
 0x0034c725	0x30	TouchScreenBase.cpp	game	input	matched	__tcf_0	__tcf_0
 0x0034c755	0x20	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsED0Ev	Rct<short>::~Rct()
