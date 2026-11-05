@@ -12572,7 +12572,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349401	0x12	AnimObject.cpp	game	characters	matched	_ZN10AnimObject7SetAnimEii	AnimObject::SetAnim(int, int)
 0x00349415	0x30	AnimObject.cpp	game	characters	matched	__tcf_2	__tcf_2
 0x00349445	0x70	AnimObject.cpp	game	characters	pending	_ZN10AnimObject10IsAnimOverEv	AnimObject::IsAnimOver()
-0x003494b5	0x58	AnimObject.cpp	game	characters	pending	_ZN10AnimObject22GetCurrentBoundingRectEv	AnimObject::GetCurrentBoundingRect()
+0x003494b5	0x58	AnimObject.cpp	game	characters	matched	_ZN10AnimObject22GetCurrentBoundingRectEv	AnimObject::GetCurrentBoundingRect()
 0x0034950d	0x54	AnimObject.cpp	game	characters	matched	_ZN10AnimObject4DrawEv	AnimObject::Draw()
 0x00349561	0x50	AnimObject.cpp	game	characters	matched	_Z15PlayPolicy_Loopfff	PlayPolicy_Loop(float, float, float)
 0x003495b1	0x88	AnimObject.cpp	game	characters	matched	_ZN10AnimObject11UpdateFrameEv	AnimObject::UpdateFrame()
@@ -12594,7 +12594,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003497b9	0x2a	ASprite.cpp	game	rendering	pending	_ZNK3RctIiE14isIntersectingEii	Rct<int>::isIntersecting(int, int) const
 0x003497e5	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite7GetAnimEi	ASprite::GetAnim(int) const
 0x003497f5	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite8GetFrameEi	ASprite::GetFrame(int) const
-0x00349805	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite20GetFrameBoundingRectEi	ASprite::GetFrameBoundingRect(int) const
+0x00349805	0xe	ASprite.cpp	game	rendering	matched	_ZNK7ASprite20GetFrameBoundingRectEi	ASprite::GetFrameBoundingRect(int) const
 0x00349815	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite9GetModuleEi	ASprite::GetModule(int) const
 0x00349825	0x22	ASprite.cpp	game	rendering	pending	_ZNK7ASprite12GetFrameRectEii	ASprite::GetFrameRect(int, int) const
 0x00349849	0x30	ASprite.cpp	game	rendering	matched	__tcf_2	__tcf_2
@@ -12606,8 +12606,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349979	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASpriteD2Ev	ASprite::~ASprite()
 0x003499b9	0x24	ASprite.cpp	game	rendering	pending	_ZNK7ASprite13GetAFrameTimeEii	ASprite::GetAFrameTime(int, int) const
 0x003499dd	0x6a	ASprite.cpp	game	rendering	pending	_ZN7ASprite9GetAFrameEii	ASprite::GetAFrame(int, int)
-0x00349a49	0x22	ASprite.cpp	game	rendering	pending	_ZNK7ASprite18GetFrameFromAFrameEii	ASprite::GetFrameFromAFrame(int, int) const
-0x00349a6d	0x12	ASprite.cpp	game	rendering	pending	_ZNK7ASprite24GetAnimFrameBoundingRectEii	ASprite::GetAnimFrameBoundingRect(int, int) const
+0x00349a49	0x22	ASprite.cpp	game	rendering	matched	_ZNK7ASprite18GetFrameFromAFrameEii	ASprite::GetFrameFromAFrame(int, int) const
+0x00349a6d	0x12	ASprite.cpp	game	rendering	matched	_ZNK7ASprite24GetAnimFrameBoundingRectEii	ASprite::GetAnimFrameBoundingRect(int, int) const
 0x00349a81	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASprite11GetFrameIdxEPKc	ASprite::GetFrameIdx(char const*)
 0x00349ac1	0x1c4	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1EPKc	ASprite::ASprite(char const*)
 0x00349ac1	0x1c4	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2EPKc	ASprite::ASprite(char const*)

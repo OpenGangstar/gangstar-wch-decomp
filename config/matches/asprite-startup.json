@@ -36,7 +36,10 @@
         {
             "name": "_GLOBAL__I__ZN7ASprite18s_global_transformE",
             "address": "0x0034a21d"
-        }
+        },
+        "_ZNK7ASprite20GetFrameBoundingRectEi",
+        "_ZNK7ASprite18GetFrameFromAFrameEii",
+        "_ZNK7ASprite24GetAnimFrameBoundingRectEii"
     ],
     "sections": [
         ".asprite_function_0",
@@ -46,7 +49,13 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".asprite_lookup_1",
+        ".asprite_lookup_3",
+        ".asprite_lookup_4"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZNK7ASprite8GetFrameEi"
+    ]
 }

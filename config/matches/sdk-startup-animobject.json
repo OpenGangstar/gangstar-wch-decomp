@@ -52,7 +52,8 @@
         "_ZN10AnimObject4DrawEv",
         "_ZN10AnimObject6UpdateEi",
         "_Z15PlayPolicy_Loopfff",
-        "_ZN10AnimObject11UpdateFrameEv"
+        "_ZN10AnimObject11UpdateFrameEv",
+        "_ZN10AnimObject22GetCurrentBoundingRectEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -77,7 +78,9 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".anim_bounds",
+        ".anim_empty_bounds"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -85,6 +88,7 @@
         "_ZNK7ASprite11PaintAFrameEiiiii",
         "_ZN7ASprite15GetAnimDurationEi",
         "_Z7FSelectfff",
-        "_ZN10AnimObject5ResetEv"
+        "_ZN10AnimObject5ResetEv",
+        "_ZNK7ASprite24GetAnimFrameBoundingRectEii"
     ]
 }

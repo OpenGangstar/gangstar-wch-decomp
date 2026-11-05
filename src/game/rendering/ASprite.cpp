@@ -8,12 +8,42 @@
  * functions of ASprite.cpp here, in the order they appear in the library.
  */
 
+#include "../core/ASprite.h"
 #include "../core/Matrix4.h"
 
-class ASprite {
-public:
-    static irr::core::matrix4 s_global_transform;
+struct SpriteAnimation {
+    short count;
+    short firstFrame;
+    unsigned char unknown4[8];
 };
+
+struct SpriteData {
+    unsigned char unknown0[32];
+    unsigned int modules;
+    unsigned char unknown36[4];
+    unsigned int frames;
+    unsigned int frameModules;
+    unsigned int animations;
+    unsigned int animationFrames;
+};
+
+const SpriteBounds& ASprite::GetFrameBoundingRect(int frame) const
+{
+    return GetFrame(frame)->bounds;
+}
+
+int ASprite::GetFrameFromAFrame(int animation, int frame) const
+{
+    const char* bytes = reinterpret_cast<const char*>(data);
+    const SpriteAnimation* entry = reinterpret_cast<const SpriteAnimation*>(bytes + (data->animations + animation * 12));
+    int index = entry->firstFrame + frame;
+    return *reinterpret_cast<const unsigned short*>(bytes + (data->animationFrames + index * 9));
+}
+
+const SpriteBounds& ASprite::GetAnimFrameBoundingRect(int animation, int frame) const
+{
+    return GetFrameBoundingRect(GetFrameFromAFrame(animation, frame));
+}
 
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"

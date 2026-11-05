@@ -2,6 +2,7 @@
 #define WCH_CHARACTERS_ANIM_OBJECT_H
 
 class ASprite;
+struct SpriteBounds;
 
 class AnimObject {
 public:
@@ -11,6 +12,7 @@ public:
     void SetAnim(int animation);
     void SetAnim(int animation, int frameLimit);
     void Draw();
+    SpriteBounds GetCurrentBoundingRect();
     void Load();
     void Unload();
     void Reset();

@@ -49,6 +49,18 @@ void AnimObject::SetAnim(int id, int limit)
     frameLimit = limit;
 }
 
+static const SpriteBounds emptyAnimBounds
+    __attribute__((section(".rodata.empty_anim_bounds"))) = {0, 0, 0, 0};
+
+SpriteBounds AnimObject::GetCurrentBoundingRect()
+{
+    if (sprite) {
+        int animationFrame = sprite->GetAFrame(animation, static_cast<int>(frame));
+        return sprite->GetAnimFrameBoundingRect(animation, animationFrame);
+    }
+    return emptyAnimBounds;
+}
+
 void AnimObject::Draw()
 {
     if (sprite && animation >= 0) {
