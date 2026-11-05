@@ -36,7 +36,14 @@
         {
             "name": "_GLOBAL__I__ZN6CarBarC2EP7ASpriteiii",
             "address": "0x0032798d"
-        }
+        },
+        "_ZThn4_N6CarBarD0Ev",
+        "_ZN6CarBarD0Ev",
+        "_ZThn4_N6CarBarD1Ev",
+        "_ZN6CarBarD2Ev",
+        "_ZN6CarBarD1Ev",
+        "_ZN6CarBarC1EP7ASpriteiii",
+        "_ZN6CarBarC2EP7ASpriteiii"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +53,12 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".bar_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN5GaugeC1EP7ASpriteiii",
+        "_ZN5GaugeD1Ev"
+    ]
 }

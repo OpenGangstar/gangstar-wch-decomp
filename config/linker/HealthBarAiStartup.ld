@@ -30,6 +30,14 @@ SECTIONS
     .ai_startup_storage_9 0x004b94d4 (NOLOAD) : { *ai-startup-healthbar.o(.bss._ZN8gameloft2ai11cop_vehicleE) }
     .ai_startup_storage_10 0x004b94dc (NOLOAD) : { *ai-startup-healthbar.o(.bss._ZN8gameloft2ai5guardE) }
     .ai_startup_storage_11 0x004b94e4 (NOLOAD) : { *ai-startup-healthbar.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
+    .bar_entry_0 0x003281f8 : { *ai-startup-healthbar.o(.text._ZThn4_NK9HealthBar6draw2dEv) }
+    .bar_entry_1 0x0032820c : { *ai-startup-healthbar.o(.text._ZNK9HealthBar6draw2dEv) }
+    .bar_entry_2 0x003282d8 : { *ai-startup-healthbar.o(.text._ZThn4_N9HealthBarD0Ev) }
+    .bar_entry_3 0x003282ec : { *ai-startup-healthbar.o(.text._ZN9HealthBarD0Ev) }
+    .bar_entry_4 0x0032831c : { *ai-startup-healthbar.o(.text._ZThn4_N9HealthBarD1Ev) }
+    .bar_entry_5 0x00328330 : { *ai-startup-healthbar.o(.text._ZN9HealthBarD1Ev) }
+    .bar_entry_6 0x0032835c : { *ai-startup-healthbar.o(.text._ZN9HealthBarC1EP7ASpriteiii) }
+    .bar_vtable 0x004ac298 : { *ai-startup-healthbar.o(.data.rel.ro._ZTV9HealthBar) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

@@ -8,6 +8,23 @@
  * functions of CarBar.cpp here, in the order they appear in the library.
  */
 
+#include "Gauge.h"
+
+class CarBar : public Gauge {
+public:
+    CarBar(ASprite*, int, int, int);
+    virtual ~CarBar();
+    virtual void update(double);
+    virtual void draw2d() const;
+};
+
+CarBar::~CarBar() {}
+
+CarBar::CarBar(ASprite* image, int firstFrame, int fill, int overlay)
+    : Gauge(image, firstFrame, fill, overlay)
+{
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

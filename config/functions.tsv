@@ -11167,18 +11167,18 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003270f9	0xcc	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeE	AnimatedButton::AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type)
 0x003271c5	0x58	AnimatedButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032721d	0x14	AnimatedButton.cpp	game	core	matched	_GLOBAL__I__ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE	_GLOBAL__I__ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE
-0x00327231	0x2	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBar4showEv	ArmorBar::show()
+0x00327231	0x2	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBar4showEv	ArmorBar::show()
 0x00327235	0x30	ArmorBar.cpp	game	hud	matched	__tcf_3	__tcf_3
-0x00327264	0x14	ArmorBar.cpp	game	hud	pending	_ZThn4_NK8ArmorBar6draw2dEv	non-virtual thunk to ArmorBar::draw2d() const
-0x00327279	0x12	ArmorBar.cpp	game	hud	pending	_ZNK8ArmorBar6draw2dEv	ArmorBar::draw2d() const
+0x00327264	0x14	ArmorBar.cpp	game	hud	matched	_ZThn4_NK8ArmorBar6draw2dEv	non-virtual thunk to ArmorBar::draw2d() const
+0x00327279	0x12	ArmorBar.cpp	game	hud	matched	_ZNK8ArmorBar6draw2dEv	ArmorBar::draw2d() const
 0x0032728d	0x54	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBar6updateEd	ArmorBar::update(double)
-0x003272e0	0x14	ArmorBar.cpp	game	hud	pending	_ZThn4_N8ArmorBarD0Ev	non-virtual thunk to ArmorBar::~ArmorBar()
-0x003272f5	0x30	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBarD0Ev	ArmorBar::~ArmorBar()
-0x00327324	0x14	ArmorBar.cpp	game	hud	pending	_ZThn4_N8ArmorBarD1Ev	non-virtual thunk to ArmorBar::~ArmorBar()
-0x00327339	0x2c	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBarD2Ev	ArmorBar::~ArmorBar()
-0x00327339	0x2c	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBarD1Ev	ArmorBar::~ArmorBar()
-0x00327365	0x34	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBarC1EP7ASpriteiii	ArmorBar::ArmorBar(ASprite*, int, int, int)
-0x00327365	0x34	ArmorBar.cpp	game	hud	pending	_ZN8ArmorBarC2EP7ASpriteiii	ArmorBar::ArmorBar(ASprite*, int, int, int)
+0x003272e0	0x14	ArmorBar.cpp	game	hud	matched	_ZThn4_N8ArmorBarD0Ev	non-virtual thunk to ArmorBar::~ArmorBar()
+0x003272f5	0x30	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarD0Ev	ArmorBar::~ArmorBar()
+0x00327324	0x14	ArmorBar.cpp	game	hud	matched	_ZThn4_N8ArmorBarD1Ev	non-virtual thunk to ArmorBar::~ArmorBar()
+0x00327339	0x2c	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarD2Ev	ArmorBar::~ArmorBar()
+0x00327339	0x2c	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarD1Ev	ArmorBar::~ArmorBar()
+0x00327365	0x34	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarC1EP7ASpriteiii	ArmorBar::ArmorBar(ASprite*, int, int, int)
+0x00327365	0x34	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarC2EP7ASpriteiii	ArmorBar::ArmorBar(ASprite*, int, int, int)
 0x00327399	0x144	ArmorBar.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003274dd	0x14	ArmorBar.cpp	game	hud	matched	_GLOBAL__I__ZN8ArmorBarC2EP7ASpriteiii	_GLOBAL__I__ZN8ArmorBarC2EP7ASpriteiii
 0x003274f1	0x34	Background.cpp	game	ui	pending	_ZN10Background6updateEd	Background::update(double)
@@ -11196,13 +11196,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003276f1	0x14	Background.cpp	game	core	matched	_GLOBAL__I__ZN10BackgroundC2EP7ASpritei	_GLOBAL__I__ZN10BackgroundC2EP7ASpritei
 0x00327705	0x30	CarBar.cpp	game	hud	matched	__tcf_3	__tcf_3
 0x00327735	0x5a	CarBar.cpp	game	hud	pending	_ZN6CarBar6updateEd	CarBar::update(double)
-0x00327790	0x14	CarBar.cpp	game	hud	pending	_ZThn4_N6CarBarD0Ev	non-virtual thunk to CarBar::~CarBar()
-0x003277a5	0x30	CarBar.cpp	game	hud	pending	_ZN6CarBarD0Ev	CarBar::~CarBar()
-0x003277d4	0x14	CarBar.cpp	game	hud	pending	_ZThn4_N6CarBarD1Ev	non-virtual thunk to CarBar::~CarBar()
-0x003277e9	0x2c	CarBar.cpp	game	hud	pending	_ZN6CarBarD2Ev	CarBar::~CarBar()
-0x003277e9	0x2c	CarBar.cpp	game	hud	pending	_ZN6CarBarD1Ev	CarBar::~CarBar()
-0x00327815	0x34	CarBar.cpp	game	hud	pending	_ZN6CarBarC1EP7ASpriteiii	CarBar::CarBar(ASprite*, int, int, int)
-0x00327815	0x34	CarBar.cpp	game	hud	pending	_ZN6CarBarC2EP7ASpriteiii	CarBar::CarBar(ASprite*, int, int, int)
+0x00327790	0x14	CarBar.cpp	game	hud	matched	_ZThn4_N6CarBarD0Ev	non-virtual thunk to CarBar::~CarBar()
+0x003277a5	0x30	CarBar.cpp	game	hud	matched	_ZN6CarBarD0Ev	CarBar::~CarBar()
+0x003277d4	0x14	CarBar.cpp	game	hud	matched	_ZThn4_N6CarBarD1Ev	non-virtual thunk to CarBar::~CarBar()
+0x003277e9	0x2c	CarBar.cpp	game	hud	matched	_ZN6CarBarD2Ev	CarBar::~CarBar()
+0x003277e9	0x2c	CarBar.cpp	game	hud	matched	_ZN6CarBarD1Ev	CarBar::~CarBar()
+0x00327815	0x34	CarBar.cpp	game	hud	matched	_ZN6CarBarC1EP7ASpriteiii	CarBar::CarBar(ASprite*, int, int, int)
+0x00327815	0x34	CarBar.cpp	game	hud	matched	_ZN6CarBarC2EP7ASpriteiii	CarBar::CarBar(ASprite*, int, int, int)
 0x00327849	0x144	CarBar.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032798d	0x14	CarBar.cpp	game	hud	matched	_GLOBAL__I__ZN6CarBarC2EP7ASpriteiii	_GLOBAL__I__ZN6CarBarC2EP7ASpriteiii
 0x003279a0	0x14	CarBar.cpp	game	hud	pending	_ZThn4_NK6CarBar6draw2dEv	non-virtual thunk to CarBar::draw2d() const
@@ -11241,16 +11241,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328149	0x6c	Gauge.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003281b5	0x14	Gauge.cpp	game	hud	matched	_GLOBAL__I__ZN5GaugeC2EP7ASpriteiii	_GLOBAL__I__ZN5GaugeC2EP7ASpriteiii
 0x003281c9	0x30	HealthBar.cpp	game	hud	matched	__tcf_3	__tcf_3
-0x003281f8	0x14	HealthBar.cpp	game	hud	pending	_ZThn4_NK9HealthBar6draw2dEv	non-virtual thunk to HealthBar::draw2d() const
-0x0032820d	0x12	HealthBar.cpp	game	hud	pending	_ZNK9HealthBar6draw2dEv	HealthBar::draw2d() const
+0x003281f8	0x14	HealthBar.cpp	game	hud	matched	_ZThn4_NK9HealthBar6draw2dEv	non-virtual thunk to HealthBar::draw2d() const
+0x0032820d	0x12	HealthBar.cpp	game	hud	matched	_ZNK9HealthBar6draw2dEv	HealthBar::draw2d() const
 0x00328221	0xb8	HealthBar.cpp	game	hud	pending	_ZN9HealthBar6updateEd	HealthBar::update(double)
-0x003282d8	0x14	HealthBar.cpp	game	hud	pending	_ZThn4_N9HealthBarD0Ev	non-virtual thunk to HealthBar::~HealthBar()
-0x003282ed	0x30	HealthBar.cpp	game	hud	pending	_ZN9HealthBarD0Ev	HealthBar::~HealthBar()
-0x0032831c	0x14	HealthBar.cpp	game	hud	pending	_ZThn4_N9HealthBarD1Ev	non-virtual thunk to HealthBar::~HealthBar()
-0x00328331	0x2c	HealthBar.cpp	game	hud	pending	_ZN9HealthBarD1Ev	HealthBar::~HealthBar()
-0x00328331	0x2c	HealthBar.cpp	game	hud	pending	_ZN9HealthBarD2Ev	HealthBar::~HealthBar()
-0x0032835d	0x34	HealthBar.cpp	game	hud	pending	_ZN9HealthBarC2EP7ASpriteiii	HealthBar::HealthBar(ASprite*, int, int, int)
-0x0032835d	0x34	HealthBar.cpp	game	hud	pending	_ZN9HealthBarC1EP7ASpriteiii	HealthBar::HealthBar(ASprite*, int, int, int)
+0x003282d8	0x14	HealthBar.cpp	game	hud	matched	_ZThn4_N9HealthBarD0Ev	non-virtual thunk to HealthBar::~HealthBar()
+0x003282ed	0x30	HealthBar.cpp	game	hud	matched	_ZN9HealthBarD0Ev	HealthBar::~HealthBar()
+0x0032831c	0x14	HealthBar.cpp	game	hud	matched	_ZThn4_N9HealthBarD1Ev	non-virtual thunk to HealthBar::~HealthBar()
+0x00328331	0x2c	HealthBar.cpp	game	hud	matched	_ZN9HealthBarD1Ev	HealthBar::~HealthBar()
+0x00328331	0x2c	HealthBar.cpp	game	hud	matched	_ZN9HealthBarD2Ev	HealthBar::~HealthBar()
+0x0032835d	0x34	HealthBar.cpp	game	hud	matched	_ZN9HealthBarC2EP7ASpriteiii	HealthBar::HealthBar(ASprite*, int, int, int)
+0x0032835d	0x34	HealthBar.cpp	game	hud	matched	_ZN9HealthBarC1EP7ASpriteiii	HealthBar::HealthBar(ASprite*, int, int, int)
 0x00328391	0x144	HealthBar.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003284d5	0x14	HealthBar.cpp	game	hud	matched	_GLOBAL__I__ZN9HealthBarC2EP7ASpriteiii	_GLOBAL__I__ZN9HealthBarC2EP7ASpriteiii
 0x003284e9	0x48	HitWarning.cpp	game	combat	matched	_ZN10HitWarning6updateEd	HitWarning::update(double)

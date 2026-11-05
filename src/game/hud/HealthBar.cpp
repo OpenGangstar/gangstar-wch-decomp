@@ -8,6 +8,29 @@
  * functions of HealthBar.cpp here, in the order they appear in the library.
  */
 
+#include "Gauge.h"
+
+class HealthBar : public Gauge {
+public:
+    HealthBar(ASprite*, int, int, int);
+    virtual ~HealthBar();
+    virtual void update(double);
+    virtual void draw2d() const;
+};
+
+void HealthBar::draw2d() const
+{
+    if (flags & 1)
+        Gauge::draw2d();
+}
+
+HealthBar::~HealthBar() {}
+
+HealthBar::HealthBar(ASprite* image, int firstFrame, int fill, int overlay)
+    : Gauge(image, firstFrame, fill, overlay)
+{
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
