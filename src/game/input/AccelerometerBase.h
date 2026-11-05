@@ -5,12 +5,15 @@
 
 class AccelerometerBase : public IUpdatable {
 public:
+    AccelerometerBase();
     virtual ~AccelerometerBase();
     virtual void update(double elapsed);
     virtual void moved(float x, float y, float z);
     void clear();
 
 private:
+    void _calcAngles();
+
     float x;
     float y;
     float z;
@@ -20,7 +23,13 @@ private:
     float minX;
     unsigned char unknown32[8];
     float maxX;
-    unsigned char unknown44[32];
+    unsigned char unknown44[8];
+    float angleX;
+    unsigned char unknown56[4];
+    float angleY;
+    unsigned char unknown64[4];
+    float angleZ;
+    unsigned char unknown72[4];
 };
 
 #endif

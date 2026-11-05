@@ -12760,23 +12760,23 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d42d	0x30	AccelerometerBase.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0034d45d	0x1c	AccelerometerBase.cpp	game	input	pending	_ZNK17AccelerometerBase6_traceEPKc	AccelerometerBase::_trace(char const*) const
 0x0034d479	0x108	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
-0x0034d581	0x38	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseC1Ev	AccelerometerBase::AccelerometerBase()
-0x0034d581	0x38	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseC2Ev	AccelerometerBase::AccelerometerBase()
+0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC1Ev	AccelerometerBase::AccelerometerBase()
+0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC2Ev	AccelerometerBase::AccelerometerBase()
 0x0034d5b9	0x6c	AccelerometerBase.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034d625	0x14	AccelerometerBase.cpp	game	input	matched	_GLOBAL__I__ZN17AccelerometerBaseC2Ev	_GLOBAL__I__ZN17AccelerometerBaseC2Ev
 0x0034d639	0x2c	AccelerometerBase.cpp	game	input	pending	_ZN14EvAccelerationD0Ev	EvAcceleration::~EvAcceleration()
 0x0034d665	0x24	AccelerometerBase.cpp	game	input	pending	_ZN14EvAccelerationD1Ev	EvAcceleration::~EvAcceleration()
 0x0034d689	0x14c	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase5movedEfff	AccelerometerBase::moved(float, float, float)
-0x0034d7d5	0x2c	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseD0Ev	AccelerometerBase::~AccelerometerBase()
-0x0034d801	0x24	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseD1Ev	AccelerometerBase::~AccelerometerBase()
-0x0034d801	0x24	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBaseD2Ev	AccelerometerBase::~AccelerometerBase()
+0x0034d7d5	0x2c	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD0Ev	AccelerometerBase::~AccelerometerBase()
+0x0034d801	0x24	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD1Ev	AccelerometerBase::~AccelerometerBase()
+0x0034d801	0x24	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD2Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d825	0x30	AccelerometerIPhone.cpp	game	input	matched	__tcf_0	__tcf_0
 0x0034d855	0x14	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhone5movedEfff	AccelerometerIPhone::moved(float, float, float)
-0x0034d869	0x28	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneD0Ev	AccelerometerIPhone::~AccelerometerIPhone()
-0x0034d891	0x20	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneD1Ev	AccelerometerIPhone::~AccelerometerIPhone()
-0x0034d891	0x20	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneD2Ev	AccelerometerIPhone::~AccelerometerIPhone()
-0x0034d8b1	0x24	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneC2Ev	AccelerometerIPhone::AccelerometerIPhone()
-0x0034d8b1	0x24	AccelerometerIPhone.cpp	game	input	pending	_ZN19AccelerometerIPhoneC1Ev	AccelerometerIPhone::AccelerometerIPhone()
+0x0034d869	0x28	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneD0Ev	AccelerometerIPhone::~AccelerometerIPhone()
+0x0034d891	0x20	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneD1Ev	AccelerometerIPhone::~AccelerometerIPhone()
+0x0034d891	0x20	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneD2Ev	AccelerometerIPhone::~AccelerometerIPhone()
+0x0034d8b1	0x24	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneC2Ev	AccelerometerIPhone::AccelerometerIPhone()
+0x0034d8b1	0x24	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneC1Ev	AccelerometerIPhone::AccelerometerIPhone()
 0x0034d8d5	0x58	AccelerometerIPhone.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034d92d	0x14	AccelerometerIPhone.cpp	game	input	matched	_GLOBAL__I__ZN19AccelerometerIPhoneC2Ev	_GLOBAL__I__ZN19AccelerometerIPhoneC2Ev
 0x0034d941	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin327setWideEb	AccelerometerWin32::setWide(bool)

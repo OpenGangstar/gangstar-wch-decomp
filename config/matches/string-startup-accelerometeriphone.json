@@ -40,6 +40,26 @@
         {
             "name": "_ZN19AccelerometerIPhone5movedEfff",
             "address": "0x0034d855"
+        },
+        {
+            "name": "_ZN19AccelerometerIPhoneC1Ev",
+            "address": "0x0034d8b1"
+        },
+        {
+            "name": "_ZN19AccelerometerIPhoneC2Ev",
+            "address": "0x0034d8b1"
+        },
+        {
+            "name": "_ZN19AccelerometerIPhoneD0Ev",
+            "address": "0x0034d869"
+        },
+        {
+            "name": "_ZN19AccelerometerIPhoneD1Ev",
+            "address": "0x0034d891"
+        },
+        {
+            "name": "_ZN19AccelerometerIPhoneD2Ev",
+            "address": "0x0034d891"
         }
     ],
     "sections": [
@@ -51,10 +71,18 @@
             "name": ".got",
             "offset": 864
         },
-        ".accelerometer_moved"
+        ".accelerometer_moved",
+        ".accelerometer_constructor",
+        ".accelerometer_delete",
+        ".accelerometer_destructor",
+        ".accelerometer_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN17AccelerometerBase5movedEfff"
+        "_ZN17AccelerometerBase5movedEfff",
+        "_ZN17AccelerometerBase11_calcAnglesEv"
+    ],
+    "dependencies": [
+        "sdk-startup-accelerometerbase"
     ]
 }

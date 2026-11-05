@@ -13,6 +13,18 @@
 #include "../core/LocalStartupText.h"
 #include "AccelerometerBase.h"
 
+AccelerometerBase::AccelerometerBase()
+{
+    x = y = z = 0.0f;
+    angleX = angleY = angleZ = 0.0f;
+    _calcAngles();
+    clear();
+}
+
+AccelerometerBase::~AccelerometerBase()
+{
+}
+
 void AccelerometerBase::update(double)
 {
     clear();

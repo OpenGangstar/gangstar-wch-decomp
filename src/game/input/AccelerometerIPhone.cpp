@@ -15,9 +15,18 @@
 
 class AccelerometerIPhone : public AccelerometerBase {
 public:
+    AccelerometerIPhone();
     virtual ~AccelerometerIPhone();
     virtual void moved(float x, float y, float z);
 };
+
+AccelerometerIPhone::AccelerometerIPhone()
+{
+}
+
+AccelerometerIPhone::~AccelerometerIPhone()
+{
+}
 
 void AccelerometerIPhone::moved(float x, float y, float z)
 {
