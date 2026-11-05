@@ -8,6 +8,45 @@
  * functions of Gauge.cpp here, in the order they appear in the library.
  */
 
+#include "Gauge.h"
+#include "../core/ASprite.h"
+
+void Gauge::update(double) {}
+
+void Gauge::setPercentage(float percentage)
+{
+    const float width = fillWidth;
+    fillRight = static_cast<int>(width - width * percentage);
+}
+
+void Gauge::draw2d() const
+{
+    HudElement::draw2d();
+    if (!hideFill) {
+        sprite->setClip(fillLeft, 0, fillRight, -1);
+        sprite->PaintFrame(fillFrame, 0, 0, 0);
+        sprite->setClip(0, 0, -1, -1);
+    }
+    sprite->PaintFrame(overlayFrame, 0, 0, 0);
+}
+
+Gauge::~Gauge() {}
+
+Gauge::Gauge(ASprite* image, int firstFrame, int fill, int overlay)
+    : HudElement(image, firstFrame, false)
+{
+    fillRight = -1;
+    unknown72 = 0.0;
+    hideFill = false;
+    fillLeft = 0;
+    fillFrame = fill;
+    overlayFrame = overlay;
+    const SpriteFrame* entry = sprite->GetFrame(frame);
+    const SpriteFrameModule* part = sprite->GetFModule(entry->firstModule);
+    const SpriteModule* module = sprite->GetModule(part->module);
+    fillWidth = module->width;
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

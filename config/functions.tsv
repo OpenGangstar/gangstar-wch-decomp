@@ -11226,18 +11226,18 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC2EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
 0x00327e35	0x144	Cash.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00327f79	0x14	Cash.cpp	game	ui	matched	_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii	_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii
-0x00327f8d	0x2	Gauge.cpp	game	hud	pending	_ZN5Gauge6updateEd	Gauge::update(double)
-0x00327f91	0x24	Gauge.cpp	game	hud	pending	_ZN5Gauge13setPercentageEf	Gauge::setPercentage(float)
+0x00327f8d	0x2	Gauge.cpp	game	hud	matched	_ZN5Gauge6updateEd	Gauge::update(double)
+0x00327f91	0x24	Gauge.cpp	game	hud	matched	_ZN5Gauge13setPercentageEf	Gauge::setPercentage(float)
 0x00327fb5	0x30	Gauge.cpp	game	hud	matched	__tcf_2	__tcf_2
-0x00327fe4	0x14	Gauge.cpp	game	hud	pending	_ZThn4_NK5Gauge6draw2dEv	non-virtual thunk to Gauge::draw2d() const
-0x00327ff9	0x4e	Gauge.cpp	game	hud	pending	_ZNK5Gauge6draw2dEv	Gauge::draw2d() const
-0x00328048	0x14	Gauge.cpp	game	hud	pending	_ZThn4_N5GaugeD0Ev	non-virtual thunk to Gauge::~Gauge()
-0x0032805d	0x30	Gauge.cpp	game	hud	pending	_ZN5GaugeD0Ev	Gauge::~Gauge()
-0x0032808c	0x14	Gauge.cpp	game	hud	pending	_ZThn4_N5GaugeD1Ev	non-virtual thunk to Gauge::~Gauge()
-0x003280a1	0x2c	Gauge.cpp	game	hud	pending	_ZN5GaugeD1Ev	Gauge::~Gauge()
-0x003280a1	0x2c	Gauge.cpp	game	hud	pending	_ZN5GaugeD2Ev	Gauge::~Gauge()
-0x003280d1	0x78	Gauge.cpp	game	hud	pending	_ZN5GaugeC1EP7ASpriteiii	Gauge::Gauge(ASprite*, int, int, int)
-0x003280d1	0x78	Gauge.cpp	game	hud	pending	_ZN5GaugeC2EP7ASpriteiii	Gauge::Gauge(ASprite*, int, int, int)
+0x00327fe4	0x14	Gauge.cpp	game	hud	matched	_ZThn4_NK5Gauge6draw2dEv	non-virtual thunk to Gauge::draw2d() const
+0x00327ff9	0x4e	Gauge.cpp	game	hud	matched	_ZNK5Gauge6draw2dEv	Gauge::draw2d() const
+0x00328048	0x14	Gauge.cpp	game	hud	matched	_ZThn4_N5GaugeD0Ev	non-virtual thunk to Gauge::~Gauge()
+0x0032805d	0x30	Gauge.cpp	game	hud	matched	_ZN5GaugeD0Ev	Gauge::~Gauge()
+0x0032808c	0x14	Gauge.cpp	game	hud	matched	_ZThn4_N5GaugeD1Ev	non-virtual thunk to Gauge::~Gauge()
+0x003280a1	0x2c	Gauge.cpp	game	hud	matched	_ZN5GaugeD1Ev	Gauge::~Gauge()
+0x003280a1	0x2c	Gauge.cpp	game	hud	matched	_ZN5GaugeD2Ev	Gauge::~Gauge()
+0x003280d1	0x78	Gauge.cpp	game	hud	matched	_ZN5GaugeC1EP7ASpriteiii	Gauge::Gauge(ASprite*, int, int, int)
+0x003280d1	0x78	Gauge.cpp	game	hud	matched	_ZN5GaugeC2EP7ASpriteiii	Gauge::Gauge(ASprite*, int, int, int)
 0x00328149	0x6c	Gauge.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003281b5	0x14	Gauge.cpp	game	hud	matched	_GLOBAL__I__ZN5GaugeC2EP7ASpriteiii	_GLOBAL__I__ZN5GaugeC2EP7ASpriteiii
 0x003281c9	0x30	HealthBar.cpp	game	hud	matched	__tcf_3	__tcf_3
