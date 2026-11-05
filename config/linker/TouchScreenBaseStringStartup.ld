@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/string-startup-touchscreenbase/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__cxa_pure_virtual = 0;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fcmpge = 0x001c4364;
 __aeabi_fcmple = 0x001c43ac;

@@ -49,6 +49,18 @@ void TouchScreenBase::ConvertCoord(Point2D<short>& point)
     }
 }
 
+TouchScreenBase::TouchScreenBase()
+{
+    enabled = true;
+    slotCount = 0;
+    currentTime = 0.0;
+}
+
+TouchScreenBase::~TouchScreenBase()
+{
+    clear();
+}
+
 void TouchScreenBase::clear()
 {
     for (int i = 0; i < 8; ++i)

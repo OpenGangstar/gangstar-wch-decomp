@@ -3,7 +3,7 @@
 
 template<class T>
 struct Point2D {
-    Point2D(T x, T y);
+    Point2D(T x = 0, T y = 0) : x(x), y(y) {}
     virtual ~Point2D();
 
     T x;

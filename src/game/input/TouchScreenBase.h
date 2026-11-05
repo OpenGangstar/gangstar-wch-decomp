@@ -1,6 +1,7 @@
 #ifndef WCH_INPUT_TOUCH_SCREEN_BASE_H
 #define WCH_INPUT_TOUCH_SCREEN_BASE_H
 
+#include "../core/FrameInterfaces.h"
 #include "../core/Point2D.h"
 
 namespace irr { namespace core { template<class T> class rect; } }
@@ -8,7 +9,7 @@ template<class T> struct Rct;
 struct TouchIDList;
 
 // Virtual call interface and recovered touch-slot layout.
-class TouchScreenBase {
+class TouchScreenBase : public IUpdatable {
 public:
     TouchScreenBase();
     virtual ~TouchScreenBase();
@@ -47,6 +48,7 @@ private:
     void _trace(const char* message) const;
 
     struct _TouchPointInfo {
+        _TouchPointInfo() : hasPoints(false), active(false) {}
         ~_TouchPointInfo() __attribute__((used));
 
         Point2D<short> first;

@@ -33,7 +33,7 @@ static void __tcf_2()
 }
 }
 
-template struct Point2D<short>;
+template Point2D<short>::~Point2D();
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)

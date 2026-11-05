@@ -136,6 +136,26 @@
         {
             "name": "_ZN15TouchScreenBase5getIDEl",
             "address": "0x0034c599"
+        },
+        {
+            "name": "_ZN15TouchScreenBaseC1Ev",
+            "address": "0x0034ca91"
+        },
+        {
+            "name": "_ZN15TouchScreenBaseC2Ev",
+            "address": "0x0034ca91"
+        },
+        {
+            "name": "_ZN15TouchScreenBaseD0Ev",
+            "address": "0x0034cc35"
+        },
+        {
+            "name": "_ZN15TouchScreenBaseD1Ev",
+            "address": "0x0034cc99"
+        },
+        {
+            "name": "_ZN15TouchScreenBaseD2Ev",
+            "address": "0x0034cc99"
         }
     ],
     "sections": [
@@ -178,7 +198,19 @@
         ".touchscreen_region_pressed",
         ".touchscreen_id_in_region",
         ".touchscreen_num_points",
-        ".touchscreen_get_id"
+        ".touchscreen_get_id",
+        ".touchscreen_base_constructor",
+        ".touchscreen_base_deleting_destructor",
+        ".touchscreen_base_destructor",
+        ".touchscreen_base_vtable",
+        ".touchscreen_base_updatable_vtable",
+        ".touchscreen_base_updatable_delete",
+        ".touchscreen_base_updatable_destructor"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
+        "_ZNK15TouchScreenBase20getTouchDisplacementEl",
+        "_ZNK15TouchScreenBase14getTouchIDListEv"
+    ]
 }
