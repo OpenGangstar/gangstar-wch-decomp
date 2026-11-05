@@ -6,6 +6,8 @@ __aeabi_atexit = 0x001c494c;
 memset = 0x001c45d4;
 _ZdaPv = 0x001c461c;
 _Znaj = 0x001c3ff8;
+strcspn = 0x001c46d0;
+__stack_chk_fail = 0x001c42e0;
 SECTIONS
 {
     .asprite_function_0 0x00349848 : { *asprite-startup.o(.text.__tcf_2) }
@@ -34,6 +36,8 @@ SECTIONS
     .asprite_delete 0x00349930 : { *asprite-startup.o(.text._ZN7ASpriteD0Ev) }
     .asprite_destruct 0x00349978 : { *asprite-startup.o(.text._ZN7ASpriteD1Ev .text._ZN7ASpriteD2Ev) }
     .asprite_vtable 0x004ad2b8 : { *asprite-startup.o(.data.rel.ro._ZTV7ASprite .gnu.linkonce.d.rel.ro._ZTV7ASprite) }
+    .asprite_filename 0x00349ac0 : { *asprite-startup.o(.text._ZN7ASpriteC1EPKc .text._ZN7ASpriteC2EPKc) }
+    .asprite_extension 0x0044de24 : { *asprite-startup.o(.rodata.sprite_extension) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

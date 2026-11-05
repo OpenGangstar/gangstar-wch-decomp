@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -61,7 +62,9 @@
         "_ZN7ASpriteC2EP11IFileStream",
         "_ZN7ASpriteD0Ev",
         "_ZN7ASpriteD1Ev",
-        "_ZN7ASpriteD2Ev"
+        "_ZN7ASpriteD2Ev",
+        "_ZN7ASpriteC1EPKc",
+        "_ZN7ASpriteC2EPKc"
     ],
     "sections": [
         ".asprite_function_0",
@@ -92,7 +95,9 @@
         ".asprite_stream",
         ".asprite_delete",
         ".asprite_destruct",
-        ".asprite_vtable"
+        ".asprite_vtable",
+        ".asprite_filename",
+        ".asprite_extension"
     ],
     "retail_got": true,
     "external_thumb_functions": [
