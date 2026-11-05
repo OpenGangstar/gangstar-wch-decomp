@@ -12753,8 +12753,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d239	0x5c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3210touchEndedEffi	TouchScreenWin32::touchEnded(float, float, int)
 0x0034d295	0x5c	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3210touchMovedEffi	TouchScreenWin32::touchMoved(float, float, int)
 0x0034d2f1	0x60	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin3210touchBeganEffi	TouchScreenWin32::touchBegan(float, float, int)
-0x0034d350	0x14	TouchScreenWin32.cpp	game	input	pending	_ZThn472_N16TouchScreenWin327OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenWin32::OnEvent(irr::SEvent const&)
-0x0034d365	0xa8	TouchScreenWin32.cpp	game	input	pending	_ZN16TouchScreenWin327OnEventERKN3irr6SEventE	TouchScreenWin32::OnEvent(irr::SEvent const&)
+0x0034d350	0x14	TouchScreenWin32.cpp	game	input	matched	_ZThn472_N16TouchScreenWin327OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenWin32::OnEvent(irr::SEvent const&)
+0x0034d365	0xa8	TouchScreenWin32.cpp	game	input	matched	_ZN16TouchScreenWin327OnEventERKN3irr6SEventE	TouchScreenWin32::OnEvent(irr::SEvent const&)
 0x0034d40d	0x12	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase5clearEv	AccelerometerBase::clear()
 0x0034d421	0xc	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase6updateEd	AccelerometerBase::update(double)
 0x0034d42d	0x30	AccelerometerBase.cpp	game	input	matched	__tcf_2	__tcf_2

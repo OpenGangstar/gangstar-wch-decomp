@@ -22,6 +22,8 @@ SECTIONS
     .win32_getBottomBound 0x0034d038 : { *sdk-startup-touchscreenwin32.o(.gnu.linkonce.t._ZNK16TouchScreenWin3214getBottomBoundEv) }
     .win32_getTouchIDInRegion 0x0034d06c : { *sdk-startup-touchscreenwin32.o(.text._ZNK16TouchScreenWin3218getTouchIDInRegionERKN3irr4core4rectIfEE) }
     .win32_isRegionPressed 0x0034d078 : { *sdk-startup-touchscreenwin32.o(.text._ZNK16TouchScreenWin3215isRegionPressedERKN3irr4core4rectIfEE) }
+    .win32_on_event 0x0034d350 : { *sdk-startup-touchscreenwin32.o(.text._ZThn472_N16TouchScreenWin327OnEventERKN3irr6SEventE .text._ZN16TouchScreenWin327OnEventERKN3irr6SEventE) }
+    .win32_mouse_down 0x004bc0dc (NOLOAD) : { *sdk-startup-touchscreenwin32.o(.bss._ZZN16TouchScreenWin327OnEventERKN3irr6SEventEE6isDown) }
     .sdk_startup_function_0 0x0034d03c : { *sdk-startup-touchscreenwin32.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x0034d0c0 : { *sdk-startup-touchscreenwin32.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x0034d12c : { *sdk-startup-touchscreenwin32.o(.text._GLOBAL__I__ZN16TouchScreenWin32C2Ev) }
@@ -33,3 +35,4 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.win32_mouse_down) == 1, "OnEvent mouse state extent");

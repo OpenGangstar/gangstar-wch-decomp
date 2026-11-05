@@ -76,6 +76,14 @@
         {
             "name": "_ZNK16TouchScreenWin3215isRegionPressedERKN3irr4core4rectIfEE",
             "address": "0x0034d079"
+        },
+        {
+            "name": "_ZThn472_N16TouchScreenWin327OnEventERKN3irr6SEventE",
+            "address": "0x0034d350"
+        },
+        {
+            "name": "_ZN16TouchScreenWin327OnEventERKN3irr6SEventE",
+            "address": "0x0034d365"
         }
     ],
     "sections": [
@@ -96,7 +104,8 @@
         ".win32_getTopBound",
         ".win32_getBottomBound",
         ".win32_getTouchIDInRegion",
-        ".win32_isRegionPressed"
+        ".win32_isRegionPressed",
+        ".win32_on_event"
     ],
     "retail_got": true,
     "dependencies": [
