@@ -19,9 +19,37 @@ inline Point2D<T>::Point2D(T x, T y)
 {
 }
 
-class TouchScreenWin32 : public TouchScreenBase {
+namespace irr {
+
+// Mouse-event prefix used by the retail receiver.
+struct SEvent {
+    enum EventType { MouseInputEvent = 1 };
+    enum MouseEvent { LeftPressed = 0, LeftReleased = 3, MouseMoved = 6 };
+
+    int type;
+    unsigned char unknown4[4];
+    struct {
+        int x;
+        int y;
+        float wheel;
+        int event;
+    } mouse;
+};
+
+class IEventReceiver {
+public:
+    virtual ~IEventReceiver() {}
+    virtual bool OnEvent(const SEvent& event) = 0;
+};
+
+} // namespace irr
+
+extern int __pointerId;
+
+class TouchScreenWin32 : public TouchScreenBase, public irr::IEventReceiver {
 public:
     virtual ~TouchScreenWin32();
+    virtual bool OnEvent(const irr::SEvent& event);
     virtual short getLeftBound() const __attribute__((used)) { return 0; }
     virtual short getRightBound() const __attribute__((used)) { return 0; }
     virtual short getTopBound() const __attribute__((used)) { return 0; }
@@ -72,6 +100,32 @@ void TouchScreenWin32::touchBegan(float x, float y, int externalId)
     Point2D<short> point(static_cast<short>(x), static_cast<short>(y));
     ConvertCoord(point);
     TouchScreenBase::touchBegan(point, id);
+}
+
+bool TouchScreenWin32::OnEvent(const irr::SEvent& event)
+{
+    static bool isDown = false;
+    if (event.type != irr::SEvent::MouseInputEvent)
+        return false;
+
+    const int x = event.mouse.x;
+    const int y = event.mouse.y;
+    switch (event.mouse.event) {
+    case irr::SEvent::LeftPressed:
+        isDown = true;
+        touchBegan(x, y, __pointerId);
+        return true;
+    case irr::SEvent::MouseMoved:
+        if (!isDown)
+            return false;
+        touchMoved(x, y, __pointerId);
+        return true;
+    case irr::SEvent::LeftReleased:
+        isDown = false;
+        touchEnded(x, y, __pointerId);
+        return true;
+    }
+    return false;
 }
 
 void operator delete(void*) throw();
