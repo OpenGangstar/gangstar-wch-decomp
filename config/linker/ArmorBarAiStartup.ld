@@ -13,6 +13,7 @@ _ZN27retail_armorbar_transitions17civ_vehicle_transE = 0x00422de0;
 _ZN27retail_armorbar_transitions17cop_vehicle_transE = 0x00422e70;
 _ZN27retail_armorbar_transitions11guard_transE = 0x00422f24;
 _ZN27retail_armorbar_transitions22scripted_vehicle_transE = 0x00422fcc;
+__aeabi_idiv = 0x001c43dc;
 SECTIONS
 {
     .ai_startup_function_0 0x00327234 : { *ai-startup-armorbar.o(.text.__tcf_3) }
@@ -38,6 +39,7 @@ SECTIONS
     .bar_entry_5 0x00327324 : { *ai-startup-armorbar.o(.text._ZThn4_N8ArmorBarD1Ev) }
     .bar_entry_6 0x00327338 : { *ai-startup-armorbar.o(.text._ZN8ArmorBarD1Ev) }
     .bar_entry_7 0x00327364 : { *ai-startup-armorbar.o(.text._ZN8ArmorBarC1EP7ASpriteiii) }
+    .bar_update 0x0032728c : { *ai-startup-armorbar.o(.text._ZN8ArmorBar6updateEd) }
     .bar_vtable 0x004ac018 : { *ai-startup-armorbar.o(.data.rel.ro._ZTV8ArmorBar) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }

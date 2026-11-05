@@ -9,6 +9,7 @@
  */
 
 #include "Gauge.h"
+#include "../characters/PlayerTest.h"
 
 class HealthBar : public Gauge {
 public:
@@ -22,6 +23,29 @@ void HealthBar::draw2d() const
 {
     if (flags & 1)
         Gauge::draw2d();
+}
+
+void HealthBar::update(double elapsed)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (player) {
+        SavePositionInterface* position = player;
+        if (position->getHealth() >= 150) {
+            hideFill = false;
+        } else {
+            blinkElapsed += elapsed;
+            if (blinkElapsed >= 1000.0) {
+                hideFill = false;
+                blinkElapsed = 0.0;
+            } else if (blinkElapsed >= 500.0) {
+                hideFill = true;
+            }
+        }
+        const int width = fillWidth;
+        const int health = position->getHealth();
+        const int maximum = position->getMaxHealth();
+        fillLeft = width - width * health / maximum;
+    }
 }
 
 HealthBar::~HealthBar() {}

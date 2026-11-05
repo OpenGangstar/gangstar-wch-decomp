@@ -46,7 +46,8 @@
         "_ZN8ArmorBarD2Ev",
         "_ZN8ArmorBarD1Ev",
         "_ZN8ArmorBarC1EP7ASpriteiii",
-        "_ZN8ArmorBarC2EP7ASpriteiii"
+        "_ZN8ArmorBarC2EP7ASpriteiii",
+        "_ZN8ArmorBar6updateEd"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -63,6 +64,8 @@
     "external_thumb_functions": [
         "_ZN5GaugeC1EP7ASpriteiii",
         "_ZN5GaugeD1Ev",
-        "_ZNK5Gauge6draw2dEv"
+        "_ZNK5Gauge6draw2dEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN11Application11GetInstanceEv"
     ]
 }

@@ -13,6 +13,7 @@ _ZN25retail_carbar_transitions17civ_vehicle_transE = 0x004233b0;
 _ZN25retail_carbar_transitions17cop_vehicle_transE = 0x00423440;
 _ZN25retail_carbar_transitions11guard_transE = 0x004234f4;
 _ZN25retail_carbar_transitions22scripted_vehicle_transE = 0x0042359c;
+__aeabi_idiv = 0x001c43dc;
 SECTIONS
 {
     .ai_startup_function_0 0x00327704 : { *ai-startup-carbar.o(.text.__tcf_3) }
@@ -35,6 +36,9 @@ SECTIONS
     .bar_entry_2 0x003277d4 : { *ai-startup-carbar.o(.text._ZThn4_N6CarBarD1Ev) }
     .bar_entry_3 0x003277e8 : { *ai-startup-carbar.o(.text._ZN6CarBarD1Ev) }
     .bar_entry_4 0x00327814 : { *ai-startup-carbar.o(.text._ZN6CarBarC1EP7ASpriteiii) }
+    .bar_update 0x00327734 : { *ai-startup-carbar.o(.text._ZN6CarBar6updateEd) }
+    .bar_draw_thunk 0x003279a0 : { *ai-startup-carbar.o(.text._ZThn4_NK6CarBar6draw2dEv) }
+    .bar_draw 0x003279b4 : { *ai-startup-carbar.o(.text._ZNK6CarBar6draw2dEv) }
     .bar_vtable 0x004ac118 : { *ai-startup-carbar.o(.data.rel.ro._ZTV6CarBar) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
