@@ -36,7 +36,11 @@
         {
             "name": "_GLOBAL__I__ZN11CDrivingHudC2EP11CHudManager",
             "address": "0x00323591"
-        }
+        },
+        "_ZN11CDrivingHudC2EP11CHudManager",
+        "_ZN11CDrivingHudC1EP11CHudManager",
+        "_ZN11CDrivingHudD2Ev",
+        "_ZN11CDrivingHudD1Ev"
     ],
     "sections": [
         ".ai_startup_function_0",

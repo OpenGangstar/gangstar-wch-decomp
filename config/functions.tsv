@@ -10981,21 +10981,21 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00322afd	0x88	WorldDescriptor.cpp	game	world	pending	_ZN15WorldDescriptorC2EPKc	WorldDescriptor::WorldDescriptor(char const*)
 0x00322b85	0x88	WorldDescriptor.cpp	game	world	pending	_ZN15WorldDescriptorC2Ei	WorldDescriptor::WorldDescriptor(int)
 0x00322b85	0x88	WorldDescriptor.cpp	game	world	pending	_ZN15WorldDescriptorC1Ei	WorldDescriptor::WorldDescriptor(int)
-0x00322c0d	0x4	CCameraHud.cpp	game	hud	pending	_ZNK4IHud9isVisibleEv	IHud::isVisible() const
-0x00322c11	0x4	CCameraHud.cpp	game	hud	pending	_ZNK4IHud12isWalkingHudEv	IHud::isWalkingHud() const
-0x00322c15	0x30	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHudC2EP11CHudManager	CCameraHud::CCameraHud(CHudManager*)
-0x00322c15	0x30	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHudC1EP11CHudManager	CCameraHud::CCameraHud(CHudManager*)
-0x00322c45	0x18	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHudD2Ev	CCameraHud::~CCameraHud()
-0x00322c45	0x18	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHudD1Ev	CCameraHud::~CCameraHud()
+0x00322c0d	0x4	CCameraHud.cpp	game	hud	matched	_ZNK4IHud9isVisibleEv	IHud::isVisible() const
+0x00322c11	0x4	CCameraHud.cpp	game	hud	matched	_ZNK4IHud12isWalkingHudEv	IHud::isWalkingHud() const
+0x00322c15	0x30	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudC2EP11CHudManager	CCameraHud::CCameraHud(CHudManager*)
+0x00322c15	0x30	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudC1EP11CHudManager	CCameraHud::CCameraHud(CHudManager*)
+0x00322c45	0x18	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudD2Ev	CCameraHud::~CCameraHud()
+0x00322c45	0x18	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudD1Ev	CCameraHud::~CCameraHud()
 0x00322c5d	0x178	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHud4showEv	CCameraHud::show()
 0x00322dd5	0xd4	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHud4hideEv	CCameraHud::hide()
 0x00322ea9	0x30	CCameraHud.cpp	game	hud	matched	__tcf_2	__tcf_2
 0x00322ed9	0x6c	CCameraHud.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00322f45	0x14	CCameraHud.cpp	game	hud	matched	_GLOBAL__I__ZN10CCameraHudC2EP11CHudManager	_GLOBAL__I__ZN10CCameraHudC2EP11CHudManager
-0x00322f59	0x30	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHudC2EP11CHudManager	CDrivingHud::CDrivingHud(CHudManager*)
-0x00322f59	0x30	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHudC1EP11CHudManager	CDrivingHud::CDrivingHud(CHudManager*)
-0x00322f89	0x18	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHudD2Ev	CDrivingHud::~CDrivingHud()
-0x00322f89	0x18	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHudD1Ev	CDrivingHud::~CDrivingHud()
+0x00322f59	0x30	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHudC2EP11CHudManager	CDrivingHud::CDrivingHud(CHudManager*)
+0x00322f59	0x30	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHudC1EP11CHudManager	CDrivingHud::CDrivingHud(CHudManager*)
+0x00322f89	0x18	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHudD2Ev	CDrivingHud::~CDrivingHud()
+0x00322f89	0x18	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHudD1Ev	CDrivingHud::~CDrivingHud()
 0x00322fa1	0x3c	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHud12showSpyGaugeEb	CDrivingHud::showSpyGauge(bool)
 0x00322fdd	0x20	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHud8showCashEb	CDrivingHud::showCash(bool)
 0x00322ffd	0x80	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHud20toggleWeaponSelectorEb	CDrivingHud::toggleWeaponSelector(bool)
@@ -11060,11 +11060,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00324979	0x30c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerD1Ev	CHudManager::~CHudManager()
 0x00324c85	0xa0c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerC1Ev	CHudManager::CHudManager()
 0x00324c85	0xa0c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerC2Ev	CHudManager::CHudManager()
-0x00325691	0x4	CWalkingHud.cpp	game	hud	pending	_ZNK11CWalkingHud12isWalkingHudEv	CWalkingHud::isWalkingHud() const
-0x00325695	0x30	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHudC1EP11CHudManager	CWalkingHud::CWalkingHud(CHudManager*)
-0x00325695	0x30	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHudC2EP11CHudManager	CWalkingHud::CWalkingHud(CHudManager*)
-0x003256c5	0x18	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHudD1Ev	CWalkingHud::~CWalkingHud()
-0x003256c5	0x18	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHudD2Ev	CWalkingHud::~CWalkingHud()
+0x00325691	0x4	CWalkingHud.cpp	game	hud	matched	_ZNK11CWalkingHud12isWalkingHudEv	CWalkingHud::isWalkingHud() const
+0x00325695	0x30	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudC1EP11CHudManager	CWalkingHud::CWalkingHud(CHudManager*)
+0x00325695	0x30	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudC2EP11CHudManager	CWalkingHud::CWalkingHud(CHudManager*)
+0x003256c5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudD1Ev	CWalkingHud::~CWalkingHud()
+0x003256c5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudD2Ev	CWalkingHud::~CWalkingHud()
 0x003256dd	0x12a	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud4showEv	CWalkingHud::show()
 0x00325809	0xb6	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud4hideEv	CWalkingHud::hide()
 0x003258c1	0x22	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud7nearCarEv	CWalkingHud::nearCar()

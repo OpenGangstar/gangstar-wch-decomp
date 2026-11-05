@@ -8,6 +8,27 @@
  * functions of CCameraHud.cpp here, in the order they appear in the library.
  */
 
+#include "IHud.h"
+
+inline bool IHud::isVisible() const { return visible; }
+
+inline bool IHud::isWalkingHud() const { return false; }
+
+class CCameraHud : public IHud {
+public:
+    explicit CCameraHud(CHudManager* manager);
+    ~CCameraHud();
+    virtual void show();
+    virtual void hide();
+};
+
+CCameraHud::CCameraHud(CHudManager* hudManager) : IHud(hudManager)
+{
+    unknown8 = 0xa0005100;
+}
+
+CCameraHud::~CCameraHud() {}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
