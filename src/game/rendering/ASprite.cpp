@@ -68,6 +68,27 @@ const SpriteBounds& ASprite::GetAnimFrameBoundingRect(int animation, int frame) 
     return GetFrameBoundingRect(GetFrameFromAFrame(animation, frame));
 }
 
+void ASprite::PaintFrame(int frame, int x, int y, int flags) const
+{
+    const char* bytes = reinterpret_cast<const char*>(data);
+    const SpriteFrame* entry = reinterpret_cast<const SpriteFrame*>(bytes + (data->frames + frame * 28));
+    short count = entry->moduleCount;
+    for (int i = 0; i < count; ++i)
+        PaintFModule(frame, i, x, y, flags);
+}
+
+void ASprite::PaintAFrame(int animation, int frame, int x, int y, int flags) const
+{
+    const SpriteData* blob = data;
+    unsigned int animations = blob->animations;
+    unsigned int frames = blob->animationFrames;
+    const char* bytes = reinterpret_cast<const char*>(blob);
+    const SpriteAnimation* entry = reinterpret_cast<const SpriteAnimation*>(bytes + (animations + animation * 12));
+    const char* record = bytes + frames + (entry->firstFrame + frame) * 9;
+    int frameFlags = static_cast<unsigned char>(record[8]) & 15;
+    PaintFrame(*reinterpret_cast<const unsigned short*>(record), x, y, flags ^ (frameFlags << 4));
+}
+
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
