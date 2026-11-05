@@ -36,17 +36,54 @@
         {
             "name": "_GLOBAL__I__ZN11StaticSoundC2Ev",
             "address": "0x00353e71"
-        }
+        },
+        "_ZN17CStaticSoundsPoolD1Ev",
+        "_ZN17CStaticSoundsPoolD2Ev",
+        "_ZN11StaticSound4StopEi",
+        "_ZN11StaticSound6UnInitEv",
+        "_ZN17CStaticSoundsPool18ReleaseStaticSoundEP11StaticSound",
+        "_ZN11StaticSound4InitEP10CSoundData",
+        "_ZN11StaticSoundD0Ev",
+        "_ZN11StaticSoundD2Ev",
+        "_ZN11StaticSoundD1Ev",
+        "_ZN11StaticSoundC2EP10CSoundData",
+        "_ZN11StaticSoundC1EP10CSoundData",
+        "_ZN11StaticSoundC2Ev",
+        "_ZN11StaticSoundC1Ev",
+        "_ZN17CStaticSoundsPool14GetStaticSoundEP10CSoundData",
+        "_ZN17CStaticSoundsPoolC2Eii",
+        "_ZN17CStaticSoundsPoolC1Eii"
     ],
     "sections": [
         ".string_startup_function_0",
         ".string_startup_function_1",
         ".string_startup_function_2",
         ".shared_startup_empty_text",
+        ".static_sound_method_0",
+        ".static_sound_method_1",
+        ".static_sound_method_2",
+        ".static_sound_method_3",
+        ".static_sound_method_4",
+        ".static_sound_method_5",
+        ".static_sound_method_6",
+        ".static_sound_method_7",
+        ".static_sound_method_8",
+        ".static_sound_method_9",
+        ".static_sound_method_10",
+        ".static_sound_vtable",
         {
             "name": ".got",
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN6CSoundC1Ev",
+        "_ZN6CSoundC1EP10CSoundData",
+        "_ZN6CSoundD1Ev",
+        "_ZN6CSoundD2Ev",
+        "_ZN6CSound4StopEi",
+        "_ZN6CSound6UnInitEv",
+        "_ZN6CSound4InitEP10CSoundData"
+    ]
 }
