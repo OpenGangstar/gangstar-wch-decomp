@@ -2,6 +2,8 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/string-startup-touchscreenbase/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__aeabi_dadd = 0x001c4394;
+__aeabi_dcmplt = 0x001c4244;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
@@ -11,6 +13,7 @@ SECTIONS
     .touchscreen_touch_cancelled 0x0034c400 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase14touchCancelledERK7Point2DIsEl) }
     .touchscreen_release_message 0x0043600c : { *string-startup-touchscreenbase.o(.rodata.releaseMessage) }
     .touchscreen_cancel_message 0x00436024 : { *string-startup-touchscreenbase.o(.rodata.cancelMessage) }
+    .touchscreen_update 0x0034c4f8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase6updateEd) }
     .touchscreen_clear 0x0034c398 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase5clearEv) }
     .touchscreen_clear_point 0x0034c3b8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase15clearTouchPointEl) }
     .touchscreen_point 0x0034c44c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase13getTouchPointEl) }

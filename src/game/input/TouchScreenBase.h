@@ -48,7 +48,7 @@ private:
         Point2D<short> first;
         Point2D<short> current;
         Point2D<short> previous;
-        unsigned char unknown24[8];
+        double lastTouchTime;
         bool hasPoints;
         int numPoints;
         int swipeDirection;
@@ -59,7 +59,7 @@ private:
 
     unsigned char unknown4[4];
     _TouchPointInfo points[8];
-    unsigned char unknown456[8];
+    double currentTime;
     bool enabled;
     int slotCount;
 };

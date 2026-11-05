@@ -108,6 +108,10 @@
         {
             "name": "_ZN15TouchScreenBase14touchCancelledERK7Point2DIsEl",
             "address": "0x0034c401"
+        },
+        {
+            "name": "_ZN15TouchScreenBase6updateEd",
+            "address": "0x0034c4f9"
         }
     ],
     "sections": [
@@ -142,7 +146,8 @@
         ".touchscreen_touch_ended",
         ".touchscreen_touch_cancelled",
         ".touchscreen_release_message",
-        ".touchscreen_cancel_message"
+        ".touchscreen_cancel_message",
+        ".touchscreen_update"
     ],
     "retail_got": true
 }
