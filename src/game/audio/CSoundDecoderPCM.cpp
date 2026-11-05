@@ -9,21 +9,8 @@
  */
 
 #include "ISoundDecoder.h"
+#include "WavHeaders.h"
 #include "../core/NativeStdio.h"
-
-struct __sFILE;
-struct RiffHeader;
-
-struct FormatHeader {
-    char id[4];
-    unsigned int size;
-    unsigned short tag;
-    unsigned short channels;
-    unsigned int sampleRate;
-    unsigned int bytesPerSecond;
-    unsigned short blockAlignment;
-    unsigned short bitsPerSample;
-};
 
 class CSoundDecoderPCM : public ISoundDecoder {
 public:

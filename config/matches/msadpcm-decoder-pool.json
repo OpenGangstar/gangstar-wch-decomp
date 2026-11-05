@@ -1,0 +1,78 @@
+{
+    "source": "src/game/audio/CSoundDecoderMSADPCM.cpp",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "functions": [
+        "_ZNK20CSoundDecoderMSADPCM15GetSamplingRateEv",
+        "_ZNK20CSoundDecoderMSADPCM10GetChannelEv",
+        "_ZNK20CSoundDecoderMSADPCM10GetPCMSizeEv",
+        "_ZNK20CSoundDecoderMSADPCM11HasMoreDataEv",
+        "_ZNK20CSoundDecoderMSADPCM21GetNbEffectiveSamplesEv",
+        "_ZNK20CSoundDecoderMSADPCM15GetTotalSamplesEv",
+        "_ZN20CSoundDecoderMSADPCM6UnInitEv",
+        "_ZN20CSoundDecoderMSADPCM22GetNumSamplesPerDecodeEi",
+        "_ZN12CMSAdpcmPool21ReleaseMSADPCMDecoderEP20CSoundDecoderMSADPCM",
+        "_ZN12CMSAdpcmPoolD2Ev",
+        "_ZN12CMSAdpcmPoolD1Ev",
+        "_ZN20CSoundDecoderMSADPCM4GoToEi",
+        "_ZN20CSoundDecoderMSADPCMC1Ev",
+        "_ZN20CSoundDecoderMSADPCMC2Ev",
+        "_ZN12CMSAdpcmPool17GetMSADPCMDecoderEP7__sFILEP10RiffHeaderP12FormatHeader",
+        "_ZN12CMSAdpcmPoolC1Eii",
+        "_ZN12CMSAdpcmPoolC2Eii",
+        "_ZN20CSoundDecoderMSADPCMD0Ev",
+        "_ZN20CSoundDecoderMSADPCMD2Ev",
+        "_ZN20CSoundDecoderMSADPCMD1Ev"
+    ],
+    "linker_script": "config/linker/MSAdpcmDecoderPool.ld",
+    "sections": [
+        ".msadpcm_method_0",
+        ".msadpcm_method_1",
+        ".msadpcm_method_2",
+        ".msadpcm_method_3",
+        ".msadpcm_method_4",
+        ".msadpcm_method_5",
+        ".msadpcm_method_6",
+        ".msadpcm_method_7",
+        ".msadpcm_method_8",
+        ".msadpcm_method_9",
+        ".msadpcm_method_10",
+        ".msadpcm_method_12",
+        ".msadpcm_method_13",
+        ".msadpcm_method_14",
+        ".msadpcm_method_15",
+        ".msadpcm_method_16",
+        ".msadpcm_vtable",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "retail_got": true,
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "external_thumb_functions": [
+        "_ZN10AdpcmStateC1Ev",
+        "_ZN10AdpcmStateD1Ev",
+        "_ZN20CSoundDecoderMSADPCM6DecodeEPsib",
+        "_ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader"
+    ]
+}
