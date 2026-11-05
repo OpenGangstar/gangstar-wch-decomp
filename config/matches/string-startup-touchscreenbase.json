@@ -56,6 +56,38 @@
         {
             "name": "_ZN3RctIsE9_validateEv",
             "address": "0x0034c64d"
+        },
+        {
+            "name": "_ZN15TouchScreenBase5clearEv",
+            "address": "0x0034c399"
+        },
+        {
+            "name": "_ZN15TouchScreenBase15clearTouchPointEl",
+            "address": "0x0034c3b9"
+        },
+        {
+            "name": "_ZN15TouchScreenBase13getTouchPointEl",
+            "address": "0x0034c44d"
+        },
+        {
+            "name": "_ZN15TouchScreenBase18getFirstTouchPointEl",
+            "address": "0x0034c479"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase17getSwipeDirectionEl",
+            "address": "0x0034c4cd"
+        },
+        {
+            "name": "_ZN15TouchScreenBase6enableEv",
+            "address": "0x0034c5dd"
+        },
+        {
+            "name": "_ZN15TouchScreenBase7disableEv",
+            "address": "0x0034c5e9"
+        },
+        {
+            "name": "_ZNK15TouchScreenBase9isEnabledEv",
+            "address": "0x0034c5f5"
         }
     ],
     "sections": [
@@ -72,7 +104,15 @@
         ".touchscreen_rct_vtable",
         ".touchscreen_dimension_out",
         ".touchscreen_dimension_value",
-        ".touchscreen_rct_validate"
+        ".touchscreen_rct_validate",
+        ".touchscreen_clear",
+        ".touchscreen_clear_point",
+        ".touchscreen_point",
+        ".touchscreen_first_point",
+        ".touchscreen_swipe_direction",
+        ".touchscreen_enable",
+        ".touchscreen_disable",
+        ".touchscreen_is_enabled"
     ],
     "retail_got": true
 }

@@ -25,6 +25,53 @@ int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
 }
 
+void TouchScreenBase::clear()
+{
+    for (int i = 0; i < 8; ++i)
+        points[i].active = false;
+}
+
+void TouchScreenBase::clearTouchPoint(long id)
+{
+    points[id].active = false;
+}
+
+TouchPoint* TouchScreenBase::getTouchPoint(long id)
+{
+    if (points[id].active && points[id].hasPoints)
+        return reinterpret_cast<TouchPoint*>(points[id].current);
+    return 0;
+}
+
+TouchPoint* TouchScreenBase::getFirstTouchPoint(long id)
+{
+    if (points[id].active && points[id].hasPoints)
+        return reinterpret_cast<TouchPoint*>(points[id].first);
+    return 0;
+}
+
+int TouchScreenBase::getSwipeDirection(long id) const
+{
+    if (points[id].active && points[id].hasPoints)
+        return points[id].swipeDirection;
+    return 0;
+}
+
+void TouchScreenBase::enable()
+{
+    enabled = true;
+}
+
+void TouchScreenBase::disable()
+{
+    enabled = false;
+}
+
+bool TouchScreenBase::isEnabled() const
+{
+    return enabled;
+}
+
 void TouchScreenBase::getDimension(Rct<short>& result) const
 {
     const short left = getLeftBound();
