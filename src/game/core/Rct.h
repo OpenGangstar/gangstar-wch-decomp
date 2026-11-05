@@ -3,7 +3,9 @@
 
 template<class T>
 struct Rct {
+    Rct(T left, T top, T right, T bottom);
     virtual ~Rct();
+    void _validate();
     bool isIntersecting(T x, T y) const;
 
     T left;
