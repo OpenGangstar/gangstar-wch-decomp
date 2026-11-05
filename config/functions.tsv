@@ -12704,16 +12704,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c8c5	0xa4	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase20getTouchDisplacementEl	TouchScreenBase::getTouchDisplacement(long) const
 0x0034c969	0x92	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenBase::isRegionPressed(irr::core::rect<float> const&) const
 0x0034c9fd	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInRegion(irr::core::rect<float> const&) const
-0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseC1Ev	TouchScreenBase::TouchScreenBase()
-0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseC2Ev	TouchScreenBase::TouchScreenBase()
+0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseC1Ev	TouchScreenBase::TouchScreenBase()
+0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseC2Ev	TouchScreenBase::TouchScreenBase()
 0x0034cb11	0x58	TouchScreenBase.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034cb69	0x14	TouchScreenBase.cpp	game	input	matched	_GLOBAL__I__ZN15TouchScreenBase14CLEAN_UP_DELAYE	_GLOBAL__I__ZN15TouchScreenBase14CLEAN_UP_DELAYE
 0x0034cb7d	0x44	TouchScreenBase.cpp	stlport	-	matched	_ZNSt4listIlSaIlEEC1IN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEEEET_S8_RKS0_	std::list<long, std::allocator<long> >::list<stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> > >(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::allocator<long> const&)
 0x0034cbc1	0x58	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase14getTouchIDListEv	TouchScreenBase::getTouchIDList() const
 0x0034cc19	0x1c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase15_TouchPointInfoD1Ev	TouchScreenBase::_TouchPointInfo::~_TouchPointInfo()
-0x0034cc35	0x64	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseD0Ev	TouchScreenBase::~TouchScreenBase()
-0x0034cc99	0x58	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()
-0x0034cc99	0x58	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBaseD2Ev	TouchScreenBase::~TouchScreenBase()
+0x0034cc35	0x64	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD0Ev	TouchScreenBase::~TouchScreenBase()
+0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()
+0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD2Ev	TouchScreenBase::~TouchScreenBase()
 0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
 0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
 0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const

@@ -37,4 +37,11 @@ SECTIONS
     .touchscreen_id_in_region 0x0034c9fc : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE) }
     .touchscreen_slot_destructor 0x0034cc18 : { *string-startup-touchscreenbase.o(.gnu.linkonce.t._ZN15TouchScreenBase15_TouchPointInfoD1Ev .gnu.linkonce.t._ZN15TouchScreenBase15_TouchPointInfoD2Ev) }
     .string_startup_storage_0 0x004bc060 (NOLOAD) : { *string-startup-touchscreenbase.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
+    .touchscreen_base_constructor 0x0034ca90 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBaseC1Ev .text._ZN15TouchScreenBaseC2Ev) }
+    .touchscreen_base_deleting_destructor 0x0034cc34 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBaseD0Ev) }
+    .touchscreen_base_destructor 0x0034cc98 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBaseD1Ev .text._ZN15TouchScreenBaseD2Ev) }
+    .touchscreen_base_vtable 0x004ad2e8 : { *string-startup-touchscreenbase.o(.data.rel.ro._ZTV15TouchScreenBase) }
+    .touchscreen_base_updatable_vtable 0x004a6290 : { *string-startup-touchscreenbase.o(.gnu.linkonce.d.rel.ro._ZTV10IUpdatable) }
+    .touchscreen_base_updatable_delete 0x002d62b8 : { *string-startup-touchscreenbase.o(.gnu.linkonce.t._ZN10IUpdatableD0Ev) }
+    .touchscreen_base_updatable_destructor 0x002d62d8 : { *string-startup-touchscreenbase.o(.gnu.linkonce.t._ZN10IUpdatableD1Ev) }
 }

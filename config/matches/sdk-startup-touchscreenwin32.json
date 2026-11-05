@@ -150,8 +150,6 @@
     ],
     "external_thumb_functions": [
         "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
-        "_ZN15TouchScreenBaseC1Ev",
-        "_ZN15TouchScreenBaseD1Ev",
         "_ZNK15TouchScreenBase20getTouchDisplacementEl",
         "_ZNK15TouchScreenBase14getTouchIDListEv"
     ]

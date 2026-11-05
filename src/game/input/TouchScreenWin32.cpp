@@ -13,12 +13,6 @@
 #include "../core/LocalStartupText.h"
 #include "TouchScreenBase.h"
 
-template<class T>
-inline Point2D<T>::Point2D(T x, T y)
-    : x(x), y(y)
-{
-}
-
 namespace irr {
 
 // Mouse-event prefix used by the retail receiver.
