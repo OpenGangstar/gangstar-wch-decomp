@@ -15,6 +15,7 @@ enum E_VERTEX_TYPE { EVT_STANDARD = 0 };
 enum E_INDEX_TYPE { EIT_16BIT = 0 };
 struct SMaterial;
 class IDriverBinding;
+class ITexture;
 class IVideoDriver {
 public:
     virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
@@ -29,7 +30,7 @@ public:
     virtual void unknown21(); virtual void unknown22(); virtual void unknown23();
     virtual void unknown24(); virtual void unknown25(); virtual void unknown26();
     virtual void unknown27(); virtual void unknown28(); virtual void unknown29();
-    virtual void unknown30(); virtual void unknown31(); virtual void unknown32();
+    virtual void unknown30(); virtual void removeTexture(ITexture* texture); virtual void unknown32();
     virtual void unknown33(); virtual void unknown34(); virtual void unknown35();
     virtual void unknown36(); virtual void unknown37(); virtual void unknown38();
     virtual void unknown39(); virtual void unknown40(); virtual void unknown41();

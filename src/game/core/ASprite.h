@@ -3,7 +3,7 @@
 
 // Observed call interface only; allocation extent and internals are unrecovered.
 namespace irr {
-namespace video { class SColor; }
+namespace video { class SColor; class ITexture; }
 namespace core { template<class T> class CMatrix4; }
 }
 struct SpriteBounds { int left, right, top, bottom; };
@@ -15,11 +15,13 @@ struct SpriteFrame {
     unsigned char unknown22[6];
 };
 struct SpriteData;
+class IFileStream;
 class ASprite {
 public:
     ASprite();
     ASprite(const ASprite& other);
     ASprite(unsigned char* bytes);
+    ASprite(IFileStream* stream);
     virtual ~ASprite();
     void _trace(const char* text) const;
     void _setPtr(unsigned char* bytes);
@@ -46,7 +48,7 @@ private:
     SpriteData* data;
     bool ownsData;
     unsigned char unknown9[3];
-    void* texture;
+    irr::video::ITexture* texture;
     unsigned char unknown16[16];
     bool unknown32;
     bool unknown33;

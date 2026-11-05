@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 memset = 0x001c45d4;
 _ZdaPv = 0x001c461c;
+_Znaj = 0x001c3ff8;
 SECTIONS
 {
     .asprite_function_0 0x00349848 : { *asprite-startup.o(.text.__tcf_2) }
@@ -29,6 +30,10 @@ SECTIONS
     .asprite_storage_method_5 0x003497ac : { *asprite-startup.o(.text._ZN7ASprite12GetModuleIdxEPKc) }
     .asprite_storage_method_6 0x003497b4 : { *asprite-startup.o(.text._ZN7ASprite9MakeImageEij) }
     .asprite_storage_method_7 0x00349878 : { *asprite-startup.o(.text._ZN7ASprite9_erasePtrEv) }
+    .asprite_stream 0x00349898 : { *asprite-startup.o(.text._ZN7ASpriteC1EP11IFileStream .text._ZN7ASpriteC2EP11IFileStream) }
+    .asprite_delete 0x00349930 : { *asprite-startup.o(.text._ZN7ASpriteD0Ev) }
+    .asprite_destruct 0x00349978 : { *asprite-startup.o(.text._ZN7ASpriteD1Ev .text._ZN7ASpriteD2Ev) }
+    .asprite_vtable 0x004ad2b8 : { *asprite-startup.o(.data.rel.ro._ZTV7ASprite .gnu.linkonce.d.rel.ro._ZTV7ASprite) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
