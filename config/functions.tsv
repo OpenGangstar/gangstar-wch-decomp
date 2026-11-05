@@ -12609,8 +12609,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349a49	0x22	ASprite.cpp	game	rendering	matched	_ZNK7ASprite18GetFrameFromAFrameEii	ASprite::GetFrameFromAFrame(int, int) const
 0x00349a6d	0x12	ASprite.cpp	game	rendering	matched	_ZNK7ASprite24GetAnimFrameBoundingRectEii	ASprite::GetAnimFrameBoundingRect(int, int) const
 0x00349a81	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASprite11GetFrameIdxEPKc	ASprite::GetFrameIdx(char const*)
-0x00349ac1	0x1c4	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1EPKc	ASprite::ASprite(char const*)
-0x00349ac1	0x1c4	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2EPKc	ASprite::ASprite(char const*)
+0x00349ac1	0x1c4	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC1EPKc	ASprite::ASprite(char const*)
+0x00349ac1	0x1c4	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC2EPKc	ASprite::ASprite(char const*)
 0x00349c85	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite10GetFModuleEi	ASprite::GetFModule(int) const
 0x00349c95	0x6e	ASprite.cpp	game	rendering	pending	_ZNK7ASprite15GetFrameMarkersEiPi	ASprite::GetFrameMarkers(int, int*) const
 0x00349d05	0x5a	ASprite.cpp	game	rendering	pending	_ZNK7ASprite23GetNumberOfFrameMarkersEi	ASprite::GetNumberOfFrameMarkers(int) const

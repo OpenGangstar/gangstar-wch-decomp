@@ -14,6 +14,7 @@
 #include "../core/VideoDriver.h"
 #include "../app/Application.h"
 #include "../persistence/IFileStream.h"
+#include "../persistence/FileSystemBase.h"
 
 struct SpriteAnimation {
     short count;
@@ -77,6 +78,67 @@ ASprite::ASprite(IFileStream* stream)
     stream->read(bytes, stream->size());
     stream->seek(savedPosition);
     _setPtr(bytes);
+}
+
+extern "C" unsigned int strcspn(const char* text, const char* delimiters);
+static const char textureExtensionDelimiter[] __attribute__((section(".rodata.sprite_extension"))) = ".";
+
+ASprite::ASprite(const char* name)
+    : data(0), ownsData(true), texture(0), unknown32(false), unknown33(true),
+      unknown36(0), unknown40(0), unknown44(-1), unknown48(-1)
+{
+    Application* app = Application::GetInstance();
+    IFileStream* stream = app->GetFileSystem()->openResource(name);
+    if (!stream)
+        return;
+
+    unsigned char* bytes = new unsigned char[stream->size()];
+    stream->read(bytes, stream->size());
+    app->GetFileSystem()->closeFile(stream);
+    _setPtr(bytes);
+
+    if (texture) {
+        app->GetDevice()->getVideoDriver()->removeTexture(texture);
+        texture = 0;
+    }
+
+    char textureName[80];
+    int length = strcspn(name + 1, textureExtensionDelimiter);
+    int extension = length + 1;
+    if (extension >= 0) {
+        int i = 0;
+        do {
+            textureName[i] = name[i];
+            ++i;
+        } while (i != length + 2);
+    }
+
+    textureName[extension + 1] = 'b';
+    textureName[extension + 2] = 'm';
+    textureName[extension + 3] = 'p';
+    textureName[extension + 4] = 0;
+    texture = app->GetDevice()->getVideoDriver()->getTexture(textureName);
+    if (!texture) {
+        textureName[extension + 1] = 'p';
+        textureName[extension + 2] = 'n';
+        textureName[extension + 3] = 'g';
+        textureName[extension + 4] = 0;
+        texture = app->GetDevice()->getVideoDriver()->getTexture(textureName);
+        if (!texture) {
+            textureName[extension + 1] = 't';
+            textureName[extension + 2] = 'g';
+            textureName[extension + 3] = 'a';
+            textureName[extension + 4] = 0;
+            texture = app->GetDevice()->getVideoDriver()->getTexture(textureName);
+            if (!texture) {
+                textureName[extension + 1] = 'p';
+                textureName[extension + 2] = 's';
+                textureName[extension + 3] = 'd';
+                textureName[extension + 4] = 0;
+                texture = app->GetDevice()->getVideoDriver()->getTexture(textureName);
+            }
+        }
+    }
 }
 
 ASprite::~ASprite()

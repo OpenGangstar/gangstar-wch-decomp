@@ -22,6 +22,7 @@ public:
     ASprite(const ASprite& other);
     ASprite(unsigned char* bytes);
     ASprite(IFileStream* stream);
+    ASprite(const char* name);
     virtual ~ASprite();
     void _trace(const char* text) const;
     void _setPtr(unsigned char* bytes);

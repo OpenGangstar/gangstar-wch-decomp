@@ -27,7 +27,7 @@ public:
     virtual void unknown16();
     virtual void setMaterial(const SMaterial&);
     virtual void unknown18(); virtual void unknown19(); virtual void unknown20();
-    virtual void unknown21(); virtual void unknown22(); virtual void unknown23();
+    virtual ITexture* getTexture(const char* filename); virtual void unknown22(); virtual void unknown23();
     virtual void unknown24(); virtual void unknown25(); virtual void unknown26();
     virtual void unknown27(); virtual void unknown28(); virtual void unknown29();
     virtual void unknown30(); virtual void removeTexture(ITexture* texture); virtual void unknown32();
