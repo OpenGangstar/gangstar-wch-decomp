@@ -104,6 +104,22 @@
         {
             "name": "_ZN11AnalogStick6updateEd",
             "address": "0x00326449"
+        },
+        {
+            "name": "_ZThn4_N11AnalogStickD0Ev",
+            "address": "0x003263ac"
+        },
+        {
+            "name": "_ZN11AnalogStickD0Ev",
+            "address": "0x003263c1"
+        },
+        {
+            "name": "_ZThn4_N11AnalogStickD1Ev",
+            "address": "0x003263f0"
+        },
+        {
+            "name": "_ZN11AnalogStickD1Ev",
+            "address": "0x00326405"
         }
     ],
     "sections": [
@@ -142,10 +158,17 @@
         ".event_vtable",
         ".analog_stick_mode",
         ".analog_stick_reset",
-        ".analog_stick_update"
+        ".analog_stick_update",
+        ".analog_stick_delete_thunk",
+        ".analog_stick_destructor_thunk",
+        ".analog_stick_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN11Application11GetInstanceEv"
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK7ASprite10PaintFrameEiiii"
+    ],
+    "dependencies": [
+        "hud-element"
     ]
 }

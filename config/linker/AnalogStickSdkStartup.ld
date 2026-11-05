@@ -4,8 +4,13 @@ INCLUDE build/matches/sdk-startup-analogstick/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/ApplicationEventSections.ld
+__cxa_pure_virtual = 0;
+INCLUDE config/linker/HudElement-sections.ld
 SECTIONS
 {
+    .analog_stick_delete_thunk 0x003263ac : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11AnalogStickD0Ev) }
+    .analog_stick_destructor_thunk 0x003263f0 : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11AnalogStickD1Ev) }
+    .analog_stick_vtable 0x004abe78 : { *sdk-startup-analogstick.o(.data.rel.ro._ZTV11AnalogStick) }
     .analog_stick_mode 0x00326340 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick10switchModeENS_4ModeE) }
     .analog_stick_reset 0x00326430 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick5resetEv) }
     .analog_stick_update 0x00326448 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick6updateEd) }
