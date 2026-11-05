@@ -13120,29 +13120,29 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00351c39	0x3c	CSoundDecoderMSWAV.cpp	game	audio	matched	_ZN18CSoundDecoderMSWAVD0Ev	CSoundDecoderMSWAV::~CSoundDecoderMSWAV()
 0x00351c75	0x38	CSoundDecoderMSWAV.cpp	game	audio	matched	_ZN18CSoundDecoderMSWAVD1Ev	CSoundDecoderMSWAV::~CSoundDecoderMSWAV()
 0x00351c75	0x38	CSoundDecoderMSWAV.cpp	game	audio	matched	_ZN18CSoundDecoderMSWAVD2Ev	CSoundDecoderMSWAV::~CSoundDecoderMSWAV()
-0x00351cad	0x6	CSoundDecoderPCM.cpp	game	audio	pending	_ZNK16CSoundDecoderPCM15GetSamplingRateEv	CSoundDecoderPCM::GetSamplingRate() const
-0x00351cb5	0x6	CSoundDecoderPCM.cpp	game	audio	pending	_ZNK16CSoundDecoderPCM10GetChannelEv	CSoundDecoderPCM::GetChannel() const
-0x00351cbd	0x4	CSoundDecoderPCM.cpp	game	audio	pending	_ZNK16CSoundDecoderPCM10GetPCMSizeEv	CSoundDecoderPCM::GetPCMSize() const
-0x00351cc1	0x12	CSoundDecoderPCM.cpp	game	audio	pending	_ZNK16CSoundDecoderPCM21GetNbEffectiveSamplesEv	CSoundDecoderPCM::GetNbEffectiveSamples() const
-0x00351cd5	0x12	CSoundDecoderPCM.cpp	game	audio	pending	_ZNK16CSoundDecoderPCM15GetTotalSamplesEv	CSoundDecoderPCM::GetTotalSamples() const
-0x00351ce9	0x12	CSoundDecoderPCM.cpp	game	audio	pending	_ZNK16CSoundDecoderPCM11HasMoreDataEv	CSoundDecoderPCM::HasMoreData() const
-0x00351cfd	0x2c	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMC2Ev	CSoundDecoderPCM::CSoundDecoderPCM()
-0x00351cfd	0x2c	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMC1Ev	CSoundDecoderPCM::CSoundDecoderPCM()
-0x00351d29	0x2	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCM6UnInitEv	CSoundDecoderPCM::UnInit()
-0x00351d2d	0x8a	CSoundDecoderPCM.cpp	game	audio	pending	_ZN8CPcmPool17ReleasePCMDecoderEP16CSoundDecoderPCM	CPcmPool::ReleasePCMDecoder(CSoundDecoderPCM*)
-0x00351db9	0x4a	CSoundDecoderPCM.cpp	game	audio	pending	_ZN8CPcmPoolD2Ev	CPcmPool::~CPcmPool()
-0x00351db9	0x4a	CSoundDecoderPCM.cpp	game	audio	pending	_ZN8CPcmPoolD1Ev	CPcmPool::~CPcmPool()
-0x00351e05	0x88	CSoundDecoderPCM.cpp	game	audio	pending	_ZN8CPcmPoolC1Eii	CPcmPool::CPcmPool(int, int)
-0x00351e05	0x88	CSoundDecoderPCM.cpp	game	audio	pending	_ZN8CPcmPoolC2Eii	CPcmPool::CPcmPool(int, int)
-0x00351e8d	0x14	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCM4GoToEi	CSoundDecoderPCM::GoTo(int)
-0x00351ea1	0x54	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCM6DecodeEPsib	CSoundDecoderPCM::Decode(short*, int, bool)
-0x00351ef5	0x1c	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader	CSoundDecoderPCM::Init(__sFILE*, RiffHeader*, FormatHeader*)
-0x00351f11	0x96	CSoundDecoderPCM.cpp	game	audio	pending	_ZN8CPcmPool13GetPCMDecoderEP7__sFILEP10RiffHeaderP12FormatHeader	CPcmPool::GetPCMDecoder(__sFILE*, RiffHeader*, FormatHeader*)
-0x00351fa9	0x40	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader	CSoundDecoderPCM::CSoundDecoderPCM(__sFILE*, RiffHeader*, FormatHeader*)
-0x00351fa9	0x40	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader	CSoundDecoderPCM::CSoundDecoderPCM(__sFILE*, RiffHeader*, FormatHeader*)
-0x00351fe9	0x2c	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMD0Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
-0x00352015	0x24	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMD1Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
-0x00352015	0x24	CSoundDecoderPCM.cpp	game	audio	pending	_ZN16CSoundDecoderPCMD2Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
+0x00351cad	0x6	CSoundDecoderPCM.cpp	game	audio	matched	_ZNK16CSoundDecoderPCM15GetSamplingRateEv	CSoundDecoderPCM::GetSamplingRate() const
+0x00351cb5	0x6	CSoundDecoderPCM.cpp	game	audio	matched	_ZNK16CSoundDecoderPCM10GetChannelEv	CSoundDecoderPCM::GetChannel() const
+0x00351cbd	0x4	CSoundDecoderPCM.cpp	game	audio	matched	_ZNK16CSoundDecoderPCM10GetPCMSizeEv	CSoundDecoderPCM::GetPCMSize() const
+0x00351cc1	0x12	CSoundDecoderPCM.cpp	game	audio	matched	_ZNK16CSoundDecoderPCM21GetNbEffectiveSamplesEv	CSoundDecoderPCM::GetNbEffectiveSamples() const
+0x00351cd5	0x12	CSoundDecoderPCM.cpp	game	audio	matched	_ZNK16CSoundDecoderPCM15GetTotalSamplesEv	CSoundDecoderPCM::GetTotalSamples() const
+0x00351ce9	0x12	CSoundDecoderPCM.cpp	game	audio	matched	_ZNK16CSoundDecoderPCM11HasMoreDataEv	CSoundDecoderPCM::HasMoreData() const
+0x00351cfd	0x2c	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMC2Ev	CSoundDecoderPCM::CSoundDecoderPCM()
+0x00351cfd	0x2c	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMC1Ev	CSoundDecoderPCM::CSoundDecoderPCM()
+0x00351d29	0x2	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCM6UnInitEv	CSoundDecoderPCM::UnInit()
+0x00351d2d	0x8a	CSoundDecoderPCM.cpp	game	audio	matched	_ZN8CPcmPool17ReleasePCMDecoderEP16CSoundDecoderPCM	CPcmPool::ReleasePCMDecoder(CSoundDecoderPCM*)
+0x00351db9	0x4a	CSoundDecoderPCM.cpp	game	audio	matched	_ZN8CPcmPoolD2Ev	CPcmPool::~CPcmPool()
+0x00351db9	0x4a	CSoundDecoderPCM.cpp	game	audio	matched	_ZN8CPcmPoolD1Ev	CPcmPool::~CPcmPool()
+0x00351e05	0x88	CSoundDecoderPCM.cpp	game	audio	matched	_ZN8CPcmPoolC1Eii	CPcmPool::CPcmPool(int, int)
+0x00351e05	0x88	CSoundDecoderPCM.cpp	game	audio	matched	_ZN8CPcmPoolC2Eii	CPcmPool::CPcmPool(int, int)
+0x00351e8d	0x14	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCM4GoToEi	CSoundDecoderPCM::GoTo(int)
+0x00351ea1	0x54	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCM6DecodeEPsib	CSoundDecoderPCM::Decode(short*, int, bool)
+0x00351ef5	0x1c	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader	CSoundDecoderPCM::Init(__sFILE*, RiffHeader*, FormatHeader*)
+0x00351f11	0x96	CSoundDecoderPCM.cpp	game	audio	matched	_ZN8CPcmPool13GetPCMDecoderEP7__sFILEP10RiffHeaderP12FormatHeader	CPcmPool::GetPCMDecoder(__sFILE*, RiffHeader*, FormatHeader*)
+0x00351fa9	0x40	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader	CSoundDecoderPCM::CSoundDecoderPCM(__sFILE*, RiffHeader*, FormatHeader*)
+0x00351fa9	0x40	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader	CSoundDecoderPCM::CSoundDecoderPCM(__sFILE*, RiffHeader*, FormatHeader*)
+0x00351fe9	0x2c	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMD0Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
+0x00352015	0x24	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMD1Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
+0x00352015	0x24	CSoundDecoderPCM.cpp	game	audio	matched	_ZN16CSoundDecoderPCMD2Ev	CSoundDecoderPCM::~CSoundDecoderPCM()
 0x00352039	0x30	RadioStationController.cpp	game	ai	matched	__tcf_0	__tcf_0
 0x00352069	0x58	RadioStationController.cpp	game	ai	matched	_ZN22RadioStationController14selectRandomAdEv	RadioStationController::selectRandomAd()
 0x003520c1	0x82	RadioStationController.cpp	game	ai	pending	_ZN22RadioStationController18selectRandomJingleEi	RadioStationController::selectRandomJingle(int)
