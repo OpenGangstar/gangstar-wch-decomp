@@ -6,6 +6,11 @@ __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
     .touchscreen_convert_coord 0x0034c33c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase12ConvertCoordER7Point2DIsE) }
+    .touchscreen_trace 0x0034c394 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase6_traceEPKc) }
+    .touchscreen_touch_ended 0x0034c3c8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase10touchEndedERK7Point2DIsEl) }
+    .touchscreen_touch_cancelled 0x0034c400 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase14touchCancelledERK7Point2DIsEl) }
+    .touchscreen_release_message 0x0043600c : { *string-startup-touchscreenbase.o(.rodata.releaseMessage) }
+    .touchscreen_cancel_message 0x00436024 : { *string-startup-touchscreenbase.o(.rodata.cancelMessage) }
     .touchscreen_clear 0x0034c398 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase5clearEv) }
     .touchscreen_clear_point 0x0034c3b8 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase15clearTouchPointEl) }
     .touchscreen_point 0x0034c44c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase13getTouchPointEl) }

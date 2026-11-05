@@ -59,6 +59,28 @@ void TouchScreenBase::clearTouchPoint(long id)
     points[id].active = false;
 }
 
+static const char releaseMessage[] = "Finger removal detected";
+static const char cancelMessage[] = "INTERRUPTED";
+
+void TouchScreenBase::touchEnded(const Point2D<short>& point, long id)
+{
+    _trace(releaseMessage);
+    touchCancelled(point, id);
+}
+
+void TouchScreenBase::touchCancelled(const Point2D<short>&, long id)
+{
+    _trace(cancelMessage);
+    points[id].active = false;
+    points[id].externalId = -1;
+    if (slotCount - 1 == id)
+        --slotCount;
+}
+
+void TouchScreenBase::_trace(const char*) const
+{
+}
+
 Point2D<short>* TouchScreenBase::getTouchPoint(long id)
 {
     if (points[id].active && points[id].hasPoints)
