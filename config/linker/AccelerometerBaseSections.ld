@@ -1,3 +1,5 @@
+puts = 0x001c41b4;
+printf = 0x001c4058;
 SECTIONS
 {
     .accelerometer_base_constructor 0x0034d580 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBaseC1Ev .text._ZN17AccelerometerBaseC2Ev) }
@@ -14,4 +16,8 @@ SECTIONS
     .sdk_startup_function_2 0x0034d624 : { *sdk-startup-accelerometerbase.o(.text._GLOBAL__I__ZN17AccelerometerBaseC2Ev) }
     .sdk_startup_storage_0 0x004bc0e0 (NOLOAD) : { *sdk-startup-accelerometerbase.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
     .sdk_startup_storage_1 0x004bc100 (NOLOAD) : { *sdk-startup-accelerometerbase.o(.bss._ZN3irr2ps5vHalfE) }
+    .accelerometer_trace 0x0034d45c : { *sdk-startup-accelerometerbase.o(.text._ZNK17AccelerometerBase6_traceEPKc) }
+    .accelerometer_trace_category 0x00436070 : { *sdk-startup-accelerometerbase.o(.rodata.traceCategory) }
+    .accelerometer_logs_text 0x002d6138 : { *logs.o(.text) }
+    .accelerometer_logs_rodata 0x004143f0 : { *logs.o(.rodata*) }
 }

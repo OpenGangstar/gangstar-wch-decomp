@@ -13,6 +13,7 @@ public:
 
 private:
     void _calcAngles();
+    void _trace(const char* message) const;
 
     float x;
     float y;

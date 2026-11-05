@@ -12758,7 +12758,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d40d	0x12	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase5clearEv	AccelerometerBase::clear()
 0x0034d421	0xc	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase6updateEd	AccelerometerBase::update(double)
 0x0034d42d	0x30	AccelerometerBase.cpp	game	input	matched	__tcf_2	__tcf_2
-0x0034d45d	0x1c	AccelerometerBase.cpp	game	input	pending	_ZNK17AccelerometerBase6_traceEPKc	AccelerometerBase::_trace(char const*) const
+0x0034d45d	0x1c	AccelerometerBase.cpp	game	input	matched	_ZNK17AccelerometerBase6_traceEPKc	AccelerometerBase::_trace(char const*) const
 0x0034d479	0x108	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
 0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC1Ev	AccelerometerBase::AccelerometerBase()
 0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC2Ev	AccelerometerBase::AccelerometerBase()
