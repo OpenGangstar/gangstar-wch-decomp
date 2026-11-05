@@ -12580,17 +12580,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349645	0x6c	AnimObject.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003496b1	0x14	AnimObject.cpp	game	characters	matched	_GLOBAL__I__Z7FSelectfff	_GLOBAL__I__Z7FSelectfff
 0x003496c5	0x1e	ASprite.cpp	game	rendering	pending	_ZN7ASprite21GetTransformFromFlagsEj	ASprite::GetTransformFromFlags(unsigned int)
-0x003496e5	0x34	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1Ev	ASprite::ASprite()
-0x003496e5	0x34	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2Ev	ASprite::ASprite()
-0x00349719	0x3c	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1ERKS_	ASprite::ASprite(ASprite const&)
-0x00349719	0x3c	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2ERKS_	ASprite::ASprite(ASprite const&)
-0x00349755	0x2	ASprite.cpp	game	rendering	pending	_ZNK7ASprite6_traceEPKc	ASprite::_trace(char const*) const
-0x00349759	0x4	ASprite.cpp	game	rendering	pending	_ZN7ASprite7_setPtrEPh	ASprite::_setPtr(unsigned char*)
-0x0034975d	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2EPh	ASprite::ASprite(unsigned char*)
-0x0034975d	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1EPh	ASprite::ASprite(unsigned char*)
+0x003496e5	0x34	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC1Ev	ASprite::ASprite()
+0x003496e5	0x34	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC2Ev	ASprite::ASprite()
+0x00349719	0x3c	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC1ERKS_	ASprite::ASprite(ASprite const&)
+0x00349719	0x3c	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC2ERKS_	ASprite::ASprite(ASprite const&)
+0x00349755	0x2	ASprite.cpp	game	rendering	matched	_ZNK7ASprite6_traceEPKc	ASprite::_trace(char const*) const
+0x00349759	0x4	ASprite.cpp	game	rendering	matched	_ZN7ASprite7_setPtrEPh	ASprite::_setPtr(unsigned char*)
+0x0034975d	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC2EPh	ASprite::ASprite(unsigned char*)
+0x0034975d	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC1EPh	ASprite::ASprite(unsigned char*)
 0x0034979d	0xe	ASprite.cpp	game	rendering	matched	_ZNK7ASprite9GetAFrameEi	ASprite::GetAFrame(int) const
-0x003497ad	0x6	ASprite.cpp	game	rendering	pending	_ZN7ASprite12GetModuleIdxEPKc	ASprite::GetModuleIdx(char const*)
-0x003497b5	0x2	ASprite.cpp	game	rendering	pending	_ZN7ASprite9MakeImageEij	ASprite::MakeImage(int, unsigned int)
+0x003497ad	0x6	ASprite.cpp	game	rendering	matched	_ZN7ASprite12GetModuleIdxEPKc	ASprite::GetModuleIdx(char const*)
+0x003497b5	0x2	ASprite.cpp	game	rendering	matched	_ZN7ASprite9MakeImageEij	ASprite::MakeImage(int, unsigned int)
 0x003497b9	0x2a	ASprite.cpp	game	rendering	pending	_ZNK3RctIiE14isIntersectingEii	Rct<int>::isIntersecting(int, int) const
 0x003497e5	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite7GetAnimEi	ASprite::GetAnim(int) const
 0x003497f5	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite8GetFrameEi	ASprite::GetFrame(int) const
@@ -12598,7 +12598,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349815	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite9GetModuleEi	ASprite::GetModule(int) const
 0x00349825	0x22	ASprite.cpp	game	rendering	pending	_ZNK7ASprite12GetFrameRectEii	ASprite::GetFrameRect(int, int) const
 0x00349849	0x30	ASprite.cpp	game	rendering	matched	__tcf_2	__tcf_2
-0x00349879	0x20	ASprite.cpp	game	rendering	pending	_ZN7ASprite9_erasePtrEv	ASprite::_erasePtr()
+0x00349879	0x20	ASprite.cpp	game	rendering	matched	_ZN7ASprite9_erasePtrEv	ASprite::_erasePtr()
 0x00349899	0x98	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC1EP11IFileStream	ASprite::ASprite(IFileStream*)
 0x00349899	0x98	ASprite.cpp	game	rendering	pending	_ZN7ASpriteC2EP11IFileStream	ASprite::ASprite(IFileStream*)
 0x00349931	0x48	ASprite.cpp	game	rendering	pending	_ZN7ASpriteD0Ev	ASprite::~ASprite()

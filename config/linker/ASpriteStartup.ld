@@ -4,6 +4,7 @@ INCLUDE build/matches/asprite-startup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 memset = 0x001c45d4;
+_ZdaPv = 0x001c461c;
 SECTIONS
 {
     .asprite_function_0 0x00349848 : { *asprite-startup.o(.text.__tcf_2) }
@@ -20,6 +21,14 @@ SECTIONS
     .asprite_animation_5 0x00349d60 : { *asprite-startup.o(.text._ZNK7ASprite19GetModuleFromAFrameEii) }
     .asprite_paint_frame 0x0034a0f0 : { *asprite-startup.o(.text._ZNK7ASprite10PaintFrameEiiii) }
     .asprite_paint_animation 0x0034a144 : { *asprite-startup.o(.text._ZNK7ASprite11PaintAFrameEiiiii) }
+    .asprite_storage_method_0 0x003496e4 : { *asprite-startup.o(.text._ZN7ASpriteC1Ev .text._ZN7ASpriteC2Ev) }
+    .asprite_storage_method_1 0x00349718 : { *asprite-startup.o(.text._ZN7ASpriteC1ERKS_ .text._ZN7ASpriteC2ERKS_) }
+    .asprite_storage_method_2 0x00349754 : { *asprite-startup.o(.text._ZNK7ASprite6_traceEPKc) }
+    .asprite_storage_method_3 0x00349758 : { *asprite-startup.o(.text._ZN7ASprite7_setPtrEPh) }
+    .asprite_storage_method_4 0x0034975c : { *asprite-startup.o(.text._ZN7ASpriteC2EPh .text._ZN7ASpriteC1EPh) }
+    .asprite_storage_method_5 0x003497ac : { *asprite-startup.o(.text._ZN7ASprite12GetModuleIdxEPKc) }
+    .asprite_storage_method_6 0x003497b4 : { *asprite-startup.o(.text._ZN7ASprite9MakeImageEij) }
+    .asprite_storage_method_7 0x00349878 : { *asprite-startup.o(.text._ZN7ASprite9_erasePtrEv) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

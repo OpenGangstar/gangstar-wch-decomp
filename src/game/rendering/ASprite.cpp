@@ -27,6 +27,42 @@ struct SpriteData {
     unsigned int animationFrames;
 };
 
+ASprite::ASprite()
+    : data(0), ownsData(false), texture(0), unknown32(false), unknown33(true),
+      unknown36(0), unknown40(0), unknown44(-1), unknown48(-1)
+{
+}
+
+ASprite::ASprite(const ASprite& other)
+    : data(0), ownsData(false), texture(0), unknown32(false), unknown33(true),
+      unknown36(0), unknown40(0), unknown44(-1), unknown48(-1)
+{
+    data = other.data;
+}
+
+void ASprite::_trace(const char*) const {}
+void ASprite::_setPtr(unsigned char* bytes) { data = reinterpret_cast<SpriteData*>(bytes); }
+
+ASprite::ASprite(unsigned char* bytes)
+    : data(0), ownsData(false), texture(0), unknown32(false), unknown33(true),
+      unknown36(0), unknown40(0), unknown44(-1), unknown48(-1)
+{
+    _setPtr(bytes);
+}
+
+int ASprite::GetModuleIdx(const char*) { return -1; }
+void ASprite::MakeImage(int, unsigned int) {}
+
+void ASprite::_erasePtr()
+{
+    if (ownsData) {
+        delete[] reinterpret_cast<unsigned char*>(data);
+        data = 0;
+        ownsData = false;
+    }
+    data = 0;
+}
+
 const unsigned char* ASprite::GetAFrame(int index) const
 {
     return reinterpret_cast<const unsigned char*>(data) + data->animationFrames + index * 9;
