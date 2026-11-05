@@ -36,6 +36,14 @@
         {
             "name": "_GLOBAL__I__ZN15TouchScreenBase14CLEAN_UP_DELAYE",
             "address": "0x0034cb69"
+        },
+        {
+            "name": "_ZN3RctIsED0Ev",
+            "address": "0x0034c755"
+        },
+        {
+            "name": "_ZN3RctIsED1Ev",
+            "address": "0x0034c775"
         }
     ],
     "sections": [
@@ -46,7 +54,10 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".touchscreen_rct_d0",
+        ".touchscreen_rct_d1",
+        ".touchscreen_rct_vtable"
     ],
     "retail_got": true
 }
