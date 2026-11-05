@@ -110,6 +110,26 @@ CSoundDecoderMSADPCM* CMSAdpcmPool::GetMSADPCMDecoder(__sFILE* stream, RiffHeade
     return data;
 }
 
+CSoundDecoderMSADPCM::CSoundDecoderMSADPCM(__sFILE* input, RiffHeader* riff, FormatHeader* format)
+    : stream(input), buffer(0), bufferSize(4096), channelIndex(0), samplesRemaining(0),
+      riffHeader(riff), formatHeader(format), fact(), data(), position(0), ended(false), flags(1)
+{
+    buffer = new unsigned char[bufferSize];
+    if (formatHeader->size > 16)
+        fseek(reinterpret_cast<NativeFile*>(stream), formatHeader->size - 16, 1);
+    fread(&fact, sizeof(fact), 1, reinterpret_cast<NativeFile*>(stream));
+    fread(&data, sizeof(data), 1, reinterpret_cast<NativeFile*>(stream));
+    FormatHeader* wavFormat = formatHeader;
+    unsigned char headerSize = wavFormat->channels * 4;
+    blockHeaderSize = headerSize;
+    if (wavFormat->channels == 1)
+        samplesPerBlock = (wavFormat->blockAlignment - headerSize) * 2 + 1;
+    else
+        samplesPerBlock = wavFormat->blockAlignment + 1 - headerSize;
+    pcmSize = fact.samples * 4;
+    effectiveSamples = fact.samples;
+}
+
 CSoundDecoderMSADPCM::~CSoundDecoderMSADPCM()
 {
     delete[] buffer;
