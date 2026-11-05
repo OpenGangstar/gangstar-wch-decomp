@@ -1,0 +1,46 @@
+{
+    "source": "src/game/audio/CSoundDecoderMSWAV.cpp",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "functions": [
+        "_ZNK18CSoundDecoderMSWAV15GetSamplingRateEv",
+        "_ZNK18CSoundDecoderMSWAV10GetChannelEv",
+        "_ZNK18CSoundDecoderMSWAV10GetPCMSizeEv",
+        "_ZNK18CSoundDecoderMSWAV21GetNbEffectiveSamplesEv",
+        "_ZNK18CSoundDecoderMSWAV15GetTotalSamplesEv",
+        "_ZNK18CSoundDecoderMSWAV11HasMoreDataEv",
+        "_ZN18CSoundDecoderMSWAV6DecodeEPsib",
+        "_ZN18CSoundDecoderMSWAV4GoToEi",
+        "_ZN18CSoundDecoderMSWAV22GetNumSamplesPerDecodeEi"
+    ],
+    "linker_script": "config/linker/MSWavDecoderInterface.ld",
+    "sections": [
+        ".mswav_method_0",
+        ".mswav_method_1",
+        ".mswav_method_2",
+        ".mswav_method_3",
+        ".mswav_method_4",
+        ".mswav_method_5",
+        ".mswav_method_6",
+        ".mswav_method_7",
+        ".mswav_method_8"
+    ]
+}
