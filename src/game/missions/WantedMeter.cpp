@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
+#include "WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
 
 void operator delete(void*) throw();

@@ -10,6 +10,7 @@
 
 #include "../hud/TargetMarkerSingleton.h"
 #include "../world/MapSingleton.h"
+#include "../missions/WantedLevelManagerSingleton.h"
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"

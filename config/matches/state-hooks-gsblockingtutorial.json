@@ -352,6 +352,8 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
         "_ZN11MenuManager11getInstanceEv",

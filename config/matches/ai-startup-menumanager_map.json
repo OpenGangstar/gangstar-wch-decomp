@@ -47,6 +47,11 @@
             "name": "__tcf_2",
             "address": "0x002e6629",
             "compiled_name": "__tcf_1"
+        },
+        {
+            "name": "__tcf_5",
+            "address": "0x002e6645",
+            "compiled_name": "__tcf_2"
         }
     ],
     "sections": [
@@ -60,13 +65,16 @@
             "name": ".got",
             "offset": 864
         },
-        ".map_cleanup"
+        ".map_cleanup",
+        ".wanted_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN12TargetMarkerC1Ev",
         "_ZN12TargetMarkerD1Ev",
         "_ZN3MapC1Ev",
-        "_ZN3MapD1Ev"
+        "_ZN3MapD1Ev",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
     ]
 }

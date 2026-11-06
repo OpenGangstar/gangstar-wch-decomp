@@ -42,7 +42,12 @@
         "_ZN6ReviveD1Ev",
         "_ZN6ReviveD2Ev",
         "_ZN6ReviveC1Eb",
-        "_ZN6ReviveC2Eb"
+        "_ZN6ReviveC2Eb",
+        {
+            "name": "__tcf_3",
+            "address": "0x00338c25",
+            "compiled_name": "__tcf_0"
+        }
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -56,7 +61,8 @@
         ".revive_finish",
         ".revive_draw",
         ".revive_destroy",
-        ".revive_construct"
+        ".revive_construct",
+        ".wanted_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -69,6 +75,8 @@
         "_ZN4Cash7SetCashEi",
         "_ZN4Cash9AlignLeftEv",
         "_ZN4Cash11SetPositionEii",
-        "_ZN10PlayerTest7subCashEi"
+        "_ZN10PlayerTest7subCashEi",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
     ]
 }

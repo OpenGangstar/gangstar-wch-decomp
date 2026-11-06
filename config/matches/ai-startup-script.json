@@ -50,7 +50,12 @@
         "_ZN6Script8finalizeEv",
         "_ZN6Script10lockScriptEi",
         "_ZN6Script16executeSubScriptEii",
-        "_ZN6Script7executeEi"
+        "_ZN6Script7executeEi",
+        {
+            "name": "__tcf_4",
+            "address": "0x00339211",
+            "compiled_name": "__tcf_0"
+        }
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -64,7 +69,8 @@
         ".script_finalize",
         ".script_lock",
         ".script_execute_subscript",
-        ".script_execute"
+        ".script_execute",
+        ".wanted_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -78,6 +84,8 @@
         "_ZN6Script11nextCommandEi",
         "_ZN11Application11GetInstanceEv",
         "_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii",
-        "_ZN12EventManager7refreshEv"
+        "_ZN12EventManager7refreshEv",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
     ]
 }

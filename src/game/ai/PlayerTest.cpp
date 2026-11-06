@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../world/MapSingleton.h"
+#include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
 
 void operator delete(void*) throw();

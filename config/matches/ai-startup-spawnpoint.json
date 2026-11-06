@@ -40,6 +40,11 @@
         {
             "name": "__tcf_6",
             "address": "0x003070cd"
+        },
+        {
+            "name": "__tcf_4",
+            "address": "0x0030643d",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -51,7 +56,12 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".wanted_cleanup"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
+    ]
 }

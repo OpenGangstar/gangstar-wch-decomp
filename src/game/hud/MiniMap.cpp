@@ -11,6 +11,7 @@
 #include "MiniMap.h"
 #include "TargetMarkerSingleton.h"
 #include "../world/MapSingleton.h"
+#include "../missions/WantedLevelManagerSingleton.h"
 #include "../characters/AnimObject.h"
 #include "../world/LevelObject.h"
 

@@ -316,6 +316,8 @@
         "application-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager9showTextsEv",
         "_ZN11Application11GetInstanceEv",

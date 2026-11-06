@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
+#include "WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
 
 void operator delete(void*) throw();

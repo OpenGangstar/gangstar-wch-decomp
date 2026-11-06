@@ -55,6 +55,10 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x0033d3b4 : { *script-manager-helpers.o(.text.__tcf_1) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .hook_0 0x002e1a5c : { *state-hooks-gsfade.o(.text._ZN6GSFade4drawEPK12StateMachine .gnu.linkonce.t._ZN6GSFade4drawEPK12StateMachine) }
     .state_ctor 0x002e1be0 : { *state-hooks-gsfade.o(.text._ZN6GSFadeC1Ev) }
     .base_0 0x002dacc0 : { *state-hooks-gsfade.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }

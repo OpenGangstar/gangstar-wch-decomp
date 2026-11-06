@@ -13,8 +13,14 @@ _ZN39retail_copvehiclecontroller_transitions17civ_vehicle_transE = 0x004315d4;
 _ZN39retail_copvehiclecontroller_transitions17cop_vehicle_transE = 0x00431664;
 _ZN39retail_copvehiclecontroller_transitions11guard_transE = 0x00431718;
 _ZN39retail_copvehiclecontroller_transitions22scripted_vehicle_transE = 0x004317c0;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x00341700 : { *ai-startup-copvehiclecontroller.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .ai_startup_function_0 0x00341a0c : { *ai-startup-copvehiclecontroller.o(.text.__tcf_5) }
     .ai_startup_function_1 0x003418b4 : { *ai-startup-copvehiclecontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003419f8 : { *ai-startup-copvehiclecontroller.o(.text._GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }

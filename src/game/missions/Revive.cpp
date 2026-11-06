@@ -9,6 +9,7 @@
  */
 
 #include "Revive.h"
+#include "WantedLevelManagerSingleton.h"
 #include "../characters/AnimObject.h"
 #include "WantedLevelManager.h"
 #include "../app/Application.h"

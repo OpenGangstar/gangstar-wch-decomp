@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../app/CGameFactory.h"
 #include "../world/MapSingleton.h"
+#include "../missions/WantedLevelManagerSingleton.h"
 #include "CustomBillboardSceneNode.h"
 #include "../core/NativeStdio.h"
 #include "../core/Lock.h"

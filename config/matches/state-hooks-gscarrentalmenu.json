@@ -280,6 +280,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",

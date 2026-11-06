@@ -161,7 +161,12 @@
         "_ZN13ScriptManager12loadMissionsEPKc",
         "_ZN13ScriptManager8loadGameEb",
         "_ZNK13ScriptManager27getFirstAvailableCheckpointEv",
-        "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb"
+        "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
+        {
+            "name": "__tcf_3",
+            "address": "0x0033d3b5",
+            "compiled_name": "__tcf_1"
+        }
     ],
     "sections": [
         ".helper_0",
@@ -291,7 +296,8 @@
         ".script_manager_load_save",
         ".script_manager_load_animation",
         ".script_manager_first_checkpoint",
-        ".script_manager_minimap_tracking"
+        ".script_manager_minimap_tracking",
+        ".wanted_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -330,6 +336,8 @@
         "_ZNK6Script9getSourceEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
-        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject"
+        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
     ]
 }

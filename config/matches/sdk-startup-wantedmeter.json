@@ -36,6 +36,11 @@
         {
             "name": "_GLOBAL__I__ZN11WantedMeterC2EP7ASpritei",
             "address": "0x0032cadd"
+        },
+        {
+            "name": "__tcf_2",
+            "address": "0x0032c835",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -46,7 +51,12 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".wanted_cleanup"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
+    ]
 }
