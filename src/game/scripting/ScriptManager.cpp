@@ -10,10 +10,14 @@
 
 #include "ScriptManager.h"
 #include "../hud/HudElement.h"
+#include "../hud/MenuManager.h"
 #include "../characters/AnimObject.h"
 #include "../missions/Mission.h"
 #include "../missions/Revive.h"
 #include "../persistence/DataStream.h"
+
+extern bool bIsInCutscene;
+void operator delete(void*) throw();
 
 void ScriptManager::resume() { paused = false; }
 
@@ -130,6 +134,57 @@ void ScriptManager::missionStart(int id, int duration)
 {
     if (mission)
         mission->start(id, duration);
+}
+
+void ScriptManager::missionOver()
+{
+    if (mission) {
+        mission->end();
+        bIsInCutscene = false;
+    }
+}
+
+void ScriptManager::missionRegisterCondition(IMissionCondition* condition)
+{
+    if (mission)
+        mission->registerCondition(condition);
+    else if (condition)
+        ::operator delete(condition);
+}
+
+void ScriptManager::resumeBlockingCommands()
+{
+    if (static_cast<int>(commandCursor) > 0) {
+        if (commandCursor == 1)
+            mission->update(0);
+        --commandCursor;
+    }
+}
+
+void ScriptManager::hideSkipButton()
+{
+    if (skipButton) {
+        skipButton->hide();
+        MenuManager::getInstance()->setText(MenuManager::SkipButtonText, -1, 0);
+    }
+}
+
+void ScriptManager::showSkipButton()
+{
+    if (skipButton) {
+        skipButton->show();
+        MenuManager::getInstance()->setText(MenuManager::SkipButtonText, 4136, 0);
+    }
+}
+
+void ScriptManager::skipCutscene()
+{
+    if (cutsceneSkipped || !isInCinematic())
+        return;
+    hideSkipButton();
+    skipBlockingCommands();
+    cutsceneSkipped = true;
+    mission->update(0);
 }
 
 namespace Structs {

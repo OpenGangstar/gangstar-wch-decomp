@@ -98,4 +98,10 @@ SECTIONS
     .script_manager_message 0x0033e8c0 : { *script-manager-helpers.o(.text._ZN13ScriptManager7messageEi) }
     .script_manager_missionObjective 0x0033e8d4 : { *script-manager-helpers.o(.text._ZN13ScriptManager16missionObjectiveEib) }
     .script_manager_missionStart 0x0033e8e8 : { *script-manager-helpers.o(.text._ZN13ScriptManager12missionStartEii) }
+    .script_manager_missionOver 0x0033e888 : { *script-manager-helpers.o(.text._ZN13ScriptManager11missionOverEv) }
+    .script_manager_missionRegisterCondition 0x0033e868 : { *script-manager-helpers.o(.text._ZN13ScriptManager24missionRegisterConditionEP17IMissionCondition) }
+    .script_manager_resumeBlockingCommands 0x0033d3d0 : { *script-manager-helpers.o(.text._ZN13ScriptManager22resumeBlockingCommandsEv) }
+    .script_manager_hideSkipButton 0x0033d194 : { *script-manager-helpers.o(.text._ZN13ScriptManager14hideSkipButtonEv) }
+    .script_manager_showSkipButton 0x0033d1b8 : { *script-manager-helpers.o(.text._ZN13ScriptManager14showSkipButtonEv) }
+    .script_manager_skipCutscene 0x0033d3f0 : { *script-manager-helpers.o(.text._ZN13ScriptManager12skipCutsceneEv) }
 }
