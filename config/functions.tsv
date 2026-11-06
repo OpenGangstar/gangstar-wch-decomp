@@ -11018,7 +11018,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003236b9	0x30	CHudManager.cpp	game	hud	matched	__tcf_3	__tcf_3
 0x003236e9	0x1a	CHudManager.cpp	game	hud	matched	_ZN11CHudManager20toggleWeaponSelectorEb	CHudManager::toggleWeaponSelector(bool)
 0x00323705	0xb8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager5blinkEi	CHudManager::blink(int)
-0x003237bd	0x22	CHudManager.cpp	game	hud	pending	_ZN11CHudManager13toggleRadioCBEb	CHudManager::toggleRadioCB(bool)
+0x003237bd	0x22	CHudManager.cpp	game	hud	matched	_ZN11CHudManager13toggleRadioCBEb	CHudManager::toggleRadioCB(bool)
 0x003237e1	0x2e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager8showCashEb	CHudManager::showCash(bool)
 0x00323811	0x10	CHudManager.cpp	game	hud	matched	_ZN11CHudManager18useSpyBGInSpyGaugeEv	CHudManager::useSpyBGInSpyGauge()
 0x00323821	0x10	CHudManager.cpp	game	hud	matched	_ZN11CHudManager23useDriveBadBGInSpyGaugeEv	CHudManager::useDriveBadBGInSpyGauge()
@@ -11149,7 +11149,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00326d28	0x14	AnalogStick.cpp	game	input	pending	_ZThn8_N11AnalogStick19processTouchReleaseEv	non-virtual thunk to AnalogStick::processTouchRelease()
 0x00326d3d	0xd8	AnalogStick.cpp	game	input	pending	_ZN11AnalogStick19processTouchReleaseEv	AnalogStick::processTouchRelease()
 0x00326e15	0x2c	AnalogStick.cpp	game	input	matched	_ZN11EvStickMoveD0Ev	EvStickMove::~EvStickMove()
-0x00326e41	0x1a	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButton7grayOutEb	AnimatedButton::grayOut(bool)
+0x00326e41	0x1a	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButton7grayOutEb	AnimatedButton::grayOut(bool)
 0x00326e5d	0x30	AnimatedButton.cpp	game	core	matched	__tcf_0	__tcf_0
 0x00326e8d	0x20	AnimatedButton.cpp	game	core	pending	_Z10SafeDeleteI10AnimObjectEvRPT_	void SafeDelete<AnimObject>(AnimObject*&)
 0x00326eac	0x14	VirtualButton.cpp	game	ui	pending	_ZThn4_N13VirtualButtonD1Ev	non-virtual thunk to VirtualButton::~VirtualButton()
@@ -11159,8 +11159,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00326f48	0x14	AnimatedButton.cpp	game	ui	pending	_ZThn4_N14AnimatedButtonD1Ev	non-virtual thunk to AnimatedButton::~AnimatedButton()
 0x00326f5d	0x44	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButtonD1Ev	AnimatedButton::~AnimatedButton()
 0x00326fa1	0x84	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButton13setWeaponAnimEi	AnimatedButton::setWeaponAnim(int)
-0x00327025	0xe	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButton7setAnimEi	AnimatedButton::setAnim(int)
-0x00327035	0x10	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButton6updateEd	AnimatedButton::update(double)
+0x00327025	0xe	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButton7setAnimEi	AnimatedButton::setAnim(int)
+0x00327035	0x10	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButton6updateEd	AnimatedButton::update(double)
 0x00327044	0x14	AnimatedButton.cpp	game	ui	pending	_ZThn4_NK14AnimatedButton6draw2dEv	non-virtual thunk to AnimatedButton::draw2d() const
 0x00327059	0xa0	AnimatedButton.cpp	game	ui	pending	_ZNK14AnimatedButton6draw2dEv	AnimatedButton::draw2d() const
 0x003270f9	0xcc	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE	AnimatedButton::AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type)
@@ -11454,9 +11454,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c41d	0x14	ToggleButton.cpp	game	core	matched	_GLOBAL__I__ZN12ToggleButtonC2EP7ASpriteii	_GLOBAL__I__ZN12ToggleButtonC2EP7ASpriteii
 0x0032c430	0x14	VirtualButton.cpp	game	ui	pending	_ZThn4_N13VirtualButtonD0Ev	non-virtual thunk to VirtualButton::~VirtualButton()
 0x0032c445	0x30	VirtualButton.cpp	game	ui	pending	_ZN13VirtualButtonD0Ev	VirtualButton::~VirtualButton()
-0x0032c475	0x5c	VirtualButton.cpp	game	ui	pending	_ZN13VirtualButton6updateEd	VirtualButton::update(double)
-0x0032c4d1	0xa8	VirtualButton.cpp	game	ui	pending	_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb	VirtualButton::VirtualButton(ASprite*, int, EvVButton::ButtonType::Type, bool)
-0x0032c4d1	0xa8	VirtualButton.cpp	game	ui	pending	_ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb	VirtualButton::VirtualButton(ASprite*, int, EvVButton::ButtonType::Type, bool)
+0x0032c475	0x5c	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButton6updateEd	VirtualButton::update(double)
+0x0032c4d1	0xa8	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb	VirtualButton::VirtualButton(ASprite*, int, EvVButton::ButtonType::Type, bool)
+0x0032c4d1	0xa8	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb	VirtualButton::VirtualButton(ASprite*, int, EvVButton::ButtonType::Type, bool)
 0x0032c579	0x6c	VirtualButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032c5e5	0x14	VirtualButton.cpp	game	core	matched	_GLOBAL__I__ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb	_GLOBAL__I__ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb
 0x0032c5f9	0x30	VirtualButton.cpp	game	core	matched	__tcf_2	__tcf_2

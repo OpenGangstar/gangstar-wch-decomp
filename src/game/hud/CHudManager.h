@@ -2,6 +2,7 @@
 #define WCH_HUD_CHUD_MANAGER_H
 
 class AnalogStick;
+class AnimatedButton;
 class HudElement;
 class IHud;
 class SpyGauge;
@@ -37,7 +38,9 @@ public:
     HudElement* enterShopButton;
     unsigned char unknown76[40];
     HudComponent116* component116;
-    unsigned char unknown120[16];
+    unsigned char unknown120[8];
+    AnimatedButton* radioButton;
+    unsigned char unknown132[4];
     HudElement* minimap;
     unsigned char unknown140[12];
     SpyGauge* spyGauge;
@@ -64,6 +67,7 @@ public:
     void walking();
     void driving();
     void sniping();
+    void toggleRadioCB(bool enabled);
 };
 
 #endif

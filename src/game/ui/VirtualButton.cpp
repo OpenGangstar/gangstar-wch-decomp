@@ -8,6 +8,43 @@
  * functions of VirtualButton.cpp here, in the order they appear in the library.
  */
 
+#include "VirtualButton.h"
+#include "../app/Application.h"
+#include "../core/ASprite.h"
+#include "../input/TouchScreenBase.h"
+
+void VirtualButton::update(double)
+{
+    if (flags & 1) {
+        TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+        const irr::core::rect<float>& region = reinterpret_cast<const irr::core::rect<float>&>(touchRegion);
+        const long id = screen->getTouchIDInitiatedInRegion(region);
+        if (id != -1)
+            processTouch(id);
+        else if (isUsed())
+            processTouchRelease();
+        wasInRegionLastFrame = screen->getTouchIDInRegion(region) != -1;
+    }
+}
+
+VirtualButton::VirtualButton(ASprite* image, int firstFrame, EvVButton::ButtonType::Type type, bool hand)
+    : HudElement(image, firstFrame, hand), buttonType(type)
+{
+    const SpriteFrame* entry = sprite->GetFrame(firstFrame);
+    const SpriteFrameModule* part = sprite->GetFModule(entry->firstModule);
+    const SpriteModule* module = sprite->GetModule(part->module);
+    const float x = part->x;
+    const float y = part->y;
+    const float width = module->width;
+    const short height = module->height;
+    const float right = x + width;
+    touchRegion.coordinates[0] = x;
+    touchRegion.coordinates[1] = y;
+    touchRegion.coordinates[2] = right;
+    const float heightFloat = height;
+    touchRegion.coordinates[3] = y + heightFloat;
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

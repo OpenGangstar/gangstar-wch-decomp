@@ -227,7 +227,8 @@
         ".hud_hide",
         ".hud_mode_walking",
         ".hud_mode_driving",
-        ".hud_mode_sniping"
+        ".hud_mode_sniping",
+        ".hud_radio_cb"
     ],
     "retail_got": true,
     "dependencies": [
@@ -264,6 +265,7 @@
         "_ZN11CDrivingHud20toggleWeaponSelectorEb",
         "_ZN11AnalogStick10switchModeENS_4ModeE",
         "_ZN10PlayerTest9GetPlayerEv",
-        "_ZNK6Weapon13getWeaponTypeEv"
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZN14AnimatedButton7setAnimEi"
     ]
 }

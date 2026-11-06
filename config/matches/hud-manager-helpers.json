@@ -59,7 +59,8 @@
         "_ZN11CHudManager4hideEv",
         "_ZN11CHudManager7walkingEv",
         "_ZN11CHudManager7drivingEv",
-        "_ZN11CHudManager7snipingEv"
+        "_ZN11CHudManager7snipingEv",
+        "_ZN11CHudManager13toggleRadioCBEb"
     ],
     "sections": [
         ".helper_0",
@@ -92,7 +93,8 @@
         ".hud_hide",
         ".hud_mode_walking",
         ".hud_mode_driving",
-        ".hud_mode_sniping"
+        ".hud_mode_sniping",
+        ".hud_radio_cb"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -112,6 +114,7 @@
         "_ZN11CDrivingHud20toggleWeaponSelectorEb",
         "_ZN11AnalogStick10switchModeENS_4ModeE",
         "_ZN10PlayerTest9GetPlayerEv",
-        "_ZNK6Weapon13getWeaponTypeEv"
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZN14AnimatedButton7setAnimEi"
     ]
 }

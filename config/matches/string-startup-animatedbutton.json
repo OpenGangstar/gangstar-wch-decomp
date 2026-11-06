@@ -36,7 +36,10 @@
         {
             "name": "_GLOBAL__I__ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE",
             "address": "0x0032721d"
-        }
+        },
+        "_ZN14AnimatedButton7grayOutEb",
+        "_ZN14AnimatedButton7setAnimEi",
+        "_ZN14AnimatedButton6updateEd"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -48,5 +51,10 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN13VirtualButton6updateEd",
+        "_ZN10AnimObject11UpdateFrameEv"
+    ]
 }
