@@ -25,6 +25,12 @@
     "source": "src/game/missions/WantedLevelManager.cpp",
     "linker_script": "config/linker/WantedLevelManagerAiStartup.ld",
     "functions": [
+        "_ZThn4_N18WantedLevelManagerD0Ev",
+        "_ZN18WantedLevelManagerD0Ev",
+        "_ZThn4_N18WantedLevelManagerD1Ev",
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN18WantedLevelManagerD2Ev",
+        "_ZN18WantedLevelManager5cleanEv",
         "_ZN18WantedLevelManager16storeWantedLevelEv",
         "_ZN18WantedLevelManager4lockEi",
         "_ZN18WantedLevelManager6unlockEv",
@@ -44,6 +50,12 @@
         }
     ],
     "sections": [
+        ".wanted_delete_thunk",
+        ".wanted_delete",
+        ".wanted_destroy_thunk",
+        ".wanted_destroy",
+        ".wanted_vtable",
+        ".wanted_clean",
         ".wanted_store",
         ".wanted_lock",
         ".wanted_unlock",
@@ -60,6 +72,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN11Application11GetInstanceEv",
         "_ZN18WantedLevelManager19_processWantedLevelEv"
     ]

@@ -13,8 +13,19 @@ _ZN37retail_wantedlevelmanager_transitions17civ_vehicle_transE = 0x00432e0c;
 _ZN37retail_wantedlevelmanager_transitions17cop_vehicle_transE = 0x00432e9c;
 _ZN37retail_wantedlevelmanager_transitions11guard_transE = 0x00432f50;
 _ZN37retail_wantedlevelmanager_transitions22scripted_vehicle_transE = 0x00432ff8;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .updatable_delete 0x002d62b8 : { *(.gnu.linkonce.t._ZN10IUpdatableD0Ev) }
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .updatable_vtable 0x004a6290 : { *(.gnu.linkonce.d.rel.ro._ZTV10IUpdatable) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+    .wanted_delete_thunk 0x00342d18 : { *ai-startup-wantedlevelmanager.o(.text._ZThn4_N18WantedLevelManagerD0Ev) }
+    .wanted_delete 0x00342d2c : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManagerD0Ev) }
+    .wanted_destroy_thunk 0x00342d6c : { *ai-startup-wantedlevelmanager.o(.text._ZThn4_N18WantedLevelManagerD1Ev) }
+    .wanted_destroy 0x00342d80 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManagerD1Ev .text._ZN18WantedLevelManagerD2Ev) }
+    .wanted_vtable 0x004ad050 : { *ai-startup-wantedlevelmanager.o(.data.rel.ro._ZTV18WantedLevelManager) }
+    .wanted_clean 0x00342ad4 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager5cleanEv) }
     .wanted_store 0x00342a5c : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager16storeWantedLevelEv) }
     .wanted_lock 0x00342a70 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager4lockEi) }
     .wanted_restore 0x00342f4c : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager18restoreWantedLevelEv) }

@@ -11,6 +11,7 @@
 #include "WantedLevelManager.h"
 #include "WantedMeter.h"
 #include "../app/Application.h"
+#include "../core/EventManager.h"
 #include "../hud/CHudManager.h"
 
 void WantedLevelManager::storeWantedLevel()
@@ -57,6 +58,18 @@ void WantedLevelManager::resetWantedLevel()
     application->GetHudManager()->wantedMeter->setWantedLevel(level);
     _processWantedLevel();
     lockedLevel = 0;
+}
+
+void WantedLevelManager::clean()
+{
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->detach(22, this);
+    events->detach(16, this);
+    events->detach(19, this);
+}
+
+WantedLevelManager::~WantedLevelManager()
+{
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.

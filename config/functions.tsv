@@ -12259,16 +12259,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342a81	0x8	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager6unlockEv	WantedLevelManager::unlock()
 0x00342a89	0x30	WantedLevelManager.cpp	game	missions	matched	__tcf_5	__tcf_5
 0x00342ab9	0x1c	WantedLevelManager.cpp	game	missions	pending	__tcf_4	__tcf_4
-0x00342ad5	0x2e	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager5cleanEv	WantedLevelManager::clean()
+0x00342ad5	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager5cleanEv	WantedLevelManager::clean()
 0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC2Ev	WantedLevelManager::WantedLevelManager()
 0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC1Ev	WantedLevelManager::WantedLevelManager()
 0x00342bc1	0x144	WantedLevelManager.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00342d05	0x14	WantedLevelManager.cpp	game	missions	matched	_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE	_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE
-0x00342d18	0x14	WantedLevelManager.cpp	game	missions	pending	_ZThn4_N18WantedLevelManagerD0Ev	non-virtual thunk to WantedLevelManager::~WantedLevelManager()
-0x00342d2d	0x40	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerD0Ev	WantedLevelManager::~WantedLevelManager()
-0x00342d6c	0x14	WantedLevelManager.cpp	game	missions	pending	_ZThn4_N18WantedLevelManagerD1Ev	non-virtual thunk to WantedLevelManager::~WantedLevelManager()
-0x00342d81	0x34	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerD1Ev	WantedLevelManager::~WantedLevelManager()
-0x00342d81	0x34	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerD2Ev	WantedLevelManager::~WantedLevelManager()
+0x00342d18	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManagerD0Ev	non-virtual thunk to WantedLevelManager::~WantedLevelManager()
+0x00342d2d	0x40	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerD0Ev	WantedLevelManager::~WantedLevelManager()
+0x00342d6c	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManagerD1Ev	non-virtual thunk to WantedLevelManager::~WantedLevelManager()
+0x00342d81	0x34	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerD1Ev	WantedLevelManager::~WantedLevelManager()
+0x00342d81	0x34	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerD2Ev	WantedLevelManager::~WantedLevelManager()
 0x00342db5	0x2c	WantedLevelManager.cpp	game	missions	pending	_ZN15EvWantedEscapedD0Ev	EvWantedEscaped::~EvWantedEscaped()
 0x00342de1	0x24	WantedLevelManager.cpp	game	missions	pending	_ZN15EvWantedEscapedD1Ev	EvWantedEscaped::~EvWantedEscaped()
 0x00342e05	0x148	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager19_processWantedLevelEv	WantedLevelManager::_processWantedLevel()
