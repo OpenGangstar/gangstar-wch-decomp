@@ -46,7 +46,8 @@
         "_ZN6Script9setParentEPS_",
         "_ZNK6Script9getParentEv",
         "_ZN6Script12unlockScriptEi",
-        "_ZN6Script12freezeScriptEi"
+        "_ZN6Script12freezeScriptEi",
+        "_ZN6Script8finalizeEv"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -56,12 +57,15 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".script_finalize"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10findScriptEi",
+        "_ZN6Script6rewindEv",
+        "_ZN13ScriptManager8saveGameEv",
         "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE"
     ]
 }

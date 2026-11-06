@@ -57,6 +57,17 @@ void Script::freezeScript(int id)
     ScriptManager::getInstance()->findScript(id)->setState(State1, PlayerTest::AnyContext);
 }
 
+void Script::finalize()
+{
+    rewind();
+    setState(State0, PlayerTest::AnyContext);
+    Script* parentScript = getParent();
+    if (parentScript)
+        parentScript->setState(State2, PlayerTest::AnyContext);
+    else
+        ScriptManager::getInstance()->saveGame();
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

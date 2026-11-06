@@ -12004,7 +12004,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033999d	0x28	Script.cpp	game	scripting	pending	_ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE	Script::setScriptObjectAction(LevelObject*, Script::eScriptAction)
 0x003399c5	0x2c	Script.cpp	game	scripting	pending	_ZN6Script23clearScriptObjectActionEv	Script::clearScriptObjectAction()
 0x003399f1	0x290	Script.cpp	game	scripting	pending	_ZN6Script6rewindEv	Script::rewind()
-0x00339c81	0x34	Script.cpp	game	scripting	pending	_ZN6Script8finalizeEv	Script::finalize()
+0x00339c81	0x34	Script.cpp	game	scripting	matched	_ZN6Script8finalizeEv	Script::finalize()
 0x00339cb9	0x315c	Script.cpp	game	scripting	pending	_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii	Script::executeCommand(Structs::ScriptCommand const*, int, int)
 0x0033ce19	0xfc	Script.cpp	game	scripting	pending	_ZN6Script11nextCommandEi	Script::nextCommand(int)
 0x0033cf15	0x40	Script.cpp	game	scripting	pending	_ZN6Script16executeSubScriptEii	Script::executeSubScript(int, int)
