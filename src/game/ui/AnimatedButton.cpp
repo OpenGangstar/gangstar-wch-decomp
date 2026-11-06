@@ -11,6 +11,7 @@
 #include "AnimatedButton.h"
 #include "../characters/AnimObject.h"
 #include "../core/ASprite.h"
+#include "../core/Color.h"
 
 template<class T>
 void SafeDelete(T*& value)
@@ -34,6 +35,42 @@ void AnimatedButton::grayOut(bool gray)
         flags &= ~32u;
 }
 
+void AnimatedButton::setWeaponAnim(int weapon)
+{
+    switch (weapon) {
+    case 0:
+        animationObject->SetAnim(15);
+        break;
+    case 1:
+        animationObject->SetAnim(16);
+        break;
+    case 2:
+        animationObject->SetAnim(23);
+        break;
+    case 3:
+        animationObject->SetAnim(18);
+        break;
+    case 4:
+        animationObject->SetAnim(21);
+        break;
+    case 5:
+        animationObject->SetAnim(17);
+        break;
+    case 6:
+        animationObject->SetAnim(22);
+        break;
+    case 7:
+        animationObject->SetAnim(19);
+        break;
+    case 8:
+        animationObject->SetAnim(20);
+        break;
+    case 9:
+        animationObject->SetAnim(24);
+        break;
+    }
+}
+
 void AnimatedButton::setAnim(int animation)
 {
     animationObject->SetAnim(animation);
@@ -43,6 +80,45 @@ void AnimatedButton::update(double elapsed)
 {
     VirtualButton::update(elapsed);
     animationObject->UpdateFrame();
+}
+
+static inline void setGrayColor(irr::video::SColor& color)
+{
+    color.b = 255;
+    color.g = 255;
+    color.r = 255;
+    color.a = 160;
+}
+
+static inline void setBlinkColor(irr::video::SColor& color)
+{
+    color.a = 255;
+    color.b = 255;
+    color.g = 255;
+    color.r = 51;
+}
+
+void AnimatedButton::draw2d() const
+{
+    if (!isVisible())
+        return;
+
+    irr::video::SColor colors[4];
+    if (flags & 32) {
+        setGrayColor(colors[0]);
+        setGrayColor(colors[1]);
+        setGrayColor(colors[2]);
+        setGrayColor(colors[3]);
+        ASprite::s_global_color = colors;
+    } else if ((flags & 16) && (unknown52 & 256)) {
+        setBlinkColor(colors[0]);
+        setBlinkColor(colors[1]);
+        setBlinkColor(colors[2]);
+        setBlinkColor(colors[3]);
+        ASprite::s_global_color = colors;
+    }
+    animationObject->Draw();
+    ASprite::s_global_color = 0;
 }
 
 AnimatedButton::AnimatedButton(ASprite* image, int animation, EvVButton::ButtonType::Type type)

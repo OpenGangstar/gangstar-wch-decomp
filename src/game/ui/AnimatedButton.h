@@ -12,6 +12,7 @@ public:
     virtual void update(double elapsed);
     virtual void draw2d() const;
     void setAnim(int animation);
+    void setWeaponAnim(int weapon);
     void grayOut(bool gray);
 
 private:
