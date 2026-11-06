@@ -276,7 +276,9 @@
         ".script_reader_ActorRunPath",
         ".script_reader_ActorGetIn",
         ".script_reader_ActorFollow",
-        ".script_reader_ActorAttack"
+        ".script_reader_ActorAttack",
+        ".script_reader_WaitCheckpointCar",
+        ".script_reader_SetUsUpTheBomb"
     ],
     "retail_got": true,
     "dependencies": [

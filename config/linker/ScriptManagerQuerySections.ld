@@ -85,4 +85,6 @@ SECTIONS
     .script_reader_ActorGetIn 0x0033dd68 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10ActorGetIn4ReadER10DataStream) }
     .script_reader_ActorFollow 0x0033dd8c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorFollow4ReadER10DataStream) }
     .script_reader_ActorAttack 0x0033ddb0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorAttack4ReadER10DataStream) }
+    .script_reader_WaitCheckpointCar 0x0033d54c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs17WaitCheckpointCar4ReadER10DataStream) }
+    .script_reader_SetUsUpTheBomb 0x0033dbf8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs14SetUsUpTheBomb4ReadER10DataStream) }
 }

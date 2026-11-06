@@ -157,6 +157,17 @@ struct WaitCheckpoint {
     void Read(DataStream& stream) __attribute__((used));
 };
 
+struct WaitCheckpointCar : WaitCheckpoint {
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitCheckpointCar::Read(DataStream& stream)
+{
+    WaitCheckpoint::Read(stream);
+    argument2 = stream.ReadAndAllocateString();
+}
+
 inline void WaitCheckpoint::Read(DataStream& stream)
 {
     opcode = stream.ReadInt();
@@ -564,6 +575,17 @@ struct BeQuick {
     int argument;
     void Read(DataStream& stream) __attribute__((used));
 };
+
+struct SetUsUpTheBomb : BeQuick {
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetUsUpTheBomb::Read(DataStream& stream)
+{
+    BeQuick::Read(stream);
+    argument2 = stream.ReadAndAllocateString();
+}
 
 inline void BeQuick::Read(DataStream& stream)
 {
