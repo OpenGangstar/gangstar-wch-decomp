@@ -13,8 +13,19 @@ _ZN28retail_aimanager_transitions17civ_vehicle_transE = 0x0042fe68;
 _ZN28retail_aimanager_transitions17cop_vehicle_transE = 0x0042fef8;
 _ZN28retail_aimanager_transitions11guard_transE = 0x0042ffac;
 _ZN28retail_aimanager_transitions22scripted_vehicle_transE = 0x00430054;
+__cxa_pure_virtual = 0;
+INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .wanted_changed_delete 0x003405cc : { *(.gnu.linkonce.t._ZN20EvWantedLevelChangedD0Ev) }
+    .wanted_changed_destroy 0x003402e0 : { *(.gnu.linkonce.t._ZN20EvWantedLevelChangedD1Ev) }
+    .wanted_changed_vtable 0x004acf80 : { *(.gnu.linkonce.d.rel.ro._ZTV20EvWantedLevelChanged) }
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+    .ai_manager_construct 0x00340128 : { *ai-startup-aimanager.o(.text._ZN9AIManagerC1Ev .text._ZN9AIManagerC2Ev) }
+    .ai_manager_delete 0x003405f8 : { *ai-startup-aimanager.o(.text._ZN9AIManagerD0Ev) }
+    .ai_manager_destroy 0x00340638 : { *ai-startup-aimanager.o(.text._ZN9AIManagerD1Ev .text._ZN9AIManagerD2Ev) }
+    .ai_manager_vtable 0x004acf68 : { *ai-startup-aimanager.o(.data.rel.ro._ZTV9AIManager) }
     .ai_startup_function_0 0x003400b8 : { *ai-startup-aimanager.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00340188 : { *ai-startup-aimanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003402cc : { *ai-startup-aimanager.o(.text._GLOBAL__I__ZN9AIManagerC2Ev) }
