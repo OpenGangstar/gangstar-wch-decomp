@@ -9,4 +9,9 @@ SECTIONS
     .hud_showCash 0x003237e0 : { *hud-manager-helpers.o(.text._ZN11CHudManager8showCashEb) }
     .hud_showSpyGauge 0x00323840 : { *hud-manager-helpers.o(.text._ZN11CHudManager12showSpyGaugeEb) }
     .hud_weapon_selector 0x003236e8 : { *hud-manager-helpers.o(.text._ZN11CHudManager20toggleWeaponSelectorEb) }
+    .hud_show 0x003235b0 : { *hud-manager-helpers.o(.text._ZN11CHudManager4showEv) }
+    .hud_visible 0x003235d4 : { *hud-manager-helpers.o(.text._ZNK11CHudManager9isVisibleEv) }
+    .hud_minimap_visible 0x00323620 : { *hud-manager-helpers.o(.text._ZN11CHudManager16isMinimapVisibleEv) }
+    .hud_weapon_visible 0x00323634 : { *hud-manager-helpers.o(.text._ZNK11CHudManager15isWeaponVisibleEv) }
+    .hud_hide 0x00323d68 : { *hud-manager-helpers.o(.text._ZN11CHudManager4hideEv) }
 }

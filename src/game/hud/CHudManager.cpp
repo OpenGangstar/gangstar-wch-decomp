@@ -13,11 +13,25 @@
 #include "CWalkingHud.h"
 #include "SpyGauge.h"
 
+extern bool bIsInCutscene;
+
 void CHudManager::init()
 {
     unknown204 = 0;
     activeHud = initialHud;
 }
+
+void CHudManager::show()
+{
+    bIsInCutscene = false;
+    activeHud->show();
+}
+
+bool CHudManager::isVisible() const { return activeHud->isVisible(); }
+
+bool CHudManager::isMinimapVisible() { return minimap->isVisible(); }
+
+bool CHudManager::isWeaponVisible() const { return weaponSelector->isVisible(); }
 
 void CHudManager::lock() { locked = true; }
 
@@ -80,6 +94,13 @@ void CHudManager::nearCar()
 {
     if (activeHud->isWalkingHud())
         static_cast<CWalkingHud*>(activeHud)->nearCar();
+}
+
+void CHudManager::hide()
+{
+    for (unsigned int index = 0; index < static_cast<unsigned int>(resetElementsEnd - resetElementsBegin); ++index)
+        resetElementsBegin[index]->reset();
+    activeHud->hide();
 }
 
 // Recovered module startup family; storage remains local to this TU.

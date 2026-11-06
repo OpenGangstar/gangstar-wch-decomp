@@ -11005,14 +11005,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032344d	0x144	CDrivingHud.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00323591	0x14	CDrivingHud.cpp	game	hud	matched	_GLOBAL__I__ZN11CDrivingHudC2EP11CHudManager	_GLOBAL__I__ZN11CDrivingHudC2EP11CHudManager
 0x003235a5	0xc	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4initEv	CHudManager::init()
-0x003235b1	0x24	CHudManager.cpp	game	hud	pending	_ZN11CHudManager4showEv	CHudManager::show()
-0x003235d5	0x10	CHudManager.cpp	game	hud	pending	_ZNK11CHudManager9isVisibleEv	CHudManager::isVisible() const
+0x003235b1	0x24	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4showEv	CHudManager::show()
+0x003235d5	0x10	CHudManager.cpp	game	hud	matched	_ZNK11CHudManager9isVisibleEv	CHudManager::isVisible() const
 0x003235e5	0x8	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4lockEv	CHudManager::lock()
 0x003235ed	0x8	CHudManager.cpp	game	hud	matched	_ZN11CHudManager6unlockEv	CHudManager::unlock()
 0x003235f5	0x6	CHudManager.cpp	game	hud	matched	_ZNK11CHudManager8isLockedEv	CHudManager::isLocked() const
 0x003235fd	0x22	CHudManager.cpp	game	hud	pending	_ZN11CHudManager11retroEffectEb	CHudManager::retroEffect(bool)
-0x00323621	0x12	CHudManager.cpp	game	hud	pending	_ZN11CHudManager16isMinimapVisibleEv	CHudManager::isMinimapVisible()
-0x00323635	0x12	CHudManager.cpp	game	hud	pending	_ZNK11CHudManager15isWeaponVisibleEv	CHudManager::isWeaponVisible() const
+0x00323621	0x12	CHudManager.cpp	game	hud	matched	_ZN11CHudManager16isMinimapVisibleEv	CHudManager::isMinimapVisible()
+0x00323635	0x12	CHudManager.cpp	game	hud	matched	_ZNK11CHudManager15isWeaponVisibleEv	CHudManager::isWeaponVisible() const
 0x00323649	0x5c	CHudManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE4swapERS1_	std::list<long, std::allocator<long> >::swap(std::list<long, std::allocator<long> >&)
 0x003236a5	0x12	CHudManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP10HudElementSaIS2_EED1Ev	stlp_priv::_Vector_base<HudElement*, std::allocator<HudElement*> >::~_Vector_base()
 0x003236b9	0x30	CHudManager.cpp	game	hud	matched	__tcf_3	__tcf_3
@@ -11044,7 +11044,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00323be9	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager21regDrawableComponentsEv	CHudManager::regDrawableComponents()
 0x00323cdd	0x3a	CHudManager.cpp	game	hud	pending	_ZN11CHudManager13limitToWeaponEi	CHudManager::limitToWeapon(int)
 0x00323d19	0x4e	CHudManager.cpp	game	hud	pending	_ZN11CHudManager12switchWeaponEi	CHudManager::switchWeapon(int)
-0x00323d69	0x40	CHudManager.cpp	game	hud	pending	_ZN11CHudManager4hideEv	CHudManager::hide()
+0x00323d69	0x40	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4hideEv	CHudManager::hide()
 0x00323da9	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager23unregDrawableComponentsEv	CHudManager::unregDrawableComponents()
 0x00323e9d	0x28	CHudManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE6spliceEN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEERS1_S6_	std::list<long, std::allocator<long> >::splice(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::list<long, std::allocator<long> >&, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >)
 0x00323ec5	0x12	CHudManager.cpp	stlport	-	matched	_ZNSt6vectorIP10HudElementSaIS1_EE8_M_clearEv	std::vector<HudElement*, std::allocator<HudElement*> >::_M_clear()

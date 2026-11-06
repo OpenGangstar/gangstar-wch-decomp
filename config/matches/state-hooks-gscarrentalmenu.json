@@ -152,7 +152,12 @@
         ".walking_notNearShop",
         ".hud_showCash",
         ".hud_showSpyGauge",
-        ".hud_weapon_selector"
+        ".hud_weapon_selector",
+        ".hud_show",
+        ".hud_visible",
+        ".hud_minimap_visible",
+        ".hud_weapon_visible",
+        ".hud_hide"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -161,14 +166,12 @@
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZN13ScriptManager5pauseEv",
-        "_ZN11CHudManager4hideEv",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager9hideTextsEv",
         "_ZN11MenuManager4pushEPKcb",
         "_ZN13CameraManager11getInstanceEv",
         "_ZN13CameraManager20setTouchScreenInputsEb",
         "_ZN11MenuManager9showTextsEv",
-        "_ZN11CHudManager4showEv",
         "_ZN8SpyGauge8useSpyBGEv",
         "_ZN8SpyGauge13useDriveBadBGEv",
         "_ZN8SpyGauge14useDriveWellBGEv",
