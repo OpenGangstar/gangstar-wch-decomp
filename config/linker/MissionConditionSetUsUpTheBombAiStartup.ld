@@ -15,6 +15,12 @@ _ZN49retail_missionconditionsetusupthebomb_transitions11guard_transE = 0x0042cfe
 _ZN49retail_missionconditionsetusupthebomb_transitions22scripted_vehicle_transE = 0x0042d08c;
 SECTIONS
 {
+    .mission_bomb_00337b58 0x00337b58 : { *ai-startup-missionconditionsetusupthebomb.o(.text._ZN30MissionConditionSetUsUpTheBomb4drawEv) }
+    .mission_bomb_00337b64 0x00337b64 : { *ai-startup-missionconditionsetusupthebomb.o(.text._ZN30MissionConditionSetUsUpTheBomb8evaluateEi) }
+    .mission_bomb_00337b80 0x00337b80 : { *ai-startup-missionconditionsetusupthebomb.o(.text._ZN30MissionConditionSetUsUpTheBombD0Ev) }
+    .mission_bomb_00337ba8 0x00337ba8 : { *ai-startup-missionconditionsetusupthebomb.o(.text._ZN30MissionConditionSetUsUpTheBombD1Ev .text._ZN30MissionConditionSetUsUpTheBombD2Ev) }
+    .mission_bomb_00337bc8 0x00337bc8 : { *ai-startup-missionconditionsetusupthebomb.o(.text._ZN30MissionConditionSetUsUpTheBombC2EiP7Vehicle .text._ZN30MissionConditionSetUsUpTheBombC1EiP7Vehicle) }
+    .mission_bomb_vtable 0x004acee0 : { *ai-startup-missionconditionsetusupthebomb.o(.data.rel.ro._ZTV30MissionConditionSetUsUpTheBomb .gnu.linkonce.d.rel.ro._ZTV30MissionConditionSetUsUpTheBomb) }
     .ai_startup_function_0 0x00337b28 : { *ai-startup-missionconditionsetusupthebomb.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00337bec : { *ai-startup-missionconditionsetusupthebomb.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00337d30 : { *ai-startup-missionconditionsetusupthebomb.o(.text._GLOBAL__I__ZN30MissionConditionSetUsUpTheBombC2EiP7Vehicle) }

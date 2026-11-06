@@ -8,6 +8,7 @@ class Path;
 // remain opaque pending recovery of the constructor and vehicle methods.
 class Vehicle : public LevelObject {
 public:
+    void explode();
     Vehicle(int type);
     void Load(const Structs::Car&);
     void initializeDriver();

@@ -36,7 +36,14 @@
         {
             "name": "_GLOBAL__I__ZN30MissionConditionSetUsUpTheBombC2EiP7Vehicle",
             "address": "0x00337d31"
-        }
+        },
+        "_ZN30MissionConditionSetUsUpTheBomb4drawEv",
+        "_ZN30MissionConditionSetUsUpTheBomb8evaluateEi",
+        "_ZN30MissionConditionSetUsUpTheBombD0Ev",
+        "_ZN30MissionConditionSetUsUpTheBombD1Ev",
+        "_ZN30MissionConditionSetUsUpTheBombD2Ev",
+        "_ZN30MissionConditionSetUsUpTheBombC2EiP7Vehicle",
+        "_ZN30MissionConditionSetUsUpTheBombC1EiP7Vehicle"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +53,21 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".mission_bomb_00337b58",
+        ".mission_bomb_00337b64",
+        ".mission_bomb_00337b80",
+        ".mission_bomb_00337ba8",
+        ".mission_bomb_00337bc8",
+        ".mission_bomb_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN23MissionConditionBeQuick4drawEv",
+        "_ZN23MissionConditionBeQuick8evaluateEi",
+        "_ZN23MissionConditionBeQuickC1Ei",
+        "_ZN23MissionConditionBeQuickD1Ev",
+        "_ZN7Vehicle7explodeEv",
+        "_ZNK17IMissionCondition5causeEv"
+    ]
 }

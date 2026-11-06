@@ -8,18 +8,7 @@
  * functions of MissionConditionBeQuick.cpp here, in the order they appear in the library.
  */
 
-#include "IMissionCondition.h"
-
-class MissionConditionBeQuick : public IMissionCondition {
-public:
-    explicit MissionConditionBeQuick(int duration);
-    virtual ~MissionConditionBeQuick();
-    virtual bool evaluate(int elapsed);
-    virtual void draw();
-
-protected:
-    int duration;
-};
+#include "MissionConditionBeQuick.h"
 
 inline __attribute__((used)) int IMissionCondition::cause() const
 {
