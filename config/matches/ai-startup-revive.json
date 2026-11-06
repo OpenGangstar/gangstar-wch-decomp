@@ -36,7 +36,11 @@
         {
             "name": "_GLOBAL__I__ZN6ReviveC2Eb",
             "address": "0x00339091"
-        }
+        },
+        "_ZN6Revive19finishCashLostAnimsEv",
+        "_ZN6Revive6draw2dEv",
+        "_ZN6ReviveD1Ev",
+        "_ZN6ReviveD2Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +50,14 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".revive_finish",
+        ".revive_draw",
+        ".revive_destroy"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10AnimObject4DrawEv",
+        "_ZN10AnimObjectD1Ev"
+    ]
 }

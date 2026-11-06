@@ -15,6 +15,9 @@ _ZN25retail_revive_transitions11guard_transE = 0x0042e73c;
 _ZN25retail_revive_transitions22scripted_vehicle_transE = 0x0042e7e4;
 SECTIONS
 {
+    .revive_finish 0x00338b54 : { *ai-startup-revive.o(.text._ZN6Revive19finishCashLostAnimsEv) }
+    .revive_draw 0x00338b8c : { *ai-startup-revive.o(.text._ZN6Revive6draw2dEv) }
+    .revive_destroy 0x00338be8 : { *ai-startup-revive.o(.text._ZN6ReviveD1Ev .text._ZN6ReviveD2Ev) }
     .ai_startup_function_0 0x00338b5c : { *ai-startup-revive.o(.text.__tcf_5) }
     .ai_startup_function_1 0x00338f4c : { *ai-startup-revive.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00339090 : { *ai-startup-revive.o(.text._GLOBAL__I__ZN6ReviveC2Eb) }
