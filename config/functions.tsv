@@ -11956,13 +11956,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338891	0x16c	Race.cpp	game	meta	matched	_ZN4Race8evaluateEv	Race::evaluate()
 0x003389fd	0x144	Race.cpp	game	meta	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00338b41	0x14	Race.cpp	game	meta	matched	_GLOBAL__I__ZN4RaceC2Ev	_GLOBAL__I__ZN4RaceC2Ev
-0x00338b55	0x6	Revive.cpp	game	missions	pending	_ZN6Revive19finishCashLostAnimsEv	Revive::finishCashLostAnims()
+0x00338b55	0x6	Revive.cpp	game	missions	matched	_ZN6Revive19finishCashLostAnimsEv	Revive::finishCashLostAnims()
 0x00338b5d	0x30	Revive.cpp	game	core	matched	__tcf_5	__tcf_5
-0x00338b8d	0x20	Revive.cpp	game	missions	pending	_ZN6Revive6draw2dEv	Revive::draw2d()
+0x00338b8d	0x20	Revive.cpp	game	missions	matched	_ZN6Revive6draw2dEv	Revive::draw2d()
 0x00338bad	0x1c	Revive.cpp	game	core	pending	__tcf_4	__tcf_4
 0x00338bc9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI12GSBustedMenuEEPT_v	GSBustedMenu* StateMachine::pushState<GSBustedMenu>()
-0x00338be9	0x3c	Revive.cpp	game	missions	pending	_ZN6ReviveD2Ev	Revive::~Revive()
-0x00338be9	0x3c	Revive.cpp	game	missions	pending	_ZN6ReviveD1Ev	Revive::~Revive()
+0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD2Ev	Revive::~Revive()
+0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD1Ev	Revive::~Revive()
 0x00338c25	0x1c	Revive.cpp	game	core	pending	__tcf_3	__tcf_3
 0x00338c41	0x238	Revive.cpp	game	missions	pending	_ZN6Revive6updateEi	Revive::update(int)
 0x00338e79	0xd4	Revive.cpp	game	missions	pending	_ZN6ReviveC2Eb	Revive::Revive(bool)

@@ -8,6 +8,24 @@
  * functions of Revive.cpp here, in the order they appear in the library.
  */
 
+#include "Revive.h"
+#include "../characters/AnimObject.h"
+#include "../hud/HudElement.h"
+
+void Revive::finishCashLostAnims()
+{
+    cashAnimationTime = 0;
+}
+
+void Revive::draw2d()
+{
+    if (__builtin_expect(state != 3, 0))
+        return;
+    cashLost->Draw();
+    cashRemaining->Draw();
+    cash->draw2d();
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -77,4 +95,11 @@ static void _GLOBAL__I__ZN6ReviveC2Eb()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+Revive::~Revive()
+{
+    delete cashLost;
+    delete cashRemaining;
+    delete cash;
 }
