@@ -24,8 +24,16 @@
 // The inline material constructor is a semantic SDK reconstruction; its weak
 // out-of-line copy is not byte-matched or credited as game code.
 void operator delete(void*) throw();
-namespace irr { namespace video {
-class ITexture : public virtual IReferenceCounted {};
+namespace irr {
+namespace core { template<class T> class dimension2d; }
+namespace video {
+class ITexture : public virtual IReferenceCounted {
+public:
+    virtual void* lock(bool readOnly) = 0;
+    virtual void unlock() = 0;
+    virtual const core::dimension2d<int>& getOriginalSize() const = 0;
+    virtual const core::dimension2d<int>& getSize() const = 0;
+};
 struct SMaterialLayer {
     SMaterialLayer() : matrix(0) {}
     ITexture* texture;

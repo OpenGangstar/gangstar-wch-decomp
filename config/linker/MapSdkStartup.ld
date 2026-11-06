@@ -3,8 +3,13 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-map/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fmul = 0x001c4724;
 SECTIONS
 {
+    .map_scaled_size 0x002e6564 : { *sdk-startup-map.o(.text._ZNK3Map13getScaledSizeERN3irr4core11dimension2dIiEE) }
     .map_clean 0x00328b10 : { *sdk-startup-map.o(.text._ZN3Map5cleanEv) }
     .map_construct 0x00328c14 : { *sdk-startup-map.o(.text._ZN3MapC1Ev .text._ZN3MapC2Ev) }
     .map_destroy 0x00328b34 : { *sdk-startup-map.o(.text._ZN3MapD1Ev .text._ZN3MapD2Ev) }

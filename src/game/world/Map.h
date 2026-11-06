@@ -1,13 +1,17 @@
 #ifndef WCH_WORLD_MAP_H
 #define WCH_WORLD_MAP_H
 
-namespace irr { namespace video { class ITexture; } }
+namespace irr {
+namespace core { template<class T> class dimension2d; }
+namespace video { class ITexture; }
+}
 
 class Map {
 public:
     static Map* getInstance() __attribute__((weak, used));
 
     void clean();
+    void getScaledSize(irr::core::dimension2d<int>& size) const __attribute__((weak));
 
 private:
     enum eMapType { DefaultMap = 1 };

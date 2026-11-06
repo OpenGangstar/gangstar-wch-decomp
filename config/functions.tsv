@@ -9541,7 +9541,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e6419	0x46	MenuManager.cpp	game	ui	pending	_ZN11MenuManager5popToEPKcbb	MenuManager::popTo(char const*, bool, bool)
 0x002e6461	0x5c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager6popAllEb	MenuManager::popAll(bool)
 0x002e64bd	0xa8	MenuManager.cpp	game	ui	pending	_ZN11MenuManager4pushEPKcb	MenuManager::push(char const*, bool)
-0x002e6565	0x6c	Map.cpp	game	world	pending	_ZNK3Map13getScaledSizeERN3irr4core11dimension2dIiEE	Map::getScaledSize(irr::core::dimension2d<int>&) const
+0x002e6565	0x6c	Map.cpp	game	world	matched	_ZNK3Map13getScaledSizeERN3irr4core11dimension2dIiEE	Map::getScaledSize(irr::core::dimension2d<int>&) const
 0x002e65d1	0x4	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager10getMapModeEv	MenuManager::getMapMode() const
 0x002e65d5	0x22	MenuManager_Map.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP7Point2DIsESaIS3_EE5clearEv	stlp_priv::_List_base<Point2D<short>*, std::allocator<Point2D<short>*> >::clear()
 0x002e65f9	0x30	MenuManager_Map.cpp	game	ui	matched	__tcf_6	__tcf_6
