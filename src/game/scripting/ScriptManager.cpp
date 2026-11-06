@@ -10,7 +10,9 @@
 
 #include "ScriptManager.h"
 #include "../hud/HudElement.h"
-#include "../persistence/DataStream.h"
+#include "../characters/AnimObject.h"
+#include "../missions/Mission.h"
+#include "../missions/Revive.h"
 #include "../persistence/DataStream.h"
 
 void ScriptManager::resume() { paused = false; }
@@ -63,6 +65,71 @@ bool ScriptManager::isSkipButtonVisible() const
 int ScriptManager::getFailureCause()
 {
     return s_failure;
+}
+
+void ScriptManager::finishReviveAnims()
+{
+    if (revive)
+        revive->finishCashLostAnims();
+}
+
+void ScriptManager::missionIdle()
+{
+    if (mission)
+        mission->idle();
+}
+
+void ScriptManager::drawCinematicBars() const
+{
+    cinematicBars->Draw();
+}
+
+void ScriptManager::missionResumeFadeOut()
+{
+    if (mission)
+        mission->resumeFadeOut();
+}
+
+void ScriptManager::missionSkipFadeOut()
+{
+    if (mission)
+        mission->skipFadeOut();
+}
+
+void ScriptManager::missionSetFailureCount(int count)
+{
+    if (mission)
+        mission->setFailureCount(count);
+}
+
+void ScriptManager::missionClearConditions()
+{
+    if (mission)
+        mission->clearConditions();
+}
+
+void ScriptManager::missionFail()
+{
+    if (mission)
+        mission->fail();
+}
+
+void ScriptManager::message(int id)
+{
+    if (mission)
+        mission->message(id);
+}
+
+void ScriptManager::missionObjective(int id, bool silent)
+{
+    if (mission)
+        mission->objective(id, silent);
+}
+
+void ScriptManager::missionStart(int id, int duration)
+{
+    if (mission)
+        mission->start(id, duration);
 }
 
 namespace Structs {

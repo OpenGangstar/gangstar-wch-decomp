@@ -1,6 +1,9 @@
 #ifndef WCH_SCRIPTING_SCRIPT_MANAGER_H
 #define WCH_SCRIPTING_SCRIPT_MANAGER_H
 
+class AnimObject;
+class Mission;
+class Revive;
 class Script;
 class LevelObject;
 class HudElement;
@@ -29,9 +32,11 @@ public:
     unsigned int commandCursor;
     unsigned char unknown24[8];
     void* cinematicsHudSprite;
-    unsigned char unknown36[24];
-    void* mission;
-    unsigned char unknown64[4];
+    unsigned char unknown36[8];
+    AnimObject* cinematicBars;
+    unsigned char unknown48[12];
+    Mission* mission;
+    Revive* revive;
     void* race;
     HudElement* skipButton;
     bool paused;
@@ -45,6 +50,17 @@ public:
     bool isInCinematic() const;
     bool isSkipButtonVisible() const;
     int getFailureCause();
+    void finishReviveAnims();
+    void missionIdle();
+    void drawCinematicBars() const;
+    void missionResumeFadeOut();
+    void missionSkipFadeOut();
+    void missionSetFailureCount(int count);
+    void missionClearConditions();
+    void missionFail();
+    void message(int id);
+    void missionObjective(int id, bool silent);
+    void missionStart(int id, int duration);
     static int s_failure;
 };
 
