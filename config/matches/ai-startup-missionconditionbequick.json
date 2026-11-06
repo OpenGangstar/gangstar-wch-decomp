@@ -36,7 +36,13 @@
         {
             "name": "_GLOBAL__I__ZN23MissionConditionBeQuickC2Ei",
             "address": "0x00336d31"
-        }
+        },
+        "_ZNK17IMissionCondition5causeEv",
+        "_ZN17IMissionConditionD0Ev",
+        "_ZN17IMissionConditionD1Ev",
+        "_ZN23MissionConditionBeQuickC1Ei",
+        "_ZN23MissionConditionBeQuickC2Ei",
+        "_ZN23MissionConditionBeQuick4drawEv"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +52,13 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".mission_condition_00336a6c",
+        ".mission_condition_00336a74",
+        ".mission_condition_00336a8c",
+        ".mission_condition_00336ac0",
+        ".mission_condition_00336ae0",
+        ".mission_condition_base_vtable"
     ],
     "retail_got": true
 }

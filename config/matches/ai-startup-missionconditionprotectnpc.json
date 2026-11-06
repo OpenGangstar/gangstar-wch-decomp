@@ -36,7 +36,12 @@
         {
             "name": "_GLOBAL__I__ZN26MissionConditionProtectNPCC2EP3NPCi",
             "address": "0x00337ac5"
-        }
+        },
+        "_ZN26MissionConditionProtectNPCC1EP3NPCi",
+        "_ZN26MissionConditionProtectNPCC2EP3NPCi",
+        "_ZN26MissionConditionProtectNPC8evaluateEi",
+        "_ZN26MissionConditionProtectNPC4drawEv",
+        "_ZNK26MissionConditionProtectNPC5causeEv"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +51,11 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".mission_condition_00337914",
+        ".mission_condition_00337930",
+        ".mission_condition_00337948",
+        ".mission_condition_0033794c"
     ],
     "retail_got": true
 }

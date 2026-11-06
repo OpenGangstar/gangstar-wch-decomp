@@ -13,8 +13,15 @@ _ZN42retail_missionconditionbequick_transitions17civ_vehicle_transE = 0x0042b0c0
 _ZN42retail_missionconditionbequick_transitions17cop_vehicle_transE = 0x0042b150;
 _ZN42retail_missionconditionbequick_transitions11guard_transE = 0x0042b204;
 _ZN42retail_missionconditionbequick_transitions22scripted_vehicle_transE = 0x0042b2ac;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .mission_condition_00336a6c 0x00336a6c : { *ai-startup-missionconditionbequick.o(.gnu.linkonce.t._ZNK17IMissionCondition5causeEv) }
+    .mission_condition_00336a74 0x00336a74 : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuickC1Ei .text._ZN23MissionConditionBeQuickC2Ei) }
+    .mission_condition_00336a8c 0x00336a8c : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuick4drawEv) }
+    .mission_condition_00336ac0 0x00336ac0 : { *ai-startup-missionconditionbequick.o(.gnu.linkonce.t._ZN17IMissionConditionD0Ev) }
+    .mission_condition_00336ae0 0x00336ae0 : { *ai-startup-missionconditionbequick.o(.gnu.linkonce.t._ZN17IMissionConditionD1Ev) }
+    .mission_condition_base_vtable 0x004ace40 : { *ai-startup-missionconditionbequick.o(.data.rel.ro._ZTV17IMissionCondition .gnu.linkonce.d.rel.ro._ZTV17IMissionCondition .rodata._ZTV17IMissionCondition) }
     .ai_startup_function_0 0x00336a90 : { *ai-startup-missionconditionbequick.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00336bec : { *ai-startup-missionconditionbequick.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00336d30 : { *ai-startup-missionconditionbequick.o(.text._GLOBAL__I__ZN23MissionConditionBeQuickC2Ei) }
