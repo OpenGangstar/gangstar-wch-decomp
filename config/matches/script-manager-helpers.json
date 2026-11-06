@@ -41,7 +41,15 @@
         {
             "name": "_GLOBAL__I__ZN13ScriptManager12s_playerTestE",
             "address": "0x0033fb1d"
-        }
+        },
+        "_ZN13ScriptManager12taggedKilledEv",
+        "_ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE",
+        "_ZN13ScriptManager9addScriptEP6Script",
+        "_ZNK13ScriptManager10findScriptEi",
+        "_ZNK13ScriptManager26areBlockingCommandsSkippedEv",
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZNK13ScriptManager19isSkipButtonVisibleEv",
+        "_ZN13ScriptManager15getFailureCauseEv"
     ],
     "sections": [
         ".helper_0",
@@ -56,7 +64,15 @@
             "name": ".got",
             "offset": 864
         },
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".script_manager_tagged",
+        ".script_manager_print",
+        ".script_manager_add",
+        ".script_manager_find",
+        ".script_manager_blocking",
+        ".script_manager_cinematic",
+        ".script_manager_skip_visible",
+        ".script_manager_failure"
     ],
     "retail_got": true
 }

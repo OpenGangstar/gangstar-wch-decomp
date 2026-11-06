@@ -52,6 +52,7 @@ _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
 INCLUDE config/linker/ApplicationEventSections.ld
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
+INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
     .hook_0 0x002e1a5c : { *state-hooks-gsfade.o(.text._ZN6GSFade4drawEPK12StateMachine .gnu.linkonce.t._ZN6GSFade4drawEPK12StateMachine) }

@@ -232,7 +232,15 @@
         ".hud_mode_walking",
         ".hud_mode_driving",
         ".hud_mode_sniping",
-        ".hud_radio_cb"
+        ".hud_radio_cb",
+        ".script_manager_tagged",
+        ".script_manager_print",
+        ".script_manager_add",
+        ".script_manager_find",
+        ".script_manager_blocking",
+        ".script_manager_cinematic",
+        ".script_manager_skip_visible",
+        ".script_manager_failure"
     ],
     "retail_got": true,
     "dependencies": [

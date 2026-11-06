@@ -3,6 +3,8 @@
 
 class Script;
 class LevelObject;
+class HudElement;
+namespace Structs { struct ScriptCommand; }
 
 // Partial storage/call interface observed by SaveGame and Item.
 class ScriptManager {
@@ -19,9 +21,11 @@ public:
     void* getMission() const;
     void* getCinematicsHudSprite() const;
     void* getRace() const;
-    unsigned char unknown0[8];
+    Script** scripts;
+    int scriptCapacity;
     int scriptCount;
-    unsigned char unknown12[8];
+    unsigned char unknown12[4];
+    int cinematicState;
     unsigned int commandCursor;
     unsigned char unknown24[8];
     void* cinematicsHudSprite;
@@ -29,8 +33,19 @@ public:
     void* mission;
     unsigned char unknown64[4];
     void* race;
-    unsigned char unknown72[4];
+    HudElement* skipButton;
     bool paused;
+    unsigned char unknown77[19];
+    int taggedCount;
+
+    void taggedKilled();
+    void printCommand(const Structs::ScriptCommand& command);
+    void addScript(Script* script);
+    bool areBlockingCommandsSkipped() const;
+    bool isInCinematic() const;
+    bool isSkipButtonVisible() const;
+    int getFailureCause();
+    static int s_failure;
 };
 
 #endif

@@ -48,6 +48,7 @@ _ZN30retail_menumanager_transitions11guard_transE = 0x00419724;
 _ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
+INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
     .state_ctor 0x002e0c6c : { *state-hooks-gsblockingtutorial.o(.text._ZN18GSBlockingTutorialC1Ev) }

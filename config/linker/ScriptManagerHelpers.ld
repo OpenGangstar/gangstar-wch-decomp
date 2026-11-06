@@ -13,6 +13,7 @@ _ZN32retail_scriptmanager_transitions11guard_transE = 0x0042f938;
 _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
     .helper_0 0x0033cffc : { *script-manager-helpers.o(.text._ZN13ScriptManager6resumeEv .gnu.linkonce.t._ZN13ScriptManager6resumeEv) }
