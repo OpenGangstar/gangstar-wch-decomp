@@ -12,13 +12,7 @@
 #include "../characters/AnimObject.h"
 #include "../core/ASprite.h"
 #include "../core/Color.h"
-
-template<class T>
-void SafeDelete(T*& value)
-{
-    delete value;
-    value = 0;
-}
+#include "../core/SafeDelete.h"
 
 template void SafeDelete<AnimObject>(AnimObject*&);
 

@@ -13,6 +13,8 @@ namespace Structs { struct ScriptCommand; }
 // Partial storage/call interface observed by SaveGame and Item.
 class ScriptManager {
 public:
+    ~ScriptManager();
+    void respawnFromBustedOrDie(bool busted);
     static void displayOnMinimap(LevelObject* object, bool visible, bool flag);
     static LevelObject* findObject(const char* name, bool flag);
     static ScriptManager* getInstance();
