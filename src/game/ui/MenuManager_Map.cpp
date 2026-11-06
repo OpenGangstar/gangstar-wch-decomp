@@ -9,7 +9,7 @@
  */
 
 #include "../hud/TargetMarkerSingleton.h"
-#include "../world/Map.h"
+#include "../world/MapSingleton.h"
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"

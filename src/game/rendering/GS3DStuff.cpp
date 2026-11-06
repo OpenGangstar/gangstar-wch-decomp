@@ -12,7 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../app/CGameFactory.h"
-#include "../world/Map.h"
+#include "../world/MapSingleton.h"
 #include "CustomBillboardSceneNode.h"
 #include "../core/NativeStdio.h"
 #include "../core/Lock.h"

@@ -25,6 +25,11 @@
     "source": "src/game/world/Map.cpp",
     "linker_script": "config/linker/MapSdkStartup.ld",
     "functions": [
+        "_ZN3Map5cleanEv",
+        "_ZN3MapD1Ev",
+        "_ZN3MapD2Ev",
+        "_ZN3MapC1Ev",
+        "_ZN3MapC2Ev",
         {
             "name": "__tcf_3",
             "address": "0x00328ae1"
@@ -39,6 +44,9 @@
         }
     ],
     "sections": [
+        ".map_clean",
+        ".map_destroy",
+        ".map_construct",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -48,5 +56,9 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN3Map6setMapENS_8eMapTypeE"
+    ]
 }

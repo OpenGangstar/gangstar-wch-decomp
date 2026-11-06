@@ -10,7 +10,7 @@
 
 #include "../hud/MenuManager.h"
 #include "../hud/TargetMarker.h"
-#include "../world/Map.h"
+#include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 

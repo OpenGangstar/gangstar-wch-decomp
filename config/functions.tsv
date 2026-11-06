@@ -11287,12 +11287,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328aa9	0x38	HudElement.cpp	game	hud	matched	_ZN10HudElementD1Ev	HudElement::~HudElement()
 0x00328aa9	0x38	HudElement.cpp	game	hud	matched	_ZN10HudElementD2Ev	HudElement::~HudElement()
 0x00328ae1	0x30	Map.cpp	game	core	matched	__tcf_3	__tcf_3
-0x00328b11	0x24	Map.cpp	game	world	pending	_ZN3Map5cleanEv	Map::clean()
-0x00328b35	0xc	Map.cpp	game	world	pending	_ZN3MapD1Ev	Map::~Map()
-0x00328b35	0xc	Map.cpp	game	world	pending	_ZN3MapD2Ev	Map::~Map()
+0x00328b11	0x24	Map.cpp	game	world	matched	_ZN3Map5cleanEv	Map::clean()
+0x00328b35	0xc	Map.cpp	game	world	matched	_ZN3MapD1Ev	Map::~Map()
+0x00328b35	0xc	Map.cpp	game	world	matched	_ZN3MapD2Ev	Map::~Map()
 0x00328b41	0xd4	Map.cpp	game	world	pending	_ZN3Map6setMapENS_8eMapTypeE	Map::setMap(Map::eMapType)
-0x00328c15	0x34	Map.cpp	game	world	pending	_ZN3MapC1Ev	Map::Map()
-0x00328c15	0x34	Map.cpp	game	world	pending	_ZN3MapC2Ev	Map::Map()
+0x00328c15	0x34	Map.cpp	game	world	matched	_ZN3MapC1Ev	Map::Map()
+0x00328c15	0x34	Map.cpp	game	world	matched	_ZN3MapC2Ev	Map::Map()
 0x00328c49	0x130	Map.cpp	game	world	pending	_ZNK3Map4drawEv	Map::draw() const
 0x00328d79	0x6c	Map.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00328de5	0x14	Map.cpp	game	core	matched	_GLOBAL__I__ZN3MapC2Ev	_GLOBAL__I__ZN3MapC2Ev
