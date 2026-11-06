@@ -325,7 +325,13 @@
         ".script_manager_missionFail",
         ".script_manager_message",
         ".script_manager_missionObjective",
-        ".script_manager_missionStart"
+        ".script_manager_missionStart",
+        ".script_manager_missionOver",
+        ".script_manager_missionRegisterCondition",
+        ".script_manager_resumeBlockingCommands",
+        ".script_manager_hideSkipButton",
+        ".script_manager_showSkipButton",
+        ".script_manager_skipCutscene"
     ],
     "retail_got": true,
     "dependencies": [
@@ -376,6 +382,10 @@
         "_ZN7Mission4failEv",
         "_ZN7Mission7messageEi",
         "_ZN7Mission9objectiveEib",
-        "_ZN7Mission5startEii"
+        "_ZN7Mission5startEii",
+        "_ZN7Mission3endEv",
+        "_ZN7Mission17registerConditionEP17IMissionCondition",
+        "_ZN7Mission6updateEi",
+        "_ZN11MenuManager7setTextENS_5eTextEiPi"
     ]
 }

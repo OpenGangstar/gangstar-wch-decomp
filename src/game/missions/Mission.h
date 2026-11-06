@@ -18,6 +18,8 @@ public:
     int failureCause() const;
     int failureCount() const;
     void idle();
+    bool end();
+    void update(int elapsed);
     void resumeFadeOut();
     void skipFadeOut();
     void setFailureCount(int count);

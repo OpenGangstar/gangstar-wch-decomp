@@ -12029,8 +12029,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033d0f1	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager17finishReviveAnimsEv	ScriptManager::finishReviveAnims()
 0x0033d105	0x3c	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager5pauseEv	ScriptManager::pause()
 0x0033d141	0x54	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager12playerDrivesEP7Vehicle	ScriptManager::playerDrives(Vehicle*)
-0x0033d195	0x24	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager14hideSkipButtonEv	ScriptManager::hideSkipButton()
-0x0033d1b9	0x28	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager14showSkipButtonEv	ScriptManager::showSkipButton()
+0x0033d195	0x24	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager14hideSkipButtonEv	ScriptManager::hideSkipButton()
+0x0033d1b9	0x28	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager14showSkipButtonEv	ScriptManager::showSkipButton()
 0x0033d1e1	0x4a	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager27getFirstAvailableCheckpointEv	ScriptManager::getFirstAvailableCheckpoint() const
 0x0033d22d	0x44	ScriptManager.cpp	stlport	-	matched	_ZNSaIP6ScriptE8allocateEjRj	std::allocator<Script*>::allocate(unsigned int, unsigned int&)
 0x0033d271	0x70	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager19reachRunningCommandEi	ScriptManager::reachRunningCommand(int)
@@ -12039,8 +12039,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033d351	0xe	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager17drawCinematicBarsEv	ScriptManager::drawCinematicBars() const
 0x0033d361	0x54	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager11getInstanceEv	ScriptManager::getInstance()
 0x0033d3b5	0x1c	ScriptManager.cpp	game	scripting	pending	__tcf_3	__tcf_3
-0x0033d3d1	0x20	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager22resumeBlockingCommandsEv	ScriptManager::resumeBlockingCommands()
-0x0033d3f1	0x34	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager12skipCutsceneEv	ScriptManager::skipCutscene()
+0x0033d3d1	0x20	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22resumeBlockingCommandsEv	ScriptManager::resumeBlockingCommands()
+0x0033d3f1	0x34	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12skipCutsceneEv	ScriptManager::skipCutscene()
 0x0033d425	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN7Structs15WaitWantedLevel4ReadER10DataStream	Structs::WaitWantedLevel::Read(DataStream&)
 0x0033d441	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN7Structs10WaitStolen4ReadER10DataStream	Structs::WaitStolen::Read(DataStream&)
 0x0033d45d	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN7Structs8WaitShot4ReadER10DataStream	Structs::WaitShot::Read(DataStream&)
@@ -12131,8 +12131,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033e82d	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager18missionSkipFadeOutEv	ScriptManager::missionSkipFadeOut()
 0x0033e841	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22missionSetFailureCountEi	ScriptManager::missionSetFailureCount(int)
 0x0033e855	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22missionClearConditionsEv	ScriptManager::missionClearConditions()
-0x0033e869	0x1e	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager24missionRegisterConditionEP17IMissionCondition	ScriptManager::missionRegisterCondition(IMissionCondition*)
-0x0033e889	0x24	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager11missionOverEv	ScriptManager::missionOver()
+0x0033e869	0x1e	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager24missionRegisterConditionEP17IMissionCondition	ScriptManager::missionRegisterCondition(IMissionCondition*)
+0x0033e889	0x24	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager11missionOverEv	ScriptManager::missionOver()
 0x0033e8ad	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager11missionFailEv	ScriptManager::missionFail()
 0x0033e8c1	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager7messageEi	ScriptManager::message(int)
 0x0033e8d5	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager16missionObjectiveEib	ScriptManager::missionObjective(int, bool)

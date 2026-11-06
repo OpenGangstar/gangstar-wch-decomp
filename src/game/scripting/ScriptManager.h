@@ -2,6 +2,7 @@
 #define WCH_SCRIPTING_SCRIPT_MANAGER_H
 
 class AnimObject;
+class IMissionCondition;
 class Mission;
 class Revive;
 class Script;
@@ -40,7 +41,8 @@ public:
     void* race;
     HudElement* skipButton;
     bool paused;
-    unsigned char unknown77[19];
+    bool cutsceneSkipped;
+    unsigned char unknown78[18];
     int taggedCount;
 
     void taggedKilled();
@@ -61,6 +63,12 @@ public:
     void message(int id);
     void missionObjective(int id, bool silent);
     void missionStart(int id, int duration);
+    void missionOver();
+    void missionRegisterCondition(IMissionCondition* condition);
+    void resumeBlockingCommands();
+    void hideSkipButton();
+    void showSkipButton();
+    void skipCutscene();
     static int s_failure;
 };
 
