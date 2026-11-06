@@ -15,6 +15,9 @@ _ZN45retail_missionconditionprotectnpc_transitions11guard_transE = 0x0042ca14;
 _ZN45retail_missionconditionprotectnpc_transitions22scripted_vehicle_transE = 0x0042cabc;
 SECTIONS
 {
+    .mission_protect_00337ad8 0x00337ad8 : { *ai-startup-missionconditionprotectnpc.o(.text._ZN26MissionConditionProtectNPCD0Ev) }
+    .mission_protect_00337b04 0x00337b04 : { *ai-startup-missionconditionprotectnpc.o(.text._ZN26MissionConditionProtectNPCD2Ev .text._ZN26MissionConditionProtectNPCD1Ev) }
+    .mission_protect_vtable 0x004acec0 : { *ai-startup-missionconditionprotectnpc.o(.data.rel.ro._ZTV26MissionConditionProtectNPC) }
     .mission_condition_00337914 0x00337914 : { *ai-startup-missionconditionprotectnpc.o(.text._ZN26MissionConditionProtectNPCC1EP3NPCi .text._ZN26MissionConditionProtectNPCC2EP3NPCi) }
     .mission_condition_00337930 0x00337930 : { *ai-startup-missionconditionprotectnpc.o(.text._ZN26MissionConditionProtectNPC8evaluateEi) }
     .mission_condition_00337948 0x00337948 : { *ai-startup-missionconditionprotectnpc.o(.text._ZN26MissionConditionProtectNPC4drawEv) }

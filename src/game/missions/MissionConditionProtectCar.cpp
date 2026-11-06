@@ -8,6 +8,44 @@
  * functions of MissionConditionProtectCar.cpp here, in the order they appear in the library.
  */
 
+#include "IMissionCondition.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../vehicles/Vehicle.h"
+
+class MissionConditionProtectCar : public IMissionCondition {
+public:
+    MissionConditionProtectCar(Vehicle* target, int failureCause);
+    virtual ~MissionConditionProtectCar();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+    virtual int cause() const;
+
+private:
+    Vehicle* target;
+    int failureCause;
+};
+
+bool MissionConditionProtectCar::evaluate(int)
+{
+    return !target->isDead() || !target->hasExplosionFlag();
+}
+
+void MissionConditionProtectCar::draw()
+{
+}
+
+int MissionConditionProtectCar::cause() const
+{
+    return failureCause;
+}
+
+MissionConditionProtectCar::MissionConditionProtectCar(Vehicle* target, int failureCause)
+    : target(target), failureCause(failureCause)
+{
+    Application::GetInstance()->GetHudManager()->useDriveBadBGInSpyGauge();
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -77,4 +115,9 @@ static void _GLOBAL__I__ZN26MissionConditionProtectCarC2EP7Vehiclei()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+MissionConditionProtectCar::~MissionConditionProtectCar()
+{
+    Application::GetInstance()->GetHudManager()->useSpyBGInSpyGauge();
 }

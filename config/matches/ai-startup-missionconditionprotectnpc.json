@@ -41,7 +41,10 @@
         "_ZN26MissionConditionProtectNPCC2EP3NPCi",
         "_ZN26MissionConditionProtectNPC8evaluateEi",
         "_ZN26MissionConditionProtectNPC4drawEv",
-        "_ZNK26MissionConditionProtectNPC5causeEv"
+        "_ZNK26MissionConditionProtectNPC5causeEv",
+        "_ZN26MissionConditionProtectNPCD0Ev",
+        "_ZN26MissionConditionProtectNPCD2Ev",
+        "_ZN26MissionConditionProtectNPCD1Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -55,7 +58,10 @@
         ".mission_condition_00337914",
         ".mission_condition_00337930",
         ".mission_condition_00337948",
-        ".mission_condition_0033794c"
+        ".mission_condition_0033794c",
+        ".mission_protect_00337ad8",
+        ".mission_protect_00337b04",
+        ".mission_protect_vtable"
     ],
     "retail_got": true
 }

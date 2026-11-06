@@ -113,3 +113,7 @@ static void _GLOBAL__I__ZN26MissionConditionProtectNPCC2EP3NPCi()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+MissionConditionProtectNPC::~MissionConditionProtectNPC()
+{
+}

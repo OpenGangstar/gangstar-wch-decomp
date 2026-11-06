@@ -9,6 +9,7 @@ class Path;
 class Vehicle : public LevelObject {
 public:
     void explode();
+    bool hasExplosionFlag() const { return explosionFlag != 0; }
     Vehicle(int type);
     void Load(const Structs::Car&);
     void initializeDriver();
@@ -29,7 +30,9 @@ private:
     friend class Race;
     unsigned char unknown52[292];
     unsigned int flags344;
-    unsigned char unknown348[348];
+    unsigned char unknown348[73];
+    unsigned char explosionFlag;
+    unsigned char unknown422[274];
     Character* driver;
     unsigned char unknown700[76];
     float unknown776;
