@@ -30,6 +30,16 @@ SECTIONS
     .ai_startup_storage_9 0x004ba560 (NOLOAD) : { *ai-startup-script.o(.bss._ZN8gameloft2ai11cop_vehicleE) }
     .ai_startup_storage_10 0x004ba568 (NOLOAD) : { *ai-startup-script.o(.bss._ZN8gameloft2ai5guardE) }
     .ai_startup_storage_11 0x004ba570 (NOLOAD) : { *ai-startup-script.o(.bss._ZN8gameloft2ai16scripted_vehicleE) }
+    .script_add 0x003390a4 : { *ai-startup-script.o(.text._ZN6Script10addCommandEPN7Structs13ScriptCommandE) }
+    .script_mission_id 0x003390c8 : { *ai-startup-script.o(.text._ZNK6Script12getMissionIdEv) }
+    .script_ended 0x003390cc : { *ai-startup-script.o(.text._ZNK6Script7isEndedEv) }
+    .script_state 0x003390e0 : { *ai-startup-script.o(.text._ZNK6Script8getStateEv) }
+    .script_peek 0x003390e4 : { *ai-startup-script.o(.text._ZNK6Script11peekCommandEi) }
+    .script_source 0x00339100 : { *ai-startup-script.o(.text._ZNK6Script9getSourceEv) }
+    .script_set_parent 0x00339104 : { *ai-startup-script.o(.text._ZN6Script9setParentEPS_) }
+    .script_parent 0x00339108 : { *ai-startup-script.o(.text._ZNK6Script9getParentEv) }
+    .script_unlock 0x00339268 : { *ai-startup-script.o(.text._ZN6Script12unlockScriptEi) }
+    .script_freeze 0x00339284 : { *ai-startup-script.o(.text._ZN6Script12freezeScriptEi) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

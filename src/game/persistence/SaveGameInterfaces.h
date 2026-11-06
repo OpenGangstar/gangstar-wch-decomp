@@ -7,21 +7,12 @@
 #include "../world/LevelObject.h"
 #include "../world/GameObjectManager.h"
 #include "../scripting/ScriptManager.h"
+#include "../scripting/Script.h"
 #include "../missions/WantedLevelManager.h"
 
 // Partial interfaces and layouts observed by the SaveGame routines.
 // They describe accessed offsets only. Do not instantiate these classes or
 // assume these declarations establish their complete layouts or original names.
-class Script {
-public:
-    enum State { State0 = 0, State1 = 1, State2 = 2 };
-    Script* getParent() const;
-    State getState() const;
-    void setState(State state, PlayerTest::eContext context);
-    unsigned char unknown0[56];
-    PlayerTest::eContext context;
-};
-
 class GSLoading { public: static bool isGameLoaded(); };
 class Checkpoint { public: static bool s_bTutoCallContact; };
 

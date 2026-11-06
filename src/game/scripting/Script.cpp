@@ -8,6 +8,55 @@
  * functions of Script.cpp here, in the order they appear in the library.
  */
 
+#include "Script.h"
+#include "ScriptManager.h"
+
+namespace Structs {
+struct ScriptCommand {
+    int opcode;
+    int argument;
+};
+}
+
+void Script::addCommand(Structs::ScriptCommand* command)
+{
+    if (commandCount < commandCapacity) {
+        commands[commandCount++] = command;
+        if (command->opcode == 65)
+            missionId = command->argument;
+    }
+}
+
+int Script::getMissionId() const { return missionId; }
+
+bool Script::isEnded() const { return commandIndex == commandCount; }
+
+Script::State Script::getState() const { return state; }
+
+Structs::ScriptCommand* Script::peekCommand(int offset) const
+{
+    const int index = commandIndex + offset;
+    if (index >= 0 && index < commandCount)
+        return commands[index];
+    return 0;
+}
+
+void* Script::getSource() const { return source; }
+
+void Script::setParent(Script* script) { parent = script; }
+
+Script* Script::getParent() const { return parent; }
+
+void Script::unlockScript(int id)
+{
+    ScriptManager::getInstance()->findScript(id)->setState(State2, PlayerTest::AnyContext);
+}
+
+void Script::freezeScript(int id)
+{
+    ScriptManager::getInstance()->findScript(id)->setState(State1, PlayerTest::AnyContext);
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

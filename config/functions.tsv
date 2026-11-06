@@ -11969,14 +11969,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338e79	0xd4	Revive.cpp	game	missions	pending	_ZN6ReviveC1Eb	Revive::Revive(bool)
 0x00338f4d	0x144	Revive.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00339091	0x14	Revive.cpp	game	core	matched	_GLOBAL__I__ZN6ReviveC2Eb	_GLOBAL__I__ZN6ReviveC2Eb
-0x003390a5	0x24	Script.cpp	game	scripting	pending	_ZN6Script10addCommandEPN7Structs13ScriptCommandE	Script::addCommand(Structs::ScriptCommand*)
-0x003390c9	0x4	Script.cpp	game	scripting	pending	_ZNK6Script12getMissionIdEv	Script::getMissionId() const
-0x003390cd	0x14	Script.cpp	game	scripting	pending	_ZNK6Script7isEndedEv	Script::isEnded() const
-0x003390e1	0x4	Script.cpp	game	scripting	pending	_ZNK6Script8getStateEv	Script::getState() const
-0x003390e5	0x1a	Script.cpp	game	scripting	pending	_ZNK6Script11peekCommandEi	Script::peekCommand(int) const
-0x00339101	0x4	Script.cpp	game	scripting	pending	_ZNK6Script9getSourceEv	Script::getSource() const
-0x00339105	0x4	Script.cpp	game	scripting	pending	_ZN6Script9setParentEPS_	Script::setParent(Script*)
-0x00339109	0x4	Script.cpp	game	scripting	pending	_ZNK6Script9getParentEv	Script::getParent() const
+0x003390a5	0x24	Script.cpp	game	scripting	matched	_ZN6Script10addCommandEPN7Structs13ScriptCommandE	Script::addCommand(Structs::ScriptCommand*)
+0x003390c9	0x4	Script.cpp	game	scripting	matched	_ZNK6Script12getMissionIdEv	Script::getMissionId() const
+0x003390cd	0x14	Script.cpp	game	scripting	matched	_ZNK6Script7isEndedEv	Script::isEnded() const
+0x003390e1	0x4	Script.cpp	game	scripting	matched	_ZNK6Script8getStateEv	Script::getState() const
+0x003390e5	0x1a	Script.cpp	game	scripting	matched	_ZNK6Script11peekCommandEi	Script::peekCommand(int) const
+0x00339101	0x4	Script.cpp	game	scripting	matched	_ZNK6Script9getSourceEv	Script::getSource() const
+0x00339105	0x4	Script.cpp	game	scripting	matched	_ZN6Script9setParentEPS_	Script::setParent(Script*)
+0x00339109	0x4	Script.cpp	game	scripting	matched	_ZNK6Script9getParentEv	Script::getParent() const
 0x0033910d	0x3c	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE8_M_eraseEPNS_18_Rb_tree_node_baseE	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::_M_erase(stlp_priv::_Rb_tree_node_base*)
 0x00339149	0x30	Script.cpp	game	scripting	matched	__tcf_6	__tcf_6
 0x00339179	0x40	Script.cpp	stlport	-	matched	_ZNSaIN9stlp_priv13_Rb_tree_nodeISt4pairIKP11LevelObjectiEEEE8allocateEjPKv	std::allocator<stlp_priv::_Rb_tree_node<std::pair<LevelObject* const, int> > >::allocate(unsigned int, void const*)
@@ -11985,8 +11985,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003391f1	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI18GSBlockingTutorialEEPT_v	GSBlockingTutorial* StateMachine::pushState<GSBlockingTutorial>()
 0x00339211	0x1c	Script.cpp	game	scripting	pending	__tcf_4	__tcf_4
 0x0033922d	0x3a	Script.cpp	game	scripting	pending	_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE	Script::setState(Script::State, PlayerTest::eContext)
-0x00339269	0x1a	Script.cpp	game	scripting	pending	_ZN6Script12unlockScriptEi	Script::unlockScript(int)
-0x00339285	0x1a	Script.cpp	game	scripting	pending	_ZN6Script12freezeScriptEi	Script::freezeScript(int)
+0x00339269	0x1a	Script.cpp	game	scripting	matched	_ZN6Script12unlockScriptEi	Script::unlockScript(int)
+0x00339285	0x1a	Script.cpp	game	scripting	matched	_ZN6Script12freezeScriptEi	Script::freezeScript(int)
 0x003392a1	0x50	Script.cpp	game	scripting	pending	_ZN6ScriptC1Ei	Script::Script(int)
 0x003392a1	0x50	Script.cpp	game	scripting	pending	_ZN6ScriptC2Ei	Script::Script(int)
 0x003392f1	0x34	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE5eraseENS_17_Rb_tree_iteratorIS7_SB_EE	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::erase(stlp_priv::_Rb_tree_iterator<std::pair<LevelObject* const, int>, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> > >)
