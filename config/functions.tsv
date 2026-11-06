@@ -9547,9 +9547,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e65f9	0x30	MenuManager_Map.cpp	game	ui	matched	__tcf_6	__tcf_6
 0x002e6629	0x1c	MenuManager_Map.cpp	game	ui	pending	__tcf_2	__tcf_2
 0x002e6645	0x1c	MenuManager_Map.cpp	game	ui	pending	__tcf_5	__tcf_5
-0x002e6661	0x54	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarker11getInstanceEv	TargetMarker::getInstance()
+0x002e6661	0x54	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarker11getInstanceEv	TargetMarker::getInstance()
 0x002e66b5	0x20	MenuManager.cpp	game	ui	pending	_ZN11MenuManager10cleanupMapEv	MenuManager::cleanupMap()
-0x002e66d5	0x1c	MenuManager_Map.cpp	game	ui	pending	__tcf_3	__tcf_3
+0x002e66d5	0x1c	MenuManager_Map.cpp	game	ui	matched	__tcf_3	__tcf_3
 0x002e66f1	0x40	MenuManager_Map.cpp	stlport	-	matched	_ZNSaIN9stlp_priv10_List_nodeIP7Point2DIsEEEE8allocateEjPKv	std::allocator<stlp_priv::_List_node<Point2D<short>*> >::allocate(unsigned int, void const*)
 0x002e6731	0x134	MenuManager.cpp	game	ui	pending	_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE	MenuManager::_positionMapOnPoint(irr::core::vector2d<float>&)
 0x002e6865	0xe4	MenuManager.cpp	game	ui	pending	_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE	MenuManager::_scrollMap(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)

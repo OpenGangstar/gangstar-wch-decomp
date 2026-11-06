@@ -36,6 +36,12 @@
         {
             "name": "_GLOBAL__I__ZN11MenuManager7initMapEv",
             "address": "0x002e6d9d"
+        },
+        "_ZN12TargetMarker11getInstanceEv",
+        {
+            "name": "__tcf_3",
+            "address": "0x002e66d5",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -43,10 +49,16 @@
         ".ai_startup_function_1",
         ".ai_startup_function_2",
         ".shared_startup_empty_text",
+        ".target_marker_singleton",
+        ".target_marker_cleanup",
         {
             "name": ".got",
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN12TargetMarkerC1Ev",
+        "_ZN12TargetMarkerD1Ev"
+    ]
 }

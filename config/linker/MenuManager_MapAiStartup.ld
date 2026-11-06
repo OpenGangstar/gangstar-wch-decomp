@@ -13,8 +13,14 @@ _ZN34retail_menumanager_map_transitions17civ_vehicle_transE = 0x00419bc0;
 _ZN34retail_menumanager_map_transitions17cop_vehicle_transE = 0x00419c50;
 _ZN34retail_menumanager_map_transitions11guard_transE = 0x00419d04;
 _ZN34retail_menumanager_map_transitions22scripted_vehicle_transE = 0x00419dac;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .target_marker_singleton 0x002e6660 : { *ai-startup-menumanager_map.o(.gnu.linkonce.t._ZN12TargetMarker11getInstanceEv .text._ZN12TargetMarker11getInstanceEv) }
+    .target_marker_cleanup 0x002e66d4 : { *ai-startup-menumanager_map.o(.text.__tcf_0) }
+    .target_marker_guard 0x004b7bd4 (NOLOAD) : { *ai-startup-menumanager_map.o(.gnu.linkonce.b._ZGVZN12TargetMarker11getInstanceEvE3map) }
+    .target_marker_storage 0x004b7c54 (NOLOAD) : { *ai-startup-menumanager_map.o(.gnu.linkonce.b._ZZN12TargetMarker11getInstanceEvE3map) }
     .ai_startup_function_0 0x002e65f8 : { *ai-startup-menumanager_map.o(.text.__tcf_6) }
     .ai_startup_function_1 0x002e6c58 : { *ai-startup-menumanager_map.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x002e6d9c : { *ai-startup-menumanager_map.o(.text._GLOBAL__I__ZN11MenuManager7initMapEv) }
@@ -46,3 +52,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.target_marker_guard) == 4, "TargetMarker singleton guard extent");
+ASSERT(SIZEOF(.target_marker_storage) == 28, "TargetMarker singleton storage extent");
