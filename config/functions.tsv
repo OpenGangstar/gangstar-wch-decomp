@@ -9583,7 +9583,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e73e1	0x34	MenuState.cpp	gameswf	-	matched	_ZNK7gameswf8weak_ptrINS_9characterEE11check_proxyEv	gameswf::weak_ptr<gameswf::character>::check_proxy() const
 0x002e7415	0x22	MenuState.cpp	game	ui	pending	_ZN5Menus14ConfirmPayment9GetWidgetEv	Menus::ConfirmPayment::GetWidget()
 0x002e7439	0x22	MenuState.cpp	game	ui	pending	_ZN5Menus7Confirm9GetWidgetEv	Menus::Confirm::GetWidget()
-0x002e745d	0x1c	MenuState.cpp	game	ui	pending	__tcf_5	__tcf_5
+0x002e745d	0x1c	MenuState.cpp	game	ui	matched	__tcf_5	__tcf_5
 0x002e7479	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11switchStateI9GSLoadingEEPT_v	GSLoading* StateMachine::switchState<GSLoading>()
 0x002e7499	0x46	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE7reserveEi	gameswf::array<int>::reserve(int)
 0x002e74e1	0x44	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE6resizeEi	gameswf::array<int>::resize(int)
@@ -10477,7 +10477,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305cd5	0x4	Shop.cpp	game	ui	pending	_ZN4Shop5getIdEv	Shop::getId()
 0x00305cd9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI16GSWeaponShopMenuEEPT_v	GSWeaponShopMenu* StateMachine::pushState<GSWeaponShopMenu>()
 0x00305cf9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI15GSCarRepairMenuEEPT_v	GSCarRepairMenu* StateMachine::pushState<GSCarRepairMenu>()
-0x00305d19	0x1c	Shop.cpp	game	ui	pending	__tcf_3	__tcf_3
+0x00305d19	0x1c	Shop.cpp	game	ui	matched	__tcf_3	__tcf_3
 0x00305d35	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI15GSCarRentalMenuEEPT_v	GSCarRentalMenu* StateMachine::pushState<GSCarRentalMenu>()
 0x00305d55	0x2c	Shop.cpp	game	ui	pending	_ZN4ShopC2Ei	Shop::Shop(int)
 0x00305d55	0x2c	Shop.cpp	game	ui	pending	_ZN4ShopC1Ei	Shop::Shop(int)
@@ -11527,7 +11527,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
 0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
 0x0032d945	0x2c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20disableAccelerometerEv	CDrivingControlHandler::disableAccelerometer()
-0x0032d971	0x1c	CDrivingControlHandler.cpp	game	input	pending	__tcf_2	__tcf_2
+0x0032d971	0x1c	CDrivingControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0032d98d	0x58	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler8activateEv	CDrivingControlHandler::activate()
 0x0032d9e5	0x4c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler10deactivateEv	CDrivingControlHandler::deactivate()
 0x0032da31	0x24	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler4initEv	CDrivingControlHandler::init()
@@ -11550,7 +11550,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e5d9	0x12	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler21handleEnterCarPressedEv	COnFootControlHandler::handleEnterCarPressed()
 0x0032e5ed	0x28	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler19handleStickReleasedEb	COnFootControlHandler::handleStickReleased(bool)
 0x0032e615	0x34	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler15handleStickMoveEP11EvStickMove	COnFootControlHandler::handleStickMove(EvStickMove*)
-0x0032e649	0x1c	COnFootControlHandler.cpp	game	input	pending	__tcf_2	__tcf_2
+0x0032e649	0x1c	COnFootControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0032e665	0x38	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler8activateEv	COnFootControlHandler::activate()
 0x0032e69d	0x5c	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler20handleAttackReleasedEv	COnFootControlHandler::handleAttackReleased()
 0x0032e6f9	0x74	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler16handleAttackHeldEv	COnFootControlHandler::handleAttackHeld()
@@ -11959,7 +11959,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338b55	0x6	Revive.cpp	game	missions	matched	_ZN6Revive19finishCashLostAnimsEv	Revive::finishCashLostAnims()
 0x00338b5d	0x30	Revive.cpp	game	core	matched	__tcf_5	__tcf_5
 0x00338b8d	0x20	Revive.cpp	game	missions	matched	_ZN6Revive6draw2dEv	Revive::draw2d()
-0x00338bad	0x1c	Revive.cpp	game	core	pending	__tcf_4	__tcf_4
+0x00338bad	0x1c	Revive.cpp	game	core	matched	__tcf_4	__tcf_4
 0x00338bc9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI12GSBustedMenuEEPT_v	GSBustedMenu* StateMachine::pushState<GSBustedMenu>()
 0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD2Ev	Revive::~Revive()
 0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD1Ev	Revive::~Revive()
@@ -11981,7 +11981,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00339149	0x30	Script.cpp	game	scripting	matched	__tcf_6	__tcf_6
 0x00339179	0x40	Script.cpp	stlport	-	matched	_ZNSaIN9stlp_priv13_Rb_tree_nodeISt4pairIKP11LevelObjectiEEEE8allocateEjPKv	std::allocator<stlp_priv::_Rb_tree_node<std::pair<LevelObject* const, int> > >::allocate(unsigned int, void const*)
 0x003391b9	0x1c	Script.cpp	game	scripting	pending	__tcf_3	__tcf_3
-0x003391d5	0x1c	Script.cpp	game	scripting	pending	__tcf_5	__tcf_5
+0x003391d5	0x1c	Script.cpp	game	scripting	matched	__tcf_5	__tcf_5
 0x003391f1	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI18GSBlockingTutorialEEPT_v	GSBlockingTutorial* StateMachine::pushState<GSBlockingTutorial>()
 0x00339211	0x1c	Script.cpp	game	scripting	matched	__tcf_4	__tcf_4
 0x0033922d	0x3a	Script.cpp	game	scripting	pending	_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE	Script::setState(Script::State, PlayerTest::eContext)
@@ -12258,7 +12258,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342a71	0x10	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager4lockEi	WantedLevelManager::lock(int)
 0x00342a81	0x8	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager6unlockEv	WantedLevelManager::unlock()
 0x00342a89	0x30	WantedLevelManager.cpp	game	missions	matched	__tcf_5	__tcf_5
-0x00342ab9	0x1c	WantedLevelManager.cpp	game	missions	pending	__tcf_4	__tcf_4
+0x00342ab9	0x1c	WantedLevelManager.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00342ad5	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager5cleanEv	WantedLevelManager::clean()
 0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC2Ev	WantedLevelManager::WantedLevelManager()
 0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC1Ev	WantedLevelManager::WantedLevelManager()
@@ -12461,7 +12461,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00346bb1	0x78	SideMission.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP10CheckpointNS0_12irrAllocatorIS3_EEE10reallocateEj	irr::core::array<Checkpoint*, irr::core::irrAllocator<Checkpoint*> >::reallocate(unsigned int)
 0x00346c29	0x4c	SideMission.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP10CheckpointNS0_12irrAllocatorIS3_EEE9push_backERKS3_	irr::core::array<Checkpoint*, irr::core::irrAllocator<Checkpoint*> >::push_back(Checkpoint* const&)
 0x00346c75	0x30	SideMission.cpp	game	missions	matched	__tcf_5	__tcf_5
-0x00346ca5	0x1c	SideMission.cpp	game	missions	pending	__tcf_4	__tcf_4
+0x00346ca5	0x1c	SideMission.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00346cc1	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI6GSFadeEEPT_v	GSFade* StateMachine::pushState<GSFade>()
 0x00346ce1	0x20	SideMission.cpp	game	missions	pending	_ZN11SideMission13fadeInFadeOutEv	SideMission::fadeInFadeOut()
 0x00346d01	0x1c	SideMission.cpp	game	missions	pending	__tcf_3	__tcf_3
@@ -12491,7 +12491,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00347925	0x3c	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager18isMissionAvailableEv	SideMissionManager::isMissionAvailable()
 0x00347961	0x64	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager11initMissionEv	SideMissionManager::initMission()
 0x003479c5	0x50	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager4stopEb	SideMissionManager::stop(bool)
-0x00347a15	0x1c	SideMissionManager.cpp	game	missions	pending	__tcf_3	__tcf_3
+0x00347a15	0x1c	SideMissionManager.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x00347a31	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI17GSSideMissionMenuEEPT_v	GSSideMissionMenu* StateMachine::pushState<GSSideMissionMenu>()
 0x00347a51	0x20	SideMissionManager.cpp	game	missions	pending	_Z10SafeDeleteI20AmbulanceSideMissionEvRPT_	void SafeDelete<AmbulanceSideMission>(AmbulanceSideMission*&)
 0x00347a71	0x20	SideMissionManager.cpp	game	missions	pending	_Z10SafeDeleteI19DeliverySideMissionEvRPT_	void SafeDelete<DeliverySideMission>(DeliverySideMission*&)

@@ -47,6 +47,11 @@
             "name": "__tcf_3",
             "address": "0x00338c25",
             "compiled_name": "__tcf_0"
+        },
+        {
+            "name": "__tcf_4",
+            "address": "0x00338bad",
+            "compiled_name": "__tcf_1"
         }
     ],
     "sections": [
@@ -62,7 +67,8 @@
         ".revive_draw",
         ".revive_destroy",
         ".revive_construct",
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".state_machine_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -77,6 +83,8 @@
         "_ZN4Cash11SetPositionEii",
         "_ZN10PlayerTest7subCashEi",
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
     ]
 }

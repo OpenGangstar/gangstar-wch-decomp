@@ -41,6 +41,11 @@
             "name": "__tcf_2",
             "address": "0x002e761d",
             "compiled_name": "__tcf_0"
+        },
+        {
+            "name": "__tcf_5",
+            "address": "0x002e745d",
+            "compiled_name": "__tcf_1"
         }
     ],
     "sections": [
@@ -52,11 +57,14 @@
             "name": ".got",
             "offset": 864
         },
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".state_machine_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
     ]
 }

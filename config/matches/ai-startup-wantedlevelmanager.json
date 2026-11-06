@@ -49,6 +49,11 @@
         {
             "name": "_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE",
             "address": "0x00342d05"
+        },
+        {
+            "name": "__tcf_4",
+            "address": "0x00342ab9",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -73,12 +78,15 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".state_machine_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN11Application11GetInstanceEv",
-        "_ZN18WantedLevelManager19_processWantedLevelEv"
+        "_ZN18WantedLevelManager19_processWantedLevelEv",
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
     ]
 }

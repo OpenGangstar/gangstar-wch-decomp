@@ -13,8 +13,14 @@ _ZN23retail_shop_transitions17civ_vehicle_transE = 0x0041eca0;
 _ZN23retail_shop_transitions17cop_vehicle_transE = 0x0041ed30;
 _ZN23retail_shop_transitions11guard_transE = 0x0041ede4;
 _ZN23retail_shop_transitions22scripted_vehicle_transE = 0x0041ee8c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .state_machine_singleton 0x002d44c4 : { *ai-startup-shop.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
+    .state_machine_cleanup 0x00305d18 : { *ai-startup-shop.o(.text.__tcf_0) }
+    .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-shop.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
+    .state_machine_instance 0x004b6908 (NOLOAD) : { *ai-startup-shop.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm) }
     .ai_startup_function_0 0x00306310 : { *ai-startup-shop.o(.text.__tcf_4) }
     .ai_startup_function_1 0x003061b8 : { *ai-startup-shop.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003062fc : { *ai-startup-shop.o(.text._GLOBAL__I__ZN4Shop15s_numShopWeaponE) }

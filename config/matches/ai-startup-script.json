@@ -55,6 +55,11 @@
             "name": "__tcf_4",
             "address": "0x00339211",
             "compiled_name": "__tcf_0"
+        },
+        {
+            "name": "__tcf_5",
+            "address": "0x003391d5",
+            "compiled_name": "__tcf_1"
         }
     ],
     "sections": [
@@ -70,7 +75,8 @@
         ".script_lock",
         ".script_execute_subscript",
         ".script_execute",
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".state_machine_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -86,6 +92,8 @@
         "_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii",
         "_ZN12EventManager7refreshEv",
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
     ]
 }

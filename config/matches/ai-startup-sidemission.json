@@ -36,6 +36,11 @@
         {
             "name": "_GLOBAL__I__ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt",
             "address": "0x00347605"
+        },
+        {
+            "name": "__tcf_4",
+            "address": "0x00346ca5",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -46,7 +51,12 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".state_machine_cleanup"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
+    ]
 }
