@@ -45,7 +45,8 @@
         "_ZN7MiniMapD0Ev",
         "_ZThn4_N7MiniMapD1Ev",
         "_ZN7MiniMapD1Ev",
-        "_ZN7MiniMapD2Ev"
+        "_ZN7MiniMapD2Ev",
+        "_ZN7MiniMap6updateEd"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -63,12 +64,14 @@
         ".minimap_delete",
         ".minimap_destroy_thunk",
         ".minimap_destroy",
-        ".minimap_vtable"
+        ".minimap_vtable",
+        ".minimap_update"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN10AnimObjectD1Ev",
         "_ZN10AnimObjectC1Ev",
-        "_ZN10AnimObject7SetAnimEi"
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN10AnimObject11UpdateFrameEv"
     ]
 }

@@ -28,6 +28,12 @@ private:
     };
 
     TrackingLink trackedObjects;
+    LevelObject* followedObject;
+    int inset;
+    float scale;
+    int unknown80[4];
+    float minimumSpeed, maximumSpeed;
+    float minimumScale, maximumScale;
 };
 
 #endif

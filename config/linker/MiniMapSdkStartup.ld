@@ -4,8 +4,15 @@ INCLUDE build/matches/sdk-startup-minimap/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _Znwj = 0x001c4814;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fcmple = 0x001c43ac;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fcmplt = 0x001c479c;
 SECTIONS
 {
+    .minimap_update 0x003294b8 : { *sdk-startup-minimap.o(.text._ZN7MiniMap6updateEd) }
     .minimap_delete_thunk 0x0032973c : { *sdk-startup-minimap.o(.text._ZThn4_N7MiniMapD0Ev) }
     .minimap_delete 0x00329750 : { *sdk-startup-minimap.o(.text._ZN7MiniMapD0Ev) }
     .minimap_destroy_thunk 0x003297c8 : { *sdk-startup-minimap.o(.text._ZThn4_N7MiniMapD1Ev) }
