@@ -53,3 +53,5 @@ ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_8) == 8, "script-ma
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_9) == 8, "script-manager-helpers _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_10) == 8, "script-manager-helpers _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_11) == 8, "script-manager-helpers _ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.script_manager_instance_guard) == 4, "ScriptManager singleton guard extent");
+ASSERT(SIZEOF(.script_manager_instance_storage) == 108, "ScriptManager singleton storage extent");

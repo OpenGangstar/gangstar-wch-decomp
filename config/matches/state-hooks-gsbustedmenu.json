@@ -338,7 +338,10 @@
         ".script_manager_skipCutscene",
         ".script_manager_delete_revive",
         ".script_manager_destroy",
-        ".script_manager_respawn"
+        ".script_manager_respawn",
+        ".script_manager_construct",
+        ".script_manager_instance",
+        ".script_manager_instance_cleanup"
     ],
     "retail_got": true,
     "dependencies": [
@@ -350,7 +353,6 @@
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager9showTextsEv",
         "_ZN11Application11GetInstanceEv",
-        "_ZN13ScriptManager11getInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
         "_ZN11MenuManager9hideTextsEv",
