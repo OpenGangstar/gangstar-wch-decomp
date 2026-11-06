@@ -20,6 +20,10 @@ SECTIONS
     .button_virtual_base_thunk 0x00326eac : { *string-startup-animatedbutton.o(.gnu.linkonce.t._ZN13VirtualButtonD1Ev) }
     .button_delete_thunk 0x00326eec : { *string-startup-animatedbutton.o(.gnu.linkonce.t._ZN14AnimatedButtonD0Ev) }
     .button_base_thunk 0x00326f48 : { *string-startup-animatedbutton.o(.gnu.linkonce.t._ZN14AnimatedButtonD1Ev) }
+    .button_weapon_anim 0x00326fa0 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButton13setWeaponAnimEi) }
+    .button_weapon_table 0x00422a28 : { *string-startup-animatedbutton.o(.rodata._ZN14AnimatedButton13setWeaponAnimEi) }
+    .button_draw_thunk 0x00327044 : { *string-startup-animatedbutton.o(.text._ZThn4_NK14AnimatedButton6draw2dEv) }
+    .button_draw 0x00327058 : { *string-startup-animatedbutton.o(.text._ZNK14AnimatedButton6draw2dEv) }
     .button_vtable 0x004abf98 : { *string-startup-animatedbutton.o(.data.rel.ro._ZTV14AnimatedButton .gnu.linkonce.d.rel.ro._ZTV14AnimatedButton) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
