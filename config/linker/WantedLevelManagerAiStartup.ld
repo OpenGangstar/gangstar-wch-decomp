@@ -15,6 +15,11 @@ _ZN37retail_wantedlevelmanager_transitions11guard_transE = 0x00432f50;
 _ZN37retail_wantedlevelmanager_transitions22scripted_vehicle_transE = 0x00432ff8;
 SECTIONS
 {
+    .wanted_store 0x00342a5c : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager16storeWantedLevelEv) }
+    .wanted_lock 0x00342a70 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager4lockEi) }
+    .wanted_restore 0x00342f4c : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager18restoreWantedLevelEv) }
+    .wanted_reset 0x00342f7c : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager16resetWantedLevelEv) }
+    .wanted_unlock 0x00342a80 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager6unlockEv) }
     .ai_startup_function_0 0x00342a88 : { *ai-startup-wantedlevelmanager.o(.text.__tcf_5) }
     .ai_startup_function_1 0x00342bc0 : { *ai-startup-wantedlevelmanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00342d04 : { *ai-startup-wantedlevelmanager.o(.text._GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE) }

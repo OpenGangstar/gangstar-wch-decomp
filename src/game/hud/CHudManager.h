@@ -7,6 +7,7 @@ class AnimatedButton;
 class HudElement;
 class IHud;
 class SpyGauge;
+class WantedMeter;
 
 // Partial layout; total extent and component type/flag meaning are not established.
 struct HudComponent116 {
@@ -47,7 +48,9 @@ public:
     unsigned char unknown140[12];
     SpyGauge* spyGauge;
     HudElement* weaponSelectorControl;
-    unsigned char unknown160[24];
+    unsigned char unknown160[4];
+    WantedMeter* wantedMeter;
+    unsigned char unknown168[16];
     HudElement* weaponSelector;
     HudElement* weaponSelectorExtra;
     HudElement** resetElementsBegin;
