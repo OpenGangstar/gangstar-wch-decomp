@@ -341,7 +341,11 @@
         ".script_manager_respawn",
         ".script_manager_construct",
         ".script_manager_instance",
-        ".script_manager_instance_cleanup"
+        ".script_manager_instance_cleanup",
+        ".script_manager_save",
+        ".script_manager_load_missions",
+        ".script_manager_load_save",
+        ".script_manager_load_animation"
     ],
     "retail_got": true,
     "dependencies": [
@@ -404,6 +408,15 @@
         "_ZN7Mission6updateEi",
         "_ZN11MenuManager7setTextENS_5eTextEiPi",
         "_ZN6ReviveD1Ev",
-        "_ZN6ReviveC1Eb"
+        "_ZN6ReviveC1Eb",
+        "_ZN8SaveGameC1Ev",
+        "_ZN8SaveGameD1Ev",
+        "_ZN8SaveGame18GetDefaultFilenameEv",
+        "_ZN8SaveGame13SampleAndSaveEPKc",
+        "_ZN8SaveGame12LoadAndApplyEPKc",
+        "_ZN4RaceC1Ev",
+        "_ZN7MissionC1Ev",
+        "_ZN7Mission4loadEPKc",
+        "_ZN13ScriptManager9resetGameEbi"
     ]
 }

@@ -39,7 +39,7 @@ public:
     virtual void unknown32();
     virtual void unknown33();
     virtual void unknown34();
-    virtual void unknown35();
+    virtual void setAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void unknown36();
     virtual void unknown37();
     virtual void unknown38();

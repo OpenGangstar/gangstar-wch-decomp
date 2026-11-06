@@ -14,6 +14,9 @@
 #include "../characters/AnimObject.h"
 #include "../core/SafeDelete.h"
 #include "../missions/Mission.h"
+#include "../characters/PlayerTest.h"
+#include "../meta/Race.h"
+#include "../persistence/SaveGame.h"
 #include "../missions/Revive.h"
 #include "../persistence/DataStream.h"
 
@@ -224,6 +227,31 @@ void ScriptManager::respawnFromBustedOrDie(bool busted)
 {
     SafeDelete(revive);
     revive = new Revive(busted);
+}
+
+void ScriptManager::saveGame()
+{
+    SaveGame game;
+    game.SampleAndSave(SaveGame::GetDefaultFilename());
+}
+
+bool ScriptManager::loadMissions(const char* filename)
+{
+    if (mission)
+        return false;
+
+    race = new Race;
+    mission = new Mission;
+    mission->load(filename);
+    return true;
+}
+
+void ScriptManager::loadGame(bool reset)
+{
+    PlayerTest::GetPlayer()->setAnimation("move_idle", 1, false, false, false);
+    SaveGame game;
+    if (reset || !game.LoadAndApply(SaveGame::GetDefaultFilename()))
+        getInstance()->resetGame(false, -1);
 }
 
 namespace Structs {
