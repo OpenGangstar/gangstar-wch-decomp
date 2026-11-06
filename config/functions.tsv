@@ -11321,7 +11321,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00329441	0x1c	MiniMap.cpp	game	hud	pending	__tcf_4	__tcf_4
 0x0032945d	0x1c	MiniMap.cpp	game	hud	pending	__tcf_3	__tcf_3
 0x00329479	0x40	MiniMap.cpp	stlport	-	matched	_ZNSaIN9stlp_priv10_List_nodeIN7MiniMap15TrackableObjectEEEE8allocateEjPKv	std::allocator<stlp_priv::_List_node<MiniMap::TrackableObject> >::allocate(unsigned int, void const*)
-0x003294b9	0xaa	MiniMap.cpp	game	hud	pending	_ZN7MiniMap6updateEd	MiniMap::update(double)
+0x003294b9	0xaa	MiniMap.cpp	game	hud	matched	_ZN7MiniMap6updateEd	MiniMap::update(double)
 0x00329565	0x40	MiniMap.cpp	game	hud	matched	_ZN7MiniMap27deregisterAllForMapTrackingEv	MiniMap::deregisterAllForMapTracking()
 0x003295a5	0xd4	MiniMap.cpp	game	hud	pending	_ZN7MiniMapC1EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)
 0x003295a5	0xd4	MiniMap.cpp	game	hud	pending	_ZN7MiniMapC2EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)

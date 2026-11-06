@@ -93,6 +93,28 @@ MiniMap::~MiniMap()
     clearTrackedObjects(link);
 }
 
+void MiniMap::update(double)
+{
+    if (!followedObject || !(flags & 1))
+        return;
+
+    const float speed = followedObject->GetSpeed();
+    if (speed <= minimumSpeed)
+        scale = minimumScale;
+    else if (speed < maximumSpeed)
+        scale = minimumScale + (maximumScale - minimumScale)
+            * ((speed - minimumSpeed) / (maximumSpeed - minimumSpeed));
+    else
+        scale = maximumScale;
+
+    TrackingLink* const end = &trackedObjects;
+    for (TrackingLink* link = trackedObjects.next; link != end; link = link->next) {
+        TrackingNode* node = static_cast<TrackingNode*>(link);
+        if (node->flag)
+            node->marker->UpdateFrame();
+    }
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
