@@ -11814,25 +11814,25 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033560d	0x15c	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	VehicleCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
 0x00335769	0xdc	VehicleCamera.cpp	game	vehicles	pending	_ZNK13VehicleCamera9getFacingEv	VehicleCamera::getFacing() const
 0x00335849	0x3c8	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera6updateEf	VehicleCamera::update(float)
-0x00335c11	0x6	Mission.cpp	game	missions	pending	_ZN7Mission14setTextToPrintEi	Mission::setTextToPrint(int)
-0x00335c19	0x1c	Mission.cpp	game	missions	pending	_ZNK7Mission7missionEi	Mission::mission(int) const
-0x00335c35	0x12	Mission.cpp	game	missions	pending	_ZNK7Mission20getLastObjectiveTextEv	Mission::getLastObjectiveText() const
-0x00335c49	0x4	Mission.cpp	game	missions	pending	_ZNK7Mission17getCurrentMessageEv	Mission::getCurrentMessage() const
-0x00335c4d	0x18	Mission.cpp	game	missions	pending	_ZN7Mission17registerConditionEP17IMissionCondition	Mission::registerCondition(IMissionCondition*)
-0x00335c65	0x34	Mission.cpp	game	missions	pending	_ZN7Mission15clearConditionsEv	Mission::clearConditions()
-0x00335c99	0x4	Mission.cpp	game	missions	pending	_ZNK7Mission8getStateEv	Mission::getState() const
-0x00335c9d	0x6	Mission.cpp	game	missions	pending	_ZNK7Mission12failureCauseEv	Mission::failureCause() const
-0x00335ca5	0x6	Mission.cpp	game	missions	pending	_ZNK7Mission12failureCountEv	Mission::failureCount() const
-0x00335cad	0x8	Mission.cpp	game	missions	pending	_ZN7Mission11skipFadeOutEv	Mission::skipFadeOut()
-0x00335cb5	0x8	Mission.cpp	game	missions	pending	_ZN7Mission13resumeFadeOutEv	Mission::resumeFadeOut()
-0x00335cbd	0x6	Mission.cpp	game	missions	pending	_ZN7Mission15setFailureCountEi	Mission::setFailureCount(int)
+0x00335c11	0x6	Mission.cpp	game	missions	matched	_ZN7Mission14setTextToPrintEi	Mission::setTextToPrint(int)
+0x00335c19	0x1c	Mission.cpp	game	missions	matched	_ZNK7Mission7missionEi	Mission::mission(int) const
+0x00335c35	0x12	Mission.cpp	game	missions	matched	_ZNK7Mission20getLastObjectiveTextEv	Mission::getLastObjectiveText() const
+0x00335c49	0x4	Mission.cpp	game	missions	matched	_ZNK7Mission17getCurrentMessageEv	Mission::getCurrentMessage() const
+0x00335c4d	0x18	Mission.cpp	game	missions	matched	_ZN7Mission17registerConditionEP17IMissionCondition	Mission::registerCondition(IMissionCondition*)
+0x00335c65	0x34	Mission.cpp	game	missions	matched	_ZN7Mission15clearConditionsEv	Mission::clearConditions()
+0x00335c99	0x4	Mission.cpp	game	missions	matched	_ZNK7Mission8getStateEv	Mission::getState() const
+0x00335c9d	0x6	Mission.cpp	game	missions	matched	_ZNK7Mission12failureCauseEv	Mission::failureCause() const
+0x00335ca5	0x6	Mission.cpp	game	missions	matched	_ZNK7Mission12failureCountEv	Mission::failureCount() const
+0x00335cad	0x8	Mission.cpp	game	missions	matched	_ZN7Mission11skipFadeOutEv	Mission::skipFadeOut()
+0x00335cb5	0x8	Mission.cpp	game	missions	matched	_ZN7Mission13resumeFadeOutEv	Mission::resumeFadeOut()
+0x00335cbd	0x6	Mission.cpp	game	missions	matched	_ZN7Mission15setFailureCountEi	Mission::setFailureCount(int)
 0x00335cc5	0x60	Mission.cpp	game	missions	matched	_ZN3RctIiE9_validateEv	Rct<int>::_validate()
 0x00335d25	0x30	Mission.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00335d55	0x20	Mission.cpp	game	missions	matched	_ZN3RctIiED0Ev	Rct<int>::~Rct()
 0x00335d75	0x18	Mission.cpp	game	missions	matched	_ZN3RctIiED1Ev	Rct<int>::~Rct()
 0x00335d8d	0x64	Mission.cpp	game	missions	pending	_ZN7Mission4failEv	Mission::fail()
 0x00335df1	0x1c	Mission.cpp	game	missions	pending	__tcf_3	__tcf_3
-0x00335e0d	0x54	Mission.cpp	game	missions	pending	_ZN7Structs7Mission4ReadER10DataStream	Structs::Mission::Read(DataStream&)
+0x00335e0d	0x54	Mission.cpp	game	missions	matched	_ZN7Structs7Mission4ReadER10DataStream	Structs::Mission::Read(DataStream&)
 0x00335e61	0x130	Mission.cpp	game	missions	pending	_ZN7Mission4loadEPKc	Mission::load(char const*)
 0x00335f91	0x9c	Mission.cpp	game	missions	pending	_ZN7MissionD0Ev	Mission::~Mission()
 0x0033602d	0x94	Mission.cpp	game	missions	pending	_ZN7MissionD2Ev	Mission::~Mission()
@@ -11842,7 +11842,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00336141	0xcc	Mission.cpp	game	missions	pending	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
 0x0033620d	0x138	Mission.cpp	game	missions	pending	_ZN7Mission4drawEv	Mission::draw()
 0x00336345	0x78	Mission.cpp	game	missions	pending	_ZN7Mission7messageEi	Mission::message(int)
-0x003363bd	0x14	Mission.cpp	game	missions	pending	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
+0x003363bd	0x14	Mission.cpp	game	missions	matched	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
 0x003363d1	0x1d4	Mission.cpp	game	missions	pending	_ZN7Mission5startEii	Mission::start(int, int)
 0x003365a5	0x4c	Mission.cpp	game	missions	pending	_ZN7Mission4idleEv	Mission::idle()
 0x003365f1	0x218	Mission.cpp	game	missions	pending	_ZN7Mission6updateEi	Mission::update(int)

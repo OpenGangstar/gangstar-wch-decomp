@@ -15,6 +15,20 @@ _ZN26retail_mission_transitions11guard_transE = 0x0042ac00;
 _ZN26retail_mission_transitions22scripted_vehicle_transE = 0x0042aca8;
 SECTIONS
 {
+    .mission_set_text 0x00335c10 : { *ai-startup-mission.o(.text._ZN7Mission14setTextToPrintEi) }
+    .mission_lookup 0x00335c18 : { *ai-startup-mission.o(.text._ZNK7Mission7missionEi) }
+    .mission_last_objective 0x00335c34 : { *ai-startup-mission.o(.text._ZNK7Mission20getLastObjectiveTextEv) }
+    .mission_current_message 0x00335c48 : { *ai-startup-mission.o(.text._ZNK7Mission17getCurrentMessageEv) }
+    .mission_register_condition 0x00335c4c : { *ai-startup-mission.o(.text._ZN7Mission17registerConditionEP17IMissionCondition) }
+    .mission_clear_conditions 0x00335c64 : { *ai-startup-mission.o(.text._ZN7Mission15clearConditionsEv) }
+    .mission_state 0x00335c98 : { *ai-startup-mission.o(.text._ZNK7Mission8getStateEv) }
+    .mission_failure_cause 0x00335c9c : { *ai-startup-mission.o(.text._ZNK7Mission12failureCauseEv) }
+    .mission_failure_count 0x00335ca4 : { *ai-startup-mission.o(.text._ZNK7Mission12failureCountEv) }
+    .mission_skip_fade 0x00335cac : { *ai-startup-mission.o(.text._ZN7Mission11skipFadeOutEv) }
+    .mission_resume_fade 0x00335cb4 : { *ai-startup-mission.o(.text._ZN7Mission13resumeFadeOutEv) }
+    .mission_set_failure_count 0x00335cbc : { *ai-startup-mission.o(.text._ZN7Mission15setFailureCountEi) }
+    .mission_read 0x00335e0c : { *ai-startup-mission.o(.gnu.linkonce.t._ZN7Structs7Mission4ReadER10DataStream) }
+    .mission_objective 0x003363bc : { *ai-startup-mission.o(.text._ZN7Mission9objectiveEib) }
     .mission_rct_validate 0x00335cc4 : { *ai-startup-mission.o(.text._ZN3RctIiE9_validateEv .gnu.linkonce.t._ZN3RctIiE9_validateEv) }
     .ai_startup_function_0 0x00335d24 : { *ai-startup-mission.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00336808 : { *ai-startup-mission.o(.text._Z41__static_initialization_and_destruction_0ii) }
