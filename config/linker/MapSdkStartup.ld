@@ -5,6 +5,9 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .map_clean 0x00328b10 : { *sdk-startup-map.o(.text._ZN3Map5cleanEv) }
+    .map_construct 0x00328c14 : { *sdk-startup-map.o(.text._ZN3MapC1Ev .text._ZN3MapC2Ev) }
+    .map_destroy 0x00328b34 : { *sdk-startup-map.o(.text._ZN3MapD1Ev .text._ZN3MapD2Ev) }
     .sdk_startup_function_0 0x00328ae0 : { *sdk-startup-map.o(.text.__tcf_3) }
     .sdk_startup_function_1 0x00328d78 : { *sdk-startup-map.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00328de4 : { *sdk-startup-map.o(.text._GLOBAL__I__ZN3MapC2Ev) }

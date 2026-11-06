@@ -10,7 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
-#include "../world/Map.h"
+#include "../world/MapSingleton.h"
 #include "../core/LocalStartupText.h"
 
 void operator delete(void*) throw();
