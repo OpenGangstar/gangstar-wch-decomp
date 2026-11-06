@@ -15,6 +15,13 @@ _ZN45retail_missionconditionprotectcar_transitions11guard_transE = 0x0042c444;
 _ZN45retail_missionconditionprotectcar_transitions22scripted_vehicle_transE = 0x0042c4ec;
 SECTIONS
 {
+    .mission_protect_003376b8 0x003376b8 : { *ai-startup-missionconditionprotectcar.o(.text._ZN26MissionConditionProtectCar8evaluateEi) }
+    .mission_protect_003376e0 0x003376e0 : { *ai-startup-missionconditionprotectcar.o(.text._ZN26MissionConditionProtectCar4drawEv) }
+    .mission_protect_003376e4 0x003376e4 : { *ai-startup-missionconditionprotectcar.o(.text._ZNK26MissionConditionProtectCar5causeEv) }
+    .mission_protect_00337718 0x00337718 : { *ai-startup-missionconditionprotectcar.o(.text._ZN26MissionConditionProtectCarC2EP7Vehiclei .text._ZN26MissionConditionProtectCarC1EP7Vehiclei) }
+    .mission_protect_003378a0 0x003378a0 : { *ai-startup-missionconditionprotectcar.o(.text._ZN26MissionConditionProtectCarD0Ev) }
+    .mission_protect_003378dc 0x003378dc : { *ai-startup-missionconditionprotectcar.o(.text._ZN26MissionConditionProtectCarD2Ev .text._ZN26MissionConditionProtectCarD1Ev) }
+    .mission_protect_vtable 0x004acea0 : { *ai-startup-missionconditionprotectcar.o(.data.rel.ro._ZTV26MissionConditionProtectCar) }
     .ai_startup_function_0 0x003376e8 : { *ai-startup-missionconditionprotectcar.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00337748 : { *ai-startup-missionconditionprotectcar.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0033788c : { *ai-startup-missionconditionprotectcar.o(.text._GLOBAL__I__ZN26MissionConditionProtectCarC2EP7Vehiclei) }

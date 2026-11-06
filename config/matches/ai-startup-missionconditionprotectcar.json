@@ -36,7 +36,15 @@
         {
             "name": "_GLOBAL__I__ZN26MissionConditionProtectCarC2EP7Vehiclei",
             "address": "0x0033788d"
-        }
+        },
+        "_ZN26MissionConditionProtectCar8evaluateEi",
+        "_ZN26MissionConditionProtectCar4drawEv",
+        "_ZNK26MissionConditionProtectCar5causeEv",
+        "_ZN26MissionConditionProtectCarC2EP7Vehiclei",
+        "_ZN26MissionConditionProtectCarC1EP7Vehiclei",
+        "_ZN26MissionConditionProtectCarD0Ev",
+        "_ZN26MissionConditionProtectCarD2Ev",
+        "_ZN26MissionConditionProtectCarD1Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +54,19 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".mission_protect_003376b8",
+        ".mission_protect_003376e0",
+        ".mission_protect_003376e4",
+        ".mission_protect_00337718",
+        ".mission_protect_003378a0",
+        ".mission_protect_003378dc",
+        ".mission_protect_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11CHudManager23useDriveBadBGInSpyGaugeEv",
+        "_ZN11CHudManager18useSpyBGInSpyGaugeEv"
+    ]
 }
