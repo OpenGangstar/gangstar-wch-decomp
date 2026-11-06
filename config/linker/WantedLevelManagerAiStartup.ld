@@ -14,8 +14,12 @@ _ZN37retail_wantedlevelmanager_transitions17cop_vehicle_transE = 0x00432e9c;
 _ZN37retail_wantedlevelmanager_transitions11guard_transE = 0x00432f50;
 _ZN37retail_wantedlevelmanager_transitions22scripted_vehicle_transE = 0x00432ff8;
 __cxa_pure_virtual = 0;
+INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .wanted_escaped_delete 0x00342db4 : { *(.gnu.linkonce.t._ZN15EvWantedEscapedD0Ev) }
+    .wanted_escaped_destroy 0x00342de0 : { *(.gnu.linkonce.t._ZN15EvWantedEscapedD1Ev) }
+    .wanted_escaped_vtable 0x004ad080 : { *(.gnu.linkonce.d.rel.ro._ZTV15EvWantedEscaped) }
     .updatable_delete 0x002d62b8 : { *(.gnu.linkonce.t._ZN10IUpdatableD0Ev) }
     .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
     .updatable_vtable 0x004a6290 : { *(.gnu.linkonce.d.rel.ro._ZTV10IUpdatable) }

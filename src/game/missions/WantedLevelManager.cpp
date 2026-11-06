@@ -12,7 +12,13 @@
 #include "WantedMeter.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
+#include "../core/GameEventMethods.h"
 #include "../hud/CHudManager.h"
+
+class EvWantedEscaped : public IEvent {
+public:
+    virtual ~EvWantedEscaped() __attribute__((used)) {}
+};
 
 void WantedLevelManager::storeWantedLevel()
 {
