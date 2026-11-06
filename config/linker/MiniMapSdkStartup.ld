@@ -3,8 +3,11 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-minimap/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+_Znwj = 0x001c4814;
 SECTIONS
 {
+    .minimap_deregister_one 0x003296f8 : { *sdk-startup-minimap.o(.text._ZN7MiniMap24deregisterForMapTrackingEP11LevelObject) }
+    .minimap_register 0x00329678 : { *sdk-startup-minimap.o(.text._ZN7MiniMap22registerForMapTrackingEP11LevelObjectb) }
     .minimap_deregister 0x00329564 : { *sdk-startup-minimap.o(.text._ZN7MiniMap27deregisterAllForMapTrackingEv) }
     .sdk_startup_function_0 0x003298cc : { *sdk-startup-minimap.o(.text.__tcf_5) }
     .sdk_startup_function_1 0x0032984c : { *sdk-startup-minimap.o(.text._Z41__static_initialization_and_destruction_0ii) }
