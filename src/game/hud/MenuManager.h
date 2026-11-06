@@ -47,6 +47,7 @@ public:
     void enableAnims(bool);
     bool areAnimsEnabled() const;
     int getMapMode() const;
+    void cleanupMap();
     struct WeaponShopData {
         int price;
         union { int code; unsigned short category; };
