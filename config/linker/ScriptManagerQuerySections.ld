@@ -4,6 +4,10 @@ PROVIDE(__cxa_guard_acquire = 0x001c4958);
 PROVIDE(__cxa_guard_release = 0x001c46c4);
 SECTIONS
 {
+    .script_manager_save 0x0033e8fc : { *script-manager-helpers.o(.text._ZN13ScriptManager8saveGameEv) }
+    .script_manager_load_missions 0x0033e91c : { *script-manager-helpers.o(.text._ZN13ScriptManager12loadMissionsEPKc) }
+    .script_manager_load_save 0x0033ef24 : { *script-manager-helpers.o(.text._ZN13ScriptManager8loadGameEb) }
+    .script_manager_load_animation 0x0042f08c : { *script-manager-helpers.o(.rodata.str1.4 .rodata.str1.1) }
     .script_manager_construct 0x0033cfb8 : { *script-manager-helpers.o(.text._ZN13ScriptManagerC1Ev .text._ZN13ScriptManagerC2Ev) }
     .script_manager_instance 0x0033d360 : { *script-manager-helpers.o(.text._ZN13ScriptManager11getInstanceEv) }
     .script_manager_instance_cleanup 0x0033e7d0 : { *script-manager-helpers.o(.text.__tcf_0) }

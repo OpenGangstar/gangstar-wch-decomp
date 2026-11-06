@@ -8,6 +8,8 @@ namespace Structs { struct Mission; }
 
 class Mission {
 public:
+    Mission();
+    void load(const char* filename);
     virtual ~Mission();
     int setTextToPrint(int id);
     Structs::Mission* mission(int index) const;
