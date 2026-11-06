@@ -11,6 +11,7 @@
 #include "ScriptManager.h"
 #include "../hud/HudElement.h"
 #include "../persistence/DataStream.h"
+#include "../persistence/DataStream.h"
 
 void ScriptManager::resume() { paused = false; }
 
@@ -628,6 +629,426 @@ inline void ActorGetOut::Read(DataStream& stream)
 {
     opcode = stream.ReadInt();
     argument = stream.ReadAndAllocateString();
+}
+
+} // namespace Structs
+
+namespace Structs {
+
+struct WaitIfNotPhotographed {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitIfNotPhotographed::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct WaitEscape {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitEscape::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct VehicleChasePlayer {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void VehicleChasePlayer::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct StayWithin {
+    int opcode;
+    char* argument1;
+    int argument2;
+    int argument3;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void StayWithin::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+    argument3 = stream.ReadInt();
+}
+
+struct SpyTarget {
+    int opcode;
+    char* argument1;
+    int argument2;
+    int argument3;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SpyTarget::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+    argument3 = stream.ReadInt();
+}
+
+struct ShowTutorial {
+    int opcode;
+    int argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ShowTutorial::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadInt();
+    argument2 = stream.ReadInt();
+}
+
+struct SetAnimSpeed {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetAnimSpeed::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct SetAnim2 {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    char* argument3;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetAnim2::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+    argument3 = stream.ReadAndAllocateString();
+}
+
+struct SetAnim {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetAnim::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ProtectNPC {
+    int opcode;
+    int argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ProtectNPC::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadInt();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ProtectCar {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ProtectCar::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct PlaceItem {
+    int opcode;
+    int argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void PlaceItem::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadInt();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct PhotographQuickly {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void PhotographQuickly::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct NPCWeapon {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void NPCWeapon::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct MoveTo {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void MoveTo::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct Enable {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void Enable::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct Dialog {
+    int opcode;
+    int argument1;
+    int argument2;
+    int argument3;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void Dialog::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadInt();
+    argument2 = stream.ReadInt();
+    argument3 = stream.ReadInt();
+}
+
+struct CarSetSpeed {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void CarSetSpeed::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct CarSetPath {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void CarSetPath::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct CarDriveTo {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void CarDriveTo::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct CamSet {
+    int opcode;
+    char* argument1;
+    int argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void CamSet::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+}
+
+struct AddRacer {
+    int opcode;
+    char* argument1;
+    int argument2;
+    char* argument3;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void AddRacer::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadInt();
+    argument3 = stream.ReadAndAllocateString();
+}
+
+struct ActorWalkTo {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorWalkTo::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ActorWalkPath {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorWalkPath::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ActorRunTo {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorRunTo::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ActorRunPath {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorRunPath::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ActorGetIn {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorGetIn::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ActorFollow {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorFollow::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
+}
+
+struct ActorAttack {
+    int opcode;
+    char* argument1;
+    char* argument2;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorAttack::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument1 = stream.ReadAndAllocateString();
+    argument2 = stream.ReadAndAllocateString();
 }
 
 } // namespace Structs
