@@ -8,14 +8,7 @@
  * functions of MenuManager_Map.cpp here, in the order they appear in the library.
  */
 
-#include "../hud/TargetMarker.h"
-
-// This translation unit emitted the retail inline singleton and its cleanup.
-inline TargetMarker* TargetMarker::getInstance()
-{
-    static TargetMarker map;
-    return &map;
-}
+#include "../hud/TargetMarkerSingleton.h"
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"

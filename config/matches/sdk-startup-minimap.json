@@ -46,7 +46,12 @@
         "_ZThn4_N7MiniMapD1Ev",
         "_ZN7MiniMapD1Ev",
         "_ZN7MiniMapD2Ev",
-        "_ZN7MiniMap6updateEd"
+        "_ZN7MiniMap6updateEd",
+        {
+            "name": "__tcf_3",
+            "address": "0x0032945d",
+            "compiled_name": "__tcf_0"
+        }
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -65,13 +70,16 @@
         ".minimap_destroy_thunk",
         ".minimap_destroy",
         ".minimap_vtable",
-        ".minimap_update"
+        ".minimap_update",
+        ".target_marker_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN10AnimObjectD1Ev",
         "_ZN10AnimObjectC1Ev",
         "_ZN10AnimObject7SetAnimEi",
-        "_ZN10AnimObject11UpdateFrameEv"
+        "_ZN10AnimObject11UpdateFrameEv",
+        "_ZN12TargetMarkerC1Ev",
+        "_ZN12TargetMarkerD1Ev"
     ]
 }

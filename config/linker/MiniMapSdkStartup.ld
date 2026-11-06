@@ -10,8 +10,15 @@ __aeabi_fcmple = 0x001c43ac;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fcmplt = 0x001c479c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    /* Keep the emitted copy in Thumb call range. The MenuManager_Map profile checks the selected retail copy. */
+    .target_marker_singleton 0x002e6660 : { *sdk-startup-minimap.o(.gnu.linkonce.t._ZN12TargetMarker11getInstanceEv) }
+    .target_marker_cleanup 0x0032945c : { *sdk-startup-minimap.o(.text.__tcf_0) }
+    .target_marker_guard 0x004b7bd4 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZGVZN12TargetMarker11getInstanceEvE3map) }
+    .target_marker_storage 0x004b7c54 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZZN12TargetMarker11getInstanceEvE3map) }
     .minimap_update 0x003294b8 : { *sdk-startup-minimap.o(.text._ZN7MiniMap6updateEd) }
     .minimap_delete_thunk 0x0032973c : { *sdk-startup-minimap.o(.text._ZThn4_N7MiniMapD0Ev) }
     .minimap_delete 0x00329750 : { *sdk-startup-minimap.o(.text._ZN7MiniMapD0Ev) }
@@ -32,3 +39,5 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.target_marker_guard) == 4, "TargetMarker singleton guard extent");
+ASSERT(SIZEOF(.target_marker_storage) == 28, "TargetMarker singleton storage extent");
