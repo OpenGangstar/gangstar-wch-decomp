@@ -40,6 +40,10 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
+    .state_machine_singleton 0x002d44c4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
+    .state_machine_guard 0x004b6904 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
+    .state_machine_instance 0x004b6908 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm) }
+    .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
     .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x0033d3b4 : { *script-manager-helpers.o(.text.__tcf_1) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

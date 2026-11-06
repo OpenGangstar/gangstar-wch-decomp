@@ -56,6 +56,7 @@ ScriptManager* ScriptManager::getInstance()
 }
 
 #include "../missions/WantedLevelManagerSingleton.h"
+#include "../ai/StateMachine.h"
 
 void ScriptManager::resume() { paused = false; }
 

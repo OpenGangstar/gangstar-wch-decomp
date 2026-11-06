@@ -49,6 +49,11 @@
         {
             "name": "_ZN6IEventD1Ev",
             "address": "0x002d4095"
+        },
+        {
+            "name": "__tcf_2",
+            "address": "0x002d4519",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -64,7 +69,12 @@
         ".event_id",
         ".event_delete",
         ".event_destructor",
-        ".event_vtable"
+        ".event_vtable",
+        ".state_machine_cleanup"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
+    ]
 }
