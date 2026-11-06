@@ -9,6 +9,10 @@
  */
 
 #include "MissionConditionBeQuick.h"
+#include "../hud/MenuManager.h"
+#include "../scripting/ScriptManager.h"
+
+extern "C" int sprintf(char*, const char*, ...);
 
 inline __attribute__((used)) int IMissionCondition::cause() const
 {
@@ -26,6 +30,27 @@ void MissionConditionBeQuick::draw()
 
 inline __attribute__((used)) IMissionCondition::~IMissionCondition()
 {
+}
+
+bool MissionConditionBeQuick::evaluate(int elapsed)
+{
+    if (duration <= 0) {
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+        return false;
+    }
+
+    if (!ScriptManager::getInstance()->isInCinematic()) {
+        char text[8];
+        int minutes = duration / 60000;
+        int seconds = (duration / 1000) % 60;
+        int tenths = (duration % 1000) / 100;
+        sprintf(text, "%02d:%02d:%01d", minutes, seconds, tenths);
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, text, 0);
+        duration -= elapsed;
+    } else if (MenuManager::getInstance()->getText(MenuManager::MissionTimerText)) {
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    }
+    return true;
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.
@@ -97,4 +122,9 @@ static void _GLOBAL__I__ZN23MissionConditionBeQuickC2Ei()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+MissionConditionBeQuick::~MissionConditionBeQuick()
+{
+    MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
 }
