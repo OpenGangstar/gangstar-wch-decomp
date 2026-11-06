@@ -8,6 +8,42 @@
  * functions of MissionConditionSetUsUpTheBomb.cpp here, in the order they appear in the library.
  */
 
+#include "MissionConditionBeQuick.h"
+#include "../vehicles/Vehicle.h"
+
+class MissionConditionSetUsUpTheBomb : public MissionConditionBeQuick {
+public:
+    MissionConditionSetUsUpTheBomb(int duration, Vehicle* target);
+    virtual ~MissionConditionSetUsUpTheBomb();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+
+private:
+    Vehicle* target;
+};
+
+void MissionConditionSetUsUpTheBomb::draw()
+{
+    MissionConditionBeQuick::draw();
+}
+
+bool MissionConditionSetUsUpTheBomb::evaluate(int elapsed)
+{
+    if (MissionConditionBeQuick::evaluate(elapsed))
+        return true;
+    target->explode();
+    return false;
+}
+
+MissionConditionSetUsUpTheBomb::~MissionConditionSetUsUpTheBomb()
+{
+}
+
+MissionConditionSetUsUpTheBomb::MissionConditionSetUsUpTheBomb(int duration, Vehicle* target)
+    : MissionConditionBeQuick(duration), target(target)
+{
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
