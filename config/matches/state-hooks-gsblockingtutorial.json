@@ -314,7 +314,18 @@
         ".script_reader_ActorFollow",
         ".script_reader_ActorAttack",
         ".script_reader_WaitCheckpointCar",
-        ".script_reader_SetUsUpTheBomb"
+        ".script_reader_SetUsUpTheBomb",
+        ".script_manager_finishReviveAnims",
+        ".script_manager_missionIdle",
+        ".script_manager_drawCinematicBars",
+        ".script_manager_missionResumeFadeOut",
+        ".script_manager_missionSkipFadeOut",
+        ".script_manager_missionSetFailureCount",
+        ".script_manager_missionClearConditions",
+        ".script_manager_missionFail",
+        ".script_manager_message",
+        ".script_manager_missionObjective",
+        ".script_manager_missionStart"
     ],
     "retail_got": true,
     "dependencies": [
@@ -354,6 +365,17 @@
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZN14AnimatedButton7setAnimEi",
         "_ZN10DataStream7ReadIntEv",
-        "_ZN10DataStream21ReadAndAllocateStringEv"
+        "_ZN10DataStream21ReadAndAllocateStringEv",
+        "_ZN6Revive19finishCashLostAnimsEv",
+        "_ZN7Mission4idleEv",
+        "_ZN10AnimObject4DrawEv",
+        "_ZN7Mission13resumeFadeOutEv",
+        "_ZN7Mission11skipFadeOutEv",
+        "_ZN7Mission15setFailureCountEi",
+        "_ZN7Mission15clearConditionsEv",
+        "_ZN7Mission4failEv",
+        "_ZN7Mission7messageEi",
+        "_ZN7Mission9objectiveEib",
+        "_ZN7Mission5startEii"
     ]
 }

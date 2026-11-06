@@ -87,4 +87,15 @@ SECTIONS
     .script_reader_ActorAttack 0x0033ddb0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorAttack4ReadER10DataStream) }
     .script_reader_WaitCheckpointCar 0x0033d54c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs17WaitCheckpointCar4ReadER10DataStream) }
     .script_reader_SetUsUpTheBomb 0x0033dbf8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs14SetUsUpTheBomb4ReadER10DataStream) }
+    .script_manager_finishReviveAnims 0x0033d0f0 : { *script-manager-helpers.o(.text._ZN13ScriptManager17finishReviveAnimsEv) }
+    .script_manager_missionIdle 0x0033d2e0 : { *script-manager-helpers.o(.text._ZN13ScriptManager11missionIdleEv) }
+    .script_manager_drawCinematicBars 0x0033d350 : { *script-manager-helpers.o(.text._ZNK13ScriptManager17drawCinematicBarsEv) }
+    .script_manager_missionResumeFadeOut 0x0033e818 : { *script-manager-helpers.o(.text._ZN13ScriptManager20missionResumeFadeOutEv) }
+    .script_manager_missionSkipFadeOut 0x0033e82c : { *script-manager-helpers.o(.text._ZN13ScriptManager18missionSkipFadeOutEv) }
+    .script_manager_missionSetFailureCount 0x0033e840 : { *script-manager-helpers.o(.text._ZN13ScriptManager22missionSetFailureCountEi) }
+    .script_manager_missionClearConditions 0x0033e854 : { *script-manager-helpers.o(.text._ZN13ScriptManager22missionClearConditionsEv) }
+    .script_manager_missionFail 0x0033e8ac : { *script-manager-helpers.o(.text._ZN13ScriptManager11missionFailEv) }
+    .script_manager_message 0x0033e8c0 : { *script-manager-helpers.o(.text._ZN13ScriptManager7messageEi) }
+    .script_manager_missionObjective 0x0033e8d4 : { *script-manager-helpers.o(.text._ZN13ScriptManager16missionObjectiveEib) }
+    .script_manager_missionStart 0x0033e8e8 : { *script-manager-helpers.o(.text._ZN13ScriptManager12missionStartEii) }
 }
