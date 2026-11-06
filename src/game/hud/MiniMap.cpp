@@ -80,6 +80,19 @@ void MiniMap::deregisterForMapTracking(LevelObject* object)
     }
 }
 
+MiniMap::~MiniMap()
+{
+    TrackingLink* link = trackedObjects.next;
+    TrackingLink* const end = &trackedObjects;
+    if (link != end) {
+        do {
+            delete static_cast<TrackingNode*>(link)->marker;
+            link = link->next;
+        } while (link != end);
+    }
+    clearTrackedObjects(link);
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

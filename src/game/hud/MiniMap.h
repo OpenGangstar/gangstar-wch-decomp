@@ -9,6 +9,9 @@ class AnimObject;
 // Observed base and tracking calls. The remaining layout is unrecovered.
 class MiniMap : public VirtualButton {
 public:
+    virtual ~MiniMap();
+    virtual void update(double elapsed);
+    virtual void draw2d() const;
     void registerForMapTracking(LevelObject* object, bool flag);
     void deregisterForMapTracking(LevelObject* object);
     void deregisterAllForMapTracking();

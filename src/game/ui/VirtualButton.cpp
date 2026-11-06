@@ -14,6 +14,7 @@
 #include "../core/GameEventMethods.h"
 #include "../input/TouchScreenBase.h"
 #include "../core/EventManager.h"
+#include "VirtualButtonDestructor.h"
 
 class EvVirtualButton : public IEvent {
 public:

@@ -13,6 +13,7 @@
 #include "../core/ASprite.h"
 #include "../core/Color.h"
 #include "../core/SafeDelete.h"
+#include "VirtualButtonDestructor.h"
 
 template void SafeDelete<AnimObject>(AnimObject*&);
 
