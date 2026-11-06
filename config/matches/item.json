@@ -392,6 +392,8 @@
         "_ZN18AchievementManager19recordBadgesEscapedEi",
         "_ZN18AchievementManager17recordDroppedCashEi",
         "_ZN18AchievementManager11recordArmorERK4Item",
-        "_ZN18AchievementManager16recordHealthPackERK4Item"
+        "_ZN18AchievementManager16recordHealthPackERK4Item",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev"
     ]
 }

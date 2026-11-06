@@ -105,7 +105,13 @@
         {
             "name": "__tcf_10",
             "address": "0x002df605"
-        }
+        },
+        {
+            "name": "__tcf_0",
+            "address": "0x002dbb3d",
+            "compiled_name": "__tcf_3"
+        },
+        "_ZN9AIManager11getInstanceEv"
     ],
     "sections": [
         ".wanted_singleton",
@@ -176,7 +182,9 @@
         ".gs3d_startup_function_1",
         ".gs3d_startup_function_2",
         ".gs3d_startup_function_3",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".ai_manager_cleanup",
+        ".ai_manager_singleton"
     ],
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
@@ -193,7 +201,9 @@
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZNK10PlayerTest15getAmbientSoundEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
-        "_ZN11CHudManager4showEv"
+        "_ZN11CHudManager4showEv",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev"
     ],
     "dependencies": [
         "stream",

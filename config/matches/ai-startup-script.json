@@ -60,6 +60,11 @@
             "name": "__tcf_5",
             "address": "0x003391d5",
             "compiled_name": "__tcf_1"
+        },
+        {
+            "name": "__tcf_3",
+            "address": "0x003391b9",
+            "compiled_name": "__tcf_2"
         }
     ],
     "sections": [
@@ -76,7 +81,8 @@
         ".script_execute_subscript",
         ".script_execute",
         ".wanted_cleanup",
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".ai_manager_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -94,6 +100,8 @@
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev"
     ]
 }

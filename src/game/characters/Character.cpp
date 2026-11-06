@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../ai/AIManagerSingleton.h"
 
 void operator delete(void*) throw();
 extern "C" {

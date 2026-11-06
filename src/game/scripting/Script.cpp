@@ -107,6 +107,7 @@ void Script::execute(int elapsed)
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
+#include "../ai/AIManagerSingleton.h"
 
 void operator delete(void*) throw();
 extern "C" {
