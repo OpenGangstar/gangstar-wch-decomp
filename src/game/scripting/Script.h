@@ -3,7 +3,12 @@
 
 #include "../characters/PlayerTest.h"
 
-namespace Structs { struct ScriptCommand; }
+namespace Structs {
+struct ScriptCommand {
+    int opcode;
+    int argument;
+};
+}
 
 // Partial layout. The script storage beyond the observed fields is unresolved.
 class Script {

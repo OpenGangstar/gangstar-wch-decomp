@@ -12031,7 +12031,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033d141	0x54	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager12playerDrivesEP7Vehicle	ScriptManager::playerDrives(Vehicle*)
 0x0033d195	0x24	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager14hideSkipButtonEv	ScriptManager::hideSkipButton()
 0x0033d1b9	0x28	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager14showSkipButtonEv	ScriptManager::showSkipButton()
-0x0033d1e1	0x4a	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager27getFirstAvailableCheckpointEv	ScriptManager::getFirstAvailableCheckpoint() const
+0x0033d1e1	0x4a	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager27getFirstAvailableCheckpointEv	ScriptManager::getFirstAvailableCheckpoint() const
 0x0033d22d	0x44	ScriptManager.cpp	stlport	-	matched	_ZNSaIP6ScriptE8allocateEjRj	std::allocator<Script*>::allocate(unsigned int, unsigned int&)
 0x0033d271	0x70	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager19reachRunningCommandEi	ScriptManager::reachRunningCommand(int)
 0x0033d2e1	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager11missionIdleEv	ScriptManager::missionIdle()
