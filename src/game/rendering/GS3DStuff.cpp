@@ -21,6 +21,7 @@
 #include "../audio/SoundManager.h"
 #include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"
+#include "../core/EventManager.h"
 
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)
 {

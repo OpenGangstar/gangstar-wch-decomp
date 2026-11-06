@@ -1,0 +1,55 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "src/game/scripting/EventManager.cpp",
+    "linker_script": "config/linker/EventManager.ld",
+    "functions": [
+        "_ZN12EventManagerC1Ev",
+        "_ZN12EventManagerC2Ev",
+        "_ZNK12EventManager6_traceEPKc",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZNK12EventManager10raiseAsyncEPK6IEvent",
+        "_ZN12EventManager7refreshEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN12EventManager5raiseEPK6IEvent",
+        "_ZN12EventManager6updateEd",
+        "_ZN12EventManagerD0Ev",
+        "_ZN12EventManagerD1Ev",
+        "_ZN12EventManagerD2Ev"
+    ],
+    "sections": [
+        ".event_manager_vtable",
+        ".updatable_vtable",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN12EventManager7_attachEiP14IEventReceiver",
+        "_ZN12EventManager7_detachEiP14IEventReceiver"
+    ]
+}
