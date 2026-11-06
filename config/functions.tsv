@@ -12011,17 +12011,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033cf55	0x62	Script.cpp	game	scripting	pending	_ZN6Script7executeEi	Script::execute(int)
 0x0033cfb9	0x32	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManagerC1Ev	ScriptManager::ScriptManager()
 0x0033cfb9	0x32	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManagerC2Ev	ScriptManager::ScriptManager()
-0x0033cfed	0xe	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager12taggedKilledEv	ScriptManager::taggedKilled()
+0x0033cfed	0xe	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12taggedKilledEv	ScriptManager::taggedKilled()
 0x0033cffd	0x8	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager6resumeEv	ScriptManager::resume()
-0x0033d005	0x2	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE	ScriptManager::printCommand(Structs::ScriptCommand const&)
-0x0033d009	0x18	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager9addScriptEP6Script	ScriptManager::addScript(Script*)
-0x0033d021	0x14	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager10findScriptEi	ScriptManager::findScript(int) const
+0x0033d005	0x2	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE	ScriptManager::printCommand(Structs::ScriptCommand const&)
+0x0033d009	0x18	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager9addScriptEP6Script	ScriptManager::addScript(Script*)
+0x0033d021	0x14	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager10findScriptEi	ScriptManager::findScript(int) const
 0x0033d035	0x8	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager20skipBlockingCommandsEv	ScriptManager::skipBlockingCommands()
-0x0033d03d	0x10	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager26areBlockingCommandsSkippedEv	ScriptManager::areBlockingCommandsSkipped() const
-0x0033d04d	0x22	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager13isInCinematicEv	ScriptManager::isInCinematic() const
-0x0033d071	0x1a	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager19isSkipButtonVisibleEv	ScriptManager::isSkipButtonVisible() const
+0x0033d03d	0x10	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager26areBlockingCommandsSkippedEv	ScriptManager::areBlockingCommandsSkipped() const
+0x0033d04d	0x22	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager13isInCinematicEv	ScriptManager::isInCinematic() const
+0x0033d071	0x1a	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager19isSkipButtonVisibleEv	ScriptManager::isSkipButtonVisible() const
 0x0033d08d	0x4	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager10getMissionEv	ScriptManager::getMission() const
-0x0033d091	0x14	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager15getFailureCauseEv	ScriptManager::getFailureCause()
+0x0033d091	0x14	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager15getFailureCauseEv	ScriptManager::getFailureCause()
 0x0033d0a5	0x4	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager22getCinematicsHudSpriteEv	ScriptManager::getCinematicsHudSprite() const
 0x0033d0a9	0x4	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager7getRaceEv	ScriptManager::getRace() const
 0x0033d0ad	0x12	ScriptManager.cpp	stlport	-	matched	_ZNSt6vectorIP6ScriptSaIS1_EE8_M_clearEv	std::vector<Script*, std::allocator<Script*> >::_M_clear()

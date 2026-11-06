@@ -37,6 +37,7 @@ _ZN32retail_scriptmanager_transitions11guard_transE = 0x0042f938;
 _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
+INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
     .hook_0 0x002e12f4 : { *state-hooks-gscarrentalmenu.o(.text._ZN15GSCarRentalMenu6updateEP12StateMachine .gnu.linkonce.t._ZN15GSCarRentalMenu6updateEP12StateMachine) }

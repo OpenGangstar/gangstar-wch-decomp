@@ -9,6 +9,7 @@
  */
 
 #include "ScriptManager.h"
+#include "../hud/HudElement.h"
 
 void ScriptManager::resume() { paused = false; }
 
@@ -19,6 +20,48 @@ void* ScriptManager::getMission() const { return mission; }
 void* ScriptManager::getCinematicsHudSprite() const { return cinematicsHudSprite; }
 
 void* ScriptManager::getRace() const { return race; }
+
+void ScriptManager::taggedKilled()
+{
+    if (taggedCount > 0)
+        --taggedCount;
+}
+
+void ScriptManager::printCommand(const Structs::ScriptCommand&) {}
+
+void ScriptManager::addScript(Script* script)
+{
+    if (scriptCount < scriptCapacity)
+        scripts[scriptCount++] = script;
+}
+
+Script* ScriptManager::findScript(int id) const
+{
+    if (id < scriptCount)
+        return scripts[id];
+    return 0;
+}
+
+bool ScriptManager::areBlockingCommandsSkipped() const
+{
+    return static_cast<int>(commandCursor) > 0;
+}
+
+bool ScriptManager::isInCinematic() const
+{
+    return cinematicState == 1 || cinematicState == 3 || cinematicState == 2 ||
+           cinematicState == 4 || cinematicState == 6 || cinematicState == 5;
+}
+
+bool ScriptManager::isSkipButtonVisible() const
+{
+    return skipButton && skipButton->isVisible();
+}
+
+int ScriptManager::getFailureCause()
+{
+    return s_failure;
+}
 
 // Recovered module startup family; storage remains local to this TU.
 #include "../core/LocalStartupStorage.h"
