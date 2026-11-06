@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fno-tree-ch"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -37,7 +38,9 @@
             "name": "_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii",
             "address": "0x003298b9"
         },
-        "_ZN7MiniMap27deregisterAllForMapTrackingEv"
+        "_ZN7MiniMap27deregisterAllForMapTrackingEv",
+        "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
+        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -48,10 +51,14 @@
             "name": ".got",
             "offset": 864
         },
-        ".minimap_deregister"
+        ".minimap_deregister",
+        ".minimap_register",
+        ".minimap_deregister_one"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN10AnimObjectD1Ev"
+        "_ZN10AnimObjectD1Ev",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10AnimObject7SetAnimEi"
     ]
 }

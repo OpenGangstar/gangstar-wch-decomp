@@ -20,6 +20,7 @@ class LevelObject {
     friend class GameObjectList;
     friend class GameObjectManager;
     friend class ScriptManager;
+    friend class MiniMap;
 public:
     LevelObject(int id);
     unsigned char getObjectType() const { return objectType; }

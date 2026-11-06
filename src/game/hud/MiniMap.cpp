@@ -10,6 +10,7 @@
 
 #include "MiniMap.h"
 #include "../characters/AnimObject.h"
+#include "../world/LevelObject.h"
 
 // Imported STLport list operation for the retail TrackableObject specialization.
 extern "C" void clearTrackedObjects(void*)
@@ -27,6 +28,56 @@ void MiniMap::deregisterAllForMapTracking()
         } while (end != link);
     }
     clearTrackedObjects(&trackedObjects);
+}
+
+// Imported STLport allocator for the retail tracking node specialization.
+extern "C" void* allocateTrackingNode(void*, unsigned int, const void*)
+    __asm__("_ZNSaIN9stlp_priv10_List_nodeIN7MiniMap15TrackableObjectEEEE8allocateEjPKv")
+    __attribute__((weak));
+
+void MiniMap::registerForMapTracking(LevelObject* object, bool flag)
+{
+    if (object->unknown44 == -1)
+        return;
+
+    TrackingLink* const end = &trackedObjects;
+    for (TrackingLink* link = trackedObjects.next; end != link; link = link->next) {
+        if (__builtin_expect(static_cast<TrackingNode*>(link)->object == object, 0))
+            return;
+    }
+
+    AnimObject* marker = new AnimObject;
+    marker->sprite = sprite;
+    marker->SetAnim(object->unknown44);
+
+    TrackingNode* node = static_cast<TrackingNode*>(allocateTrackingNode(end, 1, 0));
+    node->flag = flag;
+    node->marker = marker;
+    node->object = object;
+    TrackingLink* previous = trackedObjects.previous;
+    node->next = end;
+    node->previous = previous;
+    previous->next = node;
+    trackedObjects.previous = node;
+}
+
+void MiniMap::deregisterForMapTracking(LevelObject* object)
+{
+    if (object->unknown44 == -1)
+        return;
+
+    for (TrackingLink* link = trackedObjects.next; link != &trackedObjects; link = link->next) {
+        TrackingNode* node = static_cast<TrackingNode*>(link);
+        if (__builtin_expect(node->object == object, 0)) {
+            delete node->marker;
+            TrackingLink* next = node->next;
+            TrackingLink* previous = node->previous;
+            previous->next = next;
+            next->previous = previous;
+            delete node;
+            return;
+        }
+    }
 }
 
 // Recovered translation-unit SDK startup callbacks.
