@@ -11327,11 +11327,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003295a5	0xd4	MiniMap.cpp	game	hud	pending	_ZN7MiniMapC2EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)
 0x00329679	0x80	MiniMap.cpp	game	hud	matched	_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb	MiniMap::registerForMapTracking(LevelObject*, bool)
 0x003296f9	0x42	MiniMap.cpp	game	hud	matched	_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject	MiniMap::deregisterForMapTracking(LevelObject*)
-0x0032973c	0x14	MiniMap.cpp	game	hud	pending	_ZThn4_N7MiniMapD0Ev	non-virtual thunk to MiniMap::~MiniMap()
-0x00329751	0x78	MiniMap.cpp	game	hud	pending	_ZN7MiniMapD0Ev	MiniMap::~MiniMap()
-0x003297c8	0x14	MiniMap.cpp	game	hud	pending	_ZThn4_N7MiniMapD1Ev	non-virtual thunk to MiniMap::~MiniMap()
-0x003297dd	0x70	MiniMap.cpp	game	hud	pending	_ZN7MiniMapD2Ev	MiniMap::~MiniMap()
-0x003297dd	0x70	MiniMap.cpp	game	hud	pending	_ZN7MiniMapD1Ev	MiniMap::~MiniMap()
+0x0032973c	0x14	MiniMap.cpp	game	hud	matched	_ZThn4_N7MiniMapD0Ev	non-virtual thunk to MiniMap::~MiniMap()
+0x00329751	0x78	MiniMap.cpp	game	hud	matched	_ZN7MiniMapD0Ev	MiniMap::~MiniMap()
+0x003297c8	0x14	MiniMap.cpp	game	hud	matched	_ZThn4_N7MiniMapD1Ev	non-virtual thunk to MiniMap::~MiniMap()
+0x003297dd	0x70	MiniMap.cpp	game	hud	matched	_ZN7MiniMapD2Ev	MiniMap::~MiniMap()
+0x003297dd	0x70	MiniMap.cpp	game	hud	matched	_ZN7MiniMapD1Ev	MiniMap::~MiniMap()
 0x0032984d	0x6c	MiniMap.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003298b9	0x14	MiniMap.cpp	game	hud	matched	_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii	_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii
 0x003298cd	0x30	MiniMap.cpp	game	hud	matched	__tcf_5	__tcf_5

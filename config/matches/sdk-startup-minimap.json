@@ -40,7 +40,12 @@
         },
         "_ZN7MiniMap27deregisterAllForMapTrackingEv",
         "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
-        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject"
+        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject",
+        "_ZThn4_N7MiniMapD0Ev",
+        "_ZN7MiniMapD0Ev",
+        "_ZThn4_N7MiniMapD1Ev",
+        "_ZN7MiniMapD1Ev",
+        "_ZN7MiniMapD2Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -53,7 +58,12 @@
         },
         ".minimap_deregister",
         ".minimap_register",
-        ".minimap_deregister_one"
+        ".minimap_deregister_one",
+        ".minimap_delete_thunk",
+        ".minimap_delete",
+        ".minimap_destroy_thunk",
+        ".minimap_destroy",
+        ".minimap_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [

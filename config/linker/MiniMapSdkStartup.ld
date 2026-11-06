@@ -6,6 +6,11 @@ __aeabi_atexit = 0x001c494c;
 _Znwj = 0x001c4814;
 SECTIONS
 {
+    .minimap_delete_thunk 0x0032973c : { *sdk-startup-minimap.o(.text._ZThn4_N7MiniMapD0Ev) }
+    .minimap_delete 0x00329750 : { *sdk-startup-minimap.o(.text._ZN7MiniMapD0Ev) }
+    .minimap_destroy_thunk 0x003297c8 : { *sdk-startup-minimap.o(.text._ZThn4_N7MiniMapD1Ev) }
+    .minimap_destroy 0x003297dc : { *sdk-startup-minimap.o(.text._ZN7MiniMapD1Ev .text._ZN7MiniMapD2Ev) }
+    .minimap_vtable 0x004ac4b0 : { *sdk-startup-minimap.o(.data.rel.ro._ZTV7MiniMap) }
     .minimap_deregister_one 0x003296f8 : { *sdk-startup-minimap.o(.text._ZN7MiniMap24deregisterForMapTrackingEP11LevelObject) }
     .minimap_register 0x00329678 : { *sdk-startup-minimap.o(.text._ZN7MiniMap22registerForMapTrackingEP11LevelObjectb) }
     .minimap_deregister 0x00329564 : { *sdk-startup-minimap.o(.text._ZN7MiniMap27deregisterAllForMapTrackingEv) }
