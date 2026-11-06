@@ -20,6 +20,8 @@ public:
     void setState(State state, PlayerTest::eContext context);
     void unlockScript(int id);
     void freezeScript(int id);
+    void rewind();
+    void finalize();
 
 private:
     unsigned char unknown0[24];

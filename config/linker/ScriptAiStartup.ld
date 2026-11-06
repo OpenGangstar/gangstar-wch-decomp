@@ -15,6 +15,7 @@ _ZN25retail_script_transitions11guard_transE = 0x0042eef4;
 _ZN25retail_script_transitions22scripted_vehicle_transE = 0x0042ef9c;
 SECTIONS
 {
+    .script_finalize 0x00339c80 : { *ai-startup-script.o(.text._ZN6Script8finalizeEv) }
     .ai_startup_function_0 0x00339148 : { *ai-startup-script.o(.text.__tcf_6) }
     .ai_startup_function_1 0x003393ec : { *ai-startup-script.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00339530 : { *ai-startup-script.o(.text._GLOBAL__I__ZN6Script16s_driveBadPointsE) }
