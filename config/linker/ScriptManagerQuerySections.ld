@@ -9,4 +9,51 @@ SECTIONS
     .script_manager_cinematic 0x0033d04c : { *script-manager-helpers.o(.text._ZNK13ScriptManager13isInCinematicEv) }
     .script_manager_skip_visible 0x0033d070 : { *script-manager-helpers.o(.text._ZNK13ScriptManager19isSkipButtonVisibleEv) }
     .script_manager_failure 0x0033d090 : { *script-manager-helpers.o(.text._ZN13ScriptManager15getFailureCauseEv) }
+    .script_reader_WaitWantedLevel 0x0033d424 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs15WaitWantedLevel4ReadER10DataStream) }
+    .script_reader_WaitStolen 0x0033d440 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10WaitStolen4ReadER10DataStream) }
+    .script_reader_WaitShot 0x0033d45c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs8WaitShot4ReadER10DataStream) }
+    .script_reader_WaitPathEnded 0x0033d478 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs13WaitPathEnded4ReadER10DataStream) }
+    .script_reader_WaitKilled 0x0033d494 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10WaitKilled4ReadER10DataStream) }
+    .script_reader_WaitForStop 0x0033d4d4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11WaitForStop4ReadER10DataStream) }
+    .script_reader_WaitForLock 0x0033d4f0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11WaitForLock4ReadER10DataStream) }
+    .script_reader_WaitCheckpoint 0x0033d530 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs14WaitCheckpoint4ReadER10DataStream) }
+    .script_reader_Wait 0x0033d574 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs4Wait4ReadER10DataStream) }
+    .script_reader_UnlockShop 0x0033d5b4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10UnlockShop4ReadER10DataStream) }
+    .script_reader_UnlockScript 0x0033d5d0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12UnlockScript4ReadER10DataStream) }
+    .script_reader_TagForKill 0x0033d5ec : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10TagForKill4ReadER10DataStream) }
+    .script_reader_StopSfx 0x0033d608 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7StopSfx4ReadER10DataStream) }
+    .script_reader_StopObject 0x0033d624 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10StopObject4ReadER10DataStream) }
+    .script_reader_StopMusic 0x0033d640 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs9StopMusic4ReadER10DataStream) }
+    .script_reader_StartRace 0x0033d688 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs9StartRace4ReadER10DataStream) }
+    .script_reader_SetWantedLevel 0x0033d6f4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs14SetWantedLevel4ReadER10DataStream) }
+    .script_reader_SetPhotoTarget 0x0033d710 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs14SetPhotoTarget4ReadER10DataStream) }
+    .script_reader_SetMe 0x0033d72c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs5SetMe4ReadER10DataStream) }
+    .script_reader_SetDecal 0x0033d748 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs8SetDecal4ReadER10DataStream) }
+    .script_reader_Release 0x0033d7d8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7Release4ReadER10DataStream) }
+    .script_reader_RaiseWantedLevel 0x0033d7f4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs16RaiseWantedLevel4ReadER10DataStream) }
+    .script_reader_PlaySfx 0x0033d858 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7PlaySfx4ReadER10DataStream) }
+    .script_reader_PlayScript 0x0033d874 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10PlayScript4ReadER10DataStream) }
+    .script_reader_PlayMusic 0x0033d890 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs9PlayMusic4ReadER10DataStream) }
+    .script_reader_MissionStart 0x0033d93c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12MissionStart4ReadER10DataStream) }
+    .script_reader_MissionObjective 0x0033d958 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs16MissionObjective4ReadER10DataStream) }
+    .script_reader_LockShop 0x0033d974 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs8LockShop4ReadER10DataStream) }
+    .script_reader_LockScript 0x0033d990 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10LockScript4ReadER10DataStream) }
+    .script_reader_LimitToWeapon 0x0033d9ac : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs13LimitToWeapon4ReadER10DataStream) }
+    .script_reader_KillNPC 0x0033d9c8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7KillNPC4ReadER10DataStream) }
+    .script_reader_HudHighlight 0x0033d9e4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12HudHighlight4ReadER10DataStream) }
+    .script_reader_GiveWeapon 0x0033da00 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10GiveWeapon4ReadER10DataStream) }
+    .script_reader_FlagAsInRace 0x0033da1c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12FlagAsInRace4ReadER10DataStream) }
+    .script_reader_FadeOut 0x0033da38 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7FadeOut4ReadER10DataStream) }
+    .script_reader_FadeIn 0x0033da54 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs6FadeIn4ReadER10DataStream) }
+    .script_reader_DropWantedLevel 0x0033da94 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs15DropWantedLevel4ReadER10DataStream) }
+    .script_reader_Disable 0x0033dab0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7Disable4ReadER10DataStream) }
+    .script_reader_DestroyCar 0x0033daf8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10DestroyCar4ReadER10DataStream) }
+    .script_reader_DebugScript 0x0033db14 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11DebugScript4ReadER10DataStream) }
+    .script_reader_CamDefault 0x0033dbc0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10CamDefault4ReadER10DataStream) }
+    .script_reader_BeQuick 0x0033dbdc : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7BeQuick4ReadER10DataStream) }
+    .script_reader_AttackAsGood 0x0033dc20 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12AttackAsGood4ReadER10DataStream) }
+    .script_reader_AttackAsBad 0x0033dc3c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11AttackAsBad4ReadER10DataStream) }
+    .script_reader_ActorStopFollow 0x0033dccc : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs15ActorStopFollow4ReadER10DataStream) }
+    .script_reader_ActorLoopPath 0x0033dd30 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs13ActorLoopPath4ReadER10DataStream) }
+    .script_reader_ActorGetOut 0x0033dd4c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorGetOut4ReadER10DataStream) }
 }

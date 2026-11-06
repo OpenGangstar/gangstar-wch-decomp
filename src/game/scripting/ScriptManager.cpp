@@ -10,6 +10,7 @@
 
 #include "ScriptManager.h"
 #include "../hud/HudElement.h"
+#include "../persistence/DataStream.h"
 
 void ScriptManager::resume() { paused = false; }
 
@@ -62,6 +63,574 @@ int ScriptManager::getFailureCause()
 {
     return s_failure;
 }
+
+namespace Structs {
+
+struct WaitWantedLevel {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitWantedLevel::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct WaitStolen {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitStolen::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct WaitShot {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitShot::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct WaitPathEnded {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitPathEnded::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct WaitKilled {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitKilled::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct WaitForStop {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitForStop::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct WaitForLock {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitForLock::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct WaitCheckpoint {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void WaitCheckpoint::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct Wait {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void Wait::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct UnlockShop {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void UnlockShop::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct UnlockScript {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void UnlockScript::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct TagForKill {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void TagForKill::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct StopSfx {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void StopSfx::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct StopObject {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void StopObject::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct StopMusic {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void StopMusic::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct StartRace {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void StartRace::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct SetWantedLevel {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetWantedLevel::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct SetPhotoTarget {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetPhotoTarget::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct SetMe {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetMe::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct SetDecal {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void SetDecal::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct Release {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void Release::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct RaiseWantedLevel {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void RaiseWantedLevel::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct PlaySfx {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void PlaySfx::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct PlayScript {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void PlayScript::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct PlayMusic {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void PlayMusic::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct MissionStart {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void MissionStart::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct MissionObjective {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void MissionObjective::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct LockShop {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void LockShop::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct LockScript {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void LockScript::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct LimitToWeapon {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void LimitToWeapon::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct KillNPC {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void KillNPC::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct HudHighlight {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void HudHighlight::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct GiveWeapon {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void GiveWeapon::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct FlagAsInRace {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void FlagAsInRace::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct FadeOut {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void FadeOut::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct FadeIn {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void FadeIn::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct DropWantedLevel {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void DropWantedLevel::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct Disable {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void Disable::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct DestroyCar {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void DestroyCar::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct DebugScript {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void DebugScript::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct CamDefault {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void CamDefault::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct BeQuick {
+    int opcode;
+    int argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void BeQuick::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadInt();
+}
+
+struct AttackAsGood {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void AttackAsGood::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct AttackAsBad {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void AttackAsBad::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct ActorStopFollow {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorStopFollow::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct ActorLoopPath {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorLoopPath::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+struct ActorGetOut {
+    int opcode;
+    char* argument;
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void ActorGetOut::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+    argument = stream.ReadAndAllocateString();
+}
+
+} // namespace Structs
 
 // Recovered module startup family; storage remains local to this TU.
 #include "../core/LocalStartupStorage.h"
