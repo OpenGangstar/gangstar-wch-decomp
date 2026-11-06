@@ -8,6 +8,60 @@
  * functions of MissionConditionPhotographQuickly.cpp here, in the order they appear in the library.
  */
 
+#include "IMissionCondition.h"
+#include "../characters/PlayerTest.h"
+#include "MissionTimerText.h"
+#include "../world/LevelObject.h"
+
+class MissionConditionPhotographQuickly : public IMissionCondition {
+public:
+    MissionConditionPhotographQuickly(LevelObject* target, int duration);
+    virtual ~MissionConditionPhotographQuickly();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+
+private:
+    int duration;
+    bool photographed;
+    LevelObject* target;
+};
+
+void MissionConditionPhotographQuickly::draw()
+{
+}
+
+bool MissionConditionPhotographQuickly::evaluate(int elapsed)
+{
+    if (!photographed && target->isPhotographed()) {
+        photographed = true;
+        PlayerTest::GetPlayer()->clearPhotoTargets();
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+        duration = 0;
+    }
+
+    if (duration > 0) {
+        char text[8];
+        showMissionTimer(text, duration);
+        duration -= elapsed;
+        return true;
+    }
+
+    return photographed;
+}
+
+MissionConditionPhotographQuickly::MissionConditionPhotographQuickly(LevelObject* target, int duration)
+    : target(target)
+{
+    this->duration = duration;
+    photographed = false;
+    PlayerTest::GetPlayer()->addPhotoTarget(target);
+}
+
+MissionConditionPhotographQuickly::~MissionConditionPhotographQuickly()
+{
+    MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

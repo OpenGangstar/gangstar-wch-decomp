@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -36,7 +37,14 @@
         {
             "name": "_GLOBAL__I__ZN33MissionConditionPhotographQuicklyC2EP11LevelObjecti",
             "address": "0x00337629"
-        }
+        },
+        "_ZN33MissionConditionPhotographQuickly4drawEv",
+        "_ZN33MissionConditionPhotographQuickly8evaluateEi",
+        "_ZN33MissionConditionPhotographQuicklyC2EP11LevelObjecti",
+        "_ZN33MissionConditionPhotographQuicklyC1EP11LevelObjecti",
+        "_ZN33MissionConditionPhotographQuicklyD0Ev",
+        "_ZN33MissionConditionPhotographQuicklyD2Ev",
+        "_ZN33MissionConditionPhotographQuicklyD1Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +54,22 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".mission_photo_0033739c",
+        ".mission_photo_003373d0",
+        ".mission_photo_003374b4",
+        ".mission_photo_0033763c",
+        ".mission_photo_0033767c",
+        ".mission_photo_vtable",
+        ".mission_photo_format"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN10PlayerTest14addPhotoTargetEP11LevelObject",
+        "_ZN10PlayerTest17clearPhotoTargetsEv",
+        "_ZNK17IMissionCondition5causeEv"
+    ]
 }

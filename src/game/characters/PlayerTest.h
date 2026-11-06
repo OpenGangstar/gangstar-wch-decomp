@@ -82,6 +82,8 @@ public:
     using SavePositionInterface::getWeapon;
     enum eContext { Context0 = 0, Context1 = 1, AnyContext = -1 };
     static PlayerTest* GetPlayer();
+    void addPhotoTarget(LevelObject* target);
+    void clearPhotoTargets();
     // Inline access to the observed target at offset 264; no standalone symbol claimed.
     LevelObject* getTarget() const { return target; }
     int getAmbientSound() const;

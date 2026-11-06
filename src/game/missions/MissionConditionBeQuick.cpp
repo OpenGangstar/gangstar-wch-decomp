@@ -9,10 +9,8 @@
  */
 
 #include "MissionConditionBeQuick.h"
-#include "../hud/MenuManager.h"
+#include "MissionTimerText.h"
 #include "../scripting/ScriptManager.h"
-
-extern "C" int sprintf(char*, const char*, ...);
 
 inline __attribute__((used)) int IMissionCondition::cause() const
 {
@@ -28,9 +26,7 @@ void MissionConditionBeQuick::draw()
 {
 }
 
-inline __attribute__((used)) IMissionCondition::~IMissionCondition()
-{
-}
+inline __attribute__((used)) IMissionCondition::~IMissionCondition();
 
 bool MissionConditionBeQuick::evaluate(int elapsed)
 {
@@ -41,11 +37,7 @@ bool MissionConditionBeQuick::evaluate(int elapsed)
 
     if (!ScriptManager::getInstance()->isInCinematic()) {
         char text[8];
-        int minutes = duration / 60000;
-        int seconds = (duration / 1000) % 60;
-        int tenths = (duration % 1000) / 100;
-        sprintf(text, "%02d:%02d:%01d", minutes, seconds, tenths);
-        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, text, 0);
+        showMissionTimer(text, duration);
         duration -= elapsed;
     } else if (MenuManager::getInstance()->getText(MenuManager::MissionTimerText)) {
         MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
