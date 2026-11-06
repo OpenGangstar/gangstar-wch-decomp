@@ -10,7 +10,11 @@
 
 #include "Revive.h"
 #include "../characters/AnimObject.h"
-#include "../hud/HudElement.h"
+#include "WantedLevelManager.h"
+#include "../app/Application.h"
+#include "../characters/PlayerTest.h"
+#include "../hud/CHudManager.h"
+#include "../ui/Cash.h"
 
 void Revive::finishCashLostAnims()
 {
@@ -102,4 +106,28 @@ Revive::~Revive()
     delete cashLost;
     delete cashRemaining;
     delete cash;
+}
+
+
+Revive::Revive(bool busted)
+    : busted(busted), cashAnimationTime(0)
+{
+    ASprite* sprite = Application::GetInstance()->GetHudManager()->reviveSprite;
+    cashLost = new AnimObject;
+    cashLost->sprite = sprite;
+    cashRemaining = new AnimObject;
+    cashRemaining->sprite = sprite;
+    unknown12 = 0;
+    cash = new Cash(sprite, 75, 74, 85, 85, 73);
+
+    int penalty = 200;
+    if (this->busted)
+        penalty = (WantedLevelManager::getInstance()->unknown8 + 1) * 50;
+    if (penalty > PlayerTest::GetPlayer()->cash)
+        penalty = PlayerTest::GetPlayer()->cash;
+    cash->SetCash(penalty);
+    cash->AlignLeft();
+    cash->SetPosition(8, 152);
+    PlayerTest::GetPlayer()->subCash(penalty);
+    state = 2;
 }

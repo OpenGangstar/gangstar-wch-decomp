@@ -13,8 +13,10 @@ _ZN25retail_revive_transitions17civ_vehicle_transE = 0x0042e5f8;
 _ZN25retail_revive_transitions17cop_vehicle_transE = 0x0042e688;
 _ZN25retail_revive_transitions11guard_transE = 0x0042e73c;
 _ZN25retail_revive_transitions22scripted_vehicle_transE = 0x0042e7e4;
+_Znwj = 0x001c4814;
 SECTIONS
 {
+    .revive_construct 0x00338e78 : { *ai-startup-revive.o(.text._ZN6ReviveC1Eb .text._ZN6ReviveC2Eb) }
     .revive_finish 0x00338b54 : { *ai-startup-revive.o(.text._ZN6Revive19finishCashLostAnimsEv) }
     .revive_draw 0x00338b8c : { *ai-startup-revive.o(.text._ZN6Revive6draw2dEv) }
     .revive_destroy 0x00338be8 : { *ai-startup-revive.o(.text._ZN6ReviveD1Ev .text._ZN6ReviveD2Ev) }

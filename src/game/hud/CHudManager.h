@@ -2,6 +2,7 @@
 #define WCH_HUD_CHUD_MANAGER_H
 
 class AnalogStick;
+class ASprite;
 class AnimatedButton;
 class HudElement;
 class IHud;
@@ -31,7 +32,8 @@ public:
     IHud* drivingHud;
     IHud* sniperHud;
     IHud* cameraHud;
-    unsigned char unknown24[12];
+    unsigned char unknown24[8];
+    ASprite* reviveSprite;
     AnalogStick* analogStick;
     unsigned char unknown40[28];
     HudElement* enterCarButton;
