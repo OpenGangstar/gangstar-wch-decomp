@@ -9,8 +9,14 @@
  */
 
 #include "../hud/MenuManager.h"
+#include "../hud/TargetMarker.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+
+void MenuManager::cleanupMap()
+{
+    TargetMarker::getInstance()->setEnabled(true);
+}
 
 void MenuManager::resetWidgetVisibility() { widgetVisibility = false; }
 
