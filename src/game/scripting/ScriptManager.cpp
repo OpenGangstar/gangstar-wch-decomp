@@ -20,6 +20,33 @@
 extern bool bIsInCutscene;
 void operator delete(void*) throw();
 
+ScriptManager::ScriptManager()
+{
+    paused = false;
+    cutsceneSkipped = false;
+    unknown78 = true;
+    scripts = 0;
+    scriptCapacity = 0;
+    scriptCount = 0;
+    unknown12 = 0;
+    cinematicState = 0;
+    commandCursor = 0;
+    mission = 0;
+    revive = 0;
+    race = 0;
+    unknown84 = 1;
+    unknown88 = 0;
+    unknown92 = 0;
+    unknown100 = -1;
+    unknown104 = 0;
+}
+
+ScriptManager* ScriptManager::getInstance()
+{
+    static ScriptManager scrmgr;
+    return &scrmgr;
+}
+
 void ScriptManager::resume() { paused = false; }
 
 void ScriptManager::skipBlockingCommands() { ++commandCursor; }

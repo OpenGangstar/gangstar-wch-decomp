@@ -12009,8 +12009,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033ce19	0xfc	Script.cpp	game	scripting	pending	_ZN6Script11nextCommandEi	Script::nextCommand(int)
 0x0033cf15	0x40	Script.cpp	game	scripting	pending	_ZN6Script16executeSubScriptEii	Script::executeSubScript(int, int)
 0x0033cf55	0x62	Script.cpp	game	scripting	pending	_ZN6Script7executeEi	Script::execute(int)
-0x0033cfb9	0x32	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManagerC1Ev	ScriptManager::ScriptManager()
-0x0033cfb9	0x32	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManagerC2Ev	ScriptManager::ScriptManager()
+0x0033cfb9	0x32	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerC1Ev	ScriptManager::ScriptManager()
+0x0033cfb9	0x32	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerC2Ev	ScriptManager::ScriptManager()
 0x0033cfed	0xe	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12taggedKilledEv	ScriptManager::taggedKilled()
 0x0033cffd	0x8	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager6resumeEv	ScriptManager::resume()
 0x0033d005	0x2	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE	ScriptManager::printCommand(Structs::ScriptCommand const&)
@@ -12037,7 +12037,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033d2e1	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager11missionIdleEv	ScriptManager::missionIdle()
 0x0033d2f5	0x5c	ScriptManager.cpp	game	scripting	pending	_ZNK13ScriptManager8drawFadeEv	ScriptManager::drawFade() const
 0x0033d351	0xe	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager17drawCinematicBarsEv	ScriptManager::drawCinematicBars() const
-0x0033d361	0x54	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager11getInstanceEv	ScriptManager::getInstance()
+0x0033d361	0x54	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager11getInstanceEv	ScriptManager::getInstance()
 0x0033d3b5	0x1c	ScriptManager.cpp	game	scripting	pending	__tcf_3	__tcf_3
 0x0033d3d1	0x20	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22resumeBlockingCommandsEv	ScriptManager::resumeBlockingCommands()
 0x0033d3f1	0x34	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12skipCutsceneEv	ScriptManager::skipCutscene()
@@ -12125,7 +12125,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033e795	0x20	ScriptManager.cpp	game	scripting	matched	_Z10SafeDeleteI6ReviveEvRPT_	void SafeDelete<Revive>(Revive*&)
 0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerD2Ev	ScriptManager::~ScriptManager()
 0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerD1Ev	ScriptManager::~ScriptManager()
-0x0033e7d1	0x1c	ScriptManager.cpp	game	scripting	pending	__tcf_5	__tcf_5
+0x0033e7d1	0x1c	ScriptManager.cpp	game	scripting	matched	__tcf_5	__tcf_5
 0x0033e7ed	0x2c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22respawnFromBustedOrDieEb	ScriptManager::respawnFromBustedOrDie(bool)
 0x0033e819	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager20missionResumeFadeOutEv	ScriptManager::missionResumeFadeOut()
 0x0033e82d	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager18missionSkipFadeOutEv	ScriptManager::missionSkipFadeOut()

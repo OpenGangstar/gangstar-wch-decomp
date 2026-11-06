@@ -148,7 +148,15 @@
         "_Z10SafeDeleteI6ReviveEvRPT_",
         "_ZN13ScriptManagerD1Ev",
         "_ZN13ScriptManagerD2Ev",
-        "_ZN13ScriptManager22respawnFromBustedOrDieEb"
+        "_ZN13ScriptManager22respawnFromBustedOrDieEb",
+        "_ZN13ScriptManagerC1Ev",
+        "_ZN13ScriptManagerC2Ev",
+        "_ZN13ScriptManager11getInstanceEv",
+        {
+            "name": "__tcf_5",
+            "address": "0x0033e7d1",
+            "compiled_name": "__tcf_0"
+        }
     ],
     "sections": [
         ".helper_0",
@@ -269,7 +277,10 @@
         ".script_manager_skipCutscene",
         ".script_manager_delete_revive",
         ".script_manager_destroy",
-        ".script_manager_respawn"
+        ".script_manager_respawn",
+        ".script_manager_construct",
+        ".script_manager_instance",
+        ".script_manager_instance_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [

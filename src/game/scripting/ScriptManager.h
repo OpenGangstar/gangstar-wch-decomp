@@ -13,6 +13,7 @@ namespace Structs { struct ScriptCommand; }
 // Partial storage/call interface observed by SaveGame and Item.
 class ScriptManager {
 public:
+    ScriptManager();
     ~ScriptManager();
     void respawnFromBustedOrDie(bool busted);
     static void displayOnMinimap(LevelObject* object, bool visible, bool flag);
@@ -30,7 +31,7 @@ public:
     Script** scripts;
     int scriptCapacity;
     int scriptCount;
-    unsigned char unknown12[4];
+    int unknown12;
     int cinematicState;
     unsigned int commandCursor;
     unsigned char unknown24[8];
@@ -44,8 +45,14 @@ public:
     HudElement* skipButton;
     bool paused;
     bool cutsceneSkipped;
-    unsigned char unknown78[18];
+    bool unknown78;
+    unsigned char unknown79[5];
+    int unknown84;
+    int unknown88;
+    int unknown92;
     int taggedCount;
+    int unknown100;
+    int unknown104;
 
     void taggedKilled();
     void printCommand(const Structs::ScriptCommand& command);
