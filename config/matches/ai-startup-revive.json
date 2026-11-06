@@ -40,7 +40,9 @@
         "_ZN6Revive19finishCashLostAnimsEv",
         "_ZN6Revive6draw2dEv",
         "_ZN6ReviveD1Ev",
-        "_ZN6ReviveD2Ev"
+        "_ZN6ReviveD2Ev",
+        "_ZN6ReviveC1Eb",
+        "_ZN6ReviveC2Eb"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -53,11 +55,20 @@
         },
         ".revive_finish",
         ".revive_draw",
-        ".revive_destroy"
+        ".revive_destroy",
+        ".revive_construct"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN10AnimObject4DrawEv",
-        "_ZN10AnimObjectD1Ev"
+        "_ZN10AnimObjectD1Ev",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN4CashC1EP7ASpriteiiiii",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN4Cash7SetCashEi",
+        "_ZN4Cash9AlignLeftEv",
+        "_ZN4Cash11SetPositionEii",
+        "_ZN10PlayerTest7subCashEi"
     ]
 }
