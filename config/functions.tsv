@@ -12140,7 +12140,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033e8fd	0x20	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager8saveGameEv	ScriptManager::saveGame()
 0x0033e91d	0x38	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager12loadMissionsEPKc	ScriptManager::loadMissions(char const*)
 0x0033e955	0x20	ScriptManager.cpp	game	scripting	pending	_Z10SafeDeleteI6ScriptEvRPT_	void SafeDelete<Script>(Script*&)
-0x0033e975	0x4a	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb	ScriptManager::displayOnMinimap(LevelObject*, bool, bool)
+0x0033e975	0x4a	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb	ScriptManager::displayOnMinimap(LevelObject*, bool, bool)
 0x0033e9c1	0xc8	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager20freezeRunningScriptsEPK6ScriptN10PlayerTest8eContextE	ScriptManager::freezeRunningScripts(Script const*, PlayerTest::eContext)
 0x0033ea89	0x17c	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager5setupEv	ScriptManager::setup()
 0x0033ec05	0xbc	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager20rewindRunningScriptsEv	ScriptManager::rewindRunningScripts()

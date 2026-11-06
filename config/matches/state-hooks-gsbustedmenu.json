@@ -346,7 +346,8 @@
         ".script_manager_load_missions",
         ".script_manager_load_save",
         ".script_manager_load_animation",
-        ".script_manager_first_checkpoint"
+        ".script_manager_first_checkpoint",
+        ".script_manager_minimap_tracking"
     ],
     "retail_got": true,
     "dependencies": [
@@ -421,6 +422,8 @@
         "_ZN13ScriptManager9resetGameEbi",
         "_ZNK6Script8getStateEv",
         "_ZNK6Script11peekCommandEi",
-        "_ZNK6Script9getSourceEv"
+        "_ZNK6Script9getSourceEv",
+        "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
+        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject"
     ]
 }

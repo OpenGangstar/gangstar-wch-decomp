@@ -19,6 +19,7 @@ class PhysicAttributes;
 class LevelObject {
     friend class GameObjectList;
     friend class GameObjectManager;
+    friend class ScriptManager;
 public:
     LevelObject(int id);
     unsigned char getObjectType() const { return objectType; }
