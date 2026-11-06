@@ -25,6 +25,7 @@
     "source": "src/game/world/Map.cpp",
     "linker_script": "config/linker/MapSdkStartup.ld",
     "functions": [
+        "_ZNK3Map13getScaledSizeERN3irr4core11dimension2dIiEE",
         "_ZN3Map5cleanEv",
         "_ZN3MapD1Ev",
         "_ZN3MapD2Ev",
@@ -44,6 +45,7 @@
         }
     ],
     "sections": [
+        ".map_scaled_size",
         ".map_clean",
         ".map_destroy",
         ".map_construct",

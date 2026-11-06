@@ -10,8 +10,15 @@
 
 #include "Map.h"
 #include "../app/Application.h"
-#include "../core/SceneNode.h"
+#include "../core/Material.h"
 #include "../core/VideoDriver.h"
+
+void Map::getScaledSize(irr::core::dimension2d<int>& size) const
+{
+    size = texture->getSize();
+    size.Width = static_cast<int>(size.Width * (1.0f / scale));
+    size.Height = static_cast<int>(size.Height * (1.0f / scale));
+}
 
 void Map::clean()
 {
