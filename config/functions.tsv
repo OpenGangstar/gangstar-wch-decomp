@@ -13281,21 +13281,21 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0035453d	0x88	StreamingSound.cpp	game	audio	matched	_ZN14CStreamingPool17GetStreamingSoundEP10CSoundData	CStreamingPool::GetStreamingSound(CSoundData*)
 0x003545c5	0x6c	StreamingSound.cpp	game	audio	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00354631	0x14	StreamingSound.cpp	game	audio	matched	_GLOBAL__I__ZN14StreamingSound14s_pBuffersPoolE	_GLOBAL__I__ZN14StreamingSound14s_pBuffersPoolE
-0x00354645	0x1c	EventManager.cpp	game	scripting	pending	_ZN12EventManagerC2Ev	EventManager::EventManager()
-0x00354645	0x1c	EventManager.cpp	game	scripting	pending	_ZN12EventManagerC1Ev	EventManager::EventManager()
-0x00354661	0x2	EventManager.cpp	game	scripting	pending	_ZNK12EventManager6_traceEPKc	EventManager::_trace(char const*) const
+0x00354645	0x1c	EventManager.cpp	game	scripting	matched	_ZN12EventManagerC2Ev	EventManager::EventManager()
+0x00354645	0x1c	EventManager.cpp	game	scripting	matched	_ZN12EventManagerC1Ev	EventManager::EventManager()
+0x00354661	0x2	EventManager.cpp	game	scripting	matched	_ZNK12EventManager6_traceEPKc	EventManager::_trace(char const*) const
 0x00354665	0xc0	EventManager.cpp	game	scripting	pending	_ZN12EventManager7_attachEiP14IEventReceiver	EventManager::_attach(int, IEventReceiver*)
 0x00354725	0x13c	EventManager.cpp	game	scripting	pending	_ZN12EventManager7_detachEiP14IEventReceiver	EventManager::_detach(int, IEventReceiver*)
-0x00354861	0x2c	EventManager.cpp	game	scripting	pending	_ZN12EventManager6attachEiP14IEventReceiver	EventManager::attach(int, IEventReceiver*)
-0x0035488d	0x2c	EventManager.cpp	game	scripting	pending	_ZN12EventManager6detachEiP14IEventReceiver	EventManager::detach(int, IEventReceiver*)
-0x003548b9	0x20	EventManager.cpp	game	scripting	pending	_ZNK12EventManager10raiseAsyncEPK6IEvent	EventManager::raiseAsync(IEvent const*) const
-0x003548d9	0x74	EventManager.cpp	game	scripting	pending	_ZN12EventManager7refreshEv	EventManager::refresh()
-0x0035494d	0x88	EventManager.cpp	game	scripting	pending	_ZN12EventManager5raiseERK6IEvent	EventManager::raise(IEvent const&)
-0x003549d5	0xc	EventManager.cpp	game	scripting	pending	_ZN12EventManager5raiseEPK6IEvent	EventManager::raise(IEvent const*)
-0x003549e1	0x3c	EventManager.cpp	game	scripting	pending	_ZN12EventManager6updateEd	EventManager::update(double)
-0x00354a1d	0x38	EventManager.cpp	game	scripting	pending	_ZN12EventManagerD0Ev	EventManager::~EventManager()
-0x00354a55	0x2c	EventManager.cpp	game	scripting	pending	_ZN12EventManagerD1Ev	EventManager::~EventManager()
-0x00354a55	0x2c	EventManager.cpp	game	scripting	pending	_ZN12EventManagerD2Ev	EventManager::~EventManager()
+0x00354861	0x2c	EventManager.cpp	game	scripting	matched	_ZN12EventManager6attachEiP14IEventReceiver	EventManager::attach(int, IEventReceiver*)
+0x0035488d	0x2c	EventManager.cpp	game	scripting	matched	_ZN12EventManager6detachEiP14IEventReceiver	EventManager::detach(int, IEventReceiver*)
+0x003548b9	0x20	EventManager.cpp	game	scripting	matched	_ZNK12EventManager10raiseAsyncEPK6IEvent	EventManager::raiseAsync(IEvent const*) const
+0x003548d9	0x74	EventManager.cpp	game	scripting	matched	_ZN12EventManager7refreshEv	EventManager::refresh()
+0x0035494d	0x88	EventManager.cpp	game	scripting	matched	_ZN12EventManager5raiseERK6IEvent	EventManager::raise(IEvent const&)
+0x003549d5	0xc	EventManager.cpp	game	scripting	matched	_ZN12EventManager5raiseEPK6IEvent	EventManager::raise(IEvent const*)
+0x003549e1	0x3c	EventManager.cpp	game	scripting	matched	_ZN12EventManager6updateEd	EventManager::update(double)
+0x00354a1d	0x38	EventManager.cpp	game	scripting	matched	_ZN12EventManagerD0Ev	EventManager::~EventManager()
+0x00354a55	0x2c	EventManager.cpp	game	scripting	matched	_ZN12EventManagerD1Ev	EventManager::~EventManager()
+0x00354a55	0x2c	EventManager.cpp	game	scripting	matched	_ZN12EventManagerD2Ev	EventManager::~EventManager()
 0x00354a81	0x5a	autofit.c	freetype	-	matched	af_sort_pos	af_sort_pos
 0x00354add	0x2	autofit.c	freetype	-	matched	af_glyph_hints_dump_points	af_glyph_hints_dump_points
 0x00354ae1	0x2	autofit.c	freetype	-	matched	af_glyph_hints_dump_segments	af_glyph_hints_dump_segments

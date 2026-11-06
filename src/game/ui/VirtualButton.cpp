@@ -13,6 +13,7 @@
 #include "../core/ASprite.h"
 #include "../core/GameEventMethods.h"
 #include "../input/TouchScreenBase.h"
+#include "../core/EventManager.h"
 
 class EvVirtualButton : public IEvent {
 public:
