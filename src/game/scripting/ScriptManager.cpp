@@ -12,6 +12,7 @@
 #include "../hud/HudElement.h"
 #include "../hud/MenuManager.h"
 #include "../characters/AnimObject.h"
+#include "../core/SafeDelete.h"
 #include "../missions/Mission.h"
 #include "../missions/Revive.h"
 #include "../persistence/DataStream.h"
@@ -185,6 +186,17 @@ void ScriptManager::skipCutscene()
     skipBlockingCommands();
     cutsceneSkipped = true;
     mission->update(0);
+}
+
+ScriptManager::~ScriptManager()
+{
+    SafeDelete(revive);
+}
+
+void ScriptManager::respawnFromBustedOrDie(bool busted)
+{
+    SafeDelete(revive);
+    revive = new Revive(busted);
 }
 
 namespace Structs {

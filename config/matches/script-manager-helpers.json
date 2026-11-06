@@ -144,7 +144,11 @@
         "_ZN13ScriptManager22resumeBlockingCommandsEv",
         "_ZN13ScriptManager14hideSkipButtonEv",
         "_ZN13ScriptManager14showSkipButtonEv",
-        "_ZN13ScriptManager12skipCutsceneEv"
+        "_ZN13ScriptManager12skipCutsceneEv",
+        "_Z10SafeDeleteI6ReviveEvRPT_",
+        "_ZN13ScriptManagerD1Ev",
+        "_ZN13ScriptManagerD2Ev",
+        "_ZN13ScriptManager22respawnFromBustedOrDieEb"
     ],
     "sections": [
         ".helper_0",
@@ -262,7 +266,10 @@
         ".script_manager_resumeBlockingCommands",
         ".script_manager_hideSkipButton",
         ".script_manager_showSkipButton",
-        ".script_manager_skipCutscene"
+        ".script_manager_skipCutscene",
+        ".script_manager_delete_revive",
+        ".script_manager_destroy",
+        ".script_manager_respawn"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -283,6 +290,8 @@
         "_ZN7Mission17registerConditionEP17IMissionCondition",
         "_ZN7Mission6updateEi",
         "_ZN11MenuManager11getInstanceEv",
-        "_ZN11MenuManager7setTextENS_5eTextEiPi"
+        "_ZN11MenuManager7setTextENS_5eTextEiPi",
+        "_ZN6ReviveD1Ev",
+        "_ZN6ReviveC1Eb"
     ]
 }

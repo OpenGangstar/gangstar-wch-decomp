@@ -1,6 +1,10 @@
 /* ScriptManager queries and script registration at retail addresses. */
+PROVIDE(_Znwj = 0x001c4814);
 SECTIONS
 {
+    .script_manager_delete_revive 0x0033e794 : { *script-manager-helpers.o(.gnu.linkonce.t._Z10SafeDeleteI6ReviveEvRPT_) }
+    .script_manager_destroy 0x0033e7b4 : { *script-manager-helpers.o(.text._ZN13ScriptManagerD1Ev .text._ZN13ScriptManagerD2Ev) }
+    .script_manager_respawn 0x0033e7ec : { *script-manager-helpers.o(.text._ZN13ScriptManager22respawnFromBustedOrDieEb) }
     .script_manager_tagged 0x0033cfec : { *script-manager-helpers.o(.text._ZN13ScriptManager12taggedKilledEv) }
     .script_manager_print 0x0033d004 : { *script-manager-helpers.o(.text._ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE) }
     .script_manager_add 0x0033d008 : { *script-manager-helpers.o(.text._ZN13ScriptManager9addScriptEP6Script) }

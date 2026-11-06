@@ -12122,11 +12122,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033ddd5	0x984	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager11loadCommandER10DataStream	ScriptManager::loadCommand(DataStream&)
 0x0033e759	0x1c	ScriptManager.cpp	game	scripting	pending	__tcf_4	__tcf_4
 0x0033e775	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI9GSFailureEEPT_v	GSFailure* StateMachine::pushState<GSFailure>()
-0x0033e795	0x20	ScriptManager.cpp	game	scripting	pending	_Z10SafeDeleteI6ReviveEvRPT_	void SafeDelete<Revive>(Revive*&)
-0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManagerD2Ev	ScriptManager::~ScriptManager()
-0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManagerD1Ev	ScriptManager::~ScriptManager()
+0x0033e795	0x20	ScriptManager.cpp	game	scripting	matched	_Z10SafeDeleteI6ReviveEvRPT_	void SafeDelete<Revive>(Revive*&)
+0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerD2Ev	ScriptManager::~ScriptManager()
+0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerD1Ev	ScriptManager::~ScriptManager()
 0x0033e7d1	0x1c	ScriptManager.cpp	game	scripting	pending	__tcf_5	__tcf_5
-0x0033e7ed	0x2c	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager22respawnFromBustedOrDieEb	ScriptManager::respawnFromBustedOrDie(bool)
+0x0033e7ed	0x2c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22respawnFromBustedOrDieEb	ScriptManager::respawnFromBustedOrDie(bool)
 0x0033e819	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager20missionResumeFadeOutEv	ScriptManager::missionResumeFadeOut()
 0x0033e82d	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager18missionSkipFadeOutEv	ScriptManager::missionSkipFadeOut()
 0x0033e841	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager22missionSetFailureCountEi	ScriptManager::missionSetFailureCount(int)
