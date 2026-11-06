@@ -8,6 +8,27 @@
  * functions of MiniMap.cpp here, in the order they appear in the library.
  */
 
+#include "MiniMap.h"
+#include "../characters/AnimObject.h"
+
+// Imported STLport list operation for the retail TrackableObject specialization.
+extern "C" void clearTrackedObjects(void*)
+    __asm__("_ZN9stlp_priv10_List_baseIN7MiniMap15TrackableObjectESaIS2_EE5clearEv")
+    __attribute__((weak));
+
+void MiniMap::deregisterAllForMapTracking()
+{
+    TrackingLink* const end = &trackedObjects;
+    TrackingLink* link = trackedObjects.next;
+    if (end != link) {
+        do {
+            delete static_cast<TrackingNode*>(link)->marker;
+            link = link->next;
+        } while (end != link);
+    }
+    clearTrackedObjects(&trackedObjects);
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

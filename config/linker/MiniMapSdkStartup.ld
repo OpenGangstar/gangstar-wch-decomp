@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .minimap_deregister 0x00329564 : { *sdk-startup-minimap.o(.text._ZN7MiniMap27deregisterAllForMapTrackingEv) }
     .sdk_startup_function_0 0x003298cc : { *sdk-startup-minimap.o(.text.__tcf_5) }
     .sdk_startup_function_1 0x0032984c : { *sdk-startup-minimap.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x003298b8 : { *sdk-startup-minimap.o(.text._GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii) }
