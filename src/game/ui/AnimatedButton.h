@@ -7,6 +7,7 @@ class AnimObject;
 
 class AnimatedButton : public VirtualButton {
 public:
+    AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type);
     virtual ~AnimatedButton();
     virtual void update(double elapsed);
     virtual void draw2d() const;

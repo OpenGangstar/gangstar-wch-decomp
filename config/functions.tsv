@@ -11163,8 +11163,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00327035	0x10	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButton6updateEd	AnimatedButton::update(double)
 0x00327044	0x14	AnimatedButton.cpp	game	ui	pending	_ZThn4_NK14AnimatedButton6draw2dEv	non-virtual thunk to AnimatedButton::draw2d() const
 0x00327059	0xa0	AnimatedButton.cpp	game	ui	pending	_ZNK14AnimatedButton6draw2dEv	AnimatedButton::draw2d() const
-0x003270f9	0xcc	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE	AnimatedButton::AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type)
-0x003270f9	0xcc	AnimatedButton.cpp	game	ui	pending	_ZN14AnimatedButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeE	AnimatedButton::AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type)
+0x003270f9	0xcc	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE	AnimatedButton::AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type)
+0x003270f9	0xcc	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeE	AnimatedButton::AnimatedButton(ASprite*, int, EvVButton::ButtonType::Type)
 0x003271c5	0x58	AnimatedButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032721d	0x14	AnimatedButton.cpp	game	core	matched	_GLOBAL__I__ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE	_GLOBAL__I__ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE
 0x00327231	0x2	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBar4showEv	ArmorBar::show()
