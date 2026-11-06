@@ -12,7 +12,7 @@ struct EvVButton {
 class VirtualButton : public HudElement {
 public:
     VirtualButton(ASprite*, int, EvVButton::ButtonType::Type, bool);
-    virtual ~VirtualButton();
+    virtual ~VirtualButton() {}
     virtual void update(double);
     virtual void processTouch(long);
     virtual void processTouchRelease();

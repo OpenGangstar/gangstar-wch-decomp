@@ -16,6 +16,11 @@ SECTIONS
     .button_set_anim 0x00327024 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButton7setAnimEi) }
     .button_update 0x00327034 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButton6updateEd) }
     .button_constructor 0x003270f8 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeE) }
+    .button_safe_delete 0x00326e8c : { *string-startup-animatedbutton.o(.gnu.linkonce.t._Z10SafeDeleteI10AnimObjectEvRPT_) }
+    .button_virtual_base_thunk 0x00326eac : { *string-startup-animatedbutton.o(.gnu.linkonce.t._ZN13VirtualButtonD1Ev) }
+    .button_delete_thunk 0x00326eec : { *string-startup-animatedbutton.o(.gnu.linkonce.t._ZN14AnimatedButtonD0Ev) }
+    .button_base_thunk 0x00326f48 : { *string-startup-animatedbutton.o(.gnu.linkonce.t._ZN14AnimatedButtonD1Ev) }
+    .button_vtable 0x004abf98 : { *string-startup-animatedbutton.o(.data.rel.ro._ZTV14AnimatedButton .gnu.linkonce.d.rel.ro._ZTV14AnimatedButton) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }

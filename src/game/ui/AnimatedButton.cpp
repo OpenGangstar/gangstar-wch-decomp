@@ -12,6 +12,20 @@
 #include "../characters/AnimObject.h"
 #include "../core/ASprite.h"
 
+template<class T>
+void SafeDelete(T*& value)
+{
+    delete value;
+    value = 0;
+}
+
+template void SafeDelete<AnimObject>(AnimObject*&);
+
+inline AnimatedButton::~AnimatedButton()
+{
+    SafeDelete(animationObject);
+}
+
 void AnimatedButton::grayOut(bool gray)
 {
     if (gray)
