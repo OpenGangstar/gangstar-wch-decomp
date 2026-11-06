@@ -6,6 +6,7 @@ class FileSystemBase;
 class WeaponManager;
 class CHudManager;
 class TouchScreenBase;
+class EventManager;
 namespace irr { class IrrlichtDevice; }
 
 // Partial layout. Members at offsets 36, 40, 44, 68, 76 and 80 are currently recovered.
@@ -22,12 +23,15 @@ public:
     inline CHudManager* GetHudManager() const { return hudManager; }
     inline WeaponManager* GetWeaponManager() const { return weaponManager; }
     inline TouchScreenBase* GetTouchScreen() const { return touchScreen; }
+    inline EventManager* GetEventManager() const { return eventManager; }
 private:
     unsigned char unknownPrefix[36];
     irr::IrrlichtDevice* device;
     FileSystemBase* fileSystem;
     TouchScreenBase* touchScreen;
-    unsigned char unknown48[20];
+    unsigned char unknown48[8];
+    EventManager* eventManager;
+    unsigned char unknown60[8];
     StringManager* stringManager;
     unsigned char unknown72[4];
     CHudManager* hudManager;

@@ -11,7 +11,25 @@
 #include "VirtualButton.h"
 #include "../app/Application.h"
 #include "../core/ASprite.h"
+#include "../core/GameEventMethods.h"
 #include "../input/TouchScreenBase.h"
+
+class EvVirtualButton : public IEvent {
+public:
+    enum Action { Pressed, Held, Released, Canceled, ForceWidth = 0x7fffffff };
+
+    EvVirtualButton(Action action, EvVButton::ButtonType::Type type)
+        : action(action), buttonType(type)
+    {
+        eventID = 13;
+    }
+
+    virtual ~EvVirtualButton() {}
+
+private:
+    Action action;
+    EvVButton::ButtonType::Type buttonType;
+};
 
 void VirtualButton::update(double)
 {
@@ -90,4 +108,33 @@ static void __tcf_2()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+
+void VirtualButton::processTouchRelease()
+{
+    if ((flags & 1) && (flags & 2)) {
+        if (wasInRegionLastFrame) {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            events->raise(EvVirtualButton(EvVirtualButton::Released, buttonType));
+        } else {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            events->raise(EvVirtualButton(EvVirtualButton::Canceled, buttonType));
+        }
+        flags &= ~2u;
+    }
+}
+
+void VirtualButton::processTouch(long)
+{
+    if (flags & 1) {
+        if (flags & 2) {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            events->raise(EvVirtualButton(EvVirtualButton::Held, buttonType));
+        } else {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            events->raise(EvVirtualButton(EvVirtualButton::Pressed, buttonType));
+            flags |= 2u;
+        }
+    }
 }

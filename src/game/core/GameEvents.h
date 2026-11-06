@@ -19,6 +19,7 @@ public:
 // Call interface only; the manager layout is not recovered.
 class EventManager {
 public:
+    void raise(const IEvent& event);
     bool detach(int eventID, IEventReceiver* receiver);
     bool attach(int eventID, IEventReceiver* receiver);
 };

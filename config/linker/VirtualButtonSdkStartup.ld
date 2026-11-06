@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fadd = 0x001c4154;
+INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
     .sdk_startup_function_0 0x0032c5f8 : { *sdk-startup-virtualbutton.o(.text.__tcf_2) }
@@ -17,6 +18,13 @@ SECTIONS
     .button_base_thunk 0x00326eac : { *sdk-startup-virtualbutton.o(.gnu.linkonce.t._ZN13VirtualButtonD1Ev) }
     .button_delete_thunk 0x0032c430 : { *sdk-startup-virtualbutton.o(.gnu.linkonce.t._ZN13VirtualButtonD0Ev) }
     .button_vtable 0x004ac8b0 : { *sdk-startup-virtualbutton.o(.data.rel.ro._ZTV13VirtualButton .gnu.linkonce.d.rel.ro._ZTV13VirtualButton) }
+    .button_event_delete 0x0032c628 : { *sdk-startup-virtualbutton.o(.gnu.linkonce.t._ZN15EvVirtualButtonD0Ev) }
+    .button_event_base 0x0032c654 : { *sdk-startup-virtualbutton.o(.gnu.linkonce.t._ZN15EvVirtualButtonD1Ev) }
+    .button_release_thunk 0x0032c678 : { *sdk-startup-virtualbutton.o(.text._ZThn8_N13VirtualButton19processTouchReleaseEv) }
+    .button_release 0x0032c68c : { *sdk-startup-virtualbutton.o(.text._ZN13VirtualButton19processTouchReleaseEv) }
+    .button_touch_thunk 0x0032c714 : { *sdk-startup-virtualbutton.o(.text._ZThn8_N13VirtualButton12processTouchEl) }
+    .button_touch 0x0032c728 : { *sdk-startup-virtualbutton.o(.text._ZN13VirtualButton12processTouchEl) }
+    .button_event_vtable 0x004ac930 : { *sdk-startup-virtualbutton.o(.gnu.linkonce.d.rel.ro._ZTV15EvVirtualButton) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
