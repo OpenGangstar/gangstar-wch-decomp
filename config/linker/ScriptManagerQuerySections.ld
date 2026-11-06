@@ -56,4 +56,33 @@ SECTIONS
     .script_reader_ActorStopFollow 0x0033dccc : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs15ActorStopFollow4ReadER10DataStream) }
     .script_reader_ActorLoopPath 0x0033dd30 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs13ActorLoopPath4ReadER10DataStream) }
     .script_reader_ActorGetOut 0x0033dd4c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorGetOut4ReadER10DataStream) }
+    .script_reader_WaitIfNotPhotographed 0x0033d4b0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs21WaitIfNotPhotographed4ReadER10DataStream) }
+    .script_reader_WaitEscape 0x0033d50c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10WaitEscape4ReadER10DataStream) }
+    .script_reader_VehicleChasePlayer 0x0033d590 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs18VehicleChasePlayer4ReadER10DataStream) }
+    .script_reader_StayWithin 0x0033d65c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10StayWithin4ReadER10DataStream) }
+    .script_reader_SpyTarget 0x0033d6a4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs9SpyTarget4ReadER10DataStream) }
+    .script_reader_ShowTutorial 0x0033d6d0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12ShowTutorial4ReadER10DataStream) }
+    .script_reader_SetAnimSpeed 0x0033d764 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12SetAnimSpeed4ReadER10DataStream) }
+    .script_reader_SetAnim2 0x0033d788 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs8SetAnim24ReadER10DataStream) }
+    .script_reader_SetAnim 0x0033d7b4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs7SetAnim4ReadER10DataStream) }
+    .script_reader_ProtectNPC 0x0033d810 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10ProtectNPC4ReadER10DataStream) }
+    .script_reader_ProtectCar 0x0033d834 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10ProtectCar4ReadER10DataStream) }
+    .script_reader_PlaceItem 0x0033d8ac : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs9PlaceItem4ReadER10DataStream) }
+    .script_reader_PhotographQuickly 0x0033d8d0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs17PhotographQuickly4ReadER10DataStream) }
+    .script_reader_NPCWeapon 0x0033d8f4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs9NPCWeapon4ReadER10DataStream) }
+    .script_reader_MoveTo 0x0033d918 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs6MoveTo4ReadER10DataStream) }
+    .script_reader_Enable 0x0033da70 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs6Enable4ReadER10DataStream) }
+    .script_reader_Dialog 0x0033dacc : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs6Dialog4ReadER10DataStream) }
+    .script_reader_CarSetSpeed 0x0033db30 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11CarSetSpeed4ReadER10DataStream) }
+    .script_reader_CarSetPath 0x0033db54 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10CarSetPath4ReadER10DataStream) }
+    .script_reader_CarDriveTo 0x0033db78 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10CarDriveTo4ReadER10DataStream) }
+    .script_reader_CamSet 0x0033db9c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs6CamSet4ReadER10DataStream) }
+    .script_reader_AddRacer 0x0033dc58 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs8AddRacer4ReadER10DataStream) }
+    .script_reader_ActorWalkTo 0x0033dc84 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorWalkTo4ReadER10DataStream) }
+    .script_reader_ActorWalkPath 0x0033dca8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs13ActorWalkPath4ReadER10DataStream) }
+    .script_reader_ActorRunTo 0x0033dce8 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10ActorRunTo4ReadER10DataStream) }
+    .script_reader_ActorRunPath 0x0033dd0c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs12ActorRunPath4ReadER10DataStream) }
+    .script_reader_ActorGetIn 0x0033dd68 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs10ActorGetIn4ReadER10DataStream) }
+    .script_reader_ActorFollow 0x0033dd8c : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorFollow4ReadER10DataStream) }
+    .script_reader_ActorAttack 0x0033ddb0 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN7Structs11ActorAttack4ReadER10DataStream) }
 }
