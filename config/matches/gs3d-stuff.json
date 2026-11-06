@@ -28,6 +28,12 @@
     "source": "src/game/rendering/GS3DStuff.cpp",
     "linker_script": "config/linker/GS3DStuff.ld",
     "functions": [
+        "_ZN3Map11getInstanceEv",
+        {
+            "name": "__tcf_6",
+            "address": "0x002dbbad",
+            "compiled_name": "__tcf_1"
+        },
         "_ZN12CGameFactoryD0Ev",
         "_ZN12CGameFactoryD1Ev",
         "_ZN12CGameFactory11getInstanceEv",
@@ -96,6 +102,8 @@
         }
     ],
     "sections": [
+        ".map_singleton",
+        ".map_cleanup",
         ".factory_d0",
         ".factory_d1",
         ".factory_singleton",
@@ -163,6 +171,8 @@
         ".shared_startup_empty_text"
     ],
     "external_thumb_functions": [
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev",
         "_ZN3irr7collada10CSceneNodeC1ERKNS0_16CColladaDatabaseEPNS0_5SNodeE",
         "_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
         "_ZN11Application11GetInstanceEv",

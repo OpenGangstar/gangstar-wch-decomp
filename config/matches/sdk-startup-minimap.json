@@ -51,6 +51,11 @@
             "name": "__tcf_3",
             "address": "0x0032945d",
             "compiled_name": "__tcf_0"
+        },
+        {
+            "name": "__tcf_2",
+            "address": "0x00329361",
+            "compiled_name": "__tcf_1"
         }
     ],
     "sections": [
@@ -71,7 +76,8 @@
         ".minimap_destroy",
         ".minimap_vtable",
         ".minimap_update",
-        ".target_marker_cleanup"
+        ".target_marker_cleanup",
+        ".map_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -80,6 +86,8 @@
         "_ZN10AnimObject7SetAnimEi",
         "_ZN10AnimObject11UpdateFrameEv",
         "_ZN12TargetMarkerC1Ev",
-        "_ZN12TargetMarkerD1Ev"
+        "_ZN12TargetMarkerD1Ev",
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev"
     ]
 }

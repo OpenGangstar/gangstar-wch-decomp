@@ -53,6 +53,10 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
+    .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x002e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .hook_0 0x002e156c : { *state-hooks-gscarrepairmenu.o(.text._ZN15GSCarRepairMenu4drawEPK12StateMachine .gnu.linkonce.t._ZN15GSCarRepairMenu4drawEPK12StateMachine) }
     .state_ctor 0x002e16c4 : { *state-hooks-gscarrepairmenu.o(.text._ZN15GSCarRepairMenuC1Ev) }
     .base_0 0x002dacc0 : { *state-hooks-gscarrepairmenu.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }

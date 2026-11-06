@@ -54,6 +54,10 @@ _ZN28retail_gs3dstuff_transitions17cop_vehicle_transE = 0x00414a9c;
 _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 SECTIONS {
+    .map_singleton 0x002dbb58 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x002dbbac : { *gs3d-stuff.o(.text.__tcf_1) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .level_get_speed 0x2f1430 : { *level-object.o(.text._ZNK11LevelObject8GetSpeedEv .gnu.linkonce.t._ZNK11LevelObject8GetSpeedEv) }
     .level_get_material_id 0x316830 : { *level-object.o(.text._ZNK11LevelObject8GetMatIDEv .gnu.linkonce.t._ZNK11LevelObject8GetMatIDEv) }
     .level_get_triangle_id 0x317824 : { *level-object.o(.text._ZNK11LevelObject8GetTriIDEv .gnu.linkonce.t._ZNK11LevelObject8GetTriIDEv) }

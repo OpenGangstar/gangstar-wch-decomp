@@ -334,6 +334,8 @@
         "weapon-manager"
     ],
     "external_thumb_functions": [
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev",
         "_ZN10PlayerTest13switchContextENS_8eContextEb",
         "_ZN10PlayerTest7RespawnEv",
         "_ZN10PlayerTest7setCashEi",

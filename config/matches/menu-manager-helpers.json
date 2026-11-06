@@ -59,6 +59,11 @@
         {
             "name": "__tcf_9",
             "address": "0x002e3fe9"
+        },
+        {
+            "name": "__tcf_4",
+            "address": "0x002e425d",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
@@ -89,7 +94,12 @@
             "name": ".got",
             "offset": 864
         },
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".map_cleanup"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev"
+    ]
 }
