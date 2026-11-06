@@ -167,6 +167,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev",
         "_ZN10GSMainMenuC1Ev",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",

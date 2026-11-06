@@ -19,6 +19,10 @@ _ZN30retail_menumanager_transitions11guard_transE = 0x00419724;
 _ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
 SECTIONS
 {
+    .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x002e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .base_0 0x002dacc0 : { *state-hooks-gsupsell.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }
     .base_1 0x002dacac : { *state-hooks-gsupsell.o(.gnu.linkonce.t._ZN9StateBase4drawEPK12StateMachine .text._ZN9StateBase4drawEPK12StateMachine .gnu.linkonce.d.rel.ro._ZN9StateBase4drawEPK12StateMachine .data.rel.ro._ZN9StateBase4drawEPK12StateMachine) }
     .base_2 0x002db4ec : { *state-hooks-gsupsell.o(.gnu.linkonce.t._ZN9StateBaseD0Ev .text._ZN9StateBaseD0Ev .gnu.linkonce.d.rel.ro._ZN9StateBaseD0Ev .data.rel.ro._ZN9StateBaseD0Ev) }

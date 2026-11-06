@@ -120,6 +120,10 @@ SECTIONS {
         *stream.o(.text._ZN6StreamD1Ev .text._ZN6StreamD2Ev .gnu.linkonce.t._ZN6StreamD1Ev .gnu.linkonce.t._ZN6StreamD2Ev)
     }
     .streamvtable 0x004ad6c8 : { *stream.o(.data.rel.ro) }
+    .map_singleton 0x002dbb58 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x002dbbac : { *gs3d-stuff.o(.text.__tcf_1) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .factory_d0 0x002db450 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN12CGameFactoryD0Ev) }
     .factory_d1 0x002dd048 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN12CGameFactoryD1Ev .gnu.linkonce.t._ZN12CGameFactoryD2Ev) }
     .factory_singleton 0x002db9a8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN12CGameFactory11getInstanceEv .text._ZN12CGameFactory11getInstanceEv) }

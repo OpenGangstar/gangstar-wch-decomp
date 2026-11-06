@@ -356,6 +356,8 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager9showTextsEv",
         "_ZN11Application11GetInstanceEv",

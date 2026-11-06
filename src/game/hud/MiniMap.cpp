@@ -10,6 +10,7 @@
 
 #include "MiniMap.h"
 #include "TargetMarkerSingleton.h"
+#include "../world/Map.h"
 #include "../characters/AnimObject.h"
 #include "../world/LevelObject.h"
 

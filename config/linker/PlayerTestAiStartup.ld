@@ -13,8 +13,14 @@ _ZN29retail_playertest_transitions17civ_vehicle_transE = 0x0041e6d0;
 _ZN29retail_playertest_transitions17cop_vehicle_transE = 0x0041e760;
 _ZN29retail_playertest_transitions11guard_transE = 0x0041e814;
 _ZN29retail_playertest_transitions22scripted_vehicle_transE = 0x0041e8bc;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .map_singleton 0x002dbb58 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x3010e4 : { *ai-startup-playertest.o(.text.__tcf_0) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *ai-startup-playertest.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *ai-startup-playertest.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .ai_startup_function_0 0x00301030 : { *ai-startup-playertest.o(.text.__tcf_5) }
     .ai_startup_function_1 0x00301f98 : { *ai-startup-playertest.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003020dc : { *ai-startup-playertest.o(.text._GLOBAL__I__ZN10PlayerTest10switchAnimEv) }

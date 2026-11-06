@@ -17,6 +17,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .map_singleton 0x002dbb58 : { *ai-startup-menumanager_map.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x2e6628 : { *ai-startup-menumanager_map.o(.text.__tcf_1) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *ai-startup-menumanager_map.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *ai-startup-menumanager_map.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .target_marker_singleton 0x002e6660 : { *ai-startup-menumanager_map.o(.gnu.linkonce.t._ZN12TargetMarker11getInstanceEv .text._ZN12TargetMarker11getInstanceEv) }
     .target_marker_cleanup 0x002e66d4 : { *ai-startup-menumanager_map.o(.text.__tcf_0) }
     .target_marker_guard 0x004b7bd4 (NOLOAD) : { *ai-startup-menumanager_map.o(.gnu.linkonce.b._ZGVZN12TargetMarker11getInstanceEvE3map) }

@@ -14,6 +14,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .map_singleton 0x002dbb58 : { *sdk-startup-minimap.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+    .map_cleanup 0x329360 : { *sdk-startup-minimap.o(.text.__tcf_1) }
+    .map_guard 0x004b6a94 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
+    .map_instance 0x004b6b00 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     /* Keep the emitted copy in Thumb call range. The MenuManager_Map profile checks the selected retail copy. */
     .target_marker_singleton 0x002e6660 : { *sdk-startup-minimap.o(.gnu.linkonce.t._ZN12TargetMarker11getInstanceEv) }
     .target_marker_cleanup 0x0032945c : { *sdk-startup-minimap.o(.text.__tcf_0) }

@@ -9159,8 +9159,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dbac9	0x20	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff11setSkyColorEb	GS3DStuff::setSkyColor(bool)
 0x002dbae9	0x54	AIManager.cpp	game	ai	pending	_ZN9AIManager11getInstanceEv	AIManager::getInstance()
 0x002dbb3d	0x1c	GS3DStuff.cpp	game	rendering	pending	__tcf_0	__tcf_0
-0x002dbb59	0x54	Map.cpp	game	world	pending	_ZN3Map11getInstanceEv	Map::getInstance()
-0x002dbbad	0x1c	GS3DStuff.cpp	game	rendering	pending	__tcf_6	__tcf_6
+0x002dbb59	0x54	Map.cpp	game	world	matched	_ZN3Map11getInstanceEv	Map::getInstance()
+0x002dbbad	0x1c	GS3DStuff.cpp	game	rendering	matched	__tcf_6	__tcf_6
 0x002dbbc9	0x21c	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABB14BuildRootNodesEPN3irr5scene10ISceneNodeEPNS0_4core5arrayIPNS_8RootNodeENS4_12irrAllocatorIS7_EEEE	OctTreeAABB::BuildRootNodes(irr::scene::ISceneNode*, irr::core::array<OctTreeAABB::RootNode*, irr::core::irrAllocator<OctTreeAABB::RootNode*> >*)
 0x002dbde5	0x114	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff18setPerformanceTypeEPKc	GS3DStuff::setPerformanceType(char const*)
 0x002dbef9	0x60	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff4ctorEPK12StateMachine	GS3DStuff::ctor(StateMachine const*)
@@ -9487,7 +9487,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e41f1	0x36	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf9tu_stringC1EPKc	gameswf::tu_string::tu_string(char const*)
 0x002e4229	0x10	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager8getStateEPKc	MenuManager::getState(char const*) const
 0x002e4239	0x22	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager14isCurrentStateEPKc	MenuManager::isCurrentState(char const*) const
-0x002e425d	0x1c	MenuManager.cpp	game	ui	pending	__tcf_4	__tcf_4
+0x002e425d	0x1c	MenuManager.cpp	game	ui	matched	__tcf_4	__tcf_4
 0x002e4279	0x40	MenuManager.cpp	stlport	-	matched	_ZNSaIN9stlp_priv10_List_nodeIlEEE8allocateEjPKv	std::allocator<stlp_priv::_List_node<long> >::allocate(unsigned int, void const*)
 0x002e42b9	0x44	MenuManager.cpp	stlport	-	matched	_ZNSaIPN3irr5video8ITextureEE8allocateEjRj	std::allocator<irr::video::ITexture*>::allocate(unsigned int, unsigned int&)
 0x002e42fd	0x46	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf5arrayIPN6MenuFX5StateEE7reserveEi	gameswf::array<MenuFX::State*>::reserve(int)
@@ -9545,7 +9545,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e65d1	0x4	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager10getMapModeEv	MenuManager::getMapMode() const
 0x002e65d5	0x22	MenuManager_Map.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP7Point2DIsESaIS3_EE5clearEv	stlp_priv::_List_base<Point2D<short>*, std::allocator<Point2D<short>*> >::clear()
 0x002e65f9	0x30	MenuManager_Map.cpp	game	ui	matched	__tcf_6	__tcf_6
-0x002e6629	0x1c	MenuManager_Map.cpp	game	ui	pending	__tcf_2	__tcf_2
+0x002e6629	0x1c	MenuManager_Map.cpp	game	ui	matched	__tcf_2	__tcf_2
 0x002e6645	0x1c	MenuManager_Map.cpp	game	ui	pending	__tcf_5	__tcf_5
 0x002e6661	0x54	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarker11getInstanceEv	TargetMarker::getInstance()
 0x002e66b5	0x20	MenuManager.cpp	game	ui	matched	_ZN11MenuManager10cleanupMapEv	MenuManager::cleanupMap()
@@ -10391,7 +10391,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301091	0x26	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14setClosestShopEP4Shop	PlayerTest::setClosestShop(Shop*)
 0x003010b9	0x1c	PlayerTest.cpp	game	ai	pending	__tcf_4	__tcf_4
 0x003010d5	0xe	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest20playCurAnimFromStartEv	PlayerTest::playCurAnimFromStart()
-0x003010e5	0x1c	PlayerTest.cpp	game	ai	pending	__tcf_3	__tcf_3
+0x003010e5	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00301101	0xe4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14getCarAnimNameEPKcb	PlayerTest::getCarAnimName(char const*, bool)
 0x003011e5	0x38	NPC.cpp	game	ai	pending	_ZN3NPC12isTargetableEv	NPC::isTargetable()
 0x0030121c	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
@@ -11316,7 +11316,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003291e5	0x144	Message.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00329329	0x14	Message.cpp	game	core	matched	_GLOBAL__I__ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii	_GLOBAL__I__ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii
 0x0032933d	0x22	MiniMap.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIN7MiniMap15TrackableObjectESaIS2_EE5clearEv	stlp_priv::_List_base<MiniMap::TrackableObject, std::allocator<MiniMap::TrackableObject> >::clear()
-0x00329361	0x1c	MiniMap.cpp	game	hud	pending	__tcf_2	__tcf_2
+0x00329361	0x1c	MiniMap.cpp	game	hud	matched	__tcf_2	__tcf_2
 0x00329381	0xc0	MiniMap.cpp	irrlicht	-	matched	_ZN3irr4core8vector2dIfE8rotateByEdRKS2_	irr::core::vector2d<float>::rotateBy(double, irr::core::vector2d<float> const&)
 0x00329441	0x1c	MiniMap.cpp	game	hud	pending	__tcf_4	__tcf_4
 0x0032945d	0x1c	MiniMap.cpp	game	hud	matched	__tcf_3	__tcf_3
