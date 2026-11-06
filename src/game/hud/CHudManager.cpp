@@ -12,6 +12,9 @@
 #include "CDrivingHud.h"
 #include "CWalkingHud.h"
 #include "SpyGauge.h"
+#include "../input/AnalogStick.h"
+#include "../characters/PlayerTest.h"
+#include "../combat/Weapon.h"
 
 extern bool bIsInCutscene;
 
@@ -94,6 +97,39 @@ void CHudManager::nearCar()
 {
     if (activeHud->isWalkingHud())
         static_cast<CWalkingHud*>(activeHud)->nearCar();
+}
+
+void CHudManager::sniping()
+{
+    const bool wasVisible = activeHud->isVisible();
+    activeHud->hide();
+    SavePrimaryInterface* player = PlayerTest::GetPlayer();
+    if (player->getWeapon()->getWeaponType() == 9)
+        activeHud = cameraHud;
+    else
+        activeHud = sniperHud;
+    if (wasVisible)
+        activeHud->show();
+}
+
+void CHudManager::walking()
+{
+    const bool wasVisible = activeHud->isVisible();
+    activeHud->hide();
+    activeHud = initialHud;
+    analogStick->switchMode(AnalogStick::Mode2);
+    if (wasVisible)
+        activeHud->show();
+}
+
+void CHudManager::driving()
+{
+    const bool wasVisible = activeHud->isVisible();
+    activeHud->hide();
+    activeHud = drivingHud;
+    analogStick->switchMode(AnalogStick::Mode0);
+    if (wasVisible)
+        activeHud->show();
 }
 
 void CHudManager::hide()
