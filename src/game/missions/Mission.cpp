@@ -8,6 +8,118 @@
  * functions of Mission.cpp here, in the order they appear in the library.
  */
 
+#include "Mission.h"
+#include "IMissionCondition.h"
+#include "../persistence/DataStream.h"
+
+int Mission::setTextToPrint(int id)
+{
+    return currentMessage = id;
+}
+
+Structs::Mission* Mission::mission(int index) const
+{
+    if (index < 0 || index >= missionCount)
+        return 0;
+    return missions[index];
+}
+
+int Mission::getLastObjectiveText() const
+{
+    if (state == 4)
+        return lastObjectiveText;
+    return -1;
+}
+
+int Mission::getCurrentMessage() const
+{
+    return currentMessage;
+}
+
+void Mission::registerCondition(IMissionCondition* condition)
+{
+    if (conditionCount < 8)
+        conditions[conditionCount++] = condition;
+}
+
+void Mission::clearConditions()
+{
+    for (int i = 0; i < conditionCount; ++i) {
+        delete conditions[i];
+        conditions[i] = 0;
+    }
+    conditionCount = 0;
+}
+
+int Mission::getState() const
+{
+    return state;
+}
+
+int Mission::failureCause() const
+{
+    return lastFailureCause;
+}
+
+int Mission::failureCount() const
+{
+    return failures;
+}
+
+void Mission::skipFadeOut()
+{
+    skipFade = true;
+}
+
+void Mission::resumeFadeOut()
+{
+    skipFade = false;
+}
+
+void Mission::setFailureCount(int count)
+{
+    failures = count;
+}
+
+namespace Structs {
+
+struct Mission {
+    int unknown0;
+    int unknown4;
+    int unknown8;
+    char* unknown12;
+    int unknown16;
+    int unknown20;
+    char* unknown24;
+    int unknown28;
+    int unknown32;
+
+    void Read(DataStream& stream) __attribute__((used));
+};
+
+inline void Mission::Read(DataStream& stream)
+{
+    unknown0 = stream.ReadInt();
+    unknown4 = stream.ReadInt();
+    unknown8 = stream.ReadInt();
+    unknown12 = stream.ReadAndAllocateString();
+    unknown16 = stream.ReadInt();
+    unknown20 = stream.ReadInt();
+    unknown24 = stream.ReadAndAllocateString();
+    unknown28 = stream.ReadInt();
+    unknown32 = stream.ReadInt();
+}
+
+} // namespace Structs
+
+bool Mission::objective(int id, bool silent)
+{
+    lastObjectiveText = id;
+    if (!silent)
+        message(id);
+    return true;
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

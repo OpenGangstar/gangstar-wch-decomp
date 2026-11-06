@@ -48,7 +48,21 @@
         {
             "name": "_ZN3RctIiE9_validateEv",
             "address": "0x00335cc5"
-        }
+        },
+        "_ZN7Mission14setTextToPrintEi",
+        "_ZNK7Mission7missionEi",
+        "_ZNK7Mission20getLastObjectiveTextEv",
+        "_ZNK7Mission17getCurrentMessageEv",
+        "_ZN7Mission17registerConditionEP17IMissionCondition",
+        "_ZN7Mission15clearConditionsEv",
+        "_ZNK7Mission8getStateEv",
+        "_ZNK7Mission12failureCauseEv",
+        "_ZNK7Mission12failureCountEv",
+        "_ZN7Mission11skipFadeOutEv",
+        "_ZN7Mission13resumeFadeOutEv",
+        "_ZN7Mission15setFailureCountEi",
+        "_ZN7Mission9objectiveEib",
+        "_ZN7Structs7Mission4ReadER10DataStream"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -62,7 +76,26 @@
         ".mission_rct_1",
         ".mission_rct_2",
         ".mission_rct_vtable",
-        ".mission_rct_validate"
+        ".mission_rct_validate",
+        ".mission_set_text",
+        ".mission_lookup",
+        ".mission_last_objective",
+        ".mission_current_message",
+        ".mission_register_condition",
+        ".mission_clear_conditions",
+        ".mission_state",
+        ".mission_failure_cause",
+        ".mission_failure_count",
+        ".mission_skip_fade",
+        ".mission_resume_fade",
+        ".mission_set_failure_count",
+        ".mission_objective",
+        ".mission_read"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN7Mission7messageEi",
+        "_ZN10DataStream7ReadIntEv",
+        "_ZN10DataStream21ReadAndAllocateStringEv"
+    ]
 }
