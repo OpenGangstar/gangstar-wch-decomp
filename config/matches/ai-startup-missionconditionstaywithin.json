@@ -36,7 +36,13 @@
         {
             "name": "_GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii",
             "address": "0x0033855d"
-        }
+        },
+        "_ZN26MissionConditionStayWithin4drawEv",
+        "_ZN26MissionConditionStayWithinC1EP11LevelObjectii",
+        "_ZN26MissionConditionStayWithinC2EP11LevelObjectii",
+        "_ZN26MissionConditionStayWithinD0Ev",
+        "_ZN26MissionConditionStayWithinD1Ev",
+        "_ZN26MissionConditionStayWithinD2Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -46,7 +52,21 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".stay_within_00338174",
+        ".stay_within_003381a8",
+        ".stay_within_00338570",
+        ".stay_within_003385d8",
+        ".stay_within_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
+        "_ZN11LevelObject13showHighlightEi",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN26MissionConditionStayWithin8evaluateEi",
+        "_ZNK17IMissionCondition5causeEv"
+    ]
 }

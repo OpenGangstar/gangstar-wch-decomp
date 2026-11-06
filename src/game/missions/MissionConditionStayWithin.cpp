@@ -8,6 +8,40 @@
  * functions of MissionConditionStayWithin.cpp here, in the order they appear in the library.
  */
 
+#include "IMissionCondition.h"
+#include "../hud/MenuManager.h"
+#include "../scripting/ScriptManager.h"
+#include "../world/LevelObject.h"
+
+class MissionConditionStayWithin : public IMissionCondition {
+public:
+    MissionConditionStayWithin(LevelObject* target, int distance, int timeLimit);
+    virtual ~MissionConditionStayWithin();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+
+private:
+    LevelObject* target;
+    int distanceSquared;
+    int timer;
+    int timerLimit;
+    int timeLimit;
+};
+
+void MissionConditionStayWithin::draw()
+{
+}
+
+MissionConditionStayWithin::MissionConditionStayWithin(LevelObject* target, int distance, int timeLimit)
+    : target(target), distanceSquared(0), timer(10000), timerLimit(10000)
+{
+    ScriptManager::getInstance()->displayOnMinimap(this->target, true, true);
+    this->target->showHighlight(1);
+    int radius = distance / 100;
+    distanceSquared = radius * radius;
+    this->timeLimit = timeLimit;
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -77,4 +111,12 @@ static void _GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+MissionConditionStayWithin::~MissionConditionStayWithin()
+{
+    ScriptManager::getInstance()->displayOnMinimap(target, false, true);
+    target->showHighlight(-1);
+    MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    MenuManager::getInstance()->setText(MenuManager::StayWithinText, static_cast<const char*>(0), 0);
 }

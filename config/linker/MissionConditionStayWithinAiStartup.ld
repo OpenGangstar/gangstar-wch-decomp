@@ -13,8 +13,14 @@ _ZN45retail_missionconditionstaywithin_transitions17civ_vehicle_transE = 0x0042d
 _ZN45retail_missionconditionstaywithin_transitions17cop_vehicle_transE = 0x0042dad0;
 _ZN45retail_missionconditionstaywithin_transitions11guard_transE = 0x0042db84;
 _ZN45retail_missionconditionstaywithin_transitions22scripted_vehicle_transE = 0x0042dc2c;
+__aeabi_idiv = 0x001c43dc;
 SECTIONS
 {
+    .stay_within_00338174 0x00338174 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithin4drawEv) }
+    .stay_within_003381a8 0x003381a8 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithinC1EP11LevelObjectii .text._ZN26MissionConditionStayWithinC2EP11LevelObjectii) }
+    .stay_within_00338570 0x00338570 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithinD0Ev) }
+    .stay_within_003385d8 0x003385d8 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithinD1Ev .text._ZN26MissionConditionStayWithinD2Ev) }
+    .stay_within_vtable 0x004acf38 : { *ai-startup-missionconditionstaywithin.o(.data.rel.ro._ZTV26MissionConditionStayWithin) }
     .ai_startup_function_0 0x00338178 : { *ai-startup-missionconditionstaywithin.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00338418 : { *ai-startup-missionconditionstaywithin.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0033855c : { *ai-startup-missionconditionstaywithin.o(.text._GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii) }
