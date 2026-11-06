@@ -13,8 +13,14 @@ _ZN34retail_taxisidemission_transitions17civ_vehicle_transE = 0x004357f0;
 _ZN34retail_taxisidemission_transitions17cop_vehicle_transE = 0x00435880;
 _ZN34retail_taxisidemission_transitions11guard_transE = 0x00435934;
 _ZN34retail_taxisidemission_transitions22scripted_vehicle_transE = 0x004359dc;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .ai_manager_singleton 0x002dbae8 : { *ai-startup-taxisidemission.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+    .ai_manager_cleanup 0x00347ecc : { *ai-startup-taxisidemission.o(.text.__tcf_0) }
+    .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-taxisidemission.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
+    .ai_manager_instance 0x004b6ae8 (NOLOAD) : { *ai-startup-taxisidemission.o(.gnu.linkonce.b._ZZN9AIManager11getInstanceEvE3aim) }
     .ai_startup_function_0 0x00347e8c : { *ai-startup-taxisidemission.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00348330 : { *ai-startup-taxisidemission.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00348474 : { *ai-startup-taxisidemission.o(.text._GLOBAL__I__ZN15TaxiSideMissionC2Ev) }

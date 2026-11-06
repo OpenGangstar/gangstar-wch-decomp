@@ -11,9 +11,13 @@ enum StateID { RaceDriving = 1 };
 class AIManager {
 public:
     virtual ~AIManager();
-    static AIManager* getInstance() __attribute__((weak));
+    static AIManager* getInstance() __attribute__((weak, used));
     void removeAI(Vehicle* vehicle);
     void addAI(Vehicle* vehicle, gameloft::ai::StateID state);
+
+private:
+    AIManager();
+    unsigned char unknown4[20];
 };
 
 #endif

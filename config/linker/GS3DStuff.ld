@@ -28,6 +28,10 @@ _ZN28retail_gs3dstuff_transitions17cop_vehicle_transE = 0x00414a9c;
 _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 SECTIONS {
+    .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+    .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }
+    .ai_manager_guard 0x004b6a90 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
+    .ai_manager_instance 0x004b6ae8 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZZN9AIManager11getInstanceEvE3aim) }
     .gs_enter 0x002dbef8 : { *gs3d-stuff.o(.text._ZN9GS3DStuff4ctorEPK12StateMachine) }
     .gs_wakeup 0x002dc32c : { *gs3d-stuff.o(.text._ZN9GS3DStuff6wakeupEPK12StateMachine) }
     .gs_resume 0x002dc360 : { *gs3d-stuff.o(.text._ZN9GS3DStuff6resumeEPK12StateMachine) }
@@ -174,3 +178,5 @@ ASSERT(SIZEOF(.gs3d_startup_storage_11) == 12, "GS3DStuff _ZN3irr2ps5vHalfE exte
 ASSERT(SIZEOF(.gs3d_startup_storage_12) == 20, "GS3DStuff _ZN9GS3DStuff11lightsNodesE extent");
 ASSERT(SIZEOF(.wanted_guard) == 4, "WantedLevelManager singleton guard extent");
 ASSERT(SIZEOF(.wanted_instance) == 80, "WantedLevelManager singleton storage extent");
+ASSERT(SIZEOF(.ai_manager_guard) == 4, "AIManager singleton guard extent");
+ASSERT(SIZEOF(.ai_manager_instance) == 24, "AIManager singleton storage extent");

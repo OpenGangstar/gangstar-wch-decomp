@@ -273,7 +273,9 @@
         "_ZN13CameraManager11getInstanceEv",
         "_ZNK13CameraManager9getCameraEv",
         "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei",
-        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_"
+        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev"
     ],
     "dependencies": [
         "gs3d-stuff",

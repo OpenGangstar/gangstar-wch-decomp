@@ -45,6 +45,11 @@
             "name": "__tcf_4",
             "address": "0x0030643d",
             "compiled_name": "__tcf_0"
+        },
+        {
+            "name": "__tcf_2",
+            "address": "0x00306459",
+            "compiled_name": "__tcf_1"
         }
     ],
     "sections": [
@@ -57,11 +62,14 @@
             "name": ".got",
             "offset": 864
         },
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".ai_manager_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev"
     ]
 }

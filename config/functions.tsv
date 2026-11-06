@@ -9157,8 +9157,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dba74	0x14	GS3DStuff.cpp	game	rendering	matched	_ZThn4_N9GS3DStuff7onEventEPK6IEventPK12EventManager	non-virtual thunk to GS3DStuff::onEvent(IEvent const*, EventManager const*)
 0x002dba89	0x40	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff7onEventEPK6IEventPK12EventManager	GS3DStuff::onEvent(IEvent const*, EventManager const*)
 0x002dbac9	0x20	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff11setSkyColorEb	GS3DStuff::setSkyColor(bool)
-0x002dbae9	0x54	AIManager.cpp	game	ai	pending	_ZN9AIManager11getInstanceEv	AIManager::getInstance()
-0x002dbb3d	0x1c	GS3DStuff.cpp	game	rendering	pending	__tcf_0	__tcf_0
+0x002dbae9	0x54	AIManager.cpp	game	ai	matched	_ZN9AIManager11getInstanceEv	AIManager::getInstance()
+0x002dbb3d	0x1c	GS3DStuff.cpp	game	rendering	matched	__tcf_0	__tcf_0
 0x002dbb59	0x54	Map.cpp	game	world	matched	_ZN3Map11getInstanceEv	Map::getInstance()
 0x002dbbad	0x1c	GS3DStuff.cpp	game	rendering	matched	__tcf_6	__tcf_6
 0x002dbbc9	0x21c	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABB14BuildRootNodesEPN3irr5scene10ISceneNodeEPNS0_4core5arrayIPNS_8RootNodeENS4_12irrAllocatorIS7_EEEE	OctTreeAABB::BuildRootNodes(irr::scene::ISceneNode*, irr::core::array<OctTreeAABB::RootNode*, irr::core::irrAllocator<OctTreeAABB::RootNode*> >*)
@@ -10067,7 +10067,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1999	0x1e	Character.cpp	game	characters	pending	_ZNK9Character8isPlayerEv	Character::isPlayer() const
 0x002f19b9	0x1e	Character.cpp	game	characters	pending	_ZN9Character7disableEv	Character::disable()
 0x002f19d9	0x3c	Character.cpp	game	characters	pending	_ZN9Character6enableEv	Character::enable()
-0x002f1a15	0x1c	Character.cpp	game	characters	pending	__tcf_3	__tcf_3
+0x002f1a15	0x1c	Character.cpp	game	characters	matched	__tcf_3	__tcf_3
 0x002f1a31	0x2ca	Character.cpp	game	characters	pending	_ZN9Character20getSpecificAnimationEi	Character::getSpecificAnimation(int)
 0x002f1cfd	0x40	Character.cpp	game	characters	pending	_ZN9Character8goToIdleEv	Character::goToIdle()
 0x002f1d3d	0x3c	Character.cpp	game	characters	pending	_ZN9Character4StopEv	Character::Stop()
@@ -10301,7 +10301,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd635	0x2a	NPC.cpp	game	ai	pending	_ZN3NPC5isCopEv	NPC::isCop()
 0x002fd661	0x60	NPC.cpp	game	ai	pending	_ZN3NPC10tagForKillEb	NPC::tagForKill(bool)
 0x002fd6c1	0x30	NPC.cpp	game	ai	pending	_ZN3NPC7_arrestEv	NPC::_arrest()
-0x002fd6f1	0x1c	NPC.cpp	game	ai	pending	__tcf_3	__tcf_3
+0x002fd6f1	0x1c	NPC.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x002fd70d	0x28	NPC.cpp	game	ai	pending	_ZNK3NPC11GetPositionEv	NPC::GetPosition() const
 0x002fd735	0x54	NPC.cpp	game	ai	pending	_ZN3NPC4waitEi	NPC::wait(int)
 0x002fd789	0x3c	NPC.cpp	game	ai	pending	_ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE	NPC::runToLocation(irr::core::vector3d<float> const&)
@@ -10498,7 +10498,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306409	0x18	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD1Ev	SpawnPoint::~SpawnPoint()
 0x00306421	0x1a	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint14resetSpawnTimeEii	SpawnPoint::resetSpawnTime(int, int)
 0x0030643d	0x1c	SpawnPoint.cpp	game	world	matched	__tcf_4	__tcf_4
-0x00306459	0x1c	SpawnPoint.cpp	game	world	pending	__tcf_2	__tcf_2
+0x00306459	0x1c	SpawnPoint.cpp	game	world	matched	__tcf_2	__tcf_2
 0x00306475	0x6c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE	SpawnPoint::SetRotation(irr::core::vector3d<float> const&)
 0x003064e1	0x44	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint20GetOutterSpawnCenterEv	SpawnPoint::GetOutterSpawnCenter() const
 0x00306525	0x44	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint19GetInnerSpawnCenterEv	SpawnPoint::GetInnerSpawnCenter() const
@@ -11980,7 +11980,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033910d	0x3c	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE8_M_eraseEPNS_18_Rb_tree_node_baseE	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::_M_erase(stlp_priv::_Rb_tree_node_base*)
 0x00339149	0x30	Script.cpp	game	scripting	matched	__tcf_6	__tcf_6
 0x00339179	0x40	Script.cpp	stlport	-	matched	_ZNSaIN9stlp_priv13_Rb_tree_nodeISt4pairIKP11LevelObjectiEEEE8allocateEjPKv	std::allocator<stlp_priv::_Rb_tree_node<std::pair<LevelObject* const, int> > >::allocate(unsigned int, void const*)
-0x003391b9	0x1c	Script.cpp	game	scripting	pending	__tcf_3	__tcf_3
+0x003391b9	0x1c	Script.cpp	game	scripting	matched	__tcf_3	__tcf_3
 0x003391d5	0x1c	Script.cpp	game	scripting	matched	__tcf_5	__tcf_5
 0x003391f1	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI18GSBlockingTutorialEEPT_v	GSBlockingTutorial* StateMachine::pushState<GSBlockingTutorial>()
 0x00339211	0x1c	Script.cpp	game	scripting	matched	__tcf_4	__tcf_4
@@ -12243,7 +12243,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003424c1	0x24	NPCController.cpp	game	ai	pending	_ZN13NPCControllerD1Ev	NPCController::~NPCController()
 0x003424e5	0x30	VehicleController.cpp	game	ai	matched	__tcf_4	__tcf_4
 0x00342515	0x54	VehicleController.cpp	game	ai	pending	_ZN17VehicleController15getNextWaypointEv	VehicleController::getNextWaypoint()
-0x00342569	0x1c	VehicleController.cpp	game	ai	pending	__tcf_3	__tcf_3
+0x00342569	0x1c	VehicleController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00342585	0xc8	VehicleController.cpp	game	ai	pending	_ZN17VehicleController7onEventEPK6IEventPK12EventManager	VehicleController::onEvent(IEvent const*, EventManager const*)
 0x0034264d	0x66	VehicleController.cpp	game	ai	pending	_ZN17VehicleController12getNextPointEv	VehicleController::getNextPoint()
 0x003426b5	0x164	VehicleController.cpp	game	ai	pending	_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE	VehicleController::switchState(gameloft::ai::StateID)
@@ -12464,7 +12464,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00346ca5	0x1c	SideMission.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00346cc1	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI6GSFadeEEPT_v	GSFade* StateMachine::pushState<GSFade>()
 0x00346ce1	0x20	SideMission.cpp	game	missions	pending	_ZN11SideMission13fadeInFadeOutEv	SideMission::fadeInFadeOut()
-0x00346d01	0x1c	SideMission.cpp	game	missions	pending	__tcf_3	__tcf_3
+0x00346d01	0x1c	SideMission.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x00346d1d	0x1e	SideMission.cpp	game	missions	pending	_ZN11SideMission5startEv	SideMission::start()
 0x00346d3d	0x92	SideMission.cpp	game	missions	pending	_ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint	SideMission::isInCheckpointRange(irr::core::vector3d<float>, Checkpoint*)
 0x00346dd1	0x60	SideMission.cpp	game	missions	pending	_ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt	SideMission::addCheckpoint(int, irr::core::vector3d<float>, float, float, unsigned short, unsigned short&)
@@ -12513,7 +12513,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00347e85	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission14getObj2MessageEv	TaxiSideMission::getObj2Message()
 0x00347e8d	0x30	TaxiSideMission.cpp	game	vehicles	matched	__tcf_4	__tcf_4
 0x00347ebd	0x10	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission5cleanEv	TaxiSideMission::clean()
-0x00347ecd	0x1c	TaxiSideMission.cpp	game	vehicles	pending	__tcf_3	__tcf_3
+0x00347ecd	0x1c	TaxiSideMission.cpp	game	vehicles	matched	__tcf_3	__tcf_3
 0x00347ee9	0x28	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMissionC2Ev	TaxiSideMission::TaxiSideMission()
 0x00347ee9	0x28	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMissionC1Ev	TaxiSideMission::TaxiSideMission()
 0x00347f11	0x74	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission7dropOffEN3irr4core8vector3dIfEE	TaxiSideMission::dropOff(irr::core::vector3d<float>)

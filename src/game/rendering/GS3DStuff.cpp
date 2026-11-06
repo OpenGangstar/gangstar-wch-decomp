@@ -24,6 +24,7 @@
 #include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"
 #include "../core/EventManager.h"
+#include "../ai/AIManagerSingleton.h"
 
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)
 {

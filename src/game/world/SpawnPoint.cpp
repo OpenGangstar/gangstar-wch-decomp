@@ -40,6 +40,7 @@ void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const ch
 
 
 #include "SpawnPoint.h"
+#include "../ai/AIManagerSingleton.h"
 
 SpawnPoint::Center SpawnPoint::s_innerCenterCiv;
 SpawnPoint::Center SpawnPoint::s_outterCenterCiv;

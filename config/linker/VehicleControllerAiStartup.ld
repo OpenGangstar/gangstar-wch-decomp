@@ -13,8 +13,14 @@ _ZN36retail_vehiclecontroller_transitions17civ_vehicle_transE = 0x004327a0;
 _ZN36retail_vehiclecontroller_transitions17cop_vehicle_transE = 0x00432830;
 _ZN36retail_vehiclecontroller_transitions11guard_transE = 0x004328e4;
 _ZN36retail_vehiclecontroller_transitions22scripted_vehicle_transE = 0x0043298c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .ai_manager_singleton 0x002dbae8 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+    .ai_manager_cleanup 0x00342568 : { *ai-startup-vehiclecontroller.o(.text.__tcf_0) }
+    .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
+    .ai_manager_instance 0x004b6ae8 (NOLOAD) : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.b._ZZN9AIManager11getInstanceEvE3aim) }
     .ai_startup_function_0 0x003424e4 : { *ai-startup-vehiclecontroller.o(.text.__tcf_4) }
     .ai_startup_function_1 0x0034286c : { *ai-startup-vehiclecontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003429b0 : { *ai-startup-vehiclecontroller.o(.text._GLOBAL__I__ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }
