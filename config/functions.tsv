@@ -11460,12 +11460,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c579	0x6c	VirtualButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032c5e5	0x14	VirtualButton.cpp	game	core	matched	_GLOBAL__I__ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb	_GLOBAL__I__ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb
 0x0032c5f9	0x30	VirtualButton.cpp	game	core	matched	__tcf_2	__tcf_2
-0x0032c629	0x2c	VirtualButton.cpp	game	core	pending	_ZN15EvVirtualButtonD0Ev	EvVirtualButton::~EvVirtualButton()
-0x0032c655	0x24	VirtualButton.cpp	game	core	pending	_ZN15EvVirtualButtonD1Ev	EvVirtualButton::~EvVirtualButton()
-0x0032c678	0x14	VirtualButton.cpp	game	ui	pending	_ZThn8_N13VirtualButton19processTouchReleaseEv	non-virtual thunk to VirtualButton::processTouchRelease()
-0x0032c68d	0x88	VirtualButton.cpp	game	ui	pending	_ZN13VirtualButton19processTouchReleaseEv	VirtualButton::processTouchRelease()
-0x0032c714	0x14	VirtualButton.cpp	game	ui	pending	_ZThn8_N13VirtualButton12processTouchEl	non-virtual thunk to VirtualButton::processTouch(long)
-0x0032c729	0x90	VirtualButton.cpp	game	ui	pending	_ZN13VirtualButton12processTouchEl	VirtualButton::processTouch(long)
+0x0032c629	0x2c	VirtualButton.cpp	game	core	matched	_ZN15EvVirtualButtonD0Ev	EvVirtualButton::~EvVirtualButton()
+0x0032c655	0x24	VirtualButton.cpp	game	core	matched	_ZN15EvVirtualButtonD1Ev	EvVirtualButton::~EvVirtualButton()
+0x0032c678	0x14	VirtualButton.cpp	game	ui	matched	_ZThn8_N13VirtualButton19processTouchReleaseEv	non-virtual thunk to VirtualButton::processTouchRelease()
+0x0032c68d	0x88	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButton19processTouchReleaseEv	VirtualButton::processTouchRelease()
+0x0032c714	0x14	VirtualButton.cpp	game	ui	matched	_ZThn8_N13VirtualButton12processTouchEl	non-virtual thunk to VirtualButton::processTouch(long)
+0x0032c729	0x90	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButton12processTouchEl	VirtualButton::processTouch(long)
 0x0032c7b9	0x30	WantedMeter.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x0032c7e8	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_NK11WantedMeter6draw2dEv	non-virtual thunk to WantedMeter::draw2d() const
 0x0032c7fd	0x38	WantedMeter.cpp	game	missions	pending	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const

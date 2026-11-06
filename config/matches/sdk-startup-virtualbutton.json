@@ -43,7 +43,13 @@
         "_ZThn4_N13VirtualButtonD1Ev",
         "_ZN13VirtualButtonD1Ev",
         "_ZThn4_N13VirtualButtonD0Ev",
-        "_ZN13VirtualButtonD0Ev"
+        "_ZN13VirtualButtonD0Ev",
+        "_ZN15EvVirtualButtonD0Ev",
+        "_ZN15EvVirtualButtonD1Ev",
+        "_ZThn8_N13VirtualButton19processTouchReleaseEv",
+        "_ZN13VirtualButton19processTouchReleaseEv",
+        "_ZThn8_N13VirtualButton12processTouchEl",
+        "_ZN13VirtualButton12processTouchEl"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -54,7 +60,12 @@
             "name": ".got",
             "offset": 864
         },
-        ".button_vtable"
+        ".button_vtable",
+        ".button_event_vtable",
+        ".event_id",
+        ".event_delete",
+        ".event_destructor",
+        ".event_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -63,6 +74,7 @@
         "_ZNK7ASprite8GetFrameEi",
         "_ZNK7ASprite10GetFModuleEi",
         "_ZNK7ASprite9GetModuleEi",
-        "_ZN10HudElementD1Ev"
+        "_ZN10HudElementD1Ev",
+        "_ZN12EventManager5raiseERK6IEvent"
     ]
 }
