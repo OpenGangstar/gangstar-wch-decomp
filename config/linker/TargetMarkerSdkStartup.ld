@@ -5,6 +5,9 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .target_marker_destroy 0x0032be20 : { *sdk-startup-targetmarker.o(.text._ZN12TargetMarkerD1Ev .text._ZN12TargetMarkerD2Ev) }
+    .target_marker_init 0x0032be24 : { *sdk-startup-targetmarker.o(.text._ZN12TargetMarker4initEP7ASpriteii) }
+    .target_marker_construct 0x0032be5c : { *sdk-startup-targetmarker.o(.text._ZN12TargetMarkerC1Ev .text._ZN12TargetMarkerC2Ev) }
     .sdk_startup_function_0 0x0032be2c : { *sdk-startup-targetmarker.o(.text.__tcf_3) }
     .sdk_startup_function_1 0x0032c1b4 : { *sdk-startup-targetmarker.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x0032c220 : { *sdk-startup-targetmarker.o(.text._GLOBAL__I__ZN12TargetMarkerC2Ev) }

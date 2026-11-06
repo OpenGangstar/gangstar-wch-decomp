@@ -8,6 +8,24 @@
  * functions of TargetMarker.cpp here, in the order they appear in the library.
  */
 
+#include "TargetMarker.h"
+
+TargetMarker::~TargetMarker()
+{
+}
+
+void TargetMarker::init(ASprite* value, int marker, int target)
+{
+    sprite = value;
+    markerFrame = marker;
+    targetFrame = target;
+}
+
+TargetMarker::TargetMarker()
+    : sprite(0), depth(0.0f), offsetX(0), offsetY(0), enabled(true)
+{
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
