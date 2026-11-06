@@ -25,6 +25,13 @@
     "source": "src/game/ai/AIManager.cpp",
     "linker_script": "config/linker/AIManagerAiStartup.ld",
     "functions": [
+        "_ZN20EvWantedLevelChangedD0Ev",
+        "_ZN20EvWantedLevelChangedD1Ev",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerC2Ev",
+        "_ZN9AIManagerD0Ev",
+        "_ZN9AIManagerD1Ev",
+        "_ZN9AIManagerD2Ev",
         {
             "name": "__tcf_4",
             "address": "0x003400b9"
@@ -39,6 +46,13 @@
         }
     ],
     "sections": [
+        ".wanted_changed_delete",
+        ".wanted_changed_destroy",
+        ".wanted_changed_vtable",
+        ".ai_manager_construct",
+        ".ai_manager_delete",
+        ".ai_manager_destroy",
+        ".ai_manager_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +62,9 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6attachEiP14IEventReceiver"
+    ]
 }
