@@ -9,4 +9,8 @@ public:
     virtual int cause() const;
 };
 
+inline IMissionCondition::~IMissionCondition()
+{
+}
+
 #endif

@@ -13,8 +13,19 @@ _ZN52retail_missionconditionphotographquickly_transitions17civ_vehicle_transE = 
 _ZN52retail_missionconditionphotographquickly_transitions17cop_vehicle_transE = 0x0042bdc0;
 _ZN52retail_missionconditionphotographquickly_transitions11guard_transE = 0x0042be74;
 _ZN52retail_missionconditionphotographquickly_transitions22scripted_vehicle_transE = 0x0042bf1c;
+sprintf = 0x001c46ac;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_idiv = 0x001c43dc;
+__aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .mission_photo_0033739c 0x0033739c : { *ai-startup-missionconditionphotographquickly.o(.text._ZN33MissionConditionPhotographQuickly4drawEv) }
+    .mission_photo_003373d0 0x003373d0 : { *ai-startup-missionconditionphotographquickly.o(.text._ZN33MissionConditionPhotographQuickly8evaluateEi) }
+    .mission_photo_003374b4 0x003374b4 : { *ai-startup-missionconditionphotographquickly.o(.text._ZN33MissionConditionPhotographQuicklyC2EP11LevelObjecti .text._ZN33MissionConditionPhotographQuicklyC1EP11LevelObjecti) }
+    .mission_photo_0033763c 0x0033763c : { *ai-startup-missionconditionphotographquickly.o(.text._ZN33MissionConditionPhotographQuicklyD0Ev) }
+    .mission_photo_0033767c 0x0033767c : { *ai-startup-missionconditionphotographquickly.o(.text._ZN33MissionConditionPhotographQuicklyD2Ev .text._ZN33MissionConditionPhotographQuicklyD1Ev) }
+    .mission_photo_vtable 0x004ace80 : { *ai-startup-missionconditionphotographquickly.o(.data.rel.ro._ZTV33MissionConditionPhotographQuickly) }
+    .mission_photo_format 0x0042ad20 : { *ai-startup-missionconditionphotographquickly.o(.rodata.str1.4 .rodata.str1.1) }
     .ai_startup_function_0 0x003373a0 : { *ai-startup-missionconditionphotographquickly.o(.text.__tcf_3) }
     .ai_startup_function_1 0x003374e4 : { *ai-startup-missionconditionphotographquickly.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00337628 : { *ai-startup-missionconditionphotographquickly.o(.text._GLOBAL__I__ZN33MissionConditionPhotographQuicklyC2EP11LevelObjecti) }
