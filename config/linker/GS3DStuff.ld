@@ -120,6 +120,10 @@ SECTIONS {
         *stream.o(.text._ZN6StreamD1Ev .text._ZN6StreamD2Ev .gnu.linkonce.t._ZN6StreamD1Ev .gnu.linkonce.t._ZN6StreamD2Ev)
     }
     .streamvtable 0x004ad6c8 : { *stream.o(.data.rel.ro) }
+    .wanted_singleton 0x002dba04 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x002dba58 : { *gs3d-stuff.o(.text.__tcf_2) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .map_singleton 0x002dbb58 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
     .map_cleanup 0x002dbbac : { *gs3d-stuff.o(.text.__tcf_1) }
     .map_guard 0x004b6a94 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
@@ -168,3 +172,5 @@ ASSERT(SIZEOF(.gs3d_startup_storage_9) == 8, "GS3DStuff _ZN8gameloft2ai5guardE e
 ASSERT(SIZEOF(.gs3d_startup_storage_10) == 8, "GS3DStuff _ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_11) == 12, "GS3DStuff _ZN3irr2ps5vHalfE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_12) == 20, "GS3DStuff _ZN9GS3DStuff11lightsNodesE extent");
+ASSERT(SIZEOF(.wanted_guard) == 4, "WantedLevelManager singleton guard extent");
+ASSERT(SIZEOF(.wanted_instance) == 80, "WantedLevelManager singleton storage extent");

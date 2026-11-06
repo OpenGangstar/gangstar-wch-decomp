@@ -62,7 +62,12 @@
         "_ZN7Mission13resumeFadeOutEv",
         "_ZN7Mission15setFailureCountEi",
         "_ZN7Mission9objectiveEib",
-        "_ZN7Structs7Mission4ReadER10DataStream"
+        "_ZN7Structs7Mission4ReadER10DataStream",
+        {
+            "name": "__tcf_3",
+            "address": "0x00335df1",
+            "compiled_name": "__tcf_0"
+        }
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -90,12 +95,15 @@
         ".mission_resume_fade",
         ".mission_set_failure_count",
         ".mission_objective",
-        ".mission_read"
+        ".mission_read",
+        ".wanted_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN7Mission7messageEi",
         "_ZN10DataStream7ReadIntEv",
-        "_ZN10DataStream21ReadAndAllocateStringEv"
+        "_ZN10DataStream21ReadAndAllocateStringEv",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev"
     ]
 }

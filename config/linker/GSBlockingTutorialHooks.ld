@@ -51,6 +51,10 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x0033d3b4 : { *script-manager-helpers.o(.text.__tcf_1) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
     .map_cleanup 0x002e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
     .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }

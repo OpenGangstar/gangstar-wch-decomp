@@ -9,6 +9,7 @@
  */
 
 #include "Mission.h"
+#include "WantedLevelManagerSingleton.h"
 #include "IMissionCondition.h"
 #include "../persistence/DataStream.h"
 

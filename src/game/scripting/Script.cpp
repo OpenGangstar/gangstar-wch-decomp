@@ -9,6 +9,7 @@
  */
 
 #include "Script.h"
+#include "../missions/WantedLevelManagerSingleton.h"
 #include "ScriptManager.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"

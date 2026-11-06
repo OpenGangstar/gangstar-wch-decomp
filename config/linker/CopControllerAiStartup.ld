@@ -13,8 +13,14 @@ _ZN32retail_copcontroller_transitions17civ_vehicle_transE = 0x00431004;
 _ZN32retail_copcontroller_transitions17cop_vehicle_transE = 0x00431094;
 _ZN32retail_copcontroller_transitions11guard_transE = 0x00431148;
 _ZN32retail_copcontroller_transitions22scripted_vehicle_transE = 0x004311f0;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-copcontroller.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x00340ec0 : { *ai-startup-copcontroller.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-copcontroller.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-copcontroller.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .ai_startup_function_0 0x00341108 : { *ai-startup-copcontroller.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00340fb0 : { *ai-startup-copcontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003410f4 : { *ai-startup-copcontroller.o(.text._GLOBAL__I__ZN13CopController20s_hasAttemptedArrestE) }

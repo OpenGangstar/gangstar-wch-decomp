@@ -13,8 +13,14 @@ _ZN25retail_script_transitions17civ_vehicle_transE = 0x0042edb0;
 _ZN25retail_script_transitions17cop_vehicle_transE = 0x0042ee40;
 _ZN25retail_script_transitions11guard_transE = 0x0042eef4;
 _ZN25retail_script_transitions22scripted_vehicle_transE = 0x0042ef9c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-script.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x00339210 : { *ai-startup-script.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-script.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-script.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .script_lock 0x0033993c : { *ai-startup-script.o(.text._ZN6Script10lockScriptEi) }
     .script_execute_subscript 0x0033cf14 : { *ai-startup-script.o(.text._ZN6Script16executeSubScriptEii) }
     .script_execute 0x0033cf54 : { *ai-startup-script.o(.text._ZN6Script7executeEi) }

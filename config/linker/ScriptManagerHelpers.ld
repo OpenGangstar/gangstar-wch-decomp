@@ -14,8 +14,14 @@ _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/ScriptManagerQuerySections.ld
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x0033d3b4 : { *script-manager-helpers.o(.text.__tcf_1) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .helper_0 0x0033cffc : { *script-manager-helpers.o(.text._ZN13ScriptManager6resumeEv .gnu.linkonce.t._ZN13ScriptManager6resumeEv) }
     .helper_1 0x0033d034 : { *script-manager-helpers.o(.text._ZN13ScriptManager20skipBlockingCommandsEv .gnu.linkonce.t._ZN13ScriptManager20skipBlockingCommandsEv) }
     .helper_2 0x0033d08c : { *script-manager-helpers.o(.text._ZNK13ScriptManager10getMissionEv .gnu.linkonce.t._ZNK13ScriptManager10getMissionEv) }

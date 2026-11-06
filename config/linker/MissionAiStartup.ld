@@ -13,8 +13,14 @@ _ZN26retail_mission_transitions17civ_vehicle_transE = 0x0042aabc;
 _ZN26retail_mission_transitions17cop_vehicle_transE = 0x0042ab4c;
 _ZN26retail_mission_transitions11guard_transE = 0x0042ac00;
 _ZN26retail_mission_transitions22scripted_vehicle_transE = 0x0042aca8;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-mission.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x00335df0 : { *ai-startup-mission.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-mission.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-mission.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .mission_set_text 0x00335c10 : { *ai-startup-mission.o(.text._ZN7Mission14setTextToPrintEi) }
     .mission_lookup 0x00335c18 : { *ai-startup-mission.o(.text._ZNK7Mission7missionEi) }
     .mission_last_objective 0x00335c34 : { *ai-startup-mission.o(.text._ZNK7Mission20getLastObjectiveTextEv) }

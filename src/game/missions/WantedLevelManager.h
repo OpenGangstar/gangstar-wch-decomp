@@ -5,13 +5,18 @@
 class WantedLevelManager {
 public:
     static bool s_bTutoWantedLevel;
-    static WantedLevelManager* getInstance() __attribute__((weak));
+    static WantedLevelManager* getInstance() __attribute__((weak, used));
     // The complete and deleting destructor slots precede update at slot 3.
     virtual ~WantedLevelManager(); virtual void unknown2();
     virtual void update(double);
     void _processWantedLevel();
     unsigned int unknown4;
     int unknown8;
+
+private:
+    WantedLevelManager();
+    // The retail singleton occupies 80 bytes. The remaining members are pending.
+    unsigned char unknown12[68];
 };
 
 #endif

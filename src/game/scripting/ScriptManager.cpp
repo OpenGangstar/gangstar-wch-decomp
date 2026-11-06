@@ -55,6 +55,8 @@ ScriptManager* ScriptManager::getInstance()
     return &scrmgr;
 }
 
+#include "../missions/WantedLevelManagerSingleton.h"
+
 void ScriptManager::resume() { paused = false; }
 
 void ScriptManager::skipBlockingCommands() { ++commandCursor; }

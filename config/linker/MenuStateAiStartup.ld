@@ -13,8 +13,14 @@ _ZN28retail_menustate_transitions17civ_vehicle_transE = 0x0041a414;
 _ZN28retail_menustate_transitions17cop_vehicle_transE = 0x0041a4a4;
 _ZN28retail_menustate_transitions11guard_transE = 0x0041a558;
 _ZN28retail_menustate_transitions22scripted_vehicle_transE = 0x0041a600;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-menustate.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x002e761c : { *ai-startup-menustate.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-menustate.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-menustate.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .ai_startup_function_0 0x002e73b0 : { *ai-startup-menustate.o(.text.__tcf_6) }
     .ai_startup_function_1 0x002e9564 : { *ai-startup-menustate.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x002e96a8 : { *ai-startup-menustate.o(.text._GLOBAL__I__ZN9MenuStateC2EPKc) }

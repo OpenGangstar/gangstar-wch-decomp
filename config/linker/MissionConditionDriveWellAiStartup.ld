@@ -13,8 +13,14 @@ _ZN44retail_missionconditiondrivewell_transitions17civ_vehicle_transE = 0x0042b7
 _ZN44retail_missionconditiondrivewell_transitions17cop_vehicle_transE = 0x0042b7f0;
 _ZN44retail_missionconditiondrivewell_transitions11guard_transE = 0x0042b8a4;
 _ZN44retail_missionconditiondrivewell_transitions22scripted_vehicle_transE = 0x0042b94c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x00336df4 : { *ai-startup-missionconditiondrivewell.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .ai_startup_function_0 0x00336dc4 : { *ai-startup-missionconditiondrivewell.o(.text.__tcf_4) }
     .ai_startup_function_1 0x003371b8 : { *ai-startup-missionconditiondrivewell.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003372fc : { *ai-startup-missionconditiondrivewell.o(.text._GLOBAL__I__ZN25MissionConditionDriveWellC2EP7Vehicle) }

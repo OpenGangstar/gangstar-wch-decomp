@@ -329,6 +329,7 @@
         "level-object"
     ],
     "external_thumb_functions": [
+        "_ZN18WantedLevelManagerC1Ev",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
         "_ZN16SceneNodeManager11getInstanceEv",

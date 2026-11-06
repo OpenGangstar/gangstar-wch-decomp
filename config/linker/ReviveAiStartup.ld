@@ -14,8 +14,14 @@ _ZN25retail_revive_transitions17cop_vehicle_transE = 0x0042e688;
 _ZN25retail_revive_transitions11guard_transE = 0x0042e73c;
 _ZN25retail_revive_transitions22scripted_vehicle_transE = 0x0042e7e4;
 _Znwj = 0x001c4814;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-revive.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x00338c24 : { *ai-startup-revive.o(.text.__tcf_0) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-revive.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-revive.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .revive_construct 0x00338e78 : { *ai-startup-revive.o(.text._ZN6ReviveC1Eb .text._ZN6ReviveC2Eb) }
     .revive_finish 0x00338b54 : { *ai-startup-revive.o(.text._ZN6Revive19finishCashLostAnimsEv) }
     .revive_draw 0x00338b8c : { *ai-startup-revive.o(.text._ZN6Revive6draw2dEv) }

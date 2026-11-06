@@ -17,6 +17,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_singleton 0x002dba04 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
+    .wanted_cleanup 0x003010b8 : { *ai-startup-playertest.o(.text.__tcf_1) }
+    .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-playertest.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
+    .wanted_instance 0x004b6a98 (NOLOAD) : { *ai-startup-playertest.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .map_singleton 0x002dbb58 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
     .map_cleanup 0x3010e4 : { *ai-startup-playertest.o(.text.__tcf_0) }
     .map_guard 0x004b6a94 (NOLOAD) : { *ai-startup-playertest.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
