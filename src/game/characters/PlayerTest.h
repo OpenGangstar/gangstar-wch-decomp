@@ -65,6 +65,7 @@ public:
     virtual void Stop(); virtual void unknownPrimary4();
     virtual void unknownPrimary5(); virtual void unknownPrimary6();
     virtual Vehicle* getVehicle() const;
+    virtual Weapon* getWeapon() const;
 };
 class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
 public:
@@ -78,6 +79,7 @@ public:
             setContextArmor(200);
     }
     using SavePositionInterface::getVehicle;
+    using SavePositionInterface::getWeapon;
     enum eContext { Context0 = 0, Context1 = 1, AnyContext = -1 };
     static PlayerTest* GetPlayer();
     // Inline access to the observed target at offset 264; no standalone symbol claimed.

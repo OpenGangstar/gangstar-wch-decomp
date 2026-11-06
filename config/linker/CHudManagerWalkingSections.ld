@@ -14,4 +14,7 @@ SECTIONS
     .hud_minimap_visible 0x00323620 : { *hud-manager-helpers.o(.text._ZN11CHudManager16isMinimapVisibleEv) }
     .hud_weapon_visible 0x00323634 : { *hud-manager-helpers.o(.text._ZNK11CHudManager15isWeaponVisibleEv) }
     .hud_hide 0x00323d68 : { *hud-manager-helpers.o(.text._ZN11CHudManager4hideEv) }
+    .hud_mode_walking 0x00323b00 : { *hud-manager-helpers.o(.text._ZN11CHudManager7walkingEv) }
+    .hud_mode_driving 0x00323b34 : { *hud-manager-helpers.o(.text._ZN11CHudManager7drivingEv) }
+    .hud_mode_sniping 0x00323abc : { *hud-manager-helpers.o(.text._ZN11CHudManager7snipingEv) }
 }

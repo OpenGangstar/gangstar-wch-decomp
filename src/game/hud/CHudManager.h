@@ -1,6 +1,7 @@
 #ifndef WCH_HUD_CHUD_MANAGER_H
 #define WCH_HUD_CHUD_MANAGER_H
 
+class AnalogStick;
 class HudElement;
 class IHud;
 class SpyGauge;
@@ -27,7 +28,11 @@ public:
     IHud* activeHud;
     IHud* initialHud;
     IHud* drivingHud;
-    unsigned char unknown16[52];
+    IHud* sniperHud;
+    IHud* cameraHud;
+    unsigned char unknown24[12];
+    AnalogStick* analogStick;
+    unsigned char unknown40[28];
     HudElement* enterCarButton;
     HudElement* enterShopButton;
     unsigned char unknown76[40];
@@ -56,6 +61,9 @@ public:
     bool isVisible() const;
     bool isMinimapVisible();
     bool isWeaponVisible() const;
+    void walking();
+    void driving();
+    void sniping();
 };
 
 #endif

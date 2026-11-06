@@ -228,7 +228,10 @@
         ".hud_visible",
         ".hud_minimap_visible",
         ".hud_weapon_visible",
-        ".hud_hide"
+        ".hud_hide",
+        ".hud_mode_walking",
+        ".hud_mode_driving",
+        ".hud_mode_sniping"
     ],
     "retail_got": true,
     "dependencies": [
@@ -270,6 +273,8 @@
         "_ZN11CDrivingHud12showSpyGaugeEb",
         "_ZN11CDrivingHud8showCashEb",
         "_ZN11CWalkingHud20toggleWeaponSelectorEb",
-        "_ZN11CDrivingHud20toggleWeaponSelectorEb"
+        "_ZN11CDrivingHud20toggleWeaponSelectorEb",
+        "_ZN11AnalogStick10switchModeENS_4ModeE",
+        "_ZNK6Weapon13getWeaponTypeEv"
     ]
 }
