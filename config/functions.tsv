@@ -11428,12 +11428,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032bcfd	0xa4	SwipeButton.cpp	game	ui	matched	_ZN11SwipeButtonC1EP7ASpritei	SwipeButton::SwipeButton(ASprite*, int)
 0x0032bda1	0x6c	SwipeButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032be0d	0x14	SwipeButton.cpp	game	core	matched	_GLOBAL__I__ZN11SwipeButtonC2EP7ASpritei	_GLOBAL__I__ZN11SwipeButtonC2EP7ASpritei
-0x0032be21	0x2	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarkerD2Ev	TargetMarker::~TargetMarker()
-0x0032be21	0x2	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarkerD1Ev	TargetMarker::~TargetMarker()
-0x0032be25	0x8	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarker4initEP7ASpriteii	TargetMarker::init(ASprite*, int, int)
+0x0032be21	0x2	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarkerD2Ev	TargetMarker::~TargetMarker()
+0x0032be21	0x2	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarkerD1Ev	TargetMarker::~TargetMarker()
+0x0032be25	0x8	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarker4initEP7ASpriteii	TargetMarker::init(ASprite*, int, int)
 0x0032be2d	0x30	TargetMarker.cpp	game	hud	matched	__tcf_3	__tcf_3
-0x0032be5d	0x18	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarkerC1Ev	TargetMarker::TargetMarker()
-0x0032be5d	0x18	TargetMarker.cpp	game	hud	pending	_ZN12TargetMarkerC2Ev	TargetMarker::TargetMarker()
+0x0032be5d	0x18	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarkerC1Ev	TargetMarker::TargetMarker()
+0x0032be5d	0x18	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarkerC2Ev	TargetMarker::TargetMarker()
 0x0032be75	0x340	TargetMarker.cpp	game	hud	pending	_ZNK12TargetMarker4drawEv	TargetMarker::draw() const
 0x0032c1b5	0x6c	TargetMarker.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032c221	0x14	TargetMarker.cpp	game	hud	matched	_GLOBAL__I__ZN12TargetMarkerC2Ev	_GLOBAL__I__ZN12TargetMarkerC2Ev

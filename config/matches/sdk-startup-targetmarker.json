@@ -36,13 +36,21 @@
         {
             "name": "_GLOBAL__I__ZN12TargetMarkerC2Ev",
             "address": "0x0032c221"
-        }
+        },
+        "_ZN12TargetMarkerD1Ev",
+        "_ZN12TargetMarkerD2Ev",
+        "_ZN12TargetMarker4initEP7ASpriteii",
+        "_ZN12TargetMarkerC1Ev",
+        "_ZN12TargetMarkerC2Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
         ".shared_startup_empty_text",
+        ".target_marker_destroy",
+        ".target_marker_init",
+        ".target_marker_construct",
         {
             "name": ".got",
             "offset": 864
