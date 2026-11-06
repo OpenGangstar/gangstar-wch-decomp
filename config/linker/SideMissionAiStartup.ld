@@ -13,8 +13,14 @@ _ZN30retail_sidemission_transitions17civ_vehicle_transE = 0x00434c34;
 _ZN30retail_sidemission_transitions17cop_vehicle_transE = 0x00434cc4;
 _ZN30retail_sidemission_transitions11guard_transE = 0x00434d78;
 _ZN30retail_sidemission_transitions22scripted_vehicle_transE = 0x00434e20;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .state_machine_singleton 0x002d44c4 : { *ai-startup-sidemission.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
+    .state_machine_cleanup 0x00346ca4 : { *ai-startup-sidemission.o(.text.__tcf_0) }
+    .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-sidemission.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
+    .state_machine_instance 0x004b6908 (NOLOAD) : { *ai-startup-sidemission.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm) }
     .ai_startup_function_0 0x00346c74 : { *ai-startup-sidemission.o(.text.__tcf_5) }
     .ai_startup_function_1 0x003474c0 : { *ai-startup-sidemission.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00347604 : { *ai-startup-sidemission.o(.text._GLOBAL__I__ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt) }

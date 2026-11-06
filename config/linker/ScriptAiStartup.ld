@@ -17,6 +17,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .state_machine_singleton 0x002d44c4 : { *ai-startup-script.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
+    .state_machine_cleanup 0x003391d4 : { *ai-startup-script.o(.text.__tcf_1) }
+    .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-script.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
+    .state_machine_instance 0x004b6908 (NOLOAD) : { *ai-startup-script.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm) }
     .wanted_singleton 0x002dba04 : { *ai-startup-script.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00339210 : { *ai-startup-script.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-script.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

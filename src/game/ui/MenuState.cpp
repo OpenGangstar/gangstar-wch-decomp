@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
+#include "../ai/StateMachine.h"
 
 void operator delete(void*) throw();
 extern "C" {

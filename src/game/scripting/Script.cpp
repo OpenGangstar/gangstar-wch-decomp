@@ -106,6 +106,7 @@ void Script::execute(int elapsed)
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../ai/StateMachine.h"
 
 void operator delete(void*) throw();
 extern "C" {
