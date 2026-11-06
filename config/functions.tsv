@@ -11849,13 +11849,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00336809	0x144	Mission.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033694d	0x14	Mission.cpp	game	missions	matched	_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii	_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii
 0x00336961	0x10c	Mission.cpp	game	missions	pending	_ZN7Mission3endEv	Mission::end()
-0x00336a6d	0x6	MissionConditionBeQuick.cpp	game	missions	pending	_ZNK17IMissionCondition5causeEv	IMissionCondition::cause() const
-0x00336a75	0x18	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuickC2Ei	MissionConditionBeQuick::MissionConditionBeQuick(int)
-0x00336a75	0x18	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuickC1Ei	MissionConditionBeQuick::MissionConditionBeQuick(int)
-0x00336a8d	0x2	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuick4drawEv	MissionConditionBeQuick::draw()
+0x00336a6d	0x6	MissionConditionBeQuick.cpp	game	missions	matched	_ZNK17IMissionCondition5causeEv	IMissionCondition::cause() const
+0x00336a75	0x18	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickC2Ei	MissionConditionBeQuick::MissionConditionBeQuick(int)
+0x00336a75	0x18	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickC1Ei	MissionConditionBeQuick::MissionConditionBeQuick(int)
+0x00336a8d	0x2	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuick4drawEv	MissionConditionBeQuick::draw()
 0x00336a91	0x30	MissionConditionBeQuick.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x00336ac1	0x20	MissionConditionBeQuick.cpp	game	missions	pending	_ZN17IMissionConditionD0Ev	IMissionCondition::~IMissionCondition()
-0x00336ae1	0x18	MissionConditionBeQuick.cpp	game	missions	pending	_ZN17IMissionConditionD1Ev	IMissionCondition::~IMissionCondition()
+0x00336ac1	0x20	MissionConditionBeQuick.cpp	game	missions	matched	_ZN17IMissionConditionD0Ev	IMissionCondition::~IMissionCondition()
+0x00336ae1	0x18	MissionConditionBeQuick.cpp	game	missions	matched	_ZN17IMissionConditionD1Ev	IMissionCondition::~IMissionCondition()
 0x00336af9	0xf4	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuick8evaluateEi	MissionConditionBeQuick::evaluate(int)
 0x00336bed	0x144	MissionConditionBeQuick.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00336d31	0x14	MissionConditionBeQuick.cpp	game	missions	matched	_GLOBAL__I__ZN23MissionConditionBeQuickC2Ei	_GLOBAL__I__ZN23MissionConditionBeQuickC2Ei
@@ -11894,11 +11894,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003378a1	0x3c	MissionConditionProtectCar.cpp	game	missions	pending	_ZN26MissionConditionProtectCarD0Ev	MissionConditionProtectCar::~MissionConditionProtectCar()
 0x003378dd	0x38	MissionConditionProtectCar.cpp	game	missions	pending	_ZN26MissionConditionProtectCarD2Ev	MissionConditionProtectCar::~MissionConditionProtectCar()
 0x003378dd	0x38	MissionConditionProtectCar.cpp	game	missions	pending	_ZN26MissionConditionProtectCarD1Ev	MissionConditionProtectCar::~MissionConditionProtectCar()
-0x00337915	0x1c	MissionConditionProtectNPC.cpp	game	missions	pending	_ZN26MissionConditionProtectNPCC1EP3NPCi	MissionConditionProtectNPC::MissionConditionProtectNPC(NPC*, int)
-0x00337915	0x1c	MissionConditionProtectNPC.cpp	game	missions	pending	_ZN26MissionConditionProtectNPCC2EP3NPCi	MissionConditionProtectNPC::MissionConditionProtectNPC(NPC*, int)
-0x00337931	0x18	MissionConditionProtectNPC.cpp	game	missions	pending	_ZN26MissionConditionProtectNPC8evaluateEi	MissionConditionProtectNPC::evaluate(int)
-0x00337949	0x2	MissionConditionProtectNPC.cpp	game	missions	pending	_ZN26MissionConditionProtectNPC4drawEv	MissionConditionProtectNPC::draw()
-0x0033794d	0x4	MissionConditionProtectNPC.cpp	game	missions	pending	_ZNK26MissionConditionProtectNPC5causeEv	MissionConditionProtectNPC::cause() const
+0x00337915	0x1c	MissionConditionProtectNPC.cpp	game	missions	matched	_ZN26MissionConditionProtectNPCC1EP3NPCi	MissionConditionProtectNPC::MissionConditionProtectNPC(NPC*, int)
+0x00337915	0x1c	MissionConditionProtectNPC.cpp	game	missions	matched	_ZN26MissionConditionProtectNPCC2EP3NPCi	MissionConditionProtectNPC::MissionConditionProtectNPC(NPC*, int)
+0x00337931	0x18	MissionConditionProtectNPC.cpp	game	missions	matched	_ZN26MissionConditionProtectNPC8evaluateEi	MissionConditionProtectNPC::evaluate(int)
+0x00337949	0x2	MissionConditionProtectNPC.cpp	game	missions	matched	_ZN26MissionConditionProtectNPC4drawEv	MissionConditionProtectNPC::draw()
+0x0033794d	0x4	MissionConditionProtectNPC.cpp	game	missions	matched	_ZNK26MissionConditionProtectNPC5causeEv	MissionConditionProtectNPC::cause() const
 0x00337951	0x30	MissionConditionProtectNPC.cpp	game	missions	matched	__tcf_2	__tcf_2
 0x00337981	0x144	MissionConditionProtectNPC.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00337ac5	0x14	MissionConditionProtectNPC.cpp	game	missions	matched	_GLOBAL__I__ZN26MissionConditionProtectNPCC2EP3NPCi	_GLOBAL__I__ZN26MissionConditionProtectNPCC2EP3NPCi

@@ -8,6 +8,41 @@
  * functions of MissionConditionProtectNPC.cpp here, in the order they appear in the library.
  */
 
+#include "IMissionCondition.h"
+#include "../ai/NPC.h"
+
+class MissionConditionProtectNPC : public IMissionCondition {
+public:
+    MissionConditionProtectNPC(NPC* target, int failureCause);
+    virtual ~MissionConditionProtectNPC();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+    virtual int cause() const;
+
+private:
+    NPC* target;
+    int failureCause;
+};
+
+MissionConditionProtectNPC::MissionConditionProtectNPC(NPC* target, int failureCause)
+    : target(target), failureCause(failureCause)
+{
+}
+
+bool MissionConditionProtectNPC::evaluate(int)
+{
+    return !target->isDead();
+}
+
+void MissionConditionProtectNPC::draw()
+{
+}
+
+int MissionConditionProtectNPC::cause() const
+{
+    return failureCause;
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
