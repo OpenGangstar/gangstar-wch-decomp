@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -42,7 +43,11 @@
         "_ZN17IMissionConditionD1Ev",
         "_ZN23MissionConditionBeQuickC1Ei",
         "_ZN23MissionConditionBeQuickC2Ei",
-        "_ZN23MissionConditionBeQuick4drawEv"
+        "_ZN23MissionConditionBeQuick4drawEv",
+        "_ZN23MissionConditionBeQuick8evaluateEi",
+        "_ZN23MissionConditionBeQuickD0Ev",
+        "_ZN23MissionConditionBeQuickD1Ev",
+        "_ZN23MissionConditionBeQuickD2Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -58,7 +63,19 @@
         ".mission_condition_00336a8c",
         ".mission_condition_00336ac0",
         ".mission_condition_00336ae0",
-        ".mission_condition_base_vtable"
+        ".mission_condition_base_vtable",
+        ".bequick_evaluate",
+        ".bequick_delete",
+        ".bequick_destroy",
+        ".bequick_format",
+        ".bequick_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZNK11MenuManager7getTextENS_5eTextE",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager13isInCinematicEv"
+    ]
 }

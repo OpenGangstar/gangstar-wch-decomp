@@ -19,8 +19,10 @@ struct MenuCheatZone {
 class MenuManager {
 public:
     static MenuManager* getInstance();
-    enum eText { SkipButtonText = 3 };
+    enum eText { SkipButtonText = 3, MissionTimerText = 15 };
     void setText(eText slot, int textId, int* arguments);
+    void setText(eText slot, const char* text, int* arguments);
+    const char* getText(eText slot) const;
     static MenuCheatZone s_cheatActivationZones[2];
     int getDepth() const;
     void showTexts();

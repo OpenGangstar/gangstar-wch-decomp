@@ -14,8 +14,17 @@ _ZN42retail_missionconditionbequick_transitions17cop_vehicle_transE = 0x0042b150
 _ZN42retail_missionconditionbequick_transitions11guard_transE = 0x0042b204;
 _ZN42retail_missionconditionbequick_transitions22scripted_vehicle_transE = 0x0042b2ac;
 __cxa_pure_virtual = 0;
+sprintf = 0x001c46ac;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_idiv = 0x001c43dc;
+__aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .bequick_evaluate 0x00336af8 : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuick8evaluateEi) }
+    .bequick_delete 0x00336d44 : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuickD0Ev) }
+    .bequick_destroy 0x00336d84 : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuickD1Ev .text._ZN23MissionConditionBeQuickD2Ev) }
+    .bequick_format 0x0042ad20 : { *ai-startup-missionconditionbequick.o(.rodata.str1.4 .rodata.str1.1) }
+    .bequick_vtable 0x004ace20 : { *ai-startup-missionconditionbequick.o(.data.rel.ro._ZTV23MissionConditionBeQuick) }
     .mission_condition_00336a6c 0x00336a6c : { *ai-startup-missionconditionbequick.o(.gnu.linkonce.t._ZNK17IMissionCondition5causeEv) }
     .mission_condition_00336a74 0x00336a74 : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuickC1Ei .text._ZN23MissionConditionBeQuickC2Ei) }
     .mission_condition_00336a8c 0x00336a8c : { *ai-startup-missionconditionbequick.o(.text._ZN23MissionConditionBeQuick4drawEv) }

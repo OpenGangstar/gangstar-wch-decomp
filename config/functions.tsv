@@ -11856,12 +11856,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00336a91	0x30	MissionConditionBeQuick.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x00336ac1	0x20	MissionConditionBeQuick.cpp	game	missions	matched	_ZN17IMissionConditionD0Ev	IMissionCondition::~IMissionCondition()
 0x00336ae1	0x18	MissionConditionBeQuick.cpp	game	missions	matched	_ZN17IMissionConditionD1Ev	IMissionCondition::~IMissionCondition()
-0x00336af9	0xf4	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuick8evaluateEi	MissionConditionBeQuick::evaluate(int)
+0x00336af9	0xf4	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuick8evaluateEi	MissionConditionBeQuick::evaluate(int)
 0x00336bed	0x144	MissionConditionBeQuick.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00336d31	0x14	MissionConditionBeQuick.cpp	game	missions	matched	_GLOBAL__I__ZN23MissionConditionBeQuickC2Ei	_GLOBAL__I__ZN23MissionConditionBeQuickC2Ei
-0x00336d45	0x40	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuickD0Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
-0x00336d85	0x3c	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuickD1Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
-0x00336d85	0x3c	MissionConditionBeQuick.cpp	game	missions	pending	_ZN23MissionConditionBeQuickD2Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
+0x00336d45	0x40	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickD0Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
+0x00336d85	0x3c	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickD1Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
+0x00336d85	0x3c	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickD2Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
 0x00336dc1	0x2	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWell4drawEv	MissionConditionDriveWell::draw()
 0x00336dc5	0x30	MissionConditionDriveWell.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00336df5	0x1c	MissionConditionDriveWell.cpp	game	missions	pending	__tcf_0	__tcf_0
