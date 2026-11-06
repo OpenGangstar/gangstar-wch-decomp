@@ -39,7 +39,11 @@
         },
         "_ZN13VirtualButton6updateEd",
         "_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
-        "_ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb"
+        "_ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
+        "_ZThn4_N13VirtualButtonD1Ev",
+        "_ZN13VirtualButtonD1Ev",
+        "_ZThn4_N13VirtualButtonD0Ev",
+        "_ZN13VirtualButtonD0Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -49,7 +53,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".button_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -57,6 +62,7 @@
         "_ZN11Application11GetInstanceEv",
         "_ZNK7ASprite8GetFrameEi",
         "_ZNK7ASprite10GetFModuleEi",
-        "_ZNK7ASprite9GetModuleEi"
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZN10HudElementD1Ev"
     ]
 }

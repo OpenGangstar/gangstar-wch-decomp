@@ -41,7 +41,14 @@
         "_ZN14AnimatedButton7setAnimEi",
         "_ZN14AnimatedButton6updateEd",
         "_ZN14AnimatedButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeE",
-        "_ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE"
+        "_ZN14AnimatedButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeE",
+        "_Z10SafeDeleteI10AnimObjectEvRPT_",
+        "_ZThn4_N13VirtualButtonD1Ev",
+        "_ZN13VirtualButtonD1Ev",
+        "_ZThn4_N14AnimatedButtonD0Ev",
+        "_ZN14AnimatedButtonD0Ev",
+        "_ZThn4_N14AnimatedButtonD1Ev",
+        "_ZN14AnimatedButtonD1Ev"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -51,7 +58,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".button_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -63,6 +71,8 @@
         "_ZNK7ASprite18GetFrameFromAFrameEii",
         "_ZNK7ASprite8GetFrameEi",
         "_ZNK7ASprite10GetFModuleEi",
-        "_ZNK7ASprite9GetModuleEi"
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZN10HudElementD1Ev",
+        "_ZN10AnimObjectD1Ev"
     ]
 }
