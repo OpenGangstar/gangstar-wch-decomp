@@ -8839,7 +8839,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4441	0x2c	Application.cpp	game	app	pending	_ZN11Application15stopSoundThreadEv	Application::stopSoundThread()
 0x002d446d	0x58	Application.cpp	game	app	pending	_ZN11Application16startSoundThreadEv	Application::startSoundThread()
 0x002d44c5	0x54	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11getInstanceEv	StateMachine::getInstance()
-0x002d4519	0x1c	Application.cpp	game	app	pending	__tcf_2	__tcf_2
+0x002d4519	0x1c	Application.cpp	game	app	matched	__tcf_2	__tcf_2
 0x002d4535	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite14GetFrameHeightEi	ASprite::GetFrameHeight(int)
 0x002d4551	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite13GetFrameWidthEi	ASprite::GetFrameWidth(int)
 0x002d456d	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11switchStateI13GSMoviePlayerEEPT_v	GSMoviePlayer* StateMachine::switchState<GSMoviePlayer>()
@@ -12120,7 +12120,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033dd8d	0x24	ScriptManager.cpp	game	scripting	matched	_ZN7Structs11ActorFollow4ReadER10DataStream	Structs::ActorFollow::Read(DataStream&)
 0x0033ddb1	0x24	ScriptManager.cpp	game	scripting	matched	_ZN7Structs11ActorAttack4ReadER10DataStream	Structs::ActorAttack::Read(DataStream&)
 0x0033ddd5	0x984	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager11loadCommandER10DataStream	ScriptManager::loadCommand(DataStream&)
-0x0033e759	0x1c	ScriptManager.cpp	game	scripting	pending	__tcf_4	__tcf_4
+0x0033e759	0x1c	ScriptManager.cpp	game	scripting	matched	__tcf_4	__tcf_4
 0x0033e775	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI9GSFailureEEPT_v	GSFailure* StateMachine::pushState<GSFailure>()
 0x0033e795	0x20	ScriptManager.cpp	game	scripting	matched	_Z10SafeDeleteI6ReviveEvRPT_	void SafeDelete<Revive>(Revive*&)
 0x0033e7b5	0x1c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManagerD2Ev	ScriptManager::~ScriptManager()

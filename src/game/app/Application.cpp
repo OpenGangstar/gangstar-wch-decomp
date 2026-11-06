@@ -12,6 +12,7 @@
 #include "../core/GameEventMethods.h"
 #include "../core/SceneNode.h"
 #include "../core/VideoDriver.h"
+#include "../ai/StateMachine.h"
 
 void Application::GetScreenDimensions(int& width, int& height) const
 {

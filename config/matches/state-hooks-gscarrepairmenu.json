@@ -348,6 +348,7 @@
         ".script_manager_minimap_tracking"
     ],
     "retail_got": true,
+    "source_first": true,
     "dependencies": [
         "hud-manager-helpers",
         "script-manager-helpers",
