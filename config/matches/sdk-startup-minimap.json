@@ -36,7 +36,8 @@
         {
             "name": "_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii",
             "address": "0x003298b9"
-        }
+        },
+        "_ZN7MiniMap27deregisterAllForMapTrackingEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -46,7 +47,11 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".minimap_deregister"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10AnimObjectD1Ev"
+    ]
 }
