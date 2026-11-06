@@ -10,6 +10,7 @@
 
 #include "AnimatedButton.h"
 #include "../characters/AnimObject.h"
+#include "../core/ASprite.h"
 
 void AnimatedButton::grayOut(bool gray)
 {
@@ -28,6 +29,28 @@ void AnimatedButton::update(double elapsed)
 {
     VirtualButton::update(elapsed);
     animationObject->UpdateFrame();
+}
+
+AnimatedButton::AnimatedButton(ASprite* image, int animation, EvVButton::ButtonType::Type type)
+    : VirtualButton(image, animation, type, true)
+{
+    animationObject = new AnimObject;
+    animationObject->sprite = image;
+    animationObject->SetAnim(animation);
+    const int spriteFrame = sprite->GetFrameFromAFrame(animation, 0);
+    const SpriteFrame* entry = sprite->GetFrame(spriteFrame);
+    const SpriteFrameModule* part = sprite->GetFModule(entry->firstModule);
+    const SpriteModule* module = sprite->GetModule(part->module);
+    const float x = part->x;
+    const float y = part->y;
+    const float width = module->width;
+    const short height = module->height;
+    const float right = x + width;
+    touchRegion.coordinates[0] = x;
+    touchRegion.coordinates[1] = y;
+    touchRegion.coordinates[2] = right;
+    const float heightFloat = height;
+    touchRegion.coordinates[3] = y + heightFloat;
 }
 
 // Recovered translation-unit SDK string startup callbacks.

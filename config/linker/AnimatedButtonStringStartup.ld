@@ -3,6 +3,9 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/string-startup-animatedbutton/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+_Znwj = 0x001c4814;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fadd = 0x001c4154;
 SECTIONS
 {
     .string_startup_function_0 0x00326e5c : { *string-startup-animatedbutton.o(.text.__tcf_0) }
@@ -12,6 +15,7 @@ SECTIONS
     .button_gray 0x00326e40 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButton7grayOutEb) }
     .button_set_anim 0x00327024 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButton7setAnimEi) }
     .button_update 0x00327034 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButton6updateEd) }
+    .button_constructor 0x003270f8 : { *string-startup-animatedbutton.o(.text._ZN14AnimatedButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeE) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
