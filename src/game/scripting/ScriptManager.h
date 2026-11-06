@@ -19,6 +19,7 @@ public:
     void saveGame();
     void loadGame(bool reset);
     bool loadMissions(const char* filename);
+    LevelObject* getFirstAvailableCheckpoint() const;
     static void displayOnMinimap(LevelObject* object, bool visible, bool flag);
     static LevelObject* findObject(const char* name, bool flag);
     static ScriptManager* getInstance();

@@ -14,13 +14,6 @@
 #include "../core/EventManager.h"
 #include "../world/LevelObject.h"
 
-namespace Structs {
-struct ScriptCommand {
-    int opcode;
-    int argument;
-};
-}
-
 void Script::addCommand(Structs::ScriptCommand* command)
 {
     if (commandCount < commandCapacity) {

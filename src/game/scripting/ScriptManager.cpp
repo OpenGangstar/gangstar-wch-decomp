@@ -9,6 +9,7 @@
  */
 
 #include "ScriptManager.h"
+#include "Script.h"
 #include "../hud/HudElement.h"
 #include "../hud/MenuManager.h"
 #include "../characters/AnimObject.h"
@@ -252,6 +253,18 @@ void ScriptManager::loadGame(bool reset)
     SaveGame game;
     if (reset || !game.LoadAndApply(SaveGame::GetDefaultFilename()))
         getInstance()->resetGame(false, -1);
+}
+
+LevelObject* ScriptManager::getFirstAvailableCheckpoint() const
+{
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i]->getState() != Script::State2)
+            continue;
+        Structs::ScriptCommand* command = scripts[i]->peekCommand(0);
+        if (command && (command->opcode == 64 || command->opcode == 105))
+            return static_cast<LevelObject*>(scripts[i]->getSource());
+    }
+    return 0;
 }
 
 namespace Structs {
