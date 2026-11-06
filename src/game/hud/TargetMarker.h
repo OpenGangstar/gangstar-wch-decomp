@@ -5,7 +5,7 @@ class ASprite;
 
 class TargetMarker {
 public:
-    static TargetMarker* getInstance();
+    static TargetMarker* getInstance() __attribute__((weak, used));
     void init(ASprite* sprite, int markerFrame, int targetFrame);
 
 private:
