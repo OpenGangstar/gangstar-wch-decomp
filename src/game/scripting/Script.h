@@ -8,7 +8,7 @@ namespace Structs { struct ScriptCommand; }
 // Partial layout. The script storage beyond the observed fields is unresolved.
 class Script {
 public:
-    enum State { State0 = 0, State1 = 1, State2 = 2, StateForceWidth = 0x7fffffff };
+    enum State { State0 = 0, State1 = 1, State2 = 2, WaitingForChild = 3, StateForceWidth = 0x7fffffff };
     void addCommand(Structs::ScriptCommand* command);
     int getMissionId() const;
     bool isEnded() const;
@@ -22,6 +22,13 @@ public:
     void freezeScript(int id);
     void rewind();
     void finalize();
+    void lockScript(int id);
+    void execute(int elapsed);
+    void executeSubScript(int id, int command);
+    void nextCommand(int index);
+    bool executeCommand(const Structs::ScriptCommand* command, int elapsed, int argument);
+    enum eScriptAction { ActiveObject = 1, MinimapObject = 4 };
+    void unsetScriptObjectAction(LevelObject* object, eScriptAction action);
 
 private:
     unsigned char unknown0[24];
@@ -38,7 +45,8 @@ public:
 private:
     Script* parent;
     int missionId;
-    void* source;
+    LevelObject* source;
+    int unknown72;
 };
 
 #endif

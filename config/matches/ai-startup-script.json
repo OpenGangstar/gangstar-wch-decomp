@@ -47,7 +47,10 @@
         "_ZNK6Script9getParentEv",
         "_ZN6Script12unlockScriptEi",
         "_ZN6Script12freezeScriptEi",
-        "_ZN6Script8finalizeEv"
+        "_ZN6Script8finalizeEv",
+        "_ZN6Script10lockScriptEi",
+        "_ZN6Script16executeSubScriptEii",
+        "_ZN6Script7executeEi"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -58,7 +61,10 @@
             "name": ".got",
             "offset": 864
         },
-        ".script_finalize"
+        ".script_finalize",
+        ".script_lock",
+        ".script_execute_subscript",
+        ".script_execute"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -66,6 +72,12 @@
         "_ZNK13ScriptManager10findScriptEi",
         "_ZN6Script6rewindEv",
         "_ZN13ScriptManager8saveGameEv",
-        "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE"
+        "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE",
+        "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
+        "_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
+        "_ZN6Script11nextCommandEi",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii",
+        "_ZN12EventManager7refreshEv"
     ]
 }

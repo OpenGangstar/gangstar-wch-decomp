@@ -10,6 +10,9 @@
 
 #include "Script.h"
 #include "ScriptManager.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+#include "../world/LevelObject.h"
 
 namespace Structs {
 struct ScriptCommand {
@@ -66,6 +69,44 @@ void Script::finalize()
         parentScript->setState(State2, PlayerTest::AnyContext);
     else
         ScriptManager::getInstance()->saveGame();
+}
+
+void Script::lockScript(int id)
+{
+    Script* script = ScriptManager::getInstance()->findScript(id);
+    int opcode = script->peekCommand(0)->opcode;
+    if ((opcode == 64 || opcode == 105) && script->source) {
+        ScriptManager::displayOnMinimap(script->source, false, true);
+        script->unsetScriptObjectAction(script->source, MinimapObject);
+        script->source->disable();
+        script->unsetScriptObjectAction(script->source, ActiveObject);
+        script->source = 0;
+        script->unknown72 = 0;
+    }
+    script->setState(State0, PlayerTest::AnyContext);
+}
+
+void Script::executeSubScript(int id, int command)
+{
+    Script* child = ScriptManager::getInstance()->findScript(id);
+    child->setParent(this);
+    child->setState(State2, PlayerTest::AnyContext);
+    setState(WaitingForChild, PlayerTest::AnyContext);
+    if (command != -1)
+        child->nextCommand(command);
+}
+
+void Script::execute(int elapsed)
+{
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    while (getState() == State2 && !isEnded()) {
+        if (!executeCommand(commands[commandIndex], elapsed, -1))
+            break;
+        nextCommand(-1);
+        events->refresh();
+    }
+    if (__builtin_expect(isEnded(), 0))
+        finalize();
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.

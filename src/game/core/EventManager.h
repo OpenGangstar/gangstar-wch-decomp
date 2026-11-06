@@ -6,6 +6,7 @@
 
 class EventManager : public IUpdatable {
 public:
+    void refresh();
     EventManager();
     virtual ~EventManager();
     virtual void update(double);
@@ -32,7 +33,6 @@ private:
     void _trace(const char*) const;
     bool _attach(int eventID, IEventReceiver* receiver);
     bool _detach(int eventID, IEventReceiver* receiver);
-    void refresh();
 
     int dispatchDepth;
     ListenerGroup groups[Capacity];
