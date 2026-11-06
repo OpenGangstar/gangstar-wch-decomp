@@ -10,6 +10,10 @@
 
 #include "ScriptManager.h"
 #include "Script.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MiniMap.h"
+#include "../world/LevelObject.h"
 #include "../hud/HudElement.h"
 #include "../hud/MenuManager.h"
 #include "../characters/AnimObject.h"
@@ -253,6 +257,26 @@ void ScriptManager::loadGame(bool reset)
     SaveGame game;
     if (reset || !game.LoadAndApply(SaveGame::GetDefaultFilename()))
         getInstance()->resetGame(false, -1);
+}
+
+void ScriptManager::displayOnMinimap(LevelObject* object, bool visible, bool flag)
+{
+    CHudManager* hud = Application::GetInstance()->GetHudManager();
+    const unsigned int trackedOnMinimap = 32;
+    if (visible) {
+        if (object->unknown4 & trackedOnMinimap)
+            return;
+
+        MiniMap* map = static_cast<MiniMap*>(hud->minimap);
+        if (map)
+            map->registerForMapTracking(object, flag);
+        object->unknown4 |= trackedOnMinimap;
+    } else {
+        object->unknown4 &= ~trackedOnMinimap;
+        MiniMap* map = static_cast<MiniMap*>(hud->minimap);
+        if (map)
+            map->deregisterForMapTracking(object);
+    }
 }
 
 LevelObject* ScriptManager::getFirstAvailableCheckpoint() const

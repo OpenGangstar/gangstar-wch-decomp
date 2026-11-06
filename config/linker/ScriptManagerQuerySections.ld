@@ -4,6 +4,7 @@ PROVIDE(__cxa_guard_acquire = 0x001c4958);
 PROVIDE(__cxa_guard_release = 0x001c46c4);
 SECTIONS
 {
+    .script_manager_minimap_tracking 0x0033e974 : { *script-manager-helpers.o(.text._ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb) }
     .script_manager_first_checkpoint 0x0033d1e0 : { *script-manager-helpers.o(.text._ZNK13ScriptManager27getFirstAvailableCheckpointEv) }
     .script_manager_save 0x0033e8fc : { *script-manager-helpers.o(.text._ZN13ScriptManager8saveGameEv) }
     .script_manager_load_missions 0x0033e91c : { *script-manager-helpers.o(.text._ZN13ScriptManager12loadMissionsEPKc) }
