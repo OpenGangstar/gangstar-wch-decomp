@@ -8,6 +8,57 @@
  * functions of WantedLevelManager.cpp here, in the order they appear in the library.
  */
 
+#include "WantedLevelManager.h"
+#include "WantedMeter.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+
+void WantedLevelManager::storeWantedLevel()
+{
+    savedLevel = unknown8;
+    savedLockedLevel = lockedLevel;
+    savedUnknown16 = unknown16;
+    savedUnknown20 = unknown20;
+}
+
+void WantedLevelManager::lock(int level)
+{
+    if (level != -1)
+        lockedLevel = level;
+    locked = true;
+}
+
+void WantedLevelManager::unlock()
+{
+    locked = false;
+}
+
+void WantedLevelManager::restoreWantedLevel()
+{
+    unknown8 = savedLevel;
+    lockedLevel = savedLockedLevel;
+    unknown16 = savedUnknown16;
+    unknown20 = savedUnknown20;
+    Application* application = Application::GetInstance();
+    unsigned int level = unknown8;
+    application->GetHudManager()->wantedMeter->setWantedLevel(level);
+    _processWantedLevel();
+}
+
+void WantedLevelManager::resetWantedLevel()
+{
+    unknown76 = false;
+    unknown8 = 0;
+    unknown16 = 0;
+    unknown20 = 0;
+    Application::GetInstance()->GetHudManager()->wantedMeter->resetTimer();
+    Application* application = Application::GetInstance();
+    unsigned int level = unknown8;
+    application->GetHudManager()->wantedMeter->setWantedLevel(level);
+    _processWantedLevel();
+    lockedLevel = 0;
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

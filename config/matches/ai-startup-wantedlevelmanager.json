@@ -25,6 +25,11 @@
     "source": "src/game/missions/WantedLevelManager.cpp",
     "linker_script": "config/linker/WantedLevelManagerAiStartup.ld",
     "functions": [
+        "_ZN18WantedLevelManager16storeWantedLevelEv",
+        "_ZN18WantedLevelManager4lockEi",
+        "_ZN18WantedLevelManager6unlockEv",
+        "_ZN18WantedLevelManager18restoreWantedLevelEv",
+        "_ZN18WantedLevelManager16resetWantedLevelEv",
         {
             "name": "__tcf_5",
             "address": "0x00342a89"
@@ -39,6 +44,11 @@
         }
     ],
     "sections": [
+        ".wanted_store",
+        ".wanted_lock",
+        ".wanted_unlock",
+        ".wanted_restore",
+        ".wanted_reset",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +58,9 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN18WantedLevelManager19_processWantedLevelEv"
+    ]
 }
