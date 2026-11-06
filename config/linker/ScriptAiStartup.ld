@@ -15,6 +15,9 @@ _ZN25retail_script_transitions11guard_transE = 0x0042eef4;
 _ZN25retail_script_transitions22scripted_vehicle_transE = 0x0042ef9c;
 SECTIONS
 {
+    .script_lock 0x0033993c : { *ai-startup-script.o(.text._ZN6Script10lockScriptEi) }
+    .script_execute_subscript 0x0033cf14 : { *ai-startup-script.o(.text._ZN6Script16executeSubScriptEii) }
+    .script_execute 0x0033cf54 : { *ai-startup-script.o(.text._ZN6Script7executeEi) }
     .script_finalize 0x00339c80 : { *ai-startup-script.o(.text._ZN6Script8finalizeEv) }
     .ai_startup_function_0 0x00339148 : { *ai-startup-script.o(.text.__tcf_6) }
     .ai_startup_function_1 0x003393ec : { *ai-startup-script.o(.text._Z41__static_initialization_and_destruction_0ii) }
