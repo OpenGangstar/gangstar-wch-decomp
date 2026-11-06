@@ -8,6 +8,28 @@
  * functions of AnimatedButton.cpp here, in the order they appear in the library.
  */
 
+#include "AnimatedButton.h"
+#include "../characters/AnimObject.h"
+
+void AnimatedButton::grayOut(bool gray)
+{
+    if (gray)
+        flags |= 32;
+    else
+        flags &= ~32u;
+}
+
+void AnimatedButton::setAnim(int animation)
+{
+    animationObject->SetAnim(animation);
+}
+
+void AnimatedButton::update(double elapsed)
+{
+    VirtualButton::update(elapsed);
+    animationObject->UpdateFrame();
+}
+
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"

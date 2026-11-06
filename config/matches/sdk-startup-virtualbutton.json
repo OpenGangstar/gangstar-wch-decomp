@@ -36,7 +36,10 @@
         {
             "name": "_GLOBAL__I__ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
             "address": "0x0032c5e5"
-        }
+        },
+        "_ZN13VirtualButton6updateEd",
+        "_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
+        "_ZN13VirtualButtonC2EP7ASpriteiN9EvVButton10ButtonType4TypeEb"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -48,5 +51,12 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10HudElementC1EP7ASpriteib",
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite9GetModuleEi"
+    ]
 }

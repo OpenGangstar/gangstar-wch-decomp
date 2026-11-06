@@ -13,6 +13,7 @@
 #include "CWalkingHud.h"
 #include "SpyGauge.h"
 #include "../input/AnalogStick.h"
+#include "../ui/AnimatedButton.h"
 #include "../characters/PlayerTest.h"
 #include "../combat/Weapon.h"
 
@@ -46,6 +47,14 @@ void CHudManager::toggleWeaponSelector(bool show)
 {
     static_cast<CWalkingHud*>(initialHud)->toggleWeaponSelector(show);
     static_cast<CDrivingHud*>(drivingHud)->toggleWeaponSelector(show);
+}
+
+void CHudManager::toggleRadioCB(bool enabled)
+{
+    if (enabled)
+        radioButton->setAnim(43);
+    else
+        radioButton->setAnim(42);
 }
 
 void CHudManager::showCash(bool show)
