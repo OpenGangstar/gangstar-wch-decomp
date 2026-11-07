@@ -4,6 +4,19 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .vehicle_shift_weight 0x00307e10 : { *(.text._ZN7Vehicle12_shiftWeightERN3irr4core8vector3dIfEEf) }
+    .vehicle_enter_anim 0x00307e14 : { *(.text._ZNK7Vehicle12getEnterAnimEv) }
+    .vehicle_exit_anim 0x00307e1c : { *(.text._ZNK7Vehicle11getExitAnimEv) }
+    .vehicle_close_door_anim 0x00307e24 : { *(.text._ZNK7Vehicle16getCloseDoorAnimEv) }
+    .vehicle_interior 0x00307e2c : { *(.text._ZN7Vehicle14toggleInteriorEb) }
+    .vehicle_notify_targeted 0x00307f1c : { *(.text._ZN7Vehicle15_notifyTargetedEbP9Character) }
+    .vehicle_add_turbo 0x00307f90 : { *(.text._ZN7Vehicle14AddTurboSoundsEv) }
+    .vehicle_init_4cyl 0x00307f94 : { *(.text._ZN7Vehicle19Init4CylTurboSoundsEv) }
+    .vehicle_init_superbike 0x00307f98 : { *(.text._ZN7Vehicle19InitSuperbikeSoundsEv) }
+    .vehicle_init_v12 0x00307f9c : { *(.text._ZN7Vehicle24InitV12LamborghiniSoundsEv) }
+    .vehicle_set_stolen 0x00307fa0 : { *(.text._ZN7Vehicle16setHasBeenStolenEv) }
+    .vehicle_get_stolen 0x00307fac : { *(.text._ZN7Vehicle16getHasBeenStolenEv) }
+    .vehicle_unique_id 0x00307fb4 : { *(.text._ZN7Vehicle11getUniqueIdEv) }
     .vehicle_get_path 0x00307f28 : { *(.text._ZNK7Vehicle15getPathToFollowEv) }
     .vehicle_set_waypoint 0x00307f30 : { *(.text._ZN7Vehicle18setCurrentWaypointEi) }
     .vehicle_get_waypoint 0x00307f38 : { *(.text._ZNK7Vehicle18getCurrentWaypointEv) }
