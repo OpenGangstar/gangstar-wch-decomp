@@ -12212,11 +12212,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00341381	0x37e	CopController.cpp	game	ai	pending	_ZN13CopController7onEventEPK6IEventPK12EventManager	CopController::onEvent(IEvent const*, EventManager const*)
 0x00341701	0x1c	CopVehicleController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x0034171d	0x90	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleController11switchStateEN8gameloft2ai7StateIDE	CopVehicleController::switchState(gameloft::ai::StateID)
-0x003417ad	0x5c	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleControllerD0Ev	CopVehicleController::~CopVehicleController()
-0x00341809	0x54	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleControllerD1Ev	CopVehicleController::~CopVehicleController()
-0x00341809	0x54	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleControllerD2Ev	CopVehicleController::~CopVehicleController()
-0x0034185d	0x58	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	CopVehicleController::CopVehicleController(Vehicle*, gameloft::ai::Transition const&, gameloft::ai::StateID)
-0x0034185d	0x58	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	CopVehicleController::CopVehicleController(Vehicle*, gameloft::ai::Transition const&, gameloft::ai::StateID)
+0x003417ad	0x5c	CopVehicleController.cpp	game	ai	matched	_ZN20CopVehicleControllerD0Ev	CopVehicleController::~CopVehicleController()
+0x00341809	0x54	CopVehicleController.cpp	game	ai	matched	_ZN20CopVehicleControllerD1Ev	CopVehicleController::~CopVehicleController()
+0x00341809	0x54	CopVehicleController.cpp	game	ai	matched	_ZN20CopVehicleControllerD2Ev	CopVehicleController::~CopVehicleController()
+0x0034185d	0x58	CopVehicleController.cpp	game	ai	matched	_ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	CopVehicleController::CopVehicleController(Vehicle*, gameloft::ai::Transition const&, gameloft::ai::StateID)
+0x0034185d	0x58	CopVehicleController.cpp	game	ai	matched	_ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	CopVehicleController::CopVehicleController(Vehicle*, gameloft::ai::Transition const&, gameloft::ai::StateID)
 0x003418b5	0x144	CopVehicleController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003419f9	0x14	CopVehicleController.cpp	game	ai	matched	_GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	_GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE
 0x00341a0d	0x30	CopVehicleController.cpp	game	ai	matched	__tcf_5	__tcf_5
