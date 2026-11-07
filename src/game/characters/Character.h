@@ -88,6 +88,8 @@ private:
     unsigned char unknown264[4];
     int spawnType;
     unsigned char unknown272[24];
+
+    void turnToward(const irr::core::vector3d<float>& point);
 };
 
 #endif

@@ -4,6 +4,8 @@ __aeabi_idivmod = 0x001c4934;
 __aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
+    .character_run_to_location 0x002f3fa4 : { *ai-startup-character.o(.text._ZN9Character13runToLocationERKN3irr4core8vector3dIfEE) }
+    .character_walk_to_location 0x002f400c : { *ai-startup-character.o(.text._ZN9Character14walkToLocationERKN3irr4core8vector3dIfEE) }
     .character_get_spawn_type 0x002f1448 : { *ai-startup-character.o(.text._ZN9Character12getSpawnTypeEv) }
     .character_set_spawn_type 0x002f1450 : { *ai-startup-character.o(.text._ZN9Character12setSpawnTypeEi) }
     .character_set_target 0x002f147c : { *ai-startup-character.o(.text._ZN9Character9SetTargetEP11LevelObject) }

@@ -25,6 +25,8 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE",
+        "_ZN9Character14walkToLocationERKN3irr4core8vector3dIfEE",
         "_ZN9Character12getSpawnTypeEv",
         "_ZN9Character12setSpawnTypeEi",
         "_ZN9Character9SetTargetEP11LevelObject",
@@ -84,6 +86,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE",
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev"

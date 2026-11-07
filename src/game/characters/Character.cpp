@@ -278,3 +278,31 @@ static void _GLOBAL__I__ZN9Character20s_timelineControllerE()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+namespace {
+inline unsigned int withMovementMode(unsigned int flags, unsigned int mode)
+{
+    // Keep the shifts separate so GCC retains the retail byte-clearing sequence.
+    const int upperFlags = static_cast<int>(flags) >> 8;
+    const unsigned int preservedFlags = static_cast<unsigned int>(upperFlags) << 8;
+    return preservedFlags | mode;
+}
+}
+
+void Character::runToLocation(const irr::core::vector3d<float>& point)
+{
+    if (isDead() || isDown())
+        return;
+    movementFlags = withMovementMode(movementFlags, 4);
+    turnToward(point);
+    setAnimation(getSpecificAnimation(188), 1.0f, true, true, false);
+}
+
+void Character::walkToLocation(const irr::core::vector3d<float>& point)
+{
+    if (isDead())
+        return;
+    movementFlags = withMovementMode(movementFlags, 2);
+    turnToward(point);
+    setAnimation(getSpecificAnimation(202), 1.0f, true, true, false);
+}
