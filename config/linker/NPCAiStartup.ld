@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-npc/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__aeabi_idivmod = 0x001c4934;
 __aeabi_atexit = 0x001c494c;
 _ZN22retail_npc_transitions16civPassive_transE = 0x0041d918;
 _ZN22retail_npc_transitions17scriptedNpc_transE = 0x0041da44;
@@ -17,6 +18,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .npc_next_waypoint 0x002fdde8 : { *ai-startup-npc.o(.text._ZN3NPC15getNextWaypointEv) }
+    .npc_next_point 0x002fdff0 : { *ai-startup-npc.o(.text._ZN3NPC12getNextPointERN3irr4core8vector3dIfEE) }
+    .npc_go_next_point 0x002fe084 : { *ai-startup-npc.o(.text._ZN3NPC13goToNextPointEb) }
     .npc_get_path 0x002fd4f8 : { *ai-startup-npc.o(.text._ZNK3NPC15getPathToFollowEv) }
     .npc_set_waypoint 0x002fd500 : { *ai-startup-npc.o(.text._ZN3NPC18setCurrentWaypointEi) }
     .npc_get_waypoint 0x002fd508 : { *ai-startup-npc.o(.text._ZNK3NPC18getCurrentWaypointEv) }

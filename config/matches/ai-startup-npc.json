@@ -25,6 +25,9 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC15getNextWaypointEv",
+        "_ZN3NPC12getNextPointERN3irr4core8vector3dIfEE",
+        "_ZN3NPC13goToNextPointEb",
         "_ZNK3NPC15getPathToFollowEv",
         "_ZN3NPC18setCurrentWaypointEi",
         "_ZNK3NPC18getCurrentWaypointEv",
@@ -62,6 +65,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK4Path7getSizeEv",
+        "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
+        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
+        "_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE",
+        "_ZN9Character8goToIdleEv",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev"
     ]

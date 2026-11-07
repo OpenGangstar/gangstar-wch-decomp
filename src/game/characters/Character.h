@@ -12,6 +12,7 @@ class Character : public LevelObject {
 public:
     Character(int type);
     void initInVehicle(Vehicle* vehicle);
+    void goToIdle();
     bool isPlayer() const;
     using LevelObject::sceneNode;
 private:

@@ -13,6 +13,8 @@
 #include "../core/LocalStartupText.h"
 #include "AIManagerSingleton.h"
 #include "NPC.h"
+#include "../characters/PhysicAttributes.h"
+#include "../world/Path.h"
 
 const Path* NPC::getPathToFollow() const
 {
@@ -47,6 +49,50 @@ void NPC::setPathToFollow(const Path* path)
 bool NPC::isLoopingOnPathToFollow() const
 {
     return (flags356 & 0x00200000u) != 0;
+}
+
+irr::core::vector3d<float> NPC::getNextWaypoint()
+{
+    irr::core::vector3d<float> point;
+    if (activePath && activeWaypoint < activePath->getSize()) {
+        activePath->getWaypoint(activeWaypoint++, point);
+        if (isLoopingOnPathToFollow())
+            activeWaypoint %= activePath->getSize();
+    }
+    return point;
+}
+
+bool NPC::getNextPoint(irr::core::vector3d<float>& point)
+{
+    const Path* path = getPathToFollow();
+    if (!path || path != activePath) {
+        activePath = path;
+        activeWaypoint = 0;
+    }
+    if (activePath) {
+        setCurrentWaypoint(activeWaypoint);
+        if (activeWaypoint >= activePath->getSize())
+            return false;
+        point = getNextWaypoint();
+    } else {
+        point = getPhysicAttributes()->GetNextRandomPos(0, 0, GetPosition());
+    }
+    return true;
+}
+
+void NPC::goToNextPoint(bool repeat)
+{
+    if (repeat && activeWaypoint > 0)
+        --activeWaypoint;
+
+    irr::core::vector3d<float> point;
+    if (getNextPoint(point)) {
+        flags356 |= 0x00400000u;
+        goToLocation(point);
+    } else {
+        flags356 &= ~0x00400000u;
+        goToIdle();
+    }
 }
 
 void operator delete(void*) throw();
