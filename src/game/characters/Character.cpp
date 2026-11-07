@@ -56,6 +56,16 @@ const irr::core::vector3d<float>& __attribute__((weak)) Character::getCameraOffs
     return cameraOffset;
 }
 
+int __attribute__((weak)) Character::getMaxHealth() const
+{
+    return maxHealth;
+}
+
+int __attribute__((weak)) Character::getHealth() const
+{
+    return health;
+}
+
 bool Character::canAnimationBeInterrupted(int id)
 {
     switch (id) {
@@ -132,6 +142,13 @@ bool __attribute__((weak)) Character::isDown()
     return isCurrentAnimation(162);
 }
 
+bool __attribute__((weak)) Character::isDying()
+{
+    if (isCurrentAnimation(86))
+        return true;
+    return isCurrentAnimation(175);
+}
+
 bool Character::isAnimationLastFrame(float advance) const
 {
     if (!animationLoops && static_cast<int>(advance + animationFrame) >= animationFrameCount)
@@ -180,6 +197,13 @@ void Character::goToIdle()
 {
     if (!isCurrentAnimation(getSpecificAnimation(165)))
         setAnimation(getSpecificAnimation(165), 1.0f, true, false, false);
+}
+
+bool __attribute__((weak)) Character::isDead()
+{
+    if (static_cast<int>(movementFlags << 17) < 0)
+        return true;
+    return static_cast<int>(movementFlags << 18) < 0;
 }
 
 void Character::setNextAnimation(int id, int, bool, bool, bool)

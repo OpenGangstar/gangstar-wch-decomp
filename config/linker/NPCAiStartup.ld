@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/CharacterStateSections.ld
 SECTIONS
 {
+    .npc_get_weapon 0x002fd440 : { *ai-startup-npc.o(.text._ZNK3NPC9getWeaponEv) }
     .npc_photographed 0x002fd448 : { *ai-startup-npc.o(.text._ZN3NPC12photographedEv) }
     .npc_clear_photographed 0x002fd458 : { *ai-startup-npc.o(.text._ZN3NPC17clearPhotographedEv) }
     .npc_is_photographed 0x002fd46c : { *ai-startup-npc.o(.text._ZNK3NPC14isPhotographedEv) }
