@@ -90,6 +90,9 @@ private:
     unsigned char unknown272[24];
 
     void turnToward(const irr::core::vector3d<float>& point);
+    bool isFacingTarget(LevelObject* object);
+    void turnTowardTarget(LevelObject* object, float step);
+    void turnTowardTarget(float step);
 };
 
 #endif

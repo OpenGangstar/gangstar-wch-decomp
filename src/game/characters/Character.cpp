@@ -279,6 +279,12 @@ static void _GLOBAL__I__ZN9Character20s_timelineControllerE()
 }
 }
 
+void Character::turnTowardTarget(float step)
+{
+    if (target && !isFacingTarget(target))
+        turnTowardTarget(target, step);
+}
+
 namespace {
 inline unsigned int withMovementMode(unsigned int flags, unsigned int mode)
 {
