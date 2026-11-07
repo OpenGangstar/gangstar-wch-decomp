@@ -66,6 +66,9 @@ public:
     static void SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type);
     static void SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled);
     static void SetVisibility(irr::scene::ISceneNode* node, bool visible);
+    static void SetCulling(irr::scene::ISceneNode* node, irr::scene::E_CULLING_TYPE type);
+    static void SetMaterialTexture(irr::scene::ISceneNode* node, irr::video::ITexture* texture);
+    static irr::scene::ISceneNode* FindAMesh(irr::scene::ISceneNode* node);
 
     static BulletTraceManager* s_bulletManager;
     static TrailMgr* s_TrailMgr;

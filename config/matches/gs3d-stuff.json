@@ -114,7 +114,10 @@
         "_ZN9AIManager11getInstanceEv",
         "_ZN9GS3DStuff13SetVisibilityEPN3irr5scene10ISceneNodeEb",
         "_ZN9GS3DStuff15SetMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
-        "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb"
+        "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
+        "_ZN9GS3DStuff10SetCullingEPN3irr5scene10ISceneNodeENS1_14E_CULLING_TYPEE",
+        "_ZN9GS3DStuff18SetMaterialTextureEPN3irr5scene10ISceneNodeEPNS0_5video8ITextureE",
+        "_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE"
     ],
     "sections": [
         ".wanted_singleton",
@@ -190,11 +193,18 @@
         ".ai_manager_singleton",
         ".gs_set_visibility",
         ".gs_set_material_type",
-        ".gs_set_material_flag"
+        ".gs_set_material_flag",
+        ".gs_find_mesh_plane",
+        ".gs_find_mesh_jump",
+        ".gs_set_culling",
+        ".gs_set_material_texture",
+        ".gs_find_a_mesh"
     ],
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE",
+        "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
         "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
         "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
         "_ZN18WantedLevelManagerD1Ev",

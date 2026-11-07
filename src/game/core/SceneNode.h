@@ -28,6 +28,7 @@ namespace core { template<class T> class aabbox3d; }
 namespace video {
 struct SMaterial;
 class IVideoDriver;
+class ITexture;
 // Numeric values are observed; enumerator names are reconstruction labels.
 enum E_MATERIAL_TYPE { MaterialType13 = 13 };
 enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
@@ -94,7 +95,7 @@ public:
     virtual void setIsAnimated(ESCENE_NODE_ANIMATION_FLAG,bool);
     virtual int getID() const;
     virtual void setID(int);
-    virtual unsigned int getUID() const;
+    virtual const char* getUID() const;
     virtual unsigned int getScopeID() const;
     virtual void addChild(ISceneNode*);
     virtual bool removeChild(ISceneNode*);
@@ -142,6 +143,7 @@ public:
     const SceneNodeList& getChildren() const;
     void setMaterialType(video::E_MATERIAL_TYPE type);
     void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool enabled);
+    void setMaterialTexture(unsigned int layer, video::ITexture* texture);
     ISceneNode* getParent() const;
 private:
     unsigned char unknown4[324];
