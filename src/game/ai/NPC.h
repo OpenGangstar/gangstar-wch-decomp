@@ -16,9 +16,16 @@ public:
     void loopPathToFollow(bool loop);
     void setPathToFollow(const Path* path);
     bool isLoopingOnPathToFollow() const;
+    irr::core::vector3d<float> getNextWaypoint();
+    bool getNextPoint(irr::core::vector3d<float>& point);
+    void goToNextPoint(bool repeat);
+    void goToLocation(const irr::core::vector3d<float>& point);
 private:
     friend class AchievementManager;
-    unsigned char unknown296[60];
+    unsigned char unknown296[36];
+    const Path* activePath;
+    int activeWaypoint;
+    unsigned char unknown340[16];
     unsigned int flags356;
     unsigned char unknown360[68];
     unsigned int category428;
