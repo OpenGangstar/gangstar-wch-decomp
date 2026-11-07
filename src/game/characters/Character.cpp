@@ -247,6 +247,24 @@ void Character::setDestination(const irr::core::vector3d<float>& point, int limi
     destinationLimitSquared = limit * limit;
 }
 
+namespace {
+inline __attribute__((always_inline)) void turnSceneNode(irr::scene::ISceneNode& node, float sign, float step)
+{
+    const float radiansPerDegree = 0.017453292519943295f;
+    node.setRotation(node.getRotation()
+        * irr::core::quaternion(0.0f, 0.0f, sign * step * -radiansPerDegree));
+}
+}
+
+bool Character::turnToward(irr::core::vector3d<float> direction, float step)
+{
+
+    const float dot = GetRight().dotProduct(direction);
+    const float sign = dot > 0.0f ? 1.0f : -1.0f;
+    turnSceneNode(*sceneNode, sign, step);
+    return GetFront().dotProduct(direction) < -0.99f;
+}
+
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)
 {
@@ -295,7 +313,6 @@ bool Character::isFacingTarget(LevelObject* object)
 
 bool Character::turnTowardTarget(LevelObject* object, float step)
 {
-    using irr::core::quaternion;
     using irr::core::vector3d;
 
     vector3d<float> direction = GetPosition() - object->GetPosition();
@@ -303,9 +320,7 @@ bool Character::turnTowardTarget(LevelObject* object, float step)
     const vector3d<float> right = GetRight();
     const float dot = right.dotProduct(direction);
     const float sign = dot > 0.0f ? 1.0f : -1.0f;
-    const float radiansPerDegree = 0.017453292519943295f;
-    sceneNode->setRotation(sceneNode->getRotation()
-        * quaternion(0.0f, 0.0f, sign * step * -radiansPerDegree));
+    turnSceneNode(*sceneNode, sign, step);
     return dot < 0.01f && dot > -0.01f;
 }
 
