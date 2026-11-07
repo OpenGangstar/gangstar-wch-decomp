@@ -25,6 +25,12 @@
     "source": "src/game/ai/NPCController.cpp",
     "linker_script": "config/linker/NPCControllerAiStartup.ld",
     "functions": [
+        "_ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE",
+        "_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
+        "_ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
+        "_ZN13NPCControllerD0Ev",
+        "_ZN13NPCControllerD1Ev",
+        "_ZN13NPCControllerD2Ev",
         {
             "name": "__tcf_2",
             "address": "0x003422ed"
@@ -39,6 +45,11 @@
         }
     ],
     "sections": [
+        ".npc_controller_switch",
+        ".npc_controller_construct",
+        ".npc_controller_delete",
+        ".npc_controller_destroy",
+        ".npc_controller_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
