@@ -5,6 +5,8 @@ INCLUDE build/matches/game-object-manager/retail-symbols.ld
 memset = 0x001c45d4;
 __aeabi_fmul = 0x001c4724;
 _ZdlPv = 0x001c42b0;
+lrand48 = 0x001c4664;
+__aeabi_idivmod = 0x001c4934;
 strcmp = 0x001c4658;
 __aeabi_atexit = 0x001c494c;
 _Znaj = 0x001c3ff8;
@@ -87,6 +89,7 @@ _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 SECTIONS {
+    .gom_spawn_npc 0x00316214 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiii) }
     .gom_spawn_npc_vehicle 0x00316330 : { *game-object-manager.o(.text._ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii) }
     .gom_spawn_npc_position 0x00316384 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiiN3irr4core8vector3dIfEEtt) }
     .gom_despawn 0x00316578 : { *game-object-manager.o(.text._ZN17GameObjectManager7despawnEP11LevelObject) }
