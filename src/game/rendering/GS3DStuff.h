@@ -65,6 +65,8 @@ public:
     enum eColorType { Color0, Color1, Color2, Color3 };
     static void SetColor(irr::scene::ISceneNode* node, irr::video::SColor color, eColorType type);
     static void SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type);
+    static void SetMaterialTypeCondition(irr::scene::ISceneNode* node,
+        irr::video::E_MATERIAL_TYPE type, irr::video::ITexture* texture);
     static void SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled);
     static void SetVisibility(irr::scene::ISceneNode* node, bool visible);
     static void SetCulling(irr::scene::ISceneNode* node, irr::scene::E_CULLING_TYPE type);

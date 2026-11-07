@@ -1,4 +1,5 @@
 SECTIONS {
+    .gs_set_material_type_condition 0x002dc41c : { *gs3d-stuff.o(.text._ZN9GS3DStuff24SetMaterialTypeConditionEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEEPNS4_8ITextureE) }
     .gs_collision_body_def_dtor 0x002db304 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN16CollisionBodyDefD1Ev) }
     .gs_octree_dtor 0x002dd6e0 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABBD1Ev) }
     .gs_octree_calculate_polys 0x002dd5a8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABB14calculatePolysERKN3irr4core8aabbox3dIfEEPNS1_5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS8_EEEEPNS6_IP10SpawnPointNS9_ISE_EEEEPNS6_IPNS0_5scene10ISceneNodeENS9_ISK_EEEE) }
