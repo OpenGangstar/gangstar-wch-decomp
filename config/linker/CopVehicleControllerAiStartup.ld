@@ -17,6 +17,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .cop_vehicle_construct 0x0034185c : { *(.text._ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE .text._ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }
+    .cop_vehicle_delete 0x003417ac : { *(.text._ZN20CopVehicleControllerD0Ev) }
+    .cop_vehicle_destroy 0x00341808 : { *(.text._ZN20CopVehicleControllerD1Ev .text._ZN20CopVehicleControllerD2Ev) }
+    .cop_vehicle_vtable 0x004acfe0 : { *(.data.rel.ro._ZTV20CopVehicleController) }
     .wanted_singleton 0x002dba04 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00341700 : { *ai-startup-copvehiclecontroller.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

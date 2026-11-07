@@ -8,33 +8,12 @@
  * functions of VehicleController.cpp here, in the order they appear in the library.
  */
 
-#include "AIManager.h"
+#include "VehicleController.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
 #include "../vehicles/Vehicle.h"
 #include "../world/Path.h"
 #include "../characters/PhysicAttributes.h"
-
-namespace gameloft { namespace ai { struct Transition; } }
-
-class VehicleController : public IEventReceiver {
-public:
-    VehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
-        gameloft::ai::StateID state);
-    virtual ~VehicleController();
-    virtual void onEvent(const IEvent*, const EventManager*);
-    virtual void switchState(gameloft::ai::StateID);
-    virtual irr::core::vector3d<float> getNextPoint();
-    virtual irr::core::vector3d<float> getNextWaypoint();
-
-private:
-    unsigned int state;
-    Vehicle* vehicle;
-    const Path* path;
-    const gameloft::ai::Transition& transition;
-    unsigned int unknown20;
-    int waypoint;
-};
 
 VehicleController::VehicleController(Vehicle* vehicle,
     const gameloft::ai::Transition& transition, gameloft::ai::StateID state)

@@ -41,7 +41,12 @@
             "name": "__tcf_3",
             "address": "0x00341701",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
+        "_ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
+        "_ZN20CopVehicleControllerD0Ev",
+        "_ZN20CopVehicleControllerD1Ev",
+        "_ZN20CopVehicleControllerD2Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -52,11 +57,20 @@
             "name": ".got",
             "offset": 864
         },
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".cop_vehicle_construct",
+        ".cop_vehicle_delete",
+        ".cop_vehicle_destroy",
+        ".cop_vehicle_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
+        "_ZN17VehicleControllerD1Ev",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
+        "_ZN12EventManager6detachEiP14IEventReceiver"
     ]
 }

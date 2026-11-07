@@ -8,6 +8,42 @@
  * functions of CopVehicleController.cpp here, in the order they appear in the library.
  */
 
+#include "VehicleController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+
+class CopVehicleController : public VehicleController {
+public:
+    CopVehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
+        gameloft::ai::StateID state);
+    virtual ~CopVehicleController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID);
+
+private:
+    int unknown28;
+};
+
+CopVehicleController::CopVehicleController(Vehicle* vehicle,
+    const gameloft::ai::Transition& transition, gameloft::ai::StateID state)
+    : VehicleController(vehicle, transition, state), unknown28(0)
+{
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->attach(16, this);
+    events->attach(23, this);
+    events->attach(24, this);
+    events->attach(22, this);
+}
+
+CopVehicleController::~CopVehicleController()
+{
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->detach(16, this);
+    events->detach(23, this);
+    events->detach(24, this);
+    events->detach(22, this);
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../missions/WantedLevelManagerSingleton.h"
