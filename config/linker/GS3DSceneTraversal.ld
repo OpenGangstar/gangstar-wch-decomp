@@ -1,4 +1,11 @@
 SECTIONS {
+    .gs_octree_root_dtor 0x002db3f4 : { *gs3d-stuff.o(.text._ZN11OctTreeAABB8RootNodeD1Ev .gnu.linkonce.t._ZN11OctTreeAABB8RootNodeD1Ev) }
+    .gs_delete_octree_root 0x002db420 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN11OctTreeAABB8RootNodeEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN11OctTreeAABB8RootNodeEEvRPT_) }
+    .gs_delete_spawn_array 0x002dd61c : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP10SpawnPointNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP10SpawnPointNS1_12irrAllocatorIS4_EEEEEvRPT_) }
+    .gs_delete_octree_root_array 0x002dd644 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIPN11OctTreeAABB8RootNodeENS1_12irrAllocatorIS5_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIPN11OctTreeAABB8RootNodeENS1_12irrAllocatorIS5_EEEEEvRPT_) }
+    .gs_octree_node_dtor 0x002dd66c : { *gs3d-stuff.o(.text._ZN11OctTreeAABB15OctTreeAABBNodeD1Ev .gnu.linkonce.t._ZN11OctTreeAABB15OctTreeAABBNodeD1Ev) }
+    .gs_delete_octree_node 0x002dd6b0 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN11OctTreeAABB15OctTreeAABBNodeEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN11OctTreeAABB15OctTreeAABBNodeEEvRPT_) }
+    .gs_delete_octree 0x002dd750 : { *gs3d-stuff.o(.text._Z10SafeDeleteI11OctTreeAABBEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI11OctTreeAABBEvRPT_) }
     .gs_delete_scene_node_array 0x002db1a0 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIPNS0_5scene10ISceneNodeENS1_12irrAllocatorIS5_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIPNS0_5scene10ISceneNodeENS1_12irrAllocatorIS5_EEEEEvRPT_) }
     .gs_delete_polygon_def_array 0x002db28c : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP12b2PolygonDefNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP12b2PolygonDefNS1_12irrAllocatorIS4_EEEEEvRPT_) }
     .gs_delete_body_def_array 0x002db2b4 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP9b2BodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP9b2BodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_) }
