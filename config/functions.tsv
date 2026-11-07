@@ -12175,10 +12175,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003405f9	0x40	AIManager.cpp	game	ai	matched	_ZN9AIManagerD0Ev	AIManager::~AIManager()
 0x00340639	0x38	AIManager.cpp	game	ai	matched	_ZN9AIManagerD2Ev	AIManager::~AIManager()
 0x00340639	0x38	AIManager.cpp	game	ai	matched	_ZN9AIManagerD1Ev	AIManager::~AIManager()
-0x00340671	0x38	AIManager.cpp	game	ai	pending	_ZN9AIManager8removeAIEP7Vehicle	AIManager::removeAI(Vehicle*)
+0x00340671	0x38	AIManager.cpp	game	ai	matched	_ZN9AIManager8removeAIEP7Vehicle	AIManager::removeAI(Vehicle*)
 0x003406a9	0x96	AIManager.cpp	game	ai	pending	_ZN9AIManager5cleanEv	AIManager::clean()
 0x00340741	0xa4	AIManager.cpp	game	ai	pending	_ZN9AIManager7onEventEPK6IEventPK12EventManager	AIManager::onEvent(IEvent const*, EventManager const*)
-0x003407e5	0x36	AIManager.cpp	game	ai	pending	_ZN9AIManager8removeAIEP3NPC	AIManager::removeAI(NPC*)
+0x003407e5	0x36	AIManager.cpp	game	ai	matched	_ZN9AIManager8removeAIEP3NPC	AIManager::removeAI(NPC*)
 0x0034081d	0x30	CivAgressiveController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x0034084d	0x5c	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveController7onEventEPK6IEventPK12EventManager	CivAgressiveController::onEvent(IEvent const*, EventManager const*)
 0x003408a9	0x56	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	CivAgressiveController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)

@@ -40,6 +40,45 @@ AIManager::~AIManager()
 {
 }
 
+// Observed prefix shared by the controllers stored in both lists.
+struct AIControllerPrefix : IEventReceiver {
+    unsigned int unknown4;
+    void* target;
+};
+
+struct AIManager::ReceiverNode : ReceiverList {
+    IEventReceiver* receiver;
+};
+
+inline __attribute__((always_inline)) void AIManager::ReceiverList::removeForTarget(const void* target)
+{
+    ReceiverList* link = next;
+    while (this != link) {
+        ReceiverNode* node = static_cast<ReceiverNode*>(link);
+        if (static_cast<AIControllerPrefix*>(node->receiver)->target == target) {
+            delete node->receiver;
+            node->receiver = 0;
+            ReceiverList* nextNode = node->next;
+            ReceiverList* previousNode = node->previous;
+            previousNode->next = nextNode;
+            nextNode->previous = previousNode;
+            ::operator delete(node);
+            return;
+        }
+        link = link->next;
+    }
+}
+
+void AIManager::removeAI(Vehicle* vehicle)
+{
+    secondList.removeForTarget(vehicle);
+}
+
+void AIManager::removeAI(NPC* npc)
+{
+    firstList.removeForTarget(npc);
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
