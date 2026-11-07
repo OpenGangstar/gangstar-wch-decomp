@@ -24,6 +24,28 @@ void Vehicle::toggleInterior(bool visible)
     interior->setVisible(visible);
 }
 
+bool Vehicle::isLeftDoor(const irr::scene::ISceneNode* door) const
+{
+    return leftDoor == door;
+}
+
+bool Vehicle::isDoorOpened(bool left) const
+{
+    return !(left ? leftDoorClosed : rightDoorClosed);
+}
+
+bool Vehicle::isDoorClosed(bool left) const
+{
+    return left ? leftDoorClosed : rightDoorClosed;
+}
+
+bool Vehicle::isDoorAnim(const char* name, bool left) const
+{
+    irr::scene::ISceneNodeAnimator* animator = left ? leftDoorAnimator : rightDoorAnimator;
+    const int clip = animator->getAnimationClipIndex(name);
+    return clip == animator->getTimelineCtrl()->getCurrentClipIndex();
+}
+
 void Vehicle::_notifyTargeted(bool targeted, Character* source)
 {
     if (targeted)

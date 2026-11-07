@@ -32,6 +32,10 @@ public:
     const char* getExitAnim() const;
     const char* getCloseDoorAnim() const;
     void toggleInterior(bool visible);
+    bool isLeftDoor(const irr::scene::ISceneNode* door) const;
+    bool isDoorOpened(bool left) const;
+    bool isDoorClosed(bool left) const;
+    bool isDoorAnim(const char* name, bool left) const;
     void _notifyTargeted(bool targeted, Character* source);
     void AddTurboSounds();
     void Init4CylTurboSounds();
@@ -53,7 +57,9 @@ private:
     unsigned char unknown296[4];
     const Path* pathToFollow;
     int currentWaypoint;
-    unsigned char unknown308[20];
+    unsigned char unknown308[8];
+    irr::scene::ISceneNode* leftDoor;
+    unsigned char unknown320[8];
     irr::scene::ISceneNode* interior;
     unsigned char unknown332[12];
     unsigned int flags344;
@@ -65,8 +71,14 @@ private:
     bool hasBeenStolen;
     unsigned char unknown505[191];
     Character* driver;
-    unsigned char unknown700[76];
+    unsigned char unknown700[60];
+    irr::scene::ISceneNodeAnimator* leftDoorAnimator;
+    irr::scene::ISceneNodeAnimator* rightDoorAnimator;
+    unsigned char unknown768[8];
     float unknown776;
-    unsigned char unknown780[232];
+    unsigned char unknown780[222];
+    bool leftDoorClosed;
+    bool rightDoorClosed;
+    unsigned char unknown1004[8];
 };
 #endif
