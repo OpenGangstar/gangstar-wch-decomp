@@ -491,6 +491,60 @@ void GS3DStuff::SetMaterialTypeCondition(irr::scene::ISceneNode* node,
     applyToChildren(node, SetMaterialTypeCondition, type, texture);
 }
 
+void GS3DStuff::SetMaterial(irr::scene::ISceneNode* node, irr::video::SMaterial* material)
+{
+    for (int i = 0; static_cast<unsigned int>(i) < node->getMaterialCount(); ++i)
+        node->getMaterial(i) = *material;
+
+    applyToChildren(node, SetMaterial, material);
+}
+
+void irr::video::ITexture::setMinFilter(unsigned char filter)
+{
+    if (minFilter != filter) {
+        minFilter = filter;
+        filterDirtyFlags |= 1;
+    }
+}
+
+void irr::video::ITexture::setMagFilter(unsigned char filter)
+{
+    if (magFilter != filter) {
+        magFilter = filter;
+        filterDirtyFlags |= 2;
+    }
+}
+
+void irr::video::ITexture::setLodBias(float bias)
+{
+    if (lodBias != bias) {
+        lodBias = bias;
+        filterDirtyFlags |= 32;
+    }
+}
+
+void GS3DStuff::SetMaterialFiltering(irr::scene::ISceneNode* node, bool enabled, bool force)
+{
+    for (int i = 0; static_cast<unsigned int>(i) < node->getMaterialCount(); ++i) {
+        irr::video::ITexture* texture = node->getMaterial(i).layers[0].texture;
+        if (texture) {
+            if (enabled) {
+                texture->setMagFilter(1);
+                texture->setMinFilter(1);
+            } else if (force) {
+                texture->setLodBias(-3.0f);
+                texture->setMagFilter(1);
+                texture->setMinFilter(1);
+            } else {
+                texture->setMagFilter(force);
+                texture->setMinFilter(force);
+            }
+        }
+    }
+
+    applyToChildren(node, SetMaterialFiltering, enabled, force);
+}
+
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)
 {
     if (!properties) return false;

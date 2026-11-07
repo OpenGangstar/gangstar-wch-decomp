@@ -28,6 +28,8 @@
     "source": "src/game/rendering/GS3DStuff.cpp",
     "linker_script": "config/linker/GS3DStuff.ld",
     "functions": [
+        "_ZN9GS3DStuff20SetMaterialFilteringEPN3irr5scene10ISceneNodeEbb",
+        "_ZN9GS3DStuff11SetMaterialEPN3irr5scene10ISceneNodeEPNS0_5video9SMaterialE",
         "_ZN10b2ShapeDefD0Ev",
         "_ZN10b2ShapeDefD1Ev",
         "_ZN12b2PolygonDefD1Ev",
@@ -149,6 +151,8 @@
         "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
     ],
     "sections": [
+        ".gs_set_material_filtering",
+        ".gs_set_material",
         ".gs_shape_def_delete",
         ".gs_shape_def_dtor",
         ".gs_polygon_def_dtor",
