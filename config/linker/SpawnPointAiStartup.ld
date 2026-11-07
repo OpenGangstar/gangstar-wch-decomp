@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-spawnpoint/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_ZdaPv = 0x001c461c;
 __aeabi_atexit = 0x001c494c;
 _ZN29retail_spawnpoint_transitions16civPassive_transE = 0x0041eee0;
 _ZN29retail_spawnpoint_transitions17scriptedNpc_transE = 0x0041f00c;
@@ -17,6 +18,14 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .spawn_release 0x00306568 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject) }
+    .spawn_get 0x00306734 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint14getSpawnObjectEi) }
+    .spawn_clear 0x00307028 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint22ClearAllSpawnInstancesEv) }
+    .spawn_pool 0x004b826c (NOLOAD) : { *ai-startup-spawnpoint.o(.bss._ZN10SpawnPoint11s_spawnPoolE) }
+    .spawned_cops 0x004b866c (NOLOAD) : { *ai-startup-spawnpoint.o(.bss._ZN10SpawnPoint13s_spawnedCopsE) }
+    .spawn_metatypes 0x004b8670 (NOLOAD) : { *ai-startup-spawnpoint.o(.bss._ZN10SpawnPoint16s_spawnMetatypesE) }
+    .spawn_metatype_counts 0x004b8674 (NOLOAD) : { *ai-startup-spawnpoint.o(.bss._ZN10SpawnPoint16s_metatypesCountE) }
+    .spawn_metatype_constants 0x004b8678 (NOLOAD) : { *ai-startup-spawnpoint.o(.bss._ZN10SpawnPoint19s_metatypesSpawnCstE) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-spawnpoint.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x00306458 : { *ai-startup-spawnpoint.o(.text.__tcf_1) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-spawnpoint.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
@@ -71,3 +80,8 @@ ASSERT(SIZEOF(.ai_startup_storage_15) == 12, "_ZN10SpawnPoint17s_outterCenterCar
 ASSERT(SIZEOF(.ai_startup_storage_16) == 12, "_ZN10SpawnPoint22s_innerCenterParkedCarE extent");
 ASSERT(SIZEOF(.ai_startup_storage_17) == 12, "_ZN10SpawnPoint23s_outterCenterParkedCarE extent");
 ASSERT(SIZEOF(.ai_startup_storage_18) == 12, "_ZN10SpawnPoint13s_spawnPointsE extent");
+ASSERT(SIZEOF(.spawn_pool) == 1024, "SpawnPoint object pool extent");
+ASSERT(SIZEOF(.spawned_cops) == 1, "SpawnPoint cop count extent");
+ASSERT(SIZEOF(.spawn_metatypes) == 4, "SpawnPoint metatype table pointer extent");
+ASSERT(SIZEOF(.spawn_metatype_counts) == 4, "SpawnPoint metatype count pointer extent");
+ASSERT(SIZEOF(.spawn_metatype_constants) == 4, "SpawnPoint metatype constants pointer extent");

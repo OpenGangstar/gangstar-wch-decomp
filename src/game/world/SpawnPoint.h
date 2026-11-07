@@ -19,6 +19,8 @@ public:
     void Load(const Structs::SpawnPoint&);
     static void UpdateSpawnCenters();
     static void releaseSpawnObject(LevelObject* object);
+    static LevelObject* getSpawnObject(int metatype);
+    static void ClearAllSpawnInstances();
     const irr::core::vector3d<float>& getPosition() const { return position; }
 
     struct Center { float x, y, z; };
@@ -30,6 +32,12 @@ public:
     static Center s_outterCenterParkedCar;
     static SpawnPointList s_spawnPoints;
 private:
+    enum { SpawnPoolSize = 256 };
+    static LevelObject* s_spawnPool[SpawnPoolSize];
+    static unsigned char s_spawnedCops;
+    static unsigned char** s_spawnMetatypes;
+    static unsigned char* s_metatypesCount;
+    static unsigned char* s_metatypesSpawnCst;
     irr::core::vector3d<float> position;
     unsigned char unknown16[24];
 };

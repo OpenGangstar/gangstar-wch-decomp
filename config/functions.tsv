@@ -10502,9 +10502,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306475	0x6c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE	SpawnPoint::SetRotation(irr::core::vector3d<float> const&)
 0x003064e1	0x44	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint20GetOutterSpawnCenterEv	SpawnPoint::GetOutterSpawnCenter() const
 0x00306525	0x44	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint19GetInnerSpawnCenterEv	SpawnPoint::GetInnerSpawnCenter() const
-0x00306569	0x7c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject	SpawnPoint::releaseSpawnObject(LevelObject*)
+0x00306569	0x7c	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject	SpawnPoint::releaseSpawnObject(LevelObject*)
 0x003065e5	0x150	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint23CreateAllSpawnInstancesEv	SpawnPoint::CreateAllSpawnInstances()
-0x00306735	0xa0	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint14getSpawnObjectEi	SpawnPoint::getSpawnObject(int)
+0x00306735	0xa0	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint14getSpawnObjectEi	SpawnPoint::getSpawnObject(int)
 0x003067d5	0x224	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint5spawnEv	SpawnPoint::spawn()
 0x003069f9	0x118	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint5spawnEi	SpawnPoint::spawn(int)
 0x00306b11	0x21c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE	SpawnPoint::Load(Structs::SpawnPoint const&)
@@ -10514,7 +10514,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306e25	0x1c0	SpawnPoint.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00306fe5	0x14	SpawnPoint.cpp	game	world	matched	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE
 0x00306ff9	0x30	SpawnPoint.cpp	game	world	matched	__tcf_5	__tcf_5
-0x00307029	0xa4	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint22ClearAllSpawnInstancesEv	SpawnPoint::ClearAllSpawnInstances()
+0x00307029	0xa4	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint22ClearAllSpawnInstancesEv	SpawnPoint::ClearAllSpawnInstances()
 0x003070cd	0x34	SpawnPoint.cpp	game	world	matched	__tcf_6	__tcf_6
 0x00307101	0x350	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint18UpdateSpawnCentersEv	SpawnPoint::UpdateSpawnCenters()
 0x00307451	0x330	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint8canSpawnEv	SpawnPoint::canSpawn() const

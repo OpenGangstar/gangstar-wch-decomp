@@ -40,6 +40,8 @@ void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const ch
 
 
 #include "SpawnPoint.h"
+#include "GameObjectManager.h"
+#include "LevelObject.h"
 #include "../ai/AIManagerSingleton.h"
 
 SpawnPoint::Center SpawnPoint::s_innerCenterCiv;
@@ -50,6 +52,67 @@ SpawnPoint::Center SpawnPoint::s_innerCenterParkedCar;
 SpawnPoint::Center SpawnPoint::s_outterCenterParkedCar;
 
 SpawnPointList SpawnPoint::s_spawnPoints;
+LevelObject* SpawnPoint::s_spawnPool[SpawnPoolSize];
+unsigned char SpawnPoint::s_spawnedCops;
+unsigned char** SpawnPoint::s_spawnMetatypes;
+unsigned char* SpawnPoint::s_metatypesCount;
+unsigned char* SpawnPoint::s_metatypesSpawnCst;
+
+static inline __attribute__((always_inline)) bool isCopMetatype(LevelObject* object)
+{
+    return object->GetMetatype() == 48 || object->GetMetatype() == 161 || object->GetMetatype() == 38;
+}
+
+void SpawnPoint::releaseSpawnObject(LevelObject* object)
+{
+    GameObjectManager::s_gom->RemoveGameObjectOfType(object->getSpawnType());
+    for (int i = 0; i < SpawnPoolSize; ++i) {
+        if (!s_spawnPool[i]) {
+            s_spawnPool[i] = object;
+            if (isCopMetatype(object) && s_spawnedCops)
+                --s_spawnedCops;
+            return;
+        }
+    }
+}
+
+LevelObject* SpawnPoint::getSpawnObject(int metatype)
+{
+    GameObjectManager* manager = GameObjectManager::s_gom;
+    for (int i = 0; i < SpawnPoolSize; ++i) {
+        if (s_spawnPool[i] && s_spawnPool[i]->GetMetatype() == metatype) {
+            LevelObject* object = s_spawnPool[i];
+            s_spawnPool[i] = 0;
+            if (isCopMetatype(object))
+                ++s_spawnedCops;
+            if (object)
+                manager->Add(object, object->unknown40);
+            return object;
+        }
+    }
+    return 0;
+}
+
+void SpawnPoint::ClearAllSpawnInstances()
+{
+    for (LevelObject** slot = s_spawnPool; slot != s_spawnPool + SpawnPoolSize; ++slot) {
+        delete *slot;
+        *slot = 0;
+    }
+    if (s_spawnMetatypes) {
+        for (int i = 0; i < SpawnPoolSize; ++i) {
+            unsigned char*& entry = s_spawnMetatypes[i];
+            delete[] entry;
+            entry = 0;
+        }
+        delete[] s_spawnMetatypes;
+    }
+    s_spawnMetatypes = 0;
+    delete[] s_metatypesCount;
+    s_metatypesCount = 0;
+    delete[] s_metatypesSpawnCst;
+    s_metatypesSpawnCst = 0;
+}
 
 extern "C" {
 static void __tcf_6() __attribute__((used));
