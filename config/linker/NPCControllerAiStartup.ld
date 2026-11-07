@@ -13,8 +13,16 @@ _ZN32retail_npccontroller_transitions17civ_vehicle_transE = 0x004321a0;
 _ZN32retail_npccontroller_transitions17cop_vehicle_transE = 0x00432230;
 _ZN32retail_npccontroller_transitions11guard_transE = 0x004322e4;
 _ZN32retail_npccontroller_transitions22scripted_vehicle_transE = 0x0043238c;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+    .npc_controller_switch 0x00342288 : { *(.text._ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
+    .npc_controller_construct 0x0034231c : { *(.text._ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE .text._ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE) }
+    .npc_controller_delete 0x00342494 : { *(.text._ZN13NPCControllerD0Ev) }
+    .npc_controller_destroy 0x003424c0 : { *(.text._ZN13NPCControllerD1Ev .text._ZN13NPCControllerD2Ev) }
+    .npc_controller_vtable 0x004ad018 : { *(.data.rel.ro._ZTV13NPCController) }
     .ai_startup_function_0 0x003422ec : { *ai-startup-npccontroller.o(.text.__tcf_2) }
     .ai_startup_function_1 0x0034233c : { *ai-startup-npccontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00342480 : { *ai-startup-npccontroller.o(.text._GLOBAL__I__ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE) }

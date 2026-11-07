@@ -12231,16 +12231,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003420cd	0x154	GuardController.cpp	game	ai	pending	_ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	GuardController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
 0x00342221	0x68	GuardController.cpp	game	ai	pending	_ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
 0x00342221	0x68	GuardController.cpp	game	ai	pending	_ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
-0x00342289	0x2	NPCController.cpp	game	ai	pending	_ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	NPCController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
+0x00342289	0x2	NPCController.cpp	game	ai	matched	_ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	NPCController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
 0x0034228d	0x60	NPCController.cpp	game	ai	pending	_ZN13NPCController7onEventEPK6IEventPK12EventManager	NPCController::onEvent(IEvent const*, EventManager const*)
 0x003422ed	0x30	NPCController.cpp	game	ai	matched	__tcf_2	__tcf_2
-0x0034231d	0x20	NPCController.cpp	game	ai	pending	_ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	NPCController::NPCController(gameloft::ai::StateID, NPC*, gameloft::ai::Transition const&)
-0x0034231d	0x20	NPCController.cpp	game	ai	pending	_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	NPCController::NPCController(gameloft::ai::StateID, NPC*, gameloft::ai::Transition const&)
+0x0034231d	0x20	NPCController.cpp	game	ai	matched	_ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	NPCController::NPCController(gameloft::ai::StateID, NPC*, gameloft::ai::Transition const&)
+0x0034231d	0x20	NPCController.cpp	game	ai	matched	_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	NPCController::NPCController(gameloft::ai::StateID, NPC*, gameloft::ai::Transition const&)
 0x0034233d	0x144	NPCController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00342481	0x14	NPCController.cpp	game	ai	matched	_GLOBAL__I__ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	_GLOBAL__I__ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE
-0x00342495	0x2c	NPCController.cpp	game	ai	pending	_ZN13NPCControllerD0Ev	NPCController::~NPCController()
-0x003424c1	0x24	NPCController.cpp	game	ai	pending	_ZN13NPCControllerD2Ev	NPCController::~NPCController()
-0x003424c1	0x24	NPCController.cpp	game	ai	pending	_ZN13NPCControllerD1Ev	NPCController::~NPCController()
+0x00342495	0x2c	NPCController.cpp	game	ai	matched	_ZN13NPCControllerD0Ev	NPCController::~NPCController()
+0x003424c1	0x24	NPCController.cpp	game	ai	matched	_ZN13NPCControllerD2Ev	NPCController::~NPCController()
+0x003424c1	0x24	NPCController.cpp	game	ai	matched	_ZN13NPCControllerD1Ev	NPCController::~NPCController()
 0x003424e5	0x30	VehicleController.cpp	game	ai	matched	__tcf_4	__tcf_4
 0x00342515	0x54	VehicleController.cpp	game	ai	pending	_ZN17VehicleController15getNextWaypointEv	VehicleController::getNextWaypoint()
 0x00342569	0x1c	VehicleController.cpp	game	ai	matched	__tcf_3	__tcf_3

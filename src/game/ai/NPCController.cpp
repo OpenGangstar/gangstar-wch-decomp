@@ -8,6 +8,41 @@
  * functions of NPCController.cpp here, in the order they appear in the library.
  */
 
+#include "AIManager.h"
+
+namespace gameloft { namespace ai {
+struct Transition;
+enum TransitionCondition { UnknownTransitionCondition = 0 };
+} }
+
+class NPCController : public IEventReceiver {
+public:
+    NPCController(gameloft::ai::StateID state, NPC* npc,
+        const gameloft::ai::Transition& transition);
+    virtual ~NPCController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition) __attribute__((weak));
+
+private:
+    unsigned int state;
+    NPC* npc;
+    const gameloft::ai::Transition& transition;
+};
+
+NPCController::NPCController(gameloft::ai::StateID state, NPC* npc,
+    const gameloft::ai::Transition& transition)
+    : state(state), npc(npc), transition(transition)
+{
+}
+
+NPCController::~NPCController()
+{
+}
+
+void NPCController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
+{
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
