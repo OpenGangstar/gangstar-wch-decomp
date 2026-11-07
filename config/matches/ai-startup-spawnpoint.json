@@ -25,6 +25,13 @@
     "source": "src/game/world/SpawnPoint.cpp",
     "linker_script": "config/linker/SpawnPointAiStartup.ld",
     "functions": [
+        "_ZN10SpawnPoint3addEPS_",
+        "_ZN10SpawnPointD0Ev",
+        "_ZN10SpawnPointD1Ev",
+        "_ZN10SpawnPointD2Ev",
+        "_ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE",
+        "_ZN10SpawnPointC1Ei",
+        "_ZN10SpawnPointC2Ei",
         "_ZN10SpawnPoint14resetSpawnTimeEii",
         "_ZNK10SpawnPoint20GetOutterSpawnCenterEv",
         "_ZNK10SpawnPoint19GetInnerSpawnCenterEv",
@@ -60,6 +67,7 @@
         }
     ],
     "sections": [
+        ".spawn_vtable",
         ".spawn_constants",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -75,6 +83,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZnwjN3irr7MemHintE",
         "_ZN3irr2os10Randomizer4randEv",
         "_ZNK10SpawnPoint8canSpawnEv",
         "_ZN10SpawnPoint5spawnEv",

@@ -4,6 +4,7 @@ INCLUDE build/matches/ai-startup-spawnpoint/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 _ZdaPv = 0x001c461c;
 __aeabi_idivmod = 0x001c4934;
+__aeabi_fmul = 0x001c4724;
 __aeabi_atexit = 0x001c494c;
 _ZN29retail_spawnpoint_transitions16civPassive_transE = 0x0041eee0;
 _ZN29retail_spawnpoint_transitions17scriptedNpc_transE = 0x0041f00c;
@@ -19,6 +20,12 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .spawn_add 0x003063a0 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint3addEPS_) }
+    .spawn_delete 0x003063e8 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPointD0Ev) }
+    .spawn_dtor 0x00306408 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPointD1Ev .text._ZN10SpawnPointD2Ev) }
+    .spawn_set_rotation 0x00306474 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE) }
+    .spawn_ctor 0x00306df0 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPointC1Ei .text._ZN10SpawnPointC2Ei) }
+    .spawn_vtable 0x004ab140 : { *ai-startup-spawnpoint.o(.data.rel.ro._ZTV10SpawnPoint .data.rel.ro) }
     .spawn_reset_time 0x00306420 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint14resetSpawnTimeEii) }
     .spawn_outer_center 0x003064e0 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint20GetOutterSpawnCenterEv) }
     .spawn_inner_center 0x00306524 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint19GetInnerSpawnCenterEv) }

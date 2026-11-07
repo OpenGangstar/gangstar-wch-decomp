@@ -1,6 +1,7 @@
 #ifndef WCH_WORLD_SPAWN_POINT_H
 #define WCH_WORLD_SPAWN_POINT_H
 #include "../core/Vector3.h"
+#include "../core/Quaternion.h"
 namespace Structs { struct SpawnPoint; }
 class SpawnPoint;
 class LevelObject;
@@ -16,6 +17,8 @@ class SpawnPoint {
 public:
     SpawnPoint(int type);
     virtual ~SpawnPoint();
+    static void add(SpawnPoint* point);
+    void SetRotation(const irr::core::vector3d<float>& degrees);
     void Load(const Structs::SpawnPoint&);
     static void UpdateSpawnCenters();
     static void releaseSpawnObject(LevelObject* object);
@@ -61,7 +64,9 @@ private:
     static SpawnConstants s_prisonerSpawnCst;
     static SpawnConstants s_parkedCarSpawnCst;
     irr::core::vector3d<float> position;
-    unsigned char unknown16[20];
+    irr::core::quaternion rotation;
+    short unknown32;
+    unsigned char unknown34[2];
     short spawnTime;
     unsigned char spawnGroup;
     unsigned char unknown39;

@@ -43,6 +43,7 @@ void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const ch
 #include "GameObjectManager.h"
 #include "LevelObject.h"
 #include "../ai/AIManagerSingleton.h"
+#include "../core/MemHint.h"
 #include "../core/Randomizer.h"
 
 SpawnPoint::SpawnConstants SpawnPoint::s_carSpawnCst =
@@ -67,6 +68,33 @@ unsigned char SpawnPoint::s_spawnedCops;
 unsigned char** SpawnPoint::s_spawnMetatypes;
 unsigned char* SpawnPoint::s_metatypesCount;
 const SpawnPoint::SpawnConstants** SpawnPoint::s_metatypesSpawnCst;
+
+void SpawnPoint::add(SpawnPoint* point)
+{
+    SpawnPointList::Node* node = new (irr::DefaultMemHint) SpawnPointList::Node;
+    node->next = 0;
+    node->previous = 0;
+    node->value = point;
+    ++s_spawnPoints.count;
+    if (!s_spawnPoints.head)
+        s_spawnPoints.head = node;
+    node->previous = s_spawnPoints.tail;
+    if (s_spawnPoints.tail)
+        s_spawnPoints.tail->next = node;
+    s_spawnPoints.tail = node;
+}
+
+SpawnPoint::~SpawnPoint() {}
+
+void __attribute__((weak)) SpawnPoint::SetRotation(const irr::core::vector3d<float>& degrees)
+{
+    const float radiansPerDegree = 0.0174532925f;
+    const irr::core::quaternion radians(degrees * radiansPerDegree);
+    rotation.X = radians.X;
+    rotation.Y = radians.Y;
+    rotation.Z = radians.Z;
+    rotation.W = radians.W;
+}
 
 void SpawnPoint::resetSpawnTime(int minimum, int maximum)
 {
@@ -152,6 +180,8 @@ void SpawnPoint::ClearAllSpawnInstances()
     delete[] s_metatypesSpawnCst;
     s_metatypesSpawnCst = 0;
 }
+
+SpawnPoint::SpawnPoint(int) : unknown32(0) {}
 
 void SpawnPoint::Update(int elapsed)
 {
