@@ -43,6 +43,16 @@ void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const ch
 #include "GameObjectManager.h"
 #include "LevelObject.h"
 #include "../ai/AIManagerSingleton.h"
+#include "../core/Randomizer.h"
+
+SpawnPoint::SpawnConstants SpawnPoint::s_carSpawnCst =
+    {3, 3, 500, 1000, 2000, 4000, 6250000, 3039, 32397042, 3900};
+SpawnPoint::SpawnConstants SpawnPoint::s_civSpawnCst =
+    {5, 3, 1000, 2000, 5000, 8000, 4000000, 1000, 9000000, 1700};
+SpawnPoint::SpawnConstants SpawnPoint::s_prisonerSpawnCst =
+    {16, 5, 1000, 2000, 5000, 8000, 4000000, 1000, 9000000, 1700};
+SpawnPoint::SpawnConstants SpawnPoint::s_parkedCarSpawnCst =
+    {11, 2, 500, 1000, 2000, 4000, 6250000, 1500, 10240000, 3000};
 
 SpawnPoint::Center SpawnPoint::s_innerCenterCiv;
 SpawnPoint::Center SpawnPoint::s_outterCenterCiv;
@@ -56,7 +66,36 @@ LevelObject* SpawnPoint::s_spawnPool[SpawnPoolSize];
 unsigned char SpawnPoint::s_spawnedCops;
 unsigned char** SpawnPoint::s_spawnMetatypes;
 unsigned char* SpawnPoint::s_metatypesCount;
-unsigned char* SpawnPoint::s_metatypesSpawnCst;
+const SpawnPoint::SpawnConstants** SpawnPoint::s_metatypesSpawnCst;
+
+void SpawnPoint::resetSpawnTime(int minimum, int maximum)
+{
+    int range = maximum - minimum;
+    spawnTime = minimum + irr::os::Randomizer::rand() % range;
+}
+
+static inline const SpawnPoint::Center& selectSpawnCenter(int type,
+    const SpawnPoint::Center& car, const SpawnPoint::Center& parkedCar,
+    const SpawnPoint::Center& civilian)
+{
+    if (type == 3)
+        return car;
+    if (type == 11)
+        return parkedCar;
+    return civilian;
+}
+
+const SpawnPoint::Center& SpawnPoint::GetOutterSpawnCenter() const
+{
+    return selectSpawnCenter(s_metatypesSpawnCst[spawnGroup]->type,
+        s_outterCenterCar, s_outterCenterParkedCar, s_outterCenterCiv);
+}
+
+const SpawnPoint::Center& SpawnPoint::GetInnerSpawnCenter() const
+{
+    return selectSpawnCenter(s_metatypesSpawnCst[spawnGroup]->type,
+        s_innerCenterCar, s_innerCenterParkedCar, s_innerCenterCiv);
+}
 
 static inline __attribute__((always_inline)) bool isCopMetatype(LevelObject* object)
 {
@@ -112,6 +151,28 @@ void SpawnPoint::ClearAllSpawnInstances()
     s_metatypesCount = 0;
     delete[] s_metatypesSpawnCst;
     s_metatypesSpawnCst = 0;
+}
+
+void SpawnPoint::Update(int elapsed)
+{
+    if (spawnTime > 0) {
+        spawnTime -= elapsed;
+        return;
+    }
+
+    int minimum;
+    int maximum;
+    if (!canSpawn()) {
+        const SpawnConstants& constants = *s_metatypesSpawnCst[spawnGroup];
+        minimum = constants.retryMin;
+        maximum = constants.retryMax;
+    } else {
+        spawn();
+        const SpawnConstants& constants = *s_metatypesSpawnCst[spawnGroup];
+        minimum = constants.respawnMin;
+        maximum = constants.respawnMax;
+    }
+    resetSpawnTime(minimum, maximum);
 }
 
 extern "C" {

@@ -10,14 +10,8 @@
 
 // Recovered translation-unit SDK string startup callbacks.
 #include "RadioStationController.h"
+#include "../core/Randomizer.h"
 #include "../persistence/DataStream.h"
-
-namespace irr { namespace os {
-class Randomizer {
-public:
-    static int rand();
-};
-} }
 
 int RadioStationController::selectRandomAd()
 {

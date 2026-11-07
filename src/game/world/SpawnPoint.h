@@ -21,9 +21,12 @@ public:
     static void releaseSpawnObject(LevelObject* object);
     static LevelObject* getSpawnObject(int metatype);
     static void ClearAllSpawnInstances();
+    void Update(int elapsed);
     const irr::core::vector3d<float>& getPosition() const { return position; }
 
     struct Center { float x, y, z; };
+    const Center& GetInnerSpawnCenter() const;
+    const Center& GetOutterSpawnCenter() const;
     static Center s_innerCenterCiv;
     static Center s_outterCenterCiv;
     static Center s_innerCenterCar;
@@ -32,13 +35,35 @@ public:
     static Center s_outterCenterParkedCar;
     static SpawnPointList s_spawnPoints;
 private:
+    struct SpawnConstants {
+        int type;
+        int unknown4;
+        int retryMin;
+        int retryMax;
+        int respawnMin;
+        int respawnMax;
+        int unknown24;
+        int unknown28;
+        int unknown32;
+        int unknown36;
+    };
+    void resetSpawnTime(int minimum, int maximum);
+    bool canSpawn() const;
+    void spawn();
     enum { SpawnPoolSize = 256 };
     static LevelObject* s_spawnPool[SpawnPoolSize];
     static unsigned char s_spawnedCops;
     static unsigned char** s_spawnMetatypes;
     static unsigned char* s_metatypesCount;
-    static unsigned char* s_metatypesSpawnCst;
+    static const SpawnConstants** s_metatypesSpawnCst;
+    static SpawnConstants s_carSpawnCst;
+    static SpawnConstants s_civSpawnCst;
+    static SpawnConstants s_prisonerSpawnCst;
+    static SpawnConstants s_parkedCarSpawnCst;
     irr::core::vector3d<float> position;
-    unsigned char unknown16[24];
+    unsigned char unknown16[20];
+    short spawnTime;
+    unsigned char spawnGroup;
+    unsigned char unknown39;
 };
 #endif
