@@ -27,18 +27,43 @@ public:
     bool isLoopingOnPathToFollow() const;
     void setSpeed();
     void loopPathToFollow(bool loop);
+    void _shiftWeight(irr::core::vector3d<float>&, float);
+    const char* getEnterAnim() const;
+    const char* getExitAnim() const;
+    const char* getCloseDoorAnim() const;
+    void toggleInterior(bool visible);
+    void _notifyTargeted(bool targeted, Character* source);
+    void AddTurboSounds();
+    void Init4CylTurboSounds();
+    void InitSuperbikeSounds();
+    void InitV12LamborghiniSounds();
+    void setHasBeenStolen();
+    bool getHasBeenStolen();
+    int getUniqueId();
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
     friend class Race;
-    unsigned char unknown52[248];
+    unsigned char unknown52[192];
+    Character* targetingCharacter;
+    unsigned char unknown248[36];
+    const char* enterAnim;
+    const char* exitAnim;
+    const char* closeDoorAnim;
+    unsigned char unknown296[4];
     const Path* pathToFollow;
     int currentWaypoint;
-    unsigned char unknown308[36];
+    unsigned char unknown308[20];
+    irr::scene::ISceneNode* interior;
+    unsigned char unknown332[12];
     unsigned int flags344;
     unsigned char unknown348[73];
     unsigned char explosionFlag;
-    unsigned char unknown422[274];
+    unsigned char unknown422[2];
+    int vehicleIndex;
+    unsigned char unknown428[76];
+    bool hasBeenStolen;
+    unsigned char unknown505[191];
     Character* driver;
     unsigned char unknown700[76];
     float unknown776;

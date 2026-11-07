@@ -11,6 +11,25 @@
 #include "Vehicle.h"
 #include "../core/LocalStringStartupStorage.h"
 
+void Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
+{
+}
+
+const char* Vehicle::getEnterAnim() const { return enterAnim; }
+const char* Vehicle::getExitAnim() const { return exitAnim; }
+const char* Vehicle::getCloseDoorAnim() const { return closeDoorAnim; }
+
+void Vehicle::toggleInterior(bool visible)
+{
+    interior->setVisible(visible);
+}
+
+void Vehicle::_notifyTargeted(bool targeted, Character* source)
+{
+    if (targeted)
+        targetingCharacter = source;
+}
+
 const Path* Vehicle::getPathToFollow() const
 {
     return pathToFollow;
@@ -45,6 +64,15 @@ bool Vehicle::isLoopingOnPathToFollow() const
 {
     return (flags344 & 0x04000000u) != 0;
 }
+
+void Vehicle::AddTurboSounds() {}
+void Vehicle::Init4CylTurboSounds() {}
+void Vehicle::InitSuperbikeSounds() {}
+void Vehicle::InitV12LamborghiniSounds() {}
+
+void Vehicle::setHasBeenStolen() { hasBeenStolen = true; }
+bool Vehicle::getHasBeenStolen() { return hasBeenStolen; }
+int Vehicle::getUniqueId() { return vehicleIndex - 12335; }
 
 void operator delete(void*) throw();
 

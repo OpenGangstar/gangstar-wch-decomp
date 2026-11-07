@@ -46,7 +46,20 @@
         "_ZNK7Vehicle18getCurrentWaypointEv",
         "_ZN7Vehicle16loopPathToFollowEb",
         "_ZN7Vehicle15setPathToFollowEPK4Path",
-        "_ZNK7Vehicle23isLoopingOnPathToFollowEv"
+        "_ZNK7Vehicle23isLoopingOnPathToFollowEv",
+        "_ZN7Vehicle12_shiftWeightERN3irr4core8vector3dIfEEf",
+        "_ZNK7Vehicle12getEnterAnimEv",
+        "_ZNK7Vehicle11getExitAnimEv",
+        "_ZNK7Vehicle16getCloseDoorAnimEv",
+        "_ZN7Vehicle14toggleInteriorEb",
+        "_ZN7Vehicle15_notifyTargetedEbP9Character",
+        "_ZN7Vehicle14AddTurboSoundsEv",
+        "_ZN7Vehicle19Init4CylTurboSoundsEv",
+        "_ZN7Vehicle19InitSuperbikeSoundsEv",
+        "_ZN7Vehicle24InitV12LamborghiniSoundsEv",
+        "_ZN7Vehicle16setHasBeenStolenEv",
+        "_ZN7Vehicle16getHasBeenStolenEv",
+        "_ZN7Vehicle11getUniqueIdEv"
     ],
     "sections": [
         ".vehicle_cleanup_0",
@@ -62,7 +75,20 @@
         ".vehicle_get_waypoint",
         ".vehicle_loop_path",
         ".vehicle_set_path",
-        ".vehicle_is_looping"
+        ".vehicle_is_looping",
+        ".vehicle_shift_weight",
+        ".vehicle_enter_anim",
+        ".vehicle_exit_anim",
+        ".vehicle_close_door_anim",
+        ".vehicle_interior",
+        ".vehicle_notify_targeted",
+        ".vehicle_add_turbo",
+        ".vehicle_init_4cyl",
+        ".vehicle_init_superbike",
+        ".vehicle_init_v12",
+        ".vehicle_set_stolen",
+        ".vehicle_get_stolen",
+        ".vehicle_unique_id"
     ],
     "retail_got": true,
     "external_thumb_functions": [
