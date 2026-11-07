@@ -29,6 +29,8 @@
 #include "../core/Geometry.h"
 #include "../core/VideoDriver.h"
 #include "../world/SpawnPoint.h"
+#include "../world/GameObjectManager.h"
+#include "../world/LevelObject.h"
 #include "../world/ResStream.h"
 #include "../world/World.h"
 #include "../world/WorldDescriptor.h"
@@ -576,6 +578,7 @@ BulletTraceManager* GS3DStuff::s_bulletManager;
 TrailMgr* GS3DStuff::s_TrailMgr;
 irr::scene::ISceneNode* GS3DStuff::skyBox;
 irr::scene::ISceneNode* GS3DStuff::city;
+GameObjectManager* GS3DStuff::gom;
 irr::video::ITexture* GS3DStuff::skyBoxTexture;
 OctTreeAABB* GS3DStuff::sceneOcttree;
 Structs::PhonePerformanceProfile GS3DStuff::s_phonePerformanceProfile;
@@ -673,6 +676,24 @@ int GS3DStuff::loadCityDesc(const char*, char**& parts)
 void GS3DStuff::loadCityGameObjects(const WorldDescriptor& descriptor, bool spawnPointsOnly)
 {
     World::GetInstance()->AddFromDescriptor(descriptor, spawnPointsOnly);
+}
+
+void GS3DStuff::forceDespawn(LevelObject* object)
+{
+    gom->despawn(object);
+}
+
+void GS3DStuff::forceDespawn(int type)
+{
+    LevelObject* object = gom->GetFirst(0);
+    PlayerTest* player = PlayerTest::GetPlayer();
+    while (object) {
+        if ((object->unknown4 & 0x490) && LevelObject::s_type[object->getObjectType()] == type
+            && player->unknown368 != object && player->unknown312 != object && player->unknown316 != object)
+            object = gom->despawn(object);
+        else
+            object = object->next;
+    }
 }
 
 namespace {

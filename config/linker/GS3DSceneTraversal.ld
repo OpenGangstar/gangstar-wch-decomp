@@ -1,4 +1,7 @@
 SECTIONS {
+    .gs_force_despawn_object 0x002db720 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12forceDespawnEP11LevelObject) }
+    .gs_force_despawn_type 0x002dc394 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12forceDespawnEi) }
+    .gs_object_manager 0x004b6984 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff3gomE) }
     .gs_load_city_desc 0x002db62c : { *gs3d-stuff.o(.text._ZN9GS3DStuff12loadCityDescEPKcRPPc) }
     .gs_city_parts_file 0x00414490 : { *gs3d-stuff.o(.rodata.*cityPartsFileE) }
     .gs_load_city_game_objects 0x002db708 : { *gs3d-stuff.o(.text._ZN9GS3DStuff19loadCityGameObjectsERK15WorldDescriptorb) }

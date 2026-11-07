@@ -28,6 +28,9 @@
     "source": "src/game/world/GameObjectManager.cpp",
     "linker_script": "config/linker/GameObjectManager.ld",
     "functions": [
+        "_ZN17GameObjectManager7despawnEP11LevelObject",
+        "_ZN12EvNPCDespawnD0Ev",
+        "_ZN12EvNPCDespawnD1Ev",
         "_ZN17GameObjectManager19AddGameObjectOfTypeEi",
         "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
         "_ZN17GameObjectManager6RemoveEP11LevelObject",
@@ -114,6 +117,11 @@
         }
     ],
     "sections": [
+        ".gom_event_get_id",
+        ".gom_event_delete",
+        ".gom_event_dtor",
+        ".gom_event_vtable",
+        ".gom_despawn_event_vtable",
         ".text",
         {
             "name": ".got",
@@ -312,6 +320,8 @@
         ".gs3d_startup_function_3"
     ],
     "external_thumb_functions": [
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject",
         "_ZN5World11GetInstanceEv",
         "_ZN5World17AddFromDescriptorERK15WorldDescriptorb",
         "_ZN15WorldDescriptorC1EPKc",

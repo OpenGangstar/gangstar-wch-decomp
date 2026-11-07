@@ -19,6 +19,7 @@ class PhysicAttributes;
 class LevelObject {
     friend class GameObjectList;
     friend class GameObjectManager;
+    friend class GS3DStuff;
     friend class ScriptManager;
     friend class MiniMap;
 public:

@@ -87,6 +87,14 @@ _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 SECTIONS {
+    .gom_despawn 0x00316578 : { *game-object-manager.o(.text._ZN17GameObjectManager7despawnEP11LevelObject) }
+    .gom_event_get_id 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
+    .gom_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .gom_event_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .gom_despawn_event_delete 0x002f621c : { *(.gnu.linkonce.t._ZN12EvNPCDespawnD0Ev) }
+    .gom_despawn_event_dtor 0x002f6248 : { *(.gnu.linkonce.t._ZN12EvNPCDespawnD1Ev) }
+    .gom_event_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .gom_despawn_event_vtable 0x004aa150 : { *(.gnu.linkonce.d.rel.ro._ZTV12EvNPCDespawn) }
     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
