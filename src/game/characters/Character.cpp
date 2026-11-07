@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
+#include "Character.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -38,6 +39,35 @@ int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
 }
 
+Vehicle* __attribute__((weak)) Character::getVehicle() const
+{
+    return vehicle;
+}
+
+Character* __attribute__((weak)) Character::getLockTarget() const
+{
+    return lockTarget;
+}
+
+const irr::core::vector3d<float>& __attribute__((weak)) Character::getCameraOffset() const
+{
+    return cameraOffset;
+}
+
+void Character::setVehicle(Vehicle* value)
+{
+    vehicle = value;
+}
+
+void Character::setLockTarget(Character*)
+{
+}
+
+void __attribute__((weak)) Character::setCameraOffset(const irr::core::vector3d<float>& offset)
+{
+    cameraOffset = offset;
+}
+
 extern "C" {
 static void __tcf_4()
 {
@@ -45,6 +75,12 @@ static void __tcf_4()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+void Character::setDestination(const irr::core::vector3d<float>& point, int limit)
+{
+    destination = point;
+    destinationLimitSquared = limit * limit;
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));

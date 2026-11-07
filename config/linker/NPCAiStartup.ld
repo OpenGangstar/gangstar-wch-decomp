@@ -16,6 +16,7 @@ _ZN22retail_npc_transitions11guard_transE = 0x0041ddec;
 _ZN22retail_npc_transitions22scripted_vehicle_transE = 0x0041de94;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+INCLUDE config/linker/CharacterStateSections.ld
 SECTIONS
 {
     .npc_photographed 0x002fd448 : { *ai-startup-npc.o(.text._ZN3NPC12photographedEv) }
@@ -55,6 +56,8 @@ SECTIONS
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
+    /* Character startup is verified in its own image. Keep only the state methods here. */
+    /DISCARD/ : { *ai-startup-character.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
