@@ -26,15 +26,31 @@
 #include "../core/EventManager.h"
 #include "../ai/AIManagerSingleton.h"
 
+namespace {
+template<class Value>
+inline __attribute__((always_inline)) void applyToChildren(irr::scene::ISceneNode* node,
+    void (*apply)(irr::scene::ISceneNode*, Value), Value value)
+{
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        apply(child->value, value);
+    }
+}
+}
+
 void GS3DStuff::SetVisibility(irr::scene::ISceneNode* node, bool visible)
 {
     if (node->getMaterialCount())
         node->setVisible(visible);
 
-    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
-         child != node->getChildren().end(); child = child->next) {
-        SetVisibility(child->value, visible);
-    }
+    applyToChildren(node, SetVisibility, visible);
+}
+
+void GS3DStuff::SetCulling(irr::scene::ISceneNode* node, irr::scene::E_CULLING_TYPE type)
+{
+    node->setAutomaticCulling(type);
+
+    applyToChildren(node, SetCulling, type);
 }
 
 void GS3DStuff::SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type)
@@ -44,10 +60,7 @@ void GS3DStuff::SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATE
         node->notifyMaterialChanged();
     }
 
-    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
-         child != node->getChildren().end(); child = child->next) {
-        SetMaterialType(child->value, type);
-    }
+    applyToChildren(node, SetMaterialType, type);
 }
 
 void GS3DStuff::SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled)
@@ -59,6 +72,38 @@ void GS3DStuff::SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATE
          child != node->getChildren().end(); child = child->next) {
         SetMaterialFlag(child->value, flag, enabled);
     }
+}
+
+void GS3DStuff::SetMaterialTexture(irr::scene::ISceneNode* node, irr::video::ITexture* texture)
+{
+    if (node->getMaterialCount())
+        node->setMaterialTexture(0, texture);
+
+    applyToChildren(node, SetMaterialTexture, texture);
+}
+
+namespace {
+const int colladaMeshNode = 0x6d656164;
+const int colladaSkinnedNode = 0x73656164;
+const char planeNodeMarker[] = "Plane";
+const char jumpNodeMarker[] = "Jump";
+}
+
+irr::scene::ISceneNode* GS3DStuff::FindAMesh(irr::scene::ISceneNode* node)
+{
+    node->updateAbsolutePosition(false);
+    if ((node->getType() == colladaMeshNode || node->getType() == colladaSkinnedNode) &&
+        !strstr(node->getUID(), planeNodeMarker) && !strstr(node->getUID(), jumpNodeMarker)) {
+        return node;
+    }
+
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        irr::scene::ISceneNode* mesh = FindAMesh(child->value);
+        if (mesh)
+            return mesh;
+    }
+    return 0;
 }
 
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)

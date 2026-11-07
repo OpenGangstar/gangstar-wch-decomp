@@ -336,6 +336,8 @@
         "_ZN16SceneNodeManager4grabEiP11LevelObjectiPPPv",
         "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE",
+        "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
         "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
         "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
         "_ZNK3irr5scene10ISceneNode12getAnimatorsEv",
