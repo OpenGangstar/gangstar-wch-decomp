@@ -17,6 +17,7 @@
 #include "../app/CGameFactory.h"
 #include "../app/Application.h"
 #include "../characters/NPCDespawnEvent.h"
+#include "../characters/PhysicAttributes.h"
 #include "../ai/NPC.h"
 #include "../vehicles/Vehicle.h"
 #include "../combat/Weapon.h"
@@ -33,6 +34,28 @@
 extern "C" int strncasecmp(const char*, const char*, unsigned int);
 
 GameObjectManager* GameObjectManager::s_gom = 0;
+
+NPC* GameObjectManager::spawnNPCInVehicle(Vehicle* vehicle, int metatype, int behavior)
+{
+    NPC* npc = spawnNPC(metatype, behavior, -1);
+    npc->OnSpawn();
+    npc->initInVehicle(vehicle);
+    AddGameObjectOfType(LevelObject::s_type[npc->getObjectType()]);
+    return npc;
+}
+
+NPC* GameObjectManager::spawnNPC(int metatype, int behavior, irr::core::vector3d<float> position,
+    unsigned short region, unsigned short surface)
+{
+    NPC* npc = spawnNPC(metatype, behavior, -1);
+    npc->OnSpawn();
+    npc->SetPosition(position);
+    npc->getPhysicAttributes()->Init(region, surface, npc->GetPosition());
+    position.Z = npc->getPhysicAttributes()->GetHeight(position, 0, false);
+    npc->SetPosition(position);
+    AddGameObjectOfType(LevelObject::s_type[npc->getObjectType()]);
+    return npc;
+}
 
 void GameObjectManager::AddGameObjectOfType(int type) { ++typeCounts[type]; }
 void GameObjectManager::RemoveGameObjectOfType(int type) { --typeCounts[type]; }

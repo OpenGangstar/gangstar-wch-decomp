@@ -3,12 +3,15 @@
 
 #include "../world/LevelObject.h"
 
+class Vehicle;
+
 // Character's constructor calls LevelObject and initializes storage through
 // offset 295. NPC's first additional field is at 296. Other fields and virtual
 // overrides remain unrecovered; keep their storage opaque.
 class Character : public LevelObject {
 public:
     Character(int type);
+    void initInVehicle(Vehicle* vehicle);
     bool isPlayer() const;
     using LevelObject::sceneNode;
 private:

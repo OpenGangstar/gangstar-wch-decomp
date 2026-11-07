@@ -28,6 +28,8 @@
     "source": "src/game/world/GameObjectManager.cpp",
     "linker_script": "config/linker/GameObjectManager.ld",
     "functions": [
+        "_ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii",
+        "_ZN17GameObjectManager8spawnNPCEiiN3irr4core8vector3dIfEEtt",
         "_ZN17GameObjectManager7despawnEP11LevelObject",
         "_ZN12EvNPCDespawnD0Ev",
         "_ZN12EvNPCDespawnD1Ev",
@@ -320,6 +322,10 @@
         ".gs3d_startup_function_3"
     ],
     "external_thumb_functions": [
+        "_ZN17GameObjectManager8spawnNPCEiii",
+        "_ZN9Character13initInVehicleEP7Vehicle",
+        "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
         "_ZN12EventManager5raiseERK6IEvent",
         "_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject",
         "_ZN5World11GetInstanceEv",
