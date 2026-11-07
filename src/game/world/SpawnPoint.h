@@ -23,6 +23,7 @@ public:
     static void UpdateSpawnCenters();
     static void releaseSpawnObject(LevelObject* object);
     static LevelObject* getSpawnObject(int metatype);
+    static LevelObject* spawn(int metatype);
     static void ClearAllSpawnInstances();
     void Update(int elapsed);
     const irr::core::vector3d<float>& getPosition() const { return position; }
