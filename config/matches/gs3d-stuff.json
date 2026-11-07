@@ -119,7 +119,15 @@
         "_ZN9GS3DStuff18SetMaterialTextureEPN3irr5scene10ISceneNodeEPNS0_5video8ITextureE",
         "_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE",
         "_ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE",
-        "_ZN9GS3DStuff11setSkyColorEb"
+        "_ZN9GS3DStuff11setSkyColorEb",
+        "_Z10SafeDeleteIN3irr4core5arrayIPNS0_5scene10ISceneNodeENS1_12irrAllocatorIS5_EEEEEvRPT_",
+        "_Z10SafeDeleteIN3irr4core5arrayIP12b2PolygonDefNS1_12irrAllocatorIS4_EEEEEvRPT_",
+        "_Z10SafeDeleteIN3irr4core5arrayIP9b2BodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_",
+        "_Z10SafeDeleteIN3irr4core5arrayIP6b2BodyNS1_12irrAllocatorIS4_EEEEEvRPT_",
+        "_Z10SafeDeleteI16CollisionBodyDefEvRPT_",
+        "_ZN16CollisionBodyDefC1Ev",
+        "_ZN9GS3DStuff12freeGameDataEPN3irr5scene10ISceneNodeE",
+        "_Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_"
     ],
     "sections": [
         ".wanted_singleton",
@@ -203,7 +211,15 @@
         ".gs_find_a_mesh",
         ".gs_clean_node_pivot",
         ".gs_clean_node",
-        ".gs_set_sky_color"
+        ".gs_set_sky_color",
+        ".gs_delete_scene_node_array",
+        ".gs_delete_polygon_def_array",
+        ".gs_delete_body_def_array",
+        ".gs_delete_body_array",
+        ".gs_delete_collision_body_def",
+        ".gs_collision_body_def_ctor",
+        ".gs_free_game_data",
+        ".gs_delete_collision_def_array"
     ],
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",

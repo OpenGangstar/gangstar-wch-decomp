@@ -1,4 +1,12 @@
 SECTIONS {
+    .gs_delete_scene_node_array 0x002db1a0 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIPNS0_5scene10ISceneNodeENS1_12irrAllocatorIS5_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIPNS0_5scene10ISceneNodeENS1_12irrAllocatorIS5_EEEEEvRPT_) }
+    .gs_delete_polygon_def_array 0x002db28c : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP12b2PolygonDefNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP12b2PolygonDefNS1_12irrAllocatorIS4_EEEEEvRPT_) }
+    .gs_delete_body_def_array 0x002db2b4 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP9b2BodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP9b2BodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_) }
+    .gs_delete_body_array 0x002db2dc : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP6b2BodyNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP6b2BodyNS1_12irrAllocatorIS4_EEEEEvRPT_) }
+    .gs_delete_collision_body_def 0x002db3c4 : { *gs3d-stuff.o(.text._Z10SafeDeleteI16CollisionBodyDefEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI16CollisionBodyDefEvRPT_) }
+    .gs_collision_body_def_ctor 0x002db83c : { *gs3d-stuff.o(.text._ZN16CollisionBodyDefC1Ev .gnu.linkonce.t._ZN16CollisionBodyDefC1Ev) }
+    .gs_free_game_data 0x002dbfe4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12freeGameDataEPN3irr5scene10ISceneNodeE .gnu.linkonce.t._ZN9GS3DStuff12freeGameDataEPN3irr5scene10ISceneNodeE) }
+    .gs_delete_collision_def_array 0x002de8ec : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_) }
     .gs_clean_node_pivot 0x004144f8 : { *gs3d-stuff.o(.rodata.*pivotNodeMarker*) }
     .gs_clean_node 0x002dc2cc : { *gs3d-stuff.o(.text._ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE) }
     .gs_set_sky_color 0x002dbac8 : { *gs3d-stuff.o(.text._ZN9GS3DStuff11setSkyColorEb) }

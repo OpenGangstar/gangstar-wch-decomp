@@ -25,6 +25,118 @@
 #include "../hud/CHudManager.h"
 #include "../core/EventManager.h"
 #include "../ai/AIManagerSingleton.h"
+#include "../core/Array.h"
+#include "../core/SafeDelete.h"
+
+class b2Body;
+struct b2BodyDef;
+class b2PolygonDef;
+
+class CollisionBodyDef {
+public:
+    inline CollisionBodyDef() __attribute__((used));
+
+private:
+    irr::core::array<b2Body*>* bodies;
+    irr::core::array<b2BodyDef*>* bodyDefinitions;
+    irr::core::array<b2PolygonDef*>* polygonDefinitions;
+    bool unknown12;
+    bool unknown13;
+    int references;
+};
+
+namespace {
+template<class T>
+inline __attribute__((always_inline)) void safeDeletePointerArray(irr::core::array<T*>*& array)
+{
+    irr::core::array<T*>* storage = array;
+    if (storage) {
+        if (storage->free_when_destroyed)
+            ::operator delete(storage->data);
+        delete storage;
+    }
+    array = 0;
+}
+
+template<class T>
+inline __attribute__((always_inline)) irr::core::array<T*>* newPointerArray()
+{
+    irr::core::array<T*>* array = new irr::core::array<T*>;
+    array->data = 0;
+    array->allocated = 0;
+    array->used = 0;
+    array->free_when_destroyed = true;
+    array->is_sorted = true;
+    array->unknown16 = 1;
+    return array;
+}
+}
+
+template<> void SafeDelete(irr::core::array<irr::scene::ISceneNode*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<irr::scene::ISceneNode*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
+template<> void SafeDelete(irr::core::array<b2PolygonDef*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<b2PolygonDef*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
+template<> void SafeDelete(irr::core::array<b2BodyDef*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<b2BodyDef*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
+template<> void SafeDelete(irr::core::array<b2Body*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<b2Body*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
+template<> void SafeDelete(irr::core::array<CollisionBodyDef*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<CollisionBodyDef*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
+CollisionBodyDef::CollisionBodyDef()
+    : bodies(newPointerArray<b2Body>()), bodyDefinitions(newPointerArray<b2BodyDef>()),
+      polygonDefinitions(newPointerArray<b2PolygonDef>()), unknown12(false), unknown13(false),
+      references(1)
+{
+}
+
+// GCC 4.2.1 emits an invalid assembler symbol for an undefined weak destructor
+// referenced by a delete expression. This declares the same native call by name.
+extern "C" void destroyCollisionBodyDef(CollisionBodyDef*)
+    __asm__("_ZN16CollisionBodyDefD1Ev") __attribute__((weak));
+
+template<> void SafeDelete(CollisionBodyDef*& definition) __attribute__((weak));
+template<> void SafeDelete(CollisionBodyDef*& definition)
+{
+    CollisionBodyDef* object = definition;
+    if (object) {
+        destroyCollisionBodyDef(object);
+        ::operator delete(object);
+    }
+    definition = 0;
+}
+
+void GS3DStuff::freeGameData(irr::scene::ISceneNode* node)
+{
+    CollisionBodyDef* data = static_cast<CollisionBodyDef*>(node->getGameData());
+    if (data) {
+        SafeDelete(data);
+        node->setGameData(0);
+    }
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        freeGameData(child->value);
+    }
+}
 
 namespace {
 template<class Value>
