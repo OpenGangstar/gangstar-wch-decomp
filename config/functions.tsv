@@ -10290,12 +10290,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd479	0x24	NPC.cpp	game	ai	pending	_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE	NPC::goToLocation(irr::core::vector3d<float> const&)
 0x002fd49d	0x20	NPC.cpp	game	ai	pending	_ZN3NPC16clearGoToVehicleEv	NPC::clearGoToVehicle()
 0x002fd4bd	0x3a	NPC.cpp	game	ai	pending	_ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_	NPC::attachWeaponToHand(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
-0x002fd4f9	0x8	NPC.cpp	game	ai	pending	_ZNK3NPC15getPathToFollowEv	NPC::getPathToFollow() const
-0x002fd501	0x8	NPC.cpp	game	ai	pending	_ZN3NPC18setCurrentWaypointEi	NPC::setCurrentWaypoint(int)
-0x002fd509	0x8	NPC.cpp	game	ai	pending	_ZNK3NPC18getCurrentWaypointEv	NPC::getCurrentWaypoint() const
-0x002fd511	0x28	NPC.cpp	game	ai	pending	_ZN3NPC16loopPathToFollowEb	NPC::loopPathToFollow(bool)
-0x002fd539	0x1e	NPC.cpp	game	ai	pending	_ZN3NPC15setPathToFollowEPK4Path	NPC::setPathToFollow(Path const*)
-0x002fd559	0xc	NPC.cpp	game	ai	pending	_ZNK3NPC23isLoopingOnPathToFollowEv	NPC::isLoopingOnPathToFollow() const
+0x002fd4f9	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC15getPathToFollowEv	NPC::getPathToFollow() const
+0x002fd501	0x8	NPC.cpp	game	ai	matched	_ZN3NPC18setCurrentWaypointEi	NPC::setCurrentWaypoint(int)
+0x002fd509	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC18getCurrentWaypointEv	NPC::getCurrentWaypoint() const
+0x002fd511	0x28	NPC.cpp	game	ai	matched	_ZN3NPC16loopPathToFollowEb	NPC::loopPathToFollow(bool)
+0x002fd539	0x1e	NPC.cpp	game	ai	matched	_ZN3NPC15setPathToFollowEPK4Path	NPC::setPathToFollow(Path const*)
+0x002fd559	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC23isLoopingOnPathToFollowEv	NPC::isLoopingOnPathToFollow() const
 0x002fd565	0xac	NPC.cpp	game	ai	pending	_ZN3NPC21isOutsideSearchRadiusEv	NPC::isOutsideSearchRadius()
 0x002fd611	0x24	NPC.cpp	game	ai	pending	__tcf_1	__tcf_1
 0x002fd635	0x2a	NPC.cpp	game	ai	pending	_ZN3NPC5isCopEv	NPC::isCop()
