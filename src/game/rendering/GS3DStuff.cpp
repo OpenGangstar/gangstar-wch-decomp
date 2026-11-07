@@ -27,6 +27,8 @@
 #include "../ai/AIManagerSingleton.h"
 #include "../core/Array.h"
 #include "../core/SafeDelete.h"
+#include "../core/Geometry.h"
+#include "../world/SpawnPoint.h"
 
 class b2Body;
 struct b2BodyDef;
@@ -45,7 +47,37 @@ private:
     int references;
 };
 
+class OctTreeAABB {
+public:
+    struct RootNode {
+        inline ~RootNode();
+        irr::scene::ISceneNode* sceneNode;
+        CollisionBodyDef* collision;
+        SpawnPoint* spawn;
+        irr::core::aabbox3d<float> bounds;
+    };
+
+    struct OctTreeAABBNode {
+        inline ~OctTreeAABBNode();
+        irr::core::aabbox3d<float> bounds;
+        irr::core::array<RootNode*>* roots;
+        OctTreeAABBNode* children[8];
+    };
+};
+
 namespace {
+template<class T>
+inline __attribute__((always_inline)) void safeDeleteWithDestructor(T*& pointer,
+    void (*destroy)(T*))
+{
+    T* object = pointer;
+    if (object) {
+        destroy(object);
+        ::operator delete(object);
+    }
+    pointer = 0;
+}
+
 template<class T>
 inline __attribute__((always_inline)) void safeDeletePointerArray(irr::core::array<T*>*& array)
 {
@@ -102,6 +134,18 @@ template<> void SafeDelete(irr::core::array<CollisionBodyDef*>*& array)
     safeDeletePointerArray(array);
 }
 
+template<> void SafeDelete(irr::core::array<SpawnPoint*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<SpawnPoint*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
+template<> void SafeDelete(irr::core::array<OctTreeAABB::RootNode*>*& array) __attribute__((weak));
+template<> void SafeDelete(irr::core::array<OctTreeAABB::RootNode*>*& array)
+{
+    safeDeletePointerArray(array);
+}
+
 CollisionBodyDef::CollisionBodyDef()
     : bodies(newPointerArray<b2Body>()), bodyDefinitions(newPointerArray<b2BodyDef>()),
       polygonDefinitions(newPointerArray<b2PolygonDef>()), unknown12(false), unknown13(false),
@@ -117,12 +161,7 @@ extern "C" void destroyCollisionBodyDef(CollisionBodyDef*)
 template<> void SafeDelete(CollisionBodyDef*& definition) __attribute__((weak));
 template<> void SafeDelete(CollisionBodyDef*& definition)
 {
-    CollisionBodyDef* object = definition;
-    if (object) {
-        destroyCollisionBodyDef(object);
-        ::operator delete(object);
-    }
-    definition = 0;
+    safeDeleteWithDestructor(definition, destroyCollisionBodyDef);
 }
 
 void GS3DStuff::freeGameData(irr::scene::ISceneNode* node)
@@ -136,6 +175,32 @@ void GS3DStuff::freeGameData(irr::scene::ISceneNode* node)
          child != node->getChildren().end(); child = child->next) {
         freeGameData(child->value);
     }
+}
+
+OctTreeAABB::RootNode::~RootNode()
+{
+    SafeDelete(collision);
+    delete spawn;
+    spawn = 0;
+}
+
+OctTreeAABB::OctTreeAABBNode::~OctTreeAABBNode()
+{
+    for (unsigned int i = 0; i < 8; ++i)
+        delete children[i];
+    SafeDelete(roots);
+}
+
+template void SafeDelete<OctTreeAABB::RootNode>(OctTreeAABB::RootNode*&);
+template void SafeDelete<OctTreeAABB::OctTreeAABBNode>(OctTreeAABB::OctTreeAABBNode*&);
+
+extern "C" void destroyOctTree(OctTreeAABB*)
+    __asm__("_ZN11OctTreeAABBD1Ev") __attribute__((weak));
+
+template<> void SafeDelete(OctTreeAABB*& tree) __attribute__((weak));
+template<> void SafeDelete(OctTreeAABB*& tree)
+{
+    safeDeleteWithDestructor(tree, destroyOctTree);
 }
 
 namespace {
