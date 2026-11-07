@@ -1,4 +1,7 @@
 SECTIONS {
+    .gs_add_renderables 0x002dc20c : { *gs3d-stuff.o(.text._ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE) }
+    .gs_octree_spawn_point_nodes 0x002db7a4 : { *gs3d-stuff.o(.text._ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE .gnu.linkonce.t._ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE) }
+    .gs_octree_count_renderables 0x002db88c : { *gs3d-stuff.o(.text._ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE .gnu.linkonce.t._ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE) }
     .gs_octree_root_dtor 0x002db3f4 : { *gs3d-stuff.o(.text._ZN11OctTreeAABB8RootNodeD1Ev .gnu.linkonce.t._ZN11OctTreeAABB8RootNodeD1Ev) }
     .gs_delete_octree_root 0x002db420 : { *gs3d-stuff.o(.text._Z10SafeDeleteIN11OctTreeAABB8RootNodeEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN11OctTreeAABB8RootNodeEEvRPT_) }
     .gs_delete_spawn_array 0x002dd61c : { *gs3d-stuff.o(.text._Z10SafeDeleteIN3irr4core5arrayIP10SpawnPointNS1_12irrAllocatorIS4_EEEEEvRPT_ .gnu.linkonce.t._Z10SafeDeleteIN3irr4core5arrayIP10SpawnPointNS1_12irrAllocatorIS4_EEEEEvRPT_) }

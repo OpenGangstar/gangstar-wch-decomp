@@ -134,7 +134,10 @@
         "_Z10SafeDeleteIN3irr4core5arrayIPN11OctTreeAABB8RootNodeENS1_12irrAllocatorIS5_EEEEEvRPT_",
         "_ZN11OctTreeAABB15OctTreeAABBNodeD1Ev",
         "_Z10SafeDeleteIN11OctTreeAABB15OctTreeAABBNodeEEvRPT_",
-        "_Z10SafeDeleteI11OctTreeAABBEvRPT_"
+        "_Z10SafeDeleteI11OctTreeAABBEvRPT_",
+        "_ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE",
+        "_ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE",
+        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
     ],
     "sections": [
         ".wanted_singleton",
@@ -233,7 +236,10 @@
         ".gs_delete_octree_root_array",
         ".gs_octree_node_dtor",
         ".gs_delete_octree_node",
-        ".gs_delete_octree"
+        ".gs_delete_octree",
+        ".gs_octree_spawn_point_nodes",
+        ".gs_octree_count_renderables",
+        ".gs_add_renderables"
     ],
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",

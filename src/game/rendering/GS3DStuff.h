@@ -7,6 +7,7 @@
 #include "../core/StateBase.h"
 #include "../core/GameEvents.h"
 #include "../core/PointerVector.h"
+#include "../core/Array.h"
 
 class BulletTraceManager;
 class TrailMgr;
@@ -70,6 +71,8 @@ public:
     static void SetMaterialTexture(irr::scene::ISceneNode* node, irr::video::ITexture* texture);
     static irr::scene::ISceneNode* FindAMesh(irr::scene::ISceneNode* node);
     static void CleanNode(irr::scene::ISceneNode* node);
+    static void AddRenderables(irr::scene::ISceneNode* node,
+        irr::core::array<irr::scene::ISceneNode*>& renderables, irr::scene::ESCENE_NODE_TYPE type);
     static void freeGameData(irr::scene::ISceneNode* node);
     static void setSkyColor(bool enabled);
 

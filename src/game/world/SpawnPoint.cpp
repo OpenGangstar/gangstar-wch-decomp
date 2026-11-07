@@ -49,13 +49,6 @@ SpawnPoint::Center SpawnPoint::s_outterCenterCar;
 SpawnPoint::Center SpawnPoint::s_innerCenterParkedCar;
 SpawnPoint::Center SpawnPoint::s_outterCenterParkedCar;
 
-struct SpawnPointList {
-    struct Node { Node* next; };
-    Node* head;
-    Node* tail;
-    unsigned int count;
-};
-
 SpawnPointList SpawnPoint::s_spawnPoints;
 
 extern "C" {
