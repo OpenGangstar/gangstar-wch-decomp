@@ -20,6 +20,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .spawn_random_place 0x003067d4 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint5spawnEv) }
     .spawn_place 0x003069f8 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint5spawnEi) }
     .spawn_add 0x003063a0 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint3addEPS_) }
     .spawn_delete 0x003063e8 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPointD0Ev) }

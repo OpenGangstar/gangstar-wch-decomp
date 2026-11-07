@@ -66,8 +66,8 @@ private:
     static SpawnConstants s_parkedCarSpawnCst;
     irr::core::vector3d<float> position;
     irr::core::quaternion rotation;
-    short unknown32;
-    unsigned char unknown34[2];
+    unsigned short materialId;
+    unsigned short triangleId;
     short spawnTime;
     unsigned char spawnGroup;
     unsigned char unknown39;

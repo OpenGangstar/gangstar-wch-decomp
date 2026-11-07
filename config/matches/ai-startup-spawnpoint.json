@@ -25,6 +25,7 @@
     "source": "src/game/world/SpawnPoint.cpp",
     "linker_script": "config/linker/SpawnPointAiStartup.ld",
     "functions": [
+        "_ZN10SpawnPoint5spawnEv",
         "_ZN10SpawnPoint5spawnEi",
         "_ZN10SpawnPoint3addEPS_",
         "_ZN10SpawnPointD0Ev",
@@ -91,7 +92,9 @@
         "_ZnwjN3irr7MemHintE",
         "_ZN3irr2os10Randomizer4randEv",
         "_ZNK10SpawnPoint8canSpawnEv",
-        "_ZN10SpawnPoint5spawnEv",
+        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
+        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE",
+        "_ZN7Vehicle8setSpeedEv",
         "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
         "_ZN17GameObjectManager3AddEP11LevelObjecti",
         "_ZN11LevelObject11GetMetatypeEv",
