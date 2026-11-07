@@ -15,6 +15,11 @@ public:
     virtual ~Character();
     void initInVehicle(Vehicle* vehicle);
     void goToIdle();
+    virtual void Stop();
+    void onRocketLaunched();
+    void walkToTarget();
+    void setTurnDirection(irr::core::vector3d<float> direction);
+    void CheckDestination();
     bool isDown();
     bool isDying();
     virtual bool isDead();
@@ -61,7 +66,9 @@ private:
     unsigned char unknown52[28];
     irr::core::vector3d<float> cameraOffset;
     irr::core::vector3d<float> destination;
-    unsigned char unknown104[16];
+    irr::core::vector3d<float> adjustedDestination;
+    bool destinationReachable;
+    unsigned char unknown117[3];
     int destinationLimitSquared;
     int currentAnimation;
     unsigned char unknown128[8];
@@ -87,7 +94,8 @@ private:
     LevelObject* target;
     unsigned char unknown264[4];
     int spawnType;
-    unsigned char unknown272[24];
+    irr::core::vector3d<float> turnDirection;
+    unsigned char unknown284[12];
 
     void turnToward(const irr::core::vector3d<float>& point);
     bool turnToward(irr::core::vector3d<float> direction, float step);
@@ -95,6 +103,9 @@ private:
     bool turnTowardTarget(LevelObject* object, float step);
     void turnTowardTarget(float step);
     bool isTargetInRange(float range, float degrees);
+    void switchAnimation();
+    bool switchMoveAnimation();
+    void switchCombatAnimation();
 };
 
 #endif

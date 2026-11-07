@@ -13,6 +13,14 @@ sqrt = 0x001c401c;
 acosf = 0x001c4694;
 SECTIONS
 {
+    .character_update_physic 0x002f14b4 : { *ai-startup-character.o(.text._ZN9Character12updatePhysicEi) }
+    .character_update_scene_node 0x002f14b8 : { *ai-startup-character.o(.text._ZN9Character15updateSceneNodeEi) }
+    .character_walk_to_target 0x002f16c4 : { *ai-startup-character.o(.text._ZN9Character12walkToTargetEv) }
+    .character_stop 0x002f1d3c : { *ai-startup-character.o(.text._ZN9Character4StopEv) }
+    .character_on_rocket_launched 0x002f1d78 : { *ai-startup-character.o(.text._ZN9Character16onRocketLaunchedEv) }
+    .character_set_turn_direction 0x002f2118 : { *ai-startup-character.o(.text._ZN9Character16setTurnDirectionEN3irr4core8vector3dIfEE) }
+    .character_check_destination 0x002f2134 : { *ai-startup-character.o(.text._ZN9Character16CheckDestinationEv) }
+    .character_switch_animation 0x002f6af0 : { *ai-startup-character.o(.text._ZN9Character15switchAnimationEv) }
     .character_timed_turn 0x002f22d4 : { *ai-startup-character.o(.text._ZN9Character10turnTowardEN3irr4core8vector3dIfEEf) }
     .character_target_in_range 0x002f3d40 : { *ai-startup-character.o(.text._ZN9Character15isTargetInRangeEff) }
     .character_turn_toward_object 0x002f3bd4 : { *ai-startup-character.o(.text._ZN9Character16turnTowardTargetEP11LevelObjectf) }
