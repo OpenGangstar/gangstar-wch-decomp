@@ -27,10 +27,6 @@ struct PhonePerformanceProfile {
 };
 }
 
-namespace irr { namespace video {
-// Numeric values are observed; enumerator names are reconstruction labels.
-enum E_MATERIAL_TYPE { MaterialType13 = 13 };
-} }
 // Observed 28-byte prefix, two bases and their virtual slots only.
 // Do not instantiate or infer complete scene-state layout from this prefix.
 struct GS3DLightNodes;
@@ -69,6 +65,7 @@ public:
     static void SetColor(irr::scene::ISceneNode* node, irr::video::SColor color, eColorType type);
     static void SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type);
     static void SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled);
+    static void SetVisibility(irr::scene::ISceneNode* node, bool visible);
 
     static BulletTraceManager* s_bulletManager;
     static TrailMgr* s_TrailMgr;

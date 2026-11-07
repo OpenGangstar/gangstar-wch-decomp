@@ -93,7 +93,9 @@
         "_ZN7Vehicle21setTransitionCallbackEPN3irr5scene10ISceneNodeE",
         "_ZN7Vehicle7setAnimEPKcbf",
         "_Z19aTransitionCallbackPN3irr5scene19ITimelineControllerEPv",
-        "_Z15VehicleCallBackPN3irr5scene19ITimelineControllerEPv"
+        "_Z15VehicleCallBackPN3irr5scene19ITimelineControllerEPv",
+        "_ZN7Vehicle10showWheelsEv",
+        "_ZN7Vehicle10hideWheelsEv"
     ],
     "sections": [
         ".vehicle_cleanup_0",
@@ -171,11 +173,14 @@
         ".vehicle_closed_idle_clip",
         ".vehicle_opened_idle_clip",
         ".vehicle_animation_transition",
-        ".vehicle_callback"
+        ".vehicle_callback",
+        ".vehicle_show_wheels",
+        ".vehicle_hide_wheels"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN9AIManagerD1Ev",
+        "_ZN9GS3DStuff13SetVisibilityEPN3irr5scene10ISceneNodeEb",
         "_ZNK3irr5scene10ISceneNode12getAnimatorsEv",
         "_ZN3irr7collada21CSkinnedMeshSceneNode20setIsSkinningEnabledEb",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
