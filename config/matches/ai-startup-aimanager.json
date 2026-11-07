@@ -14,7 +14,9 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fno-tree-ch",
+        "-fno-delete-null-pointer-checks"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -25,6 +27,8 @@
     "source": "src/game/ai/AIManager.cpp",
     "linker_script": "config/linker/AIManagerAiStartup.ld",
     "functions": [
+        "_ZN9AIManager8removeAIEP7Vehicle",
+        "_ZN9AIManager8removeAIEP3NPC",
         "_ZN20EvWantedLevelChangedD0Ev",
         "_ZN20EvWantedLevelChangedD1Ev",
         "_ZN9AIManagerC1Ev",
@@ -46,6 +50,8 @@
         }
     ],
     "sections": [
+        ".ai_remove_vehicle",
+        ".ai_remove_npc",
         ".wanted_changed_delete",
         ".wanted_changed_destroy",
         ".wanted_changed_vtable",

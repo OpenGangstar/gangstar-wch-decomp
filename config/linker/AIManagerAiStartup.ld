@@ -22,6 +22,8 @@ SECTIONS
     .wanted_changed_vtable 0x004acf80 : { *(.gnu.linkonce.d.rel.ro._ZTV20EvWantedLevelChanged) }
     .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
     .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+    .ai_remove_vehicle 0x00340670 : { *(.text._ZN9AIManager8removeAIEP7Vehicle) }
+    .ai_remove_npc 0x003407e4 : { *(.text._ZN9AIManager8removeAIEP3NPC) }
     .ai_manager_construct 0x00340128 : { *ai-startup-aimanager.o(.text._ZN9AIManagerC1Ev .text._ZN9AIManagerC2Ev) }
     .ai_manager_delete 0x003405f8 : { *ai-startup-aimanager.o(.text._ZN9AIManagerD0Ev) }
     .ai_manager_destroy 0x00340638 : { *ai-startup-aimanager.o(.text._ZN9AIManagerD1Ev .text._ZN9AIManagerD2Ev) }
