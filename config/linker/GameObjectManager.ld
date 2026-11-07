@@ -87,6 +87,8 @@ _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 SECTIONS {
+    .gom_spawn_npc_vehicle 0x00316330 : { *game-object-manager.o(.text._ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii) }
+    .gom_spawn_npc_position 0x00316384 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiiN3irr4core8vector3dIfEEtt) }
     .gom_despawn 0x00316578 : { *game-object-manager.o(.text._ZN17GameObjectManager7despawnEP11LevelObject) }
     .gom_event_get_id 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
     .gom_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
