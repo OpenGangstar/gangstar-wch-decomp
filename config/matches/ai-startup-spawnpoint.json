@@ -25,6 +25,10 @@
     "source": "src/game/world/SpawnPoint.cpp",
     "linker_script": "config/linker/SpawnPointAiStartup.ld",
     "functions": [
+        "_ZN10SpawnPoint14resetSpawnTimeEii",
+        "_ZNK10SpawnPoint20GetOutterSpawnCenterEv",
+        "_ZNK10SpawnPoint19GetInnerSpawnCenterEv",
+        "_ZN10SpawnPoint6UpdateEi",
         "_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject",
         "_ZN10SpawnPoint14getSpawnObjectEi",
         "_ZN10SpawnPoint22ClearAllSpawnInstancesEv",
@@ -56,6 +60,7 @@
         }
     ],
     "sections": [
+        ".spawn_constants",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -70,6 +75,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN3irr2os10Randomizer4randEv",
+        "_ZNK10SpawnPoint8canSpawnEv",
+        "_ZN10SpawnPoint5spawnEv",
         "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
         "_ZN17GameObjectManager3AddEP11LevelObjecti",
         "_ZN11LevelObject11GetMetatypeEv",

@@ -10496,12 +10496,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003063e9	0x20	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD0Ev	SpawnPoint::~SpawnPoint()
 0x00306409	0x18	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD2Ev	SpawnPoint::~SpawnPoint()
 0x00306409	0x18	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD1Ev	SpawnPoint::~SpawnPoint()
-0x00306421	0x1a	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint14resetSpawnTimeEii	SpawnPoint::resetSpawnTime(int, int)
+0x00306421	0x1a	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint14resetSpawnTimeEii	SpawnPoint::resetSpawnTime(int, int)
 0x0030643d	0x1c	SpawnPoint.cpp	game	world	matched	__tcf_4	__tcf_4
 0x00306459	0x1c	SpawnPoint.cpp	game	world	matched	__tcf_2	__tcf_2
 0x00306475	0x6c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE	SpawnPoint::SetRotation(irr::core::vector3d<float> const&)
-0x003064e1	0x44	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint20GetOutterSpawnCenterEv	SpawnPoint::GetOutterSpawnCenter() const
-0x00306525	0x44	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint19GetInnerSpawnCenterEv	SpawnPoint::GetInnerSpawnCenter() const
+0x003064e1	0x44	SpawnPoint.cpp	game	world	matched	_ZNK10SpawnPoint20GetOutterSpawnCenterEv	SpawnPoint::GetOutterSpawnCenter() const
+0x00306525	0x44	SpawnPoint.cpp	game	world	matched	_ZNK10SpawnPoint19GetInnerSpawnCenterEv	SpawnPoint::GetInnerSpawnCenter() const
 0x00306569	0x7c	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject	SpawnPoint::releaseSpawnObject(LevelObject*)
 0x003065e5	0x150	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint23CreateAllSpawnInstancesEv	SpawnPoint::CreateAllSpawnInstances()
 0x00306735	0xa0	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint14getSpawnObjectEi	SpawnPoint::getSpawnObject(int)
@@ -10518,7 +10518,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003070cd	0x34	SpawnPoint.cpp	game	world	matched	__tcf_6	__tcf_6
 0x00307101	0x350	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint18UpdateSpawnCentersEv	SpawnPoint::UpdateSpawnCenters()
 0x00307451	0x330	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint8canSpawnEv	SpawnPoint::canSpawn() const
-0x00307781	0x60	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint6UpdateEi	SpawnPoint::Update(int)
+0x00307781	0x60	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint6UpdateEi	SpawnPoint::Update(int)
 0x003077e1	0x6	Transformation.cpp	game	characters	pending	_ZNK14Transformation8GetMatIDEv	Transformation::GetMatID() const
 0x003077e9	0x6	Transformation.cpp	game	characters	pending	_ZNK14Transformation8GetTriIDEv	Transformation::GetTriID() const
 0x003077f1	0x12	Transformation.cpp	game	characters	pending	_ZN14Transformation11SetRotationERKN3irr4core10quaternionE	Transformation::SetRotation(irr::core::quaternion const&)

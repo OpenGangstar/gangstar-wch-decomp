@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-spawnpoint/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 _ZdaPv = 0x001c461c;
+__aeabi_idivmod = 0x001c4934;
 __aeabi_atexit = 0x001c494c;
 _ZN29retail_spawnpoint_transitions16civPassive_transE = 0x0041eee0;
 _ZN29retail_spawnpoint_transitions17scriptedNpc_transE = 0x0041f00c;
@@ -18,6 +19,16 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .spawn_reset_time 0x00306420 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint14resetSpawnTimeEii) }
+    .spawn_outer_center 0x003064e0 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint20GetOutterSpawnCenterEv) }
+    .spawn_inner_center 0x00306524 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint19GetInnerSpawnCenterEv) }
+    .spawn_update 0x00307780 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint6UpdateEi) }
+    .spawn_constants 0x004b53b4 : {
+        *ai-startup-spawnpoint.o(.data._ZN10SpawnPoint13s_carSpawnCstE)
+        *ai-startup-spawnpoint.o(.data._ZN10SpawnPoint13s_civSpawnCstE)
+        *ai-startup-spawnpoint.o(.data._ZN10SpawnPoint18s_prisonerSpawnCstE)
+        *ai-startup-spawnpoint.o(.data._ZN10SpawnPoint19s_parkedCarSpawnCstE)
+    }
     .spawn_release 0x00306568 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject) }
     .spawn_get 0x00306734 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint14getSpawnObjectEi) }
     .spawn_clear 0x00307028 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint22ClearAllSpawnInstancesEv) }

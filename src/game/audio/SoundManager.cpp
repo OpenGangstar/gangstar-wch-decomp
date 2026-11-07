@@ -12,6 +12,7 @@
 #include "SoundManager.h"
 #include "CSound.h"
 #include "../core/Vector3.h"
+#include "../core/Randomizer.h"
 #include "CSoundData.h"
 #include "CSoundDecoderMSWAV.h"
 #include "../persistence/FileManager.h"
@@ -360,13 +361,6 @@ SoundManager::~SoundManager()
     delete[] soundSlots;
     delete[] trackFrequencies;
 }
-
-namespace irr { namespace os {
-class Randomizer {
-public:
-    static int rand();
-};
-} }
 
 int SoundManager::_getRadioTrack(int station)
 {
