@@ -16,8 +16,11 @@ _ZN36retail_vehiclecontroller_transitions22scripted_vehicle_transE = 0x0043298c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
+__aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .vehicle_controller_next_point 0x0034264c : { *(.text._ZN17VehicleController12getNextPointEv) }
+    .vehicle_controller_waypoint 0x00342514 : { *(.text._ZN17VehicleController15getNextWaypointEv) }
     .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
     .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
     .vehicle_controller_construct 0x00342818 : { *(.text._ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE .text._ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }

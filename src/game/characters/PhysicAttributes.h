@@ -8,6 +8,7 @@ struct PhysicInfo;
 // remain opaque; constructor and methods are retail call interfaces.
 class PhysicAttributes {
 public:
+    irr::core::vector3d<float> GetNextRandomPos(int, int, irr::core::vector3d<float>);
     PhysicAttributes(int type, b2Body* body);
     ~PhysicAttributes();
     void SetPhysicInfo(const PhysicInfo& info, int flag);

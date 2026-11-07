@@ -11,9 +11,11 @@
 #include "AIManager.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
+#include "../vehicles/Vehicle.h"
+#include "../world/Path.h"
+#include "../characters/PhysicAttributes.h"
 
 namespace gameloft { namespace ai { struct Transition; } }
-namespace irr { namespace core { template<class T> class vector3d; } }
 
 class VehicleController : public IEventReceiver {
 public:
@@ -28,15 +30,16 @@ public:
 private:
     unsigned int state;
     Vehicle* vehicle;
-    unsigned int unknown12;
+    const Path* path;
     const gameloft::ai::Transition& transition;
-    unsigned int unknown20, unknown24;
+    unsigned int unknown20;
+    int waypoint;
 };
 
 VehicleController::VehicleController(Vehicle* vehicle,
     const gameloft::ai::Transition& transition, gameloft::ai::StateID state)
-    : state(state), vehicle(vehicle), unknown12(0), transition(transition),
-      unknown20(0), unknown24(0)
+    : state(state), vehicle(vehicle), path(0), transition(transition),
+      unknown20(0), waypoint(0)
 {
     switchState(state);
     Application::GetInstance()->GetEventManager()->attach(19, this);
@@ -47,6 +50,34 @@ VehicleController::~VehicleController()
 {
     Application::GetInstance()->GetEventManager()->detach(19, this);
     Application::GetInstance()->GetEventManager()->detach(22, this);
+}
+
+irr::core::vector3d<float> VehicleController::getNextWaypoint()
+{
+    irr::core::vector3d<float> position;
+    if (path && waypoint < path->getSize()) {
+        path->getWaypoint(waypoint++, position);
+        if (vehicle->isLoopingOnPathToFollow())
+            waypoint %= path->getSize();
+    }
+    return position;
+}
+
+irr::core::vector3d<float> VehicleController::getNextPoint()
+{
+    const Path* nextPath = vehicle->getPathToFollow();
+    if (!nextPath || nextPath != path) {
+        waypoint = 0;
+        path = nextPath;
+    }
+
+    if (path) {
+        vehicle->setCurrentWaypoint(waypoint);
+        if (waypoint < path->getSize())
+            return getNextWaypoint();
+    }
+
+    return vehicle->getPhysicAttributes()->GetNextRandomPos(0, 1, vehicle->GetPosition());
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.

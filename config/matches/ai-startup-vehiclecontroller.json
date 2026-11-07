@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fno-tree-dominator-opts"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -46,7 +47,9 @@
         "_ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
         "_ZN17VehicleControllerD0Ev",
         "_ZN17VehicleControllerD1Ev",
-        "_ZN17VehicleControllerD2Ev"
+        "_ZN17VehicleControllerD2Ev",
+        "_ZN17VehicleController15getNextWaypointEv",
+        "_ZN17VehicleController12getNextPointEv"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -61,7 +64,9 @@
         ".vehicle_controller_construct",
         ".vehicle_controller_delete",
         ".vehicle_controller_destroy",
-        ".vehicle_controller_vtable"
+        ".vehicle_controller_vtable",
+        ".vehicle_controller_waypoint",
+        ".vehicle_controller_next_point"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -70,6 +75,12 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver",
-        "_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE"
+        "_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE",
+        "_ZNK4Path7getSizeEv",
+        "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
+        "_ZNK7Vehicle23isLoopingOnPathToFollowEv",
+        "_ZNK7Vehicle15getPathToFollowEv",
+        "_ZN7Vehicle18setCurrentWaypointEi",
+        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE"
     ]
 }
