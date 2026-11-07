@@ -25,6 +25,7 @@
     "source": "src/game/world/SpawnPoint.cpp",
     "linker_script": "config/linker/SpawnPointAiStartup.ld",
     "functions": [
+        "_ZN10SpawnPoint5spawnEi",
         "_ZN10SpawnPoint3addEPS_",
         "_ZN10SpawnPointD0Ev",
         "_ZN10SpawnPointD1Ev",
@@ -83,6 +84,10 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN17GameObjectManager19AddGameObjectOfTypeEi",
+        "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
         "_ZnwjN3irr7MemHintE",
         "_ZN3irr2os10Randomizer4randEv",
         "_ZNK10SpawnPoint8canSpawnEv",

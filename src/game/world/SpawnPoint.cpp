@@ -43,6 +43,8 @@ void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const ch
 #include "GameObjectManager.h"
 #include "LevelObject.h"
 #include "../ai/AIManagerSingleton.h"
+#include "../characters/PhysicAttributes.h"
+#include "../characters/PlayerTest.h"
 #include "../core/MemHint.h"
 #include "../core/Randomizer.h"
 
@@ -158,6 +160,32 @@ LevelObject* SpawnPoint::getSpawnObject(int metatype)
         }
     }
     return 0;
+}
+
+LevelObject* SpawnPoint::spawn(int metatype)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    const irr::core::vector3d<float> origin = player->position();
+    const irr::core::quaternion orientation = player->GetRotation();
+    const unsigned short material = player->GetMatID();
+    const unsigned short triangle = player->GetTriID();
+    irr::core::vector3d<float> position(origin);
+    GameObjectManager* manager = GameObjectManager::s_gom;
+    LevelObject* object = getSpawnObject(metatype);
+    if (object) {
+        manager->AddGameObjectOfType(LevelObject::s_type[object->getObjectType()]);
+        object->setSpawnType(LevelObject::s_type[object->getObjectType()]);
+        object->OnSpawn();
+        object->SetRotation(orientation);
+        object->SetPosition(position);
+        object->getPhysicAttributes()->Init(material, triangle, object->GetPosition());
+        position.Z = object->getPhysicAttributes()->GetHeight(position, 0, false);
+        object->SetPosition(position);
+        object->GetMetatype();
+        delete[] object->unknown28;
+        object->unknown28 = 0;
+    }
+    return object;
 }
 
 void SpawnPoint::ClearAllSpawnInstances()

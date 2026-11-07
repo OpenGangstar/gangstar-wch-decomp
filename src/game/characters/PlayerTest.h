@@ -5,6 +5,7 @@ class Vehicle;
 class Weapon;
 class LevelObject;
 namespace irr { namespace scene { class ISceneNode; } }
+namespace irr { namespace core { class quaternion; template<class T> class vector3d; } }
 
 // Partial observed layout and call interfaces, not the complete original class.
 struct SaveVector3 {
@@ -17,9 +18,12 @@ public:
     virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
     virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
     virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
-    virtual void unknown9(); virtual void unknown10(); virtual void unknown11();
-    virtual SaveVector3 position() const;
-    virtual void unknown13(); virtual void unknown14(); virtual void unknown15();
+    virtual void unknown9();
+    virtual unsigned short GetMatID() const;
+    virtual unsigned short GetTriID() const;
+    virtual irr::core::vector3d<float> position() const;
+    virtual const irr::core::quaternion& GetRotation() const;
+    virtual void unknown14(); virtual void unknown15();
     virtual void position(const SaveVector3& value);
     virtual void unknown17();
     virtual void unknown18();
