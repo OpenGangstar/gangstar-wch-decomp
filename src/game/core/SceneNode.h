@@ -165,11 +165,13 @@ public:
     virtual void unknown81(); virtual void unknown82(); virtual void unknown83();
     virtual const SViewFrustum* getViewFrustum() const;
 };
-class ITimelineController {
+class ITimelineController : public virtual IReferenceCounted {
 public:
-    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
+    virtual void unknown0();
+    virtual ~ITimelineController();
     virtual void jumpTo(int time);
-    virtual void unknown4(); virtual void unknown5(); virtual void unknown6();
+    virtual void unknown4(); virtual void unknown5();
+    virtual int getClipIndex(const char* name) const;
     virtual void unknown7(); virtual void unknown8(); virtual void unknown9();
     virtual void unknown10(); virtual void unknown11(); virtual void unknown12();
     virtual void unknown13(); virtual int getCurrentClipIndex() const; virtual void unknown15();

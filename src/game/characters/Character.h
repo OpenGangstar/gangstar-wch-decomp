@@ -16,6 +16,7 @@ public:
     void goToIdle();
     bool isDown();
     void resetAnimation();
+    static void cleanTimelineController();
     bool isAnimationLastFrame(float advance) const;
     bool isInFlinchAnimation();
     bool isInHitByCarAnimation();
@@ -23,8 +24,9 @@ public:
     bool isPlayer() const;
     using LevelObject::sceneNode;
     using LevelObject::setAnimation;
+    virtual void setAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void setAnimationSpeedMultiplier(int speed);
-    using LevelObject::setNextAnimation;
+    virtual void setNextAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void setNextAnimation(int id, int speed, bool a, bool b, bool c);
     // Retail slots 40 through 53. The remaining slots are pending.
     virtual void setAnimation(int id, float speed, bool a, bool b, bool c);
@@ -42,6 +44,7 @@ public:
     virtual void walkToLocation(const irr::core::vector3d<float>& point);
     virtual void runToLocation(const irr::core::vector3d<float>& point);
 private:
+    static irr::scene::ITimelineController* s_timelineController;
     bool isCurrentAnimation(int id);
     bool canAnimationBeInterrupted(int id);
     int getSpecificAnimation(int id);
