@@ -25,7 +25,6 @@
 #include "../hud/CHudManager.h"
 #include "../core/EventManager.h"
 #include "../ai/AIManagerSingleton.h"
-#include "../core/Array.h"
 #include "../core/SafeDelete.h"
 #include "../core/Geometry.h"
 #include "../world/SpawnPoint.h"
@@ -50,6 +49,11 @@ private:
 class OctTreeAABB {
 public:
     struct RootNode {
+        RootNode() : sceneNode(0), collision(0), spawn(0),
+            bounds(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f))
+        {
+            bounds.MaxEdge = irr::core::vector3d<float>(1.0f, 1.0f, 1.0f);
+        }
         inline ~RootNode();
         irr::scene::ISceneNode* sceneNode;
         CollisionBodyDef* collision;
@@ -63,6 +67,9 @@ public:
         irr::core::array<RootNode*>* roots;
         OctTreeAABBNode* children[8];
     };
+
+    inline void BuildSpawnPointNodes(irr::core::array<RootNode*>* roots) __attribute__((used));
+    inline int CountRenderableNodes(irr::scene::ISceneNode* node) __attribute__((used));
 };
 
 namespace {
@@ -262,9 +269,35 @@ void GS3DStuff::SetMaterialTexture(irr::scene::ISceneNode* node, irr::video::ITe
 namespace {
 const int colladaMeshNode = 0x6d656164;
 const int colladaSkinnedNode = 0x73656164;
+const int lodNode = 0x6e646f6c;
 const char planeNodeMarker[] = "Plane";
 const char jumpNodeMarker[] = "Jump";
 const char pivotNodeMarker[] = "_PIVOT";
+}
+
+void OctTreeAABB::BuildSpawnPointNodes(irr::core::array<RootNode*>* roots)
+{
+    for (SpawnPointList::Node* entry = SpawnPoint::s_spawnPoints.head; entry; entry = entry->next) {
+        SpawnPoint* spawn = entry->value;
+        roots->push_back(new RootNode);
+        RootNode* root = roots->data[roots->used - 1];
+        root->spawn = spawn;
+        root->bounds.MaxEdge = spawn->getPosition();
+        root->bounds.MinEdge = spawn->getPosition();
+    }
+}
+
+int OctTreeAABB::CountRenderableNodes(irr::scene::ISceneNode* node)
+{
+    const int type = node->getType();
+    int count = type == colladaMeshNode || type == colladaSkinnedNode || type == lodNode;
+    if (node->getType() != lodNode) {
+        for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+             child != node->getChildren().end(); child = child->next) {
+            count += CountRenderableNodes(child->value);
+        }
+    }
+    return count;
 }
 
 irr::scene::ISceneNode* GS3DStuff::FindAMesh(irr::scene::ISceneNode* node)
@@ -300,6 +333,25 @@ void GS3DStuff::CleanNode(irr::scene::ISceneNode* node)
         const irr::scene::SceneNodeList::Node* first = node->getChildren().begin();
         if (first == node->getChildren().end())
             node->remove();
+    }
+}
+
+void GS3DStuff::AddRenderables(irr::scene::ISceneNode* node,
+    irr::core::array<irr::scene::ISceneNode*>& renderables, irr::scene::ESCENE_NODE_TYPE type)
+{
+    if (!node)
+        return;
+
+    if (node->getType() == type)
+        renderables.push_back(node);
+    if (type == irr::scene::ESNT_ANY) {
+        node->setVisible(true);
+        renderables.push_back(node);
+    }
+
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        AddRenderables(child->value, renderables, type);
     }
 }
 
