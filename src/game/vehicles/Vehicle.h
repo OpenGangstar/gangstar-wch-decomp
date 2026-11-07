@@ -36,6 +36,12 @@ public:
     bool isDoorOpened(bool left) const;
     bool isDoorClosed(bool left) const;
     bool isDoorAnim(const char* name, bool left) const;
+    void setDoorAnim(const char* name, bool left);
+    void onDoorClosed();
+    void openDoor(bool left);
+    void openDoorFromInside(bool left);
+    void enableSkinning(bool enabled);
+    void enableBackfaceCulling(bool enabled);
     void _notifyTargeted(bool targeted, Character* source);
     void AddTurboSounds();
     void Init4CylTurboSounds();
@@ -47,7 +53,9 @@ public:
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
+    void openDoorWithClip(const char* clip, bool left);
     friend class Race;
+    friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     unsigned char unknown52[192];
     Character* targetingCharacter;
     unsigned char unknown248[36];
@@ -57,7 +65,8 @@ private:
     unsigned char unknown296[4];
     const Path* pathToFollow;
     int currentWaypoint;
-    unsigned char unknown308[8];
+    unsigned char unknown308[4];
+    float doorAnimationScale;
     irr::scene::ISceneNode* leftDoor;
     unsigned char unknown320[8];
     irr::scene::ISceneNode* interior;
@@ -76,9 +85,15 @@ private:
     irr::scene::ISceneNodeAnimator* rightDoorAnimator;
     unsigned char unknown768[8];
     float unknown776;
-    unsigned char unknown780[222];
+    unsigned char unknown780[124];
+    int doorSoundSuppression;
+    unsigned char unknown908[56];
+    int doorAnimationClip;
+    unsigned char unknown968[34];
     bool leftDoorClosed;
     bool rightDoorClosed;
-    unsigned char unknown1004[8];
+    bool leftDoorTransition;
+    bool rightDoorTransition;
+    unsigned char unknown1006[6];
 };
 #endif
