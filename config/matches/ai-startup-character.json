@@ -25,6 +25,9 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character18isCurrentAnimationEi",
+        "_ZN9Character6isDownEv",
+        "_ZN9Character8goToIdleEv",
         "_ZNK9Character10getVehicleEv",
         "_ZNK9Character13getLockTargetEv",
         "_ZNK9Character15getCameraOffsetEv",
@@ -63,6 +66,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9Character20getSpecificAnimationEi",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev"
     ]
