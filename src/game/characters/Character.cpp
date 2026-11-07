@@ -127,6 +127,14 @@ void Character::setVehicle(Vehicle* value)
     vehicle = value;
 }
 
+void Character::updatePhysic(int)
+{
+}
+
+void Character::updateSceneNode(int)
+{
+}
+
 void Character::cleanTimelineController()
 {
     if (s_timelineController) {
@@ -200,6 +208,12 @@ bool Character::isInHitByCarAnimation()
     return static_cast<unsigned int>(currentAnimation) - 17u <= 4u;
 }
 
+void Character::walkToTarget()
+{
+    if (target && !isCurrentAnimation(83) && !isCurrentAnimation(84) && !isCurrentAnimation(85))
+        walkToLocation(target->GetPosition());
+}
+
 void __attribute__((weak)) Character::setCameraOffset(const irr::core::vector3d<float>& offset)
 {
     cameraOffset = offset;
@@ -218,6 +232,37 @@ void Character::goToIdle()
 {
     if (!isCurrentAnimation(getSpecificAnimation(165)))
         setAnimation(getSpecificAnimation(165), 1.0f, true, false, false);
+}
+
+namespace {
+inline unsigned int withMovementMode(unsigned int flags, unsigned int mode)
+{
+    // Keep the shifts separate so GCC retains the retail byte-clearing sequence.
+    const int upperFlags = static_cast<int>(flags) >> 8;
+    const unsigned int preservedFlags = static_cast<unsigned int>(upperFlags) << 8;
+    return preservedFlags | mode;
+}
+}
+
+void Character::Stop()
+{
+    LevelObject::Stop();
+    movementFlags = withMovementMode(movementFlags, 1);
+    setAnimation(getSpecificAnimation(212), 1.0f, false, false, false);
+}
+
+void Character::onRocketLaunched()
+{
+    union {
+        unsigned int word;
+        struct {
+            unsigned int : 29;
+            unsigned int rocketLaunched : 1;
+        } bits;
+    } flags;
+    flags.word = movementFlags & 0xefffffffu;
+    flags.bits.rocketLaunched = 1;
+    movementFlags = flags.word;
 }
 
 bool __attribute__((weak)) Character::isDead()
@@ -245,6 +290,24 @@ void Character::setDestination(const irr::core::vector3d<float>& point, int limi
 {
     destination = point;
     destinationLimitSquared = limit * limit;
+}
+
+void Character::setTurnDirection(irr::core::vector3d<float> direction)
+{
+    turnDirection = direction;
+}
+
+void Character::CheckDestination()
+{
+    irr::core::vector3d<float> point;
+    irr::core::vector3d<float> adjusted;
+    if (canGoToPoint(destination, point, adjusted)) {
+        destinationReachable = true;
+        adjustedDestination = destination;
+    } else {
+        destinationReachable = false;
+        adjustedDestination = adjusted;
+    }
 }
 
 namespace {
@@ -358,16 +421,6 @@ bool Character::isTargetInRange(float range, float degrees)
     return false;
 }
 
-namespace {
-inline unsigned int withMovementMode(unsigned int flags, unsigned int mode)
-{
-    // Keep the shifts separate so GCC retains the retail byte-clearing sequence.
-    const int upperFlags = static_cast<int>(flags) >> 8;
-    const unsigned int preservedFlags = static_cast<unsigned int>(upperFlags) << 8;
-    return preservedFlags | mode;
-}
-}
-
 void Character::runToLocation(const irr::core::vector3d<float>& point)
 {
     if (isDead() || isDown())
@@ -384,4 +437,15 @@ void Character::walkToLocation(const irr::core::vector3d<float>& point)
     movementFlags = withMovementMode(movementFlags, 2);
     turnToward(point);
     setAnimation(getSpecificAnimation(202), 1.0f, true, true, false);
+}
+
+
+void Character::switchAnimation()
+{
+    if (nextAnimation != -1) {
+        setAnimation(nextAnimation, 1.0f, true, true, false);
+        nextAnimation = -1;
+    } else if (!switchMoveAnimation()) {
+        switchCombatAnimation();
+    }
 }
