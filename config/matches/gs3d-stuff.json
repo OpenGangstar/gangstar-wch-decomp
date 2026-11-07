@@ -28,6 +28,7 @@
     "source": "src/game/rendering/GS3DStuff.cpp",
     "linker_script": "config/linker/GS3DStuff.ld",
     "functions": [
+        "_ZN9GS3DStuff24SetMaterialTypeConditionEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEEPNS4_8ITextureE",
         "_ZN16CollisionBodyDefD1Ev",
         "_ZN11OctTreeAABBD1Ev",
         "_ZN11OctTreeAABB14calculatePolysERKN3irr4core8aabbox3dIfEEPNS1_5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS8_EEEEPNS6_IP10SpawnPointNS9_ISE_EEEEPNS6_IPNS0_5scene10ISceneNodeENS9_ISK_EEEE",
@@ -144,6 +145,7 @@
         "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
     ],
     "sections": [
+        ".gs_set_material_type_condition",
         ".gs_collision_body_def_dtor",
         ".gs_octree_dtor",
         ".gs_octree_calculate_polys",

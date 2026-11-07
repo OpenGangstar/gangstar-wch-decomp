@@ -265,6 +265,16 @@ inline __attribute__((always_inline)) void applyToChildren(irr::scene::ISceneNod
         apply(child->value, value);
     }
 }
+
+template<class First, class Second>
+inline __attribute__((always_inline)) void applyToChildren(irr::scene::ISceneNode* node,
+    void (*apply)(irr::scene::ISceneNode*, First, Second), First first, Second second)
+{
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        apply(child->value, first, second);
+    }
+}
 }
 
 void GS3DStuff::SetVisibility(irr::scene::ISceneNode* node, bool visible)
@@ -297,10 +307,7 @@ void GS3DStuff::SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATE
     if (node->getMaterialCount())
         node->setMaterialFlag(flag, enabled);
 
-    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
-         child != node->getChildren().end(); child = child->next) {
-        SetMaterialFlag(child->value, flag, enabled);
-    }
+    applyToChildren(node, SetMaterialFlag, flag, enabled);
 }
 
 void GS3DStuff::SetMaterialTexture(irr::scene::ISceneNode* node, irr::video::ITexture* texture)
@@ -466,6 +473,19 @@ public:
 void GS3DStuff::setSkyColor(bool enabled)
 {
     static_cast<CustomSkyBoxSceneNode*>(skyBox)->setSkyColor(enabled);
+}
+
+void GS3DStuff::SetMaterialTypeCondition(irr::scene::ISceneNode* node,
+    irr::video::E_MATERIAL_TYPE type, irr::video::ITexture* texture)
+{
+    for (unsigned int i = 0; i < node->getMaterialCount(); ++i) {
+        if (node->getMaterial(i).layers[0].texture == texture) {
+            node->getMaterial(i).setType(type);
+            node->notifyMaterialChanged();
+        }
+    }
+
+    applyToChildren(node, SetMaterialTypeCondition, type, texture);
 }
 
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)
