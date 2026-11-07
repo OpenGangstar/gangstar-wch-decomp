@@ -225,6 +225,11 @@
         ".gs3d_startup_function_3"
     ],
     "external_thumb_functions": [
+        "_ZN5World11GetInstanceEv",
+        "_ZN5World17AddFromDescriptorERK15WorldDescriptorb",
+        "_ZN15WorldDescriptorC1EPKc",
+        "_ZN15WorldDescriptorD1Ev",
+        "_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN3MapC1Ev",

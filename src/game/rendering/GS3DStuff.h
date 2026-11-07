@@ -18,6 +18,7 @@ class Item;
 class LevelObject;
 class PlayerTest;
 class GameObjectManager;
+class WorldDescriptor;
 namespace irr { namespace video { class ITexture; } }
 namespace Structs {
 struct PhonePerformanceProfile {
@@ -79,10 +80,16 @@ public:
         irr::core::array<irr::scene::ISceneNode*>& renderables, irr::scene::ESCENE_NODE_TYPE type);
     static void freeGameData(irr::scene::ISceneNode* node);
     static void setSkyColor(bool enabled);
+    static void AddXRef(irr::scene::ISceneNode* node);
+    static void loadCityGameObjects(const WorldDescriptor& descriptor, bool spawnPointsOnly);
+    static void loadCityVisual(const WorldDescriptor& descriptor);
+    static void loadCityPart(const WorldDescriptor& descriptor, irr::scene::ISceneNode*& parent);
+    static irr::scene::ISceneNode* loadCityPart(const char* path);
 
     static BulletTraceManager* s_bulletManager;
     static TrailMgr* s_TrailMgr;
     static irr::scene::ISceneNode* skyBox;
+    static irr::scene::ISceneNode* city;
     static irr::video::ITexture* skyBoxTexture;
     static OctTreeAABB* sceneOcttree;
     static Structs::PhonePerformanceProfile s_phonePerformanceProfile;
