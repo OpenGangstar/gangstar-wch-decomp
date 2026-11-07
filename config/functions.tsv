@@ -10287,7 +10287,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd449	0x10	NPC.cpp	game	ai	pending	_ZN3NPC12photographedEv	NPC::photographed()
 0x002fd459	0x14	NPC.cpp	game	ai	pending	_ZN3NPC17clearPhotographedEv	NPC::clearPhotographed()
 0x002fd46d	0xc	NPC.cpp	game	ai	pending	_ZNK3NPC14isPhotographedEv	NPC::isPhotographed() const
-0x002fd479	0x24	NPC.cpp	game	ai	pending	_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE	NPC::goToLocation(irr::core::vector3d<float> const&)
+0x002fd479	0x24	NPC.cpp	game	ai	matched	_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE	NPC::goToLocation(irr::core::vector3d<float> const&)
 0x002fd49d	0x20	NPC.cpp	game	ai	pending	_ZN3NPC16clearGoToVehicleEv	NPC::clearGoToVehicle()
 0x002fd4bd	0x3a	NPC.cpp	game	ai	pending	_ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_	NPC::attachWeaponToHand(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
 0x002fd4f9	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC15getPathToFollowEv	NPC::getPathToFollow() const
@@ -10304,8 +10304,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd6f1	0x1c	NPC.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x002fd70d	0x28	NPC.cpp	game	ai	pending	_ZNK3NPC11GetPositionEv	NPC::GetPosition() const
 0x002fd735	0x54	NPC.cpp	game	ai	pending	_ZN3NPC4waitEi	NPC::wait(int)
-0x002fd789	0x3c	NPC.cpp	game	ai	pending	_ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE	NPC::runToLocation(irr::core::vector3d<float> const&)
-0x002fd7c5	0x3c	NPC.cpp	game	ai	pending	_ZN3NPC14walkToLocationERKN3irr4core8vector3dIfEE	NPC::walkToLocation(irr::core::vector3d<float> const&)
+0x002fd789	0x3c	NPC.cpp	game	ai	matched	_ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE	NPC::runToLocation(irr::core::vector3d<float> const&)
+0x002fd7c5	0x3c	NPC.cpp	game	ai	matched	_ZN3NPC14walkToLocationERKN3irr4core8vector3dIfEE	NPC::walkToLocation(irr::core::vector3d<float> const&)
 0x002fd801	0x20	NPC.cpp	game	ai	pending	_ZN3NPC15UpdateSceneNodeEv	NPC::UpdateSceneNode()
 0x002fd821	0x16	NPC.cpp	game	ai	pending	_ZN3NPC4StopEv	NPC::Stop()
 0x002fd839	0x30	NPC.cpp	game	ai	pending	_ZN3NPC13acquireTargetEv	NPC::acquireTarget()

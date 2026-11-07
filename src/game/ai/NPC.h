@@ -8,6 +8,7 @@ class Path;
 class NPC : public Character {
 public:
     NPC(int type);
+    virtual ~NPC();
     void Load(const Structs::NPC&);
     bool isCop();
     const Path* getPathToFollow() const;
@@ -20,6 +21,8 @@ public:
     bool getNextPoint(irr::core::vector3d<float>& point);
     void goToNextPoint(bool repeat);
     void goToLocation(const irr::core::vector3d<float>& point);
+    virtual void walkToLocation(const irr::core::vector3d<float>& point);
+    virtual void runToLocation(const irr::core::vector3d<float>& point);
 private:
     friend class AchievementManager;
     unsigned char unknown296[36];
