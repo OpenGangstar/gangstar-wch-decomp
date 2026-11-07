@@ -25,7 +25,13 @@
 // remain provisional; engine implementations stay native unless inlined here.
 namespace irr {
 namespace core { template<class T> class aabbox3d; }
-namespace video { struct SMaterial; class IVideoDriver; }
+namespace video {
+struct SMaterial;
+class IVideoDriver;
+// Numeric values are observed; enumerator names are reconstruction labels.
+enum E_MATERIAL_TYPE { MaterialType13 = 13 };
+enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
+}
 class IReferenceCounted {
 public:
     IReferenceCounted() : references(1), debugName(0) {}
@@ -50,6 +56,16 @@ enum E_SCENE_NODE_RENDER_PASS { RenderPass6 = 6 };
 class ITimelineController;
 class ISceneNodeAnimator;
 class ITriangleSelector;
+class ISceneNode;
+// Read-only view of the observed scene child list.
+struct SceneNodeList {
+    struct Node { Node* next; Node* previous; ISceneNode* value; };
+    Node* first;
+    Node* last;
+    unsigned int size;
+    Node* begin() const { return first; }
+    Node* end() const { return 0; }
+};
 enum ESCENE_NODE_ANIMATION_FLAG { AnimationFlag0 = 0 };
 class ISceneNode : public virtual io::IAttributeExchangingObject {
 public:
@@ -123,6 +139,9 @@ public:
     void setAutomaticCulling(E_CULLING_TYPE);
     ISceneNode* getSceneNodeFromUID(const char*);
     const SceneAnimatorList& getAnimators() const;
+    const SceneNodeList& getChildren() const;
+    void setMaterialType(video::E_MATERIAL_TYPE type);
+    void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool enabled);
     ISceneNode* getParent() const;
 private:
     unsigned char unknown4[324];

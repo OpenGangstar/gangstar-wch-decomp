@@ -43,7 +43,6 @@ struct SMaterialLayer {
         if (texture) texture->drop();
     }
 };
-enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
 struct SMaterial {
     SMaterial() : unknown0(1), type(0), flags40(0x387), mode44(3),
         color48(255,255,255,255), color52(0,0,0,0), color56(255,255,255,255),

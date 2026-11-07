@@ -26,6 +26,41 @@
 #include "../core/EventManager.h"
 #include "../ai/AIManagerSingleton.h"
 
+void GS3DStuff::SetVisibility(irr::scene::ISceneNode* node, bool visible)
+{
+    if (node->getMaterialCount())
+        node->setVisible(visible);
+
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        SetVisibility(child->value, visible);
+    }
+}
+
+void GS3DStuff::SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type)
+{
+    if (node->getMaterialCount()) {
+        node->setMaterialType(type);
+        node->notifyMaterialChanged();
+    }
+
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        SetMaterialType(child->value, type);
+    }
+}
+
+void GS3DStuff::SetMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled)
+{
+    if (node->getMaterialCount())
+        node->setMaterialFlag(flag, enabled);
+
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        SetMaterialFlag(child->value, flag, enabled);
+    }
+}
+
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)
 {
     if (!properties) return false;

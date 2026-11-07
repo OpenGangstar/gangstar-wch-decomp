@@ -64,6 +64,8 @@ public:
     int getLeftEnterAnimation();
     void enableSkinning(bool enabled);
     void enableBackfaceCulling(bool enabled);
+    void showWheels();
+    void hideWheels();
     void _notifyTargeted(bool targeted, Character* source);
     void AddTurboSounds();
     void Init4CylTurboSounds();
@@ -76,6 +78,7 @@ public:
     Character* getDriver() const { return driver; }
 private:
     void openDoorWithClip(const char* clip, bool left);
+    void setWheelVisibility(bool visible);
     friend class Race;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
@@ -102,7 +105,8 @@ private:
     int vehicleIndex;
     unsigned char unknown428[76];
     bool hasBeenStolen;
-    unsigned char unknown505[187];
+    unsigned char unknown505[171];
+    irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;
     Character* driver;
     unsigned char unknown700[60];

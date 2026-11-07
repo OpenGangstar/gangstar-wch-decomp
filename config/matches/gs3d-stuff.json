@@ -111,7 +111,10 @@
             "address": "0x002dbb3d",
             "compiled_name": "__tcf_3"
         },
-        "_ZN9AIManager11getInstanceEv"
+        "_ZN9AIManager11getInstanceEv",
+        "_ZN9GS3DStuff13SetVisibilityEPN3irr5scene10ISceneNodeEb",
+        "_ZN9GS3DStuff15SetMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
+        "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb"
     ],
     "sections": [
         ".wanted_singleton",
@@ -184,10 +187,16 @@
         ".gs3d_startup_function_3",
         ".shared_startup_empty_text",
         ".ai_manager_cleanup",
-        ".ai_manager_singleton"
+        ".ai_manager_singleton",
+        ".gs_set_visibility",
+        ".gs_set_material_type",
+        ".gs_set_material_flag"
     ],
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
+        "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",

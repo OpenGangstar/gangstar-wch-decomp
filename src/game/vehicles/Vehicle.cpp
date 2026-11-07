@@ -252,6 +252,24 @@ void Vehicle::enableBackfaceCulling(bool enabled)
     GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);
 }
 
+inline __attribute__((always_inline)) void Vehicle::setWheelVisibility(bool visible)
+{
+    GS3DStuff::SetVisibility(wheelNodes[0], visible);
+    GS3DStuff::SetVisibility(wheelNodes[1], visible);
+    GS3DStuff::SetVisibility(wheelNodes[2], visible);
+    GS3DStuff::SetVisibility(wheelNodes[3], visible);
+}
+
+void Vehicle::showWheels()
+{
+    setWheelVisibility(true);
+}
+
+void Vehicle::hideWheels()
+{
+    setWheelVisibility(false);
+}
+
 void Vehicle::startAnim(irr::scene::ISceneNodeAnimator* animator, bool loop)
 {
     irr::scene::ITimelineController* timeline = animator->getTimelineCtrl();
