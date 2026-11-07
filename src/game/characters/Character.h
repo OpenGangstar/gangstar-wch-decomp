@@ -4,6 +4,7 @@
 #include "../world/LevelObject.h"
 
 class Vehicle;
+class Weapon;
 
 // Character's constructor calls LevelObject and initializes storage through
 // offset 295. NPC's first additional field is at 296. Other fields and virtual
@@ -15,6 +16,10 @@ public:
     void initInVehicle(Vehicle* vehicle);
     void goToIdle();
     bool isDown();
+    bool isDying();
+    virtual bool isDead();
+    virtual int getMaxHealth() const;
+    virtual int getHealth() const;
     void resetAnimation();
     static void cleanTimelineController();
     bool isAnimationLastFrame(float advance) const;
@@ -28,8 +33,8 @@ public:
     virtual void setAnimationSpeedMultiplier(int speed);
     virtual void setNextAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void setNextAnimation(int id, int speed, bool a, bool b, bool c);
-    // Retail slots 40 through 53. The remaining slots are pending.
-    virtual void setAnimation(int id, float speed, bool a, bool b, bool c);
+    // Retail slots 40 through 54. The remaining slots are pending.
+    virtual bool setAnimation(int id, float speed, bool loop, bool b, bool c);
     virtual void shoot(float time, bool pressed);
     virtual void die(bool flag);
     virtual void updatePhysic(int elapsed);
@@ -43,6 +48,7 @@ public:
     virtual const irr::core::vector3d<float>& getCameraOffset() const;
     virtual void walkToLocation(const irr::core::vector3d<float>& point);
     virtual void runToLocation(const irr::core::vector3d<float>& point);
+    virtual Weapon* getWeapon() const = 0;
 private:
     static irr::scene::ITimelineController* s_timelineController;
     bool isCurrentAnimation(int id);
@@ -64,7 +70,10 @@ private:
     unsigned char unknown156[28];
     Character* lockTarget;
     Vehicle* vehicle;
-    unsigned char unknown192[44];
+    unsigned char unknown192[24];
+    int maxHealth;
+    int health;
+    unsigned char unknown224[12];
     unsigned int movementFlags;
     unsigned char unknown240[4];
     int nextAnimation;

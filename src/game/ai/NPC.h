@@ -9,6 +9,7 @@ class NPC : public Character {
 public:
     NPC(int type);
     virtual ~NPC();
+    virtual Weapon* getWeapon() const;
     virtual void photographed();
     virtual void clearPhotographed();
     virtual bool isPhotographed() const;
@@ -28,7 +29,9 @@ public:
     virtual void runToLocation(const irr::core::vector3d<float>& point);
 private:
     friend class AchievementManager;
-    unsigned char unknown296[36];
+    unsigned char unknown296[12];
+    Weapon* weapon;
+    unsigned char unknown312[20];
     const Path* activePath;
     int activeWaypoint;
     unsigned char unknown340[16];

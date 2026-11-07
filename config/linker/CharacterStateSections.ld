@@ -4,6 +4,10 @@ __aeabi_idivmod = 0x001c4934;
 __aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
+    .character_get_max_health 0x002f146c : { *ai-startup-character.o(.text._ZNK9Character12getMaxHealthEv) }
+    .character_get_health 0x002f1474 : { *ai-startup-character.o(.text._ZNK9Character9getHealthEv) }
+    .character_is_dying 0x002f15a0 : { *ai-startup-character.o(.text._ZN9Character7isDyingEv) }
+    .character_is_dead 0x002f1f1c : { *ai-startup-character.o(.text._ZN9Character6isDeadEv) }
     .character_clean_timeline_controller 0x002f14c0 : { *ai-startup-character.o(.text._ZN9Character23cleanTimelineControllerEv) }
     .character_set_animation_by_name 0x002f14f8 : { *ai-startup-character.o(.text._ZN9Character12setAnimationEPKcibbb) }
     .character_set_next_animation_by_name 0x002f1f44 : { *ai-startup-character.o(.text._ZN9Character16setNextAnimationEPKcibbb) }

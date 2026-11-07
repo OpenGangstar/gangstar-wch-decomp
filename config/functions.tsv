@@ -10031,8 +10031,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1459	0x6	Character.cpp	game	characters	matched	_ZNK9Character10getVehicleEv	Character::getVehicle() const
 0x002f1461	0x6	Character.cpp	game	characters	matched	_ZNK9Character13getLockTargetEv	Character::getLockTarget() const
 0x002f1469	0x4	Character.cpp	game	characters	matched	_ZNK9Character15getCameraOffsetEv	Character::getCameraOffset() const
-0x002f146d	0x6	Character.cpp	game	characters	pending	_ZNK9Character12getMaxHealthEv	Character::getMaxHealth() const
-0x002f1475	0x6	Character.cpp	game	characters	pending	_ZNK9Character9getHealthEv	Character::getHealth() const
+0x002f146d	0x6	Character.cpp	game	characters	matched	_ZNK9Character12getMaxHealthEv	Character::getMaxHealth() const
+0x002f1475	0x6	Character.cpp	game	characters	matched	_ZNK9Character9getHealthEv	Character::getHealth() const
 0x002f147d	0x8	Character.cpp	game	characters	pending	_ZN9Character9SetTargetEP11LevelObject	Character::SetTarget(LevelObject*)
 0x002f1485	0x6	Character.cpp	game	characters	pending	_ZN9Character11getSkinMeshEv	Character::getSkinMesh()
 0x002f148d	0x20	Character.cpp	game	characters	matched	_ZN9Character25canAnimationBeInterruptedEi	Character::canAnimationBeInterrupted(int)
@@ -10046,7 +10046,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1561	0xc	Character.cpp	game	characters	matched	_ZN9Character14resetAnimationEv	Character::resetAnimation()
 0x002f156d	0x12	Character.cpp	game	characters	matched	_ZN9Character18isCurrentAnimationEi	Character::isCurrentAnimation(int)
 0x002f1581	0x1e	Character.cpp	game	characters	matched	_ZN9Character6isDownEv	Character::isDown()
-0x002f15a1	0x1c	Character.cpp	game	characters	pending	_ZN9Character7isDyingEv	Character::isDying()
+0x002f15a1	0x1c	Character.cpp	game	characters	matched	_ZN9Character7isDyingEv	Character::isDying()
 0x002f15bd	0x74	Character.cpp	game	characters	matched	_ZNK9Character20isAnimationLastFrameEf	Character::isAnimationLastFrame(float) const
 0x002f1631	0x2	Character.cpp	game	characters	matched	_ZN9Character13setLockTargetEPS_	Character::setLockTarget(Character*)
 0x002f1635	0x14	Character.cpp	game	characters	pending	_ZN9Character9nextPunchEv	Character::nextPunch()
@@ -10073,7 +10073,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1d3d	0x3c	Character.cpp	game	characters	pending	_ZN9Character4StopEv	Character::Stop()
 0x002f1d79	0x18	Character.cpp	game	characters	pending	_ZN9Character16onRocketLaunchedEv	Character::onRocketLaunched()
 0x002f1d91	0x18c	Character.cpp	game	characters	pending	_ZN9Character12setAnimationEifbbb	Character::setAnimation(int, float, bool, bool, bool)
-0x002f1f1d	0x16	Character.cpp	game	characters	pending	_ZN9Character6isDeadEv	Character::isDead()
+0x002f1f1d	0x16	Character.cpp	game	characters	matched	_ZN9Character6isDeadEv	Character::isDead()
 0x002f1f35	0x10	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEiibbb	Character::setNextAnimation(int, int, bool, bool, bool)
 0x002f1f45	0x58	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEPKcibbb	Character::setNextAnimation(char const*, int, bool, bool, bool)
 0x002f1f9d	0xe0	Character.cpp	game	characters	pending	_ZN9Character24setReloadWeaponAnimationEi	Character::setReloadWeaponAnimation(int)
@@ -10283,7 +10283,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd291	0x130	Lock.cpp	game	core	pending	_ZN4Lock6renderEv	Lock::render()
 0x002fd3c1	0x6c	Lock.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fd42d	0x14	Lock.cpp	game	core	matched	_GLOBAL__I__ZN4Lock6s_lockE	_GLOBAL__I__ZN4Lock6s_lockE
-0x002fd441	0x8	NPC.cpp	game	ai	pending	_ZNK3NPC9getWeaponEv	NPC::getWeapon() const
+0x002fd441	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC9getWeaponEv	NPC::getWeapon() const
 0x002fd449	0x10	NPC.cpp	game	ai	matched	_ZN3NPC12photographedEv	NPC::photographed()
 0x002fd459	0x14	NPC.cpp	game	ai	matched	_ZN3NPC17clearPhotographedEv	NPC::clearPhotographed()
 0x002fd46d	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC14isPhotographedEv	NPC::isPhotographed() const

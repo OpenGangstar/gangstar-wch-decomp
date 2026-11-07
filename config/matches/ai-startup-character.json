@@ -25,6 +25,10 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZNK9Character12getMaxHealthEv",
+        "_ZNK9Character9getHealthEv",
+        "_ZN9Character7isDyingEv",
+        "_ZN9Character6isDeadEv",
         "_ZN9Character23cleanTimelineControllerEv",
         "_ZN9Character12setAnimationEPKcibbb",
         "_ZN9Character16setNextAnimationEPKcibbb",

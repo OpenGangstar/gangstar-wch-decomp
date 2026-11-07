@@ -44,6 +44,11 @@ namespace {
 const unsigned int photographedFlag = 1u << 17;
 }
 
+Weapon* __attribute__((weak)) NPC::getWeapon() const
+{
+    return weapon;
+}
+
 void __attribute__((weak)) NPC::photographed()
 {
     flags356 |= photographedFlag;
