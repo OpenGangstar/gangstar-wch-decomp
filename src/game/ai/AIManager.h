@@ -19,6 +19,7 @@ public:
     void removeAI(Vehicle* vehicle);
     void removeAI(NPC* npc);
     void addAI(Vehicle* vehicle, gameloft::ai::StateID state);
+    void addAI(NPC* npc, gameloft::ai::StateID state);
 
 private:
     AIManager();

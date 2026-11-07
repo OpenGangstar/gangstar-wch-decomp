@@ -43,10 +43,18 @@ void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const ch
 #include "GameObjectManager.h"
 #include "LevelObject.h"
 #include "../ai/AIManagerSingleton.h"
+#include "../ai/NPC.h"
 #include "../characters/PhysicAttributes.h"
 #include "../characters/PlayerTest.h"
 #include "../core/MemHint.h"
 #include "../core/Randomizer.h"
+#include "../vehicles/Vehicle.h"
+
+// The vehicle's spawn node is observed at offset 672 in the retail layout.
+struct VehicleSpawnNodeView {
+    unsigned char prefix[672];
+    irr::scene::ISceneNode* node;
+};
 
 SpawnPoint::SpawnConstants SpawnPoint::s_carSpawnCst =
     {3, 3, 500, 1000, 2000, 4000, 6250000, 3039, 32397042, 3900};
@@ -162,6 +170,58 @@ LevelObject* SpawnPoint::getSpawnObject(int metatype)
     return 0;
 }
 
+void SpawnPoint::spawn()
+{
+    GameObjectManager* manager = GameObjectManager::s_gom;
+    int random = irr::os::Randomizer::rand();
+    int metatype = s_spawnMetatypes[spawnGroup][random % s_metatypesCount[spawnGroup]];
+    int spawnedCops = s_spawnedCops;
+    if (spawnedCops < WantedLevelManager::getInstance()->unknown8) {
+        if (random & 1) {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            int type = s_metatypesSpawnCst[spawnGroup]->type;
+            if (type == 5)
+                metatype = player->contextWord == 0 ? 48 : 161;
+            else if (type == 3)
+                metatype = 38;
+        }
+    } else if (metatype == 48 || metatype == 38 || metatype == 161) {
+        return;
+    }
+
+    LevelObject* object = getSpawnObject(metatype);
+    if (!object)
+        return;
+
+    manager->AddGameObjectOfType(s_metatypesSpawnCst[spawnGroup]->type);
+    object->setSpawnType(s_metatypesSpawnCst[spawnGroup]->type);
+    object->OnSpawn();
+    const irr::core::quaternion orientation = rotation;
+    object->SetRotation(orientation);
+    irr::core::vector3d<float> spawnPosition = position;
+    object->SetPosition(spawnPosition);
+    object->getPhysicAttributes()->Init(materialId, triangleId, object->GetPosition());
+    spawnPosition.Z = object->getPhysicAttributes()->GetHeight(spawnPosition, 0, false);
+    object->SetPosition(spawnPosition);
+
+    int type = LevelObject::s_type[object->getObjectType()];
+    if (type == 3) {
+        Vehicle* vehicle = static_cast<Vehicle*>(object);
+        VehicleSpawnNodeView* visual = reinterpret_cast<VehicleSpawnNodeView*>(vehicle);
+        visual->node->setRotation(orientation);
+        visual->node->setPosition(vehicle->GetPosition());
+        if (s_metatypesSpawnCst[spawnGroup]->type != 11) {
+            vehicle->setSpeed();
+            AIManager::getInstance()->addAI(vehicle, static_cast<gameloft::ai::StateID>(0));
+        }
+    } else if (type == 5) {
+        AIManager::getInstance()->addAI(static_cast<NPC*>(object), static_cast<gameloft::ai::StateID>(0));
+    }
+    object->GetMetatype();
+    delete[] object->unknown28;
+    object->unknown28 = 0;
+}
+
 LevelObject* SpawnPoint::spawn(int metatype)
 {
     PlayerTest* player = PlayerTest::GetPlayer();
@@ -209,7 +269,7 @@ void SpawnPoint::ClearAllSpawnInstances()
     s_metatypesSpawnCst = 0;
 }
 
-SpawnPoint::SpawnPoint(int) : unknown32(0) {}
+SpawnPoint::SpawnPoint(int) : materialId(0) {}
 
 void SpawnPoint::Update(int elapsed)
 {

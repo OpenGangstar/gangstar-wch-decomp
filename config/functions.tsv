@@ -10505,7 +10505,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306569	0x7c	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject	SpawnPoint::releaseSpawnObject(LevelObject*)
 0x003065e5	0x150	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint23CreateAllSpawnInstancesEv	SpawnPoint::CreateAllSpawnInstances()
 0x00306735	0xa0	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint14getSpawnObjectEi	SpawnPoint::getSpawnObject(int)
-0x003067d5	0x224	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint5spawnEv	SpawnPoint::spawn()
+0x003067d5	0x224	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint5spawnEv	SpawnPoint::spawn()
 0x003069f9	0x118	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint5spawnEi	SpawnPoint::spawn(int)
 0x00306b11	0x21c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE	SpawnPoint::Load(Structs::SpawnPoint const&)
 0x00306d2d	0xc4	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint17hasCloseNeighborsEv	SpawnPoint::hasCloseNeighbors() const
