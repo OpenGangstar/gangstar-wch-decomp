@@ -18,6 +18,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .npc_go_to_location 0x002fd478 : { *ai-startup-npc.o(.text._ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE) }
+    .npc_run_to_location 0x002fd788 : { *ai-startup-npc.o(.text._ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE) }
+    .npc_walk_to_location 0x002fd7c4 : { *ai-startup-npc.o(.text._ZN3NPC14walkToLocationERKN3irr4core8vector3dIfEE) }
     .npc_next_waypoint 0x002fdde8 : { *ai-startup-npc.o(.text._ZN3NPC15getNextWaypointEv) }
     .npc_next_point 0x002fdff0 : { *ai-startup-npc.o(.text._ZN3NPC12getNextPointERN3irr4core8vector3dIfEE) }
     .npc_go_next_point 0x002fe084 : { *ai-startup-npc.o(.text._ZN3NPC13goToNextPointEb) }

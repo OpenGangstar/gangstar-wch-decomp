@@ -16,6 +16,56 @@
 #include "../characters/PhysicAttributes.h"
 #include "../world/Path.h"
 
+namespace {
+union MovementFlags {
+    unsigned int word;
+    struct {
+        unsigned int walking : 1;
+        unsigned int running : 1;
+    } bits;
+};
+
+inline unsigned int setMovementMode(unsigned int word, bool running)
+{
+    // Updating a bitfield in a local word reproduces GCC's mask and single store.
+    MovementFlags flags;
+    if (running) {
+        flags.word = word & 0xffffbfe2u;
+        flags.bits.running = 1;
+    } else {
+        flags.word = word & 0xffffbfe1u;
+        flags.bits.walking = 1;
+    }
+    return flags.word;
+}
+}
+
+void NPC::goToLocation(const irr::core::vector3d<float>& point)
+{
+    if (flags356 & 0x8000u)
+        runToLocation(point);
+    else
+        walkToLocation(point);
+}
+
+void NPC::runToLocation(const irr::core::vector3d<float>& point)
+{
+    if (!isDead()) {
+        flags356 = setMovementMode(flags356, true);
+        setDestination(point, 100);
+        Character::runToLocation(point);
+    }
+}
+
+void NPC::walkToLocation(const irr::core::vector3d<float>& point)
+{
+    if (!isDead()) {
+        flags356 = setMovementMode(flags356, false);
+        setDestination(point, 100);
+        Character::walkToLocation(point);
+    }
+}
+
 const Path* NPC::getPathToFollow() const
 {
     return pathToFollow;
