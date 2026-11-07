@@ -93,6 +93,7 @@ private:
     bool isFacingTarget(LevelObject* object);
     bool turnTowardTarget(LevelObject* object, float step);
     void turnTowardTarget(float step);
+    bool isTargetInRange(float range, float degrees);
 };
 
 #endif

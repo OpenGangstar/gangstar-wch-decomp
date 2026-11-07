@@ -6,8 +6,14 @@ __aeabi_fsub = 0x001c4328;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fcmpgt = 0x001c419c;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_d2f = 0x001c4310;
+__aeabi_fcmple = 0x001c43ac;
+sqrt = 0x001c401c;
+acosf = 0x001c4694;
 SECTIONS
 {
+    .character_target_in_range 0x002f3d40 : { *ai-startup-character.o(.text._ZN9Character15isTargetInRangeEff) }
     .character_turn_toward_object 0x002f3bd4 : { *ai-startup-character.o(.text._ZN9Character16turnTowardTargetEP11LevelObjectf) }
     .character_is_facing_target 0x002f3b08 : { *ai-startup-character.o(.text._ZN9Character14isFacingTargetEP11LevelObject) }
     .character_turn_to_target 0x002f3d18 : { *ai-startup-character.o(.text._ZN9Character16turnTowardTargetEf) }
