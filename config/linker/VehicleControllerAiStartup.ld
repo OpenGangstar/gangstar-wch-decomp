@@ -15,8 +15,15 @@ _ZN36retail_vehiclecontroller_transitions11guard_transE = 0x004328e4;
 _ZN36retail_vehiclecontroller_transitions22scripted_vehicle_transE = 0x0043298c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+    .vehicle_controller_construct 0x00342818 : { *(.text._ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE .text._ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }
+    .vehicle_controller_delete 0x003429c4 : { *(.text._ZN17VehicleControllerD0Ev) }
+    .vehicle_controller_destroy 0x00342a14 : { *(.text._ZN17VehicleControllerD1Ev .text._ZN17VehicleControllerD2Ev) }
+    .vehicle_controller_vtable 0x004ad030 : { *(.data.rel.ro._ZTV17VehicleController) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x00342568 : { *ai-startup-vehiclecontroller.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

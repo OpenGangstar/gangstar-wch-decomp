@@ -41,7 +41,12 @@
             "name": "__tcf_3",
             "address": "0x00342569",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
+        "_ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
+        "_ZN17VehicleControllerD0Ev",
+        "_ZN17VehicleControllerD1Ev",
+        "_ZN17VehicleControllerD2Ev"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -52,11 +57,19 @@
             "name": ".got",
             "offset": 864
         },
-        ".ai_manager_cleanup"
+        ".ai_manager_cleanup",
+        ".vehicle_controller_construct",
+        ".vehicle_controller_delete",
+        ".vehicle_controller_destroy",
+        ".vehicle_controller_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE"
     ]
 }

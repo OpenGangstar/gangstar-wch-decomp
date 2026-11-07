@@ -8,6 +8,47 @@
  * functions of VehicleController.cpp here, in the order they appear in the library.
  */
 
+#include "AIManager.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+
+namespace gameloft { namespace ai { struct Transition; } }
+namespace irr { namespace core { template<class T> class vector3d; } }
+
+class VehicleController : public IEventReceiver {
+public:
+    VehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
+        gameloft::ai::StateID state);
+    virtual ~VehicleController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID);
+    virtual irr::core::vector3d<float> getNextPoint();
+    virtual irr::core::vector3d<float> getNextWaypoint();
+
+private:
+    unsigned int state;
+    Vehicle* vehicle;
+    unsigned int unknown12;
+    const gameloft::ai::Transition& transition;
+    unsigned int unknown20, unknown24;
+};
+
+VehicleController::VehicleController(Vehicle* vehicle,
+    const gameloft::ai::Transition& transition, gameloft::ai::StateID state)
+    : state(state), vehicle(vehicle), unknown12(0), transition(transition),
+      unknown20(0), unknown24(0)
+{
+    switchState(state);
+    Application::GetInstance()->GetEventManager()->attach(19, this);
+    Application::GetInstance()->GetEventManager()->attach(22, this);
+}
+
+VehicleController::~VehicleController()
+{
+    Application::GetInstance()->GetEventManager()->detach(19, this);
+    Application::GetInstance()->GetEventManager()->detach(22, this);
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
