@@ -41,6 +41,16 @@ int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
 }
 
+int __attribute__((weak)) Character::getSpawnType()
+{
+    return spawnType;
+}
+
+void __attribute__((weak)) Character::setSpawnType(int type)
+{
+    spawnType = type;
+}
+
 Vehicle* __attribute__((weak)) Character::getVehicle() const
 {
     return vehicle;
@@ -64,6 +74,16 @@ int __attribute__((weak)) Character::getMaxHealth() const
 int __attribute__((weak)) Character::getHealth() const
 {
     return health;
+}
+
+void __attribute__((weak)) Character::SetTarget(LevelObject* value)
+{
+    target = value;
+}
+
+void* __attribute__((weak)) Character::getSkinMesh()
+{
+    return skinMesh;
 }
 
 bool Character::canAnimationBeInterrupted(int id)

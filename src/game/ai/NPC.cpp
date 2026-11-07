@@ -72,6 +72,20 @@ void NPC::goToLocation(const irr::core::vector3d<float>& point)
         walkToLocation(point);
 }
 
+bool NPC::isCop()
+{
+    switch (GetMetatype()) {
+    case 48:
+    case 49:
+    case 111:
+    case 161:
+    case 162:
+        return true;
+    default:
+        return false;
+    }
+}
+
 void NPC::runToLocation(const irr::core::vector3d<float>& point)
 {
     if (!isDead()) {

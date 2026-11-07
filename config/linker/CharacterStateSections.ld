@@ -4,6 +4,10 @@ __aeabi_idivmod = 0x001c4934;
 __aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
+    .character_get_spawn_type 0x002f1448 : { *ai-startup-character.o(.text._ZN9Character12getSpawnTypeEv) }
+    .character_set_spawn_type 0x002f1450 : { *ai-startup-character.o(.text._ZN9Character12setSpawnTypeEi) }
+    .character_set_target 0x002f147c : { *ai-startup-character.o(.text._ZN9Character9SetTargetEP11LevelObject) }
+    .character_get_skin_mesh 0x002f1484 : { *ai-startup-character.o(.text._ZN9Character11getSkinMeshEv) }
     .character_get_max_health 0x002f146c : { *ai-startup-character.o(.text._ZNK9Character12getMaxHealthEv) }
     .character_get_health 0x002f1474 : { *ai-startup-character.o(.text._ZNK9Character9getHealthEv) }
     .character_is_dying 0x002f15a0 : { *ai-startup-character.o(.text._ZN9Character7isDyingEv) }

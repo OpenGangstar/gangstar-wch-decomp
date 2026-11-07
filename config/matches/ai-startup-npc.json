@@ -25,6 +25,7 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC5isCopEv",
         "_ZNK3NPC9getWeaponEv",
         "_ZN3NPC12photographedEv",
         "_ZN3NPC17clearPhotographedEv",
@@ -76,6 +77,7 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject11GetMetatypeEv",
         "_ZNK4Path7getSizeEv",
         "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
         "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
