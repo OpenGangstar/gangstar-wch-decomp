@@ -32,7 +32,7 @@ public:
     void LoadSpawnPoints(const char* filename);
     void Load(char* filename);
     LevelObject* despawn(LevelObject* object);
-    NPC* spawnNPC(int metatype, int behavior, int option);
+    NPC* spawnNPC(int metatype, int variant, int chance);
     NPC* spawnNPCInVehicle(Vehicle* vehicle, int metatype, int behavior);
     NPC* spawnNPC(int metatype, int behavior, irr::core::vector3d<float> position,
         unsigned short region, unsigned short surface);

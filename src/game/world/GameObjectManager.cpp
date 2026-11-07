@@ -32,8 +32,45 @@
 #include "../persistence/BufferStream.h"
 
 extern "C" int strncasecmp(const char*, const char*, unsigned int);
+extern "C" long lrand48();
 
 GameObjectManager* GameObjectManager::s_gom = 0;
+
+NPC* GameObjectManager::spawnNPC(int metatype, int variant, int chance)
+{
+    if (metatype == -1) {
+        if (variant == -1)
+            variant = lrand48() % 2;
+        if (chance == -1)
+            chance = lrand48() % 100;
+        const unsigned int roll = lrand48() % 100;
+
+        if (variant == 0) {
+            if (chance <= 70) {
+                if (roll < 70) metatype = 107;
+                else if (roll - 70 <= 29) metatype = 166;
+            } else {
+                if (roll < 25) metatype = 56;
+                else if (roll - 25 <= 24) metatype = 60;
+                else if (roll - 50 <= 9) metatype = 63;
+                else if (roll - 60 <= 9) metatype = 64;
+                else if (roll - 70 <= 9) metatype = 57;
+                else if (roll - 80 <= 9) metatype = 58;
+                else if (roll - 90 <= 9) metatype = 59;
+            }
+        } else if (chance <= 70) {
+            if (roll < 50) metatype = 108;
+            else if (roll - 50 <= 24) metatype = 167;
+            else if (roll - 75 <= 24) metatype = 168;
+        } else {
+            if (roll < 35) metatype = 54;
+            else if (roll - 35 <= 34) metatype = 55;
+            else if (roll - 70 <= 14) metatype = 95;
+            else if (roll - 85 <= 14) metatype = 96;
+        }
+    }
+    return static_cast<NPC*>(SpawnGameObject(metatype));
+}
 
 NPC* GameObjectManager::spawnNPCInVehicle(Vehicle* vehicle, int metatype, int behavior)
 {

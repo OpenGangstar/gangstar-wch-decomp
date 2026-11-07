@@ -10792,7 +10792,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00315f05	0x34	GameObjectManager.cpp	game	world	matched	_ZN17GameObjectManager16RemoveAndDestroyEP11LevelObject	GameObjectManager::RemoveAndDestroy(LevelObject*)
 0x00315f39	0x1a0	GameObjectManager.cpp	game	world	pending	_ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb	GameObjectManager::getDistanceFromAttackableTarget(Character*, int, LevelObject*, bool)
 0x003160d9	0x13c	GameObjectManager.cpp	game	world	pending	_ZN17GameObjectManager19getAttackableTargetEP9Character	GameObjectManager::getAttackableTarget(Character*)
-0x00316215	0x11c	GameObjectManager.cpp	game	world	pending	_ZN17GameObjectManager8spawnNPCEiii	GameObjectManager::spawnNPC(int, int, int)
+0x00316215	0x11c	GameObjectManager.cpp	game	world	matched	_ZN17GameObjectManager8spawnNPCEiii	GameObjectManager::spawnNPC(int, int, int)
 0x00316331	0x54	GameObjectManager.cpp	game	world	matched	_ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii	GameObjectManager::spawnNPCInVehicle(Vehicle*, int, int)
 0x00316385	0x9c	GameObjectManager.cpp	game	world	matched	_ZN17GameObjectManager8spawnNPCEiiN3irr4core8vector3dIfEEtt	GameObjectManager::spawnNPC(int, int, irr::core::vector3d<float>, unsigned short, unsigned short)
 0x00316421	0x144	GameObjectManager.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
