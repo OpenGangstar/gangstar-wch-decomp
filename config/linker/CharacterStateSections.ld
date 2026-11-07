@@ -2,8 +2,14 @@ __aeabi_fadd = 0x001c4154;
 __aeabi_f2iz = 0x001c44cc;
 __aeabi_idivmod = 0x001c4934;
 __aeabi_i2f = 0x001c41e4;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fcmplt = 0x001c479c;
+__aeabi_fcmpgt = 0x001c419c;
 SECTIONS
 {
+    .character_turn_toward_object 0x002f3bd4 : { *ai-startup-character.o(.text._ZN9Character16turnTowardTargetEP11LevelObjectf) }
+    .character_is_facing_target 0x002f3b08 : { *ai-startup-character.o(.text._ZN9Character14isFacingTargetEP11LevelObject) }
     .character_turn_to_target 0x002f3d18 : { *ai-startup-character.o(.text._ZN9Character16turnTowardTargetEf) }
     .character_run_to_location 0x002f3fa4 : { *ai-startup-character.o(.text._ZN9Character13runToLocationERKN3irr4core8vector3dIfEE) }
     .character_walk_to_location 0x002f400c : { *ai-startup-character.o(.text._ZN9Character14walkToLocationERKN3irr4core8vector3dIfEE) }

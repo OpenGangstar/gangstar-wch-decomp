@@ -91,7 +91,7 @@ private:
 
     void turnToward(const irr::core::vector3d<float>& point);
     bool isFacingTarget(LevelObject* object);
-    void turnTowardTarget(LevelObject* object, float step);
+    bool turnTowardTarget(LevelObject* object, float step);
     void turnTowardTarget(float step);
 };
 

@@ -78,8 +78,6 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE",
-        "_ZN9Character14isFacingTargetEP11LevelObject",
-        "_ZN9Character16turnTowardTargetEP11LevelObjectf",
         "_ZN11LevelObject11GetMetatypeEv",
         "_ZNK4Path7getSizeEv",
         "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",

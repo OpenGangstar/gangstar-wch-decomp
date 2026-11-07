@@ -35,6 +35,10 @@ public:
     vector3d<T>& normalize() __attribute__((weak));
     T getLength() const { return (T) sqrt((double)(X*X + Y*Y + Z*Z)); }
     T getLengthSQ() const { return X*X + Y*Y + Z*Z; }
+    T dotProduct(const vector3d<T>& other) const
+    {
+        return X * other.X + Y * other.Y + Z * other.Z;
+    }
     T getDistanceFromSQ(const vector3d<T>& other) const {
         return vector3d<T>(X - other.X, Y - other.Y, Z - other.Z).getLengthSQ();
     }
