@@ -11,6 +11,14 @@
 #include "Vehicle.h"
 #include "../audio/SoundManager.h"
 #include "../core/LocalStringStartupStorage.h"
+#include "../rendering/GS3DStuff.h"
+
+namespace irr { namespace collada {
+class CSkinnedMeshSceneNode {
+public:
+    void setIsSkinningEnabled(bool enabled);
+};
+} }
 
 void Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
 {
@@ -132,6 +140,27 @@ void Vehicle::openDoor(bool left)
 void Vehicle::openDoorFromInside(bool left)
 {
     openDoorWithClip(exitCarClip, left);
+}
+
+void Vehicle::closeDoor(bool left)
+{
+    if (left)
+        leftDoorTransition = true;
+    else
+        rightDoorTransition = true;
+
+    setDoorAnim(closeDoorClip, left);
+}
+
+void Vehicle::enableSkinning(bool enabled)
+{
+    if (skinnedMesh)
+        skinnedMesh->setIsSkinningEnabled(enabled);
+}
+
+void Vehicle::enableBackfaceCulling(bool enabled)
+{
+    GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);
 }
 
 void Vehicle::_notifyTargeted(bool targeted, Character* source)
