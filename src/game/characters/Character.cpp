@@ -54,9 +54,54 @@ const irr::core::vector3d<float>& __attribute__((weak)) Character::getCameraOffs
     return cameraOffset;
 }
 
+bool Character::canAnimationBeInterrupted(int id)
+{
+    switch (id) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 86:
+    case 164:
+    case 175:
+        return false;
+    default:
+        return true;
+    }
+}
+
 void Character::setVehicle(Vehicle* value)
 {
     vehicle = value;
+}
+
+void Character::setAnimationSpeedMultiplier(int speed)
+{
+    animationSpeedMultiplier = speed;
+}
+
+void Character::resetAnimation()
+{
+    animationFrame = 0.0f;
 }
 
 bool Character::isCurrentAnimation(int id)
@@ -71,8 +116,34 @@ bool __attribute__((weak)) Character::isDown()
     return isCurrentAnimation(162);
 }
 
+bool Character::isAnimationLastFrame(float advance) const
+{
+    if (!animationLoops && static_cast<int>(advance + animationFrame) >= animationFrameCount)
+        return true;
+    if (currentAnimation != -1) {
+        bool wrapped = false;
+        int current = static_cast<int>(animationFrame) % animationFrameCount;
+        int next = static_cast<int>(advance + animationFrame) % animationFrameCount;
+        if (current > next)
+            wrapped = true;
+        return wrapped;
+    }
+    return false;
+}
+
 void Character::setLockTarget(Character*)
 {
+}
+
+bool Character::isInFlinchAnimation()
+{
+    return static_cast<unsigned int>(currentAnimation) - 83u <= 3u
+        || currentAnimation == 162;
+}
+
+bool Character::isInHitByCarAnimation()
+{
+    return static_cast<unsigned int>(currentAnimation) - 17u <= 4u;
 }
 
 void __attribute__((weak)) Character::setCameraOffset(const irr::core::vector3d<float>& offset)
@@ -93,6 +164,12 @@ void Character::goToIdle()
 {
     if (!isCurrentAnimation(getSpecificAnimation(165)))
         setAnimation(getSpecificAnimation(165), 1.0f, true, false, false);
+}
+
+void Character::setNextAnimation(int id, int, bool, bool, bool)
+{
+    if (!(movementFlags & 0x800u))
+        nextAnimation = id;
 }
 
 void Character::setDestination(const irr::core::vector3d<float>& point, int limit)

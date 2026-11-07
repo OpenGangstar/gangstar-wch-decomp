@@ -2,7 +2,6 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-npc/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
-__aeabi_idivmod = 0x001c4934;
 __aeabi_atexit = 0x001c494c;
 _ZN22retail_npc_transitions16civPassive_transE = 0x0041d918;
 _ZN22retail_npc_transitions17scriptedNpc_transE = 0x0041da44;

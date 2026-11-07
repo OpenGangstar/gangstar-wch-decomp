@@ -25,6 +25,13 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZNK9Character20isAnimationLastFrameEf",
+        "_ZN9Character16setNextAnimationEiibbb",
+        "_ZN9Character25canAnimationBeInterruptedEi",
+        "_ZN9Character27setAnimationSpeedMultiplierEi",
+        "_ZN9Character14resetAnimationEv",
+        "_ZN9Character19isInFlinchAnimationEv",
+        "_ZN9Character21isInHitByCarAnimationEv",
         "_ZN9Character18isCurrentAnimationEi",
         "_ZN9Character6isDownEv",
         "_ZN9Character8goToIdleEv",

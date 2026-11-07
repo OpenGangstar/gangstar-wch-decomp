@@ -1,5 +1,15 @@
+__aeabi_fadd = 0x001c4154;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .character_is_animation_last_frame 0x002f15bc : { *ai-startup-character.o(.text._ZNK9Character20isAnimationLastFrameEf) }
+    .character_set_next_animation 0x002f1f34 : { *ai-startup-character.o(.text._ZN9Character16setNextAnimationEiibbb) }
+    .character_can_interrupt_animation 0x002f148c : { *ai-startup-character.o(.text._ZN9Character25canAnimationBeInterruptedEi) }
+    .character_set_animation_speed_multiplier 0x002f14f0 : { *ai-startup-character.o(.text._ZN9Character27setAnimationSpeedMultiplierEi) }
+    .character_reset_animation 0x002f1560 : { *ai-startup-character.o(.text._ZN9Character14resetAnimationEv) }
+    .character_is_in_flinch_animation 0x002f165c : { *ai-startup-character.o(.text._ZN9Character19isInFlinchAnimationEv) }
+    .character_is_in_hit_by_car_animation 0x002f1674 : { *ai-startup-character.o(.text._ZN9Character21isInHitByCarAnimationEv) }
     .character_is_current_animation 0x002f156c : { *ai-startup-character.o(.text._ZN9Character18isCurrentAnimationEi) }
     .character_is_down 0x002f1580 : { *ai-startup-character.o(.text._ZN9Character6isDownEv) }
     .character_go_idle 0x002f1cfc : { *ai-startup-character.o(.text._ZN9Character8goToIdleEv) }
