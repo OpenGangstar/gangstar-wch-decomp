@@ -53,6 +53,7 @@ public:
 namespace core { template<class T> class irrAllocator; template<class T, class A> class string; }
 namespace scene {
 enum E_CULLING_TYPE { EAC_OFF = 0, EAC_BOX = 1 };
+enum E_OPTION_FLAG { SceneOption1 = 1 };
 enum ESCENE_NODE_TYPE { ESNT_ANY = 0x5f796e61 };
 enum E_SCENE_NODE_RENDER_PASS { RenderPass6 = 6 };
 class ITimelineController;
@@ -142,6 +143,7 @@ public:
     ISceneNode* getSceneNodeFromUID(const char*);
     const SceneAnimatorList& getAnimators() const;
     const SceneNodeList& getChildren() const;
+    void SetOption(E_OPTION_FLAG option, bool enabled);
     void setMaterialType(video::E_MATERIAL_TYPE type);
     void setMaterialFlag(video::E_MATERIAL_FLAG flag, bool enabled);
     void setMaterialTexture(unsigned int layer, video::ITexture* texture);
