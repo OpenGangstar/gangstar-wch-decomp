@@ -1,4 +1,11 @@
 SECTIONS {
+    .gs_load_city_game_objects 0x002db708 : { *gs3d-stuff.o(.text._ZN9GS3DStuff19loadCityGameObjectsERK15WorldDescriptorb) }
+    .gs_load_city_part_descriptor 0x002df1f4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12loadCityPartERK15WorldDescriptorRPN3irr5scene10ISceneNodeE) }
+    .gs_load_city_visual 0x002df2e4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff14loadCityVisualERK15WorldDescriptor) }
+    .gs_load_city_part_path 0x002df300 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12loadCityPartEPKc) }
+    .gs_city_props_alpha 0x00414534 : { *gs3d-stuff.o(.rodata.*cityPropsAlphaE) }
+    .gs_city_props_alpha_alt 0x00414544 : { *gs3d-stuff.o(.rodata.*cityPropsAlphaAltE) }
+    .gs_city 0x004b69c8 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff4cityE) }
     .gs_set_material_filtering 0x002dc4a8 : { *gs3d-stuff.o(.text._ZN9GS3DStuff20SetMaterialFilteringEPN3irr5scene10ISceneNodeEbb) }
     .gs_set_material 0x002dd780 : { *gs3d-stuff.o(.text._ZN9GS3DStuff11SetMaterialEPN3irr5scene10ISceneNodeEPNS0_5video9SMaterialE) }
     .gs_shape_def_delete 0x002db47c : { *gs3d-stuff.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }

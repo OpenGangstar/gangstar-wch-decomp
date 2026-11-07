@@ -27,7 +27,10 @@
 #include "../ai/AIManagerSingleton.h"
 #include "../core/SafeDelete.h"
 #include "../core/Geometry.h"
+#include "../core/VideoDriver.h"
 #include "../world/SpawnPoint.h"
+#include "../world/World.h"
+#include "../world/WorldDescriptor.h"
 
 class b2Body;
 struct b2BodyDef {
@@ -571,6 +574,7 @@ const char billboard[] __attribute__((section(".rodata.game_factory_billboard"))
 BulletTraceManager* GS3DStuff::s_bulletManager;
 TrailMgr* GS3DStuff::s_TrailMgr;
 irr::scene::ISceneNode* GS3DStuff::skyBox;
+irr::scene::ISceneNode* GS3DStuff::city;
 irr::video::ITexture* GS3DStuff::skyBoxTexture;
 OctTreeAABB* GS3DStuff::sceneOcttree;
 Structs::PhonePerformanceProfile GS3DStuff::s_phonePerformanceProfile;
@@ -646,6 +650,54 @@ irr::video::ITexture* GS3DStuff::getSkyBoxTexture() { return skyBoxTexture; }
 char* GS3DStuff::getTextureNameSuffix() { return s_phonePerformanceProfile.textureNameSuffix; }
 OctTreeAABB* GS3DStuff::getSceneOctTree() { return sceneOcttree; }
 void GS3DStuff::draw2d(const StateMachine*) {}
+
+void GS3DStuff::loadCityGameObjects(const WorldDescriptor& descriptor, bool spawnPointsOnly)
+{
+    World::GetInstance()->AddFromDescriptor(descriptor, spawnPointsOnly);
+}
+
+namespace {
+const char cityPropsAlpha[] = "props_alpha.tga";
+const char cityPropsAlphaAlt[] = "props_alpha_01.tga";
+}
+
+void GS3DStuff::loadCityPart(const WorldDescriptor& descriptor, irr::scene::ISceneNode*& parent)
+{
+    irr::IrrlichtDevice* device = Application::GetInstance()->GetDevice();
+    irr::scene::ISceneManager* manager = device->getSceneManager();
+    irr::video::IVideoDriver* driver = device->getVideoDriver();
+    irr::scene::ISceneNode* node = irr::collada::CColladaDatabase::constructScene(
+        descriptor.scenePath, &irr::collada::CColladaDatabase::DefaultFactory);
+    if (!node)
+        return;
+
+    SetMaterialTypeCondition(node, irr::video::MaterialType15, driver->getTexture(cityPropsAlpha));
+    SetMaterialTypeCondition(node, irr::video::MaterialType15, driver->getTexture(cityPropsAlphaAlt));
+    AddXRef(node);
+    SetMaterialFlag(node, irr::video::MaterialFlag2, true);
+    SetMaterialFlag(node, irr::video::MaterialFlag4, true);
+    SetMaterialFlag(node, irr::video::MaterialFlag16, true);
+    SetMaterialFiltering(node, false, true);
+    SetCulling(node, irr::scene::EAC_FRUSTUM_BOX);
+    if (!parent)
+        parent = manager->addEmptySceneNode(0, -1);
+    parent->addChild(node);
+    node->drop();
+}
+
+void GS3DStuff::loadCityVisual(const WorldDescriptor& descriptor)
+{
+    loadCityPart(descriptor, city);
+}
+
+irr::scene::ISceneNode* GS3DStuff::loadCityPart(const char* path)
+{
+    World* world = World::GetInstance();
+    WorldDescriptor descriptor(path);
+    world->AddFromDescriptor(descriptor, false);
+    loadCityPart(descriptor, city);
+    return city;
+}
 
 struct GS3DLightNodes {
     void* data;

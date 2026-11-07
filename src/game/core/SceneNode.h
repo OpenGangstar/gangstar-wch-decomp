@@ -30,7 +30,7 @@ struct SMaterial;
 class IVideoDriver;
 class ITexture;
 // Numeric values are observed; enumerator names are reconstruction labels.
-enum E_MATERIAL_TYPE { MaterialType13 = 13 };
+enum E_MATERIAL_TYPE { MaterialType13 = 13, MaterialType15 = 15 };
 enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
 }
 class IReferenceCounted {
@@ -52,7 +52,7 @@ public:
 }
 namespace core { template<class T> class irrAllocator; template<class T, class A> class string; }
 namespace scene {
-enum E_CULLING_TYPE { EAC_OFF = 0, EAC_BOX = 1 };
+enum E_CULLING_TYPE { EAC_OFF = 0, EAC_BOX = 1, EAC_FRUSTUM_BOX = 2 };
 enum E_OPTION_FLAG { SceneOption1 = 1 };
 enum ESCENE_NODE_TYPE { ESNT_ANY = 0x5f796e61 };
 enum E_SCENE_NODE_RENDER_PASS { RenderPass6 = 6 };
@@ -203,7 +203,8 @@ public:
     virtual void unknown18(); virtual void unknown19(); virtual void unknown20();
     virtual void unknown21(); virtual void unknown22(); virtual void unknown23();
     virtual void unknown24(); virtual void unknown25(); virtual void unknown26();
-    virtual void unknown27(); virtual void unknown28(); virtual void unknown29();
+    virtual void unknown27(); virtual void unknown28();
+    virtual ISceneNode* addEmptySceneNode(ISceneNode* parent, int id);
     virtual void unknown30(); virtual void unknown31(); virtual void unknown32();
     virtual void unknown33(); virtual void unknown34(); virtual void unknown35();
     virtual void unknown36();
