@@ -14,6 +14,8 @@
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
 
+irr::scene::ITimelineController* Character::s_timelineController;
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_4() __attribute__((used));
@@ -94,9 +96,23 @@ void Character::setVehicle(Vehicle* value)
     vehicle = value;
 }
 
+void Character::cleanTimelineController()
+{
+    if (s_timelineController) {
+        s_timelineController->drop();
+        s_timelineController = 0;
+    }
+}
+
 void Character::setAnimationSpeedMultiplier(int speed)
 {
     animationSpeedMultiplier = speed;
+}
+
+void Character::setAnimation(const char* name, int speed, bool a, bool b, bool c)
+{
+    const int id = s_timelineController->getClipIndex(name);
+    setAnimation(id, static_cast<float>(speed), a, b, c);
 }
 
 void Character::resetAnimation()
@@ -170,6 +186,14 @@ void Character::setNextAnimation(int id, int, bool, bool, bool)
 {
     if (!(movementFlags & 0x800u))
         nextAnimation = id;
+}
+
+void Character::setNextAnimation(const char* name, int speed, bool a, bool b, bool c)
+{
+    if (!(movementFlags & 0x800u)) {
+        const int id = s_timelineController->getClipIndex(name);
+        setNextAnimation(id, speed, a, b, c);
+    }
 }
 
 void Character::setDestination(const irr::core::vector3d<float>& point, int limit)
