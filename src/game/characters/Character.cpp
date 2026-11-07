@@ -279,6 +279,35 @@ static void _GLOBAL__I__ZN9Character20s_timelineControllerE()
 }
 }
 
+bool Character::isFacingTarget(LevelObject* object)
+{
+    const float threshold = s_type[object->getObjectType()] == 3 ? 0.95f : 0.99f;
+    irr::core::vector3d<float> direction = object->GetPosition() - GetPosition();
+    direction.Z = 0.0f;
+    direction.normalize();
+
+    irr::core::vector3d<float> front = GetFront();
+    front.Z = 0.0f;
+    front.normalize();
+    return front.dotProduct(direction) > threshold;
+}
+
+bool Character::turnTowardTarget(LevelObject* object, float step)
+{
+    using irr::core::quaternion;
+    using irr::core::vector3d;
+
+    vector3d<float> direction = GetPosition() - object->GetPosition();
+    direction.normalize();
+    const vector3d<float> right = GetRight();
+    const float dot = right.dotProduct(direction);
+    const float sign = dot > 0.0f ? 1.0f : -1.0f;
+    const float radiansPerDegree = 0.017453292519943295f;
+    sceneNode->setRotation(sceneNode->getRotation()
+        * quaternion(0.0f, 0.0f, sign * step * -radiansPerDegree));
+    return dot < 0.01f && dot > -0.01f;
+}
+
 void Character::turnTowardTarget(float step)
 {
     if (target && !isFacingTarget(target))

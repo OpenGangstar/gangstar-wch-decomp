@@ -26,6 +26,7 @@ public:
     quaternion(float x, float y, float z) { set(x, y, z); }
     quaternion(const vector3d<float>& v) { set(v.X, v.Y, v.Z); }
     quaternion& set(float x, float y, float z) __attribute__((weak));
+    quaternion operator*(const quaternion& other) const __attribute__((weak));
 };
 } }
 
