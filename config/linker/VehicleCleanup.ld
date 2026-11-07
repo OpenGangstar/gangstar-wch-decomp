@@ -2,8 +2,24 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+strcmp = 0x001c4658;
 SECTIONS
 {
+    .vehicle_low_enter_clip 0x0041def8 : { *(.rodata.*lowVehicleEnterClip*) }
+    .vehicle_is_low_vehicle 0x00308ef0 : { *(.text._ZN7Vehicle12isLowVehicleEv) }
+    .vehicle_get_seated_animation 0x00308f1c : { *(.text._ZN7Vehicle18getSeatedAnimationEv) }
+    .vehicle_get_right_thrown_animation 0x00308f34 : { *(.text._ZN7Vehicle23getRightThrownAnimationEv) }
+    .vehicle_get_left_thrown_animation 0x00308f4c : { *(.text._ZN7Vehicle22getLeftThrownAnimationEv) }
+    .vehicle_get_right_throw_animation 0x00308f64 : { *(.text._ZN7Vehicle22getRightThrowAnimationEv) }
+    .vehicle_get_left_throw_animation 0x00308f7c : { *(.text._ZN7Vehicle21getLeftThrowAnimationEv) }
+    .vehicle_get_right_eject_animation 0x00308f94 : { *(.text._ZN7Vehicle22getRightEjectAnimationEv) }
+    .vehicle_get_left_eject_animation 0x00308fa4 : { *(.text._ZN7Vehicle21getLeftEjectAnimationEv) }
+    .vehicle_get_right_exit_animation 0x00308fb4 : { *(.text._ZN7Vehicle21getRightExitAnimationEv) }
+    .vehicle_get_left_exit_animation 0x00308fcc : { *(.text._ZN7Vehicle20getLeftExitAnimationEv) }
+    .vehicle_get_right_close_door_from_inside_animation 0x00308fe4 : { *(.text._ZN7Vehicle36getRightCloseDoorFromInsideAnimationEv) }
+    .vehicle_get_left_close_door_from_inside_animation 0x00308ffc : { *(.text._ZN7Vehicle35getLeftCloseDoorFromInsideAnimationEv) }
+    .vehicle_get_right_enter_animation 0x00309014 : { *(.text._ZN7Vehicle22getRightEnterAnimationEv) }
+    .vehicle_get_left_enter_animation 0x0030902c : { *(.text._ZN7Vehicle21getLeftEnterAnimationEv) }
     .vehicle_set_door_anim 0x0030a52c : { *(.text._ZN7Vehicle11setDoorAnimEPKcb) }
     .vehicle_close_door 0x0030a58c : { *(.text._ZN7Vehicle9closeDoorEb) }
     .vehicle_skinning 0x00309170 : { *(.text._ZN7Vehicle14enableSkinningEb) }
