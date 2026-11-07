@@ -10571,12 +10571,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307ed5	0x30	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4waitEi	Vehicle::wait(int)
 0x00307f05	0x18	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6freezeEv	Vehicle::freeze()
 0x00307f1d	0xc	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15_notifyTargetedEbP9Character	Vehicle::_notifyTargeted(bool, Character*)
-0x00307f29	0x8	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle15getPathToFollowEv	Vehicle::getPathToFollow() const
-0x00307f31	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle18setCurrentWaypointEi	Vehicle::setCurrentWaypoint(int)
-0x00307f39	0x8	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle18getCurrentWaypointEv	Vehicle::getCurrentWaypoint() const
-0x00307f41	0x28	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16loopPathToFollowEb	Vehicle::loopPathToFollow(bool)
-0x00307f69	0x1c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15setPathToFollowEPK4Path	Vehicle::setPathToFollow(Path const*)
-0x00307f85	0xc	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle23isLoopingOnPathToFollowEv	Vehicle::isLoopingOnPathToFollow() const
+0x00307f29	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle15getPathToFollowEv	Vehicle::getPathToFollow() const
+0x00307f31	0x8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle18setCurrentWaypointEi	Vehicle::setCurrentWaypoint(int)
+0x00307f39	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle18getCurrentWaypointEv	Vehicle::getCurrentWaypoint() const
+0x00307f41	0x28	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle16loopPathToFollowEb	Vehicle::loopPathToFollow(bool)
+0x00307f69	0x1c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle15setPathToFollowEPK4Path	Vehicle::setPathToFollow(Path const*)
+0x00307f85	0xc	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle23isLoopingOnPathToFollowEv	Vehicle::isLoopingOnPathToFollow() const
 0x00307f91	0x2	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14AddTurboSoundsEv	Vehicle::AddTurboSounds()
 0x00307f95	0x2	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle19Init4CylTurboSoundsEv	Vehicle::Init4CylTurboSounds()
 0x00307f99	0x2	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle19InitSuperbikeSoundsEv	Vehicle::InitSuperbikeSounds()

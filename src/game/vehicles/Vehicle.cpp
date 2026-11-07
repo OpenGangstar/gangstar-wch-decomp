@@ -8,7 +8,43 @@
  * functions of Vehicle.cpp here, in the order they appear in the library.
  */
 
+#include "Vehicle.h"
 #include "../core/LocalStringStartupStorage.h"
+
+const Path* Vehicle::getPathToFollow() const
+{
+    return pathToFollow;
+}
+
+void Vehicle::setCurrentWaypoint(int waypoint)
+{
+    currentWaypoint = waypoint;
+}
+
+int Vehicle::getCurrentWaypoint() const
+{
+    return currentWaypoint;
+}
+
+void Vehicle::loopPathToFollow(bool loop)
+{
+    if (loop)
+        flags344 |= 0x04000000u;
+    else
+        flags344 &= ~0x04000000u;
+}
+
+void Vehicle::setPathToFollow(const Path* path)
+{
+    currentWaypoint = 0;
+    pathToFollow = path;
+    loopPathToFollow(false);
+}
+
+bool Vehicle::isLoopingOnPathToFollow() const
+{
+    return (flags344 & 0x04000000u) != 0;
+}
 
 void operator delete(void*) throw();
 

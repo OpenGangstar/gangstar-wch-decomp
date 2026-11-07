@@ -26,11 +26,15 @@ public:
     void setCurrentWaypoint(int waypoint);
     bool isLoopingOnPathToFollow() const;
     void setSpeed();
+    void loopPathToFollow(bool loop);
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
     friend class Race;
-    unsigned char unknown52[292];
+    unsigned char unknown52[248];
+    const Path* pathToFollow;
+    int currentWaypoint;
+    unsigned char unknown308[36];
     unsigned int flags344;
     unsigned char unknown348[73];
     unsigned char explosionFlag;
