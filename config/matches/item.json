@@ -329,6 +329,8 @@
         "level-object"
     ],
     "external_thumb_functions": [
+        "_ZN17GameObjectManager7despawnEP11LevelObject",
+        "_ZN17GameObjectManager8GetFirstEi",
         "_ZN5World11GetInstanceEv",
         "_ZN5World17AddFromDescriptorERK15WorldDescriptorb",
         "_ZN15WorldDescriptorC1EPKc",

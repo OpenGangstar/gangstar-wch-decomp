@@ -3,6 +3,7 @@
 #include "../core/Vector3.h"
 namespace Structs { struct SpawnPoint; }
 class SpawnPoint;
+class LevelObject;
 struct SpawnPointList {
     struct Node { Node* next; Node* previous; SpawnPoint* value; };
     Node* head;
@@ -17,6 +18,7 @@ public:
     virtual ~SpawnPoint();
     void Load(const Structs::SpawnPoint&);
     static void UpdateSpawnCenters();
+    static void releaseSpawnObject(LevelObject* object);
     const irr::core::vector3d<float>& getPosition() const { return position; }
 
     struct Center { float x, y, z; };

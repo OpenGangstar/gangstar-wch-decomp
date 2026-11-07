@@ -28,6 +28,7 @@ public:
     void LoadMetatypes();
     void LoadSpawnPoints(const char* filename);
     void Load(char* filename);
+    LevelObject* despawn(LevelObject* object);
     LevelObject* GetGameObjectByName(const char* name, bool respawnDead) const;
     static GameObjectManager* s_gom;
 private:

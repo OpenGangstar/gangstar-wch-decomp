@@ -103,7 +103,12 @@ public:
     unsigned int flags240;
     unsigned char unknown244[20];
     LevelObject* target;
-    unsigned char unknown268[115];
+    unsigned char unknown268[44];
+    LevelObject* unknown312;
+    LevelObject* unknown316;
+    unsigned char unknown320[48];
+    LevelObject* unknown368;
+    unsigned char unknown372[11];
     bool flag383;
     unsigned char unknown384[36];
     int cash;

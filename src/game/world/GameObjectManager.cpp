@@ -15,6 +15,8 @@
 #include "Path.h"
 #include "SpawnPoint.h"
 #include "../app/CGameFactory.h"
+#include "../app/Application.h"
+#include "../characters/NPCDespawnEvent.h"
 #include "../ai/NPC.h"
 #include "../vehicles/Vehicle.h"
 #include "../combat/Weapon.h"
@@ -23,6 +25,8 @@
 #include "../ui/Shop.h"
 #include "../meta/Item.h"
 #include "../core/SceneCamera.h"
+#include "../core/EventManager.h"
+#include "../core/Lock.h"
 #include "../persistence/DataStream.h"
 #include "../persistence/BufferStream.h"
 
@@ -439,6 +443,33 @@ LevelObject* GameObjectManager::RemoveAndDestroy(LevelObject* object)
     if (!object) return 0;
     RemoveGameObjectOfType(LevelObject::s_type[object->getObjectType()]);
     return object->objectList->RemoveAndDestroy(object);
+}
+
+LevelObject* GameObjectManager::despawn(LevelObject* object)
+{
+    if (Lock::getInstance()->target == object)
+        Lock::getInstance()->setTarget(0);
+
+    int type = LevelObject::s_type[object->getObjectType()];
+    if (type == 5 || type == 3) {
+        EventManager* events = Application::GetInstance()->GetEventManager();
+        EvNPCDespawn event(object);
+        events->raise(event);
+    }
+
+    if (object->getName()) {
+        LevelObject* next = object->next;
+        object->disable();
+        return next;
+    }
+
+    object->OnDespawn();
+    type = LevelObject::s_type[object->getObjectType()];
+    if (type == 5 || type == 3) {
+        SpawnPoint::releaseSpawnObject(object);
+        return Remove(object);
+    }
+    return RemoveAndDestroy(object);
 }
 
 GameObjectManager::~GameObjectManager()

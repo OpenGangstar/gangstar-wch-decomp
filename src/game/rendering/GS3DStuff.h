@@ -86,6 +86,8 @@ public:
     static void loadCityVisual(const WorldDescriptor& descriptor);
     static void loadCityPart(const WorldDescriptor& descriptor, irr::scene::ISceneNode*& parent);
     static irr::scene::ISceneNode* loadCityPart(const char* path);
+    static void forceDespawn(LevelObject* object);
+    static void forceDespawn(int type);
 
     static BulletTraceManager* s_bulletManager;
     static TrailMgr* s_TrailMgr;
