@@ -11,6 +11,7 @@
 #include "Vehicle.h"
 #include "../audio/SoundManager.h"
 #include "../core/LocalStringStartupStorage.h"
+#include "../core/NativeStrings.h"
 #include "../rendering/GS3DStuff.h"
 
 namespace irr { namespace collada {
@@ -77,6 +78,80 @@ namespace {
 const char openDoorClip[] = "car_open_door";
 const char closeDoorClip[] = "car_close_door";
 const char exitCarClip[] = "car_exit_car";
+const char lowVehicleEnterClip[] = "car_enter_car_low";
+}
+
+bool Vehicle::isLowVehicle()
+{
+    return strcmp(lowVehicleEnterClip, enterAnim) == 0;
+}
+
+int Vehicle::getSeatedAnimation()
+{
+    return isLowVehicle() ? 25 : 24;
+}
+
+int Vehicle::getRightThrownAnimation()
+{
+    return isLowVehicle() ? 33 : 31;
+}
+
+int Vehicle::getLeftThrownAnimation()
+{
+    return isLowVehicle() ? 32 : 30;
+}
+
+int Vehicle::getRightThrowAnimation()
+{
+    return isLowVehicle() ? 29 : 27;
+}
+
+int Vehicle::getLeftThrowAnimation()
+{
+    return isLowVehicle() ? 28 : 26;
+}
+
+int Vehicle::getRightEjectAnimation()
+{
+    // The retail eject selectors check vehicle height even though the clip is fixed.
+    isLowVehicle();
+    return 8;
+}
+
+int Vehicle::getLeftEjectAnimation()
+{
+    isLowVehicle();
+    return 7;
+}
+
+int Vehicle::getRightExitAnimation()
+{
+    return isLowVehicle() ? 16 : 14;
+}
+
+int Vehicle::getLeftExitAnimation()
+{
+    return isLowVehicle() ? 15 : 13;
+}
+
+int Vehicle::getRightCloseDoorFromInsideAnimation()
+{
+    return isLowVehicle() ? 4 : 2;
+}
+
+int Vehicle::getLeftCloseDoorFromInsideAnimation()
+{
+    return isLowVehicle() ? 3 : 1;
+}
+
+int Vehicle::getRightEnterAnimation()
+{
+    return isLowVehicle() ? 12 : 10;
+}
+
+int Vehicle::getLeftEnterAnimation()
+{
+    return isLowVehicle() ? 11 : 9;
 }
 
 void doorTransitionCallback(irr::scene::ITimelineController* timeline, void* data)
