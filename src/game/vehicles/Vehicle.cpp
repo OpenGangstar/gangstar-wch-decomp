@@ -24,6 +24,25 @@ public:
 };
 } }
 
+namespace {
+const unsigned int photographedFlag = 1u << 15;
+}
+
+void __attribute__((weak)) Vehicle::photographed()
+{
+    flags344 |= photographedFlag;
+}
+
+void __attribute__((weak)) Vehicle::clearPhotographed()
+{
+    flags344 &= ~photographedFlag;
+}
+
+bool __attribute__((weak)) Vehicle::isPhotographed() const
+{
+    return (flags344 & photographedFlag) != 0;
+}
+
 void Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
 {
 }

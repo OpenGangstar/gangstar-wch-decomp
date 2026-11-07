@@ -6,6 +6,9 @@ strcmp = 0x001c4658;
 puts = 0x001c41b4;
 SECTIONS
 {
+    .vehicle_photographed 0x00307b20 : { *(.text._ZN7Vehicle12photographedEv) }
+    .vehicle_clear_photographed 0x00307b30 : { *(.text._ZN7Vehicle17clearPhotographedEv) }
+    .vehicle_is_photographed 0x00307b44 : { *(.text._ZNK7Vehicle14isPhotographedEv) }
     .vehicle_show_wheels 0x00309078 : { *(.text._ZN7Vehicle10showWheelsEv) }
     .vehicle_hide_wheels 0x003090b0 : { *(.text._ZN7Vehicle10hideWheelsEv) }
     .vehicle_no_animators_message 0x0041f4b0 : { *(.rodata.*noAnimatorsMessage*) }

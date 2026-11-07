@@ -12,6 +12,10 @@ public:
     void explode();
     bool hasExplosionFlag() const { return explosionFlag != 0; }
     Vehicle(int type);
+    virtual ~Vehicle();
+    virtual void photographed();
+    virtual void clearPhotographed();
+    virtual bool isPhotographed() const;
     void Load(const Structs::Car&);
     void initializeDriver();
     void UpdatePhysic(float);

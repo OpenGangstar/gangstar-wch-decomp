@@ -25,6 +25,9 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle12photographedEv",
+        "_ZN7Vehicle17clearPhotographedEv",
+        "_ZNK7Vehicle14isPhotographedEv",
         {
             "name": "__tcf_4",
             "address": "0x00308015"

@@ -25,6 +25,9 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC12photographedEv",
+        "_ZN3NPC17clearPhotographedEv",
+        "_ZNK3NPC14isPhotographedEv",
         "_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE",
         "_ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE",
         "_ZN3NPC14walkToLocationERKN3irr4core8vector3dIfEE",

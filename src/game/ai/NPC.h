@@ -9,6 +9,9 @@ class NPC : public Character {
 public:
     NPC(int type);
     virtual ~NPC();
+    virtual void photographed();
+    virtual void clearPhotographed();
+    virtual bool isPhotographed() const;
     void Load(const Structs::NPC&);
     bool isCop();
     const Path* getPathToFollow() const;
