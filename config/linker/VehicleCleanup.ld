@@ -4,6 +4,10 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .vehicle_left_door 0x00307e40 : { *(.text._ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE) }
+    .vehicle_door_opened 0x00307e58 : { *(.text._ZNK7Vehicle12isDoorOpenedEb) }
+    .vehicle_door_closed 0x00307e78 : { *(.text._ZNK7Vehicle12isDoorClosedEb) }
+    .vehicle_door_anim 0x00307e94 : { *(.text._ZNK7Vehicle10isDoorAnimEPKcb) }
     .vehicle_shift_weight 0x00307e10 : { *(.text._ZN7Vehicle12_shiftWeightERN3irr4core8vector3dIfEEf) }
     .vehicle_enter_anim 0x00307e14 : { *(.text._ZNK7Vehicle12getEnterAnimEv) }
     .vehicle_exit_anim 0x00307e1c : { *(.text._ZNK7Vehicle11getExitAnimEv) }

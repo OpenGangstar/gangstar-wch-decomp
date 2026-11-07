@@ -10564,10 +10564,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307e1d	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle11getExitAnimEv	Vehicle::getExitAnim() const
 0x00307e25	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle16getCloseDoorAnimEv	Vehicle::getCloseDoorAnim() const
 0x00307e2d	0x14	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle14toggleInteriorEb	Vehicle::toggleInterior(bool)
-0x00307e41	0x16	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE	Vehicle::isLeftDoor(irr::scene::ISceneNode const*) const
-0x00307e59	0x20	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle12isDoorOpenedEb	Vehicle::isDoorOpened(bool) const
-0x00307e79	0x1c	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle12isDoorClosedEb	Vehicle::isDoorClosed(bool) const
-0x00307e95	0x3e	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle10isDoorAnimEPKcb	Vehicle::isDoorAnim(char const*, bool) const
+0x00307e41	0x16	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE	Vehicle::isLeftDoor(irr::scene::ISceneNode const*) const
+0x00307e59	0x20	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle12isDoorOpenedEb	Vehicle::isDoorOpened(bool) const
+0x00307e79	0x1c	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle12isDoorClosedEb	Vehicle::isDoorClosed(bool) const
+0x00307e95	0x3e	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle10isDoorAnimEPKcb	Vehicle::isDoorAnim(char const*, bool) const
 0x00307ed5	0x30	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4waitEi	Vehicle::wait(int)
 0x00307f05	0x18	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6freezeEv	Vehicle::freeze()
 0x00307f1d	0xc	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle15_notifyTargetedEbP9Character	Vehicle::_notifyTargeted(bool, Character*)

@@ -59,7 +59,11 @@
         "_ZN7Vehicle24InitV12LamborghiniSoundsEv",
         "_ZN7Vehicle16setHasBeenStolenEv",
         "_ZN7Vehicle16getHasBeenStolenEv",
-        "_ZN7Vehicle11getUniqueIdEv"
+        "_ZN7Vehicle11getUniqueIdEv",
+        "_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE",
+        "_ZNK7Vehicle12isDoorOpenedEb",
+        "_ZNK7Vehicle12isDoorClosedEb",
+        "_ZNK7Vehicle10isDoorAnimEPKcb"
     ],
     "sections": [
         ".vehicle_cleanup_0",
@@ -88,7 +92,11 @@
         ".vehicle_init_v12",
         ".vehicle_set_stolen",
         ".vehicle_get_stolen",
-        ".vehicle_unique_id"
+        ".vehicle_unique_id",
+        ".vehicle_left_door",
+        ".vehicle_door_opened",
+        ".vehicle_door_closed",
+        ".vehicle_door_anim"
     ],
     "retail_got": true,
     "external_thumb_functions": [

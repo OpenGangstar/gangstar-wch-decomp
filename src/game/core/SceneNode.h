@@ -148,7 +148,7 @@ public:
     virtual void unknown4(); virtual void unknown5(); virtual void unknown6();
     virtual void unknown7(); virtual void unknown8(); virtual void unknown9();
     virtual void unknown10(); virtual void unknown11(); virtual void unknown12();
-    virtual void unknown13(); virtual void unknown14(); virtual void unknown15();
+    virtual void unknown13(); virtual int getCurrentClipIndex() const; virtual void unknown15();
     virtual void setLoop(bool loop);
     unsigned int unknown4Data;
     void (*callback)(ITimelineController*, void*);
@@ -162,7 +162,7 @@ public:
     virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
     virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
     virtual void unknown9(); virtual void unknown10(); virtual void unknown11();
-    virtual void unknown12(); virtual void unknown13(); virtual void unknown14();
+    virtual void unknown12(); virtual void unknown13(); virtual int getAnimationClipIndex(const char* name);
     virtual void unknown15(); virtual void unknown16();
     virtual ITimelineController* getTimelineCtrl();
 };
