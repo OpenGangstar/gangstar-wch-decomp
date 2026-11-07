@@ -16,6 +16,7 @@
 
 irr::scene::ITimelineController* Character::s_timelineController;
 
+extern "C" float acosf(float);
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_4() __attribute__((used));
@@ -312,6 +313,34 @@ void Character::turnTowardTarget(float step)
 {
     if (target && !isFacingTarget(target))
         turnTowardTarget(target, step);
+}
+
+bool Character::isTargetInRange(float range, float degrees)
+{
+    if (!target)
+        return false;
+
+    irr::core::vector3d<float> direction = target->GetPosition() - GetPosition();
+    if (direction.getLength() <= range) {
+        direction.normalize();
+        const irr::core::vector3d<float> front = GetFront();
+        // The retail check squares the vertical component of the target direction.
+        const float dot = direction.X * front.X + direction.Y * front.Y + direction.Z * direction.Z;
+        const float lower = -1.0f;
+        const float upper = 1.0f;
+        const float* bounded = dot < lower ? &lower : &dot;
+        bounded = *bounded < upper ? bounded : &upper;
+        const float degreesPerRadian = 180.0f / 3.14159265358979323846f;
+        const float angle = acosf(*bounded) * degreesPerRadian;
+        const float minimum = -degrees;
+        if (angle < degrees) {
+            bool within = false;
+            if (angle > minimum)
+                within = true;
+            return within;
+        }
+    }
+    return false;
 }
 
 namespace {
