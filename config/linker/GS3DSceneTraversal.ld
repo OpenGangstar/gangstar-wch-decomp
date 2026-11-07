@@ -1,4 +1,6 @@
 SECTIONS {
+    .gs_set_material_filtering 0x002dc4a8 : { *gs3d-stuff.o(.text._ZN9GS3DStuff20SetMaterialFilteringEPN3irr5scene10ISceneNodeEbb) }
+    .gs_set_material 0x002dd780 : { *gs3d-stuff.o(.text._ZN9GS3DStuff11SetMaterialEPN3irr5scene10ISceneNodeEPNS0_5video9SMaterialE) }
     .gs_shape_def_delete 0x002db47c : { *gs3d-stuff.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
     .gs_shape_def_dtor 0x002db49c : { *gs3d-stuff.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
     .gs_polygon_def_dtor 0x002df3f4 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }

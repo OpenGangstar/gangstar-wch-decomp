@@ -33,6 +33,18 @@ public:
     virtual void unlock() = 0;
     virtual const core::dimension2d<int>& getOriginalSize() const = 0;
     virtual const core::dimension2d<int>& getSize() const = 0;
+
+    inline void setMinFilter(unsigned char filter);
+    inline void setMagFilter(unsigned char filter);
+    inline void setLodBias(float bias);
+private:
+    unsigned char unknown4[32];
+    unsigned char minFilter;
+    unsigned char magFilter;
+    unsigned char unknown38[6];
+    float lodBias;
+    unsigned char unknown48[8];
+    unsigned int filterDirtyFlags;
 };
 struct SMaterialLayer {
     SMaterialLayer() : matrix(0) {}
@@ -52,6 +64,7 @@ struct SMaterial {
     }
     // Native leaves this in r0; fluent return type inferred, callers ignore it.
     SMaterial& setFlag(E_MATERIAL_FLAG, bool) __attribute__((weak));
+    SMaterial& operator=(const SMaterial&) __attribute__((weak));
     void setType(int value) { if(type!=value) {dirtyFlags|=1;type=value;} }
     unsigned int unknown0;
     int type;
