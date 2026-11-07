@@ -8,10 +8,44 @@
  * functions of World.cpp here, in the order they appear in the library.
  */
 
-// Recovered translation-unit SDK and AI startup callbacks.
+#include "World.h"
+#include "WorldDescriptor.h"
+#include "GameObjectManager.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
+World::World() : unknown8(0), unknown12(0), flags(0) {}
+
+bool World::GetGameObjectByName(GameObject**, int&, const char*)
+{
+    return false;
+}
+
+World::~World() {}
+
+World* World::GetInstance()
+{
+    static World world;
+    return &world;
+}
+
+void World::AddFromDescriptor(const WorldDescriptor& descriptor, bool spawnPointsOnly)
+{
+    flags |= descriptor.flags;
+    unknown8 = 1;
+    if (!spawnPointsOnly)
+        GameObjectManager::s_gom->Load(descriptor.objectsPath);
+    else
+        GameObjectManager::s_gom->LoadSpawnPoints(descriptor.objectsPath);
+}
+
+void World::Init(const WorldDescriptor& descriptor)
+{
+    AddFromDescriptor(descriptor, false);
+    flags = descriptor.flags;
+}
+
+// Recovered translation-unit SDK and AI startup callbacks.
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_4() __attribute__((used));

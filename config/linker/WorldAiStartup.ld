@@ -3,6 +3,8 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-world/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 _ZN24retail_world_transitions16civPassive_transE = 0x00421228;
 _ZN24retail_world_transitions17scriptedNpc_transE = 0x00421354;
 _ZN24retail_world_transitions19civAggressive_transE = 0x00421384;
@@ -15,6 +17,17 @@ _ZN24retail_world_transitions11guard_transE = 0x004216fc;
 _ZN24retail_world_transitions22scripted_vehicle_transE = 0x004217a4;
 SECTIONS
 {
+    .world_ctor 0x003227e0 : { *ai-startup-world.o(.text._ZN5WorldC1Ev .text._ZN5WorldC2Ev) }
+    .world_find_by_name 0x00322800 : { *ai-startup-world.o(.text._ZN5World19GetGameObjectByNameEPP10GameObjectRiPKc) }
+    .world_delete 0x00322834 : { *ai-startup-world.o(.text._ZN5WorldD0Ev) }
+    .world_dtor 0x00322854 : { *ai-startup-world.o(.text._ZN5WorldD1Ev .text._ZN5WorldD2Ev) }
+    .world_cleanup 0x0032286c : { *ai-startup-world.o(.text.__tcf_0) }
+    .world_instance 0x00322888 : { *ai-startup-world.o(.text._ZN5World11GetInstanceEv) }
+    .world_add 0x003228dc : { *ai-startup-world.o(.text._ZN5World17AddFromDescriptorERK15WorldDescriptorb) }
+    .world_init 0x0032291c : { *ai-startup-world.o(.text._ZN5World4InitERK15WorldDescriptor) }
+    .world_vtable 0x004abd58 : { *ai-startup-world.o(.data.rel.ro._ZTV5World .data.rel.ro) }
+    .world_guard 0x004b9048 (NOLOAD) : { *ai-startup-world.o(.bss._ZGVZN5World11GetInstanceEvE5world) }
+    .world_storage 0x004b904c (NOLOAD) : { *ai-startup-world.o(.bss._ZZN5World11GetInstanceEvE5world) }
     .ai_startup_function_0 0x00322804 : { *ai-startup-world.o(.text.__tcf_4) }
     .ai_startup_function_1 0x00322934 : { *ai-startup-world.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00322a78 : { *ai-startup-world.o(.text._GLOBAL__I__ZN5WorldC2Ev) }
@@ -46,3 +59,6 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.world_vtable) == 16, "World vtable extent");
+ASSERT(SIZEOF(.world_guard) == 4, "World singleton guard extent");
+ASSERT(SIZEOF(.world_storage) == 20, "World singleton extent");

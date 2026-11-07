@@ -25,6 +25,20 @@
     "source": "src/game/world/World.cpp",
     "linker_script": "config/linker/WorldAiStartup.ld",
     "functions": [
+        "_ZN5WorldC1Ev",
+        "_ZN5WorldC2Ev",
+        "_ZN5World19GetGameObjectByNameEPP10GameObjectRiPKc",
+        "_ZN5WorldD0Ev",
+        "_ZN5WorldD1Ev",
+        "_ZN5WorldD2Ev",
+        {
+            "name": "__tcf_3",
+            "address": "0x0032286d",
+            "compiled_name": "__tcf_0"
+        },
+        "_ZN5World11GetInstanceEv",
+        "_ZN5World17AddFromDescriptorERK15WorldDescriptorb",
+        "_ZN5World4InitERK15WorldDescriptor",
         {
             "name": "__tcf_4",
             "address": "0x00322805"
@@ -39,6 +53,7 @@
         }
     ],
     "sections": [
+        ".world_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +63,9 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN17GameObjectManager4LoadEPc",
+        "_ZN17GameObjectManager15LoadSpawnPointsEPKc"
+    ]
 }
