@@ -37,10 +37,13 @@ struct b2BodyDef {
 
 class b2ShapeDef {
 public:
-    virtual ~b2ShapeDef();
+    virtual ~b2ShapeDef() {}
 };
 
-class b2PolygonDef : public b2ShapeDef {};
+class b2PolygonDef : public b2ShapeDef {
+public:
+    virtual ~b2PolygonDef() __attribute__((used)) {}
+};
 
 class CollisionBodyDef {
 public:

@@ -1,4 +1,10 @@
 SECTIONS {
+    .gs_shape_def_delete 0x002db47c : { *gs3d-stuff.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
+    .gs_shape_def_dtor 0x002db49c : { *gs3d-stuff.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
+    .gs_polygon_def_dtor 0x002df3f4 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
+    .gs_polygon_def_delete 0x002df628 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
+    .gs_polygon_def_vtable 0x004a8ac8 : { *gs3d-stuff.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
+    .gs_shape_def_vtable 0x004a8ad8 : { *gs3d-stuff.o(.gnu.linkonce.d.rel.ro._ZTV10b2ShapeDef) }
     .gs_set_material_type_condition 0x002dc41c : { *gs3d-stuff.o(.text._ZN9GS3DStuff24SetMaterialTypeConditionEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEEPNS4_8ITextureE) }
     .gs_collision_body_def_dtor 0x002db304 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN16CollisionBodyDefD1Ev) }
     .gs_octree_dtor 0x002dd6e0 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABBD1Ev) }
