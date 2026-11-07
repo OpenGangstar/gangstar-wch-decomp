@@ -10959,17 +10959,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00322581	0x3c	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4NodeESaIS2_EE6resizeEjRKS2_	std::vector<SceneNodeManager::Node*, std::allocator<SceneNodeManager::Node*> >::resize(unsigned int, SceneNodeManager::Node* const&)
 0x003225bd	0xd0	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager4Pool6extendEi	SceneNodeManager::Pool::extend(int)
 0x0032268d	0x154	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE	SceneNodeManager::findOrCreatePool(char const*, int, irr::collada::CColladaFactory*)
-0x003227e1	0x20	World.cpp	game	world	pending	_ZN5WorldC2Ev	World::World()
-0x003227e1	0x20	World.cpp	game	world	pending	_ZN5WorldC1Ev	World::World()
-0x00322801	0x4	World.cpp	game	world	pending	_ZN5World19GetGameObjectByNameEPP10GameObjectRiPKc	World::GetGameObjectByName(GameObject**, int&, char const*)
+0x003227e1	0x20	World.cpp	game	world	matched	_ZN5WorldC2Ev	World::World()
+0x003227e1	0x20	World.cpp	game	world	matched	_ZN5WorldC1Ev	World::World()
+0x00322801	0x4	World.cpp	game	world	matched	_ZN5World19GetGameObjectByNameEPP10GameObjectRiPKc	World::GetGameObjectByName(GameObject**, int&, char const*)
 0x00322805	0x30	World.cpp	game	world	matched	__tcf_4	__tcf_4
-0x00322835	0x20	World.cpp	game	world	pending	_ZN5WorldD0Ev	World::~World()
-0x00322855	0x18	World.cpp	game	world	pending	_ZN5WorldD1Ev	World::~World()
-0x00322855	0x18	World.cpp	game	world	pending	_ZN5WorldD2Ev	World::~World()
-0x0032286d	0x1c	World.cpp	game	world	pending	__tcf_3	__tcf_3
-0x00322889	0x54	World.cpp	game	world	pending	_ZN5World11GetInstanceEv	World::GetInstance()
-0x003228dd	0x40	World.cpp	game	world	pending	_ZN5World17AddFromDescriptorERK15WorldDescriptorb	World::AddFromDescriptor(WorldDescriptor const&, bool)
-0x0032291d	0x16	World.cpp	game	world	pending	_ZN5World4InitERK15WorldDescriptor	World::Init(WorldDescriptor const&)
+0x00322835	0x20	World.cpp	game	world	matched	_ZN5WorldD0Ev	World::~World()
+0x00322855	0x18	World.cpp	game	world	matched	_ZN5WorldD1Ev	World::~World()
+0x00322855	0x18	World.cpp	game	world	matched	_ZN5WorldD2Ev	World::~World()
+0x0032286d	0x1c	World.cpp	game	world	matched	__tcf_3	__tcf_3
+0x00322889	0x54	World.cpp	game	world	matched	_ZN5World11GetInstanceEv	World::GetInstance()
+0x003228dd	0x40	World.cpp	game	world	matched	_ZN5World17AddFromDescriptorERK15WorldDescriptorb	World::AddFromDescriptor(WorldDescriptor const&, bool)
+0x0032291d	0x16	World.cpp	game	world	matched	_ZN5World4InitERK15WorldDescriptor	World::Init(WorldDescriptor const&)
 0x00322935	0x144	World.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00322a79	0x14	World.cpp	game	world	matched	_GLOBAL__I__ZN5WorldC2Ev	_GLOBAL__I__ZN5WorldC2Ev
 0x00322a8d	0x2	WorldDescriptor.cpp	game	world	matched	_ZN15WorldDescriptorC2Ev	WorldDescriptor::WorldDescriptor()
