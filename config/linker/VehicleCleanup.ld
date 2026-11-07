@@ -4,6 +4,14 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .vehicle_set_door_anim 0x0030a52c : { *(.text._ZN7Vehicle11setDoorAnimEPKcb) }
+    .vehicle_on_door_closed 0x003138d4 : { *(.text._ZN7Vehicle12onDoorClosedEv) }
+    .vehicle_open_door_inside 0x003139f8 : { *(.text._ZN7Vehicle18openDoorFromInsideEb) }
+    .vehicle_open_door 0x00313a7c : { *(.text._ZN7Vehicle8openDoorEb) }
+    .vehicle_open_door_clip 0x0041dee8 : { *(.rodata.*openDoorClip*) }
+    .vehicle_door_callback 0x00313954 : { *(.text._Z22doorTransitionCallbackPN3irr5scene19ITimelineControllerEPv) }
+    .vehicle_close_door_clip 0x0041f704 : { *(.rodata.*closeDoorClip*) }
+    .vehicle_exit_car_clip 0x0041f79c : { *(.rodata.*exitCarClip*) }
     .vehicle_left_door 0x00307e40 : { *(.text._ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE) }
     .vehicle_door_opened 0x00307e58 : { *(.text._ZNK7Vehicle12isDoorOpenedEb) }
     .vehicle_door_closed 0x00307e78 : { *(.text._ZNK7Vehicle12isDoorClosedEb) }

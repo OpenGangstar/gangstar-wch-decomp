@@ -63,7 +63,12 @@
         "_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE",
         "_ZNK7Vehicle12isDoorOpenedEb",
         "_ZNK7Vehicle12isDoorClosedEb",
-        "_ZNK7Vehicle10isDoorAnimEPKcb"
+        "_ZNK7Vehicle10isDoorAnimEPKcb",
+        "_ZN7Vehicle11setDoorAnimEPKcb",
+        "_Z22doorTransitionCallbackPN3irr5scene19ITimelineControllerEPv",
+        "_ZN7Vehicle12onDoorClosedEv",
+        "_ZN7Vehicle8openDoorEb",
+        "_ZN7Vehicle18openDoorFromInsideEb"
     ],
     "sections": [
         ".vehicle_cleanup_0",
@@ -96,10 +101,21 @@
         ".vehicle_left_door",
         ".vehicle_door_opened",
         ".vehicle_door_closed",
-        ".vehicle_door_anim"
+        ".vehicle_door_anim",
+        ".vehicle_set_door_anim",
+        ".vehicle_door_callback",
+        ".vehicle_close_door_clip",
+        ".vehicle_exit_car_clip",
+        ".vehicle_on_door_closed",
+        ".vehicle_open_door",
+        ".vehicle_open_door_inside",
+        ".vehicle_open_door_clip"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "_ZN7Vehicle14enableSkinningEb",
+        "_ZN7Vehicle21enableBackfaceCullingEb",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE"
     ]
 }

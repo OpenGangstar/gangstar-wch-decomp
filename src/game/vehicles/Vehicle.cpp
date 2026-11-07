@@ -9,6 +9,7 @@
  */
 
 #include "Vehicle.h"
+#include "../audio/SoundManager.h"
 #include "../core/LocalStringStartupStorage.h"
 
 void Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
@@ -44,6 +45,93 @@ bool Vehicle::isDoorAnim(const char* name, bool left) const
     irr::scene::ISceneNodeAnimator* animator = left ? leftDoorAnimator : rightDoorAnimator;
     const int clip = animator->getAnimationClipIndex(name);
     return clip == animator->getTimelineCtrl()->getCurrentClipIndex();
+}
+
+void Vehicle::onDoorClosed()
+{
+    if (isDoorClosed(false) && isDoorClosed(true)) {
+        toggleInterior(false);
+        enableSkinning(false);
+        enableBackfaceCulling(true);
+    }
+
+    if (doorSoundSuppression) {
+        --doorSoundSuppression;
+    } else {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(113, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+}
+
+namespace {
+const char openDoorClip[] = "car_open_door";
+const char closeDoorClip[] = "car_close_door";
+const char exitCarClip[] = "car_exit_car";
+}
+
+void doorTransitionCallback(irr::scene::ITimelineController* timeline, void* data)
+{
+    Vehicle* vehicle = static_cast<Vehicle*>(data);
+    if (!vehicle->leftDoorAnimator || !vehicle->rightDoorAnimator)
+        return;
+
+    irr::scene::ITimelineController* leftTimeline = vehicle->leftDoorAnimator->getTimelineCtrl();
+    vehicle->rightDoorAnimator->getTimelineCtrl();
+    const bool left = leftTimeline == timeline;
+
+    if (vehicle->isDoorAnim(closeDoorClip, left) || vehicle->isDoorAnim(exitCarClip, left)) {
+        if (left) {
+            vehicle->leftDoorClosed = true;
+            vehicle->leftDoorTransition = false;
+        } else {
+            vehicle->rightDoorClosed = true;
+            vehicle->rightDoorTransition = false;
+        }
+        vehicle->onDoorClosed();
+    }
+}
+
+void Vehicle::setDoorAnim(const char* name, bool left)
+{
+    irr::scene::ISceneNodeAnimator* animator = left ? leftDoorAnimator : rightDoorAnimator;
+    doorAnimationClip = animator->getAnimationClipIndex(name);
+    animator->setAnimationClip(doorAnimationClip);
+    irr::scene::ITimelineController* timeline = animator->getTimelineCtrl();
+    if (timeline) {
+        timeline->setScale(doorAnimationScale);
+        timeline->callbackData = this;
+        timeline->callback = doorTransitionCallback;
+    }
+}
+
+inline __attribute__((always_inline)) void Vehicle::openDoorWithClip(const char* clip, bool left)
+{
+    if (left)
+        leftDoorClosed = false;
+    else
+        rightDoorClosed = false;
+
+    toggleInterior(true);
+    enableSkinning(true);
+    enableBackfaceCulling(false);
+    setDoorAnim(clip, left);
+
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(122, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+}
+
+void Vehicle::openDoor(bool left)
+{
+    openDoorWithClip(openDoorClip, left);
+}
+
+void Vehicle::openDoorFromInside(bool left)
+{
+    openDoorWithClip(exitCarClip, left);
 }
 
 void Vehicle::_notifyTargeted(bool targeted, Character* source)
