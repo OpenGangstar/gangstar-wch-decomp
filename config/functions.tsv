@@ -10492,14 +10492,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306311	0x30	Shop.cpp	game	ui	matched	__tcf_4	__tcf_4
 0x00306341	0x22	Shop.cpp	game	ui	pending	_ZN4Shop4lockEv	Shop::lock()
 0x00306365	0x3c	Shop.cpp	game	ui	pending	_ZN4ShopD0Ev	Shop::~Shop()
-0x003063a1	0x48	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint3addEPS_	SpawnPoint::add(SpawnPoint*)
-0x003063e9	0x20	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD0Ev	SpawnPoint::~SpawnPoint()
-0x00306409	0x18	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD2Ev	SpawnPoint::~SpawnPoint()
-0x00306409	0x18	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointD1Ev	SpawnPoint::~SpawnPoint()
+0x003063a1	0x48	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint3addEPS_	SpawnPoint::add(SpawnPoint*)
+0x003063e9	0x20	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointD0Ev	SpawnPoint::~SpawnPoint()
+0x00306409	0x18	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointD2Ev	SpawnPoint::~SpawnPoint()
+0x00306409	0x18	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointD1Ev	SpawnPoint::~SpawnPoint()
 0x00306421	0x1a	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint14resetSpawnTimeEii	SpawnPoint::resetSpawnTime(int, int)
 0x0030643d	0x1c	SpawnPoint.cpp	game	world	matched	__tcf_4	__tcf_4
 0x00306459	0x1c	SpawnPoint.cpp	game	world	matched	__tcf_2	__tcf_2
-0x00306475	0x6c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE	SpawnPoint::SetRotation(irr::core::vector3d<float> const&)
+0x00306475	0x6c	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint11SetRotationERKN3irr4core8vector3dIfEE	SpawnPoint::SetRotation(irr::core::vector3d<float> const&)
 0x003064e1	0x44	SpawnPoint.cpp	game	world	matched	_ZNK10SpawnPoint20GetOutterSpawnCenterEv	SpawnPoint::GetOutterSpawnCenter() const
 0x00306525	0x44	SpawnPoint.cpp	game	world	matched	_ZNK10SpawnPoint19GetInnerSpawnCenterEv	SpawnPoint::GetInnerSpawnCenter() const
 0x00306569	0x7c	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject	SpawnPoint::releaseSpawnObject(LevelObject*)
@@ -10509,8 +10509,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003069f9	0x118	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint5spawnEi	SpawnPoint::spawn(int)
 0x00306b11	0x21c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE	SpawnPoint::Load(Structs::SpawnPoint const&)
 0x00306d2d	0xc4	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint17hasCloseNeighborsEv	SpawnPoint::hasCloseNeighbors() const
-0x00306df1	0x34	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointC2Ei	SpawnPoint::SpawnPoint(int)
-0x00306df1	0x34	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPointC1Ei	SpawnPoint::SpawnPoint(int)
+0x00306df1	0x34	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointC2Ei	SpawnPoint::SpawnPoint(int)
+0x00306df1	0x34	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointC1Ei	SpawnPoint::SpawnPoint(int)
 0x00306e25	0x1c0	SpawnPoint.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00306fe5	0x14	SpawnPoint.cpp	game	world	matched	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE	_GLOBAL__I__ZN10SpawnPoint16s_innerCenterCivE
 0x00306ff9	0x30	SpawnPoint.cpp	game	world	matched	__tcf_5	__tcf_5

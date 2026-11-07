@@ -9,10 +9,10 @@
  */
 
 #include "../core/Matrix4.h"
+#include "../core/MemHint.h"
 #include "../core/PlacementNew.h"
 
 namespace irr {
-enum MemHint { DefaultMemHint = 0 };
 namespace core { extern matrix4 IdentityMatrix; }
 }
 
