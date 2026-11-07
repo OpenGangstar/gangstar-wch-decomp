@@ -40,6 +40,25 @@ inline unsigned int setMovementMode(unsigned int word, bool running)
 }
 }
 
+namespace {
+const unsigned int photographedFlag = 1u << 17;
+}
+
+void __attribute__((weak)) NPC::photographed()
+{
+    flags356 |= photographedFlag;
+}
+
+void __attribute__((weak)) NPC::clearPhotographed()
+{
+    flags356 &= ~photographedFlag;
+}
+
+bool __attribute__((weak)) NPC::isPhotographed() const
+{
+    return (flags356 & photographedFlag) != 0;
+}
+
 void NPC::goToLocation(const irr::core::vector3d<float>& point)
 {
     if (flags356 & 0x8000u)

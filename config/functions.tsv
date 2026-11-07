@@ -10284,9 +10284,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd3c1	0x6c	Lock.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fd42d	0x14	Lock.cpp	game	core	matched	_GLOBAL__I__ZN4Lock6s_lockE	_GLOBAL__I__ZN4Lock6s_lockE
 0x002fd441	0x8	NPC.cpp	game	ai	pending	_ZNK3NPC9getWeaponEv	NPC::getWeapon() const
-0x002fd449	0x10	NPC.cpp	game	ai	pending	_ZN3NPC12photographedEv	NPC::photographed()
-0x002fd459	0x14	NPC.cpp	game	ai	pending	_ZN3NPC17clearPhotographedEv	NPC::clearPhotographed()
-0x002fd46d	0xc	NPC.cpp	game	ai	pending	_ZNK3NPC14isPhotographedEv	NPC::isPhotographed() const
+0x002fd449	0x10	NPC.cpp	game	ai	matched	_ZN3NPC12photographedEv	NPC::photographed()
+0x002fd459	0x14	NPC.cpp	game	ai	matched	_ZN3NPC17clearPhotographedEv	NPC::clearPhotographed()
+0x002fd46d	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC14isPhotographedEv	NPC::isPhotographed() const
 0x002fd479	0x24	NPC.cpp	game	ai	matched	_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE	NPC::goToLocation(irr::core::vector3d<float> const&)
 0x002fd49d	0x20	NPC.cpp	game	ai	pending	_ZN3NPC16clearGoToVehicleEv	NPC::clearGoToVehicle()
 0x002fd4bd	0x3a	NPC.cpp	game	ai	pending	_ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_	NPC::attachWeaponToHand(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
@@ -10542,9 +10542,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307ad1	0x30	Transformation.cpp	game	characters	matched	__tcf_2	__tcf_2
 0x00307b01	0x16	Vehicle.cpp	game	vehicles	pending	_ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv	CustomSkinnedMeshSceneNode::getBoundingBox() const
 0x00307b19	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11getSkinMeshEv	Vehicle::getSkinMesh()
-0x00307b21	0x10	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12photographedEv	Vehicle::photographed()
-0x00307b31	0x14	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle17clearPhotographedEv	Vehicle::clearPhotographed()
-0x00307b45	0xc	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle14isPhotographedEv	Vehicle::isPhotographed() const
+0x00307b21	0x10	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12photographedEv	Vehicle::photographed()
+0x00307b31	0x14	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle17clearPhotographedEv	Vehicle::clearPhotographed()
+0x00307b45	0xc	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle14isPhotographedEv	Vehicle::isPhotographed() const
 0x00307b51	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12getSpawnTypeEv	Vehicle::getSpawnType()
 0x00307b59	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12setSpawnTypeEi	Vehicle::setSpawnType(int)
 0x00307b61	0x8	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle12getMaxHealthEv	Vehicle::getMaxHealth() const
