@@ -12242,10 +12242,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003424c1	0x24	NPCController.cpp	game	ai	matched	_ZN13NPCControllerD2Ev	NPCController::~NPCController()
 0x003424c1	0x24	NPCController.cpp	game	ai	matched	_ZN13NPCControllerD1Ev	NPCController::~NPCController()
 0x003424e5	0x30	VehicleController.cpp	game	ai	matched	__tcf_4	__tcf_4
-0x00342515	0x54	VehicleController.cpp	game	ai	pending	_ZN17VehicleController15getNextWaypointEv	VehicleController::getNextWaypoint()
+0x00342515	0x54	VehicleController.cpp	game	ai	matched	_ZN17VehicleController15getNextWaypointEv	VehicleController::getNextWaypoint()
 0x00342569	0x1c	VehicleController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00342585	0xc8	VehicleController.cpp	game	ai	pending	_ZN17VehicleController7onEventEPK6IEventPK12EventManager	VehicleController::onEvent(IEvent const*, EventManager const*)
-0x0034264d	0x66	VehicleController.cpp	game	ai	pending	_ZN17VehicleController12getNextPointEv	VehicleController::getNextPoint()
+0x0034264d	0x66	VehicleController.cpp	game	ai	matched	_ZN17VehicleController12getNextPointEv	VehicleController::getNextPoint()
 0x003426b5	0x164	VehicleController.cpp	game	ai	pending	_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE	VehicleController::switchState(gameloft::ai::StateID)
 0x00342819	0x54	VehicleController.cpp	game	ai	matched	_ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	VehicleController::VehicleController(Vehicle*, gameloft::ai::Transition const&, gameloft::ai::StateID)
 0x00342819	0x54	VehicleController.cpp	game	ai	matched	_ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	VehicleController::VehicleController(Vehicle*, gameloft::ai::Transition const&, gameloft::ai::StateID)

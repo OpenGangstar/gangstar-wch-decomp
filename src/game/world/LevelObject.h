@@ -25,6 +25,7 @@ public:
     LevelObject(int id);
     unsigned char getObjectType() const { return objectType; }
     const char* getName() const { return unknown28; }
+    PhysicAttributes* getPhysicAttributes() const { return unknown24; }
     unsigned char GetMetatype();
     void SetName(const char* name);
     void debug(irr::video::IVideoDriver* driver);

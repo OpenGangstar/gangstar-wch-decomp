@@ -23,6 +23,8 @@ public:
     void setPathToFollow(const Path* path);
     const Path* getPathToFollow() const;
     int getCurrentWaypoint() const;
+    void setCurrentWaypoint(int waypoint);
+    bool isLoopingOnPathToFollow() const;
     void setSpeed();
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
