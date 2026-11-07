@@ -25,6 +25,9 @@
     "source": "src/game/world/SpawnPoint.cpp",
     "linker_script": "config/linker/SpawnPointAiStartup.ld",
     "functions": [
+        "_ZN10SpawnPoint18releaseSpawnObjectEP11LevelObject",
+        "_ZN10SpawnPoint14getSpawnObjectEi",
+        "_ZN10SpawnPoint22ClearAllSpawnInstancesEv",
         {
             "name": "__tcf_5",
             "address": "0x00306ff9"
@@ -67,6 +70,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
+        "_ZN17GameObjectManager3AddEP11LevelObjecti",
+        "_ZN11LevelObject11GetMetatypeEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN9AIManagerC1Ev",
