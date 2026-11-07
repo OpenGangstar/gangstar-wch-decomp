@@ -13,6 +13,7 @@ sqrt = 0x001c401c;
 acosf = 0x001c4694;
 SECTIONS
 {
+    .character_timed_turn 0x002f22d4 : { *ai-startup-character.o(.text._ZN9Character10turnTowardEN3irr4core8vector3dIfEEf) }
     .character_target_in_range 0x002f3d40 : { *ai-startup-character.o(.text._ZN9Character15isTargetInRangeEff) }
     .character_turn_toward_object 0x002f3bd4 : { *ai-startup-character.o(.text._ZN9Character16turnTowardTargetEP11LevelObjectf) }
     .character_is_facing_target 0x002f3b08 : { *ai-startup-character.o(.text._ZN9Character14isFacingTargetEP11LevelObject) }

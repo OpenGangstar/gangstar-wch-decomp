@@ -25,6 +25,7 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character10turnTowardEN3irr4core8vector3dIfEEf",
         "_ZN9Character15isTargetInRangeEff",
         "_ZN9Character16turnTowardTargetEP11LevelObjectf",
         "_ZN9Character14isFacingTargetEP11LevelObject",

@@ -10082,7 +10082,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f2119	0x1a	Character.cpp	game	characters	pending	_ZN9Character16setTurnDirectionEN3irr4core8vector3dIfEE	Character::setTurnDirection(irr::core::vector3d<float>)
 0x002f2135	0x50	Character.cpp	game	characters	pending	_ZN9Character16CheckDestinationEv	Character::CheckDestination()
 0x002f2185	0x150	Character.cpp	game	characters	pending	_ZN9Character5debugEPN3irr5video12IVideoDriverE	Character::debug(irr::video::IVideoDriver*)
-0x002f22d5	0x128	Character.cpp	game	characters	pending	_ZN9Character10turnTowardEN3irr4core8vector3dIfEEf	Character::turnToward(irr::core::vector3d<float>, float)
+0x002f22d5	0x128	Character.cpp	game	characters	matched	_ZN9Character10turnTowardEN3irr4core8vector3dIfEEf	Character::turnToward(irr::core::vector3d<float>, float)
 0x002f23fd	0x184	Character.cpp	game	characters	pending	_ZN9Character13bindAnimationEPKcRNS_13AnimationInfoEPN3irr5scene10ISceneNodeE	Character::bindAnimation(char const*, Character::AnimationInfo&, irr::scene::ISceneNode*)
 0x002f2581	0x12c	Character.cpp	game	characters	pending	_ZN9Character14goToCombatIdleEv	Character::goToCombatIdle()
 0x002f26ad	0x11c	Character.cpp	game	characters	pending	_ZN9Character5readyEf	Character::ready(float)
