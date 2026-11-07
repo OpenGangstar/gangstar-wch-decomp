@@ -25,6 +25,12 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZNK3NPC15getPathToFollowEv",
+        "_ZN3NPC18setCurrentWaypointEi",
+        "_ZNK3NPC18getCurrentWaypointEv",
+        "_ZN3NPC16loopPathToFollowEb",
+        "_ZN3NPC15setPathToFollowEPK4Path",
+        "_ZNK3NPC23isLoopingOnPathToFollowEv",
         {
             "name": "__tcf_4",
             "address": "0x002fe969"

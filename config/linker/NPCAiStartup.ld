@@ -17,6 +17,12 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .npc_get_path 0x002fd4f8 : { *ai-startup-npc.o(.text._ZNK3NPC15getPathToFollowEv) }
+    .npc_set_waypoint 0x002fd500 : { *ai-startup-npc.o(.text._ZN3NPC18setCurrentWaypointEi) }
+    .npc_get_waypoint 0x002fd508 : { *ai-startup-npc.o(.text._ZNK3NPC18getCurrentWaypointEv) }
+    .npc_set_loop 0x002fd510 : { *ai-startup-npc.o(.text._ZN3NPC16loopPathToFollowEb) }
+    .npc_set_path 0x002fd538 : { *ai-startup-npc.o(.text._ZN3NPC15setPathToFollowEPK4Path) }
+    .npc_get_loop 0x002fd558 : { *ai-startup-npc.o(.text._ZNK3NPC23isLoopingOnPathToFollowEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002fd6f0 : { *ai-startup-npc.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-npc.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

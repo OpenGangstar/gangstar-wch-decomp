@@ -12,6 +12,42 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "AIManagerSingleton.h"
+#include "NPC.h"
+
+const Path* NPC::getPathToFollow() const
+{
+    return pathToFollow;
+}
+
+void NPC::setCurrentWaypoint(int waypoint)
+{
+    currentWaypoint = waypoint;
+}
+
+int NPC::getCurrentWaypoint() const
+{
+    return currentWaypoint;
+}
+
+void NPC::loopPathToFollow(bool loop)
+{
+    if (loop)
+        flags356 |= 0x00200000u;
+    else
+        flags356 &= ~0x00200000u;
+}
+
+void NPC::setPathToFollow(const Path* path)
+{
+    currentWaypoint = -1;
+    pathToFollow = path;
+    loopPathToFollow(false);
+}
+
+bool NPC::isLoopingOnPathToFollow() const
+{
+    return (flags356 & 0x00200000u) != 0;
+}
 
 void operator delete(void*) throw();
 extern "C" {
