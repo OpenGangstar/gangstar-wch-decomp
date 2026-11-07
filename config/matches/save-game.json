@@ -360,6 +360,7 @@
         "_ZN6Rocket6launchEN3irr4core8vector3dIfEE",
         "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE",
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN21CustomSkyBoxSceneNode11setSkyColorEb",
         "_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE",
         "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
         "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",

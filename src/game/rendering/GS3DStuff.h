@@ -69,6 +69,8 @@ public:
     static void SetCulling(irr::scene::ISceneNode* node, irr::scene::E_CULLING_TYPE type);
     static void SetMaterialTexture(irr::scene::ISceneNode* node, irr::video::ITexture* texture);
     static irr::scene::ISceneNode* FindAMesh(irr::scene::ISceneNode* node);
+    static void CleanNode(irr::scene::ISceneNode* node);
+    static void setSkyColor(bool enabled);
 
     static BulletTraceManager* s_bulletManager;
     static TrailMgr* s_TrailMgr;

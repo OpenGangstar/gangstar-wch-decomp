@@ -1,4 +1,7 @@
 SECTIONS {
+    .gs_clean_node_pivot 0x004144f8 : { *gs3d-stuff.o(.rodata.*pivotNodeMarker*) }
+    .gs_clean_node 0x002dc2cc : { *gs3d-stuff.o(.text._ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE) }
+    .gs_set_sky_color 0x002dbac8 : { *gs3d-stuff.o(.text._ZN9GS3DStuff11setSkyColorEb) }
     .gs_find_mesh_plane 0x004144e8 : { *gs3d-stuff.o(.rodata.*planeNodeMarker*) }
     .gs_find_mesh_jump 0x004144f0 : { *gs3d-stuff.o(.rodata.*jumpNodeMarker*) }
     .gs_set_culling 0x002dc078 : { *gs3d-stuff.o(.text._ZN9GS3DStuff10SetCullingEPN3irr5scene10ISceneNodeENS1_14E_CULLING_TYPEE) }
