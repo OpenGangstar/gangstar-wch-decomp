@@ -40,7 +40,13 @@
         {
             "name": "__tcf_2",
             "address": "0x0030b625"
-        }
+        },
+        "_ZNK7Vehicle15getPathToFollowEv",
+        "_ZN7Vehicle18setCurrentWaypointEi",
+        "_ZNK7Vehicle18getCurrentWaypointEv",
+        "_ZN7Vehicle16loopPathToFollowEb",
+        "_ZN7Vehicle15setPathToFollowEPK4Path",
+        "_ZNK7Vehicle23isLoopingOnPathToFollowEv"
     ],
     "sections": [
         ".vehicle_cleanup_0",
@@ -50,7 +56,13 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".vehicle_get_path",
+        ".vehicle_set_waypoint",
+        ".vehicle_get_waypoint",
+        ".vehicle_loop_path",
+        ".vehicle_set_path",
+        ".vehicle_is_looping"
     ],
     "retail_got": true,
     "external_thumb_functions": [
