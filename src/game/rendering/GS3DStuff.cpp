@@ -29,6 +29,7 @@
 #include "../core/Geometry.h"
 #include "../core/VideoDriver.h"
 #include "../world/SpawnPoint.h"
+#include "../world/ResStream.h"
 #include "../world/World.h"
 #include "../world/WorldDescriptor.h"
 
@@ -650,6 +651,24 @@ irr::video::ITexture* GS3DStuff::getSkyBoxTexture() { return skyBoxTexture; }
 char* GS3DStuff::getTextureNameSuffix() { return s_phonePerformanceProfile.textureNameSuffix; }
 OctTreeAABB* GS3DStuff::getSceneOctTree() { return sceneOcttree; }
 void GS3DStuff::draw2d(const StateMachine*) {}
+
+namespace {
+const char cityPartsFile[] = "./cityparts.array";
+}
+
+int GS3DStuff::loadCityDesc(const char*, char**& parts)
+{
+    World::GetInstance();
+    ResStream resource(cityPartsFile, 1);
+    DataStream stream(resource, DataStream::BigEndian);
+    int count = stream.ReadInt();
+    parts = new char*[count];
+    for (int i = 0; i < count; ++i)
+        parts[i] = stream.ReadAndAllocateString();
+    stream.Close();
+    resource.Close();
+    return count;
+}
 
 void GS3DStuff::loadCityGameObjects(const WorldDescriptor& descriptor, bool spawnPointsOnly)
 {

@@ -1,4 +1,6 @@
 SECTIONS {
+    .gs_load_city_desc 0x002db62c : { *gs3d-stuff.o(.text._ZN9GS3DStuff12loadCityDescEPKcRPPc) }
+    .gs_city_parts_file 0x00414490 : { *gs3d-stuff.o(.rodata.*cityPartsFileE) }
     .gs_load_city_game_objects 0x002db708 : { *gs3d-stuff.o(.text._ZN9GS3DStuff19loadCityGameObjectsERK15WorldDescriptorb) }
     .gs_load_city_part_descriptor 0x002df1f4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12loadCityPartERK15WorldDescriptorRPN3irr5scene10ISceneNodeE) }
     .gs_load_city_visual 0x002df2e4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff14loadCityVisualERK15WorldDescriptor) }

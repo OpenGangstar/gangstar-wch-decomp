@@ -81,6 +81,7 @@ public:
     static void freeGameData(irr::scene::ISceneNode* node);
     static void setSkyColor(bool enabled);
     static void AddXRef(irr::scene::ISceneNode* node);
+    static int loadCityDesc(const char* path, char**& parts);
     static void loadCityGameObjects(const WorldDescriptor& descriptor, bool spawnPointsOnly);
     static void loadCityVisual(const WorldDescriptor& descriptor);
     static void loadCityPart(const WorldDescriptor& descriptor, irr::scene::ISceneNode*& parent);

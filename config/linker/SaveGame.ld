@@ -445,7 +445,7 @@ SECTIONS {
     .persistence_int_vtable 0x004ad0e8 : { *persistence.o(.data.rel.ro._ZTVN11Persistence8BlockIntE .gnu.linkonce.d.rel.ro._ZTVN11Persistence8BlockIntE) }
     .persistence_block_vtable 0x004ad108 : { *persistence.o(.data.rel.ro._ZTVN11Persistence5BlockE .gnu.linkonce.d.rel.ro._ZTVN11Persistence5BlockE) }
 
-    .datadestructor 0x002d3654 : { *data-stream.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
+    .datadestructor 0x002d3654 : { *(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .datatext 0x0034e7b0 : {
         *data-stream.o(.text._Z11IsBigEndianv)
         *data-stream.o(.text._ZN10DataStream4ReadEPvi)
