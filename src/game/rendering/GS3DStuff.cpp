@@ -30,18 +30,29 @@
 #include "../world/SpawnPoint.h"
 
 class b2Body;
-struct b2BodyDef;
-class b2PolygonDef;
+struct b2BodyDef {
+    unsigned char unknown0[16];
+    void* userData;
+};
+
+class b2ShapeDef {
+public:
+    virtual ~b2ShapeDef();
+};
+
+class b2PolygonDef : public b2ShapeDef {};
 
 class CollisionBodyDef {
 public:
     inline CollisionBodyDef() __attribute__((used));
+    inline ~CollisionBodyDef();
 
 private:
+    friend class OctTreeAABB;
     irr::core::array<b2Body*>* bodies;
     irr::core::array<b2BodyDef*>* bodyDefinitions;
     irr::core::array<b2PolygonDef*>* polygonDefinitions;
-    bool unknown12;
+    bool inQueryResults;
     bool unknown13;
     int references;
 };
@@ -63,28 +74,33 @@ public:
 
     struct OctTreeAABBNode {
         inline ~OctTreeAABBNode();
+        void getPolysIter(const irr::core::aabbox3d<float>& box,
+            irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
+            irr::core::array<irr::scene::ISceneNode*>* nodes) const __attribute__((weak));
         irr::core::aabbox3d<float> bounds;
         irr::core::array<RootNode*>* roots;
         OctTreeAABBNode* children[8];
     };
 
+    inline ~OctTreeAABB();
     inline void BuildSpawnPointNodes(irr::core::array<RootNode*>* roots) __attribute__((used));
     inline int CountRenderableNodes(irr::scene::ISceneNode* node) __attribute__((used));
+    inline void BuildRootNodes(irr::scene::ISceneNode* node,
+        irr::core::array<RootNode*>* roots) __attribute__((used));
+    inline void calculatePolys(const irr::core::aabbox3d<float>& box,
+        irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
+        irr::core::array<irr::scene::ISceneNode*>* nodes) __attribute__((used));
+private:
+    OctTreeAABBNode* root;
+    irr::core::array<RootNode*>* roots;
+};
+
+class CCustomSceneManager {
+public:
+    static void CleanParents(irr::scene::ISceneNode* node);
 };
 
 namespace {
-template<class T>
-inline __attribute__((always_inline)) void safeDeleteWithDestructor(T*& pointer,
-    void (*destroy)(T*))
-{
-    T* object = pointer;
-    if (object) {
-        destroy(object);
-        ::operator delete(object);
-    }
-    pointer = 0;
-}
-
 template<class T>
 inline __attribute__((always_inline)) void safeDeletePointerArray(irr::core::array<T*>*& array)
 {
@@ -108,6 +124,16 @@ inline __attribute__((always_inline)) irr::core::array<T*>* newPointerArray()
     array->is_sorted = true;
     array->unknown16 = 1;
     return array;
+}
+
+template<class T>
+inline void clearPointerArray(irr::core::array<T*>& array)
+{
+    ::operator delete(array.data);
+    array.data = 0;
+    array.used = 0;
+    array.allocated = 0;
+    array.is_sorted = true;
 }
 }
 
@@ -155,21 +181,38 @@ template<> void SafeDelete(irr::core::array<OctTreeAABB::RootNode*>*& array)
 
 CollisionBodyDef::CollisionBodyDef()
     : bodies(newPointerArray<b2Body>()), bodyDefinitions(newPointerArray<b2BodyDef>()),
-      polygonDefinitions(newPointerArray<b2PolygonDef>()), unknown12(false), unknown13(false),
+      polygonDefinitions(newPointerArray<b2PolygonDef>()), inQueryResults(false), unknown13(false),
       references(1)
 {
 }
 
-// GCC 4.2.1 emits an invalid assembler symbol for an undefined weak destructor
-// referenced by a delete expression. This declares the same native call by name.
-extern "C" void destroyCollisionBodyDef(CollisionBodyDef*)
-    __asm__("_ZN16CollisionBodyDefD1Ev") __attribute__((weak));
-
-template<> void SafeDelete(CollisionBodyDef*& definition) __attribute__((weak));
-template<> void SafeDelete(CollisionBodyDef*& definition)
+CollisionBodyDef::~CollisionBodyDef()
 {
-    safeDeleteWithDestructor(definition, destroyCollisionBodyDef);
+    if (--references == 0) {
+        for (int i = 0; static_cast<unsigned int>(i) < bodyDefinitions->used; ++i) {
+            b2BodyDef* definition = bodyDefinitions->data[i];
+            if (definition->userData) {
+                ::operator delete(definition->userData);
+                definition->userData = 0;
+            }
+            b2BodyDef*& entry = bodyDefinitions->data[i];
+            if (entry)
+                delete entry;
+            entry = 0;
+        }
+        for (int i = 0; static_cast<unsigned int>(i) < polygonDefinitions->used; ++i) {
+            b2PolygonDef*& entry = polygonDefinitions->data[i];
+            delete entry;
+            entry = 0;
+        }
+
+        SafeDelete(bodies);
+        SafeDelete(bodyDefinitions);
+        SafeDelete(polygonDefinitions);
+    }
 }
+
+template void SafeDelete<CollisionBodyDef>(CollisionBodyDef*&);
 
 void GS3DStuff::freeGameData(irr::scene::ISceneNode* node)
 {
@@ -201,14 +244,16 @@ OctTreeAABB::OctTreeAABBNode::~OctTreeAABBNode()
 template void SafeDelete<OctTreeAABB::RootNode>(OctTreeAABB::RootNode*&);
 template void SafeDelete<OctTreeAABB::OctTreeAABBNode>(OctTreeAABB::OctTreeAABBNode*&);
 
-extern "C" void destroyOctTree(OctTreeAABB*)
-    __asm__("_ZN11OctTreeAABBD1Ev") __attribute__((weak));
-
-template<> void SafeDelete(OctTreeAABB*& tree) __attribute__((weak));
-template<> void SafeDelete(OctTreeAABB*& tree)
+OctTreeAABB::~OctTreeAABB()
 {
-    safeDeleteWithDestructor(tree, destroyOctTree);
+    SafeDelete(root);
+    for (int i = 0; static_cast<unsigned int>(i) < roots->used; ++i)
+        SafeDelete(roots->data[i]);
+    clearPointerArray(*roots);
+    SafeDelete(roots);
 }
+
+template void SafeDelete<OctTreeAABB>(OctTreeAABB*&);
 
 namespace {
 template<class Value>
@@ -298,6 +343,64 @@ int OctTreeAABB::CountRenderableNodes(irr::scene::ISceneNode* node)
         }
     }
     return count;
+}
+
+void OctTreeAABB::BuildRootNodes(irr::scene::ISceneNode* node, irr::core::array<RootNode*>* roots)
+{
+    node->updateAbsolutePosition(false);
+    irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+
+    char value[256];
+    if (GS3DStuff::getProperty(node->getUserProperty(), GameFactoryProperties::billboard, value) &&
+        atoi(value) == 1) {
+        roots->push_back(new RootNode);
+        RootNode* root = roots->data[roots->used - 1];
+        CollisionBodyDef* collision = static_cast<CollisionBodyDef*>(node->getGameData());
+        root->sceneNode = node;
+        root->collision = collision;
+        node->setVisible(false);
+        root->bounds = node->getTransformedBoundingBox();
+        irr::scene::ISceneNode* parent = node->getParent();
+        Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode()->addChild(node);
+        if (parent)
+            CCustomSceneManager::CleanParents(parent);
+        return;
+    }
+
+    if (node->getType() == colladaMeshNode || node->getType() == colladaSkinnedNode ||
+        node->getType() == lodNode) {
+        roots->push_back(new RootNode);
+        RootNode* root = roots->data[roots->used - 1];
+        root->collision = static_cast<CollisionBodyDef*>(node->getGameData());
+        node->setVisible(false);
+        root->bounds = node->getTransformedBoundingBox();
+        node->SetOption(irr::scene::SceneOption1, node->getAnimators().getSize() == 0);
+    }
+
+    while (child != node->getChildren().end()) {
+        irr::scene::ISceneNode* current = child->value;
+        child = child->next;
+        BuildRootNodes(current, roots);
+    }
+}
+
+void OctTreeAABB::calculatePolys(const irr::core::aabbox3d<float>& box,
+    irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
+    irr::core::array<irr::scene::ISceneNode*>* nodes)
+{
+    if (collisions) {
+        for (int i = 0; static_cast<unsigned int>(i) < collisions->used; ++i) {
+            CollisionBodyDef* collision = collisions->data[i];
+            if (collision)
+                collision->inQueryResults = false;
+        }
+        collisions->used = 0;
+    }
+    if (spawns)
+        spawns->used = 0;
+    if (nodes)
+        nodes->used = 0;
+    root->getPolysIter(box, collisions, spawns, nodes);
 }
 
 irr::scene::ISceneNode* GS3DStuff::FindAMesh(irr::scene::ISceneNode* node)

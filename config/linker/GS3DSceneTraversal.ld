@@ -1,4 +1,8 @@
 SECTIONS {
+    .gs_collision_body_def_dtor 0x002db304 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN16CollisionBodyDefD1Ev) }
+    .gs_octree_dtor 0x002dd6e0 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABBD1Ev) }
+    .gs_octree_calculate_polys 0x002dd5a8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABB14calculatePolysERKN3irr4core8aabbox3dIfEEPNS1_5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS8_EEEEPNS6_IP10SpawnPointNS9_ISE_EEEEPNS6_IPNS0_5scene10ISceneNodeENS9_ISK_EEEE) }
+    .gs_octree_build_roots 0x002dbbc8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABB14BuildRootNodesEPN3irr5scene10ISceneNodeEPNS0_4core5arrayIPNS_8RootNodeENS4_12irrAllocatorIS7_EEEE) }
     .gs_add_renderables 0x002dc20c : { *gs3d-stuff.o(.text._ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE) }
     .gs_octree_spawn_point_nodes 0x002db7a4 : { *gs3d-stuff.o(.text._ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE .gnu.linkonce.t._ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE) }
     .gs_octree_count_renderables 0x002db88c : { *gs3d-stuff.o(.text._ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE .gnu.linkonce.t._ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE) }

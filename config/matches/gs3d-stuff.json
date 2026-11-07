@@ -28,6 +28,10 @@
     "source": "src/game/rendering/GS3DStuff.cpp",
     "linker_script": "config/linker/GS3DStuff.ld",
     "functions": [
+        "_ZN16CollisionBodyDefD1Ev",
+        "_ZN11OctTreeAABBD1Ev",
+        "_ZN11OctTreeAABB14calculatePolysERKN3irr4core8aabbox3dIfEEPNS1_5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS8_EEEEPNS6_IP10SpawnPointNS9_ISE_EEEEPNS6_IPNS0_5scene10ISceneNodeENS9_ISK_EEEE",
+        "_ZN11OctTreeAABB14BuildRootNodesEPN3irr5scene10ISceneNodeEPNS0_4core5arrayIPNS_8RootNodeENS4_12irrAllocatorIS7_EEEE",
         "_ZN18WantedLevelManager11getInstanceEv",
         {
             "name": "__tcf_3",
@@ -140,6 +144,10 @@
         "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
     ],
     "sections": [
+        ".gs_collision_body_def_dtor",
+        ".gs_octree_dtor",
+        ".gs_octree_calculate_polys",
+        ".gs_octree_build_roots",
         ".wanted_singleton",
         ".wanted_cleanup",
         ".map_singleton",
@@ -244,6 +252,10 @@
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZNK3irr5scene10ISceneNode12getAnimatorsEv",
+        "_ZNK3irr5scene10ISceneNode9getParentEv",
+        "_ZN3irr5scene10ISceneNode9SetOptionENS0_13E_OPTION_FLAGEb",
+        "_ZN19CCustomSceneManager12CleanParentsEPN3irr5scene10ISceneNodeE",
         "_ZN21CustomSkyBoxSceneNode11setSkyColorEb",
         "_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE",
         "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
