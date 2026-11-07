@@ -59,6 +59,18 @@ void Character::setVehicle(Vehicle* value)
     vehicle = value;
 }
 
+bool Character::isCurrentAnimation(int id)
+{
+    return currentAnimation == id;
+}
+
+bool __attribute__((weak)) Character::isDown()
+{
+    if (isCurrentAnimation(-1))
+        return true;
+    return isCurrentAnimation(162);
+}
+
 void Character::setLockTarget(Character*)
 {
 }
@@ -75,6 +87,12 @@ static void __tcf_4()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+void Character::goToIdle()
+{
+    if (!isCurrentAnimation(getSpecificAnimation(165)))
+        setAnimation(getSpecificAnimation(165), 1.0f, true, false, false);
 }
 
 void Character::setDestination(const irr::core::vector3d<float>& point, int limit)

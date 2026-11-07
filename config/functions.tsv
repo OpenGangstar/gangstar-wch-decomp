@@ -10044,8 +10044,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f14f1	0x6	Character.cpp	game	characters	pending	_ZN9Character27setAnimationSpeedMultiplierEi	Character::setAnimationSpeedMultiplier(int)
 0x002f14f9	0x68	Character.cpp	game	characters	pending	_ZN9Character12setAnimationEPKcibbb	Character::setAnimation(char const*, int, bool, bool, bool)
 0x002f1561	0xc	Character.cpp	game	characters	pending	_ZN9Character14resetAnimationEv	Character::resetAnimation()
-0x002f156d	0x12	Character.cpp	game	characters	pending	_ZN9Character18isCurrentAnimationEi	Character::isCurrentAnimation(int)
-0x002f1581	0x1e	Character.cpp	game	characters	pending	_ZN9Character6isDownEv	Character::isDown()
+0x002f156d	0x12	Character.cpp	game	characters	matched	_ZN9Character18isCurrentAnimationEi	Character::isCurrentAnimation(int)
+0x002f1581	0x1e	Character.cpp	game	characters	matched	_ZN9Character6isDownEv	Character::isDown()
 0x002f15a1	0x1c	Character.cpp	game	characters	pending	_ZN9Character7isDyingEv	Character::isDying()
 0x002f15bd	0x74	Character.cpp	game	characters	pending	_ZNK9Character20isAnimationLastFrameEf	Character::isAnimationLastFrame(float) const
 0x002f1631	0x2	Character.cpp	game	characters	matched	_ZN9Character13setLockTargetEPS_	Character::setLockTarget(Character*)
@@ -10069,7 +10069,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f19d9	0x3c	Character.cpp	game	characters	pending	_ZN9Character6enableEv	Character::enable()
 0x002f1a15	0x1c	Character.cpp	game	characters	matched	__tcf_3	__tcf_3
 0x002f1a31	0x2ca	Character.cpp	game	characters	pending	_ZN9Character20getSpecificAnimationEi	Character::getSpecificAnimation(int)
-0x002f1cfd	0x40	Character.cpp	game	characters	pending	_ZN9Character8goToIdleEv	Character::goToIdle()
+0x002f1cfd	0x40	Character.cpp	game	characters	matched	_ZN9Character8goToIdleEv	Character::goToIdle()
 0x002f1d3d	0x3c	Character.cpp	game	characters	pending	_ZN9Character4StopEv	Character::Stop()
 0x002f1d79	0x18	Character.cpp	game	characters	pending	_ZN9Character16onRocketLaunchedEv	Character::onRocketLaunched()
 0x002f1d91	0x18c	Character.cpp	game	characters	pending	_ZN9Character12setAnimationEifbbb	Character::setAnimation(int, float, bool, bool, bool)

@@ -14,6 +14,7 @@ public:
     virtual ~Character();
     void initInVehicle(Vehicle* vehicle);
     void goToIdle();
+    bool isDown();
     void setDestination(const irr::core::vector3d<float>& point, int limit);
     bool isPlayer() const;
     using LevelObject::sceneNode;
@@ -34,12 +35,15 @@ public:
     virtual void walkToLocation(const irr::core::vector3d<float>& point);
     virtual void runToLocation(const irr::core::vector3d<float>& point);
 private:
+    bool isCurrentAnimation(int id);
+    int getSpecificAnimation(int id);
     unsigned char unknown52[28];
     irr::core::vector3d<float> cameraOffset;
     irr::core::vector3d<float> destination;
     unsigned char unknown104[16];
     int destinationLimitSquared;
-    unsigned char unknown124[60];
+    int currentAnimation;
+    unsigned char unknown128[56];
     Character* lockTarget;
     Vehicle* vehicle;
     unsigned char unknown192[104];
