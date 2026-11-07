@@ -4,6 +4,7 @@
 namespace Structs { struct Car; }
 class Character;
 class Path;
+namespace irr { namespace collada { class CSkinnedMeshSceneNode; } }
 // Primary base and 1012-byte allocation extent; secondary interfaces and fields
 // remain opaque pending recovery of the constructor and vehicle methods.
 class Vehicle : public LevelObject {
@@ -40,6 +41,7 @@ public:
     void onDoorClosed();
     void openDoor(bool left);
     void openDoorFromInside(bool left);
+    void closeDoor(bool left);
     void enableSkinning(bool enabled);
     void enableBackfaceCulling(bool enabled);
     void _notifyTargeted(bool targeted, Character* source);
@@ -68,7 +70,8 @@ private:
     unsigned char unknown308[4];
     float doorAnimationScale;
     irr::scene::ISceneNode* leftDoor;
-    unsigned char unknown320[8];
+    unsigned char unknown320[4];
+    irr::collada::CSkinnedMeshSceneNode* skinnedMesh;
     irr::scene::ISceneNode* interior;
     unsigned char unknown332[12];
     unsigned int flags344;
@@ -78,7 +81,8 @@ private:
     int vehicleIndex;
     unsigned char unknown428[76];
     bool hasBeenStolen;
-    unsigned char unknown505[191];
+    unsigned char unknown505[187];
+    irr::scene::ISceneNode* exterior;
     Character* driver;
     unsigned char unknown700[60];
     irr::scene::ISceneNodeAnimator* leftDoorAnimator;

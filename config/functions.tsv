@@ -10586,7 +10586,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307fb5	0x10	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11getUniqueIdEv	Vehicle::getUniqueId()
 0x00307fc5	0x50	Vehicle.cpp	game	vehicles	pending	_ZNK26CustomSkinnedMeshSceneNode25getTransformedBoundingBoxEv	CustomSkinnedMeshSceneNode::getTransformedBoundingBox() const
 0x00308015	0x30	Vehicle.cpp	game	vehicles	matched	__tcf_4	__tcf_4
-0x00308045	0x18	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle21enableBackfaceCullingEb	Vehicle::enableBackfaceCulling(bool)
+0x00308045	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle21enableBackfaceCullingEb	Vehicle::enableBackfaceCulling(bool)
 0x0030805d	0xca	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12_resetLightsEv	Vehicle::_resetLights()
 0x00308129	0x48	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4rentEb	Vehicle::rent(bool)
 0x00308171	0x44	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle9stopSirenEv	Vehicle::stopSiren()
@@ -10620,7 +10620,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00309079	0x36	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle10showWheelsEv	Vehicle::showWheels()
 0x003090b1	0x36	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle10hideWheelsEv	Vehicle::hideWheels()
 0x003090e9	0x88	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14_cleanupSoundsEv	Vehicle::_cleanupSounds()
-0x00309171	0x16	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14enableSkinningEb	Vehicle::enableSkinning(bool)
+0x00309171	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle14enableSkinningEb	Vehicle::enableSkinning(bool)
 0x00309189	0x60	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11stopDrivingEv	Vehicle::stopDriving()
 0x003091e9	0x48	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE	Vehicle::GetMeshBoundingBox(irr::scene::ISceneNode const*) const
 0x00309231	0x84	Vehicle.cpp	game	vehicles	pending	_ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_	CustomSkinnedMeshSceneNode::CustomSkinnedMeshSceneNode(irr::scene::IColladaMesh*, irr::collada::IRootSceneNode*, irr::collada::SNode*, int, irr::core::vector3d<float> const&, irr::core::quaternion const&, irr::core::vector3d<float> const&)
@@ -10663,7 +10663,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030a3e5	0xac	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle8mobilizeEv	Vehicle::mobilize()
 0x0030a491	0x9c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12cleanTargetsEv	Vehicle::cleanTargets()
 0x0030a52d	0x60	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11setDoorAnimEPKcb	Vehicle::setDoorAnim(char const*, bool)
-0x0030a58d	0x38	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle9closeDoorEb	Vehicle::closeDoor(bool)
+0x0030a58d	0x38	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9closeDoorEb	Vehicle::closeDoor(bool)
 0x0030a5c5	0x3e	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15resetCollisionsEv	Vehicle::resetCollisions()
 0x0030a605	0x9c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle21removeWheelCollisionsEv	Vehicle::removeWheelCollisions()
 0x0030a6a1	0x90	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	CCarFactory::createNode(irr::collada::CColladaDatabase const&, irr::collada::SNode*)
