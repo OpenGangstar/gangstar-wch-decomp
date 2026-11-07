@@ -340,7 +340,7 @@ SECTIONS {
         *data-stream.o(.text._ZN10DataStreamC1ER6StreamNS_6endianE .text._ZN10DataStreamC2ER6StreamNS_6endianE)
     }
 
-    .datastream_destructor 0x002d3654 : { *data-stream.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
+    .datastream_destructor 0x002d3654 : { *(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
 
     .record_12 0x00315628 : { *game-object-manager.o(.text._ZN7Structs4Path4ReadER10DataStream .gnu.linkonce.t._ZN7Structs4Path4ReadER10DataStream) }
     .record_11 0x003155c4 : { *game-object-manager.o(.text._ZN7Structs10SpawnPoint4ReadER10DataStream .gnu.linkonce.t._ZN7Structs10SpawnPoint4ReadER10DataStream) }
