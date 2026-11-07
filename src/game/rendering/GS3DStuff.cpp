@@ -87,6 +87,7 @@ const int colladaMeshNode = 0x6d656164;
 const int colladaSkinnedNode = 0x73656164;
 const char planeNodeMarker[] = "Plane";
 const char jumpNodeMarker[] = "Jump";
+const char pivotNodeMarker[] = "_PIVOT";
 }
 
 irr::scene::ISceneNode* GS3DStuff::FindAMesh(irr::scene::ISceneNode* node)
@@ -104,6 +105,35 @@ irr::scene::ISceneNode* GS3DStuff::FindAMesh(irr::scene::ISceneNode* node)
             return mesh;
     }
     return 0;
+}
+
+void GS3DStuff::CleanNode(irr::scene::ISceneNode* node)
+{
+    if (!node)
+        return;
+
+    const irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+    while (child != node->getChildren().end()) {
+        irr::scene::ISceneNode* childNode = child->value;
+        child = child->next;
+        CleanNode(childNode);
+    }
+
+    if (strstr(node->getName(), pivotNodeMarker)) {
+        const irr::scene::SceneNodeList::Node* first = node->getChildren().begin();
+        if (first == node->getChildren().end())
+            node->remove();
+    }
+}
+
+class CustomSkyBoxSceneNode : public irr::scene::ISceneNode {
+public:
+    void setSkyColor(bool enabled);
+};
+
+void GS3DStuff::setSkyColor(bool enabled)
+{
+    static_cast<CustomSkyBoxSceneNode*>(skyBox)->setSkyColor(enabled);
 }
 
 bool GS3DStuff::getProperty(const void* properties, const char* name, char* output)
