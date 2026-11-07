@@ -25,6 +25,13 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZNK9Character10getVehicleEv",
+        "_ZNK9Character13getLockTargetEv",
+        "_ZNK9Character15getCameraOffsetEv",
+        "_ZN9Character10setVehicleEP7Vehicle",
+        "_ZN9Character13setLockTargetEPS_",
+        "_ZN9Character15setCameraOffsetERKN3irr4core8vector3dIfEE",
+        "_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi",
         {
             "name": "__tcf_4",
             "address": "0x002f1809"

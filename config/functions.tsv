@@ -10028,15 +10028,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1445	0x4	LevelObject.cpp	game	world	pending	_ZN11LevelObject12setAnimationEiibbb	LevelObject::setAnimation(int, int, bool, bool, bool)
 0x002f1449	0x8	Character.cpp	game	characters	pending	_ZN9Character12getSpawnTypeEv	Character::getSpawnType()
 0x002f1451	0x8	Character.cpp	game	characters	pending	_ZN9Character12setSpawnTypeEi	Character::setSpawnType(int)
-0x002f1459	0x6	Character.cpp	game	characters	pending	_ZNK9Character10getVehicleEv	Character::getVehicle() const
-0x002f1461	0x6	Character.cpp	game	characters	pending	_ZNK9Character13getLockTargetEv	Character::getLockTarget() const
-0x002f1469	0x4	Character.cpp	game	characters	pending	_ZNK9Character15getCameraOffsetEv	Character::getCameraOffset() const
+0x002f1459	0x6	Character.cpp	game	characters	matched	_ZNK9Character10getVehicleEv	Character::getVehicle() const
+0x002f1461	0x6	Character.cpp	game	characters	matched	_ZNK9Character13getLockTargetEv	Character::getLockTarget() const
+0x002f1469	0x4	Character.cpp	game	characters	matched	_ZNK9Character15getCameraOffsetEv	Character::getCameraOffset() const
 0x002f146d	0x6	Character.cpp	game	characters	pending	_ZNK9Character12getMaxHealthEv	Character::getMaxHealth() const
 0x002f1475	0x6	Character.cpp	game	characters	pending	_ZNK9Character9getHealthEv	Character::getHealth() const
 0x002f147d	0x8	Character.cpp	game	characters	pending	_ZN9Character9SetTargetEP11LevelObject	Character::SetTarget(LevelObject*)
 0x002f1485	0x6	Character.cpp	game	characters	pending	_ZN9Character11getSkinMeshEv	Character::getSkinMesh()
 0x002f148d	0x20	Character.cpp	game	characters	pending	_ZN9Character25canAnimationBeInterruptedEi	Character::canAnimationBeInterrupted(int)
-0x002f14ad	0x6	Character.cpp	game	characters	pending	_ZN9Character10setVehicleEP7Vehicle	Character::setVehicle(Vehicle*)
+0x002f14ad	0x6	Character.cpp	game	characters	matched	_ZN9Character10setVehicleEP7Vehicle	Character::setVehicle(Vehicle*)
 0x002f14b5	0x2	Character.cpp	game	characters	pending	_ZN9Character12updatePhysicEi	Character::updatePhysic(int)
 0x002f14b9	0x2	Character.cpp	game	characters	pending	_ZN9Character15updateSceneNodeEi	Character::updateSceneNode(int)
 0x002f14bd	0x2	Character.cpp	game	characters	pending	_ZN9Character6renderEv	Character::render()
@@ -10048,7 +10048,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1581	0x1e	Character.cpp	game	characters	pending	_ZN9Character6isDownEv	Character::isDown()
 0x002f15a1	0x1c	Character.cpp	game	characters	pending	_ZN9Character7isDyingEv	Character::isDying()
 0x002f15bd	0x74	Character.cpp	game	characters	pending	_ZNK9Character20isAnimationLastFrameEf	Character::isAnimationLastFrame(float) const
-0x002f1631	0x2	Character.cpp	game	characters	pending	_ZN9Character13setLockTargetEPS_	Character::setLockTarget(Character*)
+0x002f1631	0x2	Character.cpp	game	characters	matched	_ZN9Character13setLockTargetEPS_	Character::setLockTarget(Character*)
 0x002f1635	0x14	Character.cpp	game	characters	pending	_ZN9Character9nextPunchEv	Character::nextPunch()
 0x002f1649	0x14	Character.cpp	game	characters	pending	_ZN9Character8nextKickEv	Character::nextKick()
 0x002f165d	0x18	Character.cpp	game	characters	pending	_ZN9Character19isInFlinchAnimationEv	Character::isInFlinchAnimation()
@@ -10057,7 +10057,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f16c5	0x50	Character.cpp	game	characters	pending	_ZN9Character12walkToTargetEv	Character::walkToTarget()
 0x002f1715	0x18	Character.cpp	game	characters	pending	_ZN9Character4initEv	Character::init()
 0x002f172d	0x44	Character.cpp	game	characters	pending	_ZN9Character17removeBloodPuddleEv	Character::removeBloodPuddle()
-0x002f1771	0xe	Character.cpp	game	characters	pending	_ZN9Character15setCameraOffsetERKN3irr4core8vector3dIfEE	Character::setCameraOffset(irr::core::vector3d<float> const&)
+0x002f1771	0xe	Character.cpp	game	characters	matched	_ZN9Character15setCameraOffsetERKN3irr4core8vector3dIfEE	Character::setCameraOffset(irr::core::vector3d<float> const&)
 0x002f1781	0x88	Character.cpp	game	characters	pending	_ZN9Character9startTurnEf	Character::startTurn(float)
 0x002f1809	0x30	Character.cpp	game	characters	matched	__tcf_4	__tcf_4
 0x002f1839	0x24	Character.cpp	game	characters	pending	__tcf_1	__tcf_1
@@ -10078,7 +10078,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1f45	0x58	Character.cpp	game	characters	pending	_ZN9Character16setNextAnimationEPKcibbb	Character::setNextAnimation(char const*, int, bool, bool, bool)
 0x002f1f9d	0xe0	Character.cpp	game	characters	pending	_ZN9Character24setReloadWeaponAnimationEi	Character::setReloadWeaponAnimation(int)
 0x002f207d	0x88	Character.cpp	game	characters	pending	_ZN9Character20checkForWeaponReloadEv	Character::checkForWeaponReload()
-0x002f2105	0x14	Character.cpp	game	characters	pending	_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi	Character::setDestination(irr::core::vector3d<float> const&, int)
+0x002f2105	0x14	Character.cpp	game	characters	matched	_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi	Character::setDestination(irr::core::vector3d<float> const&, int)
 0x002f2119	0x1a	Character.cpp	game	characters	pending	_ZN9Character16setTurnDirectionEN3irr4core8vector3dIfEE	Character::setTurnDirection(irr::core::vector3d<float>)
 0x002f2135	0x50	Character.cpp	game	characters	pending	_ZN9Character16CheckDestinationEv	Character::CheckDestination()
 0x002f2185	0x150	Character.cpp	game	characters	pending	_ZN9Character5debugEPN3irr5video12IVideoDriverE	Character::debug(irr::video::IVideoDriver*)

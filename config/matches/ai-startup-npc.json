@@ -69,12 +69,15 @@
         },
         ".ai_manager_cleanup"
     ],
+    "dependencies": [
+        "ai-startup-character"
+    ],
+    "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
         "_ZNK4Path7getSizeEv",
         "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
         "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
-        "_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi",
         "_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE",
         "_ZN9Character14walkToLocationERKN3irr4core8vector3dIfEE",
         "_ZN9Character8goToIdleEv",
