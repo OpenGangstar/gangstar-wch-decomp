@@ -3,8 +3,28 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 strcmp = 0x001c4658;
+puts = 0x001c41b4;
 SECTIONS
 {
+    .vehicle_no_animators_message 0x0041f4b0 : { *(.rodata.*noAnimatorsMessage*) }
+    .vehicle_no_timeline_message 0x0041f4d4 : { *(.rodata.*noTimelineMessage*) }
+    .vehicle_no_callback_timeline_message 0x0041f4f0 : { *(.rodata.*noCallbackTimelineMessage*) }
+    .vehicle_close_left_door_clip 0x0041f514 : { *(.rodata.*closeLeftDoorClip*) }
+    .vehicle_close_right_door_clip 0x0041f528 : { *(.rodata.*closeRightDoorClip*) }
+    .vehicle_exit_low_left_clip 0x0041f540 : { *(.rodata.*exitLowLeftClip*) }
+    .vehicle_exit_low_right_clip 0x0041f558 : { *(.rodata.*exitLowRightClip*) }
+    .vehicle_exit_high_left_clip 0x0041f570 : { *(.rodata.*exitHighLeftClip*) }
+    .vehicle_exit_high_right_clip 0x0041f588 : { *(.rodata.*exitHighRightClip*) }
+    .vehicle_closed_idle_clip 0x0041f5a0 : { *(.rodata.*closedIdleClip*) }
+    .vehicle_opened_idle_clip 0x0041f5b0 : { *(.rodata.*openedIdleClip*) }
+    .vehicle_animation_transition 0x003098ec : { *(.text._Z19aTransitionCallbackPN3irr5scene19ITimelineControllerEPv) }
+    .vehicle_callback 0x003099a0 : { *(.text._Z15VehicleCallBackPN3irr5scene19ITimelineControllerEPv) }
+    .vehicle_start_anim 0x003095d4 : { *(.text._ZN7Vehicle9startAnimEPN3irr5scene18ISceneNodeAnimatorEb) }
+    .vehicle_is_current_anim 0x003097c4 : { *(.text._ZN7Vehicle13isCurrentAnimEPKc) }
+    .vehicle_get_timeline 0x003097f4 : { *(.text._ZN7Vehicle11getTimelineEPN3irr5scene10ISceneNodeE) }
+    .vehicle_play_current_anim 0x00309828 : { *(.text._ZN7Vehicle20playCurAnimFromStartEv) }
+    .vehicle_set_transition_callback 0x00309854 : { *(.text._ZN7Vehicle21setTransitionCallbackEPN3irr5scene10ISceneNodeE) }
+    .vehicle_set_anim 0x00309890 : { *(.text._ZN7Vehicle7setAnimEPKcbf) }
     .vehicle_low_enter_clip 0x0041def8 : { *(.rodata.*lowVehicleEnterClip*) }
     .vehicle_is_low_vehicle 0x00308ef0 : { *(.text._ZN7Vehicle12isLowVehicleEv) }
     .vehicle_get_seated_animation 0x00308f1c : { *(.text._ZN7Vehicle18getSeatedAnimationEv) }

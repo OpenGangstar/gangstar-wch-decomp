@@ -42,6 +42,12 @@ public:
     void openDoor(bool left);
     void openDoorFromInside(bool left);
     void closeDoor(bool left);
+    void startAnim(irr::scene::ISceneNodeAnimator* animator, bool loop);
+    bool isCurrentAnim(const char* name);
+    irr::scene::ITimelineController* getTimeline(irr::scene::ISceneNode* node);
+    void playCurAnimFromStart();
+    void setTransitionCallback(irr::scene::ISceneNode* node);
+    void setAnim(const char* name, bool loop, float scale);
     bool isLowVehicle();
     int getSeatedAnimation();
     int getRightThrownAnimation();
@@ -72,6 +78,7 @@ private:
     void openDoorWithClip(const char* clip, bool left);
     friend class Race;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
+    friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
     unsigned char unknown52[192];
     Character* targetingCharacter;
     unsigned char unknown248[36];
@@ -106,7 +113,7 @@ private:
     unsigned char unknown780[124];
     int doorSoundSuppression;
     unsigned char unknown908[56];
-    int doorAnimationClip;
+    int animationClipIndex;
     unsigned char unknown968[34];
     bool leftDoorClosed;
     bool rightDoorClosed;

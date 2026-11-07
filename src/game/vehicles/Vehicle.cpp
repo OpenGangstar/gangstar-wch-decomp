@@ -14,6 +14,9 @@
 #include "../core/NativeStrings.h"
 #include "../rendering/GS3DStuff.h"
 
+extern "C" int puts(const char*);
+void aTransitionCallback(irr::scene::ITimelineController*, void*);
+
 namespace irr { namespace collada {
 class CSkinnedMeshSceneNode {
 public:
@@ -79,6 +82,17 @@ const char openDoorClip[] = "car_open_door";
 const char closeDoorClip[] = "car_close_door";
 const char exitCarClip[] = "car_exit_car";
 const char lowVehicleEnterClip[] = "car_enter_car_low";
+const char noAnimatorsMessage[] = "this scene node has no animators";
+const char noTimelineMessage[] = "This mesh has no timeline";
+const char noCallbackTimelineMessage[] = "no timeline...can't set callback";
+const char closeLeftDoorClip[] = "car_close_door_left";
+const char closeRightDoorClip[] = "car_close_door_right";
+const char exitLowLeftClip[] = "car_exit_car_low_left";
+const char exitLowRightClip[] = "car_exit_car_low_right";
+const char exitHighLeftClip[] = "car_exit_car_hi_left";
+const char exitHighRightClip[] = "car_exit_car_hi_right";
+const char closedIdleClip[] = "car_closed_idle";
+const char openedIdleClip[] = "car_opened_idle";
 }
 
 bool Vehicle::isLowVehicle()
@@ -179,8 +193,8 @@ void doorTransitionCallback(irr::scene::ITimelineController* timeline, void* dat
 void Vehicle::setDoorAnim(const char* name, bool left)
 {
     irr::scene::ISceneNodeAnimator* animator = left ? leftDoorAnimator : rightDoorAnimator;
-    doorAnimationClip = animator->getAnimationClipIndex(name);
-    animator->setAnimationClip(doorAnimationClip);
+    animationClipIndex = animator->getAnimationClipIndex(name);
+    animator->setAnimationClip(animationClipIndex);
     irr::scene::ITimelineController* timeline = animator->getTimelineCtrl();
     if (timeline) {
         timeline->setScale(doorAnimationScale);
@@ -236,6 +250,89 @@ void Vehicle::enableSkinning(bool enabled)
 void Vehicle::enableBackfaceCulling(bool enabled)
 {
     GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);
+}
+
+void Vehicle::startAnim(irr::scene::ISceneNodeAnimator* animator, bool loop)
+{
+    irr::scene::ITimelineController* timeline = animator->getTimelineCtrl();
+    if (timeline) {
+        timeline->setLoop(loop);
+        timeline->jumpTo(timeline->startTime);
+    }
+}
+
+bool Vehicle::isCurrentAnim(const char* name)
+{
+    irr::scene::ISceneNodeAnimator* animator = *sceneNode->getAnimators().begin();
+    return animator->getAnimationClipIndex(name) == animationClipIndex;
+}
+
+irr::scene::ITimelineController* Vehicle::getTimeline(irr::scene::ISceneNode* node)
+{
+    const irr::scene::SceneAnimatorList& animators = node->getAnimators();
+    if (animators.getSize())
+        return (*animators.begin())->getTimelineCtrl();
+
+    puts(noAnimatorsMessage);
+    return 0;
+}
+
+void Vehicle::playCurAnimFromStart()
+{
+    irr::scene::ITimelineController* timeline = getTimeline(sceneNode);
+    if (timeline)
+        timeline->jumpTo(timeline->startTime);
+    else
+        puts(noTimelineMessage);
+}
+
+void Vehicle::setTransitionCallback(irr::scene::ISceneNode* node)
+{
+    irr::scene::ITimelineController* timeline = getTimeline(node);
+    if (timeline) {
+        timeline->setLoop(false);
+        timeline->callbackData = this;
+        timeline->callback = aTransitionCallback;
+    } else {
+        puts(noCallbackTimelineMessage);
+    }
+}
+
+void Vehicle::setAnim(const char* name, bool, float scale)
+{
+    irr::scene::ISceneNodeAnimator* animator = *sceneNode->getAnimators().begin();
+    const int clip = animator->getAnimationClipIndex(name);
+    if (clip != animationClipIndex) {
+        animator->getTimelineCtrl()->setScale(scale);
+        animator->setAnimationClip(clip);
+        animationClipIndex = clip;
+        setTransitionCallback(sceneNode);
+        playCurAnimFromStart();
+    }
+}
+
+void aTransitionCallback(irr::scene::ITimelineController*, void* data)
+{
+    Vehicle* vehicle = static_cast<Vehicle*>(data);
+    if (vehicle->isCurrentAnim(closeLeftDoorClip) ||
+        vehicle->isCurrentAnim(closeRightDoorClip) ||
+        vehicle->isCurrentAnim(exitLowLeftClip) ||
+        vehicle->isCurrentAnim(exitLowRightClip) ||
+        vehicle->isCurrentAnim(exitHighLeftClip) ||
+        vehicle->isCurrentAnim(exitHighRightClip)) {
+        vehicle->setAnim(closedIdleClip, false, 1.0f);
+    } else if (vehicle->isCurrentAnim(openDoorClip)) {
+        vehicle->setAnim(openedIdleClip, false, 1.0f);
+    }
+    vehicle->playCurAnimFromStart();
+}
+
+void VehicleCallBack(irr::scene::ITimelineController*, void* data)
+{
+    Vehicle* vehicle = static_cast<Vehicle*>(data);
+    vehicle->animationClipIndex = 99999;
+    vehicle->setAnim(closedIdleClip, false, 1.0f);
+    vehicle->playCurAnimFromStart();
 }
 
 void Vehicle::_notifyTargeted(bool targeted, Character* source)
