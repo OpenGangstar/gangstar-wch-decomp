@@ -5,7 +5,7 @@ class DataStream;
 
 namespace Structs {
 struct WorldDescriptor {
-    void Read(DataStream& stream);
+    void Read(DataStream& stream) __attribute__((weak));
 
     int flags;
     char* objectsPath;
@@ -18,7 +18,9 @@ struct WorldDescriptor {
 
 class WorldDescriptor : public Structs::WorldDescriptor {
 public:
+    WorldDescriptor();
     explicit WorldDescriptor(const char* path);
+    explicit WorldDescriptor(int resourceId);
     ~WorldDescriptor();
 };
 

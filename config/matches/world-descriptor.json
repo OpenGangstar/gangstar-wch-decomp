@@ -1,0 +1,56 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-ffunction-sections",
+        "-fstack-protector",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-fdata-sections",
+        "-finline-limit=40",
+        "-fno-short-enums"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "retail_got": true,
+    "source": "src/game/world/WorldDescriptor.cpp",
+    "linker_script": "config/linker/WorldDescriptor.ld",
+    "functions": [
+        "_ZN15WorldDescriptorC1Ei",
+        "_ZN15WorldDescriptorC1EPKc",
+        "_ZN15WorldDescriptorC1Ev",
+        "_ZN15WorldDescriptorC2Ei",
+        "_ZN15WorldDescriptorC2EPKc",
+        "_ZN15WorldDescriptorC2Ev",
+        "_ZN15WorldDescriptorD1Ev",
+        "_ZN15WorldDescriptorD2Ev",
+        "_ZN7Structs15WorldDescriptor4ReadER10DataStream"
+    ],
+    "external_thumb_functions": [
+        "_ZN10DataStreamC1ER6StreamNS_6endianE",
+        "_ZN10DataStream7ReadIntEv",
+        "_ZN10DataStream21ReadAndAllocateStringEv",
+        "_ZN9ResStreamC1EPKci",
+        "_ZN9ResStreamC1Ei",
+        "_ZN9ResStreamD1Ev"
+    ],
+    "sections": [
+        ".data_stream_dtor",
+        {
+            "name": ".got",
+            "offset": 864
+        }
+    ]
+}
