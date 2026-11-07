@@ -28,7 +28,7 @@ public:
     unsigned char getObjectType() const { return objectType; }
     const char* getName() const { return unknown28; }
     PhysicAttributes* getPhysicAttributes() const { return unknown24; }
-    unsigned char GetMetatype();
+    int GetMetatype();
     void SetName(const char* name);
     void debug(irr::video::IVideoDriver* driver);
     static void setup();

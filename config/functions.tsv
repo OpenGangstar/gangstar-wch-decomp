@@ -10026,15 +10026,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f143d	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject17clearPhotographedEv	LevelObject::clearPhotographed()
 0x002f1441	0x4	LevelObject.cpp	game	world	matched	_ZNK11LevelObject14isPhotographedEv	LevelObject::isPhotographed() const
 0x002f1445	0x4	LevelObject.cpp	game	world	pending	_ZN11LevelObject12setAnimationEiibbb	LevelObject::setAnimation(int, int, bool, bool, bool)
-0x002f1449	0x8	Character.cpp	game	characters	pending	_ZN9Character12getSpawnTypeEv	Character::getSpawnType()
-0x002f1451	0x8	Character.cpp	game	characters	pending	_ZN9Character12setSpawnTypeEi	Character::setSpawnType(int)
+0x002f1449	0x8	Character.cpp	game	characters	matched	_ZN9Character12getSpawnTypeEv	Character::getSpawnType()
+0x002f1451	0x8	Character.cpp	game	characters	matched	_ZN9Character12setSpawnTypeEi	Character::setSpawnType(int)
 0x002f1459	0x6	Character.cpp	game	characters	matched	_ZNK9Character10getVehicleEv	Character::getVehicle() const
 0x002f1461	0x6	Character.cpp	game	characters	matched	_ZNK9Character13getLockTargetEv	Character::getLockTarget() const
 0x002f1469	0x4	Character.cpp	game	characters	matched	_ZNK9Character15getCameraOffsetEv	Character::getCameraOffset() const
 0x002f146d	0x6	Character.cpp	game	characters	matched	_ZNK9Character12getMaxHealthEv	Character::getMaxHealth() const
 0x002f1475	0x6	Character.cpp	game	characters	matched	_ZNK9Character9getHealthEv	Character::getHealth() const
-0x002f147d	0x8	Character.cpp	game	characters	pending	_ZN9Character9SetTargetEP11LevelObject	Character::SetTarget(LevelObject*)
-0x002f1485	0x6	Character.cpp	game	characters	pending	_ZN9Character11getSkinMeshEv	Character::getSkinMesh()
+0x002f147d	0x8	Character.cpp	game	characters	matched	_ZN9Character9SetTargetEP11LevelObject	Character::SetTarget(LevelObject*)
+0x002f1485	0x6	Character.cpp	game	characters	matched	_ZN9Character11getSkinMeshEv	Character::getSkinMesh()
 0x002f148d	0x20	Character.cpp	game	characters	matched	_ZN9Character25canAnimationBeInterruptedEi	Character::canAnimationBeInterrupted(int)
 0x002f14ad	0x6	Character.cpp	game	characters	matched	_ZN9Character10setVehicleEP7Vehicle	Character::setVehicle(Vehicle*)
 0x002f14b5	0x2	Character.cpp	game	characters	pending	_ZN9Character12updatePhysicEi	Character::updatePhysic(int)
@@ -10298,7 +10298,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd559	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC23isLoopingOnPathToFollowEv	NPC::isLoopingOnPathToFollow() const
 0x002fd565	0xac	NPC.cpp	game	ai	pending	_ZN3NPC21isOutsideSearchRadiusEv	NPC::isOutsideSearchRadius()
 0x002fd611	0x24	NPC.cpp	game	ai	pending	__tcf_1	__tcf_1
-0x002fd635	0x2a	NPC.cpp	game	ai	pending	_ZN3NPC5isCopEv	NPC::isCop()
+0x002fd635	0x2a	NPC.cpp	game	ai	matched	_ZN3NPC5isCopEv	NPC::isCop()
 0x002fd661	0x60	NPC.cpp	game	ai	pending	_ZN3NPC10tagForKillEb	NPC::tagForKill(bool)
 0x002fd6c1	0x30	NPC.cpp	game	ai	pending	_ZN3NPC7_arrestEv	NPC::_arrest()
 0x002fd6f1	0x1c	NPC.cpp	game	ai	matched	__tcf_3	__tcf_3

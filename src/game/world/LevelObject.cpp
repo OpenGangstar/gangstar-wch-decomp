@@ -194,7 +194,7 @@ void LevelObject::SetName(const char* name)
     strcpy(unknown28, name);
 }
 
-unsigned char LevelObject::GetMetatype()
+int LevelObject::GetMetatype()
 {
     if (objectType == 0xff) objectType = GameObjectManager::s_gom->GetMetatypeFromName(unknown28);
     return objectType;

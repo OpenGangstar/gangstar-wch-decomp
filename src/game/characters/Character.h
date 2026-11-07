@@ -18,6 +18,9 @@ public:
     bool isDown();
     bool isDying();
     virtual bool isDead();
+    virtual int getSpawnType();
+    virtual void setSpawnType(int type);
+    virtual void* getSkinMesh();
     virtual int getMaxHealth() const;
     virtual int getHealth() const;
     void resetAnimation();
@@ -33,7 +36,7 @@ public:
     virtual void setAnimationSpeedMultiplier(int speed);
     virtual void setNextAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void setNextAnimation(int id, int speed, bool a, bool b, bool c);
-    // Retail slots 40 through 54. The remaining slots are pending.
+    // Retail slots 40 through 55. The remaining slots are pending.
     virtual bool setAnimation(int id, float speed, bool loop, bool b, bool c);
     virtual void shoot(float time, bool pressed);
     virtual void die(bool flag);
@@ -49,6 +52,7 @@ public:
     virtual void walkToLocation(const irr::core::vector3d<float>& point);
     virtual void runToLocation(const irr::core::vector3d<float>& point);
     virtual Weapon* getWeapon() const = 0;
+    virtual void SetTarget(LevelObject* value);
 private:
     static irr::scene::ITimelineController* s_timelineController;
     bool isCurrentAnimation(int id);
@@ -67,7 +71,9 @@ private:
     bool animationLoops;
     unsigned char unknown149[3];
     int animationSpeedMultiplier;
-    unsigned char unknown156[28];
+    unsigned char unknown156[16];
+    void* skinMesh;
+    unsigned char unknown176[8];
     Character* lockTarget;
     Vehicle* vehicle;
     unsigned char unknown192[24];
@@ -77,7 +83,11 @@ private:
     unsigned int movementFlags;
     unsigned char unknown240[4];
     int nextAnimation;
-    unsigned char unknown248[48];
+    unsigned char unknown248[12];
+    LevelObject* target;
+    unsigned char unknown264[4];
+    int spawnType;
+    unsigned char unknown272[24];
 };
 
 #endif

@@ -25,6 +25,10 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character12getSpawnTypeEv",
+        "_ZN9Character12setSpawnTypeEi",
+        "_ZN9Character9SetTargetEP11LevelObject",
+        "_ZN9Character11getSkinMeshEv",
         "_ZNK9Character12getMaxHealthEv",
         "_ZNK9Character9getHealthEv",
         "_ZN9Character7isDyingEv",
