@@ -56,7 +56,7 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
     /* Character's TU-local startup is verified in its own image. */
-    /DISCARD/ : { *ai-startup-character.o(*) }
+    /DISCARD/ : { *ai-startup-character.o(*) *ai-startup-physicattributes.o(*) }
     /* Only the HUD weapon entry points are needed in this image. */
     /DISCARD/ : { *hud-manager-helpers.o(*) }
     /DISCARD/ : { *ai-startup-npc.o(*) }

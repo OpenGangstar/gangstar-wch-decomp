@@ -25,6 +25,8 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character9OnDespawnEv",
+        "_ZN9Character7OnSpawnEv",
         "_ZN9Character16freeBloodObjectsEv",
         "_ZN9Character16loadBloodObjectsEPKcS1_",
         "_Z23BloodSplashAnimCallbackPN3irr5scene19ITimelineControllerEPv",
@@ -114,8 +116,14 @@
         },
         ".ai_manager_cleanup"
     ],
+    "dependencies": [
+        "ai-startup-physicattributes"
+    ],
+    "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject7OnSpawnEv",
+        "_ZN11LevelObject9OnDespawnEv",
         "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
         "_ZN16SceneNodeManager11getInstanceEv",

@@ -25,6 +25,7 @@
     "source": "src/game/characters/PhysicAttributes.cpp",
     "linker_script": "config/linker/PhysicAttributesAiStartup.ld",
     "functions": [
+        "_ZN16PhysicAttributes15ResetPhysicInfoEv",
         {
             "name": "__tcf_3",
             "address": "0x003199f1"

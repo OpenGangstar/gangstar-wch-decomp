@@ -11,6 +11,25 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "PhysicAttributes.h"
+
+struct PhysicInfo {
+    void Reset(b2World* world) __attribute__((weak));
+
+    unsigned char unknown0[136];
+    bool primary136;
+    bool primary137;
+    unsigned char unknown138[2];
+};
+
+void PhysicAttributes::ResetPhysicInfo()
+{
+    for (int i = 0; i < infoCount; ++i) {
+        info[i].Reset(s_world);
+        info[i].primary136 = i == 0;
+        info[i].primary137 = i == 0;
+    }
+}
 
 void operator delete(void*) throw();
 extern "C" {

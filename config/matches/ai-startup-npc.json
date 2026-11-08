@@ -88,11 +88,14 @@
         ".ai_manager_cleanup"
     ],
     "dependencies": [
+        "ai-startup-physicattributes",
         "ai-startup-character"
     ],
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject7OnSpawnEv",
+        "_ZN11LevelObject9OnDespawnEv",
         "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
         "_ZN16SceneNodeManager11getInstanceEv",
