@@ -17,6 +17,8 @@ public:
     void Load(const Structs::NPC&);
     bool isCop();
     void notifyTargeted(bool targeted, Character* by);
+    void attackTarget(LevelObject* object);
+    virtual void SetTarget(LevelObject* object);
     const Path* getPathToFollow() const;
     void setCurrentWaypoint(int waypoint);
     int getCurrentWaypoint() const;
@@ -51,7 +53,10 @@ private:
     unsigned char unknown432[8];
     const Path* pathToFollow;
     int currentWaypoint;
-    unsigned char unknown448[8];
+    unsigned char unknown448[4];
+    bool attackState452;
+    unsigned char unknown453[3];
+    void acquireTarget();
     void equipWeapon(bool forceUnarmed, bool swapHands);
     void attachWeaponToHand(irr::scene::ISceneNode* hand, irr::scene::ISceneNode* model);
 };

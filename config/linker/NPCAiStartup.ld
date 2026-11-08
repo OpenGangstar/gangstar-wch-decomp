@@ -19,6 +19,8 @@ INCLUDE config/linker/CharacterStateSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld
 SECTIONS
 {
+    .npc_acquire_target 0x002fd838 : { *ai-startup-npc.o(.text._ZN3NPC13acquireTargetEv) }
+    .npc_attack_target_object 0x002fe338 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEP11LevelObject) }
     .npc_attach_weapon 0x002fd4bc : { *ai-startup-npc.o(.text._ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_) }
     .npc_equip_weapon 0x002fe268 : { *ai-startup-npc.o(.text._ZN3NPC11equipWeaponEbb) }
     .npc_die 0x002ff01c : { *ai-startup-npc.o(.text._ZN3NPC3dieEb) }
