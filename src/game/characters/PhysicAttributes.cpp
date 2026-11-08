@@ -12,23 +12,44 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "PhysicAttributes.h"
+#include "../core/Physics.h"
 
 struct PhysicInfo {
+    PhysicInfo() __attribute__((weak));
     void Reset(b2World* world) __attribute__((weak));
 
-    unsigned char unknown0[136];
-    bool primary136;
-    bool primary137;
+    unsigned char unknown0[12];
+    irr::core::vector3d<float> vector12, vector24, vector36, vector48;
+    unsigned char unknown60[4];
+    irr::core::vector3d<float> unknown64;
+    unsigned char unknown76[12];
+    b2Body* bodies[12];
+    bool onGround;
+    bool wasOnGround;
     unsigned char unknown138[2];
 };
+
+void PhysicAttributes::SetIsOnGround(int slot, bool value)
+{
+    info[slot].wasOnGround = info[slot].onGround;
+    info[slot].onGround = value;
+}
 
 void PhysicAttributes::ResetPhysicInfo()
 {
     for (int i = 0; i < infoCount; ++i) {
         info[i].Reset(s_world);
-        info[i].primary136 = i == 0;
-        info[i].primary137 = i == 0;
+        info[i].onGround = i == 0;
+        info[i].wasOnGround = i == 0;
     }
+}
+
+PhysicInfo::PhysicInfo()
+{
+    unknown64.Z = 999999.0f;
+    for (int i = 0; i < 12; ++i)
+        bodies[i] = 0;
+    Reset(0);
 }
 
 void operator delete(void*) throw();

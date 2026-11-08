@@ -16,6 +16,7 @@ _ZN35retail_physicattributes_transitions22scripted_vehicle_transE = 0x00421020;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .physic_attributes_on_ground 0x00319888 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes13SetIsOnGroundEib) }
     .ai_startup_function_0 0x003199f0 : { *ai-startup-physicattributes.o(.text.__tcf_3) }
     .ai_startup_function_1 0x0031d648 : { *ai-startup-physicattributes.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0031d78c : { *ai-startup-physicattributes.o(.text._GLOBAL__I__ZN16PhysicAttributes11s_neighborsE) }

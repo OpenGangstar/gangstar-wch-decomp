@@ -14,6 +14,7 @@ public:
     void Init(unsigned short region, unsigned short surface, const irr::core::vector3d<float>& position);
     void SetPhysicInfo(const PhysicInfo& info, int flag);
     void ResetPhysicInfo();
+    void SetIsOnGround(int slot, bool value);
     float GetHeight(const irr::core::vector3d<float>& position, int flag, bool detailed);
     static b2World* s_world;
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
