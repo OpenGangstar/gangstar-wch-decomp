@@ -29,6 +29,7 @@ public:
     virtual void runToLocation(const irr::core::vector3d<float>& point);
 private:
     friend class AchievementManager;
+    friend class Character;
     unsigned char unknown296[12];
     Weapon* weapon;
     unsigned char unknown312[20];

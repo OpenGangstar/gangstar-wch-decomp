@@ -10076,7 +10076,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1f1d	0x16	Character.cpp	game	characters	matched	_ZN9Character6isDeadEv	Character::isDead()
 0x002f1f35	0x10	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEiibbb	Character::setNextAnimation(int, int, bool, bool, bool)
 0x002f1f45	0x58	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEPKcibbb	Character::setNextAnimation(char const*, int, bool, bool, bool)
-0x002f1f9d	0xe0	Character.cpp	game	characters	pending	_ZN9Character24setReloadWeaponAnimationEi	Character::setReloadWeaponAnimation(int)
+0x002f1f9d	0xe0	Character.cpp	game	characters	matched	_ZN9Character24setReloadWeaponAnimationEi	Character::setReloadWeaponAnimation(int)
 0x002f207d	0x88	Character.cpp	game	characters	matched	_ZN9Character20checkForWeaponReloadEv	Character::checkForWeaponReload()
 0x002f2105	0x14	Character.cpp	game	characters	matched	_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi	Character::setDestination(irr::core::vector3d<float> const&, int)
 0x002f2119	0x1a	Character.cpp	game	characters	matched	_ZN9Character16setTurnDirectionEN3irr4core8vector3dIfEE	Character::setTurnDirection(irr::core::vector3d<float>)
