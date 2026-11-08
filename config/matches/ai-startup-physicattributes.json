@@ -40,6 +40,7 @@
         "_ZN17b2ContactListener6RemoveEPK14b2ContactPoint",
         "_ZN17b2ContactListener6ResultEPK15b2ContactResult",
         "_ZN15ContactListener6ResultEPK15b2ContactResult",
+        "_ZN15ContactListener6RemoveEPK14b2ContactPoint",
         "_ZN17b2ContactListenerD0Ev",
         "_ZN17b2ContactListenerD1Ev",
         "_ZN13ContactFilterD1Ev",

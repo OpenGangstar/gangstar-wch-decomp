@@ -10875,7 +10875,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00319ed5	0x538	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes10LoadArraysEPc	PhysicAttributes::LoadArrays(char*)
 0x0031a40d	0xc0	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi	PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode, irr::core::irrAllocator<AStarNode> >*, int*)
 0x0031a4cd	0x120	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes12GetTriCenterEtt	PhysicAttributes::GetTriCenter(unsigned short, unsigned short)
-0x0031a5ed	0x90	PhysicAttributes.cpp	game	characters	pending	_ZN15ContactListener6RemoveEPK14b2ContactPoint	ContactListener::Remove(b2ContactPoint const*)
+0x0031a5ed	0x90	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener6RemoveEPK14b2ContactPoint	ContactListener::Remove(b2ContactPoint const*)
 0x0031a67d	0x80	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE	PhysicAttributes::IsPositionOnJump(irr::core::vector3d<float> const&)
 0x0031a6fd	0x254	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi	PhysicAttributes::GetJumpHeight(irr::core::vector3d<float> const&, int)
 0x0031a951	0x10c	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes9InitWorldEv	PhysicAttributes::InitWorld()

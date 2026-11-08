@@ -15,6 +15,13 @@
 #include "../core/Physics.h"
 #include "../core/SafeDelete.h"
 #include "../core/SceneNode.h"
+#include "../vehicles/Vehicle.h"
+
+// Observed prefix of the Box2D contact record.
+struct b2ContactPoint {
+    b2Shape* shape1;
+    b2Shape* shape2;
+};
 
 // Emit the inline destructors while the key virtual methods remain retail imports.
 class ContactListener : public b2ContactListener {
@@ -31,6 +38,27 @@ public:
     virtual ~ContactFilter() __attribute__((used)) {}
     virtual bool ShouldCollide(b2Shape* first, b2Shape* second);
 };
+
+void ContactListener::Remove(const b2ContactPoint* point)
+{
+    b2Shape* first = point->shape1;
+    const PhysicsBodyData* firstData = static_cast<const PhysicsBodyData*>(first->GetBody()->GetUserData());
+    LevelObject* firstOwner = firstData ? firstData->owner : 0;
+    b2Shape* second = point->shape2;
+    const PhysicsBodyData* secondData = static_cast<const PhysicsBodyData*>(second->GetBody()->GetUserData());
+    LevelObject* secondOwner = secondData ? secondData->owner : 0;
+
+    if ((firstOwner && LevelObject::s_type[firstOwner->getObjectType()] == 12)
+        || (secondOwner && LevelObject::s_type[secondOwner->getObjectType()] == 12))
+        return;
+
+    if (first->IsSensor()) {
+        if (!second->IsSensor() && firstOwner)
+            --static_cast<Vehicle*>(firstOwner)->sensorContactCount;
+    } else if (second->IsSensor() && secondOwner) {
+        --static_cast<Vehicle*>(secondOwner)->sensorContactCount;
+    }
+}
 
 void ContactListener::Result(const b2ContactResult*)
 {

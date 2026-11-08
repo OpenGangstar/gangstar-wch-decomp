@@ -86,6 +86,7 @@ private:
     void openDoorWithClip(const char* clip, bool left);
     void setWheelVisibility(bool visible);
     friend class Race;
+    friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
     unsigned char unknown52[192];
@@ -122,7 +123,9 @@ private:
     irr::scene::ISceneNodeAnimator* rightDoorAnimator;
     unsigned char unknown768[8];
     float unknown776;
-    unsigned char unknown780[124];
+    unsigned char unknown780[4];
+    int sensorContactCount;
+    unsigned char unknown788[116];
     int doorSoundSuppression;
     unsigned char unknown908[56];
     int animationClipIndex;
