@@ -1,5 +1,8 @@
 SECTIONS
 {
+    .npc_death_event_dtor 0x002feff8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN10EvNPCDeathD1Ev) }
+    .npc_death_event_delete 0x002feb9c : { *ai-startup-npc.o(.gnu.linkonce.t._ZN10EvNPCDeathD0Ev) }
+    .npc_death_event_vtable 0x004aae70 : { *ai-startup-npc.o(.gnu.linkonce.d.rel.ro._ZTV10EvNPCDeath) }
     .npc_notify_targeted 0x002fedac : { *ai-startup-npc.o(.text._ZN3NPC14notifyTargetedEbP9Character) }
     .npc_event_dtor 0x002f5158 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN5EvNPCD1Ev) }
     .npc_event_delete 0x002f626c : { *ai-startup-npc.o(.gnu.linkonce.t._ZN5EvNPCD0Ev) }

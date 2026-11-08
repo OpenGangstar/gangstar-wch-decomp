@@ -20,6 +20,8 @@
 #include "../combat/Weapon.h"
 #include "../combat/WeaponManager.h"
 #include "../core/EventManager.h"
+#include "../meta/Item.h"
+#include "../world/GameObjectManager.h"
 
 namespace {
 union MovementFlags {
@@ -202,6 +204,29 @@ void NPC::notifyTargeted(bool targeted, Character* by)
     } else {
         events->raise(EvNPC(EvNPC::Untargeted, this));
     }
+}
+
+void NPC::die(bool flag)
+{
+    Character::die(flag);
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->raise(EvNPCDeath(this));
+    if (flags356 & 0x200u) {
+        events->raise(EvNPC(EvNPC::DeathFlag512, this));
+        flags356 &= ~0x200u;
+    }
+    events->raise(EvNPC(EvNPC::Death, this));
+    flags356 &= ~0x2dfu;
+    equipWeapon(false, false);
+    irr::core::vector3d<float> position = GetPosition();
+    if (weapon->dropsOnNPCDeath()) {
+        Item::drop(weapon->GetMetatype(), position, 0);
+        position.Y += 50.0f;
+        GameObjectManager::s_gom->RemoveAndDestroy(weapon);
+        weapon = 0;
+    }
+    if (cashDrop > 0)
+        Item::drop(16, position, cashDrop);
 }
 
 void operator delete(void*) throw();

@@ -9,6 +9,7 @@ class NPC : public Character {
 public:
     NPC(int type);
     virtual ~NPC();
+    virtual void die(bool flag);
     virtual Weapon* getWeapon() const;
     virtual void photographed();
     virtual void clearPhotographed();
@@ -39,11 +40,14 @@ private:
     int activeWaypoint;
     unsigned char unknown340[16];
     unsigned int flags356;
-    unsigned char unknown360[68];
+    unsigned char unknown360[56];
+    int cashDrop;
+    unsigned char unknown420[8];
     unsigned int category428;
     unsigned char unknown432[8];
     const Path* pathToFollow;
     int currentWaypoint;
     unsigned char unknown448[8];
+    void equipWeapon(bool equip, bool flag);
 };
 #endif
