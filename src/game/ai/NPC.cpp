@@ -15,6 +15,11 @@
 #include "NPC.h"
 #include "../characters/PhysicAttributes.h"
 #include "../world/Path.h"
+#include "../app/Application.h"
+#include "../characters/NPCEvent.h"
+#include "../combat/Weapon.h"
+#include "../combat/WeaponManager.h"
+#include "../core/EventManager.h"
 
 namespace {
 union MovementFlags {
@@ -180,6 +185,22 @@ void NPC::goToNextPoint(bool repeat)
     } else {
         flags356 &= ~0x00400000u;
         goToIdle();
+    }
+}
+
+void NPC::notifyTargeted(bool targeted, Character* by)
+{
+    Application* app = Application::GetInstance();
+    EventManager* events = app->GetEventManager();
+    Weapon* currentWeapon = app->GetWeaponManager()->getCurrentWeapon();
+    if (targeted) {
+        targetingCharacter = by;
+        if (currentWeapon->isGun() || currentWeapon->isProjectile())
+            events->raise(EvNPC(EvNPC::Targeted, this));
+        else
+            events->raise(EvNPC(EvNPC::Untargeted, this));
+    } else {
+        events->raise(EvNPC(EvNPC::Untargeted, this));
     }
 }
 
