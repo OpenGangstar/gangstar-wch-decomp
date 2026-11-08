@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
+#include "../ai/NPC.h"
 #include "PhysicAttributes.h"
 #include "../core/Physics.h"
 #include "../app/Application.h"
@@ -288,6 +289,40 @@ void Character::setNextAnimation(const char* name, int speed, bool a, bool b, bo
     if (!(movementFlags & 0x800u)) {
         const int id = s_timelineController->getClipIndex(name);
         setNextAnimation(id, speed, a, b, c);
+    }
+}
+
+void Character::setReloadWeaponAnimation(int type)
+{
+    switch (type) {
+    case 1:
+        if (s_type[getObjectType()] == 5 && static_cast<NPC*>(this)->category428 == 3)
+            setAnimation(56, 1.0f, true, false, false);
+        else
+            setAnimation(51, 1.0f, true, false, false);
+        break;
+    case 2:
+        setAnimation(60, 1.0f, true, false, false);
+        break;
+    case 3:
+        setAnimation(76, 1.0f, true, false, false);
+        break;
+    case 4:
+        setAnimation(75, 1.0f, true, false, false);
+        break;
+    case 5:
+        setAnimation(51, 1.0f, true, false, false);
+        break;
+    case 6:
+        // GCC merges this with case 2 in the retail jump-table layout.
+        setAnimation(60, 1.0f, true, false, false);
+        break;
+    case 7:
+        setAnimation(67, 1.0f, true, false, false);
+        break;
+    case 8:
+        setAnimation(68, 1.0f, true, false, false);
+        break;
     }
 }
 
