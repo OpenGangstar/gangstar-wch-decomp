@@ -14,6 +14,8 @@ class Character : public LevelObject {
 public:
     Character(int type);
     virtual ~Character();
+    virtual void OnSpawn();
+    virtual void OnDespawn();
     void initInVehicle(Vehicle* vehicle);
     void goToIdle();
     void switchWeapon();

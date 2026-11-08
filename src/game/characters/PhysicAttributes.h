@@ -13,6 +13,7 @@ public:
     ~PhysicAttributes();
     void Init(unsigned short region, unsigned short surface, const irr::core::vector3d<float>& position);
     void SetPhysicInfo(const PhysicInfo& info, int flag);
+    void ResetPhysicInfo();
     float GetHeight(const irr::core::vector3d<float>& position, int flag, bool detailed);
     static b2World* s_world;
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
@@ -23,6 +24,7 @@ public:
     int index;
     unsigned char unknown4[4];
     PhysicInfo* info;
-    unsigned char unknown12[108];
+    int infoCount;
+    unsigned char unknown16[104];
 };
 #endif

@@ -490,6 +490,31 @@ void Character::switchWeapon()
     }
 }
 
+void Character::OnDespawn()
+{
+    LevelObject::OnDespawn();
+    getPhysicAttributes()->ResetPhysicInfo();
+    setVehicle(0);
+    unknown4 &= ~2u;
+    sceneNode->setVisible(false);
+    shadowNode->setVisible(false);
+    clean();
+    if (hasSceneNodePool())
+        dropSceneNode();
+}
+
+void Character::OnSpawn()
+{
+    if (hasSceneNodePool() && !sceneNode)
+        grabSceneNode(0, 0);
+    setAnimation(-1, 1.0f, false, false, false);
+    unknown4 |= 2u;
+    LevelObject::OnSpawn();
+    sceneNode->setVisible(true);
+    shadowNode->setVisible(true);
+    init();
+}
+
 void BloodSplashAnimCallback(irr::scene::ITimelineController*, void* data)
 {
     irr::scene::ISceneNode* node = static_cast<irr::scene::ISceneNode*>(data);

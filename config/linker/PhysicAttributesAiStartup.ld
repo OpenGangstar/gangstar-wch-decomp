@@ -13,6 +13,7 @@ _ZN35retail_physicattributes_transitions17civ_vehicle_transE = 0x00420e34;
 _ZN35retail_physicattributes_transitions17cop_vehicle_transE = 0x00420ec4;
 _ZN35retail_physicattributes_transitions11guard_transE = 0x00420f78;
 _ZN35retail_physicattributes_transitions22scripted_vehicle_transE = 0x00421020;
+INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
     .ai_startup_function_0 0x003199f0 : { *ai-startup-physicattributes.o(.text.__tcf_3) }

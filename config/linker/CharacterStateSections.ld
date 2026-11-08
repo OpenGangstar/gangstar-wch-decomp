@@ -11,8 +11,11 @@ __aeabi_d2f = 0x001c4310;
 __aeabi_fcmple = 0x001c43ac;
 sqrt = 0x001c401c;
 acosf = 0x001c4694;
+INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .character_on_despawn 0x002f2a0c : { *ai-startup-character.o(.text._ZN9Character9OnDespawnEv) }
+    .character_on_spawn 0x002f2bb4 : { *ai-startup-character.o(.text._ZN9Character7OnSpawnEv) }
     .character_free_blood_objects 0x002f185c : { *ai-startup-character.o(.text._ZN9Character16freeBloodObjectsEv) }
     .character_load_blood_objects 0x002f18b4 : { *ai-startup-character.o(.text._ZN9Character16loadBloodObjectsEPKcS1_) }
     .character_blood_splash_callback 0x002f2c34 : { *ai-startup-character.o(.text._Z23BloodSplashAnimCallbackPN3irr5scene19ITimelineControllerEPv) }

@@ -64,7 +64,7 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
     /* Character startup is verified in its own image. Keep only the state methods here. */
-    /DISCARD/ : { *ai-startup-character.o(*) }
+    /DISCARD/ : { *ai-startup-character.o(*) *ai-startup-physicattributes.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
