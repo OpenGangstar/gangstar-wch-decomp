@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "PhysicAttributes.h"
 #include "../core/Physics.h"
+#include "../core/SafeDelete.h"
 #include "../core/SceneNode.h"
 
 struct PhysicInfo {
@@ -59,6 +60,22 @@ PhysicInfo::PhysicInfo()
     for (int i = 0; i < 12; ++i)
         bodies[i] = 0;
     Reset(0);
+}
+
+template void SafeDelete<b2World>(b2World*&);
+
+void PhysicAttributes::CleanWorld()
+{
+    delete s_contactListener;
+    s_contactListener = 0;
+    delete s_contactFilter;
+    s_contactFilter = 0;
+    if (s_world && s_groundBody)
+        s_world->DestroyBody(s_groundBody);
+    if (s_world)
+        SafeDelete(s_world);
+    delete[] s_PoolID;
+    s_PoolID = 0;
 }
 
 irr::scene::ISceneNode* PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneNode* node, int id)
