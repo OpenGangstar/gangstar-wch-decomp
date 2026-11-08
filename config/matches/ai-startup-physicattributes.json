@@ -31,6 +31,8 @@
         "_ZN16PhysicAttributes13SetIsOnGroundEib",
         "_ZN10PhysicInfoC1Ev",
         "_ZN16PhysicAttributes15ResetPhysicInfoEv",
+        "_ZN16PhysicAttributesD1Ev",
+        "_ZN16PhysicAttributesD2Ev",
         {
             "name": "__tcf_3",
             "address": "0x003199f1"
@@ -58,6 +60,7 @@
     "external_thumb_functions": [
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
         "_ZN16PhysicAttributes21UpdateEdgesCollisionsEi",
-        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib"
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
+        "_ZN7b2World11DestroyBodyEP6b2Body"
     ]
 }

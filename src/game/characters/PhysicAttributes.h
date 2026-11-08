@@ -1,12 +1,12 @@
 #ifndef WCH_CHARACTERS_PHYSIC_ATTRIBUTES_H
 #define WCH_CHARACTERS_PHYSIC_ATTRIBUTES_H
+#include "../core/Array.h"
 #include "../core/Vector3.h"
 class b2World;
 class b2Body;
 namespace irr { namespace scene { class ISceneNode; } }
 struct PhysicInfo;
-// Observed 120-byte allocation extent, index and info pointer. Other fields
-// remain opaque; constructor and methods are retail call interfaces.
+// Partial layout of the observed 120-byte allocation.
 class PhysicAttributes {
 public:
     irr::core::vector3d<float> GetNextRandomPos(int, int, irr::core::vector3d<float>);
@@ -21,6 +21,7 @@ public:
     float GetHeight(const irr::core::vector3d<float>& position, int flag, bool detailed);
     float GetHeightFrom(int source, const irr::core::vector3d<float>& position, int slot);
     static b2World* s_world;
+    static bool* s_PoolID;
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
         const irr::core::vector3d<float>&, irr::core::vector3d<float>&,
         irr::core::vector3d<float>&);
@@ -30,6 +31,7 @@ public:
     unsigned char unknown4[4];
     PhysicInfo* info;
     int infoCount;
-    unsigned char unknown16[104];
+    irr::core::array<void*> ownedArray; // Element type is still unknown.
+    unsigned char unknown36[84];
 };
 #endif
