@@ -16,6 +16,7 @@ _ZN29retail_playertest_transitions22scripted_vehicle_transE = 0x0041e8bc;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/CharacterStateSections.ld
+INCLUDE config/linker/CHudManagerWeaponSections.ld
 SECTIONS
 {
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-character.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
@@ -53,6 +54,8 @@ SECTIONS
     .verification 0x00600000 : { *retail-got.o(.text) }
     /* Character's TU-local startup is verified in its own image. */
     /DISCARD/ : { *ai-startup-character.o(*) }
+    /* Only the HUD weapon entry points are needed in this image. */
+    /DISCARD/ : { *hud-manager-helpers.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

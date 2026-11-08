@@ -12,6 +12,8 @@
 #include "CHudManager.h"
 #include "SpyGauge.h"
 #include "HudElement.h"
+#include "../combat/Ammo.h"
+#include "../ui/AnimatedButton.h"
 
 CDrivingHud::CDrivingHud(CHudManager* hudManager) : IHud(hudManager)
 {
@@ -46,13 +48,13 @@ void CDrivingHud::toggleWeaponSelector(bool show)
         manager->weaponSelector->show();
         manager->weaponSelectorExtra->show();
         unknown8 |= 0x2000;
-        manager->weaponSelectorControl->show();
+        manager->ammoDisplay->show();
     } else {
         unknown8 &= ~0x100u;
         manager->weaponSelector->hide();
         manager->weaponSelectorExtra->hide();
         unknown8 &= ~0x2000u;
-        manager->weaponSelectorControl->hide();
+        manager->ammoDisplay->hide();
     }
 }
 

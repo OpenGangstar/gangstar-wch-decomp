@@ -16,6 +16,9 @@
 #include "../ui/AnimatedButton.h"
 #include "../characters/PlayerTest.h"
 #include "../combat/Weapon.h"
+#include "../app/Application.h"
+#include "../combat/Ammo.h"
+#include "../combat/WeaponManager.h"
 
 extern bool bIsInCutscene;
 
@@ -47,6 +50,24 @@ void CHudManager::toggleWeaponSelector(bool show)
 {
     static_cast<CWalkingHud*>(initialHud)->toggleWeaponSelector(show);
     static_cast<CDrivingHud*>(drivingHud)->toggleWeaponSelector(show);
+}
+
+void CHudManager::switchWeapon()
+{
+    WeaponManager* manager = Application::GetInstance()->GetWeaponManager();
+    Weapon* weapon = manager->nextWeapon(1);
+    weaponSelector->setWeaponAnim(weapon->getWeaponType());
+    manager->swapWeapon();
+    ammoDisplay->setWeapon(weapon);
+}
+
+void CHudManager::switchWeapon(int id)
+{
+    WeaponManager* manager = Application::GetInstance()->GetWeaponManager();
+    Weapon* weapon = manager->getWeaponInList(id, PlayerTest::AnyContext);
+    weaponSelector->setWeaponAnim(weapon->getWeaponType());
+    manager->swapWeapon(id);
+    ammoDisplay->setWeapon(weapon);
 }
 
 void CHudManager::toggleRadioCB(bool enabled)

@@ -2,6 +2,7 @@
 #define WCH_HUD_CHUD_MANAGER_H
 
 class AnalogStick;
+class Ammo;
 class ASprite;
 class AnimatedButton;
 class HudElement;
@@ -48,11 +49,11 @@ public:
     HudElement* minimap;
     unsigned char unknown140[12];
     SpyGauge* spyGauge;
-    HudElement* weaponSelectorControl;
+    Ammo* ammoDisplay;
     unsigned char unknown160[4];
     WantedMeter* wantedMeter;
     unsigned char unknown168[16];
-    HudElement* weaponSelector;
+    AnimatedButton* weaponSelector;
     HudElement* weaponSelectorExtra;
     HudElement** resetElementsBegin;
     HudElement** resetElementsEnd;
