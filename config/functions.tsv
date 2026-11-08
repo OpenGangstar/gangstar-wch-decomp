@@ -10064,7 +10064,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f185d	0x58	Character.cpp	game	characters	pending	_ZN9Character16freeBloodObjectsEv	Character::freeBloodObjects()
 0x002f18b5	0x6c	Character.cpp	game	characters	pending	_ZN9Character16loadBloodObjectsEPKcS1_	Character::loadBloodObjects(char const*, char const*)
 0x002f1921	0x78	Character.cpp	game	characters	pending	_ZN9Character26closeVehicleDoorFromInsideEb	Character::closeVehicleDoorFromInside(bool)
-0x002f1999	0x1e	Character.cpp	game	characters	pending	_ZNK9Character8isPlayerEv	Character::isPlayer() const
+0x002f1999	0x1e	Character.cpp	game	characters	matched	_ZNK9Character8isPlayerEv	Character::isPlayer() const
 0x002f19b9	0x1e	Character.cpp	game	characters	pending	_ZN9Character7disableEv	Character::disable()
 0x002f19d9	0x3c	Character.cpp	game	characters	pending	_ZN9Character6enableEv	Character::enable()
 0x002f1a15	0x1c	Character.cpp	game	characters	matched	__tcf_3	__tcf_3
@@ -10372,7 +10372,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300da5	0x12	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12hideAllAnimsEv	PlayerTest::hideAllAnims()
 0x00300db9	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_GetTargetEv	PlayerTest::_GetTarget()
 0x00300dc1	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10initMoveToEPK7Vehicle	PlayerTest::initMoveTo(Vehicle const*)
-0x00300dc9	0x14	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest9GetPlayerEv	PlayerTest::GetPlayer()
+0x00300dc9	0x14	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest9GetPlayerEv	PlayerTest::GetPlayer()
 0x00300ddd	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13richAsCroesusEb	PlayerTest::richAsCroesus(bool)
 0x00300de5	0x8	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest15isRichAsCroesusEv	PlayerTest::isRichAsCroesus() const
 0x00300ded	0x1e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest7setCashEi	PlayerTest::setCash(int)
@@ -10393,7 +10393,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003010d5	0xe	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest20playCurAnimFromStartEv	PlayerTest::playCurAnimFromStart()
 0x003010e5	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00301101	0xe4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14getCarAnimNameEPKcb	PlayerTest::getCarAnimName(char const*, bool)
-0x003011e5	0x38	NPC.cpp	game	ai	pending	_ZN3NPC12isTargetableEv	NPC::isTargetable()
+0x003011e5	0x38	NPC.cpp	game	ai	matched	_ZN3NPC12isTargetableEv	NPC::isTargetable()
 0x0030121c	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
 0x00301231	0x2e	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest10getVehicleEv	PlayerTest::getVehicle() const
 0x00301261	0xf8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_SetTargetEP11LevelObjectb	PlayerTest::_SetTarget(LevelObject*, bool)

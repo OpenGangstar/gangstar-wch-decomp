@@ -25,6 +25,7 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZNK9Character8isPlayerEv",
         "_ZN9Character18goFromCombatToIdleEv",
         "_ZN9Character12switchWeaponEv",
         "_ZN9Character24setReloadWeaponAnimationEi",
@@ -106,6 +107,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN9Character5readyEf",
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZNK6Weapon7getClipEv",

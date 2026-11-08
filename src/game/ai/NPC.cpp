@@ -301,6 +301,18 @@ void NPC::die(bool flag)
         Item::drop(16, position, cashDrop);
 }
 
+bool __attribute__((weak)) NPC::isTargetable()
+{
+    if (isDead())
+        return false;
+    const bool dying = isDying();
+    if (dying)
+        return false;
+    if (__builtin_expect((unknown4 & 4u) != 0, 0))
+        return true;
+    return dying;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_4() __attribute__((used));

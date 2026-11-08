@@ -54,6 +54,13 @@ static void __tcf_5()
 }
 }
 
+PlayerTest* PlayerTest::s_player;
+
+PlayerTest* PlayerTest::GetPlayer()
+{
+    return s_player;
+}
+
 void PlayerTest::lockSwitchWeapon()
 {
     weaponSwitchLocked = true;

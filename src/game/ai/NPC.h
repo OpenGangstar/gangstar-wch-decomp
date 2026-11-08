@@ -18,6 +18,7 @@ public:
     bool isCop();
     void notifyTargeted(bool targeted, Character* by);
     void attackTarget(LevelObject* object);
+    bool isTargetable();
     virtual void SetTarget(LevelObject* object);
     const Path* getPathToFollow() const;
     void setCurrentWaypoint(int waypoint);
