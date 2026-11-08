@@ -13,6 +13,12 @@ sqrt = 0x001c401c;
 acosf = 0x001c4694;
 SECTIONS
 {
+    .character_free_blood_objects 0x002f185c : { *ai-startup-character.o(.text._ZN9Character16freeBloodObjectsEv) }
+    .character_load_blood_objects 0x002f18b4 : { *ai-startup-character.o(.text._ZN9Character16loadBloodObjectsEPKcS1_) }
+    .character_blood_splash_callback 0x002f2c34 : { *ai-startup-character.o(.text._Z23BloodSplashAnimCallbackPN3irr5scene19ITimelineControllerEPv) }
+    .character_show_blood_splash 0x002f30d4 : { *ai-startup-character.o(.text._ZN9Character15showBloodSplashEN3irr4core8vector3dIfEES3_) }
+    .character_blood_splash_pool 0x004b53ac : { *ai-startup-character.o(.data._ZN9Character13s_bloodsplashE) }
+    .character_blood_splash_node 0x004b7dd4 (NOLOAD) : { *ai-startup-character.o(.bss._ZN9Character13m_bloodSplashE) }
     .character_remove_blood_puddle 0x002f172c : { *ai-startup-character.o(.text._ZN9Character17removeBloodPuddleEv) }
     .character_show_blood_puddle 0x002f2cd8 : { *ai-startup-character.o(.text._ZN9Character15showBloodPuddleEN3irr4core8vector3dIfEE) }
     .character_blood_puddle_pool 0x004b53a8 : { *ai-startup-character.o(.data._ZN9Character13s_bloodpuddleE) }

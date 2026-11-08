@@ -31,7 +31,7 @@ class IVideoDriver;
 class ITexture;
 // Numeric values are observed; enumerator names are reconstruction labels.
 enum E_MATERIAL_TYPE { MaterialType13 = 13, MaterialType15 = 15 };
-enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
+enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag128 = 128, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
 }
 class IReferenceCounted {
 public:

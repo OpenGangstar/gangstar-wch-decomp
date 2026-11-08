@@ -32,6 +32,8 @@ public:
     virtual int getHealth() const;
     void resetAnimation();
     static void cleanTimelineController();
+    static void freeBloodObjects();
+    static void loadBloodObjects(const char* puddle, const char* splash);
     bool isAnimationLastFrame(float advance) const;
     bool isInFlinchAnimation();
     bool isInHitByCarAnimation();
@@ -65,6 +67,8 @@ private:
     static irr::scene::ITimelineController* s_timelineController;
     static bool b_isBloodOn;
     static int s_bloodpuddle;
+    static int s_bloodsplash;
+    static irr::scene::ISceneNode* m_bloodSplash;
     bool isCurrentAnimation(int id);
     bool canAnimationBeInterrupted(int id);
     int getSpecificAnimation(int id);
@@ -107,6 +111,7 @@ private:
     irr::scene::ISceneNode* bloodPuddle;
     void removeBloodPuddle();
     void showBloodPuddle(irr::core::vector3d<float> position);
+    void showBloodSplash(irr::core::vector3d<float> position, irr::core::vector3d<float> direction);
 
     void turnToward(const irr::core::vector3d<float>& point);
     bool turnToward(irr::core::vector3d<float> direction, float step);
