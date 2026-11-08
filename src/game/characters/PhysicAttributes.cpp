@@ -13,16 +13,23 @@
 #include "../core/LocalStartupText.h"
 #include "PhysicAttributes.h"
 #include "../core/Physics.h"
+#include "../core/SceneNode.h"
 
 struct PhysicInfo {
     PhysicInfo() __attribute__((weak));
     void Reset(b2World* world) __attribute__((weak));
 
-    unsigned char unknown0[12];
+    unsigned short unknown0;
+    unsigned char unknown2[2];
+    unsigned int unknown4;
+    unsigned short unknown8;
+    unsigned char unknown10[2];
     irr::core::vector3d<float> vector12, vector24, vector36, vector48;
-    unsigned char unknown60[4];
+    bool unknown60;
+    unsigned char unknown61[3];
     irr::core::vector3d<float> unknown64;
-    unsigned char unknown76[12];
+    unsigned short unknown76, unknown78, unknown80;
+    unsigned char unknown82[6];
     b2Body* bodies[12];
     bool onGround;
     bool wasOnGround;
@@ -50,6 +57,50 @@ PhysicInfo::PhysicInfo()
     for (int i = 0; i < 12; ++i)
         bodies[i] = 0;
     Reset(0);
+}
+
+irr::scene::ISceneNode* PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneNode* node, int id)
+{
+    irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+    if (node->getID() == id)
+        return node;
+    for (; child != node->getChildren().end(); child = child->next) {
+        irr::scene::ISceneNode* found = GetSceneNodeFromID(child->value, id);
+        if (found)
+            return found;
+    }
+    return 0;
+}
+
+void PhysicAttributes::SetPhysicInfo(const PhysicInfo& source, int slot)
+{
+    info[slot].vector12 = source.vector12;
+    info[slot].vector24 = source.vector24;
+    info[slot].vector36 = source.vector36;
+    info[slot].unknown4 = source.unknown4;
+    info[slot].unknown0 = source.unknown0;
+    info[slot].unknown8 = source.unknown8;
+    info[slot].vector48 = source.vector48;
+    info[slot].unknown60 = true;
+    info[slot].unknown64 = source.unknown64;
+    UpdateEdgesCollisions(slot);
+}
+
+float PhysicAttributes::GetHeightFrom(int source, const irr::core::vector3d<float>& position, int slot)
+{
+    if (info[source].unknown4) {
+        info[slot].unknown0 = info[source].unknown0;
+        info[slot].unknown4 = info[source].unknown4;
+        info[slot].unknown8 = info[source].unknown8;
+        info[slot].vector12 = info[source].vector12;
+        info[slot].vector24 = info[source].vector24;
+        info[slot].vector36 = info[source].vector36;
+        info[slot].unknown76 = info[source].unknown76;
+        info[slot].unknown78 = info[source].unknown78;
+        info[slot].unknown80 = info[source].unknown80;
+        info[slot].unknown64 = info[source].unknown64;
+    }
+    return GetHeight(position, slot, true);
 }
 
 void operator delete(void*) throw();
