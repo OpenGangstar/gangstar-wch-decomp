@@ -25,6 +25,10 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character16freeBloodObjectsEv",
+        "_ZN9Character16loadBloodObjectsEPKcS1_",
+        "_Z23BloodSplashAnimCallbackPN3irr5scene19ITimelineControllerEPv",
+        "_ZN9Character15showBloodSplashEN3irr4core8vector3dIfEES3_",
         "_ZN9Character17removeBloodPuddleEv",
         "_ZN9Character15showBloodPuddleEN3irr4core8vector3dIfEE",
         "_ZNK9Character8isPlayerEv",
@@ -95,6 +99,7 @@
         }
     ],
     "sections": [
+        ".character_blood_splash_pool",
         ".character_blood_puddle_pool",
         ".character_blood_enabled",
         ".character_combat_to_idle_table",
@@ -111,6 +116,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",
+        "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
         "_ZN16SceneNodeManager11getInstanceEv",
         "_ZN16SceneNodeManager4grabEiP11LevelObjectiPPPv",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",

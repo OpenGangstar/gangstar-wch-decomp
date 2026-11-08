@@ -26,8 +26,11 @@
 irr::scene::ITimelineController* Character::s_timelineController;
 bool Character::b_isBloodOn = true;
 int Character::s_bloodpuddle = -1;
+int Character::s_bloodsplash = -1;
+irr::scene::ISceneNode* Character::m_bloodSplash;
 
 extern "C" float acosf(float);
+extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __attribute__((weak));
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_4() __attribute__((used));
@@ -249,6 +252,27 @@ void Character::removeBloodPuddle()
     }
 }
 
+void Character::freeBloodObjects()
+{
+    if (b_isBloodOn) {
+        SceneNodeManager::getInstance()->drop(s_bloodpuddle, 0);
+        SceneNodeManager::getInstance()->drop(s_bloodsplash, m_bloodSplash);
+        s_bloodpuddle = -1;
+        s_bloodsplash = -1;
+        m_bloodSplash = 0;
+    }
+}
+
+void Character::loadBloodObjects(const char* puddle, const char* splash)
+{
+    if (b_isBloodOn) {
+        s_bloodpuddle = SceneNodeManager::getInstance()->findOrCreatePool(
+            puddle, 8, _ZN12CGameFactory11getInstanceEv());
+        s_bloodsplash = SceneNodeManager::getInstance()->findOrCreatePool(
+            splash, 8, _ZN12CGameFactory11getInstanceEv());
+    }
+}
+
 bool Character::isPlayer() const
 {
     return this == reinterpret_cast<Character*>(
@@ -466,6 +490,14 @@ void Character::switchWeapon()
     }
 }
 
+void BloodSplashAnimCallback(irr::scene::ITimelineController*, void* data)
+{
+    irr::scene::ISceneNode* node = static_cast<irr::scene::ISceneNode*>(data);
+    irr::scene::ITimelineController* timeline = node->getAnimators().first->animator->getTimelineCtrl();
+    timeline->jumpTo(timeline->startTime);
+    timeline->setScale(0.0f);
+}
+
 void Character::showBloodPuddle(irr::core::vector3d<float>)
 {
     if (b_isBloodOn) {
@@ -491,6 +523,33 @@ void Character::resetCollisions()
             shape->filter.groupIndex = collisionGroup;
             PhysicAttributes::s_world->Refilter(shape);
         }
+    }
+}
+
+void Character::showBloodSplash(irr::core::vector3d<float> position, irr::core::vector3d<float>)
+{
+    if (!b_isBloodOn)
+        return;
+    if (!m_bloodSplash) {
+        m_bloodSplash = SceneNodeManager::getInstance()->grab(s_bloodsplash, 0, 0, 0);
+        GS3DStuff::SetMaterialFlag(m_bloodSplash, irr::video::MaterialFlag2, false);
+        GS3DStuff::SetMaterialFlag(m_bloodSplash, irr::video::MaterialFlag16, true);
+        GS3DStuff::SetMaterialFlag(m_bloodSplash, irr::video::MaterialFlag128, false);
+        Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode()->addChild(m_bloodSplash);
+    }
+
+    m_bloodSplash->setVisible(true);
+    m_bloodSplash->setPosition(position);
+    m_bloodSplash->updateAbsolutePosition(true);
+    irr::scene::ITimelineController* timeline = m_bloodSplash->getAnimators().first->animator->getTimelineCtrl();
+    if (timeline) {
+        timeline->setLoop(false);
+        timeline->jumpTo(timeline->startTime);
+        timeline->setScale(1.0f);
+        void (*callback)(irr::scene::ITimelineController*, void*) = BloodSplashAnimCallback;
+        void* data = m_bloodSplash;
+        timeline->callback = callback;
+        timeline->callbackData = data;
     }
 }
 
