@@ -71,6 +71,18 @@ bool __attribute__((weak)) NPC::isPhotographed() const
     return (flags356 & photographedFlag) != 0;
 }
 
+void NPC::attachWeaponToHand(irr::scene::ISceneNode* hand, irr::scene::ISceneNode* model)
+{
+    if (hand) {
+        hand->removeAll();
+        if (model) {
+            hand->addChild(model);
+            hand->setVisible(true);
+            model->setVisible(true);
+        }
+    }
+}
+
 void NPC::goToLocation(const irr::core::vector3d<float>& point)
 {
     if (flags356 & 0x8000u)
@@ -188,6 +200,39 @@ void NPC::goToNextPoint(bool repeat)
         flags356 &= ~0x00400000u;
         goToIdle();
     }
+}
+
+void NPC::equipWeapon(bool forceUnarmed, bool swapHands)
+{
+    GameObjectManager::s_gom->RemoveAndDestroy(weapon);
+    weapon = 0;
+    if (forceUnarmed || (!isDead() && (flags356 & 0x40000u)))
+        weapon = WeaponManager::createWeapon(0);
+    else
+        weapon = WeaponManager::createWeapon(weaponType);
+
+    irr::scene::ISceneNode* leftModel;
+    irr::scene::ISceneNode* rightModel;
+    if (weapon->getWeaponType() != 0) {
+        if (swapHands) {
+            leftModel = weapon->projectileSceneNode();
+            if (weapon->isDouble())
+                rightModel = weapon->secondarySceneNode();
+            else
+                rightModel = 0;
+        } else {
+            rightModel = weapon->projectileSceneNode();
+            if (weapon->isDouble())
+                leftModel = weapon->secondarySceneNode();
+            else
+                leftModel = 0;
+        }
+    } else {
+        leftModel = 0;
+        rightModel = 0;
+    }
+    attachWeaponToHand(leftHand, leftModel);
+    attachWeaponToHand(rightHand, rightModel);
 }
 
 void NPC::notifyTargeted(bool targeted, Character* by)

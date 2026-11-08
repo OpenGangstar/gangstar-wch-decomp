@@ -10,6 +10,7 @@ class Weapon : public LevelObject {
 public:
     // Observed inline scene access used by projectile attachment; no symbol claimed.
     irr::scene::ISceneNode* projectileSceneNode() const { return sceneNode; }
+    irr::scene::ISceneNode* secondarySceneNode() const { return secondSceneNode; }
     Weapon(int id);
     void Load(const Structs::Weapon& data);
     void loadWeaponFlash(const char* name, irr::scene::ISceneNode* parent,
