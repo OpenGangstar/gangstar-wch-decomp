@@ -13,6 +13,7 @@ sqrt = 0x001c401c;
 acosf = 0x001c4694;
 SECTIONS
 {
+    .character_is_player 0x002f1998 : { *ai-startup-character.o(.text._ZNK9Character8isPlayerEv) }
     .character_combat_to_idle 0x002f27c8 : { *ai-startup-character.o(.text._ZN9Character18goFromCombatToIdleEv) }
     .character_combat_to_idle_table 0x0041bd3c : { *ai-startup-character.o(.rodata._ZN9Character18goFromCombatToIdleEv) }
     .character_switch_weapon 0x002f28ec : { *ai-startup-character.o(.text._ZN9Character12switchWeaponEv) }

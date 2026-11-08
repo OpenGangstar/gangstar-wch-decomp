@@ -1,5 +1,6 @@
 SECTIONS
 {
+    .npc_is_targetable 0x003011e4 : { *ai-startup-npc.o(.text._ZN3NPC12isTargetableEv) }
     .npc_death_event_dtor 0x002feff8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN10EvNPCDeathD1Ev) }
     .npc_death_event_delete 0x002feb9c : { *ai-startup-npc.o(.gnu.linkonce.t._ZN10EvNPCDeathD0Ev) }
     .npc_death_event_vtable 0x004aae70 : { *ai-startup-npc.o(.gnu.linkonce.d.rel.ro._ZTV10EvNPCDeath) }

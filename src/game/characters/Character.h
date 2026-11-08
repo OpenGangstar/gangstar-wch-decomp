@@ -23,7 +23,7 @@ public:
     void setTurnDirection(irr::core::vector3d<float> direction);
     void CheckDestination();
     bool isDown();
-    bool isDying();
+    bool isDying() __attribute__((weak));
     virtual bool isDead();
     virtual int getSpawnType();
     virtual void setSpawnType(int type);

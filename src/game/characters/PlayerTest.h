@@ -127,6 +127,8 @@ public:
     bool weaponSwitchLocked;
     unsigned char unknown505[3];
     int contextValues[2];
+private:
+    static PlayerTest* s_player;
 };
 
 

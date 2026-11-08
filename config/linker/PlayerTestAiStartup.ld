@@ -20,6 +20,8 @@ INCLUDE config/linker/CHudManagerWeaponSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld
 SECTIONS
 {
+    .player_get_player 0x00300dc8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest9GetPlayerEv) }
+    .player_singleton 0x004b80e8 (NOLOAD) : { *ai-startup-playertest.o(.bss._ZN10PlayerTest8s_playerE) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-character.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002f1a14 : { *ai-startup-character.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

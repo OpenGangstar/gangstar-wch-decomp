@@ -25,6 +25,7 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC12isTargetableEv",
         "_ZN3NPC13acquireTargetEv",
         "_ZN3NPC12attackTargetEP11LevelObject",
         "_ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_",
@@ -92,6 +93,7 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN17GameObjectManager19getAttackableTargetEP9Character",
         "_ZN9Character3dieEb",
         "_ZN13WeaponManager12createWeaponEi",

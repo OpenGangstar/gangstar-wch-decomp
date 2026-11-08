@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
+#include "PlayerTest.h"
 #include "../ai/NPC.h"
 #include "PhysicAttributes.h"
 #include "../core/Physics.h"
@@ -232,6 +233,12 @@ static void __tcf_4()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+bool Character::isPlayer() const
+{
+    return this == reinterpret_cast<Character*>(
+        static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
 }
 
 void Character::goToIdle()
