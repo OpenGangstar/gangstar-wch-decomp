@@ -11,6 +11,7 @@ SECTIONS
     .b2_contact_listener_remove 0x003196f0 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN17b2ContactListener6RemoveEPK14b2ContactPoint) }
     .b2_contact_listener_result 0x003196f4 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN17b2ContactListener6ResultEPK15b2ContactResult) }
     .contact_listener_result 0x003196f8 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener6ResultEPK15b2ContactResult) }
+    .contact_listener_remove 0x0031a5ec : { *ai-startup-physicattributes.o(.text._ZN15ContactListener6RemoveEPK14b2ContactPoint) }
     .b2_contact_listener_delete 0x00319a20 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN17b2ContactListenerD0Ev) }
     .b2_contact_listener_destructor 0x00319a40 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN17b2ContactListenerD1Ev) }
     .contact_filter_destructor 0x00319a58 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN13ContactFilterD1Ev) }
