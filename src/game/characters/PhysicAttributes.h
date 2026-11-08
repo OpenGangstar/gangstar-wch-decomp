@@ -4,6 +4,8 @@
 #include "../core/Vector3.h"
 class b2World;
 class b2Body;
+class b2ContactFilter;
+class b2ContactListener;
 namespace irr { namespace scene { class ISceneNode; } }
 struct PhysicInfo;
 // Partial layout of the observed 120-byte allocation.
@@ -22,6 +24,10 @@ public:
     float GetHeightFrom(int source, const irr::core::vector3d<float>& position, int slot);
     static b2World* s_world;
     static bool* s_PoolID;
+    static b2Body* s_groundBody;
+    static b2ContactFilter* s_contactFilter;
+    static b2ContactListener* s_contactListener;
+    static void CleanWorld();
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
         const irr::core::vector3d<float>&, irr::core::vector3d<float>&,
         irr::core::vector3d<float>&);
