@@ -10289,7 +10289,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd46d	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC14isPhotographedEv	NPC::isPhotographed() const
 0x002fd479	0x24	NPC.cpp	game	ai	matched	_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE	NPC::goToLocation(irr::core::vector3d<float> const&)
 0x002fd49d	0x20	NPC.cpp	game	ai	pending	_ZN3NPC16clearGoToVehicleEv	NPC::clearGoToVehicle()
-0x002fd4bd	0x3a	NPC.cpp	game	ai	pending	_ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_	NPC::attachWeaponToHand(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
+0x002fd4bd	0x3a	NPC.cpp	game	ai	matched	_ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_	NPC::attachWeaponToHand(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
 0x002fd4f9	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC15getPathToFollowEv	NPC::getPathToFollow() const
 0x002fd501	0x8	NPC.cpp	game	ai	matched	_ZN3NPC18setCurrentWaypointEi	NPC::setCurrentWaypoint(int)
 0x002fd509	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC18getCurrentWaypointEv	NPC::getCurrentWaypoint() const
@@ -10328,7 +10328,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fe085	0x64	NPC.cpp	game	ai	matched	_ZN3NPC13goToNextPointEb	NPC::goToNextPoint(bool)
 0x002fe0e9	0x80	NPC.cpp	game	ai	pending	_ZN3NPC11isHostileToEP11LevelObject	NPC::isHostileTo(LevelObject*)
 0x002fe169	0x100	NPC.cpp	game	ai	pending	_ZN3NPC11goToVehicleEP7Vehiclebbbb	NPC::goToVehicle(Vehicle*, bool, bool, bool, bool)
-0x002fe269	0xd0	NPC.cpp	game	ai	pending	_ZN3NPC11equipWeaponEbb	NPC::equipWeapon(bool, bool)
+0x002fe269	0xd0	NPC.cpp	game	ai	matched	_ZN3NPC11equipWeaponEbb	NPC::equipWeapon(bool, bool)
 0x002fe339	0x5c	NPC.cpp	game	ai	pending	_ZN3NPC12attackTargetEP11LevelObject	NPC::attackTarget(LevelObject*)
 0x002fe395	0x34	NPC.cpp	game	ai	pending	_ZN3NPC6WarmUpEv	NPC::WarmUp()
 0x002fe3c9	0xf4	NPC.cpp	game	ai	pending	_ZN3NPCC2Ei	NPC::NPC(int)

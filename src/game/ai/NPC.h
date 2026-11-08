@@ -35,12 +35,16 @@ private:
     unsigned char unknown296[12];
     Weapon* weapon;
     Character* targetingCharacter;
-    unsigned char unknown316[16];
+    unsigned char unknown316[8];
+    irr::scene::ISceneNode* leftHand;
+    irr::scene::ISceneNode* rightHand;
     const Path* activePath;
     int activeWaypoint;
     unsigned char unknown340[16];
     unsigned int flags356;
-    unsigned char unknown360[56];
+    unsigned char unknown360[32];
+    int weaponType;
+    unsigned char unknown396[20];
     int cashDrop;
     unsigned char unknown420[8];
     unsigned int category428;
@@ -48,6 +52,7 @@ private:
     const Path* pathToFollow;
     int currentWaypoint;
     unsigned char unknown448[8];
-    void equipWeapon(bool equip, bool flag);
+    void equipWeapon(bool forceUnarmed, bool swapHands);
+    void attachWeaponToHand(irr::scene::ISceneNode* hand, irr::scene::ISceneNode* model);
 };
 #endif
