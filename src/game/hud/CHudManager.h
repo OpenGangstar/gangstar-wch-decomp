@@ -27,6 +27,7 @@ public:
     bool isLocked() const;
     void toggleWeaponSelector(bool visible);
     void switchWeapon(int type);
+    void switchWeapon();
     unsigned char unknown0[4];
     IHud* activeHud;
     IHud* initialHud;

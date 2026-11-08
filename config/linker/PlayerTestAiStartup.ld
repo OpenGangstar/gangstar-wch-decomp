@@ -15,8 +15,16 @@ _ZN29retail_playertest_transitions11guard_transE = 0x0041e814;
 _ZN29retail_playertest_transitions22scripted_vehicle_transE = 0x0041e8bc;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+INCLUDE config/linker/CharacterStateSections.ld
 SECTIONS
 {
+    .ai_manager_singleton 0x002dbae8 : { *ai-startup-character.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+    .ai_manager_cleanup 0x002f1a14 : { *ai-startup-character.o(.text.__tcf_0) }
+    .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
+    .ai_manager_instance 0x004b6ae8 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZZN9AIManager11getInstanceEvE3aim) }
+    .player_lock_weapon_switch 0x00300e6c : { *ai-startup-playertest.o(.text._ZN10PlayerTest16lockSwitchWeaponEv) }
+    .player_unlock_weapon_switch 0x00300e78 : { *ai-startup-playertest.o(.text._ZN10PlayerTest18unlockSwitchWeaponEv) }
+    .player_switch_weapon 0x003016b4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12switchWeaponEb) }
     .wanted_singleton 0x002dba04 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x003010b8 : { *ai-startup-playertest.o(.text.__tcf_1) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-playertest.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }
@@ -43,6 +51,8 @@ SECTIONS
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
+    /* Character's TU-local startup is verified in its own image. */
+    /DISCARD/ : { *ai-startup-character.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
