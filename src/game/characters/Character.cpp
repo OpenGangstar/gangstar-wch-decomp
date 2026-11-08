@@ -386,6 +386,65 @@ bool Character::turnToward(irr::core::vector3d<float> direction, float step)
     return GetFront().dotProduct(direction) < -0.99f;
 }
 
+namespace {
+const unsigned int switchWeaponFlag = 0x400000u;
+}
+
+void Character::goFromCombatToIdle()
+{
+    movementFlags &= 0xf3ffffffu;
+    switch (currentAnimation) {
+    case 89:
+        setAnimation(96, 1.0f, false, false, false);
+        return;
+    case 50:
+        setAnimation(54, 1.0f, false, false, false);
+        return;
+    case 55:
+        setAnimation(58, 1.0f, false, false, false);
+        return;
+    case 59:
+        setAnimation(63, 1.0f, false, false, false);
+        return;
+    case 64:
+        if (getWeapon()->getWeaponType() == 7)
+            setAnimation(66, 1.0f, false, false, false);
+        else
+            setAnimation(71, 1.0f, false, false, false);
+        return;
+    case 73:
+        setAnimation(80, 1.0f, false, false, false);
+        return;
+    default:
+        setAnimation(getSpecificAnimation(165), 1.0f, false, false, false);
+        break;
+    }
+
+    if (movementFlags & switchWeaponFlag) {
+        ready(1.0f);
+        movementFlags &= ~switchWeaponFlag;
+    }
+}
+
+void Character::switchWeapon()
+{
+    if (isCurrentAnimation(89) || isCurrentAnimation(50) ||
+        isCurrentAnimation(55) || isCurrentAnimation(59) ||
+        isCurrentAnimation(73) || isCurrentAnimation(64) ||
+        isCurrentAnimation(96) || isCurrentAnimation(54) ||
+        isCurrentAnimation(58) || isCurrentAnimation(63) ||
+        isCurrentAnimation(80) || isCurrentAnimation(71) ||
+        isCurrentAnimation(66) || isCurrentAnimation(143) ||
+        isCurrentAnimation(140) || isCurrentAnimation(141) ||
+        isCurrentAnimation(142) || isCurrentAnimation(146) ||
+        isCurrentAnimation(145) || isCurrentAnimation(138)) {
+        movementFlags |= switchWeaponFlag;
+        goFromCombatToIdle();
+    } else if (!(movementFlags & 0xfeu)) {
+        goToIdle();
+    }
+}
+
 void Character::resetCollisions()
 {
     if (collisionBody) {

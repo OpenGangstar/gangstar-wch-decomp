@@ -25,6 +25,8 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character18goFromCombatToIdleEv",
+        "_ZN9Character12switchWeaponEv",
         "_ZN9Character24setReloadWeaponAnimationEi",
         "_ZN9Character20checkForWeaponReloadEv",
         "_ZN9Character15resetCollisionsEv",
@@ -90,6 +92,7 @@
         }
     ],
     "sections": [
+        ".character_combat_to_idle_table",
         ".character_reload_weapon_table",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -103,6 +106,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9Character5readyEf",
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZNK6Weapon7getClipEv",
         "_ZN6Weapon6reloadEb",

@@ -77,6 +77,7 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9Character5readyEf",
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZNK6Weapon7getClipEv",
         "_ZN6Weapon6reloadEb",
