@@ -61,6 +61,7 @@ public:
     virtual Weapon* getWeapon() const = 0;
     virtual void SetTarget(LevelObject* value);
 private:
+    friend class NPC;
     static irr::scene::ITimelineController* s_timelineController;
     bool isCurrentAnimation(int id);
     bool canAnimationBeInterrupted(int id);

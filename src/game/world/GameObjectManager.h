@@ -7,6 +7,7 @@
 class LevelObject;
 class DataStream;
 class NPC;
+class Character;
 class Vehicle;
 
 // Observed 1088-byte layout. The leading storage and several field meanings
@@ -18,6 +19,7 @@ public:
     virtual LevelObject* Remove(LevelObject* object);
     virtual LevelObject* RemoveAndDestroy(LevelObject* object);
     LevelObject* GetFirst(int type);
+    LevelObject* getAttackableTarget(Character* character);
     LevelObject* CreateGameObjectFromMetatype(int type);
     LevelObject* LoadGameObject(DataStream& stream);
     LevelObject* SpawnGameObject(int type);

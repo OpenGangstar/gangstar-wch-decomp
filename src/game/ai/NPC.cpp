@@ -29,6 +29,8 @@ union MovementFlags {
     struct {
         unsigned int walking : 1;
         unsigned int running : 1;
+        unsigned int : 4;
+        unsigned int attacking : 1;
     } bits;
 };
 
@@ -158,6 +160,12 @@ bool NPC::isLoopingOnPathToFollow() const
     return (flags356 & 0x00200000u) != 0;
 }
 
+void NPC::acquireTarget()
+{
+    if (!target)
+        target = GameObjectManager::s_gom->getAttackableTarget(this);
+}
+
 irr::core::vector3d<float> NPC::getNextWaypoint()
 {
     irr::core::vector3d<float> point;
@@ -233,6 +241,25 @@ void NPC::equipWeapon(bool forceUnarmed, bool swapHands)
     }
     attachWeaponToHand(leftHand, leftModel);
     attachWeaponToHand(rightHand, rightModel);
+}
+
+void NPC::attackTarget(LevelObject* object)
+{
+    equipWeapon(false, false);
+    if (object) {
+        SetTarget(object);
+    } else {
+        acquireTarget();
+        SetTarget(target);
+    }
+
+    if (!(flags356 & 0x40u)) {
+        MovementFlags flags;
+        flags.word = flags356 & ~0x800000u;
+        flags.bits.attacking = 1;
+        flags356 = flags.word;
+        attackState452 = false;
+    }
 }
 
 void NPC::notifyTargeted(bool targeted, Character* by)
