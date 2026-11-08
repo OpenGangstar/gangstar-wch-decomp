@@ -13,6 +13,11 @@
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
+#include "PhysicAttributes.h"
+#include "../core/Physics.h"
+#include "../app/Application.h"
+#include "../combat/Weapon.h"
+#include "../combat/WeaponManager.h"
 
 irr::scene::ITimelineController* Character::s_timelineController;
 
@@ -286,6 +291,24 @@ void Character::setNextAnimation(const char* name, int speed, bool a, bool b, bo
     }
 }
 
+void Character::checkForWeaponReload()
+{
+    Weapon* weapon = getWeapon();
+    if (!weapon)
+        return;
+    const int type = weapon->getWeaponType();
+    if (type == 0 || weapon->getClip() > 0)
+        return;
+
+    if (s_type[getObjectType()] != 8) {
+        weapon->reload(true);
+        setReloadWeaponAnimation(type);
+    } else if (Application::GetInstance()->GetWeaponManager()->getAmmo(weapon->getAmmoType(), PlayerTest::AnyContext) > 0) {
+        weapon->reload(false);
+        setReloadWeaponAnimation(type);
+    }
+}
+
 void Character::setDestination(const irr::core::vector3d<float>& point, int limit)
 {
     destination = point;
@@ -326,6 +349,18 @@ bool Character::turnToward(irr::core::vector3d<float> direction, float step)
     const float sign = dot > 0.0f ? 1.0f : -1.0f;
     turnSceneNode(*sceneNode, sign, step);
     return GetFront().dotProduct(direction) < -0.99f;
+}
+
+void Character::resetCollisions()
+{
+    if (collisionBody) {
+        for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next) {
+            shape->filter.categoryBits = collisionCategory;
+            shape->filter.maskBits = collisionMask;
+            shape->filter.groupIndex = collisionGroup;
+            PhysicAttributes::s_world->Refilter(shape);
+        }
+    }
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));

@@ -461,3 +461,12 @@ static void __tcf_2()
     _ZN11CCarFactoryD1Ev(_ZZN11CCarFactory11getInstanceEvE2cf);
 }
 }
+
+
+void Vehicle::resetCollisions()
+{
+    if (isEnabled()) {
+        for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next)
+            shape->filter = collisionFilter;
+    }
+}

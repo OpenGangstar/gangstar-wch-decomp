@@ -4,6 +4,7 @@
 #include "../world/LevelObject.h"
 
 class Vehicle;
+class b2Body;
 class Weapon;
 
 // Character's constructor calls LevelObject and initializes storage through
@@ -63,7 +64,9 @@ private:
     bool isCurrentAnimation(int id);
     bool canAnimationBeInterrupted(int id);
     int getSpecificAnimation(int id);
-    unsigned char unknown52[28];
+    unsigned short collisionMask;
+    short collisionGroup;
+    unsigned char unknown56[24];
     irr::core::vector3d<float> cameraOffset;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;
@@ -80,7 +83,8 @@ private:
     int animationSpeedMultiplier;
     unsigned char unknown156[16];
     void* skinMesh;
-    unsigned char unknown176[8];
+    unsigned char unknown176[4];
+    b2Body* collisionBody;
     Character* lockTarget;
     Vehicle* vehicle;
     unsigned char unknown192[24];
@@ -106,6 +110,9 @@ private:
     void switchAnimation();
     bool switchMoveAnimation();
     void switchCombatAnimation();
+    void checkForWeaponReload();
+    void setReloadWeaponAnimation(int type);
+    void resetCollisions();
 };
 
 #endif

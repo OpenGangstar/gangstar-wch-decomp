@@ -25,6 +25,8 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character20checkForWeaponReloadEv",
+        "_ZN9Character15resetCollisionsEv",
         "_ZN9Character12updatePhysicEi",
         "_ZN9Character15updateSceneNodeEi",
         "_ZN9Character12walkToTargetEv",
@@ -99,6 +101,14 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZNK6Weapon7getClipEv",
+        "_ZN6Weapon6reloadEb",
+        "_ZN9Character24setReloadWeaponAnimationEi",
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK6Weapon11getAmmoTypeEv",
+        "_ZN13WeaponManager7getAmmoEiN10PlayerTest8eContextE",
+        "_ZN7b2World8RefilterEP7b2Shape",
         "_ZN11LevelObject4StopEv",
         "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_",
         "_ZN9Character19switchMoveAnimationEv",
