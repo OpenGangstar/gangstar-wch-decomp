@@ -25,6 +25,9 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC3dieEb",
+        "_ZN10EvNPCDeathD1Ev",
+        "_ZN10EvNPCDeathD0Ev",
         "_ZN3NPC14notifyTargetedEbP9Character",
         "_ZN5EvNPCD1Ev",
         "_ZN5EvNPCD0Ev",
@@ -67,6 +70,7 @@
         }
     ],
     "sections": [
+        ".npc_death_event_vtable",
         ".npc_event_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -84,6 +88,9 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9Character3dieEb",
+        "_ZN3NPC11equipWeaponEbb",
+        "_ZN4Item4dropEiN3irr4core8vector3dIfEEi",
         "_ZNK13WeaponManager16getCurrentWeaponEv",
         "_ZN12EventManager5raiseERK6IEvent",
         "_ZNK6Weapon5isGunEv",

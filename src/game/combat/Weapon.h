@@ -32,6 +32,7 @@ public:
     bool isTwoHanded() const;
     bool isGun() const;
     bool isProjectile() const;
+    bool dropsOnNPCDeath() const { return (unknown4 & 8u) != 0; }
     void show();
     void hide();
     void reloadRocket();
