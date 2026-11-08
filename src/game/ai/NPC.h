@@ -15,6 +15,7 @@ public:
     virtual bool isPhotographed() const;
     void Load(const Structs::NPC&);
     bool isCop();
+    void notifyTargeted(bool targeted, Character* by);
     const Path* getPathToFollow() const;
     void setCurrentWaypoint(int waypoint);
     int getCurrentWaypoint() const;

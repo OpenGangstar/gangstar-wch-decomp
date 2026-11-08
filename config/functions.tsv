@@ -10379,8 +10379,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300e0d	0x1e	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest15getAmbientSoundEv	PlayerTest::getAmbientSound() const
 0x00300e2d	0x1e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest23addCurrentDriftDistanceEf	PlayerTest::addCurrentDriftDistance(float)
 0x00300e4d	0x1e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest22addCurrentJumpDistanceEf	PlayerTest::addCurrentJumpDistance(float)
-0x00300e6d	0xa	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest16lockSwitchWeaponEv	PlayerTest::lockSwitchWeapon()
-0x00300e79	0xa	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest18unlockSwitchWeaponEv	PlayerTest::unlockSwitchWeapon()
+0x00300e6d	0xa	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest16lockSwitchWeaponEv	PlayerTest::lockSwitchWeapon()
+0x00300e79	0xa	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest18unlockSwitchWeaponEv	PlayerTest::unlockSwitchWeapon()
 0x00300e85	0x78	PlayerTest.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP11LevelObjectNS0_12irrAllocatorIS3_EEE10reallocateEj	irr::core::array<LevelObject*, irr::core::irrAllocator<LevelObject*> >::reallocate(unsigned int)
 0x00300efd	0x4c	PlayerTest.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP11LevelObjectNS0_12irrAllocatorIS3_EEE9push_backERKS3_	irr::core::array<LevelObject*, irr::core::irrAllocator<LevelObject*> >::push_back(LevelObject* const&)
 0x00300f49	0x24	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14addPhotoTargetEP11LevelObject	PlayerTest::addPhotoTarget(LevelObject*)
@@ -10412,7 +10412,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003015d0	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTestD1Ev	non-virtual thunk to PlayerTest::~PlayerTest()
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD1Ev	PlayerTest::~PlayerTest()
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD2Ev	PlayerTest::~PlayerTest()
-0x003016b5	0x7c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12switchWeaponEb	PlayerTest::switchWeapon(bool)
+0x003016b5	0x7c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12switchWeaponEb	PlayerTest::switchWeapon(bool)
 0x00301730	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_NK10PlayerTest9getWeaponEv	non-virtual thunk to PlayerTest::getWeapon() const
 0x00301745	0x12	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest9getWeaponEv	PlayerTest::getWeapon() const
 0x00301759	0x58	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12justStoleCarEP7Vehicle	PlayerTest::justStoleCar(Vehicle*)

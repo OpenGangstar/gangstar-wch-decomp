@@ -25,6 +25,10 @@
     "source": "src/game/ai/PlayerTest.cpp",
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
+        "_ZN10PlayerTest16lockSwitchWeaponEv",
+        "_ZN10PlayerTest18unlockSwitchWeaponEv",
+        "_ZN10PlayerTest12switchWeaponEb",
+        "_ZN9Character12switchWeaponEv",
         {
             "name": "__tcf_5",
             "address": "0x00301031"
@@ -60,8 +64,33 @@
         ".map_cleanup",
         ".wanted_cleanup"
     ],
+    "dependencies": [
+        "ai-startup-character"
+    ],
+    "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11CHudManager12switchWeaponEi",
+        "_ZN11CHudManager12switchWeaponEv",
+        "_ZNK13WeaponManager16getCurrentWeaponEv",
+        "_ZN3NPC14notifyTargetedEbP9Character",
+        "_ZN6Weapon4showEv",
+        "_ZN9Character5readyEf",
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZNK6Weapon7getClipEv",
+        "_ZN6Weapon6reloadEb",
+        "_ZNK6Weapon11getAmmoTypeEv",
+        "_ZN13WeaponManager7getAmmoEiN10PlayerTest8eContextE",
+        "_ZN7b2World8RefilterEP7b2Shape",
+        "_ZN11LevelObject4StopEv",
+        "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_",
+        "_ZN9Character19switchMoveAnimationEv",
+        "_ZN9Character21switchCombatAnimationEv",
+        "_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE",
+        "_ZN9Character20getSpecificAnimationEi",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
         "_ZN18WantedLevelManagerC1Ev",

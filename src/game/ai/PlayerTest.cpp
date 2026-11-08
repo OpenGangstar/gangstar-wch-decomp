@@ -13,6 +13,12 @@
 #include "../world/MapSingleton.h"
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
+#include "../characters/PlayerTest.h"
+#include "../app/Application.h"
+#include "../combat/Weapon.h"
+#include "../combat/WeaponManager.h"
+#include "../hud/CHudManager.h"
+#include "NPC.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -46,6 +52,37 @@ static void __tcf_5()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+void PlayerTest::lockSwitchWeapon()
+{
+    weaponSwitchLocked = true;
+}
+
+void PlayerTest::unlockSwitchWeapon()
+{
+    weaponSwitchLocked = false;
+}
+
+void PlayerTest::switchWeapon(bool unarmed)
+{
+    if (weaponSwitchLocked)
+        return;
+
+    Application* app = Application::GetInstance();
+    if (unarmed)
+        app->GetHudManager()->switchWeapon(0);
+    else
+        app->GetHudManager()->switchWeapon();
+
+    app->GetWeaponManager()->getCurrentWeapon();
+    // The partial PlayerTest layout uses SavePositionInterface for its Character base.
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    character->switchWeapon();
+    LevelObject* currentTarget = getTarget();
+    if (currentTarget && LevelObject::s_type[currentTarget->getObjectType()] == 5)
+        static_cast<NPC*>(currentTarget)->notifyTargeted(true, character);
+    static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
