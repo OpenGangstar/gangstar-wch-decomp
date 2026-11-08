@@ -21,20 +21,24 @@ struct PhysicsBodyData {
     irr::scene::ISceneNode* node;
     float lowerHeight, upperHeight;
 };
+class b2Shape;
 class b2Body {
 public:
     unsigned char unknown0[4];
     const b2XForm& GetXForm() const { return transform; }
     void* GetUserData() const { return data; }
     b2XForm transform;
-    unsigned char unknown28[116];
+    unsigned char unknown28[72];
+    b2Shape* shapeList;
+    unsigned char unknown104[40];
     void* data;
 };
 class b2Shape {
 public:
     virtual void unknown0();
     virtual int TestSegment(const b2XForm&, float*, b2Vec2*, const b2Segment&, float) const;
-    unsigned char unknown4[8];
+    unsigned char unknown4[4];
+    b2Shape* next;
     b2Body* body;
     unsigned char unknown16[18];
     b2FilterData filter;
@@ -46,6 +50,7 @@ public:
 class b2World {
 public:
     void DestroyBody(b2Body* body);
+    void Refilter(b2Shape* shape);
     void Step(float, int);
     int Query(const b2AABB&, b2Shape**, int);
 };

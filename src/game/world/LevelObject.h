@@ -113,7 +113,8 @@ protected:
     int unknown40;
     int unknown44;
     unsigned char unknown48;
-    unsigned char unknown49[3];
+    unsigned char unknown49;
+    unsigned short collisionCategory;
 };
 
 #endif

@@ -13,6 +13,8 @@ sqrt = 0x001c401c;
 acosf = 0x001c4694;
 SECTIONS
 {
+    .character_check_weapon_reload 0x002f207c : { *ai-startup-character.o(.text._ZN9Character20checkForWeaponReloadEv) }
+    .character_reset_collisions 0x002f3090 : { *ai-startup-character.o(.text._ZN9Character15resetCollisionsEv) }
     .character_update_physic 0x002f14b4 : { *ai-startup-character.o(.text._ZN9Character12updatePhysicEi) }
     .character_update_scene_node 0x002f14b8 : { *ai-startup-character.o(.text._ZN9Character15updateSceneNodeEi) }
     .character_walk_to_target 0x002f16c4 : { *ai-startup-character.o(.text._ZN9Character12walkToTargetEv) }

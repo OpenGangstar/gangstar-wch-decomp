@@ -1,6 +1,7 @@
 #ifndef WCH_VEHICLES_VEHICLE_H
 #define WCH_VEHICLES_VEHICLE_H
 #include "../world/LevelObject.h"
+#include "../core/Physics.h"
 namespace Structs { struct Car; }
 class Character;
 class Path;
@@ -25,6 +26,7 @@ public:
     void mobilize();
     void UpdateCarSounds();
     void repair();
+    void resetCollisions();
     void setPathToFollow(const Path* path);
     const Path* getPathToFollow() const;
     int getCurrentWaypoint() const;
@@ -109,7 +111,9 @@ private:
     int vehicleIndex;
     unsigned char unknown428[76];
     bool hasBeenStolen;
-    unsigned char unknown505[171];
+    unsigned char unknown505[127];
+    b2Body* collisionBody;
+    unsigned char unknown636[40];
     irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;
     Character* driver;
@@ -122,7 +126,8 @@ private:
     int doorSoundSuppression;
     unsigned char unknown908[56];
     int animationClipIndex;
-    unsigned char unknown968[34];
+    unsigned char unknown968[28];
+    b2FilterData collisionFilter;
     bool leftDoorClosed;
     bool rightDoorClosed;
     bool leftDoorTransition;
