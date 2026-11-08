@@ -13,6 +13,10 @@ sqrt = 0x001c401c;
 acosf = 0x001c4694;
 SECTIONS
 {
+    .character_remove_blood_puddle 0x002f172c : { *ai-startup-character.o(.text._ZN9Character17removeBloodPuddleEv) }
+    .character_show_blood_puddle 0x002f2cd8 : { *ai-startup-character.o(.text._ZN9Character15showBloodPuddleEN3irr4core8vector3dIfEE) }
+    .character_blood_puddle_pool 0x004b53a8 : { *ai-startup-character.o(.data._ZN9Character13s_bloodpuddleE) }
+    .character_blood_enabled 0x004b53b0 : { *ai-startup-character.o(.data._ZN9Character11b_isBloodOnE) }
     .character_is_player 0x002f1998 : { *ai-startup-character.o(.text._ZNK9Character8isPlayerEv) }
     .character_combat_to_idle 0x002f27c8 : { *ai-startup-character.o(.text._ZN9Character18goFromCombatToIdleEv) }
     .character_combat_to_idle_table 0x0041bd3c : { *ai-startup-character.o(.rodata._ZN9Character18goFromCombatToIdleEv) }

@@ -10056,7 +10056,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1689	0x3c	Character.cpp	game	characters	pending	_ZN9Character5blockEi	Character::block(int)
 0x002f16c5	0x50	Character.cpp	game	characters	matched	_ZN9Character12walkToTargetEv	Character::walkToTarget()
 0x002f1715	0x18	Character.cpp	game	characters	pending	_ZN9Character4initEv	Character::init()
-0x002f172d	0x44	Character.cpp	game	characters	pending	_ZN9Character17removeBloodPuddleEv	Character::removeBloodPuddle()
+0x002f172d	0x44	Character.cpp	game	characters	matched	_ZN9Character17removeBloodPuddleEv	Character::removeBloodPuddle()
 0x002f1771	0xe	Character.cpp	game	characters	matched	_ZN9Character15setCameraOffsetERKN3irr4core8vector3dIfEE	Character::setCameraOffset(irr::core::vector3d<float> const&)
 0x002f1781	0x88	Character.cpp	game	characters	pending	_ZN9Character9startTurnEf	Character::startTurn(float)
 0x002f1809	0x30	Character.cpp	game	characters	matched	__tcf_4	__tcf_4
@@ -10096,7 +10096,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f2bb5	0x80	Character.cpp	game	characters	pending	_ZN9Character7OnSpawnEv	Character::OnSpawn()
 0x002f2c35	0x2c	Character.cpp	game	characters	pending	_Z23BloodSplashAnimCallbackPN3irr5scene19ITimelineControllerEPv	BloodSplashAnimCallback(irr::scene::ITimelineController*, void*)
 0x002f2c61	0x78	Character.cpp	game	characters	pending	_ZN9Character11SetPositionERKN3irr4core8vector3dIfEE	Character::SetPosition(irr::core::vector3d<float> const&)
-0x002f2cd9	0xbc	Character.cpp	game	characters	pending	_ZN9Character15showBloodPuddleEN3irr4core8vector3dIfEE	Character::showBloodPuddle(irr::core::vector3d<float>)
+0x002f2cd9	0xbc	Character.cpp	game	characters	matched	_ZN9Character15showBloodPuddleEN3irr4core8vector3dIfEE	Character::showBloodPuddle(irr::core::vector3d<float>)
 0x002f2d95	0x144	Character.cpp	game	characters	pending	_ZN9Character3dieEb	Character::die(bool)
 0x002f2ed9	0x108	Character.cpp	game	characters	pending	_ZN9Character11goToVehicleEP7Vehiclebbbb	Character::goToVehicle(Vehicle*, bool, bool, bool, bool)
 0x002f2fe1	0x58	Character.cpp	game	characters	pending	_ZN9Character11cleanPhysicEv	Character::cleanPhysic()

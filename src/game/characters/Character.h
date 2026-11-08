@@ -63,6 +63,8 @@ public:
 private:
     friend class NPC;
     static irr::scene::ITimelineController* s_timelineController;
+    static bool b_isBloodOn;
+    static int s_bloodpuddle;
     bool isCurrentAnimation(int id);
     bool canAnimationBeInterrupted(int id);
     int getSpecificAnimation(int id);
@@ -85,7 +87,7 @@ private:
     int animationSpeedMultiplier;
     unsigned char unknown156[16];
     void* skinMesh;
-    unsigned char unknown176[4];
+    irr::scene::ISceneNode* shadowNode;
     b2Body* collisionBody;
     Character* lockTarget;
     Vehicle* vehicle;
@@ -101,7 +103,10 @@ private:
     unsigned char unknown264[4];
     int spawnType;
     irr::core::vector3d<float> turnDirection;
-    unsigned char unknown284[12];
+    unsigned char unknown284[8];
+    irr::scene::ISceneNode* bloodPuddle;
+    void removeBloodPuddle();
+    void showBloodPuddle(irr::core::vector3d<float> position);
 
     void turnToward(const irr::core::vector3d<float>& point);
     bool turnToward(irr::core::vector3d<float> direction, float step);
