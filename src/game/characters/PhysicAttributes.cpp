@@ -17,6 +17,8 @@
 
 struct PhysicInfo {
     PhysicInfo() __attribute__((weak));
+    // The retail array allocation has an ARM EABI cookie.
+    ~PhysicInfo() {}
     void Reset(b2World* world) __attribute__((weak));
 
     unsigned short unknown0;
@@ -104,6 +106,29 @@ float PhysicAttributes::GetHeightFrom(int source, const irr::core::vector3d<floa
 }
 
 void operator delete(void*) throw();
+
+PhysicAttributes::~PhysicAttributes()
+{
+    if (index >= 0) {
+        s_PoolID[index] = false;
+        for (int i = 0; i < infoCount; ++i) {
+            for (int j = 0; j < 12; ++j) {
+                if (info[i].bodies[j]) {
+                    if (info[i].bodies[j]->GetUserData()) {
+                        delete static_cast<PhysicsBodyData*>(info[i].bodies[j]->GetUserData());
+                        info[i].bodies[j]->data = 0;
+                    }
+                    s_world->DestroyBody(info[i].bodies[j]);
+                    info[i].bodies[j] = 0;
+                }
+            }
+        }
+        delete[] info;
+    }
+    if (ownedArray.free_when_destroyed)
+        ::operator delete(ownedArray.data);
+}
+
 extern "C" {
 static void __tcf_3() __attribute__((used));
 }
