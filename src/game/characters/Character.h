@@ -112,6 +112,7 @@ private:
     unsigned char unknown284[8];
     irr::scene::ISceneNode* bloodPuddle;
     void removeBloodPuddle();
+    void cleanPhysic();
     void showBloodPuddle(irr::core::vector3d<float> position);
     void showBloodSplash(irr::core::vector3d<float> position, irr::core::vector3d<float> direction);
 
