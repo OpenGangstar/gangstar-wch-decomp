@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-physicattributes/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_Znwj = 0x001c4814;
 __aeabi_atexit = 0x001c494c;
 _ZN35retail_physicattributes_transitions16civPassive_transE = 0x00420aa4;
 _ZN35retail_physicattributes_transitions17scriptedNpc_transE = 0x00420bd0;
@@ -16,6 +17,7 @@ _ZN35retail_physicattributes_transitions22scripted_vehicle_transE = 0x00421020;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .physic_init_world 0x0031a950 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9InitWorldEv) }
     .physic_attributes_find_scene_node 0x0031b3a0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes18GetSceneNodeFromIDEPN3irr5scene10ISceneNodeEi) }
     .physic_attributes_set_info 0x0031eb14 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi) }
     .physic_attributes_get_height_from 0x00320040 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes13GetHeightFromEiRKN3irr4core8vector3dIfEEi) }

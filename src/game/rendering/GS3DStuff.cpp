@@ -26,6 +26,7 @@
 #include "../core/EventManager.h"
 #include "../ai/AIManagerSingleton.h"
 #include "../core/SafeDelete.h"
+#include "../core/PhysicsBodyDef.h"
 #include "../core/Geometry.h"
 #include "../core/VideoDriver.h"
 #include "../world/SpawnPoint.h"
@@ -34,12 +35,6 @@
 #include "../world/ResStream.h"
 #include "../world/World.h"
 #include "../world/WorldDescriptor.h"
-
-class b2Body;
-struct b2BodyDef {
-    unsigned char unknown0[16];
-    void* userData;
-};
 
 class b2ShapeDef {
 public:

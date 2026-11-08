@@ -27,6 +27,7 @@ public:
     static b2Body* s_groundBody;
     static b2ContactFilter* s_contactFilter;
     static b2ContactListener* s_contactListener;
+    static void InitWorld();
     static void CleanWorld();
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
         const irr::core::vector3d<float>&, irr::core::vector3d<float>&,

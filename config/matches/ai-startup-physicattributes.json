@@ -35,6 +35,7 @@
         "_ZN16PhysicAttributesD2Ev",
         "_Z10SafeDeleteI7b2WorldEvRPT_",
         "_ZN16PhysicAttributes10CleanWorldEv",
+        "_ZN16PhysicAttributes9InitWorldEv",
         "_ZN17b2ContactListener3AddEPK14b2ContactPoint",
         "_ZN17b2ContactListener7PersistEPK14b2ContactPoint",
         "_ZN17b2ContactListener6RemoveEPK14b2ContactPoint",
@@ -77,6 +78,10 @@
         "_ZN16PhysicAttributes21UpdateEdgesCollisionsEi",
         "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
         "_ZN7b2World11DestroyBodyEP6b2Body",
-        "_ZN7b2WorldD1Ev"
+        "_ZN7b2WorldD1Ev",
+        "_ZN7b2WorldC1ERK6b2AABBRK6b2Vec2b",
+        "_ZN7b2World18SetContactListenerEP17b2ContactListener",
+        "_ZN7b2World16SetContactFilterEP15b2ContactFilter",
+        "_ZN7b2World10CreateBodyEPK9b2BodyDef"
     ]
 }
