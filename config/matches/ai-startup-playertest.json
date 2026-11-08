@@ -28,6 +28,7 @@
         "_ZN10PlayerTest16lockSwitchWeaponEv",
         "_ZN10PlayerTest18unlockSwitchWeaponEv",
         "_ZN10PlayerTest12switchWeaponEb",
+        "_ZN3NPC14notifyTargetedEbP9Character",
         "_ZN9Character12switchWeaponEv",
         "_ZN11CHudManager12switchWeaponEv",
         "_ZN11CHudManager12switchWeaponEi",
@@ -68,7 +69,8 @@
     ],
     "dependencies": [
         "ai-startup-character",
-        "hud-manager-helpers"
+        "hud-manager-helpers",
+        "ai-startup-npc"
     ],
     "source_first": true,
     "retail_got": true,
@@ -81,7 +83,9 @@
         "_ZN14AnimatedButton13setWeaponAnimEi",
         "_ZN4Ammo9setWeaponEP6Weapon",
         "_ZNK13WeaponManager16getCurrentWeaponEv",
-        "_ZN3NPC14notifyTargetedEbP9Character",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZNK6Weapon5isGunEv",
+        "_ZNK6Weapon12isProjectileEv",
         "_ZN6Weapon4showEv",
         "_ZN9Character5readyEf",
         "_ZNK6Weapon13getWeaponTypeEv",

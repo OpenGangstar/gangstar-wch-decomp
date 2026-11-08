@@ -33,7 +33,8 @@ private:
     friend class Character;
     unsigned char unknown296[12];
     Weapon* weapon;
-    unsigned char unknown312[20];
+    Character* targetingCharacter;
+    unsigned char unknown316[16];
     const Path* activePath;
     int activeWaypoint;
     unsigned char unknown340[16];
