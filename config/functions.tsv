@@ -10099,7 +10099,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f2cd9	0xbc	Character.cpp	game	characters	matched	_ZN9Character15showBloodPuddleEN3irr4core8vector3dIfEE	Character::showBloodPuddle(irr::core::vector3d<float>)
 0x002f2d95	0x144	Character.cpp	game	characters	pending	_ZN9Character3dieEb	Character::die(bool)
 0x002f2ed9	0x108	Character.cpp	game	characters	pending	_ZN9Character11goToVehicleEP7Vehiclebbbb	Character::goToVehicle(Vehicle*, bool, bool, bool, bool)
-0x002f2fe1	0x58	Character.cpp	game	characters	pending	_ZN9Character11cleanPhysicEv	Character::cleanPhysic()
+0x002f2fe1	0x58	Character.cpp	game	characters	matched	_ZN9Character11cleanPhysicEv	Character::cleanPhysic()
 0x002f3039	0x58	Character.cpp	game	characters	pending	_ZN9Character5cleanEv	Character::clean()
 0x002f3091	0x44	Character.cpp	game	characters	matched	_ZN9Character15resetCollisionsEv	Character::resetCollisions()
 0x002f30d5	0xe8	Character.cpp	game	characters	matched	_ZN9Character15showBloodSplashEN3irr4core8vector3dIfEES3_	Character::showBloodSplash(irr::core::vector3d<float>, irr::core::vector3d<float>)

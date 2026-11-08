@@ -94,6 +94,8 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7b2World11DestroyBodyEP6b2Body",
+        "_ZN16PhysicAttributesD1Ev",
         "_ZN11LevelObject7OnSpawnEv",
         "_ZN11LevelObject9OnDespawnEv",
         "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",

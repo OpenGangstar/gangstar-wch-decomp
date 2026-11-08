@@ -539,6 +539,22 @@ void Character::showBloodPuddle(irr::core::vector3d<float>)
     shadowNode->setVisible(false);
 }
 
+void Character::cleanPhysic()
+{
+    if (collisionBody) {
+        if (collisionBody->GetUserData()) {
+            delete static_cast<PhysicsBodyData*>(collisionBody->GetUserData());
+            collisionBody->data = 0;
+        }
+        PhysicAttributes::s_world->DestroyBody(collisionBody);
+        collisionBody = 0;
+    }
+    if (unknown24) {
+        delete unknown24;
+        unknown24 = 0;
+    }
+}
+
 void Character::resetCollisions()
 {
     if (collisionBody) {
