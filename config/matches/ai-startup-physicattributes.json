@@ -35,6 +35,17 @@
         "_ZN16PhysicAttributesD2Ev",
         "_Z10SafeDeleteI7b2WorldEvRPT_",
         "_ZN16PhysicAttributes10CleanWorldEv",
+        "_ZN17b2ContactListener3AddEPK14b2ContactPoint",
+        "_ZN17b2ContactListener7PersistEPK14b2ContactPoint",
+        "_ZN17b2ContactListener6RemoveEPK14b2ContactPoint",
+        "_ZN17b2ContactListener6ResultEPK15b2ContactResult",
+        "_ZN15ContactListener6ResultEPK15b2ContactResult",
+        "_ZN17b2ContactListenerD0Ev",
+        "_ZN17b2ContactListenerD1Ev",
+        "_ZN13ContactFilterD1Ev",
+        "_ZN13ContactFilterD0Ev",
+        "_ZN15ContactListenerD0Ev",
+        "_ZN15ContactListenerD1Ev",
         {
             "name": "__tcf_3",
             "address": "0x003199f1"
@@ -53,6 +64,7 @@
         ".ai_startup_function_1",
         ".ai_startup_function_2",
         ".shared_startup_empty_text",
+        ".b2_contact_listener_vtable",
         {
             "name": ".got",
             "offset": 864

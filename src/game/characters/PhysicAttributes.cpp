@@ -16,6 +16,26 @@
 #include "../core/SafeDelete.h"
 #include "../core/SceneNode.h"
 
+// Emit the inline destructors while the key virtual methods remain retail imports.
+class ContactListener : public b2ContactListener {
+public:
+    virtual ~ContactListener() __attribute__((used)) {}
+    virtual void Add(const b2ContactPoint* point);
+    virtual void Persist(const b2ContactPoint* point);
+    virtual void Remove(const b2ContactPoint* point);
+    virtual void Result(const b2ContactResult* result);
+};
+
+class ContactFilter : public b2ContactFilter {
+public:
+    virtual ~ContactFilter() __attribute__((used)) {}
+    virtual bool ShouldCollide(b2Shape* first, b2Shape* second);
+};
+
+void ContactListener::Result(const b2ContactResult*)
+{
+}
+
 struct PhysicInfo {
     PhysicInfo() __attribute__((weak));
     // The retail array allocation has an ARM EABI cookie.

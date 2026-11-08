@@ -60,15 +60,15 @@ struct b2ContactPoint;
 struct b2ContactResult;
 class b2ContactListener {
 public:
-    virtual ~b2ContactListener();
-    virtual void Add(const b2ContactPoint* point);
-    virtual void Persist(const b2ContactPoint* point);
-    virtual void Remove(const b2ContactPoint* point);
-    virtual void Result(const b2ContactResult* result);
+    virtual ~b2ContactListener() {}
+    virtual void Add(const b2ContactPoint*) {}
+    virtual void Persist(const b2ContactPoint*) {}
+    virtual void Remove(const b2ContactPoint*) {}
+    virtual void Result(const b2ContactResult*) {}
 };
 class b2ContactFilter {
 public:
-    virtual ~b2ContactFilter();
+    virtual ~b2ContactFilter() {}
     virtual bool ShouldCollide(b2Shape* first, b2Shape* second);
 };
 
