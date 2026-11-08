@@ -11026,7 +11026,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00323841	0x1a	CHudManager.cpp	game	hud	matched	_ZN11CHudManager12showSpyGaugeEb	CHudManager::showSpyGauge(bool)
 0x0032385d	0x44	CHudManager.cpp	stlport	-	matched	_ZNSaIP10HudElementE8allocateEjRj	std::allocator<HudElement*>::allocate(unsigned int, unsigned int&)
 0x003238a1	0xc	CHudManager.cpp	game	hud	pending	_ZSt26__stl_throw_overflow_errorPKc	std::__stl_throw_overflow_error(char const*)
-0x003238ad	0x46	CHudManager.cpp	game	hud	pending	_ZN11CHudManager12switchWeaponEv	CHudManager::switchWeapon()
+0x003238ad	0x46	CHudManager.cpp	game	hud	matched	_ZN11CHudManager12switchWeaponEv	CHudManager::switchWeapon()
 0x003238f5	0xa8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager24unregUpdatableComponentsEv	CHudManager::unregUpdatableComponents()
 0x0032399d	0xa8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager22regUpdatableComponentsEv	CHudManager::regUpdatableComponents()
 0x00323a45	0x18	CHudManager.cpp	game	hud	matched	_ZNK11CHudManager10isNearShopEv	CHudManager::isNearShop() const
@@ -11043,7 +11043,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00323bc9	0x20	CHudManager.cpp	game	hud	pending	_Z10SafeDeleteI10CCameraHudEvRPT_	void SafeDelete<CCameraHud>(CCameraHud*&)
 0x00323be9	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager21regDrawableComponentsEv	CHudManager::regDrawableComponents()
 0x00323cdd	0x3a	CHudManager.cpp	game	hud	pending	_ZN11CHudManager13limitToWeaponEi	CHudManager::limitToWeapon(int)
-0x00323d19	0x4e	CHudManager.cpp	game	hud	pending	_ZN11CHudManager12switchWeaponEi	CHudManager::switchWeapon(int)
+0x00323d19	0x4e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager12switchWeaponEi	CHudManager::switchWeapon(int)
 0x00323d69	0x40	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4hideEv	CHudManager::hide()
 0x00323da9	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager23unregDrawableComponentsEv	CHudManager::unregDrawableComponents()
 0x00323e9d	0x28	CHudManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE6spliceEN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEERS1_S6_	std::list<long, std::allocator<long> >::splice(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::list<long, std::allocator<long> >&, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >)

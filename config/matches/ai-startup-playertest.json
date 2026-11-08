@@ -29,6 +29,8 @@
         "_ZN10PlayerTest18unlockSwitchWeaponEv",
         "_ZN10PlayerTest12switchWeaponEb",
         "_ZN9Character12switchWeaponEv",
+        "_ZN11CHudManager12switchWeaponEv",
+        "_ZN11CHudManager12switchWeaponEi",
         {
             "name": "__tcf_5",
             "address": "0x00301031"
@@ -65,14 +67,19 @@
         ".wanted_cleanup"
     ],
     "dependencies": [
-        "ai-startup-character"
+        "ai-startup-character",
+        "hud-manager-helpers"
     ],
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN11Application11GetInstanceEv",
-        "_ZN11CHudManager12switchWeaponEi",
-        "_ZN11CHudManager12switchWeaponEv",
+        "_ZN13WeaponManager10nextWeaponEi",
+        "_ZN13WeaponManager15getWeaponInListEiN10PlayerTest8eContextE",
+        "_ZN13WeaponManager10swapWeaponEv",
+        "_ZN13WeaponManager10swapWeaponEi",
+        "_ZN14AnimatedButton13setWeaponAnimEi",
+        "_ZN4Ammo9setWeaponEP6Weapon",
         "_ZNK13WeaponManager16getCurrentWeaponEv",
         "_ZN3NPC14notifyTargetedEbP9Character",
         "_ZN6Weapon4showEv",

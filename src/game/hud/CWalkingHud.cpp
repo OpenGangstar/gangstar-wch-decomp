@@ -12,6 +12,8 @@
 #include "CHudManager.h"
 #include "HudElement.h"
 #include "SpyGauge.h"
+#include "../combat/Ammo.h"
+#include "../ui/AnimatedButton.h"
 
 inline bool CWalkingHud::isWalkingHud() const { return true; }
 
@@ -79,13 +81,13 @@ void CWalkingHud::toggleWeaponSelector(bool show)
         manager->weaponSelector->show();
         manager->weaponSelectorExtra->show();
         unknown8 |= 0x2000;
-        manager->weaponSelectorControl->show();
+        manager->ammoDisplay->show();
     } else {
         unknown8 &= ~0x100u;
         manager->weaponSelector->hide();
         manager->weaponSelectorExtra->hide();
         unknown8 &= ~0x2000u;
-        manager->weaponSelectorControl->hide();
+        manager->ammoDisplay->hide();
     }
 }
 

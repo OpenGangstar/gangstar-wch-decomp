@@ -1,4 +1,5 @@
 /* Walking HUD dispatch wrappers at their retail addresses. */
+INCLUDE config/linker/CHudManagerWeaponSections.ld
 SECTIONS
 {
     .walking_nearCar 0x00323aa4 : { *hud-manager-helpers.o(.text._ZN11CHudManager7nearCarEv) }

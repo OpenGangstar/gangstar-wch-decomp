@@ -25,6 +25,8 @@
     "source": "src/game/hud/CHudManager.cpp",
     "linker_script": "config/linker/CHudManagerHelpers.ld",
     "functions": [
+        "_ZN11CHudManager12switchWeaponEv",
+        "_ZN11CHudManager12switchWeaponEi",
         "_ZN11CHudManager4initEv",
         "_ZN11CHudManager4lockEv",
         "_ZN11CHudManager6unlockEv",
@@ -98,6 +100,13 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN13WeaponManager10nextWeaponEi",
+        "_ZN13WeaponManager15getWeaponInListEiN10PlayerTest8eContextE",
+        "_ZN13WeaponManager10swapWeaponEv",
+        "_ZN13WeaponManager10swapWeaponEi",
+        "_ZN14AnimatedButton13setWeaponAnimEi",
+        "_ZN4Ammo9setWeaponEP6Weapon",
         "_ZN8SpyGauge8useSpyBGEv",
         "_ZN8SpyGauge13useDriveBadBGEv",
         "_ZN8SpyGauge14useDriveWellBGEv",
