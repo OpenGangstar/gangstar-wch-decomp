@@ -20,8 +20,12 @@
 #include "../app/Application.h"
 #include "../combat/Weapon.h"
 #include "../combat/WeaponManager.h"
+#include "../rendering/GS3DStuff.h"
+#include "../world/SceneNodeManager.h"
 
 irr::scene::ITimelineController* Character::s_timelineController;
+bool Character::b_isBloodOn = true;
+int Character::s_bloodpuddle = -1;
 
 extern "C" float acosf(float);
 void operator delete(void*) throw();
@@ -233,6 +237,16 @@ static void __tcf_4()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+void Character::removeBloodPuddle()
+{
+    if (b_isBloodOn && bloodPuddle) {
+        bloodPuddle->setVisible(false);
+        if (sceneNode)
+            sceneNode->removeChild(bloodPuddle);
+        bloodPuddle = 0;
+    }
 }
 
 bool Character::isPlayer() const
@@ -450,6 +464,22 @@ void Character::switchWeapon()
     } else if (!(movementFlags & 0xfeu)) {
         goToIdle();
     }
+}
+
+void Character::showBloodPuddle(irr::core::vector3d<float>)
+{
+    if (b_isBloodOn) {
+        if (!bloodPuddle)
+            bloodPuddle = SceneNodeManager::getInstance()->grab(s_bloodpuddle, 0, 0, 0);
+        GS3DStuff::SetMaterialFlag(bloodPuddle, irr::video::MaterialFlag2, true);
+        GS3DStuff::SetMaterialFlag(bloodPuddle, irr::video::MaterialFlag4, true);
+        GS3DStuff::SetMaterialFlag(bloodPuddle, irr::video::MaterialFlag16, true);
+        sceneNode->addChild(bloodPuddle);
+        bloodPuddle->setVisible(true);
+        bloodPuddle->getAnimators().first->animator->getTimelineCtrl()->setLoop(false);
+        bloodPuddle->setPosition(irr::core::vector3d<float>(0.0f, 0.0f, -13.0f));
+    }
+    shadowNode->setVisible(false);
 }
 
 void Character::resetCollisions()
