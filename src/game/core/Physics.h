@@ -5,12 +5,13 @@ class LevelObject;
 namespace irr { namespace scene { class ISceneNode; } }
 
 // Partial retail Box2D call interfaces and observed field prefixes only.
-// b2Body/b2Shape/b2World are call-only views: do not instantiate them.
+// b2Body and b2Shape are call-only views.
 // The small vector, bounds and segment records describe the observed call ABI.
 // No complete engine object layouts or additional matched symbols are asserted.
 struct b2Vec2 {
     float x, y;
     b2Vec2() {}
+    b2Vec2(float x, float y) : x(x), y(y) {}
 };
 struct b2AABB { b2Vec2 lowerBound, upperBound; };
 struct b2Segment { b2Vec2 p1, p2; };
@@ -47,13 +48,28 @@ public:
     bool IsSensor() const { return isSensor; }
     b2Body* GetBody() { return body; }
 };
+class b2ContactFilter;
+class b2ContactListener;
+struct b2BodyDef;
 class b2World {
 public:
+    b2World(const b2AABB& bounds, const b2Vec2& gravity, bool allowSleep);
     ~b2World();
+    b2Body* CreateBody(const b2BodyDef* definition);
     void DestroyBody(b2Body* body);
     void Refilter(b2Shape* shape);
     void Step(float, int);
     int Query(const b2AABB&, b2Shape**, int);
+    void SetContactListener(b2ContactListener* listener);
+    void SetContactFilter(b2ContactFilter* filter);
+    void SetPositionCorrection(bool enabled) { positionCorrection = enabled; }
+    void SetContinuousPhysics(bool enabled) { continuousPhysics = enabled; }
+private:
+    // Observed allocation extent and configuration flag offsets.
+    unsigned int unknown0;
+    unsigned char unknown4[0x19275 - 4];
+    bool positionCorrection;
+    bool continuousPhysics;
 };
 
 struct b2ContactPoint;

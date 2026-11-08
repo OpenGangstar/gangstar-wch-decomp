@@ -12,7 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "PhysicAttributes.h"
-#include "../core/Physics.h"
+#include "../core/PhysicsBodyDef.h"
 #include "../core/SafeDelete.h"
 #include "../core/SceneNode.h"
 #include "../vehicles/Vehicle.h"
@@ -111,6 +111,25 @@ PhysicInfo::PhysicInfo()
 }
 
 template void SafeDelete<b2World>(b2World*&);
+
+void PhysicAttributes::InitWorld()
+{
+    b2AABB bounds;
+    bounds.lowerBound.x = -2000.0f;
+    bounds.lowerBound.y = -2000.0f;
+    bounds.upperBound.x = 2000.0f;
+    bounds.upperBound.y = 2000.0f;
+    const b2Vec2 gravity(0.0f, 0.0f);
+    s_world = new b2World(bounds, gravity, true);
+    s_world->SetPositionCorrection(true);
+    s_world->SetContinuousPhysics(false);
+    s_contactListener = new ContactListener;
+    s_contactFilter = new ContactFilter;
+    s_world->SetContactListener(s_contactListener);
+    s_world->SetContactFilter(s_contactFilter);
+    b2BodyDef definition;
+    s_groundBody = s_world->CreateBody(&definition);
+}
 
 void PhysicAttributes::CleanWorld()
 {
