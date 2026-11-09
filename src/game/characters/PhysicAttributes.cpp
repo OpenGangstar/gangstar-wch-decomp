@@ -158,6 +158,24 @@ irr::scene::ISceneNode* PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneN
     return 0;
 }
 
+void PhysicAttributes::CreateNeighborTris(irr::scene::ISceneNode* node, int id)
+{
+    node->updateAbsolutePosition(false);
+    // The retail fork recognizes these two mesh node types as heightmaps.
+    if (node->getType() == 0x6d656164 || node->getType() == 0x73656164) {
+        if (!s_heightmap) {
+            ++node->references;
+            s_heightmap = node;
+        }
+    } else {
+        --id;
+    }
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        CreateNeighborTris(child->value, ++id);
+    }
+}
+
 void PhysicAttributes::SetPhysicInfo(const PhysicInfo& source, int slot)
 {
     info[slot].vector12 = source.vector12;
