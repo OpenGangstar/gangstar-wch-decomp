@@ -219,8 +219,8 @@ void NPC::equipWeapon(bool forceUnarmed, bool swapHands)
     else
         weapon = WeaponManager::createWeapon(weaponType);
 
-    irr::scene::ISceneNode* rightModel;
     irr::scene::ISceneNode* leftModel;
+    irr::scene::ISceneNode* rightModel;
     if (weapon->getWeaponType() != 0) {
         if (swapHands) {
             leftModel = weapon->projectileSceneNode();

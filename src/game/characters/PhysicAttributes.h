@@ -29,6 +29,8 @@ public:
     static b2ContactListener* s_contactListener;
     static void InitWorld();
     static void CleanWorld();
+    static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);
+    static irr::scene::ISceneNode* s_heightmap;
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
         const irr::core::vector3d<float>&, irr::core::vector3d<float>&,
         irr::core::vector3d<float>&);
