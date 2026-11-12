@@ -24,7 +24,16 @@
     ],
     "source": "src/game/world/Path.cpp",
     "linker_script": "config/linker/PathSdkStartup.ld",
+    "external_thumb_functions": [
+        "_ZN14TransformationC1Ei",
+        "_ZN14TransformationD1Ev"
+    ],
     "functions": [
+        "_ZN4PathC1Ei",
+        "_ZN4PathC2Ei",
+        "_ZN4PathD0Ev",
+        "_ZN4PathD1Ev",
+        "_ZN4PathD2Ev",
         "_ZNK4Path7getSizeEv",
         "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
         {"name": "__tcf_1", "address": "0x00300b41"},
@@ -42,6 +51,8 @@
         }
     ],
     "sections": [
+        ".path_vtable",
+        ".path_base_spawn_type",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
