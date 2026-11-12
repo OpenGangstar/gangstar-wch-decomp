@@ -24,6 +24,7 @@ public:
     void walkToTarget();
     void startTurn(float speed);
     void enterVehicle(bool left, bool getIn, bool waitForDoor);
+    void getOutOfVehicle(bool left, bool markExit);
     void ejectFromVehicle(bool left);
     void openVehicleDoorFromInside(bool left);
     void closeVehicleDoorFromInside(bool left);

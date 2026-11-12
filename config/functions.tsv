@@ -10129,7 +10129,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f4a79	0x280	Character.cpp	game	characters	pending	_ZN9Character17positionInVehicleEb	Character::positionInVehicle(bool)
 0x002f4cf9	0x120	Character.cpp	game	characters	pending	_ZN9Character14throwOutDriverEb	Character::throwOutDriver(bool)
 0x002f4e19	0x94	Character.cpp	game	characters	matched	_ZN9Character16ejectFromVehicleEb	Character::ejectFromVehicle(bool)
-0x002f4ead	0xf4	Character.cpp	game	characters	pending	_ZN9Character15getOutOfVehicleEbb	Character::getOutOfVehicle(bool, bool)
+0x002f4ead	0xf4	Character.cpp	game	characters	matched	_ZN9Character15getOutOfVehicleEbb	Character::getOutOfVehicle(bool, bool)
 0x002f4fa1	0x4a	Character.cpp	game	characters	matched	_ZN9Character25openVehicleDoorFromInsideEb	Character::openVehicleDoorFromInside(bool)
 0x002f4fed	0xdc	Character.cpp	game	characters	pending	_ZN9Character15openVehicleDoorEb	Character::openVehicleDoor(bool)
 0x002f50c9	0x62	Character.cpp	game	characters	matched	_ZN9Character12enterVehicleEbbb	Character::enterVehicle(bool, bool, bool)
