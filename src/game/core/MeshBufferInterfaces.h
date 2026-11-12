@@ -35,10 +35,11 @@ public:
     virtual void unknown8(); virtual void unknown9(); virtual void unknown10();
     virtual void unknown11(); virtual void unknown12();
     virtual const unsigned short* getIndices() const;
-    virtual void unknown14();
+    virtual unsigned short* getIndices();
     virtual unsigned int getIndexCount() const;
     virtual void unknown16(); virtual void unknown17(); virtual void unknown18();
     virtual const core::vector3d<float>& getPosition(unsigned int) const;
+    virtual core::vector3d<float>& getPosition(unsigned int);
 };
 class IMesh {
 public:
