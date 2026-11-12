@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
+#include "../vehicles/Vehicle.h"
 #include "PlayerTest.h"
 #include "../ai/NPC.h"
 #include "PhysicAttributes.h"
@@ -205,7 +206,7 @@ void Character::clean()
 
     unknown264 = 0;
     turnDirection = irr::core::vector3d<float>();
-    unknown288 = false;
+    turning = false;
     cleanPhysic();
     vehicle = 0;
     target = 0;
@@ -462,6 +463,31 @@ void Character::setDestination(const irr::core::vector3d<float>& point, int limi
     destinationLimitSquared = limit * limit;
 }
 
+void Character::closeVehicleDoorFromInside(bool left)
+{
+    if (!vehicle)
+        return;
+    if (left) {
+        if (vehicle->isDoorOpened(true)) {
+            setAnimation(vehicle->getLeftCloseDoorFromInsideAnimation(), 1.0f, false, false, false);
+            vehicle->closeDoor(true);
+        }
+    } else if (vehicle->isDoorOpened(false)) {
+        setAnimation(vehicle->getRightCloseDoorFromInsideAnimation(), 1.0f, false, false, false);
+        vehicle->closeDoor(false);
+    }
+}
+
+void Character::startTurn(float speed)
+{
+    const irr::core::vector3d<float> direction = turnDirection;
+    if (direction.getLengthSQ() > 0.0f) {
+        turnSpeed = speed;
+        turning = true;
+        setAnimation(201, 1.0f, true, false, false);
+    }
+}
+
 void Character::setTurnDirection(irr::core::vector3d<float> direction)
 {
     turnDirection = direction;
@@ -487,6 +513,29 @@ inline __attribute__((always_inline)) void turnSceneNode(irr::scene::ISceneNode&
     node.setRotation(node.getRotation()
         * irr::core::quaternion(0.0f, 0.0f, sign * step * -radiansPerDegree));
 }
+}
+
+void Character::turnToward(const irr::core::vector3d<float>& point)
+{
+    using irr::core::vector3d;
+    using irr::core::quaternion;
+
+    const vector3d<float> position = GetPosition();
+    const float x = point.X - position.X;
+    const float y = point.Y - position.Y;
+    vector3d<float> direction(x, y, 0.0f);
+    direction.normalize();
+
+    quaternion rotation;
+    const float dot = vector3d<float>(-direction.X, direction.Y, direction.Z)
+        .dotProduct(vector3d<float>(0.0f, -1.0f, 0.0f));
+    if (dot <= -1.0f)
+        rotation.fromAngleAxis(3.14159265358979323846f, vector3d<float>(0.0f, 0.0f, 1.0f));
+    else
+        rotation.rotationFromTo(vector3d<float>(0.0f, -1.0f, 0.0f), vector3d<float>(-x, y, 0.0f));
+
+    rotation.normalize();
+    sceneNode->setRotation(rotation);
 }
 
 bool Character::turnToward(irr::core::vector3d<float> direction, float step)

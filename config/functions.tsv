@@ -10058,12 +10058,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1715	0x18	Character.cpp	game	characters	matched	_ZN9Character4initEv	Character::init()
 0x002f172d	0x44	Character.cpp	game	characters	matched	_ZN9Character17removeBloodPuddleEv	Character::removeBloodPuddle()
 0x002f1771	0xe	Character.cpp	game	characters	matched	_ZN9Character15setCameraOffsetERKN3irr4core8vector3dIfEE	Character::setCameraOffset(irr::core::vector3d<float> const&)
-0x002f1781	0x88	Character.cpp	game	characters	pending	_ZN9Character9startTurnEf	Character::startTurn(float)
+0x002f1781	0x88	Character.cpp	game	characters	matched	_ZN9Character9startTurnEf	Character::startTurn(float)
 0x002f1809	0x30	Character.cpp	game	characters	matched	__tcf_4	__tcf_4
 0x002f1839	0x24	Character.cpp	game	characters	pending	__tcf_1	__tcf_1
 0x002f185d	0x58	Character.cpp	game	characters	matched	_ZN9Character16freeBloodObjectsEv	Character::freeBloodObjects()
 0x002f18b5	0x6c	Character.cpp	game	characters	matched	_ZN9Character16loadBloodObjectsEPKcS1_	Character::loadBloodObjects(char const*, char const*)
-0x002f1921	0x78	Character.cpp	game	characters	pending	_ZN9Character26closeVehicleDoorFromInsideEb	Character::closeVehicleDoorFromInside(bool)
+0x002f1921	0x78	Character.cpp	game	characters	matched	_ZN9Character26closeVehicleDoorFromInsideEb	Character::closeVehicleDoorFromInside(bool)
 0x002f1999	0x1e	Character.cpp	game	characters	matched	_ZNK9Character8isPlayerEv	Character::isPlayer() const
 0x002f19b9	0x1e	Character.cpp	game	characters	matched	_ZN9Character7disableEv	Character::disable()
 0x002f19d9	0x3c	Character.cpp	game	characters	matched	_ZN9Character6enableEv	Character::enable()
@@ -10116,7 +10116,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f3bd5	0x144	Character.cpp	game	characters	matched	_ZN9Character16turnTowardTargetEP11LevelObjectf	Character::turnTowardTarget(LevelObject*, float)
 0x002f3d19	0x26	Character.cpp	game	characters	matched	_ZN9Character16turnTowardTargetEf	Character::turnTowardTarget(float)
 0x002f3d41	0x158	Character.cpp	game	characters	matched	_ZN9Character15isTargetInRangeEff	Character::isTargetInRange(float, float)
-0x002f3e99	0x10c	Character.cpp	game	characters	pending	_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE	Character::turnToward(irr::core::vector3d<float> const&)
+0x002f3e99	0x10c	Character.cpp	game	characters	matched	_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE	Character::turnToward(irr::core::vector3d<float> const&)
 0x002f3fa5	0x68	Character.cpp	game	characters	matched	_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE	Character::runToLocation(irr::core::vector3d<float> const&)
 0x002f400d	0x50	Character.cpp	game	characters	matched	_ZN9Character14walkToLocationERKN3irr4core8vector3dIfEE	Character::walkToLocation(irr::core::vector3d<float> const&)
 0x002f405d	0x270	Character.cpp	game	characters	pending	_ZN9Character6UpdateEi	Character::Update(int)

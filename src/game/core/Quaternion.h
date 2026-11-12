@@ -25,6 +25,9 @@ public:
     quaternion() : X(0),Y(0),Z(0),W(1) {}
     quaternion(float x, float y, float z) { set(x, y, z); }
     quaternion(const vector3d<float>& v) { set(v.X, v.Y, v.Z); }
+    quaternion& normalize() __attribute__((weak));
+    quaternion& rotationFromTo(const vector3d<float>& from, const vector3d<float>& to) __attribute__((weak));
+    quaternion& fromAngleAxis(float angle, const vector3d<float>& axis) __attribute__((weak));
     quaternion& set(float x, float y, float z) __attribute__((weak));
     quaternion operator*(const quaternion& other) const __attribute__((weak));
 };

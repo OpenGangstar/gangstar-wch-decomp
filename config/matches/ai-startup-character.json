@@ -25,6 +25,9 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character9startTurnEf",
+        "_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE",
+        "_ZN9Character26closeVehicleDoorFromInsideEb",
         "_ZN9Character5blockEi",
         "_ZN9Character5cleanEv",
         "_ZN9Character6enableEv",
@@ -131,6 +134,10 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK7Vehicle12isDoorOpenedEb",
+        "_ZN7Vehicle35getLeftCloseDoorFromInsideAnimationEv",
+        "_ZN7Vehicle36getRightCloseDoorFromInsideAnimationEv",
+        "_ZN7Vehicle9closeDoorEb",
         "_ZNK11LevelObject9isEnabledEv",
         "_ZN11LevelObject6enableEv",
         "_ZN11LevelObject7disableEv",
@@ -157,7 +164,6 @@
         "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
-        "_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE",
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev"
