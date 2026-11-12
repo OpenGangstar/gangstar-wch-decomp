@@ -25,6 +25,8 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle7getMeshEv",
+        "_ZN7Vehicle11isHiVehicleEv",
         "_ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN7Vehicle11SetRotationERKN3irr4core10quaternionE",
         "_ZN7Vehicle7shootedEiP11LevelObject",
@@ -121,6 +123,7 @@
         "_ZN7Vehicle10hideWheelsEv"
     ],
     "sections": [
+        ".vehicle_high_enter_clip",
         ".vehicle_cleanup_0",
         ".vehicle_cleanup_1",
         ".vehicle_cleanup_2",

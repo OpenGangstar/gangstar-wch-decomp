@@ -51,6 +51,9 @@ SECTIONS
     .vehicle_play_current_anim 0x00309828 : { *(.text._ZN7Vehicle20playCurAnimFromStartEv) }
     .vehicle_set_transition_callback 0x00309854 : { *(.text._ZN7Vehicle21setTransitionCallbackEPN3irr5scene10ISceneNodeE) }
     .vehicle_set_anim 0x00309890 : { *(.text._ZN7Vehicle7setAnimEPKcbf) }
+    .vehicle_mesh 0x00307bc8 : { *(.text._ZN7Vehicle7getMeshEv) }
+    .vehicle_is_high_vehicle 0x00308ec4 : { *(.text._ZN7Vehicle11isHiVehicleEv) }
+    .vehicle_high_enter_clip 0x0041df0c : { *(.rodata.*highVehicleEnterClip*) }
     .vehicle_low_enter_clip 0x0041def8 : { *(.rodata.*lowVehicleEnterClip*) }
     .vehicle_is_low_vehicle 0x00308ef0 : { *(.text._ZN7Vehicle12isLowVehicleEv) }
     .vehicle_get_seated_animation 0x00308f1c : { *(.text._ZN7Vehicle18getSeatedAnimationEv) }
