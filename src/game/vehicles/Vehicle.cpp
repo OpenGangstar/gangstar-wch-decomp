@@ -400,6 +400,18 @@ void Vehicle::resetDriver()
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
 }
 
+void Vehicle::DestroyWheels()
+{
+    if (leftCollisionBody) {
+        PhysicAttributes::s_world->DestroyBody(leftCollisionBody);
+        leftCollisionBody = 0;
+    }
+    if (rightCollisionBody) {
+        PhysicAttributes::s_world->DestroyBody(rightCollisionBody);
+        rightCollisionBody = 0;
+    }
+}
+
 void Vehicle::Stop()
 {
     if (!isEnabled())
