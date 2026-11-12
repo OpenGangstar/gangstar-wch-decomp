@@ -13,6 +13,8 @@
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
+#include "../core/Lock.h"
+#include "../world/GameObjectManager.h"
 #include "../vehicles/Vehicle.h"
 #include "PlayerTest.h"
 #include "../ai/NPC.h"
@@ -653,6 +655,35 @@ void Character::showBloodPuddle(irr::core::vector3d<float>)
         bloodPuddle->setPosition(irr::core::vector3d<float>(0.0f, 0.0f, -13.0f));
     }
     shadowNode->setVisible(false);
+}
+
+void Character::hide()
+{
+    unknown4 &= ~2u;
+    if (sceneNode) {
+        sceneNode->setVisible(false);
+        shadowNode->setVisible(false);
+    }
+    if (!isPlayer()) {
+        if (Lock::getInstance()->target == this)
+            Lock::getInstance()->setTarget(0);
+        objectList->Remove(this);
+        GameObjectManager::s_gom->Add(this, 2);
+    }
+}
+
+void Character::removeCollisions()
+{
+    if (collisionBody) {
+        for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next) {
+            if (shape->filter.maskBits) {
+                shape->filter.groupIndex = 0;
+                shape->filter.categoryBits = 0;
+                shape->filter.maskBits = 0;
+                PhysicAttributes::s_world->Refilter(shape);
+            }
+        }
+    }
 }
 
 void Character::cleanPhysic()

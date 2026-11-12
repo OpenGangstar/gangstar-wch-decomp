@@ -14,6 +14,8 @@ acosf = 0x001c4694;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .character_hide 0x002f31bc : { *ai-startup-character.o(.text._ZN9Character4hideEv) }
+    .character_remove_collisions 0x002f2b68 : { *ai-startup-character.o(.text._ZN9Character16removeCollisionsEv) }
     .character_close_vehicle_door 0x002f1920 : { *ai-startup-character.o(.text._ZN9Character26closeVehicleDoorFromInsideEb) }
     .character_turn_toward_point 0x002f3e98 : { *ai-startup-character.o(.text._ZN9Character10turnTowardERKN3irr4core8vector3dIfEE) }
     .character_start_turn 0x002f1780 : { *ai-startup-character.o(.text._ZN9Character9startTurnEf) }
