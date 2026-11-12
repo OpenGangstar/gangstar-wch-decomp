@@ -24,6 +24,7 @@ public:
     void step();
     void immobilize();
     void setDriver(Character* value);
+    void resetDriver();
     void mobilize();
     void UpdateCarSounds();
     void repair();
@@ -131,7 +132,9 @@ private:
     int doorSoundSuppression;
     unsigned char unknown908[56];
     int animationClipIndex;
-    unsigned char unknown968[28];
+    int driverMetatype;
+    int driverBehavior;
+    unsigned char unknown976[20];
     b2FilterData collisionFilter;
     bool leftDoorClosed;
     bool rightDoorClosed;

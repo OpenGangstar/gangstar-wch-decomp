@@ -9,6 +9,8 @@
  */
 
 #include "Vehicle.h"
+#include "../ai/NPC.h"
+#include "../world/GameObjectManager.h"
 #include "../audio/SoundManager.h"
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/NativeStrings.h"
@@ -248,6 +250,11 @@ void Vehicle::openDoor(bool left)
 void Vehicle::openDoorFromInside(bool left)
 {
     openDoorWithClip(exitCarClip, left);
+}
+
+void Vehicle::resetDriver()
+{
+    setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
 }
 
 void Vehicle::closeDoor(bool left)
