@@ -524,6 +524,32 @@ void Character::enterVehicle(bool left, bool getIn, bool waitForDoor)
     }
 }
 
+void Character::getOutOfVehicle(bool left, bool markExit)
+{
+    if (!vehicle)
+        return;
+
+    if (markExit)
+        unknown289[0] = 1;
+    vehicle->showHighlight(-1);
+    movementFlags |= 0x10000;
+    vehicle->immobilize();
+    unknown248[8] = 1;
+    movementFlags &= ~0x400u;
+    getPhysicAttributes()->SetPhysicInfo(*vehicle->getPhysicAttributes()->info, 0);
+    show();
+    positionInVehicle(left);
+    if (left) {
+        setAnimation(vehicle->getLeftExitAnimation(), vehicle->doorAnimationScale, false, true, false);
+        vehicle->openDoorFromInside(true);
+    } else {
+        setAnimation(vehicle->getRightExitAnimation(), vehicle->doorAnimationScale, false, true, left);
+        vehicle->openDoorFromInside(false);
+    }
+    if (vehicle->getDriver() == this)
+        vehicle->setDriver(0);
+}
+
 void Character::ejectFromVehicle(bool left)
 {
     if (!vehicle)
