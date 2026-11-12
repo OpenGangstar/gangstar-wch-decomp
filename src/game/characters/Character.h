@@ -46,6 +46,7 @@ public:
     bool isInFlinchAnimation();
     bool isInHitByCarAnimation();
     void setDestination(const irr::core::vector3d<float>& point, int limit);
+    virtual void SetPosition(const irr::core::vector3d<float>& position);
     bool isPlayer() const;
     virtual void shooted(int amount, LevelObject* source);
     using LevelObject::sceneNode;
