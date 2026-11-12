@@ -24,7 +24,10 @@
     ],
     "source": "src/game/characters/Transformation.cpp",
     "linker_script": "config/linker/TransformationSdkStartup.ld",
+    "external_thumb_functions": ["_ZN11LevelObject13dropSceneNodeEv"],
     "functions": [
+        "_ZN14Transformation11SetRotationERKN3irr4core8vector3dIfEE",
+        "_ZN14Transformation13dropSceneNodeEv",
         "_ZNK14Transformation8GetRightEv",
         "_ZNK14Transformation8GetFrontEv",
         "_ZNK14Transformation8GetMatIDEv",

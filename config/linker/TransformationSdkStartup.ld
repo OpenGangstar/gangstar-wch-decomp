@@ -3,8 +3,11 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-transformation/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__aeabi_fmul = 0x001c4724;
 SECTIONS
 {
+    .transformation_set_euler 0x00307980 : { *(.text._ZN14Transformation11SetRotationERKN3irr4core8vector3dIfEE) }
+    .transformation_drop_node 0x003078a4 : { *(.text._ZN14Transformation13dropSceneNodeEv) }
     .transformation_right 0x00307808 : { *(.text._ZNK14Transformation8GetRightEv) }
     .transformation_front 0x0030794c : { *(.text._ZNK14Transformation8GetFrontEv) }
     .transformation_material 0x003077e0 : { *(.text._ZNK14Transformation8GetMatIDEv) }
