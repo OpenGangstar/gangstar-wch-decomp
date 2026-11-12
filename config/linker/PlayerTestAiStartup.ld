@@ -15,6 +15,9 @@ _ZN29retail_playertest_transitions11guard_transE = 0x0041e814;
 _ZN29retail_playertest_transitions22scripted_vehicle_transE = 0x0041e8bc;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+memset = 0x001c45d4;
+memcpy = 0x001c4190;
+__aeabi_fdiv = 0x001c4520;
 INCLUDE config/linker/CharacterStateSections.ld
 INCLUDE config/linker/CHudManagerWeaponSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld

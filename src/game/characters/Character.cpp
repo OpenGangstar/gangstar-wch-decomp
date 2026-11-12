@@ -465,6 +465,25 @@ void Character::setDestination(const irr::core::vector3d<float>& point, int limi
     destinationLimitSquared = limit * limit;
 }
 
+void Character::positionAtDoor(bool left)
+{
+    if (!vehicle)
+        return;
+
+    irr::core::matrix4 transform;
+    if (left)
+        transform = vehicle->leftDoor->getAbsoluteTransformation();
+    else
+        transform = vehicle->rightDoor->getAbsoluteTransformation();
+
+    const float x = transform[12];
+    const float y = transform[13];
+    irr::core::quaternion rotation(transform);
+    rotation = irr::core::quaternion(0.0f, 0.0f, 3.14159265358979323846f) * rotation;
+    sceneNode->setRotation(rotation);
+    collisionBody->SetXForm(b2Vec2(x / 100.0f, y / 100.0f), 0.0f);
+}
+
 void Character::getInVehicle(bool left)
 {
     if (!vehicle || (movementFlags & 0x10000))

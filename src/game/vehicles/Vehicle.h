@@ -103,7 +103,7 @@ private:
     float entryAnimationScale;
     float doorAnimationScale;
     irr::scene::ISceneNode* leftDoor;
-    unsigned char unknown320[4];
+    irr::scene::ISceneNode* rightDoor;
     irr::collada::CSkinnedMeshSceneNode* skinnedMesh;
     irr::scene::ISceneNode* interior;
     unsigned char unknown332[12];

@@ -10109,7 +10109,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f3331	0x144	Character.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002f3475	0x14	Character.cpp	game	characters	matched	_GLOBAL__I__ZN9Character20s_timelineControllerE	_GLOBAL__I__ZN9Character20s_timelineControllerE
 0x002f3489	0x37c	Character.cpp	game	characters	pending	_ZN9Character15updateAnimationEf	Character::updateAnimation(float)
-0x002f3805	0x108	Character.cpp	game	characters	pending	_ZN9Character14positionAtDoorEb	Character::positionAtDoor(bool)
+0x002f3805	0x108	Character.cpp	game	characters	matched	_ZN9Character14positionAtDoorEb	Character::positionAtDoor(bool)
 0x002f390d	0xd4	Character.cpp	game	characters	matched	_ZN9Character12getInVehicleEb	Character::getInVehicle(bool)
 0x002f39e1	0x128	Character.cpp	game	characters	pending	_ZN9Character11runToTargetEi	Character::runToTarget(int)
 0x002f3b09	0xcc	Character.cpp	game	characters	matched	_ZN9Character14isFacingTargetEP11LevelObject	Character::isFacingTarget(LevelObject*)

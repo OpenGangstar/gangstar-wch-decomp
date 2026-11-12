@@ -26,6 +26,7 @@ class b2Shape;
 class b2Body {
 public:
     unsigned char unknown0[4];
+    bool SetXForm(const b2Vec2& position, float angle);
     const b2XForm& GetXForm() const { return transform; }
     void* GetUserData() const { return data; }
     b2XForm transform;

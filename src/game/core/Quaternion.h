@@ -19,12 +19,24 @@
 
 namespace irr { namespace core {
 // Observed four-float value and external Euler conversion interface.
+template<class T> class CMatrix4;
+
 class quaternion {
 public:
     float X, Y, Z, W;
     quaternion() : X(0),Y(0),Z(0),W(1) {}
     quaternion(float x, float y, float z) { set(x, y, z); }
+    quaternion(const CMatrix4<float>& matrix) { *this = matrix; }
     quaternion(const vector3d<float>& v) { set(v.X, v.Y, v.Z); }
+    quaternion& operator=(const quaternion& other)
+    {
+        X = other.X;
+        Y = other.Y;
+        Z = other.Z;
+        W = other.W;
+        return *this;
+    }
+    quaternion& operator=(const CMatrix4<float>& matrix) __attribute__((weak));
     quaternion& normalize() __attribute__((weak));
     quaternion& rotationFromTo(const vector3d<float>& from, const vector3d<float>& to) __attribute__((weak));
     quaternion& fromAngleAxis(float angle, const vector3d<float>& axis) __attribute__((weak));
