@@ -23,6 +23,7 @@ public:
     void stepPhysic();
     void step();
     void immobilize();
+    void setDriver(Character* value);
     void mobilize();
     void UpdateCarSounds();
     void repair();
@@ -86,6 +87,7 @@ private:
     void openDoorWithClip(const char* clip, bool left);
     void setWheelVisibility(bool visible);
     friend class Race;
+    friend class Character;
     friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
@@ -98,7 +100,7 @@ private:
     unsigned char unknown296[4];
     const Path* pathToFollow;
     int currentWaypoint;
-    unsigned char unknown308[4];
+    float entryAnimationScale;
     float doorAnimationScale;
     irr::scene::ISceneNode* leftDoor;
     unsigned char unknown320[4];
