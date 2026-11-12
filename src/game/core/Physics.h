@@ -13,6 +13,7 @@ struct b2Vec2 {
     b2Vec2() {}
     b2Vec2(float x, float y) : x(x), y(y) {}
 };
+struct b2MassData;
 struct b2AABB { b2Vec2 lowerBound, upperBound; };
 struct b2Segment { b2Vec2 p1, p2; };
 struct b2XForm { b2Vec2 position; float rotation[4]; };
@@ -26,6 +27,8 @@ class b2Shape;
 class b2Body {
 public:
     unsigned char unknown0[4];
+    void SetMassFromShapes();
+    void SetMass(const b2MassData* massData);
     bool SetXForm(const b2Vec2& position, float angle);
     const b2XForm& GetXForm() const { return transform; }
     void* GetUserData() const { return data; }
