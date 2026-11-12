@@ -174,9 +174,13 @@ private:
     unsigned char explosionFlag;
     unsigned char unknown422[2];
     int vehicleIndex;
-    unsigned char unknown428[76];
+    unsigned char unknown428[64];
+    irr::core::vector3d<float> previousPosition;
     bool hasBeenStolen;
-    unsigned char unknown505[127];
+    unsigned char unknown505[7];
+    irr::core::vector3d<float> wheelPositions[4];
+    unsigned char unknown560[60];
+    irr::core::vector3d<float> bodyOffset;
     b2Body* collisionBody;
     b2Body* leftCollisionBody;
     b2Body* rightCollisionBody;

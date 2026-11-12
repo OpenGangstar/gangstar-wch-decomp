@@ -10644,7 +10644,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003099a1	0x3c	Vehicle.cpp	game	vehicles	matched	_Z15VehicleCallBackPN3irr5scene19ITimelineControllerEPv	VehicleCallBack(irr::scene::ITimelineController*, void*)
 0x003099dd	0x70	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15_adjustTractionEP6b2Bodyf	Vehicle::_adjustTraction(b2Body*, float)
 0x00309a4d	0x2e0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv	Vehicle::setupSceneNode(int, irr::scene::ISceneNode*, int, void**)
-0x00309d2d	0xc0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16resetPreviousPosEv	Vehicle::resetPreviousPos()
+0x00309d2d	0xc0	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle16resetPreviousPosEv	Vehicle::resetPreviousPos()
 0x00309ded	0x7c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12resetVehicleEv	Vehicle::resetVehicle()
 0x00309e69	0x44	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13DestroyWheelsEv	Vehicle::DestroyWheels()
 0x00309ead	0x60	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle4StopEv	Vehicle::Stop()
