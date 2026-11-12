@@ -145,6 +145,29 @@ void Character::updatePhysic(int)
 {
 }
 
+void Character::render()
+{
+}
+
+void Character::nextPunch()
+{
+    if (++punchIndex > 4)
+        punchIndex = 1;
+}
+
+void Character::nextKick()
+{
+    if (++kickIndex > 6)
+        kickIndex = 5;
+}
+
+void Character::init()
+{
+    health = maxHealth;
+    unknown4 &= ~0x10u;
+    movementFlags = 0;
+}
+
 void Character::updateSceneNode(int)
 {
 }
