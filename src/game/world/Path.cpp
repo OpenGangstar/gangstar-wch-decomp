@@ -11,9 +11,19 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Path.h"
 
 void operator delete(void*) throw();
 extern "C" {
+extern irr::collada::CColladaFactory _ZZN12CGameFactory11getInstanceEvE2gf __attribute__((weak));
+void _ZN12CGameFactoryD1Ev(irr::collada::CColladaFactory*) __attribute__((weak));
+
+static void __tcf_1() __attribute__((used));
+static void __tcf_1()
+{
+    _ZN12CGameFactoryD1Ev(&_ZZN12CGameFactory11getInstanceEvE2gf);
+}
+
 static void __tcf_2() __attribute__((used));
 }
 
@@ -53,4 +63,17 @@ static void __tcf_2()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+int Path::getSize() const
+{
+    return waypointCount;
+}
+
+bool Path::getWaypoint(int index, irr::core::vector3d<float>& position) const
+{
+    if (index >= waypointCount)
+        return false;
+    position = waypoints[index];
+    return true;
 }

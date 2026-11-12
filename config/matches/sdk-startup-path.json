@@ -25,6 +25,9 @@
     "source": "src/game/world/Path.cpp",
     "linker_script": "config/linker/PathSdkStartup.ld",
     "functions": [
+        "_ZNK4Path7getSizeEv",
+        "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
+        {"name": "__tcf_1", "address": "0x00300b41"},
         {
             "name": "__tcf_2",
             "address": "0x00300d4d"
