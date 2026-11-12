@@ -23,6 +23,8 @@ public:
     void onRocketLaunched();
     void walkToTarget();
     void startTurn(float speed);
+    void enterVehicle(bool left, bool getIn, bool waitForDoor);
+    void openVehicleDoorFromInside(bool left);
     void closeVehicleDoorFromInside(bool left);
     void setTurnDirection(irr::core::vector3d<float> direction);
     void CheckDestination();
@@ -74,6 +76,10 @@ public:
     virtual Weapon* getWeapon() const = 0;
     virtual void SetTarget(LevelObject* value);
 private:
+    void getInVehicle(bool left);
+    void openVehicleDoor(bool left);
+    void positionInVehicle(bool left);
+    void show();
     friend class NPC;
     static irr::scene::ITimelineController* s_timelineController;
     static bool b_isBloodOn;
