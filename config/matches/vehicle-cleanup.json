@@ -25,6 +25,12 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle11getSkinMeshEv",
+        "_ZN7Vehicle12getSpawnTypeEv",
+        "_ZN7Vehicle12setSpawnTypeEi",
+        "_ZNK7Vehicle12getMaxHealthEv",
+        "_ZNK7Vehicle9getHealthEv",
+        "_ZN7Vehicle6isDeadEv",
         "_ZN7Vehicle10accelerateEf",
         "_ZN7Vehicle5brakeEf",
         "_ZN7Vehicle4turnEbf",

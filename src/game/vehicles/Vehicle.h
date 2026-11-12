@@ -14,6 +14,12 @@ public:
     bool hasExplosionFlag() const { return explosionFlag != 0; }
     Vehicle(int type);
     virtual ~Vehicle();
+    virtual void* getSkinMesh();
+    virtual int getSpawnType();
+    virtual void setSpawnType(int type);
+    virtual int getMaxHealth() const;
+    virtual int getHealth() const;
+    virtual bool isDead();
     virtual void photographed();
     virtual void clearPhotographed();
     virtual bool isPhotographed() const;
@@ -145,9 +151,13 @@ private:
     float unknown776;
     unsigned char unknown780[4];
     int sensorContactCount;
-    unsigned char unknown788[116];
+    int spawnType;
+    unsigned char unknown792[112];
     int doorSoundSuppression;
-    unsigned char unknown908[56];
+    unsigned char unknown908[8];
+    int maxHealth;
+    int health;
+    unsigned char unknown924[40];
     int animationClipIndex;
     int driverMetatype;
     int driverBehavior;
