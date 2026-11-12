@@ -21,6 +21,7 @@
 #include "PhysicAttributes.h"
 #include "../core/Physics.h"
 #include "../app/Application.h"
+#include "../input/CControlManager.h"
 #include "../combat/Weapon.h"
 #include "../combat/WeaponManager.h"
 #include "../rendering/GS3DStuff.h"
@@ -567,6 +568,35 @@ void Character::ejectFromVehicle(bool left)
         vehicle->openDoor(false);
     }
     vehicle->setDriver(0);
+}
+
+void Character::openVehicleDoor(bool left)
+{
+    if (!vehicle)
+        return;
+
+    vehicle->immobilize();
+    if (vehicle->getDriver()->isPlayer())
+        Application::GetInstance()->GetControlManager()->lock();
+    if (this == reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())))
+        Application::GetInstance()->GetControlManager()->lock();
+
+    if (left) {
+        if (vehicle->isDoorClosed(true)) {
+            positionAtDoor(true);
+            setAnimation(22, 1.0f, false, false, false);
+            vehicle->openDoor(true);
+        }
+    } else if (vehicle->isDoorClosed(false)) {
+        positionAtDoor(false);
+        setAnimation(23, 1.0f, false, left, left);
+        vehicle->openDoor(false);
+    }
+
+    if (vehicle->getDriver()) {
+        vehicle->getDriver()->positionInVehicle(true);
+        vehicle->getDriver()->show();
+    }
 }
 
 void Character::openVehicleDoorFromInside(bool left)

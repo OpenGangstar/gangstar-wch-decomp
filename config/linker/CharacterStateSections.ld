@@ -22,6 +22,7 @@ SECTIONS
     .physic_set_info 0x0031eb14 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi) }
     .character_get_out_of_vehicle 0x002f4eac : { *ai-startup-character.o(.text._ZN9Character15getOutOfVehicleEbb) }
     .character_eject_from_vehicle 0x002f4e18 : { *ai-startup-character.o(.text._ZN9Character16ejectFromVehicleEb) }
+    .character_open_vehicle_door_outside 0x002f4fec : { *ai-startup-character.o(.text._ZN9Character15openVehicleDoorEb) }
     .character_open_vehicle_door 0x002f4fa0 : { *ai-startup-character.o(.text._ZN9Character25openVehicleDoorFromInsideEb) }
     .character_close_vehicle_door 0x002f1920 : { *ai-startup-character.o(.text._ZN9Character26closeVehicleDoorFromInsideEb) }
     .character_turn_toward_point 0x002f3e98 : { *ai-startup-character.o(.text._ZN9Character10turnTowardERKN3irr4core8vector3dIfEE) }

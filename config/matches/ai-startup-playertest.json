@@ -95,7 +95,7 @@
         "_ZN16PhysicAttributes21UpdateEdgesCollisionsEi",
         "_ZN7Vehicle21getLeftEjectAnimationEv",
         "_ZN7Vehicle22getRightEjectAnimationEv",
-        "_ZN9Character15openVehicleDoorEb",
+        "_ZN15CControlManager4lockEv",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character4showEv",
         "_ZNK7Vehicle12isDoorClosedEb",

@@ -17,6 +17,6 @@ class GSLoading { public: static bool isGameLoaded(); };
 class Checkpoint { public: static bool s_bTutoCallContact; };
 
 class GSFailure { public: static bool s_bCutsceneDie, s_bCutsceneBusted, s_bCutsceneMissionFailed; };
-class CControlManager { public: static bool s_cameraTutorial, s_sniperTutorial; };
+#include "../input/CControlManager.h"
 
 #endif
