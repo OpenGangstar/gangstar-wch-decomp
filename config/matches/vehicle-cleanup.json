@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle9setDriverEP9Character",
         "_ZN7Vehicle11resetDriverEv",
         "_ZN7Vehicle10immobilizeEv",
         "_ZN7Vehicle15resetCollisionsEv",
@@ -189,7 +190,8 @@
         "_ZNK13ScriptManager26areBlockingCommandsSkippedEv",
         "_ZN6b2Body17SetMassFromShapesEv",
         "_ZN6b2Body7SetMassEPK10b2MassData",
-        "_ZN7Vehicle9setDriverEP9Character",
+        "_ZNK9Character8isPlayerEv",
+        "_ZN11LevelObject11GetMetatypeEv",
         "_ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii",
         "_ZNK11LevelObject9isEnabledEv",
         "_ZN9AIManagerD1Ev",

@@ -10599,7 +10599,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00308701	0x298	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle17InitV6TurboSoundsEv	Vehicle::InitV6TurboSounds()
 0x00308999	0x218	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14InitV6naSoundsEv	Vehicle::InitV6naSounds()
 0x00308bb1	0x298	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16Init4CylNaSoundsEv	Vehicle::Init4CylNaSounds()
-0x00308e49	0x38	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle9setDriverEP9Character	Vehicle::setDriver(Character*)
+0x00308e49	0x38	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9setDriverEP9Character	Vehicle::setDriver(Character*)
 0x00308e81	0x42	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle7shootedEiP11LevelObject	Vehicle::shooted(int, LevelObject*)
 0x00308ec5	0x2c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11isHiVehicleEv	Vehicle::isHiVehicle()
 0x00308ef1	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12isLowVehicleEv	Vehicle::isLowVehicle()
