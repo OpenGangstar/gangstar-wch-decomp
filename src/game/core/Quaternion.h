@@ -37,6 +37,7 @@ public:
         return *this;
     }
     quaternion& operator=(const CMatrix4<float>& matrix) __attribute__((weak));
+    void toEulerDegree(vector3d<float>& angles) const __attribute__((weak));
     quaternion& normalize() __attribute__((weak));
     quaternion& rotationFromTo(const vector3d<float>& from, const vector3d<float>& to) __attribute__((weak));
     quaternion& fromAngleAxis(float angle, const vector3d<float>& axis) __attribute__((weak));

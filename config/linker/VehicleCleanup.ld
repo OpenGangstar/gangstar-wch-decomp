@@ -4,8 +4,11 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 strcmp = 0x001c4658;
 puts = 0x001c41b4;
+__aeabi_fdiv = 0x001c4520;
 SECTIONS
 {
+    .vehicle_set_position 0x0030bc4c : { *(.text._ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE) }
+    .vehicle_set_rotation 0x0030b648 : { *(.text._ZN7Vehicle11SetRotationERKN3irr4core10quaternionE) }
     .vehicle_stop 0x00309eac : { *(.text._ZN7Vehicle4StopEv) }
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
     .vehicle_accelerate 0x00307d30 : { *(.text._ZN7Vehicle10accelerateEf) }
