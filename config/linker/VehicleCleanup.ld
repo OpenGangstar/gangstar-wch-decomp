@@ -7,6 +7,7 @@ puts = 0x001c41b4;
 SECTIONS
 {
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
+    .vehicle_set_driver 0x00308e48 : { *(.text._ZN7Vehicle9setDriverEP9Character) }
     .vehicle_reset_driver 0x0030a1fc : { *(.text._ZN7Vehicle11resetDriverEv) }
     .vehicle_reset_collisions 0x0030a5c4 : { *(.text._ZN7Vehicle15resetCollisionsEv) }
     .vehicle_photographed 0x00307b20 : { *(.text._ZN7Vehicle12photographedEv) }

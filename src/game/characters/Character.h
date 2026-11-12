@@ -84,6 +84,7 @@ private:
     void positionInVehicle(bool left);
     void show();
     friend class NPC;
+    friend class Vehicle;
     static irr::scene::ITimelineController* s_timelineController;
     static bool b_isBloodOn;
     static int s_bloodpuddle;
@@ -122,7 +123,7 @@ private:
     unsigned char unknown228[4];
     int kickIndex;
     unsigned int movementFlags;
-    unsigned char unknown240[4];
+    int driverBehavior;
     int nextAnimation;
     unsigned char unknown248[12];
     LevelObject* target;

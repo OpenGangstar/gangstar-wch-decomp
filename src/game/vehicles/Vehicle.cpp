@@ -254,6 +254,15 @@ void Vehicle::openDoorFromInside(bool left)
     openDoorWithClip(exitCarClip, left);
 }
 
+void Vehicle::setDriver(Character* value)
+{
+    driver = value;
+    if (value && !value->isPlayer()) {
+        driverMetatype = driver->GetMetatype();
+        driverBehavior = driver->driverBehavior;
+    }
+}
+
 void Vehicle::resetDriver()
 {
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
