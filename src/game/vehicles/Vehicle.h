@@ -117,7 +117,9 @@ private:
     bool hasBeenStolen;
     unsigned char unknown505[127];
     b2Body* collisionBody;
-    unsigned char unknown636[40];
+    b2Body* leftCollisionBody;
+    b2Body* rightCollisionBody;
+    unsigned char unknown644[32];
     irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;
     Character* driver;
@@ -140,6 +142,7 @@ private:
     bool rightDoorClosed;
     bool leftDoorTransition;
     bool rightDoorTransition;
-    unsigned char unknown1006[6];
+    bool immobilized;
+    unsigned char unknown1007[5];
 };
 #endif

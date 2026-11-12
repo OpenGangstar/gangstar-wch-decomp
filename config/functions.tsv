@@ -10654,7 +10654,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030a14d	0x7c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle9_setPitchEf	Vehicle::_setPitch(float)
 0x0030a1c9	0x34	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6WarmUpEv	Vehicle::WarmUp()
 0x0030a1fd	0x34	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11resetDriverEv	Vehicle::resetDriver()
-0x0030a231	0x7c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle10immobilizeEv	Vehicle::immobilize()
+0x0030a231	0x7c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10immobilizeEv	Vehicle::immobilize()
 0x0030a2ad	0x24	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13postExplosionEv	Vehicle::postExplosion()
 0x0030a2d1	0xe	Vehicle.cpp	game	vehicles	pending	_Z28VehicleExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv	VehicleExplosionAnimCallback(irr::scene::ITimelineController*, void*)
 0x0030a2e1	0x2e	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11applyDamageEiP11LevelObjectb	Vehicle::applyDamage(int, LevelObject*, bool)

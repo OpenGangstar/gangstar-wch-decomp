@@ -11,9 +11,11 @@
 #include "Vehicle.h"
 #include "../ai/NPC.h"
 #include "../world/GameObjectManager.h"
+#include "../scripting/ScriptManager.h"
 #include "../audio/SoundManager.h"
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/NativeStrings.h"
+#include "../core/PhysicsBodyDef.h"
 #include "../rendering/GS3DStuff.h"
 
 extern "C" int puts(const char*);
@@ -256,6 +258,32 @@ void Vehicle::resetDriver()
 {
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
 }
+
+void Vehicle::immobilize()
+{
+    if (!ScriptManager::getInstance()->areBlockingCommandsSkipped()) {
+        collisionBody->SetMassFromShapes();
+        b2MassData bodyMass;
+        bodyMass.mass = 0.0f;
+        bodyMass.center.y = 0.0f;
+        bodyMass.center.x = 0.0f;
+        bodyMass.I = 0.0f;
+        collisionBody->SetMass(&bodyMass);
+
+        leftCollisionBody->SetMassFromShapes();
+        rightCollisionBody->SetMassFromShapes();
+        b2MassData sideMass;
+        sideMass.I = 0.0f;
+        sideMass.center.y = 0.0f;
+        sideMass.center.x = 0.0f;
+        sideMass.mass = 0.0f;
+        leftCollisionBody->SetMass(&sideMass);
+        rightCollisionBody->SetMass(&sideMass);
+        immobilized = true;
+    }
+    Stop();
+}
+
 
 void Vehicle::closeDoor(bool left)
 {
