@@ -10179,7 +10179,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f785d	0x144	Checkpoint.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002f79a1	0x14	Checkpoint.cpp	game	missions	matched	_GLOBAL__I__ZN10Checkpoint18s_bTutoCallContactE	_GLOBAL__I__ZN10Checkpoint18s_bTutoCallContactE
 0x002f79b5	0x30	Checkpoint.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x002f79e5	0x3a	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE	CustomBillboardSceneNode::setParent(irr::scene::ISceneNode*)
+0x002f79e5	0x3a	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE	CustomBillboardSceneNode::setParent(irr::scene::ISceneNode*)
 0x002f7a21	0x2	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode6renderEv	CustomBillboardSceneNode::render()
 0x002f7a25	0x30	CustomBillboardSceneNode.cpp	game	rendering	matched	__tcf_2	__tcf_2
 0x002f7a55	0x48	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode9setLengthEj	CustomBillboardSceneNode::setLength(unsigned int)
@@ -10600,7 +10600,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00308999	0x218	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14InitV6naSoundsEv	Vehicle::InitV6naSounds()
 0x00308bb1	0x298	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16Init4CylNaSoundsEv	Vehicle::Init4CylNaSounds()
 0x00308e49	0x38	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9setDriverEP9Character	Vehicle::setDriver(Character*)
-0x00308e81	0x42	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle7shootedEiP11LevelObject	Vehicle::shooted(int, LevelObject*)
+0x00308e81	0x42	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle7shootedEiP11LevelObject	Vehicle::shooted(int, LevelObject*)
 0x00308ec5	0x2c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11isHiVehicleEv	Vehicle::isHiVehicle()
 0x00308ef1	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12isLowVehicleEv	Vehicle::isLowVehicle()
 0x00308f1d	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle18getSeatedAnimationEv	Vehicle::getSeatedAnimation()

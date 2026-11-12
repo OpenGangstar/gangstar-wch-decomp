@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "CustomBillboardSceneNode.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -53,4 +54,18 @@ static void _GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CCollada
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void CustomBillboardSceneNode::setParent(irr::scene::ISceneNode* parent)
+{
+    if (parent) {
+        if (billboardParent != parent) {
+            billboardParent = parent;
+            activateAnimation();
+            setVisible(true);
+        }
+    } else {
+        billboardParent = 0;
+        setVisible(false);
+    }
 }

@@ -10,8 +10,13 @@ struct CustomBillboardPrefix {
     unsigned int unknown4[24];
 };
 class CustomBillboardSceneNode : public CustomBillboardPrefix, public irr::collada::CSceneNode {
-    unsigned int unknown480[15];
+    unsigned int unknown468[9];
+    irr::scene::ISceneNode* billboardParent;
+    bool animationActive;
+    unsigned char unknown509[19];
 public:
+    void activateAnimation() { animationActive = true; }
+    void setParent(irr::scene::ISceneNode* parent);
     CustomBillboardSceneNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
 };
 

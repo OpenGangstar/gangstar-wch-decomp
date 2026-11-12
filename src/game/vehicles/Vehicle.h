@@ -20,6 +20,7 @@ public:
     virtual int getMaxHealth() const;
     virtual int getHealth() const;
     virtual bool isDead();
+    virtual void shooted(int amount, LevelObject* source);
     virtual void applyDamage(int amount, LevelObject* source, bool flag);
     void postExplosion();
     virtual void photographed();
