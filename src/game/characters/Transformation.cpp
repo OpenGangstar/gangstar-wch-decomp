@@ -18,6 +18,15 @@ extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __a
 
 void operator delete(void*) throw();
 extern "C" {
+extern irr::collada::CColladaFactory _ZZN12CGameFactory11getInstanceEvE2gf __attribute__((weak));
+void _ZN12CGameFactoryD1Ev(irr::collada::CColladaFactory*) __attribute__((weak));
+
+static void __tcf_1() __attribute__((used));
+static void __tcf_1()
+{
+    _ZN12CGameFactoryD1Ev(&_ZZN12CGameFactory11getInstanceEvE2gf);
+}
+
 static void __tcf_2() __attribute__((used));
 }
 

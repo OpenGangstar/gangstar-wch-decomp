@@ -6,6 +6,7 @@ __aeabi_atexit = 0x001c494c;
 __aeabi_fmul = 0x001c4724;
 SECTIONS
 {
+    .transformation_factory_cleanup 0x00307aac : { *sdk-startup-transformation.o(.text.__tcf_1) }
     .transformation_load 0x0030785c : { *(.text._ZN14Transformation4LoadERKN7Structs6MarkerEPN3irr7collada15CColladaFactoryE) }
     .transformation_grab_node 0x003078b0 : { *(.text._ZN14Transformation13grabSceneNodeEiPPPv) }
     .transformation_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
