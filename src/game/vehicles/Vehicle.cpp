@@ -400,6 +400,19 @@ void Vehicle::resetDriver()
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
 }
 
+void Vehicle::resetPreviousPos()
+{
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    const float offsetZ = bodyOffset.X * transform[2] +
+        bodyOffset.Y * transform[6] + bodyOffset.Z * transform[10];
+    const b2Vec2& bodyPosition = collisionBody->GetXForm().position;
+    const float x = 100.0f * bodyPosition.x;
+    const float y = 100.0f * bodyPosition.y;
+    const float height = (wheelPositions[0].Z + wheelPositions[1].Z +
+        wheelPositions[2].Z + wheelPositions[3].Z) * 0.25f;
+    previousPosition = irr::core::vector3d<float>(x, y, height - offsetZ);
+}
+
 void Vehicle::resetVehicle()
 {
     SetPosition(irr::core::vector3d<float>(-42205.0f, -27279.0f, 678.0f));

@@ -5,8 +5,12 @@ _ZdlPv = 0x001c42b0;
 strcmp = 0x001c4658;
 puts = 0x001c41b4;
 __aeabi_fdiv = 0x001c4520;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .vehicle_reset_previous_position 0x00309d2c : { *(.text._ZN7Vehicle16resetPreviousPosEv) }
     .vehicle_check_destination 0x00309428 : { *(.text._ZN7Vehicle16CheckDestinationEv) }
     .vehicle_flee 0x003093c4 : { *(.text._ZN7Vehicle4fleeERKN3irr4core8vector3dIfEE) }
     .vehicle_drive_to_location 0x003093f0 : { *(.text._ZN7Vehicle15driveToLocationERKN3irr4core8vector3dIfEEb) }
