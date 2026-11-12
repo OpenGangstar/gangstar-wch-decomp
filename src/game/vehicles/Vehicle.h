@@ -35,6 +35,8 @@ public:
     void brake(float amount);
     void turn(bool left, float amount);
     virtual void Stop();
+    virtual void SetPosition(const irr::core::vector3d<float>& position);
+    virtual void SetRotation(const irr::core::quaternion& rotation);
     void immobilize();
     void setDriver(Character* value);
     void resetDriver();
@@ -98,6 +100,7 @@ public:
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
+    void ResetBodyPosition();
     void _adjustEnginePitch(unsigned int value);
     void openDoorWithClip(const char* clip, bool left);
     void setWheelVisibility(bool visible);
@@ -110,7 +113,11 @@ private:
     float unknown116;
     float unknown120;
     float unknown124;
-    unsigned char unknown128[116];
+    unsigned char unknown128[16];
+    float rotationZ;
+    float rotationX;
+    float rotationY;
+    unsigned char unknown156[88];
     Character* targetingCharacter;
     unsigned char unknown248[36];
     const char* enterAnim;

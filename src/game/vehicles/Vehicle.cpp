@@ -11,6 +11,7 @@
 #include "Vehicle.h"
 #include "../ai/NPC.h"
 #include "../characters/PlayerTest.h"
+#include "../characters/PhysicAttributes.h"
 #include "../world/GameObjectManager.h"
 #include "../scripting/ScriptManager.h"
 #include "../audio/SoundManager.h"
@@ -419,6 +420,27 @@ void Vehicle::applyDamage(int amount, LevelObject*, bool)
             return;
     }
     health -= amount;
+}
+
+void Vehicle::SetRotation(const irr::core::quaternion& rotation)
+{
+    LevelObject::SetRotation(rotation);
+    irr::core::vector3d<float> angles;
+    rotation.toEulerDegree(angles);
+    rotationX = angles.X;
+    rotationY = angles.Y;
+    rotationZ = angles.Z;
+}
+
+void Vehicle::SetPosition(const irr::core::vector3d<float>& position)
+{
+    LevelObject::SetPosition(position);
+    if (collisionBody) {
+        collisionBody->SetXForm(b2Vec2(position.X / 100.0f, position.Y / 100.0f), collisionBody->angle);
+        ResetBodyPosition();
+        for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next)
+            PhysicAttributes::s_world->Refilter(shape);
+    }
 }
 
 void Vehicle::closeDoor(bool left)

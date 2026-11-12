@@ -25,6 +25,8 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE",
+        "_ZN7Vehicle11SetRotationERKN3irr4core10quaternionE",
         "_ZN7Vehicle7shootedEiP11LevelObject",
         "_ZN7Vehicle13postExplosionEv",
         "_Z28VehicleExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv",
@@ -200,6 +202,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
+        "_ZN11LevelObject11SetRotationERKN3irr4core10quaternionE",
+        "_ZN7Vehicle17ResetBodyPositionEv",
+        "_ZN6b2Body8SetXFormERK6b2Vec2f",
+        "_ZN7b2World8RefilterEP7b2Shape",
         "_ZN4Lock11getInstanceEv",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11LevelObject4StopEv",

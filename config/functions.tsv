@@ -10681,12 +10681,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030b5dd	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_1	__tcf_1
 0x0030b601	0x24	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactoryD1Ev	CCarFactory::~CCarFactory()
 0x0030b625	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_2	__tcf_2
-0x0030b649	0x44	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11SetRotationERKN3irr4core10quaternionE	Vehicle::SetRotation(irr::core::quaternion const&)
+0x0030b649	0x44	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11SetRotationERKN3irr4core10quaternionE	Vehicle::SetRotation(irr::core::quaternion const&)
 0x0030b68d	0x318	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle17ResetBodyPositionEv	Vehicle::ResetBodyPosition()
 0x0030b9a5	0x1c0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6repairEv	Vehicle::repair()
 0x0030bb65	0x58	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6enableEv	Vehicle::enable()
 0x0030bbbd	0x90	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle7OnSpawnEv	Vehicle::OnSpawn()
-0x0030bc4d	0x80	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE	Vehicle::SetPosition(irr::core::vector3d<float> const&)
+0x0030bc4d	0x80	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE	Vehicle::SetPosition(irr::core::vector3d<float> const&)
 0x0030bccd	0x368	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle8setSpeedEv	Vehicle::setSpeed()
 0x0030c035	0x1114	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4stepEv	Vehicle::step()
 0x0030d149	0x580	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12CreateWheelsEP13Box2DUserInfo	Vehicle::CreateWheels(Box2DUserInfo*)
