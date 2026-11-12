@@ -5,11 +5,12 @@ class StringManager;
 class FileSystemBase;
 class WeaponManager;
 class CHudManager;
+class CControlManager;
 class TouchScreenBase;
 class EventManager;
 namespace irr { class IrrlichtDevice; }
 
-// Partial layout. Members at offsets 36, 40, 44, 68, 76 and 80 are currently recovered.
+// Partial layout. Members at offsets 36, 40, 44, 68, 72, 76 and 80 are currently recovered.
 // Do not instantiate or use sizeof until the complete class is recovered.
 class Application {
 public:
@@ -20,6 +21,7 @@ public:
     inline irr::IrrlichtDevice* GetDevice() const { return device; }
     inline StringManager* GetStringManager() const { return stringManager; }
     inline FileSystemBase* GetFileSystem() const { return fileSystem; }
+    inline CControlManager* GetControlManager() const { return controlManager; }
     inline CHudManager* GetHudManager() const { return hudManager; }
     inline WeaponManager* GetWeaponManager() const { return weaponManager; }
     inline TouchScreenBase* GetTouchScreen() const { return touchScreen; }
@@ -33,7 +35,7 @@ private:
     EventManager* eventManager;
     unsigned char unknown60[8];
     StringManager* stringManager;
-    unsigned char unknown72[4];
+    CControlManager* controlManager;
     CHudManager* hudManager;
     WeaponManager* weaponManager;
 };
