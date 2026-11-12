@@ -72,6 +72,8 @@ public:
     void setTransitionCallback(irr::scene::ISceneNode* node);
     void setAnim(const char* name, bool loop, float scale);
     bool isLowVehicle();
+    bool isHiVehicle();
+    irr::scene::ISceneNode* getMesh();
     int getSeatedAnimation();
     int getRightThrownAnimation();
     int getLeftThrownAnimation();

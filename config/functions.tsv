@@ -10553,7 +10553,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307b88	0x14	Vehicle.cpp	game	vehicles	pending	_ZThn52_N7Vehicle13getMarkerTypeEv	non-virtual thunk to Vehicle::getMarkerType()
 0x00307b9d	0x6	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13getMarkerTypeEv	Vehicle::getMarkerType()
 0x00307ba5	0x24	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle8GetSpeedEv	Vehicle::GetSpeed() const
-0x00307bc9	0x4	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle7getMeshEv	Vehicle::getMesh()
+0x00307bc9	0x4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle7getMeshEv	Vehicle::getMesh()
 0x00307bcd	0x164	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle18_adjustEnginePitchEj	Vehicle::_adjustEnginePitch(unsigned int)
 0x00307d31	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10accelerateEf	Vehicle::accelerate(float)
 0x00307d49	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5brakeEf	Vehicle::brake(float)
@@ -10601,7 +10601,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00308bb1	0x298	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16Init4CylNaSoundsEv	Vehicle::Init4CylNaSounds()
 0x00308e49	0x38	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9setDriverEP9Character	Vehicle::setDriver(Character*)
 0x00308e81	0x42	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle7shootedEiP11LevelObject	Vehicle::shooted(int, LevelObject*)
-0x00308ec5	0x2c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11isHiVehicleEv	Vehicle::isHiVehicle()
+0x00308ec5	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11isHiVehicleEv	Vehicle::isHiVehicle()
 0x00308ef1	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12isLowVehicleEv	Vehicle::isLowVehicle()
 0x00308f1d	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle18getSeatedAnimationEv	Vehicle::getSeatedAnimation()
 0x00308f35	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle23getRightThrownAnimationEv	Vehicle::getRightThrownAnimation()

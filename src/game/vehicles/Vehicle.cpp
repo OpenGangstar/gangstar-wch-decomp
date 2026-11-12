@@ -146,6 +146,7 @@ namespace {
 const char openDoorClip[] = "car_open_door";
 const char closeDoorClip[] = "car_close_door";
 const char exitCarClip[] = "car_exit_car";
+const char highVehicleEnterClip[] = "car_enter_car_hi";
 const char lowVehicleEnterClip[] = "car_enter_car_low";
 const char noAnimatorsMessage[] = "this scene node has no animators";
 const char noTimelineMessage[] = "This mesh has no timeline";
@@ -158,6 +159,16 @@ const char exitHighLeftClip[] = "car_exit_car_hi_left";
 const char exitHighRightClip[] = "car_exit_car_hi_right";
 const char closedIdleClip[] = "car_closed_idle";
 const char openedIdleClip[] = "car_opened_idle";
+}
+
+irr::scene::ISceneNode* Vehicle::getMesh()
+{
+    return sceneNode;
+}
+
+bool Vehicle::isHiVehicle()
+{
+    return strcmp(highVehicleEnterClip, enterAnim) == 0;
 }
 
 bool Vehicle::isLowVehicle()
