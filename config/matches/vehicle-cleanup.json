@@ -25,9 +25,13 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle10accelerateEf",
+        "_ZN7Vehicle5brakeEf",
+        "_ZN7Vehicle4turnEbf",
         "_ZN7Vehicle9setDriverEP9Character",
         "_ZN7Vehicle11resetDriverEv",
         "_ZN7Vehicle10immobilizeEv",
+        "_ZN7Vehicle4StopEv",
         "_ZN7Vehicle15resetCollisionsEv",
         "_ZN7Vehicle12photographedEv",
         "_ZN7Vehicle17clearPhotographedEv",
@@ -186,6 +190,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject4StopEv",
+        "_ZN7Vehicle18_adjustEnginePitchEj",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager26areBlockingCommandsSkippedEv",
         "_ZN6b2Body17SetMassFromShapesEv",

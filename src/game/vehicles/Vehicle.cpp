@@ -30,6 +30,14 @@ public:
 
 namespace {
 const unsigned int photographedFlag = 1u << 15;
+
+union VehicleControlFlags {
+    unsigned int word;
+    struct {
+        unsigned int accelerating : 1;
+        unsigned int braking : 1;
+    } bits;
+};
 }
 
 void __attribute__((weak)) Vehicle::photographed()
@@ -254,6 +262,33 @@ void Vehicle::openDoorFromInside(bool left)
     openDoorWithClip(exitCarClip, left);
 }
 
+void Vehicle::accelerate(float amount)
+{
+    accelerationAmount = amount;
+    VehicleControlFlags flags;
+    flags.word = flags344;
+    flags.bits.accelerating = 1;
+    flags.bits.braking = 0;
+    flags344 = flags.word;
+}
+
+void Vehicle::brake(float amount)
+{
+    brakeAmount = amount;
+    VehicleControlFlags flags;
+    flags.word = flags344;
+    flags.bits.braking = 1;
+    flags.bits.accelerating = 0;
+    flags344 = flags.word;
+}
+
+void Vehicle::turn(bool left, float amount)
+{
+    turnLeft = left;
+    turnAmount = amount;
+    flags344 |= 4u;
+}
+
 void Vehicle::setDriver(Character* value)
 {
     driver = value;
@@ -266,6 +301,31 @@ void Vehicle::setDriver(Character* value)
 void Vehicle::resetDriver()
 {
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
+}
+
+void Vehicle::Stop()
+{
+    if (!isEnabled())
+        return;
+
+    LevelObject::Stop();
+    flags344 &= ~7u;
+    unknown116 = 0.0f;
+    unknown120 = 0.0f;
+    unknown124 = 0.0f;
+    b2Body* body = collisionBody;
+    body->linearVelocity.y = 0.0f;
+    body->linearVelocity.x = 0.0f;
+    collisionBody->angularVelocity = 0.0f;
+    body = leftCollisionBody;
+    body->linearVelocity.y = 0.0f;
+    body->linearVelocity.x = 0.0f;
+    leftCollisionBody->angularVelocity = 0.0f;
+    body = rightCollisionBody;
+    body->linearVelocity.y = 0.0f;
+    body->linearVelocity.x = 0.0f;
+    rightCollisionBody->angularVelocity = 0.0f;
+    _adjustEnginePitch(0);
 }
 
 void Vehicle::immobilize()
