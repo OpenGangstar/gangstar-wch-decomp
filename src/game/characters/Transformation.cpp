@@ -12,6 +12,9 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "Transformation.h"
+#include "../world/ObjectData.h"
+
+extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __attribute__((weak));
 
 void operator delete(void*) throw();
 extern "C" {
@@ -122,4 +125,15 @@ irr::scene::ISceneNode* Transformation::grabSceneNode(int id, void*** parameters
     node->setRotation(GetRotation());
     node->updateAbsolutePosition(false);
     return node;
+}
+
+void Transformation::Load(const Structs::Marker& data, irr::collada::CColladaFactory*)
+{
+    LevelObject::Load(data, _ZN12CGameFactory11getInstanceEv());
+    materialID = data.unknown72;
+    triangleID = data.unknown76;
+    if (materialID > 59999) {
+        materialID = 0;
+        triangleID = 0;
+    }
 }

@@ -24,8 +24,9 @@
     ],
     "source": "src/game/characters/Transformation.cpp",
     "linker_script": "config/linker/TransformationSdkStartup.ld",
-    "external_thumb_functions": ["_ZN11LevelObject13dropSceneNodeEv", "_ZN11LevelObjectC1Ei", "_ZN11LevelObjectD1Ev", "_ZN11LevelObject13grabSceneNodeEiPPPv"],
+    "external_thumb_functions": ["_ZN11LevelObject13dropSceneNodeEv", "_ZN11LevelObjectC1Ei", "_ZN11LevelObjectD1Ev", "_ZN11LevelObject13grabSceneNodeEiPPPv", "_ZN11LevelObject4LoadERKN7Structs15GameObjectBasicEPN3irr7collada15CColladaFactoryE"],
     "functions": [
+        "_ZN14Transformation4LoadERKN7Structs6MarkerEPN3irr7collada15CColladaFactoryE",
         "_ZN14Transformation13grabSceneNodeEiPPPv",
         "_ZN14TransformationC1Ei",
         "_ZN14TransformationC2Ei",
