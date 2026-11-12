@@ -12,8 +12,10 @@ __aeabi_fcmple = 0x001c43ac;
 sqrt = 0x001c401c;
 acosf = 0x001c4694;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
+lrand48 = 0x001c4664;
 SECTIONS
 {
+    .character_shot_reaction 0x002f6b30 : { *ai-startup-character.o(.text._ZN9Character7shootedEiP11LevelObject) }
     .character_hide 0x002f31bc : { *ai-startup-character.o(.text._ZN9Character4hideEv) }
     .character_remove_collisions 0x002f2b68 : { *ai-startup-character.o(.text._ZN9Character16removeCollisionsEv) }
     .character_position_at_door 0x002f3804 : { *ai-startup-character.o(.text._ZN9Character14positionAtDoorEb) }

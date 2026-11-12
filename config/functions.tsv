@@ -10146,7 +10146,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f64b9	0x164	Character.cpp	game	characters	pending	_ZN9Character8hijackedEv	Character::hijacked()
 0x002f661d	0x4d4	Character.cpp	game	characters	pending	_ZN9Character19switchMoveAnimationEv	Character::switchMoveAnimation()
 0x002f6af1	0x40	Character.cpp	game	characters	matched	_ZN9Character15switchAnimationEv	Character::switchAnimation()
-0x002f6b31	0x114	Character.cpp	game	characters	pending	_ZN9Character7shootedEiP11LevelObject	Character::shooted(int, LevelObject*)
+0x002f6b31	0x114	Character.cpp	game	characters	matched	_ZN9Character7shootedEiP11LevelObject	Character::shooted(int, LevelObject*)
 0x002f6c45	0x374	Character.cpp	game	characters	pending	_ZN9Character7punchedEiiP11LevelObject	Character::punched(int, int, LevelObject*)
 0x002f6fb9	0x154	Character.cpp	game	characters	pending	_ZN9Character4kickEv	Character::kick()
 0x002f710d	0x308	Character.cpp	game	characters	pending	_ZN9Character5punchEv	Character::punch()
