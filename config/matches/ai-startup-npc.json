@@ -97,7 +97,7 @@
         "_ZN4Lock11getInstanceEv",
         "_ZN4Lock9setTargetEP11LevelObject",
         "_ZN17GameObjectManager3AddEP11LevelObjecti",
-        "_ZN9Character14positionAtDoorEb",
+        "_ZN6b2Body8SetXFormERK6b2Vec2f",
         "_ZN7Vehicle10immobilizeEv",
         "_ZN7Vehicle21getLeftEnterAnimationEv",
         "_ZN7Vehicle22getRightEnterAnimationEv",
