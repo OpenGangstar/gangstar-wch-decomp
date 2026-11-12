@@ -465,6 +465,32 @@ void Character::setDestination(const irr::core::vector3d<float>& point, int limi
     destinationLimitSquared = limit * limit;
 }
 
+void Character::enterVehicle(bool left, bool getIn, bool waitForDoor)
+{
+    if (vehicle->isDoorClosed(left)) {
+        openVehicleDoor(left);
+        if (getIn)
+            movementFlags |= 0x60000;
+        else if (waitForDoor)
+            movementFlags |= 0x100000;
+    } else if (getIn) {
+        getInVehicle(left);
+        movementFlags |= 0x40000;
+    }
+}
+
+void Character::openVehicleDoorFromInside(bool left)
+{
+    positionInVehicle(left);
+    show();
+    if (left) {
+        if (vehicle->isDoorClosed(true))
+            vehicle->openDoor(true);
+    } else if (vehicle->isDoorClosed(false)) {
+        vehicle->openDoor(false);
+    }
+}
+
 void Character::closeVehicleDoorFromInside(bool left)
 {
     if (!vehicle)
