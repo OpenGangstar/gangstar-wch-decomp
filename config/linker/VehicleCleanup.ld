@@ -7,6 +7,9 @@ puts = 0x001c41b4;
 __aeabi_fdiv = 0x001c4520;
 SECTIONS
 {
+    .vehicle_check_destination 0x00309428 : { *(.text._ZN7Vehicle16CheckDestinationEv) }
+    .vehicle_flee 0x003093c4 : { *(.text._ZN7Vehicle4fleeERKN3irr4core8vector3dIfEE) }
+    .vehicle_drive_to_location 0x003093f0 : { *(.text._ZN7Vehicle15driveToLocationERKN3irr4core8vector3dIfEEb) }
     .vehicle_wait 0x00307ed4 : { *(.text._ZN7Vehicle4waitEi) }
     .vehicle_freeze 0x00307f04 : { *(.text._ZN7Vehicle6freezeEv) }
     .vehicle_set_position 0x0030bc4c : { *(.text._ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE) }

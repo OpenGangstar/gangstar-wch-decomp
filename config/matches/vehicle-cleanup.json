@@ -25,6 +25,9 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle16CheckDestinationEv",
+        "_ZN7Vehicle4fleeERKN3irr4core8vector3dIfEE",
+        "_ZN7Vehicle15driveToLocationERKN3irr4core8vector3dIfEEb",
         "_ZN7Vehicle4waitEi",
         "_ZN7Vehicle6freezeEv",
         "_ZN7Vehicle7getMeshEv",
@@ -207,6 +210,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_",
         "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN11LevelObject11SetRotationERKN3irr4core10quaternionE",
         "_ZN7Vehicle17ResetBodyPositionEv",
