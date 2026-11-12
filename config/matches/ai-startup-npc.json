@@ -94,6 +94,9 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK11LevelObject9isEnabledEv",
+        "_ZN11LevelObject6enableEv",
+        "_ZN11LevelObject7disableEv",
         "_ZN7b2World11DestroyBodyEP6b2Body",
         "_ZN7b2WorldD1Ev",
         "_ZN11LevelObject7OnSpawnEv",
