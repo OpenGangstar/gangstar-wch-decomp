@@ -24,6 +24,7 @@ public:
     void walkToTarget();
     void startTurn(float speed);
     void enterVehicle(bool left, bool getIn, bool waitForDoor);
+    void ejectFromVehicle(bool left);
     void openVehicleDoorFromInside(bool left);
     void closeVehicleDoorFromInside(bool left);
     void setTurnDirection(irr::core::vector3d<float> direction);
