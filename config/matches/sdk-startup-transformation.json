@@ -25,6 +25,14 @@
     "source": "src/game/characters/Transformation.cpp",
     "linker_script": "config/linker/TransformationSdkStartup.ld",
     "functions": [
+        "_ZNK14Transformation8GetRightEv",
+        "_ZNK14Transformation8GetFrontEv",
+        "_ZNK14Transformation8GetMatIDEv",
+        "_ZNK14Transformation8GetTriIDEv",
+        "_ZN14Transformation11SetRotationERKN3irr4core10quaternionE",
+        "_ZNK14Transformation11GetRotationEv",
+        "_ZNK14Transformation11GetPositionEv",
+        "_ZN14Transformation11SetPositionERKN3irr4core8vector3dIfEE",
         {
             "name": "__tcf_2",
             "address": "0x00307ad1"

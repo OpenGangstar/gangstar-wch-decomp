@@ -42,6 +42,7 @@ public:
     quaternion& rotationFromTo(const vector3d<float>& from, const vector3d<float>& to) __attribute__((weak));
     quaternion& fromAngleAxis(float angle, const vector3d<float>& axis) __attribute__((weak));
     quaternion& set(float x, float y, float z) __attribute__((weak));
+    vector3d<float> operator*(const vector3d<float>& vector) const __attribute__((weak));
     quaternion operator*(const quaternion& other) const __attribute__((weak));
 };
 } }
