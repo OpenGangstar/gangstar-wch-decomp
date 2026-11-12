@@ -400,6 +400,30 @@ void Vehicle::resetDriver()
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));
 }
 
+void Vehicle::resetVehicle()
+{
+    SetPosition(irr::core::vector3d<float>(-42205.0f, -27279.0f, 678.0f));
+    unknown80 = 1.0f;
+    unknown72 = 1.0f;
+    unknown100 = 1.0f;
+    rotationZ = 0.0f;
+    rotationX = 0.0f;
+    rotationY = 0.0f;
+    unknown752 = 0.0f;
+    unknown756 = 0.0f;
+    unknown84 = 0.0f;
+    unknown88 = 0.0f;
+    unknown68 = 0.0f;
+    unknown76 = 0.0f;
+    unknown92 = 0.0f;
+    unknown96 = 0.0f;
+    unknown56 = 0.0f;
+    unknown60 = 1.5f;
+    unknown64 = 0.0f;
+    resetPreviousPos();
+    hasBeenStolen = false;
+}
+
 void Vehicle::DestroyWheels()
 {
     if (leftCollisionBody) {

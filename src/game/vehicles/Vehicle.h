@@ -39,6 +39,7 @@ public:
     void accelerate(float amount);
     void brake(float amount);
     void turn(bool left, float amount);
+    void resetVehicle();
     void DestroyWheels();
     virtual void Stop();
     virtual void SetPosition(const irr::core::vector3d<float>& position);
@@ -108,6 +109,7 @@ public:
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
+    void resetPreviousPos();
     void ResetBodyPosition();
     void _adjustEnginePitch(unsigned int value);
     void openDoorWithClip(const char* clip, bool left);
@@ -117,7 +119,20 @@ private:
     friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
-    unsigned char unknown52[64];
+    unsigned char unknown52[4];
+    float unknown56;
+    float unknown60;
+    float unknown64;
+    float unknown68;
+    float unknown72;
+    float unknown76;
+    float unknown80;
+    float unknown84;
+    float unknown88;
+    float unknown92;
+    float unknown96;
+    float unknown100;
+    unsigned char unknown104[12];
     float unknown116;
     float unknown120;
     float unknown124;
@@ -169,7 +184,9 @@ private:
     irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;
     Character* driver;
-    unsigned char unknown700[60];
+    unsigned char unknown700[52];
+    float unknown752;
+    float unknown756;
     irr::scene::ISceneNodeAnimator* leftDoorAnimator;
     irr::scene::ISceneNodeAnimator* rightDoorAnimator;
     unsigned char unknown768[8];

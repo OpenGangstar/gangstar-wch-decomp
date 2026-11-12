@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle12resetVehicleEv",
         "_ZN7Vehicle13DestroyWheelsEv",
         "_ZN7Vehicle16CheckDestinationEv",
         "_ZN7Vehicle4fleeERKN3irr4core8vector3dIfEE",
@@ -211,6 +212,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7Vehicle16resetPreviousPosEv",
         "_ZN7b2World11DestroyBodyEP6b2Body",
         "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_",
         "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
