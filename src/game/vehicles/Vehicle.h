@@ -20,6 +20,8 @@ public:
     virtual int getMaxHealth() const;
     virtual int getHealth() const;
     virtual bool isDead();
+    virtual void applyDamage(int amount, LevelObject* source, bool flag);
+    void postExplosion();
     virtual void photographed();
     virtual void clearPhotographed();
     virtual bool isPhotographed() const;
@@ -152,7 +154,10 @@ private:
     unsigned char unknown780[4];
     int sensorContactCount;
     int spawnType;
-    unsigned char unknown792[112];
+    unsigned char unknown792[108];
+    bool exploding;
+    bool explosionFinished;
+    unsigned char unknown902[2];
     int doorSoundSuppression;
     unsigned char unknown908[8];
     int maxHealth;

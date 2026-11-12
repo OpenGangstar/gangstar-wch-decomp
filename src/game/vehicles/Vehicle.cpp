@@ -10,6 +10,7 @@
 
 #include "Vehicle.h"
 #include "../ai/NPC.h"
+#include "../characters/PlayerTest.h"
 #include "../world/GameObjectManager.h"
 #include "../scripting/ScriptManager.h"
 #include "../audio/SoundManager.h"
@@ -383,6 +384,30 @@ void Vehicle::immobilize()
     Stop();
 }
 
+
+void Vehicle::postExplosion()
+{
+    exploding = false;
+    explosionFinished = true;
+    immobilize();
+    hideWheels();
+}
+
+void VehicleExplosionAnimCallback(irr::scene::ITimelineController*, void* userData)
+{
+    static_cast<Vehicle*>(userData)->postExplosion();
+}
+
+void Vehicle::applyDamage(int amount, LevelObject*, bool)
+{
+    if (!(unknown4 & 4u)) {
+        Character* currentDriver = driver;
+        Character* player = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+        if (player != currentDriver)
+            return;
+    }
+    health -= amount;
+}
 
 void Vehicle::closeDoor(bool left)
 {
