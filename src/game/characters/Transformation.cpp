@@ -95,3 +95,13 @@ irr::core::vector3d<float> Transformation::GetFront() const
 {
     return rotation * irr::core::vector3d<float>(0.0f, -1.0f, 0.0f);
 }
+
+void Transformation::SetRotation(const irr::core::vector3d<float>& value)
+{
+    rotation = irr::core::quaternion(value * 0.017453292f);
+}
+
+void Transformation::dropSceneNode()
+{
+    LevelObject::dropSceneNode();
+}
