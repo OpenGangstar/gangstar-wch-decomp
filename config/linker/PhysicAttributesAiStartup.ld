@@ -3,6 +3,8 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-physicattributes/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 _Znwj = 0x001c4814;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fmul = 0x001c4724;
 __aeabi_atexit = 0x001c494c;
 _ZN35retail_physicattributes_transitions16civPassive_transE = 0x00420aa4;
 _ZN35retail_physicattributes_transitions17scriptedNpc_transE = 0x00420bd0;
@@ -17,6 +19,7 @@ _ZN35retail_physicattributes_transitions22scripted_vehicle_transE = 0x00421020;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .physic_get_tri_center 0x0031a4cc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes12GetTriCenterEtt) }
     .physic_create_neighbor_tris 0x0031cc68 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes18CreateNeighborTrisEPN3irr5scene10ISceneNodeEi) }
     .physic_init_world 0x0031a950 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9InitWorldEv) }
     .physic_attributes_find_scene_node 0x0031b3a0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes18GetSceneNodeFromIDEPN3irr5scene10ISceneNodeEi) }

@@ -15,6 +15,8 @@
 #include "../core/PhysicsBodyDef.h"
 #include "../core/SafeDelete.h"
 #include "../core/SceneNode.h"
+#include "../core/MeshBufferInterfaces.h"
+#include "../core/MeshSceneInterfaces.h"
 #include "../vehicles/Vehicle.h"
 
 // Observed prefix of the Box2D contact record.
@@ -156,6 +158,17 @@ irr::scene::ISceneNode* PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneN
             return found;
     }
     return 0;
+}
+
+irr::core::vector3d<float> PhysicAttributes::GetTriCenter(unsigned short bufferIndex, unsigned short triangleOffset)
+{
+    irr::scene::IMeshSceneNode* node = static_cast<irr::scene::IMeshSceneNode*>(s_heightmap);
+    irr::scene::IMeshBuffer* buffer = node->getMesh()->getMeshBuffer(bufferIndex);
+    unsigned short* indices = buffer->getIndices();
+    const irr::core::vector3d<float> a = buffer->getPosition(indices[triangleOffset]);
+    const irr::core::vector3d<float> b = buffer->getPosition(indices[triangleOffset + 1]);
+    const irr::core::vector3d<float> c = buffer->getPosition(indices[triangleOffset + 2]);
+    return (a + b + c) * (1.0f / 3.0f) + s_heightmap->getAbsolutePosition();
 }
 
 void PhysicAttributes::CreateNeighborTris(irr::scene::ISceneNode* node, int id)

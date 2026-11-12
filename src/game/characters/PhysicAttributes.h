@@ -31,6 +31,7 @@ public:
     static void CleanWorld();
     static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);
     static irr::scene::ISceneNode* s_heightmap;
+    static irr::core::vector3d<float> GetTriCenter(unsigned short bufferIndex, unsigned short triangleOffset);
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
         const irr::core::vector3d<float>&, irr::core::vector3d<float>&,
         irr::core::vector3d<float>&);
