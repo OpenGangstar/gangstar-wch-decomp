@@ -10885,7 +10885,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031b29d	0x104	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributesC2EiP6b2Body	PhysicAttributes::PhysicAttributes(int, b2Body*)
 0x0031b3a1	0x46	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes18GetSceneNodeFromIDEPN3irr5scene10ISceneNodeEi	PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneNode*, int)
 0x0031b3e9	0x410	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo	PhysicAttributes::SetHeightAttributes(irr::scene::ISceneNode*, irr::core::vector3d<float> const&, PhysicInfo&)
-0x0031b7f9	0x1b0	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes10GetPathPosEi	PhysicAttributes::GetPathPos(int)
+0x0031b7f9	0x1b0	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes10GetPathPosEi	PhysicAttributes::GetPathPos(int)
 0x0031b9a9	0x12c0	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_	PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, irr::core::plane3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
 0x0031cc69	0x88	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes18CreateNeighborTrisEPN3irr5scene10ISceneNodeEi	PhysicAttributes::CreateNeighborTris(irr::scene::ISceneNode*, int)
 0x0031ccf1	0x284	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape	PhysicAttributes::SetCurrentJumpShape(b2Shape*)

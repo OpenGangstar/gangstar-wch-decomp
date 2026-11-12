@@ -38,6 +38,7 @@
         "_ZN16PhysicAttributes9InitWorldEv",
         "_ZN16PhysicAttributes18CreateNeighborTrisEPN3irr5scene10ISceneNodeEi",
         "_ZN16PhysicAttributes12GetTriCenterEtt",
+        "_ZN16PhysicAttributes10GetPathPosEi",
         "_ZN17b2ContactListener3AddEPK14b2ContactPoint",
         "_ZN17b2ContactListener7PersistEPK14b2ContactPoint",
         "_ZN17b2ContactListener6RemoveEPK14b2ContactPoint",

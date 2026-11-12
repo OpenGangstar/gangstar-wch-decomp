@@ -8,6 +8,7 @@ class b2ContactFilter;
 class b2ContactListener;
 namespace irr { namespace scene { class ISceneNode; } }
 struct PhysicInfo;
+struct AStarNode;
 // Partial layout of the observed 120-byte allocation.
 class PhysicAttributes {
 public:
@@ -31,6 +32,7 @@ public:
     static void CleanWorld();
     static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);
     static irr::scene::ISceneNode* s_heightmap;
+    irr::core::vector3d<float> GetPathPos(int index);
     static irr::core::vector3d<float> GetTriCenter(unsigned short bufferIndex, unsigned short triangleOffset);
     float IntersectSegmentWithHeightMap(const irr::core::vector3d<float>&,
         const irr::core::vector3d<float>&, irr::core::vector3d<float>&,
@@ -41,7 +43,9 @@ public:
     unsigned char unknown4[4];
     PhysicInfo* info;
     int infoCount;
-    irr::core::array<void*> ownedArray; // Element type is still unknown.
-    unsigned char unknown36[84];
+    irr::core::array<AStarNode> path;
+    irr::core::vector3d<float> pathTarget;
+    int pathLength;
+    unsigned char unknown52[68];
 };
 #endif

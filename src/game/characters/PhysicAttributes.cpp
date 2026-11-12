@@ -160,6 +160,53 @@ irr::scene::ISceneNode* PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneN
     return 0;
 }
 
+struct AStarNode {
+    unsigned short triangleOffset, region;
+    unsigned short parentTriangleOffset, parentRegion;
+    float cost, pathCost;
+    unsigned short unknown16, unknown18, unknown20;
+};
+
+irr::core::vector3d<float> PhysicAttributes::GetPathPos(int index)
+{
+    using irr::core::vector3d;
+    using irr::scene::IMeshBuffer;
+    using irr::scene::IMeshSceneNode;
+
+    if (index < pathLength - 1) {
+        const unsigned short offset = path.data[index].triangleOffset;
+        const unsigned short bufferIndex = path.data[index].region;
+        ++index;
+        const unsigned short nextOffset = path.data[index].triangleOffset;
+        const unsigned short nextBufferIndex = path.data[index].region;
+
+        IMeshBuffer* buffer = static_cast<IMeshSceneNode*>(s_heightmap)->getMesh()->getMeshBuffer(bufferIndex);
+        unsigned short* indices = buffer->getIndices();
+        unsigned short* nextIndices = static_cast<IMeshSceneNode*>(s_heightmap)
+            ->getMesh()->getMeshBuffer(nextBufferIndex)->getIndices();
+
+        bool foundFirst = false;
+        int firstIndex;
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                if (indices[offset + i] == nextIndices[nextOffset + j]) {
+                    if (foundFirst) {
+                        const vector3d<float>& first = buffer->getPosition(indices[firstIndex]);
+                        const vector3d<float>& second = buffer->getPosition(indices[offset + i]);
+                        return (first + second) * 0.5f + s_heightmap->getAbsolutePosition()
+                            + vector3d<float>(0.0f, 0.0f, 3.0f);
+                    }
+                    firstIndex = offset + i;
+                    foundFirst = true;
+                }
+            }
+        }
+    } else if (index == pathLength - 1) {
+        return pathTarget;
+    }
+    return vector3d<float>();
+}
+
 irr::core::vector3d<float> PhysicAttributes::GetTriCenter(unsigned short bufferIndex, unsigned short triangleOffset)
 {
     irr::scene::IMeshSceneNode* node = static_cast<irr::scene::IMeshSceneNode*>(s_heightmap);
@@ -240,8 +287,8 @@ PhysicAttributes::~PhysicAttributes()
         }
         delete[] info;
     }
-    if (ownedArray.free_when_destroyed)
-        ::operator delete(ownedArray.data);
+    if (path.free_when_destroyed)
+        ::operator delete(path.data);
 }
 
 extern "C" {
