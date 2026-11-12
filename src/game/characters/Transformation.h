@@ -21,6 +21,9 @@ public:
     virtual void SetRotation(const irr::core::quaternion& value);
     void Load(const Structs::Marker&, irr::collada::CColladaFactory*);
 private:
-    unsigned char unknown52[32];
+    irr::core::vector3d<float> position;
+    irr::core::quaternion rotation;
+    unsigned short materialID;
+    unsigned short triangleID;
 };
 #endif
