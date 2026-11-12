@@ -31,6 +31,8 @@ public:
     void UpdatePhysic(float);
     void stepPhysic();
     void step();
+    void wait(int seconds);
+    void freeze();
     void accelerate(float amount);
     void brake(float amount);
     void turn(bool left, float amount);
@@ -142,7 +144,10 @@ private:
     unsigned char unknown348[8];
     float accelerationAmount;
     float brakeAmount;
-    unsigned char unknown364[57];
+    unsigned char unknown364[36];
+    int waitElapsed;
+    int waitDuration;
+    unsigned char unknown408[13];
     unsigned char explosionFlag;
     unsigned char unknown422[2];
     int vehicleIndex;

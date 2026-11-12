@@ -40,6 +40,8 @@ union VehicleControlFlags {
     struct {
         unsigned int accelerating : 1;
         unsigned int braking : 1;
+        unsigned int : 6;
+        unsigned int waitState : 3;
     } bits;
 };
 }
@@ -305,6 +307,24 @@ void Vehicle::openDoor(bool left)
 void Vehicle::openDoorFromInside(bool left)
 {
     openDoorWithClip(exitCarClip, left);
+}
+
+void Vehicle::wait(int seconds)
+{
+    waitDuration = seconds * 1000;
+    waitElapsed = 0;
+    VehicleControlFlags flags;
+    flags.word = flags344;
+    flags.word &= ~0x680u;
+    flags344 = flags.word | 0x900u;
+}
+
+void Vehicle::freeze()
+{
+    VehicleControlFlags flags;
+    flags.word = flags344;
+    flags.bits.waitState = 0;
+    flags344 = flags.word | 0x880u;
 }
 
 void Vehicle::accelerate(float amount)
