@@ -495,6 +495,16 @@ void Character::setDestination(const irr::core::vector3d<float>& point, int limi
     destinationLimitSquared = limit * limit;
 }
 
+void Character::SetPosition(const irr::core::vector3d<float>& position)
+{
+    LevelObject::SetPosition(position);
+    if (collisionBody) {
+        collisionBody->SetXForm(b2Vec2(position.X / 100.0f, position.Y / 100.0f), collisionBody->angle);
+        for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next)
+            PhysicAttributes::s_world->Refilter(shape);
+    }
+}
+
 void Character::positionAtDoor(bool left)
 {
     if (!vehicle)

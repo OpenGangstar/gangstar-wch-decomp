@@ -33,7 +33,9 @@ public:
     const b2XForm& GetXForm() const { return transform; }
     void* GetUserData() const { return data; }
     b2XForm transform;
-    unsigned char unknown28[36];
+    unsigned char unknown28[28];
+    float angle;
+    unsigned char unknown60[4];
     b2Vec2 linearVelocity;
     float angularVelocity;
     unsigned char unknown76[24];

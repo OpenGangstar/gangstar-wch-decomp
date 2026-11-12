@@ -25,6 +25,7 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN9Character7shootedEiP11LevelObject",
         "_ZN9Character4hideEv",
         "_ZN9Character16removeCollisionsEv",
@@ -145,6 +146,7 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN4Lock11getInstanceEv",
         "_ZN4Lock9setTargetEP11LevelObject",
