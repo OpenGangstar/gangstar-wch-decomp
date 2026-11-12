@@ -63,6 +63,7 @@
         ".ai_startup_function_1",
         ".ai_startup_function_2",
         ".shared_startup_empty_text",
+        ".physic_set_info",
         {
             "name": ".got",
             "offset": 864
@@ -87,6 +88,9 @@
         "_ZN7Vehicle21getLeftEnterAnimationEv",
         "_ZN7Vehicle22getRightEnterAnimationEv",
         "_ZN7Vehicle9setDriverEP9Character",
+        "_ZN16PhysicAttributes21UpdateEdgesCollisionsEi",
+        "_ZN7Vehicle21getLeftEjectAnimationEv",
+        "_ZN7Vehicle22getRightEjectAnimationEv",
         "_ZN9Character15openVehicleDoorEb",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character4showEv",
