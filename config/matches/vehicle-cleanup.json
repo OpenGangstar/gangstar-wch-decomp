@@ -25,6 +25,9 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle13postExplosionEv",
+        "_Z28VehicleExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv",
+        "_ZN7Vehicle11applyDamageEiP11LevelObjectb",
         "_ZN7Vehicle11getSkinMeshEv",
         "_ZN7Vehicle12getSpawnTypeEv",
         "_ZN7Vehicle12setSpawnTypeEi",
@@ -196,6 +199,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11LevelObject4StopEv",
         "_ZN7Vehicle18_adjustEnginePitchEj",
         "_ZN13ScriptManager11getInstanceEv",

@@ -20,6 +20,9 @@ SECTIONS
     .vehicle_get_max_health 0x00307b60 : { *(.text._ZNK7Vehicle12getMaxHealthEv) }
     .vehicle_get_health 0x00307b68 : { *(.text._ZNK7Vehicle9getHealthEv) }
     .vehicle_is_dead 0x00307b70 : { *(.text._ZN7Vehicle6isDeadEv) }
+    .vehicle_post_explosion 0x0030a2ac : { *(.text._ZN7Vehicle13postExplosionEv) }
+    .vehicle_explosion_callback 0x0030a2d0 : { *(.text._Z28VehicleExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv) }
+    .vehicle_apply_damage 0x0030a2e0 : { *(.text._ZN7Vehicle11applyDamageEiP11LevelObjectb) }
     .vehicle_photographed 0x00307b20 : { *(.text._ZN7Vehicle12photographedEv) }
     .vehicle_clear_photographed 0x00307b30 : { *(.text._ZN7Vehicle17clearPhotographedEv) }
     .vehicle_is_photographed 0x00307b44 : { *(.text._ZNK7Vehicle14isPhotographedEv) }
