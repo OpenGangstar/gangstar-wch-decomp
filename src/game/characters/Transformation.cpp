@@ -105,3 +105,21 @@ void Transformation::dropSceneNode()
 {
     LevelObject::dropSceneNode();
 }
+
+Transformation::Transformation(int type) : LevelObject(type)
+{
+}
+
+Transformation::~Transformation()
+{
+}
+
+irr::scene::ISceneNode* Transformation::grabSceneNode(int id, void*** parameters)
+{
+    LevelObject::grabSceneNode(id, parameters);
+    irr::scene::ISceneNode* node = sceneNode;
+    node->setPosition(GetPosition());
+    node->setRotation(GetRotation());
+    node->updateAbsolutePosition(false);
+    return node;
+}

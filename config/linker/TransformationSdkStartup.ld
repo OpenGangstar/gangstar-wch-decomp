@@ -6,6 +6,12 @@ __aeabi_atexit = 0x001c494c;
 __aeabi_fmul = 0x001c4724;
 SECTIONS
 {
+    .transformation_grab_node 0x003078b0 : { *(.text._ZN14Transformation13grabSceneNodeEiPPPv) }
+    .transformation_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
+    .transformation_vtable 0x004ab150 : { *(.data.rel.ro._ZTV14Transformation) }
+    .transformation_ctor 0x003079ec : { *(.text._ZN14TransformationC1Ei .text._ZN14TransformationC2Ei) }
+    .transformation_dtor 0x0030792c : { *(.text._ZN14TransformationD1Ev .text._ZN14TransformationD2Ev) }
+    .transformation_delete 0x00307904 : { *(.text._ZN14TransformationD0Ev) }
     .transformation_set_euler 0x00307980 : { *(.text._ZN14Transformation11SetRotationERKN3irr4core8vector3dIfEE) }
     .transformation_drop_node 0x003078a4 : { *(.text._ZN14Transformation13dropSceneNodeEv) }
     .transformation_right 0x00307808 : { *(.text._ZNK14Transformation8GetRightEv) }
