@@ -25,6 +25,10 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character6renderEv",
+        "_ZN9Character9nextPunchEv",
+        "_ZN9Character8nextKickEv",
+        "_ZN9Character4initEv",
         "_ZN9Character11cleanPhysicEv",
         "_ZN9Character9OnDespawnEv",
         "_ZN9Character7OnSpawnEv",

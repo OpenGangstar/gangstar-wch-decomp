@@ -54,6 +54,9 @@ public:
     virtual void updatePhysic(int elapsed);
     virtual void updateSceneNode(int elapsed);
     virtual void render();
+    virtual void init();
+    void nextPunch();
+    void nextKick();
     virtual void setVehicle(Vehicle* vehicle);
     virtual Vehicle* getVehicle() const;
     virtual void setLockTarget(Character* target);
@@ -100,7 +103,9 @@ private:
     unsigned char unknown192[24];
     int maxHealth;
     int health;
-    unsigned char unknown224[12];
+    int punchIndex;
+    unsigned char unknown228[4];
+    int kickIndex;
     unsigned int movementFlags;
     unsigned char unknown240[4];
     int nextAnimation;
