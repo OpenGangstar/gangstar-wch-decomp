@@ -22,6 +22,8 @@ public:
     virtual void Stop();
     void onRocketLaunched();
     void walkToTarget();
+    void startTurn(float speed);
+    void closeVehicleDoorFromInside(bool left);
     void setTurnDirection(irr::core::vector3d<float> direction);
     void CheckDestination();
     bool isDown();
@@ -118,8 +120,8 @@ private:
     int unknown264;
     int spawnType;
     irr::core::vector3d<float> turnDirection;
-    unsigned char unknown284[4];
-    bool unknown288;
+    float turnSpeed;
+    bool turning;
     unsigned char unknown289[3];
     irr::scene::ISceneNode* bloodPuddle;
     void removeBloodPuddle();
