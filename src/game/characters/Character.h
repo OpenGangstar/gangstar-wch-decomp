@@ -76,6 +76,7 @@ public:
     virtual Weapon* getWeapon() const = 0;
     virtual void SetTarget(LevelObject* value);
 private:
+    void positionAtDoor(bool left);
     void getInVehicle(bool left);
     void openVehicleDoor(bool left);
     void positionInVehicle(bool left);
