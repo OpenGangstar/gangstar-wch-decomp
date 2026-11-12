@@ -10528,14 +10528,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030784d	0xe	Transformation.cpp	game	characters	matched	_ZN14Transformation11SetPositionERKN3irr4core8vector3dIfEE	Transformation::SetPosition(irr::core::vector3d<float> const&)
 0x0030785d	0x48	Transformation.cpp	game	characters	pending	_ZN14Transformation4LoadERKN7Structs6MarkerEPN3irr7collada15CColladaFactoryE	Transformation::Load(Structs::Marker const&, irr::collada::CColladaFactory*)
 0x003078a5	0xc	Transformation.cpp	game	characters	matched	_ZN14Transformation13dropSceneNodeEv	Transformation::dropSceneNode()
-0x003078b1	0x54	Transformation.cpp	game	characters	pending	_ZN14Transformation13grabSceneNodeEiPPPv	Transformation::grabSceneNode(int, void***)
-0x00307905	0x28	Transformation.cpp	game	characters	pending	_ZN14TransformationD0Ev	Transformation::~Transformation()
-0x0030792d	0x20	Transformation.cpp	game	characters	pending	_ZN14TransformationD1Ev	Transformation::~Transformation()
-0x0030792d	0x20	Transformation.cpp	game	characters	pending	_ZN14TransformationD2Ev	Transformation::~Transformation()
+0x003078b1	0x54	Transformation.cpp	game	characters	matched	_ZN14Transformation13grabSceneNodeEiPPPv	Transformation::grabSceneNode(int, void***)
+0x00307905	0x28	Transformation.cpp	game	characters	matched	_ZN14TransformationD0Ev	Transformation::~Transformation()
+0x0030792d	0x20	Transformation.cpp	game	characters	matched	_ZN14TransformationD1Ev	Transformation::~Transformation()
+0x0030792d	0x20	Transformation.cpp	game	characters	matched	_ZN14TransformationD2Ev	Transformation::~Transformation()
 0x0030794d	0x34	Transformation.cpp	game	characters	matched	_ZNK14Transformation8GetFrontEv	Transformation::GetFront() const
 0x00307981	0x6c	Transformation.cpp	game	characters	matched	_ZN14Transformation11SetRotationERKN3irr4core8vector3dIfEE	Transformation::SetRotation(irr::core::vector3d<float> const&)
-0x003079ed	0x40	Transformation.cpp	game	characters	pending	_ZN14TransformationC1Ei	Transformation::Transformation(int)
-0x003079ed	0x40	Transformation.cpp	game	characters	pending	_ZN14TransformationC2Ei	Transformation::Transformation(int)
+0x003079ed	0x40	Transformation.cpp	game	characters	matched	_ZN14TransformationC1Ei	Transformation::Transformation(int)
+0x003079ed	0x40	Transformation.cpp	game	characters	matched	_ZN14TransformationC2Ei	Transformation::Transformation(int)
 0x00307a2d	0x6c	Transformation.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00307a99	0x14	Transformation.cpp	game	characters	matched	_GLOBAL__I__ZN14TransformationC2Ei	_GLOBAL__I__ZN14TransformationC2Ei
 0x00307aad	0x24	Transformation.cpp	game	characters	pending	__tcf_1	__tcf_1
