@@ -31,6 +31,9 @@ public:
     void UpdatePhysic(float);
     void stepPhysic();
     void step();
+    void CheckDestination();
+    void flee(const irr::core::vector3d<float>& point);
+    void driveToLocation(const irr::core::vector3d<float>& point, bool flag);
     void wait(int seconds);
     void freeze();
     void accelerate(float amount);
@@ -123,7 +126,11 @@ private:
     float rotationY;
     unsigned char unknown156[88];
     Character* targetingCharacter;
-    unsigned char unknown248[36];
+    irr::core::vector3d<float> destination;
+    irr::core::vector3d<float> adjustedDestination;
+    bool destinationReachable;
+    bool driveToLocationFlag;
+    unsigned char unknown274[10];
     const char* enterAnim;
     const char* exitAnim;
     const char* closeDoorAnim;

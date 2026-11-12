@@ -309,6 +309,38 @@ void Vehicle::openDoorFromInside(bool left)
     openDoorWithClip(exitCarClip, left);
 }
 
+void Vehicle::flee(const irr::core::vector3d<float>& point)
+{
+    destination = point;
+    VehicleControlFlags flags;
+    flags.word = flags344;
+    flags.word &= ~0x580u;
+    flags344 = flags.word | 0xa00u;
+}
+
+void Vehicle::driveToLocation(const irr::core::vector3d<float>& point, bool flag)
+{
+    destination = point;
+    driveToLocationFlag = flag;
+    VehicleControlFlags flags;
+    flags.word = flags344;
+    flags.word &= ~0x380u;
+    flags344 = flags.word | 0xc00u;
+}
+
+void Vehicle::CheckDestination()
+{
+    irr::core::vector3d<float> point;
+    irr::core::vector3d<float> adjusted;
+    if (canGoToPoint(destination, point, adjusted)) {
+        destinationReachable = true;
+        adjustedDestination = destination;
+    } else {
+        destinationReachable = false;
+        adjustedDestination = adjusted;
+    }
+}
+
 void Vehicle::wait(int seconds)
 {
     waitDuration = seconds * 1000;
