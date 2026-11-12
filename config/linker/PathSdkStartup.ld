@@ -3,8 +3,14 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-path/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+_ZdaPv = 0x001c461c;
 SECTIONS
 {
+    .path_ctor 0x00300c8c : { *(.text._ZN4PathC1Ei .text._ZN4PathC2Ei) }
+    .path_dtor 0x00300b98 : { *(.text._ZN4PathD1Ev .text._ZN4PathD2Ev) }
+    .path_delete 0x00300b64 : { *(.text._ZN4PathD0Ev) }
+    .path_vtable 0x004aae88 : { *(.data.rel.ro._ZTV4Path) }
+    .path_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
     .path_size 0x00300b10 : { *(.text._ZNK4Path7getSizeEv) }
     .path_waypoint 0x00300b14 : { *(.text._ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE) }
     .path_factory_cleanup 0x00300b40 : { *sdk-startup-path.o(.text.__tcf_1) }

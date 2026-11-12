@@ -77,3 +77,12 @@ bool Path::getWaypoint(int index, irr::core::vector3d<float>& position) const
     position = waypoints[index];
     return true;
 }
+
+Path::Path(int type) : Transformation(type)
+{
+}
+
+Path::~Path()
+{
+    delete[] waypoints;
+}

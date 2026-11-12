@@ -10358,12 +10358,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300b11	0x4	Path.cpp	game	world	matched	_ZNK4Path7getSizeEv	Path::getSize() const
 0x00300b15	0x2a	Path.cpp	game	world	matched	_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE	Path::getWaypoint(int, irr::core::vector3d<float>&) const
 0x00300b41	0x24	Path.cpp	game	world	matched	__tcf_1	__tcf_1
-0x00300b65	0x34	Path.cpp	game	world	pending	_ZN4PathD0Ev	Path::~Path()
-0x00300b99	0x2c	Path.cpp	game	world	pending	_ZN4PathD1Ev	Path::~Path()
-0x00300b99	0x2c	Path.cpp	game	world	pending	_ZN4PathD2Ev	Path::~Path()
+0x00300b65	0x34	Path.cpp	game	world	matched	_ZN4PathD0Ev	Path::~Path()
+0x00300b99	0x2c	Path.cpp	game	world	matched	_ZN4PathD1Ev	Path::~Path()
+0x00300b99	0x2c	Path.cpp	game	world	matched	_ZN4PathD2Ev	Path::~Path()
 0x00300bc5	0xc8	Path.cpp	game	world	pending	_ZN4Path4LoadERKN7Structs4PathEPN3irr7collada15CColladaFactoryE	Path::Load(Structs::Path const&, irr::collada::CColladaFactory*)
-0x00300c8d	0x40	Path.cpp	game	world	pending	_ZN4PathC2Ei	Path::Path(int)
-0x00300c8d	0x40	Path.cpp	game	world	pending	_ZN4PathC1Ei	Path::Path(int)
+0x00300c8d	0x40	Path.cpp	game	world	matched	_ZN4PathC2Ei	Path::Path(int)
+0x00300c8d	0x40	Path.cpp	game	world	matched	_ZN4PathC1Ei	Path::Path(int)
 0x00300ccd	0x6c	Path.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00300d39	0x14	Path.cpp	game	world	matched	_GLOBAL__I__ZN4PathC2Ei	_GLOBAL__I__ZN4PathC2Ei
 0x00300d4d	0x30	Path.cpp	game	world	matched	__tcf_2	__tcf_2
