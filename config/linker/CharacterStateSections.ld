@@ -14,6 +14,10 @@ acosf = 0x001c4694;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .character_clean 0x002f3038 : { *ai-startup-character.o(.text._ZN9Character5cleanEv) }
+    .character_block 0x002f1688 : { *ai-startup-character.o(.text._ZN9Character5blockEi) }
+    .character_enable 0x002f19d8 : { *ai-startup-character.o(.text._ZN9Character6enableEv) }
+    .character_disable 0x002f19b8 : { *ai-startup-character.o(.text._ZN9Character7disableEv) }
     .character_render 0x002f14bc : { *ai-startup-character.o(.text._ZN9Character6renderEv) }
     .character_next_punch 0x002f1634 : { *ai-startup-character.o(.text._ZN9Character9nextPunchEv) }
     .character_next_kick 0x002f1648 : { *ai-startup-character.o(.text._ZN9Character8nextKickEv) }

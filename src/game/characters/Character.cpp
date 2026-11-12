@@ -168,6 +168,50 @@ void Character::init()
     movementFlags = 0;
 }
 
+void Character::block(int side)
+{
+    if (__builtin_expect(side == 0, 1))
+        setAnimation(81, 1.0f, false, false, false);
+    else if (side == 1)
+        setAnimation(82, 1.0f, false, false, false);
+}
+
+void Character::enable()
+{
+    const bool wasEnabled = isEnabled();
+    LevelObject::enable();
+    if (!wasEnabled) {
+        setAnimation(-1, 1.0f, false, false, false);
+        init();
+    }
+}
+
+void Character::disable()
+{
+    if (isEnabled()) {
+        LevelObject::disable();
+        clean();
+    }
+}
+
+void Character::clean()
+{
+    const bool preserveFlag = unknown4 & 4;
+    unknown4 = 0;
+    if (preserveFlag)
+        unknown4 |= 4;
+    else
+        unknown4 &= ~4u;
+
+    unknown264 = 0;
+    turnDirection = irr::core::vector3d<float>();
+    unknown288 = false;
+    cleanPhysic();
+    vehicle = 0;
+    target = 0;
+    removeBloodPuddle();
+}
+
 void Character::updateSceneNode(int)
 {
 }

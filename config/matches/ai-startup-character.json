@@ -25,6 +25,10 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character5blockEi",
+        "_ZN9Character5cleanEv",
+        "_ZN9Character6enableEv",
+        "_ZN9Character7disableEv",
         "_ZN9Character6renderEv",
         "_ZN9Character9nextPunchEv",
         "_ZN9Character8nextKickEv",
@@ -127,6 +131,9 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK11LevelObject9isEnabledEv",
+        "_ZN11LevelObject6enableEv",
+        "_ZN11LevelObject7disableEv",
         "_ZN7b2World11DestroyBodyEP6b2Body",
         "_ZN7b2WorldD1Ev",
         "_ZN11LevelObject7OnSpawnEv",

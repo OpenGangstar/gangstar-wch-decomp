@@ -10053,7 +10053,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1649	0x14	Character.cpp	game	characters	matched	_ZN9Character8nextKickEv	Character::nextKick()
 0x002f165d	0x18	Character.cpp	game	characters	matched	_ZN9Character19isInFlinchAnimationEv	Character::isInFlinchAnimation()
 0x002f1675	0x12	Character.cpp	game	characters	matched	_ZN9Character21isInHitByCarAnimationEv	Character::isInHitByCarAnimation()
-0x002f1689	0x3c	Character.cpp	game	characters	pending	_ZN9Character5blockEi	Character::block(int)
+0x002f1689	0x3c	Character.cpp	game	characters	matched	_ZN9Character5blockEi	Character::block(int)
 0x002f16c5	0x50	Character.cpp	game	characters	matched	_ZN9Character12walkToTargetEv	Character::walkToTarget()
 0x002f1715	0x18	Character.cpp	game	characters	matched	_ZN9Character4initEv	Character::init()
 0x002f172d	0x44	Character.cpp	game	characters	matched	_ZN9Character17removeBloodPuddleEv	Character::removeBloodPuddle()
@@ -10065,8 +10065,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f18b5	0x6c	Character.cpp	game	characters	matched	_ZN9Character16loadBloodObjectsEPKcS1_	Character::loadBloodObjects(char const*, char const*)
 0x002f1921	0x78	Character.cpp	game	characters	pending	_ZN9Character26closeVehicleDoorFromInsideEb	Character::closeVehicleDoorFromInside(bool)
 0x002f1999	0x1e	Character.cpp	game	characters	matched	_ZNK9Character8isPlayerEv	Character::isPlayer() const
-0x002f19b9	0x1e	Character.cpp	game	characters	pending	_ZN9Character7disableEv	Character::disable()
-0x002f19d9	0x3c	Character.cpp	game	characters	pending	_ZN9Character6enableEv	Character::enable()
+0x002f19b9	0x1e	Character.cpp	game	characters	matched	_ZN9Character7disableEv	Character::disable()
+0x002f19d9	0x3c	Character.cpp	game	characters	matched	_ZN9Character6enableEv	Character::enable()
 0x002f1a15	0x1c	Character.cpp	game	characters	matched	__tcf_3	__tcf_3
 0x002f1a31	0x2ca	Character.cpp	game	characters	pending	_ZN9Character20getSpecificAnimationEi	Character::getSpecificAnimation(int)
 0x002f1cfd	0x40	Character.cpp	game	characters	matched	_ZN9Character8goToIdleEv	Character::goToIdle()
@@ -10100,7 +10100,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f2d95	0x144	Character.cpp	game	characters	pending	_ZN9Character3dieEb	Character::die(bool)
 0x002f2ed9	0x108	Character.cpp	game	characters	pending	_ZN9Character11goToVehicleEP7Vehiclebbbb	Character::goToVehicle(Vehicle*, bool, bool, bool, bool)
 0x002f2fe1	0x58	Character.cpp	game	characters	matched	_ZN9Character11cleanPhysicEv	Character::cleanPhysic()
-0x002f3039	0x58	Character.cpp	game	characters	pending	_ZN9Character5cleanEv	Character::clean()
+0x002f3039	0x58	Character.cpp	game	characters	matched	_ZN9Character5cleanEv	Character::clean()
 0x002f3091	0x44	Character.cpp	game	characters	matched	_ZN9Character15resetCollisionsEv	Character::resetCollisions()
 0x002f30d5	0xe8	Character.cpp	game	characters	matched	_ZN9Character15showBloodSplashEN3irr4core8vector3dIfEES3_	Character::showBloodSplash(irr::core::vector3d<float>, irr::core::vector3d<float>)
 0x002f31bd	0x74	Character.cpp	game	characters	pending	_ZN9Character4hideEv	Character::hide()

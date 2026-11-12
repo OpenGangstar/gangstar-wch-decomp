@@ -55,6 +55,10 @@ public:
     virtual void updateSceneNode(int elapsed);
     virtual void render();
     virtual void init();
+    virtual void enable();
+    virtual void disable();
+    virtual void clean();
+    void block(int side);
     void nextPunch();
     void nextKick();
     virtual void setVehicle(Vehicle* vehicle);
@@ -111,10 +115,12 @@ private:
     int nextAnimation;
     unsigned char unknown248[12];
     LevelObject* target;
-    unsigned char unknown264[4];
+    int unknown264;
     int spawnType;
     irr::core::vector3d<float> turnDirection;
-    unsigned char unknown284[8];
+    unsigned char unknown284[4];
+    bool unknown288;
+    unsigned char unknown289[3];
     irr::scene::ISceneNode* bloodPuddle;
     void removeBloodPuddle();
     void cleanPhysic();
