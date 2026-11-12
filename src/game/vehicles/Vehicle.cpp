@@ -40,6 +40,36 @@ union VehicleControlFlags {
 };
 }
 
+void* __attribute__((weak)) Vehicle::getSkinMesh()
+{
+    return skinnedMesh;
+}
+
+int __attribute__((weak)) Vehicle::getSpawnType()
+{
+    return spawnType;
+}
+
+void __attribute__((weak)) Vehicle::setSpawnType(int type)
+{
+    spawnType = type;
+}
+
+int __attribute__((weak)) Vehicle::getMaxHealth() const
+{
+    return maxHealth;
+}
+
+int __attribute__((weak)) Vehicle::getHealth() const
+{
+    return health;
+}
+
+bool __attribute__((weak)) Vehicle::isDead()
+{
+    return health <= 0;
+}
+
 void __attribute__((weak)) Vehicle::photographed()
 {
     flags344 |= photographedFlag;

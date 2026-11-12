@@ -10541,15 +10541,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307aad	0x24	Transformation.cpp	game	characters	pending	__tcf_1	__tcf_1
 0x00307ad1	0x30	Transformation.cpp	game	characters	matched	__tcf_2	__tcf_2
 0x00307b01	0x16	Vehicle.cpp	game	vehicles	pending	_ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv	CustomSkinnedMeshSceneNode::getBoundingBox() const
-0x00307b19	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11getSkinMeshEv	Vehicle::getSkinMesh()
+0x00307b19	0x8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11getSkinMeshEv	Vehicle::getSkinMesh()
 0x00307b21	0x10	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12photographedEv	Vehicle::photographed()
 0x00307b31	0x14	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle17clearPhotographedEv	Vehicle::clearPhotographed()
 0x00307b45	0xc	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle14isPhotographedEv	Vehicle::isPhotographed() const
-0x00307b51	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12getSpawnTypeEv	Vehicle::getSpawnType()
-0x00307b59	0x8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12setSpawnTypeEi	Vehicle::setSpawnType(int)
-0x00307b61	0x8	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle12getMaxHealthEv	Vehicle::getMaxHealth() const
-0x00307b69	0x8	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle9getHealthEv	Vehicle::getHealth() const
-0x00307b71	0x16	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6isDeadEv	Vehicle::isDead()
+0x00307b51	0x8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12getSpawnTypeEv	Vehicle::getSpawnType()
+0x00307b59	0x8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12setSpawnTypeEi	Vehicle::setSpawnType(int)
+0x00307b61	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle12getMaxHealthEv	Vehicle::getMaxHealth() const
+0x00307b69	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle9getHealthEv	Vehicle::getHealth() const
+0x00307b71	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle6isDeadEv	Vehicle::isDead()
 0x00307b88	0x14	Vehicle.cpp	game	vehicles	pending	_ZThn52_N7Vehicle13getMarkerTypeEv	non-virtual thunk to Vehicle::getMarkerType()
 0x00307b9d	0x6	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13getMarkerTypeEv	Vehicle::getMarkerType()
 0x00307ba5	0x24	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle8GetSpeedEv	Vehicle::GetSpeed() const

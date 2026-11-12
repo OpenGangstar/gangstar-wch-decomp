@@ -14,6 +14,12 @@ SECTIONS
     .vehicle_set_driver 0x00308e48 : { *(.text._ZN7Vehicle9setDriverEP9Character) }
     .vehicle_reset_driver 0x0030a1fc : { *(.text._ZN7Vehicle11resetDriverEv) }
     .vehicle_reset_collisions 0x0030a5c4 : { *(.text._ZN7Vehicle15resetCollisionsEv) }
+    .vehicle_skin_mesh 0x00307b18 : { *(.text._ZN7Vehicle11getSkinMeshEv) }
+    .vehicle_get_spawn_type 0x00307b50 : { *(.text._ZN7Vehicle12getSpawnTypeEv) }
+    .vehicle_set_spawn_type 0x00307b58 : { *(.text._ZN7Vehicle12setSpawnTypeEi) }
+    .vehicle_get_max_health 0x00307b60 : { *(.text._ZNK7Vehicle12getMaxHealthEv) }
+    .vehicle_get_health 0x00307b68 : { *(.text._ZNK7Vehicle9getHealthEv) }
+    .vehicle_is_dead 0x00307b70 : { *(.text._ZN7Vehicle6isDeadEv) }
     .vehicle_photographed 0x00307b20 : { *(.text._ZN7Vehicle12photographedEv) }
     .vehicle_clear_photographed 0x00307b30 : { *(.text._ZN7Vehicle17clearPhotographedEv) }
     .vehicle_is_photographed 0x00307b44 : { *(.text._ZNK7Vehicle14isPhotographedEv) }
