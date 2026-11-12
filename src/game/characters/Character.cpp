@@ -14,6 +14,8 @@
 #include "../ai/AIManagerSingleton.h"
 #include "Character.h"
 #include "../core/Lock.h"
+#include "../rendering/CustomBillboardSceneNode.h"
+#include "../audio/SoundManager.h"
 #include "../world/GameObjectManager.h"
 #include "../vehicles/Vehicle.h"
 #include "PlayerTest.h"
@@ -34,6 +36,7 @@ int Character::s_bloodsplash = -1;
 irr::scene::ISceneNode* Character::m_bloodSplash;
 
 extern "C" float acosf(float);
+extern "C" long lrand48();
 extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __attribute__((weak));
 void operator delete(void*) throw();
 extern "C" {
@@ -348,6 +351,32 @@ bool Character::isPlayer() const
 {
     return this == reinterpret_cast<Character*>(
         static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+}
+
+void Character::shooted(int amount, LevelObject* source)
+{
+    if (isDying() || currentAnimation == 164 || isDead() || (movementFlags & 0x10000u))
+        return;
+
+    applyDamage(amount, source, false);
+    if (!isPlayer()) {
+        if (isDown()) {
+            setAnimation(162, 1.0f, false, false, false);
+        } else if (!(lrand48() & 1)) {
+            setAnimation(84, 1.0f, false, false, false);
+        } else {
+            setAnimation(85, 1.0f, false, false, false);
+        }
+    }
+    if (isPlayer()) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(129, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+    if (reinterpret_cast<Character*>(Lock::getInstance()->target) != this)
+        return;
+    Lock::getInstance()->billboard->activateAnimation();
 }
 
 void Character::goToIdle()
