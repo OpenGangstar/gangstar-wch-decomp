@@ -25,6 +25,8 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle4waitEi",
+        "_ZN7Vehicle6freezeEv",
         "_ZN7Vehicle7getMeshEv",
         "_ZN7Vehicle11isHiVehicleEv",
         "_ZN7Vehicle11SetPositionERKN3irr4core8vector3dIfEE",
