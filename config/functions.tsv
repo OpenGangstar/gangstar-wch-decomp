@@ -10355,9 +10355,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ff5d1	0x83c	NPC.cpp	game	ai	pending	_ZN3NPC12attackTargetEv	NPC::attackTarget()
 0x002ffe0d	0xbc4	NPC.cpp	game	ai	pending	_ZN3NPC6UpdateEi	NPC::Update(int)
 0x003009d1	0x140	NPC.cpp	game	ai	pending	_ZN3NPC9SetTargetEP11LevelObject	NPC::SetTarget(LevelObject*)
-0x00300b11	0x4	Path.cpp	game	world	pending	_ZNK4Path7getSizeEv	Path::getSize() const
-0x00300b15	0x2a	Path.cpp	game	world	pending	_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE	Path::getWaypoint(int, irr::core::vector3d<float>&) const
-0x00300b41	0x24	Path.cpp	game	world	pending	__tcf_1	__tcf_1
+0x00300b11	0x4	Path.cpp	game	world	matched	_ZNK4Path7getSizeEv	Path::getSize() const
+0x00300b15	0x2a	Path.cpp	game	world	matched	_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE	Path::getWaypoint(int, irr::core::vector3d<float>&) const
+0x00300b41	0x24	Path.cpp	game	world	matched	__tcf_1	__tcf_1
 0x00300b65	0x34	Path.cpp	game	world	pending	_ZN4PathD0Ev	Path::~Path()
 0x00300b99	0x2c	Path.cpp	game	world	pending	_ZN4PathD1Ev	Path::~Path()
 0x00300b99	0x2c	Path.cpp	game	world	pending	_ZN4PathD2Ev	Path::~Path()
