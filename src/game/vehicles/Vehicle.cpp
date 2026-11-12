@@ -16,6 +16,8 @@
 #include "../audio/SoundManager.h"
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/NativeStrings.h"
+#include "../core/Lock.h"
+#include "../rendering/CustomBillboardSceneNode.h"
 #include "../core/PhysicsBodyDef.h"
 #include "../rendering/GS3DStuff.h"
 
@@ -396,6 +398,16 @@ void Vehicle::postExplosion()
 void VehicleExplosionAnimCallback(irr::scene::ITimelineController*, void* userData)
 {
     static_cast<Vehicle*>(userData)->postExplosion();
+}
+
+void Vehicle::shooted(int amount, LevelObject* source)
+{
+    if (isDead())
+        return;
+
+    applyDamage(amount, source, false);
+    if (Lock::getInstance()->target == this)
+        Lock::getInstance()->billboard->activateAnimation();
 }
 
 void Vehicle::applyDamage(int amount, LevelObject*, bool)

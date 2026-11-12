@@ -25,6 +25,7 @@
     "source": "src/game/rendering/CustomBillboardSceneNode.cpp",
     "linker_script": "config/linker/CustomBillboardSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE",
         {
             "name": "__tcf_2",
             "address": "0x002f7a25"

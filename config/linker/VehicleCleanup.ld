@@ -22,6 +22,7 @@ SECTIONS
     .vehicle_is_dead 0x00307b70 : { *(.text._ZN7Vehicle6isDeadEv) }
     .vehicle_post_explosion 0x0030a2ac : { *(.text._ZN7Vehicle13postExplosionEv) }
     .vehicle_explosion_callback 0x0030a2d0 : { *(.text._Z28VehicleExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv) }
+    .vehicle_shot_reaction 0x00308e80 : { *(.text._ZN7Vehicle7shootedEiP11LevelObject) }
     .vehicle_apply_damage 0x0030a2e0 : { *(.text._ZN7Vehicle11applyDamageEiP11LevelObjectb) }
     .vehicle_photographed 0x00307b20 : { *(.text._ZN7Vehicle12photographedEv) }
     .vehicle_clear_photographed 0x00307b30 : { *(.text._ZN7Vehicle17clearPhotographedEv) }
