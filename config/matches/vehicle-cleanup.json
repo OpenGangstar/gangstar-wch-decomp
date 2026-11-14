@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv",
         "_ZNK7Vehicle8GetSpeedEv",
         "_ZN7Vehicle6WarmUpEv",
         "_ZN7Vehicle16resetPreviousPosEv",
@@ -215,6 +216,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9CarSounds19UnregisterCallbacksEv",
         "_ZN11LevelObject6WarmUpEv",
         "_ZN16SceneNodeManager11getInstanceEv",
         "_ZN16SceneNodeManager6manageEiP11LevelObjecti",

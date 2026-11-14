@@ -10,6 +10,7 @@ __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .vehicle_sound_unregister 0x00308398 : { *(.text._ZN7Vehicle28UnRegisterCarSoundsCallbacksEv) }
     .vehicle_get_speed 0x00307ba4 : { *(.text._ZNK7Vehicle8GetSpeedEv) }
     .vehicle_warm_up 0x0030a1c8 : { *(.text._ZN7Vehicle6WarmUpEv) }
     .vehicle_reset_previous_position 0x00309d2c : { *(.text._ZN7Vehicle16resetPreviousPosEv) }

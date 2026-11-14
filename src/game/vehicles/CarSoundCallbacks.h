@@ -17,6 +17,7 @@ struct CarSoundCallbacks {
 class CarSounds {
 public:
     static CarSoundCallbacks s_SoundCallbacks;
+    static void UnregisterCallbacks();
     static void RegisterCallbacks(const CarSoundCallbacks&);
 };
 

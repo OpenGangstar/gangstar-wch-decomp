@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/CarSounds.cpp",
     "linker_script": "config/linker/CarSoundCallbacks.ld",
     "functions": [
+        "_ZN9CarSounds19UnregisterCallbacksEv",
         {
             "name": "_Z18IsSoundPlayingStubii",
             "address": "0x0034f17d"

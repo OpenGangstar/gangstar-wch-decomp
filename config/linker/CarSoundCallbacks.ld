@@ -4,6 +4,7 @@ INCLUDE build/matches/car-sound-callbacks/retail-symbols.ld
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .car_sound_unregister 0x0034f32c : { *(.text._ZN9CarSounds19UnregisterCallbacksEv) }
     .callback_function_0 0x0034f17c : { *car-sound-callbacks.o(.text._Z18IsSoundPlayingStubii) }
     .callback_function_1 0x0034f180 : { *car-sound-callbacks.o(.text._Z8PlayStubibff) }
     .callback_function_2 0x0034f188 : { *car-sound-callbacks.o(.text._Z8StopStubii) }

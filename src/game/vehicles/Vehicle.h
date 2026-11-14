@@ -51,6 +51,7 @@ public:
     void resetDriver();
     void mobilize();
     void UpdateCarSounds();
+    void UnRegisterCarSoundsCallbacks();
     void repair();
     void resetCollisions();
     void setPathToFollow(const Path* path);
