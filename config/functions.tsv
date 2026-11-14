@@ -10659,7 +10659,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030a2d1	0xe	Vehicle.cpp	game	vehicles	matched	_Z28VehicleExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv	VehicleExplosionAnimCallback(irr::scene::ITimelineController*, void*)
 0x0030a2e1	0x2e	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11applyDamageEiP11LevelObjectb	Vehicle::applyDamage(int, LevelObject*, bool)
 0x0030a311	0x68	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle21notifyHitNPCofDespawnEv	Vehicle::notifyHitNPCofDespawn()
-0x0030a379	0x6c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13onCameraEnterEv	Vehicle::onCameraEnter()
+0x0030a379	0x6c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13onCameraEnterEv	Vehicle::onCameraEnter()
 0x0030a3e5	0xac	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle8mobilizeEv	Vehicle::mobilize()
 0x0030a491	0x9c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12cleanTargetsEv	Vehicle::cleanTargets()
 0x0030a52d	0x60	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11setDoorAnimEPKcb	Vehicle::setDoorAnim(char const*, bool)

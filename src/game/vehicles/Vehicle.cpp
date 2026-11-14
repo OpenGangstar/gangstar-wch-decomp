@@ -17,6 +17,8 @@
 #include "../world/GameObjectManager.h"
 #include "../scripting/ScriptManager.h"
 #include "../audio/SoundManager.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/NativeStrings.h"
 #include "../core/Lock.h"
@@ -919,6 +921,24 @@ void __attribute__((weak)) Vehicle::stopSiren()
         SoundManager::getInstance()->stop(241, sirenChannel, 1000);
         flags344 &= ~sirenPlaying;
     }
+}
+
+void Vehicle::onCameraEnter()
+{
+    const unsigned int radioEnabled = 1u << 23;
+    const unsigned int radioStarted = 1u << 24;
+    if (!(flags344 & radioEnabled))
+        return;
+
+    if (!(flags344 & radioStarted)) {
+        SoundManager::getInstance()->playRadio(defaultRadioStation);
+        flags344 |= radioStarted;
+    } else {
+        SoundManager::getInstance()->playRadio(savedRadioStation);
+    }
+    Application::GetInstance()->GetHudManager()->hide();
+    if (!ScriptManager::getInstance()->isInCinematic())
+        Application::GetInstance()->GetHudManager()->show();
 }
 
 void Vehicle::UnRegisterCarSoundsCallbacks()

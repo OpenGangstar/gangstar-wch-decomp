@@ -52,6 +52,7 @@ public:
     void mobilize();
     int getMarkerType();
     void stopSiren();
+    void onCameraEnter();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();
     void RegisterCarSoundsCallbacks();
@@ -151,7 +152,9 @@ private:
     float rotationY;
     unsigned char unknown156[16];
     float skidThreshold;
-    unsigned char unknown176[68];
+    unsigned char unknown176[20];
+    int savedRadioStation;
+    unsigned char unknown200[44];
     Character* targetingCharacter;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;
@@ -161,7 +164,7 @@ private:
     const char* enterAnim;
     const char* exitAnim;
     const char* closeDoorAnim;
-    unsigned char unknown296[4];
+    int defaultRadioStation;
     const Path* pathToFollow;
     int currentWaypoint;
     float entryAnimationScale;
