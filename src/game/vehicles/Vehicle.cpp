@@ -901,11 +901,9 @@ static void __tcf_4()
 
 extern "C" {
 extern unsigned char _ZZN12CGameFactory11getInstanceEvE2gf[];
-extern unsigned char _ZZN11CCarFactory11getInstanceEvE2cf[];
 extern unsigned char _ZZN9AIManager11getInstanceEvE3aim[];
 
 void _ZN12CGameFactoryD1Ev(void*) __attribute__((weak));
-void _ZN11CCarFactoryD1Ev(void*) __attribute__((weak));
 void _ZN9AIManagerD1Ev(void*);
 
 static void __tcf_3() __attribute__((used));
@@ -920,11 +918,6 @@ static void __tcf_1()
     _ZN12CGameFactoryD1Ev(_ZZN12CGameFactory11getInstanceEvE2gf);
 }
 
-static void __tcf_2() __attribute__((used));
-static void __tcf_2()
-{
-    _ZN11CCarFactoryD1Ev(_ZZN11CCarFactory11getInstanceEvE2cf);
-}
 }
 
 
@@ -945,6 +938,11 @@ inline __attribute__((always_inline)) void disableWheelCollisions(b2Body* body, 
 class CCarFactory : public irr::collada::CColladaFactory {
 public:
     virtual ~CCarFactory() __attribute__((used));
+    static CCarFactory* getInstance() __attribute__((weak, used))
+    {
+        static CCarFactory cf;
+        return &cf;
+    }
     virtual void* createMorph(const irr::collada::CColladaDatabase&, irr::collada::SController*);
     virtual irr::collada::CSceneNode* createNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
     virtual void* createSkinNode(const irr::collada::CColladaDatabase&, irr::scene::IColladaMesh*,

@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN11CCarFactory11getInstanceEv",
         "_ZN11CCarFactoryD0Ev",
         "_ZN11CCarFactoryD1Ev",
         "_ZN20EvVehicleDeactivatedD0Ev",
@@ -100,7 +101,8 @@
         },
         {
             "name": "__tcf_2",
-            "address": "0x0030b625"
+            "address": "0x0030b625",
+            "compiled_name": "__tcf_0"
         },
         "_ZNK7Vehicle15getPathToFollowEv",
         "_ZN7Vehicle18setCurrentWaypointEi",
