@@ -25,6 +25,8 @@
     "source": "src/game/ai/PlayerTest.cpp",
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
+        "_ZN12EvNPCVehicleD0Ev",
+        "_ZN12EvNPCVehicleD1Ev",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZNK9Character8isPlayerEv",
         "_ZN3NPC12isTargetableEv",

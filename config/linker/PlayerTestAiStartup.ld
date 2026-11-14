@@ -21,8 +21,16 @@ __aeabi_fdiv = 0x001c4520;
 INCLUDE config/linker/CharacterStateSections.ld
 INCLUDE config/linker/CHudManagerWeaponSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld
+_ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .npc_vehicle_base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .npc_vehicle_base_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .npc_vehicle_base_id 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
+    .npc_vehicle_base_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .npc_vehicle_event_delete 0x00303a68 : { *(.gnu.linkonce.t._ZN12EvNPCVehicleD0Ev .text._ZN12EvNPCVehicleD0Ev) }
+    .npc_vehicle_event_dtor 0x00303a94 : { *(.gnu.linkonce.t._ZN12EvNPCVehicleD1Ev .text._ZN12EvNPCVehicleD1Ev) }
+    .npc_vehicle_event_vtable 0x004ab060 : { *(.gnu.linkonce.d.rel.ro._ZTV12EvNPCVehicle .data.rel.ro._ZTV12EvNPCVehicle) }
     .player_get_player 0x00300dc8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest9GetPlayerEv) }
     .player_singleton 0x004b80e8 (NOLOAD) : { *ai-startup-playertest.o(.bss._ZN10PlayerTest8s_playerE) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-character.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
