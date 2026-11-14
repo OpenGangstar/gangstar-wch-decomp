@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZNK26CustomSkinnedMeshSceneNode25getTransformedBoundingBoxEv",
         "_ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv",
         "_ZN16CCarMorphingMesh27onPrepareBufferForRenderingEN3irr5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS0_5video12IVideoDriverEj",
         "_ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",

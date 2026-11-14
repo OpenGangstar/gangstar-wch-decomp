@@ -18,6 +18,7 @@
 #include "NativeStdio.h"
 #include "Vector3.h"
 namespace irr { namespace core {
+template<class T> class aabbox3d;
 template<class T> class CMatrix4 {
 public:
     enum eConstructor {
@@ -27,6 +28,7 @@ public:
     CMatrix4(eConstructor constructor = EM4CONST_IDENTITY);
     inline CMatrix4<T>& makeIdentity();
     const T& operator[](unsigned int index) const { return M[index]; }
+    void transformBoxEx(aabbox3d<T>& box) const __attribute__((weak));
     bool getInverse(CMatrix4<T>& out) const __attribute__((weak));
     void transformVect(vector3d<float>& vect) const {
         float vector[3];

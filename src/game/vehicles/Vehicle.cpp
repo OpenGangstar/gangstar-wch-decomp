@@ -64,13 +64,28 @@ public:
     const irr::core::aabbox3d<float>& getBoundingBox() const __attribute__((weak));
 
 private:
-    unsigned char unknown[332];
+    unsigned char unknown[36];
+    irr::core::matrix4 absoluteTransform;
+    unsigned char unknown104[108];
+    mutable irr::core::aabbox3d<float> transformedBounds;
+    unsigned char unknown236[96];
     SkinBoundsSource* skin;
+
+public:
+    const irr::core::aabbox3d<float>& getTransformedBoundingBox() const __attribute__((weak));
 };
 
 const irr::core::aabbox3d<float>& CustomSkinnedMeshSceneNode::getBoundingBox() const
 {
     return skin->mesh->getBoundingBox();
+}
+
+const irr::core::aabbox3d<float>& CustomSkinnedMeshSceneNode::getTransformedBoundingBox() const
+{
+    const irr::scene::ISceneNode* node = reinterpret_cast<const irr::scene::ISceneNode*>(this);
+    transformedBounds = node->getBoundingBox();
+    absoluteTransform.transformBoxEx(transformedBounds);
+    return transformedBounds;
 }
 
 namespace {
