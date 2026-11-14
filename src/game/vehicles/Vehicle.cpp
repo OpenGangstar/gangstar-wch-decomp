@@ -585,6 +585,34 @@ void Vehicle::enableSkinning(bool enabled)
         skinnedMesh->setIsSkinningEnabled(enabled);
 }
 
+void Vehicle::enableBackfaceCulling(bool enabled)
+{
+    GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);
+}
+
+namespace {
+inline __attribute__((always_inline)) void resetLightPair(
+    irr::scene::ISceneNode* const& first, irr::scene::ISceneNode* const& second)
+{
+    if (first && second) {
+        GS3DStuff::SetMaterialFlag(first, irr::video::MaterialFlag512, false);
+        GS3DStuff::SetMaterialFlag(second, irr::video::MaterialFlag512, false);
+        GS3DStuff::SetMaterialFlag(first, irr::video::MaterialFlag2, false);
+        GS3DStuff::SetMaterialFlag(second, irr::video::MaterialFlag2, false);
+        GS3DStuff::SetMaterialType(first, irr::video::MaterialType13);
+        GS3DStuff::SetMaterialType(second, irr::video::MaterialType13);
+        first->setVisible(false);
+        second->setVisible(false);
+    }
+}
+}
+
+void Vehicle::_resetLights()
+{
+    resetLightPair(lightNodes[0], lightNodes[1]);
+    resetLightPair(lightNodes[2], lightNodes[3]);
+}
+
 void Vehicle::rent(bool rented)
 {
     int highlight;
@@ -597,11 +625,6 @@ void Vehicle::rent(bool rented)
     }
     showHighlight(highlight);
     ScriptManager::displayOnMinimap(this, rented, true);
-}
-
-void Vehicle::enableBackfaceCulling(bool enabled)
-{
-    GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);
 }
 
 inline __attribute__((always_inline)) void Vehicle::setWheelVisibility(bool visible)

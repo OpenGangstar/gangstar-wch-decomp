@@ -102,6 +102,7 @@ public:
     int getLeftEnterAnimation();
     void enableSkinning(bool enabled);
     void enableBackfaceCulling(bool enabled);
+    void _resetLights();
     void rent(bool rented);
     void showWheels();
     void hideWheels();
@@ -207,7 +208,9 @@ private:
     unsigned char unknown780[4];
     int sensorContactCount;
     int spawnType;
-    unsigned char unknown792[108];
+    unsigned char unknown792[40];
+    irr::scene::ISceneNode* lightNodes[4];
+    unsigned char unknown848[52];
     bool exploding;
     bool explosionFinished;
     unsigned char unknown902[2];
