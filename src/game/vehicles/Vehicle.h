@@ -52,6 +52,7 @@ public:
     void mobilize();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();
+    void RegisterCarSoundsCallbacks();
     void repair();
     void resetCollisions();
     void setPathToFollow(const Path* path);
