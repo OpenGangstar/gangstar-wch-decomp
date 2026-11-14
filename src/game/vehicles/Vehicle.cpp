@@ -942,6 +942,19 @@ inline __attribute__((always_inline)) void disableWheelCollisions(b2Body* body, 
 }
 }
 
+class CCarFactory : public irr::collada::CColladaFactory {
+public:
+    virtual ~CCarFactory() __attribute__((used));
+    virtual void* createMorph(const irr::collada::CColladaDatabase&, irr::collada::SController*);
+    virtual irr::collada::CSceneNode* createNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
+    virtual void* createSkinNode(const irr::collada::CColladaDatabase&, irr::scene::IColladaMesh*,
+                                 irr::collada::IRootSceneNode*, void*);
+};
+
+inline CCarFactory::~CCarFactory()
+{
+}
+
 void Vehicle::removeWheelCollisions()
 {
     disableWheelCollisions(leftCollisionBody, collisionFilter);

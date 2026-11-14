@@ -32,6 +32,9 @@ SECTIONS
     .vehicle_base_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .vehicle_base_event_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
     .vehicle_base_event_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .car_factory_delete 0x0030b5b0 : { *(.gnu.linkonce.t._ZN11CCarFactoryD0Ev) }
+    .car_factory_destructor 0x0030b600 : { *(.gnu.linkonce.t._ZN11CCarFactoryD1Ev) }
+    .car_factory_vtable 0x004ab2e8 : { *(.gnu.linkonce.d.rel.ro._ZTV11CCarFactory) }
     .vehicle_target_cleanup 0x00310880 : { *(.text._ZN7Vehicle22cleanupTargetDetectionEv) }
     .vehicle_clear_alert 0x003108d4 : { *(.text._ZN7Vehicle12clearOnAlertEv) }
     .vehicle_camera_enter 0x0030a378 : { *(.text._ZN7Vehicle13onCameraEnterEv) }
