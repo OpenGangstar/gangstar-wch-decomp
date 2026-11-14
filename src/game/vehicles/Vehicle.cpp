@@ -78,6 +78,19 @@ float __attribute__((weak)) Vehicle::GetSpeed() const
     return (speed / 1000.0f) * 3600.0f;
 }
 
+float Vehicle::_calculatePercentSkid(float amount)
+{
+    if (skidThreshold * 15.0f < amount) {
+        const float upper = skidThreshold * 35.0f;
+        if (amount >= upper)
+            return 0.6f * turnAmount;
+
+        const float offset = skidThreshold * -15.0f;
+        return ((amount + offset) / (upper + offset)) * turnAmount * 0.6f;
+    }
+    return 0.0f;
+}
+
 bool __attribute__((weak)) Vehicle::isDead()
 {
     return health <= 0;

@@ -149,7 +149,9 @@ private:
     float rotationZ;
     float rotationX;
     float rotationY;
-    unsigned char unknown156[88];
+    unsigned char unknown156[16];
+    float skidThreshold;
+    unsigned char unknown176[68];
     Character* targetingCharacter;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;
@@ -172,6 +174,7 @@ private:
     bool turnLeft;
     unsigned char unknown337[3];
     float turnAmount;
+    float _calculatePercentSkid(float amount);
     unsigned int flags344;
     unsigned char unknown348[8];
     float accelerationAmount;
