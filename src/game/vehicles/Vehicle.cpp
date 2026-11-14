@@ -585,6 +585,20 @@ void Vehicle::enableSkinning(bool enabled)
         skinnedMesh->setIsSkinningEnabled(enabled);
 }
 
+void Vehicle::rent(bool rented)
+{
+    int highlight;
+    if (rented) {
+        flags344 |= 0x10000u;
+        highlight = 1;
+    } else {
+        flags344 &= ~0x10000u;
+        highlight = -1;
+    }
+    showHighlight(highlight);
+    ScriptManager::displayOnMinimap(this, rented, true);
+}
+
 void Vehicle::enableBackfaceCulling(bool enabled)
 {
     GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);
