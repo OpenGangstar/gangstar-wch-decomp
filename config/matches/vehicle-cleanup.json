@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle12clearOnAlertEv",
         "_ZN7Vehicle21removeWheelCollisionsEv",
         "_ZN7Vehicle15_adjustTractionEP6b2Bodyf",
         "_ZN7Vehicle13loadExplosionEPKc",
@@ -233,6 +234,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7Vehicle22cleanupTargetDetectionEv",
         "_ZN3irr7collada16CColladaDatabase17constructAnimatorEPKcPNS0_15CColladaFactoryE",
         "_ZN12SoundManager9playRadioEi",
         "_ZN11Application11GetInstanceEv",
