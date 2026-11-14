@@ -962,6 +962,14 @@ void __attribute__((weak)) Vehicle::stopSiren()
     }
 }
 
+void Vehicle::clearOnAlert()
+{
+    stopSiren();
+    cleanupTargetDetection();
+    alertState = 0;
+    flags344 &= ~0x47000u;
+}
+
 void Vehicle::onCameraEnter()
 {
     const unsigned int radioEnabled = 1u << 23;

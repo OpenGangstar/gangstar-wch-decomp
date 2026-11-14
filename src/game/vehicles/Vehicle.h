@@ -52,6 +52,8 @@ public:
     void mobilize();
     int getMarkerType();
     void stopSiren();
+    void clearOnAlert();
+    void cleanupTargetDetection();
     void onCameraEnter();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();
@@ -149,7 +151,8 @@ private:
     float unknown116;
     float unknown120;
     float unknown124;
-    unsigned char unknown128[16];
+    unsigned char unknown128[12];
+    int alertState;
     float rotationZ;
     float rotationX;
     float rotationY;
