@@ -10622,7 +10622,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003090e9	0x88	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14_cleanupSoundsEv	Vehicle::_cleanupSounds()
 0x00309171	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle14enableSkinningEb	Vehicle::enableSkinning(bool)
 0x00309189	0x60	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11stopDrivingEv	Vehicle::stopDriving()
-0x003091e9	0x48	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE	Vehicle::GetMeshBoundingBox(irr::scene::ISceneNode const*) const
+0x003091e9	0x48	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE	Vehicle::GetMeshBoundingBox(irr::scene::ISceneNode const*) const
 0x00309231	0x84	Vehicle.cpp	game	vehicles	pending	_ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_	CustomSkinnedMeshSceneNode::CustomSkinnedMeshSceneNode(irr::scene::IColladaMesh*, irr::collada::IRootSceneNode*, irr::collada::SNode*, int, irr::core::vector3d<float> const&, irr::core::quaternion const&, irr::core::vector3d<float> const&)
 0x003092b5	0x84	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactory11createMorphERKN3irr7collada16CColladaDatabaseEPNS1_11SControllerE	CCarFactory::createMorph(irr::collada::CColladaDatabase const&, irr::collada::SController*)
 0x00309339	0x1e	Vehicle.cpp	game	vehicles	pending	_ZN16CCarMorphingMesh27onPrepareBufferForRenderingEN3irr5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS0_5video12IVideoDriverEj	CCarMorphingMesh::onPrepareBufferForRendering(irr::scene::IColladaMesh::E_PREPARE_BUFFER_STEP, irr::video::IVideoDriver*, unsigned int)

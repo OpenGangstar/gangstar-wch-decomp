@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE",
         "_ZN7Vehicle12_resetLightsEv",
         "_ZN7Vehicle4rentEb",
         "_ZN7Vehicle13getMarkerTypeEv",
@@ -221,6 +222,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv",
         "_ZN9GS3DStuff15SetMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
         "_ZN11LevelObject13showHighlightEi",
         "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
