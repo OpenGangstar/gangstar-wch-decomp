@@ -420,8 +420,8 @@ LevelObject* GameObjectManager::SpawnGameObject(int type)
 
 int GameObjectManager::GetMetatypeFromName(const char* name)
 {
-    int bestLength = 0;
     int result = -1;
+    int bestLength = 0;
     for (int i = 0; i < metatypeCount; ++i) {
         BufferStream buffer(1, metatypeSizes[i], metatypeData[i]);
         DataStream stream(buffer, DataStream::BigEndian);

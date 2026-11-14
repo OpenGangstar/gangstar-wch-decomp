@@ -103,7 +103,9 @@ public:
     void UpdateSceneNode();
     unsigned char unknown8[12];
     irr::scene::ISceneNode* sceneNode;
-    unsigned char unknown24[196];
+    unsigned char unknown24[176];
+    Vehicle* lastHitVehicle;
+    unsigned char unknown204[16];
     int maximumHealth;
     int health;
     unsigned char unknown228[12];
