@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle6enableEv",
         "_ZN7Vehicle16initializeDriverEv",
         "_ZNK26CustomSkinnedMeshSceneNode25getTransformedBoundingBoxEv",
         "_ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv",
@@ -249,6 +250,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11LevelObject6enableEv",
+        "_ZN7Vehicle6repairEv",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character4showEv",
         "_ZN3irr7collada20CColladaMorphingMesh27onPrepareBufferForRenderingENS_5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS_5video12IVideoDriverEj",

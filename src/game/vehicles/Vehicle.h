@@ -43,6 +43,7 @@ public:
     void resetVehicle();
     void DestroyWheels();
     virtual void WarmUp();
+    virtual void enable();
     virtual void Stop();
     virtual void SetPosition(const irr::core::vector3d<float>& position);
     virtual void SetRotation(const irr::core::quaternion& rotation);
@@ -207,7 +208,8 @@ private:
     b2Body* collisionBody;
     b2Body* leftCollisionBody;
     b2Body* rightCollisionBody;
-    unsigned char unknown644[32];
+    unsigned char unknown644[28];
+    irr::scene::ISceneNode* enabledSceneNode;
     irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;
     Character* driver;
