@@ -25,6 +25,10 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN20EvVehicleDeactivatedD0Ev",
+        "_ZN20EvVehicleDeactivatedD1Ev",
+        "_ZN18EvVehicleDestroyedD0Ev",
+        "_ZN18EvVehicleDestroyedD1Ev",
         "_ZN7Vehicle22cleanupTargetDetectionEv",
         "_ZN7Vehicle12clearOnAlertEv",
         "_ZN7Vehicle21removeWheelCollisionsEv",
