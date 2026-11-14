@@ -88,6 +88,7 @@ SECTIONS
     .vehicle_get_left_enter_animation 0x0030902c : { *(.text._ZN7Vehicle21getLeftEnterAnimationEv) }
     .vehicle_set_door_anim 0x0030a52c : { *(.text._ZN7Vehicle11setDoorAnimEPKcb) }
     .vehicle_close_door 0x0030a58c : { *(.text._ZN7Vehicle9closeDoorEb) }
+    .vehicle_mesh_bounds 0x003091e8 : { *(.text._ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE) }
     .vehicle_skinning 0x00309170 : { *(.text._ZN7Vehicle14enableSkinningEb) }
     .vehicle_reset_lights 0x0030805c : { *(.text._ZN7Vehicle12_resetLightsEv) }
     .vehicle_rent 0x00308128 : { *(.text._ZN7Vehicle4rentEb) }

@@ -585,6 +585,17 @@ void Vehicle::enableSkinning(bool enabled)
         skinnedMesh->setIsSkinningEnabled(enabled);
 }
 
+const irr::core::aabbox3d<float>& Vehicle::GetMeshBoundingBox(
+    const irr::scene::ISceneNode* node) const
+{
+    const int colladaMeshNode = 0x6d656164;
+    const int colladaSkinnedNode = 0x73656164;
+    if (node->getType() == colladaMeshNode || node->getType() == colladaSkinnedNode)
+        return node->getTransformedBoundingBox();
+
+    return GetMeshBoundingBox(node->getChildren().begin()->value);
+}
+
 void Vehicle::enableBackfaceCulling(bool enabled)
 {
     GS3DStuff::SetMaterialFlag(exterior, irr::video::MaterialFlag512, enabled);

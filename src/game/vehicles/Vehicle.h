@@ -101,6 +101,7 @@ public:
     int getRightEnterAnimation();
     int getLeftEnterAnimation();
     void enableSkinning(bool enabled);
+    const irr::core::aabbox3d<float>& GetMeshBoundingBox(const irr::scene::ISceneNode* node) const;
     void enableBackfaceCulling(bool enabled);
     void _resetLights();
     void rent(bool rented);
