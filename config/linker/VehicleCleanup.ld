@@ -4,12 +4,15 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 strcmp = 0x001c4658;
 puts = 0x001c41b4;
+__aeabi_fcmpge = 0x001c4364;
+__aeabi_fcmplt = 0x001c479c;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .vehicle_percent_skid 0x00307d7c : { *(.text._ZN7Vehicle21_calculatePercentSkidEf) }
     .vehicle_marker_type 0x00307b9c : { *(.text._ZN7Vehicle13getMarkerTypeEv) }
     .vehicle_stop_siren 0x00308170 : { *(.text._ZN7Vehicle9stopSirenEv) }
     .vehicle_sound_register 0x003083a4 : { *(.text._ZN7Vehicle26RegisterCarSoundsCallbacksEv) }

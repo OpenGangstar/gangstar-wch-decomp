@@ -10558,7 +10558,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307d31	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10accelerateEf	Vehicle::accelerate(float)
 0x00307d49	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5brakeEf	Vehicle::brake(float)
 0x00307d61	0x1a	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle4turnEbf	Vehicle::turn(bool, float)
-0x00307d7d	0x94	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle21_calculatePercentSkidEf	Vehicle::_calculatePercentSkid(float)
+0x00307d7d	0x94	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle21_calculatePercentSkidEf	Vehicle::_calculatePercentSkid(float)
 0x00307e11	0x2	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12_shiftWeightERN3irr4core8vector3dIfEEf	Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
 0x00307e15	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle12getEnterAnimEv	Vehicle::getEnterAnim() const
 0x00307e1d	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle11getExitAnimEv	Vehicle::getExitAnim() const
