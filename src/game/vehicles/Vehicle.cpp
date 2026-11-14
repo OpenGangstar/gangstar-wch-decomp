@@ -821,3 +821,8 @@ void Vehicle::RegisterCarSoundsCallbacks()
     callbacks.setVolume = SoundManager::setVolumeCallback;
     CarSounds::RegisterCallbacks(callbacks);
 }
+
+int __attribute__((weak)) Vehicle::getMarkerType()
+{
+    return -1;
+}
