@@ -10700,7 +10700,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00310909	0x474	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle5shootEv	Vehicle::shoot()
 0x00310d7d	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN20EvVehicleDeactivatedD0Ev	EvVehicleDeactivated::~EvVehicleDeactivated()
 0x00310da9	0x24	Vehicle.cpp	game	vehicles	matched	_ZN20EvVehicleDeactivatedD1Ev	EvVehicleDeactivated::~EvVehicleDeactivated()
-0x00310dcd	0xa8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle5cleanEv	Vehicle::clean()
+0x00310dcd	0xa8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5cleanEv	Vehicle::clean()
 0x00310e75	0x134	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle9OnDespawnEv	Vehicle::OnDespawn()
 0x00310fa9	0x1a0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle7disableEv	Vehicle::disable()
 0x00311149	0xb8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12startDrivingEv	Vehicle::startDriving()

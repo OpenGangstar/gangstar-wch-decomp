@@ -46,6 +46,7 @@ public:
     virtual void enable();
     virtual void OnSpawn();
     virtual void init();
+    virtual void clean();
     void CreateBody();
     virtual void Stop();
     virtual void SetPosition(const irr::core::vector3d<float>& position);

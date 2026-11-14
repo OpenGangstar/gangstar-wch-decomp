@@ -12,6 +12,7 @@
 #include "CarSoundCallbacks.h"
 #include "../world/SceneNodeManager.h"
 #include "../ai/NPC.h"
+#include "../ai/AIManager.h"
 #include "../characters/PlayerTest.h"
 #include "../characters/PhysicAttributes.h"
 #include "../world/GameObjectManager.h"
@@ -1223,11 +1224,39 @@ extern "C" void _ZN12EvNPCVehicleD1Ev(void*) __attribute__((weak));
 
 class EvVehicleDeactivated : public IEvent {
 public:
+    explicit EvVehicleDeactivated(Vehicle* vehicle) : vehicle(vehicle) { eventID = 21; }
+    Vehicle* vehicle;
     virtual ~EvVehicleDeactivated() __attribute__((used));
 };
 
 inline EvVehicleDeactivated::~EvVehicleDeactivated()
 {
+}
+
+extern "C" void _ZN20EvVehicleDeactivatedD1Ev(void*) __attribute__((weak));
+
+void Vehicle::clean()
+{
+    AIManager::getInstance()->removeAI(this);
+    if (collisionBody) {
+        DestroyWheels();
+        if (collisionBody->data) {
+            ::operator delete(collisionBody->data);
+            collisionBody->data = 0;
+        }
+        PhysicAttributes::s_world->DestroyBody(collisionBody);
+        collisionBody = 0;
+        enabledSceneNode->setVisible(false);
+        if (unknown24) {
+            delete unknown24;
+            unknown24 = 0;
+        }
+        EventManager* events = Application::GetInstance()->GetEventManager();
+        unsigned int storage[sizeof(EvVehicleDeactivated) / sizeof(unsigned int)];
+        EvVehicleDeactivated* event = new (storage) EvVehicleDeactivated(this);
+        events->raise(*event);
+        _ZN20EvVehicleDeactivatedD1Ev(event);
+    }
 }
 
 class EvVehicleDestroyed : public IEvent {
