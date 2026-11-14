@@ -548,6 +548,17 @@ void Vehicle::WarmUp()
         SceneNodeManager::getInstance()->manage(s_nodePoolID[objectType], this, 19);
 }
 
+void Vehicle::initializeDriver()
+{
+    if ((flags344 & 0x800u) && !unknown28)
+        resetDriver();
+
+    if (driver) {
+        driver->positionInVehicle(true);
+        driver->show();
+    }
+}
+
 void Vehicle::resetDriver()
 {
     setDriver(GameObjectManager::s_gom->spawnNPCInVehicle(this, driverMetatype, driverBehavior));

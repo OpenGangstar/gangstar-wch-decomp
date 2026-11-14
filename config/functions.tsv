@@ -10668,7 +10668,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030a605	0x9c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle21removeWheelCollisionsEv	Vehicle::removeWheelCollisions()
 0x0030a6a1	0x90	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	CCarFactory::createNode(irr::collada::CColladaDatabase const&, irr::collada::SNode*)
 0x0030a731	0x18c	Vehicle.cpp	game	vehicles	pending	_ZNK7Vehicle11isDoorClearEbP6b2Body	Vehicle::isDoorClear(bool, b2Body*) const
-0x0030a8bd	0x36	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16initializeDriverEv	Vehicle::initializeDriver()
+0x0030a8bd	0x36	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle16initializeDriverEv	Vehicle::initializeDriver()
 0x0030a8f5	0x60	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle10tagForKillEb	Vehicle::tagForKill(bool)
 0x0030a955	0x4e8	Vehicle.cpp	game	vehicles	pending	_ZN7VehicleC1Ei	Vehicle::Vehicle(int)
 0x0030a955	0x4e8	Vehicle.cpp	game	vehicles	pending	_ZN7VehicleC2Ei	Vehicle::Vehicle(int)
