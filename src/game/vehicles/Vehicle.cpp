@@ -34,6 +34,7 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../core/PhysicsBodyDef.h"
 #include "../rendering/GS3DStuff.h"
 
+extern "C" float __aeabi_fmul(float, float);
 extern "C" int puts(const char*);
 void aTransitionCallback(irr::scene::ITimelineController*, void*);
 
@@ -202,6 +203,30 @@ struct GearProfile {
 };
 extern GearProfile profiles[] __attribute__((visibility("hidden")));
 } } }
+
+int Vehicle::getVelDirec()
+{
+    if (isEnabled()) {
+        const b2Vec2 linearVelocity = collisionBody->linearVelocity;
+        const irr::core::vector3d<float> velocity(linearVelocity.x, linearVelocity.y, 0.0f);
+        const irr::core::vector3d<float> front = GetFront();
+        const float frontX = front.X;
+        const float frontY = front.Y;
+        const float frontZ = front.Z;
+        if (velocity.getLength() > 0.00001f) {
+            const float x = __aeabi_fmul(frontX, velocity.X);
+            const float y = __aeabi_fmul(frontY, velocity.Y);
+            const float z = frontZ * velocity.Z;
+            const float alignment = (x + y) + z;
+            if (alignment == 0.0f)
+                return 2;
+            if (alignment > 0.0f)
+                return 1;
+            return 3;
+        }
+    }
+    return 0;
+}
 
 void Vehicle::_shiftGears(unsigned int speed)
 {
