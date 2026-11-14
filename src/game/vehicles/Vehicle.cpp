@@ -548,6 +548,20 @@ void Vehicle::WarmUp()
         SceneNodeManager::getInstance()->manage(s_nodePoolID[objectType], this, 19);
 }
 
+void Vehicle::enable()
+{
+    const bool wasEnabled = isEnabled();
+    LevelObject::enable();
+    flags344 &= ~(1u << 28);
+    if (!wasEnabled) {
+        init();
+        enabledSceneNode->setVisible(true);
+        unknown4 |= 4u;
+    }
+    repair();
+    hasBeenStolen = false;
+}
+
 void Vehicle::initializeDriver()
 {
     if ((flags344 & 0x800u) && !unknown28)
