@@ -25,6 +25,8 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN11CCarFactoryD0Ev",
+        "_ZN11CCarFactoryD1Ev",
         "_ZN20EvVehicleDeactivatedD0Ev",
         "_ZN20EvVehicleDeactivatedD1Ev",
         "_ZN18EvVehicleDestroyedD0Ev",

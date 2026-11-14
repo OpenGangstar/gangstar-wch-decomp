@@ -10677,9 +10677,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030b22d	0xe4	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE	Vehicle::getNearestDoorDummy(irr::core::vector3d<float>)
 0x0030b311	0x28c	Vehicle.cpp	game	vehicles	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0030b59d	0x14	Vehicle.cpp	game	vehicles	pending	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE
-0x0030b5b1	0x2c	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactoryD0Ev	CCarFactory::~CCarFactory()
+0x0030b5b1	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactoryD0Ev	CCarFactory::~CCarFactory()
 0x0030b5dd	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_1	__tcf_1
-0x0030b601	0x24	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactoryD1Ev	CCarFactory::~CCarFactory()
+0x0030b601	0x24	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactoryD1Ev	CCarFactory::~CCarFactory()
 0x0030b625	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_2	__tcf_2
 0x0030b649	0x44	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11SetRotationERKN3irr4core10quaternionE	Vehicle::SetRotation(irr::core::quaternion const&)
 0x0030b68d	0x318	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle17ResetBodyPositionEv	Vehicle::ResetBodyPosition()
