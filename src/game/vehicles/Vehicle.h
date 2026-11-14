@@ -64,6 +64,9 @@ public:
     bool isLoopingOnPathToFollow() const;
     void setSpeed();
     void loopPathToFollow(bool loop);
+    void _yaw(float radians);
+    void _roll(float radians);
+    void _pitch(float radians);
     void _shiftWeight(irr::core::vector3d<float>&, float);
     const char* getEnterAnim() const;
     const char* getExitAnim() const;
@@ -132,15 +135,9 @@ private:
     float unknown56;
     float unknown60;
     float unknown64;
-    float unknown68;
-    float unknown72;
-    float unknown76;
-    float unknown80;
-    float unknown84;
-    float unknown88;
-    float unknown92;
-    float unknown96;
-    float unknown100;
+    irr::core::vector3d<float> basisY;
+    irr::core::vector3d<float> basisX;
+    irr::core::vector3d<float> basisZ;
     unsigned char unknown104[12];
     float unknown116;
     float unknown120;

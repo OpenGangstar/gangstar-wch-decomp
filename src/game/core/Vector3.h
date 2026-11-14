@@ -45,6 +45,9 @@ public:
     T getDistanceFrom(const vector3d<T>& other) const {
         return vector3d<T>(X - other.X, Y - other.Y, Z - other.Z).getLength();
     }
+    void rotateXYBy(double degrees, const vector3d<T>& center) __attribute__((weak));
+    void rotateXZBy(double degrees, const vector3d<T>& center) __attribute__((weak));
+    void rotateYZBy(double degrees, const vector3d<T>& center) __attribute__((weak));
 };
 template<class T> T lerp(const T&, const T&, float) __attribute__((weak));
 } }

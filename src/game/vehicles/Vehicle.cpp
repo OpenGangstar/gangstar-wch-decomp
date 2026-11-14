@@ -111,6 +111,33 @@ bool __attribute__((weak)) Vehicle::isPhotographed() const
     return (flags344 & photographedFlag) != 0;
 }
 
+namespace {
+template<void (irr::core::vector3d<float>::*Rotate)(
+    double, const irr::core::vector3d<float>&)>
+inline __attribute__((always_inline)) void rotateBasisPair(
+    irr::core::vector3d<float>& first, irr::core::vector3d<float>& second, float radians)
+{
+    const double degrees = radians * 57.2957763671875f;
+    (first.*Rotate)(degrees, irr::core::vector3d<float>());
+    (second.*Rotate)(degrees, irr::core::vector3d<float>());
+}
+}
+
+void Vehicle::_yaw(float radians)
+{
+    rotateBasisPair<&irr::core::vector3d<float>::rotateXYBy>(basisY, basisX, radians);
+}
+
+void Vehicle::_roll(float radians)
+{
+    rotateBasisPair<&irr::core::vector3d<float>::rotateXZBy>(basisX, basisZ, radians);
+}
+
+void Vehicle::_pitch(float radians)
+{
+    rotateBasisPair<&irr::core::vector3d<float>::rotateYZBy>(basisY, basisZ, radians);
+}
+
 void Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
 {
 }
@@ -443,20 +470,20 @@ void Vehicle::resetPreviousPos()
 void Vehicle::resetVehicle()
 {
     SetPosition(irr::core::vector3d<float>(-42205.0f, -27279.0f, 678.0f));
-    unknown80 = 1.0f;
-    unknown72 = 1.0f;
-    unknown100 = 1.0f;
+    basisX.X = 1.0f;
+    basisY.Y = 1.0f;
+    basisZ.Z = 1.0f;
     rotationZ = 0.0f;
     rotationX = 0.0f;
     rotationY = 0.0f;
     unknown752 = 0.0f;
     unknown756 = 0.0f;
-    unknown84 = 0.0f;
-    unknown88 = 0.0f;
-    unknown68 = 0.0f;
-    unknown76 = 0.0f;
-    unknown92 = 0.0f;
-    unknown96 = 0.0f;
+    basisX.Y = 0.0f;
+    basisX.Z = 0.0f;
+    basisY.X = 0.0f;
+    basisY.Z = 0.0f;
+    basisZ.X = 0.0f;
+    basisZ.Y = 0.0f;
     unknown56 = 0.0f;
     unknown60 = 1.5f;
     unknown64 = 0.0f;

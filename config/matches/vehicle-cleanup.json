@@ -25,6 +25,9 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle4_yawEf",
+        "_ZN7Vehicle5_rollEf",
+        "_ZN7Vehicle6_pitchEf",
         "_ZN7Vehicle21_calculatePercentSkidEf",
         "_ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE",
         "_ZN7Vehicle12_resetLightsEv",

@@ -7,11 +7,15 @@ puts = 0x001c41b4;
 __aeabi_fcmpge = 0x001c4364;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fdiv = 0x001c4520;
+__aeabi_f2d = 0x001c48f8;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .vehicle_yaw 0x0030949c : { *(.text._ZN7Vehicle4_yawEf) }
+    .vehicle_roll 0x00309504 : { *(.text._ZN7Vehicle5_rollEf) }
+    .vehicle_pitch 0x0030956c : { *(.text._ZN7Vehicle6_pitchEf) }
     .vehicle_percent_skid 0x00307d7c : { *(.text._ZN7Vehicle21_calculatePercentSkidEf) }
     .vehicle_marker_type 0x00307b9c : { *(.text._ZN7Vehicle13getMarkerTypeEv) }
     .vehicle_stop_siren 0x00308170 : { *(.text._ZN7Vehicle9stopSirenEv) }
