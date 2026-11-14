@@ -10588,7 +10588,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00308015	0x30	Vehicle.cpp	game	vehicles	matched	__tcf_4	__tcf_4
 0x00308045	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle21enableBackfaceCullingEb	Vehicle::enableBackfaceCulling(bool)
 0x0030805d	0xca	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12_resetLightsEv	Vehicle::_resetLights()
-0x00308129	0x48	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4rentEb	Vehicle::rent(bool)
+0x00308129	0x48	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle4rentEb	Vehicle::rent(bool)
 0x00308171	0x44	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9stopSirenEv	Vehicle::stopSiren()
 0x003081b5	0x5c	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactory11getInstanceEv	CCarFactory::getInstance()
 0x00308211	0x1c	Vehicle.cpp	game	vehicles	matched	__tcf_3	__tcf_3

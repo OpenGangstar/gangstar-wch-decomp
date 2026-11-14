@@ -102,6 +102,7 @@ public:
     int getLeftEnterAnimation();
     void enableSkinning(bool enabled);
     void enableBackfaceCulling(bool enabled);
+    void rent(bool rented);
     void showWheels();
     void hideWheels();
     void _notifyTargeted(bool targeted, Character* source);
