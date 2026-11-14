@@ -19,6 +19,7 @@ SECTIONS
     .vehicle_setYaw 0x0030a054 : { *(.text._ZN7Vehicle7_setYawEf) }
     .vehicle_setRoll 0x0030a0d0 : { *(.text._ZN7Vehicle8_setRollEf) }
     .vehicle_setPitch 0x0030a14c : { *(.text._ZN7Vehicle9_setPitchEf) }
+    .vehicle_load_explosion 0x00309044 : { *(.text._ZN7Vehicle13loadExplosionEPKc) }
     .vehicle_camera_enter 0x0030a378 : { *(.text._ZN7Vehicle13onCameraEnterEv) }
     .vehicle_percent_skid 0x00307d7c : { *(.text._ZN7Vehicle21_calculatePercentSkidEf) }
     .vehicle_marker_type 0x00307b9c : { *(.text._ZN7Vehicle13getMarkerTypeEv) }

@@ -722,6 +722,14 @@ inline __attribute__((always_inline)) void Vehicle::setWheelVisibility(bool visi
     GS3DStuff::SetVisibility(wheelNodes[3], visible);
 }
 
+void Vehicle::loadExplosion(const char* name)
+{
+    explosionAnimator = irr::collada::CColladaDatabase::constructAnimator(
+        name, &irr::collada::CColladaDatabase::DefaultFactory);
+    if (explosionAnimator)
+        explosionTimeline = explosionAnimator->getTimelineCtrl();
+}
+
 void Vehicle::showWheels()
 {
     setWheelVisibility(true);

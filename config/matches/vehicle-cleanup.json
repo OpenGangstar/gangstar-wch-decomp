@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle13loadExplosionEPKc",
         "_ZN7Vehicle13onCameraEnterEv",
         "_ZN7Vehicle7_setYawEf",
         "_ZN7Vehicle8_setRollEf",
@@ -230,6 +231,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN3irr7collada16CColladaDatabase17constructAnimatorEPKcPNS0_15CColladaFactoryE",
         "_ZN12SoundManager9playRadioEi",
         "_ZN11Application11GetInstanceEv",
         "_ZN11CHudManager4hideEv",
