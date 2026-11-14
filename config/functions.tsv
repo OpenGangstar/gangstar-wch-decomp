@@ -10584,7 +10584,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307fa1	0xa	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle16setHasBeenStolenEv	Vehicle::setHasBeenStolen()
 0x00307fad	0x8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle16getHasBeenStolenEv	Vehicle::getHasBeenStolen()
 0x00307fb5	0x10	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11getUniqueIdEv	Vehicle::getUniqueId()
-0x00307fc5	0x50	Vehicle.cpp	game	vehicles	pending	_ZNK26CustomSkinnedMeshSceneNode25getTransformedBoundingBoxEv	CustomSkinnedMeshSceneNode::getTransformedBoundingBox() const
+0x00307fc5	0x50	Vehicle.cpp	game	vehicles	matched	_ZNK26CustomSkinnedMeshSceneNode25getTransformedBoundingBoxEv	CustomSkinnedMeshSceneNode::getTransformedBoundingBox() const
 0x00308015	0x30	Vehicle.cpp	game	vehicles	matched	__tcf_4	__tcf_4
 0x00308045	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle21enableBackfaceCullingEb	Vehicle::enableBackfaceCulling(bool)
 0x0030805d	0xca	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12_resetLightsEv	Vehicle::_resetLights()

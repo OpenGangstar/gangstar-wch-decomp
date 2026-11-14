@@ -136,9 +136,8 @@ bool AchievementManager::IsAchievementCompleted(int id)
 
 int AchievementManager::GetNumAchievementCompleted()
 {
-    int i = 0;
     int completed = 0;
-    for (; i < s_achievementCount; ++i) {
+    for (int i = 0; i < s_achievementCount; ++i) {
         if (s_achievements[i].flags & 2)
             ++completed;
     }
