@@ -790,6 +790,15 @@ void Vehicle::resetCollisions()
     }
 }
 
+void __attribute__((weak)) Vehicle::stopSiren()
+{
+    const unsigned int sirenPlaying = 1u << 27;
+    if (flags344 & sirenPlaying) {
+        SoundManager::getInstance()->stop(241, sirenChannel, 1000);
+        flags344 &= ~sirenPlaying;
+    }
+}
+
 void Vehicle::UnRegisterCarSoundsCallbacks()
 {
     CarSounds::UnregisterCallbacks();
