@@ -9,6 +9,7 @@
  */
 
 #include "Vehicle.h"
+#include "../world/SceneNodeManager.h"
 #include "../ai/NPC.h"
 #include "../characters/PlayerTest.h"
 #include "../characters/PhysicAttributes.h"
@@ -393,6 +394,13 @@ void Vehicle::setDriver(Character* value)
         driverMetatype = driver->GetMetatype();
         driverBehavior = driver->driverBehavior;
     }
+}
+
+void Vehicle::WarmUp()
+{
+    LevelObject::WarmUp();
+    if (hasSceneNodePool())
+        SceneNodeManager::getInstance()->manage(s_nodePoolID[objectType], this, 19);
 }
 
 void Vehicle::resetDriver()

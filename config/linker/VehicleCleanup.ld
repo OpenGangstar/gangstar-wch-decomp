@@ -10,6 +10,7 @@ __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .vehicle_warm_up 0x0030a1c8 : { *(.text._ZN7Vehicle6WarmUpEv) }
     .vehicle_reset_previous_position 0x00309d2c : { *(.text._ZN7Vehicle16resetPreviousPosEv) }
     .vehicle_check_destination 0x00309428 : { *(.text._ZN7Vehicle16CheckDestinationEv) }
     .vehicle_flee 0x003093c4 : { *(.text._ZN7Vehicle4fleeERKN3irr4core8vector3dIfEE) }
