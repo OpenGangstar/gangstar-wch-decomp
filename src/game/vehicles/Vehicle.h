@@ -112,6 +112,7 @@ public:
     void enableBackfaceCulling(bool enabled);
     void _resetLights();
     void rent(bool rented);
+    void loadExplosion(const char* name);
     void showWheels();
     void hideWheels();
     void _notifyTargeted(bool targeted, Character* source);
@@ -225,7 +226,10 @@ private:
     unsigned char unknown908[8];
     int maxHealth;
     int health;
-    unsigned char unknown924[40];
+    unsigned char unknown924[28];
+    irr::scene::ISceneNodeAnimator* explosionAnimator;
+    irr::scene::ITimelineController* explosionTimeline;
+    unsigned char unknown960[4];
     int animationClipIndex;
     int driverMetatype;
     int driverBehavior;

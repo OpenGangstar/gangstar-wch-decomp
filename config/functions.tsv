@@ -10616,7 +10616,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00308ffd	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle35getLeftCloseDoorFromInsideAnimationEv	Vehicle::getLeftCloseDoorFromInsideAnimation()
 0x00309015	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle22getRightEnterAnimationEv	Vehicle::getRightEnterAnimation()
 0x0030902d	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle21getLeftEnterAnimationEv	Vehicle::getLeftEnterAnimation()
-0x00309045	0x34	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13loadExplosionEPKc	Vehicle::loadExplosion(char const*)
+0x00309045	0x34	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13loadExplosionEPKc	Vehicle::loadExplosion(char const*)
 0x00309079	0x36	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10showWheelsEv	Vehicle::showWheels()
 0x003090b1	0x36	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10hideWheelsEv	Vehicle::hideWheels()
 0x003090e9	0x88	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14_cleanupSoundsEv	Vehicle::_cleanupSounds()

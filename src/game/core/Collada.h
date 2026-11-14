@@ -61,6 +61,7 @@ public:
 class CColladaDatabase {
 public:
     static CColladaFactory DefaultFactory;
+    static scene::ISceneNodeAnimator* constructAnimator(const char* name, CColladaFactory* factory);
     static scene::ISceneNode* constructNode(const char* scene, const char* node, CColladaFactory* factory);
     static scene::ISceneNode* constructScene(const char* name, bool flag, CColladaFactory* factory);
     static scene::ISceneNode* constructScene(const char* name, CColladaFactory* factory);
