@@ -20,6 +20,7 @@ public:
     virtual int getMaxHealth() const;
     virtual int getHealth() const;
     virtual bool isDead();
+    virtual float GetSpeed() const;
     virtual void shooted(int amount, LevelObject* source);
     virtual void applyDamage(int amount, LevelObject* source, bool flag);
     void postExplosion();
@@ -211,7 +212,8 @@ private:
     int animationClipIndex;
     int driverMetatype;
     int driverBehavior;
-    unsigned char unknown976[20];
+    float speed;
+    unsigned char unknown980[16];
     b2FilterData collisionFilter;
     bool leftDoorClosed;
     bool rightDoorClosed;
