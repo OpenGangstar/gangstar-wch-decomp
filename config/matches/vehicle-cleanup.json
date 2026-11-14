@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle15_adjustTractionEP6b2Bodyf",
         "_ZN7Vehicle13loadExplosionEPKc",
         "_ZN7Vehicle13onCameraEnterEv",
         "_ZN7Vehicle7_setYawEf",

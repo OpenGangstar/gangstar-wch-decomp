@@ -71,6 +71,7 @@ public:
     void _setYaw(float radians);
     void _setRoll(float radians);
     void _setPitch(float radians);
+    void _adjustTraction(b2Body* body, float amount);
     void _shiftWeight(irr::core::vector3d<float>&, float);
     const char* getEnterAnim() const;
     const char* getExitAnim() const;
