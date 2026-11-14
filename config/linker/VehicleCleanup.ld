@@ -22,6 +22,16 @@ SECTIONS
     .vehicle_adjust_traction 0x003099dc : { *(.text._ZN7Vehicle15_adjustTractionEP6b2Bodyf) }
     .vehicle_remove_wheel_collisions 0x0030a604 : { *(.text._ZN7Vehicle21removeWheelCollisionsEv) }
     .vehicle_load_explosion 0x00309044 : { *(.text._ZN7Vehicle13loadExplosionEPKc) }
+    .EvVehicleDeactivated_d0 0x00310d7c : { *(.gnu.linkonce.t._ZN20EvVehicleDeactivatedD0Ev) }
+    .EvVehicleDeactivated_d1 0x00310da8 : { *(.gnu.linkonce.t._ZN20EvVehicleDeactivatedD1Ev) }
+    .EvVehicleDeactivated_vtable 0x004ab2b8 : { *(.gnu.linkonce.d.rel.ro._ZTV20EvVehicleDeactivated) }
+    .EvVehicleDestroyed_d0 0x00311200 : { *(.gnu.linkonce.t._ZN18EvVehicleDestroyedD0Ev) }
+    .EvVehicleDestroyed_d1 0x0031122c : { *(.gnu.linkonce.t._ZN18EvVehicleDestroyedD1Ev) }
+    .EvVehicleDestroyed_vtable 0x004ab2d0 : { *(.gnu.linkonce.d.rel.ro._ZTV18EvVehicleDestroyed) }
+    .vehicle_base_event_id 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
+    .vehicle_base_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .vehicle_base_event_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .vehicle_base_event_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
     .vehicle_target_cleanup 0x00310880 : { *(.text._ZN7Vehicle22cleanupTargetDetectionEv) }
     .vehicle_clear_alert 0x003108d4 : { *(.text._ZN7Vehicle12clearOnAlertEv) }
     .vehicle_camera_enter 0x0030a378 : { *(.text._ZN7Vehicle13onCameraEnterEv) }

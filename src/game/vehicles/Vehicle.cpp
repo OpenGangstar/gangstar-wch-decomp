@@ -19,6 +19,7 @@
 #include "../audio/SoundManager.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
+#include "../core/GameEventMethods.h"
 #include "../characters/NPCVehicleEvent.h"
 #include "../hud/CHudManager.h"
 #include "../core/LocalStringStartupStorage.h"
@@ -966,6 +967,24 @@ void __attribute__((weak)) Vehicle::stopSiren()
 
 extern "C" void _ZN12EvNPCVehicleD1Ev(void*) __attribute__((weak));
 
+
+class EvVehicleDeactivated : public IEvent {
+public:
+    virtual ~EvVehicleDeactivated() __attribute__((used));
+};
+
+inline EvVehicleDeactivated::~EvVehicleDeactivated()
+{
+}
+
+class EvVehicleDestroyed : public IEvent {
+public:
+    virtual ~EvVehicleDestroyed() __attribute__((used));
+};
+
+inline EvVehicleDestroyed::~EvVehicleDestroyed()
+{
+}
 
 void Vehicle::cleanupTargetDetection()
 {
