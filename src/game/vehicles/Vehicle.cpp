@@ -940,6 +940,50 @@ inline __attribute__((always_inline)) void disableWheelCollisions(b2Body* body, 
 }
 }
 
+namespace irr {
+namespace video { class IVideoDriver; }
+namespace scene {
+class IColladaMesh {
+public:
+    enum E_PREPARE_BUFFER_STEP {};
+};
+}
+namespace collada {
+// Partial layout for the render preparation call.
+class CColladaMorphingMesh {
+public:
+    unsigned int onPrepareBufferForRendering(
+        scene::IColladaMesh::E_PREPARE_BUFFER_STEP, video::IVideoDriver*, unsigned int);
+
+private:
+    unsigned char unknown[88];
+};
+}
+}
+
+class CCarMorphingMesh : public irr::collada::CColladaMorphingMesh {
+public:
+    unsigned int onPrepareBufferForRendering(
+        irr::scene::IColladaMesh::E_PREPARE_BUFFER_STEP step,
+        irr::video::IVideoDriver* driver, unsigned int buffer) __attribute__((weak));
+
+private:
+    bool prepareBuffer;
+};
+
+unsigned int CCarMorphingMesh::onPrepareBufferForRendering(
+    irr::scene::IColladaMesh::E_PREPARE_BUFFER_STEP step,
+    irr::video::IVideoDriver* driver, unsigned int buffer)
+{
+    if (!prepareBuffer)
+        return 16;
+
+    const unsigned int result =
+        CColladaMorphingMesh::onPrepareBufferForRendering(step, driver, buffer);
+    prepareBuffer = false;
+    return result;
+}
+
 class CCarFactory : public irr::collada::CColladaFactory {
 public:
     virtual ~CCarFactory() __attribute__((used));
