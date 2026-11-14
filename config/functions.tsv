@@ -10540,7 +10540,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307a99	0x14	Transformation.cpp	game	characters	matched	_GLOBAL__I__ZN14TransformationC2Ei	_GLOBAL__I__ZN14TransformationC2Ei
 0x00307aad	0x24	Transformation.cpp	game	characters	matched	__tcf_1	__tcf_1
 0x00307ad1	0x30	Transformation.cpp	game	characters	matched	__tcf_2	__tcf_2
-0x00307b01	0x16	Vehicle.cpp	game	vehicles	pending	_ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv	CustomSkinnedMeshSceneNode::getBoundingBox() const
+0x00307b01	0x16	Vehicle.cpp	game	vehicles	matched	_ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv	CustomSkinnedMeshSceneNode::getBoundingBox() const
 0x00307b19	0x8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11getSkinMeshEv	Vehicle::getSkinMesh()
 0x00307b21	0x10	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12photographedEv	Vehicle::photographed()
 0x00307b31	0x14	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle17clearPhotographedEv	Vehicle::clearPhotographed()
