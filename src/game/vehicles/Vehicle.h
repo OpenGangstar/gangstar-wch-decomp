@@ -50,6 +50,7 @@ public:
     void setDriver(Character* value);
     void resetDriver();
     void mobilize();
+    void stopSiren();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();
     void RegisterCarSoundsCallbacks();
@@ -171,7 +172,9 @@ private:
     unsigned char unknown348[8];
     float accelerationAmount;
     float brakeAmount;
-    unsigned char unknown364[36];
+    unsigned char unknown364[20];
+    int sirenChannel;
+    unsigned char unknown388[12];
     int waitElapsed;
     int waitDuration;
     unsigned char unknown408[13];
