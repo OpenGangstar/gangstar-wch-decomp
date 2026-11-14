@@ -10593,7 +10593,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003081b5	0x5c	Vehicle.cpp	game	vehicles	pending	_ZN11CCarFactory11getInstanceEv	CCarFactory::getInstance()
 0x00308211	0x1c	Vehicle.cpp	game	vehicles	matched	__tcf_3	__tcf_3
 0x0030822d	0x16c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15UpdateCarSoundsEv	Vehicle::UpdateCarSounds()
-0x00308399	0xc	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv	Vehicle::UnRegisterCarSoundsCallbacks()
+0x00308399	0xc	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv	Vehicle::UnRegisterCarSoundsCallbacks()
 0x003083a5	0x68	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle26RegisterCarSoundsCallbacksEv	Vehicle::RegisterCarSoundsCallbacks()
 0x0030840d	0x2f4	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15InitV8Z06SoundsEv	Vehicle::InitV8Z06Sounds()
 0x00308701	0x298	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle17InitV6TurboSoundsEv	Vehicle::InitV6TurboSounds()
@@ -12976,7 +12976,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034f2a9	0x32	CarSounds.cpp	game	vehicles	pending	_ZN9CarSoundsC1Ev	CarSounds::CarSounds()
 0x0034f2dd	0x2e	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds15FilterRPMValuesEi	CarSounds::FilterRPMValues(int)
 0x0034f30d	0x20	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds17RegisterCallbacksERK17CarSoundCallbacks	CarSounds::RegisterCallbacks(CarSoundCallbacks const&)
-0x0034f32d	0x2c	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds19UnregisterCallbacksEv	CarSounds::UnregisterCallbacks()
+0x0034f32d	0x2c	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds19UnregisterCallbacksEv	CarSounds::UnregisterCallbacks()
 0x0034f359	0x8	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds17RemoveTurboSoundsEP18TurboSoundSettings	CarSounds::RemoveTurboSounds(TurboSoundSettings*)
 0x0034f361	0x44	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds17InterpolateLinearEiiiff	CarSounds::InterpolateLinear(int, int, int, float, float)
 0x0034f3a5	0x170	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds13StopAllSoundsEv	CarSounds::StopAllSounds()

@@ -9,6 +9,7 @@
  */
 
 #include "Vehicle.h"
+#include "CarSoundCallbacks.h"
 #include "../world/SceneNodeManager.h"
 #include "../ai/NPC.h"
 #include "../characters/PlayerTest.h"
@@ -787,4 +788,9 @@ void Vehicle::resetCollisions()
         for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next)
             shape->filter = collisionFilter;
     }
+}
+
+void Vehicle::UnRegisterCarSoundsCallbacks()
+{
+    CarSounds::UnregisterCallbacks();
 }
