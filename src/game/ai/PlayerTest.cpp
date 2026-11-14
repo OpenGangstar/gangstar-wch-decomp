@@ -19,6 +19,8 @@
 #include "../combat/WeaponManager.h"
 #include "../hud/CHudManager.h"
 #include "NPC.h"
+#include "../characters/NPCVehicleEvent.h"
+#include "../core/GameEventMethods.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -123,4 +125,8 @@ static void _GLOBAL__I__ZN10PlayerTest10switchAnimEv()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+inline EvNPCVehicle::~EvNPCVehicle()
+{
 }
