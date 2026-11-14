@@ -25,6 +25,9 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle7_setYawEf",
+        "_ZN7Vehicle8_setRollEf",
+        "_ZN7Vehicle9_setPitchEf",
         "_ZN7Vehicle4_yawEf",
         "_ZN7Vehicle5_rollEf",
         "_ZN7Vehicle6_pitchEf",

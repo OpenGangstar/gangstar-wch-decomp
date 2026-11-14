@@ -67,6 +67,9 @@ public:
     void _yaw(float radians);
     void _roll(float radians);
     void _pitch(float radians);
+    void _setYaw(float radians);
+    void _setRoll(float radians);
+    void _setPitch(float radians);
     void _shiftWeight(irr::core::vector3d<float>&, float);
     const char* getEnterAnim() const;
     const char* getExitAnim() const;

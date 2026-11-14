@@ -115,9 +115,10 @@ namespace {
 template<void (irr::core::vector3d<float>::*Rotate)(
     double, const irr::core::vector3d<float>&)>
 inline __attribute__((always_inline)) void rotateBasisPair(
-    irr::core::vector3d<float>& first, irr::core::vector3d<float>& second, float radians)
+    irr::core::vector3d<float>& first, irr::core::vector3d<float>& second, float radians,
+    float radiansToDegrees = 57.2957763671875f)
 {
-    const double degrees = radians * 57.2957763671875f;
+    const double degrees = radians * radiansToDegrees;
     (first.*Rotate)(degrees, irr::core::vector3d<float>());
     (second.*Rotate)(degrees, irr::core::vector3d<float>());
 }
@@ -440,6 +441,39 @@ void Vehicle::setDriver(Character* value)
         driverMetatype = driver->GetMetatype();
         driverBehavior = driver->driverBehavior;
     }
+}
+
+void Vehicle::_setYaw(float radians)
+{
+    basisY.Y = -1.0f;
+    basisX.X = -1.0f;
+    basisY.X = 0.0f;
+    basisY.Z = 0.0f;
+    basisX.Y = 0.0f;
+    basisX.Z = 0.0f;
+    rotateBasisPair<&irr::core::vector3d<float>::rotateXYBy>(basisY, basisX, radians, -57.2957763671875f);
+}
+
+void Vehicle::_setRoll(float radians)
+{
+    basisX.X = 1.0f;
+    basisZ.Z = 1.0f;
+    basisX.Y = 0.0f;
+    basisX.Z = 0.0f;
+    basisZ.X = 0.0f;
+    basisZ.Y = 0.0f;
+    rotateBasisPair<&irr::core::vector3d<float>::rotateXZBy>(basisX, basisZ, radians);
+}
+
+void Vehicle::_setPitch(float radians)
+{
+    basisY.Y = 1.0f;
+    basisZ.Z = 1.0f;
+    basisY.X = 0.0f;
+    basisY.Z = 0.0f;
+    basisZ.X = 0.0f;
+    basisZ.Y = 0.0f;
+    rotateBasisPair<&irr::core::vector3d<float>::rotateYZBy>(basisY, basisZ, radians);
 }
 
 void Vehicle::WarmUp()

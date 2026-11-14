@@ -16,6 +16,9 @@ SECTIONS
     .vehicle_yaw 0x0030949c : { *(.text._ZN7Vehicle4_yawEf) }
     .vehicle_roll 0x00309504 : { *(.text._ZN7Vehicle5_rollEf) }
     .vehicle_pitch 0x0030956c : { *(.text._ZN7Vehicle6_pitchEf) }
+    .vehicle_setYaw 0x0030a054 : { *(.text._ZN7Vehicle7_setYawEf) }
+    .vehicle_setRoll 0x0030a0d0 : { *(.text._ZN7Vehicle8_setRollEf) }
+    .vehicle_setPitch 0x0030a14c : { *(.text._ZN7Vehicle9_setPitchEf) }
     .vehicle_percent_skid 0x00307d7c : { *(.text._ZN7Vehicle21_calculatePercentSkidEf) }
     .vehicle_marker_type 0x00307b9c : { *(.text._ZN7Vehicle13getMarkerTypeEv) }
     .vehicle_stop_siren 0x00308170 : { *(.text._ZN7Vehicle9stopSirenEv) }
