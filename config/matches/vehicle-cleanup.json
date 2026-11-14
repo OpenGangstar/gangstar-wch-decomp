@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZNK7Vehicle8GetSpeedEv",
         "_ZN7Vehicle6WarmUpEv",
         "_ZN7Vehicle16resetPreviousPosEv",
         "_ZN7Vehicle12resetVehicleEv",

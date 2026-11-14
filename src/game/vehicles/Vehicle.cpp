@@ -72,6 +72,11 @@ int __attribute__((weak)) Vehicle::getHealth() const
     return health;
 }
 
+float __attribute__((weak)) Vehicle::GetSpeed() const
+{
+    return (speed / 1000.0f) * 3600.0f;
+}
+
 bool __attribute__((weak)) Vehicle::isDead()
 {
     return health <= 0;
