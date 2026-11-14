@@ -794,3 +794,21 @@ void Vehicle::UnRegisterCarSoundsCallbacks()
 {
     CarSounds::UnregisterCallbacks();
 }
+
+void Vehicle::RegisterCarSoundsCallbacks()
+{
+    CarSoundCallbacks callbacks;
+    SoundManager::getInstance();
+    callbacks.isSoundPlaying = SoundManager::isSoundPlayingCallback;
+    SoundManager::getInstance();
+    // Retail stores the callback directly. The default play stub returns -1.
+    callbacks.play = reinterpret_cast<int (*)(int, bool, float, float)>(
+        SoundManager::playSoundCallback);
+    SoundManager::getInstance();
+    callbacks.stop = SoundManager::stopSoundCallback;
+    SoundManager::getInstance();
+    callbacks.setPitch = SoundManager::setPitchCallback;
+    SoundManager::getInstance();
+    callbacks.setVolume = SoundManager::setVolumeCallback;
+    CarSounds::RegisterCallbacks(callbacks);
+}
