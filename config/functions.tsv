@@ -10695,7 +10695,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030fedd	0x64	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4initEv	Vehicle::init()
 0x0030ff41	0x558	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4LoadERKN7Structs3CarE	Vehicle::Load(Structs::Car const&)
 0x00310499	0x3e8	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13grabSceneNodeEiPPPv	Vehicle::grabSceneNode(int, void***)
-0x00310881	0x54	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle22cleanupTargetDetectionEv	Vehicle::cleanupTargetDetection()
+0x00310881	0x54	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle22cleanupTargetDetectionEv	Vehicle::cleanupTargetDetection()
 0x003108d5	0x34	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12clearOnAlertEv	Vehicle::clearOnAlert()
 0x00310909	0x474	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle5shootEv	Vehicle::shoot()
 0x00310d7d	0x2c	Vehicle.cpp	game	vehicles	pending	_ZN20EvVehicleDeactivatedD0Ev	EvVehicleDeactivated::~EvVehicleDeactivated()
