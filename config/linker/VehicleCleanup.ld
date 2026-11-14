@@ -22,6 +22,7 @@ SECTIONS
     .vehicle_adjust_traction 0x003099dc : { *(.text._ZN7Vehicle15_adjustTractionEP6b2Bodyf) }
     .vehicle_remove_wheel_collisions 0x0030a604 : { *(.text._ZN7Vehicle21removeWheelCollisionsEv) }
     .vehicle_load_explosion 0x00309044 : { *(.text._ZN7Vehicle13loadExplosionEPKc) }
+    .vehicle_target_cleanup 0x00310880 : { *(.text._ZN7Vehicle22cleanupTargetDetectionEv) }
     .vehicle_clear_alert 0x003108d4 : { *(.text._ZN7Vehicle12clearOnAlertEv) }
     .vehicle_camera_enter 0x0030a378 : { *(.text._ZN7Vehicle13onCameraEnterEv) }
     .vehicle_percent_skid 0x00307d7c : { *(.text._ZN7Vehicle21_calculatePercentSkidEf) }

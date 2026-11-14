@@ -18,6 +18,7 @@
 #include "../scripting/ScriptManager.h"
 #include "../audio/SoundManager.h"
 #include "../app/Application.h"
+#include "../core/EventManager.h"
 #include "../hud/CHudManager.h"
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/NativeStrings.h"
@@ -959,6 +960,30 @@ void __attribute__((weak)) Vehicle::stopSiren()
     if (flags344 & sirenPlaying) {
         SoundManager::getInstance()->stop(241, sirenChannel, 1000);
         flags344 &= ~sirenPlaying;
+    }
+}
+
+extern "C" void _ZN12EvNPCVehicleD1Ev(void*) __attribute__((weak));
+class EvNPCVehicle : public IEvent {
+public:
+    EvNPCVehicle(int type, Vehicle* vehicle) : type(type), vehicle(vehicle) { eventID = 19; }
+    virtual ~EvNPCVehicle();
+
+private:
+    int type;
+    Vehicle* vehicle;
+};
+
+void Vehicle::cleanupTargetDetection()
+{
+    const unsigned int detectingTarget = 1u << 14;
+    if (flags344 & detectingTarget) {
+        flags344 &= ~detectingTarget;
+        EventManager* events = Application::GetInstance()->GetEventManager();
+        unsigned char storage[sizeof(EvNPCVehicle)] __attribute__((aligned(__alignof__(EvNPCVehicle))));
+        EvNPCVehicle* event = new (storage) EvNPCVehicle(19, this);
+        events->raise(*event);
+        _ZN12EvNPCVehicleD1Ev(event);
     }
 }
 
