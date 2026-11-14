@@ -10,6 +10,7 @@ __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .vehicle_marker_type 0x00307b9c : { *(.text._ZN7Vehicle13getMarkerTypeEv) }
     .vehicle_stop_siren 0x00308170 : { *(.text._ZN7Vehicle9stopSirenEv) }
     .vehicle_sound_register 0x003083a4 : { *(.text._ZN7Vehicle26RegisterCarSoundsCallbacksEv) }
     .vehicle_sound_unregister 0x00308398 : { *(.text._ZN7Vehicle28UnRegisterCarSoundsCallbacksEv) }

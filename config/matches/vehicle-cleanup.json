@@ -25,6 +25,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle13getMarkerTypeEv",
         "_ZN7Vehicle9stopSirenEv",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv",

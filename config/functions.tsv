@@ -10551,7 +10551,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307b69	0x8	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle9getHealthEv	Vehicle::getHealth() const
 0x00307b71	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle6isDeadEv	Vehicle::isDead()
 0x00307b88	0x14	Vehicle.cpp	game	vehicles	pending	_ZThn52_N7Vehicle13getMarkerTypeEv	non-virtual thunk to Vehicle::getMarkerType()
-0x00307b9d	0x6	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle13getMarkerTypeEv	Vehicle::getMarkerType()
+0x00307b9d	0x6	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13getMarkerTypeEv	Vehicle::getMarkerType()
 0x00307ba5	0x24	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle8GetSpeedEv	Vehicle::GetSpeed() const
 0x00307bc9	0x4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle7getMeshEv	Vehicle::getMesh()
 0x00307bcd	0x164	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle18_adjustEnginePitchEj	Vehicle::_adjustEnginePitch(unsigned int)

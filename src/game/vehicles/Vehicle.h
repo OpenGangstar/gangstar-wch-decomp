@@ -50,6 +50,7 @@ public:
     void setDriver(Character* value);
     void resetDriver();
     void mobilize();
+    int getMarkerType();
     void stopSiren();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();
