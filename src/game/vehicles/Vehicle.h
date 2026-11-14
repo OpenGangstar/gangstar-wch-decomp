@@ -41,6 +41,7 @@ public:
     void turn(bool left, float amount);
     void resetVehicle();
     void DestroyWheels();
+    virtual void WarmUp();
     virtual void Stop();
     virtual void SetPosition(const irr::core::vector3d<float>& position);
     virtual void SetRotation(const irr::core::quaternion& rotation);
