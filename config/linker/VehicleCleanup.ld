@@ -39,6 +39,7 @@ SECTIONS
     .vehicle_base_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .vehicle_base_event_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
     .vehicle_base_event_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .car_morph_prepare 0x00309338 : { *(.text._ZN16CCarMorphingMesh27onPrepareBufferForRenderingEN3irr5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS0_5video12IVideoDriverEj) }
     .car_factory_create_node 0x0030a6a0 : { *(.text._ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
     .car_factory_singleton 0x003081b4 : { *(.gnu.linkonce.t._ZN11CCarFactory11getInstanceEv) }
     .car_factory_guard 0x004b672c (NOLOAD) : { *(.gnu.linkonce.b._ZGVZN11CCarFactory11getInstanceEvE2cf) }
