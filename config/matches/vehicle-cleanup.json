@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle11getVelDirecEv",
         "_ZN7Vehicle11_shiftGearsEj",
         "_ZN7Vehicle7OnSpawnEv",
         "_ZN7Vehicle4initEv",
@@ -255,7 +256,6 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN7Vehicle11getVelDirecEv",
         "_ZN11LevelObject7OnSpawnEv",
         "_ZN7Vehicle10CreateBodyEv",
         "_ZN11LevelObject6enableEv",
