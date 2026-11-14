@@ -925,6 +925,26 @@ static void __tcf_2()
 }
 
 
+namespace {
+inline __attribute__((always_inline)) void disableWheelCollisions(b2Body* body, b2FilterData& saved)
+{
+    for (b2Shape* shape = body->shapeList; shape; shape = shape->next) {
+        if (shape->filter.maskBits) {
+            saved = shape->filter;
+            b2FilterData filter = saved;
+            filter.maskBits = 0;
+            shape->filter = filter;
+        }
+    }
+}
+}
+
+void Vehicle::removeWheelCollisions()
+{
+    disableWheelCollisions(leftCollisionBody, collisionFilter);
+    disableWheelCollisions(rightCollisionBody, collisionFilter);
+}
+
 void Vehicle::resetCollisions()
 {
     if (isEnabled()) {
