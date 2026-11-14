@@ -4,6 +4,10 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __aeabi_atexit = 0x001c494c;
+_Znwj = 0x001c4814;
+atoi = 0x001c4880;
+__stack_chk_fail = 0x001c42e0;
+_ZN21GameFactoryProperties9billboardE = 0x004144b8;
 _ZdlPv = 0x001c42b0;
 strcmp = 0x001c4658;
 puts = 0x001c41b4;
@@ -35,6 +39,7 @@ SECTIONS
     .vehicle_base_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .vehicle_base_event_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
     .vehicle_base_event_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .car_factory_create_node 0x0030a6a0 : { *(.text._ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
     .car_factory_singleton 0x003081b4 : { *(.gnu.linkonce.t._ZN11CCarFactory11getInstanceEv) }
     .car_factory_guard 0x004b672c (NOLOAD) : { *(.gnu.linkonce.b._ZGVZN11CCarFactory11getInstanceEvE2cf) }
     .car_factory_instance 0x004b8880 (NOLOAD) : { *(.gnu.linkonce.b._ZZN11CCarFactory11getInstanceEvE2cf) }

@@ -22,6 +22,11 @@
 #include "../core/GameEventMethods.h"
 #include "../characters/NPCVehicleEvent.h"
 #include "../hud/CHudManager.h"
+#include "../core/NativeStdio.h"
+#include "../core/MemHint.h"
+namespace GameFactoryProperties {
+extern const char billboard[] __attribute__((visibility("hidden")));
+}
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/NativeStrings.h"
 #include "../core/Lock.h"
@@ -944,10 +949,19 @@ public:
         return &cf;
     }
     virtual void* createMorph(const irr::collada::CColladaDatabase&, irr::collada::SController*);
-    virtual irr::collada::CSceneNode* createNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
+    virtual irr::collada::CSceneNode* createNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*) __attribute__((weak));
     virtual void* createSkinNode(const irr::collada::CColladaDatabase&, irr::scene::IColladaMesh*,
                                  irr::collada::IRootSceneNode*, void*);
 };
+
+irr::collada::CSceneNode* CCarFactory::createNode(
+    const irr::collada::CColladaDatabase& database, irr::collada::SNode* node)
+{
+    char value[256];
+    if (node && GS3DStuff::getProperty(node->properties, GameFactoryProperties::billboard, value) && atoi(value) == 1)
+        return new CustomBillboardSceneNode(database, node);
+    return new (irr::DefaultMemHint) irr::collada::CSceneNode(database, node);
+}
 
 inline CCarFactory::~CCarFactory()
 {
@@ -1003,7 +1017,7 @@ void Vehicle::cleanupTargetDetection()
     if (flags344 & detectingTarget) {
         flags344 &= ~detectingTarget;
         EventManager* events = Application::GetInstance()->GetEventManager();
-        unsigned char storage[sizeof(EvNPCVehicle)] __attribute__((aligned(__alignof__(EvNPCVehicle))));
+        unsigned int storage[sizeof(EvNPCVehicle) / sizeof(unsigned int)] __attribute__((aligned(__alignof__(EvNPCVehicle))));
         EvNPCVehicle* event = new (storage) EvNPCVehicle(19, this);
         events->raise(*event);
         _ZN12EvNPCVehicleD1Ev(event);
