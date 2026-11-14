@@ -60,6 +60,7 @@ public:
     void playSiren();
     void clearOnAlert();
     void cleanupTargetDetection();
+    void notifyHitNPCofDespawn();
     void onCameraEnter();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();

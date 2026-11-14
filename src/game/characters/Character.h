@@ -118,7 +118,11 @@ private:
     b2Body* collisionBody;
     Character* lockTarget;
     Vehicle* vehicle;
-    unsigned char unknown192[24];
+    unsigned char unknown192[4];
+public:
+    Vehicle* lastHitVehicle;
+private:
+    unsigned char unknown200[16];
     int maxHealth;
     int health;
     int punchIndex;

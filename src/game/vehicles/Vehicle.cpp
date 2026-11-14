@@ -1281,6 +1281,21 @@ void Vehicle::cleanupTargetDetection()
     }
 }
 
+void Vehicle::notifyHitNPCofDespawn()
+{
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
+        if (LevelObject::s_type[object->getObjectType()] == 5) {
+            Character* character = static_cast<Character*>(object);
+            if (character->lastHitVehicle == this)
+                character->lastHitVehicle = 0;
+        }
+    }
+
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (__builtin_expect(reinterpret_cast<unsigned int>(this) - reinterpret_cast<unsigned int>(player->lastHitVehicle), 1) == 0u)
+        player->lastHitVehicle = 0;
+}
+
 void Vehicle::clearOnAlert()
 {
     stopSiren();
