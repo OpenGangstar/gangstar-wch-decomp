@@ -45,6 +45,35 @@ public:
 } }
 
 namespace {
+class SkinnedMeshBoundsView {
+public:
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual const irr::core::aabbox3d<float>& getBoundingBox() const;
+};
+
+struct SkinBoundsSource {
+    unsigned char unknown[108];
+    SkinnedMeshBoundsView* mesh;
+};
+}
+
+class CustomSkinnedMeshSceneNode {
+public:
+    const irr::core::aabbox3d<float>& getBoundingBox() const __attribute__((weak));
+
+private:
+    unsigned char unknown[332];
+    SkinBoundsSource* skin;
+};
+
+const irr::core::aabbox3d<float>& CustomSkinnedMeshSceneNode::getBoundingBox() const
+{
+    return skin->mesh->getBoundingBox();
+}
+
+namespace {
 const unsigned int photographedFlag = 1u << 15;
 
 union VehicleControlFlags {
