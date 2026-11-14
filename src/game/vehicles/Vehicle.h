@@ -58,6 +58,7 @@ public:
     void RegisterCarSoundsCallbacks();
     void repair();
     void resetCollisions();
+    void removeWheelCollisions();
     void setPathToFollow(const Path* path);
     const Path* getPathToFollow() const;
     int getCurrentWaypoint() const;
