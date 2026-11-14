@@ -141,6 +141,17 @@ void Vehicle::_pitch(float radians)
     rotateBasisPair<&irr::core::vector3d<float>::rotateYZBy>(basisY, basisZ, radians);
 }
 
+void Vehicle::_adjustTraction(b2Body* body, float amount)
+{
+    const float velocityY = body->linearVelocity.y;
+    const float lateralY = body->GetXForm().rotation[1];
+    const float velocityX = body->linearVelocity.x;
+    const float lateralX = body->GetXForm().rotation[0];
+    const float correction = (lateralX * velocityX + lateralY * velocityY) * amount;
+    body->linearVelocity.y = velocityY - correction * lateralY;
+    body->linearVelocity.x = velocityX - correction * lateralX;
+}
+
 void Vehicle::_shiftWeight(irr::core::vector3d<float>&, float)
 {
 }
