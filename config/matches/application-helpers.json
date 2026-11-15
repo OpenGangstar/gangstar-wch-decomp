@@ -25,6 +25,8 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application15stopSoundThreadEv",
+        "_ZN11Application16startSoundThreadEv",
         "_ZN11Application19GetMaterialRendererEv",
         "_ZN11Application18SetDefaultLanguageEi",
         "_ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE",
@@ -83,6 +85,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12SoundManager15stopLowFpsMusicEv",
+        "_ZN12SoundManager15playLowFpsMusicEib",
+        "_ZN12SoundManager4initEv",
+        "_ZN11Application17RegisterForUpdateEP10IUpdatable",
+        "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"
     ]

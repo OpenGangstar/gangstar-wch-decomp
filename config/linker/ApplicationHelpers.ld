@@ -18,6 +18,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_stop_sound 0x002d4440 : { *(.text._ZN11Application15stopSoundThreadEv) }
+    .application_start_sound 0x002d446c : { *(.text._ZN11Application16startSoundThreadEv) }
     .application_material_renderer 0x002d3c48 : { *(.text._ZN11Application19GetMaterialRendererEv) }
     .application_default_language 0x002d3c5c : { *(.text._ZN11Application18SetDefaultLanguageEi) }
     .application_reinit_win32 0x002d3c6c : { *(.text._ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE) }

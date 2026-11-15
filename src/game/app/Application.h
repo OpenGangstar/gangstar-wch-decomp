@@ -2,6 +2,7 @@
 #define WCH_APP_APPLICATION_H
 
 class StringManager;
+class IUpdatable;
 class CCustomMaterialRenderer;
 class FileSystemBase;
 class WeaponManager;
@@ -27,6 +28,7 @@ public:
     void SetDrawAll(bool enabled);
     void startSoundThread();
     void stopSoundThread();
+    void RegisterForUpdate(IUpdatable* object);
     void GetScreenDimensions(int& width, int& height) const;
     inline irr::IrrlichtDevice* GetDevice() const { return device; }
     inline StringManager* GetStringManager() const { return stringManager; }
@@ -52,8 +54,10 @@ private:
     int defaultLanguage;
     unsigned char unknown88[16];
     bool drawAll;
-    unsigned char unknown105;
+    bool soundNeedsInit;
     bool demoVersion;
+    unsigned char unknown107[45];
+    bool soundThreadPlaying;
 };
 
 #endif
