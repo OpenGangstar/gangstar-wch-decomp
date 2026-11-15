@@ -80,6 +80,7 @@ private:
     irr::video::ITexture* texture;
     unsigned char unknown16[16];
     bool unknown32;
+    friend class Application;
     bool unknown33;
     unsigned char unknown34[2];
     int unknown36;

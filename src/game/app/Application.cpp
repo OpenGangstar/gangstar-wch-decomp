@@ -9,6 +9,8 @@
  */
 
 #include "Application.h"
+#include "../core/ASprite.h"
+#include "../core/VideoDriver.h"
 #include "../persistence/SaveGame.h"
 #include "../persistence/SaveGameInterfaces.h"
 #include "../audio/SoundManager.h"
@@ -223,5 +225,23 @@ void Application::Pause()
     if (GSLoading::isGameLoaded()) {
         SaveGame save;
         save.SampleAndSave(SaveGame::GetDefaultFilename());
+    }
+}
+
+namespace {
+const char resumeSpritePath[] __attribute__((section(".rodata.application_resume_sprite"))) =
+    "./interrupt.bsprite";
+}
+
+void Application::StartGlobalResuming()
+{
+    resumeElapsed = 0;
+    resumeFrame = 0;
+    const unsigned int count = device->getVideoDriver()->getTextureManager()->getTextureCount();
+    resumeInitialTextureCount = count;
+    resumeTextureCount = count;
+    if (!resumeSprite) {
+        resumeSprite = new ASprite(resumeSpritePath);
+        resumeSprite->unknown33 = false;
     }
 }
