@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN11CCarFactory14createSkinNodeERKN3irr7collada16CColladaDatabaseEPNS0_5scene12IColladaMeshEPNS1_14IRootSceneNodeEPv",
         "_ZN7Vehicle21notifyHitNPCofDespawnEv",
         "_ZN7Vehicle5cleanEv",
         "_ZN7Vehicle11getVelDirecEv",

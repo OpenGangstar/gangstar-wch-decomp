@@ -72,6 +72,7 @@ private:
     mutable irr::core::aabbox3d<float> transformedBounds;
     unsigned char unknown236[96];
     SkinBoundsSource* skin;
+    unsigned char unknown336[68];
 
 public:
     const irr::core::aabbox3d<float>& getTransformedBoundingBox() const __attribute__((weak));
@@ -1179,6 +1180,25 @@ irr::collada::CSceneNode* CCarFactory::createNode(
     if (node && GS3DStuff::getProperty(node->properties, GameFactoryProperties::billboard, value) && atoi(value) == 1)
         return new CustomBillboardSceneNode(database, node);
     return new (irr::DefaultMemHint) irr::collada::CSceneNode(database, node);
+}
+
+extern "C" void _ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_(
+    CustomSkinnedMeshSceneNode*, irr::scene::IColladaMesh*, irr::collada::IRootSceneNode*,
+    irr::collada::SNode*, int, const irr::core::vector3d<float>&,
+    const irr::core::quaternion&, const irr::core::vector3d<float>&) __attribute__((weak));
+
+void* __attribute__((weak)) CCarFactory::createSkinNode(
+    const irr::collada::CColladaDatabase&, irr::scene::IColladaMesh* mesh,
+    irr::collada::IRootSceneNode* root, void*)
+{
+    const irr::core::vector3d<float> position;
+    const irr::core::quaternion rotation;
+    const irr::core::vector3d<float> scale(1.0f, 1.0f, 1.0f);
+    CustomSkinnedMeshSceneNode* node = static_cast<CustomSkinnedMeshSceneNode*>(
+        ::operator new(sizeof(CustomSkinnedMeshSceneNode)));
+    _ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_(
+        node, mesh, root, 0, -1, position, rotation, scale);
+    return node;
 }
 
 inline CCarFactory::~CCarFactory()

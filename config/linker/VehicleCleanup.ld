@@ -55,6 +55,7 @@ SECTIONS
     .vehicle_initialize_driver 0x0030a8bc : { *(.text._ZN7Vehicle16initializeDriverEv) }
     .custom_skin_bounds 0x00307b00 : { *(.text._ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv) }
     .car_morph_prepare 0x00309338 : { *(.text._ZN16CCarMorphingMesh27onPrepareBufferForRenderingEN3irr5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS0_5video12IVideoDriverEj) }
+    .car_factory_create_skin 0x00309358 : { *(.text._ZN11CCarFactory14createSkinNodeERKN3irr7collada16CColladaDatabaseEPNS0_5scene12IColladaMeshEPNS1_14IRootSceneNodeEPv) }
     .car_factory_create_node 0x0030a6a0 : { *(.text._ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
     .car_factory_singleton 0x003081b4 : { *(.gnu.linkonce.t._ZN11CCarFactory11getInstanceEv) }
     .car_factory_guard 0x004b672c (NOLOAD) : { *(.gnu.linkonce.b._ZGVZN11CCarFactory11getInstanceEvE2cf) }
