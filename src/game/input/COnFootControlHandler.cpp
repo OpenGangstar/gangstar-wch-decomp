@@ -87,11 +87,16 @@ public:
     virtual ~COnFootControlHandler();
     virtual void onEvent(const IEvent*, const EventManager*);
     virtual void activate();
-    virtual void deactivate();
+    virtual void deactivate() __attribute__((noinline));
     virtual void releaseKeyboardKeys();
 };
 
 COnFootControlHandler::~COnFootControlHandler()
 {
     COnFootControlHandler::deactivate();
+}
+
+void COnFootControlHandler::deactivate()
+{
+    detachOnFootEvents();
 }

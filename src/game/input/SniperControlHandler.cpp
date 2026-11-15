@@ -86,11 +86,16 @@ public:
     virtual ~SniperControlHandler();
     virtual void onEvent(const IEvent*, const EventManager*);
     virtual void activate();
-    virtual void deactivate();
+    virtual void deactivate() __attribute__((noinline));
     virtual void releaseKeyboardKeys();
 };
 
 SniperControlHandler::~SniperControlHandler()
 {
     SniperControlHandler::deactivate();
+}
+
+void SniperControlHandler::deactivate()
+{
+    detachOnFootEvents();
 }
