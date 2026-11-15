@@ -24,6 +24,8 @@ SECTIONS
     .application_logo_update 0x002d5898 : { *(.text._ZN11Application10LogoUpdateEv) }
     .application_resume_draw 0x002d4b08 : { *(.text._ZN11Application18GlobalResumingDrawEv) }
     .application_resume 0x002d4208 : { *(.text._ZN11Application19StartGlobalResumingEv) }
+    .application_start_logo 0x002d4e40 : { *(.text._ZN11Application9StartLogoEv) }
+    .application_logo_sprite 0x00413d30 : { *(.rodata.application_logo_sprite) }
     .application_resume_sprite 0x00413c88 : { *(.rodata.application_resume_sprite) }
     .application_pause 0x002d4268 : { *(.text._ZN11Application5PauseEv) }
     .application_register_events 0x002d4318 : { *(.text._ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }

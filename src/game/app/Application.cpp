@@ -236,6 +236,8 @@ void Application::Pause()
 namespace {
 const char resumeSpritePath[] __attribute__((section(".rodata.application_resume_sprite"))) =
     "./interrupt.bsprite";
+const char logoSpritePath[] __attribute__((section(".rodata.application_logo_sprite"))) =
+    "./gameloft_logo_01.bsprite";
 }
 
 void Application::StartGlobalResuming()
@@ -289,6 +291,14 @@ void Application::GlobalResumingDraw()
     resumeSprite->PaintFrame(1, 0, 0, 0);
     resumeSprite->PaintFrame(2 + 20 * resumeElapsed / resumeTextureCount, 0, 0, 0);
     endSpriteFrame(driver);
+}
+
+void Application::StartLogo()
+{
+    logoFrame = 0;
+    logoFrameCount = 100;
+    logoSprite = new ASprite(logoSpritePath);
+    logoSprite->unknown33 = false;
 }
 
 void Application::LogoUpdate()
