@@ -25,6 +25,7 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application5PauseEv",
         "_ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
         "_ZN11Application23RegisterForDrawingOnHUDEP9IDrawable",
         "_ZN11Application17RegisterForUpdateEP10IUpdatable",
@@ -91,6 +92,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN9GSLoading12isGameLoadedEv",
+        "_ZN8SaveGameC1Ev",
+        "_ZN8SaveGame18GetDefaultFilenameEv",
+        "_ZN8SaveGame13SampleAndSaveEPKc",
+        "_ZN8SaveGameD1Ev",
         "_ZN12SoundManager15stopLowFpsMusicEv",
         "_ZN12SoundManager15playLowFpsMusicEib",
         "_ZN12SoundManager4initEv",

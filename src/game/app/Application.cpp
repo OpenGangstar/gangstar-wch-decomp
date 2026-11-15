@@ -9,6 +9,8 @@
  */
 
 #include "Application.h"
+#include "../persistence/SaveGame.h"
+#include "../persistence/SaveGameInterfaces.h"
 #include "../audio/SoundManager.h"
 #include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
@@ -213,4 +215,13 @@ void Application::RegisterForDrawingOnHUD(IDrawable* drawable)
 void Application::RegisterForUpdate(IUpdatable* object)
 {
     appendRegistration(unknownPrefix + 4, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 8), object);
+}
+
+void Application::Pause()
+{
+    stateMachine->sleep();
+    if (GSLoading::isGameLoaded()) {
+        SaveGame save;
+        save.SampleAndSave(SaveGame::GetDefaultFilename());
+    }
 }
