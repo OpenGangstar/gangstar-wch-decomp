@@ -18,6 +18,12 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_helper_0 0x002d3c38 : { *(.text._ZN11Application16SetIsDemoVersionEb) }
+    .application_helper_1 0x002d3c40 : { *(.text._ZN11Application16GetIsDemoVersionEv) }
+    .application_helper_2 0x002d3c68 : { *(.text._ZN11Application6ReInitEPN3irr14IrrlichtDeviceE) }
+    .application_helper_3 0x002d3c78 : { *(.text._ZN11Application20InitIPhoneFileSystemEv) }
+    .application_helper_4 0x002d3c90 : { *(.text._ZN11Application21dumpMonitoredPointersEv) }
+    .application_helper_5 0x002d3c94 : { *(.text._ZN11Application10SetDrawAllEb) }
     .state_machine_singleton 0x002d44c4 : { *application-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x002d4518 : { *application-helpers.o(.text.__tcf_0) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *application-helpers.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }

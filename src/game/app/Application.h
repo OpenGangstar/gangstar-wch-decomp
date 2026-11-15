@@ -15,6 +15,12 @@ namespace irr { class IrrlichtDevice; }
 class Application {
 public:
     static Application* GetInstance();
+    void SetIsDemoVersion(bool enabled);
+    bool GetIsDemoVersion();
+    void ReInit(irr::IrrlichtDevice* newDevice);
+    void InitIPhoneFileSystem();
+    void dumpMonitoredPointers();
+    void SetDrawAll(bool enabled);
     void startSoundThread();
     void stopSoundThread();
     void GetScreenDimensions(int& width, int& height) const;
@@ -38,6 +44,10 @@ private:
     CControlManager* controlManager;
     CHudManager* hudManager;
     WeaponManager* weaponManager;
+    unsigned char unknown84[20];
+    bool drawAll;
+    unsigned char unknown105;
+    bool demoVersion;
 };
 
 #endif

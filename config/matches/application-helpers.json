@@ -25,6 +25,12 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application16SetIsDemoVersionEb",
+        "_ZN11Application16GetIsDemoVersionEv",
+        "_ZN11Application6ReInitEPN3irr14IrrlichtDeviceE",
+        "_ZN11Application20InitIPhoneFileSystemEv",
+        "_ZN11Application21dumpMonitoredPointersEv",
+        "_ZN11Application10SetDrawAllEb",
         "_ZNK11Application19GetScreenDimensionsERiS0_",
         {
             "name": "__tcf_5",

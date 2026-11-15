@@ -91,3 +91,10 @@ static void _GLOBAL__I_iAdditionMenuDepth()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+void Application::SetIsDemoVersion(bool enabled) { demoVersion = enabled; }
+bool Application::GetIsDemoVersion() { return demoVersion; }
+void Application::ReInit(irr::IrrlichtDevice* newDevice) { device = newDevice; }
+void Application::InitIPhoneFileSystem() {}
+void Application::dumpMonitoredPointers() {}
+void Application::SetDrawAll(bool enabled) { drawAll = enabled; }
