@@ -33,6 +33,7 @@ public:
     void StartGlobalResuming();
     void GlobalResumingDraw();
     void LogoDraw();
+    void LogoUpdate();
     void startSoundThread();
     void stopSoundThread();
     void UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
@@ -74,7 +75,9 @@ private:
     int resumeFrame;
     unsigned int resumeInitialTextureCount;
     int resumeTextureCount;
-    unsigned char unknown124[12];
+    int logoFrame;
+    int logoFrameCount;
+    unsigned char unknown132[4];
     ASprite* resumeSprite;
     ASprite* logoSprite;
     unsigned char unknown144[8];
