@@ -20,6 +20,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_stop_monitoring 0x002d53e0 : { *(.text._ZN11Application14stopMonitoringEPv) }
+    .application_start_monitoring 0x002d5c40 : { *(.text._ZN11Application15startMonitoringEPvPKc) }
     .application_logo_draw 0x002d4a6c : { *(.text._ZN11Application8LogoDrawEv) }
     .application_logo_update 0x002d5898 : { *(.text._ZN11Application10LogoUpdateEv) }
     .application_resume_draw 0x002d4b08 : { *(.text._ZN11Application18GlobalResumingDrawEv) }
