@@ -245,3 +245,20 @@ void Application::StartGlobalResuming()
         resumeSprite->unknown33 = false;
     }
 }
+
+void Application::GlobalResumingDraw()
+{
+    irr::video::IVideoDriver* driver = device->getVideoDriver();
+    device->getSceneManager();
+    device->getGUIEnvironment();
+    driver->setClearColor(irr::video::SColor(255, 0, 0, 0));
+    driver->beginScene();
+    driver->clearBuffers(3);
+    driver->beginScene2D();
+    resumeSprite->PaintFrame(0, 0, 0, 0);
+    resumeSprite->PaintFrame(1, 0, 0, 0);
+    resumeSprite->PaintFrame(2 + 20 * resumeElapsed / resumeTextureCount, 0, 0, 0);
+    driver->endScene2D();
+    driver->endScene();
+    driver->swapBuffers(0);
+}

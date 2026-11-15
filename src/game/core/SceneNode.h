@@ -227,7 +227,8 @@ class IrrlichtDevice {
 public:
     virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
     virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
-    virtual video::IVideoDriver* getVideoDriver(); virtual void unknown7(); virtual void unknown8();
+    virtual video::IVideoDriver* getVideoDriver();
+    virtual void unknown7(); virtual void* getGUIEnvironment();
     virtual scene::ISceneManager* getSceneManager();
     virtual void unknown10(); virtual void unknown11();
     virtual void unknown12(); virtual void unknown13();

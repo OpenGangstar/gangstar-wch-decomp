@@ -27,10 +27,14 @@ public:
 };
 class IVideoDriver {
 public:
-    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
-    virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
-    virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
-    virtual void unknown9(); virtual void unknown10(); virtual void unknown11();
+    virtual bool beginScene();
+    virtual bool endScene();
+    virtual void swapBuffers(int mode);
+    virtual void clearBuffers(int mask);
+    virtual void setClearColor(const SColor& color);
+    virtual void unknown5(); virtual void unknown6(); virtual void unknown7();
+    virtual void unknown8(); virtual void unknown9();
+    virtual void beginScene2D(); virtual void endScene2D();
     virtual void unknown12(); virtual void unknown13(); virtual void unknown14();
     virtual void setTransform(E_TRANSFORMATION_STATE state, const core::matrix4& transform);
     virtual void unknown16();
