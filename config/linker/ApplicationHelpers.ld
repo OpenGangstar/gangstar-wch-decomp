@@ -18,6 +18,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_material_renderer 0x002d3c48 : { *(.text._ZN11Application19GetMaterialRendererEv) }
+    .application_default_language 0x002d3c5c : { *(.text._ZN11Application18SetDefaultLanguageEi) }
+    .application_reinit_win32 0x002d3c6c : { *(.text._ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE) }
     .application_helper_0 0x002d3c38 : { *(.text._ZN11Application16SetIsDemoVersionEb) }
     .application_helper_1 0x002d3c40 : { *(.text._ZN11Application16GetIsDemoVersionEv) }
     .application_helper_2 0x002d3c68 : { *(.text._ZN11Application6ReInitEPN3irr14IrrlichtDeviceE) }

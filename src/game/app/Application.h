@@ -2,6 +2,7 @@
 #define WCH_APP_APPLICATION_H
 
 class StringManager;
+class CCustomMaterialRenderer;
 class FileSystemBase;
 class WeaponManager;
 class CHudManager;
@@ -17,6 +18,9 @@ public:
     static Application* GetInstance();
     void SetIsDemoVersion(bool enabled);
     bool GetIsDemoVersion();
+    static CCustomMaterialRenderer* GetMaterialRenderer();
+    void SetDefaultLanguage(int language);
+    void ReInitWin32(irr::IrrlichtDevice* newDevice);
     void ReInit(irr::IrrlichtDevice* newDevice);
     void InitIPhoneFileSystem();
     void dumpMonitoredPointers();
@@ -44,7 +48,9 @@ private:
     CControlManager* controlManager;
     CHudManager* hudManager;
     WeaponManager* weaponManager;
-    unsigned char unknown84[20];
+    static CCustomMaterialRenderer* s_materialRenderer;
+    int defaultLanguage;
+    unsigned char unknown88[16];
     bool drawAll;
     unsigned char unknown105;
     bool demoVersion;
