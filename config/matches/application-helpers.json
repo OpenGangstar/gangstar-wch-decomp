@@ -27,6 +27,7 @@
     "functions": [
         "_ZN11Application14stopMonitoringEPv",
         "_ZN11Application15startMonitoringEPvPKc",
+        "_Z10SafeDeleteI15CControlManagerEvRPT_",
         "_ZN11Application8LogoDrawEv",
         "_ZN11Application10LogoUpdateEv",
         "_ZN11Application9StartLogoEv",
@@ -107,6 +108,7 @@
         "_ZN8SaveGame18GetDefaultFilenameEv",
         "_ZN8SaveGame13SampleAndSaveEPKc",
         "_ZN8SaveGameD1Ev",
+        "_ZN15CControlManagerD1Ev",
         "_ZN12SoundManager15stopLowFpsMusicEv",
         "_ZN12SoundManager15playLowFpsMusicEib",
         "_ZN12SoundManager4initEv",

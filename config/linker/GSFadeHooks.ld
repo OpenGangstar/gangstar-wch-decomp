@@ -100,6 +100,7 @@ SECTIONS
     .state_instance_guard 0x004b6904 (NOLOAD) : { *state-hooks-gsfade.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm .bss._ZGVZN12StateMachine11getInstanceEvE2sm) }
     .state_instance_storage 0x004b6908 (NOLOAD) : { *state-hooks-gsfade.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm .bss._ZZN12StateMachine11getInstanceEvE2sm) }
     .fade_draw2d 0x002e1a60 : { *state-hooks-gsfade.o(.text._ZN6GSFade6draw2dEPK12StateMachine) }
+    .application_delete_control 0x002d458c : { *application-helpers.o(.gnu.linkonce.t._Z10SafeDeleteI15CControlManagerEvRPT_) }
     .screen_dimensions 0x002d483c : { *application-helpers.o(.text._ZNK11Application19GetScreenDimensionsERiS0_) }
     .local_startup_cleanup_state 0x002e1b58 : { *state-hooks-gsfade.o(.text.__tcf_3) }
     .local_startup_initialization 0x002e1bfc : { *state-hooks-gsfade.o(.text._Z41__static_initialization_and_destruction_0ii) }

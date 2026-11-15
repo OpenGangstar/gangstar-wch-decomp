@@ -3,6 +3,7 @@
 
 class CControlManager {
 public:
+    ~CControlManager();
     void lock();
     static bool s_cameraTutorial, s_sniperTutorial;
 };
