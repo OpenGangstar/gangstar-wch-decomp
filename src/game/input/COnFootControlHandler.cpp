@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "IControlHandler.h"
+#include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
@@ -104,4 +105,13 @@ void COnFootControlHandler::deactivate()
 void COnFootControlHandler::activate()
 {
     updateOnFootEvents<&EventManager::attach>();
+}
+
+void COnFootControlHandler::releaseKeyboardKeys()
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    player->movementKeys[0] = false;
+    player->movementKeys[1] = false;
+    player->movementKeys[2] = false;
+    player->movementKeys[3] = false;
 }

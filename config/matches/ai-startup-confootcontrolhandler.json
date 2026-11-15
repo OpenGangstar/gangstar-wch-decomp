@@ -25,6 +25,7 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandler19releaseKeyboardKeysEv",
         "_ZN21COnFootControlHandler8activateEv",
         "_ZN21COnFootControlHandler10deactivateEv",
         "_ZN21COnFootControlHandlerD0Ev",
@@ -62,6 +63,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver",
