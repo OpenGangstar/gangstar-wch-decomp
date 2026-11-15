@@ -5,7 +5,7 @@
 
 class IControlHandler : public IEventReceiver {
 public:
-    virtual ~IControlHandler() __attribute__((used)) {}
+    virtual ~IControlHandler() __attribute__((used, noinline)) {}
     virtual void activate() = 0;
     virtual void deactivate() = 0;
     virtual void releaseKeyboardKeys() = 0;

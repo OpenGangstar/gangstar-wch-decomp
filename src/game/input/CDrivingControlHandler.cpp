@@ -80,3 +80,18 @@ static void _GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+// Recovered virtual interface. The member layout is still incomplete.
+class CDrivingControlHandler : public IControlHandler {
+public:
+    virtual ~CDrivingControlHandler();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void activate();
+    virtual void deactivate();
+    virtual void releaseKeyboardKeys();
+};
+
+CDrivingControlHandler::~CDrivingControlHandler()
+{
+    CDrivingControlHandler::deactivate();
+}

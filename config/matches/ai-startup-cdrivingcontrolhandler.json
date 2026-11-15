@@ -25,6 +25,9 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN22CDrivingControlHandlerD0Ev",
+        "_ZN22CDrivingControlHandlerD1Ev",
+        "_ZN22CDrivingControlHandlerD2Ev",
         "_ZN15IControlHandlerD0Ev",
         "_ZN15IControlHandlerD1Ev",
         {
@@ -46,6 +49,7 @@
         }
     ],
     "sections": [
+        ".driving_handler_vtable",
         ".control_handler_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -59,6 +63,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN22CDrivingControlHandler10deactivateEv",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"
     ]

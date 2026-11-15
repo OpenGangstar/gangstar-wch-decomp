@@ -18,6 +18,9 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .driving_handler_delete 0x0032e4b8 : { *(.text._ZN22CDrivingControlHandlerD0Ev) }
+    .driving_handler_destructor 0x0032e4f0 : { *(.text._ZN22CDrivingControlHandlerD1Ev .text._ZN22CDrivingControlHandlerD2Ev) }
+    .driving_handler_vtable 0x004aca78 : { *(.data.rel.ro._ZTV22CDrivingControlHandler) }
     .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
     .control_handler_destructor 0x0032e494 : { *(.gnu.linkonce.t._ZN15IControlHandlerD1Ev) }
     .control_handler_vtable 0x004aca98 : { *(.gnu.linkonce.d.rel.ro._ZTV15IControlHandler) }
