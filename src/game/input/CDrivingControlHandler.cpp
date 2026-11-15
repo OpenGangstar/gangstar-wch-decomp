@@ -9,6 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "IControlHandler.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"

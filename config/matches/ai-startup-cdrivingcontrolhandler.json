@@ -25,6 +25,8 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN15IControlHandlerD0Ev",
+        "_ZN15IControlHandlerD1Ev",
         {
             "name": "__tcf_4",
             "address": "0x0032d8e1"
@@ -44,6 +46,7 @@
         }
     ],
     "sections": [
+        ".control_handler_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",

@@ -13,8 +13,15 @@ _ZN34retail_ccontrolmanager_transitions17civ_vehicle_transE = 0x00425738;
 _ZN34retail_ccontrolmanager_transitions17cop_vehicle_transE = 0x004257c8;
 _ZN34retail_ccontrolmanager_transitions11guard_transE = 0x0042587c;
 _ZN34retail_ccontrolmanager_transitions22scripted_vehicle_transE = 0x00425924;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
+    .control_handler_destructor 0x0032e494 : { *(.gnu.linkonce.t._ZN15IControlHandlerD1Ev) }
+    .control_handler_vtable 0x004aca98 : { *(.gnu.linkonce.d.rel.ro._ZTV15IControlHandler) }
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_destructor 0x002db4d4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD1Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
     .control_manager_destructor 0x0032d6f4 : { *ai-startup-ccontrolmanager.o(.text._ZN15CControlManagerD1Ev) }
     .ai_startup_function_0 0x0032d6c4 : { *ai-startup-ccontrolmanager.o(.text.__tcf_3) }
     .ai_startup_function_1 0x0032d56c : { *ai-startup-ccontrolmanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
