@@ -11536,8 +11536,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032da91	0x87c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler7onEventEPK6IEventPK12EventManager	CDrivingControlHandler::onEvent(IEvent const*, EventManager const*)
 0x0032e311	0x144	CDrivingControlHandler.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032e455	0x14	CDrivingControlHandler.cpp	game	input	matched	_GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager	_GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager
-0x0032e469	0x2c	CDrivingControlHandler.cpp	game	input	pending	_ZN15IControlHandlerD0Ev	IControlHandler::~IControlHandler()
-0x0032e495	0x24	CDrivingControlHandler.cpp	game	input	pending	_ZN15IControlHandlerD1Ev	IControlHandler::~IControlHandler()
+0x0032e469	0x2c	CDrivingControlHandler.cpp	game	input	matched	_ZN15IControlHandlerD0Ev	IControlHandler::~IControlHandler()
+0x0032e495	0x24	CDrivingControlHandler.cpp	game	input	matched	_ZN15IControlHandlerD1Ev	IControlHandler::~IControlHandler()
 0x0032e4b9	0x38	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerD0Ev	CDrivingControlHandler::~CDrivingControlHandler()
 0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerD1Ev	CDrivingControlHandler::~CDrivingControlHandler()
 0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerD2Ev	CDrivingControlHandler::~CDrivingControlHandler()
