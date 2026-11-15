@@ -64,7 +64,7 @@ public:
     void onCameraEnter();
     void UpdateCarSounds();
     void UnRegisterCarSoundsCallbacks();
-    void RegisterCarSoundsCallbacks();
+    static void RegisterCarSoundsCallbacks();
     void repair();
     void resetCollisions();
     void removeWheelCollisions();

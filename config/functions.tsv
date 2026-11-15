@@ -8836,8 +8836,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4391	0x38	Application.cpp	game	app	pending	_ZN11Application23RegisterForDrawingOnHUDEP9IDrawable	Application::RegisterForDrawingOnHUD(IDrawable*)
 0x002d43c9	0x40	Application.cpp	stlport	-	matched	_ZNSaIN9stlp_priv10_List_nodeIP10IUpdatableEEE8allocateEjPKv	std::allocator<stlp_priv::_List_node<IUpdatable*> >::allocate(unsigned int, void const*)
 0x002d4409	0x38	Application.cpp	game	app	pending	_ZN11Application17RegisterForUpdateEP10IUpdatable	Application::RegisterForUpdate(IUpdatable*)
-0x002d4441	0x2c	Application.cpp	game	app	pending	_ZN11Application15stopSoundThreadEv	Application::stopSoundThread()
-0x002d446d	0x58	Application.cpp	game	app	pending	_ZN11Application16startSoundThreadEv	Application::startSoundThread()
+0x002d4441	0x2c	Application.cpp	game	app	matched	_ZN11Application15stopSoundThreadEv	Application::stopSoundThread()
+0x002d446d	0x58	Application.cpp	game	app	matched	_ZN11Application16startSoundThreadEv	Application::startSoundThread()
 0x002d44c5	0x54	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11getInstanceEv	StateMachine::getInstance()
 0x002d4519	0x1c	Application.cpp	game	app	matched	__tcf_2	__tcf_2
 0x002d4535	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite14GetFrameHeightEi	ASprite::GetFrameHeight(int)

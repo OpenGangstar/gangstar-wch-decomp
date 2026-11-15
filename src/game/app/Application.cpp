@@ -9,6 +9,8 @@
  */
 
 #include "Application.h"
+#include "../audio/SoundManager.h"
+#include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
 #include "../core/SceneNode.h"
 #include "../core/VideoDriver.h"
@@ -108,3 +110,25 @@ void Application::SetDefaultLanguage(int language)
 }
 
 void Application::ReInitWin32(irr::IrrlichtDevice* newDevice) { ReInit(newDevice); }
+
+void Application::stopSoundThread()
+{
+    if (soundThreadPlaying) {
+        SoundManager::getInstance()->stopLowFpsMusic();
+        soundThreadPlaying = false;
+    }
+}
+
+void Application::startSoundThread()
+{
+    if (soundNeedsInit) {
+        SoundManager::getInstance()->init();
+        RegisterForUpdate(SoundManager::getInstance());
+        Vehicle::RegisterCarSoundsCallbacks();
+        soundNeedsInit = false;
+    }
+    if (!soundThreadPlaying) {
+        SoundManager::getInstance()->playLowFpsMusic(29, true);
+        soundThreadPlaying = true;
+    }
+}
