@@ -1,3 +1,4 @@
+_Znwj = 0x001c4814;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/application-helpers/retail-symbols.ld
@@ -18,6 +19,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_resume 0x002d4208 : { *(.text._ZN11Application19StartGlobalResumingEv) }
+    .application_resume_sprite 0x00413c88 : { *(.rodata.application_resume_sprite) }
     .application_pause 0x002d4268 : { *(.text._ZN11Application5PauseEv) }
     .application_register_events 0x002d4318 : { *(.text._ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }
     .application_register_hud 0x002d4390 : { *(.text._ZN11Application23RegisterForDrawingOnHUDEP9IDrawable) }

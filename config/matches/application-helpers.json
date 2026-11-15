@@ -25,6 +25,7 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application19StartGlobalResumingEv",
         "_ZN11Application5PauseEv",
         "_ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
         "_ZN11Application23RegisterForDrawingOnHUDEP9IDrawable",
@@ -92,6 +93,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7ASpriteC1EPKc",
         "_ZN9GSLoading12isGameLoadedEv",
         "_ZN8SaveGameC1Ev",
         "_ZN8SaveGame18GetDefaultFilenameEv",

@@ -2,6 +2,7 @@
 #define WCH_APP_APPLICATION_H
 
 class StringManager;
+class ASprite;
 class StateMachine;
 class IUpdatable;
 class IDrawable;
@@ -29,6 +30,7 @@ public:
     void dumpMonitoredPointers();
     void SetDrawAll(bool enabled);
     void Pause();
+    void StartGlobalResuming();
     void startSoundThread();
     void stopSoundThread();
     void UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
@@ -65,7 +67,14 @@ private:
     bool drawAll;
     bool soundNeedsInit;
     bool demoVersion;
-    unsigned char unknown107[45];
+    unsigned char unknown107;
+    int resumeElapsed;
+    int resumeFrame;
+    unsigned int resumeInitialTextureCount;
+    unsigned int resumeTextureCount;
+    unsigned char unknown124[12];
+    ASprite* resumeSprite;
+    unsigned char unknown140[12];
     bool soundThreadPlaying;
 };
 
