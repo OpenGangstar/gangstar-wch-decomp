@@ -94,7 +94,17 @@ static void _GLOBAL__I_iAdditionMenuDepth()
 
 void Application::SetIsDemoVersion(bool enabled) { demoVersion = enabled; }
 bool Application::GetIsDemoVersion() { return demoVersion; }
-void Application::ReInit(irr::IrrlichtDevice* newDevice) { device = newDevice; }
+void __attribute__((noinline)) Application::ReInit(irr::IrrlichtDevice* newDevice) { device = newDevice; }
 void Application::InitIPhoneFileSystem() {}
 void Application::dumpMonitoredPointers() {}
 void Application::SetDrawAll(bool enabled) { drawAll = enabled; }
+
+CCustomMaterialRenderer* Application::GetMaterialRenderer() { return s_materialRenderer; }
+
+void Application::SetDefaultLanguage(int language)
+{
+    if (static_cast<unsigned int>(language) <= 5)
+        defaultLanguage = language;
+}
+
+void Application::ReInitWin32(irr::IrrlichtDevice* newDevice) { ReInit(newDevice); }

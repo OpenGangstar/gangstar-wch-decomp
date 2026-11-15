@@ -25,6 +25,9 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application19GetMaterialRendererEv",
+        "_ZN11Application18SetDefaultLanguageEi",
+        "_ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE",
         "_ZN11Application16SetIsDemoVersionEb",
         "_ZN11Application16GetIsDemoVersionEv",
         "_ZN11Application6ReInitEPN3irr14IrrlichtDeviceE",

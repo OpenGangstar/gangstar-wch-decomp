@@ -8803,10 +8803,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3c35	0x4	Application.cpp	game	app	matched	_ZNK6IEvent10getEventIDEv	IEvent::getEventID() const
 0x002d3c39	0x6	Application.cpp	game	app	matched	_ZN11Application16SetIsDemoVersionEb	Application::SetIsDemoVersion(bool)
 0x002d3c41	0x6	Application.cpp	game	app	matched	_ZN11Application16GetIsDemoVersionEv	Application::GetIsDemoVersion()
-0x002d3c49	0x14	Application.cpp	game	app	pending	_ZN11Application19GetMaterialRendererEv	Application::GetMaterialRenderer()
-0x002d3c5d	0xa	Application.cpp	game	app	pending	_ZN11Application18SetDefaultLanguageEi	Application::SetDefaultLanguage(int)
+0x002d3c49	0x14	Application.cpp	game	app	matched	_ZN11Application19GetMaterialRendererEv	Application::GetMaterialRenderer()
+0x002d3c5d	0xa	Application.cpp	game	app	matched	_ZN11Application18SetDefaultLanguageEi	Application::SetDefaultLanguage(int)
 0x002d3c69	0x4	Application.cpp	game	app	matched	_ZN11Application6ReInitEPN3irr14IrrlichtDeviceE	Application::ReInit(irr::IrrlichtDevice*)
-0x002d3c6d	0xc	Application.cpp	game	app	pending	_ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE	Application::ReInitWin32(irr::IrrlichtDevice*)
+0x002d3c6d	0xc	Application.cpp	game	app	matched	_ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE	Application::ReInitWin32(irr::IrrlichtDevice*)
 0x002d3c79	0x2	Application.cpp	game	app	matched	_ZN11Application20InitIPhoneFileSystemEv	Application::InitIPhoneFileSystem()
 0x002d3c7d	0x12	Application.cpp	game	app	pending	_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff	Application::InitIPhone(irr::IrrlichtDevice*, float, float, float, float)
 0x002d3c91	0x2	Application.cpp	game	app	matched	_ZN11Application21dumpMonitoredPointersEv	Application::dumpMonitoredPointers()
