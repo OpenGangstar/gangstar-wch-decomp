@@ -90,3 +90,22 @@ CControlManager::~CControlManager()
     delete sniperHandler;
     sniperHandler = 0;
 }
+
+void CControlManager::setCameraProxy(GS3DStuff* proxy)
+{
+    cameraProxy = proxy;
+}
+
+void CControlManager::lock()
+{
+    if (activeHandler == onFootHandler)
+        onFootHandler->releaseKeyboardKeys();
+    if (activeHandler == drivingHandler)
+        drivingHandler->releaseKeyboardKeys();
+    locked = true;
+}
+
+bool CControlManager::isLocked() const
+{
+    return locked;
+}
