@@ -25,6 +25,7 @@
     "source": "src/game/input/SniperControlHandler.cpp",
     "linker_script": "config/linker/SniperControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN20SniperControlHandler10deactivateEv",
         "_ZN20SniperControlHandlerD0Ev",
         "_ZN20SniperControlHandlerD1Ev",
         "_ZN20SniperControlHandlerD2Ev",
@@ -53,5 +54,8 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN20SniperControlHandler10deactivateEv"]
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6detachEiP14IEventReceiver"
+    ]
 }

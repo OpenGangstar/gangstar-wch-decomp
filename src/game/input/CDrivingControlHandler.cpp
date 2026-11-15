@@ -87,11 +87,22 @@ public:
     virtual ~CDrivingControlHandler();
     virtual void onEvent(const IEvent*, const EventManager*);
     virtual void activate();
-    virtual void deactivate();
+    virtual void deactivate() __attribute__((noinline));
     virtual void releaseKeyboardKeys();
 };
 
 CDrivingControlHandler::~CDrivingControlHandler()
 {
     CDrivingControlHandler::deactivate();
+}
+
+void CDrivingControlHandler::deactivate()
+{
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->detach(9, this);
+    events->detach(11, this);
+    events->detach(14, this);
+    events->detach(13, this);
+    events->detach(0, this);
+    events->detach(6, this);
 }

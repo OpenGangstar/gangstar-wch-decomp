@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .handler_deactivate 0x0032d9e4 : { *(.text._ZN22CDrivingControlHandler10deactivateEv) }
     .driving_handler_delete 0x0032e4b8 : { *(.text._ZN22CDrivingControlHandlerD0Ev) }
     .driving_handler_destructor 0x0032e4f0 : { *(.text._ZN22CDrivingControlHandlerD1Ev .text._ZN22CDrivingControlHandlerD2Ev) }
     .driving_handler_vtable 0x004aca78 : { *(.data.rel.ro._ZTV22CDrivingControlHandler) }

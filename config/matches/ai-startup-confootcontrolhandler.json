@@ -25,6 +25,7 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandler10deactivateEv",
         "_ZN21COnFootControlHandlerD0Ev",
         "_ZN21COnFootControlHandlerD1Ev",
         "_ZN21COnFootControlHandlerD2Ev",
@@ -60,7 +61,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN21COnFootControlHandler10deactivateEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"
     ]
