@@ -20,6 +20,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_logo_draw 0x002d4a6c : { *(.text._ZN11Application8LogoDrawEv) }
     .application_resume_draw 0x002d4b08 : { *(.text._ZN11Application18GlobalResumingDrawEv) }
     .application_resume 0x002d4208 : { *(.text._ZN11Application19StartGlobalResumingEv) }
     .application_resume_sprite 0x00413c88 : { *(.rodata.application_resume_sprite) }

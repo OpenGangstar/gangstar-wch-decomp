@@ -25,6 +25,7 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application8LogoDrawEv",
         "_ZN11Application18GlobalResumingDrawEv",
         "_ZN11Application19StartGlobalResumingEv",
         "_ZN11Application5PauseEv",

@@ -8849,7 +8849,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d483d	0x24	Application.cpp	game	app	matched	_ZNK11Application19GetScreenDimensionsERiS0_	Application::GetScreenDimensions(int&, int&) const
 0x002d4861	0x1a0	Application.cpp	game	app	pending	_ZN11Application26displayNumberWithHUDSpriteEiiiPKc	Application::displayNumberWithHUDSprite(int, int, int, char const*)
 0x002d4a01	0x6a	Application.cpp	game	app	pending	_ZN11Application7_UpdateEi	Application::_Update(int)
-0x002d4a6d	0x9c	Application.cpp	game	app	pending	_ZN11Application8LogoDrawEv	Application::LogoDraw()
+0x002d4a6d	0x9c	Application.cpp	game	app	matched	_ZN11Application8LogoDrawEv	Application::LogoDraw()
 0x002d4b09	0xb8	Application.cpp	game	app	matched	_ZN11Application18GlobalResumingDrawEv	Application::GlobalResumingDraw()
 0x002d4bc1	0x110	Application.cpp	game	app	pending	_ZN11Application20GlobalResumingUpdateEv	Application::GlobalResumingUpdate()
 0x002d4cd1	0x170	Application.cpp	game	app	pending	_ZN11Application4QuitEv	Application::Quit()

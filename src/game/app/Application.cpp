@@ -246,19 +246,42 @@ void Application::StartGlobalResuming()
     }
 }
 
-void Application::GlobalResumingDraw()
+namespace {
+inline __attribute__((always_inline)) irr::video::IVideoDriver* beginSpriteFrame(
+    irr::IrrlichtDevice* const& device, unsigned int background)
 {
     irr::video::IVideoDriver* driver = device->getVideoDriver();
     device->getSceneManager();
     device->getGUIEnvironment();
-    driver->setClearColor(irr::video::SColor(255, 0, 0, 0));
+    driver->setClearColor(irr::video::SColor(255, background, background, background));
     driver->beginScene();
     driver->clearBuffers(3);
     driver->beginScene2D();
-    resumeSprite->PaintFrame(0, 0, 0, 0);
-    resumeSprite->PaintFrame(1, 0, 0, 0);
-    resumeSprite->PaintFrame(2 + 20 * resumeElapsed / resumeTextureCount, 0, 0, 0);
+    return driver;
+}
+
+inline __attribute__((always_inline)) void endSpriteFrame(irr::video::IVideoDriver* driver)
+{
     driver->endScene2D();
     driver->endScene();
     driver->swapBuffers(0);
+}
+}
+
+extern "C" int sWindowWidth;
+
+void Application::LogoDraw()
+{
+    irr::video::IVideoDriver* driver = beginSpriteFrame(device, 255);
+    logoSprite->PaintFrame(0, sWindowWidth / 3, 165, 0);
+    endSpriteFrame(driver);
+}
+
+void Application::GlobalResumingDraw()
+{
+    irr::video::IVideoDriver* driver = beginSpriteFrame(device, 0);
+    resumeSprite->PaintFrame(0, 0, 0, 0);
+    resumeSprite->PaintFrame(1, 0, 0, 0);
+    resumeSprite->PaintFrame(2 + 20 * resumeElapsed / resumeTextureCount, 0, 0, 0);
+    endSpriteFrame(driver);
 }
