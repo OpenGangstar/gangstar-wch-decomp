@@ -311,3 +311,48 @@ void Application::LogoUpdate()
         }
     }
 }
+
+namespace std {
+template<class T> struct less;
+template<class First, class Second> struct pair;
+template<class Key, class Value, class Compare, class Alloc>
+class map {
+public:
+    template<class Lookup> Value& operator[](const Lookup& key) __attribute__((weak));
+};
+}
+
+namespace stlp_priv {
+template<class Pair> struct _Select1st;
+template<class Pair> struct _MapTraitsT;
+template<class Key, class Compare, class Pair, class Select, class Traits, class Alloc>
+class _Rb_tree {
+public:
+    unsigned int erase_unique(const Key& key) __attribute__((weak));
+};
+}
+
+namespace {
+typedef std::pair<void* const, const char*> MonitoredPointerEntry;
+typedef std::allocator<MonitoredPointerEntry> MonitoredPointerAllocator;
+typedef std::map<void*, const char*, std::less<void*>, MonitoredPointerAllocator> MonitoredPointerMap;
+typedef stlp_priv::_Rb_tree<void*, std::less<void*>, MonitoredPointerEntry,
+    stlp_priv::_Select1st<MonitoredPointerEntry>, stlp_priv::_MapTraitsT<MonitoredPointerEntry>,
+    MonitoredPointerAllocator> MonitoredPointerTree;
+}
+
+namespace std {
+template<> template<>
+const char*& map<void*, const char*, less<void*>, MonitoredPointerAllocator>::operator[]<void*>(
+    void* const& key) __attribute__((weak));
+}
+
+void Application::stopMonitoring(void* pointer)
+{
+    reinterpret_cast<MonitoredPointerTree*>(monitoredPointers)->erase_unique(pointer);
+}
+
+void Application::startMonitoring(void* pointer, const char* name)
+{
+    (*reinterpret_cast<MonitoredPointerMap*>(monitoredPointers))[pointer] = name;
+}

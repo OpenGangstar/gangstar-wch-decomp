@@ -28,6 +28,8 @@ public:
     void ReInit(irr::IrrlichtDevice* newDevice);
     void InitIPhoneFileSystem();
     void dumpMonitoredPointers();
+    void startMonitoring(void* pointer, const char* name);
+    void stopMonitoring(void* pointer);
     void SetDrawAll(bool enabled);
     void Pause();
     void StartGlobalResuming();
@@ -84,6 +86,8 @@ private:
     ASprite* logoSprite;
     unsigned char unknown144[8];
     bool soundThreadPlaying;
+    unsigned char unknown153[3];
+    unsigned char monitoredPointers[1] __attribute__((aligned(4)));
 };
 
 #endif

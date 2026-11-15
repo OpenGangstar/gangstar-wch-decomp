@@ -25,6 +25,8 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application14stopMonitoringEPv",
+        "_ZN11Application15startMonitoringEPvPKc",
         "_ZN11Application8LogoDrawEv",
         "_ZN11Application10LogoUpdateEv",
         "_ZN11Application9StartLogoEv",
