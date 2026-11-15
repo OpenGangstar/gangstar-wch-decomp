@@ -40,6 +40,7 @@ public:
     void UnRegisterForDrawingOnHUD(IDrawable* drawable);
     void UnRegisterForDrawingInScene(IDrawable* drawable);
     void RegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
+    void RegisterForDrawingInScene(IDrawable* drawable);
     void RegisterForDrawingOnHUD(IDrawable* drawable);
     void RegisterForUpdate(IUpdatable* object);
     void GetScreenDimensions(int& width, int& height) const;

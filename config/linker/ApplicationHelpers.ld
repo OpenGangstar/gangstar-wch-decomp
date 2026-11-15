@@ -27,6 +27,7 @@ SECTIONS
     .application_resume_sprite 0x00413c88 : { *(.rodata.application_resume_sprite) }
     .application_pause 0x002d4268 : { *(.text._ZN11Application5PauseEv) }
     .application_register_events 0x002d4318 : { *(.text._ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }
+    .application_register_scene 0x002d5558 : { *(.text._ZN11Application25RegisterForDrawingInSceneEP9IDrawable) }
     .application_register_hud 0x002d4390 : { *(.text._ZN11Application23RegisterForDrawingOnHUDEP9IDrawable) }
     .application_register_update 0x002d4408 : { *(.text._ZN11Application17RegisterForUpdateEP10IUpdatable) }
     .application_unregister_events 0x002d3f7c : { *(.text._ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }

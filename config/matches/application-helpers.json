@@ -31,6 +31,7 @@
         "_ZN11Application19StartGlobalResumingEv",
         "_ZN11Application5PauseEv",
         "_ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
+        "_ZN11Application25RegisterForDrawingInSceneEP9IDrawable",
         "_ZN11Application23RegisterForDrawingOnHUDEP9IDrawable",
         "_ZN11Application17RegisterForUpdateEP10IUpdatable",
         "_ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE",

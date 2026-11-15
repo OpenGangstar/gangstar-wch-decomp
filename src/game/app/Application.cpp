@@ -209,6 +209,11 @@ void Application::RegisterForIrrlichtEvents(irr::IEventReceiver* receiver)
     appendRegistration(unknownPrefix + 28, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 32), receiver);
 }
 
+void Application::RegisterForDrawingInScene(IDrawable* drawable)
+{
+    appendRegistration(unknownPrefix + 12, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 16), drawable);
+}
+
 void Application::RegisterForDrawingOnHUD(IDrawable* drawable)
 {
     appendRegistration(unknownPrefix + 20, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 24), drawable);

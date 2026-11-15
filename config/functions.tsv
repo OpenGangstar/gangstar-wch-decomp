@@ -8868,7 +8868,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d53e1	0x20	Application.cpp	game	app	pending	_ZN11Application14stopMonitoringEPv	Application::stopMonitoring(void*)
 0x002d5401	0x144	Application.cpp	game	app	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002d5545	0x14	Application.cpp	game	app	matched	_GLOBAL__I_iAdditionMenuDepth	_GLOBAL__I_iAdditionMenuDepth
-0x002d5559	0x38	Application.cpp	game	app	pending	_ZN11Application25RegisterForDrawingInSceneEP9IDrawable	Application::RegisterForDrawingInScene(IDrawable*)
+0x002d5559	0x38	Application.cpp	game	app	matched	_ZN11Application25RegisterForDrawingInSceneEP9IDrawable	Application::RegisterForDrawingInScene(IDrawable*)
 0x002d5591	0x290	Application.cpp	game	app	pending	_ZN11Application4InitEPN3irr14IrrlichtDeviceE	Application::Init(irr::IrrlichtDevice*)
 0x002d5821	0x76	Application.cpp	game	app	pending	_ZN11Application9InitWin32EPN3irr14IrrlichtDeviceE	Application::InitWin32(irr::IrrlichtDevice*)
 0x002d5899	0x38	Application.cpp	game	app	matched	_ZN11Application10LogoUpdateEv	Application::LogoUpdate()
