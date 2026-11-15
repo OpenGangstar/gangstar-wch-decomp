@@ -11517,8 +11517,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d56d	0x144	CControlManager.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032d6b1	0x14	CControlManager.cpp	game	input	matched	_GLOBAL__I__ZN15CControlManager16s_sniperTutorialE	_GLOBAL__I__ZN15CControlManager16s_sniperTutorialE
 0x0032d6c5	0x30	CControlManager.cpp	game	input	matched	__tcf_3	__tcf_3
-0x0032d6f5	0x38	CControlManager.cpp	game	input	pending	_ZN15CControlManagerD1Ev	CControlManager::~CControlManager()
-0x0032d6f5	0x38	CControlManager.cpp	game	input	pending	_ZN15CControlManagerD2Ev	CControlManager::~CControlManager()
+0x0032d6f5	0x38	CControlManager.cpp	game	input	matched	_ZN15CControlManagerD1Ev	CControlManager::~CControlManager()
+0x0032d6f5	0x38	CControlManager.cpp	game	input	matched	_ZN15CControlManagerD2Ev	CControlManager::~CControlManager()
 0x0032d72d	0x190	CControlManager.cpp	game	input	pending	_ZN15CControlManager6updateEv	CControlManager::update()
 0x0032d8bd	0x20	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler19releaseKeyboardKeysEv	CDrivingControlHandler::releaseKeyboardKeys()
 0x0032d8dd	0x2	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleAttackReleasedEv	CDrivingControlHandler::handleAttackReleased()
