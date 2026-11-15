@@ -15,8 +15,18 @@ _ZN40retail_confootcontrolhandler_transitions11guard_transE = 0x00426978;
 _ZN40retail_confootcontrolhandler_transitions22scripted_vehicle_transE = 0x00426a20;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .handler_delete 0x0032f06c : { *(.text._ZN21COnFootControlHandlerD0Ev) }
+    .handler_destructor 0x0032f0a4 : { *(.text._ZN21COnFootControlHandlerD1Ev .text._ZN21COnFootControlHandlerD2Ev) }
+    .handler_vtable 0x004acab8 : { *(.data.rel.ro._ZTV21COnFootControlHandler) }
+    .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
+    .control_handler_destructor 0x0032e494 : { *(.gnu.linkonce.t._ZN15IControlHandlerD1Ev) }
+    .control_handler_vtable 0x004aca98 : { *(.gnu.linkonce.d.rel.ro._ZTV15IControlHandler) }
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_destructor 0x002db4d4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD1Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-confootcontrolhandler.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x0032e648 : { *ai-startup-confootcontrolhandler.o(.text.__tcf_0) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }

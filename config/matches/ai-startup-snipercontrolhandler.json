@@ -25,6 +25,9 @@
     "source": "src/game/input/SniperControlHandler.cpp",
     "linker_script": "config/linker/SniperControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN20SniperControlHandlerD0Ev",
+        "_ZN20SniperControlHandlerD1Ev",
+        "_ZN20SniperControlHandlerD2Ev",
         {
             "name": "__tcf_5",
             "address": "0x0032f579"
@@ -39,6 +42,7 @@
         }
     ],
     "sections": [
+        ".handler_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +52,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN20SniperControlHandler10deactivateEv"]
 }

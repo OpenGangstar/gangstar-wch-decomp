@@ -13,8 +13,18 @@ _ZN39retail_snipercontrolhandler_transitions17civ_vehicle_transE = 0x00426f8c;
 _ZN39retail_snipercontrolhandler_transitions17cop_vehicle_transE = 0x0042701c;
 _ZN39retail_snipercontrolhandler_transitions11guard_transE = 0x004270d0;
 _ZN39retail_snipercontrolhandler_transitions22scripted_vehicle_transE = 0x00427178;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .handler_delete 0x0032f5a8 : { *(.text._ZN20SniperControlHandlerD0Ev) }
+    .handler_destructor 0x0032f5e0 : { *(.text._ZN20SniperControlHandlerD1Ev .text._ZN20SniperControlHandlerD2Ev) }
+    .handler_vtable 0x004acad8 : { *(.data.rel.ro._ZTV20SniperControlHandler) }
+    .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
+    .control_handler_destructor 0x0032e494 : { *(.gnu.linkonce.t._ZN15IControlHandlerD1Ev) }
+    .control_handler_vtable 0x004aca98 : { *(.gnu.linkonce.d.rel.ro._ZTV15IControlHandler) }
+    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_destructor 0x002db4d4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD1Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
     .ai_startup_function_0 0x0032f578 : { *ai-startup-snipercontrolhandler.o(.text.__tcf_5) }
     .ai_startup_function_1 0x0032f420 : { *ai-startup-snipercontrolhandler.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0032f564 : { *ai-startup-snipercontrolhandler.o(.text._GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager) }
