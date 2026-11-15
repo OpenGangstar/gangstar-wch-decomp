@@ -285,3 +285,14 @@ void Application::GlobalResumingDraw()
     resumeSprite->PaintFrame(2 + 20 * resumeElapsed / resumeTextureCount, 0, 0, 0);
     endSpriteFrame(driver);
 }
+
+void Application::LogoUpdate()
+{
+    if (logoFrame < logoFrameCount) {
+        LogoDraw();
+        if (++logoFrame == logoFrameCount) {
+            delete logoSprite;
+            logoSprite = 0;
+        }
+    }
+}
