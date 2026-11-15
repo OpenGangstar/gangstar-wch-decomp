@@ -117,7 +117,9 @@ public:
     LevelObject* unknown316;
     unsigned char unknown320[48];
     LevelObject* unknown368;
-    unsigned char unknown372[11];
+    unsigned char unknown372[6];
+    bool movementKeys[4];
+    unsigned char unknown382;
     bool flag383;
     unsigned char unknown384[36];
     int cash;

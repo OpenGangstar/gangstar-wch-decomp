@@ -11520,7 +11520,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d6f5	0x38	CControlManager.cpp	game	input	matched	_ZN15CControlManagerD1Ev	CControlManager::~CControlManager()
 0x0032d6f5	0x38	CControlManager.cpp	game	input	matched	_ZN15CControlManagerD2Ev	CControlManager::~CControlManager()
 0x0032d72d	0x190	CControlManager.cpp	game	input	pending	_ZN15CControlManager6updateEv	CControlManager::update()
-0x0032d8bd	0x20	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler19releaseKeyboardKeysEv	CDrivingControlHandler::releaseKeyboardKeys()
+0x0032d8bd	0x20	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19releaseKeyboardKeysEv	CDrivingControlHandler::releaseKeyboardKeys()
 0x0032d8dd	0x2	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleAttackReleasedEv	CDrivingControlHandler::handleAttackReleased()
 0x0032d8e1	0x30	CDrivingControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
 0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
@@ -11543,7 +11543,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandlerD2Ev	CDrivingControlHandler::~CDrivingControlHandler()
 0x0032e521	0xc	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler4initEv	COnFootControlHandler::init()
 0x0032e52d	0x30	COnFootControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
-0x0032e55d	0x2c	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler19releaseKeyboardKeysEv	COnFootControlHandler::releaseKeyboardKeys()
+0x0032e55d	0x2c	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler19releaseKeyboardKeysEv	COnFootControlHandler::releaseKeyboardKeys()
 0x0032e589	0x12	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler20handleWeaponSwitchedEv	COnFootControlHandler::handleWeaponSwitched()
 0x0032e59d	0x1e	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler17handleLockPressedEv	COnFootControlHandler::handleLockPressed()
 0x0032e5bd	0x1c	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler22handleEnterShopPressedEv	COnFootControlHandler::handleEnterShopPressed()

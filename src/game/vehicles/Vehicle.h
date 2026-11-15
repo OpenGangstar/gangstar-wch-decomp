@@ -263,7 +263,11 @@ private:
     int driverMetatype;
     int driverBehavior;
     float speed;
-    unsigned char unknown980[16];
+    unsigned char unknown980[4];
+    friend class CDrivingControlHandler;
+    float unknown984;
+    float unknown988;
+    unsigned char unknown992[4];
     b2FilterData collisionFilter;
     bool leftDoorClosed;
     bool rightDoorClosed;

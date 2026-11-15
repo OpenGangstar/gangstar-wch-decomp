@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "IControlHandler.h"
+#include "../vehicles/Vehicle.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -126,4 +127,12 @@ void CDrivingControlHandler::activate()
 void CDrivingControlHandler::deactivate()
 {
     updateDrivingEvents<&EventManager::detach>();
+}
+
+void CDrivingControlHandler::releaseKeyboardKeys()
+{
+    if (vehicle) {
+        vehicle->unknown984 = 0.0f;
+        vehicle->unknown988 = 0.0f;
+    }
 }
