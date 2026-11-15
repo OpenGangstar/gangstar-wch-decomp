@@ -132,3 +132,39 @@ void Application::startSoundThread()
         soundThreadPlaying = true;
     }
 }
+
+namespace std {
+template<class T> class allocator;
+
+// Partial view of the retail STLport list sentinel.
+template<class T, class Alloc = allocator<T> > class list {
+public:
+    void remove(const T& value) __attribute__((weak));
+};
+}
+
+namespace {
+template<class T>
+inline void removeRegistration(void* list, T*& object)
+{
+    if (object)
+        static_cast<std::list<T*>*>(list)->remove(object);
+}
+
+
+}
+
+void Application::UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver)
+{
+    removeRegistration(unknownPrefix + 28, receiver);
+}
+
+void Application::UnRegisterForDrawingOnHUD(IDrawable* drawable)
+{
+    removeRegistration(unknownPrefix + 20, drawable);
+}
+
+void Application::UnRegisterForDrawingInScene(IDrawable* drawable)
+{
+    removeRegistration(unknownPrefix + 12, drawable);
+}

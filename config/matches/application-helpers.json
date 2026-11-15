@@ -25,6 +25,9 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
+        "_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable",
+        "_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable",
         "_ZN11Application15stopSoundThreadEv",
         "_ZN11Application16startSoundThreadEv",
         "_ZN11Application19GetMaterialRendererEv",

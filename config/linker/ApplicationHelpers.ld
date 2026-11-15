@@ -18,6 +18,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_unregister_events 0x002d3f7c : { *(.text._ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }
+    .application_unregister_hud 0x002d3fcc : { *(.text._ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable) }
+    .application_unregister_scene 0x002d3ff0 : { *(.text._ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable) }
     .application_stop_sound 0x002d4440 : { *(.text._ZN11Application15stopSoundThreadEv) }
     .application_start_sound 0x002d446c : { *(.text._ZN11Application16startSoundThreadEv) }
     .application_material_renderer 0x002d3c48 : { *(.text._ZN11Application19GetMaterialRendererEv) }
