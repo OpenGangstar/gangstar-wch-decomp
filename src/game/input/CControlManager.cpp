@@ -9,6 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "CControlManager.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -77,4 +78,20 @@ static void __tcf_3()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+// Recovered prefix of the control-handler interface.
+class IControlHandler {
+public:
+    virtual ~IControlHandler();
+};
+
+CControlManager::~CControlManager()
+{
+    delete onFootHandler;
+    onFootHandler = 0;
+    delete drivingHandler;
+    drivingHandler = 0;
+    delete sniperHandler;
+    sniperHandler = 0;
 }

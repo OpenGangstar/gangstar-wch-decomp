@@ -15,6 +15,7 @@ _ZN34retail_ccontrolmanager_transitions11guard_transE = 0x0042587c;
 _ZN34retail_ccontrolmanager_transitions22scripted_vehicle_transE = 0x00425924;
 SECTIONS
 {
+    .control_manager_destructor 0x0032d6f4 : { *ai-startup-ccontrolmanager.o(.text._ZN15CControlManagerD1Ev) }
     .ai_startup_function_0 0x0032d6c4 : { *ai-startup-ccontrolmanager.o(.text.__tcf_3) }
     .ai_startup_function_1 0x0032d56c : { *ai-startup-ccontrolmanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0032d6b0 : { *ai-startup-ccontrolmanager.o(.text._GLOBAL__I__ZN15CControlManager16s_sniperTutorialE) }

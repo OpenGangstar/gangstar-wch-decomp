@@ -25,6 +25,8 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManagerD1Ev",
+        "_ZN15CControlManagerD2Ev",
         {
             "name": "__tcf_3",
             "address": "0x0032d6c5"
