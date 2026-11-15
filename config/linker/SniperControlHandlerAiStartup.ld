@@ -16,6 +16,8 @@ _ZN39retail_snipercontrolhandler_transitions22scripted_vehicle_transE = 0x004271
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .handler_release_keys 0x0032f0dc : { *(.text._ZN20SniperControlHandler19releaseKeyboardKeysEv) }
+    .handler_activate 0x0032f1ac : { *(.text._ZN20SniperControlHandler8activateEv) }
     .handler_deactivate 0x0032f120 : { *(.text._ZN20SniperControlHandler10deactivateEv) }
     .handler_delete 0x0032f5a8 : { *(.text._ZN20SniperControlHandlerD0Ev) }
     .handler_destructor 0x0032f5e0 : { *(.text._ZN20SniperControlHandlerD1Ev .text._ZN20SniperControlHandlerD2Ev) }
