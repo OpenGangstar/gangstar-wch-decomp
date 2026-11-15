@@ -25,6 +25,9 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandlerD0Ev",
+        "_ZN21COnFootControlHandlerD1Ev",
+        "_ZN21COnFootControlHandlerD2Ev",
         {
             "name": "__tcf_4",
             "address": "0x0032e52d"
@@ -44,6 +47,7 @@
         }
     ],
     "sections": [
+        ".handler_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -56,6 +60,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN21COnFootControlHandler10deactivateEv",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"
     ]

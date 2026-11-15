@@ -11562,9 +11562,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032eef1	0x24	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandlerC2EP15CControlManager	COnFootControlHandler::COnFootControlHandler(CControlManager*)
 0x0032ef15	0x144	COnFootControlHandler.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032f059	0x14	COnFootControlHandler.cpp	game	input	matched	_GLOBAL__I__ZN21COnFootControlHandlerC2EP15CControlManager	_GLOBAL__I__ZN21COnFootControlHandlerC2EP15CControlManager
-0x0032f06d	0x38	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandlerD0Ev	COnFootControlHandler::~COnFootControlHandler()
-0x0032f0a5	0x30	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandlerD2Ev	COnFootControlHandler::~COnFootControlHandler()
-0x0032f0a5	0x30	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandlerD1Ev	COnFootControlHandler::~COnFootControlHandler()
+0x0032f06d	0x38	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerD0Ev	COnFootControlHandler::~COnFootControlHandler()
+0x0032f0a5	0x30	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerD2Ev	COnFootControlHandler::~COnFootControlHandler()
+0x0032f0a5	0x30	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerD1Ev	COnFootControlHandler::~COnFootControlHandler()
 0x0032f0d5	0x6	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler4initEv	SniperControlHandler::init()
 0x0032f0dd	0x2	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler19releaseKeyboardKeysEv	SniperControlHandler::releaseKeyboardKeys()
 0x0032f0e1	0x2	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler15handleStickMoveEP11EvStickMove	SniperControlHandler::handleStickMove(EvStickMove*)
@@ -11582,9 +11582,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032f421	0x144	SniperControlHandler.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032f565	0x14	SniperControlHandler.cpp	game	input	matched	_GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager	_GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager
 0x0032f579	0x30	SniperControlHandler.cpp	game	input	matched	__tcf_5	__tcf_5
-0x0032f5a9	0x38	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandlerD0Ev	SniperControlHandler::~SniperControlHandler()
-0x0032f5e1	0x30	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandlerD1Ev	SniperControlHandler::~SniperControlHandler()
-0x0032f5e1	0x30	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandlerD2Ev	SniperControlHandler::~SniperControlHandler()
+0x0032f5a9	0x38	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandlerD0Ev	SniperControlHandler::~SniperControlHandler()
+0x0032f5e1	0x30	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandlerD1Ev	SniperControlHandler::~SniperControlHandler()
+0x0032f5e1	0x30	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandlerD2Ev	SniperControlHandler::~SniperControlHandler()
 0x0032f611	0x12	Explosion.cpp	game	combat	matched	_Z21ExplosionAnimCallbackPN3irr5scene19ITimelineControllerEPv	ExplosionAnimCallback(irr::scene::ITimelineController*, void*)
 0x0032f625	0x14	Explosion.cpp	game	combat	matched	_ZN9Explosion16getExplosionNodeEv	Explosion::getExplosionNode()
 0x0032f639	0x30	Explosion.cpp	game	combat	matched	__tcf_2	__tcf_2
