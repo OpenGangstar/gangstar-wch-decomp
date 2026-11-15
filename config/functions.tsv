@@ -11538,9 +11538,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e455	0x14	CDrivingControlHandler.cpp	game	input	matched	_GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager	_GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager
 0x0032e469	0x2c	CDrivingControlHandler.cpp	game	input	matched	_ZN15IControlHandlerD0Ev	IControlHandler::~IControlHandler()
 0x0032e495	0x24	CDrivingControlHandler.cpp	game	input	matched	_ZN15IControlHandlerD1Ev	IControlHandler::~IControlHandler()
-0x0032e4b9	0x38	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerD0Ev	CDrivingControlHandler::~CDrivingControlHandler()
-0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerD1Ev	CDrivingControlHandler::~CDrivingControlHandler()
-0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerD2Ev	CDrivingControlHandler::~CDrivingControlHandler()
+0x0032e4b9	0x38	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandlerD0Ev	CDrivingControlHandler::~CDrivingControlHandler()
+0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandlerD1Ev	CDrivingControlHandler::~CDrivingControlHandler()
+0x0032e4f1	0x30	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandlerD2Ev	CDrivingControlHandler::~CDrivingControlHandler()
 0x0032e521	0xc	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler4initEv	COnFootControlHandler::init()
 0x0032e52d	0x30	COnFootControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
 0x0032e55d	0x2c	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler19releaseKeyboardKeysEv	COnFootControlHandler::releaseKeyboardKeys()
