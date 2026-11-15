@@ -2,6 +2,7 @@
 #define WCH_APP_APPLICATION_H
 
 class StringManager;
+class StateMachine;
 class IUpdatable;
 class IDrawable;
 class CCustomMaterialRenderer;
@@ -27,6 +28,7 @@ public:
     void InitIPhoneFileSystem();
     void dumpMonitoredPointers();
     void SetDrawAll(bool enabled);
+    void Pause();
     void startSoundThread();
     void stopSoundThread();
     void UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
@@ -51,7 +53,8 @@ private:
     TouchScreenBase* touchScreen;
     unsigned char unknown48[8];
     EventManager* eventManager;
-    unsigned char unknown60[8];
+    unsigned char unknown60[4];
+    StateMachine* stateMachine;
     StringManager* stringManager;
     CControlManager* controlManager;
     CHudManager* hudManager;

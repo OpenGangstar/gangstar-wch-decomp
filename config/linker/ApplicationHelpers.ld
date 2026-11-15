@@ -18,6 +18,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .application_pause 0x002d4268 : { *(.text._ZN11Application5PauseEv) }
     .application_register_events 0x002d4318 : { *(.text._ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }
     .application_register_hud 0x002d4390 : { *(.text._ZN11Application23RegisterForDrawingOnHUDEP9IDrawable) }
     .application_register_update 0x002d4408 : { *(.text._ZN11Application17RegisterForUpdateEP10IUpdatable) }
