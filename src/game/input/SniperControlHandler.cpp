@@ -97,5 +97,14 @@ SniperControlHandler::~SniperControlHandler()
 
 void SniperControlHandler::deactivate()
 {
-    detachOnFootEvents();
+    updateOnFootEvents<&EventManager::detach>();
+}
+
+void SniperControlHandler::activate()
+{
+    updateOnFootEvents<&EventManager::attach>();
+}
+
+void SniperControlHandler::releaseKeyboardKeys()
+{
 }

@@ -98,5 +98,10 @@ COnFootControlHandler::~COnFootControlHandler()
 
 void COnFootControlHandler::deactivate()
 {
-    detachOnFootEvents();
+    updateOnFootEvents<&EventManager::detach>();
+}
+
+void COnFootControlHandler::activate()
+{
+    updateOnFootEvents<&EventManager::attach>();
 }

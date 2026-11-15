@@ -12,13 +12,14 @@ public:
     virtual void releaseKeyboardKeys() = 0;
 
 protected:
-    inline __attribute__((always_inline)) void detachOnFootEvents()
+    template<bool (EventManager::*operation)(int, IEventReceiver*)>
+    inline __attribute__((always_inline)) void updateOnFootEvents()
     {
         EventManager* events = Application::GetInstance()->GetEventManager();
-        events->detach(7, this);
-        events->detach(8, this);
-        events->detach(13, this);
-        events->detach(0, this);
+        (events->*operation)(7, this);
+        (events->*operation)(8, this);
+        (events->*operation)(13, this);
+        (events->*operation)(0, this);
     }
 };
 
