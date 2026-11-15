@@ -32,6 +32,7 @@ public:
     void Pause();
     void StartGlobalResuming();
     void GlobalResumingDraw();
+    void StartLogo();
     void LogoDraw();
     void LogoUpdate();
     void startSoundThread();
