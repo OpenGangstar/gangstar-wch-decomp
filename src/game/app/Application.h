@@ -31,6 +31,7 @@ public:
     void SetDrawAll(bool enabled);
     void Pause();
     void StartGlobalResuming();
+    void GlobalResumingDraw();
     void startSoundThread();
     void stopSoundThread();
     void UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
@@ -71,7 +72,7 @@ private:
     int resumeElapsed;
     int resumeFrame;
     unsigned int resumeInitialTextureCount;
-    unsigned int resumeTextureCount;
+    int resumeTextureCount;
     unsigned char unknown124[12];
     ASprite* resumeSprite;
     unsigned char unknown140[12];
