@@ -25,6 +25,9 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager14setCameraProxyEP9GS3DStuff",
+        "_ZN15CControlManager4lockEv",
+        "_ZNK15CControlManager8isLockedEv",
         "_ZN15CControlManagerD1Ev",
         "_ZN15CControlManagerD2Ev",
         {

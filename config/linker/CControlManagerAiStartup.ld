@@ -16,6 +16,9 @@ _ZN34retail_ccontrolmanager_transitions22scripted_vehicle_transE = 0x00425924;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .control_manager_camera_proxy 0x0032d1b8 : { *(.text._ZN15CControlManager14setCameraProxyEP9GS3DStuff) }
+    .control_manager_lock 0x0032d1bc : { *(.text._ZN15CControlManager4lockEv) }
+    .control_manager_is_locked 0x0032d1e8 : { *(.text._ZNK15CControlManager8isLockedEv) }
     .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
     .control_handler_destructor 0x0032e494 : { *(.gnu.linkonce.t._ZN15IControlHandlerD1Ev) }
     .control_handler_vtable 0x004aca98 : { *(.gnu.linkonce.d.rel.ro._ZTV15IControlHandler) }

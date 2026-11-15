@@ -11501,9 +11501,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d11c	0x14	Wheel.cpp	game	vehicles	pending	_ZThn8_N5Wheel19processTouchReleaseEv	non-virtual thunk to Wheel::processTouchRelease()
 0x0032d131	0x5c	Wheel.cpp	game	vehicles	pending	_ZN5Wheel19processTouchReleaseEv	Wheel::processTouchRelease()
 0x0032d18d	0x2c	Wheel.cpp	game	vehicles	pending	_ZN11EvWheelTurnD0Ev	EvWheelTurn::~EvWheelTurn()
-0x0032d1b9	0x4	CControlManager.cpp	game	input	pending	_ZN15CControlManager14setCameraProxyEP9GS3DStuff	CControlManager::setCameraProxy(GS3DStuff*)
-0x0032d1bd	0x2c	CControlManager.cpp	game	input	pending	_ZN15CControlManager4lockEv	CControlManager::lock()
-0x0032d1e9	0x4	CControlManager.cpp	game	input	pending	_ZNK15CControlManager8isLockedEv	CControlManager::isLocked() const
+0x0032d1b9	0x4	CControlManager.cpp	game	input	matched	_ZN15CControlManager14setCameraProxyEP9GS3DStuff	CControlManager::setCameraProxy(GS3DStuff*)
+0x0032d1bd	0x2c	CControlManager.cpp	game	input	matched	_ZN15CControlManager4lockEv	CControlManager::lock()
+0x0032d1e9	0x4	CControlManager.cpp	game	input	matched	_ZNK15CControlManager8isLockedEv	CControlManager::isLocked() const
 0x0032d1ed	0x14	CControlManager.cpp	game	input	pending	_ZN15CControlManager10exitCombatEv	CControlManager::exitCombat()
 0x0032d201	0x32	CControlManager.cpp	game	input	pending	_ZN15CControlManager4initEv	CControlManager::init()
 0x0032d235	0x64	CControlManager.cpp	game	input	pending	_ZN15CControlManagerC2Ev	CControlManager::CControlManager()
