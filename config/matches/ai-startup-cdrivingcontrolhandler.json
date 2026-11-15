@@ -25,6 +25,7 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN22CDrivingControlHandler8activateEv",
         "_ZN22CDrivingControlHandler10deactivateEv",
         "_ZN22CDrivingControlHandlerD0Ev",
         "_ZN22CDrivingControlHandlerD1Ev",
@@ -64,6 +65,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN12StateMachineC1Ev",

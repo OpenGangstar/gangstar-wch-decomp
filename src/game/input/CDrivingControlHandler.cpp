@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "IControlHandler.h"
+#include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
@@ -82,6 +83,8 @@ static void _GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager()
 }
 
 // Recovered virtual interface. The member layout is still incomplete.
+class CControlManager;
+
 class CDrivingControlHandler : public IControlHandler {
 public:
     virtual ~CDrivingControlHandler();
@@ -89,6 +92,12 @@ public:
     virtual void activate();
     virtual void deactivate() __attribute__((noinline));
     virtual void releaseKeyboardKeys();
+
+private:
+    template<bool (EventManager::*operation)(int, IEventReceiver*)>
+    inline __attribute__((always_inline)) void updateDrivingEvents();
+    CControlManager* controlManager;
+    Vehicle* vehicle;
 };
 
 CDrivingControlHandler::~CDrivingControlHandler()
@@ -96,13 +105,25 @@ CDrivingControlHandler::~CDrivingControlHandler()
     CDrivingControlHandler::deactivate();
 }
 
-void CDrivingControlHandler::deactivate()
+template<bool (EventManager::*operation)(int, IEventReceiver*)>
+inline __attribute__((always_inline)) void CDrivingControlHandler::updateDrivingEvents()
 {
     EventManager* events = Application::GetInstance()->GetEventManager();
-    events->detach(9, this);
-    events->detach(11, this);
-    events->detach(14, this);
-    events->detach(13, this);
-    events->detach(0, this);
-    events->detach(6, this);
+    (events->*operation)(9, this);
+    (events->*operation)(11, this);
+    (events->*operation)(14, this);
+    (events->*operation)(13, this);
+    (events->*operation)(0, this);
+    (events->*operation)(6, this);
+}
+
+void CDrivingControlHandler::activate()
+{
+    vehicle = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+    updateDrivingEvents<&EventManager::attach>();
+}
+
+void CDrivingControlHandler::deactivate()
+{
+    updateDrivingEvents<&EventManager::detach>();
 }

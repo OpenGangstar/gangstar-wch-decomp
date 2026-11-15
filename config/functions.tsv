@@ -11528,7 +11528,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
 0x0032d945	0x2c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20disableAccelerometerEv	CDrivingControlHandler::disableAccelerometer()
 0x0032d971	0x1c	CDrivingControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
-0x0032d98d	0x58	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler8activateEv	CDrivingControlHandler::activate()
+0x0032d98d	0x58	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler8activateEv	CDrivingControlHandler::activate()
 0x0032d9e5	0x4c	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler10deactivateEv	CDrivingControlHandler::deactivate()
 0x0032da31	0x24	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler4initEv	CDrivingControlHandler::init()
 0x0032da55	0x3c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandlerC2EP15CControlManager	CDrivingControlHandler::CDrivingControlHandler(CControlManager*)
