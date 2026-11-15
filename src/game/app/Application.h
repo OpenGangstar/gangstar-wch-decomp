@@ -32,6 +32,8 @@ public:
     void UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
     void UnRegisterForDrawingOnHUD(IDrawable* drawable);
     void UnRegisterForDrawingInScene(IDrawable* drawable);
+    void RegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
+    void RegisterForDrawingOnHUD(IDrawable* drawable);
     void RegisterForUpdate(IUpdatable* object);
     void GetScreenDimensions(int& width, int& height) const;
     inline irr::IrrlichtDevice* GetDevice() const { return device; }

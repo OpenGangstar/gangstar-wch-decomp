@@ -25,6 +25,9 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
+        "_ZN11Application23RegisterForDrawingOnHUDEP9IDrawable",
+        "_ZN11Application17RegisterForUpdateEP10IUpdatable",
         "_ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
         "_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable",
         "_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable",
@@ -91,7 +94,6 @@
         "_ZN12SoundManager15stopLowFpsMusicEv",
         "_ZN12SoundManager15playLowFpsMusicEib",
         "_ZN12SoundManager4initEv",
-        "_ZN11Application17RegisterForUpdateEP10IUpdatable",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"

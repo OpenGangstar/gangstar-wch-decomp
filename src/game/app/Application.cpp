@@ -133,8 +133,21 @@ void Application::startSoundThread()
     }
 }
 
+namespace stlp_priv {
+struct RegistrationLink {
+    RegistrationLink* next;
+    RegistrationLink* previous;
+};
+template<class T> struct _List_node : RegistrationLink {
+    T value;
+};
+}
+
 namespace std {
-template<class T> class allocator;
+template<class T> class allocator {
+public:
+    T* allocate(unsigned int count, const void* hint) __attribute__((weak));
+};
 
 // Partial view of the retail STLport list sentinel.
 template<class T, class Alloc = allocator<T> > class list {
@@ -167,4 +180,37 @@ void Application::UnRegisterForDrawingOnHUD(IDrawable* drawable)
 void Application::UnRegisterForDrawingInScene(IDrawable* drawable)
 {
     removeRegistration(unknownPrefix + 12, drawable);
+}
+
+namespace {
+template<class T>
+inline void appendRegistration(void* list, stlp_priv::RegistrationLink*& tail, T* object)
+{
+    if (object) {
+        typedef stlp_priv::_List_node<T*> Node;
+        stlp_priv::RegistrationLink* root = static_cast<stlp_priv::RegistrationLink*>(list);
+        Node* node = static_cast<std::allocator<Node>*>(list)->allocate(1, 0);
+        node->value = object;
+        stlp_priv::RegistrationLink* previous = tail;
+        node->next = root;
+        node->previous = previous;
+        previous->next = node;
+        tail = node;
+    }
+}
+}
+
+void Application::RegisterForIrrlichtEvents(irr::IEventReceiver* receiver)
+{
+    appendRegistration(unknownPrefix + 28, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 32), receiver);
+}
+
+void Application::RegisterForDrawingOnHUD(IDrawable* drawable)
+{
+    appendRegistration(unknownPrefix + 20, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 24), drawable);
+}
+
+void Application::RegisterForUpdate(IUpdatable* object)
+{
+    appendRegistration(unknownPrefix + 4, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 8), object);
 }
