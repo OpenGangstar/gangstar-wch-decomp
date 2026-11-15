@@ -10,6 +10,8 @@
 
 #include "Application.h"
 #include "../core/ASprite.h"
+#include "../core/SafeDelete.h"
+#include "../input/CControlManager.h"
 #include "../core/VideoDriver.h"
 #include "../persistence/SaveGame.h"
 #include "../persistence/SaveGameInterfaces.h"
@@ -274,6 +276,8 @@ inline __attribute__((always_inline)) void endSpriteFrame(irr::video::IVideoDriv
     driver->swapBuffers(0);
 }
 }
+
+template void SafeDelete<CControlManager>(CControlManager*&);
 
 extern "C" int sWindowWidth;
 

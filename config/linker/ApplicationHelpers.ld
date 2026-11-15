@@ -22,6 +22,7 @@ SECTIONS
 {
     .application_stop_monitoring 0x002d53e0 : { *(.text._ZN11Application14stopMonitoringEPv) }
     .application_start_monitoring 0x002d5c40 : { *(.text._ZN11Application15startMonitoringEPvPKc) }
+    .application_delete_control 0x002d458c : { *(.gnu.linkonce.t._Z10SafeDeleteI15CControlManagerEvRPT_) }
     .application_logo_draw 0x002d4a6c : { *(.text._ZN11Application8LogoDrawEv) }
     .application_logo_update 0x002d5898 : { *(.text._ZN11Application10LogoUpdateEv) }
     .application_resume_draw 0x002d4b08 : { *(.text._ZN11Application18GlobalResumingDrawEv) }
