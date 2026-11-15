@@ -8816,10 +8816,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3cd5	0x240	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_Rb_globalIbE20_Rebalance_for_eraseEPNS_18_Rb_tree_node_baseERS3_S4_S4_	stlp_priv::_Rb_global<bool>::_Rebalance_for_erase(stlp_priv::_Rb_tree_node_base*, stlp_priv::_Rb_tree_node_base*&, stlp_priv::_Rb_tree_node_base*&, stlp_priv::_Rb_tree_node_base*&)
 0x002d3f15	0x3c	Application.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIPvSt4lessIS1_ESt4pairIKS1_PKcENS_10_Select1stIS8_EENS_11_MapTraitsTIS8_EESaIS8_EE8_M_eraseEPNS_18_Rb_tree_node_baseE	stlp_priv::_Rb_tree<void*, std::less<void*>, std::pair<void* const, char const*>, stlp_priv::_Select1st<std::pair<void* const, char const*> >, stlp_priv::_MapTraitsT<std::pair<void* const, char const*> >, std::allocator<std::pair<void* const, char const*> > >::_M_erase(stlp_priv::_Rb_tree_node_base*)
 0x002d3f51	0x2c	Application.cpp	stlport	-	matched	_ZNSt4listIPN3irr14IEventReceiverESaIS2_EE6removeERKS2_	std::list<irr::IEventReceiver*, std::allocator<irr::IEventReceiver*> >::remove(irr::IEventReceiver* const&)
-0x002d3f7d	0x24	Application.cpp	game	app	pending	_ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE	Application::UnRegisterForIrrlichtEvents(irr::IEventReceiver*)
+0x002d3f7d	0x24	Application.cpp	game	app	matched	_ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE	Application::UnRegisterForIrrlichtEvents(irr::IEventReceiver*)
 0x002d3fa1	0x2c	Application.cpp	stlport	-	matched	_ZNSt4listIP9IDrawableSaIS1_EE6removeERKS1_	std::list<IDrawable*, std::allocator<IDrawable*> >::remove(IDrawable* const&)
-0x002d3fcd	0x24	Application.cpp	game	app	pending	_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable	Application::UnRegisterForDrawingOnHUD(IDrawable*)
-0x002d3ff1	0x24	Application.cpp	game	app	pending	_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable	Application::UnRegisterForDrawingInScene(IDrawable*)
+0x002d3fcd	0x24	Application.cpp	game	app	matched	_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable	Application::UnRegisterForDrawingOnHUD(IDrawable*)
+0x002d3ff1	0x24	Application.cpp	game	app	matched	_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable	Application::UnRegisterForDrawingInScene(IDrawable*)
 0x002d4015	0x30	Application.cpp	game	app	pending	_ZN11Application19UnRegisterForUpdateEP10IUpdatable	Application::UnRegisterForUpdate(IUpdatable*)
 0x002d4045	0x30	Application.cpp	game	app	matched	__tcf_5	__tcf_5
 0x002d4075	0x20	Application.cpp	game	app	matched	_ZN6IEventD0Ev	IEvent::~IEvent()

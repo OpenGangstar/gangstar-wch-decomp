@@ -3,6 +3,7 @@
 
 class StringManager;
 class IUpdatable;
+class IDrawable;
 class CCustomMaterialRenderer;
 class FileSystemBase;
 class WeaponManager;
@@ -10,7 +11,7 @@ class CHudManager;
 class CControlManager;
 class TouchScreenBase;
 class EventManager;
-namespace irr { class IrrlichtDevice; }
+namespace irr { class IrrlichtDevice; class IEventReceiver; }
 
 // Partial layout. Members at offsets 36, 40, 44, 68, 72, 76 and 80 are currently recovered.
 // Do not instantiate or use sizeof until the complete class is recovered.
@@ -28,6 +29,9 @@ public:
     void SetDrawAll(bool enabled);
     void startSoundThread();
     void stopSoundThread();
+    void UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver);
+    void UnRegisterForDrawingOnHUD(IDrawable* drawable);
+    void UnRegisterForDrawingInScene(IDrawable* drawable);
     void RegisterForUpdate(IUpdatable* object);
     void GetScreenDimensions(int& width, int& height) const;
     inline irr::IrrlichtDevice* GetDevice() const { return device; }
