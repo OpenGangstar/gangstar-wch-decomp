@@ -14,6 +14,7 @@ public:
     void unlock();
     void enterCombat();
     void exitCombat();
+    void enterSniping(bool changeCamera);
     void exitSniping(bool restoreCamera);
     void enterCar(bool changeCamera);
     void exitCar(bool restoreCamera);

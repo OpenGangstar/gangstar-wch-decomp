@@ -25,6 +25,7 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager12enterSnipingEb",
         "_ZN15CControlManager8enterCarEb",
         "_ZN15CControlManager7exitCarEb",
         "_ZN15CControlManager11exitSnipingEb",
@@ -53,6 +54,7 @@
         }
     ],
     "sections": [
+        ".control_manager_tutorial",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -64,6 +66,16 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11CHudManager7snipingEv",
+        "_ZN9Character14goToCombatIdleEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13WeaponManager16getCurrentWeaponEv",
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager14setTutorialIdsEii",
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZN11MenuManager6popAllEb",
+        "_ZN11MenuManager4pushEPKcb",
         "_ZN10PlayerTest12startDrivingEv",
         "_ZN11CHudManager7drivingEv",
         "_ZN11CHudManager7walkingEv",

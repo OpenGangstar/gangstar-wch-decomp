@@ -19,6 +19,10 @@
 #include "../core/CameraManager.h"
 #include "../hud/CHudManager.h"
 #include "../hud/MiniMap.h"
+#include "../hud/MenuManager.h"
+#include "../scripting/ScriptManager.h"
+#include "../combat/WeaponManager.h"
+#include "../combat/Weapon.h"
 #include "../vehicles/Vehicle.h"
 #include "../audio/Radio.h"
 #include "../ui/ToggleButton.h"
@@ -244,4 +248,45 @@ void CControlManager::enterCar(bool changeCamera)
     }
     activeHandler = drivingHandler;
     activeHandler->activate();
+}
+
+namespace {
+const char tutorialMenu[] __attribute__((section(".rodata.control_manager_tutorial"))) = "Tutorial";
+}
+
+void CControlManager::enterSniping(bool changeCamera)
+{
+    Application::GetInstance()->GetHudManager()->sniping();
+    PlayerTest* player = PlayerTest::GetPlayer();
+    Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*player));
+    character->goToCombatIdle();
+    if (changeCamera) {
+        CameraManager* camera = CameraManager::getInstance();
+        camera->enterMode(4, player ? character : 0, 0.3f, 0);
+    }
+    activeHandler->deactivate();
+    activeHandler = sniperHandler;
+    activeHandler->activate();
+    if (!ScriptManager::getInstance()->unknown78)
+        return;
+
+    bool* shown;
+    int tutorialId;
+    const int weapon = Application::GetInstance()->GetWeaponManager()->getCurrentWeapon()->getWeaponType();
+    if (weapon == 8) {
+        shown = &s_sniperTutorial;
+        tutorialId = 12422;
+    } else if (weapon == 9) {
+        shown = &s_cameraTutorial;
+        tutorialId = 12424;
+    } else {
+        return;
+    }
+    if (!*shown) {
+        *shown = true;
+        MenuManager::getInstance()->setTutorialIds(tutorialId, 12423);
+        if (MenuManager::getInstance()->getDepth() > 0)
+            MenuManager::getInstance()->popAll(false);
+        MenuManager::getInstance()->push(tutorialMenu, true);
+    }
 }
