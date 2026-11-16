@@ -25,6 +25,9 @@
     "source": "src/game/ui/Message.cpp",
     "linker_script": "config/linker/MessageAiStartup.ld",
     "functions": [
+        "_ZN7Message12clearMessageEb",
+        "_ZNK7Message6draw2dEv",
+        "_ZThn4_NK7Message6draw2dEv",
         "_ZN7Message8setTimerEi",
         "_ZN7Message7setAnimEi",
         {
@@ -51,5 +54,5 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN10AnimObject7SetAnimEi"]
+    "external_thumb_functions": ["_ZN10AnimObject7SetAnimEi", "_ZN10AnimObject4DrawEv"]
 }

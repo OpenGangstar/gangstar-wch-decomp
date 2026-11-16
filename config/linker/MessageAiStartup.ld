@@ -15,6 +15,9 @@ _ZN26retail_message_transitions11guard_transE = 0x0042468c;
 _ZN26retail_message_transitions22scripted_vehicle_transE = 0x00424734;
 SECTIONS
 {
+    .message_clear 0x00328e7c : { *(.text._ZN7Message12clearMessageEb) }
+    .message_draw 0x00328ef8 : { *(.text._ZNK7Message6draw2dEv) }
+    .message_draw_thunk 0x00328ee4 : { *(.text._ZThn4_NK7Message6draw2dEv) }
     .message_328e24 0x00328e24 : { *ai-startup-message.o(.text._ZN7Message8setTimerEi) }
     .message_328e6c 0x00328e6c : { *ai-startup-message.o(.text._ZN7Message7setAnimEi) }
     .ai_startup_function_0 0x00328e3c : { *ai-startup-message.o(.text.__tcf_3) }
