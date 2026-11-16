@@ -14,6 +14,7 @@
 #include "SpyGauge.h"
 #include "../input/AnalogStick.h"
 #include "../ui/AnimatedButton.h"
+#include "../ui/Message.h"
 #include "../characters/PlayerTest.h"
 #include "../combat/Weapon.h"
 #include "../app/Application.h"
@@ -254,4 +255,9 @@ void CHudManager::limitToWeapon(int weaponId)
     switchWeapon();
     weaponSelector->grayOut(weaponId != -1);
     static_cast<AnimatedButton*>(weaponSelectorExtra)->grayOut(weaponId != -1);
+}
+
+bool CHudManager::isAnyMessageDisplayed()
+{
+    return static_cast<Message*>(message176)->isDisplayed() || static_cast<Message*>(message172)->isDisplayed();
 }

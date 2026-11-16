@@ -353,6 +353,7 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN7Message11isDisplayedEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN3MapC1Ev",

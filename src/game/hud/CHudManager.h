@@ -57,7 +57,10 @@ public:
     Ammo* ammoDisplay;
     unsigned char unknown160[4];
     WantedMeter* wantedMeter;
-    unsigned char unknown168[16];
+    unsigned char unknown168[4];
+    HudElement* message172;
+    HudElement* message176;
+    unsigned char unknown180[4];
     AnimatedButton* weaponSelector;
     HudElement* weaponSelectorExtra;
     HudElement** resetElementsBegin;
@@ -81,6 +84,7 @@ public:
     void sniping();
     void toggleRadioCB(bool enabled);
     void retroEffect(bool enabled);
+    bool isAnyMessageDisplayed() __attribute__((weak));
     void limitToWeapon(int weaponId);
 };
 
