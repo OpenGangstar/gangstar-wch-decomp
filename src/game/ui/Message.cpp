@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "Message.h"
+#include "../core/SafeDelete.h"
 #include "../characters/AnimObject.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -122,4 +123,11 @@ void Message::setMessage(const char* text, int duration)
     } else if (unknown80 != -1) {
         setAnim(messageAnimation);
     }
+}
+
+template<> void SafeDelete<AnimObject>(AnimObject*& object) __attribute__((weak));
+
+Message::~Message()
+{
+    SafeDelete(animationObject);
 }

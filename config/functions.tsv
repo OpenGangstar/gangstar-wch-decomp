@@ -11305,11 +11305,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328ee4	0x14	Message.cpp	game	ui	matched	_ZThn4_NK7Message6draw2dEv	non-virtual thunk to Message::draw2d() const
 0x00328ef9	0x1a	Message.cpp	game	ui	matched	_ZNK7Message6draw2dEv	Message::draw2d() const
 0x00328f15	0x14c	Message.cpp	game	ui	pending	_ZN7Message6updateEd	Message::update(double)
-0x00329060	0x14	Message.cpp	game	ui	pending	_ZThn4_N7MessageD0Ev	non-virtual thunk to Message::~Message()
-0x00329075	0x40	Message.cpp	game	ui	pending	_ZN7MessageD0Ev	Message::~Message()
-0x003290b4	0x14	Message.cpp	game	ui	pending	_ZThn4_N7MessageD1Ev	non-virtual thunk to Message::~Message()
-0x003290c9	0x38	Message.cpp	game	ui	pending	_ZN7MessageD1Ev	Message::~Message()
-0x003290c9	0x38	Message.cpp	game	ui	pending	_ZN7MessageD2Ev	Message::~Message()
+0x00329060	0x14	Message.cpp	game	ui	matched	_ZThn4_N7MessageD0Ev	non-virtual thunk to Message::~Message()
+0x00329075	0x40	Message.cpp	game	ui	matched	_ZN7MessageD0Ev	Message::~Message()
+0x003290b4	0x14	Message.cpp	game	ui	matched	_ZThn4_N7MessageD1Ev	non-virtual thunk to Message::~Message()
+0x003290c9	0x38	Message.cpp	game	ui	matched	_ZN7MessageD1Ev	Message::~Message()
+0x003290c9	0x38	Message.cpp	game	ui	matched	_ZN7MessageD2Ev	Message::~Message()
 0x00329101	0x88	Message.cpp	game	ui	pending	_ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii	Message::Message(ASprite*, MenuManager::eText, int, int)
 0x00329101	0x88	Message.cpp	game	ui	pending	_ZN7MessageC1EP7ASpriteN11MenuManager5eTextEii	Message::Message(ASprite*, MenuManager::eText, int, int)
 0x00329189	0x5a	Message.cpp	game	ui	pending	_ZN7Message10setMessageEiiN11MenuManager5eTextE	Message::setMessage(int, int, MenuManager::eText)

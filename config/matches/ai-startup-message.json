@@ -25,6 +25,11 @@
     "source": "src/game/ui/Message.cpp",
     "linker_script": "config/linker/MessageAiStartup.ld",
     "functions": [
+        "_ZN7MessageD0Ev",
+        "_ZN7MessageD1Ev",
+        "_ZN7MessageD2Ev",
+        "_ZThn4_N7MessageD0Ev",
+        "_ZThn4_N7MessageD1Ev",
         "_ZN7Message10setMessageEPKci",
         "_ZN7Message12clearMessageEb",
         "_ZNK7Message6draw2dEv",
@@ -45,6 +50,7 @@
         }
     ],
     "sections": [
+        ".message_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -55,5 +61,5 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN10AnimObject7SetAnimEi", "_ZN10AnimObject4DrawEv"]
+    "external_thumb_functions": ["_ZN10AnimObject7SetAnimEi", "_ZN10AnimObject4DrawEv", "_ZN10HudElementD1Ev"]
 }
