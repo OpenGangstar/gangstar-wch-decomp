@@ -10,7 +10,8 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "CControlManager.h"
-#include "IControlHandler.h"
+#include "COnFootControlHandler.h"
+#include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -108,4 +109,16 @@ void CControlManager::lock()
 bool CControlManager::isLocked() const
 {
     return locked;
+}
+
+void CControlManager::unlock()
+{
+    if (activeHandler == onFootHandler)
+        static_cast<COnFootControlHandler*>(activeHandler)->unknown12 = true;
+    locked = false;
+}
+
+void CControlManager::exitCombat()
+{
+    PlayerTest::GetPlayer()->combatMode = false;
 }
