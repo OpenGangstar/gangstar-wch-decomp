@@ -26,6 +26,10 @@
     "dependencies": ["ai-startup-menuwidget"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZNK5Menus7Confirm9ConfirmedEv",
+        "_ZN5Menus14ConfirmPayment9GetWidgetEv",
+        "_ZN5Menus7Confirm9GetWidgetEv",
+        "_ZN5Menus14ConfirmPayment8SetPriceEi",
         "_ZN5Menus6Dialog10SetMessageEi",
         {
             "name": "__tcf_6",
@@ -64,6 +68,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11MenuManager11getInstanceEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",

@@ -31,11 +31,23 @@ protected:
 };
 class Confirm : public Dialog {
 public:
+    virtual ~Confirm();
     bool Confirmed() const;
+
+protected:
+    virtual Widgets::Confirm* GetWidget();
+
+private:
+    unsigned char unknown4[0x68];
+    bool confirmed;
 };
 class ConfirmPayment : public Confirm {
 public:
+    virtual ~ConfirmPayment();
     void SetPrice(int amount);
+
+protected:
+    virtual Widgets::ConfirmPayment* GetWidget();
 };
 }
 

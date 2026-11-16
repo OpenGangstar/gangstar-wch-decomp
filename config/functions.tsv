@@ -9575,14 +9575,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e734d	0x4	MenuState.cpp	game	ui	pending	_ZN9MenuState6NotifyEPK10MenuWidgeti	MenuState::Notify(MenuWidget const*, int)
 0x002e7351	0x4	MenuState.cpp	game	ui	pending	_ZNK9MenuState8GetDepthEv	MenuState::GetDepth() const
 0x002e7355	0x30	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14GetOrientationEv	Menus::OptionGameSettings::GetOrientation()
-0x002e7385	0x6	MenuState.cpp	game	ui	pending	_ZNK5Menus7Confirm9ConfirmedEv	Menus::Confirm::Confirmed() const
+0x002e7385	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm9ConfirmedEv	Menus::Confirm::Confirmed() const
 0x002e738d	0x6	MenuState.cpp	game	ui	pending	_ZNK5Menus8MainMenu12GameContinueEv	Menus::MainMenu::GameContinue() const
 0x002e7395	0x6	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu8SetPauseEb	Menus::MainMenu::SetPause(bool)
 0x002e739d	0x12	MenuState.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP6ScriptSaIS2_EED1Ev	stlp_priv::_Vector_base<Script*, std::allocator<Script*> >::~_Vector_base()
 0x002e73b1	0x30	MenuState.cpp	game	ui	matched	__tcf_6	__tcf_6
 0x002e73e1	0x34	MenuState.cpp	gameswf	-	matched	_ZNK7gameswf8weak_ptrINS_9characterEE11check_proxyEv	gameswf::weak_ptr<gameswf::character>::check_proxy() const
-0x002e7415	0x22	MenuState.cpp	game	ui	pending	_ZN5Menus14ConfirmPayment9GetWidgetEv	Menus::ConfirmPayment::GetWidget()
-0x002e7439	0x22	MenuState.cpp	game	ui	pending	_ZN5Menus7Confirm9GetWidgetEv	Menus::Confirm::GetWidget()
+0x002e7415	0x22	MenuState.cpp	game	ui	matched	_ZN5Menus14ConfirmPayment9GetWidgetEv	Menus::ConfirmPayment::GetWidget()
+0x002e7439	0x22	MenuState.cpp	game	ui	matched	_ZN5Menus7Confirm9GetWidgetEv	Menus::Confirm::GetWidget()
 0x002e745d	0x1c	MenuState.cpp	game	ui	matched	__tcf_5	__tcf_5
 0x002e7479	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11switchStateI9GSLoadingEEPT_v	GSLoading* StateMachine::switchState<GSLoading>()
 0x002e7499	0x46	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE7reserveEi	gameswf::array<int>::reserve(int)
@@ -9656,7 +9656,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e84a5	0x48	MenuState.cpp	game	ui	pending	_ZN5Menus11AchievementC2Ev	Menus::Achievement::Achievement()
 0x002e84ed	0x3c	MenuState.cpp	game	ui	pending	_ZN5Menus8TutorialC1EPKc	Menus::Tutorial::Tutorial(char const*)
 0x002e84ed	0x3c	MenuState.cpp	game	ui	pending	_ZN5Menus8TutorialC2EPKc	Menus::Tutorial::Tutorial(char const*)
-0x002e8529	0x26	MenuState.cpp	game	ui	pending	_ZN5Menus14ConfirmPayment8SetPriceEi	Menus::ConfirmPayment::SetPrice(int)
+0x002e8529	0x26	MenuState.cpp	game	ui	matched	_ZN5Menus14ConfirmPayment8SetPriceEi	Menus::ConfirmPayment::SetPrice(int)
 0x002e8551	0xe8	MenuState.cpp	game	ui	pending	_ZN9MenuState7OnEventERN8RenderFX5EventE	MenuState::OnEvent(RenderFX::Event&)
 0x002e8639	0x1a	MenuState.cpp	game	ui	pending	_ZN5Menus3Map7OnEventERN8RenderFX5EventE	Menus::Map::OnEvent(RenderFX::Event&)
 0x002e8655	0x68	MenuState.cpp	game	ui	pending	_ZN9MenuState4HideEv	MenuState::Hide()
@@ -9820,7 +9820,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebe71	0x6	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets8Tutorial15IsCursorPressedEv	Widgets::Tutorial::IsCursorPressed() const
 0x002ebe79	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11Achievement8SetTitleEi	Widgets::Achievement::SetTitle(int)
 0x002ebe7d	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets11Achievement8AutoHideEv	Widgets::Achievement::AutoHide() const
-0x002ebe81	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets14ConfirmPayment8SetPriceEi	Widgets::ConfirmPayment::SetPrice(int)
+0x002ebe81	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets14ConfirmPayment8SetPriceEi	Widgets::ConfirmPayment::SetPrice(int)
 0x002ebe85	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Dialog10SetMessageEi	Widgets::Dialog::SetMessage(int)
 0x002ebe89	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets6Dialog16GetPressedButtonEv	Widgets::Dialog::GetPressedButton() const
 0x002ebe8d	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu12SetTitleTextEi	Widgets::IGMenu::SetTitleText(int)
