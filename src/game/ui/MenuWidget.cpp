@@ -140,6 +140,8 @@ Widgets::ConfirmPayment::ConfirmPayment()
 {
 }
 
+class Script;
+
 namespace Widgets {
 class Mission : public MenuWidget {
 public:
@@ -147,6 +149,10 @@ public:
     virtual void Show();
     virtual void OnEvent(RenderFX::Event&);
     virtual void UpdateLocalization();
+    void SetScript(const Script* value);
+
+private:
+    const Script* script;
 };
 
 class Money : public MenuWidget {
@@ -162,6 +168,11 @@ public:
     virtual void Show();
     virtual void OnEvent(RenderFX::Event&);
     virtual void UpdateLocalization();
+    int GetCurrentPage() const;
+
+private:
+    int pageCount;
+    int currentPage;
 };
 
 class ContentBox : public MenuWidget {
@@ -175,6 +186,10 @@ public:
     Title();
     virtual void Show();
     virtual void UpdateLocalization();
+    void SetTextId(int id);
+
+private:
+    int textId;
 };
 
 class BackgroundInGame : public MenuWidget {
@@ -182,6 +197,63 @@ public:
     BackgroundInGame();
     virtual void Show();
 };
+}
+
+static const char widgetMissionName[] = "widgetMission";
+
+Widgets::Mission::Mission()
+    : MenuWidget(widgetMissionName), script(0)
+{
+}
+
+static const char widgetMoneyName[] = "widgetMoney";
+
+Widgets::Money::Money()
+    : MenuWidget(widgetMoneyName)
+{
+}
+
+static const char widgetArrowsName[] = "widgetArrows";
+
+Widgets::Arrows::Arrows()
+    : MenuWidget(widgetArrowsName), pageCount(0), currentPage(0)
+{
+}
+
+static const char widgetContentBoxName[] = "widgetContentBox";
+
+Widgets::ContentBox::ContentBox()
+    : MenuWidget(widgetContentBoxName)
+{
+}
+
+static const char widgetTitleName[] = "widgetTitle";
+
+Widgets::Title::Title()
+    : MenuWidget(widgetTitleName), textId(-1)
+{
+}
+
+static const char widgetBGName[] = "widgetBG";
+
+Widgets::BackgroundInGame::BackgroundInGame()
+    : MenuWidget(widgetBGName)
+{
+}
+
+void Widgets::Mission::SetScript(const Script* value)
+{
+    script = value;
+}
+
+int Widgets::Arrows::GetCurrentPage() const
+{
+    return currentPage;
+}
+
+void Widgets::Title::SetTextId(int id)
+{
+    textId = id;
 }
 
 void Widgets::Mission::Show()
