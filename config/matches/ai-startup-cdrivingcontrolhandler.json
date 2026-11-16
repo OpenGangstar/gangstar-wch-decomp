@@ -25,6 +25,7 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN22CDrivingControlHandler4initEv",
         "_ZN22CDrivingControlHandler19releaseKeyboardKeysEv",
         "_ZN22CDrivingControlHandler8activateEv",
         "_ZN22CDrivingControlHandler10deactivateEv",

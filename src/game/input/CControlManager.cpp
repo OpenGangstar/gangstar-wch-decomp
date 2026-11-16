@@ -11,6 +11,8 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "CControlManager.h"
 #include "COnFootControlHandler.h"
+#include "CDrivingControlHandler.h"
+#include "SniperControlHandler.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -121,4 +123,15 @@ void CControlManager::unlock()
 void CControlManager::exitCombat()
 {
     PlayerTest::GetPlayer()->combatMode = false;
+}
+
+void CControlManager::init()
+{
+    static_cast<COnFootControlHandler*>(onFootHandler)->init();
+    static_cast<CDrivingControlHandler*>(drivingHandler)->init();
+    static_cast<SniperControlHandler*>(sniperHandler)->init();
+    drivingHandler->deactivate();
+    sniperHandler->deactivate();
+    activeHandler = onFootHandler;
+    activeHandler->activate();
 }

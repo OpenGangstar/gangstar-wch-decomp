@@ -8,6 +8,7 @@ class GS3DStuff;
 class CControlManager {
 public:
     ~CControlManager();
+    void init();
     void lock();
     void unlock();
     void exitCombat();
