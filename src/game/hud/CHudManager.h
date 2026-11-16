@@ -8,6 +8,8 @@ class AnimatedButton;
 class HudElement;
 class IHud;
 class SpyGauge;
+class Radio;
+class ToggleButton;
 class WantedMeter;
 
 // Partial layout; total extent and component type/flag meaning are not established.
@@ -41,7 +43,10 @@ public:
     unsigned char unknown40[28];
     HudElement* enterCarButton;
     HudElement* enterShopButton;
-    unsigned char unknown76[40];
+    unsigned char unknown76[28];
+    ToggleButton* radioToggle;
+    Radio* radio;
+    unsigned char unknown112[4];
     HudComponent116* component116;
     unsigned char unknown120[8];
     AnimatedButton* radioButton;

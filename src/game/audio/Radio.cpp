@@ -11,26 +11,7 @@
 #include "SoundManager.h"
 #include "../core/ASprite.h"
 #include "../characters/AnimObject.h"
-#include "../ui/SwipeButton.h"
-
-class Radio : public SwipeButton {
-public:
-    Radio(ASprite* sprite, int frame, int stationAnimation, int value1,
-          int value2, int disabledFrame, int mutedAnimation);
-    virtual inline ~Radio();
-    virtual inline void show();
-    virtual void draw2d() const;
-    virtual void processTouch(long touch);
-
-private:
-    AnimObject* animation;
-    int stationAnimation;
-    int unknown68;
-    int unknown72;
-    int disabledFrame;
-    int mutedAnimation;
-    unsigned int radioFlags;
-};
+#include "Radio.h"
 
 void Radio::show()
 {

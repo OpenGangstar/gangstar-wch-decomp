@@ -99,6 +99,7 @@ public:
     void lockSwitchWeapon();
     void unlockSwitchWeapon();
     void Respawn();
+    void startDriving();
     void Update();
     void UpdateSceneNode();
     unsigned char unknown8[12];

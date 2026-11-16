@@ -265,6 +265,7 @@ private:
     float speed;
     unsigned char unknown980[4];
     friend class CDrivingControlHandler;
+    friend class CControlManager;
     float unknown984;
     float unknown988;
     unsigned char unknown992[4];
