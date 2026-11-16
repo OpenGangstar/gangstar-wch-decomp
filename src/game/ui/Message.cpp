@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "Message.h"
+#include "../scripting/ScriptManager.h"
 #include "../core/SafeDelete.h"
 #include "../characters/AnimObject.h"
 #include "../core/LocalStartupStorage.h"
@@ -141,4 +142,49 @@ Message::Message(ASprite* sprite, MenuManager::eText text, int message, int fall
     animationObject = new AnimObject;
     animationObject->sprite = sprite;
     animationObject->SetAnim(animationId);
+}
+
+void Message::update(double elapsed)
+{
+    if (ScriptManager::getInstance()->isInCinematic())
+        clearMessage(true);
+
+    if (timedDisplay) {
+        if (!untimed) {
+            timer = static_cast<int>(timer - elapsed);
+            if (timer <= 0) {
+                setAnim(defaultAnimation);
+                timedDisplay = false;
+            }
+        }
+    } else if (animationId == -1) {
+        MenuManager::getInstance()->setText(textSlot, -1, 0);
+    } else {
+        animationObject->Update(static_cast<int>(elapsed));
+        if (animationId == messageAnimation) {
+            if (animationObject->IsAnimOver() || animationId == -2) {
+                if (unknown80 == -2)
+                    MenuManager::getInstance()->setText(textSlot, messageText, 0);
+                else if (unknown80 != -1)
+                    MenuManager::getInstance()->setText(textSlot, unknown80, 0);
+                timedDisplay = true;
+            }
+        } else if (defaultAnimation != 0) {
+            if (unknown80 == -2) {
+                MenuManager::getInstance()->setText(textSlot, static_cast<const char*>(0), 0);
+                unknown80 = -1;
+            } else if (unknown80 != -1) {
+                MenuManager::getInstance()->setText(textSlot, -1, 0);
+            }
+            if (animationObject->IsAnimOver() || animationId == -3)
+                setAnim(-1);
+            if (pendingMessage) {
+                pendingMessage = false;
+                if (unknown80 != -1)
+                    setAnim(messageAnimation);
+                else
+                    setAnim(-1);
+            }
+        }
+    }
 }

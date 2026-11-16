@@ -15,8 +15,12 @@ _ZN26retail_message_transitions17cop_vehicle_transE = 0x004245d8;
 _ZN26retail_message_transitions11guard_transE = 0x0042468c;
 _ZN26retail_message_transitions22scripted_vehicle_transE = 0x00424734;
 strcpy = 0x001c3fd4;
+__aeabi_i2d = 0x001c452c;
+__aeabi_dsub = 0x001c4454;
+__aeabi_d2iz = 0x001c4844;
 SECTIONS
 {
+    .message_update 0x00328f14 : { *(.text._ZN7Message6updateEd) }
     .message_constructor 0x00329100 : { *(.text._ZN7MessageC1EP7ASpriteN11MenuManager5eTextEii .text._ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii) }
     .message_delete 0x00329074 : { *(.text._ZN7MessageD0Ev) }
     .message_destructor 0x003290c8 : { *(.text._ZN7MessageD1Ev .text._ZN7MessageD2Ev) }
