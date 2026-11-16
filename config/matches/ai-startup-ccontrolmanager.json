@@ -25,6 +25,7 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager8enterCarEb",
         "_ZN15CControlManager7exitCarEb",
         "_ZN15CControlManager11exitSnipingEb",
         "_ZN15CControlManager11enterCombatEv",
@@ -63,6 +64,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest12startDrivingEv",
+        "_ZN11CHudManager7drivingEv",
         "_ZN11CHudManager7walkingEv",
         "_ZN9Character18goFromCombatToIdleEv",
         "_ZN13CameraManager11getInstanceEv",

@@ -19,6 +19,9 @@
 #include "../core/CameraManager.h"
 #include "../hud/CHudManager.h"
 #include "../hud/MiniMap.h"
+#include "../vehicles/Vehicle.h"
+#include "../audio/Radio.h"
+#include "../ui/ToggleButton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -212,5 +215,33 @@ void CControlManager::exitCar(bool restoreCamera)
         restoreWalkingCamera(camera, reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(player)));
     }
     activeHandler = onFootHandler;
+    activeHandler->activate();
+}
+
+void CControlManager::enterCar(bool changeCamera)
+{
+    Application* application = Application::GetInstance();
+    activeHandler->deactivate();
+    PlayerTest* player = PlayerTest::GetPlayer();
+    player->startDriving();
+    CHudManager* hud = application->GetHudManager();
+    if (static_cast<SavePrimaryInterface*>(player)->getVehicle()->flags344 & 0x800000) {
+        hud->radioToggle->toggled = true;
+        hud->radio->radioFlags &= ~1u;
+    } else {
+        hud->radioToggle->toggled = false;
+        hud->radio->radioFlags |= 1u;
+    }
+    application->GetHudManager()->driving();
+    hud = application->GetHudManager();
+    Vehicle* vehicle = static_cast<SavePrimaryInterface*>(player)->getVehicle();
+    MiniMap* minimap = static_cast<MiniMap*>(hud->minimap);
+    if (minimap)
+        minimap->setFollowedObject(vehicle);
+    if (changeCamera) {
+        CameraManager* camera = CameraManager::getInstance();
+        camera->enterMode(2, static_cast<SavePrimaryInterface*>(player)->getVehicle(), 0.1f, 0);
+    }
+    activeHandler = drivingHandler;
     activeHandler->activate();
 }
