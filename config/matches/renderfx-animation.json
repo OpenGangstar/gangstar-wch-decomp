@@ -25,12 +25,20 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX10SetEnabledEPN7gameswf9characterEb",
+        "_ZN8RenderFX10SetEnabledEPKcb",
+        "_ZN8RenderFX10SetVisibleEPKcb",
         "_ZN8RenderFX9GotoFrameEPN7gameswf9characterEPKcb",
         "_ZN8RenderFX8PlayAnimEPN7gameswf9characterEPKci",
         "_ZN8RenderFX9GotoFrameEPN7gameswf9characterEib",
         "_ZN8RenderFX9GotoFrameEPKcib",
         "_ZN8RenderFX9GotoFrameEPKcS1_b",
         "_ZN8RenderFX8PlayAnimEPKcS1_i"
+    ],
+    "sections": [
+        ".activate_animation",
+        ".focus_out_animation",
+        ".disabled_animation"
     ],
     "external_thumb_functions": [
         "_ZN8RenderFX4FindEPKc"

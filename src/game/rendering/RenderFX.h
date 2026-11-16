@@ -13,6 +13,9 @@ public:
     void GotoFrame(gameswf::character* character, int frame, bool play);
     bool GotoFrame(const char* characterName, const char* label, bool play);
     void GotoFrame(const char* characterName, int frame, bool play);
+    void SetEnabled(gameswf::character* character, bool enabled);
+    void SetEnabled(const char* characterName, bool enabled);
+    void SetVisible(const char* characterName, bool visible);
 };
 
 #endif
