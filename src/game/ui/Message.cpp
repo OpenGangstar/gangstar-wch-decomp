@@ -96,3 +96,15 @@ void Message::setAnim(int animation)
     animationId = animation;
     animationObject->SetAnim(animation);
 }
+
+void Message::clearMessage(bool clearAnimation)
+{
+    setAnim(clearAnimation ? -1 : defaultAnimation);
+    timedDisplay = false;
+}
+
+void Message::draw2d() const
+{
+    if (animationId != -1 && unknown80 != -1)
+        animationObject->Draw();
+}
