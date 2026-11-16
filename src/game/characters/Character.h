@@ -18,6 +18,7 @@ public:
     virtual void OnDespawn();
     void initInVehicle(Vehicle* vehicle);
     void goToIdle();
+    void goFromCombatToIdle();
     void switchWeapon();
     virtual void Stop();
     void onRocketLaunched();
@@ -156,7 +157,7 @@ private:
     void switchAnimation();
     bool switchMoveAnimation();
     void switchCombatAnimation();
-    void goFromCombatToIdle();
+
     void ready(float speed);
     void checkForWeaponReload();
     void setReloadWeaponAnimation(int type);
