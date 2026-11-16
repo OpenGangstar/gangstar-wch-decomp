@@ -5,6 +5,10 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .toggle_ctor 0x0032c384 : { *(.text._ZN12ToggleButtonC1EP7ASpriteii .text._ZN12ToggleButtonC2EP7ASpriteii) }
+    .toggle_delete_thunk 0x0032c284 : { *(.gnu.linkonce.t._ZN12ToggleButtonD0Ev) }
+    .toggle_dtor_thunk 0x0032c2d0 : { *(.gnu.linkonce.t._ZN12ToggleButtonD1Ev) }
+    .toggle_vtable 0x004ac830 : { *(.data.rel.ro._ZTV12ToggleButton) }
     .toggle_press 0x0032c234 : { *(.gnu.linkonce.t._ZN12ToggleButton12processTouchEl) }
     .toggle_release 0x0032c368 : { *(.text._ZN12ToggleButton19processTouchReleaseEv) }
     .toggle_draw 0x0032c328 : { *(.text._ZNK12ToggleButton6draw2dEv) }

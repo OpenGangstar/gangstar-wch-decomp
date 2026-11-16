@@ -73,3 +73,9 @@ void ToggleButton::draw2d() const
             sprite->PaintFrame(inactiveFrame, 0, 0, 0);
     }
 }
+
+ToggleButton::ToggleButton(ASprite* sprite, int frame, int inactive)
+    : VirtualButton(sprite, frame, static_cast<EvVButton::ButtonType::Type>(8), false),
+      inactiveFrame(inactive), toggled(true)
+{
+}

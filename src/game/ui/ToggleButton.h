@@ -5,7 +5,8 @@
 
 class ToggleButton : public VirtualButton {
 public:
-    virtual ~ToggleButton();
+    ToggleButton(ASprite* sprite, int frame, int inactiveFrame);
+    virtual ~ToggleButton() {}
     virtual void processTouch(long) __attribute__((used)) { flags |= 2; }
     virtual void processTouchRelease();
     virtual void draw2d() const;
