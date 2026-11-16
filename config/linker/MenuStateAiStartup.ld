@@ -16,6 +16,7 @@ _ZN28retail_menustate_transitions22scripted_vehicle_transE = 0x0041a600;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/MenuWidgetFunctions.ld
+INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
     .confirm_confirmed 0x002e7384 : { *ai-startup-menustate.o(.text._ZNK5Menus7Confirm9ConfirmedEv) }
