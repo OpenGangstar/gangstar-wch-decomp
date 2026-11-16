@@ -13,6 +13,29 @@
 #include "../core/LocalStartupText.h"
 #include "WidgetDialog.h"
 
+bool MenuWidget::IsVisible() const
+{
+    return visible;
+}
+
+bool MenuWidget::AutoHide() const
+{
+    return true;
+}
+
+bool MenuWidget::IsEnabled() const
+{
+    return enabled;
+}
+
+void MenuWidget::OnEvent(RenderFX::Event&)
+{
+}
+
+void MenuWidget::UpdateLocalization()
+{
+}
+
 void Widgets::ConfirmPayment::SetPrice(int amount)
 {
     price = amount;
@@ -26,6 +49,12 @@ void Widgets::Dialog::SetMessage(int id)
 int Widgets::Dialog::GetPressedButton() const
 {
     return pressedButton;
+}
+
+void Widgets::Dialog::Show()
+{
+    MenuWidget::Show();
+    pressedButton = -1;
 }
 
 void operator delete(void*) throw();

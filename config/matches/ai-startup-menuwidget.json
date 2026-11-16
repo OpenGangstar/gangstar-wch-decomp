@@ -25,6 +25,12 @@
     "source": "src/game/ui/MenuWidget.cpp",
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZNK10MenuWidget9IsVisibleEv",
+        "_ZNK10MenuWidget8AutoHideEv",
+        "_ZNK10MenuWidget9IsEnabledEv",
+        "_ZN10MenuWidget7OnEventERN8RenderFX5EventE",
+        "_ZN10MenuWidget18UpdateLocalizationEv",
+        "_ZN7Widgets6Dialog4ShowEv",
         "_ZN7Widgets14ConfirmPayment8SetPriceEi",
         "_ZN7Widgets6Dialog10SetMessageEi",
         "_ZNK7Widgets6Dialog16GetPressedButtonEv",
@@ -42,6 +48,8 @@
         }
     ],
     "sections": [
+        ".widget_dialog_vtable",
+        ".widget_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -51,5 +59,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN10MenuWidget4ShowEv"]
 }

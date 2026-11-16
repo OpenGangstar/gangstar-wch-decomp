@@ -9810,11 +9810,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebd29	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager15setSteeringModeENS_12SteeringModeE	CHudManager::setSteeringMode(CHudManager::SteeringMode)
 0x002ebe1d	0x18	MenuWidget.cpp	game	ui	pending	_ZN10MenuWidgetD1Ev	MenuWidget::~MenuWidget()
 0x002ebe1d	0x18	MenuWidget.cpp	game	ui	pending	_ZN10MenuWidgetD2Ev	MenuWidget::~MenuWidget()
-0x002ebe35	0x4	MenuWidget.cpp	game	ui	pending	_ZNK10MenuWidget9IsVisibleEv	MenuWidget::IsVisible() const
-0x002ebe39	0x4	MenuWidget.cpp	game	ui	pending	_ZNK10MenuWidget8AutoHideEv	MenuWidget::AutoHide() const
-0x002ebe3d	0x4	MenuWidget.cpp	game	ui	pending	_ZNK10MenuWidget9IsEnabledEv	MenuWidget::IsEnabled() const
-0x002ebe41	0x2	MenuWidget.cpp	game	ui	pending	_ZN10MenuWidget7OnEventERN8RenderFX5EventE	MenuWidget::OnEvent(RenderFX::Event&)
-0x002ebe45	0x2	MenuWidget.cpp	game	ui	pending	_ZN10MenuWidget18UpdateLocalizationEv	MenuWidget::UpdateLocalization()
+0x002ebe35	0x4	MenuWidget.cpp	game	ui	matched	_ZNK10MenuWidget9IsVisibleEv	MenuWidget::IsVisible() const
+0x002ebe39	0x4	MenuWidget.cpp	game	ui	matched	_ZNK10MenuWidget8AutoHideEv	MenuWidget::AutoHide() const
+0x002ebe3d	0x4	MenuWidget.cpp	game	ui	matched	_ZNK10MenuWidget9IsEnabledEv	MenuWidget::IsEnabled() const
+0x002ebe41	0x2	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget7OnEventERN8RenderFX5EventE	MenuWidget::OnEvent(RenderFX::Event&)
+0x002ebe45	0x2	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget18UpdateLocalizationEv	MenuWidget::UpdateLocalization()
 0x002ebe49	0x22	MenuWidget.cpp	game	ui	pending	_ZN10MenuWidget11SetListenerEP9MenuState	MenuWidget::SetListener(MenuState*)
 0x002ebe6d	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5Title9SetTextIdEi	Widgets::Title::SetTextId(int)
 0x002ebe71	0x6	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets8Tutorial15IsCursorPressedEv	Widgets::Tutorial::IsCursorPressed() const
@@ -9936,7 +9936,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ecf0d	0x6c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9MapLegend4ShowEv	Widgets::MapLegend::Show()
 0x002ecf79	0x8c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective4ShowEv	Widgets::Objective::Show()
 0x002ed005	0x10	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu4ShowEv	Widgets::IGMenu::Show()
-0x002ed015	0x10	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6Dialog4ShowEv	Widgets::Dialog::Show()
+0x002ed015	0x10	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Dialog4ShowEv	Widgets::Dialog::Show()
 0x002ed025	0x3c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8Tutorial4ShowEv	Widgets::Tutorial::Show()
 0x002ed061	0x28	MenuWidget.cpp	game	ui	pending	_ZN7Widgets16BlockingTutorial4ShowEv	Widgets::BlockingTutorial::Show()
 0x002ed089	0xc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10ContentBox4ShowEv	Widgets::ContentBox::Show()
