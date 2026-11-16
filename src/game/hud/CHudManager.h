@@ -50,7 +50,7 @@ public:
     HudComponent116* component116;
     unsigned char unknown120[8];
     AnimatedButton* radioButton;
-    unsigned char unknown132[4];
+    HudElement* retroOverlay;
     HudElement* minimap;
     unsigned char unknown140[12];
     SpyGauge* spyGauge;
@@ -80,6 +80,8 @@ public:
     void driving();
     void sniping();
     void toggleRadioCB(bool enabled);
+    void retroEffect(bool enabled);
+    void limitToWeapon(int weaponId);
 };
 
 #endif

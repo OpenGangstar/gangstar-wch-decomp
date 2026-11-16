@@ -25,6 +25,8 @@
     "source": "src/game/hud/CHudManager.cpp",
     "linker_script": "config/linker/CHudManagerHelpers.ld",
     "functions": [
+        "_ZN11CHudManager11retroEffectEb",
+        "_ZN11CHudManager13limitToWeaponEi",
         "_ZN11CHudManager12switchWeaponEv",
         "_ZN11CHudManager12switchWeaponEi",
         "_ZN11CHudManager4initEv",
@@ -100,6 +102,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN13WeaponManager13limitToWeaponEiN10PlayerTest8eContextE",
+        "_ZN14AnimatedButton7grayOutEb",
         "_ZN11Application11GetInstanceEv",
         "_ZN13WeaponManager10nextWeaponEi",
         "_ZN13WeaponManager15getWeaponInListEiN10PlayerTest8eContextE",

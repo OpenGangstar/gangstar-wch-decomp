@@ -18,5 +18,7 @@ SECTIONS
     .hud_mode_walking 0x00323b00 : { *hud-manager-helpers.o(.text._ZN11CHudManager7walkingEv) }
     .hud_mode_driving 0x00323b34 : { *hud-manager-helpers.o(.text._ZN11CHudManager7drivingEv) }
     .hud_mode_sniping 0x00323abc : { *hud-manager-helpers.o(.text._ZN11CHudManager7snipingEv) }
+    .hud_retro_effect 0x003235fc : { *hud-manager-helpers.o(.text._ZN11CHudManager11retroEffectEb) }
+    .hud_limit_weapon 0x00323cdc : { *hud-manager-helpers.o(.text._ZN11CHudManager13limitToWeaponEi) }
     .hud_radio_cb 0x003237bc : { *hud-manager-helpers.o(.text._ZN11CHudManager13toggleRadioCBEb) }
 }
