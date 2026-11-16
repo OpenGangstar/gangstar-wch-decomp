@@ -9560,20 +9560,20 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e6db1	0x230	MenuManager.cpp	game	ui	pending	_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE	MenuManager::_zoomMap(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
 0x002e6fe1	0x184	MenuManager.cpp	game	ui	pending	_ZN11MenuManager9updateMapEv	MenuManager::updateMap()
 0x002e7165	0x1ac	MenuManager.cpp	game	ui	pending	_ZN11MenuManager7initMapEv	MenuManager::initMap()
-0x002e7311	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State6CreateEv	MenuFX::State::Create()
-0x002e7315	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State4ShowEv	MenuFX::State::Show()
-0x002e7319	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State4HideEv	MenuFX::State::Hide()
-0x002e731d	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State8GotFocusEv	MenuFX::State::GotFocus()
-0x002e7321	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State9LostFocusEv	MenuFX::State::LostFocus()
-0x002e7325	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State6UpdateEv	MenuFX::State::Update()
-0x002e7329	0xe	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State6UpdateEi	MenuFX::State::Update(int)
-0x002e7339	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State7OnEventERN8RenderFX5EventE	MenuFX::State::OnEvent(RenderFX::Event&)
-0x002e733d	0x2	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State11OnFSCommandEPKcS2_	MenuFX::State::OnFSCommand(char const*, char const*)
-0x002e7341	0x4	MenuState.cpp	game	ui	pending	_ZN6MenuFX5State14CanHandleEventERN8RenderFX5EventE	MenuFX::State::CanHandleEvent(RenderFX::Event&)
-0x002e7345	0x4	MenuState.cpp	game	ui	pending	_ZNK9MenuState7IsModalEv	MenuState::IsModal() const
-0x002e7349	0x4	MenuState.cpp	game	ui	pending	_ZNK5Menus7Confirm7IsModalEv	Menus::Confirm::IsModal() const
-0x002e734d	0x4	MenuState.cpp	game	ui	pending	_ZN9MenuState6NotifyEPK10MenuWidgeti	MenuState::Notify(MenuWidget const*, int)
-0x002e7351	0x4	MenuState.cpp	game	ui	pending	_ZNK9MenuState8GetDepthEv	MenuState::GetDepth() const
+0x002e7311	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State6CreateEv	MenuFX::State::Create()
+0x002e7315	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State4ShowEv	MenuFX::State::Show()
+0x002e7319	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State4HideEv	MenuFX::State::Hide()
+0x002e731d	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State8GotFocusEv	MenuFX::State::GotFocus()
+0x002e7321	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State9LostFocusEv	MenuFX::State::LostFocus()
+0x002e7325	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State6UpdateEv	MenuFX::State::Update()
+0x002e7329	0xe	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State6UpdateEi	MenuFX::State::Update(int)
+0x002e7339	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State7OnEventERN8RenderFX5EventE	MenuFX::State::OnEvent(RenderFX::Event&)
+0x002e733d	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State11OnFSCommandEPKcS2_	MenuFX::State::OnFSCommand(char const*, char const*)
+0x002e7341	0x4	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State14CanHandleEventERN8RenderFX5EventE	MenuFX::State::CanHandleEvent(RenderFX::Event&)
+0x002e7345	0x4	MenuState.cpp	game	ui	matched	_ZNK9MenuState7IsModalEv	MenuState::IsModal() const
+0x002e7349	0x4	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm7IsModalEv	Menus::Confirm::IsModal() const
+0x002e734d	0x4	MenuState.cpp	game	ui	matched	_ZN9MenuState6NotifyEPK10MenuWidgeti	MenuState::Notify(MenuWidget const*, int)
+0x002e7351	0x4	MenuState.cpp	game	ui	matched	_ZNK9MenuState8GetDepthEv	MenuState::GetDepth() const
 0x002e7355	0x30	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14GetOrientationEv	Menus::OptionGameSettings::GetOrientation()
 0x002e7385	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm9ConfirmedEv	Menus::Confirm::Confirmed() const
 0x002e738d	0x6	MenuState.cpp	game	ui	pending	_ZNK5Menus8MainMenu12GameContinueEv	Menus::MainMenu::GameContinue() const
@@ -9704,8 +9704,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e948d	0x2c	MenuState.cpp	game	ui	pending	_ZN5Menus11Achievement9LostFocusEv	Menus::Achievement::LostFocus()
 0x002e94b9	0x2c	MenuState.cpp	game	ui	pending	_ZN5Menus16BlockingTutorial9LostFocusEv	Menus::BlockingTutorial::LostFocus()
 0x002e94e5	0x2c	MenuState.cpp	game	ui	pending	_ZN5Menus8Tutorial9LostFocusEv	Menus::Tutorial::LostFocus()
-0x002e9511	0x2	MenuState.cpp	game	ui	pending	_ZN9MenuState6UpdateEv	MenuState::Update()
-0x002e9515	0x2	MenuState.cpp	game	ui	pending	_ZN9MenuState6CreateEv	MenuState::Create()
+0x002e9511	0x2	MenuState.cpp	game	ui	matched	_ZN9MenuState6UpdateEv	MenuState::Update()
+0x002e9515	0x2	MenuState.cpp	game	ui	matched	_ZN9MenuState6CreateEv	MenuState::Create()
 0x002e9519	0x10	MenuState.cpp	game	ui	pending	_ZN9MenuState4ShowEv	MenuState::Show()
 0x002e9529	0x3c	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE6removeEi	gameswf::array<int>::remove(int)
 0x002e9565	0x144	MenuState.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

@@ -16,6 +16,76 @@
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
 
+void MenuFX::State::Create()
+{
+}
+
+void MenuFX::State::Show()
+{
+}
+
+void MenuFX::State::Hide()
+{
+}
+
+void MenuFX::State::GotFocus()
+{
+}
+
+void MenuFX::State::LostFocus()
+{
+}
+
+void MenuFX::State::Update()
+{
+}
+
+void MenuFX::State::Update(int)
+{
+    Update();
+}
+
+void MenuFX::State::OnEvent(RenderFX::Event&)
+{
+}
+
+void MenuFX::State::OnFSCommand(const char*, const char*)
+{
+}
+
+bool MenuFX::State::CanHandleEvent(RenderFX::Event&)
+{
+    return true;
+}
+
+bool MenuState::IsModal() const
+{
+    return false;
+}
+
+bool Menus::Confirm::IsModal() const
+{
+    return true;
+}
+
+bool MenuState::Notify(const MenuWidget*, int)
+{
+    return false;
+}
+
+int MenuState::GetDepth() const
+{
+    return depth;
+}
+
+void MenuState::Update()
+{
+}
+
+void MenuState::Create()
+{
+}
+
 namespace {
 struct MenuWidgetTable {
     unsigned char prefix[0x1a4];
