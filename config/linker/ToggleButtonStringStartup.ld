@@ -5,6 +5,11 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .toggle_press 0x0032c234 : { *(.gnu.linkonce.t._ZN12ToggleButton12processTouchEl) }
+    .toggle_release 0x0032c368 : { *(.text._ZN12ToggleButton19processTouchReleaseEv) }
+    .toggle_draw 0x0032c328 : { *(.text._ZNK12ToggleButton6draw2dEv) }
+    .toggle_release_thunk 0x0032c354 : { *(.text._ZThn8_N12ToggleButton19processTouchReleaseEv) }
+    .toggle_draw_thunk 0x0032c314 : { *(.text._ZThn4_NK12ToggleButton6draw2dEv) }
     .string_startup_function_0 0x0032c254 : { *string-startup-togglebutton.o(.text.__tcf_0) }
     .string_startup_function_1 0x0032c3c4 : { *string-startup-togglebutton.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .string_startup_function_2 0x0032c41c : { *string-startup-togglebutton.o(.text._GLOBAL__I__ZN12ToggleButtonC2EP7ASpriteii) }

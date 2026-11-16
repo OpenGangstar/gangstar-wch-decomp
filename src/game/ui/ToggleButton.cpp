@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK string startup callbacks.
+#include "ToggleButton.h"
+#include "../core/ASprite.h"
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -52,4 +54,22 @@ static void _GLOBAL__I__ZN12ToggleButtonC2EP7ASpriteii()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void ToggleButton::processTouchRelease()
+{
+    if (flags & 1) {
+        toggled = !toggled;
+        VirtualButton::processTouchRelease();
+    }
+}
+
+void ToggleButton::draw2d() const
+{
+    if (flags & 1) {
+        if (toggled)
+            HudElement::draw2d();
+        else
+            sprite->PaintFrame(inactiveFrame, 0, 0, 0);
+    }
 }
