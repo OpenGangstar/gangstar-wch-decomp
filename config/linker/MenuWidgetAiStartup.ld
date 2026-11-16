@@ -14,6 +14,7 @@ _ZN29retail_menuwidget_transitions17cop_vehicle_transE = 0x0041bae8;
 _ZN29retail_menuwidget_transitions11guard_transE = 0x0041bb9c;
 _ZN29retail_menuwidget_transitions22scripted_vehicle_transE = 0x0041bc44;
 INCLUDE config/linker/MenuWidgetFunctions.ld
+INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
     .ai_startup_function_0 0x002ec014 : { *ai-startup-menuwidget.o(.text.__tcf_3) }
