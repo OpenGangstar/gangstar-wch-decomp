@@ -68,9 +68,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN10MenuWidget4ShowEv",
-        "_ZN10MenuWidgetC1EPKc",
         "_ZN11MenuManager11getInstanceEv",
+        "_ZN8RenderFX4FindEPKc",
+        "_ZN8RenderFX8PlayAnimEPN7gameswf9characterEPKci",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",

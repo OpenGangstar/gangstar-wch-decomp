@@ -25,6 +25,10 @@
     "source": "src/game/ui/MenuWidget.cpp",
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN10MenuWidget4HideEb",
+        "_ZN10MenuWidget4ShowEv",
+        "_ZN10MenuWidgetC1EPKc",
+        "_ZN10MenuWidgetC2EPKc",
         "_ZN10MenuWidgetD1Ev",
         "_ZN10MenuWidgetD2Ev",
         "_ZN7Widgets6DialogC1EPKc",
@@ -56,6 +60,8 @@
         }
     ],
     "sections": [
+        ".widget_hide_animation",
+        ".widget_show_animation",
         ".widget_confirm_name",
         ".widget_dialog_vtable",
         ".widget_vtable",
@@ -69,5 +75,9 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN10MenuWidget4ShowEv", "_ZN10MenuWidgetC1EPKc"]
+    "external_thumb_functions": [
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN8RenderFX4FindEPKc",
+        "_ZN8RenderFX8PlayAnimEPN7gameswf9characterEPKci"
+    ]
 }
