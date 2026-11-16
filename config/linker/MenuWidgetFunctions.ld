@@ -1,5 +1,17 @@
 SECTIONS
 {
+    .widget_mission_show 0x002ecee8 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Mission4ShowEv) }
+    .widget_mission_vtable 0x004a9a48 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7MissionE) }
+    .widget_money_show 0x002ecef4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Money4ShowEv) }
+    .widget_money_vtable 0x004a9a70 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets5MoneyE) }
+    .widget_arrows_show 0x002ecf00 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Arrows4ShowEv) }
+    .widget_arrows_vtable 0x004a9a98 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6ArrowsE) }
+    .widget_contentbox_show 0x002ed088 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10ContentBox4ShowEv) }
+    .widget_contentbox_vtable 0x004a9c30 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets10ContentBoxE) }
+    .widget_title_show 0x002ed094 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Title4ShowEv) }
+    .widget_title_vtable 0x004a9c58 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets5TitleE) }
+    .widget_backgroundingame_show 0x002ed0a0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BackgroundInGame4ShowEv) }
+    .widget_backgroundingame_vtable 0x004a9c80 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets16BackgroundInGameE) }
     .widget_enable 0x002ed0ac : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget6EnableEv) }
     .widget_disable 0x002eef94 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget7DisableEv) }
     .widget_button_prefix 0x00419f00 : { *ai-startup-menuwidget.o(.rodata.widgetButtonPrefix) }

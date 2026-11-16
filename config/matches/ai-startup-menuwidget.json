@@ -26,6 +26,12 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets7Mission4ShowEv",
+        "_ZN7Widgets5Money4ShowEv",
+        "_ZN7Widgets6Arrows4ShowEv",
+        "_ZN7Widgets10ContentBox4ShowEv",
+        "_ZN7Widgets5Title4ShowEv",
+        "_ZN7Widgets16BackgroundInGame4ShowEv",
         "_ZN10MenuWidget6EnableEv",
         "_ZN10MenuWidget7DisableEv",
         "_ZN10MenuWidget4HideEb",
@@ -63,6 +69,12 @@
         }
     ],
     "sections": [
+        ".widget_mission_vtable",
+        ".widget_money_vtable",
+        ".widget_arrows_vtable",
+        ".widget_contentbox_vtable",
+        ".widget_title_vtable",
+        ".widget_backgroundingame_vtable",
         ".widget_button_prefix",
         ".widget_hide_animation",
         ".widget_show_animation",
