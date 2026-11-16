@@ -2,11 +2,13 @@
 #define WCH_UI_WIDGET_DIALOG_H
 
 class MenuState;
+namespace gameswf { class character; }
 class RenderFX {
 public:
     class Event;
+    gameswf::character* Find(const char* name);
+    bool PlayAnim(gameswf::character* character, const char* name, int flags);
 };
-namespace gameswf { class character; }
 
 class MenuWidget {
 public:

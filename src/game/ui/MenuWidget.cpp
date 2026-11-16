@@ -12,6 +12,40 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "WidgetDialog.h"
+#include "../hud/MenuManager.h"
+
+namespace {
+struct MenuRenderFXStorage {
+    unsigned char prefix[0xbc];
+    RenderFX* renderFX;
+};
+
+inline RenderFX* getWidgetRenderFX()
+{
+    return reinterpret_cast<const MenuRenderFXStorage*>(MenuManager::getInstance())->renderFX;
+}
+
+// The retail character and sprite_instance vtables share set_visible at slot 81.
+struct CharacterVisibility {
+    void (*otherMethods[81])();
+    void (*setVisible)(gameswf::character*, bool);
+};
+
+inline void setCharacterVisible(gameswf::character* character, bool visible)
+{
+    const CharacterVisibility* methods =
+        *reinterpret_cast<const CharacterVisibility* const*>(character);
+    methods->setVisible(character, visible);
+}
+}
+
+MenuWidget::MenuWidget(const char* name)
+    : character(0), renderFX(getWidgetRenderFX()), listener(0), visible(false), enabled(true)
+{
+    character = getWidgetRenderFX()->Find(name);
+    if (character)
+        setCharacterVisible(character, visible);
+}
 
 MenuWidget::~MenuWidget()
 {
@@ -38,6 +72,23 @@ void MenuWidget::OnEvent(RenderFX::Event&)
 
 void MenuWidget::UpdateLocalization()
 {
+}
+
+static const char widgetHideAnimation[] = "hide";
+static const char widgetShowAnimation[] = "show";
+
+void MenuWidget::Hide(bool animate)
+{
+    visible = false;
+    if (!animate || !renderFX->PlayAnim(character, widgetHideAnimation, 0))
+        setCharacterVisible(character, visible);
+}
+
+void MenuWidget::Show()
+{
+    visible = true;
+    setCharacterVisible(character, true);
+    renderFX->PlayAnim(character, widgetShowAnimation, 0);
 }
 
 void Widgets::ConfirmPayment::SetPrice(int amount)
