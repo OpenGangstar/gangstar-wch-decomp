@@ -99,6 +99,9 @@ falls into — `ai`, `app`, `audio`, `characters`, `combat`, `core`, `hud`,
 
 ## Getting started
 
+Use the [OpenGangstar launcher](https://github.com/OpenGangstar/OpenGangstar#run-the-launcher)
+for application packaging, installation and launch.
+
 ```sh
 # 1. Put your own copy of the retail library where the tools expect it.
 cp libsanangeles.so baselib/
