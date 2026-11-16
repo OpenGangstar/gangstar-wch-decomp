@@ -25,6 +25,7 @@
     "source": "src/game/ui/Message.cpp",
     "linker_script": "config/linker/MessageAiStartup.ld",
     "functions": [
+        "_ZN7Message10setMessageEiiN11MenuManager5eTextE",
         "_ZN7Message6updateEd",
         "_ZN7MessageC1EP7ASpriteN11MenuManager5eTextEii",
         "_ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii",

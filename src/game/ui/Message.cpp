@@ -188,3 +188,22 @@ void Message::update(double elapsed)
         }
     }
 }
+
+void Message::setMessage(int textId, int duration, MenuManager::eText slot)
+{
+    if (timedDisplay && unknown80 != textId) {
+        unknown80 = textId;
+        setTimer(duration);
+        textSlot = slot;
+        clearMessage(false);
+        pendingMessage = true;
+    } else {
+        unknown80 = textId;
+        setTimer(duration);
+        textSlot = slot;
+        if (unknown80 != -1)
+            setAnim(messageAnimation);
+        else
+            setAnim(-1);
+    }
+}

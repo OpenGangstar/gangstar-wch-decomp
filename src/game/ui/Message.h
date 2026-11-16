@@ -17,6 +17,7 @@ public:
     void clearMessage(bool clearAnimation);
     void setTimer(int duration);
     void setMessage(const char* text, int duration);
+    void setMessage(int textId, int duration, MenuManager::eText slot);
     void setAnim(int animation);
 
 private:
