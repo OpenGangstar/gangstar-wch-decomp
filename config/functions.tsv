@@ -11508,7 +11508,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d201	0x32	CControlManager.cpp	game	input	matched	_ZN15CControlManager4initEv	CControlManager::init()
 0x0032d235	0x64	CControlManager.cpp	game	input	matched	_ZN15CControlManagerC2Ev	CControlManager::CControlManager()
 0x0032d235	0x64	CControlManager.cpp	game	input	matched	_ZN15CControlManagerC1Ev	CControlManager::CControlManager()
-0x0032d299	0xf4	CControlManager.cpp	game	input	pending	_ZN15CControlManager12enterSnipingEb	CControlManager::enterSniping(bool)
+0x0032d299	0xf4	CControlManager.cpp	game	input	matched	_ZN15CControlManager12enterSnipingEb	CControlManager::enterSniping(bool)
 0x0032d38d	0xb8	CControlManager.cpp	game	input	matched	_ZN15CControlManager8enterCarEb	CControlManager::enterCar(bool)
 0x0032d445	0x16	CControlManager.cpp	game	input	matched	_ZN15CControlManager6unlockEv	CControlManager::unlock()
 0x0032d45d	0x70	CControlManager.cpp	game	input	matched	_ZN15CControlManager11exitSnipingEb	CControlManager::exitSniping(bool)

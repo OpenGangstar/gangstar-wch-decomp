@@ -23,6 +23,8 @@ SECTIONS
     .control_manager_unlock 0x0032d444 : { *(.text._ZN15CControlManager6unlockEv) }
     .control_manager_enter_car 0x0032d38c : { *(.text._ZN15CControlManager8enterCarEb) }
     .control_manager_exit_car 0x0032d500 : { *(.text._ZN15CControlManager7exitCarEb) }
+    .control_manager_enter_sniping 0x0032d298 : { *(.text._ZN15CControlManager12enterSnipingEb) }
+    .control_manager_tutorial 0x00414c8c : { *(.rodata.control_manager_tutorial) }
     .control_manager_exit_sniping 0x0032d45c : { *(.text._ZN15CControlManager11exitSnipingEb) }
     .control_manager_enter_combat 0x0032d4cc : { *(.text._ZN15CControlManager11enterCombatEv) }
     .control_manager_exit_combat 0x0032d1ec : { *(.text._ZN15CControlManager10exitCombatEv) }

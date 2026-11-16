@@ -162,6 +162,9 @@ private:
     void checkForWeaponReload();
     void setReloadWeaponAnimation(int type);
     void resetCollisions();
+
+public:
+    void goToCombatIdle();
 };
 
 #endif
