@@ -9,6 +9,7 @@
  */
 
 #include "RenderFX.h"
+#include "CharacterVisibility.h"
 
 namespace {
 // Prefix of the gameswf character vtable through the numeric frame method.
@@ -27,7 +28,17 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
 {
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
 }
+
+struct SpriteEnabledState {
+    unsigned char prefix[0x2a4];
+    bool enabled;
+};
+
 }
+
+static const char activateAnimation[] = "activated";
+static const char focusOutAnimation[] = "focus_out";
+static const char disabledAnimation[] = "disabled";
 
 bool RenderFX::GotoFrame(gameswf::character* character, const char* label, bool play)
 {
@@ -42,6 +53,23 @@ bool RenderFX::GotoFrame(gameswf::character* character, const char* label, bool 
 bool RenderFX::PlayAnim(gameswf::character* character, const char* label, int)
 {
     return GotoFrame(character, label, true);
+}
+
+void RenderFX::SetEnabled(gameswf::character* character, bool enabled)
+{
+    if (!character || !animationMethods(character).is(character, 2))
+        return;
+
+    SpriteEnabledState& sprite = *reinterpret_cast<SpriteEnabledState*>(character);
+    if (sprite.enabled != enabled) {
+        if (enabled) {
+            if (!PlayAnim(character, activateAnimation, 0))
+                PlayAnim(character, focusOutAnimation, 0);
+        } else {
+            PlayAnim(character, disabledAnimation, 0);
+        }
+    }
+    sprite.enabled = enabled;
 }
 
 void RenderFX::GotoFrame(gameswf::character* character, int frame, bool play)
@@ -67,4 +95,16 @@ bool RenderFX::GotoFrame(const char* characterName, const char* label, bool play
 bool RenderFX::PlayAnim(const char* characterName, const char* label, int)
 {
     return GotoFrame(characterName, label, true);
+}
+
+void RenderFX::SetEnabled(const char* characterName, bool enabled)
+{
+    SetEnabled(Find(characterName), enabled);
+}
+
+void RenderFX::SetVisible(const char* characterName, bool visible)
+{
+    gameswf::character* character = Find(characterName);
+    if (character)
+        setCharacterVisible(character, visible);
 }

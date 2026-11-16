@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "WidgetDialog.h"
+#include "../rendering/CharacterVisibility.h"
 #include "../hud/MenuManager.h"
 
 namespace {
@@ -25,18 +26,6 @@ inline RenderFX* getWidgetRenderFX()
     return reinterpret_cast<const MenuRenderFXStorage*>(MenuManager::getInstance())->renderFX;
 }
 
-// The retail character and sprite_instance vtables share set_visible at slot 81.
-struct CharacterVisibility {
-    void (*otherMethods[81])();
-    void (*setVisible)(gameswf::character*, bool);
-};
-
-inline void setCharacterVisible(gameswf::character* character, bool visible)
-{
-    const CharacterVisibility* methods =
-        *reinterpret_cast<const CharacterVisibility* const*>(character);
-    methods->setVisible(character, visible);
-}
 }
 
 MenuWidget::MenuWidget(const char* name)
