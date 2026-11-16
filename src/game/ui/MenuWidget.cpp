@@ -12,27 +12,14 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "WidgetDialog.h"
+#include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
 #include "../hud/MenuManager.h"
-
-namespace {
-struct MenuStateListenerMethods {
-    void (*otherMethods[13])();
-    bool (*notify)(MenuState*, const MenuWidget*, int);
-};
-
-inline void notifyWidgetListener(MenuState* state, const MenuWidget* widget, int event)
-{
-    const MenuStateListenerMethods* methods =
-        *reinterpret_cast<const MenuStateListenerMethods* const*>(state);
-    methods->notify(state, widget, event);
-}
-}
 
 void MenuWidget::SetListener(MenuState* state)
 {
     if (listener && listener != state)
-        notifyWidgetListener(listener, this, 0);
+        listener->Notify(this, 0);
     listener = state;
 }
 
@@ -281,7 +268,7 @@ void Widgets::Arrows::SetPageCount(int count, int page, bool reset)
     if (changed || reset)
         currentPage = page >= 0 && page < count && !reset ? page : 0;
     if (listener && (reset || changed))
-        notifyWidgetListener(listener, this, 2);
+        listener->Notify(this, 2);
     setCharacterVisible(character, pageCount > 1);
 }
 

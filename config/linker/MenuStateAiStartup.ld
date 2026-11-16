@@ -19,6 +19,22 @@ INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .state_create 0x002e7310 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State6CreateEv) }
+    .state_show 0x002e7314 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State4ShowEv) }
+    .state_hide 0x002e7318 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State4HideEv) }
+    .state_got_focus 0x002e731c : { *ai-startup-menustate.o(.text._ZN6MenuFX5State8GotFocusEv) }
+    .state_lost_focus 0x002e7320 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State9LostFocusEv) }
+    .state_update 0x002e7324 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State6UpdateEv) }
+    .state_update_elapsed 0x002e7328 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State6UpdateEi) }
+    .state_on_event 0x002e7338 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State7OnEventERN8RenderFX5EventE) }
+    .state_on_fs_command 0x002e733c : { *ai-startup-menustate.o(.text._ZN6MenuFX5State11OnFSCommandEPKcS2_) }
+    .state_can_handle_event 0x002e7340 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State14CanHandleEventERN8RenderFX5EventE) }
+    .menu_state_is_modal 0x002e7344 : { *ai-startup-menustate.o(.text._ZNK9MenuState7IsModalEv) }
+    .confirm_is_modal 0x002e7348 : { *ai-startup-menustate.o(.text._ZNK5Menus7Confirm7IsModalEv) }
+    .menu_state_notify 0x002e734c : { *ai-startup-menustate.o(.text._ZN9MenuState6NotifyEPK10MenuWidgeti) }
+    .menu_state_get_depth 0x002e7350 : { *ai-startup-menustate.o(.text._ZNK9MenuState8GetDepthEv) }
+    .menu_state_update 0x002e9510 : { *ai-startup-menustate.o(.text._ZN9MenuState6UpdateEv) }
+    .menu_state_create 0x002e9514 : { *ai-startup-menustate.o(.text._ZN9MenuState6CreateEv) }
     .confirm_confirmed 0x002e7384 : { *ai-startup-menustate.o(.text._ZNK5Menus7Confirm9ConfirmedEv) }
     .confirm_payment_get_widget 0x002e7414 : { *ai-startup-menustate.o(.text._ZN5Menus14ConfirmPayment9GetWidgetEv) }
     .confirm_get_widget 0x002e7438 : { *ai-startup-menustate.o(.text._ZN5Menus7Confirm9GetWidgetEv) }
