@@ -17,6 +17,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .menu_dialog_set_message 0x002e75dc : { *ai-startup-menustate.o(.text._ZN5Menus6Dialog10SetMessageEi) }
+    .widget_dialog_set_message 0x002ebe84 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Dialog10SetMessageEi) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-menustate.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x002e745c : { *ai-startup-menustate.o(.text.__tcf_1) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-menustate.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
@@ -43,6 +45,7 @@ SECTIONS
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
+    /DISCARD/ : { *ai-startup-menuwidget.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

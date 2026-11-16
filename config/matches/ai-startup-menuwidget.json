@@ -25,6 +25,8 @@
     "source": "src/game/ui/MenuWidget.cpp",
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets6Dialog10SetMessageEi",
+        "_ZNK7Widgets6Dialog16GetPressedButtonEv",
         {
             "name": "__tcf_3",
             "address": "0x002ec015"

@@ -1,12 +1,33 @@
 #ifndef WCH_UI_MENU_DIALOGS_H
 #define WCH_UI_MENU_DIALOGS_H
 
-// Call interfaces only. Retail callbacks use the same primary pointer for these
-// two methods; complete layouts and the remaining menu hierarchy are unknown.
+#include "WidgetDialog.h"
+
+class MenuWidget;
+namespace RenderFX { class Event; }
+
+// Partial interface in retail virtual slot order.
 namespace Menus {
 class Dialog {
 public:
+    virtual ~Dialog();
     void SetMessage(int id);
+
+protected:
+    virtual void Create();
+    virtual void Show();
+    virtual void Hide();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void Update();
+    virtual void Update(int elapsed);
+    virtual bool OnEvent(RenderFX::Event& event);
+    virtual void OnFSCommand(const char* command, const char* args);
+    virtual bool CanHandleEvent(RenderFX::Event& event);
+    virtual void UpdateLocalization();
+    virtual bool Notify(const MenuWidget* widget, int event);
+    virtual bool IsModal() const;
+    virtual Widgets::Dialog* GetWidget() = 0;
 };
 class Confirm : public Dialog {
 public:

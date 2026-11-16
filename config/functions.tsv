@@ -9590,7 +9590,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e7525	0x40	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE6appendEPKii	gameswf::array<int>::append(int const*, int)
 0x002e7565	0x2c	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE14release_bufferEv	gameswf::array<int>::release_buffer()
 0x002e7591	0x4a	MenuState.cpp	game	ui	pending	_ZN5Menus7Confirm6NotifyEPK10MenuWidgeti	Menus::Confirm::Notify(MenuWidget const*, int)
-0x002e75dd	0x12	MenuState.cpp	game	ui	pending	_ZN5Menus6Dialog10SetMessageEi	Menus::Dialog::SetMessage(int)
+0x002e75dd	0x12	MenuState.cpp	game	ui	matched	_ZN5Menus6Dialog10SetMessageEi	Menus::Dialog::SetMessage(int)
 0x002e75f1	0x20	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14SetOrientationENS0_13stGameSetting12eOrientationE	Menus::OptionGameSettings::SetOrientation(Menus::OptionGameSettings::stGameSetting::eOrientation)
 0x002e7611	0xc	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14SetOrientationEi	Menus::OptionGameSettings::SetOrientation(int)
 0x002e761d	0x1c	MenuState.cpp	game	ui	matched	__tcf_2	__tcf_2
@@ -9821,8 +9821,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebe79	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11Achievement8SetTitleEi	Widgets::Achievement::SetTitle(int)
 0x002ebe7d	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets11Achievement8AutoHideEv	Widgets::Achievement::AutoHide() const
 0x002ebe81	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets14ConfirmPayment8SetPriceEi	Widgets::ConfirmPayment::SetPrice(int)
-0x002ebe85	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6Dialog10SetMessageEi	Widgets::Dialog::SetMessage(int)
-0x002ebe89	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets6Dialog16GetPressedButtonEv	Widgets::Dialog::GetPressedButton() const
+0x002ebe85	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Dialog10SetMessageEi	Widgets::Dialog::SetMessage(int)
+0x002ebe89	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets6Dialog16GetPressedButtonEv	Widgets::Dialog::GetPressedButton() const
 0x002ebe8d	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu12SetTitleTextEi	Widgets::IGMenu::SetTitleText(int)
 0x002ebe91	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu17SetBackButtonTextEi	Widgets::IGMenu::SetBackButtonText(int)
 0x002ebe95	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets6IGMenu20GetLastPressedButtonEv	Widgets::IGMenu::GetLastPressedButton() const

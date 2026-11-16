@@ -11,6 +11,17 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "WidgetDialog.h"
+
+void Widgets::Dialog::SetMessage(int id)
+{
+    messageId = id;
+}
+
+int Widgets::Dialog::GetPressedButton() const
+{
+    return pressedButton;
+}
 
 void operator delete(void*) throw();
 extern "C" {
