@@ -1,7 +1,7 @@
 # Command-driven build plan
 
-This is a staged implementation plan, not an installed full-game build system.
-It was prepared after meta reached 100% byte-matched on 2026-10-26.
+This plan covers decompilation verification and native library linking. It was
+prepared after meta reached 100% byte-matched on 2026-10-26.
 
 ## Reference and current capability
 
@@ -129,13 +129,11 @@ metadata comparisons separately. Claim a byte-identical file only when the
 entire output SHA-256 equals the retail SHA-256; otherwise enumerate remaining
 file differences. Never patch compiler output to close them.
 
-## 5. Validate loading, packaging and continuous checks
+## 5. Validate library loading and continuous checks
 
 Test the complete library locally with the maintainer's original installation
 on a compatible Android device/emulator. Start with library load, JNI entry,
-startup/cleanup and a repeatable gameplay smoke test. APK assembly is a separate
-optional local target requiring the user's original package/assets and signing
-configuration. Do not upload a rebuilt game or assets to CI.
+startup and cleanup.
 
 Public CI should keep running the 71 tooling tests, repository/progress checks,
 and ByteMatch report export. Add synthetic extraction/linker tests and build
@@ -158,7 +156,7 @@ matching and full-link acceptance gates.
 
 Implement setup/doctor first, then the unified verification command. Keep those
 small tooling PRs separate from function matches. Follow with extraction,
-full-link auditing, and finally runtime/packaging support; each has the gates
+full-link auditing, and finally library loading validation; each has the gates
 above. Full linking is a separate engineering project and must not imply that
 pending C++ functions are complete. Continue the decompilation in
 [WORK-ORDER.md](WORK-ORDER.md) reuse-first order across gameplay areas.

@@ -1,8 +1,7 @@
 # Building and verifying a match
 
-This project does not ship a full-game build system yet. This document describes what
-the build *has* to be for a function to count as matched, and what is already
-known about the toolchain.
+This guide covers the matching toolchain and how to verify compiled functions
+against the retail library.
 
 For the proposed setup, single-command verification and complete-library build
 milestones, see [Command-driven build plan](COMMAND-BUILD-PLAN.md).
