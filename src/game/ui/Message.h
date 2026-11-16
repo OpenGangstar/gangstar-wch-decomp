@@ -10,6 +10,7 @@ class Message : public HudElement {
 public:
     virtual ~Message();
     virtual void draw2d() const;
+    virtual void update(double elapsed);
     bool isDisplayed();
     void clearMessage(bool clearAnimation);
     void setTimer(int duration);
