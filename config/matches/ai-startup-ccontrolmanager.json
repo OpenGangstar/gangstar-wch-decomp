@@ -25,6 +25,8 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager6unlockEv",
+        "_ZN15CControlManager10exitCombatEv",
         "_ZN15CControlManager14setCameraProxyEP9GS3DStuff",
         "_ZN15CControlManager4lockEv",
         "_ZNK15CControlManager8isLockedEv",
@@ -53,5 +55,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN10PlayerTest9GetPlayerEv"]
 }

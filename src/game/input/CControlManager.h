@@ -9,6 +9,8 @@ class CControlManager {
 public:
     ~CControlManager();
     void lock();
+    void unlock();
+    void exitCombat();
     bool isLocked() const;
     void setCameraProxy(GS3DStuff* proxy);
     static bool s_cameraTutorial, s_sniperTutorial;

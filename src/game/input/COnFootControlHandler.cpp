@@ -9,7 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
-#include "IControlHandler.h"
+#include "COnFootControlHandler.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -81,16 +81,6 @@ static void _GLOBAL__I__ZN21COnFootControlHandlerC2EP15CControlManager()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
-
-// Recovered virtual interface. The member layout is still incomplete.
-class COnFootControlHandler : public IControlHandler {
-public:
-    virtual ~COnFootControlHandler();
-    virtual void onEvent(const IEvent*, const EventManager*);
-    virtual void activate();
-    virtual void deactivate() __attribute__((noinline));
-    virtual void releaseKeyboardKeys();
-};
 
 COnFootControlHandler::~COnFootControlHandler()
 {

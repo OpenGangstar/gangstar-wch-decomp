@@ -115,7 +115,9 @@ public:
     unsigned char unknown268[44];
     LevelObject* unknown312;
     LevelObject* unknown316;
-    unsigned char unknown320[48];
+    unsigned char unknown320[36];
+    bool combatMode;
+    unsigned char unknown357[11];
     LevelObject* unknown368;
     unsigned char unknown372[6];
     bool movementKeys[4];
