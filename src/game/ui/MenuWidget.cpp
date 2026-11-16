@@ -13,6 +13,10 @@
 #include "../core/LocalStartupText.h"
 #include "WidgetDialog.h"
 
+MenuWidget::~MenuWidget()
+{
+}
+
 bool MenuWidget::IsVisible() const
 {
     return visible;
@@ -55,6 +59,23 @@ void Widgets::Dialog::Show()
 {
     MenuWidget::Show();
     pressedButton = -1;
+}
+
+Widgets::Dialog::Dialog(const char* name)
+    : MenuWidget(name)
+{
+}
+
+Widgets::Confirm::Confirm(const char* name)
+    : Dialog(name)
+{
+}
+
+static const char confirmWidgetName[] = "widgetConfirm";
+
+Widgets::ConfirmPayment::ConfirmPayment()
+    : Confirm(confirmWidgetName), price(0)
+{
 }
 
 void operator delete(void*) throw();

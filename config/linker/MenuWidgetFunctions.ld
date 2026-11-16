@@ -1,5 +1,6 @@
 SECTIONS
 {
+    .widget_destructor 0x002ebe1c : { *ai-startup-menuwidget.o(.text._ZN10MenuWidgetD2Ev .text._ZN10MenuWidgetD1Ev) }
     .widget_is_visible 0x002ebe34 : { *ai-startup-menuwidget.o(.text._ZNK10MenuWidget9IsVisibleEv) }
     .widget_auto_hide 0x002ebe38 : { *ai-startup-menuwidget.o(.text._ZNK10MenuWidget8AutoHideEv) }
     .widget_is_enabled 0x002ebe3c : { *ai-startup-menuwidget.o(.text._ZNK10MenuWidget9IsEnabledEv) }
@@ -9,6 +10,10 @@ SECTIONS
     .widget_dialog_set_message 0x002ebe84 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Dialog10SetMessageEi) }
     .widget_dialog_get_pressed_button 0x002ebe88 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets6Dialog16GetPressedButtonEv) }
     .widget_dialog_show 0x002ed014 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Dialog4ShowEv) }
+    .widget_dialog_constructor 0x002ec938 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6DialogC2EPKc .text._ZN7Widgets6DialogC1EPKc) }
+    .widget_confirm_constructor 0x002ec95c : { *ai-startup-menuwidget.o(.text._ZN7Widgets7ConfirmC2EPKc .text._ZN7Widgets7ConfirmC1EPKc) }
+    .widget_confirm_payment_constructor 0x002ec980 : { *ai-startup-menuwidget.o(.text._ZN7Widgets14ConfirmPaymentC2Ev .text._ZN7Widgets14ConfirmPaymentC1Ev) }
+    .widget_confirm_name 0x00418f80 : { *ai-startup-menuwidget.o(.rodata.confirmWidgetName) }
     .widget_dialog_vtable 0x004a9b90 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6DialogE) }
     .widget_vtable 0x004a9ca8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTV10MenuWidget) }
 }
