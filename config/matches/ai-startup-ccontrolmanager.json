@@ -25,6 +25,7 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager11exitSnipingEb",
         "_ZN15CControlManager11enterCombatEv",
         "_ZN15CControlManagerC1Ev",
         "_ZN15CControlManagerC2Ev",
@@ -61,6 +62,10 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11CHudManager7walkingEv",
+        "_ZN9Character18goFromCombatToIdleEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
         "_ZN11Application11GetInstanceEv",
         "_ZN21COnFootControlHandlerC1EP15CControlManager",
         "_ZN22CDrivingControlHandlerC1EP15CControlManager",

@@ -15,6 +15,9 @@
 #include "SniperControlHandler.h"
 #include "../characters/PlayerTest.h"
 #include "../core/SceneNode.h"
+#include "../characters/Character.h"
+#include "../core/CameraManager.h"
+#include "../hud/CHudManager.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -164,4 +167,23 @@ void CControlManager::enterCombat()
     if (now >= combatTimestamp + 5000)
         combatTimestamp = now;
     PlayerTest::GetPlayer()->combatMode = true;
+}
+
+void CControlManager::exitSniping(bool restoreCamera)
+{
+    if (activeHandler == sniperHandler) {
+        lock();
+        Application::GetInstance()->GetHudManager()->walking();
+        PlayerTest* player = PlayerTest::GetPlayer();
+        Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*player));
+        character->goFromCombatToIdle();
+        if (restoreCamera) {
+            CameraManager* camera = CameraManager::getInstance();
+            camera->enterMode(0, player ? character : 0, 0.3f, 0);
+        }
+        activeHandler->deactivate();
+        activeHandler = onFootHandler;
+        activeHandler->activate();
+        unlock();
+    }
 }
