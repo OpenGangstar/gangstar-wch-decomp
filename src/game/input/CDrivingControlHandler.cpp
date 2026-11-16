@@ -132,3 +132,17 @@ void CDrivingControlHandler::init()
     unknown17 = true;
     unknown20 = -1;
 }
+
+CDrivingControlHandler::CDrivingControlHandler(CControlManager* manager) : controlManager(manager)
+{
+    vehicle = 0;
+    unknown16 = false;
+    unknown17 = true;
+    unknown24[0] = 0.0f;
+    unknown24[1] = 0.0f;
+    unknown24[2] = 0.0f;
+    unknown24[3] = 0.0f;
+    unknown24[4] = 0.0f;
+    unknown24[5] = 0.0f;
+    unknown20 = -1;
+}

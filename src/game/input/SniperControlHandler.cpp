@@ -99,7 +99,17 @@ void SniperControlHandler::releaseKeyboardKeys()
 {
 }
 
-void SniperControlHandler::init()
+inline __attribute__((always_inline)) void SniperControlHandler::resetInput()
 {
     unknown12 = 0;
+}
+
+void SniperControlHandler::init()
+{
+    resetInput();
+}
+
+SniperControlHandler::SniperControlHandler(CControlManager* manager) : controlManager(manager)
+{
+    resetInput();
 }
