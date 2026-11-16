@@ -25,6 +25,7 @@
     "source": "src/game/ui/MenuWidget.cpp",
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets14ConfirmPayment8SetPriceEi",
         "_ZN7Widgets6Dialog10SetMessageEi",
         "_ZNK7Widgets6Dialog16GetPressedButtonEv",
         {

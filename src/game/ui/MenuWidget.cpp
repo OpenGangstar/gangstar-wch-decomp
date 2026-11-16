@@ -13,6 +13,11 @@
 #include "../core/LocalStartupText.h"
 #include "WidgetDialog.h"
 
+void Widgets::ConfirmPayment::SetPrice(int amount)
+{
+    price = amount;
+}
+
 void Widgets::Dialog::SetMessage(int id)
 {
     messageId = id;

@@ -15,6 +15,7 @@ _ZN29retail_menuwidget_transitions11guard_transE = 0x0041bb9c;
 _ZN29retail_menuwidget_transitions22scripted_vehicle_transE = 0x0041bc44;
 SECTIONS
 {
+    .confirm_payment_set_price 0x002ebe80 : { *ai-startup-menuwidget.o(.text._ZN7Widgets14ConfirmPayment8SetPriceEi) }
     .dialog_set_message 0x002ebe84 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Dialog10SetMessageEi) }
     .dialog_get_pressed_button 0x002ebe88 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets6Dialog16GetPressedButtonEv) }
     .ai_startup_function_0 0x002ec014 : { *ai-startup-menuwidget.o(.text.__tcf_3) }

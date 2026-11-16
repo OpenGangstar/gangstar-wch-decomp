@@ -12,6 +12,17 @@ private:
     int messageId;
     int pressedButton;
 };
+
+class Confirm : public Dialog {
+};
+
+class ConfirmPayment : public Confirm {
+public:
+    void SetPrice(int amount);
+
+private:
+    int price;
+};
 }
 
 #endif

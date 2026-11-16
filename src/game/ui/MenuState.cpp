@@ -14,10 +14,48 @@
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
 #include "MenuDialogs.h"
+#include "../hud/MenuManager.h"
+
+namespace {
+struct MenuWidgetTable {
+    unsigned char prefix[0x1a4];
+    void** widgets;
+    int count;
+};
+
+inline void* getWidgetByIndex(int index)
+{
+    const MenuWidgetTable& table =
+        *reinterpret_cast<const MenuWidgetTable*>(MenuManager::getInstance());
+    return index < table.count ? table.widgets[index] : 0;
+}
+}
+
+bool Menus::Confirm::Confirmed() const
+{
+    return confirmed;
+}
+
+Widgets::ConfirmPayment* Menus::ConfirmPayment::GetWidget()
+{
+    return static_cast<Widgets::ConfirmPayment*>(getWidgetByIndex(28));
+}
+
+Widgets::Confirm* Menus::Confirm::GetWidget()
+{
+    return static_cast<Widgets::Confirm*>(getWidgetByIndex(21));
+}
 
 void Menus::Dialog::SetMessage(int id)
 {
     GetWidget()->SetMessage(id);
+}
+
+void Menus::ConfirmPayment::SetPrice(int amount)
+{
+    Widgets::ConfirmPayment* widget =
+        static_cast<Widgets::ConfirmPayment*>(getWidgetByIndex(28));
+    widget->SetPrice(amount);
 }
 
 void operator delete(void*) throw();
