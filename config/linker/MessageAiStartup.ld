@@ -13,8 +13,10 @@ _ZN26retail_message_transitions17civ_vehicle_transE = 0x00424548;
 _ZN26retail_message_transitions17cop_vehicle_transE = 0x004245d8;
 _ZN26retail_message_transitions11guard_transE = 0x0042468c;
 _ZN26retail_message_transitions22scripted_vehicle_transE = 0x00424734;
+strcpy = 0x001c3fd4;
 SECTIONS
 {
+    .message_set_text 0x00328e9c : { *ai-startup-message.o(.text._ZN7Message10setMessageEPKci) }
     .message_clear 0x00328e7c : { *(.text._ZN7Message12clearMessageEb) }
     .message_draw 0x00328ef8 : { *(.text._ZNK7Message6draw2dEv) }
     .message_draw_thunk 0x00328ee4 : { *(.text._ZThn4_NK7Message6draw2dEv) }

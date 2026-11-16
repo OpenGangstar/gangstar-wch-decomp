@@ -108,3 +108,18 @@ void Message::draw2d() const
     if (animationId != -1 && unknown80 != -1)
         animationObject->Draw();
 }
+
+extern "C" char* strcpy(char* destination, const char* source);
+
+void Message::setMessage(const char* text, int duration)
+{
+    strcpy(messageText, text);
+    unknown80 = -2;
+    setTimer(duration);
+    if (timedDisplay) {
+        clearMessage(false);
+        pendingMessage = true;
+    } else if (unknown80 != -1) {
+        setAnim(messageAnimation);
+    }
+}

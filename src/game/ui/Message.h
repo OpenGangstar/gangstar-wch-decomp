@@ -13,19 +13,21 @@ public:
     bool isDisplayed();
     void clearMessage(bool clearAnimation);
     void setTimer(int duration);
+    void setMessage(const char* text, int duration);
     void setAnim(int animation);
 
 private:
     AnimObject* animationObject;
-    unsigned char unknown60[4];
+    int messageAnimation;
     int defaultAnimation;
     unsigned char unknown68[4];
     int timer;
     int animationId;
     int unknown80;
-    unsigned char unknown84[32];
+    char messageText[32];
     bool timedDisplay;
     bool untimed;
+    bool pendingMessage;
 };
 
 #endif
