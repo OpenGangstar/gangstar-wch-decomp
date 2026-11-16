@@ -11312,7 +11312,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003290c9	0x38	Message.cpp	game	ui	matched	_ZN7MessageD2Ev	Message::~Message()
 0x00329101	0x88	Message.cpp	game	ui	matched	_ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii	Message::Message(ASprite*, MenuManager::eText, int, int)
 0x00329101	0x88	Message.cpp	game	ui	matched	_ZN7MessageC1EP7ASpriteN11MenuManager5eTextEii	Message::Message(ASprite*, MenuManager::eText, int, int)
-0x00329189	0x5a	Message.cpp	game	ui	pending	_ZN7Message10setMessageEiiN11MenuManager5eTextE	Message::setMessage(int, int, MenuManager::eText)
+0x00329189	0x5a	Message.cpp	game	ui	matched	_ZN7Message10setMessageEiiN11MenuManager5eTextE	Message::setMessage(int, int, MenuManager::eText)
 0x003291e5	0x144	Message.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00329329	0x14	Message.cpp	game	core	matched	_GLOBAL__I__ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii	_GLOBAL__I__ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii
 0x0032933d	0x22	MiniMap.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIN7MiniMap15TrackableObjectESaIS2_EE5clearEv	stlp_priv::_List_base<MiniMap::TrackableObject, std::allocator<MiniMap::TrackableObject> >::clear()
