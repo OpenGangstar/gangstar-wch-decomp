@@ -9,7 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
-#include "IControlHandler.h"
+#include "SniperControlHandler.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -80,16 +80,6 @@ static void __tcf_5()
 }
 }
 
-// Recovered virtual interface. The member layout is still incomplete.
-class SniperControlHandler : public IControlHandler {
-public:
-    virtual ~SniperControlHandler();
-    virtual void onEvent(const IEvent*, const EventManager*);
-    virtual void activate();
-    virtual void deactivate() __attribute__((noinline));
-    virtual void releaseKeyboardKeys();
-};
-
 SniperControlHandler::~SniperControlHandler()
 {
     SniperControlHandler::deactivate();
@@ -107,4 +97,9 @@ void SniperControlHandler::activate()
 
 void SniperControlHandler::releaseKeyboardKeys()
 {
+}
+
+void SniperControlHandler::init()
+{
+    unknown12 = 0;
 }

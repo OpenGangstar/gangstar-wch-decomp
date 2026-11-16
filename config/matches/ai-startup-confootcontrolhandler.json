@@ -25,6 +25,7 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandler4initEv",
         "_ZN21COnFootControlHandler19releaseKeyboardKeysEv",
         "_ZN21COnFootControlHandler8activateEv",
         "_ZN21COnFootControlHandler10deactivateEv",

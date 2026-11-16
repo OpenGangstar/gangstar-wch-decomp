@@ -9,7 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
-#include "IControlHandler.h"
+#include "CDrivingControlHandler.h"
 #include "../vehicles/Vehicle.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
@@ -83,24 +83,6 @@ static void _GLOBAL__I__ZN22CDrivingControlHandlerC2EP15CControlManager()
 }
 }
 
-// Recovered virtual interface. The member layout is still incomplete.
-class CControlManager;
-
-class CDrivingControlHandler : public IControlHandler {
-public:
-    virtual ~CDrivingControlHandler();
-    virtual void onEvent(const IEvent*, const EventManager*);
-    virtual void activate();
-    virtual void deactivate() __attribute__((noinline));
-    virtual void releaseKeyboardKeys();
-
-private:
-    template<bool (EventManager::*operation)(int, IEventReceiver*)>
-    inline __attribute__((always_inline)) void updateDrivingEvents();
-    CControlManager* controlManager;
-    Vehicle* vehicle;
-};
-
 CDrivingControlHandler::~CDrivingControlHandler()
 {
     CDrivingControlHandler::deactivate();
@@ -135,4 +117,18 @@ void CDrivingControlHandler::releaseKeyboardKeys()
         vehicle->unknown984 = 0.0f;
         vehicle->unknown988 = 0.0f;
     }
+}
+
+void CDrivingControlHandler::init()
+{
+    vehicle = 0;
+    unknown16 = false;
+    unknown24[0] = 0.0f;
+    unknown24[1] = 0.0f;
+    unknown24[2] = 0.0f;
+    unknown24[3] = 0.0f;
+    unknown24[4] = 0.0f;
+    unknown24[5] = 0.0f;
+    unknown17 = true;
+    unknown20 = -1;
 }

@@ -105,3 +105,10 @@ void COnFootControlHandler::releaseKeyboardKeys()
     player->movementKeys[2] = false;
     player->movementKeys[3] = false;
 }
+
+void COnFootControlHandler::init()
+{
+    unknown12 = true;
+    unknown13 = false;
+    unknown16 = 0;
+}

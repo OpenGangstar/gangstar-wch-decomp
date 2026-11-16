@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .handler_init 0x0032e520 : { *(.text._ZN21COnFootControlHandler4initEv) }
     .handler_release_keys 0x0032e55c : { *(.text._ZN21COnFootControlHandler19releaseKeyboardKeysEv) }
     .handler_activate 0x0032e664 : { *(.text._ZN21COnFootControlHandler8activateEv) }
     .handler_deactivate 0x0032e7fc : { *(.text._ZN21COnFootControlHandler10deactivateEv) }
