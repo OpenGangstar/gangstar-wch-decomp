@@ -140,6 +140,80 @@ Widgets::ConfirmPayment::ConfirmPayment()
 {
 }
 
+namespace Widgets {
+class Mission : public MenuWidget {
+public:
+    Mission();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+};
+
+class Money : public MenuWidget {
+public:
+    Money();
+    virtual void Show();
+    virtual void UpdateLocalization();
+};
+
+class Arrows : public MenuWidget {
+public:
+    Arrows();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+};
+
+class ContentBox : public MenuWidget {
+public:
+    ContentBox();
+    virtual void Show();
+};
+
+class Title : public MenuWidget {
+public:
+    Title();
+    virtual void Show();
+    virtual void UpdateLocalization();
+};
+
+class BackgroundInGame : public MenuWidget {
+public:
+    BackgroundInGame();
+    virtual void Show();
+};
+}
+
+void Widgets::Mission::Show()
+{
+    MenuWidget::Show();
+}
+
+void Widgets::Money::Show()
+{
+    MenuWidget::Show();
+}
+
+void Widgets::Arrows::Show()
+{
+    MenuWidget::Show();
+}
+
+void Widgets::ContentBox::Show()
+{
+    MenuWidget::Show();
+}
+
+void Widgets::Title::Show()
+{
+    MenuWidget::Show();
+}
+
+void Widgets::BackgroundInGame::Show()
+{
+    MenuWidget::Show();
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));
