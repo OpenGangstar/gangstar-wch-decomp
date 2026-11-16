@@ -25,6 +25,7 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager11enterCombatEv",
         "_ZN15CControlManagerC1Ev",
         "_ZN15CControlManagerC2Ev",
         "_ZN15CControlManager4initEv",
@@ -60,6 +61,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
         "_ZN21COnFootControlHandlerC1EP15CControlManager",
         "_ZN22CDrivingControlHandlerC1EP15CControlManager",
         "_ZN20SniperControlHandlerC1EP15CControlManager",

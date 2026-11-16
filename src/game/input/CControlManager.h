@@ -12,6 +12,7 @@ public:
     void init() __attribute__((noinline));
     void lock();
     void unlock();
+    void enterCombat();
     void exitCombat();
     bool isLocked() const;
     void setCameraProxy(GS3DStuff* proxy);
@@ -24,7 +25,8 @@ private:
     IControlHandler* sniperHandler;
     GS3DStuff* cameraProxy;
     bool locked;
-    int unknown24[5];
+    unsigned int combatTimestamp;
+    int unknown28[4];
     bool unknown44;
     bool unknown45;
     bool unknown46;
