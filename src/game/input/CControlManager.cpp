@@ -135,3 +135,24 @@ void CControlManager::init()
     activeHandler = onFootHandler;
     activeHandler->activate();
 }
+
+CControlManager::CControlManager()
+{
+    unknown44 = false;
+    unknown45 = false;
+    activeHandler = 0;
+    onFootHandler = 0;
+    drivingHandler = 0;
+    sniperHandler = 0;
+    locked = false;
+    unknown24[0] = 0;
+    unknown24[1] = 0;
+    unknown24[2] = 0;
+    unknown24[3] = 0;
+    unknown24[4] = 0;
+    unknown46 = false;
+    onFootHandler = new COnFootControlHandler(this);
+    drivingHandler = new CDrivingControlHandler(this);
+    sniperHandler = new SniperControlHandler(this);
+    init();
+}

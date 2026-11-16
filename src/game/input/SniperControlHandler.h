@@ -4,8 +4,11 @@
 #include "IControlHandler.h"
 
 // Recovered virtual interface. The member layout is still incomplete.
+class CControlManager;
+
 class SniperControlHandler : public IControlHandler {
 public:
+    explicit SniperControlHandler(CControlManager* manager);
     void init();
     virtual ~SniperControlHandler();
     virtual void onEvent(const IEvent*, const EventManager*);
@@ -14,7 +17,9 @@ public:
     virtual void releaseKeyboardKeys();
 
 private:
-    unsigned char unknown4[8];
+    inline __attribute__((always_inline)) void resetInput();
+    unsigned char unknown4[4];
+    CControlManager* controlManager;
     int unknown12;
 };
 

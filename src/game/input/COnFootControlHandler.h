@@ -8,6 +8,7 @@ class CControlManager;
 // Recovered virtual interface. The member layout is still incomplete.
 class COnFootControlHandler : public IControlHandler {
 public:
+    explicit COnFootControlHandler(CControlManager* manager);
     void init();
     virtual ~COnFootControlHandler();
     virtual void onEvent(const IEvent*, const EventManager*);
@@ -16,6 +17,7 @@ public:
     virtual void releaseKeyboardKeys();
 
 private:
+    inline __attribute__((always_inline)) void resetInput();
     friend class CControlManager;
     unsigned char unknown4[4];
     CControlManager* controlManager;

@@ -25,6 +25,8 @@
     "source": "src/game/input/SniperControlHandler.cpp",
     "linker_script": "config/linker/SniperControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN20SniperControlHandlerC1EP15CControlManager",
+        "_ZN20SniperControlHandlerC2EP15CControlManager",
         "_ZN20SniperControlHandler4initEv",
         "_ZN20SniperControlHandler19releaseKeyboardKeysEv",
         "_ZN20SniperControlHandler8activateEv",

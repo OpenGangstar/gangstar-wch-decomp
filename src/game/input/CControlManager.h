@@ -7,8 +7,9 @@ class GS3DStuff;
 // Partial retail layout. Do not instantiate.
 class CControlManager {
 public:
+    CControlManager();
     ~CControlManager();
-    void init();
+    void init() __attribute__((noinline));
     void lock();
     void unlock();
     void exitCombat();
@@ -23,6 +24,10 @@ private:
     IControlHandler* sniperHandler;
     GS3DStuff* cameraProxy;
     bool locked;
+    int unknown24[5];
+    bool unknown44;
+    bool unknown45;
+    bool unknown46;
 };
 
 #endif

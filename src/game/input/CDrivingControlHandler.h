@@ -10,6 +10,7 @@ class CControlManager;
 
 class CDrivingControlHandler : public IControlHandler {
 public:
+    explicit CDrivingControlHandler(CControlManager* manager);
     void init();
     virtual ~CDrivingControlHandler();
     virtual void onEvent(const IEvent*, const EventManager*);
@@ -20,9 +21,9 @@ public:
 private:
     template<bool (EventManager::*operation)(int, IEventReceiver*)>
     inline __attribute__((always_inline)) void updateDrivingEvents();
-    CControlManager* controlManager;
+    unsigned char unknown4[4];
     Vehicle* vehicle;
-    unsigned char unknown12[4];
+    CControlManager* controlManager;
     bool unknown16;
     bool unknown17;
     int unknown20;

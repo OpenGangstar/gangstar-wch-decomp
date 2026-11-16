@@ -1,6 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-ccontrolmanager/retail-symbols.ld
+_Znwj = 0x001c4814;
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZN34retail_ccontrolmanager_transitions16civPassive_transE = 0x004253a8;
@@ -16,6 +17,7 @@ _ZN34retail_ccontrolmanager_transitions22scripted_vehicle_transE = 0x00425924;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .control_manager_constructor 0x0032d234 : { *(.text._ZN15CControlManagerC1Ev .text._ZN15CControlManagerC2Ev) }
     .handler_init 0x0032d200 : { *(.text._ZN15CControlManager4initEv) }
     .control_manager_camera_proxy 0x0032d1b8 : { *(.text._ZN15CControlManager14setCameraProxyEP9GS3DStuff) }
     .control_manager_unlock 0x0032d444 : { *(.text._ZN15CControlManager6unlockEv) }

@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .handler_constructor 0x0032da54 : { *(.text._ZN22CDrivingControlHandlerC1EP15CControlManager .text._ZN22CDrivingControlHandlerC2EP15CControlManager) }
     .handler_init 0x0032da30 : { *(.text._ZN22CDrivingControlHandler4initEv) }
     .handler_release_keys 0x0032d8bc : { *(.text._ZN22CDrivingControlHandler19releaseKeyboardKeysEv) }
     .handler_activate 0x0032d98c : { *(.text._ZN22CDrivingControlHandler8activateEv) }

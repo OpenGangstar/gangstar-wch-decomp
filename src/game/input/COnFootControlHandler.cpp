@@ -106,9 +106,19 @@ void COnFootControlHandler::releaseKeyboardKeys()
     player->movementKeys[3] = false;
 }
 
-void COnFootControlHandler::init()
+inline __attribute__((always_inline)) void COnFootControlHandler::resetInput()
 {
     unknown12 = true;
     unknown13 = false;
     unknown16 = 0;
+}
+
+void COnFootControlHandler::init()
+{
+    resetInput();
+}
+
+COnFootControlHandler::COnFootControlHandler(CControlManager* manager) : controlManager(manager)
+{
+    resetInput();
 }
