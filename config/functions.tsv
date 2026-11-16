@@ -11513,7 +11513,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d445	0x16	CControlManager.cpp	game	input	matched	_ZN15CControlManager6unlockEv	CControlManager::unlock()
 0x0032d45d	0x70	CControlManager.cpp	game	input	matched	_ZN15CControlManager11exitSnipingEb	CControlManager::exitSniping(bool)
 0x0032d4cd	0x34	CControlManager.cpp	game	input	matched	_ZN15CControlManager11enterCombatEv	CControlManager::enterCombat()
-0x0032d501	0x6c	CControlManager.cpp	game	input	pending	_ZN15CControlManager7exitCarEb	CControlManager::exitCar(bool)
+0x0032d501	0x6c	CControlManager.cpp	game	input	matched	_ZN15CControlManager7exitCarEb	CControlManager::exitCar(bool)
 0x0032d56d	0x144	CControlManager.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032d6b1	0x14	CControlManager.cpp	game	input	matched	_GLOBAL__I__ZN15CControlManager16s_sniperTutorialE	_GLOBAL__I__ZN15CControlManager16s_sniperTutorialE
 0x0032d6c5	0x30	CControlManager.cpp	game	input	matched	__tcf_3	__tcf_3

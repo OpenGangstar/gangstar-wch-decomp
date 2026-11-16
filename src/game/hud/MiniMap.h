@@ -15,6 +15,7 @@ public:
     void registerForMapTracking(LevelObject* object, bool flag);
     void deregisterForMapTracking(LevelObject* object);
     void deregisterAllForMapTracking();
+    void setFollowedObject(LevelObject* object) { followedObject = object; }
 
 private:
     struct TrackingLink {

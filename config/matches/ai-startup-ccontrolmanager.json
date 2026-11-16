@@ -25,6 +25,7 @@
     "source": "src/game/input/CControlManager.cpp",
     "linker_script": "config/linker/CControlManagerAiStartup.ld",
     "functions": [
+        "_ZN15CControlManager7exitCarEb",
         "_ZN15CControlManager11exitSnipingEb",
         "_ZN15CControlManager11enterCombatEv",
         "_ZN15CControlManagerC1Ev",

@@ -15,6 +15,7 @@ public:
     void enterCombat();
     void exitCombat();
     void exitSniping(bool restoreCamera);
+    void exitCar(bool restoreCamera);
     bool isLocked() const;
     void setCameraProxy(GS3DStuff* proxy);
     static bool s_cameraTutorial, s_sniperTutorial;
