@@ -80,6 +80,16 @@ void RenderFX::GotoFrame(gameswf::character* character, int frame, bool play)
     }
 }
 
+const gameswf::array<gameswf::character*>& RenderFX::FindCharacters(
+    gameswf::character* parent, const char* name, int flags)
+{
+    gameswf::array<gameswf::character*>& matches =
+        *reinterpret_cast<gameswf::array<gameswf::character*>*>(reinterpret_cast<char*>(this) + 4);
+    matches.resize(0);
+    CollectCharacters(parent, name, flags);
+    return matches;
+}
+
 void RenderFX::GotoFrame(const char* characterName, int frame, bool play)
 {
     gameswf::character* character = Find(characterName);
