@@ -14,6 +14,7 @@
 #include "CDrivingControlHandler.h"
 #include "SniperControlHandler.h"
 #include "../characters/PlayerTest.h"
+#include "../core/SceneNode.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -145,14 +146,22 @@ CControlManager::CControlManager()
     drivingHandler = 0;
     sniperHandler = 0;
     locked = false;
-    unknown24[0] = 0;
-    unknown24[1] = 0;
-    unknown24[2] = 0;
-    unknown24[3] = 0;
-    unknown24[4] = 0;
+    combatTimestamp = 0;
+    unknown28[0] = 0;
+    unknown28[1] = 0;
+    unknown28[2] = 0;
+    unknown28[3] = 0;
     unknown46 = false;
     onFootHandler = new COnFootControlHandler(this);
     drivingHandler = new CDrivingControlHandler(this);
     sniperHandler = new SniperControlHandler(this);
     init();
+}
+
+void CControlManager::enterCombat()
+{
+    unsigned int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    if (now >= combatTimestamp + 5000)
+        combatTimestamp = now;
+    PlayerTest::GetPlayer()->combatMode = true;
 }
