@@ -25,6 +25,14 @@
     "source": "src/game/ui/MenuWidget.cpp",
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN10MenuWidgetD1Ev",
+        "_ZN10MenuWidgetD2Ev",
+        "_ZN7Widgets6DialogC1EPKc",
+        "_ZN7Widgets6DialogC2EPKc",
+        "_ZN7Widgets7ConfirmC1EPKc",
+        "_ZN7Widgets7ConfirmC2EPKc",
+        "_ZN7Widgets14ConfirmPaymentC1Ev",
+        "_ZN7Widgets14ConfirmPaymentC2Ev",
         "_ZNK10MenuWidget9IsVisibleEv",
         "_ZNK10MenuWidget8AutoHideEv",
         "_ZNK10MenuWidget9IsEnabledEv",
@@ -48,6 +56,7 @@
         }
     ],
     "sections": [
+        ".widget_confirm_name",
         ".widget_dialog_vtable",
         ".widget_vtable",
         ".ai_startup_function_0",
@@ -60,5 +69,5 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN10MenuWidget4ShowEv"]
+    "external_thumb_functions": ["_ZN10MenuWidget4ShowEv", "_ZN10MenuWidgetC1EPKc"]
 }

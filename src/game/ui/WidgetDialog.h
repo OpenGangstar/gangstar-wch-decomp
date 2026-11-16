@@ -10,6 +10,8 @@ namespace gameswf { class character; }
 
 class MenuWidget {
 public:
+    explicit MenuWidget(const char* name);
+    ~MenuWidget();
     bool IsVisible() const;
     virtual bool AutoHide() const;
     bool IsEnabled() const;
@@ -31,6 +33,7 @@ private:
 namespace Widgets {
 class Dialog : public MenuWidget {
 public:
+    explicit Dialog(const char* name);
     void SetMessage(int id);
     int GetPressedButton() const;
     virtual void Show();
@@ -43,11 +46,16 @@ private:
 };
 
 class Confirm : public Dialog {
+public:
+    explicit Confirm(const char* name);
+    virtual void UpdateLocalization();
 };
 
 class ConfirmPayment : public Confirm {
 public:
+    ConfirmPayment();
     void SetPrice(int amount);
+    virtual void UpdateLocalization();
 
 private:
     int price;
