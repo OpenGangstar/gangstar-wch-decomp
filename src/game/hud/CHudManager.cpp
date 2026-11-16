@@ -239,3 +239,19 @@ static void _GLOBAL__I__ZN11CHudManagerC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+void CHudManager::retroEffect(bool enabled)
+{
+    if (enabled)
+        retroOverlay->show();
+    else
+        retroOverlay->hide();
+}
+
+void CHudManager::limitToWeapon(int weaponId)
+{
+    Application::GetInstance()->GetWeaponManager()->limitToWeapon(weaponId, PlayerTest::AnyContext);
+    switchWeapon();
+    weaponSelector->grayOut(weaponId != -1);
+    static_cast<AnimatedButton*>(weaponSelectorExtra)->grayOut(weaponId != -1);
+}
