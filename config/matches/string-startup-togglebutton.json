@@ -25,6 +25,12 @@
     "source": "src/game/ui/ToggleButton.cpp",
     "linker_script": "config/linker/ToggleButtonStringStartup.ld",
     "functions": [
+        "_ZN12ToggleButton12processTouchEl",
+        "_ZN12ToggleButton19processTouchReleaseEv",
+        "_ZNK12ToggleButton6draw2dEv",
+        "_ZThn8_N12ToggleButton12processTouchEl",
+        "_ZThn8_N12ToggleButton19processTouchReleaseEv",
+        "_ZThn4_NK12ToggleButton6draw2dEv",
         {
             "name": "__tcf_0",
             "address": "0x0032c255"
@@ -48,5 +54,10 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN13VirtualButton19processTouchReleaseEv",
+        "_ZNK10HudElement6draw2dEv",
+        "_ZNK7ASprite10PaintFrameEiiii"
+    ]
 }

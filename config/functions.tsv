@@ -11437,17 +11437,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032be75	0x340	TargetMarker.cpp	game	hud	pending	_ZNK12TargetMarker4drawEv	TargetMarker::draw() const
 0x0032c1b5	0x6c	TargetMarker.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032c221	0x14	TargetMarker.cpp	game	hud	matched	_GLOBAL__I__ZN12TargetMarkerC2Ev	_GLOBAL__I__ZN12TargetMarkerC2Ev
-0x0032c234	0x14	ToggleButton.cpp	game	ui	pending	_ZThn8_N12ToggleButton12processTouchEl	non-virtual thunk to ToggleButton::processTouch(long)
-0x0032c249	0xa	ToggleButton.cpp	game	ui	pending	_ZN12ToggleButton12processTouchEl	ToggleButton::processTouch(long)
+0x0032c234	0x14	ToggleButton.cpp	game	ui	matched	_ZThn8_N12ToggleButton12processTouchEl	non-virtual thunk to ToggleButton::processTouch(long)
+0x0032c249	0xa	ToggleButton.cpp	game	ui	matched	_ZN12ToggleButton12processTouchEl	ToggleButton::processTouch(long)
 0x0032c255	0x30	ToggleButton.cpp	game	core	matched	__tcf_0	__tcf_0
 0x0032c284	0x14	ToggleButton.cpp	game	ui	pending	_ZThn4_N12ToggleButtonD0Ev	non-virtual thunk to ToggleButton::~ToggleButton()
 0x0032c299	0x38	ToggleButton.cpp	game	ui	pending	_ZN12ToggleButtonD0Ev	ToggleButton::~ToggleButton()
 0x0032c2d0	0x14	ToggleButton.cpp	game	ui	pending	_ZThn4_N12ToggleButtonD1Ev	non-virtual thunk to ToggleButton::~ToggleButton()
 0x0032c2e5	0x30	ToggleButton.cpp	game	ui	pending	_ZN12ToggleButtonD1Ev	ToggleButton::~ToggleButton()
-0x0032c314	0x14	ToggleButton.cpp	game	ui	pending	_ZThn4_NK12ToggleButton6draw2dEv	non-virtual thunk to ToggleButton::draw2d() const
-0x0032c329	0x2c	ToggleButton.cpp	game	ui	pending	_ZNK12ToggleButton6draw2dEv	ToggleButton::draw2d() const
-0x0032c354	0x14	ToggleButton.cpp	game	ui	pending	_ZThn8_N12ToggleButton19processTouchReleaseEv	non-virtual thunk to ToggleButton::processTouchRelease()
-0x0032c369	0x1c	ToggleButton.cpp	game	ui	pending	_ZN12ToggleButton19processTouchReleaseEv	ToggleButton::processTouchRelease()
+0x0032c314	0x14	ToggleButton.cpp	game	ui	matched	_ZThn4_NK12ToggleButton6draw2dEv	non-virtual thunk to ToggleButton::draw2d() const
+0x0032c329	0x2c	ToggleButton.cpp	game	ui	matched	_ZNK12ToggleButton6draw2dEv	ToggleButton::draw2d() const
+0x0032c354	0x14	ToggleButton.cpp	game	ui	matched	_ZThn8_N12ToggleButton19processTouchReleaseEv	non-virtual thunk to ToggleButton::processTouchRelease()
+0x0032c369	0x1c	ToggleButton.cpp	game	ui	matched	_ZN12ToggleButton19processTouchReleaseEv	ToggleButton::processTouchRelease()
 0x0032c385	0x40	ToggleButton.cpp	game	ui	pending	_ZN12ToggleButtonC1EP7ASpriteii	ToggleButton::ToggleButton(ASprite*, int, int)
 0x0032c385	0x40	ToggleButton.cpp	game	ui	pending	_ZN12ToggleButtonC2EP7ASpriteii	ToggleButton::ToggleButton(ASprite*, int, int)
 0x0032c3c5	0x58	ToggleButton.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

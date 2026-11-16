@@ -4,9 +4,15 @@
 #include "VirtualButton.h"
 
 class ToggleButton : public VirtualButton {
+public:
+    virtual ~ToggleButton();
+    virtual void processTouch(long) __attribute__((used)) { flags |= 2; }
+    virtual void processTouchRelease();
+    virtual void draw2d() const;
+
 private:
     friend class CControlManager;
-    unsigned char unknown60[4];
+    int inactiveFrame;
     bool toggled;
 };
 
