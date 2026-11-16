@@ -25,6 +25,12 @@
     "source": "src/game/ui/ToggleButton.cpp",
     "linker_script": "config/linker/ToggleButtonStringStartup.ld",
     "functions": [
+        "_ZN12ToggleButtonC1EP7ASpriteii",
+        "_ZN12ToggleButtonC2EP7ASpriteii",
+        "_ZN12ToggleButtonD0Ev",
+        "_ZN12ToggleButtonD1Ev",
+        "_ZThn4_N12ToggleButtonD0Ev",
+        "_ZThn4_N12ToggleButtonD1Ev",
         "_ZN12ToggleButton12processTouchEl",
         "_ZN12ToggleButton19processTouchReleaseEv",
         "_ZNK12ToggleButton6draw2dEv",
@@ -45,6 +51,7 @@
         }
     ],
     "sections": [
+        ".toggle_vtable",
         ".string_startup_function_0",
         ".string_startup_function_1",
         ".string_startup_function_2",
@@ -56,6 +63,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
         "_ZN13VirtualButton19processTouchReleaseEv",
         "_ZNK10HudElement6draw2dEv",
         "_ZNK7ASprite10PaintFrameEiiii"
