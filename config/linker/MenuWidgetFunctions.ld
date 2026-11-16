@@ -1,5 +1,20 @@
 SECTIONS
 {
+    .widget_mission_constructor 0x002ec790 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7MissionC2Ev .text._ZN7Widgets7MissionC1Ev) }
+    .widget_mission_name 0x0041a8f0 : { *ai-startup-menuwidget.o(.rodata.widgetMissionName) }
+    .widget_money_constructor 0x002ec7c0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5MoneyC2Ev .text._ZN7Widgets5MoneyC1Ev) }
+    .widget_money_name 0x0041a900 : { *ai-startup-menuwidget.o(.rodata.widgetMoneyName) }
+    .widget_arrows_constructor 0x002ec7ec : { *ai-startup-menuwidget.o(.text._ZN7Widgets6ArrowsC2Ev .text._ZN7Widgets6ArrowsC1Ev) }
+    .widget_arrows_name 0x0041a90c : { *ai-startup-menuwidget.o(.rodata.widgetArrowsName) }
+    .widget_contentbox_constructor 0x002eca48 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10ContentBoxC2Ev .text._ZN7Widgets10ContentBoxC1Ev) }
+    .widget_contentbox_name 0x0041a980 : { *ai-startup-menuwidget.o(.rodata.widgetContentBoxName) }
+    .widget_title_constructor 0x002eca74 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5TitleC2Ev .text._ZN7Widgets5TitleC1Ev) }
+    .widget_title_name 0x0041a994 : { *ai-startup-menuwidget.o(.rodata.widgetTitleName) }
+    .widget_backgroundingame_constructor 0x002ecad4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BackgroundInGameC2Ev .text._ZN7Widgets16BackgroundInGameC1Ev) }
+    .widget_backgroundingame_name 0x0041a9a0 : { *ai-startup-menuwidget.o(.rodata.widgetBGName) }
+    .widget_mission_script 0x002ebf04 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Mission9SetScriptEPK6Script) }
+    .widget_arrows_current_page 0x002ebf00 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets6Arrows14GetCurrentPageEv) }
+    .widget_title_text 0x002ebe6c : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Title9SetTextIdEi) }
     .widget_mission_show 0x002ecee8 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Mission4ShowEv) }
     .widget_mission_vtable 0x004a9a48 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7MissionE) }
     .widget_money_show 0x002ecef4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Money4ShowEv) }
