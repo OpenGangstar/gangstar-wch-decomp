@@ -80,6 +80,28 @@ void MenuWidget::Show()
     renderFX->PlayAnim(character, widgetShowAnimation, 0);
 }
 
+static const char widgetButtonPrefix[] = "btn";
+
+void MenuWidget::Enable()
+{
+    const gameswf::array<gameswf::character*>& buttons =
+        renderFX->FindCharacters(character, widgetButtonPrefix, 1);
+    for (int i = 0; i < buttons.size; ++i)
+        renderFX->SetEnabled(buttons.elements[i], true);
+    enabled = true;
+}
+
+void MenuWidget::Disable()
+{
+    const gameswf::array<gameswf::character*>& buttons =
+        renderFX->FindCharacters(character, widgetButtonPrefix, 2);
+    for (int i = 0; i < buttons.size; ++i) {
+        if (isCharacterVisible(buttons.elements[i]))
+            renderFX->SetEnabled(buttons.elements[i], false);
+    }
+    enabled = false;
+}
+
 void Widgets::ConfirmPayment::SetPrice(int amount)
 {
     price = amount;

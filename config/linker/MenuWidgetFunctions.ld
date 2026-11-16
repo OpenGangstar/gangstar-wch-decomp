@@ -1,5 +1,8 @@
 SECTIONS
 {
+    .widget_enable 0x002ed0ac : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget6EnableEv) }
+    .widget_disable 0x002eef94 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget7DisableEv) }
+    .widget_button_prefix 0x00419f00 : { *ai-startup-menuwidget.o(.rodata.widgetButtonPrefix) }
     .widget_constructor 0x002ec3d0 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidgetC2EPKc .text._ZN10MenuWidgetC1EPKc) }
     .widget_hide 0x002ecd5c : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget4HideEb) }
     .widget_show 0x002ece20 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget4ShowEv) }
