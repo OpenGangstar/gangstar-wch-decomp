@@ -15,15 +15,14 @@ _ZN28retail_menustate_transitions11guard_transE = 0x0041a558;
 _ZN28retail_menustate_transitions22scripted_vehicle_transE = 0x0041a600;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+INCLUDE config/linker/MenuWidgetFunctions.ld
 SECTIONS
 {
     .confirm_confirmed 0x002e7384 : { *ai-startup-menustate.o(.text._ZNK5Menus7Confirm9ConfirmedEv) }
     .confirm_payment_get_widget 0x002e7414 : { *ai-startup-menustate.o(.text._ZN5Menus14ConfirmPayment9GetWidgetEv) }
     .confirm_get_widget 0x002e7438 : { *ai-startup-menustate.o(.text._ZN5Menus7Confirm9GetWidgetEv) }
     .confirm_payment_set_price 0x002e8528 : { *ai-startup-menustate.o(.text._ZN5Menus14ConfirmPayment8SetPriceEi) }
-    .widget_confirm_payment_set_price 0x002ebe80 : { *ai-startup-menuwidget.o(.text._ZN7Widgets14ConfirmPayment8SetPriceEi) }
     .menu_dialog_set_message 0x002e75dc : { *ai-startup-menustate.o(.text._ZN5Menus6Dialog10SetMessageEi) }
-    .widget_dialog_set_message 0x002ebe84 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Dialog10SetMessageEi) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-menustate.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x002e745c : { *ai-startup-menustate.o(.text.__tcf_1) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-menustate.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }

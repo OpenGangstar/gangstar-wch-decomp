@@ -68,6 +68,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10MenuWidget4ShowEv",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",

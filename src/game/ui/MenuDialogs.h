@@ -3,9 +3,6 @@
 
 #include "WidgetDialog.h"
 
-class MenuWidget;
-namespace RenderFX { class Event; }
-
 // Partial interface in retail virtual slot order.
 namespace Menus {
 class Dialog {
