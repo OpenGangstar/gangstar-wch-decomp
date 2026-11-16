@@ -1,5 +1,9 @@
 SECTIONS
 {
+    .widget_set_listener 0x002ebe48 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget11SetListenerEP9MenuState) }
+    .widget_arrows_set_page_count 0x002ebe9c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Arrows12SetPageCountEiib) }
+    .widget_title_set_icon 0x002ecbdc : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Title7SetIconEPKc) }
+    .widget_title_icon 0x0041aa10 : { *ai-startup-menuwidget.o(.rodata.widgetTitleIcon) }
     .widget_mission_constructor 0x002ec790 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7MissionC2Ev .text._ZN7Widgets7MissionC1Ev) }
     .widget_mission_name 0x0041a8f0 : { *ai-startup-menuwidget.o(.rodata.widgetMissionName) }
     .widget_money_constructor 0x002ec7c0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5MoneyC2Ev .text._ZN7Widgets5MoneyC1Ev) }

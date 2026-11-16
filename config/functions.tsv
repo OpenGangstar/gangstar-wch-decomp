@@ -9815,7 +9815,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebe3d	0x4	MenuWidget.cpp	game	ui	matched	_ZNK10MenuWidget9IsEnabledEv	MenuWidget::IsEnabled() const
 0x002ebe41	0x2	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget7OnEventERN8RenderFX5EventE	MenuWidget::OnEvent(RenderFX::Event&)
 0x002ebe45	0x2	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget18UpdateLocalizationEv	MenuWidget::UpdateLocalization()
-0x002ebe49	0x22	MenuWidget.cpp	game	ui	pending	_ZN10MenuWidget11SetListenerEP9MenuState	MenuWidget::SetListener(MenuState*)
+0x002ebe49	0x22	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget11SetListenerEP9MenuState	MenuWidget::SetListener(MenuState*)
 0x002ebe6d	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Title9SetTextIdEi	Widgets::Title::SetTextId(int)
 0x002ebe71	0x6	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets8Tutorial15IsCursorPressedEv	Widgets::Tutorial::IsCursorPressed() const
 0x002ebe79	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11Achievement8SetTitleEi	Widgets::Achievement::SetTitle(int)
@@ -9827,7 +9827,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebe91	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu17SetBackButtonTextEi	Widgets::IGMenu::SetBackButtonText(int)
 0x002ebe95	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets6IGMenu20GetLastPressedButtonEv	Widgets::IGMenu::GetLastPressedButton() const
 0x002ebe99	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective16SetObjectiveTextEi	Widgets::Objective::SetObjectiveText(int)
-0x002ebe9d	0x64	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6Arrows12SetPageCountEiib	Widgets::Arrows::SetPageCount(int, int, bool)
+0x002ebe9d	0x64	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Arrows12SetPageCountEiib	Widgets::Arrows::SetPageCount(int, int, bool)
 0x002ebf01	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets6Arrows14GetCurrentPageEv	Widgets::Arrows::GetCurrentPage() const
 0x002ebf05	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Mission9SetScriptEPK6Script	Widgets::Mission::SetScript(Script const*)
 0x002ebf09	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop19SetAvailabilityTextEi	Widgets::Shop::SetAvailabilityText(int)
@@ -9920,7 +9920,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ecb21	0x7c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop7SetItemEiiiPKci	Widgets::Shop::SetItem(int, int, int, char const*, int)
 0x002ecb9d	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu9GoToFrameEPKc	Widgets::IGMenu::GoToFrame(char const*)
 0x002ecbbd	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11Achievement7SetIconEPKc	Widgets::Achievement::SetIcon(char const*)
-0x002ecbdd	0x38	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5Title7SetIconEPKc	Widgets::Title::SetIcon(char const*)
+0x002ecbdd	0x38	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Title7SetIconEPKc	Widgets::Title::SetIcon(char const*)
 0x002ecc15	0x38	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6Arrows18UpdateLocalizationEv	Widgets::Arrows::UpdateLocalization()
 0x002ecc4d	0xc0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb	Widgets::IGMenu::SetActiveButton(Widgets::IGMenu::eButton, bool)
 0x002ecd0d	0x50	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8BlackBox8SetStateENS0_6eStateE	Widgets::BlackBox::SetState(Widgets::BlackBox::eState)
