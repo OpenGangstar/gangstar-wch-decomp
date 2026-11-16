@@ -18,6 +18,7 @@
 #include "../characters/Character.h"
 #include "../core/CameraManager.h"
 #include "../hud/CHudManager.h"
+#include "../hud/MiniMap.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -169,6 +170,13 @@ void CControlManager::enterCombat()
     PlayerTest::GetPlayer()->combatMode = true;
 }
 
+namespace {
+inline __attribute__((always_inline)) void restoreWalkingCamera(CameraManager* camera, LevelObject* target)
+{
+    camera->enterMode(0, target, 0.3f, 0);
+}
+}
+
 void CControlManager::exitSniping(bool restoreCamera)
 {
     if (activeHandler == sniperHandler) {
@@ -179,11 +187,30 @@ void CControlManager::exitSniping(bool restoreCamera)
         character->goFromCombatToIdle();
         if (restoreCamera) {
             CameraManager* camera = CameraManager::getInstance();
-            camera->enterMode(0, player ? character : 0, 0.3f, 0);
+            restoreWalkingCamera(camera, player ? character : 0);
         }
         activeHandler->deactivate();
         activeHandler = onFootHandler;
         activeHandler->activate();
         unlock();
     }
+}
+
+void CControlManager::exitCar(bool restoreCamera)
+{
+    Application* application = Application::GetInstance();
+    application->GetHudManager()->walking();
+    activeHandler->deactivate();
+    PlayerTest* player = PlayerTest::GetPlayer();
+    CHudManager* hud = application->GetHudManager();
+    LevelObject* target = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(player));
+    MiniMap* minimap = static_cast<MiniMap*>(hud->minimap);
+    if (minimap)
+        minimap->setFollowedObject(target);
+    if (restoreCamera) {
+        CameraManager* camera = CameraManager::getInstance();
+        restoreWalkingCamera(camera, reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(player)));
+    }
+    activeHandler = onFootHandler;
+    activeHandler->activate();
 }
