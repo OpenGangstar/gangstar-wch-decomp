@@ -2,12 +2,14 @@
 #define WCH_UI_MESSAGE_H
 
 #include "../hud/HudElement.h"
+#include "../hud/MenuManager.h"
 
 class AnimObject;
 
 // Partial layout recovered from the message timer and animation methods.
 class Message : public HudElement {
 public:
+    Message(ASprite* sprite, MenuManager::eText text, int messageAnimation, int defaultAnimation);
     virtual ~Message();
     virtual void draw2d() const;
     virtual void update(double elapsed);
@@ -21,7 +23,7 @@ private:
     AnimObject* animationObject;
     int messageAnimation;
     int defaultAnimation;
-    unsigned char unknown68[4];
+    int textSlot;
     int timer;
     int animationId;
     int unknown80;

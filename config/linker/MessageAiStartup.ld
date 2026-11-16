@@ -1,6 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-message/retail-symbols.ld
+_Znwj = 0x001c4814;
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZN26retail_message_transitions16civPassive_transE = 0x004241b8;
@@ -16,6 +17,7 @@ _ZN26retail_message_transitions22scripted_vehicle_transE = 0x00424734;
 strcpy = 0x001c3fd4;
 SECTIONS
 {
+    .message_constructor 0x00329100 : { *(.text._ZN7MessageC1EP7ASpriteN11MenuManager5eTextEii .text._ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii) }
     .message_delete 0x00329074 : { *(.text._ZN7MessageD0Ev) }
     .message_destructor 0x003290c8 : { *(.text._ZN7MessageD1Ev .text._ZN7MessageD2Ev) }
     .message_delete_thunk 0x00329060 : { *(.text._ZThn4_N7MessageD0Ev) }

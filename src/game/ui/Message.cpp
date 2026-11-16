@@ -131,3 +131,14 @@ Message::~Message()
 {
     SafeDelete(animationObject);
 }
+
+Message::Message(ASprite* sprite, MenuManager::eText text, int message, int fallback)
+    : HudElement(sprite, -1, true),
+      messageAnimation(message), defaultAnimation(fallback), textSlot(text),
+      timer(-1), animationId(-1), unknown80(-1),
+      timedDisplay(false), untimed(false), pendingMessage(false)
+{
+    animationObject = new AnimObject;
+    animationObject->sprite = sprite;
+    animationObject->SetAnim(animationId);
+}
