@@ -9594,7 +9594,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e75f1	0x20	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14SetOrientationENS0_13stGameSetting12eOrientationE	Menus::OptionGameSettings::SetOrientation(Menus::OptionGameSettings::stGameSetting::eOrientation)
 0x002e7611	0xc	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14SetOrientationEi	Menus::OptionGameSettings::SetOrientation(int)
 0x002e761d	0x1c	MenuState.cpp	game	ui	matched	__tcf_2	__tcf_2
-0x002e7639	0x1e	CHudManager.cpp	game	hud	pending	_ZN11CHudManager21isAnyMessageDisplayedEv	CHudManager::isAnyMessageDisplayed()
+0x002e7639	0x1e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager21isAnyMessageDisplayedEv	CHudManager::isAnyMessageDisplayed()
 0x002e7659	0x90	MenuState.cpp	game	ui	pending	_ZN5Menus11Achievement6UpdateEv	Menus::Achievement::Update()
 0x002e76e9	0xc0	MenuState.cpp	game	ui	pending	_ZN8RenderFX5Event16GetCharacterPathEv	RenderFX::Event::GetCharacterPath()
 0x002e77a9	0x26	MenuState.cpp	gameswf	-	matched	_ZN7gameswf9smart_ptrINS_9characterEE7set_refEPS1_	gameswf::smart_ptr<gameswf::character>::set_ref(gameswf::character*)
@@ -11297,9 +11297,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328d79	0x6c	Map.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00328de5	0x14	Map.cpp	game	core	matched	_GLOBAL__I__ZN3MapC2Ev	_GLOBAL__I__ZN3MapC2Ev
 0x00328df9	0x2a	Message.cpp	game	ui	pending	_ZN7Message11isDisplayedEv	Message::isDisplayed()
-0x00328e25	0x18	Message.cpp	game	ui	pending	_ZN7Message8setTimerEi	Message::setTimer(int)
+0x00328e25	0x18	Message.cpp	game	ui	matched	_ZN7Message8setTimerEi	Message::setTimer(int)
 0x00328e3d	0x30	Message.cpp	game	core	matched	__tcf_3	__tcf_3
-0x00328e6d	0x10	Message.cpp	game	ui	pending	_ZN7Message7setAnimEi	Message::setAnim(int)
+0x00328e6d	0x10	Message.cpp	game	ui	matched	_ZN7Message7setAnimEi	Message::setAnim(int)
 0x00328e7d	0x1e	Message.cpp	game	ui	pending	_ZN7Message12clearMessageEb	Message::clearMessage(bool)
 0x00328e9d	0x46	Message.cpp	game	ui	pending	_ZN7Message10setMessageEPKci	Message::setMessage(char const*, int)
 0x00328ee4	0x14	Message.cpp	game	ui	pending	_ZThn4_NK7Message6draw2dEv	non-virtual thunk to Message::draw2d() const

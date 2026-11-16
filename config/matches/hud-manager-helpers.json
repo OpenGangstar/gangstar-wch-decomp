@@ -25,6 +25,7 @@
     "source": "src/game/hud/CHudManager.cpp",
     "linker_script": "config/linker/CHudManagerHelpers.ld",
     "functions": [
+        "_ZN11CHudManager21isAnyMessageDisplayedEv",
         "_ZN11CHudManager11retroEffectEb",
         "_ZN11CHudManager13limitToWeaponEi",
         "_ZN11CHudManager12switchWeaponEv",
@@ -102,6 +103,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7Message11isDisplayedEv",
         "_ZN13WeaponManager13limitToWeaponEiN10PlayerTest8eContextE",
         "_ZN14AnimatedButton7grayOutEb",
         "_ZN11Application11GetInstanceEv",

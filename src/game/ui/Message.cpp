@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "Message.h"
+#include "../characters/AnimObject.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -77,4 +79,20 @@ static void _GLOBAL__I__ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void Message::setTimer(int duration)
+{
+    if (duration == -1) {
+        untimed = true;
+    } else {
+        timer = duration;
+        untimed = false;
+    }
+}
+
+void Message::setAnim(int animation)
+{
+    animationId = animation;
+    animationObject->SetAnim(animation);
 }
