@@ -11304,7 +11304,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328e9d	0x46	Message.cpp	game	ui	matched	_ZN7Message10setMessageEPKci	Message::setMessage(char const*, int)
 0x00328ee4	0x14	Message.cpp	game	ui	matched	_ZThn4_NK7Message6draw2dEv	non-virtual thunk to Message::draw2d() const
 0x00328ef9	0x1a	Message.cpp	game	ui	matched	_ZNK7Message6draw2dEv	Message::draw2d() const
-0x00328f15	0x14c	Message.cpp	game	ui	pending	_ZN7Message6updateEd	Message::update(double)
+0x00328f15	0x14c	Message.cpp	game	ui	matched	_ZN7Message6updateEd	Message::update(double)
 0x00329060	0x14	Message.cpp	game	ui	matched	_ZThn4_N7MessageD0Ev	non-virtual thunk to Message::~Message()
 0x00329075	0x40	Message.cpp	game	ui	matched	_ZN7MessageD0Ev	Message::~Message()
 0x003290b4	0x14	Message.cpp	game	ui	matched	_ZThn4_N7MessageD1Ev	non-virtual thunk to Message::~Message()

@@ -23,7 +23,7 @@ private:
     AnimObject* animationObject;
     int messageAnimation;
     int defaultAnimation;
-    int textSlot;
+    MenuManager::eText textSlot;
     int timer;
     int animationId;
     int unknown80;
