@@ -26,6 +26,9 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN10MenuWidget11SetListenerEP9MenuState",
+        "_ZN7Widgets6Arrows12SetPageCountEiib",
+        "_ZN7Widgets5Title7SetIconEPKc",
         "_ZN7Widgets7MissionC1Ev",
         "_ZN7Widgets7MissionC2Ev",
         "_ZN7Widgets5MoneyC1Ev",
@@ -84,6 +87,7 @@
         }
     ],
     "sections": [
+        ".widget_title_icon",
         ".widget_mission_name",
         ".widget_money_name",
         ".widget_arrows_name",

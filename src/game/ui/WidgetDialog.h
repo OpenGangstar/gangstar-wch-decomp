@@ -12,6 +12,7 @@ public:
     bool IsVisible() const;
     virtual bool AutoHide() const;
     bool IsEnabled() const;
+    void SetListener(MenuState* state);
     virtual void Show();
     virtual void Hide(bool);
     virtual void Enable();
@@ -19,10 +20,12 @@ public:
     virtual void OnEvent(RenderFX::Event&);
     virtual void UpdateLocalization();
 
-private:
+protected:
     gameswf::character* character;
     RenderFX* renderFX;
     MenuState* listener;
+
+private:
     bool visible;
     bool enabled;
 };

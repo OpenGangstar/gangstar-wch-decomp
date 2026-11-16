@@ -16,6 +16,27 @@
 #include "../hud/MenuManager.h"
 
 namespace {
+struct MenuStateListenerMethods {
+    void (*otherMethods[13])();
+    bool (*notify)(MenuState*, const MenuWidget*, int);
+};
+
+inline void notifyWidgetListener(MenuState* state, const MenuWidget* widget, int event)
+{
+    const MenuStateListenerMethods* methods =
+        *reinterpret_cast<const MenuStateListenerMethods* const*>(state);
+    methods->notify(state, widget, event);
+}
+}
+
+void MenuWidget::SetListener(MenuState* state)
+{
+    if (listener && listener != state)
+        notifyWidgetListener(listener, this, 0);
+    listener = state;
+}
+
+namespace {
 struct MenuRenderFXStorage {
     unsigned char prefix[0xbc];
     RenderFX* renderFX;
@@ -169,6 +190,7 @@ public:
     virtual void OnEvent(RenderFX::Event&);
     virtual void UpdateLocalization();
     int GetCurrentPage() const;
+    void SetPageCount(int count, int page, bool reset);
 
 private:
     int pageCount;
@@ -187,6 +209,7 @@ public:
     virtual void Show();
     virtual void UpdateLocalization();
     void SetTextId(int id);
+    void SetIcon(const char* icon);
 
 private:
     int textId;
@@ -249,6 +272,27 @@ void Widgets::Mission::SetScript(const Script* value)
 int Widgets::Arrows::GetCurrentPage() const
 {
     return currentPage;
+}
+
+void Widgets::Arrows::SetPageCount(int count, int page, bool reset)
+{
+    bool changed = pageCount != count;
+    pageCount = count;
+    if (changed || reset)
+        currentPage = page >= 0 && page < count && !reset ? page : 0;
+    if (listener && (reset || changed))
+        notifyWidgetListener(listener, this, 2);
+    setCharacterVisible(character, pageCount > 1);
+}
+
+static const char widgetTitleIcon[] = "widgetTitle.icon";
+
+void Widgets::Title::SetIcon(const char* icon)
+{
+    if (icon)
+        renderFX->GotoFrame(widgetTitleIcon, icon, false);
+    else
+        renderFX->GotoFrame(widgetTitleIcon, 0, false);
 }
 
 void Widgets::Title::SetTextId(int id)
