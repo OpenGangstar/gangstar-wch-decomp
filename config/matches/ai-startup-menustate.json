@@ -23,8 +23,10 @@
         "-meabi=4"
     ],
     "source": "src/game/ui/MenuState.cpp",
+    "dependencies": ["ai-startup-menuwidget"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZN5Menus6Dialog10SetMessageEi",
         {
             "name": "__tcf_6",
             "address": "0x002e73b1"

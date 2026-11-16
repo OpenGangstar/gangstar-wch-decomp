@@ -13,6 +13,12 @@
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
+#include "MenuDialogs.h"
+
+void Menus::Dialog::SetMessage(int id)
+{
+    GetWidget()->SetMessage(id);
+}
 
 void operator delete(void*) throw();
 extern "C" {
