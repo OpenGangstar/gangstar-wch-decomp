@@ -134,6 +134,7 @@ public:
     gameswf::root* GetFlashRoot() const;
     void SetTextBufferingEnabled(bool enabled);
     gameswf::character* Find(const char* name);
+    gameswf::character* Find(const char* name, gameswf::character* parent);
     const gameswf::array<gameswf::character*>& FindCharacters(
         gameswf::character* parent, const char* name, int flags);
     bool PlayAnim(gameswf::character* character, const char* label, int flags);

@@ -171,6 +171,25 @@ private:
     void* heap;
 };
 
+class as_value {
+public:
+    explicit as_value(const char* value);
+    ~as_value() __attribute__((long_call));
+
+private:
+    unsigned char storage[40] __attribute__((aligned(8)));
+};
+
+class as_object {
+public:
+    as_object* find_target(const as_value& name);
+};
+
+class root {
+public:
+    as_object* get_root_movie();
+};
+
 class edit_text_character {
 public:
     void set_text_value(const tu_string& value, bool option);
@@ -549,6 +568,25 @@ MenuFX::State* MenuFX::GetState(const char* name)
             return state;
     }
     return 0;
+}
+
+gameswf::character* RenderFX::Find(const char* name)
+{
+    gameswf::character* result = Find(name, context);
+    if (result)
+        return result;
+
+    result = Find(name, reinterpret_cast<gameswf::character*>(
+        reinterpret_cast<FlashCharacterRoot*>(root.get())->flashRoot));
+    if (result)
+        return result;
+
+    gameswf::as_object* target =
+        root.get()->get_root_movie()->find_target(gameswf::as_value(name));
+    gameswf::character* character = reinterpret_cast<gameswf::character*>(target);
+    if (character && animationMethods(character).is(character, 1))
+        result = character;
+    return result;
 }
 
 void MenuFX::RegisterState(State* state, const char* characterName)

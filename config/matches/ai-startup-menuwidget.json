@@ -322,7 +322,10 @@
         "_ZNK13StringManager9getStringEi",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN11MenuManager11getInstanceEv",
-        "_ZN8RenderFX4FindEPKc",
+        "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
+        "_ZN7gameswf4root14get_root_movieEv",
+        "_ZN7gameswf8as_valueC1EPKc",
+        "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
     ]
 }
