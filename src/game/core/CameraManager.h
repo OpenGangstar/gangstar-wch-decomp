@@ -18,6 +18,16 @@ class AnimatableType {
 public:
     AnimatableType() : interpolationMode(0), interpolate(true) {}
     void Update(float elapsed) __attribute__((weak));
+    void begin(const T& from, T to, float time)
+    {
+        start = from;
+        current = from;
+        end = to;
+        progress = 0.0f;
+        interpolationMode = 1;
+        duration = time;
+        interpolate = true;
+    }
 
     T start;
     T end;
@@ -25,7 +35,7 @@ public:
     float progress;
     int interpolationMode;
     bool interpolate;
-    unsigned char unknown45[7];
+    float duration;
 };
 
 class CameraManager {
