@@ -100,6 +100,8 @@ static void __tcf_4()
 #include "../app/Application.h"
 #include "../hud/CHudManager.h"
 #include "../hud/MiniMap.h"
+#include "../core/CameraManager.h"
+#include "../world/GameObjectManager.h"
 int Shop::s_numShopWeapon;
 int Shop::s_numShopRental;
 
@@ -181,4 +183,38 @@ Shop::~Shop()
     MiniMap* map = static_cast<MiniMap*>(Application::GetInstance()->GetHudManager()->minimap);
     if (map)
         map->deregisterForMapTracking(this);
+}
+
+void Shop::resetAchievementCounters()
+{
+    s_numShopWeapon = 0;
+    s_numShopRental = 0;
+}
+
+void Shop::lock()
+{
+    MiniMap* map = static_cast<MiniMap*>(Application::GetInstance()->GetHudManager()->minimap);
+    if (map)
+        map->deregisterForMapTracking(this);
+    disable();
+}
+
+void Shop::unlock()
+{
+    const irr::core::vector3d<float> position = GetPosition();
+    const float distanceSquared = position.getDistanceFromSQ(
+        CameraManager::getInstance()->getCamera()->getPosition());
+    const float visibilityDistanceSquared = 100000000.0f;
+
+    if (distanceSquared > visibilityDistanceSquared) {
+        unknown4 |= 1u;
+        GameObjectManager::s_gom->Remove(this);
+        GameObjectManager::s_gom->Add(this, 1);
+    } else {
+        enable();
+    }
+
+    MiniMap* map = static_cast<MiniMap*>(Application::GetInstance()->GetHudManager()->minimap);
+    if (map)
+        map->registerForMapTracking(this, false);
 }

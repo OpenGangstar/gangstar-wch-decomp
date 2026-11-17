@@ -7,6 +7,9 @@ public:
     Shop(int type);
     virtual ~Shop();
     virtual void Update(int elapsed);
+    static void resetAchievementCounters();
+    void unlock();
+    void lock();
     void trigger(bool enabled);
     bool unlocked() const;
     bool triggered() const;
