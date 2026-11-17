@@ -75,4 +75,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0030a3e5 | Vehicle::mobilize | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | lock_init | REVIEW | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030b22d | Vehicle::getNearestDoorDummy | camera_tap | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030b22d | Vehicle::getNearestDoorDummy | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00307b88 | Vehicle::getMarkerType (secondary thunk) | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003090e9 | Vehicle::_cleanupSounds | lock_init | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00349051 | TrailMgr::FreeTrail | camera_tap | REVIEW | — | src/game/world/TrailMgr.cpp |
