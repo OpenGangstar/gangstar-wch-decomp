@@ -220,6 +220,7 @@ private:
 class Statistics : public MenuWidget {
 public:
     Statistics();
+    void Update(bool advanceFirst);
     virtual void Show();
     virtual void Enable();
     virtual void Disable();
@@ -237,6 +238,8 @@ private:
 class Achievements : public MenuWidget {
 public:
     Achievements();
+    void Update(bool advanceFirst);
+    void Reset();
     virtual void Show();
     virtual void Enable();
     virtual void Disable();
@@ -658,6 +661,75 @@ Widgets::Achievements::Achievements()
 {
     animation = renderFX->Find(widgetAchievementsAnimation);
     renderFX->GotoFrame(animation, 0, false);
+}
+
+namespace {
+struct WidgetAnimationMethods {
+    void (*beforePlayState[35])();
+    int (*getPlayState)(const gameswf::character*);
+    void (*beforeCurrentFrame[39])();
+    int (*getCurrentFrame)(const gameswf::character*);
+};
+
+inline const WidgetAnimationMethods& widgetAnimationMethods(const gameswf::character* animation)
+{
+    return **reinterpret_cast<const WidgetAnimationMethods* const*>(animation);
+}
+
+template <int extraPages>
+inline void updateInfoWidget(MenuWidget* widget, gameswf::character* animation,
+                             int& page, const int& pageCount, bool advanceFirst)
+{
+    if (widgetAnimationMethods(animation).getPlayState(animation) != 0)
+        return;
+    if (advanceFirst)
+        page = pageCount ? (page + 1) % (pageCount + extraPages) : 0;
+    widget->UpdateLocalization();
+    page = pageCount ? (page + 1) % (pageCount + extraPages) : 0;
+}
+}
+
+void Widgets::Statistics::Update(bool advanceFirst)
+{
+    updateInfoWidget<4>(this, animation, unknown20, unknown96, advanceFirst);
+}
+
+void Widgets::Achievements::Update(bool advanceFirst)
+{
+    updateInfoWidget<2>(this, animation, unknown20, unknown140, advanceFirst);
+}
+
+void Widgets::Achievements::Reset()
+{
+    unknown20 = unknown140;
+    renderFX->GotoFrame(animation, 0, true);
+}
+
+void Widgets::Statistics::Enable()
+{
+    MenuWidget::Enable();
+    unknown20 = unknown96;
+    renderFX->GotoFrame(animation, 0, true);
+}
+
+void Widgets::Achievements::Enable()
+{
+    MenuWidget::Enable();
+    Reset();
+}
+
+void Widgets::Statistics::Disable()
+{
+    MenuWidget::Disable();
+    unknown32 = widgetAnimationMethods(animation).getCurrentFrame(animation);
+    renderFX->GotoFrame(animation, unknown32, false);
+}
+
+void Widgets::Achievements::Disable()
+{
+    MenuWidget::Disable();
+    unknown32 = widgetAnimationMethods(animation).getCurrentFrame(animation);
+    renderFX->GotoFrame(animation, unknown32, false);
 }
 
 Widgets::Objective::Objective()

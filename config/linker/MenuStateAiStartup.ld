@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 strcpy = 0x001c3fd4;
 sprintf = 0x001c46ac;
 memset = 0x001c45d4;
+__aeabi_idivmod = 0x001c4934;
 __cxa_pure_virtual = 0;
 INCLUDE build/matches/ai-startup-menustate/retail-symbols.ld
 _ZdlPv = 0x001c42b0;

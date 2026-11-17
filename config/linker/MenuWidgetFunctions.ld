@@ -1,5 +1,12 @@
 SECTIONS
 {
+    .widget_statistics_update 0x002ebfc4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics6UpdateEb) }
+    .widget_achievements_update 0x002ebf78 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements6UpdateEb) }
+    .widget_achievements_reset 0x002ec3b4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements5ResetEv) }
+    .widget_statistics_disable 0x002eeff8 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics7DisableEv) }
+    .widget_achievements_disable 0x002ef01c : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements7DisableEv) }
+    .widget_statistics_enable 0x002ed0f0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics6EnableEv) }
+    .widget_achievements_enable 0x002ed10c : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements6EnableEv) }
     .widget_statistics_ctor 0x002ec49c : { *ai-startup-menuwidget.o(.text._ZN7Widgets10StatisticsC1Ev .text._ZN7Widgets10StatisticsC2Ev) }
     .widget_achievements_ctor 0x002ec504 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12AchievementsC1Ev .text._ZN7Widgets12AchievementsC2Ev) }
     .widget_objective_ctor 0x002ec878 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9ObjectiveC1Ev .text._ZN7Widgets9ObjectiveC2Ev) }
