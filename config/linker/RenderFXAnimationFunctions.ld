@@ -26,6 +26,7 @@ SECTIONS
     .renderfx_named_alpha 0x003ee300 : { *renderfx-animation.o(.text._ZN8RenderFX8SetAlphaEPKcf) }
     .renderfx_event_listener 0x003ec1f8 : { *renderfx-animation.o(.text._ZN8RenderFX16SetEventListenerEPNS_13EventListenerE) }
     .renderfx_unload 0x003ed370 : { *renderfx-animation.o(.text._ZN8RenderFX6UnloadEv) }
+    .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev) }
     .renderfx_constructor 0x003ed0cc : { *renderfx-animation.o(.text._ZN8RenderFXC1Ev .text._ZN8RenderFXC2Ev) }
     .renderfx_controller_reset 0x003ec600 : { *renderfx-animation.o(.text._ZN8RenderFX10Controller5ResetEv) }
     .renderfx_controller_destructor 0x003ed6a8 : { *renderfx-animation.o(.text._ZN8RenderFX10ControllerD1Ev) }

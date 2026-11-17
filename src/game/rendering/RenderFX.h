@@ -73,6 +73,7 @@ public:
     virtual void Load(const char* name, gameswf::player_context* context);
     virtual void Unload();
     virtual void Update(int elapsed, bool render);
+    class SearchIndex;
     class Event;
     class EventListener;
     void FSCommand(const char* command, const char* args);
