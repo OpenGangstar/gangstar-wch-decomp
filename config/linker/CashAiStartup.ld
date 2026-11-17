@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-cash/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+strlen = 0x001c48bc;
 __aeabi_atexit = 0x001c494c;
 _ZN23retail_cash_transitions16civPassive_transE = 0x004235f0;
 _ZN23retail_cash_transitions17scriptedNpc_transE = 0x0042371c;
@@ -15,6 +16,8 @@ _ZN23retail_cash_transitions11guard_transE = 0x00423ac4;
 _ZN23retail_cash_transitions22scripted_vehicle_transE = 0x00423b6c;
 SECTIONS
 {
+    .cash_constructor 0x00327db0 : { *ai-startup-cash.o(.text._ZN4CashC1EP7ASpriteiiiii .text._ZN4CashC2EP7ASpriteiiiii) }
+    .cash_draw_cash 0x00327a70 : { *ai-startup-cash.o(.text._ZNK4Cash8drawCashEiPKiRii) }
     .cash_update 0x00327bbc : { *ai-startup-cash.o(.text._ZN4Cash6updateEd) }
     .cash_destructor_complete 0x00327d84 : { *ai-startup-cash.o(.text._ZN4CashD2Ev .text._ZN4CashD1Ev) }
     .cash_destructor_deleting 0x00327d40 : { *ai-startup-cash.o(.text._ZN4CashD0Ev) }

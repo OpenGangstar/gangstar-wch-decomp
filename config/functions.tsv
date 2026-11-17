@@ -11181,17 +11181,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00327365	0x34	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarC2EP7ASpriteiii	ArmorBar::ArmorBar(ASprite*, int, int, int)
 0x00327399	0x144	ArmorBar.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003274dd	0x14	ArmorBar.cpp	game	hud	matched	_GLOBAL__I__ZN8ArmorBarC2EP7ASpriteiii	_GLOBAL__I__ZN8ArmorBarC2EP7ASpriteiii
-0x003274f1	0x34	Background.cpp	game	ui	pending	_ZN10Background6updateEd	Background::update(double)
+0x003274f1	0x34	Background.cpp	game	ui	matched	_ZN10Background6updateEd	Background::update(double)
 0x00327525	0x30	Background.cpp	game	core	matched	__tcf_2	__tcf_2
-0x00327554	0x14	Background.cpp	game	ui	pending	_ZThn4_NK10Background6draw2dEv	non-virtual thunk to Background::draw2d() const
-0x00327569	0x5e	Background.cpp	game	ui	pending	_ZNK10Background6draw2dEv	Background::draw2d() const
-0x003275c8	0x14	Background.cpp	game	ui	pending	_ZThn4_N10BackgroundD0Ev	non-virtual thunk to Background::~Background()
-0x003275dd	0x30	Background.cpp	game	ui	pending	_ZN10BackgroundD0Ev	Background::~Background()
-0x0032760c	0x14	Background.cpp	game	ui	pending	_ZThn4_N10BackgroundD1Ev	non-virtual thunk to Background::~Background()
-0x00327621	0x2c	Background.cpp	game	ui	pending	_ZN10BackgroundD2Ev	Background::~Background()
-0x00327621	0x2c	Background.cpp	game	ui	pending	_ZN10BackgroundD1Ev	Background::~Background()
-0x0032764d	0x38	Background.cpp	game	ui	pending	_ZN10BackgroundC1EP7ASpritei	Background::Background(ASprite*, int)
-0x0032764d	0x38	Background.cpp	game	ui	pending	_ZN10BackgroundC2EP7ASpritei	Background::Background(ASprite*, int)
+0x00327554	0x14	Background.cpp	game	ui	matched	_ZThn4_NK10Background6draw2dEv	non-virtual thunk to Background::draw2d() const
+0x00327569	0x5e	Background.cpp	game	ui	matched	_ZNK10Background6draw2dEv	Background::draw2d() const
+0x003275c8	0x14	Background.cpp	game	ui	matched	_ZThn4_N10BackgroundD0Ev	non-virtual thunk to Background::~Background()
+0x003275dd	0x30	Background.cpp	game	ui	matched	_ZN10BackgroundD0Ev	Background::~Background()
+0x0032760c	0x14	Background.cpp	game	ui	matched	_ZThn4_N10BackgroundD1Ev	non-virtual thunk to Background::~Background()
+0x00327621	0x2c	Background.cpp	game	ui	matched	_ZN10BackgroundD2Ev	Background::~Background()
+0x00327621	0x2c	Background.cpp	game	ui	matched	_ZN10BackgroundD1Ev	Background::~Background()
+0x0032764d	0x38	Background.cpp	game	ui	matched	_ZN10BackgroundC1EP7ASpritei	Background::Background(ASprite*, int)
+0x0032764d	0x38	Background.cpp	game	ui	matched	_ZN10BackgroundC2EP7ASpritei	Background::Background(ASprite*, int)
 0x00327685	0x6c	Background.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003276f1	0x14	Background.cpp	game	core	matched	_GLOBAL__I__ZN10BackgroundC2EP7ASpritei	_GLOBAL__I__ZN10BackgroundC2EP7ASpritei
 0x00327705	0x30	CarBar.cpp	game	hud	matched	__tcf_3	__tcf_3
@@ -11213,7 +11213,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003279f9	0x30	Cash.cpp	game	ui	matched	__tcf_3	__tcf_3
 0x00327a29	0x24	Cash.cpp	game	ui	matched	_ZN4Cash10AlignRightEv	Cash::AlignRight()
 0x00327a4d	0x24	Cash.cpp	game	ui	matched	_ZN4Cash9AlignLeftEv	Cash::AlignLeft()
-0x00327a71	0x14c	Cash.cpp	game	ui	pending	_ZNK4Cash8drawCashEiPKiRii	Cash::drawCash(int, int const*, int&, int) const
+0x00327a71	0x14c	Cash.cpp	game	ui	matched	_ZNK4Cash8drawCashEiPKiRii	Cash::drawCash(int, int const*, int&, int) const
 0x00327bbd	0x16	Cash.cpp	game	ui	matched	_ZN4Cash6updateEd	Cash::update(double)
 0x00327bd4	0x14	Cash.cpp	game	ui	pending	_ZThn4_NK4Cash6draw2dEv	non-virtual thunk to Cash::draw2d() const
 0x00327be9	0x144	Cash.cpp	game	ui	pending	_ZNK4Cash6draw2dEv	Cash::draw2d() const
@@ -11222,8 +11222,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00327d70	0x14	Cash.cpp	game	ui	matched	_ZThn4_N4CashD1Ev	non-virtual thunk to Cash::~Cash()
 0x00327d85	0x2c	Cash.cpp	game	ui	matched	_ZN4CashD1Ev	Cash::~Cash()
 0x00327d85	0x2c	Cash.cpp	game	ui	matched	_ZN4CashD2Ev	Cash::~Cash()
-0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC1EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
-0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC2EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
+0x00327db1	0x84	Cash.cpp	game	ui	matched	_ZN4CashC1EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
+0x00327db1	0x84	Cash.cpp	game	ui	matched	_ZN4CashC2EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
 0x00327e35	0x144	Cash.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00327f79	0x14	Cash.cpp	game	ui	matched	_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii	_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii
 0x00327f8d	0x2	Gauge.cpp	game	hud	matched	_ZN5Gauge6updateEd	Gauge::update(double)

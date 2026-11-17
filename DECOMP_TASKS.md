@@ -529,15 +529,31 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00327d2c | Cash deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327d70 | Cash complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327bbd | Cash::update | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | lock_init | REVIEW | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327a71 | Cash::drawCash | camera_tap | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327be9 | Cash::draw2d | vehicle_side | BLOCKED | — | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
-| libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
-| libsanangeles.so | 0x003275c8 | Background deleting destructor thunk (D0) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
-| libsanangeles.so | 0x0032760c | Background complete destructor thunk (D1) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
-| libsanangeles.so | 0x0032764d | Background constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/ui/Background.cpp |
-| libsanangeles.so | 0x003274f1 | Background::update | lock_init | ASSIGNED | — | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003275c8 | Background deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032760c | Background complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032764d | Background constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003274f1 | Background::update | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x00327569 | Background::draw2d | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x00327554 | Background::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032ab69 | RetroEffect destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032a9a5 | RetroEffect deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032a990 | RetroEffect deleting destructor thunk (D0) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032ab54 | RetroEffect complete destructor thunk (D1) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032aa99 | RetroEffect constructor (C1/C2 aliases) | lock_init | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d | camera_tap | ASSIGNED | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | camera_tap | ASSIGNED | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032b158 | SlideControl deleting destructor thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b16d | SlideControl deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b19c | SlideControl complete destructor thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1b1 | SlideControl complete destructor (D1) | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1dd | SlideControl::reset | lock_init | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1f5 | SlideControl constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b3e1 | SlideControl::update | lock_init | ASSIGNED | — | src/game/ui/SlideControl.cpp |
