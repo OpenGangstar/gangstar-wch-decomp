@@ -616,6 +616,20 @@ void MenuFX::RegisterStates(State** states, int count)
     }
 }
 
+void MenuFX::SetFocusDefault()
+{
+    const gameswf::array<gameswf::character*>& buttons = FindCharacters(context, widgetButtonPrefix, 3);
+    if (buttons.size > 0)
+        SetFocus(buttons.elements[0], 0);
+    else
+        ResetFocus(0);
+}
+
+void RenderFX::ResetFocus(int flags)
+{
+    SetFocus(static_cast<gameswf::character*>(0), flags);
+}
+
 void MenuFX::SwitchMenu(const char* name)
 {
     SetMenu(name, false);
