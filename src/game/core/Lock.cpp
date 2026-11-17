@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Lock.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -30,6 +31,25 @@ static void __tcf_2()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+Lock* Lock::s_lock;
+
+void Lock::clean()
+{
+    if (s_lock) {
+        delete s_lock;
+        s_lock = 0;
+    }
+}
+
+static const char lockResource[] __attribute__((section(".rodata.lock_resource"))) = "./sfx_lock.bdae";
+
+Lock* Lock::getInstance()
+{
+    if (!s_lock)
+        s_lock = new Lock(lockResource, 0, true);
+    return s_lock;
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
