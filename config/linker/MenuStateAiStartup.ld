@@ -68,6 +68,10 @@ SECTIONS
     .blocking_tutorial_vtable 0x004a9680 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16BlockingTutorialE) }
     .menu_manager_get_depth 0x002e465c : { *menu-manager-helpers.o(.text._ZNK11MenuManager8getDepthEv .gnu.linkonce.t._ZNK11MenuManager8getDepthEv) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
+    .are_cheats_unlocked 0x002e3ebc : { *menu-manager-helpers.o(.text._ZNK11MenuManager17areCheatsUnlockedEv) }
+    .option_settings_refresh 0x002e7988 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettings7RefreshEv) }
+    .option_settings_got_focus 0x002e8b74 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettings8GotFocusEv) }
+    .option_volumes_got_focus 0x002e8cc0 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumes8GotFocusEv) }
     .main_menu_deleting_destructor 0x002e982c : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD0Ev .gnu.linkonce.t._ZN5Menus8MainMenuD0Ev) }
     .main_menu_complete_destructor 0x002e9854 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD1Ev .gnu.linkonce.t._ZN5Menus8MainMenuD1Ev .text._ZN5Menus8MainMenuD2Ev .gnu.linkonce.t._ZN5Menus8MainMenuD2Ev) }
     .main_menu_vtable 0x004a8fc0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8MainMenuE .gnu.linkonce.d.rel.ro._ZTVN5Menus8MainMenuE) }
