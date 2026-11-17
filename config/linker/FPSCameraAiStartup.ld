@@ -3,6 +3,9 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-fpscamera/retail-symbols.ld
 INCLUDE config/linker/CameraSections.ld
 _ZdlPv = 0x001c42b0;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_fcmplt = 0x001c479c;
+__aeabi_fadd = 0x001c4154;
 __aeabi_atexit = 0x001c494c;
 _ZN28retail_fpscamera_transitions16civPassive_transE = 0x004295a4;
 _ZN28retail_fpscamera_transitions17scriptedNpc_transE = 0x004296d0;
@@ -16,6 +19,8 @@ _ZN28retail_fpscamera_transitions11guard_transE = 0x00429a78;
 _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
 SECTIONS
 {
+    .fps_vertical_angle 0x00333db8 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera16incVerticalAngleEf) }
+    .fps_zoom 0x00333f58 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4zoomEi) }
     .camera_variant_ctor 0x00334100 : { *ai-startup-fpscamera.o(.text._ZN9FPSCameraC1Ev .text._ZN9FPSCameraC2Ev) }
     .camera_variant_debug 0x00333e0c : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE) }
     .camera_variant_dtor 0x00333fcc : { *ai-startup-fpscamera.o(.text._ZN9FPSCameraD1Ev .text._ZN9FPSCameraD2Ev) }

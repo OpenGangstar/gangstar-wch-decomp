@@ -26,6 +26,8 @@
     "linker_script": "config/linker/FPSCameraAiStartup.ld",
     "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN9FPSCamera16incVerticalAngleEf",
+        "_ZN9FPSCamera4zoomEi",
         "_ZN9FPSCameraC1Ev",
         "_ZN9FPSCameraC2Ev",
         "_ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE",
@@ -55,5 +57,9 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN9FPSCamera4initEP11LevelObjecti"]
+    "external_thumb_functions": [
+        "_ZN9FPSCamera4initEP11LevelObjecti",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager6setFOVEi"
+    ]
 }

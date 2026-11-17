@@ -12,9 +12,23 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
+#include "CameraManager.h"
+
+void FPSCamera::incVerticalAngle(float delta)
+{
+    if ((delta > 0.0f && verticalAngle < 30.0f) ||
+        (delta < 0.0f && verticalAngle > -55.0f))
+        verticalAngle = delta + verticalAngle;
+}
 
 void FPSCamera::debug(irr::video::IVideoDriver*)
 {
+}
+
+void FPSCamera::zoom(int degrees)
+{
+    if (degrees >= 6 && degrees <= 50)
+        CameraManager::getInstance()->setFOV(degrees);
 }
 
 FPSCamera::~FPSCamera()
@@ -26,7 +40,7 @@ FPSCamera::FPSCamera()
       value52(50.0f), value56(0.1f)
 {
     init(0, 0);
-    value32 = 0.0f;
+    verticalAngle = 0.0f;
     flag60 = false;
 }
 
