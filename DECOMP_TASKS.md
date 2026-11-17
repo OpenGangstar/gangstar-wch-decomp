@@ -247,11 +247,19 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ed17d | Widgets::Shop::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecb21 | Widgets::Shop::SetItem | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ed6bd | Widgets::Shop::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002f8495 | CustomSkyBoxSceneNode::OnRegisterSceneNode | vehicle_side | REVIEW | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f8479 | CustomSkyBoxSceneNode::getType | main | REVIEW | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f8481 | CustomSkyBoxSceneNode::getBoundingBox | main | REVIEW | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f8489 | CustomSkyBoxSceneNode::getMaterial | main | REVIEW | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f8491 | CustomSkyBoxSceneNode::getMaterialCount | main | REVIEW | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002faa61 | CustomSkyBoxSceneNode::clone | camera_tap | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f9591 | CustomSkyBoxSceneNode::render | lock_init | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002fbee9 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1) | vehicle_side | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f8495 | CustomSkyBoxSceneNode::OnRegisterSceneNode | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f8479 | CustomSkyBoxSceneNode::getType | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f8481 | CustomSkyBoxSceneNode::getBoundingBox | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f8489 | CustomSkyBoxSceneNode::getMaterial | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f8491 | CustomSkyBoxSceneNode::getMaterialCount | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002faa61 | CustomSkyBoxSceneNode::clone | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f9591 | CustomSkyBoxSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002fbee9 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002fbe29 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D0) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002fbe01 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D0 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002fbe15 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D0 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002fbec1 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002fbed5 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | camera_tap | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | lock_init | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | vehicle_side | ASSIGNED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
