@@ -2,6 +2,7 @@
 #define WCH_MISSIONS_SIDE_MISSION_H
 
 #include "../core/Vector3.h"
+#include "../core/Array.h"
 
 class Checkpoint;
 class NPC;
@@ -20,12 +21,17 @@ public:
     virtual int getObj2Message() = 0;
     void init();
     bool inProgress();
+    bool finished();
+    void start();
     int getTimer();
     int getReward();
     void updateTimer(int elapsed);
 
 protected:
     void fadeInFadeOut();
+    void removeNPC();
+    static void getCheckpoints(int metatype, irr::core::array<Checkpoint*>& checkpoints);
+    static void disableCheckpoints(irr::core::array<Checkpoint*>& checkpoints);
     static void getRange(float&, float&, int, int, int, int, int);
     static Checkpoint* addCheckpoint(int, irr::core::vector3d<float>, float, float, unsigned short, unsigned short&);
     void addNPC(int, int, irr::core::vector3d<float>, unsigned short, unsigned short);
@@ -44,7 +50,7 @@ private:
     int timer;
     float reward;
     int stopReason;
-    void stop(bool expired);
+    void stop(bool showMessage);
 
 protected:
     NPC* passenger;

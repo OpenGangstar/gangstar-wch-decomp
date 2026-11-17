@@ -26,8 +26,17 @@ __aeabi_i2f = 0x001c41e4;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_d2f = 0x001c4310;
 __aeabi_fcmple = 0x001c43ac;
+_Znwj = 0x001c4814;
 SECTIONS
 {
+    .add_checkpoint 0x00346dd0 : { *ai-startup-sidemission.o(.text._ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt) }
+    .start 0x00346d1c : { *ai-startup-sidemission.o(.text._ZN11SideMission5startEv) }
+    .remove_npc 0x00346e30 : { *ai-startup-sidemission.o(.text._ZN11SideMission9removeNPCEv) }
+    .fade 0x00346ce0 : { *ai-startup-sidemission.o(.text._ZN11SideMission13fadeInFadeOutEv) }
+    .finished 0x00346b8c : { *ai-startup-sidemission.o(.text._ZN11SideMission8finishedEv) }
+    .get_checkpoints 0x00346e54 : { *ai-startup-sidemission.o(.text._ZN11SideMission14getCheckpointsEiRN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEE) }
+    .disable_checkpoints 0x00346f9c : { *ai-startup-sidemission.o(.text._ZN11SideMission18disableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEE) }
+    .fade_push 0x00346cc0 : { *ai-startup-sidemission.o(.gnu.linkonce.t._ZN12StateMachine9pushStateI6GSFadeEEPT_v .text._ZN12StateMachine9pushStateI6GSFadeEEPT_v) }
     .init 0x00346b5c : { *ai-startup-sidemission.o(.text._ZN11SideMission4initEv) }
     .in_progress 0x00346b7c : { *ai-startup-sidemission.o(.text._ZN11SideMission10inProgressEv) }
     .stop 0x00346fd0 : { *ai-startup-sidemission.o(.text._ZN11SideMission4stopEb) }

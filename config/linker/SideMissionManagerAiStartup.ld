@@ -17,6 +17,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .side_mission_confirm 0x003477a0 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager7confirmEv) }
+    .side_mission_step 0x004bb5bc (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager6s_stepE) }
     .side_mission_debug 0x003477b8 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5debugEv) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-sidemissionmanager.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x00347a14 : { *ai-startup-sidemissionmanager.o(.text.__tcf_0) }

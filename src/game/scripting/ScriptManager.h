@@ -1,6 +1,8 @@
 #ifndef WCH_SCRIPTING_SCRIPT_MANAGER_H
 #define WCH_SCRIPTING_SCRIPT_MANAGER_H
 
+#include "../characters/PlayerTest.h"
+
 class AnimObject;
 class IMissionCondition;
 class Mission;
@@ -34,6 +36,7 @@ public:
     void* getRace() const;
     void unload();
     void unlockFrozenScripts();
+    void freezeRunningScripts(const Script* script, PlayerTest::eContext context);
     Script** scripts;
     int scriptCapacity;
     int scriptCount;

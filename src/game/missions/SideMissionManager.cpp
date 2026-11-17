@@ -83,8 +83,19 @@ static void _GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE()
 class SideMissionManager {
 public:
     static void debug();
+    static void confirm();
+
+private:
+    static int s_step;
 };
 
 void SideMissionManager::debug()
 {
+}
+
+int SideMissionManager::s_step;
+
+void SideMissionManager::confirm()
+{
+    s_step = 4;
 }

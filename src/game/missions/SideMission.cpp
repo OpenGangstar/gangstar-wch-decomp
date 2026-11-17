@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../app/GSFade.h"
+#include "../characters/PhysicAttributes.h"
 #include "Checkpoint.h"
 #include "../ai/NPC.h"
 #include "../world/GameObjectManager.h"
@@ -202,4 +204,56 @@ void SideMission::addNPC(int metatype, int behavior, irr::core::vector3d<float> 
 {
     passenger = GameObjectManager::s_gom->spawnNPC(metatype, behavior, position, region, surface);
     passenger->unknown4 &= ~0x80u;
+}
+
+Checkpoint* SideMission::addCheckpoint(int metatype, irr::core::vector3d<float> origin,
+    float minDistance, float maxDistance, unsigned short material, unsigned short& surface)
+{
+    const irr::core::vector3d<float> destination =
+        PhysicAttributes::GetRandomDestination(material, surface, origin, minDistance, maxDistance);
+    Checkpoint* checkpoint = static_cast<Checkpoint*>(
+        GameObjectManager::s_gom->CreateGameObjectFromMetatype(metatype));
+    checkpoint->SetPosition(destination);
+    checkpoint->enable();
+    ScriptManager::displayOnMinimap(checkpoint, true, true);
+    return checkpoint;
+}
+
+void SideMission::start()
+{
+    stopReason = 0;
+    activeState = 1;
+    ScriptManager::getInstance()->freezeRunningScripts(0, PlayerTest::AnyContext);
+}
+
+void SideMission::removeNPC()
+{
+    GameObjectManager::s_gom->RemoveAndDestroy(passenger);
+    passenger = 0;
+}
+
+void SideMission::fadeInFadeOut()
+{
+    StateMachine::getInstance()->pushState<GSFade>();
+}
+
+bool SideMission::finished()
+{
+    return stopReason == 1 || stopReason == 2;
+}
+
+void SideMission::getCheckpoints(int metatype, irr::core::array<Checkpoint*>& checkpoints)
+{
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(2); object; object = object->next) {
+        if (LevelObject::s_type[object->getObjectType()] == 6 && object->GetMetatype() == metatype)
+            checkpoints.push_back(static_cast<Checkpoint*>(object));
+    }
+}
+
+void SideMission::disableCheckpoints(irr::core::array<Checkpoint*>& checkpoints)
+{
+    for (int i = 0; static_cast<unsigned int>(i) < checkpoints.used; ++i) {
+        ScriptManager::displayOnMinimap(checkpoints.data[i], false, true);
+        checkpoints.data[i]->disable();
+    }
 }
