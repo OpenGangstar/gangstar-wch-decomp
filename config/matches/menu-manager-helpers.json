@@ -26,6 +26,8 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_Z12get_fontfilePKcbbPci",
+        "_Z10StrToLowerPc",
         "_Z13fs_close_funcPv",
         "_Z15fs_get_eof_funcPv",
         "_Z12fs_tell_funcPKv",
@@ -99,6 +101,9 @@
         }
     ],
     "sections": [
+        ".menu_requested_font_format",
+        ".menu_asian_font_file_format",
+        ".menu_standard_font_file_format",
         ".menu_fs_open_error",
         ".menu_manager_asian_font_start",
         ".menu_manager_asian_font_format",
@@ -137,6 +142,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK8RenderFX7GetRootEv",
+        "_ZN11MenuManager11getInstanceEv",
         "_Z13ekd_debug_outPKcPc",
         "_Z21ekd_makestringfile255PKcPc",
         "_ZN11MenuManager7setTextENS_5eTextEPKcPi",

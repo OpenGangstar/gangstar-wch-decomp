@@ -11,6 +11,7 @@
 #include "../hud/MenuManager.h"
 #include "../app/Application.h"
 #include "../hud/TargetMarker.h"
+#include "../persistence/FileSystemBase.h"
 #include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -26,6 +27,18 @@ public:
     void ClearStates();
     void ClearFocus();
 };
+
+extern "C" const short* _tolower_tab_;
+
+char* StrToLower(char* text)
+{
+    const int length = strlen(text);
+    for (int index = 0; index < length; ++index) {
+        const unsigned char character = text[index];
+        text[index] = _tolower_tab_[character + 1];
+    }
+    return text;
+}
 
 extern "C" int feof(NativeFile* file);
 
@@ -302,6 +315,58 @@ extern "C" void _ZN11MenuManager13setMenuFXTextEPKcS1_bb(
     MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
     _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
         manager, fields.menuFX->Find(name), text, html, scaleAsianFont);
+}
+
+namespace {
+struct FontRenderSettings {
+    unsigned char beforeFlag[8];
+    bool enabled;
+};
+
+struct FontPlayerContext {
+    unsigned char beforeSettings[12];
+    FontRenderSettings* settings;
+};
+
+struct FontPlayer {
+    unsigned char beforeContext[96];
+    FontPlayerContext* context;
+};
+
+struct FontRoot {
+    unsigned char beforePlayer[168];
+    void* playerProxy;
+    FontPlayer* player;
+};
+}
+
+extern "C" void _ZNK7gameswf8weak_ptrINS_6playerEE11check_proxyEv(const void*)
+    __attribute__((long_call));
+
+static const char requestedFontFormat[] = "%s%s.ttf";
+static const char asianFontFileFormat[] = "%sfont02.ttf";
+static const char standardFontFileFormat[] = "%sfont01.ttf";
+
+bool get_fontfile(const char* name, bool, bool, char* destination, int)
+{
+    char lowerName[256];
+    strcpy(lowerName, name);
+    const char* resourcesPath = Application::GetInstance()->GetFileSystem()->getResourcesPath();
+    sprintf(destination, requestedFontFormat, resourcesPath, StrToLower(lowerName));
+
+    MyMenuFX* menu = reinterpret_cast<MyMenuFX*>(MenuManager::getInstance()->getMenuFX());
+    FontRoot* root = reinterpret_cast<FontRoot*>(menu->GetRoot());
+    if (root) {
+        _ZNK7gameswf8weak_ptrINS_6playerEE11check_proxyEv(&root->playerProxy);
+        root->player->context->settings->enabled = true;
+    }
+    const MenuManagerFocusFields& fields =
+        *reinterpret_cast<const MenuManagerFocusFields*>(MenuManager::getInstance());
+    if (fields.asianFont)
+        sprintf(destination, asianFontFileFormat, resourcesPath);
+    else
+        sprintf(destination, standardFontFileFormat, resourcesPath);
+    return true;
 }
 
 extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool visible)
