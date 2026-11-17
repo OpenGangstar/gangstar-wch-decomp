@@ -78,6 +78,7 @@ public:
     virtual void exit();
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
+    void updateTouchInputs();
     SavePositionInterface* owner;
     float verticalAngle;
     int value36;

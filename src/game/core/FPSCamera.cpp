@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
 #include "CameraManager.h"
+#include "Quaternion.h"
 #include "../app/Application.h"
 #include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"
@@ -94,6 +95,29 @@ FPSCamera::FPSCamera()
     init(0, 0);
     verticalAngle = 0.0f;
     flag60 = false;
+}
+
+void FPSCamera::update(float)
+{
+    using irr::core::vector3d;
+    updateTouchInputs();
+    if (!owner)
+        return;
+
+    const vector3d<float> origin = reinterpret_cast<LevelObject*>(owner)->GetPosition();
+    const irr::core::matrix4& matrix =
+        reinterpret_cast<LevelObject*>(owner)->sceneNode->getAbsoluteTransformation();
+    const vector3d<float> up(matrix[8], matrix[9], matrix[10]);
+    setPosition(up * 75.0f + origin);
+
+    irr::core::quaternion rotation;
+    const float angle = 0.017453292f * verticalAngle;
+    const vector3d<float> right = reinterpret_cast<LevelObject*>(owner)->GetRight();
+    rotation.fromAngleAxis(angle, right);
+    rotation.normalize();
+    const vector3d<float> eyeTarget = reinterpret_cast<LevelObject*>(owner)->GetPosition();
+    const vector3d<float> front = reinterpret_cast<LevelObject*>(owner)->GetFront();
+    setLookAt((rotation * front) * 300.0f + eyeTarget);
 }
 
 void operator delete(void*) throw();

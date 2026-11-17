@@ -26,6 +26,7 @@
     "linker_script": "config/linker/FPSCameraAiStartup.ld",
     "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN9FPSCamera6updateEf",
         "_ZN9FPSCamera4initEP11LevelObjecti",
         "_ZN9FPSCamera5enterEv",
         "_ZN9FPSCamera4exitEv",
@@ -69,7 +70,7 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN10PlayerTest8showMeshEv",
         "_ZN15CControlManager11exitSnipingEb",
-        "_ZN9FPSCamera6updateEf",
+        "_ZN9FPSCamera17updateTouchInputsEv",
         "_ZN13CameraManager11getInstanceEv",
         "_ZN13CameraManager6setFOVEi"
     ]
