@@ -26,6 +26,10 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets6IGMenu12SetTitleTextEi",
+        "_ZN7Widgets6IGMenu17SetBackButtonTextEi",
+        "_ZN7Widgets7Volumes11SetPlaylistEi",
+        "_ZN7Widgets10Corruption14SetWantedLevelEi",
         "_ZN10MenuWidget11SetListenerEP9MenuState",
         "_ZN7Widgets6Arrows12SetPageCountEiib",
         "_ZN7Widgets5Title7SetIconEPKc",
@@ -87,6 +91,7 @@
         }
     ],
     "sections": [
+        ".widget_volumes_playlist",
         ".widget_title_icon",
         ".widget_mission_name",
         ".widget_money_name",

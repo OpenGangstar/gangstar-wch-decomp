@@ -9823,8 +9823,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebe81	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets14ConfirmPayment8SetPriceEi	Widgets::ConfirmPayment::SetPrice(int)
 0x002ebe85	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Dialog10SetMessageEi	Widgets::Dialog::SetMessage(int)
 0x002ebe89	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets6Dialog16GetPressedButtonEv	Widgets::Dialog::GetPressedButton() const
-0x002ebe8d	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu12SetTitleTextEi	Widgets::IGMenu::SetTitleText(int)
-0x002ebe91	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu17SetBackButtonTextEi	Widgets::IGMenu::SetBackButtonText(int)
+0x002ebe8d	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu12SetTitleTextEi	Widgets::IGMenu::SetTitleText(int)
+0x002ebe91	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu17SetBackButtonTextEi	Widgets::IGMenu::SetBackButtonText(int)
 0x002ebe95	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets6IGMenu20GetLastPressedButtonEv	Widgets::IGMenu::GetLastPressedButton() const
 0x002ebe99	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective16SetObjectiveTextEi	Widgets::Objective::SetObjectiveText(int)
 0x002ebe9d	0x64	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Arrows12SetPageCountEiib	Widgets::Arrows::SetPageCount(int, int, bool)
@@ -9832,8 +9832,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebf05	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Mission9SetScriptEPK6Script	Widgets::Mission::SetScript(Script const*)
 0x002ebf09	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop19SetAvailabilityTextEi	Widgets::Shop::SetAvailabilityText(int)
 0x002ebf0d	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets4Shop15GetSelectedItemEv	Widgets::Shop::GetSelectedItem() const
-0x002ebf11	0x14	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Volumes11SetPlaylistEi	Widgets::Volumes::SetPlaylist(int)
-0x002ebf25	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Corruption14SetWantedLevelEi	Widgets::Corruption::SetWantedLevel(int)
+0x002ebf11	0x14	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Volumes11SetPlaylistEi	Widgets::Volumes::SetPlaylist(int)
+0x002ebf25	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Corruption14SetWantedLevelEi	Widgets::Corruption::SetWantedLevel(int)
 0x002ebf29	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting10SetTitleIdEi	Widgets::GameSetting::SetTitleId(int)
 0x002ebf2d	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting10SetValueIdEi	Widgets::GameSetting::SetValueId(int)
 0x002ebf31	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Help9SetTextIdEi	Widgets::Help::SetTextId(int)

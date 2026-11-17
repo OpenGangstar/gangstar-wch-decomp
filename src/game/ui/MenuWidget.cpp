@@ -151,6 +151,37 @@ Widgets::ConfirmPayment::ConfirmPayment()
 class Script;
 
 namespace Widgets {
+class IGMenu : public MenuWidget {
+public:
+    void SetTitleText(int id);
+    void SetBackButtonText(int id);
+
+private:
+    struct Button {
+        int textId;
+        bool enabled;
+    };
+    Button buttons[5];
+    int titleTextId;
+    int backButtonTextId;
+};
+
+class Volumes : public MenuWidget {
+public:
+    void SetPlaylist(int playlist);
+
+private:
+    static int s_playlist;
+};
+
+class Corruption : public MenuWidget {
+public:
+    void SetWantedLevel(int level);
+
+private:
+    int wantedLevel;
+};
+
 class Mission : public MenuWidget {
 public:
     Mission();
@@ -207,6 +238,28 @@ public:
     BackgroundInGame();
     virtual void Show();
 };
+}
+
+void Widgets::IGMenu::SetTitleText(int id)
+{
+    titleTextId = id;
+}
+
+void Widgets::IGMenu::SetBackButtonText(int id)
+{
+    backButtonTextId = id;
+}
+
+int Widgets::Volumes::s_playlist = -2;
+
+void Widgets::Volumes::SetPlaylist(int playlist)
+{
+    s_playlist = playlist;
+}
+
+void Widgets::Corruption::SetWantedLevel(int level)
+{
+    wantedLevel = level;
 }
 
 static const char widgetMissionName[] = "widgetMission";
