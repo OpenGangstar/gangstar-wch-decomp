@@ -17,6 +17,8 @@
 #include "../ai/StateMachine.h"
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
+#include "../hud/CHudManager.h"
+#include "../meta/Achievements.h"
 #include "../audio/SoundManager.h"
 #include "../app/Application.h"
 #include "../persistence/DataStream.h"
@@ -283,6 +285,7 @@ protected:
 class Achievement : public MenuState {
 public:
     Achievement();
+    void SetAchievement(const AchievementManager::Achievement* achievement);
     virtual ~Achievement();
     virtual void Show();
     virtual void GotFocus();
@@ -290,7 +293,7 @@ public:
     virtual void Update();
 
 protected:
-    int unknown104;
+    int displayTime;
 };
 
 class BlockingTutorial : public Tutorial {
@@ -560,7 +563,7 @@ Menus::Map::Map()
 static const char achievementName[] = "Achievement";
 
 Menus::Achievement::Achievement()
-    : MenuState(achievementName), unknown104(0)
+    : MenuState(achievementName), displayTime(0)
 {
     const int widgetId = 10;
     widgetIds.append(&widgetId, 1);
@@ -1579,4 +1582,45 @@ void Menus::Map::Update()
         manager->updateMap();
         manager->updateMarkers();
     }
+}
+
+namespace Widgets { class Achievement; }
+extern "C" void _ZN7Widgets11Achievement8SetTitleEi(Widgets::Achievement*, int);
+extern "C" void _ZN7Widgets11Achievement7SetIconEPKc(Widgets::Achievement*, const char*);
+namespace retail_achievement_menu {
+struct IconEntry {
+    int textId;
+    const char* icon;
+};
+extern const IconEntry icons[] __attribute__((visibility("hidden")));
+}
+void Menus::Achievement::SetAchievement(const AchievementManager::Achievement* achievement)
+{
+    Widgets::Achievement* widget = static_cast<Widgets::Achievement*>(
+        getWidgetByIndex(MenuManager::getInstance(), 10));
+    _ZN7Widgets11Achievement8SetTitleEi(widget, achievement->titleId);
+    _ZN7Widgets11Achievement7SetIconEPKc(widget, retail_achievement_menu::icons[achievement->unknown0].icon);
+}
+
+void Menus::Achievement::Update()
+{
+    displayTime = static_cast<int>(displayTime -
+        static_cast<StateMachine*>(_ZN12StateMachine11getInstanceEv())->getTimeStamp());
+    ScriptManager* scripts = ScriptManager::getInstance();
+    if (displayTime < 0 || scripts->isInCinematic() ||
+        (static_cast<const Mission*>(scripts->getMission())->getState() != 0 &&
+         static_cast<const Mission*>(scripts->getMission())->getState() != 4) ||
+        Application::GetInstance()->GetHudManager()->isAnyMessageDisplayed()) {
+        _ZN11MenuManager3popEb(MenuManager::getInstance(), true);
+    }
+}
+
+void Menus::Achievement::Show()
+{
+    MenuState::Show();
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(217, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    displayTime = 5000;
 }

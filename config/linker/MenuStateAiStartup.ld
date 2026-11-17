@@ -11,6 +11,7 @@ __stack_chk_fail = 0x001c42e0;
 __aeabi_i2d = 0x001c452c;
 __aeabi_dsub = 0x001c4454;
 __aeabi_d2iz = 0x001c4844;
+_ZN23retail_achievement_menu5iconsE = 0x0047b1a0;
 strcmp = 0x001c4658;
 __aeabi_atexit = 0x001c494c;
 _ZN28retail_menustate_transitions16civPassive_transE = 0x0041a084;
@@ -137,6 +138,9 @@ SECTIONS
     .helper_11 0x002e3f18 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15consumedCursorsEv .gnu.linkonce.t._ZNK11MenuManager15consumedCursorsEv) }
     .helper_14 0x002e3f78 : { *menu-manager-helpers.o(.text._ZN11MenuManager11enableAnimsEb .gnu.linkonce.t._ZN11MenuManager11enableAnimsEb) }
     .menu_map_update 0x002ebb30 : { *(.text._ZN5Menus3Map6UpdateEv) }
+    .achievement_menu_set 0x002e7d50 : { *(.text._ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE) }
+    .achievement_menu_show 0x002ea2e4 : { *(.text._ZN5Menus11Achievement4ShowEv) }
+    .achievement_menu_update 0x002e7658 : { *(.text._ZN5Menus11Achievement6UpdateEv) }
     .main_menu_confirm 0x00418138 : { *(.rodata.main_menu_confirm) }
     .mainMenu_constructor 0x002e7dd0 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuC1Ev .text._ZN5Menus8MainMenuC2Ev) }
     .mainMenu_name 0x00413c7c : { *ai-startup-menustate.o(.rodata.mainMenuName) }

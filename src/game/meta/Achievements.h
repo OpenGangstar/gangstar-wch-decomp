@@ -67,7 +67,8 @@ public:
         unsigned int unknown0;
         int ruleCount;
         int* rules;
-        unsigned char unknown12[8];
+        unsigned char unknown12[4];
+        int titleId;
         unsigned int flags;
     };
     // Storage view of the native STLport list's sentinel and value nodes.
