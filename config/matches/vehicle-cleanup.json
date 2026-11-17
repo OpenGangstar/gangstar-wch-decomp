@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle13grabSceneNodeEiPPPv",
         "_ZN7Vehicle6repairEv",
         "_ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_",
         "_ZN7Vehicle19UpdateCarTireTrailsEii",
@@ -200,6 +201,12 @@
         "_ZN7Vehicle10hideWheelsEv"
     ],
     "sections": [
+        ".vehicle_light00_asset",
+        ".vehicle_light01_asset",
+        ".vehicle_cop_lights_asset",
+        ".vehicle_light01_node",
+        ".vehicle_light02_node",
+        ".vehicle_cop_lights_node",
         ".vehicle_tire_trails_init",
         ".car_morph_vtt",
         ".car_morph_vtable",
@@ -289,6 +296,10 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN3irr5scene10ISceneNode19getSceneNodeFromUIDEPKc",
+        "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
+        "_ZN11LevelObject13grabSceneNodeEiPPPv",
+        "_ZN16SceneNodeManager4grabEiP11LevelObjectiPPPv",
         "_ZN3irr7collada21CSkinnedMeshSceneNodeC2EPNS_5scene12IColladaMeshEPNS0_14IRootSceneNodeEPNS0_5SNodeEiRKNS_4core8vector3dIfEERKNS9_10quaternionESD_",
         "_ZN8TrailMgr10AllocTrailEv",
         "_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b",
