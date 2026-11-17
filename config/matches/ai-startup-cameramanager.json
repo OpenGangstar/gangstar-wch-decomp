@@ -25,6 +25,9 @@
     "source": "src/game/core/CameraManager.cpp",
     "linker_script": "config/linker/CameraManagerAiStartup.ld",
     "functions": [
+        "_ZN13CameraManagerD1Ev",
+        "_ZN13CameraManagerD2Ev",
+        "_ZN13CameraManager16updateTransitionEf",
         "_ZN13CameraManager6setFOVEi",
         "_ZN13CameraManager6getFOVEv",
         "_ZNK13CameraManager9getCameraEv",
