@@ -272,7 +272,6 @@
     "external_thumb_functions": [
         "_ZN7gameswf7tu_fileC1EPKcS2_",
         "_Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_",
-        "_Z12log_callbackbPKc",
         "_ZN7gameswf29register_file_opener_callbackEPFPNS_7tu_fileEPKcE",
         "_ZN7gameswf27register_fscommand_callbackEPFvPNS_9characterEPKcS3_E",
         "_ZN7gameswf17get_verbose_parseEv",

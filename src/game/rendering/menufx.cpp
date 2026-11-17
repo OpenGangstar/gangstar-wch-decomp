@@ -12,6 +12,17 @@
 #include "CharacterVisibility.h"
 #include "../core/NativeStdio.h"
 
+// The Android libc exposes stdin, stdout, and stderr as adjacent entries.
+struct AndroidStdioEntry {
+    unsigned char storage[84];
+};
+
+extern "C" {
+extern AndroidStdioEntry __sF[];
+int fputs(const char* text, NativeFile* file);
+int fflush(NativeFile* file);
+}
+
 extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list arguments);
 
 namespace swf {
@@ -160,6 +171,27 @@ gameswf::tu_file* file_opener(const char*) __attribute__((visibility("hidden")))
 void fs_callback(gameswf::character*, const char*, const char*) __attribute__((visibility("hidden")));
 void fscommand_callback_handler(gameswf::character*, const char*, const char*) __attribute__((visibility("hidden")));
 void log_callback(bool, const char*) __attribute__((visibility("hidden")));
+
+void message_log(const char* text)
+{
+    if (gameswf::get_verbose_parse()) {
+        NativeFile* output = reinterpret_cast<NativeFile*>(&__sF[1]);
+        fputs(text, output);
+        fflush(output);
+    }
+}
+
+void log_callback(bool error, const char* text)
+{
+    if (error) {
+        message_log(text);
+        NativeFile* output = reinterpret_cast<NativeFile*>(&__sF[2]);
+        fputs(text, output);
+        fflush(output);
+    } else {
+        message_log(text);
+    }
+}
 
 namespace {
 // Prefix of the gameswf character vtable through display callback registration.
