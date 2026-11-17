@@ -57,6 +57,8 @@ SECTIONS
     .renderfx_empty_fs_callback 0x003ec1e0 : { *renderfx-animation.o(.text._Z11fs_callbackPN7gameswf9characterEPKcS3_) }
     .renderfx_can_handle_event 0x003ec1dc : { *renderfx-animation.o(.text._ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE) }
     .renderfx_event_listener_vtable 0x004afc88 : { *renderfx-animation.o(.data.rel.ro._ZTVN8RenderFX13EventListenerE) }
+    .renderfx_set_cursor 0x003ee378 : { *renderfx-animation.o(.text._ZN8RenderFX9SetCursorEPKci) }
+    .renderfx_named_as_callback 0x003ef11c : { *renderfx-animation.o(.text._ZN8RenderFX16InvokeASCallbackEPKcS1_) }
     .renderfx_menu_update 0x003f0138 : { *renderfx-animation.o(.text._ZN6MenuFX6UpdateEib) }
     .renderfx_menu_event_filter_thunk 0x003f0260 : { *renderfx-animation.o(.text._ZThn204_N6MenuFX14CanHandleEventERN8RenderFX5EventE) }
     .renderfx_menu_event_filter 0x003f0274 : { *renderfx-animation.o(.text._ZN6MenuFX14CanHandleEventERN8RenderFX5EventE) }

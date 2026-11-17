@@ -1076,6 +1076,17 @@ void RenderFX::FormatText(gameswf::character* character, const char* format, ...
     SetText(character, s_stringBuffer, false);
 }
 
+void RenderFX::SetCursor(const char* characterName, int index)
+{
+    gameswf::character* character = Find(characterName);
+    controllers[index].third.set_ref(character);
+}
+
+bool RenderFX::InvokeASCallback(const char* characterName, const char* callback)
+{
+    return InvokeASCallback(Find(characterName), callback);
+}
+
 void RenderFX::SetFocus(const char* characterName, int flags)
 {
     SetFocus(Find(characterName), flags);
