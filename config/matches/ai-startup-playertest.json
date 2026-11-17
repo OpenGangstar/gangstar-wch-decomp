@@ -30,6 +30,7 @@
         "_ZN10PlayerTest13driftFinishedEv",
         "_ZN10PlayerTest17addDistanceDrivenEf",
         "_ZN10PlayerTest8SetSpeedEv",
+        "_ZN10PlayerTest15UpdateSceneNodeEv",
         "_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle",
         "_ZN10PlayerTest4StopEv",
         "_ZN10PlayerTest14setClosestShopEP4Shop",
@@ -118,6 +119,8 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest14isFacingTargetEv",
+        "_ZN9Character14updatePositionEN3irr4core10quaternionE",
         "_ZN18AchievementManager14recordKmDrivenEv",
         "_ZN7Vehicle4rentEb",
         "_ZN18AchievementManager10recordJumpEi",

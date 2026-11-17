@@ -46,3 +46,6 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | camera_tap | REVIEW | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | vehicle_side | REVIEW | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00302685 | PlayerTest::UpdateSceneNode | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003013bd | PlayerTest::ResetPlayerTest | lock_init | ASSIGNED | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301f01 | PlayerTest::setVehicle | vehicle_side | REVIEW | — | src/game/ai/PlayerTest.cpp |
