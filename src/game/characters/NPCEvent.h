@@ -11,6 +11,8 @@ public:
 
     EvNPC(State state, NPC* npc) : state(state), npc(npc) { eventID = 16; }
     virtual ~EvNPC() {}
+    int getState() const { return state; }
+    const NPC* getNPC() const { return npc; }
 
 private:
     int state;

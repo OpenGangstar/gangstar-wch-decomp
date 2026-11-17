@@ -25,6 +25,8 @@
     "source": "src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp",
     "linker_script": "config/linker/CCustomMaterialRenderer_VERTEX_COLOR_ALPHAStringStartup.ld",
     "functions": [
+        "_ZNK42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13isTransparentEv",
+        "_ZNK42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA22getVertexAttributeMaskEv",
         {
             "name": "__tcf_0",
             "address": "0x002d6ac1"

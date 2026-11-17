@@ -66,28 +66,7 @@ void ContactListener::Result(const b2ContactResult*)
 {
 }
 
-struct PhysicInfo {
-    PhysicInfo() __attribute__((weak));
-    // The retail array allocation has an ARM EABI cookie.
-    ~PhysicInfo() {}
-    void Reset(b2World* world) __attribute__((weak));
-
-    unsigned short unknown0;
-    unsigned char unknown2[2];
-    unsigned int unknown4;
-    unsigned short unknown8;
-    unsigned char unknown10[2];
-    irr::core::vector3d<float> vector12, vector24, vector36, vector48;
-    bool unknown60;
-    unsigned char unknown61[3];
-    irr::core::vector3d<float> unknown64;
-    unsigned short unknown76, unknown78, unknown80;
-    unsigned char unknown82[6];
-    b2Body* bodies[12];
-    bool onGround;
-    bool wasOnGround;
-    unsigned char unknown138[2];
-};
+#include "PhysicInfo.h"
 
 void PhysicAttributes::SetIsOnGround(int slot, bool value)
 {
@@ -355,4 +334,39 @@ static void _GLOBAL__I__ZN16PhysicAttributes11s_neighborsE()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+namespace {
+struct JumpShapeData {
+    unsigned char unknown0[8];
+    float heights[4];
+    unsigned char unknown24;
+    unsigned char flags;
+};
+
+inline __attribute__((always_inline)) void setJumpVertex(irr::core::vector3d<float>& vertex,
+    b2Body* body, const b2Vec2& local, const float& height)
+{
+    const b2XForm& transform = body->GetXForm();
+    b2Vec2 rotated;
+    rotated.x = local.x * transform.rotation[0] + local.y * transform.rotation[2];
+    rotated.y = local.x * transform.rotation[1] + local.y * transform.rotation[3];
+    b2Vec2 world;
+    world.x = rotated.x + transform.position.x;
+    world.y = rotated.y + transform.position.y;
+    vertex = irr::core::vector3d<float>(world.x * 100.0f, world.y * 100.0f, height);
+}
+}
+
+void PhysicAttributes::SetCurrentJumpShape(b2Shape* shape)
+{
+    const b2PolygonShape* polygon = static_cast<const b2PolygonShape*>(shape);
+    const JumpShapeData* data = static_cast<const JumpShapeData*>(shape->GetBody()->GetUserData());
+    setJumpVertex(jumpVertices[0], shape->GetBody(), polygon->vertices[0], data->heights[0]);
+    setJumpVertex(jumpVertices[1], shape->GetBody(), polygon->vertices[1], data->heights[1]);
+    setJumpVertex(jumpVertices[2], shape->GetBody(), polygon->vertices[2], data->heights[2]);
+    setJumpVertex(jumpVertices[3], shape->GetBody(), polygon->vertices[3], data->heights[3]);
+    jumpCenter = (jumpVertices[0] + jumpVertices[1] + jumpVertices[2] + jumpVertices[3]) * 0.25f;
+    hasJumpShape = true;
+    jumpFlags = data->flags;
 }

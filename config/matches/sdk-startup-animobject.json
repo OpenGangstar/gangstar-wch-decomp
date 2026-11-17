@@ -25,6 +25,7 @@
     "source": "src/game/characters/AnimObject.cpp",
     "linker_script": "config/linker/AnimObjectSdkStartup.ld",
     "functions": [
+        "_ZN10AnimObject5ResetEv",
         {
             "name": "__tcf_2",
             "address": "0x00349415"
@@ -88,7 +89,6 @@
         "_ZNK7ASprite11PaintAFrameEiiiii",
         "_ZN7ASprite15GetAnimDurationEi",
         "_Z7FSelectfff",
-        "_ZN10AnimObject5ResetEv",
         "_ZNK7ASprite24GetAnimFrameBoundingRectEii"
     ]
 }

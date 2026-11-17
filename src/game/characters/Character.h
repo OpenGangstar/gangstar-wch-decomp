@@ -115,7 +115,9 @@ private:
     bool animationLoops;
     unsigned char unknown149[3];
     int animationSpeedMultiplier;
-    unsigned char unknown156[16];
+    unsigned char unknown156[4];
+    float shadowBaseHeight;
+    unsigned char unknown164[8];
     void* skinMesh;
     irr::scene::ISceneNode* shadowNode;
     b2Body* collisionBody;

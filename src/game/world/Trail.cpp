@@ -14,15 +14,8 @@
 #include "Trail.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
-
-namespace {
-// Trail cleanup uses retail scene-manager slot 69.
-class TrailSceneManager : public irr::scene::ISceneManager {
-public:
-    virtual void unknown68();
-    virtual void addToDeletionQueue(irr::scene::ISceneNode* node);
-};
-}
+#include "../core/MeshSceneInterfaces.h"
+#include "../core/MeshBufferInterfaces.h"
 
 Trail::Trail() : trailPointCount(0), lastAddedPoint()
 {
@@ -42,7 +35,8 @@ Trail::Trail() : trailPointCount(0), lastAddedPoint()
 void Trail::CleanUp()
 {
     irr::scene::ISceneManager* manager = Application::GetInstance()->GetDevice()->getSceneManager();
-    reinterpret_cast<TrailSceneManager*>(manager)->addToDeletionQueue(meshSceneNode);
+    // Trail cleanup uses retail scene-manager slot 69.
+    manager->addToDeletionQueue(meshSceneNode);
     trailLifetime = 600;
     segmentWidth = 25.0f;
     trailPointCount = 0;
@@ -167,4 +161,58 @@ static void __tcf_2()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+namespace {
+struct TrailVertex {
+    irr::core::vector3d<float> position;
+    irr::core::vector3d<float> normal;
+    unsigned int color;
+    float u;
+    float v;
+
+    void operator=(const TrailVertex& other)
+    {
+        position = other.position;
+        normal = other.normal;
+        color = other.color;
+        u = other.u;
+        v = other.v;
+    }
+};
+
+struct TrailMeshBufferView {
+    unsigned char unknown0[120];
+    TrailVertex* vertices;
+};
+}
+
+void Trail::AddPoint(irr::core::vector3d<float>& left,
+    irr::core::vector3d<float>& right, bool buildFlag)
+{
+    irr::scene::IMeshBuffer* buffer =
+        static_cast<irr::scene::IMeshSceneNode*>(meshSceneNode)->getMesh()->getMeshBuffer(0);
+    TrailMeshBufferView* mesh = reinterpret_cast<TrailMeshBufferView*>(buffer);
+    lastAddedPoint = left;
+
+    for (int i = trailPointCount - 1; i > 0; --i) {
+        points[i] = points[i - 1];
+        const int current = 2 * i;
+        const int previous = current - 2;
+        mesh->vertices[current] = mesh->vertices[previous];
+        const int destination = current + 1;
+        const int source = current - 1;
+        mesh->vertices[destination] = mesh->vertices[source];
+    }
+
+    points[0].remainingLife = trailLifetime;
+    points[0].left = left;
+    points[0].right = right;
+    ++activePointCount;
+    if (activePointCount > trailPointCount)
+        activePointCount = trailPointCount;
+    if (activePointCount == 2)
+        BuildPoint(1, buildFlag);
+    if (activePointCount > 1)
+        BuildPoint(0, buildFlag);
 }

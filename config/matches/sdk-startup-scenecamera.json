@@ -25,6 +25,10 @@
     "source": "src/game/core/SceneCamera.cpp",
     "linker_script": "config/linker/SceneCameraSdkStartup.ld",
     "functions": [
+        {
+            "name": "__tcf_1",
+            "address": "0x00334ef1"
+        },
         "_ZN11LevelObject12getSpawnTypeEv",
         "_ZN11SceneCamera4initEP11LevelObjecti",
         "_ZN11SceneCamera5debugEPN3irr5video12IVideoDriverE",

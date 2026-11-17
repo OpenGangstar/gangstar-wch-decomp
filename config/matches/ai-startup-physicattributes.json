@@ -25,6 +25,7 @@
     "source": "src/game/characters/PhysicAttributes.cpp",
     "linker_script": "config/linker/PhysicAttributesAiStartup.ld",
     "functions": [
+        "_ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape",
         "_ZN16PhysicAttributes18GetSceneNodeFromIDEPN3irr5scene10ISceneNodeEi",
         "_ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi",
         "_ZN16PhysicAttributes13GetHeightFromEiRKN3irr4core8vector3dIfEEi",

@@ -25,6 +25,13 @@
     "source": "src/game/vehicles/TaxiSideMission.cpp",
     "linker_script": "config/linker/TaxiSideMissionAiStartup.ld",
     "functions": [
+        "_ZN15TaxiSideMission3endEv",
+        "_ZN15TaxiSideMission14getMoneyRewardEv",
+        "_ZN15TaxiSideMission14getGoalMessageEv",
+        "_ZN15TaxiSideMission15getStartMessageEv",
+        "_ZN15TaxiSideMission13getEndMessageEv",
+        "_ZN15TaxiSideMission14getObj1MessageEv",
+        "_ZN15TaxiSideMission14getObj2MessageEv",
         {
             "name": "__tcf_4",
             "address": "0x00347e8d"

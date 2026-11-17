@@ -55,46 +55,23 @@ static void __tcf_2()
 }
 }
 
-#include "../core/SceneNode.h"
+#include "LODSceneNode.h"
+#include "../core/FactoryProducts.h"
 
-class LODSceneNode : public irr::scene::ISceneNode {
-public:
-    virtual ~LODSceneNode();
-    virtual void OnAnimate(unsigned int time);
-    virtual void render(void* context);
-    virtual int getType() const;
-    virtual void OnRegisterSceneNode();
-    virtual const irr::core::aabbox3d<float>& getTransformedBoundingBox() const;
-    const irr::core::aabbox3d<float>& GetMeshTransformedBoundingBox(const irr::scene::ISceneNode*) const;
-    void computeLODLevel();
-    void setLODNodesRotation(const irr::core::quaternion& rotation);
-    void setLODNodesPosition(const irr::core::vector3d<float>& position);
-    virtual const irr::core::aabbox3d<float>& getBoundingBox() const;
-    const irr::core::aabbox3d<float>& GetMeshBoundingBox(const irr::scene::ISceneNode*) const;
-    int getLODLevel() const;
-    void ComputeLOD(unsigned int time);
-    void setMaxDistance(int distance);
-
-private:
-    template<class T, void (irr::scene::ISceneNode::*SetTransform)(const T&)>
-    inline __attribute__((always_inline)) void setLODNodesTransform(const T& transform)
-    {
-        for (int index = 0; static_cast<unsigned int>(index) < levelCount; ++index)
-            (levels[index].sceneNode->*SetTransform)(transform);
-    }
-
-    struct LODEntry {
-        float distanceSquared;
-        irr::scene::ISceneNode* sceneNode;
-    };
-    LODEntry* levels;
-    unsigned char unknown332[4];
-    unsigned int levelCount;
-    unsigned char unknown340[8];
-    float maxDistanceSquared;
-    float animationTime;
-    int lodLevel;
-};
+LODSceneNode::LODSceneNode(int id, const irr::core::vector3d<float>& position,
+    const irr::core::quaternion& rotation, const irr::core::vector3d<float>& scale)
+    : ISceneNode(id, position, rotation, scale)
+{
+    levels.data = 0;
+    levels.allocated = 0;
+    levels.used = 0;
+    levels.free_when_destroyed = true;
+    levels.is_sorted = true;
+    levels.unknown16 = 1;
+    maxDistanceSquared = 100000000.0f;
+    animationTime = 0.0f;
+    lodLevel = 0;
+}
 
 void LODSceneNode::render(void*)
 {
@@ -126,7 +103,7 @@ int LODSceneNode::getType() const
 
 const irr::core::aabbox3d<float>& LODSceneNode::getBoundingBox() const
 {
-    return GetMeshBoundingBox(levels[lodLevel].sceneNode);
+    return GetMeshBoundingBox(levels.data[lodLevel].sceneNode);
 }
 
 void LODSceneNode::OnRegisterSceneNode()
@@ -134,7 +111,7 @@ void LODSceneNode::OnRegisterSceneNode()
     if (visible) {
         computeLODLevel();
         if (getLODLevel() != -1)
-            levels[lodLevel].sceneNode->OnAnimate(static_cast<unsigned int>(animationTime));
+            levels.data[lodLevel].sceneNode->OnAnimate(static_cast<unsigned int>(animationTime));
     }
 }
 
@@ -151,7 +128,7 @@ const irr::core::aabbox3d<float>& LODSceneNode::GetMeshBoundingBox(
 
 const irr::core::aabbox3d<float>& LODSceneNode::getTransformedBoundingBox() const
 {
-    return GetMeshTransformedBoundingBox(levels[lodLevel].sceneNode);
+    return GetMeshTransformedBoundingBox(levels.data[lodLevel].sceneNode);
 }
 
 void LODSceneNode::setLODNodesPosition(const irr::core::vector3d<float>& position)
@@ -162,4 +139,42 @@ void LODSceneNode::setLODNodesPosition(const irr::core::vector3d<float>& positio
 void LODSceneNode::setLODNodesRotation(const irr::core::quaternion& rotation)
 {
     setLODNodesTransform<irr::core::quaternion, &irr::scene::ISceneNode::setRotation>(rotation);
+}
+
+LODSceneNode::~LODSceneNode()
+{
+    for (int index = 0; static_cast<unsigned int>(index) < levels.used; ++index)
+        levels.data[index].sceneNode->drop();
+    if (__builtin_expect(levels.free_when_destroyed, true))
+        ::operator delete(levels.data);
+}
+
+void LODSceneNode::addAnimator(irr::scene::ISceneNodeAnimator* animator)
+{
+    for (int i = 0; static_cast<unsigned int>(i) < levels.used; ++i)
+        levels.data[i].sceneNode->addAnimator(animator);
+}
+
+void LODSceneNode::removeAnimators()
+{
+    for (int index = 0; static_cast<unsigned int>(index) < levels.used; ++index)
+        levels.data[index].sceneNode->removeAnimators();
+}
+
+void LODSceneNode::addLOD(irr::scene::ISceneNode* node, float distance)
+{
+    int index = 0;
+    for (; static_cast<unsigned int>(index) != levels.used; ++index) {
+        if (distance < levels.data[index].distanceSquared)
+            break;
+    }
+
+    const SLODLevel level = { distance * distance, node };
+    levels.insert(level, index);
+    ++node->references;
+    irr::scene::ISceneNode* parent = node->getParent();
+    addChild(node);
+    if (parent)
+        CCustomSceneManager::CleanParents(parent);
+    node->setVisible(false);
 }

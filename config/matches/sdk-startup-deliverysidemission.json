@@ -25,6 +25,13 @@
     "source": "src/game/missions/DeliverySideMission.cpp",
     "linker_script": "config/linker/DeliverySideMissionSdkStartup.ld",
     "functions": [
+        "_ZN19DeliverySideMission14getObj2MessageEv",
+        "_ZN19DeliverySideMission14getObj1MessageEv",
+        "_ZN19DeliverySideMission13getEndMessageEv",
+        "_ZN19DeliverySideMission15getStartMessageEv",
+        "_ZN19DeliverySideMission3endEv",
+        "_ZN19DeliverySideMission14getMoneyRewardEv",
+        "_ZN19DeliverySideMission14getGoalMessageEv",
         {
             "name": "__tcf_2",
             "address": "0x003465e5"

@@ -53,3 +53,22 @@ static void _GLOBAL__I__ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13onSetMat
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+
+// The remaining renderer virtual methods and vtable are retail imports.
+class CCustomMaterialRenderer_VERTEX_COLOR_ALPHA {
+public:
+    virtual ~CCustomMaterialRenderer_VERTEX_COLOR_ALPHA();
+    virtual bool isTransparent() const;
+    virtual unsigned int getVertexAttributeMask() const;
+};
+
+bool CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::isTransparent() const
+{
+    return false;
+}
+
+unsigned int CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::getVertexAttributeMask() const
+{
+    return 0x15u;
+}

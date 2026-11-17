@@ -28,6 +28,7 @@ public:
     CMatrix4(eConstructor constructor = EM4CONST_IDENTITY);
     CMatrix4(const CMatrix4<T>&, eConstructor) __attribute__((weak));
     inline CMatrix4<T>& makeIdentity();
+    T& mutableElement(unsigned int index) { definitelyIdentityMatrix = false; return M[index]; }
     const T& operator[](unsigned int index) const { return M[index]; }
     void transformBoxEx(aabbox3d<T>& box) const __attribute__((weak));
     CMatrix4<T>& setRotationRadians(const vector3d<T>&) __attribute__((weak));

@@ -28,6 +28,9 @@ public:
     int getPositionAccessor(SAccessorEx<core::vector3d, short>&) const;
 };
 } namespace scene {
+enum E_HARDWARE_MAPPING { EHM_STATIC = 1 };
+enum E_BUFFER_TYPE { EBT_VERTEX_AND_INDEX = 3 };
+
 class IMeshBuffer {
 public:
     virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
@@ -42,6 +45,15 @@ public:
     virtual void unknown16(); virtual void unknown17(); virtual void unknown18();
     virtual const core::vector3d<float>& getPosition(unsigned int) const;
     virtual core::vector3d<float>& getPosition(unsigned int);
+    virtual void unknown21();
+    virtual void unknown22();
+    virtual void unknown23();
+    virtual void unknown24();
+    virtual void unknown25();
+    virtual void unknown26();
+    virtual void unknown27();
+    virtual void unknown28();
+    virtual void setHardwareMappingHint(E_HARDWARE_MAPPING, E_BUFFER_TYPE);
 };
 class IMesh : public virtual IReferenceCounted {
 public:

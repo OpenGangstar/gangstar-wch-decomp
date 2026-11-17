@@ -25,6 +25,13 @@
     "source": "src/game/missions/AmbulanceSideMission.cpp",
     "linker_script": "config/linker/AmbulanceSideMissionAiStartup.ld",
     "functions": [
+        "_ZN20AmbulanceSideMission14getObj2MessageEv",
+        "_ZN20AmbulanceSideMission14getObj1MessageEv",
+        "_ZN20AmbulanceSideMission13getEndMessageEv",
+        "_ZN20AmbulanceSideMission15getStartMessageEv",
+        "_ZN20AmbulanceSideMission3endEv",
+        "_ZN20AmbulanceSideMission14getMoneyRewardEv",
+        "_ZN20AmbulanceSideMission14getGoalMessageEv",
         {
             "name": "__tcf_3",
             "address": "0x00345f65"

@@ -4,6 +4,7 @@
 #include "../core/Vector3.h"
 class b2World;
 class b2Body;
+class b2Shape;
 class b2ContactFilter;
 class b2ContactListener;
 namespace irr { namespace scene { class ISceneNode; } }
@@ -29,6 +30,7 @@ public:
     static b2ContactFilter* s_contactFilter;
     static b2ContactListener* s_contactListener;
     static void InitWorld();
+    static void Clean();
     static void CleanWorld();
     static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);
     static irr::scene::ISceneNode* s_heightmap;
@@ -46,6 +48,11 @@ public:
     irr::core::array<AStarNode> path;
     irr::core::vector3d<float> pathTarget;
     int pathLength;
-    unsigned char unknown52[68];
+    void SetCurrentJumpShape(b2Shape* shape);
+    irr::core::vector3d<float> jumpVertices[4];
+    irr::core::vector3d<float> jumpCenter;
+    bool hasJumpShape;
+    unsigned char jumpFlags;
+    unsigned char unknown114[6];
 };
 #endif

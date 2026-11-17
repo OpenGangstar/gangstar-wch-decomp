@@ -60,6 +60,11 @@ public:
     bool IsSensor() const { return isSensor; }
     b2Body* GetBody() { return body; }
 };
+class b2PolygonShape : public b2Shape {
+    unsigned char unknown41[47];
+public:
+    b2Vec2 vertices[4];
+};
 class b2ContactFilter;
 class b2ContactListener;
 struct b2BodyDef;

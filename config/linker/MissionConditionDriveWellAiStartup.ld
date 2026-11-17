@@ -15,8 +15,23 @@ _ZN44retail_missionconditiondrivewell_transitions11guard_transE = 0x0042b8a4;
 _ZN44retail_missionconditiondrivewell_transitions22scripted_vehicle_transE = 0x0042b94c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+printf = 0x001c4058;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_fcmpge = 0x001c4364;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
 SECTIONS
 {
+    .drive_well_eval 0x00336e10 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWell8evaluateEi) }
+    .drive_well_eval_text 0x0042b300 : { *ai-startup-missionconditiondrivewell.o(.rodata.str1.4) }
+    .drive_well_d0 0x00337310 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWellD0Ev) }
+    .drive_well_d1 0x00337358 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWellD1Ev .text._ZN25MissionConditionDriveWellD2Ev) }
+    .drive_well_vtable 0x004ace60 : { *ai-startup-missionconditiondrivewell.o(.data.rel.ro._ZTV25MissionConditionDriveWell) }
+    .drive_well_ctor 0x00337150 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWellC1EP7Vehicle .text._ZN25MissionConditionDriveWellC2EP7Vehicle) }
+    .condition_draw 0x00336dc0 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWell4drawEv) }
     .wanted_singleton 0x002dba04 : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00336df4 : { *ai-startup-missionconditiondrivewell.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

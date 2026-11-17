@@ -29,13 +29,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00335849 | VehicleCamera::update | vehicle_side | REVIEW | — | src/game/vehicles/VehicleCamera.cpp |
-| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | REVIEW | — | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c49 | GSWeaponShopMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | REVIEW | — | src/game/core/CameraManager.cpp |
+| libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | BLOCKED | — | src/game/core/CameraManager.cpp |
 | libsanangeles.so | 0x00301a3d | PlayerTest::Stop | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00333789 | FollowCamera::init | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00333ab1 | FollowCamera::update | vehicle_side | REVIEW | — | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00333ab1 | FollowCamera::update | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
 | libsanangeles.so | 0x002e1571 | GSCarRepairMenu::draw2d | lock_init | BLOCKED | — | src/game/ui/GSCarRepairMenu.cpp |
 | libsanangeles.so | 0x00334c25 | LockCamera::update | camera_tap | BLOCKED | — | src/game/core/LockCamera.cpp |
 | libsanangeles.so | 0x003017ed | PlayerTest::jumpFinished | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -45,12 +45,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | vehicle_side | REVIEW | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302685 | PlayerTest::UpdateSceneNode | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003013bd | PlayerTest::ResetPlayerTest | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f01 | PlayerTest::setVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003025cd | PlayerTest::isFacingTarget | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x002f42cd | Character::updatePosition | lock_init | REVIEW | — | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f42cd | Character::updatePosition | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x00301911 | PlayerTest::initDriving | vehicle_side | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00334fe9 | SceneCamera::Load | camera_tap | BLOCKED | — | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x0031ff49 | PhysicAttributes::GetHeight (position overload) | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
@@ -63,9 +63,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00334ee5 | SceneCamera::init | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334ee9 | SceneCamera::debug | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334eed | SceneCamera::update | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
-| libsanangeles.so | 0x0031ccf1 | PhysicAttributes::SetCurrentJumpShape | lock_init | REVIEW | — | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031ccf1 | PhysicAttributes::SetCurrentJumpShape | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00301df9 | PlayerTest::finishedStopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00301261 | PlayerTest::_SetTarget | camera_tap | REVIEW | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301261 | PlayerTest::_SetTarget | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030142d | PlayerTest::applyDamage | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301eec | PlayerTest::setVehicle (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -99,7 +99,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00348595 | Trail::Trail (C1/C2 aliases) | — | COMPLETED | 100% | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x003484f5 | Trail::CleanUp | — | COMPLETED | 100% | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x003485f1 | Trail::Update (no arguments) | vehicle_side | BLOCKED | — | src/game/world/Trail.cpp |
-| libsanangeles.so | 0x00348a61 | Trail::AddPoint | camera_tap | REVIEW | — | src/game/world/Trail.cpp |
+| libsanangeles.so | 0x00348a61 | Trail::AddPoint | — | COMPLETED | 100% | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x00348ba5 | Trail::Update (point overload) | — | COMPLETED | 100% | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode | vehicle_side | BLOCKED | — | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x00348735 | Trail::BuildPoint | camera_tap | BLOCKED | — | src/game/world/Trail.cpp |
@@ -260,7 +260,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002fbe15 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D0 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbec1 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbed5 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | camera_tap | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | lock_init | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | lock_init | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
@@ -275,14 +275,14 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d2ac9 | LODSceneNode::GetMeshBoundingBox | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2e95 | LODSceneNode::OnRegisterSceneNode | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2edd | LODSceneNode::GetMeshTransformedBoundingBox | camera_tap | BLOCKED | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel | vehicle_side | BLOCKED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel | lock_init | BLOCKED | — | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2be9 | LODSceneNode::setLODNodesPosition | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2bad | LODSceneNode::setLODNodesRotation | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2c25 | LODSceneNode::removeAnimators | camera_tap | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2c61 | LODSceneNode::addAnimator | lock_init | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2b31 | LODSceneNode::LODSceneNode (C2) | vehicle_side | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2c99 | LODSceneNode::addLOD | camera_tap | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d3281 | LODSceneNode::~LODSceneNode (D2) | lock_init | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c25 | LODSceneNode::removeAnimators | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c61 | LODSceneNode::addAnimator | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2b31 | LODSceneNode::LODSceneNode (C2) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c99 | LODSceneNode::addLOD | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d3281 | LODSceneNode::~LODSceneNode (D2) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002f8351 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f8315 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f8329 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
@@ -290,5 +290,103 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f83c9 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f83dd | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f83f0 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 CSceneNode thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x002d2f51 | LODSceneNode::LODSceneNode (C1) | vehicle_side | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002f7ad9 | CustomBillboardSceneNode::OnAnimate | vehicle_side | ASSIGNED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002d2f51 | LODSceneNode::LODSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate | vehicle_side | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7ff8 | CustomBillboardSceneNode::OnAnimate (thunk) | vehicle_side | REVIEW | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor | camera_tap | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7b3d | CustomBillboardSceneNode::CustomBillboardSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7bf1 | CustomBillboardSceneNode::CustomBillboardSceneNode (C2) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7e51 | CustomBillboardSceneNode::debug | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002d30d1 | virtual thunk to LODSceneNode::~LODSceneNode (D0) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d30e5 | virtual thunk to LODSceneNode::~LODSceneNode (D0) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d30f9 | LODSceneNode::~LODSceneNode (D0) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d31ad | virtual thunk to LODSceneNode::~LODSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d31c1 | virtual thunk to LODSceneNode::~LODSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d31d5 | LODSceneNode::~LODSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002f96e9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C1) | lock_init | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002dc591 | GS3DStuff::parseSceneNodeForLOD | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df34d | GS3DStuff::SetAlpha | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002de5a5 | GS3DStuff::AddToSceneMgr | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002db549 | GS3DStuff::loadPerformanceProfile | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dbde5 | GS3DStuff::setPerformanceType | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002de919 | GS3DStuff::unload | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dc715 | GS3DStuff::checkVehicleProximity | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002deba1 | GS3DStuff::checkPickableProximity | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd0c1 | GS3DStuff::checkForDespawn | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002de6dd | GS3DStuff::PrintNodeProperties | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df419 | GS3DStuff::tearDown | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dce9d | std::string::append(const char*) | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002deebd | GS3DStuff::AddXRef | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*, const char*) | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dad71 | GS3DStuff.cpp::__tcf_8 | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dada9 | GS3DStuff.cpp::__tcf_7 | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x00328df9 | Message::isDisplayed | — | COMPLETED | 100% | src/game/ui/Message.cpp |
+| libsanangeles.so | 0x00334ef1 | SceneCamera.cpp::__tcf_1 | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
+| libsanangeles.so | 0x0034934d | AnimObject::Reset | — | COMPLETED | 100% | src/game/characters/AnimObject.cpp |
+| libsanangeles.so | 0x00349445 | AnimObject::IsAnimOver | vehicle_side | BLOCKED | — | src/game/characters/AnimObject.cpp |
+| libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | lock_init | BLOCKED | — | src/game/ui/menufx.cpp |
+| libsanangeles.so | 0x0032cfb8 | Wheel::processTouch secondary thunk | camera_tap | REVIEW | — | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x00300bc5 | Path::Load | vehicle_side | BLOCKED | — | src/game/world/Path.cpp |
+| libsanangeles.so | 0x0034228d | NPCController::onEvent | camera_tap | BLOCKED | — | src/game/ai/NPCController.cpp |
+| libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | lock_init | BLOCKED | — | src/game/audio/CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x0032d72d | CControlManager::update | vehicle_side | BLOCKED | — | src/game/input/CControlManager.cpp |
+| libsanangeles.so | 0x00354665 | EventManager::_attach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
+| libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
+| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | lock_init | BLOCKED | — | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x003279f5 | Cash::GetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x003279f1 | Cash::SetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x003279e9 | Cash::SetPosition | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x002d6abd | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::getVertexAttributeMask | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6ab9 | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::isTransparent | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x00305b7d | RenderObject::Render | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00336dc1 | MissionConditionDriveWell::draw | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00337d45 | MissionConditionStayBetween::draw | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00305be9 | RenderObject::RenderObject (C1/C2 aliases) | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00305bb1 | RenderObject::~RenderObject (D0) | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00305bd1 | RenderObject::~RenderObject (D1/D2 aliases) | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00337d5d | MissionConditionStayBetween::onEvent | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00337d48 | MissionConditionStayBetween::onEvent (thunk) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x0032d8dd | CDrivingControlHandler::handleAttackReleased | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x003477b9 | SideMissionManager::debug | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00345f31 | AmbulanceSideMission::end | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465b1 | DeliverySideMission::end | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337eb5 | MissionConditionStayBetween constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00345f35 | AmbulanceSideMission::getMoneyReward | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465b5 | DeliverySideMission::getMoneyReward | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00338080 | MissionConditionStayBetween destructor (D0 thunk) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00338095 | MissionConditionStayBetween destructor (D0) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x003380fc | MissionConditionStayBetween destructor (D1 thunk) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00338111 | MissionConditionStayBetween destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00345f3d | AmbulanceSideMission::getGoalMessage | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465bd | DeliverySideMission::getGoalMessage | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337db9 | MissionConditionStayBetween::evaluate | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00345f45 | AmbulanceSideMission::getStartMessage | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465c5 | DeliverySideMission::getStartMessage | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337151 | MissionConditionDriveWell constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00345f4d | AmbulanceSideMission::getEndMessage | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465cd | DeliverySideMission::getEndMessage | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00345f55 | AmbulanceSideMission::getObj1Message | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465d5 | DeliverySideMission::getObj1Message | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337311 | MissionConditionDriveWell destructor (D0) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00337359 | MissionConditionDriveWell destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00345f5d | AmbulanceSideMission::getObj2Message | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465dd | DeliverySideMission::getObj2Message | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00336e11 | MissionConditionDriveWell::evaluate | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00347e59 | TaxiSideMission::end | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e5d | TaxiSideMission::getMoneyReward | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e65 | TaxiSideMission::getGoalMessage | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e6d | TaxiSideMission::getStartMessage | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e75 | TaxiSideMission::getEndMessage | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e7d | TaxiSideMission::getObj1Message | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e85 | TaxiSideMission::getObj2Message | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346b89 | SideMission::getTimer | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00347ebd | TaxiSideMission::clean | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347ee9 | TaxiSideMission::TaxiSideMission (C1/C2 aliases) | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346ba1 | SideMission::getReward | lock_init | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003470d1 | SideMission::updateTimer | lock_init | ASSIGNED | — | src/game/missions/SideMission.cpp.cpp |
+| libsanangeles.so | 0x00347f11 | TaxiSideMission::dropOff | camera_tap | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp.cpp |
+| libsanangeles.so | 0x00347e41 | TaxiSideMission destructor (D1/D2 aliases) | vehicle_side | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |

@@ -9,6 +9,12 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../core/NativeStdio.h"
+#include "../hud/SpyGauge.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../vehicles/Vehicle.h"
+#include "IMissionCondition.h"
 #include "../core/LocalStartupStorage.h"
 #include "WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
@@ -78,4 +84,132 @@ static void _GLOBAL__I__ZN25MissionConditionDriveWellC2EP7Vehicle()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class Vehicle;
+
+class MissionConditionDriveWell : public IMissionCondition {
+public:
+    explicit MissionConditionDriveWell(Vehicle* vehicle);
+    virtual ~MissionConditionDriveWell();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+
+private:
+    Vehicle* vehicle;
+    int vehicleHealth;
+    int wantedLevel;
+    float remainingScore;
+    float speedPenalty;
+    float jumpPenalty;
+    float driftPenalty;
+    float wantedOvertimePenalty;
+};
+
+void MissionConditionDriveWell::draw()
+{
+}
+
+MissionConditionDriveWell::MissionConditionDriveWell(Vehicle* vehicle)
+    : vehicle(vehicle)
+{
+    vehicleHealth = vehicle->getHealth();
+    wantedLevel = WantedLevelManager::getInstance()->unknown8;
+    remainingScore = 1000.0f;
+    speedPenalty = 0.0f;
+    jumpPenalty = 0.0f;
+    driftPenalty = 0.0f;
+    wantedOvertimePenalty = 0.0f;
+    Application::GetInstance()->GetHudManager()->showSpyGauge(true);
+    Application::GetInstance()->GetHudManager()->useDriveWellBGInSpyGauge();
+}
+
+MissionConditionDriveWell::~MissionConditionDriveWell()
+{
+    Application::GetInstance()->GetHudManager()->showSpyGauge(false);
+    Application::GetInstance()->GetHudManager()->useSpyBGInSpyGauge();
+}
+
+bool MissionConditionDriveWell::evaluate(int elapsed)
+{
+    const int health = vehicle->getHealth();
+    if (health != vehicleHealth) {
+        if (health < vehicleHealth) {
+            const float penalty = (vehicleHealth - health) * 5;
+            if (penalty > 0.0f) {
+                printf("Health penalty: %.02f)\n", penalty);
+                remainingScore -= penalty;
+            }
+        }
+        vehicleHealth = health;
+    }
+
+    if (vehicle->unknown511 & 2) {
+        vehicle->unknown511 &= ~2;
+        printf("Run-over pedestrian penalty: %.02f)\n", 20.0);
+        remainingScore -= 20.0f;
+    }
+
+    if (vehicle->GetSpeed() > 75.0f) {
+        const float penalty = (elapsed * 25) / 1000.0f;
+        if (penalty > 0.0f) {
+            speedPenalty += penalty;
+            remainingScore -= penalty;
+        }
+    } else if (speedPenalty > 0.0f) {
+        printf("Speed penalty: %.02f\n", speedPenalty);
+        speedPenalty = 0.0f;
+    }
+
+    if (!vehicle->unknown506 && !vehicle->unknown507 &&
+        !vehicle->unknown508 && !vehicle->unknown509) {
+        const float penalty = (elapsed * 50) / 1000.0f;
+        if (penalty > 0.0f) {
+            jumpPenalty += penalty;
+            remainingScore -= penalty;
+        }
+    } else if (jumpPenalty > 0.0f) {
+        printf("Jump penalty: %.02f\n", jumpPenalty);
+        jumpPenalty = 0.0f;
+    }
+
+    if (vehicle->skidAmount > 0.0f) {
+        const float penalty = (elapsed * 50) / 1000.0f;
+        if (penalty > 0.0f) {
+            driftPenalty += penalty;
+            remainingScore -= penalty;
+        }
+    } else if (driftPenalty > 0.0f) {
+        printf("Drift penalty: %.02f\n", driftPenalty);
+        driftPenalty = 0.0f;
+    }
+
+    const int currentWantedLevel = WantedLevelManager::getInstance()->unknown8;
+    if (currentWantedLevel) {
+        const float scaledElapsed = elapsed * 10;
+        const float penalty = scaledElapsed / 1000.0f;
+        if (penalty > 0.0f) {
+            wantedOvertimePenalty += penalty;
+            remainingScore += scaledElapsed / -1000.0f;
+        }
+    } else if (wantedOvertimePenalty > 0.0f) {
+        printf("Wanted level penalty (OT): %.02f\n", wantedOvertimePenalty);
+        wantedOvertimePenalty = 0.0f;
+    }
+
+    const int previousWantedLevel = wantedLevel;
+    if (currentWantedLevel != previousWantedLevel) {
+        if (currentWantedLevel > previousWantedLevel) {
+            const float penalty = (currentWantedLevel - previousWantedLevel) * 100;
+            if (penalty > 0.0f) {
+                printf("Wanted level penalty (gain): %.02f\n", penalty);
+                remainingScore -= penalty;
+            }
+        }
+        wantedLevel = currentWantedLevel;
+    }
+
+    Application::GetInstance()->GetHudManager()->spyGauge->setPercentage(
+        (1000.0f - remainingScore) / 1000.0f);
+    return remainingScore >= 0.0f;
 }

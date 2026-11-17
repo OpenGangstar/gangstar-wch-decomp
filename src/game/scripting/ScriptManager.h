@@ -32,6 +32,7 @@ public:
     void* getMission() const;
     void* getCinematicsHudSprite() const;
     void* getRace() const;
+    void unload();
     Script** scripts;
     int scriptCapacity;
     int scriptCount;

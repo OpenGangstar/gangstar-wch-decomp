@@ -25,6 +25,7 @@
     "source": "src/game/missions/SideMissionManager.cpp",
     "linker_script": "config/linker/SideMissionManagerAiStartup.ld",
     "functions": [
+        "_ZN18SideMissionManager5debugEv",
         {
             "name": "__tcf_4",
             "address": "0x003477bd"

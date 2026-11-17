@@ -16,6 +16,7 @@ public:
     virtual ~AIManager();
     virtual void onEvent(const IEvent*, const EventManager*);
     static AIManager* getInstance() __attribute__((weak, used));
+    void clean();
     void removeAI(Vehicle* vehicle);
     void removeAI(NPC* npc);
     void addAI(Vehicle* vehicle, gameloft::ai::StateID state);

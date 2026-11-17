@@ -17,6 +17,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .side_mission_timer 0x00346b88 : { *ai-startup-sidemission.o(.text._ZN11SideMission8getTimerEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-sidemission.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x00346d00 : { *ai-startup-sidemission.o(.text.__tcf_1) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-sidemission.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

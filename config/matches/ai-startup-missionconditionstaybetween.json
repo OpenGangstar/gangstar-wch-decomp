@@ -25,6 +25,17 @@
     "source": "src/game/missions/MissionConditionStayBetween.cpp",
     "linker_script": "config/linker/MissionConditionStayBetweenAiStartup.ld",
     "functions": [
+        "_ZN27MissionConditionStayBetween8evaluateEi",
+        "_ZN27MissionConditionStayBetweenD0Ev",
+        "_ZN27MissionConditionStayBetweenD1Ev",
+        "_ZN27MissionConditionStayBetweenD2Ev",
+        "_ZThn4_N27MissionConditionStayBetweenD0Ev",
+        "_ZThn4_N27MissionConditionStayBetweenD1Ev",
+        "_ZN27MissionConditionStayBetweenC1EP11LevelObjectff",
+        "_ZN27MissionConditionStayBetweenC2EP11LevelObjectff",
+        "_ZN27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager",
+        "_ZThn4_N27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager",
+        "_ZN27MissionConditionStayBetween4drawEv",
         {
             "name": "__tcf_3",
             "address": "0x00337d89"
@@ -39,6 +50,14 @@
         }
     ],
     "sections": [
+        ".stay_between_vtable",
+        ".receiver_d0",
+        ".receiver_d1",
+        ".receiver_vtable",
+        ".event_id",
+        ".event_delete",
+        ".event_destructor",
+        ".event_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +67,15 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11CHudManager18useSpyBGInSpyGaugeEv",
+        "_ZN11CHudManager12showSpyGaugeEb",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
+        "_ZN11LevelObject13showHighlightEi",
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN5Gauge13setPercentageEf"
+    ]
 }

@@ -4,8 +4,13 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-custombillboardscenenode/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
 SECTIONS
 {
+    .billboard_debug 0x002f7e50 : { *(.text._ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE) }
+    .billboard_ctor_1 0x002f7b3c : { *(.text._ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
+    .billboard_ctor_2 0x002f7bf0 : { *(.text._ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
     .billboard_render 0x002f7a20 : { *(.text._ZN24CustomBillboardSceneNode6renderEv) }
     .billboard_set_parent 0x002f79e4 : { *(.text._ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE) }
     .billboard_func_0 0x2f8404 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZN24CustomBillboardSceneNodeD1Ev) }

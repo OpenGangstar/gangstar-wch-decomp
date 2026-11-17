@@ -6,8 +6,31 @@ __aeabi_atexit = 0x001c494c;
 __aeabi_ui2f = 0x001c4574;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_f2uiz = 0x00401034;
+__aeabi_fcmplt = 0x001c479c;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_fmul = 0x001c4724;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .lod_ctor_base 0x002d2b30 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_) }
+    .lod_ctor_complete 0x002d2f50 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeC1EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_) }
+    .lod_add_lod 0x002d2c98 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf) }
+    .lod_add_animator 0x002d2c60 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNode11addAnimatorEPN3irr5scene18ISceneNodeAnimatorE) }
+    .lod_remove_animators 0x002d2c24 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNode15removeAnimatorsEv) }
+    .lod_thunk_d0_ref 0x002d30d0 : { *sdk-startup-lodscenenode.o(.text._ZTv0_n12_N12LODSceneNodeD0Ev) }
+    .lod_thunk_d0_attr 0x002d30e4 : { *sdk-startup-lodscenenode.o(.text._ZTv0_n24_N12LODSceneNodeD0Ev) }
+    .lod_d0 0x002d30f8 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeD0Ev) }
+    .lod_thunk_d1_ref 0x002d31ac : { *sdk-startup-lodscenenode.o(.text._ZTv0_n12_N12LODSceneNodeD1Ev) }
+    .lod_thunk_d1_attr 0x002d31c0 : { *sdk-startup-lodscenenode.o(.text._ZTv0_n24_N12LODSceneNodeD1Ev) }
+    .lod_d1 0x002d31d4 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeD1Ev) }
+    .lod_d2 0x002d3280 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeD2Ev) }
+    .lod_vtable 0x004a5e80 : { *(.data.rel.ro._ZTV12LODSceneNode) }
+    .lod_scene_node_construction 0x004a5fe0 : { *(.data.rel.ro._ZTC12LODSceneNode0_N3irr5scene10ISceneNodeE) }
+    .lod_attributes_construction 0x004a6120 : { *(.data.rel.ro._ZTC12LODSceneNode0_N3irr2io26IAttributeExchangingObjectE) }
+    .lod_vtt 0x004a5fc0 : { *(.data.rel.ro._ZTT12LODSceneNode) }
+    .attribute_d0 0x0021a8d4 : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD0Ev) }
+    .attribute_d1 0x0021a91c : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD1Ev) }
+    .attribute_d2 0x0021a958 : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD2Ev) }
     .lod_register 0x002d2e94 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNode19OnRegisterSceneNodeEv) }
     .lod_mesh_bounds 0x002d2ac8 : { *sdk-startup-lodscenenode.o(.text._ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE) }
     .lod_transformed_bounds 0x002d2f30 : { *sdk-startup-lodscenenode.o(.text._ZNK12LODSceneNode25getTransformedBoundingBoxEv) }

@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .scene_factory_cleanup 0x00334ef0 : { *sdk-startup-scenecamera.o(.text.__tcf_1) }
     .scene_camera_init 0x00334ee4 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4initEP11LevelObjecti) }
     .scene_camera_vtable 0x004acd10 : { *sdk-startup-scenecamera.o(.data.rel.ro._ZTV11SceneCamera) }
     .scene_camera_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }

@@ -8,6 +8,17 @@
  * functions of SceneNodeManager.cpp here, in the order they appear in the library.
  */
 
+unsigned int crcReflect(unsigned int value, char bits)
+{
+    unsigned int result = 0;
+    for (int index = 1; index <= bits; ++index) {
+        if (value & 1u)
+            result |= 1u << (bits - index);
+        value >>= 1;
+    }
+    return result;
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -50,17 +61,6 @@ struct SceneNodeManager::Pool {
     int constructedCount;
     std::vector<Node*> nodes;
 };
-
-unsigned int crcReflect(unsigned int value, char bits)
-{
-    unsigned int result = 0;
-    for (int index = 1; index <= bits; ++index) {
-        if (value & 1u)
-            result |= 1u << (bits - index);
-        value >>= 1;
-    }
-    return result;
-}
 
 void SceneNodeManager::setup()
 {

@@ -19,6 +19,7 @@ public:
     virtual void releaseKeyboardKeys();
 
 private:
+    void handleAttackReleased();
     template<bool (EventManager::*operation)(int, IEventReceiver*)>
     inline __attribute__((always_inline)) void updateDrivingEvents();
     unsigned char unknown4[4];

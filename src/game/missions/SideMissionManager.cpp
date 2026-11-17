@@ -79,3 +79,12 @@ static void _GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+class SideMissionManager {
+public:
+    static void debug();
+};
+
+void SideMissionManager::debug()
+{
+}

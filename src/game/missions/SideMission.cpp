@@ -9,6 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "SideMission.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
@@ -79,4 +80,9 @@ static void _GLOBAL__I__ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEf
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+int SideMission::getTimer()
+{
+    return timer;
 }

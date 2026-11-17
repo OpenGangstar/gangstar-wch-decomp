@@ -7,6 +7,7 @@
 // Remaining callback bodies and field meanings are provisional.
 class GSLoading : public StateBase {
 public:
+    static void setGameLoaded(bool);
     GSLoading();
     virtual ~GSLoading();
     virtual void ctor(const StateMachine*);

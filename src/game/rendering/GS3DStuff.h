@@ -10,6 +10,8 @@
 #include "../core/Array.h"
 #include "../core/VideoDriver.h"
 
+class CollisionBodyDef;
+class SpawnPoint;
 class BulletTraceManager;
 class TrailMgr;
 class OctTreeAABB;
@@ -26,7 +28,7 @@ struct PhonePerformanceProfile {
     int unknown0;
     int unknown4;
     char* textureNameSuffix;
-    void Read(DataStream&);
+    void Read(DataStream&) __attribute__((weak));
 };
 }
 
@@ -34,10 +36,18 @@ struct PhonePerformanceProfile {
 // Do not instantiate or infer complete scene-state layout from this prefix.
 struct GS3DLightNodes;
 
+class LODSceneNode;
+
 class GS3DStuff : public StateBase, public IEventReceiver {
 public:
     static GS3DLightNodes lightsNodes;
     static void unload();
+    static irr::scene::ISceneNode* sunNode;
+    static irr::core::array<CollisionBodyDef*>* VisibleNodes;
+    static irr::core::array<CollisionBodyDef*>* LastVisibleNodes;
+    static irr::core::array<irr::scene::ISceneNode*>* VisibleSceneNodes;
+    static irr::core::array<irr::scene::ISceneNode*>* LastVisibleSceneNodes;
+    static irr::core::array<SpawnPoint*>* VisibleSpawnPoint;
     static int s_orientation;
     static bool b_isAutoOri;
     static void SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION orientation);
@@ -58,6 +68,10 @@ public:
     }
     virtual void onEvent(const IEvent*, const EventManager*);
 
+    static LODSceneNode* parseSceneNodeForLOD(irr::scene::ISceneNode* node, LODSceneNode* lod);
+    void AddToSceneMgr(irr::scene::ISceneNode* node, irr::scene::ISceneNode* parent);
+    static void setPerformanceType(const char* name);
+    static void loadPerformanceProfile(const char* name);
     static bool getProperty(const void* properties, const char* name, char* output);
     static BulletTraceManager* GetBulletManager();
     static TrailMgr* GetTrailMgr();
@@ -100,6 +114,7 @@ public:
     static irr::scene::ISceneNode* city;
     static irr::video::ITexture* skyBoxTexture;
     static OctTreeAABB* sceneOcttree;
+    static int s_perfConfig;
     static Structs::PhonePerformanceProfile s_phonePerformanceProfile;
     static unsigned int lastTime;
     static Vehicle* s_vehicle;

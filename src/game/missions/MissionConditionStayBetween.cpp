@@ -9,6 +9,16 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../characters/PlayerTest.h"
+#include "../vehicles/Vehicle.h"
+#include "../hud/SpyGauge.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../core/EventManager.h"
+#include "../characters/NPCEvent.h"
+#include "../ai/NPC.h"
+#include "IMissionCondition.h"
+#include "../core/GameEvents.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -77,4 +87,73 @@ static void _GLOBAL__I__ZN27MissionConditionStayBetweenC2EP11LevelObjectff()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class LevelObject;
+
+class MissionConditionStayBetween : public IMissionCondition, public IEventReceiver {
+public:
+    MissionConditionStayBetween(LevelObject* target, float maxDistance, float minDistance);
+    virtual ~MissionConditionStayBetween();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+    virtual void onEvent(const IEvent* event, const EventManager* manager);
+
+private:
+    LevelObject* target;
+    float maxDistance;
+    float minDistance;
+    bool targetEventReceived;
+};
+
+void MissionConditionStayBetween::draw()
+{
+}
+
+void MissionConditionStayBetween::onEvent(const IEvent* event, const EventManager*)
+{
+    if (event->getEventID() == 16) {
+        const EvNPC* npcEvent = static_cast<const EvNPC*>(event);
+        if (npcEvent->getState() == 9 && npcEvent->getNPC() == target)
+            targetEventReceived = true;
+    }
+}
+
+MissionConditionStayBetween::MissionConditionStayBetween(
+    LevelObject* target, float maxDistance, float minDistance)
+    : target(target), maxDistance(maxDistance), minDistance(minDistance), targetEventReceived(false)
+{
+    Application::GetInstance()->GetHudManager()->useSpyBGInSpyGauge();
+    Application::GetInstance()->GetHudManager()->showSpyGauge(true);
+    Application::GetInstance()->GetEventManager()->attach(16, this);
+    this->target->showHighlight(0);
+}
+
+MissionConditionStayBetween::~MissionConditionStayBetween()
+{
+    Application::GetInstance()->GetHudManager()->showSpyGauge(false);
+    Application::GetInstance()->GetEventManager()->detach(16, this);
+    target->showHighlight(-1);
+}
+
+bool MissionConditionStayBetween::evaluate(int)
+{
+    if (!target || target->isDead() || targetEventReceived)
+        return false;
+
+    PlayerTest* player = PlayerTest::GetPlayer();
+    LevelObject* source =
+        reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(player));
+    if (static_cast<SavePrimaryInterface*>(player)->getVehicle())
+        source = static_cast<SavePrimaryInterface*>(player)->getVehicle();
+
+    const irr::core::vector3d<float> sourcePosition = source->GetPosition();
+    const irr::core::vector3d<float> targetPosition = target->GetPosition();
+    const float distance = (sourcePosition - targetPosition).getLength();
+    if (distance > maxDistance || distance < minDistance)
+        return false;
+
+    Application::GetInstance()->GetHudManager()->spyGauge->setPercentage(
+        (distance - minDistance) / (maxDistance - minDistance));
+    return true;
 }

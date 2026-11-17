@@ -1,4 +1,28 @@
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(_ZdaPv = 0x001c461c);
+PROVIDE(strcmp = 0x001c4658);
+PROVIDE(strlen = 0x001c48bc);
+PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables = 0x004b6a74);
+PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles = 0x004b6a80);
 SECTIONS {
+    .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_7) }
+    .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_8) }
+    .gs_string_append 0x002dce9c : { *gs3d-stuff.o(.text._ZNSs6appendEPKc) }
+    .gs_unload 0x002de918 : { *gs3d-stuff.o(.text._ZN9GS3DStuff6unloadEv) }
+    .gs_global_4b6994 0x004b6994 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff7sunNodeE) }
+    .gs_global_4b69b4 0x004b69b4 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff12VisibleNodesE) }
+    .gs_global_4b69b8 0x004b69b8 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff16LastVisibleNodesE) }
+    .gs_global_4b69bc 0x004b69bc (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff17VisibleSceneNodesE) }
+    .gs_global_4b69c0 0x004b69c0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff21LastVisibleSceneNodesE) }
+    .gs_global_4b69c4 0x004b69c4 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff17VisibleSpawnPointE) }
+    .gs_add_to_scene 0x002de5a4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff13AddToSceneMgrEPN3irr5scene10ISceneNodeES3_) }
+    .gs_load_performance 0x002db548 : { *gs3d-stuff.o(.text._ZN9GS3DStuff22loadPerformanceProfileEPKc) }
+    .gs_set_performance 0x002dbde4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff18setPerformanceTypeEPKc) }
+    .gs_perf_selector 0x004144c4 : { *gs3d-stuff.o(.rodata.perf_selector) }
+    .gs_performance_config 0x004b69e0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff12s_perfConfigE) }
+    .gs_parse_lod 0x002dc590 : { *gs3d-stuff.o(.text._ZN9GS3DStuff20parseSceneNodeForLODEPN3irr5scene10ISceneNodeEP12LODSceneNode) }
+    .gs_lod_distance 0x00412418 : { *gs3d-stuff.o(.rodata.gs_lod_distance) }
+    .gs_lod_maximum 0x00414500 : { *gs3d-stuff.o(.rodata.gs_lod_maximum) }
     .gs_set_current_orientation 0x002dc288 : { *gs3d-stuff.o(.text._ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE) }
     .gs_orientation 0x004b539c : { *gs3d-stuff.o(.data._ZN9GS3DStuff13s_orientationE) }
     .gs_auto_orientation 0x004b53a0 : { *gs3d-stuff.o(.data._ZN9GS3DStuff11b_isAutoOriE) }
