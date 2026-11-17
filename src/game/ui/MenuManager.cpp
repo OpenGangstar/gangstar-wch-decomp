@@ -158,12 +158,14 @@ void MyMenuFX::ClearFocus()
 
 namespace {
 struct MenuManagerFocusFields {
-    unsigned char beforeTutorialIds[72];
+    unsigned char beforeInGameMenu[68];
+    int inGameMenu;
     int tutorialId;
     int tutorialTextId;
     unsigned char beforeMenuFX[108];
     MyMenuFX* menuFX;
-    unsigned char beforeClearingFocus[5];
+    int unknown192;
+    bool widgetVisibility;
     bool clearingFocus;
     unsigned char beforeTextSlots[2];
     int textIds[17];
@@ -411,7 +413,31 @@ extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool vis
 }
 
 extern "C" int strcmp(const char* left, const char* right);
-extern "C" void _ZN11MenuManager3popEb(MenuManager* manager, bool silent);
+extern const char menuMapStateName[] __attribute__((visibility("hidden")));
+
+extern "C" void _ZN11MenuManager3popEb(MenuManager* manager, bool silent)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    bool poppedMap = false;
+    if (manager->getDepth() > 0 &&
+        strcmp(fields.menuFX->GetCurrentState()->getName(), menuMapStateName) == 0) {
+        fields.inGameMenu = 0;
+        poppedMap = true;
+    }
+
+    fields.unknown192 = 0;
+    if (manager->getDepth() > 0)
+        fields.menuFX->PopMenu();
+    if (manager->getDepth() > 0)
+        static_cast<MenuState*>(fields.menuFX->GetCurrentState())->UpdateLocalization();
+
+    if (poppedMap && !silent) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(218, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+}
 
 extern "C" void _ZN11MenuManager5popToEPKcbb(
     MenuManager* manager, const char* name, bool popTarget, bool silent)

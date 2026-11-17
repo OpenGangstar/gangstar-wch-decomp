@@ -354,7 +354,6 @@
     ],
     "external_thumb_functions": [
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
-        "_ZN11MenuManager3popEb",
         "_ZN11MenuManagerD1Ev",
         "_ZNK8RenderFX7GetRootEv",
         "_Z13ekd_debug_outPKcPc",
