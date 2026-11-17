@@ -819,7 +819,10 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00342221 | GuardController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00340985 | CivAgressiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x00340c75 | CivPassiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
-| libsanangeles.so | 0x00340f49 | CopController destructor (D1/D2 aliases) | vehicle_side | REVIEW | pending | src/game/ai/CopController.cpp |
-| libsanangeles.so | 0x003408a9 | CivAgressiveController::switchState | lock_init | ASSIGNED | pending | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00340b6d | CivPassiveController::switchState | camera_tap | ASSIGNED | pending | src/game/ai/CivPassiveController.cpp |
-| libsanangeles.so | 0x00340edd | CopController deleting destructor (D0) | vehicle_side | ASSIGNED | pending | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x00340f49 | CopController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x003408a9 | CivAgressiveController::switchState | lock_init | REVIEW | pending | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x00340b6d | CivPassiveController::switchState | camera_tap | REVIEW | pending | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00340edd | CopController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x00341305 | CopController constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | pending | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x0034084d | CivAgressiveController::onEvent | lock_init | ASSIGNED | pending | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x00340cd5 | CivPassiveController::onEvent | camera_tap | ASSIGNED | pending | src/game/ai/CivPassiveController.cpp |

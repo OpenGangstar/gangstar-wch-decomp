@@ -12200,9 +12200,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00340d69	0x144	CivPassiveController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00340ead	0x14	CivPassiveController.cpp	game	ai	matched	_GLOBAL__I__ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	_GLOBAL__I__ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE
 0x00340ec1	0x1c	CopController.cpp	game	ai	matched	__tcf_3	__tcf_3
-0x00340edd	0x6c	CopController.cpp	game	ai	pending	_ZN13CopControllerD0Ev	CopController::~CopController()
-0x00340f49	0x68	CopController.cpp	game	ai	pending	_ZN13CopControllerD1Ev	CopController::~CopController()
-0x00340f49	0x68	CopController.cpp	game	ai	pending	_ZN13CopControllerD2Ev	CopController::~CopController()
+0x00340edd	0x6c	CopController.cpp	game	ai	matched	_ZN13CopControllerD0Ev	CopController::~CopController()
+0x00340f49	0x68	CopController.cpp	game	ai	matched	_ZN13CopControllerD1Ev	CopController::~CopController()
+0x00340f49	0x68	CopController.cpp	game	ai	matched	_ZN13CopControllerD2Ev	CopController::~CopController()
 0x00340fb1	0x144	CopController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003410f5	0x14	CopController.cpp	game	ai	matched	_GLOBAL__I__ZN13CopController20s_hasAttemptedArrestE	_GLOBAL__I__ZN13CopController20s_hasAttemptedArrestE
 0x00341109	0x30	CopController.cpp	game	ai	matched	__tcf_4	__tcf_4

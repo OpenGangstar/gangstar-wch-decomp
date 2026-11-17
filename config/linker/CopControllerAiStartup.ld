@@ -17,6 +17,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .cop_dtor 0x00340f48 : { *ai-startup-copcontroller.o(.text._ZN13CopControllerD1Ev .text._ZN13CopControllerD2Ev) }
+    .cop_delete 0x00340edc : { *ai-startup-copcontroller.o(.text._ZN13CopControllerD0Ev) }
+    .cop_vtable 0x004acfc8 : { *ai-startup-copcontroller.o(.data.rel.ro._ZTV13CopController) }
     .wanted_singleton 0x002dba04 : { *ai-startup-copcontroller.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00340ec0 : { *ai-startup-copcontroller.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-copcontroller.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

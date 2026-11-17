@@ -79,3 +79,27 @@ static void __tcf_4()
         ::operator delete(value.array);
 }
 }
+
+#include "NPCController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+class CopController : public NPCController {
+public:
+    virtual ~CopController();
+    virtual void onEvent(const IEvent*,const EventManager*);
+    virtual void switchState(gameloft::ai::StateID,gameloft::ai::TransitionCondition);
+    static bool s_hasAttemptedArrest;
+private:
+    unsigned int unknown16;
+    bool unknown20;
+};
+CopController::~CopController()
+{
+    if (unknown20)
+        s_hasAttemptedArrest=false;
+    EventManager* events=Application::GetInstance()->GetEventManager();
+    events->detach(16,this);
+    events->detach(23,this);
+    events->detach(24,this);
+    events->detach(22,this);
+}

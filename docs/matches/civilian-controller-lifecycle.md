@@ -74,3 +74,21 @@ OK  _ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE  0x00340985  96 by
 OK  _ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE  0x00340c75  96 bytes
 OK  _ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE  0x00340c75  96 bytes
 ```
+
+## Cop controller destruction
+
+The cop controller conditionally clears its observed static arrest flag, then
+uses one cached event manager to detach event IDs 16, 23, 24, and 22. Its observed
+Boolean at offset 20 follows the existing 16-byte base and a four-byte opaque
+field. The static flag remains a retail import; no replacement game state is
+introduced.
+
+`python tools/build.py ai-startup-copcontroller` exited 0 with all existing
+function, vtable, startup, and GOT comparisons preserved:
+
+```text
+OK  _ZN13CopControllerD1Ev  0x00340f49  104 bytes
+OK  _ZN13CopControllerD2Ev  0x00340f49  104 bytes
+OK  _ZN13CopControllerD0Ev  0x00340edd  108 bytes
+OK SECTION .cop_vtable  0x004acfc8  24 bytes
+```
