@@ -13,6 +13,11 @@
 #include "../core/LocalStartupText.h"
 #include "Shop.h"
 
+bool Shop::unlocked() const
+{
+    return unknown4 & 1;
+}
+
 bool Shop::triggered() const
 {
     return triggerActive;

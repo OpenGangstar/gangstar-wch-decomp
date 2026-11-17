@@ -29,6 +29,8 @@
         "_ZN20SniperControlHandlerC2EP15CControlManager",
         "_ZN20SniperControlHandler4initEv",
         "_ZN20SniperControlHandler19releaseKeyboardKeysEv",
+        "_ZN20SniperControlHandler15handleStickMoveEP11EvStickMove",
+        "_ZN20SniperControlHandler19handleStickReleasedEb",
         "_ZN20SniperControlHandler8activateEv",
         "_ZN20SniperControlHandler10deactivateEv",
         "_ZN20SniperControlHandlerD0Ev",

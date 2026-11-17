@@ -5,6 +5,7 @@
 
 // Recovered virtual interface. The member layout is still incomplete.
 class CControlManager;
+class EvStickMove;
 
 class SniperControlHandler : public IControlHandler {
 public:
@@ -15,6 +16,8 @@ public:
     virtual void activate();
     virtual void deactivate() __attribute__((noinline));
     virtual void releaseKeyboardKeys();
+    void handleStickMove(EvStickMove*);
+    void handleStickReleased(bool);
 
 private:
     inline __attribute__((always_inline)) void resetInput();

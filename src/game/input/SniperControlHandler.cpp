@@ -99,6 +99,10 @@ void SniperControlHandler::releaseKeyboardKeys()
 {
 }
 
+void SniperControlHandler::handleStickMove(EvStickMove*) {}
+
+void SniperControlHandler::handleStickReleased(bool) {}
+
 inline __attribute__((always_inline)) void SniperControlHandler::resetInput()
 {
     unknown12 = 0;

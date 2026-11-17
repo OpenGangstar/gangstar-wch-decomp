@@ -89,6 +89,7 @@
         "_ZN5Menus8CopBribeD1Ev",
         "_ZN5Menus9CarRepairD0Ev",
         "_ZN5Menus9CarRepairD1Ev",
+        "_ZNK5Menus8MainMenu12GameContinueEv",
         "_ZN5Menus8MainMenuC1Ev",
         "_ZN5Menus8MainMenuC2Ev",
         "_ZN5Menus6SplashC1Ev",
