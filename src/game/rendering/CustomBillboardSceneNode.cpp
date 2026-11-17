@@ -107,3 +107,7 @@ void CustomBillboardSceneNode::setChildrenMaterialFlag(
 void CustomBillboardSceneNode::render()
 {
 }
+
+CustomBillboardSceneNode::~CustomBillboardSceneNode()
+{
+}
