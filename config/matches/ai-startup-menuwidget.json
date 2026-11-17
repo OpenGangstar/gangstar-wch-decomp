@@ -27,6 +27,8 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets12Achievements7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets10Statistics18UpdateLocalizationEv",
         "_ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets7Volumes4HideEb",
         "_ZN7Widgets14ConfirmPayment18UpdateLocalizationEv",
@@ -207,6 +209,7 @@
         }
     ],
     "sections": [
+        ".widget_statistics_entry_format",
         ".widget_confirm_payment_vtable",
         ".widget_confirm_payment_format",
         ".widget_confirm_payment_message",
@@ -339,6 +342,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK18AchievementManager13getStatFromIDEi",
+        "_ZNK18AchievementManager4Stat12formatStringEPc",
         "_ZN12SoundManager12useIPodRadioEv",
         "_ZN12SoundManager15useBuiltInRadioEv",
         "_ZN12SoundManager11setPlaylistEi",

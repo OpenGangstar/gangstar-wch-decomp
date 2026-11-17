@@ -8,6 +8,9 @@ PROVIDE(__aeabi_f2iz = 0x001c44cc);
 PROVIDE(__aeabi_idiv = 0x001c43dc);
 SECTIONS
 {
+    .widget_achievements_event 0x002eeda0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements7OnEventERN8RenderFX5EventE) }
+    .widget_statistics_localization 0x002ee2c0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics18UpdateLocalizationEv) }
+    .widget_statistics_entry_format 0x0041b0e0 : { *ai-startup-menuwidget.o(.rodata.statisticsEntryFormat) }
     .widget_statistics_event 0x002eec14 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE) }
     .widget_confirm_payment_vtable 0x004a9b40 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets14ConfirmPaymentE) }
     .widget_volumes_hide 0x002ecd98 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes4HideEb) }

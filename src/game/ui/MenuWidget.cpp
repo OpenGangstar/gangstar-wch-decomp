@@ -239,7 +239,7 @@ private:
     gameswf::character* animation;
     unsigned char unknown40[56];
     int unknown96;
-    unsigned char unknown100[256];
+    int statisticIds[64];
 };
 
 class Achievements : public MenuWidget {
@@ -667,7 +667,7 @@ Widgets::Statistics::Statistics()
     : MenuWidget(widgetStatisticsName), unknown20(0), unknown24(-1),
       unknown28(0), unknown32(0), animation(0), unknown96(0)
 {
-    memset(unknown100, -1, sizeof(unknown100));
+    memset(statisticIds, -1, sizeof(statisticIds));
     animation = renderFX->Find(widgetStatisticsAnimation);
     renderFX->GotoFrame(animation, 0, false);
 }
@@ -1870,6 +1870,89 @@ void Widgets::Statistics::OnEvent(RenderFX::Event& event)
             renderFX->GotoFrame(animation, unknown32, true);
         unknown24 = -1;
         unknown20 = unknown96 ? (unknown20 + (event.type != 6)) % (unknown96 + 4) : 0;
+        break;
+    }
+    event.consumed = true;
+}
+
+#include "../meta/Achievements.h"
+
+static const char statisticsEntryFormat[] = "widgetStatistics.anim.btnScroll.entry%d";
+
+void Widgets::Statistics::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    MenuManager* menu = MenuManager::getInstance();
+    for (int row = 0; row < 7; ++row) {
+        char name[128];
+        int index = (unknown20 + row) % (unknown96 + 4);
+        if (index < 0)
+            index += unknown96 + 4;
+        if (index < unknown96) {
+            AchievementManager::Stat* stat = AchievementManager::s_achievementManager->getStatFromID(statisticIds[index]);
+            sprintf(name, statisticsEntryFormat, row * 2);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, _ZNK13StringManager9getStringEi(strings, reinterpret_cast<const Structs::Stat*>(stat)->fields[2]), true, false);
+            sprintf(name, statisticsEntryFormat, row * 2 + 1);
+            char value[32];
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, stat->formatString(value), true, false);
+        } else {
+            sprintf(name, statisticsEntryFormat, row * 2);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, localStartupEmptyText, false, false);
+            sprintf(name, statisticsEntryFormat, row * 2 + 1);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, localStartupEmptyText, false, false);
+        }
+    }
+}
+
+void Widgets::Achievements::OnEvent(RenderFX::Event& event)
+{
+    if (strcmp(event.characterName, tutorialScrollButtonLabel) != 0)
+        return;
+
+    switch (event.type) {
+    case 5: {
+        const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+        const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+        const float x = coordinates.x;
+        const float y = coordinates.y;
+        const gameswf::point input(x, y);
+        gameswf::point point;
+        matrix.transform(&point, input);
+
+        if (unknown24 == -1) {
+            const float mouseFrame = point.y / 20.0f;
+            const float currentFrame = widgetAnimationMethods(animation).getCurrentFrame(animation);
+            unknown24 = static_cast<int>(mouseFrame + currentFrame);
+            unknown28 = unknown20 - 1;
+        }
+        const int frameOffset = static_cast<int>(static_cast<float>(unknown24) + point.y / -20.0f);
+        int pageOffset = frameOffset / 70;
+        if (frameOffset < 0)
+            --pageOffset;
+        const int newPage = unknown140 ? (unknown28 + pageOffset) % (unknown140 + 2) : 0;
+        if (unknown20 != newPage) {
+            unknown20 = newPage;
+            if (unknown20 < 0)
+                unknown20 += unknown140 + 2;
+            UpdateLocalization();
+        }
+        if (frameOffset < 0) {
+            const int remainder = frameOffset % 70;
+            unknown32 = 69 - (remainder < 0 ? -remainder : remainder);
+        } else {
+            unknown32 = frameOffset % 70;
+        }
+        renderFX->GotoFrame(animation, unknown32, false);
+        break;
+    }
+    case 6:
+        _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+        // Fall through to finish the gesture.
+    case 1:
+        if (getCharacterPlayState(animation) != 0)
+            renderFX->GotoFrame(animation, unknown32, true);
+        unknown24 = -1;
+        unknown20 = unknown140 ? (unknown20 + (event.type != 6)) % (unknown140 + 2) : 0;
         break;
     }
     event.consumed = true;
