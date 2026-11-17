@@ -1,5 +1,6 @@
 sprintf = 0x001c46ac;
 strcmp = 0x001c4658;
+strstr = 0x001c446c;
 fclose = 0x001c4628;
 feof = 0x001c41c0;
 ftell = 0x001c45f8;
@@ -27,6 +28,7 @@ SECTIONS
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
     .menu_manager_instance_cleanup 0x002e62b0 : { *menu-manager-helpers.o(.text.__tcf_7) }
     .menu_manager_widget_visibility 0x002e49ac : { *menu-manager-helpers.o(.text._ZN11MenuManager22updateWidgetVisibilityEv) }
+    .menu_manager_free_texture 0x002e4a14 : { *menu-manager-helpers.o(.text._ZN11MenuManager11freeTextureEPKc) }
     .menu_font_file 0x002e48e8 : { *menu-manager-helpers.o(.text._Z12get_fontfilePKcbbPci) }
     .menu_requested_font_format 0x00418d74 : { *menu-manager-helpers.o(.rodata.requestedFontFormat) }
     .menu_asian_font_file_format 0x00418d80 : { *menu-manager-helpers.o(.rodata.asianFontFileFormat) }
