@@ -840,5 +840,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003520c1 | RadioStationController::selectRandomJingle | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x003522b1 | RadioStationController::selectRandomSong | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x00352335 | RadioStationController constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | pending | src/game/ai/RadioStationController.cpp |
-| libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | camera_tap | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | lock_init | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | camera_tap | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031a40d | PhysicAttributes::FindLowerCostNode | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | camera_tap | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |

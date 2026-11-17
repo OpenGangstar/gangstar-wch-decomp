@@ -83,17 +83,7 @@ static void __tcf_4()
 #include "NPCController.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
-class CopController : public NPCController {
-public:
-    CopController(NPC*, gameloft::ai::StateID);
-    virtual ~CopController();
-    virtual void onEvent(const IEvent*,const EventManager*);
-    virtual void switchState(gameloft::ai::StateID,gameloft::ai::TransitionCondition);
-    static bool s_hasAttemptedArrest;
-private:
-    unsigned int unknown16;
-    bool unknown20;
-};
+#include "CopController.h"
 CopController::~CopController()
 {
     if (unknown20)
