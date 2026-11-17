@@ -11774,13 +11774,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334779	0x6c	FreeLookCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003347e5	0x14	FreeLookCamera.cpp	game	core	matched	_GLOBAL__I__ZN14FreeLookCameraC2Ev	_GLOBAL__I__ZN14FreeLookCameraC2Ev
 0x003347f9	0x234	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FreeLookCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
-0x00334a2d	0x2	LockCamera.cpp	game	core	pending	_ZN10LockCamera5debugEPN3irr5video12IVideoDriverE	LockCamera::debug(irr::video::IVideoDriver*)
+0x00334a2d	0x2	LockCamera.cpp	game	core	matched	_ZN10LockCamera5debugEPN3irr5video12IVideoDriverE	LockCamera::debug(irr::video::IVideoDriver*)
 0x00334a31	0x30	LockCamera.cpp	game	core	matched	__tcf_3	__tcf_3
-0x00334a61	0x20	LockCamera.cpp	game	core	pending	_ZN10LockCameraD2Ev	LockCamera::~LockCamera()
-0x00334a61	0x20	LockCamera.cpp	game	core	pending	_ZN10LockCameraD1Ev	LockCamera::~LockCamera()
+0x00334a61	0x20	LockCamera.cpp	game	core	matched	_ZN10LockCameraD2Ev	LockCamera::~LockCamera()
+0x00334a61	0x20	LockCamera.cpp	game	core	matched	_ZN10LockCameraD1Ev	LockCamera::~LockCamera()
 0x00334a81	0x178	LockCamera.cpp	game	core	pending	_ZN10LockCamera4initEP11LevelObjecti	LockCamera::init(LevelObject*, int)
-0x00334bf9	0x2c	LockCamera.cpp	game	core	pending	_ZN10LockCameraC2EP11LevelObject	LockCamera::LockCamera(LevelObject*)
-0x00334bf9	0x2c	LockCamera.cpp	game	core	pending	_ZN10LockCameraC1EP11LevelObject	LockCamera::LockCamera(LevelObject*)
+0x00334bf9	0x2c	LockCamera.cpp	game	core	matched	_ZN10LockCameraC2EP11LevelObject	LockCamera::LockCamera(LevelObject*)
+0x00334bf9	0x2c	LockCamera.cpp	game	core	matched	_ZN10LockCameraC1EP11LevelObject	LockCamera::LockCamera(LevelObject*)
 0x00334c25	0x168	LockCamera.cpp	game	core	pending	_ZN10LockCamera6updateEf	LockCamera::update(float)
 0x00334d8d	0x144	LockCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00334ed1	0x14	LockCamera.cpp	game	core	matched	_GLOBAL__I__ZN10LockCameraC2EP11LevelObject	_GLOBAL__I__ZN10LockCameraC2EP11LevelObject
