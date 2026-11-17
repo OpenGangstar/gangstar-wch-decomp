@@ -692,5 +692,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c0c5 | DataReloaderManager destructor (D1/D2 aliases) | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap | vehicle_side | ASSIGNED | pending | src/game/ui/MenuManager.cpp |
-| libsanangeles.so | 0x0034c2e1 | DataReloaderManager deleting destructor (D0) | lock_init | ASSIGNED | pending | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002d3349 | SwfFree | camera_tap | ASSIGNED | pending | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x0034c2e1 | DataReloaderManager deleting destructor (D0) | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002d3349 | SwfFree | camera_tap | REVIEW | pending | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3355 | IrrFree | camera_tap | ASSIGNED | pending | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3339 | CustomFree | lock_init | ASSIGNED | pending | src/game/core/Memory.cpp |
