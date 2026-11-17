@@ -13,6 +13,7 @@ public:
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);
     State* GetCurrentState();
+    State* GetStateHandler(gameswf::character* character);
     bool IsStateInStack(State* state);
 
 private:
