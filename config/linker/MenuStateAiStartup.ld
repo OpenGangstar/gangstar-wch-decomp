@@ -22,6 +22,27 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .weapon_shop_widget_ids 0x0041a69c : { *ai-startup-menustate.o(.rodata._ZZN5Menus17ServiceWeaponShopC1EPKcE*) }
+    .mainMenu_constructor 0x002e7dd0 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuC1Ev .text._ZN5Menus8MainMenuC2Ev) }
+    .mainMenu_name 0x00413c7c : { *ai-startup-menustate.o(.rodata.mainMenuName) }
+    .splash_constructor 0x002e7e24 : { *ai-startup-menustate.o(.text._ZN5Menus6SplashC1Ev .text._ZN5Menus6SplashC2Ev) }
+    .splash_name 0x00418710 : { *ai-startup-menustate.o(.rodata.splashName) }
+    .serviceCarRental_constructor 0x002e8350 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRentalC1EPKc .text._ZN5Menus16ServiceCarRentalC2EPKc) }
+    .serviceWeaponShop_constructor 0x002e83a0 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShopC1EPKc .text._ZN5Menus17ServiceWeaponShopC2EPKc) }
+    .map_constructor 0x002e8450 : { *ai-startup-menustate.o(.text._ZN5Menus3MapC1Ev .text._ZN5Menus3MapC2Ev) }
+    .map_name 0x0040b608 : { *ai-startup-menustate.o(.rodata.mapName) }
+    .achievement_constructor 0x002e84a4 : { *ai-startup-menustate.o(.text._ZN5Menus11AchievementC1Ev .text._ZN5Menus11AchievementC2Ev) }
+    .achievement_name 0x00419ef4 : { *ai-startup-menustate.o(.rodata.achievementName) }
+    .blockingTutorial_constructor 0x002ea0d8 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorialC1Ev .text._ZN5Menus16BlockingTutorialC2Ev) }
+    .blockingTutorial_name 0x00414c84 : { *ai-startup-menustate.o(.rodata.blockingTutorialName) }
+    .inGameCarRental_constructor 0x002ea14c : { *ai-startup-menustate.o(.text._ZN5Menus15InGameCarRentalC1Ev .text._ZN5Menus15InGameCarRentalC2Ev) }
+    .inGameCarRental_name 0x00415844 : { *ai-startup-menustate.o(.rodata.inGameCarRentalName) }
+    .inGameWeaponShop_constructor 0x002ea1b4 : { *ai-startup-menustate.o(.text._ZN5Menus16InGameWeaponShopC1Ev .text._ZN5Menus16InGameWeaponShopC2Ev) }
+    .inGameWeaponShop_name 0x00418720 : { *ai-startup-menustate.o(.rodata.inGameWeaponShopName) }
+    .copBribe_constructor 0x002ea28c : { *ai-startup-menustate.o(.text._ZN5Menus8CopBribeC1Ev .text._ZN5Menus8CopBribeC2Ev) }
+    .copBribe_name 0x00415268 : { *ai-startup-menustate.o(.rodata.copBribeName) }
+    .carRepair_constructor 0x002ea2b8 : { *ai-startup-menustate.o(.text._ZN5Menus9CarRepairC1Ev .text._ZN5Menus9CarRepairC2Ev) }
+    .carRepair_name 0x00415e24 : { *ai-startup-menustate.o(.rodata.carRepairName) }
     .in_game_menu_deleting_destructor 0x002e9a0c : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenuD0Ev .gnu.linkonce.t._ZN5Menus10InGameMenuD0Ev) }
     .in_game_menu_complete_destructor 0x002e9a34 : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenuD1Ev .gnu.linkonce.t._ZN5Menus10InGameMenuD1Ev .text._ZN5Menus10InGameMenuD2Ev .gnu.linkonce.t._ZN5Menus10InGameMenuD2Ev) }
     .infos_deleting_destructor 0x002e9aa8 : { *ai-startup-menustate.o(.text._ZN5Menus5InfosD0Ev .gnu.linkonce.t._ZN5Menus5InfosD0Ev) }
