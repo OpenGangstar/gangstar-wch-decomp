@@ -23,6 +23,8 @@ public:
 
 protected:
     virtual bool IsModal() const;
+    virtual void GotFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
     virtual Widgets::Confirm* GetWidget();
 
 private:
