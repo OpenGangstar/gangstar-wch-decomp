@@ -71,6 +71,31 @@ public:
     virtual void OnFSCommand(const char* command, const char* args);
 };
 
+class InfoHelp : public Infos {
+public:
+    InfoHelp();
+    virtual ~InfoHelp();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
+};
+
+struct HelpCategory {
+    int title;
+    int firstPage;
+    int endPage;
+};
+
+static const HelpCategory s_helpCategories[] = {
+    {4193, 4194, 4195},
+    {4196, 4197, 4200},
+    {4201, 4202, 4205},
+    {4206, 4207, 4208},
+    {4209, 4210, 4212},
+    {4219, 4220, 4221},
+};
+static int s_helpPageCount;
+
 class Options : public InGameMenu {
 public:
     explicit Options(const char* name);
@@ -308,6 +333,22 @@ Menus::InfoAbout::InfoAbout()
     unknown105 = true;
     const int widgetId = 14;
     widgetIds.append(&widgetId, 1);
+}
+
+static const char infoHelpName[] = "InfoHelp";
+
+Menus::InfoHelp::InfoHelp()
+    : Infos(infoHelpName)
+{
+    int ids[3];
+    ids[0] = 18;
+    ids[1] = 15;
+    ids[2] = 13;
+    widgetIds.append(ids, 3);
+    if (s_helpPageCount == 0) {
+        for (unsigned i = 0; i < sizeof(s_helpCategories) / sizeof(s_helpCategories[0]); ++i)
+            s_helpPageCount += s_helpCategories[i].endPage - s_helpCategories[i].firstPage;
+    }
 }
 
 Menus::Options::Options(const char* name)
@@ -588,6 +629,10 @@ Menus::InfoStatistics::~InfoStatistics()
 }
 
 Menus::InfoAchievements::~InfoAchievements()
+{
+}
+
+Menus::InfoHelp::~InfoHelp()
 {
 }
 
