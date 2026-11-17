@@ -34,3 +34,16 @@ OK  _ZN20CivPassiveControllerD2Ev  0x00340c35  64 bytes
 OK  _ZN20CivPassiveControllerD0Ev  0x00340bf1  68 bytes
 OK SECTION .civ_passive_vtable  0x004acfb0  24 bytes
 ```
+
+## Guard controller
+
+The guard controller reuses the same two event detachments and native base
+cleanup. `python tools/build.py ai-startup-guardcontroller` exited 0 with all
+existing comparisons preserved:
+
+```text
+OK  _ZN15GuardControllerD1Ev  0x00341d25  64 bytes
+OK  _ZN15GuardControllerD2Ev  0x00341d25  64 bytes
+OK  _ZN15GuardControllerD0Ev  0x00341d65  68 bytes
+OK SECTION .guard_vtable  0x004ad000  24 bytes
+```

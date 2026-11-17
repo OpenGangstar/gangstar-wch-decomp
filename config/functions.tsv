@@ -12221,9 +12221,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003419f9	0x14	CopVehicleController.cpp	game	ai	matched	_GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	_GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE
 0x00341a0d	0x30	CopVehicleController.cpp	game	ai	matched	__tcf_5	__tcf_5
 0x00341a3d	0x2e8	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleController7onEventEPK6IEventPK12EventManager	CopVehicleController::onEvent(IEvent const*, EventManager const*)
-0x00341d25	0x40	GuardController.cpp	game	ai	pending	_ZN15GuardControllerD2Ev	GuardController::~GuardController()
-0x00341d25	0x40	GuardController.cpp	game	ai	pending	_ZN15GuardControllerD1Ev	GuardController::~GuardController()
-0x00341d65	0x44	GuardController.cpp	game	ai	pending	_ZN15GuardControllerD0Ev	GuardController::~GuardController()
+0x00341d25	0x40	GuardController.cpp	game	ai	matched	_ZN15GuardControllerD2Ev	GuardController::~GuardController()
+0x00341d25	0x40	GuardController.cpp	game	ai	matched	_ZN15GuardControllerD1Ev	GuardController::~GuardController()
+0x00341d65	0x44	GuardController.cpp	game	ai	matched	_ZN15GuardControllerD0Ev	GuardController::~GuardController()
 0x00341da9	0x144	GuardController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00341eed	0x14	GuardController.cpp	game	ai	matched	_GLOBAL__I__ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE	_GLOBAL__I__ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE
 0x00341f01	0x30	GuardController.cpp	game	ai	matched	__tcf_3	__tcf_3

@@ -78,3 +78,18 @@ static void __tcf_3()
         ::operator delete(value.array);
 }
 }
+
+#include "NPCController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+class GuardController : public NPCController {
+public:
+    virtual ~GuardController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition);
+};
+GuardController::~GuardController()
+{
+    Application::GetInstance()->GetEventManager()->detach(16, this);
+    Application::GetInstance()->GetEventManager()->detach(22, this);
+}

@@ -15,6 +15,9 @@ _ZN34retail_guardcontroller_transitions11guard_transE = 0x00431d14;
 _ZN34retail_guardcontroller_transitions22scripted_vehicle_transE = 0x00431dbc;
 SECTIONS
 {
+    .guard_dtor 0x00341d24 : { *ai-startup-guardcontroller.o(.text._ZN15GuardControllerD1Ev .text._ZN15GuardControllerD2Ev) }
+    .guard_delete 0x00341d64 : { *ai-startup-guardcontroller.o(.text._ZN15GuardControllerD0Ev) }
+    .guard_vtable 0x004ad000 : { *ai-startup-guardcontroller.o(.data.rel.ro._ZTV15GuardController) }
     .ai_startup_function_0 0x00341f00 : { *ai-startup-guardcontroller.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00341da8 : { *ai-startup-guardcontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00341eec : { *ai-startup-guardcontroller.o(.text._GLOBAL__I__ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE) }
