@@ -9,6 +9,13 @@
  */
 
 #include "GSWeaponShopMenu.h"
+#include "../app/Application.h"
+#include "../characters/PlayerTest.h"
+#include "../core/CameraManager.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+#include "../scripting/ScriptManager.h"
 
 #include "../core/LocalStartupStorage.h"
 
@@ -44,6 +51,26 @@ GSWeaponShopMenu::GSWeaponShopMenu() {}
 void GSWeaponShopMenu::update(StateMachine*) {}
 
 void GSWeaponShopMenu::draw(const StateMachine*) {}
+
+void GSWeaponShopMenu::dtor(const StateMachine*)
+{
+    MenuManager::getInstance()->showTexts();
+    Application::GetInstance()->GetHudManager()->show();
+    ScriptManager::getInstance()->resume();
+    CameraManager::getInstance()->setTouchScreenInputs(true);
+}
+
+void GSWeaponShopMenu::ctor(const StateMachine*)
+{
+    PlayerTest::GetPlayer()->Stop();
+    Application* app = Application::GetInstance();
+    app->GetTouchScreen()->clear();
+    ScriptManager::getInstance()->pause();
+    app->GetHudManager()->hide();
+    MenuManager::getInstance()->hideTexts();
+    MenuManager::getInstance()->push("InGameWeaponShop", false);
+    CameraManager::getInstance()->setTouchScreenInputs(false);
+}
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)
