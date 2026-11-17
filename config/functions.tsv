@@ -9577,7 +9577,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e7355	0x30	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14GetOrientationEv	Menus::OptionGameSettings::GetOrientation()
 0x002e7385	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm9ConfirmedEv	Menus::Confirm::Confirmed() const
 0x002e738d	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus8MainMenu12GameContinueEv	Menus::MainMenu::GameContinue() const
-0x002e7395	0x6	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu8SetPauseEb	Menus::MainMenu::SetPause(bool)
+0x002e7395	0x6	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu8SetPauseEb	Menus::MainMenu::SetPause(bool)
 0x002e739d	0x12	MenuState.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP6ScriptSaIS2_EED1Ev	stlp_priv::_Vector_base<Script*, std::allocator<Script*> >::~_Vector_base()
 0x002e73b1	0x30	MenuState.cpp	game	ui	matched	__tcf_6	__tcf_6
 0x002e73e1	0x34	MenuState.cpp	gameswf	-	matched	_ZNK7gameswf8weak_ptrINS_9characterEE11check_proxyEv	gameswf::weak_ptr<gameswf::character>::check_proxy() const
@@ -9663,7 +9663,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e86bd	0x20	MenuState.cpp	game	ui	pending	_ZN5Menus15InGameCarRental4HideEv	Menus::InGameCarRental::Hide()
 0x002e86dd	0x20	MenuState.cpp	game	ui	pending	_ZN5Menus16InGameWeaponShop4HideEv	Menus::InGameWeaponShop::Hide()
 0x002e86fd	0xf8	MenuState.cpp	game	ui	pending	_ZN9MenuState8GotFocusEv	MenuState::GotFocus()
-0x002e87f5	0x84	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu8GotFocusEv	Menus::MainMenu::GotFocus()
+0x002e87f5	0x84	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu8GotFocusEv	Menus::MainMenu::GotFocus()
 0x002e8879	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus6Dialog8GotFocusEv	Menus::Dialog::GotFocus()
 0x002e8899	0x10	MenuState.cpp	game	ui	matched	_ZN5Menus7Confirm8GotFocusEv	Menus::Confirm::GotFocus()
 0x002e88a9	0x2a	MenuState.cpp	game	ui	matched	_ZN5Menus10InGameMenu8GotFocusEv	Menus::InGameMenu::GotFocus()
@@ -9790,7 +9790,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ea3b9	0x7c	MenuState.cpp	game	ui	matched	_ZN5Menus16BlockingTutorial6NotifyEPK10MenuWidgeti	Menus::BlockingTutorial::Notify(MenuWidget const*, int)
 0x002ea435	0x44	MenuState.cpp	game	ui	matched	_ZN5Menus8Tutorial4ShowEv	Menus::Tutorial::Show()
 0x002ea479	0x220	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti	Menus::MainMenu::Notify(MenuWidget const*, int)
-0x002ea699	0x15c	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu6UpdateEv	Menus::MainMenu::Update()
+0x002ea699	0x15c	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu6UpdateEv	Menus::MainMenu::Update()
 0x002ea7f5	0x130	MenuState.cpp	game	ui	pending	_ZN5Menus5Infos6NotifyEPK10MenuWidgeti	Menus::Infos::Notify(MenuWidget const*, int)
 0x002ea925	0xe0	MenuState.cpp	game	ui	pending	_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti	Menus::InfoAchievements::Notify(MenuWidget const*, int)
 0x002eaa05	0x11c	MenuState.cpp	game	ui	pending	_ZN5Menus8InfoHelp6NotifyEPK10MenuWidgeti	Menus::InfoHelp::Notify(MenuWidget const*, int)

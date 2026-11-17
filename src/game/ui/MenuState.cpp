@@ -17,7 +17,10 @@
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
 #include "../audio/SoundManager.h"
+#include "../app/Application.h"
 #include "../persistence/DataStream.h"
+#include "../persistence/FileStream.h"
+#include "../persistence/SaveGame.h"
 #include "../world/ResStream.h"
 
 extern "C" {
@@ -212,6 +215,7 @@ protected:
     bool unknown104;
     bool unknown105;
     bool unknown106;
+    bool paused;
 };
 
 class Splash : public MenuState {
@@ -1065,6 +1069,78 @@ void Menus::OptionVolumes::LostFocus()
 {
     Options::GotFocus();
     static_cast<MenuWidget*>(getWidgetByIndex(7))->SetListener(0);
+}
+
+extern "C" void _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(void*, int, int, bool, bool);
+
+void Menus::MainMenu::GotFocus()
+{
+    MenuState::GotFocus();
+    MenuWidget* menu = static_cast<MenuWidget*>(getWidgetByIndex(0));
+    menu->SetListener(this);
+    _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(menu, 0, 0x1025, FileStream::Exist(SaveGame::GetDefaultFilename()), true);
+    _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(menu, 1, 0x1022, true, true);
+    _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(menu, 2, 0x102e, true, true);
+    _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(menu, 3, 0x101d, true, true);
+}
+
+extern "C" {
+void nativeNotifyPause();
+void nativeExit();
+void _ZN11Application4QuitEv(Application*);
+void* _ZN12StateMachine11getInstanceEv() __attribute__((weak));
+void* _ZN12StateMachine11switchStateI9GSLoadingEEPT_v(void*) __attribute__((weak));
+}
+
+namespace {
+const char confirmMenuName[] __attribute__((section(".rodata.main_menu_confirm"))) = "Confirm";
+}
+void Menus::MainMenu::Update()
+{
+    MenuState::Update();
+    if (unknown105) {
+        unknown105 = false;
+        Confirm* confirmation = static_cast<Confirm*>(MenuManager::getInstance()->getState(confirmMenuName));
+        if (confirmation->Confirmed()) {
+            unknown104 = false;
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            _ZN12StateMachine11switchStateI9GSLoadingEEPT_v(_ZN12StateMachine11getInstanceEv());
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    }
+    if (unknown106) {
+        unknown106 = false;
+        Confirm* confirmation = static_cast<Confirm*>(MenuManager::getInstance()->getState(confirmMenuName));
+        if (confirmation->Confirmed()) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            _ZN11Application4QuitEv(Application::GetInstance());
+            nativeExit();
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    } else if (paused) {
+        paused = false;
+        MenuManager::getInstance()->getState(confirmMenuName);
+        nativeNotifyPause();
+    }
+}
+
+void Menus::MainMenu::SetPause(bool value)
+{
+    paused = value;
 }
 
 void Menus::MainMenu::LostFocus()

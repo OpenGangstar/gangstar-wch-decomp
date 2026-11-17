@@ -112,6 +112,10 @@ SECTIONS
     .car_repair_vtable 0x004a97e8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus9CarRepairE .gnu.linkonce.d.rel.ro._ZTVN5Menus9CarRepairE) }
     .weapon_shop_widget_ids 0x0041a69c : { *ai-startup-menustate.o(.rodata._ZZN5Menus17ServiceWeaponShopC1EPKcE*) }
     .mainMenu_game_continue 0x002e738c : { *ai-startup-menustate.o(.text._ZNK5Menus8MainMenu12GameContinueEv) }
+    .main_menu_set_pause 0x002e7394 : { *(.text._ZN5Menus8MainMenu8SetPauseEb) }
+    .main_menu_got_focus 0x002e87f4 : { *(.text._ZN5Menus8MainMenu8GotFocusEv) }
+    .main_menu_update 0x002ea698 : { *(.text._ZN5Menus8MainMenu6UpdateEv) }
+    .main_menu_confirm 0x00418138 : { *(.rodata.main_menu_confirm) }
     .mainMenu_constructor 0x002e7dd0 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuC1Ev .text._ZN5Menus8MainMenuC2Ev) }
     .mainMenu_name 0x00413c7c : { *ai-startup-menustate.o(.rodata.mainMenuName) }
     .splash_constructor 0x002e7e24 : { *ai-startup-menustate.o(.text._ZN5Menus6SplashC1Ev .text._ZN5Menus6SplashC2Ev) }
