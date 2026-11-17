@@ -155,6 +155,24 @@ void CameraManager::clean()
     s_cm = 0;
 }
 
+void CameraManager::goToSide(bool left)
+{
+    const irr::core::vector3d<float> position = vehicleCamera->getPosition();
+    const irr::core::vector3d<float> lookAt = vehicleCamera->getLookAt();
+    vehicleCamera->goToSide(left);
+    positionTransition.begin(position, vehicleCamera->getPosition(), 0.3f);
+    targetTransition.begin(lookAt, vehicleCamera->getLookAt(), 0.3f);
+}
+
+void CameraManager::goBehind(LevelObject* object)
+{
+    const irr::core::vector3d<float> position = followCamera->getPosition();
+    const irr::core::vector3d<float> lookAt = followCamera->getLookAt();
+    followCamera->goBehind(object);
+    positionTransition.begin(position, followCamera->getPosition(), 0.3f);
+    targetTransition.begin(lookAt, followCamera->getLookAt(), 0.3f);
+}
+
 void CameraManager::enterMode(int newMode, LevelObject* newTarget, float transition, int flags)
 {
     flag154 = false;

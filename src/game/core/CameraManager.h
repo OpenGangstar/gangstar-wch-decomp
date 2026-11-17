@@ -51,6 +51,8 @@ public:
     void debug(irr::video::IVideoDriver*);
     void setSceneCamera(SceneCamera* scene);
     void update(float);
+    void goToSide(bool left);
+    void goBehind(LevelObject* object);
     void enterMode(int mode, LevelObject* target, float transition, int flags);
     void setTouchScreenInputs(bool);
     virtual bool isUsed() const;
