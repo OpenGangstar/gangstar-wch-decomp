@@ -216,6 +216,22 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
 }
 
+struct MovieRenderFX {
+    unsigned char prefix[0x5c];
+    RenderFX* renderFX;
+};
+
+struct MovieWeakReference {
+    int references;
+    bool alive;
+};
+
+struct CharacterMovie {
+    unsigned char prefix[0x70];
+    MovieWeakReference* reference;
+    MovieRenderFX* movie;
+};
+
 struct EventListenerMethods {
     void (*onEvent)();
     void (*onFSCommand)(RenderFX::EventListener*, const char*, const char*);
@@ -448,6 +464,25 @@ gameswf::tu_file* file_opener(const char* name)
 
 void fs_callback(gameswf::character*, const char*, const char*)
 {
+}
+
+void fscommand_callback_handler(gameswf::character* character, const char* command, const char* args)
+{
+    CharacterMovie& state = *reinterpret_cast<CharacterMovie*>(character);
+    MovieRenderFX* movie = state.movie;
+    if (movie) {
+        MovieWeakReference* reference = state.reference;
+        if (!reference->alive) {
+            if (reference) {
+                if (--reference->references == 0)
+                    delete reference;
+                state.reference = 0;
+            }
+            state.movie = 0;
+            movie = 0;
+        }
+    }
+    movie->renderFX->FSCommand(command, args);
 }
 
 void RenderFX::FSCommand(const char* command, const char* args)
