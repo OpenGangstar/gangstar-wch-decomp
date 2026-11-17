@@ -10025,7 +10025,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1439	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject12photographedEv	LevelObject::photographed()
 0x002f143d	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject17clearPhotographedEv	LevelObject::clearPhotographed()
 0x002f1441	0x4	LevelObject.cpp	game	world	matched	_ZNK11LevelObject14isPhotographedEv	LevelObject::isPhotographed() const
-0x002f1445	0x4	LevelObject.cpp	game	world	pending	_ZN11LevelObject12setAnimationEiibbb	LevelObject::setAnimation(int, int, bool, bool, bool)
+0x002f1445	0x4	LevelObject.cpp	game	world	matched	_ZN11LevelObject12setAnimationEiibbb	LevelObject::setAnimation(int, int, bool, bool, bool)
 0x002f1449	0x8	Character.cpp	game	characters	matched	_ZN9Character12getSpawnTypeEv	Character::getSpawnType()
 0x002f1451	0x8	Character.cpp	game	characters	matched	_ZN9Character12setSpawnTypeEi	Character::setSpawnType(int)
 0x002f1459	0x6	Character.cpp	game	characters	matched	_ZNK9Character10getVehicleEv	Character::getVehicle() const
@@ -10159,7 +10159,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f74f9	0x4	LevelObject.cpp	game	world	matched	_ZN11LevelObject11getSkinMeshEv	LevelObject::getSkinMesh()
 0x002f74fd	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject11applyDamageEiPS_b	LevelObject::applyDamage(int, LevelObject*, bool)
 0x002f7501	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject27setAnimationSpeedMultiplierEi	LevelObject::setAnimationSpeedMultiplier(int)
-0x002f7505	0x4	LevelObject.cpp	game	world	pending	_ZN11LevelObject12setAnimationEPKcibbb	LevelObject::setAnimation(char const*, int, bool, bool, bool)
+0x002f7505	0x4	LevelObject.cpp	game	world	matched	_ZN11LevelObject12setAnimationEPKcibbb	LevelObject::setAnimation(char const*, int, bool, bool, bool)
 0x002f7509	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject16setNextAnimationEPKcibbb	LevelObject::setNextAnimation(char const*, int, bool, bool, bool)
 0x002f750d	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject16setNextAnimationEiibbb	LevelObject::setNextAnimation(int, int, bool, bool, bool)
 0x002f7511	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject7shootedEiPS_	LevelObject::shooted(int, LevelObject*)
@@ -10481,7 +10481,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305d35	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI15GSCarRentalMenuEEPT_v	GSCarRentalMenu* StateMachine::pushState<GSCarRentalMenu>()
 0x00305d55	0x2c	Shop.cpp	game	ui	pending	_ZN4ShopC2Ei	Shop::Shop(int)
 0x00305d55	0x2c	Shop.cpp	game	ui	pending	_ZN4ShopC1Ei	Shop::Shop(int)
-0x00305d81	0x70	Shop.cpp	game	ui	pending	_ZN4Shop4LoadERKN7Structs14CheckpointShopE	Shop::Load(Structs::CheckpointShop const&)
+0x00305d81	0x70	Shop.cpp	game	ui	matched	_ZN4Shop4LoadERKN7Structs14CheckpointShopE	Shop::Load(Structs::CheckpointShop const&)
 0x00305df1	0x38	Shop.cpp	game	ui	pending	_ZN4ShopD2Ev	Shop::~Shop()
 0x00305df1	0x38	Shop.cpp	game	ui	pending	_ZN4ShopD1Ev	Shop::~Shop()
 0x00305e29	0x134	Shop.cpp	game	ui	pending	_ZN4Shop7triggerEb	Shop::trigger(bool)

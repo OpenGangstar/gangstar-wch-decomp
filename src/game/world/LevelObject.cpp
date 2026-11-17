@@ -90,6 +90,16 @@ void __attribute__((weak)) LevelObject::applyDamage(int, LevelObject*, bool) {}
 
 void __attribute__((weak)) LevelObject::setAnimationSpeedMultiplier(int) {}
 
+bool __attribute__((weak)) LevelObject::setAnimation(const char*, int, bool, bool, bool)
+{
+    return false;
+}
+
+bool __attribute__((weak)) LevelObject::setAnimation(int, int, bool, bool, bool)
+{
+    return false;
+}
+
 void __attribute__((weak)) LevelObject::setNextAnimation(const char*, int, bool, bool, bool) {}
 
 void __attribute__((weak)) LevelObject::setNextAnimation(int, int, bool, bool, bool) {}

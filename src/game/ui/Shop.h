@@ -11,6 +11,8 @@ public:
     int getId();
     void Load(const Structs::CheckpointShop&);
 private:
+    static int s_numShopWeapon;
+    static int s_numShopRental;
     int shopId;
     bool triggerActive;
     unsigned char unknown105[3];

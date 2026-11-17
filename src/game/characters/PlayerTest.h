@@ -47,7 +47,7 @@ public:
     virtual void unknown32();
     virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
     virtual void unknown34();
-    virtual void setAnimation(const char* name, int speed, bool a, bool b, bool c);
+    virtual bool setAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void unknown36();
     virtual void unknown37();
     virtual void unknown38();

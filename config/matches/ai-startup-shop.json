@@ -25,6 +25,7 @@
     "source": "src/game/ui/Shop.cpp",
     "linker_script": "config/linker/ShopAiStartup.ld",
     "functions": [
+        "_ZN4Shop4LoadERKN7Structs14CheckpointShopE",
         "_ZNK4Shop8unlockedEv",
         "_ZNK4Shop9triggeredEv",
         "_ZN4Shop5getIdEv",
@@ -59,6 +60,10 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11LevelObject11GetMetatypeEv",
+        "_ZN10Checkpoint4LoadERKN7Structs10CheckpointE",
+        "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"
     ]

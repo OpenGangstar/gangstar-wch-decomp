@@ -236,10 +236,10 @@ void Character::setAnimationSpeedMultiplier(int speed)
     animationSpeedMultiplier = speed;
 }
 
-void Character::setAnimation(const char* name, int speed, bool a, bool b, bool c)
+bool Character::setAnimation(const char* name, int speed, bool a, bool b, bool c)
 {
     const int id = s_timelineController->getClipIndex(name);
-    setAnimation(id, static_cast<float>(speed), a, b, c);
+    return setAnimation(id, static_cast<float>(speed), a, b, c);
 }
 
 void Character::resetAnimation()

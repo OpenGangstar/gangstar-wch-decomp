@@ -95,3 +95,30 @@ static void __tcf_4()
         ::operator delete(value.array);
 }
 }
+
+#include "../world/ObjectData.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MiniMap.h"
+int Shop::s_numShopWeapon;
+int Shop::s_numShopRental;
+
+void Shop::Load(const Structs::CheckpointShop& data)
+{
+    Checkpoint::Load(data);
+    radius = data.unknown88;
+    static_cast<LevelObject*>(this)->setAnimation(0, 1, true, false, false);
+
+    MiniMap* minimap = static_cast<MiniMap*>(Application::GetInstance()->GetHudManager()->minimap);
+    if (minimap)
+        minimap->registerForMapTracking(this, false);
+
+    switch (GetMetatype()) {
+    case 31:
+        shopId = s_numShopRental++;
+        break;
+    case 33:
+        shopId = s_numShopWeapon++;
+        break;
+    }
+}
