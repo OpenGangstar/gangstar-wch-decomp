@@ -74,6 +74,8 @@ SECTIONS {
     .level_hook_clear_photo 0x2f143c : { *level-object.o(.text._ZN11LevelObject17clearPhotographedEv .gnu.linkonce.t._ZN11LevelObject17clearPhotographedEv) }
     .level_hook_set_spawn 0x2f74cc : { *level-object.o(.text._ZN11LevelObject12setSpawnTypeEi .gnu.linkonce.t._ZN11LevelObject12setSpawnTypeEi) }
     .level_hook_damage 0x2f74fc : { *level-object.o(.text._ZN11LevelObject11applyDamageEiPS_b .gnu.linkonce.t._ZN11LevelObject11applyDamageEiPS_b) }
+    .level_hook_anim_id 0x002f1444 : { *level-object.o(.text._ZN11LevelObject12setAnimationEiibbb) }
+    .level_hook_anim_name 0x002f7504 : { *level-object.o(.text._ZN11LevelObject12setAnimationEPKcibbb) }
     .level_hook_anim_speed 0x2f7500 : { *level-object.o(.text._ZN11LevelObject27setAnimationSpeedMultiplierEi .gnu.linkonce.t._ZN11LevelObject27setAnimationSpeedMultiplierEi) }
     .level_hook_next_named 0x2f7508 : { *level-object.o(.text._ZN11LevelObject16setNextAnimationEPKcibbb .gnu.linkonce.t._ZN11LevelObject16setNextAnimationEPKcibbb) }
     .level_hook_next_id 0x2f750c : { *level-object.o(.text._ZN11LevelObject16setNextAnimationEiibbb .gnu.linkonce.t._ZN11LevelObject16setNextAnimationEiibbb) }
