@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .driving_disable_accelerometer 0x0032d944 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler20disableAccelerometerEv) }
     .driving_held 0x0032d924 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler16handleAttackHeldEv) }
     .driving_pressed 0x0032d934 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler19handleAttackPressedEv) }
     .driving_weapon_switched 0x0032d910 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler20handleWeaponSwitchedEv) }

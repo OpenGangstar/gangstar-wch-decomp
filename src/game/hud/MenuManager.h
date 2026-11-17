@@ -20,6 +20,7 @@ class MenuWidget;
 
 class MenuManager {
 public:
+    void updateLocalization();
     MenuManager();
     virtual ~MenuManager();
     static MenuManager* getInstance();
@@ -50,6 +51,7 @@ public:
     MenuFXPrefix* getMenuFX();
     int isInGameMenu() const;
     unsigned int consumedCursors() const;
+    void draw(const class StateMachine*);
     void initMap();
     void updateMap();
     void updateMarkers();

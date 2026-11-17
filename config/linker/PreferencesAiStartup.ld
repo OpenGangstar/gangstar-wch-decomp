@@ -13,8 +13,18 @@ _ZN30retail_preferences_transitions17civ_vehicle_transE = 0x00433414;
 _ZN30retail_preferences_transitions17cop_vehicle_transE = 0x004334a4;
 _ZN30retail_preferences_transitions11guard_transE = 0x00433558;
 _ZN30retail_preferences_transitions22scripted_vehicle_transE = 0x00433600;
+sprintf = 0x001c46ac;
 SECTIONS
 {
+    .preferences_vtable 0x004ad128 : { *ai-startup-preferences.o(.data.rel.ro._ZTV11Preferences) }
+    .preferences_dtor 0x003437f0 : { *ai-startup-preferences.o(.text._ZN11PreferencesD1Ev .text._ZN11PreferencesD2Ev) }
+    .preferences_delete 0x003437c8 : { *ai-startup-preferences.o(.text._ZN11PreferencesD0Ev) }
+    .preferences_filename_format 0x00419e70 : { *ai-startup-preferences.o(.rodata.preferenceFilenameFormat) }
+    .preferences_filename 0x0043304c : { *ai-startup-preferences.o(.rodata.preferenceFilename) }
+    .preferences_filename_storage 0x004bab68 (NOLOAD) : { *ai-startup-preferences.o(.bss._ZZN11Preferences18GetDefaultFilenameEvE14preferenceFile) }
+    .preferences_default_filename 0x00343784 : { *ai-startup-preferences.o(.text._ZN11Preferences18GetDefaultFilenameEv) }
+    .preferences_ctor 0x00343810 : { *ai-startup-preferences.o(.text._ZN11PreferencesC1Ev .text._ZN11PreferencesC2Ev) }
+    .preferences_exist 0x00343760 : { *ai-startup-preferences.o(.text._ZN11Preferences5ExistEPKc) }
     .ai_startup_function_0 0x00343730 : { *ai-startup-preferences.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00343c98 : { *ai-startup-preferences.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00343ddc : { *ai-startup-preferences.o(.text._GLOBAL__I__ZN11PreferencesC2Ev) }
@@ -46,3 +56,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+ASSERT(SIZEOF(.preferences_filename_storage) == 256, "preferences filename extent");

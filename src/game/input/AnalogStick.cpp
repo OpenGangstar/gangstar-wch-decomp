@@ -21,6 +21,7 @@
 #include "TouchScreenBase.h"
 #include "AnalogStick.h"
 #include "StickReleaseEvents.h"
+#include "StickMoveEvent.h"
 #include "../hud/HudDrawColor.h"
 
 inline AnalogStick::~AnalogStick()
@@ -78,10 +79,7 @@ void AnalogStick::draw2d() const
 }
 
 // Event declarations for the recovered destructor and vtable layout.
-class EvStickMove : public IEvent {
-public:
-    virtual ~EvStickMove() __attribute__((used)) {}
-};
+inline __attribute__((used)) EvStickMove::~EvStickMove() {}
 
 class EvUpDownStickMove : public IEvent {
 public:

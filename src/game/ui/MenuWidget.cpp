@@ -19,6 +19,9 @@
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
+#include "../rendering/FlashMatrix.h"
+#include "../audio/SoundManager.h"
+#include "../core/NativeStrings.h"
 #include "../hud/MenuManager.h"
 
 extern "C" {
@@ -171,7 +174,7 @@ struct MenuButtonInfo {
 
 class IGMenu : public MenuWidget {
 public:
-    enum eButton { Invalid = -1, First, Second, Third, Fourth, Fifth };
+    enum eButton { Invalid = -1, First, Second, Third, Fourth, Fifth, ButtonForceWidth = 0x7fffffff };
     IGMenu();
     virtual void Show();
     virtual void Disable();
@@ -236,7 +239,7 @@ private:
     gameswf::character* animation;
     unsigned char unknown40[56];
     int unknown96;
-    unsigned char unknown100[256];
+    int statisticIds[64];
 };
 
 class Achievements : public MenuWidget {
@@ -664,7 +667,7 @@ Widgets::Statistics::Statistics()
     : MenuWidget(widgetStatisticsName), unknown20(0), unknown24(-1),
       unknown28(0), unknown32(0), animation(0), unknown96(0)
 {
-    memset(unknown100, -1, sizeof(unknown100));
+    memset(statisticIds, -1, sizeof(statisticIds));
     animation = renderFX->Find(widgetStatisticsAnimation);
     renderFX->GotoFrame(animation, 0, false);
 }
@@ -1388,5 +1391,751 @@ void Widgets::Shop::UpdateLocalization()
             renderFX->SetText(name, availabilityTextId == -1 || (item.flags & 2)
                 ? localStartupEmptyText : _ZNK13StringManager9getStringEi(strings, availabilityTextId), true);
         }
+    }
+}
+
+namespace Widgets {
+class About : public MenuWidget {
+public:
+    About();
+    void Update(bool advanceFirst);
+    virtual void Show();
+    virtual void Enable();
+    virtual void Disable();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int page;
+    int unknown24;
+    int unknown28;
+    int unknown32;
+    gameswf::character* animation;
+    gameswf::character* credits[12];
+};
+}
+
+void Widgets::About::Enable()
+{
+    MenuWidget::Enable();
+    page = 0;
+    renderFX->GotoFrame(animation, 0, true);
+}
+
+void Widgets::About::Disable()
+{
+    MenuWidget::Disable();
+    unknown32 = widgetAnimationMethods(animation).getCurrentFrame(animation);
+    renderFX->GotoFrame(animation, unknown32, false);
+}
+
+void Widgets::About::Update(bool advanceFirst)
+{
+    if (getCharacterPlayState(animation) == 0) {
+        if (advanceFirst)
+            page = (page + 1) % 280;
+        UpdateLocalization();
+        page = (page + 1) % 280;
+    }
+}
+
+static const char aboutWidgetName[] = "widgetAbout";
+static const char aboutCreditFormat[] = "txtAbout%d";
+
+Widgets::About::About()
+    : MenuWidget(aboutWidgetName), page(0), unknown24(-1), unknown28(0), unknown32(0), animation(0)
+{
+    char name[64];
+    for (int index = 0; index < 12; ++index) {
+        sprintf(name, aboutCreditFormat, index);
+        credits[index] = renderFX->Find(name);
+    }
+}
+
+static const char aboutAnimationName[] = "widgetAbout.anim";
+
+void Widgets::About::Show()
+{
+    MenuWidget::Show();
+    page = 0;
+    if (!animation)
+        animation = renderFX->Find(aboutAnimationName);
+    renderFX->GotoFrame(animation, 0, true);
+}
+
+extern "C" {
+const gameswf::matrix& _ZN7gameswf9character16get_world_matrixEv(gameswf::character* character);
+}
+
+static const char aboutTextButtonName[] = "btnTexts";
+
+void Widgets::About::OnEvent(RenderFX::Event& event)
+{
+    if (strcmp(event.characterName, aboutTextButtonName) != 0)
+        return;
+
+    switch (event.type) {
+    case 5: {
+        const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+        const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+        const float x = coordinates.x;
+        const float y = coordinates.y;
+        const gameswf::point input(x, y);
+        gameswf::point point;
+        matrix.transform(&point, input);
+
+        if (unknown24 == -1) {
+            const float mouseFrame = point.y / 20.0f;
+            const float currentFrame = widgetAnimationMethods(animation).getCurrentFrame(animation);
+            unknown24 = static_cast<int>(mouseFrame + currentFrame);
+            unknown28 = page - 1;
+        }
+        const int frameOffset = static_cast<int>(static_cast<float>(unknown24) + point.y / -20.0f);
+        int pageOffset = frameOffset / 20;
+        if (frameOffset < 0)
+            --pageOffset;
+        const int newPage = (unknown28 + pageOffset) % 280;
+        if (page != newPage) {
+            page = newPage;
+            UpdateLocalization();
+        }
+        if (frameOffset < 0) {
+            const int remainder = frameOffset % 20;
+            unknown32 = 19 - (remainder < 0 ? -remainder : remainder);
+        } else {
+            unknown32 = frameOffset % 20;
+        }
+        renderFX->GotoFrame(animation, unknown32, false);
+        break;
+    }
+    case 6:
+        _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+        // Fall through to finish the gesture.
+    case 1:
+        if (getCharacterPlayState(animation) != 0)
+            renderFX->GotoFrame(animation, unknown32, true);
+        unknown24 = -1;
+        page = (page + (event.type != 6)) % 280;
+        break;
+    }
+    event.consumed = true;
+}
+
+extern "C" char* strcat(char*, const char*);
+extern "C" void _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+    MenuManager*, gameswf::character*, const char*, bool, bool);
+
+static const char aboutVersionToken[] = "%v";
+static const char aboutVersionFormat[] = "%i.%i.%i";
+
+void Widgets::About::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    MenuManager* menu = MenuManager::getInstance();
+    for (int i = 0; i < 12; ++i) {
+        char buffer[512];
+        int index = (page + i) % 280;
+        if (index < 0)
+            index += 280;
+        strcpy(buffer, _ZNK13StringManager9getStringEi(strings, 0xb000 + index));
+        char* token = strstr(buffer, aboutVersionToken);
+        if (token) {
+            *token = 0;
+            char version[16];
+            sprintf(version, aboutVersionFormat, 3, 5, 0);
+            strcat(buffer, version);
+        }
+        _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+            menu, credits[i], buffer, true, false);
+    }
+}
+
+namespace Widgets {
+class MapLegend : public MenuWidget {
+public:
+    MapLegend();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int textIds[8];
+    bool expanded;
+};
+}
+
+static const char widgetMapLegendName[] = "widgetMapLegend";
+
+Widgets::MapLegend::MapLegend() : MenuWidget(widgetMapLegendName), expanded(false)
+{
+    textIds[0] = 0x105c;
+    textIds[1] = 0x105b;
+    textIds[2] = 0x1054;
+    textIds[3] = 0x1056;
+    textIds[4] = 0x1057;
+    textIds[5] = 0x105a;
+    textIds[6] = 0x1059;
+    textIds[7] = 0x1058;
+}
+
+static const char mapLegendButton[] = "widgetMapLegend.btnLegend";
+
+void Widgets::MapLegend::Show()
+{
+    MenuWidget::Show();
+    renderFX->GotoFrame(character, expanded ? objectiveOpen : objectiveClose, false);
+    renderFX->GotoFrame(mapLegendButton, expanded ? objectiveOpen : objectiveClose, false);
+}
+
+static const char mapLegendRowLabelFormat[] = "widgetMapLegend.group.txt%d";
+static const char mapLegendButtonText[] = "widgetMapLegend.btnLegend.text";
+
+void Widgets::MapLegend::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    MenuManager::getInstance();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    for (int row = 0; row < 8; ++row) {
+        if (textIds[row] != -1) {
+            char name[128];
+            sprintf(name, mapLegendRowLabelFormat, row);
+            _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, textIds[row]), true);
+        }
+    }
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mapLegendButtonText, _ZNK13StringManager9getStringEi(strings, 0x1052), true);
+}
+
+static const char corruptButtonName[] = "btnCorrupt";
+
+void Widgets::Corruption::OnEvent(RenderFX::Event& event)
+{
+    if (event.type != 6 || strcmp(event.characterName, corruptButtonName) != 0)
+        return;
+
+    if (listener)
+        listener->Notify(this, 1);
+    event.consumed = true;
+}
+
+extern "C" void _ZN11MenuManager3popEb(MenuManager*, bool);
+static const char demoBuyConfirmButtonName[] = "btnBuy";
+static const char menuBackButtonName[] = "btnBack";
+
+void Widgets::DemoBuy::OnEvent(RenderFX::Event& event)
+{
+    const char* name = event.characterName;
+    if (event.type == 6) {
+        if (strcmp(name, demoBuyConfirmButtonName) == 0)
+            event.consumed = true;
+        else if (strcmp(name, menuBackButtonName) == 0)
+            _ZN11MenuManager3popEb(MenuManager::getInstance(), true);
+    }
+}
+
+static const char demoBuyConfirmText[] = "widgetBuy.btnBuy.text";
+static const char demoBuyBackText[] = "widgetBuy.btnBack.text";
+static const char demoBuyDescription0[] = "widgetBuy.groupTxt.txtBuy0";
+static const char demoBuyDescription1[] = "widgetBuy.groupTxt.txtBuy1";
+
+void Widgets::DemoBuy::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyConfirmText, _ZNK13StringManager9getStringEi(strings, 0x1080), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyBackText, _ZNK13StringManager9getStringEi(strings, 0x1027), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyDescription0, _ZNK13StringManager9getStringEi(strings, 0x1081), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyDescription1, _ZNK13StringManager9getStringEi(strings, 0x1082), true);
+}
+
+static const char tutorialOkButton[] = "btnOk";
+
+void Widgets::BlockingTutorial::OnEvent(RenderFX::Event& event)
+{
+    Tutorial::OnEvent(event);
+    if (event.consumed || event.type != 6 || strcmp(event.characterName, tutorialOkButton) != 0)
+        return;
+
+    if (listener)
+        listener->Notify(this, 1);
+    event.consumed = true;
+}
+
+static const char tutorialCloseButtonLabel[] = "btnClose";
+static const char tutorialScrollButtonLabel[] = "btnScroll";
+static const char tutorialPartFormat[] = "%s%s";
+static const char tutorialScrollPart[] = ".group.btnScroll";
+static const char tutorialArrowUpPart[] = ".group.arrowUp";
+static const char tutorialArrowDownPart[] = ".group.arrowDown";
+
+namespace {
+struct TutorialCharacterName {
+    unsigned char unknown0[136];
+    unsigned char inlineName[12];
+    const char* heapName;
+
+    const char* c_str() const
+    {
+        return inlineName[0] == 255 ? heapName : reinterpret_cast<const char*>(inlineName + 1);
+    }
+};
+
+inline const char* tutorialCharacterName(const gameswf::character* character)
+{
+    return reinterpret_cast<const TutorialCharacterName*>(character)->c_str();
+}
+}
+
+void Widgets::Tutorial::OnEvent(RenderFX::Event& event)
+{
+    switch (event.type) {
+    case 1:
+        if (unknown20 != -1 && strstr(event.characterName, widgetButtonPrefix) == event.characterName) {
+            unknown20 = -1;
+            cursorPressed = false;
+            MenuManager::getInstance()->consumeCursor();
+        }
+        event.consumed = true;
+        break;
+    case 4:
+        cursorPressed = true;
+        MenuManager::getInstance()->consumeCursor();
+        event.consumed = true;
+        break;
+    case 5:
+        if (unknown36 > 75 && cursorPressed && strcmp(tutorialScrollButtonLabel, event.characterName) == 0) {
+            const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+            const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+            const gameswf::point input(coordinates.x, coordinates.y);
+            gameswf::point point;
+            matrix.transform(&point, input);
+
+            if (unknown20 == -1) {
+                unknown20 = static_cast<int>(point.y / 20.0f);
+                unknown28 = unknown24;
+            }
+            unknown24 = unknown28 + static_cast<int>(unknown20 + point.y / -20.0f) / 3;
+            if (unknown24 < 0)
+                unknown24 = 0;
+            if (unknown24 > 24)
+                unknown24 = 24;
+
+            char name[64];
+            sprintf(name, tutorialPartFormat, tutorialCharacterName(character), tutorialScrollPart);
+            renderFX->GotoFrame(name, unknown24, false);
+            sprintf(name, tutorialPartFormat, tutorialCharacterName(character), tutorialArrowUpPart);
+            renderFX->SetVisible(name, unknown24 > 0);
+            sprintf(name, tutorialPartFormat, tutorialCharacterName(character), tutorialArrowDownPart);
+            renderFX->SetVisible(name, unknown24 < 24);
+            MenuManager::getInstance()->consumeCursor();
+        }
+        event.consumed = true;
+        break;
+    case 6:
+        if (strcmp(tutorialCloseButtonLabel, event.characterName) != 0) {
+            unknown20 = -1;
+            cursorPressed = false;
+            MenuManager::getInstance()->consumeCursor();
+            break;
+        }
+        if (listener)
+            listener->Notify(this, 1);
+        event.consumed = true;
+        break;
+    }
+}
+
+static const char igMenuButtonName[] = "btnMenu";
+
+void Widgets::IGMenu::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    MenuManager::getInstance();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+
+    switch (event.type) {
+    case 0:
+    case 1: {
+        const char* name = event.characterName;
+        if (strstr(name, igMenuButtonName)) {
+            if (activeButton == name[7] - '0')
+                SetActiveButton(static_cast<eButton>(activeButton), true);
+            event.consumed = true;
+        } else if (strcmp(name, menuBackButtonName) == 0) {
+            MenuManager* manager = MenuManager::getInstance();
+            const char* text = _ZNK13StringManager9getStringEi(strings, backButtonTextId);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuBackText, text, true, false);
+        }
+        break;
+    }
+    case 6: {
+        const char* name = event.characterName;
+        if (strcmp(name, menuBackButtonName) == 0) {
+            if (listener)
+                listener->Notify(this, 1);
+            event.consumed = true;
+        } else if (strstr(name, igMenuButtonName)) {
+            const int current = activeButton;
+            const int button = name[7] - '0';
+            if (current != button) {
+                pressedButton = button;
+                if (listener)
+                    listener->Notify(this, 2);
+            } else {
+                SetActiveButton(static_cast<eButton>(current), true);
+            }
+            event.consumed = true;
+        }
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+void Widgets::Volumes::Hide(bool animate)
+{
+    if (selectedPlaylist != s_playlist) {
+        if (s_playlist == -2) {
+            SoundManager::getInstance()->useBuiltInRadio();
+        } else {
+            SoundManager::getInstance()->useIPodRadio();
+            SoundManager::getInstance()->setPlaylist(s_playlist);
+        }
+    }
+    if (!SoundManager::getInstance()->isLowFpsMusicPlaying())
+        SoundManager::getInstance()->stop(35, -1, 0);
+    MenuWidget::Hide(animate);
+}
+
+static const char confirmPaymentFormat[] = "%s <font color=\"#00CC66\">%s</font>";
+static const char confirmPaymentMessagePath[] = "widgetConfirm.txtMessage";
+
+void Widgets::ConfirmPayment::UpdateLocalization()
+{
+    Confirm::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    const int id = GetMessageId();
+    const char* message = id == -1 ? localStartupEmptyText : _ZNK13StringManager9getStringEi(strings, id);
+    char text[1024];
+    sprintf(text, confirmPaymentFormat, message, strings->formatAmount(price, true, true));
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, confirmPaymentMessagePath, text, true);
+}
+
+void Widgets::Statistics::OnEvent(RenderFX::Event& event)
+{
+    if (strcmp(event.characterName, tutorialScrollButtonLabel) != 0)
+        return;
+
+    switch (event.type) {
+    case 5: {
+        const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+        const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+        const float x = coordinates.x;
+        const float y = coordinates.y;
+        const gameswf::point input(x, y);
+        gameswf::point point;
+        matrix.transform(&point, input);
+
+        if (unknown24 == -1) {
+            const float mouseFrame = point.y / 20.0f;
+            const float currentFrame = widgetAnimationMethods(animation).getCurrentFrame(animation);
+            unknown24 = static_cast<int>(mouseFrame + currentFrame);
+            unknown28 = unknown20 - 1;
+        }
+        const int frameOffset = static_cast<int>(static_cast<float>(unknown24) + point.y / -20.0f);
+        int pageOffset = frameOffset / 36;
+        if (frameOffset < 0)
+            --pageOffset;
+        const int newPage = unknown96 ? (unknown28 + pageOffset) % (unknown96 + 4) : 0;
+        if (unknown20 != newPage) {
+            unknown20 = newPage;
+            if (unknown20 < 0)
+                unknown20 += unknown96 + 4;
+            UpdateLocalization();
+        }
+        if (frameOffset < 0) {
+            const int remainder = frameOffset % 36;
+            unknown32 = 35 - (remainder < 0 ? -remainder : remainder);
+        } else {
+            unknown32 = frameOffset % 36;
+        }
+        renderFX->GotoFrame(animation, unknown32, false);
+        break;
+    }
+    case 6:
+        _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+        // Fall through to finish the gesture.
+    case 1:
+        if (getCharacterPlayState(animation) != 0)
+            renderFX->GotoFrame(animation, unknown32, true);
+        unknown24 = -1;
+        unknown20 = unknown96 ? (unknown20 + (event.type != 6)) % (unknown96 + 4) : 0;
+        break;
+    }
+    event.consumed = true;
+}
+
+#include "../meta/Achievements.h"
+
+static const char statisticsEntryFormat[] = "widgetStatistics.anim.btnScroll.entry%d";
+
+void Widgets::Statistics::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    MenuManager* menu = MenuManager::getInstance();
+    for (int row = 0; row < 7; ++row) {
+        char name[128];
+        int index = (unknown20 + row) % (unknown96 + 4);
+        if (index < 0)
+            index += unknown96 + 4;
+        if (index < unknown96) {
+            AchievementManager::Stat* stat = AchievementManager::s_achievementManager->getStatFromID(statisticIds[index]);
+            sprintf(name, statisticsEntryFormat, row * 2);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, _ZNK13StringManager9getStringEi(strings, reinterpret_cast<const Structs::Stat*>(stat)->fields[2]), true, false);
+            sprintf(name, statisticsEntryFormat, row * 2 + 1);
+            char value[32];
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, stat->formatString(value), true, false);
+        } else {
+            sprintf(name, statisticsEntryFormat, row * 2);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, localStartupEmptyText, false, false);
+            sprintf(name, statisticsEntryFormat, row * 2 + 1);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(menu, name, localStartupEmptyText, false, false);
+        }
+    }
+}
+
+void Widgets::Achievements::OnEvent(RenderFX::Event& event)
+{
+    if (strcmp(event.characterName, tutorialScrollButtonLabel) != 0)
+        return;
+
+    switch (event.type) {
+    case 5: {
+        const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+        const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+        const float x = coordinates.x;
+        const float y = coordinates.y;
+        const gameswf::point input(x, y);
+        gameswf::point point;
+        matrix.transform(&point, input);
+
+        if (unknown24 == -1) {
+            const float mouseFrame = point.y / 20.0f;
+            const float currentFrame = widgetAnimationMethods(animation).getCurrentFrame(animation);
+            unknown24 = static_cast<int>(mouseFrame + currentFrame);
+            unknown28 = unknown20 - 1;
+        }
+        const int frameOffset = static_cast<int>(static_cast<float>(unknown24) + point.y / -20.0f);
+        int pageOffset = frameOffset / 70;
+        if (frameOffset < 0)
+            --pageOffset;
+        const int newPage = unknown140 ? (unknown28 + pageOffset) % (unknown140 + 2) : 0;
+        if (unknown20 != newPage) {
+            unknown20 = newPage;
+            if (unknown20 < 0)
+                unknown20 += unknown140 + 2;
+            UpdateLocalization();
+        }
+        if (frameOffset < 0) {
+            const int remainder = frameOffset % 70;
+            unknown32 = 69 - (remainder < 0 ? -remainder : remainder);
+        } else {
+            unknown32 = frameOffset % 70;
+        }
+        renderFX->GotoFrame(animation, unknown32, false);
+        break;
+    }
+    case 6:
+        _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+        // Fall through to finish the gesture.
+    case 1:
+        if (getCharacterPlayState(animation) != 0)
+            renderFX->GotoFrame(animation, unknown32, true);
+        unknown24 = -1;
+        unknown20 = unknown140 ? (unknown20 + (event.type != 6)) % (unknown140 + 2) : 0;
+        break;
+    }
+    event.consumed = true;
+}
+
+static const char mainButtonPrefix[] = "btnMain";
+static const char mainTwitterButton[] = "btnTwitter";
+static const char mainInfoButton[] = "btnInfo";
+static const char mainMoreButton[] = "btnMore";
+
+void Widgets::MainMenu::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    MenuManager::getInstance();
+    switch (event.type) {
+    case 6: {
+        const char* name = event.characterName;
+        if (strstr(name, mainButtonPrefix)) {
+            pressedButton = name[7] - '0';
+            if (buttons[pressedButton].enabled) {
+                if (listener)
+                    listener->Notify(this, 1);
+            } else {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(215, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+            }
+            event.consumed = true;
+        } else if (strcmp(name, mainTwitterButton) == 0) {
+            if (listener)
+                listener->Notify(this, 2);
+            event.consumed = true;
+        } else if (strcmp(name, mainInfoButton) == 0) {
+            if (listener)
+                listener->Notify(this, 3);
+            event.consumed = true;
+        } else if (strcmp(name, mainMoreButton) == 0) {
+            if (listener)
+                listener->Notify(this, 4);
+            event.consumed = true;
+        }
+        break;
+    }
+    }
+}
+
+static const char volumesPlaylistPath[] = "widgetVolumes.playlist";
+
+void Widgets::Volumes::Show()
+{
+    MenuWidget::Show();
+    selectedPlaylist = s_playlist;
+    renderFX->SetVisible(volumesPlaylistPath, SoundManager::getInstance()->canUseIPod());
+    SoundManager::getInstance()->initIPod();
+    UpdateLocalization();
+    if (!SoundManager::getInstance()->isLowFpsMusicPlaying()) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(35, 0, true, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+}
+
+static const char arrowLeftLabel[] = "btnArrowLeft";
+static const char arrowRightLabel[] = "btnArrowRight";
+
+void Widgets::Arrows::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    switch (event.type) {
+    case 6:
+        const char* name = event.characterName;
+        if (strcmp(name, arrowLeftLabel) == 0) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            if (pageCount > 0) {
+                --currentPage;
+                if (currentPage < 0)
+                    currentPage = pageCount - 1;
+            }
+            event.consumed = true;
+        } else if (strcmp(name, arrowRightLabel) == 0) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            if (pageCount > 0)
+                currentPage = (currentPage + 1) % pageCount;
+            event.consumed = true;
+        }
+        if (event.consumed) {
+            UpdateLocalization();
+            if (listener)
+                listener->Notify(this, 1);
+        }
+        break;
+    }
+}
+
+#include "../persistence/Persistence.h"
+#include "Preferences.h"
+extern "C" const char* _ZN8RenderFX5Event16GetCharacterPathEv(RenderFX::Event*) __attribute__((weak));
+namespace {
+struct VolumeBounds { float xmin, xmax, ymin, ymax; };
+struct VolumeCharacterMethods {
+    void (*slots[72])();
+    void (*getBounds)(gameswf::character*, VolumeBounds*);
+};
+inline const float& volumeMin(const float& value, const float& high) { return value > high ? high : value; }
+inline const float& volumeMax(const float& value, const float& low) { return value < low ? low : value; }
+}
+static const char volumesButton[] = "btnVolume";
+static const char volumesMuteButton[] = "btnMute";
+static const char volumesSfxPart[] = "barSFX";
+static const char volumesMusicPart[] = "barMusic";
+static const char volumesLeftButton[] = "btnLeft";
+static const char volumesRightButton[] = "btnRight";
+void Widgets::Volumes::OnEvent(RenderFX::Event& event)
+{
+    const char* path = _ZN8RenderFX5Event16GetCharacterPathEv(&event);
+    switch (event.type) {
+    case 4:
+    case 5:
+        if (strcmp(event.characterName, volumesButton) == 0) {
+            VolumeBounds bounds;
+            const VolumeCharacterMethods* methods = *reinterpret_cast<const VolumeCharacterMethods* const*>(event.character);
+            methods->getBounds(event.character, &bounds);
+            float volume = *reinterpret_cast<const float*>(event.unknown12) / (bounds.xmax - bounds.xmin) + 0.05f;
+            volume = volumeMax(volumeMin(volume, 1.0f), 0.0f);
+            if (strstr(path, volumesSfxPart))
+                SoundManager::getInstance()->setSfxVolume(volume);
+            else if (strstr(path, volumesMusicPart))
+                SoundManager::getInstance()->setMusicVolume(volume);
+            event.consumed = true;
+        }
+        break;
+    case 1:
+    case 6:
+        if (!MenuManager::getInstance()->isClearingFocus()) {
+            const char* name = event.characterName;
+            if (strcmp(name, volumesButton) == 0) {
+                if (strstr(path, volumesSfxPart)) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(225, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                }
+                _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+                event.consumed = true;
+            } else if (event.type != 1) {
+                if (strcmp(name, volumesMuteButton) == 0) {
+                    if (strstr(path, volumesSfxPart)) {
+                        SoundManager::getInstance()->setSfxVolume(0.0f);
+                        event.consumed = true;
+                    } else if (strstr(path, volumesMusicPart)) {
+                        SoundManager::getInstance()->setMusicVolume(0.0f);
+                        event.consumed = true;
+                    }
+                } else if (strcmp(name, volumesLeftButton) == 0) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                    if (listener) listener->Notify(this, 1);
+                    event.consumed = true;
+                } else if (strcmp(name, volumesRightButton) == 0) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                    if (listener) listener->Notify(this, 2);
+                    event.consumed = true;
+                }
+            }
+        }
+        break;
+    }
+    if (event.consumed) {
+        Preferences preferences;
+        preferences.SampleAndSave(Preferences::GetDefaultFilename());
+        UpdateLocalization();
     }
 }

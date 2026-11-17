@@ -1,6 +1,90 @@
 strstr = 0x001c446c;
+PROVIDE(strcpy = 0x001c3fd4);
+PROVIDE(strcat = 0x001c43a0);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
 SECTIONS
 {
+    .volumesButton 0x0041b628 : { *ai-startup-menuwidget.o(.rodata.volumesButton) }
+    .volumesMuteButton 0x0041b648 : { *ai-startup-menuwidget.o(.rodata.volumesMuteButton) }
+    .volumesSfxPart 0x0041b634 : { *ai-startup-menuwidget.o(.rodata.volumesSfxPart) }
+    .volumesMusicPart 0x0041b63c : { *ai-startup-menuwidget.o(.rodata.volumesMusicPart) }
+    .volumesLeftButton 0x0041b5fc : { *ai-startup-menuwidget.o(.rodata.volumesLeftButton) }
+    .volumesRightButton 0x0041b604 : { *ai-startup-menuwidget.o(.rodata.volumesRightButton) }
+    .widget_volumes_event 0x002eff18 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes7OnEventERN8RenderFX5EventE) }
+    .widget_mainmenu_vtable 0x004a9868 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8MainMenuE) }
+    .widget_volumes_vtable 0x004a99d0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7VolumesE) }
+    .widget_arrows_vtable 0x004a9a98 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6ArrowsE) }
+    .widget_mainmenu_event 0x002ef9fc : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenu7OnEventERN8RenderFX5EventE) }
+    .widget_volumes_show 0x002f01c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes4ShowEv) }
+    .widget_arrows_event 0x002f0248 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Arrows7OnEventERN8RenderFX5EventE) }
+    .main_button_prefix 0x0041b5d8 : { *ai-startup-menuwidget.o(.rodata.mainButtonPrefix) }
+    .main_twitter_button 0x0041b5e0 : { *ai-startup-menuwidget.o(.rodata.mainTwitterButton) }
+    .main_info_button 0x0041b5ec : { *ai-startup-menuwidget.o(.rodata.mainInfoButton) }
+    .main_more_button 0x0041b5f4 : { *ai-startup-menuwidget.o(.rodata.mainMoreButton) }
+    .widget_volumes_playlist_path 0x0041b650 : { *ai-startup-menuwidget.o(.rodata.volumesPlaylistPath) }
+    .widget_arrow_left_label 0x0041b668 : { *ai-startup-menuwidget.o(.rodata.arrowLeftLabel) }
+    .widget_arrow_right_label 0x0041b678 : { *ai-startup-menuwidget.o(.rodata.arrowRightLabel) }
+    .widget_achievements_event 0x002eeda0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements7OnEventERN8RenderFX5EventE) }
+    .widget_statistics_localization 0x002ee2c0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics18UpdateLocalizationEv) }
+    .widget_statistics_entry_format 0x0041b0e0 : { *ai-startup-menuwidget.o(.rodata.statisticsEntryFormat) }
+    .widget_statistics_event 0x002eec14 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE) }
+    .widget_confirm_payment_vtable 0x004a9b40 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets14ConfirmPaymentE) }
+    .widget_volumes_hide 0x002ecd98 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes4HideEb) }
+    .widget_confirm_payment_localization 0x002edfbc : { *ai-startup-menuwidget.o(.text._ZN7Widgets14ConfirmPayment18UpdateLocalizationEv) }
+    .widget_confirm_payment_format 0x0041afd0 : { *ai-startup-menuwidget.o(.rodata.confirmPaymentFormat) }
+    .widget_confirm_payment_message 0x0041aff4 : { *ai-startup-menuwidget.o(.rodata.confirmPaymentMessagePath) }
+    .widget_demobuy_vtable 0x004a9a20 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7DemoBuyE) }
+    .widget_corruption_event 0x002ed138 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Corruption7OnEventERN8RenderFX5EventE) }
+    .widget_demobuy_event 0x002ed1c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuy7OnEventERN8RenderFX5EventE) }
+    .widget_demobuy_localization 0x002ed808 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuy18UpdateLocalizationEv) }
+    .widget_blocking_tutorial_event 0x002eebc4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BlockingTutorial7OnEventERN8RenderFX5EventE) }
+    .widget_tutorial_event 0x002ee978 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Tutorial7OnEventERN8RenderFX5EventE) }
+    .widget_igmenu_event 0x002edd6c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu7OnEventERN8RenderFX5EventE) }
+    .corrupt_button_name 0x0041ab24 : { *ai-startup-menuwidget.o(.rodata.corruptButtonName) }
+    .demobuy_confirm_button 0x0041ab38 : { *ai-startup-menuwidget.o(.rodata.demoBuyConfirmButtonName) }
+    .menu_back_button 0x0041ab40 : { *ai-startup-menuwidget.o(.rodata.menuBackButtonName) }
+    .demobuy_confirm_text 0x0041acd8 : { *ai-startup-menuwidget.o(.rodata.demoBuyConfirmText) }
+    .demobuy_back_text 0x0041acf0 : { *ai-startup-menuwidget.o(.rodata.demoBuyBackText) }
+    .demobuy_description_0 0x0041ad08 : { *ai-startup-menuwidget.o(.rodata.demoBuyDescription0) }
+    .demobuy_description_1 0x0041ad24 : { *ai-startup-menuwidget.o(.rodata.demoBuyDescription1) }
+    .tutorial_ok_button 0x0041b018 : { *ai-startup-menuwidget.o(.rodata.tutorialOkButton) }
+    .tutorial_close_button_label 0x0041b03c : { *ai-startup-menuwidget.o(.rodata.tutorialCloseButtonLabel) }
+    .tutorial_scroll_button_label 0x0041b2d0 : { *ai-startup-menuwidget.o(.rodata.tutorialScrollButtonLabel) }
+    .tutorial_part_format 0x00419e70 : { *ai-startup-menuwidget.o(.rodata.tutorialPartFormat) }
+    .tutorial_scroll_part 0x0041b2dc : { *ai-startup-menuwidget.o(.rodata.tutorialScrollPart) }
+    .tutorial_arrow_up_part 0x0041b2f0 : { *ai-startup-menuwidget.o(.rodata.tutorialArrowUpPart) }
+    .tutorial_arrow_down_part 0x0041b300 : { *ai-startup-menuwidget.o(.rodata.tutorialArrowDownPart) }
+    .igmenu_button_name 0x0041af50 : { *ai-startup-menuwidget.o(.rodata.igMenuButtonName) }
+    .widget_corruption_vtable 0x004a9980 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets10CorruptionE) }
+    .widget_maplegend_localization 0x002edb60 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegend18UpdateLocalizationEv) }
+    .widget_maplegend_row_text 0x0041ae90 : { *ai-startup-menuwidget.o(.rodata.mapLegendRowLabelFormat) }
+    .widget_maplegend_button_text 0x0041aeac : { *ai-startup-menuwidget.o(.rodata.mapLegendButtonText) }
+    .widget_about_localization 0x002ed458 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About18UpdateLocalizationEv) }
+    .widget_about_event 0x002ee810 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About7OnEventERN8RenderFX5EventE) }
+    .widget_maplegend_ctor 0x002ec820 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegendC1Ev .text._ZN7Widgets9MapLegendC2Ev) }
+    .widget_maplegend_show 0x002ecf0c : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegend4ShowEv) }
+    .widget_about_version_token 0x0041abcc : { *ai-startup-menuwidget.o(.rodata.aboutVersionToken) }
+    .widget_about_version_format 0x0041abd0 : { *ai-startup-menuwidget.o(.rodata.aboutVersionFormat) }
+    .about_text_button 0x0041b2c4 : { *ai-startup-menuwidget.o(.rodata.aboutTextButtonName) }
+    .widget_maplegend_name 0x0041a91c : { *ai-startup-menuwidget.o(.rodata.widgetMapLegendName) }
+    .widget_maplegend_button 0x0041aaa8 : { *ai-startup-menuwidget.o(.rodata.mapLegendButton) }
+    .widget_maplegend_vtable 0x004a9ac0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets9MapLegendE) }
+    .widget_about_ctor 0x002ec564 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5AboutC1Ev .text._ZN7Widgets5AboutC2Ev) }
+    .widget_about_show 0x002ece94 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About4ShowEv) }
+    .widget_about_name 0x0041a858 : { *ai-startup-menuwidget.o(.rodata.aboutWidgetName) }
+    .widget_about_credit_format 0x0041a864 : { *ai-startup-menuwidget.o(.rodata.aboutCreditFormat) }
+    .widget_about_anim_text 0x0041aa84 : { *ai-startup-menuwidget.o(.rodata.aboutAnimationName) }
+    .widget_about_vtable 0x004a98e0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets5AboutE) }
+    .widget_about_disable 0x002ef040 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About7DisableEv) }
+    .widget_about_update 0x002ebf34 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About6UpdateEb) }
+    .widget_about_enable 0x002ed11c : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About6EnableEv) }
     .widget_shop_set_item 0x002ecb20 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop7SetItemEiiiPKci) }
     .widget_shop_item_icon_format 0x0041a9bc : { *ai-startup-menuwidget.o(.rodata.shop_item_icon_format) }
     .widget_shop_localization 0x002ed6bc : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop18UpdateLocalizationEv) }

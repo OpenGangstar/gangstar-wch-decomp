@@ -25,6 +25,7 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN22CDrivingControlHandler20disableAccelerometerEv",
         "_ZN22CDrivingControlHandler16handleAttackHeldEv",
         "_ZN22CDrivingControlHandler19handleAttackPressedEv",
         "_ZN22CDrivingControlHandler20handleWeaponSwitchedEv",
@@ -73,6 +74,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager14updateUpVectorEf",
         "_ZN7Vehicle5shootEv",
         "_ZN10PlayerTest12switchWeaponEb",
         "_ZN10PlayerTest9GetPlayerEv",

@@ -53,7 +53,7 @@ static void __tcf_3()
 }
 }
 
-GSSideMissionMenu::GSSideMissionMenu() : unknown4(0), unknown8(0), unknown12(0), unknown16(0), unknown20(0) {}
+GSSideMissionMenu::GSSideMissionMenu() : unknown4(0), unknown8(0), unknown12(0), unknown16(0), stoppedVehicle(0) {}
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)
@@ -98,3 +98,72 @@ static void __tcf_4()
 }
 
 GSSideMissionMenu::~GSSideMissionMenu() {}
+
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../scripting/ScriptManager.h"
+
+void GSSideMissionMenu::dtor(const StateMachine*)
+{
+    MenuManager::getInstance()->showTexts();
+    Application::GetInstance()->GetHudManager()->show();
+    ScriptManager::getInstance()->resume();
+}
+
+#include "../app/Application.h"
+#include "../characters/PlayerTest.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+#include "../missions/SideMission.h"
+#include "../missions/SideMissionManager.h"
+#include "../scripting/ScriptManager.h"
+#include "../vehicles/Vehicle.h"
+
+namespace Menus { class Dialog; }
+extern "C" void _ZN5Menus6Dialog10SetMessageEi(Menus::Dialog*, int);
+static const char sideMissionConfirmName[] = "Confirm";
+
+void GSSideMissionMenu::ctor(const StateMachine*)
+{
+    Application::GetInstance()->GetTouchScreen()->clear();
+    ScriptManager::getInstance()->pause();
+    Application::GetInstance()->GetHudManager()->hide();
+    unknown16 = MenuManager::getInstance()->getDepth();
+    MenuManager::getInstance()->hideTexts();
+    Menus::Dialog* confirm = static_cast<Menus::Dialog*>(MenuManager::getInstance()->getState(sideMissionConfirmName));
+    _ZN5Menus6Dialog10SetMessageEi(confirm, SideMissionManager::s_currentMission->getStartMessage());
+    MenuManager::getInstance()->push(sideMissionConfirmName, false);
+    stoppedVehicle = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+    if (stoppedVehicle)
+        stoppedVehicle->Stop();
+}
+
+#include "../audio/SoundManager.h"
+
+namespace Menus { class Confirm; }
+extern "C" bool _ZNK5Menus7Confirm9ConfirmedEv(const Menus::Confirm*);
+
+void GSSideMissionMenu::update(StateMachine*)
+{
+    if (static_cast<int>(unknown16) >= MenuManager::getInstance()->getDepth()) {
+        const Menus::Confirm* confirm = static_cast<const Menus::Confirm*>(
+            MenuManager::getInstance()->getState(sideMissionConfirmName));
+        if (!_ZNK5Menus7Confirm9ConfirmedEv(confirm)) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            SideMissionManager::stop(true);
+            StateMachine::getInstance()->popState();
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            StateMachine::getInstance()->popState();
+            SideMissionManager::confirm();
+        }
+    }
+}

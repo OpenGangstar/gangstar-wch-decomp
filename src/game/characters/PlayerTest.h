@@ -86,6 +86,7 @@ public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
     void stopMoving(bool fast);
+    void move(float direction, float magnitude);
     void setAnim(int animation, bool first, bool second, bool third, float speed);
     virtual void Stop();
     virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
@@ -118,6 +119,8 @@ public:
     void justStoleCar(Vehicle* car);
     void _SetTarget(LevelObject* target, bool changeCamera);
     void toggleLock();
+    bool attack(bool pressed);
+    void initDriving(bool);
     void onTargetCancelled();
     void resumeAttacking();
     void richAsCroesus(bool enabled);

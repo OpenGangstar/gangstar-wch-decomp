@@ -598,9 +598,101 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032d935 | CDrivingControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
 | libsanangeles.so | 0x0032d911 | CDrivingControlHandler::handleWeaponSwitched | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
 | libsanangeles.so | 0x0032e589 | COnFootControlHandler::handleWeaponSwitched | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032e5d9 | COnFootControlHandler::handleEnterCarPressed | lock_init | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032e5bd | COnFootControlHandler::handleEnterShopPressed | vehicle_side | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032f0e9 | SniperControlHandler::handleExitSightReleased | camera_tap | REVIEW | — | src/game/input/SniperControlHandler.cpp |
-| libsanangeles.so | 0x0032e59d | COnFootControlHandler::handleLockPressed | vehicle_side | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032f18d | SniperControlHandler::handleAttackReleased | camera_tap | ASSIGNED | — | src/game/input/SniperControlHandler.cpp |
-| libsanangeles.so | 0x002e2665 | GSInGameMenu::skipFadeIn | lock_init | ASSIGNED | — | src/game/ui/GSInGameMenu.cpp |
+| libsanangeles.so | 0x0032e5d9 | COnFootControlHandler::handleEnterCarPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e5bd | COnFootControlHandler::handleEnterShopPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f0e9 | SniperControlHandler::handleExitSightReleased | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x0032e59d | COnFootControlHandler::handleLockPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f18d | SniperControlHandler::handleAttackReleased | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e2665 | GSInGameMenu::skipFadeIn | — | COMPLETED | 100% | src/game/ui/GSInGameMenu.cpp |
+| libsanangeles.so | 0x0032e5ed | COnFootControlHandler::handleStickReleased | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f0f9 | SniperControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e2885 | GSInGameMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSInGameMenu.cpp |
+| libsanangeles.so | 0x0032e615 | COnFootControlHandler::handleStickMove | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f159 | SniperControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e28d5 | GSInGameMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSInGameMenu.cpp |
+| libsanangeles.so | 0x0032f391 | SniperControlHandler::onEvent | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e26ad | GSInGameMenu::draw2d | — | COMPLETED | 100% | src/game/ui/GSInGameMenu.cpp |
+| libsanangeles.so | 0x0032e69d | COnFootControlHandler::handleAttackReleased | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f201 | SniperControlHandler::onKeyboardEvent | camera_tap | BLOCKED | — | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e2725 | GSInGameMenu::update | lock_init | BLOCKED | — | src/game/ui/GSInGameMenu.cpp |
+| libsanangeles.so | 0x0032e6f9 | COnFootControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e76d | COnFootControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x0032ed5d | COnFootControlHandler::onEvent | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e835 | COnFootControlHandler::onKeyboardEvent | vehicle_side | BLOCKED | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032d945 | CDrivingControlHandler::disableAccelerometer | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032da91 | CDrivingControlHandler::onEvent | camera_tap | BLOCKED | — | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x002ed11d | Widgets::About::Enable | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef041 | Widgets::About::Disable | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ebf35 | Widgets::About::Update | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ece95 | Widgets::About::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ec565 | Widgets::About constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed459 | Widgets::About::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee811 | Widgets::About::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ec821 | Widgets::MapLegend constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecf0d | Widgets::MapLegend::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed299 | Widgets::MapLegend::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edb61 | Widgets::MapLegend::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed139 | Widgets::Corruption::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed1c5 | Widgets::DemoBuy::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002eebc5 | Widgets::BlockingTutorial::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed809 | Widgets::DemoBuy::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edd6d | Widgets::IGMenu::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee979 | Widgets::Tutorial::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef6f5 | Widgets::Tutorial::UpdateLocalization | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecd99 | Widgets::Volumes::Hide | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee409 | Widgets::Statistics::Show | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef0b1 | Widgets::Corruption::UpdateLocalization | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef415 | Widgets::Volumes::UpdateLocalization | camera_tap | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee67d | Widgets::Achievements::SetCategory | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edfbd | Widgets::ConfirmPayment::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edec1 | Widgets::Confirm::UpdateLocalization | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002eec15 | Widgets::Statistics::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee2c1 | Widgets::Statistics::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee489 | Widgets::Achievements::UpdateLocalization | camera_tap | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee6ed | Widgets::Controls::UpdateLocalization | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef901 | Widgets::Objective::OnEvent | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002eeda1 | Widgets::Achievements::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef9fd | Widgets::MainMenu::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent | camera_tap | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002f01c5 | Widgets::Volumes::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002f0249 | Widgets::Arrows::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002e33f1 | GSSideMissionMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x00343761 | Preferences::Exist | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002e3415 | GSSideMissionMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x00343811 | Preferences constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | BLOCKED | pending | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | — | COMPLETED | 100% | src/game/hud/MenuManager.cpp |
+| libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x003437c9 | Preferences deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eb5d9 | Menus::Services::Notify | vehicle_side | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | lock_init | BLOCKED | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e86fd | MenuState::GotFocus | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6149 | MenuManager::tearDown | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c089 | DataReloaderManager::monitorFiles | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c211 | DataReloaderManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint | vehicle_side | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c0a1 | DataReloaderManager::_MonitoredFiles destructor | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c0c5 | DataReloaderManager destructor (D1/D2 aliases) | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap | vehicle_side | ASSIGNED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c2e1 | DataReloaderManager deleting destructor (D0) | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002d3349 | SwfFree | camera_tap | REVIEW | pending | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3355 | IrrFree | camera_tap | ASSIGNED | pending | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3339 | CustomFree | lock_init | ASSIGNED | pending | src/game/core/Memory.cpp |

@@ -23,6 +23,7 @@ private:
     void handleAttackHeld();
     void handleAttackPressed();
     void handleWeaponSwitched();
+    void disableAccelerometer();
     template<bool (EventManager::*operation)(int, IEventReceiver*)>
     inline __attribute__((always_inline)) void updateDrivingEvents();
     unsigned char unknown4[4];

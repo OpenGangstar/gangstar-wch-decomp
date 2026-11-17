@@ -17,6 +17,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .side_menu_update 0x002e365c : { *state-hooks-gssidemissionmenu.o(.text._ZN17GSSideMissionMenu6updateEP12StateMachine) }
+    .side_mission_confirm_name 0x00418138 : { *state-hooks-gssidemissionmenu.o(.rodata.sideMissionConfirmName) }
+    .side_menu_ctor 0x002e3414 : { *state-hooks-gssidemissionmenu.o(.text._ZN17GSSideMissionMenu4ctorEPK12StateMachine) }
+    .side_menu_dtor 0x002e33f0 : { *state-hooks-gssidemissionmenu.o(.text._ZN17GSSideMissionMenu4dtorEPK12StateMachine) }
     .hook_0 0x002e33cc : { *state-hooks-gssidemissionmenu.o(.text._ZN17GSSideMissionMenu4drawEPK12StateMachine .gnu.linkonce.t._ZN17GSSideMissionMenu4drawEPK12StateMachine) }
     .hook_1 0x002e33d0 : { *state-hooks-gssidemissionmenu.o(.text._ZN17GSSideMissionMenu6draw2dEPK12StateMachine .gnu.linkonce.t._ZN17GSSideMissionMenu6draw2dEPK12StateMachine) }
     .state_ctor 0x002e34b0 : { *state-hooks-gssidemissionmenu.o(.text._ZN17GSSideMissionMenuC1Ev) }

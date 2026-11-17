@@ -78,3 +78,38 @@ static void _GLOBAL__I__ZN11PreferencesC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "../persistence/Persistence.h"
+#include "../persistence/FileStream.h"
+
+#include "Preferences.h"
+
+bool Preferences::Exist(const char* name)
+{
+    FileStream file;
+    return file.Exist(name);
+}
+
+Preferences::Preferences()
+{
+}
+
+#include "../app/Application.h"
+#include "../persistence/FileSystemBase.h"
+#include "../core/NativeStdio.h"
+
+static const char preferenceFilenameFormat[] = "%s%s";
+static const char preferenceFilename[] = "Gangstar2.preferences";
+
+const char* Preferences::GetDefaultFilename()
+{
+    static char preferenceFile[256];
+    if (!preferenceFile[0])
+        sprintf(preferenceFile, preferenceFilenameFormat,
+            Application::GetInstance()->GetFileSystem()->getSaveFilesPath(), preferenceFilename);
+    return preferenceFile;
+}
+
+Preferences::~Preferences()
+{
+}

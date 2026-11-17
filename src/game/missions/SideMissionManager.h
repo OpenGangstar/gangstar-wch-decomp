@@ -25,6 +25,7 @@ public:
     static TaxiSideMission* s_taxiSideMission;
 
 private:
+    friend class GSSideMissionMenu;
     static void initMission();
     static SideMission* s_currentMission;
     static int s_step;

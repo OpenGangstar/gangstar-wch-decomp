@@ -1641,3 +1641,84 @@ bool Menus::InGameMenu::Notify(const MenuWidget* widget, int event)
     _ZN11MenuManager3popEb(manager, false);
     return true;
 }
+
+namespace Widgets {
+class Arrows : public MenuWidget { public: int GetCurrentPage() const; };
+class Title : public MenuWidget { public: void SetTextId(int); };
+class Help : public MenuWidget { public: void SetTextId(int); void SetIcon(const char*); };
+}
+namespace Menus {
+struct HelpSpecializedEntry {
+    int textId;
+    const char* icon;
+};
+extern const HelpSpecializedEntry s_helpSpecializedEntries[] __attribute__((visibility("hidden")));
+}
+static const char helpEmptyIcon[] = "empty";
+
+bool Menus::InfoHelp::Notify(const MenuWidget* widget, int event)
+{
+    if (Infos::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    const Widgets::Arrows* arrows = static_cast<const Widgets::Arrows*>(getWidgetByIndex(manager, 18));
+    if (widget != arrows || (event != 1 && event != 2))
+        return false;
+    const int page = arrows->GetCurrentPage();
+    int firstPage = 0;
+    for (unsigned int category = 0; category < sizeof(s_helpCategories) / sizeof(s_helpCategories[0]); ++category) {
+        const int pageCount = s_helpCategories[category].endPage - s_helpCategories[category].firstPage;
+        const int categoryPage = page - firstPage;
+        if (categoryPage < pageCount) {
+            Widgets::Title* title = static_cast<Widgets::Title*>(getWidgetByIndex(manager, 15));
+            title->SetTextId(s_helpCategories[category].title);
+            title->UpdateLocalization();
+            const int textId = categoryPage + s_helpCategories[category].firstPage;
+            Widgets::Help* help = static_cast<Widgets::Help*>(getWidgetByIndex(manager, 13));
+            help->SetTextId(textId);
+            const char* icon = helpEmptyIcon;
+            for (int entry = 0; entry < 10; ++entry) {
+                if (s_helpSpecializedEntries[entry].textId == textId) {
+                    icon = s_helpSpecializedEntries[entry].icon;
+                    break;
+                }
+            }
+            help->SetIcon(icon);
+            help->UpdateLocalization();
+            break;
+        }
+        firstPage += pageCount;
+    }
+    return true;
+}
+
+#include "../core/PointerVector.h"
+#include "../scripting/Script.h"
+namespace stlp_priv {
+template<>
+inline _Vector_base<Script*, std::allocator<Script*> >::_Vector_base()
+{
+    first = 0;
+    limit = 0;
+    last = 0;
+}
+}
+void Menus::ServiceMissions::GotFocus()
+{
+    Services::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 0, true);
+    ScriptManager* scripts = ScriptManager::getInstance();
+    std::vector<Script*> available;
+    scripts->getAvailableMissionScripts(available);
+    const Mission* mission = static_cast<const Mission*>(ScriptManager::getInstance()->getMission());
+    Application::GetInstance();
+    int index = 0;
+    int count = 0;
+    for (; index < available.size(); ++index)
+        if (mission->mission(available[index]->getMissionId()))
+            ++count;
+    MenuWidget* arrows = static_cast<MenuWidget*>(getWidgetByIndex(manager, 18));
+    arrows->SetListener(this);
+    _ZN7Widgets6Arrows12SetPageCountEiib(arrows, count, 0, true);
+}

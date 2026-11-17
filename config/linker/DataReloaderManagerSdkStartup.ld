@@ -5,6 +5,9 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .reloader_trace 0x0034c084 : { *sdk-startup-datareloadermanager.o(.text._ZNK19DataReloaderManager6_traceEPKc) }
+    .reloader_monitor 0x0034c088 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManager12monitorFilesEPKcS1_P13IDataReloader) }
+    .reloader_ctor 0x0034c210 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManagerC1Ev .text._ZN19DataReloaderManagerC2Ev) }
     .sdk_startup_function_0 0x0034c2b0 : { *sdk-startup-datareloadermanager.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x0034c230 : { *sdk-startup-datareloadermanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x0034c29c : { *sdk-startup-datareloadermanager.o(.text._GLOBAL__I__ZN19DataReloaderManagerC2Ev) }

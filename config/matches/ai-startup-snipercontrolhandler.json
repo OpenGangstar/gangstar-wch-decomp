@@ -25,6 +25,11 @@
     "source": "src/game/input/SniperControlHandler.cpp",
     "linker_script": "config/linker/SniperControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN20SniperControlHandler7onEventEPK6IEventPK12EventManager",
+        "_ZN20SniperControlHandler19handleAttackPressedEv",
+        "_ZN20SniperControlHandler16handleAttackHeldEv",
+        "_ZN20SniperControlHandler23handleExitSightReleasedEv",
+        "_ZN20SniperControlHandler20handleAttackReleasedEv",
         "_ZN20SniperControlHandlerC1EP15CControlManager",
         "_ZN20SniperControlHandlerC2EP15CControlManager",
         "_ZN20SniperControlHandler4initEv",
@@ -62,6 +67,12 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK15CControlManager8isLockedEv",
+        "_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent",
+        "_ZN15CControlManager11enterCombatEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN10PlayerTest6attackEb",
+        "_ZN15CControlManager11exitSnipingEb",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver"

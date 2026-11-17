@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "CDrivingControlHandler.h"
+#include "../core/CameraManager.h"
 #include "../vehicles/Vehicle.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
@@ -164,4 +165,13 @@ void CDrivingControlHandler::handleAttackPressed()
 void CDrivingControlHandler::handleWeaponSwitched()
 {
     PlayerTest::GetPlayer()->switchWeapon(false);
+}
+
+void CDrivingControlHandler::disableAccelerometer()
+{
+    unknown16 = false;
+    releaseKeyboardKeys();
+    if (vehicle)
+        vehicle->unknown992 = 0.0f;
+    CameraManager::getInstance()->updateUpVector(0.0f);
 }

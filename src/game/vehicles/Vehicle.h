@@ -342,7 +342,7 @@ private:
     friend class CControlManager;
     float unknown984;
     float unknown988;
-    unsigned char unknown992[4];
+    float unknown992;
     b2FilterData collisionFilter;
     bool leftDoorClosed;
     bool rightDoorClosed;

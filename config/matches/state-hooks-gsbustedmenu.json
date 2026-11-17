@@ -357,6 +357,12 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN8RenderFX11SetViewportEiiii",
+        "_ZN8RenderFX14SetOrientationEN7gameswf16orientation_modeE",
+        "_ZN8RenderFX6RenderEv",
+        "_ZNK11MenuManager8_drawMapEv",
+        "_ZNK3Map4drawEv",
+        "_ZNK9MenuState8GetDepthEv",
         "_ZNK11Application19GetScreenDimensionsERiS0_",
         "_ZN6Revive6draw2dEv",
         "_ZN7Mission4drawEv",

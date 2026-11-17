@@ -16,10 +16,15 @@ public:
     virtual void activate();
     virtual void deactivate() __attribute__((noinline));
     virtual void releaseKeyboardKeys();
-    void handleStickMove(EvStickMove*);
-    void handleStickReleased(bool);
+    void handleStickMove(EvStickMove*) __attribute__((noinline));
+    void handleStickReleased(bool) __attribute__((noinline));
+    void handleExitSightReleased() __attribute__((noinline));
+    void handleAttackReleased() __attribute__((noinline));
+    void handleAttackHeld() __attribute__((noinline));
+    void handleAttackPressed() __attribute__((noinline));
 
 private:
+    void onKeyboardEvent(const IEvent* event);
     inline __attribute__((always_inline)) void resetInput();
     unsigned char unknown4[4];
     CControlManager* controlManager;

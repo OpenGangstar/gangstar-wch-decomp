@@ -16,8 +16,19 @@ _ZN40retail_confootcontrolhandler_transitions22scripted_vehicle_transE = 0x00426
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 SECTIONS
 {
+    .on_foot_on_event_switch 0x00426484 : { *ai-startup-confootcontrolhandler.o(.rodata._ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager) }
+    .on_foot_on_event 0x0032ed5c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager) }
+    .onfoot_attack_held 0x0032e6f8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler16handleAttackHeldEv) }
+    .onfoot_attack_pressed 0x0032e76c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler19handleAttackPressedEv) }
+    .onfoot_stick_move 0x0032e614 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler15handleStickMoveEP11EvStickMove) }
+    .onfoot_attack_released 0x0032e69c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler20handleAttackReleasedEv) }
+    .onfoot_enter_car 0x0032e5d8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler21handleEnterCarPressedEv) }
+    .onfoot_enter_shop 0x0032e5bc : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler22handleEnterShopPressedEv) }
+    .onfoot_lock_pressed 0x0032e59c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler17handleLockPressedEv) }
+    .onfoot_stick_released 0x0032e5ec : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler19handleStickReleasedEb) }
     .onfoot_weapon_switched 0x0032e588 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler20handleWeaponSwitchedEv) }
     .handler_constructor 0x0032eef0 : { *(.text._ZN21COnFootControlHandlerC1EP15CControlManager .text._ZN21COnFootControlHandlerC2EP15CControlManager) }
     .handler_init 0x0032e520 : { *(.text._ZN21COnFootControlHandler4initEv) }
