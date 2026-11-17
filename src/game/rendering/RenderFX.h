@@ -9,6 +9,7 @@ class render_state;
 // Enumerator names are still unknown.
 enum orientation_mode {};
 class player_context;
+class player;
 class root;
 
 class ref_counted {
@@ -34,6 +35,7 @@ private:
 template <typename T>
 class array {
 public:
+    array() : elements(0), size(0), capacity(0) {}
     void resize(int size) __attribute__((weak));
     void append(const T* values, int count) __attribute__((weak));
     void remove(int index) __attribute__((weak));
@@ -46,7 +48,29 @@ public:
 
 class RenderFX {
 public:
-    class Controller;
+    class Controller {
+    public:
+        Controller();
+        ~Controller();
+        void Reset() __attribute__((long_call));
+
+        float unknown0;
+        float unknown4;
+        float unknown8;
+        int unknown12;
+        gameswf::smart_ptr<gameswf::character> first;
+        gameswf::smart_ptr<gameswf::character> second;
+        gameswf::smart_ptr<gameswf::character> third;
+        gameswf::smart_ptr<gameswf::character> fourth;
+        gameswf::smart_ptr<gameswf::character> fifth;
+        bool enabled;
+    };
+
+    RenderFX();
+    virtual ~RenderFX();
+    virtual void Load(const char* name, gameswf::player_context* context);
+    virtual void Unload();
+    virtual void Update(int elapsed, bool render);
     class Event;
     class EventListener;
     void FSCommand(const char* command, const char* args);
@@ -109,6 +133,16 @@ public:
     void SetFocus(const char* characterName, int flags);
 
 private:
+    gameswf::array<gameswf::character*> matches;
+    bool unknown16;
+    void* unknown20;
+    gameswf::player* player;
+    gameswf::character* root;
+    gameswf::character* context;
+    Controller controllers[4];
+    int inputBehavior;
+    EventListener* listener;
+
     static gameswf::player_context* s_default_context;
     void CollectCharacters(gameswf::character* parent, const char* name, int flags);
 };
