@@ -181,8 +181,6 @@ SECTIONS
     .widget_constructor 0x002ec3d0 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidgetC2EPKc .text._ZN10MenuWidgetC1EPKc) }
     .widget_hide 0x002ecd5c : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget4HideEb) }
     .widget_show 0x002ece20 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget4ShowEv) }
-    .widget_hide_animation 0x0041aa74 : { *ai-startup-menuwidget.o(.rodata.widgetHideAnimation) }
-    .widget_show_animation 0x0041aa7c : { *ai-startup-menuwidget.o(.rodata.widgetShowAnimation) }
     .widget_destructor 0x002ebe1c : { *ai-startup-menuwidget.o(.text._ZN10MenuWidgetD2Ev .text._ZN10MenuWidgetD1Ev) }
     .widget_is_visible 0x002ebe34 : { *ai-startup-menuwidget.o(.text._ZNK10MenuWidget9IsVisibleEv) }
     .widget_auto_hide 0x002ebe38 : { *ai-startup-menuwidget.o(.text._ZNK10MenuWidget8AutoHideEv) }

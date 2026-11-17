@@ -11,13 +11,13 @@ public:
     class State;
     virtual ~MenuFX();
     virtual void Unload();
-    void SwitchMenu(const char* name);
-    void PushMenu(const char* name);
-    void SetFocusDefault();
     void PopAll();
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);
     virtual bool CanHandleEvent(RenderFX::Event& event);
+    virtual void SetFocusDefault();
+    virtual void PushMenu(const char* name);
+    virtual void SwitchMenu(const char* name);
     State* GetState(const char* name);
     void RegisterState(State* state, const char* characterName);
     void RegisterStates(State** states, int count);
