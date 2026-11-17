@@ -766,6 +766,34 @@ bool Widgets::Achievement::AutoHide() const
     return false;
 }
 
+static const char achievementCaptionPath[] = "widgetAchievement.anim.txtAchievement";
+static const char achievementTitlePath[] = "widgetAchievement.anim.txtName";
+static const char objectiveTextPath[] = "widgetObjective.text";
+static const char objectiveButtonPath[] = "widgetObjective.btnObjective.text";
+
+void Widgets::Achievement::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, achievementCaptionPath,
+                               _ZNK13StringManager9getStringEi(strings, 0x308c), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, achievementTitlePath,
+                               _ZNK13StringManager9getStringEi(strings, titleId), true);
+}
+
+void Widgets::Objective::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    MenuManager::getInstance();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    if (textId != -1) {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, objectiveTextPath,
+                                   _ZNK13StringManager9getStringEi(strings, textId), true);
+    }
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, objectiveButtonPath,
+                               _ZNK13StringManager9getStringEi(strings, 0x1038), true);
+}
+
 static const char widgetHelpName[] = "widgetHelp";
 
 Widgets::Help::Help()
