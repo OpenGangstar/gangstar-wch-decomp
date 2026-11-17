@@ -19,6 +19,7 @@
 #include "../hud/MenuManager.h"
 
 extern "C" {
+void _ZN8RenderFX10FormatTextEPKcS1_z(RenderFX* fx, const char* name, const char* format, ...);
 void _ZN11MenuManager10clearFocusEv(MenuManager* manager);
 void _ZN11MenuManager13setMenuFXTextEPKcS1_bb(MenuManager* manager, const char* name, const char* text, bool first, bool second);
 const char* _ZNK13StringManager9getStringEi(const StringManager* strings, int id);
@@ -1114,6 +1115,27 @@ void Widgets::Arrows::SetPageCount(int count, int page, bool reset)
     if (listener && (reset || changed))
         listener->Notify(this, 2);
     setCharacterVisible(character, pageCount > 1);
+}
+
+static const char widgetArrowsText[] = "widgetArrows.text";
+static const char widgetArrowsPageFormat[] = "%d/%d";
+static const char widgetTitleText[] = "widgetTitle.text";
+
+void Widgets::Arrows::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    _ZN8RenderFX10FormatTextEPKcS1_z(renderFX, widgetArrowsText, widgetArrowsPageFormat,
+                                    currentPage + 1, pageCount);
+}
+
+void Widgets::Title::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    if (textId != -1) {
+        StringManager* strings = Application::GetInstance()->GetStringManager();
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, widgetTitleText,
+                                   _ZNK13StringManager9getStringEi(strings, textId), true);
+    }
 }
 
 static const char widgetTitleIcon[] = "widgetTitle.icon";
