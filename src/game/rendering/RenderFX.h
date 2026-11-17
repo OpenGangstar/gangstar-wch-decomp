@@ -102,6 +102,9 @@ public:
     void EndDisplay();
     void SetControllerEnabled(int index, bool enabled);
     void SetContext(gameswf::character* character);
+    void SetCursor(const char* characterName, int index);
+    bool InvokeASCallback(gameswf::character* character, const char* callback);
+    bool InvokeASCallback(const char* characterName, const char* callback);
     gameswf::root* GetRoot() const;
     gameswf::root* GetFlashRoot() const;
     void SetTextBufferingEnabled(bool enabled);
