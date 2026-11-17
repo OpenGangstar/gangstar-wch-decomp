@@ -19,7 +19,7 @@ class LevelObject;
 class PlayerTest;
 class GameObjectManager;
 class WorldDescriptor;
-namespace irr { namespace video { class ITexture; } }
+namespace irr { namespace video { class ITexture; enum E_ORTHO_ORIENTATION { OrthoOrientation0 }; } }
 namespace Structs {
 struct PhonePerformanceProfile {
     int unknown0;
@@ -37,6 +37,8 @@ class GS3DStuff : public StateBase, public IEventReceiver {
 public:
     static GS3DLightNodes lightsNodes;
     static int s_orientation;
+    static bool b_isAutoOri;
+    static void SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION orientation);
 
     GS3DStuff();
     virtual ~GS3DStuff();

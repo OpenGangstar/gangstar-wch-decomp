@@ -79,6 +79,9 @@ SECTIONS
     .menu_manager_get_depth 0x002e465c : { *menu-manager-helpers.o(.text._ZNK11MenuManager8getDepthEv .gnu.linkonce.t._ZNK11MenuManager8getDepthEv) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     .are_cheats_unlocked 0x002e3ebc : { *menu-manager-helpers.o(.text._ZNK11MenuManager17areCheatsUnlockedEv) }
+    .option_orientation_get 0x002e7354 : { *(.text._ZN5Menus18OptionGameSettings14GetOrientationEv) }
+    .option_orientation_set_enum 0x002e75f0 : { *(.text._ZN5Menus18OptionGameSettings14SetOrientationENS0_13stGameSetting12eOrientationE) }
+    .option_orientation_set_int 0x002e7610 : { *(.text._ZN5Menus18OptionGameSettings14SetOrientationEi) }
     .option_settings_refresh 0x002e7988 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettings7RefreshEv) }
     .option_settings_got_focus 0x002e8b74 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettings8GotFocusEv) }
     .option_volumes_got_focus 0x002e8cc0 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumes8GotFocusEv) }
