@@ -41,6 +41,7 @@ class LODSceneNode;
 class GS3DStuff : public StateBase, public IEventReceiver {
 public:
     static GS3DLightNodes lightsNodes;
+    static int load(int step, int& percent);
     static void unload();
     static irr::scene::ISceneNode* sunNode;
     static irr::core::array<CollisionBodyDef*>* VisibleNodes;

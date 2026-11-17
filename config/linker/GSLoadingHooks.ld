@@ -15,8 +15,29 @@ _ZN28retail_gsloading_transitions22scripted_vehicle_transE = 0x00417b08;
 __aeabi_atexit = 0x001c494c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+_Znwj = 0x001c4814;
+sprintf = 0x001c46ac;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fadd = 0x001c4154;
+__aeabi_f2iz = 0x001c44cc;
 SECTIONS
 {
+.state_instance 0x002d44c4 : { *state-hooks-gsloading.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv .text._ZN12StateMachine11getInstanceEv) }
+    .state_instance_cleanup 0x002d4518 : { *state-hooks-gsloading.o(.text.__tcf_0) }
+    .state_instance_guard 0x004b6904 (NOLOAD) : { *state-hooks-gsloading.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm .bss._ZGVZN12StateMachine11getInstanceEvE2sm) }
+    .state_instance_storage 0x004b6908 (NOLOAD) : { *state-hooks-gsloading.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm .bss._ZZN12StateMachine11getInstanceEvE2sm) }
+    .loading_update 0x002e2c08 : { *state-hooks-gsloading.o(.text._ZN9GSLoading6updateEP12StateMachine) }
+    .loading_draw 0x002e2d44 : { *state-hooks-gsloading.o(.text._ZN9GSLoading4drawEPK12StateMachine) }
+    .loading_percent_format 0x00417570 : { *state-hooks-gsloading.o(.rodata.loadingPercentFormat) }
+    .loading_resume 0x002e2b70 : { *state-hooks-gsloading.o(.text._ZN9GSLoading14LoadingResumedEv) }
+    .loading_pause 0x002e2bb4 : { *state-hooks-gsloading.o(.text._ZN9GSLoading13LoadingPausedEv) }
+    .loading_ctor_hook 0x002e2ce4 : { *state-hooks-gsloading.o(.text._ZN9GSLoading4ctorEPK12StateMachine) }
+    .loading_dtor_hook 0x002e2c98 : { *state-hooks-gsloading.o(.text._ZN9GSLoading4dtorEPK12StateMachine) }
+    .loading_background 0x004b6ee8 (NOLOAD) : { *state-hooks-gsloading.o(.bss.m_background) }
+    .loading_interrupt_sprite 0x00413c88 : { *state-hooks-gsloading.o(.rodata.loadingInterruptSpriteName) }
+    .loading_splash_sprite 0x00417578 : { *state-hooks-gsloading.o(.rodata.loadingSplashSprite) }
     .loading_get_loaded 0x002e2b18 : { *state-hooks-gsloading.o(.text._ZN9GSLoading12isGameLoadedEv) }
     .loading_set_loaded 0x002e2b2c : { *state-hooks-gsloading.o(.text._ZN9GSLoading13setGameLoadedEb) }
     .loading_loaded_flag 0x004b6eec (NOLOAD) : { *state-hooks-gsloading.o(.bss._ZN9GSLoading13s_bGameLoadedE) }
@@ -73,3 +94,8 @@ ASSERT(SIZEOF(.local_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.local_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 
 ASSERT(SIZEOF(.loading_loaded_flag) == 1, "GSLoading loaded flag extent");
+
+ASSERT(SIZEOF(.loading_background) == 4, "loading background pointer extent");
+
+ASSERT(SIZEOF(.state_instance_guard) == 4, "StateMachine guard extent");
+ASSERT(SIZEOF(.state_instance_storage) == 40, "StateMachine storage extent");

@@ -719,6 +719,21 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | camera_tap | BLOCKED | pending | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034be9d | StringManager destructor (D1/D2 aliases) | lock_init | BLOCKED | pending | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bd51 | StringManager::loadStyles | vehicle_side | BLOCKED | pending | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | lock_init | ASSIGNED | pending | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x002e2bb5 | GSLoading::LoadingPaused | camera_tap | ASSIGNED | pending | src/game/app/GSLoading.cpp |
-| libsanangeles.so | 0x002e2b71 | GSLoading::LoadingResumed | vehicle_side | ASSIGNED | pending | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | lock_init | BLOCKED | pending | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x002e2bb5 | GSLoading::LoadingPaused | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2b71 | GSLoading::LoadingResumed | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2ce5 | GSLoading::ctor | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2c99 | GSLoading::dtor | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2c09 | GSLoading::update | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2d45 | GSLoading::draw | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002fd821 | NPC::Stop | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd49d | NPC::clearGoToVehicle | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd801 | NPC::UpdateSceneNode | camera_tap | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fda85 | NPC::enable | lock_init | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd70d | NPC::GetPosition | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd6c1 | NPC::_arrest | camera_tap | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fed91 | NPC::applyDamage | lock_init | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd869 | NPC::clean | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd735 | NPC::wait | camera_tap | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fed45 | NPC::notifyAttacked | lock_init | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdbc5 | NPC::dropSceneNode | vehicle_side | ASSIGNED | pending | src/game/ai/NPC.cpp |

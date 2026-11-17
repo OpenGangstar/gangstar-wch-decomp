@@ -8,6 +8,8 @@
 class GSLoading : public StateBase {
 public:
     static bool isGameLoaded();
+    static void LoadingPaused();
+    static void LoadingResumed();
     static void setGameLoaded(bool);
     GSLoading();
     virtual ~GSLoading();
@@ -21,7 +23,8 @@ public:
     }
 private:
     static bool s_bGameLoaded;
-    unsigned char unknown4[8];
+    int unknown4;
+    int unknown8;
 };
 
 #endif
