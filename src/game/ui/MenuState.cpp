@@ -139,6 +139,94 @@ public:
     virtual void LostFocus();
     virtual bool Notify(const MenuWidget* widget, int event);
 };
+
+class MainMenu : public MenuState {
+public:
+    MainMenu();
+    virtual ~MainMenu();
+
+protected:
+    bool unknown104;
+    bool unknown105;
+    bool unknown106;
+};
+
+class Splash : public MenuState {
+public:
+    Splash();
+    virtual ~Splash();
+};
+
+class ServiceCarRental : public Services {
+public:
+    explicit ServiceCarRental(const char* name);
+    virtual ~ServiceCarRental();
+
+protected:
+    float scale;
+    int selectedVehicle;
+};
+
+class ServiceWeaponShop : public Services {
+public:
+    explicit ServiceWeaponShop(const char* name);
+    virtual ~ServiceWeaponShop();
+
+protected:
+    float scale;
+    bool inGame;
+    int selectedWeapon;
+};
+
+class Map : public InGameMenu {
+public:
+    Map();
+    virtual ~Map();
+
+protected:
+    bool unknown104;
+    bool unknown105;
+    void* unknown108;
+};
+
+class Achievement : public MenuState {
+public:
+    Achievement();
+    virtual ~Achievement();
+
+protected:
+    int unknown104;
+};
+
+class BlockingTutorial : public Tutorial {
+public:
+    BlockingTutorial();
+    virtual ~BlockingTutorial();
+};
+
+class InGameCarRental : public ServiceCarRental {
+public:
+    InGameCarRental();
+    virtual ~InGameCarRental();
+};
+
+class InGameWeaponShop : public ServiceWeaponShop {
+public:
+    InGameWeaponShop();
+    virtual ~InGameWeaponShop();
+};
+
+class CopBribe : public ConfirmPayment {
+public:
+    CopBribe();
+    virtual ~CopBribe();
+};
+
+class CarRepair : public ConfirmPayment {
+public:
+    CarRepair();
+    virtual ~CarRepair();
+};
 }
 
 Menus::InGameMenu::InGameMenu(const char* name)
@@ -265,6 +353,126 @@ Menus::Tutorial::Tutorial(const char* name)
 {
     const int widgetId = 23;
     widgetIds.append(&widgetId, 1);
+}
+
+namespace {
+inline int findWidgetId(const gameswf::array<int>& ids, int id)
+{
+    for (int i = 0; i < ids.size; ++i) {
+        if (ids.elements[i] == id)
+            return i;
+    }
+    return -1;
+}
+}
+
+static const char mainMenuName[] = "MainMenu";
+
+Menus::MainMenu::MainMenu()
+    : MenuState(mainMenuName), unknown104(false), unknown105(false), unknown106(false)
+{
+    int ids[2];
+    ids[0] = 0;
+    ids[1] = 20;
+    widgetIds.append(ids, 2);
+}
+
+static const char splashName[] = "Splash";
+
+Menus::Splash::Splash()
+    : MenuState(splashName)
+{
+    const int widgetId = 25;
+    widgetIds.append(&widgetId, 1);
+}
+
+Menus::ServiceCarRental::ServiceCarRental(const char* name)
+    : Services(name), scale(1.0f), selectedVehicle(-1)
+{
+    int ids[3];
+    ids[0] = 16;
+    ids[1] = 3;
+    ids[2] = 18;
+    widgetIds.append(ids, 3);
+}
+
+Menus::ServiceWeaponShop::ServiceWeaponShop(const char* name)
+    : Services(name), scale(1.0f), inGame(false), selectedWeapon(-1)
+{
+    int ids[] = {17, 16, 3, 18};
+    widgetIds.append(ids, 4);
+}
+
+static const char mapName[] = "Map";
+
+Menus::Map::Map()
+    : InGameMenu(mapName), unknown104(false), unknown105(false), unknown108(0)
+{
+    int ids[2];
+    ids[0] = 2;
+    ids[1] = 4;
+    widgetIds.append(ids, 2);
+}
+
+static const char achievementName[] = "Achievement";
+
+Menus::Achievement::Achievement()
+    : MenuState(achievementName), unknown104(0)
+{
+    const int widgetId = 10;
+    widgetIds.append(&widgetId, 1);
+}
+
+static const char blockingTutorialName[] = "BlockingTutorial";
+
+Menus::BlockingTutorial::BlockingTutorial()
+    : Tutorial(blockingTutorialName)
+{
+    gameswf::array<int>* ids = &widgetIds;
+    const int index = findWidgetId(*ids, 23);
+    if (index >= 0)
+        ids->remove(index);
+    const int widgetId = 24;
+    ids->append(&widgetId, 1);
+}
+
+static const char inGameCarRentalName[] = "InGameCarRental";
+
+Menus::InGameCarRental::InGameCarRental()
+    : ServiceCarRental(inGameCarRentalName)
+{
+    gameswf::array<int>* ids = &widgetIds;
+    const int index = findWidgetId(*ids, 19);
+    if (index >= 0)
+        ids->remove(index);
+    scale = 0.75f;
+}
+
+static const char inGameWeaponShopName[] = "InGameWeaponShop";
+
+Menus::InGameWeaponShop::InGameWeaponShop()
+    : ServiceWeaponShop(inGameWeaponShopName)
+{
+    gameswf::array<int>* ids = &widgetIds;
+    const int index = findWidgetId(*ids, 19);
+    if (index >= 0)
+        ids->remove(index);
+    scale = 0.75f;
+    inGame = true;
+}
+
+static const char copBribeName[] = "CopBribe";
+
+Menus::CopBribe::CopBribe()
+    : ConfirmPayment(copBribeName)
+{
+}
+
+static const char carRepairName[] = "CarRepair";
+
+Menus::CarRepair::CarRepair()
+    : ConfirmPayment(carRepairName)
+{
 }
 
 inline Menus::InGameMenu::~InGameMenu()
