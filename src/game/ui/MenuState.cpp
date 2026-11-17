@@ -33,6 +33,7 @@ void _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(void* menu, int button, i
 void _ZN7Widgets6IGMenu17SetBackButtonTextEi(void* menu, int text);
 void _ZN7Widgets6IGMenu9GoToFrameEPKc(void* menu, const char* frame);
 void _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(void* box, int state);
+extern int _ZN11MenuManager20s_CarRentalDataCountE;
 }
 
 namespace Menus {
@@ -937,6 +938,34 @@ void Menus::OptionControls::GotFocus()
 {
     Options::GotFocus();
     _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(1), 1, true);
+}
+
+namespace {
+template <int button, int& itemCount>
+inline void configureShopWidgets(MenuState* state, const int& selectedItem)
+{
+    MenuManager* manager = MenuManager::getInstance();
+    static_cast<MenuWidget*>(getWidgetByIndex(manager, 3))->SetListener(state);
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), button, true);
+    MenuWidget* arrows = static_cast<MenuWidget*>(getWidgetByIndex(manager, 18));
+    arrows->SetListener(state);
+    const int count = itemCount;
+    const int page = selectedItem < 0 ? 0 : selectedItem / 4;
+    const int pages = (count - 1) / 4 + 1;
+    _ZN7Widgets6Arrows12SetPageCountEiib(arrows, pages, page, true);
+}
+}
+
+void Menus::ServiceCarRental::GotFocus()
+{
+    Services::GotFocus();
+    configureShopWidgets<2, _ZN11MenuManager20s_CarRentalDataCountE>(this, selectedVehicle);
+}
+
+void Menus::ServiceWeaponShop::GotFocus()
+{
+    Services::GotFocus();
+    configureShopWidgets<1, MenuManager::s_WeaponShopDataCount>(this, selectedWeapon);
 }
 
 void Menus::InGameCarRental::GotFocus()
