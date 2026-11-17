@@ -1,5 +1,7 @@
 SECTIONS
 {
+    .widget_achievements_show 0x002ece58 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements4ShowEv) }
+    .widget_achievements_vtable 0x004a98b8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets12AchievementsE) }
     .widget_statistics_update 0x002ebfc4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics6UpdateEb) }
     .widget_achievements_update 0x002ebf78 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements6UpdateEb) }
     .widget_achievements_reset 0x002ec3b4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements5ResetEv) }
