@@ -83,8 +83,8 @@ void MenuWidget::UpdateLocalization()
 {
 }
 
-static const char widgetHideAnimation[] = "hide";
-static const char widgetShowAnimation[] = "show";
+extern const char widgetHideAnimation[] __attribute__((visibility("hidden")));
+extern const char widgetShowAnimation[] __attribute__((visibility("hidden")));
 
 void MenuWidget::Hide(bool animate)
 {

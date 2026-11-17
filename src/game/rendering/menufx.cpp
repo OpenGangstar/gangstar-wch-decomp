@@ -630,6 +630,44 @@ void RenderFX::ResetFocus(int flags)
     SetFocus(static_cast<gameswf::character*>(0), flags);
 }
 
+extern const char widgetHideAnimation[] __attribute__((visibility("hidden"))) = "hide";
+extern const char widgetShowAnimation[] __attribute__((visibility("hidden"))) = "show";
+
+void MenuFX::SetMenu(const char* name, bool push)
+{
+    State* next = GetState(name);
+    if (!next)
+        return;
+
+    int count = stateStack.size;
+    if (count > 0) {
+        --count;
+        State* current = stateStack.elements[count];
+        current->LostFocus();
+        if (push && PlayAnim(current->firstCharacter.get(), focusOutAnimation, 0)) {
+            current->unknown80 = 4;
+        } else {
+            if (!push)
+                current->Hide();
+            if (PlayAnim(current->firstCharacter.get(), widgetHideAnimation, 0))
+                current->unknown80 = 2;
+        }
+        current->secondCharacter.set_ref(controllers[0].first.get());
+    }
+
+    if (!push)
+        stateStack.resize(stateStack.size - 1);
+    stateStack.append(&next, 1);
+    setCharacterVisible(next->firstCharacter.get(), true);
+    SetContext(next->firstCharacter.get());
+    PlayAnim(next->firstCharacter.get(), widgetShowAnimation, 0);
+    if (inputBehavior & 1)
+        SetFocusDefault();
+    next->Show();
+    next->GotFocus();
+    next->unknown80 = 1;
+}
+
 void MenuFX::SwitchMenu(const char* name)
 {
     SetMenu(name, false);
