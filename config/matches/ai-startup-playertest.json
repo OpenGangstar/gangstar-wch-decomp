@@ -29,6 +29,7 @@
         "_ZN10PlayerTest12jumpFinishedEv",
         "_ZN10PlayerTest13driftFinishedEv",
         "_ZN10PlayerTest17addDistanceDrivenEf",
+        "_ZN10PlayerTest8SetSpeedEv",
         "_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle",
         "_ZN10PlayerTest4StopEv",
         "_ZN10PlayerTest14setClosestShopEP4Shop",

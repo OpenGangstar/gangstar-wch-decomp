@@ -10431,7 +10431,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301ebd	0x2e	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle	PlayerTest::setLastUsedVehicle(Vehicle*)
 0x00301eec	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTest10setVehicleEP7Vehicle	non-virtual thunk to PlayerTest::setVehicle(Vehicle*)
 0x00301f01	0x68	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10setVehicleEP7Vehicle	PlayerTest::setVehicle(Vehicle*)
-0x00301f69	0x30	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest8SetSpeedEv	PlayerTest::SetSpeed()
+0x00301f69	0x30	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest8SetSpeedEv	PlayerTest::SetSpeed()
 0x00301f99	0x144	PlayerTest.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003020dd	0x14	PlayerTest.cpp	game	ai	matched	_GLOBAL__I__ZN10PlayerTest10switchAnimEv	_GLOBAL__I__ZN10PlayerTest10switchAnimEv
 0x003020f1	0x150	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest5debugEPN3irr5video12IVideoDriverE	PlayerTest::debug(irr::video::IVideoDriver*)

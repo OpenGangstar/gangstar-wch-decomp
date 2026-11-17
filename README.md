@@ -13,7 +13,7 @@ source.
 <!-- progress:start -->
 | Area | Functions | Bytes | Matched |
 | --- | ---: | ---: | ---: |
-| ai | 313 | 50734 | 22.77% |
+| ai | 313 | 50734 | 22.86% |
 | app | 222 | 17338 | 31.03% |
 | audio | 281 | 18996 | 83.61% |
 | characters | 232 | 58870 | 21.69% |

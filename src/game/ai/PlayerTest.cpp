@@ -29,6 +29,8 @@
 #include "../scripting/ScriptManager.h"
 #include "../ui/Shop.h"
 
+extern "C" float sqrtf(float);
+
 void PlayerTest::Stop()
 {
     Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
@@ -308,6 +310,13 @@ void PlayerTest::addDistanceDriven(float distance)
         currentDistanceDriven = 0;
         AchievementManager::s_achievementManager->recordKmDriven();
     }
+}
+
+void PlayerTest::SetSpeed()
+{
+    const float x = collisionBody->linearVelocity.x;
+    const float y = collisionBody->linearVelocity.y;
+    speed = sqrtf(x * x + y * y);
 }
 
 void PlayerTest::setLastUsedVehicle(Vehicle* replacement)
