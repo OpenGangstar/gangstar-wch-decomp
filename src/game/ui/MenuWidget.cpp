@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
+#include "../persistence/StringManager.h"
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
@@ -306,6 +307,7 @@ public:
 
 private:
     int selection;
+    static const int s_languageIds[6];
 };
 
 class Controls : public MenuWidget {
@@ -842,6 +844,37 @@ static const char widgetControlsName[] = "widgetControls";
 Widgets::Controls::Controls()
     : MenuWidget(widgetControlsName), selection(-1), previousSelection(-1)
 {
+}
+
+static const char languageTitlePath[] = "widgetLanguage.txtTitle";
+static const char languageValuePath[] = "widgetLanguage.txtValue";
+static const char languageOkPath[] = "widgetLanguage.btnOk.text";
+const int Widgets::Language::s_languageIds[6] = {
+    0x1002, 0x1003, 0x1004, 0x1005, 0x1006, 0x1007
+};
+
+void Widgets::Language::Show()
+{
+    MenuWidget::Show();
+    selection = Application::GetInstance()->GetStringManager()->getLanguage();
+    UpdateLocalization();
+}
+
+void Widgets::Language::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, languageTitlePath,
+                               _ZNK13StringManager9getStringEi(strings, 0x1001), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, languageValuePath,
+                               _ZNK13StringManager9getStringEi(strings, s_languageIds[selection]), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, languageOkPath,
+                               _ZNK13StringManager9getStringEi(strings, 0x102b), true);
+}
+
+void Widgets::Controls::Show()
+{
+    MenuWidget::Show();
+    UpdateLocalization();
 }
 
 static const char widgetVolumesName[] = "widgetVolumes";
