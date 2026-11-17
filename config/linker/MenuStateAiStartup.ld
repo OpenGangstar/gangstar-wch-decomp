@@ -49,6 +49,9 @@ SECTIONS
     .service_car_rental_vtable 0x004a9440 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16ServiceCarRentalE) }
     .service_weapon_shop_vtable 0x004a94d0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus17ServiceWeaponShopE) }
     .four_button_menu_frame 0x00419f0c : { *ai-startup-menustate.o(.rodata.fourButtonMenuFrame) }
+    .infos_focus 0x002e88d4 : { *ai-startup-menustate.o(.text._ZN5Menus5Infos8GotFocusEv) }
+    .infos_menu_frame 0x00419f04 : { *ai-startup-menustate.o(.rodata.infosMenuFrame) }
+    .infos_vtable 0x004a9200 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus5InfosE) }
     .options_vtable 0x004a9368 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus7OptionsE) }
     .services_vtable 0x004a9560 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8ServicesE) }
     .info_statistics_got_focus 0x002e8990 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatistics8GotFocusEv) }
