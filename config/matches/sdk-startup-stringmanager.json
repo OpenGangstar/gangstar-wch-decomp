@@ -25,6 +25,18 @@
     "source": "src/game/persistence/StringManager.cpp",
     "linker_script": "config/linker/StringManagerSdkStartup.ld",
     "functions": [
+        "_ZNK13StringManager9getStringEi",
+        "_ZN7Structs9TextStyle4ReadER10DataStream",
+        "_ZN13StringManagerC1Ev",
+        "_ZN13StringManagerC2Ev",
+        "_ZN13StringManager8loadPackEj",
+        "_Z6strRevPc",
+        "_Z7strchrsPcPKc",
+        "_ZNK13StringManager12isPackLoadedEj",
+        "_ZNK13StringManager17isPackSheetLoadedEjj",
+        "_ZNK13StringManager21getNumberOfLoadedPackEv",
+        "_ZN13StringManager10switchPackEj",
+        "_ZN13StringManager10unloadPackEj",
         {
             "name": "__tcf_2",
             "address": "0x0034bc51"
@@ -48,5 +60,12 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN13StringManager15unloadPackSheetEjj",
+        "_ZN13StringManager13loadPackSheetEjj",
+        "_ZN10DataStream7ReadIntEv",
+        "_ZN10DataStream21ReadAndAllocateStringEv",
+        "_ZN10DataStream11ReadBooleanEv"
+    ]
 }

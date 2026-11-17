@@ -12635,27 +12635,27 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034acd1	0xcc	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5Image4SwapEv	ASpriteData::Image::Swap()
 0x0034ad9d	0xc4	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6AFrame4SwapEv	ASpriteData::AFrame::Swap()
 0x0034ae61	0x462	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData4SwapEv	ASpriteData::Swap()
-0x0034b2c5	0x14	StringManager.cpp	game	persistence	pending	_ZNK13StringManager12isPackLoadedEj	StringManager::isPackLoaded(unsigned int) const
-0x0034b2d9	0x18	StringManager.cpp	game	persistence	pending	_ZNK13StringManager17isPackSheetLoadedEjj	StringManager::isPackSheetLoaded(unsigned int, unsigned int) const
-0x0034b2f1	0x22	StringManager.cpp	game	persistence	pending	_ZNK13StringManager21getNumberOfLoadedPackEv	StringManager::getNumberOfLoadedPack() const
-0x0034b315	0x18	StringManager.cpp	game	persistence	pending	_ZN13StringManager10switchPackEj	StringManager::switchPack(unsigned int)
+0x0034b2c5	0x14	StringManager.cpp	game	persistence	matched	_ZNK13StringManager12isPackLoadedEj	StringManager::isPackLoaded(unsigned int) const
+0x0034b2d9	0x18	StringManager.cpp	game	persistence	matched	_ZNK13StringManager17isPackSheetLoadedEjj	StringManager::isPackSheetLoaded(unsigned int, unsigned int) const
+0x0034b2f1	0x22	StringManager.cpp	game	persistence	matched	_ZNK13StringManager21getNumberOfLoadedPackEv	StringManager::getNumberOfLoadedPack() const
+0x0034b315	0x18	StringManager.cpp	game	persistence	matched	_ZN13StringManager10switchPackEj	StringManager::switchPack(unsigned int)
 0x0034b32d	0xe	StreamReader.cpp	game	persistence	matched	_ZN12StreamReader6readAsItEEvP11IStreamBasePT_	void StreamReader::readAs<unsigned short>(IStreamBase*, unsigned short*)
 0x0034b33d	0x12	StringManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN7Structs9TextStyleESaIS3_EED1Ev	stlp_priv::_Vector_base<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::~_Vector_base()
-0x0034b351	0x24	StringManager.cpp	game	persistence	pending	_Z6strRevPc	strRev(char*)
-0x0034b375	0x50	StringManager.cpp	game	persistence	pending	_Z7strchrsPcPKc	strchrs(char*, char const*)
+0x0034b351	0x24	StringManager.cpp	game	persistence	matched	_Z6strRevPc	strRev(char*)
+0x0034b375	0x50	StringManager.cpp	game	persistence	matched	_Z7strchrsPcPKc	strchrs(char*, char const*)
 0x0034b3c5	0x1e0	StringManager.cpp	game	persistence	pending	_ZNK13StringManager12formatAmountEibb	StringManager::formatAmount(int, bool, bool) const
 0x0034b5a5	0x72	StringManager.cpp	game	persistence	pending	_ZN13StringManager15unloadPackSheetEjj	StringManager::unloadPackSheet(unsigned int, unsigned int)
-0x0034b619	0x2e	StringManager.cpp	game	persistence	pending	_ZN13StringManager10unloadPackEj	StringManager::unloadPack(unsigned int)
-0x0034b649	0x68	StringManager.cpp	game	persistence	pending	_ZN7Structs9TextStyle4ReadER10DataStream	Structs::TextStyle::Read(DataStream&)
+0x0034b619	0x2e	StringManager.cpp	game	persistence	matched	_ZN13StringManager10unloadPackEj	StringManager::unloadPack(unsigned int)
+0x0034b649	0x68	StringManager.cpp	game	persistence	matched	_ZN7Structs9TextStyle4ReadER10DataStream	Structs::TextStyle::Read(DataStream&)
 0x0034b6b1	0x44	StringManager.cpp	stlport	-	matched	_ZNSaIPN7Structs9TextStyleEE8allocateEjRj	std::allocator<Structs::TextStyle*>::allocate(unsigned int, unsigned int&)
 0x0034b6f5	0xc	StringManager.cpp	game	persistence	pending	_ZSt24__stl_throw_out_of_rangePKc	std::__stl_throw_out_of_range(char const*)
 0x0034b701	0x20	StringManager.cpp	stlport	-	matched	_ZNK9stlp_priv12_Vector_baseIPN7Structs9TextStyleESaIS3_EE21_M_throw_out_of_rangeEv	stlp_priv::_Vector_base<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_throw_out_of_range() const
 0x0034b721	0x24	StringManager.cpp	stlport	-	matched	_ZNKSt6vectorIPN7Structs9TextStyleESaIS2_EE14_M_range_checkEj	std::vector<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_range_check(unsigned int) const
-0x0034b745	0x48	StringManager.cpp	game	persistence	pending	_ZN13StringManagerC2Ev	StringManager::StringManager()
-0x0034b745	0x48	StringManager.cpp	game	persistence	pending	_ZN13StringManagerC1Ev	StringManager::StringManager()
+0x0034b745	0x48	StringManager.cpp	game	persistence	matched	_ZN13StringManagerC2Ev	StringManager::StringManager()
+0x0034b745	0x48	StringManager.cpp	game	persistence	matched	_ZN13StringManagerC1Ev	StringManager::StringManager()
 0x0034b78d	0x3d0	StringManager.cpp	game	persistence	pending	_ZN13StringManager13loadPackSheetEjj	StringManager::loadPackSheet(unsigned int, unsigned int)
-0x0034bb5d	0x40	StringManager.cpp	game	persistence	pending	_ZNK13StringManager9getStringEi	StringManager::getString(int) const
-0x0034bb9d	0x20	StringManager.cpp	game	persistence	pending	_ZN13StringManager8loadPackEj	StringManager::loadPack(unsigned int)
+0x0034bb5d	0x40	StringManager.cpp	game	persistence	matched	_ZNK13StringManager9getStringEi	StringManager::getString(int) const
+0x0034bb9d	0x20	StringManager.cpp	game	persistence	matched	_ZN13StringManager8loadPackEj	StringManager::loadPack(unsigned int)
 0x0034bbbd	0x12	StringManager.cpp	stlport	-	matched	_ZNSt6vectorIPN7Structs9TextStyleESaIS2_EE8_M_clearEv	std::vector<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_clear()
 0x0034bbd1	0x6c	StringManager.cpp	game	persistence	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034bc3d	0x14	StringManager.cpp	game	persistence	matched	_GLOBAL__I__ZN13StringManager9LANGUAGESE	_GLOBAL__I__ZN13StringManager9LANGUAGESE
