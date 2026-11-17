@@ -18,6 +18,7 @@
 #include "../core/Collada.h"
 #include "../core/FactoryFileSystem.h"
 #include "../core/ObservedString.h"
+#include "LevelObject.h"
 
 extern "C" void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(
     void*, const char*) __attribute__((weak));
@@ -79,8 +80,8 @@ unsigned int SceneNodeManager::crc(const char* name) const
     const unsigned int length = strlen(name);
     if (static_cast<int>(length) <= 0)
         return 0;
-    unsigned int index = 0;
     unsigned int value = ~0u;
+    unsigned int index = 0;
     do {
         value = (value >> 8) ^ crcTable[(value & 0xffu) ^ static_cast<unsigned char>(name[index])];
     } while (++index < length);
@@ -184,6 +185,37 @@ int SceneNodeManager::getPoolID(const char* path) const
     irr::io::IFileSystem* fileSystem = Application::GetInstance()->GetDevice()->getFileSystem();
     const int key = crc(fileSystem->getAbsolutePath(path).c_str());
     return getPoolID(key);
+}
+
+irr::scene::ISceneNode* SceneNodeManager::grab(int poolID, LevelObject* owner,
+    int parameterCount, void*** parameters)
+{
+    if (poolID < 0 || static_cast<unsigned int>(poolID) >= pools.size())
+        return 0;
+    Node* entry = 0;
+    Pool* pool = pools[poolID];
+    const int size = pool->nodes.size();
+    if (size > 0 && pool->nodes[0]->available) {
+        entry = pool->nodes[0];
+        if (size - 1 > pool->activeCount) {
+            pool->nodes[0] = pool->nodes[size - pool->activeCount - 1];
+            pool->nodes[size - pool->activeCount - 1] = entry;
+        }
+        if (!entry->parameters && parameterCount)
+            entry->setupUnmanaged(parameterCount);
+    }
+    if (!entry) {
+        entry = new Node(irr::collada::CColladaDatabase::constructScene(pool->name, pool->factory));
+        entry->setupUnmanaged(parameterCount);
+        if (owner)
+            owner->setupSceneNode(poolID, entry->sceneNode, parameterCount, entry->parameters);
+        pool->nodes.push_back(entry);
+    }
+    entry->available = false;
+    ++pool->activeCount;
+    if (parameters)
+        *parameters = entry->parameters;
+    return entry->sceneNode;
 }
 
 void SceneNodeManager::Pool::extend(int requested)
