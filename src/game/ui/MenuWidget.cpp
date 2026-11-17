@@ -155,11 +155,16 @@ namespace Widgets {
 class IGMenu : public MenuWidget {
 public:
     enum eButton { First, Second, Third, Fourth, Fifth };
+    void HideButtons();
+    void ShowButtons();
     void SetButtonInfo(eButton button, int id, bool enabled);
     void SetTitleText(int id);
     void SetBackButtonText(int id);
 
 private:
+    template <bool show>
+    void SetButtonsVisible();
+
     struct Button {
         int textId;
         bool enabled;
@@ -254,6 +259,26 @@ void Widgets::IGMenu::SetBackButtonText(int id)
 }
 
 static const char igMenuButtonFormat[] = "widgetIGMenu.groupBoutons.btnMenu%d";
+
+template <bool show>
+inline __attribute__((always_inline)) void Widgets::IGMenu::SetButtonsVisible()
+{
+    char name[64];
+    for (int button = 0; button < 5; ++button) {
+        sprintf(name, igMenuButtonFormat, button);
+        renderFX->SetVisible(name, show);
+    }
+}
+
+void Widgets::IGMenu::HideButtons()
+{
+    SetButtonsVisible<false>();
+}
+
+void Widgets::IGMenu::ShowButtons()
+{
+    SetButtonsVisible<true>();
+}
 
 void Widgets::IGMenu::SetButtonInfo(eButton button, int id, bool enabled)
 {

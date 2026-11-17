@@ -27,6 +27,8 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets6IGMenu11HideButtonsEv",
+        "_ZN7Widgets6IGMenu11ShowButtonsEv",
         "_ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib",
         "_ZN7Widgets6IGMenu12SetTitleTextEi",
         "_ZN7Widgets6IGMenu17SetBackButtonTextEi",
