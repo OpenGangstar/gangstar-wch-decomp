@@ -20,3 +20,6 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00335769 | VehicleCamera::getFacing | vehicle_side | BLOCKED | — | src/game/vehicles/VehicleCamera.cpp |
 | libsanangeles.so | 0x00333f71 | FPSCamera::enter | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00333fed | FPSCamera::init | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00305e29 | Shop::trigger | lock_init | REVIEW | — | src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x003344f5 | FPSCamera::update | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x003339bd | FollowCamera::goBehind | vehicle_side | REVIEW | — | src/game/core/FollowCamera.cpp |

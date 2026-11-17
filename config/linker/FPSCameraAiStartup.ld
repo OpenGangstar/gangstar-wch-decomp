@@ -20,6 +20,7 @@ _ZN28retail_fpscamera_transitions11guard_transE = 0x00429a78;
 _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
 SECTIONS
 {
+    .fps_update 0x003344f4 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6updateEf) }
     .fps_init 0x00333fec : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4initEP11LevelObjecti) }
     .fps_vtable 0x004accb0 : { *ai-startup-fpscamera.o(.data.rel.ro._ZTV9FPSCamera) }
     .fps_enter 0x00333f70 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera5enterEv) }
