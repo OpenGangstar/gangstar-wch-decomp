@@ -10399,7 +10399,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301261	0xf8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_SetTargetEP11LevelObjectb	PlayerTest::_SetTarget(LevelObject*, bool)
 0x00301359	0x30	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10toggleLockEv	PlayerTest::toggleLock()
 0x00301389	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7addCashEii	PlayerTest::addCash(int, int)
-0x003013bd	0x5c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15ResetPlayerTestEb	PlayerTest::ResetPlayerTest(bool)
+0x003013bd	0x5c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest15ResetPlayerTestEb	PlayerTest::ResetPlayerTest(bool)
 0x00301418	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTest11applyDamageEiP11LevelObjectb	non-virtual thunk to PlayerTest::applyDamage(int, LevelObject*, bool)
 0x0030142d	0xac	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest11applyDamageEiP11LevelObjectb	PlayerTest::applyDamage(int, LevelObject*, bool)
 0x003014d8	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTest13runToLocationERKN3irr4core8vector3dIfEE	non-virtual thunk to PlayerTest::runToLocation(irr::core::vector3d<float> const&)
@@ -10430,7 +10430,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301df9	0xc4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest19finishedStopDrivingEv	PlayerTest::finishedStopDriving()
 0x00301ebd	0x2e	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle	PlayerTest::setLastUsedVehicle(Vehicle*)
 0x00301eec	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTest10setVehicleEP7Vehicle	non-virtual thunk to PlayerTest::setVehicle(Vehicle*)
-0x00301f01	0x68	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10setVehicleEP7Vehicle	PlayerTest::setVehicle(Vehicle*)
+0x00301f01	0x68	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10setVehicleEP7Vehicle	PlayerTest::setVehicle(Vehicle*)
 0x00301f69	0x30	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest8SetSpeedEv	PlayerTest::SetSpeed()
 0x00301f99	0x144	PlayerTest.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003020dd	0x14	PlayerTest.cpp	game	ai	matched	_GLOBAL__I__ZN10PlayerTest10switchAnimEv	_GLOBAL__I__ZN10PlayerTest10switchAnimEv

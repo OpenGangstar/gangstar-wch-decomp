@@ -32,6 +32,8 @@ SECTIONS
     .player_drift_finished 0x00301820 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13driftFinishedEv) }
     .player_distance_driven 0x00301854 : { *ai-startup-playertest.o(.text._ZN10PlayerTest17addDistanceDrivenEf) }
     .player_set_speed 0x00301f68 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8SetSpeedEv) }
+    .player_reset 0x003013bc : { *ai-startup-playertest.o(.text._ZN10PlayerTest15ResetPlayerTestEb) }
+    .player_set_vehicle 0x00301f00 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10setVehicleEP7Vehicle) }
     .player_update_scene_node 0x00302684 : { *ai-startup-playertest.o(.text._ZN10PlayerTest15UpdateSceneNodeEv) }
     .player_last_used_vehicle 0x00301ebc : { *ai-startup-playertest.o(.text._ZN10PlayerTest18setLastUsedVehicleEP7Vehicle) }
     .player_stop 0x00301a3c : { *ai-startup-playertest.o(.text._ZN10PlayerTest4StopEv) }

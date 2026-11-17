@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../world/MapSingleton.h"
+#include "../world/GameObjectManager.h"
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
 #include "../characters/PlayerTest.h"
@@ -321,6 +322,34 @@ void PlayerTest::UpdateSceneNode()
     SavePositionInterface* position = this;
     Character* character = reinterpret_cast<Character*>(position);
     character->updatePosition(position->GetRotation());
+}
+
+void PlayerTest::ResetPlayerTest(bool)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    const irr::core::vector3d<float> front = character->GetFront();
+    facing.x = front.X;
+    facing.y = front.Y;
+    facing.z = front.Z;
+    character->setCameraOffset(irr::core::vector3d<float>(0.0f, 1.0f, 0.0f));
+    character->setAnimation(165, 1.0f, false, false, false);
+    character->resetCollisions();
+}
+
+void PlayerTest::setVehicle(Vehicle* value)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    character->Character::setVehicle(value);
+    if (!value)
+        return;
+
+    if (unknown316 != value) {
+        GameObjectManager* manager = GameObjectManager::s_gom;
+        manager->RemoveGameObjectOfType(vehicle->getSpawnType());
+        GameObjectManager::s_gom->AddGameObjectOfType(11);
+        vehicle->setSpawnType(11);
+    }
+    setLastUsedVehicle(value);
 }
 
 void PlayerTest::SetSpeed()
