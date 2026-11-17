@@ -693,14 +693,16 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034c0c5 | DataReloaderManager destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap | vehicle_side | BLOCKED | pending | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c2e1 | DataReloaderManager deleting destructor (D0) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002d3349 | SwfFree | camera_tap | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d3355 | IrrFree | camera_tap | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d3339 | CustomFree | lock_init | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d3361 | CustomAlloc | camera_tap | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d3371 | SwfAlloc(size, hint, file, line) | vehicle_side | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d337d | SwfAlloc(size, hint) | lock_init | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d3389 | IrrAlloc(size, hint) | vehicle_side | REVIEW | pending | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x002d3395 | IrrAlloc(unsigned int, irr::MemHint, int, const char*, int) | lock_init | REVIEW | pending | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3349 | SwfFree | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3355 | IrrFree | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3339 | CustomFree | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3361 | CustomAlloc | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3371 | SwfAlloc(size, hint, file, line) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d337d | SwfAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3389 | IrrAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
+| libsanangeles.so | 0x002d3395 | IrrAlloc(unsigned int, irr::MemHint, int, const char*, int) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles | vehicle_side | ASSIGNED | pending | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002e2b19 | GSLoading::isGameLoaded | camera_tap | ASSIGNED | pending | src/game/app/GSLoading.cpp |
-| libsanangeles.so | 0x002e2b2d | GSLoading::setGameLoaded | lock_init | ASSIGNED | pending | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2b19 | GSLoading::isGameLoaded | camera_tap | REVIEW | pending | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2b2d | GSLoading::setGameLoaded | lock_init | REVIEW | pending | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x0034b2c5 | StringManager::isPackLoaded | camera_tap | ASSIGNED | pending | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b2d9 | StringManager::isPackSheetLoaded | lock_init | ASSIGNED | pending | src/game/persistence/StringManager.cpp |
