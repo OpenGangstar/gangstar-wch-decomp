@@ -9461,8 +9461,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e3f19	0x8	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager15consumedCursorsEv	MenuManager::consumedCursors() const
 0x002e3f21	0xc	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13consumeCursorEv	MenuManager::consumeCursor()
 0x002e3f2d	0x4	MenuManager.cpp	game	ui	matched	_ZN11MenuManager19getCharAutoLineFeedEv	MenuManager::getCharAutoLineFeed()
-0x002e3f31	0x16	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager9getTextIdENS_5eTextE	MenuManager::getTextId(MenuManager::eText) const
-0x002e3f49	0x18	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager7getTextENS_5eTextE	MenuManager::getText(MenuManager::eText) const
+0x002e3f31	0x16	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager9getTextIdENS_5eTextE	MenuManager::getTextId(MenuManager::eText) const
+0x002e3f49	0x18	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager7getTextENS_5eTextE	MenuManager::getText(MenuManager::eText) const
 0x002e3f61	0x16	MenuManager.cpp	game	ui	matched	_ZN11MenuManager15enableAsianFontEb	MenuManager::enableAsianFont(bool)
 0x002e3f79	0xc	MenuManager.cpp	game	ui	matched	_ZN11MenuManager11enableAnimsEb	MenuManager::enableAnims(bool)
 0x002e3f85	0xc	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager15areAnimsEnabledEv	MenuManager::areAnimsEnabled() const
