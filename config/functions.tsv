@@ -11709,7 +11709,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00331ddd	0x6	CameraManager.cpp	game	core	matched	_ZN13CameraManager14setSceneCameraEP11SceneCamera	CameraManager::setSceneCamera(SceneCamera*)
 0x00331de5	0x6	CameraManager.cpp	game	core	matched	_ZN13CameraManager20setTouchScreenInputsEb	CameraManager::setTouchScreenInputs(bool)
 0x00331ded	0x6	CameraManager.cpp	game	core	matched	_ZNK13CameraManager6isUsedEv	CameraManager::isUsed() const
-0x00331df5	0x1cc	CameraManager.cpp	game	core	pending	_ZN14AnimatableTypeIN3irr4core8vector3dIfEEE6UpdateEf	AnimatableType<irr::core::vector3d<float> >::Update(float)
+0x00331df5	0x1cc	CameraManager.cpp	game	core	matched	_ZN14AnimatableTypeIN3irr4core8vector3dIfEEE6UpdateEf	AnimatableType<irr::core::vector3d<float> >::Update(float)
 0x00331fc1	0x30	CameraManager.cpp	game	core	matched	__tcf_3	__tcf_3
 0x00331ff1	0xe	CameraManager.cpp	game	core	matched	_ZNK13CameraManager11getPositionEv	CameraManager::getPosition() const
 0x00332001	0xe	CameraManager.cpp	game	core	matched	_ZNK13CameraManager9getLookAtEv	CameraManager::getLookAt() const
