@@ -16,6 +16,7 @@ SECTIONS
     .scene_crc_reflect 0x003213f0 : { *sdk-startup-scenenodemanager.o(.text._Z10crcReflectjc) }
     .scene_manager_setup 0x0032141c : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager5setupEv) }
     .scene_manager_update 0x00321420 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager6updateEi) }
+    .scene_manager_crc 0x003215b4 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager3crcEPKc) }
     .scene_node_destructor 0x003215f0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4NodeD1Ev .text._ZN16SceneNodeManager4NodeD2Ev) }
     .scene_node_setup_unmanaged 0x00321630 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4Node14setupUnmanagedEi) }
     .scene_node_constructor 0x00321658 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4NodeC1EPN3irr5scene10ISceneNodeE .text._ZN16SceneNodeManager4NodeC2EPN3irr5scene10ISceneNodeE) }

@@ -10920,7 +10920,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003214ed	0x40	SceneNodeManager.cpp	stlport	-	matched	_ZNSaIN9stlp_priv13_Rb_tree_nodeISt4pairIKiiEEEE8allocateEjPKv	std::allocator<stlp_priv::_Rb_tree_node<std::pair<int const, int> > >::allocate(unsigned int, void const*)
 0x0032152d	0x44	SceneNodeManager.cpp	stlport	-	matched	_ZNSaIPN16SceneNodeManager4NodeEE8allocateEjRj	std::allocator<SceneNodeManager::Node*>::allocate(unsigned int, unsigned int&)
 0x00321571	0x44	SceneNodeManager.cpp	stlport	-	matched	_ZNSaIPN16SceneNodeManager4PoolEE8allocateEjRj	std::allocator<SceneNodeManager::Pool*>::allocate(unsigned int, unsigned int&)
-0x003215b5	0x3a	SceneNodeManager.cpp	game	world	pending	_ZNK16SceneNodeManager3crcEPKc	SceneNodeManager::crc(char const*) const
+0x003215b5	0x3a	SceneNodeManager.cpp	game	world	matched	_ZNK16SceneNodeManager3crcEPKc	SceneNodeManager::crc(char const*) const
 0x003215f1	0x40	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4NodeD1Ev	SceneNodeManager::Node::~Node()
 0x003215f1	0x40	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4NodeD2Ev	SceneNodeManager::Node::~Node()
 0x00321631	0x28	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4Node14setupUnmanagedEi	SceneNodeManager::Node::setupUnmanaged(int)

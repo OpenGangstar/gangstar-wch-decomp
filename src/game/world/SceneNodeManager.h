@@ -20,6 +20,7 @@ public:
 private:
     SceneNodeManager();
     ~SceneNodeManager();
+    unsigned int crc(const char* name) const;
     struct Node {
         explicit Node(irr::scene::ISceneNode* sceneNode);
         ~Node();
