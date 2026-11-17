@@ -11,6 +11,7 @@ class Weapon;
 // offset 295. NPC's first additional field is at 296. Other fields and virtual
 // overrides remain unrecovered; keep their storage opaque.
 class Character : public LevelObject {
+    friend class VehicleController;
     friend class CopController;
     friend class GuardController;
     friend class CivAgressiveController;

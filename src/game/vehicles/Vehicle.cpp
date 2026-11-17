@@ -1483,12 +1483,7 @@ void __attribute__((weak)) Vehicle::stopSiren()
 extern "C" void _ZN12EvNPCVehicleD1Ev(void*) __attribute__((weak));
 
 
-class EvVehicleDeactivated : public IEvent {
-public:
-    explicit EvVehicleDeactivated(Vehicle* vehicle) : vehicle(vehicle) { eventID = 21; }
-    Vehicle* vehicle;
-    virtual ~EvVehicleDeactivated() __attribute__((used));
-};
+#include "VehicleEvents.h"
 
 inline EvVehicleDeactivated::~EvVehicleDeactivated()
 {
@@ -1520,10 +1515,7 @@ void Vehicle::clean()
     }
 }
 
-class EvVehicleDestroyed : public IEvent {
-public:
-    virtual ~EvVehicleDestroyed() __attribute__((used));
-};
+
 
 inline EvVehicleDestroyed::~EvVehicleDestroyed()
 {

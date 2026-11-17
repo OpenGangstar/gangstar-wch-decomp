@@ -35,6 +35,7 @@ private:
         ReceiverList() : next(this), previous(this) {}
         ~ReceiverList();
         void removeForTarget(const void* target);
+        void clearOwnedReceivers();
 
         ReceiverList* next;
         ReceiverList* previous;

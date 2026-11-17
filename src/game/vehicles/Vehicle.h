@@ -164,6 +164,8 @@ public:
     Character* getDriver() const { return driver; }
 private:
     friend class NPC;
+    friend class VehicleController;
+    friend class CopVehicleController;
     void _cleanupSounds();
     void resetPreviousPos();
     void ResetBodyPosition();
@@ -200,7 +202,8 @@ private:
     unsigned char unknown156[12];
     unsigned int mass;
     float skidThreshold;
-    unsigned char unknown176[16];
+    unsigned char unknown176[12];
+    float unknown188;
     int repairPrice;
     int savedRadioStation;
     unsigned char unknown200[24];

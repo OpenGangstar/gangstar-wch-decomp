@@ -17,6 +17,8 @@ __cxa_pure_virtual = 0;
 INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .ai_manager_event 0x00340740 : { *ai-startup-aimanager.o(.text._ZN9AIManager7onEventEPK6IEventPK12EventManager) }
+    .ai_manager_clean 0x003406a8 : { *ai-startup-aimanager.o(.text._ZN9AIManager5cleanEv) }
     .wanted_changed_delete 0x003405cc : { *(.gnu.linkonce.t._ZN20EvWantedLevelChangedD0Ev) }
     .wanted_changed_destroy 0x003402e0 : { *(.gnu.linkonce.t._ZN20EvWantedLevelChangedD1Ev) }
     .wanted_changed_vtable 0x004acf80 : { *(.gnu.linkonce.d.rel.ro._ZTV20EvWantedLevelChanged) }

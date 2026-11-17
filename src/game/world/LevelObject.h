@@ -17,6 +17,7 @@ class PhysicAttributes;
 // recovery of the remaining methods. The constructor is the recovered standalone
 // function; the inline type accessor represents the observed byte load.
 class LevelObject {
+    friend class VehicleController;
     friend class PlayerTest;
     friend class TaxiSideMission;
     friend class SideMission;

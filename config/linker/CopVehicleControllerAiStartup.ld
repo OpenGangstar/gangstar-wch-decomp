@@ -17,6 +17,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .cop_vehicle_switch 0x0034171c : { *ai-startup-copvehiclecontroller.o(.text._ZN20CopVehicleController11switchStateEN8gameloft2ai7StateIDE) }
     .cop_vehicle_construct 0x0034185c : { *(.text._ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE .text._ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }
     .cop_vehicle_delete 0x003417ac : { *(.text._ZN20CopVehicleControllerD0Ev) }
     .cop_vehicle_destroy 0x00341808 : { *(.text._ZN20CopVehicleControllerD1Ev .text._ZN20CopVehicleControllerD2Ev) }

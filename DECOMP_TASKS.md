@@ -830,8 +830,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00341f31 | GuardController::onEvent | lock_init | BLOCKED | pending | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x003420cd | GuardController::switchState | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00342585 | VehicleController::onEvent | lock_init | BLOCKED | pending | src/game/ai/VehicleController.cpp |
-| libsanangeles.so | 0x0034171d | CopVehicleController::switchState | camera_tap | REVIEW | pending | src/game/ai/CopVehicleController.cpp |
-| libsanangeles.so | 0x00341381 | CopController::onEvent | vehicle_side | ASSIGNED | pending | src/game/ai/CopController.cpp |
-| libsanangeles.so | 0x003406a9 | AIManager::clean | camera_tap | REVIEW | pending | src/game/ai/AIManager.cpp |
-| libsanangeles.so | 0x003426b5 | VehicleController::switchState | lock_init | ASSIGNED | pending | src/game/ai/VehicleController.cpp |
-| libsanangeles.so | 0x00340741 | AIManager::onEvent | camera_tap | ASSIGNED | pending | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x0034171d | CopVehicleController::switchState | — | COMPLETED | 100% | src/game/ai/CopVehicleController.cpp |
+| libsanangeles.so | 0x00341381 | CopController::onEvent | vehicle_side | BLOCKED | pending | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x003406a9 | AIManager::clean | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x003426b5 | VehicleController::switchState | — | COMPLETED | 100% | src/game/ai/VehicleController.cpp |
+| libsanangeles.so | 0x00340741 | AIManager::onEvent | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, StateID) | lock_init | BLOCKED | pending | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x00340455 | AIManager::addAI(NPC*, StateID) | camera_tap | REVIEW | pending | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x003520c1 | RadioStationController::selectRandomJingle | vehicle_side | REVIEW | pending | src/game/ai/RadioStationController.cpp |
+| libsanangeles.so | 0x003522b1 | RadioStationController::selectRandomSong | lock_init | REVIEW | pending | src/game/ai/RadioStationController.cpp |
+| libsanangeles.so | 0x00352335 | RadioStationController constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | pending | src/game/ai/RadioStationController.cpp |
+| libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | camera_tap | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |

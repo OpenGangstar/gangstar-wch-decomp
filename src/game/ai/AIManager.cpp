@@ -145,3 +145,111 @@ static void _GLOBAL__I__ZN9AIManagerC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+inline __attribute__((always_inline)) void AIManager::ReceiverList::clearOwnedReceivers()
+{
+    ReceiverList* link = next;
+    while (this != link) {
+        ReceiverNode* node = static_cast<ReceiverNode*>(link);
+        ReceiverList* saved = link->next;
+        delete node->receiver;
+        node->receiver = 0;
+        ReceiverList* nextNode = link->next;
+        ReceiverList* previousNode = link->previous;
+        previousNode->next = nextNode;
+        nextNode->previous = previousNode;
+        ::operator delete(link);
+        link = saved;
+    }
+}
+void AIManager::clean()
+{
+    firstList.clearOwnedReceivers();
+    secondList.clearOwnedReceivers();
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->detach(17, this);
+    events->detach(18, this);
+    events->detach(20, this);
+    events->detach(21, this);
+}
+
+#include "../characters/NPCEvent.h"
+#include "../characters/NPCDespawnEvent.h"
+#include "../vehicles/VehicleEvents.h"
+void AIManager::onEvent(const IEvent* event, const EventManager*)
+{
+    switch (event->getEventID()) {
+    case 17: {
+        ReceiverList* link = firstList.next;
+        while (&firstList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvNPCDeath*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    case 18: {
+        ReceiverList* link = firstList.next;
+        while (&firstList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvNPCDespawn*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    case 20: {
+        ReceiverList* link = secondList.next;
+        while (&secondList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvVehicleDestroyed*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    case 21: {
+        ReceiverList* link = secondList.next;
+        while (&secondList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvVehicleDeactivated*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    }
+}

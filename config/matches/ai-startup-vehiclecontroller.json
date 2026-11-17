@@ -26,6 +26,7 @@
     "source": "src/game/ai/VehicleController.cpp",
     "linker_script": "config/linker/VehicleControllerAiStartup.ld",
     "functions": [
+        "_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE",
         {
             "name": "__tcf_4",
             "address": "0x003424e5"
@@ -66,21 +67,31 @@
         ".vehicle_controller_destroy",
         ".vehicle_controller_vtable",
         ".vehicle_controller_waypoint",
-        ".vehicle_controller_next_point"
+        ".vehicle_controller_next_point",
+        ".vehicle_switch_table"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver",
-        "_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE",
-        "_ZNK4Path7getSizeEv",
-        "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
-        "_ZNK7Vehicle23isLoopingOnPathToFollowEv",
-        "_ZNK7Vehicle15getPathToFollowEv",
+        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
+        "_ZN17GameObjectManager3AddEP11LevelObjecti",
+        "_ZN7Vehicle15driveToLocationERKN3irr4core8vector3dIfEEb",
         "_ZN7Vehicle18setCurrentWaypointEi",
-        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE"
+        "_ZN7Vehicle4fleeERKN3irr4core8vector3dIfEE",
+        "_ZN7Vehicle4waitEi",
+        "_ZN7Vehicle6freezeEv",
+        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
+        "_ZN9AIManager8removeAIEP7Vehicle",
+        "_ZN9AIManagerC1Ev",
+        "_ZN9AIManagerD1Ev",
+        "_ZN9Character15getOutOfVehicleEbb",
+        "_ZN9Character4showEv",
+        "_ZNK11LevelObject9isEnabledEv",
+        "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
+        "_ZNK4Path7getSizeEv",
+        "_ZNK7Vehicle15getPathToFollowEv",
+        "_ZNK7Vehicle23isLoopingOnPathToFollowEv"
     ]
 }

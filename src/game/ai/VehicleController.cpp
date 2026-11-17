@@ -130,3 +130,54 @@ static void _GLOBAL__I__ZN17VehicleControllerC2EP7VehicleRKN8gameloft2ai10Transi
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "NPC.h"
+#include "../world/GameObjectManager.h"
+void VehicleController::switchState(gameloft::ai::StateID next)
+{
+    switch (static_cast<int>(next)) {
+    case 8:
+        vehicle->flags344 &= ~128u;
+        break;
+    case 11: {
+        NPC* driver = static_cast<NPC*>(vehicle->getDriver());
+        if (driver) {
+            if (!driver->isEnabled()) {
+                driver->enable();
+                if (driver->category428 != static_cast<unsigned int>(-1) && driver->category428 != 6)
+                    AIManager::getInstance()->addAI(driver, static_cast<gameloft::ai::StateID>(0));
+            } else if (!driver->sceneNode || !driver->sceneNode->isVisible()) {
+                GameObjectManager* manager = GameObjectManager::s_gom;
+                driver->show();
+                manager->Remove(driver);
+                manager->Add(driver, 0);
+            }
+            if (vehicle->flags344 & 4096) {
+                driver->getOutOfVehicle(true, true);
+                driver->SetTarget(vehicle->aiTarget);
+            } else
+                driver->getOutOfVehicle(true, false);
+            AIManager::getInstance()->removeAI(vehicle);
+            return;
+        }
+        break;
+    }
+    case 1:
+        vehicle->driveToLocation(getNextPoint(), false);
+        break;
+    case 2:
+        vehicle->wait(2);
+        break;
+    case 4:
+        vehicle->freeze();
+        break;
+    case 5:
+        {
+        irr::core::vector3d<float> position = vehicle->GetPosition();
+        Vehicle* fleeing = vehicle;
+        fleeing->flee(fleeing->getPhysicAttributes()->GetNextRandomPos(0, 1, position));
+        }
+        break;
+    }
+    state = next;
+}
