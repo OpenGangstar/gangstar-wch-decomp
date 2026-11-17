@@ -27,6 +27,9 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets8MainMenu7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets7Volumes4ShowEv",
+        "_ZN7Widgets6Arrows7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets12Achievements7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets10Statistics18UpdateLocalizationEv",
         "_ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE",
@@ -209,6 +212,16 @@
         }
     ],
     "sections": [
+        ".widget_mainmenu_vtable",
+        ".widget_volumes_vtable",
+        ".widget_arrows_vtable",
+        ".main_button_prefix",
+        ".main_twitter_button",
+        ".main_info_button",
+        ".main_more_button",
+        ".widget_volumes_playlist_path",
+        ".widget_arrow_left_label",
+        ".widget_arrow_right_label",
         ".widget_statistics_entry_format",
         ".widget_confirm_payment_vtable",
         ".widget_confirm_payment_format",
@@ -342,6 +355,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZNK12SoundManager10canUseIPodEv",
+        "_ZN12SoundManager8initIPodEv",
         "_ZNK18AchievementManager13getStatFromIDEi",
         "_ZNK18AchievementManager4Stat12formatStringEPc",
         "_ZN12SoundManager12useIPodRadioEv",

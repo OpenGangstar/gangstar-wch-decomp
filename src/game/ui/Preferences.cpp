@@ -78,3 +78,23 @@ static void _GLOBAL__I__ZN11PreferencesC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "../persistence/Persistence.h"
+#include "../persistence/FileStream.h"
+
+class Preferences : public Persistence {
+public:
+    Preferences();
+    virtual ~Preferences();
+    bool Exist(const char* name);
+};
+
+bool Preferences::Exist(const char* name)
+{
+    FileStream file;
+    return file.Exist(name);
+}
+
+Preferences::Preferences()
+{
+}

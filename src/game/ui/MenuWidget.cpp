@@ -1957,3 +1957,100 @@ void Widgets::Achievements::OnEvent(RenderFX::Event& event)
     }
     event.consumed = true;
 }
+
+static const char mainButtonPrefix[] = "btnMain";
+static const char mainTwitterButton[] = "btnTwitter";
+static const char mainInfoButton[] = "btnInfo";
+static const char mainMoreButton[] = "btnMore";
+
+void Widgets::MainMenu::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    MenuManager::getInstance();
+    switch (event.type) {
+    case 6: {
+        const char* name = event.characterName;
+        if (strstr(name, mainButtonPrefix)) {
+            pressedButton = name[7] - '0';
+            if (buttons[pressedButton].enabled) {
+                if (listener)
+                    listener->Notify(this, 1);
+            } else {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(215, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+            }
+            event.consumed = true;
+        } else if (strcmp(name, mainTwitterButton) == 0) {
+            if (listener)
+                listener->Notify(this, 2);
+            event.consumed = true;
+        } else if (strcmp(name, mainInfoButton) == 0) {
+            if (listener)
+                listener->Notify(this, 3);
+            event.consumed = true;
+        } else if (strcmp(name, mainMoreButton) == 0) {
+            if (listener)
+                listener->Notify(this, 4);
+            event.consumed = true;
+        }
+        break;
+    }
+    }
+}
+
+static const char volumesPlaylistPath[] = "widgetVolumes.playlist";
+
+void Widgets::Volumes::Show()
+{
+    MenuWidget::Show();
+    selectedPlaylist = s_playlist;
+    renderFX->SetVisible(volumesPlaylistPath, SoundManager::getInstance()->canUseIPod());
+    SoundManager::getInstance()->initIPod();
+    UpdateLocalization();
+    if (!SoundManager::getInstance()->isLowFpsMusicPlaying()) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(35, 0, true, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+}
+
+static const char arrowLeftLabel[] = "btnArrowLeft";
+static const char arrowRightLabel[] = "btnArrowRight";
+
+void Widgets::Arrows::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    switch (event.type) {
+    case 6:
+        const char* name = event.characterName;
+        if (strcmp(name, arrowLeftLabel) == 0) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            if (pageCount > 0) {
+                --currentPage;
+                if (currentPage < 0)
+                    currentPage = pageCount - 1;
+            }
+            event.consumed = true;
+        } else if (strcmp(name, arrowRightLabel) == 0) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            if (pageCount > 0)
+                currentPage = (currentPage + 1) % pageCount;
+            event.consumed = true;
+        }
+        if (event.consumed) {
+            UpdateLocalization();
+            if (listener)
+                listener->Notify(this, 1);
+        }
+        break;
+    }
+}

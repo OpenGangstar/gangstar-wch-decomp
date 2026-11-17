@@ -657,8 +657,20 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ef901 | Widgets::Objective::OnEvent | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002eeda1 | Widgets::Achievements::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ef9fd | Widgets::MainMenu::OnEvent | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent | camera_tap | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent | vehicle_side | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002f01c5 | Widgets::Volumes::Show | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002f0249 | Widgets::Arrows::OnEvent | lock_init | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef9fd | Widgets::MainMenu::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent | camera_tap | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002f01c5 | Widgets::Volumes::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002f0249 | Widgets::Arrows::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002e33f1 | GSSideMissionMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x00343761 | Preferences::Exist | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002e3415 | GSSideMissionMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x00343811 | Preferences constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | vehicle_side | REVIEW | pending | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | camera_tap | REVIEW | pending | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | ASSIGNED | pending | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | camera_tap | REVIEW | pending | src/game/hud/MenuManager.cpp |
+| libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | lock_init | ASSIGNED | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | ASSIGNED | pending | src/game/ui/MenuState.cpp |

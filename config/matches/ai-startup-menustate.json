@@ -334,6 +334,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK12SoundManager10canUseIPodEv",
+        "_ZN12SoundManager8initIPodEv",
         "_ZNK18AchievementManager13getStatFromIDEi",
         "_ZNK18AchievementManager4Stat12formatStringEPc",
         "_ZN12SoundManager12useIPodRadioEv",

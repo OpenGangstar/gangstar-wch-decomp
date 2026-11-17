@@ -5,6 +5,8 @@
 
 // Observed allocation extent, StateBase interface and constructor stores.
 // Remaining callback bodies and field meanings are provisional.
+class Vehicle;
+
 class GSSideMissionMenu : public StateBase {
 public:
     GSSideMissionMenu();
@@ -23,7 +25,7 @@ private:
     unsigned int unknown8;
     unsigned int unknown12;
     unsigned int unknown16;
-    unsigned int unknown20;
+    Vehicle* stoppedVehicle;
 };
 
 #endif

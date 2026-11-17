@@ -8,6 +8,19 @@ PROVIDE(__aeabi_f2iz = 0x001c44cc);
 PROVIDE(__aeabi_idiv = 0x001c43dc);
 SECTIONS
 {
+    .widget_mainmenu_vtable 0x004a9868 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8MainMenuE) }
+    .widget_volumes_vtable 0x004a99d0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7VolumesE) }
+    .widget_arrows_vtable 0x004a9a98 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6ArrowsE) }
+    .widget_mainmenu_event 0x002ef9fc : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenu7OnEventERN8RenderFX5EventE) }
+    .widget_volumes_show 0x002f01c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes4ShowEv) }
+    .widget_arrows_event 0x002f0248 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Arrows7OnEventERN8RenderFX5EventE) }
+    .main_button_prefix 0x0041b5d8 : { *ai-startup-menuwidget.o(.rodata.mainButtonPrefix) }
+    .main_twitter_button 0x0041b5e0 : { *ai-startup-menuwidget.o(.rodata.mainTwitterButton) }
+    .main_info_button 0x0041b5ec : { *ai-startup-menuwidget.o(.rodata.mainInfoButton) }
+    .main_more_button 0x0041b5f4 : { *ai-startup-menuwidget.o(.rodata.mainMoreButton) }
+    .widget_volumes_playlist_path 0x0041b650 : { *ai-startup-menuwidget.o(.rodata.volumesPlaylistPath) }
+    .widget_arrow_left_label 0x0041b668 : { *ai-startup-menuwidget.o(.rodata.arrowLeftLabel) }
+    .widget_arrow_right_label 0x0041b678 : { *ai-startup-menuwidget.o(.rodata.arrowRightLabel) }
     .widget_achievements_event 0x002eeda0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements7OnEventERN8RenderFX5EventE) }
     .widget_statistics_localization 0x002ee2c0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics18UpdateLocalizationEv) }
     .widget_statistics_entry_format 0x0041b0e0 : { *ai-startup-menuwidget.o(.rodata.statisticsEntryFormat) }

@@ -25,6 +25,9 @@
     "source": "src/game/ui/Preferences.cpp",
     "linker_script": "config/linker/PreferencesAiStartup.ld",
     "functions": [
+        "_ZN11PreferencesC2Ev",
+        "_ZN11PreferencesC1Ev",
+        "_ZN11Preferences5ExistEPKc",
         {
             "name": "__tcf_3",
             "address": "0x00343731"
@@ -47,6 +50,12 @@
             "name": ".got",
             "offset": 864
         }
+    ],
+    "external_thumb_functions": [
+        "_ZN11PersistenceC1Ev",
+        "_ZN10FileStreamC1Ev",
+        "_ZN10FileStream5ExistEPKc",
+        "_ZN10FileStreamD1Ev"
     ],
     "retail_got": true
 }

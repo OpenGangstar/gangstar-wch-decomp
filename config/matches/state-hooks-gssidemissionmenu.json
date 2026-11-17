@@ -25,6 +25,8 @@
     "source": "src/game/ui/GSSideMissionMenu.cpp",
     "linker_script": "config/linker/GSSideMissionMenuHooks.ld",
     "functions": [
+        "_ZN17GSSideMissionMenu4ctorEPK12StateMachine",
+        "_ZN17GSSideMissionMenu4dtorEPK12StateMachine",
         "_ZN17GSSideMissionMenu4drawEPK12StateMachine",
         "_ZN17GSSideMissionMenu6draw2dEPK12StateMachine",
         "_ZN17GSSideMissionMenuC1Ev",
@@ -70,6 +72,7 @@
         }
     ],
     "sections": [
+        ".side_mission_confirm_name",
         ".hook_0",
         ".hook_1",
         ".state_ctor",
@@ -105,6 +108,21 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN13ScriptManager5pauseEv",
+        "_ZN11CHudManager4hideEv",
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZN11MenuManager9hideTextsEv",
+        "_ZNK11MenuManager8getStateEPKc",
+        "_ZN5Menus6Dialog10SetMessageEi",
+        "_ZN11MenuManager4pushEPKcb",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager9showTextsEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11CHudManager4showEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager6resumeEv",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev"
     ]
