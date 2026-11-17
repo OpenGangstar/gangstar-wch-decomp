@@ -1,5 +1,6 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
+__aeabi_idiv = 0x001c43dc;
 INCLUDE build/matches/ai-startup-playertest/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
@@ -25,6 +26,8 @@ _ZdlPv = 0x001c42b0;
 SECTIONS
 {
     .player_just_stole_car 0x00301758 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12justStoleCarEP7Vehicle) }
+    .player_jump_finished 0x003017ec : { *ai-startup-playertest.o(.text._ZN10PlayerTest12jumpFinishedEv) }
+    .player_drift_finished 0x00301820 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13driftFinishedEv) }
     .player_stop 0x00301a3c : { *ai-startup-playertest.o(.text._ZN10PlayerTest4StopEv) }
     .player_closest_shop 0x00301090 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14setClosestShopEP4Shop) }
     .npc_vehicle_base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
