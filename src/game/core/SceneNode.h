@@ -238,6 +238,8 @@ public:
     virtual void unknown63(); virtual void unknown64(); virtual void unknown65();
     virtual void unknown66();
     virtual ISceneCollisionManager* getSceneCollisionManager();
+    virtual void unknown68();
+    virtual void addToDeletionQueue(ISceneNode* node);
 };
 }
 class ITimer {

@@ -32,6 +32,9 @@
         "_ZN5TrailD0Ev",
         "_ZN5TrailD1Ev",
         "_ZN5TrailD2Ev",
+        "_ZN5TrailC1Ev",
+        "_ZN5TrailC2Ev",
+        "_ZN5Trail7CleanUpEv",
         "_ZN5Trail4InitEiiiff",
         {
             "name": "__tcf_2",
@@ -59,7 +62,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN5Trail7CleanUpEv",
+        "_ZN11Application11GetInstanceEv",
         "_ZN5Trail19CreateMeshSceneNodeEv"
     ]
 }
