@@ -49,6 +49,7 @@ public:
     void* getRace() const;
     void unload();
     void tearDown();
+    void draw();
     void unlockFrozenScripts();
     void freezeRunningScripts(const Script* script, PlayerTest::eContext context);
     Script** scripts;

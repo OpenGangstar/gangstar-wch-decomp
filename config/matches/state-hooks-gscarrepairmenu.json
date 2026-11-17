@@ -355,6 +355,10 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_ZN6Revive6draw2dEv",
+        "_ZN7Mission4drawEv",
+        "_ZN10AnimObject7SetAnimEii",
         "_ZN10AnimObject7SetAnimEi",
         "_ZNK10MenuWidget9IsVisibleEv",
         "_ZNK8RenderFX7GetRootEv",

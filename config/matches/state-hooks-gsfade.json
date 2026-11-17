@@ -317,6 +317,9 @@
         "application-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN6Revive6draw2dEv",
+        "_ZN7Mission4drawEv",
+        "_ZN10AnimObject7SetAnimEii",
         "_ZN10AnimObject7SetAnimEi",
         "_ZN7Message11isDisplayedEv",
         "_ZN18WantedLevelManagerC1Ev",

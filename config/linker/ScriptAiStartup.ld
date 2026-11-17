@@ -3,6 +3,8 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-script/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 _ZdaPv = 0x001c461c;
+_Znaj = 0x001c3ff8;
+memset = 0x001c45d4;
 __aeabi_atexit = 0x001c494c;
 _ZN25retail_script_transitions16civPassive_transE = 0x0042ea20;
 _ZN25retail_script_transitions17scriptedNpc_transE = 0x0042eb4c;
@@ -18,6 +20,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .script_set_action 0x0033999c : { *ai-startup-script.o(.text._ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE) }
+    .script_constructor 0x003392a0 : { *ai-startup-script.o(.text._ZN6ScriptC2Ei .text._ZN6ScriptC1Ei) }
+    .script_clear_actions 0x003399c4 : { *ai-startup-script.o(.text._ZN6Script23clearScriptObjectActionEv) }
     .script_destructor 0x00339384 : { *ai-startup-script.o(.text._ZN6ScriptD2Ev .text._ZN6ScriptD1Ev) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-script.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x003391b8 : { *ai-startup-script.o(.text.__tcf_2) }

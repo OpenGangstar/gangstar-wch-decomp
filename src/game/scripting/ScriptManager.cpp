@@ -15,6 +15,7 @@
 #include "../core/PointerVector.h"
 #include "../world/ResStream.h"
 #include "../core/ASprite.h"
+#include "../core/Rct.h"
 #include "../ui/VirtualButton.h"
 #include "../vehicles/Vehicle.h"
 #include "../core/VideoDriver.h"
@@ -1733,4 +1734,44 @@ void ScriptManager::tearDown()
         delete[] scripts;
         scripts = 0;
     }
+}
+
+extern template struct Rct<int>;
+
+void ScriptManager::draw()
+{
+    if (paused)
+        return;
+    int width, height;
+    Application::GetInstance()->GetScreenDimensions(width, height);
+    Rct<int> region;
+    if (isInCinematic()) {
+        drawCinematicBars();
+        region = Rct<int>(110, height - 75, width, height);
+    } else {
+        region = Rct<int>(0, 0, width, 50);
+    }
+
+    if (introAnimation->animation != -1)
+        introAnimation->Draw();
+    if (cinematicCharacterAnimation->animation != -1) {
+        cinematicHudAnimation2->SetAnim(3, 1);
+        cinematicHudAnimation2->Draw();
+        cinematicCharacterAnimation->Draw();
+    }
+    if (s_fadeIntensity != -999) {
+        if (s_fadeIntensity > 255)
+            s_fadeIntensity = 255;
+        else if (s_fadeIntensity < 0)
+            s_fadeIntensity = 0;
+        drawFade();
+    }
+    if (vehicleNameAnimation->animation != -1)
+        vehicleNameAnimation->Draw();
+    if (mission)
+        mission->draw();
+    if (skipButton->isVisible())
+        skipButton->draw2d();
+    if (revive)
+        revive->draw2d();
 }

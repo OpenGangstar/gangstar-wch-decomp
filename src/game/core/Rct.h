@@ -3,9 +3,19 @@
 
 template<class T>
 struct Rct {
+    Rct() : left(0), top(0), right(0), bottom(0) {}
     Rct(T left, T top, T right, T bottom);
-    virtual ~Rct();
-    void _validate();
+    Rct& operator=(const Rct& other)
+    {
+        left = other.left;
+        top = other.top;
+        right = other.right;
+        bottom = other.bottom;
+        _validate();
+        return *this;
+    }
+    virtual ~Rct() {}
+    void _validate() __attribute__((weak));
     bool isIntersecting(T x, T y) const;
 
     T left;
@@ -15,8 +25,10 @@ struct Rct {
 };
 
 template<class T>
-Rct<T>::~Rct()
+inline Rct<T>::Rct(T left, T top, T right, T bottom)
+    : left(left), top(top), right(right), bottom(bottom)
 {
+    _validate();
 }
 
 namespace rct_detail {

@@ -22,6 +22,7 @@ public:
     void idle();
     bool end();
     void update(int elapsed);
+    void draw();
     void resumeFadeOut();
     void skipFadeOut();
     void setFailureCount(int count);

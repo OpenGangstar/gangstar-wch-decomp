@@ -150,4 +150,5 @@ SECTIONS
     .script_manager_skipCutscene 0x0033d3f0 : { *script-manager-helpers.o(.text._ZN13ScriptManager12skipCutsceneEv) }
     .script_manager_unload 0x0033fcb0 : { *script-manager-helpers.o(.text._ZN13ScriptManager6unloadEv) }
     .script_manager_tearDown 0x0033fda8 : { *script-manager-helpers.o(.text._ZN13ScriptManager8tearDownEv) }
+    .script_manager_draw 0x0033fe70 : { *script-manager-helpers.o(.text._ZN13ScriptManager4drawEv) }
 }

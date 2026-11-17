@@ -25,6 +25,10 @@
     "source": "src/game/scripting/Script.cpp",
     "linker_script": "config/linker/ScriptAiStartup.ld",
     "functions": [
+        "_ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
+        "_ZN6ScriptC1Ei",
+        "_ZN6ScriptC2Ei",
+        "_ZN6Script23clearScriptObjectActionEv",
         "_ZN6ScriptD1Ev",
         "_ZN6ScriptD2Ev",
         {

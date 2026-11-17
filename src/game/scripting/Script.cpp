@@ -13,7 +13,21 @@
 #include "ScriptManager.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
+#include "../core/NativeStdio.h"
 #include "../world/LevelObject.h"
+
+Script::Script(int capacity)
+    : commandCapacity(capacity), commandCount(0), commandIndex(0), commands(0),
+      unknown40(-1), unknown44(false), state(State0), contextWord(-1),
+      parent(0), missionId(-1), source(0), unknown72(0)
+{
+    if (capacity > 0) {
+        commands = new Structs::ScriptCommand*[capacity];
+        memset(commands, 0, commandCapacity * sizeof(*commands));
+    } else {
+        commandCapacity = 0;
+    }
+}
 
 void Script::addCommand(Structs::ScriptCommand* command)
 {
@@ -181,7 +195,7 @@ extern "C" void eraseScriptActionNodes(
     __asm__("_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE8_M_eraseEPNS_18_Rb_tree_node_baseE")
     __attribute__((weak));
 
-inline ScriptActionTree::~ScriptActionTree()
+inline void ScriptActionTree::clear()
 {
     if (count != 0) {
         eraseScriptActionNodes(this, root);
@@ -193,6 +207,11 @@ inline ScriptActionTree::~ScriptActionTree()
     }
 }
 
+inline ScriptActionTree::~ScriptActionTree()
+{
+    clear();
+}
+
 Script::~Script()
 {
     if (commands) {
@@ -202,4 +221,15 @@ Script::~Script()
         }
         delete[] commands;
     }
+}
+
+void Script::clearScriptObjectAction()
+{
+    objectActions.clear();
+}
+
+
+void Script::setScriptObjectAction(LevelObject* object, eScriptAction action)
+{
+    objectActions[object] |= action;
 }

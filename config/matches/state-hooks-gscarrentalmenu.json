@@ -280,6 +280,10 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_ZN6Revive6draw2dEv",
+        "_ZN7Mission4drawEv",
+        "_ZN10AnimObject7SetAnimEii",
         "_ZN10AnimObject7SetAnimEi",
         "_ZN7Message11isDisplayedEv",
         "_ZN12StateMachineC1Ev",
