@@ -118,3 +118,8 @@ void RenderFX::SetVisible(const char* characterName, bool visible)
     if (character)
         setCharacterVisible(character, visible);
 }
+
+void RenderFX::SetFocus(const char* characterName, int flags)
+{
+    SetFocus(Find(characterName), flags);
+}

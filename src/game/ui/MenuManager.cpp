@@ -13,6 +13,34 @@
 #include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../rendering/RenderFX.h"
+
+class MyMenuFX : public RenderFX {
+public:
+    void ClearFocus();
+};
+
+void MyMenuFX::ClearFocus()
+{
+    SetFocus(static_cast<gameswf::character*>(0), 0);
+}
+
+namespace {
+struct MenuManagerFocusFields {
+    unsigned char beforeMenuFX[0xbc];
+    MyMenuFX* menuFX;
+    unsigned char beforeClearingFocus[5];
+    bool clearingFocus;
+};
+}
+
+extern "C" void _ZN11MenuManager10clearFocusEv(MenuManager* manager)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    fields.clearingFocus = true;
+    fields.menuFX->ClearFocus();
+    fields.clearingFocus = false;
+}
 
 void MenuManager::cleanupMap()
 {

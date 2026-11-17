@@ -117,6 +117,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN8RenderFX4FindEPKc",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"

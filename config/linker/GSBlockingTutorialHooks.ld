@@ -49,6 +49,7 @@ _ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
+INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }

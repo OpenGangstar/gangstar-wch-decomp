@@ -17,6 +17,7 @@ _ZN30retail_menumanager_transitions17civ_vehicle_transE = 0x004195e0;
 _ZN30retail_menumanager_transitions17cop_vehicle_transE = 0x00419670;
 _ZN30retail_menumanager_transitions11guard_transE = 0x00419724;
 _ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
+INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
