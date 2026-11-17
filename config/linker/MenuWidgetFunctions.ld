@@ -1,5 +1,11 @@
 SECTIONS
 {
+    .widget_achievement_localization 0x002ede5c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11Achievement18UpdateLocalizationEv) }
+    .widget_objective_localization 0x002edc1c : { *ai-startup-menuwidget.o(.text._ZN7Widgets9Objective18UpdateLocalizationEv) }
+    .widget_achievement_caption 0x0041af58 : { *ai-startup-menuwidget.o(.rodata.achievementCaptionPath) }
+    .widget_achievement_title 0x0041af80 : { *ai-startup-menuwidget.o(.rodata.achievementTitlePath) }
+    .widget_objective_text_path 0x0041aecc : { *ai-startup-menuwidget.o(.rodata.objectiveTextPath) }
+    .widget_objective_button_path 0x0041aee4 : { *ai-startup-menuwidget.o(.rodata.objectiveButtonPath) }
     .widget_achievements_show 0x002ece58 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12Achievements4ShowEv) }
     .widget_achievements_vtable 0x004a98b8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets12AchievementsE) }
     .widget_statistics_update 0x002ebfc4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics6UpdateEb) }
