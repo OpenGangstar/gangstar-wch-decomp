@@ -8,6 +8,7 @@
 #include "../core/GameEvents.h"
 #include "../core/PointerVector.h"
 #include "../core/Array.h"
+#include "../core/VideoDriver.h"
 
 class BulletTraceManager;
 class TrailMgr;
@@ -19,7 +20,7 @@ class LevelObject;
 class PlayerTest;
 class GameObjectManager;
 class WorldDescriptor;
-namespace irr { namespace video { class ITexture; enum E_ORTHO_ORIENTATION { OrthoOrientation0 }; } }
+namespace irr { namespace video { class ITexture; } }
 namespace Structs {
 struct PhonePerformanceProfile {
     int unknown0;

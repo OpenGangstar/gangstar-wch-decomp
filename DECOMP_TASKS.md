@@ -218,6 +218,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003060dd | Shop::unlock | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x002e86bd | Menus::InGameCarRental::Hide | camera_tap | REVIEW | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86dd | Menus::InGameWeaponShop::Hide | lock_init | REVIEW | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002dc289 | GS3DStuff::SetCurrentOrientation | vehicle_side | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002e8655 | MenuState::Hide | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e7cfd | MenuState::UpdateLocalization | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002dc289 | GS3DStuff::SetCurrentOrientation | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002e8655 | MenuState::Hide | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7cfd | MenuState::UpdateLocalization | lock_init | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e79d5 | Menus::InfoStatistics::OnFSCommand | camera_tap | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7a25 | Menus::InfoAchievements::OnFSCommand | lock_init | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7a75 | Menus::InfoAbout::OnFSCommand | camera_tap | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eab21 | Menus::Infos::Update | lock_init | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e8639 | Menus::Map::OnEvent | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
