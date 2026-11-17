@@ -52,7 +52,7 @@ public:
     virtual void shooted(int amount, LevelObject* source);
     using LevelObject::sceneNode;
     using LevelObject::setAnimation;
-    virtual void setAnimation(const char* name, int speed, bool a, bool b, bool c);
+    virtual bool setAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void setAnimationSpeedMultiplier(int speed);
     virtual void setNextAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void setNextAnimation(int id, int speed, bool a, bool b, bool c);

@@ -84,6 +84,8 @@
         "_ZN11LevelObject12setSpawnTypeEi",
         "_ZN11LevelObject11applyDamageEiPS_b",
         "_ZN11LevelObject27setAnimationSpeedMultiplierEi",
+        "_ZN11LevelObject12setAnimationEiibbb",
+        "_ZN11LevelObject12setAnimationEPKcibbb",
         "_ZN11LevelObject16setNextAnimationEPKcibbb",
         "_ZN11LevelObject16setNextAnimationEiibbb",
         "_ZN11LevelObject7shootedEiPS_",

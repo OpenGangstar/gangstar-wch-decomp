@@ -18,6 +18,9 @@ __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
     .shop_unlocked 0x00305cc4 : { *ai-startup-shop.o(.text._ZNK4Shop8unlockedEv) }
+    .shop_load 0x00305d80 : { *(.text._ZN4Shop4LoadERKN7Structs14CheckpointShopE) }
+    .shop_num_weapon 0x004b8194 (NOLOAD) : { *(.bss._ZN4Shop15s_numShopWeaponE) }
+    .shop_num_rental 0x004b8198 (NOLOAD) : { *(.bss._ZN4Shop15s_numShopRentalE) }
     .shop_triggered 0x00305ccc : { *ai-startup-shop.o(.text._ZNK4Shop9triggeredEv) }
     .shop_get_id 0x00305cd4 : { *ai-startup-shop.o(.text._ZN4Shop5getIdEv) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-shop.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
