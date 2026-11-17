@@ -15,6 +15,19 @@ public:
     irr::scene::ISceneNode* grab(int poolID, LevelObject* owner, int id, void*** parameters);
     bool drop(int poolID, const irr::scene::ISceneNode* node);
 private:
+    struct Node;
+    struct Pool {
+        Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
+        char* name;
+        irr::collada::CColladaFactory* factory;
+        int size;
+        int unknown12;
+        int unknown16;
+        int unknown20;
+        Node** nodesBegin;
+        Node** nodesEnd;
+        Node** nodesCapacity;
+    };
     unsigned char unknown0[36];
     unsigned int crcTable[256];
     int updateTimeRemaining;

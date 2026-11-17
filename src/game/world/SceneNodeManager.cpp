@@ -12,6 +12,7 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "SceneNodeManager.h"
+#include "../core/NativeStdio.h"
 
 unsigned int crcReflect(unsigned int value, char bits)
 {
@@ -35,6 +36,14 @@ void SceneNodeManager::update(int elapsed)
         if (updateTimeRemaining < 0)
             updateTimeRemaining = updateInterval;
     }
+}
+
+SceneNodeManager::Pool::Pool(const char* poolName, irr::collada::CColladaFactory* poolFactory, int poolSize)
+    : name(0), factory(poolFactory), size(poolSize), unknown12(0), unknown16(0),
+      unknown20(0), nodesBegin(0), nodesEnd(0), nodesCapacity(0)
+{
+    name = new char[strlen(poolName) + 1];
+    strcpy(name, poolName);
 }
 
 void operator delete(void*) throw();
