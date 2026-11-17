@@ -16,12 +16,16 @@ class FPSCamera;
 template<class T>
 class AnimatableType {
 public:
+    AnimatableType() : interpolationMode(0), interpolate(true) {}
     void Update(float elapsed) __attribute__((weak));
 
-    unsigned char unknown0[24];
+    T start;
+    T end;
     T current;
     float progress;
-    unsigned char unknown40[12];
+    int interpolationMode;
+    bool interpolate;
+    unsigned char unknown45[7];
 };
 
 class CameraManager {
@@ -48,21 +52,27 @@ private:
     bool updateTransition(float elapsed);
     static CameraManager* s_cm;
 
-    unsigned char unknown4[4];
+    void* touch;
     irr::scene::ICameraSceneNode* cameraNode;
-    unsigned char unknown12[8];
+    LevelObject* target;
+    int mode;
     Camera* currentCamera;
     FollowCamera* followCamera;
     LockCamera* lockCamera;
     VehicleCamera* vehicleCamera;
-    unsigned char unknown36[4];
+    LevelObject* touchTarget;
     FPSCamera* fpsCamera;
     unsigned char unknown44[4];
     AnimatableType<irr::core::vector3d<float> > positionTransition;
     AnimatableType<irr::core::vector3d<float> > targetTransition;
     bool touchScreenInputs;
     bool used;
-    unsigned char unknown154[18];
+    bool flag154;
+    bool flag155;
+    int touchX;
+    int touchY;
+    int value164;
+    int value168;
     SceneCamera* sceneCamera;
 };
 

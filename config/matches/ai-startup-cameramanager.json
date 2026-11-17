@@ -25,6 +25,8 @@
     "source": "src/game/core/CameraManager.cpp",
     "linker_script": "config/linker/CameraManagerAiStartup.ld",
     "functions": [
+        "_ZN13CameraManagerC1EfffP11LevelObject",
+        "_ZN13CameraManagerC2EfffP11LevelObject",
         "_ZN13CameraManagerD1Ev",
         "_ZN13CameraManagerD2Ev",
         "_ZN13CameraManager5cleanEv",
@@ -70,6 +72,10 @@
         "_ZN9FPSCameraD1Ev",
         "_ZNK6Camera11getPositionEv",
         "_ZNK6Camera9getLookAtEv",
-        "_ZN13CameraManagerC1EfffP11LevelObject"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12FollowCameraC1EP9Character",
+        "_ZN10LockCameraC1EP11LevelObject",
+        "_ZN13VehicleCameraC1EP11LevelObject",
+        "_ZN9FPSCameraC1Ev"
     ]
 }

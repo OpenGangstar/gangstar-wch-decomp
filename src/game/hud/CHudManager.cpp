@@ -25,7 +25,7 @@ extern bool bIsInCutscene;
 
 void CHudManager::init()
 {
-    unknown204 = 0;
+    cameraManager = 0;
     activeHud = initialHud;
 }
 
