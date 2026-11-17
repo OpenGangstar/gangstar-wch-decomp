@@ -22,6 +22,34 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .main_menu_deleting_destructor 0x002e982c : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD0Ev .gnu.linkonce.t._ZN5Menus8MainMenuD0Ev) }
+    .main_menu_complete_destructor 0x002e9854 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD1Ev .gnu.linkonce.t._ZN5Menus8MainMenuD1Ev .text._ZN5Menus8MainMenuD2Ev .gnu.linkonce.t._ZN5Menus8MainMenuD2Ev) }
+    .main_menu_vtable 0x004a8fc0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8MainMenuE .gnu.linkonce.d.rel.ro._ZTVN5Menus8MainMenuE) }
+    .splash_deleting_destructor 0x002e97e4 : { *ai-startup-menustate.o(.text._ZN5Menus6SplashD0Ev .gnu.linkonce.t._ZN5Menus6SplashD0Ev) }
+    .splash_complete_destructor 0x002e980c : { *ai-startup-menustate.o(.text._ZN5Menus6SplashD1Ev .gnu.linkonce.t._ZN5Menus6SplashD1Ev .text._ZN5Menus6SplashD2Ev .gnu.linkonce.t._ZN5Menus6SplashD2Ev) }
+    .splash_vtable 0x004a9758 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus6SplashE .gnu.linkonce.d.rel.ro._ZTVN5Menus6SplashE) }
+    .service_car_rental_deleting_destructor 0x002e9eec : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRentalD0Ev .gnu.linkonce.t._ZN5Menus16ServiceCarRentalD0Ev) }
+    .service_car_rental_complete_destructor 0x002e9f18 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRentalD1Ev .gnu.linkonce.t._ZN5Menus16ServiceCarRentalD1Ev .text._ZN5Menus16ServiceCarRentalD2Ev .gnu.linkonce.t._ZN5Menus16ServiceCarRentalD2Ev) }
+    .service_weapon_shop_deleting_destructor 0x002e9f94 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShopD0Ev .gnu.linkonce.t._ZN5Menus17ServiceWeaponShopD0Ev) }
+    .service_weapon_shop_complete_destructor 0x002e9fc0 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShopD1Ev .gnu.linkonce.t._ZN5Menus17ServiceWeaponShopD1Ev .text._ZN5Menus17ServiceWeaponShopD2Ev .gnu.linkonce.t._ZN5Menus17ServiceWeaponShopD2Ev) }
+    .map_deleting_destructor 0x002e9a54 : { *ai-startup-menustate.o(.text._ZN5Menus3MapD0Ev .gnu.linkonce.t._ZN5Menus3MapD0Ev) }
+    .map_complete_destructor 0x002e9a80 : { *ai-startup-menustate.o(.text._ZN5Menus3MapD1Ev .gnu.linkonce.t._ZN5Menus3MapD1Ev .text._ZN5Menus3MapD2Ev .gnu.linkonce.t._ZN5Menus3MapD2Ev) }
+    .map_vtable 0x004a95a8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus3MapE .gnu.linkonce.d.rel.ro._ZTVN5Menus3MapE) }
+    .achievement_deleting_destructor 0x002e979c : { *ai-startup-menustate.o(.text._ZN5Menus11AchievementD0Ev .gnu.linkonce.t._ZN5Menus11AchievementD0Ev) }
+    .achievement_complete_destructor 0x002e97c4 : { *ai-startup-menustate.o(.text._ZN5Menus11AchievementD1Ev .gnu.linkonce.t._ZN5Menus11AchievementD1Ev .text._ZN5Menus11AchievementD2Ev .gnu.linkonce.t._ZN5Menus11AchievementD2Ev) }
+    .achievement_vtable 0x004a9638 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus11AchievementE .gnu.linkonce.d.rel.ro._ZTVN5Menus11AchievementE) }
+    .in_game_car_rental_deleting_destructor 0x002e9f40 : { *ai-startup-menustate.o(.text._ZN5Menus15InGameCarRentalD0Ev .gnu.linkonce.t._ZN5Menus15InGameCarRentalD0Ev) }
+    .in_game_car_rental_complete_destructor 0x002e9f6c : { *ai-startup-menustate.o(.text._ZN5Menus15InGameCarRentalD1Ev .gnu.linkonce.t._ZN5Menus15InGameCarRentalD1Ev .text._ZN5Menus15InGameCarRentalD2Ev .gnu.linkonce.t._ZN5Menus15InGameCarRentalD2Ev) }
+    .in_game_car_rental_vtable 0x004a93f8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus15InGameCarRentalE .gnu.linkonce.d.rel.ro._ZTVN5Menus15InGameCarRentalE) }
+    .in_game_weapon_shop_deleting_destructor 0x002e9fe8 : { *ai-startup-menustate.o(.text._ZN5Menus16InGameWeaponShopD0Ev .gnu.linkonce.t._ZN5Menus16InGameWeaponShopD0Ev) }
+    .in_game_weapon_shop_complete_destructor 0x002ea014 : { *ai-startup-menustate.o(.text._ZN5Menus16InGameWeaponShopD1Ev .gnu.linkonce.t._ZN5Menus16InGameWeaponShopD1Ev .text._ZN5Menus16InGameWeaponShopD2Ev .gnu.linkonce.t._ZN5Menus16InGameWeaponShopD2Ev) }
+    .in_game_weapon_shop_vtable 0x004a9488 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16InGameWeaponShopE .gnu.linkonce.d.rel.ro._ZTVN5Menus16InGameWeaponShopE) }
+    .cop_bribe_deleting_destructor 0x002e99b8 : { *ai-startup-menustate.o(.text._ZN5Menus8CopBribeD0Ev .gnu.linkonce.t._ZN5Menus8CopBribeD0Ev) }
+    .cop_bribe_complete_destructor 0x002e99e4 : { *ai-startup-menustate.o(.text._ZN5Menus8CopBribeD1Ev .gnu.linkonce.t._ZN5Menus8CopBribeD1Ev .text._ZN5Menus8CopBribeD2Ev .gnu.linkonce.t._ZN5Menus8CopBribeD2Ev) }
+    .cop_bribe_vtable 0x004a97a0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8CopBribeE .gnu.linkonce.d.rel.ro._ZTVN5Menus8CopBribeE) }
+    .car_repair_deleting_destructor 0x002e9964 : { *ai-startup-menustate.o(.text._ZN5Menus9CarRepairD0Ev .gnu.linkonce.t._ZN5Menus9CarRepairD0Ev) }
+    .car_repair_complete_destructor 0x002e9990 : { *ai-startup-menustate.o(.text._ZN5Menus9CarRepairD1Ev .gnu.linkonce.t._ZN5Menus9CarRepairD1Ev .text._ZN5Menus9CarRepairD2Ev .gnu.linkonce.t._ZN5Menus9CarRepairD2Ev) }
+    .car_repair_vtable 0x004a97e8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus9CarRepairE .gnu.linkonce.d.rel.ro._ZTVN5Menus9CarRepairE) }
     .weapon_shop_widget_ids 0x0041a69c : { *ai-startup-menustate.o(.rodata._ZZN5Menus17ServiceWeaponShopC1EPKcE*) }
     .mainMenu_constructor 0x002e7dd0 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuC1Ev .text._ZN5Menus8MainMenuC2Ev) }
     .mainMenu_name 0x00413c7c : { *ai-startup-menustate.o(.rodata.mainMenuName) }
