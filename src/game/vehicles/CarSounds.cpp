@@ -13,13 +13,96 @@
 
 class SoundFade {
 public:
+    SoundFade();
+    ~SoundFade();
+    int GetNbRemainingFades();
+    float GetVolume();
+    static void Clean();
     static void InitFadeGains(int frames);
     static int s_nbFadeFrames;
     static float* s_fadeGains;
     int GetState();
     void StartFade(int state);
     void Update();
+private:
+    float gain;
+    int remainingFrames;
+    int fadeState;
 };
+
+SoundFade::SoundFade()
+{
+    fadeState = 0;
+    remainingFrames = 0;
+}
+
+SoundFade::~SoundFade()
+{
+}
+
+int SoundFade::GetNbRemainingFades()
+{
+    return remainingFrames;
+}
+
+int SoundFade::GetState()
+{
+    return fadeState;
+}
+
+float SoundFade::GetVolume()
+{
+    return gain;
+}
+
+void SoundFade::Clean()
+{
+    delete[] s_fadeGains;
+    s_fadeGains = 0;
+}
+
+void SoundFade::StartFade(int state)
+{
+    if (remainingFrames == 0) {
+        fadeState = state;
+        if (state == 1) {
+            gain = s_fadeGains[1];
+            remainingFrames = s_nbFadeFrames;
+        } else if (state == 2) {
+            const int frames = s_nbFadeFrames;
+            const float nextGain = s_fadeGains[frames];
+            remainingFrames = frames;
+            gain = nextGain;
+        }
+    }
+}
+
+void SoundFade::Update()
+{
+    if (--remainingFrames >= 0) {
+        switch (fadeState) {
+        case 1:
+            gain = s_fadeGains[s_nbFadeFrames - remainingFrames + 1];
+            break;
+        case 2:
+            gain = s_fadeGains[remainingFrames];
+            break;
+        }
+    } else {
+        remainingFrames = 0;
+        fadeState = 0;
+    }
+}
+
+extern "C" float __aeabi_fmul(float, float);
+
+int CarSounds::FilterRPMValues(int value)
+{
+    const float input = __aeabi_fmul(static_cast<float>(value), rpmInputCoefficient);
+    const float feedback = __aeabi_fmul(rpmFeedbackCoefficient, filteredRpm);
+    filteredRpm = input - feedback;
+    return static_cast<int>(filteredRpm);
+}
 
 extern "C" double sin(double radians);
 
