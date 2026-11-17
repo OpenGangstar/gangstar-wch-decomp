@@ -117,6 +117,12 @@ public:
     unsigned char unknown20[16];
 };
 
+class filter_engine {
+public:
+    static filter_engine* s_instance;
+    void run(root* movie);
+};
+
 class player {
 public:
     root* get_root();
@@ -437,6 +443,15 @@ void RenderFX::ClearGlyphTextureCaches(gameswf::player_context* context)
         context->outlineGlyphs->cache->reset();
     if (context->bitmapGlyphs && context->bitmapGlyphs->cache)
         context->bitmapGlyphs->cache->reset();
+}
+
+void RenderFX::PreRender()
+{
+    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    gameswf::filter_engine* engine = gameswf::filter_engine::s_instance;
+    if (!engine)
+        return;
+    engine->run(root.get());
 }
 
 void RenderFX::SetBounds(int left, int top, int right, int bottom)
