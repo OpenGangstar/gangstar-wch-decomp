@@ -209,6 +209,30 @@ void SceneNodeManager::Pool::extend(int requested)
     }
 }
 
+extern "C" int& _ZNSt3mapIiiSt4lessIiESaISt4pairIKiiEEEixIiEERiRKT_(
+    void* map, const int& key) __attribute__((weak));
+
+int SceneNodeManager::findOrCreatePool(const char* name, int size,
+    irr::collada::CColladaFactory* factory)
+{
+    irr::io::IFileSystem* fileSystem = Application::GetInstance()->GetDevice()->getFileSystem();
+    irr::io::FilePath path = fileSystem->getAbsolutePath(name);
+    const int key = crc(path.c_str());
+    int poolID = getPoolID(key);
+    Pool* pool = 0;
+    if (poolID == -1) {
+        poolID = pools.size();
+        pool = new Pool(path.c_str(), factory, 0);
+        pools.push_back(pool);
+        _ZNSt3mapIiiSt4lessIiESaISt4pairIKiiEEEixIiEERiRKT_(&poolIndex, key) = poolID;
+    } else {
+        pool = pools[poolID];
+    }
+    if (pool->constructedCount < size)
+        pool->extend(size);
+    return poolID;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));

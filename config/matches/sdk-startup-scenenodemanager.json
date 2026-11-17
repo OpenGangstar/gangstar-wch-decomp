@@ -41,6 +41,7 @@
         "_ZN16SceneNodeManager4PoolD1Ev",
         "_ZN16SceneNodeManager4PoolD2Ev",
         "_ZN16SceneNodeManager4Pool6extendEi",
+        "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
         "_ZN16SceneNodeManager8tearDownEv",
         "_ZN16SceneNodeManagerD1Ev",
         "_ZN16SceneNodeManagerD2Ev",
