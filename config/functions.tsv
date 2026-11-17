@@ -10392,7 +10392,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003010b9	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_4	__tcf_4
 0x003010d5	0xe	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest20playCurAnimFromStartEv	PlayerTest::playCurAnimFromStart()
 0x003010e5	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_3	__tcf_3
-0x00301101	0xe4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14getCarAnimNameEPKcb	PlayerTest::getCarAnimName(char const*, bool)
+0x00301101	0xe4	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest14getCarAnimNameEPKcb	PlayerTest::getCarAnimName(char const*, bool)
 0x003011e5	0x38	NPC.cpp	game	ai	matched	_ZN3NPC12isTargetableEv	NPC::isTargetable()
 0x0030121c	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
 0x00301231	0x2e	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest10getVehicleEv	PlayerTest::getVehicle() const

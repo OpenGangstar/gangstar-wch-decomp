@@ -25,6 +25,7 @@
     "source": "src/game/ai/PlayerTest.cpp",
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
+        "_ZN10PlayerTest14getCarAnimNameEPKcb",
         "_ZN10PlayerTest12justStoleCarEP7Vehicle",
         "_ZN10PlayerTest12jumpFinishedEv",
         "_ZN10PlayerTest13driftFinishedEv",
@@ -105,6 +106,13 @@
         }
     ],
     "sections": [
+        ".player_car_open_clip",
+        ".player_car_enter_low_clip",
+        ".player_car_enter_high_clip",
+        ".player_car_close_low_clip",
+        ".player_car_close_high_clip",
+        ".player_car_exit_low_clip",
+        ".player_car_exit_high_clip",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",

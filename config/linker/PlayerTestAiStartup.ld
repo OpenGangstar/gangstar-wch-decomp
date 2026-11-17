@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 __aeabi_idiv = 0x001c43dc;
 __aeabi_fmul = 0x001c4724;
 sqrtf = 0x001c4184;
+strcmp = 0x001c4658;
 INCLUDE build/matches/ai-startup-playertest/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
@@ -27,6 +28,14 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .player_car_anim_name 0x00301100 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14getCarAnimNameEPKcb) }
+    .player_car_open_clip 0x0041dee8 : { *(.rodata.*carOpenDoor*) }
+    .player_car_enter_low_clip 0x0041def8 : { *(.rodata.*carEnterLow*) }
+    .player_car_enter_high_clip 0x0041df0c : { *(.rodata.*carEnterHigh*) }
+    .player_car_close_low_clip 0x0041df20 : { *(.rodata.*carCloseInsideLow*) }
+    .player_car_close_high_clip 0x0041df40 : { *(.rodata.*carCloseInsideHigh*) }
+    .player_car_exit_low_clip 0x0041df60 : { *(.rodata.*carExitLow*) }
+    .player_car_exit_high_clip 0x0041df70 : { *(.rodata.*carExitHigh*) }
     .player_just_stole_car 0x00301758 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12justStoleCarEP7Vehicle) }
     .player_jump_finished 0x003017ec : { *ai-startup-playertest.o(.text._ZN10PlayerTest12jumpFinishedEv) }
     .player_drift_finished 0x00301820 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13driftFinishedEv) }

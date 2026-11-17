@@ -26,6 +26,7 @@
 #include "../core/GameEventMethods.h"
 #include "../core/Physics.h"
 #include "../core/SceneNode.h"
+#include "../core/NativeStrings.h"
 #include "../core/Quaternion.h"
 #include "../core/CameraManager.h"
 #include "../meta/Achievements.h"
@@ -33,6 +34,56 @@
 #include "../ui/Shop.h"
 
 extern "C" float sqrtf(float);
+
+namespace {
+const char carOpenDoor[] = "car_open_door";
+const char carEnterLow[] = "car_enter_car_low";
+const char carEnterHigh[] = "car_enter_car_hi";
+const char carCloseInsideLow[] = "car_close_door_from_inside_low";
+const char carCloseInsideHigh[] = "car_close_door_from_inside_hi";
+const char carExitLow[] = "car_exit_low";
+const char carExitHigh[] = "car_exit_hi";
+}
+
+int PlayerTest::getCarAnimName(const char* name, bool left)
+{
+    if (strcmp(carOpenDoor, name) == 0) {
+        if (left)
+            return 22;
+        return 23;
+    }
+    if (strcmp(carEnterLow, name) == 0) {
+        if (left)
+            return 11;
+        return 12;
+    }
+    if (strcmp(carEnterHigh, name) == 0) {
+        if (left)
+            return 9;
+        return 10;
+    }
+    if (strcmp(carCloseInsideLow, name) == 0) {
+        if (left)
+            return 3;
+        return 4;
+    }
+    if (strcmp(carCloseInsideHigh, name) == 0) {
+        if (left)
+            return 1;
+        return 2;
+    }
+    if (strcmp(carExitLow, name) == 0) {
+        if (left)
+            return 15;
+        return 16;
+    }
+    if (strcmp(carExitHigh, name) == 0) {
+        if (left)
+            return 13;
+        return 14;
+    }
+    return -1;
+}
 
 void PlayerTest::applyDamage(int amount, LevelObject* source, bool bypassArmor)
 {
