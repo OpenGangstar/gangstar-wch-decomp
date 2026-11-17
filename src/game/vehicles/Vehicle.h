@@ -169,7 +169,8 @@ private:
     float rotationZ;
     float rotationX;
     float rotationY;
-    unsigned char unknown156[16];
+    unsigned char unknown156[12];
+    unsigned int mass;
     float skidThreshold;
     unsigned char unknown176[20];
     int savedRadioStation;
