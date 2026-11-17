@@ -146,6 +146,7 @@ public:
     void lockSwitchWeapon();
     void unlockSwitchWeapon();
     void Respawn();
+    bool photo(Weapon* weapon);
     void startDriving();
     void SetSpeed();
     void ResetPlayerTest(bool);

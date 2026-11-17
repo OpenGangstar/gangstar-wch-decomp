@@ -806,8 +806,10 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/characters/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | vehicle_side | REVIEW | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | camera_tap | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | lock_init | ASSIGNED | pending | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | lock_init | REVIEW | pending | src/game/ai/CivPassiveController.cpp |
 | libsanangeles.so | 0x00304c05 | PlayerTest::onObjectKilled | vehicle_side | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00340bf1 | CivPassiveController deleting destructor (D0) | lock_init | REVIEW | pending | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00341d25 | GuardController destructor (D1/D2 aliases) | lock_init | ASSIGNED | pending | src/game/ai/GuardController.cpp |

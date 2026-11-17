@@ -707,3 +707,44 @@ void PlayerTest::teleportTo(const LevelObject* destination)
     unsigned short triangle=destination->GetTriID();
     physics->Init(material,triangle,position->position());
 }
+
+#include "../ui/Message.h"
+#include "../core/Geometry.h"
+extern "C" float acosf(float);
+namespace {
+template<class T> inline const T& photoClamp(const T& value,const T& low,const T& high)
+{
+    return irr::core::min_(irr::core::max_(value,low),high);
+}
+}
+
+bool PlayerTest::photo(Weapon* weapon)
+{
+    Application* app=Application::GetInstance();
+    irr::core::vector3d<float> forward=CameraManager::getInstance()->getLookAt()-CameraManager::getInstance()->getPosition();
+    forward.normalize();
+    irr::core::vector3d<float> point;
+    weapon->photo();
+    bool found=false;
+    for (int i=0;i<photoTargets.used;++i) {
+        if (!photoTargets.data[i] || !photoTargets.data[i]->isEnabled())
+            continue;
+        irr::core::vector3d<float> direction=photoTargets.data[i]->GetPosition()-CameraManager::getInstance()->getPosition();
+        double distance=sqrt((double)direction.getLengthSQ());
+        float angle=acosf(photoClamp(forward.dotProduct(direction.normalize()),-1.0f,1.0f));
+        if (angle < float(CameraManager::getInstance()->getFOV())*0.5f*0.01745329238474369049f*7.0f*0.125f) {
+            Character* character=reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+            if (character->canSeeLevelObject(photoTargets.data[i],point)) {
+                float scaledDistance=float(distance)*float(CameraManager::getInstance()->getFOV());
+                if (scaledDistance<30000.0f && scaledDistance>5000.0f) {
+                    static_cast<Message*>(app->GetHudManager()->message172)->setMessage(12374,3000,static_cast<MenuManager::eText>(9));
+                    photoTargets.data[i]->photographed();
+                    found=true;
+                }
+            }
+        }
+    }
+    if (!found && photoTargets.used)
+        static_cast<Message*>(app->GetHudManager()->message172)->setMessage(12375,3000,static_cast<MenuManager::eText>(9));
+    return true;
+}

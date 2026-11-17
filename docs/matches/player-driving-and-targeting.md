@@ -59,3 +59,18 @@ OK  _ZN10PlayerTest5debugEPN3irr5video12IVideoDriverE  0x003020f1  336 bytes
 OK  _ZN10PlayerTest10teleportToEPK11LevelObject  0x00304895  336 bytes
 OK  _ZN11CHudManager7walkingEv  0x00323b01  52 bytes
 ```
+
+## Photograph targets
+
+The photograph callback reuses the existing target array, Weapon::photo,
+Character visibility query, camera interfaces, and message display. Its local
+reference-returning clamp composes the existing Irrlicht min_/max_ helpers.
+The distance remains double precision until the original float conversion used
+for the field-of-view distance thresholds. No layout change or branch hint is
+needed.
+
+The scoped build exited 0, preserving all existing functions and sections:
+
+```text
+OK  _ZN10PlayerTest5photoEP6Weapon  0x00303079  668 bytes
+```
