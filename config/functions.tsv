@@ -11738,7 +11738,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033343d	0x14	FollowCamera.cpp	game	core	matched	_GLOBAL__I__ZN12FollowCameraC2EP9Character	_GLOBAL__I__ZN12FollowCameraC2EP9Character
 0x00333451	0x25c	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FollowCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
 0x003336ad	0xdc	FollowCamera.cpp	game	core	pending	_ZNK12FollowCamera9getFacingEv	FollowCamera::getFacing() const
-0x00333789	0x1ec	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera4initEP11LevelObjecti	FollowCamera::init(LevelObject*, int)
+0x00333789	0x1ec	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera4initEP11LevelObjecti	FollowCamera::init(LevelObject*, int)
 0x00333975	0x48	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraC2EP9Character	FollowCamera::FollowCamera(Character*)
 0x00333975	0x48	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraC1EP9Character	FollowCamera::FollowCamera(Character*)
 0x003339bd	0xf4	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera8goBehindEP11LevelObject	FollowCamera::goBehind(LevelObject*)

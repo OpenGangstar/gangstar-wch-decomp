@@ -18,6 +18,39 @@
 
 extern "C" float acosf(float);
 
+static inline __attribute__((always_inline))
+irr::core::vector3d<float> followCameraOffset(const irr::core::vector3d<float>& facing)
+{
+    const irr::core::vector3d<float> up(0.0f, 0.0f, 1.0f);
+    return irr::core::vector3d<float>(
+        -facing.Y * up.Z + facing.Z * up.Y,
+        -facing.Z * up.X + facing.X * up.Z,
+        -facing.X * up.Y + facing.Y * up.X);
+}
+
+void FollowCamera::init(LevelObject* target, int mode)
+{
+    owner = static_cast<Character*>(target);
+    if (owner) {
+        setLookAt(owner->GetPosition());
+        previousHeight = owner->GetPosition().Z;
+        if (physics) {
+            physics->SetPhysicInfo(*owner->getPhysicAttributes()->info, 0);
+            previousHeight = physics->GetHeight(owner->GetPosition(), 0, false);
+        }
+        lookAt.Z = previousHeight + 180.0f;
+
+        if (mode == 0)
+            setPosition(owner->GetPosition() - owner->GetFront() * 450.0f);
+        else if (mode == 1)
+            setPosition(owner->GetPosition() - (-owner->GetFront()) * 450.0f);
+        position.Z = owner->GetPosition().Z + 150.0f;
+        owner->setCameraOffset(followCameraOffset(getFacing()));
+    }
+    flag32 = false;
+    physics->SetIsOnGround(0, false);
+}
+
 void FollowCamera::debug(irr::video::IVideoDriver*)
 {
 }

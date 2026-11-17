@@ -29,9 +29,12 @@ private:
     void updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
         float distance, irr::core::vector3d<float>& yawAxis,
         irr::core::vector3d<float>& pitchAxis, float maximumPitch, float minimumPitch);
-    unsigned char unknown28[8];
+    irr::core::vector3d<float> getFacing() const;
+    Character* owner;
+    bool flag32;
+    unsigned char unknown33[3];
     PhysicAttributes* physics;
-    unsigned char unknown40[4];
+    float previousHeight;
     float yawRate;
     float pitchRate;
 };
