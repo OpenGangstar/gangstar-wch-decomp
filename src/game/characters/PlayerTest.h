@@ -95,6 +95,8 @@ public:
     LevelObject* _GetTarget();
     int getMarkerType();
     void hideAllAnims();
+    void hideMesh();
+    void showMesh();
     void playCurAnimFromStart();
     void initMoveTo(const Vehicle* vehicle);
     void richAsCroesus(bool enabled);
@@ -115,7 +117,9 @@ public:
     void UpdateSceneNode();
     unsigned char unknown8[12];
     irr::scene::ISceneNode* sceneNode;
-    unsigned char unknown24[176];
+    unsigned char unknown24[156];
+    irr::scene::ISceneNode* shadowNode;
+    unsigned char unknown184[16];
     Vehicle* lastHitVehicle;
     unsigned char unknown204[16];
     int maximumHealth;

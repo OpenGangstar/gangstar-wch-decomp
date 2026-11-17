@@ -10368,7 +10368,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300d39	0x14	Path.cpp	game	world	matched	_GLOBAL__I__ZN4PathC2Ei	_GLOBAL__I__ZN4PathC2Ei
 0x00300d4d	0x30	Path.cpp	game	world	matched	__tcf_2	__tcf_2
 0x00300d7d	0x6	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest13getMarkerTypeEv	PlayerTest::getMarkerType()
-0x00300d85	0x20	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest8hideMeshEv	PlayerTest::hideMesh()
+0x00300d85	0x20	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest8hideMeshEv	PlayerTest::hideMesh()
 0x00300da5	0x12	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12hideAllAnimsEv	PlayerTest::hideAllAnims()
 0x00300db9	0x8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10_GetTargetEv	PlayerTest::_GetTarget()
 0x00300dc1	0x8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10initMoveToEPK7Vehicle	PlayerTest::initMoveTo(Vehicle const*)
@@ -10407,7 +10407,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301520	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE	non-virtual thunk to PlayerTest::walkToLocation(irr::core::vector3d<float> const&)
 0x00301535	0x34	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE	PlayerTest::walkToLocation(irr::core::vector3d<float> const&)
 0x00301569	0x2c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest17onTargetCancelledEv	PlayerTest::onTargetCancelled()
-0x00301595	0x24	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest8showMeshEv	PlayerTest::showMesh()
+0x00301595	0x24	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest8showMeshEv	PlayerTest::showMesh()
 0x003015b9	0x18	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15resumeAttackingEv	PlayerTest::resumeAttacking()
 0x003015d0	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTestD1Ev	non-virtual thunk to PlayerTest::~PlayerTest()
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD1Ev	PlayerTest::~PlayerTest()
