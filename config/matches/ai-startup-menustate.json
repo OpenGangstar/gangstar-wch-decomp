@@ -309,6 +309,13 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7gameswf18set_render_handlerEPNS_14render_handlerE",
+        "_ZN7gameswf18clears_tag_loadersEv",
+        "_ZN7gameswf17clear_shared_libsEv",
+        "_ZN7gameswf21clear_standard_fnamesEv",
+        "_ZN7gameswf25clear_standard_method_mapEv",
+        "_ZN7gameswf27clear_standard_property_mapEv",
+        "_ZN7gameswf12clear_disasmEv",
         "_ZN7gameswf18get_render_handlerEv",
         "_ZN7gameswf7log_msgEPKcz",
         "_ZN7gameswf13texture_cache5resetEv",
