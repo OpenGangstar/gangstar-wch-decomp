@@ -103,3 +103,7 @@ void CustomBillboardSceneNode::setChildrenMaterialFlag(
         setChildrenMaterialFlag(child->value, flag, enabled);
     }
 }
+
+void CustomBillboardSceneNode::render()
+{
+}

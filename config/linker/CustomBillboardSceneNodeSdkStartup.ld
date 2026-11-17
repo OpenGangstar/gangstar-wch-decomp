@@ -5,6 +5,7 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .billboard_render 0x002f7a20 : { *(.text._ZN24CustomBillboardSceneNode6renderEv) }
     .billboard_set_parent 0x002f79e4 : { *(.text._ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE) }
     .sdk_startup_function_0 0x002f7a24 : { *sdk-startup-custombillboardscenenode.o(.text.__tcf_2) }
     .billboard_set_length 0x002f7a54 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode9setLengthEj) }
