@@ -62,7 +62,9 @@ public:
     void setDriver(Character* value);
     void resetDriver();
     void mobilize();
+    void startDriving();
     void stopDriving();
+    void playHorn();
     irr::scene::ISceneNode* getNearestDoorDummy(irr::core::vector3d<float> point);
     virtual void cleanTargets();
     virtual int getMarkerType();
@@ -188,7 +190,9 @@ private:
     float skidThreshold;
     unsigned char unknown176[20];
     int savedRadioStation;
-    unsigned char unknown200[44];
+    unsigned char unknown200[24];
+    unsigned int tireTrailWidth;
+    unsigned char unknown228[16];
     Character* targetingCharacter;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;
@@ -261,7 +265,9 @@ private:
     b2Body* collisionBody;
     b2Body* leftCollisionBody;
     b2Body* rightCollisionBody;
-    unsigned char unknown644[28];
+    unsigned char unknown644[4];
+    float skidAmount;
+    unsigned char unknown652[20];
     irr::scene::ISceneNode* enabledSceneNode;
     irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;
