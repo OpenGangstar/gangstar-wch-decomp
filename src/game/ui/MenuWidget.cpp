@@ -263,7 +263,7 @@ public:
 
 private:
     int textId;
-    bool unknown24;
+    bool expanded;
 };
 
 class Achievement : public MenuWidget {
@@ -742,13 +742,28 @@ void Widgets::Achievements::Disable()
 }
 
 Widgets::Objective::Objective()
-    : MenuWidget(widgetObjectiveName), textId(-1), unknown24(false)
+    : MenuWidget(widgetObjectiveName), textId(-1), expanded(false)
 {
 }
 
 void Widgets::Objective::SetObjectiveText(int id)
 {
     textId = id;
+}
+
+static const char objectiveOpen[] = "open";
+static const char objectiveClose[] = "close";
+static const char objectiveButton[] = "widgetObjective.btnObjective";
+static const char objectiveArrowUp[] = "up";
+static const char objectiveArrowDown[] = "down";
+static const char objectiveArrow[] = "widgetObjective.arrow";
+
+void Widgets::Objective::Show()
+{
+    MenuWidget::Show();
+    renderFX->GotoFrame(character, expanded ? objectiveOpen : objectiveClose, false);
+    renderFX->GotoFrame(objectiveButton, expanded ? objectiveOpen : objectiveClose, false);
+    renderFX->GotoFrame(objectiveArrow, expanded ? objectiveArrowUp : objectiveArrowDown, false);
 }
 
 Widgets::Achievement::Achievement()

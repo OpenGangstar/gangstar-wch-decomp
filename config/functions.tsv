@@ -9934,7 +9934,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ecef5	0xc	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Money4ShowEv	Widgets::Money::Show()
 0x002ecf01	0xc	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Arrows4ShowEv	Widgets::Arrows::Show()
 0x002ecf0d	0x6c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9MapLegend4ShowEv	Widgets::MapLegend::Show()
-0x002ecf79	0x8c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective4ShowEv	Widgets::Objective::Show()
+0x002ecf79	0x8c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets9Objective4ShowEv	Widgets::Objective::Show()
 0x002ed005	0x10	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu4ShowEv	Widgets::IGMenu::Show()
 0x002ed015	0x10	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Dialog4ShowEv	Widgets::Dialog::Show()
 0x002ed025	0x3c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8Tutorial4ShowEv	Widgets::Tutorial::Show()
