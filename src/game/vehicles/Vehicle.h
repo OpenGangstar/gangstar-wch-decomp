@@ -4,6 +4,7 @@
 #include "../core/Physics.h"
 namespace Structs { struct Car; }
 class Character;
+class Trail;
 class CarSounds;
 struct CarSoundParameters;
 class Path;
@@ -61,6 +62,7 @@ public:
     void setDriver(Character* value);
     void resetDriver();
     void mobilize();
+    void stopDriving();
     irr::scene::ISceneNode* getNearestDoorDummy(irr::core::vector3d<float> point);
     virtual void cleanTargets();
     virtual int getMarkerType();
@@ -173,7 +175,7 @@ private:
     float unknown120;
     float unknown124;
     unsigned char unknown128[12];
-    int alertState;
+    LevelObject* aiTarget;
     float rotationZ;
     float rotationX;
     float rotationY;
@@ -271,7 +273,9 @@ private:
     int spawnType;
     bool turnSoundPlaying;
     bool skidSoundPlaying;
-    unsigned char unknown794[38];
+    unsigned char unknown794[2];
+    Trail* wheelTrails[4];
+    unsigned char unknown812[20];
     irr::scene::ISceneNode* lightNodes[4];
     unsigned char unknown848[52];
     bool exploding;

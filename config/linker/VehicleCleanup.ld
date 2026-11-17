@@ -93,6 +93,8 @@ SECTIONS
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
     .vehicle_mobilize 0x0030a3e4 : { *(.text._ZN7Vehicle8mobilizeEv) }
     .vehicle_cleanup_sounds 0x003090e8 : { *(.text._ZN7Vehicle14_cleanupSoundsEv) }
+    .vehicle_stop_driving 0x00309188 : { *(.text._ZN7Vehicle11stopDrivingEv) }
+    .vehicle_clean_targets 0x0030a490 : { *(.text._ZN7Vehicle12cleanTargetsEv) }
     .vehicle_adjust_engine_pitch 0x00307bcc : { *(.text._ZN7Vehicle18_adjustEnginePitchEj) }
     .vehicle_update_car_sounds 0x0030822c : { *(.text._ZN7Vehicle15UpdateCarSoundsEv) }
     .vehicle_nearest_door_dummy 0x0030b22c : { *(.text._ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE) }
