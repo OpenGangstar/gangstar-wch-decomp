@@ -15,7 +15,6 @@
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
-#include "../core/PointerVector.h"
 
 struct SceneNodeManager::Pool {
     Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
@@ -94,8 +93,6 @@ SceneNodeManager::Pool::~Pool()
 }
 
 SceneNodeManager::SceneNodeManager()
-    : poolIndexSize(0), poolIndexCompareState(false), poolsBegin(0), poolsEnd(0),
-      poolsCapacity(0)
 {
     updateInterval = 10000;
     updateTimeRemaining = 10000;
@@ -106,6 +103,39 @@ SceneNodeManager::SceneNodeManager()
                 ((crcTable[index] & 0x80000000u) ? 0x04c11db7u : 0);
         crcTable[index] = crcReflect(crcTable[index], 32);
     }
+}
+
+extern "C" void _ZN9stlp_priv8_Rb_treeIiSt4lessIiESt4pairIKiiENS_10_Select1stIS5_EENS_11_MapTraitsTIS5_EESaIS5_EE8_M_eraseEPNS_18_Rb_tree_node_baseE(
+    void* tree, void* root) __attribute__((weak));
+
+inline void SceneNodeManager::PoolIndex::clear()
+{
+    if (size) {
+        _ZN9stlp_priv8_Rb_treeIiSt4lessIiESt4pairIKiiENS_10_Select1stIS5_EENS_11_MapTraitsTIS5_EESaIS5_EE8_M_eraseEPNS_18_Rb_tree_node_baseE(
+            this, header.parent);
+        header.left = &header;
+        header.parent = 0;
+        header.right = &header;
+        size = 0;
+    }
+}
+
+void SceneNodeManager::tearDown()
+{
+    for (Pool** entry = pools.begin(); entry != pools.end(); ++entry)
+        delete *entry;
+    pools.clear();
+    poolIndex.clear();
+}
+
+inline SceneNodeManager::PoolIndex::~PoolIndex()
+{
+    clear();
+}
+
+SceneNodeManager::~SceneNodeManager()
+{
+    tearDown();
 }
 
 void operator delete(void*) throw();

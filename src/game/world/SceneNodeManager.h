@@ -1,6 +1,8 @@
 #ifndef WCH_WORLD_SCENE_NODE_MANAGER_H
 #define WCH_WORLD_SCENE_NODE_MANAGER_H
 
+#include "../core/PointerVector.h"
+
 class LevelObject;
 namespace irr { namespace scene { class ISceneNode; } namespace collada { class CColladaFactory; } }
 
@@ -9,6 +11,7 @@ class SceneNodeManager {
 public:
     static SceneNodeManager* getInstance();
     void setup();
+    void tearDown();
     void update(int);
     void manage(int poolID, LevelObject* owner, int count);
     int findOrCreatePool(const char* name, int size, irr::collada::CColladaFactory* factory);
@@ -16,6 +19,7 @@ public:
     bool drop(int poolID, const irr::scene::ISceneNode* node);
 private:
     SceneNodeManager();
+    ~SceneNodeManager();
     struct Node {
         explicit Node(irr::scene::ISceneNode* sceneNode);
         ~Node();
@@ -33,12 +37,16 @@ private:
         PoolIndexLink* left;
         PoolIndexLink* right;
     };
-    PoolIndexLink poolIndex;
-    unsigned int poolIndexSize;
-    bool poolIndexCompareState;
-    Pool** poolsBegin;
-    Pool** poolsEnd;
-    Pool** poolsCapacity;
+    struct PoolIndex {
+        PoolIndex() : size(0), compareState(false) {}
+        ~PoolIndex();
+        void clear();
+        PoolIndexLink header;
+        unsigned int size;
+        bool compareState;
+    };
+    PoolIndex poolIndex;
+    std::vector<Pool*> pools;
     unsigned int crcTable[256];
     int updateTimeRemaining;
     int updateInterval;

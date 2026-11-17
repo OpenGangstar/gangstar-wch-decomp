@@ -18,6 +18,8 @@ SECTIONS
     .scene_node_constructor 0x00321658 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4NodeC1EPN3irr5scene10ISceneNodeE .text._ZN16SceneNodeManager4NodeC2EPN3irr5scene10ISceneNodeE) }
     .scene_pool_constructor 0x003218a0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi .text._ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi) }
     .scene_pool_destructor 0x00322154 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4PoolD1Ev .text._ZN16SceneNodeManager4PoolD2Ev) }
+    .scene_manager_teardown 0x003221ac : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager8tearDownEv) }
+    .scene_manager_destructor 0x00322208 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerD1Ev .text._ZN16SceneNodeManagerD2Ev) }
     .scene_manager_constructor 0x00321aa0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerC1Ev .text._ZN16SceneNodeManagerC2Ev) }
     .sdk_startup_function_0 0x00322068 : { *sdk-startup-scenenodemanager.o(.text.__tcf_3) }
     .sdk_startup_function_1 0x00321b9c : { *sdk-startup-scenenodemanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
