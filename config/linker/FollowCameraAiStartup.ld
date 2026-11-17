@@ -7,6 +7,13 @@ _Znwj = 0x001c4814;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fmul = 0x001c4724;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fcmpge = 0x001c4364;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_fcmple = 0x001c43ac;
+__aeabi_fcmplt = 0x001c479c;
+acosf = 0x001c4694;
 __aeabi_atexit = 0x001c494c;
 _ZN31retail_followcamera_transitions16civPassive_transE = 0x00428fd4;
 _ZN31retail_followcamera_transitions17scriptedNpc_transE = 0x00429100;
@@ -22,6 +29,7 @@ SECTIONS
 {
     .camera_variant_ctor 0x00333974 : { *ai-startup-followcamera.o(.text._ZN12FollowCameraC1EP9Character .text._ZN12FollowCameraC2EP9Character) }
     .camera_variant_angles 0x0033321c : { *ai-startup-followcamera.o(.text._ZN12FollowCamera12updateAnglesEii) }
+    .follow_camera_position 0x00333450 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }
     .camera_variant_debug 0x00333218 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE) }
     .camera_variant_dtor 0x003332c0 : { *ai-startup-followcamera.o(.text._ZN12FollowCameraD1Ev .text._ZN12FollowCameraD2Ev) }
     .ai_startup_function_0 0x00333290 : { *ai-startup-followcamera.o(.text.__tcf_3) }

@@ -14,6 +14,9 @@
 #include "../core/CameraVariants.h"
 #include "../characters/PhysicAttributes.h"
 #include "../characters/Character.h"
+#include "Quaternion.h"
+
+extern "C" float acosf(float);
 
 void FollowCamera::debug(irr::video::IVideoDriver*)
 {
@@ -101,4 +104,32 @@ static void _GLOBAL__I__ZN12FollowCameraC2EP9Character()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void FollowCamera::updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
+    float distance, irr::core::vector3d<float>& yawAxis,
+    irr::core::vector3d<float>& pitchAxis, float maximumPitch, float minimumPitch)
+{
+    const float degreesPerRadian = 57.2957763671875f;
+    irr::core::vector3d<float> direction = position - pivot;
+    direction.normalize();
+    const float previousPitch = acosf(direction.dotProduct(yawAxis));
+    const float pitchStep = elapsed * pitchRate;
+    const float pitch = pitchStep * degreesPerRadian + previousPitch * degreesPerRadian;
+    if ((pitch >= minimumPitch || pitchStep > 0.0f) &&
+        (pitch <= maximumPitch || pitchStep < 0.0f)) {
+        irr::core::quaternion rotation;
+        rotation.fromAngleAxis(pitchStep, pitchAxis);
+        rotation.normalize();
+        pitchRate = 0.0f;
+        position = (rotation * direction) * distance + pivot;
+    }
+
+    irr::core::quaternion rotation;
+    rotation.fromAngleAxis(elapsed * yawRate, yawAxis);
+    rotation.normalize();
+    yawRate = 0.0f;
+    direction = position - pivot;
+    direction.normalize();
+    position = (rotation * direction) * distance + pivot;
 }
