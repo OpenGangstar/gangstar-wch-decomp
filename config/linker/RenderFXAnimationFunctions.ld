@@ -7,6 +7,7 @@ __aeabi_fcmpge = 0x001c4364;
 __aeabi_fcmple = 0x001c43ac;
 fputs = 0x001c4904;
 fflush = 0x001c425c;
+strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
@@ -60,6 +61,8 @@ SECTIONS
     .renderfx_menu_event_filter 0x003f0274 : { *renderfx-animation.o(.text._ZN6MenuFX14CanHandleEventERN8RenderFX5EventE) }
     .renderfx_menu_on_event_thunk 0x003f0294 : { *renderfx-animation.o(.text._ZThn204_N6MenuFX7OnEventERN8RenderFX5EventE) }
     .renderfx_menu_on_event 0x003f02a8 : { *renderfx-animation.o(.text._ZN6MenuFX7OnEventERN8RenderFX5EventE) }
+    .renderfx_menu_get_state 0x003ecd88 : { *renderfx-animation.o(.text._ZN6MenuFX8GetStateEPKc) }
+    .renderfx_menu_register_state 0x003edfb8 : { *renderfx-animation.o(.text._ZN6MenuFX13RegisterStateEPNS_5StateEPKc) }
     .renderfx_menu_switch 0x003ed4f0 : { *renderfx-animation.o(.text._ZN6MenuFX10SwitchMenuEPKc) }
     .renderfx_menu_push 0x003ed500 : { *renderfx-animation.o(.text._ZN6MenuFX8PushMenuEPKc) }
     .renderfx_menu_unload 0x003ed510 : { *renderfx-animation.o(.text._ZN6MenuFX6UnloadEv) }

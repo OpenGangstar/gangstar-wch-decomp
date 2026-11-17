@@ -17,6 +17,8 @@ public:
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);
     virtual bool CanHandleEvent(RenderFX::Event& event);
+    State* GetState(const char* name);
+    void RegisterState(State* state, const char* characterName);
     State* GetCurrentState();
     State* GetStateHandler(gameswf::character* character);
     bool IsStateInStack(State* state);
@@ -46,7 +48,7 @@ public:
 
 private:
     friend class MenuFX;
-    unsigned char unknown4[4];
+    MenuFX* menu;
     char name[64];
     gameswf::smart_ptr<gameswf::character> firstCharacter;
     gameswf::smart_ptr<gameswf::character> secondCharacter;
