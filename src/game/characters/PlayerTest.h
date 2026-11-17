@@ -91,6 +91,10 @@ public:
     // Inline access to the observed target at offset 264; no standalone symbol claimed.
     LevelObject* getTarget() const { return target; }
     LevelObject* _GetTarget();
+    int getMarkerType();
+    void initMoveTo(const Vehicle* vehicle);
+    void richAsCroesus(bool enabled);
+    bool isRichAsCroesus() const;
     int getAmbientSound() const;
     void setCash(int value);
     void subCash(int amount);
@@ -125,7 +129,9 @@ public:
     bool movementKeys[4];
     unsigned char unknown382;
     bool flag383;
-    unsigned char unknown384[36];
+    unsigned char unknown384[32];
+    bool richAsCroesusEnabled;
+    unsigned char unknown417[3];
     int cash;
     unsigned int unknown424;
     // Item::add reads the complete word at 428; existing enum users retain
