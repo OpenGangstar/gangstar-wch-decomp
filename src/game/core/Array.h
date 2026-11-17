@@ -14,6 +14,7 @@ public:
     bool is_sorted;
     unsigned int unknown16;
     void reallocate(unsigned int size) __attribute__((weak));
+    void insert(const T& value, unsigned int index) __attribute__((weak));
     void push_back(const T& value) __attribute__((weak));
 };
 } }

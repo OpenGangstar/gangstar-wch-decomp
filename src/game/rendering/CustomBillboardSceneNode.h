@@ -7,14 +7,16 @@ class CustomBillboardSceneNode : public irr::collada::CRootSceneNode {
     irr::scene::ISceneNode* billboardParent;
     bool animationActive;
     bool animationLoops;
-    unsigned char unknown510[6];
+    unsigned char unknown510[2];
+    unsigned int animationTime;
     unsigned int animationLength;
-    unsigned char unknown520[4];
+    unsigned int unknown520;
     int parentOffsetZ;
 public:
     void activateAnimation() { animationActive = true; }
     void setParentOffsetZ(int offset) { parentOffsetZ = offset; }
     void setParent(irr::scene::ISceneNode* parent);
+    void debug(irr::video::IVideoDriver* driver);
     void setLength(unsigned int length);
     void setChildrenMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type);
     void setChildrenMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled);

@@ -26,13 +26,15 @@ struct PhonePerformanceProfile {
     int unknown0;
     int unknown4;
     char* textureNameSuffix;
-    void Read(DataStream&);
+    void Read(DataStream&) __attribute__((weak));
 };
 }
 
 // Observed 28-byte prefix, two bases and their virtual slots only.
 // Do not instantiate or infer complete scene-state layout from this prefix.
 struct GS3DLightNodes;
+
+class LODSceneNode;
 
 class GS3DStuff : public StateBase, public IEventReceiver {
 public:
@@ -58,6 +60,10 @@ public:
     }
     virtual void onEvent(const IEvent*, const EventManager*);
 
+    static LODSceneNode* parseSceneNodeForLOD(irr::scene::ISceneNode* node, LODSceneNode* lod);
+    void AddToSceneMgr(irr::scene::ISceneNode* node, irr::scene::ISceneNode* parent);
+    static void setPerformanceType(const char* name);
+    static void loadPerformanceProfile(const char* name);
     static bool getProperty(const void* properties, const char* name, char* output);
     static BulletTraceManager* GetBulletManager();
     static TrailMgr* GetTrailMgr();
@@ -100,6 +106,7 @@ public:
     static irr::scene::ISceneNode* city;
     static irr::video::ITexture* skyBoxTexture;
     static OctTreeAABB* sceneOcttree;
+    static int s_perfConfig;
     static Structs::PhonePerformanceProfile s_phonePerformanceProfile;
     static unsigned int lastTime;
     static Vehicle* s_vehicle;

@@ -9,6 +9,9 @@
  */
 
 #include "GS3DStuff.h"
+#include "LODSceneNode.h"
+#include "../core/MeshBufferInterfaces.h"
+#include "../core/MeshSceneInterfaces.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../app/CGameFactory.h"
@@ -17,6 +20,8 @@
 #include "CustomBillboardSceneNode.h"
 #include "CustomSkyBoxSceneNode.h"
 #include "../core/NativeStdio.h"
+#include "../core/NativeStrings.h"
+#include "../core/PlacementNew.h"
 #include "../core/Lock.h"
 #include "../app/Application.h"
 #include "../persistence/DataStream.h"
@@ -29,6 +34,7 @@
 #include "../core/SafeDelete.h"
 #include "../core/PhysicsBodyDef.h"
 #include "../core/Geometry.h"
+#include "../core/FactoryProducts.h"
 #include "../core/VideoDriver.h"
 #include "../world/SpawnPoint.h"
 #include "../world/GameObjectManager.h"
@@ -98,11 +104,6 @@ public:
 private:
     OctTreeAABBNode* root;
     irr::core::array<RootNode*>* roots;
-};
-
-class CCustomSceneManager {
-public:
-    static void CleanParents(irr::scene::ISceneNode* node);
 };
 
 namespace {
@@ -572,6 +573,7 @@ irr::scene::ISceneNode* GS3DStuff::city;
 GameObjectManager* GS3DStuff::gom;
 irr::video::ITexture* GS3DStuff::skyBoxTexture;
 OctTreeAABB* GS3DStuff::sceneOcttree;
+int GS3DStuff::s_perfConfig;
 Structs::PhonePerformanceProfile GS3DStuff::s_phonePerformanceProfile;
 unsigned int GS3DStuff::lastTime;
 
@@ -832,4 +834,116 @@ void GS3DStuff::SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION orientatio
     irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
     driver->setOrthoOrientation(static_cast<irr::video::E_ORTHO_ORIENTATION>(s_orientation));
     driver->setOrientation3D(static_cast<irr::video::E_ORTHO_ORIENTATION>(s_orientation));
+}
+
+static const char lodDistanceProperty[] __attribute__((section(".rodata.gs_lod_distance"))) = "lod";
+static const char lodMaximumProperty[] __attribute__((section(".rodata.gs_lod_maximum"))) = "lodmax";
+
+LODSceneNode* GS3DStuff::parseSceneNodeForLOD(irr::scene::ISceneNode* node, LODSceneNode* lod)
+{
+    char value[16];
+    if (getProperty(node->getUserProperty(), lodDistanceProperty, value)) {
+        if (!lod) {
+            lod = new LODSceneNode(-1, irr::core::vector3d<float>(),
+                irr::core::quaternion(), irr::core::vector3d<float>(1.0f, 1.0f, 1.0f));
+        }
+        lod->addLOD(node, static_cast<float>(atoi(value) * 100));
+    }
+
+    if (getProperty(node->getUserProperty(), lodMaximumProperty, value)) {
+        if (!lod) {
+            lod = new LODSceneNode(-1, irr::core::vector3d<float>(),
+                irr::core::quaternion(), irr::core::vector3d<float>(1.0f, 1.0f, 1.0f));
+            lod->addLOD(node, 0.0f);
+        }
+        lod->setMaxDistance(atoi(value) * 100);
+    }
+
+    irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+    while (child != node->getChildren().end()) {
+        irr::scene::ISceneNode* current = child->value;
+        child = child->next;
+        lod = parseSceneNodeForLOD(current, lod);
+    }
+    return lod;
+}
+
+void GS3DStuff::AddToSceneMgr(irr::scene::ISceneNode* node, irr::scene::ISceneNode* parent)
+{
+    node->updateAbsolutePosition(false);
+    irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+    while (child != node->getChildren().end()) {
+        irr::scene::ISceneNode* current = child->value;
+        child = child->next;
+        AddToSceneMgr(current, parent);
+    }
+
+    const int type = node->getType();
+    const int octTreeNode = 0x7474636f;
+    if (type == octTreeNode || type == colladaMeshNode || type == colladaSkinnedNode) {
+        node->updateAbsolutePosition(false);
+        node->setPosition(node->getAbsolutePosition());
+        node->setRotation(irr::core::quaternion(node->getAbsoluteTransformation()));
+        node->SetOption(irr::scene::SceneOption1, node->getAnimators().getSize() == 0);
+
+        if (type == colladaMeshNode || type == colladaSkinnedNode) {
+            irr::scene::IMeshSceneNode* meshNode = static_cast<irr::scene::IMeshSceneNode*>(node);
+            for (unsigned int i = 0; i < meshNode->getMesh()->getMeshBufferCount(); ++i) {
+                meshNode->getMesh()->getMeshBuffer(i)->setHardwareMappingHint(
+                    irr::scene::EHM_STATIC, irr::scene::EBT_VERTEX_AND_INDEX);
+            }
+        }
+
+        parent->addChild(node);
+        node->removeAll();
+    }
+}
+
+extern "C" void _ZN10DataStreamD1Ev(void*) __attribute__((weak));
+
+void GS3DStuff::loadPerformanceProfile(const char* name)
+{
+    ResStream resource(name, 1);
+    unsigned int streamStorage[sizeof(DataStream) / sizeof(unsigned int)];
+    DataStream& stream = *new (streamStorage) DataStream(resource, DataStream::BigEndian);
+    stream.ReadInt();
+    for (int index = 0; index < s_perfConfig; ++index) {
+        stream.Skip(stream.ReadInt());
+    }
+    stream.ReadInt();
+    s_phonePerformanceProfile.Read(stream);
+    if (!s_phonePerformanceProfile.textureNameSuffix[0]) {
+        delete[] s_phonePerformanceProfile.textureNameSuffix;
+        s_phonePerformanceProfile.textureNameSuffix = 0;
+    }
+    stream.Stream::Close();
+    resource.BufferStream::Close();
+    _ZN10DataStreamD1Ev(&stream);
+}
+
+namespace {
+const char selectorPath[] __attribute__((section(".rodata.perf_selector"))) = "./PhonePerformanceSelector.array";
+}
+
+void GS3DStuff::setPerformanceType(const char* name)
+{
+    ResStream resource(selectorPath, 1);
+    DataStream stream(resource, DataStream::BigEndian);
+    const int configs = stream.ReadInt();
+    s_perfConfig = 0;
+    for (int index = 0; index < configs; ++index) {
+        const int names = stream.ReadInt();
+        for (int i = 0; i < names; ++i) {
+            char* profile = stream.ReadAndAllocateString();
+            if (strcmp(name, profile) == 0) {
+                s_perfConfig = index;
+                delete[] profile;
+                goto finish;
+            }
+            delete[] profile;
+        }
+    }
+finish:
+    stream.Close();
+    resource.Close();
 }

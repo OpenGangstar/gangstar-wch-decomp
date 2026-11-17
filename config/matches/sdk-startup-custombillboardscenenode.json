@@ -25,6 +25,9 @@
     "source": "src/game/rendering/CustomBillboardSceneNode.cpp",
     "linker_script": "config/linker/CustomBillboardSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE",
+        "_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
+        "_ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
         "_ZN24CustomBillboardSceneNodeD1Ev",
         "_ZN24CustomBillboardSceneNodeD0Ev",
         "_ZTv0_n12_N24CustomBillboardSceneNodeD0Ev",

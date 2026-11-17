@@ -25,6 +25,18 @@
     "source": "src/game/rendering/LODSceneNode.cpp",
     "linker_script": "config/linker/LODSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_",
+        "_ZN12LODSceneNodeC1EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_",
+        "_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf",
+        "_ZN12LODSceneNode11addAnimatorEPN3irr5scene18ISceneNodeAnimatorE",
+        "_ZN12LODSceneNode15removeAnimatorsEv",
+        "_ZTv0_n12_N12LODSceneNodeD0Ev",
+        "_ZTv0_n24_N12LODSceneNodeD0Ev",
+        "_ZN12LODSceneNodeD0Ev",
+        "_ZTv0_n12_N12LODSceneNodeD1Ev",
+        "_ZTv0_n24_N12LODSceneNodeD1Ev",
+        "_ZN12LODSceneNodeD1Ev",
+        "_ZN12LODSceneNodeD2Ev",
         "_ZN12LODSceneNode19setLODNodesRotationERKN3irr4core10quaternionE",
         "_ZN12LODSceneNode19OnRegisterSceneNodeEv",
         "_ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE",
@@ -51,6 +63,10 @@
         }
     ],
     "sections": [
+        ".lod_vtable",
+        ".lod_vtt",
+        ".lod_scene_node_construction",
+        ".lod_attributes_construction",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -64,6 +80,10 @@
     "external_thumb_functions": [
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
         "_ZN12LODSceneNode15computeLODLevelEv",
-        "_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE"
+        "_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE",
+        "_ZN3irr5scene10ISceneNodeC2EiRKNS_4core8vector3dIfEERKNS2_10quaternionES6_",
+        "_ZN3irr5scene10ISceneNodeD2Ev",
+        "_ZN19CCustomSceneManager12CleanParentsEPN3irr5scene10ISceneNodeE",
+        "_ZNK3irr5scene10ISceneNode9getParentEv"
     ]
 }

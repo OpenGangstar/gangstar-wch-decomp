@@ -1,4 +1,15 @@
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(_ZdaPv = 0x001c461c);
+PROVIDE(strcmp = 0x001c4658);
 SECTIONS {
+    .gs_add_to_scene 0x002de5a4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff13AddToSceneMgrEPN3irr5scene10ISceneNodeES3_) }
+    .gs_load_performance 0x002db548 : { *gs3d-stuff.o(.text._ZN9GS3DStuff22loadPerformanceProfileEPKc) }
+    .gs_set_performance 0x002dbde4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff18setPerformanceTypeEPKc) }
+    .gs_perf_selector 0x004144c4 : { *gs3d-stuff.o(.rodata.perf_selector) }
+    .gs_performance_config 0x004b69e0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff12s_perfConfigE) }
+    .gs_parse_lod 0x002dc590 : { *gs3d-stuff.o(.text._ZN9GS3DStuff20parseSceneNodeForLODEPN3irr5scene10ISceneNodeEP12LODSceneNode) }
+    .gs_lod_distance 0x00412418 : { *gs3d-stuff.o(.rodata.gs_lod_distance) }
+    .gs_lod_maximum 0x00414500 : { *gs3d-stuff.o(.rodata.gs_lod_maximum) }
     .gs_set_current_orientation 0x002dc288 : { *gs3d-stuff.o(.text._ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE) }
     .gs_orientation 0x004b539c : { *gs3d-stuff.o(.data._ZN9GS3DStuff13s_orientationE) }
     .gs_auto_orientation 0x004b53a0 : { *gs3d-stuff.o(.data._ZN9GS3DStuff11b_isAutoOriE) }

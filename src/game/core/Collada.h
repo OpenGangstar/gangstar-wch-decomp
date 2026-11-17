@@ -31,7 +31,9 @@ struct SNode { unsigned int unknown0[18]; const void* properties; };
 // Observed scene interface prefix, 380-byte allocation extent and constructor ABI.
 // Remaining storage is opaque; this is not the complete engine class.
 class CSceneNode : public scene::CEmptySceneNode {
-    unsigned int unknown352[4];
+    unsigned int unknown352[3];
+protected:
+    SNode* sourceNode;
 public:
     CSceneNode(const CColladaDatabase&, SNode*);
     virtual ~CSceneNode();
@@ -56,7 +58,7 @@ private:
 
 class CRootSceneNode : public IRootSceneNode, public CSceneNode {
 public:
-    explicit CRootSceneNode(const CColladaDatabase&);
+    explicit CRootSceneNode(const CColladaDatabase&) __attribute__((long_call));
     virtual void addSkinnedMesh(scene::CColladaSkinnedMesh*);
     virtual const char* getUID() const;
     virtual void OnAnimate(unsigned int time);

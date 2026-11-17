@@ -12,6 +12,7 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "CustomBillboardSceneNode.h"
+#include "../core/VideoDriver.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -110,4 +111,33 @@ void CustomBillboardSceneNode::render()
 
 CustomBillboardSceneNode::~CustomBillboardSceneNode()
 {
+}
+
+CustomBillboardSceneNode::CustomBillboardSceneNode(
+    const irr::collada::CColladaDatabase& database, irr::collada::SNode* node)
+    : CRootSceneNode(database), animationActive(false), animationLoops(false),
+      animationTime(0), animationLength(0), unknown520(0), parentOffsetZ(0)
+{
+    sourceNode = node;
+    setParent(0);
+}
+
+void CustomBillboardSceneNode::debug(irr::video::IVideoDriver* driver)
+{
+    if (billboardParent) {
+        irr::core::matrix4 transform(getAbsoluteTransformation(), irr::core::matrix4::EM4CONST_COPY);
+        const irr::core::vector3d<float> x(transform.mutableElement(0), transform.mutableElement(1), transform.mutableElement(2));
+        const irr::core::vector3d<float> y(transform.mutableElement(4), transform.mutableElement(5), transform.mutableElement(6));
+        const irr::core::vector3d<float> z(transform.mutableElement(8), transform.mutableElement(9), transform.mutableElement(10));
+        const irr::core::vector3d<float> origin = getAbsolutePosition();
+        irr::core::vector3d<float> endpoint = x * 300.0f;
+        endpoint = endpoint + origin;
+        driver->draw3DLine(origin, endpoint, irr::video::SColor(255, 0, 0, 255));
+        endpoint = y * 300.0f;
+        endpoint = endpoint + origin;
+        driver->draw3DLine(origin, endpoint, irr::video::SColor(255, 0, 255, 0));
+        endpoint = z * 300.0f;
+        endpoint = endpoint + origin;
+        driver->draw3DLine(origin, endpoint, irr::video::SColor(255, 255, 0, 0));
+    }
 }
