@@ -2,10 +2,16 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/string-startup-trailmgr/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_ZdaPv = 0x001c461c;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
     .trail_mgr_ctor 0x00348f94 : { *string-startup-trailmgr.o(.text._ZN8TrailMgrC1Ev .text._ZN8TrailMgrC2Ev) }
+    .trail_mgr_dtor 0x003490dc : { *string-startup-trailmgr.o(.text._ZN8TrailMgrD1Ev .text._ZN8TrailMgrD2Ev) }
+    .trail_mgr_delete 0x003490b8 : { *string-startup-trailmgr.o(.text._ZN8TrailMgrD0Ev) }
+    .trail_mgr_vtable 0x004ad298 : { *string-startup-trailmgr.o(.data.rel.ro._ZTV8TrailMgr) }
+    .trail_mgr_segment_width 0x00349120 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr15SetSegmentWidthEf) }
+    .trail_mgr_cleanup 0x00349148 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr7CleanUpEv) }
     .trail_mgr_update 0x003490f8 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr6UpdateEv) }
     .trail_mgr_alloc_trail 0x00349230 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr10AllocTrailEv) }
     .trail_mgr_free_trail 0x00349050 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr9FreeTrailEP5Trail) }
