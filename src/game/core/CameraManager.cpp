@@ -15,6 +15,7 @@
 #include "CameraManager.h"
 #include "CameraVariants.h"
 #include "SceneCamera.h"
+#include "Quaternion.h"
 #include "../app/Application.h"
 #include "../characters/Character.h"
 #include "../hud/CHudManager.h"
@@ -153,6 +154,16 @@ void CameraManager::clean()
     delete fpsCamera;
     delete this;
     s_cm = 0;
+}
+
+void CameraManager::updateUpVector(float angle)
+{
+    const irr::core::vector3d<float>& lookAt = getLookAt();
+    irr::core::vector3d<float> direction = lookAt - getPosition();
+    direction.normalize();
+    irr::core::quaternion rotation;
+    rotation.fromAngleAxis(angle, direction);
+    cameraNode->setUpVector(rotation * irr::core::vector3d<float>(0.0f, 0.0f, 1.0f));
 }
 
 void CameraManager::goToSide(bool left)
