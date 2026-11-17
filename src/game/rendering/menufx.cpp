@@ -550,6 +550,13 @@ public:
     gameswf::character* character;
 };
 
+bool MenuFX::CanHandleEvent(RenderFX::Event& event)
+{
+    if (stateStack.size > 0)
+        return GetStateHandler(event.character)->CanHandleEvent(event);
+    return true;
+}
+
 void MenuFX::OnEvent(RenderFX::Event& event)
 {
     if (stateStack.size > 0)
