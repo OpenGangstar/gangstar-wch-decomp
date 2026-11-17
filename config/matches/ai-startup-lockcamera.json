@@ -23,8 +23,14 @@
         "-meabi=4"
     ],
     "source": "src/game/core/LockCamera.cpp",
+    "dependencies": ["string-startup-camera"],
     "linker_script": "config/linker/LockCameraAiStartup.ld",
     "functions": [
+        "_ZN10LockCamera5debugEPN3irr5video12IVideoDriverE",
+        "_ZN10LockCameraD1Ev",
+        "_ZN10LockCameraD2Ev",
+        "_ZN10LockCameraC1EP11LevelObject",
+        "_ZN10LockCameraC2EP11LevelObject",
         {
             "name": "__tcf_3",
             "address": "0x00334a31"
@@ -48,5 +54,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN10LockCamera4initEP11LevelObjecti"]
 }
