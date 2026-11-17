@@ -16,6 +16,11 @@
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
 
+extern "C" {
+void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
+void _ZN11MenuManager10clearFocusEv(MenuManager* manager);
+}
+
 void MenuFX::State::Create()
 {
 }
@@ -119,6 +124,38 @@ Widgets::Confirm* Menus::Confirm::GetWidget()
 void Menus::Dialog::SetMessage(int id)
 {
     GetWidget()->SetMessage(id);
+}
+
+bool Menus::Confirm::Notify(const MenuWidget* widget, int event)
+{
+    MenuState::Notify(widget, event);
+    MenuManager* manager = MenuManager::getInstance();
+    const MenuWidget* dialog = GetWidget();
+    if (widget == dialog && event == 1) {
+        confirmed = static_cast<const Widgets::Dialog*>(widget)->GetPressedButton() == 11;
+        _ZN11MenuManager3popEb(manager, true);
+        return true;
+    }
+    return false;
+}
+
+void Menus::Dialog::GotFocus()
+{
+    MenuState::GotFocus();
+    GetWidget()->SetListener(this);
+    _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+}
+
+void Menus::Confirm::GotFocus()
+{
+    Dialog::GotFocus();
+    confirmed = false;
+}
+
+void Menus::Dialog::LostFocus()
+{
+    MenuState::LostFocus();
+    GetWidget()->SetListener(0);
 }
 
 void Menus::ConfirmPayment::SetPrice(int amount)

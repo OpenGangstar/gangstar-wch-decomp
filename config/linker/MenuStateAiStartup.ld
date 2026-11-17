@@ -19,6 +19,10 @@ INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .confirm_notify 0x002e7590 : { *ai-startup-menustate.o(.text._ZN5Menus7Confirm6NotifyEPK10MenuWidgeti) }
+    .dialog_got_focus 0x002e8878 : { *ai-startup-menustate.o(.text._ZN5Menus6Dialog8GotFocusEv) }
+    .confirm_got_focus 0x002e8898 : { *ai-startup-menustate.o(.text._ZN5Menus7Confirm8GotFocusEv) }
+    .dialog_lost_focus 0x002e92b0 : { *ai-startup-menustate.o(.text._ZN5Menus6Dialog9LostFocusEv) }
     .state_create 0x002e7310 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State6CreateEv) }
     .state_show 0x002e7314 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State4ShowEv) }
     .state_hide 0x002e7318 : { *ai-startup-menustate.o(.text._ZN6MenuFX5State4HideEv) }
