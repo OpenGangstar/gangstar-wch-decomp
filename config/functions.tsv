@@ -17337,7 +17337,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ee549	0x38	menufx.cpp	gameswf	-	matched	_ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE12check_expandEv	gameswf::hash<gameswf::tu_string, gameswf::array<RenderFX::SearchIndex::Entry>*, gameswf::string_hash_functor<gameswf::tu_string> >::check_expand()
 0x003ee581	0x1a0	menufx.cpp	gameswf	-	matched	_ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE3addERKS1_RKS7_	gameswf::hash<gameswf::tu_string, gameswf::array<RenderFX::SearchIndex::Entry>*, gameswf::string_hash_functor<gameswf::tu_string> >::add(gameswf::tu_string const&, gameswf::array<RenderFX::SearchIndex::Entry>* const&)
 0x003ee721	0xb4	menufx.cpp	game	rendering	pending	_ZN8RenderFX11SearchIndex5ClearEv	RenderFX::SearchIndex::Clear()
-0x003ee7d5	0x2c	menufx.cpp	game	rendering	pending	_ZN8RenderFX11SearchIndexD1Ev	RenderFX::SearchIndex::~SearchIndex()
+0x003ee7d5	0x2c	menufx.cpp	game	rendering	matched	_ZN8RenderFX11SearchIndexD1Ev	RenderFX::SearchIndex::~SearchIndex()
 0x003ee801	0x84	menufx.cpp	game	rendering	pending	_ZN8RenderFXD0Ev	RenderFX::~RenderFX()
 0x003ee885	0x80	menufx.cpp	game	rendering	pending	_ZN8RenderFXD1Ev	RenderFX::~RenderFX()
 0x003ee885	0x80	menufx.cpp	game	rendering	pending	_ZN8RenderFXD2Ev	RenderFX::~RenderFX()

@@ -169,6 +169,18 @@ private:
     void* heap;
 };
 
+template<class T> struct string_hash_functor;
+
+template<class Key, class Value, class Hash>
+class hash {
+public:
+    ~hash() { clear(); }
+    void clear() __attribute__((weak));
+
+private:
+    void* table;
+};
+
 class edit_text_character {
 public:
     void set_text_value(const tu_string& value, bool option);
@@ -199,6 +211,22 @@ void log_callback(bool error, const char* text)
     } else {
         message_log(text);
     }
+}
+
+class RenderFX::SearchIndex {
+public:
+    ~SearchIndex();
+    void Clear() __attribute__((long_call));
+    class Entry;
+
+private:
+    gameswf::hash<gameswf::tu_string, gameswf::array<Entry>*,
+                  gameswf::string_hash_functor<gameswf::tu_string> > entries;
+};
+
+RenderFX::SearchIndex::~SearchIndex()
+{
+    Clear();
 }
 
 namespace {
