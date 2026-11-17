@@ -27,6 +27,13 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX16SetEventListenerEPNS_13EventListenerE",
+        "_ZN8RenderFX20SetControllerEnabledEib",
+        "_ZN8RenderFX16SetInputBehaviorEi",
+        "_ZN8RenderFX10SetContextEPN7gameswf9characterE",
+        "_ZNK8RenderFX7GetRootEv",
+        "_ZN8RenderFX23SetTextBufferingEnabledEb",
+        "_ZNK8RenderFX12GetFlashRootEv",
         "_ZN8RenderFX8SetAlphaEPKcf",
         "_ZNK8RenderFX8GetAlphaEPN7gameswf9characterE",
         "_ZN8RenderFX11SetPositionEPN7gameswf9characterEii",

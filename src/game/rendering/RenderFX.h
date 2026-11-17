@@ -4,6 +4,7 @@
 namespace gameswf {
 class character;
 class render_state;
+class root;
 
 template <typename T>
 class array {
@@ -21,6 +22,14 @@ public:
 class RenderFX {
 public:
     class Event;
+    class EventListener;
+    void SetEventListener(EventListener* listener);
+    void SetInputBehavior(int behavior);
+    void SetControllerEnabled(int index, bool enabled);
+    void SetContext(gameswf::character* character);
+    gameswf::character* GetRoot() const;
+    gameswf::root* GetFlashRoot() const;
+    void SetTextBufferingEnabled(bool enabled);
     gameswf::character* Find(const char* name);
     const gameswf::array<gameswf::character*>& FindCharacters(
         gameswf::character* parent, const char* name, int flags);
