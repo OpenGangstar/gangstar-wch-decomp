@@ -26,6 +26,12 @@ public:
             SwfFree(heap);
     }
 
+    const char* c_str() const
+    {
+        return storage[0] == 255 ? static_cast<const char*>(heap)
+                                 : reinterpret_cast<const char*>(storage + 1);
+    }
+
 private:
     unsigned char storage[12];
     void* heap;
@@ -38,7 +44,7 @@ public:
 }
 
 namespace {
-// Prefix of the gameswf character vtable through the numeric frame method.
+// Prefix of the gameswf character vtable through display callback registration.
 struct CharacterAnimationMethods {
     void (*firstMethods[2])();
     bool (*is)(const gameswf::character*, int);
@@ -46,14 +52,24 @@ struct CharacterAnimationMethods {
     void (*setPlayState)(gameswf::character*, int);
     void (*getPlayState)();
     bool (*gotoLabeledFrame)(gameswf::character*, const char*);
-    void (*beforeGotoFrame[42])();
+    void (*beforeFrameQueries[38])();
+    int (*getCurrentFrame)(gameswf::character*);
+    int (*getFrameCount)(gameswf::character*);
+    void (*beforeGotoFrame[2])();
     void (*gotoFrame)(gameswf::character*, int);
+    void (*beforeDisplayCallback[3])();
+    void (*registerDisplayCallback)(gameswf::character*, void (*)(gameswf::render_state&, void*), void*);
 };
 
 inline const CharacterAnimationMethods& animationMethods(const gameswf::character* character)
 {
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
 }
+
+struct EditTextStorage {
+    unsigned char prefix[0x180];
+    gameswf::tu_string text;
+};
 
 struct SpriteEnabledState {
     unsigned char prefix[0x2a4];
@@ -143,6 +159,41 @@ void RenderFX::SetVisible(const char* characterName, bool visible)
     gameswf::character* character = Find(characterName);
     if (character)
         setCharacterVisible(character, visible);
+}
+
+int RenderFX::GetFrameCount(gameswf::character* character)
+{
+    if (character && animationMethods(character).is(character, 2))
+        return animationMethods(character).getFrameCount(character);
+    return 0;
+}
+
+bool RenderFX::IsAnimOver(gameswf::character* character)
+{
+    if (!character || !animationMethods(character).is(character, 2))
+        return false;
+
+    // Retail queries both frames before repeating the calls for the comparison.
+    animationMethods(character).getCurrentFrame(character);
+    animationMethods(character).getFrameCount(character);
+    const int current = animationMethods(character).getCurrentFrame(character);
+    return current >= animationMethods(character).getFrameCount(character) - 1;
+}
+
+bool RenderFX::RegisterDisplayCallback(gameswf::character* character,
+                                       void (*callback)(gameswf::render_state&, void*), void* context)
+{
+    if (!character)
+        return false;
+    animationMethods(character).registerDisplayCallback(character, callback, context);
+    return true;
+}
+
+const char* RenderFX::GetText(gameswf::character* character)
+{
+    if (character && animationMethods(character).is(character, 30))
+        return reinterpret_cast<const EditTextStorage*>(character)->text.c_str();
+    return 0;
 }
 
 bool RenderFX::RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context)

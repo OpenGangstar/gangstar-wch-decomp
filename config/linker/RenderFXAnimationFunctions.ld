@@ -9,6 +9,10 @@ SECTIONS
     .renderfx_named_setposition 0x003ee290 : { *renderfx-animation.o(.text._ZN8RenderFX11SetPositionEPKcii) }
     .renderfx_named_setcolorfilter 0x003ee2c8 : { *renderfx-animation.o(.text._ZN8RenderFX14SetColorFilterEPKcij) }
     .renderfx_named_setcolortransform 0x003ee2e4 : { *renderfx-animation.o(.text._ZN8RenderFX17SetColorTransformEPKcjj) }
+    .renderfx_character_frame_count 0x003ec31c : { *renderfx-animation.o(.text._ZN8RenderFX13GetFrameCountEPN7gameswf9characterE) }
+    .renderfx_character_animation_over 0x003ec344 : { *renderfx-animation.o(.text._ZN8RenderFX10IsAnimOverEPN7gameswf9characterE) }
+    .renderfx_character_display_callback 0x003ec3b0 : { *renderfx-animation.o(.text._ZN8RenderFX23RegisterDisplayCallbackEPN7gameswf9characterEPFvRNS0_12render_stateEPvES5_) }
+    .renderfx_character_get_text 0x003ec9d4 : { *renderfx-animation.o(.text._ZN8RenderFX7GetTextEPN7gameswf9characterE) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }
