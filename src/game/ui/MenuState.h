@@ -29,6 +29,7 @@ public:
     bool IsStateInStack(State* state);
 
 private:
+    friend class MyMenuFX;
     void SetMenu(const char* name, bool push);
 
     State* topState()
@@ -55,7 +56,7 @@ inline array<MenuFX::State*>::~array()
 class MenuFX::State {
 public:
     explicit inline State(const char* name);
-    virtual inline ~State();
+    virtual ~State() {}
     virtual void Create();
     virtual void Show();
     virtual void Hide();

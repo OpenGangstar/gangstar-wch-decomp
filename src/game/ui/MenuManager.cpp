@@ -13,12 +13,25 @@
 #include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
-#include "../rendering/RenderFX.h"
+#include "MenuState.h"
 
-class MyMenuFX : public RenderFX {
+class MyMenuFX : public MenuFX {
 public:
+    virtual ~MyMenuFX();
+    void ClearStates();
     void ClearFocus();
 };
+
+void MyMenuFX::ClearStates()
+{
+    for (int index = 0; index < registeredStates.size; ++index)
+        delete registeredStates.elements[index];
+    registeredStates.resize(0);
+}
+
+MyMenuFX::~MyMenuFX()
+{
+}
 
 void MyMenuFX::ClearFocus()
 {

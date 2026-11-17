@@ -25,6 +25,9 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN8MyMenuFX11ClearStatesEv",
+        "_ZN8MyMenuFXD0Ev",
+        "_ZN8MyMenuFXD1Ev",
         "_ZN8MyMenuFX10ClearFocusEv",
         "_ZN11MenuManager10clearFocusEv",
         "_ZN11MenuManager10cleanupMapEv",
@@ -69,6 +72,7 @@
         }
     ],
     "sections": [
+        ".my_menu_fx_vtable",
         ".cleanup_map",
         ".helper_0",
         ".helper_1",
@@ -101,6 +105,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN6MenuFXD1Ev",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev"
