@@ -415,6 +415,16 @@ extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool vis
 extern "C" int strcmp(const char* left, const char* right);
 extern const char menuMapStateName[] __attribute__((visibility("hidden")));
 
+static inline __attribute__((always_inline)) void finishMenuTransition(
+    MenuManager* manager, MenuManagerFocusFields& fields, const char* name)
+{
+    fields.widgetVisibility = false;
+    fields.unknown192 = 0;
+    if (strcmp(name, menuMapStateName) == 0)
+        fields.inGameMenu = manager->getDepth();
+    static_cast<MenuState*>(fields.menuFX->GetCurrentState())->UpdateLocalization();
+}
+
 extern "C" void _ZN11MenuManager8switchToEPKcb(MenuManager* manager, const char* name, bool silent)
 {
     MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
@@ -426,11 +436,7 @@ extern "C" void _ZN11MenuManager8switchToEPKcb(MenuManager* manager, const char*
     }
 
     fields.menuFX->SwitchMenu(name);
-    fields.widgetVisibility = false;
-    fields.unknown192 = 0;
-    if (strcmp(name, menuMapStateName) == 0)
-        fields.inGameMenu = manager->getDepth();
-    static_cast<MenuState*>(fields.menuFX->GetCurrentState())->UpdateLocalization();
+    finishMenuTransition(manager, fields, name);
 }
 
 extern "C" void _ZN11MenuManager3popEb(MenuManager* manager, bool silent)
@@ -483,6 +489,21 @@ void MenuManager::popAll(bool silent)
         sound->playEx(218, 0, false, 1.0f, 0, true, 1.0f, 0);
         sound->unknown140 = false;
     }
+}
+
+void MenuManager::push(const char* name, bool silent)
+{
+    if (!silent) {
+        SoundManager* sound = SoundManager::getInstance();
+        int soundId = getDepth() > 0 ? 222 : 223;
+        sound->unknown140 = true;
+        sound->playEx(soundId, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(this);
+    fields.menuFX->PushMenu(name);
+    finishMenuTransition(this, fields, name);
 }
 
 void MenuManager::cleanupMap()
