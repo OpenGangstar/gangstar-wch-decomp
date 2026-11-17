@@ -1,6 +1,13 @@
 strstr = 0x001c446c;
 SECTIONS
 {
+    .widget_shop_set_item 0x002ecb20 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop7SetItemEiiiPKci) }
+    .widget_shop_item_icon_format 0x0041a9bc : { *ai-startup-menuwidget.o(.rodata.shop_item_icon_format) }
+    .widget_shop_localization 0x002ed6bc : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop18UpdateLocalizationEv) }
+    .shop_button_path 0x0041ac58 : { *ai-startup-menuwidget.o(.rodata.shop_button_path) }
+    .shop_name_path 0x0041ac70 : { *ai-startup-menuwidget.o(.rodata.shop_name_path) }
+    .shop_price_path 0x0041ac90 : { *ai-startup-menuwidget.o(.rodata.shop_price_path) }
+    .shop_availability_path 0x0041acb0 : { *ai-startup-menuwidget.o(.rodata.shop_availability_path) }
     .widget_shop_on_event 0x002ed17c : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop7OnEventERN8RenderFX5EventE) }
     .widget_shop_vtable 0x004a99f8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets4ShopE) }
     .widget_shop_item_button_prefix 0x0041ab30 : { *ai-startup-menuwidget.o(.rodata.*shopItemButtonPrefix*) }
