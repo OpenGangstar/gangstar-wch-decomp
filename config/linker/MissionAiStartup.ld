@@ -17,6 +17,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .mission_fail 0x00335d8c : { *ai-startup-mission.o(.text._ZN7Mission4failEv) }
+    .mission_idle 0x003365a4 : { *ai-startup-mission.o(.text._ZN7Mission4idleEv) }
     .wanted_singleton 0x002dba04 : { *ai-startup-mission.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00335df0 : { *ai-startup-mission.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-mission.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

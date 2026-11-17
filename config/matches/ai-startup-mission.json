@@ -25,6 +25,8 @@
     "source": "src/game/missions/Mission.cpp",
     "linker_script": "config/linker/MissionAiStartup.ld",
     "functions": [
+        "_ZN7Mission4failEv",
+        "_ZN7Mission4idleEv",
         {
             "name": "__tcf_4",
             "address": "0x00335d25"
@@ -100,6 +102,14 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest17clearPhotoTargetsEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN18WantedLevelManager16resetWantedLevelEv",
+        "nativeUnloadAllSounds",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEiPi",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN7Message12clearMessageEb",
         "_ZN7Mission7messageEi",
         "_ZN10DataStream7ReadIntEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",

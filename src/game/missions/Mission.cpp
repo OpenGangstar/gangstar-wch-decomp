@@ -11,7 +11,12 @@
 #include "Mission.h"
 #include "WantedLevelManagerSingleton.h"
 #include "IMissionCondition.h"
+#include "../characters/PlayerTest.h"
 #include "../persistence/DataStream.h"
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../ui/Message.h"
 
 int Mission::setTextToPrint(int id)
 {
@@ -193,4 +198,37 @@ static void _GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void Mission::idle()
+{
+    currentMissionId = -1;
+    unknown8 = 0;
+    unknown12 = 0;
+    setTextToPrint(-1);
+    clearConditions();
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(10), -1, 0);
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(9), -1, 0);
+    static_cast<Message*>(Application::GetInstance()->GetHudManager()->message172)->clearMessage(true);
+    state = 0;
+}
+
+extern bool bIsInCutscene;
+extern "C" void nativeUnloadAllSounds();
+
+void Mission::fail()
+{
+    bIsInCutscene = false;
+    if (currentMissionId >= 0 && state == 4) {
+        const int previousFailures = failures;
+        unknown8 = 0;
+        unknown12 = 0;
+        failures = previousFailures + 1;
+        state = 6;
+        setTextToPrint(-1);
+        clearConditions();
+        PlayerTest::GetPlayer()->clearPhotoTargets();
+        WantedLevelManager::getInstance()->resetWantedLevel();
+    }
+    nativeUnloadAllSounds();
 }

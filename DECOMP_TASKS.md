@@ -465,7 +465,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033922d | Script::setState | vehicle_side | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction | camera_tap | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033ce19 | Script::nextCommand | lock_init | BLOCKED | — | src/game/scripting/Script.cpp |
-| libsanangeles.so | 0x003399f1 | Script::rewind | vehicle_side | ASSIGNED | — | src/game/scripting/Script.cpp |
-| libsanangeles.so | 0x003365a5 | Mission::idle | camera_tap | REVIEW | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00335d8d | Mission::fail | lock_init | ASSIGNED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00336345 | Mission::message | camera_tap | ASSIGNED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x003399f1 | Script::rewind | vehicle_side | BLOCKED | — | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x003365a5 | Mission::idle | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335d8d | Mission::fail | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336345 | Mission::message | camera_tap | BLOCKED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x003360c1 | Mission constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x0033602d | Mission destructor (D1/D2 aliases) | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336141 | getFrameModuleRect | camera_tap | ASSIGNED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335f91 | Mission deleting destructor (D0) | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336961 | Mission::end | vehicle_side | ASSIGNED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335e61 | Mission::load | lock_init | ASSIGNED | — | src/game/missions/Mission.cpp |

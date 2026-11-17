@@ -34,7 +34,9 @@ public:
 private:
     friend class ScriptManager;
     int currentMissionId;
-    unsigned char unknown8[12];
+    int unknown8;
+    int unknown12;
+    unsigned char unknown16[4];
     int currentMessage;
     int lastObjectiveText;
     int state;
