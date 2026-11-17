@@ -3,6 +3,7 @@
 
 namespace gameswf {
 class character;
+class render_state;
 
 template <typename T>
 class array {
@@ -32,6 +33,20 @@ public:
     void SetEnabled(gameswf::character* character, bool enabled);
     void SetEnabled(const char* characterName, bool enabled);
     void SetVisible(const char* characterName, bool visible);
+    bool RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context);
+    bool RegisterDisplayCallback(gameswf::character* character, void (*callback)(gameswf::render_state&, void*), void* context);
+    bool IsAnimOver(const char* characterName);
+    bool IsAnimOver(gameswf::character* character);
+    int GetFrameCount(const char* characterName);
+    int GetFrameCount(gameswf::character* character);
+    const char* GetText(const char* characterName);
+    const char* GetText(gameswf::character* character);
+    void SetPosition(const char* characterName, int x, int y);
+    void SetPosition(gameswf::character* character, int x, int y);
+    void SetColorFilter(const char* characterName, int filter, unsigned int color);
+    void SetColorFilter(gameswf::character* character, int filter, unsigned int color);
+    void SetColorTransform(const char* characterName, unsigned int multiply, unsigned int add);
+    void SetColorTransform(gameswf::character* character, unsigned int multiply, unsigned int add);
     void SetText(const char* characterName, const char* text, bool option);
     void SetText(gameswf::character* character, const char* text, bool option);
     void FormatText(const char* characterName, const char* format, ...);
