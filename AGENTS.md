@@ -125,13 +125,144 @@ python3 tools/progress.py
   game data and cannot build, so the build result you report is taken on
   trust: report it exactly.
 
-## If you hand work to other agents
+# Gangstar West Coast Hustle Decompilation
 
-Use the work-selection priorities above, smaller first within a priority, and
-the cheapest model that can do the job. Each worker gets
-its own branch and its own functions, stops after a bounded effort, and hands
-its best attempt up a tier. There is no queue or claim file: the assembly
-files themselves are the queue, and a function whose assembly file is gone is
-claimed.
+## Agent Structure
 
-Only start a wave of workers when a human has asked for one.
+The main Codex agent is the sole coordinator.
+
+Use exactly four decompilation sub-agents when at least
+four independent functions are available.
+
+The main agent must:
+- Identify functions requiring decompilation.
+- Assign distinct functions to sub-agents.
+- Maintain a central function ownership registry.
+- Review all completed work.
+- Handle integration, commits, and pull requests.
+- Assign new work as agents become available.
+
+Sub-agents must not spawn additional agents.
+
+## Function Ownership
+
+Each function may have only one assigned agent.
+
+Before assigning work:
+1. Identify the function by binary, address, and name.
+2. Check whether another agent owns the function.
+3. Record the assignment in the ownership registry.
+4. Give the agent an explicit scope.
+
+Agents must never:
+- Work on another agent's assigned function.
+- Modify code owned by another active agent.
+- Claim an already assigned function.
+- Expand their scope without coordinator approval.
+
+If an agent discovers that another function requires
+changes, it must report this to the main agent.
+
+The main agent decides whether to assign that function
+to an available agent.
+
+Function ownership is released only after the main
+agent has reviewed and accepted the work.
+
+## Parallel Decompilation
+
+Keep four agents working concurrently whenever enough
+independent work is available.
+
+Each agent should:
+1. Analyze its assigned function.
+2. Reconstruct the function in C/C++.
+3. Preserve original behavior and ABI compatibility.
+4. Compare against the original ARM machine code.
+5. Test or validate the reconstruction.
+6. Report completion to the main agent.
+
+Agents must not wait for other agents unless there
+is a genuine dependency.
+
+When an agent finishes, the main agent should review
+its work and assign another available function.
+
+## Function Registry
+
+Maintain a file named DECOMP_TASKS.md.
+
+Track:
+- Binary/library name
+- Function address
+- Function name
+- Assigned agent
+- Status
+- Matching percentage
+- Relevant source files
+
+Statuses:
+- AVAILABLE
+- ASSIGNED
+- IN_PROGRESS
+- REVIEW
+- COMPLETED
+- BLOCKED
+
+Only the main agent may modify ownership assignments.
+
+## Pull Request Restrictions
+
+Sub-agents are strictly prohibited from:
+- Creating pull requests.
+- Merging pull requests.
+- Pushing branches.
+- Committing changes.
+- Running gh pr create.
+- Running gh pr merge.
+
+Sub-agents must submit their results to the main
+Codex agent for review.
+
+Only the main Codex agent may:
+1. Review completed decompilation work.
+2. Verify function ownership and changes.
+3. Run applicable builds and tests.
+4. Integrate approved changes.
+5. Create commits.
+6. Push branches.
+7. Create pull requests.
+
+The main agent must not create a PR until it has
+reviewed the relevant work.
+
+## Decompilation Quality
+
+Prioritize accurate reconstruction of the original
+Gangstar West Coast Hustle code.
+
+Do not invent implementations to increase the
+decompilation percentage.
+
+Preserve:
+- Original control flow
+- Function signatures
+- Data structures
+- Calling conventions
+- Memory layouts
+- Original game behavior
+
+Track matching progress separately from Windows
+porting progress.
+
+Do not play through the game as part of decompilation.
+Use static analysis, compilation, and targeted tests.
+
+## Shared Files
+
+Avoid simultaneous edits to shared headers, build
+scripts, or global structures.
+
+If multiple functions require changes to the same
+shared file, the main agent must coordinate those
+changes or perform the integration itself.
