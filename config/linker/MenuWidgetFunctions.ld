@@ -1,5 +1,6 @@
 SECTIONS
 {
+    .widget_help_text_id 0x002ebf30 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Help9SetTextIdEi) }
     .widget_game_setting_selection 0x002ec270 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting13ShowSelectionEv) }
     .widget_game_setting_ok 0x002ed5cc : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting12ShowButtonOkEv) }
     .widget_game_setting_left_button 0x0041a750 : { *ai-startup-menuwidget.o(.rodata.gameSettingLeftButton) }

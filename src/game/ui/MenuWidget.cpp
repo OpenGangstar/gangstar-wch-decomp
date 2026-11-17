@@ -280,6 +280,7 @@ private:
 class Help : public MenuWidget {
 public:
     Help();
+    void SetTextId(int id);
     virtual void UpdateLocalization();
 
 private:
@@ -837,6 +838,11 @@ static const char widgetLanguageName[] = "widgetLanguage";
 static const char helpTextPath[] = "widgetHelp.text";
 static const char gameSettingTitlePath[] = "widgetGameSetting.txtTitle";
 static const char gameSettingValuePath[] = "widgetGameSetting.txtValue";
+
+void Widgets::Help::SetTextId(int id)
+{
+    textId = id;
+}
 
 void Widgets::Help::UpdateLocalization()
 {
