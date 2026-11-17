@@ -35,6 +35,7 @@ struct TurboSoundSettings;
 class CarSounds {
 public:
     CarSounds();
+    ~CarSounds();
     void Update(CarSoundParameters* parameters);
     void RemoveTurboSounds(TurboSoundSettings* settings);
     static void Clean();
