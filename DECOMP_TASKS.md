@@ -511,10 +511,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003ee885 | RenderFX destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ec961 | RenderFX::Initialize | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0030b311 | Vehicle translation-unit initializer | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | camera_tap | REVIEW | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | lock_init | ASSIGNED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003edde5 | RenderFX::Load | camera_tap | ASSIGNED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | vehicle_side | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edde5 | RenderFX::Load | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | lock_init | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | vehicle_side | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | camera_tap | ASSIGNED | — | src/game/rendering/menufx.cpp |

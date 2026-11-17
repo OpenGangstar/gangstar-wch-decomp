@@ -5,6 +5,7 @@ namespace irr { namespace video { class IVideoDriver; class ITexture; } }
 
 namespace gameswf {
 class filter;
+class as_value;
 class character;
 class render_state;
 // Enumerator names are still unknown.
@@ -163,6 +164,9 @@ public:
     void GotoFrame(const char* characterName, int frame, bool play);
     void SetEnabled(gameswf::character* character, bool enabled);
     void SetEnabled(const char* characterName, bool enabled);
+    void SetTexture(const char* name, irr::video::ITexture* texture);
+    void SetMember(const char* characterName, const char* member, int value);
+    void SetMember(const char* characterName, const char* member, gameswf::as_value& value);
     void SetVisible(const char* characterName, bool visible);
     bool RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context);
     bool RegisterDisplayCallback(gameswf::character* character, void (*callback)(gameswf::render_state&, void*), void* context);

@@ -174,6 +174,7 @@ private:
 class as_value {
 public:
     explicit as_value(const char* value);
+    explicit as_value(int value);
     ~as_value() __attribute__((long_call));
 
 private:
@@ -1191,4 +1192,93 @@ bool RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
     if (glyphs.size > 0)
         return PreloadGlyphs(glyphs.elements, glyphs.size, fontName, size, bold, italic, filter);
     return false;
+}
+
+namespace gameswf {
+
+class bitmap_info;
+
+namespace render {
+bitmap_info* create_bitmap_info_texture(irr::video::ITexture* texture);
+}
+
+class character_def {
+    unsigned char storage[32];
+};
+
+class bitmap_character : public character_def {
+public:
+    bitmap_character(player* owner, bitmap_info* bitmap) __attribute__((long_call));
+
+private:
+    bitmap_info* bitmap;
+};
+
+struct player_weak_ptr {
+    struct proxy_ptr {
+        MovieWeakReference* value;
+
+        void clear()
+        {
+            if (value) {
+                MovieWeakReference* previous = value;
+                if (--previous->references == 0)
+                    delete previous;
+                value = 0;
+            }
+        }
+    };
+
+    mutable proxy_ptr proxy;
+    mutable player* owner;
+
+    void check_proxy() const
+    {
+        if (!owner)
+            return;
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(proxy.value) +
+            __builtin_offsetof(MovieWeakReference, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
+            proxy.clear();
+            owner = 0;
+        }
+    }
+
+    player* get() const
+    {
+        check_proxy();
+        return owner;
+    }
+};
+
+struct character_texture_fields {
+    struct VTable {
+        void (*beforeReplaceMe[40])();
+        void (*replaceMe)(character*, character_def*);
+    };
+
+    const VTable* methods;
+    unsigned char unknown4[108];
+    player_weak_ptr playerReference;
+};
+
+} // namespace gameswf
+
+void RenderFX::SetTexture(const char* name, irr::video::ITexture* texture)
+{
+    gameswf::character* character = Find(name);
+    if (!character)
+        return;
+    gameswf::bitmap_info* bitmap = gameswf::render::create_bitmap_info_texture(texture);
+    gameswf::character_texture_fields& fields =
+        *reinterpret_cast<gameswf::character_texture_fields*>(character);
+    gameswf::player* owner = fields.playerReference.get();
+    gameswf::bitmap_character* replacement = new (swf::DefaultMemHint) gameswf::bitmap_character(owner, bitmap);
+    fields.methods->replaceMe(character, replacement);
+}
+
+void RenderFX::SetMember(const char* characterName, const char* member, int value)
+{
+    gameswf::as_value memberValue(value);
+    SetMember(characterName, member, memberValue);
 }
