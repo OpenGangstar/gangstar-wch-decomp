@@ -78,3 +78,18 @@ static void _GLOBAL__I__ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10Transit
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "NPCController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+class CivPassiveController : public NPCController {
+public:
+    virtual ~CivPassiveController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition);
+};
+CivPassiveController::~CivPassiveController()
+{
+    Application::GetInstance()->GetEventManager()->detach(16, this);
+    Application::GetInstance()->GetEventManager()->detach(22, this);
+}

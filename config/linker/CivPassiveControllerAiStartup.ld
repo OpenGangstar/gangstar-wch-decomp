@@ -15,6 +15,9 @@ _ZN39retail_civpassivecontroller_transitions11guard_transE = 0x00430b4c;
 _ZN39retail_civpassivecontroller_transitions22scripted_vehicle_transE = 0x00430bf4;
 SECTIONS
 {
+    .civ_passive_dtor 0x00340c34 : { *ai-startup-civpassivecontroller.o(.text._ZN20CivPassiveControllerD1Ev .text._ZN20CivPassiveControllerD2Ev) }
+    .civ_passive_delete 0x00340bf0 : { *ai-startup-civpassivecontroller.o(.text._ZN20CivPassiveControllerD0Ev) }
+    .civ_passive_vtable 0x004acfb0 : { *ai-startup-civpassivecontroller.o(.data.rel.ro._ZTV20CivPassiveController) }
     .ai_startup_function_0 0x00340b3c : { *ai-startup-civpassivecontroller.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00340d68 : { *ai-startup-civpassivecontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00340eac : { *ai-startup-civpassivecontroller.o(.text._GLOBAL__I__ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE) }

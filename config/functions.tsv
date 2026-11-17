@@ -12191,9 +12191,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00340b29	0x14	CivAgressiveController.cpp	game	ai	matched	_GLOBAL__I__ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE	_GLOBAL__I__ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE
 0x00340b3d	0x30	CivPassiveController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00340b6d	0x84	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	CivPassiveController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
-0x00340bf1	0x44	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerD0Ev	CivPassiveController::~CivPassiveController()
-0x00340c35	0x40	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerD1Ev	CivPassiveController::~CivPassiveController()
-0x00340c35	0x40	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerD2Ev	CivPassiveController::~CivPassiveController()
+0x00340bf1	0x44	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerD0Ev	CivPassiveController::~CivPassiveController()
+0x00340c35	0x40	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerD1Ev	CivPassiveController::~CivPassiveController()
+0x00340c35	0x40	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerD2Ev	CivPassiveController::~CivPassiveController()
 0x00340c75	0x60	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	CivPassiveController::CivPassiveController(NPC*, gameloft::ai::Transition const&, gameloft::ai::StateID)
 0x00340c75	0x60	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	CivPassiveController::CivPassiveController(NPC*, gameloft::ai::Transition const&, gameloft::ai::StateID)
 0x00340cd5	0x94	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveController7onEventEPK6IEventPK12EventManager	CivPassiveController::onEvent(IEvent const*, EventManager const*)
