@@ -21,6 +21,7 @@
 #include "PlayerTest.h"
 #include "../ai/NPC.h"
 #include "PhysicAttributes.h"
+#include "PhysicInfo.h"
 #include "../core/Physics.h"
 #include "../app/Application.h"
 #include "../input/CControlManager.h"
@@ -1045,5 +1046,37 @@ void Character::switchAnimation()
         nextAnimation = -1;
     } else if (!switchMoveAnimation()) {
         switchCombatAnimation();
+    }
+}
+
+void Character::updatePosition(irr::core::quaternion rotation)
+{
+    using irr::core::quaternion;
+    using irr::core::vector3d;
+
+    if (collisionBody) {
+        const float x = 100.0f * collisionBody->GetXForm().position.x;
+        const float y = 100.0f * collisionBody->GetXForm().position.y;
+        LevelObject::SetPosition(vector3d<float>(x, y, GetPosition().Z));
+    }
+
+    sceneNode->setRotation(rotation);
+    sceneNode->setPosition(GetPosition());
+
+    vector3d<float> shadowPosition = GetPosition();
+    shadowPosition.Z = shadowBaseHeight + 3.0f;
+    shadowNode->setPosition(shadowPosition);
+
+    PhysicAttributes* physics = getPhysicAttributes();
+    const PhysicInfo* info = physics->info;
+    if (info->unknown60) {
+        const vector3d<float> normal = info->vector48;
+        quaternion shadowRotation;
+        const float dot = normal.dotProduct(vector3d<float>(0.0f, 0.0f, 1.0f));
+        if (dot <= -1.0f)
+            shadowRotation.fromAngleAxis(3.14159265358979323846f, vector3d<float>(0.0f, 0.0f, 1.0f));
+        else
+            shadowRotation.rotationFromTo(physics->info->vector48, vector3d<float>(0.0f, 0.0f, 1.0f));
+        shadowNode->setRotation(shadowRotation);
     }
 }

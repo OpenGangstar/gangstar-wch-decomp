@@ -28,6 +28,8 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .player_set_target 0x00301260 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10_SetTargetEP11LevelObjectb) }
+    .player_stop_moving 0x003019c8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10stopMovingEb) }
     .player_car_anim_name 0x00301100 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14getCarAnimNameEPKcb) }
     .player_car_open_clip 0x0041dee8 : { *(.rodata.*carOpenDoor*) }
     .player_car_enter_low_clip 0x0041def8 : { *(.rodata.*carEnterLow*) }

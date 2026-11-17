@@ -49,6 +49,7 @@ public:
     void setFOV(int degrees);
     int getFOV();
     irr::scene::ICameraSceneNode* getCamera() const;
+    int getMode() const { return mode; }
     void debug(irr::video::IVideoDriver*);
     void setSceneCamera(SceneCamera* scene);
     void update(float);

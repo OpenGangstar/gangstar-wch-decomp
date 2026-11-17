@@ -25,6 +25,7 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character14updatePositionEN3irr4core10quaternionE",
         "_ZN9Character11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN9Character7shootedEiP11LevelObject",
         "_ZN9Character4hideEv",

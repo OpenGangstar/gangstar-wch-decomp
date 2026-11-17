@@ -29,6 +29,7 @@
 #include "../core/NativeStrings.h"
 #include "../core/Quaternion.h"
 #include "../core/CameraManager.h"
+#include "../core/Lock.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
 #include "../ui/Shop.h"
@@ -521,4 +522,50 @@ static void _GLOBAL__I__ZN10PlayerTest10switchAnimEv()
 
 inline EvNPCVehicle::~EvNPCVehicle()
 {
+}
+
+void PlayerTest::stopMoving(bool fast)
+{
+    const float speed = fast ? 2.0f : 1.0f;
+    if (static_cast<int>(flags240 << 29) < 0) {
+        setAnim(reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this))->getSpecificAnimation(198), false, true, false, speed);
+    } else if (static_cast<int>(flags240 << 30) < 0) {
+        setAnim(reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this))->getSpecificAnimation(212), false, true, false, speed);
+    }
+
+    // Use the same movement-mode update as Character::Stop.
+    const int upperFlags = static_cast<int>(flags240) >> 8;
+    const unsigned int preservedFlags = static_cast<unsigned int>(upperFlags) << 8;
+    flags240 = preservedFlags | 1u;
+}
+
+void PlayerTest::_SetTarget(LevelObject* replacement, bool changeCamera)
+{
+    if (target && LevelObject::s_type[target->getObjectType()] == 5) {
+        Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this));
+        static_cast<NPC*>(target)->notifyTargeted(false, character);
+    }
+
+    target = replacement;
+    if (!replacement) {
+        targetLocked = false;
+        lockRequested = false;
+        if (CameraManager::getInstance()->getMode() == 1 ||
+            (changeCamera && !(flags240 & 0xfeu))) {
+            CameraManager* camera = CameraManager::getInstance();
+            Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this));
+            camera->enterMode(0, character, 0.3f, 0);
+        }
+    } else {
+        targetLocked = true;
+        lockUpdatePending = false;
+        if (LevelObject::s_type[replacement->getObjectType()] == 5)
+            static_cast<NPC*>(replacement)->notifyTargeted(
+                true, reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this)));
+        Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this));
+        if (changeCamera)
+            CameraManager::getInstance()->enterMode(1, character, 0.3f, 0);
+        character->goToCombatIdle();
+    }
+    Lock::getInstance()->setTarget(target);
 }

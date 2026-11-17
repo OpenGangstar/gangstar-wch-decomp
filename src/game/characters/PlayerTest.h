@@ -83,6 +83,8 @@ class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
 public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
+    void stopMoving(bool fast);
+    void setAnim(int animation, bool first, bool second, bool third, float speed);
     virtual void Stop();
     virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
 

@@ -13,6 +13,7 @@ __aeabi_fcmpgt = 0x001c419c;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .trail_add_point 0x00348a60 : { *sdk-startup-trail.o(.text._ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b) }
     .trail_last_added_point 0x003484e4 : { *sdk-startup-trail.o(.text._ZN5Trail17SetLastAddedPointEN3irr4core8vector3dIfEE) }
     .trail_segment_width 0x00348488 : { *sdk-startup-trail.o(.text._ZN5Trail15SetSegmentWidthEf) }
     .trail_render 0x0034848c : { *sdk-startup-trail.o(.text._ZN5Trail6RenderEv) }

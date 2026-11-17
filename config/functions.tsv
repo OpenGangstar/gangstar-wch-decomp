@@ -10120,7 +10120,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f3fa5	0x68	Character.cpp	game	characters	matched	_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE	Character::runToLocation(irr::core::vector3d<float> const&)
 0x002f400d	0x50	Character.cpp	game	characters	matched	_ZN9Character14walkToLocationERKN3irr4core8vector3dIfEE	Character::walkToLocation(irr::core::vector3d<float> const&)
 0x002f405d	0x270	Character.cpp	game	characters	pending	_ZN9Character6UpdateEi	Character::Update(int)
-0x002f42cd	0x174	Character.cpp	game	characters	pending	_ZN9Character14updatePositionEN3irr4core10quaternionE	Character::updatePosition(irr::core::quaternion)
+0x002f42cd	0x174	Character.cpp	game	characters	matched	_ZN9Character14updatePositionEN3irr4core10quaternionE	Character::updatePosition(irr::core::quaternion)
 0x002f4441	0x24	Character.cpp	game	characters	pending	_ZN11b2CircleDefD1Ev	b2CircleDef::~b2CircleDef()
 0x002f4465	0x1c8	Character.cpp	game	characters	pending	_ZN9Character10initPhysicEv	Character::initPhysic()
 0x002f462d	0x2c	Character.cpp	game	characters	pending	_ZN11b2CircleDefD0Ev	b2CircleDef::~b2CircleDef()
@@ -10396,7 +10396,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003011e5	0x38	NPC.cpp	game	ai	matched	_ZN3NPC12isTargetableEv	NPC::isTargetable()
 0x0030121c	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
 0x00301231	0x2e	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest10getVehicleEv	PlayerTest::getVehicle() const
-0x00301261	0xf8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_SetTargetEP11LevelObjectb	PlayerTest::_SetTarget(LevelObject*, bool)
+0x00301261	0xf8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10_SetTargetEP11LevelObjectb	PlayerTest::_SetTarget(LevelObject*, bool)
 0x00301359	0x30	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10toggleLockEv	PlayerTest::toggleLock()
 0x00301389	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7addCashEii	PlayerTest::addCash(int, int)
 0x003013bd	0x5c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest15ResetPlayerTestEb	PlayerTest::ResetPlayerTest(bool)
@@ -10423,7 +10423,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030189d	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7subCashEi	PlayerTest::subCash(int)
 0x003018d1	0x3e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest7setAnimEibbbf	PlayerTest::setAnim(int, bool, bool, bool, float)
 0x00301911	0xb8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest11initDrivingEb	PlayerTest::initDriving(bool)
-0x003019c9	0x60	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10stopMovingEb	PlayerTest::stopMoving(bool)
+0x003019c9	0x60	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10stopMovingEb	PlayerTest::stopMoving(bool)
 0x00301a28	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTest4StopEv	non-virtual thunk to PlayerTest::Stop()
 0x00301a3d	0x38	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest4StopEv	PlayerTest::Stop()
 0x00301a75	0x384	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13switchContextENS_8eContextEb	PlayerTest::switchContext(PlayerTest::eContext, bool)
@@ -12533,7 +12533,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00348595	0x5c	Trail.cpp	game	world	matched	_ZN5TrailC1Ev	Trail::Trail()
 0x003485f1	0x144	Trail.cpp	game	world	pending	_ZN5Trail6UpdateEv	Trail::Update()
 0x00348735	0x32c	Trail.cpp	game	world	pending	_ZN5Trail10BuildPointEib	Trail::BuildPoint(int, bool)
-0x00348a61	0x142	Trail.cpp	game	world	pending	_ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b	Trail::AddPoint(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
+0x00348a61	0x142	Trail.cpp	game	world	matched	_ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b	Trail::AddPoint(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
 0x00348ba5	0xd8	Trail.cpp	game	world	matched	_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b	Trail::Update(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
 0x00348c7d	0x6c	Trail.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00348ce9	0x14	Trail.cpp	game	world	matched	_GLOBAL__I__ZN5TrailC2Ev	_GLOBAL__I__ZN5TrailC2Ev
