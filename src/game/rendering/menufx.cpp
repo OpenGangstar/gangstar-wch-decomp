@@ -201,6 +201,20 @@ void log_callback(bool error, const char* text)
     }
 }
 
+class RenderFX::Controller {
+public:
+    ~Controller();
+    void Reset();
+
+    unsigned char prefix[16];
+    gameswf::smart_ptr<gameswf::character> first;
+    gameswf::smart_ptr<gameswf::character> second;
+    gameswf::smart_ptr<gameswf::character> third;
+    gameswf::smart_ptr<gameswf::character> fourth;
+    gameswf::smart_ptr<gameswf::character> fifth;
+    bool enabled;
+};
+
 namespace {
 // Prefix of the gameswf character vtable through display callback registration.
 struct CharacterAnimationMethods {
@@ -268,12 +282,6 @@ struct FlashCharacterRoot {
     bool textBufferingEnabled;
 };
 
-struct ControllerState {
-    unsigned char prefix[0x24];
-    bool enabled;
-    unsigned char padding[3];
-};
-
 struct RenderFXState {
     unsigned char prefix[4];
     gameswf::array<gameswf::character*> matches;
@@ -281,7 +289,7 @@ struct RenderFXState {
     gameswf::player* player;
     gameswf::character* root;
     gameswf::character* context;
-    ControllerState controllers[4];
+    RenderFX::Controller controllers[4];
     int inputBehavior;
     RenderFX::EventListener* listener;
 };
@@ -526,6 +534,19 @@ void RenderFX::FSCommand(const char* command, const char* args)
 void RenderFX::SetEventListener(EventListener* listener)
 {
     reinterpret_cast<RenderFXState*>(this)->listener = listener;
+}
+
+void RenderFX::Controller::Reset()
+{
+    first.set_ref(0);
+    second.set_ref(0);
+    third.set_ref(0);
+    fourth.set_ref(0);
+    fifth.set_ref(0);
+}
+
+RenderFX::Controller::~Controller()
+{
 }
 
 void RenderFX::SetControllerEnabled(int index, bool enabled)
