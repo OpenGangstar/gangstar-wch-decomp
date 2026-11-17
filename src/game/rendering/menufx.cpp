@@ -11,6 +11,8 @@
 #include "RenderFX.h"
 #include "CharacterVisibility.h"
 
+extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list arguments);
+
 namespace {
 // Prefix of the gameswf character vtable through the numeric frame method.
 struct CharacterAnimationMethods {
@@ -117,6 +119,26 @@ void RenderFX::SetVisible(const char* characterName, bool visible)
     gameswf::character* character = Find(characterName);
     if (character)
         setCharacterVisible(character, visible);
+}
+
+static char s_stringBuffer[8192];
+
+void RenderFX::FormatText(const char* characterName, const char* format, ...)
+{
+    __builtin_va_list arguments;
+    __builtin_va_start(arguments, format);
+    vsprintf(s_stringBuffer, format, arguments);
+    __builtin_va_end(arguments);
+    SetText(characterName, s_stringBuffer, false);
+}
+
+void RenderFX::FormatText(gameswf::character* character, const char* format, ...)
+{
+    __builtin_va_list arguments;
+    __builtin_va_start(arguments, format);
+    vsprintf(s_stringBuffer, format, arguments);
+    __builtin_va_end(arguments);
+    SetText(character, s_stringBuffer, false);
 }
 
 void RenderFX::SetFocus(const char* characterName, int flags)
