@@ -105,7 +105,42 @@ extern "C" bool _ZN11MenuManager15enableAsianFontEb(MenuManager* manager, bool e
     return true;
 }
 
+extern "C" char* strcat(char* destination, const char* source);
+
+static const char asianFontStart[] = "<font size=\"90%%\">";
 static const char asianFontFormat[] = "<font size=\"90%%\">%s</font>";
+extern const char asianFontEnd[8] __attribute__((visibility("hidden")));
+static char menuTextFormatBuffer[1024];
+
+extern "C" void _ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz(
+    MenuManager* manager, gameswf::character* character, const char* format, ...)
+{
+    __builtin_va_list arguments;
+    __builtin_va_start(arguments, format);
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    if (fields.asianFont) {
+        menuTextFormatBuffer[0] = 0;
+        strcat(menuTextFormatBuffer, asianFontStart);
+        strcat(menuTextFormatBuffer, format);
+        memcpy(menuTextFormatBuffer + strlen(menuTextFormatBuffer), asianFontEnd, sizeof(asianFontEnd));
+        fields.menuFX->FormatHTML(character, menuTextFormatBuffer, arguments);
+    } else {
+        fields.menuFX->FormatText(character, format, arguments);
+    }
+    __builtin_va_end(arguments);
+}
+
+extern "C" void _ZN11MenuManager16formatMenuFXTextEPKcS1_z(
+    MenuManager* manager, const char* name, const char* format, ...)
+{
+    __builtin_va_list arguments;
+    __builtin_va_start(arguments, format);
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    _ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz(
+        manager, fields.menuFX->Find(name), format, arguments);
+    __builtin_va_end(arguments);
+}
+
 
 static char asianFontTextBuffer[1024];
 
