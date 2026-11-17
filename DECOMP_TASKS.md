@@ -29,6 +29,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | camera_tap | REVIEW | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00335849 | VehicleCamera::update | vehicle_side | REVIEW | — | src/game/vehicles/VehicleCamera.cpp |
-| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | ASSIGNED | — | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | REVIEW | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c49 | GSWeaponShopMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
-| libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | vehicle_side | REVIEW | — | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | ASSIGNED | — | src/game/core/CameraManager.cpp |
+| libsanangeles.so | 0x00301a3d | PlayerTest::Stop | lock_init | ASSIGNED | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00333789 | FollowCamera::init | vehicle_side | REVIEW | — | src/game/core/FollowCamera.cpp |

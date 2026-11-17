@@ -29,6 +29,7 @@
         "_ZN12FollowCameraC1EP9Character",
         "_ZN12FollowCameraC2EP9Character",
         "_ZN12FollowCamera12updateAnglesEii",
+        "_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
         "_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE",
         "_ZN12FollowCameraD1Ev",
         "_ZN12FollowCameraD2Ev",

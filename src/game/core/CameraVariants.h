@@ -26,6 +26,9 @@ public:
     virtual void update(float elapsed);
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
+    void updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
+        float distance, irr::core::vector3d<float>& yawAxis,
+        irr::core::vector3d<float>& pitchAxis, float maximumPitch, float minimumPitch);
     unsigned char unknown28[8];
     PhysicAttributes* physics;
     unsigned char unknown40[4];
