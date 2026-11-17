@@ -25,6 +25,10 @@
     "source": "src/game/vehicles/CarSounds.cpp",
     "linker_script": "config/linker/CarSoundCallbacks.ld",
     "functions": [
+        "_ZN9CarSoundsC1Ev",
+        "_ZN9CarSoundsC2Ev",
+        "_ZN9CarSounds13StopAllSoundsEv",
+        "_ZN9CarSounds17UpdateRumbleSoundEv",
         "_ZN9CarSounds17InterpolateLinearEiiiff",
         "_ZN9CarSounds20InterpolateFlatEndedEiiiff",
         "_ZN9CarSounds24SetRPMFilterCoefficientsEf",
@@ -128,10 +132,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN9CarSounds13StopAllSoundsEv",
         "_ZN9CarSounds21UpdateOffEngineSoundsEv",
         "_ZN9CarSounds20UpdateOnEngineSoundsEv",
-        "_ZN9CarSounds17UpdateRumbleSoundEv",
         "_ZN9CarSounds17UpdateTurboSoundsEv"
     ]
 }

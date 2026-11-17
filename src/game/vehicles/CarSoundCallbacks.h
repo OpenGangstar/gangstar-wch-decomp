@@ -34,6 +34,7 @@ struct TurboSoundSettings;
 // Observed CarSounds prefix.
 class CarSounds {
 public:
+    CarSounds();
     void Update(CarSoundParameters* parameters);
     void RemoveTurboSounds(TurboSoundSettings* settings);
     static void Clean();
@@ -58,7 +59,8 @@ private:
     static int s_onOffCrossFadeDuration;
 
     int soundMode;
-    unsigned char unknown4[4];
+    bool engineSoundsEnabled;
+    unsigned char unknown5[3];
     int load;
     int previousLoad;
     unsigned char unknown16[4];
@@ -76,13 +78,35 @@ private:
     float filteredRpm;
     float rpmInputCoefficient;
     float rpmFeedbackCoefficient;
-    unsigned char unknown72[28];
+    int onEngineCount;
+    int* onEngineIds;
+    int* onEngineChannels;
+    unsigned char unknown84[4];
+    void* engineArray88;
+    void* engineArray92;
+    void* engineArray96;
     SoundFade* onFade;
-    unsigned char unknown104[32];
+    unsigned char unknown104[4];
+    int offEngineCount;
+    int* offEngineIds;
+    int* offEngineChannels;
+    unsigned char unknown120[4];
+    void* engineArray124;
+    void* engineArray128;
+    void* engineArray132;
     SoundFade* offFade;
     unsigned char unknown140[4];
     bool rumbleEnabled;
-    unsigned char unknown145[31];
+    bool rumbleOffThrottleOnly;
+    bool rumbleVariablePitch;
+    unsigned char unknown147;
+    int rumbleSoundId;
+    int rumbleChannel;
+    float rumbleVolume;
+    int rumbleReferenceRpm;
+    int rumbleRampEndRpm;
+    int rumbleMinimumRpm;
+    int rumbleMaximumRpm;
     bool startupEnabled;
     bool startupTriggered;
     unsigned char unknown178[2];
@@ -101,6 +125,16 @@ private:
     bool useRpmCopyA;
     unsigned char unknown217[3];
     int secondaryTurboRpm;
+    int turboSoundId;
+    int turboChannel;
+    unsigned char unknown232[20];
+    int secondaryTurboSoundId;
+    int secondaryTurboChannel;
+    unsigned char unknown260[12];
+    int auxiliaryTurboCount;
+    int* auxiliaryTurboIds;
+    int* auxiliaryTurboChannels;
+    void* turboArray284;
 };
 
 #endif

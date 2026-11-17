@@ -72,6 +72,95 @@ void CarSounds::RemoveTurboSounds(TurboSoundSettings*)
     turboEnabled = false;
 }
 
+CarSounds::CarSounds()
+{
+    engineArray128 = 0;
+    engineArray132 = 0;
+    auxiliaryTurboIds = 0;
+    auxiliaryTurboChannels = 0;
+    engineSoundsEnabled = false;
+    soundMode = 0;
+    onEngineIds = 0;
+    onEngineChannels = 0;
+    engineArray88 = 0;
+    engineArray92 = 0;
+    engineArray96 = 0;
+    offEngineIds = 0;
+    offEngineChannels = 0;
+    engineArray124 = 0;
+    turboArray284 = 0;
+}
+
+void CarSounds::StopAllSounds()
+{
+    if (engineSoundsEnabled) {
+        for (int i = 0; i < onEngineCount; ++i) {
+            if (onEngineChannels[i] >= 0) {
+                s_SoundCallbacks.stop(onEngineIds[i], onEngineChannels[i]);
+                onEngineChannels[i] = -1;
+            }
+        }
+        for (int i = 0; i < offEngineCount; ++i) {
+            if (offEngineChannels[i] >= 0) {
+                s_SoundCallbacks.stop(offEngineIds[i], offEngineChannels[i]);
+                offEngineChannels[i] = -1;
+            }
+        }
+    }
+    if (startupEnabled && startupChannel >= 0) {
+        s_SoundCallbacks.stop(startupSound, startupChannel);
+        startupChannel = -1;
+    }
+    if (rumbleEnabled && rumbleChannel >= 0) {
+        s_SoundCallbacks.stop(rumbleSoundId, rumbleChannel);
+        rumbleChannel = -1;
+    }
+    if (clutchEnabled && clutchChannel >= 0) {
+        s_SoundCallbacks.stop(clutchSoundId, clutchChannel);
+        clutchChannel = -1;
+    }
+    if (turboEnabled) {
+        if (turboChannel >= 0) {
+            s_SoundCallbacks.stop(turboSoundId, turboChannel);
+            turboChannel = -1;
+        }
+        if (secondaryTurboChannel >= 0) {
+            s_SoundCallbacks.stop(secondaryTurboSoundId, secondaryTurboChannel);
+            secondaryTurboChannel = -1;
+        }
+        for (int i = 0; i < auxiliaryTurboCount; ++i) {
+            if (auxiliaryTurboChannels[i] >= 0) {
+                s_SoundCallbacks.stop(auxiliaryTurboIds[i], auxiliaryTurboChannels[i]);
+                auxiliaryTurboChannels[i] = -1;
+            }
+        }
+    }
+}
+
+void CarSounds::UpdateRumbleSound()
+{
+    if ((rumbleOffThrottleOnly && load > 0) || rpm <= rumbleMinimumRpm || rpm >= rumbleMaximumRpm) {
+        s_SoundCallbacks.stop(rumbleSoundId, rumbleChannel);
+        rumbleChannel = -1;
+        return;
+    }
+
+    const float fullVolume = masterVolume * rumbleVolume;
+    const float volume = rpm <= rumbleRampEndRpm
+        ? InterpolateLinear(rumbleMinimumRpm, rumbleRampEndRpm, rpm, 0.0f, fullVolume)
+        : fullVolume;
+
+    float pitch = 1.0f;
+    if (rumbleVariablePitch)
+        pitch = static_cast<float>(rpm) / static_cast<float>(rumbleReferenceRpm);
+    if (!s_SoundCallbacks.isSoundPlaying(rumbleSoundId, rumbleChannel)) {
+        rumbleChannel = s_SoundCallbacks.play(rumbleSoundId, true, volume, pitch);
+    } else {
+        s_SoundCallbacks.setVolume(rumbleSoundId, rumbleChannel, volume);
+        s_SoundCallbacks.setPitch(rumbleSoundId, rumbleChannel, pitch);
+    }
+}
+
 void SoundFade::StartFade(int state)
 {
     if (remainingFrames == 0) {
