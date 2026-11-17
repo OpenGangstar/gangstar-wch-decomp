@@ -25,18 +25,7 @@ private:
         void** parameters;
         int unknown12;
     };
-    struct Pool {
-        Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
-        char* name;
-        irr::collada::CColladaFactory* factory;
-        int size;
-        int unknown12;
-        int unknown16;
-        int unknown20;
-        Node** nodesBegin;
-        Node** nodesEnd;
-        Node** nodesCapacity;
-    };
+    struct Pool;
     struct PoolIndexLink {
         PoolIndexLink() : color(false), parent(0), left(this), right(this) {}
         bool color;

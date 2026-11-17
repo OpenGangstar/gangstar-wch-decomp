@@ -35,6 +35,8 @@
         "_ZN16SceneNodeManager4NodeC2EPN3irr5scene10ISceneNodeE",
         "_ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi",
         "_ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi",
+        "_ZN16SceneNodeManager4PoolD1Ev",
+        "_ZN16SceneNodeManager4PoolD2Ev",
         "_ZN16SceneNodeManagerC1Ev",
         "_ZN16SceneNodeManagerC2Ev",
         {
