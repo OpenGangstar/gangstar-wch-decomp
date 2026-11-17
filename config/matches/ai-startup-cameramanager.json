@@ -25,6 +25,7 @@
     "source": "src/game/core/CameraManager.cpp",
     "linker_script": "config/linker/CameraManagerAiStartup.ld",
     "functions": [
+        "_ZN13CameraManager19processTouchReleaseEv",
         "_ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE",
         "_ZN13CameraManager12processTouchEl",
         "_ZN13CameraManager14updateUpVectorEf",
@@ -62,6 +63,7 @@
         }
     ],
     "sections": [
+        ".manager_touch_release_log",
         ".manager_vtable",
         ".manager_mode_table",
         ".ai_startup_function_0",
@@ -76,7 +78,12 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb",
-        "_ZN13CameraManager19processTouchReleaseEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN10PlayerTest10_GetTargetEv",
+        "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
+        "_ZN4Lock11getInstanceEv",
+        "_ZN4Lock9setTargetEP11LevelObject",
+        "_ZN7Vehicle11getVelDirecEv",
         "_ZN11MenuManager11getInstanceEv",
         "_ZNK11MenuManager15consumedCursorsEv",
         "_ZN13ScriptManager11getInstanceEv",
