@@ -42,6 +42,10 @@ SECTIONS
     .player_marker_type 0x00300d7c : { *ai-startup-playertest.o(.text._ZN10PlayerTest13getMarkerTypeEv) }
     .player_hide_mesh 0x00300d84 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8hideMeshEv) }
     .player_show_mesh 0x00301594 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8showMeshEv) }
+    .player_run_thunk 0x003014d8 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest13runToLocationERKN3irr4core8vector3dIfEE) }
+    .player_run 0x003014ec : { *ai-startup-playertest.o(.text._ZN10PlayerTest13runToLocationERKN3irr4core8vector3dIfEE) }
+    .player_walk_thunk 0x00301520 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE) }
+    .player_walk 0x00301534 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE) }
     .player_hide_anims 0x00300da4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12hideAllAnimsEv) }
     .player_restart_anim 0x003010d4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest20playCurAnimFromStartEv) }
     .player_add_cash 0x00301388 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7addCashEii) }

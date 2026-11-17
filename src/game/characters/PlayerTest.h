@@ -31,7 +31,7 @@ public:
     virtual void unknown18();
     virtual int getMaxHealth() const;
     virtual int getHealth() const;
-    virtual void unknown21();
+    virtual bool isDead();
     virtual void unknown22();
     virtual void unknown23();
     virtual void unknown24();
@@ -59,7 +59,9 @@ public:
     virtual void unknown46();
     virtual Vehicle* getVehicle() const;
     virtual void unknown48(); virtual void unknown49(); virtual void unknown50();
-    virtual void unknown51(); virtual void unknown52(); virtual void unknown53();
+    virtual void unknown51();
+    virtual void walkToLocation(const irr::core::vector3d<float>& point);
+    virtual void runToLocation(const irr::core::vector3d<float>& point);
     virtual Weapon* getWeapon() const;
     virtual void SetTarget(LevelObject* target);
 };
@@ -75,6 +77,9 @@ public:
 };
 class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
 public:
+    // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
+    virtual ~PlayerTest();
+
     // Reconstructed inline armor access; these names claim no retail symbols.
     int getContextArmor() const { return contextValues[contextWord]; }
     void setContextArmor(int amount) { contextValues[contextWord] = amount; }
@@ -109,6 +114,8 @@ public:
     void addCurrentJumpDistance(float distance);
     void switchContext(eContext context, bool flag);
     void switchWeapon(bool unarmed);
+    virtual void walkToLocation(const irr::core::vector3d<float>& point);
+    virtual void runToLocation(const irr::core::vector3d<float>& point);
     void lockSwitchWeapon();
     void unlockSwitchWeapon();
     void Respawn();
