@@ -270,6 +270,18 @@ Weapon* PlayerTest::getWeapon() const
     return Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();
 }
 
+void PlayerTest::justStoleCar(Vehicle* car)
+{
+    if (!car)
+        return;
+    if (!car->getHasBeenStolen() && !car->getName() && !(car->flags344 & 0x10000u)) {
+        AchievementManager* achievements = AchievementManager::s_achievementManager;
+        achievements->recordCarStolen(car->getUniqueId());
+    }
+    car->setHasBeenStolen();
+    car->resetPreviousPos();
+}
+
 void PlayerTest::subCash(int amount)
 {
     if (richAsCroesusEnabled && amount >= 0)

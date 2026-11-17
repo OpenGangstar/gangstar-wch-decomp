@@ -147,6 +147,7 @@ private:
     void setWheelVisibility(bool visible);
     friend class Race;
     friend class Character;
+    friend class PlayerTest;
     friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
