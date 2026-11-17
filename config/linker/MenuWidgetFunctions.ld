@@ -1,5 +1,10 @@
 SECTIONS
 {
+    .widget_ig_menu_title_text 0x002ebe8c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu12SetTitleTextEi) }
+    .widget_ig_menu_back_button_text 0x002ebe90 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu17SetBackButtonTextEi) }
+    .widget_volumes_set_playlist 0x002ebf10 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes11SetPlaylistEi) }
+    .widget_corruption_set_wanted_level 0x002ebf24 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Corruption14SetWantedLevelEi) }
+    .widget_volumes_playlist 0x004b53a4 : { *ai-startup-menuwidget.o(.data._ZN7Widgets7Volumes10s_playlistE) }
     .widget_set_listener 0x002ebe48 : { *ai-startup-menuwidget.o(.text._ZN10MenuWidget11SetListenerEP9MenuState) }
     .widget_arrows_set_page_count 0x002ebe9c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Arrows12SetPageCountEiib) }
     .widget_title_set_icon 0x002ecbdc : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Title7SetIconEPKc) }
