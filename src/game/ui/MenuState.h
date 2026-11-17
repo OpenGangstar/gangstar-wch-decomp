@@ -18,6 +18,7 @@ public:
     virtual void SetFocusDefault();
     virtual void PushMenu(const char* name);
     virtual void SwitchMenu(const char* name);
+    virtual void PopMenu();
     State* GetState(const char* name);
     void RegisterState(State* state, const char* characterName);
     void RegisterStates(State** states, int count);
@@ -27,6 +28,13 @@ public:
 
 private:
     void SetMenu(const char* name, bool push);
+
+    State* topState()
+    {
+        int count = stateStack.size;
+        --count;
+        return stateStack.elements[count];
+    }
 
     gameswf::array<State*> registeredStates;
     unsigned char beforeStack[4];

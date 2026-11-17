@@ -66,6 +66,8 @@ SECTIONS
     .renderfx_missing_menu_format 0x0044de28 : { *renderfx-animation.o(.rodata.missingMenuFormat) }
     .renderfx_menu_register_states 0x003ee020 : { *renderfx-animation.o(.text._ZN6MenuFX14RegisterStatesEPPNS_5StateEi) }
     .renderfx_menu_register_state 0x003edfb8 : { *renderfx-animation.o(.text._ZN6MenuFX13RegisterStateEPNS_5StateEPKc) }
+    .renderfx_pop_menu 0x003ef374 : { *renderfx-animation.o(.text._ZN6MenuFX7PopMenuEv) }
+    .renderfx_focus_in_animation 0x0044de7c : { *renderfx-animation.o(.rodata.focusInAnimation) }
     .renderfx_menu_default_focus 0x003ef4b8 : { *renderfx-animation.o(.text._ZN6MenuFX15SetFocusDefaultEv) }
     .renderfx_reset_focus 0x003ef364 : { *renderfx-animation.o(.text._ZN8RenderFX10ResetFocusEi) }
     .widget_hide_animation 0x0041aa74 : { *renderfx-animation.o(.rodata.widgetHideAnimation) }

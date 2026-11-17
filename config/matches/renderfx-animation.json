@@ -29,6 +29,7 @@
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
         "_ZN6MenuFX7SetMenuEPKcb",
+        "_ZN6MenuFX7PopMenuEv",
         "_ZN6MenuFX15SetFocusDefaultEv",
         "_ZN8RenderFX10ResetFocusEi",
         "_ZN6MenuFX8GetStateEPKc",
