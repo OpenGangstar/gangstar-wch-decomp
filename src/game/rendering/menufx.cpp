@@ -145,6 +145,43 @@ void RenderFX::SetVisible(const char* characterName, bool visible)
         setCharacterVisible(character, visible);
 }
 
+bool RenderFX::RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context)
+{
+    return RegisterDisplayCallback(Find(characterName), callback, context);
+}
+
+bool RenderFX::IsAnimOver(const char* characterName)
+{
+    gameswf::character* character = Find(characterName);
+    return character ? IsAnimOver(character) : 0;
+}
+
+int RenderFX::GetFrameCount(const char* characterName)
+{
+    gameswf::character* character = Find(characterName);
+    return character ? GetFrameCount(character) : 0;
+}
+
+const char* RenderFX::GetText(const char* characterName)
+{
+    return GetText(Find(characterName));
+}
+
+void RenderFX::SetPosition(const char* characterName, int x, int y)
+{
+    SetPosition(Find(characterName), x, y);
+}
+
+void RenderFX::SetColorFilter(const char* characterName, int filter, unsigned int color)
+{
+    SetColorFilter(Find(characterName), filter, color);
+}
+
+void RenderFX::SetColorTransform(const char* characterName, unsigned int multiply, unsigned int add)
+{
+    SetColorTransform(Find(characterName), multiply, add);
+}
+
 void RenderFX::SetText(gameswf::character* character, const char* text, bool option)
 {
     if (character && animationMethods(character).is(character, 30)) {
