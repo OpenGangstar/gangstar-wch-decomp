@@ -11727,7 +11727,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00332771	0x47c	CameraManager.cpp	game	core	pending	_ZN13CameraManager6updateEf	CameraManager::update(float)
 0x00332bf1	0x104	CameraManager.cpp	game	core	matched	_ZN13CameraManager12processTouchEl	CameraManager::processTouch(long)
 0x00332cf5	0x2a0	CameraManager.cpp	game	core	pending	_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb	CameraManager::getClickedTarget(irr::core::line3d<float>, bool) const
-0x00332f95	0x100	CameraManager.cpp	game	core	pending	_ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE	CameraManager::tappedTarget(irr::core::position2d<int> const&, irr::core::vector3d<float> const&) const
+0x00332f95	0x100	CameraManager.cpp	game	core	matched	_ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE	CameraManager::tappedTarget(irr::core::position2d<int> const&, irr::core::vector3d<float> const&) const
 0x00333095	0x184	CameraManager.cpp	game	core	pending	_ZN13CameraManager19processTouchReleaseEv	CameraManager::processTouchRelease()
 0x00333219	0x2	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE	FollowCamera::debug(irr::video::IVideoDriver*)
 0x0033321d	0x74	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera12updateAnglesEii	FollowCamera::updateAngles(int, int)

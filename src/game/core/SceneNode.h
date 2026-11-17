@@ -50,7 +50,12 @@ public:
     virtual void deserializeAttributes(IAttributes*, SAttributeReadWriteOptions*);
 };
 }
-namespace core { template<class T> class irrAllocator; template<class T, class A> class string; }
+namespace core {
+template<class T> class irrAllocator;
+template<class T, class A> class string;
+template<class T> class line3d;
+template<class T> class position2d;
+}
 namespace scene {
 enum E_CULLING_TYPE { EAC_OFF = 0, EAC_BOX = 1, EAC_FRUSTUM_BOX = 2 };
 enum E_OPTION_FLAG { SceneOption1 = 1 };
@@ -194,6 +199,14 @@ public:
     virtual void unknown15(); virtual void unknown16();
     virtual ITimelineController* getTimelineCtrl();
 };
+class ISceneCollisionManager {
+public:
+    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
+    virtual void unknown3();
+    virtual core::line3d<float> getRayFromScreenCoordinates(
+        core::position2d<int> point, ICameraSceneNode* camera);
+};
+
 class ISceneManager {
 public:
     virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
@@ -217,6 +230,14 @@ public:
     virtual void unknown41(); virtual void unknown42(); virtual ICameraSceneNode* getActiveCamera();
     virtual void unknown44(); virtual void unknown45(); virtual void unknown46();
     virtual unsigned int registerNodeForRendering(ISceneNode*, const video::SMaterial*, void*, E_SCENE_NODE_RENDER_PASS);
+    virtual void unknown48(); virtual void unknown49(); virtual void unknown50();
+    virtual void unknown51(); virtual void unknown52(); virtual void unknown53();
+    virtual void unknown54(); virtual void unknown55(); virtual void unknown56();
+    virtual void unknown57(); virtual void unknown58(); virtual void unknown59();
+    virtual void unknown60(); virtual void unknown61(); virtual void unknown62();
+    virtual void unknown63(); virtual void unknown64(); virtual void unknown65();
+    virtual void unknown66();
+    virtual ISceneCollisionManager* getSceneCollisionManager();
 };
 }
 class ITimer {
