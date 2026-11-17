@@ -2,6 +2,8 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-menuwidget/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+sprintf = 0x001c46ac;
+__stack_chk_fail = 0x001c42e0;
 __aeabi_atexit = 0x001c494c;
 _ZN29retail_menuwidget_transitions16civPassive_transE = 0x0041b6c8;
 _ZN29retail_menuwidget_transitions17scriptedNpc_transE = 0x0041b7f4;
