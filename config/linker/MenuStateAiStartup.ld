@@ -25,6 +25,19 @@ SECTIONS
 {
     .tutorial_notify 0x002ea33c : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial6NotifyEPK10MenuWidgeti) }
     .blocking_tutorial_notify 0x002ea3b8 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial6NotifyEPK10MenuWidgeti) }
+    .option_volumes_lost_focus 0x002e8c94 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumes9LostFocusEv) }
+    .menu_state_lost_focus 0x002e9280 : { *ai-startup-menustate.o(.text._ZN9MenuState9LostFocusEv) }
+    .main_menu_lost_focus 0x002e9284 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenu9LostFocusEv) }
+    .service_missions_lost_focus 0x002e92c8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions9LostFocusEv) }
+    .map_lost_focus 0x002e92f4 : { *ai-startup-menustate.o(.text._ZN5Menus3Map9LostFocusEv) }
+    .in_game_menu_lost_focus 0x002e9308 : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenu9LostFocusEv) }
+    .info_achievements_lost_focus 0x002e9334 : { *ai-startup-menustate.o(.text._ZN5Menus16InfoAchievements9LostFocusEv) }
+    .info_help_lost_focus 0x002e9380 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelp9LostFocusEv) }
+    .option_game_settings_lost_focus 0x002e93ac : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettings9LostFocusEv) }
+    .service_corruption_lost_focus 0x002e9408 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruption9LostFocusEv) }
+    .service_car_rental_lost_focus 0x002e9434 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental9LostFocusEv) }
+    .service_weapon_shop_lost_focus 0x002e9460 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop9LostFocusEv) }
+    .achievement_lost_focus 0x002e948c : { *ai-startup-menustate.o(.text._ZN5Menus11Achievement9LostFocusEv) }
     .tutorial_got_focus 0x002e9254 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial8GotFocusEv) }
     .tutorial_lost_focus 0x002e94e4 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial9LostFocusEv) }
     .blocking_tutorial_got_focus 0x002e9228 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial8GotFocusEv) }
@@ -35,6 +48,7 @@ SECTIONS
     .blocking_tutorial_complete_destructor 0x002ea0b0 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorialD1Ev .text._ZN5Menus16BlockingTutorialD2Ev) }
     .blocking_tutorial_vtable 0x004a9680 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16BlockingTutorialE) }
     .menu_manager_get_depth 0x002e465c : { *menu-manager-helpers.o(.text._ZNK11MenuManager8getDepthEv .gnu.linkonce.t._ZNK11MenuManager8getDepthEv) }
+    .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     .main_menu_deleting_destructor 0x002e982c : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD0Ev .gnu.linkonce.t._ZN5Menus8MainMenuD0Ev) }
     .main_menu_complete_destructor 0x002e9854 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD1Ev .gnu.linkonce.t._ZN5Menus8MainMenuD1Ev .text._ZN5Menus8MainMenuD2Ev .gnu.linkonce.t._ZN5Menus8MainMenuD2Ev) }
     .main_menu_vtable 0x004a8fc0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8MainMenuE .gnu.linkonce.d.rel.ro._ZTVN5Menus8MainMenuE) }

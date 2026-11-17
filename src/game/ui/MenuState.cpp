@@ -23,6 +23,8 @@
 extern "C" {
 void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
 void _ZN11MenuManager10clearFocusEv(MenuManager* manager);
+void _ZN11MenuManager17allowCheatsUnlockEb(MenuManager* manager, bool allow);
+void _ZN7Widgets5Title7SetIconEPKc(void* title, const char* icon);
 }
 
 namespace Menus {
@@ -833,6 +835,10 @@ void MenuState::Create()
 {
 }
 
+void MenuState::LostFocus()
+{
+}
+
 namespace {
 struct MenuWidgetTable {
     unsigned char prefix[0x1a4];
@@ -851,6 +857,82 @@ inline void* getWidgetByIndex(int index)
 {
     return getWidgetByIndex(MenuManager::getInstance(), index);
 }
+}
+
+void Menus::OptionVolumes::LostFocus()
+{
+    Options::GotFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(7))->SetListener(0);
+}
+
+void Menus::MainMenu::LostFocus()
+{
+    MenuState::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(0))->SetListener(0);
+}
+
+void Menus::ServiceMissions::LostFocus()
+{
+    MenuState::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(18))->SetListener(0);
+}
+
+void Menus::Map::LostFocus()
+{
+    MenuState::LostFocus();
+    MenuManager::getInstance()->cleanupMap();
+}
+
+void Menus::InGameMenu::LostFocus()
+{
+    MenuState::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(1))->SetListener(0);
+}
+
+void Menus::InfoAchievements::LostFocus()
+{
+    _ZN7Widgets5Title7SetIconEPKc(getWidgetByIndex(15), 0);
+    InGameMenu::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(18))->SetListener(0);
+}
+
+void Menus::InfoHelp::LostFocus()
+{
+    InGameMenu::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(18))->SetListener(0);
+}
+
+void Menus::OptionGameSettings::LostFocus()
+{
+    InGameMenu::LostFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    _ZN11MenuManager17allowCheatsUnlockEb(manager, false);
+    static_cast<MenuWidget*>(getWidgetByIndex(manager, 18))->SetListener(0);
+    static_cast<MenuWidget*>(getWidgetByIndex(manager, 26))->SetListener(0);
+}
+
+void Menus::ServiceCorruption::LostFocus()
+{
+    InGameMenu::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(5))->SetListener(0);
+}
+
+void Menus::ServiceCarRental::LostFocus()
+{
+    InGameMenu::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(18))->SetListener(0);
+}
+
+void Menus::ServiceWeaponShop::LostFocus()
+{
+    InGameMenu::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(18))->SetListener(0);
+}
+
+void Menus::Achievement::LostFocus()
+{
+    MenuState::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(10))->SetListener(0);
 }
 
 void Menus::Tutorial::GotFocus()
