@@ -9,6 +9,7 @@ class MenuWidget;
 class MenuFX : public RenderFX, public RenderFX::EventListener {
 public:
     class State;
+    MenuFX();
     virtual ~MenuFX();
     virtual void Unload();
     virtual void Update(int elapsed, bool render);
@@ -38,8 +39,9 @@ private:
     }
 
     gameswf::array<State*> registeredStates;
-    unsigned char beforeStack[4];
+    bool unknown220;
     gameswf::array<State*> stateStack;
+    bool unknown236;
 };
 
 class MenuFX::State {

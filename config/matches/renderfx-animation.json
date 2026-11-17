@@ -28,6 +28,8 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN6MenuFXC1Ev",
+        "_ZN6MenuFXC2Ev",
         "_ZN8RenderFX4FindEPKc",
         "_ZN8RenderFX9SetCursorEPKci",
         "_ZN8RenderFX16InvokeASCallbackEPKcS1_",
