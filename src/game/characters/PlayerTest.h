@@ -4,6 +4,7 @@
 #include "../core/Array.h"
 
 class Vehicle;
+class b2Body;
 class Weapon;
 class LevelObject;
 class Shop;
@@ -80,6 +81,7 @@ class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
 public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
+    virtual void Stop();
 
     // Reconstructed inline armor access; these names claim no retail symbols.
     int getContextArmor() const { return contextValues[contextWord]; }
@@ -133,7 +135,8 @@ public:
     irr::scene::ISceneNode* sceneNode;
     unsigned char unknown24[156];
     irr::scene::ISceneNode* shadowNode;
-    unsigned char unknown184[8];
+    b2Body* collisionBody;
+    unsigned char unknown188[4];
     Vehicle* vehicle;
     unsigned char unknown196[4];
     Vehicle* lastHitVehicle;

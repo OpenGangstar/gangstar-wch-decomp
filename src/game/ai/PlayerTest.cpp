@@ -22,11 +22,26 @@
 #include "../characters/NPCVehicleEvent.h"
 #include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
+#include "../core/Physics.h"
 #include "../core/SceneNode.h"
 #include "../core/CameraManager.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
 #include "../ui/Shop.h"
+
+void PlayerTest::Stop()
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    character->Character::Stop();
+    if (vehicle)
+        vehicle->Stop();
+
+    b2Body* body = collisionBody;
+    body->linearVelocity.y = 0.0f;
+    body->linearVelocity.x = 0.0f;
+    collisionBody->angularVelocity = 0.0f;
+    _SetTarget(0, false);
+}
 
 class Reward {
 public:

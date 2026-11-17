@@ -25,6 +25,7 @@ _ZdlPv = 0x001c42b0;
 SECTIONS
 {
     .player_just_stole_car 0x00301758 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12justStoleCarEP7Vehicle) }
+    .player_stop 0x00301a3c : { *ai-startup-playertest.o(.text._ZN10PlayerTest4StopEv) }
     .player_closest_shop 0x00301090 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14setClosestShopEP4Shop) }
     .npc_vehicle_base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .npc_vehicle_base_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }

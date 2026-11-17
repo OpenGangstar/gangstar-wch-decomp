@@ -26,6 +26,7 @@
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
         "_ZN10PlayerTest12justStoleCarEP7Vehicle",
+        "_ZN10PlayerTest4StopEv",
         "_ZN10PlayerTest14setClosestShopEP4Shop",
         "_ZN12EvNPCVehicleD0Ev",
         "_ZN12EvNPCVehicleD1Ev",
