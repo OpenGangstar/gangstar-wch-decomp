@@ -309,6 +309,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZNK13StringManager12formatAmountEibb",
+        "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_ZN8RenderFX10FormatTextEPKcS1_z",
         "_ZN11MenuManager13setMenuFXTextEPKcS1_bb",
         "_ZN11Application11GetInstanceEv",

@@ -1,5 +1,10 @@
 SECTIONS
 {
+    .widget_money_localization 0x002edaf0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Money18UpdateLocalizationEv) }
+    .widget_blocking_tutorial_localization 0x002ef8c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BlockingTutorial18UpdateLocalizationEv) }
+    .widget_money_label 0x0041ae58 : { *ai-startup-menuwidget.o(.rodata.widgetMoneyLabel) }
+    .widget_money_amount 0x0041ae74 : { *ai-startup-menuwidget.o(.rodata.widgetMoneyAmount) }
+    .widget_blocking_tutorial_ok_text 0x0041b5b4 : { *ai-startup-menuwidget.o(.rodata.blockingTutorialOkText) }
     .widget_title_text_id 0x002ebe6c : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Title9SetTextIdEi) }
     .widget_title_localization 0x002ec0dc : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Title18UpdateLocalizationEv) }
     .widget_arrows_localization 0x002ecc14 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6Arrows18UpdateLocalizationEv) }
