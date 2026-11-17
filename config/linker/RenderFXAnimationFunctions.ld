@@ -12,6 +12,9 @@ strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
+    .renderfx_initialize_legacy 0x003ec960 : { *renderfx-animation.o(.text._ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE) }
+    .renderfx_initialize_warning 0x0044dcf0 : { *renderfx-animation.o(.rodata.deprecatedInitialize) }
+    .renderfx_preload_glyphs_text 0x003edbd8 : { *renderfx-animation.o(.text._ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE) }
     .renderfx_named_registerdisplaycallback 0x003ee14c : { *renderfx-animation.o(.text._ZN8RenderFX23RegisterDisplayCallbackEPKcPFvRN7gameswf12render_stateEPvES5_) }
     .renderfx_named_isanimover 0x003ee168 : { *renderfx-animation.o(.text._ZN8RenderFX10IsAnimOverEPKc) }
     .renderfx_named_getframecount 0x003ee184 : { *renderfx-animation.o(.text._ZN8RenderFX13GetFrameCountEPKc) }

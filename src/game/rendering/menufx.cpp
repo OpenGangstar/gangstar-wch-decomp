@@ -1142,3 +1142,53 @@ RenderFX::SearchIndex* RenderFX::GetSearchIndex()
     searchIndex.Init(*this);
     return &searchIndex;
 }
+
+static const char deprecatedInitialize[] =
+    "RenderFX::Initialize(irr::video::IVideoDriver* videoDriver) deprecated. "
+    "Use RenderFX::Initialize(InitializationParameters& parameters) instead.\n";
+
+void RenderFX::Initialize(irr::video::IVideoDriver* driver)
+{
+    gameswf::log_msg(deprecatedInitialize);
+    InitializationParameters parameters;
+    parameters.textureLoader = 0;
+    parameters.glyphOption = true;
+    parameters.outlineWidth = 0;
+    parameters.bitmapWidth = 0;
+    parameters.driver = driver;
+    parameters.bitmapHeight = 0;
+    parameters.outlineHeight = 0;
+    Initialize(parameters);
+}
+
+namespace gameswf {
+int decode_next_unicode_character(const char** text);
+
+template <>
+class array<unsigned short> {
+public:
+    array() : elements(0), size(0), capacity(0), unknown12(false) {}
+    ~array() { release_buffer(); }
+    void resize(int size) __attribute__((weak));
+    void release_buffer() __attribute__((weak));
+
+    unsigned short* elements;
+    int size;
+    int capacity;
+    bool unknown12;
+};
+}
+
+bool RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
+                            bool bold, bool italic, gameswf::filter* filter)
+{
+    gameswf::array<unsigned short> glyphs;
+    while (int codePoint = gameswf::decode_next_unicode_character(&text)) {
+        const int index = glyphs.size;
+        glyphs.resize(index + 1);
+        glyphs.elements[index] = codePoint;
+    }
+    if (glyphs.size > 0)
+        return PreloadGlyphs(glyphs.elements, glyphs.size, fontName, size, bold, italic, filter);
+    return false;
+}

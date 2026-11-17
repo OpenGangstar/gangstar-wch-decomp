@@ -4,6 +4,7 @@
 namespace irr { namespace video { class IVideoDriver; class ITexture; } }
 
 namespace gameswf {
+class filter;
 class character;
 class render_state;
 // Enumerator names are still unknown.
@@ -125,10 +126,13 @@ public:
     void SetInputBehavior(int behavior);
     void SetOrientation(gameswf::orientation_mode orientation);
     static void SetWireFrame(bool enabled);
+    bool PreloadGlyphs(const char* text, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
+    bool PreloadGlyphs(unsigned short* glyphs, int count, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
     void InitializeGlyphTextureCache(int width, int height);
     struct InitializationParameters;
     static gameswf::player_context* CreateContext(InitializationParameters& parameters);
     static void Initialize(InitializationParameters& parameters);
+    static void Initialize(irr::video::IVideoDriver* driver);
     static void Finalize();
     static void DestroyContext(gameswf::player_context* context);
     static void ClearGlyphTextureCaches(gameswf::player_context* context);

@@ -27,6 +27,8 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE",
+        "_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE",
         "_ZN8RenderFXD0Ev",
         "_ZN8RenderFXD1Ev",
         "_ZN8RenderFXD2Ev",
@@ -127,6 +129,7 @@
         "_ZN8RenderFX8PlayAnimEPKcS1_i"
     ],
     "sections": [
+        ".renderfx_initialize_warning",
         ".renderfx_vtable",
         ".menufx_vtable",
         ".renderfx_event_listener_vtable",
@@ -138,6 +141,8 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",

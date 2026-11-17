@@ -10676,7 +10676,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030b12d	0x100	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5debugEPN3irr5video12IVideoDriverE	Vehicle::debug(irr::video::IVideoDriver*)
 0x0030b22d	0xe4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE	Vehicle::getNearestDoorDummy(irr::core::vector3d<float>)
 0x0030b311	0x28c	Vehicle.cpp	game	vehicles	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x0030b59d	0x14	Vehicle.cpp	game	vehicles	pending	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE
+0x0030b59d	0x14	Vehicle.cpp	game	vehicles	matched	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE
 0x0030b5b1	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactoryD0Ev	CCarFactory::~CCarFactory()
 0x0030b5dd	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_1	__tcf_1
 0x0030b601	0x24	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactoryD1Ev	CCarFactory::~CCarFactory()
@@ -17268,7 +17268,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec819	0x6c	menufx.cpp	game	rendering	matched	_ZN8RenderFX13CreateContextERNS_24InitializationParametersE	RenderFX::CreateContext(RenderFX::InitializationParameters&)
 0x003ec885	0x4c	menufx.cpp	game	rendering	matched	_ZN8RenderFX8FinalizeEv	RenderFX::Finalize()
 0x003ec8d1	0x90	menufx.cpp	game	rendering	matched	_ZN8RenderFX10InitializeERNS_24InitializationParametersE	RenderFX::Initialize(RenderFX::InitializationParameters&)
-0x003ec961	0x38	menufx.cpp	game	rendering	pending	_ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE	RenderFX::Initialize(irr::video::IVideoDriver*)
+0x003ec961	0x38	menufx.cpp	game	rendering	matched	_ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE	RenderFX::Initialize(irr::video::IVideoDriver*)
 0x003ec999	0x2c	menufx.cpp	game	core	matched	_Z11file_openerPKc	file_opener(char const*)
 0x003ec9c5	0x8	menufx.cpp	game	rendering	matched	_ZN8RenderFX23SetTextBufferingEnabledEb	RenderFX::SetTextBufferingEnabled(bool)
 0x003ec9cd	0x6	menufx.cpp	game	rendering	matched	_ZNK8RenderFX12GetFlashRootEv	RenderFX::GetFlashRoot() const
@@ -17311,7 +17311,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ed981	0x28	menufx.cpp	game	rendering	matched	_ZN8RenderFX10EndDisplayEv	RenderFX::EndDisplay()
 0x003ed9a9	0x42	menufx.cpp	game	core	matched	_Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_	fscommand_callback_handler(gameswf::character*, char const*, char const*)
 0x003ed9ed	0x1ec	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*)
-0x003edbd9	0xa4	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*)
+0x003edbd9	0xa4	menufx.cpp	game	rendering	matched	_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*)
 0x003edc7d	0x168	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEv	RenderFX::PreloadGlyphs()
 0x003edde5	0x138	menufx.cpp	game	rendering	pending	_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE	RenderFX::Load(char const*, gameswf::player_context*)
 0x003edf1d	0x9c	menufx.cpp	game	rendering	matched	_ZN8RenderFX4FindEPKc	RenderFX::Find(char const*)

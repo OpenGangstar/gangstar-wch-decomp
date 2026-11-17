@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE",
         "_ZN7Vehicle13grabSceneNodeEiPPPv",
         "_ZN7Vehicle6repairEv",
         "_ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_",
@@ -296,6 +297,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        {"name": "_Z41__static_initialization_and_destruction_0ii", "address": "0x0030b311"},
         "_ZN3irr5scene10ISceneNode19getSceneNodeFromUIDEPKc",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
         "_ZN11LevelObject13grabSceneNodeEiPPPv",

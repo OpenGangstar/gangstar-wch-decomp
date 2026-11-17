@@ -505,12 +505,16 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | vehicle_side | REVIEW | — | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | vehicle_side | BLOCKED | — | src/game/audio/SoundManager.cpp |
-| libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003ee801 | RenderFX deleting destructor (D0) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee885 | RenderFX destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ec961 | RenderFX::Initialize | lock_init | REVIEW | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ec961 | RenderFX::Initialize | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0030b311 | Vehicle translation-unit initializer | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | camera_tap | ASSIGNED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | lock_init | ASSIGNED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | vehicle_side | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | camera_tap | REVIEW | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | lock_init | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edde5 | RenderFX::Load | camera_tap | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | vehicle_side | ASSIGNED | — | src/game/rendering/menufx.cpp |
