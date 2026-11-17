@@ -30,6 +30,10 @@ void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
 }
 
 namespace gameswf {
+class tu_file;
+typedef irr::video::ITexture* (*TextureLoader)(const char*, int, int);
+typedef void (*FSCommandCallback)(character*, const char*, const char*);
+
 class render_handler {
 public:
     virtual ~render_handler();
@@ -42,6 +46,13 @@ void clear_standard_fnames();
 void clear_standard_method_map();
 void clear_standard_property_map();
 void clear_disasm();
+void register_file_opener_callback(tu_file* (*callback)(const char*));
+void register_fscommand_callback(FSCommandCallback callback);
+void register_log_callback(void (*callback)(bool, const char*));
+void register_texture_loader_callback(TextureLoader callback);
+bool get_verbose_parse();
+render_handler* create_render_handler_irrlicht(void* driver);
+void standard_method_map_init();
 void log_msg(const char* format, ...);
 
 class texture_cache {
@@ -139,6 +150,11 @@ public:
 };
 }
 
+gameswf::tu_file* file_opener(const char*) __attribute__((visibility("hidden")));
+void fs_callback(gameswf::character*, const char*, const char*) __attribute__((visibility("hidden")));
+void fscommand_callback_handler(gameswf::character*, const char*, const char*) __attribute__((visibility("hidden")));
+void log_callback(bool, const char*) __attribute__((visibility("hidden")));
+
 namespace {
 // Prefix of the gameswf character vtable through display callback registration.
 struct CharacterAnimationMethods {
@@ -165,7 +181,11 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
 struct RenderHandlerMethods {
     void (*beforeWireFrame[16])();
     void (*setWireFrame)(gameswf::render_handler*, bool);
-    void (*beforeOrientation[23])();
+    void (*beforeAntialiasing[14])();
+    void (*setAntialiased)(gameswf::render_handler*, bool);
+    void (*beforeOpen[6])();
+    void (*open)(gameswf::render_handler*);
+    void (*beforeOrientation)();
     void (*setOrientation)(gameswf::render_handler*, gameswf::orientation_mode);
 };
 
@@ -283,7 +303,8 @@ void RenderFX::InitializeGlyphTextureCache(int, int)
 }
 
 struct RenderFX::InitializationParameters {
-    unsigned char unknown0[8];
+    irr::video::IVideoDriver* driver;
+    gameswf::TextureLoader textureLoader;
     int outlineWidth;
     int outlineHeight;
     int bitmapWidth;
@@ -299,6 +320,28 @@ gameswf::player_context* RenderFX::CreateContext(InitializationParameters& param
     context->bitmapGlyphs = new (swf::DefaultMemHint) gameswf::default_bitmap_glyph_provider(
         parameters.bitmapWidth, parameters.bitmapHeight, parameters.glyphOption);
     return context;
+}
+
+void RenderFX::Initialize(InitializationParameters& parameters)
+{
+    if (s_default_context)
+        return;
+
+    gameswf::register_file_opener_callback(file_opener);
+    gameswf::register_fscommand_callback(fs_callback);
+    if (gameswf::get_verbose_parse())
+        gameswf::register_log_callback(log_callback);
+    gameswf::register_fscommand_callback(fscommand_callback_handler);
+
+    gameswf::render_handler* handler = gameswf::create_render_handler_irrlicht(parameters.driver);
+    gameswf::set_render_handler(handler);
+    renderHandlerMethods(handler).open(handler);
+    renderHandlerMethods(handler).setAntialiased(handler, true);
+
+    if (parameters.textureLoader)
+        gameswf::register_texture_loader_callback(parameters.textureLoader);
+    gameswf::standard_method_map_init();
+    s_default_context = CreateContext(parameters);
 }
 
 void RenderFX::Finalize()

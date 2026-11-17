@@ -27,6 +27,7 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX10InitializeERNS_24InitializationParametersE",
         "_ZN8RenderFX14SetOrientationEN7gameswf16orientation_modeE",
         "_ZN8RenderFX12SetWireFrameEb",
         "_ZN8RenderFX27InitializeGlyphTextureCacheEii",
@@ -83,6 +84,17 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_Z11file_openerPKc",
+        "_Z11fs_callbackPN7gameswf9characterEPKcS3_",
+        "_Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_",
+        "_Z12log_callbackbPKc",
+        "_ZN7gameswf29register_file_opener_callbackEPFPNS_7tu_fileEPKcE",
+        "_ZN7gameswf27register_fscommand_callbackEPFvPNS_9characterEPKcS3_E",
+        "_ZN7gameswf17get_verbose_parseEv",
+        "_ZN7gameswf30create_render_handler_irrlichtEPv",
+        "_ZN7gameswf32register_texture_loader_callbackEPFPN3irr5video8ITextureEPKciiE",
+        "_ZN7gameswf24standard_method_map_initEv",
+        "_ZN7gameswf21register_log_callbackEPFvbPKcE",
         "_ZnwjN3swf7MemHintE",
         "_ZN7gameswf14player_contextC1Ev",
         "_ZN7gameswf14glyph_providerC1Eiib",
