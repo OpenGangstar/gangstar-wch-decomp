@@ -10948,9 +10948,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00322099	0xbc	SceneNodeManager.cpp	game	world	pending	_ZNK16SceneNodeManager9getPoolIDEPKc	SceneNodeManager::getPoolID(char const*) const
 0x00322155	0x58	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolD1Ev	SceneNodeManager::Pool::~Pool()
 0x00322155	0x58	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolD2Ev	SceneNodeManager::Pool::~Pool()
-0x003221ad	0x5c	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager8tearDownEv	SceneNodeManager::tearDown()
-0x00322209	0x44	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManagerD1Ev	SceneNodeManager::~SceneNodeManager()
-0x00322209	0x44	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManagerD2Ev	SceneNodeManager::~SceneNodeManager()
+0x003221ad	0x5c	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager8tearDownEv	SceneNodeManager::tearDown()
+0x00322209	0x44	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManagerD1Ev	SceneNodeManager::~SceneNodeManager()
+0x00322209	0x44	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManagerD2Ev	SceneNodeManager::~SceneNodeManager()
 0x0032224d	0x1c	SceneNodeManager.cpp	game	world	pending	__tcf_2	__tcf_2
 0x00322269	0xd0	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4NodeESaIS2_EE18_M_insert_overflowEPS2_RKS2_RKSt11__true_typejb	std::vector<SceneNodeManager::Node*, std::allocator<SceneNodeManager::Node*> >::_M_insert_overflow(SceneNodeManager::Node**, SceneNodeManager::Node* const&, std::__true_type const&, unsigned int, bool)
 0x00322339	0x50	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4NodeESaIS2_EE14_M_fill_insertEPS2_jRKS2_	std::vector<SceneNodeManager::Node*, std::allocator<SceneNodeManager::Node*> >::_M_fill_insert(SceneNodeManager::Node**, unsigned int, SceneNodeManager::Node* const&)
