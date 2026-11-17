@@ -46,6 +46,8 @@ SECTIONS
     .service_car_rental_lost_focus 0x002e9434 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental9LostFocusEv) }
     .service_weapon_shop_lost_focus 0x002e9460 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop9LostFocusEv) }
     .achievement_lost_focus 0x002e948c : { *ai-startup-menustate.o(.text._ZN5Menus11Achievement9LostFocusEv) }
+    .helper_10 0x002e3f14 : { *menu-manager-helpers.o(.text._ZNK11MenuManager12isInGameMenuEv .gnu.linkonce.t._ZNK11MenuManager12isInGameMenuEv) }
+    .in_game_menu_notify 0x002e7814 : { *(.text._ZN5Menus10InGameMenu6NotifyEPK10MenuWidgeti) }
     .in_game_menu_got_focus 0x002e88a8 : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenu8GotFocusEv) }
     .in_game_menu_vtable 0x004a95f0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus10InGameMenuE) }
     .options_got_focus 0x002e8ac8 : { *ai-startup-menustate.o(.text._ZN5Menus7Options8GotFocusEv) }

@@ -1624,3 +1624,20 @@ void Menus::Achievement::Show()
     sound->unknown140 = false;
     displayTime = 5000;
 }
+
+bool Menus::InGameMenu::Notify(const MenuWidget* widget, int event)
+{
+    MenuManager* manager = MenuManager::getInstance();
+    const MenuWidget* menu = static_cast<const MenuWidget*>(getWidgetByIndex(manager, 1));
+    if (!(widget == menu && event == 1))
+        return false;
+
+    if (manager->isInGameMenu() < GetDepth()) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = event;
+        sound->playEx(219, 0, false, 1.0f, 0, event, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+    _ZN11MenuManager3popEb(manager, false);
+    return true;
+}
