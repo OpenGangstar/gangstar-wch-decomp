@@ -144,6 +144,11 @@ class MainMenu : public MenuState {
 public:
     MainMenu();
     virtual ~MainMenu();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void Update();
+    virtual bool Notify(const MenuWidget* widget, int event);
+    virtual void SetPause(bool paused);
 
 protected:
     bool unknown104;
@@ -160,7 +165,11 @@ public:
 class ServiceCarRental : public Services {
 public:
     explicit ServiceCarRental(const char* name);
-    virtual ~ServiceCarRental();
+    virtual inline ~ServiceCarRental() __attribute__((used));
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void Update();
+    virtual bool Notify(const MenuWidget* widget, int event);
 
 protected:
     float scale;
@@ -170,7 +179,11 @@ protected:
 class ServiceWeaponShop : public Services {
 public:
     explicit ServiceWeaponShop(const char* name);
-    virtual ~ServiceWeaponShop();
+    virtual inline ~ServiceWeaponShop() __attribute__((used));
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void Update();
+    virtual bool Notify(const MenuWidget* widget, int event);
 
 protected:
     float scale;
@@ -182,6 +195,11 @@ class Map : public InGameMenu {
 public:
     Map();
     virtual ~Map();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void Update();
+    virtual void OnEvent(RenderFX::Event& event);
+    virtual bool Notify(const MenuWidget* widget, int event);
 
 protected:
     bool unknown104;
@@ -193,6 +211,10 @@ class Achievement : public MenuState {
 public:
     Achievement();
     virtual ~Achievement();
+    virtual void Show();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void Update();
 
 protected:
     int unknown104;
@@ -208,12 +230,16 @@ class InGameCarRental : public ServiceCarRental {
 public:
     InGameCarRental();
     virtual ~InGameCarRental();
+    virtual void Hide();
+    virtual void GotFocus();
 };
 
 class InGameWeaponShop : public ServiceWeaponShop {
 public:
     InGameWeaponShop();
     virtual ~InGameWeaponShop();
+    virtual void Hide();
+    virtual void GotFocus();
 };
 
 class CopBribe : public ConfirmPayment {
@@ -475,6 +501,46 @@ Menus::CarRepair::CarRepair()
 {
 }
 
+Menus::MainMenu::~MainMenu()
+{
+}
+
+Menus::Splash::~Splash()
+{
+}
+
+inline Menus::ServiceCarRental::~ServiceCarRental()
+{
+}
+
+inline Menus::ServiceWeaponShop::~ServiceWeaponShop()
+{
+}
+
+Menus::Map::~Map()
+{
+}
+
+Menus::Achievement::~Achievement()
+{
+}
+
+Menus::InGameCarRental::~InGameCarRental()
+{
+}
+
+Menus::InGameWeaponShop::~InGameWeaponShop()
+{
+}
+
+Menus::CopBribe::~CopBribe()
+{
+}
+
+Menus::CarRepair::~CarRepair()
+{
+}
+
 inline Menus::InGameMenu::~InGameMenu()
 {
 }
@@ -548,7 +614,7 @@ inline Menus::Confirm::~Confirm()
 {
 }
 
-Menus::ConfirmPayment::~ConfirmPayment()
+inline Menus::ConfirmPayment::~ConfirmPayment()
 {
 }
 

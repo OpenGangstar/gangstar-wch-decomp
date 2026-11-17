@@ -36,7 +36,7 @@ private:
 class ConfirmPayment : public Confirm {
 public:
     explicit ConfirmPayment(const char* name);
-    virtual ~ConfirmPayment();
+    virtual inline ~ConfirmPayment();
     void SetPrice(int amount);
 
 protected:
