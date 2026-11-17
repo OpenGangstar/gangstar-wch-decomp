@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Cash.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -77,4 +78,21 @@ static void _GLOBAL__I__ZN4CashC2EP7ASpriteiiiii()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+
+void Cash::SetPosition(int x, int y)
+{
+    positionX = x;
+    positionY = y;
+}
+
+void Cash::SetCash(int amount)
+{
+    cash = amount;
+}
+
+int Cash::GetCash()
+{
+    return cash;
 }

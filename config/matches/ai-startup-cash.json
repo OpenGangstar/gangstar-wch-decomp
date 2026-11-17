@@ -25,6 +25,9 @@
     "source": "src/game/ui/Cash.cpp",
     "linker_script": "config/linker/CashAiStartup.ld",
     "functions": [
+        "_ZN4Cash11SetPositionEii",
+        "_ZN4Cash7SetCashEi",
+        "_ZN4Cash7GetCashEv",
         {
             "name": "__tcf_3",
             "address": "0x003279f9"

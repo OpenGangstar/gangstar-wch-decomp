@@ -8948,8 +8948,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d6a4d	0x28	CCustomIrrFactory.cpp	game	core	matched	_ZN16CCustomIrrFactorD0Ev	CCustomIrrFactor::~CCustomIrrFactor()
 0x002d6a75	0x20	CCustomIrrFactory.cpp	game	core	matched	_ZN16CCustomIrrFactorD1Ev	CCustomIrrFactor::~CCustomIrrFactor()
 0x002d6a95	0x24	CCustomIrrFactory.cpp	game	core	matched	__tcf_0	__tcf_0
-0x002d6ab9	0x4	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	pending	_ZNK42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13isTransparentEv	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::isTransparent() const
-0x002d6abd	0x4	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	pending	_ZNK42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA22getVertexAttributeMaskEv	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::getVertexAttributeMask() const
+0x002d6ab9	0x4	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	matched	_ZNK42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13isTransparentEv	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::isTransparent() const
+0x002d6abd	0x4	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	matched	_ZNK42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA22getVertexAttributeMaskEv	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::getVertexAttributeMask() const
 0x002d6ac1	0x30	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	matched	__tcf_0	__tcf_0
 0x002d6af1	0x70	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	pending	_ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13onSetMaterialERKN3irr5video9SMaterialES4_bPNS1_25IMaterialRendererServicesE	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onSetMaterial(irr::video::SMaterial const&, irr::video::SMaterial const&, bool, irr::video::IMaterialRendererServices*)
 0x002d6b61	0x58	CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -10462,13 +10462,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00304ec9	0x8b4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest6UpdateEv	PlayerTest::Update()
 0x0030577d	0x2a0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest5snipeEP6Weapon	PlayerTest::snipe(Weapon*)
 0x00305a1d	0x160	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest6attackEb	PlayerTest::attack(bool)
-0x00305b7d	0x2	RenderObject.cpp	game	characters	pending	_ZNK12RenderObject6RenderEv	RenderObject::Render() const
+0x00305b7d	0x2	RenderObject.cpp	game	characters	matched	_ZNK12RenderObject6RenderEv	RenderObject::Render() const
 0x00305b81	0x30	RenderObject.cpp	game	characters	matched	__tcf_2	__tcf_2
-0x00305bb1	0x20	RenderObject.cpp	game	characters	pending	_ZN12RenderObjectD0Ev	RenderObject::~RenderObject()
-0x00305bd1	0x18	RenderObject.cpp	game	characters	pending	_ZN12RenderObjectD2Ev	RenderObject::~RenderObject()
-0x00305bd1	0x18	RenderObject.cpp	game	characters	pending	_ZN12RenderObjectD1Ev	RenderObject::~RenderObject()
-0x00305be9	0x3c	RenderObject.cpp	game	characters	pending	_ZN12RenderObjectC2EP10GameObject	RenderObject::RenderObject(GameObject*)
-0x00305be9	0x3c	RenderObject.cpp	game	characters	pending	_ZN12RenderObjectC1EP10GameObject	RenderObject::RenderObject(GameObject*)
+0x00305bb1	0x20	RenderObject.cpp	game	characters	matched	_ZN12RenderObjectD0Ev	RenderObject::~RenderObject()
+0x00305bd1	0x18	RenderObject.cpp	game	characters	matched	_ZN12RenderObjectD2Ev	RenderObject::~RenderObject()
+0x00305bd1	0x18	RenderObject.cpp	game	characters	matched	_ZN12RenderObjectD1Ev	RenderObject::~RenderObject()
+0x00305be9	0x3c	RenderObject.cpp	game	characters	matched	_ZN12RenderObjectC2EP10GameObject	RenderObject::RenderObject(GameObject*)
+0x00305be9	0x3c	RenderObject.cpp	game	characters	matched	_ZN12RenderObjectC1EP10GameObject	RenderObject::RenderObject(GameObject*)
 0x00305c25	0x6c	RenderObject.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00305c91	0x14	RenderObject.cpp	game	characters	matched	_GLOBAL__I__ZN12RenderObjectC2EP10GameObject	_GLOBAL__I__ZN12RenderObjectC2EP10GameObject
 0x00305ca5	0x20	Shop.cpp	game	ui	matched	_ZN4Shop24resetAchievementCountersEv	Shop::resetAchievementCounters()
@@ -11207,9 +11207,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032798d	0x14	CarBar.cpp	game	hud	matched	_GLOBAL__I__ZN6CarBarC2EP7ASpriteiii	_GLOBAL__I__ZN6CarBarC2EP7ASpriteiii
 0x003279a0	0x14	CarBar.cpp	game	hud	matched	_ZThn4_NK6CarBar6draw2dEv	non-virtual thunk to CarBar::draw2d() const
 0x003279b5	0x32	CarBar.cpp	game	hud	matched	_ZNK6CarBar6draw2dEv	CarBar::draw2d() const
-0x003279e9	0x8	Cash.cpp	game	ui	pending	_ZN4Cash11SetPositionEii	Cash::SetPosition(int, int)
-0x003279f1	0x4	Cash.cpp	game	ui	pending	_ZN4Cash7SetCashEi	Cash::SetCash(int)
-0x003279f5	0x4	Cash.cpp	game	ui	pending	_ZN4Cash7GetCashEv	Cash::GetCash()
+0x003279e9	0x8	Cash.cpp	game	ui	matched	_ZN4Cash11SetPositionEii	Cash::SetPosition(int, int)
+0x003279f1	0x4	Cash.cpp	game	ui	matched	_ZN4Cash7SetCashEi	Cash::SetCash(int)
+0x003279f5	0x4	Cash.cpp	game	ui	matched	_ZN4Cash7GetCashEv	Cash::GetCash()
 0x003279f9	0x30	Cash.cpp	game	ui	matched	__tcf_3	__tcf_3
 0x00327a29	0x24	Cash.cpp	game	ui	pending	_ZN4Cash10AlignRightEv	Cash::AlignRight()
 0x00327a4d	0x24	Cash.cpp	game	ui	pending	_ZN4Cash9AlignLeftEv	Cash::AlignLeft()
@@ -11521,7 +11521,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d6f5	0x38	CControlManager.cpp	game	input	matched	_ZN15CControlManagerD2Ev	CControlManager::~CControlManager()
 0x0032d72d	0x190	CControlManager.cpp	game	input	pending	_ZN15CControlManager6updateEv	CControlManager::update()
 0x0032d8bd	0x20	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19releaseKeyboardKeysEv	CDrivingControlHandler::releaseKeyboardKeys()
-0x0032d8dd	0x2	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleAttackReleasedEv	CDrivingControlHandler::handleAttackReleased()
+0x0032d8dd	0x2	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20handleAttackReleasedEv	CDrivingControlHandler::handleAttackReleased()
 0x0032d8e1	0x30	CDrivingControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
 0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
 0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
@@ -11862,17 +11862,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00336d45	0x40	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickD0Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
 0x00336d85	0x3c	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickD1Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
 0x00336d85	0x3c	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickD2Ev	MissionConditionBeQuick::~MissionConditionBeQuick()
-0x00336dc1	0x2	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWell4drawEv	MissionConditionDriveWell::draw()
+0x00336dc1	0x2	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWell4drawEv	MissionConditionDriveWell::draw()
 0x00336dc5	0x30	MissionConditionDriveWell.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00336df5	0x1c	MissionConditionDriveWell.cpp	game	missions	matched	__tcf_0	__tcf_0
 0x00336e11	0x33c	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWell8evaluateEi	MissionConditionDriveWell::evaluate(int)
-0x00337151	0x68	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWellC2EP7Vehicle	MissionConditionDriveWell::MissionConditionDriveWell(Vehicle*)
-0x00337151	0x68	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWellC1EP7Vehicle	MissionConditionDriveWell::MissionConditionDriveWell(Vehicle*)
+0x00337151	0x68	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellC2EP7Vehicle	MissionConditionDriveWell::MissionConditionDriveWell(Vehicle*)
+0x00337151	0x68	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellC1EP7Vehicle	MissionConditionDriveWell::MissionConditionDriveWell(Vehicle*)
 0x003371b9	0x144	MissionConditionDriveWell.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003372fd	0x14	MissionConditionDriveWell.cpp	game	missions	matched	_GLOBAL__I__ZN25MissionConditionDriveWellC2EP7Vehicle	_GLOBAL__I__ZN25MissionConditionDriveWellC2EP7Vehicle
-0x00337311	0x48	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWellD0Ev	MissionConditionDriveWell::~MissionConditionDriveWell()
-0x00337359	0x44	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWellD1Ev	MissionConditionDriveWell::~MissionConditionDriveWell()
-0x00337359	0x44	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWellD2Ev	MissionConditionDriveWell::~MissionConditionDriveWell()
+0x00337311	0x48	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellD0Ev	MissionConditionDriveWell::~MissionConditionDriveWell()
+0x00337359	0x44	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellD1Ev	MissionConditionDriveWell::~MissionConditionDriveWell()
+0x00337359	0x44	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellD2Ev	MissionConditionDriveWell::~MissionConditionDriveWell()
 0x0033739d	0x2	MissionConditionPhotographQuickly.cpp	game	missions	matched	_ZN33MissionConditionPhotographQuickly4drawEv	MissionConditionPhotographQuickly::draw()
 0x003373a1	0x30	MissionConditionPhotographQuickly.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x003373d1	0xe4	MissionConditionPhotographQuickly.cpp	game	missions	matched	_ZN33MissionConditionPhotographQuickly8evaluateEi	MissionConditionPhotographQuickly::evaluate(int)
@@ -11915,20 +11915,20 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00337bc9	0x24	MissionConditionSetUsUpTheBomb.cpp	game	missions	matched	_ZN30MissionConditionSetUsUpTheBombC1EiP7Vehicle	MissionConditionSetUsUpTheBomb::MissionConditionSetUsUpTheBomb(int, Vehicle*)
 0x00337bed	0x144	MissionConditionSetUsUpTheBomb.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00337d31	0x14	MissionConditionSetUsUpTheBomb.cpp	game	missions	matched	_GLOBAL__I__ZN30MissionConditionSetUsUpTheBombC2EiP7Vehicle	_GLOBAL__I__ZN30MissionConditionSetUsUpTheBombC2EiP7Vehicle
-0x00337d45	0x2	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetween4drawEv	MissionConditionStayBetween::draw()
-0x00337d48	0x14	MissionConditionStayBetween.cpp	game	missions	pending	_ZThn4_N27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager	non-virtual thunk to MissionConditionStayBetween::onEvent(IEvent const*, EventManager const*)
-0x00337d5d	0x2c	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager	MissionConditionStayBetween::onEvent(IEvent const*, EventManager const*)
+0x00337d45	0x2	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetween4drawEv	MissionConditionStayBetween::draw()
+0x00337d48	0x14	MissionConditionStayBetween.cpp	game	missions	matched	_ZThn4_N27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager	non-virtual thunk to MissionConditionStayBetween::onEvent(IEvent const*, EventManager const*)
+0x00337d5d	0x2c	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager	MissionConditionStayBetween::onEvent(IEvent const*, EventManager const*)
 0x00337d89	0x30	MissionConditionStayBetween.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x00337db9	0xfc	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetween8evaluateEi	MissionConditionStayBetween::evaluate(int)
-0x00337eb5	0x74	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetweenC2EP11LevelObjectff	MissionConditionStayBetween::MissionConditionStayBetween(LevelObject*, float, float)
-0x00337eb5	0x74	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetweenC1EP11LevelObjectff	MissionConditionStayBetween::MissionConditionStayBetween(LevelObject*, float, float)
+0x00337db9	0xfc	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetween8evaluateEi	MissionConditionStayBetween::evaluate(int)
+0x00337eb5	0x74	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetweenC2EP11LevelObjectff	MissionConditionStayBetween::MissionConditionStayBetween(LevelObject*, float, float)
+0x00337eb5	0x74	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetweenC1EP11LevelObjectff	MissionConditionStayBetween::MissionConditionStayBetween(LevelObject*, float, float)
 0x00337f29	0x144	MissionConditionStayBetween.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033806d	0x14	MissionConditionStayBetween.cpp	game	missions	matched	_GLOBAL__I__ZN27MissionConditionStayBetweenC2EP11LevelObjectff	_GLOBAL__I__ZN27MissionConditionStayBetweenC2EP11LevelObjectff
-0x00338080	0x14	MissionConditionStayBetween.cpp	game	missions	pending	_ZThn4_N27MissionConditionStayBetweenD0Ev	non-virtual thunk to MissionConditionStayBetween::~MissionConditionStayBetween()
-0x00338095	0x68	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetweenD0Ev	MissionConditionStayBetween::~MissionConditionStayBetween()
-0x003380fc	0x14	MissionConditionStayBetween.cpp	game	missions	pending	_ZThn4_N27MissionConditionStayBetweenD1Ev	non-virtual thunk to MissionConditionStayBetween::~MissionConditionStayBetween()
-0x00338111	0x64	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetweenD2Ev	MissionConditionStayBetween::~MissionConditionStayBetween()
-0x00338111	0x64	MissionConditionStayBetween.cpp	game	missions	pending	_ZN27MissionConditionStayBetweenD1Ev	MissionConditionStayBetween::~MissionConditionStayBetween()
+0x00338080	0x14	MissionConditionStayBetween.cpp	game	missions	matched	_ZThn4_N27MissionConditionStayBetweenD0Ev	non-virtual thunk to MissionConditionStayBetween::~MissionConditionStayBetween()
+0x00338095	0x68	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetweenD0Ev	MissionConditionStayBetween::~MissionConditionStayBetween()
+0x003380fc	0x14	MissionConditionStayBetween.cpp	game	missions	matched	_ZThn4_N27MissionConditionStayBetweenD1Ev	non-virtual thunk to MissionConditionStayBetween::~MissionConditionStayBetween()
+0x00338111	0x64	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetweenD2Ev	MissionConditionStayBetween::~MissionConditionStayBetween()
+0x00338111	0x64	MissionConditionStayBetween.cpp	game	missions	matched	_ZN27MissionConditionStayBetweenD1Ev	MissionConditionStayBetween::~MissionConditionStayBetween()
 0x00338175	0x2	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithin4drawEv	MissionConditionStayWithin::draw()
 0x00338179	0x30	MissionConditionStayWithin.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x003381a9	0x64	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinC1EP11LevelObjectii	MissionConditionStayWithin::MissionConditionStayWithin(LevelObject*, int, int)
@@ -12416,13 +12416,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00345e05	0x26	Achievements.cpp	game	meta	matched	_ZN18AchievementManager15AchievementRuleD1Ev	AchievementManager::AchievementRule::~AchievementRule()
 0x00345e2d	0x26	Achievements.cpp	game	meta	matched	_ZN18AchievementManager4StatD1Ev	AchievementManager::Stat::~Stat()
 0x00345e55	0xdc	Achievements.cpp	game	meta	matched	_ZN18AchievementManager5clearEv	AchievementManager::clear()
-0x00345f31	0x2	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission3endEv	AmbulanceSideMission::end()
-0x00345f35	0x6	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission14getMoneyRewardEv	AmbulanceSideMission::getMoneyReward()
-0x00345f3d	0x8	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission14getGoalMessageEv	AmbulanceSideMission::getGoalMessage()
-0x00345f45	0x8	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission15getStartMessageEv	AmbulanceSideMission::getStartMessage()
-0x00345f4d	0x8	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission13getEndMessageEv	AmbulanceSideMission::getEndMessage()
-0x00345f55	0x8	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission14getObj1MessageEv	AmbulanceSideMission::getObj1Message()
-0x00345f5d	0x8	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission14getObj2MessageEv	AmbulanceSideMission::getObj2Message()
+0x00345f31	0x2	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission3endEv	AmbulanceSideMission::end()
+0x00345f35	0x6	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission14getMoneyRewardEv	AmbulanceSideMission::getMoneyReward()
+0x00345f3d	0x8	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission14getGoalMessageEv	AmbulanceSideMission::getGoalMessage()
+0x00345f45	0x8	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission15getStartMessageEv	AmbulanceSideMission::getStartMessage()
+0x00345f4d	0x8	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission13getEndMessageEv	AmbulanceSideMission::getEndMessage()
+0x00345f55	0x8	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission14getObj1MessageEv	AmbulanceSideMission::getObj1Message()
+0x00345f5d	0x8	AmbulanceSideMission.cpp	game	missions	matched	_ZN20AmbulanceSideMission14getObj2MessageEv	AmbulanceSideMission::getObj2Message()
 0x00345f65	0x30	AmbulanceSideMission.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x00345f95	0x14	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission5cleanEv	AmbulanceSideMission::clean()
 0x00345fa9	0x2c	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission7dropOffEN3irr4core8vector3dIfEE	AmbulanceSideMission::dropOff(irr::core::vector3d<float>)
@@ -12434,13 +12434,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00346395	0x1dc	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMission6pickUpEN3irr4core8vector3dIfEERiRfi	AmbulanceSideMission::pickUp(irr::core::vector3d<float>, int&, float&, int)
 0x00346571	0x40	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMissionD2Ev	AmbulanceSideMission::~AmbulanceSideMission()
 0x00346571	0x40	AmbulanceSideMission.cpp	game	missions	pending	_ZN20AmbulanceSideMissionD1Ev	AmbulanceSideMission::~AmbulanceSideMission()
-0x003465b1	0x2	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission3endEv	DeliverySideMission::end()
-0x003465b5	0x6	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission14getMoneyRewardEv	DeliverySideMission::getMoneyReward()
-0x003465bd	0x8	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission14getGoalMessageEv	DeliverySideMission::getGoalMessage()
-0x003465c5	0x8	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission15getStartMessageEv	DeliverySideMission::getStartMessage()
-0x003465cd	0x8	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission13getEndMessageEv	DeliverySideMission::getEndMessage()
-0x003465d5	0x8	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission14getObj1MessageEv	DeliverySideMission::getObj1Message()
-0x003465dd	0x8	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission14getObj2MessageEv	DeliverySideMission::getObj2Message()
+0x003465b1	0x2	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission3endEv	DeliverySideMission::end()
+0x003465b5	0x6	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission14getMoneyRewardEv	DeliverySideMission::getMoneyReward()
+0x003465bd	0x8	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission14getGoalMessageEv	DeliverySideMission::getGoalMessage()
+0x003465c5	0x8	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission15getStartMessageEv	DeliverySideMission::getStartMessage()
+0x003465cd	0x8	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission13getEndMessageEv	DeliverySideMission::getEndMessage()
+0x003465d5	0x8	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission14getObj1MessageEv	DeliverySideMission::getObj1Message()
+0x003465dd	0x8	DeliverySideMission.cpp	game	missions	matched	_ZN19DeliverySideMission14getObj2MessageEv	DeliverySideMission::getObj2Message()
 0x003465e5	0x30	DeliverySideMission.cpp	game	missions	matched	__tcf_2	__tcf_2
 0x00346615	0x14	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission5cleanEv	DeliverySideMission::clean()
 0x00346629	0x2c	DeliverySideMission.cpp	game	missions	pending	_ZN19DeliverySideMission7dropOffEN3irr4core8vector3dIfEE	DeliverySideMission::dropOff(irr::core::vector3d<float>)
@@ -12483,7 +12483,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00347619	0xa8	SideMission.cpp	game	missions	pending	_ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii	SideMission::calculateMoney(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int)
 0x003476c1	0xe0	SideMission.cpp	game	missions	pending	_ZN11SideMission13calculateTimeEN3irr4core8vector3dIfEES3_ii	SideMission::calculateTime(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int)
 0x003477a1	0x18	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager7confirmEv	SideMissionManager::confirm()
-0x003477b9	0x2	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager5debugEv	SideMissionManager::debug()
+0x003477b9	0x2	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager5debugEv	SideMissionManager::debug()
 0x003477bd	0x30	SideMissionManager.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x003477ed	0x28	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager19setNextMissionTimerEv	SideMissionManager::setNextMissionTimer()
 0x00347815	0x28	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager15isInSideMissionEv	SideMissionManager::isInSideMission()

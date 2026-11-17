@@ -5,6 +5,11 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .render_object_vtable 0x004ab078 : { *sdk-startup-renderobject.o(.data.rel.ro._ZTV12RenderObject) }
+    .render_object_ctor 0x00305be8 : { *sdk-startup-renderobject.o(.text._ZN12RenderObjectC1EP10GameObject .text._ZN12RenderObjectC2EP10GameObject) }
+    .render_object_d1 0x00305bd0 : { *sdk-startup-renderobject.o(.text._ZN12RenderObjectD1Ev .text._ZN12RenderObjectD2Ev) }
+    .render_object_d0 0x00305bb0 : { *sdk-startup-renderobject.o(.text._ZN12RenderObjectD0Ev) }
+    .render_object_render 0x00305b7c : { *sdk-startup-renderobject.o(.text._ZNK12RenderObject6RenderEv) }
     .sdk_startup_function_0 0x00305b80 : { *sdk-startup-renderobject.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00305c24 : { *sdk-startup-renderobject.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00305c90 : { *sdk-startup-renderobject.o(.text._GLOBAL__I__ZN12RenderObjectC2EP10GameObject) }

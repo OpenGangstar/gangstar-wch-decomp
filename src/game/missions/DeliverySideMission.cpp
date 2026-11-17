@@ -9,6 +9,7 @@
  */
 
 // Recovered translation-unit SDK startup callbacks.
+#include "SideMission.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -53,4 +54,53 @@ static void _GLOBAL__I__ZN19DeliverySideMissionC2Ev()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class DeliverySideMission : public SideMission {
+public:
+    virtual void begin(irr::core::vector3d<float>, int, int&, float&);
+    virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
+    virtual bool dropOff(irr::core::vector3d<float>);
+    virtual void end();
+    virtual void clean();
+    virtual int getMoneyReward();
+    virtual int getGoalMessage();
+    virtual int getStartMessage();
+    virtual int getEndMessage();
+    virtual int getObj1Message();
+    virtual int getObj2Message();
+};
+
+void DeliverySideMission::end()
+{
+}
+
+int DeliverySideMission::getMoneyReward()
+{
+    return 2000;
+}
+
+int DeliverySideMission::getGoalMessage()
+{
+    return 0x30f1;
+}
+
+int DeliverySideMission::getStartMessage()
+{
+    return 0x30f0;
+}
+
+int DeliverySideMission::getEndMessage()
+{
+    return 0x30f4;
+}
+
+int DeliverySideMission::getObj1Message()
+{
+    return 0x30f2;
+}
+
+int DeliverySideMission::getObj2Message()
+{
+    return 0x30f3;
 }

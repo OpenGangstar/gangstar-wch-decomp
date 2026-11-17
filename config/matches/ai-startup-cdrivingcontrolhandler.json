@@ -25,6 +25,7 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN22CDrivingControlHandler20handleAttackReleasedEv",
         "_ZN22CDrivingControlHandlerC1EP15CControlManager",
         "_ZN22CDrivingControlHandlerC2EP15CControlManager",
         "_ZN22CDrivingControlHandler4initEv",

@@ -17,6 +17,11 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .drive_well_d0 0x00337310 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWellD0Ev) }
+    .drive_well_d1 0x00337358 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWellD1Ev .text._ZN25MissionConditionDriveWellD2Ev) }
+    .drive_well_vtable 0x004ace60 : { *ai-startup-missionconditiondrivewell.o(.data.rel.ro._ZTV25MissionConditionDriveWell) }
+    .drive_well_ctor 0x00337150 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWellC1EP7Vehicle .text._ZN25MissionConditionDriveWellC2EP7Vehicle) }
+    .condition_draw 0x00336dc0 : { *ai-startup-missionconditiondrivewell.o(.text._ZN25MissionConditionDriveWell4drawEv) }
     .wanted_singleton 0x002dba04 : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00336df4 : { *ai-startup-missionconditiondrivewell.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *ai-startup-missionconditiondrivewell.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

@@ -15,6 +15,9 @@ _ZN23retail_cash_transitions11guard_transE = 0x00423ac4;
 _ZN23retail_cash_transitions22scripted_vehicle_transE = 0x00423b6c;
 SECTIONS
 {
+    .cash_set_position 0x003279e8 : { *ai-startup-cash.o(.text._ZN4Cash11SetPositionEii) }
+    .cash_set_cash 0x003279f0 : { *ai-startup-cash.o(.text._ZN4Cash7SetCashEi) }
+    .cash_get_cash 0x003279f4 : { *ai-startup-cash.o(.text._ZN4Cash7GetCashEv) }
     .ai_startup_function_0 0x003279f8 : { *ai-startup-cash.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00327e34 : { *ai-startup-cash.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00327f78 : { *ai-startup-cash.o(.text._GLOBAL__I__ZN4CashC2EP7ASpriteiiiii) }

@@ -13,8 +13,32 @@ _ZN46retail_missionconditionstaybetween_transitions17civ_vehicle_transE = 0x0042
 _ZN46retail_missionconditionstaybetween_transitions17cop_vehicle_transE = 0x0042d500;
 _ZN46retail_missionconditionstaybetween_transitions11guard_transE = 0x0042d5b4;
 _ZN46retail_missionconditionstaybetween_transitions22scripted_vehicle_transE = 0x0042d65c;
+__cxa_pure_virtual = 0;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_d2f = 0x001c4310;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_fcmplt = 0x001c479c;
+sqrt = 0x001c401c;
+INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .stay_between_evaluate 0x00337db8 : { *ai-startup-missionconditionstaybetween.o(.text._ZN27MissionConditionStayBetween8evaluateEi) }
+    .stay_between_d0 0x00338094 : { *ai-startup-missionconditionstaybetween.o(.text._ZN27MissionConditionStayBetweenD0Ev) }
+    .stay_between_d1 0x00338110 : { *ai-startup-missionconditionstaybetween.o(.text._ZN27MissionConditionStayBetweenD1Ev .text._ZN27MissionConditionStayBetweenD2Ev) }
+    .stay_between_thunk_d0 0x00338080 : { *ai-startup-missionconditionstaybetween.o(.text._ZThn4_N27MissionConditionStayBetweenD0Ev) }
+    .stay_between_thunk_d1 0x003380fc : { *ai-startup-missionconditionstaybetween.o(.text._ZThn4_N27MissionConditionStayBetweenD1Ev) }
+    .stay_between_vtable 0x004acf00 : { *ai-startup-missionconditionstaybetween.o(.data.rel.ro._ZTV27MissionConditionStayBetween) }
+    .receiver_d0 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+    .receiver_d1 0x002db4d4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD1Ev) }
+    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+    .stay_between_ctor 0x00337eb4 : { *ai-startup-missionconditionstaybetween.o(.text._ZN27MissionConditionStayBetweenC1EP11LevelObjectff .text._ZN27MissionConditionStayBetweenC2EP11LevelObjectff) }
+    .on_event 0x00337d5c : { *ai-startup-missionconditionstaybetween.o(.text._ZN27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager) }
+    .on_event_thunk 0x00337d48 : { *ai-startup-missionconditionstaybetween.o(.text._ZThn4_N27MissionConditionStayBetween7onEventEPK6IEventPK12EventManager) }
+    .condition_draw 0x00337d44 : { *ai-startup-missionconditionstaybetween.o(.text._ZN27MissionConditionStayBetween4drawEv) }
     .ai_startup_function_0 0x00337d88 : { *ai-startup-missionconditionstaybetween.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00337f28 : { *ai-startup-missionconditionstaybetween.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0033806c : { *ai-startup-missionconditionstaybetween.o(.text._GLOBAL__I__ZN27MissionConditionStayBetweenC2EP11LevelObjectff) }

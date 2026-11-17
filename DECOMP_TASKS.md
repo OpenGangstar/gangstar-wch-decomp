@@ -29,7 +29,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00335849 | VehicleCamera::update | vehicle_side | REVIEW | — | src/game/vehicles/VehicleCamera.cpp |
-| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | ASSIGNED | — | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c49 | GSWeaponShopMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
 | libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | BLOCKED | — | src/game/core/CameraManager.cpp |
@@ -337,5 +337,50 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | lock_init | BLOCKED | — | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x003279f5 | Cash::GetCash | vehicle_side | ASSIGNED | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x003279f1 | Cash::SetCash | lock_init | ASSIGNED | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x003279f5 | Cash::GetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x003279f1 | Cash::SetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x003279e9 | Cash::SetPosition | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x002d6abd | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::getVertexAttributeMask | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6ab9 | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::isTransparent | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x00305b7d | RenderObject::Render | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00336dc1 | MissionConditionDriveWell::draw | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00337d45 | MissionConditionStayBetween::draw | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00305be9 | RenderObject::RenderObject (C1/C2 aliases) | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00305bb1 | RenderObject::~RenderObject (D0) | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00305bd1 | RenderObject::~RenderObject (D1/D2 aliases) | — | COMPLETED | 100% | src/game/characters/RenderObject.cpp |
+| libsanangeles.so | 0x00337d5d | MissionConditionStayBetween::onEvent | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00337d48 | MissionConditionStayBetween::onEvent (thunk) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x0032d8dd | CDrivingControlHandler::handleAttackReleased | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x003477b9 | SideMissionManager::debug | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00345f31 | AmbulanceSideMission::end | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465b1 | DeliverySideMission::end | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337eb5 | MissionConditionStayBetween constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00345f35 | AmbulanceSideMission::getMoneyReward | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465b5 | DeliverySideMission::getMoneyReward | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00338080 | MissionConditionStayBetween destructor (D0 thunk) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00338095 | MissionConditionStayBetween destructor (D0) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x003380fc | MissionConditionStayBetween destructor (D1 thunk) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00338111 | MissionConditionStayBetween destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00345f3d | AmbulanceSideMission::getGoalMessage | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465bd | DeliverySideMission::getGoalMessage | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337db9 | MissionConditionStayBetween::evaluate | — | COMPLETED | 100% | src/game/missions/MissionConditionStayBetween.cpp |
+| libsanangeles.so | 0x00345f45 | AmbulanceSideMission::getStartMessage | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465c5 | DeliverySideMission::getStartMessage | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337151 | MissionConditionDriveWell constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00345f4d | AmbulanceSideMission::getEndMessage | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465cd | DeliverySideMission::getEndMessage | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00345f55 | AmbulanceSideMission::getObj1Message | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465d5 | DeliverySideMission::getObj1Message | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00337311 | MissionConditionDriveWell destructor (D0) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00337359 | MissionConditionDriveWell destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00345f5d | AmbulanceSideMission::getObj2Message | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003465dd | DeliverySideMission::getObj2Message | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00336e11 | MissionConditionDriveWell::evaluate | lock_init | REVIEW | — | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00347e59 | TaxiSideMission::end | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e5d | TaxiSideMission::getMoneyReward | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e65 | TaxiSideMission::getGoalMessage | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e6d | TaxiSideMission::getStartMessage | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e75 | TaxiSideMission::getEndMessage | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e7d | TaxiSideMission::getObj1Message | camera_tap | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e85 | TaxiSideMission::getObj2Message | vehicle_side | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346b89 | SideMission::getTimer | lock_init | ASSIGNED | — | src/game/missions/SideMission.cpp |

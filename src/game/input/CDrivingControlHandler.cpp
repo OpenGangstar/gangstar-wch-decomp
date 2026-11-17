@@ -146,3 +146,7 @@ CDrivingControlHandler::CDrivingControlHandler(CControlManager* manager) : contr
     unknown24[5] = 0.0f;
     unknown20 = -1;
 }
+
+void CDrivingControlHandler::handleAttackReleased()
+{
+}

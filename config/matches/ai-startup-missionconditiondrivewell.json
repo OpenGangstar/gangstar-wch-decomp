@@ -25,6 +25,12 @@
     "source": "src/game/missions/MissionConditionDriveWell.cpp",
     "linker_script": "config/linker/MissionConditionDriveWellAiStartup.ld",
     "functions": [
+        "_ZN25MissionConditionDriveWellD0Ev",
+        "_ZN25MissionConditionDriveWellD1Ev",
+        "_ZN25MissionConditionDriveWellD2Ev",
+        "_ZN25MissionConditionDriveWellC1EP7Vehicle",
+        "_ZN25MissionConditionDriveWellC2EP7Vehicle",
+        "_ZN25MissionConditionDriveWell4drawEv",
         {
             "name": "__tcf_4",
             "address": "0x00336dc5"
@@ -44,6 +50,7 @@
         }
     ],
     "sections": [
+        ".drive_well_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -57,6 +64,10 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11CHudManager12showSpyGaugeEb",
+        "_ZN11CHudManager24useDriveWellBGInSpyGaugeEv",
+        "_ZN11CHudManager18useSpyBGInSpyGaugeEv"
     ]
 }

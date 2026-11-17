@@ -10,11 +10,16 @@ public:
     virtual void update(double elapsed);
     virtual void draw2d() const;
     void SetCash(int amount);
+    int GetCash();
     void AlignLeft();
     void SetPosition(int x, int y);
 
 private:
-    unsigned char unknown56[80];
+    int cash;
+    unsigned char unknown60[64];
+    int positionX;
+    int positionY;
+    unsigned char unknown132[4];
 };
 
 #endif

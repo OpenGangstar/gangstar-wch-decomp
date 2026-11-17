@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK startup callbacks.
+#include "../app/Application.h"
+#include "../core/SceneNode.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -53,4 +55,32 @@ static void _GLOBAL__I__ZN12RenderObjectC2EP10GameObject()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class GameObject;
+class RenderObject {
+public:
+    explicit RenderObject(GameObject* object);
+    virtual ~RenderObject();
+    virtual void Render() const;
+
+private:
+    GameObject* object;
+    irr::scene::ISceneManager* sceneManager;
+    irr::video::IVideoDriver* driver;
+};
+
+RenderObject::RenderObject(GameObject* gameObject) : object(gameObject)
+{
+    Application* application = Application::GetInstance();
+    sceneManager = application->GetDevice()->getSceneManager();
+    driver = application->GetDevice()->getVideoDriver();
+}
+
+void RenderObject::Render() const
+{
+}
+
+RenderObject::~RenderObject()
+{
 }

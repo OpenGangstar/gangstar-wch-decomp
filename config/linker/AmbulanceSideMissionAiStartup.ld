@@ -15,6 +15,13 @@ _ZN39retail_ambulancesidemission_transitions11guard_transE = 0x00434780;
 _ZN39retail_ambulancesidemission_transitions22scripted_vehicle_transE = 0x00434828;
 SECTIONS
 {
+    .side_mission_obj2_message 0x00345f5c : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission14getObj2MessageEv) }
+    .side_mission_obj1_message 0x00345f54 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission14getObj1MessageEv) }
+    .side_mission_end_message 0x00345f4c : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission13getEndMessageEv) }
+    .side_mission_start_message 0x00345f44 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission15getStartMessageEv) }
+    .side_mission_end 0x00345f30 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission3endEv) }
+    .side_mission_reward 0x00345f34 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission14getMoneyRewardEv) }
+    .side_mission_goal_message 0x00345f3c : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission14getGoalMessageEv) }
     .ai_startup_function_0 0x00345f64 : { *ai-startup-ambulancesidemission.o(.text.__tcf_3) }
     .ai_startup_function_1 0x0034623c : { *ai-startup-ambulancesidemission.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00346380 : { *ai-startup-ambulancesidemission.o(.text._GLOBAL__I__ZN20AmbulanceSideMissionC2Ev) }

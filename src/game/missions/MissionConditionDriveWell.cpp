@@ -9,6 +9,10 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../app/Application.h"
+#include "../hud/CHudManager.h"
+#include "../vehicles/Vehicle.h"
+#include "IMissionCondition.h"
 #include "../core/LocalStartupStorage.h"
 #include "WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
@@ -78,4 +82,48 @@ static void _GLOBAL__I__ZN25MissionConditionDriveWellC2EP7Vehicle()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class Vehicle;
+
+class MissionConditionDriveWell : public IMissionCondition {
+public:
+    explicit MissionConditionDriveWell(Vehicle* vehicle);
+    virtual ~MissionConditionDriveWell();
+    virtual bool evaluate(int elapsed);
+    virtual void draw();
+
+private:
+    Vehicle* vehicle;
+    int vehicleHealth;
+    int wantedLevel;
+    float remainingScore;
+    float unknown20;
+    float unknown24;
+    float unknown28;
+    float unknown32;
+};
+
+void MissionConditionDriveWell::draw()
+{
+}
+
+MissionConditionDriveWell::MissionConditionDriveWell(Vehicle* vehicle)
+    : vehicle(vehicle)
+{
+    vehicleHealth = vehicle->getHealth();
+    wantedLevel = WantedLevelManager::getInstance()->unknown8;
+    remainingScore = 1000.0f;
+    unknown20 = 0.0f;
+    unknown24 = 0.0f;
+    unknown28 = 0.0f;
+    unknown32 = 0.0f;
+    Application::GetInstance()->GetHudManager()->showSpyGauge(true);
+    Application::GetInstance()->GetHudManager()->useDriveWellBGInSpyGauge();
+}
+
+MissionConditionDriveWell::~MissionConditionDriveWell()
+{
+    Application::GetInstance()->GetHudManager()->showSpyGauge(false);
+    Application::GetInstance()->GetHudManager()->useSpyBGInSpyGauge();
 }
