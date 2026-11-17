@@ -11355,15 +11355,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032a8f5	0x58	Radio.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032a94d	0x14	Radio.cpp	game	core	matched	_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii	_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii
 0x0032a961	0x30	RetroEffect.cpp	game	rendering	matched	__tcf_2	__tcf_2
-0x0032a990	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_N11RetroEffectD0Ev	non-virtual thunk to RetroEffect::~RetroEffect()
-0x0032a9a5	0x74	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectD0Ev	RetroEffect::~RetroEffect()
+0x0032a990	0x14	RetroEffect.cpp	game	rendering	matched	_ZThn4_N11RetroEffectD0Ev	non-virtual thunk to RetroEffect::~RetroEffect()
+0x0032a9a5	0x74	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD0Ev	RetroEffect::~RetroEffect()
 0x0032aa19	0x6c	RetroEffect.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032aa85	0x14	RetroEffect.cpp	game	rendering	matched	_GLOBAL__I__ZN11RetroEffectC2Ev	_GLOBAL__I__ZN11RetroEffectC2Ev
-0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectC2Ev	RetroEffect::RetroEffect()
-0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectC1Ev	RetroEffect::RetroEffect()
-0x0032ab54	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_N11RetroEffectD1Ev	non-virtual thunk to RetroEffect::~RetroEffect()
-0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectD2Ev	RetroEffect::~RetroEffect()
-0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectD1Ev	RetroEffect::~RetroEffect()
+0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectC2Ev	RetroEffect::RetroEffect()
+0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectC1Ev	RetroEffect::RetroEffect()
+0x0032ab54	0x14	RetroEffect.cpp	game	rendering	matched	_ZThn4_N11RetroEffectD1Ev	non-virtual thunk to RetroEffect::~RetroEffect()
+0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD2Ev	RetroEffect::~RetroEffect()
+0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD1Ev	RetroEffect::~RetroEffect()
 0x0032abd4	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_NK11RetroEffect6draw2dEv	non-virtual thunk to RetroEffect::draw2d() const
 0x0032abe9	0x14c	RetroEffect.cpp	game	rendering	pending	_ZNK11RetroEffect6draw2dEv	RetroEffect::draw2d() const
 0x0032ad35	0x30	Reward.cpp	game	missions	matched	__tcf_3	__tcf_3
@@ -11382,14 +11382,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032b0e1	0x48	Reward.cpp	game	missions	matched	_ZN6RewardD2Ev	Reward::~Reward()
 0x0032b0e1	0x48	Reward.cpp	game	missions	matched	_ZN6RewardD1Ev	Reward::~Reward()
 0x0032b129	0x30	SlideControl.cpp	game	ui	matched	__tcf_2	__tcf_2
-0x0032b158	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_N12SlideControlD0Ev	non-virtual thunk to SlideControl::~SlideControl()
-0x0032b16d	0x30	SlideControl.cpp	game	ui	pending	_ZN12SlideControlD0Ev	SlideControl::~SlideControl()
-0x0032b19c	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_N12SlideControlD1Ev	non-virtual thunk to SlideControl::~SlideControl()
-0x0032b1b1	0x2c	SlideControl.cpp	game	ui	pending	_ZN12SlideControlD1Ev	SlideControl::~SlideControl()
-0x0032b1dd	0x18	SlideControl.cpp	game	ui	pending	_ZN12SlideControl5resetEv	SlideControl::reset()
+0x0032b158	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_N12SlideControlD0Ev	non-virtual thunk to SlideControl::~SlideControl()
+0x0032b16d	0x30	SlideControl.cpp	game	ui	matched	_ZN12SlideControlD0Ev	SlideControl::~SlideControl()
+0x0032b19c	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_N12SlideControlD1Ev	non-virtual thunk to SlideControl::~SlideControl()
+0x0032b1b1	0x2c	SlideControl.cpp	game	ui	matched	_ZN12SlideControlD1Ev	SlideControl::~SlideControl()
+0x0032b1dd	0x18	SlideControl.cpp	game	ui	matched	_ZN12SlideControl5resetEv	SlideControl::reset()
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
-0x0032b3e1	0x36	SlideControl.cpp	game	ui	pending	_ZN12SlideControl6updateEd	SlideControl::update(double)
+0x0032b3e1	0x36	SlideControl.cpp	game	ui	matched	_ZN12SlideControl6updateEd	SlideControl::update(double)
 0x0032b418	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_NK12SlideControl6draw2dEv	non-virtual thunk to SlideControl::draw2d() const
 0x0032b42d	0xec	SlideControl.cpp	game	ui	pending	_ZNK12SlideControl6draw2dEv	SlideControl::draw2d() const
 0x0032b519	0x6c	SlideControl.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

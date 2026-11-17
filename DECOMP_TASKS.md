@@ -543,17 +543,26 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003274f1 | Background::update | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x00327569 | Background::draw2d | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x00327554 | Background::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/ui/Background.cpp |
-| libsanangeles.so | 0x0032ab69 | RetroEffect destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032a9a5 | RetroEffect deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032a990 | RetroEffect deleting destructor thunk (D0) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032ab54 | RetroEffect complete destructor thunk (D1) | vehicle_side | REVIEW | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032aa99 | RetroEffect constructor (C1/C2 aliases) | lock_init | REVIEW | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d | camera_tap | ASSIGNED | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | camera_tap | ASSIGNED | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032b158 | SlideControl deleting destructor thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b16d | SlideControl deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b19c | SlideControl complete destructor thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b1b1 | SlideControl complete destructor (D1) | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b1dd | SlideControl::reset | lock_init | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b1f5 | SlideControl constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b3e1 | SlideControl::update | lock_init | ASSIGNED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032ab69 | RetroEffect destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032a9a5 | RetroEffect deleting destructor (D0) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032a990 | RetroEffect deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032ab54 | RetroEffect complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032aa99 | RetroEffect constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d | camera_tap | BLOCKED | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | camera_tap | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032b158 | SlideControl deleting destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b16d | SlideControl deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b19c | SlideControl complete destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1b1 | SlideControl complete destructor (D1) | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1dd | SlideControl::reset | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1f5 | SlideControl constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b3e1 | SlideControl::update | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b42d | SlideControl::draw2d | lock_init | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b418 | SlideControl::draw2d non-virtual thunk | lock_init | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | camera_tap | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | camera_tap | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b665 | SlideControl::processTouch | vehicle_side | ASSIGNED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b650 | SlideControl::processTouch non-virtual thunk | vehicle_side | ASSIGNED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | camera_tap | ASSIGNED | — | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | camera_tap | ASSIGNED | — | src/game/input/AnalogStick.cpp |

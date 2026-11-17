@@ -9,6 +9,10 @@
  */
 
 // Recovered translation-unit SDK startup callbacks.
+#include "SlideControl.h"
+#include "../app/Application.h"
+#include "../input/TouchScreenBase.h"
+
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -53,4 +57,30 @@ static void _GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+SlideControl::~SlideControl()
+{
+}
+
+void SlideControl::reset()
+{
+    flags &= ~2u;
+    unknown76 = 0.0f;
+    unknown80 = 0.0f;
+    unknown84 = 0.0f;
+}
+
+void SlideControl::update(double)
+{
+    if (!(flags & 1))
+        return;
+
+    TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+    const irr::core::rect<float>& region = reinterpret_cast<const irr::core::rect<float>&>(touchRegion);
+    const long id = screen->getTouchIDInitiatedInRegion(region);
+    if (id != -1)
+        processTouch(id);
+    else
+        processTouchRelease();
 }
