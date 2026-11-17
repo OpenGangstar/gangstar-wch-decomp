@@ -13,6 +13,30 @@
 
 extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list arguments);
 
+void SwfFree(void* buffer);
+
+namespace gameswf {
+class tu_string {
+public:
+    // The retail call resolves the constructor through the GOT.
+    explicit tu_string(const char* text) __attribute__((long_call));
+    ~tu_string()
+    {
+        if (storage[0] == 255)
+            SwfFree(heap);
+    }
+
+private:
+    unsigned char storage[12];
+    void* heap;
+};
+
+class edit_text_character {
+public:
+    void set_text_value(const tu_string& value, bool option);
+};
+}
+
 namespace {
 // Prefix of the gameswf character vtable through the numeric frame method.
 struct CharacterAnimationMethods {
@@ -119,6 +143,19 @@ void RenderFX::SetVisible(const char* characterName, bool visible)
     gameswf::character* character = Find(characterName);
     if (character)
         setCharacterVisible(character, visible);
+}
+
+void RenderFX::SetText(gameswf::character* character, const char* text, bool option)
+{
+    if (character && animationMethods(character).is(character, 30)) {
+        gameswf::tu_string value(text);
+        reinterpret_cast<gameswf::edit_text_character*>(character)->set_text_value(value, option);
+    }
+}
+
+void RenderFX::SetText(const char* characterName, const char* text, bool option)
+{
+    SetText(Find(characterName), text, option);
 }
 
 static char s_stringBuffer[8192];
