@@ -301,6 +301,23 @@ void PlayerTest::driftFinished()
     currentDriftDistance = 0;
 }
 
+void PlayerTest::addDistanceDriven(float distance)
+{
+    currentDistanceDriven += distance;
+    if (currentDistanceDriven >= 100000) {
+        currentDistanceDriven = 0;
+        AchievementManager::s_achievementManager->recordKmDriven();
+    }
+}
+
+void PlayerTest::setLastUsedVehicle(Vehicle* replacement)
+{
+    Vehicle* previous = static_cast<Vehicle*>(unknown316);
+    if (previous && (previous->flags344 & 0x10000u))
+        previous->rent(false);
+    unknown316 = replacement;
+}
+
 void PlayerTest::justStoleCar(Vehicle* car)
 {
     if (!car)

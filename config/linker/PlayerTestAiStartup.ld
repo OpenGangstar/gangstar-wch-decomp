@@ -28,6 +28,8 @@ SECTIONS
     .player_just_stole_car 0x00301758 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12justStoleCarEP7Vehicle) }
     .player_jump_finished 0x003017ec : { *ai-startup-playertest.o(.text._ZN10PlayerTest12jumpFinishedEv) }
     .player_drift_finished 0x00301820 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13driftFinishedEv) }
+    .player_distance_driven 0x00301854 : { *ai-startup-playertest.o(.text._ZN10PlayerTest17addDistanceDrivenEf) }
+    .player_last_used_vehicle 0x00301ebc : { *ai-startup-playertest.o(.text._ZN10PlayerTest18setLastUsedVehicleEP7Vehicle) }
     .player_stop 0x00301a3c : { *ai-startup-playertest.o(.text._ZN10PlayerTest4StopEv) }
     .player_closest_shop 0x00301090 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14setClosestShopEP4Shop) }
     .npc_vehicle_base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
