@@ -355,6 +355,8 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN6MenuFX8GetStateEPKc",
+        "_ZN6MenuFX15GetCurrentStateEv",
         "_ZN6MenuFXD1Ev",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN7Message11isDisplayedEv",

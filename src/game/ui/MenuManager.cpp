@@ -22,6 +22,17 @@ public:
     void ClearFocus();
 };
 
+void* MenuManager::getState(const char* name) const
+{
+    return reinterpret_cast<MyMenuFX*>(menuFX)->GetState(name);
+}
+
+bool MenuManager::isCurrentState(const char* name) const
+{
+    MenuFX::State* state = reinterpret_cast<MyMenuFX*>(menuFX)->GetState(name);
+    return state == reinterpret_cast<MyMenuFX*>(menuFX)->GetCurrentState();
+}
+
 void MyMenuFX::ClearStates()
 {
     for (int index = 0; index < registeredStates.size; ++index)

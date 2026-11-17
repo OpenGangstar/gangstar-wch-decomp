@@ -25,6 +25,8 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZNK11MenuManager8getStateEPKc",
+        "_ZNK11MenuManager14isCurrentStateEPKc",
         "_ZN8MyMenuFX11ClearStatesEv",
         "_ZN8MyMenuFXD0Ev",
         "_ZN8MyMenuFXD1Ev",
@@ -105,6 +107,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN6MenuFX8GetStateEPKc",
+        "_ZN6MenuFX15GetCurrentStateEv",
         "_ZN6MenuFXD1Ev",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN3MapC1Ev",
