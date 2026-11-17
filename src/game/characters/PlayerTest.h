@@ -133,6 +133,7 @@ public:
     void unlockSwitchWeapon();
     void Respawn();
     void startDriving();
+    void SetSpeed();
     void Update();
     void UpdateSceneNode();
     unsigned char unknown8[12];
@@ -170,7 +171,8 @@ public:
     bool movementKeys[4];
     unsigned char unknown382;
     bool flag383;
-    unsigned char unknown384[32];
+    unsigned char unknown384[28];
+    float speed;
     bool richAsCroesusEnabled;
     unsigned char unknown417[3];
     int cash;
