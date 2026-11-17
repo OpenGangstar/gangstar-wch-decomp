@@ -1,4 +1,7 @@
 __stack_chk_fail = 0x001c42e0;
+memcpy = 0x001c4190;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fmul = 0x001c4724;
 vsprintf = 0x001c4070;
 SECTIONS
 {
@@ -13,6 +16,9 @@ SECTIONS
     .renderfx_character_animation_over 0x003ec344 : { *renderfx-animation.o(.text._ZN8RenderFX10IsAnimOverEPN7gameswf9characterE) }
     .renderfx_character_display_callback 0x003ec3b0 : { *renderfx-animation.o(.text._ZN8RenderFX23RegisterDisplayCallbackEPN7gameswf9characterEPFvRNS0_12render_stateEPvES5_) }
     .renderfx_character_get_text 0x003ec9d4 : { *renderfx-animation.o(.text._ZN8RenderFX7GetTextEPN7gameswf9characterE) }
+    .renderfx_character_alpha 0x003ecaf4 : { *renderfx-animation.o(.text._ZNK8RenderFX8GetAlphaEPN7gameswf9characterE) }
+    .renderfx_character_position 0x003ec6ec : { *renderfx-animation.o(.text._ZN8RenderFX11SetPositionEPN7gameswf9characterEii) }
+    .renderfx_character_color_filter 0x003ecdc4 : { *renderfx-animation.o(.text._ZN8RenderFX14SetColorFilterEPN7gameswf9characterEij) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }

@@ -41,6 +41,7 @@ public:
     int GetFrameCount(gameswf::character* character);
     const char* GetText(const char* characterName);
     const char* GetText(gameswf::character* character);
+    float GetAlpha(gameswf::character* character) const;
     void SetPosition(const char* characterName, int x, int y);
     void SetPosition(gameswf::character* character, int x, int y);
     void SetColorFilter(const char* characterName, int filter, unsigned int color);
