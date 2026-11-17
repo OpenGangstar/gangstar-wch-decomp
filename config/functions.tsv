@@ -10946,8 +10946,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00321f8d	0xdc	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4NodeESaIS2_EE18_M_fill_insert_auxEPS2_jRKS2_RKSt12__false_type	std::vector<SceneNodeManager::Node*, std::allocator<SceneNodeManager::Node*> >::_M_fill_insert_aux(SceneNodeManager::Node**, unsigned int, SceneNodeManager::Node* const&, std::__false_type const&)
 0x00322069	0x30	SceneNodeManager.cpp	game	world	matched	__tcf_3	__tcf_3
 0x00322099	0xbc	SceneNodeManager.cpp	game	world	pending	_ZNK16SceneNodeManager9getPoolIDEPKc	SceneNodeManager::getPoolID(char const*) const
-0x00322155	0x58	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager4PoolD1Ev	SceneNodeManager::Pool::~Pool()
-0x00322155	0x58	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager4PoolD2Ev	SceneNodeManager::Pool::~Pool()
+0x00322155	0x58	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolD1Ev	SceneNodeManager::Pool::~Pool()
+0x00322155	0x58	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolD2Ev	SceneNodeManager::Pool::~Pool()
 0x003221ad	0x5c	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager8tearDownEv	SceneNodeManager::tearDown()
 0x00322209	0x44	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManagerD1Ev	SceneNodeManager::~SceneNodeManager()
 0x00322209	0x44	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManagerD2Ev	SceneNodeManager::~SceneNodeManager()

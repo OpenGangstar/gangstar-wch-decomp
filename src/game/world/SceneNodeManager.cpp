@@ -15,6 +15,19 @@
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/PointerVector.h"
+
+struct SceneNodeManager::Pool {
+    Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
+    ~Pool();
+    char* name;
+    irr::collada::CColladaFactory* factory;
+    int size;
+    int unknown12;
+    int unknown16;
+    int unknown20;
+    std::vector<Node*> nodes;
+};
 
 unsigned int crcReflect(unsigned int value, char bits)
 {
@@ -66,10 +79,18 @@ SceneNodeManager::Node::Node(irr::scene::ISceneNode* node)
 
 SceneNodeManager::Pool::Pool(const char* poolName, irr::collada::CColladaFactory* poolFactory, int poolSize)
     : name(0), factory(poolFactory), size(poolSize), unknown12(0), unknown16(0),
-      unknown20(0), nodesBegin(0), nodesEnd(0), nodesCapacity(0)
+      unknown20(0)
 {
     name = new char[strlen(poolName) + 1];
     strcpy(name, poolName);
+}
+
+SceneNodeManager::Pool::~Pool()
+{
+    delete[] name;
+    for (Node** entry = nodes.begin(); entry != nodes.end(); ++entry)
+        delete *entry;
+    nodes.clear();
 }
 
 SceneNodeManager::SceneNodeManager()
