@@ -791,6 +791,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f4a79 | Character::positionInVehicle | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f517d | Character::switchCombatAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f3489 | Character::updateAnimation | camera_tap | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f661d | Character::switchMoveAnimation | lock_init | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f55d1 | Character::shoot | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f3489 | Character::updateAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f661d | Character::switchMoveAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f55d1 | Character::shoot | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x00303b6d | PlayerTest::shoot | camera_tap | REVIEW | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00303b58 | PlayerTest::shoot non-virtual thunk | camera_tap | REVIEW | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | lock_init | REVIEW | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_side | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | camera_tap | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
