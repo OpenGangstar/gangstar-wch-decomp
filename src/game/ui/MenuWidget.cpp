@@ -289,6 +289,8 @@ private:
 class GameSetting : public MenuWidget {
 public:
     GameSetting();
+    void ShowSelection();
+    void ShowButtonOk();
     virtual void OnEvent(RenderFX::Event&);
     virtual void UpdateLocalization();
 
@@ -850,6 +852,28 @@ void Widgets::GameSetting::UpdateLocalization()
         _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingValuePath,
                                    _ZNK13StringManager9getStringEi(strings, valueTextId), true);
     }
+}
+
+static const char gameSettingLeftButton[] = "widgetGameSetting.btnLeft";
+static const char gameSettingRightButton[] = "widgetGameSetting.btnRight";
+static const char gameSettingSelectionBackground[] = "widgetGameSetting.selectionBackground";
+static const char gameSettingOkButton[] = "widgetGameSetting.btnOk";
+static const char gameSettingOkText[] = "widgetGameSetting.btnOk.text";
+
+void Widgets::GameSetting::ShowSelection()
+{
+    renderFX->SetVisible(gameSettingLeftButton, true);
+    renderFX->SetVisible(gameSettingRightButton, true);
+    renderFX->SetVisible(gameSettingValuePath, true);
+    renderFX->SetVisible(gameSettingSelectionBackground, true);
+}
+
+void Widgets::GameSetting::ShowButtonOk()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    renderFX->SetVisible(gameSettingOkButton, true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingOkText,
+                               _ZNK13StringManager9getStringEi(strings, 0x102b), true);
 }
 
 Widgets::Language::Language()
