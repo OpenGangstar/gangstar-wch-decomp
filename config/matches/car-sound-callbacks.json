@@ -25,6 +25,11 @@
     "source": "src/game/vehicles/CarSounds.cpp",
     "linker_script": "config/linker/CarSoundCallbacks.ld",
     "functions": [
+        "_ZN9CarSounds17InterpolateLinearEiiiff",
+        "_ZN9CarSounds20InterpolateFlatEndedEiiiff",
+        "_ZN9CarSounds24SetRPMFilterCoefficientsEf",
+        "_ZN9CarSounds5CleanEv",
+        "_ZN9CarSounds17RemoveTurboSoundsEP18TurboSoundSettings",
         "_ZN9SoundFade9StartFadeEi",
         "_ZN9SoundFade6UpdateEv",
         "_ZN9CarSounds15FilterRPMValuesEi",

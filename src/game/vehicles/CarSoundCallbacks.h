@@ -29,11 +29,14 @@ struct CarSoundParameters {
 };
 
 class SoundFade;
+struct TurboSoundSettings;
 
 // Observed CarSounds prefix.
 class CarSounds {
 public:
     void Update(CarSoundParameters* parameters);
+    void RemoveTurboSounds(TurboSoundSettings* settings);
+    static void Clean();
     static CarSoundCallbacks s_SoundCallbacks;
     static void UnregisterCallbacks();
     static void RegisterCallbacks(const CarSoundCallbacks&);
@@ -43,6 +46,9 @@ private:
     void UpdateStartupSound();
     void UpdateClutchSound();
     int FilterRPMValues(int value);
+    float InterpolateLinear(int minimum, int maximum, int value, float lowerGain, float upperGain);
+    float InterpolateFlatEnded(int begin, int end, int value, float from, float to);
+    void SetRPMFilterCoefficients(float frequency);
     void StopAllSounds();
     void UpdateOffEngineSounds();
     void UpdateOnEngineSounds();

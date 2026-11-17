@@ -61,6 +61,17 @@ void SoundFade::Clean()
     s_fadeGains = 0;
 }
 
+void CarSounds::Clean()
+{
+    SoundFade::Clean();
+    UnregisterCallbacks();
+}
+
+void CarSounds::RemoveTurboSounds(TurboSoundSettings*)
+{
+    turboEnabled = false;
+}
+
 void SoundFade::StartFade(int state)
 {
     if (remainingFrames == 0) {
@@ -105,6 +116,35 @@ int CarSounds::FilterRPMValues(int value)
 }
 
 extern "C" double sin(double radians);
+extern "C" double cos(double radians);
+extern "C" double sqrt(double value);
+
+float CarSounds::InterpolateLinear(int minimum, int maximum, int value, float lowerGain, float upperGain)
+{
+    return static_cast<float>(value - minimum) *
+        ((upperGain - lowerGain) / static_cast<float>(maximum - minimum)) + lowerGain;
+}
+
+float CarSounds::InterpolateFlatEnded(int begin, int end, int value, float from, float to)
+{
+    if (to != from) {
+        const float difference = to - from;
+        const float ratio = static_cast<float>(value - begin) / static_cast<float>(end - begin);
+        const float angle = ratio * 3.14159265358979323846f;
+        const float weight = static_cast<float>((1.0 - cos(static_cast<double>(angle))) * 0.5);
+        from += difference * weight;
+    }
+    return from;
+}
+
+void CarSounds::SetRPMFilterCoefficients(float frequency)
+{
+    const float pi = 3.14159265358979323846f;
+    const float factor = static_cast<float>(2.0 - cos(frequency * pi));
+    rpmFeedbackCoefficient = static_cast<float>(sqrt(factor * factor - 1.0f) - factor);
+    rpmInputCoefficient = rpmFeedbackCoefficient + 1.0f;
+    filteredRpm = 0.0f;
+}
 
 CarSoundParameters::CarSoundParameters()
 {
