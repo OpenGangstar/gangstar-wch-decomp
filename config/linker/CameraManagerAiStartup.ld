@@ -20,6 +20,8 @@ _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
+    .manager_enter_mode 0x003322bc : { *ai-startup-cameramanager.o(.text._ZN13CameraManager9enterModeEiP11LevelObjectfi) }
+    .manager_mode_table 0x004289c8 : { *ai-startup-cameramanager.o(.rodata._ZN13CameraManager9enterModeEiP11LevelObjectfi) }
     .manager_ctor 0x003323d0 : { *ai-startup-cameramanager.o(.text._ZN13CameraManagerC1EfffP11LevelObject .text._ZN13CameraManagerC2EfffP11LevelObject) }
     .manager_dtor 0x00331d74 : { *ai-startup-cameramanager.o(.text._ZN13CameraManagerD1Ev .text._ZN13CameraManagerD2Ev) }
     .manager_clean 0x00332010 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager5cleanEv) }

@@ -14,6 +14,7 @@
 #include "Camera.h"
 #include "CameraManager.h"
 #include "CameraVariants.h"
+#include "SceneCamera.h"
 #include "../app/Application.h"
 #include "../characters/Character.h"
 #include "../hud/CHudManager.h"
@@ -113,6 +114,29 @@ void CameraManager::clean()
     delete fpsCamera;
     delete this;
     s_cm = 0;
+}
+
+void CameraManager::enterMode(int newMode, LevelObject* newTarget, float transition, int flags)
+{
+    flag154 = false;
+    flag155 = false;
+    mode = newMode;
+    target = newTarget;
+    touch = 0;
+
+    const irr::core::vector3d<float> position = currentCamera->getPosition();
+    const irr::core::vector3d<float> lookAt = currentCamera->getLookAt();
+    currentCamera->exit();
+    switch (mode) {
+    case 0: currentCamera = followCamera; break;
+    case 1: currentCamera = lockCamera; break;
+    case 2: currentCamera = vehicleCamera; break;
+    case 3: currentCamera = sceneCamera; break;
+    case 4: currentCamera = fpsCamera; break;
+    }
+    currentCamera->init(target, flags);
+    positionTransition.begin(position, currentCamera->getPosition(), transition);
+    targetTransition.begin(lookAt, currentCamera->getLookAt(), transition);
 }
 
 CameraManager::CameraManager(float nearDistance, float farDistance, float fov, LevelObject* target)
