@@ -15,6 +15,7 @@ fmodf = 0x001c3fec;
 memmove = 0x001c40ac;
 SECTIONS
 {
+    .anim_reset 0x0034934c : { *sdk-startup-animobject.o(.text._ZN10AnimObject5ResetEv) }
     .sdk_startup_function_0 0x00349414 : { *sdk-startup-animobject.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00349644 : { *sdk-startup-animobject.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x003496b0 : { *sdk-startup-animobject.o(.text._GLOBAL__I__Z7FSelectfff) }

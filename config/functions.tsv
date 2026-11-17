@@ -12560,7 +12560,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349335	0x4	AnimObject.cpp	game	characters	matched	_Z18PlayPolicy_Onetimefff	PlayPolicy_Onetime(float, float, float)
 0x00349339	0x6	AnimObject.cpp	game	characters	matched	_ZN10AnimObject6UnloadEv	AnimObject::Unload()
 0x00349341	0xc	AnimObject.cpp	game	characters	matched	_ZN10AnimObject4LoadEv	AnimObject::Load()
-0x0034934d	0x28	AnimObject.cpp	game	characters	pending	_ZN10AnimObject5ResetEv	AnimObject::Reset()
+0x0034934d	0x28	AnimObject.cpp	game	characters	matched	_ZN10AnimObject5ResetEv	AnimObject::Reset()
 0x00349375	0x2c	AnimObject.cpp	game	characters	matched	_ZN10AnimObjectC2Ev	AnimObject::AnimObject()
 0x00349375	0x2c	AnimObject.cpp	game	characters	matched	_ZN10AnimObjectC1Ev	AnimObject::AnimObject()
 0x003493a1	0x20	AnimObject.cpp	game	characters	matched	_ZN10AnimObjectD1Ev	AnimObject::~AnimObject()

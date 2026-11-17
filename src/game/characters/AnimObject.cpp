@@ -147,3 +147,15 @@ static void _GLOBAL__I__Z7FSelectfff()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+void AnimObject::Reset()
+{
+    x = 0.0f;
+    y = 0.0f;
+    z = 0.0f;
+    animation = -1;
+    frame = 0.0f;
+    frameLimit = 0;
+    speed = 1.0f;
+    unknown32 = false;
+}
