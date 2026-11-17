@@ -28,6 +28,8 @@
         "_Z10crcReflectjc",
         "_ZN16SceneNodeManager5setupEv",
         "_ZN16SceneNodeManager6updateEi",
+        "_ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi",
+        "_ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi",
         {
             "name": "__tcf_3",
             "address": "0x00322069"
