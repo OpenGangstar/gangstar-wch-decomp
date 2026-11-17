@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
+#include "../core/NativeStrings.h"
 #include "../app/Application.h"
 #include "../characters/PlayerTest.h"
 #include "../persistence/StringManager.h"
@@ -1272,4 +1273,73 @@ static void _GLOBAL__I__ZN10MenuWidgetC2EPKc()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+namespace Widgets {
+class Shop : public MenuWidget {
+public:
+    Shop();
+    void SetAvailabilityText(int id);
+    int GetSelectedItem() const;
+    void Reset();
+    void SetItem(int index, int textId, int value, const char* frame, int flags);
+    virtual void OnEvent(RenderFX::Event& event);
+    virtual void UpdateLocalization();
+
+private:
+    struct Item {
+        Item() : textId(-1), value(0), flags(0) {}
+        int textId;
+        int value;
+        int flags;
+    };
+    Item items[4];
+    int selectedItem;
+    int availabilityTextId;
+};
+}
+
+namespace {
+const char shopWidgetName[] __attribute__((section(".rodata.widget_shop_name"))) = "widgetShop";
+}
+
+Widgets::Shop::Shop()
+    : MenuWidget(shopWidgetName), selectedItem(-1), availabilityTextId(0x103b)
+{
+}
+
+void Widgets::Shop::SetAvailabilityText(int id)
+{
+    availabilityTextId = id;
+}
+
+int Widgets::Shop::GetSelectedItem() const
+{
+    return selectedItem;
+}
+
+void Widgets::Shop::Reset()
+{
+    for (int index = 0; index < 4; ++index) {
+        items[index].flags = 0;
+        items[index].value = 0;
+        items[index].textId = -1;
+    }
+}
+
+static const char shopItemButtonPrefix[] = "btnItem";
+
+void Widgets::Shop::OnEvent(RenderFX::Event& event)
+{
+    if (event.type != 6)
+        return;
+
+    const char* name = event.characterName;
+    if (!strstr(name, shopItemButtonPrefix))
+        return;
+
+    selectedItem = name[7] - '0';
+    if (listener)
+        listener->Notify(this, 1);
+    event.consumed = true;
 }

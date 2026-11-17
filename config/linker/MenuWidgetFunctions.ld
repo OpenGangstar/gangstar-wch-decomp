@@ -1,5 +1,14 @@
+strstr = 0x001c446c;
 SECTIONS
 {
+    .widget_shop_on_event 0x002ed17c : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop7OnEventERN8RenderFX5EventE) }
+    .widget_shop_vtable 0x004a99f8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets4ShopE) }
+    .widget_shop_item_button_prefix 0x0041ab30 : { *ai-startup-menuwidget.o(.rodata.*shopItemButtonPrefix*) }
+    .widget_shop_availability 0x002ebf08 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop19SetAvailabilityTextEi) }
+    .widget_shop_selected_item 0x002ebf0c : { *ai-startup-menuwidget.o(.text._ZNK7Widgets4Shop15GetSelectedItemEv) }
+    .widget_shop_ctor 0x002eef44 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4ShopC1Ev .text._ZN7Widgets4ShopC2Ev) }
+    .widget_shop_name 0x0041b314 : { *ai-startup-menuwidget.o(.rodata.widget_shop_name) }
+    .widget_shop_reset 0x002eef24 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop5ResetEv) }
     .widget_money_localization 0x002edaf0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5Money18UpdateLocalizationEv) }
     .widget_blocking_tutorial_localization 0x002ef8c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BlockingTutorial18UpdateLocalizationEv) }
     .widget_money_label 0x0041ae58 : { *ai-startup-menuwidget.o(.rodata.widgetMoneyLabel) }
