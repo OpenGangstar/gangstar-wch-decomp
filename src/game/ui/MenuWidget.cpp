@@ -180,6 +180,7 @@ public:
     void SetActiveButton(eButton button, bool refresh);
     void SetTitleText(int id);
     void SetBackButtonText(int id);
+    int GetLastPressedButton() const;
 
 private:
     template <bool show>
@@ -189,6 +190,17 @@ private:
     int titleTextId;
     int backButtonTextId;
     int activeButton;
+    int pressedButton;
+};
+
+class BlackBox : public MenuWidget {
+public:
+    enum eState { Thin, Wide, StateCount };
+    BlackBox();
+    void SetState(eState state);
+
+private:
+    int state;
 };
 
 class MainMenu : public MenuWidget {
@@ -346,6 +358,37 @@ void Widgets::IGMenu::UpdateLocalization()
     const char* backText = _ZNK13StringManager9getStringEi(strings, backButtonTextId);
     _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuBackText, backText, true, false);
     _ZN11MenuManager10clearFocusEv(manager);
+}
+
+int Widgets::IGMenu::GetLastPressedButton() const
+{
+    return pressedButton;
+}
+
+static const char widgetBlackBoxName[] = "widgetBlackBox";
+static const char blackBoxThinAnimation[] = "thin";
+static const char blackBoxWideAnimation[] = "wide";
+
+Widgets::BlackBox::BlackBox()
+    : MenuWidget(widgetBlackBoxName), state(Thin)
+{
+}
+
+void Widgets::BlackBox::SetState(eState next)
+{
+    if (!IsVisible() || state == next)
+        return;
+    state = next;
+    switch (next) {
+    case Thin:
+        renderFX->PlayAnim(character, blackBoxThinAnimation, 0);
+        break;
+    case Wide:
+        renderFX->PlayAnim(character, blackBoxWideAnimation, 0);
+        break;
+    default:
+        break;
+    }
 }
 
 void Widgets::IGMenu::SetActiveButton(eButton button, bool refresh)

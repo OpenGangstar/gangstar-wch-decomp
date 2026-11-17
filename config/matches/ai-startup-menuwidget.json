@@ -27,6 +27,10 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZNK7Widgets6IGMenu20GetLastPressedButtonEv",
+        "_ZN7Widgets8BlackBoxC1Ev",
+        "_ZN7Widgets8BlackBoxC2Ev",
+        "_ZN7Widgets8BlackBox8SetStateENS0_6eStateE",
         "_ZN7Widgets6IGMenu18UpdateLocalizationEv",
         "_ZN7Widgets6IGMenu7DisableEv",
         "_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb",
@@ -109,6 +113,10 @@
         }
     ],
     "sections": [
+        ".widget_black_box_name",
+        ".widget_black_box_thin",
+        ".widget_black_box_wide",
+        ".widget_black_box_vtable",
         ".widget_ig_menu_title_text_path",
         ".widget_ig_menu_button_text_format",
         ".widget_ig_menu_back_text",
