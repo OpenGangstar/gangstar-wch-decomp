@@ -9436,8 +9436,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e3bfd	0x18	GSWeaponShopMenu.cpp	game	ui	matched	_ZN16GSWeaponShopMenuC2Ev	GSWeaponShopMenu::GSWeaponShopMenu()
 0x002e3c15	0x2	GSWeaponShopMenu.cpp	game	ui	matched	_ZN16GSWeaponShopMenu6updateEP12StateMachine	GSWeaponShopMenu::update(StateMachine*)
 0x002e3c19	0x2	GSWeaponShopMenu.cpp	game	ui	matched	_ZN16GSWeaponShopMenu4drawEPK12StateMachine	GSWeaponShopMenu::draw(StateMachine const*)
-0x002e3c1d	0x2c	GSWeaponShopMenu.cpp	game	ui	pending	_ZN16GSWeaponShopMenu4dtorEPK12StateMachine	GSWeaponShopMenu::dtor(StateMachine const*)
-0x002e3c49	0x5c	GSWeaponShopMenu.cpp	game	ui	pending	_ZN16GSWeaponShopMenu4ctorEPK12StateMachine	GSWeaponShopMenu::ctor(StateMachine const*)
+0x002e3c1d	0x2c	GSWeaponShopMenu.cpp	game	ui	matched	_ZN16GSWeaponShopMenu4dtorEPK12StateMachine	GSWeaponShopMenu::dtor(StateMachine const*)
+0x002e3c49	0x5c	GSWeaponShopMenu.cpp	game	ui	matched	_ZN16GSWeaponShopMenu4ctorEPK12StateMachine	GSWeaponShopMenu::ctor(StateMachine const*)
 0x002e3ca5	0x144	GSWeaponShopMenu.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002e3de9	0x14	GSWeaponShopMenu.cpp	game	ui	matched	_GLOBAL__I__ZN16GSWeaponShopMenuC2Ev	_GLOBAL__I__ZN16GSWeaponShopMenuC2Ev
 0x002e3dfd	0x30	GSWeaponShopMenu.cpp	game	ui	matched	__tcf_4	__tcf_4

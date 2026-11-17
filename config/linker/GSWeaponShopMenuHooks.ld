@@ -20,6 +20,9 @@ SECTIONS
     .hook_0 0x002e3c14 : { *state-hooks-gsweaponshopmenu.o(.text._ZN16GSWeaponShopMenu6updateEP12StateMachine .gnu.linkonce.t._ZN16GSWeaponShopMenu6updateEP12StateMachine) }
     .hook_1 0x002e3c18 : { *state-hooks-gsweaponshopmenu.o(.text._ZN16GSWeaponShopMenu4drawEPK12StateMachine .gnu.linkonce.t._ZN16GSWeaponShopMenu4drawEPK12StateMachine) }
     .state_ctor 0x002e3bfc : { *state-hooks-gsweaponshopmenu.o(.text._ZN16GSWeaponShopMenuC1Ev) }
+    .menu_exit 0x002e3c1c : { *state-hooks-gsweaponshopmenu.o(.text._ZN16GSWeaponShopMenu4dtorEPK12StateMachine) }
+    .menu_enter 0x002e3c48 : { *state-hooks-gsweaponshopmenu.o(.text._ZN16GSWeaponShopMenu4ctorEPK12StateMachine) }
+    .entry_text 0x00418720 : { *state-hooks-gsweaponshopmenu.o(.rodata.str1.4 .rodata.str1.1) }
     .base_0 0x002dacc0 : { *state-hooks-gsweaponshopmenu.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }
     .base_1 0x002dacac : { *state-hooks-gsweaponshopmenu.o(.gnu.linkonce.t._ZN9StateBase4drawEPK12StateMachine .text._ZN9StateBase4drawEPK12StateMachine .gnu.linkonce.d.rel.ro._ZN9StateBase4drawEPK12StateMachine .data.rel.ro._ZN9StateBase4drawEPK12StateMachine) }
     .base_2 0x002db4ec : { *state-hooks-gsweaponshopmenu.o(.gnu.linkonce.t._ZN9StateBaseD0Ev .text._ZN9StateBaseD0Ev .gnu.linkonce.d.rel.ro._ZN9StateBaseD0Ev .data.rel.ro._ZN9StateBaseD0Ev) }
