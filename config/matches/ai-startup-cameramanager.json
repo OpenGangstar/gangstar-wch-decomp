@@ -25,6 +25,7 @@
     "source": "src/game/core/CameraManager.cpp",
     "linker_script": "config/linker/CameraManagerAiStartup.ld",
     "functions": [
+        "_ZN13CameraManager14updateUpVectorEf",
         "_ZN13CameraManager8goToSideEb",
         "_ZN13CameraManager8goBehindEP11LevelObject",
         "_ZN14AnimatableTypeIN3irr4core8vector3dIfEEE6UpdateEf",

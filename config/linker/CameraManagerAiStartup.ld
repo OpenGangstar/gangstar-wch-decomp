@@ -26,6 +26,7 @@ _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
+    .manager_up_vector 0x00332080 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager14updateUpVectorEf) }
     .manager_go_to_side 0x00332144 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager8goToSideEb) }
     .manager_go_behind 0x00332200 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager8goBehindEP11LevelObject) }
     .manager_vector_update 0x00331df4 : { *ai-startup-cameramanager.o(.text._ZN14AnimatableTypeIN3irr4core8vector3dIfEEE6UpdateEf) }

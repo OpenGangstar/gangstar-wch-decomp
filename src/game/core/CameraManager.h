@@ -62,6 +62,7 @@ public:
 private:
     CameraManager(float nearDistance, float farDistance, float fov, LevelObject* target);
     bool updateTransition(float elapsed);
+    void updateUpVector(float angle);
     static CameraManager* s_cm;
 
     void* touch;
