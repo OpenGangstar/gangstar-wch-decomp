@@ -33,3 +33,33 @@ The new sections are retained through PhysicAttributesResetSections.ld in the
 native physics unit and every existing dependent image. Initial dependent
 linking exposed missing retention; moving the placements into that shared
 fragment resolved it before any assembly deletion or matching credit.
+
+## Surface initialization, edge collisions, and global cleanup
+
+Initialization retains the original triangle vertex loads, normal evaluation,
+normalization, and edge-collision update. PhysicInfo's existing word at offset 4
+holds the observed scene-node pointer representation in the 32-bit target ABI.
+The floating-point operand and negation order is preserved directly in C++.
+
+UpdateEdgesCollisions proves the neighbor representation as an unsigned-short
+pointer table. It clears the twelve body slots in order, adds the current three
+vertices, then searches valid adjacent triangles for the first unshared vertex.
+Clean reuses this same representation, releasing each mesh buffer's eight rows,
+its associated tables, both node-cost arrays, and the heightmap reference. It
+preserves the original behavior of leaving the heightmap pointer unchanged after
+drop. Its local cleanup helper needs only ordinary inline; no compiler
+annotation is required.
+
+The cliff-map pointers are explicitly documented as cleanup-only POD views.
+Their element types remain unrecovered, and the matched function never indexes
+or reads their contents. Other table types are supported by allocation widths,
+loads, and stores in the retail code. No static replacement storage is defined;
+these remain bindings to the original globals.
+
+The PlayerTest dependency graph rebuild exited 0, retaining all existing checks:
+
+```text
+OK  _ZN16PhysicAttributes21UpdateEdgesCollisionsEi  0x0031e99d  376 bytes
+OK  _ZN16PhysicAttributes5CleanEv  0x0031e0c9  444 bytes
+OK  _ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE  0x003200f9  520 bytes
+```

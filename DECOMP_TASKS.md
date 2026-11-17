@@ -844,9 +844,16 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031a40d | PhysicAttributes::FindLowerCostNode | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | vehicle_side | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | lock_init | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | camera_tap | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | vehicle_side | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00353175 | SoundManager::update | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00353525 | SoundManager constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x002d5da5 | EvMouseMove destructor (D1) | lock_init | REVIEW | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5df5 | EvKeyboard destructor (D1) | camera_tap | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d610d | EvMouseMove deleting destructor (D0) | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |

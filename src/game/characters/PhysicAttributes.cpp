@@ -430,3 +430,90 @@ bool PhysicAttributes::SegmentsIntersect(const irr::core::vector3d<float>& a,
     }
     return false;
 }
+
+void PhysicAttributes::UpdateEdgesCollisions(int slot)
+{
+    PhysicInfo& current = info[slot];
+    if (!current.onGround)
+        return;
+    for (int i = 0; i < 12; ++i) {
+        if (current.bodies[i]) {
+            if (current.bodies[i]->data) {
+                ::operator delete(current.bodies[i]->data);
+                current.bodies[i]->data = 0;
+            }
+            s_world->DestroyBody(current.bodies[i]);
+            current.bodies[i] = 0;
+        }
+    }
+    unsigned short* indices = static_cast<irr::scene::IMeshSceneNode*>(s_heightmap)->getMesh()->getMeshBuffer(current.unknown0)->getIndices();
+    AddCollisionShapes(slot, indices[current.unknown8]);
+    AddCollisionShapes(slot, indices[current.unknown8 + 1]);
+    AddCollisionShapes(slot, indices[current.unknown8 + 2]);
+    for (int edge = 0; edge < 3; ++edge) {
+        unsigned short triangle = s_neighbors[current.unknown0][edge][static_cast<unsigned short>(current.unknown8 / 3)];
+        unsigned short region = s_neighbors[current.unknown0][edge + 3][static_cast<unsigned short>(current.unknown8 / 3)];
+        if (triangle != 65535 && region != 65535) {
+            unsigned short* adjacent = static_cast<irr::scene::IMeshSceneNode*>(s_heightmap)->getMesh()->getMeshBuffer(region)->getIndices();
+            for (int vertex = 0; vertex < 3; ++vertex) {
+                unsigned short candidate = adjacent[triangle + vertex];
+                if (candidate != indices[current.unknown8] && candidate != indices[current.unknown8 + 1] && candidate != indices[current.unknown8 + 2]) {
+                    AddCollisionShapes(slot, candidate);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+template<class T>
+static inline void cleanPhysicArray(T*& pointer)
+{
+    delete[] pointer;
+    pointer=0;
+}
+
+void PhysicAttributes::Clean()
+{
+    if(s_heightmap) {
+        int count=static_cast<irr::scene::IMeshSceneNode*>(s_heightmap)->getMesh()->getMeshBufferCount();
+        for(int i=0;i<count;++i) {
+            for(int j=0;j<8;++j)
+                cleanPhysicArray(s_neighbors[i][j]);
+            cleanPhysicArray(s_neighbors[i]);
+            cleanPhysicArray(s_neighborsWrongWay[i]);
+            SafeDeleteArray(s_overlapping[i]);
+        }
+        cleanPhysicArray(s_neighbors);
+        cleanPhysicArray(s_neighborsWrongWay);
+        cleanPhysicArray(s_neighborsCnt);
+        cleanPhysicArray(s_cliffVertexKeyMap);
+        cleanPhysicArray(s_cliffTriMap);
+        cleanPhysicArray(s_overlapping);
+        for(int i=0;i<2;++i)
+            cleanPhysicArray(s_nodeCost[i]);
+        cleanPhysicArray(s_nodeCost);
+        s_heightmap->drop();
+    }
+}
+
+void PhysicAttributes::Init(unsigned short region,unsigned short surface,const irr::core::vector3d<float>& position)
+{
+    info->unknown4=reinterpret_cast<unsigned int>(s_heightmap);
+    info->unknown0=region;
+    info->unknown8=surface;
+    irr::core::vector3d<float> origin=reinterpret_cast<irr::scene::ISceneNode*>(info->unknown4)->getAbsolutePosition();
+    irr::scene::IMeshBuffer* buffer=static_cast<irr::scene::IMeshSceneNode*>(reinterpret_cast<irr::scene::ISceneNode*>(info->unknown4))->getMesh()->getMeshBuffer(info->unknown0);
+    unsigned short* indices=buffer->getIndices();
+    info->vector12=origin+buffer->getPosition(indices[info->unknown8]);
+    info->vector24=origin+buffer->getPosition(indices[info->unknown8+1]);
+    info->vector36=origin+buffer->getPosition(indices[info->unknown8+2]);
+    irr::core::vector3d<float> first=info->vector12-info->vector24;
+    irr::core::vector3d<float> second=info->vector36-info->vector24;
+    info->vector48=irr::core::vector3d<float>(
+        (-first.Y)*second.Z+first.Z*second.Y,
+        second.X*(-first.Z)+first.X*second.Z,
+        second.Y*(-first.X)+first.Y*second.X).normalize();
+    info->unknown64=position;
+    UpdateEdgesCollisions(0);
+}

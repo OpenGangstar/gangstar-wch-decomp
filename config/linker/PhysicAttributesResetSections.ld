@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_uidiv = 0x001c4604);
 PROVIDE(__aeabi_fcmpeq = 0x001c470c);
 PROVIDE(__aeabi_fsub = 0x001c4328);
 PROVIDE(__aeabi_fdiv = 0x001c4520);
@@ -6,6 +7,10 @@ PROVIDE(__aeabi_fcmple = 0x001c43ac);
 _ZdaPv = 0x001c461c;
 SECTIONS
 {
+    .physic_surface_0 0x0031e99c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes21UpdateEdgesCollisionsEi) }
+    .physic_surface_1 0x0031e0c8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes5CleanEv) }
+    .physic_surface_2 0x003200f8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE) }
+
     .physic_segments_intersect 0x003196fc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes17SegmentsIntersectERKN3irr4core8vector3dIfEES5_S5_S5_) }
     .physic_cleanup_0 0x00319cd4 : { *ai-startup-physicattributes.o(.text._ZN10PhysicInfo5ResetEP7b2World .gnu.linkonce.t._ZN10PhysicInfo5ResetEP7b2World) }
     .physic_cleanup_1 0x00319c20 : { *ai-startup-physicattributes.o(.text._Z15SafeDeleteArrayIN3irr4core5arrayItNS1_12irrAllocatorItEEEEEvRPT_ .gnu.linkonce.t._Z15SafeDeleteArrayIN3irr4core5arrayItNS1_12irrAllocatorItEEEEEvRPT_) }
