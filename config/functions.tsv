@@ -11751,7 +11751,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00333f71	0x5c	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera5enterEv	FPSCamera::enter()
 0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD1Ev	FPSCamera::~FPSCamera()
 0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD2Ev	FPSCamera::~FPSCamera()
-0x00333fed	0xd4	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4initEP11LevelObjecti	FPSCamera::init(LevelObject*, int)
+0x00333fed	0xd4	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera4initEP11LevelObjecti	FPSCamera::init(LevelObject*, int)
 0x003340c1	0x40	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera4exitEv	FPSCamera::exit()
 0x00334101	0x54	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraC2Ev	FPSCamera::FPSCamera()
 0x00334101	0x54	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraC1Ev	FPSCamera::FPSCamera()
