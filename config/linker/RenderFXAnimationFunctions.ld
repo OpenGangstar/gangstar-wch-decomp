@@ -22,6 +22,13 @@ SECTIONS
     .renderfx_character_position 0x003ec6ec : { *renderfx-animation.o(.text._ZN8RenderFX11SetPositionEPN7gameswf9characterEii) }
     .renderfx_character_color_filter 0x003ecdc4 : { *renderfx-animation.o(.text._ZN8RenderFX14SetColorFilterEPN7gameswf9characterEij) }
     .renderfx_named_alpha 0x003ee300 : { *renderfx-animation.o(.text._ZN8RenderFX8SetAlphaEPKcf) }
+    .renderfx_event_listener 0x003ec1f8 : { *renderfx-animation.o(.text._ZN8RenderFX16SetEventListenerEPNS_13EventListenerE) }
+    .renderfx_controller_enabled 0x003ec200 : { *renderfx-animation.o(.text._ZN8RenderFX20SetControllerEnabledEib) }
+    .renderfx_input_behavior 0x003ec210 : { *renderfx-animation.o(.text._ZN8RenderFX16SetInputBehaviorEi) }
+    .renderfx_set_context 0x003ec3cc : { *renderfx-animation.o(.text._ZN8RenderFX10SetContextEPN7gameswf9characterE) }
+    .renderfx_get_root 0x003ec3d0 : { *renderfx-animation.o(.text._ZNK8RenderFX7GetRootEv) }
+    .renderfx_set_text_buffering 0x003ec9c4 : { *renderfx-animation.o(.text._ZN8RenderFX23SetTextBufferingEnabledEb) }
+    .renderfx_get_flash_root 0x003ec9cc : { *renderfx-animation.o(.text._ZNK8RenderFX12GetFlashRootEv) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }

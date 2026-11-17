@@ -87,6 +87,30 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
 }
 
+struct FlashCharacterRoot {
+    unsigned char prefix[0x10];
+    gameswf::root* flashRoot;
+    unsigned char beforeTextBuffering[0x5d];
+    bool textBufferingEnabled;
+};
+
+struct ControllerState {
+    unsigned char prefix[0x24];
+    bool enabled;
+    unsigned char padding[3];
+};
+
+struct RenderFXState {
+    unsigned char prefix[4];
+    gameswf::array<gameswf::character*> matches;
+    unsigned char beforeRoot[12];
+    gameswf::character* root;
+    gameswf::character* context;
+    ControllerState controllers[4];
+    int inputBehavior;
+    RenderFX::EventListener* listener;
+};
+
 struct CharacterTransform {
     unsigned char prefix[0x9c];
     gameswf::cxform color;
@@ -128,6 +152,41 @@ struct SpriteEnabledState {
 extern const char activateAnimation[] __attribute__((visibility("hidden"))) = "activated";
 static const char focusOutAnimation[] = "focus_out";
 extern const char disabledAnimation[] __attribute__((visibility("hidden"))) = "disabled";
+
+void RenderFX::SetEventListener(EventListener* listener)
+{
+    reinterpret_cast<RenderFXState*>(this)->listener = listener;
+}
+
+void RenderFX::SetControllerEnabled(int index, bool enabled)
+{
+    reinterpret_cast<RenderFXState*>(this)->controllers[index].enabled = enabled;
+}
+
+void RenderFX::SetInputBehavior(int behavior)
+{
+    reinterpret_cast<RenderFXState*>(this)->inputBehavior = behavior;
+}
+
+void RenderFX::SetContext(gameswf::character* character)
+{
+    reinterpret_cast<RenderFXState*>(this)->context = character;
+}
+
+gameswf::character* RenderFX::GetRoot() const
+{
+    return reinterpret_cast<const RenderFXState*>(this)->root;
+}
+
+gameswf::root* RenderFX::GetFlashRoot() const
+{
+    return reinterpret_cast<const FlashCharacterRoot*>(reinterpret_cast<const RenderFXState*>(this)->root)->flashRoot;
+}
+
+void RenderFX::SetTextBufferingEnabled(bool enabled)
+{
+    reinterpret_cast<FlashCharacterRoot*>(reinterpret_cast<RenderFXState*>(this)->root)->textBufferingEnabled = enabled;
+}
 
 bool RenderFX::GotoFrame(gameswf::character* character, const char* label, bool play)
 {
@@ -173,7 +232,7 @@ const gameswf::array<gameswf::character*>& RenderFX::FindCharacters(
     gameswf::character* parent, const char* name, int flags)
 {
     gameswf::array<gameswf::character*>& matches =
-        *reinterpret_cast<gameswf::array<gameswf::character*>*>(reinterpret_cast<char*>(this) + 4);
+        reinterpret_cast<RenderFXState*>(this)->matches;
     matches.resize(0);
     CollectCharacters(parent, name, flags);
     return matches;
