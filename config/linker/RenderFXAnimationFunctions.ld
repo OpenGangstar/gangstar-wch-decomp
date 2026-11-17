@@ -56,6 +56,10 @@ SECTIONS
     .renderfx_empty_fs_callback 0x003ec1e0 : { *renderfx-animation.o(.text._Z11fs_callbackPN7gameswf9characterEPKcS3_) }
     .renderfx_can_handle_event 0x003ec1dc : { *renderfx-animation.o(.text._ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE) }
     .renderfx_event_listener_vtable 0x004afc88 : { *renderfx-animation.o(.data.rel.ro._ZTVN8RenderFX13EventListenerE) }
+    .renderfx_menu_fs_command 0x003eca88 : { *renderfx-animation.o(.text._ZN6MenuFX11OnFSCommandEPKcS1_) }
+    .renderfx_menu_fs_command_thunk 0x003eca74 : { *renderfx-animation.o(.text._ZThn204_N6MenuFX11OnFSCommandEPKcS1_) }
+    .renderfx_menu_current_state 0x003ecaa8 : { *renderfx-animation.o(.text._ZN6MenuFX15GetCurrentStateEv) }
+    .renderfx_menu_state_in_stack 0x003ecac4 : { *renderfx-animation.o(.text._ZN6MenuFX14IsStateInStackEPNS_5StateE) }
     .renderfx_fs_command 0x003ec398 : { *renderfx-animation.o(.text._ZN8RenderFX9FSCommandEPKcS1_) }
     .renderfx_file_read_mode 0x004014f0 : { *renderfx-animation.o(.rodata.swfReadMode) }
     .renderfx_fs_command_callback 0x003ed9a8 : { *renderfx-animation.o(.text._Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_) }

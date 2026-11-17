@@ -6,8 +6,21 @@
 class MenuWidget;
 
 
-namespace MenuFX {
-class State {
+class MenuFX : public RenderFX, public RenderFX::EventListener {
+public:
+    class State;
+    virtual ~MenuFX();
+    virtual void OnEvent(RenderFX::Event& event);
+    virtual void OnFSCommand(const char* command, const char* args);
+    State* GetCurrentState();
+    bool IsStateInStack(State* state);
+
+private:
+    unsigned char beforeStack[16];
+    gameswf::array<State*> stateStack;
+};
+
+class MenuFX::State {
 public:
     explicit inline State(const char* name);
     virtual inline ~State();
@@ -29,7 +42,6 @@ private:
     gameswf::smart_ptr<gameswf::character> secondCharacter;
     int unknown80;
 };
-}
 
 class MenuState : public MenuFX::State {
 public:
