@@ -463,8 +463,8 @@ irr::scene::ISceneNode* NPC::grabSceneNode(int, void***)
 {
     void** parameters;
     irr::scene::ISceneNode* node = LevelObject::grabSceneNode(6, &parameters);
-    *reinterpret_cast<void**>(unknown164) = parameters[0];
-    *reinterpret_cast<void**>(unknown164 + 4) = parameters[1];
+    unknown164Pointer = parameters[0];
+    unknown168Pointer = parameters[1];
     skinMesh = parameters[2];
     shadowNode = static_cast<irr::scene::ISceneNode*>(parameters[3]);
     shadowNode->setVisible(true);
@@ -497,8 +497,8 @@ void NPC::enable()
 void NPC::dropSceneNode()
 {
     LevelObject::dropSceneNode();
-    *reinterpret_cast<void**>(unknown164) = 0;
-    *reinterpret_cast<void**>(unknown164 + 4) = 0;
+    unknown164Pointer = 0;
+    unknown168Pointer = 0;
     skinMesh = 0;
     shadowNode = 0;
     rightHand = 0;
@@ -729,10 +729,10 @@ void NPC::goToVehicle(Vehicle* value, bool left, bool run, bool force, bool flag
     if (vehicle != value && value) {
         setVehicle(value);
         if (left) {
-            *reinterpret_cast<irr::scene::ISceneNode**>(unknown192) = vehicle->leftDoor;
+            entryDoor = vehicle->leftDoor;
             setDestination(vehicle->leftDoor->getAbsolutePosition(), 100);
         } else {
-            *reinterpret_cast<irr::scene::ISceneNode**>(unknown192) = vehicle->rightDoor;
+            entryDoor = vehicle->rightDoor;
             setDestination(vehicle->rightDoor->getAbsolutePosition(), 100);
         }
         if (run)
@@ -760,9 +760,24 @@ void NPC::Load(const Structs::NPC& data)
     unknown412 = data.unknown84;
     searchRadiusSquared = static_cast<float>(data.unknown108);
     if (__builtin_expect(s_nodePoolID[objectType] == 255, 1)) {
-        bindAnimation(npcAnimationRootName, *reinterpret_cast<AnimationInfo*>(unknown164), 0);
+        bindAnimation(npcAnimationRootName, *reinterpret_cast<AnimationInfo*>(&unknown164Pointer), 0);
         leftHand = sceneNode->getSceneNodeFromUID(npcLeftWeaponNodeName);
         rightHand = sceneNode->getSceneNodeFromUID(npcRightWeaponNodeName);
         GS3DStuff::SetColor(sceneNode, irr::video::SColor(255, 63, 63, 63), GS3DStuff::Color3);
     }
+}
+
+#include "../core/VideoDriver.h"
+void NPC::debug(irr::video::IVideoDriver* driver)
+{
+    irr::core::vector3d<float> position = GetPosition();
+    position.Z = 25.0f + position.Z;
+    irr::core::vector3d<float> a(position.X - 50.0f, position.Y - 50.0f, position.Z);
+    irr::core::vector3d<float> b(position.X - 50.0f, position.Y + 50.0f, position.Z);
+    irr::core::vector3d<float> c(position.X + 50.0f, position.Y + 50.0f, position.Z);
+    irr::core::vector3d<float> d(position.X + 50.0f, position.Y - 50.0f, position.Z);
+    driver->draw3DLine(a, b, irr::video::SColor(255, 0, 0, 0));
+    driver->draw3DLine(b, c, irr::video::SColor(255, 0, 0, 0));
+    driver->draw3DLine(c, d, irr::video::SColor(255, 0, 0, 0));
+    driver->draw3DLine(d, a, irr::video::SColor(255, 0, 0, 0));
 }

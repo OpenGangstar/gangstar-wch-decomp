@@ -571,11 +571,11 @@ void Character::getOutOfVehicle(bool left, bool markExit)
         return;
 
     if (markExit)
-        unknown289[0] = 1;
+        unknown289 = 1;
     vehicle->showHighlight(-1);
     movementFlags |= 0x10000;
     vehicle->immobilize();
-    unknown248[8] = 1;
+    unknown256 = 1;
     movementFlags &= ~0x400u;
     getPhysicAttributes()->SetPhysicInfo(*vehicle->getPhysicAttributes()->info, 0);
     show();
@@ -1080,3 +1080,97 @@ void Character::updatePosition(irr::core::quaternion rotation)
         shadowNode->setRotation(shadowRotation);
     }
 }
+
+extern "C" {
+extern irr::collada::CColladaFactory _ZZN12CGameFactory11getInstanceEvE2gf __attribute__((weak));
+void _ZN12CGameFactoryD1Ev(irr::collada::CColladaFactory*) __attribute__((weak));
+static void __tcf_1() __attribute__((used));
+static void __tcf_1()
+{
+    _ZN12CGameFactoryD1Ev(&_ZZN12CGameFactory11getInstanceEvE2gf);
+}
+}
+
+bool Character::attack()
+{
+    switch (getWeapon()->getWeaponType()) {
+    case 0:
+        if (target && (s_type[target->getObjectType()] == 5 || s_type[target->getObjectType()] == 8)
+            && static_cast<Character*>(target)->isDown()
+            && isTargetInRange(getWeapon()->getRange() * 2, getWeapon()->getCone()))
+            return kick();
+        return punch();
+    case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8:
+        return shoot(1.0f, false);
+    default: return false;
+    }
+}
+
+bool Character::kick()
+{
+    Character* victim;
+    bool kicked = isCurrentAnimation(89);
+    if (kicked) {
+        movementFlags |= 0x10000000u;
+        setAnimation(s_fistsCombatSequence[kickIndex], 1.0f, false, false, false);
+    } else if (isCurrentAnimation(getSpecificAnimation(165))) {
+        movementFlags |= 0x1c000000u;
+        setAnimation(s_fistsCombatSequence[5], 1.0f, false, false, false);
+        kickIndex = 5;
+    } else {
+        goto done;
+    }
+    victim = static_cast<Character*>(target);
+    if (!victim->isDying() && victim->currentAnimation != 164 && !victim->isDead()
+        && (!victim->isDown() || (unsigned)(currentAnimation - 90) <= 1u)) {
+        showBloodSplash(irr::core::vector3d<float>(target->GetPosition().X, target->GetPosition().Y, target->GetPosition().Z),
+            irr::core::vector3d<float>(0.0f, 0.0f, 0.0f));
+        victim->punched(currentAnimation, getWeapon()->getDamage(), this);
+        nextKick();
+    }
+    kicked = true;
+done:
+    movementFlags &= ~0x20000000u;
+    return kicked;
+}
+
+Character::~Character()
+{
+    if (__builtin_expect(s_nodePoolID[objectType] == 255, 1) && shadowNode)
+        Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode()->removeChild(shadowNode);
+    if (bloodPuddle) {
+        s_bloodpuddle = -1;
+        bloodPuddle = 0;
+    }
+}
+
+void Character::goToVehicle(Vehicle* value, bool left, bool run, bool, bool)
+{
+    setVehicle(value);
+    irr::core::vector3d<float> point;
+    if (left)
+        point = vehicle->leftDoor->getAbsolutePosition() + vehicle->GetRight() * 75.0f;
+    else
+        point = vehicle->rightDoor->getAbsolutePosition() + (-vehicle->GetRight()) * 75.0f;
+    if (run)
+        runToLocation(point);
+    else
+        walkToLocation(point);
+}
+
+Character::Character(int type)
+    : LevelObject(type), unknown56(0.0f), unknown60(0.0f), unknown64(0.0f),
+      unknown68(0.0f), unknown72(0.0f), unknown76(0.0f), destinationLimitSquared(10000),
+      animationSpeedMultiplier(1), unknown156(0.0f), shadowBaseHeight(0.0f),
+      unknown164Pointer(0), unknown168Pointer(0), skinMesh(0), shadowNode(0), collisionBody(0),
+      vehicle(0), entryDoor(0), lastHitVehicle(0), unknown212(0), maxHealth(100), health(100),
+      movementFlags(0), nextAnimation(-1), unknown248(0), unknown252(100), unknown256(false),
+      target(0), unknown264(0), turnSpeed(1.0f), turning(false), unknown289(false), bloodPuddle(0)
+{
+    punchIndex = 0;
+    unknown228 = 0;
+    kickIndex = 5;
+    setAnimation(-1, 1.0f, false, false, false);
+}
+
+#include "PlayerEvent.h"

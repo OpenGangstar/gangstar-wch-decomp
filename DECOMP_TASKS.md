@@ -761,11 +761,25 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002fe169 | NPC::goToVehicle | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x003009d1 | NPC::SetTarget | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fe615 | NPC::triggerCombatSFX | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fdbed | NPC::debug | lock_init | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdbed | NPC::debug | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fde51 | NPC::isUnderCar | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002f7415 | Character::attack | camera_tap | REVIEW | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f1839 | Character.cpp::__tcf_1 | lock_init | REVIEW | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f710d | Character::punch | camera_tap | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f6fb9 | Character::kick | lock_init | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f2af5 | Character destructor (D1/D2 aliases) | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f2a79 | Character deleting destructor (D0) | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f7415 | Character::attack | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f1839 | Character.cpp::__tcf_1 | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f710d | Character::punch | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f6fb9 | Character::kick | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2af5 | Character destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2a79 | Character deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f6c45 | Character::punched | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f26ad | Character::ready | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f512d | EvPlayer deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f39e1 | Character::runToTarget | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2d95 | Character::die | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2185 | Character::debug | lock_init | REVIEW | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f64b9 | Character::hijacked | vehicle_side | REVIEW | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f23fd | Character::bindAnimation | camera_tap | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f1d91 | Character::setAnimation(int, float, bool, bool, bool) | lock_init | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f6001 | Character::exitVehicle | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |

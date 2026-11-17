@@ -105,3 +105,5 @@ SECTIONS
     .character_set_camera_offset 0x002f1770 : { *ai-startup-character.o(.text._ZN9Character15setCameraOffsetERKN3irr4core8vector3dIfEE) }
     .character_set_destination 0x002f2104 : { *ai-startup-character.o(.text._ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi) }
 }
+
+INCLUDE config/linker/CharacterRecoveredSections.ld

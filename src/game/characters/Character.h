@@ -24,6 +24,13 @@ public:
     void bindAnimation(const char*, AnimationInfo&, irr::scene::ISceneNode*);
     Character(int type);
     virtual ~Character();
+    virtual void Update(int elapsed);
+    virtual void applyDamage(int, LevelObject*, bool) = 0;
+    bool attack();
+    bool punch();
+    bool kick();
+    void punched(int, int, LevelObject*);
+    static int s_fistsCombatSequence[7];
     virtual void OnSpawn();
     virtual void OnDespawn();
     void initInVehicle(Vehicle* vehicle);
@@ -69,7 +76,7 @@ public:
     virtual void setNextAnimation(int id, int speed, bool a, bool b, bool c);
     // Retail slots 40 through 55. The remaining slots are pending.
     virtual bool setAnimation(int id, float speed, bool loop, bool b, bool c);
-    virtual void shoot(float time, bool pressed);
+    virtual bool shoot(float time, bool pressed);
     virtual void die(bool flag);
     virtual void updatePhysic(int elapsed);
     virtual void updateSceneNode(int elapsed);
@@ -112,7 +119,7 @@ private:
     int getSpecificAnimation(int id);
     unsigned short collisionMask;
     short collisionGroup;
-    unsigned char unknown56[24];
+    float unknown56, unknown60, unknown64, unknown68, unknown72, unknown76;
     irr::core::vector3d<float> cameraOffset;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;
@@ -127,15 +134,16 @@ private:
     bool animationLoops;
     unsigned char unknown149[3];
     int animationSpeedMultiplier;
-    unsigned char unknown156[4];
+    float unknown156;
     float shadowBaseHeight;
-    unsigned char unknown164[8];
+    void* unknown164Pointer;
+    void* unknown168Pointer;
     void* skinMesh;
     irr::scene::ISceneNode* shadowNode;
     b2Body* collisionBody;
     Character* lockTarget;
     Vehicle* vehicle;
-    unsigned char unknown192[4];
+    irr::scene::ISceneNode* entryDoor;
 public:
     Vehicle* lastHitVehicle;
 private:
@@ -144,19 +152,23 @@ private:
     int maxHealth;
     int health;
     int punchIndex;
-    unsigned char unknown228[4];
+    int unknown228;
     int kickIndex;
     unsigned int movementFlags;
     int driverBehavior;
     int nextAnimation;
-    unsigned char unknown248[12];
+    int unknown248;
+    int unknown252;
+    bool unknown256;
+    unsigned char unknown257[3];
     LevelObject* target;
     int unknown264;
     int spawnType;
     irr::core::vector3d<float> turnDirection;
     float turnSpeed;
     bool turning;
-    unsigned char unknown289[3];
+    bool unknown289;
+    unsigned char unknown290[2];
     irr::scene::ISceneNode* bloodPuddle;
     void removeBloodPuddle();
     void cleanPhysic();
