@@ -36,6 +36,37 @@ SoundFade::SoundFade()
     remainingFrames = 0;
 }
 
+CarSounds::~CarSounds()
+{
+    StopAllSounds();
+    if (engineSoundsEnabled) {
+        delete[] onEngineIds;
+        delete[] onEngineChannels;
+        if (engineArray88)
+            ::operator delete[](engineArray88);
+        if (engineArray92)
+            ::operator delete[](engineArray92);
+        if (engineArray96)
+            ::operator delete[](engineArray96);
+        delete onFade;
+        delete[] offEngineIds;
+        delete[] offEngineChannels;
+        if (engineArray124)
+            ::operator delete[](engineArray124);
+        if (engineArray128)
+            ::operator delete[](engineArray128);
+        if (engineArray132)
+            ::operator delete[](engineArray132);
+        delete offFade;
+    }
+    if (turboEnabled) {
+        delete[] auxiliaryTurboIds;
+        delete[] auxiliaryTurboChannels;
+        if (turboArray284)
+            ::operator delete[](turboArray284);
+    }
+}
+
 SoundFade::~SoundFade()
 {
 }

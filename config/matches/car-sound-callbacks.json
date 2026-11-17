@@ -25,6 +25,8 @@
     "source": "src/game/vehicles/CarSounds.cpp",
     "linker_script": "config/linker/CarSoundCallbacks.ld",
     "functions": [
+        "_ZN9CarSoundsD1Ev",
+        "_ZN9CarSoundsD2Ev",
         "_ZN9CarSoundsC1Ev",
         "_ZN9CarSoundsC2Ev",
         "_ZN9CarSounds13StopAllSoundsEv",

@@ -6,6 +6,7 @@ __aeabi_fmul = 0x001c4724;
 __aeabi_fsub = 0x001c4328;
 __aeabi_f2iz = 0x001c44cc;
 _ZdaPv = 0x001c461c;
+_ZdlPv = 0x001c42b0;
 _Znaj = 0x001c3ff8;
 __aeabi_fadd = 0x001c4154;
 __aeabi_i2f = 0x001c41e4;
@@ -21,6 +22,7 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_f2d = 0x001c48f8;
 SECTIONS
 {
+    .car_sounds_dtor 0x003502a8 : { *car-sound-callbacks.o(.text._ZN9CarSoundsD1Ev .text._ZN9CarSoundsD2Ev) }
     .car_sounds_ctor 0x0034f2a8 : { *car-sound-callbacks.o(.text._ZN9CarSoundsC1Ev .text._ZN9CarSoundsC2Ev) }
     .car_sounds_stop_all 0x0034f3a4 : { *car-sound-callbacks.o(.text._ZN9CarSounds13StopAllSoundsEv) }
     .car_sounds_rumble 0x0034f9a4 : { *car-sound-callbacks.o(.text._ZN9CarSounds17UpdateRumbleSoundEv) }
