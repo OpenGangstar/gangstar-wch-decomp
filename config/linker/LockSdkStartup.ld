@@ -9,6 +9,7 @@ SECTIONS
     .sdk_startup_function_0 0x002fd024 : { *sdk-startup-lock.o(.text.__tcf_2) }
     .lock_clean 0x002fd054 : { *sdk-startup-lock.o(.text._ZN4Lock5cleanEv) }
     .lock_get_instance 0x002fd1cc : { *sdk-startup-lock.o(.text._ZN4Lock11getInstanceEv) }
+    .lock_set_target 0x002fd204 : { *sdk-startup-lock.o(.text._ZN4Lock9setTargetEP11LevelObject) }
     .sdk_startup_function_1 0x002fd3c0 : { *sdk-startup-lock.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x002fd42c : { *sdk-startup-lock.o(.text._GLOBAL__I__ZN4Lock6s_lockE) }
     .sdk_startup_storage_0 0x004b8010 (NOLOAD) : { *sdk-startup-lock.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }

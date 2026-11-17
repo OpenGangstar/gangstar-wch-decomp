@@ -27,6 +27,7 @@
     "functions": [
         "_ZN4Lock5cleanEv",
         "_ZN4Lock11getInstanceEv",
+        "_ZN4Lock9setTargetEP11LevelObject",
         {
             "name": "__tcf_2",
             "address": "0x002fd025"
@@ -52,5 +53,8 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb"]
+    "external_thumb_functions": [
+        "_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb",
+        "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE"
+    ]
 }
