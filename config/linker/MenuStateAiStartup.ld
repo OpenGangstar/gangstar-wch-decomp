@@ -4,6 +4,7 @@ strcpy = 0x001c3fd4;
 __cxa_pure_virtual = 0;
 INCLUDE build/matches/ai-startup-menustate/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__stack_chk_fail = 0x001c42e0;
 __aeabi_atexit = 0x001c494c;
 _ZN28retail_menustate_transitions16civPassive_transE = 0x0041a084;
 _ZN28retail_menustate_transitions17scriptedNpc_transE = 0x0041a1b0;
@@ -134,6 +135,13 @@ SECTIONS
     .info_help_complete_destructor 0x002e9b28 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelpD1Ev .text._ZN5Menus8InfoHelpD2Ev) }
     .info_help_vtable 0x004a91b8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8InfoHelpE) }
     .options_constructor 0x002e80a4 : { *ai-startup-menustate.o(.text._ZN5Menus7OptionsC1EPKc .text._ZN5Menus7OptionsC2EPKc) }
+    .optionGameSettings_constructor 0x002e80e4 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettingsC1Ev .text._ZN5Menus18OptionGameSettingsC2Ev) }
+    .optionGameSettings_name 0x00418da0 : { *ai-startup-menustate.o(.rodata.optionGameSettingsName) }
+    .option_game_settings_deleting_destructor 0x002e9d9c : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettingsD0Ev) }
+    .option_game_settings_complete_destructor 0x002e9dc8 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettingsD1Ev .text._ZN5Menus18OptionGameSettingsD2Ev) }
+    .option_game_settings_vtable 0x004a9248 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus18OptionGameSettingsE) }
+    .scriptChapterStartup_path 0x00419ea0 : { *ai-startup-menustate.o(.rodata.scriptChapterStartupPath) }
+    .data_stream_dtor 0x002d3654 : { *ai-startup-menustate.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .optionLanguage_constructor 0x002e81f8 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguageC1Ev .text._ZN5Menus14OptionLanguageC2Ev) }
     .optionLanguage_name 0x00419ec0 : { *ai-startup-menustate.o(.rodata.optionLanguageName) }
     .optionControls_constructor 0x002e823c : { *ai-startup-menustate.o(.text._ZN5Menus14OptionControlsC1Ev .text._ZN5Menus14OptionControlsC2Ev) }

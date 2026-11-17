@@ -12,10 +12,13 @@
 #include "../core/LocalStartupStorage.h"
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
+#include "../core/NativeStdio.h"
 #include "../ai/StateMachine.h"
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
 #include "../audio/SoundManager.h"
+#include "../persistence/DataStream.h"
+#include "../world/ResStream.h"
 
 extern "C" {
 void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
@@ -102,6 +105,19 @@ public:
     virtual inline ~Options() __attribute__((used));
     virtual void GotFocus();
     virtual bool Notify(const MenuWidget* widget, int event);
+};
+
+class OptionGameSettings : public Options {
+public:
+    OptionGameSettings();
+    virtual ~OptionGameSettings();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
+
+private:
+    int selections[8];
+    int chapterStartup[6];
 };
 
 class OptionLanguage : public Options {
@@ -358,6 +374,26 @@ Menus::Options::Options(const char* name)
     ids[0] = 17;
     ids[1] = 19;
     widgetIds.append(ids, 2);
+}
+
+static const char optionGameSettingsName[] = "OptionGameSettings";
+static const char scriptChapterStartupPath[] = "./ScriptChapterStartup.array";
+
+Menus::OptionGameSettings::OptionGameSettings()
+    : Options(optionGameSettingsName)
+{
+    int ids[2];
+    ids[0] = 18;
+    ids[1] = 26;
+    widgetIds.append(ids, 2);
+    memset(selections, 0, sizeof(selections));
+    ResStream resource(scriptChapterStartupPath, 1);
+    DataStream stream(resource, DataStream::BigEndian);
+    const int count = stream.ReadInt();
+    int* chapter = chapterStartup;
+    for (int i = 0; i < count; ++i)
+        *chapter++ = stream.ReadInt();
+    stream.Stream::Close();
 }
 
 static const char optionLanguageName[] = "OptionLanguage";
@@ -637,6 +673,10 @@ Menus::InfoHelp::~InfoHelp()
 }
 
 Menus::InfoAbout::~InfoAbout()
+{
+}
+
+Menus::OptionGameSettings::~OptionGameSettings()
 {
 }
 
