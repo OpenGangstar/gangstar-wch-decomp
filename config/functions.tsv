@@ -10279,7 +10279,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd079	0x154	Lock.cpp	game	core	pending	_ZN4LockC2EPKcPN3irr5scene10ISceneNodeEb	Lock::Lock(char const*, irr::scene::ISceneNode*, bool)
 0x002fd079	0x154	Lock.cpp	game	core	pending	_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb	Lock::Lock(char const*, irr::scene::ISceneNode*, bool)
 0x002fd1cd	0x38	Lock.cpp	game	core	matched	_ZN4Lock11getInstanceEv	Lock::getInstance()
-0x002fd205	0x8c	Lock.cpp	game	core	pending	_ZN4Lock9setTargetEP11LevelObject	Lock::setTarget(LevelObject*)
+0x002fd205	0x8c	Lock.cpp	game	core	matched	_ZN4Lock9setTargetEP11LevelObject	Lock::setTarget(LevelObject*)
 0x002fd291	0x130	Lock.cpp	game	core	pending	_ZN4Lock6renderEv	Lock::render()
 0x002fd3c1	0x6c	Lock.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fd42d	0x14	Lock.cpp	game	core	matched	_GLOBAL__I__ZN4Lock6s_lockE	_GLOBAL__I__ZN4Lock6s_lockE

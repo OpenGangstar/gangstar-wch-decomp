@@ -12,6 +12,9 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "Lock.h"
+#include "Vector3.h"
+#include "../rendering/CustomBillboardSceneNode.h"
+#include "../world/LevelObject.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -50,6 +53,33 @@ Lock* Lock::getInstance()
     if (!s_lock)
         s_lock = new Lock(lockResource, 0, true);
     return s_lock;
+}
+
+namespace {
+struct LockTargetAccess : LevelObject {
+    static irr::scene::ISceneNode* getSceneNode(const LevelObject& object)
+    {
+        // Apply the protected member pointer to the original LevelObject.
+        return object.*(&LockTargetAccess::sceneNode);
+    }
+};
+}
+
+void Lock::setTarget(LevelObject* object)
+{
+    target = object;
+    if (object) {
+        if (LevelObject::s_type[object->getObjectType()] == 3) {
+            billboard->setScale(irr::core::vector3d<float>(2.0f, 2.0f, 2.0f));
+            billboard->setParentOffsetZ(100);
+        } else {
+            billboard->setScale(irr::core::vector3d<float>(1.0f, 1.0f, 1.0f));
+            billboard->setParentOffsetZ(0);
+        }
+        billboard->setParent(LockTargetAccess::getSceneNode(*target));
+    } else {
+        billboard->setParent(0);
+    }
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));

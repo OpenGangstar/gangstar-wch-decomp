@@ -13,9 +13,11 @@ class CustomBillboardSceneNode : public CustomBillboardPrefix, public irr::colla
     unsigned int unknown468[9];
     irr::scene::ISceneNode* billboardParent;
     bool animationActive;
-    unsigned char unknown509[19];
+    unsigned char unknown509[15];
+    int parentOffsetZ;
 public:
     void activateAnimation() { animationActive = true; }
+    void setParentOffsetZ(int offset) { parentOffsetZ = offset; }
     void setParent(irr::scene::ISceneNode* parent);
     CustomBillboardSceneNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
 };
