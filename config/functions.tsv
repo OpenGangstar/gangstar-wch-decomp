@@ -10438,7 +10438,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00302241	0x120	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13orientTowardsEN3irr4core8vector3dIfEE	PlayerTest::orientTowards(irr::core::vector3d<float>)
 0x00302361	0x26c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest6moveToERK7Vehicle	PlayerTest::moveTo(Vehicle const&)
 0x003025cd	0xb8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14isFacingTargetEv	PlayerTest::isFacingTarget()
-0x00302685	0x32	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15UpdateSceneNodeEv	PlayerTest::UpdateSceneNode()
+0x00302685	0x32	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest15UpdateSceneNodeEv	PlayerTest::UpdateSceneNode()
 0x003026b9	0x9c0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest4moveEff	PlayerTest::move(float, float)
 0x00303079	0x29c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest5photoEP6Weapon	PlayerTest::photo(Weapon*)
 0x00303315	0x2bc	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_	PlayerTest::getAttackableTarget(LevelObject*, Weapon*, LevelObject*)

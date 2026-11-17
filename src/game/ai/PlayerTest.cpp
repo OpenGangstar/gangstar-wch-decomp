@@ -24,6 +24,7 @@
 #include "../core/GameEventMethods.h"
 #include "../core/Physics.h"
 #include "../core/SceneNode.h"
+#include "../core/Quaternion.h"
 #include "../core/CameraManager.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
@@ -310,6 +311,16 @@ void PlayerTest::addDistanceDriven(float distance)
         currentDistanceDriven = 0;
         AchievementManager::s_achievementManager->recordKmDriven();
     }
+}
+
+void PlayerTest::UpdateSceneNode()
+{
+    if (_GetTarget())
+        isFacingTarget();
+
+    SavePositionInterface* position = this;
+    Character* character = reinterpret_cast<Character*>(position);
+    character->updatePosition(position->GetRotation());
 }
 
 void PlayerTest::SetSpeed()

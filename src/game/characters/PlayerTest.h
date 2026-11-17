@@ -136,6 +136,7 @@ public:
     void SetSpeed();
     void Update();
     void UpdateSceneNode();
+    bool isFacingTarget();
     unsigned char unknown8[12];
     irr::scene::ISceneNode* sceneNode;
     unsigned char unknown24[156];

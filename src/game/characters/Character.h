@@ -87,6 +87,8 @@ private:
     void positionInVehicle(bool left);
     void show();
     friend class NPC;
+    friend class PlayerTest;
+    void updatePosition(irr::core::quaternion rotation);
     friend class Vehicle;
     static irr::scene::ITimelineController* s_timelineController;
     static bool b_isBloodOn;
