@@ -17,6 +17,7 @@
 #include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"
 #include "../input/CControlManager.h"
+#include "../world/LevelObject.h"
 
 static inline PlayerTest* getSceneOwner(SavePositionInterface* owner)
 {
@@ -59,6 +60,22 @@ void FPSCamera::enter()
 
 FPSCamera::~FPSCamera()
 {
+}
+
+void FPSCamera::init(LevelObject* object, int)
+{
+    owner = reinterpret_cast<SavePositionInterface*>(object);
+    if (object) {
+        const irr::core::vector3d<float> origin = object->GetPosition();
+        const irr::core::matrix4& matrix =
+            reinterpret_cast<LevelObject*>(owner)->sceneNode->getAbsoluteTransformation();
+        const irr::core::vector3d<float> up(matrix[8], matrix[9], matrix[10]);
+        setPosition(up * 75.0f + origin);
+        const irr::core::vector3d<float> eyeTarget = reinterpret_cast<LevelObject*>(owner)->GetPosition();
+        const irr::core::vector3d<float> front = reinterpret_cast<LevelObject*>(owner)->GetFront();
+        setLookAt(front * 300.0f + eyeTarget);
+    }
+    flag60 = false;
 }
 
 void FPSCamera::exit()
