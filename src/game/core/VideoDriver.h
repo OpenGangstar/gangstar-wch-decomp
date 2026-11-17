@@ -11,6 +11,7 @@ enum E_PRIMITIVE_TYPE { EPT_TRIANGLES = 6 };
 namespace irr { namespace video {
 // Observed fork vtable prefix. Do not instantiate as a complete engine object.
 enum E_TRANSFORMATION_STATE { ETS_VIEW, ETS_WORLD, ETS_PROJECTION };
+enum E_ORTHO_ORIENTATION { OrthoOrientation0, OrthoOrientation1, OrthoOrientation2, OrthoOrientation3 };
 enum E_VERTEX_TYPE { EVT_STANDARD = 0 };
 enum E_INDEX_TYPE { EIT_16BIT = 0 };
 struct SMaterial;
@@ -103,9 +104,9 @@ public:
     virtual void unknown100();
     virtual void unknown101();
     virtual void unknown102();
-    virtual void unknown103();
+    virtual void setOrthoOrientation(E_ORTHO_ORIENTATION orientation);
     virtual void unknown104();
-    virtual void unknown105();
+    virtual void setOrientation3D(E_ORTHO_ORIENTATION orientation);
     virtual void unknown106();
     virtual void unknown107();
     virtual void unknown108();

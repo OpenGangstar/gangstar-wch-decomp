@@ -826,3 +826,14 @@ static void __tcf_10()
         ::operator delete(nodes.data);
 }
 }
+
+int GS3DStuff::s_orientation = 3;
+bool GS3DStuff::b_isAutoOri = true;
+
+void GS3DStuff::SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION orientation)
+{
+    s_orientation = orientation;
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+    driver->setOrthoOrientation(static_cast<irr::video::E_ORTHO_ORIENTATION>(s_orientation));
+    driver->setOrientation3D(static_cast<irr::video::E_ORTHO_ORIENTATION>(s_orientation));
+}

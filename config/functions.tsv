@@ -9173,7 +9173,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dc135	0x3e	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff18SetMaterialTextureEPN3irr5scene10ISceneNodeEPNS0_5video8ITextureE	GS3DStuff::SetMaterialTexture(irr::scene::ISceneNode*, irr::video::ITexture*)
 0x002dc175	0x98	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE	GS3DStuff::FindAMesh(irr::scene::ISceneNode*)
 0x002dc20d	0x7c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE	GS3DStuff::AddRenderables(irr::scene::ISceneNode*, irr::core::array<irr::scene::ISceneNode*, irr::core::irrAllocator<irr::scene::ISceneNode*> >&, irr::scene::ESCENE_NODE_TYPE)
-0x002dc289	0x44	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE	GS3DStuff::SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION)
+0x002dc289	0x44	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE	GS3DStuff::SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION)
 0x002dc2cd	0x60	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE	GS3DStuff::CleanNode(irr::scene::ISceneNode*)
 0x002dc32d	0x34	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6wakeupEPK12StateMachine	GS3DStuff::wakeup(StateMachine const*)
 0x002dc361	0x34	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6resumeEPK12StateMachine	GS3DStuff::resume(StateMachine const*)

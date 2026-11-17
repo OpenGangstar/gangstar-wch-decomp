@@ -1,4 +1,7 @@
 SECTIONS {
+    .gs_set_current_orientation 0x002dc288 : { *gs3d-stuff.o(.text._ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE) }
+    .gs_orientation 0x004b539c : { *gs3d-stuff.o(.data._ZN9GS3DStuff13s_orientationE) }
+    .gs_auto_orientation 0x004b53a0 : { *gs3d-stuff.o(.data._ZN9GS3DStuff11b_isAutoOriE) }
     .gs_force_despawn_object 0x002db720 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12forceDespawnEP11LevelObject) }
     .gs_force_despawn_type 0x002dc394 : { *gs3d-stuff.o(.text._ZN9GS3DStuff12forceDespawnEi) }
     .gs_object_manager 0x004b6984 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff3gomE) }
