@@ -76,7 +76,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | lock_init | REVIEW | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030b22d | Vehicle::getNearestDoorDummy | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00307b88 | Vehicle::getMarkerType (secondary thunk) | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00307b88 | Vehicle::getMarkerType (secondary thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003090e9 | Vehicle::_cleanupSounds | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00349051 | TrailMgr::FreeTrail | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00348f95 | TrailMgr::TrailMgr (C1/C2 aliases) | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
@@ -103,5 +103,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00348ba5 | Trail::Update (point overload) | — | COMPLETED | 100% | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode | vehicle_side | BLOCKED | — | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x00348735 | Trail::BuildPoint | camera_tap | BLOCKED | — | src/game/world/Trail.cpp |
-| libsanangeles.so | 0x0030a731 | Vehicle::isDoorClear | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030ae3d | Vehicle::getCollisionRect | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030a731 | Vehicle::isDoorClear | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030ae3d | Vehicle::getCollisionRect | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030822d | Vehicle::UpdateCarSounds | camera_tap | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00307bcd | Vehicle::_adjustEnginePitch | lock_init | REVIEW | — | src/game/vehicles/Vehicle.cpp |
