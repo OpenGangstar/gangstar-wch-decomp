@@ -13,7 +13,8 @@
 #include "../core/LocalStartupText.h"
 #include "Lock.h"
 #include "Vector3.h"
-#include "../rendering/CustomBillboardSceneNode.h"
+#include "../app/Application.h"
+#include "../rendering/GameBillboardFactory.h"
 #include "../world/LevelObject.h"
 
 void operator delete(void*) throw();
@@ -47,6 +48,26 @@ void Lock::clean()
 }
 
 static const char lockResource[] __attribute__((section(".rodata.lock_resource"))) = "./sfx_lock.bdae";
+
+Lock::Lock(const char* resource, irr::scene::ISceneNode*, bool)
+    : target(0)
+{
+    irr::IrrlichtDevice* device = Application::GetInstance()->GetDevice();
+    device->getVideoDriver();
+    irr::scene::ISceneManager* sceneManager = device->getSceneManager();
+    CGameBillboardFactory factory;
+    billboard = static_cast<CustomBillboardSceneNode*>(
+        irr::collada::CColladaDatabase::constructScene(resource, &factory));
+    billboard->setLength(1000);
+    billboard->setChildrenMaterialType(billboard, static_cast<irr::video::E_MATERIAL_TYPE>(14));
+    billboard->setChildrenMaterialFlag(billboard, irr::video::MaterialFlag128, false);
+    billboard->setChildrenMaterialFlag(billboard, irr::video::MaterialFlag256, false);
+    billboard->setChildrenMaterialFlag(billboard, irr::video::MaterialFlag512, false);
+    billboard->setChildrenMaterialFlag(billboard, irr::video::MaterialFlag2, false);
+    sceneManager->getRootSceneNode()->addChild(billboard);
+    billboard->drop();
+    unknown0 = device->getTimer()->getRealTime();
+}
 
 Lock* Lock::getInstance()
 {

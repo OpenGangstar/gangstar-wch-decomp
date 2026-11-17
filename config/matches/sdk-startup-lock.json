@@ -26,6 +26,8 @@
     "linker_script": "config/linker/LockSdkStartup.ld",
     "functions": [
         "_ZN4Lock5cleanEv",
+        "_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb",
+        "_ZN4LockC2EPKcPN3irr5scene10ISceneNodeEb",
         "_ZN4Lock11getInstanceEv",
         "_ZN4Lock9setTargetEP11LevelObject",
         {
@@ -43,6 +45,10 @@
     ],
     "sections": [
         ".lock_resource",
+        ".lock_factory_create",
+        ".lock_factory_delete",
+        ".lock_factory_destructor",
+        ".lock_factory_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -54,7 +60,12 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb",
-        "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE",
+        "_ZN24CustomBillboardSceneNode9setLengthEj",
+        "_ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
+        "_ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
+        "_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
+        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE"
     ]
 }

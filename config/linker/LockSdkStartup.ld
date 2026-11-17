@@ -6,8 +6,13 @@ _Znwj = 0x001c4814;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .lock_factory_create 0x002fc25c : { *sdk-startup-lock.o(.gnu.linkonce.t._ZN21CGameBillboardFactory11createSceneERKN3irr7collada16CColladaDatabaseE) }
+    .lock_factory_delete 0x002fce60 : { *sdk-startup-lock.o(.gnu.linkonce.t._ZN21CGameBillboardFactoryD0Ev) }
+    .lock_factory_destructor 0x002fceb0 : { *sdk-startup-lock.o(.gnu.linkonce.t._ZN21CGameBillboardFactoryD1Ev .gnu.linkonce.t._ZN21CGameBillboardFactoryD2Ev) }
+    .lock_factory_vtable 0x004aad20 : { *sdk-startup-lock.o(.gnu.linkonce.d.rel.ro._ZTV21CGameBillboardFactory) }
     .sdk_startup_function_0 0x002fd024 : { *sdk-startup-lock.o(.text.__tcf_2) }
     .lock_clean 0x002fd054 : { *sdk-startup-lock.o(.text._ZN4Lock5cleanEv) }
+    .lock_ctor 0x002fd078 : { *sdk-startup-lock.o(.text._ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb .text._ZN4LockC2EPKcPN3irr5scene10ISceneNodeEb) }
     .lock_get_instance 0x002fd1cc : { *sdk-startup-lock.o(.text._ZN4Lock11getInstanceEv) }
     .lock_set_target 0x002fd204 : { *sdk-startup-lock.o(.text._ZN4Lock9setTargetEP11LevelObject) }
     .sdk_startup_function_1 0x002fd3c0 : { *sdk-startup-lock.o(.text._Z41__static_initialization_and_destruction_0ii) }

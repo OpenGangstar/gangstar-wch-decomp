@@ -24,20 +24,10 @@
 #include "../hud/CHudManager.h"
 #include "../audio/SoundManager.h"
 #include "../core/CameraManager.h"
-#include "../rendering/CustomBillboardSceneNode.h"
+#include "../rendering/GameBillboardFactory.h"
 #include "../core/Array.h"
 #include "../core/Vector3.h"
 #include "../core/LocalStartupStorage.h"
-
-// The retail factory derives directly from the engine factory, not CGameFactory.
-class CGameBillboardFactory : public irr::collada::CColladaFactory {
-public:
-    virtual ~CGameBillboardFactory() {}
-    virtual void* createScene(const irr::collada::CColladaDatabase& database)
-    {
-        return new CustomBillboardSceneNode(database, 0);
-    }
-};
 
 int Item::s_numHealthCrate;
 int Item::s_numArmorVest;
