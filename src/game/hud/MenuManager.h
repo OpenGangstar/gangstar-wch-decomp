@@ -28,8 +28,7 @@ public:
     void showTexts();
     void hideTexts();
     void popAll(bool);
-    void* getState(const char* name) const;
-    bool isCurrentState(const char* name) const;
+    void* getState(const char*) const;
     void push(const char*, bool);
     void resetWidgetVisibility();
     void MenuPause();
