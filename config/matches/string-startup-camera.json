@@ -25,6 +25,16 @@
     "source": "src/game/core/Camera.cpp",
     "linker_script": "config/linker/CameraStringStartup.ld",
     "functions": [
+        "_ZN6Camera5enterEv",
+        "_ZN6Camera4exitEv",
+        "_ZN6CameraD1Ev",
+        "_ZN6CameraD2Ev",
+        "_ZNK6Camera11getPositionEv",
+        "_ZNK6Camera9getLookAtEv",
+        "_ZN6Camera9setLookAtERKN3irr4core8vector3dIfEE",
+        "_ZN6CameraC1Ev",
+        "_ZN6CameraC2Ev",
+        "_ZN6Camera11setPositionERKN3irr4core8vector3dIfEE",
         {
             "name": "__tcf_0",
             "address": "0x00331ca1"
@@ -39,6 +49,7 @@
         }
     ],
     "sections": [
+        ".camera_vtable",
         ".string_startup_function_0",
         ".string_startup_function_1",
         ".string_startup_function_2",

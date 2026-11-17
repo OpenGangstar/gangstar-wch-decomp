@@ -8,6 +8,9 @@ namespace Structs { struct SceneCamera; }
 class SceneCamera : public Camera, public Transformation {
 public:
     SceneCamera(int type);
+    virtual void init(LevelObject* target, int mode);
+    virtual void update(float elapsed);
+    virtual void debug(irr::video::IVideoDriver* driver);
     void Load(const Structs::SceneCamera&);
 private:
     unsigned char unknown112[16];

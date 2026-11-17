@@ -11687,17 +11687,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00331a09	0x108	WeaponManager.cpp	game	combat	matched	_ZN13WeaponManager28getKeepWeaponsWhenBustedCostEv	WeaponManager::getKeepWeaponsWhenBustedCost()
 0x00331b11	0x144	WeaponManager.cpp	game	combat	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00331c55	0x14	WeaponManager.cpp	game	combat	matched	_GLOBAL__I__ZN13WeaponManagerC2Ev	_GLOBAL__I__ZN13WeaponManagerC2Ev
-0x00331c69	0x2	Camera.cpp	game	core	pending	_ZN6Camera5enterEv	Camera::enter()
-0x00331c6d	0x2	Camera.cpp	game	core	pending	_ZN6Camera4exitEv	Camera::exit()
-0x00331c71	0x18	Camera.cpp	game	core	pending	_ZN6CameraD1Ev	Camera::~Camera()
-0x00331c71	0x18	Camera.cpp	game	core	pending	_ZN6CameraD2Ev	Camera::~Camera()
-0x00331c89	0x4	Camera.cpp	game	core	pending	_ZNK6Camera11getPositionEv	Camera::getPosition() const
-0x00331c8d	0x4	Camera.cpp	game	core	pending	_ZNK6Camera9getLookAtEv	Camera::getLookAt() const
-0x00331c91	0xe	Camera.cpp	game	core	pending	_ZN6Camera9setLookAtERKN3irr4core8vector3dIfEE	Camera::setLookAt(irr::core::vector3d<float> const&)
+0x00331c69	0x2	Camera.cpp	game	core	matched	_ZN6Camera5enterEv	Camera::enter()
+0x00331c6d	0x2	Camera.cpp	game	core	matched	_ZN6Camera4exitEv	Camera::exit()
+0x00331c71	0x18	Camera.cpp	game	core	matched	_ZN6CameraD1Ev	Camera::~Camera()
+0x00331c71	0x18	Camera.cpp	game	core	matched	_ZN6CameraD2Ev	Camera::~Camera()
+0x00331c89	0x4	Camera.cpp	game	core	matched	_ZNK6Camera11getPositionEv	Camera::getPosition() const
+0x00331c8d	0x4	Camera.cpp	game	core	matched	_ZNK6Camera9getLookAtEv	Camera::getLookAt() const
+0x00331c91	0xe	Camera.cpp	game	core	matched	_ZN6Camera9setLookAtERKN3irr4core8vector3dIfEE	Camera::setLookAt(irr::core::vector3d<float> const&)
 0x00331ca1	0x30	Camera.cpp	game	core	matched	__tcf_0	__tcf_0
-0x00331cd1	0x28	Camera.cpp	game	core	pending	_ZN6CameraC1Ev	Camera::Camera()
-0x00331cd1	0x28	Camera.cpp	game	core	pending	_ZN6CameraC2Ev	Camera::Camera()
-0x00331cf9	0xe	Camera.cpp	game	core	pending	_ZN6Camera11setPositionERKN3irr4core8vector3dIfEE	Camera::setPosition(irr::core::vector3d<float> const&)
+0x00331cd1	0x28	Camera.cpp	game	core	matched	_ZN6CameraC1Ev	Camera::Camera()
+0x00331cd1	0x28	Camera.cpp	game	core	matched	_ZN6CameraC2Ev	Camera::Camera()
+0x00331cf9	0xe	Camera.cpp	game	core	matched	_ZN6Camera11setPositionERKN3irr4core8vector3dIfEE	Camera::setPosition(irr::core::vector3d<float> const&)
 0x00331d09	0x58	Camera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00331d61	0x14	Camera.cpp	game	core	matched	_GLOBAL__I__ZN6CameraC2Ev	_GLOBAL__I__ZN6CameraC2Ev
 0x00331d75	0x18	CameraManager.cpp	game	core	pending	_ZN13CameraManagerD1Ev	CameraManager::~CameraManager()
