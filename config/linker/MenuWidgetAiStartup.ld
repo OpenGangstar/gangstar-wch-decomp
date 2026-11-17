@@ -4,6 +4,7 @@ INCLUDE build/matches/ai-startup-menuwidget/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 sprintf = 0x001c46ac;
 memset = 0x001c45d4;
+__aeabi_idivmod = 0x001c4934;
 __stack_chk_fail = 0x001c42e0;
 __aeabi_atexit = 0x001c494c;
 _ZN29retail_menuwidget_transitions16civPassive_transE = 0x0041b6c8;

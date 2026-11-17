@@ -27,6 +27,13 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets10Statistics6UpdateEb",
+        "_ZN7Widgets12Achievements6UpdateEb",
+        "_ZN7Widgets12Achievements5ResetEv",
+        "_ZN7Widgets10Statistics7DisableEv",
+        "_ZN7Widgets12Achievements7DisableEv",
+        "_ZN7Widgets10Statistics6EnableEv",
+        "_ZN7Widgets12Achievements6EnableEv",
         "_ZN7Widgets10StatisticsC1Ev",
         "_ZN7Widgets10StatisticsC2Ev",
         "_ZN7Widgets12AchievementsC1Ev",
