@@ -127,8 +127,8 @@ public:
     void SetInputBehavior(int behavior);
     void SetOrientation(gameswf::orientation_mode orientation);
     static void SetWireFrame(bool enabled);
-    bool PreloadGlyphs(const char* text, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
-    bool PreloadGlyphs(unsigned short* glyphs, int count, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
+    int PreloadGlyphs(const char* text, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
+    int PreloadGlyphs(unsigned short* glyphs, int count, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
     void InitializeGlyphTextureCache(int width, int height);
     struct InitializationParameters;
     static gameswf::player_context* CreateContext(InitializationParameters& parameters);
@@ -165,6 +165,7 @@ public:
     void SetEnabled(gameswf::character* character, bool enabled);
     void SetEnabled(const char* characterName, bool enabled);
     void SetTexture(const char* name, irr::video::ITexture* texture);
+    void SetLocalVariable(const char* characterName, const char* variable, gameswf::as_value& value);
     void SetMember(const char* characterName, const char* member, int value);
     void SetMember(const char* characterName, const char* member, gameswf::as_value& value);
     void SetVisible(const char* characterName, bool visible);

@@ -12,6 +12,7 @@ strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
+    .renderfx_set_local_variable 0x003ee98c : { *renderfx-animation.o(.text._ZN8RenderFX16SetLocalVariableEPKcS1_RN7gameswf8as_valueE) }
     .renderfx_set_member_int 0x003eeb10 : { *renderfx-animation.o(.text._ZN8RenderFX9SetMemberEPKcS1_i) }
     .renderfx_set_texture 0x003ee1ec : { *renderfx-animation.o(.text._ZN8RenderFX10SetTextureEPKcPN3irr5video8ITextureE) }
     .renderfx_initialize_legacy 0x003ec960 : { *renderfx-animation.o(.text._ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE) }

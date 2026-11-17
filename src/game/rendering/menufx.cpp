@@ -156,7 +156,7 @@ public:
     explicit tu_string(const char* text) __attribute__((long_call));
     ~tu_string()
     {
-        if (storage[0] == 255)
+        if (__builtin_expect(storage[0] == 255, 1))
             SwfFree(heap);
     }
 
@@ -1180,7 +1180,7 @@ public:
 };
 }
 
-bool RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
+int RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
                             bool bold, bool italic, gameswf::filter* filter)
 {
     gameswf::array<unsigned short> glyphs;
@@ -1191,7 +1191,7 @@ bool RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
     }
     if (glyphs.size > 0)
         return PreloadGlyphs(glyphs.elements, glyphs.size, fontName, size, bold, italic, filter);
-    return false;
+    return 0;
 }
 
 namespace gameswf {
@@ -1281,4 +1281,27 @@ void RenderFX::SetMember(const char* characterName, const char* member, int valu
 {
     gameswf::as_value memberValue(value);
     SetMember(characterName, member, memberValue);
+}
+
+namespace gameswf {
+class as_environment {
+public:
+    void set_local(const tu_string& name, const as_value& value);
+};
+}
+
+void RenderFX::SetLocalVariable(const char* characterName, const char* variable, gameswf::as_value& value)
+{
+    gameswf::tu_string variableName(variable);
+    gameswf::character* found = Find(characterName);
+    gameswf::as_object* object = reinterpret_cast<gameswf::as_object*>(found);
+    if (!found)
+        object = root.get()->get_root_movie()->find_target(gameswf::as_value(characterName));
+
+    gameswf::character* character = reinterpret_cast<gameswf::character*>(object);
+    if (character && animationMethods(character).is(character, 2)) {
+        gameswf::as_environment* environment = reinterpret_cast<gameswf::as_environment*>(
+            reinterpret_cast<unsigned char*>(character) + 0x1c0);
+        environment->set_local(variableName, value);
+    }
 }

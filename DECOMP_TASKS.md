@@ -520,6 +520,14 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | lock_init | ASSIGNED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | vehicle_side | ASSIGNED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | camera_tap | ASSIGNED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ecb09 | RenderFX::TraceHierarchy | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x00327d85 | Cash destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d41 | Cash deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d2c | Cash deleting destructor thunk (D0) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d70 | Cash complete destructor thunk (D1) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bbd | Cash::update | vehicle_side | ASSIGNED | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash | camera_tap | ASSIGNED | — | src/game/ui/Cash.cpp |
