@@ -25,6 +25,9 @@
     "source": "src/game/core/FreeLookCamera.cpp",
     "linker_script": "config/linker/FreeLookCameraSdkStartup.ld",
     "functions": [
+        "_ZN14FreeLookCamera21updateHorizontalAngleEiif",
+        "_ZN14FreeLookCamera19updateVerticalAngleEiif",
+        "_ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE",
         {
             "name": "__tcf_2",
             "address": "0x003346e1"
