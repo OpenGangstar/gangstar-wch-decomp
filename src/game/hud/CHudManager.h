@@ -5,6 +5,7 @@ class AnalogStick;
 class Ammo;
 class ASprite;
 class AnimatedButton;
+class CameraManager;
 class HudElement;
 class IHud;
 class SpyGauge;
@@ -67,7 +68,7 @@ public:
     HudElement** resetElementsBegin;
     HudElement** resetElementsEnd;
     HudElement** resetElementsCapacity;
-    unsigned int unknown204;
+    CameraManager* cameraManager;
     bool locked;
 
     void nearCar();

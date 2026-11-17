@@ -159,10 +159,10 @@ class ICameraSceneNode : public ISceneNode {
 public:
     virtual void unknown66(); virtual void unknown67(); virtual void unknown68();
     virtual void unknown69(); virtual void setTarget(const core::vector3d<float>&); virtual void unknown71();
-    virtual void unknown72(); virtual void unknown73(); virtual void unknown74();
+    virtual void unknown72(); virtual void unknown73(); virtual void setUpVector(const core::vector3d<float>&);
     virtual void unknown75(); virtual void unknown76(); virtual void unknown77();
-    virtual void unknown78(); virtual float getFOV() const; virtual void unknown80();
-    virtual void unknown81(); virtual void unknown82(); virtual void setFOV(float);
+    virtual void unknown78(); virtual float getFOV() const; virtual void setNearValue(float);
+    virtual void setFarValue(float); virtual void unknown82(); virtual void setFOV(float);
     virtual const SViewFrustum* getViewFrustum() const;
 };
 class ITimelineController : public virtual IReferenceCounted {
@@ -201,7 +201,9 @@ public:
     virtual void unknown6(); virtual video::IVideoDriver* getVideoDriver(); virtual void unknown8();
     virtual void unknown9(); virtual void unknown10(); virtual void unknown11();
     virtual void unknown12(); virtual void unknown13(); virtual void unknown14();
-    virtual void unknown15(); virtual void unknown16(); virtual void unknown17();
+    virtual void unknown15(); virtual void unknown16();
+    virtual ICameraSceneNode* addCameraSceneNode(ISceneNode*, const core::vector3d<float>&,
+                                                const core::vector3d<float>&, int);
     virtual void unknown18(); virtual void unknown19(); virtual void unknown20();
     virtual void unknown21(); virtual void unknown22(); virtual void unknown23();
     virtual void unknown24(); virtual void unknown25(); virtual void unknown26();

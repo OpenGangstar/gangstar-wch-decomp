@@ -14,6 +14,9 @@
 #include "Camera.h"
 #include "CameraManager.h"
 #include "CameraVariants.h"
+#include "../app/Application.h"
+#include "../characters/Character.h"
+#include "../hud/CHudManager.h"
 
 CameraManager* CameraManager::s_cm;
 
@@ -110,6 +113,34 @@ void CameraManager::clean()
     delete fpsCamera;
     delete this;
     s_cm = 0;
+}
+
+CameraManager::CameraManager(float nearDistance, float farDistance, float fov, LevelObject* target)
+    : touch(0), mode(0), touchTarget(0)
+{
+    touchScreenInputs = false;
+    used = false;
+    flag154 = false;
+    flag155 = false;
+    touchX = 0;
+    touchY = 0;
+    value164 = 0;
+    value168 = 0;
+    sceneCamera = 0;
+
+    Application* app = Application::GetInstance();
+    cameraNode = app->GetDevice()->getSceneManager()->addCameraSceneNode(
+        0, irr::core::vector3d<float>(), irr::core::vector3d<float>(0.0f, 0.0f, 100.0f), -1);
+    cameraNode->setNearValue(nearDistance);
+    cameraNode->setFarValue(farDistance);
+    cameraNode->setFOV(fov);
+    cameraNode->setUpVector(irr::core::vector3d<float>(0.0f, 0.0f, 1.0f));
+    followCamera = new FollowCamera(static_cast<Character*>(target));
+    lockCamera = new LockCamera(target);
+    vehicleCamera = new VehicleCamera(target);
+    fpsCamera = new FPSCamera;
+    currentCamera = followCamera;
+    app->GetHudManager()->cameraManager = this;
 }
 
 CameraManager* CameraManager::getInstance()
