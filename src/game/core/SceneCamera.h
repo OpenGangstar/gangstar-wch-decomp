@@ -9,10 +9,12 @@ class SceneCamera : public Camera, public Transformation {
 public:
     SceneCamera(int type);
     virtual void init(LevelObject* target, int mode);
+    virtual ~SceneCamera();
     virtual void update(float elapsed);
     virtual void debug(irr::video::IVideoDriver* driver);
     void Load(const Structs::SceneCamera&);
 private:
-    unsigned char unknown112[16];
+    irr::core::vector3d<float> vector112;
+    unsigned char unknown124[4];
 };
 #endif

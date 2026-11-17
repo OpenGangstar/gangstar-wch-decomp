@@ -11793,8 +11793,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334f5c	0x14	SceneCamera.cpp	game	core	pending	_ZThn28_N11SceneCameraD1Ev	non-virtual thunk to SceneCamera::~SceneCamera()
 0x00334f71	0x30	SceneCamera.cpp	game	core	pending	_ZN11SceneCameraD2Ev	SceneCamera::~SceneCamera()
 0x00334f71	0x30	SceneCamera.cpp	game	core	pending	_ZN11SceneCameraD1Ev	SceneCamera::~SceneCamera()
-0x00334fa1	0x48	SceneCamera.cpp	game	core	pending	_ZN11SceneCameraC1Ei	SceneCamera::SceneCamera(int)
-0x00334fa1	0x48	SceneCamera.cpp	game	core	pending	_ZN11SceneCameraC2Ei	SceneCamera::SceneCamera(int)
+0x00334fa1	0x48	SceneCamera.cpp	game	core	matched	_ZN11SceneCameraC1Ei	SceneCamera::SceneCamera(int)
+0x00334fa1	0x48	SceneCamera.cpp	game	core	matched	_ZN11SceneCameraC2Ei	SceneCamera::SceneCamera(int)
 0x00334fe9	0x60	SceneCamera.cpp	game	core	pending	_ZN11SceneCamera4LoadERKN7Structs11SceneCameraE	SceneCamera::Load(Structs::SceneCamera const&)
 0x00335049	0x6c	SceneCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003350b5	0x14	SceneCamera.cpp	game	core	matched	_GLOBAL__I__ZN11SceneCameraC2Ei	_GLOBAL__I__ZN11SceneCameraC2Ei
