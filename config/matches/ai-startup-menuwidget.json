@@ -27,6 +27,7 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets4Help9SetTextIdEi",
         "_ZN7Widgets4Help18UpdateLocalizationEv",
         "_ZN7Widgets11GameSetting18UpdateLocalizationEv",
         "_ZN7Widgets11GameSetting12HideButtonOkEv",

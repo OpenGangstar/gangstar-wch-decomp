@@ -9836,7 +9836,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebf25	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Corruption14SetWantedLevelEi	Widgets::Corruption::SetWantedLevel(int)
 0x002ebf29	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets11GameSetting10SetTitleIdEi	Widgets::GameSetting::SetTitleId(int)
 0x002ebf2d	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets11GameSetting10SetValueIdEi	Widgets::GameSetting::SetValueId(int)
-0x002ebf31	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Help9SetTextIdEi	Widgets::Help::SetTextId(int)
+0x002ebf31	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4Help9SetTextIdEi	Widgets::Help::SetTextId(int)
 0x002ebf35	0x44	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5About6UpdateEb	Widgets::About::Update(bool)
 0x002ebf79	0x4a	MenuWidget.cpp	game	ui	matched	_ZN7Widgets12Achievements6UpdateEb	Widgets::Achievements::Update(bool)
 0x002ebfc5	0x4c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Statistics6UpdateEb	Widgets::Statistics::Update(bool)
