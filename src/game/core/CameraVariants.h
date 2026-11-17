@@ -18,6 +18,7 @@ void updateCameraInputRates(int horizontal, int vertical, float& yawRate, float&
 class FollowCamera : public Camera {
 public:
     explicit FollowCamera(Character* owner);
+    void goBehind(LevelObject* object);
     ~FollowCamera();
     void updateAngles(int horizontal, int vertical);
     virtual void init(LevelObject* owner, int mode);
@@ -45,6 +46,7 @@ private:
 class VehicleCamera : public Camera {
 public:
     explicit VehicleCamera(LevelObject* owner);
+    void goToSide(bool left);
     ~VehicleCamera();
     void updateAngles(int horizontal, int vertical);
     virtual void init(LevelObject* owner, int mode);

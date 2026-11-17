@@ -25,6 +25,8 @@
     "source": "src/game/core/CameraManager.cpp",
     "linker_script": "config/linker/CameraManagerAiStartup.ld",
     "functions": [
+        "_ZN13CameraManager8goToSideEb",
+        "_ZN13CameraManager8goBehindEP11LevelObject",
         "_ZN14AnimatableTypeIN3irr4core8vector3dIfEEE6UpdateEf",
         "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
         "_ZN13CameraManagerC1EfffP11LevelObject",
@@ -69,6 +71,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN13VehicleCamera8goToSideEb",
+        "_ZN12FollowCamera8goBehindEP11LevelObject",
         "_ZN12FollowCameraD1Ev",
         "_ZN10LockCameraD1Ev",
         "_ZN13VehicleCameraD1Ev",
