@@ -33,6 +33,13 @@ __aeabi_fsub = 0x001c4328;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_grab_scene_node 0x00310498 : { *(.text._ZN7Vehicle13grabSceneNodeEiPPPv) }
+    .vehicle_light00_asset 0x0041f72c : { *(.rodata.*vehicleLight00Asset*) }
+    .vehicle_light01_asset 0x0041f740 : { *(.rodata.*vehicleLight01Asset*) }
+    .vehicle_cop_lights_asset 0x0041f754 : { *(.rodata.*vehicleCopLightsAsset*) }
+    .vehicle_light01_node 0x0041f764 : { *(.rodata.*vehicleLight01Node*) }
+    .vehicle_light02_node 0x0041f778 : { *(.rodata.*vehicleLight02Node*) }
+    .vehicle_cop_lights_node 0x0041f78c : { *(.rodata.*vehicleCopLightsNode*) }
     .vehicle_yaw 0x0030949c : { *(.text._ZN7Vehicle4_yawEf) }
     .vehicle_roll 0x00309504 : { *(.text._ZN7Vehicle5_rollEf) }
     .vehicle_pitch 0x0030956c : { *(.text._ZN7Vehicle6_pitchEf) }

@@ -51,7 +51,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301f01 | PlayerTest::setVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003025cd | PlayerTest::isFacingTarget | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x002f42cd | Character::updatePosition | lock_init | REVIEW | — | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x00301911 | PlayerTest::initDriving | vehicle_side | REVIEW | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301911 | PlayerTest::initDriving | vehicle_side | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00334fe9 | SceneCamera::Load | camera_tap | BLOCKED | — | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x0031ff49 | PhysicAttributes::GetHeight (position overload) | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00334fa1 | SceneCamera::SceneCamera (C1/C2 aliases) | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
@@ -148,7 +148,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00311149 | Vehicle::startDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00312fb9 | Vehicle::playHorn | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode | camera_tap | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003092b5 | CCarFactory::createMorph | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311eb1 | CCarMorphingMesh::~CCarMorphingMesh (D1) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030b12d | Vehicle::debug | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -158,10 +158,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0030b9a5 | Vehicle::repair | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00312d19 | Vehicle::playDriveSfx | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003130a1 | Vehicle::explode | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00309a4d | Vehicle::setupSceneNode | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00309a4d | Vehicle::setupSceneNode | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311e41 | CCarMorphingMesh::~CCarMorphingMesh (virtual D0 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311e55 | CCarMorphingMesh::~CCarMorphingMesh (D0) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311e9d | CCarMorphingMesh::~CCarMorphingMesh (virtual D1 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030b68d | Vehicle::ResetBodyPosition | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00311fb5 | CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode (D1) | camera_tap | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030bccd | Vehicle::setSpeed | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311fb5 | CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode (D1) | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030bccd | Vehicle::setSpeed | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00310499 | Vehicle::grabSceneNode | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00310909 | Vehicle::shoot | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |

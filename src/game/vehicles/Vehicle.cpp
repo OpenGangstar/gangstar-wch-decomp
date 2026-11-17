@@ -1797,6 +1797,115 @@ void Vehicle::repair()
     ResetBodyPosition();
 }
 
+namespace {
+const char vehicleLight00Asset[] = "car_light_00.bdae";
+const char vehicleLight01Asset[] = "car_light_01.bdae";
+const char vehicleCopLightsAsset[] = "cop_lights.bdae";
+const char vehicleLight01Node[] = "dummy_light_01-node";
+const char vehicleLight02Node[] = "dummy_light_02-node";
+const char vehicleCopLightsNode[] = "cop_lights-node";
+}
+
+extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __attribute__((weak));
+
+irr::scene::ISceneNode* Vehicle::grabSceneNode(int, void***)
+{
+    using namespace irr;
+    void** params = 0;
+    scene::ISceneNode* result = LevelObject::grabSceneNode(19, &params);
+    Application::GetInstance();
+    repairVisualState = static_cast<VehicleRepairVisualState*>(params[0]);
+    leftDoorAnimator = static_cast<scene::ISceneNodeAnimator*>(params[1]);
+    rightDoorAnimator = static_cast<scene::ISceneNodeAnimator*>(params[2]);
+    leftDoor = static_cast<scene::ISceneNode*>(params[3]);
+    rightDoor = static_cast<scene::ISceneNode*>(params[4]);
+    skinnedMesh = static_cast<collada::CSkinnedMeshSceneNode*>(params[5]);
+    interior = static_cast<scene::ISceneNode*>(params[6]);
+    repairTexture = static_cast<video::ITexture*>(params[7]);
+    damageTexture = static_cast<video::ITexture*>(params[8]);
+    repairMaterialNode = static_cast<scene::ISceneNode*>(params[9]);
+    enabledSceneNode = static_cast<scene::ISceneNode*>(params[10]);
+    wheelNodes[0] = static_cast<scene::ISceneNode*>(params[11]);
+    wheelNodes[1] = static_cast<scene::ISceneNode*>(params[12]);
+    wheelNodes[2] = static_cast<scene::ISceneNode*>(params[13]);
+    wheelNodes[3] = static_cast<scene::ISceneNode*>(params[14]);
+    exterior = static_cast<scene::ISceneNode*>(params[15]);
+
+    if (params[16]) {
+        scenePool812 = reinterpret_cast<int>(params[17]);
+        scenePool892 = reinterpret_cast<int>(params[18]);
+
+        SceneNodeManager* manager = SceneNodeManager::getInstance();
+        lightPool824 = manager->findOrCreatePool(vehicleLight00Asset, 8, _ZN12CGameFactory11getInstanceEv());
+        manager = SceneNodeManager::getInstance();
+        lightPool828 = manager->findOrCreatePool(vehicleLight01Asset, 8, _ZN12CGameFactory11getInstanceEv());
+        manager = SceneNodeManager::getInstance();
+        scenePool880 = manager->findOrCreatePool(vehicleCopLightsAsset, 8, _ZN12CGameFactory11getInstanceEv());
+        repairGlassNode = SceneNodeManager::getInstance()->grab(scenePool812, 0, 0, 0);
+        repairLightNode = SceneNodeManager::getInstance()->grab(scenePool892, 0, 0, 0);
+        lightNodes[0] = SceneNodeManager::getInstance()->grab(lightPool824, 0, 0, 0);
+        lightNodes[1] = SceneNodeManager::getInstance()->grab(lightPool824, 0, 0, 0);
+        lightNodes[2] = SceneNodeManager::getInstance()->grab(lightPool828, 0, 0, 0);
+        lightNodes[3] = SceneNodeManager::getInstance()->grab(lightPool828, 0, 0, 0);
+        pooledNode884 = SceneNodeManager::getInstance()->grab(scenePool880, 0, 0, 0);
+
+        GS3DStuff::SetMaterialFlag(repairGlassNode, video::MaterialFlag2, false);
+        GS3DStuff::SetMaterialType(repairGlassNode, static_cast<video::E_MATERIAL_TYPE>(25));
+        GS3DStuff::SetMaterialType(repairLightNode, video::MaterialType13);
+        _resetLights();
+        GS3DStuff::SetMaterialFlag(pooledNode884, video::MaterialFlag2, false);
+        repairGlassNode->setVisible(false);
+        repairLightNode->setVisible(false);
+        pooledNode884->setVisible(false);
+
+        scene::ITimelineController* controller = (*repairGlassNode->getAnimators().begin())->getTimelineCtrl();
+        if (controller)
+            controller->setLoop(false);
+        controller = (*repairLightNode->getAnimators().begin())->getTimelineCtrl();
+        if (controller)
+            controller->setLoop(false);
+
+        sceneData820 = static_cast<scene::ISceneNode*>(params[16]);
+        sceneData848 = sceneNode->getSceneNodeFromUID(vehicleLight01Node);
+        sceneData852 = sceneNode->getSceneNodeFromUID(vehicleLight02Node);
+        sceneData888 = sceneNode->getSceneNodeFromUID(vehicleCopLightsNode);
+        if (sceneData848) {
+            const float x = sceneData848->getPosition().X;
+            const float y = sceneData848->getPosition().Y;
+            const float z = sceneData848->getPosition().Z;
+            sceneOffset856.X = x;
+            sceneOffset856.Y = y;
+            sceneOffset856.Z = z;
+        }
+        if (sceneData852) {
+            const float x = sceneData852->getPosition().X;
+            const float y = sceneData852->getPosition().Y;
+            const float z = sceneData852->getPosition().Z;
+            sceneOffset868.X = x;
+            sceneOffset868.Y = y;
+            sceneOffset868.Z = z;
+        }
+
+        sceneData820->addChild(repairGlassNode);
+        sceneData820->addChild(repairLightNode);
+        if (sceneData848 && sceneData852) {
+            sceneData848->addChild(lightNodes[0]);
+            sceneData852->addChild(lightNodes[1]);
+            sceneData848->addChild(lightNodes[2]);
+            sceneData852->addChild(lightNodes[3]);
+        }
+        if (sceneData888)
+            sceneData888->addChild(pooledNode884);
+    }
+
+    if (unknown4 & 1u)
+        CreateBody();
+    enableSkinning(false);
+    enableBackfaceCulling(true);
+    toggleInterior(false);
+    return result;
+}
+
 void Vehicle::InitV8Z06Sounds()
 {
     CarSoundSettings* settings = new CarSoundSettings;
