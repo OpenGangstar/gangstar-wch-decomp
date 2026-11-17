@@ -141,6 +141,7 @@ public:
     void SetFocus(const char* characterName, int flags);
 
 private:
+    friend class MenuFX;
     gameswf::array<gameswf::character*> matches;
     bool unknown16;
     void* unknown20;

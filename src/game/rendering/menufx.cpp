@@ -563,6 +563,40 @@ void MenuFX::OnEvent(RenderFX::Event& event)
         GetStateHandler(event.character)->OnEvent(event);
 }
 
+void MenuFX::SwitchMenu(const char* name)
+{
+    SetMenu(name, false);
+}
+
+void MenuFX::PushMenu(const char* name)
+{
+    SetMenu(name, true);
+}
+
+void MenuFX::Unload()
+{
+    RenderFX::Unload();
+    registeredStates.resize(0);
+    stateStack.resize(0);
+}
+
+void MenuFX::PopAll()
+{
+    if (stateStack.size > 0) {
+        do {
+            int index = stateStack.size;
+            --index;
+            stateStack.elements[index]->Hide();
+            index = stateStack.size;
+            --index;
+            stateStack.elements[index]->unknown80 = 2;
+            stateStack.resize(stateStack.size - 1);
+        } while (stateStack.size > 0);
+    }
+    SetContext(reinterpret_cast<gameswf::character*>(
+        reinterpret_cast<FlashCharacterRoot*>(root.get())->flashRoot));
+}
+
 void MenuFX::OnFSCommand(const char* command, const char* args)
 {
     int count = stateStack.size;

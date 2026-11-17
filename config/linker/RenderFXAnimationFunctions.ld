@@ -60,6 +60,10 @@ SECTIONS
     .renderfx_menu_event_filter 0x003f0274 : { *renderfx-animation.o(.text._ZN6MenuFX14CanHandleEventERN8RenderFX5EventE) }
     .renderfx_menu_on_event_thunk 0x003f0294 : { *renderfx-animation.o(.text._ZThn204_N6MenuFX7OnEventERN8RenderFX5EventE) }
     .renderfx_menu_on_event 0x003f02a8 : { *renderfx-animation.o(.text._ZN6MenuFX7OnEventERN8RenderFX5EventE) }
+    .renderfx_menu_switch 0x003ed4f0 : { *renderfx-animation.o(.text._ZN6MenuFX10SwitchMenuEPKc) }
+    .renderfx_menu_push 0x003ed500 : { *renderfx-animation.o(.text._ZN6MenuFX8PushMenuEPKc) }
+    .renderfx_menu_unload 0x003ed510 : { *renderfx-animation.o(.text._ZN6MenuFX6UnloadEv) }
+    .renderfx_menu_pop_all 0x003ed60c : { *renderfx-animation.o(.text._ZN6MenuFX6PopAllEv) }
     .renderfx_menu_fs_command 0x003eca88 : { *renderfx-animation.o(.text._ZN6MenuFX11OnFSCommandEPKcS1_) }
     .renderfx_menu_fs_command_thunk 0x003eca74 : { *renderfx-animation.o(.text._ZThn204_N6MenuFX11OnFSCommandEPKcS1_) }
     .renderfx_menu_current_state 0x003ecaa8 : { *renderfx-animation.o(.text._ZN6MenuFX15GetCurrentStateEv) }
