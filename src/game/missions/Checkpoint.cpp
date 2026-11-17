@@ -128,3 +128,79 @@ void Checkpoint::SetPosition(const irr::core::vector3d<float>& position)
         node->updateAbsolutePosition(false);
     }
 }
+
+#include "../core/CameraManager.h"
+#include "../hud/MenuManager.h"
+#include "../scripting/ScriptManager.h"
+#include "../world/GameObjectManager.h"
+#include "Mission.h"
+
+bool Checkpoint::s_bTutoCallContact;
+
+namespace {
+const char tutorialMenu[] __attribute__((section(".rodata.checkpoint_tutorial"))) = "Tutorial";
+}
+
+void Checkpoint::enable()
+{
+    LevelObject::enable();
+    if (ScriptManager::getInstance()->unknown78 &&
+        GetMetatype() == 26 &&
+        static_cast<Mission*>(ScriptManager::getInstance()->getMission())->failureCount() > 0 &&
+        !s_bTutoCallContact &&
+        !ScriptManager::getInstance()->isInCinematic()) {
+        s_bTutoCallContact = true;
+        MenuManager::getInstance()->setTutorialIds(0x307e, 0x307f);
+        if (MenuManager::getInstance()->getDepth() > 0)
+            MenuManager::getInstance()->popAll(false);
+        MenuManager::getInstance()->push(tutorialMenu, true);
+    }
+}
+
+void Checkpoint::show()
+{
+    if (hasSceneNodePool()) {
+        grabSceneNode(0, 0);
+    }
+    unknown4 |= 2;
+    objectList->Remove(this);
+    GameObjectManager::s_gom->Add(this, 0);
+}
+
+void Checkpoint::hide()
+{
+    if (hasSceneNodePool()) {
+        dropSceneNode();
+    }
+    unknown4 &= ~2u;
+    objectList->Remove(this);
+    GameObjectManager::s_gom->Add(this, 1);
+}
+
+void Checkpoint::Update(int elapsed)
+{
+    // The retail code calls GetPosition twice and uses only the second result.
+    const irr::core::vector3d<float> unusedPosition = GetPosition();
+    const irr::core::vector3d<float> position = GetPosition();
+    const float distanceSquared = position.getDistanceFromSQ(
+        CameraManager::getInstance()->getCamera()->getPosition());
+    const float visibilityDistanceSquared = 100000000.0f;
+    if (unknown4 & 2u) {
+        if (distanceSquared > visibilityDistanceSquared)
+            hide();
+    } else if (distanceSquared <= visibilityDistanceSquared) {
+        show();
+    }
+    LevelObject::Update(elapsed);
+}
+
+extern "C" {
+extern irr::collada::CColladaFactory _ZZN12CGameFactory11getInstanceEvE2gf __attribute__((weak));
+void _ZN12CGameFactoryD1Ev(irr::collada::CColladaFactory*) __attribute__((weak));
+
+static void __tcf_1() __attribute__((used));
+static void __tcf_1()
+{
+    _ZN12CGameFactoryD1Ev(&_ZZN12CGameFactory11getInstanceEvE2gf);
+}
+}

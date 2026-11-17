@@ -13,8 +13,20 @@ _ZN29retail_checkpoint_transitions17civ_vehicle_transE = 0x0041cfa0;
 _ZN29retail_checkpoint_transitions17cop_vehicle_transE = 0x0041d030;
 _ZN29retail_checkpoint_transitions11guard_transE = 0x0041d0e4;
 _ZN29retail_checkpoint_transitions22scripted_vehicle_transE = 0x0041d18c;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_fcmple = 0x001c43ac;
 SECTIONS
 {
+    .checkpoint_enable 0x002f7568 : { *(.text._ZN10Checkpoint6enableEv) }
+    .checkpoint_update 0x002f76f0 : { *(.text._ZN10Checkpoint6UpdateEi) }
+    .checkpoint_show 0x002f7808 : { *(.text._ZN10Checkpoint4showEv) }
+    .checkpoint_hide 0x002f77b8 : { *(.text._ZN10Checkpoint4hideEv) }
+    .checkpoint_factory_cleanup 0x002f7514 : { *(.text.__tcf_1) }
+    .checkpoint_tutorial 0x00414c8c : { *(.rodata.checkpoint_tutorial) }
+    .checkpoint_tutorial_flag 0x004b7e54 (NOLOAD) : { *(.bss._ZN10Checkpoint18s_bTutoCallContactE) }
     .checkpoint_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
     .ai-startup-checkpoint_fn_0 0x002f7674 : { *(.text._ZN10CheckpointD0Ev) }
     .ai-startup-checkpoint_fn_1 0x002f769c : { *(.text._ZN10CheckpointD1Ev .text._ZN10CheckpointD2Ev) }

@@ -196,9 +196,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f76bd | Checkpoint::Checkpoint (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f7601 | Checkpoint::Load | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f763d | Checkpoint::grabSceneNode | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
-| libsanangeles.so | 0x00305f5d | Shop::Update | vehicle_side | ASSIGNED | — | src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x00305f5d | Shop::Update | lock_init | BLOCKED | — | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x002f7539 | Checkpoint::SetPosition | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f7675 | Checkpoint::~Checkpoint (D0) | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x00306365 | Shop::~Shop (D0) | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
-| libsanangeles.so | 0x002f7569 | Checkpoint::enable | lock_init | ASSIGNED | — | src/game/missions/Checkpoint.cpp |
-| libsanangeles.so | 0x002f7809 | Checkpoint::show | camera_tap | ASSIGNED | — | src/game/missions/Checkpoint.cpp |
+| libsanangeles.so | 0x002f7569 | Checkpoint::enable | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
+| libsanangeles.so | 0x002f7809 | Checkpoint::show | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
+| libsanangeles.so | 0x002f76f1 | Checkpoint::Update | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
+| libsanangeles.so | 0x002f77b9 | Checkpoint::hide | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
+| libsanangeles.so | 0x002f7515 | Checkpoint.cpp __tcf_1 | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
+| libsanangeles.so | 0x002e7395 | Menus::MainMenu::SetPause | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e87f5 | Menus::MainMenu::GotFocus | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea699 | Menus::MainMenu::Update | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
