@@ -138,7 +138,9 @@ public:
     void SetColorTransform(gameswf::character* character, unsigned int multiply, unsigned int add);
     void SetText(const char* characterName, const char* text, bool option);
     void SetText(gameswf::character* character, const char* text, bool option);
+    void FormatHTML(const char* characterName, const char* format, ...);
     void FormatText(const char* characterName, const char* format, ...);
+    void FormatHTML(gameswf::character* character, const char* format, ...);
     void FormatText(gameswf::character* character, const char* format, ...);
     void ResetFocus(int flags);
     void SetFocus(gameswf::character* character, int flags);

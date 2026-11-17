@@ -1058,6 +1058,15 @@ void RenderFX::SetText(const char* characterName, const char* text, bool option)
 
 static char s_stringBuffer[8192];
 
+void RenderFX::FormatHTML(const char* characterName, const char* format, ...)
+{
+    __builtin_va_list arguments;
+    __builtin_va_start(arguments, format);
+    vsprintf(s_stringBuffer, format, arguments);
+    __builtin_va_end(arguments);
+    SetText(characterName, s_stringBuffer, true);
+}
+
 void RenderFX::FormatText(const char* characterName, const char* format, ...)
 {
     __builtin_va_list arguments;
@@ -1065,6 +1074,15 @@ void RenderFX::FormatText(const char* characterName, const char* format, ...)
     vsprintf(s_stringBuffer, format, arguments);
     __builtin_va_end(arguments);
     SetText(characterName, s_stringBuffer, false);
+}
+
+void RenderFX::FormatHTML(gameswf::character* character, const char* format, ...)
+{
+    __builtin_va_list arguments;
+    __builtin_va_start(arguments, format);
+    vsprintf(s_stringBuffer, format, arguments);
+    __builtin_va_end(arguments);
+    SetText(character, s_stringBuffer, true);
 }
 
 void RenderFX::FormatText(gameswf::character* character, const char* format, ...)
