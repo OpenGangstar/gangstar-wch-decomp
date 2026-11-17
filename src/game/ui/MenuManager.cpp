@@ -60,13 +60,44 @@ void MyMenuFX::ClearFocus()
 
 namespace {
 struct MenuManagerFocusFields {
-    unsigned char beforeMenuFX[0xbc];
+    unsigned char beforeTutorialIds[72];
+    int tutorialId;
+    int tutorialTextId;
+    unsigned char beforeMenuFX[108];
     MyMenuFX* menuFX;
     unsigned char beforeClearingFocus[5];
     bool clearingFocus;
     unsigned char beforeAsianFont[210];
     bool asianFont;
+    unsigned char beforeCheatsUnlockAllowed[2];
+    bool cheatsUnlockAllowed;
 };
+}
+
+extern "C" {
+int _ZN11MenuManager19s_currentSequenceIdE;
+extern int _ZN7Widgets7Volumes10s_playlistE;
+}
+
+extern "C" bool _ZNK11MenuManager14getTutorialIdsERiS0_(
+    const MenuManager* manager, int& id, int& textId)
+{
+    const MenuManagerFocusFields& fields = *reinterpret_cast<const MenuManagerFocusFields*>(manager);
+    id = fields.tutorialId;
+    textId = fields.tutorialTextId;
+    return id != -1 && textId != -1;
+}
+
+extern "C" void _ZN11MenuManager17allowCheatsUnlockEb(MenuManager* manager, bool allow)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    fields.cheatsUnlockAllowed = allow;
+    _ZN11MenuManager19s_currentSequenceIdE = 0;
+}
+
+extern "C" int _ZNK11MenuManager11getPlaylistEv(const MenuManager*)
+{
+    return _ZN7Widgets7Volumes10s_playlistE;
 }
 
 extern "C" void _ZN11MenuManager15hideDialogArrowEv(MenuManager* manager)
