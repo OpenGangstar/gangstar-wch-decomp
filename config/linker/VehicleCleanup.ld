@@ -4,6 +4,8 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __aeabi_atexit = 0x001c494c;
+lrand48 = 0x001c4664;
+__aeabi_idivmod = 0x001c4934;
 _Znaj = 0x001c3ff8;
 _Znwj = 0x001c4814;
 atoi = 0x001c4880;
@@ -94,6 +96,9 @@ SECTIONS
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
     .vehicle_mobilize 0x0030a3e4 : { *(.text._ZN7Vehicle8mobilizeEv) }
     .vehicle_cleanup_sounds 0x003090e8 : { *(.text._ZN7Vehicle14_cleanupSoundsEv) }
+    .vehicle_start_driving 0x00311148 : { *(.text._ZN7Vehicle12startDrivingEv) }
+    .vehicle_play_horn 0x00312fb8 : { *(.text._ZN7Vehicle8playHornEv) }
+    .vehicle_play_horn_tables 0x0041f7ac : { *(.rodata._ZN7Vehicle8playHornEv) }
     .vehicle_stop_driving 0x00309188 : { *(.text._ZN7Vehicle11stopDrivingEv) }
     .vehicle_clean_targets 0x0030a490 : { *(.text._ZN7Vehicle12cleanTargetsEv) }
     .vehicle_adjust_engine_pitch 0x00307bcc : { *(.text._ZN7Vehicle18_adjustEnginePitchEj) }
@@ -205,5 +210,6 @@ SECTIONS
     .vehicle_empty_string 0x004b8724 (NOLOAD) : { *vehicle-cleanup.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
+    .verification_constants : { *(.rodata.*photographedFlag*) }
 }
 ASSERT(SIZEOF(.vehicle_empty_string) == 32, "Vehicle empty string extent");

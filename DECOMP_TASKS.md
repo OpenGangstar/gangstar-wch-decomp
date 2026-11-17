@@ -145,7 +145,10 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0030840d | Vehicle::InitV8Z06Sounds | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0034f175 | TurboSoundSettings::TurboSoundSettings (C1/C2 aliases) | — | COMPLETED | 100% | src/game/vehicles/CarSounds.cpp |
 | libsanangeles.so | 0x0035021d | TurboSoundSettings::~TurboSoundSettings (D1/D2 aliases) | — | COMPLETED | 100% | src/game/vehicles/CarSounds.cpp |
-| libsanangeles.so | 0x00311149 | Vehicle::startDriving | lock_init | REVIEW | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00312fb9 | Vehicle::playHorn | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311149 | Vehicle::startDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00312fb9 | Vehicle::playHorn | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003092b5 | CCarFactory::createMorph | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311eb1 | CCarMorphingMesh::~CCarMorphingMesh (D1) | camera_tap | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030b12d | Vehicle::debug | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |

@@ -1542,6 +1542,66 @@ void Vehicle::RegisterCarSoundsCallbacks()
     CarSounds::RegisterCallbacks(callbacks);
 }
 
+void Vehicle::startDriving()
+{
+    unknown4 &= ~4u;
+    if (flags344 & 0x10000u) {
+        showHighlight(-1);
+        ScriptManager::displayOnMinimap(this, false, true);
+    }
+    if (flags344 & 0x800u) {
+        EventManager* events = Application::GetInstance()->GetEventManager();
+        unsigned int storage[sizeof(EvVehicleDeactivated) / sizeof(unsigned int)];
+        EvVehicleDeactivated* event = new (storage) EvVehicleDeactivated(this);
+        events->raise(*event);
+        _ZN20EvVehicleDeactivatedD1Ev(event);
+        flags344 &= ~0x800u;
+    }
+    flags344 |= 0x10u;
+    unknown511 = false;
+    skidAmount = 0.0f;
+    GS3DStuff::GetTrailMgr()->SetSegmentWidth(static_cast<float>(tireTrailWidth));
+    carSoundMode = 1;
+    carSoundTrigger = true;
+}
+
+extern "C" long lrand48();
+
+void Vehicle::playHorn()
+{
+    const int choice = lrand48() % 7;
+    if (driverBehavior == -1)
+        driverBehavior = lrand48() % 2;
+
+    int horn = 226;
+    if (driverBehavior == 0) {
+        switch (choice) {
+        case 2: horn = 230; break;
+        case 3: horn = 232; break;
+        case 1: horn = 239; break;
+        case 6: horn = 243; break;
+        case 5: horn = 244; break;
+        case 4: horn = 229; break;
+        default: break;
+        }
+    } else {
+        switch (choice) {
+        case 2: horn = 230; break;
+        case 3: horn = 232; break;
+        case 1: horn = 239; break;
+        case 6: horn = 234; break;
+        case 5: horn = 227; break;
+        case 4: horn = 236; break;
+        default: break;
+        }
+    }
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(horn, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    turnSoundPlaying = true;
+}
+
 void Vehicle::InitV8Z06Sounds()
 {
     CarSoundSettings* settings = new CarSoundSettings;
