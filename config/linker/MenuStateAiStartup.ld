@@ -8,6 +8,10 @@ __cxa_pure_virtual = 0;
 INCLUDE build/matches/ai-startup-menustate/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __stack_chk_fail = 0x001c42e0;
+__aeabi_i2d = 0x001c452c;
+__aeabi_dsub = 0x001c4454;
+__aeabi_d2iz = 0x001c4844;
+strcmp = 0x001c4658;
 __aeabi_atexit = 0x001c494c;
 _ZN28retail_menustate_transitions16civPassive_transE = 0x0041a084;
 _ZN28retail_menustate_transitions17scriptedNpc_transE = 0x0041a1b0;
@@ -118,6 +122,21 @@ SECTIONS
     .main_menu_set_pause 0x002e7394 : { *(.text._ZN5Menus8MainMenu8SetPauseEb) }
     .main_menu_got_focus 0x002e87f4 : { *(.text._ZN5Menus8MainMenu8GotFocusEv) }
     .main_menu_update 0x002ea698 : { *(.text._ZN5Menus8MainMenu6UpdateEv) }
+    .menu_localization 0x002e7cfc : { *(.text._ZN9MenuState18UpdateLocalizationEv) }
+    .menu_rental_hide 0x002e86bc : { *(.text._ZN5Menus15InGameCarRental4HideEv) }
+    .menu_weapon_shop_hide 0x002e86dc : { *(.text._ZN5Menus16InGameWeaponShop4HideEv) }
+    .menu_map_event 0x002e8638 : { *(.text._ZN5Menus3Map7OnEventERN8RenderFX5EventE) }
+    .menu_infos_update 0x002eab20 : { *(.text._ZN5Menus5Infos6UpdateEv) }
+    .menu_statistics_command 0x002e79d4 : { *(.text._ZN5Menus14InfoStatistics11OnFSCommandEPKcS2_) }
+    .menu_achievements_command 0x002e7a24 : { *(.text._ZN5Menus16InfoAchievements11OnFSCommandEPKcS2_) }
+    .menu_about_command 0x002e7a74 : { *(.text._ZN5Menus9InfoAbout11OnFSCommandEPKcS2_) }
+    .menu_update_statistics 0x00419e34 : { *(.rodata.menu_update_statistics) }
+    .menu_update_achievements 0x00419e48 : { *(.rodata.menu_update_achievements) }
+    .menu_update_about 0x00419e5c : { *(.rodata.menu_update_about) }
+    .menu_map_got_focus 0x002e90cc : { *(.text._ZN5Menus3Map8GotFocusEv) }
+    .helper_11 0x002e3f18 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15consumedCursorsEv .gnu.linkonce.t._ZNK11MenuManager15consumedCursorsEv) }
+    .helper_14 0x002e3f78 : { *menu-manager-helpers.o(.text._ZN11MenuManager11enableAnimsEb .gnu.linkonce.t._ZN11MenuManager11enableAnimsEb) }
+    .menu_map_update 0x002ebb30 : { *(.text._ZN5Menus3Map6UpdateEv) }
     .main_menu_confirm 0x00418138 : { *(.rodata.main_menu_confirm) }
     .mainMenu_constructor 0x002e7dd0 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuC1Ev .text._ZN5Menus8MainMenuC2Ev) }
     .mainMenu_name 0x00413c7c : { *ai-startup-menustate.o(.rodata.mainMenuName) }

@@ -52,6 +52,7 @@ public:
     virtual void wakeup();
     void _trace(const char*) const;
     double getTimeStamp() const;
+    bool hasStates() const { return states.size() != 0; }
     bool isDrawable();
     void recurseDraw() const;
     void popState();

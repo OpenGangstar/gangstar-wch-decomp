@@ -46,6 +46,9 @@ public:
     MenuFXPrefix* getMenuFX();
     int isInGameMenu() const;
     unsigned int consumedCursors() const;
+    void initMap();
+    void updateMap();
+    void updateMarkers();
     void consumeCursor();
     int getCharAutoLineFeed();
     void enableAnims(bool);
