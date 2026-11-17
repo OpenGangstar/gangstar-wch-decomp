@@ -7,6 +7,7 @@ class TrailMgr {
 public:
     TrailMgr();
     virtual ~TrailMgr();
+    bool Init(int count, int pointCount, int mode, int lifetime, float width, float scale);
     void Update();
     void SetSegmentWidth(float width);
     void CleanUp();
@@ -17,6 +18,8 @@ private:
     Trail** trails;
     bool* allocated;
     int trailCount;
+    float trailScale;
+    int trailMode;
 };
 
 #endif
