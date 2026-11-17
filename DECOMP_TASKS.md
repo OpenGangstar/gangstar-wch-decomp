@@ -470,8 +470,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00335d8d | Mission::fail | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
 | libsanangeles.so | 0x00336345 | Mission::message | camera_tap | BLOCKED | — | src/game/missions/Mission.cpp |
 | libsanangeles.so | 0x003360c1 | Mission constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x0033602d | Mission destructor (D1/D2 aliases) | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00336141 | getFrameModuleRect | camera_tap | ASSIGNED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00335f91 | Mission deleting destructor (D0) | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00336961 | Mission::end | vehicle_side | ASSIGNED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00335e61 | Mission::load | lock_init | ASSIGNED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x0033602d | Mission destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336141 | getFrameModuleRect | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335f91 | Mission deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336961 | Mission::end | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335e61 | Mission::load | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x0033620d | Mission::draw | camera_tap | REVIEW | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x003363d1 | Mission::start | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x003365f1 | Mission::update | vehicle_side | BLOCKED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00338c41 | Revive::update | camera_tap | ASSIGNED | — | src/game/missions/Revive.cpp |
+| libsanangeles.so | 0x0033820d | MissionConditionStayWithin::evaluate | vehicle_side | ASSIGNED | — | src/game/missions/MissionConditionStayWithin.cpp |
+| libsanangeles.so | 0x0032c7fd | WantedMeter::draw2d | lock_init | ASSIGNED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c7e8 | WantedMeter::draw2d non-virtual thunk | lock_init | ASSIGNED | — | src/game/missions/WantedMeter.cpp |

@@ -42,7 +42,8 @@ private:
     int state;
     AnimObject introAnimation;
     AnimObject outroAnimation;
-    unsigned char unknown120[68];
+    ASprite* introSprite;
+    unsigned char unknown124[64];
     Structs::Mission** missions;
     int missionCount;
     IMissionCondition* conditions[8];

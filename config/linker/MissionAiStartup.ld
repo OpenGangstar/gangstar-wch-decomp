@@ -2,6 +2,11 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-mission/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_ZdaPv = 0x001c461c;
+_Znaj = 0x001c3ff8;
+_Znwj = 0x001c4814;
+memset = 0x001c45d4;
+__stack_chk_fail = 0x001c42e0;
 __aeabi_atexit = 0x001c494c;
 _ZN26retail_mission_transitions16civPassive_transE = 0x0042a72c;
 _ZN26retail_mission_transitions17scriptedNpc_transE = 0x0042a858;
@@ -17,6 +22,14 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .mission_load 0x00335e60 : { *ai-startup-mission.o(.text._ZN7Mission4loadEPKc) }
+    .mission_deleting_destructor 0x00335f90 : { *ai-startup-mission.o(.text._ZN7MissionD0Ev) }
+    .mission_destructor 0x0033602c : { *ai-startup-mission.o(.text._ZN7MissionD2Ev .text._ZN7MissionD1Ev) }
+    .mission_frame_module_rect 0x00336140 : { *ai-startup-mission.o(.text._Z18getFrameModuleRectP7ASpriteiii) }
+    .mission_end 0x00336960 : { *ai-startup-mission.o(.text._ZN7Mission3endEv) }
+    .mission_vtable 0x004ace00 : { *ai-startup-mission.o(.data.rel.ro._ZTV7Mission) }
+    .mission_load_initializer 0x0042acfc : { *ai-startup-mission.o(.rodata._ZZN7Mission4loadEPKcE*) }
+    .mission_data_stream_dtor 0x002d3654 : { *ai-startup-mission.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .mission_fail 0x00335d8c : { *ai-startup-mission.o(.text._ZN7Mission4failEv) }
     .mission_idle 0x003365a4 : { *ai-startup-mission.o(.text._ZN7Mission4idleEv) }
     .wanted_singleton 0x002dba04 : { *ai-startup-mission.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }

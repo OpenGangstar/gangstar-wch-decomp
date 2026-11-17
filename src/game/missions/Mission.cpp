@@ -17,6 +17,11 @@
 #include "../hud/CHudManager.h"
 #include "../hud/MenuManager.h"
 #include "../ui/Message.h"
+#include "../core/ASprite.h"
+#include "../world/ResStream.h"
+#include "../core/NativeStdio.h"
+#include "../audio/SoundManager.h"
+#include "../meta/Achievements.h"
 
 int Mission::setTextToPrint(int id)
 {
@@ -231,4 +236,94 @@ void Mission::fail()
         WantedLevelManager::getInstance()->resetWantedLevel();
     }
     nativeUnloadAllSounds();
+}
+
+void Mission::load(const char* filename)
+{
+    ResStream resource(filename, 1);
+    DataStream stream(resource, DataStream::BigEndian);
+    missionCount = stream.ReadInt();
+    if (missionCount > 0) {
+        missions = new Structs::Mission*[missionCount];
+        memset(missions, 0, missionCount * sizeof(*missions));
+        for (int i = 0; i < missionCount; ++i) {
+            const int length = stream.ReadInt();
+            const int next = stream.Tell() + length;
+            Structs::Mission* record = new Structs::Mission();
+            record->Read(stream);
+            if (stream.Tell() != next)
+                stream.Seek(next, 0);
+            missions[i] = record;
+        }
+    }
+}
+
+Mission::~Mission()
+{
+    clearConditions();
+    if (missions) {
+        for (int i = 0; i < missionCount; ++i) {
+            delete[] missions[i]->unknown24;
+            delete[] missions[i]->unknown12;
+            delete missions[i];
+        }
+        delete[] missions;
+    }
+    delete introSprite;
+}
+
+Rct<int> getFrameModuleRect(ASprite* sprite, int frameIndex, int moduleIndex, int occurrence)
+{
+    Rct<int> result(0, 0, 0, 0);
+    const SpriteFrame* frame = sprite->GetFrame(frameIndex);
+    for (int i = frame->firstModule; i < frame->firstModule + frame->moduleCount; ++i) {
+        const SpriteFrameModule* placement = sprite->GetFModule(i);
+        if (placement->module == moduleIndex) {
+            if (occurrence > 0) {
+                --occurrence;
+            } else {
+                const SpriteModule* module = sprite->GetModule(moduleIndex);
+                const int x = placement->x;
+                const int y = placement->y;
+                const int right = x + module->width;
+                const int bottom = y + module->height;
+                result.left = x;
+                result.top = y;
+                result.right = right;
+                result.bottom = bottom;
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+bool Mission::end()
+{
+    bIsInCutscene = false;
+    if (currentMissionId < 0)
+        return false;
+
+    nativeUnloadAllSounds();
+    clearConditions();
+    unknown8 = 3000;
+    unknown12 = 3000;
+    setTextToPrint(missions[currentMissionId]->unknown8);
+    static_cast<Message*>(Application::GetInstance()->GetHudManager()->message172)
+        ->setMessage(currentMessage, unknown12, static_cast<MenuManager::eText>(9));
+    PlayerTest::GetPlayer()->addCash(missions[currentMissionId]->unknown4, unknown12);
+    AchievementManager* achievements = AchievementManager::s_achievementManager;
+    achievements->recordMissionCash(missions[currentMissionId]->unknown4);
+    PlayerTest::GetPlayer()->clearPhotoTargets();
+    state = 5;
+    SoundManager::getInstance()->stop(14, -1, 0);
+    SoundManager::getInstance()->playPriorityAudio(25, false);
+    SoundManager* sound = SoundManager::getInstance();
+    const int ambientSound = PlayerTest::GetPlayer()->getAmbientSound();
+    sound->unknown140 = true;
+    sound->playEx(ambientSound, 0, true, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    achievements->recordMissionEnded();
+    WantedLevelManager::getInstance()->resetWantedLevel();
+    return true;
 }
