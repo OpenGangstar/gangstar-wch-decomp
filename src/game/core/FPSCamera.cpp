@@ -13,6 +13,18 @@
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
 #include "CameraManager.h"
+#include "../app/Application.h"
+#include "../characters/PlayerTest.h"
+#include "../hud/CHudManager.h"
+#include "../input/CControlManager.h"
+
+static inline PlayerTest* getSceneOwner(SavePositionInterface* owner)
+{
+    PlayerTest* player = 0;
+    if (owner)
+        player = reinterpret_cast<PlayerTest*>(reinterpret_cast<char*>(owner) - sizeof(SavePrimaryInterface));
+    return player;
+}
 
 void FPSCamera::incVerticalAngle(float delta)
 {
@@ -31,8 +43,31 @@ void FPSCamera::zoom(int degrees)
         CameraManager::getInstance()->setFOV(degrees);
 }
 
+void FPSCamera::enter()
+{
+    if (flag60)
+        return;
+    Application* app = Application::GetInstance();
+    app->GetHudManager()->sniping();
+    flag60 = true;
+    static_cast<PlayerTest*>(owner)->_SetTarget(0, false);
+    static_cast<PlayerTest*>(owner)->hideMesh();
+    getSceneOwner(owner)->sceneNode->setVisible(false);
+    app->GetControlManager()->unlock();
+    verticalAngle = 0.0f;
+}
+
 FPSCamera::~FPSCamera()
 {
+}
+
+void FPSCamera::exit()
+{
+    Application::GetInstance()->GetControlManager()->exitSniping(false);
+    flag60 = false;
+    static_cast<PlayerTest*>(owner)->showMesh();
+    getSceneOwner(owner)->sceneNode->setVisible(true);
+    CameraManager::getInstance()->setFOV(50);
 }
 
 FPSCamera::FPSCamera()

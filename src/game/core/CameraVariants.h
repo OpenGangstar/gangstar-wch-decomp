@@ -5,6 +5,7 @@
 
 class PhysicAttributes;
 class Character;
+class SavePositionInterface;
 class Vehicle;
 
 inline __attribute__((always_inline))
@@ -77,7 +78,7 @@ public:
     virtual void exit();
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
-    unsigned char unknown28[4];
+    SavePositionInterface* owner;
     float verticalAngle;
     int value36;
     int value40;
