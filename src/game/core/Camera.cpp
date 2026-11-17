@@ -11,6 +11,43 @@
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Camera.h"
+
+void Camera::enter()
+{
+}
+
+void Camera::exit()
+{
+}
+
+Camera::~Camera()
+{
+}
+
+const irr::core::vector3d<float>& Camera::getPosition() const
+{
+    return position;
+}
+
+const irr::core::vector3d<float>& Camera::getLookAt() const
+{
+    return lookAt;
+}
+
+void Camera::setLookAt(const irr::core::vector3d<float>& value)
+{
+    lookAt = value;
+}
+
+Camera::Camera()
+{
+}
+
+void Camera::setPosition(const irr::core::vector3d<float>& value)
+{
+    position = value;
+}
 
 void operator delete(void*) throw();
 extern "C" {
