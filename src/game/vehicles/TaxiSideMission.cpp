@@ -10,6 +10,9 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../missions/SideMission.h"
+#include "../ai/NPC.h"
+#include "../characters/PlayerTest.h"
+#include "Vehicle.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
@@ -83,6 +86,8 @@ static void _GLOBAL__I__ZN15TaxiSideMissionC2Ev()
 
 class TaxiSideMission : public SideMission {
 public:
+    TaxiSideMission();
+    ~TaxiSideMission();
     virtual void begin(irr::core::vector3d<float>, int, int&, float&);
     virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
     virtual bool dropOff(irr::core::vector3d<float>);
@@ -94,6 +99,10 @@ public:
     virtual int getEndMessage();
     virtual int getObj1Message();
     virtual int getObj2Message();
+
+private:
+    Checkpoint* checkpoint;
+    int pickupDelay;
 };
 
 void TaxiSideMission::end()
@@ -128,4 +137,36 @@ int TaxiSideMission::getObj1Message()
 int TaxiSideMission::getObj2Message()
 {
     return 0x30eb;
+}
+
+TaxiSideMission::TaxiSideMission()
+{
+    init();
+    checkpoint = 0;
+    pickupDelay = 0;
+}
+
+TaxiSideMission::~TaxiSideMission()
+{
+}
+
+void TaxiSideMission::clean()
+{
+    removeCheckpoint(checkpoint);
+    pickupDelay = 0;
+}
+
+bool TaxiSideMission::dropOff(irr::core::vector3d<float> position)
+{
+    if (!isInCheckpointRange(position, checkpoint))
+        return false;
+
+    PlayerTest::GetPlayer()->getVehicle()->immobilize();
+    passenger->show();
+    passenger->resetCollisions();
+    AIManager::getInstance()->addAI(passenger, static_cast<gameloft::ai::StateID>(0));
+    passenger->getOutOfVehicle(false, false);
+    passenger->unknown4 |= 0x80u;
+    removeCheckpoint(checkpoint);
+    return true;
 }

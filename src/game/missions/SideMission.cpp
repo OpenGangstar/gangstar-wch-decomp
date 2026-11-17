@@ -86,3 +86,19 @@ int SideMission::getTimer()
 {
     return timer;
 }
+
+int SideMission::getReward()
+{
+    return static_cast<int>(reward);
+}
+
+void SideMission::updateTimer(int elapsed)
+{
+    if (timer != -9999) {
+        timer -= elapsed;
+        if (timer <= 0) {
+            stopReason = 2;
+            stop(true);
+        }
+    }
+}

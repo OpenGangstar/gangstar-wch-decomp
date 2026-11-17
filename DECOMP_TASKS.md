@@ -384,9 +384,20 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00347e7d | TaxiSideMission::getObj1Message | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
 | libsanangeles.so | 0x00347e85 | TaxiSideMission::getObj2Message | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
 | libsanangeles.so | 0x00346b89 | SideMission::getTimer | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x00347ebd | TaxiSideMission::clean | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347ee9 | TaxiSideMission::TaxiSideMission (C1/C2 aliases) | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00346ba1 | SideMission::getReward | lock_init | REVIEW | — | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x003470d1 | SideMission::updateTimer | lock_init | ASSIGNED | — | src/game/missions/SideMission.cpp.cpp |
-| libsanangeles.so | 0x00347f11 | TaxiSideMission::dropOff | camera_tap | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp.cpp |
-| libsanangeles.so | 0x00347e41 | TaxiSideMission destructor (D1/D2 aliases) | vehicle_side | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347ebd | TaxiSideMission::clean | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347ee9 | TaxiSideMission::TaxiSideMission (C1/C2 aliases) | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346ba1 | SideMission::getReward | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003470d1 | SideMission::updateTimer | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00347f11 | TaxiSideMission::dropOff | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e41 | TaxiSideMission destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346fd1 | SideMission::stop | lock_init | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00347f85 | TaxiSideMission::pickUp | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x0034810d | TaxiSideMission::begin | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346b7d | SideMission::inProgress | lock_init | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346b5d | SideMission::init | vehicle_side | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346b09 | SideMission::getRange | camera_tap | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00347619 | SideMission::calculateMoney | lock_init | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003476c1 | SideMission::calculateTime | vehicle_side | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346d3d | SideMission::isInCheckpointRange | camera_tap | ASSIGNED | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346f05 | SideMission::addNPC | lock_init | ASSIGNED | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346ec5 | SideMission::removeCheckpoint | vehicle_side | ASSIGNED | — | src/game/missions/SideMission.cpp |

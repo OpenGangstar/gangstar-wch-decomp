@@ -25,6 +25,12 @@
     "source": "src/game/vehicles/TaxiSideMission.cpp",
     "linker_script": "config/linker/TaxiSideMissionAiStartup.ld",
     "functions": [
+        "_ZN15TaxiSideMissionC1Ev",
+        "_ZN15TaxiSideMissionC2Ev",
+        "_ZN15TaxiSideMissionD1Ev",
+        "_ZN15TaxiSideMissionD2Ev",
+        "_ZN15TaxiSideMission5cleanEv",
+        "_ZN15TaxiSideMission7dropOffEN3irr4core8vector3dIfEE",
         "_ZN15TaxiSideMission3endEv",
         "_ZN15TaxiSideMission14getMoneyRewardEv",
         "_ZN15TaxiSideMission14getGoalMessageEv",
@@ -51,6 +57,7 @@
         }
     ],
     "sections": [
+        ".taxi_side_mission_base_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -64,6 +71,15 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "_ZN11SideMission4initEv",
+        "_ZN11SideMission16removeCheckpointERP10Checkpoint",
+        "_ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN7Vehicle10immobilizeEv",
+        "_ZN9Character4showEv",
+        "_ZN9Character15resetCollisionsEv",
+        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
+        "_ZN9Character15getOutOfVehicleEbb"
     ]
 }

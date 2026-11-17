@@ -15,8 +15,11 @@ _ZN30retail_sidemission_transitions11guard_transE = 0x00434d78;
 _ZN30retail_sidemission_transitions22scripted_vehicle_transE = 0x00434e20;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__aeabi_f2iz = 0x001c44cc;
 SECTIONS
 {
+    .side_mission_reward 0x00346ba0 : { *ai-startup-sidemission.o(.text._ZN11SideMission9getRewardEv) }
+    .side_mission_update_timer 0x003470d0 : { *ai-startup-sidemission.o(.text._ZN11SideMission11updateTimerEi) }
     .side_mission_timer 0x00346b88 : { *ai-startup-sidemission.o(.text._ZN11SideMission8getTimerEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-sidemission.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x00346d00 : { *ai-startup-sidemission.o(.text.__tcf_1) }

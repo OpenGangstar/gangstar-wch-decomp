@@ -3,7 +3,8 @@
 
 #include "../core/Vector3.h"
 
-// Recovered virtual interface and timer field. The remaining storage is opaque.
+class Checkpoint;
+class NPC;
 class SideMission {
 public:
     virtual void begin(irr::core::vector3d<float>, int, int&, float&) = 0;
@@ -17,12 +18,24 @@ public:
     virtual int getEndMessage() = 0;
     virtual int getObj1Message() = 0;
     virtual int getObj2Message() = 0;
+    void init();
     int getTimer();
+    int getReward();
+    void updateTimer(int elapsed);
+
+protected:
+    static void removeCheckpoint(Checkpoint*& checkpoint);
+    static bool isInCheckpointRange(irr::core::vector3d<float> position, Checkpoint* checkpoint);
 
 private:
     unsigned char unknown4[8];
     int timer;
-    unsigned char unknown16[12];
+    float reward;
+    int stopReason;
+    void stop(bool expired);
+
+protected:
+    NPC* passenger;
 };
 
 #endif
