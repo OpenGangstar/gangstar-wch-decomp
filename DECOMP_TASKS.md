@@ -582,12 +582,19 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034cdcd | TouchScreenIPhone::getTouchIDInRegion | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cdd9 | TouchScreenIPhone::isRegionPressed | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | lock_init | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
-| libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | camera_tap | REVIEW | — | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | — | COMPLETED | 100% | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_side | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
-| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | camera_tap | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | camera_tap | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034dac4 | AccelerometerWin32 complete destructor thunk | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034d9bd | AccelerometerWin32 constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | camera_tap | BLOCKED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | camera_tap | BLOCKED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034dac4 | AccelerometerWin32 complete destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d9bd | AccelerometerWin32 constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d941 | AccelerometerWin32::setWide | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d479 | AccelerometerBase::_calcAngles | camera_tap | BLOCKED | — | src/game/input/AccelerometerBase.cpp |
+| libsanangeles.so | 0x0034d689 | AccelerometerBase::moved | lock_init | REVIEW | — | src/game/input/AccelerometerBase.cpp |
+| libsanangeles.so | 0x0032d925 | CDrivingControlHandler::handleAttackHeld | vehicle_side | REVIEW | — | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032d935 | CDrivingControlHandler::handleAttackPressed | vehicle_side | ASSIGNED | — | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032d911 | CDrivingControlHandler::handleWeaponSwitched | camera_tap | ASSIGNED | — | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032e589 | COnFootControlHandler::handleWeaponSwitched | lock_init | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |

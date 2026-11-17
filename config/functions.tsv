@@ -12701,7 +12701,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c775	0x18	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsED1Ev	Rct<short>::~Rct()
 0x0034c78d	0xa4	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase10touchMovedERK7Point2DIsEl	TouchScreenBase::touchMoved(Point2D<short> const&, long)
 0x0034c831	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase27getTouchIDInitiatedInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInitiatedInRegion(irr::core::rect<float> const&) const
-0x0034c8c5	0xa4	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase20getTouchDisplacementEl	TouchScreenBase::getTouchDisplacement(long) const
+0x0034c8c5	0xa4	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase20getTouchDisplacementEl	TouchScreenBase::getTouchDisplacement(long) const
 0x0034c969	0x92	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenBase::isRegionPressed(irr::core::rect<float> const&) const
 0x0034c9fd	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInRegion(irr::core::rect<float> const&) const
 0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseC1Ev	TouchScreenBase::TouchScreenBase()
@@ -12779,19 +12779,19 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d8b1	0x24	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneC1Ev	AccelerometerIPhone::AccelerometerIPhone()
 0x0034d8d5	0x58	AccelerometerIPhone.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034d92d	0x14	AccelerometerIPhone.cpp	game	input	matched	_GLOBAL__I__ZN19AccelerometerIPhoneC2Ev	_GLOBAL__I__ZN19AccelerometerIPhoneC2Ev
-0x0034d941	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin327setWideEb	AccelerometerWin32::setWide(bool)
+0x0034d941	0x34	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin327setWideEb	AccelerometerWin32::setWide(bool)
 0x0034d974	0x14	AccelerometerWin32.cpp	game	input	pending	_ZThn76_N18AccelerometerWin327OnEventERKN3irr6SEventE	non-virtual thunk to AccelerometerWin32::OnEvent(irr::SEvent const&)
 0x0034d989	0x2	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin327OnEventERKN3irr6SEventE	AccelerometerWin32::OnEvent(irr::SEvent const&)
 0x0034d98d	0x30	AccelerometerWin32.cpp	game	input	matched	__tcf_2	__tcf_2
-0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32C1Ev	AccelerometerWin32::AccelerometerWin32()
-0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32C2Ev	AccelerometerWin32::AccelerometerWin32()
+0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32C1Ev	AccelerometerWin32::AccelerometerWin32()
+0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32C2Ev	AccelerometerWin32::AccelerometerWin32()
 0x0034d9f9	0x6c	AccelerometerWin32.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034da65	0x14	AccelerometerWin32.cpp	game	input	matched	_GLOBAL__I__ZN18AccelerometerWin32C2Ev	_GLOBAL__I__ZN18AccelerometerWin32C2Ev
-0x0034da78	0x14	AccelerometerWin32.cpp	game	input	pending	_ZThn76_N18AccelerometerWin32D0Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
-0x0034da8d	0x38	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32D0Ev	AccelerometerWin32::~AccelerometerWin32()
-0x0034dac4	0x14	AccelerometerWin32.cpp	game	input	pending	_ZThn76_N18AccelerometerWin32D1Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
-0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32D1Ev	AccelerometerWin32::~AccelerometerWin32()
-0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32D2Ev	AccelerometerWin32::~AccelerometerWin32()
+0x0034da78	0x14	AccelerometerWin32.cpp	game	input	matched	_ZThn76_N18AccelerometerWin32D0Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
+0x0034da8d	0x38	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32D0Ev	AccelerometerWin32::~AccelerometerWin32()
+0x0034dac4	0x14	AccelerometerWin32.cpp	game	input	matched	_ZThn76_N18AccelerometerWin32D1Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
+0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32D1Ev	AccelerometerWin32::~AccelerometerWin32()
+0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32D2Ev	AccelerometerWin32::~AccelerometerWin32()
 0x0034db0d	0x18	FileSystemBase.cpp	game	persistence	matched	_ZN14FileSystemBaseC1Ev	FileSystemBase::FileSystemBase()
 0x0034db0d	0x18	FileSystemBase.cpp	game	persistence	matched	_ZN14FileSystemBaseC2Ev	FileSystemBase::FileSystemBase()
 0x0034db25	0x2	FileSystemBase.cpp	game	persistence	matched	_ZNK14FileSystemBase6_traceEPKc	FileSystemBase::_trace(char const*) const
