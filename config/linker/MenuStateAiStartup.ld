@@ -1,5 +1,6 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
+strcpy = 0x001c3fd4;
 INCLUDE build/matches/ai-startup-menustate/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
@@ -20,6 +21,11 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .menu_fx_state_constructor 0x002e77d0 : { *ai-startup-menustate.o(.text._ZN6MenuFX5StateC1EPKc .text._ZN6MenuFX5StateC2EPKc .gnu.linkonce.t._ZN6MenuFX5StateC1EPKc .gnu.linkonce.t._ZN6MenuFX5StateC2EPKc) }
+    .menu_state_constructor 0x002e7d98 : { *ai-startup-menustate.o(.text._ZN9MenuStateC1EPKc .text._ZN9MenuStateC2EPKc) }
+    .menu_dialog_constructor 0x002e7e68 : { *ai-startup-menustate.o(.text._ZN5Menus6DialogC1EPKc .text._ZN5Menus6DialogC2EPKc) }
+    .confirm_constructor 0x002e7e8c : { *ai-startup-menustate.o(.text._ZN5Menus7ConfirmC1EPKc .text._ZN5Menus7ConfirmC2EPKc) }
+    .confirm_payment_constructor 0x002ea220 : { *ai-startup-menustate.o(.text._ZN5Menus14ConfirmPaymentC1EPKc .text._ZN5Menus14ConfirmPaymentC2EPKc) }
     .confirm_notify 0x002e7590 : { *ai-startup-menustate.o(.text._ZN5Menus7Confirm6NotifyEPK10MenuWidgeti) }
     .dialog_got_focus 0x002e8878 : { *ai-startup-menustate.o(.text._ZN5Menus6Dialog8GotFocusEv) }
     .confirm_got_focus 0x002e8898 : { *ai-startup-menustate.o(.text._ZN5Menus7Confirm8GotFocusEv) }

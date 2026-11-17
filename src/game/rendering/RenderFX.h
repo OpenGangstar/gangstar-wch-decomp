@@ -8,6 +8,8 @@ template <typename T>
 class array {
 public:
     void resize(int size) __attribute__((weak));
+    void append(const T* values, int count) __attribute__((weak));
+    void remove(int index) __attribute__((weak));
     T* elements;
     int size;
     int capacity;

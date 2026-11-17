@@ -8,6 +8,7 @@
 namespace Menus {
 class Dialog : public MenuState {
 public:
+    explicit Dialog(const char* name);
     virtual ~Dialog();
     void SetMessage(int id);
 
@@ -18,6 +19,7 @@ protected:
 };
 class Confirm : public Dialog {
 public:
+    explicit Confirm(const char* name);
     virtual ~Confirm();
     bool Confirmed() const;
 
@@ -32,6 +34,7 @@ private:
 };
 class ConfirmPayment : public Confirm {
 public:
+    explicit ConfirmPayment(const char* name);
     virtual ~ConfirmPayment();
     void SetPrice(int amount);
 
