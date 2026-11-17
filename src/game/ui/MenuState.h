@@ -44,6 +44,14 @@ private:
     bool unknown236;
 };
 
+namespace gameswf {
+template <>
+inline array<MenuFX::State*>::~array()
+{
+    release_buffer();
+}
+}
+
 class MenuFX::State {
 public:
     explicit inline State(const char* name);

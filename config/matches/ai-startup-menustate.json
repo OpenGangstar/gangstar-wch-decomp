@@ -309,6 +309,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8RenderFXD1Ev",
+        "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",
         "_ZN8RenderFX6UpdateEib",

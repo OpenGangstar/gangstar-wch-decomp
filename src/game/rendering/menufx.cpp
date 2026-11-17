@@ -819,6 +819,10 @@ MenuFX::MenuFX() : unknown220(false), unknown236(false)
     SetEventListener(this);
 }
 
+MenuFX::~MenuFX()
+{
+}
+
 void RenderFX::Controller::Reset()
 {
     first.set_ref(0);

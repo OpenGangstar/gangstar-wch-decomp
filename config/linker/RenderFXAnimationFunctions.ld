@@ -1,4 +1,5 @@
 __cxa_pure_virtual = 0;
+_ZdlPv = 0x001c42b0;
 __stack_chk_fail = 0x001c42e0;
 memcpy = 0x001c4190;
 __aeabi_i2f = 0x001c41e4;
@@ -31,6 +32,9 @@ SECTIONS
     .renderfx_find_named 0x003edf1c : { *renderfx-animation.o(.text._ZN8RenderFX4FindEPKc) }
     .renderfx_get_search_index 0x003f04ac : { *renderfx-animation.o(.text._ZN8RenderFX14GetSearchIndexEv) }
     .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev) }
+    .menufx_vtable 0x004afc18 : { *renderfx-animation.o(.data.rel.ro._ZTV6MenuFX) }
+    .menufx_deleting_destructor 0x003ee904 : { *renderfx-animation.o(.text._ZN6MenuFXD0Ev) }
+    .menufx_destructor 0x003ee94c : { *renderfx-animation.o(.text._ZN6MenuFXD1Ev .text._ZN6MenuFXD2Ev) }
     .menufx_constructor 0x003ed158 : { *renderfx-animation.o(.text._ZN6MenuFXC1Ev .text._ZN6MenuFXC2Ev) }
     .renderfx_constructor 0x003ed0cc : { *renderfx-animation.o(.text._ZN8RenderFXC1Ev .text._ZN8RenderFXC2Ev) }
     .renderfx_controller_reset 0x003ec600 : { *renderfx-animation.o(.text._ZN8RenderFX10Controller5ResetEv) }
