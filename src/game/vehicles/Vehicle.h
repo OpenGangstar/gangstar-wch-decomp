@@ -140,6 +140,10 @@ public:
     void _notifyTargeted(bool targeted, Character* source);
     void AddTurboSounds();
     void Init4CylTurboSounds();
+    void Init4CylNaSounds();
+    void InitV8Z06Sounds();
+    void InitV6TurboSounds();
+    void InitV6naSounds();
     void InitSuperbikeSounds();
     void InitV12LamborghiniSounds();
     void setHasBeenStolen();
@@ -227,7 +231,8 @@ private:
     int vehicleIndex;
     CarSounds* carSounds;
     CarSoundParameters* carSoundParameters;
-    unsigned char unknown436[8];
+    int soundMaximumRpm;
+    unsigned char unknown440[4];
     int previousSoundRpm;
     int carSoundMode;
     bool carSoundTrigger;

@@ -4,6 +4,7 @@ INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __aeabi_atexit = 0x001c494c;
+_Znaj = 0x001c3ff8;
 _Znwj = 0x001c4814;
 atoi = 0x001c4880;
 __stack_chk_fail = 0x001c42e0;
@@ -181,6 +182,10 @@ SECTIONS
     .vehicle_interior 0x00307e2c : { *(.text._ZN7Vehicle14toggleInteriorEb) }
     .vehicle_notify_targeted 0x00307f1c : { *(.text._ZN7Vehicle15_notifyTargetedEbP9Character) }
     .vehicle_add_turbo 0x00307f90 : { *(.text._ZN7Vehicle14AddTurboSoundsEv) }
+    .vehicle_init_v8_z06 0x0030840c : { *(.text._ZN7Vehicle15InitV8Z06SoundsEv) }
+    .vehicle_init_v6_turbo 0x00308700 : { *(.text._ZN7Vehicle17InitV6TurboSoundsEv) }
+    .vehicle_init_v6_na 0x00308998 : { *(.text._ZN7Vehicle14InitV6naSoundsEv) }
+    .vehicle_init_4cyl_na 0x00308bb0 : { *(.text._ZN7Vehicle16Init4CylNaSoundsEv) }
     .vehicle_init_4cyl 0x00307f94 : { *(.text._ZN7Vehicle19Init4CylTurboSoundsEv) }
     .vehicle_init_superbike 0x00307f98 : { *(.text._ZN7Vehicle19InitSuperbikeSoundsEv) }
     .vehicle_init_v12 0x00307f9c : { *(.text._ZN7Vehicle24InitV12LamborghiniSoundsEv) }

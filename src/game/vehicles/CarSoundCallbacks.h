@@ -29,7 +29,80 @@ struct CarSoundParameters {
 };
 
 class SoundFade;
-struct TurboSoundSettings;
+struct CarSoundSettings {
+    CarSoundSettings();
+    ~CarSoundSettings();
+    int maximumRpm;
+    int initialRpm;
+    int initialLoad;
+    unsigned int initialGear;
+    unsigned int unknownGear16;
+    unsigned int unknownGear20;
+    int onEngineCount;
+    int* onEngineIds;
+    float onEngineGain;
+    int* onEngineReferenceRpm;
+    int* onEngineLowerRpm;
+    int* onEngineUpperRpm;
+    int offEngineCount;
+    int* offEngineIds;
+    float offEngineGain;
+    int* offEngineReferenceRpm;
+    int* offEngineLowerRpm;
+    int* offEngineUpperRpm;
+    bool rumbleEnabled;
+    bool rumbleOffThrottleOnly;
+    bool rumbleVariablePitch;
+    unsigned char unknown75;
+    int rumbleSoundId;
+    float rumbleVolume;
+    int rumbleReferenceRpm;
+    int rumbleRampEndRpm;
+    int rumbleMinimumRpm;
+    int rumbleMaximumRpm;
+    bool startupEnabled;
+    unsigned char unknown101[3];
+    int startupSound;
+    float startupGain;
+    bool clutchEnabled;
+    unsigned char unknown113[3];
+    int clutchSoundId;
+    float clutchVolume;
+    bool turboEnabled;
+    bool useRpmCopyB;
+    unsigned char unknown126[2];
+    int turboInitialRpm;
+    bool useRpmCopyA;
+    unsigned char unknown133[3];
+    int secondaryTurboInitialRpm;
+    int turboSoundId;
+    float turboBasePitch;
+    int turboRpm148;
+    float turboGain;
+    int turboRpm156;
+    int turboRpm160;
+    int secondaryTurboSoundId;
+    float secondaryTurboGain;
+    int turboRpm172;
+    int turboRpm176;
+    int auxiliaryTurboCount;
+    int* auxiliaryTurboIds;
+    int* auxiliaryTurboThresholds;
+    int turboValue192;
+    bool filterRpm;
+    unsigned char unknown197[3];
+    float filterFrequency;
+};
+
+struct TurboSoundSettings {
+    TurboSoundSettings();
+    ~TurboSoundSettings();
+
+    unsigned char unknown0[60];
+    int* auxiliaryTurboIds;
+    int* auxiliaryTurboThresholds;
+    float auxiliaryTurboGain;
+};
 
 // Observed CarSounds prefix.
 class CarSounds {
@@ -37,6 +110,7 @@ public:
     CarSounds();
     ~CarSounds();
     void Update(CarSoundParameters* parameters);
+    void Init(CarSoundSettings* settings);
     void RemoveTurboSounds(TurboSoundSettings* settings);
     static void Clean();
     static CarSoundCallbacks s_SoundCallbacks;
