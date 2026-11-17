@@ -9840,7 +9840,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebf35	0x44	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5About6UpdateEb	Widgets::About::Update(bool)
 0x002ebf79	0x4a	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements6UpdateEb	Widgets::Achievements::Update(bool)
 0x002ebfc5	0x4c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Statistics6UpdateEb	Widgets::Statistics::Update(bool)
-0x002ec011	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets8MainMenu16GetPressedButtonEv	Widgets::MainMenu::GetPressedButton() const
+0x002ec011	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets8MainMenu16GetPressedButtonEv	Widgets::MainMenu::GetPressedButton() const
 0x002ec015	0x30	MenuWidget.cpp	game	ui	matched	__tcf_3	__tcf_3
 0x002ec045	0x28	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenuD0Ev	Widgets::IGMenu::~IGMenu()
 0x002ec06d	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenuD2Ev	Widgets::IGMenu::~IGMenu()
@@ -9849,7 +9849,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ec0b5	0x28	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting8SetTitleEPKc	Widgets::GameSetting::SetTitle(char const*)
 0x002ec0dd	0x38	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5Title18UpdateLocalizationEv	Widgets::Title::UpdateLocalization()
 0x002ec115	0x6c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib	Widgets::IGMenu::SetButtonInfo(Widgets::IGMenu::eButton, int, bool)
-0x002ec181	0x7c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb	Widgets::MainMenu::SetButtonInfo(Widgets::MainMenu::eButton, int, bool, bool)
+0x002ec181	0x7c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb	Widgets::MainMenu::SetButtonInfo(Widgets::MainMenu::eButton, int, bool, bool)
 0x002ec1fd	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting12HideButtonOkEv	Widgets::GameSetting::HideButtonOk()
 0x002ec21d	0x54	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting13HideSelectionEv	Widgets::GameSetting::HideSelection()
 0x002ec271	0x54	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting13ShowSelectionEv	Widgets::GameSetting::ShowSelection()
@@ -9858,8 +9858,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ec3b5	0x1c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements5ResetEv	Widgets::Achievements::Reset()
 0x002ec3d1	0x58	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidgetC1EPKc	MenuWidget::MenuWidget(char const*)
 0x002ec3d1	0x58	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidgetC2EPKc	MenuWidget::MenuWidget(char const*)
-0x002ec429	0x74	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8MainMenuC1Ev	Widgets::MainMenu::MainMenu()
-0x002ec429	0x74	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8MainMenuC2Ev	Widgets::MainMenu::MainMenu()
+0x002ec429	0x74	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8MainMenuC1Ev	Widgets::MainMenu::MainMenu()
+0x002ec429	0x74	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8MainMenuC2Ev	Widgets::MainMenu::MainMenu()
 0x002ec49d	0x68	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10StatisticsC1Ev	Widgets::Statistics::Statistics()
 0x002ec49d	0x68	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10StatisticsC2Ev	Widgets::Statistics::Statistics()
 0x002ec505	0x60	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12AchievementsC1Ev	Widgets::Achievements::Achievements()
