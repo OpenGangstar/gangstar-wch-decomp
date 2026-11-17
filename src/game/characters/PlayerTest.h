@@ -121,6 +121,8 @@ public:
     void addCash(int amount, int maximum);
     void addCurrentDriftDistance(float distance);
     void addCurrentJumpDistance(float distance);
+    void jumpFinished();
+    void driftFinished();
     void switchContext(eContext context, bool flag);
     void switchWeapon(bool unarmed);
     virtual void walkToLocation(const irr::core::vector3d<float>& point);

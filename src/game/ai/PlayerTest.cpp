@@ -285,6 +285,22 @@ Weapon* PlayerTest::getWeapon() const
     return Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();
 }
 
+void PlayerTest::jumpFinished()
+{
+    const int distance = currentJumpDistance / 100;
+    if (distance > 0)
+        AchievementManager::s_achievementManager->recordJump(distance);
+    currentJumpDistance = 0;
+}
+
+void PlayerTest::driftFinished()
+{
+    const int distance = currentDriftDistance / 100;
+    if (distance > 0)
+        AchievementManager::s_achievementManager->recordDrift(distance);
+    currentDriftDistance = 0;
+}
+
 void PlayerTest::justStoleCar(Vehicle* car)
 {
     if (!car)
