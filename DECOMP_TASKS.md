@@ -105,5 +105,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00348735 | Trail::BuildPoint | camera_tap | BLOCKED | — | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x0030a731 | Vehicle::isDoorClear | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030ae3d | Vehicle::getCollisionRect | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030822d | Vehicle::UpdateCarSounds | camera_tap | REVIEW | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00307bcd | Vehicle::_adjustEnginePitch | lock_init | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030822d | Vehicle::UpdateCarSounds | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00307bcd | Vehicle::_adjustEnginePitch | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0034f515 | CarSounds::UpdateClutchSound | camera_tap | ASSIGNED | — | src/game/vehicles/CarSounds.cpp |
+| libsanangeles.so | 0x0034fa8d | CarSounds::UpdateStartupSound | lock_init | REVIEW | — | src/game/vehicles/CarSounds.cpp |
+| libsanangeles.so | 0x00350441 | CarSounds::InitOnOffCrossFadeGains | vehicle_side | ASSIGNED | — | src/game/vehicles/CarSounds.cpp |

@@ -784,6 +784,84 @@ void Vehicle::immobilize()
 }
 
 
+float Vehicle::_adjustEnginePitch(unsigned int speed)
+{
+    using namespace gameloft::vehicle::gear_profiles;
+    float range;
+    float result = 0.0f;
+    const GearProfile& profile = profiles[gearProfile];
+    if (gear == profile.gearCount) {
+        const unsigned int lower = profile.shiftSpeeds[gear - 2];
+        const unsigned int span = lower - profile.shiftSpeeds[gear - 3];
+        if (speed > lower + span) {
+            range = static_cast<float>(span);
+        } else {
+            range = static_cast<float>(span);
+            gearProgress = static_cast<float>(speed - lower) / range;
+        }
+    } else if (gear == 1 || gear == static_cast<unsigned int>(-1)) {
+        gearProgress = static_cast<float>(speed) / (range = static_cast<float>(profile.shiftSpeeds[0]));
+        result = 1.0f - gearProgress;
+    } else {
+        const unsigned int lower = profile.shiftSpeeds[gear - 2];
+        range = static_cast<float>(profile.shiftSpeeds[gear - 1] - lower);
+        gearProgress = static_cast<float>(speed - lower) / range;
+    }
+    if (gearProgress > 1.0f)
+        gearProgress = 1.0f;
+    else if (gearProgress < 0.0f)
+        gearProgress = 0.0f;
+
+    enginePitchSpeed = static_cast<float>(speed) - __aeabi_fmul(range, 1.0f - gearProgress) * enginePitchFalloff;
+    if (enginePitchSpeed < 0.0f)
+        enginePitchSpeed = 0.0f;
+    return result;
+}
+
+void Vehicle::UpdateCarSounds()
+{
+    carSoundParameters->mode = carSoundMode;
+    const int mode = carSoundMode;
+
+    if (mode == 1) {
+        carSoundParameters->rpm =
+            static_cast<int>((enginePitchSpeed / soundMaximumSpeed) * soundRpmRange) + soundMinimumRpm;
+        carSoundParameters->trigger = carSoundTrigger;
+        carSoundParameters->gear = gear;
+
+        if (soundLoadCountdown) {
+            carSoundParameters->load = previousSoundLoad;
+        } else {
+            if (previousSoundGear == static_cast<float>(gear) &&
+                previousSoundRpm <= carSoundParameters->rpm && carSoundParameters->rpm != 0) {
+                if (previousSoundRpm < carSoundParameters->rpm)
+                    carSoundParameters->load = mode;
+                else
+                    carSoundParameters->load = previousSoundLoad;
+            } else {
+                carSoundParameters->load = 0;
+            }
+            if (previousSoundLoad != carSoundParameters->load)
+                soundLoadCountdown = soundLoadDuration;
+        }
+        if (--soundLoadCountdown < 0)
+            soundLoadCountdown = 0;
+
+        carSoundParameters->scale = 1.0f;
+        carSoundParameters->rpmCopyB = carSoundParameters->rpm;
+        carSoundParameters->rpmCopyA = carSoundParameters->rpm;
+        carSounds->Update(carSoundParameters);
+        previousSoundGear = static_cast<float>(gear);
+        previousSoundRpm = carSoundParameters->rpm;
+        previousSoundLoad = carSoundParameters->load;
+        if (carSoundTrigger)
+            carSoundTrigger = false;
+    } else if (mode == 2) {
+        carSounds->Update(carSoundParameters);
+        carSoundMode = 0;
+    }
+}
+
 void Vehicle::_cleanupSounds()
 {
     if (driver == reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()))) {

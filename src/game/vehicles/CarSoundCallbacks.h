@@ -13,9 +13,22 @@ struct CarSoundCallbacks {
     CarSoundCallbacks& operator=(const CarSoundCallbacks&);
 };
 
-// Only the static callback interface is recovered here, not an instance layout.
+struct CarSoundParameters {
+    int mode;
+    bool trigger;
+    unsigned char unknown5[3];
+    int rpm;
+    int load;
+    unsigned int gear;
+    float scale;
+    int rpmCopyA;
+    int rpmCopyB;
+};
+
+// Partial call interface. This does not assert a CarSounds instance layout.
 class CarSounds {
 public:
+    void Update(CarSoundParameters* parameters);
     static CarSoundCallbacks s_SoundCallbacks;
     static void UnregisterCallbacks();
     static void RegisterCallbacks(const CarSoundCallbacks&);
