@@ -365,7 +365,6 @@
         "_Z13ekd_debug_outPKcPc",
         "_Z21ekd_makestringfile255PKcPc",
         "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
-        "_ZN8RenderFXD1Ev",
         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",

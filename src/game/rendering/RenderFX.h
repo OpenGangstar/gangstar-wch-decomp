@@ -49,6 +49,12 @@ public:
     int capacity;
 };
 
+template <>
+inline array<character*>::~array()
+{
+    release_buffer();
+}
+
 template<class T> struct string_hash_functor;
 
 template<class Key, class Value, class Hash>
@@ -68,7 +74,7 @@ public:
     class Controller {
     public:
         Controller();
-        ~Controller();
+        ~Controller() __attribute__((long_call));
         void Reset() __attribute__((long_call));
 
         float unknown0;
@@ -90,7 +96,7 @@ public:
     virtual void Update(int elapsed, bool render);
     class SearchIndex {
     public:
-        ~SearchIndex();
+        inline ~SearchIndex() __attribute__((noinline, long_call));
         void Init(RenderFX& owner);
         void Clear() __attribute__((long_call));
         class Entry;

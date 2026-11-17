@@ -6,7 +6,6 @@
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
-        "-fno-delete-null-pointer-checks",
         "-fno-builtin-memcpy",
         "-fno-rtti",
         "-fno-exceptions",
@@ -28,6 +27,9 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFXD0Ev",
+        "_ZN8RenderFXD1Ev",
+        "_ZN8RenderFXD2Ev",
         "_ZN6MenuFXD0Ev",
         "_ZN6MenuFXD1Ev",
         "_ZN6MenuFXD2Ev",
@@ -125,6 +127,7 @@
         "_ZN8RenderFX8PlayAnimEPKcS1_i"
     ],
     "sections": [
+        ".renderfx_vtable",
         ".menufx_vtable",
         ".renderfx_event_listener_vtable",
         ".activate_animation",
@@ -135,7 +138,6 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
-        "_ZN8RenderFXD1Ev",
         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",

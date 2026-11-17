@@ -10,13 +10,18 @@
 
 #include "WantedLevelManager.h"
 #include "WantedMeter.h"
+#include "WantedLevelEvents.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
 #include "../core/GameEventMethods.h"
 #include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../meta/Achievements.h"
+#include "../scripting/ScriptManager.h"
 
 class EvWantedEscaped : public IEvent {
 public:
+    EvWantedEscaped() { eventID = 24; }
     virtual ~EvWantedEscaped() __attribute__((used)) {}
 };
 
@@ -148,4 +153,43 @@ static void _GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class GSBlockingTutorial;
+template<> GSBlockingTutorial* StateMachine::pushState<GSBlockingTutorial>() __attribute__((weak));
+
+void WantedLevelManager::_processWantedLevel()
+{
+    if (locked) {
+        unknown8 = lockedLevel;
+        return;
+    }
+    if (unknown8 == lockedLevel)
+        return;
+    if (unknown8 > lockedLevel && !s_bTutoWantedLevel &&
+        !ScriptManager::getInstance()->isInCinematic() && ScriptManager::getInstance()->unknown78) {
+        s_bTutoWantedLevel = true;
+        MenuManager::getInstance()->setTutorialIds(0x3080, 0x3081);
+        StateMachine::getInstance()->pushState<GSBlockingTutorial>();
+    }
+
+    Application* application = Application::GetInstance();
+    if (unknown8 > lockedLevel)
+        unknown76 = true;
+    application->GetHudManager()->wantedMeter->setWantedLevel(unknown8);
+    if (unknown8 == 0) {
+        application->GetEventManager()->raise(EvWantedEscaped());
+        unknown20 = 0;
+        unknown16 = 0;
+    } else {
+        application->GetEventManager()->raise(EvWantedLevelChanged());
+        switch (unknown8) {
+        case 1: unknown16 = 0; unknown20 = 0; break;
+        case 2: unknown16 = 3; unknown20 = 1; break;
+        case 3: unknown16 = 8; unknown20 = 3; break;
+        case 4: unknown16 = 14; unknown20 = 6; break;
+        case 5: unknown16 = 20; unknown20 = 10; break;
+        }
+    }
+    AchievementManager::s_achievementManager->recordWantedLevel(unknown8);
 }

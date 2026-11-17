@@ -504,7 +504,10 @@ void fscommand_callback_handler(gameswf::character* character, const char* comma
     MovieRenderFX* movie = state.movie;
     if (movie) {
         MovieWeakReference* reference = state.reference;
-        if (!reference->alive) {
+        // Use the field address so GCC retains the separate reference guard.
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(reference) +
+            __builtin_offsetof(MovieWeakReference, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
             if (reference) {
                 if (--reference->references == 0)
                     delete reference;
@@ -816,6 +819,11 @@ MenuFX::MenuFX() : unknown220(false), unknown236(false)
 
 MenuFX::~MenuFX()
 {
+}
+
+RenderFX::~RenderFX()
+{
+    Unload();
 }
 
 void RenderFX::Controller::Reset()

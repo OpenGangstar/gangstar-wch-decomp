@@ -12,6 +12,7 @@
 #include "../app/Application.h"
 #include "../core/EventManager.h"
 #include "../core/GameEventMethods.h"
+#include "../missions/WantedLevelEvents.h"
 
 extern "C" void clearReceivers(void*)
     __asm__("_ZN9stlp_priv10_List_baseIP14IEventReceiverSaIS2_EE5clearEv")
@@ -21,11 +22,6 @@ inline AIManager::ReceiverList::~ReceiverList()
 {
     clearReceivers(this);
 }
-
-class EvWantedLevelChanged : public IEvent {
-public:
-    virtual ~EvWantedLevelChanged() __attribute__((used)) {}
-};
 
 AIManager::AIManager() : unknown20(0)
 {

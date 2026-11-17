@@ -31,7 +31,10 @@ SECTIONS
     .renderfx_unload 0x003ed370 : { *renderfx-animation.o(.text._ZN8RenderFX6UnloadEv) }
     .renderfx_find_named 0x003edf1c : { *renderfx-animation.o(.text._ZN8RenderFX4FindEPKc) }
     .renderfx_get_search_index 0x003f04ac : { *renderfx-animation.o(.text._ZN8RenderFX14GetSearchIndexEv) }
-    .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev) }
+    .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev .gnu.linkonce.t._ZN8RenderFX11SearchIndexD1Ev) }
+    .renderfx_destructor 0x003ee884 : { *renderfx-animation.o(.text._ZN8RenderFXD1Ev .text._ZN8RenderFXD2Ev) }
+    .renderfx_deleting_destructor 0x003ee800 : { *renderfx-animation.o(.text._ZN8RenderFXD0Ev) }
+    .renderfx_vtable 0x004afc68 : { *renderfx-animation.o(.data.rel.ro._ZTV8RenderFX) }
     .menufx_vtable 0x004afc18 : { *renderfx-animation.o(.data.rel.ro._ZTV6MenuFX) }
     .menufx_deleting_destructor 0x003ee904 : { *renderfx-animation.o(.text._ZN6MenuFXD0Ev) }
     .menufx_destructor 0x003ee94c : { *renderfx-animation.o(.text._ZN6MenuFXD1Ev .text._ZN6MenuFXD2Ev) }
