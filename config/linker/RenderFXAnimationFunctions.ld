@@ -91,7 +91,9 @@ SECTIONS
     .renderfx_log_callback 0x003ec670 : { *renderfx-animation.o(.text._Z12log_callbackbPKc) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
+    .format_named_html 0x003eec68 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatHTMLEPKcS1_z) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }
+    .format_character_html 0x003eece8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatHTMLEPN7gameswf9characterEPKcz) }
     .format_character_text 0x003eed28 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPN7gameswf9characterEPKcz) }
     .renderfx_string_buffer 0x004bd500 (NOLOAD) : { *renderfx-animation.o(.bss.s_stringBuffer) }
     .set_named_focus 0x003ef4f4 : { *renderfx-animation.o(.text._ZN8RenderFX8SetFocusEPKci) }
