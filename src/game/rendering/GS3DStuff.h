@@ -64,6 +64,7 @@ public:
     static char* getTextureNameSuffix();
     static OctTreeAABB* getSceneOctTree();
     enum eColorType { Color0, Color1, Color2, Color3 };
+    static void SetAlpha(irr::scene::ISceneNode* node, unsigned char alpha, eColorType type);
     static void SetColor(irr::scene::ISceneNode* node, irr::video::SColor color, eColorType type);
     static void SetMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type);
     static void SetMaterial(irr::scene::ISceneNode* node, irr::video::SMaterial* material);

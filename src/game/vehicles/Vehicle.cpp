@@ -35,6 +35,7 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../core/PhysicsBodyDef.h"
 #include "../core/VideoDriver.h"
 #include "../core/MeshBufferInterfaces.h"
+#include "../core/MeshSceneInterfaces.h"
 #include "../rendering/GS3DStuff.h"
 #include "../world/TrailMgr.h"
 #include "../world/Trail.h"
@@ -42,13 +43,6 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 extern "C" float __aeabi_fmul(float, float);
 extern "C" int puts(const char*);
 void aTransitionCallback(irr::scene::ITimelineController*, void*);
-
-namespace irr { namespace collada {
-class CSkinnedMeshSceneNode {
-public:
-    void setIsSkinningEnabled(bool enabled);
-};
-} }
 
 namespace {
 class SkinnedMeshBoundsView {
@@ -65,21 +59,54 @@ struct SkinBoundsSource {
 };
 }
 
-class CustomSkinnedMeshSceneNode {
+namespace irr {
+namespace scene {
+class IMeshBuffer;
+class CColladaMeshSceneNode : public IMeshSceneNode {
 public:
-    const irr::core::aabbox3d<float>& getBoundingBox() const __attribute__((weak));
-
-private:
-    unsigned char unknown[36];
-    irr::core::matrix4 absoluteTransform;
-    unsigned char unknown104[108];
-    mutable irr::core::aabbox3d<float> transformedBounds;
-    unsigned char unknown236[96];
+    virtual void setReadOnlyMaterials(bool);
+    virtual bool isReadOnlyMaterials() const;
+    virtual IMeshBuffer* getMeshBuffer(unsigned int);
+};
+}
+namespace collada {
+class CSkinnedMeshSceneNode : public scene::CColladaMeshSceneNode {
+public:
+    CSkinnedMeshSceneNode(scene::IColladaMesh*, IRootSceneNode*, SNode*, int,
+        const core::vector3d<float>&, const core::quaternion&, const core::vector3d<float>&);
+    void setIsSkinningEnabled(bool);
+protected:
+    unsigned char unknown328[4];
     SkinBoundsSource* skin;
-    unsigned char unknown336[68];
+    unsigned char unknown336[56];
+};
+}
+}
 
+class CustomSkinnedMeshSceneNode : public irr::collada::CSkinnedMeshSceneNode {
 public:
-    const irr::core::aabbox3d<float>& getTransformedBoundingBox() const __attribute__((weak));
+    CustomSkinnedMeshSceneNode(irr::scene::IColladaMesh*, irr::collada::IRootSceneNode*, irr::collada::SNode*, int,
+        const irr::core::vector3d<float>&, const irr::core::quaternion&, const irr::core::vector3d<float>&);
+    virtual ~CustomSkinnedMeshSceneNode();
+    virtual const irr::core::aabbox3d<float>& getBoundingBox() const __attribute__((weak));
+    virtual const irr::core::aabbox3d<float>& getTransformedBoundingBox() const __attribute__((weak));
+};
+
+typedef char CustomSkinnedMeshSceneNodeExtent[sizeof(CustomSkinnedMeshSceneNode) == 404 ? 1 : -1];
+
+CustomSkinnedMeshSceneNode::CustomSkinnedMeshSceneNode(
+    irr::scene::IColladaMesh* mesh, irr::collada::IRootSceneNode* root, irr::collada::SNode* node, int id,
+    const irr::core::vector3d<float>& position, const irr::core::quaternion& rotation,
+    const irr::core::vector3d<float>& scale)
+    : irr::collada::CSkinnedMeshSceneNode(mesh, root, node, id, position, rotation, scale)
+{
+}
+
+struct SkinNodeBoundsLayout {
+    unsigned char opaque0[36];
+    irr::core::matrix4 absoluteTransform;
+    unsigned char opaque104[108];
+    mutable irr::core::aabbox3d<float> transformedBounds;
 };
 
 const irr::core::aabbox3d<float>& CustomSkinnedMeshSceneNode::getBoundingBox() const
@@ -90,9 +117,10 @@ const irr::core::aabbox3d<float>& CustomSkinnedMeshSceneNode::getBoundingBox() c
 const irr::core::aabbox3d<float>& CustomSkinnedMeshSceneNode::getTransformedBoundingBox() const
 {
     const irr::scene::ISceneNode* node = reinterpret_cast<const irr::scene::ISceneNode*>(this);
-    transformedBounds = node->getBoundingBox();
-    absoluteTransform.transformBoxEx(transformedBounds);
-    return transformedBounds;
+    const SkinNodeBoundsLayout* bounds = reinterpret_cast<const SkinNodeBoundsLayout*>(this);
+    bounds->transformedBounds = node->getBoundingBox();
+    bounds->absoluteTransform.transformBoxEx(bounds->transformedBounds);
+    return bounds->transformedBounds;
 }
 
 namespace {
@@ -1701,6 +1729,72 @@ void Vehicle::UpdateCarTireTrails(int, int alpha)
         wheelTrails[wheel]->SetColor(static_cast<unsigned char>(alpha));
         wheelTrails[wheel]->Update(position, up, false);
     }
+}
+
+struct VehicleRepairVisualBlock {
+    unsigned char unknown0[12];
+    float value12;
+    unsigned char unknown16[4];
+    float value20;
+};
+
+struct VehicleRepairVisualState {
+    unsigned char unknown0[60];
+    VehicleRepairVisualBlock* block;
+    unsigned char unknown64[24];
+    bool dirty;
+};
+
+void Vehicle::repair()
+{
+    unknown960Word = -5000;
+    if (enabledSceneNode)
+        GS3DStuff::SetAlpha(enabledSceneNode, 255, GS3DStuff::Color0);
+    if (sceneNode) {
+        GS3DStuff::SetAlpha(sceneNode, 255, GS3DStuff::Color0);
+        GS3DStuff::SetMaterialType(sceneNode, static_cast<irr::video::E_MATERIAL_TYPE>(0));
+    }
+    if (explosionTimeline) {
+        enableSkinning(false);
+        toggleInterior(false);
+        enableBackfaceCulling(true);
+        sceneNode->removeAnimator(explosionAnimator);
+    }
+
+    exploding = false;
+    explosionFinished = false;
+    explosionFlag = 0;
+    VehicleRepairVisualState* visual = repairVisualState;
+    VehicleRepairVisualBlock* block = visual->block;
+    if (block->value12 != 0.0f) {
+        block->value12 = 0.0f;
+        visual->dirty = true;
+        visual = repairVisualState;
+        block = visual->block;
+    }
+    if (block->value20 != 0.0f) {
+        block->value20 = 0.0f;
+        visual->dirty = true;
+    }
+    health = getMaxHealth();
+    repairMaterialNode->getMaterial(0).setTexture(0, repairTexture);
+    GS3DStuff::SetMaterialFiltering(repairMaterialNode, false, true);
+    repairFlag420 = false;
+    const irr::video::SColor white(255, 255, 255, 255);
+    GS3DStuff::SetMaterialFlag(sceneNode, irr::video::MaterialFlag2, true);
+    GS3DStuff::SetColor(sceneNode, white, GS3DStuff::Color0);
+    GS3DStuff::SetColor(interior, white, GS3DStuff::Color0);
+    GS3DStuff::SetMaterialFlag(repairGlassNode, irr::video::MaterialFlag2, false);
+    GS3DStuff::SetMaterialType(repairGlassNode, static_cast<irr::video::E_MATERIAL_TYPE>(25));
+    GS3DStuff::SetMaterialType(repairLightNode, irr::video::MaterialType13);
+    _resetLights();
+    showWheels();
+    doorSoundSuppression = 2;
+    closeDoor(true);
+    closeDoor(false);
+    sceneNode->resetTransform(true);
+    reinterpret_cast<irr::scene::ISceneNode*>(skinnedMesh)->resetTransform(true);
+    ResetBodyPosition();
 }
 
 void Vehicle::InitV8Z06Sounds()

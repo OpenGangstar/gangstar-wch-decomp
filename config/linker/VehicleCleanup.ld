@@ -62,6 +62,7 @@ SECTIONS
     .vehicle_enable 0x0030bb64 : { *(.text._ZN7Vehicle6enableEv) }
     .vehicle_initialize_driver 0x0030a8bc : { *(.text._ZN7Vehicle16initializeDriverEv) }
     .custom_skin_bounds 0x00307b00 : { *(.text._ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv) }
+    .custom_skin_ctor 0x00309230 : { *(.text._ZN26CustomSkinnedMeshSceneNodeC1EPN3irr5scene12IColladaMeshEPNS0_7collada14IRootSceneNodeEPNS4_5SNodeEiRKNS0_4core8vector3dIfEERKNS9_10quaternionESD_) }
     .car_create_morph 0x003092b4 : { *(.text._ZN11CCarFactory11createMorphERKN3irr7collada16CColladaDatabaseEPNS1_11SControllerE) }
     .car_morph_d0 0x00311e40 : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD0Ev) }
     .car_morph_d1 0x00311e9c : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD1Ev) }
@@ -109,6 +110,7 @@ SECTIONS
     .vehicle_debug 0x0030b12c : { *(.text._ZN7Vehicle5debugEPN3irr5video12IVideoDriverE) }
     .vehicle_tire_trails 0x00309600 : { *(.text._ZN7Vehicle19UpdateCarTireTrailsEii) }
     .vehicle_tire_trails_init 0x0041feb0 : { *(.rodata._ZZN7Vehicle19UpdateCarTireTrailsEiiE*C.*) }
+    .vehicle_repair 0x0030b9a4 : { *(.text._ZN7Vehicle6repairEv) }
     .vehicle_start_driving 0x00311148 : { *(.text._ZN7Vehicle12startDrivingEv) }
     .vehicle_play_horn 0x00312fb8 : { *(.text._ZN7Vehicle8playHornEv) }
     .vehicle_play_horn_tables 0x0041f7ac : { *(.rodata._ZN7Vehicle8playHornEv) }
