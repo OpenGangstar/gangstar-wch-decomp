@@ -25,6 +25,10 @@ void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
 }
 
 namespace gameswf {
+class render_handler;
+render_handler* get_render_handler();
+void log_msg(const char* format, ...);
+
 class player {
 public:
     root* get_root();
@@ -98,6 +102,18 @@ struct CharacterAnimationMethods {
 inline const CharacterAnimationMethods& animationMethods(const gameswf::character* character)
 {
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
+}
+
+struct RenderHandlerMethods {
+    void (*beforeWireFrame[16])();
+    void (*setWireFrame)(gameswf::render_handler*, bool);
+    void (*beforeOrientation[23])();
+    void (*setOrientation)(gameswf::render_handler*, gameswf::orientation_mode);
+};
+
+inline const RenderHandlerMethods& renderHandlerMethods(const gameswf::render_handler* handler)
+{
+    return **reinterpret_cast<const RenderHandlerMethods* const*>(handler);
 }
 
 struct FlashCharacterRoot {
@@ -186,6 +202,27 @@ struct SpriteEnabledState {
 extern const char activateAnimation[] __attribute__((visibility("hidden"))) = "activated";
 static const char focusOutAnimation[] = "focus_out";
 extern const char disabledAnimation[] __attribute__((visibility("hidden"))) = "disabled";
+
+void RenderFX::SetOrientation(gameswf::orientation_mode orientation)
+{
+    gameswf::render_handler* handler = gameswf::get_render_handler();
+    renderHandlerMethods(handler).setOrientation(handler, orientation);
+}
+
+void RenderFX::SetWireFrame(bool enabled)
+{
+    gameswf::render_handler* handler = gameswf::get_render_handler();
+    renderHandlerMethods(handler).setWireFrame(handler, enabled);
+}
+
+static const char deprecatedGlyphCache[] =
+    "RenderFX::InitializeGlyphTextureCache(int width, int height) deprecated. "
+    "Use RenderFX::Initialize(InitializationParameters& parameters) instead.\n";
+
+void RenderFX::InitializeGlyphTextureCache(int, int)
+{
+    gameswf::log_msg(deprecatedGlyphCache);
+}
 
 void RenderFX::BeginDisplay()
 {

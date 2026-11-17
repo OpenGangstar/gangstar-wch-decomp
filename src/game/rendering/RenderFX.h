@@ -4,6 +4,8 @@
 namespace gameswf {
 class character;
 class render_state;
+// Enumerator names are still unknown.
+enum orientation_mode {};
 class root;
 
 template <typename T>
@@ -25,6 +27,9 @@ public:
     class EventListener;
     void SetEventListener(EventListener* listener);
     void SetInputBehavior(int behavior);
+    void SetOrientation(gameswf::orientation_mode orientation);
+    static void SetWireFrame(bool enabled);
+    void InitializeGlyphTextureCache(int width, int height);
     void BeginDisplay();
     void Render();
     void EndDisplay();
