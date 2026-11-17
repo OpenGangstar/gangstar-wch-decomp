@@ -17316,7 +17316,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003edde5	0x138	menufx.cpp	game	rendering	pending	_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE	RenderFX::Load(char const*, gameswf::player_context*)
 0x003edf1d	0x9c	menufx.cpp	game	rendering	pending	_ZN8RenderFX4FindEPKc	RenderFX::Find(char const*)
 0x003edfb9	0x68	menufx.cpp	game	ui	matched	_ZN6MenuFX13RegisterStateEPNS_5StateEPKc	MenuFX::RegisterState(MenuFX::State*, char const*)
-0x003ee021	0x12c	menufx.cpp	game	ui	pending	_ZN6MenuFX14RegisterStatesEPPNS_5StateEi	MenuFX::RegisterStates(MenuFX::State**, int)
+0x003ee021	0x12c	menufx.cpp	game	ui	matched	_ZN6MenuFX14RegisterStatesEPPNS_5StateEi	MenuFX::RegisterStates(MenuFX::State**, int)
 0x003ee14d	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX23RegisterDisplayCallbackEPKcPFvRN7gameswf12render_stateEPvES5_	RenderFX::RegisterDisplayCallback(char const*, void (*)(gameswf::render_state&, void*), void*)
 0x003ee169	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX10IsAnimOverEPKc	RenderFX::IsAnimOver(char const*)
 0x003ee185	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX13GetFrameCountEPKc	RenderFX::GetFrameCount(char const*)

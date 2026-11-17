@@ -19,6 +19,7 @@ public:
     virtual bool CanHandleEvent(RenderFX::Event& event);
     State* GetState(const char* name);
     void RegisterState(State* state, const char* characterName);
+    void RegisterStates(State** states, int count);
     State* GetCurrentState();
     State* GetStateHandler(gameswf::character* character);
     bool IsStateInStack(State* state);

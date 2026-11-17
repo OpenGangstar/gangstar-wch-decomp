@@ -30,6 +30,7 @@
     "functions": [
         "_ZN6MenuFX8GetStateEPKc",
         "_ZN6MenuFX13RegisterStateEPNS_5StateEPKc",
+        "_ZN6MenuFX14RegisterStatesEPPNS_5StateEi",
         "_ZN6MenuFX10SwitchMenuEPKc",
         "_ZN6MenuFX8PushMenuEPKc",
         "_ZN6MenuFX6UnloadEv",
