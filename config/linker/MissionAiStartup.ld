@@ -6,6 +6,9 @@ _ZdaPv = 0x001c461c;
 _Znaj = 0x001c3ff8;
 _Znwj = 0x001c4814;
 memset = 0x001c45d4;
+strcmp = 0x001c4658;
+strcpy = 0x001c3fd4;
+__aeabi_idiv = 0x001c43dc;
 __stack_chk_fail = 0x001c42e0;
 __aeabi_atexit = 0x001c494c;
 _ZN26retail_mission_transitions16civPassive_transE = 0x0042a72c;
@@ -22,6 +25,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .mission_draw 0x0033620c : { *ai-startup-mission.o(.text._ZN7Mission4drawEv) }
+    .mission_start 0x003363d0 : { *ai-startup-mission.o(.text._ZN7Mission5startEii) }
     .mission_load 0x00335e60 : { *ai-startup-mission.o(.text._ZN7Mission4loadEPKc) }
     .mission_deleting_destructor 0x00335f90 : { *ai-startup-mission.o(.text._ZN7MissionD0Ev) }
     .mission_destructor 0x0033602c : { *ai-startup-mission.o(.text._ZN7MissionD2Ev .text._ZN7MissionD1Ev) }

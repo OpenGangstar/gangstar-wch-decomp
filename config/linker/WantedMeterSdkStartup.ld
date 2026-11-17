@@ -7,6 +7,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_meter_draw 0x0032c7fc : { *sdk-startup-wantedmeter.o(.text._ZNK11WantedMeter6draw2dEv) }
+    .wanted_meter_draw_thunk 0x0032c7e8 : { *sdk-startup-wantedmeter.o(.text._ZThn4_NK11WantedMeter6draw2dEv) }
     .wanted_singleton 0x002dba04 : { *sdk-startup-wantedmeter.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x0032c834 : { *sdk-startup-wantedmeter.o(.text.__tcf_0) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *sdk-startup-wantedmeter.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

@@ -7,6 +7,8 @@ class AnimObject;
 
 class WantedMeter : public HudElement {
 public:
+    virtual ~WantedMeter();
+    virtual void draw2d() const;
     void setWantedLevel(unsigned int value)
     {
         if (value <= 5)

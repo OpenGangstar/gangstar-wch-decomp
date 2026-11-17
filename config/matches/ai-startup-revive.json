@@ -25,6 +25,7 @@
     "source": "src/game/missions/Revive.cpp",
     "linker_script": "config/linker/ReviveAiStartup.ld",
     "functions": [
+        "_ZN6Revive6updateEi",
         {
             "name": "__tcf_5",
             "address": "0x00338b5d"
@@ -72,6 +73,24 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest7setCashEi",
+        "_ZN13WeaponManager14lockAllWeaponsEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager19isSkipButtonVisibleEv",
+        "_ZNK13ScriptManager10findScriptEi",
+        "_ZNK6Script8getStateEv",
+        "_ZN10PlayerTest16lockSwitchWeaponEv",
+        "_ZN4Cash7GetCashEv",
+        "_ZN10PlayerTest18unlockSwitchWeaponEv",
+        "_ZN13WeaponManager28getKeepWeaponsWhenBustedCostEv",
+        "_ZNK10PlayerTest15isRichAsCroesusEv",
+        "_ZN13ScriptManager14hideSkipButtonEv",
+        "_ZN11CHudManager12switchWeaponEv",
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN10AnimObject10IsAnimOverEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN7Message10setMessageEiiN11MenuManager5eTextE",
         "_ZN10AnimObject4DrawEv",
         "_ZN10AnimObjectD1Ev",
         "_ZN11Application11GetInstanceEv",

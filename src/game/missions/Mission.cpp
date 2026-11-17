@@ -22,6 +22,11 @@
 #include "../core/NativeStdio.h"
 #include "../audio/SoundManager.h"
 #include "../meta/Achievements.h"
+#include "../core/SceneNode.h"
+#include "../core/VideoDriver.h"
+#include "../core/CameraManager.h"
+#include "../core/NativeStrings.h"
+#include "../persistence/SaveGame.h"
 
 int Mission::setTextToPrint(int id)
 {
@@ -324,6 +329,102 @@ bool Mission::end()
     sound->playEx(ambientSound, 0, true, 1.0f, 0, true, 1.0f, 0);
     sound->unknown140 = false;
     achievements->recordMissionEnded();
+    WantedLevelManager::getInstance()->resetWantedLevel();
+    return true;
+}
+
+extern "C" char* strcpy(char*, const char*);
+
+void Mission::draw()
+{
+    Application* app = Application::GetInstance();
+    int width, height;
+    app->GetScreenDimensions(width, height);
+    irr::video::IVideoDriver* driver = app->GetDevice()->getVideoDriver();
+
+    switch (state) {
+    case 1: {
+        int alpha = unknown12 > 0 ? unknown8 * 255 / unknown12 : 255;
+        if (unknown16 == 1)
+            alpha = 255 - alpha;
+        driver->draw2DRectangle(irr::video::SColor(alpha, 0, 0, 0),
+            irr::core::rect<int>(0, 0, width, height));
+        break;
+    }
+    case 3: {
+        int alpha = unknown8 * 255 / unknown12;
+        if (unknown16 == 1)
+            alpha = 255 - alpha;
+        driver->draw2DRectangle(irr::video::SColor(alpha, 0, 0, 0),
+            irr::core::rect<int>(0, 0, width, height));
+        break;
+    }
+    case 2:
+        if (introAnimation.animation != -1) {
+            driver->draw2DRectangle(irr::video::SColor(255, 0, 0, 0),
+                irr::core::rect<int>(0, 0, width, height));
+            introAnimation.Draw();
+        }
+        break;
+    case 5:
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(10), 0x3049, 0);
+        break;
+    default:
+        for (int i = 0; i < conditionCount; ++i)
+            conditions[i]->draw();
+        break;
+    }
+}
+
+bool Mission::start(int id, int duration)
+{
+    if (id < 0 || id >= missionCount)
+        return false;
+
+    bIsInCutscene = false;
+    SaveGame game;
+    game.SampleAndSave(SaveGame::GetDefaultFilename());
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(9), -1, 0);
+    lastFailureCause = -1;
+    state = 1;
+    currentMissionId = id;
+    lastObjectiveText = -1;
+    CameraManager::getInstance()->setTouchScreenInputs(false);
+
+    if (strcmp(introSpriteName, missions[currentMissionId]->unknown24) != 0) {
+        delete introSprite;
+        strcpy(introSpriteName, missions[currentMissionId]->unknown24);
+        introSprite = new ASprite(introSpriteName);
+        introSprite->MakeImage(0, 0);
+        introSprite->unknown33 = false;
+        introAnimation.sprite = introSprite;
+        introAnimation.Reset();
+        introAnimation.SetPosition(0.0f, 0.0f, 0.0f);
+    }
+    introAnimation.SetAnim(missions[currentMissionId]->unknown0);
+    unknown8 = duration;
+    unknown12 = duration;
+    if (duration == -1) {
+        setTextToPrint(missions[currentMissionId]->unknown28);
+        if (!skipFade) {
+            unknown8 = 500;
+            unknown12 = 500;
+            unknown16 = 1;
+        } else {
+            skipFade = false;
+            unknown8 = 3000;
+            unknown12 = 3000;
+            static_cast<Message*>(Application::GetInstance()->GetHudManager()->message172)
+                ->setMessage(currentMessage, -1, static_cast<MenuManager::eText>(11));
+            state = 2;
+        }
+    }
+    introAnimation.Restart();
+    SoundManager::getInstance()->stop(25, -1, 0);
+    SoundManager::getInstance()->playPriorityAudio(14, false);
+    unknown240 = Application::GetInstance()->GetHudManager()->isVisible();
+    if (unknown240)
+        Application::GetInstance()->GetHudManager()->hide();
     WantedLevelManager::getInstance()->resetWantedLevel();
     return true;
 }

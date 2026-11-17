@@ -11467,8 +11467,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c714	0x14	VirtualButton.cpp	game	ui	matched	_ZThn8_N13VirtualButton12processTouchEl	non-virtual thunk to VirtualButton::processTouch(long)
 0x0032c729	0x90	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButton12processTouchEl	VirtualButton::processTouch(long)
 0x0032c7b9	0x30	WantedMeter.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x0032c7e8	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_NK11WantedMeter6draw2dEv	non-virtual thunk to WantedMeter::draw2d() const
-0x0032c7fd	0x38	WantedMeter.cpp	game	missions	pending	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const
+0x0032c7e8	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_NK11WantedMeter6draw2dEv	non-virtual thunk to WantedMeter::draw2d() const
+0x0032c7fd	0x38	WantedMeter.cpp	game	missions	matched	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const
 0x0032c835	0x1c	WantedMeter.cpp	game	missions	matched	__tcf_2	__tcf_2
 0x0032c851	0x50	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeter6updateEd	WantedMeter::update(double)
 0x0032c8a0	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_N11WantedMeterD0Ev	non-virtual thunk to WantedMeter::~WantedMeter()
@@ -11840,10 +11840,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003360c1	0x80	Mission.cpp	game	missions	pending	_ZN7MissionC2Ev	Mission::Mission()
 0x003360c1	0x80	Mission.cpp	game	missions	pending	_ZN7MissionC1Ev	Mission::Mission()
 0x00336141	0xcc	Mission.cpp	game	missions	matched	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
-0x0033620d	0x138	Mission.cpp	game	missions	pending	_ZN7Mission4drawEv	Mission::draw()
+0x0033620d	0x138	Mission.cpp	game	missions	matched	_ZN7Mission4drawEv	Mission::draw()
 0x00336345	0x78	Mission.cpp	game	missions	pending	_ZN7Mission7messageEi	Mission::message(int)
 0x003363bd	0x14	Mission.cpp	game	missions	matched	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
-0x003363d1	0x1d4	Mission.cpp	game	missions	pending	_ZN7Mission5startEii	Mission::start(int, int)
+0x003363d1	0x1d4	Mission.cpp	game	missions	matched	_ZN7Mission5startEii	Mission::start(int, int)
 0x003365a5	0x4c	Mission.cpp	game	missions	matched	_ZN7Mission4idleEv	Mission::idle()
 0x003365f1	0x218	Mission.cpp	game	missions	pending	_ZN7Mission6updateEi	Mission::update(int)
 0x00336809	0x144	Mission.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -11964,7 +11964,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD2Ev	Revive::~Revive()
 0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD1Ev	Revive::~Revive()
 0x00338c25	0x1c	Revive.cpp	game	core	matched	__tcf_3	__tcf_3
-0x00338c41	0x238	Revive.cpp	game	missions	pending	_ZN6Revive6updateEi	Revive::update(int)
+0x00338c41	0x238	Revive.cpp	game	missions	matched	_ZN6Revive6updateEi	Revive::update(int)
 0x00338e79	0xd4	Revive.cpp	game	missions	matched	_ZN6ReviveC2Eb	Revive::Revive(bool)
 0x00338e79	0xd4	Revive.cpp	game	missions	matched	_ZN6ReviveC1Eb	Revive::Revive(bool)
 0x00338f4d	0x144	Revive.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

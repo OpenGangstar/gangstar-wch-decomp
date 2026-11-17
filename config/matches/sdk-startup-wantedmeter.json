@@ -25,6 +25,8 @@
     "source": "src/game/missions/WantedMeter.cpp",
     "linker_script": "config/linker/WantedMeterSdkStartup.ld",
     "functions": [
+        "_ZNK11WantedMeter6draw2dEv",
+        "_ZThn4_NK11WantedMeter6draw2dEv",
         {
             "name": "__tcf_3",
             "address": "0x0032c7b9"
@@ -56,6 +58,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10AnimObject4DrawEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev"
     ]
