@@ -9531,7 +9531,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e574d	0x700	MenuManager.cpp	game	ui	pending	_ZN11MenuManager5setupEb	MenuManager::setup(bool)
 0x002e5e4d	0x1cc	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13preloadGlyphsEb	MenuManager::preloadGlyphs(bool)
 0x002e6019	0xd0	MenuManager.cpp	stlport	-	matched	_ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE18_M_insert_overflowEPS3_RKS3_RKSt11__true_typejb	std::vector<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::_M_insert_overflow(irr::video::ITexture**, irr::video::ITexture* const&, std::__true_type const&, unsigned int, bool)
-0x002e60e9	0x60	MenuManager.cpp	game	ui	pending	_Z16SwfTextureLoaderPKcii	SwfTextureLoader(char const*, int, int)
+0x002e60e9	0x60	MenuManager.cpp	game	ui	matched	_Z16SwfTextureLoaderPKcii	SwfTextureLoader(char const*, int, int)
 0x002e6149	0x12c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager8tearDownEv	MenuManager::tearDown()
 0x002e6275	0x3c	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerD1Ev	MenuManager::~MenuManager()
 0x002e6275	0x3c	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerD2Ev	MenuManager::~MenuManager()

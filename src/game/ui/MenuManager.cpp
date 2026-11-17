@@ -597,6 +597,28 @@ struct NamedMenuTexture {
 };
 }
 
+struct TexturePointerCopyTag {};
+
+extern "C" void _ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE18_M_insert_overflowEPS3_RKS3_RKSt11__true_typejb(
+    MenuTextureStorage* textures, irr::video::ITexture** position,
+    irr::video::ITexture* const& texture, const TexturePointerCopyTag&,
+    unsigned int count, bool atEnd) __attribute__((long_call));
+
+irr::video::ITexture* SwfTextureLoader(const char* name, int, int)
+{
+    irr::video::ITexture* texture = Application::GetInstance()->GetDevice()->getVideoDriver()->getTexture(name);
+    if (texture) {
+        if (s_textures.end != s_textures.capacityEnd) {
+            *s_textures.end = texture;
+            ++s_textures.end;
+        } else {
+            _ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE18_M_insert_overflowEPS3_RKS3_RKSt11__true_typejb(
+                &s_textures, s_textures.end, texture, TexturePointerCopyTag(), 1, true);
+        }
+    }
+    return texture;
+}
+
 extern "C" void _ZN11MenuManager11freeTextureEPKc(const char* name)
 {
     int count = s_textures.end - s_textures.begin;

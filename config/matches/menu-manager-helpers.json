@@ -26,6 +26,7 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_Z16SwfTextureLoaderPKcii",
         "_ZN11MenuManager11freeTextureEPKc",
         "_ZN11MenuManager22updateWidgetVisibilityEv",
         "_ZN11MenuManager4pushEPKcb",
