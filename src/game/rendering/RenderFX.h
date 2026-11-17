@@ -31,6 +31,8 @@ public:
     void SetOrientation(gameswf::orientation_mode orientation);
     static void SetWireFrame(bool enabled);
     void InitializeGlyphTextureCache(int width, int height);
+    struct InitializationParameters;
+    static gameswf::player_context* CreateContext(InitializationParameters& parameters);
     static void Finalize();
     static void DestroyContext(gameswf::player_context* context);
     static void ClearGlyphTextureCaches(gameswf::player_context* context);
