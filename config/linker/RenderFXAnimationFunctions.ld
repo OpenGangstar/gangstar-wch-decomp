@@ -31,6 +31,7 @@ SECTIONS
     .renderfx_find_named 0x003edf1c : { *renderfx-animation.o(.text._ZN8RenderFX4FindEPKc) }
     .renderfx_get_search_index 0x003f04ac : { *renderfx-animation.o(.text._ZN8RenderFX14GetSearchIndexEv) }
     .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev) }
+    .menufx_constructor 0x003ed158 : { *renderfx-animation.o(.text._ZN6MenuFXC1Ev .text._ZN6MenuFXC2Ev) }
     .renderfx_constructor 0x003ed0cc : { *renderfx-animation.o(.text._ZN8RenderFXC1Ev .text._ZN8RenderFXC2Ev) }
     .renderfx_controller_reset 0x003ec600 : { *renderfx-animation.o(.text._ZN8RenderFX10Controller5ResetEv) }
     .renderfx_controller_destructor 0x003ed6a8 : { *renderfx-animation.o(.text._ZN8RenderFX10ControllerD1Ev) }
