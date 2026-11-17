@@ -26,6 +26,8 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManager5popToEPKcbb",
+        "_ZN11MenuManager6popAllEb",
         "_ZN7Structs9CarRental4ReadER10DataStream",
         {"name": "__tcf_7", "address": "0x002e62b1"},
         "_Z12get_fontfilePKcbbPci",
@@ -144,6 +146,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN11MenuManager3popEb",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN10DataStream7ReadIntEv",
         "_ZN11MenuManagerD1Ev",
