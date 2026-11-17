@@ -283,7 +283,7 @@ public:
     virtual void UpdateLocalization();
 
 private:
-    int page;
+    int textId;
 };
 
 class GameSetting : public MenuWidget {
@@ -293,8 +293,8 @@ public:
     virtual void UpdateLocalization();
 
 private:
-    int selection;
-    int previousSelection;
+    int titleTextId;
+    int valueTextId;
 };
 
 class Language : public MenuWidget {
@@ -813,18 +813,44 @@ void Widgets::Objective::UpdateLocalization()
 static const char widgetHelpName[] = "widgetHelp";
 
 Widgets::Help::Help()
-    : MenuWidget(widgetHelpName), page(-1)
+    : MenuWidget(widgetHelpName), textId(-1)
 {
 }
 
 static const char widgetGameSettingName[] = "widgetGameSetting";
 
 Widgets::GameSetting::GameSetting()
-    : MenuWidget(widgetGameSettingName), selection(-1), previousSelection(-1)
+    : MenuWidget(widgetGameSettingName), titleTextId(-1), valueTextId(-1)
 {
 }
 
 static const char widgetLanguageName[] = "widgetLanguage";
+
+static const char helpTextPath[] = "widgetHelp.text";
+static const char gameSettingTitlePath[] = "widgetGameSetting.txtTitle";
+static const char gameSettingValuePath[] = "widgetGameSetting.txtValue";
+
+void Widgets::Help::UpdateLocalization()
+{
+    if (textId != -1) {
+        StringManager* strings = Application::GetInstance()->GetStringManager();
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, helpTextPath,
+                                   _ZNK13StringManager9getStringEi(strings, textId), true);
+    }
+}
+
+void Widgets::GameSetting::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    if (titleTextId != -1) {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingTitlePath,
+                                   _ZNK13StringManager9getStringEi(strings, titleTextId), true);
+    }
+    if (valueTextId != -1) {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingValuePath,
+                                   _ZNK13StringManager9getStringEi(strings, valueTextId), true);
+    }
+}
 
 Widgets::Language::Language()
     : MenuWidget(widgetLanguageName), selection(0)
