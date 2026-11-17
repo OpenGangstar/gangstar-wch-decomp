@@ -378,15 +378,10 @@ static const char requestedFontFormat[] = "%s%s.ttf";
 static const char asianFontFileFormat[] = "%sfont02.ttf";
 static const char standardFontFileFormat[] = "%sfont01.ttf";
 
-extern "C" {
-void _ZN11MenuManagerD1Ev(MenuManager* manager);
-extern MenuManager _ZZN11MenuManager11getInstanceEvE3mgr __attribute__((visibility("hidden")));
-
-static void __tcf_7(void*) __attribute__((used));
-static void __tcf_7(void*)
+MenuManager* MenuManager::getInstance()
 {
-    _ZN11MenuManagerD1Ev(&_ZZN11MenuManager11getInstanceEvE3mgr);
-}
+    static MenuManager mgr;
+    return &mgr;
 }
 
 bool get_fontfile(const char* name, bool, bool, char* destination, int)

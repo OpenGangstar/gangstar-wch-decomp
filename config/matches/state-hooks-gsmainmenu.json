@@ -184,7 +184,6 @@
         "_ZN8SaveGame18GetDefaultFilenameEv",
         "_ZN8SaveGame12LoadAndApplyEPKc",
         "_ZN8SaveGameD1Ev",
-        "_ZN11MenuManager11getInstanceEv",
         "_ZN11Application16startSoundThreadEv",
         "_ZN11Application15stopSoundThreadEv"
     ]
