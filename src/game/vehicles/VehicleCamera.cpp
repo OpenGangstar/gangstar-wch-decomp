@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
+#include "Vehicle.h"
 
 void VehicleCamera::debug(irr::video::IVideoDriver*)
 {
@@ -22,12 +23,20 @@ void VehicleCamera::updateAngles(int horizontal, int vertical)
     updateCameraInputRates(horizontal, vertical, yawRate, pitchRate);
 }
 
+void VehicleCamera::enter()
+{
+    if (!entered) {
+        vehicle->onCameraEnter();
+        entered = true;
+    }
+}
+
 VehicleCamera::~VehicleCamera()
 {
 }
 
 VehicleCamera::VehicleCamera(LevelObject* owner)
-    : yawRate(0.0f), pitchRate(0.0f), flag76(false)
+    : yawRate(0.0f), pitchRate(0.0f), entered(false)
 {
     init(owner, 0);
 }
