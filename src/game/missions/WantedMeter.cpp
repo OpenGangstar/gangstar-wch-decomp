@@ -66,3 +66,9 @@ void WantedMeter::draw2d() const
     for (int i = 0; i < level; ++i)
         stars[i]->Draw();
 }
+
+WantedMeter::~WantedMeter()
+{
+    for (int i = 0; i < 5; ++i)
+        delete stars[i];
+}

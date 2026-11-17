@@ -482,19 +482,26 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033820d | MissionConditionStayWithin::evaluate | vehicle_side | BLOCKED | — | src/game/missions/MissionConditionStayWithin.cpp |
 | libsanangeles.so | 0x0032c7fd | WantedMeter::draw2d | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c7e8 | WantedMeter::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032addd | Reward::update | camera_tap | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032c919 | WantedMeter destructor (D1/D2 aliases) | lock_init | REVIEW | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032addd | Reward::update | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032c919 | WantedMeter destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c851 | WantedMeter::update | vehicle_side | BLOCKED | — | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032ae69 | Reward constructor (C1/C2 aliases) | camera_tap | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | coordinator | REVIEW | — | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | coordinator | REVIEW | — | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c904 | WantedMeter complete destructor thunk (D1) | coordinator | REVIEW | — | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032b0e1 | Reward destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032ad65 | Reward::setAnim | camera_tap | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032b07d | Reward deleting destructor (D0) | coordinator | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032b068 | Reward deleting destructor thunk (D0) | coordinator | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032b0cc | Reward complete destructor thunk (D1) | coordinator | REVIEW | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032ad75 | Reward::setMessage | vehicle_side | ASSIGNED | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032adb1 | Reward::draw2d | camera_tap | ASSIGNED | — | src/game/missions/Reward.cpp |
-| libsanangeles.so | 0x0032ad9c | Reward::draw2d non-virtual thunk | camera_tap | ASSIGNED | — | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ae69 | Reward constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c904 | WantedMeter complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032b0e1 | Reward destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ad65 | Reward::setAnim | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032b07d | Reward deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032b068 | Reward deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032b0cc | Reward complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ad75 | Reward::setMessage | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032adb1 | Reward::draw2d | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ad9c | Reward::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x00342b09 | WantedLevelManager constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342e05 | WantedLevelManager::_processWantedLevel | lock_init | REVIEW | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent | camera_tap | ASSIGNED | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | vehicle_side | REVIEW | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | lock_init | ASSIGNED | — | src/game/rendering/RenderFX.cpp |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | vehicle_side | ASSIGNED | — | src/game/audio/SoundManager.cpp |

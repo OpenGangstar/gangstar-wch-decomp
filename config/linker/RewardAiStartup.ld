@@ -2,6 +2,10 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-reward/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_Znwj = 0x001c4814;
+__aeabi_dsub = 0x001c4454;
+__aeabi_d2iz = 0x001c4844;
+__aeabi_i2d = 0x1c452c;
 __aeabi_atexit = 0x001c494c;
 _ZN25retail_reward_transitions16civPassive_transE = 0x00424798;
 _ZN25retail_reward_transitions17scriptedNpc_transE = 0x004248c4;
@@ -15,6 +19,17 @@ _ZN25retail_reward_transitions11guard_transE = 0x00424c6c;
 _ZN25retail_reward_transitions22scripted_vehicle_transE = 0x00424d14;
 SECTIONS
 {
+    .reward_set_anim 0x0032ad64 : { *ai-startup-reward.o(.text._ZN6Reward7setAnimEi) }
+    .reward_set_message 0x0032ad74 : { *ai-startup-reward.o(.text._ZN6Reward10setMessageEii) }
+    .reward_draw_thunk 0x0032ad9c : { *ai-startup-reward.o(.text._ZThn4_NK6Reward6draw2dEv) }
+    .reward_draw 0x0032adb0 : { *ai-startup-reward.o(.text._ZNK6Reward6draw2dEv) }
+    .reward_update 0x0032addc : { *ai-startup-reward.o(.text._ZN6Reward6updateEd) }
+    .reward_constructor 0x0032ae68 : { *ai-startup-reward.o(.text._ZN6RewardC2EP7ASpritei .text._ZN6RewardC1EP7ASpritei) }
+    .reward_delete_thunk 0x0032b068 : { *ai-startup-reward.o(.text._ZThn4_N6RewardD0Ev) }
+    .reward_delete 0x0032b07c : { *ai-startup-reward.o(.text._ZN6RewardD0Ev) }
+    .reward_destructor_thunk 0x0032b0cc : { *ai-startup-reward.o(.text._ZThn4_N6RewardD1Ev) }
+    .reward_destructor 0x0032b0e0 : { *ai-startup-reward.o(.text._ZN6RewardD2Ev .text._ZN6RewardD1Ev) }
+    .reward_vtable 0x004ac630 : { *ai-startup-reward.o(.data.rel.ro._ZTV6Reward .gnu.linkonce.d.rel.ro._ZTV6Reward) }
     .ai_startup_function_0 0x0032ad34 : { *ai-startup-reward.o(.text.__tcf_3) }
     .ai_startup_function_1 0x0032af10 : { *ai-startup-reward.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0032b054 : { *ai-startup-reward.o(.text._GLOBAL__I__ZN6RewardC2EP7ASpritei) }

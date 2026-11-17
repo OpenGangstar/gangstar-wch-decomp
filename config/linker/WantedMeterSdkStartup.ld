@@ -7,6 +7,11 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_meter_destructor 0x0032c918 : { *sdk-startup-wantedmeter.o(.text._ZN11WantedMeterD1Ev .text._ZN11WantedMeterD2Ev) }
+    .wanted_meter_delete 0x0032c8b4 : { *sdk-startup-wantedmeter.o(.text._ZN11WantedMeterD0Ev) }
+    .wanted_meter_destructor_thunk 0x0032c904 : { *sdk-startup-wantedmeter.o(.text._ZThn4_N11WantedMeterD1Ev) }
+    .wanted_meter_delete_thunk 0x0032c8a0 : { *sdk-startup-wantedmeter.o(.text._ZThn4_N11WantedMeterD0Ev) }
+    .wanted_meter_vtable 0x004ac948 : { *sdk-startup-wantedmeter.o(.data.rel.ro._ZTV11WantedMeter) }
     .wanted_meter_draw 0x0032c7fc : { *sdk-startup-wantedmeter.o(.text._ZNK11WantedMeter6draw2dEv) }
     .wanted_meter_draw_thunk 0x0032c7e8 : { *sdk-startup-wantedmeter.o(.text._ZThn4_NK11WantedMeter6draw2dEv) }
     .wanted_singleton 0x002dba04 : { *sdk-startup-wantedmeter.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }

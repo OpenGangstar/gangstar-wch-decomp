@@ -25,6 +25,18 @@
     "source": "src/game/missions/Reward.cpp",
     "linker_script": "config/linker/RewardAiStartup.ld",
     "functions": [
+        "_ZN6Reward7setAnimEi",
+        "_ZN6Reward10setMessageEii",
+        "_ZThn4_NK6Reward6draw2dEv",
+        "_ZNK6Reward6draw2dEv",
+        "_ZN6Reward6updateEd",
+        "_ZN6RewardC2EP7ASpritei",
+        "_ZN6RewardC1EP7ASpritei",
+        "_ZThn4_N6RewardD0Ev",
+        "_ZN6RewardD0Ev",
+        "_ZThn4_N6RewardD1Ev",
+        "_ZN6RewardD2Ev",
+        "_ZN6RewardD1Ev",
         {
             "name": "__tcf_3",
             "address": "0x0032ad35"
@@ -39,6 +51,7 @@
         }
     ],
     "sections": [
+        ".reward_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +61,19 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZN10AnimObject10IsAnimOverEv",
+        "_ZN10HudElementC1EP7ASpriteib",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN4CashC1EP7ASpriteiiiii",
+        "_ZN4Cash9AlignLeftEv",
+        "_ZN4Cash11SetPositionEii",
+        "_ZN10AnimObject4DrawEv",
+        "_ZN4Cash7SetCashEi",
+        "_ZN10HudElementD1Ev"
+    ]
 }

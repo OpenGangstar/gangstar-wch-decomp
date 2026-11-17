@@ -11367,20 +11367,20 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032abd4	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_NK11RetroEffect6draw2dEv	non-virtual thunk to RetroEffect::draw2d() const
 0x0032abe9	0x14c	RetroEffect.cpp	game	rendering	pending	_ZNK11RetroEffect6draw2dEv	RetroEffect::draw2d() const
 0x0032ad35	0x30	Reward.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x0032ad65	0x10	Reward.cpp	game	missions	pending	_ZN6Reward7setAnimEi	Reward::setAnim(int)
-0x0032ad75	0x26	Reward.cpp	game	missions	pending	_ZN6Reward10setMessageEii	Reward::setMessage(int, int)
-0x0032ad9c	0x14	Reward.cpp	game	missions	pending	_ZThn4_NK6Reward6draw2dEv	non-virtual thunk to Reward::draw2d() const
-0x0032adb1	0x2a	Reward.cpp	game	missions	pending	_ZNK6Reward6draw2dEv	Reward::draw2d() const
-0x0032addd	0x8a	Reward.cpp	game	missions	pending	_ZN6Reward6updateEd	Reward::update(double)
-0x0032ae69	0xa8	Reward.cpp	game	missions	pending	_ZN6RewardC2EP7ASpritei	Reward::Reward(ASprite*, int)
-0x0032ae69	0xa8	Reward.cpp	game	missions	pending	_ZN6RewardC1EP7ASpritei	Reward::Reward(ASprite*, int)
+0x0032ad65	0x10	Reward.cpp	game	missions	matched	_ZN6Reward7setAnimEi	Reward::setAnim(int)
+0x0032ad75	0x26	Reward.cpp	game	missions	matched	_ZN6Reward10setMessageEii	Reward::setMessage(int, int)
+0x0032ad9c	0x14	Reward.cpp	game	missions	matched	_ZThn4_NK6Reward6draw2dEv	non-virtual thunk to Reward::draw2d() const
+0x0032adb1	0x2a	Reward.cpp	game	missions	matched	_ZNK6Reward6draw2dEv	Reward::draw2d() const
+0x0032addd	0x8a	Reward.cpp	game	missions	matched	_ZN6Reward6updateEd	Reward::update(double)
+0x0032ae69	0xa8	Reward.cpp	game	missions	matched	_ZN6RewardC2EP7ASpritei	Reward::Reward(ASprite*, int)
+0x0032ae69	0xa8	Reward.cpp	game	missions	matched	_ZN6RewardC1EP7ASpritei	Reward::Reward(ASprite*, int)
 0x0032af11	0x144	Reward.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032b055	0x14	Reward.cpp	game	missions	matched	_GLOBAL__I__ZN6RewardC2EP7ASpritei	_GLOBAL__I__ZN6RewardC2EP7ASpritei
-0x0032b068	0x14	Reward.cpp	game	missions	pending	_ZThn4_N6RewardD0Ev	non-virtual thunk to Reward::~Reward()
-0x0032b07d	0x50	Reward.cpp	game	missions	pending	_ZN6RewardD0Ev	Reward::~Reward()
-0x0032b0cc	0x14	Reward.cpp	game	missions	pending	_ZThn4_N6RewardD1Ev	non-virtual thunk to Reward::~Reward()
-0x0032b0e1	0x48	Reward.cpp	game	missions	pending	_ZN6RewardD2Ev	Reward::~Reward()
-0x0032b0e1	0x48	Reward.cpp	game	missions	pending	_ZN6RewardD1Ev	Reward::~Reward()
+0x0032b068	0x14	Reward.cpp	game	missions	matched	_ZThn4_N6RewardD0Ev	non-virtual thunk to Reward::~Reward()
+0x0032b07d	0x50	Reward.cpp	game	missions	matched	_ZN6RewardD0Ev	Reward::~Reward()
+0x0032b0cc	0x14	Reward.cpp	game	missions	matched	_ZThn4_N6RewardD1Ev	non-virtual thunk to Reward::~Reward()
+0x0032b0e1	0x48	Reward.cpp	game	missions	matched	_ZN6RewardD2Ev	Reward::~Reward()
+0x0032b0e1	0x48	Reward.cpp	game	missions	matched	_ZN6RewardD1Ev	Reward::~Reward()
 0x0032b129	0x30	SlideControl.cpp	game	ui	matched	__tcf_2	__tcf_2
 0x0032b158	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_N12SlideControlD0Ev	non-virtual thunk to SlideControl::~SlideControl()
 0x0032b16d	0x30	SlideControl.cpp	game	ui	pending	_ZN12SlideControlD0Ev	SlideControl::~SlideControl()
@@ -11471,11 +11471,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c7fd	0x38	WantedMeter.cpp	game	missions	matched	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const
 0x0032c835	0x1c	WantedMeter.cpp	game	missions	matched	__tcf_2	__tcf_2
 0x0032c851	0x50	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeter6updateEd	WantedMeter::update(double)
-0x0032c8a0	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_N11WantedMeterD0Ev	non-virtual thunk to WantedMeter::~WantedMeter()
-0x0032c8b5	0x50	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterD0Ev	WantedMeter::~WantedMeter()
-0x0032c904	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_N11WantedMeterD1Ev	non-virtual thunk to WantedMeter::~WantedMeter()
-0x0032c919	0x48	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterD2Ev	WantedMeter::~WantedMeter()
-0x0032c919	0x48	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterD1Ev	WantedMeter::~WantedMeter()
+0x0032c8a0	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_N11WantedMeterD0Ev	non-virtual thunk to WantedMeter::~WantedMeter()
+0x0032c8b5	0x50	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD0Ev	WantedMeter::~WantedMeter()
+0x0032c904	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_N11WantedMeterD1Ev	non-virtual thunk to WantedMeter::~WantedMeter()
+0x0032c919	0x48	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD2Ev	WantedMeter::~WantedMeter()
+0x0032c919	0x48	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD1Ev	WantedMeter::~WantedMeter()
 0x0032c961	0x110	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterC1EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
 0x0032c961	0x110	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterC2EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
 0x0032ca71	0x6c	WantedMeter.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
