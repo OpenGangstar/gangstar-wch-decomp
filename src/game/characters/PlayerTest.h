@@ -90,6 +90,7 @@ public:
     void clearPhotoTargets();
     // Inline access to the observed target at offset 264; no standalone symbol claimed.
     LevelObject* getTarget() const { return target; }
+    LevelObject* _GetTarget();
     int getAmbientSound() const;
     void setCash(int value);
     void subCash(int amount);

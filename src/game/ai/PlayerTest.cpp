@@ -63,6 +63,11 @@ PlayerTest* PlayerTest::GetPlayer()
     return s_player;
 }
 
+LevelObject* PlayerTest::_GetTarget()
+{
+    return getTarget();
+}
+
 void PlayerTest::lockSwitchWeapon()
 {
     weaponSwitchLocked = true;

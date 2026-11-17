@@ -10370,7 +10370,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300d7d	0x6	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13getMarkerTypeEv	PlayerTest::getMarkerType()
 0x00300d85	0x20	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest8hideMeshEv	PlayerTest::hideMesh()
 0x00300da5	0x12	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12hideAllAnimsEv	PlayerTest::hideAllAnims()
-0x00300db9	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_GetTargetEv	PlayerTest::_GetTarget()
+0x00300db9	0x8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10_GetTargetEv	PlayerTest::_GetTarget()
 0x00300dc1	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10initMoveToEPK7Vehicle	PlayerTest::initMoveTo(Vehicle const*)
 0x00300dc9	0x14	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest9GetPlayerEv	PlayerTest::GetPlayer()
 0x00300ddd	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13richAsCroesusEb	PlayerTest::richAsCroesus(bool)
