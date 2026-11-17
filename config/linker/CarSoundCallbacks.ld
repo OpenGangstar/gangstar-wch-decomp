@@ -13,10 +13,19 @@ __aeabi_dmul = 0x001c4298;
 __aeabi_d2f = 0x001c4310;
 __aeabi_dadd = 0x001c4394;
 sin = 0x001c4478;
+cos = 0x001c4430;
+sqrt = 0x001c401c;
+__aeabi_dsub = 0x001c4454;
+__aeabi_fcmpeq = 0x001c470c;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_f2d = 0x001c48f8;
 SECTIONS
 {
+    .car_sound_linear 0x0034f360 : { *car-sound-callbacks.o(.text._ZN9CarSounds17InterpolateLinearEiiiff) }
+    .car_sound_flat_ended 0x0034fb60 : { *car-sound-callbacks.o(.text._ZN9CarSounds20InterpolateFlatEndedEiiiff) }
+    .car_sound_filter_coefficients 0x0034ff88 : { *car-sound-callbacks.o(.text._ZN9CarSounds24SetRPMFilterCoefficientsEf) }
+    .car_sound_clean 0x0035020c : { *car-sound-callbacks.o(.text._ZN9CarSounds5CleanEv) }
+    .car_sound_remove_turbo 0x0034f358 : { *car-sound-callbacks.o(.text._ZN9CarSounds17RemoveTurboSoundsEP18TurboSoundSettings) }
     .fade_start 0x0034f204 : { *car-sound-callbacks.o(.text._ZN9SoundFade9StartFadeEi) }
     .fade_update 0x0034f250 : { *car-sound-callbacks.o(.text._ZN9SoundFade6UpdateEv) }
     .rpm_filter 0x0034f2dc : { *car-sound-callbacks.o(.text._ZN9CarSounds15FilterRPMValuesEi) }
