@@ -89,6 +89,31 @@ bool PlayerTest::isRichAsCroesus() const
     return richAsCroesusEnabled;
 }
 
+void PlayerTest::setCash(int value)
+{
+    if (!richAsCroesusEnabled || cash < value)
+        cash = value;
+}
+
+int PlayerTest::getAmbientSound() const
+{
+    switch (contextWord) {
+    case Context0: return 101;
+    case Context1: return 100;
+    default: return -1;
+    }
+}
+
+void PlayerTest::addCurrentDriftDistance(float distance)
+{
+    currentDriftDistance += distance;
+}
+
+void PlayerTest::addCurrentJumpDistance(float distance)
+{
+    currentJumpDistance += distance;
+}
+
 void PlayerTest::lockSwitchWeapon()
 {
     weaponSwitchLocked = true;

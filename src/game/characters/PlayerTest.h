@@ -99,6 +99,8 @@ public:
     void setCash(int value);
     void subCash(int amount);
     void addCash(int amount, int maximum);
+    void addCurrentDriftDistance(float distance);
+    void addCurrentJumpDistance(float distance);
     void switchContext(eContext context, bool flag);
     void switchWeapon(bool unarmed);
     void lockSwitchWeapon();
@@ -137,7 +139,10 @@ public:
     // Item::add reads the complete word at 428; existing enum users retain
     // their observed access width. Both views occupy the same storage.
     union { eContext context; int contextWord; };
-    unsigned char unknown432[72];
+    unsigned char unknown432[44];
+    int currentDriftDistance;
+    int currentJumpDistance;
+    unsigned char unknown484[20];
     bool weaponSwitchLocked;
     unsigned char unknown505[3];
     int contextValues[2];
