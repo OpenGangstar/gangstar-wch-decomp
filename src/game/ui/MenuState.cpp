@@ -15,6 +15,7 @@
 #include "../ai/StateMachine.h"
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
+#include "../audio/SoundManager.h"
 
 extern "C" {
 void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
@@ -133,7 +134,7 @@ public:
 class Tutorial : public MenuState {
 public:
     explicit Tutorial(const char* name);
-    virtual ~Tutorial();
+    virtual inline ~Tutorial();
     virtual void Show();
     virtual void GotFocus();
     virtual void LostFocus();
@@ -224,6 +225,9 @@ class BlockingTutorial : public Tutorial {
 public:
     BlockingTutorial();
     virtual ~BlockingTutorial();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class InGameCarRental : public ServiceCarRental {
@@ -557,8 +561,26 @@ inline Menus::Services::~Services()
 {
 }
 
-Menus::Tutorial::~Tutorial()
+inline Menus::Tutorial::~Tutorial()
 {
+}
+
+Menus::BlockingTutorial::~BlockingTutorial()
+{
+}
+
+void MenuState::Show()
+{
+    depth = MenuManager::getInstance()->getDepth();
+}
+
+void Menus::Tutorial::Show()
+{
+    MenuState::Show();
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(213, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
 }
 
 Menus::InfoStatistics::~InfoStatistics()
@@ -733,12 +755,75 @@ struct MenuWidgetTable {
     int count;
 };
 
-inline void* getWidgetByIndex(int index)
+inline void* getWidgetByIndex(MenuManager* manager, int index)
 {
     const MenuWidgetTable& table =
-        *reinterpret_cast<const MenuWidgetTable*>(MenuManager::getInstance());
+        *reinterpret_cast<const MenuWidgetTable*>(manager);
     return index < table.count ? table.widgets[index] : 0;
 }
+
+inline void* getWidgetByIndex(int index)
+{
+    return getWidgetByIndex(MenuManager::getInstance(), index);
+}
+}
+
+void Menus::Tutorial::GotFocus()
+{
+    MenuState::GotFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(23))->SetListener(this);
+}
+
+void Menus::Tutorial::LostFocus()
+{
+    MenuState::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(23))->SetListener(0);
+}
+
+void Menus::BlockingTutorial::GotFocus()
+{
+    MenuState::GotFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(24))->SetListener(this);
+}
+
+void Menus::BlockingTutorial::LostFocus()
+{
+    MenuState::LostFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(24))->SetListener(0);
+}
+
+bool Menus::Tutorial::Notify(const MenuWidget* widget, int event)
+{
+    if (MenuState::Notify(widget, event))
+        return true;
+
+    MenuManager* manager = MenuManager::getInstance();
+    if (getWidgetByIndex(manager, 23) != widget || event != 1)
+        return false;
+
+    _ZN11MenuManager3popEb(manager, true);
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(210, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    return true;
+}
+
+bool Menus::BlockingTutorial::Notify(const MenuWidget* widget, int event)
+{
+    if (Tutorial::Notify(widget, event))
+        return true;
+
+    MenuManager* manager = MenuManager::getInstance();
+    if (getWidgetByIndex(manager, 24) != widget || event != 1)
+        return false;
+
+    _ZN11MenuManager3popEb(manager, true);
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(210, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    return true;
 }
 
 bool Menus::Confirm::Confirmed() const

@@ -26,6 +26,16 @@
     "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZN5Menus8Tutorial6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus16BlockingTutorial6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus8Tutorial8GotFocusEv",
+        "_ZN5Menus8Tutorial9LostFocusEv",
+        "_ZN5Menus16BlockingTutorial8GotFocusEv",
+        "_ZN5Menus16BlockingTutorial9LostFocusEv",
+        "_ZN9MenuState4ShowEv",
+        "_ZN5Menus8Tutorial4ShowEv",
+        "_ZN5Menus16BlockingTutorialD0Ev",
+        "_ZN5Menus16BlockingTutorialD1Ev",
         "_ZN5Menus8MainMenuD0Ev",
         "_ZN5Menus8MainMenuD1Ev",
         "_ZN5Menus6SplashD0Ev",
@@ -189,6 +199,7 @@
         }
     ],
     "sections": [
+        ".blocking_tutorial_vtable",
         ".main_menu_vtable",
         ".splash_vtable",
         ".map_vtable",
@@ -242,6 +253,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN7gameswf11ref_counted8drop_refEv",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",

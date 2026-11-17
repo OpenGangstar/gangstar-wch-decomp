@@ -22,6 +22,18 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .tutorial_notify 0x002ea33c : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial6NotifyEPK10MenuWidgeti) }
+    .blocking_tutorial_notify 0x002ea3b8 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial6NotifyEPK10MenuWidgeti) }
+    .tutorial_got_focus 0x002e9254 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial8GotFocusEv) }
+    .tutorial_lost_focus 0x002e94e4 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial9LostFocusEv) }
+    .blocking_tutorial_got_focus 0x002e9228 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial8GotFocusEv) }
+    .blocking_tutorial_lost_focus 0x002e94b8 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial9LostFocusEv) }
+    .menu_state_show 0x002e9518 : { *ai-startup-menustate.o(.text._ZN9MenuState4ShowEv) }
+    .tutorial_show 0x002ea434 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial4ShowEv) }
+    .blocking_tutorial_deleting_destructor 0x002ea084 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorialD0Ev) }
+    .blocking_tutorial_complete_destructor 0x002ea0b0 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorialD1Ev .text._ZN5Menus16BlockingTutorialD2Ev) }
+    .blocking_tutorial_vtable 0x004a9680 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16BlockingTutorialE) }
+    .menu_manager_get_depth 0x002e465c : { *menu-manager-helpers.o(.text._ZNK11MenuManager8getDepthEv .gnu.linkonce.t._ZNK11MenuManager8getDepthEv) }
     .main_menu_deleting_destructor 0x002e982c : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD0Ev .gnu.linkonce.t._ZN5Menus8MainMenuD0Ev) }
     .main_menu_complete_destructor 0x002e9854 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenuD1Ev .gnu.linkonce.t._ZN5Menus8MainMenuD1Ev .text._ZN5Menus8MainMenuD2Ev .gnu.linkonce.t._ZN5Menus8MainMenuD2Ev) }
     .main_menu_vtable 0x004a8fc0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8MainMenuE .gnu.linkonce.d.rel.ro._ZTVN5Menus8MainMenuE) }
