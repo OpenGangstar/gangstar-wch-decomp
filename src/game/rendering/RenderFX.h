@@ -10,6 +10,7 @@ class render_state;
 enum orientation_mode {};
 class player_context;
 class player;
+class tu_string;
 class root;
 
 class ref_counted {
@@ -46,6 +47,19 @@ public:
     int size;
     int capacity;
 };
+
+template<class T> struct string_hash_functor;
+
+template<class Key, class Value, class Hash>
+class hash {
+public:
+    hash() : table(0) {}
+    ~hash() { clear(); }
+    void clear() __attribute__((weak));
+
+private:
+    void* table;
+};
 }
 
 class RenderFX {
@@ -73,7 +87,18 @@ public:
     virtual void Load(const char* name, gameswf::player_context* context);
     virtual void Unload();
     virtual void Update(int elapsed, bool render);
-    class SearchIndex;
+    class SearchIndex {
+    public:
+        ~SearchIndex();
+        void Init(RenderFX& owner);
+        void Clear() __attribute__((long_call));
+        class Entry;
+
+    private:
+        gameswf::hash<gameswf::tu_string, gameswf::array<Entry>*,
+                      gameswf::string_hash_functor<gameswf::tu_string> > entries;
+    };
+    SearchIndex* GetSearchIndex();
     class Event;
     class EventListener {
     public:
@@ -150,7 +175,7 @@ private:
     friend class MenuFX;
     gameswf::array<gameswf::character*> matches;
     bool unknown16;
-    void* unknown20;
+    SearchIndex searchIndex;
     gameswf::smart_ptr<gameswf::player> player;
     gameswf::smart_ptr<gameswf::root> root;
     gameswf::character* context;
