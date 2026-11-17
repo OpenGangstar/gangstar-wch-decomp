@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -25,6 +26,14 @@
     "source": "src/game/vehicles/TaxiSideMission.cpp",
     "linker_script": "config/linker/TaxiSideMissionAiStartup.ld",
     "functions": [
+        "_ZN15TaxiSideMission5beginEN3irr4core8vector3dIfEEiRiRf",
+        "_ZN15TaxiSideMission6pickUpEN3irr4core8vector3dIfEERiRfi",
+        "_ZN15TaxiSideMissionC1Ev",
+        "_ZN15TaxiSideMissionC2Ev",
+        "_ZN15TaxiSideMissionD1Ev",
+        "_ZN15TaxiSideMissionD2Ev",
+        "_ZN15TaxiSideMission5cleanEv",
+        "_ZN15TaxiSideMission7dropOffEN3irr4core8vector3dIfEE",
         "_ZN15TaxiSideMission3endEv",
         "_ZN15TaxiSideMission14getMoneyRewardEv",
         "_ZN15TaxiSideMission14getGoalMessageEv",
@@ -51,6 +60,8 @@
         }
     ],
     "sections": [
+        ".taxi_side_mission_vtable",
+        ".taxi_side_mission_base_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -64,6 +75,24 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "_ZN11SideMission4initEv",
+        "_ZN11SideMission16removeCheckpointERP10Checkpoint",
+        "_ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN7Vehicle10immobilizeEv",
+        "_ZN9Character4showEv",
+        "_ZN9Character15resetCollisionsEv",
+        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
+        "_ZN9Character15getOutOfVehicleEbb",
+        "_ZN11SideMission8getRangeERfS0_iiiii",
+        "_ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt",
+        "_ZN11SideMission6addNPCEiiN3irr4core8vector3dIfEEtt",
+        "_ZN11SideMission13calculateTimeEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission13fadeInFadeOutEv",
+        "_ZN7Vehicle8mobilizeEv",
+        "_ZN9Character4hideEv",
+        "_ZN9Character16removeCollisionsEv"
     ]
 }

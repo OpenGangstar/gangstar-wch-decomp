@@ -15,8 +15,31 @@ _ZN34retail_taxisidemission_transitions11guard_transE = 0x00435934;
 _ZN34retail_taxisidemission_transitions22scripted_vehicle_transE = 0x004359dc;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__cxa_pure_virtual = 0;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_idiv = 0x001c43dc;
+__aeabi_idivmod = 0x001c4934;
+sqrt = 0x001c401c;
+sprintf = 0x001c46ac;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_d2f = 0x001c4310;
+__aeabi_fcmple = 0x001c43ac;
+__stack_chk_fail = 0x001c42e0;
+taxiMissionTimerFormat = 0x0042ad20;
 SECTIONS
 {
+    .taxi_begin 0x0034810c : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission5beginEN3irr4core8vector3dIfEEiRiRf) }
+    .taxi_pickup 0x00347f84 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission6pickUpEN3irr4core8vector3dIfEERiRfi) }
+    .taxi_side_mission_vtable 0x004ad250 : { *(.data.rel.ro._ZTV15TaxiSideMission) }
+    .taxi_ctor 0x00347ee8 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMissionC1Ev .text._ZN15TaxiSideMissionC2Ev) }
+    .taxi_dtor 0x00347e40 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMissionD1Ev .text._ZN15TaxiSideMissionD2Ev) }
+    .taxi_clean 0x00347ebc : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission5cleanEv) }
+    .taxi_drop_off 0x00347f10 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission7dropOffEN3irr4core8vector3dIfEE) }
+    .taxi_side_mission_base_vtable 0x004ad1e0 : { *(.gnu.linkonce.d.rel.ro._ZTV11SideMission .data.rel.ro._ZTV11SideMission) }
     .taxi_end 0x00347e58 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission3endEv) }
     .taxi_getMoneyReward 0x00347e5c : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission14getMoneyRewardEv) }
     .taxi_getGoalMessage 0x00347e64 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission14getGoalMessageEv) }

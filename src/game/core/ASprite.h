@@ -81,6 +81,7 @@ private:
     unsigned char unknown16[16];
     bool unknown32;
     friend class Application;
+    friend class ScriptManager;
     bool unknown33;
     unsigned char unknown34[2];
     int unknown36;

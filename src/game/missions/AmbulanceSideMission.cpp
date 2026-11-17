@@ -9,7 +9,11 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
-#include "SideMission.h"
+#include "SideMissionTimerText.h"
+#include "Checkpoint.h"
+#include "../characters/PhysicAttributes.h"
+#include "../ai/NPC.h"
+#include "AmbulanceSideMission.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -80,21 +84,6 @@ static void _GLOBAL__I__ZN20AmbulanceSideMissionC2Ev()
 }
 }
 
-class AmbulanceSideMission : public SideMission {
-public:
-    virtual void begin(irr::core::vector3d<float>, int, int&, float&);
-    virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
-    virtual bool dropOff(irr::core::vector3d<float>);
-    virtual void end();
-    virtual void clean();
-    virtual int getMoneyReward();
-    virtual int getGoalMessage();
-    virtual int getStartMessage();
-    virtual int getEndMessage();
-    virtual int getObj1Message();
-    virtual int getObj2Message();
-};
-
 void AmbulanceSideMission::end()
 {
 }
@@ -127,4 +116,94 @@ int AmbulanceSideMission::getObj1Message()
 int AmbulanceSideMission::getObj2Message()
 {
     return 0x30ef;
+}
+
+void AmbulanceSideMission::clean()
+{
+    removeCheckpoint(checkpoint);
+    disableCheckpoints(dropOffCheckpoints);
+}
+
+bool AmbulanceSideMission::dropOff(irr::core::vector3d<float> position)
+{
+    if (!isInCheckpointsRange(position, dropOffCheckpoints))
+        return false;
+    disableCheckpoints(dropOffCheckpoints);
+    return true;
+}
+
+extern "C" int sprintf(char*, const char*, ...);
+extern const char ambulanceMissionTimerFormat[] __attribute__((visibility("hidden")));
+
+void AmbulanceSideMission::begin(irr::core::vector3d<float> position, int level,
+                            int& time, float& money)
+{
+    difficulty = level;
+    float minDistance;
+    float maxDistance;
+    unsigned short surface;
+    getRange(minDistance, maxDistance, level, 300, 400, 600, 700);
+    checkpoint = addCheckpoint(27, position, minDistance, maxDistance,
+        PhysicAttributes::MATERIAL_TYPE_SIDEWALK, surface);
+    addNPC(-1, -1, checkpoint->GetPosition(), PhysicAttributes::MATERIAL_TYPE_SIDEWALK, surface);
+    passenger->setAnimation(163, 1.0f, true, false, false);
+
+    const int pickupTime = calculateTime(position, checkpoint->GetPosition(), difficulty == 1 ? 150 : 80, difficulty);
+    const float pickupMoney = calculateMoney(position, checkpoint->GetPosition(), 75, difficulty);
+    time += pickupTime;
+    money = pickupMoney;
+    position.getDistanceFrom(checkpoint->GetPosition());
+
+    char totalText[8];
+    char pickupText[8];
+    const int totalTime = time;
+    formatSideMissionTime(totalText, ambulanceMissionTimerFormat, totalTime);
+    formatSideMissionTime(pickupText, ambulanceMissionTimerFormat, pickupTime);
+}
+
+AmbulanceSideMission::AmbulanceSideMission()
+{
+    dropOffCheckpoints.data = 0;
+    dropOffCheckpoints.allocated = 0;
+    dropOffCheckpoints.used = 0;
+    dropOffCheckpoints.free_when_destroyed = true;
+    dropOffCheckpoints.is_sorted = true;
+    dropOffCheckpoints.unknown16 = 1;
+    init();
+    checkpoint = 0;
+    getCheckpoints(24, dropOffCheckpoints);
+}
+
+bool AmbulanceSideMission::pickUp(irr::core::vector3d<float> position, int& time, float& money, int)
+{
+    if (!isInCheckpointRange(position, checkpoint))
+        return false;
+
+    fadeInFadeOut();
+    removeNPC();
+    removeCheckpoint(checkpoint);
+    Checkpoint* destination = enableCheckpoints(dropOffCheckpoints, position);
+    const int dropOffTime = calculateTime(position, destination->GetPosition(), 80, difficulty);
+    const float dropOffMoney = calculateMoney(position, destination->GetPosition(), 75, difficulty);
+    time += dropOffTime;
+    money += dropOffMoney;
+    position.getDistanceFrom(destination->GetPosition());
+
+    char totalText[8];
+    char dropOffText[8];
+    const int totalTime = time;
+    formatSideMissionTime(totalText, ambulanceMissionTimerFormat, totalTime);
+    formatSideMissionTime(dropOffText, ambulanceMissionTimerFormat, dropOffTime);
+    return true;
+}
+
+AmbulanceSideMission::~AmbulanceSideMission()
+{
+    ::operator delete(dropOffCheckpoints.data);
+    dropOffCheckpoints.data = 0;
+    dropOffCheckpoints.used = 0;
+    dropOffCheckpoints.allocated = 0;
+    dropOffCheckpoints.is_sorted = true;
+    if (dropOffCheckpoints.free_when_destroyed)
+        ::operator delete(dropOffCheckpoints.data);
 }

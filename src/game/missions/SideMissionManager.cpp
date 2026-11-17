@@ -9,6 +9,24 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "SideMissionTimerText.h"
+#include "AmbulanceSideMission.h"
+#include "DeliverySideMission.h"
+#include "../vehicles/TaxiSideMission.h"
+#include "../core/SafeDelete.h"
+#include "../ui/GSSideMissionMenu.h"
+#include "../ai/StateMachine.h"
+#include "../vehicles/Vehicle.h"
+#include "../hud/MenuManager.h"
+#include "../app/Application.h"
+#include "../audio/SoundManager.h"
+#include "../characters/PlayerTest.h"
+#include "../hud/CHudManager.h"
+#include "../meta/Achievements.h"
+#include "../scripting/ScriptManager.h"
+#include "Mission.h"
+#include "SideMissionManager.h"
+#include "SideMission.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
@@ -80,11 +98,164 @@ static void _GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE()
 }
 }
 
-class SideMissionManager {
-public:
-    static void debug();
-};
-
 void SideMissionManager::debug()
 {
+}
+
+int SideMissionManager::s_step;
+
+void SideMissionManager::confirm()
+{
+    s_step = 4;
+}
+
+AmbulanceSideMission* SideMissionManager::s_ambulanceSideMission;
+DeliverySideMission* SideMissionManager::s_deliverySideMission;
+TaxiSideMission* SideMissionManager::s_taxiSideMission;
+SideMission* SideMissionManager::s_currentMission;
+int SideMissionManager::s_nextMissionTimer;
+
+extern "C" long lrand48();
+
+void SideMissionManager::setNextMissionTimer()
+{
+    s_nextMissionTimer = 2000 + lrand48() % 1000;
+}
+
+bool SideMissionManager::isInSideMission()
+{
+    return s_currentMission && s_currentMission->inProgress();
+}
+
+void SideMissionManager::update(unsigned int elapsed)
+{
+    switch (s_step) {
+    case 0:
+        initMission();
+        if (s_currentMission) {
+            setNextMissionTimer();
+            s_step = 1;
+        }
+        break;
+    case 1:
+        s_nextMissionTimer -= elapsed;
+        if (isMissionAvailable()) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(116, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            Application::GetInstance()->GetHudManager()->toggleRadioCB(true);
+            s_currentMission->init();
+            s_step = 2;
+        }
+        break;
+    case 3:
+        s_step = 4;
+        break;
+    case 4:
+        s_currentMission->start();
+        s_step = 5;
+        break;
+    case 5:
+        s_currentMission->update(elapsed);
+        if (!isInSideMission())
+            s_step = 6;
+        break;
+    case 6: {
+        const int reward = s_currentMission->getReward();
+        PlayerTest::GetPlayer()->addCash(reward, 3000);
+        AchievementManager::s_achievementManager->recordMissionCash(reward);
+        if (s_currentMission->finished())
+            s_step = 0;
+        else {
+            setNextMissionTimer();
+            s_step = 3;
+        }
+        break;
+    }
+    }
+}
+
+bool SideMissionManager::isMissionAvailable()
+{
+    if (isInSideMission())
+        return false;
+    if (static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4)
+        return false;
+    return s_nextMissionTimer <= 0;
+}
+
+void SideMissionManager::initMission()
+{
+    Vehicle* vehicle = PlayerTest::GetPlayer()->getVehicle();
+    if (!vehicle)
+        return;
+    switch (vehicle->GetMetatype()) {
+    case 153:
+        s_currentMission = s_taxiSideMission;
+        break;
+    case 5:
+        s_currentMission = s_ambulanceSideMission;
+        break;
+    case 39:
+        s_currentMission = s_deliverySideMission;
+        break;
+    }
+}
+
+void SideMissionManager::stop(bool showMessage)
+{
+    if (s_currentMission) {
+        s_currentMission->stop(showMessage);
+        s_currentMission = 0;
+    }
+    MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    Application::GetInstance()->GetHudManager()->toggleRadioCB(false);
+    s_step = 0;
+}
+
+void SideMissionManager::clean()
+{
+    SafeDelete(s_ambulanceSideMission);
+    SafeDelete(s_deliverySideMission);
+    SafeDelete(s_taxiSideMission);
+    s_currentMission = 0;
+}
+
+void SideMissionManager::init()
+{
+    s_ambulanceSideMission = new AmbulanceSideMission;
+    s_deliverySideMission = new DeliverySideMission;
+    s_taxiSideMission = new TaxiSideMission;
+    s_currentMission = 0;
+    s_step = 0;
+}
+
+template<> GSSideMissionMenu* StateMachine::pushState<GSSideMissionMenu>() __attribute__((weak));
+
+void SideMissionManager::start()
+{
+    if (isMissionAvailable() && s_step == 2) {
+        Application::GetInstance()->GetHudManager()->toggleRadioCB(false);
+        StateMachine::getInstance()->pushState<GSSideMissionMenu>();
+    }
+}
+
+void SideMissionManager::draw()
+{
+    if (!s_currentMission ||
+        static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4)
+        return;
+    int timer;
+    // GCC 4.2 places the retail timer-display path first with this hint.
+    if (__builtin_expect(isInSideMission(), 1) && (timer = s_currentMission->getTimer()) >= 0) {
+        char text[8];
+        formatSideMissionTime(text, "%02d:%02d:%01d", timer);
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, text, 0);
+        return;
+    }
+    if (MenuManager::getInstance()->getText(MenuManager::MissionTimerText)) {
+        MenuManager::getInstance()->setText(
+            MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    }
 }

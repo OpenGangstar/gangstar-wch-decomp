@@ -53,6 +53,7 @@ INCLUDE config/linker/ApplicationEventSections.ld
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
+INCLUDE config/linker/ApplicationRuntimeSections.ld
 SECTIONS
 {
     /DISCARD/ : { *application-helpers.o(.text.__tcf_0) }

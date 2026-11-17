@@ -71,7 +71,7 @@ public:
 class SavePrimaryInterface {
 public:
     virtual void unknownPrimary();
-    virtual void unknownPrimary1(); virtual void unknownPrimary2();
+    virtual ~SavePrimaryInterface();
     virtual void Stop();
     virtual void setVehicle(Vehicle* value);
     virtual void unknownPrimary5();
@@ -79,6 +79,8 @@ public:
     virtual Vehicle* getVehicle() const;
     virtual Weapon* getWeapon() const;
 };
+namespace playertest { struct PlayerCarState { enum ePlayerCarState { MovingOut = 7 }; }; }
+
 class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
 public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
@@ -141,6 +143,8 @@ public:
     void SetSpeed();
     void ResetPlayerTest(bool);
     void setVehicle(Vehicle* value);
+    void teleportTo(const LevelObject* object);
+    void stopDriving(playertest::PlayerCarState::ePlayerCarState state, bool instant);
     void finishedStopDriving();
     int getCarAnimName(const char* name, bool left);
     void Update();

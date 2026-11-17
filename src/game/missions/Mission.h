@@ -22,6 +22,7 @@ public:
     void idle();
     bool end();
     void update(int elapsed);
+    void draw();
     void resumeFadeOut();
     void skipFadeOut();
     void setFailureCount(int count);
@@ -31,7 +32,11 @@ public:
     bool objective(int id, bool silent);
     bool start(int id, int duration);
 private:
-    unsigned char unknown4[16];
+    friend class ScriptManager;
+    int currentMissionId;
+    int unknown8;
+    int unknown12;
+    unsigned char unknown16[4];
     int currentMessage;
     int lastObjectiveText;
     int state;

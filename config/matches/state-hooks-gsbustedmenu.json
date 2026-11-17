@@ -357,6 +357,11 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_ZN6Revive6draw2dEv",
+        "_ZN7Mission4drawEv",
+        "_ZN10AnimObject7SetAnimEii",
+        "_ZN10AnimObject7SetAnimEi",
         "_ZNK10MenuWidget9IsVisibleEv",
         "_ZNK8RenderFX7GetRootEv",
         "_Z13ekd_debug_outPKcPc",
@@ -379,7 +384,6 @@
         "_ZN3MapD1Ev",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
-        "_ZN13ScriptManager5pauseEv",
         "_ZN5Menus6Dialog10SetMessageEi",
         "_ZN5Menus14ConfirmPayment8SetPriceEi",
         "_ZN13WeaponManager28getKeepWeaponsWhenBustedCostEv",
@@ -434,7 +438,6 @@
         "_ZN4RaceC1Ev",
         "_ZN7MissionC1Ev",
         "_ZN7Mission4loadEPKc",
-        "_ZN13ScriptManager9resetGameEbi",
         "_ZNK6Script8getStateEv",
         "_ZNK6Script11peekCommandEi",
         "_ZNK6Script9getSourceEv",

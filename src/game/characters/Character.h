@@ -11,6 +11,8 @@ class Weapon;
 // offset 295. NPC's first additional field is at 296. Other fields and virtual
 // overrides remain unrecovered; keep their storage opaque.
 class Character : public LevelObject {
+    friend class TaxiSideMission;
+    friend class SideMission;
 public:
     Character(int type);
     virtual ~Character();
@@ -80,6 +82,7 @@ public:
     virtual void runToLocation(const irr::core::vector3d<float>& point);
     virtual Weapon* getWeapon() const = 0;
     virtual void SetTarget(LevelObject* value);
+    virtual void goToVehicle(Vehicle*, bool, bool, bool, bool);
 private:
     void positionAtDoor(bool left);
     void getInVehicle(bool left);

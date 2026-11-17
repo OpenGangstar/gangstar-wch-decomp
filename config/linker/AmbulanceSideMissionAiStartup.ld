@@ -13,8 +13,27 @@ _ZN39retail_ambulancesidemission_transitions17civ_vehicle_transE = 0x0043463c;
 _ZN39retail_ambulancesidemission_transitions17cop_vehicle_transE = 0x004346cc;
 _ZN39retail_ambulancesidemission_transitions11guard_transE = 0x00434780;
 _ZN39retail_ambulancesidemission_transitions22scripted_vehicle_transE = 0x00434828;
+__cxa_pure_virtual = 0x00000000;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_idiv = 0x001c43dc;
+__aeabi_idivmod = 0x001c4934;
+sqrt = 0x001c401c;
+sprintf = 0x001c46ac;
+ambulanceMissionTimerFormat = 0x0042ad20;
 SECTIONS
 {
+    .side_entry_346570 0x00346570 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMissionD1Ev .text._ZN20AmbulanceSideMissionD2Ev) }
+    .ambulance_pickup 0x00346394 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission6pickUpEN3irr4core8vector3dIfEERiRfi) }
+    .side_entry_345f94 0x00345f94 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission5cleanEv) }
+    .side_entry_345fa8 0x00345fa8 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission7dropOffEN3irr4core8vector3dIfEE) }
+    .side_entry_345fd4 0x00345fd4 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission5beginEN3irr4core8vector3dIfEEiRiRf) }
+    .side_entry_3461f8 0x003461f8 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMissionC1Ev .text._ZN20AmbulanceSideMissionC2Ev) }
+    .side_mission_base_vtable 0x004ad1e0 : { *(.gnu.linkonce.d.rel.ro._ZTV11SideMission .data.rel.ro._ZTV11SideMission) }
+    .derived_side_mission_vtable 0x004ad1a8 : { *(.data.rel.ro._ZTV20AmbulanceSideMission) }
     .side_mission_obj2_message 0x00345f5c : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission14getObj2MessageEv) }
     .side_mission_obj1_message 0x00345f54 : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission14getObj1MessageEv) }
     .side_mission_end_message 0x00345f4c : { *ai-startup-ambulancesidemission.o(.text._ZN20AmbulanceSideMission13getEndMessageEv) }

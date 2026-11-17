@@ -8,6 +8,21 @@
  * functions of ScriptManager.cpp here, in the order they appear in the library.
  */
 
+#include "../characters/PhysicAttributes.h"
+#include "../ui/Shop.h"
+#include "../persistence/SaveGameInterfaces.h"
+#include "../core/SceneNode.h"
+#include "../core/PointerVector.h"
+#include "../world/ResStream.h"
+#include "../core/ASprite.h"
+#include "../core/Rct.h"
+#include "../ui/VirtualButton.h"
+#include "../vehicles/Vehicle.h"
+#include "../core/VideoDriver.h"
+#include "../core/NativeStdio.h"
+#include "../core/NativeStrings.h"
+#include "../world/GameObjectManager.h"
+#include "../ui/WidgetDialog.h"
 #include "ScriptManager.h"
 #include "Script.h"
 #include "../app/Application.h"
@@ -1373,4 +1388,390 @@ static void _GLOBAL__I__ZN13ScriptManager12s_playerTestE()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void ScriptManager::freezeRunningScripts(const Script* script, PlayerTest::eContext context)
+{
+    unsigned int targetContext = context;
+    if (targetContext == static_cast<unsigned int>(PlayerTest::AnyContext))
+        targetContext = PlayerTest::GetPlayer()->contextWord;
+
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i] != script && scripts[i]->getState() == Script::State2 &&
+            scripts[i]->contextWord == targetContext) {
+            const int opcode = scripts[i]->peekCommand(0)->opcode;
+            if ((opcode == 64 || opcode == 105) && scripts[i]->source) {
+                displayOnMinimap(scripts[i]->source, false, true);
+                scripts[i]->unsetScriptObjectAction(scripts[i]->source, Script::MinimapObject);
+                scripts[i]->source->disable();
+                scripts[i]->unsetScriptObjectAction(scripts[i]->source, Script::ActiveObject);
+                scripts[i]->source = 0;
+                scripts[i]->unknown72 = 0;
+            }
+            scripts[i]->setState(Script::State1, PlayerTest::AnyContext);
+        }
+    }
+}
+
+void ScriptManager::unlockFrozenScripts()
+{
+    const int context = PlayerTest::GetPlayer()->contextWord;
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i]->getState() == Script::State1 && scripts[i]->contextWord == context)
+            scripts[i]->setState(Script::State2, PlayerTest::AnyContext);
+    }
+}
+
+void ScriptManager::pause()
+{
+    paused = true;
+    if (unknown104) {
+        unknown104 = 0;
+        MenuManager::getInstance()->getWidgetByIndex(10)->Hide(true);
+    }
+}
+
+void ScriptManager::playerDrives(Vehicle* vehicle)
+{
+    if (!vehicle || isInCinematic()) {
+        vehicleNameAnimation->SetAnim(-1);
+        vehicleNameTimer = 0;
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(0), -1, 0);
+    } else if (vehicle->vehicleIndex != -1) {
+        vehicleNameAnimation->SetAnim(25);
+        vehicleNameTimer = 3000;
+    }
+}
+
+void ScriptManager::drawFade() const
+{
+    Application* app = Application::GetInstance();
+    irr::video::IVideoDriver* driver = app->GetDevice()->getVideoDriver();
+    int width, height;
+    app->GetScreenDimensions(width, height);
+    driver->draw2DRectangle(irr::video::SColor(static_cast<unsigned char>(s_fadeIntensity), 0, 0, 0),
+        irr::core::rect<int>(0, 0, width, height));
+}
+
+template void SafeDelete<Script>(Script*&);
+
+extern "C" int sWindowWidth;
+
+static const char introSpriteFile[] __attribute__((section(".rodata.script_setup_intro"))) = "./intro.bsprite";
+static const char cinematicHudFile[] __attribute__((section(".rodata.script_setup_hud"))) = "./cinematics_hud.bsprite";
+static const char cinematicHudFile2[] __attribute__((section(".rodata.script_setup_hud2"))) = "./cinematics_hud_2.bsprite";
+static const char cinematicCharacterFile[] __attribute__((section(".rodata.script_setup_character"))) = "./cinematics_char.bsprite";
+
+void ScriptManager::setup()
+{
+    ASprite* intro = new ASprite(introSpriteFile);
+    introSprite = intro;
+    intro->MakeImage(0, 0);
+    introSprite->unknown33 = false;
+
+    AnimObject* introAnim = new AnimObject();
+    introAnimation = introAnim;
+    introAnim->sprite = introSprite;
+    introAnimation->SetPosition(0.0f, 0.0f, 0.0f);
+
+    AnimObject* vehicleName = new AnimObject();
+    vehicleNameAnimation = vehicleName;
+    vehicleName->sprite = Application::GetInstance()->GetHudManager()->reviveSprite;
+    vehicleNameAnimation->SetPosition(0.0f, 0.0f, 0.0f);
+
+    if (sWindowWidth > 800)
+        cinematicsHudSprite = new ASprite(cinematicHudFile);
+    else
+        cinematicsHudSprite = new ASprite(cinematicHudFile2);
+    cinematicsHudSprite->MakeImage(0, 0);
+    cinematicsHudSprite->unknown33 = false;
+
+    ASprite* character = new ASprite(cinematicCharacterFile);
+    cinematicCharacterSprite = character;
+    character->MakeImage(0, 0);
+    cinematicCharacterSprite->unknown33 = false;
+
+    AnimObject* firstHud = new AnimObject();
+    cinematicBars = firstHud;
+    firstHud->sprite = cinematicsHudSprite;
+    cinematicBars->SetPosition(0.0f, 0.0f, 0.0f);
+
+    AnimObject* secondHud = new AnimObject();
+    cinematicHudAnimation2 = secondHud;
+    secondHud->sprite = cinematicsHudSprite;
+    cinematicHudAnimation2->SetPosition(0.0f, 0.0f, 0.0f);
+
+    AnimObject* characterAnimation = new AnimObject();
+    cinematicCharacterAnimation = characterAnimation;
+    characterAnimation->sprite = cinematicCharacterSprite;
+    cinematicCharacterAnimation->SetPosition(0.0f, 0.0f, 0.0f);
+
+    VirtualButton* button = new VirtualButton(cinematicsHudSprite, 1, static_cast<EvVButton::ButtonType::Type>(18), false);
+    skipButton = button;
+    button->hide();
+}
+
+void ScriptManager::rewindRunningScripts()
+{
+    s_fadeTime = -999;
+    s_fadeIntensity = -999;
+    const int targetContext = s_playerTest->contextWord;
+
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i]->contextWord != targetContext)
+            continue;
+
+        switch (scripts[i]->getState()) {
+        case Script::State2:
+            scripts[i]->rewind();
+            if (scripts[i]->getParent())
+                scripts[i]->setState(Script::State0, PlayerTest::AnyContext);
+            break;
+        case Script::WaitingForChild:
+        case Script::State1:
+            scripts[i]->rewind();
+            scripts[i]->setState(Script::State2, PlayerTest::AnyContext);
+            break;
+        default:
+            break;
+        }
+    }
+    mission->idle();
+}
+
+static const char scriptFindPlayer[] __attribute__((section(".rodata.script_find_player"))) = "Player";
+static const char scriptFindMe[] __attribute__((section(".rodata.script_find_me"))) = "Me";
+static const char scriptFindWarning[] __attribute__((section(".rodata.script_find_warning"))) =
+    "!!! WARNING: Object does not exist: %s !!!\n";
+
+LevelObject* ScriptManager::findObject(const char* name, bool respawnDead)
+{
+    if (strcmp(name, scriptFindPlayer) == 0)
+        return reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(s_playerTest));
+    if (strcmp(name, scriptFindMe) == 0)
+        return s_me;
+
+    LevelObject* object = GameObjectManager::s_gom->GetGameObjectByName(name, respawnDead);
+    if (!object)
+        printf(scriptFindWarning, name);
+    return object;
+}
+
+void ScriptManager::loadScript(const char* filename, bool loadSave)
+{
+    ResStream resource(filename, 1);
+    DataStream stream(resource, DataStream::BigEndian);
+    scriptCapacity = stream.ReadInt();
+    if (scriptCapacity > 0) {
+        scripts = new Script*[scriptCapacity];
+        memset(scripts, 0, scriptCapacity * sizeof(*scripts));
+    }
+
+    unknown92 = 0;
+    for (int i = 0; i < scriptCapacity; ++i) {
+        const int commandCount = stream.ReadInt();
+        Script* script = new Script(commandCount);
+        for (int j = 0; j < commandCount; ++j) {
+            const int size = stream.ReadInt();
+            const int next = stream.Tell() + size;
+            Structs::ScriptCommand* command = loadCommand(stream);
+            if (stream.Tell() != next)
+                stream.Seek(next, 0);
+            if (command)
+                script->addCommand(command);
+        }
+        if (script->peekCommand(0)->opcode == 4) {
+            ++unknown92;
+            script->setState(Script::State2, PlayerTest::AnyContext);
+        }
+        addScript(script);
+    }
+    loadGame(!loadSave);
+}
+
+int ScriptManager::getAvailableMissionScripts(std::vector<Script*>& output) const
+{
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i]->getState() != Script::State2)
+            continue;
+        const Structs::ScriptCommand* command = scripts[i]->peekCommand(0);
+        const int missionId = scripts[i]->getMissionId();
+        if (missionId != -1 && missionId != mission->currentMissionId &&
+            command && command->opcode == 64) {
+            output.push_back(scripts[i]);
+        }
+    }
+    return output.size();
+}
+
+void ScriptManager::resetGame(bool skipAutomaticScripts, int scriptId)
+{
+    missionIdle();
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
+        const int type = LevelObject::s_type[object->getObjectType()];
+        switch (type) {
+        case 6:
+            displayOnMinimap(object, false, true);
+            object->sceneNode->setVisible(false);
+            break;
+        case 13:
+            static_cast<Shop*>(object)->lock();
+            break;
+        }
+    }
+
+    PlayerTest* player = PlayerTest::GetPlayer();
+    player->health = player->getMaxHealth();
+    player->setCash(0);
+    player->switchWeapon(true);
+    player->setContextArmor(0);
+    WantedLevelManager* wanted = WantedLevelManager::getInstance();
+    wanted->unknown8 = 0;
+    wanted->_processWantedLevel();
+    WantedLevelManager::s_bTutoWantedLevel = false;
+    Application::GetInstance()->GetWeaponManager()->lockAllWeapons();
+    GSFailure::s_bCutsceneDie = false;
+    GSFailure::s_bCutsceneBusted = false;
+    GSFailure::s_bCutsceneMissionFailed = false;
+    AchievementManager::s_achievementManager->resetNumMissionStat();
+    Checkpoint::s_bTutoCallContact = false;
+    CControlManager::s_cameraTutorial = false;
+    CControlManager::s_sniperTutorial = false;
+
+    unknown92 = 0;
+    for (int id = 0; id < scriptCount; ++id) {
+        Script* script = findScript(id);
+        if (!script)
+            continue;
+        script->rewind();
+        script->setState(Script::State0, PlayerTest::AnyContext);
+        if (id == scriptId) {
+            script->setState(Script::State2, PlayerTest::AnyContext);
+        } else if (!skipAutomaticScripts && script->peekCommand(0)->opcode == 4 && scriptId == -1) {
+            script->setState(Script::State2, PlayerTest::AnyContext);
+            ++unknown92;
+        }
+    }
+}
+
+void ScriptManager::moveObject(LevelObject* object, LevelObject* target)
+{
+    if (!object->isEnabled())
+        return;
+    if (reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == object) {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if (LevelObject::s_type[target->objectType] == 3) {
+            if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle()) {
+                player->stopDriving(playertest::PlayerCarState::MovingOut, true);
+                player->finishedStopDriving();
+            }
+            player->setVehicle(static_cast<Vehicle*>(target));
+            player->unknown312 = target;
+            player->unknown372 = 5;
+        } else {
+            player->teleportTo(target);
+        }
+    } else {
+        object->SetRotation(target->GetRotation());
+        object->SetPosition(target->GetPosition());
+    }
+    object->getPhysicAttributes()->Init(target->GetMatID(), target->GetTriID(), object->GetPosition());
+}
+
+void ScriptManager::unload()
+{
+    vehicleNameAnimation->SetAnim(-1);
+    cinematicBars->SetAnim(-1);
+    cinematicCharacterAnimation->SetAnim(-1);
+    cinematicHudAnimation2->SetAnim(-1);
+    delete s_playerTest;
+    s_playerTest = 0;
+    delete race;
+    race = 0;
+    delete mission;
+    mission = 0;
+    if (scripts) {
+        for (int i = 0; i < scriptCount; ++i)
+            SafeDelete(scripts[i]);
+        delete[] scripts;
+        scripts = 0;
+    }
+    scriptCount = 0;
+    s_me = 0;
+    s_fadeIntensity = -999;
+    s_fadeTime = -999;
+    s_failure = 0;
+    s_failureTime = 0;
+    s_raceTimer = 0;
+    s_raceTimeSeconds = 0;
+}
+
+extern template void SafeDelete<AnimObject>(AnimObject*&);
+
+void ScriptManager::tearDown()
+{
+    delete skipButton;
+    skipButton = 0;
+    SafeDelete(vehicleNameAnimation);
+    SafeDelete(cinematicBars);
+    SafeDelete(cinematicHudAnimation2);
+    SafeDelete(introAnimation);
+    delete cinematicsHudSprite;
+    cinematicsHudSprite = 0;
+    delete cinematicCharacterSprite;
+    cinematicCharacterSprite = 0;
+    delete introSprite;
+    introSprite = 0;
+    SafeDelete(cinematicCharacterAnimation);
+    delete race;
+    race = 0;
+    delete mission;
+    mission = 0;
+
+    if (scripts) {
+        for (int i = 0; i < scriptCount; ++i)
+            SafeDelete(scripts[i]);
+        delete[] scripts;
+        scripts = 0;
+    }
+}
+
+extern template struct Rct<int>;
+
+void ScriptManager::draw()
+{
+    if (paused)
+        return;
+    int width, height;
+    Application::GetInstance()->GetScreenDimensions(width, height);
+    Rct<int> region;
+    if (isInCinematic()) {
+        drawCinematicBars();
+        region = Rct<int>(110, height - 75, width, height);
+    } else {
+        region = Rct<int>(0, 0, width, 50);
+    }
+
+    if (introAnimation->animation != -1)
+        introAnimation->Draw();
+    if (cinematicCharacterAnimation->animation != -1) {
+        cinematicHudAnimation2->SetAnim(3, 1);
+        cinematicHudAnimation2->Draw();
+        cinematicCharacterAnimation->Draw();
+    }
+    if (s_fadeIntensity != -999) {
+        if (s_fadeIntensity > 255)
+            s_fadeIntensity = 255;
+        else if (s_fadeIntensity < 0)
+            s_fadeIntensity = 0;
+        drawFade();
+    }
+    if (vehicleNameAnimation->animation != -1)
+        vehicleNameAnimation->Draw();
+    if (mission)
+        mission->draw();
+    if (skipButton->isVisible())
+        skipButton->draw2d();
+    if (revive)
+        revive->draw2d();
 }

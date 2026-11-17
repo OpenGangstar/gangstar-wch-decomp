@@ -32,6 +32,9 @@ public:
     static void InitWorld();
     static void Clean();
     static void CleanWorld();
+    static unsigned short MATERIAL_TYPE_SIDEWALK;
+    static irr::core::vector3d<float> GetRandomDestination(unsigned short material, unsigned short& surface,
+        const irr::core::vector3d<float>& origin, float minimum, float maximum);
     static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);
     static irr::scene::ISceneNode* s_heightmap;
     irr::core::vector3d<float> GetPathPos(int index);

@@ -15,8 +15,36 @@ _ZN37retail_sidemissionmanager_transitions11guard_transE = 0x00435364;
 _ZN37retail_sidemissionmanager_transitions22scripted_vehicle_transE = 0x0043540c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+lrand48 = 0x001c4664;
+__aeabi_idivmod = 0x001c4934;
+_Znwj = 0x001c4814;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_idiv = 0x001c43dc;
+sprintf = 0x001c46ac;
 SECTIONS
 {
+    .verified_entry_34783c 0x0034783c : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4drawEv) }
+    .side_mission_manager_draw_format 0x0042ad20 : { *ai-startup-sidemissionmanager.o(.rodata.str1.4 .rodata.str1.1) }
+    .side_entry_347ab0 0x00347ab0 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5cleanEv .gnu.linkonce.t._ZN18SideMissionManager5cleanEv) }
+    .side_entry_347b00 0x00347b00 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4initEv .gnu.linkonce.t._ZN18SideMissionManager4initEv) }
+    .side_entry_347b68 0x00347b68 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5startEv .gnu.linkonce.t._ZN18SideMissionManager5startEv) }
+    .side_entry_347a50 0x00347a50 : { *ai-startup-sidemissionmanager.o(.text._Z10SafeDeleteI20AmbulanceSideMissionEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI20AmbulanceSideMissionEvRPT_) }
+    .side_entry_347a70 0x00347a70 : { *ai-startup-sidemissionmanager.o(.text._Z10SafeDeleteI19DeliverySideMissionEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI19DeliverySideMissionEvRPT_) }
+    .side_entry_347a90 0x00347a90 : { *ai-startup-sidemissionmanager.o(.text._Z10SafeDeleteI15TaxiSideMissionEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI15TaxiSideMissionEvRPT_) }
+    .side_entry_347960 0x00347960 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager11initMissionEv) }
+    .side_entry_3479c4 0x003479c4 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4stopEb) }
+    .side_manager_update 0x00347bac : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager6updateEj) }
+    .side_manager_available 0x00347924 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager18isMissionAvailableEv) }
+    .side_manager_update_switch 0x00434e74 : { *(.rodata._ZN18SideMissionManager6updateEj) }
+    .next_mission_timer 0x003477ec : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager19setNextMissionTimerEv) }
+    .is_in_side_mission 0x00347814 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager15isInSideMissionEv) }
+    .manager_ambulanceSideMission 0x004bb5ac (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager22s_ambulanceSideMissionE) }
+    .manager_deliverySideMission 0x004bb5b0 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager21s_deliverySideMissionE) }
+    .manager_taxiSideMission 0x004bb5b4 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager17s_taxiSideMissionE) }
+    .manager_currentMission 0x004bb5b8 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager16s_currentMissionE) }
+    .manager_nextMissionTimer 0x004bb5c0 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager18s_nextMissionTimerE) }
+    .side_mission_confirm 0x003477a0 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager7confirmEv) }
+    .side_mission_step 0x004bb5bc (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager6s_stepE) }
     .side_mission_debug 0x003477b8 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5debugEv) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-sidemissionmanager.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x00347a14 : { *ai-startup-sidemissionmanager.o(.text.__tcf_0) }

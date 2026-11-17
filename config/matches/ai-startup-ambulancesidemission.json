@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -25,6 +26,14 @@
     "source": "src/game/missions/AmbulanceSideMission.cpp",
     "linker_script": "config/linker/AmbulanceSideMissionAiStartup.ld",
     "functions": [
+        "_ZN20AmbulanceSideMissionD1Ev",
+        "_ZN20AmbulanceSideMissionD2Ev",
+        "_ZN20AmbulanceSideMission6pickUpEN3irr4core8vector3dIfEERiRfi",
+        "_ZN20AmbulanceSideMission5cleanEv",
+        "_ZN20AmbulanceSideMission7dropOffEN3irr4core8vector3dIfEE",
+        "_ZN20AmbulanceSideMission5beginEN3irr4core8vector3dIfEEiRiRf",
+        "_ZN20AmbulanceSideMissionC1Ev",
+        "_ZN20AmbulanceSideMissionC2Ev",
         "_ZN20AmbulanceSideMission14getObj2MessageEv",
         "_ZN20AmbulanceSideMission14getObj1MessageEv",
         "_ZN20AmbulanceSideMission13getEndMessageEv",
@@ -46,6 +55,8 @@
         }
     ],
     "sections": [
+        ".derived_side_mission_vtable",
+        ".side_mission_base_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -55,5 +66,21 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11SideMission16removeCheckpointERP10Checkpoint",
+        "_ZN11SideMission18disableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEE",
+        "_ZN11SideMission20isInCheckpointsRangeEN3irr4core8vector3dIfEERNS1_5arrayIP10CheckpointNS1_12irrAllocatorIS6_EEEE",
+        "_ZN11SideMission8getRangeERfS0_iiiii",
+        "_ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt",
+        "_ZN11SideMission6addNPCEiiN3irr4core8vector3dIfEEtt",
+        "_ZN11SideMission13calculateTimeEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission4initEv",
+        "_ZN11SideMission14getCheckpointsEiRN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEE",
+        "_ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint",
+        "_ZN11SideMission13fadeInFadeOutEv",
+        "_ZN11SideMission9removeNPCEv",
+        "_ZN11SideMission17enableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEENS1_8vector3dIfEE"
+    ]
 }

@@ -5,6 +5,7 @@ class ASprite;
 struct SpriteBounds;
 
 class AnimObject {
+    friend class ScriptManager;
 public:
     AnimObject();
     ~AnimObject();

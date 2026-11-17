@@ -4,6 +4,7 @@
 // Partial interface observed by achievement stat formatting.
 class StringManager {
 public:
+    const char* getString(int id) const;
     const char* formatAmount(int value, bool option1, bool option2) const;
 };
 

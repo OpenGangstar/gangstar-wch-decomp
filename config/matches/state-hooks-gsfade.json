@@ -317,6 +317,10 @@
         "application-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN6Revive6draw2dEv",
+        "_ZN7Mission4drawEv",
+        "_ZN10AnimObject7SetAnimEii",
+        "_ZN10AnimObject7SetAnimEi",
         "_ZN7Message11isDisplayedEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
@@ -324,7 +328,6 @@
         "_ZN11MenuManager9showTextsEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
-        "_ZN13ScriptManager5pauseEv",
         "_ZN11MenuManager9hideTextsEv",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN7Vehicle10immobilizeEv",
@@ -378,7 +381,6 @@
         "_ZN4RaceC1Ev",
         "_ZN7MissionC1Ev",
         "_ZN7Mission4loadEPKc",
-        "_ZN13ScriptManager9resetGameEbi",
         "_ZNK6Script8getStateEv",
         "_ZNK6Script11peekCommandEi",
         "_ZNK6Script9getSourceEv",
