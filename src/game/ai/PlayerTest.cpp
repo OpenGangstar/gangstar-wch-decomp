@@ -24,6 +24,7 @@
 #include "../core/GameEventMethods.h"
 #include "../core/SceneNode.h"
 #include "../meta/Achievements.h"
+#include "../scripting/ScriptManager.h"
 
 class Reward {
 public:
@@ -155,6 +156,14 @@ void PlayerTest::playCurAnimFromStart()
     character->resetAnimation();
 }
 
+Vehicle* PlayerTest::getVehicle() const
+{
+    if (ScriptManager::getInstance()->isInCinematic() && !vehicleVisibleInCinematic &&
+        !ScriptManager::getInstance()->areBlockingCommandsSkipped())
+        return 0;
+    return vehicle;
+}
+
 void PlayerTest::addCash(int amount, int maximum)
 {
     if (richAsCroesusEnabled && amount <= 0)
@@ -220,6 +229,11 @@ void PlayerTest::switchWeapon(bool unarmed)
     if (currentTarget && LevelObject::s_type[currentTarget->getObjectType()] == 5)
         static_cast<NPC*>(currentTarget)->notifyTargeted(true, character);
     static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
+}
+
+Weapon* PlayerTest::getWeapon() const
+{
+    return Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();
 }
 
 void PlayerTest::subCash(int amount)

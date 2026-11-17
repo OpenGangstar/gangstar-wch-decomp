@@ -42,6 +42,10 @@ SECTIONS
     .player_marker_type 0x00300d7c : { *ai-startup-playertest.o(.text._ZN10PlayerTest13getMarkerTypeEv) }
     .player_hide_mesh 0x00300d84 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8hideMeshEv) }
     .player_show_mesh 0x00301594 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8showMeshEv) }
+    .player_get_vehicle_thunk 0x0030121c : { *ai-startup-playertest.o(.text._ZThn4_NK10PlayerTest10getVehicleEv) }
+    .player_get_vehicle 0x00301230 : { *ai-startup-playertest.o(.text._ZNK10PlayerTest10getVehicleEv) }
+    .player_get_weapon_thunk 0x00301730 : { *ai-startup-playertest.o(.text._ZThn4_NK10PlayerTest9getWeaponEv) }
+    .player_get_weapon 0x00301744 : { *ai-startup-playertest.o(.text._ZNK10PlayerTest9getWeaponEv) }
     .player_run_thunk 0x003014d8 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest13runToLocationERKN3irr4core8vector3dIfEE) }
     .player_run 0x003014ec : { *ai-startup-playertest.o(.text._ZN10PlayerTest13runToLocationERKN3irr4core8vector3dIfEE) }
     .player_walk_thunk 0x00301520 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE) }

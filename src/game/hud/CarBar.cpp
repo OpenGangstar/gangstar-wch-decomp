@@ -23,7 +23,7 @@ public:
 void CarBar::update(double)
 {
     PlayerTest* player = PlayerTest::GetPlayer();
-    if (player && (player->flags240 & 1024) && player->getVehicle()) {
+    if (player && (player->flags240 & 1024) && static_cast<SavePositionInterface*>(player)->getVehicle()) {
         const int width = fillWidth;
         const int health = static_cast<SavePrimaryInterface*>(player)->getVehicle()->getHealth();
         const int maximum = static_cast<SavePrimaryInterface*>(player)->getVehicle()->getMaxHealth();
@@ -42,7 +42,8 @@ void CarBar::draw2d() const
 {
     PlayerTest* player = PlayerTest::GetPlayer();
     // The retail short-circuit reaches the vehicle test when player is null.
-    if ((flags & 1) && (player || ((player->flags240 & 1024) && player->getVehicle())))
+    if ((flags & 1) && (player || ((player->flags240 & 1024) &&
+                                 static_cast<SavePositionInterface&>(*player).getVehicle())))
         Gauge::draw2d();
 }
 

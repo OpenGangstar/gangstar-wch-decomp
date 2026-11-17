@@ -216,7 +216,7 @@ void WeaponManager::swapWeapon(int id)
 bool WeaponManager::isWeaponUsable(int type)
 {
     PlayerTest* value = PlayerTest::GetPlayer();
-    if ((value->flags240 & 1024) && value->getVehicle())
+    if ((value->flags240 & 1024) && static_cast<SavePositionInterface*>(value)->getVehicle())
         return isWeaponUsableFromVehicle(type);
     return true;
 }

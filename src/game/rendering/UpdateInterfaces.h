@@ -41,7 +41,7 @@ struct UpdatePlayerView {
 };
 
 inline bool updatePlayerInVehicle(const PlayerTest* player) {
-    return (player->flags240 & 1024) && player->getVehicle();
+    return (player->flags240 & 1024) && static_cast<const SavePositionInterface*>(player)->getVehicle();
 }
 
 namespace UpdateMath {
