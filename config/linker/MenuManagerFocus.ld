@@ -1,4 +1,5 @@
 sprintf = 0x001c46ac;
+memset = 0x001c45d4;
 strcmp = 0x001c4658;
 strstr = 0x001c446c;
 fclose = 0x001c4628;
@@ -28,6 +29,7 @@ SECTIONS
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
     .menu_manager_instance_cleanup 0x002e62b0 : { *menu-manager-helpers.o(.text.__tcf_7) }
     .menu_manager_widget_visibility 0x002e49ac : { *menu-manager-helpers.o(.text._ZN11MenuManager22updateWidgetVisibilityEv) }
+    .menu_manager_constructor 0x002e477c : { *menu-manager-helpers.o(.text._ZN11MenuManagerC1Ev .text._ZN11MenuManagerC2Ev) }
     .menu_manager_destructor 0x002e6274 : { *menu-manager-helpers.o(.text._ZN11MenuManagerD1Ev .text._ZN11MenuManagerD2Ev) }
     .menu_manager_deleting_destructor 0x002e4c84 : { *menu-manager-helpers.o(.text._ZN11MenuManagerD0Ev) }
     .menu_manager_vtable 0x004a8f60 : { *menu-manager-helpers.o(.data.rel.ro._ZTV11MenuManager) }

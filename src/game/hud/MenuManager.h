@@ -20,6 +20,7 @@ class MenuWidget;
 
 class MenuManager {
 public:
+    MenuManager();
     virtual ~MenuManager();
     static MenuManager* getInstance();
     enum eText { SkipButtonText = 3, MissionTimerText = 15, StayWithinText = 16, TextForceWidth = 0x7fffffff };
@@ -59,39 +60,69 @@ public:
     static int s_WeaponShopDataCount;
     static WeaponShopData s_WeaponShopData[];
 private:
-    unsigned char unknown4[56];
+    int unknown4;
+    int unknown8;
+    int unknown12;
+    int unknown16;
+    int unknown20;
+    int unknown24;
+    unsigned char unknown28[12];
+    float unknown40;
+    int unknown44;
+    int unknown48;
+    int unknown52;
+    int unknown56;
     int mapMode;
-    unsigned char unknown64[4];
+    float unknown64;
     int inGameMenu;
     int tutorialId;
     int tutorialTextId;
     int repairCost;
     struct OwnedBuffer {
         void* data;
-        unsigned char unknown4[8];
+        int unknown4;
+        int unknown8;
         bool ownsData;
+        bool unknown13;
+        OwnedBuffer();
         ~OwnedBuffer();
     };
     OwnedBuffer buffer;
-    unsigned char unknown100[88];
+    int unknown100;
+    struct Entry {
+        float unknown0;
+        float unknown4;
+        float unknown8;
+        int unknown12;
+        Entry();
+    };
+    Entry entries[4];
+    int unknown168[4];
+    int unknown184;
     MenuFXPrefix* menuFX;
-    unsigned char unknown192[4];
+    int unknown192;
     bool widgetVisibility;
     bool clearingFocus;
-    unsigned char unknown198[211];
+    unsigned char unknown198[2];
+    int textIds[17];
+    const char* texts[17];
+    int unknown336[17];
+    int charAutoLineFeed;
+    bool asianFont;
     bool animsEnabled;
     bool cheatsUnlocked;
     bool cheatsUnlockAllowed;
     unsigned int consumedCursorCount;
-    unsigned char unknown416[4];
+    int unknown416;
     struct WidgetStorage {
         MenuWidget** elements;
         int size;
         int capacity;
+        WidgetStorage();
         ~WidgetStorage();
     };
     WidgetStorage widgets;
-    unsigned char unknown432[4];
+    bool unknown432;
 };
 
 #endif

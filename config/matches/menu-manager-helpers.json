@@ -26,6 +26,8 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManagerC1Ev",
+        "_ZN11MenuManagerC2Ev",
         "_ZN11MenuManagerD0Ev",
         "_ZN11MenuManagerD1Ev",
         "_ZN11MenuManagerD2Ev",

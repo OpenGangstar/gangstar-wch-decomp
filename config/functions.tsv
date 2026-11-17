@@ -9507,8 +9507,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e465d	0xa	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager8getDepthEv	MenuManager::getDepth() const
 0x002e4669	0x2a	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13topSetVisibleEb	MenuManager::topSetVisible(bool)
 0x002e4695	0xe8	MenuManager.cpp	game	ui	pending	_ZN11MenuManager4drawEPK12StateMachine	MenuManager::draw(StateMachine const*)
-0x002e477d	0x118	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerC2Ev	MenuManager::MenuManager()
-0x002e477d	0x118	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerC1Ev	MenuManager::MenuManager()
+0x002e477d	0x118	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerC2Ev	MenuManager::MenuManager()
+0x002e477d	0x118	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerC1Ev	MenuManager::MenuManager()
 0x002e4895	0x54	MenuManager.cpp	game	ui	pending	_ZN11MenuManager11getInstanceEv	MenuManager::getInstance()
 0x002e48e9	0xc4	MenuManager.cpp	game	ui	matched	_Z12get_fontfilePKcbbPci	get_fontfile(char const*, bool, bool, char*, int)
 0x002e49ad	0x68	MenuManager.cpp	game	ui	matched	_ZN11MenuManager22updateWidgetVisibilityEv	MenuManager::updateWidgetVisibility()
