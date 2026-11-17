@@ -19,6 +19,7 @@
 #include "../combat/Weapon.h"
 #include "../combat/WeaponManager.h"
 #include "../hud/CHudManager.h"
+#include "../input/CControlManager.h"
 #include "NPC.h"
 #include "../characters/NPCVehicleEvent.h"
 #include "../vehicles/Vehicle.h"
@@ -334,6 +335,30 @@ void PlayerTest::ResetPlayerTest(bool)
     character->setCameraOffset(irr::core::vector3d<float>(0.0f, 1.0f, 0.0f));
     character->setAnimation(165, 1.0f, false, false, false);
     character->resetCollisions();
+}
+
+void PlayerTest::finishedStopDriving()
+{
+    CControlManager* controls = Application::GetInstance()->GetControlManager();
+    unknown324 = 0;
+    if (!ScriptManager::getInstance()->isInCinematic()) {
+        if (unknown372 == 16) {
+            Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+            CameraManager::getInstance()->enterMode(0, character, 0.0f, 1);
+        }
+        CameraManager::getInstance()->setTouchScreenInputs(true);
+    }
+
+    controls->exitCar(!(flags240 & 0x400u) && !ScriptManager::getInstance()->isInCinematic());
+    if (!ScriptManager::getInstance()->isInCinematic())
+        controls->unlock();
+
+    static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
+    if (vehicle && vehicle->immobilized)
+        vehicle->mobilize();
+    static_cast<SavePrimaryInterface*>(this)->setVehicle(0);
+    vehicleVisibleInCinematic = true;
+    unknown372 = 0;
 }
 
 void PlayerTest::setVehicle(Vehicle* value)

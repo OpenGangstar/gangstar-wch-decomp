@@ -32,6 +32,7 @@
         "_ZN10PlayerTest8SetSpeedEv",
         "_ZN10PlayerTest15ResetPlayerTestEb",
         "_ZN10PlayerTest10setVehicleEP7Vehicle",
+        "_ZN10PlayerTest19finishedStopDrivingEv",
         "_ZN10PlayerTest15UpdateSceneNodeEv",
         "_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle",
         "_ZN10PlayerTest4StopEv",
@@ -121,6 +122,10 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
+        "_ZN15CControlManager7exitCarEb",
+        "_ZN15CControlManager6unlockEv",
+        "_ZN7Vehicle8mobilizeEv",
         "_ZN17GameObjectManager19AddGameObjectOfTypeEi",
         "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
         "_ZN10PlayerTest14isFacingTargetEv",
