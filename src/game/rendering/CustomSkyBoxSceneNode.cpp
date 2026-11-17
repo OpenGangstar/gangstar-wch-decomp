@@ -11,6 +11,8 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "CustomSkyBoxSceneNode.h"
+#include "../core/VideoDriver.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -53,4 +55,77 @@ static void __tcf_2()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+int CustomSkyBoxSceneNode::getType() const
+{
+    return 's' | ('k' << 8) | ('y' << 16) | ('_' << 24);
+}
+
+const irr::core::aabbox3d<float>& CustomSkyBoxSceneNode::getBoundingBox() const
+{
+    return boundingBox;
+}
+
+irr::video::SMaterial& CustomSkyBoxSceneNode::getMaterial(unsigned int)
+{
+    return material;
+}
+
+unsigned int CustomSkyBoxSceneNode::getMaterialCount() const
+{
+    return 1;
+}
+
+void CustomSkyBoxSceneNode::OnRegisterSceneNode()
+{
+    if (visible)
+        sceneManager->registerNodeForRendering(this, 0, 0, irr::scene::RenderPass2);
+    ISceneNode::OnRegisterSceneNode();
+}
+
+irr::scene::ISceneNode* CustomSkyBoxSceneNode::clone(irr::scene::ISceneNode*, irr::scene::ISceneManager*)
+{
+    CustomSkyBoxSceneNode* copy = new CustomSkyBoxSceneNode(0, 0, id);
+    copy->cloneMembers(this);
+    copy->material = material;
+    copy->drop();
+    return copy;
+}
+
+class SkyBillboardInterface {
+public:
+    virtual void setSize(const irr::core::dimension2d<float>& size);
+};
+
+class SkyBillboard : public SkyBillboardInterface, public irr::scene::ISceneNode {};
+
+void CustomSkyBoxSceneNode::render(void*)
+{
+    using namespace irr;
+    video::IVideoDriver* driver = sceneManager->getVideoDriver();
+    scene::ICameraSceneNode* camera = sceneManager->getActiveCamera();
+    if (!camera || !driver)
+        return;
+
+    core::matrix4 world(absoluteTransformation, core::matrix4::EM4CONST_COPY);
+    world.setTranslation(camera->getAbsolutePosition());
+    driver->setTransform(video::ETS_WORLD, world);
+
+    core::vector3d<float> position = cameraAnchor->getPosition();
+    position.normalize();
+    position *= 1000.0f;
+    static_cast<scene::ISceneNode&>(*billboard).setPosition(position);
+    static_cast<scene::ISceneNode&>(*billboard).updateAbsolutePosition(false);
+    static_cast<scene::ISceneNode&>(*billboard).render(0);
+
+    driver->setTransform(video::ETS_WORLD, world);
+    driver->setMaterial(material);
+    driver->drawVertexPrimitiveList(vertices, indices, 0, 46, 28, video::EVT_STANDARD,
+                                    scene::EPT_TRIANGLES, video::EIT_16BIT, 0);
+    driver->flush();
+}
+
+CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+{
 }

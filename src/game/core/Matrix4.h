@@ -26,6 +26,7 @@ public:
         EM4CONST_TRANSPOSED, EM4CONST_INVERSE, EM4CONST_INVERSE_TRANSPOSED
     };
     CMatrix4(eConstructor constructor = EM4CONST_IDENTITY);
+    CMatrix4(const CMatrix4<T>&, eConstructor) __attribute__((weak));
     inline CMatrix4<T>& makeIdentity();
     const T& operator[](unsigned int index) const { return M[index]; }
     void transformBoxEx(aabbox3d<T>& box) const __attribute__((weak));

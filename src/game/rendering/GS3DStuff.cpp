@@ -15,6 +15,7 @@
 #include "../world/MapSingleton.h"
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "CustomBillboardSceneNode.h"
+#include "CustomSkyBoxSceneNode.h"
 #include "../core/NativeStdio.h"
 #include "../core/Lock.h"
 #include "../app/Application.h"
@@ -468,11 +469,6 @@ void GS3DStuff::AddRenderables(irr::scene::ISceneNode* node,
         AddRenderables(child->value, renderables, type);
     }
 }
-
-class CustomSkyBoxSceneNode : public irr::scene::ISceneNode {
-public:
-    void setSkyColor(bool enabled);
-};
 
 void GS3DStuff::setSkyColor(bool enabled)
 {

@@ -10203,25 +10203,25 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f83dd	0x14	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZTv0_n24_N24CustomBillboardSceneNodeD1Ev	virtual thunk to CustomBillboardSceneNode::~CustomBillboardSceneNode()
 0x002f83f0	0x14	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZThn100_N24CustomBillboardSceneNodeD1Ev	non-virtual thunk to CustomBillboardSceneNode::~CustomBillboardSceneNode()
 0x002f8405	0x74	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNodeD1Ev	CustomBillboardSceneNode::~CustomBillboardSceneNode()
-0x002f8479	0x8	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZNK21CustomSkyBoxSceneNode7getTypeEv	CustomSkyBoxSceneNode::getType() const
-0x002f8481	0x8	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZNK21CustomSkyBoxSceneNode14getBoundingBoxEv	CustomSkyBoxSceneNode::getBoundingBox() const
-0x002f8489	0x8	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNode11getMaterialEj	CustomSkyBoxSceneNode::getMaterial(unsigned int)
-0x002f8491	0x4	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZNK21CustomSkyBoxSceneNode16getMaterialCountEv	CustomSkyBoxSceneNode::getMaterialCount() const
-0x002f8495	0x32	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNode19OnRegisterSceneNodeEv	CustomSkyBoxSceneNode::OnRegisterSceneNode()
+0x002f8479	0x8	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZNK21CustomSkyBoxSceneNode7getTypeEv	CustomSkyBoxSceneNode::getType() const
+0x002f8481	0x8	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZNK21CustomSkyBoxSceneNode14getBoundingBoxEv	CustomSkyBoxSceneNode::getBoundingBox() const
+0x002f8489	0x8	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNode11getMaterialEj	CustomSkyBoxSceneNode::getMaterial(unsigned int)
+0x002f8491	0x4	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZNK21CustomSkyBoxSceneNode16getMaterialCountEv	CustomSkyBoxSceneNode::getMaterialCount() const
+0x002f8495	0x32	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNode19OnRegisterSceneNodeEv	CustomSkyBoxSceneNode::OnRegisterSceneNode()
 0x002f84c9	0x1018	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNode11setSkyColorEb	CustomSkyBoxSceneNode::setSkyColor(bool)
 0x002f94e1	0x6c	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002f954d	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_GLOBAL__I__ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	_GLOBAL__I__ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi
 0x002f9561	0x30	CustomSkyBoxSceneNode.cpp	game	rendering	matched	__tcf_2	__tcf_2
-0x002f9591	0x158	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNode6renderEPv	CustomSkyBoxSceneNode::render(void*)
+0x002f9591	0x158	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNode6renderEPv	CustomSkyBoxSceneNode::render(void*)
 0x002f96e9	0x1378	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int)
-0x002faa61	0x58	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNode5cloneEPN3irr5scene10ISceneNodeEPNS1_13ISceneManagerE	CustomSkyBoxSceneNode::clone(irr::scene::ISceneNode*, irr::scene::ISceneManager*)
+0x002faa61	0x58	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNode5cloneEPN3irr5scene10ISceneNodeEPNS1_13ISceneManagerE	CustomSkyBoxSceneNode::clone(irr::scene::ISceneNode*, irr::scene::ISceneManager*)
 0x002faab9	0x1348	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int)
-0x002fbe01	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZTv0_n12_N21CustomSkyBoxSceneNodeD0Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
-0x002fbe15	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZTv0_n24_N21CustomSkyBoxSceneNodeD0Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
-0x002fbe29	0x98	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNodeD0Ev	CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
-0x002fbec1	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZTv0_n12_N21CustomSkyBoxSceneNodeD1Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
-0x002fbed5	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZTv0_n24_N21CustomSkyBoxSceneNodeD1Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
-0x002fbee9	0x90	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNodeD1Ev	CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+0x002fbe01	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZTv0_n12_N21CustomSkyBoxSceneNodeD0Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+0x002fbe15	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZTv0_n24_N21CustomSkyBoxSceneNodeD0Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+0x002fbe29	0x98	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNodeD0Ev	CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+0x002fbec1	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZTv0_n12_N21CustomSkyBoxSceneNodeD1Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+0x002fbed5	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZTv0_n24_N21CustomSkyBoxSceneNodeD1Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
+0x002fbee9	0x90	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNodeD1Ev	CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
 0x002fbf79	0x24	Factions.cpp	game	meta	matched	_ZN8Factions4initEv	Factions::init()
 0x002fbf9d	0x18	Factions.cpp	game	meta	matched	_ZN8Factions19setFactionAsNeutralEi	Factions::setFactionAsNeutral(int)
 0x002fbfb5	0x18	Factions.cpp	game	meta	matched	_ZN8Factions20setFactionAsFriendlyEi	Factions::setFactionAsFriendly(int)

@@ -119,7 +119,7 @@ public:
     virtual void unknown115();
     virtual void unknown116();
     virtual void unknown117();
-    virtual void unknown118();
+    virtual void flush();
     virtual void unknown119();
     virtual void unknown120();
     virtual void unknown121();

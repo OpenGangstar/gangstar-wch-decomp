@@ -60,7 +60,7 @@ namespace scene {
 enum E_CULLING_TYPE { EAC_OFF = 0, EAC_BOX = 1, EAC_FRUSTUM_BOX = 2 };
 enum E_OPTION_FLAG { SceneOption1 = 1 };
 enum ESCENE_NODE_TYPE { ESNT_ANY = 0x5f796e61 };
-enum E_SCENE_NODE_RENDER_PASS { RenderPass6 = 6 };
+enum E_SCENE_NODE_RENDER_PASS { RenderPass2 = 2, RenderPass6 = 6 };
 class ITimelineController;
 class ISceneNodeAnimator;
 class ITriangleSelector;
@@ -75,6 +75,7 @@ struct SceneNodeList {
     Node* end() const { return 0; }
 };
 enum ESCENE_NODE_ANIMATION_FLAG { AnimationFlag0 = 0 };
+class ISceneManager;
 class ISceneNode : public virtual io::IAttributeExchangingObject {
 public:
     ISceneNode(int, const core::vector3d<float>&, const core::quaternion&, const core::vector3d<float>&);
@@ -154,7 +155,21 @@ public:
     void setMaterialTexture(unsigned int layer, video::ITexture* texture);
     ISceneNode* getParent() const;
 private:
-    unsigned char unknown4[324];
+    unsigned char unknown4[32];
+protected:
+    core::matrix4 absoluteTransformation;
+private:
+    unsigned char unknown104[172];
+protected:
+    void cloneMembers(ISceneNode* source);
+    int id;
+    ISceneManager* sceneManager;
+private:
+    unsigned char unknown284[16];
+protected:
+    int visible;
+private:
+    unsigned char unknown304[24];
 };
 class SViewFrustum {
 public:
