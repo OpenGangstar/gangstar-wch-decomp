@@ -54,3 +54,62 @@ static void __tcf_2()
         ::operator delete(value.array);
 }
 }
+
+#include "../core/SceneNode.h"
+
+class LODSceneNode : public irr::scene::ISceneNode {
+public:
+    virtual ~LODSceneNode();
+    virtual void OnAnimate(unsigned int time);
+    virtual void render(void* context);
+    virtual int getType() const;
+    virtual const irr::core::aabbox3d<float>& getBoundingBox() const;
+    const irr::core::aabbox3d<float>& GetMeshBoundingBox(const irr::scene::ISceneNode*) const;
+    int getLODLevel() const;
+    void ComputeLOD(unsigned int time);
+    void setMaxDistance(int distance);
+
+private:
+    struct LODEntry {
+        float distanceSquared;
+        irr::scene::ISceneNode* sceneNode;
+    };
+    LODEntry* levels;
+    unsigned char unknown332[16];
+    float maxDistanceSquared;
+    float animationTime;
+    int lodLevel;
+};
+
+void LODSceneNode::render(void*)
+{
+}
+
+int LODSceneNode::getLODLevel() const
+{
+    return lodLevel;
+}
+
+void LODSceneNode::ComputeLOD(unsigned int)
+{
+}
+
+void LODSceneNode::OnAnimate(unsigned int time)
+{
+    animationTime = static_cast<float>(time);
+}
+
+void LODSceneNode::setMaxDistance(int distance)
+{
+    maxDistanceSquared = static_cast<float>(distance * distance);
+}
+
+int LODSceneNode::getType() const
+{
+    return 'l' | ('o' << 8) | ('d' << 16) | ('n' << 24);
+}
+
+const irr::core::aabbox3d<float>& LODSceneNode::getBoundingBox() const
+{
+    return GetMeshBoundingBox(levels[lodLevel].sceneNode);
+}

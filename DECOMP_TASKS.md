@@ -260,7 +260,17 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002fbe15 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D0 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbec1 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbed5 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | camera_tap | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | lock_init | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | camera_tap | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | lock_init | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | vehicle_side | ASSIGNED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | vehicle_side | REVIEW | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002d2999 | LODSceneNode::render | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d299d | LODSceneNode::getLODLevel | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d29a5 | LODSceneNode::ComputeLOD | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d29a9 | LODSceneNode::OnAnimate | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d29c1 | LODSceneNode::setMaxDistance | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d29d9 | LODSceneNode::getType | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2b11 | LODSceneNode::getBoundingBox | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2f31 | LODSceneNode::getTransformedBoundingBox | lock_init | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2ac9 | LODSceneNode::GetMeshBoundingBox | camera_tap | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2e95 | LODSceneNode::OnRegisterSceneNode | vehicle_side | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
