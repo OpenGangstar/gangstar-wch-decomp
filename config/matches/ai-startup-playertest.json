@@ -25,6 +25,7 @@
     "source": "src/game/ai/PlayerTest.cpp",
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
+        "_ZN10PlayerTest14setClosestShopEP4Shop",
         "_ZN12EvNPCVehicleD0Ev",
         "_ZN12EvNPCVehicleD1Ev",
         "_ZN10PlayerTest9GetPlayerEv",
@@ -110,6 +111,7 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN4Shop7triggerEb",
         "_ZN7Message11isDisplayedEv",
         "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
