@@ -19,6 +19,7 @@
 #include "../hud/MenuManager.h"
 
 extern "C" {
+void _ZN11MenuManager10clearFocusEv(MenuManager* manager);
 void _ZN11MenuManager13setMenuFXTextEPKcS1_bb(MenuManager* manager, const char* name, const char* text, bool first, bool second);
 const char* _ZNK13StringManager9getStringEi(const StringManager* strings, int id);
 void _ZN8RenderFX7SetTextEPKcS1_b(RenderFX* fx, const char* name, const char* text, bool option);
@@ -290,6 +291,8 @@ void Widgets::IGMenu::SetBackButtonText(int id)
 
 static const char igMenuButtonFormat[] = "widgetIGMenu.groupBoutons.btnMenu%d";
 static const char igMenuBackText[] = "widgetIGMenu.btnBack.text";
+static const char igMenuTitleText[] = "widgetIGMenu.txtTitle.text";
+static const char igMenuButtonTextFormat[] = "widgetIGMenu.groupBoutons.btnMenu%d.text";
 extern const char activateAnimation[] __attribute__((visibility("hidden")));
 extern const char disabledAnimation[] __attribute__((visibility("hidden")));
 static const char igMenuSelected[] = "selected";
@@ -321,6 +324,28 @@ void Widgets::IGMenu::Disable()
     MenuManager* manager = MenuManager::getInstance();
     const char* text = _ZNK13StringManager9getStringEi(strings, backButtonTextId);
     _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuBackText, text, true, false);
+}
+
+void Widgets::IGMenu::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    MenuManager* manager = MenuManager::getInstance();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    const char* title = titleTextId == -1
+        ? localStartupEmptyText : _ZNK13StringManager9getStringEi(strings, titleTextId);
+    _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuTitleText, title, true, false);
+
+    char name[128];
+    for (int i = 0; i < 5; ++i) {
+        if (buttons[i].textId != -1) {
+            sprintf(name, igMenuButtonTextFormat, i);
+            const char* text = _ZNK13StringManager9getStringEi(strings, buttons[i].textId);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, name, text, true, false);
+        }
+    }
+    const char* backText = _ZNK13StringManager9getStringEi(strings, backButtonTextId);
+    _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuBackText, backText, true, false);
+    _ZN11MenuManager10clearFocusEv(manager);
 }
 
 void Widgets::IGMenu::SetActiveButton(eButton button, bool refresh)

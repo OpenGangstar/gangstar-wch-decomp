@@ -9964,7 +9964,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002edaf1	0x70	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5Money18UpdateLocalizationEv	Widgets::Money::UpdateLocalization()
 0x002edb61	0xbc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9MapLegend18UpdateLocalizationEv	Widgets::MapLegend::UpdateLocalization()
 0x002edc1d	0x60	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective18UpdateLocalizationEv	Widgets::Objective::UpdateLocalization()
-0x002edc7d	0xf0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu18UpdateLocalizationEv	Widgets::IGMenu::UpdateLocalization()
+0x002edc7d	0xf0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu18UpdateLocalizationEv	Widgets::IGMenu::UpdateLocalization()
 0x002edd6d	0xf0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu7OnEventERN8RenderFX5EventE	Widgets::IGMenu::OnEvent(RenderFX::Event&)
 0x002ede5d	0x64	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11Achievement18UpdateLocalizationEv	Widgets::Achievement::UpdateLocalization()
 0x002edec1	0xfc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Confirm18UpdateLocalizationEv	Widgets::Confirm::UpdateLocalization()
