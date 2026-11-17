@@ -705,6 +705,15 @@ void Widgets::Achievements::Reset()
     renderFX->GotoFrame(animation, 0, true);
 }
 
+void Widgets::Achievements::Show()
+{
+    MenuWidget::Show();
+    unknown20 = unknown140;
+    UpdateLocalization();
+    unknown20 = unknown140 ? (unknown20 + 1) % (unknown140 + 2) : 0;
+    renderFX->GotoFrame(animation, 0, true);
+}
+
 void Widgets::Statistics::Enable()
 {
     MenuWidget::Enable();

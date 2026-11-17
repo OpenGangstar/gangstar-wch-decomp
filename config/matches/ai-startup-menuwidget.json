@@ -27,6 +27,7 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets12Achievements4ShowEv",
         "_ZN7Widgets10Statistics6UpdateEb",
         "_ZN7Widgets12Achievements6UpdateEb",
         "_ZN7Widgets12Achievements5ResetEv",
@@ -154,6 +155,7 @@
         }
     ],
     "sections": [
+        ".widget_achievements_vtable",
         ".widget_statistics_name",
         ".widget_statistics_anim",
         ".widget_achievements_name",
