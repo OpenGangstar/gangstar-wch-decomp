@@ -12,6 +12,7 @@ public:
     virtual ~MenuFX();
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);
+    virtual bool CanHandleEvent(RenderFX::Event& event);
     State* GetCurrentState();
     State* GetStateHandler(gameswf::character* character);
     bool IsStateInStack(State* state);

@@ -29,6 +29,8 @@
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
         "_ZThn204_N6MenuFX7OnEventERN8RenderFX5EventE",
+        "_ZThn204_N6MenuFX14CanHandleEventERN8RenderFX5EventE",
+        "_ZN6MenuFX14CanHandleEventERN8RenderFX5EventE",
         "_ZN6MenuFX7OnEventERN8RenderFX5EventE",
         "_ZN6MenuFX11OnFSCommandEPKcS1_",
         "_ZThn204_N6MenuFX11OnFSCommandEPKcS1_",
