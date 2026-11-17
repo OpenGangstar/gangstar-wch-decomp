@@ -17,6 +17,13 @@ extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list argu
 void SwfFree(void* buffer);
 
 namespace gameswf {
+class cxform {
+public:
+    static cxform identity;
+
+    float channels[4][2];
+};
+
 class matrix {
 public:
     matrix();
@@ -81,12 +88,18 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
 }
 
 struct CharacterTransform {
-    unsigned char prefix[0xb4];
-    float alpha;
-    unsigned char beforeMatrix[0x28];
+    unsigned char prefix[0x9c];
+    gameswf::cxform color;
+    bool hasColor;
+    unsigned char beforeMatrix[0x23];
     gameswf::matrix placement;
     bool hasPlacement;
 };
+
+inline float finiteColor(float value)
+{
+    return value >= -__FLT_MAX__ && value <= __FLT_MAX__ ? value : 0.0f;
+}
 
 struct ColorFilterEntry {
     int type;
@@ -254,7 +267,7 @@ const char* RenderFX::GetText(const char* characterName)
 
 float RenderFX::GetAlpha(gameswf::character* character) const
 {
-    return character ? reinterpret_cast<const CharacterTransform*>(character)->alpha : 0.0f;
+    return character ? reinterpret_cast<const CharacterTransform*>(character)->color.channels[3][0] : 0.0f;
 }
 
 void RenderFX::SetPosition(gameswf::character* character, int x, int y)
@@ -287,6 +300,18 @@ void RenderFX::SetColorFilter(gameswf::character* character, int filter, unsigne
         entry.color[2] = color >> 16;
         entry.color[0] = color;
         entry.color[3] = color >> 24;
+    }
+}
+
+void RenderFX::SetAlpha(const char* characterName, float alpha)
+{
+    gameswf::character* character = Find(characterName);
+    if (character) {
+        gameswf::cxform color = gameswf::cxform::identity;
+        color.channels[3][0] = finiteColor(alpha);
+        CharacterTransform& transform = *reinterpret_cast<CharacterTransform*>(character);
+        transform.color = color;
+        transform.hasColor = true;
     }
 }
 

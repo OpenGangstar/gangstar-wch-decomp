@@ -41,6 +41,7 @@ public:
     int GetFrameCount(gameswf::character* character);
     const char* GetText(const char* characterName);
     const char* GetText(gameswf::character* character);
+    void SetAlpha(const char* characterName, float alpha);
     float GetAlpha(gameswf::character* character) const;
     void SetPosition(const char* characterName, int x, int y);
     void SetPosition(gameswf::character* character, int x, int y);
