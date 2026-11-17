@@ -11763,14 +11763,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334639	0x2	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera4initEP11LevelObjecti	FreeLookCamera::init(LevelObject*, int)
 0x0033463d	0x2	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera6updateEf	FreeLookCamera::update(float)
 0x00334641	0x2	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera5debugEPN3irr5video12IVideoDriverE	FreeLookCamera::debug(irr::video::IVideoDriver*)
-0x00334645	0x50	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera21updateHorizontalAngleEiif	FreeLookCamera::updateHorizontalAngle(int, int, float)
-0x00334695	0x4c	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera19updateVerticalAngleEiif	FreeLookCamera::updateVerticalAngle(int, int, float)
+0x00334645	0x50	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera21updateHorizontalAngleEiif	FreeLookCamera::updateHorizontalAngle(int, int, float)
+0x00334695	0x4c	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera19updateVerticalAngleEiif	FreeLookCamera::updateVerticalAngle(int, int, float)
 0x003346e1	0x30	FreeLookCamera.cpp	game	core	matched	__tcf_2	__tcf_2
 0x00334711	0x20	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCameraD2Ev	FreeLookCamera::~FreeLookCamera()
 0x00334711	0x20	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCameraD1Ev	FreeLookCamera::~FreeLookCamera()
 0x00334731	0x30	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCameraC1Ev	FreeLookCamera::FreeLookCamera()
 0x00334731	0x30	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCameraC2Ev	FreeLookCamera::FreeLookCamera()
-0x00334761	0x18	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE	FreeLookCamera::setPosition(irr::core::vector3d<float> const&)
+0x00334761	0x18	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE	FreeLookCamera::setPosition(irr::core::vector3d<float> const&)
 0x00334779	0x6c	FreeLookCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003347e5	0x14	FreeLookCamera.cpp	game	core	matched	_GLOBAL__I__ZN14FreeLookCameraC2Ev	_GLOBAL__I__ZN14FreeLookCameraC2Ev
 0x003347f9	0x234	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FreeLookCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)

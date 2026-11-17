@@ -11,6 +11,34 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Camera.h"
+
+class FreeLookCamera : public Camera {
+public:
+    void updateHorizontalAngle(int extent, int delta, float elapsed);
+    void updateVerticalAngle(int extent, int delta, float elapsed);
+    void setPosition(const irr::core::vector3d<float>& value);
+private:
+    float horizontalAngle;
+    float verticalAngle;
+};
+
+void FreeLookCamera::updateHorizontalAngle(int extent, int delta, float elapsed)
+{
+    horizontalAngle += (static_cast<float>(delta) * (static_cast<float>(extent) / 480.0f * 100.0f)) * elapsed;
+}
+
+void FreeLookCamera::updateVerticalAngle(int extent, int delta, float elapsed)
+{
+    verticalAngle = (static_cast<float>(delta) * (static_cast<float>(extent) / 320.0f * 100.0f)) * elapsed;
+}
+
+void FreeLookCamera::setPosition(const irr::core::vector3d<float>& value)
+{
+    position = value;
+    horizontalAngle = 0.0f;
+    verticalAngle = 0.0f;
+}
 
 void operator delete(void*) throw();
 extern "C" {
