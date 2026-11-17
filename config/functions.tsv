@@ -10415,7 +10415,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003016b5	0x7c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12switchWeaponEb	PlayerTest::switchWeapon(bool)
 0x00301730	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest9getWeaponEv	non-virtual thunk to PlayerTest::getWeapon() const
 0x00301745	0x12	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest9getWeaponEv	PlayerTest::getWeapon() const
-0x00301759	0x58	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12justStoleCarEP7Vehicle	PlayerTest::justStoleCar(Vehicle*)
+0x00301759	0x58	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12justStoleCarEP7Vehicle	PlayerTest::justStoleCar(Vehicle*)
 0x003017b1	0x3c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15onTargetReachedEv	PlayerTest::onTargetReached()
 0x003017ed	0x34	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12jumpFinishedEv	PlayerTest::jumpFinished()
 0x00301821	0x34	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13driftFinishedEv	PlayerTest::driftFinished()

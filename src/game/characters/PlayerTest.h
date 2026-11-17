@@ -106,6 +106,7 @@ public:
     void playCurAnimFromStart();
     void initMoveTo(const Vehicle* vehicle);
     void setClosestShop(Shop* shop);
+    void justStoleCar(Vehicle* car);
     void _SetTarget(LevelObject* target, bool changeCamera);
     void toggleLock();
     void onTargetCancelled();
