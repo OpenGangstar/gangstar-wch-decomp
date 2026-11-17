@@ -784,6 +784,23 @@ void Vehicle::immobilize()
 }
 
 
+void Vehicle::_cleanupSounds()
+{
+    if (driver == reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()))) {
+        savedRadioStation = SoundManager::getInstance()->radioStation;
+        SoundManager::getInstance()->stopRadio();
+        SoundManager::getInstance()->stop(123, -1, 0);
+        SoundManager::getInstance()->stop(106, -1, 0);
+        carSoundMode = 2;
+        UpdateCarSounds();
+    }
+
+    if (skidSoundPlaying) {
+        SoundManager::getInstance()->stop(119, -1, 0);
+        skidSoundPlaying = false;
+    }
+}
+
 void Vehicle::mobilize()
 {
     const bool skipBlockingCommands = ScriptManager::getInstance()->areBlockingCommandsSkipped();

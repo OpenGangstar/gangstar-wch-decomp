@@ -139,6 +139,7 @@ public:
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
+    void _cleanupSounds();
     void resetPreviousPos();
     void ResetBodyPosition();
     int getVelDirec();
@@ -216,7 +217,9 @@ private:
     unsigned char explosionFlag;
     unsigned char unknown422[2];
     int vehicleIndex;
-    unsigned char unknown428[64];
+    unsigned char unknown428[20];
+    int carSoundMode;
+    unsigned char unknown452[40];
     irr::core::vector3d<float> previousPosition;
     bool hasBeenStolen;
     unsigned char unknown505;
