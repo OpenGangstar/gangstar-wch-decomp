@@ -872,6 +872,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00349815 | ASprite::GetModule | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
-| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00325c79 | CSniperHud::hide | vehicle_side | ASSIGNED | pending | src/game/hud/SniperHud.cpp |
-| libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | lock_init | ASSIGNED | pending | src/game/core/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325c79 | CSniperHud::hide | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | lock_init | REVIEW | pending | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x00322dd5 | CCameraHud::hide | camera_tap | REVIEW | pending | src/game/hud/CCameraHud.cpp |
+| libsanangeles.so | 0x00325b25 | CSniperHud::show | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x002d3be9 | MediaPlayerIPhone::_trace | lock_init | REVIEW | pending | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x00322c5d | CCameraHud::show | camera_tap | ASSIGNED | pending | src/game/hud/CCameraHud.cpp |
+| libsanangeles.so | 0x00325809 | CWalkingHud::hide | vehicle_side | ASSIGNED | pending | src/game/hud/CWalkingHud.cpp |
+| libsanangeles.so | 0x003238f5 | CHudManager::unregUpdatableComponents | lock_init | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
