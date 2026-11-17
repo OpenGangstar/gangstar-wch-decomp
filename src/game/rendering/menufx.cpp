@@ -10,12 +10,26 @@
 
 #include "RenderFX.h"
 #include "CharacterVisibility.h"
+#include "../core/NativeStdio.h"
 
 extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list arguments);
 
 void SwfFree(void* buffer);
 
 namespace gameswf {
+class matrix {
+public:
+    matrix();
+    void concatenate_translation(float x, float y);
+    float get_x_scale() const;
+    float get_y_scale() const;
+    float get_rotation() const;
+    void set_scale_rotation(float xScale, float yScale, float rotation);
+
+private:
+    float elements[6];
+};
+
 class tu_string {
 public:
     // The retail call resolves the constructor through the GOT.
@@ -65,6 +79,26 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
 {
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
 }
+
+struct CharacterTransform {
+    unsigned char prefix[0xb4];
+    float alpha;
+    unsigned char beforeMatrix[0x28];
+    gameswf::matrix placement;
+    bool hasPlacement;
+};
+
+struct ColorFilterEntry {
+    int type;
+    unsigned char color[4];
+    unsigned char unknown8[36];
+};
+
+struct CharacterFilters {
+    unsigned char prefix[0x11c];
+    ColorFilterEntry* filters;
+    int count;
+};
 
 struct EditTextStorage {
     unsigned char prefix[0x180];
@@ -216,6 +250,44 @@ int RenderFX::GetFrameCount(const char* characterName)
 const char* RenderFX::GetText(const char* characterName)
 {
     return GetText(Find(characterName));
+}
+
+float RenderFX::GetAlpha(gameswf::character* character) const
+{
+    return character ? reinterpret_cast<const CharacterTransform*>(character)->alpha : 0.0f;
+}
+
+void RenderFX::SetPosition(gameswf::character* character, int x, int y)
+{
+    if (!character)
+        return;
+
+    CharacterTransform* transform = reinterpret_cast<CharacterTransform*>(character);
+    gameswf::matrix* original = &transform->placement;
+    gameswf::matrix placement;
+    placement.concatenate_translation(20.0f * x, 20.0f * y);
+    placement.set_scale_rotation(original->get_x_scale(), original->get_y_scale(),
+                                 original->get_rotation());
+    memcpy(original, &placement, sizeof(placement));
+    transform->hasPlacement = true;
+}
+
+void RenderFX::SetColorFilter(gameswf::character* character, int filter, unsigned int color)
+{
+    if (!character || filter < 0)
+        return;
+
+    CharacterFilters& filters = *reinterpret_cast<CharacterFilters*>(character);
+    if (filter >= filters.count)
+        return;
+
+    ColorFilterEntry& entry = filters.filters[filter];
+    if (entry.type == 0 || entry.type == 2) {
+        entry.color[1] = color >> 8;
+        entry.color[2] = color >> 16;
+        entry.color[0] = color;
+        entry.color[3] = color >> 24;
+    }
 }
 
 void RenderFX::SetPosition(const char* characterName, int x, int y)
