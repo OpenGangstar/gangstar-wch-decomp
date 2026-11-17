@@ -18,12 +18,19 @@
 #include "Rect.h"
 #include "SceneCamera.h"
 #include "Quaternion.h"
+#include "Lock.h"
 #include "../app/Application.h"
 #include "../characters/Character.h"
+#include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"
 #include "../hud/MenuManager.h"
 #include "../input/TouchScreenBase.h"
 #include "../scripting/ScriptManager.h"
+#include "../vehicles/Vehicle.h"
+
+extern "C" int __android_log_print(int priority, const char* tag, const char* format, ...);
+
+static const char touchReleaseLogText[] = "CameraManager::processTouchRelease()";
 
 CameraManager* CameraManager::s_cm;
 
@@ -213,14 +220,14 @@ void CameraManager::enterMode(int newMode, LevelObject* newTarget, float transit
 }
 
 CameraManager::CameraManager(float nearDistance, float farDistance, float fov, LevelObject* target)
-    : touch(0), mode(0), touchTarget(0)
+    : touch(0), mode(0), lastTapTime(0)
 {
     touchScreenInputs = false;
     used = false;
     flag154 = false;
     flag155 = false;
-    touchX = 0;
-    touchY = 0;
+    touchPoint.X = 0;
+    touchPoint.Y = 0;
     value164 = 0;
     value168 = 0;
     sceneCamera = 0;
@@ -268,8 +275,8 @@ void CameraManager::processTouch(long id)
             vehicleCamera->updateAngles(horizontal, vertical);
     }
     if (const Point2D<short>* point = screen->getTouchPoint(id)) {
-        touchX = point->x;
-        touchY = point->y;
+        touchPoint.X = point->x;
+        touchPoint.Y = point->y;
     }
     used = true;
 }
@@ -291,6 +298,59 @@ LevelObject* CameraManager::tappedTarget(const irr::core::position2d<int>& point
     if (result && result->isDead())
         result = 0;
     return result;
+}
+
+void CameraManager::processTouchRelease()
+{
+    __android_log_print(4, touchReleaseLogText, touchReleaseLogText);
+    if (!touchScreenInputs || MenuManager::getInstance()->consumedCursors() ||
+        ScriptManager::getInstance()->isInCinematic())
+        return;
+
+    if (touch) {
+        if (Application::GetInstance()->GetDevice()->getTimer()->getRealTime() - touch > 499 ||
+            value164 > 9 || value168 > 9) {
+            flag155 = true;
+            flag154 = false;
+        } else {
+            flag154 = false;
+            const unsigned int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+            if (now - lastTapTime <= 499) {
+                if (mode == 2) {
+                    Lock::getInstance()->setTarget(0);
+                    if (static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()) {
+                        const int direction =
+                            static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()->getVelDirec();
+                        if (!direction) {
+                            CameraManager::getInstance()->enterMode(
+                                2, static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle(),
+                                0.3f, direction);
+                        }
+                    }
+                } else {
+                    PlayerTest::GetPlayer()->_SetTarget(0, true);
+                }
+            } else {
+                LevelObject* hit = tappedTarget(touchPoint, currentCamera->getPosition());
+                if (mode == 2) {
+                    Lock::getInstance()->setTarget(hit);
+                } else if (target == reinterpret_cast<LevelObject*>(
+                               static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()))) {
+                    if (hit) {
+                        if (hit == PlayerTest::GetPlayer()->_GetTarget())
+                            PlayerTest::GetPlayer()->_SetTarget(0, true);
+                        else
+                            PlayerTest::GetPlayer()->_SetTarget(hit, true);
+                    } else if (PlayerTest::GetPlayer()->_GetTarget()) {
+                        PlayerTest::GetPlayer()->_SetTarget(0, true);
+                    }
+                }
+            }
+            lastTapTime = now;
+        }
+        touch = 0;
+    }
+    used = false;
 }
 
 CameraManager* CameraManager::getInstance()

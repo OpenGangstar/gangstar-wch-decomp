@@ -3,6 +3,7 @@
 
 #include "SceneNode.h"
 #include "Vector3.h"
+#include "Rect.h"
 
 // Recovered call interface; complete manager layout remains unknown.
 class LevelObject;
@@ -76,7 +77,7 @@ private:
     FollowCamera* followCamera;
     LockCamera* lockCamera;
     VehicleCamera* vehicleCamera;
-    LevelObject* touchTarget;
+    unsigned int lastTapTime;
     FPSCamera* fpsCamera;
     unsigned char unknown44[4];
     AnimatableType<irr::core::vector3d<float> > positionTransition;
@@ -85,8 +86,7 @@ private:
     bool used;
     bool flag154;
     bool flag155;
-    int touchX;
-    int touchY;
+    irr::core::position2d<int> touchPoint;
     int value164;
     int value168;
     SceneCamera* sceneCamera;

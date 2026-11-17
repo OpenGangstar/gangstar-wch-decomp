@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-cameramanager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__android_log_print = 0x001c4238;
 _Znwj = 0x001c4814;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fmul = 0x001c4724;
@@ -26,6 +27,8 @@ _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
+    .manager_touch_release 0x00333094 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager19processTouchReleaseEv) }
+    .manager_touch_release_log 0x00428fac : { *ai-startup-cameramanager.o(.rodata.touchReleaseLogText) }
     .manager_tapped_target 0x00332f94 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE) }
     .manager_process_touch 0x00332bf0 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager12processTouchEl) }
     .manager_vtable 0x004acc78 : { *ai-startup-cameramanager.o(.data.rel.ro._ZTV13CameraManager) }

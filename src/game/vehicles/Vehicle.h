@@ -148,6 +148,7 @@ private:
     friend class Race;
     friend class Character;
     friend class PlayerTest;
+    friend class CameraManager;
     friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
