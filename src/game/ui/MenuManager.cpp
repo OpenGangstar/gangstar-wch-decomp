@@ -545,6 +545,38 @@ inline MenuManager::OwnedBuffer::~OwnedBuffer()
         ::operator delete(data);
 }
 
+inline MenuManager::OwnedBuffer::OwnedBuffer()
+    : data(0), unknown4(0), unknown8(0), ownsData(true), unknown13(true)
+{
+}
+
+inline MenuManager::WidgetStorage::WidgetStorage() : elements(0), size(0), capacity(0)
+{
+}
+
+inline MenuManager::Entry::Entry()
+{
+    unknown4 = 0.0f;
+    unknown0 = 0.0f;
+    unknown8 = 0.0f;
+    unknown12 = 0;
+}
+
+MenuManager::MenuManager()
+    : unknown4(0), unknown8(0), unknown12(0), unknown16(0), unknown20(0), unknown24(0),
+      unknown40(0.5f), unknown44(0), unknown48(0), unknown52(0), unknown56(0),
+      mapMode(0), unknown64(0.01f), inGameMenu(0), tutorialId(-1), tutorialTextId(-1),
+      repairCost(0), unknown100(1), unknown184(0), menuFX(0), unknown192(0),
+      widgetVisibility(false), clearingFocus(false), charAutoLineFeed(17), asianFont(false),
+      animsEnabled(true), cheatsUnlocked(false), cheatsUnlockAllowed(false),
+      consumedCursorCount(0), unknown416(-1), unknown432(false)
+{
+    memset(unknown336, 0, sizeof(unknown336));
+    memset(textIds, -2, sizeof(textIds));
+    memset(texts, 0, sizeof(texts));
+    memset(unknown168, -1, sizeof(unknown168));
+}
+
 MenuManager::~MenuManager()
 {
 }
