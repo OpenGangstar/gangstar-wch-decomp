@@ -9848,7 +9848,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ec08d	0x28	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting8SetValueEPKc	Widgets::GameSetting::SetValue(char const*)
 0x002ec0b5	0x28	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting8SetTitleEPKc	Widgets::GameSetting::SetTitle(char const*)
 0x002ec0dd	0x38	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5Title18UpdateLocalizationEv	Widgets::Title::UpdateLocalization()
-0x002ec115	0x6c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib	Widgets::IGMenu::SetButtonInfo(Widgets::IGMenu::eButton, int, bool)
+0x002ec115	0x6c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib	Widgets::IGMenu::SetButtonInfo(Widgets::IGMenu::eButton, int, bool)
 0x002ec181	0x7c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb	Widgets::MainMenu::SetButtonInfo(Widgets::MainMenu::eButton, int, bool, bool)
 0x002ec1fd	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting12HideButtonOkEv	Widgets::GameSetting::HideButtonOk()
 0x002ec21d	0x54	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting13HideSelectionEv	Widgets::GameSetting::HideSelection()

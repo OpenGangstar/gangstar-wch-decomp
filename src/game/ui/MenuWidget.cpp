@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/NativeStdio.h"
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
@@ -153,6 +154,8 @@ class Script;
 namespace Widgets {
 class IGMenu : public MenuWidget {
 public:
+    enum eButton { First, Second, Third, Fourth, Fifth };
+    void SetButtonInfo(eButton button, int id, bool enabled);
     void SetTitleText(int id);
     void SetBackButtonText(int id);
 
@@ -248,6 +251,17 @@ void Widgets::IGMenu::SetTitleText(int id)
 void Widgets::IGMenu::SetBackButtonText(int id)
 {
     backButtonTextId = id;
+}
+
+static const char igMenuButtonFormat[] = "widgetIGMenu.groupBoutons.btnMenu%d";
+
+void Widgets::IGMenu::SetButtonInfo(eButton button, int id, bool enabled)
+{
+    buttons[button].textId = id;
+    buttons[button].enabled = enabled;
+    char name[64];
+    sprintf(name, igMenuButtonFormat, button);
+    renderFX->SetEnabled(name, enabled);
 }
 
 int Widgets::Volumes::s_playlist = -2;

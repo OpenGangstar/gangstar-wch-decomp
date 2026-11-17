@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -26,6 +27,7 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib",
         "_ZN7Widgets6IGMenu12SetTitleTextEi",
         "_ZN7Widgets6IGMenu17SetBackButtonTextEi",
         "_ZN7Widgets7Volumes11SetPlaylistEi",
@@ -91,6 +93,7 @@
         }
     ],
     "sections": [
+        ".widget_ig_menu_button_format",
         ".widget_volumes_playlist",
         ".widget_title_icon",
         ".widget_mission_name",

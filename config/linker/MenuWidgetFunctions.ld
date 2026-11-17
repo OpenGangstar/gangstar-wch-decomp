@@ -1,5 +1,7 @@
 SECTIONS
 {
+    .widget_ig_menu_button_info 0x002ec114 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib) }
+    .widget_ig_menu_button_format 0x0041a6f8 : { *ai-startup-menuwidget.o(.rodata.igMenuButtonFormat) }
     .widget_ig_menu_title_text 0x002ebe8c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu12SetTitleTextEi) }
     .widget_ig_menu_back_button_text 0x002ebe90 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu17SetBackButtonTextEi) }
     .widget_volumes_set_playlist 0x002ebf10 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes11SetPlaylistEi) }
