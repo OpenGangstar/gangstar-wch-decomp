@@ -28,6 +28,7 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX6UnloadEv",
         "_ZN8RenderFXC1Ev",
         "_ZN8RenderFXC2Ev",
         "_ZN8RenderFX10Controller5ResetEv",
