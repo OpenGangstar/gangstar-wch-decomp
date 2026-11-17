@@ -2,10 +2,21 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-trail/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_Znaj = 0x001c3ff8;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fmul = 0x001c4724;
+__aeabi_f2iz = 0x001c44cc;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
     .trail_last_added_point 0x003484e4 : { *sdk-startup-trail.o(.text._ZN5Trail17SetLastAddedPointEN3irr4core8vector3dIfEE) }
+    .trail_segment_width 0x00348488 : { *sdk-startup-trail.o(.text._ZN5Trail15SetSegmentWidthEf) }
+    .trail_render 0x0034848c : { *sdk-startup-trail.o(.text._ZN5Trail6RenderEv) }
+    .trail_modify_life 0x00348490 : { *sdk-startup-trail.o(.text._ZN5Trail10ModifyLifeEf) }
+    .trail_delete 0x0034854c : { *sdk-startup-trail.o(.text._ZN5TrailD0Ev) }
+    .trail_dtor 0x00348574 : { *sdk-startup-trail.o(.text._ZN5TrailD1Ev .text._ZN5TrailD2Ev) }
+    .trail_init 0x00348ef0 : { *sdk-startup-trail.o(.text._ZN5Trail4InitEiiiff) }
+    .trail_vtable 0x004ad288 : { *sdk-startup-trail.o(.data.rel.ro._ZTV5Trail) }
     .sdk_startup_function_0 0x00348f64 : { *sdk-startup-trail.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00348c7c : { *sdk-startup-trail.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00348ce8 : { *sdk-startup-trail.o(.text._GLOBAL__I__ZN5TrailC2Ev) }
