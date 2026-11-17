@@ -12,7 +12,10 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
+#include "../core/Quaternion.h"
 #include "Vehicle.h"
+
+extern "C" float acosf(float);
 
 void VehicleCamera::debug(irr::video::IVideoDriver*)
 {
@@ -127,4 +130,21 @@ static void _GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void VehicleCamera::updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
+    float distance, irr::core::vector3d<float>& yawAxis,
+    irr::core::vector3d<float>&, float, float)
+{
+    irr::core::vector3d<float> direction = position - pivot;
+    direction.normalize();
+    acosf(direction.dotProduct(yawAxis));
+
+    irr::core::quaternion rotation;
+    rotation.fromAngleAxis(elapsed * yawRate, yawAxis);
+    rotation.normalize();
+    yawRate = 0.0f;
+    direction = position - pivot;
+    direction.normalize();
+    position = (rotation * direction) * distance + pivot;
 }

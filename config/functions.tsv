@@ -11811,7 +11811,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraC1EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)
 0x003354b5	0x144	VehicleCamera.cpp	game	vehicles	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003355f9	0x14	VehicleCamera.cpp	game	vehicles	matched	_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject	_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject
-0x0033560d	0x15c	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	VehicleCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
+0x0033560d	0x15c	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	VehicleCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
 0x00335769	0xdc	VehicleCamera.cpp	game	vehicles	pending	_ZNK13VehicleCamera9getFacingEv	VehicleCamera::getFacing() const
 0x00335849	0x3c8	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera6updateEf	VehicleCamera::update(float)
 0x00335c11	0x6	Mission.cpp	game	missions	matched	_ZN7Mission14setTextToPrintEi	Mission::setTextToPrint(int)

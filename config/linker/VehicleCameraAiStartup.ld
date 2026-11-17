@@ -7,6 +7,8 @@ __aeabi_i2f = 0x001c41e4;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
+acosf = 0x001c4694;
 __aeabi_atexit = 0x001c494c;
 _ZN32retail_vehiclecamera_transitions16civPassive_transE = 0x0042a144;
 _ZN32retail_vehiclecamera_transitions17scriptedNpc_transE = 0x0042a270;
@@ -21,6 +23,7 @@ _ZN32retail_vehiclecamera_transitions22scripted_vehicle_transE = 0x0042a6c0;
 SECTIONS
 {
     .vehicle_camera_init 0x0033530c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera4initEP11LevelObjecti) }
+    .vehicle_camera_position 0x0033560c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }
     .vehicle_camera_vtable 0x004acde0 : { *ai-startup-vehiclecamera.o(.data.rel.ro._ZTV13VehicleCamera) }
     .vehicle_camera_enter 0x003351a0 : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera5enterEv) }
     .camera_variant_ctor 0x0033546c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCameraC1EP11LevelObject .text._ZN13VehicleCameraC2EP11LevelObject) }
