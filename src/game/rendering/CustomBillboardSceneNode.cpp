@@ -70,6 +70,20 @@ void CustomBillboardSceneNode::setParent(irr::scene::ISceneNode* parent)
     }
 }
 
+void CustomBillboardSceneNode::setLength(unsigned int length)
+{
+    const irr::scene::SceneAnimatorList& animators = getAnimators();
+    if (animators.getSize()) {
+        irr::scene::ITimelineController* controller = (*animators.begin())->getTimelineCtrl();
+        if (controller) {
+            controller->setLoop(animationLoops);
+            animationLength = controller->getCurrentClipLength();
+            return;
+        }
+    }
+    animationLength = length;
+}
+
 void CustomBillboardSceneNode::setChildrenMaterialType(
     irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type)
 {

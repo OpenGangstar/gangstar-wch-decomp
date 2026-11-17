@@ -10182,7 +10182,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f79e5	0x3a	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE	CustomBillboardSceneNode::setParent(irr::scene::ISceneNode*)
 0x002f7a21	0x2	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode6renderEv	CustomBillboardSceneNode::render()
 0x002f7a25	0x30	CustomBillboardSceneNode.cpp	game	rendering	matched	__tcf_2	__tcf_2
-0x002f7a55	0x48	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode9setLengthEj	CustomBillboardSceneNode::setLength(unsigned int)
+0x002f7a55	0x48	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode9setLengthEj	CustomBillboardSceneNode::setLength(unsigned int)
 0x002f7a9d	0xa0	CustomBillboardSceneNode.cpp	irrlicht	-	matched	_ZN3irr7collada14CRootSceneNodeC2ERKNS0_16CColladaDatabaseE	irr::collada::CRootSceneNode::CRootSceneNode(irr::collada::CColladaDatabase const&)
 0x002f7b3d	0xb4	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	CustomBillboardSceneNode::CustomBillboardSceneNode(irr::collada::CColladaDatabase const&, irr::collada::SNode*)
 0x002f7bf1	0x80	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	CustomBillboardSceneNode::CustomBillboardSceneNode(irr::collada::CColladaDatabase const&, irr::collada::SNode*)

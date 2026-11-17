@@ -7,6 +7,7 @@ SECTIONS
 {
     .billboard_set_parent 0x002f79e4 : { *(.text._ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE) }
     .sdk_startup_function_0 0x002f7a24 : { *sdk-startup-custombillboardscenenode.o(.text.__tcf_2) }
+    .billboard_set_length 0x002f7a54 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode9setLengthEj) }
     .billboard_material_type 0x002f7c70 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE) }
     .billboard_material_flag 0x002f7ca8 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb) }
     .sdk_startup_function_1 0x002f7dd0 : { *sdk-startup-custombillboardscenenode.o(.text._Z41__static_initialization_and_destruction_0ii) }
