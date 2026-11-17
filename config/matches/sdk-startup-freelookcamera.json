@@ -23,8 +23,16 @@
         "-meabi=4"
     ],
     "source": "src/game/core/FreeLookCamera.cpp",
+    "dependencies": ["string-startup-camera"],
     "linker_script": "config/linker/FreeLookCameraSdkStartup.ld",
     "functions": [
+        "_ZN14FreeLookCamera4initEP11LevelObjecti",
+        "_ZN14FreeLookCamera6updateEf",
+        "_ZN14FreeLookCamera5debugEPN3irr5video12IVideoDriverE",
+        "_ZN14FreeLookCameraC1Ev",
+        "_ZN14FreeLookCameraC2Ev",
+        "_ZN14FreeLookCameraD1Ev",
+        "_ZN14FreeLookCameraD2Ev",
         "_ZN14FreeLookCamera21updateHorizontalAngleEiif",
         "_ZN14FreeLookCamera19updateVerticalAngleEiif",
         "_ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE",
@@ -42,6 +50,7 @@
         }
     ],
     "sections": [
+        ".free_look_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
