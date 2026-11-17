@@ -63,6 +63,12 @@ public:
     virtual void OnAnimate(unsigned int time);
     virtual void render(void* context);
     virtual int getType() const;
+    virtual void OnRegisterSceneNode();
+    virtual const irr::core::aabbox3d<float>& getTransformedBoundingBox() const;
+    const irr::core::aabbox3d<float>& GetMeshTransformedBoundingBox(const irr::scene::ISceneNode*) const;
+    void computeLODLevel();
+    void setLODNodesRotation(const irr::core::quaternion& rotation);
+    void setLODNodesPosition(const irr::core::vector3d<float>& position);
     virtual const irr::core::aabbox3d<float>& getBoundingBox() const;
     const irr::core::aabbox3d<float>& GetMeshBoundingBox(const irr::scene::ISceneNode*) const;
     int getLODLevel() const;
@@ -70,12 +76,21 @@ public:
     void setMaxDistance(int distance);
 
 private:
+    template<class T, void (irr::scene::ISceneNode::*SetTransform)(const T&)>
+    inline __attribute__((always_inline)) void setLODNodesTransform(const T& transform)
+    {
+        for (int index = 0; static_cast<unsigned int>(index) < levelCount; ++index)
+            (levels[index].sceneNode->*SetTransform)(transform);
+    }
+
     struct LODEntry {
         float distanceSquared;
         irr::scene::ISceneNode* sceneNode;
     };
     LODEntry* levels;
-    unsigned char unknown332[16];
+    unsigned char unknown332[4];
+    unsigned int levelCount;
+    unsigned char unknown340[8];
     float maxDistanceSquared;
     float animationTime;
     int lodLevel;
@@ -112,4 +127,39 @@ int LODSceneNode::getType() const
 const irr::core::aabbox3d<float>& LODSceneNode::getBoundingBox() const
 {
     return GetMeshBoundingBox(levels[lodLevel].sceneNode);
+}
+
+void LODSceneNode::OnRegisterSceneNode()
+{
+    if (visible) {
+        computeLODLevel();
+        if (getLODLevel() != -1)
+            levels[lodLevel].sceneNode->OnAnimate(static_cast<unsigned int>(animationTime));
+    }
+}
+
+const irr::core::aabbox3d<float>& LODSceneNode::GetMeshBoundingBox(
+    const irr::scene::ISceneNode* node) const
+{
+    const int colladaMeshNode = 0x6d656164;
+    const int colladaSkinnedNode = 0x73656164;
+    if (node->getType() == colladaMeshNode || node->getType() == colladaSkinnedNode)
+        return node->getBoundingBox();
+
+    return GetMeshBoundingBox(node->getChildren().begin()->value);
+}
+
+const irr::core::aabbox3d<float>& LODSceneNode::getTransformedBoundingBox() const
+{
+    return GetMeshTransformedBoundingBox(levels[lodLevel].sceneNode);
+}
+
+void LODSceneNode::setLODNodesPosition(const irr::core::vector3d<float>& position)
+{
+    setLODNodesTransform<irr::core::vector3d<float>, &irr::scene::ISceneNode::setPosition>(position);
+}
+
+void LODSceneNode::setLODNodesRotation(const irr::core::quaternion& rotation)
+{
+    setLODNodesTransform<irr::core::quaternion, &irr::scene::ISceneNode::setRotation>(rotation);
 }

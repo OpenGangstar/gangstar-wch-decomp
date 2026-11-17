@@ -8724,18 +8724,18 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d29d9	0x8	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode7getTypeEv	LODSceneNode::getType() const
 0x002d29e1	0x80	LODSceneNode.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIN12LODSceneNode9SLODLevelENS0_12irrAllocatorIS3_EEE10reallocateEj	irr::core::array<LODSceneNode::SLODLevel, irr::core::irrAllocator<LODSceneNode::SLODLevel> >::reallocate(unsigned int)
 0x002d2a61	0x68	LODSceneNode.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIN12LODSceneNode9SLODLevelENS0_12irrAllocatorIS3_EEE6insertERKS3_j	irr::core::array<LODSceneNode::SLODLevel, irr::core::irrAllocator<LODSceneNode::SLODLevel> >::insert(LODSceneNode::SLODLevel const&, unsigned int)
-0x002d2ac9	0x48	LODSceneNode.cpp	game	rendering	pending	_ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshBoundingBox(irr::scene::ISceneNode const*) const
+0x002d2ac9	0x48	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshBoundingBox(irr::scene::ISceneNode const*) const
 0x002d2b11	0x1e	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode14getBoundingBoxEv	LODSceneNode::getBoundingBox() const
 0x002d2b31	0x7c	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_	LODSceneNode::LODSceneNode(int, irr::core::vector3d<float> const&, irr::core::quaternion const&, irr::core::vector3d<float> const&)
-0x002d2bad	0x3a	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode19setLODNodesRotationERKN3irr4core10quaternionE	LODSceneNode::setLODNodesRotation(irr::core::quaternion const&)
-0x002d2be9	0x3a	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode19setLODNodesPositionERKN3irr4core8vector3dIfEE	LODSceneNode::setLODNodesPosition(irr::core::vector3d<float> const&)
+0x002d2bad	0x3a	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode19setLODNodesRotationERKN3irr4core10quaternionE	LODSceneNode::setLODNodesRotation(irr::core::quaternion const&)
+0x002d2be9	0x3a	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode19setLODNodesPositionERKN3irr4core8vector3dIfEE	LODSceneNode::setLODNodesPosition(irr::core::vector3d<float> const&)
 0x002d2c25	0x3a	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode15removeAnimatorsEv	LODSceneNode::removeAnimators()
 0x002d2c61	0x38	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode11addAnimatorEPN3irr5scene18ISceneNodeAnimatorE	LODSceneNode::addAnimator(irr::scene::ISceneNodeAnimator*)
 0x002d2c99	0xc8	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf	LODSceneNode::addLOD(irr::scene::ISceneNode*, float)
 0x002d2d61	0x132	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode15computeLODLevelEv	LODSceneNode::computeLODLevel()
-0x002d2e95	0x46	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode19OnRegisterSceneNodeEv	LODSceneNode::OnRegisterSceneNode()
+0x002d2e95	0x46	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode19OnRegisterSceneNodeEv	LODSceneNode::OnRegisterSceneNode()
 0x002d2edd	0x54	LODSceneNode.cpp	game	rendering	pending	_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshTransformedBoundingBox(irr::scene::ISceneNode const*) const
-0x002d2f31	0x1e	LODSceneNode.cpp	game	rendering	pending	_ZNK12LODSceneNode25getTransformedBoundingBoxEv	LODSceneNode::getTransformedBoundingBox() const
+0x002d2f31	0x1e	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode25getTransformedBoundingBoxEv	LODSceneNode::getTransformedBoundingBox() const
 0x002d2f51	0xd0	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNodeC1EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_	LODSceneNode::LODSceneNode(int, irr::core::vector3d<float> const&, irr::core::quaternion const&, irr::core::vector3d<float> const&)
 0x002d3021	0x6c	LODSceneNode.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002d308d	0x14	LODSceneNode.cpp	game	rendering	matched	_GLOBAL__I__ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_	_GLOBAL__I__ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_
