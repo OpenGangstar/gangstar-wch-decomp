@@ -24,7 +24,11 @@
     ],
     "source": "src/game/vehicles/VehicleCamera.cpp",
     "linker_script": "config/linker/VehicleCameraAiStartup.ld",
+    "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE",
+        "_ZN13VehicleCameraD1Ev",
+        "_ZN13VehicleCameraD2Ev",
         {
             "name": "__tcf_3",
             "address": "0x00335171"

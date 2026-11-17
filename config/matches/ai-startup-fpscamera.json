@@ -24,7 +24,11 @@
     ],
     "source": "src/game/core/FPSCamera.cpp",
     "linker_script": "config/linker/FPSCameraAiStartup.ld",
+    "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE",
+        "_ZN9FPSCameraD1Ev",
+        "_ZN9FPSCameraD2Ev",
         {
             "name": "__tcf_3",
             "address": "0x00333e11"

@@ -11,6 +11,15 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/CameraVariants.h"
+
+void FPSCamera::debug(irr::video::IVideoDriver*)
+{
+}
+
+FPSCamera::~FPSCamera()
+{
+}
 
 void operator delete(void*) throw();
 extern "C" {

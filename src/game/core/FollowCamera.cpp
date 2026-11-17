@@ -11,6 +11,17 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/CameraVariants.h"
+#include "../characters/PhysicAttributes.h"
+
+void FollowCamera::debug(irr::video::IVideoDriver*)
+{
+}
+
+FollowCamera::~FollowCamera()
+{
+    delete physics;
+}
 
 void operator delete(void*) throw();
 extern "C" {
