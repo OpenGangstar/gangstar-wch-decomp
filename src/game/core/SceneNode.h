@@ -161,8 +161,8 @@ public:
     virtual void unknown69(); virtual void unknown70(); virtual void unknown71();
     virtual void unknown72(); virtual void unknown73(); virtual void unknown74();
     virtual void unknown75(); virtual void unknown76(); virtual void unknown77();
-    virtual void unknown78(); virtual void unknown79(); virtual void unknown80();
-    virtual void unknown81(); virtual void unknown82(); virtual void unknown83();
+    virtual void unknown78(); virtual float getFOV() const; virtual void unknown80();
+    virtual void unknown81(); virtual void unknown82(); virtual void setFOV(float);
     virtual const SViewFrustum* getViewFrustum() const;
 };
 class ITimelineController : public virtual IReferenceCounted {

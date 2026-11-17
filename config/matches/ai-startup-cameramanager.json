@@ -25,6 +25,16 @@
     "source": "src/game/core/CameraManager.cpp",
     "linker_script": "config/linker/CameraManagerAiStartup.ld",
     "functions": [
+        "_ZN13CameraManager6setFOVEi",
+        "_ZN13CameraManager6getFOVEv",
+        "_ZNK13CameraManager9getCameraEv",
+        "_ZN13CameraManager5debugEPN3irr5video12IVideoDriverE",
+        "_ZN13CameraManager14setSceneCameraEP11SceneCamera",
+        "_ZN13CameraManager20setTouchScreenInputsEb",
+        "_ZNK13CameraManager6isUsedEv",
+        "_ZNK13CameraManager11getPositionEv",
+        "_ZNK13CameraManager9getLookAtEv",
+        "_ZN13CameraManager11getInstanceEv",
         {
             "name": "__tcf_3",
             "address": "0x00331fc1"
@@ -48,5 +58,10 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZNK6Camera11getPositionEv",
+        "_ZNK6Camera9getLookAtEv",
+        "_ZN13CameraManagerC1EfffP11LevelObject"
+    ]
 }
