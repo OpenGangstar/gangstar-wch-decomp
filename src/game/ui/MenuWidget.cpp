@@ -173,7 +173,7 @@ struct MenuButtonInfo {
 
 class IGMenu : public MenuWidget {
 public:
-    enum eButton { Invalid = -1, First, Second, Third, Fourth, Fifth };
+    enum eButton { Invalid = -1, First, Second, Third, Fourth, Fifth, ButtonForceWidth = 0x7fffffff };
     IGMenu();
     virtual void Show();
     virtual void Disable();
@@ -1602,4 +1602,191 @@ void Widgets::MapLegend::UpdateLocalization()
         }
     }
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mapLegendButtonText, _ZNK13StringManager9getStringEi(strings, 0x1052), true);
+}
+
+static const char corruptButtonName[] = "btnCorrupt";
+
+void Widgets::Corruption::OnEvent(RenderFX::Event& event)
+{
+    if (event.type != 6 || strcmp(event.characterName, corruptButtonName) != 0)
+        return;
+
+    if (listener)
+        listener->Notify(this, 1);
+    event.consumed = true;
+}
+
+extern "C" void _ZN11MenuManager3popEb(MenuManager*, bool);
+static const char demoBuyConfirmButtonName[] = "btnBuy";
+static const char menuBackButtonName[] = "btnBack";
+
+void Widgets::DemoBuy::OnEvent(RenderFX::Event& event)
+{
+    const char* name = event.characterName;
+    if (event.type == 6) {
+        if (strcmp(name, demoBuyConfirmButtonName) == 0)
+            event.consumed = true;
+        else if (strcmp(name, menuBackButtonName) == 0)
+            _ZN11MenuManager3popEb(MenuManager::getInstance(), true);
+    }
+}
+
+static const char demoBuyConfirmText[] = "widgetBuy.btnBuy.text";
+static const char demoBuyBackText[] = "widgetBuy.btnBack.text";
+static const char demoBuyDescription0[] = "widgetBuy.groupTxt.txtBuy0";
+static const char demoBuyDescription1[] = "widgetBuy.groupTxt.txtBuy1";
+
+void Widgets::DemoBuy::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyConfirmText, _ZNK13StringManager9getStringEi(strings, 0x1080), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyBackText, _ZNK13StringManager9getStringEi(strings, 0x1027), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyDescription0, _ZNK13StringManager9getStringEi(strings, 0x1081), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, demoBuyDescription1, _ZNK13StringManager9getStringEi(strings, 0x1082), true);
+}
+
+static const char tutorialOkButton[] = "btnOk";
+
+void Widgets::BlockingTutorial::OnEvent(RenderFX::Event& event)
+{
+    Tutorial::OnEvent(event);
+    if (event.consumed || event.type != 6 || strcmp(event.characterName, tutorialOkButton) != 0)
+        return;
+
+    if (listener)
+        listener->Notify(this, 1);
+    event.consumed = true;
+}
+
+static const char tutorialCloseButtonLabel[] = "btnClose";
+static const char tutorialScrollButtonLabel[] = "btnScroll";
+static const char tutorialPartFormat[] = "%s%s";
+static const char tutorialScrollPart[] = ".group.btnScroll";
+static const char tutorialArrowUpPart[] = ".group.arrowUp";
+static const char tutorialArrowDownPart[] = ".group.arrowDown";
+
+namespace {
+struct TutorialCharacterName {
+    unsigned char unknown0[136];
+    unsigned char inlineName[12];
+    const char* heapName;
+
+    const char* c_str() const
+    {
+        return inlineName[0] == 255 ? heapName : reinterpret_cast<const char*>(inlineName + 1);
+    }
+};
+
+inline const char* tutorialCharacterName(const gameswf::character* character)
+{
+    return reinterpret_cast<const TutorialCharacterName*>(character)->c_str();
+}
+}
+
+void Widgets::Tutorial::OnEvent(RenderFX::Event& event)
+{
+    switch (event.type) {
+    case 1:
+        if (unknown20 != -1 && strstr(event.characterName, widgetButtonPrefix) == event.characterName) {
+            unknown20 = -1;
+            cursorPressed = false;
+            MenuManager::getInstance()->consumeCursor();
+        }
+        event.consumed = true;
+        break;
+    case 4:
+        cursorPressed = true;
+        MenuManager::getInstance()->consumeCursor();
+        event.consumed = true;
+        break;
+    case 5:
+        if (unknown36 > 75 && cursorPressed && strcmp(tutorialScrollButtonLabel, event.characterName) == 0) {
+            const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+            const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+            const gameswf::point input(coordinates.x, coordinates.y);
+            gameswf::point point;
+            matrix.transform(&point, input);
+
+            if (unknown20 == -1) {
+                unknown20 = static_cast<int>(point.y / 20.0f);
+                unknown28 = unknown24;
+            }
+            unknown24 = unknown28 + static_cast<int>(unknown20 + point.y / -20.0f) / 3;
+            if (unknown24 < 0)
+                unknown24 = 0;
+            if (unknown24 > 24)
+                unknown24 = 24;
+
+            char name[64];
+            sprintf(name, tutorialPartFormat, tutorialCharacterName(character), tutorialScrollPart);
+            renderFX->GotoFrame(name, unknown24, false);
+            sprintf(name, tutorialPartFormat, tutorialCharacterName(character), tutorialArrowUpPart);
+            renderFX->SetVisible(name, unknown24 > 0);
+            sprintf(name, tutorialPartFormat, tutorialCharacterName(character), tutorialArrowDownPart);
+            renderFX->SetVisible(name, unknown24 < 24);
+            MenuManager::getInstance()->consumeCursor();
+        }
+        event.consumed = true;
+        break;
+    case 6:
+        if (strcmp(tutorialCloseButtonLabel, event.characterName) != 0) {
+            unknown20 = -1;
+            cursorPressed = false;
+            MenuManager::getInstance()->consumeCursor();
+            break;
+        }
+        if (listener)
+            listener->Notify(this, 1);
+        event.consumed = true;
+        break;
+    }
+}
+
+static const char igMenuButtonName[] = "btnMenu";
+
+void Widgets::IGMenu::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    MenuManager::getInstance();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+
+    switch (event.type) {
+    case 0:
+    case 1: {
+        const char* name = event.characterName;
+        if (strstr(name, igMenuButtonName)) {
+            if (activeButton == name[7] - '0')
+                SetActiveButton(static_cast<eButton>(activeButton), true);
+            event.consumed = true;
+        } else if (strcmp(name, menuBackButtonName) == 0) {
+            MenuManager* manager = MenuManager::getInstance();
+            const char* text = _ZNK13StringManager9getStringEi(strings, backButtonTextId);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuBackText, text, true, false);
+        }
+        break;
+    }
+    case 6: {
+        const char* name = event.characterName;
+        if (strcmp(name, menuBackButtonName) == 0) {
+            if (listener)
+                listener->Notify(this, 1);
+            event.consumed = true;
+        } else if (strstr(name, igMenuButtonName)) {
+            const int current = activeButton;
+            const int button = name[7] - '0';
+            if (current != button) {
+                pressedButton = button;
+                if (listener)
+                    listener->Notify(this, 2);
+            } else {
+                SetActiveButton(static_cast<eButton>(current), true);
+            }
+            event.consumed = true;
+        }
+        break;
+    }
+    default:
+        break;
+    }
 }

@@ -31,6 +31,7 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .menu_manager_consume_cursor 0x002e3f20 : { *menu-manager-helpers.o(.text._ZN11MenuManager13consumeCursorEv) }
     .tutorial_notify 0x002ea33c : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial6NotifyEPK10MenuWidgeti) }
     .blocking_tutorial_notify 0x002ea3b8 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial6NotifyEPK10MenuWidgeti) }
     .option_volumes_lost_focus 0x002e8c94 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumes9LostFocusEv) }

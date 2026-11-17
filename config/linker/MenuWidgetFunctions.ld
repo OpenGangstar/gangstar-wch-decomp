@@ -8,6 +8,29 @@ PROVIDE(__aeabi_f2iz = 0x001c44cc);
 PROVIDE(__aeabi_idiv = 0x001c43dc);
 SECTIONS
 {
+    .widget_demobuy_vtable 0x004a9a20 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7DemoBuyE) }
+    .widget_corruption_event 0x002ed138 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Corruption7OnEventERN8RenderFX5EventE) }
+    .widget_demobuy_event 0x002ed1c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuy7OnEventERN8RenderFX5EventE) }
+    .widget_demobuy_localization 0x002ed808 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuy18UpdateLocalizationEv) }
+    .widget_blocking_tutorial_event 0x002eebc4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BlockingTutorial7OnEventERN8RenderFX5EventE) }
+    .widget_tutorial_event 0x002ee978 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Tutorial7OnEventERN8RenderFX5EventE) }
+    .widget_igmenu_event 0x002edd6c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu7OnEventERN8RenderFX5EventE) }
+    .corrupt_button_name 0x0041ab24 : { *ai-startup-menuwidget.o(.rodata.corruptButtonName) }
+    .demobuy_confirm_button 0x0041ab38 : { *ai-startup-menuwidget.o(.rodata.demoBuyConfirmButtonName) }
+    .menu_back_button 0x0041ab40 : { *ai-startup-menuwidget.o(.rodata.menuBackButtonName) }
+    .demobuy_confirm_text 0x0041acd8 : { *ai-startup-menuwidget.o(.rodata.demoBuyConfirmText) }
+    .demobuy_back_text 0x0041acf0 : { *ai-startup-menuwidget.o(.rodata.demoBuyBackText) }
+    .demobuy_description_0 0x0041ad08 : { *ai-startup-menuwidget.o(.rodata.demoBuyDescription0) }
+    .demobuy_description_1 0x0041ad24 : { *ai-startup-menuwidget.o(.rodata.demoBuyDescription1) }
+    .tutorial_ok_button 0x0041b018 : { *ai-startup-menuwidget.o(.rodata.tutorialOkButton) }
+    .tutorial_close_button_label 0x0041b03c : { *ai-startup-menuwidget.o(.rodata.tutorialCloseButtonLabel) }
+    .tutorial_scroll_button_label 0x0041b2d0 : { *ai-startup-menuwidget.o(.rodata.tutorialScrollButtonLabel) }
+    .tutorial_part_format 0x00419e70 : { *ai-startup-menuwidget.o(.rodata.tutorialPartFormat) }
+    .tutorial_scroll_part 0x0041b2dc : { *ai-startup-menuwidget.o(.rodata.tutorialScrollPart) }
+    .tutorial_arrow_up_part 0x0041b2f0 : { *ai-startup-menuwidget.o(.rodata.tutorialArrowUpPart) }
+    .tutorial_arrow_down_part 0x0041b300 : { *ai-startup-menuwidget.o(.rodata.tutorialArrowDownPart) }
+    .igmenu_button_name 0x0041af50 : { *ai-startup-menuwidget.o(.rodata.igMenuButtonName) }
+    .widget_corruption_vtable 0x004a9980 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets10CorruptionE) }
     .widget_maplegend_localization 0x002edb60 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegend18UpdateLocalizationEv) }
     .widget_maplegend_row_text 0x0041ae90 : { *ai-startup-menuwidget.o(.rodata.mapLegendRowLabelFormat) }
     .widget_maplegend_button_text 0x0041aeac : { *ai-startup-menuwidget.o(.rodata.mapLegendButtonText) }
