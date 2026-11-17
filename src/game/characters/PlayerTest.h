@@ -147,6 +147,8 @@ public:
     void unlockSwitchWeapon();
     void Respawn();
     bool photo(Weapon* weapon);
+    bool snipe(Weapon* weapon);
+    void onObjectKilled(LevelObject* object);
     void startDriving();
     void SetSpeed();
     void ResetPlayerTest(bool);

@@ -205,7 +205,8 @@ private:
     int savedRadioStation;
     unsigned char unknown200[24];
     unsigned int tireTrailWidth;
-    unsigned char unknown228[16];
+    unsigned char unknown228[12];
+    int unknown240;
     Character* targetingCharacter;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;

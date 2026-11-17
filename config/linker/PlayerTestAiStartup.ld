@@ -1,5 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
+PROVIDE(lrand48 = 0x001c4664);
+PROVIDE(__aeabi_idivmod = 0x001c4934);
 PROVIDE(acosf = 0x001c4694);
 PROVIDE(sqrt = 0x001c401c);
 __aeabi_idiv = 0x001c43dc;
@@ -31,6 +33,9 @@ INCLUDE config/linker/NPCFunctionSections.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .player_weapon_callback_0 0x0030577c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5snipeEP6Weapon) }
+    .player_weapon_callback_1 0x00304c04 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14onObjectKilledEP11LevelObject) }
+
     .player_photo 0x00303078 : { *ai-startup-playertest.o(.text._ZN10PlayerTest5photoEP6Weapon) }
     .player_orientation_0 0x00302240 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13orientTowardsEN3irr4core8vector3dIfEE) }
     .player_orientation_1 0x003020f0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest5debugEPN3irr5video12IVideoDriverE) }

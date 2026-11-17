@@ -748,3 +748,83 @@ bool PlayerTest::photo(Weapon* weapon)
         static_cast<Message*>(app->GetHudManager()->message172)->setMessage(12375,3000,static_cast<MenuManager::eText>(9));
     return true;
 }
+
+bool PlayerTest::snipe(Weapon* weapon)
+{
+    Application* app = Application::GetInstance();
+    Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this));
+    irr::core::vector3d<float> start = static_cast<SavePositionInterface*>(this)->position();
+    start.Z += 75.0f;
+    const irr::core::vector3d<float>& lookAt = CameraManager::getInstance()->getLookAt();
+    const irr::core::vector3d<float>& cameraPosition = CameraManager::getInstance()->getPosition();
+    irr::core::vector3d<float> direction = lookAt - cameraPosition;
+    direction.normalize();
+    direction *= weapon->getRange();
+    irr::core::vector3d<float> point;
+    irr::core::vector3d<float> normal;
+    LevelObject* object = 0;
+    bool ray = character->CastRay(start, direction, point, normal, object, true);
+    if (object && LevelObject::s_type[object->getObjectType()] == 5) {
+        character->showBloodSplash(point, normal);
+        weapon->snipe(true, start, start + direction * 7500.0f, normal);
+    } else {
+        weapon->snipe(ray, start, ray ? start + direction * 7500.0f : point, normal);
+    }
+    if (object && (LevelObject::s_type[object->getObjectType()] == 5 || LevelObject::s_type[object->getObjectType()] == 3)) {
+        object->shooted(weapon->getDamage(), character);
+        if (object->getHealth() <= 0)
+            onObjectKilled(object);
+    }
+    if (weapon->getClip() <= 0) {
+        if (app->GetWeaponManager()->getAmmo(weapon->getAmmoType(), AnyContext) > 0)
+            weapon->reload(false);
+    }
+    app->GetEventManager()->raise(EvPlayer(2));
+    return true;
+}
+
+extern "C" long lrand48();
+namespace {
+inline __attribute__((always_inline)) void playKilledReaction(int id)
+{
+    SoundManager* sound=SoundManager::getInstance();
+    sound->unknown140=true;
+    sound->playEx(id,0,false,1.0f,0,true,1.0f,0);
+    sound->unknown140=false;
+}
+}
+void PlayerTest::onObjectKilled(LevelObject* object)
+{
+    if (LevelObject::s_type[object->getObjectType()]==5) {
+        NPC* npc=static_cast<NPC*>(object);
+        unsigned int category=npc->category428;
+        if (category==0) {
+            if (lrand48()%2==1)
+                playKilledReaction(93);
+        } else if (category==1) {
+            int value=lrand48()%3;
+            if (value==1) playKilledReaction(83);
+            else if (value==2) playKilledReaction(71);
+        } else if (category==2) {
+            int value=lrand48()%3;
+            if (value==1) playKilledReaction(83);
+            else if (value==2) playKilledReaction(71);
+        } else if (category==3) {
+            if (lrand48()%2==1)
+                playKilledReaction(77);
+        }
+        if (!(object->unknown4&0x80u))
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(1));
+        else if (npc->category428==3)
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(7));
+        else
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(0));
+    } else if (LevelObject::s_type[object->getObjectType()]==3) {
+        if (!(object->unknown4&0x80u))
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(1));
+        else if (static_cast<Vehicle*>(object)->unknown240==3)
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(7));
+        else
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(0));
+    }
+}

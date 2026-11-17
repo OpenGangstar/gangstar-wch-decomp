@@ -74,3 +74,23 @@ The scoped build exited 0, preserving all existing functions and sections:
 ```text
 OK  _ZN10PlayerTest5photoEP6Weapon  0x00303079  668 bytes
 ```
+
+## Sniping and object-killed callbacks
+
+Sniping reuses the recovered ray cast, weapon, camera, event, and visibility
+interfaces. The non-character path forwards the original ray-cast Boolean to
+Weapon::snipe. The object-killed callback preserves the six sound-call expansions
+and distinct event temporary lifetimes. A local always_inline sound helper
+expresses the repeated operation without editing generated output.
+
+The only new layout view is the observed integer at Vehicle offset 240; the
+existing opaque region shrinks by four bytes, preserving the class extent.
+PlayerTest receives friend access to the already recovered NPC category and
+LevelObject flag fields. Existing matched function bodies are unchanged.
+
+The integrated scoped build exited 0 with all existing comparisons preserved:
+
+```text
+OK  _ZN10PlayerTest5snipeEP6Weapon  0x0030577d  672 bytes
+OK  _ZN10PlayerTest14onObjectKilledEP11LevelObject  0x00304c05  708 bytes
+```
