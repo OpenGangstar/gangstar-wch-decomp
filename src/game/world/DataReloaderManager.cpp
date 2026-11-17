@@ -54,3 +54,31 @@ static void __tcf_2()
         ::operator delete(value.array);
 }
 }
+
+#include "../core/PointerVector.h"
+
+class IDataReloader;
+
+class DataReloaderManager {
+public:
+    DataReloaderManager();
+    virtual ~DataReloaderManager();
+    void checkFiles() const;
+    void monitorFiles(const char*, const char*, IDataReloader*);
+private:
+    struct _MonitoredFiles;
+    std::vector<_MonitoredFiles*> monitoredFiles;
+    void _trace(const char* message) const;
+};
+
+void DataReloaderManager::_trace(const char*) const
+{
+}
+
+void DataReloaderManager::monitorFiles(const char*, const char*, IDataReloader*)
+{
+}
+
+DataReloaderManager::DataReloaderManager()
+{
+}

@@ -25,6 +25,10 @@
     "source": "src/game/world/DataReloaderManager.cpp",
     "linker_script": "config/linker/DataReloaderManagerSdkStartup.ld",
     "functions": [
+        "_ZN19DataReloaderManagerC2Ev",
+        "_ZNK19DataReloaderManager6_traceEPKc",
+        "_ZN19DataReloaderManager12monitorFilesEPKcS1_P13IDataReloader",
+        "_ZN19DataReloaderManagerC1Ev",
         {
             "name": "__tcf_2",
             "address": "0x0034c2b1"

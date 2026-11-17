@@ -682,11 +682,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86fd | MenuState::GotFocus | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002e6149 | MenuManager::tearDown | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
-| libsanangeles.so | 0x0034c089 | DataReloaderManager::monitorFiles | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x0034c211 | DataReloaderManager constructor (C1/C2 aliases) | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c089 | DataReloaderManager::monitorFiles | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c211 | DataReloaderManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint | vehicle_side | BLOCKED | pending | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c0a1 | DataReloaderManager::_MonitoredFiles destructor | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
