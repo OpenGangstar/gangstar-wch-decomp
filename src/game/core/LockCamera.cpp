@@ -11,18 +11,7 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
-#include "Camera.h"
-
-class LockCamera : public Camera {
-public:
-    explicit LockCamera(LevelObject* owner);
-    ~LockCamera();
-    virtual void init(LevelObject* owner, int mode);
-    virtual void update(float elapsed);
-    virtual void debug(irr::video::IVideoDriver* driver);
-private:
-    LevelObject* owner;
-};
+#include "CameraVariants.h"
 
 void LockCamera::debug(irr::video::IVideoDriver*)
 {

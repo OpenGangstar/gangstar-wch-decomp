@@ -21,6 +21,7 @@ _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
     .manager_dtor 0x00331d74 : { *ai-startup-cameramanager.o(.text._ZN13CameraManagerD1Ev .text._ZN13CameraManagerD2Ev) }
+    .manager_clean 0x00332010 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager5cleanEv) }
     .manager_update_transition 0x0033257c : { *ai-startup-cameramanager.o(.text._ZN13CameraManager16updateTransitionEf) }
     .manager_set_fov 0x00331d8c : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6setFOVEi) }
     .manager_get_fov 0x00331db0 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6getFOVEv) }
