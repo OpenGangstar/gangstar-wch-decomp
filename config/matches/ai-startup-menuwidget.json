@@ -27,6 +27,8 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets8Tutorial4ShowEv",
+        "_ZN7Widgets16BlockingTutorial4ShowEv",
         "_ZN7Widgets9Objective4ShowEv",
         "_ZN7Widgets11Achievement18UpdateLocalizationEv",
         "_ZN7Widgets9Objective18UpdateLocalizationEv",
@@ -158,6 +160,9 @@
         }
     ],
     "sections": [
+        ".widget_tutorial_vtable",
+        ".widget_blocking_tutorial_vtable",
+        ".widget_blocking_tutorial_close_button",
         ".widget_objective_vtable",
         ".widget_objective_open",
         ".widget_objective_close",

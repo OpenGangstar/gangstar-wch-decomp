@@ -866,6 +866,7 @@ void Widgets::Corruption::SetWantedLevel(int level)
 static const char widgetBGMainName[] = "widgetBGMain";
 static const char widgetBuyName[] = "widgetBuy";
 static const char widgetTutoBlockName[] = "widgetTutoBlock";
+static const char blockingTutorialCloseButton[] = "widgetTutoBlock.group.btnClose";
 
 bool Widgets::Tutorial::IsCursorPressed() const
 {
@@ -891,6 +892,22 @@ Widgets::Tutorial::Tutorial(const char* name)
 Widgets::BlockingTutorial::BlockingTutorial()
     : Tutorial(widgetTutoBlockName)
 {
+}
+
+void Widgets::Tutorial::Show()
+{
+    MenuWidget::Show();
+    renderFX->PlayAnim(character, widgetShowAnimation, 0);
+    cursorPressed = false;
+    unknown20 = -1;
+    unknown24 = 0;
+    unknown28 = 0;
+}
+
+void Widgets::BlockingTutorial::Show()
+{
+    Tutorial::Show();
+    renderFX->SetVisible(blockingTutorialCloseButton, false);
 }
 
 Widgets::BackgroundMainMenu::BackgroundMainMenu()
