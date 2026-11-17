@@ -105,6 +105,12 @@ SceneNodeManager::SceneNodeManager()
     }
 }
 
+SceneNodeManager* SceneNodeManager::getInstance()
+{
+    static SceneNodeManager sceneNodeManager;
+    return &sceneNodeManager;
+}
+
 extern "C" void _ZN9stlp_priv8_Rb_treeIiSt4lessIiESt4pairIKiiENS_10_Select1stIS5_EENS_11_MapTraitsTIS5_EESaIS5_EE8_M_eraseEPNS_18_Rb_tree_node_baseE(
     void* tree, void* root) __attribute__((weak));
 
