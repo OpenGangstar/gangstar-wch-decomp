@@ -9922,7 +9922,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ecbbd	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11Achievement7SetIconEPKc	Widgets::Achievement::SetIcon(char const*)
 0x002ecbdd	0x38	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Title7SetIconEPKc	Widgets::Title::SetIcon(char const*)
 0x002ecc15	0x38	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6Arrows18UpdateLocalizationEv	Widgets::Arrows::UpdateLocalization()
-0x002ecc4d	0xc0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb	Widgets::IGMenu::SetActiveButton(Widgets::IGMenu::eButton, bool)
+0x002ecc4d	0xc0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb	Widgets::IGMenu::SetActiveButton(Widgets::IGMenu::eButton, bool)
 0x002ecd0d	0x50	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8BlackBox8SetStateENS0_6eStateE	Widgets::BlackBox::SetState(Widgets::BlackBox::eState)
 0x002ecd5d	0x3c	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget4HideEb	MenuWidget::Hide(bool)
 0x002ecd99	0x88	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Volumes4HideEb	Widgets::Volumes::Hide(bool)
@@ -9987,7 +9987,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002eeff9	0x24	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Statistics7DisableEv	Widgets::Statistics::Disable()
 0x002ef01d	0x24	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements7DisableEv	Widgets::Achievements::Disable()
 0x002ef041	0x24	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5About7DisableEv	Widgets::About::Disable()
-0x002ef065	0x4c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6IGMenu7DisableEv	Widgets::IGMenu::Disable()
+0x002ef065	0x4c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu7DisableEv	Widgets::IGMenu::Disable()
 0x002ef0b1	0x20c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Corruption18UpdateLocalizationEv	Widgets::Corruption::UpdateLocalization()
 0x002ef2bd	0x144	MenuWidget.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002ef401	0x14	MenuWidget.cpp	game	ui	matched	_GLOBAL__I__ZN10MenuWidgetC2EPKc	_GLOBAL__I__ZN10MenuWidgetC2EPKc

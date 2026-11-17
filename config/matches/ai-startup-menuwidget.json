@@ -27,6 +27,8 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets6IGMenu7DisableEv",
+        "_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb",
         "_ZN7Widgets6IGMenuC1Ev",
         "_ZN7Widgets6IGMenuC2Ev",
         "_ZN7Widgets6IGMenu4ShowEv",
@@ -106,6 +108,8 @@
         }
     ],
     "sections": [
+        ".widget_ig_menu_back_text",
+        ".widget_ig_menu_selected",
         ".widget_ig_menu_name",
         ".widget_ig_menu_vtable",
         ".widget_main_menu_button_text_format",
@@ -147,6 +151,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11MenuManager13setMenuFXTextEPKcS1_bb",
         "_ZN11Application11GetInstanceEv",
         "_ZNK13StringManager9getStringEi",
         "_ZN8RenderFX7SetTextEPKcS1_b",

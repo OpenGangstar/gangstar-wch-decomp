@@ -309,6 +309,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11MenuManager13setMenuFXTextEPKcS1_bb",
         "_ZN11Application11GetInstanceEv",
         "_ZNK13StringManager9getStringEi",
         "_ZN8RenderFX7SetTextEPKcS1_b",
@@ -316,7 +317,6 @@
         "_ZN9GSLoading12isGameLoadedEv",
         "_ZN7Widgets8BlackBox8SetStateENS0_6eStateE",
         "_ZNK11MenuManager8getStateEPKc",
-        "_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb",
         "_ZN11MenuManager17allowCheatsUnlockEb",
         "_ZN9ResStreamC1EPKci",
         "_ZN9ResStreamD1Ev",

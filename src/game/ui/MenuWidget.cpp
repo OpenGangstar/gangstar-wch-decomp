@@ -19,6 +19,7 @@
 #include "../hud/MenuManager.h"
 
 extern "C" {
+void _ZN11MenuManager13setMenuFXTextEPKcS1_bb(MenuManager* manager, const char* name, const char* text, bool first, bool second);
 const char* _ZNK13StringManager9getStringEi(const StringManager* strings, int id);
 void _ZN8RenderFX7SetTextEPKcS1_b(RenderFX* fx, const char* name, const char* text, bool option);
 }
@@ -165,7 +166,7 @@ struct MenuButtonInfo {
 
 class IGMenu : public MenuWidget {
 public:
-    enum eButton { First, Second, Third, Fourth, Fifth };
+    enum eButton { Invalid = -1, First, Second, Third, Fourth, Fifth };
     IGMenu();
     virtual void Show();
     virtual void Disable();
@@ -175,6 +176,7 @@ public:
     void HideButtons();
     void ShowButtons();
     void SetButtonInfo(eButton button, int id, bool enabled);
+    void SetActiveButton(eButton button, bool refresh);
     void SetTitleText(int id);
     void SetBackButtonText(int id);
 
@@ -287,6 +289,10 @@ void Widgets::IGMenu::SetBackButtonText(int id)
 }
 
 static const char igMenuButtonFormat[] = "widgetIGMenu.groupBoutons.btnMenu%d";
+static const char igMenuBackText[] = "widgetIGMenu.btnBack.text";
+extern const char activateAnimation[] __attribute__((visibility("hidden")));
+extern const char disabledAnimation[] __attribute__((visibility("hidden")));
+static const char igMenuSelected[] = "selected";
 static const char widgetIGMenuName[] = "widgetIGMenu";
 
 Widgets::IGMenu::IGMenu()
@@ -306,6 +312,32 @@ void Widgets::IGMenu::Show()
 {
     MenuWidget::Show();
     ShowButtons();
+}
+
+void Widgets::IGMenu::Disable()
+{
+    MenuWidget::Disable();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    MenuManager* manager = MenuManager::getInstance();
+    const char* text = _ZNK13StringManager9getStringEi(strings, backButtonTextId);
+    _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, igMenuBackText, text, true, false);
+}
+
+void Widgets::IGMenu::SetActiveButton(eButton button, bool refresh)
+{
+    char name[128];
+    if (!refresh && activeButton == button)
+        return;
+    if (activeButton < 5) {
+        sprintf(name, igMenuButtonFormat, activeButton);
+        renderFX->GotoFrame(name, buttons[activeButton].enabled ? activateAnimation : disabledAnimation, false);
+    }
+    activeButton = button;
+    if (button <= Fifth) {
+        sprintf(name, igMenuButtonFormat, button);
+        renderFX->SetFocus(name, 0);
+        renderFX->GotoFrame(name, igMenuSelected, false);
+    }
 }
 
 template <bool show>
