@@ -14,6 +14,8 @@
 #include "../core/GameEventMethods.h"
 #include "AccelerometerBase.h"
 #include "../core/Logs.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
 
 AccelerometerBase::AccelerometerBase()
 {
@@ -50,7 +52,18 @@ void AccelerometerBase::_trace(const char* message) const
 // Event declarations for the recovered destructor and vtable layout.
 class EvAcceleration : public IEvent {
 public:
+    EvAcceleration(float sampleX, float sampleY, float sampleZ)
+        : x(sampleX), y(sampleY), z(sampleZ)
+    {
+        eventID = 6;
+    }
+
     virtual ~EvAcceleration() __attribute__((used)) {}
+
+private:
+    float x;
+    float y;
+    float z;
 };
 
 void operator delete(void*) throw();
@@ -94,4 +107,19 @@ static void _GLOBAL__I__ZN17AccelerometerBaseC2Ev()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void AccelerometerBase::moved(float sampleX, float sampleY, float sampleZ)
+{
+    x = sampleX;
+    y = sampleY;
+    z = sampleZ;
+    minX = *(sampleX < minX ? &sampleX : &minX);
+    maxX = *(sampleX > maxX ? &sampleX : &maxX);
+    minY = *(sampleY < minY ? &sampleY : &minY);
+    maxY = *(sampleY > maxY ? &sampleY : &maxY);
+    minZ = *(sampleZ < minZ ? &sampleZ : &minZ);
+    maxZ = *(sampleZ > maxZ ? &sampleZ : &maxZ);
+    _calcAngles();
+    Application::GetInstance()->GetEventManager()->raise(EvAcceleration(x, y, z));
 }

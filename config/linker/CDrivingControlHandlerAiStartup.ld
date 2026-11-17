@@ -18,6 +18,9 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .driving_held 0x0032d924 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler16handleAttackHeldEv) }
+    .driving_pressed 0x0032d934 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler19handleAttackPressedEv) }
+    .driving_weapon_switched 0x0032d910 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler20handleWeaponSwitchedEv) }
     .handler_attack_released 0x0032d8dc : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler20handleAttackReleasedEv) }
     .handler_constructor 0x0032da54 : { *(.text._ZN22CDrivingControlHandlerC1EP15CControlManager .text._ZN22CDrivingControlHandlerC2EP15CControlManager) }
     .handler_init 0x0032da30 : { *(.text._ZN22CDrivingControlHandler4initEv) }

@@ -593,8 +593,14 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034d9bd | AccelerometerWin32 constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034d941 | AccelerometerWin32::setWide | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034d479 | AccelerometerBase::_calcAngles | camera_tap | BLOCKED | — | src/game/input/AccelerometerBase.cpp |
-| libsanangeles.so | 0x0034d689 | AccelerometerBase::moved | lock_init | REVIEW | — | src/game/input/AccelerometerBase.cpp |
-| libsanangeles.so | 0x0032d925 | CDrivingControlHandler::handleAttackHeld | vehicle_side | REVIEW | — | src/game/input/CDrivingControlHandler.cpp |
-| libsanangeles.so | 0x0032d935 | CDrivingControlHandler::handleAttackPressed | vehicle_side | ASSIGNED | — | src/game/input/CDrivingControlHandler.cpp |
-| libsanangeles.so | 0x0032d911 | CDrivingControlHandler::handleWeaponSwitched | camera_tap | ASSIGNED | — | src/game/input/CDrivingControlHandler.cpp |
-| libsanangeles.so | 0x0032e589 | COnFootControlHandler::handleWeaponSwitched | lock_init | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0034d689 | AccelerometerBase::moved | — | COMPLETED | 100% | src/game/input/AccelerometerBase.cpp |
+| libsanangeles.so | 0x0032d925 | CDrivingControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032d935 | CDrivingControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032d911 | CDrivingControlHandler::handleWeaponSwitched | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032e589 | COnFootControlHandler::handleWeaponSwitched | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e5d9 | COnFootControlHandler::handleEnterCarPressed | lock_init | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e5bd | COnFootControlHandler::handleEnterShopPressed | vehicle_side | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f0e9 | SniperControlHandler::handleExitSightReleased | camera_tap | REVIEW | — | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x0032e59d | COnFootControlHandler::handleLockPressed | vehicle_side | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f18d | SniperControlHandler::handleAttackReleased | camera_tap | ASSIGNED | — | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e2665 | GSInGameMenu::skipFadeIn | lock_init | ASSIGNED | — | src/game/ui/GSInGameMenu.cpp |

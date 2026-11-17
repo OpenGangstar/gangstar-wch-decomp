@@ -25,6 +25,7 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandler20handleWeaponSwitchedEv",
         "_ZN21COnFootControlHandlerC1EP15CControlManager",
         "_ZN21COnFootControlHandlerC2EP15CControlManager",
         "_ZN21COnFootControlHandler4initEv",
@@ -66,6 +67,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest12switchWeaponEb",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",

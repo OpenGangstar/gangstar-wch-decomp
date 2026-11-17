@@ -22,9 +22,11 @@ private:
     float baselineY;
     float baselineZ;
     float minX;
-    unsigned char unknown32[8];
+    float minY;
+    float minZ;
     float maxX;
-    unsigned char unknown44[8];
+    float maxY;
+    float maxZ;
     float angleX;
     unsigned char unknown56[4];
     float angleY;

@@ -11523,9 +11523,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d8bd	0x20	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19releaseKeyboardKeysEv	CDrivingControlHandler::releaseKeyboardKeys()
 0x0032d8dd	0x2	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20handleAttackReleasedEv	CDrivingControlHandler::handleAttackReleased()
 0x0032d8e1	0x30	CDrivingControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
-0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
-0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
-0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
+0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
+0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
+0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
 0x0032d945	0x2c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20disableAccelerometerEv	CDrivingControlHandler::disableAccelerometer()
 0x0032d971	0x1c	CDrivingControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0032d98d	0x58	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler8activateEv	CDrivingControlHandler::activate()
@@ -11544,7 +11544,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e521	0xc	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler4initEv	COnFootControlHandler::init()
 0x0032e52d	0x30	COnFootControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
 0x0032e55d	0x2c	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler19releaseKeyboardKeysEv	COnFootControlHandler::releaseKeyboardKeys()
-0x0032e589	0x12	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler20handleWeaponSwitchedEv	COnFootControlHandler::handleWeaponSwitched()
+0x0032e589	0x12	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler20handleWeaponSwitchedEv	COnFootControlHandler::handleWeaponSwitched()
 0x0032e59d	0x1e	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler17handleLockPressedEv	COnFootControlHandler::handleLockPressed()
 0x0032e5bd	0x1c	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler22handleEnterShopPressedEv	COnFootControlHandler::handleEnterShopPressed()
 0x0032e5d9	0x12	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler21handleEnterCarPressedEv	COnFootControlHandler::handleEnterCarPressed()
@@ -12766,7 +12766,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d625	0x14	AccelerometerBase.cpp	game	input	matched	_GLOBAL__I__ZN17AccelerometerBaseC2Ev	_GLOBAL__I__ZN17AccelerometerBaseC2Ev
 0x0034d639	0x2c	AccelerometerBase.cpp	game	input	matched	_ZN14EvAccelerationD0Ev	EvAcceleration::~EvAcceleration()
 0x0034d665	0x24	AccelerometerBase.cpp	game	input	matched	_ZN14EvAccelerationD1Ev	EvAcceleration::~EvAcceleration()
-0x0034d689	0x14c	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase5movedEfff	AccelerometerBase::moved(float, float, float)
+0x0034d689	0x14c	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase5movedEfff	AccelerometerBase::moved(float, float, float)
 0x0034d7d5	0x2c	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD0Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d801	0x24	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD1Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d801	0x24	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD2Ev	AccelerometerBase::~AccelerometerBase()
