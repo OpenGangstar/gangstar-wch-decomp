@@ -237,6 +237,14 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e78ad | Menus::Map::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ebf09 | Widgets::Shop::SetAvailabilityText | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ebf0d | Widgets::Shop::GetSelectedItem | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002eef25 | Widgets::Shop::Reset | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002eef45 | Widgets::Shop::Shop (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed17d | Widgets::Shop::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb21 | Widgets::Shop::SetItem | camera_tap | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed6bd | Widgets::Shop::UpdateLocalization | lock_init | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002f8495 | CustomSkyBoxSceneNode::OnRegisterSceneNode | vehicle_side | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |

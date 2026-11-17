@@ -9830,8 +9830,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ebe9d	0x64	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Arrows12SetPageCountEiib	Widgets::Arrows::SetPageCount(int, int, bool)
 0x002ebf01	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets6Arrows14GetCurrentPageEv	Widgets::Arrows::GetCurrentPage() const
 0x002ebf05	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Mission9SetScriptEPK6Script	Widgets::Mission::SetScript(Script const*)
-0x002ebf09	0x4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop19SetAvailabilityTextEi	Widgets::Shop::SetAvailabilityText(int)
-0x002ebf0d	0x4	MenuWidget.cpp	game	ui	pending	_ZNK7Widgets4Shop15GetSelectedItemEv	Widgets::Shop::GetSelectedItem() const
+0x002ebf09	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4Shop19SetAvailabilityTextEi	Widgets::Shop::SetAvailabilityText(int)
+0x002ebf0d	0x4	MenuWidget.cpp	game	ui	matched	_ZNK7Widgets4Shop15GetSelectedItemEv	Widgets::Shop::GetSelectedItem() const
 0x002ebf11	0x14	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Volumes11SetPlaylistEi	Widgets::Volumes::SetPlaylist(int)
 0x002ebf25	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Corruption14SetWantedLevelEi	Widgets::Corruption::SetWantedLevel(int)
 0x002ebf29	0x4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets11GameSetting10SetTitleIdEi	Widgets::GameSetting::SetTitleId(int)
@@ -9947,7 +9947,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ed10d	0x10	MenuWidget.cpp	game	ui	matched	_ZN7Widgets12Achievements6EnableEv	Widgets::Achievements::Enable()
 0x002ed11d	0x1a	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5About6EnableEv	Widgets::About::Enable()
 0x002ed139	0x44	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Corruption7OnEventERN8RenderFX5EventE	Widgets::Corruption::OnEvent(RenderFX::Event&)
-0x002ed17d	0x48	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop7OnEventERN8RenderFX5EventE	Widgets::Shop::OnEvent(RenderFX::Event&)
+0x002ed17d	0x48	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4Shop7OnEventERN8RenderFX5EventE	Widgets::Shop::OnEvent(RenderFX::Event&)
 0x002ed1c5	0x50	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7DemoBuy7OnEventERN8RenderFX5EventE	Widgets::DemoBuy::OnEvent(RenderFX::Event&)
 0x002ed215	0x84	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Mission7OnEventERN8RenderFX5EventE	Widgets::Mission::OnEvent(RenderFX::Event&)
 0x002ed299	0xf0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9MapLegend7OnEventERN8RenderFX5EventE	Widgets::MapLegend::OnEvent(RenderFX::Event&)
@@ -9980,9 +9980,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002eebc5	0x50	MenuWidget.cpp	game	ui	pending	_ZN7Widgets16BlockingTutorial7OnEventERN8RenderFX5EventE	Widgets::BlockingTutorial::OnEvent(RenderFX::Event&)
 0x002eec15	0x18c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE	Widgets::Statistics::OnEvent(RenderFX::Event&)
 0x002eeda1	0x184	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements7OnEventERN8RenderFX5EventE	Widgets::Achievements::OnEvent(RenderFX::Event&)
-0x002eef25	0x20	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop5ResetEv	Widgets::Shop::Reset()
-0x002eef45	0x50	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4ShopC2Ev	Widgets::Shop::Shop()
-0x002eef45	0x50	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4ShopC1Ev	Widgets::Shop::Shop()
+0x002eef25	0x20	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4Shop5ResetEv	Widgets::Shop::Reset()
+0x002eef45	0x50	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4ShopC2Ev	Widgets::Shop::Shop()
+0x002eef45	0x50	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4ShopC1Ev	Widgets::Shop::Shop()
 0x002eef95	0x64	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidget7DisableEv	MenuWidget::Disable()
 0x002eeff9	0x24	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Statistics7DisableEv	Widgets::Statistics::Disable()
 0x002ef01d	0x24	MenuWidget.cpp	game	ui	matched	_ZN7Widgets12Achievements7DisableEv	Widgets::Achievements::Disable()

@@ -27,6 +27,12 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets4Shop7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets4ShopC1Ev",
+        "_ZN7Widgets4ShopC2Ev",
+        "_ZN7Widgets4Shop19SetAvailabilityTextEi",
+        "_ZNK7Widgets4Shop15GetSelectedItemEv",
+        "_ZN7Widgets4Shop5ResetEv",
         "_ZN7Widgets5Money18UpdateLocalizationEv",
         "_ZN7Widgets16BlockingTutorial18UpdateLocalizationEv",
         "_ZN7Widgets5Title18UpdateLocalizationEv",
@@ -178,6 +184,9 @@
         }
     ],
     "sections": [
+        ".widget_shop_vtable",
+        ".widget_shop_item_button_prefix",
+        ".widget_shop_name",
         ".widget_help_text_path",
         ".widget_game_setting_title_path",
         ".widget_game_setting_value_path",

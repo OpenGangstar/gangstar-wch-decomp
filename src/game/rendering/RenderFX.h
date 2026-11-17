@@ -103,7 +103,9 @@ public:
     class Event {
     public:
         gameswf::character* character;
-        unsigned char unknown4[32];
+        const char* characterName;
+        int type;
+        unsigned char unknown12[24];
         bool consumed;
     };
     class EventListener {
