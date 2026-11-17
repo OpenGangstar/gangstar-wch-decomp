@@ -26,6 +26,9 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManagerD0Ev",
+        "_ZN11MenuManagerD1Ev",
+        "_ZN11MenuManagerD2Ev",
         "_Z16SwfTextureLoaderPKcii",
         "_ZN11MenuManager11freeTextureEPKc",
         "_ZN11MenuManager22updateWidgetVisibilityEv",
@@ -111,6 +114,7 @@
         }
     ],
     "sections": [
+        ".menu_manager_vtable",
         ".menu_requested_font_format",
         ".menu_asian_font_file_format",
         ".menu_standard_font_file_format",
@@ -156,7 +160,6 @@
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN10DataStream7ReadIntEv",
-        "_ZN11MenuManagerD1Ev",
         "_ZNK8RenderFX7GetRootEv",
         "_ZN11MenuManager11getInstanceEv",
         "_Z13ekd_debug_outPKcPc",

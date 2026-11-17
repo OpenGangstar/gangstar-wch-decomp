@@ -531,6 +531,24 @@ void MenuManager::push(const char* name, bool silent)
     finishMenuTransition(this, fields, name);
 }
 
+extern "C" void _ZN7gameswf5arrayIP10MenuWidgetE14release_bufferEv(void*) __attribute__((weak));
+
+inline MenuManager::WidgetStorage::~WidgetStorage()
+{
+    _ZN7gameswf5arrayIP10MenuWidgetE14release_bufferEv(this);
+}
+
+inline MenuManager::OwnedBuffer::~OwnedBuffer()
+{
+    // Keep the owned-buffer cleanup on the retail fall-through path.
+    if (__builtin_expect(ownsData, true))
+        ::operator delete(data);
+}
+
+MenuManager::~MenuManager()
+{
+}
+
 void MenuManager::cleanupMap()
 {
     TargetMarker::getInstance()->setEnabled(true);
