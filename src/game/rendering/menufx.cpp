@@ -545,6 +545,17 @@ void RenderFX::Unload()
         controllers[index].Reset();
 }
 
+class RenderFX::Event {
+public:
+    gameswf::character* character;
+};
+
+void MenuFX::OnEvent(RenderFX::Event& event)
+{
+    if (stateStack.size > 0)
+        GetStateHandler(event.character)->OnEvent(event);
+}
+
 void MenuFX::OnFSCommand(const char* command, const char* args)
 {
     int count = stateStack.size;
