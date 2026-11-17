@@ -174,7 +174,7 @@ public:
     virtual int getClipIndex(const char* name) const;
     virtual void unknown7(); virtual void unknown8(); virtual void unknown9();
     virtual void unknown10(); virtual void unknown11(); virtual void unknown12();
-    virtual void unknown13(); virtual int getCurrentClipIndex() const; virtual void unknown15();
+    virtual int getCurrentClipLength() const; virtual int getCurrentClipIndex() const; virtual void unknown15();
     virtual void setLoop(bool loop);
     virtual bool getLoop() const;
     virtual void setScale(float scale);
