@@ -89,6 +89,7 @@ SECTIONS
     .vehicle_stop 0x00309eac : { *(.text._ZN7Vehicle4StopEv) }
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
     .vehicle_mobilize 0x0030a3e4 : { *(.text._ZN7Vehicle8mobilizeEv) }
+    .vehicle_nearest_door_dummy 0x0030b22c : { *(.text._ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE) }
     .vehicle_accelerate 0x00307d30 : { *(.text._ZN7Vehicle10accelerateEf) }
     .vehicle_brake 0x00307d48 : { *(.text._ZN7Vehicle5brakeEf) }
     .vehicle_turn 0x00307d60 : { *(.text._ZN7Vehicle4turnEbf) }

@@ -812,6 +812,18 @@ void Vehicle::mobilize()
     Stop();
 }
 
+irr::scene::ISceneNode* Vehicle::getNearestDoorDummy(irr::core::vector3d<float> point)
+{
+    point.Z = 0.0f;
+    irr::core::vector3d<float> left = leftDoor->getAbsolutePosition();
+    irr::core::vector3d<float> right = rightDoor->getAbsolutePosition();
+    left.Z = 0.0f;
+    right.Z = 0.0f;
+    if (point.getDistanceFromSQ(left) < point.getDistanceFromSQ(right))
+        return leftDoor;
+    return rightDoor;
+}
+
 void Vehicle::postExplosion()
 {
     exploding = false;

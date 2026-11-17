@@ -55,6 +55,7 @@ public:
     void setDriver(Character* value);
     void resetDriver();
     void mobilize();
+    irr::scene::ISceneNode* getNearestDoorDummy(irr::core::vector3d<float> point);
     int getMarkerType();
     void stopSiren();
     void playSiren();

@@ -99,6 +99,7 @@
         "_ZN7Vehicle11resetDriverEv",
         "_ZN7Vehicle10immobilizeEv",
         "_ZN7Vehicle8mobilizeEv",
+        "_ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE",
         "_ZN7Vehicle4StopEv",
         "_ZN7Vehicle15resetCollisionsEv",
         "_ZN7Vehicle12photographedEv",
