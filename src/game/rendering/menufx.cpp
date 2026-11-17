@@ -234,7 +234,7 @@ struct CharacterAnimationMethods {
     bool (*is)(const gameswf::character*, int);
     void (*beforePlayState[31])();
     void (*setPlayState)(gameswf::character*, int);
-    int (*getPlayState)(const gameswf::character*);
+    void (*beforeGotoLabeledFrame)();
     bool (*gotoLabeledFrame)(gameswf::character*, const char*);
     void (*beforeFrameQueries[38])();
     int (*getCurrentFrame)(gameswf::character*);
@@ -752,7 +752,7 @@ void MenuFX::Update(int elapsed, bool render)
     for (int index = 0; index < registeredStates.size; ++index) {
         State* state = registeredStates.elements[index];
         if (state->unknown80 != 2 ||
-            animationMethods(state->firstCharacter.get()).getPlayState(state->firstCharacter.get()) != 1 ||
+            getCharacterPlayState(state->firstCharacter.get()) != 1 ||
             !isCharacterVisible(registeredStates.elements[index]->firstCharacter.get()))
             continue;
 
