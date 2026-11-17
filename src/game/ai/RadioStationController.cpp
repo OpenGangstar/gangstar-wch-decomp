@@ -101,3 +101,43 @@ static void _GLOBAL__I__ZN22RadioStationControllerC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+int RadioStationController::selectRandomJingle(int station)
+{
+    if (!queues[station]->jinglesRemaining) {
+        Structs::RadioStation* source=stations[station];
+        int count=source->jingleCount;
+        for (int i=0; i<count; ++i) {
+            queues[station]->jingles[i]=source->jingles[i];
+            source=*(station + stations);
+            count=source->jingleCount;
+        }
+        queues[station]->jinglesRemaining=count;
+    }
+    int index=irr::os::Randomizer::rand()%queues[station]->jinglesRemaining;
+    int jingle=queues[station]->jingles[index];
+    --queues[station]->jinglesRemaining;
+    for (int i=index; i<queues[station]->jinglesRemaining; ++i)
+        queues[station]->jingles[i]=queues[station]->jingles[i+1];
+    return jingle;
+}
+
+int RadioStationController::selectRandomSong(int station)
+{
+    if (!queues[station]->songsRemaining) {
+        Structs::RadioStation* source=stations[station];
+        int count=source->songCount;
+        for (int i=0; i<count; ++i) {
+            queues[station]->songs[i]=source->songs[i];
+            source=*(station + stations);
+            count=source->songCount;
+        }
+        queues[station]->songsRemaining=count;
+    }
+    int index=irr::os::Randomizer::rand()%queues[station]->songsRemaining;
+    int song=queues[station]->songs[index];
+    --queues[station]->songsRemaining;
+    for (int i=index; i<queues[station]->songsRemaining; ++i)
+        queues[station]->songs[i]=queues[station]->songs[i+1];
+    return song;
+}
