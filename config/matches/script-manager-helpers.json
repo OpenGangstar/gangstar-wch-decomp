@@ -25,6 +25,8 @@
     "source": "src/game/scripting/ScriptManager.cpp",
     "linker_script": "config/linker/ScriptManagerHelpers.ld",
     "functions": [
+        "_ZN13ScriptManager20freezeRunningScriptsEPK6ScriptN10PlayerTest8eContextE",
+        "_ZN13ScriptManager19unlockFrozenScriptsEv",
         "_ZN13ScriptManager6resumeEv",
         "_ZN13ScriptManager20skipBlockingCommandsEv",
         "_ZNK13ScriptManager10getMissionEv",
@@ -346,6 +348,8 @@
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE",
+        "_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE"
     ]
 }

@@ -13,7 +13,7 @@
 #include "Checkpoint.h"
 #include "../characters/PhysicAttributes.h"
 #include "../ai/NPC.h"
-#include "SideMission.h"
+#include "AmbulanceSideMission.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -83,27 +83,6 @@ static void _GLOBAL__I__ZN20AmbulanceSideMissionC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
-
-class AmbulanceSideMission : public SideMission {
-public:
-    AmbulanceSideMission();
-    ~AmbulanceSideMission();
-    virtual void begin(irr::core::vector3d<float>, int, int&, float&);
-    virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
-    virtual bool dropOff(irr::core::vector3d<float>);
-    virtual void end();
-    virtual void clean();
-    virtual int getMoneyReward();
-    virtual int getGoalMessage();
-    virtual int getStartMessage();
-    virtual int getEndMessage();
-    virtual int getObj1Message();
-    virtual int getObj2Message();
-
-private:
-    Checkpoint* checkpoint;
-    irr::core::array<Checkpoint*> dropOffCheckpoints;
-};
 
 void AmbulanceSideMission::end()
 {

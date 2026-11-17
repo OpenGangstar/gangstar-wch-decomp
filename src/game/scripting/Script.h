@@ -12,6 +12,7 @@ struct ScriptCommand {
 
 // Partial layout. The script storage beyond the observed fields is unresolved.
 class Script {
+    friend class ScriptManager;
 public:
     enum State { State0 = 0, State1 = 1, State2 = 2, WaitingForChild = 3, StateForceWidth = 0x7fffffff };
     void addCommand(Structs::ScriptCommand* command);

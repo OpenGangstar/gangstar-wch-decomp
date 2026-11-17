@@ -414,7 +414,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003477a1 | SideMissionManager::confirm | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x003477ed | SideMissionManager::setNextMissionTimer | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x00347815 | SideMissionManager::isInSideMission | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x0034783d | SideMissionManager::draw | camera_tap | BLOCKED | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x0034783d | SideMissionManager::draw | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x00347925 | SideMissionManager::isMissionAvailable | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x00347bad | SideMissionManager::update | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x00347961 | SideMissionManager::initMission | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
@@ -430,11 +430,21 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00346571 | AmbulanceSideMission destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
 | libsanangeles.so | 0x00346629 | DeliverySideMission::dropOff | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
 | libsanangeles.so | 0x003468c9 | DeliverySideMission::pickUp | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
-| libsanangeles.so | 0x00346ac9 | DeliverySideMission destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/missions/DeliverySideMission.cpp |
-| libsanangeles.so | 0x00347a51 | SafeDelete<AmbulanceSideMission> | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347b69 | SideMissionManager::start | camera_tap | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347a71 | SafeDelete<DeliverySideMission> | vehicle_side | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347a91 | SafeDelete<TaxiSideMission> | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347ab1 | SideMissionManager::clean | vehicle_side | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347b01 | SideMissionManager::init | camera_tap | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x0033ecc1 | ScriptManager::unlockFrozenScripts | lock_init | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x00346ac9 | DeliverySideMission destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00347a51 | SafeDelete<AmbulanceSideMission> | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347b69 | SideMissionManager::start | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347a71 | SafeDelete<DeliverySideMission> | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347a91 | SafeDelete<TaxiSideMission> | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347ab1 | SideMissionManager::clean | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347b01 | SideMissionManager::init | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x0033ecc1 | ScriptManager::unlockFrozenScripts | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033e9c1 | ScriptManager::freezeRunningScripts | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033d105 | ScriptManager::pause | lock_init | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ec05 | ScriptManager::rewindRunningScripts | vehicle_side | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033e955 | SafeDelete<Script> | camera_tap | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033d2f5 | ScriptManager::drawFade | camera_tap | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033d141 | ScriptManager::playerDrives | vehicle_side | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033d271 | ScriptManager::reachRunningCommand | lock_init | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ed19 | ScriptManager::findObject | camera_tap | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ea89 | ScriptManager::setup | vehicle_side | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f4c9 | ScriptManager::checkScreenPress | camera_tap | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |

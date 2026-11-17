@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -25,6 +26,13 @@
     "source": "src/game/missions/SideMissionManager.cpp",
     "linker_script": "config/linker/SideMissionManagerAiStartup.ld",
     "functions": [
+        "_ZN18SideMissionManager4drawEv",
+        "_ZN18SideMissionManager5cleanEv",
+        "_ZN18SideMissionManager4initEv",
+        "_ZN18SideMissionManager5startEv",
+        "_Z10SafeDeleteI20AmbulanceSideMissionEvRPT_",
+        "_Z10SafeDeleteI19DeliverySideMissionEvRPT_",
+        "_Z10SafeDeleteI15TaxiSideMissionEvRPT_",
         "_ZN18SideMissionManager11initMissionEv",
         "_ZN18SideMissionManager4stopEb",
         "_ZN18SideMissionManager6updateEj",
@@ -52,6 +60,7 @@
         }
     ],
     "sections": [
+        ".side_mission_manager_draw_format",
         ".side_manager_update_switch",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -85,6 +94,14 @@
         "_ZN11LevelObject11GetMetatypeEv",
         "_ZN11SideMission4stopEb",
         "_ZN11MenuManager11getInstanceEv",
-        "_ZN11MenuManager7setTextENS_5eTextEPKcPi"
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN20AmbulanceSideMissionC1Ev",
+        "_ZN19DeliverySideMissionC1Ev",
+        "_ZN15TaxiSideMissionC1Ev",
+        "_ZN20AmbulanceSideMissionD1Ev",
+        "_ZN19DeliverySideMissionD1Ev",
+        "_ZN15TaxiSideMissionD1Ev",
+        "_ZN11SideMission8getTimerEv",
+        "_ZNK11MenuManager7getTextENS_5eTextE"
     ]
 }

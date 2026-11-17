@@ -13,7 +13,7 @@
 #include "SideMissionTimerText.h"
 #include "Checkpoint.h"
 #include "../core/NativeStdio.h"
-#include "SideMission.h"
+#include "DeliverySideMission.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -59,26 +59,6 @@ static void _GLOBAL__I__ZN19DeliverySideMissionC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
-
-class DeliverySideMission : public SideMission {
-public:
-    DeliverySideMission();
-    virtual void begin(irr::core::vector3d<float>, int, int&, float&);
-    virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
-    virtual bool dropOff(irr::core::vector3d<float>);
-    virtual void end();
-    virtual void clean();
-    virtual int getMoneyReward();
-    virtual int getGoalMessage();
-    virtual int getStartMessage();
-    virtual int getEndMessage();
-    virtual int getObj1Message();
-    virtual int getObj2Message();
-
-private:
-    irr::core::array<Checkpoint*> pickupCheckpoints;
-    Checkpoint* dropOffCheckpoint;
-};
 
 void DeliverySideMission::end()
 {
@@ -184,4 +164,15 @@ bool DeliverySideMission::pickUp(irr::core::vector3d<float> position, int& time,
     formatSideMissionTime(totalText, deliveryMissionTimerFormat, totalTime);
     formatSideMissionTime(dropOffText, deliveryMissionTimerFormat, dropOffTime);
     return true;
+}
+
+DeliverySideMission::~DeliverySideMission()
+{
+    ::operator delete(pickupCheckpoints.data);
+    pickupCheckpoints.data = 0;
+    pickupCheckpoints.used = 0;
+    pickupCheckpoints.allocated = 0;
+    pickupCheckpoints.is_sorted = true;
+    if (pickupCheckpoints.free_when_destroyed)
+        ::operator delete(pickupCheckpoints.data);
 }

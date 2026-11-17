@@ -1374,3 +1374,35 @@ static void _GLOBAL__I__ZN13ScriptManager12s_playerTestE()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+void ScriptManager::freezeRunningScripts(const Script* script, PlayerTest::eContext context)
+{
+    unsigned int targetContext = context;
+    if (targetContext == static_cast<unsigned int>(PlayerTest::AnyContext))
+        targetContext = PlayerTest::GetPlayer()->contextWord;
+
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i] != script && scripts[i]->getState() == Script::State2 &&
+            scripts[i]->contextWord == targetContext) {
+            const int opcode = scripts[i]->peekCommand(0)->opcode;
+            if ((opcode == 64 || opcode == 105) && scripts[i]->source) {
+                displayOnMinimap(scripts[i]->source, false, true);
+                scripts[i]->unsetScriptObjectAction(scripts[i]->source, Script::MinimapObject);
+                scripts[i]->source->disable();
+                scripts[i]->unsetScriptObjectAction(scripts[i]->source, Script::ActiveObject);
+                scripts[i]->source = 0;
+                scripts[i]->unknown72 = 0;
+            }
+            scripts[i]->setState(Script::State1, PlayerTest::AnyContext);
+        }
+    }
+}
+
+void ScriptManager::unlockFrozenScripts()
+{
+    const int context = PlayerTest::GetPlayer()->contextWord;
+    for (int i = 0; i < scriptCount; ++i) {
+        if (scripts[i]->getState() == Script::State1 && scripts[i]->contextWord == context)
+            scripts[i]->setState(Script::State2, PlayerTest::AnyContext);
+    }
+}

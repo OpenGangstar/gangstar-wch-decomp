@@ -12,7 +12,7 @@
 #include "../missions/SideMissionTimerText.h"
 #include "../missions/Checkpoint.h"
 #include "../characters/PhysicAttributes.h"
-#include "../missions/SideMission.h"
+#include "TaxiSideMission.h"
 #include "../ai/NPC.h"
 #include "../characters/PlayerTest.h"
 #include "Vehicle.h"
@@ -86,27 +86,6 @@ static void _GLOBAL__I__ZN15TaxiSideMissionC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
-
-class TaxiSideMission : public SideMission {
-public:
-    TaxiSideMission();
-    ~TaxiSideMission();
-    virtual void begin(irr::core::vector3d<float>, int, int&, float&);
-    virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
-    virtual bool dropOff(irr::core::vector3d<float>);
-    virtual void end();
-    virtual void clean();
-    virtual int getMoneyReward();
-    virtual int getGoalMessage();
-    virtual int getStartMessage();
-    virtual int getEndMessage();
-    virtual int getObj1Message();
-    virtual int getObj2Message();
-
-private:
-    Checkpoint* checkpoint;
-    int pickupDelay;
-};
 
 void TaxiSideMission::end()
 {

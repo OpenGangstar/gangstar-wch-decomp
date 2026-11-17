@@ -15,6 +15,7 @@ __aeabi_idiv = 0x001c43dc;
 __aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .side_entry_346ac8 0x00346ac8 : { *sdk-startup-deliverysidemission.o(.text._ZN19DeliverySideMissionD1Ev .gnu.linkonce.t._ZN19DeliverySideMissionD1Ev .text._ZN19DeliverySideMissionD2Ev .gnu.linkonce.t._ZN19DeliverySideMissionD2Ev) }
     .side_entry_346628 0x00346628 : { *sdk-startup-deliverysidemission.o(.text._ZN19DeliverySideMission7dropOffEN3irr4core8vector3dIfEE) }
     .side_entry_3468c8 0x003468c8 : { *sdk-startup-deliverysidemission.o(.text._ZN19DeliverySideMission6pickUpEN3irr4core8vector3dIfEERiRfi) }
     .delivery_begin 0x00346654 : { *sdk-startup-deliverysidemission.o(.text._ZN19DeliverySideMission5beginEN3irr4core8vector3dIfEEiRiRf) }

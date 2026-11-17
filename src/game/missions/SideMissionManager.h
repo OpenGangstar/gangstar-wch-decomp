@@ -2,20 +2,27 @@
 #define WCH_MISSIONS_SIDE_MISSION_MANAGER_H
 
 class SideMission;
+class AmbulanceSideMission;
+class DeliverySideMission;
+class TaxiSideMission;
 
 class SideMissionManager {
 public:
     static void debug();
     static void confirm();
+    static void init();
+    static void clean();
+    static void start();
+    static void draw();
     static void setNextMissionTimer();
     static bool isInSideMission();
     static bool isMissionAvailable();
     static void update(unsigned int elapsed);
     static void stop(bool showMessage);
 
-    static SideMission* s_ambulanceSideMission;
-    static SideMission* s_deliverySideMission;
-    static SideMission* s_taxiSideMission;
+    static AmbulanceSideMission* s_ambulanceSideMission;
+    static DeliverySideMission* s_deliverySideMission;
+    static TaxiSideMission* s_taxiSideMission;
 
 private:
     static void initMission();

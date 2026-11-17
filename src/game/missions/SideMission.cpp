@@ -1,3 +1,6 @@
+#include "AmbulanceSideMission.h"
+#include "DeliverySideMission.h"
+#include "../vehicles/TaxiSideMission.h"
 /*
  * SideMission
  *

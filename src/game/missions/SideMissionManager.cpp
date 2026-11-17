@@ -9,6 +9,13 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "SideMissionTimerText.h"
+#include "AmbulanceSideMission.h"
+#include "DeliverySideMission.h"
+#include "../vehicles/TaxiSideMission.h"
+#include "../core/SafeDelete.h"
+#include "../ui/GSSideMissionMenu.h"
+#include "../ai/StateMachine.h"
 #include "../vehicles/Vehicle.h"
 #include "../hud/MenuManager.h"
 #include "../app/Application.h"
@@ -102,9 +109,9 @@ void SideMissionManager::confirm()
     s_step = 4;
 }
 
-SideMission* SideMissionManager::s_ambulanceSideMission;
-SideMission* SideMissionManager::s_deliverySideMission;
-SideMission* SideMissionManager::s_taxiSideMission;
+AmbulanceSideMission* SideMissionManager::s_ambulanceSideMission;
+DeliverySideMission* SideMissionManager::s_deliverySideMission;
+TaxiSideMission* SideMissionManager::s_taxiSideMission;
 SideMission* SideMissionManager::s_currentMission;
 int SideMissionManager::s_nextMissionTimer;
 
@@ -205,4 +212,50 @@ void SideMissionManager::stop(bool showMessage)
     MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
     Application::GetInstance()->GetHudManager()->toggleRadioCB(false);
     s_step = 0;
+}
+
+void SideMissionManager::clean()
+{
+    SafeDelete(s_ambulanceSideMission);
+    SafeDelete(s_deliverySideMission);
+    SafeDelete(s_taxiSideMission);
+    s_currentMission = 0;
+}
+
+void SideMissionManager::init()
+{
+    s_ambulanceSideMission = new AmbulanceSideMission;
+    s_deliverySideMission = new DeliverySideMission;
+    s_taxiSideMission = new TaxiSideMission;
+    s_currentMission = 0;
+    s_step = 0;
+}
+
+template<> GSSideMissionMenu* StateMachine::pushState<GSSideMissionMenu>() __attribute__((weak));
+
+void SideMissionManager::start()
+{
+    if (isMissionAvailable() && s_step == 2) {
+        Application::GetInstance()->GetHudManager()->toggleRadioCB(false);
+        StateMachine::getInstance()->pushState<GSSideMissionMenu>();
+    }
+}
+
+void SideMissionManager::draw()
+{
+    if (!s_currentMission ||
+        static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4)
+        return;
+    int timer;
+    // GCC 4.2 places the retail timer-display path first with this hint.
+    if (__builtin_expect(isInSideMission(), 1) && (timer = s_currentMission->getTimer()) >= 0) {
+        char text[8];
+        formatSideMissionTime(text, "%02d:%02d:%01d", timer);
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, text, 0);
+        return;
+    }
+    if (MenuManager::getInstance()->getText(MenuManager::MissionTimerText)) {
+        MenuManager::getInstance()->setText(
+            MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    }
 }

@@ -17,8 +17,20 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 lrand48 = 0x001c4664;
 __aeabi_idivmod = 0x001c4934;
+_Znwj = 0x001c4814;
+__stack_chk_fail = 0x001c42e0;
+__aeabi_idiv = 0x001c43dc;
+sprintf = 0x001c46ac;
 SECTIONS
 {
+    .verified_entry_34783c 0x0034783c : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4drawEv) }
+    .side_mission_manager_draw_format 0x0042ad20 : { *ai-startup-sidemissionmanager.o(.rodata.str1.4 .rodata.str1.1) }
+    .side_entry_347ab0 0x00347ab0 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5cleanEv .gnu.linkonce.t._ZN18SideMissionManager5cleanEv) }
+    .side_entry_347b00 0x00347b00 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4initEv .gnu.linkonce.t._ZN18SideMissionManager4initEv) }
+    .side_entry_347b68 0x00347b68 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5startEv .gnu.linkonce.t._ZN18SideMissionManager5startEv) }
+    .side_entry_347a50 0x00347a50 : { *ai-startup-sidemissionmanager.o(.text._Z10SafeDeleteI20AmbulanceSideMissionEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI20AmbulanceSideMissionEvRPT_) }
+    .side_entry_347a70 0x00347a70 : { *ai-startup-sidemissionmanager.o(.text._Z10SafeDeleteI19DeliverySideMissionEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI19DeliverySideMissionEvRPT_) }
+    .side_entry_347a90 0x00347a90 : { *ai-startup-sidemissionmanager.o(.text._Z10SafeDeleteI15TaxiSideMissionEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI15TaxiSideMissionEvRPT_) }
     .side_entry_347960 0x00347960 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager11initMissionEv) }
     .side_entry_3479c4 0x003479c4 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4stopEb) }
     .side_manager_update 0x00347bac : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager6updateEj) }

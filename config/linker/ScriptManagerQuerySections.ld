@@ -4,6 +4,8 @@ PROVIDE(__cxa_guard_acquire = 0x001c4958);
 PROVIDE(__cxa_guard_release = 0x001c46c4);
 SECTIONS
 {
+    .verified_entry_33e9c0 0x0033e9c0 : { *script-manager-helpers.o(.text._ZN13ScriptManager20freezeRunningScriptsEPK6ScriptN10PlayerTest8eContextE) }
+    .verified_entry_33ecc0 0x0033ecc0 : { *script-manager-helpers.o(.text._ZN13ScriptManager19unlockFrozenScriptsEv) }
     .script_manager_minimap_tracking 0x0033e974 : { *script-manager-helpers.o(.text._ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb) }
     .script_manager_first_checkpoint 0x0033d1e0 : { *script-manager-helpers.o(.text._ZNK13ScriptManager27getFirstAvailableCheckpointEv) }
     .script_manager_save 0x0033e8fc : { *script-manager-helpers.o(.text._ZN13ScriptManager8saveGameEv) }

@@ -26,6 +26,8 @@
     "source": "src/game/missions/DeliverySideMission.cpp",
     "linker_script": "config/linker/DeliverySideMissionSdkStartup.ld",
     "functions": [
+        "_ZN19DeliverySideMissionD1Ev",
+        "_ZN19DeliverySideMissionD2Ev",
         "_ZN19DeliverySideMission7dropOffEN3irr4core8vector3dIfEE",
         "_ZN19DeliverySideMission6pickUpEN3irr4core8vector3dIfEERiRfi",
         "_ZN19DeliverySideMission5beginEN3irr4core8vector3dIfEEiRiRf",
