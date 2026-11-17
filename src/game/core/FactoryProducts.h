@@ -15,6 +15,7 @@ class CCustomSceneManager {
 public:
     CCustomSceneManager(irr::video::IVideoDriver*, irr::io::IFileSystem*,
         irr::gui::ICursorControl*, irr::scene::IMeshCache*, irr::gui::IGUIEnvironment*);
+    void clean();
     static void CleanParents(irr::scene::ISceneNode* node);
 };
 

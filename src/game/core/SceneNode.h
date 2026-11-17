@@ -253,6 +253,38 @@ public:
     virtual void unknown63(); virtual void unknown64(); virtual void unknown65();
     virtual void unknown66();
     virtual ISceneCollisionManager* getSceneCollisionManager();
+    virtual void unknown68();
+    virtual void addToDeletionQueue(ISceneNode* node);
+    virtual void unknown70();
+    virtual void unknown71();
+    virtual void unknown72();
+    virtual void unknown73();
+    virtual void unknown74();
+    virtual void unknown75();
+    virtual void unknown76();
+    virtual void unknown77();
+    virtual void unknown78();
+    virtual void unknown79();
+    virtual void unknown80();
+    virtual void unknown81();
+    virtual void unknown82();
+    virtual void unknown83();
+    virtual void unknown84();
+    virtual void unknown85();
+    virtual void unknown86();
+    virtual void unknown87();
+    virtual void unknown88();
+    virtual void unknown89();
+    virtual void unknown90();
+    virtual void unknown91();
+    virtual void unknown92();
+    virtual void unknown93();
+    virtual void unknown94();
+    virtual void unknown95();
+    virtual void unknown96();
+    virtual void unknown97();
+    virtual void unknown98();
+    virtual void removeAll();
 };
 }
 class ITimer {

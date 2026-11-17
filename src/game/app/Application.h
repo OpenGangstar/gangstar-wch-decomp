@@ -46,6 +46,7 @@ public:
     void RegisterForDrawingInScene(IDrawable* drawable);
     void RegisterForDrawingOnHUD(IDrawable* drawable);
     void RegisterForUpdate(IUpdatable* object);
+    void UnRegisterForUpdate(IUpdatable* object);
     void GetScreenDimensions(int& width, int& height) const;
     inline irr::IrrlichtDevice* GetDevice() const { return device; }
     inline StringManager* GetStringManager() const { return stringManager; }

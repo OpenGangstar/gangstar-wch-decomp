@@ -9,6 +9,20 @@
  */
 
 #include "GS3DStuff.h"
+#include "../scripting/ScriptManager.h"
+#include "../meta/Race.h"
+#include "../input/CControlManager.h"
+#include "../characters/Character.h"
+#include "../world/SceneNodeManager.h"
+#include "../hud/MiniMap.h"
+#include "../core/CameraManager.h"
+#include "../characters/PhysicAttributes.h"
+#include "../world/TrailMgr.h"
+#include "../combat/WeaponManager.h"
+#include "../app/GSLoading.h"
+#include "../meta/Item.h"
+#include "../ui/Shop.h"
+#include "../vehicles/Vehicle.h"
 #include "LODSceneNode.h"
 #include "../core/MeshBufferInterfaces.h"
 #include "../core/MeshSceneInterfaces.h"
@@ -22,6 +36,7 @@
 #include "../core/NativeStdio.h"
 #include "../core/NativeStrings.h"
 #include "../core/PlacementNew.h"
+#include "../core/PointerVector.h"
 #include "../core/Lock.h"
 #include "../app/Application.h"
 #include "../persistence/DataStream.h"
@@ -573,6 +588,12 @@ irr::scene::ISceneNode* GS3DStuff::city;
 GameObjectManager* GS3DStuff::gom;
 irr::video::ITexture* GS3DStuff::skyBoxTexture;
 OctTreeAABB* GS3DStuff::sceneOcttree;
+irr::scene::ISceneNode* GS3DStuff::sunNode;
+irr::core::array<CollisionBodyDef*>* GS3DStuff::VisibleNodes;
+irr::core::array<CollisionBodyDef*>* GS3DStuff::LastVisibleNodes;
+irr::core::array<irr::scene::ISceneNode*>* GS3DStuff::VisibleSceneNodes;
+irr::core::array<irr::scene::ISceneNode*>* GS3DStuff::LastVisibleSceneNodes;
+irr::core::array<SpawnPoint*>* GS3DStuff::VisibleSpawnPoint;
 int GS3DStuff::s_perfConfig;
 Structs::PhonePerformanceProfile GS3DStuff::s_phonePerformanceProfile;
 unsigned int GS3DStuff::lastTime;
@@ -733,7 +754,7 @@ irr::scene::ISceneNode* GS3DStuff::loadCityPart(const char* path)
 }
 
 struct GS3DLightNodes {
-    void* data;
+    irr::scene::ISceneNode** data;
     unsigned int allocated;
     unsigned int used;
     bool ownsData;
@@ -946,4 +967,95 @@ void GS3DStuff::setPerformanceType(const char* name)
 finish:
     stream.Close();
     resource.Close();
+}
+
+void GS3DStuff::unload()
+{
+    Application* application = Application::GetInstance();
+    application->GetControlManager()->lock();
+    static_cast<Race*>(ScriptManager::getInstance()->getRace())->reset();
+    AIManager::getInstance()->clean();
+    ScriptManager::getInstance()->unload();
+    GameObjectManager::s_gom->Clear();
+    Character::freeBloodObjects();
+    SceneNodeManager::getInstance()->tearDown();
+
+    if (application->GetHudManager()->minimap)
+        static_cast<MiniMap*>(application->GetHudManager()->minimap)->deregisterAllForMapTracking();
+    application->GetHudManager()->init();
+
+    for (int index = 0; static_cast<unsigned int>(index) < lightsNodes.used; ++index)
+        lightsNodes.data[index]->remove();
+    ::operator delete(lightsNodes.data);
+    lightsNodes.data = 0;
+    lightsNodes.used = 0;
+    lightsNodes.allocated = 0;
+    lightsNodes.sorted = true;
+
+    freeGameData(Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode());
+    if (sunNode)
+        sunNode->drop();
+    sunNode = 0;
+    CameraManager::getInstance()->clean();
+    PhysicAttributes::Clean();
+    PhysicAttributes::s_heightmap = 0;
+    Character::cleanTimelineController();
+    Lock::clean();
+    SafeDelete(sceneOcttree);
+    playerTest = 0;
+    SpawnPoint::ClearAllSpawnInstances();
+    PhysicAttributes::CleanWorld();
+    if (s_TrailMgr) {
+        s_TrailMgr->CleanUp();
+        delete s_TrailMgr;
+        s_TrailMgr = 0;
+    }
+    LevelObject::freeHighlights();
+    Map::getInstance()->clean();
+
+    SafeDelete(VisibleNodes);
+    SafeDelete(LastVisibleNodes);
+    SafeDelete(VisibleSceneNodes);
+    SafeDelete(LastVisibleSceneNodes);
+    SafeDelete(VisibleSpawnPoint);
+
+    irr::scene::ISceneManager* manager = application->GetDevice()->getSceneManager();
+    manager->removeAll();
+    reinterpret_cast<CCustomSceneManager*>(manager)->clean();
+    Application::GetInstance()->GetWeaponManager()->clean();
+    GSLoading::setGameLoaded(false);
+
+    while (SoundManager::getInstance()->isSoundPlaying(218))
+        SoundManager::getInstance()->update(0.0);
+
+    Item::resetAchievementCounters();
+    Shop::resetAchievementCounters();
+
+    const float musicVolume = SoundManager::getInstance()->playbackVolume;
+    const float effectsVolume = SoundManager::getInstance()->effectsPlaybackVolume;
+    Vehicle::UnRegisterCarSoundsCallbacks();
+    Application::GetInstance()->UnRegisterForUpdate(SoundManager::getInstance());
+    SoundManager::getInstance()->clear();
+    SoundManager::getInstance()->init();
+    Application::GetInstance()->RegisterForUpdate(SoundManager::getInstance());
+    SoundManager::getInstance()->allocBuffers();
+    SoundManager::getInstance()->setMusicVolume(musicVolume);
+    SoundManager::getInstance()->setSfxVolume(effectsVolume);
+    Vehicle::RegisterCarSoundsCallbacks();
+}
+
+namespace std {
+template<class T> struct char_traits;
+template<class T, class Traits = char_traits<T>, class Alloc = allocator<T> >
+class basic_string {
+public:
+    basic_string& append(const T* text);
+private:
+    basic_string& _M_append(const T* first, const T* last) __attribute__((weak));
+};
+template<>
+basic_string<char>& basic_string<char>::append(const char* text)
+{
+    return _M_append(text, text + strlen(text));
+}
 }

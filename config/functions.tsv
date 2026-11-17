@@ -9188,7 +9188,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dcd01	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP7VehicleSaIS1_EE8_M_clearEv	std::vector<Vehicle*, std::allocator<Vehicle*> >::_M_clear()
 0x002dcd15	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP4ItemSaIS1_EE8_M_clearEv	std::vector<Item*, std::allocator<Item*> >::_M_clear()
 0x002dcd29	0x174	GS3DStuff.cpp	game	rendering	pending	_ZNSs9_M_appendEPKcS0_	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, char const*)
-0x002dce9d	0x28	GS3DStuff.cpp	game	rendering	pending	_ZNSs6appendEPKc	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*)
+0x002dce9d	0x28	GS3DStuff.cpp	game	rendering	matched	_ZNSs6appendEPKc	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*)
 0x002dcec5	0x170	GS3DStuff.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002dd035	0x14	GS3DStuff.cpp	game	rendering	matched	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE
 0x002dd049	0x24	GS3DStuff.cpp	game	rendering	matched	_ZN12CGameFactoryD1Ev	CGameFactory::~CGameFactory()
@@ -9209,7 +9209,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002de5a5	0x138	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff13AddToSceneMgrEPN3irr5scene10ISceneNodeES3_	GS3DStuff::AddToSceneMgr(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
 0x002de6dd	0x210	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi	GS3DStuff::PrintNodeProperties(irr::scene::ISceneNode*, bool, int)
 0x002de8ed	0x28	GS3DStuff.cpp	game	rendering	matched	_Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_	void SafeDelete<irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> > >(irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*&)
-0x002de919	0x284	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff6unloadEv	GS3DStuff::unload()
+0x002de919	0x284	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6unloadEv	GS3DStuff::unload()
 0x002deba1	0x164	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE	GS3DStuff::checkPickableProximity(std::vector<Item*, std::allocator<Item*> >&)
 0x002ded05	0x1b8	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE	GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType)
 0x002deebd	0x338	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE	GS3DStuff::AddXRef(irr::scene::ISceneNode*)

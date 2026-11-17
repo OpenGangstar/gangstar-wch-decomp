@@ -10,6 +10,8 @@
 #include "../core/Array.h"
 #include "../core/VideoDriver.h"
 
+class CollisionBodyDef;
+class SpawnPoint;
 class BulletTraceManager;
 class TrailMgr;
 class OctTreeAABB;
@@ -40,6 +42,12 @@ class GS3DStuff : public StateBase, public IEventReceiver {
 public:
     static GS3DLightNodes lightsNodes;
     static void unload();
+    static irr::scene::ISceneNode* sunNode;
+    static irr::core::array<CollisionBodyDef*>* VisibleNodes;
+    static irr::core::array<CollisionBodyDef*>* LastVisibleNodes;
+    static irr::core::array<irr::scene::ISceneNode*>* VisibleSceneNodes;
+    static irr::core::array<irr::scene::ISceneNode*>* LastVisibleSceneNodes;
+    static irr::core::array<SpawnPoint*>* VisibleSpawnPoint;
     static int s_orientation;
     static bool b_isAutoOri;
     static void SetCurrentOrientation(irr::video::E_ORTHO_ORIENTATION orientation);

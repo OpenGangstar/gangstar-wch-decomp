@@ -29,6 +29,7 @@ public:
     static b2ContactFilter* s_contactFilter;
     static b2ContactListener* s_contactListener;
     static void InitWorld();
+    static void Clean();
     static void CleanWorld();
     static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);
     static irr::scene::ISceneNode* s_heightmap;

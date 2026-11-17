@@ -15,15 +15,6 @@
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
 
-namespace {
-// Trail cleanup uses retail scene-manager slot 69.
-class TrailSceneManager : public irr::scene::ISceneManager {
-public:
-    virtual void unknown68();
-    virtual void addToDeletionQueue(irr::scene::ISceneNode* node);
-};
-}
-
 Trail::Trail() : trailPointCount(0), lastAddedPoint()
 {
     trailLifetime = 600;
@@ -42,7 +33,8 @@ Trail::Trail() : trailPointCount(0), lastAddedPoint()
 void Trail::CleanUp()
 {
     irr::scene::ISceneManager* manager = Application::GetInstance()->GetDevice()->getSceneManager();
-    reinterpret_cast<TrailSceneManager*>(manager)->addToDeletionQueue(meshSceneNode);
+    // Trail cleanup uses retail scene-manager slot 69.
+    manager->addToDeletionQueue(meshSceneNode);
     trailLifetime = 600;
     segmentWidth = 25.0f;
     trailPointCount = 0;

@@ -81,7 +81,7 @@ public:
     void onCameraEnter();
     void UpdateCarSounds();
     void UpdateCarTireTrails(int, int alpha);
-    void UnRegisterCarSoundsCallbacks();
+    static void UnRegisterCarSoundsCallbacks();
     static void RegisterCarSoundsCallbacks();
     void repair();
     int getRepairPrice() const { return repairPrice; }

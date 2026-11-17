@@ -1,7 +1,16 @@
 PROVIDE(__aeabi_i2f = 0x001c41e4);
 PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(strcmp = 0x001c4658);
+PROVIDE(strlen = 0x001c48bc);
 SECTIONS {
+    .gs_string_append 0x002dce9c : { *gs3d-stuff.o(.text._ZNSs6appendEPKc) }
+    .gs_unload 0x002de918 : { *gs3d-stuff.o(.text._ZN9GS3DStuff6unloadEv) }
+    .gs_global_4b6994 0x004b6994 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff7sunNodeE) }
+    .gs_global_4b69b4 0x004b69b4 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff12VisibleNodesE) }
+    .gs_global_4b69b8 0x004b69b8 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff16LastVisibleNodesE) }
+    .gs_global_4b69bc 0x004b69bc (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff17VisibleSceneNodesE) }
+    .gs_global_4b69c0 0x004b69c0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff21LastVisibleSceneNodesE) }
+    .gs_global_4b69c4 0x004b69c4 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff17VisibleSpawnPointE) }
     .gs_add_to_scene 0x002de5a4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff13AddToSceneMgrEPN3irr5scene10ISceneNodeES3_) }
     .gs_load_performance 0x002db548 : { *gs3d-stuff.o(.text._ZN9GS3DStuff22loadPerformanceProfileEPKc) }
     .gs_set_performance 0x002dbde4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff18setPerformanceTypeEPKc) }

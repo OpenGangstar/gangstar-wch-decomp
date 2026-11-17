@@ -309,10 +309,18 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002de5a5 | GS3DStuff::AddToSceneMgr | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002db549 | GS3DStuff::loadPerformanceProfile | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dbde5 | GS3DStuff::setPerformanceType | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002de919 | GS3DStuff::unload | vehicle_side | REVIEW | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002de919 | GS3DStuff::unload | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dc715 | GS3DStuff::checkVehicleProximity | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002deba1 | GS3DStuff::checkPickableProximity | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dd0c1 | GS3DStuff::checkForDespawn | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002de6dd | GS3DStuff::PrintNodeProperties | camera_tap | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002df419 | GS3DStuff::tearDown | vehicle_side | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB | lock_init | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002de6dd | GS3DStuff::PrintNodeProperties | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df419 | GS3DStuff::tearDown | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dce9d | std::string::append(const char*) | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002deebd | GS3DStuff::AddXRef | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*, const char*) | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode | lock_init | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dad71 | GS3DStuff.cpp::__tcf_8 | camera_tap | REVIEW | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody | vehicle_side | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dada9 | GS3DStuff.cpp::__tcf_7 | camera_tap | REVIEW | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x00328df9 | Message::isDisplayed | camera_tap | ASSIGNED | — | src/game/ui/Message.cpp |
