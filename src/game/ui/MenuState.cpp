@@ -34,6 +34,8 @@ void _ZN7Widgets6IGMenu17SetBackButtonTextEi(void* menu, int text);
 void _ZN7Widgets6IGMenu9GoToFrameEPKc(void* menu, const char* frame);
 void _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(void* box, int state);
 extern int _ZN11MenuManager20s_CarRentalDataCountE;
+bool _ZN9GSLoading12isGameLoadedEv();
+void _ZN7Widgets7Volumes11SetPlaylistEi(MenuWidget* widget, int playlist);
 }
 
 namespace Menus {
@@ -121,6 +123,7 @@ public:
 class OptionGameSettings : public Options {
 public:
     OptionGameSettings();
+    void Refresh();
     virtual ~OptionGameSettings();
     virtual void GotFocus();
     virtual void LostFocus();
@@ -926,6 +929,32 @@ void Menus::Services::GotFocus()
     configureFourButtonMenu<0x103d, 0x1039, 0x103a, 0x103c, 0x1035>(MenuManager::getInstance());
 }
 
+namespace {
+inline __attribute__((always_inline)) int settingsPageCount(const MenuManager* manager)
+{
+    return _ZN9GSLoading12isGameLoadedEv() && manager->areCheatsUnlocked() ? 7 : 1;
+}
+}
+
+void Menus::OptionGameSettings::Refresh()
+{
+    MenuManager* manager = MenuManager::getInstance();
+    MenuWidget* arrows = static_cast<MenuWidget*>(getWidgetByIndex(manager, 18));
+    _ZN7Widgets6Arrows12SetPageCountEiib(arrows, settingsPageCount(manager), 0, true);
+}
+
+void Menus::OptionGameSettings::GotFocus()
+{
+    Options::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    _ZN11MenuManager17allowCheatsUnlockEb(manager, true);
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 3, true);
+    MenuWidget* arrows = static_cast<MenuWidget*>(getWidgetByIndex(manager, 18));
+    arrows->SetListener(this);
+    _ZN7Widgets6Arrows12SetPageCountEiib(arrows, settingsPageCount(manager), 0, true);
+    static_cast<MenuWidget*>(getWidgetByIndex(manager, 26))->SetListener(this);
+}
+
 void Menus::OptionLanguage::GotFocus()
 {
     Options::GotFocus();
@@ -938,6 +967,16 @@ void Menus::OptionControls::GotFocus()
 {
     Options::GotFocus();
     _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(1), 1, true);
+}
+
+void Menus::OptionVolumes::GotFocus()
+{
+    MenuManager* manager = MenuManager::getInstance();
+    MenuWidget* volumes = static_cast<MenuWidget*>(getWidgetByIndex(manager, 7));
+    _ZN7Widgets7Volumes11SetPlaylistEi(volumes, selectedChannel);
+    volumes->SetListener(this);
+    Options::GotFocus();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 0, true);
 }
 
 namespace {
