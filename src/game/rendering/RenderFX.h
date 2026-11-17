@@ -43,6 +43,7 @@ public:
 
     void SetBounds(int left, int top, int right, int bottom);
     void SetViewport(int x, int y, int width, int height);
+    void PreRender();
     void BeginDisplay();
     void Render();
     void EndDisplay();

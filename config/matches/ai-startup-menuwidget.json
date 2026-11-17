@@ -291,6 +291,7 @@
         "_ZN7gameswf18get_render_handlerEv",
         "_ZN7gameswf7log_msgEPKcz",
         "_ZN7gameswf13texture_cache5resetEv",
+        "_ZN7gameswf13filter_engine3runEPNS_4rootE",
         "_ZN7gameswf6player8get_rootEv",
         "_ZNK7gameswf11ref_counted7add_refEv",
         "_ZN7gameswf11ref_counted8drop_refEv",
