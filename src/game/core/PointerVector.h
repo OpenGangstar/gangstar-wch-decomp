@@ -28,10 +28,11 @@
 #ifndef WCH_CORE_POINTER_VECTOR_H
 #define WCH_CORE_POINTER_VECTOR_H
 #include "PlacementNew.h"
+#include "NativeAllocator.h"
 
 // Observed STLport pointer-vector interface only. Allocation, base destruction
 // and overflow remain retail calls; this is not a general STL replacement.
-namespace std { template<class T> class allocator {}; struct __true_type {}; }
+namespace std { struct __true_type {}; }
 namespace stlp_priv {
 template<class T, class Alloc> class _Vector_base {
 public:
