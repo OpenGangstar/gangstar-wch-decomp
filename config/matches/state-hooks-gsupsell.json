@@ -190,7 +190,6 @@
         "_ZN10GSMainMenuC1Ev",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
-        "_ZN11MenuManager11getInstanceEv",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev",
         "_ZN12StateMachine12_switchStateEP9StateBase"

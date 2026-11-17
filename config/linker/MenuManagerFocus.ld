@@ -16,7 +16,9 @@ strcat = 0x001c43a0;
 memcpy = 0x001c4190;
 /* The suffix is pooled inside the complete Asian font format string. */
 asianFontEnd = ADDR(.menu_manager_asian_font_format) + 20;
-_ZZN11MenuManager11getInstanceEvE3mgr = 0x004b7a20;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
+__aeabi_atexit = 0x001c494c;
 menuMapStateName = 0x0040b608;
 SECTIONS
 {
@@ -27,7 +29,10 @@ SECTIONS
     .menu_manager_set_localized_text 0x002e564c : { *menu-manager-helpers.o(.text._ZN11MenuManager7setTextENS_5eTextEiPi) }
     .menu_manager_get_text_id 0x002e3f30 : { *menu-manager-helpers.o(.text._ZNK11MenuManager9getTextIdENS_5eTextE) }
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
-    .menu_manager_instance_cleanup 0x002e62b0 : { *menu-manager-helpers.o(.text.__tcf_7) }
+    .menu_manager_instance 0x002e4894 : { *menu-manager-helpers.o(.text._ZN11MenuManager11getInstanceEv) }
+    .menu_manager_instance_cleanup 0x002e62b0 : { *menu-manager-helpers.o(.text.__tcf_1) }
+    .menu_manager_instance_guard 0x004b7a1c (NOLOAD) : { *menu-manager-helpers.o(.bss._ZGVZN11MenuManager11getInstanceEvE3mgr) }
+    .menu_manager_instance_storage 0x004b7a20 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZZN11MenuManager11getInstanceEvE3mgr) }
     .menu_manager_widget_visibility 0x002e49ac : { *menu-manager-helpers.o(.text._ZN11MenuManager22updateWidgetVisibilityEv) }
     .menu_manager_constructor 0x002e477c : { *menu-manager-helpers.o(.text._ZN11MenuManagerC1Ev .text._ZN11MenuManagerC2Ev) }
     .menu_manager_destructor 0x002e6274 : { *menu-manager-helpers.o(.text._ZN11MenuManagerD1Ev .text._ZN11MenuManagerD2Ev) }

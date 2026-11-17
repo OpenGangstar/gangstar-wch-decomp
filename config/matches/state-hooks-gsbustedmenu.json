@@ -377,7 +377,6 @@
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
-        "_ZN11MenuManager11getInstanceEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
