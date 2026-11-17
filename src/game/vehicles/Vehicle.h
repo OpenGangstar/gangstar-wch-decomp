@@ -84,6 +84,7 @@ public:
     void UnRegisterCarSoundsCallbacks();
     static void RegisterCarSoundsCallbacks();
     void repair();
+    int getRepairPrice() const { return repairPrice; }
     void resetCollisions();
     void removeWheelCollisions();
     void setPathToFollow(const Path* path);
@@ -196,7 +197,8 @@ private:
     unsigned char unknown156[12];
     unsigned int mass;
     float skidThreshold;
-    unsigned char unknown176[20];
+    unsigned char unknown176[16];
+    int repairPrice;
     int savedRadioStation;
     unsigned char unknown200[24];
     unsigned int tireTrailWidth;

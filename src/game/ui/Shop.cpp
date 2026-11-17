@@ -122,3 +122,63 @@ void Shop::Load(const Structs::CheckpointShop& data)
         break;
     }
 }
+
+#include "GSCarRentalMenu.h"
+#include "GSCarRepairMenu.h"
+#include "GSWeaponShopMenu.h"
+#include "../characters/PlayerTest.h"
+#include "../hud/MenuManager.h"
+#include "../meta/Achievements.h"
+#include "../scripting/ScriptManager.h"
+#include "../vehicles/Vehicle.h"
+
+void Shop::trigger(bool enabled)
+{
+    if (!(unknown4 & 2u))
+        return;
+    triggerActive = enabled;
+    if (!enabled)
+        return;
+
+    switch (GetMetatype()) {
+    case 31:
+        StateMachine::getInstance()->pushState<GSCarRentalMenu>();
+        AchievementManager::s_achievementManager->recordShopCarRental(shopId);
+        break;
+    case 32: {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        Vehicle* car = static_cast<SavePrimaryInterface*>(player)->getVehicle();
+        if (!car)
+            return;
+        if (car->getHealth() == car->getMaxHealth()) {
+            ScriptManager::getInstance()->message(0x302d);
+        } else if (car->getMaxHealth() > 0) {
+            const int fullPrice = car->getRepairPrice();
+            const int price = fullPrice * (car->getMaxHealth() - car->getHealth()) / car->getMaxHealth();
+            if (player->isRichAsCroesus() || price <= player->cash) {
+                MenuManager::getInstance()->setRepairCost(price);
+                StateMachine::getInstance()->pushState<GSCarRepairMenu>();
+            } else {
+                ScriptManager::getInstance()->message(0x302c);
+            }
+        }
+        break;
+    }
+    case 33:
+        StateMachine::getInstance()->pushState<GSWeaponShopMenu>();
+        AchievementManager::s_achievementManager->recordShopWeapon(shopId);
+        break;
+    }
+}
+
+Shop::Shop(int type)
+    : Checkpoint(type), triggerActive(false)
+{
+}
+
+Shop::~Shop()
+{
+    MiniMap* map = static_cast<MiniMap*>(Application::GetInstance()->GetHudManager()->minimap);
+    if (map)
+        map->deregisterForMapTracking(this);
+}

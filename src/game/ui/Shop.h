@@ -5,6 +5,8 @@ namespace Structs { struct CheckpointShop; }
 class Shop : public Checkpoint {
 public:
     Shop(int type);
+    virtual ~Shop();
+    virtual void Update(int elapsed);
     void trigger(bool enabled);
     bool unlocked() const;
     bool triggered() const;

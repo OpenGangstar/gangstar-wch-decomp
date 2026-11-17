@@ -15,6 +15,14 @@ _ZN29retail_checkpoint_transitions11guard_transE = 0x0041d0e4;
 _ZN29retail_checkpoint_transitions22scripted_vehicle_transE = 0x0041d18c;
 SECTIONS
 {
+    .checkpoint_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
+    .ai-startup-checkpoint_fn_0 0x002f7674 : { *(.text._ZN10CheckpointD0Ev) }
+    .ai-startup-checkpoint_fn_1 0x002f769c : { *(.text._ZN10CheckpointD1Ev .text._ZN10CheckpointD2Ev) }
+    .ai-startup-checkpoint_fn_2 0x002f76bc : { *(.text._ZN10CheckpointC1Ei .text._ZN10CheckpointC2Ei) }
+    .ai-startup-checkpoint_fn_3 0x002f7600 : { *(.text._ZN10Checkpoint4LoadERKN7Structs10CheckpointE) }
+    .ai-startup-checkpoint_fn_4 0x002f763c : { *(.text._ZN10Checkpoint13grabSceneNodeEiPPPv) }
+    .ai-startup-checkpoint_fn_5 0x002f7538 : { *(.text._ZN10Checkpoint11SetPositionERKN3irr4core8vector3dIfEE) }
+    .checkpoint_vtable 0x004aa178 : { *(.data.rel.ro._ZTV10Checkpoint) }
     .ai_startup_function_0 0x002f79b4 : { *ai-startup-checkpoint.o(.text.__tcf_3) }
     .ai_startup_function_1 0x002f785c : { *ai-startup-checkpoint.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x002f79a0 : { *ai-startup-checkpoint.o(.text._GLOBAL__I__ZN10Checkpoint18s_bTutoCallContactE) }

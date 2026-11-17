@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-shop/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+__aeabi_idiv = 0x001c43dc;
 __aeabi_atexit = 0x001c494c;
 _ZN23retail_shop_transitions16civPassive_transE = 0x0041e910;
 _ZN23retail_shop_transitions17scriptedNpc_transE = 0x0041ea3c;
@@ -15,8 +16,18 @@ _ZN23retail_shop_transitions11guard_transE = 0x0041ede4;
 _ZN23retail_shop_transitions22scripted_vehicle_transE = 0x0041ee8c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+_Znwj = 0x001c4814;
 SECTIONS
 {
+    .shop_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
+    .ai-startup-shop_fn_0 0x00306364 : { *(.text._ZN4ShopD0Ev) }
+    .ai-startup-shop_fn_1 0x00305df0 : { *(.text._ZN4ShopD1Ev .text._ZN4ShopD2Ev) }
+    .ai-startup-shop_fn_2 0x00305d54 : { *(.text._ZN4ShopC1Ei .text._ZN4ShopC2Ei) }
+    .shop_vtable 0x004ab090 : { *(.data.rel.ro._ZTV4Shop) }
+    .shop_trigger 0x00305e28 : { *(.text._ZN4Shop7triggerEb) }
+    .shop_rental_push 0x00305d34 : { *(.gnu.linkonce.t._ZN12StateMachine9pushStateI15GSCarRentalMenuEEPT_v) }
+    .shop_repair_push 0x00305cf8 : { *(.gnu.linkonce.t._ZN12StateMachine9pushStateI15GSCarRepairMenuEEPT_v) }
+    .shop_weapon_push 0x00305cd8 : { *(.gnu.linkonce.t._ZN12StateMachine9pushStateI16GSWeaponShopMenuEEPT_v) }
     .shop_unlocked 0x00305cc4 : { *ai-startup-shop.o(.text._ZNK4Shop8unlockedEv) }
     .shop_load 0x00305d80 : { *(.text._ZN4Shop4LoadERKN7Structs14CheckpointShopE) }
     .shop_num_weapon 0x004b8194 (NOLOAD) : { *(.bss._ZN4Shop15s_numShopWeaponE) }

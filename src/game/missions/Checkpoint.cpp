@@ -78,3 +78,53 @@ static void __tcf_3()
         ::operator delete(value.array);
 }
 }
+
+#include "Checkpoint.h"
+#include "../core/SceneNode.h"
+#include "../world/ObjectData.h"
+
+Checkpoint::~Checkpoint()
+{
+}
+
+Checkpoint::Checkpoint(int type) : Transformation(type)
+{
+    unknown88 = -1;
+    unknown92 = -1;
+    radius = 0;
+    unknown96 = false;
+}
+
+
+irr::scene::ISceneNode* Checkpoint::grabSceneNode(int id, void*** parameters)
+{
+    irr::scene::ISceneNode* node = Transformation::grabSceneNode(id, parameters);
+    const irr::scene::SceneAnimatorList& animators = node->getAnimators();
+    if (animators.getSize() != 0) {
+        irr::scene::ISceneNodeAnimator* animator = *animators.begin();
+        animator->setAnimationClip(0);
+        animator->getTimelineCtrl()->setLoop(true);
+    }
+    return node;
+}
+
+extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __attribute__((weak));
+
+void Checkpoint::Load(const Structs::Checkpoint& data)
+{
+    Transformation::Load(data, _ZN12CGameFactory11getInstanceEv());
+    radius = data.unknown88;
+    unknown88 = data.unknown84;
+    unknown92 = data.unknown80;
+    unknown96 = data.unknown92;
+}
+
+void Checkpoint::SetPosition(const irr::core::vector3d<float>& position)
+{
+    Transformation::SetPosition(position);
+    irr::scene::ISceneNode* node = sceneNode;
+    if (node) {
+        node->setPosition(position);
+        node->updateAbsolutePosition(false);
+    }
+}
