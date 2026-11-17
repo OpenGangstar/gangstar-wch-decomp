@@ -12,6 +12,7 @@ SECTIONS
     .scene_manager_setup 0x0032141c : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager5setupEv) }
     .scene_manager_update 0x00321420 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager6updateEi) }
     .scene_pool_constructor 0x003218a0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi .text._ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi) }
+    .scene_manager_constructor 0x00321aa0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerC1Ev .text._ZN16SceneNodeManagerC2Ev) }
     .sdk_startup_function_0 0x00322068 : { *sdk-startup-scenenodemanager.o(.text.__tcf_3) }
     .sdk_startup_function_1 0x00321b9c : { *sdk-startup-scenenodemanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00321c08 : { *sdk-startup-scenenodemanager.o(.text._GLOBAL__I__Z10crcReflectjc) }

@@ -46,6 +46,21 @@ SceneNodeManager::Pool::Pool(const char* poolName, irr::collada::CColladaFactory
     strcpy(name, poolName);
 }
 
+SceneNodeManager::SceneNodeManager()
+    : poolIndexSize(0), poolIndexCompareState(false), poolsBegin(0), poolsEnd(0),
+      poolsCapacity(0)
+{
+    updateInterval = 10000;
+    updateTimeRemaining = 10000;
+    for (unsigned int index = 0; index < 256; ++index) {
+        crcTable[index] = crcReflect(index, 8) << 24;
+        for (int bit = 0; bit < 8; ++bit)
+            crcTable[index] = (crcTable[index] << 1) ^
+                ((crcTable[index] & 0x80000000u) ? 0x04c11db7u : 0);
+        crcTable[index] = crcReflect(crcTable[index], 32);
+    }
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));

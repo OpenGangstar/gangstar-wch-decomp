@@ -15,6 +15,7 @@ public:
     irr::scene::ISceneNode* grab(int poolID, LevelObject* owner, int id, void*** parameters);
     bool drop(int poolID, const irr::scene::ISceneNode* node);
 private:
+    SceneNodeManager();
     struct Node;
     struct Pool {
         Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
@@ -28,7 +29,19 @@ private:
         Node** nodesEnd;
         Node** nodesCapacity;
     };
-    unsigned char unknown0[36];
+    struct PoolIndexLink {
+        PoolIndexLink() : color(false), parent(0), left(this), right(this) {}
+        bool color;
+        PoolIndexLink* parent;
+        PoolIndexLink* left;
+        PoolIndexLink* right;
+    };
+    PoolIndexLink poolIndex;
+    unsigned int poolIndexSize;
+    bool poolIndexCompareState;
+    Pool** poolsBegin;
+    Pool** poolsEnd;
+    Pool** poolsCapacity;
     unsigned int crcTable[256];
     int updateTimeRemaining;
     int updateInterval;
