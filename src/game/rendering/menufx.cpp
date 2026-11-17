@@ -14,6 +14,11 @@
 
 extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list arguments);
 
+namespace swf {
+enum MemHint { DefaultMemHint = 0 };
+}
+void* operator new(unsigned int size, swf::MemHint hint);
+
 void SwfFree(void* buffer);
 
 extern "C" {
@@ -44,23 +49,42 @@ public:
     void reset();
 };
 
-struct OutlineGlyphProvider {
+class tu_string;
+class font_entity;
+
+struct glyph_provider {
+    glyph_provider(int width, int height, bool option);
     unsigned char prefix[20];
     texture_cache* cache;
 };
 
-struct BitmapGlyphProvider {
-    unsigned char prefix[12];
+struct bitmap_glyph_provider {
+    bitmap_glyph_provider(int width, int height, bool option) __attribute__((long_call));
+    virtual ~bitmap_glyph_provider();
+    virtual font_entity* get_font_entity_impl(const tu_string& name);
+    unsigned char prefix[8];
     texture_cache* cache;
+};
+
+struct default_bitmap_glyph_provider : bitmap_glyph_provider {
+    default_bitmap_glyph_provider(int width, int height, bool option)
+        : bitmap_glyph_provider(width, height, option)
+    {
+    }
+
+    virtual ~default_bitmap_glyph_provider();
+    virtual font_entity* get_font_entity_impl(const tu_string& name);
 };
 
 class player_context {
 public:
+    player_context();
     virtual ~player_context();
 
     unsigned char unknown4[8];
-    OutlineGlyphProvider* outlineGlyphs;
-    BitmapGlyphProvider* bitmapGlyphs;
+    glyph_provider* outlineGlyphs;
+    bitmap_glyph_provider* bitmapGlyphs;
+    unsigned char unknown20[16];
 };
 
 class player {
@@ -256,6 +280,25 @@ static const char deprecatedGlyphCache[] =
 void RenderFX::InitializeGlyphTextureCache(int, int)
 {
     gameswf::log_msg(deprecatedGlyphCache);
+}
+
+struct RenderFX::InitializationParameters {
+    unsigned char unknown0[8];
+    int outlineWidth;
+    int outlineHeight;
+    int bitmapWidth;
+    int bitmapHeight;
+    bool glyphOption;
+};
+
+gameswf::player_context* RenderFX::CreateContext(InitializationParameters& parameters)
+{
+    gameswf::player_context* context = new (swf::DefaultMemHint) gameswf::player_context;
+    context->outlineGlyphs = new (swf::DefaultMemHint) gameswf::glyph_provider(
+        parameters.outlineWidth, parameters.outlineHeight, parameters.glyphOption);
+    context->bitmapGlyphs = new (swf::DefaultMemHint) gameswf::default_bitmap_glyph_provider(
+        parameters.bitmapWidth, parameters.bitmapHeight, parameters.glyphOption);
+    return context;
 }
 
 void RenderFX::Finalize()

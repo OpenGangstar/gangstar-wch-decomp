@@ -270,6 +270,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZnwjN3swf7MemHintE",
+        "_ZN7gameswf14player_contextC1Ev",
+        "_ZN7gameswf14glyph_providerC1Eiib",
         "_ZN7gameswf18set_render_handlerEPNS_14render_handlerE",
         "_ZN7gameswf18clears_tag_loadersEv",
         "_ZN7gameswf17clear_shared_libsEv",

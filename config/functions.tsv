@@ -17265,7 +17265,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec789	0x28	menufx.cpp	gameswf	-	matched	_ZN7gameswf29default_bitmap_glyph_providerD0Ev	gameswf::default_bitmap_glyph_provider::~default_bitmap_glyph_provider()
 0x003ec7b1	0x20	menufx.cpp	gameswf	-	matched	_ZN7gameswf29default_bitmap_glyph_providerD1Ev	gameswf::default_bitmap_glyph_provider::~default_bitmap_glyph_provider()
 0x003ec7d1	0x48	menufx.cpp	gameswf	-	matched	_ZN7gameswf21bitmap_glyph_providerC1Eiib	gameswf::bitmap_glyph_provider::bitmap_glyph_provider(int, int, bool)
-0x003ec819	0x6c	menufx.cpp	game	rendering	pending	_ZN8RenderFX13CreateContextERNS_24InitializationParametersE	RenderFX::CreateContext(RenderFX::InitializationParameters&)
+0x003ec819	0x6c	menufx.cpp	game	rendering	matched	_ZN8RenderFX13CreateContextERNS_24InitializationParametersE	RenderFX::CreateContext(RenderFX::InitializationParameters&)
 0x003ec885	0x4c	menufx.cpp	game	rendering	matched	_ZN8RenderFX8FinalizeEv	RenderFX::Finalize()
 0x003ec8d1	0x90	menufx.cpp	game	rendering	pending	_ZN8RenderFX10InitializeERNS_24InitializationParametersE	RenderFX::Initialize(RenderFX::InitializationParameters&)
 0x003ec961	0x38	menufx.cpp	game	rendering	pending	_ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE	RenderFX::Initialize(irr::video::IVideoDriver*)

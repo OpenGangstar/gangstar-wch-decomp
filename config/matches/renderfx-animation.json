@@ -30,6 +30,7 @@
         "_ZN8RenderFX14SetOrientationEN7gameswf16orientation_modeE",
         "_ZN8RenderFX12SetWireFrameEb",
         "_ZN8RenderFX27InitializeGlyphTextureCacheEii",
+        "_ZN8RenderFX13CreateContextERNS_24InitializationParametersE",
         "_ZN8RenderFX8FinalizeEv",
         "_ZN8RenderFX14DestroyContextEPN7gameswf14player_contextE",
         "_ZN8RenderFX23ClearGlyphTextureCachesEPN7gameswf14player_contextE",
@@ -82,6 +83,9 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_ZnwjN3swf7MemHintE",
+        "_ZN7gameswf14player_contextC1Ev",
+        "_ZN7gameswf14glyph_providerC1Eiib",
         "_ZN7gameswf18set_render_handlerEPNS_14render_handlerE",
         "_ZN7gameswf18clears_tag_loadersEv",
         "_ZN7gameswf17clear_shared_libsEv",
