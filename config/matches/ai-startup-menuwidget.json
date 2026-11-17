@@ -27,6 +27,9 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets8Language4ShowEv",
+        "_ZN7Widgets8Controls4ShowEv",
+        "_ZN7Widgets8Language18UpdateLocalizationEv",
         "_ZN7Widgets8Tutorial4ShowEv",
         "_ZN7Widgets16BlockingTutorial4ShowEv",
         "_ZN7Widgets9Objective4ShowEv",
@@ -160,6 +163,12 @@
         }
     ],
     "sections": [
+        ".widget_language_vtable",
+        ".widget_controls_vtable",
+        ".widget_language_title",
+        ".widget_language_value",
+        ".widget_language_ok",
+        ".widget_language_ids",
         ".widget_tutorial_vtable",
         ".widget_blocking_tutorial_vtable",
         ".widget_blocking_tutorial_close_button",

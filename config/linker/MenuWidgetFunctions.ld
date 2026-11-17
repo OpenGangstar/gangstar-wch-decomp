@@ -1,5 +1,14 @@
 SECTIONS
 {
+    .widget_language_show 0x002ed6a0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Language4ShowEv) }
+    .widget_controls_show 0x002eced4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Controls4ShowEv) }
+    .widget_language_localization 0x002ed614 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Language18UpdateLocalizationEv) }
+    .widget_language_vtable 0x004a9958 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8LanguageE) }
+    .widget_controls_vtable 0x004a99a8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8ControlsE) }
+    .widget_language_title 0x0041ac0c : { *ai-startup-menuwidget.o(.rodata.languageTitlePath) }
+    .widget_language_value 0x0041ac24 : { *ai-startup-menuwidget.o(.rodata.languageValuePath) }
+    .widget_language_ok 0x0041ac3c : { *ai-startup-menuwidget.o(.rodata.languageOkPath) }
+    .widget_language_ids 0x0041b6b0 : { *ai-startup-menuwidget.o(.rodata._ZN7Widgets8Language13s_languageIdsE) }
     .widget_tutorial_show 0x002ed024 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Tutorial4ShowEv) }
     .widget_blocking_tutorial_show 0x002ed060 : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BlockingTutorial4ShowEv) }
     .widget_tutorial_vtable 0x004a9c08 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8TutorialE) }
