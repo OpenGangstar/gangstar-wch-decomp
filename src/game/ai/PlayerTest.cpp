@@ -20,6 +20,7 @@
 #include "../hud/CHudManager.h"
 #include "NPC.h"
 #include "../characters/NPCVehicleEvent.h"
+#include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
 
 void operator delete(void*) throw();
@@ -66,6 +67,26 @@ PlayerTest* PlayerTest::GetPlayer()
 LevelObject* PlayerTest::_GetTarget()
 {
     return getTarget();
+}
+
+int PlayerTest::getMarkerType()
+{
+    return -1;
+}
+
+void PlayerTest::initMoveTo(const Vehicle* vehicle)
+{
+    unknown368 = const_cast<Vehicle*>(vehicle);
+}
+
+void PlayerTest::richAsCroesus(bool enabled)
+{
+    richAsCroesusEnabled = enabled;
+}
+
+bool PlayerTest::isRichAsCroesus() const
+{
+    return richAsCroesusEnabled;
 }
 
 void PlayerTest::lockSwitchWeapon()

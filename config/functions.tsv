@@ -10367,14 +10367,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300ccd	0x6c	Path.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00300d39	0x14	Path.cpp	game	world	matched	_GLOBAL__I__ZN4PathC2Ei	_GLOBAL__I__ZN4PathC2Ei
 0x00300d4d	0x30	Path.cpp	game	world	matched	__tcf_2	__tcf_2
-0x00300d7d	0x6	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13getMarkerTypeEv	PlayerTest::getMarkerType()
+0x00300d7d	0x6	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest13getMarkerTypeEv	PlayerTest::getMarkerType()
 0x00300d85	0x20	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest8hideMeshEv	PlayerTest::hideMesh()
 0x00300da5	0x12	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12hideAllAnimsEv	PlayerTest::hideAllAnims()
 0x00300db9	0x8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10_GetTargetEv	PlayerTest::_GetTarget()
-0x00300dc1	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10initMoveToEPK7Vehicle	PlayerTest::initMoveTo(Vehicle const*)
+0x00300dc1	0x8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10initMoveToEPK7Vehicle	PlayerTest::initMoveTo(Vehicle const*)
 0x00300dc9	0x14	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest9GetPlayerEv	PlayerTest::GetPlayer()
-0x00300ddd	0x8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest13richAsCroesusEb	PlayerTest::richAsCroesus(bool)
-0x00300de5	0x8	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest15isRichAsCroesusEv	PlayerTest::isRichAsCroesus() const
+0x00300ddd	0x8	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest13richAsCroesusEb	PlayerTest::richAsCroesus(bool)
+0x00300de5	0x8	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest15isRichAsCroesusEv	PlayerTest::isRichAsCroesus() const
 0x00300ded	0x1e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest7setCashEi	PlayerTest::setCash(int)
 0x00300e0d	0x1e	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest15getAmbientSoundEv	PlayerTest::getAmbientSound() const
 0x00300e2d	0x1e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest23addCurrentDriftDistanceEf	PlayerTest::addCurrentDriftDistance(float)
