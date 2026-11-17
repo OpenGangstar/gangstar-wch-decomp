@@ -1343,3 +1343,50 @@ void Widgets::Shop::OnEvent(RenderFX::Event& event)
         listener->Notify(this, 1);
     event.consumed = true;
 }
+
+namespace {
+const char shopItemIconFormat[] __attribute__((section(".rodata.shop_item_icon_format"))) = "widgetShop.btnItem%d.icon";
+}
+
+void Widgets::Shop::SetItem(int index, int textId, int value, const char* frame, int flags)
+{
+    if (static_cast<unsigned int>(index) < 4) {
+        items[index].textId = textId;
+        items[index].value = value;
+        items[index].flags = flags;
+        if (frame) {
+            char name[64];
+            sprintf(name, shopItemIconFormat, index);
+            renderFX->GotoFrame(name, frame, false);
+        }
+    }
+}
+
+namespace {
+const char shopButtonPath[] __attribute__((section(".rodata.shop_button_path"))) = "widgetShop.btnItem%d";
+const char shopNamePath[] __attribute__((section(".rodata.shop_name_path"))) = "widgetShop.btnItem%d.txtName";
+const char shopPricePath[] __attribute__((section(".rodata.shop_price_path"))) = "widgetShop.btnItem%d.txtPrice";
+const char shopAvailabilityPath[] __attribute__((section(".rodata.shop_availability_path"))) = "widgetShop.btnItem%d.txtAvailability";
+}
+
+void Widgets::Shop::UpdateLocalization()
+{
+    char name[128];
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    for (int i = 0; i < 4; ++i) {
+        Item& item = items[i];
+        sprintf(name, shopButtonPath, i);
+        renderFX->SetVisible(name, item.flags & 4);
+        if (item.flags & 4) {
+            sprintf(name, shopNamePath, i);
+            renderFX->SetText(name, item.textId == -1 ? localStartupEmptyText : _ZNK13StringManager9getStringEi(strings, item.textId), true);
+            sprintf(name, shopPricePath, i);
+            renderFX->SetText(name, strings->formatAmount(item.value, true, true), true);
+            sprintf(name, shopButtonPath, i);
+            renderFX->SetEnabled(name, item.flags & 1);
+            sprintf(name, shopAvailabilityPath, i);
+            renderFX->SetText(name, availabilityTextId == -1 || (item.flags & 2)
+                ? localStartupEmptyText : _ZNK13StringManager9getStringEi(strings, availabilityTextId), true);
+        }
+    }
+}
