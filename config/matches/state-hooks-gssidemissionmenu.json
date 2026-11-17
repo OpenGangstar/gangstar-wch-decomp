@@ -25,6 +25,7 @@
     "source": "src/game/ui/GSSideMissionMenu.cpp",
     "linker_script": "config/linker/GSSideMissionMenuHooks.ld",
     "functions": [
+        "_ZN17GSSideMissionMenu6updateEP12StateMachine",
         "_ZN17GSSideMissionMenu4ctorEPK12StateMachine",
         "_ZN17GSSideMissionMenu4dtorEPK12StateMachine",
         "_ZN17GSSideMissionMenu4drawEPK12StateMachine",
@@ -108,6 +109,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK5Menus7Confirm9ConfirmedEv",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN18SideMissionManager4stopEb",
+        "_ZN12StateMachine8popStateEv",
+        "_ZN18SideMissionManager7confirmEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
         "_ZN11CHudManager4hideEv",

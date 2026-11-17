@@ -47,7 +47,7 @@ public:
     virtual void unknown30(); virtual void removeTexture(ITexture* texture); virtual void unknown32();
     virtual void unknown33(); virtual void unknown34(); virtual void unknown35();
     virtual void unknown36(); virtual void unknown37(); virtual void unknown38();
-    virtual void unknown39(); virtual void unknown40(); virtual void unknown41();
+    virtual void unknown39(); virtual void unknown40(); virtual const core::rect<int>& getViewPort() const;
     virtual void drawVertexPrimitiveList(const void* vertices, const void* indices,
         unsigned int firstVertex, unsigned int vertexCount, unsigned int primitiveCount,
         E_VERTEX_TYPE, scene::E_PRIMITIVE_TYPE, E_INDEX_TYPE, IDriverBinding**);

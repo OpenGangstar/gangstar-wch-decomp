@@ -20,8 +20,11 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __aeabi_atexit = 0x001c494c;
 menuMapStateName = 0x0040b608;
+glFlush = 0x001c4160;
 SECTIONS
 {
+    .menu_update_localization 0x002e56b0 : { *menu-manager-helpers.o(.text._ZN11MenuManager18updateLocalizationEv) }
+    .menu_manager_draw 0x002e4694 : { *menu-manager-helpers.o(.text._ZN11MenuManager4drawEPK12StateMachine) }
     .menu_manager_get_tutorial 0x002e3e94 : { *menu-manager-helpers.o(.text._ZNK11MenuManager14getTutorialIdsERiS0_) }
     .menu_manager_allow_cheats 0x002e3ec4 : { *menu-manager-helpers.o(.text._ZN11MenuManager17allowCheatsUnlockEb) }
     .menu_manager_get_playlist 0x002e3ef0 : { *menu-manager-helpers.o(.text._ZNK11MenuManager11getPlaylistEv) }

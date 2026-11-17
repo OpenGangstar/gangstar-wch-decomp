@@ -25,6 +25,10 @@
     "source": "src/game/ui/Preferences.cpp",
     "linker_script": "config/linker/PreferencesAiStartup.ld",
     "functions": [
+        "_ZN11PreferencesD2Ev",
+        "_ZN11PreferencesD1Ev",
+        "_ZN11PreferencesD0Ev",
+        "_ZN11Preferences18GetDefaultFilenameEv",
         "_ZN11PreferencesC2Ev",
         "_ZN11PreferencesC1Ev",
         "_ZN11Preferences5ExistEPKc",
@@ -42,6 +46,9 @@
         }
     ],
     "sections": [
+        ".preferences_vtable",
+        ".preferences_filename_format",
+        ".preferences_filename",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -52,6 +59,8 @@
         }
     ],
     "external_thumb_functions": [
+        "_ZN11PersistenceD1Ev",
+        "_ZN11Application11GetInstanceEv",
         "_ZN11PersistenceC1Ev",
         "_ZN10FileStreamC1Ev",
         "_ZN10FileStream5ExistEPKc",

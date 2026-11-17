@@ -766,3 +766,48 @@ static void _GLOBAL__I__Z16SwfTextureLoaderPKcii()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+void MenuManager::updateLocalization()
+{
+    Application::GetInstance();
+    for (int index = 0; index < 32; ++index) {
+        MenuWidget* widget = getWidgetByIndex(index);
+        if (widget->IsVisible())
+            widget->UpdateLocalization();
+    }
+    for (int index = 0; index < 17; ++index) {
+        const eText slot = static_cast<eText>(index);
+        const int previousId = textIds[index];
+        _ZN11MenuManager7setTextENS_5eTextEiPi(this, slot, -1, 0);
+        _ZN11MenuManager7setTextENS_5eTextEiPi(this, slot, previousId, 0);
+    }
+}
+
+extern "C" {
+void _ZNK3Map4drawEv(const Map*);
+void _ZNK11MenuManager8_drawMapEv(const MenuManager*);
+void glFlush();
+}
+void MenuManager::draw(const StateMachine*)
+{
+    if (widgetVisibility && charAutoLineFeed == 0)
+        return;
+    Application* application = Application::GetInstance();
+    if (inGameMenu != 0) {
+        application->GetDevice()->getVideoDriver()->beginScene2D();
+        _ZNK3Map4drawEv(Map::getInstance());
+        MenuState* state = static_cast<MenuState*>(reinterpret_cast<MyMenuFX*>(menuFX)->GetState(menuMapStateName));
+        if (getDepth() == state->GetDepth())
+            _ZNK11MenuManager8_drawMapEv(this);
+        application->GetDevice()->getVideoDriver()->endScene2D();
+        glFlush();
+    }
+    reinterpret_cast<MyMenuFX*>(menuFX)->SetOrientation(static_cast<gameswf::orientation_mode>(0));
+    RenderFX* render = reinterpret_cast<MyMenuFX*>(menuFX);
+    const irr::core::rect<int>& widthViewport = Application::GetInstance()->GetDevice()->getVideoDriver()->getViewPort();
+    const int width = widthViewport.LowerRightCorner.X - widthViewport.UpperLeftCorner.X;
+    const irr::core::rect<int>& heightViewport = Application::GetInstance()->GetDevice()->getVideoDriver()->getViewPort();
+    const int height = heightViewport.LowerRightCorner.Y - heightViewport.UpperLeftCorner.Y;
+    render->SetViewport(0, 0, width, height);
+    reinterpret_cast<MyMenuFX*>(menuFX)->Render();
+}

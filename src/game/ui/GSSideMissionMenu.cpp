@@ -139,3 +139,31 @@ void GSSideMissionMenu::ctor(const StateMachine*)
     if (stoppedVehicle)
         stoppedVehicle->Stop();
 }
+
+#include "../audio/SoundManager.h"
+
+namespace Menus { class Confirm; }
+extern "C" bool _ZNK5Menus7Confirm9ConfirmedEv(const Menus::Confirm*);
+
+void GSSideMissionMenu::update(StateMachine*)
+{
+    if (static_cast<int>(unknown16) >= MenuManager::getInstance()->getDepth()) {
+        const Menus::Confirm* confirm = static_cast<const Menus::Confirm*>(
+            MenuManager::getInstance()->getState(sideMissionConfirmName));
+        if (!_ZNK5Menus7Confirm9ConfirmedEv(confirm)) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            SideMissionManager::stop(true);
+            StateMachine::getInstance()->popState();
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            StateMachine::getInstance()->popState();
+            SideMissionManager::confirm();
+        }
+    }
+}

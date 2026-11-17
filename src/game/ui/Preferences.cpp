@@ -82,12 +82,7 @@ static void _GLOBAL__I__ZN11PreferencesC2Ev()
 #include "../persistence/Persistence.h"
 #include "../persistence/FileStream.h"
 
-class Preferences : public Persistence {
-public:
-    Preferences();
-    virtual ~Preferences();
-    bool Exist(const char* name);
-};
+#include "Preferences.h"
 
 bool Preferences::Exist(const char* name)
 {
@@ -96,5 +91,25 @@ bool Preferences::Exist(const char* name)
 }
 
 Preferences::Preferences()
+{
+}
+
+#include "../app/Application.h"
+#include "../persistence/FileSystemBase.h"
+#include "../core/NativeStdio.h"
+
+static const char preferenceFilenameFormat[] = "%s%s";
+static const char preferenceFilename[] = "Gangstar2.preferences";
+
+const char* Preferences::GetDefaultFilename()
+{
+    static char preferenceFile[256];
+    if (!preferenceFile[0])
+        sprintf(preferenceFile, preferenceFilenameFormat,
+            Application::GetInstance()->GetFileSystem()->getSaveFilesPath(), preferenceFilename);
+    return preferenceFile;
+}
+
+Preferences::~Preferences()
 {
 }

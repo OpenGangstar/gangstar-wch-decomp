@@ -666,11 +666,29 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00343761 | Preferences::Exist | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002e3415 | GSSideMissionMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
 | libsanangeles.so | 0x00343811 | Preferences constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | vehicle_side | REVIEW | pending | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | camera_tap | REVIEW | pending | src/game/ui/GSSideMissionMenu.cpp |
+| libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
 | libsanangeles.so | 0x00343835 | Preferences::GetOrientation | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | ASSIGNED | pending | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | camera_tap | REVIEW | pending | src/game/hud/MenuManager.cpp |
-| libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | lock_init | ASSIGNED | pending | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | ASSIGNED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | BLOCKED | pending | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | — | COMPLETED | 100% | src/game/hud/MenuManager.cpp |
+| libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x003437c9 | Preferences deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002eb5d9 | Menus::Services::Notify | vehicle_side | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | lock_init | BLOCKED | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e86fd | MenuState::GotFocus | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6149 | MenuManager::tearDown | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c089 | DataReloaderManager::monitorFiles | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c211 | DataReloaderManager constructor (C1/C2 aliases) | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint | vehicle_side | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c0a1 | DataReloaderManager::_MonitoredFiles destructor | lock_init | REVIEW | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0034c0c5 | DataReloaderManager destructor (D1/D2 aliases) | lock_init | ASSIGNED | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap | vehicle_side | ASSIGNED | pending | src/game/ui/MenuManager.cpp |

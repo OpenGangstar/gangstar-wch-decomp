@@ -6,8 +6,18 @@ PROVIDE(__aeabi_fdiv = 0x001c4520);
 PROVIDE(__aeabi_fadd = 0x001c4154);
 PROVIDE(__aeabi_f2iz = 0x001c44cc);
 PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
 SECTIONS
 {
+    .volumesButton 0x0041b628 : { *ai-startup-menuwidget.o(.rodata.volumesButton) }
+    .volumesMuteButton 0x0041b648 : { *ai-startup-menuwidget.o(.rodata.volumesMuteButton) }
+    .volumesSfxPart 0x0041b634 : { *ai-startup-menuwidget.o(.rodata.volumesSfxPart) }
+    .volumesMusicPart 0x0041b63c : { *ai-startup-menuwidget.o(.rodata.volumesMusicPart) }
+    .volumesLeftButton 0x0041b5fc : { *ai-startup-menuwidget.o(.rodata.volumesLeftButton) }
+    .volumesRightButton 0x0041b604 : { *ai-startup-menuwidget.o(.rodata.volumesRightButton) }
+    .widget_volumes_event 0x002eff18 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes7OnEventERN8RenderFX5EventE) }
     .widget_mainmenu_vtable 0x004a9868 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8MainMenuE) }
     .widget_volumes_vtable 0x004a99d0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7VolumesE) }
     .widget_arrows_vtable 0x004a9a98 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6ArrowsE) }

@@ -2054,3 +2054,88 @@ void Widgets::Arrows::OnEvent(RenderFX::Event& event)
         break;
     }
 }
+
+#include "../persistence/Persistence.h"
+#include "Preferences.h"
+extern "C" const char* _ZN8RenderFX5Event16GetCharacterPathEv(RenderFX::Event*) __attribute__((weak));
+namespace {
+struct VolumeBounds { float xmin, xmax, ymin, ymax; };
+struct VolumeCharacterMethods {
+    void (*slots[72])();
+    void (*getBounds)(gameswf::character*, VolumeBounds*);
+};
+inline const float& volumeMin(const float& value, const float& high) { return value > high ? high : value; }
+inline const float& volumeMax(const float& value, const float& low) { return value < low ? low : value; }
+}
+static const char volumesButton[] = "btnVolume";
+static const char volumesMuteButton[] = "btnMute";
+static const char volumesSfxPart[] = "barSFX";
+static const char volumesMusicPart[] = "barMusic";
+static const char volumesLeftButton[] = "btnLeft";
+static const char volumesRightButton[] = "btnRight";
+void Widgets::Volumes::OnEvent(RenderFX::Event& event)
+{
+    const char* path = _ZN8RenderFX5Event16GetCharacterPathEv(&event);
+    switch (event.type) {
+    case 4:
+    case 5:
+        if (strcmp(event.characterName, volumesButton) == 0) {
+            VolumeBounds bounds;
+            const VolumeCharacterMethods* methods = *reinterpret_cast<const VolumeCharacterMethods* const*>(event.character);
+            methods->getBounds(event.character, &bounds);
+            float volume = *reinterpret_cast<const float*>(event.unknown12) / (bounds.xmax - bounds.xmin) + 0.05f;
+            volume = volumeMax(volumeMin(volume, 1.0f), 0.0f);
+            if (strstr(path, volumesSfxPart))
+                SoundManager::getInstance()->setSfxVolume(volume);
+            else if (strstr(path, volumesMusicPart))
+                SoundManager::getInstance()->setMusicVolume(volume);
+            event.consumed = true;
+        }
+        break;
+    case 1:
+    case 6:
+        if (!MenuManager::getInstance()->isClearingFocus()) {
+            const char* name = event.characterName;
+            if (strcmp(name, volumesButton) == 0) {
+                if (strstr(path, volumesSfxPart)) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(225, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                }
+                _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+                event.consumed = true;
+            } else if (event.type != 1) {
+                if (strcmp(name, volumesMuteButton) == 0) {
+                    if (strstr(path, volumesSfxPart)) {
+                        SoundManager::getInstance()->setSfxVolume(0.0f);
+                        event.consumed = true;
+                    } else if (strstr(path, volumesMusicPart)) {
+                        SoundManager::getInstance()->setMusicVolume(0.0f);
+                        event.consumed = true;
+                    }
+                } else if (strcmp(name, volumesLeftButton) == 0) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                    if (listener) listener->Notify(this, 1);
+                    event.consumed = true;
+                } else if (strcmp(name, volumesRightButton) == 0) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                    if (listener) listener->Notify(this, 2);
+                    event.consumed = true;
+                }
+            }
+        }
+        break;
+    }
+    if (event.consumed) {
+        Preferences preferences;
+        preferences.SampleAndSave(Preferences::GetDefaultFilename());
+        UpdateLocalization();
+    }
+}

@@ -29,8 +29,13 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
+_ZN5Menus24s_helpSpecializedEntriesE = 0x0047b1b8;
 SECTIONS
 {
+    .service_missions_focus 0x002e8fe8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions8GotFocusEv) }
+    .help_empty_icon 0x00409c2c : { *ai-startup-menustate.o(.rodata.helpEmptyIcon) }
+    .info_help_notify 0x002eaa04 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelp6NotifyEPK10MenuWidgeti) }
+    .menu_manager_clearing_focus 0x002e3f04 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15isClearingFocusEv) }
     .menu_manager_consume_cursor 0x002e3f20 : { *menu-manager-helpers.o(.text._ZN11MenuManager13consumeCursorEv) }
     .tutorial_notify 0x002ea33c : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial6NotifyEPK10MenuWidgeti) }
     .blocking_tutorial_notify 0x002ea3b8 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial6NotifyEPK10MenuWidgeti) }

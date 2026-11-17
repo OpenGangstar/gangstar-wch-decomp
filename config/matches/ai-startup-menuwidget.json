@@ -27,6 +27,7 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets7Volumes7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets8MainMenu7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets7Volumes4ShowEv",
         "_ZN7Widgets6Arrows7OnEventERN8RenderFX5EventE",
@@ -212,6 +213,12 @@
         }
     ],
     "sections": [
+        ".volumesButton",
+        ".volumesMuteButton",
+        ".volumesSfxPart",
+        ".volumesMusicPart",
+        ".volumesLeftButton",
+        ".volumesRightButton",
         ".widget_mainmenu_vtable",
         ".widget_volumes_vtable",
         ".widget_arrows_vtable",
@@ -355,6 +362,13 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11Preferences13SampleAndSaveEPKc",
+        "_ZN11Preferences18GetDefaultFilenameEv",
+        "_ZN11PreferencesC1Ev",
+        "_ZN11PreferencesD1Ev",
+        "_ZN12SoundManager12setSfxVolumeEf",
+        "_ZN12SoundManager14setMusicVolumeEf",
+        "_ZNK11MenuManager15isClearingFocusEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZNK12SoundManager10canUseIPodEv",
         "_ZN12SoundManager8initIPodEv",

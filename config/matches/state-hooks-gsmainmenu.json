@@ -158,6 +158,12 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN8RenderFX11SetViewportEiiii",
+        "_ZN8RenderFX14SetOrientationEN7gameswf16orientation_modeE",
+        "_ZN8RenderFX6RenderEv",
+        "_ZNK11MenuManager8_drawMapEv",
+        "_ZNK3Map4drawEv",
+        "_ZNK9MenuState8GetDepthEv",
         "_ZNK10MenuWidget9IsVisibleEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN10DataStream21ReadAndAllocateStringEv",
