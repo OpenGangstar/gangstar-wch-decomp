@@ -48,6 +48,8 @@ SECTIONS
     .player_ambient_sound 0x00300e0c : { *ai-startup-playertest.o(.text._ZNK10PlayerTest15getAmbientSoundEv) }
     .player_drift_distance 0x00300e2c : { *ai-startup-playertest.o(.text._ZN10PlayerTest23addCurrentDriftDistanceEf) }
     .player_jump_distance 0x00300e4c : { *ai-startup-playertest.o(.text._ZN10PlayerTest22addCurrentJumpDistanceEf) }
+    .player_add_photo_target 0x00300f48 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14addPhotoTargetEP11LevelObject) }
+    .player_clear_photo_targets 0x00301060 : { *ai-startup-playertest.o(.text._ZN10PlayerTest17clearPhotoTargetsEv) }
     .player_init_move_to 0x00300dc0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10initMoveToEPK7Vehicle) }
     .player_set_rich_as_croesus 0x00300ddc : { *ai-startup-playertest.o(.text._ZN10PlayerTest13richAsCroesusEb) }
     .player_get_rich_as_croesus 0x00300de4 : { *ai-startup-playertest.o(.text._ZNK10PlayerTest15isRichAsCroesusEv) }

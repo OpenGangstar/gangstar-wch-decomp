@@ -44,6 +44,8 @@
         "_ZNK10PlayerTest15getAmbientSoundEv",
         "_ZN10PlayerTest23addCurrentDriftDistanceEf",
         "_ZN10PlayerTest22addCurrentJumpDistanceEf",
+        "_ZN10PlayerTest14addPhotoTargetEP11LevelObject",
+        "_ZN10PlayerTest17clearPhotoTargetsEv",
         "_ZN10PlayerTest18unlockSwitchWeaponEv",
         "_ZN10PlayerTest12switchWeaponEb",
         "_ZN3NPC14notifyTargetedEbP9Character",

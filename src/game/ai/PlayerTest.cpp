@@ -126,6 +126,20 @@ void PlayerTest::addCurrentJumpDistance(float distance)
     currentJumpDistance += distance;
 }
 
+void PlayerTest::addPhotoTarget(LevelObject* target)
+{
+    photoTargets.push_back(target);
+}
+
+void PlayerTest::clearPhotoTargets()
+{
+    ::operator delete(photoTargets.data);
+    photoTargets.used = 0;
+    photoTargets.allocated = 0;
+    photoTargets.data = 0;
+    photoTargets.is_sorted = true;
+}
+
 void PlayerTest::playCurAnimFromStart()
 {
     Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));

@@ -1,6 +1,8 @@
 #ifndef WCH_CHARACTERS_PLAYER_TEST_H
 #define WCH_CHARACTERS_PLAYER_TEST_H
 
+#include "../core/Array.h"
+
 class Vehicle;
 class Weapon;
 class LevelObject;
@@ -144,7 +146,7 @@ public:
     unsigned char unknown432[44];
     int currentDriftDistance;
     int currentJumpDistance;
-    unsigned char unknown484[20];
+    irr::core::array<LevelObject*> photoTargets;
     bool weaponSwitchLocked;
     unsigned char unknown505[3];
     int contextValues[2];
