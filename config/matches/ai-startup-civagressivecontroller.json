@@ -25,6 +25,9 @@
     "source": "src/game/ai/CivAgressiveController.cpp",
     "linker_script": "config/linker/CivAgressiveControllerAiStartup.ld",
     "functions": [
+        "_ZN22CivAgressiveControllerD1Ev",
+        "_ZN22CivAgressiveControllerD2Ev",
+        "_ZN22CivAgressiveControllerD0Ev",
         {
             "name": "__tcf_3",
             "address": "0x0034081d"
@@ -46,7 +49,13 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".civ_aggressive_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN13NPCControllerD1Ev"
+    ]
 }

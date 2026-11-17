@@ -78,3 +78,18 @@ static void _GLOBAL__I__ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "NPCController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+class CivAgressiveController : public NPCController {
+public:
+    virtual ~CivAgressiveController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition);
+};
+CivAgressiveController::~CivAgressiveController()
+{
+    Application::GetInstance()->GetEventManager()->detach(16, this);
+    Application::GetInstance()->GetEventManager()->detach(22, this);
+}

@@ -12182,9 +12182,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034081d	0x30	CivAgressiveController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x0034084d	0x5c	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveController7onEventEPK6IEventPK12EventManager	CivAgressiveController::onEvent(IEvent const*, EventManager const*)
 0x003408a9	0x56	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	CivAgressiveController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
-0x00340901	0x44	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerD0Ev	CivAgressiveController::~CivAgressiveController()
-0x00340945	0x40	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerD2Ev	CivAgressiveController::~CivAgressiveController()
-0x00340945	0x40	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerD1Ev	CivAgressiveController::~CivAgressiveController()
+0x00340901	0x44	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerD0Ev	CivAgressiveController::~CivAgressiveController()
+0x00340945	0x40	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerD2Ev	CivAgressiveController::~CivAgressiveController()
+0x00340945	0x40	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerD1Ev	CivAgressiveController::~CivAgressiveController()
 0x00340985	0x60	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE	CivAgressiveController::CivAgressiveController(NPC*, gameloft::ai::StateID)
 0x00340985	0x60	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE	CivAgressiveController::CivAgressiveController(NPC*, gameloft::ai::StateID)
 0x003409e5	0x144	CivAgressiveController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
