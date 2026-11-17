@@ -1280,3 +1280,129 @@ void Character::hitByCar(int direction, float speed, LevelObject* source)
         static_cast<NPC*>(this)->setHitByCar(true);
     }
 }
+
+#include "../core/Collada.h"
+static const char characterAnimationResource[] = "./anim_ingame.bdae";
+static const char characterShadowNodeName[] = "shadow-node";
+void Character::bindAnimation(const char* rootName, AnimationInfo& info, irr::scene::ISceneNode* node)
+{
+    if (!node) node = sceneNode;
+    info.unknown0 = irr::collada::CColladaDatabase::constructAnimator(characterAnimationResource, &irr::collada::CColladaDatabase::DefaultFactory);
+    if (!s_timelineController) {
+        s_timelineController = info.unknown0->getTimelineCtrl();
+        ++s_timelineController->references;
+        s_fistsCombatSequence[0] = 144;
+        s_fistsCombatSequence[1] = 94;
+        s_fistsCombatSequence[2] = 92;
+        s_fistsCombatSequence[3] = 93;
+        s_fistsCombatSequence[4] = 95;
+        s_fistsCombatSequence[5] = 90;
+        s_fistsCombatSequence[6] = 91;
+    }
+    info.unknown0->setTimelineCtrl(0);
+    info.unknown0->onBind(node);
+    info.unknown0->drop();
+    info.unknown4 = node->getSceneNodeFromUID(rootName);
+    info.shadowNode = node->getSceneNodeFromUID(characterShadowNodeName);
+    info.shadowNode->getChildren().first->value->setRenderingLayer(1);
+    GS3DStuff::SetColor(info.shadowNode, irr::video::SColor(255, 0, 0, 0), GS3DStuff::Color3);
+    GS3DStuff::SetColor(info.shadowNode, irr::video::SColor(255, 255, 255, 255), GS3DStuff::Color0);
+    GS3DStuff::SetColor(info.shadowNode, irr::video::SColor(255, 255, 255, 255), GS3DStuff::Color1);
+    GS3DStuff::SetColor(info.shadowNode, irr::video::SColor(255, 255, 255, 255), GS3DStuff::Color2);
+    GS3DStuff::SetMaterialFlag(info.shadowNode, irr::video::MaterialFlag1024, false);
+    GS3DStuff::SetMaterialFlag(info.shadowNode, irr::video::MaterialFlag512, false);
+    GS3DStuff::SetMaterialFlag(info.shadowNode, irr::video::MaterialFlag4, true);
+    GS3DStuff::SetMaterialFlag(info.shadowNode, irr::video::MaterialFlag16, true);
+    Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode()->addChild(info.shadowNode);
+    info.skinMesh = GS3DStuff::FindAMesh(node);
+}
+
+void Character::Update(int elapsed)
+{
+    LevelObject::Update(elapsed);
+    if (unknown24->info->unknown0 == PhysicAttributes::MATERIAL_TYPE_DEATH_WATER)
+        health = 0;
+    if (movementFlags & 0x4000u) goto pursue;
+    if (movementFlags & 0x2000u) goto pursue;
+    if (health <= 0) die(true);
+pursue:
+    if (unknown264) {
+        if (isDead() || unknown264->isDead()) {
+            unknown264 = 0;
+        } else if (!vehicle) {
+            if (reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == unknown264) {
+                PlayerTest* player = PlayerTest::GetPlayer();
+                if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface&>(*player).getVehicle())
+                    goto turningStep;
+            }
+            {
+                const irr::core::vector3d<float> position = GetPosition();
+                const float distance = position.getDistanceFromSQ(unknown264->GetPosition());
+                if (distance > 90000.0f)
+                    runToLocation(unknown264->GetPosition());
+                else if (distance > 22500.0f)
+                    walkToLocation(unknown264->GetPosition());
+                else {
+                    goToIdle();
+                    turnToward(unknown264->GetPosition());
+                }
+            }
+        }
+    }
+turningStep:
+    if (turning && turnToward(turnDirection, turnSpeed)) {
+        setAnimation(getSpecificAnimation(165), 1.0f, false, false, false);
+        turning = false;
+        turnDirection = irr::core::vector3d<float>(0.0f, 0.0f, 0.0f);
+    }
+    checkForWeaponReload();
+    if (unknown256 && !isCurrentAnimation(15) && !isCurrentAnimation(13)
+        && !isCurrentAnimation(16) && !isCurrentAnimation(14)) {
+        movementFlags &= ~0x400u;
+        resetCollisions();
+        setVehicle(0);
+        unknown256 = false;
+    }
+}
+
+#include "NPCEvent.h"
+#include "../core/EventManager.h"
+void Character::exitVehicle(bool left)
+{
+    if (vehicle) {
+        vehicle->flags344 &= ~0x800u;
+        if (vehicle->getDriver() == this)
+            vehicle->setDriver(0);
+        if (vehicle->immobilized) {
+            vehicle->mobilize();
+            if (vehicle->getDriver()->isPlayer())
+                Application::GetInstance()->GetControlManager()->unlock();
+        }
+    }
+    movementFlags &= ~0x30400u;
+    setAnimation(getSpecificAnimation(165), 1.0f, true, false, false);
+    irr::core::quaternion rotation;
+    irr::core::vector3d<float> forward(0.0f, 0.0f, 1.0f);
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    rotation.rotationFromTo(forward, irr::core::vector3d<float>(transform[8], transform[9], transform[10]));
+    SetRotation(rotation * GetRotation());
+    positionAtDoor(left);
+    resetCollisions();
+    setVehicle(0);
+    unknown256 = false;
+    if (s_type[objectType] == 5) {
+        NPC* npc = static_cast<NPC*>(this);
+        if (npc->category428 == 3) {
+            AIManager::getInstance()->removeAI(npc);
+            AIManager::getInstance()->addAI(npc, static_cast<gameloft::ai::StateID>(8));
+        } else if (unknown289) {
+            AIManager::getInstance()->addAI(npc, static_cast<gameloft::ai::StateID>(8));
+            if (s_type[target->getObjectType()] == 3 && static_cast<Vehicle*>(target)->getDriver())
+                npc->attackTarget(static_cast<Vehicle*>(target)->getDriver());
+            else
+                npc->attackTarget(target);
+        } else if (npc->category428 <= 2) {
+            Application::GetInstance()->GetEventManager()->raise(EvNPC(static_cast<EvNPC::State>(1), npc));
+        }
+    }
+}

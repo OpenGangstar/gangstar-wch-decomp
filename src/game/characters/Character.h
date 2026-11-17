@@ -16,8 +16,8 @@ class Character : public LevelObject {
 public:
     struct AnimationInfo {
         AnimationInfo() : unknown0(0), unknown4(0), skinMesh(0), shadowNode(0) {}
-        void* unknown0;
-        void* unknown4;
+        irr::scene::ISceneNodeAnimator* unknown0;
+        irr::scene::ISceneNode* unknown4;
         void* skinMesh;
         irr::scene::ISceneNode* shadowNode;
     };
@@ -29,6 +29,7 @@ public:
     void debug(irr::video::IVideoDriver*);
     void hijacked();
     void hitByCar(int, float, LevelObject*);
+    void exitVehicle(bool);
     bool attack();
     bool punch();
     bool kick();
@@ -165,7 +166,7 @@ private:
     bool unknown256;
     unsigned char unknown257[3];
     LevelObject* target;
-    int unknown264;
+    LevelObject* unknown264;
     int spawnType;
     irr::core::vector3d<float> turnDirection;
     float turnSpeed;

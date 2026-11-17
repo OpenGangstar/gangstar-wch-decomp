@@ -4,6 +4,8 @@
 // Dispatch slots observed at the call sites; no complete event layout is claimed.
 class IEvent {
 public:
+    IEvent() {}
+    explicit IEvent(int id) : eventID(id) {}
     virtual ~IEvent() __attribute__((used));
     virtual int getEventID() const __attribute__((used));
 
