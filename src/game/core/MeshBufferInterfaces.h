@@ -1,10 +1,12 @@
 #ifndef WCH_CORE_MESH_BUFFER_INTERFACES_H
 #define WCH_CORE_MESH_BUFFER_INTERFACES_H
 #include "Geometry.h"
+#include "SceneNode.h"
 // Partial engine interfaces recovered from retail vtables; do not instantiate meshes.
 // Component-array accessors are a Gameloft extension, not upstream Irrlicht 1.4.2.
 // The observed 36-byte accessor has type, byte stride, data, scale and offset.
 namespace irr { namespace video {
+struct SMaterial;
 class S3DVertexComponentArrays {
 public:
     template<template<class> class Vector, class T> struct SAccessorEx {
@@ -41,10 +43,16 @@ public:
     virtual const core::vector3d<float>& getPosition(unsigned int) const;
     virtual core::vector3d<float>& getPosition(unsigned int);
 };
-class IMesh {
+class IMesh : public virtual IReferenceCounted {
 public:
-    virtual unsigned int getMeshBufferCount() const;
-    virtual IMeshBuffer* getMeshBuffer(unsigned int) const;
+    virtual unsigned int getMeshBufferCount() const = 0;
+    virtual IMeshBuffer* getMeshBuffer(unsigned int) const = 0;
+    virtual IMeshBuffer* getMeshBuffer(const video::SMaterial&) const = 0;
+    virtual const core::aabbox3d<float>& getBoundingBox() const = 0;
+    virtual void setBoundingBox(const core::aabbox3d<float>&) = 0;
+    virtual void setMaterialFlag(video::E_MATERIAL_FLAG, bool) = 0;
+    virtual void* getUserProperty() const;
+    virtual ~IMesh();
 };
 } }
 #endif

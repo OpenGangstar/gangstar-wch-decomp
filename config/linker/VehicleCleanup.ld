@@ -6,6 +6,7 @@ __cxa_guard_release = 0x001c46c4;
 __aeabi_atexit = 0x001c494c;
 lrand48 = 0x001c4664;
 __aeabi_idivmod = 0x001c4934;
+memcpy = 0x001c4190;
 _Znaj = 0x001c3ff8;
 _Znwj = 0x001c4814;
 atoi = 0x001c4880;
@@ -29,6 +30,7 @@ __aeabi_f2d = 0x001c48f8;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
     .vehicle_yaw 0x0030949c : { *(.text._ZN7Vehicle4_yawEf) }
@@ -61,6 +63,13 @@ SECTIONS
     .vehicle_initialize_driver 0x0030a8bc : { *(.text._ZN7Vehicle16initializeDriverEv) }
     .custom_skin_bounds 0x00307b00 : { *(.text._ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv) }
     .car_create_morph 0x003092b4 : { *(.text._ZN11CCarFactory11createMorphERKN3irr7collada16CColladaDatabaseEPNS1_11SControllerE) }
+    .car_morph_d0 0x00311e40 : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD0Ev) }
+    .car_morph_d1 0x00311e9c : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD1Ev) }
+    .car_morph_vtt 0x004aba70 : { *(.data.rel.ro._ZTT16CCarMorphingMesh) }
+    .car_morph_vtable 0x004aba90 : { *(.data.rel.ro._ZTV16CCarMorphingMesh) }
+    .car_morph_base_vtable 0x004abaf0 : { *(.data.rel.ro._ZTC16CCarMorphingMesh0_N3irr7collada20CColladaMorphingMeshE) }
+    .car_morph_collada_vtable 0x004abb50 : { *(.data.rel.ro._ZTC16CCarMorphingMesh0_N3irr5scene12IColladaMeshE) }
+    .car_morph_mesh_vtable 0x004abbb0 : { *(.data.rel.ro._ZTC16CCarMorphingMesh0_N3irr5scene5IMeshE) }
     .car_morph_prepare 0x00309338 : { *(.text._ZN16CCarMorphingMesh27onPrepareBufferForRenderingEN3irr5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS0_5video12IVideoDriverEj) }
     .car_factory_create_skin 0x00309358 : { *(.text._ZN11CCarFactory14createSkinNodeERKN3irr7collada16CColladaDatabaseEPNS0_5scene12IColladaMeshEPNS1_14IRootSceneNodeEPv) }
     .car_factory_create_node 0x0030a6a0 : { *(.text._ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
@@ -98,6 +107,8 @@ SECTIONS
     .vehicle_mobilize 0x0030a3e4 : { *(.text._ZN7Vehicle8mobilizeEv) }
     .vehicle_cleanup_sounds 0x003090e8 : { *(.text._ZN7Vehicle14_cleanupSoundsEv) }
     .vehicle_debug 0x0030b12c : { *(.text._ZN7Vehicle5debugEPN3irr5video12IVideoDriverE) }
+    .vehicle_tire_trails 0x00309600 : { *(.text._ZN7Vehicle19UpdateCarTireTrailsEii) }
+    .vehicle_tire_trails_init 0x0041feb0 : { *(.rodata._ZZN7Vehicle19UpdateCarTireTrailsEiiE*C.*) }
     .vehicle_start_driving 0x00311148 : { *(.text._ZN7Vehicle12startDrivingEv) }
     .vehicle_play_horn 0x00312fb8 : { *(.text._ZN7Vehicle8playHornEv) }
     .vehicle_play_horn_tables 0x0041f7ac : { *(.rodata._ZN7Vehicle8playHornEv) }
@@ -213,5 +224,6 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
     .verification_constants : { *(.rodata.*photographedFlag*) }
+    .verification_unused_morph_dtor : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD2Ev) }
 }
 ASSERT(SIZEOF(.vehicle_empty_string) == 32, "Vehicle empty string extent");

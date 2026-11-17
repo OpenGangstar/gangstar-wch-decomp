@@ -23,6 +23,11 @@ public:
     void Render();
     void ModifyLife(float scale);
     void SetSegmentWidth(float width);
+    void SetColor(unsigned char alpha)
+    {
+        unknown64[3] = alpha;
+        unknown64[0] = unknown64[1] = unknown64[2] = 0;
+    }
     void SetLastAddedPoint(irr::core::vector3d<float> point);
 
 private:

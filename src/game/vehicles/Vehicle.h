@@ -77,6 +77,7 @@ public:
     void notifyHitNPCofDespawn();
     void onCameraEnter();
     void UpdateCarSounds();
+    void UpdateCarTireTrails(int, int alpha);
     void UnRegisterCarSoundsCallbacks();
     static void RegisterCarSoundsCallbacks();
     void repair();
@@ -182,7 +183,9 @@ private:
     float unknown116;
     float unknown120;
     float unknown124;
-    unsigned char unknown128[12];
+    unsigned char unknown128[4];
+    int unknown132;
+    unsigned char unknown136[4];
     LevelObject* aiTarget;
     float rotationZ;
     float rotationX;

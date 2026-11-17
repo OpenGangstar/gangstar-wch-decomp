@@ -26,6 +26,11 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN7Vehicle19UpdateCarTireTrailsEii",
+        "_ZTv0_n12_N16CCarMorphingMeshD0Ev",
+        "_ZN16CCarMorphingMeshD0Ev",
+        "_ZTv0_n12_N16CCarMorphingMeshD1Ev",
+        "_ZN16CCarMorphingMeshD1Ev",
         "_ZN11CCarFactory11createMorphERKN3irr7collada16CColladaDatabaseEPNS1_11SControllerE",
         "_ZN11CCarFactory14createSkinNodeERKN3irr7collada16CColladaDatabaseEPNS0_5scene12IColladaMeshEPNS1_14IRootSceneNodeEPv",
         "_ZN7Vehicle21notifyHitNPCofDespawnEv",
@@ -193,6 +198,12 @@
         "_ZN7Vehicle10hideWheelsEv"
     ],
     "sections": [
+        ".vehicle_tire_trails_init",
+        ".car_morph_vtt",
+        ".car_morph_vtable",
+        ".car_morph_base_vtable",
+        ".car_morph_collada_vtable",
+        ".car_morph_mesh_vtable",
         ".vehicle_high_enter_clip",
         ".vehicle_cleanup_0",
         ".vehicle_cleanup_1",
@@ -276,6 +287,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8TrailMgr10AllocTrailEv",
+        "_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b",
+        "_ZN3irr7collada20CColladaMorphingMeshD2Ev",
         "_ZN3irr7collada20CColladaMorphingMeshC2ERKNS0_16CColladaDatabaseERNS0_11SControllerEbPNS_5video12IVideoDriverE",
         "_ZN16CarSoundSettingsC1Ev",
         "_ZN16CarSoundSettingsD1Ev",

@@ -34,8 +34,10 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../rendering/CustomBillboardSceneNode.h"
 #include "../core/PhysicsBodyDef.h"
 #include "../core/VideoDriver.h"
+#include "../core/MeshBufferInterfaces.h"
 #include "../rendering/GS3DStuff.h"
 #include "../world/TrailMgr.h"
+#include "../world/Trail.h"
 
 extern "C" float __aeabi_fmul(float, float);
 extern "C" int puts(const char*);
@@ -1294,32 +1296,39 @@ inline __attribute__((always_inline)) void disableWheelCollisions(b2Body* body, 
 }
 
 namespace irr {
-namespace video { class IVideoDriver; }
 namespace scene {
-class IColladaMesh {
+class IColladaMesh : public IMesh {
 public:
     enum E_PREPARE_BUFFER_STEP {};
+    virtual ~IColladaMesh();
+    virtual int getType() const = 0;
+    virtual void onAnimate(unsigned int);
+    virtual unsigned int onPrepareBufferForRendering(E_PREPARE_BUFFER_STEP, video::IVideoDriver*, unsigned int);
+    virtual void releaseProcessBuffer(video::IVideoDriver*, unsigned int);
+
+private:
+    unsigned char unknown4[36];
 };
 }
 namespace collada {
-class CColladaMorphingMesh : public virtual IReferenceCounted {
+class CColladaMorphingMesh : public scene::IColladaMesh {
 public:
     CColladaMorphingMesh(const CColladaDatabase&, SController&, bool, video::IVideoDriver*);
-    virtual void unknown0();
-    virtual void unknown1();
-    virtual void unknown2();
-    virtual void unknown3();
-    virtual void unknown4();
-    virtual void unknown5();
-    virtual void unknown6();
     virtual ~CColladaMorphingMesh();
-    virtual void unknown9();
-    virtual void unknown10();
+    virtual unsigned int getMeshBufferCount() const;
+    virtual scene::IMeshBuffer* getMeshBuffer(unsigned int) const;
+    virtual scene::IMeshBuffer* getMeshBuffer(const video::SMaterial&) const;
+    virtual const core::aabbox3d<float>& getBoundingBox() const;
+    virtual void setBoundingBox(const core::aabbox3d<float>&);
+    virtual void setMaterialFlag(video::E_MATERIAL_FLAG, bool);
+    virtual void* getUserProperty() const;
+    virtual int getType() const;
     virtual unsigned int onPrepareBufferForRendering(
         scene::IColladaMesh::E_PREPARE_BUFFER_STEP, video::IVideoDriver*, unsigned int);
-    virtual void unknown12();
+    virtual void releaseProcessBuffer(video::IVideoDriver*, unsigned int);
+
 private:
-    unsigned char opaque4[84];
+    unsigned char unknown40[48];
 };
 }
 }
@@ -1329,13 +1338,18 @@ public:
     CCarMorphingMesh(const irr::collada::CColladaDatabase& db, irr::collada::SController& controller,
                      irr::video::IVideoDriver* driver)
         : irr::collada::CColladaMorphingMesh(db, controller, false, driver), prepareBuffer(true) {}
-    virtual ~CCarMorphingMesh();
+    virtual ~CCarMorphingMesh() __attribute__((used));
     virtual unsigned int onPrepareBufferForRendering(
         irr::scene::IColladaMesh::E_PREPARE_BUFFER_STEP step,
         irr::video::IVideoDriver* driver, unsigned int buffer) __attribute__((weak));
+
 private:
     bool prepareBuffer;
 };
+
+inline CCarMorphingMesh::~CCarMorphingMesh()
+{
+}
 
 typedef char CarMorphingMeshExtent[sizeof(CCarMorphingMesh) == 104 ? 1 : -1];
 
@@ -1636,6 +1650,57 @@ void Vehicle::debug(irr::video::IVideoDriver* videoDriver)
     videoDriver->draw3DLine(corners[1], corners[2], irr::video::SColor(255, 255, 255, 255));
     videoDriver->draw3DLine(corners[2], corners[3], irr::video::SColor(255, 255, 255, 255));
     videoDriver->draw3DLine(corners[3], corners[0], irr::video::SColor(255, 255, 255, 255));
+}
+
+void Vehicle::UpdateCarTireTrails(int, int alpha)
+{
+    bool active[4] = {false, false, false, false};
+    for (int wheel = 0; wheel < 4; ++wheel) {
+        switch (wheel) {
+        case 0:
+            active[0] = false;
+            break;
+        case 1:
+            active[1] = false;
+            break;
+        case 2:
+            active[2] = unknown509 && (skidAmount > 0.0f || ((flags344 & 2u) && unknown132 == 1));
+            break;
+        case 3:
+            active[3] = unknown508 && (skidAmount > 0.0f || ((flags344 & 2u) && unknown132 == 1));
+            break;
+        }
+    }
+
+    using irr::core::vector3d;
+    for (int wheel = 0; wheel < 4; ++wheel) {
+        if (!active[wheel])
+            continue;
+        if (!wheelTrails[wheel])
+            wheelTrails[wheel] = GS3DStuff::GetTrailMgr()->AllocTrail();
+        if (!wheelTrails[wheel])
+            continue;
+
+        vector3d<float> position;
+        switch (wheel) {
+        case 0:
+            position = wheelPositions[0];
+            break;
+        case 1:
+            position = wheelPositions[1];
+            break;
+        case 2:
+            position = wheelPositions[3];
+            break;
+        case 3:
+            position = wheelPositions[2];
+            break;
+        }
+
+        vector3d<float> up(0.0f, 0.0f, 1.0f);
+        wheelTrails[wheel]->SetColor(static_cast<unsigned char>(alpha));
+        wheelTrails[wheel]->Update(position, up, false);
+    }
 }
 
 void Vehicle::InitV8Z06Sounds()
