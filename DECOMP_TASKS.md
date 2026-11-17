@@ -799,4 +799,5 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | lock_init | REVIEW | pending | src/game/characters/PlayerTest.cpp |
 | libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
 | libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_side | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | camera_tap | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | camera_tap | REVIEW | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | camera_tap | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
