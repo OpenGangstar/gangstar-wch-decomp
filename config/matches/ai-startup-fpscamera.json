@@ -26,6 +26,7 @@
     "linker_script": "config/linker/FPSCameraAiStartup.ld",
     "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE",
         "_ZN9FPSCamera6updateEf",
         "_ZN9FPSCamera4initEP11LevelObjecti",
         "_ZN9FPSCamera5enterEv",

@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
+#include "Point2D.h"
 #include "CameraManager.h"
 #include "Quaternion.h"
 #include "../app/Application.h"
@@ -95,6 +96,48 @@ FPSCamera::FPSCamera()
     init(0, 0);
     verticalAngle = 0.0f;
     flag60 = false;
+}
+
+extern "C" float sqrtf(float value);
+
+namespace {
+// The retail STLport list starts with an embedded sentinel.
+struct TouchPointLink {
+    TouchPointLink* next;
+    TouchPointLink* previous;
+    Point2D<short>* point;
+};
+
+struct TouchPointListView {
+    const TouchPointLink* first;
+    const TouchPointLink* last;
+};
+}
+
+void FPSCamera::zoom(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points)
+{
+    const TouchPointListView& links = reinterpret_cast<const TouchPointListView&>(points);
+    const Point2D<short>* first = links.first->point;
+    const Point2D<short>* last = links.last->point;
+    const float y = first->y - last->y;
+    const float x = first->x - last->x;
+    const int distance = static_cast<int>(sqrtf(x * x + y * y));
+    const int difference = distance - value40;
+    const int magnitude = difference < 0 ? -difference : difference;
+    const float previousFov = value52;
+
+    if (distance > value40) {
+        value52 -= magnitude * value56;
+        if (value52 < 6.0f)
+            value52 = 6.0f;
+    } else if (distance < value40) {
+        value52 += magnitude * value56;
+        if (value52 > 50.0f)
+            value52 = 50.0f;
+    }
+    value40 = distance;
+    if (value52 != previousFov)
+        zoom(static_cast<int>(value52));
 }
 
 void FPSCamera::update(float)
