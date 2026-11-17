@@ -1,3 +1,4 @@
+__cxa_pure_virtual = 0;
 __stack_chk_fail = 0x001c42e0;
 memcpy = 0x001c4190;
 __aeabi_i2f = 0x001c41e4;
@@ -53,6 +54,8 @@ SECTIONS
     .renderfx_finalize 0x003ec884 : { *renderfx-animation.o(.text._ZN8RenderFX8FinalizeEv) }
     .renderfx_file_opener 0x003ec998 : { *renderfx-animation.o(.text._Z11file_openerPKc) }
     .renderfx_empty_fs_callback 0x003ec1e0 : { *renderfx-animation.o(.text._Z11fs_callbackPN7gameswf9characterEPKcS3_) }
+    .renderfx_can_handle_event 0x003ec1dc : { *renderfx-animation.o(.text._ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE) }
+    .renderfx_event_listener_vtable 0x004afc88 : { *renderfx-animation.o(.data.rel.ro._ZTVN8RenderFX13EventListenerE) }
     .renderfx_fs_command 0x003ec398 : { *renderfx-animation.o(.text._ZN8RenderFX9FSCommandEPKcS1_) }
     .renderfx_file_read_mode 0x004014f0 : { *renderfx-animation.o(.rodata.swfReadMode) }
     .renderfx_fs_command_callback 0x003ed9a8 : { *renderfx-animation.o(.text._Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_) }

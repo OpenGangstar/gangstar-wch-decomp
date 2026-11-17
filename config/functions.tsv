@@ -17229,7 +17229,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec0a1	0x118	as_xmlsocket.cpp	gameswf	-	matched	_ZN7gameswf10as_xmlsockC1EPNS_6playerE	gameswf::as_xmlsock::as_xmlsock(gameswf::player*)
 0x003ec0a1	0x118	as_xmlsocket.cpp	gameswf	-	matched	_ZN7gameswf10as_xmlsockC2EPNS_6playerE	gameswf::as_xmlsock::as_xmlsock(gameswf::player*)
 0x003ec1b9	0x24	as_xmlsocket.cpp	gameswf	-	matched	_ZN7gameswf22as_global_xmlsock_ctorERKNS_7fn_callE	gameswf::as_global_xmlsock_ctor(gameswf::fn_call const&)
-0x003ec1dd	0x4	menufx.cpp	game	rendering	pending	_ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE	RenderFX::EventListener::CanHandleEvent(RenderFX::Event&)
+0x003ec1dd	0x4	menufx.cpp	game	rendering	matched	_ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE	RenderFX::EventListener::CanHandleEvent(RenderFX::Event&)
 0x003ec1e1	0x2	menufx.cpp	game	core	matched	_Z11fs_callbackPN7gameswf9characterEPKcS3_	fs_callback(gameswf::character*, char const*, char const*)
 0x003ec1e5	0x12	menufx.cpp	game	rendering	matched	_ZN8RenderFX14DestroyContextEPN7gameswf14player_contextE	RenderFX::DestroyContext(gameswf::player_context*)
 0x003ec1f9	0x6	menufx.cpp	game	rendering	matched	_ZN8RenderFX16SetEventListenerEPNS_13EventListenerE	RenderFX::SetEventListener(RenderFX::EventListener*)

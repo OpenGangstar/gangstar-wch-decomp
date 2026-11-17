@@ -28,6 +28,7 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE",
         "_ZN8RenderFX11SearchIndexD1Ev",
         "_ZN8RenderFX6UnloadEv",
         "_ZN8RenderFXC1Ev",
@@ -93,6 +94,7 @@
         "_ZN8RenderFX8PlayAnimEPKcS1_i"
     ],
     "sections": [
+        ".renderfx_event_listener_vtable",
         ".activate_animation",
         ".focus_out_animation",
         ".disabled_animation",
