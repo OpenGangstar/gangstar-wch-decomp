@@ -167,6 +167,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8RenderFX10SetVisibleEPKcb",
         "_ZN6MenuFX8GetStateEPKc",
         "_ZN6MenuFX15GetCurrentStateEv",
         "_ZN6MenuFXD1Ev",
@@ -177,7 +178,6 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN11MenuManager11getInstanceEv",
-        "_ZN11MenuManager9showTextsEv",
         "_ZN11MenuManager4pushEPKcb",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev",

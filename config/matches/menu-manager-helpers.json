@@ -25,6 +25,10 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManager9showTextsEv",
+        "_ZN11MenuManager9hideTextsEv",
+        "_ZN11MenuManager15hideDialogArrowEv",
+        "_ZN11MenuManager15showDialogArrowEv",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZNK11MenuManager14isCurrentStateEPKc",
         "_ZN8MyMenuFX11ClearStatesEv",
@@ -74,6 +78,8 @@
         }
     ],
     "sections": [
+        ".menu_manager_texts_name",
+        ".menu_manager_arrow_name",
         ".my_menu_fx_vtable",
         ".cleanup_map",
         ".helper_0",
@@ -107,6 +113,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8RenderFX10SetVisibleEPKcb",
         "_ZN6MenuFX8GetStateEPKc",
         "_ZN6MenuFX15GetCurrentStateEv",
         "_ZN6MenuFXD1Ev",
