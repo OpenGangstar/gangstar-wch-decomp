@@ -9505,7 +9505,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e45c5	0x68	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb	MenuManager::setMenuFXText(gameswf::character*, char const*, bool, bool)
 0x002e462d	0x30	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13setMenuFXTextEPKcS1_bb	MenuManager::setMenuFXText(char const*, char const*, bool, bool)
 0x002e465d	0xa	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager8getDepthEv	MenuManager::getDepth() const
-0x002e4669	0x2a	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13topSetVisibleEb	MenuManager::topSetVisible(bool)
+0x002e4669	0x2a	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13topSetVisibleEb	MenuManager::topSetVisible(bool)
 0x002e4695	0xe8	MenuManager.cpp	game	ui	pending	_ZN11MenuManager4drawEPK12StateMachine	MenuManager::draw(StateMachine const*)
 0x002e477d	0x118	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerC2Ev	MenuManager::MenuManager()
 0x002e477d	0x118	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerC1Ev	MenuManager::MenuManager()

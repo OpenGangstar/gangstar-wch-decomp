@@ -56,6 +56,7 @@ inline array<MenuFX::State*>::~array()
 class MenuFX::State {
 public:
     explicit inline State(const char* name);
+    gameswf::character* getCharacter() const { return firstCharacter.get(); }
     virtual ~State() {}
     virtual void Create();
     virtual void Show();

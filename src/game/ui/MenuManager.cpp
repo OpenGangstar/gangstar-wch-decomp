@@ -14,6 +14,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "MenuState.h"
+#include "../rendering/CharacterVisibility.h"
 
 class MyMenuFX : public MenuFX {
 public:
@@ -90,6 +91,14 @@ extern "C" void _ZN11MenuManager10clearFocusEv(MenuManager* manager)
     fields.clearingFocus = true;
     fields.menuFX->ClearFocus();
     fields.clearingFocus = false;
+}
+
+extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool visible)
+{
+    if (manager->getDepth() > 0) {
+        MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+        setCharacterVisible(fields.menuFX->GetCurrentState()->getCharacter(), visible);
+    }
 }
 
 void MenuManager::cleanupMap()

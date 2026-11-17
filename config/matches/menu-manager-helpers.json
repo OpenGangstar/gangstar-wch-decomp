@@ -25,6 +25,7 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManager13topSetVisibleEb",
         "_ZN11MenuManager9showTextsEv",
         "_ZN11MenuManager9hideTextsEv",
         "_ZN11MenuManager15hideDialogArrowEv",
