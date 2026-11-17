@@ -20,6 +20,7 @@
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
 #include "../rendering/FlashMatrix.h"
+#include "../audio/SoundManager.h"
 #include "../core/NativeStrings.h"
 #include "../hud/MenuManager.h"
 
@@ -1789,4 +1790,87 @@ void Widgets::IGMenu::OnEvent(RenderFX::Event& event)
     default:
         break;
     }
+}
+
+void Widgets::Volumes::Hide(bool animate)
+{
+    if (selectedPlaylist != s_playlist) {
+        if (s_playlist == -2) {
+            SoundManager::getInstance()->useBuiltInRadio();
+        } else {
+            SoundManager::getInstance()->useIPodRadio();
+            SoundManager::getInstance()->setPlaylist(s_playlist);
+        }
+    }
+    if (!SoundManager::getInstance()->isLowFpsMusicPlaying())
+        SoundManager::getInstance()->stop(35, -1, 0);
+    MenuWidget::Hide(animate);
+}
+
+static const char confirmPaymentFormat[] = "%s <font color=\"#00CC66\">%s</font>";
+static const char confirmPaymentMessagePath[] = "widgetConfirm.txtMessage";
+
+void Widgets::ConfirmPayment::UpdateLocalization()
+{
+    Confirm::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    const int id = GetMessageId();
+    const char* message = id == -1 ? localStartupEmptyText : _ZNK13StringManager9getStringEi(strings, id);
+    char text[1024];
+    sprintf(text, confirmPaymentFormat, message, strings->formatAmount(price, true, true));
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, confirmPaymentMessagePath, text, true);
+}
+
+void Widgets::Statistics::OnEvent(RenderFX::Event& event)
+{
+    if (strcmp(event.characterName, tutorialScrollButtonLabel) != 0)
+        return;
+
+    switch (event.type) {
+    case 5: {
+        const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+        const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+        const float x = coordinates.x;
+        const float y = coordinates.y;
+        const gameswf::point input(x, y);
+        gameswf::point point;
+        matrix.transform(&point, input);
+
+        if (unknown24 == -1) {
+            const float mouseFrame = point.y / 20.0f;
+            const float currentFrame = widgetAnimationMethods(animation).getCurrentFrame(animation);
+            unknown24 = static_cast<int>(mouseFrame + currentFrame);
+            unknown28 = unknown20 - 1;
+        }
+        const int frameOffset = static_cast<int>(static_cast<float>(unknown24) + point.y / -20.0f);
+        int pageOffset = frameOffset / 36;
+        if (frameOffset < 0)
+            --pageOffset;
+        const int newPage = unknown96 ? (unknown28 + pageOffset) % (unknown96 + 4) : 0;
+        if (unknown20 != newPage) {
+            unknown20 = newPage;
+            if (unknown20 < 0)
+                unknown20 += unknown96 + 4;
+            UpdateLocalization();
+        }
+        if (frameOffset < 0) {
+            const int remainder = frameOffset % 36;
+            unknown32 = 35 - (remainder < 0 ? -remainder : remainder);
+        } else {
+            unknown32 = frameOffset % 36;
+        }
+        renderFX->GotoFrame(animation, unknown32, false);
+        break;
+    }
+    case 6:
+        _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+        // Fall through to finish the gesture.
+    case 1:
+        if (getCharacterPlayState(animation) != 0)
+            renderFX->GotoFrame(animation, unknown32, true);
+        unknown24 = -1;
+        unknown20 = unknown96 ? (unknown20 + (event.type != 6)) % (unknown96 + 4) : 0;
+        break;
+    }
+    event.consumed = true;
 }

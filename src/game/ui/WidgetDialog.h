@@ -34,6 +34,7 @@ private:
 namespace Widgets {
 class Dialog : public MenuWidget {
 public:
+    int GetMessageId() const { return messageId; }
     explicit Dialog(const char* name);
     void SetMessage(int id);
     int GetPressedButton() const;

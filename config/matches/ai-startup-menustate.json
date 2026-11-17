@@ -334,6 +334,12 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12SoundManager12useIPodRadioEv",
+        "_ZN12SoundManager15useBuiltInRadioEv",
+        "_ZN12SoundManager11setPlaylistEi",
+        "_ZNK12SoundManager20isLowFpsMusicPlayingEv",
+        "_ZN12SoundManager4stopEiii",
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
         "_ZN7gameswf9character16get_world_matrixEv",
         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",

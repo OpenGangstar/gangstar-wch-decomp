@@ -27,6 +27,9 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets7Volumes4HideEb",
+        "_ZN7Widgets14ConfirmPayment18UpdateLocalizationEv",
         "_ZN7Widgets10Corruption7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets7DemoBuy7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets7DemoBuy18UpdateLocalizationEv",
@@ -204,6 +207,9 @@
         }
     ],
     "sections": [
+        ".widget_confirm_payment_vtable",
+        ".widget_confirm_payment_format",
+        ".widget_confirm_payment_message",
         ".widget_demobuy_vtable",
         ".corrupt_button_name",
         ".demobuy_confirm_button",
@@ -333,6 +339,12 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12SoundManager12useIPodRadioEv",
+        "_ZN12SoundManager15useBuiltInRadioEv",
+        "_ZN12SoundManager11setPlaylistEi",
+        "_ZNK12SoundManager20isLowFpsMusicPlayingEv",
+        "_ZN12SoundManager4stopEiii",
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
         "_ZN11MenuManager3popEb",
         "_ZN11MenuManager13consumeCursorEv",
         "_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb",

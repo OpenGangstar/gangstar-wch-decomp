@@ -8,6 +8,12 @@ PROVIDE(__aeabi_f2iz = 0x001c44cc);
 PROVIDE(__aeabi_idiv = 0x001c43dc);
 SECTIONS
 {
+    .widget_statistics_event 0x002eec14 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics7OnEventERN8RenderFX5EventE) }
+    .widget_confirm_payment_vtable 0x004a9b40 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets14ConfirmPaymentE) }
+    .widget_volumes_hide 0x002ecd98 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes4HideEb) }
+    .widget_confirm_payment_localization 0x002edfbc : { *ai-startup-menuwidget.o(.text._ZN7Widgets14ConfirmPayment18UpdateLocalizationEv) }
+    .widget_confirm_payment_format 0x0041afd0 : { *ai-startup-menuwidget.o(.rodata.confirmPaymentFormat) }
+    .widget_confirm_payment_message 0x0041aff4 : { *ai-startup-menuwidget.o(.rodata.confirmPaymentMessagePath) }
     .widget_demobuy_vtable 0x004a9a20 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7DemoBuyE) }
     .widget_corruption_event 0x002ed138 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Corruption7OnEventERN8RenderFX5EventE) }
     .widget_demobuy_event 0x002ed1c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuy7OnEventERN8RenderFX5EventE) }
