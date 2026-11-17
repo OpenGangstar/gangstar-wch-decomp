@@ -126,6 +126,13 @@ SECTIONS
     .infoAchievements_name 0x00419e20 : { *ai-startup-menustate.o(.rodata.infoAchievementsName) }
     .infoAbout_constructor 0x002e7fe8 : { *ai-startup-menustate.o(.text._ZN5Menus9InfoAboutC1Ev .text._ZN5Menus9InfoAboutC2Ev) }
     .infoAbout_name 0x00419e88 : { *ai-startup-menustate.o(.rodata.infoAboutName) }
+    .infoHelp_constructor 0x002e8030 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelpC1Ev .text._ZN5Menus8InfoHelpC2Ev) }
+    .infoHelp_name 0x00419e94 : { *ai-startup-menustate.o(.rodata.infoHelpName) }
+    .help_categories 0x0041a654 : { *ai-startup-menustate.o(.rodata._ZN5Menus16s_helpCategoriesE) }
+    .help_page_count 0x004b7cec (NOLOAD) : { *ai-startup-menustate.o(.bss._ZN5Menus15s_helpPageCountE) }
+    .info_help_deleting_destructor 0x002e9afc : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelpD0Ev) }
+    .info_help_complete_destructor 0x002e9b28 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelpD1Ev .text._ZN5Menus8InfoHelpD2Ev) }
+    .info_help_vtable 0x004a91b8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8InfoHelpE) }
     .options_constructor 0x002e80a4 : { *ai-startup-menustate.o(.text._ZN5Menus7OptionsC1EPKc .text._ZN5Menus7OptionsC2EPKc) }
     .optionLanguage_constructor 0x002e81f8 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguageC1Ev .text._ZN5Menus14OptionLanguageC2Ev) }
     .optionLanguage_name 0x00419ec0 : { *ai-startup-menustate.o(.rodata.optionLanguageName) }
