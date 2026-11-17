@@ -17254,7 +17254,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec54d	0x60	menufx.cpp	gameswf	-	matched	_ZN7gameswf5arrayIN8RenderFX11SearchIndex5EntryEE6resizeEi	gameswf::array<RenderFX::SearchIndex::Entry>::resize(int)
 0x003ec5ad	0x2c	menufx.cpp	gameswf	-	matched	_ZN7gameswf5arrayIN8RenderFX11SearchIndex5EntryEE14release_bufferEv	gameswf::array<RenderFX::SearchIndex::Entry>::release_buffer()
 0x003ec5d9	0x26	menufx.cpp	gameswf	-	matched	_ZN7gameswf9smart_ptrINS_6playerEE7set_refEPS1_	gameswf::smart_ptr<gameswf::player>::set_ref(gameswf::player*)
-0x003ec601	0x40	menufx.cpp	game	rendering	pending	_ZN8RenderFX10Controller5ResetEv	RenderFX::Controller::Reset()
+0x003ec601	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX10Controller5ResetEv	RenderFX::Controller::Reset()
 0x003ec641	0x30	menufx.cpp	game	core	matched	_Z11message_logPKc	message_log(char const*)
 0x003ec671	0x38	menufx.cpp	game	core	matched	_Z12log_callbackbPKc	log_callback(bool, char const*)
 0x003ec6a9	0x14	menufx.cpp	game	rendering	matched	_ZN8RenderFX14SetOrientationEN7gameswf16orientation_modeE	RenderFX::SetOrientation(gameswf::orientation_mode)
@@ -17302,7 +17302,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ed541	0xcc	menufx.cpp	gameswf	-	matched	_ZNK7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE10find_indexERKS1_	gameswf::hash<gameswf::tu_string, gameswf::array<RenderFX::SearchIndex::Entry>*, gameswf::string_hash_functor<gameswf::tu_string> >::find_index(gameswf::tu_string const&) const
 0x003ed60d	0x74	menufx.cpp	game	ui	pending	_ZN6MenuFX6PopAllEv	MenuFX::PopAll()
 0x003ed681	0x28	menufx.cpp	game	rendering	matched	_ZN8RenderFX12BeginDisplayEv	RenderFX::BeginDisplay()
-0x003ed6a9	0x3a	menufx.cpp	game	rendering	pending	_ZN8RenderFX10ControllerD1Ev	RenderFX::Controller::~Controller()
+0x003ed6a9	0x3a	menufx.cpp	game	rendering	matched	_ZN8RenderFX10ControllerD1Ev	RenderFX::Controller::~Controller()
 0x003ed6e5	0x1a0	menufx.cpp	game	rendering	pending	_ZN8RenderFX4FindEPKcPN7gameswf9characterE	RenderFX::Find(char const*, gameswf::character*)
 0x003ed885	0x44	menufx.cpp	game	rendering	matched	_ZN8RenderFX9PreRenderEv	RenderFX::PreRender()
 0x003ed8c9	0x46	menufx.cpp	game	rendering	matched	_ZN8RenderFX9SetBoundsEiiii	RenderFX::SetBounds(int, int, int, int)

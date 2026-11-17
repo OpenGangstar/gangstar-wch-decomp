@@ -11,6 +11,26 @@ enum orientation_mode {};
 class player_context;
 class root;
 
+class ref_counted {
+public:
+    void drop_ref();
+};
+
+template <typename T>
+class smart_ptr {
+public:
+    smart_ptr() : value(0) {}
+    ~smart_ptr()
+    {
+        if (value)
+            reinterpret_cast<ref_counted*>(value)->drop_ref();
+    }
+    void set_ref(T* value) __attribute__((weak));
+
+private:
+    T* value;
+};
+
 template <typename T>
 class array {
 public:
@@ -26,6 +46,7 @@ public:
 
 class RenderFX {
 public:
+    class Controller;
     class Event;
     class EventListener;
     void FSCommand(const char* command, const char* args);
