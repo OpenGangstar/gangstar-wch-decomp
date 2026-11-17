@@ -25,6 +25,10 @@ void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
 void _ZN11MenuManager10clearFocusEv(MenuManager* manager);
 void _ZN11MenuManager17allowCheatsUnlockEb(MenuManager* manager, bool allow);
 void _ZN7Widgets5Title7SetIconEPKc(void* title, const char* icon);
+void _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(void* menu, int button, bool active);
+void _ZN7Widgets6IGMenu11HideButtonsEv(void* menu);
+void _ZN7Widgets6IGMenu12SetTitleTextEi(void* menu, int text);
+void _ZN7Widgets6Arrows12SetPageCountEiib(MenuWidget* arrows, int count, int page, bool enabled);
 }
 
 namespace Menus {
@@ -857,6 +861,70 @@ inline void* getWidgetByIndex(int index)
 {
     return getWidgetByIndex(MenuManager::getInstance(), index);
 }
+}
+
+void Menus::InGameMenu::GotFocus()
+{
+    MenuState::GotFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(1))->SetListener(this);
+}
+
+void Menus::InfoStatistics::GotFocus()
+{
+    Infos::GotFocus();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(1), 1, true);
+}
+
+void Menus::InfoAbout::GotFocus()
+{
+    Infos::GotFocus();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(1), 3, true);
+}
+
+void Menus::InfoHelp::GotFocus()
+{
+    Infos::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    MenuWidget* arrows = static_cast<MenuWidget*>(getWidgetByIndex(manager, 18));
+    arrows->SetListener(this);
+    _ZN7Widgets6Arrows12SetPageCountEiib(arrows, s_helpPageCount, 0, !unknown104);
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 2, true);
+}
+
+void Menus::OptionLanguage::GotFocus()
+{
+    Options::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 2, true);
+    static_cast<MenuWidget*>(getWidgetByIndex(manager, 9))->SetListener(this);
+}
+
+void Menus::OptionControls::GotFocus()
+{
+    Options::GotFocus();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(1), 1, true);
+}
+
+void Menus::InGameCarRental::GotFocus()
+{
+    ServiceCarRental::GotFocus();
+    void* menu = getWidgetByIndex(1);
+    _ZN7Widgets6IGMenu11HideButtonsEv(menu);
+    _ZN7Widgets6IGMenu12SetTitleTextEi(menu, 0x103a);
+}
+
+void Menus::InGameWeaponShop::GotFocus()
+{
+    ServiceWeaponShop::GotFocus();
+    void* menu = getWidgetByIndex(1);
+    _ZN7Widgets6IGMenu11HideButtonsEv(menu);
+    _ZN7Widgets6IGMenu12SetTitleTextEi(menu, 0x3020);
+}
+
+void Menus::Achievement::GotFocus()
+{
+    MenuState::GotFocus();
+    static_cast<MenuWidget*>(getWidgetByIndex(10))->SetListener(this);
 }
 
 void Menus::OptionVolumes::LostFocus()
