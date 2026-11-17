@@ -4,6 +4,8 @@
 #include "../core/Physics.h"
 namespace Structs { struct Car; }
 class Character;
+struct VehicleRepairVisualState;
+namespace irr { namespace video { class ITexture; } }
 class Trail;
 class CarSounds;
 struct CarSoundParameters;
@@ -234,7 +236,10 @@ private:
     unsigned char unknown388[12];
     int waitElapsed;
     int waitDuration;
-    unsigned char unknown408[13];
+    irr::video::ITexture* repairTexture;
+    unsigned char unknown412[4];
+    irr::scene::ISceneNode* repairMaterialNode;
+    bool repairFlag420;
     unsigned char explosionFlag;
     unsigned char unknown422[2];
     int vehicleIndex;
@@ -291,14 +296,18 @@ private:
     bool skidSoundPlaying;
     unsigned char unknown794[2];
     Trail* wheelTrails[4];
-    unsigned char unknown812[20];
+    unsigned char unknown812[4];
+    irr::scene::ISceneNode* repairGlassNode;
+    unsigned char unknown820[12];
     irr::scene::ISceneNode* lightNodes[4];
-    unsigned char unknown848[52];
+    unsigned char unknown848[48];
+    irr::scene::ISceneNode* repairLightNode;
     bool exploding;
     bool explosionFinished;
     unsigned char unknown902[2];
     int doorSoundSuppression;
-    unsigned char unknown908[8];
+    VehicleRepairVisualState* repairVisualState;
+    unsigned char unknown912[4];
     int maxHealth;
     int health;
     int unknown924;
@@ -309,7 +318,7 @@ private:
     int cameraLookAhead;
     irr::scene::ISceneNodeAnimator* explosionAnimator;
     irr::scene::ITimelineController* explosionTimeline;
-    unsigned char unknown960[4];
+    int unknown960Word;
     int animationClipIndex;
     int driverMetatype;
     int driverBehavior;

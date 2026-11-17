@@ -63,6 +63,7 @@ struct SMaterial {
         layers[0].texture=0; layers[1].texture=0; layers[2].texture=0; layers[3].texture=0;
     }
     // Native leaves this in r0; fluent return type inferred, callers ignore it.
+    void setTexture(unsigned int layer, ITexture* texture) __attribute__((weak));
     SMaterial& setFlag(E_MATERIAL_FLAG, bool) __attribute__((weak));
     SMaterial& operator=(const SMaterial&) __attribute__((weak));
     void setType(int value) { if(type!=value) {dirtyFlags|=1;type=value;} }
