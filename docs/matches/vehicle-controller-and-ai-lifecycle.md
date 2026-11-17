@@ -35,3 +35,26 @@ OK  _ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE  0x003426b5  356 
 OK SECTION .vehicle_switch_table  0x004323e0  48 bytes
 OK  _ZN20CopVehicleController11switchStateEN8gameloft2ai7StateIDE  0x0034171d  144 bytes
 ```
+
+## NPC controller allocation
+
+The NPC addAI overload reuses shared declarations of the recovered passive,
+aggressive, cop, and guard controllers. It preserves category-specific default
+states, the cop's wanted-level event before list insertion, and the original
+list-link update order. Categories 0 and 6 select the passive controller with
+different transition tables; categories 1/2, 3, and 5 select aggressive, cop,
+and guard controllers respectively. Invalid categories use the original message.
+
+Allocation reuses NativeAllocator.h and a weak declaration of the observed
+STLport list-node allocator specialization. The empty allocator subobject is
+addressed through the existing list sentinel; no allocator implementation or
+additional storage is invented. EvWantedLevelChanged initializes IEvent(23),
+preserving the original temporary store order and all existing event layouts.
+
+The scoped command exited 0 and preserved existing comparisons:
+
+```text
+OK  _ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE  0x00340455  376 bytes
+OK SECTION .ai_add_npc_table  0x0042fabc  28 bytes
+OK SECTION .ai_add_invalid_text  0x0042fa84  56 bytes
+```

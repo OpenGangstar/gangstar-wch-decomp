@@ -6,6 +6,7 @@ class Path;
 // Constructor calls Character; the dispatcher allocates 456 bytes.
 // Remaining fields and virtual overrides are unrecovered.
 class NPC : public Character {
+    friend class AIManager;
     friend class VehicleController;
     friend class CopController;
 public:

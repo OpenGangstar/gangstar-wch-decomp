@@ -253,3 +253,73 @@ void AIManager::onEvent(const IEvent* event, const EventManager*)
     }
     }
 }
+
+#include "NPC.h"
+#include "NPCController.h"
+#include "../core/NativeAllocator.h"
+#include "../core/NativeStdio.h"
+namespace stlp_priv { template<class T> struct _List_node; }
+namespace std {
+template<> stlp_priv::_List_node<IEventReceiver*>* allocator<stlp_priv::_List_node<IEventReceiver*> >::allocate(unsigned int, const void*) __attribute__((weak));
+}
+#include "CivPassiveController.h"
+#include "CivAgressiveController.h"
+#include "CopController.h"
+#include "GuardController.h"
+static const char aiInvalidType[] = "AIManager was asked to addAI on an invalid AI Type: %i\n";
+void AIManager::addAI(NPC* npc,gameloft::ai::StateID initial)
+{
+    NPCController* controller;
+    switch(npc->category428) {
+    case 0: {
+        if (initial == 0)
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_passive), static_cast<gameloft::ai::StateID>(1));
+        else
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_passive), initial);
+        break;
+    }
+    case 1: case 2: {
+        if (initial == 0)
+            controller = new CivAgressiveController(npc, static_cast<gameloft::ai::StateID>(1));
+        else
+            controller = new CivAgressiveController(npc, initial);
+        break;
+    }
+    case 3: {
+        CopController* cop;
+        if (initial == 0)
+            cop = new CopController(npc, static_cast<gameloft::ai::StateID>(1));
+        else
+            cop = new CopController(npc, initial);
+        EvWantedLevelChanged event;
+        cop->onEvent(&event,Application::GetInstance()->GetEventManager());
+        controller = cop;
+        break;
+    }
+    case 5: {
+        if (initial == 0)
+            controller = new GuardController(npc, static_cast<gameloft::ai::StateID>(3));
+        else
+            controller = new GuardController(npc, initial);
+        break;
+    }
+    case 6: {
+        if (initial == 0)
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::npc_scripted), static_cast<gameloft::ai::StateID>(1));
+        else
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::npc_scripted), initial);
+        break;
+    }
+    default:
+        printf(aiInvalidType,npc->category428);
+        return;
+    }
+    typedef std::allocator<stlp_priv::_List_node<IEventReceiver*> > Allocator;
+    ReceiverNode* node = reinterpret_cast<ReceiverNode*>(reinterpret_cast<Allocator*>(&firstList)->allocate(1,0));
+    node->receiver = controller;
+    node->next = &firstList;
+    ReceiverList* previous = firstList.previous;
+    node->previous = previous;
+    previous->next = node;
+    firstList.previous = node;
+}

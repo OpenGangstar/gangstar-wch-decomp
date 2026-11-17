@@ -12170,7 +12170,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003402cd	0x14	AIManager.cpp	game	core	matched	_GLOBAL__I__ZN9AIManagerC2Ev	_GLOBAL__I__ZN9AIManagerC2Ev
 0x003402e1	0x24	AIManager.cpp	game	core	matched	_ZN20EvWantedLevelChangedD1Ev	EvWantedLevelChanged::~EvWantedLevelChanged()
 0x00340305	0x150	AIManager.cpp	game	ai	pending	_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE	AIManager::addAI(Vehicle*, gameloft::ai::StateID)
-0x00340455	0x178	AIManager.cpp	game	ai	pending	_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE	AIManager::addAI(NPC*, gameloft::ai::StateID)
+0x00340455	0x178	AIManager.cpp	game	ai	matched	_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE	AIManager::addAI(NPC*, gameloft::ai::StateID)
 0x003405cd	0x2c	AIManager.cpp	game	core	matched	_ZN20EvWantedLevelChangedD0Ev	EvWantedLevelChanged::~EvWantedLevelChanged()
 0x003405f9	0x40	AIManager.cpp	game	ai	matched	_ZN9AIManagerD0Ev	AIManager::~AIManager()
 0x00340639	0x38	AIManager.cpp	game	ai	matched	_ZN9AIManagerD2Ev	AIManager::~AIManager()
