@@ -29,6 +29,12 @@ INCLUDE config/linker/NPCFunctionSections.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .player_recovered_0 0x003035d0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13acquireTargetEv) }
+    .player_recovered_1 0x00303ab8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12startDrivingEv) }
+    .player_recovered_2 0x00303b6c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5shootEfb) }
+    .player_recovered_3 0x00303b58 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest5shootEfb) }
+    .player_recovered_4 0x00304700 : { *ai-startup-playertest.o(.text._ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb) }
+
     .player_set_target 0x00301260 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10_SetTargetEP11LevelObjectb) }
     .player_stop_moving 0x003019c8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10stopMovingEb) }
     .player_car_anim_name 0x00301100 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14getCarAnimNameEPKcb) }

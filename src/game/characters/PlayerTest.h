@@ -4,6 +4,7 @@
 #include "../core/Array.h"
 
 class Vehicle;
+class PhysicAttributes;
 class b2Body;
 class Weapon;
 class LevelObject;
@@ -53,7 +54,7 @@ public:
     virtual void unknown38();
     virtual void unknown39();
     virtual void unknown40();
-    virtual void unknown41();
+    virtual bool shoot(float, bool);
     virtual void unknown42();
     virtual void unknown43();
     virtual void unknown44();
@@ -85,6 +86,7 @@ class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
 public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
+    virtual bool shoot(float elapsed, bool pressed);
     void stopMoving(bool fast);
     void move(float direction, float magnitude);
     void setAnim(int animation, bool first, bool second, bool third, float speed);
@@ -104,6 +106,8 @@ public:
     virtual Weapon* getWeapon() const;
     enum eContext { Context0 = 0, Context1 = 1, AnyContext = -1 };
     static PlayerTest* GetPlayer();
+    void acquireTarget();
+    static LevelObject* getAttackableTarget(LevelObject*, Weapon*, LevelObject*);
     void addPhotoTarget(LevelObject* target);
     void clearPhotoTargets();
     // Inline access to the observed target at offset 264; no standalone symbol claimed.
@@ -155,7 +159,9 @@ public:
     bool isFacingTarget();
     unsigned char unknown8[12];
     irr::scene::ISceneNode* sceneNode;
-    unsigned char unknown24[36];
+    unsigned char unknown24[4];
+    PhysicAttributes* physicAttributes;
+    unsigned char unknown32[28];
     SaveVector3 facing;
     unsigned char unknown72[108];
     irr::scene::ISceneNode* shadowNode;
@@ -169,7 +175,9 @@ public:
     int health;
     unsigned char unknown228[12];
     unsigned int flags240;
-    unsigned char unknown244[20];
+    unsigned char unknown244[16];
+    bool unknown260;
+    unsigned char unknown261[3];
     LevelObject* target;
     unsigned char unknown268[44];
     LevelObject* unknown312;

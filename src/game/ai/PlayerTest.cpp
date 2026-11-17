@@ -566,3 +566,76 @@ void PlayerTest::_SetTarget(LevelObject* replacement, bool changeCamera)
     }
     Lock::getInstance()->setTarget(target);
 }
+
+void PlayerTest::acquireTarget()
+{
+    Weapon* weapon = Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();
+    if (target)
+        return;
+    LevelObject* replacement = getAttackableTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(this)), weapon, 0);
+    if (replacement && replacement != target) {
+        _SetTarget(replacement, true);
+        lockRequested = true;
+    }
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+#include "../audio/SoundManager.h"
+void PlayerTest::startDriving()
+{
+    SoundManager::getInstance()->stop(PlayerTest::GetPlayer()->getAmbientSound(), -1, 0);
+    static_cast<SavePrimaryInterface*>(this)->setVehicle(static_cast<Vehicle*>(unknown312));
+    Application::GetInstance()->GetEventManager()->raise(EvPlayer(9));
+    vehicle->startDriving();
+    hideMesh();
+    CameraManager::getInstance()->setTouchScreenInputs(true);
+    ScriptManager::getInstance()->playerDrives(static_cast<Vehicle*>(unknown312));
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+bool PlayerTest::shoot(float elapsed, bool pressed)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    if (character->Character::shoot(elapsed, pressed)) {
+        Application::GetInstance()->GetEventManager()->raise(EvPlayer(2));
+        return true;
+    }
+    return false;
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+#include "../audio/SoundManager.h"
+#include "../characters/PhysicAttributes.h"
+void PlayerTest::stopDriving(playertest::PlayerCarState::ePlayerCarState state, bool left)
+{
+    vehicleVisibleInCinematic = false;
+    SoundManager* sound = SoundManager::getInstance();
+    int ambient = PlayerTest::GetPlayer()->getAmbientSound();
+    sound->unknown140 = true;
+    sound->playEx(ambient, 0, true, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    if (ScriptManager::getInstance()->areBlockingCommandsSkipped())
+        reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this))->resetCollisions();
+    else
+        unknown260 = true;
+    reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this))->positionInVehicle(left);
+    sceneNode->setRotation(vehicle->GetRotation() * irr::core::quaternion(0.0f, 0.0f, 1.57079632679489661923f));
+    vehicle->stopDriving();
+    Application* app = Application::GetInstance();
+    app->GetControlManager()->lock();
+    showMesh();
+    if (physicAttributes)
+        physicAttributes->SetPhysicInfo(*vehicle->getPhysicAttributes()->info, 0);
+    flags240 &= ~0x400u;
+    if (vehicle->GetSpeed() > 18.0f && state == static_cast<playertest::PlayerCarState::ePlayerCarState>(6)) {
+        vehicle->openDoorFromInside(true);
+        unknown372 = 9;
+    } else {
+        unknown372 = state;
+    }
+    app->GetEventManager()->raise(EvPlayer(10));
+    ScriptManager::getInstance()->playerDrives(0);
+}

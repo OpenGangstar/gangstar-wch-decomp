@@ -25,6 +25,11 @@
     "source": "src/game/ai/PlayerTest.cpp",
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
+        "_ZN10PlayerTest13acquireTargetEv",
+        "_ZN10PlayerTest12startDrivingEv",
+        "_ZN10PlayerTest5shootEfb",
+        "_ZThn4_N10PlayerTest5shootEfb",
+        "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
         "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
         "_ZN10PlayerTest10stopMovingEb",
         "_ZN10PlayerTest14getCarAnimNameEPKcb",
@@ -125,7 +130,10 @@
             "offset": 864
         },
         ".map_cleanup",
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".character_recovered_002f61f9",
+        ".character_recovered_002f512d",
+        ".character_player_event_vtable"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -137,6 +145,7 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN10PlayerTest14isFacingTargetEv",
+        "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
         "_ZN10PlayerTest7setAnimEibbbf",
         "_ZN11Application11GetInstanceEv",
         "_ZN11LevelObject11GetMetatypeEv",
@@ -157,11 +166,13 @@
         "_ZN11LevelObjectC1Ei",
         "_ZN11LevelObjectD1Ev",
         "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN12SoundManager4stopEiii",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN13CameraManager11getInstanceEv",
         "_ZN13CameraManager20setTouchScreenInputsEb",
         "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
         "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager12playerDrivesEP7Vehicle",
         "_ZN13ScriptManager12taggedKilledEv",
         "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
         "_ZN13WeaponManager10nextWeaponEi",
@@ -212,6 +223,8 @@
         "_ZN7Message11isDisplayedEv",
         "_ZN7Vehicle10immobilizeEv",
         "_ZN7Vehicle11getUniqueIdEv",
+        "_ZN7Vehicle11stopDrivingEv",
+        "_ZN7Vehicle12startDrivingEv",
         "_ZN7Vehicle16getHasBeenStolenEv",
         "_ZN7Vehicle16resetPreviousPosEv",
         "_ZN7Vehicle16setHasBeenStolenEv",
@@ -247,6 +260,7 @@
         "_ZN9Character4showEv",
         "_ZN9Character5punchEv",
         "_ZN9Character5readyEf",
+        "_ZN9Character5shootEfb",
         "_ZN9Character7punchedEiiP11LevelObject",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff15SetMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
