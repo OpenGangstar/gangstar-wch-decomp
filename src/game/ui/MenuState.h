@@ -11,6 +11,7 @@ public:
     class State;
     virtual ~MenuFX();
     virtual void Unload();
+    virtual void Update(int elapsed, bool render);
     void PopAll();
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);

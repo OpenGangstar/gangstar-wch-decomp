@@ -238,7 +238,7 @@ struct CharacterAnimationMethods {
     bool (*is)(const gameswf::character*, int);
     void (*beforePlayState[31])();
     void (*setPlayState)(gameswf::character*, int);
-    void (*getPlayState)();
+    int (*getPlayState)(const gameswf::character*);
     bool (*gotoLabeledFrame)(gameswf::character*, const char*);
     void (*beforeFrameQueries[38])();
     int (*getCurrentFrame)(gameswf::character*);
@@ -726,6 +726,29 @@ void MenuFX::PopAll()
     }
     SetContext(reinterpret_cast<gameswf::character*>(
         reinterpret_cast<FlashCharacterRoot*>(root.get())->flashRoot));
+}
+
+void MenuFX::Update(int elapsed, bool render)
+{
+    RenderFX::Update(elapsed, render);
+    if (stateStack.size > 0)
+        topState()->Update(elapsed);
+
+    for (int index = 0; index < registeredStates.size; ++index) {
+        State* state = registeredStates.elements[index];
+        if (state->unknown80 != 2 ||
+            animationMethods(state->firstCharacter.get()).getPlayState(state->firstCharacter.get()) != 1 ||
+            !isCharacterVisible(registeredStates.elements[index]->firstCharacter.get()))
+            continue;
+
+        for (int controller = 0; controller < 4; ++controller) {
+            if (controllers[controller].fourth.get())
+                goto nextState;
+        }
+        setCharacterVisible(registeredStates.elements[index]->firstCharacter.get(), false);
+    nextState:
+        ;
+    }
 }
 
 void MenuFX::OnFSCommand(const char* command, const char* args)
