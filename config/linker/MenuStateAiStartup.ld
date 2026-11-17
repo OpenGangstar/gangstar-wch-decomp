@@ -22,6 +22,27 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .inGameMenu_constructor 0x002e7ecc : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenuC1EPKc .text._ZN5Menus10InGameMenuC2EPKc) }
+    .infos_constructor 0x002e7f0c : { *ai-startup-menustate.o(.text._ZN5Menus5InfosC1EPKc .text._ZN5Menus5InfosC2EPKc) }
+    .infoStatistics_constructor 0x002e7f50 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatisticsC1Ev .text._ZN5Menus14InfoStatisticsC2Ev) }
+    .infoStatistics_name 0x00419e78 : { *ai-startup-menustate.o(.rodata.infoStatisticsName) }
+    .infoAchievements_constructor 0x002e7f98 : { *ai-startup-menustate.o(.text._ZN5Menus16InfoAchievementsC1Ev .text._ZN5Menus16InfoAchievementsC2Ev) }
+    .infoAchievements_name 0x00419e20 : { *ai-startup-menustate.o(.rodata.infoAchievementsName) }
+    .infoAbout_constructor 0x002e7fe8 : { *ai-startup-menustate.o(.text._ZN5Menus9InfoAboutC1Ev .text._ZN5Menus9InfoAboutC2Ev) }
+    .infoAbout_name 0x00419e88 : { *ai-startup-menustate.o(.rodata.infoAboutName) }
+    .options_constructor 0x002e80a4 : { *ai-startup-menustate.o(.text._ZN5Menus7OptionsC1EPKc .text._ZN5Menus7OptionsC2EPKc) }
+    .optionLanguage_constructor 0x002e81f8 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguageC1Ev .text._ZN5Menus14OptionLanguageC2Ev) }
+    .optionLanguage_name 0x00419ec0 : { *ai-startup-menustate.o(.rodata.optionLanguageName) }
+    .optionControls_constructor 0x002e823c : { *ai-startup-menustate.o(.text._ZN5Menus14OptionControlsC1Ev .text._ZN5Menus14OptionControlsC2Ev) }
+    .optionControls_name 0x00419ed0 : { *ai-startup-menustate.o(.rodata.optionControlsName) }
+    .optionVolumes_constructor 0x002e8280 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumesC1Ev .text._ZN5Menus13OptionVolumesC2Ev) }
+    .optionVolumes_name 0x00419e10 : { *ai-startup-menustate.o(.rodata.optionVolumesName) }
+    .services_constructor 0x002e82c8 : { *ai-startup-menustate.o(.text._ZN5Menus8ServicesC1EPKc .text._ZN5Menus8ServicesC2EPKc) }
+    .serviceCorruption_constructor 0x002e8308 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruptionC1Ev .text._ZN5Menus17ServiceCorruptionC2Ev) }
+    .serviceCorruption_name 0x00419ee0 : { *ai-startup-menustate.o(.rodata.serviceCorruptionName) }
+    .serviceMissions_constructor 0x002e8404 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissionsC1Ev .text._ZN5Menus15ServiceMissionsC2Ev) }
+    .serviceMissions_name 0x00419e00 : { *ai-startup-menustate.o(.rodata.serviceMissionsName) }
+    .tutorial_constructor 0x002e84ec : { *ai-startup-menustate.o(.text._ZN5Menus8TutorialC1EPKc .text._ZN5Menus8TutorialC2EPKc) }
     .menu_fx_state_deleting_destructor 0x002e96bc : { *ai-startup-menustate.o(.text._ZN6MenuFX5StateD0Ev .gnu.linkonce.t._ZN6MenuFX5StateD0Ev) }
     .menu_fx_state_complete_destructor 0x002e96f4 : { *ai-startup-menustate.o(.text._ZN6MenuFX5StateD1Ev .gnu.linkonce.t._ZN6MenuFX5StateD1Ev) }
     .menu_state_deleting_destructor 0x002e9724 : { *ai-startup-menustate.o(.text._ZN9MenuStateD0Ev .gnu.linkonce.t._ZN9MenuStateD0Ev) }

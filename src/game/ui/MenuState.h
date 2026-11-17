@@ -74,7 +74,6 @@ protected:
 private:
     bool unknown96;
     int depth;
-    unsigned char afterDepth[4];
 };
 
 #endif

@@ -21,6 +21,219 @@ void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
 void _ZN11MenuManager10clearFocusEv(MenuManager* manager);
 }
 
+namespace Menus {
+class InGameMenu : public MenuState {
+public:
+    explicit InGameMenu(const char* name);
+    virtual ~InGameMenu();
+};
+
+class Infos : public InGameMenu {
+public:
+    explicit Infos(const char* name);
+    virtual ~Infos();
+
+protected:
+    bool unknown104;
+    bool unknown105;
+};
+
+class InfoStatistics : public Infos {
+public:
+    InfoStatistics();
+    virtual ~InfoStatistics();
+};
+
+class InfoAchievements : public Infos {
+public:
+    InfoAchievements();
+    virtual ~InfoAchievements();
+};
+
+class InfoAbout : public Infos {
+public:
+    InfoAbout();
+    virtual ~InfoAbout();
+};
+
+class Options : public InGameMenu {
+public:
+    explicit Options(const char* name);
+    virtual ~Options();
+};
+
+class OptionLanguage : public Options {
+public:
+    OptionLanguage();
+    virtual ~OptionLanguage();
+};
+
+class OptionControls : public Options {
+public:
+    OptionControls();
+    virtual ~OptionControls();
+};
+
+class OptionVolumes : public Options {
+public:
+    OptionVolumes();
+    virtual ~OptionVolumes();
+
+protected:
+    int selectedChannel;
+};
+
+class Services : public InGameMenu {
+public:
+    explicit Services(const char* name);
+    virtual ~Services();
+};
+
+class ServiceCorruption : public Services {
+public:
+    ServiceCorruption();
+    virtual ~ServiceCorruption();
+};
+
+class ServiceMissions : public Services {
+public:
+    ServiceMissions();
+    virtual ~ServiceMissions();
+};
+
+class Tutorial : public MenuState {
+public:
+    explicit Tutorial(const char* name);
+    virtual ~Tutorial();
+};
+}
+
+Menus::InGameMenu::InGameMenu(const char* name)
+    : MenuState(name)
+{
+    int ids[2];
+    ids[0] = 27;
+    ids[1] = 1;
+    widgetIds.append(ids, 2);
+}
+
+Menus::Infos::Infos(const char* name)
+    : InGameMenu(name), unknown104(false)
+{
+    int ids[2];
+    ids[0] = 17;
+    ids[1] = 19;
+    widgetIds.append(ids, 2);
+}
+
+static const char infoStatisticsName[] = "InfoStatistics";
+
+Menus::InfoStatistics::InfoStatistics()
+    : Infos(infoStatisticsName)
+{
+    unknown105 = true;
+    const int widgetId = 12;
+    widgetIds.append(&widgetId, 1);
+}
+
+static const char infoAchievementsName[] = "InfoAchievements";
+
+Menus::InfoAchievements::InfoAchievements()
+    : Infos(infoAchievementsName)
+{
+    unknown105 = true;
+    int ids[3];
+    ids[0] = 11;
+    ids[1] = 18;
+    ids[2] = 15;
+    widgetIds.append(ids, 3);
+}
+
+static const char infoAboutName[] = "InfoAbout";
+
+Menus::InfoAbout::InfoAbout()
+    : Infos(infoAboutName)
+{
+    unknown105 = true;
+    const int widgetId = 14;
+    widgetIds.append(&widgetId, 1);
+}
+
+Menus::Options::Options(const char* name)
+    : InGameMenu(name)
+{
+    int ids[2];
+    ids[0] = 17;
+    ids[1] = 19;
+    widgetIds.append(ids, 2);
+}
+
+static const char optionLanguageName[] = "OptionLanguage";
+
+Menus::OptionLanguage::OptionLanguage()
+    : Options(optionLanguageName)
+{
+    const int widgetId = 9;
+    widgetIds.append(&widgetId, 1);
+}
+
+static const char optionControlsName[] = "OptionControls";
+
+Menus::OptionControls::OptionControls()
+    : Options(optionControlsName)
+{
+    const int widgetId = 8;
+    widgetIds.append(&widgetId, 1);
+}
+
+static const char optionVolumesName[] = "OptionVolumes";
+
+Menus::OptionVolumes::OptionVolumes()
+    : Options(optionVolumesName), selectedChannel(-2)
+{
+    const int widgetId = 7;
+    widgetIds.append(&widgetId, 1);
+}
+
+Menus::Services::Services(const char* name)
+    : InGameMenu(name)
+{
+    int ids[2];
+    ids[0] = 17;
+    ids[1] = 19;
+    widgetIds.append(ids, 2);
+}
+
+static const char serviceCorruptionName[] = "ServiceCorruption";
+
+Menus::ServiceCorruption::ServiceCorruption()
+    : Services(serviceCorruptionName)
+{
+    int ids[2];
+    ids[0] = 16;
+    ids[1] = 5;
+    widgetIds.append(ids, 2);
+}
+
+static const char serviceMissionsName[] = "ServiceMissions";
+
+Menus::ServiceMissions::ServiceMissions()
+    : Services(serviceMissionsName)
+{
+    int ids[3];
+    ids[0] = 6;
+    ids[1] = 18;
+    ids[2] = 15;
+    widgetIds.append(ids, 3);
+}
+
+Menus::Tutorial::Tutorial(const char* name)
+    : MenuState(name)
+{
+    const int widgetId = 23;
+    widgetIds.append(&widgetId, 1);
+}
+
 void MenuFX::State::Create()
 {
 }
