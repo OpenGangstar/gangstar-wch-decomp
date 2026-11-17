@@ -383,7 +383,6 @@
         "_ZN13ScriptManager5pauseEv",
         "_ZN5Menus6Dialog10SetMessageEi",
         "_ZN5Menus14ConfirmPayment8SetPriceEi",
-        "_ZN11MenuManager4pushEPKcb",
         "_ZN13WeaponManager28getKeepWeaponsWhenBustedCostEv",
         "_ZNK5Menus7Confirm9ConfirmedEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",

@@ -378,7 +378,6 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
-        "_ZN11MenuManager4pushEPKcb",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev",
         "_ZN12StateMachine8popStateEv",
