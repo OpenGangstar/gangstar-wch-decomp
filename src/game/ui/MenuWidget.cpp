@@ -336,6 +336,47 @@ private:
     int textId;
 };
 
+class BackgroundDemoBuy : public MenuWidget {
+public:
+    BackgroundDemoBuy();
+};
+
+class DemoBuy : public MenuWidget {
+public:
+    DemoBuy();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+};
+
+class Tutorial : public MenuWidget {
+public:
+    explicit Tutorial(const char* name);
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    bool IsCursorPressed() const;
+
+protected:
+    int unknown20;
+    int unknown24;
+    int unknown28;
+    bool cursorPressed;
+    int unknown36;
+};
+
+class BlockingTutorial : public Tutorial {
+public:
+    BlockingTutorial();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+};
+
+class BackgroundMainMenu : public MenuWidget {
+public:
+    BackgroundMainMenu();
+};
+
 class BackgroundInGame : public MenuWidget {
 public:
     BackgroundInGame();
@@ -590,6 +631,41 @@ void Widgets::Volumes::SetPlaylist(int playlist)
 void Widgets::Corruption::SetWantedLevel(int level)
 {
     wantedLevel = level;
+}
+
+static const char widgetBGMainName[] = "widgetBGMain";
+static const char widgetBuyName[] = "widgetBuy";
+static const char widgetTutoBlockName[] = "widgetTutoBlock";
+
+bool Widgets::Tutorial::IsCursorPressed() const
+{
+    return cursorPressed;
+}
+
+Widgets::BackgroundDemoBuy::BackgroundDemoBuy()
+    : MenuWidget(widgetBGMainName)
+{
+}
+
+Widgets::DemoBuy::DemoBuy()
+    : MenuWidget(widgetBuyName)
+{
+}
+
+Widgets::Tutorial::Tutorial(const char* name)
+    : MenuWidget(name), unknown20(-1), unknown24(0), unknown28(0),
+      cursorPressed(false), unknown36(0)
+{
+}
+
+Widgets::BlockingTutorial::BlockingTutorial()
+    : Tutorial(widgetTutoBlockName)
+{
+}
+
+Widgets::BackgroundMainMenu::BackgroundMainMenu()
+    : MenuWidget(widgetBGMainName)
+{
 }
 
 static const char widgetMissionName[] = "widgetMission";

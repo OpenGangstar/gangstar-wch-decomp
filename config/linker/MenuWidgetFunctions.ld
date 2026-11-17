@@ -1,5 +1,16 @@
 SECTIONS
 {
+    .widget_background_demo_buy_ctor 0x002ec738 : { *ai-startup-menuwidget.o(.text._ZN7Widgets17BackgroundDemoBuyC1Ev .text._ZN7Widgets17BackgroundDemoBuyC2Ev) }
+    .widget_demo_buy_ctor 0x002ec764 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuyC1Ev .text._ZN7Widgets7DemoBuyC2Ev) }
+    .widget_tutorial_ctor 0x002ec9e4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8TutorialC1EPKc .text._ZN7Widgets8TutorialC2EPKc) }
+    .widget_blocking_tutorial_ctor 0x002eca1c : { *ai-startup-menuwidget.o(.text._ZN7Widgets16BlockingTutorialC1Ev .text._ZN7Widgets16BlockingTutorialC2Ev) }
+    .widget_background_main_menu_ctor 0x002ecaa8 : { *ai-startup-menuwidget.o(.text._ZN7Widgets18BackgroundMainMenuC1Ev .text._ZN7Widgets18BackgroundMainMenuC2Ev) }
+    .widget_tutorial_cursor_pressed 0x002ebe70 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets8Tutorial15IsCursorPressedEv) }
+    .widget_bg_main_name 0x0041a8d4 : { *ai-startup-menuwidget.o(.rodata.widgetBGMainName) }
+    .widget_buy_name 0x0041a8e4 : { *ai-startup-menuwidget.o(.rodata.widgetBuyName) }
+    .widget_tuto_block_name 0x0041a970 : { *ai-startup-menuwidget.o(.rodata.widgetTutoBlockName) }
+    .widget_background_demo_buy_vtable 0x004a9cd0 : { *ai-startup-menuwidget.o(.gnu.linkonce.d.rel.ro._ZTVN7Widgets17BackgroundDemoBuyE) }
+    .widget_background_main_menu_vtable 0x004a9d20 : { *ai-startup-menuwidget.o(.gnu.linkonce.d.rel.ro._ZTVN7Widgets18BackgroundMainMenuE) }
     .widget_help_ctor 0x002ec608 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4HelpC1Ev .text._ZN7Widgets4HelpC2Ev) }
     .widget_help_name 0x0041a870 : { *ai-startup-menuwidget.o(.rodata.widgetHelpName) }
     .widget_game_setting_ctor 0x002ec63c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSettingC1Ev .text._ZN7Widgets11GameSettingC2Ev) }
