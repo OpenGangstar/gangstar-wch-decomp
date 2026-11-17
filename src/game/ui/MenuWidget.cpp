@@ -100,7 +100,7 @@ void MenuWidget::Show()
     renderFX->PlayAnim(character, widgetShowAnimation, 0);
 }
 
-static const char widgetButtonPrefix[] = "btn";
+extern const char widgetButtonPrefix[] __attribute__((visibility("hidden")));
 
 void MenuWidget::Enable()
 {

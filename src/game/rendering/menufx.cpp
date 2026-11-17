@@ -586,6 +586,36 @@ void MenuFX::RegisterState(State* state, const char* characterName)
     state->Create();
 }
 
+extern const char widgetButtonPrefix[] __attribute__((visibility("hidden"))) = "btn";
+static const char missingMenuFormat[] = "menu %s not found";
+
+void MenuFX::RegisterStates(State** states, int count)
+{
+    for (int index = 0; index < count; ++index) {
+        states[index]->menu = this;
+        registeredStates.append(states + index, 1);
+    }
+    for (int index = 0; index < count; ++index) {
+        const char* name = states[index]->name;
+        gameswf::character* character = Find(name);
+        if (character) {
+            states[index]->firstCharacter.set_ref(character);
+            setCharacterVisible(character, false);
+            states[index]->Create();
+        } else {
+            char message[32];
+            sprintf(message, missingMenuFormat, name);
+            message_log(message);
+        }
+    }
+
+    const gameswf::array<gameswf::character*>& buttons = FindCharacters(context, widgetButtonPrefix, 0);
+    for (int index = 0; index < buttons.size; ++index) {
+        if (animationMethods(buttons.elements[index]).is(buttons.elements[index], 2))
+            reinterpret_cast<SpriteEnabledState*>(buttons.elements[index])->enabled = true;
+    }
+}
+
 void MenuFX::SwitchMenu(const char* name)
 {
     SetMenu(name, false);

@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/renderfx-animation/retail-symbols.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 _ZdlPv = 0x001c42b0;
+sprintf = 0x001c46ac;
 SECTIONS
 {
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
