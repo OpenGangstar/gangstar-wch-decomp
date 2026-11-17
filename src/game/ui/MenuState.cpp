@@ -13,6 +13,7 @@
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
+#include "../core/NativeStrings.h"
 #include "../ai/StateMachine.h"
 #include "MenuDialogs.h"
 #include "../hud/MenuManager.h"
@@ -23,6 +24,9 @@
 #include "../persistence/SaveGame.h"
 #include "../world/ResStream.h"
 #include "../rendering/GS3DStuff.h"
+#include "../scripting/ScriptManager.h"
+#include "../missions/Mission.h"
+#include "../characters/PlayerTest.h"
 
 extern "C" {
 void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
@@ -273,7 +277,7 @@ public:
 protected:
     bool unknown104;
     bool unknown105;
-    void* unknown108;
+    int inputDelay;
 };
 
 class Achievement : public MenuState {
@@ -545,7 +549,7 @@ Menus::ServiceWeaponShop::ServiceWeaponShop(const char* name)
 static const char mapName[] = "Map";
 
 Menus::Map::Map()
-    : InGameMenu(mapName), unknown104(false), unknown105(false), unknown108(0)
+    : InGameMenu(mapName), unknown104(false), unknown105(false), inputDelay(0)
 {
     int ids[2];
     ids[0] = 2;
@@ -1420,4 +1424,159 @@ static void _GLOBAL__I__ZN9MenuStateC2EPKc()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void MenuState::UpdateLocalization()
+{
+    const int count = widgetIds.size;
+    MenuManager* manager = MenuManager::getInstance();
+    for (int i = 0; i < count; ++i) {
+        const int index = widgetIds.elements[i];
+        MenuWidget* widget = static_cast<MenuWidget*>(index < 0 ? 0 : getWidgetByIndex(manager, index));
+        widget->UpdateLocalization();
+    }
+}
+
+void Menus::InGameCarRental::Hide()
+{
+    MenuState::Hide();
+    StateMachine::getInstance()->popState();
+}
+
+void Menus::InGameWeaponShop::Hide()
+{
+    MenuState::Hide();
+    StateMachine::getInstance()->popState();
+}
+
+void Menus::Map::OnEvent(RenderFX::Event& event)
+{
+    if (inputDelay > 0)
+        event.consumed = true;
+    else
+        MenuState::OnEvent(event);
+}
+
+extern "C" void launchTwitter();
+
+void Menus::Infos::Update()
+{
+    MenuState::Update();
+    MenuManager* manager = MenuManager::getInstance();
+    if (unknown104) {
+        unknown104 = false;
+        Confirm* confirmation = static_cast<Confirm*>(manager->getState(confirmMenuName));
+        if (confirmation->Confirmed()) {
+            launchTwitter();
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    }
+}
+
+namespace {
+const char updateStatisticsCommand[] __attribute__((section(".rodata.menu_update_statistics"))) = "UpdateStatistics";
+const char updateAchievementsCommand[] __attribute__((section(".rodata.menu_update_achievements"))) = "UpdateAchievements";
+const char updateAboutCommand[] __attribute__((section(".rodata.menu_update_about"))) = "UpdateAbout";
+
+template<void (*Update)(void*, bool)>
+inline void updateInfoWidget(const char* command, const char* updateCommand, int index, bool& pending)
+{
+    if (strcmp(command, updateCommand) == 0) {
+        void* widget = getWidgetByIndex(index);
+        Update(widget, pending);
+        pending = false;
+    }
+}
+}
+
+extern "C" {
+void _ZN7Widgets10Statistics6UpdateEb(void*, bool);
+void _ZN7Widgets12Achievements6UpdateEb(void*, bool);
+void _ZN7Widgets5About6UpdateEb(void*, bool);
+}
+
+void Menus::InfoStatistics::OnFSCommand(const char* command, const char*)
+{
+    updateInfoWidget<_ZN7Widgets10Statistics6UpdateEb>(command, updateStatisticsCommand, 12, unknown105);
+}
+
+void Menus::InfoAchievements::OnFSCommand(const char* command, const char*)
+{
+    updateInfoWidget<_ZN7Widgets12Achievements6UpdateEb>(command, updateAchievementsCommand, 11, unknown105);
+}
+
+void Menus::InfoAbout::OnFSCommand(const char* command, const char*)
+{
+    updateInfoWidget<_ZN7Widgets5About6UpdateEb>(command, updateAboutCommand, 14, unknown105);
+}
+
+extern "C" void _ZN7Widgets9Objective16SetObjectiveTextEi(void*, int);
+extern "C" void* _ZN12StateMachine11switchStateI10GSMainMenuEEPT_v(StateMachine*) __attribute__((weak));
+
+void Menus::Map::GotFocus()
+{
+    InGameMenu::GotFocus();
+    inputDelay = 250;
+    unknown105 = true;
+    MenuManager* manager = MenuManager::getInstance();
+    void* menu = getWidgetByIndex(manager, 1);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 0, 0x102d, true);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 1, 0x102e, true);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 2, 0x102f, true);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 3, 0x1009, true);
+    _ZN7Widgets6IGMenu12SetTitleTextEi(menu, 0x1051);
+    _ZN7Widgets6IGMenu17SetBackButtonTextEi(menu, 0x1026);
+    _ZN7Widgets6IGMenu9GoToFrameEPKc(menu, fourButtonMenuFrame);
+
+    void* objective = getWidgetByIndex(manager, 2);
+    if (static_cast<const Mission*>(ScriptManager::getInstance()->getMission())->getLastObjectiveText() != -1) {
+        _ZN7Widgets9Objective16SetObjectiveTextEi(objective,
+            static_cast<const Mission*>(ScriptManager::getInstance()->getMission())->getLastObjectiveText());
+    } else {
+        _ZN7Widgets9Objective16SetObjectiveTextEi(objective, 0x1055);
+    }
+    manager->initMap();
+    _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(getWidgetByIndex(manager, 27), 1);
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(menu, 5, false);
+}
+
+void Menus::Map::Update()
+{
+    MenuState::Update();
+    inputDelay = static_cast<int>(inputDelay - StateMachine::getInstance()->getTimeStamp());
+    MenuManager* manager = MenuManager::getInstance();
+    if (unknown104) {
+        unknown104 = false;
+        Confirm* confirmation = static_cast<Confirm*>(manager->getState(confirmMenuName));
+        if (confirmation->Confirmed()) {
+            if (static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() != 4) {
+                SaveGame save;
+                save.SampleAndSave(SaveGame::GetDefaultFilename());
+            }
+            PlayerTest::GetPlayer()->switchContext(PlayerTest::Context0, false);
+            for (int i = 0; i < 17; ++i)
+                manager->setText(static_cast<MenuManager::eText>(i), -1, 0);
+            manager->enableAnims(false);
+            manager->popAll(false);
+            while (StateMachine::getInstance()->hasStates())
+                StateMachine::getInstance()->popState();
+            SoundManager::getInstance()->endCutscene();
+            GS3DStuff::unload();
+            _ZN12StateMachine11switchStateI10GSMainMenuEEPT_v(StateMachine::getInstance());
+            return;
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    }
+    if (static_cast<int>(manager->consumedCursors()) <= 0) {
+        manager->updateMap();
+        manager->updateMarkers();
+    }
 }

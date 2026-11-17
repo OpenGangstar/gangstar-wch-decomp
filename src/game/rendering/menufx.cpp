@@ -542,11 +542,6 @@ void RenderFX::Unload()
         controllers[index].Reset();
 }
 
-class RenderFX::Event {
-public:
-    gameswf::character* character;
-};
-
 bool MenuFX::CanHandleEvent(RenderFX::Event& event)
 {
     if (stateStack.size > 0)

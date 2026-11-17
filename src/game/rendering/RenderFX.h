@@ -100,7 +100,12 @@ public:
                       gameswf::string_hash_functor<gameswf::tu_string> > entries;
     };
     SearchIndex* GetSearchIndex();
-    class Event;
+    class Event {
+    public:
+        gameswf::character* character;
+        unsigned char unknown4[32];
+        bool consumed;
+    };
     class EventListener {
     public:
         virtual void OnEvent(Event& event) = 0;
