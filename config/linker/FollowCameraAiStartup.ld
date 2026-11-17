@@ -3,6 +3,9 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-followcamera/retail-symbols.ld
 INCLUDE config/linker/CameraSections.ld
 _ZdlPv = 0x001c42b0;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fmul = 0x001c4724;
 __aeabi_atexit = 0x001c494c;
 _ZN31retail_followcamera_transitions16civPassive_transE = 0x00428fd4;
 _ZN31retail_followcamera_transitions17scriptedNpc_transE = 0x00429100;
@@ -16,6 +19,7 @@ _ZN31retail_followcamera_transitions11guard_transE = 0x004294a8;
 _ZN31retail_followcamera_transitions22scripted_vehicle_transE = 0x00429550;
 SECTIONS
 {
+    .camera_variant_angles 0x0033321c : { *ai-startup-followcamera.o(.text._ZN12FollowCamera12updateAnglesEii) }
     .camera_variant_debug 0x00333218 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE) }
     .camera_variant_dtor 0x003332c0 : { *ai-startup-followcamera.o(.text._ZN12FollowCameraD1Ev .text._ZN12FollowCameraD2Ev) }
     .ai_startup_function_0 0x00333290 : { *ai-startup-followcamera.o(.text.__tcf_3) }

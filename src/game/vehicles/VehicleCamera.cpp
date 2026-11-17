@@ -17,6 +17,11 @@ void VehicleCamera::debug(irr::video::IVideoDriver*)
 {
 }
 
+void VehicleCamera::updateAngles(int horizontal, int vertical)
+{
+    updateCameraInputRates(horizontal, vertical, yawRate, pitchRate);
+}
+
 VehicleCamera::~VehicleCamera()
 {
 }

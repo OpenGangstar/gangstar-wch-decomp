@@ -11730,7 +11730,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00332f95	0x100	CameraManager.cpp	game	core	pending	_ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE	CameraManager::tappedTarget(irr::core::position2d<int> const&, irr::core::vector3d<float> const&) const
 0x00333095	0x184	CameraManager.cpp	game	core	pending	_ZN13CameraManager19processTouchReleaseEv	CameraManager::processTouchRelease()
 0x00333219	0x2	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE	FollowCamera::debug(irr::video::IVideoDriver*)
-0x0033321d	0x74	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera12updateAnglesEii	FollowCamera::updateAngles(int, int)
+0x0033321d	0x74	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera12updateAnglesEii	FollowCamera::updateAngles(int, int)
 0x00333291	0x30	FollowCamera.cpp	game	core	matched	__tcf_3	__tcf_3
 0x003332c1	0x38	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraD1Ev	FollowCamera::~FollowCamera()
 0x003332c1	0x38	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraD2Ev	FollowCamera::~FollowCamera()
@@ -11800,7 +11800,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003350b5	0x14	SceneCamera.cpp	game	core	matched	_GLOBAL__I__ZN11SceneCameraC2Ei	_GLOBAL__I__ZN11SceneCameraC2Ei
 0x003350c9	0x30	SceneCamera.cpp	game	core	matched	__tcf_2	__tcf_2
 0x003350f9	0x2	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE	VehicleCamera::debug(irr::video::IVideoDriver*)
-0x003350fd	0x74	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera12updateAnglesEii	VehicleCamera::updateAngles(int, int)
+0x003350fd	0x74	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera12updateAnglesEii	VehicleCamera::updateAngles(int, int)
 0x00335171	0x30	VehicleCamera.cpp	game	vehicles	matched	__tcf_3	__tcf_3
 0x003351a1	0x1c	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera5enterEv	VehicleCamera::enter()
 0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraD2Ev	VehicleCamera::~VehicleCamera()
