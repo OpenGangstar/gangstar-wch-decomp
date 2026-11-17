@@ -62,6 +62,45 @@ bool CameraManager::isUsed() const
     return used;
 }
 
+template<>
+void AnimatableType<irr::core::vector3d<float> >::Update(float elapsed)
+{
+    switch (interpolationMode) {
+    case 1:
+        if (duration > 0.0f)
+            progress += elapsed / duration;
+        if (progress > 1.0f || duration == 0.0f)
+            progress = 1.0f;
+        break;
+    case 2:
+        if (duration > 0.0f)
+            progress += elapsed / duration;
+        if (progress > 1.0f || duration == 0.0f)
+            progress = 0.0f;
+        break;
+    case 3:
+        if (interpolate) {
+            if (duration > 0.0f)
+                progress += elapsed / duration;
+            if (progress > 1.0f || duration == 0.0f) {
+                interpolate = false;
+                progress = 1.0f;
+            }
+        } else {
+            if (duration > 0.0f)
+                progress -= elapsed / duration;
+            if (progress < 0.0f || duration == 0.0f) {
+                interpolate = true;
+                progress = 0.0f;
+            }
+        }
+        break;
+    default:
+        return;
+    }
+    current = start + (end - start) * progress;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));
