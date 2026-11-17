@@ -10958,7 +10958,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003224b1	0xd0	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4PoolESaIS2_EE18_M_insert_overflowEPS2_RKS2_RKSt11__true_typejb	std::vector<SceneNodeManager::Pool*, std::allocator<SceneNodeManager::Pool*> >::_M_insert_overflow(SceneNodeManager::Pool**, SceneNodeManager::Pool* const&, std::__true_type const&, unsigned int, bool)
 0x00322581	0x3c	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4NodeESaIS2_EE6resizeEjRKS2_	std::vector<SceneNodeManager::Node*, std::allocator<SceneNodeManager::Node*> >::resize(unsigned int, SceneNodeManager::Node* const&)
 0x003225bd	0xd0	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4Pool6extendEi	SceneNodeManager::Pool::extend(int)
-0x0032268d	0x154	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE	SceneNodeManager::findOrCreatePool(char const*, int, irr::collada::CColladaFactory*)
+0x0032268d	0x154	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE	SceneNodeManager::findOrCreatePool(char const*, int, irr::collada::CColladaFactory*)
 0x003227e1	0x20	World.cpp	game	world	matched	_ZN5WorldC2Ev	World::World()
 0x003227e1	0x20	World.cpp	game	world	matched	_ZN5WorldC1Ev	World::World()
 0x00322801	0x4	World.cpp	game	world	matched	_ZN5World19GetGameObjectByNameEPP10GameObjectRiPKc	World::GetGameObjectByName(GameObject**, int&, char const*)
