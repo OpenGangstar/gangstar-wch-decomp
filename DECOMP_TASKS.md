@@ -262,4 +262,5 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002fbed5 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | camera_tap | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | lock_init | ASSIGNED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | vehicle_side | ASSIGNED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | vehicle_side | ASSIGNED | — | src/game/rendering/CustomBillboardSceneNode.cpp |

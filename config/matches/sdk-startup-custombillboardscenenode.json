@@ -25,6 +25,7 @@
     "source": "src/game/rendering/CustomBillboardSceneNode.cpp",
     "linker_script": "config/linker/CustomBillboardSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN24CustomBillboardSceneNode6renderEv",
         "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE",
         "_ZN24CustomBillboardSceneNode9setLengthEj",
         "_ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",

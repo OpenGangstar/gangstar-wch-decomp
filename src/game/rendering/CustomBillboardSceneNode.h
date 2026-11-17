@@ -26,6 +26,8 @@ public:
     void setChildrenMaterialType(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type);
     void setChildrenMaterialFlag(irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled);
     CustomBillboardSceneNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
+    virtual ~CustomBillboardSceneNode();
+    virtual void render();
 };
 
 #endif
