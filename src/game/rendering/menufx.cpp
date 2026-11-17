@@ -24,6 +24,7 @@ int fputs(const char* text, NativeFile* file);
 int fflush(NativeFile* file);
 }
 
+extern "C" int strcmp(const char* left, const char* right);
 extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list arguments);
 
 namespace swf {
@@ -561,6 +562,28 @@ void MenuFX::OnEvent(RenderFX::Event& event)
 {
     if (stateStack.size > 0)
         GetStateHandler(event.character)->OnEvent(event);
+}
+
+MenuFX::State* MenuFX::GetState(const char* name)
+{
+    for (int index = 0; index < registeredStates.size; ++index) {
+        State* state = registeredStates.elements[index];
+        if (strcmp(state->name, name) == 0)
+            return state;
+    }
+    return 0;
+}
+
+void MenuFX::RegisterState(State* state, const char* characterName)
+{
+    state->menu = this;
+    registeredStates.append(&state, 1);
+    if (!characterName)
+        characterName = state->name;
+    gameswf::character* character = Find(characterName);
+    state->firstCharacter.set_ref(character);
+    setCharacterVisible(character, false);
+    state->Create();
 }
 
 void MenuFX::SwitchMenu(const char* name)
