@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "Camera.h"
 #include "CameraManager.h"
+#include "CameraVariants.h"
 
 CameraManager* CameraManager::s_cm;
 
@@ -99,6 +100,16 @@ const irr::core::vector3d<float>& CameraManager::getPosition() const
 const irr::core::vector3d<float>& CameraManager::getLookAt() const
 {
     return currentCamera->getLookAt();
+}
+
+void CameraManager::clean()
+{
+    delete followCamera;
+    delete lockCamera;
+    delete vehicleCamera;
+    delete fpsCamera;
+    delete this;
+    s_cm = 0;
 }
 
 CameraManager* CameraManager::getInstance()

@@ -8,6 +8,10 @@
 class LevelObject;
 class Camera;
 class SceneCamera;
+class FollowCamera;
+class LockCamera;
+class VehicleCamera;
+class FPSCamera;
 
 template<class T>
 class AnimatableType {
@@ -24,6 +28,7 @@ class CameraManager {
 public:
     static CameraManager* getInstance();
     ~CameraManager();
+    void clean();
     virtual void processTouch(long touch);
     virtual void processTouchRelease();
     void setFOV(int degrees);
@@ -47,7 +52,12 @@ private:
     irr::scene::ICameraSceneNode* cameraNode;
     unsigned char unknown12[8];
     Camera* currentCamera;
-    unsigned char unknown24[24];
+    FollowCamera* followCamera;
+    LockCamera* lockCamera;
+    VehicleCamera* vehicleCamera;
+    unsigned char unknown36[4];
+    FPSCamera* fpsCamera;
+    unsigned char unknown44[4];
     AnimatableType<irr::core::vector3d<float> > positionTransition;
     AnimatableType<irr::core::vector3d<float> > targetTransition;
     bool touchScreenInputs;
