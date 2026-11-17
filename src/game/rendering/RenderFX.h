@@ -1,6 +1,8 @@
 #ifndef WCH_RENDERING_RENDER_FX_H
 #define WCH_RENDERING_RENDER_FX_H
 
+namespace irr { namespace video { class IVideoDriver; class ITexture; } }
+
 namespace gameswf {
 class character;
 class render_state;
@@ -33,6 +35,7 @@ public:
     void InitializeGlyphTextureCache(int width, int height);
     struct InitializationParameters;
     static gameswf::player_context* CreateContext(InitializationParameters& parameters);
+    static void Initialize(InitializationParameters& parameters);
     static void Finalize();
     static void DestroyContext(gameswf::player_context* context);
     static void ClearGlyphTextureCaches(gameswf::player_context* context);
