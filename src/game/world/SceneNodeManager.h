@@ -16,7 +16,15 @@ public:
     bool drop(int poolID, const irr::scene::ISceneNode* node);
 private:
     SceneNodeManager();
-    struct Node;
+    struct Node {
+        explicit Node(irr::scene::ISceneNode* sceneNode);
+        ~Node();
+        void setupUnmanaged(int parameterCount);
+        bool available;
+        irr::scene::ISceneNode* sceneNode;
+        void** parameters;
+        int unknown12;
+    };
     struct Pool {
         Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
         char* name;

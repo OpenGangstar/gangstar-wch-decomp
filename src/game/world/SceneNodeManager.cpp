@@ -13,6 +13,8 @@
 #include "../core/LocalStartupText.h"
 #include "SceneNodeManager.h"
 #include "../core/NativeStdio.h"
+#include "../app/Application.h"
+#include "../core/SceneNode.h"
 
 unsigned int crcReflect(unsigned int value, char bits)
 {
@@ -36,6 +38,30 @@ void SceneNodeManager::update(int elapsed)
         if (updateTimeRemaining < 0)
             updateTimeRemaining = updateInterval;
     }
+}
+
+SceneNodeManager::Node::~Node()
+{
+    if (sceneNode) {
+        sceneNode->remove();
+        sceneNode->drop();
+    }
+    delete[] parameters;
+}
+
+void SceneNodeManager::Node::setupUnmanaged(int parameterCount)
+{
+    if (!parameters && parameterCount > 0) {
+        parameters = new void*[parameterCount];
+        memset(parameters, 0, parameterCount * sizeof(*parameters));
+    }
+}
+
+SceneNodeManager::Node::Node(irr::scene::ISceneNode* node)
+    : available(true), sceneNode(node), parameters(0), unknown12(0)
+{
+    node->setVisible(false);
+    Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode()->addChild(node);
 }
 
 SceneNodeManager::Pool::Pool(const char* poolName, irr::collada::CColladaFactory* poolFactory, int poolSize)

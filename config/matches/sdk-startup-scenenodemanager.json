@@ -28,6 +28,11 @@
         "_Z10crcReflectjc",
         "_ZN16SceneNodeManager5setupEv",
         "_ZN16SceneNodeManager6updateEi",
+        "_ZN16SceneNodeManager4NodeD1Ev",
+        "_ZN16SceneNodeManager4NodeD2Ev",
+        "_ZN16SceneNodeManager4Node14setupUnmanagedEi",
+        "_ZN16SceneNodeManager4NodeC1EPN3irr5scene10ISceneNodeE",
+        "_ZN16SceneNodeManager4NodeC2EPN3irr5scene10ISceneNodeE",
         "_ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi",
         "_ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi",
         "_ZN16SceneNodeManagerC1Ev",
@@ -55,5 +60,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN11Application11GetInstanceEv"]
 }
