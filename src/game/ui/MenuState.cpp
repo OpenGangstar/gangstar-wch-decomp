@@ -25,13 +25,19 @@ namespace Menus {
 class InGameMenu : public MenuState {
 public:
     explicit InGameMenu(const char* name);
-    virtual ~InGameMenu();
+    virtual inline ~InGameMenu() __attribute__((used));
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class Infos : public InGameMenu {
 public:
     explicit Infos(const char* name);
-    virtual ~Infos();
+    virtual inline ~Infos() __attribute__((used));
+    virtual void GotFocus();
+    virtual void Update();
+    virtual bool Notify(const MenuWidget* widget, int event);
 
 protected:
     bool unknown104;
@@ -42,42 +48,57 @@ class InfoStatistics : public Infos {
 public:
     InfoStatistics();
     virtual ~InfoStatistics();
+    virtual void GotFocus();
+    virtual void OnFSCommand(const char* command, const char* args);
 };
 
 class InfoAchievements : public Infos {
 public:
     InfoAchievements();
     virtual ~InfoAchievements();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual void OnFSCommand(const char* command, const char* args);
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class InfoAbout : public Infos {
 public:
     InfoAbout();
     virtual ~InfoAbout();
+    virtual void GotFocus();
+    virtual void OnFSCommand(const char* command, const char* args);
 };
 
 class Options : public InGameMenu {
 public:
     explicit Options(const char* name);
-    virtual ~Options();
+    virtual inline ~Options() __attribute__((used));
+    virtual void GotFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class OptionLanguage : public Options {
 public:
     OptionLanguage();
     virtual ~OptionLanguage();
+    virtual void GotFocus();
 };
 
 class OptionControls : public Options {
 public:
     OptionControls();
     virtual ~OptionControls();
+    virtual void GotFocus();
 };
 
 class OptionVolumes : public Options {
 public:
     OptionVolumes();
     virtual ~OptionVolumes();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 
 protected:
     int selectedChannel;
@@ -86,25 +107,37 @@ protected:
 class Services : public InGameMenu {
 public:
     explicit Services(const char* name);
-    virtual ~Services();
+    virtual inline ~Services() __attribute__((used));
+    virtual void GotFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class ServiceCorruption : public Services {
 public:
     ServiceCorruption();
     virtual ~ServiceCorruption();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class ServiceMissions : public Services {
 public:
     ServiceMissions();
     virtual ~ServiceMissions();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 
 class Tutorial : public MenuState {
 public:
     explicit Tutorial(const char* name);
     virtual ~Tutorial();
+    virtual void Show();
+    virtual void GotFocus();
+    virtual void LostFocus();
+    virtual bool Notify(const MenuWidget* widget, int event);
 };
 }
 
@@ -232,6 +265,58 @@ Menus::Tutorial::Tutorial(const char* name)
 {
     const int widgetId = 23;
     widgetIds.append(&widgetId, 1);
+}
+
+inline Menus::InGameMenu::~InGameMenu()
+{
+}
+
+inline Menus::Infos::~Infos()
+{
+}
+
+inline Menus::Options::~Options()
+{
+}
+
+inline Menus::Services::~Services()
+{
+}
+
+Menus::Tutorial::~Tutorial()
+{
+}
+
+Menus::InfoStatistics::~InfoStatistics()
+{
+}
+
+Menus::InfoAchievements::~InfoAchievements()
+{
+}
+
+Menus::InfoAbout::~InfoAbout()
+{
+}
+
+Menus::OptionLanguage::~OptionLanguage()
+{
+}
+
+Menus::OptionControls::~OptionControls()
+{
+}
+
+Menus::OptionVolumes::~OptionVolumes()
+{
+}
+
+Menus::ServiceCorruption::~ServiceCorruption()
+{
+}
+
+Menus::ServiceMissions::~ServiceMissions()
+{
 }
 
 void MenuFX::State::Create()
