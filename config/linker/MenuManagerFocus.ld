@@ -1,4 +1,9 @@
 sprintf = 0x001c46ac;
+strlen = 0x001c48bc;
+strcat = 0x001c43a0;
+memcpy = 0x001c4190;
+/* The suffix is pooled inside the complete Asian font format string. */
+asianFontEnd = ADDR(.menu_manager_asian_font_format) + 20;
 SECTIONS
 {
     .menu_manager_show_texts 0x002e4160 : { *menu-manager-helpers.o(.text._ZN11MenuManager9showTextsEv) }
@@ -15,6 +20,10 @@ SECTIONS
     .my_menu_fx_vtable 0x004a8f70 : { *menu-manager-helpers.o(.data.rel.ro._ZTV8MyMenuFX) }
     .menu_fx_clear_focus 0x002e44dc : { *menu-manager-helpers.o(.text._ZN8MyMenuFX10ClearFocusEv) }
     .menu_manager_enable_asian_font 0x002e3f60 : { *menu-manager-helpers.o(.text._ZN11MenuManager15enableAsianFontEb) }
+    .menu_manager_format_character 0x002e4508 : { *menu-manager-helpers.o(.text._ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz) }
+    .menu_manager_format_named 0x002e4594 : { *menu-manager-helpers.o(.text._ZN11MenuManager16formatMenuFXTextEPKcS1_z) }
+    .menu_manager_asian_font_start 0x00418d44 : { *menu-manager-helpers.o(.rodata.asianFontStart) }
+    .menu_manager_format_buffer 0x004b721c (NOLOAD) : { *menu-manager-helpers.o(.bss.menuTextFormatBuffer) }
     .menu_manager_character_text 0x002e45c4 : { *menu-manager-helpers.o(.text._ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb) }
     .menu_manager_named_text 0x002e462c : { *menu-manager-helpers.o(.text._ZN11MenuManager13setMenuFXTextEPKcS1_bb) }
     .menu_manager_asian_font_format 0x00418d58 : { *menu-manager-helpers.o(.rodata.asianFontFormat) }

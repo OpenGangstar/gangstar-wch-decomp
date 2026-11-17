@@ -25,6 +25,8 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz",
+        "_ZN11MenuManager16formatMenuFXTextEPKcS1_z",
         "_ZN11MenuManager15enableAsianFontEb",
         "_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb",
         "_ZN11MenuManager13setMenuFXTextEPKcS1_bb",
@@ -82,6 +84,7 @@
         }
     ],
     "sections": [
+        ".menu_manager_asian_font_start",
         ".menu_manager_asian_font_format",
         ".menu_manager_texts_name",
         ".menu_manager_arrow_name",
@@ -118,6 +121,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8RenderFX10FormatHTMLEPN7gameswf9characterEPKcz",
+        "_ZN8RenderFX10FormatTextEPN7gameswf9characterEPKcz",
         "_ZN8RenderFX4FindEPKc",
         "_ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb",
         "_ZN8RenderFX10SetVisibleEPKcb",

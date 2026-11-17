@@ -9500,8 +9500,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e44b5	0x28	MenuManager.cpp	game	ui	matched	_ZN8MyMenuFXD1Ev	MyMenuFX::~MyMenuFX()
 0x002e44dd	0x10	MenuManager.cpp	game	ui	matched	_ZN8MyMenuFX10ClearFocusEv	MyMenuFX::ClearFocus()
 0x002e44ed	0x1c	MenuManager.cpp	game	ui	matched	_ZN11MenuManager10clearFocusEv	MenuManager::clearFocus()
-0x002e4509	0x8c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz	MenuManager::formatMenuFXText(gameswf::character*, char const*, ...)
-0x002e4595	0x2e	MenuManager.cpp	game	ui	pending	_ZN11MenuManager16formatMenuFXTextEPKcS1_z	MenuManager::formatMenuFXText(char const*, char const*, ...)
+0x002e4509	0x8c	MenuManager.cpp	game	ui	matched	_ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz	MenuManager::formatMenuFXText(gameswf::character*, char const*, ...)
+0x002e4595	0x2e	MenuManager.cpp	game	ui	matched	_ZN11MenuManager16formatMenuFXTextEPKcS1_z	MenuManager::formatMenuFXText(char const*, char const*, ...)
 0x002e45c5	0x68	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb	MenuManager::setMenuFXText(gameswf::character*, char const*, bool, bool)
 0x002e462d	0x30	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13setMenuFXTextEPKcS1_bb	MenuManager::setMenuFXText(char const*, char const*, bool, bool)
 0x002e465d	0xa	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager8getDepthEv	MenuManager::getDepth() const
