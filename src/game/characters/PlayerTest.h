@@ -45,7 +45,7 @@ public:
     virtual void unknown30();
     virtual void unknown31();
     virtual void unknown32();
-    virtual void unknown33();
+    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
     virtual void unknown34();
     virtual void setAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void unknown36();
@@ -74,7 +74,8 @@ public:
     virtual void unknownPrimary1(); virtual void unknownPrimary2();
     virtual void Stop();
     virtual void setVehicle(Vehicle* value);
-    virtual void unknownPrimary5(); virtual void unknownPrimary6();
+    virtual void unknownPrimary5();
+    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
     virtual Vehicle* getVehicle() const;
     virtual Weapon* getWeapon() const;
 };
@@ -83,6 +84,7 @@ public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
     virtual void Stop();
+    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
 
     // Reconstructed inline armor access; these names claim no retail symbols.
     int getContextArmor() const { return contextValues[contextWord]; }
@@ -176,7 +178,7 @@ public:
     bool vehicleVisibleInCinematic;
     unsigned char unknown377;
     bool movementKeys[4];
-    unsigned char unknown382;
+    bool damageDisabled;
     bool flag383;
     unsigned char unknown384[28];
     float speed;

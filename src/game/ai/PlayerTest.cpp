@@ -34,6 +34,29 @@
 
 extern "C" float sqrtf(float);
 
+void PlayerTest::applyDamage(int amount, LevelObject* source, bool bypassArmor)
+{
+    Application::GetInstance()->GetControlManager()->exitSniping(!ScriptManager::getInstance()->isInCinematic());
+
+    if (damageDisabled)
+        return;
+
+    if (!(flags240 & 0x400u) || !vehicle) {
+        int& armor = contextValues[contextWord];
+        const int previousArmor = armor;
+        if (previousArmor > 0 && !bypassArmor) {
+            armor = previousArmor - amount;
+            amount -= previousArmor;
+            if (amount < 0)
+                amount = 0;
+        }
+        health -= amount;
+    } else {
+        vehicle->applyDamage(amount, source, bypassArmor);
+        AchievementManager::s_achievementManager->recordDamage(amount);
+    }
+}
+
 void PlayerTest::Stop()
 {
     Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));

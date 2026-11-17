@@ -40,6 +40,8 @@ SECTIONS
     .player_last_used_vehicle 0x00301ebc : { *ai-startup-playertest.o(.text._ZN10PlayerTest18setLastUsedVehicleEP7Vehicle) }
     .player_stop 0x00301a3c : { *ai-startup-playertest.o(.text._ZN10PlayerTest4StopEv) }
     .player_stop_thunk 0x00301a28 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest4StopEv) }
+    .player_apply_damage 0x0030142c : { *ai-startup-playertest.o(.text._ZN10PlayerTest11applyDamageEiP11LevelObjectb) }
+    .player_apply_damage_thunk 0x00301418 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest11applyDamageEiP11LevelObjectb) }
     .player_closest_shop 0x00301090 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14setClosestShopEP4Shop) }
     .npc_vehicle_base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .npc_vehicle_base_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
