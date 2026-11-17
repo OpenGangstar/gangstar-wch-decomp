@@ -36,9 +36,9 @@ struct SpriteEnabledState {
 
 }
 
-static const char activateAnimation[] = "activated";
+extern const char activateAnimation[] __attribute__((visibility("hidden"))) = "activated";
 static const char focusOutAnimation[] = "focus_out";
-static const char disabledAnimation[] = "disabled";
+extern const char disabledAnimation[] __attribute__((visibility("hidden"))) = "disabled";
 
 bool RenderFX::GotoFrame(gameswf::character* character, const char* label, bool play)
 {
