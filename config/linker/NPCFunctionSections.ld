@@ -1,5 +1,6 @@
 SECTIONS
 {
+    .npc_debug 0x002fdbec : { *ai-startup-npc.o(.text._ZN3NPC5debugEPN3irr5video12IVideoDriverE) }
     .npc_lifecycle_002fdb79 0x002fdb78 : { *ai-startup-npc.o(.text._ZN3NPCD2Ev .text._ZN3NPCD1Ev) }
     .npc_lifecycle_002fdb29 0x002fdb28 : { *ai-startup-npc.o(.text._ZN3NPCD0Ev) }
     .npc_lifecycle_002fd611 0x002fd610 : { *ai-startup-npc.o(.text.__tcf_1) }

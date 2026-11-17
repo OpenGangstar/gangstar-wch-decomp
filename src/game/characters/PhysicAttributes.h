@@ -13,6 +13,8 @@ struct AStarNode;
 // Partial layout of the observed 120-byte allocation.
 class PhysicAttributes {
 public:
+    static int MATERIAL_TYPE_DEATH_WATER;
+public:
     irr::core::vector3d<float> GetNextRandomPos(int, int, irr::core::vector3d<float>);
     PhysicAttributes(int type, b2Body* body);
     ~PhysicAttributes();

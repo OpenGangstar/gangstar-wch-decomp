@@ -204,14 +204,16 @@ public:
     int startTime;
     int endTime;
 };
-class ISceneNodeAnimator {
+class ISceneNodeAnimator : public io::IAttributeExchangingObject {
 public:
-    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
-    virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
+    virtual void serializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*) const;
+    virtual void deserializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*);
+    virtual ~ISceneNodeAnimator();
+    virtual void unknown4(); virtual void unknown5();
     virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
-    virtual void unknown9(); virtual void unknown10(); virtual void unknown11();
+    virtual void unknown9(); virtual void onBind(ISceneNode*); virtual void unknown11();
     virtual void setAnimationClip(int clip); virtual void unknown13(); virtual int getAnimationClipIndex(const char* name);
-    virtual void unknown15(); virtual void unknown16();
+    virtual void setTimelineCtrl(ITimelineController*); virtual void unknown16();
     virtual ITimelineController* getTimelineCtrl();
 };
 class ISceneCollisionManager {

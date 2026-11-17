@@ -8,6 +8,7 @@ class Path;
 class NPC : public Character {
 public:
     NPC(int type);
+    void debug(irr::video::IVideoDriver* driver);
     virtual void Stop();
     virtual void OnDespawn();
     virtual void Update(int elapsed);
