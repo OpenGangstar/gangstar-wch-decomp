@@ -36,6 +36,7 @@
         "_ZN5TrailC2Ev",
         "_ZN5Trail7CleanUpEv",
         "_ZN5Trail4InitEiiiff",
+        "_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b",
         {
             "name": "__tcf_2",
             "address": "0x00348f65"
@@ -62,6 +63,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b",
+        "_ZN5Trail10BuildPointEib",
         "_ZN11Application11GetInstanceEv",
         "_ZN5Trail19CreateMeshSceneNodeEv"
     ]

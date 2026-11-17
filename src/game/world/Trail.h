@@ -18,12 +18,15 @@ public:
     virtual ~Trail();
     bool Init(int pointCount, int mode, int lifetime, float width, float scale);
     void Update();
+    bool Update(irr::core::vector3d<float>& left, irr::core::vector3d<float>& right, bool force);
+    void AddPoint(irr::core::vector3d<float>& left, irr::core::vector3d<float>& right, bool buildFlag);
     void Render();
     void ModifyLife(float scale);
     void SetSegmentWidth(float width);
     void SetLastAddedPoint(irr::core::vector3d<float> point);
 
 private:
+    void BuildPoint(int index, bool buildFlag);
     void CreateMeshSceneNode();
     void CleanUp();
     int trailLifetime;
