@@ -25,6 +25,8 @@
     "source": "src/game/app/GSLoading.cpp",
     "linker_script": "config/linker/GSLoadingHooks.ld",
     "functions": [
+        "_ZN9GSLoading12isGameLoadedEv",
+        "_ZN9GSLoading13setGameLoadedEb",
         "_ZN9GSLoadingC1Ev",
         "_ZN9GSLoadingC2Ev",
         "_ZN9StateBase8isKindOfEi",

@@ -9346,8 +9346,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e2ae5	0x24	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenuD1Ev	GSInGameMenu::~GSInGameMenu()
 0x002e2ae5	0x24	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenuD2Ev	GSInGameMenu::~GSInGameMenu()
 0x002e2b09	0xe	GSLoading.cpp	game	app	matched	_ZN9GSLoading8isKindOfEi	GSLoading::isKindOf(int)
-0x002e2b19	0x14	GSLoading.cpp	game	app	pending	_ZN9GSLoading12isGameLoadedEv	GSLoading::isGameLoaded()
-0x002e2b2d	0x14	GSLoading.cpp	game	app	pending	_ZN9GSLoading13setGameLoadedEb	GSLoading::setGameLoaded(bool)
+0x002e2b19	0x14	GSLoading.cpp	game	app	matched	_ZN9GSLoading12isGameLoadedEv	GSLoading::isGameLoaded()
+0x002e2b2d	0x14	GSLoading.cpp	game	app	matched	_ZN9GSLoading13setGameLoadedEb	GSLoading::setGameLoaded(bool)
 0x002e2b41	0x30	GSLoading.cpp	game	app	matched	__tcf_4	__tcf_4
 0x002e2b71	0x44	GSLoading.cpp	game	app	pending	_ZN9GSLoading14LoadingResumedEv	GSLoading::LoadingResumed()
 0x002e2bb5	0x34	GSLoading.cpp	game	app	pending	_ZN9GSLoading13LoadingPausedEv	GSLoading::LoadingPaused()

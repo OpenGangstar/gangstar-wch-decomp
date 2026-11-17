@@ -17,6 +17,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .loading_get_loaded 0x002e2b18 : { *state-hooks-gsloading.o(.text._ZN9GSLoading12isGameLoadedEv) }
+    .loading_set_loaded 0x002e2b2c : { *state-hooks-gsloading.o(.text._ZN9GSLoading13setGameLoadedEb) }
+    .loading_loaded_flag 0x004b6eec (NOLOAD) : { *state-hooks-gsloading.o(.bss._ZN9GSLoading13s_bGameLoadedE) }
     .state_ctor 0x002e2dd0 : { *state-hooks-gsloading.o(.text._ZN9GSLoadingC1Ev) }
     .base_0 0x002dacc0 : { *state-hooks-gsloading.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }
     .base_1 0x002dacac : { *state-hooks-gsloading.o(.gnu.linkonce.t._ZN9StateBase4drawEPK12StateMachine .text._ZN9StateBase4drawEPK12StateMachine .gnu.linkonce.d.rel.ro._ZN9StateBase4drawEPK12StateMachine .data.rel.ro._ZN9StateBase4drawEPK12StateMachine) }
@@ -68,3 +71,5 @@ ASSERT(SIZEOF(.local_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE ext
 ASSERT(SIZEOF(.local_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.local_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.local_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+ASSERT(SIZEOF(.loading_loaded_flag) == 1, "GSLoading loaded flag extent");

@@ -702,7 +702,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d3389 | IrrAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x002d3395 | IrrAlloc(unsigned int, irr::MemHint, int, const char*, int) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles | vehicle_side | ASSIGNED | pending | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002e2b19 | GSLoading::isGameLoaded | camera_tap | REVIEW | pending | src/game/app/GSLoading.cpp |
-| libsanangeles.so | 0x002e2b2d | GSLoading::setGameLoaded | lock_init | REVIEW | pending | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2b19 | GSLoading::isGameLoaded | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
+| libsanangeles.so | 0x002e2b2d | GSLoading::setGameLoaded | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x0034b2c5 | StringManager::isPackLoaded | camera_tap | ASSIGNED | pending | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b2d9 | StringManager::isPackSheetLoaded | lock_init | ASSIGNED | pending | src/game/persistence/StringManager.cpp |

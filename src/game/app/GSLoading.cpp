@@ -84,3 +84,15 @@ static void _GLOBAL__I_m_background()
 }
 
 GSLoading::~GSLoading() {}
+
+bool GSLoading::isGameLoaded()
+{
+    return s_bGameLoaded;
+}
+
+bool GSLoading::s_bGameLoaded = false;
+
+void GSLoading::setGameLoaded(bool loaded)
+{
+    s_bGameLoaded = loaded;
+}
