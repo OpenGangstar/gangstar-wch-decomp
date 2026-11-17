@@ -59,9 +59,8 @@ outside that budget. No verification rule is relaxed.
 - Environment failures need separate repair; do not conceal them as failed
   source hypotheses or claim stale output as a match.
 
-These are work-selection limits, not a reduced completion target. A parked
-function is still required for 100%. Human authorization is still required
-before starting a wave of agents, as specified in AGENTS.md.
+Parked functions still count toward the 100% target. Follow the agent
+assignment and ownership rules in [AGENTS.md](../AGENTS.md).
 
 ## Current stalled combat work
 
