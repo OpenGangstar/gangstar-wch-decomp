@@ -217,16 +217,68 @@ private:
     int pressedButton;
 };
 
+class Help : public MenuWidget {
+public:
+    Help();
+    virtual void UpdateLocalization();
+
+private:
+    int page;
+};
+
+class GameSetting : public MenuWidget {
+public:
+    GameSetting();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int selection;
+    int previousSelection;
+};
+
+class Language : public MenuWidget {
+public:
+    Language();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int selection;
+};
+
+class Controls : public MenuWidget {
+public:
+    Controls();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int selection;
+    int previousSelection;
+};
+
 class Volumes : public MenuWidget {
 public:
+    Volumes();
+    virtual void Show();
+    virtual void Hide(bool);
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
     void SetPlaylist(int playlist);
 
 private:
     static int s_playlist;
+    int selectedPlaylist;
 };
 
 class Corruption : public MenuWidget {
 public:
+    Corruption();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
     void SetWantedLevel(int level);
 
 private:
@@ -484,6 +536,48 @@ void Widgets::MainMenu::UpdateLocalization()
     }
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mainMenuMoreText, _ZNK13StringManager9getStringEi(strings, 0x1010), true);
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mainMenuTwitterText, _ZNK13StringManager9getStringEi(strings, 0x1080), false);
+}
+
+static const char widgetHelpName[] = "widgetHelp";
+
+Widgets::Help::Help()
+    : MenuWidget(widgetHelpName), page(-1)
+{
+}
+
+static const char widgetGameSettingName[] = "widgetGameSetting";
+
+Widgets::GameSetting::GameSetting()
+    : MenuWidget(widgetGameSettingName), selection(-1), previousSelection(-1)
+{
+}
+
+static const char widgetLanguageName[] = "widgetLanguage";
+
+Widgets::Language::Language()
+    : MenuWidget(widgetLanguageName), selection(0)
+{
+}
+
+static const char widgetCorruptionName[] = "widgetCorruption";
+
+Widgets::Corruption::Corruption()
+    : MenuWidget(widgetCorruptionName), wantedLevel(0)
+{
+}
+
+static const char widgetControlsName[] = "widgetControls";
+
+Widgets::Controls::Controls()
+    : MenuWidget(widgetControlsName), selection(-1), previousSelection(-1)
+{
+}
+
+static const char widgetVolumesName[] = "widgetVolumes";
+
+Widgets::Volumes::Volumes()
+    : MenuWidget(widgetVolumesName), selectedPlaylist(-2)
+{
 }
 
 int Widgets::Volumes::s_playlist = -2;
