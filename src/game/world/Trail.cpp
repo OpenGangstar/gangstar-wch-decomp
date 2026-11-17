@@ -11,6 +11,12 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Trail.h"
+
+void Trail::SetLastAddedPoint(irr::core::vector3d<float> point)
+{
+    lastAddedPoint = point;
+}
 
 void operator delete(void*) throw();
 extern "C" {

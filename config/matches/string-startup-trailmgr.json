@@ -32,6 +32,7 @@
         "_ZN8TrailMgrD2Ev",
         "_ZN8TrailMgr15SetSegmentWidthEf",
         "_ZN8TrailMgr7CleanUpEv",
+        "_ZN8TrailMgr4InitEiiiiff",
         "_ZN8TrailMgr6UpdateEv",
         "_ZN8TrailMgr10AllocTrailEv",
         "_ZN8TrailMgr9FreeTrailEP5Trail",
@@ -61,6 +62,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN5TrailC1Ev",
+        "_ZN5Trail4InitEiiiff",
         "_ZN5Trail6UpdateEv",
         "_ZN5Trail15SetSegmentWidthEf"
     ]

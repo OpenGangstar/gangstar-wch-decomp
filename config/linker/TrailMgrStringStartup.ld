@@ -3,6 +3,9 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/string-startup-trailmgr/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 _ZdaPv = 0x001c461c;
+_Znaj = 0x001c3ff8;
+_Znwj = 0x001c4814;
+memset = 0x001c45d4;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
@@ -12,6 +15,7 @@ SECTIONS
     .trail_mgr_vtable 0x004ad298 : { *string-startup-trailmgr.o(.data.rel.ro._ZTV8TrailMgr) }
     .trail_mgr_segment_width 0x00349120 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr15SetSegmentWidthEf) }
     .trail_mgr_cleanup 0x00349148 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr7CleanUpEv) }
+    .trail_mgr_init 0x00349188 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr4InitEiiiiff) }
     .trail_mgr_update 0x003490f8 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr6UpdateEv) }
     .trail_mgr_alloc_trail 0x00349230 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr10AllocTrailEv) }
     .trail_mgr_free_trail 0x00349050 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr9FreeTrailEP5Trail) }

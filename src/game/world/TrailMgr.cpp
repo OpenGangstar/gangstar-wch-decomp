@@ -12,20 +12,8 @@
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "TrailMgr.h"
-
-struct TrailPoint {
-    unsigned char unknown0[24];
-    int remainingLife;
-};
-
-class Trail {
-public:
-    virtual ~Trail();
-    void Update();
-    void SetSegmentWidth(float width);
-    unsigned char unknown4[32];
-    TrailPoint* points;
-};
+#include "Trail.h"
+#include "../core/NativeStdio.h"
 
 TrailMgr::TrailMgr() : trails(0), allocated(0), trailCount(0)
 {
@@ -52,6 +40,26 @@ void TrailMgr::CleanUp()
 
     delete[] allocated;
     delete[] trails;
+}
+
+bool TrailMgr::Init(int count, int pointCount, int mode, int lifetime, float width, float scale)
+{
+    allocated = new bool[count];
+    memset(allocated, 0, count);
+    trails = new Trail*[count];
+    if (!trails)
+        return false;
+
+    trailCount = count;
+    memset(trails, 0, count * sizeof(Trail*));
+    trailMode = mode;
+    trailScale = scale;
+    for (int i = 0; i < trailCount; ++i) {
+        trails[i] = new Trail();
+        if (!trails[i] || !trails[i]->Init(pointCount, mode, lifetime, width, scale))
+            return false;
+    }
+    return true;
 }
 
 Trail* TrailMgr::AllocTrail()

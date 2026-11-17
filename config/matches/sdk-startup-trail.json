@@ -25,6 +25,7 @@
     "source": "src/game/world/Trail.cpp",
     "linker_script": "config/linker/TrailSdkStartup.ld",
     "functions": [
+        "_ZN5Trail17SetLastAddedPointEN3irr4core8vector3dIfEE",
         {
             "name": "__tcf_2",
             "address": "0x00348f65"
