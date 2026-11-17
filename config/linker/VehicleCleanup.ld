@@ -20,6 +20,8 @@ __aeabi_fcmpge = 0x001c4364;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_ui2f = 0x001c4574;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_f2iz = 0x001c44cc;
 __aeabi_f2d = 0x001c48f8;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
@@ -91,6 +93,8 @@ SECTIONS
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
     .vehicle_mobilize 0x0030a3e4 : { *(.text._ZN7Vehicle8mobilizeEv) }
     .vehicle_cleanup_sounds 0x003090e8 : { *(.text._ZN7Vehicle14_cleanupSoundsEv) }
+    .vehicle_adjust_engine_pitch 0x00307bcc : { *(.text._ZN7Vehicle18_adjustEnginePitchEj) }
+    .vehicle_update_car_sounds 0x0030822c : { *(.text._ZN7Vehicle15UpdateCarSoundsEv) }
     .vehicle_nearest_door_dummy 0x0030b22c : { *(.text._ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE) }
     .vehicle_accelerate 0x00307d30 : { *(.text._ZN7Vehicle10accelerateEf) }
     .vehicle_brake 0x00307d48 : { *(.text._ZN7Vehicle5brakeEf) }

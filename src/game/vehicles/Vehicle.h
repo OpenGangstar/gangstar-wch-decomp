@@ -4,6 +4,8 @@
 #include "../core/Physics.h"
 namespace Structs { struct Car; }
 class Character;
+class CarSounds;
+struct CarSoundParameters;
 class Path;
 namespace irr { namespace collada { class CSkinnedMeshSceneNode; } }
 class VehicleMarkerInterface {
@@ -149,7 +151,7 @@ private:
     void ResetBodyPosition();
     int getVelDirec();
     void _shiftGears(unsigned int speed);
-    void _adjustEnginePitch(unsigned int value);
+    float _adjustEnginePitch(unsigned int speed);
     void openDoorWithClip(const char* clip, bool left);
     void setWheelVisibility(bool visible);
     friend class Race;
@@ -188,7 +190,7 @@ private:
     bool driveToLocationFlag;
     unsigned char unknown274[2];
     unsigned int gearProfile;
-    unsigned char unknown280[4];
+    float gearProgress;
     const char* enterAnim;
     const char* exitAnim;
     const char* closeDoorAnim;
@@ -221,9 +223,22 @@ private:
     unsigned char explosionFlag;
     unsigned char unknown422[2];
     int vehicleIndex;
-    unsigned char unknown428[20];
+    CarSounds* carSounds;
+    CarSoundParameters* carSoundParameters;
+    unsigned char unknown436[8];
+    int previousSoundRpm;
     int carSoundMode;
-    unsigned char unknown452[40];
+    bool carSoundTrigger;
+    unsigned char unknown453[3];
+    int soundMinimumRpm;
+    int soundRpmRange;
+    float enginePitchFalloff;
+    float enginePitchSpeed;
+    float soundMaximumSpeed;
+    int previousSoundLoad;
+    int soundLoadDuration;
+    int soundLoadCountdown;
+    float previousSoundGear;
     irr::core::vector3d<float> previousPosition;
     bool hasBeenStolen;
     unsigned char unknown505;

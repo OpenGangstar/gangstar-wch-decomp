@@ -10554,7 +10554,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00307b9d	0x6	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13getMarkerTypeEv	Vehicle::getMarkerType()
 0x00307ba5	0x24	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle8GetSpeedEv	Vehicle::GetSpeed() const
 0x00307bc9	0x4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle7getMeshEv	Vehicle::getMesh()
-0x00307bcd	0x164	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle18_adjustEnginePitchEj	Vehicle::_adjustEnginePitch(unsigned int)
+0x00307bcd	0x164	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle18_adjustEnginePitchEj	Vehicle::_adjustEnginePitch(unsigned int)
 0x00307d31	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10accelerateEf	Vehicle::accelerate(float)
 0x00307d49	0x18	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5brakeEf	Vehicle::brake(float)
 0x00307d61	0x1a	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle4turnEbf	Vehicle::turn(bool, float)
@@ -10592,7 +10592,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00308171	0x44	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9stopSirenEv	Vehicle::stopSiren()
 0x003081b5	0x5c	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactory11getInstanceEv	CCarFactory::getInstance()
 0x00308211	0x1c	Vehicle.cpp	game	vehicles	matched	__tcf_3	__tcf_3
-0x0030822d	0x16c	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15UpdateCarSoundsEv	Vehicle::UpdateCarSounds()
+0x0030822d	0x16c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle15UpdateCarSoundsEv	Vehicle::UpdateCarSounds()
 0x00308399	0xc	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv	Vehicle::UnRegisterCarSoundsCallbacks()
 0x003083a5	0x68	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle26RegisterCarSoundsCallbacksEv	Vehicle::RegisterCarSoundsCallbacks()
 0x0030840d	0x2f4	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15InitV8Z06SoundsEv	Vehicle::InitV8Z06Sounds()
