@@ -252,7 +252,7 @@ struct RenderHandlerMethods {
     void (*setAntialiased)(gameswf::render_handler*, bool);
     void (*beforeOpen[6])();
     void (*open)(gameswf::render_handler*);
-    void (*beforeOrientation)();
+    void (*reset)(gameswf::render_handler*);
     void (*setOrientation)(gameswf::render_handler*, gameswf::orientation_mode);
 };
 
@@ -505,6 +505,19 @@ void RenderFX::FSCommand(const char* command, const char* args)
     }
 }
 
+void RenderFX::Unload()
+{
+    gameswf::render_handler* handler = gameswf::get_render_handler();
+    if (handler)
+        renderHandlerMethods(handler).reset(handler);
+
+    root.set_ref(0);
+    player.set_ref(0);
+    SetContext(0);
+    for (int index = 0; index < 4; ++index)
+        controllers[index].Reset();
+}
+
 void RenderFX::SetEventListener(EventListener* listener)
 {
     this->listener = listener;
@@ -521,7 +534,7 @@ inline RenderFX::Controller::Controller()
 }
 
 RenderFX::RenderFX()
-    : unknown16(false), unknown20(0), player(0), root(0), context(0),
+    : unknown16(false), unknown20(0), context(0),
       inputBehavior(0), listener(0)
 {
 }
@@ -554,19 +567,19 @@ void RenderFX::SetContext(gameswf::character* character)
     context = character;
 }
 
-gameswf::character* RenderFX::GetRoot() const
+gameswf::root* RenderFX::GetRoot() const
 {
-    return root;
+    return root.get();
 }
 
 gameswf::root* RenderFX::GetFlashRoot() const
 {
-    return reinterpret_cast<const FlashCharacterRoot*>(root)->flashRoot;
+    return reinterpret_cast<const FlashCharacterRoot*>(root.get())->flashRoot;
 }
 
 void RenderFX::SetTextBufferingEnabled(bool enabled)
 {
-    reinterpret_cast<FlashCharacterRoot*>(root)->textBufferingEnabled = enabled;
+    reinterpret_cast<FlashCharacterRoot*>(root.get())->textBufferingEnabled = enabled;
 }
 
 bool RenderFX::GotoFrame(gameswf::character* character, const char* label, bool play)

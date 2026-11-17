@@ -26,6 +26,8 @@ public:
         if (value)
             reinterpret_cast<ref_counted*>(value)->drop_ref();
     }
+    T* get() const { return value; }
+    T* operator->() const { return value; }
     void set_ref(T* value) __attribute__((weak));
 
 private:
@@ -94,7 +96,7 @@ public:
     void EndDisplay();
     void SetControllerEnabled(int index, bool enabled);
     void SetContext(gameswf::character* character);
-    gameswf::character* GetRoot() const;
+    gameswf::root* GetRoot() const;
     gameswf::root* GetFlashRoot() const;
     void SetTextBufferingEnabled(bool enabled);
     gameswf::character* Find(const char* name);
@@ -136,8 +138,8 @@ private:
     gameswf::array<gameswf::character*> matches;
     bool unknown16;
     void* unknown20;
-    gameswf::player* player;
-    gameswf::character* root;
+    gameswf::smart_ptr<gameswf::player> player;
+    gameswf::smart_ptr<gameswf::root> root;
     gameswf::character* context;
     Controller controllers[4];
     int inputBehavior;
