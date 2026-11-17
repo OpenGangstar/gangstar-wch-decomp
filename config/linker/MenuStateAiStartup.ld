@@ -42,6 +42,8 @@ SECTIONS
     .in_game_menu_vtable 0x004a95f0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus10InGameMenuE) }
     .options_got_focus 0x002e8ac8 : { *ai-startup-menustate.o(.text._ZN5Menus7Options8GotFocusEv) }
     .services_got_focus 0x002e8d18 : { *ai-startup-menustate.o(.text._ZN5Menus8Services8GotFocusEv) }
+    .info_achievements_got_focus 0x002e89c0 : { *ai-startup-menustate.o(.text._ZN5Menus16InfoAchievements8GotFocusEv) }
+    .service_corruption_got_focus 0x002e8dc8 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruption8GotFocusEv) }
     .service_car_rental_got_focus 0x002e8e30 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental8GotFocusEv) }
     .service_weapon_shop_got_focus 0x002e8f0c : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop8GotFocusEv) }
     .service_car_rental_vtable 0x004a9440 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16ServiceCarRentalE) }
