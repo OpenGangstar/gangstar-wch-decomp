@@ -3,6 +3,9 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/car-sound-callbacks/retail-symbols.ld
 __aeabi_atexit = 0x001c494c;
 __aeabi_fmul = 0x001c4724;
+__aeabi_fsub = 0x001c4328;
+__aeabi_f2iz = 0x001c44cc;
+_ZdaPv = 0x001c461c;
 _Znaj = 0x001c3ff8;
 __aeabi_fadd = 0x001c4154;
 __aeabi_i2f = 0x001c41e4;
@@ -14,6 +17,15 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_f2d = 0x001c48f8;
 SECTIONS
 {
+    .fade_start 0x0034f204 : { *car-sound-callbacks.o(.text._ZN9SoundFade9StartFadeEi) }
+    .fade_update 0x0034f250 : { *car-sound-callbacks.o(.text._ZN9SoundFade6UpdateEv) }
+    .rpm_filter 0x0034f2dc : { *car-sound-callbacks.o(.text._ZN9CarSounds15FilterRPMValuesEi) }
+    .fade_ctor 0x0034f1ec : { *car-sound-callbacks.o(.text._ZN9SoundFadeC1Ev .text._ZN9SoundFadeC2Ev) }
+    .fade_dtor 0x0034f1f4 : { *car-sound-callbacks.o(.text._ZN9SoundFadeD1Ev .text._ZN9SoundFadeD2Ev) }
+    .fade_count 0x0034f1f8 : { *car-sound-callbacks.o(.text._ZN9SoundFade19GetNbRemainingFadesEv) }
+    .fade_state 0x0034f1fc : { *car-sound-callbacks.o(.text._ZN9SoundFade8GetStateEv) }
+    .fade_volume 0x0034f200 : { *car-sound-callbacks.o(.text._ZN9SoundFade9GetVolumeEv) }
+    .fade_clean 0x003501e8 : { *car-sound-callbacks.o(.text._ZN9SoundFade5CleanEv) }
     .sound_fade_gains 0x00350380 : { *car-sound-callbacks.o(.text._ZN9SoundFade13InitFadeGainsEi) }
     .car_sound_parameters_ctor 0x0034f150 : { *car-sound-callbacks.o(.text._ZN18CarSoundParametersC1Ev .text._ZN18CarSoundParametersC2Ev) }
     .car_sound_parameters_dtor 0x0034f154 : { *car-sound-callbacks.o(.text._ZN18CarSoundParametersD1Ev .text._ZN18CarSoundParametersD2Ev) }

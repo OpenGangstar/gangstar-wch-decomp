@@ -66,7 +66,11 @@ private:
     unsigned int unknownGear48;
     bool clutchTriggered;
     bool filterRpm;
-    unsigned char unknown54[46];
+    unsigned char unknown54[6];
+    float filteredRpm;
+    float rpmInputCoefficient;
+    float rpmFeedbackCoefficient;
+    unsigned char unknown72[28];
     SoundFade* onFade;
     unsigned char unknown104[32];
     SoundFade* offFade;
