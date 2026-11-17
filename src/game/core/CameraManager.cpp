@@ -14,6 +14,8 @@
 #include "Camera.h"
 #include "CameraManager.h"
 #include "CameraVariants.h"
+#include "Geometry.h"
+#include "Rect.h"
 #include "SceneCamera.h"
 #include "Quaternion.h"
 #include "../app/Application.h"
@@ -270,6 +272,25 @@ void CameraManager::processTouch(long id)
         touchY = point->y;
     }
     used = true;
+}
+
+LevelObject* CameraManager::tappedTarget(const irr::core::position2d<int>& point,
+                                        const irr::core::vector3d<float>&) const
+{
+    const irr::core::position2d<int> cursor(point);
+    irr::scene::ISceneCollisionManager* collision =
+        Application::GetInstance()->GetDevice()->getSceneManager()->getSceneCollisionManager();
+    const irr::core::line3d<float> ray =
+        collision->getRayFromScreenCoordinates(cursor, CameraManager::getInstance()->getCamera());
+    irr::core::vector3d<float> direction = ray.end - ray.start;
+    direction.normalize();
+
+    LevelObject* result = getClickedTarget(ray, true);
+    if (!result)
+        result = getClickedTarget(ray, false);
+    if (result && result->isDead())
+        result = 0;
+    return result;
 }
 
 CameraManager* CameraManager::getInstance()

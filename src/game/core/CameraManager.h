@@ -58,8 +58,11 @@ public:
     virtual bool isUsed() const;
     const irr::core::vector3d<float>& getPosition() const;
     const irr::core::vector3d<float>& getLookAt() const;
+    LevelObject* tappedTarget(const irr::core::position2d<int>& point,
+                              const irr::core::vector3d<float>&) const;
 
 private:
+    LevelObject* getClickedTarget(irr::core::line3d<float> ray, bool primary) const;
     CameraManager(float nearDistance, float farDistance, float fov, LevelObject* target);
     bool updateTransition(float elapsed);
     void updateUpVector(float angle);

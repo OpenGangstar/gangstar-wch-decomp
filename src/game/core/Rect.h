@@ -23,6 +23,7 @@ public:
 template<class T> class position2d {
 public:
     position2d(T x, T y) : X(x), Y(y) {}
+    position2d(const position2d& other) : X(other.X), Y(other.Y) {}
     T X, Y;
 };
 template<class T> class rect {
