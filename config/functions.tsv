@@ -9463,7 +9463,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e3f2d	0x4	MenuManager.cpp	game	ui	matched	_ZN11MenuManager19getCharAutoLineFeedEv	MenuManager::getCharAutoLineFeed()
 0x002e3f31	0x16	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager9getTextIdENS_5eTextE	MenuManager::getTextId(MenuManager::eText) const
 0x002e3f49	0x18	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager7getTextENS_5eTextE	MenuManager::getText(MenuManager::eText) const
-0x002e3f61	0x16	MenuManager.cpp	game	ui	pending	_ZN11MenuManager15enableAsianFontEb	MenuManager::enableAsianFont(bool)
+0x002e3f61	0x16	MenuManager.cpp	game	ui	matched	_ZN11MenuManager15enableAsianFontEb	MenuManager::enableAsianFont(bool)
 0x002e3f79	0xc	MenuManager.cpp	game	ui	matched	_ZN11MenuManager11enableAnimsEb	MenuManager::enableAnims(bool)
 0x002e3f85	0xc	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager15areAnimsEnabledEv	MenuManager::areAnimsEnabled() const
 0x002e3f91	0x20	MenuManager.cpp	stlport	-	matched	_ZN9stlp_priv12_List_globalIbE9_TransferEPNS_15_List_node_baseES3_S3_	stlp_priv::_List_global<bool>::_Transfer(stlp_priv::_List_node_base*, stlp_priv::_List_node_base*, stlp_priv::_List_node_base*)
@@ -9502,8 +9502,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e44ed	0x1c	MenuManager.cpp	game	ui	matched	_ZN11MenuManager10clearFocusEv	MenuManager::clearFocus()
 0x002e4509	0x8c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz	MenuManager::formatMenuFXText(gameswf::character*, char const*, ...)
 0x002e4595	0x2e	MenuManager.cpp	game	ui	pending	_ZN11MenuManager16formatMenuFXTextEPKcS1_z	MenuManager::formatMenuFXText(char const*, char const*, ...)
-0x002e45c5	0x68	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb	MenuManager::setMenuFXText(gameswf::character*, char const*, bool, bool)
-0x002e462d	0x30	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13setMenuFXTextEPKcS1_bb	MenuManager::setMenuFXText(char const*, char const*, bool, bool)
+0x002e45c5	0x68	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb	MenuManager::setMenuFXText(gameswf::character*, char const*, bool, bool)
+0x002e462d	0x30	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13setMenuFXTextEPKcS1_bb	MenuManager::setMenuFXText(char const*, char const*, bool, bool)
 0x002e465d	0xa	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager8getDepthEv	MenuManager::getDepth() const
 0x002e4669	0x2a	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13topSetVisibleEb	MenuManager::topSetVisible(bool)
 0x002e4695	0xe8	MenuManager.cpp	game	ui	pending	_ZN11MenuManager4drawEPK12StateMachine	MenuManager::draw(StateMachine const*)

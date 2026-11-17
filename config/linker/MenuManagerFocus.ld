@@ -1,3 +1,4 @@
+sprintf = 0x001c46ac;
 SECTIONS
 {
     .menu_manager_show_texts 0x002e4160 : { *menu-manager-helpers.o(.text._ZN11MenuManager9showTextsEv) }
@@ -13,6 +14,11 @@ SECTIONS
     .my_menu_fx_destructor 0x002e44b4 : { *menu-manager-helpers.o(.text._ZN8MyMenuFXD1Ev .text._ZN8MyMenuFXD2Ev) }
     .my_menu_fx_vtable 0x004a8f70 : { *menu-manager-helpers.o(.data.rel.ro._ZTV8MyMenuFX) }
     .menu_fx_clear_focus 0x002e44dc : { *menu-manager-helpers.o(.text._ZN8MyMenuFX10ClearFocusEv) }
+    .menu_manager_enable_asian_font 0x002e3f60 : { *menu-manager-helpers.o(.text._ZN11MenuManager15enableAsianFontEb) }
+    .menu_manager_character_text 0x002e45c4 : { *menu-manager-helpers.o(.text._ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb) }
+    .menu_manager_named_text 0x002e462c : { *menu-manager-helpers.o(.text._ZN11MenuManager13setMenuFXTextEPKcS1_bb) }
+    .menu_manager_asian_font_format 0x00418d58 : { *menu-manager-helpers.o(.rodata.asianFontFormat) }
+    .menu_manager_text_buffer 0x004b761c (NOLOAD) : { *menu-manager-helpers.o(.bss.asianFontTextBuffer) }
     .menu_manager_top_visibility 0x002e4668 : { *menu-manager-helpers.o(.text._ZN11MenuManager13topSetVisibleEb) }
     .menu_manager_clear_focus 0x002e44ec : { *menu-manager-helpers.o(.text._ZN11MenuManager10clearFocusEv) }
 }
