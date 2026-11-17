@@ -25,6 +25,27 @@ void MenuFX::State::Create()
 {
 }
 
+inline MenuFX::State::~State()
+{
+}
+
+MenuState::~MenuState()
+{
+    widgetIds.release_buffer();
+}
+
+inline Menus::Dialog::~Dialog()
+{
+}
+
+inline Menus::Confirm::~Confirm()
+{
+}
+
+Menus::ConfirmPayment::~ConfirmPayment()
+{
+}
+
 inline MenuFX::State::State(const char* stateName)
 {
     __builtin_strcpy(name, stateName);

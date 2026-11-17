@@ -26,6 +26,17 @@
     "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZN6MenuFX5StateD0Ev",
+        "_ZN6MenuFX5StateD1Ev",
+        "_ZN9MenuStateD0Ev",
+        "_ZN9MenuStateD2Ev",
+        "_ZN9MenuStateD1Ev",
+        "_ZN5Menus6DialogD0Ev",
+        "_ZN5Menus6DialogD1Ev",
+        "_ZN5Menus7ConfirmD0Ev",
+        "_ZN5Menus7ConfirmD1Ev",
+        "_ZN5Menus14ConfirmPaymentD0Ev",
+        "_ZN5Menus14ConfirmPaymentD1Ev",
         "_ZN6MenuFX5StateC1EPKc",
         "_ZN9MenuStateC1EPKc",
         "_ZN9MenuStateC2EPKc",
@@ -84,6 +95,11 @@
         }
     ],
     "sections": [
+        ".menu_fx_state_vtable",
+        ".menu_state_vtable",
+        ".dialog_vtable",
+        ".confirm_vtable",
+        ".confirm_payment_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -97,6 +113,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7gameswf11ref_counted8drop_refEv",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",

@@ -9,7 +9,7 @@ namespace Menus {
 class Dialog : public MenuState {
 public:
     explicit Dialog(const char* name);
-    virtual ~Dialog();
+    virtual inline ~Dialog();
     void SetMessage(int id);
 
 protected:
@@ -20,7 +20,7 @@ protected:
 class Confirm : public Dialog {
 public:
     explicit Confirm(const char* name);
-    virtual ~Confirm();
+    virtual inline ~Confirm();
     bool Confirmed() const;
 
 protected:

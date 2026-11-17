@@ -6,10 +6,20 @@
 class MenuWidget;
 
 namespace gameswf {
+class ref_counted {
+public:
+    void drop_ref();
+};
+
 template <typename T>
 class smart_ptr {
 public:
     smart_ptr() : value(0) {}
+    ~smart_ptr()
+    {
+        if (value)
+            reinterpret_cast<ref_counted*>(value)->drop_ref();
+    }
     void set_ref(T* value) __attribute__((weak));
 
 private:
@@ -21,7 +31,7 @@ namespace MenuFX {
 class State {
 public:
     explicit inline State(const char* name);
-    virtual ~State();
+    virtual inline ~State();
     virtual void Create();
     virtual void Show();
     virtual void Hide();
