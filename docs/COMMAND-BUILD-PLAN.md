@@ -1,6 +1,6 @@
 # Command-driven build plan
 
-This plan covers decompilation verification and native library linking. It was
+This plan covers byte-match verification and linking the native library. It was
 prepared after meta reached 100% byte-matched on 2026-10-26.
 
 ## Reference and current capability

@@ -83,7 +83,7 @@ config/
   files.tsv         the original source file manifest
   symbols.tsv       the full symbol map of the retail library
   toolchain/        the docker image with the ARM binutils
-docs/               build instructions, engine notes, layout reference
+docs/               byte-match verification, engine notes, layout reference
 src/game/           the decompilation, laid out exactly like the retail build
 tools/              the tooling: symbol map, catalogue, disassembler, progress
 tests/              unit tests for the tooling
@@ -97,10 +97,12 @@ falls into — `ai`, `app`, `audio`, `characters`, `combat`, `core`, `hud`,
 `input`, `meta`, `missions`, `persistence`, `rendering`, `scripting`, `ui`,
 `vehicles` and `world`.
 
-## Getting started
+## Running the game
 
-Use the [OpenGangstar launcher](https://github.com/OpenGangstar/OpenGangstar#run-the-launcher)
-for application packaging, installation and launch.
+The [OpenGangstar launcher](https://github.com/OpenGangstar/OpenGangstar#run-the-launcher)
+handles application builds, installation and launch.
+
+## Getting started with decompilation
 
 ```sh
 # 1. Put your own copy of the retail library where the tools expect it.
