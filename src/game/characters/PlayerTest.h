@@ -134,12 +134,16 @@ public:
     void Respawn();
     void startDriving();
     void SetSpeed();
+    void ResetPlayerTest(bool);
+    void setVehicle(Vehicle* value);
     void Update();
     void UpdateSceneNode();
     bool isFacingTarget();
     unsigned char unknown8[12];
     irr::scene::ISceneNode* sceneNode;
-    unsigned char unknown24[156];
+    unsigned char unknown24[36];
+    SaveVector3 facing;
+    unsigned char unknown72[108];
     irr::scene::ISceneNode* shadowNode;
     b2Body* collisionBody;
     unsigned char unknown188[4];
