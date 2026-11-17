@@ -8,6 +8,8 @@ public:
     TrailMgr();
     virtual ~TrailMgr();
     void Update();
+    void SetSegmentWidth(float width);
+    void CleanUp();
     void FreeTrail(Trail* trail);
     Trail* AllocTrail();
 

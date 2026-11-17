@@ -20,13 +20,38 @@ struct TrailPoint {
 
 class Trail {
 public:
+    virtual ~Trail();
     void Update();
-    unsigned char unknown0[36];
+    void SetSegmentWidth(float width);
+    unsigned char unknown4[32];
     TrailPoint* points;
 };
 
 TrailMgr::TrailMgr() : trails(0), allocated(0), trailCount(0)
 {
+}
+
+TrailMgr::~TrailMgr()
+{
+    trailCount = 0;
+}
+
+void TrailMgr::SetSegmentWidth(float width)
+{
+    for (int i = 0; i < trailCount; ++i) {
+        Trail* trail = trails[i];
+        if (trail)
+            trail->SetSegmentWidth(width);
+    }
+}
+
+void TrailMgr::CleanUp()
+{
+    for (int i = 0; i < trailCount; ++i)
+        delete trails[i];
+
+    delete[] allocated;
+    delete[] trails;
 }
 
 Trail* TrailMgr::AllocTrail()

@@ -27,6 +27,11 @@
     "functions": [
         "_ZN8TrailMgrC1Ev",
         "_ZN8TrailMgrC2Ev",
+        "_ZN8TrailMgrD0Ev",
+        "_ZN8TrailMgrD1Ev",
+        "_ZN8TrailMgrD2Ev",
+        "_ZN8TrailMgr15SetSegmentWidthEf",
+        "_ZN8TrailMgr7CleanUpEv",
         "_ZN8TrailMgr6UpdateEv",
         "_ZN8TrailMgr10AllocTrailEv",
         "_ZN8TrailMgr9FreeTrailEP5Trail",
@@ -44,6 +49,7 @@
         }
     ],
     "sections": [
+        ".trail_mgr_vtable",
         ".string_startup_function_0",
         ".string_startup_function_1",
         ".string_startup_function_2",
@@ -54,5 +60,8 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN5Trail6UpdateEv"]
+    "external_thumb_functions": [
+        "_ZN5Trail6UpdateEv",
+        "_ZN5Trail15SetSegmentWidthEf"
+    ]
 }
