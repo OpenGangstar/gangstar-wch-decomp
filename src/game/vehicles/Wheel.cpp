@@ -54,3 +54,87 @@ static void _GLOBAL__I__ZN5WheelC2EP7ASpritei()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "../app/Application.h"
+#include "../input/TouchScreenBase.h"
+#include "../hud/HudElement.h"
+#include "../core/EventManager.h"
+#include "../core/GameEventMethods.h"
+#include "../core/PlacementNew.h"
+
+class Wheel : public HudElement {
+public:
+    Wheel(ASprite*, int);
+    virtual ~Wheel();
+    virtual void update(double);
+    virtual void setHand(bool);
+    virtual void processTouch(long);
+    virtual void processTouchRelease();
+    virtual void draw2d() const;
+private:
+    bool positiveDirection;
+    float displacement;
+};
+
+Wheel::~Wheel()
+{
+}
+
+void Wheel::update(double)
+{
+    if (flags & 1u) {
+        TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+        const irr::core::rect<float>& region =
+            reinterpret_cast<const irr::core::rect<float>&>(touchRegion);
+        const long id = screen->getTouchIDInitiatedInRegion(region);
+        if (id != -1)
+            processTouch(id);
+        else
+            processTouchRelease();
+    }
+}
+
+
+class EvWheelReleased : public IEvent {
+public:
+    EvWheelReleased(bool direction, float movement)
+        : positiveDirection(direction), displacement(movement)
+    {
+        eventID = 15;
+    }
+    virtual ~EvWheelReleased() __attribute__((used));
+private:
+    bool positiveDirection;
+    float displacement;
+};
+
+inline EvWheelReleased::~EvWheelReleased()
+{
+}
+
+extern "C" void _ZN15EvWheelReleasedD1Ev(void*) __attribute__((weak));
+
+void Wheel::processTouchRelease()
+{
+    if (flags & 1u) {
+        if (flags & 2u) {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            unsigned int storage[sizeof(EvWheelReleased) / sizeof(unsigned int)];
+            EvWheelReleased* event = new (storage) EvWheelReleased(positiveDirection, displacement);
+            events->raise(*event);
+            _ZN15EvWheelReleasedD1Ev(event);
+        }
+        flags &= ~2u;
+    }
+}
+
+class EvWheelTurn : public IEvent {
+public:
+    virtual ~EvWheelTurn() __attribute__((used));
+};
+
+inline EvWheelTurn::~EvWheelTurn()
+{
+}
+
+void Wheel::setHand(bool) {}

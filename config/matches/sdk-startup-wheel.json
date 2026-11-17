@@ -25,6 +25,18 @@
     "source": "src/game/vehicles/Wheel.cpp",
     "linker_script": "config/linker/WheelSdkStartup.ld",
     "functions": [
+        "_ZN15EvWheelReleasedD0Ev",
+        "_ZN15EvWheelReleasedD1Ev",
+        "_ZN11EvWheelTurnD0Ev",
+        "_ZN11EvWheelTurnD1Ev",
+        "_ZThn8_N5Wheel19processTouchReleaseEv",
+        "_ZN5Wheel19processTouchReleaseEv",
+        "_ZN5Wheel7setHandEb",
+        "_ZThn4_N5WheelD0Ev",
+        "_ZN5WheelD0Ev",
+        "_ZThn4_N5WheelD1Ev",
+        "_ZN5WheelD1Ev",
+        "_ZN5Wheel6updateEd",
         {
             "name": "__tcf_2",
             "address": "0x0032caf5"
@@ -39,6 +51,9 @@
         }
     ],
     "sections": [
+        ".wheel_event_release_vtable",
+        ".wheel_event_turn_vtable",
+        ".wheel_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -48,5 +63,10 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN10HudElementD1Ev",
+        "_ZN11Application11GetInstanceEv"
+    ]
 }
