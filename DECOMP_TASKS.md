@@ -150,10 +150,16 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003092b5 | CCarFactory::createMorph | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00311eb1 | CCarMorphingMesh::~CCarMorphingMesh (D1) | camera_tap | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311eb1 | CCarMorphingMesh::~CCarMorphingMesh (D1) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030b12d | Vehicle::debug | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309231 | CustomSkinnedMeshSceneNode::CustomSkinnedMeshSceneNode (C1) | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310fa9 | Vehicle::disable | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00309601 | Vehicle::UpdateCarTireTrails | camera_tap | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030b9a5 | Vehicle::repair | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00312d19 | Vehicle::playDriveSfx | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00309601 | Vehicle::UpdateCarTireTrails | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030b9a5 | Vehicle::repair | vehicle_side | REVIEW | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00312d19 | Vehicle::playDriveSfx | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003130a1 | Vehicle::explode | camera_tap | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00309a4d | Vehicle::setupSceneNode | vehicle_side | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311e41 | CCarMorphingMesh::~CCarMorphingMesh (virtual D0 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311e55 | CCarMorphingMesh::~CCarMorphingMesh (D0) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311e9d | CCarMorphingMesh::~CCarMorphingMesh (virtual D1 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030b68d | Vehicle::ResetBodyPosition | lock_init | ASSIGNED | — | src/game/vehicles/Vehicle.cpp |
