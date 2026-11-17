@@ -40,6 +40,10 @@ SECTIONS
     .player_lock_weapon_switch 0x00300e6c : { *ai-startup-playertest.o(.text._ZN10PlayerTest16lockSwitchWeaponEv) }
     .player_get_target 0x00300db8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10_GetTargetEv) }
     .player_marker_type 0x00300d7c : { *ai-startup-playertest.o(.text._ZN10PlayerTest13getMarkerTypeEv) }
+    .player_set_cash 0x00300dec : { *ai-startup-playertest.o(.text._ZN10PlayerTest7setCashEi) }
+    .player_ambient_sound 0x00300e0c : { *ai-startup-playertest.o(.text._ZNK10PlayerTest15getAmbientSoundEv) }
+    .player_drift_distance 0x00300e2c : { *ai-startup-playertest.o(.text._ZN10PlayerTest23addCurrentDriftDistanceEf) }
+    .player_jump_distance 0x00300e4c : { *ai-startup-playertest.o(.text._ZN10PlayerTest22addCurrentJumpDistanceEf) }
     .player_init_move_to 0x00300dc0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10initMoveToEPK7Vehicle) }
     .player_set_rich_as_croesus 0x00300ddc : { *ai-startup-playertest.o(.text._ZN10PlayerTest13richAsCroesusEb) }
     .player_get_rich_as_croesus 0x00300de4 : { *ai-startup-playertest.o(.text._ZNK10PlayerTest15isRichAsCroesusEv) }
