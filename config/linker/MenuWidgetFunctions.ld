@@ -7,6 +7,12 @@ SECTIONS
     .widget_game_setting_selection_background 0x0041a788 : { *ai-startup-menuwidget.o(.rodata.gameSettingSelectionBackground) }
     .widget_game_setting_ok_button 0x0041a738 : { *ai-startup-menuwidget.o(.rodata.gameSettingOkButton) }
     .widget_game_setting_ok_text 0x0041abec : { *ai-startup-menuwidget.o(.rodata.gameSettingOkText) }
+    .widget_game_setting_hidebuttonok 0x002ec1fc : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting12HideButtonOkEv) }
+    .widget_game_setting_hideselection 0x002ec21c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting13HideSelectionEv) }
+    .widget_game_setting_settitleid 0x002ebf28 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting10SetTitleIdEi) }
+    .widget_game_setting_setvalueid 0x002ebf2c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting10SetValueIdEi) }
+    .widget_game_setting_setvalue 0x002ec08c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting8SetValueEPKc) }
+    .widget_game_setting_settitle 0x002ec0b4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting8SetTitleEPKc) }
     .widget_help_localization 0x002ed540 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Help18UpdateLocalizationEv) }
     .widget_game_setting_localization 0x002ed574 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting18UpdateLocalizationEv) }
     .widget_help_text_path 0x0041abdc : { *ai-startup-menuwidget.o(.rodata.helpTextPath) }

@@ -29,6 +29,12 @@
     "functions": [
         "_ZN7Widgets4Help18UpdateLocalizationEv",
         "_ZN7Widgets11GameSetting18UpdateLocalizationEv",
+        "_ZN7Widgets11GameSetting12HideButtonOkEv",
+        "_ZN7Widgets11GameSetting13HideSelectionEv",
+        "_ZN7Widgets11GameSetting10SetTitleIdEi",
+        "_ZN7Widgets11GameSetting10SetValueIdEi",
+        "_ZN7Widgets11GameSetting8SetValueEPKc",
+        "_ZN7Widgets11GameSetting8SetTitleEPKc",
         "_ZN7Widgets11GameSetting13ShowSelectionEv",
         "_ZN7Widgets11GameSetting12ShowButtonOkEv",
         "_ZN7Widgets8Language4ShowEv",

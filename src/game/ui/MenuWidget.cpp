@@ -289,6 +289,12 @@ private:
 class GameSetting : public MenuWidget {
 public:
     GameSetting();
+    void HideButtonOk();
+    void HideSelection();
+    void SetTitleId(int id);
+    void SetValueId(int id);
+    void SetValue(const char* value);
+    void SetTitle(const char* title);
     void ShowSelection();
     void ShowButtonOk();
     virtual void OnEvent(RenderFX::Event&);
@@ -874,6 +880,42 @@ void Widgets::GameSetting::ShowButtonOk()
     renderFX->SetVisible(gameSettingOkButton, true);
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingOkText,
                                _ZNK13StringManager9getStringEi(strings, 0x102b), true);
+}
+
+void Widgets::GameSetting::HideButtonOk()
+{
+    renderFX->SetVisible(gameSettingOkButton, false);
+}
+
+void Widgets::GameSetting::HideSelection()
+{
+    renderFX->SetVisible(gameSettingLeftButton, false);
+    renderFX->SetVisible(gameSettingRightButton, false);
+    renderFX->SetVisible(gameSettingValuePath, false);
+    renderFX->SetVisible(gameSettingSelectionBackground, false);
+}
+
+void Widgets::GameSetting::SetTitleId(int id)
+{
+    titleTextId = id;
+}
+
+void Widgets::GameSetting::SetValueId(int id)
+{
+    valueTextId = id;
+}
+
+void Widgets::GameSetting::SetValue(const char* value)
+{
+    valueTextId = -1;
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingValuePath, value, true);
+}
+
+void Widgets::GameSetting::SetTitle(const char* title)
+{
+    if (title) {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, gameSettingTitlePath, title, true);
+    }
 }
 
 Widgets::Language::Language()
