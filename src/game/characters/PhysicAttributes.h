@@ -14,6 +14,9 @@ struct AStarNode;
 class PhysicAttributes {
 public:
     static int MATERIAL_TYPE_DEATH_WATER;
+    static bool SegmentsIntersect(const irr::core::vector3d<float>& a,
+        const irr::core::vector3d<float>& b, const irr::core::vector3d<float>& c,
+        const irr::core::vector3d<float>& d);
 public:
     irr::core::vector3d<float> GetNextRandomPos(int, int, irr::core::vector3d<float>);
     PhysicAttributes(int type, b2Body* body);

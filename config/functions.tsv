@@ -10855,7 +10855,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003196f1	0x2	PhysicAttributes.cpp	game	characters	matched	_ZN17b2ContactListener6RemoveEPK14b2ContactPoint	b2ContactListener::Remove(b2ContactPoint const*)
 0x003196f5	0x2	PhysicAttributes.cpp	game	characters	matched	_ZN17b2ContactListener6ResultEPK15b2ContactResult	b2ContactListener::Result(b2ContactResult const*)
 0x003196f9	0x2	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener6ResultEPK15b2ContactResult	ContactListener::Result(b2ContactResult const*)
-0x003196fd	0x18c	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes17SegmentsIntersectERKN3irr4core8vector3dIfEES5_S5_S5_	PhysicAttributes::SegmentsIntersect(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&)
+0x003196fd	0x18c	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes17SegmentsIntersectERKN3irr4core8vector3dIfEES5_S5_S5_	PhysicAttributes::SegmentsIntersect(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&)
 0x00319889	0x1e	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes13SetIsOnGroundEib	PhysicAttributes::SetIsOnGround(int, bool)
 0x003198a9	0x148	PhysicAttributes.cpp	irrlicht	-	matched	_ZNK3irr4core8vector3dIfE15isBetweenPointsERKS2_S4_	irr::core::vector3d<float>::isBetweenPoints(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&) const
 0x003199f1	0x30	PhysicAttributes.cpp	game	characters	matched	__tcf_3	__tcf_3
@@ -10865,9 +10865,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00319a7d	0x92	PhysicAttributes.cpp	irrlicht	-	matched	_ZN3irr4core5arrayI9AStarNodeNS0_12irrAllocatorIS2_EEE10reallocateEj	irr::core::array<AStarNode, irr::core::irrAllocator<AStarNode> >::reallocate(unsigned int)
 0x00319b11	0x88	PhysicAttributes.cpp	irrlicht	-	matched	_ZN3irr4core5arrayI9AStarNodeNS0_12irrAllocatorIS2_EEE6insertERKS2_j	irr::core::array<AStarNode, irr::core::irrAllocator<AStarNode> >::insert(AStarNode const&, unsigned int)
 0x00319b99	0x88	PhysicAttributes.cpp	irrlicht	-	matched	_ZN3irr4core5arrayI9AStarNodeNS0_12irrAllocatorIS2_EEE9push_backERKS2_	irr::core::array<AStarNode, irr::core::irrAllocator<AStarNode> >::push_back(AStarNode const&)
-0x00319c21	0x3e	PhysicAttributes.cpp	game	characters	pending	_Z15SafeDeleteArrayIN3irr4core5arrayItNS1_12irrAllocatorItEEEEEvRPT_	void SafeDeleteArray<irr::core::array<unsigned short, irr::core::irrAllocator<unsigned short> > >(irr::core::array<unsigned short, irr::core::irrAllocator<unsigned short> >*&)
+0x00319c21	0x3e	PhysicAttributes.cpp	game	characters	matched	_Z15SafeDeleteArrayIN3irr4core5arrayItNS1_12irrAllocatorItEEEEEvRPT_	void SafeDeleteArray<irr::core::array<unsigned short, irr::core::irrAllocator<unsigned short> > >(irr::core::array<unsigned short, irr::core::irrAllocator<unsigned short> >*&)
 0x00319c61	0x74	PhysicAttributes.cpp	irrlicht	-	matched	_ZNK3irr4core10triangle3dIfE30getIntersectionWithLimitedLineERKNS0_6line3dIfEERNS0_8vector3dIfEE	irr::core::triangle3d<float>::getIntersectionWithLimitedLine(irr::core::line3d<float> const&, irr::core::vector3d<float>&) const
-0x00319cd5	0x90	PhysicAttributes.cpp	game	characters	pending	_ZN10PhysicInfo5ResetEP7b2World	PhysicInfo::Reset(b2World*)
+0x00319cd5	0x90	PhysicAttributes.cpp	game	characters	matched	_ZN10PhysicInfo5ResetEP7b2World	PhysicInfo::Reset(b2World*)
 0x00319d65	0x6c	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes15ResetPhysicInfoEv	PhysicAttributes::ResetPhysicInfo()
 0x00319dd1	0x60	PhysicAttributes.cpp	game	characters	matched	_ZN10PhysicInfoC1Ev	PhysicInfo::PhysicInfo()
 0x00319e31	0x20	PhysicAttributes.cpp	game	characters	matched	_Z10SafeDeleteI7b2WorldEvRPT_	void SafeDelete<b2World>(b2World*&)

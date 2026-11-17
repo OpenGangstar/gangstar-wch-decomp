@@ -840,10 +840,10 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003520c1 | RadioStationController::selectRandomJingle | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x003522b1 | RadioStationController::selectRandomSong | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x00352335 | RadioStationController constructor (C1/C2 aliases) | vehicle_side | BLOCKED | pending | src/game/ai/RadioStationController.cpp |
-| libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | coordinator | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | coordinator | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031a40d | PhysicAttributes::FindLowerCostNode | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | coordinator | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | vehicle_side | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | lock_init | REVIEW | pending | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |

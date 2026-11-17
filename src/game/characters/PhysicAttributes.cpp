@@ -370,3 +370,63 @@ void PhysicAttributes::SetCurrentJumpShape(b2Shape* shape)
     hasJumpShape = true;
     jumpFlags = data->flags;
 }
+
+void PhysicInfo::Reset(b2World* world)
+{
+    unknown0 = static_cast<unsigned short>(-1);
+    unknown4 = 0;
+    vector12 = irr::core::vector3d<float>(0,0,0);
+    vector24 = irr::core::vector3d<float>(0,0,0);
+    vector36 = irr::core::vector3d<float>(0,0,0);
+    vector48 = irr::core::vector3d<float>(0,0,0);
+    unknown60 = false;
+    unknown76 = static_cast<unsigned short>(-1);
+    unknown78 = static_cast<unsigned short>(-1);
+    unknown80 = static_cast<unsigned short>(-1);
+    unknown8 = static_cast<unsigned short>(-1);
+    unknown82 = 1;
+    unknown84 = false;
+    onGround = true;
+    wasOnGround = true;
+    if (world) {
+        for (int i=0; i<12; ++i) {
+            if (bodies[i]) {
+                if (bodies[i]->data) {
+                    ::operator delete(bodies[i]->data);
+                    bodies[i]->data = 0;
+                }
+                world->DestroyBody(bodies[i]);
+                bodies[i] = 0;
+            }
+        }
+    }
+}
+
+#include "../core/UnsignedShortArray.h"
+
+template<class T> void SafeDeleteArray(T*& object) __attribute__((weak));
+template<class T> void SafeDeleteArray(T*& object)
+{
+    delete[] object;
+    object = 0;
+}
+template void SafeDeleteArray<irr::core::array<unsigned short> >(irr::core::array<unsigned short>*&);
+
+bool PhysicAttributes::SegmentsIntersect(const irr::core::vector3d<float>& a,
+    const irr::core::vector3d<float>& b, const irr::core::vector3d<float>& c,
+    const irr::core::vector3d<float>& d)
+{
+    if (a.X == b.X && a.Y == b.Y)
+        return false;
+    if (c.X != d.X || c.Y != d.Y) {
+        float denominator = (d.Y - c.Y) * (b.X - a.X) - (d.X - c.X) * (b.Y - a.Y);
+        float numeratorA = (d.X - c.X) * (a.Y - c.Y) - (d.Y - c.Y) * (a.X - c.X);
+        float numeratorB = (b.X - a.X) * (a.Y - c.Y) - (b.Y - a.Y) * (a.X - c.X);
+        if (denominator == 0.0f)
+            return !(numeratorA != 0.0f || numeratorB != 0.0f);
+        float u = numeratorA / denominator;
+        float v = numeratorB / denominator;
+        return u >= 0.0f && u <= 1.0f && v >= 0.0f && v <= 1.0f;
+    }
+    return false;
+}
