@@ -28,6 +28,7 @@
         "_Z10crcReflectjc",
         "_ZN16SceneNodeManager5setupEv",
         "_ZN16SceneNodeManager6updateEi",
+        "_ZNK16SceneNodeManager3crcEPKc",
         "_ZN16SceneNodeManager4NodeD1Ev",
         "_ZN16SceneNodeManager4NodeD2Ev",
         "_ZN16SceneNodeManager4Node14setupUnmanagedEi",
