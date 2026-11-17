@@ -37,6 +37,7 @@
         "_ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi",
         "_ZN16SceneNodeManager4PoolD1Ev",
         "_ZN16SceneNodeManager4PoolD2Ev",
+        "_ZN16SceneNodeManager4Pool6extendEi",
         "_ZN16SceneNodeManager8tearDownEv",
         "_ZN16SceneNodeManagerD1Ev",
         "_ZN16SceneNodeManagerD2Ev",
@@ -68,5 +69,8 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN11Application11GetInstanceEv"]
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE"
+    ]
 }
