@@ -25,6 +25,14 @@
     "source": "src/game/ui/Cash.cpp",
     "linker_script": "config/linker/CashAiStartup.ld",
     "functions": [
+        "_ZN4Cash6updateEd",
+        "_ZN4CashD0Ev",
+        "_ZN4CashD1Ev",
+        "_ZN4CashD2Ev",
+        "_ZThn4_N4CashD0Ev",
+        "_ZThn4_N4CashD1Ev",
+        "_ZN4Cash10AlignRightEv",
+        "_ZN4Cash9AlignLeftEv",
         "_ZN4Cash11SetPositionEii",
         "_ZN4Cash7SetCashEi",
         "_ZN4Cash7GetCashEv",
@@ -42,6 +50,7 @@
         }
     ],
     "sections": [
+        ".cash_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -51,5 +60,11 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN10HudElementD1Ev",
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK11Application19GetScreenDimensionsERiS0_"
+    ]
 }

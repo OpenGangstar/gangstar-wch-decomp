@@ -524,10 +524,20 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ecb09 | RenderFX::TraceHierarchy | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x00327d85 | Cash destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327d41 | Cash deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327d2c | Cash deleting destructor thunk (D0) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327d70 | Cash complete destructor thunk (D1) | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327bbd | Cash::update | vehicle_side | ASSIGNED | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327a71 | Cash::drawCash | camera_tap | ASSIGNED | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d85 | Cash destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d41 | Cash deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d2c | Cash deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d70 | Cash complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bbd | Cash::update | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | lock_init | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash | camera_tap | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327be9 | Cash::draw2d | vehicle_side | BLOCKED | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003275c8 | Background deleting destructor thunk (D0) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032760c | Background complete destructor thunk (D1) | camera_tap | ASSIGNED | — | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032764d | Background constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003274f1 | Background::update | lock_init | ASSIGNED | — | src/game/ui/Background.cpp |

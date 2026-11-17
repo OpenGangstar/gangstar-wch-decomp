@@ -11211,17 +11211,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003279f1	0x4	Cash.cpp	game	ui	matched	_ZN4Cash7SetCashEi	Cash::SetCash(int)
 0x003279f5	0x4	Cash.cpp	game	ui	matched	_ZN4Cash7GetCashEv	Cash::GetCash()
 0x003279f9	0x30	Cash.cpp	game	ui	matched	__tcf_3	__tcf_3
-0x00327a29	0x24	Cash.cpp	game	ui	pending	_ZN4Cash10AlignRightEv	Cash::AlignRight()
-0x00327a4d	0x24	Cash.cpp	game	ui	pending	_ZN4Cash9AlignLeftEv	Cash::AlignLeft()
+0x00327a29	0x24	Cash.cpp	game	ui	matched	_ZN4Cash10AlignRightEv	Cash::AlignRight()
+0x00327a4d	0x24	Cash.cpp	game	ui	matched	_ZN4Cash9AlignLeftEv	Cash::AlignLeft()
 0x00327a71	0x14c	Cash.cpp	game	ui	pending	_ZNK4Cash8drawCashEiPKiRii	Cash::drawCash(int, int const*, int&, int) const
-0x00327bbd	0x16	Cash.cpp	game	ui	pending	_ZN4Cash6updateEd	Cash::update(double)
+0x00327bbd	0x16	Cash.cpp	game	ui	matched	_ZN4Cash6updateEd	Cash::update(double)
 0x00327bd4	0x14	Cash.cpp	game	ui	pending	_ZThn4_NK4Cash6draw2dEv	non-virtual thunk to Cash::draw2d() const
 0x00327be9	0x144	Cash.cpp	game	ui	pending	_ZNK4Cash6draw2dEv	Cash::draw2d() const
-0x00327d2c	0x14	Cash.cpp	game	ui	pending	_ZThn4_N4CashD0Ev	non-virtual thunk to Cash::~Cash()
-0x00327d41	0x30	Cash.cpp	game	ui	pending	_ZN4CashD0Ev	Cash::~Cash()
-0x00327d70	0x14	Cash.cpp	game	ui	pending	_ZThn4_N4CashD1Ev	non-virtual thunk to Cash::~Cash()
-0x00327d85	0x2c	Cash.cpp	game	ui	pending	_ZN4CashD1Ev	Cash::~Cash()
-0x00327d85	0x2c	Cash.cpp	game	ui	pending	_ZN4CashD2Ev	Cash::~Cash()
+0x00327d2c	0x14	Cash.cpp	game	ui	matched	_ZThn4_N4CashD0Ev	non-virtual thunk to Cash::~Cash()
+0x00327d41	0x30	Cash.cpp	game	ui	matched	_ZN4CashD0Ev	Cash::~Cash()
+0x00327d70	0x14	Cash.cpp	game	ui	matched	_ZThn4_N4CashD1Ev	non-virtual thunk to Cash::~Cash()
+0x00327d85	0x2c	Cash.cpp	game	ui	matched	_ZN4CashD1Ev	Cash::~Cash()
+0x00327d85	0x2c	Cash.cpp	game	ui	matched	_ZN4CashD2Ev	Cash::~Cash()
 0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC1EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
 0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC2EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
 0x00327e35	0x144	Cash.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

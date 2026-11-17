@@ -12,6 +12,8 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "Cash.h"
+#include "../app/Application.h"
+#include "../characters/PlayerTest.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -95,4 +97,33 @@ void Cash::SetCash(int amount)
 int Cash::GetCash()
 {
     return cash;
+}
+
+inline void Cash::align(bool left)
+{
+    alignedLeft = left;
+    int width, height;
+    Application::GetInstance()->GetScreenDimensions(width, height);
+    positionX = width - positionX;
+}
+
+void Cash::AlignRight()
+{
+    align(false);
+}
+
+void Cash::AlignLeft()
+{
+    align(true);
+}
+
+void Cash::update(double)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (player)
+        cash = player->cash;
+}
+
+Cash::~Cash()
+{
 }
