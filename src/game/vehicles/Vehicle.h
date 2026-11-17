@@ -163,6 +163,7 @@ public:
     // Observed driver pointer at 696; inline accessor claims no separate symbol.
     Character* getDriver() const { return driver; }
 private:
+    friend class NPC;
     void _cleanupSounds();
     void resetPreviousPos();
     void ResetBodyPosition();

@@ -726,14 +726,46 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e2c99 | GSLoading::dtor | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2c09 | GSLoading::update | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2d45 | GSLoading::draw | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
-| libsanangeles.so | 0x002fd821 | NPC::Stop | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fd49d | NPC::clearGoToVehicle | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fd801 | NPC::UpdateSceneNode | camera_tap | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fda85 | NPC::enable | lock_init | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fd70d | NPC::GetPosition | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fd6c1 | NPC::_arrest | camera_tap | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fed91 | NPC::applyDamage | lock_init | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fd869 | NPC::clean | vehicle_side | REVIEW | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fd735 | NPC::wait | camera_tap | ASSIGNED | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fed45 | NPC::notifyAttacked | lock_init | ASSIGNED | pending | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fdbc5 | NPC::dropSceneNode | vehicle_side | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd821 | NPC::Stop | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd49d | NPC::clearGoToVehicle | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd801 | NPC::UpdateSceneNode | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fda85 | NPC::enable | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd70d | NPC::GetPosition | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd6c1 | NPC::_arrest | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fed91 | NPC::applyDamage | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd869 | NPC::clean | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd735 | NPC::wait | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fed45 | NPC::notifyAttacked | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdbc5 | NPC::dropSceneNode | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe395 | NPC::WarmUp | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002feb49 | NPC::flee | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd949 | NPC::grabSceneNode | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fda11 | NPC::SetWeapon | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fea79 | NPC::flee(vector) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd8bd | NPC::setupSceneNode | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd995 | NPC::switchAnim | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd661 | NPC::tagForKill | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdaad | NPC::init | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe0e9 | NPC::isHostileTo | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002febc9 | NPC::clearOnAlert | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fef75 | NPC::setHitByCar | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe999 | NPC::freeze | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdb79 | NPC destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdb29 | NPC deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd565 | NPC::isOutsideSearchRadius | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fd611 | NPC.cpp::__tcf_1 | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fec29 | NPC::disable | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fee69 | NPC::OnDespawn | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe3c9 | NPC constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdcfd | NPC::Load | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe169 | NPC::goToVehicle | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x003009d1 | NPC::SetTarget | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe615 | NPC::triggerCombatSFX | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fdbed | NPC::debug | lock_init | REVIEW | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fde51 | NPC::isUnderCar | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002f7415 | Character::attack | camera_tap | REVIEW | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f1839 | Character.cpp::__tcf_1 | lock_init | REVIEW | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f710d | Character::punch | camera_tap | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f6fb9 | Character::kick | lock_init | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2af5 | Character destructor (D1/D2 aliases) | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2a79 | Character deleting destructor (D0) | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |

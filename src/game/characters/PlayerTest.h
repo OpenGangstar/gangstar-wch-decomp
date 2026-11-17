@@ -193,9 +193,11 @@ public:
     unsigned char unknown384[28];
     float speed;
     bool richAsCroesusEnabled;
-    unsigned char unknown417[3];
+    bool unknown417;
+    unsigned char unknown418[2];
     int cash;
-    unsigned int unknown424;
+    bool unknown424;
+    unsigned char unknown425[3];
     // Item::add reads the complete word at 428; existing enum users retain
     // their observed access width. Both views occupy the same storage.
     union { eContext context; int contextWord; };

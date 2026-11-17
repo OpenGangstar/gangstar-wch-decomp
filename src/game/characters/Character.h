@@ -14,11 +14,20 @@ class Character : public LevelObject {
     friend class TaxiSideMission;
     friend class SideMission;
 public:
+    struct AnimationInfo {
+        AnimationInfo() : unknown0(0), unknown4(0), skinMesh(0), shadowNode(0) {}
+        void* unknown0;
+        void* unknown4;
+        void* skinMesh;
+        irr::scene::ISceneNode* shadowNode;
+    };
+    void bindAnimation(const char*, AnimationInfo&, irr::scene::ISceneNode*);
     Character(int type);
     virtual ~Character();
     virtual void OnSpawn();
     virtual void OnDespawn();
     void initInVehicle(Vehicle* vehicle);
+    void initPhysic();
     void goToIdle();
     void goFromCombatToIdle();
     void switchWeapon();
@@ -130,7 +139,8 @@ private:
 public:
     Vehicle* lastHitVehicle;
 private:
-    unsigned char unknown200[16];
+    unsigned char unknown200[12];
+    int unknown212;
     int maxHealth;
     int health;
     int punchIndex;
