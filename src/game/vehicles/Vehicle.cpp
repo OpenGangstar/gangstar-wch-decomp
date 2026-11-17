@@ -784,6 +784,34 @@ void Vehicle::immobilize()
 }
 
 
+void Vehicle::mobilize()
+{
+    const bool skipBlockingCommands = ScriptManager::getInstance()->areBlockingCommandsSkipped();
+    if (!skipBlockingCommands) {
+        collisionBody->SetMassFromShapes();
+        b2Body* body = collisionBody;
+        b2MassData bodyMass;
+        bodyMass.I = body->inertia;
+        bodyMass.center.x = body->localCenter.x;
+        bodyMass.center.y = body->localCenter.y;
+        bodyMass.mass = static_cast<float>(mass) / 3.0f;
+        body->SetMass(&bodyMass);
+
+        leftCollisionBody->SetMassFromShapes();
+        rightCollisionBody->SetMassFromShapes();
+        body = leftCollisionBody;
+        b2MassData sideMass;
+        sideMass.I = body->inertia;
+        sideMass.center.x = body->localCenter.x;
+        sideMass.center.y = body->localCenter.y;
+        sideMass.mass = static_cast<float>(mass) / 3.0f;
+        body->SetMass(&sideMass);
+        rightCollisionBody->SetMass(&sideMass);
+        immobilized = skipBlockingCommands;
+    }
+    Stop();
+}
+
 void Vehicle::postExplosion()
 {
     exploding = false;

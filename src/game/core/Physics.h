@@ -33,14 +33,17 @@ public:
     const b2XForm& GetXForm() const { return transform; }
     void* GetUserData() const { return data; }
     b2XForm transform;
-    unsigned char unknown28[28];
+    b2Vec2 localCenter;
+    unsigned char unknown36[20];
     float angle;
     unsigned char unknown60[4];
     b2Vec2 linearVelocity;
     float angularVelocity;
     unsigned char unknown76[24];
     b2Shape* shapeList;
-    unsigned char unknown104[40];
+    unsigned char unknown104[20];
+    float inertia;
+    unsigned char unknown128[16];
     void* data;
 };
 class b2Shape {
