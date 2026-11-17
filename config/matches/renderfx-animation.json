@@ -25,6 +25,8 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX10FormatTextEPKcS1_z",
+        "_ZN8RenderFX10FormatTextEPN7gameswf9characterEPKcz",
         "_ZN8RenderFX8SetFocusEPKci",
         "_ZN8RenderFX14FindCharactersEPN7gameswf9characterEPKci",
         "_ZN8RenderFX10SetEnabledEPN7gameswf9characterEb",
@@ -44,6 +46,8 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb",
+        "_ZN8RenderFX7SetTextEPKcS1_b",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN8RenderFX4FindEPKc",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"

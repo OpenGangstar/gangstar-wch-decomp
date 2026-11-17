@@ -32,6 +32,10 @@ public:
     void SetEnabled(gameswf::character* character, bool enabled);
     void SetEnabled(const char* characterName, bool enabled);
     void SetVisible(const char* characterName, bool visible);
+    void SetText(const char* characterName, const char* text, bool option);
+    void SetText(gameswf::character* character, const char* text, bool option);
+    void FormatText(const char* characterName, const char* format, ...);
+    void FormatText(gameswf::character* character, const char* format, ...);
     void SetFocus(gameswf::character* character, int flags);
     void SetFocus(const char* characterName, int flags);
 
