@@ -25,6 +25,15 @@
     "source": "src/game/vehicles/CarSounds.cpp",
     "linker_script": "config/linker/CarSoundCallbacks.ld",
     "functions": [
+        "_ZN9SoundFade13InitFadeGainsEi",
+        "_ZN18CarSoundParametersC1Ev",
+        "_ZN18CarSoundParametersC2Ev",
+        "_ZN18CarSoundParametersD1Ev",
+        "_ZN18CarSoundParametersD2Ev",
+        "_ZN9CarSounds6UpdateEP18CarSoundParameters",
+        "_ZN9CarSounds23InitOnOffCrossFadeGainsEi",
+        "_ZN9CarSounds18UpdateStartupSoundEv",
+        "_ZN9CarSounds17UpdateClutchSoundEv",
         "_ZN9CarSounds19UnregisterCallbacksEv",
         {
             "name": "_Z18IsSoundPlayingStubii",
@@ -101,5 +110,16 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN9SoundFade8GetStateEv",
+        "_ZN9SoundFade9StartFadeEi",
+        "_ZN9SoundFade6UpdateEv",
+        "_ZN9CarSounds15FilterRPMValuesEi",
+        "_ZN9CarSounds13StopAllSoundsEv",
+        "_ZN9CarSounds21UpdateOffEngineSoundsEv",
+        "_ZN9CarSounds20UpdateOnEngineSoundsEv",
+        "_ZN9CarSounds17UpdateRumbleSoundEv",
+        "_ZN9CarSounds17UpdateTurboSoundsEv"
+    ]
 }
