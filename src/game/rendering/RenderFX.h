@@ -6,6 +6,7 @@ class character;
 class render_state;
 // Enumerator names are still unknown.
 enum orientation_mode {};
+class player_context;
 class root;
 
 template <typename T>
@@ -30,6 +31,9 @@ public:
     void SetOrientation(gameswf::orientation_mode orientation);
     static void SetWireFrame(bool enabled);
     void InitializeGlyphTextureCache(int width, int height);
+    static void DestroyContext(gameswf::player_context* context);
+    static void ClearGlyphTextureCaches(gameswf::player_context* context);
+
     void BeginDisplay();
     void Render();
     void EndDisplay();
@@ -74,6 +78,7 @@ public:
     void SetFocus(const char* characterName, int flags);
 
 private:
+    static gameswf::player_context* s_default_context;
     void CollectCharacters(gameswf::character* parent, const char* name, int flags);
 };
 
