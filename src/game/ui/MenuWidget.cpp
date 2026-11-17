@@ -166,6 +166,12 @@ struct MenuButtonInfo {
 class IGMenu : public MenuWidget {
 public:
     enum eButton { First, Second, Third, Fourth, Fifth };
+    IGMenu();
+    virtual void Show();
+    virtual void Disable();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    virtual ~IGMenu();
     void HideButtons();
     void ShowButtons();
     void SetButtonInfo(eButton button, int id, bool enabled);
@@ -179,6 +185,7 @@ private:
     MenuButtonInfo buttons[5];
     int titleTextId;
     int backButtonTextId;
+    int activeButton;
 };
 
 class MainMenu : public MenuWidget {
@@ -280,6 +287,26 @@ void Widgets::IGMenu::SetBackButtonText(int id)
 }
 
 static const char igMenuButtonFormat[] = "widgetIGMenu.groupBoutons.btnMenu%d";
+static const char widgetIGMenuName[] = "widgetIGMenu";
+
+Widgets::IGMenu::IGMenu()
+    : MenuWidget(widgetIGMenuName), titleTextId(-1), backButtonTextId(-1), activeButton(5)
+{
+    for (int i = 0; i < 5; ++i) {
+        buttons[i].textId = -1;
+        buttons[i].enabled = true;
+    }
+}
+
+Widgets::IGMenu::~IGMenu()
+{
+}
+
+void Widgets::IGMenu::Show()
+{
+    MenuWidget::Show();
+    ShowButtons();
+}
 
 template <bool show>
 inline __attribute__((always_inline)) void Widgets::IGMenu::SetButtonsVisible()

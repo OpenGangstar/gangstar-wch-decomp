@@ -1,5 +1,11 @@
 SECTIONS
 {
+    .widget_ig_menu_ctor 0x002ec8b0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenuC1Ev .text._ZN7Widgets6IGMenuC2Ev) }
+    .widget_ig_menu_show 0x002ed004 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu4ShowEv) }
+    .widget_ig_menu_deleting_dtor 0x002ec044 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenuD0Ev) }
+    .widget_ig_menu_complete_dtor 0x002ec06c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenuD1Ev .text._ZN7Widgets6IGMenuD2Ev) }
+    .widget_ig_menu_name 0x0041a93c : { *ai-startup-menuwidget.o(.rodata.widgetIGMenuName) }
+    .widget_ig_menu_vtable 0x004a9b10 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6IGMenuE) }
     .widget_main_menu_localization 0x002ed388 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenu18UpdateLocalizationEv) }
     .widget_main_menu_button_text_format 0x0041ab70 : { *ai-startup-menuwidget.o(.rodata.mainMenuButtonTextFormat) }
     .widget_main_menu_more_text 0x0041ab90 : { *ai-startup-menuwidget.o(.rodata.mainMenuMoreText) }
