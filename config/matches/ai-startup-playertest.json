@@ -28,6 +28,8 @@
         "_ZN10PlayerTest12justStoleCarEP7Vehicle",
         "_ZN10PlayerTest12jumpFinishedEv",
         "_ZN10PlayerTest13driftFinishedEv",
+        "_ZN10PlayerTest17addDistanceDrivenEf",
+        "_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle",
         "_ZN10PlayerTest4StopEv",
         "_ZN10PlayerTest14setClosestShopEP4Shop",
         "_ZN12EvNPCVehicleD0Ev",
@@ -115,6 +117,8 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN18AchievementManager14recordKmDrivenEv",
+        "_ZN7Vehicle4rentEb",
         "_ZN18AchievementManager10recordJumpEi",
         "_ZN18AchievementManager11recordDriftEi",
         "_ZN7Vehicle16getHasBeenStolenEv",

@@ -123,6 +123,8 @@ public:
     void addCurrentJumpDistance(float distance);
     void jumpFinished();
     void driftFinished();
+    void addDistanceDriven(float distance);
+    void setLastUsedVehicle(Vehicle* replacement);
     void switchContext(eContext context, bool flag);
     void switchWeapon(bool unarmed);
     virtual void walkToLocation(const irr::core::vector3d<float>& point);
@@ -176,7 +178,8 @@ public:
     // Item::add reads the complete word at 428; existing enum users retain
     // their observed access width. Both views occupy the same storage.
     union { eContext context; int contextWord; };
-    unsigned char unknown432[44];
+    unsigned char unknown432[40];
+    int currentDistanceDriven;
     int currentDriftDistance;
     int currentJumpDistance;
     irr::core::array<LevelObject*> photoTargets;
