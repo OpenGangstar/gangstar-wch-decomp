@@ -13,6 +13,18 @@
 #include "../core/LocalStartupText.h"
 #include "SceneCamera.h"
 
+void SceneCamera::init(LevelObject*, int)
+{
+}
+
+void SceneCamera::debug(irr::video::IVideoDriver*)
+{
+}
+
+void SceneCamera::update(float)
+{
+}
+
 SceneCamera::SceneCamera(int type) : Camera(), Transformation(type), vector112()
 {
     SceneCamera::init(0, 0);

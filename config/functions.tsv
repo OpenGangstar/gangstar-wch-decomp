@@ -11784,9 +11784,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334c25	0x168	LockCamera.cpp	game	core	pending	_ZN10LockCamera6updateEf	LockCamera::update(float)
 0x00334d8d	0x144	LockCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00334ed1	0x14	LockCamera.cpp	game	core	matched	_GLOBAL__I__ZN10LockCameraC2EP11LevelObject	_GLOBAL__I__ZN10LockCameraC2EP11LevelObject
-0x00334ee5	0x2	SceneCamera.cpp	game	core	pending	_ZN11SceneCamera4initEP11LevelObjecti	SceneCamera::init(LevelObject*, int)
-0x00334ee9	0x2	SceneCamera.cpp	game	core	pending	_ZN11SceneCamera5debugEPN3irr5video12IVideoDriverE	SceneCamera::debug(irr::video::IVideoDriver*)
-0x00334eed	0x2	SceneCamera.cpp	game	core	pending	_ZN11SceneCamera6updateEf	SceneCamera::update(float)
+0x00334ee5	0x2	SceneCamera.cpp	game	core	matched	_ZN11SceneCamera4initEP11LevelObjecti	SceneCamera::init(LevelObject*, int)
+0x00334ee9	0x2	SceneCamera.cpp	game	core	matched	_ZN11SceneCamera5debugEPN3irr5video12IVideoDriverE	SceneCamera::debug(irr::video::IVideoDriver*)
+0x00334eed	0x2	SceneCamera.cpp	game	core	matched	_ZN11SceneCamera6updateEf	SceneCamera::update(float)
 0x00334ef1	0x24	SceneCamera.cpp	game	core	pending	__tcf_1	__tcf_1
 0x00334f14	0x14	SceneCamera.cpp	game	core	matched	_ZThn28_N11SceneCameraD0Ev	non-virtual thunk to SceneCamera::~SceneCamera()
 0x00334f29	0x34	SceneCamera.cpp	game	core	matched	_ZN11SceneCameraD0Ev	SceneCamera::~SceneCamera()
