@@ -29,6 +29,30 @@ class render_handler;
 render_handler* get_render_handler();
 void log_msg(const char* format, ...);
 
+class texture_cache {
+public:
+    void reset();
+};
+
+struct OutlineGlyphProvider {
+    unsigned char prefix[20];
+    texture_cache* cache;
+};
+
+struct BitmapGlyphProvider {
+    unsigned char prefix[12];
+    texture_cache* cache;
+};
+
+class player_context {
+public:
+    virtual ~player_context();
+
+    unsigned char unknown4[8];
+    OutlineGlyphProvider* outlineGlyphs;
+    BitmapGlyphProvider* bitmapGlyphs;
+};
+
 class player {
 public:
     root* get_root();
@@ -222,6 +246,22 @@ static const char deprecatedGlyphCache[] =
 void RenderFX::InitializeGlyphTextureCache(int, int)
 {
     gameswf::log_msg(deprecatedGlyphCache);
+}
+
+void RenderFX::DestroyContext(gameswf::player_context* context)
+{
+    delete context;
+}
+
+void RenderFX::ClearGlyphTextureCaches(gameswf::player_context* context)
+{
+    if (!context)
+        context = s_default_context;
+
+    if (context->outlineGlyphs && context->outlineGlyphs->cache)
+        context->outlineGlyphs->cache->reset();
+    if (context->bitmapGlyphs && context->bitmapGlyphs->cache)
+        context->bitmapGlyphs->cache->reset();
 }
 
 void RenderFX::BeginDisplay()

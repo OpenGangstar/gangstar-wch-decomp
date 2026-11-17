@@ -36,6 +36,8 @@ SECTIONS
     .renderfx_wireframe 0x003ec6bc : { *renderfx-animation.o(.text._ZN8RenderFX12SetWireFrameEb) }
     .renderfx_initialize_glyph_cache 0x003ec6d0 : { *renderfx-animation.o(.text._ZN8RenderFX27InitializeGlyphTextureCacheEii) }
     .renderfx_glyph_cache_warning 0x0044dc5c : { *renderfx-animation.o(.rodata.deprecatedGlyphCache) }
+    .renderfx_destroy_context 0x003ec1e4 : { *renderfx-animation.o(.text._ZN8RenderFX14DestroyContextEPN7gameswf14player_contextE) }
+    .renderfx_clear_glyph_caches 0x003ecd48 : { *renderfx-animation.o(.text._ZN8RenderFX23ClearGlyphTextureCachesEPN7gameswf14player_contextE) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }
