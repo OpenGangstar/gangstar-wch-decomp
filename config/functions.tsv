@@ -9574,7 +9574,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e7349	0x4	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm7IsModalEv	Menus::Confirm::IsModal() const
 0x002e734d	0x4	MenuState.cpp	game	ui	matched	_ZN9MenuState6NotifyEPK10MenuWidgeti	MenuState::Notify(MenuWidget const*, int)
 0x002e7351	0x4	MenuState.cpp	game	ui	matched	_ZNK9MenuState8GetDepthEv	MenuState::GetDepth() const
-0x002e7355	0x30	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14GetOrientationEv	Menus::OptionGameSettings::GetOrientation()
+0x002e7355	0x30	MenuState.cpp	game	ui	matched	_ZN5Menus18OptionGameSettings14GetOrientationEv	Menus::OptionGameSettings::GetOrientation()
 0x002e7385	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm9ConfirmedEv	Menus::Confirm::Confirmed() const
 0x002e738d	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus8MainMenu12GameContinueEv	Menus::MainMenu::GameContinue() const
 0x002e7395	0x6	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu8SetPauseEb	Menus::MainMenu::SetPause(bool)
@@ -9591,8 +9591,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e7565	0x2c	MenuState.cpp	gameswf	-	matched	_ZN7gameswf5arrayIiE14release_bufferEv	gameswf::array<int>::release_buffer()
 0x002e7591	0x4a	MenuState.cpp	game	ui	matched	_ZN5Menus7Confirm6NotifyEPK10MenuWidgeti	Menus::Confirm::Notify(MenuWidget const*, int)
 0x002e75dd	0x12	MenuState.cpp	game	ui	matched	_ZN5Menus6Dialog10SetMessageEi	Menus::Dialog::SetMessage(int)
-0x002e75f1	0x20	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14SetOrientationENS0_13stGameSetting12eOrientationE	Menus::OptionGameSettings::SetOrientation(Menus::OptionGameSettings::stGameSetting::eOrientation)
-0x002e7611	0xc	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14SetOrientationEi	Menus::OptionGameSettings::SetOrientation(int)
+0x002e75f1	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus18OptionGameSettings14SetOrientationENS0_13stGameSetting12eOrientationE	Menus::OptionGameSettings::SetOrientation(Menus::OptionGameSettings::stGameSetting::eOrientation)
+0x002e7611	0xc	MenuState.cpp	game	ui	matched	_ZN5Menus18OptionGameSettings14SetOrientationEi	Menus::OptionGameSettings::SetOrientation(int)
 0x002e761d	0x1c	MenuState.cpp	game	ui	matched	__tcf_2	__tcf_2
 0x002e7639	0x1e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager21isAnyMessageDisplayedEv	CHudManager::isAnyMessageDisplayed()
 0x002e7659	0x90	MenuState.cpp	game	ui	pending	_ZN5Menus11Achievement6UpdateEv	Menus::Achievement::Update()

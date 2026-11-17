@@ -22,6 +22,7 @@
 #include "../persistence/FileStream.h"
 #include "../persistence/SaveGame.h"
 #include "../world/ResStream.h"
+#include "../rendering/GS3DStuff.h"
 
 extern "C" {
 void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
@@ -126,6 +127,12 @@ public:
 
 class OptionGameSettings : public Options {
 public:
+    struct stGameSetting {
+        enum eOrientation { Orientation0, Orientation1, OrientationAuto, OrientationForce32Bit = 0x7fffffff };
+    };
+    static stGameSetting::eOrientation GetOrientation();
+    static void SetOrientation(stGameSetting::eOrientation orientation);
+    static void SetOrientation(int orientation);
     OptionGameSettings();
     void Refresh();
     virtual ~OptionGameSettings();
@@ -960,6 +967,24 @@ inline __attribute__((always_inline)) int settingsPageCount(const MenuManager* m
 {
     return _ZN9GSLoading12isGameLoadedEv() && manager->areCheatsUnlocked() ? 7 : 1;
 }
+}
+
+Menus::OptionGameSettings::stGameSetting::eOrientation Menus::OptionGameSettings::GetOrientation()
+{
+    if (GS3DStuff::b_isAutoOri)
+        return stGameSetting::OrientationAuto;
+    return GS3DStuff::s_orientation == 3 ? stGameSetting::Orientation0 : stGameSetting::Orientation1;
+}
+
+void Menus::OptionGameSettings::SetOrientation(stGameSetting::eOrientation)
+{
+    GS3DStuff::SetCurrentOrientation(irr::video::OrthoOrientation0);
+    GS3DStuff::b_isAutoOri = false;
+}
+
+void Menus::OptionGameSettings::SetOrientation(int orientation)
+{
+    SetOrientation(static_cast<stGameSetting::eOrientation>(orientation));
 }
 
 void Menus::OptionGameSettings::Refresh()
