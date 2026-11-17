@@ -36,6 +36,7 @@ void _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(void* box, int state);
 extern int _ZN11MenuManager20s_CarRentalDataCountE;
 bool _ZN9GSLoading12isGameLoadedEv();
 void _ZN7Widgets7Volumes11SetPlaylistEi(MenuWidget* widget, int playlist);
+void _ZN7Widgets10Corruption14SetWantedLevelEi(MenuWidget* widget, int level);
 }
 
 namespace Menus {
@@ -883,6 +884,16 @@ void Menus::InfoStatistics::GotFocus()
     _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(1), 1, true);
 }
 
+void Menus::InfoAchievements::GotFocus()
+{
+    Infos::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    MenuWidget* arrows = static_cast<MenuWidget*>(getWidgetByIndex(manager, 18));
+    arrows->SetListener(this);
+    _ZN7Widgets6Arrows12SetPageCountEiib(arrows, 3, 0, !unknown104);
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 0, true);
+}
+
 void Menus::InfoAbout::GotFocus()
 {
     Infos::GotFocus();
@@ -993,6 +1004,16 @@ inline void configureShopWidgets(MenuState* state, const int& selectedItem)
     const int pages = (count - 1) / 4 + 1;
     _ZN7Widgets6Arrows12SetPageCountEiib(arrows, pages, page, true);
 }
+}
+
+void Menus::ServiceCorruption::GotFocus()
+{
+    Services::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 3, true);
+    MenuWidget* corruption = static_cast<MenuWidget*>(getWidgetByIndex(manager, 5));
+    corruption->SetListener(this);
+    _ZN7Widgets10Corruption14SetWantedLevelEi(corruption, WantedLevelManager::getInstance()->unknown8);
 }
 
 void Menus::ServiceCarRental::GotFocus()
