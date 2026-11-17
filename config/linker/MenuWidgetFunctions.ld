@@ -1,5 +1,11 @@
 SECTIONS
 {
+    .widget_help_localization 0x002ed540 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Help18UpdateLocalizationEv) }
+    .widget_game_setting_localization 0x002ed574 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting18UpdateLocalizationEv) }
+    .widget_help_text_path 0x0041abdc : { *ai-startup-menuwidget.o(.rodata.helpTextPath) }
+    .widget_game_setting_title_path 0x0041a6c8 : { *ai-startup-menuwidget.o(.rodata.gameSettingTitlePath) }
+    .widget_game_setting_value_path 0x0041a6ac : { *ai-startup-menuwidget.o(.rodata.gameSettingValuePath) }
+    .widget_help_vtable 0x004a9908 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets4HelpE) }
     .widget_language_show 0x002ed6a0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Language4ShowEv) }
     .widget_controls_show 0x002eced4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Controls4ShowEv) }
     .widget_language_localization 0x002ed614 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8Language18UpdateLocalizationEv) }

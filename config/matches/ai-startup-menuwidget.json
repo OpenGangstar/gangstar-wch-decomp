@@ -27,6 +27,8 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets4Help18UpdateLocalizationEv",
+        "_ZN7Widgets11GameSetting18UpdateLocalizationEv",
         "_ZN7Widgets8Language4ShowEv",
         "_ZN7Widgets8Controls4ShowEv",
         "_ZN7Widgets8Language18UpdateLocalizationEv",
@@ -163,6 +165,10 @@
         }
     ],
     "sections": [
+        ".widget_help_text_path",
+        ".widget_game_setting_title_path",
+        ".widget_game_setting_value_path",
+        ".widget_help_vtable",
         ".widget_language_vtable",
         ".widget_controls_vtable",
         ".widget_language_title",
