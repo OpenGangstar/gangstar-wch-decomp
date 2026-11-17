@@ -1,5 +1,12 @@
 SECTIONS
 {
+    .widget_game_setting_selection 0x002ec270 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting13ShowSelectionEv) }
+    .widget_game_setting_ok 0x002ed5cc : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting12ShowButtonOkEv) }
+    .widget_game_setting_left_button 0x0041a750 : { *ai-startup-menuwidget.o(.rodata.gameSettingLeftButton) }
+    .widget_game_setting_right_button 0x0041a76c : { *ai-startup-menuwidget.o(.rodata.gameSettingRightButton) }
+    .widget_game_setting_selection_background 0x0041a788 : { *ai-startup-menuwidget.o(.rodata.gameSettingSelectionBackground) }
+    .widget_game_setting_ok_button 0x0041a738 : { *ai-startup-menuwidget.o(.rodata.gameSettingOkButton) }
+    .widget_game_setting_ok_text 0x0041abec : { *ai-startup-menuwidget.o(.rodata.gameSettingOkText) }
     .widget_help_localization 0x002ed540 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Help18UpdateLocalizationEv) }
     .widget_game_setting_localization 0x002ed574 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSetting18UpdateLocalizationEv) }
     .widget_help_text_path 0x0041abdc : { *ai-startup-menuwidget.o(.rodata.helpTextPath) }
