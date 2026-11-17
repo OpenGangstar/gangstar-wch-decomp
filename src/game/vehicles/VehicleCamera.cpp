@@ -41,6 +41,27 @@ VehicleCamera::VehicleCamera(LevelObject* owner)
     init(owner, 0);
 }
 
+void VehicleCamera::init(LevelObject* owner, int)
+{
+    entered = false;
+    vehicle = static_cast<Vehicle*>(owner);
+    if (vehicle && vehicle->sceneNode) {
+        distance = static_cast<float>(vehicle->cameraSideDistance);
+        previousHeight = owner->GetPosition().Z;
+
+        const irr::core::vector3d<float> front = vehicle->GetFront();
+        vector40 = front * static_cast<float>(vehicle->cameraLookAhead);
+        vector40.Z = static_cast<float>(vehicle->cameraLookHeight);
+        setLookAt(vehicle->GetPosition() + vector40);
+
+        const irr::core::vector3d<float> back = -vehicle->GetFront();
+        vector52 = back * static_cast<float>(vehicle->cameraSideDistance);
+        vector52.Z = static_cast<float>(vehicle->cameraPositionHeight);
+        setPosition(vehicle->GetPosition() + vector52);
+    }
+    previousSpeed = 0.0f;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));
