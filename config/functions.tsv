@@ -10163,9 +10163,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f7509	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject16setNextAnimationEPKcibbb	LevelObject::setNextAnimation(char const*, int, bool, bool, bool)
 0x002f750d	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject16setNextAnimationEiibbb	LevelObject::setNextAnimation(int, int, bool, bool, bool)
 0x002f7511	0x2	LevelObject.cpp	game	world	matched	_ZN11LevelObject7shootedEiPS_	LevelObject::shooted(int, LevelObject*)
-0x002f7515	0x24	Checkpoint.cpp	game	missions	pending	__tcf_1	__tcf_1
+0x002f7515	0x24	Checkpoint.cpp	game	missions	matched	__tcf_1	__tcf_1
 0x002f7539	0x2e	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint11SetPositionERKN3irr4core8vector3dIfEE	Checkpoint::SetPosition(irr::core::vector3d<float> const&)
-0x002f7569	0x98	Checkpoint.cpp	game	missions	pending	_ZN10Checkpoint6enableEv	Checkpoint::enable()
+0x002f7569	0x98	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint6enableEv	Checkpoint::enable()
 0x002f7601	0x3c	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint4LoadERKN7Structs10CheckpointE	Checkpoint::Load(Structs::Checkpoint const&)
 0x002f763d	0x38	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint13grabSceneNodeEiPPPv	Checkpoint::grabSceneNode(int, void***)
 0x002f7675	0x28	Checkpoint.cpp	game	missions	matched	_ZN10CheckpointD0Ev	Checkpoint::~Checkpoint()
@@ -10173,9 +10173,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f769d	0x20	Checkpoint.cpp	game	missions	matched	_ZN10CheckpointD2Ev	Checkpoint::~Checkpoint()
 0x002f76bd	0x34	Checkpoint.cpp	game	missions	matched	_ZN10CheckpointC2Ei	Checkpoint::Checkpoint(int)
 0x002f76bd	0x34	Checkpoint.cpp	game	missions	matched	_ZN10CheckpointC1Ei	Checkpoint::Checkpoint(int)
-0x002f76f1	0xc8	Checkpoint.cpp	game	missions	pending	_ZN10Checkpoint6UpdateEi	Checkpoint::Update(int)
-0x002f77b9	0x50	Checkpoint.cpp	game	missions	pending	_ZN10Checkpoint4hideEv	Checkpoint::hide()
-0x002f7809	0x54	Checkpoint.cpp	game	missions	pending	_ZN10Checkpoint4showEv	Checkpoint::show()
+0x002f76f1	0xc8	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint6UpdateEi	Checkpoint::Update(int)
+0x002f77b9	0x50	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint4hideEv	Checkpoint::hide()
+0x002f7809	0x54	Checkpoint.cpp	game	missions	matched	_ZN10Checkpoint4showEv	Checkpoint::show()
 0x002f785d	0x144	Checkpoint.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002f79a1	0x14	Checkpoint.cpp	game	missions	matched	_GLOBAL__I__ZN10Checkpoint18s_bTutoCallContactE	_GLOBAL__I__ZN10Checkpoint18s_bTutoCallContactE
 0x002f79b5	0x30	Checkpoint.cpp	game	missions	matched	__tcf_3	__tcf_3

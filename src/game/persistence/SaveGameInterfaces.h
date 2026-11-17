@@ -14,7 +14,7 @@
 // They describe accessed offsets only. Do not instantiate these classes or
 // assume these declarations establish their complete layouts or original names.
 class GSLoading { public: static bool isGameLoaded(); };
-class Checkpoint { public: static bool s_bTutoCallContact; };
+#include "../missions/Checkpoint.h"
 
 class GSFailure { public: static bool s_bCutsceneDie, s_bCutsceneBusted, s_bCutsceneMissionFailed; };
 #include "../input/CControlManager.h"

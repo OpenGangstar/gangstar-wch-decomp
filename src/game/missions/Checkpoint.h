@@ -4,6 +4,8 @@
 namespace Structs { struct Checkpoint; }
 class Checkpoint : public Transformation {
 public:
+    static bool s_bTutoCallContact;
+
     Checkpoint(int type);
     virtual ~Checkpoint();
     virtual void Update(int elapsed);
