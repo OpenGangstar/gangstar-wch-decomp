@@ -30,6 +30,7 @@ protected:
     virtual Widgets::Confirm* GetWidget();
 
 private:
+    unsigned char beforeConfirmed[4];
     bool confirmed;
 };
 class ConfirmPayment : public Confirm {
