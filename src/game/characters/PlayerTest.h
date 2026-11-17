@@ -72,7 +72,8 @@ class SavePrimaryInterface {
 public:
     virtual void unknownPrimary();
     virtual void unknownPrimary1(); virtual void unknownPrimary2();
-    virtual void Stop(); virtual void unknownPrimary4();
+    virtual void Stop();
+    virtual void setVehicle(Vehicle* value);
     virtual void unknownPrimary5(); virtual void unknownPrimary6();
     virtual Vehicle* getVehicle() const;
     virtual Weapon* getWeapon() const;
@@ -136,6 +137,7 @@ public:
     void SetSpeed();
     void ResetPlayerTest(bool);
     void setVehicle(Vehicle* value);
+    void finishedStopDriving();
     void Update();
     void UpdateSceneNode();
     bool isFacingTarget();
@@ -161,7 +163,7 @@ public:
     LevelObject* unknown312;
     LevelObject* unknown316;
     Shop* closestShop;
-    unsigned char unknown324[4];
+    int unknown324;
     int attackState;
     unsigned char unknown332[21];
     bool lockRequested;
@@ -170,7 +172,7 @@ public:
     bool combatMode;
     unsigned char unknown357[11];
     LevelObject* unknown368;
-    unsigned char unknown372[4];
+    int unknown372;
     bool vehicleVisibleInCinematic;
     unsigned char unknown377;
     bool movementKeys[4];
