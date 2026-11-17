@@ -7,9 +7,10 @@ public:
     Shop(int type);
     void trigger(bool enabled);
     bool triggered() const;
+    int getId();
     void Load(const Structs::CheckpointShop&);
 private:
-    unsigned char unknown100[4];
+    int shopId;
     bool triggerActive;
     unsigned char unknown105[3];
 };

@@ -23,6 +23,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305e29 | Shop::trigger | lock_init | REVIEW | — | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x003344f5 | FPSCamera::update | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x003339bd | FollowCamera::goBehind | vehicle_side | REVIEW | — | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00305cd5 | Shop::getId | lock_init | REVIEW | — | src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x00305cd5 | Shop::getId | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x003342ad | FPSCamera::zoom (touch list) | camera_tap | REVIEW | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x0033560d | VehicleCamera::updatePosition | — | COMPLETED | 100% | src/game/vehicles/VehicleCamera.cpp |
+| libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | camera_tap | ASSIGNED | — | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | lock_init | ASSIGNED | — | src/game/ui/GSWeaponShopMenu.cpp |
+| libsanangeles.so | 0x00335849 | VehicleCamera::update | vehicle_side | ASSIGNED | — | src/game/vehicles/VehicleCamera.cpp |

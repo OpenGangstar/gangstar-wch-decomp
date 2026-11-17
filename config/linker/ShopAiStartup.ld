@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
     .shop_triggered 0x00305ccc : { *ai-startup-shop.o(.text._ZNK4Shop9triggeredEv) }
+    .shop_get_id 0x00305cd4 : { *ai-startup-shop.o(.text._ZN4Shop5getIdEv) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-shop.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x00305d18 : { *ai-startup-shop.o(.text.__tcf_0) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-shop.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }

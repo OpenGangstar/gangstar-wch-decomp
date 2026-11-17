@@ -10474,7 +10474,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305ca5	0x20	Shop.cpp	game	ui	pending	_ZN4Shop24resetAchievementCountersEv	Shop::resetAchievementCounters()
 0x00305cc5	0x8	Shop.cpp	game	ui	pending	_ZNK4Shop8unlockedEv	Shop::unlocked() const
 0x00305ccd	0x6	Shop.cpp	game	ui	matched	_ZNK4Shop9triggeredEv	Shop::triggered() const
-0x00305cd5	0x4	Shop.cpp	game	ui	pending	_ZN4Shop5getIdEv	Shop::getId()
+0x00305cd5	0x4	Shop.cpp	game	ui	matched	_ZN4Shop5getIdEv	Shop::getId()
 0x00305cd9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI16GSWeaponShopMenuEEPT_v	GSWeaponShopMenu* StateMachine::pushState<GSWeaponShopMenu>()
 0x00305cf9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI15GSCarRepairMenuEEPT_v	GSCarRepairMenu* StateMachine::pushState<GSCarRepairMenu>()
 0x00305d19	0x1c	Shop.cpp	game	ui	matched	__tcf_3	__tcf_3
