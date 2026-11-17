@@ -64,6 +64,8 @@ class FPSCamera : public Camera {
 public:
     FPSCamera();
     ~FPSCamera();
+    void incVerticalAngle(float delta);
+    void zoom(int degrees);
     virtual void init(LevelObject* owner, int mode);
     virtual void update(float elapsed);
     virtual void enter();
@@ -71,7 +73,7 @@ public:
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
     unsigned char unknown28[4];
-    float value32;
+    float verticalAngle;
     int value36;
     int value40;
     int value44;

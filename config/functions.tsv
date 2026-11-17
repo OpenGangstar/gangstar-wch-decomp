@@ -11743,11 +11743,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00333975	0x48	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraC1EP9Character	FollowCamera::FollowCamera(Character*)
 0x003339bd	0xf4	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera8goBehindEP11LevelObject	FollowCamera::goBehind(LevelObject*)
 0x00333ab1	0x308	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera6updateEf	FollowCamera::update(float)
-0x00333db9	0x54	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera16incVerticalAngleEf	FPSCamera::incVerticalAngle(float)
+0x00333db9	0x54	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera16incVerticalAngleEf	FPSCamera::incVerticalAngle(float)
 0x00333e0d	0x2	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE	FPSCamera::debug(irr::video::IVideoDriver*)
 0x00333e11	0x30	FPSCamera.cpp	game	core	matched	__tcf_3	__tcf_3
 0x00333e41	0x118	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE	FPSCamera::scroll(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
-0x00333f59	0x16	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4zoomEi	FPSCamera::zoom(int)
+0x00333f59	0x16	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera4zoomEi	FPSCamera::zoom(int)
 0x00333f71	0x5c	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera5enterEv	FPSCamera::enter()
 0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD1Ev	FPSCamera::~FPSCamera()
 0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD2Ev	FPSCamera::~FPSCamera()
