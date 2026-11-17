@@ -11,6 +11,12 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "SceneCamera.h"
+
+SceneCamera::SceneCamera(int type) : Camera(), Transformation(type), vector112()
+{
+    SceneCamera::init(0, 0);
+}
 
 void operator delete(void*) throw();
 extern "C" {

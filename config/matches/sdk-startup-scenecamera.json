@@ -25,6 +25,8 @@
     "source": "src/game/core/SceneCamera.cpp",
     "linker_script": "config/linker/SceneCameraSdkStartup.ld",
     "functions": [
+        "_ZN11SceneCameraC1Ei",
+        "_ZN11SceneCameraC2Ei",
         {
             "name": "__tcf_2",
             "address": "0x003350c9"
@@ -48,5 +50,10 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN6CameraC1Ev",
+        "_ZN14TransformationC1Ei",
+        "_ZN11SceneCamera4initEP11LevelObjecti"
+    ]
 }
