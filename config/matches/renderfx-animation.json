@@ -28,6 +28,9 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN6MenuFXD0Ev",
+        "_ZN6MenuFXD1Ev",
+        "_ZN6MenuFXD2Ev",
         "_ZN6MenuFXC1Ev",
         "_ZN6MenuFXC2Ev",
         "_ZN8RenderFX4FindEPKc",
@@ -122,6 +125,7 @@
         "_ZN8RenderFX8PlayAnimEPKcS1_i"
     ],
     "sections": [
+        ".menufx_vtable",
         ".renderfx_event_listener_vtable",
         ".activate_animation",
         ".focus_out_animation",
@@ -131,6 +135,8 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_ZN8RenderFXD1Ev",
+        "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",
         "_ZN8RenderFX6UpdateEib",
