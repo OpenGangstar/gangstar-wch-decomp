@@ -11729,11 +11729,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00332cf5	0x2a0	CameraManager.cpp	game	core	pending	_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb	CameraManager::getClickedTarget(irr::core::line3d<float>, bool) const
 0x00332f95	0x100	CameraManager.cpp	game	core	pending	_ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE	CameraManager::tappedTarget(irr::core::position2d<int> const&, irr::core::vector3d<float> const&) const
 0x00333095	0x184	CameraManager.cpp	game	core	pending	_ZN13CameraManager19processTouchReleaseEv	CameraManager::processTouchRelease()
-0x00333219	0x2	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE	FollowCamera::debug(irr::video::IVideoDriver*)
+0x00333219	0x2	FollowCamera.cpp	game	core	matched	_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE	FollowCamera::debug(irr::video::IVideoDriver*)
 0x0033321d	0x74	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera12updateAnglesEii	FollowCamera::updateAngles(int, int)
 0x00333291	0x30	FollowCamera.cpp	game	core	matched	__tcf_3	__tcf_3
-0x003332c1	0x38	FollowCamera.cpp	game	core	pending	_ZN12FollowCameraD1Ev	FollowCamera::~FollowCamera()
-0x003332c1	0x38	FollowCamera.cpp	game	core	pending	_ZN12FollowCameraD2Ev	FollowCamera::~FollowCamera()
+0x003332c1	0x38	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraD1Ev	FollowCamera::~FollowCamera()
+0x003332c1	0x38	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraD2Ev	FollowCamera::~FollowCamera()
 0x003332f9	0x144	FollowCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033343d	0x14	FollowCamera.cpp	game	core	matched	_GLOBAL__I__ZN12FollowCameraC2EP9Character	_GLOBAL__I__ZN12FollowCameraC2EP9Character
 0x00333451	0x25c	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FollowCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
@@ -11744,13 +11744,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003339bd	0xf4	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera8goBehindEP11LevelObject	FollowCamera::goBehind(LevelObject*)
 0x00333ab1	0x308	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera6updateEf	FollowCamera::update(float)
 0x00333db9	0x54	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera16incVerticalAngleEf	FPSCamera::incVerticalAngle(float)
-0x00333e0d	0x2	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE	FPSCamera::debug(irr::video::IVideoDriver*)
+0x00333e0d	0x2	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE	FPSCamera::debug(irr::video::IVideoDriver*)
 0x00333e11	0x30	FPSCamera.cpp	game	core	matched	__tcf_3	__tcf_3
 0x00333e41	0x118	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE	FPSCamera::scroll(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
 0x00333f59	0x16	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4zoomEi	FPSCamera::zoom(int)
 0x00333f71	0x5c	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera5enterEv	FPSCamera::enter()
-0x00333fcd	0x20	FPSCamera.cpp	game	core	pending	_ZN9FPSCameraD1Ev	FPSCamera::~FPSCamera()
-0x00333fcd	0x20	FPSCamera.cpp	game	core	pending	_ZN9FPSCameraD2Ev	FPSCamera::~FPSCamera()
+0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD1Ev	FPSCamera::~FPSCamera()
+0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD2Ev	FPSCamera::~FPSCamera()
 0x00333fed	0xd4	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4initEP11LevelObjecti	FPSCamera::init(LevelObject*, int)
 0x003340c1	0x40	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4exitEv	FPSCamera::exit()
 0x00334101	0x54	FPSCamera.cpp	game	core	pending	_ZN9FPSCameraC2Ev	FPSCamera::FPSCamera()
@@ -11799,12 +11799,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00335049	0x6c	SceneCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003350b5	0x14	SceneCamera.cpp	game	core	matched	_GLOBAL__I__ZN11SceneCameraC2Ei	_GLOBAL__I__ZN11SceneCameraC2Ei
 0x003350c9	0x30	SceneCamera.cpp	game	core	matched	__tcf_2	__tcf_2
-0x003350f9	0x2	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE	VehicleCamera::debug(irr::video::IVideoDriver*)
+0x003350f9	0x2	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE	VehicleCamera::debug(irr::video::IVideoDriver*)
 0x003350fd	0x74	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera12updateAnglesEii	VehicleCamera::updateAngles(int, int)
 0x00335171	0x30	VehicleCamera.cpp	game	vehicles	matched	__tcf_3	__tcf_3
 0x003351a1	0x1c	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera5enterEv	VehicleCamera::enter()
-0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCameraD2Ev	VehicleCamera::~VehicleCamera()
-0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCameraD1Ev	VehicleCamera::~VehicleCamera()
+0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraD2Ev	VehicleCamera::~VehicleCamera()
+0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraD1Ev	VehicleCamera::~VehicleCamera()
 0x003351dd	0x130	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera8goToSideEb	VehicleCamera::goToSide(bool)
 0x0033530d	0x160	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera4initEP11LevelObjecti	VehicleCamera::init(LevelObject*, int)
 0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCameraC2EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)

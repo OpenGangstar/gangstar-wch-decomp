@@ -1,6 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-vehiclecamera/retail-symbols.ld
+INCLUDE config/linker/CameraSections.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZN32retail_vehiclecamera_transitions16civPassive_transE = 0x0042a144;
@@ -15,6 +16,8 @@ _ZN32retail_vehiclecamera_transitions11guard_transE = 0x0042a618;
 _ZN32retail_vehiclecamera_transitions22scripted_vehicle_transE = 0x0042a6c0;
 SECTIONS
 {
+    .camera_variant_debug 0x003350f8 : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE) }
+    .camera_variant_dtor 0x003351bc : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCameraD1Ev .text._ZN13VehicleCameraD2Ev) }
     .ai_startup_function_0 0x00335170 : { *ai-startup-vehiclecamera.o(.text.__tcf_3) }
     .ai_startup_function_1 0x003354b4 : { *ai-startup-vehiclecamera.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x003355f8 : { *ai-startup-vehiclecamera.o(.text._GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject) }
