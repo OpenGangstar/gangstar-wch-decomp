@@ -375,12 +375,18 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00337359 | MissionConditionDriveWell destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
 | libsanangeles.so | 0x00345f5d | AmbulanceSideMission::getObj2Message | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
 | libsanangeles.so | 0x003465dd | DeliverySideMission::getObj2Message | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
-| libsanangeles.so | 0x00336e11 | MissionConditionDriveWell::evaluate | lock_init | REVIEW | — | src/game/missions/MissionConditionDriveWell.cpp |
-| libsanangeles.so | 0x00347e59 | TaxiSideMission::end | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347e5d | TaxiSideMission::getMoneyReward | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347e65 | TaxiSideMission::getGoalMessage | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347e6d | TaxiSideMission::getStartMessage | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347e75 | TaxiSideMission::getEndMessage | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347e7d | TaxiSideMission::getObj1Message | camera_tap | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00347e85 | TaxiSideMission::getObj2Message | vehicle_side | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |
-| libsanangeles.so | 0x00346b89 | SideMission::getTimer | lock_init | ASSIGNED | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00336e11 | MissionConditionDriveWell::evaluate | — | COMPLETED | 100% | src/game/missions/MissionConditionDriveWell.cpp |
+| libsanangeles.so | 0x00347e59 | TaxiSideMission::end | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e5d | TaxiSideMission::getMoneyReward | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e65 | TaxiSideMission::getGoalMessage | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e6d | TaxiSideMission::getStartMessage | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e75 | TaxiSideMission::getEndMessage | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e7d | TaxiSideMission::getObj1Message | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347e85 | TaxiSideMission::getObj2Message | — | COMPLETED | 100% | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346b89 | SideMission::getTimer | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00347ebd | TaxiSideMission::clean | camera_tap | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00347ee9 | TaxiSideMission::TaxiSideMission (C1/C2 aliases) | vehicle_side | REVIEW | — | src/game/vehicles/TaxiSideMission.cpp |
+| libsanangeles.so | 0x00346ba1 | SideMission::getReward | lock_init | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003470d1 | SideMission::updateTimer | lock_init | ASSIGNED | — | src/game/missions/SideMission.cpp.cpp |
+| libsanangeles.so | 0x00347f11 | TaxiSideMission::dropOff | camera_tap | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp.cpp |
+| libsanangeles.so | 0x00347e41 | TaxiSideMission destructor (D1/D2 aliases) | vehicle_side | ASSIGNED | — | src/game/vehicles/TaxiSideMission.cpp |

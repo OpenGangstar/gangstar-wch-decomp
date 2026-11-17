@@ -3,7 +3,7 @@
 
 #include "../core/Vector3.h"
 
-// Recovered virtual interface. The member layout remains pending.
+// Recovered virtual interface and timer field. The remaining storage is opaque.
 class SideMission {
 public:
     virtual void begin(irr::core::vector3d<float>, int, int&, float&) = 0;
@@ -17,6 +17,12 @@ public:
     virtual int getEndMessage() = 0;
     virtual int getObj1Message() = 0;
     virtual int getObj2Message() = 0;
+    int getTimer();
+
+private:
+    unsigned char unknown4[8];
+    int timer;
+    unsigned char unknown16[12];
 };
 
 #endif

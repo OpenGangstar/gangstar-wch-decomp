@@ -18,6 +18,7 @@ public:
 
 // The secondary marker interface starts at offset 52 in the 1012-byte extent.
 class Vehicle : public LevelObject, public VehicleMarkerInterface {
+    friend class MissionConditionDriveWell;
 public:
     void explode();
     bool hasExplosionFlag() const { return explosionFlag != 0; }
@@ -271,7 +272,7 @@ private:
     bool unknown508;
     bool unknown509;
     unsigned char unknown510;
-    bool unknown511;
+    unsigned char unknown511;
     irr::core::vector3d<float> wheelPositions[4];
     unsigned char unknown560[60];
     irr::core::vector3d<float> bodyOffset;

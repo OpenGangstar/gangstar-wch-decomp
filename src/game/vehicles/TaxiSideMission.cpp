@@ -9,6 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../missions/SideMission.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/AIManagerSingleton.h"
@@ -78,4 +79,53 @@ static void _GLOBAL__I__ZN15TaxiSideMissionC2Ev()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+class TaxiSideMission : public SideMission {
+public:
+    virtual void begin(irr::core::vector3d<float>, int, int&, float&);
+    virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
+    virtual bool dropOff(irr::core::vector3d<float>);
+    virtual void end();
+    virtual void clean();
+    virtual int getMoneyReward();
+    virtual int getGoalMessage();
+    virtual int getStartMessage();
+    virtual int getEndMessage();
+    virtual int getObj1Message();
+    virtual int getObj2Message();
+};
+
+void TaxiSideMission::end()
+{
+}
+
+int TaxiSideMission::getMoneyReward()
+{
+    return 3000;
+}
+
+int TaxiSideMission::getGoalMessage()
+{
+    return 0x30e9;
+}
+
+int TaxiSideMission::getStartMessage()
+{
+    return 0x30e8;
+}
+
+int TaxiSideMission::getEndMessage()
+{
+    return 0x30f5;
+}
+
+int TaxiSideMission::getObj1Message()
+{
+    return 0x30ea;
+}
+
+int TaxiSideMission::getObj2Message()
+{
+    return 0x30eb;
 }

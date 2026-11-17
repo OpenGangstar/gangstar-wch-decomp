@@ -17,6 +17,13 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .taxi_end 0x00347e58 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission3endEv) }
+    .taxi_getMoneyReward 0x00347e5c : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission14getMoneyRewardEv) }
+    .taxi_getGoalMessage 0x00347e64 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission14getGoalMessageEv) }
+    .taxi_getStartMessage 0x00347e6c : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission15getStartMessageEv) }
+    .taxi_getEndMessage 0x00347e74 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission13getEndMessageEv) }
+    .taxi_getObj1Message 0x00347e7c : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission14getObj1MessageEv) }
+    .taxi_getObj2Message 0x00347e84 : { *ai-startup-taxisidemission.o(.text._ZN15TaxiSideMission14getObj2MessageEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-taxisidemission.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x00347ecc : { *ai-startup-taxisidemission.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-taxisidemission.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

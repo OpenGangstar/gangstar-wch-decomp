@@ -25,6 +25,7 @@
     "source": "src/game/missions/SideMission.cpp",
     "linker_script": "config/linker/SideMissionAiStartup.ld",
     "functions": [
+        "_ZN11SideMission8getTimerEv",
         {
             "name": "__tcf_5",
             "address": "0x00346c75"

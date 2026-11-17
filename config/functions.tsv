@@ -11865,7 +11865,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00336dc1	0x2	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWell4drawEv	MissionConditionDriveWell::draw()
 0x00336dc5	0x30	MissionConditionDriveWell.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00336df5	0x1c	MissionConditionDriveWell.cpp	game	missions	matched	__tcf_0	__tcf_0
-0x00336e11	0x33c	MissionConditionDriveWell.cpp	game	missions	pending	_ZN25MissionConditionDriveWell8evaluateEi	MissionConditionDriveWell::evaluate(int)
+0x00336e11	0x33c	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWell8evaluateEi	MissionConditionDriveWell::evaluate(int)
 0x00337151	0x68	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellC2EP7Vehicle	MissionConditionDriveWell::MissionConditionDriveWell(Vehicle*)
 0x00337151	0x68	MissionConditionDriveWell.cpp	game	missions	matched	_ZN25MissionConditionDriveWellC1EP7Vehicle	MissionConditionDriveWell::MissionConditionDriveWell(Vehicle*)
 0x003371b9	0x144	MissionConditionDriveWell.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -12455,7 +12455,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00346b09	0x54	SideMission.cpp	game	missions	pending	_ZN11SideMission8getRangeERfS0_iiiii	SideMission::getRange(float&, float&, int, int, int, int, int)
 0x00346b5d	0x20	SideMission.cpp	game	missions	pending	_ZN11SideMission4initEv	SideMission::init()
 0x00346b7d	0xc	SideMission.cpp	game	missions	pending	_ZN11SideMission10inProgressEv	SideMission::inProgress()
-0x00346b89	0x4	SideMission.cpp	game	missions	pending	_ZN11SideMission8getTimerEv	SideMission::getTimer()
+0x00346b89	0x4	SideMission.cpp	game	missions	matched	_ZN11SideMission8getTimerEv	SideMission::getTimer()
 0x00346b8d	0x12	SideMission.cpp	game	missions	pending	_ZN11SideMission8finishedEv	SideMission::finished()
 0x00346ba1	0xe	SideMission.cpp	game	missions	pending	_ZN11SideMission9getRewardEv	SideMission::getReward()
 0x00346bb1	0x78	SideMission.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP10CheckpointNS0_12irrAllocatorIS3_EEE10reallocateEj	irr::core::array<Checkpoint*, irr::core::irrAllocator<Checkpoint*> >::reallocate(unsigned int)
@@ -12504,13 +12504,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00347e2d	0x14	SideMissionManager.cpp	game	missions	matched	_GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE	_GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE
 0x00347e41	0x18	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMissionD2Ev	TaxiSideMission::~TaxiSideMission()
 0x00347e41	0x18	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMissionD1Ev	TaxiSideMission::~TaxiSideMission()
-0x00347e59	0x2	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission3endEv	TaxiSideMission::end()
-0x00347e5d	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission14getMoneyRewardEv	TaxiSideMission::getMoneyReward()
-0x00347e65	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission14getGoalMessageEv	TaxiSideMission::getGoalMessage()
-0x00347e6d	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission15getStartMessageEv	TaxiSideMission::getStartMessage()
-0x00347e75	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission13getEndMessageEv	TaxiSideMission::getEndMessage()
-0x00347e7d	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission14getObj1MessageEv	TaxiSideMission::getObj1Message()
-0x00347e85	0x8	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission14getObj2MessageEv	TaxiSideMission::getObj2Message()
+0x00347e59	0x2	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission3endEv	TaxiSideMission::end()
+0x00347e5d	0x8	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission14getMoneyRewardEv	TaxiSideMission::getMoneyReward()
+0x00347e65	0x8	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission14getGoalMessageEv	TaxiSideMission::getGoalMessage()
+0x00347e6d	0x8	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission15getStartMessageEv	TaxiSideMission::getStartMessage()
+0x00347e75	0x8	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission13getEndMessageEv	TaxiSideMission::getEndMessage()
+0x00347e7d	0x8	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission14getObj1MessageEv	TaxiSideMission::getObj1Message()
+0x00347e85	0x8	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMission14getObj2MessageEv	TaxiSideMission::getObj2Message()
 0x00347e8d	0x30	TaxiSideMission.cpp	game	vehicles	matched	__tcf_4	__tcf_4
 0x00347ebd	0x10	TaxiSideMission.cpp	game	vehicles	pending	_ZN15TaxiSideMission5cleanEv	TaxiSideMission::clean()
 0x00347ecd	0x1c	TaxiSideMission.cpp	game	vehicles	matched	__tcf_3	__tcf_3
