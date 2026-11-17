@@ -1,5 +1,17 @@
 SECTIONS
 {
+    .widget_help_ctor 0x002ec608 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4HelpC1Ev .text._ZN7Widgets4HelpC2Ev) }
+    .widget_help_name 0x0041a870 : { *ai-startup-menuwidget.o(.rodata.widgetHelpName) }
+    .widget_game_setting_ctor 0x002ec63c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11GameSettingC1Ev .text._ZN7Widgets11GameSettingC2Ev) }
+    .widget_game_setting_name 0x0041a87c : { *ai-startup-menuwidget.o(.rodata.widgetGameSettingName) }
+    .widget_language_ctor 0x002ec670 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8LanguageC1Ev .text._ZN7Widgets8LanguageC2Ev) }
+    .widget_language_name 0x0041a890 : { *ai-startup-menuwidget.o(.rodata.widgetLanguageName) }
+    .widget_corruption_ctor 0x002ec6a0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10CorruptionC1Ev .text._ZN7Widgets10CorruptionC2Ev) }
+    .widget_corruption_name 0x0041a8a0 : { *ai-startup-menuwidget.o(.rodata.widgetCorruptionName) }
+    .widget_controls_ctor 0x002ec6d0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8ControlsC1Ev .text._ZN7Widgets8ControlsC2Ev) }
+    .widget_controls_name 0x0041a8b4 : { *ai-startup-menuwidget.o(.rodata.widgetControlsName) }
+    .widget_volumes_ctor 0x002ec704 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7VolumesC1Ev .text._ZN7Widgets7VolumesC2Ev) }
+    .widget_volumes_name 0x0041a8c4 : { *ai-startup-menuwidget.o(.rodata.widgetVolumesName) }
     .widget_ig_pressed 0x002ebe94 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets6IGMenu20GetLastPressedButtonEv) }
     .widget_black_box_ctor 0x002ec908 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8BlackBoxC1Ev .text._ZN7Widgets8BlackBoxC2Ev) }
     .widget_black_box_set_state 0x002ecd0c : { *ai-startup-menuwidget.o(.text._ZN7Widgets8BlackBox8SetStateENS0_6eStateE) }
