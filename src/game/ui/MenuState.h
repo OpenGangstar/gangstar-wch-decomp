@@ -13,6 +13,7 @@ public:
     virtual void Unload();
     void SwitchMenu(const char* name);
     void PushMenu(const char* name);
+    void SetFocusDefault();
     void PopAll();
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);

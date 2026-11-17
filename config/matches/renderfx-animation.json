@@ -28,6 +28,8 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN6MenuFX15SetFocusDefaultEv",
+        "_ZN8RenderFX10ResetFocusEi",
         "_ZN6MenuFX8GetStateEPKc",
         "_ZN6MenuFX13RegisterStateEPNS_5StateEPKc",
         "_ZN6MenuFX14RegisterStatesEPPNS_5StateEi",

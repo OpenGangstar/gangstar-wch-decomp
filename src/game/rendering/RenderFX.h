@@ -137,6 +137,7 @@ public:
     void SetText(gameswf::character* character, const char* text, bool option);
     void FormatText(const char* characterName, const char* format, ...);
     void FormatText(gameswf::character* character, const char* format, ...);
+    void ResetFocus(int flags);
     void SetFocus(gameswf::character* character, int flags);
     void SetFocus(const char* characterName, int flags);
 
