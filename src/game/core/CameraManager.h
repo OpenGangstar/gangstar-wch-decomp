@@ -65,7 +65,7 @@ private:
     void updateUpVector(float angle);
     static CameraManager* s_cm;
 
-    void* touch;
+    unsigned int touch;
     irr::scene::ICameraSceneNode* cameraNode;
     LevelObject* target;
     int mode;

@@ -11725,7 +11725,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00332619	0x144	CameraManager.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033275d	0x14	CameraManager.cpp	game	core	matched	_GLOBAL__I__ZN13CameraManager4s_cmE	_GLOBAL__I__ZN13CameraManager4s_cmE
 0x00332771	0x47c	CameraManager.cpp	game	core	pending	_ZN13CameraManager6updateEf	CameraManager::update(float)
-0x00332bf1	0x104	CameraManager.cpp	game	core	pending	_ZN13CameraManager12processTouchEl	CameraManager::processTouch(long)
+0x00332bf1	0x104	CameraManager.cpp	game	core	matched	_ZN13CameraManager12processTouchEl	CameraManager::processTouch(long)
 0x00332cf5	0x2a0	CameraManager.cpp	game	core	pending	_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb	CameraManager::getClickedTarget(irr::core::line3d<float>, bool) const
 0x00332f95	0x100	CameraManager.cpp	game	core	pending	_ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE	CameraManager::tappedTarget(irr::core::position2d<int> const&, irr::core::vector3d<float> const&) const
 0x00333095	0x184	CameraManager.cpp	game	core	pending	_ZN13CameraManager19processTouchReleaseEv	CameraManager::processTouchRelease()

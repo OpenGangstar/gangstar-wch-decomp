@@ -19,6 +19,9 @@
 #include "../app/Application.h"
 #include "../characters/Character.h"
 #include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+#include "../scripting/ScriptManager.h"
 
 CameraManager* CameraManager::s_cm;
 
@@ -233,6 +236,40 @@ CameraManager::CameraManager(float nearDistance, float farDistance, float fov, L
     fpsCamera = new FPSCamera;
     currentCamera = followCamera;
     app->GetHudManager()->cameraManager = this;
+}
+
+void CameraManager::processTouch(long id)
+{
+    if (!touchScreenInputs || mode == 4 || MenuManager::getInstance()->consumedCursors() ||
+        ScriptManager::getInstance()->isInCinematic())
+        return;
+
+    TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+    const unsigned int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    if (!touch)
+        touch = now;
+
+    if (id != -1) {
+        const Point2D<short> displacement = screen->getTouchDisplacement(id);
+        const short horizontal = displacement.x;
+        const short vertical = displacement.y;
+        if (!flag154) {
+            flag154 = true;
+            value164 = 0;
+            value168 = 0;
+        }
+        value164 += horizontal < 0 ? -horizontal : horizontal;
+        value168 += vertical < 0 ? -vertical : vertical;
+        if (currentCamera == followCamera)
+            followCamera->updateAngles(2 * horizontal, vertical);
+        if (currentCamera == vehicleCamera)
+            vehicleCamera->updateAngles(horizontal, vertical);
+    }
+    if (const Point2D<short>* point = screen->getTouchPoint(id)) {
+        touchX = point->x;
+        touchY = point->y;
+    }
+    used = true;
 }
 
 CameraManager* CameraManager::getInstance()

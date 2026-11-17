@@ -26,6 +26,11 @@ _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
+    .manager_process_touch 0x00332bf0 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager12processTouchEl) }
+    .manager_vtable 0x004acc78 : { *ai-startup-cameramanager.o(.data.rel.ro._ZTV13CameraManager) }
+    .touch_point_d0 0x00326374 : { *ai-startup-cameramanager.o(.gnu.linkonce.t._ZN7Point2DIsED0Ev) }
+    .touch_point_d1 0x00326394 : { *ai-startup-cameramanager.o(.gnu.linkonce.t._ZN7Point2DIsED1Ev) }
+    .touch_point_vtable 0x004abf88 : { *ai-startup-cameramanager.o(.gnu.linkonce.d.rel.ro._ZTV7Point2DIsE) }
     .manager_up_vector 0x00332080 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager14updateUpVectorEf) }
     .manager_go_to_side 0x00332144 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager8goToSideEb) }
     .manager_go_behind 0x00332200 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager8goBehindEP11LevelObject) }
