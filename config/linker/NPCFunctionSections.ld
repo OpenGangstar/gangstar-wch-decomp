@@ -1,0 +1,59 @@
+SECTIONS
+{
+    .npc_lifecycle_002fdb79 0x002fdb78 : { *ai-startup-npc.o(.text._ZN3NPCD2Ev .text._ZN3NPCD1Ev) }
+    .npc_lifecycle_002fdb29 0x002fdb28 : { *ai-startup-npc.o(.text._ZN3NPCD0Ev) }
+    .npc_lifecycle_002fd611 0x002fd610 : { *ai-startup-npc.o(.text.__tcf_1) }
+    .npc_lifecycle_002fee69 0x002fee68 : { *ai-startup-npc.o(.text._ZN3NPC9OnDespawnEv) }
+    .npc_lifecycle_002fec29 0x002fec28 : { *ai-startup-npc.o(.text._ZN3NPC7disableEv) }
+    .npc_lifecycle_002fe3c9 0x002fe3c8 : { *ai-startup-npc.o(.text._ZN3NPCC2Ei .text._ZN3NPCC1Ei) }
+    .npc_lifecycle_002fe169 0x002fe168 : { *ai-startup-npc.o(.text._ZN3NPC11goToVehicleEP7Vehiclebbbb) }
+    .npc_lifecycle_002fdcfd 0x002fdcfc : { *ai-startup-npc.o(.text._ZN3NPC4LoadERKN7Structs3NPCE) }
+    .npc_event_0 0x002febc8 : { *ai-startup-npc.o(.text._ZN3NPC12clearOnAlertEv) }
+    .npc_event_1 0x002fef74 : { *ai-startup-npc.o(.text._ZN3NPC11setHitByCarEb) }
+    .npc_additional_0 0x002fd660 : { *ai-startup-npc.o(.text._ZN3NPC10tagForKillEb) }
+    .npc_additional_1 0x002fd994 : { *ai-startup-npc.o(.text._ZN3NPC10switchAnimEv) }
+    .npc_additional_2 0x002fdaac : { *ai-startup-npc.o(.text._ZN3NPC4initEv) }
+    .npc_vtable 0x004aad80 : { *ai-startup-npc.o(.data.rel.ro._ZTV3NPC) }
+    .npcAnimationRootName 0x0041d8d0 : { *ai-startup-npc.o(.rodata.npcAnimationRootName) }
+    .npcLeftWeaponNodeName 0x0041d8dc : { *ai-startup-npc.o(.rodata.npcLeftWeaponNodeName) }
+    .npcRightWeaponNodeName 0x0041d8ec : { *ai-startup-npc.o(.rodata.npcRightWeaponNodeName) }
+    .npc_function_0 0x002fd49c : { *ai-startup-npc.o(.text._ZN3NPC16clearGoToVehicleEv) }
+    .npc_function_1 0x002fd6c0 : { *ai-startup-npc.o(.text._ZN3NPC7_arrestEv) }
+    .npc_function_2 0x002fd70c : { *ai-startup-npc.o(.text._ZNK3NPC11GetPositionEv) }
+    .npc_function_3 0x002fd734 : { *ai-startup-npc.o(.text._ZN3NPC4waitEi) }
+    .npc_function_4 0x002fd800 : { *ai-startup-npc.o(.text._ZN3NPC15UpdateSceneNodeEv) }
+    .npc_function_5 0x002fd820 : { *ai-startup-npc.o(.text._ZN3NPC4StopEv) }
+    .npc_function_6 0x002fd868 : { *ai-startup-npc.o(.text._ZN3NPC5cleanEv) }
+    .npc_function_7 0x002fd8bc : { *ai-startup-npc.o(.text._ZN3NPC14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv) }
+    .npc_function_8 0x002fd948 : { *ai-startup-npc.o(.text._ZN3NPC13grabSceneNodeEiPPPv) }
+    .npc_function_9 0x002fda10 : { *ai-startup-npc.o(.text._ZN3NPC9SetWeaponEi) }
+    .npc_function_10 0x002fda84 : { *ai-startup-npc.o(.text._ZN3NPC6enableEv) }
+    .npc_function_11 0x002fdbc4 : { *ai-startup-npc.o(.text._ZN3NPC13dropSceneNodeEv) }
+    .npc_function_12 0x002fe394 : { *ai-startup-npc.o(.text._ZN3NPC6WarmUpEv) }
+    .npc_function_13 0x002fea78 : { *ai-startup-npc.o(.text._ZN3NPC4fleeERKN3irr4core8vector3dIfEE) }
+    .npc_function_14 0x002feb48 : { *ai-startup-npc.o(.text._ZN3NPC4fleeEv) }
+    .npc_function_15 0x002fed44 : { *ai-startup-npc.o(.text._ZN3NPC14notifyAttackedEP11LevelObject) }
+    .npc_function_16 0x002fed90 : { *ai-startup-npc.o(.text._ZN3NPC11applyDamageEiP11LevelObjectb) }
+    .npc_acquire_target 0x002fd838 : { *ai-startup-npc.o(.text._ZN3NPC13acquireTargetEv) }
+    .npc_attack_target_object 0x002fe338 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEP11LevelObject) }
+    .npc_attach_weapon 0x002fd4bc : { *ai-startup-npc.o(.text._ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_) }
+    .npc_equip_weapon 0x002fe268 : { *ai-startup-npc.o(.text._ZN3NPC11equipWeaponEbb) }
+    .npc_die 0x002ff01c : { *ai-startup-npc.o(.text._ZN3NPC3dieEb) }
+    .npc_is_cop 0x002fd634 : { *ai-startup-npc.o(.text._ZN3NPC5isCopEv) }
+    .npc_get_weapon 0x002fd440 : { *ai-startup-npc.o(.text._ZNK3NPC9getWeaponEv) }
+    .npc_photographed 0x002fd448 : { *ai-startup-npc.o(.text._ZN3NPC12photographedEv) }
+    .npc_clear_photographed 0x002fd458 : { *ai-startup-npc.o(.text._ZN3NPC17clearPhotographedEv) }
+    .npc_is_photographed 0x002fd46c : { *ai-startup-npc.o(.text._ZNK3NPC14isPhotographedEv) }
+    .npc_go_to_location 0x002fd478 : { *ai-startup-npc.o(.text._ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE) }
+    .npc_run_to_location 0x002fd788 : { *ai-startup-npc.o(.text._ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE) }
+    .npc_walk_to_location 0x002fd7c4 : { *ai-startup-npc.o(.text._ZN3NPC14walkToLocationERKN3irr4core8vector3dIfEE) }
+    .npc_next_waypoint 0x002fdde8 : { *ai-startup-npc.o(.text._ZN3NPC15getNextWaypointEv) }
+    .npc_next_point 0x002fdff0 : { *ai-startup-npc.o(.text._ZN3NPC12getNextPointERN3irr4core8vector3dIfEE) }
+    .npc_go_next_point 0x002fe084 : { *ai-startup-npc.o(.text._ZN3NPC13goToNextPointEb) }
+    .npc_get_path 0x002fd4f8 : { *ai-startup-npc.o(.text._ZNK3NPC15getPathToFollowEv) }
+    .npc_set_waypoint 0x002fd500 : { *ai-startup-npc.o(.text._ZN3NPC18setCurrentWaypointEi) }
+    .npc_get_waypoint 0x002fd508 : { *ai-startup-npc.o(.text._ZNK3NPC18getCurrentWaypointEv) }
+    .npc_set_loop 0x002fd510 : { *ai-startup-npc.o(.text._ZN3NPC16loopPathToFollowEb) }
+    .npc_set_path 0x002fd538 : { *ai-startup-npc.o(.text._ZN3NPC15setPathToFollowEPK4Path) }
+    .npc_get_loop 0x002fd558 : { *ai-startup-npc.o(.text._ZNK3NPC23isLoopingOnPathToFollowEv) }
+}

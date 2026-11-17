@@ -53,3 +53,68 @@ static void _GLOBAL__I__Z11CustomAllocj()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+extern "C" void nativeFree(void*);
+
+void CustomFree(void* memory) __attribute__((noinline));
+
+void CustomFree(void* memory)
+{
+    if (memory)
+        nativeFree(memory);
+}
+
+void CustomFree(void* buffer);
+
+void SwfFree(void* buffer)
+{
+    CustomFree(buffer);
+}
+
+void CustomFree(void* buffer);
+
+void IrrFree(void* buffer)
+{
+    CustomFree(buffer);
+}
+
+void* CustomAlloc(unsigned int size) __attribute__((noinline));
+
+extern "C" void* nativeMalloc(unsigned int size);
+
+void* CustomAlloc(unsigned int size)
+{
+    if (size)
+        return nativeMalloc(size);
+    return 0;
+}
+
+namespace swf { enum MemHint { DefaultMemHint = 0 }; }
+void* CustomAlloc(unsigned int size);
+void* SwfAlloc(unsigned int size, swf::MemHint, const char*, int)
+{
+    return CustomAlloc(size);
+}
+
+void* CustomAlloc(unsigned int size);
+
+void* SwfAlloc(unsigned int size, swf::MemHint)
+{
+    return CustomAlloc(size);
+}
+
+#include "MemHint.h"
+void* CustomAlloc(unsigned int size);
+void* IrrAlloc(unsigned int size, irr::MemHint)
+{
+    return CustomAlloc(size);
+}
+
+#include "MemHint.h"
+
+void* CustomAlloc(unsigned int size);
+
+void* IrrAlloc(unsigned int size, irr::MemHint, int, const char*, int)
+{
+    return CustomAlloc(size);
+}

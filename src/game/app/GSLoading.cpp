@@ -84,3 +84,111 @@ static void _GLOBAL__I_m_background()
 }
 
 GSLoading::~GSLoading() {}
+
+bool GSLoading::isGameLoaded()
+{
+    return s_bGameLoaded;
+}
+
+bool GSLoading::s_bGameLoaded = false;
+
+void GSLoading::setGameLoaded(bool loaded)
+{
+    s_bGameLoaded = loaded;
+}
+
+#include "../core/ASprite.h"
+#include "../hud/MenuManager.h"
+ASprite* m_background = 0;
+static const char loadingInterruptSpriteName[] = "./interrupt.bsprite";
+void GSLoading::LoadingResumed()
+{
+    m_background = new ASprite(loadingInterruptSpriteName);
+    m_background->unknown33 = false;
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(7), 0x5000, 0);
+}
+
+#include "../core/ASprite.h"
+#include "../hud/MenuManager.h"
+
+extern ASprite* m_background;
+
+void GSLoading::LoadingPaused()
+{
+    delete m_background;
+    m_background = 0;
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(7), static_cast<const char*>(0), 0);
+}
+
+#include "../app/Application.h"
+#include "../core/ASprite.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+
+extern ASprite* m_background;
+static const char loadingSplashSprite[] = "./splash.bsprite";
+
+void GSLoading::ctor(const StateMachine*)
+{
+    Application::GetInstance()->GetTouchScreen()->disable();
+    if (!m_background)
+        m_background = new ASprite(loadingSplashSprite);
+    m_background->unknown33 = false;
+    unknown4 = 0;
+    unknown8 = 0;
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(7), 0x5000, 0);
+}
+
+#include "Application.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+void GSLoading::dtor(const StateMachine*)
+{
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(7), -1, 0);
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(8), static_cast<const char*>(0), 0);
+    s_bGameLoaded = true;
+    Application::GetInstance()->GetTouchScreen()->clear();
+    Application::GetInstance()->GetTouchScreen()->enable();
+}
+
+#include "../app/Application.h"
+#include "../ai/StateMachine.h"
+#include "../core/NativeStdio.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+#include "../rendering/GS3DStuff.h"
+
+template<> GS3DStuff* StateMachine::switchState<GS3DStuff>() __attribute__((weak));
+static const char loadingPercentFormat[] = "%i%%";
+
+void GSLoading::update(StateMachine* machine)
+{
+    if (unknown4 <= 13) {
+        char text[8];
+        sprintf(text, loadingPercentFormat, unknown8);
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(8), text, 0);
+        unknown4 = GS3DStuff::load(unknown4, unknown8);
+        Application::GetInstance()->GetTouchScreen()->clear();
+    } else {
+        ++unknown4;
+    }
+    if (unknown4 == 17)
+        machine->switchState<GS3DStuff>();
+}
+
+#include "../core/ASprite.h"
+#include "../app/Application.h"
+#include "../core/VideoDriver.h"
+#include "../core/SceneNode.h"
+
+extern ASprite* m_background;
+
+void GSLoading::draw(const StateMachine*)
+{
+    Application::GetInstance()->GetDevice()->getVideoDriver()->beginScene2D();
+    m_background->PaintFrame(0, 0, 0, 0);
+    m_background->PaintFrame(1, 0, 0, 0);
+    int frame = static_cast<int>(static_cast<float>(static_cast<int>(unknown8)) / 5.0f + 2.0f);
+    m_background->PaintFrame(frame, 0, 0, 0);
+    Application::GetInstance()->GetDevice()->getVideoDriver()->endScene2D();
+}

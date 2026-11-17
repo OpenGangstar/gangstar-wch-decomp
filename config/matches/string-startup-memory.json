@@ -25,6 +25,14 @@
     "source": "src/game/core/Memory.cpp",
     "linker_script": "config/linker/MemoryStringStartup.ld",
     "functions": [
+        "_Z10CustomFreePv",
+        "_Z7SwfFreePv",
+        "_Z7IrrFreePv",
+        "_Z11CustomAllocj",
+        "_Z8SwfAllocjN3swf7MemHintEPKci",
+        "_Z8SwfAllocjN3swf7MemHintE",
+        "_Z8IrrAllocjN3irr7MemHintE",
+        "_Z8IrrAllocjN3irr7MemHintEiPKci",
         {
             "name": "__tcf_0",
             "address": "0x002d3309"

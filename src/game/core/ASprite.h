@@ -65,6 +65,7 @@ public:
     void PaintFrame(int frame, int x, int y, int flags) const;
 
 private:
+    friend class GSLoading;
     friend class Gauge;
     void setClip(int left, int top, int right, int bottom)
     {

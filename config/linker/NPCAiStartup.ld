@@ -20,30 +20,9 @@ memcpy = 0x001c4190;
 __aeabi_fdiv = 0x001c4520;
 INCLUDE config/linker/CharacterStateSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld
+INCLUDE config/linker/NPCFunctionSections.ld
 SECTIONS
 {
-    .npc_acquire_target 0x002fd838 : { *ai-startup-npc.o(.text._ZN3NPC13acquireTargetEv) }
-    .npc_attack_target_object 0x002fe338 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEP11LevelObject) }
-    .npc_attach_weapon 0x002fd4bc : { *ai-startup-npc.o(.text._ZN3NPC18attachWeaponToHandEPN3irr5scene10ISceneNodeES3_) }
-    .npc_equip_weapon 0x002fe268 : { *ai-startup-npc.o(.text._ZN3NPC11equipWeaponEbb) }
-    .npc_die 0x002ff01c : { *ai-startup-npc.o(.text._ZN3NPC3dieEb) }
-    .npc_is_cop 0x002fd634 : { *ai-startup-npc.o(.text._ZN3NPC5isCopEv) }
-    .npc_get_weapon 0x002fd440 : { *ai-startup-npc.o(.text._ZNK3NPC9getWeaponEv) }
-    .npc_photographed 0x002fd448 : { *ai-startup-npc.o(.text._ZN3NPC12photographedEv) }
-    .npc_clear_photographed 0x002fd458 : { *ai-startup-npc.o(.text._ZN3NPC17clearPhotographedEv) }
-    .npc_is_photographed 0x002fd46c : { *ai-startup-npc.o(.text._ZNK3NPC14isPhotographedEv) }
-    .npc_go_to_location 0x002fd478 : { *ai-startup-npc.o(.text._ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE) }
-    .npc_run_to_location 0x002fd788 : { *ai-startup-npc.o(.text._ZN3NPC13runToLocationERKN3irr4core8vector3dIfEE) }
-    .npc_walk_to_location 0x002fd7c4 : { *ai-startup-npc.o(.text._ZN3NPC14walkToLocationERKN3irr4core8vector3dIfEE) }
-    .npc_next_waypoint 0x002fdde8 : { *ai-startup-npc.o(.text._ZN3NPC15getNextWaypointEv) }
-    .npc_next_point 0x002fdff0 : { *ai-startup-npc.o(.text._ZN3NPC12getNextPointERN3irr4core8vector3dIfEE) }
-    .npc_go_next_point 0x002fe084 : { *ai-startup-npc.o(.text._ZN3NPC13goToNextPointEb) }
-    .npc_get_path 0x002fd4f8 : { *ai-startup-npc.o(.text._ZNK3NPC15getPathToFollowEv) }
-    .npc_set_waypoint 0x002fd500 : { *ai-startup-npc.o(.text._ZN3NPC18setCurrentWaypointEi) }
-    .npc_get_waypoint 0x002fd508 : { *ai-startup-npc.o(.text._ZNK3NPC18getCurrentWaypointEv) }
-    .npc_set_loop 0x002fd510 : { *ai-startup-npc.o(.text._ZN3NPC16loopPathToFollowEb) }
-    .npc_set_path 0x002fd538 : { *ai-startup-npc.o(.text._ZN3NPC15setPathToFollowEPK4Path) }
-    .npc_get_loop 0x002fd558 : { *ai-startup-npc.o(.text._ZNK3NPC23isLoopingOnPathToFollowEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002fd6f0 : { *ai-startup-npc.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-npc.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

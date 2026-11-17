@@ -7,6 +7,9 @@
 // Remaining callback bodies and field meanings are provisional.
 class GSLoading : public StateBase {
 public:
+    static bool isGameLoaded();
+    static void LoadingPaused();
+    static void LoadingResumed();
     static void setGameLoaded(bool);
     GSLoading();
     virtual ~GSLoading();
@@ -19,7 +22,9 @@ public:
         return StateBase::isKindOf(kind);
     }
 private:
-    unsigned char unknown4[8];
+    static bool s_bGameLoaded;
+    int unknown4;
+    int unknown8;
 };
 
 #endif

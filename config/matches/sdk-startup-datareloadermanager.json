@@ -25,6 +25,10 @@
     "source": "src/game/world/DataReloaderManager.cpp",
     "linker_script": "config/linker/DataReloaderManagerSdkStartup.ld",
     "functions": [
+        "_ZN19DataReloaderManagerD2Ev",
+        "_ZN19DataReloaderManager15_MonitoredFilesD1Ev",
+        "_ZN19DataReloaderManagerD1Ev",
+        "_ZN19DataReloaderManagerD0Ev",
         "_ZN19DataReloaderManagerC2Ev",
         "_ZNK19DataReloaderManager6_traceEPKc",
         "_ZN19DataReloaderManager12monitorFilesEPKcS1_P13IDataReloader",
@@ -43,6 +47,8 @@
         }
     ],
     "sections": [
+        ".datareloader_nested_destructor",
+        ".datareloader_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",

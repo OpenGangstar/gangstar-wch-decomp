@@ -33,6 +33,7 @@
 #define WCH_META_ACHIEVEMENT_LIST_SUPPORT_H
 
 #include "Achievements.h"
+#include "../core/NativeAllocator.h"
 
 void* operator new(unsigned int);
 extern "C" int puts(const char*);
@@ -44,10 +45,6 @@ template<class T> struct _List_node {
 };
 }
 namespace std {
-template<class T> class allocator {
-public:
-    T* allocate(unsigned int count, const void* hint = 0);
-};
 template<class T> T* allocator<T>::allocate(unsigned int count, const void*)
 {
     if (count > ~0U / sizeof(T)) {

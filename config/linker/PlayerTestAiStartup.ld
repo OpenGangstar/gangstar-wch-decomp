@@ -25,6 +25,7 @@ __aeabi_fdiv = 0x001c4520;
 INCLUDE config/linker/CharacterStateSections.ld
 INCLUDE config/linker/CHudManagerWeaponSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld
+INCLUDE config/linker/NPCFunctionSections.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {

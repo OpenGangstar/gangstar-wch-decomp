@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -25,6 +26,14 @@
     "source": "src/game/app/GSLoading.cpp",
     "linker_script": "config/linker/GSLoadingHooks.ld",
     "functions": [
+        "_ZN9GSLoading6updateEP12StateMachine",
+        "_ZN9GSLoading4drawEPK12StateMachine",
+        "_ZN9GSLoading14LoadingResumedEv",
+        "_ZN9GSLoading13LoadingPausedEv",
+        "_ZN9GSLoading4ctorEPK12StateMachine",
+        "_ZN9GSLoading4dtorEPK12StateMachine",
+        "_ZN9GSLoading12isGameLoadedEv",
+        "_ZN9GSLoading13setGameLoadedEb",
         "_ZN9GSLoadingC1Ev",
         "_ZN9GSLoadingC2Ev",
         "_ZN9StateBase8isKindOfEi",
@@ -55,9 +64,18 @@
         {
             "name": "__tcf_4",
             "address": "0x002e2b41"
+        },
+        "_ZN12StateMachine11getInstanceEv",
+        {
+            "name": "__tcf_2",
+            "address": "0x002d4519",
+            "compiled_name": "__tcf_0"
         }
     ],
     "sections": [
+        ".loading_percent_format",
+        ".loading_interrupt_sprite",
+        ".loading_splash_sprite",
         ".state_ctor",
         {
             "name": ".got",
@@ -84,7 +102,23 @@
         ".local_startup_function_0",
         ".local_startup_function_1",
         ".local_startup_function_2",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".state_instance",
+        ".state_instance_cleanup"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN11MenuManager7setTextENS_5eTextEiPi",
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN15TouchScreenBase6enableEv",
+        "_ZN15TouchScreenBase7disableEv",
+        "_ZN7ASpriteC1EPKc",
+        "_ZN9GS3DStuff4loadEiRi",
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZN12StateMachineC1Ev",
+        "_ZN12StateMachineD1Ev"
+    ]
 }
