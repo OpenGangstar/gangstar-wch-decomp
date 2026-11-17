@@ -149,6 +149,7 @@ private:
     friend class Character;
     friend class PlayerTest;
     friend class CameraManager;
+    friend class VehicleCamera;
     friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
@@ -257,7 +258,11 @@ private:
     int maxHealth;
     int health;
     int unknown924;
-    unsigned char unknown928[24];
+    unsigned char unknown928[8];
+    int cameraSideDistance;
+    int cameraPositionHeight;
+    int cameraLookHeight;
+    int cameraLookAhead;
     irr::scene::ISceneNodeAnimator* explosionAnimator;
     irr::scene::ITimelineController* explosionTimeline;
     unsigned char unknown960[4];

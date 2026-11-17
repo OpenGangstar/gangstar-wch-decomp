@@ -55,10 +55,11 @@ public:
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
     Vehicle* vehicle;
-    unsigned char unknown32[8];
+    float distance;
+    float previousSpeed;
     irr::core::vector3d<float> vector40;
     irr::core::vector3d<float> vector52;
-    unsigned char unknown64[4];
+    float previousHeight;
     float yawRate;
     float pitchRate;
     bool entered;

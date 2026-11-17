@@ -26,6 +26,7 @@
     "linker_script": "config/linker/VehicleCameraAiStartup.ld",
     "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN13VehicleCamera4initEP11LevelObjecti",
         "_ZN13VehicleCamera5enterEv",
         "_ZN13VehicleCameraC1EP11LevelObject",
         "_ZN13VehicleCameraC2EP11LevelObject",
@@ -47,6 +48,7 @@
         }
     ],
     "sections": [
+        ".vehicle_camera_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -57,5 +59,5 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN13VehicleCamera4initEP11LevelObjecti", "_ZN7Vehicle13onCameraEnterEv"]
+    "external_thumb_functions": ["_ZN13VehicleCamera6updateEf", "_ZN7Vehicle13onCameraEnterEv"]
 }
