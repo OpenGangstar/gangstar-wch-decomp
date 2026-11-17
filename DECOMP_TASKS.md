@@ -853,7 +853,25 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00353175 | SoundManager::update | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
-| libsanangeles.so | 0x00353525 | SoundManager constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | pending | src/game/audio/SoundManager.cpp |
-| libsanangeles.so | 0x002d5da5 | EvMouseMove destructor (D1) | lock_init | REVIEW | pending | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d5df5 | EvKeyboard destructor (D1) | camera_tap | ASSIGNED | pending | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d610d | EvMouseMove deleting destructor (D0) | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x00353525 | SoundManager constructor (C1/C2 aliases) | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x002d5da5 | EvMouseMove destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5df5 | EvKeyboard destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d610d | EvMouseMove deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e45 | EvMouseWheel destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5dc9 | EvKeyboard deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e19 | EvMouseWheel deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e95 | EvMouseButton destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e69 | EvMouseButton deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate | lock_init | BLOCKED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | camera_tap | REVIEW | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | vehicle_side | REVIEW | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | camera_tap | BLOCKED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | lock_init | REVIEW | pending | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | camera_tap | REVIEW | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349815 | ASprite::GetModule | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325c79 | CSniperHud::hide | vehicle_side | ASSIGNED | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | lock_init | ASSIGNED | pending | src/game/core/MediaPlayerIPhone.cpp |

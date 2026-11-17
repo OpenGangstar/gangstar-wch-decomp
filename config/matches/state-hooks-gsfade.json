@@ -25,6 +25,14 @@
     "source": "src/game/app/GSFade.cpp",
     "linker_script": "config/linker/GSFadeHooks.ld",
     "functions": [
+        "_ZN11EvMouseMoveD1Ev",
+        "_ZN11EvMouseMoveD0Ev",
+        "_ZN10EvKeyboardD1Ev",
+        "_ZN10EvKeyboardD0Ev",
+        "_ZN12EvMouseWheelD1Ev",
+        "_ZN12EvMouseWheelD0Ev",
+        "_ZN13EvMouseButtonD1Ev",
+        "_ZN13EvMouseButtonD0Ev",
         "_ZN6GSFade4drawEPK12StateMachine",
         "_ZN6GSFadeC1Ev",
         "_ZN6GSFadeC2Ev",
@@ -307,7 +315,11 @@
         ".script_manager_load_save",
         ".script_manager_load_animation",
         ".script_manager_first_checkpoint",
-        ".script_manager_minimap_tracking"
+        ".script_manager_minimap_tracking",
+        ".application_event_EvMouseMove_vtable",
+        ".application_event_EvKeyboard_vtable",
+        ".application_event_EvMouseWheel_vtable",
+        ".application_event_EvMouseButton_vtable"
     ],
     "retail_got": true,
     "source_first": true,
