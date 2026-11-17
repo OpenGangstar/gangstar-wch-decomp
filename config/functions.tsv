@@ -10471,7 +10471,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305be9	0x3c	RenderObject.cpp	game	characters	pending	_ZN12RenderObjectC1EP10GameObject	RenderObject::RenderObject(GameObject*)
 0x00305c25	0x6c	RenderObject.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00305c91	0x14	RenderObject.cpp	game	characters	matched	_GLOBAL__I__ZN12RenderObjectC2EP10GameObject	_GLOBAL__I__ZN12RenderObjectC2EP10GameObject
-0x00305ca5	0x20	Shop.cpp	game	ui	pending	_ZN4Shop24resetAchievementCountersEv	Shop::resetAchievementCounters()
+0x00305ca5	0x20	Shop.cpp	game	ui	matched	_ZN4Shop24resetAchievementCountersEv	Shop::resetAchievementCounters()
 0x00305cc5	0x8	Shop.cpp	game	ui	matched	_ZNK4Shop8unlockedEv	Shop::unlocked() const
 0x00305ccd	0x6	Shop.cpp	game	ui	matched	_ZNK4Shop9triggeredEv	Shop::triggered() const
 0x00305cd5	0x4	Shop.cpp	game	ui	matched	_ZN4Shop5getIdEv	Shop::getId()
@@ -10486,11 +10486,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305df1	0x38	Shop.cpp	game	ui	matched	_ZN4ShopD1Ev	Shop::~Shop()
 0x00305e29	0x134	Shop.cpp	game	ui	matched	_ZN4Shop7triggerEb	Shop::trigger(bool)
 0x00305f5d	0x180	Shop.cpp	game	ui	pending	_ZN4Shop6UpdateEi	Shop::Update(int)
-0x003060dd	0xdc	Shop.cpp	game	ui	pending	_ZN4Shop6unlockEv	Shop::unlock()
+0x003060dd	0xdc	Shop.cpp	game	ui	matched	_ZN4Shop6unlockEv	Shop::unlock()
 0x003061b9	0x144	Shop.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003062fd	0x14	Shop.cpp	game	ui	matched	_GLOBAL__I__ZN4Shop15s_numShopWeaponE	_GLOBAL__I__ZN4Shop15s_numShopWeaponE
 0x00306311	0x30	Shop.cpp	game	ui	matched	__tcf_4	__tcf_4
-0x00306341	0x22	Shop.cpp	game	ui	pending	_ZN4Shop4lockEv	Shop::lock()
+0x00306341	0x22	Shop.cpp	game	ui	matched	_ZN4Shop4lockEv	Shop::lock()
 0x00306365	0x3c	Shop.cpp	game	ui	matched	_ZN4ShopD0Ev	Shop::~Shop()
 0x003063a1	0x48	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint3addEPS_	SpawnPoint::add(SpawnPoint*)
 0x003063e9	0x20	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointD0Ev	SpawnPoint::~SpawnPoint()

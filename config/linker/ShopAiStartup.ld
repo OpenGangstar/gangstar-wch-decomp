@@ -17,8 +17,15 @@ _ZN23retail_shop_transitions22scripted_vehicle_transE = 0x0041ee8c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 _Znwj = 0x001c4814;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fcmpgt = 0x001c419c;
 SECTIONS
 {
+    .shop_reset_counters 0x00305ca4 : { *(.text._ZN4Shop24resetAchievementCountersEv) }
+    .shop_lock 0x00306340 : { *(.text._ZN4Shop4lockEv) }
+    .shop_unlock 0x003060dc : { *(.text._ZN4Shop6unlockEv) }
     .shop_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
     .ai-startup-shop_fn_0 0x00306364 : { *(.text._ZN4ShopD0Ev) }
     .ai-startup-shop_fn_1 0x00305df0 : { *(.text._ZN4ShopD1Ev .text._ZN4ShopD2Ev) }

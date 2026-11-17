@@ -213,8 +213,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7611 | Menus::OptionGameSettings::SetOrientation (int) | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e75f1 | Menus::OptionGameSettings::SetOrientation (enum) | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e7355 | Menus::OptionGameSettings::GetOrientation | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x00305ca5 | Shop::resetAchievementCounters | camera_tap | REVIEW | — | src/game/ui/Shop.cpp |
-| libsanangeles.so | 0x00306341 | Shop::lock | lock_init | REVIEW | — | src/game/ui/Shop.cpp |
-| libsanangeles.so | 0x003060dd | Shop::unlock | vehicle_side | ASSIGNED | — | src/game/ui/Shop.cpp |
-| libsanangeles.so | 0x002e86bd | Menus::InGameCarRental::Hide | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e86dd | Menus::InGameWeaponShop::Hide | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x00305ca5 | Shop::resetAchievementCounters | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x00306341 | Shop::lock | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x003060dd | Shop::unlock | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x002e86bd | Menus::InGameCarRental::Hide | camera_tap | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e86dd | Menus::InGameWeaponShop::Hide | lock_init | REVIEW | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002dc289 | GS3DStuff::SetCurrentOrientation | vehicle_side | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002e8655 | MenuState::Hide | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7cfd | MenuState::UpdateLocalization | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
