@@ -207,3 +207,8 @@ void Message::setMessage(int textId, int duration, MenuManager::eText slot)
             setAnim(-1);
     }
 }
+
+bool Message::isDisplayed()
+{
+    return (timedDisplay && !untimed && timer > 0) || animationId != -1;
+}

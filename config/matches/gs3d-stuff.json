@@ -28,6 +28,14 @@
     "source": "src/game/rendering/GS3DStuff.cpp",
     "linker_script": "config/linker/GS3DStuff.ld",
     "functions": [
+        {
+            "name": "__tcf_7",
+            "address": "0x002dada9"
+        },
+        {
+            "name": "__tcf_8",
+            "address": "0x002dad71"
+        },
         "_ZNSs6appendEPKc",
         "_ZN9GS3DStuff6unloadEv",
         "_ZN9GS3DStuff13AddToSceneMgrEPN3irr5scene10ISceneNodeES3_",

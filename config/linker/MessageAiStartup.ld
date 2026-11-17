@@ -20,6 +20,7 @@ __aeabi_dsub = 0x001c4454;
 __aeabi_d2iz = 0x001c4844;
 SECTIONS
 {
+    .message_is_displayed 0x00328df8 : { *ai-startup-message.o(.text._ZN7Message11isDisplayedEv) }
     .message_set_text_id 0x00329188 : { *(.text._ZN7Message10setMessageEiiN11MenuManager5eTextE) }
     .message_update 0x00328f14 : { *(.text._ZN7Message6updateEd) }
     .message_constructor 0x00329100 : { *(.text._ZN7MessageC1EP7ASpriteN11MenuManager5eTextEii .text._ZN7MessageC2EP7ASpriteN11MenuManager5eTextEii) }

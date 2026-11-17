@@ -1059,3 +1059,27 @@ basic_string<char>& basic_string<char>::append(const char* text)
     return _M_append(text, text + strlen(text));
 }
 }
+
+extern "C" {
+extern std::vector<Item*> _ZZN9GS3DStuff6updateEP12StateMachineE9pickables
+    __attribute__((visibility("hidden")));
+
+static void __tcf_8() __attribute__((used));
+static void __tcf_8()
+{
+    typedef stlp_priv::_Vector_base<Item*, std::allocator<Item*> > Base;
+    static_cast<Base&>(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables).~Base();
+}
+}
+
+extern "C" {
+extern std::vector<Vehicle*> _ZZN9GS3DStuff6updateEP12StateMachineE8vehicles
+    __attribute__((visibility("hidden")));
+
+static void __tcf_7() __attribute__((used));
+static void __tcf_7()
+{
+    typedef stlp_priv::_Vector_base<Vehicle*, std::allocator<Vehicle*> > Base;
+    static_cast<Base&>(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles).~Base();
+}
+}

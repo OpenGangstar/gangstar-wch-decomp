@@ -319,8 +319,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002dce9d | std::string::append(const char*) | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002deebd | GS3DStuff::AddXRef | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*, const char*) | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode | lock_init | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002dad71 | GS3DStuff.cpp::__tcf_8 | camera_tap | REVIEW | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody | vehicle_side | ASSIGNED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002dada9 | GS3DStuff.cpp::__tcf_7 | camera_tap | REVIEW | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x00328df9 | Message::isDisplayed | camera_tap | ASSIGNED | — | src/game/ui/Message.cpp |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dad71 | GS3DStuff.cpp::__tcf_8 | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dada9 | GS3DStuff.cpp::__tcf_7 | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x00328df9 | Message::isDisplayed | — | COMPLETED | 100% | src/game/ui/Message.cpp |
+| libsanangeles.so | 0x00334ef1 | SceneCamera.cpp::__tcf_1 | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
+| libsanangeles.so | 0x0034934d | AnimObject::Reset | camera_tap | REVIEW | — | src/game/characters/AnimObject.cpp |
+| libsanangeles.so | 0x00349445 | AnimObject::IsAnimOver | vehicle_side | BLOCKED | — | src/game/characters/AnimObject.cpp |
+| libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | lock_init | ASSIGNED | — | src/game/ui/menufx.cpp |
+| libsanangeles.so | 0x0032cfb8 | Wheel::processTouch secondary thunk | camera_tap | REVIEW | — | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x00300bc5 | Path::Load | vehicle_side | ASSIGNED | — | src/game/world/Path.cpp |
+| libsanangeles.so | 0x0034228d | NPCController::onEvent | camera_tap | ASSIGNED | — | src/game/ai/NPCController.cpp |

@@ -2,7 +2,11 @@ PROVIDE(__aeabi_i2f = 0x001c41e4);
 PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(strcmp = 0x001c4658);
 PROVIDE(strlen = 0x001c48bc);
+PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables = 0x004b6a74);
+PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles = 0x004b6a80);
 SECTIONS {
+    .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_7) }
+    .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_8) }
     .gs_string_append 0x002dce9c : { *gs3d-stuff.o(.text._ZNSs6appendEPKc) }
     .gs_unload 0x002de918 : { *gs3d-stuff.o(.text._ZN9GS3DStuff6unloadEv) }
     .gs_global_4b6994 0x004b6994 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff7sunNodeE) }

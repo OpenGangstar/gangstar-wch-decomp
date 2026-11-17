@@ -9109,9 +9109,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dad45	0x14	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff15getSceneOctTreeEv	GS3DStuff::getSceneOctTree()
 0x002dad59	0x2	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6draw2dEPK12StateMachine	GS3DStuff::draw2d(StateMachine const*)
 0x002dad5d	0x12	GS3DStuff.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP4ItemSaIS2_EED1Ev	stlp_priv::_Vector_base<Item*, std::allocator<Item*> >::~_Vector_base()
-0x002dad71	0x24	GS3DStuff.cpp	game	rendering	pending	__tcf_8	__tcf_8
+0x002dad71	0x24	GS3DStuff.cpp	game	rendering	matched	__tcf_8	__tcf_8
 0x002dad95	0x12	GS3DStuff.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP7VehicleSaIS2_EED1Ev	stlp_priv::_Vector_base<Vehicle*, std::allocator<Vehicle*> >::~_Vector_base()
-0x002dada9	0x24	GS3DStuff.cpp	game	rendering	pending	__tcf_7	__tcf_7
+0x002dada9	0x24	GS3DStuff.cpp	game	rendering	matched	__tcf_7	__tcf_7
 0x002dadcd	0x78	GS3DStuff.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP6b2BodyNS0_12irrAllocatorIS3_EEE10reallocateEj	irr::core::array<b2Body*, irr::core::irrAllocator<b2Body*> >::reallocate(unsigned int)
 0x002dae45	0x4c	GS3DStuff.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP6b2BodyNS0_12irrAllocatorIS3_EEE9push_backERKS3_	irr::core::array<b2Body*, irr::core::irrAllocator<b2Body*> >::push_back(b2Body* const&)
 0x002dae91	0x78	GS3DStuff.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP12b2PolygonDefNS0_12irrAllocatorIS3_EEE10reallocateEj	irr::core::array<b2PolygonDef*, irr::core::irrAllocator<b2PolygonDef*> >::reallocate(unsigned int)
@@ -11296,7 +11296,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328c49	0x130	Map.cpp	game	world	pending	_ZNK3Map4drawEv	Map::draw() const
 0x00328d79	0x6c	Map.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00328de5	0x14	Map.cpp	game	core	matched	_GLOBAL__I__ZN3MapC2Ev	_GLOBAL__I__ZN3MapC2Ev
-0x00328df9	0x2a	Message.cpp	game	ui	pending	_ZN7Message11isDisplayedEv	Message::isDisplayed()
+0x00328df9	0x2a	Message.cpp	game	ui	matched	_ZN7Message11isDisplayedEv	Message::isDisplayed()
 0x00328e25	0x18	Message.cpp	game	ui	matched	_ZN7Message8setTimerEi	Message::setTimer(int)
 0x00328e3d	0x30	Message.cpp	game	core	matched	__tcf_3	__tcf_3
 0x00328e6d	0x10	Message.cpp	game	ui	matched	_ZN7Message7setAnimEi	Message::setAnim(int)
@@ -11787,7 +11787,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334ee5	0x2	SceneCamera.cpp	game	core	matched	_ZN11SceneCamera4initEP11LevelObjecti	SceneCamera::init(LevelObject*, int)
 0x00334ee9	0x2	SceneCamera.cpp	game	core	matched	_ZN11SceneCamera5debugEPN3irr5video12IVideoDriverE	SceneCamera::debug(irr::video::IVideoDriver*)
 0x00334eed	0x2	SceneCamera.cpp	game	core	matched	_ZN11SceneCamera6updateEf	SceneCamera::update(float)
-0x00334ef1	0x24	SceneCamera.cpp	game	core	pending	__tcf_1	__tcf_1
+0x00334ef1	0x24	SceneCamera.cpp	game	core	matched	__tcf_1	__tcf_1
 0x00334f14	0x14	SceneCamera.cpp	game	core	matched	_ZThn28_N11SceneCameraD0Ev	non-virtual thunk to SceneCamera::~SceneCamera()
 0x00334f29	0x34	SceneCamera.cpp	game	core	matched	_ZN11SceneCameraD0Ev	SceneCamera::~SceneCamera()
 0x00334f5c	0x14	SceneCamera.cpp	game	core	matched	_ZThn28_N11SceneCameraD1Ev	non-virtual thunk to SceneCamera::~SceneCamera()
