@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 strcpy = 0x001c3fd4;
 sprintf = 0x001c46ac;
+memset = 0x001c45d4;
 __cxa_pure_virtual = 0;
 INCLUDE build/matches/ai-startup-menustate/retail-symbols.ld
 _ZdlPv = 0x001c42b0;

@@ -217,6 +217,63 @@ private:
     int pressedButton;
 };
 
+class Statistics : public MenuWidget {
+public:
+    Statistics();
+    virtual void Show();
+    virtual void Enable();
+    virtual void Disable();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int unknown20, unknown24, unknown28, unknown32;
+    gameswf::character* animation;
+    unsigned char unknown40[56];
+    int unknown96;
+    unsigned char unknown100[256];
+};
+
+class Achievements : public MenuWidget {
+public:
+    Achievements();
+    virtual void Show();
+    virtual void Enable();
+    virtual void Disable();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int unknown20, unknown24, unknown28, unknown32, unknown36;
+    gameswf::character* animation;
+    unsigned char unknown44[96];
+    int unknown140;
+};
+
+class Objective : public MenuWidget {
+public:
+    Objective();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    void SetObjectiveText(int id);
+
+private:
+    int textId;
+    bool unknown24;
+};
+
+class Achievement : public MenuWidget {
+public:
+    Achievement();
+    virtual bool AutoHide() const;
+    virtual void UpdateLocalization();
+    void SetTitle(int id);
+
+private:
+    int titleId;
+};
+
 class Help : public MenuWidget {
 public:
     Help();
@@ -577,6 +634,55 @@ void Widgets::MainMenu::UpdateLocalization()
     }
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mainMenuMoreText, _ZNK13StringManager9getStringEi(strings, 0x1010), true);
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mainMenuTwitterText, _ZNK13StringManager9getStringEi(strings, 0x1080), false);
+}
+
+static const char widgetStatisticsName[] = "widgetStatistics";
+static const char widgetStatisticsAnimation[] = "widgetStatistics.anim";
+static const char widgetAchievementsName[] = "widgetAchievements";
+static const char widgetAchievementsAnimation[] = "widgetAchievements.content.anim";
+static const char widgetObjectiveName[] = "widgetObjective";
+static const char widgetAchievementName[] = "widgetAchievement";
+
+Widgets::Statistics::Statistics()
+    : MenuWidget(widgetStatisticsName), unknown20(0), unknown24(-1),
+      unknown28(0), unknown32(0), animation(0), unknown96(0)
+{
+    memset(unknown100, -1, sizeof(unknown100));
+    animation = renderFX->Find(widgetStatisticsAnimation);
+    renderFX->GotoFrame(animation, 0, false);
+}
+
+Widgets::Achievements::Achievements()
+    : MenuWidget(widgetAchievementsName), unknown20(0), unknown24(-1),
+      unknown28(0), unknown32(0), unknown36(-1), animation(0), unknown140(0)
+{
+    animation = renderFX->Find(widgetAchievementsAnimation);
+    renderFX->GotoFrame(animation, 0, false);
+}
+
+Widgets::Objective::Objective()
+    : MenuWidget(widgetObjectiveName), textId(-1), unknown24(false)
+{
+}
+
+void Widgets::Objective::SetObjectiveText(int id)
+{
+    textId = id;
+}
+
+Widgets::Achievement::Achievement()
+    : MenuWidget(widgetAchievementName), titleId(-1)
+{
+}
+
+void Widgets::Achievement::SetTitle(int id)
+{
+    titleId = id;
+}
+
+bool Widgets::Achievement::AutoHide() const
+{
+    return false;
 }
 
 static const char widgetHelpName[] = "widgetHelp";
