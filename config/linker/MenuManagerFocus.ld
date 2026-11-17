@@ -64,6 +64,7 @@ SECTIONS
     .menu_manager_asian_font_format 0x00418d58 : { *menu-manager-helpers.o(.rodata.asianFontFormat) }
     .menu_manager_text_buffer 0x004b761c (NOLOAD) : { *menu-manager-helpers.o(.bss.asianFontTextBuffer) }
     .menu_manager_top_visibility 0x002e4668 : { *menu-manager-helpers.o(.text._ZN11MenuManager13topSetVisibleEb) }
+    .menu_manager_switch 0x002e62cc : { *menu-manager-helpers.o(.text._ZN11MenuManager8switchToEPKcb) }
     .menu_manager_pop 0x002e6370 : { *menu-manager-helpers.o(.text._ZN11MenuManager3popEb) }
     .menu_manager_pop_to 0x002e6418 : { *menu-manager-helpers.o(.text._ZN11MenuManager5popToEPKcbb) }
     .menu_manager_pop_all 0x002e6460 : { *menu-manager-helpers.o(.text._ZN11MenuManager6popAllEb) }

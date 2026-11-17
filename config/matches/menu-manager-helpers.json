@@ -26,6 +26,7 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZN11MenuManager8switchToEPKcb",
         "_ZN11MenuManager3popEb",
         "_ZN11MenuManager5popToEPKcbb",
         "_ZN11MenuManager6popAllEb",
