@@ -75,7 +75,12 @@ public:
     virtual void Update(int elapsed, bool render);
     class SearchIndex;
     class Event;
-    class EventListener;
+    class EventListener {
+    public:
+        virtual void OnEvent(Event& event) = 0;
+        virtual void OnFSCommand(const char* command, const char* args) = 0;
+        virtual bool CanHandleEvent(Event& event);
+    };
     void FSCommand(const char* command, const char* args);
     void SetEventListener(EventListener* listener);
     void SetInputBehavior(int behavior);

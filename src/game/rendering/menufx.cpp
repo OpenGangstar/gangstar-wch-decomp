@@ -268,11 +268,6 @@ struct CharacterMovie {
     MovieRenderFX* movie;
 };
 
-struct EventListenerMethods {
-    void (*onEvent)();
-    void (*onFSCommand)(RenderFX::EventListener*, const char*, const char*);
-};
-
 struct RenderHandlerMethods {
     void (*beforeWireFrame[16])();
     void (*setWireFrame)(gameswf::render_handler*, bool);
@@ -524,13 +519,16 @@ void fscommand_callback_handler(gameswf::character* character, const char* comma
     movie->renderFX->FSCommand(command, args);
 }
 
+bool RenderFX::EventListener::CanHandleEvent(Event&)
+{
+    return true;
+}
+
 void RenderFX::FSCommand(const char* command, const char* args)
 {
     EventListener* listener = this->listener;
-    if (listener) {
-        const EventListenerMethods* methods = *reinterpret_cast<const EventListenerMethods* const*>(listener);
-        methods->onFSCommand(listener, command, args);
-    }
+    if (listener)
+        listener->OnFSCommand(command, args);
 }
 
 void RenderFX::Unload()
