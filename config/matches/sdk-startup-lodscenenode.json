@@ -25,6 +25,11 @@
     "source": "src/game/rendering/LODSceneNode.cpp",
     "linker_script": "config/linker/LODSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN12LODSceneNode19setLODNodesRotationERKN3irr4core10quaternionE",
+        "_ZN12LODSceneNode19OnRegisterSceneNodeEv",
+        "_ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE",
+        "_ZNK12LODSceneNode25getTransformedBoundingBoxEv",
+        "_ZN12LODSceneNode19setLODNodesPositionERKN3irr4core8vector3dIfEE",
         "_ZNK12LODSceneNode14getBoundingBoxEv",
         "_ZN12LODSceneNode6renderEPv",
         "_ZNK12LODSceneNode11getLODLevelEv",
@@ -57,6 +62,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE"
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN12LODSceneNode15computeLODLevelEv",
+        "_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE"
     ]
 }

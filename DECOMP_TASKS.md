@@ -271,6 +271,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d29c1 | LODSceneNode::setMaxDistance | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d29d9 | LODSceneNode::getType | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2b11 | LODSceneNode::getBoundingBox | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2f31 | LODSceneNode::getTransformedBoundingBox | lock_init | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2ac9 | LODSceneNode::GetMeshBoundingBox | camera_tap | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2e95 | LODSceneNode::OnRegisterSceneNode | vehicle_side | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2f31 | LODSceneNode::getTransformedBoundingBox | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2ac9 | LODSceneNode::GetMeshBoundingBox | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2e95 | LODSceneNode::OnRegisterSceneNode | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2edd | LODSceneNode::GetMeshTransformedBoundingBox | camera_tap | BLOCKED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel | vehicle_side | BLOCKED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2be9 | LODSceneNode::setLODNodesPosition | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2bad | LODSceneNode::setLODNodesRotation | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c25 | LODSceneNode::removeAnimators | camera_tap | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c61 | LODSceneNode::addAnimator | lock_init | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2b31 | LODSceneNode::LODSceneNode (C2) | vehicle_side | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
