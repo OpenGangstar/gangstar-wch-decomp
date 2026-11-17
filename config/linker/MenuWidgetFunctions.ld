@@ -1,5 +1,12 @@
 SECTIONS
 {
+    .widget_ig_pressed 0x002ebe94 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets6IGMenu20GetLastPressedButtonEv) }
+    .widget_black_box_ctor 0x002ec908 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8BlackBoxC1Ev .text._ZN7Widgets8BlackBoxC2Ev) }
+    .widget_black_box_set_state 0x002ecd0c : { *ai-startup-menuwidget.o(.text._ZN7Widgets8BlackBox8SetStateENS0_6eStateE) }
+    .widget_black_box_name 0x0041a94c : { *ai-startup-menuwidget.o(.rodata.widgetBlackBoxName) }
+    .widget_black_box_thin 0x0041aa64 : { *ai-startup-menuwidget.o(.rodata.blackBoxThinAnimation) }
+    .widget_black_box_wide 0x0041aa6c : { *ai-startup-menuwidget.o(.rodata.blackBoxWideAnimation) }
+    .widget_black_box_vtable 0x004a9cf8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8BlackBoxE .gnu.linkonce.d.rel.ro._ZTVN7Widgets8BlackBoxE) }
     .widget_ig_menu_localization 0x002edc7c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu18UpdateLocalizationEv) }
     .widget_ig_menu_title_text_path 0x00419100 : { *ai-startup-menuwidget.o(.rodata.igMenuTitleText) }
     .widget_ig_menu_button_text_format 0x0041af08 : { *ai-startup-menuwidget.o(.rodata.igMenuButtonTextFormat) }

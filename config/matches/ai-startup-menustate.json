@@ -315,7 +315,6 @@
         "_ZN8RenderFX7SetTextEPKcS1_b",
         "_ZN7Widgets6IGMenu9GoToFrameEPKc",
         "_ZN9GSLoading12isGameLoadedEv",
-        "_ZN7Widgets8BlackBox8SetStateENS0_6eStateE",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZN11MenuManager17allowCheatsUnlockEb",
         "_ZN9ResStreamC1EPKci",
