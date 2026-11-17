@@ -26,6 +26,8 @@
     "linker_script": "config/linker/CustomBillboardSceneNodeSdkStartup.ld",
     "functions": [
         "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE",
+        "_ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
+        "_ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         {
             "name": "__tcf_2",
             "address": "0x002f7a25"
@@ -49,5 +51,10 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
+        "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv"
+    ]
 }

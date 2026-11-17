@@ -69,3 +69,23 @@ void CustomBillboardSceneNode::setParent(irr::scene::ISceneNode* parent)
         setVisible(false);
     }
 }
+
+void CustomBillboardSceneNode::setChildrenMaterialType(
+    irr::scene::ISceneNode* node, irr::video::E_MATERIAL_TYPE type)
+{
+    node->setMaterialType(type);
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        setChildrenMaterialType(child->value, type);
+    }
+}
+
+void CustomBillboardSceneNode::setChildrenMaterialFlag(
+    irr::scene::ISceneNode* node, irr::video::E_MATERIAL_FLAG flag, bool enabled)
+{
+    node->setMaterialFlag(flag, enabled);
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next) {
+        setChildrenMaterialFlag(child->value, flag, enabled);
+    }
+}
