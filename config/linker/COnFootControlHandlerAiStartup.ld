@@ -18,6 +18,10 @@ __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .onfoot_enter_car 0x0032e5d8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler21handleEnterCarPressedEv) }
+    .onfoot_enter_shop 0x0032e5bc : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler22handleEnterShopPressedEv) }
+    .onfoot_lock_pressed 0x0032e59c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler17handleLockPressedEv) }
+    .onfoot_stick_released 0x0032e5ec : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler19handleStickReleasedEb) }
     .onfoot_weapon_switched 0x0032e588 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler20handleWeaponSwitchedEv) }
     .handler_constructor 0x0032eef0 : { *(.text._ZN21COnFootControlHandlerC1EP15CControlManager .text._ZN21COnFootControlHandlerC2EP15CControlManager) }
     .handler_init 0x0032e520 : { *(.text._ZN21COnFootControlHandler4initEv) }

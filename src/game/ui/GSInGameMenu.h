@@ -8,6 +8,7 @@
 class GSInGameMenu : public StateBase {
 public:
     GSInGameMenu();
+    static void skipFadeIn();
     virtual ~GSInGameMenu();
     virtual void draw(const StateMachine*);
     virtual void ctor(const StateMachine*);
@@ -19,6 +20,8 @@ public:
         return StateBase::isKindOf(kind);
     }
 private:
+    static bool s_skipFadeIn;
+
     unsigned int unknown4;
     unsigned int unknown8;
     unsigned int unknown12;

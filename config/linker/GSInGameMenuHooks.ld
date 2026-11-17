@@ -17,6 +17,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .blocking_tutorial_text 0x00414c84 : { *state-hooks-gsingamemenu.o(.rodata.str1.4 .rodata.str1.1) }
+    .gsingame_dtor 0x002e2884 : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenu4dtorEPK12StateMachine) }
+    .gsingame_skip_fade_in_flag 0x004b6e68 (NOLOAD) : { *state-hooks-gsingamemenu.o(.bss._ZN12GSInGameMenu12s_skipFadeInE) }
+    .gsingame_skip_fade_in 0x002e2664 : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenu10skipFadeInEv) }
     .hook_0 0x002e2660 : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenu4drawEPK12StateMachine .gnu.linkonce.t._ZN12GSInGameMenu4drawEPK12StateMachine) }
     .state_ctor 0x002e2940 : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenuC1Ev) }
     .base_0 0x002dacc0 : { *state-hooks-gsingamemenu.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }
@@ -69,3 +73,4 @@ ASSERT(SIZEOF(.local_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE ext
 ASSERT(SIZEOF(.local_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.local_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.local_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.gsingame_skip_fade_in_flag) == 1, "GSInGameMenu fade flag extent");

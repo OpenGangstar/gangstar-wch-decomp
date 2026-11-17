@@ -20,9 +20,12 @@ public:
     void exitCar(bool restoreCamera);
     bool isLocked() const;
     void setCameraProxy(GS3DStuff* proxy);
+    void resetCombatTimestamp() { combatTimestamp = 0; }
     static bool s_cameraTutorial, s_sniperTutorial;
 
 private:
+    friend class SniperControlHandler;
+
     IControlHandler* activeHandler;
     IControlHandler* onFootHandler;
     IControlHandler* drivingHandler;

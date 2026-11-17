@@ -86,3 +86,31 @@ static void _GLOBAL__I__ZN12GSInGameMenu12s_skipFadeInE()
 }
 
 GSInGameMenu::~GSInGameMenu() {}
+
+bool GSInGameMenu::s_skipFadeIn = false;
+
+void GSInGameMenu::skipFadeIn()
+{
+    s_skipFadeIn = true;
+}
+
+#include "../app/Application.h"
+#include "../core/CameraManager.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../input/TouchScreenBase.h"
+#include "../scripting/ScriptManager.h"
+
+extern "C" bool _ZNK11MenuManager14isCurrentStateEPKc(const MenuManager*, const char*);
+
+void GSInGameMenu::dtor(const StateMachine*)
+{
+    MenuManager* menuManager = MenuManager::getInstance();
+    menuManager->showTexts();
+    Application* app = Application::GetInstance();
+    ScriptManager::getInstance()->resume();
+    if (!_ZNK11MenuManager14isCurrentStateEPKc(menuManager, "BlockingTutorial"))
+        app->GetHudManager()->unlock();
+    app->GetTouchScreen()->clear();
+    CameraManager::getInstance()->setTouchScreenInputs(true);
+}

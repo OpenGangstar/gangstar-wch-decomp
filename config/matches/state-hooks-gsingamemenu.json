@@ -25,6 +25,8 @@
     "source": "src/game/ui/GSInGameMenu.cpp",
     "linker_script": "config/linker/GSInGameMenuHooks.ld",
     "functions": [
+        "_ZN12GSInGameMenu4dtorEPK12StateMachine",
+        "_ZN12GSInGameMenu10skipFadeInEv",
         "_ZN12GSInGameMenu4drawEPK12StateMachine",
         "_ZN12GSInGameMenuC1Ev",
         "_ZN12GSInGameMenuC2Ev",
@@ -59,6 +61,7 @@
         }
     ],
     "sections": [
+        ".blocking_tutorial_text",
         ".hook_0",
         ".state_ctor",
         {
@@ -87,6 +90,18 @@
         ".local_startup_function_1",
         ".local_startup_function_2",
         ".shared_startup_empty_text"
+    ],
+    "external_thumb_functions": [
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager9showTextsEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager6resumeEv",
+        "_ZNK11MenuManager14isCurrentStateEPKc",
+        "_ZN11CHudManager6unlockEv",
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager20setTouchScreenInputsEb"
     ],
     "retail_got": true
 }

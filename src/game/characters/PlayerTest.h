@@ -118,6 +118,8 @@ public:
     void justStoleCar(Vehicle* car);
     void _SetTarget(LevelObject* target, bool changeCamera);
     void toggleLock();
+    bool attack(bool pressed);
+    void initDriving(bool);
     void onTargetCancelled();
     void resumeAttacking();
     void richAsCroesus(bool enabled);

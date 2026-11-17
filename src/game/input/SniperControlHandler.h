@@ -18,6 +18,9 @@ public:
     virtual void releaseKeyboardKeys();
     void handleStickMove(EvStickMove*);
     void handleStickReleased(bool);
+    void handleExitSightReleased();
+    void handleAttackReleased();
+    void handleAttackHeld();
 
 private:
     inline __attribute__((always_inline)) void resetInput();

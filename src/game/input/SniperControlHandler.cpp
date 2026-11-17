@@ -10,6 +10,10 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "SniperControlHandler.h"
+#include "CControlManager.h"
+#include "../characters/PlayerTest.h"
+#include "../app/Application.h"
+#include "../core/SceneNode.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -116,4 +120,24 @@ void SniperControlHandler::init()
 SniperControlHandler::SniperControlHandler(CControlManager* manager) : controlManager(manager)
 {
     resetInput();
+}
+
+void SniperControlHandler::handleExitSightReleased()
+{
+    controlManager->exitSniping(true);
+}
+
+void SniperControlHandler::handleAttackReleased()
+{
+    resetInput();
+    CControlManager* manager = controlManager;
+    manager->combatTimestamp = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+}
+
+void SniperControlHandler::handleAttackHeld()
+{
+    unknown12 = 2;
+    CControlManager* manager = controlManager;
+    manager->combatTimestamp = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    PlayerTest::GetPlayer()->attack(false);
 }

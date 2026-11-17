@@ -17,6 +17,10 @@ public:
     virtual void releaseKeyboardKeys();
 
 private:
+    void handleEnterCarPressed();
+    void handleEnterShopPressed();
+    void handleLockPressed();
+    void handleStickReleased(bool fast);
     void handleWeaponSwitched();
     inline __attribute__((always_inline)) void resetInput();
     friend class CControlManager;

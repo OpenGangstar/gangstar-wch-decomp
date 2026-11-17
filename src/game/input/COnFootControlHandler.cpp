@@ -10,6 +10,8 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "COnFootControlHandler.h"
+#include "CControlManager.h"
+#include "../ui/Shop.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -126,4 +128,33 @@ COnFootControlHandler::COnFootControlHandler(CControlManager* manager) : control
 void COnFootControlHandler::handleWeaponSwitched()
 {
     PlayerTest::GetPlayer()->switchWeapon(false);
+}
+
+void COnFootControlHandler::handleEnterCarPressed()
+{
+    PlayerTest::GetPlayer()->initDriving(true);
+}
+
+void COnFootControlHandler::handleEnterShopPressed()
+{
+    Shop* shop = PlayerTest::GetPlayer()->closestShop;
+    if (shop)
+        shop->trigger(true);
+}
+
+void COnFootControlHandler::handleLockPressed()
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (player->targetLocked)
+        controlManager->resetCombatTimestamp();
+    player->toggleLock();
+}
+
+void COnFootControlHandler::handleStickReleased(bool fast)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    player->stopMoving(fast);
+    if (player->combatMode)
+        player->resumeAttacking();
+    unknown13 = false;
 }
