@@ -794,10 +794,84 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f3489 | Character::updateAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f661d | Character::switchMoveAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f55d1 | Character::shoot | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x00303b6d | PlayerTest::shoot | camera_tap | REVIEW | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x00303b58 | PlayerTest::shoot non-virtual thunk | camera_tap | REVIEW | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | lock_init | REVIEW | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_side | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | camera_tap | REVIEW | pending | src/game/characters/PlayerTest.cpp |
-| libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | camera_tap | ASSIGNED | pending | src/game/characters/PlayerTest.cpp |
+| libsanangeles.so | 0x00303b6d | PlayerTest::shoot | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303b58 | PlayerTest::shoot non-virtual thunk | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_side | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00302241 | PlayerTest::orientTowards | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00304895 | PlayerTest::teleportTo | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00304c05 | PlayerTest::onObjectKilled | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00340bf1 | CivPassiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00341d25 | GuardController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
+| libsanangeles.so | 0x00341d65 | GuardController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
+| libsanangeles.so | 0x00302361 | PlayerTest::moveTo | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | vehicle_side | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00342221 | GuardController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
+| libsanangeles.so | 0x00340985 | CivAgressiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x00340c75 | CivPassiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00340f49 | CopController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x003408a9 | CivAgressiveController::switchState | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x00340b6d | CivPassiveController::switchState | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00340edd | CopController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x00341305 | CopController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x0034084d | CivAgressiveController::onEvent | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
+| libsanangeles.so | 0x00340cd5 | CivPassiveController::onEvent | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
+| libsanangeles.so | 0x00341139 | CopController::switchState | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x00341f31 | GuardController::onEvent | lock_init | BLOCKED | pending | src/game/ai/GuardController.cpp |
+| libsanangeles.so | 0x003420cd | GuardController::switchState | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
+| libsanangeles.so | 0x00342585 | VehicleController::onEvent | lock_init | BLOCKED | pending | src/game/ai/VehicleController.cpp |
+| libsanangeles.so | 0x0034171d | CopVehicleController::switchState | — | COMPLETED | 100% | src/game/ai/CopVehicleController.cpp |
+| libsanangeles.so | 0x00341381 | CopController::onEvent | vehicle_side | BLOCKED | pending | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x003406a9 | AIManager::clean | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x003426b5 | VehicleController::switchState | — | COMPLETED | 100% | src/game/ai/VehicleController.cpp |
+| libsanangeles.so | 0x00340741 | AIManager::onEvent | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, StateID) | lock_init | BLOCKED | pending | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x00340455 | AIManager::addAI(NPC*, StateID) | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x003520c1 | RadioStationController::selectRandomJingle | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
+| libsanangeles.so | 0x003522b1 | RadioStationController::selectRandomSong | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
+| libsanangeles.so | 0x00352335 | RadioStationController constructor (C1/C2 aliases) | vehicle_side | BLOCKED | pending | src/game/ai/RadioStationController.cpp |
+| libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031a40d | PhysicAttributes::FindLowerCostNode | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00353175 | SoundManager::update | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00353525 | SoundManager constructor (C1/C2 aliases) | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x002d5da5 | EvMouseMove destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5df5 | EvKeyboard destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d610d | EvMouseMove deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e45 | EvMouseWheel destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5dc9 | EvKeyboard deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e19 | EvMouseWheel deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e95 | EvMouseButton destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5e69 | EvMouseButton deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate | lock_init | BLOCKED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | camera_tap | REVIEW | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | vehicle_side | REVIEW | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | camera_tap | BLOCKED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | lock_init | REVIEW | pending | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | camera_tap | REVIEW | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349815 | ASprite::GetModule | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325c79 | CSniperHud::hide | vehicle_side | ASSIGNED | pending | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | lock_init | ASSIGNED | pending | src/game/core/MediaPlayerIPhone.cpp |

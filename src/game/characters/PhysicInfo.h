@@ -22,7 +22,9 @@ struct PhysicInfo {
     unsigned char unknown61[3];
     irr::core::vector3d<float> unknown64;
     unsigned short unknown76, unknown78, unknown80;
-    unsigned char unknown82[6];
+    unsigned short unknown82;
+    bool unknown84;
+    unsigned char unknown85[3];
     b2Body* bodies[12];
     bool onGround;
     bool wasOnGround;

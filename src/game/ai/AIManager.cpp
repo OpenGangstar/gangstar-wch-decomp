@@ -145,3 +145,181 @@ static void _GLOBAL__I__ZN9AIManagerC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+inline __attribute__((always_inline)) void AIManager::ReceiverList::clearOwnedReceivers()
+{
+    ReceiverList* link = next;
+    while (this != link) {
+        ReceiverNode* node = static_cast<ReceiverNode*>(link);
+        ReceiverList* saved = link->next;
+        delete node->receiver;
+        node->receiver = 0;
+        ReceiverList* nextNode = link->next;
+        ReceiverList* previousNode = link->previous;
+        previousNode->next = nextNode;
+        nextNode->previous = previousNode;
+        ::operator delete(link);
+        link = saved;
+    }
+}
+void AIManager::clean()
+{
+    firstList.clearOwnedReceivers();
+    secondList.clearOwnedReceivers();
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->detach(17, this);
+    events->detach(18, this);
+    events->detach(20, this);
+    events->detach(21, this);
+}
+
+#include "../characters/NPCEvent.h"
+#include "../characters/NPCDespawnEvent.h"
+#include "../vehicles/VehicleEvents.h"
+void AIManager::onEvent(const IEvent* event, const EventManager*)
+{
+    switch (event->getEventID()) {
+    case 17: {
+        ReceiverList* link = firstList.next;
+        while (&firstList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvNPCDeath*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    case 18: {
+        ReceiverList* link = firstList.next;
+        while (&firstList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvNPCDespawn*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    case 20: {
+        ReceiverList* link = secondList.next;
+        while (&secondList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvVehicleDestroyed*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    case 21: {
+        ReceiverList* link = secondList.next;
+        while (&secondList != link) {
+            ReceiverNode* node = static_cast<ReceiverNode*>(link);
+            if (static_cast<AIControllerPrefix*>(node->receiver)->target == static_cast<const EvVehicleDeactivated*>(event)->getTarget()) {
+                delete node->receiver;
+                node->receiver = 0;
+                ReceiverList* nextNode = node->next;
+                ReceiverList* previousNode = node->previous;
+                previousNode->next = nextNode;
+                nextNode->previous = previousNode;
+                ::operator delete(node);
+                break;
+            }
+            link = link->next;
+        }
+        break;
+    }
+    }
+}
+
+#include "NPC.h"
+#include "NPCController.h"
+#include "../core/NativeAllocator.h"
+#include "../core/NativeStdio.h"
+namespace stlp_priv { template<class T> struct _List_node; }
+namespace std {
+template<> stlp_priv::_List_node<IEventReceiver*>* allocator<stlp_priv::_List_node<IEventReceiver*> >::allocate(unsigned int, const void*) __attribute__((weak));
+}
+#include "CivPassiveController.h"
+#include "CivAgressiveController.h"
+#include "CopController.h"
+#include "GuardController.h"
+static const char aiInvalidType[] = "AIManager was asked to addAI on an invalid AI Type: %i\n";
+void AIManager::addAI(NPC* npc,gameloft::ai::StateID initial)
+{
+    NPCController* controller;
+    switch(npc->category428) {
+    case 0: {
+        if (initial == 0)
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_passive), static_cast<gameloft::ai::StateID>(1));
+        else
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_passive), initial);
+        break;
+    }
+    case 1: case 2: {
+        if (initial == 0)
+            controller = new CivAgressiveController(npc, static_cast<gameloft::ai::StateID>(1));
+        else
+            controller = new CivAgressiveController(npc, initial);
+        break;
+    }
+    case 3: {
+        CopController* cop;
+        if (initial == 0)
+            cop = new CopController(npc, static_cast<gameloft::ai::StateID>(1));
+        else
+            cop = new CopController(npc, initial);
+        EvWantedLevelChanged event;
+        cop->onEvent(&event,Application::GetInstance()->GetEventManager());
+        controller = cop;
+        break;
+    }
+    case 5: {
+        if (initial == 0)
+            controller = new GuardController(npc, static_cast<gameloft::ai::StateID>(3));
+        else
+            controller = new GuardController(npc, initial);
+        break;
+    }
+    case 6: {
+        if (initial == 0)
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::npc_scripted), static_cast<gameloft::ai::StateID>(1));
+        else
+            controller = new CivPassiveController(npc, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::npc_scripted), initial);
+        break;
+    }
+    default:
+        printf(aiInvalidType,npc->category428);
+        return;
+    }
+    typedef std::allocator<stlp_priv::_List_node<IEventReceiver*> > Allocator;
+    ReceiverNode* node = reinterpret_cast<ReceiverNode*>(reinterpret_cast<Allocator*>(&firstList)->allocate(1,0));
+    node->receiver = controller;
+    node->next = &firstList;
+    ReceiverList* previous = firstList.previous;
+    node->previous = previous;
+    previous->next = node;
+    firstList.previous = node;
+}

@@ -25,6 +25,14 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11EvMouseMoveD1Ev",
+        "_ZN11EvMouseMoveD0Ev",
+        "_ZN10EvKeyboardD1Ev",
+        "_ZN10EvKeyboardD0Ev",
+        "_ZN12EvMouseWheelD1Ev",
+        "_ZN12EvMouseWheelD0Ev",
+        "_ZN13EvMouseButtonD1Ev",
+        "_ZN13EvMouseButtonD0Ev",
         "_ZN11Application14stopMonitoringEPv",
         "_ZN11Application15startMonitoringEPvPKc",
         "_Z10SafeDeleteI15CControlManagerEvRPT_",
@@ -97,7 +105,11 @@
         ".event_delete",
         ".event_destructor",
         ".event_vtable",
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".application_event_EvMouseMove_vtable",
+        ".application_event_EvKeyboard_vtable",
+        ".application_event_EvMouseWheel_vtable",
+        ".application_event_EvMouseButton_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [

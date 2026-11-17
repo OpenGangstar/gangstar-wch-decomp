@@ -25,6 +25,13 @@
     "source": "src/game/ai/CivAgressiveController.cpp",
     "linker_script": "config/linker/CivAgressiveControllerAiStartup.ld",
     "functions": [
+        "_ZN22CivAgressiveController7onEventEPK6IEventPK12EventManager",
+        "_ZN22CivAgressiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE",
+        "_ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE",
+        "_ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE",
+        "_ZN22CivAgressiveControllerD1Ev",
+        "_ZN22CivAgressiveControllerD2Ev",
+        "_ZN22CivAgressiveControllerD0Ev",
         {
             "name": "__tcf_3",
             "address": "0x0034081d"
@@ -46,7 +53,27 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".civ_aggressive_vtable",
+        ".character_recovered_002f61f9",
+        ".character_recovered_002f512d",
+        ".character_player_event_vtable",
+        ".character_base_event_vtable",
+        ".character_base_event_dtor",
+        ".character_base_event_delete",
+        ".character_base_event_id"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN13NPCController7onEventEPK6IEventPK12EventManager",
+        "_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
+        "_ZN13NPCControllerD1Ev",
+        "_ZN3NPC12attackTargetEP11LevelObject",
+        "_ZN3NPC13goToNextPointEb",
+        "_ZN3NPC4waitEi"
+    ]
 }

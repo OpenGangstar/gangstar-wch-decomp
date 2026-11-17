@@ -25,6 +25,7 @@
     "source": "src/game/ai/CopVehicleController.cpp",
     "linker_script": "config/linker/CopVehicleControllerAiStartup.ld",
     "functions": [
+        "_ZN20CopVehicleController11switchStateEN8gameloft2ai7StateIDE",
         {
             "name": "__tcf_5",
             "address": "0x00341a0d"
@@ -65,12 +66,17 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev",
-        "_ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
-        "_ZN17VehicleControllerD1Ev",
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
-        "_ZN12EventManager6detachEiP14IEventReceiver"
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE",
+        "_ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
+        "_ZN17VehicleControllerD1Ev",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN7Vehicle15driveToLocationERKN3irr4core8vector3dIfEEb",
+        "_ZN7Vehicle4waitEi",
+        "_ZN7Vehicle6freezeEv"
     ]
 }

@@ -25,6 +25,8 @@
     "source": "src/game/ai/RadioStationController.cpp",
     "linker_script": "config/linker/RadioStationControllerStringStartup.ld",
     "functions": [
+        "_ZN22RadioStationController18selectRandomJingleEi",
+        "_ZN22RadioStationController16selectRandomSongEi",
         {
             "name": "__tcf_0",
             "address": "0x00352039"

@@ -21,6 +21,7 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/ApplicationRuntimeSections.ld
 SECTIONS
 {
+
     .application_delete_control 0x002d458c : { *(.gnu.linkonce.t._Z10SafeDeleteI15CControlManagerEvRPT_) }
     .application_logo_sprite 0x00413d30 : { *(.rodata.application_logo_sprite) }
     .application_resume_sprite 0x00413c88 : { *(.rodata.application_resume_sprite) }

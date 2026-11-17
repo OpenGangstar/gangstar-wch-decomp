@@ -115,3 +115,31 @@ static void __tcf_5()
         ::operator delete(value.array);
 }
 }
+
+#include "../vehicles/Vehicle.h"
+#include "../characters/PlayerTest.h"
+void CopVehicleController::switchState(gameloft::ai::StateID next)
+{
+    VehicleController::switchState(next);
+    switch (next) {
+    case 2:
+        vehicle->wait(5);
+        break;
+    case 4:
+        vehicle->freeze();
+        break;
+    case 8: {
+        vehicle->flags344 &= ~0x100u;
+        vehicle->flags344 &= ~0x80u;
+        Vehicle* value = vehicle;
+        if (value->aiTarget) {
+            value->unknown776 = value->unknown188;
+            value->flags344 |= 0x1000u;
+        }
+        break;
+    }
+    case 10:
+        vehicle->driveToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).position(), true);
+        break;
+    }
+}

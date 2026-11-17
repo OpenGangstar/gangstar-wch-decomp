@@ -22,6 +22,7 @@ private:
 class EvNPCDeath : public IEvent {
 public:
     explicit EvNPCDeath(NPC* npc) : npc(npc) { eventID = 17; }
+    NPC* getTarget() const { return npc; }
     virtual ~EvNPCDeath() {}
 
 private:

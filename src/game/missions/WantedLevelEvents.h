@@ -5,7 +5,7 @@
 
 class EvWantedLevelChanged : public IEvent {
 public:
-    EvWantedLevelChanged() { eventID = 23; }
+    EvWantedLevelChanged() : IEvent(23) {}
     virtual ~EvWantedLevelChanged() __attribute__((used)) {}
 };
 

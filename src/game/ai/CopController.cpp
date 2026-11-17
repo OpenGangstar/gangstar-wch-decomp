@@ -79,3 +79,82 @@ static void __tcf_4()
         ::operator delete(value.array);
 }
 }
+
+#include "NPCController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+#include "CopController.h"
+CopController::~CopController()
+{
+    if (unknown20)
+        s_hasAttemptedArrest=false;
+    EventManager* events=Application::GetInstance()->GetEventManager();
+    events->detach(16,this);
+    events->detach(23,this);
+    events->detach(24,this);
+    events->detach(22,this);
+}
+
+CopController::CopController(NPC* npc,gameloft::ai::StateID initial)
+    : NPCController(initial,npc,reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::cop)), unknown16(0), unknown20(false)
+{
+    CopController::switchState(initial,gameloft::ai::UnknownTransitionCondition);
+    EventManager* events=Application::GetInstance()->GetEventManager();
+    events->attach(16,this);
+    events->attach(23,this);
+    events->attach(24,this);
+    events->attach(22,this);
+}
+
+#include "NPC.h"
+#include "../characters/PlayerTest.h"
+#include "../characters/PlayerEvent.h"
+#include "../vehicles/Vehicle.h"
+void CopController::switchState(gameloft::ai::StateID next,gameloft::ai::TransitionCondition condition)
+{
+    switch (next) {
+    case static_cast<gameloft::ai::StateID>(1):
+        npc->goToNextPoint(false);
+        break;
+    case static_cast<gameloft::ai::StateID>(2):
+        npc->wait(5);
+        break;
+    case static_cast<gameloft::ai::StateID>(6):
+        npc->goToLocation(PlayerTest::GetPlayer()->position());
+        break;
+    case static_cast<gameloft::ai::StateID>(10):
+        npc->flags356 &= ~0x40u;
+        npc->runToLocation(PlayerTest::GetPlayer()->position());
+        break;
+    case static_cast<gameloft::ai::StateID>(8): {
+        LevelObject* target=reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+        PlayerTest* player=PlayerTest::GetPlayer();
+        if ((player->flags240&0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+            target=static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+        if (condition==static_cast<gameloft::ai::TransitionCondition>(21)) {
+            if (npc->target==static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle())
+                Application::GetInstance()->GetEventManager()->raise(EvPlayer(4));
+            else {
+                switchState(static_cast<gameloft::ai::StateID>(1),static_cast<gameloft::ai::TransitionCondition>(21));
+                return;
+            }
+        }
+        NPC* controlled=npc;
+        controlled->SetTarget(target);
+        controlled->flags356 |= 0x180u;
+        if (WantedLevelManager::getInstance()->unknown8<=1)
+            npc->flags356 |= 0x40000u;
+        else
+            npc->flags356 &= ~0x40000u;
+        if (static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()==target && !s_hasAttemptedArrest) {
+            s_hasAttemptedArrest=true;
+            unknown20=true;
+            npc->goToVehicle(static_cast<Vehicle*>(static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()),true,true,false,true);
+        } else {
+            npc->attackTarget(target);
+        }
+        break;
+    }
+    }
+    state=next;
+}

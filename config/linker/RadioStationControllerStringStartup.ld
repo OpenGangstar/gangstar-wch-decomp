@@ -8,6 +8,9 @@ _Znaj = 0x001c3ff8;
 __aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .radio_selection_0 0x003520c0 : { *string-startup-radiostationcontroller.o(.text._ZN22RadioStationController18selectRandomJingleEi) }
+    .radio_selection_1 0x003522b0 : { *string-startup-radiostationcontroller.o(.text._ZN22RadioStationController16selectRandomSongEi) }
+
     .string_startup_function_0 0x00352038 : { *string-startup-radiostationcontroller.o(.text.__tcf_0) }
     .string_startup_function_1 0x00352244 : { *string-startup-radiostationcontroller.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .string_startup_function_2 0x0035229c : { *string-startup-radiostationcontroller.o(.text._GLOBAL__I__ZN22RadioStationControllerC2Ev) }

@@ -6,6 +6,9 @@ class Path;
 // Constructor calls Character; the dispatcher allocates 456 bytes.
 // Remaining fields and virtual overrides are unrecovered.
 class NPC : public Character {
+    friend class AIManager;
+    friend class VehicleController;
+    friend class CopController;
 public:
     NPC(int type);
     void debug(irr::video::IVideoDriver* driver);
@@ -28,6 +31,7 @@ public:
     virtual void clean();
     virtual void dropSceneNode();
     void wait(int duration);
+    void freeze();
     virtual void WarmUp();
     void flee();
     void flee(const irr::core::vector3d<float>&) __attribute__((noinline));
@@ -62,6 +66,8 @@ private:
     void notifyAttacked(LevelObject*) __attribute__((noinline));
     friend class AchievementManager;
     friend class Character;
+    friend class GuardController;
+    friend class PlayerTest;
     irr::core::vector3d<float> unknown296;
     Weapon* weapon;
     Character* targetingCharacter;

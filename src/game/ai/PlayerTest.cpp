@@ -566,3 +566,265 @@ void PlayerTest::_SetTarget(LevelObject* replacement, bool changeCamera)
     }
     Lock::getInstance()->setTarget(target);
 }
+
+void PlayerTest::acquireTarget()
+{
+    Weapon* weapon = Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();
+    if (target)
+        return;
+    LevelObject* replacement = getAttackableTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(this)), weapon, 0);
+    if (replacement && replacement != target) {
+        _SetTarget(replacement, true);
+        lockRequested = true;
+    }
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+#include "../audio/SoundManager.h"
+void PlayerTest::startDriving()
+{
+    SoundManager::getInstance()->stop(PlayerTest::GetPlayer()->getAmbientSound(), -1, 0);
+    static_cast<SavePrimaryInterface*>(this)->setVehicle(static_cast<Vehicle*>(unknown312));
+    Application::GetInstance()->GetEventManager()->raise(EvPlayer(9));
+    vehicle->startDriving();
+    hideMesh();
+    CameraManager::getInstance()->setTouchScreenInputs(true);
+    ScriptManager::getInstance()->playerDrives(static_cast<Vehicle*>(unknown312));
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+bool PlayerTest::shoot(float elapsed, bool pressed)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    if (character->Character::shoot(elapsed, pressed)) {
+        Application::GetInstance()->GetEventManager()->raise(EvPlayer(2));
+        return true;
+    }
+    return false;
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+#include "../audio/SoundManager.h"
+#include "../characters/PhysicAttributes.h"
+void PlayerTest::stopDriving(playertest::PlayerCarState::ePlayerCarState state, bool left)
+{
+    vehicleVisibleInCinematic = false;
+    SoundManager* sound = SoundManager::getInstance();
+    int ambient = PlayerTest::GetPlayer()->getAmbientSound();
+    sound->unknown140 = true;
+    sound->playEx(ambient, 0, true, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    if (ScriptManager::getInstance()->areBlockingCommandsSkipped())
+        reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this))->resetCollisions();
+    else
+        unknown260 = true;
+    reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this))->positionInVehicle(left);
+    sceneNode->setRotation(vehicle->GetRotation() * irr::core::quaternion(0.0f, 0.0f, 1.57079632679489661923f));
+    vehicle->stopDriving();
+    Application* app = Application::GetInstance();
+    app->GetControlManager()->lock();
+    showMesh();
+    if (physicAttributes)
+        physicAttributes->SetPhysicInfo(*vehicle->getPhysicAttributes()->info, 0);
+    flags240 &= ~0x400u;
+    if (vehicle->GetSpeed() > 18.0f && state == static_cast<playertest::PlayerCarState::ePlayerCarState>(6)) {
+        vehicle->openDoorFromInside(true);
+        unknown372 = 9;
+    } else {
+        unknown372 = state;
+    }
+    app->GetEventManager()->raise(EvPlayer(10));
+    ScriptManager::getInstance()->playerDrives(0);
+}
+
+bool PlayerTest::orientTowards(irr::core::vector3d<float> direction)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    const irr::core::vector3d<float> right = character->GetRight();
+    const float dot = right.dotProduct(direction.normalize());
+    float angle = dot * (700.0f * unknown336);
+    sceneNode->setRotation(sceneNode->getRotation() * irr::core::quaternion(0.0f, 0.0f, angle * -0.017453292519943295f));
+    const irr::core::vector3d<float> front = character->GetFront();
+    facing.x = front.X;
+    facing.y = front.Y;
+    facing.z = front.Z;
+    return dot < 0.01f && dot > -0.01f;
+}
+
+#include "../core/VideoDriver.h"
+void PlayerTest::debug(irr::video::IVideoDriver* driver)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    irr::core::vector3d<float> right = character->GetRight();
+    irr::core::vector3d<float> front = character->GetFront();
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    irr::core::vector3d<float> up(transform[8], transform[9], transform[10]);
+    irr::core::vector3d<float> position = character->GetPosition();
+    {
+    irr::core::vector3d<float> scaledRight = right * 200.0f;
+    irr::core::vector3d<float> end(scaledRight.X + position.X, scaledRight.Y + position.Y, position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 0, 0, 255));
+    }
+    {
+    irr::core::vector3d<float> scaledFront = front * 200.0f;
+    irr::core::vector3d<float> end(scaledFront.X + position.X, scaledFront.Y + position.Y, position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 0, 255, 0));
+    }
+    {
+    irr::core::vector3d<float> scaledUp = up * 200.0f;
+    irr::core::vector3d<float> end(scaledUp.X + position.X, scaledUp.Y + position.Y, scaledUp.Z + position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 255, 0, 0));
+    }
+}
+
+#include "../characters/PhysicAttributes.h"
+#include "../rendering/GS3DStuff.h"
+void PlayerTest::teleportTo(const LevelObject* destination)
+{
+    SavePositionInterface* position=static_cast<SavePositionInterface*>(this);
+    if ((flags240&0x400u) && position->getVehicle()) {
+        stopDriving(playertest::PlayerCarState::MovingOut,true);
+        if (static_cast<SavePrimaryInterface*>(this)->getVehicle())
+            static_cast<SavePrimaryInterface*>(this)->getVehicle()->Stop();
+        position->setAnimation(165,1.0f,false,false,false);
+        unknown324=0;
+        Application::GetInstance()->GetControlManager()->exitCar(!ScriptManager::getInstance()->isInCinematic());
+        static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
+        static_cast<SavePrimaryInterface*>(this)->setVehicle(0);
+    }
+    unknown372=0;
+    position->setNextAnimation(165,1,false,false,false);
+    GS3DStuff::s_vehicle=0;
+    ResetPlayerTest(false);
+    Application::GetInstance()->GetHudManager()->walking();
+    sceneNode->setRotation(destination->GetRotation());
+    position->position(reinterpret_cast<const SaveVector3&>(static_cast<const irr::core::vector3d<float>&>(destination->GetPosition())));
+    PhysicAttributes* physics=physicAttributes;
+    unsigned short material=destination->GetMatID();
+    unsigned short triangle=destination->GetTriID();
+    physics->Init(material,triangle,position->position());
+}
+
+#include "../ui/Message.h"
+#include "../core/Geometry.h"
+extern "C" float acosf(float);
+namespace {
+template<class T> inline const T& photoClamp(const T& value,const T& low,const T& high)
+{
+    return irr::core::min_(irr::core::max_(value,low),high);
+}
+}
+
+bool PlayerTest::photo(Weapon* weapon)
+{
+    Application* app=Application::GetInstance();
+    irr::core::vector3d<float> forward=CameraManager::getInstance()->getLookAt()-CameraManager::getInstance()->getPosition();
+    forward.normalize();
+    irr::core::vector3d<float> point;
+    weapon->photo();
+    bool found=false;
+    for (int i=0;i<photoTargets.used;++i) {
+        if (!photoTargets.data[i] || !photoTargets.data[i]->isEnabled())
+            continue;
+        irr::core::vector3d<float> direction=photoTargets.data[i]->GetPosition()-CameraManager::getInstance()->getPosition();
+        double distance=sqrt((double)direction.getLengthSQ());
+        float angle=acosf(photoClamp(forward.dotProduct(direction.normalize()),-1.0f,1.0f));
+        if (angle < float(CameraManager::getInstance()->getFOV())*0.5f*0.01745329238474369049f*7.0f*0.125f) {
+            Character* character=reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+            if (character->canSeeLevelObject(photoTargets.data[i],point)) {
+                float scaledDistance=float(distance)*float(CameraManager::getInstance()->getFOV());
+                if (scaledDistance<30000.0f && scaledDistance>5000.0f) {
+                    static_cast<Message*>(app->GetHudManager()->message172)->setMessage(12374,3000,static_cast<MenuManager::eText>(9));
+                    photoTargets.data[i]->photographed();
+                    found=true;
+                }
+            }
+        }
+    }
+    if (!found && photoTargets.used)
+        static_cast<Message*>(app->GetHudManager()->message172)->setMessage(12375,3000,static_cast<MenuManager::eText>(9));
+    return true;
+}
+
+bool PlayerTest::snipe(Weapon* weapon)
+{
+    Application* app = Application::GetInstance();
+    Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this));
+    irr::core::vector3d<float> start = static_cast<SavePositionInterface*>(this)->position();
+    start.Z += 75.0f;
+    const irr::core::vector3d<float>& lookAt = CameraManager::getInstance()->getLookAt();
+    const irr::core::vector3d<float>& cameraPosition = CameraManager::getInstance()->getPosition();
+    irr::core::vector3d<float> direction = lookAt - cameraPosition;
+    direction.normalize();
+    direction *= weapon->getRange();
+    irr::core::vector3d<float> point;
+    irr::core::vector3d<float> normal;
+    LevelObject* object = 0;
+    bool ray = character->CastRay(start, direction, point, normal, object, true);
+    if (object && LevelObject::s_type[object->getObjectType()] == 5) {
+        character->showBloodSplash(point, normal);
+        weapon->snipe(true, start, start + direction * 7500.0f, normal);
+    } else {
+        weapon->snipe(ray, start, ray ? start + direction * 7500.0f : point, normal);
+    }
+    if (object && (LevelObject::s_type[object->getObjectType()] == 5 || LevelObject::s_type[object->getObjectType()] == 3)) {
+        object->shooted(weapon->getDamage(), character);
+        if (object->getHealth() <= 0)
+            onObjectKilled(object);
+    }
+    if (weapon->getClip() <= 0) {
+        if (app->GetWeaponManager()->getAmmo(weapon->getAmmoType(), AnyContext) > 0)
+            weapon->reload(false);
+    }
+    app->GetEventManager()->raise(EvPlayer(2));
+    return true;
+}
+
+extern "C" long lrand48();
+namespace {
+inline __attribute__((always_inline)) void playKilledReaction(int id)
+{
+    SoundManager* sound=SoundManager::getInstance();
+    sound->unknown140=true;
+    sound->playEx(id,0,false,1.0f,0,true,1.0f,0);
+    sound->unknown140=false;
+}
+}
+void PlayerTest::onObjectKilled(LevelObject* object)
+{
+    if (LevelObject::s_type[object->getObjectType()]==5) {
+        NPC* npc=static_cast<NPC*>(object);
+        unsigned int category=npc->category428;
+        if (category==0) {
+            if (lrand48()%2==1)
+                playKilledReaction(93);
+        } else if (category==1) {
+            int value=lrand48()%3;
+            if (value==1) playKilledReaction(83);
+            else if (value==2) playKilledReaction(71);
+        } else if (category==2) {
+            int value=lrand48()%3;
+            if (value==1) playKilledReaction(83);
+            else if (value==2) playKilledReaction(71);
+        } else if (category==3) {
+            if (lrand48()%2==1)
+                playKilledReaction(77);
+        }
+        if (!(object->unknown4&0x80u))
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(1));
+        else if (npc->category428==3)
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(7));
+        else
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(0));
+    } else if (LevelObject::s_type[object->getObjectType()]==3) {
+        if (!(object->unknown4&0x80u))
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(1));
+        else if (static_cast<Vehicle*>(object)->unknown240==3)
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(7));
+        else
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(0));
+    }
+}

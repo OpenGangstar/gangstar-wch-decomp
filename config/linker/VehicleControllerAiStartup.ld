@@ -19,6 +19,8 @@ __cxa_pure_virtual = 0;
 __aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .vehicle_switch_state 0x003426b4 : { *ai-startup-vehiclecontroller.o(.text._ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE) }
+    .vehicle_switch_table 0x004323e0 : { *ai-startup-vehiclecontroller.o(.rodata._ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE) }
     .vehicle_controller_next_point 0x0034264c : { *(.text._ZN17VehicleController12getNextPointEv) }
     .vehicle_controller_waypoint 0x00342514 : { *(.text._ZN17VehicleController15getNextWaypointEv) }
     .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }

@@ -1,5 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
+PROVIDE(printf = 0x001c4058);
+PROVIDE(_Znwj = 0x001c4814);
 INCLUDE build/matches/ai-startup-aimanager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
@@ -17,6 +19,11 @@ __cxa_pure_virtual = 0;
 INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .ai_add_npc 0x00340454 : { *ai-startup-aimanager.o(.text._ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE) }
+    .ai_add_npc_table 0x0042fabc : { *ai-startup-aimanager.o(.rodata._ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE) }
+    .ai_add_invalid_text 0x0042fa84 : { *ai-startup-aimanager.o(.rodata.aiInvalidType) }
+    .ai_manager_event 0x00340740 : { *ai-startup-aimanager.o(.text._ZN9AIManager7onEventEPK6IEventPK12EventManager) }
+    .ai_manager_clean 0x003406a8 : { *ai-startup-aimanager.o(.text._ZN9AIManager5cleanEv) }
     .wanted_changed_delete 0x003405cc : { *(.gnu.linkonce.t._ZN20EvWantedLevelChangedD0Ev) }
     .wanted_changed_destroy 0x003402e0 : { *(.gnu.linkonce.t._ZN20EvWantedLevelChangedD1Ev) }
     .wanted_changed_vtable 0x004acf80 : { *(.gnu.linkonce.d.rel.ro._ZTV20EvWantedLevelChanged) }

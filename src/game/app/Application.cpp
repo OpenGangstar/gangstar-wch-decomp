@@ -360,3 +360,28 @@ void Application::startMonitoring(void* pointer, const char* name)
 {
     (*reinterpret_cast<MonitoredPointerMap*>(monitoredPointers))[pointer] = name;
 }
+
+// Observed IEvent-derived interface only; payload layout is not asserted.
+class EvMouseMove : public IEvent {
+public:
+    virtual ~EvMouseMove() __attribute__((used)) {}
+};
+
+// Observed deletion interface only; payload and allocation extent remain unrecovered.
+// Do not instantiate this partial event interface.
+class EvKeyboard : public IEvent {
+public:
+    virtual ~EvKeyboard() __attribute__((used)) {}
+};
+
+// Observed event hierarchy only; no payload extent is asserted.
+class EvMouseWheel : public IEvent {
+public:
+    virtual ~EvMouseWheel() __attribute__((used)) {}
+};
+
+// Partial event interface only; mouse-button payload remains unrecovered.
+class EvMouseButton : public IEvent {
+public:
+    virtual ~EvMouseButton() __attribute__((used)) {}
+};

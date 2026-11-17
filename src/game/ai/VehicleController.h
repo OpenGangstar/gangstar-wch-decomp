@@ -9,6 +9,7 @@ namespace irr { namespace core { template<class T> class vector3d; } }
 namespace gameloft { namespace ai { struct Transition; } }
 
 class VehicleController : public IEventReceiver {
+    friend class CopVehicleController;
 public:
     VehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
         gameloft::ai::StateID state);

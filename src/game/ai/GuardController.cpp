@@ -78,3 +78,71 @@ static void __tcf_3()
         ::operator delete(value.array);
 }
 }
+
+#include "NPCController.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+#include "GuardController.h"
+GuardController::~GuardController()
+{
+    Application::GetInstance()->GetEventManager()->detach(16, this);
+    Application::GetInstance()->GetEventManager()->detach(22, this);
+}
+
+#include "NPC.h"
+GuardController::GuardController(NPC* value, gameloft::ai::StateID initial)
+    : NPCController(initial, value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::guard))
+{
+    npc->flags356 &= ~0x40000u;
+    Application::GetInstance()->GetEventManager()->attach(16, this);
+    Application::GetInstance()->GetEventManager()->attach(22, this);
+    GuardController::switchState(static_cast<gameloft::ai::StateID>(3), static_cast<gameloft::ai::TransitionCondition>(19));
+}
+
+#include "../characters/PlayerTest.h"
+#include "../combat/Weapon.h"
+#include "../vehicles/Vehicle.h"
+void GuardController::switchState(gameloft::ai::StateID next, gameloft::ai::TransitionCondition)
+{
+    switch (next) {
+    case 1:
+        npc->runToLocation(npc->searchOrigin);
+        npc->flags356 |= 0x80000u;
+        break;
+    case 2:
+        npc->wait(5);
+        break;
+    case 3: {
+        npc->clearOnAlert();
+        npc->goToIdle();
+        PlayerTest* player = PlayerTest::GetPlayer();
+        NPC* value;
+        LevelObject* target;
+        if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle()) {
+            value = npc;
+            target = PlayerTest::GetPlayer()->getVehicle();
+        } else {
+            value = npc;
+            target = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+        }
+        value->SetTarget(target);
+        value->flags356 |= 0x80u;
+        break;
+    }
+    case 8:
+        npc->attackTarget(npc->target);
+        break;
+    case 10: {
+        npc->flags356 &= ~0x40u;
+        if (npc->getWeapon()->getWeaponType() != 8) {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                npc->runToLocation(PlayerTest::GetPlayer()->getVehicle()->GetPosition());
+            else
+                npc->runToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).position());
+        }
+        break;
+    }
+    }
+    state = next;
+}
