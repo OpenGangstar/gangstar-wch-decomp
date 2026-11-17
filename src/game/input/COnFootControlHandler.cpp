@@ -11,6 +11,10 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "COnFootControlHandler.h"
 #include "CControlManager.h"
+#include "StickMoveEvent.h"
+#include "../combat/Weapon.h"
+#include "../core/SceneNode.h"
+#include "../app/Application.h"
 #include "../ui/Shop.h"
 #include "../characters/PlayerTest.h"
 #include "../core/LocalStartupStorage.h"
@@ -157,4 +161,29 @@ void COnFootControlHandler::handleStickReleased(bool fast)
     if (player->combatMode)
         player->resumeAttacking();
     unknown13 = false;
+}
+
+void COnFootControlHandler::handleStickMove(EvStickMove* event)
+{
+    if (event->magnitude > 0.0f) {
+        PlayerTest::GetPlayer()->move(event->direction, event->magnitude);
+        unknown13 = true;
+        controlManager->resetStickState();
+    }
+}
+
+void COnFootControlHandler::handleAttackReleased()
+{
+    unknown16 = 0;
+    controlManager->combatTimestamp = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    const int weaponType = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getWeapon()->getWeaponType();
+    if (weaponType == 0) {
+        if (controlManager->unknown44 && controlManager->unknown28[3] == 1) {
+            controlManager->unknown44 = false;
+            controlManager->unknown28[3] = 0;
+        }
+        controlManager->unknown28[2] = controlManager->combatTimestamp;
+    } else {
+        controlManager->unknown28[0] = controlManager->combatTimestamp;
+    }
 }

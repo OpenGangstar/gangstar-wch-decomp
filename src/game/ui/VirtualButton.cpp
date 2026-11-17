@@ -9,29 +9,13 @@
  */
 
 #include "VirtualButton.h"
+#include "VirtualButtonEvent.h"
 #include "../app/Application.h"
 #include "../core/ASprite.h"
 #include "../core/GameEventMethods.h"
 #include "../input/TouchScreenBase.h"
 #include "../core/EventManager.h"
 #include "VirtualButtonDestructor.h"
-
-class EvVirtualButton : public IEvent {
-public:
-    enum Action { Pressed, Held, Released, Canceled, ForceWidth = 0x7fffffff };
-
-    EvVirtualButton(Action action, EvVButton::ButtonType::Type type)
-        : action(action), buttonType(type)
-    {
-        eventID = 13;
-    }
-
-    virtual ~EvVirtualButton() {}
-
-private:
-    Action action;
-    EvVButton::ButtonType::Type buttonType;
-};
 
 void VirtualButton::update(double)
 {

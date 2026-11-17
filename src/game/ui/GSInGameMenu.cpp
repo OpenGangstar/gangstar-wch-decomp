@@ -96,6 +96,8 @@ void GSInGameMenu::skipFadeIn()
 
 #include "../app/Application.h"
 #include "../core/CameraManager.h"
+#include "../audio/SoundManager.h"
+#include "../core/VideoDriver.h"
 #include "../hud/CHudManager.h"
 #include "../hud/MenuManager.h"
 #include "../input/TouchScreenBase.h"
@@ -113,4 +115,43 @@ void GSInGameMenu::dtor(const StateMachine*)
         app->GetHudManager()->unlock();
     app->GetTouchScreen()->clear();
     CameraManager::getInstance()->setTouchScreenInputs(true);
+}
+
+extern int iAdditionMenuDepth;
+
+void GSInGameMenu::ctor(const StateMachine*)
+{
+    iAdditionMenuDepth = unknown16 = MenuManager::getInstance()->getDepth();
+    unknown8 = unknown12 = 150;
+    unknown4 = 0;
+    Application* app = Application::GetInstance();
+    ScriptManager::getInstance()->pause();
+    MenuManager::getInstance()->hideTexts();
+    SoundManager::getInstance()->pauseAllSounds();
+    app->GetHudManager()->lock();
+    app->GetTouchScreen()->clear();
+    CameraManager::getInstance()->setTouchScreenInputs(false);
+}
+
+void GSInGameMenu::draw2d(const StateMachine*)
+{
+    int alpha;
+    switch (unknown4) {
+    case 0:
+        alpha = 255 - static_cast<int>(unknown8) * 255 / static_cast<int>(unknown12);
+        break;
+    case 2:
+        alpha = static_cast<int>(unknown8) * 255 / static_cast<int>(unknown12);
+        break;
+    default:
+        return;
+    }
+    if (alpha > 0) {
+        Application* app = Application::GetInstance();
+        irr::video::IVideoDriver* driver = app->GetDevice()->getVideoDriver();
+        int width, height;
+        app->GetScreenDimensions(width, height);
+        driver->draw2DRectangle(irr::video::SColor(alpha, 0, 0, 0),
+            irr::core::rect<int>(0, 0, width, height));
+    }
 }

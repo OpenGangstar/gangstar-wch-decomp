@@ -21,10 +21,12 @@ public:
     bool isLocked() const;
     void setCameraProxy(GS3DStuff* proxy);
     void resetCombatTimestamp() { combatTimestamp = 0; }
+    void resetStickState() { unknown28[2] = 0; }
     static bool s_cameraTutorial, s_sniperTutorial;
 
 private:
     friend class SniperControlHandler;
+    friend class COnFootControlHandler;
 
     IControlHandler* activeHandler;
     IControlHandler* onFootHandler;

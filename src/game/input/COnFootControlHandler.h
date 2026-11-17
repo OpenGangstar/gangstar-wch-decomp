@@ -6,6 +6,8 @@
 class CControlManager;
 
 // Recovered virtual interface. The member layout is still incomplete.
+class EvStickMove;
+
 class COnFootControlHandler : public IControlHandler {
 public:
     explicit COnFootControlHandler(CControlManager* manager);
@@ -21,6 +23,8 @@ private:
     void handleEnterShopPressed();
     void handleLockPressed();
     void handleStickReleased(bool fast);
+    void handleStickMove(EvStickMove* event);
+    void handleAttackReleased();
     void handleWeaponSwitched();
     inline __attribute__((always_inline)) void resetInput();
     friend class CControlManager;

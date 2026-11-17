@@ -25,6 +25,8 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandler15handleStickMoveEP11EvStickMove",
+        "_ZN21COnFootControlHandler20handleAttackReleasedEv",
         "_ZN21COnFootControlHandler21handleEnterCarPressedEv",
         "_ZN21COnFootControlHandler22handleEnterShopPressedEv",
         "_ZN21COnFootControlHandler17handleLockPressedEv",
@@ -71,6 +73,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest4moveEff",
+        "_ZNK6Weapon13getWeaponTypeEv",
         "_ZN10PlayerTest11initDrivingEb",
         "_ZN4Shop7triggerEb",
         "_ZN10PlayerTest10toggleLockEv",

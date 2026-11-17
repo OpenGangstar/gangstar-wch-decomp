@@ -25,6 +25,8 @@
     "source": "src/game/ui/GSInGameMenu.cpp",
     "linker_script": "config/linker/GSInGameMenuHooks.ld",
     "functions": [
+        "_ZN12GSInGameMenu6draw2dEPK12StateMachine",
+        "_ZN12GSInGameMenu4ctorEPK12StateMachine",
         "_ZN12GSInGameMenu4dtorEPK12StateMachine",
         "_ZN12GSInGameMenu10skipFadeInEv",
         "_ZN12GSInGameMenu4drawEPK12StateMachine",
@@ -92,6 +94,12 @@
         ".shared_startup_empty_text"
     ],
     "external_thumb_functions": [
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZN11MenuManager9hideTextsEv",
+        "_ZN13ScriptManager5pauseEv",
+        "_ZN12SoundManager14pauseAllSoundsEv",
+        "_ZN11CHudManager4lockEv",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager9showTextsEv",
         "_ZN11Application11GetInstanceEv",

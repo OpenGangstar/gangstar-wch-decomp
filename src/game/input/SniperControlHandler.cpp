@@ -10,6 +10,7 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "SniperControlHandler.h"
+#include "../ui/VirtualButtonEvent.h"
 #include "CControlManager.h"
 #include "../characters/PlayerTest.h"
 #include "../app/Application.h"
@@ -140,4 +141,45 @@ void SniperControlHandler::handleAttackHeld()
     CControlManager* manager = controlManager;
     manager->combatTimestamp = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
     PlayerTest::GetPlayer()->attack(false);
+}
+
+void SniperControlHandler::handleAttackPressed()
+{
+    unknown12 = 1;
+    CControlManager* manager = controlManager;
+    manager->combatTimestamp = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    PlayerTest::GetPlayer()->attack(false);
+    controlManager->enterCombat();
+}
+
+void SniperControlHandler::onEvent(const IEvent* event, const EventManager*)
+{
+    if (controlManager->isLocked())
+        return;
+
+    switch (event->getEventID()) {
+    case 0:
+        onKeyboardEvent(event);
+        break;
+    case 7:
+        handleStickMove(reinterpret_cast<EvStickMove*>(const_cast<IEvent*>(event)));
+        break;
+    case 8:
+        handleStickReleased(false);
+        break;
+    case 13: {
+        const EvVirtualButton* button = static_cast<const EvVirtualButton*>(event);
+        if (button->getButtonType() == 0) {
+            switch (button->getAction()) {
+            case EvVirtualButton::Pressed: handleAttackPressed(); break;
+            case EvVirtualButton::Held: handleAttackHeld(); break;
+            case EvVirtualButton::Released: handleAttackReleased(); break;
+            default: break;
+            }
+        } else if (button->getButtonType() == 10 && button->getAction() == EvVirtualButton::Released) {
+            handleExitSightReleased();
+        }
+        break;
+    }
+    }
 }

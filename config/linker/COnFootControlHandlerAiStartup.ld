@@ -16,8 +16,11 @@ _ZN40retail_confootcontrolhandler_transitions22scripted_vehicle_transE = 0x00426
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __cxa_pure_virtual = 0;
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 SECTIONS
 {
+    .onfoot_stick_move 0x0032e614 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler15handleStickMoveEP11EvStickMove) }
+    .onfoot_attack_released 0x0032e69c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler20handleAttackReleasedEv) }
     .onfoot_enter_car 0x0032e5d8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler21handleEnterCarPressedEv) }
     .onfoot_enter_shop 0x0032e5bc : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler22handleEnterShopPressedEv) }
     .onfoot_lock_pressed 0x0032e59c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler17handleLockPressedEv) }
