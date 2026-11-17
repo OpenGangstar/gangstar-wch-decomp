@@ -58,6 +58,8 @@ static void _GLOBAL__I__ZN5WheelC2EP7ASpritei()
 #include "../app/Application.h"
 #include "../input/TouchScreenBase.h"
 #include "../hud/HudElement.h"
+#include "../core/SceneNode.h"
+#include "../core/ASprite.h"
 #include "../core/EventManager.h"
 #include "../core/GameEventMethods.h"
 #include "../core/PlacementNew.h"
@@ -138,3 +140,30 @@ inline EvWheelTurn::~EvWheelTurn()
 }
 
 void Wheel::setHand(bool) {}
+
+void Wheel::draw2d() const
+{
+    if (!(flags & 1))
+        return;
+    if (flags & 2) {
+        Application::GetInstance()->GetDevice()->getVideoDriver();
+        float rotation = displacement;
+        if (!positiveDirection)
+            rotation = -rotation;
+        const SpriteFrame* spriteFrame = sprite->GetFrame(frame);
+        const SpriteFrameModule* frameModule = sprite->GetFModule(spriteFrame->firstModule);
+        const SpriteModule* module = sprite->GetModule(frameModule->module);
+        const float x = (module->width >> 1) + frameModule->x;
+        const float y = (module->height >> 1) + frameModule->y;
+        irr::core::matrix4 matrix;
+        matrix.setRotationRadians(irr::core::vector3d<float>(0, 0, rotation));
+        irr::core::vector3d<float> translation(-x, -y, 0);
+        matrix.rotateVect(translation);
+        matrix.setTranslation(irr::core::vector3d<float>(x, y, 0) + translation);
+        ASprite::s_global_transform = matrix;
+        sprite->PaintFrame(frame, 0, 0, 0);
+        ASprite::s_global_transform = irr::core::matrix4();
+    } else {
+        HudElement::draw2d();
+    }
+}

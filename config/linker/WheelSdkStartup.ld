@@ -3,6 +3,11 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-wheel/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+memcpy = 0x001c4190;
+memset = 0x001c45d4;
 SECTIONS
 {
     .base_getid 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
@@ -22,6 +27,8 @@ SECTIONS
     .wheel_delete 0x0032cb38 : { *(.text._ZN5WheelD0Ev) }
     .wheel_destructor_thunk 0x0032cb68 : { *(.text._ZThn4_N5WheelD1Ev) }
     .wheel_destructor 0x0032cb7c : { *(.text._ZN5WheelD1Ev) }
+    .wheel_draw 0x0032ccf4 : { *(.text._ZNK5Wheel6draw2dEv) }
+    .wheel_draw_thunk 0x0032cce0 : { *(.text._ZThn4_NK5Wheel6draw2dEv) }
     .wheel_update 0x0032cba8 : { *(.text._ZN5Wheel6updateEd) }
     .wheel_vtable 0x004ac9c8 : { *(.data.rel.ro._ZTV5Wheel) }
     .sdk_startup_function_0 0x0032caf4 : { *sdk-startup-wheel.o(.text.__tcf_2) }

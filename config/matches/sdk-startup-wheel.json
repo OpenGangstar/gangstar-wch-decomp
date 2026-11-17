@@ -25,6 +25,8 @@
     "source": "src/game/vehicles/Wheel.cpp",
     "linker_script": "config/linker/WheelSdkStartup.ld",
     "functions": [
+        "_ZNK5Wheel6draw2dEv",
+        "_ZThn4_NK5Wheel6draw2dEv",
         "_ZN15EvWheelReleasedD0Ev",
         "_ZN15EvWheelReleasedD1Ev",
         "_ZN11EvWheelTurnD0Ev",
@@ -65,6 +67,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZNK10HudElement6draw2dEv",
         "_ZN12EventManager5raiseERK6IEvent",
         "_ZN10HudElementD1Ev",
         "_ZN11Application11GetInstanceEv"
