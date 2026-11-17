@@ -22,6 +22,19 @@ public:
     void ClearFocus();
 };
 
+static const char menuTexts[] = "Texts";
+static const char dialogArrow[] = "dialogArrow";
+
+void MenuManager::showTexts()
+{
+    reinterpret_cast<MyMenuFX*>(menuFX)->SetVisible(menuTexts, true);
+}
+
+void MenuManager::hideTexts()
+{
+    reinterpret_cast<MyMenuFX*>(menuFX)->SetVisible(menuTexts, false);
+}
+
 void* MenuManager::getState(const char* name) const
 {
     return reinterpret_cast<MyMenuFX*>(menuFX)->GetState(name);
@@ -50,6 +63,18 @@ struct MenuManagerFocusFields {
     unsigned char beforeClearingFocus[5];
     bool clearingFocus;
 };
+}
+
+extern "C" void _ZN11MenuManager15hideDialogArrowEv(MenuManager* manager)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    fields.menuFX->SetVisible(dialogArrow, false);
+}
+
+extern "C" void _ZN11MenuManager15showDialogArrowEv(MenuManager* manager)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    fields.menuFX->SetVisible(dialogArrow, true);
 }
 
 extern "C" bool _ZNK11MenuManager14isCurrentStateEPKc(const MenuManager* manager, const char* name)

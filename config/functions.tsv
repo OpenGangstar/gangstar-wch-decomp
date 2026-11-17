@@ -9480,10 +9480,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e40ed	0x10	MenuManager.cpp	game	ui	pending	_Z13fs_write_funcPKviPv	fs_write_func(void const*, int, void*)
 0x002e40fd	0x10	MenuManager.cpp	game	ui	pending	_Z12fs_read_funcPviS_	fs_read_func(void*, int, void*)
 0x002e410d	0x54	MenuManager.cpp	game	ui	pending	_Z12fs_open_funcPKcS0_	fs_open_func(char const*, char const*)
-0x002e4161	0x24	MenuManager.cpp	game	ui	pending	_ZN11MenuManager9showTextsEv	MenuManager::showTexts()
-0x002e4185	0x24	MenuManager.cpp	game	ui	pending	_ZN11MenuManager9hideTextsEv	MenuManager::hideTexts()
-0x002e41a9	0x24	MenuManager.cpp	game	ui	pending	_ZN11MenuManager15hideDialogArrowEv	MenuManager::hideDialogArrow()
-0x002e41cd	0x24	MenuManager.cpp	game	ui	pending	_ZN11MenuManager15showDialogArrowEv	MenuManager::showDialogArrow()
+0x002e4161	0x24	MenuManager.cpp	game	ui	matched	_ZN11MenuManager9showTextsEv	MenuManager::showTexts()
+0x002e4185	0x24	MenuManager.cpp	game	ui	matched	_ZN11MenuManager9hideTextsEv	MenuManager::hideTexts()
+0x002e41a9	0x24	MenuManager.cpp	game	ui	matched	_ZN11MenuManager15hideDialogArrowEv	MenuManager::hideDialogArrow()
+0x002e41cd	0x24	MenuManager.cpp	game	ui	matched	_ZN11MenuManager15showDialogArrowEv	MenuManager::showDialogArrow()
 0x002e41f1	0x36	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf9tu_stringC1EPKc	gameswf::tu_string::tu_string(char const*)
 0x002e4229	0x10	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager8getStateEPKc	MenuManager::getState(char const*) const
 0x002e4239	0x22	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager14isCurrentStateEPKc	MenuManager::isCurrentState(char const*) const
