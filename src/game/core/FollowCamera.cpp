@@ -51,6 +51,20 @@ void FollowCamera::init(LevelObject* target, int mode)
     physics->SetIsOnGround(0, false);
 }
 
+void FollowCamera::goBehind(LevelObject* object)
+{
+    if (!object)
+        return;
+
+    setLookAt(owner->GetPosition());
+    lookAt.Z = owner->GetPosition().Z + 180.0f;
+
+    irr::core::vector3d<float> direction = object->GetPosition() - owner->GetPosition();
+    direction.normalize();
+    setPosition(owner->GetPosition() - direction * 450.0f);
+    position.Z = owner->GetPosition().Z + 150.0f;
+}
+
 void FollowCamera::debug(irr::video::IVideoDriver*)
 {
 }

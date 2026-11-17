@@ -31,6 +31,7 @@ SECTIONS
     .camera_variant_angles 0x0033321c : { *ai-startup-followcamera.o(.text._ZN12FollowCamera12updateAnglesEii) }
     .follow_camera_position 0x00333450 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }
     .follow_camera_init 0x00333788 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera4initEP11LevelObjecti) }
+    .follow_camera_go_behind 0x003339bc : { *ai-startup-followcamera.o(.text._ZN12FollowCamera8goBehindEP11LevelObject) }
     .follow_camera_vtable 0x004acc90 : { *ai-startup-followcamera.o(.data.rel.ro._ZTV12FollowCamera) }
     .camera_variant_debug 0x00333218 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE) }
     .camera_variant_dtor 0x003332c0 : { *ai-startup-followcamera.o(.text._ZN12FollowCameraD1Ev .text._ZN12FollowCameraD2Ev) }
