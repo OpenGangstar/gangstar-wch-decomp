@@ -13,6 +13,47 @@
 #include "../core/LocalStartupText.h"
 #include "Trail.h"
 
+Trail::~Trail()
+{
+    CleanUp();
+}
+
+void Trail::ModifyLife(float scale)
+{
+    activePointCount = 0;
+    for (int i = 0; i < trailPointCount && points[i].remainingLife > 0; ++i) {
+        points[i].remainingLife = static_cast<int>(points[i].remainingLife * scale);
+        ++activePointCount;
+    }
+}
+
+bool Trail::Init(int pointCount, int mode, int lifetime, float width, float scale)
+{
+    trailMode = mode;
+    trailScaleSquared = scale * scale;
+    segmentWidth = width;
+    vertexCount = pointCount * 2;
+    segmentCount = pointCount - 1;
+    trailLifetime = lifetime;
+    trailPointCount = pointCount;
+    triangleCount = segmentCount * 2;
+    indexCount = triangleCount * 3;
+    points = new TrailPoint[pointCount];
+    unknown68 = 0;
+    unknown76 = false;
+    CreateMeshSceneNode();
+    return true;
+}
+
+void Trail::SetSegmentWidth(float width)
+{
+    segmentWidth = width;
+}
+
+void Trail::Render()
+{
+}
+
 void Trail::SetLastAddedPoint(irr::core::vector3d<float> point)
 {
     lastAddedPoint = point;

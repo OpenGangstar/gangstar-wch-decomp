@@ -26,6 +26,13 @@
     "linker_script": "config/linker/TrailSdkStartup.ld",
     "functions": [
         "_ZN5Trail17SetLastAddedPointEN3irr4core8vector3dIfEE",
+        "_ZN5Trail15SetSegmentWidthEf",
+        "_ZN5Trail6RenderEv",
+        "_ZN5Trail10ModifyLifeEf",
+        "_ZN5TrailD0Ev",
+        "_ZN5TrailD1Ev",
+        "_ZN5TrailD2Ev",
+        "_ZN5Trail4InitEiiiff",
         {
             "name": "__tcf_2",
             "address": "0x00348f65"
@@ -40,6 +47,7 @@
         }
     ],
     "sections": [
+        ".trail_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -49,5 +57,9 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN5Trail7CleanUpEv",
+        "_ZN5Trail19CreateMeshSceneNodeEv"
+    ]
 }

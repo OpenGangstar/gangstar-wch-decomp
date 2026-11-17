@@ -4,8 +4,10 @@
 #include "../core/Vector3.h"
 
 struct TrailPoint {
-    unsigned char unknown0[24];
+    irr::core::vector3d<float> left;
+    irr::core::vector3d<float> right;
     int remainingLife;
+    TrailPoint() : remainingLife(0) {}
 };
 
 class Trail {
@@ -14,16 +16,35 @@ public:
     virtual ~Trail();
     bool Init(int pointCount, int mode, int lifetime, float width, float scale);
     void Update();
+    void Render();
+    void ModifyLife(float scale);
     void SetSegmentWidth(float width);
     void SetLastAddedPoint(irr::core::vector3d<float> point);
 
-    unsigned char unknown4[32];
+private:
+    void CreateMeshSceneNode();
+    void CleanUp();
+    int trailLifetime;
+    float segmentWidth;
+    int trailMode;
+    int trailPointCount;
+    int segmentCount;
+    int triangleCount;
+    int vertexCount;
+    int indexCount;
+public:
     TrailPoint* points;
 
 private:
-    unsigned char unknown40[8];
+    unsigned char unknown40[4];
+    int activePointCount;
     irr::core::vector3d<float> lastAddedPoint;
-    unsigned char unknown60[20];
+    float trailScaleSquared;
+    unsigned char unknown64[4];
+    int unknown68;
+    unsigned char unknown72[4];
+    bool unknown76;
+    unsigned char unknown77[3];
 };
 
 #endif
