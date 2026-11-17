@@ -1,5 +1,12 @@
 SECTIONS
 {
+    .widget_main_menu_button_info 0x002ec180 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb) }
+    .widget_main_menu_pressed_button 0x002ec010 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets8MainMenu16GetPressedButtonEv) }
+    .widget_main_menu_constructor 0x002ec428 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenuC1Ev .text._ZN7Widgets8MainMenuC2Ev) }
+    .widget_main_menu_button_format 0x0041a71c : { *ai-startup-menuwidget.o(.rodata.mainMenuButtonFormat) }
+    .widget_main_menu_name 0x0041a7b0 : { *ai-startup-menuwidget.o(.rodata.widgetMainMenuName) }
+    .widget_main_menu_twitter_name 0x0041a7c0 : { *ai-startup-menuwidget.o(.rodata.widgetMainMenuTwitterName) }
+    .widget_main_menu_double_option_name 0x0041a7dc : { *ai-startup-menuwidget.o(.rodata.widgetMainMenuDoubleOptionName) }
     .widget_ig_menu_hide_buttons 0x002ec2c4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu11HideButtonsEv) }
     .widget_ig_menu_show_buttons 0x002ec33c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu11ShowButtonsEv) }
     .widget_ig_menu_button_info 0x002ec114 : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib) }

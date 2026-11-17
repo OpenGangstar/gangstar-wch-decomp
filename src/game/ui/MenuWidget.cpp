@@ -152,6 +152,11 @@ Widgets::ConfirmPayment::ConfirmPayment()
 class Script;
 
 namespace Widgets {
+struct MenuButtonInfo {
+    int textId;
+    bool enabled;
+};
+
 class IGMenu : public MenuWidget {
 public:
     enum eButton { First, Second, Third, Fourth, Fifth };
@@ -165,13 +170,23 @@ private:
     template <bool show>
     void SetButtonsVisible();
 
-    struct Button {
-        int textId;
-        bool enabled;
-    };
-    Button buttons[5];
+    MenuButtonInfo buttons[5];
     int titleTextId;
     int backButtonTextId;
+};
+
+class MainMenu : public MenuWidget {
+public:
+    enum eButton { First, Second, Third, Fourth, None };
+    MainMenu();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    void SetButtonInfo(eButton button, int id, bool enabled, bool show);
+    int GetPressedButton() const;
+
+private:
+    MenuButtonInfo buttons[4];
+    int pressedButton;
 };
 
 class Volumes : public MenuWidget {
@@ -287,6 +302,37 @@ void Widgets::IGMenu::SetButtonInfo(eButton button, int id, bool enabled)
     char name[64];
     sprintf(name, igMenuButtonFormat, button);
     renderFX->SetEnabled(name, enabled);
+}
+
+static const char mainMenuButtonFormat[] = "widgetMainMenu.btnMain%d";
+static const char widgetMainMenuName[] = "widgetMainMenu";
+static const char widgetMainMenuTwitterName[] = "widgetMainMenu.btnTwitter";
+static const char widgetMainMenuDoubleOptionName[] = "widgetMainMenu.DoubleOption";
+
+int Widgets::MainMenu::GetPressedButton() const
+{
+    return pressedButton;
+}
+
+void Widgets::MainMenu::SetButtonInfo(eButton button, int id, bool enabled, bool show)
+{
+    buttons[button].textId = id;
+    buttons[button].enabled = enabled;
+    char name[64];
+    sprintf(name, mainMenuButtonFormat, button);
+    renderFX->SetEnabled(name, enabled);
+    renderFX->SetVisible(name, show);
+}
+
+Widgets::MainMenu::MainMenu()
+    : MenuWidget(widgetMainMenuName), pressedButton(None)
+{
+    for (int i = 0; i < 4; ++i) {
+        buttons[i].textId = -1;
+        buttons[i].enabled = true;
+    }
+    renderFX->SetVisible(widgetMainMenuTwitterName, false);
+    renderFX->SetVisible(widgetMainMenuDoubleOptionName, false);
 }
 
 int Widgets::Volumes::s_playlist = -2;

@@ -27,6 +27,10 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb",
+        "_ZNK7Widgets8MainMenu16GetPressedButtonEv",
+        "_ZN7Widgets8MainMenuC1Ev",
+        "_ZN7Widgets8MainMenuC2Ev",
         "_ZN7Widgets6IGMenu11HideButtonsEv",
         "_ZN7Widgets6IGMenu11ShowButtonsEv",
         "_ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib",
@@ -95,6 +99,10 @@
         }
     ],
     "sections": [
+        ".widget_main_menu_button_format",
+        ".widget_main_menu_name",
+        ".widget_main_menu_twitter_name",
+        ".widget_main_menu_double_option_name",
         ".widget_ig_menu_button_format",
         ".widget_volumes_playlist",
         ".widget_title_icon",
