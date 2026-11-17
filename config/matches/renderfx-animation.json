@@ -27,6 +27,9 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN8RenderFX12BeginDisplayEv",
+        "_ZN8RenderFX6RenderEv",
+        "_ZN8RenderFX10EndDisplayEv",
         "_ZN8RenderFX16SetEventListenerEPNS_13EventListenerE",
         "_ZN8RenderFX20SetControllerEnabledEib",
         "_ZN8RenderFX16SetInputBehaviorEi",
@@ -72,6 +75,12 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_ZN7gameswf6player8get_rootEv",
+        "_ZNK7gameswf11ref_counted7add_refEv",
+        "_ZN7gameswf11ref_counted8drop_refEv",
+        "_ZN7gameswf4root13begin_displayEv",
+        "_ZN7gameswf4root7displayEv",
+        "_ZN7gameswf4root11end_displayEv",
         "_ZN7gameswf6matrixC1Ev",
         "_ZN7gameswf6matrix23concatenate_translationEff",
         "_ZNK7gameswf6matrix11get_x_scaleEv",

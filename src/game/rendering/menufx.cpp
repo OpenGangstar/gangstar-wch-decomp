@@ -16,7 +16,20 @@ extern "C" int vsprintf(char* buffer, const char* format, __builtin_va_list argu
 
 void SwfFree(void* buffer);
 
+extern "C" {
+void _ZNK7gameswf11ref_counted7add_refEv(const gameswf::root* root);
+void _ZN7gameswf11ref_counted8drop_refEv(gameswf::root* root);
+void _ZN7gameswf4root13begin_displayEv(gameswf::root* root);
+void _ZN7gameswf4root7displayEv(gameswf::root* root);
+void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
+}
+
 namespace gameswf {
+class player {
+public:
+    root* get_root();
+};
+
 class cxform {
 public:
     static cxform identity;
@@ -103,12 +116,33 @@ struct ControllerState {
 struct RenderFXState {
     unsigned char prefix[4];
     gameswf::array<gameswf::character*> matches;
-    unsigned char beforeRoot[12];
+    unsigned char beforePlayer[8];
+    gameswf::player* player;
     gameswf::character* root;
     gameswf::character* context;
     ControllerState controllers[4];
     int inputBehavior;
     RenderFX::EventListener* listener;
+};
+
+class DisplayRoot {
+public:
+    explicit DisplayRoot(gameswf::root* root) : root(root)
+    {
+        if (root)
+            _ZNK7gameswf11ref_counted7add_refEv(root);
+    }
+
+    ~DisplayRoot()
+    {
+        if (root)
+            _ZN7gameswf11ref_counted8drop_refEv(root);
+    }
+
+    gameswf::root* get() const { return root; }
+
+private:
+    gameswf::root* root;
 };
 
 struct CharacterTransform {
@@ -152,6 +186,24 @@ struct SpriteEnabledState {
 extern const char activateAnimation[] __attribute__((visibility("hidden"))) = "activated";
 static const char focusOutAnimation[] = "focus_out";
 extern const char disabledAnimation[] __attribute__((visibility("hidden"))) = "disabled";
+
+void RenderFX::BeginDisplay()
+{
+    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    _ZN7gameswf4root13begin_displayEv(root.get());
+}
+
+void RenderFX::Render()
+{
+    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    _ZN7gameswf4root7displayEv(root.get());
+}
+
+void RenderFX::EndDisplay()
+{
+    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    _ZN7gameswf4root11end_displayEv(root.get());
+}
 
 void RenderFX::SetEventListener(EventListener* listener)
 {

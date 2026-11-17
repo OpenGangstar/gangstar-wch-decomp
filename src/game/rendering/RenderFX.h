@@ -25,6 +25,9 @@ public:
     class EventListener;
     void SetEventListener(EventListener* listener);
     void SetInputBehavior(int behavior);
+    void BeginDisplay();
+    void Render();
+    void EndDisplay();
     void SetControllerEnabled(int index, bool enabled);
     void SetContext(gameswf::character* character);
     gameswf::character* GetRoot() const;

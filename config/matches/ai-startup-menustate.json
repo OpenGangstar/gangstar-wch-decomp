@@ -309,6 +309,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7gameswf6player8get_rootEv",
+        "_ZNK7gameswf11ref_counted7add_refEv",
+        "_ZN7gameswf4root13begin_displayEv",
+        "_ZN7gameswf4root7displayEv",
+        "_ZN7gameswf4root11end_displayEv",
         "_ZN7gameswf6matrixC1Ev",
         "_ZN7gameswf6matrix23concatenate_translationEff",
         "_ZNK7gameswf6matrix11get_x_scaleEv",

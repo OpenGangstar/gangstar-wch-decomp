@@ -29,6 +29,9 @@ SECTIONS
     .renderfx_get_root 0x003ec3d0 : { *renderfx-animation.o(.text._ZNK8RenderFX7GetRootEv) }
     .renderfx_set_text_buffering 0x003ec9c4 : { *renderfx-animation.o(.text._ZN8RenderFX23SetTextBufferingEnabledEb) }
     .renderfx_get_flash_root 0x003ec9cc : { *renderfx-animation.o(.text._ZNK8RenderFX12GetFlashRootEv) }
+    .renderfx_begindisplay 0x003ed680 : { *renderfx-animation.o(.text._ZN8RenderFX12BeginDisplayEv) }
+    .renderfx_render 0x003ed958 : { *renderfx-animation.o(.text._ZN8RenderFX6RenderEv) }
+    .renderfx_enddisplay 0x003ed980 : { *renderfx-animation.o(.text._ZN8RenderFX10EndDisplayEv) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }
