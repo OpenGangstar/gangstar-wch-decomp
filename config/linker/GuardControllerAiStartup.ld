@@ -15,6 +15,8 @@ _ZN34retail_guardcontroller_transitions11guard_transE = 0x00431d14;
 _ZN34retail_guardcontroller_transitions22scripted_vehicle_transE = 0x00431dbc;
 SECTIONS
 {
+    .guard_switch_state 0x003420cc : { *ai-startup-guardcontroller.o(.text._ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
+    .guard_switch_table 0x00431814 : { *ai-startup-guardcontroller.o(.rodata._ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
     .guardcontroller_constructor 0x00342220 : { *ai-startup-guardcontroller.o(.text._ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE .text._ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE) }
     .guard_dtor 0x00341d24 : { *ai-startup-guardcontroller.o(.text._ZN15GuardControllerD1Ev .text._ZN15GuardControllerD2Ev) }
     .guard_delete 0x00341d64 : { *ai-startup-guardcontroller.o(.text._ZN15GuardControllerD0Ev) }

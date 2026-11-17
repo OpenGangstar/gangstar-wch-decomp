@@ -5,6 +5,7 @@
 class EvPlayer : public IEvent {
 public:
     explicit EvPlayer(int value) : IEvent(22), state(value) {}
+    int getState() const { return state; }
     virtual ~EvPlayer() __attribute__((used)) {}
 private:
     int state;

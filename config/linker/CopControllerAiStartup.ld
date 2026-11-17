@@ -17,6 +17,9 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .cop_switch_state 0x00341138 : { *ai-startup-copcontroller.o(.text._ZN13CopController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
+    .cop_switch_table 0x00430c48 : { *ai-startup-copcontroller.o(.rodata._ZN13CopController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
+    .cop_constructor 0x00341304 : { *ai-startup-copcontroller.o(.text._ZN13CopControllerC1EP3NPCN8gameloft2ai7StateIDE .text._ZN13CopControllerC2EP3NPCN8gameloft2ai7StateIDE) }
     .cop_dtor 0x00340f48 : { *ai-startup-copcontroller.o(.text._ZN13CopControllerD1Ev .text._ZN13CopControllerD2Ev) }
     .cop_delete 0x00340edc : { *ai-startup-copcontroller.o(.text._ZN13CopControllerD0Ev) }
     .cop_vtable 0x004acfc8 : { *ai-startup-copcontroller.o(.data.rel.ro._ZTV13CopController) }
@@ -55,3 +58,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11cop_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 12, "_ZN3irr2ps5vHalfE extent");
+
+INCLUDE config/linker/PlayerEventSections.ld

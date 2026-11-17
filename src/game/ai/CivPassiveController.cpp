@@ -104,3 +104,48 @@ CivPassiveController::CivPassiveController(NPC* value, const gameloft::ai::Trans
     Application::GetInstance()->GetEventManager()->attach(16, this);
     Application::GetInstance()->GetEventManager()->attach(22, this);
 }
+
+#include "NPC.h"
+#include "../characters/PhysicAttributes.h"
+void CivPassiveController::switchState(gameloft::ai::StateID next, gameloft::ai::TransitionCondition condition)
+{
+    switch (next) {
+    case 1:
+        npc->goToNextPoint(condition == 21);
+        break;
+    case 2:
+        npc->wait(2);
+        break;
+    case 4:
+        npc->freeze();
+        break;
+    case 5:
+        npc->flee(npc->getPhysicAttributes()->GetNextRandomPos(0, 0, npc->GetPosition()));
+        break;
+    }
+    state = next;
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../characters/PlayerTest.h"
+#include "../vehicles/Vehicle.h"
+void CivPassiveController::onEvent(const IEvent* event, const EventManager* sender)
+{
+    NPCController::onEvent(event, sender);
+    if (event->getEventID() == 22) {
+        const EvPlayer* playerEvent = static_cast<const EvPlayer*>(event);
+        switch (playerEvent->getState()) {
+        case 9:
+            if (state == 8) {
+                LevelObject* previous = npc->target;
+                if (reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == previous)
+                    npc->SetTarget(PlayerTest::GetPlayer()->getVehicle());
+            }
+            break;
+        case 10:
+            if (state == 8 && npc->target == PlayerTest::GetPlayer()->getVehicle())
+                npc->SetTarget(reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+            break;
+        }
+    }
+}

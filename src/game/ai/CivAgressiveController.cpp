@@ -104,3 +104,41 @@ CivAgressiveController::CivAgressiveController(NPC* value, gameloft::ai::StateID
     Application::GetInstance()->GetEventManager()->attach(16, this);
     Application::GetInstance()->GetEventManager()->attach(22, this);
 }
+
+#include "../characters/PlayerTest.h"
+void CivAgressiveController::switchState(gameloft::ai::StateID next, gameloft::ai::TransitionCondition)
+{
+    switch (static_cast<int>(next)) {
+    case 1:
+        npc->goToNextPoint(false);
+        break;
+    case 2:
+        npc->wait(2);
+        break;
+    case 6:
+        npc->attackTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+        break;
+    case 8:
+        npc->attackTarget(npc->target);
+        break;
+    }
+    state = next;
+}
+
+#include "../characters/PlayerEvent.h"
+#include "../vehicles/Vehicle.h"
+void CivAgressiveController::onEvent(const IEvent* event, const EventManager* manager)
+{
+    NPCController::onEvent(event, manager);
+    if (event->getEventID() == 22) {
+        const EvPlayer* playerEvent = static_cast<const EvPlayer*>(event);
+        switch (playerEvent->getState()) {
+        case 9:
+            npc->SetTarget(PlayerTest::GetPlayer()->getVehicle());
+            break;
+        case 10:
+            npc->SetTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+            break;
+        }
+    }
+}

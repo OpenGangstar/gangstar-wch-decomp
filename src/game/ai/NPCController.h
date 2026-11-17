@@ -5,10 +5,11 @@
 
 namespace gameloft { namespace ai {
 struct Transition;
-enum TransitionCondition { UnknownTransitionCondition = 0 };
+enum TransitionCondition { UnknownTransitionCondition = 0, ObservedTransitionCondition21 = 21 };
 } }
 
 class NPCController : public IEventReceiver {
+    friend class CopController;
     friend class GuardController;
     friend class CivPassiveController;
     friend class CivAgressiveController;

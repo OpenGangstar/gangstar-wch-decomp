@@ -7,7 +7,14 @@ class Vehicle;
 class NPC;
 namespace gameloft { namespace ai {
 // Only the state value observed by Race is named here.
-enum StateID { RaceDriving = 1 };
+// Other observed values remain numeric in reconstructed switches until their
+// original names are known.
+// The range marker preserves the retail signed 32-bit enum comparisons; it is
+// an ABI declaration, not a claimed gameplay state.
+enum StateID {
+    RaceDriving = 1,
+    StateIDForceSignedWidth = -2147483647 - 1
+};
 } }
 
 // Partial call interface and observed 24-byte singleton layout.

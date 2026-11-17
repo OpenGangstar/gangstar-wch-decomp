@@ -92,3 +92,43 @@ OK  _ZN13CopControllerD2Ev  0x00340f49  104 bytes
 OK  _ZN13CopControllerD0Ev  0x00340edd  108 bytes
 OK SECTION .cop_vtable  0x004acfc8  24 bytes
 ```
+
+## State dispatch and civilian events
+
+The recovered state handlers preserve each controller's original control flow,
+NPC operations, target selection, event construction, and state-store ordering.
+The cop and guard switch tables are compared as complete 44-byte sections.
+The cop constructor preserves its cached event manager and four attachments.
+Civilian event handlers reuse EvPlayer's inline getState accessor, and retain
+all seven existing event helper sections through PlayerEventSections.ld.
+CharacterRecoveredSections.ld includes the same shared fragment, preserving
+its existing output section names and addresses.
+
+StateID now declares its observed signed 32-bit range with an explicit minimum
+integer range marker. This marker is an ABI declaration, not a claimed gameplay
+state or an inferred original enumerator name. The original RaceDriving name is
+retained; other recovered states use numeric cases until their names are known.
+TransitionCondition includes the observed comparison value 21. Without the
+signed range, GCC eliminates valid states or uses unsigned branch conditions.
+
+Validation caught an existing NPC::equipWeapon register-order difference after
+unused provisional numeric StateID names were added. Removing those unused
+names while retaining the signed range restored the complete original function.
+No existing matched implementation was edited. The integrated checks also
+rebuild NPC and PlayerTest dependencies to prove this preservation.
+
+The combined scoped build exited 0 for the four controller units and PlayerTest,
+with all dependencies, functions, tables, strings, and GOT comparisons passing:
+
+```text
+OK  _ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE  0x003420cd  340 bytes
+OK SECTION .guard_switch_table  0x00431814  44 bytes
+OK  _ZN22CivAgressiveController7onEventEPK6IEventPK12EventManager  0x0034084d  92 bytes
+OK  _ZN22CivAgressiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE  0x003408a9  86 bytes
+OK  _ZN20CivPassiveController7onEventEPK6IEventPK12EventManager  0x00340cd5  148 bytes
+OK  _ZN20CivPassiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE  0x00340b6d  132 bytes
+OK  _ZN13CopController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE  0x00341139  460 bytes
+OK  _ZN13CopControllerC1EP3NPCN8gameloft2ai7StateIDE  0x00341305  124 bytes
+OK  _ZN13CopControllerC2EP3NPCN8gameloft2ai7StateIDE  0x00341305  124 bytes
+OK SECTION .cop_switch_table  0x00430c48  44 bytes
+```

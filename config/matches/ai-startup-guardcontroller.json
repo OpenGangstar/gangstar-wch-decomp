@@ -25,6 +25,7 @@
     "source": "src/game/ai/GuardController.cpp",
     "linker_script": "config/linker/GuardControllerAiStartup.ld",
     "functions": [
+        "_ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE",
         "_ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE",
         "_ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE",
         "_ZN15GuardControllerD1Ev",
@@ -52,15 +53,21 @@
             "name": ".got",
             "offset": 864
         },
-        ".guard_vtable"
+        ".guard_vtable",
+        ".guard_switch_table"
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
         "_ZN13NPCControllerD1Ev",
-        "_ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE"
+        "_ZN3NPC12attackTargetEP11LevelObject",
+        "_ZN3NPC12clearOnAlertEv",
+        "_ZN3NPC4waitEi",
+        "_ZN9Character8goToIdleEv",
+        "_ZNK6Weapon13getWeaponTypeEv"
     ]
 }

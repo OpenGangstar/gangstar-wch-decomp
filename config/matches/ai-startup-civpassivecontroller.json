@@ -25,6 +25,8 @@
     "source": "src/game/ai/CivPassiveController.cpp",
     "linker_script": "config/linker/CivPassiveControllerAiStartup.ld",
     "functions": [
+        "_ZN20CivPassiveController7onEventEPK6IEventPK12EventManager",
+        "_ZN20CivPassiveController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE",
         "_ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE",
         "_ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE",
         "_ZN20CivPassiveControllerD1Ev",
@@ -52,15 +54,28 @@
             "name": ".got",
             "offset": 864
         },
-        ".civ_passive_vtable"
+        ".civ_passive_vtable",
+        ".character_recovered_002f61f9",
+        ".character_recovered_002f512d",
+        ".character_player_event_vtable",
+        ".character_base_event_vtable",
+        ".character_base_event_dtor",
+        ".character_base_event_delete",
+        ".character_base_event_id"
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN13NPCController7onEventEPK6IEventPK12EventManager",
         "_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
         "_ZN13NPCControllerD1Ev",
-        "_ZN3NPC13goToNextPointEb"
+        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
+        "_ZN3NPC13goToNextPointEb",
+        "_ZN3NPC4fleeERKN3irr4core8vector3dIfEE",
+        "_ZN3NPC4waitEi",
+        "_ZN3NPC6freezeEv"
     ]
 }
