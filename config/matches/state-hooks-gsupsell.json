@@ -167,6 +167,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZNK13StringManager9getStringEi",
         "_ZN8RenderFX10FormatHTMLEPN7gameswf9characterEPKcz",
         "_ZN8RenderFX10FormatTextEPN7gameswf9characterEPKcz",
         "_ZN8RenderFX4FindEPKc",
