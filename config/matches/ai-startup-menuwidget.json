@@ -27,6 +27,7 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets8MainMenu18UpdateLocalizationEv",
         "_ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb",
         "_ZNK7Widgets8MainMenu16GetPressedButtonEv",
         "_ZN7Widgets8MainMenuC1Ev",
@@ -99,6 +100,9 @@
         }
     ],
     "sections": [
+        ".widget_main_menu_button_text_format",
+        ".widget_main_menu_more_text",
+        ".widget_main_menu_twitter_text",
         ".widget_main_menu_button_format",
         ".widget_main_menu_name",
         ".widget_main_menu_twitter_name",
@@ -135,6 +139,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK13StringManager9getStringEi",
+        "_ZN8RenderFX7SetTextEPKcS1_b",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN8RenderFX4FindEPKc",

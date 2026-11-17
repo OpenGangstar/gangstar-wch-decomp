@@ -12,10 +12,16 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
+#include "../app/Application.h"
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
 #include "../hud/MenuManager.h"
+
+extern "C" {
+const char* _ZNK13StringManager9getStringEi(const StringManager* strings, int id);
+void _ZN8RenderFX7SetTextEPKcS1_b(RenderFX* fx, const char* name, const char* text, bool option);
+}
 
 void MenuWidget::SetListener(MenuState* state)
 {
@@ -333,6 +339,24 @@ Widgets::MainMenu::MainMenu()
     }
     renderFX->SetVisible(widgetMainMenuTwitterName, false);
     renderFX->SetVisible(widgetMainMenuDoubleOptionName, false);
+}
+
+static const char mainMenuButtonTextFormat[] = "widgetMainMenu.btnMain%d.text";
+static const char mainMenuMoreText[] = "widgetMainMenu.btnMore.text";
+static const char mainMenuTwitterText[] = "widgetMainMenu.btnTwitter.text";
+
+void Widgets::MainMenu::UpdateLocalization()
+{
+    char name[64];
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    for (int i = 0; i < 4; ++i) {
+        if (buttons[i].textId != -1) {
+            sprintf(name, mainMenuButtonTextFormat, i);
+            _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, buttons[i].textId), true);
+        }
+    }
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mainMenuMoreText, _ZNK13StringManager9getStringEi(strings, 0x1010), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mainMenuTwitterText, _ZNK13StringManager9getStringEi(strings, 0x1080), false);
 }
 
 int Widgets::Volumes::s_playlist = -2;

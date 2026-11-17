@@ -1,5 +1,9 @@
 SECTIONS
 {
+    .widget_main_menu_localization 0x002ed388 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenu18UpdateLocalizationEv) }
+    .widget_main_menu_button_text_format 0x0041ab70 : { *ai-startup-menuwidget.o(.rodata.mainMenuButtonTextFormat) }
+    .widget_main_menu_more_text 0x0041ab90 : { *ai-startup-menuwidget.o(.rodata.mainMenuMoreText) }
+    .widget_main_menu_twitter_text 0x0041abac : { *ai-startup-menuwidget.o(.rodata.mainMenuTwitterText) }
     .widget_main_menu_button_info 0x002ec180 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb) }
     .widget_main_menu_pressed_button 0x002ec010 : { *ai-startup-menuwidget.o(.text._ZNK7Widgets8MainMenu16GetPressedButtonEv) }
     .widget_main_menu_constructor 0x002ec428 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8MainMenuC1Ev .text._ZN7Widgets8MainMenuC2Ev) }
