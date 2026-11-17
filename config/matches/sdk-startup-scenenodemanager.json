@@ -42,6 +42,8 @@
         "_ZN16SceneNodeManagerD2Ev",
         "_ZN16SceneNodeManagerC1Ev",
         "_ZN16SceneNodeManagerC2Ev",
+        "_ZN16SceneNodeManager11getInstanceEv",
+        {"name": "__tcf_2", "address": "0x0032224d", "compiled_name": "__tcf_0"},
         {
             "name": "__tcf_3",
             "address": "0x00322069"

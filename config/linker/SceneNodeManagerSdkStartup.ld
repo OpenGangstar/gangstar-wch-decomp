@@ -3,6 +3,8 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-scenenodemanager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+__cxa_guard_acquire = 0x001c4958;
+__cxa_guard_release = 0x001c46c4;
 strlen = 0x001c48bc;
 strcpy = 0x001c3fd4;
 _Znaj = 0x001c3ff8;
@@ -21,6 +23,10 @@ SECTIONS
     .scene_manager_teardown 0x003221ac : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager8tearDownEv) }
     .scene_manager_destructor 0x00322208 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerD1Ev .text._ZN16SceneNodeManagerD2Ev) }
     .scene_manager_constructor 0x00321aa0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerC1Ev .text._ZN16SceneNodeManagerC2Ev) }
+    .scene_manager_instance 0x00321b20 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager11getInstanceEv) }
+    .scene_manager_instance_cleanup 0x0032224c : { *sdk-startup-scenenodemanager.o(.text.__tcf_0) }
+    .scene_manager_instance_guard 0x004b8b9c (NOLOAD) : { *sdk-startup-scenenodemanager.o(.bss._ZGVZN16SceneNodeManager11getInstanceEvE16sceneNodeManager) }
+    .scene_manager_instance_storage 0x004b8ba0 (NOLOAD) : { *sdk-startup-scenenodemanager.o(.bss._ZZN16SceneNodeManager11getInstanceEvE16sceneNodeManager) }
     .sdk_startup_function_0 0x00322068 : { *sdk-startup-scenenodemanager.o(.text.__tcf_3) }
     .sdk_startup_function_1 0x00321b9c : { *sdk-startup-scenenodemanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00321c08 : { *sdk-startup-scenenodemanager.o(.text._GLOBAL__I__Z10crcReflectjc) }
@@ -32,3 +38,5 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.scene_manager_instance_guard) == 4, "SceneNodeManager singleton guard extent");
+ASSERT(SIZEOF(.scene_manager_instance_storage) == 0x42c, "SceneNodeManager singleton storage extent");
