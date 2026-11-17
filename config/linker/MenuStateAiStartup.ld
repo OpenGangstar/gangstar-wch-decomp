@@ -1,6 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 strcpy = 0x001c3fd4;
+__cxa_pure_virtual = 0;
 INCLUDE build/matches/ai-startup-menustate/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
@@ -21,6 +22,21 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .menu_fx_state_deleting_destructor 0x002e96bc : { *ai-startup-menustate.o(.text._ZN6MenuFX5StateD0Ev .gnu.linkonce.t._ZN6MenuFX5StateD0Ev) }
+    .menu_fx_state_complete_destructor 0x002e96f4 : { *ai-startup-menustate.o(.text._ZN6MenuFX5StateD1Ev .gnu.linkonce.t._ZN6MenuFX5StateD1Ev) }
+    .menu_state_deleting_destructor 0x002e9724 : { *ai-startup-menustate.o(.text._ZN9MenuStateD0Ev .gnu.linkonce.t._ZN9MenuStateD0Ev) }
+    .menu_state_base_destructor 0x002e9764 : { *ai-startup-menustate.o(.text._ZN9MenuStateD2Ev .gnu.linkonce.t._ZN9MenuStateD2Ev .text._ZN9MenuStateD1Ev .gnu.linkonce.t._ZN9MenuStateD1Ev) }
+    .dialog_deleting_destructor 0x002e9874 : { *ai-startup-menustate.o(.text._ZN5Menus6DialogD0Ev .gnu.linkonce.t._ZN5Menus6DialogD0Ev) }
+    .dialog_complete_destructor 0x002e989c : { *ai-startup-menustate.o(.text._ZN5Menus6DialogD1Ev .gnu.linkonce.t._ZN5Menus6DialogD1Ev) }
+    .confirm_deleting_destructor 0x002e98bc : { *ai-startup-menustate.o(.text._ZN5Menus7ConfirmD0Ev .gnu.linkonce.t._ZN5Menus7ConfirmD0Ev) }
+    .confirm_complete_destructor 0x002e98e8 : { *ai-startup-menustate.o(.text._ZN5Menus7ConfirmD1Ev .gnu.linkonce.t._ZN5Menus7ConfirmD1Ev) }
+    .confirm_payment_deleting_destructor 0x002e9910 : { *ai-startup-menustate.o(.text._ZN5Menus14ConfirmPaymentD0Ev .gnu.linkonce.t._ZN5Menus14ConfirmPaymentD0Ev) }
+    .confirm_payment_complete_destructor 0x002e993c : { *ai-startup-menustate.o(.text._ZN5Menus14ConfirmPaymentD1Ev .gnu.linkonce.t._ZN5Menus14ConfirmPaymentD1Ev) }
+    .menu_fx_state_vtable 0x004a9830 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN6MenuFX5StateE .gnu.linkonce.d.rel.ro._ZTVN6MenuFX5StateE) }
+    .menu_state_vtable 0x004a9710 : { *ai-startup-menustate.o(.data.rel.ro._ZTV9MenuState .gnu.linkonce.d.rel.ro._ZTV9MenuState) }
+    .dialog_vtable 0x004a9098 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus6DialogE .gnu.linkonce.d.rel.ro._ZTVN5Menus6DialogE) }
+    .confirm_vtable 0x004a9050 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus7ConfirmE .gnu.linkonce.d.rel.ro._ZTVN5Menus7ConfirmE) }
+    .confirm_payment_vtable 0x004a9008 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus14ConfirmPaymentE .gnu.linkonce.d.rel.ro._ZTVN5Menus14ConfirmPaymentE) }
     .menu_fx_state_constructor 0x002e77d0 : { *ai-startup-menustate.o(.text._ZN6MenuFX5StateC1EPKc .text._ZN6MenuFX5StateC2EPKc .gnu.linkonce.t._ZN6MenuFX5StateC1EPKc .gnu.linkonce.t._ZN6MenuFX5StateC2EPKc) }
     .menu_state_constructor 0x002e7d98 : { *ai-startup-menustate.o(.text._ZN9MenuStateC1EPKc .text._ZN9MenuStateC2EPKc) }
     .menu_dialog_constructor 0x002e7e68 : { *ai-startup-menustate.o(.text._ZN5Menus6DialogC1EPKc .text._ZN5Menus6DialogC2EPKc) }
