@@ -11773,7 +11773,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334761	0x18	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE	FreeLookCamera::setPosition(irr::core::vector3d<float> const&)
 0x00334779	0x6c	FreeLookCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003347e5	0x14	FreeLookCamera.cpp	game	core	matched	_GLOBAL__I__ZN14FreeLookCameraC2Ev	_GLOBAL__I__ZN14FreeLookCameraC2Ev
-0x003347f9	0x234	FreeLookCamera.cpp	game	core	pending	_ZN14FreeLookCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FreeLookCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
+0x003347f9	0x234	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FreeLookCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
 0x00334a2d	0x2	LockCamera.cpp	game	core	pending	_ZN10LockCamera5debugEPN3irr5video12IVideoDriverE	LockCamera::debug(irr::video::IVideoDriver*)
 0x00334a31	0x30	LockCamera.cpp	game	core	matched	__tcf_3	__tcf_3
 0x00334a61	0x20	LockCamera.cpp	game	core	pending	_ZN10LockCameraD2Ev	LockCamera::~LockCamera()

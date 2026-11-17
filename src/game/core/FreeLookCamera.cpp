@@ -12,6 +12,9 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "Camera.h"
+#include "Quaternion.h"
+
+extern "C" float acosf(float);
 
 class FreeLookCamera : public Camera {
 public:
@@ -23,6 +26,9 @@ public:
     void updateHorizontalAngle(int extent, int delta, float elapsed);
     void updateVerticalAngle(int extent, int delta, float elapsed);
     void setPosition(const irr::core::vector3d<float>& value);
+    void updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
+        float distance, irr::core::vector3d<float>& yawAxis,
+        irr::core::vector3d<float>& pitchAxis, float maximumPitch, float minimumPitch);
 private:
     float horizontalAngle;
     float verticalAngle;
@@ -63,6 +69,33 @@ void FreeLookCamera::setPosition(const irr::core::vector3d<float>& value)
     position = value;
     horizontalAngle = 0.0f;
     verticalAngle = 0.0f;
+}
+
+void FreeLookCamera::updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
+    float distance, irr::core::vector3d<float>& yawAxis,
+    irr::core::vector3d<float>& pitchAxis, float maximumPitch, float minimumPitch)
+{
+    const float degreesPerRadian = 57.2957763671875f;
+    irr::core::vector3d<float> direction = position - pivot;
+    direction.normalize();
+    const float previousPitch = acosf(direction.dotProduct(yawAxis));
+    const float pitchStep = elapsed * verticalAngle;
+    const float pitch = pitchStep * degreesPerRadian + previousPitch * degreesPerRadian;
+    if (pitch >= minimumPitch && pitch <= maximumPitch) {
+        irr::core::quaternion rotation;
+        rotation.fromAngleAxis(pitchStep, pitchAxis);
+        rotation.normalize();
+        verticalAngle = 0.0f;
+        position = (rotation * direction) * distance + pivot;
+    }
+
+    irr::core::quaternion rotation;
+    rotation.fromAngleAxis(elapsed * horizontalAngle, yawAxis);
+    rotation.normalize();
+    horizontalAngle = 0.0f;
+    direction = position - pivot;
+    direction.normalize();
+    position = (rotation * direction) * distance + pivot;
 }
 
 void operator delete(void*) throw();
