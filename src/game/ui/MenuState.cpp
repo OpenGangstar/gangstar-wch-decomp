@@ -25,6 +25,48 @@ void MenuFX::State::Create()
 {
 }
 
+inline MenuFX::State::State(const char* stateName)
+{
+    __builtin_strcpy(name, stateName);
+    firstCharacter.set_ref(0);
+    secondCharacter.set_ref(0);
+    unknown80 = 0;
+}
+
+MenuState::MenuState(const char* name)
+    : MenuFX::State(name), widgetIds(), unknown96(false), depth(0)
+{
+}
+
+Menus::Dialog::Dialog(const char* name)
+    : MenuState(name)
+{
+}
+
+Menus::Confirm::Confirm(const char* name)
+    : Dialog(name), confirmed(false)
+{
+    const int widgetId = 21;
+    widgetIds.append(&widgetId, 1);
+}
+
+Menus::ConfirmPayment::ConfirmPayment(const char* name)
+    : Confirm(name)
+{
+    gameswf::array<int>* ids = &widgetIds;
+    int index = -1;
+    for (int i = 0; i < ids->size; ++i) {
+        if (ids->elements[i] == 21) {
+            index = i;
+            break;
+        }
+    }
+    if (index >= 0)
+        ids->remove(index);
+    const int widgetId = 28;
+    ids->append(&widgetId, 1);
+}
+
 void MenuFX::State::Show()
 {
 }

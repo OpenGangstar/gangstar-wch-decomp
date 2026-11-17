@@ -5,9 +5,22 @@
 
 class MenuWidget;
 
+namespace gameswf {
+template <typename T>
+class smart_ptr {
+public:
+    smart_ptr() : value(0) {}
+    void set_ref(T* value) __attribute__((weak));
+
+private:
+    T* value;
+};
+}
+
 namespace MenuFX {
 class State {
 public:
+    explicit inline State(const char* name);
     virtual ~State();
     virtual void Create();
     virtual void Show();
@@ -21,12 +34,17 @@ public:
     virtual bool CanHandleEvent(RenderFX::Event& event);
 
 private:
-    unsigned char storage[0x50];
+    unsigned char unknown4[4];
+    char name[64];
+    gameswf::smart_ptr<gameswf::character> firstCharacter;
+    gameswf::smart_ptr<gameswf::character> secondCharacter;
+    int unknown80;
 };
 }
 
 class MenuState : public MenuFX::State {
 public:
+    explicit MenuState(const char* name);
     virtual ~MenuState();
     virtual void Create();
     virtual void Show();
@@ -40,8 +58,11 @@ public:
     virtual bool IsModal() const;
     int GetDepth() const;
 
+protected:
+    gameswf::array<int> widgetIds;
+
 private:
-    unsigned char beforeDepth[0x10];
+    bool unknown96;
     int depth;
     unsigned char afterDepth[4];
 };
