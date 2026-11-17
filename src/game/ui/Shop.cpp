@@ -17,6 +17,11 @@ bool Shop::triggered() const
 {
     return triggerActive;
 }
+
+int Shop::getId()
+{
+    return shopId;
+}
 #include "../ai/StateMachine.h"
 
 void operator delete(void*) throw();
