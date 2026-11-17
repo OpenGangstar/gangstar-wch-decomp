@@ -171,18 +171,6 @@ private:
     void* heap;
 };
 
-template<class T> struct string_hash_functor;
-
-template<class Key, class Value, class Hash>
-class hash {
-public:
-    ~hash() { clear(); }
-    void clear() __attribute__((weak));
-
-private:
-    void* table;
-};
-
 class edit_text_character {
 public:
     void set_text_value(const tu_string& value, bool option);
@@ -214,17 +202,6 @@ void log_callback(bool error, const char* text)
         message_log(text);
     }
 }
-
-class RenderFX::SearchIndex {
-public:
-    ~SearchIndex();
-    void Clear() __attribute__((long_call));
-    class Entry;
-
-private:
-    gameswf::hash<gameswf::tu_string, gameswf::array<Entry>*,
-                  gameswf::string_hash_functor<gameswf::tu_string> > entries;
-};
 
 RenderFX::SearchIndex::~SearchIndex()
 {
@@ -794,7 +771,7 @@ inline RenderFX::Controller::Controller()
 }
 
 RenderFX::RenderFX()
-    : unknown16(false), unknown20(0), context(0),
+    : unknown16(false), context(0),
       inputBehavior(0), listener(0)
 {
 }
@@ -1108,4 +1085,10 @@ bool RenderFX::InvokeASCallback(const char* characterName, const char* callback)
 void RenderFX::SetFocus(const char* characterName, int flags)
 {
     SetFocus(Find(characterName), flags);
+}
+
+RenderFX::SearchIndex* RenderFX::GetSearchIndex()
+{
+    searchIndex.Init(*this);
+    return &searchIndex;
 }
