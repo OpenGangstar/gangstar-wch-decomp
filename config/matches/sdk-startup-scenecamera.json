@@ -27,6 +27,11 @@
     "functions": [
         "_ZN11SceneCameraC1Ei",
         "_ZN11SceneCameraC2Ei",
+        "_ZN11SceneCameraD0Ev",
+        "_ZN11SceneCameraD1Ev",
+        "_ZN11SceneCameraD2Ev",
+        "_ZThn28_N11SceneCameraD1Ev",
+        "_ZThn28_N11SceneCameraD0Ev",
         {
             "name": "__tcf_2",
             "address": "0x003350c9"
@@ -54,6 +59,10 @@
     "external_thumb_functions": [
         "_ZN6CameraC1Ev",
         "_ZN14TransformationC1Ei",
-        "_ZN11SceneCamera4initEP11LevelObjecti"
+        "_ZN11SceneCamera4initEP11LevelObjecti",
+        "_ZN6CameraD1Ev",
+        "_ZN6CameraD2Ev",
+        "_ZN14TransformationD1Ev",
+        "_ZN14TransformationD2Ev"
     ]
 }

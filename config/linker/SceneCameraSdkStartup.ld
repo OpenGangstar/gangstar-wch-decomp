@@ -6,6 +6,10 @@ __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
     .scene_camera_ctor 0x00334fa0 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCameraC1Ei .text._ZN11SceneCameraC2Ei) }
+    .scene_camera_dtor 0x00334f70 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCameraD1Ev .text._ZN11SceneCameraD2Ev) }
+    .scene_camera_delete 0x00334f28 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCameraD0Ev) }
+    .scene_camera_dtor_thunk 0x00334f5c : { *sdk-startup-scenecamera.o(.text._ZThn28_N11SceneCameraD1Ev) }
+    .scene_camera_delete_thunk 0x00334f14 : { *sdk-startup-scenecamera.o(.text._ZThn28_N11SceneCameraD0Ev) }
     .sdk_startup_function_0 0x003350c8 : { *sdk-startup-scenecamera.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00335048 : { *sdk-startup-scenecamera.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x003350b4 : { *sdk-startup-scenecamera.o(.text._GLOBAL__I__ZN11SceneCameraC2Ei) }

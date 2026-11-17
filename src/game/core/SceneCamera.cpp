@@ -18,6 +18,10 @@ SceneCamera::SceneCamera(int type) : Camera(), Transformation(type), vector112()
     SceneCamera::init(0, 0);
 }
 
+SceneCamera::~SceneCamera()
+{
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_2() __attribute__((used));
