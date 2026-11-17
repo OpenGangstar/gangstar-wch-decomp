@@ -232,6 +232,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7659 | Menus::Achievement::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e7d51 | Menus::Achievement::SetAchievement | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea2e5 | Menus::Achievement::Show | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e7815 | Menus::InGameMenu::Notify | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7815 | Menus::InGameMenu::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e78ad | Menus::Map::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
