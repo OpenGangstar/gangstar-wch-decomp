@@ -9,6 +9,7 @@
  */
 
 #include "../hud/MenuManager.h"
+#include "../app/Application.h"
 #include "../hud/TargetMarker.h"
 #include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
@@ -118,6 +119,32 @@ const char* MenuManager::getText(eText slot) const
     if (static_cast<unsigned int>(slot) < 17)
         return fields.texts[slot];
     return 0;
+}
+
+extern "C" const char* _ZNK13StringManager9getStringEi(const StringManager* strings, int id);
+
+extern "C" bool _ZN11MenuManager7setTextENS_5eTextEPKcPi(
+    MenuManager* manager, MenuManager::eText slot, const char* text, int* arguments);
+
+extern "C" bool _ZN11MenuManager7setTextENS_5eTextEiPi(
+    MenuManager* manager, MenuManager::eText slot, int textId, int* arguments)
+{
+    if (static_cast<unsigned int>(slot) < 17 &&
+        _ZNK11MenuManager9getTextIdENS_5eTextE(manager, slot) != textId) {
+        const char* text = textId == -1 ? 0
+            : _ZNK13StringManager9getStringEi(Application::GetInstance()->GetStringManager(), textId);
+        if (_ZN11MenuManager7setTextENS_5eTextEPKcPi(manager, slot, text, arguments)) {
+            MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+            fields.textIds[slot] = textId;
+            return true;
+        }
+        return false;
+    }
+    if (textId == -1) {
+        _ZN11MenuManager7setTextENS_5eTextEPKcPi(manager, slot, 0, arguments);
+        return true;
+    }
+    return false;
 }
 
 extern "C" void _ZN11MenuManager15hideDialogArrowEv(MenuManager* manager)
