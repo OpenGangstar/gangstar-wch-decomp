@@ -11,6 +11,31 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "SceneNodeManager.h"
+
+unsigned int crcReflect(unsigned int value, char bits)
+{
+    unsigned int result = 0;
+    for (int index = 1; index <= bits; ++index) {
+        if (value & 1u)
+            result |= 1u << (bits - index);
+        value >>= 1;
+    }
+    return result;
+}
+
+void SceneNodeManager::setup()
+{
+}
+
+void SceneNodeManager::update(int elapsed)
+{
+    if (updateInterval > 0) {
+        updateTimeRemaining -= elapsed;
+        if (updateTimeRemaining < 0)
+            updateTimeRemaining = updateInterval;
+    }
+}
 
 void operator delete(void*) throw();
 extern "C" {

@@ -25,6 +25,9 @@
     "source": "src/game/world/SceneNodeManager.cpp",
     "linker_script": "config/linker/SceneNodeManagerSdkStartup.ld",
     "functions": [
+        "_Z10crcReflectjc",
+        "_ZN16SceneNodeManager5setupEv",
+        "_ZN16SceneNodeManager6updateEi",
         {
             "name": "__tcf_3",
             "address": "0x00322069"
