@@ -22,6 +22,41 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 SECTIONS
 {
+    .in_game_menu_deleting_destructor 0x002e9a0c : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenuD0Ev .gnu.linkonce.t._ZN5Menus10InGameMenuD0Ev) }
+    .in_game_menu_complete_destructor 0x002e9a34 : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenuD1Ev .gnu.linkonce.t._ZN5Menus10InGameMenuD1Ev .text._ZN5Menus10InGameMenuD2Ev .gnu.linkonce.t._ZN5Menus10InGameMenuD2Ev) }
+    .infos_deleting_destructor 0x002e9aa8 : { *ai-startup-menustate.o(.text._ZN5Menus5InfosD0Ev .gnu.linkonce.t._ZN5Menus5InfosD0Ev) }
+    .infos_complete_destructor 0x002e9ad4 : { *ai-startup-menustate.o(.text._ZN5Menus5InfosD1Ev .gnu.linkonce.t._ZN5Menus5InfosD1Ev .text._ZN5Menus5InfosD2Ev .gnu.linkonce.t._ZN5Menus5InfosD2Ev) }
+    .options_deleting_destructor 0x002e9c4c : { *ai-startup-menustate.o(.text._ZN5Menus7OptionsD0Ev .gnu.linkonce.t._ZN5Menus7OptionsD0Ev) }
+    .options_complete_destructor 0x002e9c78 : { *ai-startup-menustate.o(.text._ZN5Menus7OptionsD1Ev .gnu.linkonce.t._ZN5Menus7OptionsD1Ev .text._ZN5Menus7OptionsD2Ev .gnu.linkonce.t._ZN5Menus7OptionsD2Ev) }
+    .services_deleting_destructor 0x002e9df0 : { *ai-startup-menustate.o(.text._ZN5Menus8ServicesD0Ev .gnu.linkonce.t._ZN5Menus8ServicesD0Ev) }
+    .services_complete_destructor 0x002e9e1c : { *ai-startup-menustate.o(.text._ZN5Menus8ServicesD1Ev .gnu.linkonce.t._ZN5Menus8ServicesD1Ev .text._ZN5Menus8ServicesD2Ev .gnu.linkonce.t._ZN5Menus8ServicesD2Ev) }
+    .tutorial_deleting_destructor 0x002ea03c : { *ai-startup-menustate.o(.text._ZN5Menus8TutorialD0Ev .gnu.linkonce.t._ZN5Menus8TutorialD0Ev) }
+    .tutorial_complete_destructor 0x002ea064 : { *ai-startup-menustate.o(.text._ZN5Menus8TutorialD1Ev .gnu.linkonce.t._ZN5Menus8TutorialD1Ev .text._ZN5Menus8TutorialD2Ev .gnu.linkonce.t._ZN5Menus8TutorialD2Ev) }
+    .tutorial_vtable 0x004a96c8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8TutorialE .gnu.linkonce.d.rel.ro._ZTVN5Menus8TutorialE) }
+    .info_statistics_deleting_destructor 0x002e9bf8 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatisticsD0Ev .gnu.linkonce.t._ZN5Menus14InfoStatisticsD0Ev) }
+    .info_statistics_complete_destructor 0x002e9c24 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatisticsD1Ev .gnu.linkonce.t._ZN5Menus14InfoStatisticsD1Ev .text._ZN5Menus14InfoStatisticsD2Ev .gnu.linkonce.t._ZN5Menus14InfoStatisticsD2Ev) }
+    .info_statistics_vtable 0x004a90e0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus14InfoStatisticsE .gnu.linkonce.d.rel.ro._ZTVN5Menus14InfoStatisticsE) }
+    .info_achievements_deleting_destructor 0x002e9ba4 : { *ai-startup-menustate.o(.text._ZN5Menus16InfoAchievementsD0Ev .gnu.linkonce.t._ZN5Menus16InfoAchievementsD0Ev) }
+    .info_achievements_complete_destructor 0x002e9bd0 : { *ai-startup-menustate.o(.text._ZN5Menus16InfoAchievementsD1Ev .gnu.linkonce.t._ZN5Menus16InfoAchievementsD1Ev .text._ZN5Menus16InfoAchievementsD2Ev .gnu.linkonce.t._ZN5Menus16InfoAchievementsD2Ev) }
+    .info_achievements_vtable 0x004a9128 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16InfoAchievementsE .gnu.linkonce.d.rel.ro._ZTVN5Menus16InfoAchievementsE) }
+    .info_about_deleting_destructor 0x002e9b50 : { *ai-startup-menustate.o(.text._ZN5Menus9InfoAboutD0Ev .gnu.linkonce.t._ZN5Menus9InfoAboutD0Ev) }
+    .info_about_complete_destructor 0x002e9b7c : { *ai-startup-menustate.o(.text._ZN5Menus9InfoAboutD1Ev .gnu.linkonce.t._ZN5Menus9InfoAboutD1Ev .text._ZN5Menus9InfoAboutD2Ev .gnu.linkonce.t._ZN5Menus9InfoAboutD2Ev) }
+    .info_about_vtable 0x004a9170 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus9InfoAboutE .gnu.linkonce.d.rel.ro._ZTVN5Menus9InfoAboutE) }
+    .option_language_deleting_destructor 0x002e9d48 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguageD0Ev .gnu.linkonce.t._ZN5Menus14OptionLanguageD0Ev) }
+    .option_language_complete_destructor 0x002e9d74 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguageD1Ev .gnu.linkonce.t._ZN5Menus14OptionLanguageD1Ev .text._ZN5Menus14OptionLanguageD2Ev .gnu.linkonce.t._ZN5Menus14OptionLanguageD2Ev) }
+    .option_language_vtable 0x004a9290 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus14OptionLanguageE .gnu.linkonce.d.rel.ro._ZTVN5Menus14OptionLanguageE) }
+    .option_controls_deleting_destructor 0x002e9cf4 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionControlsD0Ev .gnu.linkonce.t._ZN5Menus14OptionControlsD0Ev) }
+    .option_controls_complete_destructor 0x002e9d20 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionControlsD1Ev .gnu.linkonce.t._ZN5Menus14OptionControlsD1Ev .text._ZN5Menus14OptionControlsD2Ev .gnu.linkonce.t._ZN5Menus14OptionControlsD2Ev) }
+    .option_controls_vtable 0x004a92d8 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus14OptionControlsE .gnu.linkonce.d.rel.ro._ZTVN5Menus14OptionControlsE) }
+    .option_volumes_deleting_destructor 0x002e9ca0 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumesD0Ev .gnu.linkonce.t._ZN5Menus13OptionVolumesD0Ev) }
+    .option_volumes_complete_destructor 0x002e9ccc : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumesD1Ev .gnu.linkonce.t._ZN5Menus13OptionVolumesD1Ev .text._ZN5Menus13OptionVolumesD2Ev .gnu.linkonce.t._ZN5Menus13OptionVolumesD2Ev) }
+    .option_volumes_vtable 0x004a9320 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus13OptionVolumesE .gnu.linkonce.d.rel.ro._ZTVN5Menus13OptionVolumesE) }
+    .service_corruption_deleting_destructor 0x002e9e98 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruptionD0Ev .gnu.linkonce.t._ZN5Menus17ServiceCorruptionD0Ev) }
+    .service_corruption_complete_destructor 0x002e9ec4 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruptionD1Ev .gnu.linkonce.t._ZN5Menus17ServiceCorruptionD1Ev .text._ZN5Menus17ServiceCorruptionD2Ev .gnu.linkonce.t._ZN5Menus17ServiceCorruptionD2Ev) }
+    .service_corruption_vtable 0x004a93b0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus17ServiceCorruptionE .gnu.linkonce.d.rel.ro._ZTVN5Menus17ServiceCorruptionE) }
+    .service_missions_deleting_destructor 0x002e9e44 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissionsD0Ev .gnu.linkonce.t._ZN5Menus15ServiceMissionsD0Ev) }
+    .service_missions_complete_destructor 0x002e9e70 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissionsD1Ev .gnu.linkonce.t._ZN5Menus15ServiceMissionsD1Ev .text._ZN5Menus15ServiceMissionsD2Ev .gnu.linkonce.t._ZN5Menus15ServiceMissionsD2Ev) }
+    .service_missions_vtable 0x004a9518 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus15ServiceMissionsE .gnu.linkonce.d.rel.ro._ZTVN5Menus15ServiceMissionsE) }
     .inGameMenu_constructor 0x002e7ecc : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenuC1EPKc .text._ZN5Menus10InGameMenuC2EPKc) }
     .infos_constructor 0x002e7f0c : { *ai-startup-menustate.o(.text._ZN5Menus5InfosC1EPKc .text._ZN5Menus5InfosC2EPKc) }
     .infoStatistics_constructor 0x002e7f50 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatisticsC1Ev .text._ZN5Menus14InfoStatisticsC2Ev) }
