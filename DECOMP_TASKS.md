@@ -205,8 +205,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f76f1 | Checkpoint::Update | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f77b9 | Checkpoint::hide | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f7515 | Checkpoint.cpp __tcf_1 | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
-| libsanangeles.so | 0x002e7395 | Menus::MainMenu::SetPause | vehicle_side | REVIEW | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e87f5 | Menus::MainMenu::GotFocus | camera_tap | REVIEW | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea699 | Menus::MainMenu::Update | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7395 | Menus::MainMenu::SetPause | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e87f5 | Menus::MainMenu::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea699 | Menus::MainMenu::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0032cce0 | Wheel::draw2d (thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |

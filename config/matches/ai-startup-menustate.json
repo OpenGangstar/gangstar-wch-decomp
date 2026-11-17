@@ -27,6 +27,9 @@
     "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZN5Menus8MainMenu8SetPauseEb",
+        "_ZN5Menus8MainMenu8GotFocusEv",
+        "_ZN5Menus8MainMenu6UpdateEv",
         "_ZN5Menus5Infos8GotFocusEv",
         "_ZN5Menus16InfoAchievements8GotFocusEv",
         "_ZN5Menus17ServiceCorruption8GotFocusEv",
@@ -241,6 +244,7 @@
         }
     ],
     "sections": [
+        ".main_menu_confirm",
         ".blocking_tutorial_vtable",
         ".main_menu_vtable",
         ".splash_vtable",
@@ -310,6 +314,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN8SaveGame18GetDefaultFilenameEv",
+        "_ZN10FileStream5ExistEPKc",
+        "nativeNotifyPause",
+        "nativeExit",
+        "_ZN11Application4QuitEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_Z13ekd_debug_outPKcPc",
         "_Z21ekd_makestringfile255PKcPc",
