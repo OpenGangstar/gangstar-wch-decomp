@@ -13,7 +13,6 @@
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
-#include "../persistence/StringManager.h"
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
@@ -853,10 +852,18 @@ const int Widgets::Language::s_languageIds[6] = {
     0x1002, 0x1003, 0x1004, 0x1005, 0x1006, 0x1007
 };
 
+namespace {
+struct StringManagerLanguage {
+    unsigned char prefix[4];
+    int language;
+};
+}
+
 void Widgets::Language::Show()
 {
     MenuWidget::Show();
-    selection = Application::GetInstance()->GetStringManager()->getLanguage();
+    const StringManager* strings = Application::GetInstance()->GetStringManager();
+    selection = reinterpret_cast<const StringManagerLanguage*>(strings)->language;
     UpdateLocalization();
 }
 
