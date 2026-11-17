@@ -7,6 +7,11 @@ __aeabi_fcmpgt = 0x001c419c;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fmul = 0x001c4724;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fcmpeq = 0x001c470c;
+sqrtf = 0x001c4184;
 __aeabi_atexit = 0x001c494c;
 _ZN28retail_fpscamera_transitions16civPassive_transE = 0x004295a4;
 _ZN28retail_fpscamera_transitions17scriptedNpc_transE = 0x004296d0;
@@ -20,6 +25,7 @@ _ZN28retail_fpscamera_transitions11guard_transE = 0x00429a78;
 _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
 SECTIONS
 {
+    .fps_zoom_touch 0x003342ac : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE) }
     .fps_update 0x003344f4 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6updateEf) }
     .fps_init 0x00333fec : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4initEP11LevelObjecti) }
     .fps_vtable 0x004accb0 : { *ai-startup-fpscamera.o(.data.rel.ro._ZTV9FPSCamera) }

@@ -3,6 +3,12 @@
 
 #include "Camera.h"
 
+template<class T> struct Point2D;
+namespace std {
+template<class T> class allocator;
+template<class T, class Alloc> class list;
+}
+
 class PhysicAttributes;
 class Character;
 class SavePositionInterface;
@@ -81,6 +87,7 @@ public:
     ~FPSCamera();
     void incVerticalAngle(float delta);
     void zoom(int degrees);
+    void zoom(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points);
     virtual void init(LevelObject* owner, int mode);
     virtual void update(float elapsed);
     virtual void enter();
