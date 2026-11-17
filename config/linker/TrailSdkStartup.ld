@@ -7,6 +7,9 @@ _Znaj = 0x001c3ff8;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fmul = 0x001c4724;
 __aeabi_f2iz = 0x001c44cc;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fcmpgt = 0x001c419c;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
@@ -19,6 +22,7 @@ SECTIONS
     .trail_ctor 0x00348594 : { *sdk-startup-trail.o(.text._ZN5TrailC1Ev .text._ZN5TrailC2Ev) }
     .trail_cleanup 0x003484f4 : { *sdk-startup-trail.o(.text._ZN5Trail7CleanUpEv) }
     .trail_init 0x00348ef0 : { *sdk-startup-trail.o(.text._ZN5Trail4InitEiiiff) }
+    .trail_update_points 0x00348ba4 : { *sdk-startup-trail.o(.text._ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b) }
     .trail_vtable 0x004ad288 : { *sdk-startup-trail.o(.data.rel.ro._ZTV5Trail) }
     .sdk_startup_function_0 0x00348f64 : { *sdk-startup-trail.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00348c7c : { *sdk-startup-trail.o(.text._Z41__static_initialization_and_destruction_0ii) }

@@ -12534,7 +12534,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003485f1	0x144	Trail.cpp	game	world	pending	_ZN5Trail6UpdateEv	Trail::Update()
 0x00348735	0x32c	Trail.cpp	game	world	pending	_ZN5Trail10BuildPointEib	Trail::BuildPoint(int, bool)
 0x00348a61	0x142	Trail.cpp	game	world	pending	_ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b	Trail::AddPoint(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
-0x00348ba5	0xd8	Trail.cpp	game	world	pending	_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b	Trail::Update(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
+0x00348ba5	0xd8	Trail.cpp	game	world	matched	_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b	Trail::Update(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
 0x00348c7d	0x6c	Trail.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00348ce9	0x14	Trail.cpp	game	world	matched	_GLOBAL__I__ZN5TrailC2Ev	_GLOBAL__I__ZN5TrailC2Ev
 0x00348cfd	0x1f4	Trail.cpp	game	world	pending	_ZN5Trail19CreateMeshSceneNodeEv	Trail::CreateMeshSceneNode()

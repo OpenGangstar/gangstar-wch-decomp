@@ -62,6 +62,29 @@ Trail::~Trail()
     CleanUp();
 }
 
+bool Trail::Update(irr::core::vector3d<float>& left, irr::core::vector3d<float>& right, bool force)
+{
+    if (activePointCount > 1) {
+        const irr::core::vector3d<float> delta(left.X - lastAddedPoint.X, left.Y - lastAddedPoint.Y, 0.0f);
+        if (!force && !(delta.getLengthSQ() > trailScaleSquared)) {
+            points[0].remainingLife = trailLifetime;
+            points[0].left = left;
+            points[0].right = right;
+            BuildPoint(0, false);
+            return false;
+        }
+        if (unknown76) {
+            AddPoint(lastAddedPoint, right, true);
+            AddPoint(left, right, true);
+            AddPoint(left, right, false);
+            unknown76 = false;
+            return true;
+        }
+    }
+    AddPoint(left, right, false);
+    return true;
+}
+
 void Trail::ModifyLife(float scale)
 {
     activePointCount = 0;
