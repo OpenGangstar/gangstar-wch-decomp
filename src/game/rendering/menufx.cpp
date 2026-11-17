@@ -25,8 +25,18 @@ void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
 }
 
 namespace gameswf {
-class render_handler;
+class render_handler {
+public:
+    virtual ~render_handler();
+};
 render_handler* get_render_handler();
+void set_render_handler(render_handler* handler);
+void clears_tag_loaders();
+void clear_shared_libs();
+void clear_standard_fnames();
+void clear_standard_method_map();
+void clear_standard_property_map();
+void clear_disasm();
 void log_msg(const char* format, ...);
 
 class texture_cache {
@@ -246,6 +256,24 @@ static const char deprecatedGlyphCache[] =
 void RenderFX::InitializeGlyphTextureCache(int, int)
 {
     gameswf::log_msg(deprecatedGlyphCache);
+}
+
+void RenderFX::Finalize()
+{
+    DestroyContext(s_default_context);
+    s_default_context = 0;
+
+    gameswf::render_handler* handler = gameswf::get_render_handler();
+    if (handler) {
+        delete handler;
+        gameswf::set_render_handler(0);
+    }
+    gameswf::clears_tag_loaders();
+    gameswf::clear_shared_libs();
+    gameswf::clear_standard_fnames();
+    gameswf::clear_standard_method_map();
+    gameswf::clear_standard_property_map();
+    gameswf::clear_disasm();
 }
 
 void RenderFX::DestroyContext(gameswf::player_context* context)
