@@ -33,6 +33,8 @@
         "_ZN10PlayerTest16lockSwitchWeaponEv",
         "_ZN10PlayerTest10_GetTargetEv",
         "_ZN10PlayerTest13getMarkerTypeEv",
+        "_ZN10PlayerTest8hideMeshEv",
+        "_ZN10PlayerTest8showMeshEv",
         "_ZN10PlayerTest12hideAllAnimsEv",
         "_ZN10PlayerTest20playCurAnimFromStartEv",
         "_ZN10PlayerTest7addCashEii",

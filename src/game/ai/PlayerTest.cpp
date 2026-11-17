@@ -30,6 +30,8 @@ public:
     void setMessage(int amount, int maximum);
 };
 
+static const unsigned int meshHiddenFlag = 0x800u;
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_5() __attribute__((used));
@@ -79,6 +81,12 @@ LevelObject* PlayerTest::_GetTarget()
 int PlayerTest::getMarkerType()
 {
     return -1;
+}
+
+void PlayerTest::hideMesh()
+{
+    flags240 |= meshHiddenFlag;
+    shadowNode->setVisible(false);
 }
 
 void PlayerTest::hideAllAnims()
@@ -162,6 +170,12 @@ void PlayerTest::lockSwitchWeapon()
 void PlayerTest::unlockSwitchWeapon()
 {
     weaponSwitchLocked = false;
+}
+
+void PlayerTest::showMesh()
+{
+    flags240 &= ~meshHiddenFlag;
+    shadowNode->setVisible(true);
 }
 
 void PlayerTest::switchWeapon(bool unarmed)

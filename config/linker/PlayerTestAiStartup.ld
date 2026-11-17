@@ -40,6 +40,8 @@ SECTIONS
     .player_lock_weapon_switch 0x00300e6c : { *ai-startup-playertest.o(.text._ZN10PlayerTest16lockSwitchWeaponEv) }
     .player_get_target 0x00300db8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10_GetTargetEv) }
     .player_marker_type 0x00300d7c : { *ai-startup-playertest.o(.text._ZN10PlayerTest13getMarkerTypeEv) }
+    .player_hide_mesh 0x00300d84 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8hideMeshEv) }
+    .player_show_mesh 0x00301594 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8showMeshEv) }
     .player_hide_anims 0x00300da4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12hideAllAnimsEv) }
     .player_restart_anim 0x003010d4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest20playCurAnimFromStartEv) }
     .player_add_cash 0x00301388 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7addCashEii) }
