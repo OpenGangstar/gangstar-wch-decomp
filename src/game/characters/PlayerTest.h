@@ -140,6 +140,7 @@ public:
     void ResetPlayerTest(bool);
     void setVehicle(Vehicle* value);
     void finishedStopDriving();
+    int getCarAnimName(const char* name, bool left);
     void Update();
     void UpdateSceneNode();
     bool isFacingTarget();
