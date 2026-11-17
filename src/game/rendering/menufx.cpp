@@ -201,20 +201,6 @@ void log_callback(bool error, const char* text)
     }
 }
 
-class RenderFX::Controller {
-public:
-    ~Controller();
-    void Reset();
-
-    unsigned char prefix[16];
-    gameswf::smart_ptr<gameswf::character> first;
-    gameswf::smart_ptr<gameswf::character> second;
-    gameswf::smart_ptr<gameswf::character> third;
-    gameswf::smart_ptr<gameswf::character> fourth;
-    gameswf::smart_ptr<gameswf::character> fifth;
-    bool enabled;
-};
-
 namespace {
 // Prefix of the gameswf character vtable through display callback registration.
 struct CharacterAnimationMethods {
@@ -280,18 +266,6 @@ struct FlashCharacterRoot {
     gameswf::root* flashRoot;
     unsigned char beforeTextBuffering[0x5d];
     bool textBufferingEnabled;
-};
-
-struct RenderFXState {
-    unsigned char prefix[4];
-    gameswf::array<gameswf::character*> matches;
-    unsigned char beforePlayer[8];
-    gameswf::player* player;
-    gameswf::character* root;
-    gameswf::character* context;
-    RenderFX::Controller controllers[4];
-    int inputBehavior;
-    RenderFX::EventListener* listener;
 };
 
 class DisplayRoot {
@@ -455,7 +429,7 @@ void RenderFX::ClearGlyphTextureCaches(gameswf::player_context* context)
 
 void RenderFX::PreRender()
 {
-    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    DisplayRoot root(player->get_root());
     gameswf::filter_engine* engine = gameswf::filter_engine::s_instance;
     if (!engine)
         return;
@@ -464,31 +438,31 @@ void RenderFX::PreRender()
 
 void RenderFX::SetBounds(int left, int top, int right, int bottom)
 {
-    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    DisplayRoot root(player->get_root());
     _ZN7gameswf4root18set_display_boundsEiiii(root.get(), left, top, right, bottom);
 }
 
 void RenderFX::SetViewport(int x, int y, int width, int height)
 {
-    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    DisplayRoot root(player->get_root());
     _ZN7gameswf4root20set_display_viewportEiiii(root.get(), x, y, width, height);
 }
 
 void RenderFX::BeginDisplay()
 {
-    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    DisplayRoot root(player->get_root());
     _ZN7gameswf4root13begin_displayEv(root.get());
 }
 
 void RenderFX::Render()
 {
-    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    DisplayRoot root(player->get_root());
     _ZN7gameswf4root7displayEv(root.get());
 }
 
 void RenderFX::EndDisplay()
 {
-    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    DisplayRoot root(player->get_root());
     _ZN7gameswf4root11end_displayEv(root.get());
 }
 
@@ -524,7 +498,7 @@ void fscommand_callback_handler(gameswf::character* character, const char* comma
 
 void RenderFX::FSCommand(const char* command, const char* args)
 {
-    EventListener* listener = reinterpret_cast<RenderFXState*>(this)->listener;
+    EventListener* listener = this->listener;
     if (listener) {
         const EventListenerMethods* methods = *reinterpret_cast<const EventListenerMethods* const*>(listener);
         methods->onFSCommand(listener, command, args);
@@ -533,7 +507,23 @@ void RenderFX::FSCommand(const char* command, const char* args)
 
 void RenderFX::SetEventListener(EventListener* listener)
 {
-    reinterpret_cast<RenderFXState*>(this)->listener = listener;
+    this->listener = listener;
+}
+
+inline RenderFX::Controller::Controller()
+    : unknown12(0)
+{
+    unknown4 = 0.0f;
+    unknown0 = 0.0f;
+    unknown8 = 0.0f;
+    enabled = true;
+    Reset();
+}
+
+RenderFX::RenderFX()
+    : unknown16(false), unknown20(0), player(0), root(0), context(0),
+      inputBehavior(0), listener(0)
+{
 }
 
 void RenderFX::Controller::Reset()
@@ -551,32 +541,32 @@ RenderFX::Controller::~Controller()
 
 void RenderFX::SetControllerEnabled(int index, bool enabled)
 {
-    reinterpret_cast<RenderFXState*>(this)->controllers[index].enabled = enabled;
+    controllers[index].enabled = enabled;
 }
 
 void RenderFX::SetInputBehavior(int behavior)
 {
-    reinterpret_cast<RenderFXState*>(this)->inputBehavior = behavior;
+    inputBehavior = behavior;
 }
 
 void RenderFX::SetContext(gameswf::character* character)
 {
-    reinterpret_cast<RenderFXState*>(this)->context = character;
+    context = character;
 }
 
 gameswf::character* RenderFX::GetRoot() const
 {
-    return reinterpret_cast<const RenderFXState*>(this)->root;
+    return root;
 }
 
 gameswf::root* RenderFX::GetFlashRoot() const
 {
-    return reinterpret_cast<const FlashCharacterRoot*>(reinterpret_cast<const RenderFXState*>(this)->root)->flashRoot;
+    return reinterpret_cast<const FlashCharacterRoot*>(root)->flashRoot;
 }
 
 void RenderFX::SetTextBufferingEnabled(bool enabled)
 {
-    reinterpret_cast<FlashCharacterRoot*>(reinterpret_cast<RenderFXState*>(this)->root)->textBufferingEnabled = enabled;
+    reinterpret_cast<FlashCharacterRoot*>(root)->textBufferingEnabled = enabled;
 }
 
 bool RenderFX::GotoFrame(gameswf::character* character, const char* label, bool play)
@@ -623,7 +613,7 @@ const gameswf::array<gameswf::character*>& RenderFX::FindCharacters(
     gameswf::character* parent, const char* name, int flags)
 {
     gameswf::array<gameswf::character*>& matches =
-        reinterpret_cast<RenderFXState*>(this)->matches;
+        this->matches;
     matches.resize(0);
     CollectCharacters(parent, name, flags);
     return matches;

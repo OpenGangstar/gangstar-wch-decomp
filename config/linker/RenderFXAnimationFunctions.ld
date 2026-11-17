@@ -25,6 +25,7 @@ SECTIONS
     .renderfx_character_color_filter 0x003ecdc4 : { *renderfx-animation.o(.text._ZN8RenderFX14SetColorFilterEPN7gameswf9characterEij) }
     .renderfx_named_alpha 0x003ee300 : { *renderfx-animation.o(.text._ZN8RenderFX8SetAlphaEPKcf) }
     .renderfx_event_listener 0x003ec1f8 : { *renderfx-animation.o(.text._ZN8RenderFX16SetEventListenerEPNS_13EventListenerE) }
+    .renderfx_constructor 0x003ed0cc : { *renderfx-animation.o(.text._ZN8RenderFXC1Ev .text._ZN8RenderFXC2Ev) }
     .renderfx_controller_reset 0x003ec600 : { *renderfx-animation.o(.text._ZN8RenderFX10Controller5ResetEv) }
     .renderfx_controller_destructor 0x003ed6a8 : { *renderfx-animation.o(.text._ZN8RenderFX10ControllerD1Ev) }
     .renderfx_controller_enabled 0x003ec200 : { *renderfx-animation.o(.text._ZN8RenderFX20SetControllerEnabledEib) }
