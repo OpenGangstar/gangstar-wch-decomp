@@ -31,6 +31,7 @@
         "_ZN13VehicleCameraC1EP11LevelObject",
         "_ZN13VehicleCameraC2EP11LevelObject",
         "_ZN13VehicleCamera12updateAnglesEii",
+        "_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
         "_ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE",
         "_ZN13VehicleCameraD1Ev",
         "_ZN13VehicleCameraD2Ev",
