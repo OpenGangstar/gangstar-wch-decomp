@@ -13,6 +13,7 @@
 #include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../core/NativeStdio.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
 
@@ -63,6 +64,8 @@ struct MenuManagerFocusFields {
     MyMenuFX* menuFX;
     unsigned char beforeClearingFocus[5];
     bool clearingFocus;
+    unsigned char beforeAsianFont[210];
+    bool asianFont;
 };
 }
 
@@ -91,6 +94,39 @@ extern "C" void _ZN11MenuManager10clearFocusEv(MenuManager* manager)
     fields.clearingFocus = true;
     fields.menuFX->ClearFocus();
     fields.clearingFocus = false;
+}
+
+extern "C" bool _ZN11MenuManager15enableAsianFontEb(MenuManager* manager, bool enabled)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    if (fields.asianFont == enabled)
+        return false;
+    fields.asianFont = enabled;
+    return true;
+}
+
+static const char asianFontFormat[] = "<font size=\"90%%\">%s</font>";
+
+static char asianFontTextBuffer[1024];
+
+extern "C" void _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+    MenuManager* manager, gameswf::character* character, const char* text, bool html, bool scaleAsianFont)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    if (fields.asianFont && scaleAsianFont) {
+        sprintf(asianFontTextBuffer, asianFontFormat, text);
+        fields.menuFX->SetText(character, asianFontTextBuffer, html);
+    } else {
+        fields.menuFX->SetText(character, text, html);
+    }
+}
+
+extern "C" void _ZN11MenuManager13setMenuFXTextEPKcS1_bb(
+    MenuManager* manager, const char* name, const char* text, bool html, bool scaleAsianFont)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+        manager, fields.menuFX->Find(name), text, html, scaleAsianFont);
 }
 
 extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool visible)
