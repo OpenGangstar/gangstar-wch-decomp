@@ -25,6 +25,15 @@
     "source": "src/game/missions/SideMission.cpp",
     "linker_script": "config/linker/SideMissionAiStartup.ld",
     "functions": [
+        "_ZN11SideMission4initEv",
+        "_ZN11SideMission10inProgressEv",
+        "_ZN11SideMission4stopEb",
+        "_ZN11SideMission8getRangeERfS0_iiiii",
+        "_ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission13calculateTimeEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint",
+        "_ZN11SideMission16removeCheckpointERP10Checkpoint",
+        "_ZN11SideMission6addNPCEiiN3irr4core8vector3dIfEEtt",
         "_ZN11SideMission9getRewardEv",
         "_ZN11SideMission11updateTimerEi",
         "_ZN11SideMission8getTimerEv",
@@ -69,6 +78,18 @@
         "_ZN12StateMachineD1Ev",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN11SideMission4stopEb"
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager19unlockFrozenScriptsEv",
+        "_ZN17GameObjectManager3AddEP11LevelObjecti",
+        "_ZN9Character18isCurrentAnimationEi",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN7Message10setMessageEiiN11MenuManager5eTextE",
+        "_ZN9Character8goToIdleEv",
+        "_ZN9AIManager8removeAIEP3NPC",
+        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
+        "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
+        "_ZN17GameObjectManager8spawnNPCEiiN3irr4core8vector3dIfEEtt"
     ]
 }

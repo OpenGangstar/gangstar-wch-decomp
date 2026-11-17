@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../missions/Checkpoint.h"
+#include "../characters/PhysicAttributes.h"
 #include "../missions/SideMission.h"
 #include "../ai/NPC.h"
 #include "../characters/PlayerTest.h"
@@ -169,4 +171,68 @@ bool TaxiSideMission::dropOff(irr::core::vector3d<float> position)
     passenger->unknown4 |= 0x80u;
     removeCheckpoint(checkpoint);
     return true;
+}
+
+extern "C" int sprintf(char*, const char*, ...);
+extern const char taxiMissionTimerFormat[] __attribute__((visibility("hidden")));
+
+void TaxiSideMission::begin(irr::core::vector3d<float> position, int level,
+                            int& time, float& money)
+{
+    difficulty = level;
+    float minDistance;
+    float maxDistance;
+    unsigned short surface;
+    getRange(minDistance, maxDistance, level, 300, 400, 600, 700);
+    checkpoint = addCheckpoint(27, position, minDistance, maxDistance,
+        PhysicAttributes::MATERIAL_TYPE_SIDEWALK, surface);
+    addNPC(-1, -1, checkpoint->GetPosition(), PhysicAttributes::MATERIAL_TYPE_SIDEWALK, surface);
+    passenger->setAnimation(181, 1.0f, true, false, false);
+
+    const int pickupTime = calculateTime(position, checkpoint->GetPosition(), difficulty == 1 ? 150 : 80, difficulty);
+    const float pickupMoney = calculateMoney(position, checkpoint->GetPosition(), 100, difficulty);
+    time += pickupTime;
+    money = pickupMoney;
+    position.getDistanceFrom(checkpoint->GetPosition());
+
+    char totalText[8];
+    char pickupText[8];
+    const int totalTime = time;
+    sprintf(totalText, taxiMissionTimerFormat, totalTime / 60000, totalTime / 1000 % 60, totalTime % 1000 / 100);
+    sprintf(pickupText, taxiMissionTimerFormat, pickupTime / 60000, pickupTime / 1000 % 60, pickupTime % 1000 / 100);
+}
+
+bool TaxiSideMission::pickUp(irr::core::vector3d<float> position, int& time, float& money, int elapsed)
+{
+    if (!isInCheckpointRange(position, checkpoint) && pickupDelay <= 0)
+        return false;
+
+    const bool immobilized = PlayerTest::GetPlayer()->getVehicle()->immobilized;
+    if (!immobilized) {
+        PlayerTest::GetPlayer()->getVehicle()->immobilize();
+        pickupDelay = 500;
+        passenger->goToVehicle(PlayerTest::GetPlayer()->getVehicle(), false, true, true, immobilized);
+        removeCheckpoint(checkpoint);
+
+        float minimum, maximum;
+        getRange(minimum, maximum, difficulty, 300, 400, 600, 700);
+        unsigned short surface;
+        checkpoint = addCheckpoint(23, position, minimum, maximum,
+            PhysicAttributes::MATERIAL_TYPE_SIDEWALK, surface);
+        int bonusTime = calculateTime(position, checkpoint->GetPosition(), 80, difficulty);
+        float bonusMoney = calculateMoney(position, checkpoint->GetPosition(), 100, difficulty);
+        time += bonusTime;
+        money += bonusMoney;
+    } else {
+        pickupDelay -= elapsed;
+        if (pickupDelay <= 0) {
+            fadeInFadeOut();
+            PlayerTest::GetPlayer()->getVehicle()->mobilize();
+            passenger->hide();
+            passenger->removeCollisions();
+            return true;
+        }
+    }
+
+    return false;
 }

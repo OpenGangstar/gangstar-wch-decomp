@@ -16,8 +16,27 @@ _ZN30retail_sidemission_transitions22scripted_vehicle_transE = 0x00434e20;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 __aeabi_f2iz = 0x001c44cc;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_idiv = 0x001c43dc;
+sqrt = 0x001c401c;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_d2f = 0x001c4310;
+__aeabi_fcmple = 0x001c43ac;
 SECTIONS
 {
+    .init 0x00346b5c : { *ai-startup-sidemission.o(.text._ZN11SideMission4initEv) }
+    .in_progress 0x00346b7c : { *ai-startup-sidemission.o(.text._ZN11SideMission10inProgressEv) }
+    .stop 0x00346fd0 : { *ai-startup-sidemission.o(.text._ZN11SideMission4stopEb) }
+    .get_range 0x00346b08 : { *ai-startup-sidemission.o(.text._ZN11SideMission8getRangeERfS0_iiiii) }
+    .calculate_money 0x00347618 : { *ai-startup-sidemission.o(.text._ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii) }
+    .calculate_time 0x003476c0 : { *ai-startup-sidemission.o(.text._ZN11SideMission13calculateTimeEN3irr4core8vector3dIfEES3_ii) }
+    .checkpoint_range 0x00346d3c : { *ai-startup-sidemission.o(.text._ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint) }
+    .remove_checkpoint 0x00346ec4 : { *ai-startup-sidemission.o(.text._ZN11SideMission16removeCheckpointERP10Checkpoint) }
+    .add_npc 0x00346f04 : { *ai-startup-sidemission.o(.text._ZN11SideMission6addNPCEiiN3irr4core8vector3dIfEEtt) }
     .side_mission_reward 0x00346ba0 : { *ai-startup-sidemission.o(.text._ZN11SideMission9getRewardEv) }
     .side_mission_update_timer 0x003470d0 : { *ai-startup-sidemission.o(.text._ZN11SideMission11updateTimerEi) }
     .side_mission_timer 0x00346b88 : { *ai-startup-sidemission.o(.text._ZN11SideMission8getTimerEv) }

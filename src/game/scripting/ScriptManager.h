@@ -33,6 +33,7 @@ public:
     void* getCinematicsHudSprite() const;
     void* getRace() const;
     void unload();
+    void unlockFrozenScripts();
     Script** scripts;
     int scriptCapacity;
     int scriptCount;

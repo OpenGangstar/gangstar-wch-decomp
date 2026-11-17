@@ -18,6 +18,7 @@ class PhysicAttributes;
 // function; the inline type accessor represents the observed byte load.
 class LevelObject {
     friend class TaxiSideMission;
+    friend class SideMission;
     friend class FPSCamera;
     friend class GameObjectList;
     friend class GameObjectManager;

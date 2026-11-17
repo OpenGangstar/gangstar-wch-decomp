@@ -19,16 +19,28 @@ public:
     virtual int getObj1Message() = 0;
     virtual int getObj2Message() = 0;
     void init();
+    bool inProgress();
     int getTimer();
     int getReward();
     void updateTimer(int elapsed);
 
 protected:
+    void fadeInFadeOut();
+    static void getRange(float&, float&, int, int, int, int, int);
+    static Checkpoint* addCheckpoint(int, irr::core::vector3d<float>, float, float, unsigned short, unsigned short&);
+    void addNPC(int, int, irr::core::vector3d<float>, unsigned short, unsigned short);
+    static int calculateTime(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int);
+    static float calculateMoney(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int);
     static void removeCheckpoint(Checkpoint*& checkpoint);
     static bool isInCheckpointRange(irr::core::vector3d<float> position, Checkpoint* checkpoint);
 
 private:
-    unsigned char unknown4[8];
+    int activeState;
+
+protected:
+    int difficulty;
+
+private:
     int timer;
     float reward;
     int stopReason;
