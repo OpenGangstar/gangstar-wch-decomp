@@ -31,6 +31,7 @@ public:
 };
 
 static const unsigned int meshHiddenFlag = 0x800u;
+static const unsigned int scriptedMovementFlag = 0x8000u;
 
 void operator delete(void*) throw();
 extern "C" {
@@ -170,6 +171,28 @@ void PlayerTest::lockSwitchWeapon()
 void PlayerTest::unlockSwitchWeapon()
 {
     weaponSwitchLocked = false;
+}
+
+void PlayerTest::runToLocation(const irr::core::vector3d<float>& point)
+{
+    SavePositionInterface* position = this;
+    if (!position->isDead()) {
+        flags240 |= scriptedMovementFlag;
+        Character* character = reinterpret_cast<Character*>(position);
+        character->setDestination(point, 100);
+        character->Character::runToLocation(point);
+    }
+}
+
+void PlayerTest::walkToLocation(const irr::core::vector3d<float>& point)
+{
+    SavePositionInterface* position = this;
+    if (!position->isDead()) {
+        flags240 |= scriptedMovementFlag;
+        Character* character = reinterpret_cast<Character*>(position);
+        character->setDestination(point, 100);
+        character->Character::walkToLocation(point);
+    }
 }
 
 void PlayerTest::showMesh()
