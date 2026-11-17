@@ -668,6 +668,32 @@ void MenuFX::SetMenu(const char* name, bool push)
     next->unknown80 = 1;
 }
 
+static const char focusInAnimation[] = "focus_in";
+
+void MenuFX::PopMenu()
+{
+    topState()->LostFocus();
+    topState()->Hide();
+    PlayAnim(topState()->firstCharacter.get(), widgetHideAnimation, 0);
+    topState()->unknown80 = 2;
+
+    SetContext(reinterpret_cast<gameswf::character*>(
+        reinterpret_cast<FlashCharacterRoot*>(root.get())->flashRoot));
+    stateStack.resize(stateStack.size - 1);
+    if (stateStack.size > 0) {
+        setCharacterVisible(topState()->firstCharacter.get(), true);
+        SetContext(topState()->firstCharacter.get());
+        if (!PlayAnim(topState()->firstCharacter.get(), focusInAnimation, 0))
+            PlayAnim(topState()->firstCharacter.get(), widgetShowAnimation, 0);
+        if ((inputBehavior & 1) && topState()->secondCharacter.get()) {
+            ResetFocus(0);
+            SetFocus(topState()->secondCharacter.get(), 0);
+        }
+        topState()->GotFocus();
+        topState()->unknown80 = 3;
+    }
+}
+
 void MenuFX::SwitchMenu(const char* name)
 {
     SetMenu(name, false);
