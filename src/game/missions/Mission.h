@@ -31,7 +31,9 @@ public:
     bool objective(int id, bool silent);
     bool start(int id, int duration);
 private:
-    unsigned char unknown4[16];
+    friend class ScriptManager;
+    int currentMissionId;
+    unsigned char unknown8[12];
     int currentMessage;
     int lastObjectiveText;
     int state;

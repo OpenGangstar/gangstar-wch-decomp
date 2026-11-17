@@ -348,6 +348,7 @@ private:
     bool leftDoorTransition;
     bool rightDoorTransition;
     friend class TaxiSideMission;
+    friend class ScriptManager;
     bool immobilized;
     unsigned char unknown1007[5];
 };

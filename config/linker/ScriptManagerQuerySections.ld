@@ -2,8 +2,32 @@
 PROVIDE(_Znwj = 0x001c4814);
 PROVIDE(__cxa_guard_acquire = 0x001c4958);
 PROVIDE(__cxa_guard_release = 0x001c46c4);
+PROVIDE(printf = 0x001c4058);
+PROVIDE(strcmp = 0x001c4658);
+PROVIDE(__stack_chk_fail = 0x001c42e0);
+PROVIDE(_Znaj = 0x001c3ff8);
+PROVIDE(memset = 0x001c45d4);
 SECTIONS
 {
+    .script_entry_33ed94 0x0033ed94 : { *script-manager-helpers.o(.text._ZN13ScriptManager9resetGameEbi) }
+    .script_entry_33f0f8 0x0033f0f8 : { *script-manager-helpers.o(.text._ZN13ScriptManager10moveObjectEP11LevelObjectS1_) }
+    .script_entry_33ef8c 0x0033ef8c : { *script-manager-helpers.o(.text._ZN13ScriptManager10loadScriptEPKcb) }
+    .script_entry_33fc00 0x0033fc00 : { *script-manager-helpers.o(.text._ZNK13ScriptManager26getAvailableMissionScriptsERSt6vectorIP6ScriptSaIS2_EE) }
+    .script_load_data_stream_dtor 0x002d3654 : { *script-manager-helpers.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
+    .script_entry_33d104 0x0033d104 : { *script-manager-helpers.o(.text._ZN13ScriptManager5pauseEv .gnu.linkonce.t._ZN13ScriptManager5pauseEv) }
+    .script_entry_33d140 0x0033d140 : { *script-manager-helpers.o(.text._ZN13ScriptManager12playerDrivesEP7Vehicle .gnu.linkonce.t._ZN13ScriptManager12playerDrivesEP7Vehicle) }
+    .script_entry_33d2f4 0x0033d2f4 : { *script-manager-helpers.o(.text._ZNK13ScriptManager8drawFadeEv .gnu.linkonce.t._ZNK13ScriptManager8drawFadeEv) }
+    .script_entry_33e954 0x0033e954 : { *script-manager-helpers.o(.text._Z10SafeDeleteI6ScriptEvRPT_ .gnu.linkonce.t._Z10SafeDeleteI6ScriptEvRPT_) }
+    .script_entry_33ea88 0x0033ea88 : { *script-manager-helpers.o(.text._ZN13ScriptManager5setupEv .gnu.linkonce.t._ZN13ScriptManager5setupEv) }
+    .script_entry_33ec04 0x0033ec04 : { *script-manager-helpers.o(.text._ZN13ScriptManager20rewindRunningScriptsEv .gnu.linkonce.t._ZN13ScriptManager20rewindRunningScriptsEv) }
+    .script_entry_33ed18 0x0033ed18 : { *script-manager-helpers.o(.text._ZN13ScriptManager10findObjectEPKcb .gnu.linkonce.t._ZN13ScriptManager10findObjectEPKcb) }
+    .script_setup_intro 0x0042eff0 : { *script-manager-helpers.o(.rodata.script_setup_intro) }
+    .script_setup_hud 0x0042f000 : { *script-manager-helpers.o(.rodata.script_setup_hud) }
+    .script_setup_hud2 0x0042f01c : { *script-manager-helpers.o(.rodata.script_setup_hud2) }
+    .script_setup_character 0x0042f038 : { *script-manager-helpers.o(.rodata.script_setup_character) }
+    .script_find_player 0x0042f054 : { *script-manager-helpers.o(.rodata.script_find_player) }
+    .script_find_me 0x0042f05c : { *script-manager-helpers.o(.rodata.script_find_me) }
+    .script_find_warning 0x0042f060 : { *script-manager-helpers.o(.rodata.script_find_warning) }
     .verified_entry_33e9c0 0x0033e9c0 : { *script-manager-helpers.o(.text._ZN13ScriptManager20freezeRunningScriptsEPK6ScriptN10PlayerTest8eContextE) }
     .verified_entry_33ecc0 0x0033ecc0 : { *script-manager-helpers.o(.text._ZN13ScriptManager19unlockFrozenScriptsEv) }
     .script_manager_minimap_tracking 0x0033e974 : { *script-manager-helpers.o(.text._ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb) }

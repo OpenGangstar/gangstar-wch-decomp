@@ -18,28 +18,13 @@ __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/ApplicationEventSections.ld
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+INCLUDE config/linker/ApplicationRuntimeSections.ld
 SECTIONS
 {
-    .application_stop_monitoring 0x002d53e0 : { *(.text._ZN11Application14stopMonitoringEPv) }
-    .application_start_monitoring 0x002d5c40 : { *(.text._ZN11Application15startMonitoringEPvPKc) }
     .application_delete_control 0x002d458c : { *(.gnu.linkonce.t._Z10SafeDeleteI15CControlManagerEvRPT_) }
-    .application_logo_draw 0x002d4a6c : { *(.text._ZN11Application8LogoDrawEv) }
-    .application_logo_update 0x002d5898 : { *(.text._ZN11Application10LogoUpdateEv) }
-    .application_resume_draw 0x002d4b08 : { *(.text._ZN11Application18GlobalResumingDrawEv) }
-    .application_resume 0x002d4208 : { *(.text._ZN11Application19StartGlobalResumingEv) }
-    .application_start_logo 0x002d4e40 : { *(.text._ZN11Application9StartLogoEv) }
     .application_logo_sprite 0x00413d30 : { *(.rodata.application_logo_sprite) }
     .application_resume_sprite 0x00413c88 : { *(.rodata.application_resume_sprite) }
-    .application_pause 0x002d4268 : { *(.text._ZN11Application5PauseEv) }
-    .application_register_events 0x002d4318 : { *(.text._ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }
-    .application_register_scene 0x002d5558 : { *(.text._ZN11Application25RegisterForDrawingInSceneEP9IDrawable) }
-    .application_register_hud 0x002d4390 : { *(.text._ZN11Application23RegisterForDrawingOnHUDEP9IDrawable) }
-    .application_register_update 0x002d4408 : { *(.text._ZN11Application17RegisterForUpdateEP10IUpdatable) }
-    .application_unregister_events 0x002d3f7c : { *(.text._ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE) }
-    .application_unregister_hud 0x002d3fcc : { *(.text._ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable) }
-    .application_unregister_scene 0x002d3ff0 : { *(.text._ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable) }
     .application_stop_sound 0x002d4440 : { *(.text._ZN11Application15stopSoundThreadEv) }
-    .application_start_sound 0x002d446c : { *(.text._ZN11Application16startSoundThreadEv) }
     .application_material_renderer 0x002d3c48 : { *(.text._ZN11Application19GetMaterialRendererEv) }
     .application_default_language 0x002d3c5c : { *(.text._ZN11Application18SetDefaultLanguageEi) }
     .application_reinit_win32 0x002d3c6c : { *(.text._ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE) }

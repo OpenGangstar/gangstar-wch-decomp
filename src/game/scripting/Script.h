@@ -14,6 +14,8 @@ struct ScriptCommand {
 class Script {
     friend class ScriptManager;
 public:
+    Script(int commandCount);
+    ~Script();
     enum State { State0 = 0, State1 = 1, State2 = 2, WaitingForChild = 3, StateForceWidth = 0x7fffffff };
     void addCommand(Structs::ScriptCommand* command);
     int getMissionId() const;

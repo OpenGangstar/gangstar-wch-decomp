@@ -23,6 +23,10 @@ public:
     MenuManager();
     virtual ~MenuManager();
     static MenuManager* getInstance();
+    MenuWidget* getWidgetByIndex(int index) const
+    {
+        return index < widgets.size ? widgets.elements[index] : 0;
+    }
     enum eText { SkipButtonText = 3, MissionTimerText = 15, StayWithinText = 16, TextForceWidth = 0x7fffffff };
     void setText(eText slot, int textId, int* arguments);
     void setText(eText slot, const char* text, int* arguments);
