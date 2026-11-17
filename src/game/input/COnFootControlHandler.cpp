@@ -10,9 +10,14 @@
 
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "COnFootControlHandler.h"
+#include "../ui/VirtualButtonEvent.h"
+#include "../ui/GSInGameMenu.h"
+#include "../scripting/ScriptManager.h"
+#include "../audio/SoundManager.h"
 #include "CControlManager.h"
 #include "StickMoveEvent.h"
 #include "../combat/Weapon.h"
+#include "../combat/WeaponManager.h"
 #include "../core/SceneNode.h"
 #include "../app/Application.h"
 #include "../ui/Shop.h"
@@ -185,5 +190,132 @@ void COnFootControlHandler::handleAttackReleased()
         controlManager->unknown28[2] = controlManager->combatTimestamp;
     } else {
         controlManager->unknown28[0] = controlManager->combatTimestamp;
+    }
+}
+
+void COnFootControlHandler::handleAttackHeld()
+{
+    Application* application = Application::GetInstance();
+    unknown16 = 2;
+    if (static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getWeapon()->getWeaponType() == 0)
+        return;
+
+    controlManager->combatTimestamp = application->GetDevice()->getTimer()->getRealTime();
+    if (controlManager->combatTimestamp >= controlManager->unknown28[1] + 500u)
+        controlManager->unknown46 = true;
+
+    if (unknown12) {
+        handleStickReleased(true);
+        unknown12 = false;
+        PlayerTest::GetPlayer()->attack(true);
+    } else {
+        PlayerTest::GetPlayer()->attack(false);
+    }
+}
+
+void COnFootControlHandler::handleAttackPressed()
+{
+    Application* application = Application::GetInstance();
+    unknown16 = 1;
+    if (application->GetWeaponManager()->getCurrentWeapon()->getWeaponType() != 0) {
+        controlManager->unknown28[0] = 0;
+        controlManager->unknown46 = false;
+        controlManager->unknown28[1] = controlManager->combatTimestamp;
+    } else if ((PlayerTest::GetPlayer()->flags240 & 0x10000000u) && !controlManager->unknown44) {
+        controlManager->unknown28[3] = 1;
+    }
+
+    controlManager->combatTimestamp = application->GetDevice()->getTimer()->getRealTime();
+    handleStickReleased(true);
+    PlayerTest* player = PlayerTest::GetPlayer();
+    player->attack(!controlManager->unknown45 || unknown13);
+    unknown12 = false;
+    controlManager->enterCombat();
+}
+
+template<> GSInGameMenu* StateMachine::pushState<GSInGameMenu>() __attribute__((weak));
+
+void COnFootControlHandler::onEvent(const IEvent* event, const EventManager*)
+{
+    if (controlManager->isLocked() || ScriptManager::getInstance()->isInCinematic()) {
+        if (event->getEventID() == 13) {
+            const EvVirtualButton* button = static_cast<const EvVirtualButton*>(event);
+            if (button->getButtonType() == 18 && button->getAction() == EvVirtualButton::Released) {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                ScriptManager::getInstance()->skipCutscene();
+                ScriptManager::getInstance()->unknown24[0] = 0;
+            }
+        }
+        return;
+    }
+
+    switch (event->getEventID()) {
+    case 0:
+        onKeyboardEvent(event);
+        break;
+    case 7:
+        if (unknown12)
+            handleStickMove(const_cast<EvStickMove*>(static_cast<const EvStickMove*>(event)));
+        break;
+    case 8:
+        if (unknown12)
+            handleStickReleased(false);
+        break;
+    case 13: {
+        const EvVirtualButton* button = static_cast<const EvVirtualButton*>(event);
+        switch (button->getButtonType()) {
+        case 0:
+            switch (button->getAction()) {
+            case EvVirtualButton::Pressed: {
+                const int weapon = Application::GetInstance()->GetWeaponManager()->getCurrentWeapon()->getWeaponType();
+                if (weapon == 8 || weapon == 9) {
+                    controlManager->lock();
+                    controlManager->enterSniping(true);
+                } else {
+                    handleAttackPressed();
+                }
+                break;
+            }
+            case EvVirtualButton::Held:
+                handleAttackHeld();
+                break;
+            case EvVirtualButton::Released:
+            case EvVirtualButton::Canceled:
+                handleAttackReleased();
+                break;
+            default:
+                break;
+            }
+            break;
+        case 1:
+            if (button->getAction() == EvVirtualButton::Pressed)
+                handleLockPressed();
+            break;
+        case 2:
+            if (button->getAction() == EvVirtualButton::Released)
+                handleEnterCarPressed();
+            break;
+        case 3:
+            if (button->getAction() == EvVirtualButton::Released)
+                handleEnterShopPressed();
+            break;
+        case 6:
+            if (button->getAction() == EvVirtualButton::Released)
+                handleWeaponSwitched();
+            break;
+        case 7:
+            if (button->getAction() == EvVirtualButton::Released) {
+                SoundManager::getInstance()->pauseAllSounds();
+                StateMachine::getInstance()->pushState<GSInGameMenu>();
+            }
+            break;
+        default:
+            break;
+        }
+        break;
+    }
     }
 }

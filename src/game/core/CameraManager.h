@@ -63,11 +63,12 @@ public:
     LevelObject* tappedTarget(const irr::core::position2d<int>& point,
                               const irr::core::vector3d<float>&) const;
 
+    void updateUpVector(float angle);
+
 private:
     LevelObject* getClickedTarget(irr::core::line3d<float> ray, bool primary) const;
     CameraManager(float nearDistance, float farDistance, float fov, LevelObject* target);
     bool updateTransition(float elapsed);
-    void updateUpVector(float angle);
     static CameraManager* s_cm;
 
     unsigned int touch;

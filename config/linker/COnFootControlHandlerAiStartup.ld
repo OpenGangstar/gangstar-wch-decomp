@@ -19,6 +19,10 @@ __cxa_pure_virtual = 0;
 PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 SECTIONS
 {
+    .on_foot_on_event_switch 0x00426484 : { *ai-startup-confootcontrolhandler.o(.rodata._ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager) }
+    .on_foot_on_event 0x0032ed5c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager) }
+    .onfoot_attack_held 0x0032e6f8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler16handleAttackHeldEv) }
+    .onfoot_attack_pressed 0x0032e76c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler19handleAttackPressedEv) }
     .onfoot_stick_move 0x0032e614 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler15handleStickMoveEP11EvStickMove) }
     .onfoot_attack_released 0x0032e69c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler20handleAttackReleasedEv) }
     .onfoot_enter_car 0x0032e5d8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler21handleEnterCarPressedEv) }

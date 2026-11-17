@@ -615,8 +615,18 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032e69d | COnFootControlHandler::handleAttackReleased | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032f201 | SniperControlHandler::onKeyboardEvent | camera_tap | BLOCKED | — | src/game/input/SniperControlHandler.cpp |
 | libsanangeles.so | 0x002e2725 | GSInGameMenu::update | lock_init | BLOCKED | — | src/game/ui/GSInGameMenu.cpp |
-| libsanangeles.so | 0x0032e6f9 | COnFootControlHandler::handleAttackHeld | vehicle_side | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032e76d | COnFootControlHandler::handleAttackPressed | vehicle_side | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent | lock_init | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x0032ed5d | COnFootControlHandler::onEvent | camera_tap | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032e835 | COnFootControlHandler::onKeyboardEvent | vehicle_side | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e6f9 | COnFootControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e76d | COnFootControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x0032ed5d | COnFootControlHandler::onEvent | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e835 | COnFootControlHandler::onKeyboardEvent | vehicle_side | BLOCKED | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032d945 | CDrivingControlHandler::disableAccelerometer | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032da91 | CDrivingControlHandler::onEvent | camera_tap | ASSIGNED | — | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x002ed11d | Widgets::About::Enable | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef041 | Widgets::About::Disable | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ebf35 | Widgets::About::Update | vehicle_side | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon | coordinator | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon | coordinator | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | coordinator | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ece95 | Widgets::About::Show | lock_init | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ec565 | Widgets::About constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/ui/MenuWidget.cpp |

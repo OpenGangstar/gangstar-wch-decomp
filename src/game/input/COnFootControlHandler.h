@@ -19,13 +19,16 @@ public:
     virtual void releaseKeyboardKeys();
 
 private:
-    void handleEnterCarPressed();
-    void handleEnterShopPressed();
-    void handleLockPressed();
-    void handleStickReleased(bool fast);
-    void handleStickMove(EvStickMove* event);
-    void handleAttackReleased();
-    void handleWeaponSwitched();
+    void onKeyboardEvent(const IEvent* event);
+    void handleEnterCarPressed() __attribute__((noinline));
+    void handleEnterShopPressed() __attribute__((noinline));
+    void handleLockPressed() __attribute__((noinline));
+    void handleStickReleased(bool fast) __attribute__((noinline));
+    void handleStickMove(EvStickMove* event) __attribute__((noinline));
+    void handleAttackReleased() __attribute__((noinline));
+    void handleAttackHeld() __attribute__((noinline));
+    void handleAttackPressed() __attribute__((noinline));
+    void handleWeaponSwitched() __attribute__((noinline));
     inline __attribute__((always_inline)) void resetInput();
     friend class CControlManager;
     unsigned char unknown4[4];

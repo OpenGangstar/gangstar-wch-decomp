@@ -11526,7 +11526,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
 0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
 0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
-0x0032d945	0x2c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20disableAccelerometerEv	CDrivingControlHandler::disableAccelerometer()
+0x0032d945	0x2c	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20disableAccelerometerEv	CDrivingControlHandler::disableAccelerometer()
 0x0032d971	0x1c	CDrivingControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0032d98d	0x58	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler8activateEv	CDrivingControlHandler::activate()
 0x0032d9e5	0x4c	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler10deactivateEv	CDrivingControlHandler::deactivate()
@@ -11553,11 +11553,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e649	0x1c	COnFootControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0032e665	0x38	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler8activateEv	COnFootControlHandler::activate()
 0x0032e69d	0x5c	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler20handleAttackReleasedEv	COnFootControlHandler::handleAttackReleased()
-0x0032e6f9	0x74	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler16handleAttackHeldEv	COnFootControlHandler::handleAttackHeld()
-0x0032e76d	0x90	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler19handleAttackPressedEv	COnFootControlHandler::handleAttackPressed()
+0x0032e6f9	0x74	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler16handleAttackHeldEv	COnFootControlHandler::handleAttackHeld()
+0x0032e76d	0x90	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler19handleAttackPressedEv	COnFootControlHandler::handleAttackPressed()
 0x0032e7fd	0x38	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler10deactivateEv	COnFootControlHandler::deactivate()
 0x0032e835	0x528	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent	COnFootControlHandler::onKeyboardEvent(IEvent const*)
-0x0032ed5d	0x194	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager	COnFootControlHandler::onEvent(IEvent const*, EventManager const*)
+0x0032ed5d	0x194	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager	COnFootControlHandler::onEvent(IEvent const*, EventManager const*)
 0x0032eef1	0x24	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerC1EP15CControlManager	COnFootControlHandler::COnFootControlHandler(CControlManager*)
 0x0032eef1	0x24	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerC2EP15CControlManager	COnFootControlHandler::COnFootControlHandler(CControlManager*)
 0x0032ef15	0x144	COnFootControlHandler.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

@@ -25,6 +25,9 @@
     "source": "src/game/input/COnFootControlHandler.cpp",
     "linker_script": "config/linker/COnFootControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager",
+        "_ZN21COnFootControlHandler16handleAttackHeldEv",
+        "_ZN21COnFootControlHandler19handleAttackPressedEv",
         "_ZN21COnFootControlHandler15handleStickMoveEP11EvStickMove",
         "_ZN21COnFootControlHandler20handleAttackReleasedEv",
         "_ZN21COnFootControlHandler21handleEnterCarPressedEv",
@@ -60,6 +63,7 @@
         }
     ],
     "sections": [
+        ".on_foot_on_event_switch",
         ".handler_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -73,6 +77,18 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK15CControlManager8isLockedEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN13ScriptManager12skipCutsceneEv",
+        "_ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent",
+        "_ZN12SoundManager14pauseAllSoundsEv",
+        "_ZN15CControlManager4lockEv",
+        "_ZN15CControlManager12enterSnipingEb",
+        "_ZN10PlayerTest6attackEb",
+        "_ZNK13WeaponManager16getCurrentWeaponEv",
+        "_ZN15CControlManager11enterCombatEv",
         "_ZN10PlayerTest4moveEff",
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZN10PlayerTest11initDrivingEb",
