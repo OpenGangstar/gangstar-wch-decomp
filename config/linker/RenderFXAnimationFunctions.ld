@@ -31,6 +31,8 @@ SECTIONS
     .renderfx_get_root 0x003ec3d0 : { *renderfx-animation.o(.text._ZNK8RenderFX7GetRootEv) }
     .renderfx_set_text_buffering 0x003ec9c4 : { *renderfx-animation.o(.text._ZN8RenderFX23SetTextBufferingEnabledEb) }
     .renderfx_get_flash_root 0x003ec9cc : { *renderfx-animation.o(.text._ZNK8RenderFX12GetFlashRootEv) }
+    .renderfx_setbounds 0x003ed8c8 : { *renderfx-animation.o(.text._ZN8RenderFX9SetBoundsEiiii) }
+    .renderfx_setviewport 0x003ed910 : { *renderfx-animation.o(.text._ZN8RenderFX11SetViewportEiiii) }
     .renderfx_begindisplay 0x003ed680 : { *renderfx-animation.o(.text._ZN8RenderFX12BeginDisplayEv) }
     .renderfx_render 0x003ed958 : { *renderfx-animation.o(.text._ZN8RenderFX6RenderEv) }
     .renderfx_enddisplay 0x003ed980 : { *renderfx-animation.o(.text._ZN8RenderFX10EndDisplayEv) }

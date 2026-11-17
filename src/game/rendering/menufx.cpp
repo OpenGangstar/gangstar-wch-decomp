@@ -35,6 +35,8 @@ void SwfFree(void* buffer);
 extern "C" {
 void _ZNK7gameswf11ref_counted7add_refEv(const gameswf::root* root);
 void _ZN7gameswf11ref_counted8drop_refEv(gameswf::root* root);
+void _ZN7gameswf4root18set_display_boundsEiiii(gameswf::root* root, int left, int top, int right, int bottom);
+void _ZN7gameswf4root20set_display_viewportEiiii(gameswf::root* root, int x, int y, int width, int height);
 void _ZN7gameswf4root13begin_displayEv(gameswf::root* root);
 void _ZN7gameswf4root7displayEv(gameswf::root* root);
 void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
@@ -435,6 +437,18 @@ void RenderFX::ClearGlyphTextureCaches(gameswf::player_context* context)
         context->outlineGlyphs->cache->reset();
     if (context->bitmapGlyphs && context->bitmapGlyphs->cache)
         context->bitmapGlyphs->cache->reset();
+}
+
+void RenderFX::SetBounds(int left, int top, int right, int bottom)
+{
+    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    _ZN7gameswf4root18set_display_boundsEiiii(root.get(), left, top, right, bottom);
+}
+
+void RenderFX::SetViewport(int x, int y, int width, int height)
+{
+    DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
+    _ZN7gameswf4root20set_display_viewportEiiii(root.get(), x, y, width, height);
 }
 
 void RenderFX::BeginDisplay()
