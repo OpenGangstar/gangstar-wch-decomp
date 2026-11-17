@@ -1,6 +1,26 @@
 strstr = 0x001c446c;
+PROVIDE(strcpy = 0x001c3fd4);
+PROVIDE(strcat = 0x001c43a0);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(__aeabi_idiv = 0x001c43dc);
 SECTIONS
 {
+    .widget_maplegend_localization 0x002edb60 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegend18UpdateLocalizationEv) }
+    .widget_maplegend_row_text 0x0041ae90 : { *ai-startup-menuwidget.o(.rodata.mapLegendRowLabelFormat) }
+    .widget_maplegend_button_text 0x0041aeac : { *ai-startup-menuwidget.o(.rodata.mapLegendButtonText) }
+    .widget_about_localization 0x002ed458 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About18UpdateLocalizationEv) }
+    .widget_about_event 0x002ee810 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About7OnEventERN8RenderFX5EventE) }
+    .widget_maplegend_ctor 0x002ec820 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegendC1Ev .text._ZN7Widgets9MapLegendC2Ev) }
+    .widget_maplegend_show 0x002ecf0c : { *ai-startup-menuwidget.o(.text._ZN7Widgets9MapLegend4ShowEv) }
+    .widget_about_version_token 0x0041abcc : { *ai-startup-menuwidget.o(.rodata.aboutVersionToken) }
+    .widget_about_version_format 0x0041abd0 : { *ai-startup-menuwidget.o(.rodata.aboutVersionFormat) }
+    .about_text_button 0x0041b2c4 : { *ai-startup-menuwidget.o(.rodata.aboutTextButtonName) }
+    .widget_maplegend_name 0x0041a91c : { *ai-startup-menuwidget.o(.rodata.widgetMapLegendName) }
+    .widget_maplegend_button 0x0041aaa8 : { *ai-startup-menuwidget.o(.rodata.mapLegendButton) }
+    .widget_maplegend_vtable 0x004a9ac0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets9MapLegendE) }
     .widget_about_ctor 0x002ec564 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5AboutC1Ev .text._ZN7Widgets5AboutC2Ev) }
     .widget_about_show 0x002ece94 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About4ShowEv) }
     .widget_about_name 0x0041a858 : { *ai-startup-menuwidget.o(.rodata.aboutWidgetName) }

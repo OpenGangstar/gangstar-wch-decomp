@@ -621,7 +621,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032ed5d | COnFootControlHandler::onEvent | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032e835 | COnFootControlHandler::onKeyboardEvent | vehicle_side | BLOCKED | — | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032d945 | CDrivingControlHandler::disableAccelerometer | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
-| libsanangeles.so | 0x0032da91 | CDrivingControlHandler::onEvent | camera_tap | ASSIGNED | — | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032da91 | CDrivingControlHandler::onEvent | camera_tap | BLOCKED | — | src/game/input/CDrivingControlHandler.cpp |
 | libsanangeles.so | 0x002ed11d | Widgets::About::Enable | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ef041 | Widgets::About::Disable | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ebf35 | Widgets::About::Update | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -630,8 +630,16 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ece95 | Widgets::About::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ec565 | Widgets::About constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ed459 | Widgets::About::UpdateLocalization | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ee811 | Widgets::About::OnEvent | vehicle_side | REVIEW | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ec821 | Widgets::MapLegend constructor (C1/C2 aliases) | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ecf0d | Widgets::MapLegend::Show | lock_init | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ed299 | Widgets::MapLegend::OnEvent | vehicle_side | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed459 | Widgets::About::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee811 | Widgets::About::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ec821 | Widgets::MapLegend constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecf0d | Widgets::MapLegend::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed299 | Widgets::MapLegend::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edb61 | Widgets::MapLegend::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed139 | Widgets::Corruption::OnEvent | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed1c5 | Widgets::DemoBuy::OnEvent | camera_tap | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002eebc5 | Widgets::BlockingTutorial::OnEvent | lock_init | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed809 | Widgets::DemoBuy::UpdateLocalization | vehicle_side | REVIEW | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edd6d | Widgets::IGMenu::OnEvent | camera_tap | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ee979 | Widgets::Tutorial::OnEvent | lock_init | ASSIGNED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef6f5 | Widgets::Tutorial::UpdateLocalization | vehicle_side | ASSIGNED | — | src/game/ui/MenuWidget.cpp |

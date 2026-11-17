@@ -27,6 +27,12 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets9MapLegend18UpdateLocalizationEv",
+        "_ZN7Widgets5About18UpdateLocalizationEv",
+        "_ZN7Widgets5About7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets9MapLegendC1Ev",
+        "_ZN7Widgets9MapLegendC2Ev",
+        "_ZN7Widgets9MapLegend4ShowEv",
         "_ZN7Widgets5AboutC1Ev",
         "_ZN7Widgets5AboutC2Ev",
         "_ZN7Widgets5About4ShowEv",
@@ -192,6 +198,14 @@
         }
     ],
     "sections": [
+        ".widget_maplegend_row_text",
+        ".widget_maplegend_button_text",
+        ".widget_about_version_token",
+        ".widget_about_version_format",
+        ".about_text_button",
+        ".widget_maplegend_name",
+        ".widget_maplegend_button",
+        ".widget_maplegend_vtable",
         ".widget_about_name",
         ".widget_about_credit_format",
         ".widget_about_anim_text",
@@ -296,6 +310,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb",
+        "_ZN7gameswf9character16get_world_matrixEv",
+        "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
         "_ZN7gameswf8as_valueC1Ei",
         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",

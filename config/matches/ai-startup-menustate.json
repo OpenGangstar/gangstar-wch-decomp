@@ -334,6 +334,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7gameswf9character16get_world_matrixEv",
+        "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
         "_ZN7gameswf8as_valueC1Ei",
         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",

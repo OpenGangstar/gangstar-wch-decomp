@@ -10,6 +10,7 @@
 
 #include "RenderFX.h"
 #include "CharacterVisibility.h"
+#include "FlashMatrix.h"
 #include "../core/NativeStdio.h"
 #include "../ui/MenuState.h"
 
@@ -135,19 +136,6 @@ public:
     static cxform identity;
 
     float channels[4][2];
-};
-
-class matrix {
-public:
-    matrix();
-    void concatenate_translation(float x, float y);
-    float get_x_scale() const;
-    float get_y_scale() const;
-    float get_rotation() const;
-    void set_scale_rotation(float xScale, float yScale, float rotation);
-
-private:
-    float elements[6];
 };
 
 class tu_string {

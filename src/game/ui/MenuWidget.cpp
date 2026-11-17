@@ -19,6 +19,8 @@
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
+#include "../rendering/FlashMatrix.h"
+#include "../core/NativeStrings.h"
 #include "../hud/MenuManager.h"
 
 extern "C" {
@@ -1458,4 +1460,146 @@ void Widgets::About::Show()
     if (!animation)
         animation = renderFX->Find(aboutAnimationName);
     renderFX->GotoFrame(animation, 0, true);
+}
+
+extern "C" {
+const gameswf::matrix& _ZN7gameswf9character16get_world_matrixEv(gameswf::character* character);
+}
+
+static const char aboutTextButtonName[] = "btnTexts";
+
+void Widgets::About::OnEvent(RenderFX::Event& event)
+{
+    if (strcmp(event.characterName, aboutTextButtonName) != 0)
+        return;
+
+    switch (event.type) {
+    case 5: {
+        const gameswf::matrix matrix = _ZN7gameswf9character16get_world_matrixEv(event.character);
+        const gameswf::point& coordinates = *reinterpret_cast<const gameswf::point*>(event.unknown12);
+        const float x = coordinates.x;
+        const float y = coordinates.y;
+        const gameswf::point input(x, y);
+        gameswf::point point;
+        matrix.transform(&point, input);
+
+        if (unknown24 == -1) {
+            const float mouseFrame = point.y / 20.0f;
+            const float currentFrame = widgetAnimationMethods(animation).getCurrentFrame(animation);
+            unknown24 = static_cast<int>(mouseFrame + currentFrame);
+            unknown28 = page - 1;
+        }
+        const int frameOffset = static_cast<int>(static_cast<float>(unknown24) + point.y / -20.0f);
+        int pageOffset = frameOffset / 20;
+        if (frameOffset < 0)
+            --pageOffset;
+        const int newPage = (unknown28 + pageOffset) % 280;
+        if (page != newPage) {
+            page = newPage;
+            UpdateLocalization();
+        }
+        if (frameOffset < 0) {
+            const int remainder = frameOffset % 20;
+            unknown32 = 19 - (remainder < 0 ? -remainder : remainder);
+        } else {
+            unknown32 = frameOffset % 20;
+        }
+        renderFX->GotoFrame(animation, unknown32, false);
+        break;
+    }
+    case 6:
+        _ZN11MenuManager10clearFocusEv(MenuManager::getInstance());
+        // Fall through to finish the gesture.
+    case 1:
+        if (getCharacterPlayState(animation) != 0)
+            renderFX->GotoFrame(animation, unknown32, true);
+        unknown24 = -1;
+        page = (page + (event.type != 6)) % 280;
+        break;
+    }
+    event.consumed = true;
+}
+
+extern "C" char* strcat(char*, const char*);
+extern "C" void _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+    MenuManager*, gameswf::character*, const char*, bool, bool);
+
+static const char aboutVersionToken[] = "%v";
+static const char aboutVersionFormat[] = "%i.%i.%i";
+
+void Widgets::About::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    MenuManager* menu = MenuManager::getInstance();
+    for (int i = 0; i < 12; ++i) {
+        char buffer[512];
+        int index = (page + i) % 280;
+        if (index < 0)
+            index += 280;
+        strcpy(buffer, _ZNK13StringManager9getStringEi(strings, 0xb000 + index));
+        char* token = strstr(buffer, aboutVersionToken);
+        if (token) {
+            *token = 0;
+            char version[16];
+            sprintf(version, aboutVersionFormat, 3, 5, 0);
+            strcat(buffer, version);
+        }
+        _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+            menu, credits[i], buffer, true, false);
+    }
+}
+
+namespace Widgets {
+class MapLegend : public MenuWidget {
+public:
+    MapLegend();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int textIds[8];
+    bool expanded;
+};
+}
+
+static const char widgetMapLegendName[] = "widgetMapLegend";
+
+Widgets::MapLegend::MapLegend() : MenuWidget(widgetMapLegendName), expanded(false)
+{
+    textIds[0] = 0x105c;
+    textIds[1] = 0x105b;
+    textIds[2] = 0x1054;
+    textIds[3] = 0x1056;
+    textIds[4] = 0x1057;
+    textIds[5] = 0x105a;
+    textIds[6] = 0x1059;
+    textIds[7] = 0x1058;
+}
+
+static const char mapLegendButton[] = "widgetMapLegend.btnLegend";
+
+void Widgets::MapLegend::Show()
+{
+    MenuWidget::Show();
+    renderFX->GotoFrame(character, expanded ? objectiveOpen : objectiveClose, false);
+    renderFX->GotoFrame(mapLegendButton, expanded ? objectiveOpen : objectiveClose, false);
+}
+
+static const char mapLegendRowLabelFormat[] = "widgetMapLegend.group.txt%d";
+static const char mapLegendButtonText[] = "widgetMapLegend.btnLegend.text";
+
+void Widgets::MapLegend::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    MenuManager::getInstance();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    for (int row = 0; row < 8; ++row) {
+        if (textIds[row] != -1) {
+            char name[128];
+            sprintf(name, mapLegendRowLabelFormat, row);
+            _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, textIds[row]), true);
+        }
+    }
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mapLegendButtonText, _ZNK13StringManager9getStringEi(strings, 0x1052), true);
 }
