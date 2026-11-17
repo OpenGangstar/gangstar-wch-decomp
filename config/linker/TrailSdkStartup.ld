@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-trail/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_ZdaPv = 0x001c461c;
 _Znaj = 0x001c3ff8;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fmul = 0x001c4724;
@@ -15,6 +16,8 @@ SECTIONS
     .trail_modify_life 0x00348490 : { *sdk-startup-trail.o(.text._ZN5Trail10ModifyLifeEf) }
     .trail_delete 0x0034854c : { *sdk-startup-trail.o(.text._ZN5TrailD0Ev) }
     .trail_dtor 0x00348574 : { *sdk-startup-trail.o(.text._ZN5TrailD1Ev .text._ZN5TrailD2Ev) }
+    .trail_ctor 0x00348594 : { *sdk-startup-trail.o(.text._ZN5TrailC1Ev .text._ZN5TrailC2Ev) }
+    .trail_cleanup 0x003484f4 : { *sdk-startup-trail.o(.text._ZN5Trail7CleanUpEv) }
     .trail_init 0x00348ef0 : { *sdk-startup-trail.o(.text._ZN5Trail4InitEiiiff) }
     .trail_vtable 0x004ad288 : { *sdk-startup-trail.o(.data.rel.ro._ZTV5Trail) }
     .sdk_startup_function_0 0x00348f64 : { *sdk-startup-trail.o(.text.__tcf_2) }

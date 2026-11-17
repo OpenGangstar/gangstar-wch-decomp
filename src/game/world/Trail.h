@@ -3,6 +3,8 @@
 
 #include "../core/Vector3.h"
 
+namespace irr { namespace scene { class ISceneNode; } }
+
 struct TrailPoint {
     irr::core::vector3d<float> left;
     irr::core::vector3d<float> right;
@@ -36,13 +38,13 @@ public:
     TrailPoint* points;
 
 private:
-    unsigned char unknown40[4];
+    int unknown40;
     int activePointCount;
     irr::core::vector3d<float> lastAddedPoint;
     float trailScaleSquared;
     unsigned char unknown64[4];
-    int unknown68;
-    unsigned char unknown72[4];
+    irr::scene::ISceneNode* meshSceneNode;
+    unsigned short* indices;
     bool unknown76;
     unsigned char unknown77[3];
 };

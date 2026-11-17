@@ -12,6 +12,50 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "Trail.h"
+#include "../app/Application.h"
+#include "../core/SceneNode.h"
+
+namespace {
+// Trail cleanup uses retail scene-manager slot 69.
+class TrailSceneManager : public irr::scene::ISceneManager {
+public:
+    virtual void unknown68();
+    virtual void addToDeletionQueue(irr::scene::ISceneNode* node);
+};
+}
+
+Trail::Trail() : trailPointCount(0), lastAddedPoint()
+{
+    trailLifetime = 600;
+    segmentWidth = 25.0f;
+    segmentCount = 0;
+    triangleCount = 0;
+    unknown64[0] = unknown64[1] = unknown64[2] = unknown64[3] = 255;
+    vertexCount = 0;
+    indexCount = 0;
+    points = 0;
+    unknown40 = 0;
+    activePointCount = 0;
+    unknown76 = false;
+}
+
+void Trail::CleanUp()
+{
+    irr::scene::ISceneManager* manager = Application::GetInstance()->GetDevice()->getSceneManager();
+    reinterpret_cast<TrailSceneManager*>(manager)->addToDeletionQueue(meshSceneNode);
+    trailLifetime = 600;
+    segmentWidth = 25.0f;
+    trailPointCount = 0;
+    segmentCount = 0;
+    triangleCount = 0;
+    vertexCount = 0;
+    indexCount = 0;
+    unknown40 = 0;
+    activePointCount = 0;
+    delete[] points;
+    delete[] indices;
+    unknown76 = false;
+}
 
 Trail::~Trail()
 {
@@ -39,7 +83,7 @@ bool Trail::Init(int pointCount, int mode, int lifetime, float width, float scal
     triangleCount = segmentCount * 2;
     indexCount = triangleCount * 3;
     points = new TrailPoint[pointCount];
-    unknown68 = 0;
+    meshSceneNode = 0;
     unknown76 = false;
     CreateMeshSceneNode();
     return true;
