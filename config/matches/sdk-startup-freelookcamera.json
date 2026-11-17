@@ -36,6 +36,7 @@
         "_ZN14FreeLookCamera21updateHorizontalAngleEiif",
         "_ZN14FreeLookCamera19updateVerticalAngleEiif",
         "_ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE",
+        "_ZN14FreeLookCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
         {
             "name": "__tcf_2",
             "address": "0x003346e1"

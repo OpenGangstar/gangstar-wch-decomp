@@ -7,6 +7,10 @@ __aeabi_i2f = 0x001c41e4;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fcmpge = 0x001c4364;
+__aeabi_fcmple = 0x001c43ac;
+acosf = 0x001c4694;
 INCLUDE config/linker/CameraSections.ld
 SECTIONS
 {
@@ -18,6 +22,7 @@ SECTIONS
     .free_look_destructor 0x00334710 : { *sdk-startup-freelookcamera.o(.text._ZN14FreeLookCameraD1Ev .text._ZN14FreeLookCameraD2Ev) }
     .free_look_constructor 0x00334730 : { *sdk-startup-freelookcamera.o(.text._ZN14FreeLookCameraC1Ev .text._ZN14FreeLookCameraC2Ev) }
     .free_look_vtable 0x004accd0 : { *sdk-startup-freelookcamera.o(.data.rel.ro._ZTV14FreeLookCamera) }
+    .free_look_move 0x003347f8 : { *sdk-startup-freelookcamera.o(.text._ZN14FreeLookCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }
     .free_look_set_position 0x00334760 : { *sdk-startup-freelookcamera.o(.text._ZN14FreeLookCamera11setPositionERKN3irr4core8vector3dIfEE) }
     .sdk_startup_function_0 0x003346e0 : { *sdk-startup-freelookcamera.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00334778 : { *sdk-startup-freelookcamera.o(.text._Z41__static_initialization_and_destruction_0ii) }
