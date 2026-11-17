@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -25,6 +26,14 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_Z13fs_close_funcPv",
+        "_Z15fs_get_eof_funcPv",
+        "_Z12fs_tell_funcPKv",
+        "_Z19fs_seek_to_end_funcPv",
+        "_Z12fs_seek_funciPv",
+        "_Z13fs_write_funcPKviPv",
+        "_Z12fs_read_funcPviS_",
+        "_Z12fs_open_funcPKcS0_",
         "_ZN11MenuManager7setTextENS_5eTextEiPi",
         "_ZNK11MenuManager9getTextIdENS_5eTextE",
         "_ZNK11MenuManager7getTextENS_5eTextE",
@@ -90,6 +99,7 @@
         }
     ],
     "sections": [
+        ".menu_fs_open_error",
         ".menu_manager_asian_font_start",
         ".menu_manager_asian_font_format",
         ".menu_manager_texts_name",
@@ -127,6 +137,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_Z13ekd_debug_outPKcPc",
+        "_Z21ekd_makestringfile255PKcPc",
         "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
         "_ZNK13StringManager9getStringEi",
         "_ZN11Application11GetInstanceEv",

@@ -1,4 +1,12 @@
 sprintf = 0x001c46ac;
+fclose = 0x001c4628;
+feof = 0x001c41c0;
+ftell = 0x001c45f8;
+fseek = 0x001c43f4;
+fwrite = 0x001c47e4;
+fread = 0x001c4598;
+fopen = 0x001c45bc;
+__stack_chk_fail = 0x001c42e0;
 strlen = 0x001c48bc;
 strcat = 0x001c43a0;
 memcpy = 0x001c4190;
@@ -13,6 +21,15 @@ SECTIONS
     .menu_manager_set_localized_text 0x002e564c : { *menu-manager-helpers.o(.text._ZN11MenuManager7setTextENS_5eTextEiPi) }
     .menu_manager_get_text_id 0x002e3f30 : { *menu-manager-helpers.o(.text._ZNK11MenuManager9getTextIdENS_5eTextE) }
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
+    .menu_fs_close 0x002e4074 : { *menu-manager-helpers.o(.text._Z13fs_close_funcPv) }
+    .menu_fs_eof 0x002e408c : { *menu-manager-helpers.o(.text._Z15fs_get_eof_funcPv) }
+    .menu_fs_tell 0x002e40a0 : { *menu-manager-helpers.o(.text._Z12fs_tell_funcPKv) }
+    .menu_fs_seek_end 0x002e40ac : { *menu-manager-helpers.o(.text._Z19fs_seek_to_end_funcPv) }
+    .menu_fs_seek 0x002e40c8 : { *menu-manager-helpers.o(.text._Z12fs_seek_funciPv) }
+    .menu_fs_write 0x002e40ec : { *menu-manager-helpers.o(.text._Z13fs_write_funcPKviPv) }
+    .menu_fs_read 0x002e40fc : { *menu-manager-helpers.o(.text._Z12fs_read_funcPviS_) }
+    .menu_fs_open 0x002e410c : { *menu-manager-helpers.o(.text._Z12fs_open_funcPKcS0_) }
+    .menu_fs_open_error 0x00418d04 : { *menu-manager-helpers.o(.rodata.menuFileOpenError) }
     .menu_manager_show_texts 0x002e4160 : { *menu-manager-helpers.o(.text._ZN11MenuManager9showTextsEv) }
     .menu_manager_hide_texts 0x002e4184 : { *menu-manager-helpers.o(.text._ZN11MenuManager9hideTextsEv) }
     .menu_manager_hide_arrow 0x002e41a8 : { *menu-manager-helpers.o(.text._ZN11MenuManager15hideDialogArrowEv) }

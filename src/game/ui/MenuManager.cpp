@@ -15,6 +15,8 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
+#include "../core/Debug_Log.h"
+#include "../core/PathName.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
 
@@ -24,6 +26,66 @@ public:
     void ClearStates();
     void ClearFocus();
 };
+
+extern "C" int feof(NativeFile* file);
+
+namespace {
+struct NativeFileFlags {
+    unsigned char beforeFlags[12];
+    unsigned short flags;
+};
+}
+
+int fs_close_func(void* file)
+{
+    return fclose(static_cast<NativeFile*>(file)) == -1 ? -1 : 0;
+}
+
+int fs_get_eof_func(void* file)
+{
+    unsigned int eof = feof(static_cast<NativeFile*>(file));
+    // Normalize any nonzero EOF result to one.
+    return ((0u - eof) | eof) >> 31;
+}
+
+int fs_tell_func(const void* file)
+{
+    return ftell(static_cast<NativeFile*>(const_cast<void*>(file)));
+}
+
+int fs_seek_to_end_func(void* file)
+{
+    return fseek(static_cast<NativeFile*>(file), 0, 2) == -1 ? -1 : 0;
+}
+
+int fs_seek_func(int offset, void* file)
+{
+    NativeFileFlags& state = *static_cast<NativeFileFlags*>(file);
+    state.flags &= ~0x60;
+    return fseek(static_cast<NativeFile*>(file), offset, 0) == -1 ? -1 : 0;
+}
+
+int fs_write_func(const void* source, int length, void* file)
+{
+    return fwrite(source, 1, length, static_cast<NativeFile*>(file));
+}
+
+int fs_read_func(void* destination, int length, void* file)
+{
+    return fread(destination, 1, length, static_cast<NativeFile*>(file));
+}
+
+static const char menuFileOpenError[] = "ERROR-fopen=0: fs_open_func-fullname='%s' \n";
+
+void* fs_open_func(const char* name, const char* mode)
+{
+    char fullName[255];
+    ekd_makestringfile255(name, fullName);
+    NativeFile* file = fopen(fullName, mode);
+    if (!file)
+        ekd_debug_out(menuFileOpenError, fullName);
+    return file;
+}
 
 static const char menuTexts[] = "Texts";
 static const char dialogArrow[] = "dialogArrow";
