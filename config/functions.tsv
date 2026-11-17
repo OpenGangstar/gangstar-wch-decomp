@@ -12715,24 +12715,24 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD2Ev	TouchScreenBase::~TouchScreenBase()
 0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
-0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
-0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const
-0x0034cd8d	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone11getTopBoundEv	TouchScreenIPhone::getTopBound() const
-0x0034cd95	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone14getBottomBoundEv	TouchScreenIPhone::getBottomBound() const
+0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
+0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const
+0x0034cd8d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone11getTopBoundEv	TouchScreenIPhone::getTopBound() const
+0x0034cd95	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone14getBottomBoundEv	TouchScreenIPhone::getBottomBound() const
 0x0034cd9d	0x30	TouchScreenIPhone.cpp	game	input	matched	__tcf_2	__tcf_2
-0x0034cdcd	0xc	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenIPhone::getTouchIDInRegion(irr::core::rect<float> const&) const
-0x0034cdd9	0xc	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenIPhone::isRegionPressed(irr::core::rect<float> const&) const
-0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneC1Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
-0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneC2Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
+0x0034cdcd	0xc	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenIPhone::getTouchIDInRegion(irr::core::rect<float> const&) const
+0x0034cdd9	0xc	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenIPhone::isRegionPressed(irr::core::rect<float> const&) const
+0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneC1Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
+0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneC2Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
 0x0034ce5d	0x6c	TouchScreenIPhone.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034cec9	0x14	TouchScreenIPhone.cpp	game	input	matched	_GLOBAL__I__ZN17TouchScreenIPhoneC2Effff	_GLOBAL__I__ZN17TouchScreenIPhoneC2Effff
-0x0034cedc	0x14	TouchScreenIPhone.cpp	game	input	pending	_ZThn472_N17TouchScreenIPhone7OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenIPhone::OnEvent(irr::SEvent const&)
-0x0034cef1	0xa0	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhone7OnEventERKN3irr6SEventE	TouchScreenIPhone::OnEvent(irr::SEvent const&)
-0x0034cf90	0x14	TouchScreenIPhone.cpp	game	input	pending	_ZThn472_N17TouchScreenIPhoneD0Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cfa5	0x3c	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneD0Ev	TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cfe0	0x14	TouchScreenIPhone.cpp	game	input	pending	_ZThn472_N17TouchScreenIPhoneD1Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneD1Ev	TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneD2Ev	TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cedc	0x14	TouchScreenIPhone.cpp	game	input	matched	_ZThn472_N17TouchScreenIPhone7OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenIPhone::OnEvent(irr::SEvent const&)
+0x0034cef1	0xa0	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhone7OnEventERKN3irr6SEventE	TouchScreenIPhone::OnEvent(irr::SEvent const&)
+0x0034cf90	0x14	TouchScreenIPhone.cpp	game	input	matched	_ZThn472_N17TouchScreenIPhoneD0Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cfa5	0x3c	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneD0Ev	TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cfe0	0x14	TouchScreenIPhone.cpp	game	input	matched	_ZThn472_N17TouchScreenIPhoneD1Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneD1Ev	TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneD2Ev	TouchScreenIPhone::~TouchScreenIPhone()
 0x0034d02d	0x4	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3212getLeftBoundEv	TouchScreenWin32::getLeftBound() const
 0x0034d031	0x4	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3213getRightBoundEv	TouchScreenWin32::getRightBound() const
 0x0034d035	0x4	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3211getTopBoundEv	TouchScreenWin32::getTopBound() const

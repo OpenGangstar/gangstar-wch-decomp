@@ -566,12 +566,28 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch | camera_tap | ASSIGNED | â€” | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x003268cc | AnalogStick::processTouch non-virtual thunk | camera_tap | ASSIGNED | â€” | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x0034cfa5 | TouchScreenIPhone deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
-| libsanangeles.so | 0x0034cff5 | TouchScreenIPhone complete destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
-| libsanangeles.so | 0x0034cf90 | TouchScreenIPhone deleting destructor thunk | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
-| libsanangeles.so | 0x0034cfe0 | TouchScreenIPhone complete destructor thunk | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
-| libsanangeles.so | 0x0034cef1 | TouchScreenIPhone OnEvent | lock_init | ASSIGNED | — | src/game/input/TouchScreenIPhone.cpp |
-| libsanangeles.so | 0x0034cedc | TouchScreenIPhone OnEvent non-virtual thunk | lock_init | ASSIGNED | — | src/game/input/TouchScreenIPhone.cpp |
-| libsanangeles.so | 0x0034cde5 | TouchScreenIPhone constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch | camera_tap | BLOCKED | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268cc | AnalogStick::processTouch non-virtual thunk | camera_tap | REVIEW | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x0034cfa5 | TouchScreenIPhone deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cff5 | TouchScreenIPhone complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cf90 | TouchScreenIPhone deleting destructor thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cfe0 | TouchScreenIPhone complete destructor thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cef1 | TouchScreenIPhone OnEvent | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cedc | TouchScreenIPhone OnEvent non-virtual thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cde5 | TouchScreenIPhone constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd7d | TouchScreenIPhone::getLeftBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd85 | TouchScreenIPhone::getRightBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd8d | TouchScreenIPhone::getTopBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd95 | TouchScreenIPhone::getBottomBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cdcd | TouchScreenIPhone::getTouchIDInRegion | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cdd9 | TouchScreenIPhone::isRegionPressed | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | lock_init | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | camera_tap | REVIEW | — | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_side | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | camera_tap | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | camera_tap | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034dac4 | AccelerometerWin32 complete destructor thunk | lock_init | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d9bd | AccelerometerWin32 constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/input/AccelerometerWin32.cpp |
