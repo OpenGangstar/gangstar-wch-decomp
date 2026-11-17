@@ -28,6 +28,9 @@ SECTIONS
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
     .menu_manager_instance_cleanup 0x002e62b0 : { *menu-manager-helpers.o(.text.__tcf_7) }
     .menu_manager_widget_visibility 0x002e49ac : { *menu-manager-helpers.o(.text._ZN11MenuManager22updateWidgetVisibilityEv) }
+    .menu_manager_destructor 0x002e6274 : { *menu-manager-helpers.o(.text._ZN11MenuManagerD1Ev .text._ZN11MenuManagerD2Ev) }
+    .menu_manager_deleting_destructor 0x002e4c84 : { *menu-manager-helpers.o(.text._ZN11MenuManagerD0Ev) }
+    .menu_manager_vtable 0x004a8f60 : { *menu-manager-helpers.o(.data.rel.ro._ZTV11MenuManager) }
     .menu_swf_texture_loader 0x002e60e8 : { *menu-manager-helpers.o(.text._Z16SwfTextureLoaderPKcii) }
     .menu_manager_free_texture 0x002e4a14 : { *menu-manager-helpers.o(.text._ZN11MenuManager11freeTextureEPKc) }
     .menu_font_file 0x002e48e8 : { *menu-manager-helpers.o(.text._Z12get_fontfilePKcbbPci) }

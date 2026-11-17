@@ -9517,7 +9517,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e4aa9	0x19c	MenuManager.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002e4c45	0x14	MenuManager.cpp	game	ui	matched	_GLOBAL__I__Z16SwfTextureLoaderPKcii	_GLOBAL__I__Z16SwfTextureLoaderPKcii
 0x002e4c59	0x2c	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf5arrayIP10MenuWidgetE14release_bufferEv	gameswf::array<MenuWidget*>::release_buffer()
-0x002e4c85	0x40	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerD0Ev	MenuManager::~MenuManager()
+0x002e4c85	0x40	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerD0Ev	MenuManager::~MenuManager()
 0x002e4cc5	0x30	MenuManager.cpp	game	ui	matched	__tcf_8	__tcf_8
 0x002e4cf5	0x74	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE25_M_splice_insert_dispatchIN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEEEEvS7_T_S8_RKSt12__false_type	void std::list<long, std::allocator<long> >::_M_splice_insert_dispatch<stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> > >(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::__false_type const&)
 0x002e4d69	0x20	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE6spliceEN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEERS1_	std::list<long, std::allocator<long> >::splice(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::list<long, std::allocator<long> >&)
@@ -9533,8 +9533,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e6019	0xd0	MenuManager.cpp	stlport	-	matched	_ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE18_M_insert_overflowEPS3_RKS3_RKSt11__true_typejb	std::vector<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::_M_insert_overflow(irr::video::ITexture**, irr::video::ITexture* const&, std::__true_type const&, unsigned int, bool)
 0x002e60e9	0x60	MenuManager.cpp	game	ui	matched	_Z16SwfTextureLoaderPKcii	SwfTextureLoader(char const*, int, int)
 0x002e6149	0x12c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager8tearDownEv	MenuManager::tearDown()
-0x002e6275	0x3c	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerD1Ev	MenuManager::~MenuManager()
-0x002e6275	0x3c	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerD2Ev	MenuManager::~MenuManager()
+0x002e6275	0x3c	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerD1Ev	MenuManager::~MenuManager()
+0x002e6275	0x3c	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerD2Ev	MenuManager::~MenuManager()
 0x002e62b1	0x1c	MenuManager.cpp	game	ui	matched	__tcf_7	__tcf_7
 0x002e62cd	0xa4	MenuManager.cpp	game	ui	matched	_ZN11MenuManager8switchToEPKcb	MenuManager::switchTo(char const*, bool)
 0x002e6371	0xa8	MenuManager.cpp	game	ui	matched	_ZN11MenuManager3popEb	MenuManager::pop(bool)

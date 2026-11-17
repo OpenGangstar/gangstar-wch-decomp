@@ -16,8 +16,11 @@ struct MenuCheatZone {
     float bottom;
 };
 
+class MenuWidget;
+
 class MenuManager {
 public:
+    virtual ~MenuManager();
     static MenuManager* getInstance();
     enum eText { SkipButtonText = 3, MissionTimerText = 15, StayWithinText = 16, TextForceWidth = 0x7fffffff };
     void setText(eText slot, int textId, int* arguments);
@@ -56,14 +59,21 @@ public:
     static int s_WeaponShopDataCount;
     static WeaponShopData s_WeaponShopData[];
 private:
-    unsigned char unknown0[60];
+    unsigned char unknown4[56];
     int mapMode;
     unsigned char unknown64[4];
     int inGameMenu;
     int tutorialId;
     int tutorialTextId;
     int repairCost;
-    unsigned char unknown84[104];
+    struct OwnedBuffer {
+        void* data;
+        unsigned char unknown4[8];
+        bool ownsData;
+        ~OwnedBuffer();
+    };
+    OwnedBuffer buffer;
+    unsigned char unknown100[88];
     MenuFXPrefix* menuFX;
     unsigned char unknown192[4];
     bool widgetVisibility;
@@ -73,6 +83,15 @@ private:
     bool cheatsUnlocked;
     bool cheatsUnlockAllowed;
     unsigned int consumedCursorCount;
+    unsigned char unknown416[4];
+    struct WidgetStorage {
+        MenuWidget** elements;
+        int size;
+        int capacity;
+        ~WidgetStorage();
+    };
+    WidgetStorage widgets;
+    unsigned char unknown432[4];
 };
 
 #endif
