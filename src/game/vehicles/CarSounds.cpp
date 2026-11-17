@@ -36,6 +36,46 @@ SoundFade::SoundFade()
     remainingFrames = 0;
 }
 
+CarSoundSettings::CarSoundSettings()
+{
+    auxiliaryTurboIds = 0;
+    onEngineIds = 0;
+    onEngineReferenceRpm = 0;
+    onEngineLowerRpm = 0;
+    onEngineUpperRpm = 0;
+    offEngineIds = 0;
+    offEngineReferenceRpm = 0;
+    offEngineLowerRpm = 0;
+    offEngineUpperRpm = 0;
+    auxiliaryTurboThresholds = 0;
+}
+
+CarSoundSettings::~CarSoundSettings()
+{
+    delete[] onEngineIds;
+    delete[] onEngineReferenceRpm;
+    delete[] onEngineLowerRpm;
+    delete[] onEngineUpperRpm;
+    delete[] offEngineIds;
+    delete[] offEngineReferenceRpm;
+    delete[] offEngineLowerRpm;
+    delete[] offEngineUpperRpm;
+    delete[] auxiliaryTurboIds;
+    delete[] auxiliaryTurboThresholds;
+}
+
+TurboSoundSettings::TurboSoundSettings()
+{
+    auxiliaryTurboIds = 0;
+    auxiliaryTurboThresholds = 0;
+}
+
+TurboSoundSettings::~TurboSoundSettings()
+{
+    delete[] auxiliaryTurboIds;
+    delete[] auxiliaryTurboThresholds;
+}
+
 CarSounds::~CarSounds()
 {
     StopAllSounds();
