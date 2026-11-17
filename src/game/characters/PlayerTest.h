@@ -71,7 +71,7 @@ public:
 class SavePrimaryInterface {
 public:
     virtual void unknownPrimary();
-    virtual void unknownPrimary1(); virtual void unknownPrimary2();
+    virtual ~SavePrimaryInterface();
     virtual void Stop();
     virtual void setVehicle(Vehicle* value);
     virtual void unknownPrimary5();

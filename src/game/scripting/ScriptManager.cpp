@@ -1676,3 +1676,61 @@ void ScriptManager::moveObject(LevelObject* object, LevelObject* target)
     }
     object->getPhysicAttributes()->Init(target->GetMatID(), target->GetTriID(), object->GetPosition());
 }
+
+void ScriptManager::unload()
+{
+    vehicleNameAnimation->SetAnim(-1);
+    cinematicBars->SetAnim(-1);
+    cinematicCharacterAnimation->SetAnim(-1);
+    cinematicHudAnimation2->SetAnim(-1);
+    delete s_playerTest;
+    s_playerTest = 0;
+    delete race;
+    race = 0;
+    delete mission;
+    mission = 0;
+    if (scripts) {
+        for (int i = 0; i < scriptCount; ++i)
+            SafeDelete(scripts[i]);
+        delete[] scripts;
+        scripts = 0;
+    }
+    scriptCount = 0;
+    s_me = 0;
+    s_fadeIntensity = -999;
+    s_fadeTime = -999;
+    s_failure = 0;
+    s_failureTime = 0;
+    s_raceTimer = 0;
+    s_raceTimeSeconds = 0;
+}
+
+extern template void SafeDelete<AnimObject>(AnimObject*&);
+
+void ScriptManager::tearDown()
+{
+    delete skipButton;
+    skipButton = 0;
+    SafeDelete(vehicleNameAnimation);
+    SafeDelete(cinematicBars);
+    SafeDelete(cinematicHudAnimation2);
+    SafeDelete(introAnimation);
+    delete cinematicsHudSprite;
+    cinematicsHudSprite = 0;
+    delete cinematicCharacterSprite;
+    cinematicCharacterSprite = 0;
+    delete introSprite;
+    introSprite = 0;
+    SafeDelete(cinematicCharacterAnimation);
+    delete race;
+    race = 0;
+    delete mission;
+    mission = 0;
+
+    if (scripts) {
+        for (int i = 0; i < scriptCount; ++i)
+            SafeDelete(scripts[i]);
+        delete[] scripts;
+        scripts = 0;
+    }
+}

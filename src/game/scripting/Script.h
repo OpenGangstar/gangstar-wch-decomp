@@ -10,6 +10,20 @@ struct ScriptCommand {
 };
 }
 
+namespace stlp_priv {
+struct _Rb_tree_node_base;
+}
+
+struct ScriptActionTree {
+    ~ScriptActionTree();
+    unsigned char headerColor;
+    stlp_priv::_Rb_tree_node_base* root;
+    stlp_priv::_Rb_tree_node_base* left;
+    stlp_priv::_Rb_tree_node_base* right;
+    unsigned int count;
+    unsigned char allocator;
+};
+
 // Partial layout. The script storage beyond the observed fields is unresolved.
 class Script {
     friend class ScriptManager;
@@ -39,7 +53,7 @@ public:
     void unsetScriptObjectAction(LevelObject* object, eScriptAction action);
 
 private:
-    unsigned char unknown0[24];
+    ScriptActionTree objectActions;
     int commandCapacity;
     int commandCount;
     int commandIndex;

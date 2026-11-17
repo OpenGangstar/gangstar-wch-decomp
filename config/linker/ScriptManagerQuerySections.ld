@@ -6,6 +6,7 @@ PROVIDE(printf = 0x001c4058);
 PROVIDE(strcmp = 0x001c4658);
 PROVIDE(__stack_chk_fail = 0x001c42e0);
 PROVIDE(_Znaj = 0x001c3ff8);
+PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(memset = 0x001c45d4);
 SECTIONS
 {
@@ -147,4 +148,6 @@ SECTIONS
     .script_manager_hideSkipButton 0x0033d194 : { *script-manager-helpers.o(.text._ZN13ScriptManager14hideSkipButtonEv) }
     .script_manager_showSkipButton 0x0033d1b8 : { *script-manager-helpers.o(.text._ZN13ScriptManager14showSkipButtonEv) }
     .script_manager_skipCutscene 0x0033d3f0 : { *script-manager-helpers.o(.text._ZN13ScriptManager12skipCutsceneEv) }
+    .script_manager_unload 0x0033fcb0 : { *script-manager-helpers.o(.text._ZN13ScriptManager6unloadEv) }
+    .script_manager_tearDown 0x0033fda8 : { *script-manager-helpers.o(.text._ZN13ScriptManager8tearDownEv) }
 }

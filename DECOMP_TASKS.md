@@ -452,9 +452,16 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033ef8d | ScriptManager::loadScript | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f0f9 | ScriptManager::moveObject | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ed95 | ScriptManager::resetGame | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033fcb1 | ScriptManager::unload | lock_init | REVIEW | — | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | vehicle_side | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033fcb1 | ScriptManager::unload | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033fe71 | ScriptManager::draw | lock_init | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | vehicle_side | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033fe71 | ScriptManager::draw | lock_init | REVIEW | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | vehicle_side | REVIEW | — | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x003399c5 | Script::clearScriptObjectAction | camera_tap | REVIEW | — | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0033999d | Script::setScriptObjectAction | lock_init | REVIEW | — | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0033922d | Script::setState | vehicle_side | ASSIGNED | — | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction | camera_tap | ASSIGNED | — | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0033ce19 | Script::nextCommand | lock_init | ASSIGNED | — | src/game/scripting/Script.cpp |

@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-script/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_ZdaPv = 0x001c461c;
 __aeabi_atexit = 0x001c494c;
 _ZN25retail_script_transitions16civPassive_transE = 0x0042ea20;
 _ZN25retail_script_transitions17scriptedNpc_transE = 0x0042eb4c;
@@ -17,6 +18,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .script_destructor 0x00339384 : { *ai-startup-script.o(.text._ZN6ScriptD2Ev .text._ZN6ScriptD1Ev) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-script.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x003391b8 : { *ai-startup-script.o(.text.__tcf_2) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-script.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

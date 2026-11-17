@@ -13,6 +13,7 @@ class ASprite;
 class Vehicle;
 class IMissionCondition;
 class Mission;
+class Race;
 class Revive;
 class Script;
 class LevelObject;
@@ -47,6 +48,7 @@ public:
     void* getCinematicsHudSprite() const;
     void* getRace() const;
     void unload();
+    void tearDown();
     void unlockFrozenScripts();
     void freezeRunningScripts(const Script* script, PlayerTest::eContext context);
     Script** scripts;
@@ -66,7 +68,7 @@ public:
     AnimObject* cinematicCharacterAnimation;
     Mission* mission;
     Revive* revive;
-    void* race;
+    Race* race;
     HudElement* skipButton;
     bool paused;
     bool cutsceneSkipped;
@@ -84,6 +86,7 @@ public:
     void printCommand(const Structs::ScriptCommand& command);
     void addScript(Script* script);
     Structs::ScriptCommand* loadCommand(DataStream& stream);
+    static void cleanCommand(Structs::ScriptCommand* command);
     void loadScript(const char* filename, bool loadSave);
     int getAvailableMissionScripts(std::vector<Script*, std::allocator<Script*> >& output) const;
     bool areBlockingCommandsSkipped() const;
@@ -108,6 +111,9 @@ public:
     void showSkipButton();
     void skipCutscene();
     static int s_failure;
+    static int s_failureTime;
+    static int s_raceTimer;
+    static int s_raceTimeSeconds;
     static int s_fadeTime;
     static int s_fadeIntensity;
     static PlayerTest* s_playerTest;

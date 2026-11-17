@@ -11991,8 +11991,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003392a1	0x50	Script.cpp	game	scripting	pending	_ZN6ScriptC2Ei	Script::Script(int)
 0x003392f1	0x34	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE5eraseENS_17_Rb_tree_iteratorIS7_SB_EE	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::erase(stlp_priv::_Rb_tree_iterator<std::pair<LevelObject* const, int>, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> > >)
 0x00339325	0x60	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE12erase_uniqueERS6_	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::erase_unique(LevelObject* const&)
-0x00339385	0x68	Script.cpp	game	scripting	pending	_ZN6ScriptD1Ev	Script::~Script()
-0x00339385	0x68	Script.cpp	game	scripting	pending	_ZN6ScriptD2Ev	Script::~Script()
+0x00339385	0x68	Script.cpp	game	scripting	matched	_ZN6ScriptD1Ev	Script::~Script()
+0x00339385	0x68	Script.cpp	game	scripting	matched	_ZN6ScriptD2Ev	Script::~Script()
 0x003393ed	0x144	Script.cpp	game	scripting	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00339531	0x14	Script.cpp	game	scripting	matched	_GLOBAL__I__ZN6Script16s_driveBadPointsE	_GLOBAL__I__ZN6Script16s_driveBadPointsE
 0x00339545	0xcc	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE9_M_insertEPNS_18_Rb_tree_node_baseERKS7_SF_SF_	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::_M_insert(stlp_priv::_Rb_tree_node_base*, std::pair<LevelObject* const, int> const&, stlp_priv::_Rb_tree_node_base*, stlp_priv::_Rb_tree_node_base*)
@@ -12157,8 +12157,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033fb1d	0x14	ScriptManager.cpp	game	scripting	matched	_GLOBAL__I__ZN13ScriptManager12s_playerTestE	_GLOBAL__I__ZN13ScriptManager12s_playerTestE
 0x0033fb31	0xd0	ScriptManager.cpp	stlport	-	matched	_ZNSt6vectorIP6ScriptSaIS1_EE18_M_insert_overflowEPS1_RKS1_RKSt11__true_typejb	std::vector<Script*, std::allocator<Script*> >::_M_insert_overflow(Script**, Script* const&, std::__true_type const&, unsigned int, bool)
 0x0033fc01	0xb0	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager26getAvailableMissionScriptsERSt6vectorIP6ScriptSaIS2_EE	ScriptManager::getAvailableMissionScripts(std::vector<Script*, std::allocator<Script*> >&) const
-0x0033fcb1	0xf8	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager6unloadEv	ScriptManager::unload()
-0x0033fda9	0xc8	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager8tearDownEv	ScriptManager::tearDown()
+0x0033fcb1	0xf8	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager6unloadEv	ScriptManager::unload()
+0x0033fda9	0xc8	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager8tearDownEv	ScriptManager::tearDown()
 0x0033fe71	0x150	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager4drawEv	ScriptManager::draw()
 0x0033ffc1	0xd4	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE	ScriptManager::cleanCommand(Structs::ScriptCommand*)
 0x00340095	0x22	AIManager.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP14IEventReceiverSaIS2_EE5clearEv	stlp_priv::_List_base<IEventReceiver*, std::allocator<IEventReceiver*> >::clear()

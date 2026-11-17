@@ -317,6 +317,7 @@
         "application-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN10AnimObject7SetAnimEi",
         "_ZN7Message11isDisplayedEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",

@@ -175,3 +175,31 @@ static void _GLOBAL__I__ZN6Script16s_driveBadPointsE()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+extern "C" void eraseScriptActionNodes(
+    ScriptActionTree*, stlp_priv::_Rb_tree_node_base*)
+    __asm__("_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE8_M_eraseEPNS_18_Rb_tree_node_baseE")
+    __attribute__((weak));
+
+inline ScriptActionTree::~ScriptActionTree()
+{
+    if (count != 0) {
+        eraseScriptActionNodes(this, root);
+        stlp_priv::_Rb_tree_node_base* header = reinterpret_cast<stlp_priv::_Rb_tree_node_base*>(this);
+        left = header;
+        root = 0;
+        right = header;
+        count = 0;
+    }
+}
+
+Script::~Script()
+{
+    if (commands) {
+        for (int i = 0; i < commandCount; ++i) {
+            ScriptManager::cleanCommand(commands[i]);
+            delete commands[i];
+        }
+        delete[] commands;
+    }
+}

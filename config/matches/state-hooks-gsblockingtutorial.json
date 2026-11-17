@@ -353,6 +353,7 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN10AnimObject7SetAnimEi",
         "_ZNK10MenuWidget9IsVisibleEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZNK8RenderFX7GetRootEv",

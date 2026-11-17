@@ -26,6 +26,8 @@
     "source": "src/game/scripting/ScriptManager.cpp",
     "linker_script": "config/linker/ScriptManagerHelpers.ld",
     "functions": [
+        "_ZN13ScriptManager8tearDownEv",
+        "_ZN13ScriptManager6unloadEv",
         "_ZN13ScriptManager9resetGameEbi",
         "_ZN13ScriptManager10moveObjectEP11LevelObjectS1_",
         "_ZN13ScriptManager10loadScriptEPKcb",
