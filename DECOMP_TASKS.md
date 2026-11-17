@@ -417,11 +417,24 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034783d | SideMissionManager::draw | camera_tap | BLOCKED | — | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x00347925 | SideMissionManager::isMissionAvailable | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x00347bad | SideMissionManager::update | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347961 | SideMissionManager::initMission | vehicle_side | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x003479c5 | SideMissionManager::stop | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00345f95 | AmbulanceSideMission::clean | camera_tap | REVIEW | — | src/game/missions/AmbulanceSideMission.cpp |
-| libsanangeles.so | 0x00346615 | DeliverySideMission::clean | vehicle_side | REVIEW | — | src/game/missions/DeliverySideMission.cpp |
-| libsanangeles.so | 0x00345fa9 | AmbulanceSideMission::dropOff | camera_tap | REVIEW | — | src/game/missions/AmbulanceSideMission.cpp |
-| libsanangeles.so | 0x003461f9 | AmbulanceSideMission constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/missions/AmbulanceSideMission.cpp |
-| libsanangeles.so | 0x00346805 | DeliverySideMission constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/missions/DeliverySideMission.cpp |
-| libsanangeles.so | 0x00345fd5 | AmbulanceSideMission::begin | camera_tap | ASSIGNED | — | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00347961 | SideMissionManager::initMission | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x003479c5 | SideMissionManager::stop | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00345f95 | AmbulanceSideMission::clean | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346615 | DeliverySideMission::clean | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00345fa9 | AmbulanceSideMission::dropOff | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003461f9 | AmbulanceSideMission constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346805 | DeliverySideMission constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00345fd5 | AmbulanceSideMission::begin | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346395 | AmbulanceSideMission::pickUp | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346655 | DeliverySideMission::begin | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00346571 | AmbulanceSideMission destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346629 | DeliverySideMission::dropOff | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x003468c9 | DeliverySideMission::pickUp | — | COMPLETED | 100% | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00346ac9 | DeliverySideMission destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00347a51 | SafeDelete<AmbulanceSideMission> | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347b69 | SideMissionManager::start | camera_tap | REVIEW | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347a71 | SafeDelete<DeliverySideMission> | vehicle_side | REVIEW | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347a91 | SafeDelete<TaxiSideMission> | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347ab1 | SideMissionManager::clean | vehicle_side | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347b01 | SideMissionManager::init | camera_tap | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x0033ecc1 | ScriptManager::unlockFrozenScripts | lock_init | ASSIGNED | — | src/game/scripting/ScriptManager.cpp |

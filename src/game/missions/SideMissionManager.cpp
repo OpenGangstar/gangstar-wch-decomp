@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../vehicles/Vehicle.h"
+#include "../hud/MenuManager.h"
 #include "../app/Application.h"
 #include "../audio/SoundManager.h"
 #include "../characters/PlayerTest.h"
@@ -174,4 +176,33 @@ bool SideMissionManager::isMissionAvailable()
     if (static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4)
         return false;
     return s_nextMissionTimer <= 0;
+}
+
+void SideMissionManager::initMission()
+{
+    Vehicle* vehicle = PlayerTest::GetPlayer()->getVehicle();
+    if (!vehicle)
+        return;
+    switch (vehicle->GetMetatype()) {
+    case 153:
+        s_currentMission = s_taxiSideMission;
+        break;
+    case 5:
+        s_currentMission = s_ambulanceSideMission;
+        break;
+    case 39:
+        s_currentMission = s_deliverySideMission;
+        break;
+    }
+}
+
+void SideMissionManager::stop(bool showMessage)
+{
+    if (s_currentMission) {
+        s_currentMission->stop(showMessage);
+        s_currentMission = 0;
+    }
+    MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    Application::GetInstance()->GetHudManager()->toggleRadioCB(false);
+    s_step = 0;
 }

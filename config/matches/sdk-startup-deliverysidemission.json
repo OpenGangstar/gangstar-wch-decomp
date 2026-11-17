@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -25,6 +26,12 @@
     "source": "src/game/missions/DeliverySideMission.cpp",
     "linker_script": "config/linker/DeliverySideMissionSdkStartup.ld",
     "functions": [
+        "_ZN19DeliverySideMission7dropOffEN3irr4core8vector3dIfEE",
+        "_ZN19DeliverySideMission6pickUpEN3irr4core8vector3dIfEERiRfi",
+        "_ZN19DeliverySideMission5beginEN3irr4core8vector3dIfEEiRiRf",
+        "_ZN19DeliverySideMission5cleanEv",
+        "_ZN19DeliverySideMissionC1Ev",
+        "_ZN19DeliverySideMissionC2Ev",
         "_ZN19DeliverySideMission14getObj2MessageEv",
         "_ZN19DeliverySideMission14getObj1MessageEv",
         "_ZN19DeliverySideMission13getEndMessageEv",
@@ -46,6 +53,9 @@
         }
     ],
     "sections": [
+        ".delivery_begin_format",
+        ".delivery_side_mission_vtable",
+        ".side_mission_base_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -55,5 +65,18 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11SideMission18disableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEE",
+        "_ZN11SideMission16removeCheckpointERP10Checkpoint",
+        "_ZN11SideMission4initEv",
+        "_ZN11SideMission14getCheckpointsEiRN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEE",
+        "_ZN11SideMission17enableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEENS1_8vector3dIfEE",
+        "_ZN11SideMission13calculateTimeEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii",
+        "_ZN11SideMission19isInCheckpointRangeEN3irr4core8vector3dIfEEP10Checkpoint",
+        "_ZN11SideMission20isInCheckpointsRangeEN3irr4core8vector3dIfEERNS1_5arrayIP10CheckpointNS1_12irrAllocatorIS6_EEEE",
+        "_ZN11SideMission8getRangeERfS0_iiiii",
+        "_ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt"
+    ]
 }

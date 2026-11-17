@@ -9,6 +9,7 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../missions/SideMissionTimerText.h"
 #include "../missions/Checkpoint.h"
 #include "../characters/PhysicAttributes.h"
 #include "../missions/SideMission.h"
@@ -198,8 +199,8 @@ void TaxiSideMission::begin(irr::core::vector3d<float> position, int level,
     char totalText[8];
     char pickupText[8];
     const int totalTime = time;
-    sprintf(totalText, taxiMissionTimerFormat, totalTime / 60000, totalTime / 1000 % 60, totalTime % 1000 / 100);
-    sprintf(pickupText, taxiMissionTimerFormat, pickupTime / 60000, pickupTime / 1000 % 60, pickupTime % 1000 / 100);
+    formatSideMissionTime(totalText, taxiMissionTimerFormat, totalTime);
+    formatSideMissionTime(pickupText, taxiMissionTimerFormat, pickupTime);
 }
 
 bool TaxiSideMission::pickUp(irr::core::vector3d<float> position, int& time, float& money, int elapsed)

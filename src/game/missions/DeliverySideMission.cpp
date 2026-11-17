@@ -9,6 +9,10 @@
  */
 
 // Recovered translation-unit SDK startup callbacks.
+#include "../characters/PhysicAttributes.h"
+#include "SideMissionTimerText.h"
+#include "Checkpoint.h"
+#include "../core/NativeStdio.h"
 #include "SideMission.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -58,6 +62,7 @@ static void _GLOBAL__I__ZN19DeliverySideMissionC2Ev()
 
 class DeliverySideMission : public SideMission {
 public:
+    DeliverySideMission();
     virtual void begin(irr::core::vector3d<float>, int, int&, float&);
     virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int);
     virtual bool dropOff(irr::core::vector3d<float>);
@@ -69,6 +74,10 @@ public:
     virtual int getEndMessage();
     virtual int getObj1Message();
     virtual int getObj2Message();
+
+private:
+    irr::core::array<Checkpoint*> pickupCheckpoints;
+    Checkpoint* dropOffCheckpoint;
 };
 
 void DeliverySideMission::end()
@@ -103,4 +112,76 @@ int DeliverySideMission::getObj1Message()
 int DeliverySideMission::getObj2Message()
 {
     return 0x30f3;
+}
+
+void DeliverySideMission::clean()
+{
+    disableCheckpoints(pickupCheckpoints);
+    removeCheckpoint(dropOffCheckpoint);
+}
+
+DeliverySideMission::DeliverySideMission()
+{
+    pickupCheckpoints.data = 0;
+    pickupCheckpoints.allocated = 0;
+    pickupCheckpoints.used = 0;
+    pickupCheckpoints.free_when_destroyed = true;
+    pickupCheckpoints.is_sorted = true;
+    pickupCheckpoints.unknown16 = 1;
+    init();
+    getCheckpoints(22, pickupCheckpoints);
+    dropOffCheckpoint = 0;
+}
+
+static const char deliveryMissionTimerFormat[] __attribute__((section(".rodata.delivery_mission_timer_format"))) = "%02d:%02d:%01d";
+
+void DeliverySideMission::begin(irr::core::vector3d<float> position, int level,
+                               int& time, float& money)
+{
+    difficulty = level;
+    Checkpoint* checkpoint = enableCheckpoints(pickupCheckpoints, position);
+    const int pickupTime = calculateTime(position, checkpoint->GetPosition(), difficulty == 1 ? 150 : 65, difficulty);
+    const float pickupMoney = calculateMoney(position, checkpoint->GetPosition(), 50, difficulty);
+    time += pickupTime;
+    money = pickupMoney;
+    position.getDistanceFrom(checkpoint->GetPosition());
+
+    char totalText[8];
+    char pickupText[8];
+    const int totalTime = time;
+    formatSideMissionTime(totalText, deliveryMissionTimerFormat, totalTime);
+    formatSideMissionTime(pickupText, deliveryMissionTimerFormat, pickupTime);
+}
+
+bool DeliverySideMission::dropOff(irr::core::vector3d<float> position)
+{
+    if (!isInCheckpointRange(position, dropOffCheckpoint))
+        return false;
+    removeCheckpoint(dropOffCheckpoint);
+    return true;
+}
+
+bool DeliverySideMission::pickUp(irr::core::vector3d<float> position, int& time, float& money, int)
+{
+    if (!isInCheckpointsRange(position, pickupCheckpoints))
+        return false;
+
+    disableCheckpoints(pickupCheckpoints);
+    float minimum, maximum;
+    getRange(minimum, maximum, difficulty, 300, 400, 600, 700);
+    unsigned short surface;
+    dropOffCheckpoint = addCheckpoint(23, position, minimum, maximum,
+        PhysicAttributes::MATERIAL_TYPE_SIDEWALK, surface);
+    const int dropOffTime = calculateTime(position, dropOffCheckpoint->GetPosition(), 65, difficulty);
+    const float dropOffMoney = calculateMoney(position, dropOffCheckpoint->GetPosition(), 50, difficulty);
+    time += dropOffTime;
+    money += dropOffMoney;
+    position.getDistanceFrom(dropOffCheckpoint->GetPosition());
+
+    char totalText[8];
+    char dropOffText[8];
+    const int totalTime = time;
+    formatSideMissionTime(totalText, deliveryMissionTimerFormat, totalTime);
+    formatSideMissionTime(dropOffText, deliveryMissionTimerFormat, dropOffTime);
+    return true;
 }

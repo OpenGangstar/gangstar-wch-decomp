@@ -25,6 +25,8 @@
     "source": "src/game/missions/SideMissionManager.cpp",
     "linker_script": "config/linker/SideMissionManagerAiStartup.ld",
     "functions": [
+        "_ZN18SideMissionManager11initMissionEv",
+        "_ZN18SideMissionManager4stopEb",
         "_ZN18SideMissionManager6updateEj",
         "_ZN18SideMissionManager18isMissionAvailableEv",
         "_ZN18SideMissionManager19setNextMissionTimerEv",
@@ -72,7 +74,6 @@
         "_ZN10PlayerTest7addCashEii",
         "_ZN18AchievementManager17recordMissionCashEi",
         "_ZN11SideMission8finishedEv",
-        "_ZN18SideMissionManager11initMissionEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN11Application11GetInstanceEv",
         "_ZN11CHudManager13toggleRadioCBEb",
@@ -80,6 +81,10 @@
         "_ZN11SideMission5startEv",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10getMissionEv",
-        "_ZNK7Mission8getStateEv"
+        "_ZNK7Mission8getStateEv",
+        "_ZN11LevelObject11GetMetatypeEv",
+        "_ZN11SideMission4stopEb",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi"
     ]
 }

@@ -7,6 +7,7 @@
 class Checkpoint;
 class NPC;
 class SideMission {
+    friend class SideMissionManager;
 public:
     virtual void begin(irr::core::vector3d<float>, int, int&, float&) = 0;
     virtual bool pickUp(irr::core::vector3d<float>, int&, float&, int) = 0;
@@ -32,6 +33,7 @@ protected:
     void fadeInFadeOut();
     void removeNPC();
     static void getCheckpoints(int metatype, irr::core::array<Checkpoint*>& checkpoints);
+    static Checkpoint* enableCheckpoints(irr::core::array<Checkpoint*>&, irr::core::vector3d<float>);
     static void disableCheckpoints(irr::core::array<Checkpoint*>& checkpoints);
     static void getRange(float&, float&, int, int, int, int, int);
     static Checkpoint* addCheckpoint(int, irr::core::vector3d<float>, float, float, unsigned short, unsigned short&);
@@ -39,6 +41,7 @@ protected:
     static int calculateTime(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int);
     static float calculateMoney(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int);
     static void removeCheckpoint(Checkpoint*& checkpoint);
+    static bool isInCheckpointsRange(irr::core::vector3d<float>, irr::core::array<Checkpoint*>&);
     static bool isInCheckpointRange(irr::core::vector3d<float> position, Checkpoint* checkpoint);
 
 private:

@@ -11,6 +11,7 @@ public:
     static bool isInSideMission();
     static bool isMissionAvailable();
     static void update(unsigned int elapsed);
+    static void stop(bool showMessage);
 
     static SideMission* s_ambulanceSideMission;
     static SideMission* s_deliverySideMission;

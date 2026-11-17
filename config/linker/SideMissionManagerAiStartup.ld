@@ -19,6 +19,8 @@ lrand48 = 0x001c4664;
 __aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .side_entry_347960 0x00347960 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager11initMissionEv) }
+    .side_entry_3479c4 0x003479c4 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager4stopEb) }
     .side_manager_update 0x00347bac : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager6updateEj) }
     .side_manager_available 0x00347924 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager18isMissionAvailableEv) }
     .side_manager_update_switch 0x00434e74 : { *(.rodata._ZN18SideMissionManager6updateEj) }
