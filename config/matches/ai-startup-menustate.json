@@ -314,7 +314,6 @@
         "_ZN7Widgets8BlackBox8SetStateENS0_6eStateE",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb",
-        "_ZN7Widgets6IGMenu11HideButtonsEv",
         "_ZN11MenuManager17allowCheatsUnlockEb",
         "_ZN9ResStreamC1EPKci",
         "_ZN9ResStreamD1Ev",
