@@ -10,8 +10,11 @@
 
 // Recovered translation-unit SDK startup callbacks.
 #include "SlideControl.h"
+#include "../input/StickReleaseEvents.h"
 #include "../app/Application.h"
 #include "../input/TouchScreenBase.h"
+#include "../core/ASprite.h"
+#include "../hud/HudDrawColor.h"
 
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -83,4 +86,57 @@ void SlideControl::update(double)
         processTouch(id);
     else
         processTouchRelease();
+}
+
+void SlideControl::draw2d() const
+{
+    if (!(flags & 1))
+        return;
+
+    irr::video::SColor colors[4];
+    if ((flags & 16) && (unknown52 & 256)) {
+        setHudColor(colors[0], 191, 51);
+        setHudColor(colors[1], 191, 51);
+        setHudColor(colors[2], 191, 51);
+        setHudColor(colors[3], 191, 51);
+        ASprite::s_global_color = colors;
+    } else if (!(flags & 2)) {
+        setHudColor(colors[0], 128, 255);
+        setHudColor(colors[1], 128, 255);
+        setHudColor(colors[2], 128, 255);
+        setHudColor(colors[3], 128, 255);
+        ASprite::s_global_color = colors;
+    }
+
+    sprite->PaintFrame(frame, 0, 0, 0);
+    sprite->PaintFrame(handleFrame, static_cast<int>(unknown80), static_cast<int>(unknown84), 0);
+    ASprite::s_global_color = 0;
+}
+
+extern "C" void _ZN24EvLeftRightStickReleasedD1Ev(void*) __attribute__((weak));
+extern "C" void _ZN21EvUpDownStickReleasedD1Ev(void*) __attribute__((weak));
+
+void SlideControl::processTouchRelease()
+{
+    if (!(flags & 1u))
+        return;
+
+    unsigned int horizontalStorage[sizeof(EvLeftRightStickReleased) / sizeof(unsigned int)];
+    unsigned int verticalStorage[sizeof(EvUpDownStickReleased) / sizeof(unsigned int)];
+    if (flags & 2u) {
+        if (mode == Horizontal) {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            EvLeftRightStickReleased* event = new (horizontalStorage) EvLeftRightStickReleased(releasedRight, unknown76);
+            events->raise(*event);
+            _ZN24EvLeftRightStickReleasedD1Ev(event);
+        } else {
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            EvUpDownStickReleased* event = new (verticalStorage) EvUpDownStickReleased(releasedUp, unknown76);
+            events->raise(*event);
+            _ZN21EvUpDownStickReleasedD1Ev(event);
+        }
+    }
+    unknown80 = 0.0f;
+    unknown84 = 0.0f;
+    flags &= ~2u;
 }

@@ -9,6 +9,8 @@ __cxa_pure_virtual = 0;
 INCLUDE config/linker/HudElement-sections.ld
 SECTIONS
 {
+    .stick_release_0 0x00326d3c : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick19processTouchReleaseEv) }
+    .stick_release_1 0x00326d28 : { *sdk-startup-analogstick.o(.text._ZThn8_N11AnalogStick19processTouchReleaseEv) }
     .analog_stick_delete_thunk 0x003263ac : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11AnalogStickD0Ev) }
     .analog_stick_destructor_thunk 0x003263f0 : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11AnalogStickD1Ev) }
     .analog_stick_draw_thunk 0x00326480 : { *sdk-startup-analogstick.o(.text._ZThn4_NK11AnalogStick6draw2dEv) }

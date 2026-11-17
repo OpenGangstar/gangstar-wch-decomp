@@ -15,11 +15,15 @@ public:
     virtual void draw2d() const;
 
 private:
-    unsigned char unknown56[20];
+    unsigned char unknown56[16];
+    int mode;
     float unknown76;
     float unknown80;
     float unknown84;
-    unsigned char unknown88[16];
+    unsigned char unknown88[8];
+    bool releasedUp, releasedRight;
+    unsigned char unknown98[2];
+    int handleFrame;
 };
 
 #endif

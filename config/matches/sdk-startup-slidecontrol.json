@@ -25,6 +25,10 @@
     "source": "src/game/ui/SlideControl.cpp",
     "linker_script": "config/linker/SlideControlSdkStartup.ld",
     "functions": [
+        "_ZN12SlideControl19processTouchReleaseEv",
+        "_ZThn8_N12SlideControl19processTouchReleaseEv",
+        "_ZNK12SlideControl6draw2dEv",
+        "_ZThn4_NK12SlideControl6draw2dEv",
         "_ZN12SlideControlD0Ev",
         "_ZN12SlideControlD1Ev",
         "_ZThn4_N12SlideControlD0Ev",
@@ -57,6 +61,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZNK7ASprite10PaintFrameEiiii",
         "_ZN10HudElementD1Ev",
         "_ZN11Application11GetInstanceEv"
     ]

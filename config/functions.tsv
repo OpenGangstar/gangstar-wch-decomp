@@ -11146,8 +11146,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003268e1	0x3f8	AnalogStick.cpp	game	input	pending	_ZN11AnalogStick12processTouchEl	AnalogStick::processTouch(long)
 0x00326cd9	0x2c	AnalogStick.cpp	game	input	matched	_ZN15EvStickReleasedD0Ev	EvStickReleased::~EvStickReleased()
 0x00326d05	0x24	AnalogStick.cpp	game	input	matched	_ZN15EvStickReleasedD1Ev	EvStickReleased::~EvStickReleased()
-0x00326d28	0x14	AnalogStick.cpp	game	input	pending	_ZThn8_N11AnalogStick19processTouchReleaseEv	non-virtual thunk to AnalogStick::processTouchRelease()
-0x00326d3d	0xd8	AnalogStick.cpp	game	input	pending	_ZN11AnalogStick19processTouchReleaseEv	AnalogStick::processTouchRelease()
+0x00326d28	0x14	AnalogStick.cpp	game	input	matched	_ZThn8_N11AnalogStick19processTouchReleaseEv	non-virtual thunk to AnalogStick::processTouchRelease()
+0x00326d3d	0xd8	AnalogStick.cpp	game	input	matched	_ZN11AnalogStick19processTouchReleaseEv	AnalogStick::processTouchRelease()
 0x00326e15	0x2c	AnalogStick.cpp	game	input	matched	_ZN11EvStickMoveD0Ev	EvStickMove::~EvStickMove()
 0x00326e41	0x1a	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButton7grayOutEb	AnimatedButton::grayOut(bool)
 0x00326e5d	0x30	AnimatedButton.cpp	game	core	matched	__tcf_0	__tcf_0
@@ -11390,12 +11390,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
 0x0032b3e1	0x36	SlideControl.cpp	game	ui	matched	_ZN12SlideControl6updateEd	SlideControl::update(double)
-0x0032b418	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_NK12SlideControl6draw2dEv	non-virtual thunk to SlideControl::draw2d() const
-0x0032b42d	0xec	SlideControl.cpp	game	ui	pending	_ZNK12SlideControl6draw2dEv	SlideControl::draw2d() const
+0x0032b418	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_NK12SlideControl6draw2dEv	non-virtual thunk to SlideControl::draw2d() const
+0x0032b42d	0xec	SlideControl.cpp	game	ui	matched	_ZNK12SlideControl6draw2dEv	SlideControl::draw2d() const
 0x0032b519	0x6c	SlideControl.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032b585	0x14	SlideControl.cpp	game	ui	matched	_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE
-0x0032b598	0x14	SlideControl.cpp	game	ui	pending	_ZThn8_N12SlideControl19processTouchReleaseEv	non-virtual thunk to SlideControl::processTouchRelease()
-0x0032b5ad	0xa4	SlideControl.cpp	game	ui	pending	_ZN12SlideControl19processTouchReleaseEv	SlideControl::processTouchRelease()
+0x0032b598	0x14	SlideControl.cpp	game	ui	matched	_ZThn8_N12SlideControl19processTouchReleaseEv	non-virtual thunk to SlideControl::processTouchRelease()
+0x0032b5ad	0xa4	SlideControl.cpp	game	ui	matched	_ZN12SlideControl19processTouchReleaseEv	SlideControl::processTouchRelease()
 0x0032b650	0x14	SlideControl.cpp	game	ui	pending	_ZThn8_N12SlideControl12processTouchEl	non-virtual thunk to SlideControl::processTouch(long)
 0x0032b665	0x29c	SlideControl.cpp	game	ui	pending	_ZN12SlideControl12processTouchEl	SlideControl::processTouch(long)
 0x0032b901	0x2	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge6updateEd	SpyGauge::update(double)

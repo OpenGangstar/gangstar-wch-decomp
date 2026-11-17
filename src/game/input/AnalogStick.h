@@ -18,7 +18,8 @@ public:
 private:
     unsigned char unknown56[8];
     float displacement;
-    unsigned char unknown68[4];
+    bool releasedHorizontal, releasedVertical;
+    unsigned char unknown70[2];
     float displacementX;
     float displacementY;
     float magnitude;

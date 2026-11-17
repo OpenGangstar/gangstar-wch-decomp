@@ -10,6 +10,7 @@
 
 #include "../core/LocalStartupText.h"
 #include "HudElement.h"
+#include "HudDrawColor.h"
 #include "../core/ASprite.h"
 #include "../core/Color.h"
 #include "../core/LocalSdkStartupStorage.h"
@@ -89,11 +90,6 @@ void HudElement::blink(bool enabled, bool force)
 void HudElement::updateBlinkTimer(int elapsed) { unknown52 += elapsed; }
 
 void HudElement::setWasInRegionLastFrame(bool value) { wasInRegionLastFrame = value; }
-
-static inline void setHudColor(irr::video::SColor& color, unsigned int alpha, unsigned int red)
-{
-    color.b = 255; color.g = 255; color.a = alpha; color.r = red;
-}
 
 void HudElement::draw2d() const
 {

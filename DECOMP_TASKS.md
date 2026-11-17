@@ -557,12 +557,21 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032b1dd | SlideControl::reset | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b1f5 | SlideControl constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b3e1 | SlideControl::update | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b42d | SlideControl::draw2d | lock_init | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b418 | SlideControl::draw2d non-virtual thunk | lock_init | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | camera_tap | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | camera_tap | REVIEW | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b665 | SlideControl::processTouch | vehicle_side | ASSIGNED | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b650 | SlideControl::processTouch non-virtual thunk | vehicle_side | ASSIGNED | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | camera_tap | ASSIGNED | — | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | camera_tap | ASSIGNED | — | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x0032b42d | SlideControl::draw2d | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b418 | SlideControl::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b665 | SlideControl::processTouch | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b650 | SlideControl::processTouch non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch | camera_tap | ASSIGNED | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268cc | AnalogStick::processTouch non-virtual thunk | camera_tap | ASSIGNED | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x0034cfa5 | TouchScreenIPhone deleting destructor (D0) | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cff5 | TouchScreenIPhone complete destructor (D1/D2 aliases) | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cf90 | TouchScreenIPhone deleting destructor thunk | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cfe0 | TouchScreenIPhone complete destructor thunk | vehicle_side | REVIEW | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cef1 | TouchScreenIPhone OnEvent | lock_init | ASSIGNED | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cedc | TouchScreenIPhone OnEvent non-virtual thunk | lock_init | ASSIGNED | — | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cde5 | TouchScreenIPhone constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/input/TouchScreenIPhone.cpp |
