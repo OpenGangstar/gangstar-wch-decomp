@@ -25,6 +25,13 @@
     "source": "src/game/rendering/LODSceneNode.cpp",
     "linker_script": "config/linker/LODSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZNK12LODSceneNode14getBoundingBoxEv",
+        "_ZN12LODSceneNode6renderEPv",
+        "_ZNK12LODSceneNode11getLODLevelEv",
+        "_ZN12LODSceneNode10ComputeLODEj",
+        "_ZN12LODSceneNode9OnAnimateEj",
+        "_ZN12LODSceneNode14setMaxDistanceEi",
+        "_ZNK12LODSceneNode7getTypeEv",
         {
             "name": "__tcf_2",
             "address": "0x002d30a1"
@@ -48,5 +55,8 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZNK12LODSceneNode18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE"
+    ]
 }
