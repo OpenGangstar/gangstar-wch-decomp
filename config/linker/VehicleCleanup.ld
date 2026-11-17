@@ -60,6 +60,7 @@ SECTIONS
     .vehicle_enable 0x0030bb64 : { *(.text._ZN7Vehicle6enableEv) }
     .vehicle_initialize_driver 0x0030a8bc : { *(.text._ZN7Vehicle16initializeDriverEv) }
     .custom_skin_bounds 0x00307b00 : { *(.text._ZNK26CustomSkinnedMeshSceneNode14getBoundingBoxEv) }
+    .car_create_morph 0x003092b4 : { *(.text._ZN11CCarFactory11createMorphERKN3irr7collada16CColladaDatabaseEPNS1_11SControllerE) }
     .car_morph_prepare 0x00309338 : { *(.text._ZN16CCarMorphingMesh27onPrepareBufferForRenderingEN3irr5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS0_5video12IVideoDriverEj) }
     .car_factory_create_skin 0x00309358 : { *(.text._ZN11CCarFactory14createSkinNodeERKN3irr7collada16CColladaDatabaseEPNS0_5scene12IColladaMeshEPNS1_14IRootSceneNodeEPv) }
     .car_factory_create_node 0x0030a6a0 : { *(.text._ZN11CCarFactory10createNodeERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
@@ -68,7 +69,7 @@ SECTIONS
     .car_factory_instance 0x004b8880 (NOLOAD) : { *(.gnu.linkonce.b._ZZN11CCarFactory11getInstanceEvE2cf) }
     .car_factory_delete 0x0030b5b0 : { *(.gnu.linkonce.t._ZN11CCarFactoryD0Ev) }
     .car_factory_destructor 0x0030b600 : { *(.gnu.linkonce.t._ZN11CCarFactoryD1Ev) }
-    .car_factory_vtable 0x004ab2e8 : { *(.gnu.linkonce.d.rel.ro._ZTV11CCarFactory) }
+    .car_factory_vtable 0x004ab2e8 : { *(.gnu.linkonce.d.rel.ro._ZTV11CCarFactory .data.rel.ro._ZTV11CCarFactory) }
     .vehicle_notify_hit_despawn 0x0030a310 : { *(.text._ZN7Vehicle21notifyHitNPCofDespawnEv) }
     .vehicle_clean 0x00310dcc : { *(.text._ZN7Vehicle5cleanEv) }
     .vehicle_target_cleanup 0x00310880 : { *(.text._ZN7Vehicle22cleanupTargetDetectionEv) }
@@ -96,6 +97,7 @@ SECTIONS
     .vehicle_immobilize 0x0030a230 : { *(.text._ZN7Vehicle10immobilizeEv) }
     .vehicle_mobilize 0x0030a3e4 : { *(.text._ZN7Vehicle8mobilizeEv) }
     .vehicle_cleanup_sounds 0x003090e8 : { *(.text._ZN7Vehicle14_cleanupSoundsEv) }
+    .vehicle_debug 0x0030b12c : { *(.text._ZN7Vehicle5debugEPN3irr5video12IVideoDriverE) }
     .vehicle_start_driving 0x00311148 : { *(.text._ZN7Vehicle12startDrivingEv) }
     .vehicle_play_horn 0x00312fb8 : { *(.text._ZN7Vehicle8playHornEv) }
     .vehicle_play_horn_tables 0x0041f7ac : { *(.rodata._ZN7Vehicle8playHornEv) }

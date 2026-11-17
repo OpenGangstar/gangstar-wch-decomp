@@ -26,6 +26,7 @@
     "source": "src/game/vehicles/Vehicle.cpp",
     "linker_script": "config/linker/VehicleCleanup.ld",
     "functions": [
+        "_ZN11CCarFactory11createMorphERKN3irr7collada16CColladaDatabaseEPNS1_11SControllerE",
         "_ZN11CCarFactory14createSkinNodeERKN3irr7collada16CColladaDatabaseEPNS0_5scene12IColladaMeshEPNS1_14IRootSceneNodeEPv",
         "_ZN7Vehicle21notifyHitNPCofDespawnEv",
         "_ZN7Vehicle5cleanEv",
@@ -104,6 +105,7 @@
         "_ZN7Vehicle12startDrivingEv",
         "_ZN7Vehicle11stopDrivingEv",
         "_ZN7Vehicle8playHornEv",
+        "_ZN7Vehicle5debugEPN3irr5video12IVideoDriverE",
         "_ZN7Vehicle12cleanTargetsEv",
         "_ZN7Vehicle18_adjustEnginePitchEj",
         "_ZN7Vehicle15UpdateCarSoundsEv",
@@ -274,6 +276,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN3irr7collada20CColladaMorphingMeshC2ERKNS0_16CColladaDatabaseERNS0_11SControllerEbPNS_5video12IVideoDriverE",
         "_ZN16CarSoundSettingsC1Ev",
         "_ZN16CarSoundSettingsD1Ev",
         "_ZN9CarSounds4InitEP16CarSoundSettings",
@@ -289,6 +292,7 @@
         "_ZN7Vehicle10CreateBodyEv",
         "_ZN11LevelObject6enableEv",
         "_ZN7Vehicle6repairEv",
+        "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character4showEv",
         "_ZN3irr7collada20CColladaMorphingMesh27onPrepareBufferForRenderingENS_5scene12IColladaMesh21E_PREPARE_BUFFER_STEPEPNS_5video12IVideoDriverEj",
