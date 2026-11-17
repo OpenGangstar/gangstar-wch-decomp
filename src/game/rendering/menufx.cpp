@@ -11,6 +11,7 @@
 #include "RenderFX.h"
 #include "CharacterVisibility.h"
 #include "../core/NativeStdio.h"
+#include "../ui/MenuState.h"
 
 // The Android libc exposes stdin, stdout, and stderr as adjacent entries.
 struct AndroidStdioEntry {
@@ -542,6 +543,33 @@ void RenderFX::Unload()
     SetContext(0);
     for (int index = 0; index < 4; ++index)
         controllers[index].Reset();
+}
+
+void MenuFX::OnFSCommand(const char* command, const char* args)
+{
+    int count = stateStack.size;
+    if (count > 0) {
+        --count;
+        stateStack.elements[count]->OnFSCommand(command, args);
+    }
+}
+
+MenuFX::State* MenuFX::GetCurrentState()
+{
+    int count = stateStack.size;
+    if (count <= 0)
+        return 0;
+    --count;
+    return stateStack.elements[count];
+}
+
+bool MenuFX::IsStateInStack(State* state)
+{
+    for (int index = 0; index < stateStack.size; ++index) {
+        if (stateStack.elements[index] == state)
+            return true;
+    }
+    return false;
 }
 
 void RenderFX::SetEventListener(EventListener* listener)

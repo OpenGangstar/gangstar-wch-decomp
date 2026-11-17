@@ -28,6 +28,10 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN6MenuFX11OnFSCommandEPKcS1_",
+        "_ZThn204_N6MenuFX11OnFSCommandEPKcS1_",
+        "_ZN6MenuFX15GetCurrentStateEv",
+        "_ZN6MenuFX14IsStateInStackEPNS_5StateE",
         "_ZN8RenderFX13EventListener14CanHandleEventERNS_5EventE",
         "_ZN8RenderFX11SearchIndexD1Ev",
         "_ZN8RenderFX6UnloadEv",
