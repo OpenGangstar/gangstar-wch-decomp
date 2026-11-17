@@ -34,6 +34,7 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../rendering/CustomBillboardSceneNode.h"
 #include "../core/PhysicsBodyDef.h"
 #include "../rendering/GS3DStuff.h"
+#include "../world/TrailMgr.h"
 
 extern "C" float __aeabi_fmul(float, float);
 extern "C" int puts(const char*);
@@ -862,6 +863,26 @@ void Vehicle::UpdateCarSounds()
     }
 }
 
+void Vehicle::stopDriving()
+{
+    _cleanupSounds();
+    Character* currentDriver = driver;
+    Character* player = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+    const unsigned int driverAddress = reinterpret_cast<unsigned int>(currentDriver);
+    const unsigned int playerAddress = reinterpret_cast<unsigned int>(player);
+    if (driverAddress - playerAddress == 0) {
+        for (int wheel = 0; wheel < 4; ++wheel) {
+            if (wheelTrails[wheel]) {
+                GS3DStuff::GetTrailMgr()->FreeTrail(wheelTrails[wheel]);
+                wheelTrails[wheel] = 0;
+            }
+        }
+    }
+    setDriver(0);
+    flags344 &= ~0x10u;
+    unknown4 |= 4u;
+}
+
 void Vehicle::_cleanupSounds()
 {
     if (driver == reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()))) {
@@ -917,6 +938,27 @@ irr::scene::ISceneNode* Vehicle::getNearestDoorDummy(irr::core::vector3d<float> 
     if (point.getDistanceFromSQ(left) < point.getDistanceFromSQ(right))
         return leftDoor;
     return rightDoor;
+}
+
+void Vehicle::cleanTargets()
+{
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
+        const int type = LevelObject::s_type[object->getObjectType()];
+        if (type == 5) {
+            Character* character = static_cast<Character*>(object);
+            if (character->target == this)
+                character->SetTarget(0);
+            if (reinterpret_cast<unsigned int>(this) -
+                reinterpret_cast<unsigned int>(character->lastHitVehicle) == 0)
+                character->lastHitVehicle = 0;
+            if (character->getVehicle() == this)
+                character->setVehicle(0);
+        } else if (type == 3) {
+            Vehicle* other = static_cast<Vehicle*>(object);
+            if (other->aiTarget == this)
+                other->aiTarget = 0;
+        }
+    }
 }
 
 void Vehicle::postExplosion()
@@ -1455,7 +1497,7 @@ void Vehicle::clearOnAlert()
 {
     stopSiren();
     cleanupTargetDetection();
-    alertState = 0;
+    aiTarget = 0;
     flags344 &= ~0x47000u;
 }
 
