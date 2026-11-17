@@ -360,7 +360,6 @@
         "_ZN12StateMachine8popStateEv",
         "_ZN9MenuState7OnEventERN8RenderFX5EventE",
         "launchTwitter",
-        "_ZN7Widgets5About6UpdateEb",
         "_ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE",
         "_ZN8SaveGame18GetDefaultFilenameEv",
         "_ZN10FileStream5ExistEPKc",

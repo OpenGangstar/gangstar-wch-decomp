@@ -1390,3 +1390,72 @@ void Widgets::Shop::UpdateLocalization()
         }
     }
 }
+
+namespace Widgets {
+class About : public MenuWidget {
+public:
+    About();
+    void Update(bool advanceFirst);
+    virtual void Show();
+    virtual void Enable();
+    virtual void Disable();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+
+private:
+    int page;
+    int unknown24;
+    int unknown28;
+    int unknown32;
+    gameswf::character* animation;
+    gameswf::character* credits[12];
+};
+}
+
+void Widgets::About::Enable()
+{
+    MenuWidget::Enable();
+    page = 0;
+    renderFX->GotoFrame(animation, 0, true);
+}
+
+void Widgets::About::Disable()
+{
+    MenuWidget::Disable();
+    unknown32 = widgetAnimationMethods(animation).getCurrentFrame(animation);
+    renderFX->GotoFrame(animation, unknown32, false);
+}
+
+void Widgets::About::Update(bool advanceFirst)
+{
+    if (getCharacterPlayState(animation) == 0) {
+        if (advanceFirst)
+            page = (page + 1) % 280;
+        UpdateLocalization();
+        page = (page + 1) % 280;
+    }
+}
+
+static const char aboutWidgetName[] = "widgetAbout";
+static const char aboutCreditFormat[] = "txtAbout%d";
+
+Widgets::About::About()
+    : MenuWidget(aboutWidgetName), page(0), unknown24(-1), unknown28(0), unknown32(0), animation(0)
+{
+    char name[64];
+    for (int index = 0; index < 12; ++index) {
+        sprintf(name, aboutCreditFormat, index);
+        credits[index] = renderFX->Find(name);
+    }
+}
+
+static const char aboutAnimationName[] = "widgetAbout.anim";
+
+void Widgets::About::Show()
+{
+    MenuWidget::Show();
+    page = 0;
+    if (!animation)
+        animation = renderFX->Find(aboutAnimationName);
+    renderFX->GotoFrame(animation, 0, true);
+}

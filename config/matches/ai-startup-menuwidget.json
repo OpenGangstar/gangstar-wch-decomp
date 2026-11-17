@@ -27,6 +27,12 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets5AboutC1Ev",
+        "_ZN7Widgets5AboutC2Ev",
+        "_ZN7Widgets5About4ShowEv",
+        "_ZN7Widgets5About7DisableEv",
+        "_ZN7Widgets5About6UpdateEb",
+        "_ZN7Widgets5About6EnableEv",
         "_ZN7Widgets4Shop18UpdateLocalizationEv",
         "_ZN7Widgets4Shop7SetItemEiiiPKci",
         "_ZN7Widgets4Shop7OnEventERN8RenderFX5EventE",
@@ -186,6 +192,10 @@
         }
     ],
     "sections": [
+        ".widget_about_name",
+        ".widget_about_credit_format",
+        ".widget_about_anim_text",
+        ".widget_about_vtable",
         ".widget_shop_item_icon_format",
         ".shop_button_path",
         ".shop_name_path",

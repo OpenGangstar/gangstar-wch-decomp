@@ -1,6 +1,15 @@
 strstr = 0x001c446c;
 SECTIONS
 {
+    .widget_about_ctor 0x002ec564 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5AboutC1Ev .text._ZN7Widgets5AboutC2Ev) }
+    .widget_about_show 0x002ece94 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About4ShowEv) }
+    .widget_about_name 0x0041a858 : { *ai-startup-menuwidget.o(.rodata.aboutWidgetName) }
+    .widget_about_credit_format 0x0041a864 : { *ai-startup-menuwidget.o(.rodata.aboutCreditFormat) }
+    .widget_about_anim_text 0x0041aa84 : { *ai-startup-menuwidget.o(.rodata.aboutAnimationName) }
+    .widget_about_vtable 0x004a98e0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets5AboutE) }
+    .widget_about_disable 0x002ef040 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About7DisableEv) }
+    .widget_about_update 0x002ebf34 : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About6UpdateEb) }
+    .widget_about_enable 0x002ed11c : { *ai-startup-menuwidget.o(.text._ZN7Widgets5About6EnableEv) }
     .widget_shop_set_item 0x002ecb20 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop7SetItemEiiiPKci) }
     .widget_shop_item_icon_format 0x0041a9bc : { *ai-startup-menuwidget.o(.rodata.shop_item_icon_format) }
     .widget_shop_localization 0x002ed6bc : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop18UpdateLocalizationEv) }
