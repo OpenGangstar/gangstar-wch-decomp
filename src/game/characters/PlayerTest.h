@@ -104,6 +104,10 @@ public:
     void showMesh();
     void playCurAnimFromStart();
     void initMoveTo(const Vehicle* vehicle);
+    void _SetTarget(LevelObject* target, bool changeCamera);
+    void toggleLock();
+    void onTargetCancelled();
+    void resumeAttacking();
     void richAsCroesus(bool enabled);
     bool isRichAsCroesus() const;
     int getAmbientSound() const;
@@ -140,7 +144,12 @@ public:
     unsigned char unknown268[44];
     LevelObject* unknown312;
     LevelObject* unknown316;
-    unsigned char unknown320[36];
+    unsigned char unknown320[8];
+    int attackState;
+    unsigned char unknown332[21];
+    bool lockRequested;
+    bool targetLocked;
+    bool lockUpdatePending;
     bool combatMode;
     unsigned char unknown357[11];
     LevelObject* unknown368;

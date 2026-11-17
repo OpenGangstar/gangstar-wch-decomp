@@ -23,6 +23,7 @@
 #include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
 #include "../core/SceneNode.h"
+#include "../core/CameraManager.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
 
@@ -33,6 +34,7 @@ public:
 
 static const unsigned int meshHiddenFlag = 0x800u;
 static const unsigned int scriptedMovementFlag = 0x8000u;
+static const unsigned int moveToTargetFlag = 0x1000u;
 
 void operator delete(void*) throw();
 extern "C" {
@@ -164,6 +166,16 @@ Vehicle* PlayerTest::getVehicle() const
     return vehicle;
 }
 
+void PlayerTest::toggleLock()
+{
+    if (targetLocked) {
+        _SetTarget(0, true);
+    } else {
+        lockRequested = !lockRequested;
+        lockUpdatePending = false;
+    }
+}
+
 void PlayerTest::addCash(int amount, int maximum)
 {
     if (richAsCroesusEnabled && amount <= 0)
@@ -204,10 +216,24 @@ void PlayerTest::walkToLocation(const irr::core::vector3d<float>& point)
     }
 }
 
+void PlayerTest::onTargetCancelled()
+{
+    Stop();
+    CameraManager::getInstance()->setTouchScreenInputs(true);
+    unknown368 = 0;
+    flags240 &= ~moveToTargetFlag;
+}
+
 void PlayerTest::showMesh()
 {
     flags240 &= ~meshHiddenFlag;
     shadowNode->setVisible(true);
+}
+
+void PlayerTest::resumeAttacking()
+{
+    attackState = 1;
+    flags240 &= ~0x200u;
 }
 
 void PlayerTest::switchWeapon(bool unarmed)

@@ -10397,7 +10397,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030121c	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
 0x00301231	0x2e	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest10getVehicleEv	PlayerTest::getVehicle() const
 0x00301261	0xf8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_SetTargetEP11LevelObjectb	PlayerTest::_SetTarget(LevelObject*, bool)
-0x00301359	0x30	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10toggleLockEv	PlayerTest::toggleLock()
+0x00301359	0x30	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10toggleLockEv	PlayerTest::toggleLock()
 0x00301389	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7addCashEii	PlayerTest::addCash(int, int)
 0x003013bd	0x5c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15ResetPlayerTestEb	PlayerTest::ResetPlayerTest(bool)
 0x00301418	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTest11applyDamageEiP11LevelObjectb	non-virtual thunk to PlayerTest::applyDamage(int, LevelObject*, bool)
@@ -10406,9 +10406,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003014ed	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest13runToLocationERKN3irr4core8vector3dIfEE	PlayerTest::runToLocation(irr::core::vector3d<float> const&)
 0x00301520	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE	non-virtual thunk to PlayerTest::walkToLocation(irr::core::vector3d<float> const&)
 0x00301535	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest14walkToLocationERKN3irr4core8vector3dIfEE	PlayerTest::walkToLocation(irr::core::vector3d<float> const&)
-0x00301569	0x2c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest17onTargetCancelledEv	PlayerTest::onTargetCancelled()
+0x00301569	0x2c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest17onTargetCancelledEv	PlayerTest::onTargetCancelled()
 0x00301595	0x24	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest8showMeshEv	PlayerTest::showMesh()
-0x003015b9	0x18	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15resumeAttackingEv	PlayerTest::resumeAttacking()
+0x003015b9	0x18	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest15resumeAttackingEv	PlayerTest::resumeAttacking()
 0x003015d0	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTestD1Ev	non-virtual thunk to PlayerTest::~PlayerTest()
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD1Ev	PlayerTest::~PlayerTest()
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD2Ev	PlayerTest::~PlayerTest()
