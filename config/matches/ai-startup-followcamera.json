@@ -29,6 +29,7 @@
         "_ZN12FollowCameraC1EP9Character",
         "_ZN12FollowCameraC2EP9Character",
         "_ZN12FollowCamera12updateAnglesEii",
+        "_ZN12FollowCamera4initEP11LevelObjecti",
         "_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
         "_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE",
         "_ZN12FollowCameraD1Ev",
@@ -47,6 +48,7 @@
         }
     ],
     "sections": [
+        ".follow_camera_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -57,5 +59,13 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN16PhysicAttributesD1Ev", "_ZN12FollowCamera4initEP11LevelObjecti", "_ZN16PhysicAttributesC1EiP6b2Body"]
+    "external_thumb_functions": [
+        "_ZN16PhysicAttributesD1Ev",
+        "_ZN16PhysicAttributesC1EiP6b2Body",
+        "_ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
+        "_ZN16PhysicAttributes13SetIsOnGroundEib",
+        "_ZNK12FollowCamera9getFacingEv",
+        "_ZN12FollowCamera6updateEf"
+    ]
 }
