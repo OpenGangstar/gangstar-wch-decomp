@@ -11,6 +11,7 @@ _Znaj = 0x001c3ff8;
 _Znwj = 0x001c4814;
 _ZdaPv = 0x001c461c;
 memset = 0x001c45d4;
+__stack_chk_fail = 0x001c42e0;
 SECTIONS
 {
     .scene_crc_reflect 0x003213f0 : { *sdk-startup-scenenodemanager.o(.text._Z10crcReflectjc) }
@@ -31,6 +32,7 @@ SECTIONS
     .scene_manager_instance_guard 0x004b8b9c (NOLOAD) : { *sdk-startup-scenenodemanager.o(.bss._ZGVZN16SceneNodeManager11getInstanceEvE16sceneNodeManager) }
     .scene_manager_instance_storage 0x004b8ba0 (NOLOAD) : { *sdk-startup-scenenodemanager.o(.bss._ZZN16SceneNodeManager11getInstanceEvE16sceneNodeManager) }
     .sdk_startup_function_0 0x00322068 : { *sdk-startup-scenenodemanager.o(.text.__tcf_3) }
+    .scene_manager_get_pool_path 0x00322098 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager9getPoolIDEPKc) }
     .sdk_startup_function_1 0x00321b9c : { *sdk-startup-scenenodemanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00321c08 : { *sdk-startup-scenenodemanager.o(.text._GLOBAL__I__Z10crcReflectjc) }
     .sdk_startup_storage_0 0x004b8b70 (NOLOAD) : { *sdk-startup-scenenodemanager.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }

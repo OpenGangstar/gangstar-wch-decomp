@@ -54,7 +54,7 @@ static void _GLOBAL__I__ZNK17CCustomFileSystem15getAbsolutePathERKN3irr4core6str
 }
 }
 
-#include "FactoryFileSystem.h"
+#include "CCustomFileSystem.h"
 #include "ObservedString.h"
 
 irr::io::FilePath CCustomFileSystem::getAbsolutePath(

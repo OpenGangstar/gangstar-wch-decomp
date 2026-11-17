@@ -16,6 +16,26 @@
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
 #include "../core/Collada.h"
+#include "../core/FactoryFileSystem.h"
+#include "../core/ObservedString.h"
+
+extern "C" void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(
+    void*, const char*) __attribute__((weak));
+
+template<class A> inline irr::core::string<char, A>::string(const char* source)
+{
+    array = 0;
+    allocated = 0;
+    used = 0;
+    reference = false;
+    _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(this, source);
+}
+
+template<class A> inline irr::core::string<char, A>::~string()
+{
+    if (!reference && array && inlineBuffer != array)
+        ::operator delete(array);
+}
 
 struct SceneNodeManager::Pool {
     Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
@@ -59,8 +79,8 @@ unsigned int SceneNodeManager::crc(const char* name) const
     const unsigned int length = strlen(name);
     if (static_cast<int>(length) <= 0)
         return 0;
-    unsigned int value = ~0u;
     unsigned int index = 0;
+    unsigned int value = ~0u;
     do {
         value = (value >> 8) ^ crcTable[(value & 0xffu) ^ static_cast<unsigned char>(name[index])];
     } while (++index < length);
@@ -159,6 +179,13 @@ SceneNodeManager::~SceneNodeManager()
     tearDown();
 }
 
+int SceneNodeManager::getPoolID(const char* path) const
+{
+    irr::io::IFileSystem* fileSystem = Application::GetInstance()->GetDevice()->getFileSystem();
+    const int key = crc(fileSystem->getAbsolutePath(path).c_str());
+    return getPoolID(key);
+}
+
 void SceneNodeManager::Pool::extend(int requested)
 {
     if (requested - constructedCount <= 0)
@@ -190,7 +217,6 @@ static void __tcf_3() __attribute__((used));
 extern void* __dso_handle;
 extern "C" {
 int __aeabi_atexit(void*, void (*)(void*), void*);
-void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));

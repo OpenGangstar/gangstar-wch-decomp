@@ -11,7 +11,7 @@
 #include "CCustomIrrFactory.h"
 #include "PlacementNew.h"
 #include "FactoryProducts.h"
-#include "FactoryFileSystem.h"
+#include "CCustomFileSystem.h"
 
 inline irr::io::IFileSystem* CCustomIrrFactor::createFileSystem()
 {
