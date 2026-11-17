@@ -18,6 +18,11 @@ void FollowCamera::debug(irr::video::IVideoDriver*)
 {
 }
 
+void FollowCamera::updateAngles(int horizontal, int vertical)
+{
+    updateCameraInputRates(horizontal, vertical, yawRate, pitchRate);
+}
+
 FollowCamera::~FollowCamera()
 {
     delete physics;
