@@ -5,6 +5,7 @@ namespace Structs { struct CheckpointShop; }
 class Shop : public Checkpoint {
 public:
     Shop(int type);
+    void trigger(bool enabled);
     void Load(const Structs::CheckpointShop&);
 private:
     unsigned char unknown100[8];

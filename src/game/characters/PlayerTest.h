@@ -6,6 +6,7 @@
 class Vehicle;
 class Weapon;
 class LevelObject;
+class Shop;
 namespace irr { namespace scene { class ISceneNode; } }
 namespace irr { namespace core { class quaternion; template<class T> class vector3d; } }
 
@@ -104,6 +105,7 @@ public:
     void showMesh();
     void playCurAnimFromStart();
     void initMoveTo(const Vehicle* vehicle);
+    void setClosestShop(Shop* shop);
     void _SetTarget(LevelObject* target, bool changeCamera);
     void toggleLock();
     void onTargetCancelled();
@@ -144,7 +146,8 @@ public:
     unsigned char unknown268[44];
     LevelObject* unknown312;
     LevelObject* unknown316;
-    unsigned char unknown320[8];
+    Shop* closestShop;
+    unsigned char unknown324[4];
     int attackState;
     unsigned char unknown332[21];
     bool lockRequested;

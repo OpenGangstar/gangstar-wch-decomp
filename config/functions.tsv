@@ -10388,7 +10388,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300fe5	0x4c	PlayerTest.cpp	irrlicht	-	matched	_ZN3irr4core5arrayIP3NPCNS0_12irrAllocatorIS3_EEE9push_backERKS3_	irr::core::array<NPC*, irr::core::irrAllocator<NPC*> >::push_back(NPC* const&)
 0x00301031	0x30	PlayerTest.cpp	game	ai	matched	__tcf_5	__tcf_5
 0x00301061	0x30	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest17clearPhotoTargetsEv	PlayerTest::clearPhotoTargets()
-0x00301091	0x26	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14setClosestShopEP4Shop	PlayerTest::setClosestShop(Shop*)
+0x00301091	0x26	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest14setClosestShopEP4Shop	PlayerTest::setClosestShop(Shop*)
 0x003010b9	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_4	__tcf_4
 0x003010d5	0xe	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest20playCurAnimFromStartEv	PlayerTest::playCurAnimFromStart()
 0x003010e5	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_3	__tcf_3

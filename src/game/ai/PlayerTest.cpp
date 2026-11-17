@@ -26,6 +26,7 @@
 #include "../core/CameraManager.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
+#include "../ui/Shop.h"
 
 class Reward {
 public:
@@ -150,6 +151,13 @@ void PlayerTest::clearPhotoTargets()
     photoTargets.allocated = 0;
     photoTargets.data = 0;
     photoTargets.is_sorted = true;
+}
+
+void PlayerTest::setClosestShop(Shop* shop)
+{
+    if (closestShop && closestShop != shop)
+        closestShop->trigger(false);
+    closestShop = shop;
 }
 
 void PlayerTest::playCurAnimFromStart()
