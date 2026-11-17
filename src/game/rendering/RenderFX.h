@@ -41,6 +41,8 @@ public:
     static void DestroyContext(gameswf::player_context* context);
     static void ClearGlyphTextureCaches(gameswf::player_context* context);
 
+    void SetBounds(int left, int top, int right, int bottom);
+    void SetViewport(int x, int y, int width, int height);
     void BeginDisplay();
     void Render();
     void EndDisplay();
