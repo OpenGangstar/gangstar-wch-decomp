@@ -263,7 +263,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | camera_tap | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | lock_init | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | vehicle_side | REVIEW | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002d2999 | LODSceneNode::render | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d299d | LODSceneNode::getLODLevel | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d29a5 | LODSceneNode::ComputeLOD | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
@@ -278,6 +278,17 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel | vehicle_side | BLOCKED | — | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2be9 | LODSceneNode::setLODNodesPosition | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2bad | LODSceneNode::setLODNodesRotation | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2c25 | LODSceneNode::removeAnimators | camera_tap | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2c61 | LODSceneNode::addAnimator | lock_init | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2b31 | LODSceneNode::LODSceneNode (C2) | vehicle_side | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c25 | LODSceneNode::removeAnimators | camera_tap | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c61 | LODSceneNode::addAnimator | lock_init | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2b31 | LODSceneNode::LODSceneNode (C2) | vehicle_side | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2c99 | LODSceneNode::addLOD | camera_tap | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d3281 | LODSceneNode::~LODSceneNode (D2) | lock_init | ASSIGNED | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002f8351 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f8315 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f8329 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f833c | CustomBillboardSceneNode::~CustomBillboardSceneNode (D0 CSceneNode thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f83c9 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f83dd | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f83f0 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 CSceneNode thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002d2f51 | LODSceneNode::LODSceneNode (C1) | vehicle_side | REVIEW | — | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002f7ad9 | CustomBillboardSceneNode::OnAnimate | vehicle_side | ASSIGNED | — | src/game/rendering/CustomBillboardSceneNode.cpp |

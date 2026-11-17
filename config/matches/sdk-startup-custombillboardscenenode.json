@@ -25,6 +25,14 @@
     "source": "src/game/rendering/CustomBillboardSceneNode.cpp",
     "linker_script": "config/linker/CustomBillboardSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN24CustomBillboardSceneNodeD1Ev",
+        "_ZN24CustomBillboardSceneNodeD0Ev",
+        "_ZTv0_n12_N24CustomBillboardSceneNodeD0Ev",
+        "_ZTv0_n24_N24CustomBillboardSceneNodeD0Ev",
+        "_ZThn100_N24CustomBillboardSceneNodeD0Ev",
+        "_ZTv0_n12_N24CustomBillboardSceneNodeD1Ev",
+        "_ZTv0_n24_N24CustomBillboardSceneNodeD1Ev",
+        "_ZThn100_N24CustomBillboardSceneNodeD1Ev",
         "_ZN24CustomBillboardSceneNode6renderEv",
         "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE",
         "_ZN24CustomBillboardSceneNode9setLengthEj",
@@ -44,6 +52,13 @@
         }
     ],
     "sections": [
+        ".billboard_table_0",
+        ".billboard_table_1",
+        ".billboard_table_2",
+        ".billboard_table_3",
+        ".billboard_table_4",
+        ".billboard_table_5",
+        ".billboard_table_6",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",

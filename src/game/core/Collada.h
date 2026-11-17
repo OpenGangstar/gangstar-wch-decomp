@@ -7,10 +7,13 @@
 // Observed engine call/vtable interfaces. Unused return types remain provisional.
 namespace irr {
 namespace res { class String; template<class T> class vector; }
-namespace scene { class IColladaMesh; }
+namespace scene { class IColladaMesh; class ISceneManager; class CColladaSkinnedMesh; }
 namespace scene {
 class CEmptySceneNode : public ISceneNode {
 public:
+    virtual ~CEmptySceneNode();
+    virtual int getType() const;
+    virtual ISceneNode* clone(ISceneNode*, ISceneManager*);
     virtual void render(void*);
     virtual const core::aabbox3d<float>& getBoundingBox() const;
 private:
@@ -31,9 +34,41 @@ class CSceneNode : public scene::CEmptySceneNode {
     unsigned int unknown352[4];
 public:
     CSceneNode(const CColladaDatabase&, SNode*);
+    virtual ~CSceneNode();
+    virtual const char* getUID() const;
+    virtual unsigned int getScopeID() const;
+    virtual void* getUserProperty() const;
+    virtual const char* getUserPropertyStr() const;
+    virtual int getType() const;
+    virtual void resetTransform(bool value);
 };
 
 typedef char ColladaSceneExtent[sizeof(CSceneNode) == 380 ? 1 : -1];
+
+class IRootSceneNode {
+public:
+    explicit IRootSceneNode(const CColladaDatabase&);
+    ~IRootSceneNode();
+    virtual void addSkinnedMesh(scene::CColladaSkinnedMesh*) = 0;
+private:
+    unsigned char unknown4[96];
+};
+
+class CRootSceneNode : public IRootSceneNode, public CSceneNode {
+public:
+    explicit CRootSceneNode(const CColladaDatabase&);
+    virtual void addSkinnedMesh(scene::CColladaSkinnedMesh*);
+    virtual const char* getUID() const;
+    virtual void OnAnimate(unsigned int time);
+    virtual void serializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*) const;
+    virtual void deserializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*);
+    virtual void OnRegisterSceneNode();
+    virtual int getType() const;
+    virtual ~CRootSceneNode() __attribute__((long_call));
+private:
+    unsigned char unknown468[36];
+};
+
 
 class CColladaFactory {
 public:

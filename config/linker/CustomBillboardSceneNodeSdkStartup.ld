@@ -1,3 +1,4 @@
+__cxa_pure_virtual = 0;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-custombillboardscenenode/retail-symbols.ld
@@ -7,6 +8,25 @@ SECTIONS
 {
     .billboard_render 0x002f7a20 : { *(.text._ZN24CustomBillboardSceneNode6renderEv) }
     .billboard_set_parent 0x002f79e4 : { *(.text._ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE) }
+    .billboard_func_0 0x2f8404 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZN24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_1 0x2f8350 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZN24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_2 0x2f8314 : { *sdk-startup-custombillboardscenenode.o(.text._ZTv0_n12_N24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZTv0_n12_N24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_3 0x2f8328 : { *sdk-startup-custombillboardscenenode.o(.text._ZTv0_n24_N24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZTv0_n24_N24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_4 0x2f833c : { *sdk-startup-custombillboardscenenode.o(.text._ZThn100_N24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZThn100_N24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_5 0x2f83c8 : { *sdk-startup-custombillboardscenenode.o(.text._ZTv0_n12_N24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZTv0_n12_N24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_6 0x2f83dc : { *sdk-startup-custombillboardscenenode.o(.text._ZTv0_n24_N24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZTv0_n24_N24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_7 0x2f83f0 : { *sdk-startup-custombillboardscenenode.o(.text._ZThn100_N24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZThn100_N24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_8 0x21a8d4 : { *sdk-startup-custombillboardscenenode.o(.text._ZN3irr2io26IAttributeExchangingObjectD0Ev .gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD0Ev) }
+    .billboard_func_9 0x21a91c : { *sdk-startup-custombillboardscenenode.o(.text._ZN3irr2io26IAttributeExchangingObjectD1Ev .gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD1Ev) }
+    .billboard_func_10 0x21a958 : { *sdk-startup-custombillboardscenenode.o(.text._ZN3irr2io26IAttributeExchangingObjectD2Ev .gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD2Ev) }
+    .billboard_table_0 0x4aa228 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTV24CustomBillboardSceneNode .gnu.linkonce.d.rel.ro._ZTV24CustomBillboardSceneNode) }
+    .billboard_table_1 0x4aa3a8 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTT24CustomBillboardSceneNode .gnu.linkonce.d.rel.ro._ZTT24CustomBillboardSceneNode) }
+    .billboard_table_2 0x4aa3f8 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTC24CustomBillboardSceneNode0_N3irr7collada14CRootSceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode0_N3irr7collada14CRootSceneNodeE) }
+    .billboard_table_3 0x4aa570 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr7collada10CSceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr7collada10CSceneNodeE) }
+    .billboard_table_4 0x4aa6b8 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene15CEmptySceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene15CEmptySceneNodeE) }
+    .billboard_table_5 0x4aa800 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene10ISceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene10ISceneNodeE) }
+    .billboard_table_6 0x4aa940 : { *sdk-startup-custombillboardscenenode.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr2io26IAttributeExchangingObjectE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr2io26IAttributeExchangingObjectE) }
+    /DISCARD/ : { *(.text._ZN24CustomBillboardSceneNodeD2Ev) }
     .sdk_startup_function_0 0x002f7a24 : { *sdk-startup-custombillboardscenenode.o(.text.__tcf_2) }
     .billboard_set_length 0x002f7a54 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode9setLengthEj) }
     .billboard_material_type 0x002f7c70 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE) }

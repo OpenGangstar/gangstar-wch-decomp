@@ -3,14 +3,7 @@
 
 #include "../core/Collada.h"
 
-// Allocation extent and the observed CSceneNode conversion at +100 only.
-// The complete billboard hierarchy and field layout remain unreconstructed.
-struct CustomBillboardPrefix {
-    virtual void unknown0();
-    unsigned int unknown4[24];
-};
-class CustomBillboardSceneNode : public CustomBillboardPrefix, public irr::collada::CSceneNode {
-    unsigned int unknown468[9];
+class CustomBillboardSceneNode : public irr::collada::CRootSceneNode {
     irr::scene::ISceneNode* billboardParent;
     bool animationActive;
     bool animationLoops;
@@ -28,6 +21,7 @@ public:
     CustomBillboardSceneNode(const irr::collada::CColladaDatabase&, irr::collada::SNode*);
     virtual ~CustomBillboardSceneNode();
     virtual void render();
+    virtual void OnAnimate(unsigned int);
 };
 
 #endif
