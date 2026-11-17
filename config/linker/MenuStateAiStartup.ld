@@ -38,6 +38,16 @@ SECTIONS
     .service_car_rental_lost_focus 0x002e9434 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental9LostFocusEv) }
     .service_weapon_shop_lost_focus 0x002e9460 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop9LostFocusEv) }
     .achievement_lost_focus 0x002e948c : { *ai-startup-menustate.o(.text._ZN5Menus11Achievement9LostFocusEv) }
+    .in_game_menu_got_focus 0x002e88a8 : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenu8GotFocusEv) }
+    .in_game_menu_vtable 0x004a95f0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus10InGameMenuE) }
+    .info_statistics_got_focus 0x002e8990 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatistics8GotFocusEv) }
+    .info_about_got_focus 0x002e8a24 : { *ai-startup-menustate.o(.text._ZN5Menus9InfoAbout8GotFocusEv) }
+    .info_help_got_focus 0x002e8a54 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelp8GotFocusEv) }
+    .option_language_got_focus 0x002e8c14 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguage8GotFocusEv) }
+    .option_controls_got_focus 0x002e8c64 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionControls8GotFocusEv) }
+    .in_game_car_rental_got_focus 0x002e8ed8 : { *ai-startup-menustate.o(.text._ZN5Menus15InGameCarRental8GotFocusEv) }
+    .in_game_weapon_shop_got_focus 0x002e8fb4 : { *ai-startup-menustate.o(.text._ZN5Menus16InGameWeaponShop8GotFocusEv) }
+    .achievement_got_focus 0x002e91fc : { *ai-startup-menustate.o(.text._ZN5Menus11Achievement8GotFocusEv) }
     .tutorial_got_focus 0x002e9254 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial8GotFocusEv) }
     .tutorial_lost_focus 0x002e94e4 : { *ai-startup-menustate.o(.text._ZN5Menus8Tutorial9LostFocusEv) }
     .blocking_tutorial_got_focus 0x002e9228 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorial8GotFocusEv) }
