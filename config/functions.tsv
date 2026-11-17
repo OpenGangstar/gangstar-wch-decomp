@@ -9961,7 +9961,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ed6bd	0x14c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets4Shop18UpdateLocalizationEv	Widgets::Shop::UpdateLocalization()
 0x002ed809	0xa4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7DemoBuy18UpdateLocalizationEv	Widgets::DemoBuy::UpdateLocalization()
 0x002ed8ad	0x244	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Mission18UpdateLocalizationEv	Widgets::Mission::UpdateLocalization()
-0x002edaf1	0x70	MenuWidget.cpp	game	ui	pending	_ZN7Widgets5Money18UpdateLocalizationEv	Widgets::Money::UpdateLocalization()
+0x002edaf1	0x70	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Money18UpdateLocalizationEv	Widgets::Money::UpdateLocalization()
 0x002edb61	0xbc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9MapLegend18UpdateLocalizationEv	Widgets::MapLegend::UpdateLocalization()
 0x002edc1d	0x60	MenuWidget.cpp	game	ui	matched	_ZN7Widgets9Objective18UpdateLocalizationEv	Widgets::Objective::UpdateLocalization()
 0x002edc7d	0xf0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu18UpdateLocalizationEv	Widgets::IGMenu::UpdateLocalization()
@@ -9993,7 +9993,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ef401	0x14	MenuWidget.cpp	game	ui	matched	_GLOBAL__I__ZN10MenuWidgetC2EPKc	_GLOBAL__I__ZN10MenuWidgetC2EPKc
 0x002ef415	0x2e0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Volumes18UpdateLocalizationEv	Widgets::Volumes::UpdateLocalization()
 0x002ef6f5	0x1d0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8Tutorial18UpdateLocalizationEv	Widgets::Tutorial::UpdateLocalization()
-0x002ef8c5	0x3c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets16BlockingTutorial18UpdateLocalizationEv	Widgets::BlockingTutorial::UpdateLocalization()
+0x002ef8c5	0x3c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets16BlockingTutorial18UpdateLocalizationEv	Widgets::BlockingTutorial::UpdateLocalization()
 0x002ef901	0xfc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective7OnEventERN8RenderFX5EventE	Widgets::Objective::OnEvent(RenderFX::Event&)
 0x002ef9fd	0x100	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8MainMenu7OnEventERN8RenderFX5EventE	Widgets::MainMenu::OnEvent(RenderFX::Event&)
 0x002efafd	0x134	MenuWidget.cpp	game	ui	pending	_ZN7Widgets11GameSetting7OnEventERN8RenderFX5EventE	Widgets::GameSetting::OnEvent(RenderFX::Event&)

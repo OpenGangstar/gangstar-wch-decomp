@@ -27,6 +27,8 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets5Money18UpdateLocalizationEv",
+        "_ZN7Widgets16BlockingTutorial18UpdateLocalizationEv",
         "_ZN7Widgets5Title18UpdateLocalizationEv",
         "_ZN7Widgets6Arrows18UpdateLocalizationEv",
         "_ZN7Widgets4Help9SetTextIdEi",
@@ -268,6 +270,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZNK13StringManager12formatAmountEibb",
+        "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_ZN8RenderFX10FormatTextEPKcS1_z",
         "_ZN11MenuManager10clearFocusEv",
         "_ZN11MenuManager13setMenuFXTextEPKcS1_bb",

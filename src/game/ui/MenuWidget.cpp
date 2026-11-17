@@ -13,6 +13,8 @@
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
+#include "../characters/PlayerTest.h"
+#include "../persistence/StringManager.h"
 #include "WidgetDialog.h"
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
@@ -1136,6 +1138,28 @@ void Widgets::Title::UpdateLocalization()
         _ZN8RenderFX7SetTextEPKcS1_b(renderFX, widgetTitleText,
                                    _ZNK13StringManager9getStringEi(strings, textId), true);
     }
+}
+
+static const char widgetMoneyLabel[] = "widgetMoney.group.txtMoney";
+static const char widgetMoneyAmount[] = "widgetMoney.group.txtAmount";
+static const char blockingTutorialOkText[] = "widgetTutoBlock.group.btnOk.text";
+
+void Widgets::Money::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, widgetMoneyLabel,
+                               _ZNK13StringManager9getStringEi(strings, 0x105d), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, widgetMoneyAmount,
+                               strings->formatAmount(PlayerTest::GetPlayer()->cash, true, true), true);
+}
+
+void Widgets::BlockingTutorial::UpdateLocalization()
+{
+    Tutorial::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, blockingTutorialOkText,
+                               _ZNK13StringManager9getStringEi(strings, 0x102b), true);
 }
 
 static const char widgetTitleIcon[] = "widgetTitle.icon";
