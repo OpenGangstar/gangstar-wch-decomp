@@ -38,6 +38,7 @@ SECTIONS
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
     .ai_manager_instance 0x004b6ae8 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZZN9AIManager11getInstanceEvE3aim) }
     .player_lock_weapon_switch 0x00300e6c : { *ai-startup-playertest.o(.text._ZN10PlayerTest16lockSwitchWeaponEv) }
+    .player_get_target 0x00300db8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10_GetTargetEv) }
     .player_unlock_weapon_switch 0x00300e78 : { *ai-startup-playertest.o(.text._ZN10PlayerTest18unlockSwitchWeaponEv) }
     .player_switch_weapon 0x003016b4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12switchWeaponEb) }
     .wanted_singleton 0x002dba04 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
