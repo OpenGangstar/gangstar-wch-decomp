@@ -55,6 +55,16 @@ Lock* Lock::getInstance()
     return s_lock;
 }
 
+namespace {
+struct LockTargetAccess : LevelObject {
+    static irr::scene::ISceneNode* getSceneNode(const LevelObject& object)
+    {
+        // Apply the protected member pointer to the original LevelObject.
+        return object.*(&LockTargetAccess::sceneNode);
+    }
+};
+}
+
 void Lock::setTarget(LevelObject* object)
 {
     target = object;
@@ -66,7 +76,7 @@ void Lock::setTarget(LevelObject* object)
             billboard->setScale(irr::core::vector3d<float>(1.0f, 1.0f, 1.0f));
             billboard->setParentOffsetZ(0);
         }
-        billboard->setParent(target->sceneNode);
+        billboard->setParent(LockTargetAccess::getSceneNode(*target));
     } else {
         billboard->setParent(0);
     }
