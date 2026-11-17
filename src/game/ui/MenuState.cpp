@@ -719,10 +719,6 @@ void MenuFX::State::Create()
 {
 }
 
-inline MenuFX::State::~State()
-{
-}
-
 MenuState::~MenuState()
 {
     widgetIds.release_buffer();
