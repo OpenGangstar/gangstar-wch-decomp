@@ -10,6 +10,10 @@ class MenuFX : public RenderFX, public RenderFX::EventListener {
 public:
     class State;
     virtual ~MenuFX();
+    virtual void Unload();
+    void SwitchMenu(const char* name);
+    void PushMenu(const char* name);
+    void PopAll();
     virtual void OnEvent(RenderFX::Event& event);
     virtual void OnFSCommand(const char* command, const char* args);
     virtual bool CanHandleEvent(RenderFX::Event& event);
@@ -18,7 +22,10 @@ public:
     bool IsStateInStack(State* state);
 
 private:
-    unsigned char beforeStack[16];
+    void SetMenu(const char* name, bool push);
+
+    gameswf::array<State*> registeredStates;
+    unsigned char beforeStack[4];
     gameswf::array<State*> stateStack;
 };
 
@@ -38,6 +45,7 @@ public:
     virtual bool CanHandleEvent(RenderFX::Event& event);
 
 private:
+    friend class MenuFX;
     unsigned char unknown4[4];
     char name[64];
     gameswf::smart_ptr<gameswf::character> firstCharacter;

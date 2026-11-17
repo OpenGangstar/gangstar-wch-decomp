@@ -28,6 +28,10 @@
     "source": "src/game/rendering/menufx.cpp",
     "linker_script": "config/linker/RenderFXAnimation.ld",
     "functions": [
+        "_ZN6MenuFX10SwitchMenuEPKc",
+        "_ZN6MenuFX8PushMenuEPKc",
+        "_ZN6MenuFX6UnloadEv",
+        "_ZN6MenuFX6PopAllEv",
         "_ZThn204_N6MenuFX7OnEventERN8RenderFX5EventE",
         "_ZThn204_N6MenuFX14CanHandleEventERN8RenderFX5EventE",
         "_ZN6MenuFX14CanHandleEventERN8RenderFX5EventE",
@@ -111,6 +115,7 @@
         {"name": ".got", "offset": 864}
     ],
     "external_thumb_functions": [
+        "_ZN6MenuFX7SetMenuEPKcb",
         "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE",
         "_ZN7gameswf7tu_fileC1EPKcS2_",
         "_ZN7gameswf29register_file_opener_callbackEPFPNS_7tu_fileEPKcE",
