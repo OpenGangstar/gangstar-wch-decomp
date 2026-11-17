@@ -62,6 +62,7 @@ private:
     void notifyAttacked(LevelObject*) __attribute__((noinline));
     friend class AchievementManager;
     friend class Character;
+    friend class GuardController;
     friend class PlayerTest;
     irr::core::vector3d<float> unknown296;
     Weapon* weapon;

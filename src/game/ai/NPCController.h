@@ -9,6 +9,9 @@ enum TransitionCondition { UnknownTransitionCondition = 0 };
 } }
 
 class NPCController : public IEventReceiver {
+    friend class GuardController;
+    friend class CivPassiveController;
+    friend class CivAgressiveController;
 public:
     NPCController(gameloft::ai::StateID state, NPC* npc,
         const gameloft::ai::Transition& transition);

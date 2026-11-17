@@ -84,6 +84,7 @@ static void _GLOBAL__I__ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE
 #include "../core/EventManager.h"
 class CivAgressiveController : public NPCController {
 public:
+    CivAgressiveController(NPC*, gameloft::ai::StateID);
     virtual ~CivAgressiveController();
     virtual void onEvent(const IEvent*, const EventManager*);
     virtual void switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition);
@@ -92,4 +93,14 @@ CivAgressiveController::~CivAgressiveController()
 {
     Application::GetInstance()->GetEventManager()->detach(16, this);
     Application::GetInstance()->GetEventManager()->detach(22, this);
+}
+
+#include "NPC.h"
+CivAgressiveController::CivAgressiveController(NPC* value, gameloft::ai::StateID initial)
+    : NPCController(initial, value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_agressive))
+{
+    if (initial == static_cast<gameloft::ai::StateID>(1))
+        npc->goToNextPoint(false);
+    Application::GetInstance()->GetEventManager()->attach(16, this);
+    Application::GetInstance()->GetEventManager()->attach(22, this);
 }

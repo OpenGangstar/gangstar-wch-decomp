@@ -15,6 +15,7 @@ _ZN41retail_civagressivecontroller_transitions11guard_transE = 0x0043057c;
 _ZN41retail_civagressivecontroller_transitions22scripted_vehicle_transE = 0x00430624;
 SECTIONS
 {
+    .civagressivecontroller_constructor 0x00340984 : { *ai-startup-civagressivecontroller.o(.text._ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE .text._ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE) }
     .civ_aggressive_dtor 0x00340944 : { *ai-startup-civagressivecontroller.o(.text._ZN22CivAgressiveControllerD1Ev .text._ZN22CivAgressiveControllerD2Ev) }
     .civ_aggressive_delete 0x00340900 : { *ai-startup-civagressivecontroller.o(.text._ZN22CivAgressiveControllerD0Ev) }
     .civ_aggressive_vtable 0x004acf98 : { *ai-startup-civagressivecontroller.o(.data.rel.ro._ZTV22CivAgressiveController) }

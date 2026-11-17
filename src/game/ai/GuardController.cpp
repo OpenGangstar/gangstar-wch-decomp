@@ -84,6 +84,7 @@ static void __tcf_3()
 #include "../core/EventManager.h"
 class GuardController : public NPCController {
 public:
+    GuardController(NPC*, gameloft::ai::StateID);
     virtual ~GuardController();
     virtual void onEvent(const IEvent*, const EventManager*);
     virtual void switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition);
@@ -92,4 +93,14 @@ GuardController::~GuardController()
 {
     Application::GetInstance()->GetEventManager()->detach(16, this);
     Application::GetInstance()->GetEventManager()->detach(22, this);
+}
+
+#include "NPC.h"
+GuardController::GuardController(NPC* value, gameloft::ai::StateID initial)
+    : NPCController(initial, value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::guard))
+{
+    npc->flags356 &= ~0x40000u;
+    Application::GetInstance()->GetEventManager()->attach(16, this);
+    Application::GetInstance()->GetEventManager()->attach(22, this);
+    GuardController::switchState(static_cast<gameloft::ai::StateID>(3), static_cast<gameloft::ai::TransitionCondition>(19));
 }

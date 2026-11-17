@@ -12185,8 +12185,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00340901	0x44	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerD0Ev	CivAgressiveController::~CivAgressiveController()
 0x00340945	0x40	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerD2Ev	CivAgressiveController::~CivAgressiveController()
 0x00340945	0x40	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerD1Ev	CivAgressiveController::~CivAgressiveController()
-0x00340985	0x60	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE	CivAgressiveController::CivAgressiveController(NPC*, gameloft::ai::StateID)
-0x00340985	0x60	CivAgressiveController.cpp	game	ai	pending	_ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE	CivAgressiveController::CivAgressiveController(NPC*, gameloft::ai::StateID)
+0x00340985	0x60	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE	CivAgressiveController::CivAgressiveController(NPC*, gameloft::ai::StateID)
+0x00340985	0x60	CivAgressiveController.cpp	game	ai	matched	_ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE	CivAgressiveController::CivAgressiveController(NPC*, gameloft::ai::StateID)
 0x003409e5	0x144	CivAgressiveController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00340b29	0x14	CivAgressiveController.cpp	game	ai	matched	_GLOBAL__I__ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE	_GLOBAL__I__ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE
 0x00340b3d	0x30	CivPassiveController.cpp	game	ai	matched	__tcf_3	__tcf_3
@@ -12194,8 +12194,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00340bf1	0x44	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerD0Ev	CivPassiveController::~CivPassiveController()
 0x00340c35	0x40	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerD1Ev	CivPassiveController::~CivPassiveController()
 0x00340c35	0x40	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerD2Ev	CivPassiveController::~CivPassiveController()
-0x00340c75	0x60	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	CivPassiveController::CivPassiveController(NPC*, gameloft::ai::Transition const&, gameloft::ai::StateID)
-0x00340c75	0x60	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	CivPassiveController::CivPassiveController(NPC*, gameloft::ai::Transition const&, gameloft::ai::StateID)
+0x00340c75	0x60	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	CivPassiveController::CivPassiveController(NPC*, gameloft::ai::Transition const&, gameloft::ai::StateID)
+0x00340c75	0x60	CivPassiveController.cpp	game	ai	matched	_ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	CivPassiveController::CivPassiveController(NPC*, gameloft::ai::Transition const&, gameloft::ai::StateID)
 0x00340cd5	0x94	CivPassiveController.cpp	game	ai	pending	_ZN20CivPassiveController7onEventEPK6IEventPK12EventManager	CivPassiveController::onEvent(IEvent const*, EventManager const*)
 0x00340d69	0x144	CivPassiveController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00340ead	0x14	CivPassiveController.cpp	game	ai	matched	_GLOBAL__I__ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE	_GLOBAL__I__ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE
@@ -12229,8 +12229,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00341f01	0x30	GuardController.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00341f31	0x19c	GuardController.cpp	game	ai	pending	_ZN15GuardController7onEventEPK6IEventPK12EventManager	GuardController::onEvent(IEvent const*, EventManager const*)
 0x003420cd	0x154	GuardController.cpp	game	ai	pending	_ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	GuardController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
-0x00342221	0x68	GuardController.cpp	game	ai	pending	_ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
-0x00342221	0x68	GuardController.cpp	game	ai	pending	_ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
+0x00342221	0x68	GuardController.cpp	game	ai	matched	_ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
+0x00342221	0x68	GuardController.cpp	game	ai	matched	_ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
 0x00342289	0x2	NPCController.cpp	game	ai	matched	_ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	NPCController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
 0x0034228d	0x60	NPCController.cpp	game	ai	pending	_ZN13NPCController7onEventEPK6IEventPK12EventManager	NPCController::onEvent(IEvent const*, EventManager const*)
 0x003422ed	0x30	NPCController.cpp	game	ai	matched	__tcf_2	__tcf_2

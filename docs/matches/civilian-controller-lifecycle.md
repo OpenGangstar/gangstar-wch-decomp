@@ -47,3 +47,30 @@ OK  _ZN15GuardControllerD2Ev  0x00341d25  64 bytes
 OK  _ZN15GuardControllerD0Ev  0x00341d65  68 bytes
 OK SECTION .guard_vtable  0x004ad000  24 bytes
 ```
+
+## Derived controller constructors
+
+The aggressive, passive, and guard controllers reuse NPCController's recovered
+constructor and original transition storage. Their event attachments preserve
+separate application/event-manager calls. The aggressive and passive controllers
+advance an NPC waypoint only for initial state 1. The guard controller clears
+the observed NPC flag before attaching events and entering its original state.
+Friend declarations grant access to already recovered fields without changing
+layout or existing implementations.
+
+The integrated command checked all three derived units, NPCController, and NPC:
+
+```sh
+python tools/build.py ai-startup-guardcontroller ai-startup-civagressivecontroller ai-startup-civpassivecontroller ai-startup-npccontroller ai-startup-npc
+```
+
+It exited 0, preserving every existing comparison:
+
+```text
+OK  _ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE  0x00342221  104 bytes
+OK  _ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE  0x00342221  104 bytes
+OK  _ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE  0x00340985  96 bytes
+OK  _ZN22CivAgressiveControllerC2EP3NPCN8gameloft2ai7StateIDE  0x00340985  96 bytes
+OK  _ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE  0x00340c75  96 bytes
+OK  _ZN20CivPassiveControllerC2EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE  0x00340c75  96 bytes
+```
