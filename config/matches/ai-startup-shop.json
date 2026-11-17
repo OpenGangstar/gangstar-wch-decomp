@@ -25,6 +25,7 @@
     "source": "src/game/ui/Shop.cpp",
     "linker_script": "config/linker/ShopAiStartup.ld",
     "functions": [
+        "_ZNK4Shop9triggeredEv",
         {
             "name": "__tcf_4",
             "address": "0x00306311"

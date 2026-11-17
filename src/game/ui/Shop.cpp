@@ -11,6 +11,12 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Shop.h"
+
+bool Shop::triggered() const
+{
+    return triggerActive;
+}
 #include "../ai/StateMachine.h"
 
 void operator delete(void*) throw();
