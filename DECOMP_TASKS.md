@@ -65,3 +65,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00334eed | SceneCamera::update | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x0031ccf1 | PhysicAttributes::SetCurrentJumpShape | lock_init | REVIEW | — | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00301df9 | PlayerTest::finishedStopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301261 | PlayerTest::_SetTarget | camera_tap | REVIEW | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030142d | PlayerTest::applyDamage | lock_init | REVIEW | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301eec | PlayerTest::setVehicle (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |

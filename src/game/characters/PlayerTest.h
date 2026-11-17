@@ -40,7 +40,7 @@ public:
     virtual void unknown25();
     virtual void unknown26();
     virtual void unknown27();
-    virtual void unknown28();
+    virtual void Stop();
     virtual void unknown29();
     virtual void unknown30();
     virtual void unknown31();
@@ -58,7 +58,7 @@ public:
     virtual void unknown43();
     virtual void unknown44();
     virtual void unknown45();
-    virtual void unknown46();
+    virtual void setVehicle(Vehicle* value);
     virtual Vehicle* getVehicle() const;
     virtual void unknown48(); virtual void unknown49(); virtual void unknown50();
     virtual void unknown51();
