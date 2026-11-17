@@ -10619,7 +10619,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00309045	0x34	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13loadExplosionEPKc	Vehicle::loadExplosion(char const*)
 0x00309079	0x36	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10showWheelsEv	Vehicle::showWheels()
 0x003090b1	0x36	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10hideWheelsEv	Vehicle::hideWheels()
-0x003090e9	0x88	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle14_cleanupSoundsEv	Vehicle::_cleanupSounds()
+0x003090e9	0x88	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle14_cleanupSoundsEv	Vehicle::_cleanupSounds()
 0x00309171	0x16	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle14enableSkinningEb	Vehicle::enableSkinning(bool)
 0x00309189	0x60	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle11stopDrivingEv	Vehicle::stopDriving()
 0x003091e9	0x48	Vehicle.cpp	game	vehicles	matched	_ZNK7Vehicle18GetMeshBoundingBoxEPKN3irr5scene10ISceneNodeE	Vehicle::GetMeshBoundingBox(irr::scene::ISceneNode const*) const
