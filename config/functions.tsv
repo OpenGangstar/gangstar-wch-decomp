@@ -9495,7 +9495,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e4389	0x44	MenuManager.cpp	game	ui	matched	_ZN8MyMenuFX11ClearStatesEv	MyMenuFX::ClearStates()
 0x002e43cd	0x46	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf5arrayIP10MenuWidgetE7reserveEi	gameswf::array<MenuWidget*>::reserve(int)
 0x002e4415	0x44	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf5arrayIP10MenuWidgetE6resizeEi	gameswf::array<MenuWidget*>::resize(int)
-0x002e4459	0x2c	MenuManager.cpp	game	ui	pending	_ZN7Structs9CarRental4ReadER10DataStream	Structs::CarRental::Read(DataStream&)
+0x002e4459	0x2c	MenuManager.cpp	game	ui	matched	_ZN7Structs9CarRental4ReadER10DataStream	Structs::CarRental::Read(DataStream&)
 0x002e4485	0x30	MenuManager.cpp	game	ui	matched	_ZN8MyMenuFXD0Ev	MyMenuFX::~MyMenuFX()
 0x002e44b5	0x28	MenuManager.cpp	game	ui	matched	_ZN8MyMenuFXD1Ev	MyMenuFX::~MyMenuFX()
 0x002e44dd	0x10	MenuManager.cpp	game	ui	matched	_ZN8MyMenuFX10ClearFocusEv	MyMenuFX::ClearFocus()

@@ -12,6 +12,7 @@
 #include "../app/Application.h"
 #include "../hud/TargetMarker.h"
 #include "../persistence/FileSystemBase.h"
+#include "../persistence/DataStream.h"
 #include "../world/MapSingleton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -123,6 +124,25 @@ void MyMenuFX::ClearStates()
     for (int index = 0; index < registeredStates.size; ++index)
         delete registeredStates.elements[index];
     registeredStates.resize(0);
+}
+
+namespace Structs {
+struct CarRental {
+    char* name;
+    int unknown4;
+    int unknown8;
+    int unknown12;
+
+    void Read(DataStream& stream);
+};
+
+void CarRental::Read(DataStream& stream)
+{
+    name = stream.ReadAndAllocateString();
+    unknown4 = stream.ReadInt();
+    unknown8 = stream.ReadInt();
+    unknown12 = stream.ReadInt();
+}
 }
 
 MyMenuFX::~MyMenuFX()

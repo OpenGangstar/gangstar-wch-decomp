@@ -167,6 +167,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10DataStream21ReadAndAllocateStringEv",
+        "_ZN10DataStream7ReadIntEv",
         "_ZN11MenuManagerD1Ev",
         "_ZNK8RenderFX7GetRootEv",
         "_Z13ekd_debug_outPKcPc",
