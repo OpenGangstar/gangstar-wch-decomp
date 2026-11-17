@@ -4,6 +4,8 @@ __aeabi_i2f = 0x001c41e4;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fcmpge = 0x001c4364;
 __aeabi_fcmple = 0x001c43ac;
+fputs = 0x001c4904;
+fflush = 0x001c425c;
 vsprintf = 0x001c4070;
 SECTIONS
 {
@@ -45,6 +47,8 @@ SECTIONS
     .renderfx_empty_fs_callback 0x003ec1e0 : { *renderfx-animation.o(.text._Z11fs_callbackPN7gameswf9characterEPKcS3_) }
     .renderfx_fs_command 0x003ec398 : { *renderfx-animation.o(.text._ZN8RenderFX9FSCommandEPKcS1_) }
     .renderfx_file_read_mode 0x004014f0 : { *renderfx-animation.o(.rodata.swfReadMode) }
+    .renderfx_message_log 0x003ec640 : { *renderfx-animation.o(.text._Z11message_logPKc) }
+    .renderfx_log_callback 0x003ec670 : { *renderfx-animation.o(.text._Z12log_callbackbPKc) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }
