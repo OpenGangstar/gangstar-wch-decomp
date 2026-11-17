@@ -5,6 +5,7 @@
 
 class PhysicAttributes;
 class Character;
+class Vehicle;
 
 inline __attribute__((always_inline))
 void updateCameraInputRates(int horizontal, int vertical, float& yawRate, float& pitchRate)
@@ -51,13 +52,14 @@ public:
     virtual void enter();
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
-    unsigned char unknown28[12];
+    Vehicle* vehicle;
+    unsigned char unknown32[8];
     irr::core::vector3d<float> vector40;
     irr::core::vector3d<float> vector52;
     unsigned char unknown64[4];
     float yawRate;
     float pitchRate;
-    bool flag76;
+    bool entered;
 };
 
 class FPSCamera : public Camera {
