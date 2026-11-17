@@ -27,6 +27,12 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets6IGMenuC1Ev",
+        "_ZN7Widgets6IGMenuC2Ev",
+        "_ZN7Widgets6IGMenu4ShowEv",
+        "_ZN7Widgets6IGMenuD0Ev",
+        "_ZN7Widgets6IGMenuD1Ev",
+        "_ZN7Widgets6IGMenuD2Ev",
         "_ZN7Widgets8MainMenu18UpdateLocalizationEv",
         "_ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb",
         "_ZNK7Widgets8MainMenu16GetPressedButtonEv",
@@ -100,6 +106,8 @@
         }
     ],
     "sections": [
+        ".widget_ig_menu_name",
+        ".widget_ig_menu_vtable",
         ".widget_main_menu_button_text_format",
         ".widget_main_menu_more_text",
         ".widget_main_menu_twitter_text",
