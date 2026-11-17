@@ -12668,16 +12668,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c085	0x2	DataReloaderManager.cpp	game	world	matched	_ZNK19DataReloaderManager6_traceEPKc	DataReloaderManager::_trace(char const*) const
 0x0034c089	0x2	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManager12monitorFilesEPKcS1_P13IDataReloader	DataReloaderManager::monitorFiles(char const*, char const*, IDataReloader*)
 0x0034c08d	0x12	DataReloaderManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN19DataReloaderManager15_MonitoredFilesESaIS3_EED1Ev	stlp_priv::_Vector_base<DataReloaderManager::_MonitoredFiles*, std::allocator<DataReloaderManager::_MonitoredFiles*> >::~_Vector_base()
-0x0034c0a1	0x24	DataReloaderManager.cpp	game	world	pending	_ZN19DataReloaderManager15_MonitoredFilesD1Ev	DataReloaderManager::_MonitoredFiles::~_MonitoredFiles()
-0x0034c0c5	0x54	DataReloaderManager.cpp	game	world	pending	_ZN19DataReloaderManagerD1Ev	DataReloaderManager::~DataReloaderManager()
-0x0034c0c5	0x54	DataReloaderManager.cpp	game	world	pending	_ZN19DataReloaderManagerD2Ev	DataReloaderManager::~DataReloaderManager()
+0x0034c0a1	0x24	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManager15_MonitoredFilesD1Ev	DataReloaderManager::_MonitoredFiles::~_MonitoredFiles()
+0x0034c0c5	0x54	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerD1Ev	DataReloaderManager::~DataReloaderManager()
+0x0034c0c5	0x54	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerD2Ev	DataReloaderManager::~DataReloaderManager()
 0x0034c119	0xf8	DataReloaderManager.cpp	game	world	pending	_ZNK19DataReloaderManager10checkFilesEv	DataReloaderManager::checkFiles() const
 0x0034c211	0x20	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerC2Ev	DataReloaderManager::DataReloaderManager()
 0x0034c211	0x20	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerC1Ev	DataReloaderManager::DataReloaderManager()
 0x0034c231	0x6c	DataReloaderManager.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034c29d	0x14	DataReloaderManager.cpp	game	core	matched	_GLOBAL__I__ZN19DataReloaderManagerC2Ev	_GLOBAL__I__ZN19DataReloaderManagerC2Ev
 0x0034c2b1	0x30	DataReloaderManager.cpp	game	core	matched	__tcf_2	__tcf_2
-0x0034c2e1	0x5c	DataReloaderManager.cpp	game	world	pending	_ZN19DataReloaderManagerD0Ev	DataReloaderManager::~DataReloaderManager()
+0x0034c2e1	0x5c	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerD0Ev	DataReloaderManager::~DataReloaderManager()
 0x0034c33d	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase12ConvertCoordER7Point2DIsE	TouchScreenBase::ConvertCoord(Point2D<short>&)
 0x0034c395	0x2	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase6_traceEPKc	TouchScreenBase::_trace(char const*) const
 0x0034c399	0x20	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase5clearEv	TouchScreenBase::clear()

@@ -5,6 +5,10 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .datareloader_nested_destructor 0x0034c0a0 : { *sdk-startup-datareloadermanager.o(.gnu.linkonce.t._ZN19DataReloaderManager15_MonitoredFilesD1Ev .gnu.linkonce.t._ZN19DataReloaderManager15_MonitoredFilesD2Ev) }
+    .datareloader_vtable 0x004ad2d8 : { *sdk-startup-datareloadermanager.o(.data.rel.ro._ZTV19DataReloaderManager) }
+    .reloader_dtor 0x0034c0c4 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManagerD1Ev .text._ZN19DataReloaderManagerD2Ev) }
+    .reloader_delete 0x0034c2e0 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManagerD0Ev) }
     .reloader_trace 0x0034c084 : { *sdk-startup-datareloadermanager.o(.text._ZNK19DataReloaderManager6_traceEPKc) }
     .reloader_monitor 0x0034c088 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManager12monitorFilesEPKcS1_P13IDataReloader) }
     .reloader_ctor 0x0034c210 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManagerC1Ev .text._ZN19DataReloaderManagerC2Ev) }

@@ -82,3 +82,31 @@ void DataReloaderManager::monitorFiles(const char*, const char*, IDataReloader*)
 DataReloaderManager::DataReloaderManager()
 {
 }
+
+namespace std {
+template<class T> struct char_traits;
+template<class T, class Traits = char_traits<T>, class Alloc = allocator<T> >
+class basic_string {
+public:
+    ~basic_string() __attribute__((weak));
+private:
+    unsigned char storage[24];
+};
+typedef basic_string<char> string;
+}
+
+class IDataReloader;
+
+struct DataReloaderManager::_MonitoredFiles {
+    IDataReloader* reloader;
+    std::string path;
+    std::string filename;
+    bool changed;
+    ~_MonitoredFiles() __attribute__((used, noinline)) {}
+};
+
+DataReloaderManager::~DataReloaderManager()
+{
+    for (std::vector<_MonitoredFiles*>::iterator it = monitoredFiles.begin(); it != monitoredFiles.end(); ++it)
+        delete *it;
+}
