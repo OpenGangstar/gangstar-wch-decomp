@@ -16,6 +16,7 @@ _ZN28retail_fpscamera_transitions11guard_transE = 0x00429a78;
 _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
 SECTIONS
 {
+    .camera_variant_ctor 0x00334100 : { *ai-startup-fpscamera.o(.text._ZN9FPSCameraC1Ev .text._ZN9FPSCameraC2Ev) }
     .camera_variant_debug 0x00333e0c : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera5debugEPN3irr5video12IVideoDriverE) }
     .camera_variant_dtor 0x00333fcc : { *ai-startup-fpscamera.o(.text._ZN9FPSCameraD1Ev .text._ZN9FPSCameraD2Ev) }
     .ai_startup_function_0 0x00333e10 : { *ai-startup-fpscamera.o(.text.__tcf_3) }

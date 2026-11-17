@@ -4,6 +4,7 @@
 #include "Camera.h"
 
 class PhysicAttributes;
+class Character;
 
 inline __attribute__((always_inline))
 void updateCameraInputRates(int horizontal, int vertical, float& yawRate, float& pitchRate)
@@ -15,6 +16,7 @@ void updateCameraInputRates(int horizontal, int vertical, float& yawRate, float&
 // Derived storage is partial. FollowCamera owns the physics pointer at byte 36.
 class FollowCamera : public Camera {
 public:
+    explicit FollowCamera(Character* owner);
     ~FollowCamera();
     void updateAngles(int horizontal, int vertical);
     virtual void init(LevelObject* owner, int mode);
@@ -41,6 +43,7 @@ private:
 
 class VehicleCamera : public Camera {
 public:
+    explicit VehicleCamera(LevelObject* owner);
     ~VehicleCamera();
     void updateAngles(int horizontal, int vertical);
     virtual void init(LevelObject* owner, int mode);
@@ -48,19 +51,34 @@ public:
     virtual void enter();
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
-    unsigned char unknown28[40];
+    unsigned char unknown28[12];
+    irr::core::vector3d<float> vector40;
+    irr::core::vector3d<float> vector52;
+    unsigned char unknown64[4];
     float yawRate;
     float pitchRate;
+    bool flag76;
 };
 
 class FPSCamera : public Camera {
 public:
+    FPSCamera();
     ~FPSCamera();
     virtual void init(LevelObject* owner, int mode);
     virtual void update(float elapsed);
     virtual void enter();
     virtual void exit();
     virtual void debug(irr::video::IVideoDriver* driver);
+private:
+    unsigned char unknown28[4];
+    float value32;
+    int value36;
+    int value40;
+    int value44;
+    int value48;
+    float value52;
+    float value56;
+    bool flag60;
 };
 
 #endif

@@ -26,6 +26,8 @@
     "linker_script": "config/linker/FollowCameraAiStartup.ld",
     "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN12FollowCameraC1EP9Character",
+        "_ZN12FollowCameraC2EP9Character",
         "_ZN12FollowCamera12updateAnglesEii",
         "_ZN12FollowCamera5debugEPN3irr5video12IVideoDriverE",
         "_ZN12FollowCameraD1Ev",
@@ -54,5 +56,5 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN16PhysicAttributesD1Ev"]
+    "external_thumb_functions": ["_ZN16PhysicAttributesD1Ev", "_ZN12FollowCamera4initEP11LevelObjecti", "_ZN16PhysicAttributesC1EiP6b2Body"]
 }

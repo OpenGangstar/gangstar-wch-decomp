@@ -11739,8 +11739,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00333451	0x25c	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	FollowCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
 0x003336ad	0xdc	FollowCamera.cpp	game	core	pending	_ZNK12FollowCamera9getFacingEv	FollowCamera::getFacing() const
 0x00333789	0x1ec	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera4initEP11LevelObjecti	FollowCamera::init(LevelObject*, int)
-0x00333975	0x48	FollowCamera.cpp	game	core	pending	_ZN12FollowCameraC2EP9Character	FollowCamera::FollowCamera(Character*)
-0x00333975	0x48	FollowCamera.cpp	game	core	pending	_ZN12FollowCameraC1EP9Character	FollowCamera::FollowCamera(Character*)
+0x00333975	0x48	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraC2EP9Character	FollowCamera::FollowCamera(Character*)
+0x00333975	0x48	FollowCamera.cpp	game	core	matched	_ZN12FollowCameraC1EP9Character	FollowCamera::FollowCamera(Character*)
 0x003339bd	0xf4	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera8goBehindEP11LevelObject	FollowCamera::goBehind(LevelObject*)
 0x00333ab1	0x308	FollowCamera.cpp	game	core	pending	_ZN12FollowCamera6updateEf	FollowCamera::update(float)
 0x00333db9	0x54	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera16incVerticalAngleEf	FPSCamera::incVerticalAngle(float)
@@ -11753,8 +11753,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00333fcd	0x20	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraD2Ev	FPSCamera::~FPSCamera()
 0x00333fed	0xd4	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4initEP11LevelObjecti	FPSCamera::init(LevelObject*, int)
 0x003340c1	0x40	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4exitEv	FPSCamera::exit()
-0x00334101	0x54	FPSCamera.cpp	game	core	pending	_ZN9FPSCameraC2Ev	FPSCamera::FPSCamera()
-0x00334101	0x54	FPSCamera.cpp	game	core	pending	_ZN9FPSCameraC1Ev	FPSCamera::FPSCamera()
+0x00334101	0x54	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraC2Ev	FPSCamera::FPSCamera()
+0x00334101	0x54	FPSCamera.cpp	game	core	matched	_ZN9FPSCameraC1Ev	FPSCamera::FPSCamera()
 0x00334155	0x144	FPSCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00334299	0x14	FPSCamera.cpp	game	core	matched	_GLOBAL__I__ZN9FPSCameraC2Ev	_GLOBAL__I__ZN9FPSCameraC2Ev
 0x003342ad	0xdc	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE	FPSCamera::zoom(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
@@ -11807,8 +11807,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraD1Ev	VehicleCamera::~VehicleCamera()
 0x003351dd	0x130	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera8goToSideEb	VehicleCamera::goToSide(bool)
 0x0033530d	0x160	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera4initEP11LevelObjecti	VehicleCamera::init(LevelObject*, int)
-0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCameraC2EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)
-0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCameraC1EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)
+0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraC2EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)
+0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraC1EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)
 0x003354b5	0x144	VehicleCamera.cpp	game	vehicles	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003355f9	0x14	VehicleCamera.cpp	game	vehicles	matched	_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject	_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject
 0x0033560d	0x15c	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	VehicleCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)

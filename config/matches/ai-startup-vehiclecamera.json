@@ -26,6 +26,8 @@
     "linker_script": "config/linker/VehicleCameraAiStartup.ld",
     "dependencies": ["string-startup-camera"],
     "functions": [
+        "_ZN13VehicleCameraC1EP11LevelObject",
+        "_ZN13VehicleCameraC2EP11LevelObject",
         "_ZN13VehicleCamera12updateAnglesEii",
         "_ZN13VehicleCamera5debugEPN3irr5video12IVideoDriverE",
         "_ZN13VehicleCameraD1Ev",
@@ -53,5 +55,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN13VehicleCamera4initEP11LevelObjecti"]
 }

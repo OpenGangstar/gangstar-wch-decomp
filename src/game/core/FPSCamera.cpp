@@ -21,6 +21,15 @@ FPSCamera::~FPSCamera()
 {
 }
 
+FPSCamera::FPSCamera()
+    : value36(0), value40(0), value44(0), value48(0),
+      value52(50.0f), value56(0.1f)
+{
+    init(0, 0);
+    value32 = 0.0f;
+    flag60 = false;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));
