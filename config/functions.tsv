@@ -9471,7 +9471,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e3fd5	0x12	MenuManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN3irr5video8ITextureESaIS4_EED1Ev	stlp_priv::_Vector_base<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::~_Vector_base()
 0x002e3fe9	0x24	MenuManager.cpp	game	ui	matched	__tcf_9	__tcf_9
 0x002e400d	0x34	MenuManager.cpp	gameswf	-	matched	_ZNK7gameswf8weak_ptrINS_6playerEE11check_proxyEv	gameswf::weak_ptr<gameswf::player>::check_proxy() const
-0x002e4041	0x34	MenuManager.cpp	game	ui	pending	_Z10StrToLowerPc	StrToLower(char*)
+0x002e4041	0x34	MenuManager.cpp	game	ui	matched	_Z10StrToLowerPc	StrToLower(char*)
 0x002e4075	0x18	MenuManager.cpp	game	ui	matched	_Z13fs_close_funcPv	fs_close_func(void*)
 0x002e408d	0x14	MenuManager.cpp	game	ui	matched	_Z15fs_get_eof_funcPv	fs_get_eof_func(void*)
 0x002e40a1	0xc	MenuManager.cpp	game	ui	matched	_Z12fs_tell_funcPKv	fs_tell_func(void const*)
@@ -9510,7 +9510,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e477d	0x118	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerC2Ev	MenuManager::MenuManager()
 0x002e477d	0x118	MenuManager.cpp	game	ui	pending	_ZN11MenuManagerC1Ev	MenuManager::MenuManager()
 0x002e4895	0x54	MenuManager.cpp	game	ui	pending	_ZN11MenuManager11getInstanceEv	MenuManager::getInstance()
-0x002e48e9	0xc4	MenuManager.cpp	game	ui	pending	_Z12get_fontfilePKcbbPci	get_fontfile(char const*, bool, bool, char*, int)
+0x002e48e9	0xc4	MenuManager.cpp	game	ui	matched	_Z12get_fontfilePKcbbPci	get_fontfile(char const*, bool, bool, char*, int)
 0x002e49ad	0x68	MenuManager.cpp	game	ui	pending	_ZN11MenuManager22updateWidgetVisibilityEv	MenuManager::updateWidgetVisibility()
 0x002e4a15	0x80	MenuManager.cpp	game	ui	pending	_ZN11MenuManager11freeTextureEPKc	MenuManager::freeTexture(char const*)
 0x002e4a95	0x12	MenuManager.cpp	stlport	-	matched	_ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE8_M_clearEv	std::vector<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::_M_clear()

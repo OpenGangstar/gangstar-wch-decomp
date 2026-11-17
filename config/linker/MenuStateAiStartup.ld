@@ -74,6 +74,7 @@ SECTIONS
     .blocking_tutorial_deleting_destructor 0x002ea084 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorialD0Ev) }
     .blocking_tutorial_complete_destructor 0x002ea0b0 : { *ai-startup-menustate.o(.text._ZN5Menus16BlockingTutorialD1Ev .text._ZN5Menus16BlockingTutorialD2Ev) }
     .blocking_tutorial_vtable 0x004a9680 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus16BlockingTutorialE) }
+    .menu_manager_get_fx 0x002e3f0c : { *menu-manager-helpers.o(.text._ZN11MenuManager9getMenuFXEv) }
     .menu_manager_get_depth 0x002e465c : { *menu-manager-helpers.o(.text._ZNK11MenuManager8getDepthEv .gnu.linkonce.t._ZNK11MenuManager8getDepthEv) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     .are_cheats_unlocked 0x002e3ebc : { *menu-manager-helpers.o(.text._ZNK11MenuManager17areCheatsUnlockedEv) }

@@ -6,6 +6,7 @@ fseek = 0x001c43f4;
 fwrite = 0x001c47e4;
 fread = 0x001c4598;
 fopen = 0x001c45bc;
+strcpy = 0x001c3fd4;
 __stack_chk_fail = 0x001c42e0;
 strlen = 0x001c48bc;
 strcat = 0x001c43a0;
@@ -21,6 +22,11 @@ SECTIONS
     .menu_manager_set_localized_text 0x002e564c : { *menu-manager-helpers.o(.text._ZN11MenuManager7setTextENS_5eTextEiPi) }
     .menu_manager_get_text_id 0x002e3f30 : { *menu-manager-helpers.o(.text._ZNK11MenuManager9getTextIdENS_5eTextE) }
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
+    .menu_font_file 0x002e48e8 : { *menu-manager-helpers.o(.text._Z12get_fontfilePKcbbPci) }
+    .menu_requested_font_format 0x00418d74 : { *menu-manager-helpers.o(.rodata.requestedFontFormat) }
+    .menu_asian_font_file_format 0x00418d80 : { *menu-manager-helpers.o(.rodata.asianFontFileFormat) }
+    .menu_standard_font_file_format 0x00418d90 : { *menu-manager-helpers.o(.rodata.standardFontFileFormat) }
+    .menu_lowercase 0x002e4040 : { *menu-manager-helpers.o(.text._Z10StrToLowerPc) }
     .menu_fs_close 0x002e4074 : { *menu-manager-helpers.o(.text._Z13fs_close_funcPv) }
     .menu_fs_eof 0x002e408c : { *menu-manager-helpers.o(.text._Z15fs_get_eof_funcPv) }
     .menu_fs_tell 0x002e40a0 : { *menu-manager-helpers.o(.text._Z12fs_tell_funcPKv) }

@@ -167,6 +167,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK8RenderFX7GetRootEv",
         "_Z13ekd_debug_outPKcPc",
         "_Z21ekd_makestringfile255PKcPc",
         "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
