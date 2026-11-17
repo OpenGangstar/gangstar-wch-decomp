@@ -1,6 +1,11 @@
+PROVIDE(__aeabi_fcmpge = 0x001c4364);
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .character_action_0 0x002f2184 : { *ai-startup-character.o(.text._ZN9Character5debugEPN3irr5video12IVideoDriverE) }
+    .character_action_1 0x002f6298 : { *ai-startup-character.o(.text._ZN9Character8hitByCarEifP11LevelObject) }
+    .character_action_2 0x002f64b8 : { *ai-startup-character.o(.text._ZN9Character8hijackedEv) }
+    .character_hit_car_table 0x0041c20c : { *ai-startup-character.o(.rodata._ZN9Character8hitByCarEifP11LevelObject) }
     .character_recovered_002f1839 0x002f1838 : { *ai-startup-character.o(.text.__tcf_1 .gnu.linkonce.t.__tcf_1) }
     .character_recovered_002f7415 0x002f7414 : { *ai-startup-character.o(.text._ZN9Character6attackEv .gnu.linkonce.t._ZN9Character6attackEv) }
     .character_recovered_002f6fb9 0x002f6fb8 : { *ai-startup-character.o(.text._ZN9Character4kickEv .gnu.linkonce.t._ZN9Character4kickEv) }

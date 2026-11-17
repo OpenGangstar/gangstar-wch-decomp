@@ -778,8 +778,14 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f512d | EvPlayer deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f39e1 | Character::runToTarget | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2d95 | Character::die | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f2185 | Character::debug | lock_init | REVIEW | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f64b9 | Character::hijacked | vehicle_side | REVIEW | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f23fd | Character::bindAnimation | camera_tap | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f1d91 | Character::setAnimation(int, float, bool, bool, bool) | lock_init | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f6001 | Character::exitVehicle | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2185 | Character::debug | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f64b9 | Character::hijacked | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f23fd | Character::bindAnimation | camera_tap | REVIEW | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f1d91 | Character::setAnimation(int, float, bool, bool, bool) | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f6001 | Character::exitVehicle | vehicle_side | REVIEW | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f4659 | Character::show | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f48b1 | Character::initInVehicle | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f6299 | Character::hitByCar | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f405d | Character::Update | camera_tap | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f4465 | Character::initPhysic | lock_init | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f4a79 | Character::positionInVehicle | vehicle_side | ASSIGNED | pending | src/game/characters/Character.cpp |

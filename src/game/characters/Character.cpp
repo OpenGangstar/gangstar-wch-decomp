@@ -1174,3 +1174,109 @@ Character::Character(int type)
 }
 
 #include "PlayerEvent.h"
+
+#include "../core/VideoDriver.h"
+void Character::debug(irr::video::IVideoDriver* driver)
+{
+    irr::core::vector3d<float> right = GetRight();
+    irr::core::vector3d<float> front = GetFront();
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    irr::core::vector3d<float> up(transform[8], transform[9], transform[10]);
+    irr::core::vector3d<float> position = GetPosition();
+    {
+    irr::core::vector3d<float> scaledRight = right * 300.0f;
+    irr::core::vector3d<float> end(scaledRight.X + position.X, scaledRight.Y + position.Y, position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 0, 0, 255));
+    }
+    {
+    irr::core::vector3d<float> scaledFront = front * 300.0f;
+    irr::core::vector3d<float> end(scaledFront.X + position.X, scaledFront.Y + position.Y, position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 0, 255, 0));
+    }
+    {
+    irr::core::vector3d<float> scaledUp = up * 300.0f;
+    irr::core::vector3d<float> end(scaledUp.X + position.X, scaledUp.Y + position.Y, scaledUp.Z + position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 255, 0, 0));
+    }
+}
+
+void Character::hijacked()
+{
+    movementFlags &= ~0x10400u;
+    setAnimation(164, 1.0f, false, false, false);
+    irr::core::quaternion rotation;
+    irr::core::vector3d<float> forward(0.0f, 0.0f, 1.0f);
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    rotation.rotationFromTo(forward, irr::core::vector3d<float>(transform[8], transform[9], transform[10]));
+    SetRotation(rotation * GetRotation());
+    if (vehicle) {
+        getPhysicAttributes()->SetPhysicInfo(*vehicle->getPhysicAttributes()->info, 0);
+        resetCollisions();
+        SetTarget(vehicle);
+        setVehicle(0);
+    }
+    if (!isPlayer()) {
+        SoundManager* sound;
+        int id;
+        if (lrand48() % 2 == 1) {
+            sound = SoundManager::getInstance();
+            switch (driverBehavior) { case 0: id = 61; break; default: id = 90; break; }
+        } else {
+            sound = SoundManager::getInstance();
+            switch (driverBehavior) { case 0: id = 235; break; default: id = 233; break; }
+        }
+        sound->unknown140 = true;
+        sound->playEx(id, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+        movementFlags |= 0x40000000u;
+    }
+}
+
+void Character::hitByCar(int direction, float speed, LevelObject* source)
+{
+    if (movementFlags & 0x10000u)
+        return;
+    int damage = 0;
+    if (speed < 50.0f) {
+        if (isPlayer()) {
+            speed = 1.0f;
+            damage = int(float(getMaxHealth()) / 3.0f * 0.2999999821186065673828125f);
+        } else {
+            speed = 1.0f;
+            damage = int(float(getMaxHealth()) * 0.2999999821186065673828125f);
+        }
+    }
+    if (speed >= 50.0f) {
+        if (isPlayer())
+            damage = int(float(getMaxHealth()) / 3.0f);
+        else
+            damage = int(float(getMaxHealth()));
+        speed = 2.0f;
+    }
+    applyDamage(damage, source, true);
+    switch (direction) {
+    case 0: case 1: setAnimation(19, speed, false, true, false); break;
+    case 2: setAnimation(18, speed, false, true, false); break;
+    case 3: setAnimation(17, speed, false, true, false); break;
+    case 6: case 7: setAnimation(20, speed, false, true, false); break;
+    case 4: case 5: setAnimation(21, speed, false, true, false); break;
+    }
+    if (isPlayer()) {
+        PlayerTest::GetPlayer()->unknown384[0] = 1;
+        if (lrand48() % 100 < 50) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(151, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(129, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    } else {
+        if (health <= 0)
+            die(false);
+        static_cast<NPC*>(this)->setHitByCar(true);
+    }
+}

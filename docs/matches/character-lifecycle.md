@@ -3,8 +3,8 @@
 The constructor aliases, destructor family, attack and kick dispatch, vehicle
 entry, factory cleanup, player-event destructors and NPC debug drawing are
 verified with the recovered 296-byte Character layout. NPC references use
-the same recovered pointer fields. Existing Character::goToIdle and movement
-helpers, plus NPC::grabSceneNode, dropSceneNode, goToVehicle and Load, retain
+the same recovered pointer fields. Existing Character::getOutOfVehicle, plus NPC::grabSceneNode, dropSceneNode,
+goToVehicle and Load, retain
 their retail bytes after replacing opaque field accesses.
 
 The destructor uses the permitted hint

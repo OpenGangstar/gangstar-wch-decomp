@@ -26,6 +26,9 @@ public:
     virtual ~Character();
     virtual void Update(int elapsed);
     virtual void applyDamage(int, LevelObject*, bool) = 0;
+    void debug(irr::video::IVideoDriver*);
+    void hijacked();
+    void hitByCar(int, float, LevelObject*);
     bool attack();
     bool punch();
     bool kick();

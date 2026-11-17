@@ -25,6 +25,9 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character5debugEPN3irr5video12IVideoDriverE",
+        "_ZN9Character8hitByCarEifP11LevelObject",
+        "_ZN9Character8hijackedEv",
         {
             "name": "__tcf_1",
             "address": "0x002f1839"
@@ -142,6 +145,7 @@
         "_ZNK6IEvent10getEventIDEv"
     ],
     "sections": [
+        ".character_hit_car_table",
         ".character_vtable",
         ".character_player_event_vtable",
         ".character_base_event_vtable",
@@ -191,6 +195,7 @@
         "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",
         "_ZN16SceneNodeManager4grabEiP11LevelObjectiPPPv",
         "_ZN17GameObjectManager3AddEP11LevelObjecti",
+        "_ZN3NPC11setHitByCarEb",
         "_ZN4Lock11getInstanceEv",
         "_ZN4Lock9setTargetEP11LevelObject",
         "_ZN6Weapon6reloadEb",
