@@ -29,6 +29,14 @@ public:
     inline CMatrix4<T>& makeIdentity();
     const T& operator[](unsigned int index) const { return M[index]; }
     void transformBoxEx(aabbox3d<T>& box) const __attribute__((weak));
+    CMatrix4<T>& setRotationRadians(const vector3d<T>&) __attribute__((weak));
+    void rotateVect(vector3d<float>& vect) const {
+        const vector3d<float> tmp = vect;
+        vect.Y = tmp.X*M[1] + tmp.Y*M[5] + tmp.Z*M[9];
+        vect.Z = tmp.X*M[2] + tmp.Y*M[6] + tmp.Z*M[10];
+        vect.X = tmp.X*M[0] + tmp.Y*M[4] + tmp.Z*M[8];
+    }
+    void setTranslation(const vector3d<T>&);
     bool getInverse(CMatrix4<T>& out) const __attribute__((weak));
     void transformVect(vector3d<float>& vect) const {
         float vector[3];
@@ -57,6 +65,13 @@ inline CMatrix4<T>& CMatrix4<T>::makeIdentity()
     M[0] = M[5] = M[10] = M[15] = (T)1;
     definitelyIdentityMatrix = true;
     return *this;
+}
+template<class T> inline void CMatrix4<T>::setTranslation(const vector3d<T>& value)
+{
+    M[12] = value.X;
+    M[13] = value.Y;
+    M[14] = value.Z;
+    definitelyIdentityMatrix = false;
 }
 typedef CMatrix4<float> matrix4;
 } }
