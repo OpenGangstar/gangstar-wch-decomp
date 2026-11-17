@@ -58,6 +58,7 @@ public:
     void clear() { if (this->first != this->last) this->last = this->first; }
     size_type size() const { return size_type(this->last - this->first); }
     T& operator[](size_type index) { return *(begin() + index); }
+    void resize(size_type size, const T& value) __attribute__((weak));
     void push_back(const T& value) {
         if (this->last != this->limit) {
             _Copy_Construct(this->last, value);

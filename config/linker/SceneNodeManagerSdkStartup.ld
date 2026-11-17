@@ -8,6 +8,7 @@ __cxa_guard_release = 0x001c46c4;
 strlen = 0x001c48bc;
 strcpy = 0x001c3fd4;
 _Znaj = 0x001c3ff8;
+_Znwj = 0x001c4814;
 _ZdaPv = 0x001c461c;
 memset = 0x001c45d4;
 SECTIONS
@@ -22,6 +23,7 @@ SECTIONS
     .scene_pool_destructor 0x00322154 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4PoolD1Ev .text._ZN16SceneNodeManager4PoolD2Ev) }
     .scene_manager_teardown 0x003221ac : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager8tearDownEv) }
     .scene_manager_destructor 0x00322208 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerD1Ev .text._ZN16SceneNodeManagerD2Ev) }
+    .scene_pool_extend 0x003225bc : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4Pool6extendEi) }
     .scene_manager_constructor 0x00321aa0 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManagerC1Ev .text._ZN16SceneNodeManagerC2Ev) }
     .scene_manager_instance 0x00321b20 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager11getInstanceEv) }
     .scene_manager_instance_cleanup 0x0032224c : { *sdk-startup-scenenodemanager.o(.text.__tcf_0) }

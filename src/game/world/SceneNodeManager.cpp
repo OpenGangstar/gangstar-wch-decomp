@@ -15,16 +15,18 @@
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/Collada.h"
 
 struct SceneNodeManager::Pool {
     Pool(const char* name, irr::collada::CColladaFactory* factory, int size);
     ~Pool();
+    void extend(int requested);
     char* name;
     irr::collada::CColladaFactory* factory;
     int size;
-    int unknown12;
-    int unknown16;
-    int unknown20;
+    unsigned int lastResizeTime;
+    int activeCount;
+    int constructedCount;
     std::vector<Node*> nodes;
 };
 
@@ -77,8 +79,8 @@ SceneNodeManager::Node::Node(irr::scene::ISceneNode* node)
 }
 
 SceneNodeManager::Pool::Pool(const char* poolName, irr::collada::CColladaFactory* poolFactory, int poolSize)
-    : name(0), factory(poolFactory), size(poolSize), unknown12(0), unknown16(0),
-      unknown20(0)
+    : name(0), factory(poolFactory), size(poolSize), lastResizeTime(0), activeCount(0),
+      constructedCount(0)
 {
     name = new char[strlen(poolName) + 1];
     strcpy(name, poolName);
@@ -142,6 +144,29 @@ inline SceneNodeManager::PoolIndex::~PoolIndex()
 SceneNodeManager::~SceneNodeManager()
 {
     tearDown();
+}
+
+void SceneNodeManager::Pool::extend(int requested)
+{
+    if (requested - constructedCount <= 0)
+        return;
+    const int previousSize = nodes.size();
+    if (requested > previousSize) {
+        Node* const empty = 0;
+        nodes.resize(requested, empty);
+        lastResizeTime = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+        while (constructedCount < requested) {
+            Node*& slot = nodes[constructedCount++];
+            slot = new Node(irr::collada::CColladaDatabase::constructScene(name, factory));
+        }
+        for (int index = 0; index < activeCount; ++index) {
+            Node* previous = nodes[previousSize - index - 1];
+            nodes[previousSize - index - 1] = nodes[constructedCount - index - 1];
+            nodes[constructedCount - index - 1] = previous;
+        }
+    } else {
+        constructedCount = requested;
+    }
 }
 
 void operator delete(void*) throw();
