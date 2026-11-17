@@ -9,12 +9,11 @@
 #include "../world/SpawnPoint.h"
 #include "../characters/PhysicAttributes.h"
 #include "../world/SceneNodeManager.h"
+#include "../world/TrailMgr.h"
 #include "../persistence/SaveGameInterfaces.h"
 
 // Partial call interfaces for the update loop. No complete layouts are asserted.
 #include "../ai/StateMachine.h"
-
-class TrailMgr { public: void Update(); };
 
 struct UpdateApplicationView {
     unsigned char unknown0[96];

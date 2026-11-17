@@ -11,6 +11,55 @@
 // Recovered translation-unit SDK string startup callbacks.
 #include "../core/LocalStringStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "TrailMgr.h"
+
+struct TrailPoint {
+    unsigned char unknown0[24];
+    int remainingLife;
+};
+
+class Trail {
+public:
+    void Update();
+    unsigned char unknown0[36];
+    TrailPoint* points;
+};
+
+TrailMgr::TrailMgr() : trails(0), allocated(0), trailCount(0)
+{
+}
+
+Trail* TrailMgr::AllocTrail()
+{
+    for (int i = 0; i < trailCount; ++i) {
+        if (trails[i] && !allocated[i] && trails[i]->points[0].remainingLife <= 0) {
+            allocated[i] = true;
+            char* const slots = reinterpret_cast<char*>(trails);
+            const unsigned int offset = i * sizeof(Trail*);
+            return *reinterpret_cast<Trail**>(slots + offset);
+        }
+    }
+    return 0;
+}
+
+void TrailMgr::Update()
+{
+    for (int i = 0; i < trailCount; ++i) {
+        Trail* trail = trails[i];
+        if (trail)
+            trail->Update();
+    }
+}
+
+void TrailMgr::FreeTrail(Trail* trail)
+{
+    for (int i = 0; i < trailCount; ++i) {
+        if (trails[i] == trail) {
+            allocated[i] = false;
+            return;
+        }
+    }
+}
 
 void operator delete(void*) throw();
 extern "C" {

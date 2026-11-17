@@ -25,6 +25,11 @@
     "source": "src/game/world/TrailMgr.cpp",
     "linker_script": "config/linker/TrailMgrStringStartup.ld",
     "functions": [
+        "_ZN8TrailMgrC1Ev",
+        "_ZN8TrailMgrC2Ev",
+        "_ZN8TrailMgr6UpdateEv",
+        "_ZN8TrailMgr10AllocTrailEv",
+        "_ZN8TrailMgr9FreeTrailEP5Trail",
         {
             "name": "__tcf_0",
             "address": "0x00349089"
@@ -48,5 +53,6 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": ["_ZN5Trail6UpdateEv"]
 }
