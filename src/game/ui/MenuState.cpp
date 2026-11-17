@@ -911,9 +911,10 @@ void Menus::InfoHelp::GotFocus()
 }
 
 static const char fourButtonMenuFrame[] = "Show4";
+static const char infosMenuFrame[] = "Show5";
 
 namespace {
-template <int first, int second, int third, int fourth, int title>
+template <int first, int second, int third, int fourth, int title, bool showFifthSlot>
 inline void configureFourButtonMenu(MenuManager* manager)
 {
     void* menu = getWidgetByIndex(manager, 1);
@@ -923,21 +924,29 @@ inline void configureFourButtonMenu(MenuManager* manager)
     _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 3, fourth, true);
     _ZN7Widgets6IGMenu12SetTitleTextEi(menu, title);
     _ZN7Widgets6IGMenu17SetBackButtonTextEi(menu, 0x1027);
-    _ZN7Widgets6IGMenu9GoToFrameEPKc(menu, fourButtonMenuFrame);
+    _ZN7Widgets6IGMenu9GoToFrameEPKc(menu, showFifthSlot ? infosMenuFrame : fourButtonMenuFrame);
     _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(getWidgetByIndex(manager, 27), 0);
 }
+}
+
+void Menus::Infos::GotFocus()
+{
+    InGameMenu::GotFocus();
+    MenuManager* manager = MenuManager::getInstance();
+    static_cast<MenuState*>(manager->getState(mapName))->GetDepth();
+    configureFourButtonMenu<0x105e, 0x105f, 0x1060, 0x100e, 0x1037, true>(manager);
 }
 
 void Menus::Options::GotFocus()
 {
     InGameMenu::GotFocus();
-    configureFourButtonMenu<0x1011, 0x100d, 0x1000, 0x1017, 0x1036>(MenuManager::getInstance());
+    configureFourButtonMenu<0x1011, 0x100d, 0x1000, 0x1017, 0x1036, false>(MenuManager::getInstance());
 }
 
 void Menus::Services::GotFocus()
 {
     InGameMenu::GotFocus();
-    configureFourButtonMenu<0x103d, 0x1039, 0x103a, 0x103c, 0x1035>(MenuManager::getInstance());
+    configureFourButtonMenu<0x103d, 0x1039, 0x103a, 0x103c, 0x1035, false>(MenuManager::getInstance());
 }
 
 namespace {
