@@ -10394,8 +10394,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003010e5	0x1c	PlayerTest.cpp	game	ai	matched	__tcf_3	__tcf_3
 0x00301101	0xe4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest14getCarAnimNameEPKcb	PlayerTest::getCarAnimName(char const*, bool)
 0x003011e5	0x38	NPC.cpp	game	ai	matched	_ZN3NPC12isTargetableEv	NPC::isTargetable()
-0x0030121c	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
-0x00301231	0x2e	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest10getVehicleEv	PlayerTest::getVehicle() const
+0x0030121c	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest10getVehicleEv	non-virtual thunk to PlayerTest::getVehicle() const
+0x00301231	0x2e	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest10getVehicleEv	PlayerTest::getVehicle() const
 0x00301261	0xf8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10_SetTargetEP11LevelObjectb	PlayerTest::_SetTarget(LevelObject*, bool)
 0x00301359	0x30	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10toggleLockEv	PlayerTest::toggleLock()
 0x00301389	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7addCashEii	PlayerTest::addCash(int, int)
@@ -10413,8 +10413,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD1Ev	PlayerTest::~PlayerTest()
 0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD2Ev	PlayerTest::~PlayerTest()
 0x003016b5	0x7c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12switchWeaponEb	PlayerTest::switchWeapon(bool)
-0x00301730	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_NK10PlayerTest9getWeaponEv	non-virtual thunk to PlayerTest::getWeapon() const
-0x00301745	0x12	PlayerTest.cpp	game	ai	pending	_ZNK10PlayerTest9getWeaponEv	PlayerTest::getWeapon() const
+0x00301730	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest9getWeaponEv	non-virtual thunk to PlayerTest::getWeapon() const
+0x00301745	0x12	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest9getWeaponEv	PlayerTest::getWeapon() const
 0x00301759	0x58	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12justStoleCarEP7Vehicle	PlayerTest::justStoleCar(Vehicle*)
 0x003017b1	0x3c	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest15onTargetReachedEv	PlayerTest::onTargetReached()
 0x003017ed	0x34	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest12jumpFinishedEv	PlayerTest::jumpFinished()

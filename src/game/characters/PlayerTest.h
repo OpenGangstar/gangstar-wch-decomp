@@ -89,8 +89,8 @@ public:
         if (getContextArmor() > 200)
             setContextArmor(200);
     }
-    using SavePositionInterface::getVehicle;
-    using SavePositionInterface::getWeapon;
+    virtual Vehicle* getVehicle() const;
+    virtual Weapon* getWeapon() const;
     enum eContext { Context0 = 0, Context1 = 1, AnyContext = -1 };
     static PlayerTest* GetPlayer();
     void addPhotoTarget(LevelObject* target);
@@ -126,7 +126,9 @@ public:
     irr::scene::ISceneNode* sceneNode;
     unsigned char unknown24[156];
     irr::scene::ISceneNode* shadowNode;
-    unsigned char unknown184[16];
+    unsigned char unknown184[8];
+    Vehicle* vehicle;
+    unsigned char unknown196[4];
     Vehicle* lastHitVehicle;
     unsigned char unknown204[16];
     int maximumHealth;
@@ -142,7 +144,9 @@ public:
     bool combatMode;
     unsigned char unknown357[11];
     LevelObject* unknown368;
-    unsigned char unknown372[6];
+    unsigned char unknown372[4];
+    bool vehicleVisibleInCinematic;
+    unsigned char unknown377;
     bool movementKeys[4];
     unsigned char unknown382;
     bool flag383;
