@@ -286,7 +286,12 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN8RenderFXD1Ev",
+        "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
+        "_ZN7gameswf8as_valueC1Ei",
+        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+        "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+        "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",

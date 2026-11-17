@@ -16,6 +16,11 @@
 #include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"
 #include "../ui/Cash.h"
+#include "../combat/WeaponManager.h"
+#include "../scripting/ScriptManager.h"
+#include "../scripting/Script.h"
+#include "../ui/GSBustedMenu.h"
+#include "../ui/Message.h"
 
 void Revive::finishCashLostAnims()
 {
@@ -132,4 +137,90 @@ Revive::Revive(bool busted)
     cash->SetPosition(8, 152);
     PlayerTest::GetPlayer()->subCash(penalty);
     state = 2;
+}
+
+template<> GSBustedMenu* StateMachine::pushState<GSBustedMenu>() __attribute__((weak));
+
+bool Revive::update(int elapsed)
+{
+    if (cashAnimationTime > 0)
+        cashAnimationTime -= elapsed;
+
+    switch (state) {
+    case 0:
+        state = 2;
+        return false;
+    case 2: {
+        ScriptManager* scripts = ScriptManager::getInstance();
+        if (scripts->isSkipButtonVisible())
+            scripts->hideSkipButton();
+        if (scripts->findScript(17)->getState() == Script::State2) {
+            state = 4;
+            return false;
+        }
+
+        if (busted) {
+            if (scripts->findScript(90)->getState() == Script::State2)
+                return false;
+            PlayerTest::GetPlayer()->lockSwitchWeapon();
+        } else {
+            Script* deathScript = scripts->findScript(91);
+            Application::GetInstance()->GetWeaponManager()->lockAllWeapons();
+            Application::GetInstance()->GetHudManager()->switchWeapon();
+            PlayerTest::GetPlayer()->setContextArmor(0);
+            if (deathScript->getState() == Script::State2)
+                return false;
+        }
+
+        cashLost->SetAnim(12);
+        cashRemaining->SetAnim(13);
+        state = 3;
+        return false;
+    }
+    case 3: {
+        const int remaining = cash->GetCash();
+        if (cashLost->animation == 12 && !cashLost->IsAnimOver()) {
+            if (cashRemaining->animation == 13 && !cashRemaining->IsAnimOver())
+                cashRemaining->Update(elapsed);
+            cashLost->Update(elapsed);
+            if (cashLost->IsAnimOver()) {
+                const int text = busted ? 0x305e : 0x305b;
+                cashAnimationTime = 2000;
+                static_cast<Message*>(Application::GetInstance()->GetHudManager()->message172)
+                    ->setMessage(text, cashAnimationTime, static_cast<MenuManager::eText>(9));
+                cash->show();
+            }
+        } else if (cashLost->animation == 14 && !cashLost->IsAnimOver()) {
+            cashLost->Update(elapsed);
+            if (cashLost->IsAnimOver())
+                goto finish;
+        } else if (cashAnimationTime <= 0) {
+            MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(9),
+                static_cast<const char*>(0), 0);
+            cashLost->SetAnim(14);
+        }
+        if (remaining != 0)
+            return false;
+finish:
+        PlayerTest::GetPlayer()->unlockSwitchWeapon();
+        if (busted && Application::GetInstance()->GetWeaponManager()->getKeepWeaponsWhenBustedCost() > 0) {
+            const int cost = Application::GetInstance()->GetWeaponManager()->getKeepWeaponsWhenBustedCost();
+            PlayerTest* player = PlayerTest::GetPlayer();
+            if (player->isRichAsCroesus() || player->cash >= cost) {
+                StateMachine::getInstance()->pushState<GSBustedMenu>();
+                return true;
+            }
+        }
+        break;
+    }
+    case 4:
+        PlayerTest::GetPlayer()->setCash(0);
+        break;
+    default:
+        return false;
+    }
+
+    Application::GetInstance()->GetWeaponManager()->lockAllWeapons();
+    PlayerTest::GetPlayer()->setContextArmor(0);
+    return true;
 }

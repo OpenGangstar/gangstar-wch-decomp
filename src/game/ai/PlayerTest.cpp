@@ -123,10 +123,7 @@ void PlayerTest::Stop()
     _SetTarget(0, false);
 }
 
-class Reward {
-public:
-    void setMessage(int amount, int maximum);
-};
+#include "../missions/Reward.h"
 
 static const unsigned int meshHiddenFlag = 0x800u;
 static const unsigned int scriptedMovementFlag = 0x8000u;

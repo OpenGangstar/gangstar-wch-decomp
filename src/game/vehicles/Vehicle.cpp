@@ -2258,3 +2258,14 @@ int __attribute__((weak)) Vehicle::getMarkerType()
 {
     return -1;
 }
+
+extern "C" void vehicleStaticInitialization(int initialize, int priority)
+    __asm__("_Z41__static_initialization_and_destruction_0ii");
+
+extern "C" {
+static void _GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE() __attribute__((used));
+static void _GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE()
+{
+    vehicleStaticInitialization(1, 65535);
+}
+}

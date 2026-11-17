@@ -25,6 +25,16 @@
     "source": "src/game/ui/Background.cpp",
     "linker_script": "config/linker/BackgroundSdkStartup.ld",
     "functions": [
+        "_ZN10Background6updateEd",
+        "_ZThn4_NK10Background6draw2dEv",
+        "_ZNK10Background6draw2dEv",
+        "_ZThn4_N10BackgroundD0Ev",
+        "_ZN10BackgroundD0Ev",
+        "_ZThn4_N10BackgroundD1Ev",
+        "_ZN10BackgroundD1Ev",
+        "_ZN10BackgroundD2Ev",
+        "_ZN10BackgroundC1EP7ASpritei",
+        "_ZN10BackgroundC2EP7ASpritei",
         {
             "name": "__tcf_2",
             "address": "0x00327525"
@@ -39,6 +49,7 @@
         }
     ],
     "sections": [
+        ".background_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -48,5 +59,12 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZNK10HudElement6draw2dEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_ZN10HudElementD1Ev",
+        "_ZN10HudElementC1EP7ASpriteib"
+    ]
 }

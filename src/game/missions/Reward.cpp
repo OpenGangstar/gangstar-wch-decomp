@@ -8,6 +8,12 @@
  * functions of Reward.cpp here, in the order they appear in the library.
  */
 
+#include "Reward.h"
+#include "../characters/AnimObject.h"
+#include "../scripting/ScriptManager.h"
+#include "../ui/Cash.h"
+#include "../core/SafeDelete.h"
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -77,4 +83,71 @@ static void _GLOBAL__I__ZN6RewardC2EP7ASpritei()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void Reward::setAnim(int id)
+{
+    currentAnimation = id;
+    animation->SetAnim(id);
+}
+
+void Reward::setMessage(int amount, int duration)
+{
+    if (amount > 0) {
+        timer = duration;
+        setAnim(rewardAnimation);
+        cash->SetCash(amount);
+        active = true;
+    }
+}
+
+void Reward::draw2d() const
+{
+    if (!ScriptManager::getInstance()->isInCinematic() && active) {
+        animation->Draw();
+        cash->draw2d();
+    }
+}
+
+Reward::Reward(ASprite* sprite, int id)
+    : HudElement(sprite, -1, true), rewardAnimation(id), timer(-1),
+      currentAnimation(-1), countingDown(false), cash(0), active(false)
+{
+    animation = new AnimObject;
+    animation->sprite = sprite;
+    animation->SetAnim(-1);
+    cash = new Cash(sprite, 75, 74, 85, 85, 72);
+    cash->AlignLeft();
+    cash->SetPosition(8, 152);
+}
+
+void Reward::update(double elapsed)
+{
+    if (ScriptManager::getInstance()->isInCinematic())
+        return;
+
+    if (countingDown) {
+        timer -= elapsed;
+        if (timer <= 0) {
+            cash->hide();
+            active = false;
+            setAnim(-1);
+            countingDown = false;
+        }
+    } else if (currentAnimation == rewardAnimation) {
+        animation->Update(static_cast<int>(elapsed));
+        if (animation->IsAnimOver()) {
+            cash->show();
+            countingDown = true;
+        }
+    }
+}
+
+extern template void SafeDelete<AnimObject>(AnimObject*&);
+
+Reward::~Reward()
+{
+    SafeDelete(animation);
+    delete cash;
+    cash = 0;
 }

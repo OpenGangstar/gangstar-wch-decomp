@@ -305,3 +305,18 @@ static void _GLOBAL__I__ZN15TouchScreenBase14CLEAN_UP_DELAYE()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+Point2D<short> TouchScreenBase::getTouchDisplacement(long id) const
+{
+    if (!points[id].active || !points[id].hasPoints)
+        return Point2D<short>();
+
+    const Point2D<short>& first = points[id].first;
+    const Point2D<short>& current = points[id].current;
+    const short currentX = current.x;
+    if (first.x == currentX && current.y == first.y)
+        return Point2D<short>();
+
+    const Point2D<short>& previous = points[id].previous;
+    return Point2D<short>(currentX - previous.x, current.y - previous.y);
+}

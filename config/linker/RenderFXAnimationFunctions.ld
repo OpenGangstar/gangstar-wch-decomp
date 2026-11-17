@@ -12,6 +12,12 @@ strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
+    .renderfx_set_local_variable 0x003ee98c : { *renderfx-animation.o(.text._ZN8RenderFX16SetLocalVariableEPKcS1_RN7gameswf8as_valueE) }
+    .renderfx_set_member_int 0x003eeb10 : { *renderfx-animation.o(.text._ZN8RenderFX9SetMemberEPKcS1_i) }
+    .renderfx_set_texture 0x003ee1ec : { *renderfx-animation.o(.text._ZN8RenderFX10SetTextureEPKcPN3irr5video8ITextureE) }
+    .renderfx_initialize_legacy 0x003ec960 : { *renderfx-animation.o(.text._ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE) }
+    .renderfx_initialize_warning 0x0044dcf0 : { *renderfx-animation.o(.rodata.deprecatedInitialize) }
+    .renderfx_preload_glyphs_text 0x003edbd8 : { *renderfx-animation.o(.text._ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE) }
     .renderfx_named_registerdisplaycallback 0x003ee14c : { *renderfx-animation.o(.text._ZN8RenderFX23RegisterDisplayCallbackEPKcPFvRN7gameswf12render_stateEPvES5_) }
     .renderfx_named_isanimover 0x003ee168 : { *renderfx-animation.o(.text._ZN8RenderFX10IsAnimOverEPKc) }
     .renderfx_named_getframecount 0x003ee184 : { *renderfx-animation.o(.text._ZN8RenderFX13GetFrameCountEPKc) }
@@ -31,7 +37,10 @@ SECTIONS
     .renderfx_unload 0x003ed370 : { *renderfx-animation.o(.text._ZN8RenderFX6UnloadEv) }
     .renderfx_find_named 0x003edf1c : { *renderfx-animation.o(.text._ZN8RenderFX4FindEPKc) }
     .renderfx_get_search_index 0x003f04ac : { *renderfx-animation.o(.text._ZN8RenderFX14GetSearchIndexEv) }
-    .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev) }
+    .renderfx_search_index_destructor 0x003ee7d4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndexD1Ev .text._ZN8RenderFX11SearchIndexD2Ev .gnu.linkonce.t._ZN8RenderFX11SearchIndexD1Ev) }
+    .renderfx_destructor 0x003ee884 : { *renderfx-animation.o(.text._ZN8RenderFXD1Ev .text._ZN8RenderFXD2Ev) }
+    .renderfx_deleting_destructor 0x003ee800 : { *renderfx-animation.o(.text._ZN8RenderFXD0Ev) }
+    .renderfx_vtable 0x004afc68 : { *renderfx-animation.o(.data.rel.ro._ZTV8RenderFX) }
     .menufx_vtable 0x004afc18 : { *renderfx-animation.o(.data.rel.ro._ZTV6MenuFX) }
     .menufx_deleting_destructor 0x003ee904 : { *renderfx-animation.o(.text._ZN6MenuFXD0Ev) }
     .menufx_destructor 0x003ee94c : { *renderfx-animation.o(.text._ZN6MenuFXD1Ev .text._ZN6MenuFXD2Ev) }

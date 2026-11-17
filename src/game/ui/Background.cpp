@@ -8,6 +8,11 @@
  * functions of Background.cpp here, in the order they appear in the library.
  */
 
+#include "Background.h"
+#include "../app/Application.h"
+#include "../core/VideoDriver.h"
+#include "../core/SceneNode.h"
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
@@ -53,4 +58,39 @@ static void _GLOBAL__I__ZN10BackgroundC2EP7ASpritei()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+Background::Background(ASprite* sprite, int frame)
+    : HudElement(sprite, frame, false)
+{
+    blackoutElapsed = 0;
+    blackoutActive = false;
+}
+
+void Background::update(double elapsed)
+{
+    if (blackoutActive) {
+        blackoutElapsed += elapsed;
+        if (blackoutElapsed > 250) {
+            blackoutElapsed = 0;
+            blackoutActive = false;
+        }
+    }
+}
+
+void Background::draw2d() const
+{
+    if (blackoutActive) {
+        Application* app = Application::GetInstance();
+        irr::video::IVideoDriver* driver = app->GetDevice()->getVideoDriver();
+        int width, height;
+        app->GetScreenDimensions(width, height);
+        driver->draw2DRectangle(irr::video::SColor(255, 0, 0, 0),
+                                irr::core::rect<int>(0, 0, width, height), 0);
+    }
+    HudElement::draw2d();
+}
+
+Background::~Background()
+{
 }

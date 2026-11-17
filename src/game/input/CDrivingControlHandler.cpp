@@ -150,3 +150,18 @@ CDrivingControlHandler::CDrivingControlHandler(CControlManager* manager) : contr
 void CDrivingControlHandler::handleAttackReleased()
 {
 }
+
+void CDrivingControlHandler::handleAttackHeld()
+{
+    vehicle->shoot();
+}
+
+void CDrivingControlHandler::handleAttackPressed()
+{
+    vehicle->shoot();
+}
+
+void CDrivingControlHandler::handleWeaponSwitched()
+{
+    PlayerTest::GetPlayer()->switchWeapon(false);
+}

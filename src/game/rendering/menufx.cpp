@@ -156,7 +156,7 @@ public:
     explicit tu_string(const char* text) __attribute__((long_call));
     ~tu_string()
     {
-        if (storage[0] == 255)
+        if (__builtin_expect(storage[0] == 255, 1))
             SwfFree(heap);
     }
 
@@ -174,6 +174,7 @@ private:
 class as_value {
 public:
     explicit as_value(const char* value);
+    explicit as_value(int value);
     ~as_value() __attribute__((long_call));
 
 private:
@@ -504,7 +505,10 @@ void fscommand_callback_handler(gameswf::character* character, const char* comma
     MovieRenderFX* movie = state.movie;
     if (movie) {
         MovieWeakReference* reference = state.reference;
-        if (!reference->alive) {
+        // Use the field address so GCC retains the separate reference guard.
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(reference) +
+            __builtin_offsetof(MovieWeakReference, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
             if (reference) {
                 if (--reference->references == 0)
                     delete reference;
@@ -816,6 +820,11 @@ MenuFX::MenuFX() : unknown220(false), unknown236(false)
 
 MenuFX::~MenuFX()
 {
+}
+
+RenderFX::~RenderFX()
+{
+    Unload();
 }
 
 void RenderFX::Controller::Reset()
@@ -1133,4 +1142,166 @@ RenderFX::SearchIndex* RenderFX::GetSearchIndex()
 {
     searchIndex.Init(*this);
     return &searchIndex;
+}
+
+static const char deprecatedInitialize[] =
+    "RenderFX::Initialize(irr::video::IVideoDriver* videoDriver) deprecated. "
+    "Use RenderFX::Initialize(InitializationParameters& parameters) instead.\n";
+
+void RenderFX::Initialize(irr::video::IVideoDriver* driver)
+{
+    gameswf::log_msg(deprecatedInitialize);
+    InitializationParameters parameters;
+    parameters.textureLoader = 0;
+    parameters.glyphOption = true;
+    parameters.outlineWidth = 0;
+    parameters.bitmapWidth = 0;
+    parameters.driver = driver;
+    parameters.bitmapHeight = 0;
+    parameters.outlineHeight = 0;
+    Initialize(parameters);
+}
+
+namespace gameswf {
+int decode_next_unicode_character(const char** text);
+
+template <>
+class array<unsigned short> {
+public:
+    array() : elements(0), size(0), capacity(0), unknown12(false) {}
+    ~array() { release_buffer(); }
+    void resize(int size) __attribute__((weak));
+    void release_buffer() __attribute__((weak));
+
+    unsigned short* elements;
+    int size;
+    int capacity;
+    bool unknown12;
+};
+}
+
+int RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
+                            bool bold, bool italic, gameswf::filter* filter)
+{
+    gameswf::array<unsigned short> glyphs;
+    while (int codePoint = gameswf::decode_next_unicode_character(&text)) {
+        const int index = glyphs.size;
+        glyphs.resize(index + 1);
+        glyphs.elements[index] = codePoint;
+    }
+    if (glyphs.size > 0)
+        return PreloadGlyphs(glyphs.elements, glyphs.size, fontName, size, bold, italic, filter);
+    return 0;
+}
+
+namespace gameswf {
+
+class bitmap_info;
+
+namespace render {
+bitmap_info* create_bitmap_info_texture(irr::video::ITexture* texture);
+}
+
+class character_def {
+    unsigned char storage[32];
+};
+
+class bitmap_character : public character_def {
+public:
+    bitmap_character(player* owner, bitmap_info* bitmap) __attribute__((long_call));
+
+private:
+    bitmap_info* bitmap;
+};
+
+struct player_weak_ptr {
+    struct proxy_ptr {
+        MovieWeakReference* value;
+
+        void clear()
+        {
+            if (value) {
+                MovieWeakReference* previous = value;
+                if (--previous->references == 0)
+                    delete previous;
+                value = 0;
+            }
+        }
+    };
+
+    mutable proxy_ptr proxy;
+    mutable player* owner;
+
+    void check_proxy() const
+    {
+        if (!owner)
+            return;
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(proxy.value) +
+            __builtin_offsetof(MovieWeakReference, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
+            proxy.clear();
+            owner = 0;
+        }
+    }
+
+    player* get() const
+    {
+        check_proxy();
+        return owner;
+    }
+};
+
+struct character_texture_fields {
+    struct VTable {
+        void (*beforeReplaceMe[40])();
+        void (*replaceMe)(character*, character_def*);
+    };
+
+    const VTable* methods;
+    unsigned char unknown4[108];
+    player_weak_ptr playerReference;
+};
+
+} // namespace gameswf
+
+void RenderFX::SetTexture(const char* name, irr::video::ITexture* texture)
+{
+    gameswf::character* character = Find(name);
+    if (!character)
+        return;
+    gameswf::bitmap_info* bitmap = gameswf::render::create_bitmap_info_texture(texture);
+    gameswf::character_texture_fields& fields =
+        *reinterpret_cast<gameswf::character_texture_fields*>(character);
+    gameswf::player* owner = fields.playerReference.get();
+    gameswf::bitmap_character* replacement = new (swf::DefaultMemHint) gameswf::bitmap_character(owner, bitmap);
+    fields.methods->replaceMe(character, replacement);
+}
+
+void RenderFX::SetMember(const char* characterName, const char* member, int value)
+{
+    gameswf::as_value memberValue(value);
+    SetMember(characterName, member, memberValue);
+}
+
+namespace gameswf {
+class as_environment {
+public:
+    void set_local(const tu_string& name, const as_value& value);
+};
+}
+
+void RenderFX::SetLocalVariable(const char* characterName, const char* variable, gameswf::as_value& value)
+{
+    gameswf::tu_string variableName(variable);
+    gameswf::character* found = Find(characterName);
+    gameswf::as_object* object = reinterpret_cast<gameswf::as_object*>(found);
+    if (!found)
+        object = root.get()->get_root_movie()->find_target(gameswf::as_value(characterName));
+
+    gameswf::character* character = reinterpret_cast<gameswf::character*>(object);
+    if (character && animationMethods(character).is(character, 2)) {
+        gameswf::as_environment* environment = reinterpret_cast<gameswf::as_environment*>(
+            reinterpret_cast<unsigned char*>(character) + 0x1c0);
+        environment->set_local(variableName, value);
+    }
 }

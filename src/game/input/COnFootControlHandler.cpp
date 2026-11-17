@@ -122,3 +122,8 @@ COnFootControlHandler::COnFootControlHandler(CControlManager* manager) : control
 {
     resetInput();
 }
+
+void COnFootControlHandler::handleWeaponSwitched()
+{
+    PlayerTest::GetPlayer()->switchWeapon(false);
+}

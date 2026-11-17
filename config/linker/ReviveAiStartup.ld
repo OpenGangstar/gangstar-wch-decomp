@@ -18,6 +18,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .revive_update 0x00338c40 : { *ai-startup-revive.o(.text._ZN6Revive6updateEi) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-revive.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x00338bac : { *ai-startup-revive.o(.text.__tcf_1) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-revive.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }

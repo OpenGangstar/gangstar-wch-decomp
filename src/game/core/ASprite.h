@@ -82,6 +82,7 @@ private:
     bool unknown32;
     friend class Application;
     friend class ScriptManager;
+    friend class Mission;
     bool unknown33;
     unsigned char unknown34[2];
     int unknown36;

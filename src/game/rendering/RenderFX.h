@@ -4,6 +4,8 @@
 namespace irr { namespace video { class IVideoDriver; class ITexture; } }
 
 namespace gameswf {
+class filter;
+class as_value;
 class character;
 class render_state;
 // Enumerator names are still unknown.
@@ -49,6 +51,12 @@ public:
     int capacity;
 };
 
+template <>
+inline array<character*>::~array()
+{
+    release_buffer();
+}
+
 template<class T> struct string_hash_functor;
 
 template<class Key, class Value, class Hash>
@@ -68,7 +76,7 @@ public:
     class Controller {
     public:
         Controller();
-        ~Controller();
+        ~Controller() __attribute__((long_call));
         void Reset() __attribute__((long_call));
 
         float unknown0;
@@ -90,7 +98,7 @@ public:
     virtual void Update(int elapsed, bool render);
     class SearchIndex {
     public:
-        ~SearchIndex();
+        inline ~SearchIndex() __attribute__((noinline, long_call));
         void Init(RenderFX& owner);
         void Clear() __attribute__((long_call));
         class Entry;
@@ -119,10 +127,13 @@ public:
     void SetInputBehavior(int behavior);
     void SetOrientation(gameswf::orientation_mode orientation);
     static void SetWireFrame(bool enabled);
+    int PreloadGlyphs(const char* text, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
+    int PreloadGlyphs(unsigned short* glyphs, int count, const char* fontName, int size, bool bold, bool italic, gameswf::filter* filter);
     void InitializeGlyphTextureCache(int width, int height);
     struct InitializationParameters;
     static gameswf::player_context* CreateContext(InitializationParameters& parameters);
     static void Initialize(InitializationParameters& parameters);
+    static void Initialize(irr::video::IVideoDriver* driver);
     static void Finalize();
     static void DestroyContext(gameswf::player_context* context);
     static void ClearGlyphTextureCaches(gameswf::player_context* context);
@@ -153,6 +164,10 @@ public:
     void GotoFrame(const char* characterName, int frame, bool play);
     void SetEnabled(gameswf::character* character, bool enabled);
     void SetEnabled(const char* characterName, bool enabled);
+    void SetTexture(const char* name, irr::video::ITexture* texture);
+    void SetLocalVariable(const char* characterName, const char* variable, gameswf::as_value& value);
+    void SetMember(const char* characterName, const char* member, int value);
+    void SetMember(const char* characterName, const char* member, gameswf::as_value& value);
     void SetVisible(const char* characterName, bool visible);
     bool RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context);
     bool RegisterDisplayCallback(gameswf::character* character, void (*callback)(gameswf::render_state&, void*), void* context);

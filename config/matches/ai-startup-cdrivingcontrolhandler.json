@@ -25,6 +25,9 @@
     "source": "src/game/input/CDrivingControlHandler.cpp",
     "linker_script": "config/linker/CDrivingControlHandlerAiStartup.ld",
     "functions": [
+        "_ZN22CDrivingControlHandler16handleAttackHeldEv",
+        "_ZN22CDrivingControlHandler19handleAttackPressedEv",
+        "_ZN22CDrivingControlHandler20handleWeaponSwitchedEv",
         "_ZN22CDrivingControlHandler20handleAttackReleasedEv",
         "_ZN22CDrivingControlHandlerC1EP15CControlManager",
         "_ZN22CDrivingControlHandlerC2EP15CControlManager",
@@ -70,6 +73,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7Vehicle5shootEv",
+        "_ZN10PlayerTest12switchWeaponEb",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN11Application11GetInstanceEv",

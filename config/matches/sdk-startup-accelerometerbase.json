@@ -25,6 +25,7 @@
     "source": "src/game/input/AccelerometerBase.cpp",
     "linker_script": "config/linker/AccelerometerBaseSdkStartup.ld",
     "functions": [
+        "_ZN17AccelerometerBase5movedEfff",
         {
             "name": "__tcf_2",
             "address": "0x0034d42d"
@@ -108,8 +109,9 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN17AccelerometerBase11_calcAnglesEv",
-        "_ZN17AccelerometerBase5movedEfff"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN17AccelerometerBase11_calcAnglesEv"
     ],
     "dependencies": [
         "logs"

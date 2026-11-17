@@ -10676,7 +10676,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030b12d	0x100	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5debugEPN3irr5video12IVideoDriverE	Vehicle::debug(irr::video::IVideoDriver*)
 0x0030b22d	0xe4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE	Vehicle::getNearestDoorDummy(irr::core::vector3d<float>)
 0x0030b311	0x28c	Vehicle.cpp	game	vehicles	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
-0x0030b59d	0x14	Vehicle.cpp	game	vehicles	pending	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE
+0x0030b59d	0x14	Vehicle.cpp	game	vehicles	matched	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE	_GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE
 0x0030b5b1	0x2c	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactoryD0Ev	CCarFactory::~CCarFactory()
 0x0030b5dd	0x24	Vehicle.cpp	game	vehicles	matched	__tcf_1	__tcf_1
 0x0030b601	0x24	Vehicle.cpp	game	vehicles	matched	_ZN11CCarFactoryD1Ev	CCarFactory::~CCarFactory()
@@ -11146,8 +11146,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003268e1	0x3f8	AnalogStick.cpp	game	input	pending	_ZN11AnalogStick12processTouchEl	AnalogStick::processTouch(long)
 0x00326cd9	0x2c	AnalogStick.cpp	game	input	matched	_ZN15EvStickReleasedD0Ev	EvStickReleased::~EvStickReleased()
 0x00326d05	0x24	AnalogStick.cpp	game	input	matched	_ZN15EvStickReleasedD1Ev	EvStickReleased::~EvStickReleased()
-0x00326d28	0x14	AnalogStick.cpp	game	input	pending	_ZThn8_N11AnalogStick19processTouchReleaseEv	non-virtual thunk to AnalogStick::processTouchRelease()
-0x00326d3d	0xd8	AnalogStick.cpp	game	input	pending	_ZN11AnalogStick19processTouchReleaseEv	AnalogStick::processTouchRelease()
+0x00326d28	0x14	AnalogStick.cpp	game	input	matched	_ZThn8_N11AnalogStick19processTouchReleaseEv	non-virtual thunk to AnalogStick::processTouchRelease()
+0x00326d3d	0xd8	AnalogStick.cpp	game	input	matched	_ZN11AnalogStick19processTouchReleaseEv	AnalogStick::processTouchRelease()
 0x00326e15	0x2c	AnalogStick.cpp	game	input	matched	_ZN11EvStickMoveD0Ev	EvStickMove::~EvStickMove()
 0x00326e41	0x1a	AnimatedButton.cpp	game	ui	matched	_ZN14AnimatedButton7grayOutEb	AnimatedButton::grayOut(bool)
 0x00326e5d	0x30	AnimatedButton.cpp	game	core	matched	__tcf_0	__tcf_0
@@ -11181,17 +11181,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00327365	0x34	ArmorBar.cpp	game	hud	matched	_ZN8ArmorBarC2EP7ASpriteiii	ArmorBar::ArmorBar(ASprite*, int, int, int)
 0x00327399	0x144	ArmorBar.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003274dd	0x14	ArmorBar.cpp	game	hud	matched	_GLOBAL__I__ZN8ArmorBarC2EP7ASpriteiii	_GLOBAL__I__ZN8ArmorBarC2EP7ASpriteiii
-0x003274f1	0x34	Background.cpp	game	ui	pending	_ZN10Background6updateEd	Background::update(double)
+0x003274f1	0x34	Background.cpp	game	ui	matched	_ZN10Background6updateEd	Background::update(double)
 0x00327525	0x30	Background.cpp	game	core	matched	__tcf_2	__tcf_2
-0x00327554	0x14	Background.cpp	game	ui	pending	_ZThn4_NK10Background6draw2dEv	non-virtual thunk to Background::draw2d() const
-0x00327569	0x5e	Background.cpp	game	ui	pending	_ZNK10Background6draw2dEv	Background::draw2d() const
-0x003275c8	0x14	Background.cpp	game	ui	pending	_ZThn4_N10BackgroundD0Ev	non-virtual thunk to Background::~Background()
-0x003275dd	0x30	Background.cpp	game	ui	pending	_ZN10BackgroundD0Ev	Background::~Background()
-0x0032760c	0x14	Background.cpp	game	ui	pending	_ZThn4_N10BackgroundD1Ev	non-virtual thunk to Background::~Background()
-0x00327621	0x2c	Background.cpp	game	ui	pending	_ZN10BackgroundD2Ev	Background::~Background()
-0x00327621	0x2c	Background.cpp	game	ui	pending	_ZN10BackgroundD1Ev	Background::~Background()
-0x0032764d	0x38	Background.cpp	game	ui	pending	_ZN10BackgroundC1EP7ASpritei	Background::Background(ASprite*, int)
-0x0032764d	0x38	Background.cpp	game	ui	pending	_ZN10BackgroundC2EP7ASpritei	Background::Background(ASprite*, int)
+0x00327554	0x14	Background.cpp	game	ui	matched	_ZThn4_NK10Background6draw2dEv	non-virtual thunk to Background::draw2d() const
+0x00327569	0x5e	Background.cpp	game	ui	matched	_ZNK10Background6draw2dEv	Background::draw2d() const
+0x003275c8	0x14	Background.cpp	game	ui	matched	_ZThn4_N10BackgroundD0Ev	non-virtual thunk to Background::~Background()
+0x003275dd	0x30	Background.cpp	game	ui	matched	_ZN10BackgroundD0Ev	Background::~Background()
+0x0032760c	0x14	Background.cpp	game	ui	matched	_ZThn4_N10BackgroundD1Ev	non-virtual thunk to Background::~Background()
+0x00327621	0x2c	Background.cpp	game	ui	matched	_ZN10BackgroundD2Ev	Background::~Background()
+0x00327621	0x2c	Background.cpp	game	ui	matched	_ZN10BackgroundD1Ev	Background::~Background()
+0x0032764d	0x38	Background.cpp	game	ui	matched	_ZN10BackgroundC1EP7ASpritei	Background::Background(ASprite*, int)
+0x0032764d	0x38	Background.cpp	game	ui	matched	_ZN10BackgroundC2EP7ASpritei	Background::Background(ASprite*, int)
 0x00327685	0x6c	Background.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003276f1	0x14	Background.cpp	game	core	matched	_GLOBAL__I__ZN10BackgroundC2EP7ASpritei	_GLOBAL__I__ZN10BackgroundC2EP7ASpritei
 0x00327705	0x30	CarBar.cpp	game	hud	matched	__tcf_3	__tcf_3
@@ -11211,19 +11211,19 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003279f1	0x4	Cash.cpp	game	ui	matched	_ZN4Cash7SetCashEi	Cash::SetCash(int)
 0x003279f5	0x4	Cash.cpp	game	ui	matched	_ZN4Cash7GetCashEv	Cash::GetCash()
 0x003279f9	0x30	Cash.cpp	game	ui	matched	__tcf_3	__tcf_3
-0x00327a29	0x24	Cash.cpp	game	ui	pending	_ZN4Cash10AlignRightEv	Cash::AlignRight()
-0x00327a4d	0x24	Cash.cpp	game	ui	pending	_ZN4Cash9AlignLeftEv	Cash::AlignLeft()
-0x00327a71	0x14c	Cash.cpp	game	ui	pending	_ZNK4Cash8drawCashEiPKiRii	Cash::drawCash(int, int const*, int&, int) const
-0x00327bbd	0x16	Cash.cpp	game	ui	pending	_ZN4Cash6updateEd	Cash::update(double)
+0x00327a29	0x24	Cash.cpp	game	ui	matched	_ZN4Cash10AlignRightEv	Cash::AlignRight()
+0x00327a4d	0x24	Cash.cpp	game	ui	matched	_ZN4Cash9AlignLeftEv	Cash::AlignLeft()
+0x00327a71	0x14c	Cash.cpp	game	ui	matched	_ZNK4Cash8drawCashEiPKiRii	Cash::drawCash(int, int const*, int&, int) const
+0x00327bbd	0x16	Cash.cpp	game	ui	matched	_ZN4Cash6updateEd	Cash::update(double)
 0x00327bd4	0x14	Cash.cpp	game	ui	pending	_ZThn4_NK4Cash6draw2dEv	non-virtual thunk to Cash::draw2d() const
 0x00327be9	0x144	Cash.cpp	game	ui	pending	_ZNK4Cash6draw2dEv	Cash::draw2d() const
-0x00327d2c	0x14	Cash.cpp	game	ui	pending	_ZThn4_N4CashD0Ev	non-virtual thunk to Cash::~Cash()
-0x00327d41	0x30	Cash.cpp	game	ui	pending	_ZN4CashD0Ev	Cash::~Cash()
-0x00327d70	0x14	Cash.cpp	game	ui	pending	_ZThn4_N4CashD1Ev	non-virtual thunk to Cash::~Cash()
-0x00327d85	0x2c	Cash.cpp	game	ui	pending	_ZN4CashD1Ev	Cash::~Cash()
-0x00327d85	0x2c	Cash.cpp	game	ui	pending	_ZN4CashD2Ev	Cash::~Cash()
-0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC1EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
-0x00327db1	0x84	Cash.cpp	game	ui	pending	_ZN4CashC2EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
+0x00327d2c	0x14	Cash.cpp	game	ui	matched	_ZThn4_N4CashD0Ev	non-virtual thunk to Cash::~Cash()
+0x00327d41	0x30	Cash.cpp	game	ui	matched	_ZN4CashD0Ev	Cash::~Cash()
+0x00327d70	0x14	Cash.cpp	game	ui	matched	_ZThn4_N4CashD1Ev	non-virtual thunk to Cash::~Cash()
+0x00327d85	0x2c	Cash.cpp	game	ui	matched	_ZN4CashD1Ev	Cash::~Cash()
+0x00327d85	0x2c	Cash.cpp	game	ui	matched	_ZN4CashD2Ev	Cash::~Cash()
+0x00327db1	0x84	Cash.cpp	game	ui	matched	_ZN4CashC1EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
+0x00327db1	0x84	Cash.cpp	game	ui	matched	_ZN4CashC2EP7ASpriteiiiii	Cash::Cash(ASprite*, int, int, int, int, int)
 0x00327e35	0x144	Cash.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00327f79	0x14	Cash.cpp	game	ui	matched	_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii	_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii
 0x00327f8d	0x2	Gauge.cpp	game	hud	matched	_ZN5Gauge6updateEd	Gauge::update(double)
@@ -11355,47 +11355,47 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032a8f5	0x58	Radio.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032a94d	0x14	Radio.cpp	game	core	matched	_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii	_GLOBAL__I__ZN5RadioC2EP7ASpriteiiiiii
 0x0032a961	0x30	RetroEffect.cpp	game	rendering	matched	__tcf_2	__tcf_2
-0x0032a990	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_N11RetroEffectD0Ev	non-virtual thunk to RetroEffect::~RetroEffect()
-0x0032a9a5	0x74	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectD0Ev	RetroEffect::~RetroEffect()
+0x0032a990	0x14	RetroEffect.cpp	game	rendering	matched	_ZThn4_N11RetroEffectD0Ev	non-virtual thunk to RetroEffect::~RetroEffect()
+0x0032a9a5	0x74	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD0Ev	RetroEffect::~RetroEffect()
 0x0032aa19	0x6c	RetroEffect.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032aa85	0x14	RetroEffect.cpp	game	rendering	matched	_GLOBAL__I__ZN11RetroEffectC2Ev	_GLOBAL__I__ZN11RetroEffectC2Ev
-0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectC2Ev	RetroEffect::RetroEffect()
-0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectC1Ev	RetroEffect::RetroEffect()
-0x0032ab54	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_N11RetroEffectD1Ev	non-virtual thunk to RetroEffect::~RetroEffect()
-0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectD2Ev	RetroEffect::~RetroEffect()
-0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	pending	_ZN11RetroEffectD1Ev	RetroEffect::~RetroEffect()
+0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectC2Ev	RetroEffect::RetroEffect()
+0x0032aa99	0xbc	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectC1Ev	RetroEffect::RetroEffect()
+0x0032ab54	0x14	RetroEffect.cpp	game	rendering	matched	_ZThn4_N11RetroEffectD1Ev	non-virtual thunk to RetroEffect::~RetroEffect()
+0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD2Ev	RetroEffect::~RetroEffect()
+0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD1Ev	RetroEffect::~RetroEffect()
 0x0032abd4	0x14	RetroEffect.cpp	game	rendering	pending	_ZThn4_NK11RetroEffect6draw2dEv	non-virtual thunk to RetroEffect::draw2d() const
 0x0032abe9	0x14c	RetroEffect.cpp	game	rendering	pending	_ZNK11RetroEffect6draw2dEv	RetroEffect::draw2d() const
 0x0032ad35	0x30	Reward.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x0032ad65	0x10	Reward.cpp	game	missions	pending	_ZN6Reward7setAnimEi	Reward::setAnim(int)
-0x0032ad75	0x26	Reward.cpp	game	missions	pending	_ZN6Reward10setMessageEii	Reward::setMessage(int, int)
-0x0032ad9c	0x14	Reward.cpp	game	missions	pending	_ZThn4_NK6Reward6draw2dEv	non-virtual thunk to Reward::draw2d() const
-0x0032adb1	0x2a	Reward.cpp	game	missions	pending	_ZNK6Reward6draw2dEv	Reward::draw2d() const
-0x0032addd	0x8a	Reward.cpp	game	missions	pending	_ZN6Reward6updateEd	Reward::update(double)
-0x0032ae69	0xa8	Reward.cpp	game	missions	pending	_ZN6RewardC2EP7ASpritei	Reward::Reward(ASprite*, int)
-0x0032ae69	0xa8	Reward.cpp	game	missions	pending	_ZN6RewardC1EP7ASpritei	Reward::Reward(ASprite*, int)
+0x0032ad65	0x10	Reward.cpp	game	missions	matched	_ZN6Reward7setAnimEi	Reward::setAnim(int)
+0x0032ad75	0x26	Reward.cpp	game	missions	matched	_ZN6Reward10setMessageEii	Reward::setMessage(int, int)
+0x0032ad9c	0x14	Reward.cpp	game	missions	matched	_ZThn4_NK6Reward6draw2dEv	non-virtual thunk to Reward::draw2d() const
+0x0032adb1	0x2a	Reward.cpp	game	missions	matched	_ZNK6Reward6draw2dEv	Reward::draw2d() const
+0x0032addd	0x8a	Reward.cpp	game	missions	matched	_ZN6Reward6updateEd	Reward::update(double)
+0x0032ae69	0xa8	Reward.cpp	game	missions	matched	_ZN6RewardC2EP7ASpritei	Reward::Reward(ASprite*, int)
+0x0032ae69	0xa8	Reward.cpp	game	missions	matched	_ZN6RewardC1EP7ASpritei	Reward::Reward(ASprite*, int)
 0x0032af11	0x144	Reward.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032b055	0x14	Reward.cpp	game	missions	matched	_GLOBAL__I__ZN6RewardC2EP7ASpritei	_GLOBAL__I__ZN6RewardC2EP7ASpritei
-0x0032b068	0x14	Reward.cpp	game	missions	pending	_ZThn4_N6RewardD0Ev	non-virtual thunk to Reward::~Reward()
-0x0032b07d	0x50	Reward.cpp	game	missions	pending	_ZN6RewardD0Ev	Reward::~Reward()
-0x0032b0cc	0x14	Reward.cpp	game	missions	pending	_ZThn4_N6RewardD1Ev	non-virtual thunk to Reward::~Reward()
-0x0032b0e1	0x48	Reward.cpp	game	missions	pending	_ZN6RewardD2Ev	Reward::~Reward()
-0x0032b0e1	0x48	Reward.cpp	game	missions	pending	_ZN6RewardD1Ev	Reward::~Reward()
+0x0032b068	0x14	Reward.cpp	game	missions	matched	_ZThn4_N6RewardD0Ev	non-virtual thunk to Reward::~Reward()
+0x0032b07d	0x50	Reward.cpp	game	missions	matched	_ZN6RewardD0Ev	Reward::~Reward()
+0x0032b0cc	0x14	Reward.cpp	game	missions	matched	_ZThn4_N6RewardD1Ev	non-virtual thunk to Reward::~Reward()
+0x0032b0e1	0x48	Reward.cpp	game	missions	matched	_ZN6RewardD2Ev	Reward::~Reward()
+0x0032b0e1	0x48	Reward.cpp	game	missions	matched	_ZN6RewardD1Ev	Reward::~Reward()
 0x0032b129	0x30	SlideControl.cpp	game	ui	matched	__tcf_2	__tcf_2
-0x0032b158	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_N12SlideControlD0Ev	non-virtual thunk to SlideControl::~SlideControl()
-0x0032b16d	0x30	SlideControl.cpp	game	ui	pending	_ZN12SlideControlD0Ev	SlideControl::~SlideControl()
-0x0032b19c	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_N12SlideControlD1Ev	non-virtual thunk to SlideControl::~SlideControl()
-0x0032b1b1	0x2c	SlideControl.cpp	game	ui	pending	_ZN12SlideControlD1Ev	SlideControl::~SlideControl()
-0x0032b1dd	0x18	SlideControl.cpp	game	ui	pending	_ZN12SlideControl5resetEv	SlideControl::reset()
+0x0032b158	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_N12SlideControlD0Ev	non-virtual thunk to SlideControl::~SlideControl()
+0x0032b16d	0x30	SlideControl.cpp	game	ui	matched	_ZN12SlideControlD0Ev	SlideControl::~SlideControl()
+0x0032b19c	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_N12SlideControlD1Ev	non-virtual thunk to SlideControl::~SlideControl()
+0x0032b1b1	0x2c	SlideControl.cpp	game	ui	matched	_ZN12SlideControlD1Ev	SlideControl::~SlideControl()
+0x0032b1dd	0x18	SlideControl.cpp	game	ui	matched	_ZN12SlideControl5resetEv	SlideControl::reset()
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
-0x0032b3e1	0x36	SlideControl.cpp	game	ui	pending	_ZN12SlideControl6updateEd	SlideControl::update(double)
-0x0032b418	0x14	SlideControl.cpp	game	ui	pending	_ZThn4_NK12SlideControl6draw2dEv	non-virtual thunk to SlideControl::draw2d() const
-0x0032b42d	0xec	SlideControl.cpp	game	ui	pending	_ZNK12SlideControl6draw2dEv	SlideControl::draw2d() const
+0x0032b3e1	0x36	SlideControl.cpp	game	ui	matched	_ZN12SlideControl6updateEd	SlideControl::update(double)
+0x0032b418	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_NK12SlideControl6draw2dEv	non-virtual thunk to SlideControl::draw2d() const
+0x0032b42d	0xec	SlideControl.cpp	game	ui	matched	_ZNK12SlideControl6draw2dEv	SlideControl::draw2d() const
 0x0032b519	0x6c	SlideControl.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032b585	0x14	SlideControl.cpp	game	ui	matched	_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE
-0x0032b598	0x14	SlideControl.cpp	game	ui	pending	_ZThn8_N12SlideControl19processTouchReleaseEv	non-virtual thunk to SlideControl::processTouchRelease()
-0x0032b5ad	0xa4	SlideControl.cpp	game	ui	pending	_ZN12SlideControl19processTouchReleaseEv	SlideControl::processTouchRelease()
+0x0032b598	0x14	SlideControl.cpp	game	ui	matched	_ZThn8_N12SlideControl19processTouchReleaseEv	non-virtual thunk to SlideControl::processTouchRelease()
+0x0032b5ad	0xa4	SlideControl.cpp	game	ui	matched	_ZN12SlideControl19processTouchReleaseEv	SlideControl::processTouchRelease()
 0x0032b650	0x14	SlideControl.cpp	game	ui	pending	_ZThn8_N12SlideControl12processTouchEl	non-virtual thunk to SlideControl::processTouch(long)
 0x0032b665	0x29c	SlideControl.cpp	game	ui	pending	_ZN12SlideControl12processTouchEl	SlideControl::processTouch(long)
 0x0032b901	0x2	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge6updateEd	SpyGauge::update(double)
@@ -11467,15 +11467,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c714	0x14	VirtualButton.cpp	game	ui	matched	_ZThn8_N13VirtualButton12processTouchEl	non-virtual thunk to VirtualButton::processTouch(long)
 0x0032c729	0x90	VirtualButton.cpp	game	ui	matched	_ZN13VirtualButton12processTouchEl	VirtualButton::processTouch(long)
 0x0032c7b9	0x30	WantedMeter.cpp	game	missions	matched	__tcf_3	__tcf_3
-0x0032c7e8	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_NK11WantedMeter6draw2dEv	non-virtual thunk to WantedMeter::draw2d() const
-0x0032c7fd	0x38	WantedMeter.cpp	game	missions	pending	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const
+0x0032c7e8	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_NK11WantedMeter6draw2dEv	non-virtual thunk to WantedMeter::draw2d() const
+0x0032c7fd	0x38	WantedMeter.cpp	game	missions	matched	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const
 0x0032c835	0x1c	WantedMeter.cpp	game	missions	matched	__tcf_2	__tcf_2
 0x0032c851	0x50	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeter6updateEd	WantedMeter::update(double)
-0x0032c8a0	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_N11WantedMeterD0Ev	non-virtual thunk to WantedMeter::~WantedMeter()
-0x0032c8b5	0x50	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterD0Ev	WantedMeter::~WantedMeter()
-0x0032c904	0x14	WantedMeter.cpp	game	missions	pending	_ZThn4_N11WantedMeterD1Ev	non-virtual thunk to WantedMeter::~WantedMeter()
-0x0032c919	0x48	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterD2Ev	WantedMeter::~WantedMeter()
-0x0032c919	0x48	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterD1Ev	WantedMeter::~WantedMeter()
+0x0032c8a0	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_N11WantedMeterD0Ev	non-virtual thunk to WantedMeter::~WantedMeter()
+0x0032c8b5	0x50	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD0Ev	WantedMeter::~WantedMeter()
+0x0032c904	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_N11WantedMeterD1Ev	non-virtual thunk to WantedMeter::~WantedMeter()
+0x0032c919	0x48	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD2Ev	WantedMeter::~WantedMeter()
+0x0032c919	0x48	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD1Ev	WantedMeter::~WantedMeter()
 0x0032c961	0x110	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterC1EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
 0x0032c961	0x110	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterC2EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
 0x0032ca71	0x6c	WantedMeter.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -11523,9 +11523,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032d8bd	0x20	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19releaseKeyboardKeysEv	CDrivingControlHandler::releaseKeyboardKeys()
 0x0032d8dd	0x2	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20handleAttackReleasedEv	CDrivingControlHandler::handleAttackReleased()
 0x0032d8e1	0x30	CDrivingControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
-0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
-0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
-0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
+0x0032d911	0x12	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler20handleWeaponSwitchedEv	CDrivingControlHandler::handleWeaponSwitched()
+0x0032d925	0xe	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler16handleAttackHeldEv	CDrivingControlHandler::handleAttackHeld()
+0x0032d935	0xe	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler19handleAttackPressedEv	CDrivingControlHandler::handleAttackPressed()
 0x0032d945	0x2c	CDrivingControlHandler.cpp	game	input	pending	_ZN22CDrivingControlHandler20disableAccelerometerEv	CDrivingControlHandler::disableAccelerometer()
 0x0032d971	0x1c	CDrivingControlHandler.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0032d98d	0x58	CDrivingControlHandler.cpp	game	input	matched	_ZN22CDrivingControlHandler8activateEv	CDrivingControlHandler::activate()
@@ -11544,7 +11544,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e521	0xc	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler4initEv	COnFootControlHandler::init()
 0x0032e52d	0x30	COnFootControlHandler.cpp	game	input	matched	__tcf_4	__tcf_4
 0x0032e55d	0x2c	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler19releaseKeyboardKeysEv	COnFootControlHandler::releaseKeyboardKeys()
-0x0032e589	0x12	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler20handleWeaponSwitchedEv	COnFootControlHandler::handleWeaponSwitched()
+0x0032e589	0x12	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler20handleWeaponSwitchedEv	COnFootControlHandler::handleWeaponSwitched()
 0x0032e59d	0x1e	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler17handleLockPressedEv	COnFootControlHandler::handleLockPressed()
 0x0032e5bd	0x1c	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler22handleEnterShopPressedEv	COnFootControlHandler::handleEnterShopPressed()
 0x0032e5d9	0x12	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler21handleEnterCarPressedEv	COnFootControlHandler::handleEnterCarPressed()
@@ -11833,22 +11833,22 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00335d8d	0x64	Mission.cpp	game	missions	matched	_ZN7Mission4failEv	Mission::fail()
 0x00335df1	0x1c	Mission.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x00335e0d	0x54	Mission.cpp	game	missions	matched	_ZN7Structs7Mission4ReadER10DataStream	Structs::Mission::Read(DataStream&)
-0x00335e61	0x130	Mission.cpp	game	missions	pending	_ZN7Mission4loadEPKc	Mission::load(char const*)
-0x00335f91	0x9c	Mission.cpp	game	missions	pending	_ZN7MissionD0Ev	Mission::~Mission()
-0x0033602d	0x94	Mission.cpp	game	missions	pending	_ZN7MissionD2Ev	Mission::~Mission()
-0x0033602d	0x94	Mission.cpp	game	missions	pending	_ZN7MissionD1Ev	Mission::~Mission()
+0x00335e61	0x130	Mission.cpp	game	missions	matched	_ZN7Mission4loadEPKc	Mission::load(char const*)
+0x00335f91	0x9c	Mission.cpp	game	missions	matched	_ZN7MissionD0Ev	Mission::~Mission()
+0x0033602d	0x94	Mission.cpp	game	missions	matched	_ZN7MissionD2Ev	Mission::~Mission()
+0x0033602d	0x94	Mission.cpp	game	missions	matched	_ZN7MissionD1Ev	Mission::~Mission()
 0x003360c1	0x80	Mission.cpp	game	missions	pending	_ZN7MissionC2Ev	Mission::Mission()
 0x003360c1	0x80	Mission.cpp	game	missions	pending	_ZN7MissionC1Ev	Mission::Mission()
-0x00336141	0xcc	Mission.cpp	game	missions	pending	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
-0x0033620d	0x138	Mission.cpp	game	missions	pending	_ZN7Mission4drawEv	Mission::draw()
+0x00336141	0xcc	Mission.cpp	game	missions	matched	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
+0x0033620d	0x138	Mission.cpp	game	missions	matched	_ZN7Mission4drawEv	Mission::draw()
 0x00336345	0x78	Mission.cpp	game	missions	pending	_ZN7Mission7messageEi	Mission::message(int)
 0x003363bd	0x14	Mission.cpp	game	missions	matched	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
-0x003363d1	0x1d4	Mission.cpp	game	missions	pending	_ZN7Mission5startEii	Mission::start(int, int)
+0x003363d1	0x1d4	Mission.cpp	game	missions	matched	_ZN7Mission5startEii	Mission::start(int, int)
 0x003365a5	0x4c	Mission.cpp	game	missions	matched	_ZN7Mission4idleEv	Mission::idle()
 0x003365f1	0x218	Mission.cpp	game	missions	pending	_ZN7Mission6updateEi	Mission::update(int)
 0x00336809	0x144	Mission.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033694d	0x14	Mission.cpp	game	missions	matched	_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii	_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii
-0x00336961	0x10c	Mission.cpp	game	missions	pending	_ZN7Mission3endEv	Mission::end()
+0x00336961	0x10c	Mission.cpp	game	missions	matched	_ZN7Mission3endEv	Mission::end()
 0x00336a6d	0x6	MissionConditionBeQuick.cpp	game	missions	matched	_ZNK17IMissionCondition5causeEv	IMissionCondition::cause() const
 0x00336a75	0x18	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickC2Ei	MissionConditionBeQuick::MissionConditionBeQuick(int)
 0x00336a75	0x18	MissionConditionBeQuick.cpp	game	missions	matched	_ZN23MissionConditionBeQuickC1Ei	MissionConditionBeQuick::MissionConditionBeQuick(int)
@@ -11964,7 +11964,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD2Ev	Revive::~Revive()
 0x00338be9	0x3c	Revive.cpp	game	missions	matched	_ZN6ReviveD1Ev	Revive::~Revive()
 0x00338c25	0x1c	Revive.cpp	game	core	matched	__tcf_3	__tcf_3
-0x00338c41	0x238	Revive.cpp	game	missions	pending	_ZN6Revive6updateEi	Revive::update(int)
+0x00338c41	0x238	Revive.cpp	game	missions	matched	_ZN6Revive6updateEi	Revive::update(int)
 0x00338e79	0xd4	Revive.cpp	game	missions	matched	_ZN6ReviveC2Eb	Revive::Revive(bool)
 0x00338e79	0xd4	Revive.cpp	game	missions	matched	_ZN6ReviveC1Eb	Revive::Revive(bool)
 0x00338f4d	0x144	Revive.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -12271,7 +12271,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342d81	0x34	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerD2Ev	WantedLevelManager::~WantedLevelManager()
 0x00342db5	0x2c	WantedLevelManager.cpp	game	missions	matched	_ZN15EvWantedEscapedD0Ev	EvWantedEscaped::~EvWantedEscaped()
 0x00342de1	0x24	WantedLevelManager.cpp	game	missions	matched	_ZN15EvWantedEscapedD1Ev	EvWantedEscaped::~EvWantedEscaped()
-0x00342e05	0x148	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager19_processWantedLevelEv	WantedLevelManager::_processWantedLevel()
+0x00342e05	0x148	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager19_processWantedLevelEv	WantedLevelManager::_processWantedLevel()
 0x00342f4d	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager18restoreWantedLevelEv	WantedLevelManager::restoreWantedLevel()
 0x00342f7d	0x36	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager16resetWantedLevelEv	WantedLevelManager::resetWantedLevel()
 0x00342fb4	0x14	WantedLevelManager.cpp	game	missions	pending	_ZThn4_N18WantedLevelManager6updateEd	non-virtual thunk to WantedLevelManager::update(double)
@@ -12701,7 +12701,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c775	0x18	TouchScreenBase.cpp	game	input	matched	_ZN3RctIsED1Ev	Rct<short>::~Rct()
 0x0034c78d	0xa4	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase10touchMovedERK7Point2DIsEl	TouchScreenBase::touchMoved(Point2D<short> const&, long)
 0x0034c831	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase27getTouchIDInitiatedInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInitiatedInRegion(irr::core::rect<float> const&) const
-0x0034c8c5	0xa4	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase20getTouchDisplacementEl	TouchScreenBase::getTouchDisplacement(long) const
+0x0034c8c5	0xa4	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase20getTouchDisplacementEl	TouchScreenBase::getTouchDisplacement(long) const
 0x0034c969	0x92	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenBase::isRegionPressed(irr::core::rect<float> const&) const
 0x0034c9fd	0x94	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenBase::getTouchIDInRegion(irr::core::rect<float> const&) const
 0x0034ca91	0x7c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseC1Ev	TouchScreenBase::TouchScreenBase()
@@ -12715,24 +12715,24 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD2Ev	TouchScreenBase::~TouchScreenBase()
 0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
-0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
-0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const
-0x0034cd8d	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone11getTopBoundEv	TouchScreenIPhone::getTopBound() const
-0x0034cd95	0x8	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone14getBottomBoundEv	TouchScreenIPhone::getBottomBound() const
+0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
+0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const
+0x0034cd8d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone11getTopBoundEv	TouchScreenIPhone::getTopBound() const
+0x0034cd95	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone14getBottomBoundEv	TouchScreenIPhone::getBottomBound() const
 0x0034cd9d	0x30	TouchScreenIPhone.cpp	game	input	matched	__tcf_2	__tcf_2
-0x0034cdcd	0xc	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenIPhone::getTouchIDInRegion(irr::core::rect<float> const&) const
-0x0034cdd9	0xc	TouchScreenIPhone.cpp	game	input	pending	_ZNK17TouchScreenIPhone15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenIPhone::isRegionPressed(irr::core::rect<float> const&) const
-0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneC1Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
-0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneC2Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
+0x0034cdcd	0xc	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone18getTouchIDInRegionERKN3irr4core4rectIfEE	TouchScreenIPhone::getTouchIDInRegion(irr::core::rect<float> const&) const
+0x0034cdd9	0xc	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone15isRegionPressedERKN3irr4core4rectIfEE	TouchScreenIPhone::isRegionPressed(irr::core::rect<float> const&) const
+0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneC1Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
+0x0034cde5	0x78	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneC2Effff	TouchScreenIPhone::TouchScreenIPhone(float, float, float, float)
 0x0034ce5d	0x6c	TouchScreenIPhone.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034cec9	0x14	TouchScreenIPhone.cpp	game	input	matched	_GLOBAL__I__ZN17TouchScreenIPhoneC2Effff	_GLOBAL__I__ZN17TouchScreenIPhoneC2Effff
-0x0034cedc	0x14	TouchScreenIPhone.cpp	game	input	pending	_ZThn472_N17TouchScreenIPhone7OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenIPhone::OnEvent(irr::SEvent const&)
-0x0034cef1	0xa0	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhone7OnEventERKN3irr6SEventE	TouchScreenIPhone::OnEvent(irr::SEvent const&)
-0x0034cf90	0x14	TouchScreenIPhone.cpp	game	input	pending	_ZThn472_N17TouchScreenIPhoneD0Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cfa5	0x3c	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneD0Ev	TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cfe0	0x14	TouchScreenIPhone.cpp	game	input	pending	_ZThn472_N17TouchScreenIPhoneD1Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneD1Ev	TouchScreenIPhone::~TouchScreenIPhone()
-0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	pending	_ZN17TouchScreenIPhoneD2Ev	TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cedc	0x14	TouchScreenIPhone.cpp	game	input	matched	_ZThn472_N17TouchScreenIPhone7OnEventERKN3irr6SEventE	non-virtual thunk to TouchScreenIPhone::OnEvent(irr::SEvent const&)
+0x0034cef1	0xa0	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhone7OnEventERKN3irr6SEventE	TouchScreenIPhone::OnEvent(irr::SEvent const&)
+0x0034cf90	0x14	TouchScreenIPhone.cpp	game	input	matched	_ZThn472_N17TouchScreenIPhoneD0Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cfa5	0x3c	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneD0Ev	TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cfe0	0x14	TouchScreenIPhone.cpp	game	input	matched	_ZThn472_N17TouchScreenIPhoneD1Ev	non-virtual thunk to TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneD1Ev	TouchScreenIPhone::~TouchScreenIPhone()
+0x0034cff5	0x38	TouchScreenIPhone.cpp	game	input	matched	_ZN17TouchScreenIPhoneD2Ev	TouchScreenIPhone::~TouchScreenIPhone()
 0x0034d02d	0x4	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3212getLeftBoundEv	TouchScreenWin32::getLeftBound() const
 0x0034d031	0x4	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3213getRightBoundEv	TouchScreenWin32::getRightBound() const
 0x0034d035	0x4	TouchScreenWin32.cpp	game	input	matched	_ZNK16TouchScreenWin3211getTopBoundEv	TouchScreenWin32::getTopBound() const
@@ -12766,7 +12766,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d625	0x14	AccelerometerBase.cpp	game	input	matched	_GLOBAL__I__ZN17AccelerometerBaseC2Ev	_GLOBAL__I__ZN17AccelerometerBaseC2Ev
 0x0034d639	0x2c	AccelerometerBase.cpp	game	input	matched	_ZN14EvAccelerationD0Ev	EvAcceleration::~EvAcceleration()
 0x0034d665	0x24	AccelerometerBase.cpp	game	input	matched	_ZN14EvAccelerationD1Ev	EvAcceleration::~EvAcceleration()
-0x0034d689	0x14c	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase5movedEfff	AccelerometerBase::moved(float, float, float)
+0x0034d689	0x14c	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase5movedEfff	AccelerometerBase::moved(float, float, float)
 0x0034d7d5	0x2c	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD0Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d801	0x24	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD1Ev	AccelerometerBase::~AccelerometerBase()
 0x0034d801	0x24	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseD2Ev	AccelerometerBase::~AccelerometerBase()
@@ -12779,19 +12779,19 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d8b1	0x24	AccelerometerIPhone.cpp	game	input	matched	_ZN19AccelerometerIPhoneC1Ev	AccelerometerIPhone::AccelerometerIPhone()
 0x0034d8d5	0x58	AccelerometerIPhone.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034d92d	0x14	AccelerometerIPhone.cpp	game	input	matched	_GLOBAL__I__ZN19AccelerometerIPhoneC2Ev	_GLOBAL__I__ZN19AccelerometerIPhoneC2Ev
-0x0034d941	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin327setWideEb	AccelerometerWin32::setWide(bool)
+0x0034d941	0x34	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin327setWideEb	AccelerometerWin32::setWide(bool)
 0x0034d974	0x14	AccelerometerWin32.cpp	game	input	pending	_ZThn76_N18AccelerometerWin327OnEventERKN3irr6SEventE	non-virtual thunk to AccelerometerWin32::OnEvent(irr::SEvent const&)
 0x0034d989	0x2	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin327OnEventERKN3irr6SEventE	AccelerometerWin32::OnEvent(irr::SEvent const&)
 0x0034d98d	0x30	AccelerometerWin32.cpp	game	input	matched	__tcf_2	__tcf_2
-0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32C1Ev	AccelerometerWin32::AccelerometerWin32()
-0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32C2Ev	AccelerometerWin32::AccelerometerWin32()
+0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32C1Ev	AccelerometerWin32::AccelerometerWin32()
+0x0034d9bd	0x3c	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32C2Ev	AccelerometerWin32::AccelerometerWin32()
 0x0034d9f9	0x6c	AccelerometerWin32.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034da65	0x14	AccelerometerWin32.cpp	game	input	matched	_GLOBAL__I__ZN18AccelerometerWin32C2Ev	_GLOBAL__I__ZN18AccelerometerWin32C2Ev
-0x0034da78	0x14	AccelerometerWin32.cpp	game	input	pending	_ZThn76_N18AccelerometerWin32D0Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
-0x0034da8d	0x38	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32D0Ev	AccelerometerWin32::~AccelerometerWin32()
-0x0034dac4	0x14	AccelerometerWin32.cpp	game	input	pending	_ZThn76_N18AccelerometerWin32D1Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
-0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32D1Ev	AccelerometerWin32::~AccelerometerWin32()
-0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	pending	_ZN18AccelerometerWin32D2Ev	AccelerometerWin32::~AccelerometerWin32()
+0x0034da78	0x14	AccelerometerWin32.cpp	game	input	matched	_ZThn76_N18AccelerometerWin32D0Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
+0x0034da8d	0x38	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32D0Ev	AccelerometerWin32::~AccelerometerWin32()
+0x0034dac4	0x14	AccelerometerWin32.cpp	game	input	matched	_ZThn76_N18AccelerometerWin32D1Ev	non-virtual thunk to AccelerometerWin32::~AccelerometerWin32()
+0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32D1Ev	AccelerometerWin32::~AccelerometerWin32()
+0x0034dad9	0x34	AccelerometerWin32.cpp	game	input	matched	_ZN18AccelerometerWin32D2Ev	AccelerometerWin32::~AccelerometerWin32()
 0x0034db0d	0x18	FileSystemBase.cpp	game	persistence	matched	_ZN14FileSystemBaseC1Ev	FileSystemBase::FileSystemBase()
 0x0034db0d	0x18	FileSystemBase.cpp	game	persistence	matched	_ZN14FileSystemBaseC2Ev	FileSystemBase::FileSystemBase()
 0x0034db25	0x2	FileSystemBase.cpp	game	persistence	matched	_ZNK14FileSystemBase6_traceEPKc	FileSystemBase::_trace(char const*) const
@@ -17268,7 +17268,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec819	0x6c	menufx.cpp	game	rendering	matched	_ZN8RenderFX13CreateContextERNS_24InitializationParametersE	RenderFX::CreateContext(RenderFX::InitializationParameters&)
 0x003ec885	0x4c	menufx.cpp	game	rendering	matched	_ZN8RenderFX8FinalizeEv	RenderFX::Finalize()
 0x003ec8d1	0x90	menufx.cpp	game	rendering	matched	_ZN8RenderFX10InitializeERNS_24InitializationParametersE	RenderFX::Initialize(RenderFX::InitializationParameters&)
-0x003ec961	0x38	menufx.cpp	game	rendering	pending	_ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE	RenderFX::Initialize(irr::video::IVideoDriver*)
+0x003ec961	0x38	menufx.cpp	game	rendering	matched	_ZN8RenderFX10InitializeEPN3irr5video12IVideoDriverE	RenderFX::Initialize(irr::video::IVideoDriver*)
 0x003ec999	0x2c	menufx.cpp	game	core	matched	_Z11file_openerPKc	file_opener(char const*)
 0x003ec9c5	0x8	menufx.cpp	game	rendering	matched	_ZN8RenderFX23SetTextBufferingEnabledEb	RenderFX::SetTextBufferingEnabled(bool)
 0x003ec9cd	0x6	menufx.cpp	game	rendering	matched	_ZNK8RenderFX12GetFlashRootEv	RenderFX::GetFlashRoot() const
@@ -17311,7 +17311,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ed981	0x28	menufx.cpp	game	rendering	matched	_ZN8RenderFX10EndDisplayEv	RenderFX::EndDisplay()
 0x003ed9a9	0x42	menufx.cpp	game	core	matched	_Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_	fscommand_callback_handler(gameswf::character*, char const*, char const*)
 0x003ed9ed	0x1ec	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*)
-0x003edbd9	0xa4	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*)
+0x003edbd9	0xa4	menufx.cpp	game	rendering	matched	_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*)
 0x003edc7d	0x168	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEv	RenderFX::PreloadGlyphs()
 0x003edde5	0x138	menufx.cpp	game	rendering	pending	_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE	RenderFX::Load(char const*, gameswf::player_context*)
 0x003edf1d	0x9c	menufx.cpp	game	rendering	matched	_ZN8RenderFX4FindEPKc	RenderFX::Find(char const*)
@@ -17323,7 +17323,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ee1a1	0x1e	menufx.cpp	game	rendering	matched	_ZN8RenderFX9GotoFrameEPKcib	RenderFX::GotoFrame(char const*, int, bool)
 0x003ee1c1	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX9GotoFrameEPKcS1_b	RenderFX::GotoFrame(char const*, char const*, bool)
 0x003ee1dd	0xe	menufx.cpp	game	rendering	matched	_ZN8RenderFX8PlayAnimEPKcS1_i	RenderFX::PlayAnim(char const*, char const*, int)
-0x003ee1ed	0x74	menufx.cpp	game	rendering	pending	_ZN8RenderFX10SetTextureEPKcPN3irr5video8ITextureE	RenderFX::SetTexture(char const*, irr::video::ITexture*)
+0x003ee1ed	0x74	menufx.cpp	game	rendering	matched	_ZN8RenderFX10SetTextureEPKcPN3irr5video8ITextureE	RenderFX::SetTexture(char const*, irr::video::ITexture*)
 0x003ee261	0x12	menufx.cpp	game	rendering	matched	_ZN8RenderFX7GetTextEPKc	RenderFX::GetText(char const*)
 0x003ee275	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX10SetEnabledEPKcb	RenderFX::SetEnabled(char const*, bool)
 0x003ee291	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX11SetPositionEPKcii	RenderFX::SetPosition(char const*, int, int)
@@ -17338,15 +17338,15 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ee581	0x1a0	menufx.cpp	gameswf	-	matched	_ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE3addERKS1_RKS7_	gameswf::hash<gameswf::tu_string, gameswf::array<RenderFX::SearchIndex::Entry>*, gameswf::string_hash_functor<gameswf::tu_string> >::add(gameswf::tu_string const&, gameswf::array<RenderFX::SearchIndex::Entry>* const&)
 0x003ee721	0xb4	menufx.cpp	game	rendering	pending	_ZN8RenderFX11SearchIndex5ClearEv	RenderFX::SearchIndex::Clear()
 0x003ee7d5	0x2c	menufx.cpp	game	rendering	matched	_ZN8RenderFX11SearchIndexD1Ev	RenderFX::SearchIndex::~SearchIndex()
-0x003ee801	0x84	menufx.cpp	game	rendering	pending	_ZN8RenderFXD0Ev	RenderFX::~RenderFX()
-0x003ee885	0x80	menufx.cpp	game	rendering	pending	_ZN8RenderFXD1Ev	RenderFX::~RenderFX()
-0x003ee885	0x80	menufx.cpp	game	rendering	pending	_ZN8RenderFXD2Ev	RenderFX::~RenderFX()
+0x003ee801	0x84	menufx.cpp	game	rendering	matched	_ZN8RenderFXD0Ev	RenderFX::~RenderFX()
+0x003ee885	0x80	menufx.cpp	game	rendering	matched	_ZN8RenderFXD1Ev	RenderFX::~RenderFX()
+0x003ee885	0x80	menufx.cpp	game	rendering	matched	_ZN8RenderFXD2Ev	RenderFX::~RenderFX()
 0x003ee905	0x48	menufx.cpp	game	ui	matched	_ZN6MenuFXD0Ev	MenuFX::~MenuFX()
 0x003ee94d	0x40	menufx.cpp	game	ui	matched	_ZN6MenuFXD2Ev	MenuFX::~MenuFX()
 0x003ee94d	0x40	menufx.cpp	game	ui	matched	_ZN6MenuFXD1Ev	MenuFX::~MenuFX()
-0x003ee98d	0xbc	menufx.cpp	game	rendering	pending	_ZN8RenderFX16SetLocalVariableEPKcS1_RN7gameswf8as_valueE	RenderFX::SetLocalVariable(char const*, char const*, gameswf::as_value&)
+0x003ee98d	0xbc	menufx.cpp	game	rendering	matched	_ZN8RenderFX16SetLocalVariableEPKcS1_RN7gameswf8as_valueE	RenderFX::SetLocalVariable(char const*, char const*, gameswf::as_value&)
 0x003eea49	0xc8	menufx.cpp	game	rendering	pending	_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE	RenderFX::SetMember(char const*, char const*, gameswf::as_value&)
-0x003eeb11	0x60	menufx.cpp	game	rendering	pending	_ZN8RenderFX9SetMemberEPKcS1_i	RenderFX::SetMember(char const*, char const*, int)
+0x003eeb11	0x60	menufx.cpp	game	rendering	matched	_ZN8RenderFX9SetMemberEPKcS1_i	RenderFX::SetMember(char const*, char const*, int)
 0x003eeb71	0x60	menufx.cpp	game	rendering	pending	_ZN8RenderFX9SetMemberEPKcS1_S1_	RenderFX::SetMember(char const*, char const*, char const*)
 0x003eebd1	0x7c	menufx.cpp	game	rendering	matched	_ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb	RenderFX::SetText(gameswf::character*, char const*, bool)
 0x003eec4d	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX7SetTextEPKcS1_b	RenderFX::SetText(char const*, char const*, bool)

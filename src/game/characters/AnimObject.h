@@ -6,6 +6,8 @@ struct SpriteBounds;
 
 class AnimObject {
     friend class ScriptManager;
+    friend class Mission;
+    friend class Revive;
 public:
     AnimObject();
     ~AnimObject();

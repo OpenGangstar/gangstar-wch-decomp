@@ -17,6 +17,7 @@ public:
     virtual void releaseKeyboardKeys();
 
 private:
+    void handleWeaponSwitched();
     inline __attribute__((always_inline)) void resetInput();
     friend class CControlManager;
     unsigned char unknown4[4];

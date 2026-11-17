@@ -470,8 +470,137 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00335d8d | Mission::fail | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
 | libsanangeles.so | 0x00336345 | Mission::message | camera_tap | BLOCKED | — | src/game/missions/Mission.cpp |
 | libsanangeles.so | 0x003360c1 | Mission constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x0033602d | Mission destructor (D1/D2 aliases) | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00336141 | getFrameModuleRect | camera_tap | ASSIGNED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00335f91 | Mission deleting destructor (D0) | lock_init | REVIEW | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00336961 | Mission::end | vehicle_side | ASSIGNED | — | src/game/missions/Mission.cpp |
-| libsanangeles.so | 0x00335e61 | Mission::load | lock_init | ASSIGNED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x0033602d | Mission destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336141 | getFrameModuleRect | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335f91 | Mission deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00336961 | Mission::end | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00335e61 | Mission::load | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x0033620d | Mission::draw | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x003363d1 | Mission::start | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x003365f1 | Mission::update | vehicle_side | BLOCKED | — | src/game/missions/Mission.cpp |
+| libsanangeles.so | 0x00338c41 | Revive::update | — | COMPLETED | 100% | src/game/missions/Revive.cpp |
+| libsanangeles.so | 0x0033820d | MissionConditionStayWithin::evaluate | vehicle_side | BLOCKED | — | src/game/missions/MissionConditionStayWithin.cpp |
+| libsanangeles.so | 0x0032c7fd | WantedMeter::draw2d | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c7e8 | WantedMeter::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032addd | Reward::update | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032c919 | WantedMeter destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c851 | WantedMeter::update | vehicle_side | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032ae69 | Reward constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c904 | WantedMeter complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032b0e1 | Reward destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ad65 | Reward::setAnim | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032b07d | Reward deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032b068 | Reward deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032b0cc | Reward complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ad75 | Reward::setMessage | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032adb1 | Reward::draw2d | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x0032ad9c | Reward::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
+| libsanangeles.so | 0x00342b09 | WantedLevelManager constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342e05 | WantedLevelManager::_processWantedLevel | — | COMPLETED | 100% | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent | camera_tap | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | vehicle_side | REVIEW | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | vehicle_side | BLOCKED | — | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003ee801 | RenderFX deleting destructor (D0) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee885 | RenderFX destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ec961 | RenderFX::Initialize | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0030b311 | Vehicle translation-unit initializer | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edde5 | RenderFX::Load | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ecb09 | RenderFX::TraceHierarchy | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x00327d85 | Cash destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d41 | Cash deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d2c | Cash deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327d70 | Cash complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bbd | Cash::update | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327be9 | Cash::draw2d | vehicle_side | BLOCKED | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003275c8 | Background deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032760c | Background complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032764d | Background constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x003274f1 | Background::update | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x00327569 | Background::draw2d | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x00327554 | Background::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/ui/Background.cpp |
+| libsanangeles.so | 0x0032ab69 | RetroEffect destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032a9a5 | RetroEffect deleting destructor (D0) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032a990 | RetroEffect deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032ab54 | RetroEffect complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032aa99 | RetroEffect constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d | camera_tap | BLOCKED | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | camera_tap | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032b158 | SlideControl deleting destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b16d | SlideControl deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b19c | SlideControl complete destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1b1 | SlideControl complete destructor (D1) | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1dd | SlideControl::reset | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b1f5 | SlideControl constructor (C1/C2 aliases) | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b3e1 | SlideControl::update | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b42d | SlideControl::draw2d | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b418 | SlideControl::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b665 | SlideControl::processTouch | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b650 | SlideControl::processTouch non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch | camera_tap | BLOCKED | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268cc | AnalogStick::processTouch non-virtual thunk | camera_tap | REVIEW | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x0034cfa5 | TouchScreenIPhone deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cff5 | TouchScreenIPhone complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cf90 | TouchScreenIPhone deleting destructor thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cfe0 | TouchScreenIPhone complete destructor thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cef1 | TouchScreenIPhone OnEvent | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cedc | TouchScreenIPhone OnEvent non-virtual thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cde5 | TouchScreenIPhone constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd7d | TouchScreenIPhone::getLeftBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd85 | TouchScreenIPhone::getRightBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd8d | TouchScreenIPhone::getTopBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cd95 | TouchScreenIPhone::getBottomBound | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cdcd | TouchScreenIPhone::getTouchIDInRegion | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cdd9 | TouchScreenIPhone::isRegionPressed | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
+| libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | lock_init | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | — | COMPLETED | 100% | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_side | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | camera_tap | BLOCKED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | camera_tap | BLOCKED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034dac4 | AccelerometerWin32 complete destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d9bd | AccelerometerWin32 constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d941 | AccelerometerWin32::setWide | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d479 | AccelerometerBase::_calcAngles | camera_tap | BLOCKED | — | src/game/input/AccelerometerBase.cpp |
+| libsanangeles.so | 0x0034d689 | AccelerometerBase::moved | — | COMPLETED | 100% | src/game/input/AccelerometerBase.cpp |
+| libsanangeles.so | 0x0032d925 | CDrivingControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032d935 | CDrivingControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032d911 | CDrivingControlHandler::handleWeaponSwitched | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032e589 | COnFootControlHandler::handleWeaponSwitched | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e5d9 | COnFootControlHandler::handleEnterCarPressed | lock_init | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032e5bd | COnFootControlHandler::handleEnterShopPressed | vehicle_side | REVIEW | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f0e9 | SniperControlHandler::handleExitSightReleased | camera_tap | REVIEW | — | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x0032e59d | COnFootControlHandler::handleLockPressed | vehicle_side | ASSIGNED | — | src/game/input/COnFootControlHandler.cpp |
+| libsanangeles.so | 0x0032f18d | SniperControlHandler::handleAttackReleased | camera_tap | ASSIGNED | — | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x002e2665 | GSInGameMenu::skipFadeIn | lock_init | ASSIGNED | — | src/game/ui/GSInGameMenu.cpp |

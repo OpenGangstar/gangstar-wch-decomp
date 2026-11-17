@@ -25,6 +25,14 @@
     "source": "src/game/input/AccelerometerWin32.cpp",
     "linker_script": "config/linker/AccelerometerWin32SdkStartup.ld",
     "functions": [
+        "_ZN18AccelerometerWin327setWideEb",
+        "_ZN18AccelerometerWin32C1Ev",
+        "_ZN18AccelerometerWin32C2Ev",
+        "_ZN18AccelerometerWin32D0Ev",
+        "_ZN18AccelerometerWin32D1Ev",
+        "_ZN18AccelerometerWin32D2Ev",
+        "_ZThn76_N18AccelerometerWin32D0Ev",
+        "_ZThn76_N18AccelerometerWin32D1Ev",
         {
             "name": "__tcf_2",
             "address": "0x0034d98d"
@@ -39,6 +47,8 @@
         }
     ],
     "sections": [
+        ".accelerometer_win32_vtable",
+        ".win32_receiver_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -48,5 +58,9 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN17AccelerometerBaseC1Ev",
+        "_ZN17AccelerometerBaseD1Ev"
+    ]
 }

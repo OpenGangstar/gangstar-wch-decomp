@@ -25,6 +25,16 @@
     "source": "src/game/ui/SlideControl.cpp",
     "linker_script": "config/linker/SlideControlSdkStartup.ld",
     "functions": [
+        "_ZN12SlideControl19processTouchReleaseEv",
+        "_ZThn8_N12SlideControl19processTouchReleaseEv",
+        "_ZNK12SlideControl6draw2dEv",
+        "_ZThn4_NK12SlideControl6draw2dEv",
+        "_ZN12SlideControlD0Ev",
+        "_ZN12SlideControlD1Ev",
+        "_ZThn4_N12SlideControlD0Ev",
+        "_ZThn4_N12SlideControlD1Ev",
+        "_ZN12SlideControl5resetEv",
+        "_ZN12SlideControl6updateEd",
         {
             "name": "__tcf_2",
             "address": "0x0032b129"
@@ -39,6 +49,7 @@
         }
     ],
     "sections": [
+        ".slidecontrol_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",
         ".sdk_startup_function_2",
@@ -48,5 +59,11 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZN10HudElementD1Ev",
+        "_ZN11Application11GetInstanceEv"
+    ]
 }

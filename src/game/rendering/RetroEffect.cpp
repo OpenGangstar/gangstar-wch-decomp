@@ -9,6 +9,9 @@
  */
 
 // Recovered translation-unit SDK startup callbacks.
+#include "RetroEffect.h"
+#include "../app/Application.h"
+#include "../core/VideoDriver.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 
@@ -53,4 +56,25 @@ static void _GLOBAL__I__ZN11RetroEffectC2Ev()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+static const char retroEffectTexture[] = "./effect.tga";
+
+RetroEffect::RetroEffect()
+    : HudElement(0, 0, true), texture(0)
+{
+    using namespace irr::video;
+    texture = Application::GetInstance()->GetDevice()->getVideoDriver()->getTexture(retroEffectTexture);
+    material.setType(MaterialType13);
+    material.setTexture(0, texture);
+    material.setFlag(static_cast<E_MATERIAL_FLAG>(4096), true);
+    material.setFlag(MaterialFlag128, false);
+    material.setFlag(MaterialFlag256, false);
+    material.setFlag(MaterialFlag2, false);
+    material.setFlag(MaterialFlag512, false);
+}
+
+RetroEffect::~RetroEffect()
+{
+    Application::GetInstance()->GetDevice()->getVideoDriver()->removeTexture(texture);
 }

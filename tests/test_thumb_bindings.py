@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.elf import EM_ARM, ElfFile, Symbol
+from tools.elf import EM_ARM, ElfFile, Section, Symbol
 from tools.thumb_bindings import write_bindings
 
 
@@ -24,6 +24,26 @@ class ThumbBindingTests(unittest.TestCase):
                 ".syntax unified", ".thumb", '.global thumb',
                 '.thumb_set thumb, 0x00001000',
             ])
+
+    def test_address_selects_a_specific_local_definition(self):
+        retail = self.retail()
+        retail.sections = [
+            Section(0, "", 0, 0, 0, 0, 0, 0, 0, 1, 0),
+            Section(1, ".text", 1, 6, 0x5000, 0, 32, 0, 0, 2, 0),
+        ]
+        retail.symbols.extend([
+            Symbol("initialize", 0x5001, 8, 0x02, 0, 1),
+            Symbol("initialize", 0x5011, 8, 0x02, 0, 1),
+        ])
+        with tempfile.TemporaryDirectory() as directory:
+            source = write_bindings(retail, (), [
+                {"name": "initialize", "address": "0x5011"}
+            ], Path(directory))
+            self.assertIn(".thumb_set initialize, 0x00005010", source.read_text())
+            with self.assertRaisesRegex(ValueError, "not a defined"):
+                write_bindings(retail, (), [
+                    {"name": "initialize", "address": "0x5013"}
+                ], Path(directory))
 
     def test_arm_data_undefined_and_unknown_names_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -33,6 +33,7 @@ __aeabi_fsub = 0x001c4328;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_startup_wrapper 0x0030b59c : { *vehicle-cleanup.o(.text._GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE) }
     .vehicle_grab_scene_node 0x00310498 : { *(.text._ZN7Vehicle13grabSceneNodeEiPPPv) }
     .vehicle_light00_asset 0x0041f72c : { *(.rodata.*vehicleLight00Asset*) }
     .vehicle_light01_asset 0x0041f740 : { *(.rodata.*vehicleLight01Asset*) }

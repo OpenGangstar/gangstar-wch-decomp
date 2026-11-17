@@ -36,13 +36,14 @@ private:
     int currentMissionId;
     int unknown8;
     int unknown12;
-    unsigned char unknown16[4];
+    int unknown16;
     int currentMessage;
     int lastObjectiveText;
     int state;
     AnimObject introAnimation;
     AnimObject outroAnimation;
-    unsigned char unknown120[68];
+    ASprite* introSprite;
+    char introSpriteName[64];
     Structs::Mission** missions;
     int missionCount;
     IMissionCondition* conditions[8];

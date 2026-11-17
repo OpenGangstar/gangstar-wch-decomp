@@ -11,6 +11,8 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "WantedLevelManagerSingleton.h"
+#include "../characters/AnimObject.h"
+#include "WantedMeter.h"
 #include "../core/LocalStartupText.h"
 
 void operator delete(void*) throw();
@@ -54,4 +56,19 @@ static void _GLOBAL__I__ZN11WantedMeterC2EP7ASpritei()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void WantedMeter::draw2d() const
+{
+    if (!(flags & 1))
+        return;
+    const int level = WantedLevelManager::getInstance()->unknown8;
+    for (int i = 0; i < level; ++i)
+        stars[i]->Draw();
+}
+
+WantedMeter::~WantedMeter()
+{
+    for (int i = 0; i < 5; ++i)
+        delete stars[i];
 }

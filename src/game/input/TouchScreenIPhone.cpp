@@ -11,6 +11,8 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../rendering/GS3DStuff.h"
+#include "TouchScreenIPhone.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -53,4 +55,75 @@ static void _GLOBAL__I__ZN17TouchScreenIPhoneC2Effff()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+TouchScreenIPhone::~TouchScreenIPhone()
+{
+}
+
+bool TouchScreenIPhone::OnEvent(const irr::SEvent& event)
+{
+    static bool isDown = false;
+    if (event.type != irr::SEvent::MouseInputEvent)
+        return false;
+
+    Point2D<short> point(static_cast<short>(event.mouse.x), static_cast<short>(event.mouse.y));
+    if (GS3DStuff::s_orientation == 1) {
+        point.x = 480 - point.x;
+        point.y = 320 - point.y;
+    }
+    switch (event.mouse.event) {
+    case irr::SEvent::LeftPressed:
+        isDown = true;
+        touchBegan(point, 0);
+        return true;
+    case irr::SEvent::MouseMoved:
+        if (!isDown)
+            return false;
+        touchMoved(point, 0);
+        return true;
+    case irr::SEvent::LeftReleased:
+        isDown = false;
+        touchEnded(point, 0);
+        return true;
+    }
+    return false;
+}
+
+short TouchScreenIPhone::getLeftBound() const
+{
+    return left;
+}
+
+short TouchScreenIPhone::getRightBound() const
+{
+    return right;
+}
+
+short TouchScreenIPhone::getTopBound() const
+{
+    return top;
+}
+
+short TouchScreenIPhone::getBottomBound() const
+{
+    return bottom;
+}
+
+long TouchScreenIPhone::getTouchIDInRegion(const irr::core::rect<float>& region) const
+{
+    return TouchScreenBase::getTouchIDInRegion(region);
+}
+
+bool TouchScreenIPhone::isRegionPressed(const irr::core::rect<float>& region) const
+{
+    return TouchScreenBase::isRegionPressed(region);
+}
+
+TouchScreenIPhone::TouchScreenIPhone(float left, float top, float right, float bottom)
+{
+    this->left = static_cast<short>(left);
+    this->right = static_cast<short>(right);
+    this->top = static_cast<short>(top);
+    this->bottom = static_cast<short>(bottom);
 }

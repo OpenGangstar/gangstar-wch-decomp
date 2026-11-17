@@ -10,6 +10,7 @@ public:
     ~Revive();
     void finishCashLostAnims();
     void draw2d();
+    bool update(int elapsed);
 
 private:
     int state;
