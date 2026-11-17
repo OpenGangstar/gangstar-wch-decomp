@@ -13,6 +13,7 @@ strcat = 0x001c43a0;
 memcpy = 0x001c4190;
 /* The suffix is pooled inside the complete Asian font format string. */
 asianFontEnd = ADDR(.menu_manager_asian_font_format) + 20;
+_ZZN11MenuManager11getInstanceEvE3mgr = 0x004b7a20;
 SECTIONS
 {
     .menu_manager_get_tutorial 0x002e3e94 : { *menu-manager-helpers.o(.text._ZNK11MenuManager14getTutorialIdsERiS0_) }
@@ -22,6 +23,7 @@ SECTIONS
     .menu_manager_set_localized_text 0x002e564c : { *menu-manager-helpers.o(.text._ZN11MenuManager7setTextENS_5eTextEiPi) }
     .menu_manager_get_text_id 0x002e3f30 : { *menu-manager-helpers.o(.text._ZNK11MenuManager9getTextIdENS_5eTextE) }
     .menu_manager_get_text 0x002e3f48 : { *menu-manager-helpers.o(.text._ZNK11MenuManager7getTextENS_5eTextE) }
+    .menu_manager_instance_cleanup 0x002e62b0 : { *menu-manager-helpers.o(.text.__tcf_7) }
     .menu_font_file 0x002e48e8 : { *menu-manager-helpers.o(.text._Z12get_fontfilePKcbbPci) }
     .menu_requested_font_format 0x00418d74 : { *menu-manager-helpers.o(.rodata.requestedFontFormat) }
     .menu_asian_font_file_format 0x00418d80 : { *menu-manager-helpers.o(.rodata.asianFontFileFormat) }

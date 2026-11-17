@@ -26,6 +26,7 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        {"name": "__tcf_7", "address": "0x002e62b1"},
         "_Z12get_fontfilePKcbbPci",
         "_Z10StrToLowerPc",
         "_Z13fs_close_funcPv",
@@ -142,6 +143,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN11MenuManagerD1Ev",
         "_ZNK8RenderFX7GetRootEv",
         "_ZN11MenuManager11getInstanceEv",
         "_Z13ekd_debug_outPKcPc",
