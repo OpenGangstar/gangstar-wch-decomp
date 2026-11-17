@@ -18,6 +18,8 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../core/NativeStdio.h"
+#include "../core/VideoDriver.h"
+#include "../core/SceneNode.h"
 #include "../core/Debug_Log.h"
 #include "../core/PathName.h"
 #include "MenuState.h"
@@ -587,6 +589,29 @@ struct MenuTextureStorage {
 };
 
 static MenuTextureStorage s_textures;
+
+namespace {
+struct NamedMenuTexture {
+    void* vtable;
+    const char* name;
+};
+}
+
+extern "C" void _ZN11MenuManager11freeTextureEPKc(const char* name)
+{
+    int count = s_textures.end - s_textures.begin;
+    for (int index = 0; index < count; ++index) {
+        const NamedMenuTexture* texture =
+            reinterpret_cast<const NamedMenuTexture*>(s_textures.begin[index]);
+        if (strstr(texture->name, name)) {
+            irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+            driver->removeTexture(s_textures.begin[index]);
+            --count;
+            s_textures.begin[index] = s_textures.begin[count];
+            --index;
+        }
+    }
+}
 MenuCheatZone MenuManager::s_cheatActivationZones[2];
 
 extern "C" {
