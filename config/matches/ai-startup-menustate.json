@@ -27,6 +27,9 @@
     "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE",
+        "_ZN5Menus11Achievement4ShowEv",
+        "_ZN5Menus11Achievement6UpdateEv",
         "_ZN5Menus3Map8GotFocusEv",
         "_ZN5Menus3Map6UpdateEv",
         "_ZN9MenuState18UpdateLocalizationEv",
@@ -330,6 +333,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZN7Widgets11Achievement7SetIconEPKc",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10getMissionEv",
         "_ZNK7Mission20getLastObjectiveTextEv",

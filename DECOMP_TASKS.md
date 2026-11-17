@@ -229,6 +229,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e90cd | Menus::Map::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ebb31 | Menus::Map::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e8551 | MenuState::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e7659 | Menus::Achievement::Update | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e7d51 | Menus::Achievement::SetAchievement | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea2e5 | Menus::Achievement::Show | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7659 | Menus::Achievement::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7d51 | Menus::Achievement::SetAchievement | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea2e5 | Menus::Achievement::Show | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e7815 | Menus::InGameMenu::Notify | camera_tap | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | lock_init | ASSIGNED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | ASSIGNED | — | src/game/ui/MenuState.cpp |
