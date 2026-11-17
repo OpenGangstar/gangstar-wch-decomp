@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "../core/CameraVariants.h"
 #include "../characters/PhysicAttributes.h"
+#include "../characters/Character.h"
 
 void FollowCamera::debug(irr::video::IVideoDriver*)
 {
@@ -26,6 +27,13 @@ void FollowCamera::updateAngles(int horizontal, int vertical)
 FollowCamera::~FollowCamera()
 {
     delete physics;
+}
+
+FollowCamera::FollowCamera(Character* owner)
+    : yawRate(0.0f), pitchRate(0.0f)
+{
+    physics = new PhysicAttributes(1, 0);
+    init(owner, 0);
 }
 
 void operator delete(void*) throw();

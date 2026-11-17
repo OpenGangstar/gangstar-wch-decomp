@@ -26,6 +26,12 @@ VehicleCamera::~VehicleCamera()
 {
 }
 
+VehicleCamera::VehicleCamera(LevelObject* owner)
+    : yawRate(0.0f), pitchRate(0.0f), flag76(false)
+{
+    init(owner, 0);
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));
