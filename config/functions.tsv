@@ -9448,13 +9448,13 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e3e85	0x2	MenuManager.cpp	game	ui	matched	_ZN11MenuManager9MenuPauseEv	MenuManager::MenuPause()
 0x002e3e89	0x2	MenuManager.cpp	game	ui	matched	_ZN11MenuManager10MenuResumeEv	MenuManager::MenuResume()
 0x002e3e8d	0x6	MenuManager.cpp	game	ui	matched	_ZN11MenuManager14setTutorialIdsEii	MenuManager::setTutorialIds(int, int)
-0x002e3e95	0x1e	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager14getTutorialIdsERiS0_	MenuManager::getTutorialIds(int&, int&) const
+0x002e3e95	0x1e	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager14getTutorialIdsERiS0_	MenuManager::getTutorialIds(int&, int&) const
 0x002e3eb5	0x4	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13setRepairCostEi	MenuManager::setRepairCost(int)
 0x002e3eb9	0x4	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager13getRepairCostEv	MenuManager::getRepairCost() const
 0x002e3ebd	0x8	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager17areCheatsUnlockedEv	MenuManager::areCheatsUnlocked() const
-0x002e3ec5	0x20	MenuManager.cpp	game	ui	pending	_ZN11MenuManager17allowCheatsUnlockEb	MenuManager::allowCheatsUnlock(bool)
+0x002e3ec5	0x20	MenuManager.cpp	game	ui	matched	_ZN11MenuManager17allowCheatsUnlockEb	MenuManager::allowCheatsUnlock(bool)
 0x002e3ee5	0xc	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager21isCheatsUnlockAllowedEv	MenuManager::isCheatsUnlockAllowed() const
-0x002e3ef1	0x14	MenuManager.cpp	game	ui	pending	_ZNK11MenuManager11getPlaylistEv	MenuManager::getPlaylist() const
+0x002e3ef1	0x14	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager11getPlaylistEv	MenuManager::getPlaylist() const
 0x002e3f05	0x6	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager15isClearingFocusEv	MenuManager::isClearingFocus() const
 0x002e3f0d	0x6	MenuManager.cpp	game	ui	matched	_ZN11MenuManager9getMenuFXEv	MenuManager::getMenuFX()
 0x002e3f15	0x4	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager12isInGameMenuEv	MenuManager::isInGameMenu() const

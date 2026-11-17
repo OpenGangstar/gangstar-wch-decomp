@@ -6,6 +6,10 @@ memcpy = 0x001c4190;
 asianFontEnd = ADDR(.menu_manager_asian_font_format) + 20;
 SECTIONS
 {
+    .menu_manager_get_tutorial 0x002e3e94 : { *menu-manager-helpers.o(.text._ZNK11MenuManager14getTutorialIdsERiS0_) }
+    .menu_manager_allow_cheats 0x002e3ec4 : { *menu-manager-helpers.o(.text._ZN11MenuManager17allowCheatsUnlockEb) }
+    .menu_manager_get_playlist 0x002e3ef0 : { *menu-manager-helpers.o(.text._ZNK11MenuManager11getPlaylistEv) }
+    .menu_manager_sequence 0x004b7190 (NOLOAD) : { *menu-manager-helpers.o(.bss._ZN11MenuManager19s_currentSequenceIdE) }
     .menu_manager_show_texts 0x002e4160 : { *menu-manager-helpers.o(.text._ZN11MenuManager9showTextsEv) }
     .menu_manager_hide_texts 0x002e4184 : { *menu-manager-helpers.o(.text._ZN11MenuManager9hideTextsEv) }
     .menu_manager_hide_arrow 0x002e41a8 : { *menu-manager-helpers.o(.text._ZN11MenuManager15hideDialogArrowEv) }

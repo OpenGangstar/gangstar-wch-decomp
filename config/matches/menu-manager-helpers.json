@@ -25,6 +25,9 @@
     "source": "src/game/ui/MenuManager.cpp",
     "linker_script": "config/linker/MenuManagerHelpers.ld",
     "functions": [
+        "_ZNK11MenuManager14getTutorialIdsERiS0_",
+        "_ZN11MenuManager17allowCheatsUnlockEb",
+        "_ZNK11MenuManager11getPlaylistEv",
         "_ZN11MenuManager16formatMenuFXTextEPN7gameswf9characterEPKcz",
         "_ZN11MenuManager16formatMenuFXTextEPKcS1_z",
         "_ZN11MenuManager15enableAsianFontEb",
