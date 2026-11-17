@@ -11700,8 +11700,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00331cf9	0xe	Camera.cpp	game	core	matched	_ZN6Camera11setPositionERKN3irr4core8vector3dIfEE	Camera::setPosition(irr::core::vector3d<float> const&)
 0x00331d09	0x58	Camera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00331d61	0x14	Camera.cpp	game	core	matched	_GLOBAL__I__ZN6CameraC2Ev	_GLOBAL__I__ZN6CameraC2Ev
-0x00331d75	0x18	CameraManager.cpp	game	core	pending	_ZN13CameraManagerD1Ev	CameraManager::~CameraManager()
-0x00331d75	0x18	CameraManager.cpp	game	core	pending	_ZN13CameraManagerD2Ev	CameraManager::~CameraManager()
+0x00331d75	0x18	CameraManager.cpp	game	core	matched	_ZN13CameraManagerD1Ev	CameraManager::~CameraManager()
+0x00331d75	0x18	CameraManager.cpp	game	core	matched	_ZN13CameraManagerD2Ev	CameraManager::~CameraManager()
 0x00331d8d	0x24	CameraManager.cpp	game	core	matched	_ZN13CameraManager6setFOVEi	CameraManager::setFOV(int)
 0x00331db1	0x24	CameraManager.cpp	game	core	matched	_ZN13CameraManager6getFOVEv	CameraManager::getFOV()
 0x00331dd5	0x4	CameraManager.cpp	game	core	matched	_ZNK13CameraManager9getCameraEv	CameraManager::getCamera() const
@@ -11721,7 +11721,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003323d1	0x168	CameraManager.cpp	game	core	pending	_ZN13CameraManagerC2EfffP11LevelObject	CameraManager::CameraManager(float, float, float, LevelObject*)
 0x003323d1	0x168	CameraManager.cpp	game	core	pending	_ZN13CameraManagerC1EfffP11LevelObject	CameraManager::CameraManager(float, float, float, LevelObject*)
 0x00332539	0x44	CameraManager.cpp	game	core	matched	_ZN13CameraManager11getInstanceEv	CameraManager::getInstance()
-0x0033257d	0x9c	CameraManager.cpp	game	core	pending	_ZN13CameraManager16updateTransitionEf	CameraManager::updateTransition(float)
+0x0033257d	0x9c	CameraManager.cpp	game	core	matched	_ZN13CameraManager16updateTransitionEf	CameraManager::updateTransition(float)
 0x00332619	0x144	CameraManager.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033275d	0x14	CameraManager.cpp	game	core	matched	_GLOBAL__I__ZN13CameraManager4s_cmE	_GLOBAL__I__ZN13CameraManager4s_cmE
 0x00332771	0x47c	CameraManager.cpp	game	core	pending	_ZN13CameraManager6updateEf	CameraManager::update(float)

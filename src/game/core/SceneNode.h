@@ -158,7 +158,7 @@ public:
 class ICameraSceneNode : public ISceneNode {
 public:
     virtual void unknown66(); virtual void unknown67(); virtual void unknown68();
-    virtual void unknown69(); virtual void unknown70(); virtual void unknown71();
+    virtual void unknown69(); virtual void setTarget(const core::vector3d<float>&); virtual void unknown71();
     virtual void unknown72(); virtual void unknown73(); virtual void unknown74();
     virtual void unknown75(); virtual void unknown76(); virtual void unknown77();
     virtual void unknown78(); virtual float getFOV() const; virtual void unknown80();

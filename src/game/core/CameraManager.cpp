@@ -18,6 +18,10 @@ CameraManager* CameraManager::s_cm;
 
 static const float radiansPerDegree = 3.14159265358979323846f / 180.0f;
 
+CameraManager::~CameraManager()
+{
+}
+
 void CameraManager::setFOV(int degrees)
 {
     cameraNode->setFOV(degrees * radiansPerDegree);
@@ -102,6 +106,20 @@ CameraManager* CameraManager::getInstance()
     if (!s_cm)
         s_cm = new CameraManager(50.0f, 8000.0f, 50.0f * radiansPerDegree, 0);
     return s_cm;
+}
+
+bool CameraManager::updateTransition(float elapsed)
+{
+    if (!(positionTransition.progress >= 1.0f && targetTransition.progress >= 1.0f)) {
+        positionTransition.Update(elapsed);
+        cameraNode->setPosition(irr::core::vector3d<float>(positionTransition.current));
+        cameraNode->updateAbsolutePosition(false);
+        targetTransition.Update(elapsed);
+        cameraNode->setTarget(irr::core::vector3d<float>(targetTransition.current));
+        return true;
+    }
+    currentCamera->enter();
+    return false;
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));

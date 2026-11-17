@@ -6,6 +6,7 @@ _Znwj = 0x001c4814;
 __aeabi_i2f = 0x001c41e4;
 __aeabi_fmul = 0x001c4724;
 __aeabi_f2iz = 0x001c44cc;
+__aeabi_fcmpge = 0x001c4364;
 __aeabi_atexit = 0x001c494c;
 _ZN32retail_cameramanager_transitions16civPassive_transE = 0x004289dc;
 _ZN32retail_cameramanager_transitions17scriptedNpc_transE = 0x00428b08;
@@ -19,6 +20,8 @@ _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
+    .manager_dtor 0x00331d74 : { *ai-startup-cameramanager.o(.text._ZN13CameraManagerD1Ev .text._ZN13CameraManagerD2Ev) }
+    .manager_update_transition 0x0033257c : { *ai-startup-cameramanager.o(.text._ZN13CameraManager16updateTransitionEf) }
     .manager_set_fov 0x00331d8c : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6setFOVEi) }
     .manager_get_fov 0x00331db0 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6getFOVEv) }
     .manager_get_camera 0x00331dd4 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager9getCameraEv) }
