@@ -5,6 +5,11 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .scene_camera_init 0x00334ee4 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4initEP11LevelObjecti) }
+    .scene_camera_vtable 0x004acd10 : { *sdk-startup-scenecamera.o(.data.rel.ro._ZTV11SceneCamera) }
+    .scene_camera_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }
+    .scene_camera_debug 0x00334ee8 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera5debugEPN3irr5video12IVideoDriverE) }
+    .scene_camera_update 0x00334eec : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera6updateEf) }
     .scene_camera_ctor 0x00334fa0 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCameraC1Ei .text._ZN11SceneCameraC2Ei) }
     .scene_camera_dtor 0x00334f70 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCameraD1Ev .text._ZN11SceneCameraD2Ev) }
     .scene_camera_delete 0x00334f28 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCameraD0Ev) }
