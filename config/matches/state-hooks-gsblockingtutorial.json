@@ -353,6 +353,8 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN11MenuManager3popEb",
         "_ZN11MenuManagerD1Ev",
         "_ZNK8RenderFX7GetRootEv",
         "_Z13ekd_debug_outPKcPc",
@@ -377,7 +379,6 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
-        "_ZN11MenuManager6popAllEb",
         "_ZN11MenuManager4pushEPKcb",
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev",

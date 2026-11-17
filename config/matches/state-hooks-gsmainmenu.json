@@ -158,6 +158,8 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN11MenuManager3popEb",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN10DataStream7ReadIntEv",
         "_ZN11MenuManagerD1Ev",
@@ -186,7 +188,6 @@
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager4pushEPKcb",
         "_ZN11Application16startSoundThreadEv",
-        "_ZN11MenuManager6popAllEb",
         "_ZN11Application15stopSoundThreadEv"
     ]
 }

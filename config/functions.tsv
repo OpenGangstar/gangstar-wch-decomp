@@ -9538,8 +9538,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e62b1	0x1c	MenuManager.cpp	game	ui	matched	__tcf_7	__tcf_7
 0x002e62cd	0xa4	MenuManager.cpp	game	ui	pending	_ZN11MenuManager8switchToEPKcb	MenuManager::switchTo(char const*, bool)
 0x002e6371	0xa8	MenuManager.cpp	game	ui	pending	_ZN11MenuManager3popEb	MenuManager::pop(bool)
-0x002e6419	0x46	MenuManager.cpp	game	ui	pending	_ZN11MenuManager5popToEPKcbb	MenuManager::popTo(char const*, bool, bool)
-0x002e6461	0x5c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager6popAllEb	MenuManager::popAll(bool)
+0x002e6419	0x46	MenuManager.cpp	game	ui	matched	_ZN11MenuManager5popToEPKcbb	MenuManager::popTo(char const*, bool, bool)
+0x002e6461	0x5c	MenuManager.cpp	game	ui	matched	_ZN11MenuManager6popAllEb	MenuManager::popAll(bool)
 0x002e64bd	0xa8	MenuManager.cpp	game	ui	pending	_ZN11MenuManager4pushEPKcb	MenuManager::push(char const*, bool)
 0x002e6565	0x6c	Map.cpp	game	world	matched	_ZNK3Map13getScaledSizeERN3irr4core11dimension2dIiEE	Map::getScaledSize(irr::core::dimension2d<int>&) const
 0x002e65d1	0x4	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager10getMapModeEv	MenuManager::getMapMode() const

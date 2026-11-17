@@ -9,6 +9,7 @@
  */
 
 #include "../hud/MenuManager.h"
+#include "../audio/SoundManager.h"
 #include "../app/Application.h"
 #include "../hud/TargetMarker.h"
 #include "../persistence/FileSystemBase.h"
@@ -25,6 +26,7 @@
 class MyMenuFX : public MenuFX {
 public:
     virtual ~MyMenuFX();
+    int stackDepth() const { return stateStack.size; }
     void ClearStates();
     void ClearFocus();
 };
@@ -405,6 +407,37 @@ extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool vis
     if (manager->getDepth() > 0) {
         MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
         setCharacterVisible(fields.menuFX->GetCurrentState()->getCharacter(), visible);
+    }
+}
+
+extern "C" int strcmp(const char* left, const char* right);
+extern "C" void _ZN11MenuManager3popEb(MenuManager* manager, bool silent);
+
+extern "C" void _ZN11MenuManager5popToEPKcbb(
+    MenuManager* manager, const char* name, bool popTarget, bool silent)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    while (manager->getDepth() > 0) {
+        if (strcmp(fields.menuFX->GetCurrentState()->getName(), name) == 0)
+            break;
+        _ZN11MenuManager3popEb(manager, silent);
+    }
+    // Keep the retail fall-through to the return when the target stays on the stack.
+    if (__builtin_expect(!popTarget, true))
+        return;
+    _ZN11MenuManager3popEb(manager, silent);
+}
+
+void MenuManager::popAll(bool silent)
+{
+    while (reinterpret_cast<MyMenuFX*>(menuFX)->stackDepth() > 0)
+        _ZN11MenuManager3popEb(this, true);
+
+    if (!silent) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(218, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
     }
 }
 
