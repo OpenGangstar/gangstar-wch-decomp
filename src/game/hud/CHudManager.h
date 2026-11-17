@@ -9,6 +9,7 @@ class HudElement;
 class IHud;
 class SpyGauge;
 class Radio;
+class Reward;
 class ToggleButton;
 class WantedMeter;
 
@@ -60,7 +61,7 @@ public:
     unsigned char unknown168[4];
     HudElement* message172;
     HudElement* message176;
-    unsigned char unknown180[4];
+    Reward* reward;
     AnimatedButton* weaponSelector;
     HudElement* weaponSelectorExtra;
     HudElement** resetElementsBegin;

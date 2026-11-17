@@ -92,6 +92,8 @@ public:
     LevelObject* getTarget() const { return target; }
     LevelObject* _GetTarget();
     int getMarkerType();
+    void hideAllAnims();
+    void playCurAnimFromStart();
     void initMoveTo(const Vehicle* vehicle);
     void richAsCroesus(bool enabled);
     bool isRichAsCroesus() const;

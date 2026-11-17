@@ -22,6 +22,13 @@
 #include "../characters/NPCVehicleEvent.h"
 #include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
+#include "../core/SceneNode.h"
+#include "../meta/Achievements.h"
+
+class Reward {
+public:
+    void setMessage(int amount, int maximum);
+};
 
 void operator delete(void*) throw();
 extern "C" {
@@ -74,6 +81,11 @@ int PlayerTest::getMarkerType()
     return -1;
 }
 
+void PlayerTest::hideAllAnims()
+{
+    sceneNode->setVisible(false);
+}
+
 void PlayerTest::initMoveTo(const Vehicle* vehicle)
 {
     unknown368 = const_cast<Vehicle*>(vehicle);
@@ -114,6 +126,20 @@ void PlayerTest::addCurrentJumpDistance(float distance)
     currentJumpDistance += distance;
 }
 
+void PlayerTest::playCurAnimFromStart()
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    character->resetAnimation();
+}
+
+void PlayerTest::addCash(int amount, int maximum)
+{
+    if (richAsCroesusEnabled && amount <= 0)
+        return;
+    Application::GetInstance()->GetHudManager()->reward->setMessage(amount, maximum);
+    cash += amount;
+}
+
 void PlayerTest::lockSwitchWeapon()
 {
     weaponSwitchLocked = true;
@@ -143,6 +169,14 @@ void PlayerTest::switchWeapon(bool unarmed)
     if (currentTarget && LevelObject::s_type[currentTarget->getObjectType()] == 5)
         static_cast<NPC*>(currentTarget)->notifyTargeted(true, character);
     static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
+}
+
+void PlayerTest::subCash(int amount)
+{
+    if (richAsCroesusEnabled && amount >= 0)
+        return;
+    cash -= amount;
+    AchievementManager::s_achievementManager->recordCashSpent(amount);
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
