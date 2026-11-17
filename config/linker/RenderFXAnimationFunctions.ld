@@ -41,6 +41,10 @@ SECTIONS
     .renderfx_create_context 0x003ec818 : { *renderfx-animation.o(.text._ZN8RenderFX13CreateContextERNS_24InitializationParametersE) }
     .renderfx_initialize 0x003ec8d0 : { *renderfx-animation.o(.text._ZN8RenderFX10InitializeERNS_24InitializationParametersE) }
     .renderfx_finalize 0x003ec884 : { *renderfx-animation.o(.text._ZN8RenderFX8FinalizeEv) }
+    .renderfx_file_opener 0x003ec998 : { *renderfx-animation.o(.text._Z11file_openerPKc) }
+    .renderfx_empty_fs_callback 0x003ec1e0 : { *renderfx-animation.o(.text._Z11fs_callbackPN7gameswf9characterEPKcS3_) }
+    .renderfx_fs_command 0x003ec398 : { *renderfx-animation.o(.text._ZN8RenderFX9FSCommandEPKcS1_) }
+    .renderfx_file_read_mode 0x004014f0 : { *renderfx-animation.o(.rodata.swfReadMode) }
     .set_character_text 0x003eebd0 : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb) }
     .set_named_text 0x003eec4c : { *renderfx-animation.o(.text._ZN8RenderFX7SetTextEPKcS1_b) }
     .format_named_text 0x003eeca8 : { *renderfx-animation.o(.text._ZN8RenderFX10FormatTextEPKcS1_z) }

@@ -30,7 +30,13 @@ void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
 }
 
 namespace gameswf {
-class tu_file;
+class tu_file {
+public:
+    tu_file(const char* name, const char* mode);
+
+private:
+    unsigned char storage[40];
+};
 typedef irr::video::ITexture* (*TextureLoader)(const char*, int, int);
 typedef void (*FSCommandCallback)(character*, const char*, const char*);
 
@@ -177,6 +183,11 @@ inline const CharacterAnimationMethods& animationMethods(const gameswf::characte
 {
     return **reinterpret_cast<const CharacterAnimationMethods* const*>(character);
 }
+
+struct EventListenerMethods {
+    void (*onEvent)();
+    void (*onFSCommand)(RenderFX::EventListener*, const char*, const char*);
+};
 
 struct RenderHandlerMethods {
     void (*beforeWireFrame[16])();
@@ -394,6 +405,26 @@ void RenderFX::EndDisplay()
 {
     DisplayRoot root(reinterpret_cast<RenderFXState*>(this)->player->get_root());
     _ZN7gameswf4root11end_displayEv(root.get());
+}
+
+static const char swfReadMode[] = "rb";
+
+gameswf::tu_file* file_opener(const char* name)
+{
+    return new (swf::DefaultMemHint) gameswf::tu_file(name, swfReadMode);
+}
+
+void fs_callback(gameswf::character*, const char*, const char*)
+{
+}
+
+void RenderFX::FSCommand(const char* command, const char* args)
+{
+    EventListener* listener = reinterpret_cast<RenderFXState*>(this)->listener;
+    if (listener) {
+        const EventListenerMethods* methods = *reinterpret_cast<const EventListenerMethods* const*>(listener);
+        methods->onFSCommand(listener, command, args);
+    }
 }
 
 void RenderFX::SetEventListener(EventListener* listener)

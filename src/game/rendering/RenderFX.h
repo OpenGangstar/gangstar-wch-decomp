@@ -28,6 +28,7 @@ class RenderFX {
 public:
     class Event;
     class EventListener;
+    void FSCommand(const char* command, const char* args);
     void SetEventListener(EventListener* listener);
     void SetInputBehavior(int behavior);
     void SetOrientation(gameswf::orientation_mode orientation);
