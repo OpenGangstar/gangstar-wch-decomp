@@ -16,6 +16,8 @@ template<class A> class string<char,A> {
     bool reference;
     unsigned char unknown30[2];
 public:
+    string(const char* source);
+    const char* c_str() const { return array; }
     string(const string& source)
         : array(0), allocated(0), used(0), reference(false)
     {

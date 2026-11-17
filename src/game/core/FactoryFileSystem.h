@@ -78,11 +78,4 @@ public:
 };
 } }
 
-class CCustomFileSystem : public irr::io::CFileSystem {
-public:
-    CCustomFileSystem() {}
-    virtual irr::io::FilePath getAbsolutePath(const irr::io::FilePath&) const;
-    virtual ~CCustomFileSystem() __attribute__((used)) {}
-};
-
 #endif

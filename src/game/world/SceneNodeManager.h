@@ -21,6 +21,8 @@ private:
     SceneNodeManager();
     ~SceneNodeManager();
     unsigned int crc(const char* name) const;
+    int getPoolID(int key) const;
+    int getPoolID(const char* path) const;
     struct Node {
         explicit Node(irr::scene::ISceneNode* sceneNode);
         ~Node();

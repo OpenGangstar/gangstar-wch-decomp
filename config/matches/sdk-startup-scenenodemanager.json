@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -29,6 +30,7 @@
         "_ZN16SceneNodeManager5setupEv",
         "_ZN16SceneNodeManager6updateEi",
         "_ZNK16SceneNodeManager3crcEPKc",
+        "_ZNK16SceneNodeManager9getPoolIDEPKc",
         "_ZN16SceneNodeManager4NodeD1Ev",
         "_ZN16SceneNodeManager4NodeD2Ev",
         "_ZN16SceneNodeManager4Node14setupUnmanagedEi",
@@ -72,6 +74,7 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN11Application11GetInstanceEv",
+        "_ZNK16SceneNodeManager9getPoolIDEi",
         "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE"
     ]
 }
