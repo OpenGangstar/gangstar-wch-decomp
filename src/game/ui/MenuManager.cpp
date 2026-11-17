@@ -21,6 +21,7 @@
 #include "../core/Debug_Log.h"
 #include "../core/PathName.h"
 #include "MenuState.h"
+#include "WidgetDialog.h"
 #include "../rendering/CharacterVisibility.h"
 
 class MyMenuFX : public MenuFX {
@@ -174,6 +175,10 @@ struct MenuManagerFocusFields {
     bool asianFont;
     unsigned char beforeCheatsUnlockAllowed[2];
     bool cheatsUnlockAllowed;
+    unsigned int consumedCursorCount;
+    unsigned char beforeWidgets[4];
+    MenuWidget** widgets;
+    int widgetCount;
 };
 }
 
@@ -402,6 +407,24 @@ bool get_fontfile(const char* name, bool, bool, char* destination, int)
     else
         sprintf(destination, standardFontFileFormat, resourcesPath);
     return true;
+}
+
+extern "C" bool _ZN11MenuManager22updateWidgetVisibilityEv(MenuManager* manager)
+{
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    bool allHidden = true;
+    for (int index = 0; index < 32; ++index) {
+        MenuWidget* widget = index < fields.widgetCount ? fields.widgets[index] : 0;
+        if (widget->IsVisible()) {
+            allHidden = false;
+        } else if (isCharacterVisible(widget->getCharacter())) {
+            if (getCharacterPlayState(widget->getCharacter()) == 1)
+                setCharacterVisible(widget->getCharacter(), false);
+            else
+                allHidden = false;
+        }
+    }
+    return allHidden;
 }
 
 extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager* manager, bool visible)

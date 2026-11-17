@@ -6,10 +6,19 @@ namespace gameswf { class character; }
 // The retail character and sprite_instance vtables share set_visible and
 // get_visible at slots 81 and 82.
 struct CharacterVisibility {
-    void (*otherMethods[81])();
+    void (*beforePlayState[35])();
+    int (*getPlayState)(const gameswf::character*);
+    void (*beforeVisibility[45])();
     void (*setVisible)(gameswf::character*, bool);
     bool (*getVisible)(const gameswf::character*);
 };
+
+inline int getCharacterPlayState(const gameswf::character* character)
+{
+    const CharacterVisibility* methods =
+        *reinterpret_cast<const CharacterVisibility* const*>(character);
+    return methods->getPlayState(character);
+}
 
 inline void setCharacterVisible(gameswf::character* character, bool visible)
 {

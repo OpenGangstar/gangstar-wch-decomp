@@ -10,6 +10,7 @@ public:
     explicit MenuWidget(const char* name);
     ~MenuWidget();
     bool IsVisible() const;
+    gameswf::character* getCharacter() const { return character; }
     virtual bool AutoHide() const;
     bool IsEnabled() const;
     void SetListener(MenuState* state);
