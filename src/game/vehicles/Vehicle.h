@@ -6,9 +6,13 @@ namespace Structs { struct Car; }
 class Character;
 class Path;
 namespace irr { namespace collada { class CSkinnedMeshSceneNode; } }
-// Primary base and 1012-byte allocation extent; secondary interfaces and fields
-// remain opaque pending recovery of the constructor and vehicle methods.
-class Vehicle : public LevelObject {
+class VehicleMarkerInterface {
+public:
+    virtual int getMarkerType() = 0;
+};
+
+// The secondary marker interface starts at offset 52 in the 1012-byte extent.
+class Vehicle : public LevelObject, public VehicleMarkerInterface {
 public:
     void explode();
     bool hasExplosionFlag() const { return explosionFlag != 0; }
@@ -56,7 +60,8 @@ public:
     void resetDriver();
     void mobilize();
     irr::scene::ISceneNode* getNearestDoorDummy(irr::core::vector3d<float> point);
-    int getMarkerType();
+    virtual void cleanTargets();
+    virtual int getMarkerType();
     void stopSiren();
     void playSiren();
     void clearOnAlert();
@@ -155,7 +160,6 @@ private:
     friend class ContactListener;
     friend void doorTransitionCallback(irr::scene::ITimelineController*, void*);
     friend void VehicleCallBack(irr::scene::ITimelineController*, void*);
-    unsigned char unknown52[4];
     float unknown56;
     float unknown60;
     float unknown64;

@@ -65,6 +65,7 @@
         "_ZN7Vehicle12_resetLightsEv",
         "_ZN7Vehicle4rentEb",
         "_ZN7Vehicle13getMarkerTypeEv",
+        "_ZThn52_N7Vehicle13getMarkerTypeEv",
         "_ZN7Vehicle9stopSirenEv",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv",
