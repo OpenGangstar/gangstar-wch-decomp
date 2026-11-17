@@ -67,7 +67,10 @@ struct MenuManagerFocusFields {
     MyMenuFX* menuFX;
     unsigned char beforeClearingFocus[5];
     bool clearingFocus;
-    unsigned char beforeAsianFont[210];
+    unsigned char beforeTextSlots[2];
+    int textIds[17];
+    const char* texts[17];
+    unsigned char beforeAsianFont[72];
     bool asianFont;
     unsigned char beforeCheatsUnlockAllowed[2];
     bool cheatsUnlockAllowed;
@@ -98,6 +101,23 @@ extern "C" void _ZN11MenuManager17allowCheatsUnlockEb(MenuManager* manager, bool
 extern "C" int _ZNK11MenuManager11getPlaylistEv(const MenuManager*)
 {
     return _ZN7Widgets7Volumes10s_playlistE;
+}
+
+extern "C" int _ZNK11MenuManager9getTextIdENS_5eTextE(
+    const MenuManager* manager, MenuManager::eText slot)
+{
+    const MenuManagerFocusFields& fields = *reinterpret_cast<const MenuManagerFocusFields*>(manager);
+    if (static_cast<unsigned int>(slot) < 17)
+        return fields.textIds[slot];
+    return -1;
+}
+
+const char* MenuManager::getText(eText slot) const
+{
+    const MenuManagerFocusFields& fields = *reinterpret_cast<const MenuManagerFocusFields*>(this);
+    if (static_cast<unsigned int>(slot) < 17)
+        return fields.texts[slot];
+    return 0;
 }
 
 extern "C" void _ZN11MenuManager15hideDialogArrowEv(MenuManager* manager)
