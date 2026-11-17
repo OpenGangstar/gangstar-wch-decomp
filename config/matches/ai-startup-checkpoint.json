@@ -25,6 +25,14 @@
     "source": "src/game/missions/Checkpoint.cpp",
     "linker_script": "config/linker/CheckpointAiStartup.ld",
     "functions": [
+        "_ZN10CheckpointD0Ev",
+        "_ZN10CheckpointD1Ev",
+        "_ZN10CheckpointD2Ev",
+        "_ZN10CheckpointC1Ei",
+        "_ZN10CheckpointC2Ei",
+        "_ZN10Checkpoint4LoadERKN7Structs10CheckpointE",
+        "_ZN10Checkpoint13grabSceneNodeEiPPPv",
+        "_ZN10Checkpoint11SetPositionERKN3irr4core8vector3dIfEE",
         {
             "name": "__tcf_3",
             "address": "0x002f79b5"
@@ -39,6 +47,7 @@
         }
     ],
     "sections": [
+        ".checkpoint_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -48,5 +57,15 @@
             "offset": 864
         }
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN14TransformationD1Ev",
+        "_ZN14TransformationD2Ev",
+        "_ZN14TransformationC1Ei",
+        "_ZN14TransformationC2Ei",
+        "_ZN14Transformation4LoadERKN7Structs6MarkerEPN3irr7collada15CColladaFactoryE",
+        "_ZN14Transformation13grabSceneNodeEiPPPv",
+        "_ZNK3irr5scene10ISceneNode12getAnimatorsEv",
+        "_ZN14Transformation11SetPositionERKN3irr4core8vector3dIfEE"
+    ]
 }
