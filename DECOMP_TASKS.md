@@ -410,10 +410,18 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00346e55 | SideMission::getCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346f9d | SideMission::disableCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x003470f9 | SideMission::enableCheckpoints | lock_init | BLOCKED | — | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x00347245 | SideMission::update | vehicle_side | REVIEW | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00347245 | SideMission::update | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x003477a1 | SideMissionManager::confirm | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x003477ed | SideMissionManager::setNextMissionTimer | camera_tap | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347815 | SideMissionManager::isInSideMission | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x0034783d | SideMissionManager::draw | camera_tap | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347925 | SideMissionManager::isMissionAvailable | lock_init | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
-| libsanangeles.so | 0x00347bad | SideMissionManager::update | vehicle_side | ASSIGNED | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x003477ed | SideMissionManager::setNextMissionTimer | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347815 | SideMissionManager::isInSideMission | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x0034783d | SideMissionManager::draw | camera_tap | BLOCKED | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347925 | SideMissionManager::isMissionAvailable | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347bad | SideMissionManager::update | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00347961 | SideMissionManager::initMission | vehicle_side | REVIEW | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x003479c5 | SideMissionManager::stop | lock_init | REVIEW | — | src/game/missions/SideMissionManager.cpp |
+| libsanangeles.so | 0x00345f95 | AmbulanceSideMission::clean | camera_tap | REVIEW | — | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346615 | DeliverySideMission::clean | vehicle_side | REVIEW | — | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00345fa9 | AmbulanceSideMission::dropOff | camera_tap | REVIEW | — | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x003461f9 | AmbulanceSideMission constructor (C1/C2 aliases) | lock_init | ASSIGNED | — | src/game/missions/AmbulanceSideMission.cpp |
+| libsanangeles.so | 0x00346805 | DeliverySideMission constructor (C1/C2 aliases) | vehicle_side | ASSIGNED | — | src/game/missions/DeliverySideMission.cpp |
+| libsanangeles.so | 0x00345fd5 | AmbulanceSideMission::begin | camera_tap | ASSIGNED | — | src/game/missions/AmbulanceSideMission.cpp |

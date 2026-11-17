@@ -25,6 +25,10 @@
     "source": "src/game/missions/SideMissionManager.cpp",
     "linker_script": "config/linker/SideMissionManagerAiStartup.ld",
     "functions": [
+        "_ZN18SideMissionManager6updateEj",
+        "_ZN18SideMissionManager18isMissionAvailableEv",
+        "_ZN18SideMissionManager19setNextMissionTimerEv",
+        "_ZN18SideMissionManager15isInSideMissionEv",
         "_ZN18SideMissionManager7confirmEv",
         "_ZN18SideMissionManager5debugEv",
         {
@@ -46,6 +50,7 @@
         }
     ],
     "sections": [
+        ".side_manager_update_switch",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -59,6 +64,22 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN11SideMission10inProgressEv",
+        "_ZN11SideMission6updateEi",
+        "_ZN11SideMission9getRewardEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN10PlayerTest7addCashEii",
+        "_ZN18AchievementManager17recordMissionCashEi",
+        "_ZN11SideMission8finishedEv",
+        "_ZN18SideMissionManager11initMissionEv",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11CHudManager13toggleRadioCBEb",
+        "_ZN11SideMission4initEv",
+        "_ZN11SideMission5startEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager10getMissionEv",
+        "_ZNK7Mission8getStateEv"
     ]
 }

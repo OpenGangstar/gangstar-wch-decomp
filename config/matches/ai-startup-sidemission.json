@@ -2,6 +2,7 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
+        "-fstack-protector",
         "-fpic",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
@@ -25,6 +26,7 @@
     "source": "src/game/missions/SideMission.cpp",
     "linker_script": "config/linker/SideMissionAiStartup.ld",
     "functions": [
+        "_ZN11SideMission6updateEi",
         "_ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt",
         "_ZN11SideMission5startEv",
         "_ZN11SideMission9removeNPCEv",
@@ -69,6 +71,8 @@
         }
     ],
     "sections": [
+        ".side_mission_goal_format",
+        ".side_mission_update_switch",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -105,6 +109,13 @@
         "_ZN17GameObjectManager8GetFirstEi",
         "_ZN11LevelObject11GetMetatypeEv",
         "_ZN6GSFadeC1Ev",
-        "_ZN12StateMachine10_pushStateEP9StateBase"
+        "_ZN12StateMachine10_pushStateEP9StateBase",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN9Character10turnTowardERKN3irr4core8vector3dIfEE",
+        "_ZNK13StringManager9getStringEi",
+        "_ZN7Message10setMessageEPKci",
+        "_ZN18AchievementManager26recordAmbulanceSideMissionEv",
+        "_ZN18AchievementManager21recordTaxiSideMissionEv",
+        "_ZN18AchievementManager25recordDeliverySideMissionEv"
     ]
 }

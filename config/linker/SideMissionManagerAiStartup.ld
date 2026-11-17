@@ -15,8 +15,20 @@ _ZN37retail_sidemissionmanager_transitions11guard_transE = 0x00435364;
 _ZN37retail_sidemissionmanager_transitions22scripted_vehicle_transE = 0x0043540c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+lrand48 = 0x001c4664;
+__aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .side_manager_update 0x00347bac : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager6updateEj) }
+    .side_manager_available 0x00347924 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager18isMissionAvailableEv) }
+    .side_manager_update_switch 0x00434e74 : { *(.rodata._ZN18SideMissionManager6updateEj) }
+    .next_mission_timer 0x003477ec : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager19setNextMissionTimerEv) }
+    .is_in_side_mission 0x00347814 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager15isInSideMissionEv) }
+    .manager_ambulanceSideMission 0x004bb5ac (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager22s_ambulanceSideMissionE) }
+    .manager_deliverySideMission 0x004bb5b0 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager21s_deliverySideMissionE) }
+    .manager_taxiSideMission 0x004bb5b4 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager17s_taxiSideMissionE) }
+    .manager_currentMission 0x004bb5b8 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager16s_currentMissionE) }
+    .manager_nextMissionTimer 0x004bb5c0 (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager18s_nextMissionTimerE) }
     .side_mission_confirm 0x003477a0 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager7confirmEv) }
     .side_mission_step 0x004bb5bc (NOLOAD) : { *ai-startup-sidemissionmanager.o(.bss._ZN18SideMissionManager6s_stepE) }
     .side_mission_debug 0x003477b8 : { *ai-startup-sidemissionmanager.o(.text._ZN18SideMissionManager5debugEv) }

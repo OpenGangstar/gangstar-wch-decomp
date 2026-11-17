@@ -26,6 +26,7 @@ public:
     int getTimer();
     int getReward();
     void updateTimer(int elapsed);
+    void update(int elapsed);
 
 protected:
     void fadeInFadeOut();

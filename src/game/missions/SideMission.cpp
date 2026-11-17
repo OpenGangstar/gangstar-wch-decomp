@@ -9,6 +9,12 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "SideMissionManager.h"
+#include "../characters/PlayerTest.h"
+#include "../vehicles/Vehicle.h"
+#include "../persistence/StringManager.h"
+#include "../meta/Achievements.h"
+#include "../core/NativeStdio.h"
 #include "../app/GSFade.h"
 #include "../characters/PhysicAttributes.h"
 #include "Checkpoint.h"
@@ -256,4 +262,79 @@ void SideMission::disableCheckpoints(irr::core::array<Checkpoint*>& checkpoints)
         ScriptManager::displayOnMinimap(checkpoints.data[i], false, true);
         checkpoints.data[i]->disable();
     }
+}
+
+static const char sideMissionGoalFormat[] __attribute__((section(".rodata.side_mission_goal_format"))) = "%s %i/%i";
+
+void SideMission::update(int elapsed)
+{
+    updateTimer(elapsed);
+    Vehicle* vehicle = PlayerTest::GetPlayer()->getVehicle();
+    if (!vehicle)
+        return;
+
+    const irr::core::vector3d<float> position = vehicle->GetPosition();
+    switch (activeState) {
+    case 1: {
+        char label[32];
+        const char* goal = Application::GetInstance()->GetStringManager()->getString(getGoalMessage());
+        sprintf(label, sideMissionGoalFormat, goal, difficulty, 10);
+        static_cast<Message*>(Application::GetInstance()->GetHudManager()->message176)
+            ->setMessage(label, 3000);
+        {
+            CHudManager* hud = Application::GetInstance()->GetHudManager();
+            const int message = getObj1Message();
+            static_cast<Message*>(hud->message172)->setMessage(message, 3000, static_cast<MenuManager::eText>(9));
+        }
+        if (reward > 0.0f)
+            reward = 0.0f;
+        else
+            timer = 0;
+        begin(position, difficulty, timer, reward);
+        activeState = 2;
+        break;
+    }
+    case 2:
+        if (pickUp(position, timer, reward, elapsed))
+            activeState = 3;
+        break;
+    case 3:
+        {
+            CHudManager* hud = Application::GetInstance()->GetHudManager();
+            const int message = getObj2Message();
+            static_cast<Message*>(hud->message172)->setMessage(message, 3000, static_cast<MenuManager::eText>(9));
+        }
+        activeState = 4;
+        break;
+    case 4:
+        if (dropOff(position))
+            activeState = 5;
+        break;
+    case 5:
+        activeState = 6;
+        break;
+    case 6:
+        if (++difficulty > 10) {
+            reward += getMoneyReward();
+            static_cast<Message*>(Application::GetInstance()->GetHudManager()->message176)
+                ->setMessage(0x3049, 3000, static_cast<MenuManager::eText>(9));
+            {
+                CHudManager* hud = Application::GetInstance()->GetHudManager();
+                const int message = getEndMessage();
+                static_cast<Message*>(hud->message172)->setMessage(message, 3000, static_cast<MenuManager::eText>(9));
+            }
+            stopReason = 1;
+            if (this == SideMissionManager::s_taxiSideMission)
+                AchievementManager::s_achievementManager->recordTaxiSideMission();
+            else if (this == SideMissionManager::s_deliverySideMission)
+                AchievementManager::s_achievementManager->recordDeliverySideMission();
+            else if (this == SideMissionManager::s_ambulanceSideMission)
+                AchievementManager::s_achievementManager->recordAmbulanceSideMission();
+        }
+        activeState = 0;
+        break;
+    }
+
+    if (passenger && passenger->isCurrentAnimation(181))
+        passenger->turnToward(vehicle->GetPosition());
 }

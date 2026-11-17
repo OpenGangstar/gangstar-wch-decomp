@@ -9,6 +9,15 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+#include "../app/Application.h"
+#include "../audio/SoundManager.h"
+#include "../characters/PlayerTest.h"
+#include "../hud/CHudManager.h"
+#include "../meta/Achievements.h"
+#include "../scripting/ScriptManager.h"
+#include "Mission.h"
+#include "SideMissionManager.h"
+#include "SideMission.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "../ai/StateMachine.h"
@@ -80,15 +89,6 @@ static void _GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE()
 }
 }
 
-class SideMissionManager {
-public:
-    static void debug();
-    static void confirm();
-
-private:
-    static int s_step;
-};
-
 void SideMissionManager::debug()
 {
 }
@@ -98,4 +98,80 @@ int SideMissionManager::s_step;
 void SideMissionManager::confirm()
 {
     s_step = 4;
+}
+
+SideMission* SideMissionManager::s_ambulanceSideMission;
+SideMission* SideMissionManager::s_deliverySideMission;
+SideMission* SideMissionManager::s_taxiSideMission;
+SideMission* SideMissionManager::s_currentMission;
+int SideMissionManager::s_nextMissionTimer;
+
+extern "C" long lrand48();
+
+void SideMissionManager::setNextMissionTimer()
+{
+    s_nextMissionTimer = 2000 + lrand48() % 1000;
+}
+
+bool SideMissionManager::isInSideMission()
+{
+    return s_currentMission && s_currentMission->inProgress();
+}
+
+void SideMissionManager::update(unsigned int elapsed)
+{
+    switch (s_step) {
+    case 0:
+        initMission();
+        if (s_currentMission) {
+            setNextMissionTimer();
+            s_step = 1;
+        }
+        break;
+    case 1:
+        s_nextMissionTimer -= elapsed;
+        if (isMissionAvailable()) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(116, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            Application::GetInstance()->GetHudManager()->toggleRadioCB(true);
+            s_currentMission->init();
+            s_step = 2;
+        }
+        break;
+    case 3:
+        s_step = 4;
+        break;
+    case 4:
+        s_currentMission->start();
+        s_step = 5;
+        break;
+    case 5:
+        s_currentMission->update(elapsed);
+        if (!isInSideMission())
+            s_step = 6;
+        break;
+    case 6: {
+        const int reward = s_currentMission->getReward();
+        PlayerTest::GetPlayer()->addCash(reward, 3000);
+        AchievementManager::s_achievementManager->recordMissionCash(reward);
+        if (s_currentMission->finished())
+            s_step = 0;
+        else {
+            setNextMissionTimer();
+            s_step = 3;
+        }
+        break;
+    }
+    }
+}
+
+bool SideMissionManager::isMissionAvailable()
+{
+    if (isInSideMission())
+        return false;
+    if (static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4)
+        return false;
+    return s_nextMissionTimer <= 0;
 }

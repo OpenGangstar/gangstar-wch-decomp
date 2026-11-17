@@ -12477,7 +12477,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00346fd1	0x100	SideMission.cpp	game	missions	matched	_ZN11SideMission4stopEb	SideMission::stop(bool)
 0x003470d1	0x28	SideMission.cpp	game	missions	matched	_ZN11SideMission11updateTimerEi	SideMission::updateTimer(int)
 0x003470f9	0x14c	SideMission.cpp	game	missions	pending	_ZN11SideMission17enableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEENS1_8vector3dIfEE	SideMission::enableCheckpoints(irr::core::array<Checkpoint*, irr::core::irrAllocator<Checkpoint*> >&, irr::core::vector3d<float>)
-0x00347245	0x27c	SideMission.cpp	game	missions	pending	_ZN11SideMission6updateEi	SideMission::update(int)
+0x00347245	0x27c	SideMission.cpp	game	missions	matched	_ZN11SideMission6updateEi	SideMission::update(int)
 0x003474c1	0x144	SideMission.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00347605	0x14	SideMission.cpp	game	missions	matched	_GLOBAL__I__ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt	_GLOBAL__I__ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt
 0x00347619	0xa8	SideMission.cpp	game	missions	matched	_ZN11SideMission14calculateMoneyEN3irr4core8vector3dIfEES3_ii	SideMission::calculateMoney(irr::core::vector3d<float>, irr::core::vector3d<float>, int, int)
@@ -12485,10 +12485,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003477a1	0x18	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager7confirmEv	SideMissionManager::confirm()
 0x003477b9	0x2	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager5debugEv	SideMissionManager::debug()
 0x003477bd	0x30	SideMissionManager.cpp	game	missions	matched	__tcf_4	__tcf_4
-0x003477ed	0x28	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager19setNextMissionTimerEv	SideMissionManager::setNextMissionTimer()
-0x00347815	0x28	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager15isInSideMissionEv	SideMissionManager::isInSideMission()
+0x003477ed	0x28	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager19setNextMissionTimerEv	SideMissionManager::setNextMissionTimer()
+0x00347815	0x28	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager15isInSideMissionEv	SideMissionManager::isInSideMission()
 0x0034783d	0xe8	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager4drawEv	SideMissionManager::draw()
-0x00347925	0x3c	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager18isMissionAvailableEv	SideMissionManager::isMissionAvailable()
+0x00347925	0x3c	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager18isMissionAvailableEv	SideMissionManager::isMissionAvailable()
 0x00347961	0x64	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager11initMissionEv	SideMissionManager::initMission()
 0x003479c5	0x50	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager4stopEb	SideMissionManager::stop(bool)
 0x00347a15	0x1c	SideMissionManager.cpp	game	missions	matched	__tcf_3	__tcf_3
@@ -12499,7 +12499,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00347ab1	0x50	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager5cleanEv	SideMissionManager::clean()
 0x00347b01	0x68	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager4initEv	SideMissionManager::init()
 0x00347b69	0x44	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager5startEv	SideMissionManager::start()
-0x00347bad	0x13c	SideMissionManager.cpp	game	missions	pending	_ZN18SideMissionManager6updateEj	SideMissionManager::update(unsigned int)
+0x00347bad	0x13c	SideMissionManager.cpp	game	missions	matched	_ZN18SideMissionManager6updateEj	SideMissionManager::update(unsigned int)
 0x00347ce9	0x144	SideMissionManager.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00347e2d	0x14	SideMissionManager.cpp	game	missions	matched	_GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE	_GLOBAL__I__ZN18SideMissionManager22s_ambulanceSideMissionE
 0x00347e41	0x18	TaxiSideMission.cpp	game	vehicles	matched	_ZN15TaxiSideMissionD2Ev	TaxiSideMission::~TaxiSideMission()
