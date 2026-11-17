@@ -99,8 +99,8 @@ falls into — `ai`, `app`, `audio`, `characters`, `combat`, `core`, `hud`,
 
 ## Running the game
 
-The [OpenGangstar launcher](https://github.com/OpenGangstar/OpenGangstar#run-the-launcher)
-handles application builds, installation and launch.
+Use the [OpenGangstar launcher](https://github.com/OpenGangstar/OpenGangstar#run-the-launcher)
+to run the game.
 
 ## Getting started with decompilation
 
