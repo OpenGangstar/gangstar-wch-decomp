@@ -2,6 +2,10 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-cameramanager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_Znwj = 0x001c4814;
+__aeabi_i2f = 0x001c41e4;
+__aeabi_fmul = 0x001c4724;
+__aeabi_f2iz = 0x001c44cc;
 __aeabi_atexit = 0x001c494c;
 _ZN32retail_cameramanager_transitions16civPassive_transE = 0x004289dc;
 _ZN32retail_cameramanager_transitions17scriptedNpc_transE = 0x00428b08;
@@ -15,6 +19,17 @@ _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 SECTIONS
 {
+    .manager_set_fov 0x00331d8c : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6setFOVEi) }
+    .manager_get_fov 0x00331db0 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6getFOVEv) }
+    .manager_get_camera 0x00331dd4 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager9getCameraEv) }
+    .manager_debug 0x00331dd8 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager5debugEPN3irr5video12IVideoDriverE) }
+    .manager_scene_camera 0x00331ddc : { *ai-startup-cameramanager.o(.text._ZN13CameraManager14setSceneCameraEP11SceneCamera) }
+    .manager_touch_inputs 0x00331de4 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager20setTouchScreenInputsEb) }
+    .manager_is_used 0x00331dec : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager6isUsedEv) }
+    .manager_get_position 0x00331ff0 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager11getPositionEv) }
+    .manager_get_look_at 0x00332000 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager9getLookAtEv) }
+    .manager_get_instance 0x00332538 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager11getInstanceEv) }
+    .manager_singleton 0x004b9cc0 (NOLOAD) : { *ai-startup-cameramanager.o(.bss._ZN13CameraManager4s_cmE) }
     .ai_startup_function_0 0x00331fc0 : { *ai-startup-cameramanager.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00332618 : { *ai-startup-cameramanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x0033275c : { *ai-startup-cameramanager.o(.text._GLOBAL__I__ZN13CameraManager4s_cmE) }

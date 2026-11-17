@@ -11,6 +11,47 @@
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "Camera.h"
+#include "CameraManager.h"
+
+CameraManager* CameraManager::s_cm;
+
+static const float radiansPerDegree = 3.14159265358979323846f / 180.0f;
+
+void CameraManager::setFOV(int degrees)
+{
+    cameraNode->setFOV(degrees * radiansPerDegree);
+}
+
+int CameraManager::getFOV()
+{
+    const float degreesPerRadian = 57.2957763671875f;
+    return static_cast<int>(cameraNode->getFOV() * degreesPerRadian);
+}
+
+irr::scene::ICameraSceneNode* CameraManager::getCamera() const
+{
+    return cameraNode;
+}
+
+void CameraManager::debug(irr::video::IVideoDriver*)
+{
+}
+
+void CameraManager::setSceneCamera(SceneCamera* scene)
+{
+    sceneCamera = scene;
+}
+
+void CameraManager::setTouchScreenInputs(bool enabled)
+{
+    touchScreenInputs = enabled;
+}
+
+bool CameraManager::isUsed() const
+{
+    return used;
+}
 
 void operator delete(void*) throw();
 extern "C" {
@@ -44,6 +85,23 @@ static void __tcf_3()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+const irr::core::vector3d<float>& CameraManager::getPosition() const
+{
+    return currentCamera->getPosition();
+}
+
+const irr::core::vector3d<float>& CameraManager::getLookAt() const
+{
+    return currentCamera->getLookAt();
+}
+
+CameraManager* CameraManager::getInstance()
+{
+    if (!s_cm)
+        s_cm = new CameraManager(50.0f, 8000.0f, 50.0f * radiansPerDegree, 0);
+    return s_cm;
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
