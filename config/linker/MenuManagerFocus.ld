@@ -1,5 +1,7 @@
 SECTIONS
 {
+    .menu_manager_get_state 0x002e4228 : { *menu-manager-helpers.o(.text._ZNK11MenuManager8getStateEPKc) }
+    .menu_manager_is_current_state 0x002e4238 : { *menu-manager-helpers.o(.text._ZNK11MenuManager14isCurrentStateEPKc) }
     .my_menu_fx_clear_states 0x002e4388 : { *menu-manager-helpers.o(.text._ZN8MyMenuFX11ClearStatesEv) }
     .my_menu_fx_deleting_destructor 0x002e4484 : { *menu-manager-helpers.o(.text._ZN8MyMenuFXD0Ev) }
     .my_menu_fx_destructor 0x002e44b4 : { *menu-manager-helpers.o(.text._ZN8MyMenuFXD1Ev .text._ZN8MyMenuFXD2Ev) }

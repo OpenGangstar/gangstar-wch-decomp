@@ -22,6 +22,11 @@ public:
     void ClearFocus();
 };
 
+void* MenuManager::getState(const char* name) const
+{
+    return reinterpret_cast<MyMenuFX*>(menuFX)->GetState(name);
+}
+
 void MyMenuFX::ClearStates()
 {
     for (int index = 0; index < registeredStates.size; ++index)
@@ -45,6 +50,13 @@ struct MenuManagerFocusFields {
     unsigned char beforeClearingFocus[5];
     bool clearingFocus;
 };
+}
+
+extern "C" bool _ZNK11MenuManager14isCurrentStateEPKc(const MenuManager* manager, const char* name)
+{
+    const MenuManagerFocusFields& fields = *reinterpret_cast<const MenuManagerFocusFields*>(manager);
+    MenuFX::State* state = fields.menuFX->GetState(name);
+    return state == fields.menuFX->GetCurrentState();
 }
 
 extern "C" void _ZN11MenuManager10clearFocusEv(MenuManager* manager)

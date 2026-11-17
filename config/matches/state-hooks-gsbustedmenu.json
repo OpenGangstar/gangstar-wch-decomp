@@ -357,6 +357,8 @@
         "menu-manager-helpers"
     ],
     "external_thumb_functions": [
+        "_ZN6MenuFX8GetStateEPKc",
+        "_ZN6MenuFX15GetCurrentStateEv",
         "_ZN6MenuFXD1Ev",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN7Message11isDisplayedEv",
@@ -370,7 +372,6 @@
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13ScriptManager5pauseEv",
         "_ZN11MenuManager9hideTextsEv",
-        "_ZNK11MenuManager8getStateEPKc",
         "_ZN5Menus6Dialog10SetMessageEi",
         "_ZN5Menus14ConfirmPayment8SetPriceEi",
         "_ZN11MenuManager4pushEPKcb",

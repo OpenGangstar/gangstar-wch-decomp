@@ -361,7 +361,6 @@
         "_ZNK13StringManager9getStringEi",
         "_ZN7Widgets6IGMenu9GoToFrameEPKc",
         "_ZN9GSLoading12isGameLoadedEv",
-        "_ZNK11MenuManager8getStateEPKc",
         "_ZN11MenuManager17allowCheatsUnlockEb",
         "_ZN9ResStreamC1EPKci",
         "_ZN9ResStreamD1Ev",
