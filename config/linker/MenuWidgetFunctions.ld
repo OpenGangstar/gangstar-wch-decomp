@@ -1,5 +1,13 @@
 SECTIONS
 {
+    .widget_objective_show 0x002ecf78 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9Objective4ShowEv) }
+    .widget_objective_vtable 0x004a9ae8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets9ObjectiveE) }
+    .widget_objective_open 0x0041aa98 : { *ai-startup-menuwidget.o(.rodata.objectiveOpen) }
+    .widget_objective_close 0x0041aaa0 : { *ai-startup-menuwidget.o(.rodata.objectiveClose) }
+    .widget_objective_button 0x0041aac4 : { *ai-startup-menuwidget.o(.rodata.objectiveButton) }
+    .widget_objective_up 0x00406164 : { *ai-startup-menuwidget.o(.rodata.objectiveArrowUp) }
+    .widget_objective_down 0x0041aae4 : { *ai-startup-menuwidget.o(.rodata.objectiveArrowDown) }
+    .widget_objective_arrow 0x0041aaec : { *ai-startup-menuwidget.o(.rodata.objectiveArrow) }
     .widget_achievement_localization 0x002ede5c : { *ai-startup-menuwidget.o(.text._ZN7Widgets11Achievement18UpdateLocalizationEv) }
     .widget_objective_localization 0x002edc1c : { *ai-startup-menuwidget.o(.text._ZN7Widgets9Objective18UpdateLocalizationEv) }
     .widget_achievement_caption 0x0041af58 : { *ai-startup-menuwidget.o(.rodata.achievementCaptionPath) }

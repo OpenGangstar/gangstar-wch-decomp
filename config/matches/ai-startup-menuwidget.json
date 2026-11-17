@@ -27,6 +27,7 @@
     "dependencies": ["renderfx-animation"],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
+        "_ZN7Widgets9Objective4ShowEv",
         "_ZN7Widgets11Achievement18UpdateLocalizationEv",
         "_ZN7Widgets9Objective18UpdateLocalizationEv",
         "_ZN7Widgets12Achievements4ShowEv",
@@ -157,6 +158,13 @@
         }
     ],
     "sections": [
+        ".widget_objective_vtable",
+        ".widget_objective_open",
+        ".widget_objective_close",
+        ".widget_objective_button",
+        ".widget_objective_up",
+        ".widget_objective_down",
+        ".widget_objective_arrow",
         ".widget_achievement_caption",
         ".widget_achievement_title",
         ".widget_objective_text_path",
