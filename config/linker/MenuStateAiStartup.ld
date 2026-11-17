@@ -40,6 +40,11 @@ SECTIONS
     .achievement_lost_focus 0x002e948c : { *ai-startup-menustate.o(.text._ZN5Menus11Achievement9LostFocusEv) }
     .in_game_menu_got_focus 0x002e88a8 : { *ai-startup-menustate.o(.text._ZN5Menus10InGameMenu8GotFocusEv) }
     .in_game_menu_vtable 0x004a95f0 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus10InGameMenuE) }
+    .options_got_focus 0x002e8ac8 : { *ai-startup-menustate.o(.text._ZN5Menus7Options8GotFocusEv) }
+    .services_got_focus 0x002e8d18 : { *ai-startup-menustate.o(.text._ZN5Menus8Services8GotFocusEv) }
+    .four_button_menu_frame 0x00419f0c : { *ai-startup-menustate.o(.rodata.fourButtonMenuFrame) }
+    .options_vtable 0x004a9368 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus7OptionsE) }
+    .services_vtable 0x004a9560 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus8ServicesE) }
     .info_statistics_got_focus 0x002e8990 : { *ai-startup-menustate.o(.text._ZN5Menus14InfoStatistics8GotFocusEv) }
     .info_about_got_focus 0x002e8a24 : { *ai-startup-menustate.o(.text._ZN5Menus9InfoAbout8GotFocusEv) }
     .info_help_got_focus 0x002e8a54 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelp8GotFocusEv) }

@@ -29,6 +29,10 @@ void _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(void* menu, int button, 
 void _ZN7Widgets6IGMenu11HideButtonsEv(void* menu);
 void _ZN7Widgets6IGMenu12SetTitleTextEi(void* menu, int text);
 void _ZN7Widgets6Arrows12SetPageCountEiib(MenuWidget* arrows, int count, int page, bool enabled);
+void _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(void* menu, int button, int text, bool enabled);
+void _ZN7Widgets6IGMenu17SetBackButtonTextEi(void* menu, int text);
+void _ZN7Widgets6IGMenu9GoToFrameEPKc(void* menu, const char* frame);
+void _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(void* box, int state);
 }
 
 namespace Menus {
@@ -889,6 +893,36 @@ void Menus::InfoHelp::GotFocus()
     arrows->SetListener(this);
     _ZN7Widgets6Arrows12SetPageCountEiib(arrows, s_helpPageCount, 0, !unknown104);
     _ZN7Widgets6IGMenu15SetActiveButtonENS0_7eButtonEb(getWidgetByIndex(manager, 1), 2, true);
+}
+
+static const char fourButtonMenuFrame[] = "Show4";
+
+namespace {
+template <int first, int second, int third, int fourth, int title>
+inline void configureFourButtonMenu(MenuManager* manager)
+{
+    void* menu = getWidgetByIndex(manager, 1);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 0, first, true);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 1, second, true);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 2, third, true);
+    _ZN7Widgets6IGMenu13SetButtonInfoENS0_7eButtonEib(menu, 3, fourth, true);
+    _ZN7Widgets6IGMenu12SetTitleTextEi(menu, title);
+    _ZN7Widgets6IGMenu17SetBackButtonTextEi(menu, 0x1027);
+    _ZN7Widgets6IGMenu9GoToFrameEPKc(menu, fourButtonMenuFrame);
+    _ZN7Widgets8BlackBox8SetStateENS0_6eStateE(getWidgetByIndex(manager, 27), 0);
+}
+}
+
+void Menus::Options::GotFocus()
+{
+    InGameMenu::GotFocus();
+    configureFourButtonMenu<0x1011, 0x100d, 0x1000, 0x1017, 0x1036>(MenuManager::getInstance());
+}
+
+void Menus::Services::GotFocus()
+{
+    InGameMenu::GotFocus();
+    configureFourButtonMenu<0x103d, 0x1039, 0x103a, 0x103c, 0x1035>(MenuManager::getInstance());
 }
 
 void Menus::OptionLanguage::GotFocus()
