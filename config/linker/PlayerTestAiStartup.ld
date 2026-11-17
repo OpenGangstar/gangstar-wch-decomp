@@ -34,10 +34,12 @@ SECTIONS
     .player_set_speed 0x00301f68 : { *ai-startup-playertest.o(.text._ZN10PlayerTest8SetSpeedEv) }
     .player_reset 0x003013bc : { *ai-startup-playertest.o(.text._ZN10PlayerTest15ResetPlayerTestEb) }
     .player_set_vehicle 0x00301f00 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10setVehicleEP7Vehicle) }
+    .player_set_vehicle_thunk 0x00301eec : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest10setVehicleEP7Vehicle) }
     .player_finished_stop_driving 0x00301df8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest19finishedStopDrivingEv) }
     .player_update_scene_node 0x00302684 : { *ai-startup-playertest.o(.text._ZN10PlayerTest15UpdateSceneNodeEv) }
     .player_last_used_vehicle 0x00301ebc : { *ai-startup-playertest.o(.text._ZN10PlayerTest18setLastUsedVehicleEP7Vehicle) }
     .player_stop 0x00301a3c : { *ai-startup-playertest.o(.text._ZN10PlayerTest4StopEv) }
+    .player_stop_thunk 0x00301a28 : { *ai-startup-playertest.o(.text._ZThn4_N10PlayerTest4StopEv) }
     .player_closest_shop 0x00301090 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14setClosestShopEP4Shop) }
     .npc_vehicle_base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .npc_vehicle_base_dtor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
