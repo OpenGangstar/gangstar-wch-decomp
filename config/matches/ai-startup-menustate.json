@@ -23,7 +23,7 @@
         "-meabi=4"
     ],
     "source": "src/game/ui/MenuState.cpp",
-    "dependencies": ["ai-startup-menuwidget", "renderfx-animation"],
+    "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
         "_ZN5Menus7Confirm6NotifyEPK10MenuWidgeti",
@@ -88,9 +88,11 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev",
+        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN9MenuState8GotFocusEv",
         "_ZN9MenuState9LostFocusEv",
-        "_ZN11MenuManager10clearFocusEv",
         "_ZN11MenuManager3popEb",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN8RenderFX4FindEPKc",

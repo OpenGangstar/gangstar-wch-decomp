@@ -29,6 +29,8 @@ public:
     void SetEnabled(gameswf::character* character, bool enabled);
     void SetEnabled(const char* characterName, bool enabled);
     void SetVisible(const char* characterName, bool visible);
+    void SetFocus(gameswf::character* character, int flags);
+    void SetFocus(const char* characterName, int flags);
 
 private:
     void CollectCharacters(gameswf::character* parent, const char* name, int flags);
