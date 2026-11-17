@@ -1,5 +1,19 @@
 SECTIONS
 {
+    .widget_statistics_ctor 0x002ec49c : { *ai-startup-menuwidget.o(.text._ZN7Widgets10StatisticsC1Ev .text._ZN7Widgets10StatisticsC2Ev) }
+    .widget_achievements_ctor 0x002ec504 : { *ai-startup-menuwidget.o(.text._ZN7Widgets12AchievementsC1Ev .text._ZN7Widgets12AchievementsC2Ev) }
+    .widget_objective_ctor 0x002ec878 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9ObjectiveC1Ev .text._ZN7Widgets9ObjectiveC2Ev) }
+    .widget_achievement_ctor 0x002ec9b0 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11AchievementC1Ev .text._ZN7Widgets11AchievementC2Ev) }
+    .widget_achievement_set_title 0x002ebe78 : { *ai-startup-menuwidget.o(.text._ZN7Widgets11Achievement8SetTitleEi) }
+    .widget_achievement_auto_hide 0x002ebe7c : { *ai-startup-menuwidget.o(.text._ZNK7Widgets11Achievement8AutoHideEv) }
+    .widget_objective_set_text 0x002ebe98 : { *ai-startup-menuwidget.o(.text._ZN7Widgets9Objective16SetObjectiveTextEi) }
+    .widget_statistics_name 0x0041a7f8 : { *ai-startup-menuwidget.o(.rodata.widgetStatisticsName) }
+    .widget_statistics_anim 0x0041a80c : { *ai-startup-menuwidget.o(.rodata.widgetStatisticsAnimation) }
+    .widget_achievements_name 0x0041a824 : { *ai-startup-menuwidget.o(.rodata.widgetAchievementsName) }
+    .widget_achievements_anim 0x0041a838 : { *ai-startup-menuwidget.o(.rodata.widgetAchievementsAnimation) }
+    .widget_objective_name 0x0041a92c : { *ai-startup-menuwidget.o(.rodata.widgetObjectiveName) }
+    .widget_achievement_name 0x0041a95c : { *ai-startup-menuwidget.o(.rodata.widgetAchievementName) }
+    .widget_achievement_vtable 0x004a9bb8 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets11AchievementE) }
     .widget_background_demo_buy_ctor 0x002ec738 : { *ai-startup-menuwidget.o(.text._ZN7Widgets17BackgroundDemoBuyC1Ev .text._ZN7Widgets17BackgroundDemoBuyC2Ev) }
     .widget_demo_buy_ctor 0x002ec764 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7DemoBuyC1Ev .text._ZN7Widgets7DemoBuyC2Ev) }
     .widget_tutorial_ctor 0x002ec9e4 : { *ai-startup-menuwidget.o(.text._ZN7Widgets8TutorialC1EPKc .text._ZN7Widgets8TutorialC2EPKc) }
