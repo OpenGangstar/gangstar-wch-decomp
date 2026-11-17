@@ -33,6 +33,7 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../core/Lock.h"
 #include "../rendering/CustomBillboardSceneNode.h"
 #include "../core/PhysicsBodyDef.h"
+#include "../core/VideoDriver.h"
 #include "../rendering/GS3DStuff.h"
 #include "../world/TrailMgr.h"
 
@@ -1301,27 +1302,42 @@ public:
 };
 }
 namespace collada {
-// Partial layout for the render preparation call.
-class CColladaMorphingMesh {
+class CColladaMorphingMesh : public virtual IReferenceCounted {
 public:
-    unsigned int onPrepareBufferForRendering(
+    CColladaMorphingMesh(const CColladaDatabase&, SController&, bool, video::IVideoDriver*);
+    virtual void unknown0();
+    virtual void unknown1();
+    virtual void unknown2();
+    virtual void unknown3();
+    virtual void unknown4();
+    virtual void unknown5();
+    virtual void unknown6();
+    virtual ~CColladaMorphingMesh();
+    virtual void unknown9();
+    virtual void unknown10();
+    virtual unsigned int onPrepareBufferForRendering(
         scene::IColladaMesh::E_PREPARE_BUFFER_STEP, video::IVideoDriver*, unsigned int);
-
+    virtual void unknown12();
 private:
-    unsigned char unknown[88];
+    unsigned char opaque4[84];
 };
 }
 }
 
 class CCarMorphingMesh : public irr::collada::CColladaMorphingMesh {
 public:
-    unsigned int onPrepareBufferForRendering(
+    CCarMorphingMesh(const irr::collada::CColladaDatabase& db, irr::collada::SController& controller,
+                     irr::video::IVideoDriver* driver)
+        : irr::collada::CColladaMorphingMesh(db, controller, false, driver), prepareBuffer(true) {}
+    virtual ~CCarMorphingMesh();
+    virtual unsigned int onPrepareBufferForRendering(
         irr::scene::IColladaMesh::E_PREPARE_BUFFER_STEP step,
         irr::video::IVideoDriver* driver, unsigned int buffer) __attribute__((weak));
-
 private:
     bool prepareBuffer;
 };
+
+typedef char CarMorphingMeshExtent[sizeof(CCarMorphingMesh) == 104 ? 1 : -1];
 
 unsigned int CCarMorphingMesh::onPrepareBufferForRendering(
     irr::scene::IColladaMesh::E_PREPARE_BUFFER_STEP step,
@@ -1349,6 +1365,12 @@ public:
     virtual void* createSkinNode(const irr::collada::CColladaDatabase&, irr::scene::IColladaMesh*,
                                  irr::collada::IRootSceneNode*, void*);
 };
+
+void* CCarFactory::createMorph(const irr::collada::CColladaDatabase& database, irr::collada::SController* controller)
+{
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+    return new (irr::DefaultMemHint) CCarMorphingMesh(database, *controller, driver);
+}
 
 irr::collada::CSceneNode* CCarFactory::createNode(
     const irr::collada::CColladaDatabase& database, irr::collada::SNode* node)
@@ -1600,6 +1622,20 @@ void Vehicle::playHorn()
     sound->playEx(horn, 0, false, 1.0f, 0, true, 1.0f, 0);
     sound->unknown140 = false;
     turnSoundPlaying = true;
+}
+
+void Vehicle::debug(irr::video::IVideoDriver* videoDriver)
+{
+    irr::core::vector3d<float> corners[4];
+    getCollisionRect(corners, 50.0f);
+    corners[0].Z = GetPosition().Z + 50.0f;
+    corners[1].Z = GetPosition().Z + 50.0f;
+    corners[2].Z = GetPosition().Z + 50.0f;
+    corners[3].Z = GetPosition().Z + 50.0f;
+    videoDriver->draw3DLine(corners[0], corners[1], irr::video::SColor(255, 255, 255, 255));
+    videoDriver->draw3DLine(corners[1], corners[2], irr::video::SColor(255, 255, 255, 255));
+    videoDriver->draw3DLine(corners[2], corners[3], irr::video::SColor(255, 255, 255, 255));
+    videoDriver->draw3DLine(corners[3], corners[0], irr::video::SColor(255, 255, 255, 255));
 }
 
 void Vehicle::InitV8Z06Sounds()

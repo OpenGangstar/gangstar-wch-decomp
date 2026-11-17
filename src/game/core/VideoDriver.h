@@ -50,7 +50,9 @@ public:
     virtual void drawVertexPrimitiveList(const void* vertices, const void* indices,
         unsigned int firstVertex, unsigned int vertexCount, unsigned int primitiveCount,
         E_VERTEX_TYPE, scene::E_PRIMITIVE_TYPE, E_INDEX_TYPE, IDriverBinding**);
-    virtual void unknown43(); virtual void unknown44(); virtual void unknown45();
+    virtual void draw3DLine(const core::vector3d<float>& start,
+        const core::vector3d<float>& end, SColor color);
+    virtual void unknown44(); virtual void unknown45();
     virtual void unknown46(); virtual void unknown47(); virtual void unknown48();
     virtual void unknown49();
     virtual void draw2DRectangle(SColor color, const core::rect<int>& position,

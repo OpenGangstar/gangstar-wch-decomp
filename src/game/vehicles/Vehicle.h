@@ -65,6 +65,8 @@ public:
     void startDriving();
     void stopDriving();
     void playHorn();
+    void debug(irr::video::IVideoDriver* videoDriver);
+    void getCollisionRect(irr::core::vector3d<float>* corners, float margin);
     irr::scene::ISceneNode* getNearestDoorDummy(irr::core::vector3d<float> point);
     virtual void cleanTargets();
     virtual int getMarkerType();
