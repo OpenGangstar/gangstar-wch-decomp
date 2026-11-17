@@ -19,6 +19,8 @@ SECTIONS
     .handler_constructor 0x0032f1e4 : { *(.text._ZN20SniperControlHandlerC1EP15CControlManager .text._ZN20SniperControlHandlerC2EP15CControlManager) }
     .handler_init 0x0032f0d4 : { *(.text._ZN20SniperControlHandler4initEv) }
     .handler_release_keys 0x0032f0dc : { *(.text._ZN20SniperControlHandler19releaseKeyboardKeysEv) }
+    .handler_stick_move 0x0032f0e0 : { *(.text._ZN20SniperControlHandler15handleStickMoveEP11EvStickMove) }
+    .handler_stick_released 0x0032f0e4 : { *(.text._ZN20SniperControlHandler19handleStickReleasedEb) }
     .handler_activate 0x0032f1ac : { *(.text._ZN20SniperControlHandler8activateEv) }
     .handler_deactivate 0x0032f120 : { *(.text._ZN20SniperControlHandler10deactivateEv) }
     .handler_delete 0x0032f5a8 : { *(.text._ZN20SniperControlHandlerD0Ev) }

@@ -6,6 +6,7 @@ class Shop : public Checkpoint {
 public:
     Shop(int type);
     void trigger(bool enabled);
+    bool unlocked() const;
     bool triggered() const;
     int getId();
     void Load(const Structs::CheckpointShop&);

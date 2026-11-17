@@ -200,6 +200,7 @@ public:
 class MainMenu : public MenuState {
 public:
     MainMenu();
+    bool GameContinue() const;
     virtual ~MainMenu();
     virtual void GotFocus();
     virtual void LostFocus();
@@ -489,6 +490,11 @@ inline int findWidgetId(const gameswf::array<int>& ids, int id)
 }
 
 static const char mainMenuName[] = "MainMenu";
+
+bool Menus::MainMenu::GameContinue() const
+{
+    return unknown104;
+}
 
 Menus::MainMenu::MainMenu()
     : MenuState(mainMenuName), unknown104(false), unknown105(false), unknown106(false)

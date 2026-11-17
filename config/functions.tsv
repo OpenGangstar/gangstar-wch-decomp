@@ -9576,7 +9576,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e7351	0x4	MenuState.cpp	game	ui	matched	_ZNK9MenuState8GetDepthEv	MenuState::GetDepth() const
 0x002e7355	0x30	MenuState.cpp	game	ui	pending	_ZN5Menus18OptionGameSettings14GetOrientationEv	Menus::OptionGameSettings::GetOrientation()
 0x002e7385	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus7Confirm9ConfirmedEv	Menus::Confirm::Confirmed() const
-0x002e738d	0x6	MenuState.cpp	game	ui	pending	_ZNK5Menus8MainMenu12GameContinueEv	Menus::MainMenu::GameContinue() const
+0x002e738d	0x6	MenuState.cpp	game	ui	matched	_ZNK5Menus8MainMenu12GameContinueEv	Menus::MainMenu::GameContinue() const
 0x002e7395	0x6	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu8SetPauseEb	Menus::MainMenu::SetPause(bool)
 0x002e739d	0x12	MenuState.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP6ScriptSaIS2_EED1Ev	stlp_priv::_Vector_base<Script*, std::allocator<Script*> >::~_Vector_base()
 0x002e73b1	0x30	MenuState.cpp	game	ui	matched	__tcf_6	__tcf_6
@@ -10472,7 +10472,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305c25	0x6c	RenderObject.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00305c91	0x14	RenderObject.cpp	game	characters	matched	_GLOBAL__I__ZN12RenderObjectC2EP10GameObject	_GLOBAL__I__ZN12RenderObjectC2EP10GameObject
 0x00305ca5	0x20	Shop.cpp	game	ui	pending	_ZN4Shop24resetAchievementCountersEv	Shop::resetAchievementCounters()
-0x00305cc5	0x8	Shop.cpp	game	ui	pending	_ZNK4Shop8unlockedEv	Shop::unlocked() const
+0x00305cc5	0x8	Shop.cpp	game	ui	matched	_ZNK4Shop8unlockedEv	Shop::unlocked() const
 0x00305ccd	0x6	Shop.cpp	game	ui	matched	_ZNK4Shop9triggeredEv	Shop::triggered() const
 0x00305cd5	0x4	Shop.cpp	game	ui	matched	_ZN4Shop5getIdEv	Shop::getId()
 0x00305cd9	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI16GSWeaponShopMenuEEPT_v	GSWeaponShopMenu* StateMachine::pushState<GSWeaponShopMenu>()
@@ -11567,8 +11567,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032f0a5	0x30	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerD1Ev	COnFootControlHandler::~COnFootControlHandler()
 0x0032f0d5	0x6	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler4initEv	SniperControlHandler::init()
 0x0032f0dd	0x2	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler19releaseKeyboardKeysEv	SniperControlHandler::releaseKeyboardKeys()
-0x0032f0e1	0x2	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler15handleStickMoveEP11EvStickMove	SniperControlHandler::handleStickMove(EvStickMove*)
-0x0032f0e5	0x2	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler19handleStickReleasedEb	SniperControlHandler::handleStickReleased(bool)
+0x0032f0e1	0x2	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler15handleStickMoveEP11EvStickMove	SniperControlHandler::handleStickMove(EvStickMove*)
+0x0032f0e5	0x2	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler19handleStickReleasedEb	SniperControlHandler::handleStickReleased(bool)
 0x0032f0e9	0x10	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler23handleExitSightReleasedEv	SniperControlHandler::handleExitSightReleased()
 0x0032f0f9	0x28	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler16handleAttackHeldEv	SniperControlHandler::handleAttackHeld()
 0x0032f121	0x38	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler10deactivateEv	SniperControlHandler::deactivate()

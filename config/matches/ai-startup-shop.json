@@ -25,6 +25,7 @@
     "source": "src/game/ui/Shop.cpp",
     "linker_script": "config/linker/ShopAiStartup.ld",
     "functions": [
+        "_ZNK4Shop8unlockedEv",
         "_ZNK4Shop9triggeredEv",
         "_ZN4Shop5getIdEv",
         {

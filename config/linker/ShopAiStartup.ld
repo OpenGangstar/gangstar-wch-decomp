@@ -17,6 +17,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .shop_unlocked 0x00305cc4 : { *ai-startup-shop.o(.text._ZNK4Shop8unlockedEv) }
     .shop_triggered 0x00305ccc : { *ai-startup-shop.o(.text._ZNK4Shop9triggeredEv) }
     .shop_get_id 0x00305cd4 : { *ai-startup-shop.o(.text._ZN4Shop5getIdEv) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-shop.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
