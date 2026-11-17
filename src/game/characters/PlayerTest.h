@@ -9,7 +9,7 @@ class b2Body;
 class Weapon;
 class LevelObject;
 class Shop;
-namespace irr { namespace scene { class ISceneNode; } }
+namespace irr { namespace scene { class ISceneNode; } namespace video { class IVideoDriver; } }
 namespace irr { namespace core { class quaternion; template<class T> class vector3d; } }
 
 // Partial observed layout and call interfaces, not the complete original class.
@@ -51,9 +51,9 @@ public:
     virtual bool setAnimation(const char* name, int speed, bool a, bool b, bool c);
     virtual void unknown36();
     virtual void unknown37();
-    virtual void unknown38();
+    virtual void setNextAnimation(int, int, bool, bool, bool);
     virtual void unknown39();
-    virtual void unknown40();
+    virtual bool setAnimation(int, float, bool, bool, bool);
     virtual bool shoot(float, bool);
     virtual void unknown42();
     virtual void unknown43();
@@ -157,6 +157,8 @@ public:
     void Update();
     void UpdateSceneNode();
     bool isFacingTarget();
+    bool orientTowards(irr::core::vector3d<float> direction);
+    void debug(irr::video::IVideoDriver* driver);
     unsigned char unknown8[12];
     irr::scene::ISceneNode* sceneNode;
     unsigned char unknown24[4];
@@ -185,7 +187,9 @@ public:
     Shop* closestShop;
     int unknown324;
     int attackState;
-    unsigned char unknown332[21];
+    unsigned char unknown332[4];
+    float unknown336;
+    unsigned char unknown340[13];
     bool lockRequested;
     bool targetLocked;
     bool lockUpdatePending;

@@ -639,3 +639,71 @@ void PlayerTest::stopDriving(playertest::PlayerCarState::ePlayerCarState state, 
     app->GetEventManager()->raise(EvPlayer(10));
     ScriptManager::getInstance()->playerDrives(0);
 }
+
+bool PlayerTest::orientTowards(irr::core::vector3d<float> direction)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    const irr::core::vector3d<float> right = character->GetRight();
+    const float dot = right.dotProduct(direction.normalize());
+    float angle = dot * (700.0f * unknown336);
+    sceneNode->setRotation(sceneNode->getRotation() * irr::core::quaternion(0.0f, 0.0f, angle * -0.017453292519943295f));
+    const irr::core::vector3d<float> front = character->GetFront();
+    facing.x = front.X;
+    facing.y = front.Y;
+    facing.z = front.Z;
+    return dot < 0.01f && dot > -0.01f;
+}
+
+#include "../core/VideoDriver.h"
+void PlayerTest::debug(irr::video::IVideoDriver* driver)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    irr::core::vector3d<float> right = character->GetRight();
+    irr::core::vector3d<float> front = character->GetFront();
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    irr::core::vector3d<float> up(transform[8], transform[9], transform[10]);
+    irr::core::vector3d<float> position = character->GetPosition();
+    {
+    irr::core::vector3d<float> scaledRight = right * 200.0f;
+    irr::core::vector3d<float> end(scaledRight.X + position.X, scaledRight.Y + position.Y, position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 0, 0, 255));
+    }
+    {
+    irr::core::vector3d<float> scaledFront = front * 200.0f;
+    irr::core::vector3d<float> end(scaledFront.X + position.X, scaledFront.Y + position.Y, position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 0, 255, 0));
+    }
+    {
+    irr::core::vector3d<float> scaledUp = up * 200.0f;
+    irr::core::vector3d<float> end(scaledUp.X + position.X, scaledUp.Y + position.Y, scaledUp.Z + position.Z);
+    driver->draw3DLine(position, end, irr::video::SColor(255, 255, 0, 0));
+    }
+}
+
+#include "../characters/PhysicAttributes.h"
+#include "../rendering/GS3DStuff.h"
+void PlayerTest::teleportTo(const LevelObject* destination)
+{
+    SavePositionInterface* position=static_cast<SavePositionInterface*>(this);
+    if ((flags240&0x400u) && position->getVehicle()) {
+        stopDriving(playertest::PlayerCarState::MovingOut,true);
+        if (static_cast<SavePrimaryInterface*>(this)->getVehicle())
+            static_cast<SavePrimaryInterface*>(this)->getVehicle()->Stop();
+        position->setAnimation(165,1.0f,false,false,false);
+        unknown324=0;
+        Application::GetInstance()->GetControlManager()->exitCar(!ScriptManager::getInstance()->isInCinematic());
+        static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
+        static_cast<SavePrimaryInterface*>(this)->setVehicle(0);
+    }
+    unknown372=0;
+    position->setNextAnimation(165,1,false,false,false);
+    GS3DStuff::s_vehicle=0;
+    ResetPlayerTest(false);
+    Application::GetInstance()->GetHudManager()->walking();
+    sceneNode->setRotation(destination->GetRotation());
+    position->position(reinterpret_cast<const SaveVector3&>(static_cast<const irr::core::vector3d<float>&>(destination->GetPosition())));
+    PhysicAttributes* physics=physicAttributes;
+    unsigned short material=destination->GetMatID();
+    unsigned short triangle=destination->GetTriID();
+    physics->Init(material,triangle,position->position());
+}

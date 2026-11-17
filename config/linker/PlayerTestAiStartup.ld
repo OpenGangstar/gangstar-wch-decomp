@@ -29,6 +29,11 @@ INCLUDE config/linker/NPCFunctionSections.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+    .player_orientation_0 0x00302240 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13orientTowardsEN3irr4core8vector3dIfEE) }
+    .player_orientation_1 0x003020f0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest5debugEPN3irr5video12IVideoDriverE) }
+    .player_orientation_2 0x00304894 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10teleportToEPK11LevelObject) }
+    .player_hud_walking 0x00323b00 : { *hud-manager-helpers.o(.text._ZN11CHudManager7walkingEv) }
+
     .player_recovered_0 0x003035d0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13acquireTargetEv) }
     .player_recovered_1 0x00303ab8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest12startDrivingEv) }
     .player_recovered_2 0x00303b6c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5shootEfb) }
