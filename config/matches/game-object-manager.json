@@ -122,7 +122,8 @@
         "launchTwitter",
         "appOnKeyUp",
         "appOnKeyDown",
-        "appOnTouch"
+        "appOnTouch",
+        "appRun"
     ],
     "sections": [
         ".gom_event_get_id",
@@ -404,7 +405,10 @@
         "_ZN9AIManagerD1Ev",
         "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
-        "_ZN11Application13appKeyPressedEi"
+        "_ZN11Application13appKeyPressedEi",
+        "_ZN11Application6ResumeEv",
+        "_ZN11Application6UpdateEv",
+        "_ZN3irr2os5Timer4tickEv"
     ],
     "dependencies": [
         "gs3d-stuff",

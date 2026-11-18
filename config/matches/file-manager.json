@@ -117,7 +117,8 @@
         "launchTwitter",
         "appOnKeyUp",
         "appOnKeyDown",
-        "appOnTouch"
+        "appOnTouch",
+        "appRun"
     ],
     "dependencies": [
         "stream",
@@ -130,6 +131,9 @@
     "external_thumb_functions": [
         "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
-        "_ZN11Application13appKeyPressedEi"
+        "_ZN11Application13appKeyPressedEi",
+        "_ZN11Application6ResumeEv",
+        "_ZN11Application6UpdateEv",
+        "_ZN3irr2os5Timer4tickEv"
     ]
 }

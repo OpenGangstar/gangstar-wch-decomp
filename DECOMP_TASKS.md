@@ -1217,5 +1217,6 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d2679 | appOnKeyDown | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2511 | appOnTouch | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d26f1 | appDeinit | hud_glyphs | ASSIGNED | pending | src/game/core/wrapper.cpp |
-| libsanangeles.so | 0x002d269d | appRun | hud_registration | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d269d | appRun | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d25a9 | appOnAccelerometer | lock_init | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2731 | appPause | hud_registration | ASSIGNED | pending | src/game/core/wrapper.cpp |

@@ -1,6 +1,7 @@
 /* Reconstructed wrapper functions and the complete original browser URL. */
 SECTIONS
 {
+    .wrapper_run 0x002d269c : { *path-name.o(.text.appRun) }
     .wrapper_touch 0x002d2510 : { *path-name.o(.text.appOnTouch) }
     .wrapper_device 0x004b671c (NOLOAD) : { *path-name.o(.bss.device) }
     .wrapper_key_up 0x002d2654 : { *path-name.o(.text.appOnKeyUp) }
