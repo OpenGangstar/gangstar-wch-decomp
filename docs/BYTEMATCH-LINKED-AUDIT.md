@@ -159,3 +159,8 @@ progress checks pass. The changes are now integrated for the next reviewed PR.
 The regenerated current report also passes objdiff-cli 3.8.1 `report changes`
 against itself with exit zero. Evidence is retained in
 _scratch/linked-current-schema-validation.json and .exit.
+
+A broader executable audit also checked every currently credited game entry. All
+4,205 entries covering 332,482 catalogue bytes have matching native-address
+executable definitions. The audit found zero missing proofs. Local evidence is
+_scratch/matched-current-executable-audit.json.
