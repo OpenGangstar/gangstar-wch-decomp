@@ -1,3 +1,7 @@
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fsub = 0x001c4328);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-spawnpoint/retail-symbols.ld
@@ -20,6 +24,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .spawn_close_neighbors 0x00306d2c : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint17hasCloseNeighborsEv .gnu.linkonce.t._ZNK10SpawnPoint17hasCloseNeighborsEv) }
+
     .spawn_random_place 0x003067d4 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint5spawnEv) }
     .spawn_place 0x003069f8 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint5spawnEi) }
     .spawn_add 0x003063a0 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint3addEPS_) }

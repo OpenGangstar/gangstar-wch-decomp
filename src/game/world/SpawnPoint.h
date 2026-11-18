@@ -26,6 +26,7 @@ public:
     static LevelObject* spawn(int metatype);
     static void ClearAllSpawnInstances();
     void Update(int elapsed);
+    bool hasCloseNeighbors() const;
     const irr::core::vector3d<float>& getPosition() const { return position; }
 
     struct Center { float x, y, z; };

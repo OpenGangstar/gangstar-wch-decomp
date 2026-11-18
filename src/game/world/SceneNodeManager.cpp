@@ -306,3 +306,20 @@ static void __tcf_3()
         ::operator delete(value.array);
 }
 }
+
+bool SceneNodeManager::manage(int poolID, LevelObject* owner, int count)
+{
+    if (poolID < 0 || static_cast<unsigned int>(poolID) >= pools.size() || !owner)
+        return false;
+    if (count > 0) {
+        Pool* pool=pools[poolID];
+        const int size=pool->nodes.size();
+        for (int i=0;i<size;++i) {
+            if (!pool->nodes[i]->parameters) {
+                pool->nodes[i]->setupUnmanaged(count);
+                owner->setupSceneNode(poolID,pool->nodes[i]->sceneNode,count,pool->nodes[i]->parameters);
+            }
+        }
+    }
+    return true;
+}

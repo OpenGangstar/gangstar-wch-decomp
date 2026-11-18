@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fsub = 0x001c4328);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-map/retail-symbols.ld
@@ -9,6 +10,10 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_fmul = 0x001c4724;
 SECTIONS
 {
+    .map_set_map 0x00328b40 : { *sdk-startup-map.o(.text._ZN3Map6setMapENS_8eMapTypeE .gnu.linkonce.t._ZN3Map6setMapENS_8eMapTypeE) }
+    .map_path0 0x00424190 : { *sdk-startup-map.o(.rodata.mapPath0) }
+    .map_path1 0x004241a4 : { *sdk-startup-map.o(.rodata.mapPath1) }
+
     .map_scaled_size 0x002e6564 : { *sdk-startup-map.o(.text._ZNK3Map13getScaledSizeERN3irr4core11dimension2dIiEE) }
     .map_clean 0x00328b10 : { *sdk-startup-map.o(.text._ZN3Map5cleanEv) }
     .map_construct 0x00328c14 : { *sdk-startup-map.o(.text._ZN3MapC1Ev .text._ZN3MapC2Ev) }

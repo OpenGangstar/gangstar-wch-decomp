@@ -66,7 +66,8 @@
             "name": "__tcf_2",
             "address": "0x00306459",
             "compiled_name": "__tcf_1"
-        }
+        },
+        "_ZNK10SpawnPoint17hasCloseNeighborsEv"
     ],
     "sections": [
         ".spawn_vtable",
@@ -86,21 +87,22 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN10PlayerTest9GetPlayerEv",
-        "_ZN17GameObjectManager19AddGameObjectOfTypeEi",
+        "_ZN11LevelObject11GetMetatypeEv",
         "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
         "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
-        "_ZnwjN3irr7MemHintE",
-        "_ZN3irr2os10Randomizer4randEv",
-        "_ZNK10SpawnPoint8canSpawnEv",
-        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
-        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE",
-        "_ZN7Vehicle8setSpeedEv",
+        "_ZN17GameObjectManager19AddGameObjectOfTypeEi",
         "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
         "_ZN17GameObjectManager3AddEP11LevelObjecti",
-        "_ZN11LevelObject11GetMetatypeEv",
+        "_ZN17GameObjectManager8GetFirstEi",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
+        "_ZN3irr2os10Randomizer4randEv",
+        "_ZN7Vehicle8setSpeedEv",
+        "_ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE",
+        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE",
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "_ZNK10SpawnPoint8canSpawnEv",
+        "_ZnwjN3irr7MemHintE"
     ]
 }

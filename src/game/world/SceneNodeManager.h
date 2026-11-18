@@ -13,7 +13,7 @@ public:
     void setup();
     void tearDown();
     void update(int);
-    void manage(int poolID, LevelObject* owner, int count);
+    bool manage(int poolID, LevelObject* owner, int count);
     int findOrCreatePool(const char* name, int size, irr::collada::CColladaFactory* factory);
     irr::scene::ISceneNode* grab(int poolID, LevelObject* owner, int id, void*** parameters);
     bool drop(int poolID, const irr::scene::ISceneNode* node);

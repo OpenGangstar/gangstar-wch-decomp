@@ -14,6 +14,8 @@ memset = 0x001c45d4;
 __stack_chk_fail = 0x001c42e0;
 SECTIONS
 {
+    .scene_node_manage 0x00321698 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager6manageEiP11LevelObjecti .gnu.linkonce.t._ZN16SceneNodeManager6manageEiP11LevelObjecti) }
+
     .scene_crc_reflect 0x003213f0 : { *sdk-startup-scenenodemanager.o(.text._Z10crcReflectjc) }
     .scene_manager_setup 0x0032141c : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager5setupEv) }
     .scene_manager_update 0x00321420 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager6updateEi) }

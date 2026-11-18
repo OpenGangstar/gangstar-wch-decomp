@@ -49,7 +49,11 @@
         "_ZN16SceneNodeManagerC1Ev",
         "_ZN16SceneNodeManagerC2Ev",
         "_ZN16SceneNodeManager11getInstanceEv",
-        {"name": "__tcf_2", "address": "0x0032224d", "compiled_name": "__tcf_0"},
+        {
+            "name": "__tcf_2",
+            "address": "0x0032224d",
+            "compiled_name": "__tcf_0"
+        },
         {
             "name": "__tcf_3",
             "address": "0x00322069"
@@ -61,7 +65,8 @@
         {
             "name": "_GLOBAL__I__Z10crcReflectjc",
             "address": "0x00321c09"
-        }
+        },
+        "_ZN16SceneNodeManager6manageEiP11LevelObjecti"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -76,7 +81,7 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN11Application11GetInstanceEv",
-        "_ZNK16SceneNodeManager9getPoolIDEi",
-        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE"
+        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",
+        "_ZNK16SceneNodeManager9getPoolIDEi"
     ]
 }

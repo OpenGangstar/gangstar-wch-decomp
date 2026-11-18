@@ -373,3 +373,20 @@ static void __tcf_6()
     SpawnPoint::s_spawnPoints.count = 0;
 }
 }
+
+bool SpawnPoint::hasCloseNeighbors() const
+{
+    for (LevelObject* object=GameObjectManager::s_gom->GetFirst(0);object;object=object->next) {
+        if (LevelObject::s_type[object->getObjectType()]==6)
+            continue;
+        if (!(object->unknown4&1))
+            continue;
+        irr::core::vector3d<float> location=object->GetPosition();
+        irr::core::vector3d<float> origin(position);
+        irr::core::vector3d<float> difference=location-origin;
+        difference.Z=0.0f;
+        if (difference.getLengthSQ()<1000000.0f)
+            return true;
+    }
+    return false;
+}
