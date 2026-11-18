@@ -1,3 +1,7 @@
+PROVIDE(__aeabi_d2iz = 0x001c4844);
+PROVIDE(__aeabi_dsub = 0x001c4454);
+PROVIDE(__aeabi_i2d = 0x001c452c);
+PROVIDE(_Znwj = 0x001c4814);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/state-hooks-gsfailure/retail-symbols.ld
@@ -17,6 +21,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .gsfailure_dtor 0x002e1f64 : { *state-hooks-gsfailure.o(.text._ZN9GSFailure4dtorEPK12StateMachine .gnu.linkonce.t._ZN9GSFailure4dtorEPK12StateMachine) }
+    .gsfailure_state_ctor 0x002e1fd4 : { *state-hooks-gsfailure.o(.text._ZN9GSFailure4ctorEPK12StateMachine .gnu.linkonce.t._ZN9GSFailure4ctorEPK12StateMachine) }
+    .gsfailure_update 0x002e20dc : { *state-hooks-gsfailure.o(.text._ZN9GSFailure6updateEP12StateMachine .gnu.linkonce.t._ZN9GSFailure6updateEP12StateMachine) }
+
     .state_ctor 0x002e233c : { *state-hooks-gsfailure.o(.text._ZN9GSFailureC1Ev) }
     .base_0 0x002dacc0 : { *state-hooks-gsfailure.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }
     .base_1 0x002dacac : { *state-hooks-gsfailure.o(.gnu.linkonce.t._ZN9StateBase4drawEPK12StateMachine .text._ZN9StateBase4drawEPK12StateMachine .gnu.linkonce.d.rel.ro._ZN9StateBase4drawEPK12StateMachine .data.rel.ro._ZN9StateBase4drawEPK12StateMachine) }

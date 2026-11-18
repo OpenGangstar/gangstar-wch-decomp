@@ -26,6 +26,7 @@ class LevelObject {
     friend class GameObjectManager;
     friend class GS3DStuff;
     friend class SpawnPoint;
+    friend class GSFailure;
     friend class ScriptManager;
     friend class MiniMap;
 public:

@@ -23,6 +23,7 @@ namespace Structs { struct ScriptCommand; }
 // Partial storage/call interface observed by SaveGame and Item.
 class ScriptManager {
 public:
+    bool checkScreenPress();
     ScriptManager();
     ~ScriptManager();
     void respawnFromBustedOrDie(bool busted);
