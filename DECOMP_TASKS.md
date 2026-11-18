@@ -1239,8 +1239,9 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18c5 | nativeExit | hud_registration | REVIEW | exact 52-byte candidate; browser, notify and callers pass | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | hud_glyphs | BLOCKED | six candidates; best 400/416 bytes with native frame, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | hud_registration | REVIEW | exact 52-byte first candidate; cached Java int return and old code verified | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d192d | nativeUnlockDemo | hud_registration | REVIEW | exact 52-byte first candidate; cache and all earlier callbacks verified | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d1961 | nativeGetVersionMode | hud_registration | ASSIGNED | pending | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003ef139 | RenderFX::SendEvent(RenderFX::Event&) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
