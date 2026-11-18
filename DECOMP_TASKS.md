@@ -1264,3 +1264,19 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
 
 | libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | six forms; best616/620, native156 frame; old274 checks pass; no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | — | BLOCKED | one unchanged context replay; 4 instruction/21 GOT differences in GC diagnostic; old destructor overlap blocks integration | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | — | BLOCKED | six forms; best1568/1580 frame180/172; old109/118 exact;95/96 header profiles pass, fixture incomplete; no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | IN_PROGRESS | five forms; latest2564/2576; old GS3D comparisons pass; sixth form pending, no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | — | BLOCKED | five forms; best4320/4372 frame612/620; old188/112 exact; no credit | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | — | BLOCKED | six forms; nearest4992/5038; old37/9 and all30 baseline header profiles pass; no credit | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | lock_init | IN_PROGRESS | native CFG recovered read-only; 9212 bytes unchanged; reconstructing first candidate, no credit | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | hud_registration | IN_PROGRESS | native 118-case CFG recovered read-only; 12636 bytes unchanged; reusing command records, no credit | src/game/scripting/Script.cpp |
