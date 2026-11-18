@@ -454,3 +454,44 @@ void Application::ProcessKeyEvent(bool pressed, int type)
     }
     __android_log_print(4, key_tag, key_post);
 }
+
+#include "../hud/MenuManager.h"
+extern bool bIsInCutscene;
+extern int iAdditionMenuDepth;
+
+extern "C" void nativeNotifyPause();
+
+void Application::appKeyReleased(int key)
+{
+    if (stateMachine->states.back()->isKindOf(19) || bIsInCutscene)
+        return;
+    lastPressedKey = -1;
+    if (key == 82) {
+        if (stateMachine->states.back()->isKindOf(16)) {
+            if (MenuManager::getInstance()->getDepth() - iAdditionMenuDepth <= 1)
+                ProcessKeyEvent(false, 1);
+        } else if (stateMachine->states.back()->isKindOf(1)) {
+            ProcessKeyEvent(false, 2);
+        }
+    } else if (key == 4) {
+        if (stateMachine->states.back()->isKindOf(16)) {
+            if (MenuManager::getInstance()->getDepth() - iAdditionMenuDepth > 1)
+                ProcessKeyEvent(false, 1);
+            else
+                ProcessKeyEvent(false, 3);
+        } else if (stateMachine->states.back()->isKindOf(18)) {
+            if (MenuManager::getInstance()->getDepth() - iAdditionMenuDepth > 1)
+                ProcessKeyEvent(false, 1);
+            else
+                ProcessKeyEvent(false, 4);
+        } else if (stateMachine->states.back()->isKindOf(1)) {
+            ProcessKeyEvent(false, 2);
+        } else if (stateMachine->states.back()->isKindOf(23)) {
+            ProcessKeyEvent(false, 1);
+        } else if (stateMachine->states.back()->isKindOf(22)) {
+            ProcessKeyEvent(false, 1);
+        } else if (stateMachine->states.back()->isKindOf(21)) {
+            nativeNotifyPause();
+        }
+    }
+}

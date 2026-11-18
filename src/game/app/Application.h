@@ -20,6 +20,7 @@ namespace irr { class IrrlichtDevice; class IEventReceiver; }
 class Application {
 public:
     void ProcessKeyEvent(bool pressed, int type);
+    void appKeyReleased(int key);
     bool IsLogoOver();
     bool IsGlobalResumingOver();
     static Application* GetInstance();
@@ -88,7 +89,8 @@ private:
     unsigned char unknown132[4];
     ASprite* resumeSprite;
     ASprite* logoSprite;
-    unsigned char unknown144[8];
+    unsigned char unknown144[4];
+    int lastPressedKey;
     bool soundThreadPlaying;
     unsigned char unknown153[3];
     unsigned char monitoredPointers[1] __attribute__((aligned(4)));

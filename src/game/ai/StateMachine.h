@@ -71,6 +71,7 @@ public:
         return value;
     }
 private:
+    friend class Application;
     StateStackPrefix states;
     double timestamp;
     mutable int drawIndex;

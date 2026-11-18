@@ -8844,7 +8844,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4551	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite13GetFrameWidthEi	ASprite::GetFrameWidth(int)
 0x002d456d	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11switchStateI13GSMoviePlayerEEPT_v	GSMoviePlayer* StateMachine::switchState<GSMoviePlayer>()
 0x002d458d	0x20	Application.cpp	game	app	matched	_Z10SafeDeleteI15CControlManagerEvRPT_	void SafeDelete<CControlManager>(CControlManager*&)
-0x002d45ad	0x15c	Application.cpp	game	app	pending	_ZN11Application14appKeyReleasedEi	Application::appKeyReleased(int)
+0x002d45ad	0x15c	Application.cpp	game	app	matched	_ZN11Application14appKeyReleasedEi	Application::appKeyReleased(int)
 0x002d4709	0x134	Application.cpp	game	app	pending	_ZN11Application13appKeyPressedEi	Application::appKeyPressed(int)
 0x002d483d	0x24	Application.cpp	game	app	matched	_ZNK11Application19GetScreenDimensionsERiS0_	Application::GetScreenDimensions(int&, int&) const
 0x002d4861	0x1a0	Application.cpp	game	app	pending	_ZN11Application26displayNumberWithHUDSpriteEiiiPKc	Application::displayNumberWithHUDSprite(int, int, int, char const*)

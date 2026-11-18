@@ -22,6 +22,7 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/ApplicationRuntimeSections.ld
 SECTIONS
 {
+    .application_key_released 0x002d45ac : { *(.text._ZN11Application14appKeyReleasedEi) }
     .application_process_key 0x002d40fc : { *(.text._ZN11Application15ProcessKeyEventEbi) }
     .application_key_tag 0x00413b3c : { *(.rodata.application_key_tag) }
     .application_key_back 0x00413b44 : { *(.rodata.application_key_back) }

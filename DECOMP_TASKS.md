@@ -1173,14 +1173,18 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | hud_glyphs | REVIEW | exact 308-byte candidate; two old menu context differences pending integration | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | hud_glyphs | IN_PROGRESS | one replay against newly integrated genuine application interfaces | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | lock_init | REVIEW | exact 272-byte candidate; coherent header integration validation pending | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x0034c599 | TouchScreenBase::getID(long) header integration | — | COMPLETED | 100%; native 68-byte function preserved after interface integration | src/game/input/TouchScreenBase.cpp |
 
-| libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | hud_registration | BLOCKED | 276/272 bytes; three identical forms; oldTouch header context differs | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d50f1 | Application::Update() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d50f1 | Application::Update() | lock_init | REVIEW | exact 264-byte candidate; coordinator integration validation pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
