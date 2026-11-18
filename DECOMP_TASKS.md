@@ -1056,5 +1056,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00323b69 | SafeDelete<CDrivingHud>(CDrivingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x00323b89 | SafeDelete<CWalkingHud>(CWalkingHud*&) | hud_glyphs | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323b89 | SafeDelete<CWalkingHud>(CWalkingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x00323ba9 | SafeDelete<CSniperHud>(CSniperHud*&) | hud_registration | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
+
+| libsanangeles.so | 0x00323bc9 | SafeDelete<CCameraHud>(CCameraHud*&) | hud_glyphs | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
