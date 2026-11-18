@@ -3,6 +3,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/app-android/retail-symbols.ld
 SECTIONS {
+ .jni_can_interrupt 0x002d1348 : { *app-android.o(.text.Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt) }
     .jni_gangstar_nativeaccelerometer 0x002d136c : { *app-android.o(.text.Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer) }
     .jni_gameglsurfaceview_nativeontouch 0x002d13a0 : { *app-android.o(.text.Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch) }
     .jni_gamerenderer_nativerender 0x002d13b4 : { *app-android.o(.text.Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender) }

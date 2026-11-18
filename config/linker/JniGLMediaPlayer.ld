@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/jni-glmedia-player/retail-symbols.ld
 __aeabi_f2d = 0x001c48f8;
 SECTIONS {
+ .jni_stop_on_music 0x002d1de0 : { *jni-glmedia-player.o(.text.Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic) }
  .jni_total_same_instance 0x002d1ddc : { *jni-glmedia-player.o(.text.Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance) }
 
  .jni_native_total_sounds 0x002d1dd4 : { *jni-glmedia-player.o(.text.Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds) }

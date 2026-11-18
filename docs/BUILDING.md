@@ -167,6 +167,15 @@ command rebuilds all required units from source using their configured compiler
 profiles (or the explicit toolchain override). Keep sources, manifests, linker
 scripts and toolchains unchanged while a command runs.
 
+Private Windows verification harnesses must pass linker object paths with forward
+slashes, as the canonical builder does. Convert `Path` arguments with
+`Path.as_posix()`: GNU ld selectors such as `*/stream.o` do not match backslash
+paths. A mismatch can leave genuine Stream sections orphaned and produce section
+overlap errors even when all input objects are correct. Re-linking the same saved
+GameObjectManager objects with normalized paths restored all 74 function and 210
+section/region comparisons. Do not skip these checks or change native placements
+to work around a path mismatch.
+
 ### External Thumb callees
 
 A unit may list `external_thumb_functions` in its manifest when a callee still

@@ -161,3 +161,21 @@ void Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit(
 #ifdef __cplusplus
 }
 #endif
+
+/* DEX: private static native int nativeCanInterrupt(). Retail returns the
+ * incoming JNI environment bits unchanged; its original source intent is unknown.
+ * Preserve that observed 32-bit ABI result with a defined conversion. */
+typedef jobject jclass;
+typedef char NativeCanInterruptPointerWidth[(sizeof(JNIEnv*) == 4) ? 1 : -1];
+typedef char NativeCanInterruptIntegerWidth[(sizeof(unsigned int) == 4 && sizeof(jint) == 4) ? 1 : -1];
+#ifdef __cplusplus
+extern "C" {
+#endif
+jint Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt(
+    JNIEnv* env, jclass unusedClass)
+{
+    return (jint)(unsigned int)env;
+}
+#ifdef __cplusplus
+}
+#endif

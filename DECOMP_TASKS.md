@@ -456,7 +456,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | — | BLOCKED | two current/lifetime forms identical732B; target/dispatch fail; old143/134 and55 header profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
@@ -668,13 +668,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
-| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | — | BLOCKED | five forms; canonical-header176B candidate differs8bytes; old10/8 and full385-function header closure pass; no credit | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | BLOCKED | pending | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | — | COMPLETED | 100% | src/game/hud/MenuManager.cpp |
 | libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x003437c9 | Preferences deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | — | COMPLETED | 100%;336B; coordinator native target/full182-profile gate exact; canonical headers unchanged | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002eb5d9 | Menus::Services::Notify | vehicle_side | BLOCKED | pending | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | lock_init | BLOCKED | pending | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | private true-hierarchy ABI regression only; tracked match remains exact | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | BLOCKED | three forms;668B differs8 stack-reference bytes; Cash regression and five legacy forward conflicts block coherent integration; tracked match unchanged | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -845,9 +845,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | ASSIGNED | reuse new exact Debug pointer/index canonicalization evidence; bounded two nonduplicate source forms, all old matches required | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | ASSIGNED | new exact Debug address-operand evidence after rejected TER probe; bounded two nonduplicate declaration/address forms | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -868,7 +868,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349815 | ASprite::GetModule | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349815 | ASprite::GetModule | hud_glyphs | ASSIGNED | reuse new exact Debug explicit pointer/index address form; bounded two nonduplicate forms, unchanged headers | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
@@ -1119,7 +1119,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | hud_glyphs | BLOCKED | 1788/1792 bytes; first form parked on old visibility regression | src/game/ui/MenuManager.cpp |
 
-| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | lock_init | BLOCKED | 2440/2436 bytes; six forms; 34 header-only profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | — | BLOCKED | three hint forms2440/2436; strict overlap4B; corrected aggregate selectors, no credit | src/game/scripting/ScriptManager.cpp |
 
 | libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
 
@@ -1157,13 +1157,13 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034ae61 | ASpriteData::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | coordinator | BLOCKED | shared-header replay unchanged 1294/1296 bytes; no credit | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | — | COMPLETED | 100%;1296B plus1140B literal blob; coordinator full183-profile/10267-comparison gate exact | src/game/rendering/ASpriteData.cpp |
 
 | libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | BLOCKED | 500/512 bytes; six forms; rejected two old header regressions | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | BLOCKED | 292/296 bytes; six forms; shared declaration extraction and old graph exact | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | coordinator | BLOCKED | 30/32 bytes; four comparisons, return-register tail differs, no credit | src/game/app/IPhone.cpp |
+| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | coordinator | BLOCKED | 80/82-byte candidate; five forms, all old 36 functions and 32 section/regions exact | src/game/rendering/ASprite.cpp |
 
@@ -1271,12 +1271,22 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | IN_PROGRESS | five forms; latest2564/2576; old GS3D comparisons pass; sixth form pending, no credit | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | — | BLOCKED | six forms; best2568/2576; target/switch differ; Cash header regression and LevelObject link overlap; no credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x0030c035 | Vehicle::step() | — | BLOCKED | five forms; best4320/4372 frame612/620; old188/112 exact; no credit | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | — | BLOCKED | six forms; nearest4992/5038; old37/9 and all30 baseline header profiles pass; no credit | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | lock_init | IN_PROGRESS | native CFG recovered read-only; 9212 bytes unchanged; reconstructing first candidate, no credit | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | — | BLOCKED | six forms; best9116/9212, native412B frame; old188/112 and all95 header profiles exact; no credit | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | hud_registration | IN_PROGRESS | native 118-case CFG recovered read-only; 12636 bytes unchanged; reusing command records, no credit | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | — | BLOCKED | five forms;12384/12636, frame324/332; old/support exact and93 baseline header profiles pass; buffer extent provisional; no credit | src/game/scripting/Script.cpp |
+
+| libsanangeles.so | 0x002d1de1 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic | — | COMPLETED | 100%;2B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1349 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt | — | COMPLETED | 100%;2B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/app/app-android.c |
+
+| libsanangeles.so | 0x002d1335 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv | — | COMPLETED | 100%;20B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/core/CIrrDevicePS3.cpp |
+
+| libsanangeles.so | 0x002d1de5 | GetNativeSoundRaw | — | BLOCKED | native/DEX/relocation/pointer/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | — | BLOCKED | native/DEX/relocation/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |

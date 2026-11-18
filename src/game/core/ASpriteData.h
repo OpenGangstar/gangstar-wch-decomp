@@ -5,6 +5,7 @@ class ASpriteData {
     friend class ASprite;
 public:
     ASpriteData();
+    void Debug();
     void Swap();
     struct __rect {
         int left, right, top, bottom;

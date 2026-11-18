@@ -8640,8 +8640,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d1299	0x48	COpenGLESTexture.cpp	irrlicht	-	matched	_ZN3irr5video16COpenGLESTextureD0Ev	irr::video::COpenGLESTexture::~COpenGLESTexture()
 0x002d12e1	0x14	COpenGLESTexture.cpp	irrlicht	-	matched	_ZTv0_n12_N3irr5video16COpenGLESTextureD1Ev	virtual thunk to irr::video::COpenGLESTexture::~COpenGLESTexture()
 0x002d12f5	0x40	COpenGLESTexture.cpp	irrlicht	-	matched	_ZN3irr5video16COpenGLESTextureD1Ev	irr::video::COpenGLESTexture::~COpenGLESTexture()
-0x002d1335	0x14	CIrrDevicePS3.cpp	game	core	pending	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv
-0x002d1349	0x2	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt
+0x002d1335	0x14	CIrrDevicePS3.cpp	game	core	matched	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv
+0x002d1349	0x2	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt
 0x002d134d	0xe	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp
 0x002d135d	0xe	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown
 0x002d136d	0x34	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer
@@ -8671,7 +8671,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d19c9	0x40c	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeInit
 0x002d1dd5	0x6	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds
 0x002d1ddd	0x4	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance
-0x002d1de1	0x2	jni_GLMediaPlayer.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic
+0x002d1de1	0x2	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic
 0x002d1de5	0x2	jni_GLMediaPlayer.c	game	app	pending	GetNativeSoundRaw	GetNativeSoundRaw
 0x002d1de9	0x2	jni_GLMediaPlayer.c	game	app	pending	GetNativeResourceSoundRawLength	GetNativeResourceSoundRawLength
 0x002d1ded	0x3c	jni_GLMediaPlayer.c	game	app	matched	nativeLoadSound	nativeLoadSound
@@ -12320,7 +12320,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00343811	0x24	Preferences.cpp	game	ui	matched	_ZN11PreferencesC2Ev	Preferences::Preferences()
 0x00343811	0x24	Preferences.cpp	game	ui	matched	_ZN11PreferencesC1Ev	Preferences::Preferences()
 0x00343835	0xb0	Preferences.cpp	game	ui	pending	_ZN11Preferences14GetOrientationEPKc	Preferences::GetOrientation(char const*)
-0x003438e5	0x150	Preferences.cpp	game	ui	pending	_ZN11Preferences13SampleAndSaveEPKc	Preferences::SampleAndSave(char const*)
+0x003438e5	0x150	Preferences.cpp	game	ui	matched	_ZN11Preferences13SampleAndSaveEPKc	Preferences::SampleAndSave(char const*)
 0x00343a39	0x25c	Preferences.cpp	game	ui	pending	_ZN11Preferences12LoadAndApplyEPKc	Preferences::LoadAndApply(char const*)
 0x00343c99	0x144	Preferences.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00343ddd	0x14	Preferences.cpp	game	ui	matched	_GLOBAL__I__ZN11PreferencesC2Ev	_GLOBAL__I__ZN11PreferencesC2Ev
@@ -12630,7 +12630,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034a3c9	0xc8	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData4Anim4SwapEv	ASpriteData::Anim::Swap()
 0x0034a491	0x1c2	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData5Frame4SwapEv	ASpriteData::Frame::Swap()
 0x0034a655	0xd2	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6Module4SwapEv	ASpriteData::Module::Swap()
-0x0034a729	0x510	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5DebugEv	ASpriteData::Debug()
+0x0034a729	0x510	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData5DebugEv	ASpriteData::Debug()
 0x0034ac39	0x96	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData7FModule4SwapEv	ASpriteData::FModule::Swap()
 0x0034acd1	0xcc	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData5Image4SwapEv	ASpriteData::Image::Swap()
 0x0034ad9d	0xc4	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6AFrame4SwapEv	ASpriteData::AFrame::Swap()

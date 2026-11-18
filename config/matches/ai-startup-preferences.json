@@ -43,7 +43,8 @@
         {
             "name": "_GLOBAL__I__ZN11PreferencesC2Ev",
             "address": "0x00343ddd"
-        }
+        },
+        "_ZN11Preferences13SampleAndSaveEPKc"
     ],
     "sections": [
         ".preferences_vtable",
@@ -64,7 +65,15 @@
         "_ZN11PersistenceC1Ev",
         "_ZN10FileStreamC1Ev",
         "_ZN10FileStream5ExistEPKc",
-        "_ZN10FileStreamD1Ev"
+        "_ZN10FileStreamD1Ev",
+        "_ZN10FileStreamC1EPKci",
+        "_ZNK10FileStream7IsValidEv",
+        "_ZN10DataStreamC1ER6StreamNS_6endianE",
+        "_ZN11Persistence13SetDataStreamEP10DataStream",
+        "_ZN11Persistence10WriteBlockERKNS_5BlockE",
+        "_ZN10FileStream5CloseEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN5Menus18OptionGameSettings14GetOrientationEv"
     ],
     "retail_got": true
 }

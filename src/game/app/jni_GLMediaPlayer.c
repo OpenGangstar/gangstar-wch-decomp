@@ -245,3 +245,15 @@ jint Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds
 #ifdef __cplusplus
 }
 #endif
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+void Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic(
+    JNIEnv* unusedEnv, jclass unusedClass, jint unusedStopOnMusic)
+{
+}
+#ifdef __cplusplus
+}
+#endif

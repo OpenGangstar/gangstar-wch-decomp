@@ -1,9 +1,14 @@
+printf = 0x001c4058;
+putchar = 0x001c3f98;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/asprite-data/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 SECTIONS
 {
+ .asprite_debug_literals 0x435a70 : { *asprite-data.o(.rodata.str1.4) }
+ .asprite_data_debug 0x34a728 : { *asprite-data.o(.text._ZN11ASpriteData5DebugEv) }
+
     .asprite_data_rect_validate 0x00335cc4 : { *asprite-data.o(.gnu.linkonce.t._ZN3RctIiE9_validateEv) }
     .asprite_data_rect_delete 0x00335d54 : { *asprite-data.o(.gnu.linkonce.t._ZN3RctIiED0Ev) }
     .asprite_data_rect_destructor 0x00335d74 : { *asprite-data.o(.gnu.linkonce.t._ZN3RctIiED1Ev) }
