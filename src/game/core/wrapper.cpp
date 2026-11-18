@@ -223,3 +223,25 @@ extern "C" void appPause()
     app->Pause();
     m_timerForResume = 0;
 }
+
+#include "DeviceFactory.h"
+extern "C" {
+extern int _IRR_REAL_RES_SIZE_;
+extern char* _IRR_REAL_RES_PATH_;
+extern int sWindowWidth, sWindowHeight;
+}
+static const char wrapperResourcePath[] __attribute__((section(".rodata.wrapper_resource_path"))) =
+    "/sdcard/gameloft/games/gangstar/";
+extern "C" void appInit(void)
+{
+    _IRR_REAL_RES_SIZE_ = 32;
+    _IRR_REAL_RES_PATH_ = new char[_IRR_REAL_RES_SIZE_ + 1];
+    memset(_IRR_REAL_RES_PATH_, 0, _IRR_REAL_RES_SIZE_ + 1);
+    memcpy(_IRR_REAL_RES_PATH_, wrapperResourcePath, _IRR_REAL_RES_SIZE_);
+    device = irr::createDevice(irr::video::DriverType9,
+        irr::core::dimension2d<int>(static_cast<int>(sWindowWidth / 1.5),
+                                  static_cast<int>(sWindowHeight / 1.5)),
+        16, false, false, false, 0);
+    app = Application::GetInstance();
+    app->InitWin32(device);
+}

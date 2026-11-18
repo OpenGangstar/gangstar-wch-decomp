@@ -277,3 +277,7 @@ ASSERT(SIZEOF(.gangstar_unlock_method)==4,"JNI unlock method cache extent");
 ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
 
 ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
+
+INCLUDE config/linker/ApplicationDestructorSections.ld
+
+INCLUDE config/linker/ApplicationInitWin32Sections.ld

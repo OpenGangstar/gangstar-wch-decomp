@@ -81,8 +81,8 @@ unsigned int SceneNodeManager::crc(const char* name) const
     const unsigned int length = strlen(name);
     if (static_cast<int>(length) <= 0)
         return 0;
-    unsigned int value = ~0u;
     unsigned int index = 0;
+    unsigned int value = ~0u;
     do {
         value = (value >> 8) ^ crcTable[(value & 0xffu) ^ static_cast<unsigned char>(name[index])];
     } while (++index < length);

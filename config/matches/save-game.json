@@ -253,7 +253,8 @@
         ".jni_text_413288",
         ".jni_text_41328c",
         ".jni_text_413298",
-        ".jni_text_4132a8"
+        ".jni_text_4132a8",
+        ".wrapper_resource_path"
     ],
     "functions": [
         "_ZN8SaveGame12SampleObjectEP11LevelObject",
@@ -347,7 +348,8 @@
         "nativeUnlockDemo",
         "nativeGetVersionMode",
         "nativeGetNumLaunch",
-        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
+        "appInit"
     ],
     "dependencies": [
         "gs3d-stuff",
@@ -445,6 +447,8 @@
         "nativeStopAllSounds",
         "nativeUnloadSoundBig",
         "_ZN11Application4QuitEv",
-        "_ZN11Application5PauseEv"
+        "_ZN11Application5PauseEv",
+        "_ZN3irr12createDeviceENS_5video13E_DRIVER_TYPEERKNS_4core11dimension2dIiEEjbbbPNS_14IEventReceiverE",
+        "_ZN11Application9InitWin32EPN3irr14IrrlichtDeviceE"
     ]
 }

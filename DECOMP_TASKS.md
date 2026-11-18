@@ -915,7 +915,7 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 | libsanangeles.so | 0x00349a81 | ASprite::GetFrameIdx(char const*) | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | hud_registration | BLOCKED | 62/64 bytes (unmatched) | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100% (no new credit) | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100% (independent loop-index declaration; no new credit) | src/game/ui/Cash.cpp |
 
 | libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 
@@ -1189,15 +1189,15 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d4e89 | Application::Resume() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | REVIEW | exact 118-byte candidate; 95-profile old/support proof passed | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | BLOCKED | native148B aliases unmatched; three forms; authentic180B header and old123-profile proof pass | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | REVIEW | exact 368-byte candidate; genuine alias hierarchy proof passed except known fixture | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | hud_glyphs | REVIEW | exact destructor aliases; canonical RAII and old90-profile proof pass | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | hud_glyphs | REVIEW | exact destructor aliases; canonical RAII and old90-profile proof pass | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | REVIEW | exact 656-byte candidate; oldCash header context difference and link limitations pending | src/game/app/Application.cpp |
 
@@ -1221,7 +1221,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d25a9 | appOnAccelerometer | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2731 | appPause | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d5d89 | Application.cpp::__tcf_4 generated singleton cleanup | — | COMPLETED | 100% | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d2759 | appInit | lock_init | BLOCKED | exact 192-byte candidate; InitWin32 declaration regresses existing Cash332 by five bytes; no credit | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2759 | appInit | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d13f5 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d13d9 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d13a1 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch | — | COMPLETED | 100% | src/game/app/app-android.c |
@@ -1257,6 +1257,8 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | lock_init | BLOCKED | five forms; best656/652 overlaps native neighbor, old baseline proof retained; no credit | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
 | libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | hud_glyphs | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
-| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | hud_registration | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | lock_init | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | hud_glyphs | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | hud_registration | REVIEW | five forms; best2212/2228; constructor diagnostic2236 overlaps neighbor; typed-header gate passes; no credit | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | lock_init | REVIEW | safe3060/3220; improved3160 constructor context regresses old cleanup; worker usage limit, final safe-header gate incomplete | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | six forms; best4040/4020; old188/112 and 48-profile header gate pass; no credit | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent local initialization order; no new credit) | src/game/world/SceneNodeManager.cpp |
