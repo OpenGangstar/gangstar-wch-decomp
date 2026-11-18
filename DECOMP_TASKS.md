@@ -1145,8 +1145,20 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034ac39 | ASpriteData::FModule::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034a3c9 | ASpriteData::Anim::Swap() | lock_init | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034a3c9 | ASpriteData::Anim::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034acd1 | ASpriteData::Image::Swap() | hud_glyphs | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034acd1 | ASpriteData::Image::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034a231 | ASpriteData::__rect::isIntersecting(int, int) | hud_registration | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034a231 | ASpriteData::__rect::isIntersecting(int, int) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a655 | ASpriteData::Module::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a491 | ASpriteData::Frame::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034ae61 | ASpriteData::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | lock_init | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | ASSIGNED | pending | src/game/rendering/ASprite.cpp |

@@ -29,14 +29,24 @@
         "_ZN11ASpriteDataC1Ev",
         "_ZN11ASpriteDataC2Ev",
         "_ZN11ASpriteData6AFrame4SwapEv",
-        "_ZN11ASpriteData7FModule4SwapEv"
+        "_ZN11ASpriteData7FModule4SwapEv",
+        "_ZN11ASpriteData6Module4SwapEv",
+        "_ZN11ASpriteData4Anim4SwapEv",
+        "_ZN11ASpriteData5Image4SwapEv",
+        "_ZN11ASpriteData5Frame4SwapEv",
+        "_ZN11ASpriteData6__rect14isIntersectingEii",
+        "_ZN3RctIiE9_validateEv",
+        "_ZN3RctIiED0Ev",
+        "_ZN3RctIiED1Ev",
+        "_ZN11ASpriteData4SwapEv"
     ],
     "sections": [
         ".asprite_data_ctor",
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".asprite_data_rect_vtable"
     ],
     "retail_got": true
 }
