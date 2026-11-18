@@ -8797,9 +8797,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3bcd	0x14	FileManager.cpp	game	persistence	matched	_GLOBAL__I__ZN11FileManager5s_mgrE	_GLOBAL__I__ZN11FileManager5s_mgrE
 0x002d3be1	0x2	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhone9playMovieEPKc	MediaPlayerIPhone::playMovie(char const*)
 0x002d3be5	0x2	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhone9stopMovieEv	MediaPlayerIPhone::stopMovie()
-0x002d3be9	0x1c	MediaPlayerIPhone.cpp	game	app	pending	_ZNK17MediaPlayerIPhone6_traceEPKc	MediaPlayerIPhone::_trace(char const*) const
-0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhoneC1Ev	MediaPlayerIPhone::MediaPlayerIPhone()
-0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhoneC2Ev	MediaPlayerIPhone::MediaPlayerIPhone()
+0x002d3be9	0x1c	MediaPlayerIPhone.cpp	game	app	matched	_ZNK17MediaPlayerIPhone6_traceEPKc	MediaPlayerIPhone::_trace(char const*) const
+0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	matched	_ZN17MediaPlayerIPhoneC1Ev	MediaPlayerIPhone::MediaPlayerIPhone()
+0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	matched	_ZN17MediaPlayerIPhoneC2Ev	MediaPlayerIPhone::MediaPlayerIPhone()
 0x002d3c35	0x4	Application.cpp	game	app	matched	_ZNK6IEvent10getEventIDEv	IEvent::getEventID() const
 0x002d3c39	0x6	Application.cpp	game	app	matched	_ZN11Application16SetIsDemoVersionEb	Application::SetIsDemoVersion(bool)
 0x002d3c41	0x6	Application.cpp	game	app	matched	_ZN11Application16GetIsDemoVersionEv	Application::GetIsDemoVersion()
@@ -8811,8 +8811,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3c7d	0x12	Application.cpp	game	app	pending	_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff	Application::InitIPhone(irr::IrrlichtDevice*, float, float, float, float)
 0x002d3c91	0x2	Application.cpp	game	app	matched	_ZN11Application21dumpMonitoredPointersEv	Application::dumpMonitoredPointers()
 0x002d3c95	0x6	Application.cpp	game	app	matched	_ZN11Application10SetDrawAllEb	Application::SetDrawAll(bool)
-0x002d3c9d	0x1a	Application.cpp	game	app	pending	_ZN11Application20IsGlobalResumingOverEv	Application::IsGlobalResumingOver()
-0x002d3cb9	0x1c	Application.cpp	game	app	pending	_ZN11Application10IsLogoOverEv	Application::IsLogoOver()
+0x002d3c9d	0x1a	Application.cpp	game	app	matched	_ZN11Application20IsGlobalResumingOverEv	Application::IsGlobalResumingOver()
+0x002d3cb9	0x1c	Application.cpp	game	app	matched	_ZN11Application10IsLogoOverEv	Application::IsLogoOver()
 0x002d3cd5	0x240	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_Rb_globalIbE20_Rebalance_for_eraseEPNS_18_Rb_tree_node_baseERS3_S4_S4_	stlp_priv::_Rb_global<bool>::_Rebalance_for_erase(stlp_priv::_Rb_tree_node_base*, stlp_priv::_Rb_tree_node_base*&, stlp_priv::_Rb_tree_node_base*&, stlp_priv::_Rb_tree_node_base*&)
 0x002d3f15	0x3c	Application.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIPvSt4lessIS1_ESt4pairIKS1_PKcENS_10_Select1stIS8_EENS_11_MapTraitsTIS8_EESaIS8_EE8_M_eraseEPNS_18_Rb_tree_node_baseE	stlp_priv::_Rb_tree<void*, std::less<void*>, std::pair<void* const, char const*>, stlp_priv::_Select1st<std::pair<void* const, char const*> >, stlp_priv::_MapTraitsT<std::pair<void* const, char const*> >, std::allocator<std::pair<void* const, char const*> > >::_M_erase(stlp_priv::_Rb_tree_node_base*)
 0x002d3f51	0x2c	Application.cpp	stlport	-	matched	_ZNSt4listIPN3irr14IEventReceiverESaIS2_EE6removeERKS2_	std::list<irr::IEventReceiver*, std::allocator<irr::IEventReceiver*> >::remove(irr::IEventReceiver* const&)
@@ -9806,8 +9806,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002eb921	0xbc	MenuState.cpp	game	ui	pending	_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti	Menus::ServiceWeaponShop::Notify(MenuWidget const*, int)
 0x002eb9dd	0x154	MenuState.cpp	game	ui	pending	_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti	Menus::ServiceMissions::Notify(MenuWidget const*, int)
 0x002ebb31	0x16c	MenuState.cpp	game	ui	matched	_ZN5Menus3Map6UpdateEv	Menus::Map::Update()
-0x002ebc9d	0x8c	CHudManager.cpp	game	hud	pending	_ZN11CHudManager15setThrottleModeENS_12ThrottleModeE	CHudManager::setThrottleMode(CHudManager::ThrottleMode)
-0x002ebd29	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager15setSteeringModeENS_12SteeringModeE	CHudManager::setSteeringMode(CHudManager::SteeringMode)
+0x002ebc9d	0x8c	CHudManager.cpp	game	hud	matched	_ZN11CHudManager15setThrottleModeENS_12ThrottleModeE	CHudManager::setThrottleMode(CHudManager::ThrottleMode)
+0x002ebd29	0xf4	CHudManager.cpp	game	hud	matched	_ZN11CHudManager15setSteeringModeENS_12SteeringModeE	CHudManager::setSteeringMode(CHudManager::SteeringMode)
 0x002ebe1d	0x18	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidgetD1Ev	MenuWidget::~MenuWidget()
 0x002ebe1d	0x18	MenuWidget.cpp	game	ui	matched	_ZN10MenuWidgetD2Ev	MenuWidget::~MenuWidget()
 0x002ebe35	0x4	MenuWidget.cpp	game	ui	matched	_ZNK10MenuWidget9IsVisibleEv	MenuWidget::IsVisible() const
@@ -10987,8 +10987,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00322c15	0x30	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudC1EP11CHudManager	CCameraHud::CCameraHud(CHudManager*)
 0x00322c45	0x18	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudD2Ev	CCameraHud::~CCameraHud()
 0x00322c45	0x18	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHudD1Ev	CCameraHud::~CCameraHud()
-0x00322c5d	0x178	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHud4showEv	CCameraHud::show()
-0x00322dd5	0xd4	CCameraHud.cpp	game	hud	pending	_ZN10CCameraHud4hideEv	CCameraHud::hide()
+0x00322c5d	0x178	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHud4showEv	CCameraHud::show()
+0x00322dd5	0xd4	CCameraHud.cpp	game	hud	matched	_ZN10CCameraHud4hideEv	CCameraHud::hide()
 0x00322ea9	0x30	CCameraHud.cpp	game	hud	matched	__tcf_2	__tcf_2
 0x00322ed9	0x6c	CCameraHud.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00322f45	0x14	CCameraHud.cpp	game	hud	matched	_GLOBAL__I__ZN10CCameraHudC2EP11CHudManager	_GLOBAL__I__ZN10CCameraHudC2EP11CHudManager
@@ -11000,8 +11000,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00322fdd	0x20	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHud8showCashEb	CDrivingHud::showCash(bool)
 0x00322ffd	0x80	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHud20toggleWeaponSelectorEb	CDrivingHud::toggleWeaponSelector(bool)
 0x0032307d	0x30	CDrivingHud.cpp	game	hud	matched	__tcf_3	__tcf_3
-0x003230ad	0x254	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHud4showEv	CDrivingHud::show()
-0x00323301	0x14c	CDrivingHud.cpp	game	hud	pending	_ZN11CDrivingHud4hideEv	CDrivingHud::hide()
+0x003230ad	0x254	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHud4showEv	CDrivingHud::show()
+0x00323301	0x14c	CDrivingHud.cpp	game	hud	matched	_ZN11CDrivingHud4hideEv	CDrivingHud::hide()
 0x0032344d	0x144	CDrivingHud.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00323591	0x14	CDrivingHud.cpp	game	hud	matched	_GLOBAL__I__ZN11CDrivingHudC2EP11CHudManager	_GLOBAL__I__ZN11CDrivingHudC2EP11CHudManager
 0x003235a5	0xc	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4initEv	CHudManager::init()
@@ -11017,7 +11017,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003236a5	0x12	CHudManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIP10HudElementSaIS2_EED1Ev	stlp_priv::_Vector_base<HudElement*, std::allocator<HudElement*> >::~_Vector_base()
 0x003236b9	0x30	CHudManager.cpp	game	hud	matched	__tcf_3	__tcf_3
 0x003236e9	0x1a	CHudManager.cpp	game	hud	matched	_ZN11CHudManager20toggleWeaponSelectorEb	CHudManager::toggleWeaponSelector(bool)
-0x00323705	0xb8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager5blinkEi	CHudManager::blink(int)
+0x00323705	0xb8	CHudManager.cpp	game	hud	matched	_ZN11CHudManager5blinkEi	CHudManager::blink(int)
 0x003237bd	0x22	CHudManager.cpp	game	hud	matched	_ZN11CHudManager13toggleRadioCBEb	CHudManager::toggleRadioCB(bool)
 0x003237e1	0x2e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager8showCashEb	CHudManager::showCash(bool)
 0x00323811	0x10	CHudManager.cpp	game	hud	matched	_ZN11CHudManager18useSpyBGInSpyGaugeEv	CHudManager::useSpyBGInSpyGauge()
@@ -11027,8 +11027,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032385d	0x44	CHudManager.cpp	stlport	-	matched	_ZNSaIP10HudElementE8allocateEjRj	std::allocator<HudElement*>::allocate(unsigned int, unsigned int&)
 0x003238a1	0xc	CHudManager.cpp	game	hud	pending	_ZSt26__stl_throw_overflow_errorPKc	std::__stl_throw_overflow_error(char const*)
 0x003238ad	0x46	CHudManager.cpp	game	hud	matched	_ZN11CHudManager12switchWeaponEv	CHudManager::switchWeapon()
-0x003238f5	0xa8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager24unregUpdatableComponentsEv	CHudManager::unregUpdatableComponents()
-0x0032399d	0xa8	CHudManager.cpp	game	hud	pending	_ZN11CHudManager22regUpdatableComponentsEv	CHudManager::regUpdatableComponents()
+0x003238f5	0xa8	CHudManager.cpp	game	hud	matched	_ZN11CHudManager24unregUpdatableComponentsEv	CHudManager::unregUpdatableComponents()
+0x0032399d	0xa8	CHudManager.cpp	game	hud	matched	_ZN11CHudManager22regUpdatableComponentsEv	CHudManager::regUpdatableComponents()
 0x00323a45	0x18	CHudManager.cpp	game	hud	matched	_ZNK11CHudManager10isNearShopEv	CHudManager::isNearShop() const
 0x00323a5d	0x18	CHudManager.cpp	game	hud	matched	_ZN11CHudManager11notNearShopEv	CHudManager::notNearShop()
 0x00323a75	0x18	CHudManager.cpp	game	hud	matched	_ZN11CHudManager8nearShopEv	CHudManager::nearShop()
@@ -11041,11 +11041,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00323b89	0x20	CHudManager.cpp	game	hud	pending	_Z10SafeDeleteI11CWalkingHudEvRPT_	void SafeDelete<CWalkingHud>(CWalkingHud*&)
 0x00323ba9	0x20	CHudManager.cpp	game	hud	pending	_Z10SafeDeleteI10CSniperHudEvRPT_	void SafeDelete<CSniperHud>(CSniperHud*&)
 0x00323bc9	0x20	CHudManager.cpp	game	hud	pending	_Z10SafeDeleteI10CCameraHudEvRPT_	void SafeDelete<CCameraHud>(CCameraHud*&)
-0x00323be9	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager21regDrawableComponentsEv	CHudManager::regDrawableComponents()
+0x00323be9	0xf4	CHudManager.cpp	game	hud	matched	_ZN11CHudManager21regDrawableComponentsEv	CHudManager::regDrawableComponents()
 0x00323cdd	0x3a	CHudManager.cpp	game	hud	matched	_ZN11CHudManager13limitToWeaponEi	CHudManager::limitToWeapon(int)
 0x00323d19	0x4e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager12switchWeaponEi	CHudManager::switchWeapon(int)
 0x00323d69	0x40	CHudManager.cpp	game	hud	matched	_ZN11CHudManager4hideEv	CHudManager::hide()
-0x00323da9	0xf4	CHudManager.cpp	game	hud	pending	_ZN11CHudManager23unregDrawableComponentsEv	CHudManager::unregDrawableComponents()
+0x00323da9	0xf4	CHudManager.cpp	game	hud	matched	_ZN11CHudManager23unregDrawableComponentsEv	CHudManager::unregDrawableComponents()
 0x00323e9d	0x28	CHudManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE6spliceEN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEERS1_S6_	std::list<long, std::allocator<long> >::splice(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::list<long, std::allocator<long> >&, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >)
 0x00323ec5	0x12	CHudManager.cpp	stlport	-	matched	_ZNSt6vectorIP10HudElementSaIS1_EE8_M_clearEv	std::vector<HudElement*, std::allocator<HudElement*> >::_M_clear()
 0x00323ed9	0x144	CHudManager.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -11055,18 +11055,18 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00324161	0x64	CHudManager.cpp	stlport	-	matched	_ZN9stlp_priv8_S_mergeIlSaIlESt4lessIlEEEvRSt4listIT_T0_ES8_T1_	void stlp_priv::_S_merge<long, std::allocator<long>, std::less<long> >(std::list<long, std::allocator<long> >&, std::list<long, std::allocator<long> >&, std::less<long>)
 0x003241c5	0x1d4	CHudManager.cpp	stlport	-	matched	_ZN9stlp_priv7_S_sortIlSaIlESt4lessIlEEEvRSt4listIT_T0_ET1_	void stlp_priv::_S_sort<long, std::allocator<long>, std::less<long> >(std::list<long, std::allocator<long> >&, std::less<long>)
 0x00324399	0x2d0	CHudManager.cpp	game	hud	pending	_ZN11CHudManager6updateEd	CHudManager::update(double)
-0x00324669	0x310	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerD0Ev	CHudManager::~CHudManager()
-0x00324979	0x30c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerD2Ev	CHudManager::~CHudManager()
-0x00324979	0x30c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerD1Ev	CHudManager::~CHudManager()
-0x00324c85	0xa0c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerC1Ev	CHudManager::CHudManager()
-0x00324c85	0xa0c	CHudManager.cpp	game	hud	pending	_ZN11CHudManagerC2Ev	CHudManager::CHudManager()
+0x00324669	0x310	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerD0Ev	CHudManager::~CHudManager()
+0x00324979	0x30c	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerD2Ev	CHudManager::~CHudManager()
+0x00324979	0x30c	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerD1Ev	CHudManager::~CHudManager()
+0x00324c85	0xa0c	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerC1Ev	CHudManager::CHudManager()
+0x00324c85	0xa0c	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerC2Ev	CHudManager::CHudManager()
 0x00325691	0x4	CWalkingHud.cpp	game	hud	matched	_ZNK11CWalkingHud12isWalkingHudEv	CWalkingHud::isWalkingHud() const
 0x00325695	0x30	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudC1EP11CHudManager	CWalkingHud::CWalkingHud(CHudManager*)
 0x00325695	0x30	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudC2EP11CHudManager	CWalkingHud::CWalkingHud(CHudManager*)
 0x003256c5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudD1Ev	CWalkingHud::~CWalkingHud()
 0x003256c5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHudD2Ev	CWalkingHud::~CWalkingHud()
-0x003256dd	0x12a	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud4showEv	CWalkingHud::show()
-0x00325809	0xb6	CWalkingHud.cpp	game	hud	pending	_ZN11CWalkingHud4hideEv	CWalkingHud::hide()
+0x003256dd	0x12a	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud4showEv	CWalkingHud::show()
+0x00325809	0xb6	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud4hideEv	CWalkingHud::hide()
 0x003258c1	0x22	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud7nearCarEv	CWalkingHud::nearCar()
 0x003258e5	0x18	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud10notNearCarEv	CWalkingHud::notNearCar()
 0x003258fd	0x24	CWalkingHud.cpp	game	hud	matched	_ZN11CWalkingHud8nearShopEv	CWalkingHud::nearShop()
@@ -11078,12 +11078,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00325a2d	0x30	CWalkingHud.cpp	game	hud	matched	__tcf_2	__tcf_2
 0x00325a5d	0x6c	CWalkingHud.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00325ac9	0x14	CWalkingHud.cpp	game	hud	matched	_GLOBAL__I__ZN11CWalkingHudC2EP11CHudManager	_GLOBAL__I__ZN11CWalkingHudC2EP11CHudManager
-0x00325add	0x30	SniperHud.cpp	game	hud	pending	_ZN10CSniperHudC1EP11CHudManager	CSniperHud::CSniperHud(CHudManager*)
-0x00325add	0x30	SniperHud.cpp	game	hud	pending	_ZN10CSniperHudC2EP11CHudManager	CSniperHud::CSniperHud(CHudManager*)
-0x00325b0d	0x18	SniperHud.cpp	game	hud	pending	_ZN10CSniperHudD1Ev	CSniperHud::~CSniperHud()
-0x00325b0d	0x18	SniperHud.cpp	game	hud	pending	_ZN10CSniperHudD2Ev	CSniperHud::~CSniperHud()
-0x00325b25	0x154	SniperHud.cpp	game	hud	pending	_ZN10CSniperHud4showEv	CSniperHud::show()
-0x00325c79	0xd4	SniperHud.cpp	game	hud	pending	_ZN10CSniperHud4hideEv	CSniperHud::hide()
+0x00325add	0x30	SniperHud.cpp	game	hud	matched	_ZN10CSniperHudC1EP11CHudManager	CSniperHud::CSniperHud(CHudManager*)
+0x00325add	0x30	SniperHud.cpp	game	hud	matched	_ZN10CSniperHudC2EP11CHudManager	CSniperHud::CSniperHud(CHudManager*)
+0x00325b0d	0x18	SniperHud.cpp	game	hud	matched	_ZN10CSniperHudD1Ev	CSniperHud::~CSniperHud()
+0x00325b0d	0x18	SniperHud.cpp	game	hud	matched	_ZN10CSniperHudD2Ev	CSniperHud::~CSniperHud()
+0x00325b25	0x154	SniperHud.cpp	game	hud	matched	_ZN10CSniperHud4showEv	CSniperHud::show()
+0x00325c79	0xd4	SniperHud.cpp	game	hud	matched	_ZN10CSniperHud4hideEv	CSniperHud::hide()
 0x00325d4d	0x30	SniperHud.cpp	game	core	matched	__tcf_2	__tcf_2
 0x00325d7d	0x6c	SniperHud.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00325de9	0x14	SniperHud.cpp	game	core	matched	_GLOBAL__I__ZN10CSniperHudC2EP11CHudManager	_GLOBAL__I__ZN10CSniperHudC2EP11CHudManager
@@ -11434,7 +11434,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032be2d	0x30	TargetMarker.cpp	game	hud	matched	__tcf_3	__tcf_3
 0x0032be5d	0x18	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarkerC1Ev	TargetMarker::TargetMarker()
 0x0032be5d	0x18	TargetMarker.cpp	game	hud	matched	_ZN12TargetMarkerC2Ev	TargetMarker::TargetMarker()
-0x0032be75	0x340	TargetMarker.cpp	game	hud	pending	_ZNK12TargetMarker4drawEv	TargetMarker::draw() const
+0x0032be75	0x340	TargetMarker.cpp	game	hud	matched	_ZNK12TargetMarker4drawEv	TargetMarker::draw() const
 0x0032c1b5	0x6c	TargetMarker.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032c221	0x14	TargetMarker.cpp	game	hud	matched	_GLOBAL__I__ZN12TargetMarkerC2Ev	_GLOBAL__I__ZN12TargetMarkerC2Ev
 0x0032c234	0x14	ToggleButton.cpp	game	ui	matched	_ZThn8_N12ToggleButton12processTouchEl	non-virtual thunk to ToggleButton::processTouch(long)
@@ -12604,11 +12604,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349931	0x48	ASprite.cpp	game	rendering	matched	_ZN7ASpriteD0Ev	ASprite::~ASprite()
 0x00349979	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASpriteD1Ev	ASprite::~ASprite()
 0x00349979	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASpriteD2Ev	ASprite::~ASprite()
-0x003499b9	0x24	ASprite.cpp	game	rendering	pending	_ZNK7ASprite13GetAFrameTimeEii	ASprite::GetAFrameTime(int, int) const
+0x003499b9	0x24	ASprite.cpp	game	rendering	matched	_ZNK7ASprite13GetAFrameTimeEii	ASprite::GetAFrameTime(int, int) const
 0x003499dd	0x6a	ASprite.cpp	game	rendering	pending	_ZN7ASprite9GetAFrameEii	ASprite::GetAFrame(int, int)
 0x00349a49	0x22	ASprite.cpp	game	rendering	matched	_ZNK7ASprite18GetFrameFromAFrameEii	ASprite::GetFrameFromAFrame(int, int) const
 0x00349a6d	0x12	ASprite.cpp	game	rendering	matched	_ZNK7ASprite24GetAnimFrameBoundingRectEii	ASprite::GetAnimFrameBoundingRect(int, int) const
-0x00349a81	0x40	ASprite.cpp	game	rendering	pending	_ZN7ASprite11GetFrameIdxEPKc	ASprite::GetFrameIdx(char const*)
+0x00349a81	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASprite11GetFrameIdxEPKc	ASprite::GetFrameIdx(char const*)
 0x00349ac1	0x1c4	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC1EPKc	ASprite::ASprite(char const*)
 0x00349ac1	0x1c4	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC2EPKc	ASprite::ASprite(char const*)
 0x00349c85	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite10GetFModuleEi	ASprite::GetFModule(int) const
@@ -12625,8 +12625,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034a21d	0x14	ASprite.cpp	game	rendering	matched	_GLOBAL__I__ZN7ASprite18s_global_transformE	_GLOBAL__I__ZN7ASprite18s_global_transformE
 0x0034a231	0x5c	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6__rect14isIntersectingEii	ASpriteData::__rect::isIntersecting(int, int)
 0x0034a28d	0x128	ASprite.cpp	game	rendering	pending	_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_	ASprite::GetPixelInfoInFrame(int, int, int, int&, int&)
-0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteDataC2Ev	ASpriteData::ASpriteData()
-0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteDataC1Ev	ASpriteData::ASpriteData()
+0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteDataC2Ev	ASpriteData::ASpriteData()
+0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteDataC1Ev	ASpriteData::ASpriteData()
 0x0034a3c9	0xc8	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData4Anim4SwapEv	ASpriteData::Anim::Swap()
 0x0034a491	0x1c2	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5Frame4SwapEv	ASpriteData::Frame::Swap()
 0x0034a655	0xd2	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6Module4SwapEv	ASpriteData::Module::Swap()
