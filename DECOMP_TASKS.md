@@ -1054,22 +1054,34 @@ Coordinator approves private Vehicle-constructor layout refinement of the four n
 
 Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canSpawn against the newly integrated authentic Vehicle constructor header (real IMapTrackable, scalar wheel members, accurate initialization fields). Preserve all existing unit checks; stop unchanged targets without source search, then proceed to the newly assigned centers function.
 
-| libsanangeles.so | 0x00323b69 | SafeDelete<CDrivingHud>(CDrivingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323b69 | SafeDelete<CDrivingHud>(CDrivingHud*&) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x00323b89 | SafeDelete<CWalkingHud>(CWalkingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
-| libsanangeles.so | 0x00323ba9 | SafeDelete<CSniperHud>(CSniperHud*&) | hud_registration | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323b89 | SafeDelete<CWalkingHud>(CWalkingHud*&) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323ba9 | SafeDelete<CSniperHud>(CSniperHud*&) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x00323bc9 | SafeDelete<CCameraHud>(CCameraHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323bc9 | SafeDelete<CCameraHud>(CCameraHud*&) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x00341a3d | CopVehicleController::onEvent(IEvent const*, EventManager const*) | hud_registration | ASSIGNED | pending | src/game/ai/CopVehicleController.cpp |
+| libsanangeles.so | 0x00341a3d | CopVehicleController::onEvent(IEvent const*, EventManager const*) | hud_registration | BLOCKED | 728/744 bytes; authentic event initialization regresses old caller | src/game/ai/CopVehicleController.cpp |
 
-| libsanangeles.so | 0x003238a1 | std::__stl_throw_overflow_error(char const*) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x003238a1 | std::__stl_throw_overflow_error(char const*) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 
 | libsanangeles.so | 0x002f4441 | b2CircleDef::~b2CircleDef() (D1) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f462d | b2CircleDef::~b2CircleDef() (D0) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/characters/Character.cpp |
 
 | libsanangeles.so | 0x00318be5 | LevelObject::canGoToPoint(vector3df const&) | hud_glyphs | REVIEW | 100% private proof with fresh dependencies | src/game/world/LevelObject.cpp |
 
-| libsanangeles.so | 0x0031b3e9 | PhysicAttributes::SetHeightAttributes(ISceneNode*, vector3df const&, PhysicInfo&) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b3e9 | PhysicAttributes::SetHeightAttributes(ISceneNode*, vector3df const&, PhysicInfo&) | lock_init | BLOCKED | 1036/1040 bytes; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x002ff181 | NPC::_detect() | hud_glyphs | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ff181 | NPC::_detect() | hud_glyphs | BLOCKED | 1100/1104-byte candidate; three distinct forms identical | src/game/ai/NPC.cpp |
+
+| libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | hud_registration | BLOCKED | six forms exhausted; best 106/1100 bytes, no credit | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003179d5 | LevelObject::CastRay(vector3df const&, vector3df const&, vector3df&, vector3df&, LevelObject*&, bool) | hud_glyphs | BLOCKED | 1484/1504 bytes; unchanged-context replay stopped | src/game/world/LevelObject.cpp |
+
+| libsanangeles.so | 0x0034b6f5 | std::__stl_throw_out_of_range(char const*) | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0031ad31 | PhysicAttributes::SetHeightAttributes(vector3df const&, PhysicInfo*) | lock_init | BLOCKED | 1400/1388-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x0030d149 | Vehicle::CreateWheels(Box2DUserInfo*) | hud_glyphs | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x00319ed5 | PhysicAttributes::LoadArrays(char*) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | hud_registration | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |

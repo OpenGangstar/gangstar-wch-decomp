@@ -1,3 +1,5 @@
+puts = 0x001c41b4;
+abort = 0x001c42d4;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/hud-manager-helpers/retail-symbols.ld
@@ -15,8 +17,10 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
+INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+
     .helper_0 0x003235a4 : { *hud-manager-helpers.o(.text._ZN11CHudManager4initEv .gnu.linkonce.t._ZN11CHudManager4initEv) }
     .helper_1 0x003235e4 : { *hud-manager-helpers.o(.text._ZN11CHudManager4lockEv .gnu.linkonce.t._ZN11CHudManager4lockEv) }
     .helper_2 0x003235ec : { *hud-manager-helpers.o(.text._ZN11CHudManager6unlockEv .gnu.linkonce.t._ZN11CHudManager6unlockEv) }

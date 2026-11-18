@@ -159,3 +159,14 @@ void Structs::TextStyle::Read(DataStream& stream)
     unknown36 = stream.ReadBoolean();
     unknown37 = stream.ReadBoolean();
 }
+
+#include "../core/NativeStdio.h"
+extern "C" void abort(void) __attribute__((noreturn));
+namespace std {
+void __stl_throw_out_of_range(const char* message) __attribute__((weak));
+void __stl_throw_out_of_range(const char* message)
+{
+    puts(message);
+    abort();
+}
+}
