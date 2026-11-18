@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | three-form bounded native Y/Z/X subtraction-evaluation reconstruction in coherent hierarchy; tracked match remains exact; destructor-family integration only if all old gates pass | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | BLOCKED | three forms;668B differs8 stack-reference bytes; Cash regression and five legacy forward conflicts block coherent integration; tracked match unchanged | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -1280,3 +1280,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | — | BLOCKED | six forms; best9116/9212, native412B frame; old188/112 and all95 header profiles exact; no credit | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | hud_registration | IN_PROGRESS | native 118-case CFG recovered read-only; 12636 bytes unchanged; reusing command records, no credit | src/game/scripting/Script.cpp |
+
+| libsanangeles.so | 0x002d1de1 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic | hud_glyphs | ASSIGNED | recover JNI descriptor/provenance from existing packaged classes.dex before reconstructing2B stub; no credit | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1349 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt | lock_init | ASSIGNED | recover JNI descriptor/provenance from existing packaged classes.dex before reconstructing2B stub; no credit | src/game/app/app-android.c |
