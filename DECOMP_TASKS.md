@@ -1159,7 +1159,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | — | COMPLETED | 100%;1296B plus1140B literal blob; coordinator full183-profile/10267-comparison gate exact | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | — | BLOCKED | canonical500/512 unmatched; current40/35 and full121-profile header closure3956functions3913regions exact; frozen no credit | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_registration | ASSIGNED | read-only PIC prologue/register-liveness diagnosis of frozen canonical500/512 input versus matched PaintFrame; no source forms | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | — | BLOCKED | bounded canonical record trial remains unmatched; frozen private proof reviewed; no credit | src/game/rendering/ASprite.cpp |
 
@@ -1290,3 +1290,5 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1de5 | GetNativeSoundRaw | — | BLOCKED | native/DEX/relocation/pointer/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
 
 | libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | — | BLOCKED | native/DEX/relocation/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x0032a0e0 | non-virtual thunk to MiniMap::draw2d() const | lock_init | ASSIGNED | audit compiler-generated thunk from preserved faithful draw2d v5 candidate; no parent body edits or credit | src/game/hud/MiniMap.cpp |
