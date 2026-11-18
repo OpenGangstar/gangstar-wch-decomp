@@ -12592,10 +12592,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003497ad	0x6	ASprite.cpp	game	rendering	matched	_ZN7ASprite12GetModuleIdxEPKc	ASprite::GetModuleIdx(char const*)
 0x003497b5	0x2	ASprite.cpp	game	rendering	matched	_ZN7ASprite9MakeImageEij	ASprite::MakeImage(int, unsigned int)
 0x003497b9	0x2a	ASprite.cpp	game	rendering	matched	_ZNK3RctIiE14isIntersectingEii	Rct<int>::isIntersecting(int, int) const
-0x003497e5	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite7GetAnimEi	ASprite::GetAnim(int) const
-0x003497f5	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite8GetFrameEi	ASprite::GetFrame(int) const
+0x003497e5	0x10	ASprite.cpp	game	rendering	matched	_ZNK7ASprite7GetAnimEi	ASprite::GetAnim(int) const
+0x003497f5	0x10	ASprite.cpp	game	rendering	matched	_ZNK7ASprite8GetFrameEi	ASprite::GetFrame(int) const
 0x00349805	0xe	ASprite.cpp	game	rendering	matched	_ZNK7ASprite20GetFrameBoundingRectEi	ASprite::GetFrameBoundingRect(int) const
-0x00349815	0x10	ASprite.cpp	game	rendering	pending	_ZNK7ASprite9GetModuleEi	ASprite::GetModule(int) const
+0x00349815	0x10	ASprite.cpp	game	rendering	matched	_ZNK7ASprite9GetModuleEi	ASprite::GetModule(int) const
 0x00349825	0x22	ASprite.cpp	game	rendering	pending	_ZNK7ASprite12GetFrameRectEii	ASprite::GetFrameRect(int, int) const
 0x00349849	0x30	ASprite.cpp	game	rendering	matched	__tcf_2	__tcf_2
 0x00349879	0x20	ASprite.cpp	game	rendering	matched	_ZN7ASprite9_erasePtrEv	ASprite::_erasePtr()
@@ -12611,7 +12611,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349a81	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASprite11GetFrameIdxEPKc	ASprite::GetFrameIdx(char const*)
 0x00349ac1	0x1c4	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC1EPKc	ASprite::ASprite(char const*)
 0x00349ac1	0x1c4	ASprite.cpp	game	rendering	matched	_ZN7ASpriteC2EPKc	ASprite::ASprite(char const*)
-0x00349c85	0xe	ASprite.cpp	game	rendering	pending	_ZNK7ASprite10GetFModuleEi	ASprite::GetFModule(int) const
+0x00349c85	0xe	ASprite.cpp	game	rendering	matched	_ZNK7ASprite10GetFModuleEi	ASprite::GetFModule(int) const
 0x00349c95	0x6e	ASprite.cpp	game	rendering	matched	_ZNK7ASprite15GetFrameMarkersEiPi	ASprite::GetFrameMarkers(int, int*) const
 0x00349d05	0x5a	ASprite.cpp	game	rendering	matched	_ZNK7ASprite23GetNumberOfFrameMarkersEi	ASprite::GetNumberOfFrameMarkers(int) const
 0x00349d61	0x20	ASprite.cpp	game	rendering	matched	_ZNK7ASprite19GetModuleFromAFrameEii	ASprite::GetModuleFromAFrame(int, int) const

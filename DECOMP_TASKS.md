@@ -845,9 +845,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | IN_PROGRESS | frontend/pass audit identified distinct association and expansion lifetimes; one TER-disabled diagnostic on desired-association v2 only | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | IN_PROGRESS | compiler differential rejected; one TER-disabled diagnostic on desired-association v2 only, all old checks retained | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -868,8 +868,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349815 | ASprite::GetModule | — | BLOCKED | replay plus two new address forms still16B unmatched; all36 old functions/32 regions exact, no credit | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | hud_glyphs | IN_PROGRESS | parameter form unchanged; one TER-disabled diagnostic on native left-associated parameter form only, no source variants | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349815 | ASprite::GetModule | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325c79 | CSniperHud::hide | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
@@ -915,7 +915,7 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 | libsanangeles.so | 0x00349a81 | ASprite::GetFrameIdx(char const*) | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | hud_registration | BLOCKED | 62/64 bytes (unmatched) | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100% (independent loop-index declaration; no new credit) | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100%; loop-scoped first counter restores native332B under canonical sprite API; full183-profile gate exact; no new credit | src/game/ui/Cash.cpp |
 
 | libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 
@@ -1139,7 +1139,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002fd291 | Lock::render() | coordinator | BLOCKED | 304-byte candidate unmatched; six forms; old 8 functions and 10 section/region checks exact | src/game/core/Lock.cpp |
 
-| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int, int, int, int, int) const | hud_registration | BLOCKED | 222/220 bytes; three forms identical; strict link overlap, old graph exact | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int, int, int, int, int) const | — | BLOCKED | bounded canonical record trial remains unmatched; frozen private proof reviewed; no credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034ad9d | ASpriteData::AFrame::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
@@ -1161,7 +1161,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | BLOCKED | 500/512 bytes; six forms; rejected two old header regressions | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | BLOCKED | 292/296 bytes; six forms; shared declaration extraction and old graph exact | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | — | BLOCKED | bounded canonical record trial remains unmatched; frozen private proof reviewed; no credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 

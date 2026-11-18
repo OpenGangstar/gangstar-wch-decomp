@@ -6,7 +6,7 @@ namespace irr {
 namespace video { class SColor; class ITexture; }
 namespace core { template<class T> class CMatrix4; }
 }
-struct SpriteBounds { int left, right, top, bottom; };
+#include "ASpriteData.h"
 struct SpriteFrame {
     short moduleCount;
     unsigned char unknown2[2];
@@ -48,6 +48,7 @@ public:
     static irr::core::CMatrix4<float> s_global_transform;
     static int GetTransformFromFlags(unsigned int flags);
     const SpriteModule* GetModule(int module) const;
+    const ASpriteData::Anim* GetAnim(int index) const;
     const SpriteFrameModule* GetFModule(int index) const;
     void GetFrameMarkers(int frame, int* output) const;
     int GetNumberOfFrameMarkers(int frame) const;

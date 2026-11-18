@@ -11,6 +11,12 @@ __stack_chk_fail = 0x001c42e0;
 strcmp = 0x001c4658;
 SECTIONS
 {
+    .asprite_get_module 0x00349814 : { *asprite-startup.o(.text._ZNK7ASprite9GetModuleEi) }
+
+    .asprite_get_anim 0x003497e4 : { *asprite-startup.o(.text._ZNK7ASprite7GetAnimEi) }
+    .asprite_get_frame 0x003497f4 : { *asprite-startup.o(.text._ZNK7ASprite8GetFrameEi) }
+    .asprite_get_fmodule 0x00349c84 : { *asprite-startup.o(.text._ZNK7ASprite10GetFModuleEi) }
+
     .sprite_frame_idx 0x00349a80 : { *asprite-startup.o(.text._ZN7ASprite11GetFrameIdxEPKc) }
     .asprite_aframe_time 0x003499b8 : { *asprite-startup.o(.text._ZNK7ASprite13GetAFrameTimeEii) }
     .asprite_function_0 0x00349848 : { *asprite-startup.o(.text.__tcf_2) }
