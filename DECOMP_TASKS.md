@@ -845,9 +845,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | ASSIGNED | reuse new exact Debug pointer/index canonicalization evidence; bounded two nonduplicate source forms, all old matches required | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | IN_PROGRESS | new address form reaches15/16; one bounded signed-offset conversion diagnostic on that same form, no field/layout change | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | ASSIGNED | new exact Debug address-operand evidence after rejected TER probe; bounded two nonduplicate declaration/address forms | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | IN_PROGRESS | new address form reaches15/16; one bounded signed-offset conversion diagnostic on that same form, no field/layout change | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -868,8 +868,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349815 | ASprite::GetModule | hud_glyphs | ASSIGNED | reuse new exact Debug explicit pointer/index address form; bounded two nonduplicate forms, unchanged headers | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349815 | ASprite::GetModule | — | BLOCKED | replay plus two new address forms still16B unmatched; all36 old functions/32 regions exact, no credit | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | hud_glyphs | ASSIGNED | reuse exact Debug indexed-address evidence and current header context; inspect prior forms, at most two grounded nonduplicate source forms | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325c79 | CSniperHud::hide | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
