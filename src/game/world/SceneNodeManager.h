@@ -1,3 +1,29 @@
+/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Copyright (c) 1996,1997
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Copyright (c) 1997
+ * Moscow Center for SPARC Technology
+ *
+ * Copyright (c) 1999
+ * Boris Fomitchev
+ *
+ * This material is provided "as is", with absolutely no warranty expressed
+ * or implied. Any use is at your own risk.
+ *
+ * Permission to use or copy this software for any purpose is hereby granted
+ * without fee, provided the above notices are retained on all copies.
+ * Permission to modify the code and to distribute modified code is granted,
+ * provided the above notices are retained, and a notice that the code was
+ * modified is included with the above copyright notice.
+ *
+ */
+
+// Modified: restricted native PoolIndex read-only iterator and lookup interfaces.
 #ifndef WCH_WORLD_SCENE_NODE_MANAGER_H
 #define WCH_WORLD_SCENE_NODE_MANAGER_H
 
@@ -40,10 +66,30 @@ private:
         PoolIndexLink* left;
         PoolIndexLink* right;
     };
+    struct PoolIndexValue { const int first; int second; };
+    struct PoolIndexNode : PoolIndexLink { PoolIndexValue value; };
+    struct PoolIndexBaseIterator {
+        PoolIndexLink* node;
+        PoolIndexBaseIterator() {}
+        PoolIndexBaseIterator(PoolIndexLink* pointer) : node(pointer) {}
+    };
     struct PoolIndex {
         PoolIndex() : size(0), compareState(false) {}
         ~PoolIndex();
         void clear();
+        struct Iterator : PoolIndexBaseIterator {
+            Iterator() {}
+            explicit Iterator(PoolIndexLink* pointer) : PoolIndexBaseIterator(pointer) {}
+            const PoolIndexValue& operator*() const {
+                return static_cast<PoolIndexNode*>(node)->value;
+            }
+            const PoolIndexValue* operator->() const { return &operator*(); }
+            bool operator==(Iterator other) const { return node == other.node; }
+            bool operator!=(Iterator other) const { return node != other.node; }
+        };
+        PoolIndexLink* _M_find(const int& key) const;
+        Iterator find(const int& key) const { return Iterator(_M_find(key)); }
+        Iterator end() const { return Iterator(const_cast<PoolIndexLink*>(&header)); }
         PoolIndexLink header;
         unsigned int size;
         bool compareState;
