@@ -1068,6 +1068,8 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002f4441 | b2CircleDef::~b2CircleDef() (D1) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f462d | b2CircleDef::~b2CircleDef() (D0) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/characters/Character.cpp |
 
-| libsanangeles.so | 0x00318be5 | LevelObject::canGoToPoint(vector3df const&) | hud_glyphs | ASSIGNED | pending | src/game/world/LevelObject.cpp |
+| libsanangeles.so | 0x00318be5 | LevelObject::canGoToPoint(vector3df const&) | hud_glyphs | REVIEW | 100% private proof with fresh dependencies | src/game/world/LevelObject.cpp |
 
 | libsanangeles.so | 0x0031b3e9 | PhysicAttributes::SetHeightAttributes(ISceneNode*, vector3df const&, PhysicInfo&) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x002ff181 | NPC::_detect() | hud_glyphs | ASSIGNED | pending | src/game/ai/NPC.cpp |
