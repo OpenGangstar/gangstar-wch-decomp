@@ -3,6 +3,8 @@
 
 namespace irr { namespace video { class IVideoDriver; class ITexture; } }
 
+class RenderFX;
+
 namespace gameswf {
 class filter;
 class as_value;
@@ -62,12 +64,27 @@ template<class T> struct string_hash_functor;
 template<class Key, class Value, class Hash>
 class hash {
 public:
-    hash() : table(0) {}
+    hash() : m_table(0) {}
     ~hash() { clear(); }
     void clear() __attribute__((weak));
+    // Authentic tu-testbed container.h record declarations; algorithms remain native.
+    struct entry {
+        int m_next_in_chain;
+        unsigned int m_hash_value;
+        Key first;
+        Value second;
+    };
 
 private:
-    void* table;
+    // Decompilation access view only, with no additional storage or engine code.
+    friend class ::RenderFX;
+    int find_index(const Key& key) const __attribute__((weak));
+    struct table {
+        int m_entry_count;
+        int m_size_mask;
+        // The variable-length entry payload follows this header.
+    };
+    table* m_table;
 };
 }
 
@@ -100,6 +117,7 @@ public:
     public:
         inline ~SearchIndex() __attribute__((noinline, long_call));
         void Init(RenderFX& owner);
+        gameswf::character* Find(const char* name);
         void Clear() __attribute__((long_call));
         class Entry;
 

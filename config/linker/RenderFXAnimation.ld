@@ -1,3 +1,7 @@
+strlen = 0x001c48bc;
+strrchr = 0x001c4340;
+strstr = 0x001c446c;
+strchr = 0x001c48e0;
 __aeabi_ui2f = 0x001c4574;
 __aeabi_fdiv = 0x001c4520;
 OUTPUT_FORMAT("elf32-littlearm")

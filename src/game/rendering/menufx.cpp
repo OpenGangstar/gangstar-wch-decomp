@@ -143,6 +143,7 @@ class tu_string {
 public:
     // The retail call resolves the constructor through the GOT.
     explicit tu_string(const char* text) __attribute__((long_call));
+    tu_string(const char* text, int length) __attribute__((long_call));
     ~tu_string()
     {
         if (__builtin_expect(storage[0] == 255, 1))
@@ -1346,4 +1347,52 @@ void RenderFX::SetColorTransform(gameswf::character* character, unsigned int mul
     color.channels[2][1] = finiteColor(static_cast<float>(add & 255u));
     color.channels[3][1] = finiteColor(static_cast<float>(add >> 24));
     applyCharacterColor(character, color);
+}
+
+
+class RenderFX::SearchIndex::Entry {
+public:
+    gameswf::character* character;
+    char path[256];
+};
+
+extern "C" char* strrchr(const char*, int);
+
+gameswf::character* RenderFX::SearchIndex::Find(const char* name)
+{
+    char component[128];
+    const int nameLength = strlen(name);
+    const char* suffix = strrchr(name, '.');
+    suffix = suffix ? suffix + 1 : name;
+    gameswf::tu_string key(suffix, name + nameLength - suffix);
+    const int index = entries.find_index(key);
+    if (index < 0)
+        return 0;
+    typedef gameswf::hash<gameswf::tu_string, gameswf::array<Entry>*,
+        gameswf::string_hash_functor<gameswf::tu_string> > IndexHash;
+    gameswf::array<Entry>* candidates =
+        (reinterpret_cast<IndexHash::entry*>(entries.m_table + 1) + index)->second;
+    for (int i = 0; i < candidates->size; ++i) {
+        const Entry& entry = candidates->elements[i];
+        const char* remainingPath = entry.path;
+        const char* part = name;
+        for (;;) {
+            const char* end = strchr(part, '.');
+            if (!end)
+                end = part + nameLength;
+            const int length = end - part;
+            memcpy(component, part, length);
+            component[length] = 0;
+            const char* match = strstr(remainingPath, component);
+            if (__builtin_expect(match != 0, 1)) {
+                remainingPath = match + length;
+                if (*remainingPath == 0)
+                    return entry.character;
+                part += length + 1;
+            } else {
+                break;
+            }
+        }
+    }
+    return 0;
 }

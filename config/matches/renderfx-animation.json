@@ -133,7 +133,8 @@
         "_ZN8RenderFX9SetMemberEPKcS1_S1_",
         "_Z16GetLocalPositionPN7gameswf9characterEff",
         "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
-        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj"
+        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
+        "_ZN8RenderFX11SearchIndex4FindEPKc"
     ],
     "sections": [
         ".renderfx_initialize_warning",
