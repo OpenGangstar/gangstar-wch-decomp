@@ -1119,7 +1119,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | hud_glyphs | BLOCKED | 1788/1792 bytes; first form parked on old visibility regression | src/game/ui/MenuManager.cpp |
 
-| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | lock_init | BLOCKED | 2440/2436 bytes; six forms; 34 header-only profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | hud_glyphs | ASSIGNED | bounded three-form escalation: likelihood hints for native noarg fallthrough/default order; previous2440/2436, no credit | src/game/scripting/ScriptManager.cpp |
 
 | libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
 
@@ -1271,7 +1271,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | IN_PROGRESS | five forms; latest2564/2576; old GS3D comparisons pass; sixth form pending, no credit | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | — | BLOCKED | six forms; best2568/2576; target/switch differ; Cash header regression and LevelObject link overlap; no credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x0030c035 | Vehicle::step() | — | BLOCKED | five forms; best4320/4372 frame612/620; old188/112 exact; no credit | src/game/vehicles/Vehicle.cpp |
 
