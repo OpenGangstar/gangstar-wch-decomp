@@ -1185,18 +1185,24 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d50f1 | Application::Update() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | hud_registration | REVIEW | exact 416-byte candidate; all 123 header profiles and retained dependency proof pass | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | REVIEW | exact 344-byte candidate; coherent full integration validation pending | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | REVIEW | exact 118-byte candidate; 95-profile old/support proof passed | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | BLOCKED | native148B aliases unmatched; three forms; authentic180B header and old123-profile proof pass | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | REVIEW | exact 368-byte candidate; genuine alias hierarchy proof passed except known fixture | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | hud_glyphs | REVIEW | exact destructor aliases; canonical RAII and old90-profile proof pass | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | hud_glyphs | REVIEW | exact destructor aliases; canonical RAII and old90-profile proof pass | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | REVIEW | exact 656-byte candidate; oldCash header context difference and link limitations pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d528d | Application::GetInstance() | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | ASSIGNED | pending | src/game/rendering/GS3DStuff.cpp |

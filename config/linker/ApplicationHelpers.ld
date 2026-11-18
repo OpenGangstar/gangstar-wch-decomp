@@ -1,3 +1,5 @@
+__stack_chk_fail = 0x001c42e0;
+sprintf = 0x001c46ac;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fcmpge = 0x001c4364;
 __aeabi_fadd = 0x001c4154;
@@ -95,3 +97,5 @@ ASSERT(SIZEOF(.app_s_frameUpdateStart) == 4, "s_frameUpdateStart extent");
 ASSERT(SIZEOF(.app_s_frameTotalUpdateTime) == 4, "s_frameTotalUpdateTime extent");
 ASSERT(SIZEOF(.app_s_frameUpdateCount) == 4, "s_frameUpdateCount extent");
 ASSERT(SIZEOF(.app_s_frameUpdateTime) == 4, "s_frameUpdateTime extent");
+
+INCLUDE config/linker/ApplicationNumberSections.ld

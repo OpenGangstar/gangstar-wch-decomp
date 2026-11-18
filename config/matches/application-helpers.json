@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -96,7 +97,8 @@
         "_ZN11Application14appKeyReleasedEi",
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application20GlobalResumingUpdateEv",
-        "_ZN11Application6UpdateEv"
+        "_ZN11Application6UpdateEv",
+        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc"
     ],
     "sections": [
         ".screen_dimensions",
@@ -125,7 +127,9 @@
         ".application_key_post",
         ".application_key_main",
         ".resume_update_literals",
-        ".application_update_loop"
+        ".application_update_loop",
+        ".application_number_frames",
+        ".application_number_format"
     ],
     "retail_got": true,
     "external_thumb_functions": [

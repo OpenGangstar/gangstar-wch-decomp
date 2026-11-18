@@ -150,11 +150,11 @@ template<class T> struct _List_node : RegistrationLink {
 };
 }
 
+#include "../core/NativeAllocator.h"
 namespace std {
-template<class T> class allocator {
-public:
-    T* allocate(unsigned int count, const void* hint) __attribute__((weak));
-};
+template<> stlp_priv::_List_node<irr::IEventReceiver*>* allocator<stlp_priv::_List_node<irr::IEventReceiver*> >::allocate(unsigned int count, const void* hint) __attribute__((weak));
+template<> stlp_priv::_List_node<IUpdatable*>* allocator<stlp_priv::_List_node<IUpdatable*> >::allocate(unsigned int count, const void* hint) __attribute__((weak));
+template<> stlp_priv::_List_node<IDrawable*>* allocator<stlp_priv::_List_node<IDrawable*> >::allocate(unsigned int count, const void* hint) __attribute__((weak));
 
 // Partial view of the retail STLport list sentinel.
 template<class T, class Alloc = allocator<T> > class list {
@@ -592,5 +592,51 @@ void Application::Update()
         s_frameUpdateStart = 0;
         s_frameUpdateCount = 0;
         s_frameTotalUpdateTime = 0.0f;
+    }
+}
+
+#include "../hud/CHudManager.h"
+#include "../core/NativeStdio.h"
+static const char numberFormat[] __attribute__((section(".rodata.application_number_format"))) = "%i";
+void Application::displayNumberWithHUDSprite(int number, int horizontalAlign, int verticalAlign, const char* format)
+{
+    static const int frames[10] = {96,87,88,89,90,91,92,93,94,95};
+    ASprite* sprite = hudManager->reviveSprite;
+    if (!sprite)
+        return;
+    if (number < 0)
+        number = 0;
+    char buffer[12];
+    if (format)
+        sprintf(buffer,format,number);
+    else
+        sprintf(buffer,numberFormat,number);
+    int width,height;
+    GetScreenDimensions(width,height);
+    if (verticalAlign < 0)
+        height = 4;
+    else if (verticalAlign > 0)
+        height = height - 4 - sprite->GetFrameHeight(96);
+    else
+        height = (height - sprite->GetFrameHeight(96))/2;
+    int textWidth = 0;
+    int i = 0;
+    char digit;
+    while ((digit = buffer[i]) != 0) {
+        textWidth += sprite->GetFrameWidth(frames[digit-'0']);
+        ++i;
+    }
+    if (horizontalAlign < 0)
+        width = 4;
+    else if (horizontalAlign > 0)
+        width = width-4-textWidth;
+    else
+        width = (width-textWidth)/2;
+    i = 0;
+    while ((digit = buffer[i]) != 0) {
+        int frame = frames[digit-'0'];
+        sprite->PaintFrame(frame,width,height,0);
+        width += sprite->GetFrameWidth(frame);
+        ++i;
     }
 }

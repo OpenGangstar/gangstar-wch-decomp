@@ -432,6 +432,7 @@
         "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
         "_ZN11Application7_UpdateEi",
         "_ZN11Application5_DrawEv",
-        "_ZN12SoundManager15playLowFpsMusicEib"
+        "_ZN12SoundManager15playLowFpsMusicEib",
+        "_ZNK7ASprite10PaintFrameEiiii"
     ]
 }

@@ -25,6 +25,7 @@ public:
     void ProcessKeyEvent(bool pressed, int type);
     void appKeyReleased(int key);
     void appKeyPressed(int key);
+    void displayNumberWithHUDSprite(int number, int horizontalAlign, int verticalAlign, const char* format);
     bool IsLogoOver();
     bool IsGlobalResumingOver();
     static Application* GetInstance();
@@ -82,7 +83,8 @@ private:
     int defaultLanguage;
     unsigned char unknown88[4];
     unsigned int lastUpdateTime;
-    unsigned char unknown96[8];
+    float unknown96;
+    int unknown100;
     bool drawAll;
     bool soundNeedsInit;
     bool demoVersion;

@@ -1,3 +1,5 @@
+__stack_chk_fail = 0x001c42e0;
+sprintf = 0x001c46ac;
 __aeabi_fdiv = 0x001c4520;
 __aeabi_fcmpge = 0x001c4364;
 __aeabi_fadd = 0x001c4154;
@@ -62,6 +64,9 @@ INCLUDE config/linker/ApplicationRuntimeSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+    .application_stop_sound 0x002d4440 : { *application-helpers.o(.text._ZN11Application15stopSoundThreadEv) }
+    .application_resume_sprite 0x00413c88 : { *application-helpers.o(.rodata.application_resume_sprite) }
+    .application_logo_sprite 0x00413d30 : { *application-helpers.o(.rodata.application_logo_sprite) }
     .application_key_pressed 0x002d4708 : { *(.text._ZN11Application13appKeyPressedEi) }
     .application_key_released 0x002d45ac : { *(.text._ZN11Application14appKeyReleasedEi) }
     .application_process_key 0x002d40fc : { *(.text._ZN11Application15ProcessKeyEventEbi) }
@@ -246,3 +251,5 @@ ASSERT(SIZEOF(.app_s_frameUpdateStart) == 4, "s_frameUpdateStart extent");
 ASSERT(SIZEOF(.app_s_frameTotalUpdateTime) == 4, "s_frameTotalUpdateTime extent");
 ASSERT(SIZEOF(.app_s_frameUpdateCount) == 4, "s_frameUpdateCount extent");
 ASSERT(SIZEOF(.app_s_frameUpdateTime) == 4, "s_frameUpdateTime extent");
+
+INCLUDE config/linker/ApplicationNumberSections.ld
