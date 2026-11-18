@@ -28,12 +28,31 @@
     "functions": [
         "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone",
         "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp",
-        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown"
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer",
+        "Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch",
+        "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender",
+        "Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume",
+        "Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause",
+        "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize",
+        "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "appDeinit",
         "appOnKeyUp",
-        "appOnKeyDown"
+        "appOnKeyDown",
+        "appOnAccelerometer",
+        "appOnTouch",
+        "appRun",
+        "appResume",
+        "appPause",
+        "appInit"
+    ],
+    "sections": [
+        {
+            "name": ".got",
+            "offset": 864
+        }
     ]
 }
