@@ -999,6 +999,9 @@ Coordinator approves one contextual replay per parked volume/pitch function afte
 | libsanangeles.so | 0x002d3be1 | MediaPlayerIPhone::playMovie(char const*) | lock_init | REVIEW | 100% bytes; inferred return type | src/game/app/MediaPlayerIPhone.cpp |
 | libsanangeles.so | 0x002d3be5 | MediaPlayerIPhone::stopMovie() | lock_init | REVIEW | 100% bytes; inferred return type | src/game/app/MediaPlayerIPhone.cpp |
 
-| libsanangeles.so | 0x00321699 | SceneNodeManager::manage(int, LevelObject*, int) | hud_registration | ASSIGNED | pending | src/game/world/SceneNodeManager.cpp |
-| libsanangeles.so | 0x00306d2d | SpawnPoint::hasCloseNeighbors() const | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x00321699 | SceneNodeManager::manage(int, LevelObject*, int) | hud_registration | REVIEW | 100% (private proof) | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x00306d2d | SpawnPoint::hasCloseNeighbors() const | hud_glyphs | REVIEW | 100% (private proof) | src/game/world/SpawnPoint.cpp |
 | libsanangeles.so | 0x00328b41 | Map::setMap(Map::eMapType) | lock_init | ASSIGNED | pending | src/game/world/Map.cpp |
+
+| libsanangeles.so | 0x003219cd | SceneNodeManager::drop(int, irr::scene::ISceneNode const*) | hud_registration | ASSIGNED | pending | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003065e5 | SpawnPoint::CreateAllSpawnInstances() | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
