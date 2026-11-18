@@ -456,7 +456,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | hud_registration | ASSIGNED | bounded current-context replay and actual position-temporary lifetime correction; reuse native seven-state enum evidence, no broad search | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
@@ -847,7 +847,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | ASSIGNED | one bounded compiler TER-pass diagnostic on preserved correct source; all existing unit matches required; no source/flag grid | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | — | BLOCKED | single TER-pass diagnostic leaves target bytes identical and regresses seven old functions; rejected, no credit | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -1157,13 +1157,13 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034ae61 | ASpriteData::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | coordinator | BLOCKED | shared-header replay unchanged 1294/1296 bytes; no credit | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | hud_glyphs | ASSIGNED | two-form bounded indexed-load source/RTL canonicalization review; prior1294/1296; no other source changes | src/game/rendering/ASpriteData.cpp |
 
 | libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | BLOCKED | 500/512 bytes; six forms; rejected two old header regressions | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | BLOCKED | 292/296 bytes; six forms; shared declaration extraction and old graph exact | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | coordinator | BLOCKED | 30/32 bytes; four comparisons, return-register tail differs, no credit | src/game/app/IPhone.cpp |
+| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | lock_init | ASSIGNED | two likelihood-hint forms for documented return-tail difference; prior30/32, native float/NaN semantics preserved | src/game/app/IPhone.cpp |
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | coordinator | BLOCKED | 80/82-byte candidate; five forms, all old 36 functions and 32 section/regions exact | src/game/rendering/ASprite.cpp |
 
@@ -1287,6 +1287,6 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d1335 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv | — | COMPLETED | 100%;20B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/core/CIrrDevicePS3.cpp |
 
-| libsanangeles.so | 0x002d1de5 | GetNativeSoundRaw | hud_glyphs | ASSIGNED | bounded native/DEX cross-reference and prototype recovery; implement only if ABI evidenced, no guessed signatures | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1de5 | GetNativeSoundRaw | — | BLOCKED | native/DEX/relocation/pointer/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
 
-| libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | lock_init | ASSIGNED | bounded native/DEX cross-reference and prototype recovery; implement only if ABI evidenced, no guessed signatures | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | — | BLOCKED | native/DEX/relocation/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
