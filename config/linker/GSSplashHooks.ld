@@ -7,6 +7,10 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .gssplash_ctor 0x002e37d8 : { *state-hooks-gssplash.o(.text._ZN8GSSplash4ctorEPK12StateMachine) }
+    .gssplash_update 0x002e3830 : { *state-hooks-gssplash.o(.text._ZN8GSSplash6updateEP12StateMachine) }
+    .splash_name 0x00418710 : { *state-hooks-gssplash.o(.rodata.splashMenuName) }
+    .gssplash_dtor 0x002e3790 : { *state-hooks-gssplash.o(.text._ZN8GSSplash4dtorEPK12StateMachine) }
     .state_ctor 0x002e3904 : { *state-hooks-gssplash.o(.text._ZN8GSSplashC1Ev) }
     .base_0 0x002dacc0 : { *state-hooks-gssplash.o(.gnu.linkonce.t._ZN9StateBase8isKindOfEi .text._ZN9StateBase8isKindOfEi .gnu.linkonce.d.rel.ro._ZN9StateBase8isKindOfEi .data.rel.ro._ZN9StateBase8isKindOfEi) }
     .base_1 0x002dacac : { *state-hooks-gssplash.o(.gnu.linkonce.t._ZN9StateBase4drawEPK12StateMachine .text._ZN9StateBase4drawEPK12StateMachine .gnu.linkonce.d.rel.ro._ZN9StateBase4drawEPK12StateMachine .data.rel.ro._ZN9StateBase4drawEPK12StateMachine) }

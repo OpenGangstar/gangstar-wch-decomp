@@ -55,7 +55,10 @@
         {
             "name": "__tcf_3",
             "address": "0x002e399d"
-        }
+        },
+        "_ZN8GSSplash4dtorEPK12StateMachine",
+        "_ZN8GSSplash4ctorEPK12StateMachine",
+        "_ZN8GSSplash6updateEP12StateMachine"
     ],
     "sections": [
         ".state_ctor",
@@ -84,7 +87,22 @@
         ".local_startup_function_0",
         ".local_startup_function_1",
         ".local_startup_function_2",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".splash_name"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager7setTextENS_5eTextEiPi",
+        "_ZN11MenuManager3popEb",
+        "_ZN11MenuManager9showTextsEv",
+        "_ZN11MenuManager4pushEPKcb",
+        "nativeIsVideoPlayDone",
+        "_ZN12SoundManager4initEv",
+        "_ZN12SoundManager15stopLowFpsMusicEv",
+        "_ZN12SoundManager15playLowFpsMusicEib",
+        "_ZN12StateMachine11switchStateI10GSMainMenuEEPT_v"
+    ]
 }
