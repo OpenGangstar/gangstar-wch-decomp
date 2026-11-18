@@ -117,7 +117,9 @@
         {
             "name": "__tcf_10",
             "address": "0x002df605"
-        }
+        },
+        "appResume",
+        "launchTwitter"
     ],
     "sections": [
         ".gom_event_get_id",
@@ -320,7 +322,8 @@
         ".gs3d_startup_function_0",
         ".gs3d_startup_function_1",
         ".gs3d_startup_function_2",
-        ".gs3d_startup_function_3"
+        ".gs3d_startup_function_3",
+        ".wrapper_twitter_url"
     ],
     "external_thumb_functions": [
         "_ZN9Character13initInVehicleEP7Vehicle",
@@ -395,7 +398,8 @@
         "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei",
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "nativeOpenBrowser"
     ],
     "dependencies": [
         "gs3d-stuff",

@@ -222,3 +222,5 @@ ASSERT(SIZEOF(.module_startup_path_name_storage_8) == 8, "path-name _ZN8gameloft
 ASSERT(SIZEOF(.module_startup_path_name_storage_9) == 8, "path-name _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_path_name_storage_10) == 8, "path-name _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_path_name_storage_11) == 8, "path-name _ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/WrapperRuntimeSections.ld

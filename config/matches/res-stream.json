@@ -47,7 +47,8 @@
         ".module_startup_path_name_function_0",
         ".module_startup_path_name_function_1",
         ".module_startup_path_name_function_2",
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".wrapper_twitter_url"
     ],
     "functions": [
         "_ZN9ResStreamC1Ei",
@@ -67,7 +68,9 @@
         {
             "name": "_GLOBAL__I_mouseLButtHeld",
             "address": "0x002d2985"
-        }
+        },
+        "appResume",
+        "launchTwitter"
     ],
     "dependencies": [
         "buffer-stream",
@@ -75,5 +78,8 @@
         "file-stream",
         "path-name",
         "debug-log"
+    ],
+    "external_thumb_functions": [
+        "nativeOpenBrowser"
     ]
 }

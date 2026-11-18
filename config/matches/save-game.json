@@ -242,7 +242,8 @@
         ".gs3d_startup_function_0",
         ".gs3d_startup_function_1",
         ".gs3d_startup_function_2",
-        ".gs3d_startup_function_3"
+        ".gs3d_startup_function_3",
+        ".wrapper_twitter_url"
     ],
     "functions": [
         "_ZN8SaveGame12SampleObjectEP11LevelObject",
@@ -319,7 +320,9 @@
         {
             "name": "__tcf_10",
             "address": "0x002df605"
-        }
+        },
+        "appResume",
+        "launchTwitter"
     ],
     "dependencies": [
         "gs3d-stuff",
@@ -407,6 +410,7 @@
         "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei",
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "nativeOpenBrowser"
     ]
 }

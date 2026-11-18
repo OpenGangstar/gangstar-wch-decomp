@@ -34,7 +34,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".shared_startup_empty_text"
+        ".shared_startup_empty_text",
+        ".wrapper_twitter_url"
     ],
     "functions": [
         "_Z21ekd_makestringfile255PKcPc",
@@ -49,6 +50,11 @@
         {
             "name": "_GLOBAL__I_mouseLButtHeld",
             "address": "0x002d2985"
-        }
+        },
+        "appResume",
+        "launchTwitter"
+    ],
+    "external_thumb_functions": [
+        "nativeOpenBrowser"
     ]
 }

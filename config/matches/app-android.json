@@ -1,0 +1,39 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70",
+        "-fstack-protector"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "src/game/app/app-android.c",
+    "linker_script": "config/linker/AppAndroid.ld",
+    "functions": [
+        "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown"
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "appDeinit",
+        "appOnKeyUp",
+        "appOnKeyDown"
+    ]
+}

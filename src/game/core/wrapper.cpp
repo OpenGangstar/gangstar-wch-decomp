@@ -87,3 +87,19 @@ static void _GLOBAL__I_mouseLButtHeld()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+extern "C" {
+extern int m_timerForResume;
+void appResume()
+{
+    m_timerForResume = 1;
+}
+}
+
+extern "C" void nativeOpenBrowser(const char* url);
+static const char twitterUrl[] __attribute__((section(".rodata.wrapper_twitter_url"))) =
+    "http://ingameads.gameloft.com/redir/?from=GAN2&op=ANMP&game=GAN2&t=twitter";
+extern "C" void launchTwitter()
+{
+    nativeOpenBrowser(twitterUrl);
+}
