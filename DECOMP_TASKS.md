@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | private true-hierarchy ABI regression only; tracked match remains exact | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | three-form bounded native Y/Z/X subtraction-evaluation reconstruction in coherent hierarchy; tracked match remains exact; destructor-family integration only if all old gates pass | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -1277,6 +1277,6 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | — | BLOCKED | six forms; nearest4992/5038; old37/9 and all30 baseline header profiles pass; no credit | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | lock_init | IN_PROGRESS | native CFG recovered read-only; 9212 bytes unchanged; reconstructing first candidate, no credit | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | — | BLOCKED | six forms; best9116/9212, native412B frame; old188/112 and all95 header profiles exact; no credit | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | hud_registration | IN_PROGRESS | native 118-case CFG recovered read-only; 12636 bytes unchanged; reusing command records, no credit | src/game/scripting/Script.cpp |
