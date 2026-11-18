@@ -71,7 +71,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301418 | PlayerTest::applyDamage (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301101 | PlayerTest::getCarAnimName | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | ASSIGNED | bounded destructor-family support | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030a3e5 | Vehicle::mobilize | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -770,7 +770,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f2a79 | Character deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f6c45 | Character::punched | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | lock_init | ASSIGNED | private facing-field initializer migration only; tracked match remains exact | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100% tracked; private migration remains unintegrated | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f26ad | Character::ready | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
@@ -1015,9 +1015,9 @@ Coordinator authorizes one unchanged-best integrated-context replay for each par
 
 | libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | lock_init | BLOCKED | 392/384-byte size (unmatched) | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00311ef1 | _ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f05 | _ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f19 | _ZN26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -1032,15 +1032,18 @@ Coordinator approves one coherent private PlayerTest header-migration prototype 
 
 Coordinator authorizes one final mechanically corrected coherent PlayerTest prototype based on the demonstrated context-record overlap and the two wrapper code-generation gaps: represent the actual two 16-byte records once, map distance counters into record 1 (no duplicate storage), and replace legacy position() call names with the corresponding genuine GetPosition/SetPosition calls where needed. No semantic body retuning, extra source-form search, or credit without all old Player/Character and family/table comparisons. This is a bounded layout/API correction to the preserved prototype.
 
-| libsanangeles.so | 0x00311251 | _ZN7VehicleD0Ev | hud_registration | BLOCKED | event-construction scheduling; identical-output stop | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00311499 | _ZN7VehicleD1Ev, _ZN7VehicleD2Ev | hud_registration | BLOCKED | event-construction scheduling; identical-output stop | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311251 | _ZN7VehicleD0Ev | hud_registration | BLOCKED | post-constructor replay unchanged; event scheduling | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311499 | _ZN7VehicleD1Ev, _ZN7VehicleD2Ev | hud_registration | BLOCKED | post-constructor replay unchanged; event scheduling | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x002fe785 | NPC::UpdateCarPosIfUnderWheel() | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 
 Coordinator permits a focused diagnostic of the sole old photo regression in the coherent PlayerTest prototype, with at most two mechanically justified ABI/cast/declaration-order proposals only after locating the extra four bytes. No algorithm changes, assembly, register constraints, barriers, or broad source search. All old 76 Player/107 Character functions and destructor/table comparisons must pass for readiness.
 
 
-| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) (C1/C2 aliases) | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x0030a955 | Vehicle::Vehicle(int) (C1/C2 aliases) | hud_registration | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) (C1/C2 aliases) | lock_init | BLOCKED | 864/872-byte candidate; private old photo regression remains | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030a955 | Vehicle::Vehicle(int) (C1/C2 aliases) | hud_registration | REVIEW | 100% private constructor/dependency proof | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | hud_glyphs | BLOCKED | 539/540 bytes; commuted address operands | src/game/world/SpawnPoint.cpp |
 
 Coordinator approves private Vehicle-constructor layout refinement of the four native vector members at 512/524/536/548, replacing only constant-index references mechanically in preserved Vehicle/NPC bodies. Storage extent and offsets must remain unchanged. All old Vehicle and NPC/dependency checks plus accepted custom/support/table checks must pass before readiness; no other algorithm changes or additional overlapping storage.
+| libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination | hud_registration | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
