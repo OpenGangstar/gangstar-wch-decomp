@@ -71,7 +71,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301418 | PlayerTest::applyDamage (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301101 | PlayerTest::getCarAnimName | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | ASSIGNED | Unmatched. Read-only audit of the current coherent destructor prerequisite and its existing-match blockers; no source or body changes | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030a3e5 | Vehicle::mobilize | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -626,7 +626,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ebf35 | Widgets::About::Update | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | hud_glyphs | ASSIGNED | Unmatched. Read-only receiver-load scheduling diagnosis using the saved 32-byte candidate and current matched forwarding relatives; no source forms | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | — | BLOCKED | Bool forwarding is byte-identical to the mismatching void model; disabling sched2 regresses 140 old functions and two sections; all experiments rejected | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ece95 | Widgets::About::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ec565 | Widgets::About constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ed459 | Widgets::About::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | BLOCKED | three forms;668B differs8 stack-reference bytes; Cash regression and five legacy forward conflicts block coherent integration; tracked match unchanged | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | Existing production match unchanged. Read-only stack-partition diagnosis of the frozen coherent photo candidate; no migration or source variant | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -864,7 +864,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate | lock_init | BLOCKED | pending | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | camera_tap | BLOCKED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | — | BLOCKED | Literal candidate is exact at 18 bytes, but its class declaration regresses Cash at +0x3c; no integration; return type remains inferred | src/game/app/Application.cpp |
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
@@ -919,13 +919,13 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 
 | libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 
-| libsanangeles.so | 0x00321445 | SceneNodeManager::getPoolID(int) const | hud_registration | BLOCKED | 72-byte candidate; context/order unchanged | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x00321445 | SceneNodeManager::getPoolID(int) const | — | COMPLETED | 100%; authentic STLport-derived lookup; full 190-profile, 10,503-comparison gate exact; all old matches retained | src/game/world/SceneNodeManager.cpp |
 
 Coordinator reviewed _zoomMap: three materially different forms emitted identical complete bytes; parked under the early-stop rule without credit.
 
-| libsanangeles.so | 0x0034eed9 | ResStream::~ResStream() (deleting D0) | hud_registration | ASSIGNED | Unmatched. Read-only vptr/GOT register-allocation diagnosis of the frozen destructor family; no source forms | src/game/world/ResStream.cpp |
+| libsanangeles.so | 0x0034eed9 | ResStream::~ResStream() (deleting D0) | — | BLOCKED | Unmatched. Current replay and local-allocation audit reproduce the six register bytes; no justified API/source correction found | src/game/world/ResStream.cpp |
 
-| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() (complete/base D1/D2 aliases) | hud_registration | ASSIGNED | Unmatched. Read-only vptr/GOT register-allocation diagnosis of D1/D2 aliases; no source forms | src/game/world/ResStream.cpp |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() (complete/base D1/D2 aliases) | — | BLOCKED | Unmatched. Current replay and local-allocation audit reproduce the six register bytes; no justified API/source correction found | src/game/world/ResStream.cpp |
 
 Coordinator approves the associated ResStream complete/base destructor aliases required by the deleting-destructor definition. They remain exclusive to hud_glyphs.
 
@@ -1015,9 +1015,9 @@ Coordinator authorizes one unchanged-best integrated-context replay for each par
 
 | libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | lock_init | BLOCKED | 392/384-byte size (unmatched) | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | lock_init | ASSIGNED | Unmatched. Read-only coherent destructor-family prerequisite audit; no source changes | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | lock_init | ASSIGNED | Unmatched. Read-only coherent destructor-family prerequisite audit; no source changes | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | lock_init | ASSIGNED | Unmatched. Read-only coherent destructor-family prerequisite audit; no source changes | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00311ef1 | _ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f05 | _ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f19 | _ZN26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |

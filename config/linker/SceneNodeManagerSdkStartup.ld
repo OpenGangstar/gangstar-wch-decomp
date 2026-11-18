@@ -14,6 +14,8 @@ memset = 0x001c45d4;
 __stack_chk_fail = 0x001c42e0;
 SECTIONS
 {
+ .scene_pool_id 0x00321444 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager9getPoolIDEi) }
+
     .scene_node_manage 0x00321698 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager6manageEiP11LevelObjecti .gnu.linkonce.t._ZN16SceneNodeManager6manageEiP11LevelObjecti) }
 
     .scene_crc_reflect 0x003213f0 : { *sdk-startup-scenenodemanager.o(.text._Z10crcReflectjc) }
@@ -49,3 +51,5 @@ ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStri
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
 ASSERT(SIZEOF(.scene_manager_instance_guard) == 4, "SceneNodeManager singleton guard extent");
 ASSERT(SIZEOF(.scene_manager_instance_storage) == 0x42c, "SceneNodeManager singleton storage extent");
+
+ASSERT(SIZEOF(.scene_pool_id)<=68,"native getPoolID span");

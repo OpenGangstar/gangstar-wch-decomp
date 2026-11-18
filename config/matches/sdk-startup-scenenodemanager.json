@@ -66,7 +66,8 @@
             "name": "_GLOBAL__I__Z10crcReflectjc",
             "address": "0x00321c09"
         },
-        "_ZN16SceneNodeManager6manageEiP11LevelObjecti"
+        "_ZN16SceneNodeManager6manageEiP11LevelObjecti",
+        "_ZNK16SceneNodeManager9getPoolIDEi"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -76,12 +77,12 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".scene_pool_id"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN11Application11GetInstanceEv",
-        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",
-        "_ZNK16SceneNodeManager9getPoolIDEi"
+        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE"
     ]
 }

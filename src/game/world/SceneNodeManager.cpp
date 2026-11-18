@@ -324,3 +324,33 @@ bool SceneNodeManager::manage(int poolID, LevelObject* owner, int count)
     }
     return true;
 }
+
+// Modified restricted adaptation of licensed STLport _tree.h _M_find.
+// Original cached Android source commit: e64e7c849b0b659d3e198e4efaed563601e554be.
+// PoolIndex uses observed native storage; this is not a full STL implementation.
+inline SceneNodeManager::PoolIndexLink*
+SceneNodeManager::PoolIndex::_M_find(const int& key) const
+{
+    PoolIndexLink* result = const_cast<PoolIndexLink*>(&header);
+    PoolIndexLink* node = header.parent;
+    while (node != 0) {
+        if (!std::less<int>()(static_cast<PoolIndexNode*>(node)->value.first, key)) {
+            result = node;
+            node = node->left;
+        } else {
+            node = node->right;
+        }
+    }
+    if (result != &header) {
+        if (std::less<int>()(key, static_cast<PoolIndexNode*>(result)->value.first)) {
+            result = const_cast<PoolIndexLink*>(&header);
+        }
+    }
+    return result;
+}
+
+int SceneNodeManager::getPoolID(int key) const
+{
+    PoolIndex::Iterator result = poolIndex.find(key);
+    return result == poolIndex.end() ? -1 : result->second;
+}

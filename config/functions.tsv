@@ -10913,7 +10913,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003213f1	0x2c	SceneNodeManager.cpp	game	world	matched	_Z10crcReflectjc	crcReflect(unsigned int, char)
 0x0032141d	0x2	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager5setupEv	SceneNodeManager::setup()
 0x00321421	0x24	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager6updateEi	SceneNodeManager::update(int)
-0x00321445	0x44	SceneNodeManager.cpp	game	world	pending	_ZNK16SceneNodeManager9getPoolIDEi	SceneNodeManager::getPoolID(int) const
+0x00321445	0x44	SceneNodeManager.cpp	game	world	matched	_ZNK16SceneNodeManager9getPoolIDEi	SceneNodeManager::getPoolID(int) const
 0x00321489	0x3c	SceneNodeManager.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIiSt4lessIiESt4pairIKiiENS_10_Select1stIS5_EENS_11_MapTraitsTIS5_EESaIS5_EE8_M_eraseEPNS_18_Rb_tree_node_baseE	stlp_priv::_Rb_tree<int, std::less<int>, std::pair<int const, int>, stlp_priv::_Select1st<std::pair<int const, int> >, stlp_priv::_MapTraitsT<std::pair<int const, int> >, std::allocator<std::pair<int const, int> > >::_M_erase(stlp_priv::_Rb_tree_node_base*)
 0x003214c5	0x12	SceneNodeManager.cpp	stlport	-	matched	_ZNSt6vectorIPN16SceneNodeManager4PoolESaIS2_EE8_M_clearEv	std::vector<SceneNodeManager::Pool*, std::allocator<SceneNodeManager::Pool*> >::_M_clear()
 0x003214d9	0x12	SceneNodeManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN16SceneNodeManager4NodeESaIS3_EED1Ev	stlp_priv::_Vector_base<SceneNodeManager::Node*, std::allocator<SceneNodeManager::Node*> >::~_Vector_base()
