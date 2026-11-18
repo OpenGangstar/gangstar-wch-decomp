@@ -71,7 +71,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301418 | PlayerTest::applyDamage (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301101 | PlayerTest::getCarAnimName | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | ASSIGNED | Unmatched. Read-only audit of the current coherent destructor prerequisite and its existing-match blockers; no source or body changes | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030a3e5 | Vehicle::mobilize | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -182,7 +182,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032cbe1 | Wheel::Wheel (C1/C2 aliases) | camera_tap | BLOCKED | — | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032d131 | Wheel::processTouchRelease | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cf95 | EvWheelTurn::~EvWheelTurn (D1) | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
-| libsanangeles.so | 0x0032cfcd | Wheel::processTouch | hud_registration | ASSIGNED | Unmatched. Read-only full 300-byte mismatch classification and this/id allocation-frequency audit; no new source forms | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032cfcd | Wheel::processTouch | — | BLOCKED | Unmatched. Bounded diagnostics/source tests frozen; all existing matches preserved; no new credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032ccf5 | Wheel::draw2d | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cf69 | EvWheelReleased::~EvWheelReleased (D0) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032d18d | EvWheelTurn::~EvWheelTurn (D0) | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
@@ -291,7 +291,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f83dd | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f83f0 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 CSceneNode thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002d2f51 | LODSceneNode::LODSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate | vehicle_side | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate | — | BLOCKED | Unmatched. Bounded diagnostics/source tests frozen; all existing matches preserved; no new credit | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7ff8 | _ZThn100_N24CustomBillboardSceneNode9OnAnimateEj | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor | camera_tap | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7b3d | CustomBillboardSceneNode::CustomBillboardSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
@@ -560,7 +560,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032b418 | SlideControl::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b665 | SlideControl::processTouch | lock_init | ASSIGNED | Unmatched. Read-only control-flow and float-operation comparison of the canonical 668-byte parent and matched relatives; no new source forms | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b665 | SlideControl::processTouch | — | BLOCKED | Unmatched. Bounded diagnostics/source tests frozen; all existing matches preserved; no new credit | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b650 | _ZThn8_N12SlideControl12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
@@ -626,7 +626,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ebf35 | Widgets::About::Update | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | hud_glyphs | ASSIGNED | Unmatched. Read-only receiver-load scheduling diagnosis using the saved 32-byte candidate and current matched forwarding relatives; no source forms | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ece95 | Widgets::About::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ec565 | Widgets::About constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ed459 | Widgets::About::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -923,9 +923,9 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 
 Coordinator reviewed _zoomMap: three materially different forms emitted identical complete bytes; parked under the early-stop rule without credit.
 
-| libsanangeles.so | 0x0034eed9 | ResStream::~ResStream() (deleting D0) | hud_glyphs | BLOCKED | 54/60 bytes (unmatched) | src/game/world/ResStream.cpp |
+| libsanangeles.so | 0x0034eed9 | ResStream::~ResStream() (deleting D0) | hud_registration | ASSIGNED | Unmatched. Read-only vptr/GOT register-allocation diagnosis of the frozen destructor family; no source forms | src/game/world/ResStream.cpp |
 
-| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() (complete/base D1/D2 aliases) | hud_glyphs | BLOCKED | 50/56 bytes (unmatched) | src/game/world/ResStream.cpp |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() (complete/base D1/D2 aliases) | hud_registration | ASSIGNED | Unmatched. Read-only vptr/GOT register-allocation diagnosis of D1/D2 aliases; no source forms | src/game/world/ResStream.cpp |
 
 Coordinator approves the associated ResStream complete/base destructor aliases required by the deleting-destructor definition. They remain exclusive to hud_glyphs.
 
@@ -1015,9 +1015,9 @@ Coordinator authorizes one unchanged-best integrated-context replay for each par
 
 | libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | lock_init | BLOCKED | 392/384-byte size (unmatched) | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | lock_init | BLOCKED | private family exact; coherent photo regression blocks integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | lock_init | ASSIGNED | Unmatched. Read-only coherent destructor-family prerequisite audit; no source changes | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | lock_init | ASSIGNED | Unmatched. Read-only coherent destructor-family prerequisite audit; no source changes | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | lock_init | ASSIGNED | Unmatched. Read-only coherent destructor-family prerequisite audit; no source changes | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00311ef1 | _ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f05 | _ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f19 | _ZN26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -1165,7 +1165,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 
-| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | hud_glyphs | ASSIGNED | Unmatched. Read-only lowering and allocation audit of the frozen 80-byte candidate versus native 82; no new source forms | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Indexed loop emits 74 bytes versus native 82; canonical 80-byte candidate remains best; all old checks pass; one new form stopped | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x002d4a01 | Application::_Update(int) | lock_init | BLOCKED | 108/106 bytes; six forms; old45/15 exact, header110/111 known fixture incomplete | src/game/app/Application.cpp |
 
