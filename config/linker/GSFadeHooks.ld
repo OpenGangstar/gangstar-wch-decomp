@@ -255,3 +255,9 @@ ASSERT(SIZEOF(.app_s_frameUpdateTime) == 4, "s_frameUpdateTime extent");
 INCLUDE config/linker/ApplicationNumberSections.ld
 
 INCLUDE config/linker/ApplicationResumeSections.ld
+
+INCLUDE config/linker/ApplicationSingletonSections.ld
+ASSERT(SIZEOF(.application_singleton_guard)==4,"Application singleton guard extent");
+ASSERT(SIZEOF(.application_singleton_storage)==180,"Application singleton native extent");
+
+INCLUDE config/linker/ApplicationRetainedHelpers.ld

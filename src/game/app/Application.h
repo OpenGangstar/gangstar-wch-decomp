@@ -1,6 +1,9 @@
 #ifndef WCH_APP_APPLICATION_H
 #define WCH_APP_APPLICATION_H
+#include "../input/TouchScreenMouseEvent.h"
+#include "ApplicationStorage.h"
 
+class AccelerometerBase;
 class StringManager;
 class ASprite;
 class StateMachine;
@@ -15,10 +18,15 @@ class TouchScreenBase;
 class EventManager;
 namespace irr { class IrrlichtDevice; class IEventReceiver; }
 
+// Historical partial-layout guidance, superseded by the recovered native extent below.
 // Partial layout. Members at offsets 36, 40, 44, 68, 72, 76 and 80 are currently recovered.
 // Do not instantiate or use sizeof until the complete class is recovered.
-class Application {
+// Native extent 180 bytes; original constructor/destructor remain imports.
+class Application : public irr::IEventReceiver {
 public:
+    Application();
+    virtual ~Application();
+    virtual bool OnEvent(const irr::SEvent& event);
     void Update();
     void _Update(int elapsed);
     void _Draw();
@@ -68,11 +76,18 @@ public:
     inline TouchScreenBase* GetTouchScreen() const { return touchScreen; }
     inline EventManager* GetEventManager() const { return eventManager; }
 private:
-    unsigned char unknownPrefix[36];
+    stlp_priv::_List_base<IUpdatable*, std::allocator<IUpdatable*> > updatables;
+    stlp_priv::_List_base<IDrawable*, std::allocator<IDrawable*> > sceneDrawables;
+    stlp_priv::_List_base<IDrawable*, std::allocator<IDrawable*> > hudDrawables;
+    stlp_priv::_List_base<irr::IEventReceiver*, std::allocator<irr::IEventReceiver*> > eventReceivers;
     irr::IrrlichtDevice* device;
     FileSystemBase* fileSystem;
     TouchScreenBase* touchScreen;
-    unsigned char unknown48[8];
+public:
+    // Recovered native pointer accessed by the platform bridge.
+    AccelerometerBase* accelerometer;
+private:
+    void* unknown52;
     EventManager* eventManager;
     unsigned char unknown60[4];
     StateMachine* stateMachine;
@@ -82,7 +97,7 @@ private:
     WeaponManager* weaponManager;
     static CCustomMaterialRenderer* s_materialRenderer;
     int defaultLanguage;
-    unsigned char unknown88[4];
+    int targetFrameRate;
     unsigned int lastUpdateTime;
     float unknown96;
     int unknown100;
@@ -103,7 +118,7 @@ private:
     int lastPressedKey;
     bool soundThreadPlaying;
     unsigned char unknown153[3];
-    unsigned char monitoredPointers[1] __attribute__((aligned(4)));
+    ApplicationMonitoredPointerStorage monitoredPointers;
 };
 
 #endif

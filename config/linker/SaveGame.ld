@@ -1,3 +1,4 @@
+__aeabi_fmul = 0x001c4724;
 __aeabi_dmul = 0x001c4298;
 __aeabi_d2iz = 0x001c4844;
 __aeabi_i2d = 0x001c452c;

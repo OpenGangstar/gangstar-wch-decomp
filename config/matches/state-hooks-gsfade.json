@@ -125,7 +125,60 @@
             "name": "_GLOBAL__I__ZN13ScriptManager12s_playerTestE",
             "address": "0x0033fb1d"
         },
-        "_ZN11Application6ResumeEv"
+        "_ZN11Application6ResumeEv",
+        "_ZN11Application11GetInstanceEv",
+        {
+            "name": "__tcf_4",
+            "address": "0x002d5d89",
+            "compiled_name": "__tcf_1"
+        },
+        "_ZN11Application10IsLogoOverEv",
+        "_ZN11Application20IsGlobalResumingOverEv",
+        "_ZN11Application14stopMonitoringEPv",
+        "_ZN11Application15startMonitoringEPvPKc",
+        "_Z10SafeDeleteI15CControlManagerEvRPT_",
+        "_ZN11Application8LogoDrawEv",
+        "_ZN11Application10LogoUpdateEv",
+        "_ZN11Application9StartLogoEv",
+        "_ZN11Application18GlobalResumingDrawEv",
+        "_ZN11Application19StartGlobalResumingEv",
+        "_ZN11Application5PauseEv",
+        "_ZN11Application25RegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
+        "_ZN11Application25RegisterForDrawingInSceneEP9IDrawable",
+        "_ZN11Application23RegisterForDrawingOnHUDEP9IDrawable",
+        "_ZN11Application17RegisterForUpdateEP10IUpdatable",
+        "_ZN11Application27UnRegisterForIrrlichtEventsEPN3irr14IEventReceiverE",
+        "_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable",
+        "_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable",
+        "_ZN11Application15stopSoundThreadEv",
+        "_ZN11Application16startSoundThreadEv",
+        "_ZN11Application19GetMaterialRendererEv",
+        "_ZN11Application18SetDefaultLanguageEi",
+        "_ZN11Application11ReInitWin32EPN3irr14IrrlichtDeviceE",
+        "_ZN11Application16SetIsDemoVersionEb",
+        "_ZN11Application16GetIsDemoVersionEv",
+        "_ZN11Application6ReInitEPN3irr14IrrlichtDeviceE",
+        "_ZN11Application20InitIPhoneFileSystemEv",
+        "_ZN11Application21dumpMonitoredPointersEv",
+        "_ZN11Application10SetDrawAllEb",
+        {
+            "name": "_ZNK6IEvent10getEventIDEv",
+            "address": "0x002d3c35"
+        },
+        {
+            "name": "_ZN6IEventD0Ev",
+            "address": "0x002d4075"
+        },
+        {
+            "name": "_ZN6IEventD1Ev",
+            "address": "0x002d4095"
+        },
+        "_ZN11Application15ProcessKeyEventEbi",
+        "_ZN11Application14appKeyReleasedEi",
+        "_ZN11Application13appKeyPressedEi",
+        "_ZN11Application20GlobalResumingUpdateEv",
+        "_ZN11Application6UpdateEv",
+        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc"
     ],
     "sections": [
         ".hook_0",
@@ -325,7 +378,8 @@
         ".application_resume_tag",
         ".application_resume_message",
         ".application_resume_map",
-        ".application_first_resume"
+        ".application_first_resume",
+        ".application_singleton_cleanup"
     ],
     "retail_got": true,
     "source_first": true,
@@ -349,7 +403,6 @@
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11AnalogStick10switchModeENS_4ModeE",
         "_ZN11AnalogStickC1EP7ASpriteii",
-        "_ZN11Application11GetInstanceEv",
         "_ZN11Application19UnRegisterForUpdateEP10IUpdatable",
         "_ZN11CDrivingHud12showSpyGaugeEb",
         "_ZN11CDrivingHud20toggleWeaponSelectorEb",
@@ -443,6 +496,16 @@
         "_ZN12SoundManager15resumeAllSoundsEv",
         "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
         "_ZN11MenuManager5popToEPKcbb",
-        "_ZN11MenuManager13preloadGlyphsEb"
+        "_ZN11MenuManager13preloadGlyphsEb",
+        "_ZN11ApplicationC1Ev",
+        "_ZN11ApplicationD1Ev",
+        "_ZN9GSLoading12isGameLoadedEv",
+        "_ZN15CControlManagerD1Ev",
+        "_ZN12SoundManager15stopLowFpsMusicEv",
+        "_ZN12SoundManager4initEv",
+        "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
+        "_ZNK11MenuManager8getStateEPKc",
+        "nativeNotifyPause",
+        "_ZNK11MenuManager8getDepthEv"
     ]
 }

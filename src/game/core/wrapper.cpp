@@ -193,3 +193,33 @@ void appRun()
     }
 }
 }
+
+#include "../app/NativeMedia.h"
+extern "C" void nativeUnloadSoundBig(int sound);
+extern "C" void _ZN11Application4QuitEv(Application* application);
+extern "C" void appDeinit()
+{
+    nativeStopAllSounds();
+    nativeUnloadSoundBig(-1);
+    _ZN11Application4QuitEv(app);
+}
+
+
+#include "../input/AccelerometerBase.h"
+extern "C" {
+extern float m_AccX, m_AccY, m_AccZ;
+void appOnAccelerometer(void)
+{
+    const float x = m_AccX = 0.11f * m_AccX;
+    const float y = m_AccY = 0.11f * m_AccY;
+    const float z = m_AccZ = 0.11f * m_AccZ;
+    if (device && app)
+        app->accelerometer->moved(x, y, z);
+}
+}
+
+extern "C" void appPause()
+{
+    app->Pause();
+    m_timerForResume = 0;
+}

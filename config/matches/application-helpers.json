@@ -99,7 +99,13 @@
         "_ZN11Application20GlobalResumingUpdateEv",
         "_ZN11Application6UpdateEv",
         "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc",
-        "_ZN11Application6ResumeEv"
+        "_ZN11Application6ResumeEv",
+        "_ZN11Application11GetInstanceEv",
+        {
+            "name": "__tcf_4",
+            "address": "0x002d5d89",
+            "compiled_name": "__tcf_1"
+        }
     ],
     "sections": [
         ".screen_dimensions",
@@ -134,7 +140,8 @@
         ".application_resume_tag",
         ".application_resume_message",
         ".application_resume_map",
-        ".application_first_resume"
+        ".application_first_resume",
+        ".application_singleton_cleanup"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -168,6 +175,8 @@
         "_ZN12SoundManager15resumeAllSoundsEv",
         "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
         "_ZN11MenuManager5popToEPKcbb",
-        "_ZN11MenuManager13preloadGlyphsEb"
+        "_ZN11MenuManager13preloadGlyphsEb",
+        "_ZN11ApplicationC1Ev",
+        "_ZN11ApplicationD1Ev"
     ]
 }

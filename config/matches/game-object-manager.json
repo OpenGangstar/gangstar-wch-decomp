@@ -123,7 +123,10 @@
         "appOnKeyUp",
         "appOnKeyDown",
         "appOnTouch",
-        "appRun"
+        "appRun",
+        "appDeinit",
+        "appOnAccelerometer",
+        "appPause"
     ],
     "sections": [
         ".gom_event_get_id",
@@ -408,7 +411,11 @@
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application6ResumeEv",
         "_ZN11Application6UpdateEv",
-        "_ZN3irr2os5Timer4tickEv"
+        "_ZN3irr2os5Timer4tickEv",
+        "nativeStopAllSounds",
+        "nativeUnloadSoundBig",
+        "_ZN11Application4QuitEv",
+        "_ZN11Application5PauseEv"
     ],
     "dependencies": [
         "gs3d-stuff",

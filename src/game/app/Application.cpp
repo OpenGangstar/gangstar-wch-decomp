@@ -141,10 +141,6 @@ void Application::startSoundThread()
 }
 
 namespace stlp_priv {
-struct RegistrationLink {
-    RegistrationLink* next;
-    RegistrationLink* previous;
-};
 template<class T> struct _List_node : RegistrationLink {
     T value;
 };
@@ -176,17 +172,17 @@ inline void removeRegistration(void* list, T*& object)
 
 void Application::UnRegisterForIrrlichtEvents(irr::IEventReceiver* receiver)
 {
-    removeRegistration(unknownPrefix + 28, receiver);
+    removeRegistration(&eventReceivers, receiver);
 }
 
 void Application::UnRegisterForDrawingOnHUD(IDrawable* drawable)
 {
-    removeRegistration(unknownPrefix + 20, drawable);
+    removeRegistration(&hudDrawables, drawable);
 }
 
 void Application::UnRegisterForDrawingInScene(IDrawable* drawable)
 {
-    removeRegistration(unknownPrefix + 12, drawable);
+    removeRegistration(&sceneDrawables, drawable);
 }
 
 namespace {
@@ -209,22 +205,22 @@ inline void appendRegistration(void* list, stlp_priv::RegistrationLink*& tail, T
 
 void Application::RegisterForIrrlichtEvents(irr::IEventReceiver* receiver)
 {
-    appendRegistration(unknownPrefix + 28, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 32), receiver);
+    appendRegistration(&eventReceivers, eventReceivers._M_node.previous, receiver);
 }
 
 void Application::RegisterForDrawingInScene(IDrawable* drawable)
 {
-    appendRegistration(unknownPrefix + 12, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 16), drawable);
+    appendRegistration(&sceneDrawables, sceneDrawables._M_node.previous, drawable);
 }
 
 void Application::RegisterForDrawingOnHUD(IDrawable* drawable)
 {
-    appendRegistration(unknownPrefix + 20, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 24), drawable);
+    appendRegistration(&hudDrawables, hudDrawables._M_node.previous, drawable);
 }
 
 void Application::RegisterForUpdate(IUpdatable* object)
 {
-    appendRegistration(unknownPrefix + 4, *reinterpret_cast<stlp_priv::RegistrationLink**>(unknownPrefix + 8), object);
+    appendRegistration(&updatables, updatables._M_node.previous, object);
 }
 
 void Application::Pause()
@@ -354,12 +350,12 @@ const char*& map<void*, const char*, less<void*>, MonitoredPointerAllocator>::op
 
 void Application::stopMonitoring(void* pointer)
 {
-    reinterpret_cast<MonitoredPointerTree*>(monitoredPointers)->erase_unique(pointer);
+    reinterpret_cast<MonitoredPointerTree*>(&monitoredPointers)->erase_unique(pointer);
 }
 
 void Application::startMonitoring(void* pointer, const char* name)
 {
-    (*reinterpret_cast<MonitoredPointerMap*>(monitoredPointers))[pointer] = name;
+    (*reinterpret_cast<MonitoredPointerMap*>(&monitoredPointers))[pointer] = name;
 }
 
 // Observed IEvent-derived interface only; payload layout is not asserted.
@@ -683,4 +679,10 @@ void Application::Resume()
     } else if (IsGlobalResumingOver()) {
         SoundManager::getInstance()->resumeAllSounds();
     }
+}
+
+Application* Application::GetInstance()
+{
+    static Application app;
+    return &app;
 }

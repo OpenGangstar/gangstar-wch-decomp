@@ -1201,7 +1201,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | REVIEW | exact 656-byte candidate; oldCash header context difference and link limitations pending | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d528d | Application::GetInstance() | hud_registration | REVIEW | exact 84-byte candidate; integration pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | BLOCKED | GCC weak destructor alias assembly failure after two forms; no credit | src/game/app/Application.cpp |
 
@@ -1216,7 +1216,19 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d2655 | appOnKeyUp | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2679 | appOnKeyDown | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2511 | appOnTouch | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
-| libsanangeles.so | 0x002d26f1 | appDeinit | hud_glyphs | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d26f1 | appDeinit | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d269d | appRun | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
-| libsanangeles.so | 0x002d25a9 | appOnAccelerometer | lock_init | ASSIGNED | pending | src/game/core/wrapper.cpp |
-| libsanangeles.so | 0x002d2731 | appPause | hud_registration | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d25a9 | appOnAccelerometer | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2731 | appPause | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d5d89 | Application.cpp::__tcf_4 generated singleton cleanup | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d2759 | appInit | lock_init | BLOCKED | exact 192-byte candidate; InitWin32 declaration regresses existing Cash332 by five bytes; no credit | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d13f5 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause | hud_glyphs | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d13d9 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume | hud_registration | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d13a1 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch | hud_glyphs | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d13b5 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender | hud_registration | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d136d | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer | hud_glyphs | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d1421 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize | hud_registration | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d144d | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit | lock_init | REVIEW | exact candidate; integration pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d1ddd | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance | hud_glyphs | ASSIGNED | pending | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1869 | nativeOpenBrowser | hud_registration | ASSIGNED | pending | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003eeb71 | RenderFX::SetMember(char const*, char const*, char const*) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
