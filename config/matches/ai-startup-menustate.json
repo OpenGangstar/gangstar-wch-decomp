@@ -27,7 +27,8 @@
     "dependencies": [
         "ai-startup-menuwidget",
         "renderfx-animation",
-        "menu-manager-helpers"
+        "menu-manager-helpers",
+        "jni-gangstar"
     ],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
@@ -269,7 +270,15 @@
         "_Z16GetLocalPositionPN7gameswf9characterEff",
         "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
         "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
-        "_ZN8RenderFX11SearchIndex4FindEPKc"
+        "_ZN8RenderFX11SearchIndex4FindEPKc",
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "sections": [
         ".help_empty_icon",
@@ -342,7 +351,17 @@
             "offset": 864
         },
         ".wanted_cleanup",
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -400,8 +419,6 @@
         "_ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE",
         "_ZN8SaveGame18GetDefaultFilenameEv",
         "_ZN10FileStream5ExistEPKc",
-        "nativeNotifyPause",
-        "nativeExit",
         "_ZN11Application4QuitEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_Z13ekd_debug_outPKcPc",

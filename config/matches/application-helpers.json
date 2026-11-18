@@ -105,7 +105,15 @@
             "name": "__tcf_4",
             "address": "0x002d5d89",
             "compiled_name": "__tcf_1"
-        }
+        },
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "sections": [
         ".screen_dimensions",
@@ -141,7 +149,17 @@
         ".application_resume_message",
         ".application_resume_map",
         ".application_first_resume",
-        ".application_singleton_cleanup"
+        ".application_singleton_cleanup",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -161,7 +179,6 @@
         "_ZN12StateMachineD1Ev",
         "_ZN11MenuManager11getInstanceEv",
         "_ZNK11MenuManager8getStateEPKc",
-        "nativeNotifyPause",
         "_ZNK11MenuManager8getDepthEv",
         "_ZN3irr5video15CTextureManager13reloadTextureEi",
         "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
@@ -178,5 +195,8 @@
         "_ZN11MenuManager13preloadGlyphsEb",
         "_ZN11ApplicationC1Ev",
         "_ZN11ApplicationD1Ev"
+    ],
+    "dependencies": [
+        "jni-gangstar"
     ]
 }

@@ -32,3 +32,7 @@ vtable, engine body, data progress or compiler-output edits receive credit.
 Coordinator graph: 21 profiles, 1,939 passing function/section/GOT comparisons.
 Proof: _scratch/browser-root.log and .exit. Windows sources/build configuration
 are unchanged. Only the original 92-byte game function is newly credited.
+
+The later complete-unit integration expands this original nine-image proof to
+twelve images and adds the seven individually verified original JNI functions.
+See [the complete JNI unit](jni-gangstar-complete.md) for current coverage.

@@ -35,7 +35,17 @@
             "offset": 864
         },
         ".shared_startup_empty_text",
-        ".wrapper_twitter_url"
+        ".wrapper_twitter_url",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
     ],
     "functions": [
         "_Z21ekd_makestringfile255PKcPc",
@@ -60,7 +70,14 @@
         "appDeinit",
         "appOnAccelerometer",
         "appPause",
-        "nativeOpenBrowser"
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "external_thumb_functions": [
         "_ZN11Application14appKeyReleasedEi",

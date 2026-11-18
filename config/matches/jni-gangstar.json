@@ -27,12 +27,30 @@
     "source": "src/game/app/jni_Gangstar.c",
     "linker_script": "config/linker/JNIGangstar.ld",
     "functions": [
-        "nativeOpenBrowser"
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "sections": [
         {
             "name": ".got",
             "offset": 864
-        }
-    ]
+        },
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
+    ],
+    "external_thumb_functions": []
 }

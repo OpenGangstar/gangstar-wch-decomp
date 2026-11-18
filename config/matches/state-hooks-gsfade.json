@@ -178,7 +178,15 @@
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application20GlobalResumingUpdateEv",
         "_ZN11Application6UpdateEv",
-        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc"
+        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc",
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "sections": [
         ".hook_0",
@@ -379,14 +387,25 @@
         ".application_resume_message",
         ".application_resume_map",
         ".application_first_resume",
-        ".application_singleton_cleanup"
+        ".application_singleton_cleanup",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
     ],
     "retail_got": true,
     "source_first": true,
     "dependencies": [
         "hud-manager-helpers",
         "script-manager-helpers",
-        "application-helpers"
+        "application-helpers",
+        "jni-gangstar"
     ],
     "external_thumb_functions": [
         "_ZN10AnimObject4DrawEv",
@@ -505,7 +524,6 @@
         "_ZN12SoundManager4initEv",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZNK11MenuManager8getStateEPKc",
-        "nativeNotifyPause",
         "_ZNK11MenuManager8getDepthEv"
     ]
 }

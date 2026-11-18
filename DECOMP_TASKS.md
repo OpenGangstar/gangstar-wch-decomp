@@ -1235,13 +1235,19 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003eca0d | CanHandleMouseEvent(gameswf::character*) | hud_glyphs | BLOCKED | six candidates, 80/92 bytes; old matches preserved, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eccd9 | GetLocalPosition(gameswf::character*, float, float) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eca69 | sprite_can_handle_mouse_event_callback(gameswf::character*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x002d1835 | nativeNotifyPause | hud_registration | REVIEW | exact 52-byte candidate; browser, Media and callers pass | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d1835 | nativeNotifyPause | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x002d18c5 | nativeExit | hud_registration | REVIEW | exact 52-byte candidate; browser, notify and callers pass | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d18c5 | nativeExit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | hud_glyphs | BLOCKED | six candidates; best 400/416 bytes with native frame, no credit | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | hud_registration | REVIEW | exact 52-byte first candidate; cached Java int return and old code verified | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x002d192d | nativeUnlockDemo | hud_registration | REVIEW | exact 52-byte first candidate; cache and all earlier callbacks verified | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x002d1961 | nativeGetVersionMode | hud_registration | ASSIGNED | pending | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x003ef139 | RenderFX::SendEvent(RenderFX::Event&) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | lock_init | BLOCKED | six candidates; best 476/488 bytes, old 108 functions and headers exact; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d192d | nativeUnlockDemo | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d1961 | nativeGetVersionMode | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003ef139 | RenderFX::SendEvent(RenderFX::Event&) | hud_glyphs | REVIEW | exact 200-byte first candidate; code, table and literals pass full header graph | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d1995 | nativeGetNumLaunch | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | lock_init | REVIEW | exact 280-byte first candidate; old family and header users pass | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | ASSIGNED | pending | src/game/rendering/menufx.cpp |
