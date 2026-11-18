@@ -31,12 +31,6 @@ SECTIONS
     .driving_handler_delete 0x0032e4b8 : { *(.text._ZN22CDrivingControlHandlerD0Ev) }
     .driving_handler_destructor 0x0032e4f0 : { *(.text._ZN22CDrivingControlHandlerD1Ev .text._ZN22CDrivingControlHandlerD2Ev) }
     .driving_handler_vtable 0x004aca78 : { *(.data.rel.ro._ZTV22CDrivingControlHandler) }
-    .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
-    .control_handler_destructor 0x0032e494 : { *(.gnu.linkonce.t._ZN15IControlHandlerD1Ev) }
-    .control_handler_vtable 0x004aca98 : { *(.gnu.linkonce.d.rel.ro._ZTV15IControlHandler) }
-    .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
-    .receiver_destructor 0x002db4d4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD1Ev) }
-    .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
     .state_machine_singleton 0x002d44c4 : { *ai-startup-cdrivingcontrolhandler.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_cleanup 0x0032d970 : { *ai-startup-cdrivingcontrolhandler.o(.text.__tcf_0) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *ai-startup-cdrivingcontrolhandler.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
@@ -72,3 +66,4 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+INCLUDE config/linker/ControlHandlerInterfaceSections.ld

@@ -25,6 +25,8 @@
     "source": "src/game/hud/CCameraHud.cpp",
     "linker_script": "config/linker/CCameraHudSdkStartup.ld",
     "functions": [
+        "_ZN10CCameraHud4showEv",
+        "_ZN10CCameraHud4hideEv",
         {
             "name": "__tcf_2",
             "address": "0x00322ea9"
@@ -53,7 +55,9 @@
             "name": ".got",
             "offset": 864
         },
-        ".ihud_vtable"
+        ".ihud_vtable",
+        ".sdk_startup_ccamerahud_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": []
 }

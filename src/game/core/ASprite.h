@@ -12,7 +12,8 @@ struct SpriteFrame {
     unsigned char unknown2[2];
     SpriteBounds bounds;
     short firstModule;
-    unsigned char unknown22[6];
+    unsigned char unknown22[2];
+    unsigned int nameOffset;
 };
 struct SpriteData;
 struct SpriteFrameModule {
@@ -90,6 +91,10 @@ private:
     int unknown40;
     int unknown44;
     int unknown48;
+    friend class CHudManager;
+public:
+    int GetAFrameTime(int animation, int frame) const;
+    int GetFrameIdx(const char* name);
 };
 
 #endif

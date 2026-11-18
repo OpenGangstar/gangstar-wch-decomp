@@ -25,6 +25,8 @@
     "source": "src/game/hud/CWalkingHud.cpp",
     "linker_script": "config/linker/CWalkingHudSdkStartup.ld",
     "functions": [
+        "_ZN11CWalkingHud4showEv",
+        "_ZN11CWalkingHud4hideEv",
         {
             "name": "__tcf_2",
             "address": "0x00325a2d"
@@ -59,7 +61,9 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".sdk_startup_cwalkinghud_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": []
 }

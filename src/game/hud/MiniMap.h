@@ -9,6 +9,7 @@ class AnimObject;
 // Observed base and tracking calls. The remaining layout is unrecovered.
 class MiniMap : public VirtualButton {
 public:
+    MiniMap(ASprite*, int, int, int, int);
     virtual ~MiniMap();
     virtual void update(double elapsed);
     virtual void draw2d() const;
@@ -35,6 +36,8 @@ private:
     int unknown80[4];
     float minimumSpeed, maximumSpeed;
     float minimumScale, maximumScale;
+    // Observed constructor allocation is 116 bytes.
+    unsigned char unknown112[4];
 };
 
 #endif

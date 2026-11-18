@@ -2,12 +2,7 @@
 #define WCH_HUD_HUD_ELEMENT_H
 #include "../core/FrameInterfaces.h"
 class ASprite;
-class ITouchable {
-public:
-    virtual void processTouch(long) = 0;
-    virtual void processTouchRelease() = 0;
-    virtual bool isUsed() const = 0;
-};
+#include "../core/TouchInterfaces.h"
 // Four floats written by SetElemRegion; coordinate meanings remain provisional.
 struct HudTouchRegion { float coordinates[4]; };
 // Recovered virtual slots and 56-byte extent. Coordinate meanings and the

@@ -6,6 +6,7 @@ class GS3DStuff;
 
 // Partial retail layout. Do not instantiate.
 class CControlManager {
+    friend class CDrivingHud;
 public:
     CControlManager();
     ~CControlManager();

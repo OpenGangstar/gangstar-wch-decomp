@@ -1,3 +1,25 @@
+#include "../ui/AnimatedButton.h"
+#include "CCameraHud.h"
+#include "SniperHud.h"
+#include "HealthBar.h"
+#include "ArmorBar.h"
+#include "CarBar.h"
+#include "../vehicles/Wheel.h"
+
+#include "../core/ASprite.h"
+#include "../core/PointerVector.h"
+#include "../ui/VirtualButton.h"
+#include "../ui/SlideControl.h"
+#include "../ui/Cash.h"
+#include "../ui/Background.h"
+#include "../rendering/RetroEffect.h"
+#include "MiniMap.h"
+#include "../missions/WantedMeter.h"
+#include "../audio/Radio.h"
+#include "../ui/ToggleButton.h"
+#include "../missions/Reward.h"
+#include "../combat/HitWarning.h"
+
 /*
  * CWalkingHud
  *
@@ -136,4 +158,55 @@ static void _GLOBAL__I__ZN11CWalkingHudC2EP11CHudManager()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+#include "CHudManager.h"
+#include "HudElement.h"
+
+// Read only observed component pointers; their concrete element types remain partial.
+static inline HudElement* walkingComponent(CHudManager* manager,unsigned int offset)
+{
+    return *reinterpret_cast<HudElement**>(reinterpret_cast<unsigned char*>(manager)+offset);
+}
+
+void CWalkingHud::hide()
+{
+    visible=false;
+    walkingComponent(manager,36)->hide();
+    manager->enterCarButton->hide();
+    manager->enterShopButton->hide();
+    walkingComponent(manager,76)->hide();
+    manager->minimap->hide();
+    walkingComponent(manager,140)->hide();
+    walkingComponent(manager,144)->hide();
+    walkingComponent(manager,148)->hide();
+    manager->ammoDisplay->hide();
+    walkingComponent(manager,160)->hide();
+    walkingComponent(manager,164)->hide();
+    manager->weaponSelector->hide();
+    manager->weaponSelectorExtra->hide();
+    manager->spyGauge->hide();
+    walkingComponent(manager,168)->hide();
+}
+
+void CWalkingHud::show()
+{
+    visible=true;
+    if(unknown8&1u)walkingComponent(manager,36)->show();
+    if(unknown8&(1u<<5))manager->enterCarButton->show();
+    if(unknown8&(1u<<26))manager->enterShopButton->show();
+    if(unknown8&(1u<<6))walkingComponent(manager,76)->show();
+    if(unknown8&(1u<<7))manager->minimap->show();
+    if(unknown8&(1u<<12))walkingComponent(manager,140)->show();
+    if(unknown8&(1u<<29))walkingComponent(manager,144)->show();
+    if(unknown8&(1u<<27))walkingComponent(manager,148)->show();
+    if(unknown8&(1u<<13))walkingComponent(manager,156)->show();
+    if(unknown8&(1u<<15))walkingComponent(manager,160)->show();
+    if(unknown8&(1u<<14))walkingComponent(manager,164)->show();
+    if(unknown8&(1u<<8)) {
+        walkingComponent(manager,184)->show();
+        manager->weaponSelectorExtra->show();
+    }
+    if(unknown8&(1u<<25))walkingComponent(manager,152)->show();
+    if(unknown8&(1u<<28))walkingComponent(manager,168)->show();
 }

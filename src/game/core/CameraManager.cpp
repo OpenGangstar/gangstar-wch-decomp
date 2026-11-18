@@ -244,7 +244,7 @@ CameraManager::CameraManager(float nearDistance, float farDistance, float fov, L
     vehicleCamera = new VehicleCamera(target);
     fpsCamera = new FPSCamera;
     currentCamera = followCamera;
-    app->GetHudManager()->cameraManager = this;
+    app->GetHudManager()->defaultReceiver = this;
 }
 
 void CameraManager::processTouch(long id)

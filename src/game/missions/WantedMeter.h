@@ -7,6 +7,7 @@ class AnimObject;
 
 class WantedMeter : public HudElement {
 public:
+    WantedMeter(ASprite*, int);
     virtual ~WantedMeter();
     virtual void update(double elapsed);
     virtual void draw2d() const;

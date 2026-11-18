@@ -7,6 +7,7 @@ class AnalogStick : public HudElement {
 public:
     enum Mode { Mode0, Mode1, Mode2, ModeForceWidth = 0x7fffffff };
 
+    AnalogStick(ASprite*, int, int);
     virtual ~AnalogStick();
     void switchMode(Mode value);
     virtual void reset();

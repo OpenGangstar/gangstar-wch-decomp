@@ -73,7 +73,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".touchable_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [

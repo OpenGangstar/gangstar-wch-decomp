@@ -4,6 +4,7 @@
 class CHudManager;
 
 class IHud {
+    friend class CHudManager;
 public:
     virtual void show() = 0;
     virtual void hide() = 0;

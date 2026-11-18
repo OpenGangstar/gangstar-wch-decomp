@@ -394,7 +394,7 @@ void Weapon::shootProjectileFromCar(const irr::core::vector3d<float>& direction)
 void Weapon::photo()
 {
     lastShot = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
-    Application::GetInstance()->GetHudManager()->component116->unknown56 = true;
+    reinterpret_cast<HudComponent116*>(Application::GetInstance()->GetHudManager()->component116)->unknown56 = true;
     playShootSound();
 }
 

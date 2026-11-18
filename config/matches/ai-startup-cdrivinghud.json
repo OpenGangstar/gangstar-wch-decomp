@@ -25,6 +25,8 @@
     "source": "src/game/hud/CDrivingHud.cpp",
     "linker_script": "config/linker/CDrivingHudAiStartup.ld",
     "functions": [
+        "_ZN11CDrivingHud4showEv",
+        "_ZN11CDrivingHud4hideEv",
         {
             "name": "__tcf_3",
             "address": "0x0032307d"
@@ -53,7 +55,20 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".ai_startup_cdrivinghud_vtable",
+        ".control_handler_delete",
+        ".control_handler_destructor",
+        ".control_handler_vtable",
+        ".receiver_delete",
+        ".receiver_destructor",
+        ".receiver_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11LevelObject11GetMetatypeEv",
+        "_ZN22CDrivingControlHandler20disableAccelerometerEv"
+    ]
 }
