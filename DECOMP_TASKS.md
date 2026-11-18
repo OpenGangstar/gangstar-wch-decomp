@@ -847,7 +847,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | ASSIGNED | one bounded compiler TER-pass diagnostic on preserved correct source; all existing unit matches required; no source/flag grid | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -1281,8 +1281,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | — | BLOCKED | five forms;12384/12636, frame324/332; old/support exact and93 baseline header profiles pass; buffer extent provisional; no credit | src/game/scripting/Script.cpp |
 
-| libsanangeles.so | 0x002d1de1 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic | hud_glyphs | ASSIGNED | recover JNI descriptor/provenance from existing packaged classes.dex before reconstructing2B stub; no credit | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1de1 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic | — | COMPLETED | 100%;2B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/app/jni_GLMediaPlayer.c |
 
-| libsanangeles.so | 0x002d1349 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt | lock_init | ASSIGNED | recover JNI descriptor/provenance from existing packaged classes.dex before reconstructing2B stub; no credit | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d1349 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt | — | COMPLETED | 100%;2B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/app/app-android.c |
 
-| libsanangeles.so | 0x002d1335 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv | hud_registration | ASSIGNED | recover exact packaged Java descriptor/provenance and genuine cached-env symbol before20B JNI reconstruction; no engine implementation scope | src/game/core/CIrrDevicePS3.cpp |
+| libsanangeles.so | 0x002d1335 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv | — | COMPLETED | 100%;20B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/core/CIrrDevicePS3.cpp |
+
+| libsanangeles.so | 0x002d1de5 | GetNativeSoundRaw | hud_glyphs | ASSIGNED | bounded native/DEX cross-reference and prototype recovery; implement only if ABI evidenced, no guessed signatures | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | lock_init | ASSIGNED | bounded native/DEX cross-reference and prototype recovery; implement only if ABI evidenced, no guessed signatures | src/game/app/jni_GLMediaPlayer.c |

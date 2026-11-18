@@ -35,7 +35,8 @@
         "Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume",
         "Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause",
         "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize",
-        "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit"
+        "Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -53,6 +54,7 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".jni_can_interrupt"
     ]
 }
