@@ -668,7 +668,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
-| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | lock_init | REVIEW | pending | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | hud_glyphs | ASSIGNED | archived176B exact candidate; remove incompatible global long_call headers using existing native weak-D1 lifetime pattern; no credit pending full gates | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | BLOCKED | pending | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | — | COMPLETED | 100% | src/game/hud/MenuManager.cpp |
 | libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
@@ -1119,7 +1119,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | hud_glyphs | BLOCKED | 1788/1792 bytes; first form parked on old visibility regression | src/game/ui/MenuManager.cpp |
 
-| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | hud_glyphs | ASSIGNED | bounded three-form escalation: likelihood hints for native noarg fallthrough/default order; previous2440/2436, no credit | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | — | BLOCKED | three hint forms2440/2436; strict overlap4B; corrected aggregate selectors, no credit | src/game/scripting/ScriptManager.cpp |
 
 | libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
 
