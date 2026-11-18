@@ -9,3 +9,5 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
 }
+
+INCLUDE config/linker/RenderFXUtilitySections.ld

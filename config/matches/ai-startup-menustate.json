@@ -264,7 +264,10 @@
             "name": "__tcf_5",
             "address": "0x002e745d",
             "compiled_name": "__tcf_1"
-        }
+        },
+        "_ZN8RenderFX9SetMemberEPKcS1_S1_",
+        "_Z16GetLocalPositionPN7gameswf9characterEff",
+        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE"
     ],
     "sections": [
         ".help_empty_icon",
@@ -471,6 +474,8 @@
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN7gameswf6matrix11set_inverseERKS0_",
+        "_Z19CanHandleMouseEventPN7gameswf9characterE"
     ]
 }

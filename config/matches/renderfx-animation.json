@@ -129,7 +129,10 @@
         "_ZN8RenderFX9GotoFrameEPN7gameswf9characterEib",
         "_ZN8RenderFX9GotoFrameEPKcib",
         "_ZN8RenderFX9GotoFrameEPKcS1_b",
-        "_ZN8RenderFX8PlayAnimEPKcS1_i"
+        "_ZN8RenderFX8PlayAnimEPKcS1_i",
+        "_ZN8RenderFX9SetMemberEPKcS1_S1_",
+        "_Z16GetLocalPositionPN7gameswf9characterEff",
+        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -141,7 +144,10 @@
         ".disabled_animation",
         ".renderfx_glyph_cache_warning",
         ".renderfx_file_read_mode",
-        {"name": ".got", "offset": 864}
+        {
+            "name": ".got",
+            "offset": 864
+        }
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -199,7 +205,11 @@
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+        "_ZN7gameswf9character16get_world_matrixEv",
+        "_ZN7gameswf6matrix11set_inverseERKS0_",
+        "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
+        "_Z19CanHandleMouseEventPN7gameswf9characterE"
     ],
     "retail_got": true
 }

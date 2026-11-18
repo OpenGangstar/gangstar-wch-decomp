@@ -167,6 +167,7 @@ public:
     void SetTexture(const char* name, irr::video::ITexture* texture);
     void SetLocalVariable(const char* characterName, const char* variable, gameswf::as_value& value);
     void SetMember(const char* characterName, const char* member, int value);
+    void SetMember(const char* characterName, const char* member, const char* value);
     void SetMember(const char* characterName, const char* member, gameswf::as_value& value);
     void SetVisible(const char* characterName, bool visible);
     bool RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context);

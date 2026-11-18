@@ -1293,3 +1293,31 @@ void RenderFX::SetLocalVariable(const char* characterName, const char* variable,
         environment->set_local(variableName, value);
     }
 }
+
+
+void RenderFX::SetMember(const char* characterName, const char* member, const char* value)
+{
+    gameswf::as_value memberValue(value);
+    SetMember(characterName, member, memberValue);
+}
+
+
+extern "C" {
+const gameswf::matrix& _ZN7gameswf9character16get_world_matrixEv(gameswf::character* character);
+}
+gameswf::point GetLocalPosition(gameswf::character* character, float x, float y)
+{
+    gameswf::point input(x * 20.0f, y * 20.0f);
+    gameswf::point result;
+    gameswf::matrix world = _ZN7gameswf9character16get_world_matrixEv(character);
+    gameswf::matrix inverse;
+    inverse.set_inverse(world);
+    inverse.transform(&result, input);
+    return result;
+}
+
+bool CanHandleMouseEvent(gameswf::character* character);
+bool sprite_can_handle_mouse_event_callback(gameswf::character* character)
+{
+    return CanHandleMouseEvent(character);
+}

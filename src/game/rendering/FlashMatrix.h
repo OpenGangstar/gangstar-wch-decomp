@@ -15,6 +15,7 @@ public:
     float get_rotation() const;
     void set_scale_rotation(float xScale, float yScale, float rotation);
     void transform(point* output, const point& input) const;
+    void set_inverse(const matrix& original);
 
 private:
     float elements[6];
