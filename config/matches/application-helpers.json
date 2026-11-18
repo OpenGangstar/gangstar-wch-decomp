@@ -123,7 +123,9 @@
         "_ZNK16TouchScreenWin3212getLeftBoundEv",
         "_ZNK16TouchScreenWin3213getRightBoundEv",
         "_ZNK16TouchScreenWin3211getTopBoundEv",
-        "_ZNK16TouchScreenWin3214getBottomBoundEv"
+        "_ZNK16TouchScreenWin3214getBottomBoundEv",
+        "_ZN11Application4InitEPN3irr14IrrlichtDeviceE",
+        "_ZN11Application4QuitEv"
     ],
     "sections": [
         ".screen_dimensions",
@@ -171,7 +173,9 @@
         ".jni_text_413298",
         ".jni_text_4132a8",
         ".application_vtable",
-        ".application_receiver_vtable"
+        ".application_receiver_vtable",
+        ".application_text_styles",
+        ".application_achievements"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -210,9 +214,36 @@
         "_ZN15FileSystemWin32C1Ev",
         "_ZN16TouchScreenWin32C1Ev",
         "_ZN18AccelerometerWin32C1Ev",
-        "_ZN11Application4InitEPN3irr14IrrlichtDeviceE",
         "_ZN5Menus18OptionGameSettings14GetOrientationEv",
-        "_ZN5Menus18OptionGameSettings14SetOrientationEi"
+        "_ZN5Menus18OptionGameSettings14SetOrientationEi",
+        "_ZN12EventManagerC1Ev",
+        "_ZN15CControlManagerC1Ev",
+        "_ZN13WeaponManagerC1Ev",
+        "_ZN13StringManagerC1Ev",
+        "_ZN13StringManager8loadPackEj",
+        "_ZN13StringManager10switchPackEj",
+        "_ZN13StringManager10loadStylesEPKc",
+        "_ZN11CHudManagerC1Ev",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager5setupEv",
+        "_ZN18AchievementManager4loadEPKc",
+        "_ZN18AchievementManager4initEv",
+        "_ZN11MenuManager5setupEb",
+        "_ZN11MenuManager15enableAsianFontEb",
+        "_ZN11FileManager4InitEv",
+        "_ZN11PreferencesC1Ev",
+        "_ZN11PreferencesD1Ev",
+        "_ZN11Preferences18GetDefaultFilenameEv",
+        "_ZN11Preferences12LoadAndApplyEPKc",
+        "_ZnwjN3irr7MemHintE",
+        "_ZN11Application19UnRegisterForUpdateEP10IUpdatable",
+        "_ZN18AchievementManager5clearEv",
+        "_ZN12StateMachine8popStateEv",
+        "_ZN9GS3DStuff8tearDownEv",
+        "_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv",
+        "_ZN11FileManager7DestroyEv",
+        "_ZNK13ScriptManager10getMissionEv",
+        "_ZNK7Mission8getStateEv"
     ],
     "dependencies": [
         "jni-gangstar"

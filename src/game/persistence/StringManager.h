@@ -16,6 +16,7 @@ public:
     bool isPackSheetLoaded(unsigned int pack, unsigned int sheet) const __attribute__((noinline));
     int getNumberOfLoadedPack() const;
     bool switchPack(unsigned int pack);
+    void loadStyles(const char* name);
     void unloadPack(unsigned int pack);
     void unloadPackSheet(unsigned int pack, unsigned int sheet);
     const char* getString(int id) const;

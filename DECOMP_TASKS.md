@@ -1193,17 +1193,17 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | BLOCKED | native148B aliases unmatched; three forms; authentic180B header and old123-profile proof pass | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | REVIEW | exact 368-byte candidate; genuine alias hierarchy proof passed except known fixture | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4cd1 | Application::Quit() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | REVIEW | exact 656-byte candidate; oldCash header context difference and link limitations pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | BLOCKED | GCC weak destructor alias assembly failure after two forms; no credit | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | bounded3-form escalation; two identical592/596 with frame28/104; explicitweak still assembler failure; no credit | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
 
@@ -1261,4 +1261,6 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | lock_init | REVIEW | safe3060/3220; improved3160 constructor context regresses old cleanup; worker usage limit, final safe-header gate incomplete | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | six forms; best4040/4020; old188/112 and 48-profile header gate pass; no credit | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent local initialization order; no new credit) | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
+
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | six forms; best616/620, native156 frame; old274 checks pass; no credit | src/game/rendering/GS3DStuff.cpp |

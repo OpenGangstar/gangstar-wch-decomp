@@ -8,6 +8,7 @@ public:
     Preferences();
     virtual ~Preferences();
     bool Exist(const char* name);
+    bool LoadAndApply(const char* name);
     bool SampleAndSave(const char* name);
     static const char* GetDefaultFilename();
 };

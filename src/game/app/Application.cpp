@@ -708,3 +708,132 @@ void Application::InitWin32(irr::IrrlichtDevice* newDevice)
     Init(newDevice);
     Menus::OptionGameSettings::SetOrientation(static_cast<int>(Menus::OptionGameSettings::GetOrientation()));
 }
+
+#include "../core/FactoryFileSystem.h"
+#include "../core/EventManager.h"
+#include "../hud/CHudManager.h"
+#include "../persistence/StringManager.h"
+#include "../persistence/FileManager.h"
+#include "../ui/Preferences.h"
+#include "../hud/MenuManager.h"
+#include "../core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.h"
+#include "../core/MemHint.h"
+#include "GSMoviePlayer.h"
+
+extern const char* _IRR_REAL_RES_PATH_;
+extern "C" void srand48(long seed);
+template<> GSMoviePlayer* StateMachine::switchState<GSMoviePlayer>() __attribute__((weak));
+static const char applicationTextStyles[] __attribute__((section(".rodata.application_text_styles"))) = "./TextStyles.gmap";
+static const char applicationAchievements[] __attribute__((section(".rodata.application_achievements"))) = "./Achievements.gmap";
+
+void Application::Init(irr::IrrlichtDevice* newDevice)
+{
+    device = newDevice;
+    newDevice->getFileSystem()->changeWorkingDirectoryTo(_IRR_REAL_RES_PATH_);
+    newDevice->setEventReceiver(this);
+    irr::core::matrix4 transform;
+    transform.setTranslation(irr::core::vector3d<float>(-0.375f, -0.375f, 0.0f));
+    ASprite::s_global_transform = transform;
+    eventManager = new EventManager;
+    eventManager->groupCount = 0;
+    for (int i = 0; i < 200; ++i) {
+        eventManager->groups[i].eventID = -1;
+        eventManager->groups[i].count = 0;
+    }
+    eventManager->pendingAttachCount = 0;
+    eventManager->pendingDetachCount = 0;
+    eventManager->queuedCount = 0;
+    controlManager = new CControlManager;
+    stateMachine = StateMachine::getInstance();
+    weaponManager = new WeaponManager;
+    stringManager = new StringManager;
+    stringManager->loadPack(defaultLanguage);
+    stringManager->switchPack(defaultLanguage);
+    stringManager->loadStyles(applicationTextStyles);
+    hudManager = new CHudManager;
+    ScriptManager::getInstance()->setup();
+    RegisterForUpdate(eventManager);
+    RegisterForUpdate(hudManager);
+    RegisterForDrawingInScene(stateMachine);
+    lastUpdateTime = device->getTimer()->getRealTime();
+    srand48(lastUpdateTime);
+    targetFrameRate = 60;
+    AchievementManager* achievements = AchievementManager::s_achievementManager;
+    achievements->load(applicationAchievements);
+    achievements->init();
+    MenuManager::getInstance()->setup(defaultLanguage == 5);
+    FileManager::Init();
+    Preferences preferences;
+    if (!preferences.LoadAndApply(Preferences::GetDefaultFilename())) {
+        MenuManager::getInstance()->enableAsianFont(defaultLanguage == 5);
+        MenuManager::getInstance()->preloadGlyphs(true);
+    }
+    stateMachine->switchState<GSMoviePlayer>();
+    s_materialRenderer = new (irr::DefaultMemHint) CCustomMaterialRenderer_VERTEX_COLOR_ALPHA(
+        static_cast<irr::video::CCommonGLDriver*>(newDevice->getVideoDriver()));
+}
+
+#include "../input/AccelerometerBase.h"
+#include "../input/TouchScreenBase.h"
+#include "../hud/CHudManager.h"
+#include "../combat/WeaponManager.h"
+#include "../persistence/StringManager.h"
+#include "../persistence/FileSystemBase.h"
+#include "../persistence/FileManager.h"
+#include "../meta/Achievements.h"
+#include "../rendering/GS3DStuff.h"
+#include "../scripting/ScriptManager.h"
+#include "../missions/Mission.h"
+#include "../core/EventManager.h"
+#include "../core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.h"
+void Application::Quit()
+{
+    if (GSLoading::isGameLoaded()
+        && static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() != 4) {
+        SaveGame save;
+        save.SampleAndSave(SaveGame::GetDefaultFilename());
+    }
+    stopSoundThread();
+    UnRegisterForUpdate(SoundManager::getInstance());
+    AchievementManager::s_achievementManager->clear();
+    if (stateMachine)
+        while (static_cast<int>(stateMachine->states.size()) > 0)
+            stateMachine->popState();
+    GS3DStuff::tearDown();
+    // Concrete type is not recovered. The native ABI calls its deleting
+    // destructor through vtable slot1 with the unchanged object receiver.
+    if (unknown60) {
+        typedef void (*DeletingDestructor)(void*);
+        DeletingDestructor* table = *reinterpret_cast<DeletingDestructor**>(unknown60);
+        table[1](unknown60);
+    }
+    unknown60 = 0;
+    if (unknown52)
+        ::operator delete(unknown52);
+    unknown52 = 0;
+    delete accelerometer;
+    accelerometer = 0;
+    delete touchScreen;
+    touchScreen = 0;
+    delete fileSystem;
+    fileSystem = 0;
+    SafeDelete(controlManager);
+    delete hudManager;
+    hudManager = 0;
+    delete weaponManager;
+    weaponManager = 0;
+    delete stringManager;
+    stringManager = 0;
+    delete eventManager;
+    eventManager = 0;
+    Vehicle::UnRegisterCarSoundsCallbacks();
+    if (device) {
+        device->closeDevice();
+        device->drop();
+    }
+    if (s_materialRenderer && !s_materialRenderer->drop()) {
+        delete s_materialRenderer;
+        s_materialRenderer = 0;
+    }
+    FileManager::Destroy();
+}
