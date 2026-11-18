@@ -24,7 +24,12 @@
         "-meabi=4"
     ],
     "source": "src/game/ui/MenuState.cpp",
-    "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
+    "dependencies": [
+        "ai-startup-menuwidget",
+        "renderfx-animation",
+        "menu-manager-helpers",
+        "jni-gangstar"
+    ],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
         "_ZN5Menus15ServiceMissions8GotFocusEv",
@@ -260,7 +265,22 @@
             "name": "__tcf_5",
             "address": "0x002e745d",
             "compiled_name": "__tcf_1"
-        }
+        },
+        "_ZN8RenderFX9SetMemberEPKcS1_S1_",
+        "_Z16GetLocalPositionPN7gameswf9characterEff",
+        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
+        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
+        "_ZN8RenderFX11SearchIndex4FindEPKc",
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
+        "_ZN8RenderFX9SendEventERNS_5EventE",
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
     ],
     "sections": [
         ".help_empty_icon",
@@ -333,7 +353,26 @@
             "offset": 864
         },
         ".wanted_cleanup",
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8",
+        ".renderfx_send_table",
+        ".renderfx_send_0",
+        ".renderfx_send_1",
+        ".renderfx_send_2",
+        ".renderfx_send_4",
+        ".renderfx_send_6",
+        ".renderfx_send_7",
+        ".renderfx_send_8",
+        ".renderfx_send_9"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -391,8 +430,6 @@
         "_ZN9GS3DStuff21SetCurrentOrientationEN3irr5video19E_ORTHO_ORIENTATIONE",
         "_ZN8SaveGame18GetDefaultFilenameEv",
         "_ZN10FileStream5ExistEPKc",
-        "nativeNotifyPause",
-        "nativeExit",
         "_ZN11Application4QuitEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_Z13ekd_debug_outPKcPc",
@@ -438,7 +475,6 @@
         "_ZNK7gameswf6matrix11get_y_scaleEv",
         "_ZNK7gameswf6matrix12get_rotationEv",
         "_ZN7gameswf6matrix18set_scale_rotationEfff",
-        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
         "_Z7SwfFreePv",
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
         "_ZN10PlayerTest9GetPlayerEv",
@@ -467,6 +503,9 @@
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN7gameswf6matrix11set_inverseERKS0_",
+        "_Z19CanHandleMouseEventPN7gameswf9characterE",
+        "_ZN7gameswf6cxformC1Ev"
     ]
 }

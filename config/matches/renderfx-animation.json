@@ -129,7 +129,14 @@
         "_ZN8RenderFX9GotoFrameEPN7gameswf9characterEib",
         "_ZN8RenderFX9GotoFrameEPKcib",
         "_ZN8RenderFX9GotoFrameEPKcS1_b",
-        "_ZN8RenderFX8PlayAnimEPKcS1_i"
+        "_ZN8RenderFX8PlayAnimEPKcS1_i",
+        "_ZN8RenderFX9SetMemberEPKcS1_S1_",
+        "_Z16GetLocalPositionPN7gameswf9characterEff",
+        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
+        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
+        "_ZN8RenderFX11SearchIndex4FindEPKc",
+        "_ZN8RenderFX9SendEventERNS_5EventE",
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -141,7 +148,20 @@
         ".disabled_animation",
         ".renderfx_glyph_cache_warning",
         ".renderfx_file_read_mode",
-        {"name": ".got", "offset": 864}
+        {
+            "name": ".got",
+            "offset": 864
+        },
+        ".renderfx_send_table",
+        ".renderfx_send_0",
+        ".renderfx_send_1",
+        ".renderfx_send_2",
+        ".renderfx_send_4",
+        ".renderfx_send_6",
+        ".renderfx_send_7",
+        ".renderfx_send_8",
+        ".renderfx_send_9",
+        ".shared_startup_empty_text"
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -191,7 +211,6 @@
         "_ZNK7gameswf6matrix11get_y_scaleEv",
         "_ZNK7gameswf6matrix12get_rotationEv",
         "_ZN7gameswf6matrix18set_scale_rotationEfff",
-        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
         "_Z7SwfFreePv",
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
@@ -199,7 +218,12 @@
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+        "_ZN7gameswf9character16get_world_matrixEv",
+        "_ZN7gameswf6matrix11set_inverseERKS0_",
+        "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
+        "_Z19CanHandleMouseEventPN7gameswf9characterE",
+        "_ZN7gameswf6cxformC1Ev"
     ],
     "retail_got": true
 }

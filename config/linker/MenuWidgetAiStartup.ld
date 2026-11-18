@@ -1,3 +1,9 @@
+strlen = 0x001c48bc;
+strrchr = 0x001c4340;
+strstr = 0x001c446c;
+strchr = 0x001c48e0;
+__aeabi_ui2f = 0x001c4574;
+__aeabi_fdiv = 0x001c4520;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-menuwidget/retail-symbols.ld
@@ -19,8 +25,10 @@ _ZN29retail_menuwidget_transitions11guard_transE = 0x0041bb9c;
 _ZN29retail_menuwidget_transitions22scripted_vehicle_transE = 0x0041bc44;
 INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
+INCLUDE config/linker/MenuWidgetMissionSections.ld
 SECTIONS
 {
+
     .ai_startup_function_0 0x002ec014 : { *ai-startup-menuwidget.o(.text.__tcf_3) }
     .ai_startup_function_1 0x002ef2bc : { *ai-startup-menuwidget.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x002ef400 : { *ai-startup-menuwidget.o(.text._GLOBAL__I__ZN10MenuWidgetC2EPKc) }
@@ -52,3 +60,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/RenderFXUtilitySections.ld

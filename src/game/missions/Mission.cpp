@@ -23,6 +23,7 @@
 #include "../audio/SoundManager.h"
 #include "../meta/Achievements.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/VideoDriver.h"
 #include "../core/CameraManager.h"
 #include "../core/NativeStrings.h"
@@ -97,21 +98,9 @@ void Mission::setFailureCount(int count)
     failures = count;
 }
 
+#include "MissionData.h"
+
 namespace Structs {
-
-struct Mission {
-    int unknown0;
-    int unknown4;
-    int unknown8;
-    char* unknown12;
-    int unknown16;
-    int unknown20;
-    char* unknown24;
-    int unknown28;
-    int unknown32;
-
-    void Read(DataStream& stream) __attribute__((used));
-};
 
 inline void Mission::Read(DataStream& stream)
 {

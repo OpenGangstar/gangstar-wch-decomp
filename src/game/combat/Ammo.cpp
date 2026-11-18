@@ -13,6 +13,7 @@
 #include "../core/ASprite.h"
 #include "../core/VideoDriver.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../app/Application.h"
 #include "Weapon.h"
 #include "WeaponManager.h"

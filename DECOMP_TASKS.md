@@ -1098,8 +1098,165 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | hud_registration | BLOCKED | faithful 1836/1816-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | BLOCKED | 1088/1072 bytes; six forms; one private baseline link gate incomplete | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | hud_registration | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | hud_registration | BLOCKED | 2088/2108-byte candidate; six forms exhausted | src/game/ai/NPC.cpp |
+
+| libsanangeles.so | 0x0034bf8d | StringManager::~StringManager() | hud_registration | BLOCKED | unchanged one-shot context replay; 212/248 bytes, no new forms | src/game/persistence/StringManager.cpp |
+
+| libsanangeles.so | 0x002ed8ad | Widgets::Mission::UpdateLocalization() | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+
+| libsanangeles.so | 0x002eb12d | Menus::ServiceCarRental::Update() | lock_init | BLOCKED | 816-byte candidate unmatched; six forms; one private baseline link incomplete | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify(MenuWidget const*, int) | hud_registration | BLOCKED | 1064/1056-byte candidate; six forms, old full graph exact | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | hud_registration | BLOCKED | 872-byte candidate unmatched; six forms; rejected two old MenuState regressions | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e51fd | MenuManager::setText(eText, char const*, int*) | hud_glyphs | BLOCKED | 1088/1104 bytes; four forms, no grounded next lead | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | lock_init | BLOCKED | 1384/1388 bytes; swapped independent STR/MOV pair; five forms parked | src/game/persistence/SaveGame.cpp |
+
+| libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | hud_glyphs | BLOCKED | 1788/1792 bytes; first form parked on old visibility regression | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | lock_init | BLOCKED | 2440/2436 bytes; six forms; 34 header-only profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
+
+| libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
+
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | hud_glyphs | BLOCKED | 3024/3012 bytes; six forms; header-only 36 profiles exact, combined dependent link incomplete | src/game/ai/NPC.cpp |
+
+| libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | lock_init | BLOCKED | best extent 2364/2384 bytes; six forms; header sweep 43/44, known fixture incomplete | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x0039c751 | dump_memory_stats(char const*, int, char const*) | — | COMPLETED | 100% | src/game/core/utility.cpp |
+
+| libsanangeles.so | 0x003935bd | png_memset(void*, unsigned char, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x003935c9 | png_memcpy(void*, void const*, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x003935d5 | png_memcmp(void const*, void const*, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x003935e1 | png_strlen(char const*) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x002fd291 | Lock::render() | coordinator | BLOCKED | 304-byte candidate unmatched; six forms; old 8 functions and 10 section/region checks exact | src/game/core/Lock.cpp |
+
+| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int, int, int, int, int) const | hud_registration | BLOCKED | 222/220 bytes; three forms identical; strict link overlap, old graph exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x0034ad9d | ASpriteData::AFrame::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034ac39 | ASpriteData::FModule::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a3c9 | ASpriteData::Anim::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034acd1 | ASpriteData::Image::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a231 | ASpriteData::__rect::isIntersecting(int, int) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a655 | ASpriteData::Module::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a491 | ASpriteData::Frame::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034ae61 | ASpriteData::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | coordinator | BLOCKED | shared-header replay unchanged 1294/1296 bytes; no credit | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | BLOCKED | 500/512 bytes; six forms; rejected two old header regressions | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | BLOCKED | 292/296 bytes; six forms; shared declaration extraction and old graph exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | coordinator | BLOCKED | 30/32 bytes; four comparisons, return-register tail differs, no credit | src/game/app/IPhone.cpp |
+
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | coordinator | BLOCKED | 80/82-byte candidate; five forms, all old 36 functions and 32 section/regions exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | lock_init | BLOCKED | 108/106 bytes; six forms; old45/15 exact, header110/111 known fixture incomplete | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | hud_glyphs | BLOCKED | 106-byte candidate unmatched; six forms; 57 old functions and 54 section/regions exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x0034c599 | TouchScreenBase::getID(long) header integration | — | COMPLETED | 100%; native 68-byte function preserved after interface integration | src/game/input/TouchScreenBase.cpp |
+
+| libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | hud_registration | BLOCKED | 276/272 bytes; three identical forms; oldTouch header context differs | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d50f1 | Application::Update() | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4e89 | Application::Resume() | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | REVIEW | exact 118-byte candidate; 95-profile old/support proof passed | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | BLOCKED | native148B aliases unmatched; three forms; authentic180B header and old123-profile proof pass | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | REVIEW | exact 368-byte candidate; genuine alias hierarchy proof passed except known fixture | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | hud_glyphs | REVIEW | exact destructor aliases; canonical RAII and old90-profile proof pass | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | hud_glyphs | REVIEW | exact destructor aliases; canonical RAII and old90-profile proof pass | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | REVIEW | exact 656-byte candidate; oldCash header context difference and link limitations pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | BLOCKED | GCC weak destructor alias assembly failure after two forms; no credit | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002d24f5 | appResume | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d1415 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d2715 | launchTwitter | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d134d | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d135d | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d1dd5 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d2655 | appOnKeyUp | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2679 | appOnKeyDown | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2511 | appOnTouch | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d26f1 | appDeinit | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d269d | appRun | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d25a9 | appOnAccelerometer | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2731 | appPause | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d5d89 | Application.cpp::__tcf_4 generated singleton cleanup | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d2759 | appInit | lock_init | BLOCKED | exact 192-byte candidate; InitWin32 declaration regresses existing Cash332 by five bytes; no credit | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d13f5 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d13d9 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d13a1 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d13b5 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d136d | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d1421 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d144d | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit | — | COMPLETED | 100% | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d1ddd | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1869 | nativeOpenBrowser | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003eeb71 | RenderFX::SetMember(char const*, char const*, char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eca0d | CanHandleMouseEvent(gameswf::character*) | hud_glyphs | BLOCKED | six candidates, 80/92 bytes; old matches preserved, no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eccd9 | GetLocalPosition(gameswf::character*, float, float) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eca69 | sprite_can_handle_mouse_event_callback(gameswf::character*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d1835 | nativeNotifyPause | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d18c5 | nativeExit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | hud_glyphs | BLOCKED | six candidates; best 400/416 bytes with native frame, no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | lock_init | BLOCKED | six candidates; best 476/488 bytes, old 108 functions and headers exact; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d192d | nativeUnlockDemo | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d1961 | nativeGetVersionMode | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003ef139 | RenderFX::SendEvent(RenderFX::Event&) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d1995 | nativeGetNumLaunch | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | BLOCKED | source344/368; two flag diagnostics fail old strict linking, no flag adopted | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | BLOCKED | five source forms; native-size248 but 12 bytes differ in cold-tail order, no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | BLOCKED | six source forms; native-size356 but branch/register differences, no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | BLOCKED | five forms; best852 differs, current110 old functions and headers preserved; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | hud_registration | BLOCKED | six forms; best1996/2012, inline-functions diagnostic unchanged; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | hud_glyphs | BLOCKED | current-header unchanged replay492/496, old50checks pass; no credit | src/game/combat/BulletTraceManager.cpp |
+| libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | lock_init | BLOCKED | five forms; best656/652 overlaps native neighbor, old baseline proof retained; no credit | src/game/audio/CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | hud_glyphs | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | hud_registration | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | lock_init | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | hud_glyphs | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |

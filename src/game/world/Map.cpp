@@ -10,6 +10,7 @@
 
 #include "Map.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/Material.h"
 #include "../core/VideoDriver.h"
 

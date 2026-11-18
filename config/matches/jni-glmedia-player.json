@@ -52,7 +52,9 @@
         "nativePlaySoundBig",
         "nativePlaySound",
         "nativeSetVolume",
-        "nativeSetPitch"
+        "nativeSetPitch",
+        "Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds",
+        "Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance"
     ],
     "source": "src/game/app/jni_GLMediaPlayer.c",
     "linker_script": "config/linker/JniGLMediaPlayer.ld",

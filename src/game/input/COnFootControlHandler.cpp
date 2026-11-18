@@ -19,6 +19,7 @@
 #include "../combat/Weapon.h"
 #include "../combat/WeaponManager.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../app/Application.h"
 #include "../ui/Shop.h"
 #include "../characters/PlayerTest.h"

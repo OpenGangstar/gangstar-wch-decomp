@@ -20,6 +20,7 @@
 #include "../core/NativeStdio.h"
 #include "../core/VideoDriver.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/Debug_Log.h"
 #include "../core/PathName.h"
 #include "MenuState.h"

@@ -20,6 +20,7 @@
 #include "Quaternion.h"
 #include "Lock.h"
 #include "../app/Application.h"
+#include "IrrlichtDevice.h"
 #include "../characters/Character.h"
 #include "../characters/PlayerTest.h"
 #include "../hud/CHudManager.h"

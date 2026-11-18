@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 

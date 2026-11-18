@@ -4,7 +4,7 @@
 namespace irr {
 class IOSOperator;
 namespace io { class IFileSystem; }
-namespace video { class IVideoDriver; class CNullDriver; class ITextureManager; }
+namespace video { class IVideoDriver; class CNullDriver; class CTextureManager; typedef CTextureManager ITextureManager; }
 namespace gui { class ICursorControl; class IGUIEnvironment; }
 namespace scene { class ISceneManager; }
 

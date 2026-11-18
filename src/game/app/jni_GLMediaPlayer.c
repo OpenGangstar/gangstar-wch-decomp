@@ -3,35 +3,8 @@
  * The JNI interface below is an observed prefix, not a complete JNI table.
  */
 
-typedef int jint;
-typedef unsigned char jboolean;
-#ifndef __cplusplus
-typedef _Bool bool;
-#endif
-typedef float jfloat;
-typedef void* jobject;
-typedef jobject jclass;
-typedef jobject jstring;
-struct _jmethodID;
-typedef struct _jmethodID* jmethodID;
-struct JNINativeInterface;
-typedef const struct JNINativeInterface* JNIEnv;
-struct JNINativeInterface {
-    void* preceding[21];
-    jobject (*NewGlobalRef)(JNIEnv*, jobject);
-    void* beforeDeleteLocal[1];
-    void (*DeleteLocalRef)(JNIEnv*, jobject);
-    void* beforeStaticMethod[89];
-    jmethodID (*GetStaticMethodID)(JNIEnv*, jclass, const char*, const char*);
-    void* beforeStaticBoolean[3];
-    jboolean (*CallStaticBooleanMethod)(JNIEnv*, jclass, jmethodID, ...);
-    void* beforeStaticInt[11];
-    jint (*CallStaticIntMethod)(JNIEnv*, jclass, jmethodID, ...);
-    void* beforeStaticVoid[11];
-    void (*CallStaticVoidMethod)(JNIEnv*,jclass,jmethodID,...);
-    void* beforeNewStringUTF[25];
-    jstring (*NewStringUTF)(JNIEnv*, const char*);
-};
+#include "NativeJNI.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -250,6 +223,24 @@ void nativeSetVolume(jint sound, jint instance, jfloat volume)
 void nativeSetPitch(jint sound, jint instance, jfloat pitch)
 {
     (*mEnv)->CallStaticVoidMethod(mEnv,mClassGLMediaPlayer,setPitchID,sound,instance,pitch);
+}
+jint Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds(
+    JNIEnv* unusedEnv, jclass unusedClass)
+{
+    return 274;
+}
+
+#ifdef __cplusplus
+}
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+jint Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance(
+    JNIEnv* unusedEnv, jclass unusedClass)
+{
+    return 0;
 }
 #ifdef __cplusplus
 }

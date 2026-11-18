@@ -297,17 +297,7 @@ public:
 };
 namespace video { class IVideoDriver; }
 namespace io { class IFileSystem; }
-class IrrlichtDevice {
-public:
-    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
-    virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
-    virtual video::IVideoDriver* getVideoDriver();
-    virtual io::IFileSystem* getFileSystem(); virtual void* getGUIEnvironment();
-    virtual scene::ISceneManager* getSceneManager();
-    virtual void unknown10(); virtual void unknown11();
-    virtual void unknown12(); virtual void unknown13();
-    virtual ITimer* getTimer();
-};
+class IrrlichtDevice;
 }
 
 #endif

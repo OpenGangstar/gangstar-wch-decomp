@@ -170,8 +170,8 @@ int TouchScreenBase::getSwipeDirection(long id) const
 
 long TouchScreenBase::getID(long externalId)
 {
-    long i = 0;
     long freeSlot = -1;
+    long i = 0;
     for (; i < 8; ++i) {
         if (points[i].externalId == externalId)
             return i;

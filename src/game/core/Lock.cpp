@@ -14,6 +14,7 @@
 #include "Lock.h"
 #include "Vector3.h"
 #include "../app/Application.h"
+#include "IrrlichtDevice.h"
 #include "../rendering/GameBillboardFactory.h"
 #include "../world/LevelObject.h"
 

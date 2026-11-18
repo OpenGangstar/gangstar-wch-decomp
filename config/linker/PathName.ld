@@ -1,3 +1,7 @@
+__aeabi_fmul = 0x001c4724;
+__aeabi_dmul = 0x001c4298;
+__aeabi_d2iz = 0x001c4844;
+__aeabi_i2d = 0x001c452c;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/path-name/retail-symbols.ld
@@ -49,3 +53,25 @@ ASSERT(SIZEOF(.module_startup_path_name_storage_8) == 8, "path-name _ZN8gameloft
 ASSERT(SIZEOF(.module_startup_path_name_storage_9) == 8, "path-name _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_path_name_storage_10) == 8, "path-name _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_path_name_storage_11) == 8, "path-name _ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/WrapperRuntimeSections.ld
+
+ASSERT(SIZEOF(.wrapper_application) == 4, "native wrapper app pointer extent");
+
+ASSERT(SIZEOF(.wrapper_device) == 4, "native wrapper device pointer extent");
+
+INCLUDE config/linker/JNIGangstarBrowserSections.ld
+ASSERT(SIZEOF(.gangstar_class)==4,"JNI Gangstar class cache extent");
+ASSERT(SIZEOF(.gangstar_browser_method)==4,"JNI browser method cache extent");
+
+ASSERT(SIZEOF(.gangstar_notify_method)==4,"JNI notify method cache extent");
+
+ASSERT(SIZEOF(.gangstar_exit_method)==4,"JNI exit method cache extent");
+
+ASSERT(SIZEOF(.gangstar_phone_method)==4,"JNI phone method cache extent");
+
+ASSERT(SIZEOF(.gangstar_unlock_method)==4,"JNI unlock method cache extent");
+
+ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
+
+ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");

@@ -20,6 +20,7 @@
 #include "GameObjectManager.h"
 #include "ObjectData.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/Collada.h"
 #include "../core/NativeStdio.h"
 #include "../app/CGameFactory.h"

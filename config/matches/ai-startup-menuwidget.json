@@ -24,7 +24,9 @@
         "-meabi=4"
     ],
     "source": "src/game/ui/MenuWidget.cpp",
-    "dependencies": ["renderfx-animation"],
+    "dependencies": [
+        "renderfx-animation"
+    ],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
         "_ZN7Widgets7Volumes7OnEventERN8RenderFX5EventE",
@@ -210,7 +212,15 @@
         {
             "name": "_GLOBAL__I__ZN10MenuWidgetC2EPKc",
             "address": "0x002ef401"
-        }
+        },
+        "_ZN7Widgets7Mission18UpdateLocalizationEv",
+        "_ZN8RenderFX9SetMemberEPKcS1_S1_",
+        "_Z16GetLocalPositionPN7gameswf9characterEff",
+        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
+        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
+        "_ZN8RenderFX11SearchIndex4FindEPKc",
+        "_ZN8RenderFX9SendEventERNS_5EventE",
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
     ],
     "sections": [
         ".volumesButton",
@@ -358,7 +368,27 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".widget_mission_objective",
+        ".widget_mission_message",
+        ".widget_mission_locationtitle",
+        ".widget_mission_locationvalue",
+        ".widget_mission_typetitle",
+        ".widget_mission_typevalue",
+        ".widget_mission_cashtitle",
+        ".widget_mission_cashvalue",
+        ".widget_mission_icon",
+        ".widget_mission_button",
+        ".widget_mission_buttontext",
+        ".renderfx_send_table",
+        ".renderfx_send_0",
+        ".renderfx_send_1",
+        ".renderfx_send_2",
+        ".renderfx_send_4",
+        ".renderfx_send_6",
+        ".renderfx_send_7",
+        ".renderfx_send_8",
+        ".renderfx_send_9"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -432,7 +462,6 @@
         "_ZNK7gameswf6matrix11get_y_scaleEv",
         "_ZNK7gameswf6matrix12get_rotationEv",
         "_ZN7gameswf6matrix18set_scale_rotationEfff",
-        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
         "_Z7SwfFreePv",
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
         "_ZN10PlayerTest9GetPlayerEv",
@@ -448,6 +477,13 @@
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager10getMissionEv",
+        "_ZNK6Script12getMissionIdEv",
+        "_ZNK7Mission7missionEi",
+        "_ZN7gameswf6matrix11set_inverseERKS0_",
+        "_Z19CanHandleMouseEventPN7gameswf9characterE",
+        "_ZN7gameswf6cxformC1Ev"
     ]
 }

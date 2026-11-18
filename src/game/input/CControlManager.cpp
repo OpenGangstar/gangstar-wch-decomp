@@ -15,6 +15,7 @@
 #include "SniperControlHandler.h"
 #include "../characters/PlayerTest.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../characters/Character.h"
 #include "../core/CameraManager.h"
 #include "../hud/CHudManager.h"

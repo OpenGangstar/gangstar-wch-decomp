@@ -14,6 +14,7 @@
 #include "Trail.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/MeshSceneInterfaces.h"
 #include "../core/MeshBufferInterfaces.h"
 

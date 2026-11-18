@@ -42,6 +42,8 @@ public:
     void resetWidgetVisibility();
     void MenuPause();
     void MenuResume();
+    void popTo(const char* name, bool first, bool second);
+    void preloadGlyphs(bool force);
     void setTutorialIds(int, int);
     void setRepairCost(int);
     int getRepairCost() const;

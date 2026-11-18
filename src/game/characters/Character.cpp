@@ -15,6 +15,7 @@
 #include "Character.h"
 #include "../core/Lock.h"
 #include "../rendering/CustomBillboardSceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../audio/SoundManager.h"
 #include "../world/GameObjectManager.h"
 #include "../vehicles/Vehicle.h"

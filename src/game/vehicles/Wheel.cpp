@@ -59,6 +59,7 @@ static void _GLOBAL__I__ZN5WheelC2EP7ASpritei()
 #include "../input/TouchScreenBase.h"
 #include "../hud/HudElement.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/ASprite.h"
 #include "../core/EventManager.h"
 #include "../core/GameEventMethods.h"

@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -91,7 +92,28 @@
             "name": "__tcf_2",
             "address": "0x002d4519",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN11Application15ProcessKeyEventEbi",
+        "_ZN11Application14appKeyReleasedEi",
+        "_ZN11Application13appKeyPressedEi",
+        "_ZN11Application20GlobalResumingUpdateEv",
+        "_ZN11Application6UpdateEv",
+        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc",
+        "_ZN11Application6ResumeEv",
+        "_ZN11Application11GetInstanceEv",
+        {
+            "name": "__tcf_4",
+            "address": "0x002d5d89",
+            "compiled_name": "__tcf_1"
+        },
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "sections": [
         ".screen_dimensions",
@@ -111,7 +133,33 @@
         ".application_event_EvMouseMove_vtable",
         ".application_event_EvKeyboard_vtable",
         ".application_event_EvMouseWheel_vtable",
-        ".application_event_EvMouseButton_vtable"
+        ".application_event_EvMouseButton_vtable",
+        ".application_key_tag",
+        ".application_key_back",
+        ".application_key_igm",
+        ".application_key_mm",
+        ".application_key_device",
+        ".application_key_post",
+        ".application_key_main",
+        ".resume_update_literals",
+        ".application_update_loop",
+        ".application_number_frames",
+        ".application_number_format",
+        ".application_resume_tag",
+        ".application_resume_message",
+        ".application_resume_map",
+        ".application_first_resume",
+        ".application_singleton_cleanup",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -128,6 +176,27 @@
         "_ZN12SoundManager4initEv",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZNK11MenuManager8getStateEPKc",
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZN3irr5video15CTextureManager13reloadTextureEi",
+        "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
+        "_ZN11Application7_UpdateEi",
+        "_ZN11Application5_DrawEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN11CHudManager16isMinimapVisibleEv",
+        "_ZNK11CHudManager8isLockedEv",
+        "_ZNK11MenuManager12isInGameMenuEv",
+        "_ZN12SoundManager15resumeAllSoundsEv",
+        "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
+        "_ZN11MenuManager5popToEPKcbb",
+        "_ZN11MenuManager13preloadGlyphsEb",
+        "_ZN11ApplicationC1Ev",
+        "_ZN11ApplicationD1Ev"
+    ],
+    "dependencies": [
+        "jni-gangstar"
     ]
 }

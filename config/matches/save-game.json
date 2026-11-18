@@ -242,7 +242,18 @@
         ".gs3d_startup_function_0",
         ".gs3d_startup_function_1",
         ".gs3d_startup_function_2",
-        ".gs3d_startup_function_3"
+        ".gs3d_startup_function_3",
+        ".wrapper_twitter_url",
+        ".jni_text_413238",
+        ".jni_text_413248",
+        ".jni_text_41324c",
+        ".jni_text_413258",
+        ".jni_text_413270",
+        ".jni_text_413278",
+        ".jni_text_413288",
+        ".jni_text_41328c",
+        ".jni_text_413298",
+        ".jni_text_4132a8"
     ],
     "functions": [
         "_ZN8SaveGame12SampleObjectEP11LevelObject",
@@ -319,7 +330,24 @@
         {
             "name": "__tcf_10",
             "address": "0x002df605"
-        }
+        },
+        "appResume",
+        "launchTwitter",
+        "appOnKeyUp",
+        "appOnKeyDown",
+        "appOnTouch",
+        "appRun",
+        "appDeinit",
+        "appOnAccelerometer",
+        "appPause",
+        "nativeOpenBrowser",
+        "nativeNotifyPause",
+        "nativeExit",
+        "nativedetectPhoneLang",
+        "nativeUnlockDemo",
+        "nativeGetVersionMode",
+        "nativeGetNumLaunch",
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
     ],
     "dependencies": [
         "gs3d-stuff",
@@ -331,7 +359,8 @@
         "file-stream",
         "level-object",
         "weapon",
-        "weapon-manager"
+        "weapon-manager",
+        "jni-gangstar"
     ],
     "external_thumb_functions": [
         "_ZN17GameObjectManager7despawnEP11LevelObject",
@@ -407,6 +436,15 @@
         "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei",
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN9AIManagerC1Ev",
-        "_ZN9AIManagerD1Ev"
+        "_ZN9AIManagerD1Ev",
+        "_ZN11Application14appKeyReleasedEi",
+        "_ZN11Application13appKeyPressedEi",
+        "_ZN11Application6ResumeEv",
+        "_ZN11Application6UpdateEv",
+        "_ZN3irr2os5Timer4tickEv",
+        "nativeStopAllSounds",
+        "nativeUnloadSoundBig",
+        "_ZN11Application4QuitEv",
+        "_ZN11Application5PauseEv"
     ]
 }

@@ -1,3 +1,9 @@
+strlen = 0x001c48bc;
+strrchr = 0x001c4340;
+strstr = 0x001c446c;
+strchr = 0x001c48e0;
+__aeabi_ui2f = 0x001c4574;
+__aeabi_fdiv = 0x001c4520;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 strcpy = 0x001c3fd4;
@@ -30,6 +36,7 @@ INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 _ZN5Menus24s_helpSpecializedEntriesE = 0x0047b1b8;
+INCLUDE config/linker/MenuWidgetMissionSections.ld
 SECTIONS
 {
     .service_missions_focus 0x002e8fe8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions8GotFocusEv) }
@@ -330,3 +337,21 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/RenderFXUtilitySections.ld
+
+INCLUDE config/linker/JNIGangstarBrowserSections.ld
+ASSERT(SIZEOF(.gangstar_class)==4,"JNI Gangstar class cache extent");
+ASSERT(SIZEOF(.gangstar_browser_method)==4,"JNI browser method cache extent");
+
+ASSERT(SIZEOF(.gangstar_notify_method)==4,"JNI notify method cache extent");
+
+ASSERT(SIZEOF(.gangstar_exit_method)==4,"JNI exit method cache extent");
+
+ASSERT(SIZEOF(.gangstar_phone_method)==4,"JNI phone method cache extent");
+
+ASSERT(SIZEOF(.gangstar_unlock_method)==4,"JNI unlock method cache extent");
+
+ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
+
+ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");

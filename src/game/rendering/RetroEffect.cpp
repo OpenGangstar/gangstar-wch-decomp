@@ -11,6 +11,7 @@
 // Recovered translation-unit SDK startup callbacks.
 #include "RetroEffect.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/VideoDriver.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

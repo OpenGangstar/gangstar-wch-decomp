@@ -12,6 +12,7 @@
 #include "CharacterVisibility.h"
 #include "FlashMatrix.h"
 #include "../core/NativeStdio.h"
+#include "../core/LocalStartupText.h"
 #include "../ui/MenuState.h"
 
 // The Android libc exposes stdin, stdout, and stderr as adjacent entries.
@@ -44,6 +45,8 @@ void _ZN7gameswf4root13begin_displayEv(gameswf::root* root);
 void _ZN7gameswf4root7displayEv(gameswf::root* root);
 void _ZN7gameswf4root11end_displayEv(gameswf::root* root);
 }
+
+namespace { struct MovieRenderFX; }
 
 namespace gameswf {
 class tu_file {
@@ -86,12 +89,14 @@ class tu_string;
 class font_entity;
 
 struct glyph_provider {
+    void clear() __attribute__((weak, long_call));
     glyph_provider(int width, int height, bool option);
     unsigned char prefix[20];
     texture_cache* cache;
 };
 
 struct bitmap_glyph_provider {
+    void clear() __attribute__((weak, long_call));
     bitmap_glyph_provider(int width, int height, bool option) __attribute__((long_call));
     virtual ~bitmap_glyph_provider();
     virtual font_entity* get_font_entity_impl(const tu_string& name);
@@ -117,7 +122,8 @@ public:
     unsigned char unknown4[8];
     glyph_provider* outlineGlyphs;
     bitmap_glyph_provider* bitmapGlyphs;
-    unsigned char unknown20[16];
+    array<MovieRenderFX*> movies;
+    unsigned char unknown32[4];
 };
 
 class filter_engine {
@@ -133,6 +139,7 @@ public:
 
 class cxform {
 public:
+    cxform();
     static cxform identity;
 
     float channels[4][2];
@@ -142,6 +149,7 @@ class tu_string {
 public:
     // The retail call resolves the constructor through the GOT.
     explicit tu_string(const char* text) __attribute__((long_call));
+    tu_string(const char* text, int length) __attribute__((long_call));
     ~tu_string()
     {
         if (__builtin_expect(storage[0] == 255, 1))
@@ -1291,5 +1299,178 @@ void RenderFX::SetLocalVariable(const char* characterName, const char* variable,
         gameswf::as_environment* environment = reinterpret_cast<gameswf::as_environment*>(
             reinterpret_cast<unsigned char*>(character) + 0x1c0);
         environment->set_local(variableName, value);
+    }
+}
+
+
+void RenderFX::SetMember(const char* characterName, const char* member, const char* value)
+{
+    gameswf::as_value memberValue(value);
+    SetMember(characterName, member, memberValue);
+}
+
+
+extern "C" {
+const gameswf::matrix& _ZN7gameswf9character16get_world_matrixEv(gameswf::character* character);
+}
+gameswf::point GetLocalPosition(gameswf::character* character, float x, float y)
+{
+    gameswf::point input(x * 20.0f, y * 20.0f);
+    gameswf::point result;
+    gameswf::matrix world = _ZN7gameswf9character16get_world_matrixEv(character);
+    gameswf::matrix inverse;
+    inverse.set_inverse(world);
+    inverse.transform(&result, input);
+    return result;
+}
+
+bool CanHandleMouseEvent(gameswf::character* character);
+bool sprite_can_handle_mouse_event_callback(gameswf::character* character)
+{
+    return CanHandleMouseEvent(character);
+}
+
+namespace {
+inline void applyCharacterColor(gameswf::character* character, const gameswf::cxform& color)
+{
+    CharacterTransform& target = *reinterpret_cast<CharacterTransform*>(character);
+    target.color = color;
+    target.hasColor = true;
+}
+}
+
+void RenderFX::SetColorTransform(gameswf::character* character, unsigned int multiply, unsigned int add)
+{
+    if (!character)
+        return;
+    gameswf::cxform color;
+    color.channels[0][0] = finiteColor(static_cast<float>((multiply >> 16) & 255u) / 255.0f);
+    color.channels[1][0] = finiteColor(static_cast<float>((multiply >> 8) & 255u) / 255.0f);
+    color.channels[2][0] = finiteColor(static_cast<float>(multiply & 255u) / 255.0f);
+    color.channels[3][0] = finiteColor(static_cast<float>(multiply >> 24) / 255.0f);
+    color.channels[0][1] = finiteColor(static_cast<float>((add >> 16) & 255u));
+    color.channels[1][1] = finiteColor(static_cast<float>((add >> 8) & 255u));
+    color.channels[2][1] = finiteColor(static_cast<float>(add & 255u));
+    color.channels[3][1] = finiteColor(static_cast<float>(add >> 24));
+    applyCharacterColor(character, color);
+}
+
+
+class RenderFX::SearchIndex::Entry {
+public:
+    gameswf::character* character;
+    char path[256];
+};
+
+extern "C" char* strrchr(const char*, int);
+
+gameswf::character* RenderFX::SearchIndex::Find(const char* name)
+{
+    char component[128];
+    const int nameLength = strlen(name);
+    const char* suffix = strrchr(name, '.');
+    suffix = suffix ? suffix + 1 : name;
+    gameswf::tu_string key(suffix, name + nameLength - suffix);
+    const int index = entries.find_index(key);
+    if (index < 0)
+        return 0;
+    typedef gameswf::hash<gameswf::tu_string, gameswf::array<Entry>*,
+        gameswf::string_hash_functor<gameswf::tu_string> > IndexHash;
+    gameswf::array<Entry>* candidates =
+        (reinterpret_cast<IndexHash::entry*>(entries.m_table + 1) + index)->second;
+    for (int i = 0; i < candidates->size; ++i) {
+        const Entry& entry = candidates->elements[i];
+        const char* remainingPath = entry.path;
+        const char* part = name;
+        for (;;) {
+            const char* end = strchr(part, '.');
+            if (!end)
+                end = part + nameLength;
+            const int length = end - part;
+            memcpy(component, part, length);
+            component[length] = 0;
+            const char* match = strstr(remainingPath, component);
+            if (__builtin_expect(match != 0, 1)) {
+                remainingPath = match + length;
+                if (*remainingPath == 0)
+                    return entry.character;
+                part += length + 1;
+            } else {
+                break;
+            }
+        }
+    }
+    return 0;
+}
+
+static const char sendEventFocusIn[] __attribute__((section(".rodata.renderfx_send_0"))) = "on_focus_in";
+static const char sendEventFocusOut[] __attribute__((section(".rodata.renderfx_send_1"))) = "on_focus_out";
+static const char sendEventClicked[] __attribute__((section(".rodata.renderfx_send_2"))) = "on_clicked";
+static const char sendEventPress[] __attribute__((section(".rodata.renderfx_send_4"))) = "onPress";
+static const char sendEventRelease[] __attribute__((section(".rodata.renderfx_send_6"))) = "onRelease";
+static const char sendEventReleaseOutside[] __attribute__((section(".rodata.renderfx_send_7"))) = "onReleaseOutside";
+static const char sendEventRollOver[] __attribute__((section(".rodata.renderfx_send_8"))) = "onRollOver";
+static const char sendEventRollOut[] __attribute__((section(".rodata.renderfx_send_9"))) = "onRollOut";
+
+void RenderFX::SendEvent(Event& event)
+{
+    listener->OnEvent(event);
+    if (event.consumed)
+        return;
+    switch (event.type) {
+    case 0:
+        InvokeASCallback(event.character, sendEventFocusIn);
+        break;
+    case 1:
+        InvokeASCallback(event.character, sendEventFocusOut);
+        break;
+    case 2:
+        InvokeASCallback(event.character, sendEventClicked);
+        break;
+    case 4:
+        InvokeASCallback(event.character, sendEventPress);
+        break;
+    case 6:
+        InvokeASCallback(event.character, sendEventRelease);
+        break;
+    case 7:
+        InvokeASCallback(event.character, sendEventReleaseOutside);
+        break;
+    case 8:
+        InvokeASCallback(event.character, sendEventRollOver);
+        break;
+    case 9:
+        InvokeASCallback(event.character, sendEventRollOut);
+        break;
+    }
+}
+
+namespace {
+// Only the observed root-movie pointer at +16 is exposed; no full root size.
+struct ClearFontsRootFields {
+    unsigned char prefix[16];
+    gameswf::character* rootCharacter;
+};
+}
+
+void RenderFX::ClearFonts(gameswf::player_context* context)
+{
+    if (!context)
+        context = s_default_context;
+    if (context->outlineGlyphs)
+        context->outlineGlyphs->clear();
+    if (context->bitmapGlyphs)
+        context->bitmapGlyphs->clear();
+    for (int i = 0; i < context->movies.size; ++i) {
+        RenderFX* movie = context->movies.elements[i]->renderFX;
+        const gameswf::array<gameswf::character*>& characters = movie->FindCharacters(
+            reinterpret_cast<ClearFontsRootFields*>(movie->root.get())->rootCharacter, 0, 0);
+        for (int j = 0; j < characters.size; ++j) {
+            if (animationMethods(characters.elements[j]).is(characters.elements[j], 30)) {
+                gameswf::character* character = characters.elements[j];
+                gameswf::tu_string empty(localStartupEmptyText);
+                reinterpret_cast<gameswf::edit_text_character*>(character)->set_text_value(empty, false);
+            }
+        }
     }
 }

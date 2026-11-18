@@ -8642,16 +8642,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d12f5	0x40	COpenGLESTexture.cpp	irrlicht	-	matched	_ZN3irr5video16COpenGLESTextureD1Ev	irr::video::COpenGLESTexture::~COpenGLESTexture()
 0x002d1335	0x14	CIrrDevicePS3.cpp	game	core	pending	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv
 0x002d1349	0x2	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt
-0x002d134d	0xe	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp
-0x002d135d	0xe	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown
-0x002d136d	0x34	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer
-0x002d13a1	0x14	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch
-0x002d13b5	0x24	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender
-0x002d13d9	0x1c	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume
-0x002d13f5	0x20	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause
-0x002d1415	0xc	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone
-0x002d1421	0x2c	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize
-0x002d144d	0x48	app-android.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit
+0x002d134d	0xe	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp
+0x002d135d	0xe	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown
+0x002d136d	0x34	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeAccelerometer
+0x002d13a1	0x14	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch
+0x002d13b5	0x24	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeRender
+0x002d13d9	0x1c	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume
+0x002d13f5	0x20	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause	Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause
+0x002d1415	0xc	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone
+0x002d1421	0x2c	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize
+0x002d144d	0x48	app-android.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit
 0x002d1495	0x58	Debug_Log.cpp	game	core	matched	_Z14ekd_debug_initv	ekd_debug_init()
 0x002d14ed	0x70	Debug_Log.cpp	game	core	matched	_Z13ekd_debug_outPKcf	ekd_debug_out(char const*, float)
 0x002d155d	0x68	Debug_Log.cpp	game	core	matched	_Z13ekd_debug_outPKci	ekd_debug_out(char const*, int)
@@ -8660,17 +8660,17 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d168d	0x60	Debug_Log.cpp	game	core	matched	_Z7dbg_outPcz	dbg_out(char*, ...)
 0x002d16ed	0x4	importgl.c	game	core	matched	importGLInit	importGLInit
 0x002d16f1	0x2	importgl.c	game	core	matched	importGLDeinit	importGLDeinit
-0x002d16f5	0x140	jni_Gangstar.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit
-0x002d1835	0x34	jni_Gangstar.c	game	app	pending	nativeNotifyPause	nativeNotifyPause
-0x002d1869	0x5c	jni_Gangstar.c	game	app	pending	nativeOpenBrowser	nativeOpenBrowser
-0x002d18c5	0x34	jni_Gangstar.c	game	app	pending	nativeExit	nativeExit
-0x002d18f9	0x34	jni_Gangstar.c	game	app	pending	nativedetectPhoneLang	nativedetectPhoneLang
-0x002d192d	0x34	jni_Gangstar.c	game	app	pending	nativeUnlockDemo	nativeUnlockDemo
-0x002d1961	0x34	jni_Gangstar.c	game	app	pending	nativeGetVersionMode	nativeGetVersionMode
-0x002d1995	0x34	jni_Gangstar.c	game	app	pending	nativeGetNumLaunch	nativeGetNumLaunch
+0x002d16f5	0x140	jni_Gangstar.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit
+0x002d1835	0x34	jni_Gangstar.c	game	app	matched	nativeNotifyPause	nativeNotifyPause
+0x002d1869	0x5c	jni_Gangstar.c	game	app	matched	nativeOpenBrowser	nativeOpenBrowser
+0x002d18c5	0x34	jni_Gangstar.c	game	app	matched	nativeExit	nativeExit
+0x002d18f9	0x34	jni_Gangstar.c	game	app	matched	nativedetectPhoneLang	nativedetectPhoneLang
+0x002d192d	0x34	jni_Gangstar.c	game	app	matched	nativeUnlockDemo	nativeUnlockDemo
+0x002d1961	0x34	jni_Gangstar.c	game	app	matched	nativeGetVersionMode	nativeGetVersionMode
+0x002d1995	0x34	jni_Gangstar.c	game	app	matched	nativeGetNumLaunch	nativeGetNumLaunch
 0x002d19c9	0x40c	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeInit
-0x002d1dd5	0x6	jni_GLMediaPlayer.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds
-0x002d1ddd	0x4	jni_GLMediaPlayer.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance
+0x002d1dd5	0x6	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds
+0x002d1ddd	0x4	jni_GLMediaPlayer.c	game	app	matched	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance
 0x002d1de1	0x2	jni_GLMediaPlayer.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic	Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic
 0x002d1de5	0x2	jni_GLMediaPlayer.c	game	app	pending	GetNativeSoundRaw	GetNativeSoundRaw
 0x002d1de9	0x2	jni_GLMediaPlayer.c	game	app	pending	GetNativeResourceSoundRawLength	GetNativeResourceSoundRawLength
@@ -8702,16 +8702,16 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d2431	0x5c	jni_GLMediaPlayer.c	game	app	matched	nativeLoadMovie	nativeLoadMovie
 0x002d248d	0x34	jni_GLMediaPlayer.c	game	app	matched	nativeIsMediaPlaying	nativeIsMediaPlaying
 0x002d24c1	0x34	jni_GLMediaPlayer.c	game	app	matched	nativeIsVideoPlayDone	nativeIsVideoPlayDone
-0x002d24f5	0x18	wrapper.cpp	game	core	pending	appResume	appResume
-0x002d2511	0x98	wrapper.cpp	game	core	pending	appOnTouch	appOnTouch
-0x002d25a9	0x7c	wrapper.cpp	game	core	pending	appOnAccelerometer	appOnAccelerometer
+0x002d24f5	0x18	wrapper.cpp	game	core	matched	appResume	appResume
+0x002d2511	0x98	wrapper.cpp	game	core	matched	appOnTouch	appOnTouch
+0x002d25a9	0x7c	wrapper.cpp	game	core	matched	appOnAccelerometer	appOnAccelerometer
 0x002d2625	0x30	wrapper.cpp	game	core	matched	__tcf_4	__tcf_4
-0x002d2655	0x24	wrapper.cpp	game	core	pending	appOnKeyUp	appOnKeyUp
-0x002d2679	0x24	wrapper.cpp	game	core	pending	appOnKeyDown	appOnKeyDown
-0x002d269d	0x54	wrapper.cpp	game	core	pending	appRun	appRun
-0x002d26f1	0x24	wrapper.cpp	game	core	pending	appDeinit	appDeinit
-0x002d2715	0x1c	wrapper.cpp	game	core	pending	launchTwitter	launchTwitter
-0x002d2731	0x24	wrapper.cpp	game	core	pending	appPause	appPause
+0x002d2655	0x24	wrapper.cpp	game	core	matched	appOnKeyUp	appOnKeyUp
+0x002d2679	0x24	wrapper.cpp	game	core	matched	appOnKeyDown	appOnKeyDown
+0x002d269d	0x54	wrapper.cpp	game	core	matched	appRun	appRun
+0x002d26f1	0x24	wrapper.cpp	game	core	matched	appDeinit	appDeinit
+0x002d2715	0x1c	wrapper.cpp	game	core	matched	launchTwitter	launchTwitter
+0x002d2731	0x24	wrapper.cpp	game	core	matched	appPause	appPause
 0x002d2759	0xc0	wrapper.cpp	game	core	pending	appInit	appInit
 0x002d2819	0x26	wrapper.cpp	game	core	matched	_Z21ekd_makestringfile255PKcPc	ekd_makestringfile255(char const*, char*)
 0x002d2841	0x144	wrapper.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -8826,7 +8826,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4095	0x18	Application.cpp	game	app	matched	_ZN6IEventD1Ev	IEvent::~IEvent()
 0x002d40ad	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI12GSInGameMenuEEPT_v	GSInGameMenu* StateMachine::pushState<GSInGameMenu>()
 0x002d40cd	0x30	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11getInstanceEv	SoundManager::getInstance()
-0x002d40fd	0x10c	Application.cpp	game	app	pending	_ZN11Application15ProcessKeyEventEbi	Application::ProcessKeyEvent(bool, int)
+0x002d40fd	0x10c	Application.cpp	game	app	matched	_ZN11Application15ProcessKeyEventEbi	Application::ProcessKeyEvent(bool, int)
 0x002d4209	0x60	Application.cpp	game	app	matched	_ZN11Application19StartGlobalResumingEv	Application::StartGlobalResuming()
 0x002d4269	0x30	Application.cpp	game	app	matched	_ZN11Application5PauseEv	Application::Pause()
 0x002d4299	0x40	Application.cpp	stlport	-	matched	_ZNSaIN9stlp_priv13_Rb_tree_nodeISt4pairIKPvPKcEEEE8allocateEjPKv	std::allocator<stlp_priv::_Rb_tree_node<std::pair<void* const, char const*> > >::allocate(unsigned int, void const*)
@@ -8844,22 +8844,22 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4551	0x1c	ASprite.cpp	game	rendering	matched	_ZN7ASprite13GetFrameWidthEi	ASprite::GetFrameWidth(int)
 0x002d456d	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine11switchStateI13GSMoviePlayerEEPT_v	GSMoviePlayer* StateMachine::switchState<GSMoviePlayer>()
 0x002d458d	0x20	Application.cpp	game	app	matched	_Z10SafeDeleteI15CControlManagerEvRPT_	void SafeDelete<CControlManager>(CControlManager*&)
-0x002d45ad	0x15c	Application.cpp	game	app	pending	_ZN11Application14appKeyReleasedEi	Application::appKeyReleased(int)
-0x002d4709	0x134	Application.cpp	game	app	pending	_ZN11Application13appKeyPressedEi	Application::appKeyPressed(int)
+0x002d45ad	0x15c	Application.cpp	game	app	matched	_ZN11Application14appKeyReleasedEi	Application::appKeyReleased(int)
+0x002d4709	0x134	Application.cpp	game	app	matched	_ZN11Application13appKeyPressedEi	Application::appKeyPressed(int)
 0x002d483d	0x24	Application.cpp	game	app	matched	_ZNK11Application19GetScreenDimensionsERiS0_	Application::GetScreenDimensions(int&, int&) const
-0x002d4861	0x1a0	Application.cpp	game	app	pending	_ZN11Application26displayNumberWithHUDSpriteEiiiPKc	Application::displayNumberWithHUDSprite(int, int, int, char const*)
+0x002d4861	0x1a0	Application.cpp	game	app	matched	_ZN11Application26displayNumberWithHUDSpriteEiiiPKc	Application::displayNumberWithHUDSprite(int, int, int, char const*)
 0x002d4a01	0x6a	Application.cpp	game	app	pending	_ZN11Application7_UpdateEi	Application::_Update(int)
 0x002d4a6d	0x9c	Application.cpp	game	app	matched	_ZN11Application8LogoDrawEv	Application::LogoDraw()
 0x002d4b09	0xb8	Application.cpp	game	app	matched	_ZN11Application18GlobalResumingDrawEv	Application::GlobalResumingDraw()
-0x002d4bc1	0x110	Application.cpp	game	app	pending	_ZN11Application20GlobalResumingUpdateEv	Application::GlobalResumingUpdate()
+0x002d4bc1	0x110	Application.cpp	game	app	matched	_ZN11Application20GlobalResumingUpdateEv	Application::GlobalResumingUpdate()
 0x002d4cd1	0x170	Application.cpp	game	app	pending	_ZN11Application4QuitEv	Application::Quit()
 0x002d4e41	0x48	Application.cpp	game	app	matched	_ZN11Application9StartLogoEv	Application::StartLogo()
-0x002d4e89	0x158	Application.cpp	game	app	pending	_ZN11Application6ResumeEv	Application::Resume()
+0x002d4e89	0x158	Application.cpp	game	app	matched	_ZN11Application6ResumeEv	Application::Resume()
 0x002d4fe1	0x110	Application.cpp	game	app	pending	_ZN11Application5_DrawEv	Application::_Draw()
-0x002d50f1	0x108	Application.cpp	game	app	pending	_ZN11Application6UpdateEv	Application::Update()
+0x002d50f1	0x108	Application.cpp	game	app	matched	_ZN11Application6UpdateEv	Application::Update()
 0x002d51f9	0x94	Application.cpp	game	app	pending	_ZN11ApplicationC1Ev	Application::Application()
 0x002d51f9	0x94	Application.cpp	game	app	pending	_ZN11ApplicationC2Ev	Application::Application()
-0x002d528d	0x54	Application.cpp	game	app	pending	_ZN11Application11GetInstanceEv	Application::GetInstance()
+0x002d528d	0x54	Application.cpp	game	app	matched	_ZN11Application11GetInstanceEv	Application::GetInstance()
 0x002d52e1	0x22	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP10IUpdatableSaIS2_EE5clearEv	stlp_priv::_List_base<IUpdatable*, std::allocator<IUpdatable*> >::clear()
 0x002d5305	0x22	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP9IDrawableSaIS2_EE5clearEv	stlp_priv::_List_base<IDrawable*, std::allocator<IDrawable*> >::clear()
 0x002d5329	0x22	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIPN3irr14IEventReceiverESaIS3_EE5clearEv	stlp_priv::_List_base<irr::IEventReceiver*, std::allocator<irr::IEventReceiver*> >::clear()
@@ -8880,7 +8880,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d5c65	0x94	Application.cpp	game	app	pending	_ZN11ApplicationD0Ev	Application::~Application()
 0x002d5cf9	0x90	Application.cpp	game	app	pending	_ZN11ApplicationD2Ev	Application::~Application()
 0x002d5cf9	0x90	Application.cpp	game	app	pending	_ZN11ApplicationD1Ev	Application::~Application()
-0x002d5d89	0x1c	Application.cpp	game	app	pending	__tcf_4	__tcf_4
+0x002d5d89	0x1c	Application.cpp	game	app	matched	__tcf_4	__tcf_4
 0x002d5da5	0x24	Application.cpp	game	app	matched	_ZN11EvMouseMoveD1Ev	EvMouseMove::~EvMouseMove()
 0x002d5dc9	0x2c	Application.cpp	game	app	matched	_ZN10EvKeyboardD0Ev	EvKeyboard::~EvKeyboard()
 0x002d5df5	0x24	Application.cpp	game	app	matched	_ZN10EvKeyboardD1Ev	EvKeyboard::~EvKeyboard()
@@ -9960,7 +9960,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ed6a1	0x1c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8Language4ShowEv	Widgets::Language::Show()
 0x002ed6bd	0x14c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4Shop18UpdateLocalizationEv	Widgets::Shop::UpdateLocalization()
 0x002ed809	0xa4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7DemoBuy18UpdateLocalizationEv	Widgets::DemoBuy::UpdateLocalization()
-0x002ed8ad	0x244	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Mission18UpdateLocalizationEv	Widgets::Mission::UpdateLocalization()
+0x002ed8ad	0x244	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Mission18UpdateLocalizationEv	Widgets::Mission::UpdateLocalization()
 0x002edaf1	0x70	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Money18UpdateLocalizationEv	Widgets::Money::UpdateLocalization()
 0x002edb61	0xbc	MenuWidget.cpp	game	ui	matched	_ZN7Widgets9MapLegend18UpdateLocalizationEv	Widgets::MapLegend::UpdateLocalization()
 0x002edc1d	0x60	MenuWidget.cpp	game	ui	matched	_ZN7Widgets9Objective18UpdateLocalizationEv	Widgets::Objective::UpdateLocalization()
@@ -12623,18 +12623,18 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034a145	0x40	ASprite.cpp	game	rendering	matched	_ZNK7ASprite11PaintAFrameEiiiii	ASprite::PaintAFrame(int, int, int, int, int) const
 0x0034a185	0x98	ASprite.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034a21d	0x14	ASprite.cpp	game	rendering	matched	_GLOBAL__I__ZN7ASprite18s_global_transformE	_GLOBAL__I__ZN7ASprite18s_global_transformE
-0x0034a231	0x5c	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6__rect14isIntersectingEii	ASpriteData::__rect::isIntersecting(int, int)
+0x0034a231	0x5c	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6__rect14isIntersectingEii	ASpriteData::__rect::isIntersecting(int, int)
 0x0034a28d	0x128	ASprite.cpp	game	rendering	pending	_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_	ASprite::GetPixelInfoInFrame(int, int, int, int&, int&)
 0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteDataC2Ev	ASpriteData::ASpriteData()
 0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteDataC1Ev	ASpriteData::ASpriteData()
-0x0034a3c9	0xc8	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData4Anim4SwapEv	ASpriteData::Anim::Swap()
-0x0034a491	0x1c2	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5Frame4SwapEv	ASpriteData::Frame::Swap()
-0x0034a655	0xd2	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6Module4SwapEv	ASpriteData::Module::Swap()
+0x0034a3c9	0xc8	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData4Anim4SwapEv	ASpriteData::Anim::Swap()
+0x0034a491	0x1c2	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData5Frame4SwapEv	ASpriteData::Frame::Swap()
+0x0034a655	0xd2	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6Module4SwapEv	ASpriteData::Module::Swap()
 0x0034a729	0x510	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5DebugEv	ASpriteData::Debug()
-0x0034ac39	0x96	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData7FModule4SwapEv	ASpriteData::FModule::Swap()
-0x0034acd1	0xcc	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5Image4SwapEv	ASpriteData::Image::Swap()
-0x0034ad9d	0xc4	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6AFrame4SwapEv	ASpriteData::AFrame::Swap()
-0x0034ae61	0x462	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData4SwapEv	ASpriteData::Swap()
+0x0034ac39	0x96	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData7FModule4SwapEv	ASpriteData::FModule::Swap()
+0x0034acd1	0xcc	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData5Image4SwapEv	ASpriteData::Image::Swap()
+0x0034ad9d	0xc4	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6AFrame4SwapEv	ASpriteData::AFrame::Swap()
+0x0034ae61	0x462	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData4SwapEv	ASpriteData::Swap()
 0x0034b2c5	0x14	StringManager.cpp	game	persistence	matched	_ZNK13StringManager12isPackLoadedEj	StringManager::isPackLoaded(unsigned int) const
 0x0034b2d9	0x18	StringManager.cpp	game	persistence	matched	_ZNK13StringManager17isPackSheetLoadedEjj	StringManager::isPackSheetLoaded(unsigned int, unsigned int) const
 0x0034b2f1	0x22	StringManager.cpp	game	persistence	matched	_ZNK13StringManager21getNumberOfLoadedPackEv	StringManager::getNumberOfLoadedPack() const
@@ -14649,10 +14649,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00393555	0x22	membuf.cpp	gameswf	-	matched	_ZNK7gameswf6membufneERKS0_	gameswf::membuf::operator!=(gameswf::membuf const&) const
 0x00393579	0x22	membuf.cpp	gameswf	-	matched	_ZNK7gameswf6membufeqERKS0_	gameswf::membuf::operator==(gameswf::membuf const&) const
 0x0039359d	0x20	membuf.cpp	gameswf	-	matched	_ZN7gameswf6membufaSERKS0_	gameswf::membuf::operator=(gameswf::membuf const&)
-0x003935bd	0xc	png_helper.cpp	game	core	pending	_Z10png_memsetPvhi	png_memset(void*, unsigned char, int)
-0x003935c9	0xc	png_helper.cpp	game	core	pending	_Z10png_memcpyPvPKvi	png_memcpy(void*, void const*, int)
-0x003935d5	0xc	png_helper.cpp	game	core	pending	_Z10png_memcmpPKvS0_i	png_memcmp(void const*, void const*, int)
-0x003935e1	0xc	png_helper.cpp	game	core	pending	_Z10png_strlenPKc	png_strlen(char const*)
+0x003935bd	0xc	png_helper.cpp	game	core	matched	_Z10png_memsetPvhi	png_memset(void*, unsigned char, int)
+0x003935c9	0xc	png_helper.cpp	game	core	matched	_Z10png_memcpyPvPKvi	png_memcpy(void*, void const*, int)
+0x003935d5	0xc	png_helper.cpp	game	core	matched	_Z10png_memcmpPKvS0_i	png_memcmp(void const*, void const*, int)
+0x003935e1	0xc	png_helper.cpp	game	core	matched	_Z10png_strlenPKc	png_strlen(char const*)
 0x003935ed	0x62	postscript.cpp	gameswf	-	matched	_ZN7gameswf10postscript6updateEff	gameswf::postscript::update(float, float)
 0x00393651	0xa0	postscript.cpp	gameswf	-	matched	_ZN7gameswf10postscript3boxEffff	gameswf::postscript::box(float, float, float, float)
 0x003936f1	0xa4	postscript.cpp	gameswf	-	matched	_ZN7gameswf10postscript9rectangleEffff	gameswf::postscript::rectangle(float, float, float, float)
@@ -14888,7 +14888,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0039c3ad	0xc	tu_types.cpp	gameswf	-	matched	_ZnwjN3swf7MemHintE	operator new(unsigned int, swf::MemHint)
 0x0039c3b9	0x280	utf8.cpp	gameswf	-	matched	_ZN7gameswf29decode_next_unicode_characterEPPKc	gameswf::decode_next_unicode_character(char const**)
 0x0039c639	0x118	utf8.cpp	gameswf	-	matched	_ZN7gameswf24encode_unicode_characterEPcPij	gameswf::encode_unicode_character(char*, int*, unsigned int)
-0x0039c751	0x2	utility.cpp	game	core	pending	_Z17dump_memory_statsPKciS0_	dump_memory_stats(char const*, int, char const*)
+0x0039c751	0x2	utility.cpp	game	core	matched	_Z17dump_memory_statsPKciS0_	dump_memory_stats(char const*, int, char const*)
 0x0039c755	0x20	zlib_adapter.cpp	gameswf	-	matched	_ZN7gameswf12zlib_adapter13inflater_impl19rewind_unused_bytesEv	gameswf::zlib_adapter::inflater_impl::rewind_unused_bytes()
 0x0039c775	0x4	zlib_adapter.cpp	gameswf	-	matched	_ZN7gameswf12zlib_adapter13inflate_writeEPKviPv	gameswf::zlib_adapter::inflate_write(void const*, int, void*)
 0x0039c779	0x4	zlib_adapter.cpp	gameswf	-	matched	_ZN7gameswf12zlib_adapter12inflate_tellEPKv	gameswf::zlib_adapter::inflate_tell(void const*)
@@ -17274,19 +17274,19 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec9cd	0x6	menufx.cpp	game	rendering	matched	_ZNK8RenderFX12GetFlashRootEv	RenderFX::GetFlashRoot() const
 0x003ec9d5	0x38	menufx.cpp	game	rendering	matched	_ZN8RenderFX7GetTextEPN7gameswf9characterE	RenderFX::GetText(gameswf::character*)
 0x003eca0d	0x5c	menufx.cpp	game	core	pending	_Z19CanHandleMouseEventPN7gameswf9characterE	CanHandleMouseEvent(gameswf::character*)
-0x003eca69	0xc	menufx.cpp	game	core	pending	_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE	sprite_can_handle_mouse_event_callback(gameswf::character*)
+0x003eca69	0xc	menufx.cpp	game	core	matched	_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE	sprite_can_handle_mouse_event_callback(gameswf::character*)
 0x003eca74	0x14	menufx.cpp	game	ui	matched	_ZThn204_N6MenuFX11OnFSCommandEPKcS1_	non-virtual thunk to MenuFX::OnFSCommand(char const*, char const*)
 0x003eca89	0x20	menufx.cpp	game	ui	matched	_ZN6MenuFX11OnFSCommandEPKcS1_	MenuFX::OnFSCommand(char const*, char const*)
 0x003ecaa9	0x1a	menufx.cpp	game	ui	matched	_ZN6MenuFX15GetCurrentStateEv	MenuFX::GetCurrentState()
 0x003ecac5	0x30	menufx.cpp	game	ui	matched	_ZN6MenuFX14IsStateInStackEPNS_5StateE	MenuFX::IsStateInStack(MenuFX::State*)
 0x003ecaf5	0x14	menufx.cpp	game	rendering	matched	_ZNK8RenderFX8GetAlphaEPN7gameswf9characterE	RenderFX::GetAlpha(gameswf::character*) const
 0x003ecb09	0x1d0	menufx.cpp	game	rendering	pending	_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii	RenderFX::TraceHierarchy(gameswf::character*, int, int)
-0x003eccd9	0x70	menufx.cpp	game	core	pending	_Z16GetLocalPositionPN7gameswf9characterEff	GetLocalPosition(gameswf::character*, float, float)
+0x003eccd9	0x70	menufx.cpp	game	core	matched	_Z16GetLocalPositionPN7gameswf9characterEff	GetLocalPosition(gameswf::character*, float, float)
 0x003ecd49	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX23ClearGlyphTextureCachesEPN7gameswf14player_contextE	RenderFX::ClearGlyphTextureCaches(gameswf::player_context*)
 0x003ecd89	0x3c	menufx.cpp	game	ui	matched	_ZN6MenuFX8GetStateEPKc	MenuFX::GetState(char const*)
 0x003ecdc5	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX14SetColorFilterEPN7gameswf9characterEij	RenderFX::SetColorFilter(gameswf::character*, int, unsigned int)
 0x003ece05	0x100	menufx.cpp	game	rendering	pending	_ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE	RenderFX::ForceTexturesToVRAM(bool, gameswf::player_context*)
-0x003ecf05	0x1c8	menufx.cpp	game	rendering	pending	_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj	RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int)
+0x003ecf05	0x1c8	menufx.cpp	game	rendering	matched	_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj	RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int)
 0x003ed0cd	0x8c	menufx.cpp	game	rendering	matched	_ZN8RenderFXC1Ev	RenderFX::RenderFX()
 0x003ed0cd	0x8c	menufx.cpp	game	rendering	matched	_ZN8RenderFXC2Ev	RenderFX::RenderFX()
 0x003ed159	0x64	menufx.cpp	game	ui	matched	_ZN6MenuFXC2Ev	MenuFX::MenuFX()
@@ -17347,18 +17347,18 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ee98d	0xbc	menufx.cpp	game	rendering	matched	_ZN8RenderFX16SetLocalVariableEPKcS1_RN7gameswf8as_valueE	RenderFX::SetLocalVariable(char const*, char const*, gameswf::as_value&)
 0x003eea49	0xc8	menufx.cpp	game	rendering	pending	_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE	RenderFX::SetMember(char const*, char const*, gameswf::as_value&)
 0x003eeb11	0x60	menufx.cpp	game	rendering	matched	_ZN8RenderFX9SetMemberEPKcS1_i	RenderFX::SetMember(char const*, char const*, int)
-0x003eeb71	0x60	menufx.cpp	game	rendering	pending	_ZN8RenderFX9SetMemberEPKcS1_S1_	RenderFX::SetMember(char const*, char const*, char const*)
+0x003eeb71	0x60	menufx.cpp	game	rendering	matched	_ZN8RenderFX9SetMemberEPKcS1_S1_	RenderFX::SetMember(char const*, char const*, char const*)
 0x003eebd1	0x7c	menufx.cpp	game	rendering	matched	_ZN8RenderFX7SetTextEPN7gameswf9characterEPKcb	RenderFX::SetText(gameswf::character*, char const*, bool)
 0x003eec4d	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX7SetTextEPKcS1_b	RenderFX::SetText(char const*, char const*, bool)
 0x003eec69	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX10FormatHTMLEPKcS1_z	RenderFX::FormatHTML(char const*, char const*, ...)
 0x003eeca9	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX10FormatTextEPKcS1_z	RenderFX::FormatText(char const*, char const*, ...)
 0x003eece9	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX10FormatHTMLEPN7gameswf9characterEPKcz	RenderFX::FormatHTML(gameswf::character*, char const*, ...)
 0x003eed29	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX10FormatTextEPN7gameswf9characterEPKcz	RenderFX::FormatText(gameswf::character*, char const*, ...)
-0x003eed69	0x12c	menufx.cpp	game	rendering	pending	_ZN8RenderFX11SearchIndex4FindEPKc	RenderFX::SearchIndex::Find(char const*)
-0x003eee95	0x118	menufx.cpp	game	rendering	pending	_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE	RenderFX::ClearFonts(gameswf::player_context*)
+0x003eed69	0x12c	menufx.cpp	game	rendering	matched	_ZN8RenderFX11SearchIndex4FindEPKc	RenderFX::SearchIndex::Find(char const*)
+0x003eee95	0x118	menufx.cpp	game	rendering	matched	_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE	RenderFX::ClearFonts(gameswf::player_context*)
 0x003eefad	0x170	menufx.cpp	game	rendering	pending	_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc	RenderFX::InvokeASCallback(gameswf::character*, char const*)
 0x003ef11d	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX16InvokeASCallbackEPKcS1_	RenderFX::InvokeASCallback(char const*, char const*)
-0x003ef139	0xc8	menufx.cpp	game	rendering	pending	_ZN8RenderFX9SendEventERNS_5EventE	RenderFX::SendEvent(RenderFX::Event&)
+0x003ef139	0xc8	menufx.cpp	game	rendering	matched	_ZN8RenderFX9SendEventERNS_5EventE	RenderFX::SendEvent(RenderFX::Event&)
 0x003ef201	0x164	menufx.cpp	game	rendering	pending	_ZN8RenderFX8SetFocusEPN7gameswf9characterEi	RenderFX::SetFocus(gameswf::character*, int)
 0x003ef365	0x10	menufx.cpp	game	rendering	matched	_ZN8RenderFX10ResetFocusEi	RenderFX::ResetFocus(int)
 0x003ef375	0x144	menufx.cpp	game	ui	matched	_ZN6MenuFX7PopMenuEv	MenuFX::PopMenu()

@@ -2139,3 +2139,52 @@ void Widgets::Volumes::OnEvent(RenderFX::Event& event)
         UpdateLocalization();
     }
 }
+
+#include "../missions/Mission.h"
+#include "../missions/MissionData.h"
+#include "../scripting/Script.h"
+#include "../scripting/ScriptManager.h"
+static const char missionObjectivePath[] = "widgetMission.txtObjective";
+static const char missionMessagePath[] = "widgetMission.txtMessage";
+static const char missionLocationTitlePath[] = "widgetMission.txtLocationTitle";
+static const char missionLocationValuePath[] = "widgetMission.txtLocationValue";
+static const char missionTypeTitlePath[] = "widgetMission.txtTypeTitle";
+static const char missionTypeValuePath[] = "widgetMission.txtTypeValue";
+static const char missionCashTitlePath[] = "widgetMission.txtCashRewardTitle";
+static const char missionCashValuePath[] = "widgetMission.txtCashRewardValue";
+static const char missionIconPath[] = "widgetMission.iconNPC";
+static const char missionButtonPath[] = "widgetMission.btnStartMission";
+static const char missionButtonTextPath[] = "widgetMission.btnStartMission.text";
+
+void Widgets::Mission::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    StringManager* strings=Application::GetInstance()->GetStringManager();
+    ::Mission* missions=static_cast< ::Mission*>(ScriptManager::getInstance()->getMission());
+    Structs::Mission* data=script ? missions->mission(script->getMissionId()) : 0;
+    bool hasMission=data!=0;
+    bool noMission=data==0;
+    renderFX->SetVisible(missionObjectivePath,hasMission);
+    renderFX->SetVisible(missionMessagePath,noMission);
+    renderFX->SetVisible(missionLocationTitlePath,hasMission);
+    renderFX->SetVisible(missionLocationValuePath,hasMission);
+    renderFX->SetVisible(missionTypeTitlePath,hasMission);
+    renderFX->SetVisible(missionTypeValuePath,hasMission);
+    renderFX->SetVisible(missionCashTitlePath,hasMission);
+    renderFX->SetVisible(missionCashValuePath,hasMission);
+    renderFX->SetVisible(missionIconPath,hasMission);
+    renderFX->SetEnabled(missionButtonPath,hasMission);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionButtonTextPath,_ZNK13StringManager9getStringEi(strings,0x103e),true);
+    if (hasMission) {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionObjectivePath,_ZNK13StringManager9getStringEi(strings,data->unknown28),true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionLocationTitlePath,_ZNK13StringManager9getStringEi(strings,0x103f),true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionLocationValuePath,_ZNK13StringManager9getStringEi(strings,data->unknown20),true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionTypeTitlePath,_ZNK13StringManager9getStringEi(strings,0x1040),true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionTypeValuePath,_ZNK13StringManager9getStringEi(strings,data->unknown32),true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionCashTitlePath,_ZNK13StringManager9getStringEi(strings,0x1043),true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionCashValuePath,strings->formatAmount(data->unknown4,false,true),true);
+        renderFX->GotoFrame(missionIconPath,data->unknown12,false);
+    } else {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionMessagePath,_ZNK13StringManager9getStringEi(strings,0x104b),true);
+    }
+}

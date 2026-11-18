@@ -16,6 +16,7 @@
 #include "../characters/Character.h"
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../hud/CHudManager.h"
 #include "../hud/MenuManager.h"
 

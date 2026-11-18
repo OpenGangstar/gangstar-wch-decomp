@@ -1,3 +1,10 @@
+__stack_chk_fail = 0x001c42e0;
+sprintf = 0x001c46ac;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fcmpge = 0x001c4364;
+__aeabi_fadd = 0x001c4154;
+__aeabi_ui2f = 0x001c4574;
+__android_log_print = 0x001c4238;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/state-hooks-gsfade/retail-symbols.ld
@@ -57,6 +64,22 @@ INCLUDE config/linker/ApplicationRuntimeSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+    .application_stop_sound 0x002d4440 : { *application-helpers.o(.text._ZN11Application15stopSoundThreadEv) }
+    .application_resume_sprite 0x00413c88 : { *application-helpers.o(.rodata.application_resume_sprite) }
+    .application_logo_sprite 0x00413d30 : { *application-helpers.o(.rodata.application_logo_sprite) }
+    .application_key_pressed 0x002d4708 : { *(.text._ZN11Application13appKeyPressedEi) }
+    .application_key_released 0x002d45ac : { *(.text._ZN11Application14appKeyReleasedEi) }
+    .application_process_key 0x002d40fc : { *(.text._ZN11Application15ProcessKeyEventEbi) }
+    .application_key_tag 0x00413b3c : { *(.rodata.application_key_tag) }
+    .application_key_back 0x00413b44 : { *(.rodata.application_key_back) }
+    .application_key_igm 0x00413b80 : { *(.rodata.application_key_igm) }
+    .application_key_mm 0x00413bbc : { *(.rodata.application_key_mm) }
+    .application_key_device 0x00413bf4 : { *(.rodata.application_key_device) }
+    .application_key_post 0x00413c30 : { *(.rodata.application_key_post) }
+    .application_key_main 0x00413c7c : { *(.rodata.application_key_main) }
+
+
+
     /DISCARD/ : { *application-helpers.o(.text.__tcf_0) }
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
     .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
@@ -221,3 +244,36 @@ ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_8) == 8, "script-ma
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_9) == 8, "script-manager-helpers _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_10) == 8, "script-manager-helpers _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_11) == 8, "script-manager-helpers _ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/ApplicationFrameSections.ld
+
+ASSERT(SIZEOF(.app_s_frameUpdateStart) == 4, "s_frameUpdateStart extent");
+ASSERT(SIZEOF(.app_s_frameTotalUpdateTime) == 4, "s_frameTotalUpdateTime extent");
+ASSERT(SIZEOF(.app_s_frameUpdateCount) == 4, "s_frameUpdateCount extent");
+ASSERT(SIZEOF(.app_s_frameUpdateTime) == 4, "s_frameUpdateTime extent");
+
+INCLUDE config/linker/ApplicationNumberSections.ld
+
+INCLUDE config/linker/ApplicationResumeSections.ld
+
+INCLUDE config/linker/ApplicationSingletonSections.ld
+ASSERT(SIZEOF(.application_singleton_guard)==4,"Application singleton guard extent");
+ASSERT(SIZEOF(.application_singleton_storage)==180,"Application singleton native extent");
+
+INCLUDE config/linker/ApplicationRetainedHelpers.ld
+
+INCLUDE config/linker/JNIGangstarBrowserSections.ld
+ASSERT(SIZEOF(.gangstar_class)==4,"JNI Gangstar class cache extent");
+ASSERT(SIZEOF(.gangstar_browser_method)==4,"JNI browser method cache extent");
+
+ASSERT(SIZEOF(.gangstar_notify_method)==4,"JNI notify method cache extent");
+
+ASSERT(SIZEOF(.gangstar_exit_method)==4,"JNI exit method cache extent");
+
+ASSERT(SIZEOF(.gangstar_phone_method)==4,"JNI phone method cache extent");
+
+ASSERT(SIZEOF(.gangstar_unlock_method)==4,"JNI unlock method cache extent");
+
+ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
+
+ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
