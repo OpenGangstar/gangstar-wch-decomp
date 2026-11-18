@@ -1057,6 +1057,13 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x00323b69 | SafeDelete<CDrivingHud>(CDrivingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
 
 | libsanangeles.so | 0x00323b89 | SafeDelete<CWalkingHud>(CWalkingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
-| libsanangeles.so | 0x00323ba9 | SafeDelete<CSniperHud>(CSniperHud*&) | hud_registration | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323ba9 | SafeDelete<CSniperHud>(CSniperHud*&) | hud_registration | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x00323bc9 | SafeDelete<CCameraHud>(CCameraHud*&) | hud_glyphs | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323bc9 | SafeDelete<CCameraHud>(CCameraHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+
+| libsanangeles.so | 0x00341a3d | CopVehicleController::onEvent(IEvent const*, EventManager const*) | hud_registration | ASSIGNED | pending | src/game/ai/CopVehicleController.cpp |
+
+| libsanangeles.so | 0x003238a1 | std::__stl_throw_overflow_error(char const*) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+
+| libsanangeles.so | 0x002f4441 | b2CircleDef::~b2CircleDef() (D1) | hud_glyphs | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f462d | b2CircleDef::~b2CircleDef() (D0) | hud_glyphs | ASSIGNED | pending | src/game/characters/Character.cpp |
