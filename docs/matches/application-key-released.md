@@ -1,6 +1,6 @@
 # Application released-key handling
 
-`Application::appKeyReleased(int)` matches all 348 bytes at Thumb0x002d45ad on its
+`Application::appKeyReleased(int)` matches all 348 bytes at Thumb 0x002d45ad on its
 first source candidate. It reuses the previously reconstructed press-handler
 logic while preserving the native movie-state guard, cutscene guard, key-reset
 ordering, false/true event arguments and special splash-state notification.
@@ -26,16 +26,16 @@ OK  _ZN11Application14appKeyReleasedEi  0x002d45ad  348 bytes
 OK  _ZN15TouchScreenBase5getIDEl  0x0034c599  68 bytes
 ```
 
-Full coordinator `python tools/build.py --all` exited0 with all9,789 comparisons
-passing across180 profiles. Existing menu, touch, script, callback and GOT/data
+Full coordinator `python tools/build.py --all` exited 0 with all 9,789 comparisons
+passing across 180 profiles. Existing menu, touch, script, callback and GOT/data
 comparisons are preserved. The private full log and explicit exitcode are
-_scratch/key-released-root-full.log and .exit. Only this new348-byte function
+_scratch/key-released-root-full.log and .exit. Only this new 348-byte function
 receives additional matching credit.
 
-The worker's separate header validation initially forced NDK1.6 on Logs, whose
+The worker's separate header validation initially forced NDK 1.6 on Logs, whose
 manifest deliberately uses the normal r4b default, causing alignment-fill
 mismatches. The authorized correction used each manifest's actual toolchain,
 without modifying any source or generated output. Its corrected deduplicated
-proof covers92 profiles,3,432 functions and3,921 section/region checks. The
+proof covers92 profiles, 3,432 functions and 3,921 section/region checks. The
 initial failed command remains documented; it is not reported as a passing run.
 Coordinator full verification independently used normal per-manifest settings.

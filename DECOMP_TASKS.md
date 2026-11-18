@@ -1187,8 +1187,10 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | hud_registration | REVIEW | exact 416-byte candidate; all 123 header profiles and retained dependency proof pass | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | REVIEW | exact 344-byte candidate; coherent full integration validation pending | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
