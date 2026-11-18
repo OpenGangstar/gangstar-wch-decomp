@@ -12631,9 +12631,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034a491	0x1c2	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5Frame4SwapEv	ASpriteData::Frame::Swap()
 0x0034a655	0xd2	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6Module4SwapEv	ASpriteData::Module::Swap()
 0x0034a729	0x510	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5DebugEv	ASpriteData::Debug()
-0x0034ac39	0x96	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData7FModule4SwapEv	ASpriteData::FModule::Swap()
+0x0034ac39	0x96	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData7FModule4SwapEv	ASpriteData::FModule::Swap()
 0x0034acd1	0xcc	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData5Image4SwapEv	ASpriteData::Image::Swap()
-0x0034ad9d	0xc4	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData6AFrame4SwapEv	ASpriteData::AFrame::Swap()
+0x0034ad9d	0xc4	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6AFrame4SwapEv	ASpriteData::AFrame::Swap()
 0x0034ae61	0x462	ASpriteData.cpp	game	rendering	pending	_ZN11ASpriteData4SwapEv	ASpriteData::Swap()
 0x0034b2c5	0x14	StringManager.cpp	game	persistence	matched	_ZNK13StringManager12isPackLoadedEj	StringManager::isPackLoaded(unsigned int) const
 0x0034b2d9	0x18	StringManager.cpp	game	persistence	matched	_ZNK13StringManager17isPackSheetLoadedEjj	StringManager::isPackSheetLoaded(unsigned int, unsigned int) const

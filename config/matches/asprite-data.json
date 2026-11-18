@@ -27,7 +27,9 @@
     "linker_script": "config/linker/ASpriteData.ld",
     "functions": [
         "_ZN11ASpriteDataC1Ev",
-        "_ZN11ASpriteDataC2Ev"
+        "_ZN11ASpriteDataC2Ev",
+        "_ZN11ASpriteData6AFrame4SwapEv",
+        "_ZN11ASpriteData7FModule4SwapEv"
     ],
     "sections": [
         ".asprite_data_ctor",

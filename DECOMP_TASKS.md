@@ -1121,11 +1121,11 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | lock_init | BLOCKED | 2440/2436 bytes; six forms; 34 header-only profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
 
-| libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | hud_glyphs | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | hud_glyphs | BLOCKED | 3024/3012 bytes; six forms; header-only 36 profiles exact, combined dependent link incomplete | src/game/ai/NPC.cpp |
 
-| libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | lock_init | BLOCKED | best extent 2364/2384 bytes; six forms; header sweep 43/44, known fixture incomplete | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x0039c751 | dump_memory_stats(char const*, int, char const*) | — | COMPLETED | 100% | src/game/core/utility.cpp |
 
@@ -1136,3 +1136,17 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003935d5 | png_memcmp(void const*, void const*, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
 
 | libsanangeles.so | 0x003935e1 | png_strlen(char const*) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x002fd291 | Lock::render() | coordinator | BLOCKED | 304-byte candidate unmatched; six forms; old 8 functions and 10 section/region checks exact | src/game/core/Lock.cpp |
+
+| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int, int, int, int, int) const | hud_registration | BLOCKED | 222/220 bytes; three forms identical; strict link overlap, old graph exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x0034ad9d | ASpriteData::AFrame::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034ac39 | ASpriteData::FModule::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a3c9 | ASpriteData::Anim::Swap() | lock_init | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034acd1 | ASpriteData::Image::Swap() | hud_glyphs | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+
+| libsanangeles.so | 0x0034a231 | ASpriteData::__rect::isIntersecting(int, int) | hud_registration | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
