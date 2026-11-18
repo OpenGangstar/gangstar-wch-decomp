@@ -600,3 +600,5 @@ ASSERT(SIZEOF(.gs3d_startup_storage_11) == 12, "GS3DStuff _ZN3irr2ps5vHalfE exte
 ASSERT(SIZEOF(.gs3d_startup_storage_12) == 20, "GS3DStuff _ZN9GS3DStuff11lightsNodesE extent");
 
 INCLUDE config/linker/WrapperRuntimeSections.ld
+
+ASSERT(SIZEOF(.wrapper_application) == 4, "native wrapper app pointer extent");

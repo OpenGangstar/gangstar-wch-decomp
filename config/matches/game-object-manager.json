@@ -119,7 +119,9 @@
             "address": "0x002df605"
         },
         "appResume",
-        "launchTwitter"
+        "launchTwitter",
+        "appOnKeyUp",
+        "appOnKeyDown"
     ],
     "sections": [
         ".gom_event_get_id",
@@ -399,7 +401,9 @@
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "nativeOpenBrowser"
+        "nativeOpenBrowser",
+        "_ZN11Application14appKeyReleasedEi",
+        "_ZN11Application13appKeyPressedEi"
     ],
     "dependencies": [
         "gs3d-stuff",

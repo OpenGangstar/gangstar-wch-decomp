@@ -95,7 +95,9 @@
             "address": "0x002d2985"
         },
         "appResume",
-        "launchTwitter"
+        "launchTwitter",
+        "appOnKeyUp",
+        "appOnKeyDown"
     ],
     "dependencies": [
         "file-system-base",
@@ -103,6 +105,8 @@
         "debug-log"
     ],
     "external_thumb_functions": [
-        "nativeOpenBrowser"
+        "nativeOpenBrowser",
+        "_ZN11Application14appKeyReleasedEi",
+        "_ZN11Application13appKeyPressedEi"
     ]
 }

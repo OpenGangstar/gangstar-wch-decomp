@@ -103,3 +103,17 @@ extern "C" void launchTwitter()
 {
     nativeOpenBrowser(twitterUrl);
 }
+
+#include "../app/Application.h"
+static Application* app;
+extern "C" void appOnKeyUp(int key)
+{
+    if (app)
+        app->appKeyReleased(key);
+}
+
+extern "C" void appOnKeyDown(int key)
+{
+    if (app)
+        app->appKeyPressed(key);
+}

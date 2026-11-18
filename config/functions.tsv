@@ -8706,8 +8706,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d2511	0x98	wrapper.cpp	game	core	pending	appOnTouch	appOnTouch
 0x002d25a9	0x7c	wrapper.cpp	game	core	pending	appOnAccelerometer	appOnAccelerometer
 0x002d2625	0x30	wrapper.cpp	game	core	matched	__tcf_4	__tcf_4
-0x002d2655	0x24	wrapper.cpp	game	core	pending	appOnKeyUp	appOnKeyUp
-0x002d2679	0x24	wrapper.cpp	game	core	pending	appOnKeyDown	appOnKeyDown
+0x002d2655	0x24	wrapper.cpp	game	core	matched	appOnKeyUp	appOnKeyUp
+0x002d2679	0x24	wrapper.cpp	game	core	matched	appOnKeyDown	appOnKeyDown
 0x002d269d	0x54	wrapper.cpp	game	core	pending	appRun	appRun
 0x002d26f1	0x24	wrapper.cpp	game	core	pending	appDeinit	appDeinit
 0x002d2715	0x1c	wrapper.cpp	game	core	matched	launchTwitter	launchTwitter
