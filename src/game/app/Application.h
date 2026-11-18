@@ -19,6 +19,9 @@ namespace irr { class IrrlichtDevice; class IEventReceiver; }
 // Do not instantiate or use sizeof until the complete class is recovered.
 class Application {
 public:
+    void Update();
+    void _Update(int elapsed);
+    void _Draw();
     void ProcessKeyEvent(bool pressed, int type);
     void appKeyReleased(int key);
     void appKeyPressed(int key);
@@ -39,6 +42,7 @@ public:
     void Pause();
     void StartGlobalResuming();
     void GlobalResumingDraw();
+    void GlobalResumingUpdate();
     void StartLogo();
     void LogoDraw();
     void LogoUpdate();
@@ -76,7 +80,9 @@ private:
     WeaponManager* weaponManager;
     static CCustomMaterialRenderer* s_materialRenderer;
     int defaultLanguage;
-    unsigned char unknown88[16];
+    unsigned char unknown88[4];
+    unsigned int lastUpdateTime;
+    unsigned char unknown96[8];
     bool drawAll;
     bool soundNeedsInit;
     bool demoVersion;

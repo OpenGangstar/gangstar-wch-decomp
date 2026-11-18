@@ -17,7 +17,7 @@ enum E_INDEX_TYPE { EIT_16BIT = 0 };
 struct SMaterial;
 class IDriverBinding;
 class ITexture;
-class ITextureManager {
+class CTextureManager {
 public:
     virtual void unknown0();
     virtual void unknown1();
@@ -25,7 +25,10 @@ public:
     virtual void unknown3();
     virtual void unknown4();
     virtual unsigned int getTextureCount() const;
+    void reloadTexture(int index);
+    void reloadAllTextures();
 };
+typedef CTextureManager ITextureManager;
 class IVideoDriver {
 public:
     virtual bool beginScene();

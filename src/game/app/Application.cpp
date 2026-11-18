@@ -532,3 +532,65 @@ void Application::appKeyPressed(int key)
         }
     }
 }
+
+
+extern "C" int __android_log_print(int priority, const char* tag, const char* format, ...);
+
+void Application::GlobalResumingUpdate()
+{
+    __android_log_print(4, "DINH.LETAN", "GlobalResumingUpdate:m_intStepTotal :%D ", resumeTextureCount);
+    if (resumeElapsed < resumeTextureCount) {
+        __android_log_print(4, "DINH.LETAN", "GlobalResumingUpdate:m_intSubStep :%D ", resumeFrame);
+        if (stateMachine->states.back()->isKindOf(21)) {
+            if (resumeFrame == 3)
+                device->getVideoDriver()->getTextureManager()->reloadAllTextures();
+        } else {
+            device->getVideoDriver()->getTextureManager()->reloadTexture(resumeFrame);
+        }
+        ++resumeFrame;
+        ++resumeElapsed;
+        GlobalResumingDraw();
+        if (resumeElapsed >= resumeTextureCount) {
+            __android_log_print(4, "DINH.LETAN", "m_intStep == m_intStepTotal:m_intSubStep :%D ", resumeFrame);
+            delete resumeSprite;
+            resumeSprite = 0;
+            if (stateMachine->states.back()->isKindOf(18)
+                || stateMachine->states.back()->isKindOf(21))
+                SoundManager::getInstance()->playLowFpsMusic(29, true);
+        }
+    }
+}
+
+
+extern "C" int __android_log_print(int priority, const char* tag, const char* format, ...);
+static const char applicationUpdateLoop[] __attribute__((section(".rodata.application_update_loop"))) = "Loop @@@@@@@@@@@@@@@@@@@@";
+static unsigned int s_frameUpdateStart;
+static float s_frameTotalUpdateTime;
+static unsigned int s_frameUpdateCount;
+static float s_frameUpdateTime;
+
+void Application::Update()
+{
+    if (!IsGlobalResumingOver()) {
+        GlobalResumingUpdate();
+        __android_log_print(4, "DINH.LETAN", applicationUpdateLoop);
+        return;
+    }
+    irr::ITimer* timer = device->getTimer();
+    unsigned int now = timer->getRealTime();
+    if (!s_frameUpdateStart)
+        s_frameUpdateStart = now;
+    StateBase* state = stateMachine->states.back();
+    _Update(now - lastUpdateTime);
+    if (state == stateMachine->states.back())
+        _Draw();
+    lastUpdateTime = now;
+    s_frameTotalUpdateTime += static_cast<float>(timer->getRealTime() - now);
+    ++s_frameUpdateCount;
+    if (s_frameTotalUpdateTime >= 1500.0f) {
+        s_frameUpdateTime = s_frameTotalUpdateTime / s_frameUpdateCount;
+        s_frameUpdateStart = 0;
+        s_frameUpdateCount = 0;
+        s_frameTotalUpdateTime = 0.0f;
+    }
+}

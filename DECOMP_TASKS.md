@@ -1175,7 +1175,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | lock_init | REVIEW | exact 272-byte candidate; coherent header integration validation pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x0034c599 | TouchScreenBase::getID(long) header integration | — | COMPLETED | 100%; native 68-byte function preserved after interface integration | src/game/input/TouchScreenBase.cpp |
 
@@ -1183,14 +1183,20 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d4fe1 | Application::_Draw() | hud_registration | BLOCKED | 276/272 bytes; three identical forms; oldTouch header context differs | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d50f1 | Application::Update() | lock_init | REVIEW | exact 264-byte candidate; coordinator integration validation pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d50f1 | Application::Update() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | hud_registration | REVIEW | exact 416-byte candidate; all 123 header profiles and retained dependency proof pass | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | REVIEW | exact 344-byte candidate; coherent full integration validation pending | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | REVIEW | exact 118-byte candidate; 95-profile old/support proof passed | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | REVIEW | exact 368-byte candidate; genuine alias hierarchy proof passed except known fixture | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5c65 | Application::~Application() D0 | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |

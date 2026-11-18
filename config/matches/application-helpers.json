@@ -94,7 +94,9 @@
         },
         "_ZN11Application15ProcessKeyEventEbi",
         "_ZN11Application14appKeyReleasedEi",
-        "_ZN11Application13appKeyPressedEi"
+        "_ZN11Application13appKeyPressedEi",
+        "_ZN11Application20GlobalResumingUpdateEv",
+        "_ZN11Application6UpdateEv"
     ],
     "sections": [
         ".screen_dimensions",
@@ -121,7 +123,9 @@
         ".application_key_mm",
         ".application_key_device",
         ".application_key_post",
-        ".application_key_main"
+        ".application_key_main",
+        ".resume_update_literals",
+        ".application_update_loop"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -142,6 +146,10 @@
         "_ZN11MenuManager11getInstanceEv",
         "_ZNK11MenuManager8getStateEPKc",
         "nativeNotifyPause",
-        "_ZNK11MenuManager8getDepthEv"
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZN3irr5video15CTextureManager13reloadTextureEi",
+        "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
+        "_ZN11Application7_UpdateEi",
+        "_ZN11Application5_DrawEv"
     ]
 }

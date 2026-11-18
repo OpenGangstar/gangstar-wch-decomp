@@ -427,6 +427,11 @@
         "_ZNK6Script11peekCommandEi",
         "_ZNK6Script8getStateEv",
         "_ZNK6Script9getSourceEv",
-        "_ZNK6Weapon13getWeaponTypeEv"
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZN3irr5video15CTextureManager13reloadTextureEi",
+        "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
+        "_ZN11Application7_UpdateEi",
+        "_ZN11Application5_DrawEv",
+        "_ZN12SoundManager15playLowFpsMusicEib"
     ]
 }

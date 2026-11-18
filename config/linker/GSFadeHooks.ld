@@ -1,3 +1,7 @@
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fcmpge = 0x001c4364;
+__aeabi_fadd = 0x001c4154;
+__aeabi_ui2f = 0x001c4574;
 __android_log_print = 0x001c4238;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
@@ -235,3 +239,10 @@ ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_8) == 8, "script-ma
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_9) == 8, "script-manager-helpers _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_10) == 8, "script-manager-helpers _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_11) == 8, "script-manager-helpers _ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/ApplicationFrameSections.ld
+
+ASSERT(SIZEOF(.app_s_frameUpdateStart) == 4, "s_frameUpdateStart extent");
+ASSERT(SIZEOF(.app_s_frameTotalUpdateTime) == 4, "s_frameTotalUpdateTime extent");
+ASSERT(SIZEOF(.app_s_frameUpdateCount) == 4, "s_frameUpdateCount extent");
+ASSERT(SIZEOF(.app_s_frameUpdateTime) == 4, "s_frameUpdateTime extent");
