@@ -404,7 +404,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00346dd1 | SideMission::addCheckpoint | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346ce1 | SideMission::fadeInFadeOut | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346e31 | SideMission::removeNPC | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x00346f55 | SideMission::isInCheckpointsRange | hud_glyphs | ASSIGNED | Unmatched. Read-only actual Irrlicht vector-by-value and array interface audit against frozen six-form candidate; identify genuine ABI/type evidence before any source trial | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346f55 | SideMission::isInCheckpointsRange | — | BLOCKED | Reviewed actual Irrlicht ABI and array audit: no type drift; historical best70B differs2 compare/branch bytes; no replay justified | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346d1d | SideMission::start | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346b8d | SideMission::finished | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346e55 | SideMission::getCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
@@ -462,7 +462,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003399c5 | Script::clearScriptObjectAction | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033999d | Script::setScriptObjectAction | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
-| libsanangeles.so | 0x0033922d | Script::setState | lock_init | ASSIGNED | Unmatched. Read-only enum-context lifetime, full mismatch classification and earliest compiler-stage audit of the frozen state setter; no source forms | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0033922d | Script::setState | lock_init | ASSIGNED | Unmatched. Reviewed ABI audit found no type drift; authorize unchanged historical v1 and v6 dump-only stage comparison, with ordinary-output identity proof; no source forms or optimization changes | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction | camera_tap | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033ce19 | Script::nextCommand | lock_init | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003399f1 | Script::rewind | vehicle_side | BLOCKED | — | src/game/scripting/Script.cpp |
@@ -504,7 +504,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | — | COMPLETED | 100%; real 20-byte ARM thunk; full 187-profile, 10,400-comparison native gate exact; parent remains unmatched | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | hud_registration | ASSIGNED | Unmatched. Read-only canonical sound-slot row/array type audit against the two-byte indexed-load difference and matched relatives; no guessed source variants | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | hud_registration | ASSIGNED | Reviewed type audit confirms CSound***; authorize one unchanged best-candidate dump-only indexed-load operand association audit against matched relatives, no source forms | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003ee801 | RenderFX deleting destructor (D0) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee885 | RenderFX destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
@@ -668,7 +668,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002eff19 | Widgets::Volumes::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x00343785 | Preferences::GetDefaultFilename | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002e365d | GSSideMissionMenu::update | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
-| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | — | BLOCKED | five forms; canonical-header176B candidate differs8bytes; old10/8 and full385-function header closure pass; no credit | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x00343835 | Preferences::GetOrientation | hud_glyphs | ASSIGNED | Read-only canonical DataStream and BlockInt destructor declaration/ABI impact audit against archived exact RAII source; no header edits or builds | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | BLOCKED | pending | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | — | COMPLETED | 100% | src/game/hud/MenuManager.cpp |
 | libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
