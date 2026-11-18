@@ -41,6 +41,8 @@ public:
     bool GetIsDemoVersion();
     static CCustomMaterialRenderer* GetMaterialRenderer();
     void SetDefaultLanguage(int language);
+    void InitWin32(irr::IrrlichtDevice* device);
+    void Init(irr::IrrlichtDevice* device);
     void ReInitWin32(irr::IrrlichtDevice* newDevice);
     void ReInit(irr::IrrlichtDevice* newDevice);
     void InitIPhoneFileSystem();

@@ -191,7 +191,12 @@
         "_ZN11ApplicationD1Ev",
         "_ZN11ApplicationD2Ev",
         "_ZN3irr14IEventReceiverD0Ev",
-        "_ZN3irr14IEventReceiverD1Ev"
+        "_ZN3irr14IEventReceiverD1Ev",
+        "_ZN11Application9InitWin32EPN3irr14IrrlichtDeviceE",
+        "_ZNK16TouchScreenWin3212getLeftBoundEv",
+        "_ZNK16TouchScreenWin3213getRightBoundEv",
+        "_ZNK16TouchScreenWin3211getTopBoundEv",
+        "_ZNK16TouchScreenWin3214getBottomBoundEv"
     ],
     "sections": [
         ".hook_0",
@@ -531,6 +536,12 @@
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZNK11MenuManager8getDepthEv",
-        "_ZN11Application7OnEventERKN3irr6SEventE"
+        "_ZN11Application7OnEventERKN3irr6SEventE",
+        "_ZN15FileSystemWin32C1Ev",
+        "_ZN16TouchScreenWin32C1Ev",
+        "_ZN18AccelerometerWin32C1Ev",
+        "_ZN11Application4InitEPN3irr14IrrlichtDeviceE",
+        "_ZN5Menus18OptionGameSettings14GetOrientationEv",
+        "_ZN5Menus18OptionGameSettings14SetOrientationEi"
     ]
 }

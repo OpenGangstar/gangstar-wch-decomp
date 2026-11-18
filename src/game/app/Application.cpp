@@ -690,3 +690,21 @@ Application* Application::GetInstance()
 Application::~Application()
 {
 }
+
+#include "../persistence/FileSystemWin32.h"
+#include "../input/TouchScreenWin32.h"
+#include "../input/AccelerometerWin32.h"
+#include "../ui/OptionGameSettings.h"
+
+void Application::InitWin32(irr::IrrlichtDevice* newDevice)
+{
+    fileSystem = new FileSystemWin32;
+    touchScreen = new TouchScreenWin32;
+    accelerometer = new AccelerometerWin32;
+    RegisterForUpdate(touchScreen);
+    RegisterForIrrlichtEvents(static_cast<TouchScreenWin32*>(touchScreen));
+    RegisterForUpdate(accelerometer);
+    RegisterForIrrlichtEvents(static_cast<AccelerometerWin32*>(accelerometer));
+    Init(newDevice);
+    Menus::OptionGameSettings::SetOrientation(static_cast<int>(Menus::OptionGameSettings::GetOrientation()));
+}

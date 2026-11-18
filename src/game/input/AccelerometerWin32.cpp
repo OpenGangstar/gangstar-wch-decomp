@@ -58,16 +58,7 @@ static void _GLOBAL__I__ZN18AccelerometerWin32C2Ev()
 #include "AccelerometerBase.h"
 #include "TouchScreenMouseEvent.h"
 
-class AccelerometerWin32 : public AccelerometerBase, public irr::IEventReceiver {
-public:
-    AccelerometerWin32();
-    virtual ~AccelerometerWin32();
-    virtual bool OnEvent(const irr::SEvent& event);
-    void setWide(bool value);
-
-private:
-    bool wide;
-};
+#include "AccelerometerWin32.h"
 
 AccelerometerWin32::AccelerometerWin32()
 {
