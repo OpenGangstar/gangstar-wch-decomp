@@ -1040,10 +1040,21 @@ Coordinator permits a focused diagnostic of the sole old photo regression in the
 
 
 | libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) (C1/C2 aliases) | lock_init | BLOCKED | 864/872-byte candidate; private old photo regression remains | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x0030a955 | Vehicle::Vehicle(int) (C1/C2 aliases) | hud_registration | REVIEW | 100% private constructor/dependency proof | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | hud_glyphs | BLOCKED | 539/540 bytes; commuted address operands | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x0030a955 | Vehicle::Vehicle(int) (C1/C2 aliases) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | hud_glyphs | BLOCKED | post-constructor replay unchanged; 539/540 bytes | src/game/world/SpawnPoint.cpp |
 
 Coordinator approves private Vehicle-constructor layout refinement of the four native vector members at 512/524/536/548, replacing only constant-index references mechanically in preserved Vehicle/NPC bodies. Storage extent and offsets must remain unchanged. All old Vehicle and NPC/dependency checks plus accepted custom/support/table checks must pass before readiness; no other algorithm changes or additional overlapping storage.
-| libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
-| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination | hud_registration | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | hud_glyphs | BLOCKED | post-constructor replay unchanged; candidate 820/816 bytes | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | lock_init | BLOCKED | unmatched plane/cross-product code generation | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination | hud_registration | BLOCKED | 713/724 bytes; stack-slot operands | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x00307101 | SpawnPoint::UpdateSpawnCenters() | hud_glyphs | BLOCKED | 872/848-byte candidate; repeated compiler CSE output | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x0031d7a1 | ContactListener::Persist(b2ContactPoint const*) | hud_registration | BLOCKED | 341/604 bytes after six candidates; branch layout | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, plane3df const&, vector3df const&, vector3df const&, vector3df&, vector3df&) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+
+Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canSpawn against the newly integrated authentic Vehicle constructor header (real IMapTrackable, scalar wheel members, accurate initialization fields). Preserve all existing unit checks; stop unchanged targets without source search, then proceed to the newly assigned centers function.
+
+| libsanangeles.so | 0x00323b69 | SafeDelete<CDrivingHud>(CDrivingHud*&) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
+
+| libsanangeles.so | 0x00323b89 | SafeDelete<CWalkingHud>(CWalkingHud*&) | hud_glyphs | ASSIGNED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323ba9 | SafeDelete<CSniperHud>(CSniperHud*&) | hud_registration | ASSIGNED | pending | src/game/hud/CHudManager.cpp |

@@ -34,6 +34,9 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+ .ctor_family_8 0x30a954 : { *(.text._ZN7VehicleC1Ei) }
+ .ctor_table_8 0x4ab050 : { *(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }
+
  .skin_family_0 0x21a958 : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD2Ev) }
  .skin_family_1 0x21a91c : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD1Ev) }
  .skin_family_2 0x21a8d4 : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD0Ev) }

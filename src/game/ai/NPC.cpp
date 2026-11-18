@@ -787,33 +787,33 @@ void NPC::UpdateCarPosIfUnderWheel()
 {
     if (lastHitVehicle) {
         const irr::core::aabbox3d<float> bounds=static_cast<irr::scene::ISceneNode*>(skinMesh)->getTransformedBoundingBox();
-        if (bounds.MinEdge.X <= lastHitVehicle->wheelPositions[0].X &&
-            bounds.MaxEdge.X >= lastHitVehicle->wheelPositions[0].X &&
-            bounds.MinEdge.Y <= lastHitVehicle->wheelPositions[0].Y &&
-            bounds.MaxEdge.Y >= lastHitVehicle->wheelPositions[0].Y &&
-            bounds.MinEdge.Z <= lastHitVehicle->wheelPositions[0].Z &&
-            bounds.MaxEdge.Z >= lastHitVehicle->wheelPositions[0].Z)
+        if (bounds.MinEdge.X <= lastHitVehicle->wheelPosition0.X &&
+            bounds.MaxEdge.X >= lastHitVehicle->wheelPosition0.X &&
+            bounds.MinEdge.Y <= lastHitVehicle->wheelPosition0.Y &&
+            bounds.MaxEdge.Y >= lastHitVehicle->wheelPosition0.Y &&
+            bounds.MinEdge.Z <= lastHitVehicle->wheelPosition0.Z &&
+            bounds.MaxEdge.Z >= lastHitVehicle->wheelPosition0.Z)
             lastHitVehicle->wheelGroundHeights[0]=bounds.MaxEdge.Z;
-        if (bounds.MinEdge.X <= lastHitVehicle->wheelPositions[1].X &&
-            bounds.MaxEdge.X >= lastHitVehicle->wheelPositions[1].X &&
-            bounds.MinEdge.Y <= lastHitVehicle->wheelPositions[1].Y &&
-            bounds.MaxEdge.Y >= lastHitVehicle->wheelPositions[1].Y &&
-            bounds.MinEdge.Z <= lastHitVehicle->wheelPositions[1].Z &&
-            bounds.MaxEdge.Z >= lastHitVehicle->wheelPositions[1].Z)
+        if (bounds.MinEdge.X <= lastHitVehicle->wheelPosition1.X &&
+            bounds.MaxEdge.X >= lastHitVehicle->wheelPosition1.X &&
+            bounds.MinEdge.Y <= lastHitVehicle->wheelPosition1.Y &&
+            bounds.MaxEdge.Y >= lastHitVehicle->wheelPosition1.Y &&
+            bounds.MinEdge.Z <= lastHitVehicle->wheelPosition1.Z &&
+            bounds.MaxEdge.Z >= lastHitVehicle->wheelPosition1.Z)
             lastHitVehicle->wheelGroundHeights[1]=bounds.MaxEdge.Z;
-        if (bounds.MinEdge.X <= lastHitVehicle->wheelPositions[2].X &&
-            bounds.MaxEdge.X >= lastHitVehicle->wheelPositions[2].X &&
-            bounds.MinEdge.Y <= lastHitVehicle->wheelPositions[2].Y &&
-            bounds.MaxEdge.Y >= lastHitVehicle->wheelPositions[2].Y &&
-            bounds.MinEdge.Z <= lastHitVehicle->wheelPositions[2].Z &&
-            bounds.MaxEdge.Z >= lastHitVehicle->wheelPositions[2].Z)
+        if (bounds.MinEdge.X <= lastHitVehicle->wheelPosition2.X &&
+            bounds.MaxEdge.X >= lastHitVehicle->wheelPosition2.X &&
+            bounds.MinEdge.Y <= lastHitVehicle->wheelPosition2.Y &&
+            bounds.MaxEdge.Y >= lastHitVehicle->wheelPosition2.Y &&
+            bounds.MinEdge.Z <= lastHitVehicle->wheelPosition2.Z &&
+            bounds.MaxEdge.Z >= lastHitVehicle->wheelPosition2.Z)
             lastHitVehicle->wheelGroundHeights[2]=bounds.MaxEdge.Z;
-        if (bounds.MinEdge.X <= lastHitVehicle->wheelPositions[3].X &&
-            bounds.MaxEdge.X >= lastHitVehicle->wheelPositions[3].X &&
-            bounds.MinEdge.Y <= lastHitVehicle->wheelPositions[3].Y &&
-            bounds.MaxEdge.Y >= lastHitVehicle->wheelPositions[3].Y &&
-            bounds.MinEdge.Z <= lastHitVehicle->wheelPositions[3].Z &&
-            bounds.MaxEdge.Z >= lastHitVehicle->wheelPositions[3].Z)
+        if (bounds.MinEdge.X <= lastHitVehicle->wheelPosition3.X &&
+            bounds.MaxEdge.X >= lastHitVehicle->wheelPosition3.X &&
+            bounds.MinEdge.Y <= lastHitVehicle->wheelPosition3.Y &&
+            bounds.MaxEdge.Y >= lastHitVehicle->wheelPosition3.Y &&
+            bounds.MinEdge.Z <= lastHitVehicle->wheelPosition3.Z &&
+            bounds.MaxEdge.Z >= lastHitVehicle->wheelPosition3.Z)
             lastHitVehicle->wheelGroundHeights[3]=bounds.MaxEdge.Z;
     }
 }
