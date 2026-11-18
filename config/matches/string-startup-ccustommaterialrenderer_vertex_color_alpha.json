@@ -38,7 +38,23 @@
         {
             "name": "_GLOBAL__I__ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13onSetMaterialERKN3irr5video9SMaterialES4_bPNS1_25IMaterialRendererServicesE",
             "address": "0x002d6bb9"
-        }
+        },
+        "_ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA13onSetMaterialERKN3irr5video9SMaterialES4_bPNS1_25IMaterialRendererServicesE",
+        "_ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHA15onUnsetMaterialEv",
+        "_ZN3irr5video17IMaterialRendererD2Ev",
+        "_ZTv0_n12_N3irr5video17IMaterialRendererD1Ev",
+        "_ZN3irr5video17IMaterialRendererD1Ev",
+        "_ZTv0_n12_N3irr5video17IMaterialRendererD0Ev",
+        "_ZN3irr5video17IMaterialRendererD0Ev",
+        "_ZN3irr5video25CCommonGLMaterialRendererD2Ev",
+        "_ZTv0_n12_N3irr5video25CCommonGLMaterialRendererD1Ev",
+        "_ZN3irr5video25CCommonGLMaterialRendererD1Ev",
+        "_ZTv0_n12_N3irr5video25CCommonGLMaterialRendererD0Ev",
+        "_ZN3irr5video25CCommonGLMaterialRendererD0Ev",
+        "_ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev",
+        "_ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev",
+        "_ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev",
+        "_ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -48,7 +64,31 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".material_dtor_0",
+        ".material_dtor_1",
+        ".material_support_0",
+        ".material_support_1",
+        ".material_support_2",
+        ".material_support_3",
+        ".material_support_4",
+        ".material_support_5",
+        ".material_table_0",
+        ".material_table_1",
+        ".material_table_2",
+        ".material_table_3",
+        ".material_table_4",
+        ".material_table_5",
+        ".material_table_6"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN3irr5video15CCommonGLDriver10setTextureEjPKNS0_8ITextureE",
+        "_ZN3irr5video17IMaterialRenderer13onSetMaterialERKNS0_9SMaterialES4_bPNS0_25IMaterialRendererServicesE",
+        "_ZN3irr5video17IMaterialRenderer8onRenderEPNS0_25IMaterialRendererServicesENS0_13E_VERTEX_TYPEE",
+        "_ZN3irr5video17IMaterialRenderer15onUnsetMaterialEv",
+        "_ZNK3irr5video17IMaterialRenderer13isTransparentEv",
+        "_ZNK3irr5video17IMaterialRenderer19getRenderCapabilityEv",
+        "_ZN3irr17IReferenceCounted8onDeleteEv"
+    ]
 }
