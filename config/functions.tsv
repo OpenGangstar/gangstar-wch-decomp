@@ -14888,7 +14888,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0039c3ad	0xc	tu_types.cpp	gameswf	-	matched	_ZnwjN3swf7MemHintE	operator new(unsigned int, swf::MemHint)
 0x0039c3b9	0x280	utf8.cpp	gameswf	-	matched	_ZN7gameswf29decode_next_unicode_characterEPPKc	gameswf::decode_next_unicode_character(char const**)
 0x0039c639	0x118	utf8.cpp	gameswf	-	matched	_ZN7gameswf24encode_unicode_characterEPcPij	gameswf::encode_unicode_character(char*, int*, unsigned int)
-0x0039c751	0x2	utility.cpp	game	core	pending	_Z17dump_memory_statsPKciS0_	dump_memory_stats(char const*, int, char const*)
+0x0039c751	0x2	utility.cpp	game	core	matched	_Z17dump_memory_statsPKciS0_	dump_memory_stats(char const*, int, char const*)
 0x0039c755	0x20	zlib_adapter.cpp	gameswf	-	matched	_ZN7gameswf12zlib_adapter13inflater_impl19rewind_unused_bytesEv	gameswf::zlib_adapter::inflater_impl::rewind_unused_bytes()
 0x0039c775	0x4	zlib_adapter.cpp	gameswf	-	matched	_ZN7gameswf12zlib_adapter13inflate_writeEPKviPv	gameswf::zlib_adapter::inflate_write(void const*, int, void*)
 0x0039c779	0x4	zlib_adapter.cpp	gameswf	-	matched	_ZN7gameswf12zlib_adapter12inflate_tellEPKv	gameswf::zlib_adapter::inflate_tell(void const*)
