@@ -38,6 +38,7 @@ _ZN32retail_scriptmanager_transitions22scripted_vehicle_transE = 0x0042f9e0;
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
+INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
     .state_machine_singleton 0x002d44c4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }

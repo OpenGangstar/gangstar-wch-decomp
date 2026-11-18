@@ -20,6 +20,9 @@ namespace irr { namespace core {
 // Irrlicht irrMath.h reference-returning extrema preserve retail float selection.
 template<class T> inline const T& min_(const T& a, const T& b) { return a < b ? a : b; }
 template<class T> inline const T& max_(const T& a, const T& b) { return a < b ? b : a; }
+// Irrlicht 1.4.2 irrMath.h clamp, returned by value.
+template<class T> inline const T clamp(const T& value, const T& low, const T& high)
+{ return min_(max_(value, low), high); }
 template<class T> class aabbox3d {
 public:
     aabbox3d(const vector3d<T>& init) : MinEdge(init), MaxEdge(init) {}

@@ -1406,3 +1406,13 @@ void Character::exitVehicle(bool left)
         }
     }
 }
+
+// Existing partial Box2D SDK destructor interface reused from GS3DStuff.cpp.
+class b2ShapeDef {
+public:
+    virtual ~b2ShapeDef() {}
+};
+class b2CircleDef : public b2ShapeDef {
+public:
+    virtual ~b2CircleDef() __attribute__((used)) {}
+};

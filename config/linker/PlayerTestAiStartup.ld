@@ -31,6 +31,7 @@ INCLUDE config/linker/CHudManagerWeaponSections.ld
 INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 _ZdlPv = 0x001c42b0;
+INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
     .player_weapon_callback_0 0x0030577c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5snipeEP6Weapon) }

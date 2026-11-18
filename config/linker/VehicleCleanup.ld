@@ -1,3 +1,4 @@
+acosf = 0x1c4694;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/vehicle-cleanup/retail-symbols.ld
@@ -34,6 +35,7 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+ .vehicle_step_physic 0x3116dc : { *(.text._ZN7Vehicle10stepPhysicEv) }
  .ctor_family_8 0x30a954 : { *(.text._ZN7VehicleC1Ei) }
  .ctor_table_8 0x4ab050 : { *(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }
 

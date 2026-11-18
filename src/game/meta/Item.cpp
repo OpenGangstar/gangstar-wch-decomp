@@ -398,7 +398,7 @@ void Item::add()
     case 3: {
         WantedLevelManager* manager = WantedLevelManager::getInstance();
         int wanted = WantedLevelManager::getInstance()->unknown8 - unknown104;
-        wanted = irr::core::clamp(wanted, 0, 5);
+        wanted = ItemScalarMath::clamp(wanted, 0, 5);
         manager->unknown8 = wanted;
         manager->_processWantedLevel();
         AchievementManager::s_achievementManager->recordBadgesEscaped(unknown104);

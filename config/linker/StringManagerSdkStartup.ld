@@ -1,3 +1,5 @@
+PROVIDE(puts = 0x001c41b4);
+PROVIDE(abort = 0x001c42d4);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-stringmanager/retail-symbols.ld
@@ -8,6 +10,8 @@ strlen = 0x001c48bc;
 nativeStrlen = 0x001c48bc;
 SECTIONS
 {
+ .string_out_of_range 0x34b6f4 : { *sdk-startup-stringmanager.o(.text._ZSt24__stl_throw_out_of_rangePKc .gnu.linkonce.t._ZSt24__stl_throw_out_of_rangePKc) }
+
     .string_get_text 0x0034bb5c : { *sdk-startup-stringmanager.o(.text._ZNK13StringManager9getStringEi) }
     .text_style_read 0x0034b648 : { *sdk-startup-stringmanager.o(.text._ZN7Structs9TextStyle4ReadER10DataStream) }
     .string_manager_ctor 0x0034b744 : { *sdk-startup-stringmanager.o(.text._ZN13StringManagerC1Ev .text._ZN13StringManagerC2Ev) }

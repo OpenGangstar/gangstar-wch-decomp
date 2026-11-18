@@ -54,6 +54,7 @@ public:
     bool CastRay(const irr::core::vector3d<float>& start, const irr::core::vector3d<float>& direction,
         irr::core::vector3d<float>& point, irr::core::vector3d<float>& normal,
         LevelObject*& object, bool detailed);
+    bool canGoToPoint(const irr::core::vector3d<float>& target);
     // Pending body: nonmatching/world/level-object-movement.cpp.
     bool canGoToPoint(const irr::core::vector3d<float>& target,
         irr::core::vector3d<float>& point, irr::core::vector3d<float>& adjusted);

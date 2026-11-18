@@ -147,7 +147,11 @@
         "_ZN6IEventD0Ev",
         "_ZNK6IEvent10getEventIDEv",
         "_ZN5EvNPCD1Ev",
-        "_ZN5EvNPCD0Ev"
+        "_ZN5EvNPCD0Ev",
+        "_ZN11b2CircleDefD1Ev",
+        "_ZN11b2CircleDefD0Ev",
+        "_ZN10b2ShapeDefD1Ev",
+        "_ZN10b2ShapeDefD0Ev"
     ],
     "sections": [
         ".character_animation_resource",
@@ -176,7 +180,13 @@
         ".ai_manager_cleanup",
         ".character_npc_event_dtor",
         ".character_npc_event_delete",
-        ".character_npc_event_vtable"
+        ".character_npc_event_vtable",
+        ".circle_def_d1",
+        ".circle_def_d0",
+        ".circle_shape_base_d1",
+        ".circle_shape_base_d0",
+        ".circle_shape_base_table",
+        ".circle_shape_table"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -259,6 +269,8 @@
         "_ZNK6Weapon8getRangeEv",
         "_ZNK6Weapon9getDamageEv",
         "_ZNK7Vehicle12isDoorClosedEb",
-        "_ZNK7Vehicle12isDoorOpenedEb"
+        "_ZNK7Vehicle12isDoorOpenedEb",
+        "_Z21ekd_makestringfile255PKcPc",
+        "_Z13ekd_debug_outPKcPc"
     ]
 }

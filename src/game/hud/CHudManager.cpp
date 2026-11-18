@@ -637,3 +637,20 @@ CHudManager::~CHudManager()
     destroyHudObject(radioButton);
 
 }
+
+#include "../core/NativeStdio.h"
+extern "C" void abort(void) __attribute__((noreturn));
+namespace std {
+void __stl_throw_overflow_error(const char* message) __attribute__((weak));
+void __stl_throw_overflow_error(const char* message)
+{
+    puts(message);
+    abort();
+}
+}
+
+#include "../core/SafeDelete.h"
+template void SafeDelete<CDrivingHud>(CDrivingHud*&);
+template void SafeDelete<CWalkingHud>(CWalkingHud*&);
+template void SafeDelete<CSniperHud>(CSniperHud*&);
+template void SafeDelete<CCameraHud>(CCameraHud*&);

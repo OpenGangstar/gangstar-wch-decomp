@@ -16,11 +16,11 @@
 #ifndef WCH_META_ITEM_SCALAR_MATH_H
 #define WCH_META_ITEM_SCALAR_MATH_H
 
-namespace irr { namespace core {
+namespace ItemScalarMath {
 template<class T> inline T clamp(T value, T low, T high)
 {
     return value < low ? low : (value > high ? high : value);
 }
-} }
+}
 
 #endif

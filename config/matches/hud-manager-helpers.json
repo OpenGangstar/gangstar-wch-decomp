@@ -77,7 +77,12 @@
         "_ZN11CHudManager7walkingEv",
         "_ZN11CHudManager7drivingEv",
         "_ZN11CHudManager7snipingEv",
-        "_ZN11CHudManager13toggleRadioCBEb"
+        "_ZN11CHudManager13toggleRadioCBEb",
+        "_Z10SafeDeleteI11CDrivingHudEvRPT_",
+        "_Z10SafeDeleteI11CWalkingHudEvRPT_",
+        "_Z10SafeDeleteI10CSniperHudEvRPT_",
+        "_Z10SafeDeleteI10CCameraHudEvRPT_",
+        "_ZSt26__stl_throw_overflow_errorPKc"
     ],
     "sections": [
         ".helper_0",
@@ -119,7 +124,12 @@
         ".hud_updatable_d0",
         ".hud_updatable_d1",
         ".hud_updatable_vtable",
-        ".hud_toggle_touch"
+        ".hud_toggle_touch",
+        ".hud_cleanup_0",
+        ".hud_cleanup_1",
+        ".hud_cleanup_2",
+        ".hud_cleanup_3",
+        ".hud_cleanup_4"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -182,6 +192,10 @@
         "_ZN8SpyGaugeC1EP7ASpriteiiiii",
         "_ZN9HealthBarC1EP7ASpriteiii",
         "_ZNK11CWalkingHud10isNearShopEv",
-        "_ZNK6Weapon13getWeaponTypeEv"
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZN11CDrivingHudD1Ev",
+        "_ZN11CWalkingHudD1Ev",
+        "_ZN10CSniperHudD1Ev",
+        "_ZN10CCameraHudD1Ev"
     ]
 }

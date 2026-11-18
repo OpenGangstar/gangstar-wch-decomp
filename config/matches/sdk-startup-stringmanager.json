@@ -48,7 +48,8 @@
         {
             "name": "_GLOBAL__I__ZN13StringManager9LANGUAGESE",
             "address": "0x0034bc3d"
-        }
+        },
+        "_ZSt24__stl_throw_out_of_rangePKc"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -58,7 +59,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".string_out_of_range"
     ],
     "retail_got": true,
     "external_thumb_functions": [

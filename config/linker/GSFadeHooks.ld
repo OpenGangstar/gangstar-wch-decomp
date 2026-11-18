@@ -54,6 +54,7 @@ INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 INCLUDE config/linker/ApplicationRuntimeSections.ld
+INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
     /DISCARD/ : { *application-helpers.o(.text.__tcf_0) }

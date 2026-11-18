@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fcmpge = 0x1c4364);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 ENTRY(_ZN11LevelObjectC1Ei)
@@ -53,7 +54,9 @@ _ZN28retail_gs3dstuff_transitions17cop_vehicle_transE = 0x00414a9c;
 _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
+INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
+
     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
