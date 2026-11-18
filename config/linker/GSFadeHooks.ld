@@ -1,3 +1,4 @@
+__android_log_print = 0x001c4238;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/state-hooks-gsfade/retail-symbols.ld
@@ -57,6 +58,17 @@ INCLUDE config/linker/ApplicationRuntimeSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+    .application_process_key 0x002d40fc : { *(.text._ZN11Application15ProcessKeyEventEbi) }
+    .application_key_tag 0x00413b3c : { *(.rodata.application_key_tag) }
+    .application_key_back 0x00413b44 : { *(.rodata.application_key_back) }
+    .application_key_igm 0x00413b80 : { *(.rodata.application_key_igm) }
+    .application_key_mm 0x00413bbc : { *(.rodata.application_key_mm) }
+    .application_key_device 0x00413bf4 : { *(.rodata.application_key_device) }
+    .application_key_post 0x00413c30 : { *(.rodata.application_key_post) }
+    .application_key_main 0x00413c7c : { *(.rodata.application_key_main) }
+
+
+
     /DISCARD/ : { *application-helpers.o(.text.__tcf_0) }
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
     .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }

@@ -24,6 +24,7 @@
 #include "../ui/Shop.h"
 #include "../vehicles/Vehicle.h"
 #include "LODSceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/MeshBufferInterfaces.h"
 #include "../core/MeshSceneInterfaces.h"
 #include "../core/LocalStartupStorage.h"

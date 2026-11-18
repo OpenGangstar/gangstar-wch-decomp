@@ -32,6 +32,7 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../core/NativeStrings.h"
 #include "../core/Lock.h"
 #include "../rendering/CustomBillboardSceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/PhysicsBodyDef.h"
 #include "../core/VideoDriver.h"
 #include "../core/MeshBufferInterfaces.h"

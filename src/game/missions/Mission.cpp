@@ -23,6 +23,7 @@
 #include "../audio/SoundManager.h"
 #include "../meta/Achievements.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/VideoDriver.h"
 #include "../core/CameraManager.h"
 #include "../core/NativeStrings.h"

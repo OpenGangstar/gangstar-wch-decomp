@@ -16,6 +16,7 @@
 #include "../characters/PlayerTest.h"
 #include "../vehicles/Vehicle.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../hud/MenuManager.h"
 #include "../hud/CHudManager.h"
 #include "../scripting/ScriptManager.h"

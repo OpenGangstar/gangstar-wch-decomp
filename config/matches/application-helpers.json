@@ -91,7 +91,8 @@
             "name": "__tcf_2",
             "address": "0x002d4519",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN11Application15ProcessKeyEventEbi"
     ],
     "sections": [
         ".screen_dimensions",
@@ -111,7 +112,14 @@
         ".application_event_EvMouseMove_vtable",
         ".application_event_EvKeyboard_vtable",
         ".application_event_EvMouseWheel_vtable",
-        ".application_event_EvMouseButton_vtable"
+        ".application_event_EvMouseButton_vtable",
+        ".application_key_tag",
+        ".application_key_back",
+        ".application_key_igm",
+        ".application_key_mm",
+        ".application_key_device",
+        ".application_key_post",
+        ".application_key_main"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -128,6 +136,8 @@
         "_ZN12SoundManager4initEv",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZNK11MenuManager8getStateEPKc"
     ]
 }

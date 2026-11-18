@@ -13,6 +13,7 @@
 #include "../app/Application.h"
 #include "../core/Geometry.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/VideoDriver.h"
 

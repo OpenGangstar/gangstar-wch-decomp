@@ -15,6 +15,7 @@
 #include "../characters/PlayerTest.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 

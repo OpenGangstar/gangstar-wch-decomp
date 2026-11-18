@@ -75,6 +75,7 @@ static void _GLOBAL__I__ZN12TargetMarkerC2Ev()
 
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/ASprite.h"
 #include "../core/Matrix4.h"
 void TargetMarker::draw() const

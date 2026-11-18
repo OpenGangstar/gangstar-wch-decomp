@@ -1,3 +1,4 @@
+__android_log_print = 0x001c4238;
 __aeabi_idiv = 0x001c43dc;
 _Znwj = 0x001c4814;
 OUTPUT_FORMAT("elf32-littlearm")
@@ -21,6 +22,15 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/ApplicationRuntimeSections.ld
 SECTIONS
 {
+    .application_process_key 0x002d40fc : { *(.text._ZN11Application15ProcessKeyEventEbi) }
+    .application_key_tag 0x00413b3c : { *(.rodata.application_key_tag) }
+    .application_key_back 0x00413b44 : { *(.rodata.application_key_back) }
+    .application_key_igm 0x00413b80 : { *(.rodata.application_key_igm) }
+    .application_key_mm 0x00413bbc : { *(.rodata.application_key_mm) }
+    .application_key_device 0x00413bf4 : { *(.rodata.application_key_device) }
+    .application_key_post 0x00413c30 : { *(.rodata.application_key_post) }
+    .application_key_main 0x00413c7c : { *(.rodata.application_key_main) }
+
 
     .application_delete_control 0x002d458c : { *(.gnu.linkonce.t._Z10SafeDeleteI15CControlManagerEvRPT_) }
     .application_logo_sprite 0x00413d30 : { *(.rodata.application_logo_sprite) }

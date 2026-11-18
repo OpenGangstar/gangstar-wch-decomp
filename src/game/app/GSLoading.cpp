@@ -180,6 +180,7 @@ void GSLoading::update(StateMachine* machine)
 #include "../app/Application.h"
 #include "../core/VideoDriver.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 
 extern ASprite* m_background;
 

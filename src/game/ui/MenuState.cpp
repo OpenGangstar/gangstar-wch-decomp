@@ -16,6 +16,7 @@
 #include "../core/NativeStrings.h"
 #include "../ai/StateMachine.h"
 #include "MenuDialogs.h"
+#include "MainMenu.h"
 #include "../hud/MenuManager.h"
 #include "../hud/CHudManager.h"
 #include "../meta/Achievements.h"
@@ -213,23 +214,7 @@ public:
     virtual bool Notify(const MenuWidget* widget, int event);
 };
 
-class MainMenu : public MenuState {
-public:
-    MainMenu();
-    bool GameContinue() const;
-    virtual ~MainMenu();
-    virtual void GotFocus();
-    virtual void LostFocus();
-    virtual void Update();
-    virtual bool Notify(const MenuWidget* widget, int event);
-    virtual void SetPause(bool paused);
 
-protected:
-    bool unknown104;
-    bool unknown105;
-    bool unknown106;
-    bool paused;
-};
 
 class Splash : public MenuState {
 public:

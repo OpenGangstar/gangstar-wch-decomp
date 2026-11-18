@@ -13,6 +13,7 @@
 #include "../core/Matrix4.h"
 #include "../core/Rct.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/VideoDriver.h"
 #include "../app/Application.h"
 #include "../persistence/IFileStream.h"

@@ -18,6 +18,7 @@
 #include "../audio/SoundManager.h"
 #include "../meta/Achievements.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../hud/CHudManager.h"
 #include "../world/GameObjectManager.h"
 #include "../core/Collada.h"

@@ -19,6 +19,7 @@ namespace irr { class IrrlichtDevice; class IEventReceiver; }
 // Do not instantiate or use sizeof until the complete class is recovered.
 class Application {
 public:
+    void ProcessKeyEvent(bool pressed, int type);
     bool IsLogoOver();
     bool IsGlobalResumingOver();
     static Application* GetInstance();

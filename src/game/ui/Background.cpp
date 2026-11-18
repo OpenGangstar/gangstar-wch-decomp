@@ -12,6 +12,7 @@
 #include "../app/Application.h"
 #include "../core/VideoDriver.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"

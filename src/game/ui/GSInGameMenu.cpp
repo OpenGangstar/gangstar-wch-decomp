@@ -95,6 +95,7 @@ void GSInGameMenu::skipFadeIn()
 }
 
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/CameraManager.h"
 #include "../audio/SoundManager.h"
 #include "../core/VideoDriver.h"

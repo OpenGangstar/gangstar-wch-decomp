@@ -26,6 +26,7 @@ unsigned int crcReflect(unsigned int value, char bits)
 #include "../core/NativeStdio.h"
 #include "../app/Application.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/Collada.h"
 #include "../core/FactoryFileSystem.h"
 #include "../core/ObservedString.h"

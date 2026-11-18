@@ -76,6 +76,7 @@ void GSSplash::dtor(const StateMachine*)
 }
 
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 static const char splashMenuName[]="Splash";
 extern "C" bool m_splash;
 void GSSplash::ctor(const StateMachine*)

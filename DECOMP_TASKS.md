@@ -1171,8 +1171,16 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | hud_glyphs | BLOCKED | 106-byte candidate unmatched; six forms; 57 old functions and 54 section/regions exact | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | hud_glyphs | REVIEW | exact 308-byte candidate; two old menu context differences pending integration | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | lock_init | REVIEW | exact 272-byte candidate; coherent header integration validation pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x0034c599 | TouchScreenBase::getID(long) header integration | — | COMPLETED | 100%; native 68-byte function preserved after interface integration | src/game/input/TouchScreenBase.cpp |
+
+| libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d50f1 | Application::Update() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |

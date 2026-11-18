@@ -12,6 +12,7 @@
 #include "../ui/Shop.h"
 #include "../persistence/SaveGameInterfaces.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/PointerVector.h"
 #include "../world/ResStream.h"
 #include "../core/ASprite.h"

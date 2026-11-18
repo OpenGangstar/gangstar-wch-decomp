@@ -8826,7 +8826,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4095	0x18	Application.cpp	game	app	matched	_ZN6IEventD1Ev	IEvent::~IEvent()
 0x002d40ad	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI12GSInGameMenuEEPT_v	GSInGameMenu* StateMachine::pushState<GSInGameMenu>()
 0x002d40cd	0x30	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11getInstanceEv	SoundManager::getInstance()
-0x002d40fd	0x10c	Application.cpp	game	app	pending	_ZN11Application15ProcessKeyEventEbi	Application::ProcessKeyEvent(bool, int)
+0x002d40fd	0x10c	Application.cpp	game	app	matched	_ZN11Application15ProcessKeyEventEbi	Application::ProcessKeyEvent(bool, int)
 0x002d4209	0x60	Application.cpp	game	app	matched	_ZN11Application19StartGlobalResumingEv	Application::StartGlobalResuming()
 0x002d4269	0x30	Application.cpp	game	app	matched	_ZN11Application5PauseEv	Application::Pause()
 0x002d4299	0x40	Application.cpp	stlport	-	matched	_ZNSaIN9stlp_priv13_Rb_tree_nodeISt4pairIKPvPKcEEEE8allocateEjPKv	std::allocator<stlp_priv::_Rb_tree_node<std::pair<void* const, char const*> > >::allocate(unsigned int, void const*)

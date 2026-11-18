@@ -19,6 +19,7 @@
 #include "../vehicles/Vehicle.h"
 #include "../core/GameEventMethods.h"
 #include "../core/SceneNode.h"
+#include "../core/IrrlichtDevice.h"
 #include "../core/VideoDriver.h"
 #include "../ai/StateMachine.h"
 
@@ -404,4 +405,52 @@ bool Application::IsGlobalResumingOver()
     else
         resuming=false;
     return !resuming;
+}
+
+#include "../input/TouchScreenMouseEvent.h"
+#include "../ui/MainMenu.h"
+#include "../hud/MenuManager.h"
+extern "C" int __android_log_print(int, const char*, const char*, ...);
+static const char key_tag[] __attribute__((section(".rodata.application_key_tag"))) = "@d.d";
+static const char key_back[] __attribute__((section(".rodata.application_key_back"))) = "------------------------appKeyReleased: TYPE_KEY_BACK:%d";
+static const char key_igm[] __attribute__((section(".rodata.application_key_igm"))) = "------------------------appKeyReleased:TYPE_KEY_TO_IGM%d";
+static const char key_mm[] __attribute__((section(".rodata.application_key_mm"))) = "------------------------appKeyReleased:TYPE_KEY_TO_MM%d";
+static const char key_device[] __attribute__((section(".rodata.application_key_device"))) = "------------------------appKeyReleased:TYPE_KEY_TO_DEVICE%d";
+static const char key_post[] __attribute__((section(".rodata.application_key_post"))) = "------------------------appKeyReleased:TYPE_KEY_TO_DEVICE:postEventFromUser";
+static const char key_main[] __attribute__((section(".rodata.application_key_main"))) = "MainMenu";
+void Application::ProcessKeyEvent(bool pressed, int type)
+{
+    irr::SEvent event;
+    if (pressed) {
+        event.type = irr::SEvent::MouseInputEvent;
+        event.mouse.event = irr::SEvent::LeftPressed;
+    } else {
+        event.type = irr::SEvent::MouseInputEvent;
+        event.mouse.event = irr::SEvent::LeftReleased;
+    }
+    if (type == 1) {
+        __android_log_print(4, key_tag, key_back, !pressed);
+        event.mouse.x = 20;
+        event.mouse.y = 313;
+        device->postEventFromUser(event);
+    } else if (type == 2) {
+        __android_log_print(4, key_tag, key_igm, !pressed);
+        event.mouse.x = 33;
+        event.mouse.y = 33;
+        device->postEventFromUser(event);
+    } else if (type == 3) {
+        __android_log_print(4, key_tag, key_mm, !pressed);
+        event.mouse.x = 66;
+        event.mouse.y = 240;
+        device->postEventFromUser(event);
+    } else if (type == 4) {
+        if (pressed) {
+            __android_log_print(4, key_tag, key_device, 0);
+        } else {
+            __android_log_print(4, key_tag, key_device, 1);
+            static_cast<Menus::MainMenu*>(MenuManager::getInstance()->getState(key_main))->SetPause(true);
+        }
+        return;
+    }
+    __android_log_print(4, key_tag, key_post);
 }
