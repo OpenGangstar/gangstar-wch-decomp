@@ -1098,8 +1098,29 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | hud_registration | BLOCKED | faithful 1836/1816-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | BLOCKED | 1088/1072 bytes; six forms; one private baseline link gate incomplete | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | hud_registration | ASSIGNED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | hud_registration | BLOCKED | 2088/2108-byte candidate; six forms exhausted | src/game/ai/NPC.cpp |
+
+| libsanangeles.so | 0x0034bf8d | StringManager::~StringManager() | hud_registration | BLOCKED | unchanged one-shot context replay; 212/248 bytes, no new forms | src/game/persistence/StringManager.cpp |
+
+| libsanangeles.so | 0x002ed8ad | Widgets::Mission::UpdateLocalization() | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
+
+| libsanangeles.so | 0x002eb12d | Menus::ServiceCarRental::Update() | lock_init | BLOCKED | 816-byte candidate unmatched; six forms; one private baseline link incomplete | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify(MenuWidget const*, int) | hud_registration | BLOCKED | 1064/1056-byte candidate; six forms, old full graph exact | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | hud_registration | BLOCKED | 872-byte candidate unmatched; six forms; rejected two old MenuState regressions | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e51fd | MenuManager::setText(eText, char const*, int*) | hud_glyphs | BLOCKED | 1088/1104 bytes; four forms, no grounded next lead | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | lock_init | BLOCKED | 1384/1388 bytes; swapped independent STR/MOV pair; five forms parked | src/game/persistence/SaveGame.cpp |
+
+| libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | hud_glyphs | BLOCKED | 1788/1792 bytes; first form parked on old visibility regression | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | lock_init | ASSIGNED | pending | src/game/scripting/ScriptManager.cpp |
+
+| libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | hud_glyphs | ASSIGNED | pending | src/game/ai/NPC.cpp |

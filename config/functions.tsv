@@ -9960,7 +9960,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ed6a1	0x1c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8Language4ShowEv	Widgets::Language::Show()
 0x002ed6bd	0x14c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets4Shop18UpdateLocalizationEv	Widgets::Shop::UpdateLocalization()
 0x002ed809	0xa4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7DemoBuy18UpdateLocalizationEv	Widgets::DemoBuy::UpdateLocalization()
-0x002ed8ad	0x244	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Mission18UpdateLocalizationEv	Widgets::Mission::UpdateLocalization()
+0x002ed8ad	0x244	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Mission18UpdateLocalizationEv	Widgets::Mission::UpdateLocalization()
 0x002edaf1	0x70	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5Money18UpdateLocalizationEv	Widgets::Money::UpdateLocalization()
 0x002edb61	0xbc	MenuWidget.cpp	game	ui	matched	_ZN7Widgets9MapLegend18UpdateLocalizationEv	Widgets::MapLegend::UpdateLocalization()
 0x002edc1d	0x60	MenuWidget.cpp	game	ui	matched	_ZN7Widgets9Objective18UpdateLocalizationEv	Widgets::Objective::UpdateLocalization()

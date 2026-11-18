@@ -24,7 +24,11 @@
         "-meabi=4"
     ],
     "source": "src/game/ui/MenuState.cpp",
-    "dependencies": ["ai-startup-menuwidget", "renderfx-animation", "menu-manager-helpers"],
+    "dependencies": [
+        "ai-startup-menuwidget",
+        "renderfx-animation",
+        "menu-manager-helpers"
+    ],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
         "_ZN5Menus15ServiceMissions8GotFocusEv",

@@ -24,7 +24,9 @@
         "-meabi=4"
     ],
     "source": "src/game/ui/MenuWidget.cpp",
-    "dependencies": ["renderfx-animation"],
+    "dependencies": [
+        "renderfx-animation"
+    ],
     "linker_script": "config/linker/MenuWidgetAiStartup.ld",
     "functions": [
         "_ZN7Widgets7Volumes7OnEventERN8RenderFX5EventE",
@@ -210,7 +212,8 @@
         {
             "name": "_GLOBAL__I__ZN10MenuWidgetC2EPKc",
             "address": "0x002ef401"
-        }
+        },
+        "_ZN7Widgets7Mission18UpdateLocalizationEv"
     ],
     "sections": [
         ".volumesButton",
@@ -358,7 +361,18 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".widget_mission_objective",
+        ".widget_mission_message",
+        ".widget_mission_locationtitle",
+        ".widget_mission_locationvalue",
+        ".widget_mission_typetitle",
+        ".widget_mission_typevalue",
+        ".widget_mission_cashtitle",
+        ".widget_mission_cashvalue",
+        ".widget_mission_icon",
+        ".widget_mission_button",
+        ".widget_mission_buttontext"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -448,6 +462,10 @@
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZNK13ScriptManager10getMissionEv",
+        "_ZNK6Script12getMissionIdEv",
+        "_ZNK7Mission7missionEi"
     ]
 }

@@ -30,6 +30,7 @@ INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 _ZN5Menus24s_helpSpecializedEntriesE = 0x0047b1b8;
+INCLUDE config/linker/MenuWidgetMissionSections.ld
 SECTIONS
 {
     .service_missions_focus 0x002e8fe8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions8GotFocusEv) }
