@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | Existing production match unchanged. Read-only stack-partition diagnosis of the frozen coherent photo candidate; no migration or source variant | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | BLOCKED | Existing production match unchanged; historical coherent direct initializer has correct slots at 672 bytes, while 668-byte v3 swaps slots; no new justified form | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -1002,18 +1002,18 @@ Coordinator approves one contextual replay per parked volume/pitch function afte
 | libsanangeles.so | 0x00306d2d | SpawnPoint::hasCloseNeighbors() const | — | COMPLETED | 100% | src/game/world/SpawnPoint.cpp |
 | libsanangeles.so | 0x00328b41 | Map::setMap(Map::eMapType) | — | COMPLETED | 100% | src/game/world/Map.cpp |
 
-| libsanangeles.so | 0x003219cd | SceneNodeManager::drop(int, irr::scene::ISceneNode const*) | hud_registration | BLOCKED | 208/210-byte size; context/order unchanged | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003219cd | SceneNodeManager::drop(int, irr::scene::ISceneNode const*) | lock_init | ASSIGNED | Unmatched. One unchanged current-context replay of frozen drop v2 after the genuine current class context; no source/type variants | src/game/world/SceneNodeManager.cpp |
 | libsanangeles.so | 0x003065e5 | SpawnPoint::CreateAllSpawnInstances() | hud_glyphs | BLOCKED | 327/336 bytes (unmatched) | src/game/world/SpawnPoint.cpp |
 
 | libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | hud_glyphs | BLOCKED | canonical context unchanged; no credit | src/game/world/GameObjectManager.cpp |
 | libsanangeles.so | 0x00328c49 | Map::draw() const | lock_init | BLOCKED | 294/304 bytes; original-order trial unchanged | src/game/world/Map.cpp |
-| libsanangeles.so | 0x003218d9 | SceneNodeManager::reclaimGarbage() | hud_registration | BLOCKED | 238/244 bytes; context/order unchanged | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003218d9 | SceneNodeManager::reclaimGarbage() | hud_registration | ASSIGNED | Unmatched. One unchanged current-context replay of frozen reclaim v2 with shared genuine vector pop_back API; no new algorithm or type variants | src/game/world/SceneNodeManager.cpp |
 
 Coordinator authorizes one unchanged-best integrated-context replay for each parked SceneNodeManager getPoolID, drop and reclaimGarbage after the exact bool manage implementation/header refinement. If needed, one combined original-address method-order trial is allowed with every existing function byte check. No further source search. Map::draw receives only one original-address method-order comparison using its proven typed layout and exact setMap. These are bounded context escalations, not reopened unbounded searches.
 
 | libsanangeles.so | 0x00315f39 | GameObjectManager::getDistanceFromAttackableTarget(Character*, int, LevelObject*, bool) | hud_glyphs | BLOCKED | canonical context unchanged; no credit | src/game/world/GameObjectManager.cpp |
 
-| libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | lock_init | BLOCKED | 392/384-byte size (unmatched) | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | hud_glyphs | ASSIGNED | Unmatched. One unchanged current-context replay of frozen report v2 after the genuine STLport/type context and shared const-vector APIs; stop on mismatch | src/game/world/SceneNodeManager.cpp |
 
 | libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
