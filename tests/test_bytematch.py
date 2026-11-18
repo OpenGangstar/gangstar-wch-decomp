@@ -39,3 +39,78 @@ class ByteMatchTests(unittest.TestCase):
     def test_empty_catalogue_fails(self):
         with self.assertRaises(ValueError):
             report([])
+
+    @staticmethod
+    def row(symbol, source, area, status, size=16, origin="game"):
+        return dict(symbol=symbol, status=status, origin=origin, area=area,
+                    source_file=source, size=hex(size), address="0x330665",
+                    demangled=symbol)
+
+    def test_linked_code_sums_finished_units_not_all_matched_functions(self):
+        rows = [self.row("done", "Done.cpp", "combat", "matched", 20),
+                self.row("half", "Partial.cpp", "combat", "matched", 30),
+                self.row("todo", "Partial.cpp", "combat", "pending", 50)]
+        result = report(rows)
+        m = result["measures"]
+        self.assertEqual((m["matched_code"], m["complete_code"], m["total_code"]),
+                         (50, 20, 100))
+        self.assertEqual(m["fuzzy_match_percent"], 50)
+        self.assertEqual(m["matched_code_percent"], 50)
+        self.assertEqual(m["complete_code_percent"], 20)
+        self.assertEqual((m["complete_units"], m["total_units"]), (1, 2))
+        units = {u["name"]: u for u in result["units"]}
+        self.assertTrue(units["game/combat/Done"]["metadata"]["complete"])
+        self.assertFalse(units["game/combat/Partial"]["metadata"]["complete"])
+        for category in result["categories"]:
+            self.assertEqual(category["measures"]["complete_code"], 20)
+            self.assertEqual(category["measures"]["complete_units"], 1)
+
+    def test_source_fragment_cannot_hide_unfinished_code_in_another_area(self):
+        rows = [self.row("startup", "Shared.cpp", "core", "matched", 10),
+                self.row("main", "Shared.cpp", "combat", "pending", 90)]
+        result = report(rows)
+        self.assertEqual(result["measures"]["matched_code"], 10)
+        self.assertEqual(result["measures"]["complete_code"], 0)
+        self.assertTrue(all(not u["metadata"]["complete"] for u in result["units"]))
+        rows[1]["status"] = "matched"
+        finished = report(rows)
+        self.assertEqual(finished["measures"]["complete_code"], 100)
+        self.assertEqual(finished["measures"]["complete_units"], 2)
+        for unit in finished["units"]:
+            self.assertTrue(unit["metadata"]["complete"])
+            self.assertEqual(unit["measures"]["complete_code_percent"], 100)
+
+    def test_pending_zero_size_function_still_blocks_completion(self):
+        result = report([self.row("done", "Test.cpp", "core", "matched"),
+                         self.row("todo", "Test.cpp", "core", "pending", 0)])
+        self.assertEqual(result["measures"]["matched_code_percent"], 100)
+        self.assertEqual(result["measures"]["complete_code"], 0)
+        self.assertFalse(result["units"][0]["metadata"]["complete"])
+
+    def test_vendor_does_not_block_game_unit_and_alias_accounting_is_preserved(self):
+        result = report([self.row("C1", "Test.cpp", "core", "matched"),
+                         self.row("C2", "Test.cpp", "core", "matched"),
+                         self.row("vendor", "Test.cpp", "core", "pending",
+                                  origin="irrlicht")])
+        self.assertEqual(result["measures"]["complete_code"], 32)
+        self.assertEqual(result["measures"]["total_functions"], 2)
+        self.assertEqual(result["measures"]["complete_units"], 1)
+        self.assertEqual(result["measures"]["complete_data"], 0)
+
+    def test_real_catalogue_rollups_and_all_or_nothing_completion(self):
+        rows = [r for r in read_tsv(repo_path("config/functions.tsv")) if r["origin"] == "game"]
+        complete_sources = {r["source_file"] for r in rows
+                            if all(f["status"] == "matched" for f in rows
+                                   if f["source_file"] == r["source_file"])}
+        result = report(rows)
+        expected = sum(int(r["size"], 16) for r in rows if r["source_file"] in complete_sources)
+        self.assertEqual(result["measures"]["complete_code"], expected)
+        for unit in result["units"]:
+            self.assertLessEqual(unit["measures"]["complete_code"], unit["measures"]["matched_code"])
+        for category in result["categories"]:
+            members = [u for u in result["units"]
+                       if category["id"] in u["metadata"]["progress_categories"]]
+            self.assertEqual(category["measures"]["complete_code"],
+                             sum(u["measures"]["complete_code"] for u in members))
+            self.assertEqual(category["measures"]["complete_units"],
+                             sum(u["measures"]["complete_units"] for u in members))

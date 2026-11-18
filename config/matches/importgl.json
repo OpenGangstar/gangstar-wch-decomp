@@ -6,5 +6,6 @@
         "-mthumb", "-mthumb-interwork", "-march=armv5te", "-mfloat-abi=softfp"
     ],
     "assembler_flags": ["-march=armv5te", "-mfloat-abi=softfp", "-mfpu=vfp", "-meabi=4"],
-    "functions": ["importGLInit", "importGLDeinit"]
+    "functions": ["importGLInit", "importGLDeinit"],
+    "linker_script": "config/linker/ImportGL.ld"
 }

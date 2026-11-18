@@ -31,6 +31,17 @@ jobs:
       - name: Export verified byte progress for ByteMatch
         run: python tools/bytematch.py
 
+      - name: Validate the ByteMatch report with objdiff
+        # Same pinned report-schema validation used by OpenRAC/rac1-decomp.
+        run: |
+          curl --fail --location --retry 3 -o "$RUNNER_TEMP/objdiff-cli" \
+            https://github.com/encounter/objdiff/releases/download/v3.8.1/objdiff-cli-linux-x86_64
+          echo "c8290281e82114bcc1a06ff73061110d3902a177822e750337de2537188e358f  $RUNNER_TEMP/objdiff-cli" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/objdiff-cli"
+          "$RUNNER_TEMP/objdiff-cli" report changes \
+            build/android-arm/report.json build/android-arm/report.json \
+            -o "$RUNNER_TEMP/bytematch-report-validation.json"
+
       - name: Upload ByteMatch report
         uses: actions/upload-artifact@v4
         with:
