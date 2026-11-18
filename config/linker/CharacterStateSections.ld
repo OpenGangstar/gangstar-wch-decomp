@@ -107,3 +107,14 @@ SECTIONS
 }
 
 INCLUDE config/linker/CharacterRecoveredSections.ld
+
+/* SDK destructor copies and ABI tables emitted by the Character unit. */
+SECTIONS
+{
+ .circle_shape_base_d1 0x2db49c : { *ai-startup-character.o(.text._ZN10b2ShapeDefD1Ev .gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
+ .circle_shape_base_d0 0x2db47c : { *ai-startup-character.o(.text._ZN10b2ShapeDefD0Ev .gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
+ .circle_shape_base_table 0x4a8ad8 : { *ai-startup-character.o(.gnu.linkonce.d.rel.ro._ZTV10b2ShapeDef) }
+ .circle_shape_table 0x4aa168 : { *ai-startup-character.o(.gnu.linkonce.d.rel.ro._ZTV11b2CircleDef) }
+ .circle_def_d1 0x2f4440 : { *ai-startup-character.o(.text._ZN11b2CircleDefD1Ev .gnu.linkonce.t._ZN11b2CircleDefD1Ev) }
+ .circle_def_d0 0x2f462c : { *ai-startup-character.o(.text._ZN11b2CircleDefD0Ev .gnu.linkonce.t._ZN11b2CircleDefD0Ev) }
+}
