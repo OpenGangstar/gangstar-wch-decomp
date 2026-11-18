@@ -7,6 +7,7 @@
         "-mtune=xscale", "-mfloat-abi=softfp"
     ],
     "assembler_flags": ["-march=armv5te", "-mfloat-abi=softfp", "-mfpu=vfp", "-meabi=4"],
+    "linker_script": "config/linker/AdpcmState.ld",
     "functions": [
         "_ZN10AdpcmStateC1Ev", "_ZN10AdpcmStateC2Ev",
         "_ZN10AdpcmStateD1Ev", "_ZN10AdpcmStateD2Ev"
