@@ -44,7 +44,9 @@
         {
             "name": "_GLOBAL__I__ZN18AccelerometerWin32C2Ev",
             "address": "0x0034da65"
-        }
+        },
+        "_ZN18AccelerometerWin327OnEventERKN3irr6SEventE",
+        "_ZThn76_N18AccelerometerWin327OnEventERKN3irr6SEventE"
     ],
     "sections": [
         ".accelerometer_win32_vtable",
@@ -56,7 +58,9 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".accelerometer_win32_on_event",
+        ".accelerometer_win32_on_event_thunk"
     ],
     "retail_got": true,
     "external_thumb_functions": [

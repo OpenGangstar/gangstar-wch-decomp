@@ -583,8 +583,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | lock_init | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | — | COMPLETED | 100% | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_side | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
-| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | lock_init | REVIEW | private executable native gate exact; coordinator integrated comparison pending; original undefined callback result retained where applicable | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | lock_init | REVIEW | private executable native gate exact; coordinator integrated comparison pending; original undefined callback result retained where applicable | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | — | COMPLETED | 100%; actual bool ABI and original missing return preserved; full 186-profile, 10,358-comparison native gate exact | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | — | COMPLETED | 100%; actual bool ABI and original missing return preserved; full 186-profile, 10,358-comparison native gate exact | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
@@ -1294,3 +1294,15 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x0032a0e0 | non-virtual thunk to MiniMap::draw2d() const | — | COMPLETED | 100%; full184-profile10311-comparison gate exact; original Map initializer semantics retained; only20Bthunk adds credit, parentdraw2d unmatched | src/game/hud/MiniMap.cpp |
 
 | libsanangeles.so | 0x00328c15 | Map::Map() C1/C2 existing-match compatibility | — | COMPLETED | 100%; full184-profile10311-comparison gate exact; original Map initializer semantics retained; only20Bthunk adds credit, parentdraw2d unmatched | src/game/world/Map.cpp |
+
+| libsanangeles.so | 0x00326795 | EvStickMove D1 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+
+| libsanangeles.so | 0x00326e15 | EvStickMove D0 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+
+| libsanangeles.so | 0x003267dd | EvUpDownStickMove D0 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+
+| libsanangeles.so | 0x00326809 | EvUpDownStickMove D1 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+
+| libsanangeles.so | 0x0032687d | EvLeftRightStickMove D0 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+
+| libsanangeles.so | 0x003268a9 | EvLeftRightStickMove D1 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |

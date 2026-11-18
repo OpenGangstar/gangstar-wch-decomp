@@ -6,6 +6,8 @@ __cxa_pure_virtual = 0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .accelerometer_win32_on_event 0x0034d988 : { *sdk-startup-accelerometerwin32.o(.text._ZN18AccelerometerWin327OnEventERKN3irr6SEventE) }
+    .accelerometer_win32_on_event_thunk 0x0034d974 : { *sdk-startup-accelerometerwin32.o(.text._ZThn76_N18AccelerometerWin327OnEventERKN3irr6SEventE) }
     .accelerometer_win32_set_wide 0x0034d940 : { *sdk-startup-accelerometerwin32.o(.text._ZN18AccelerometerWin327setWideEb) }
     .accelerometer_win32_dtor 0x0034dad8 : { *sdk-startup-accelerometerwin32.o(.text._ZN18AccelerometerWin32D1Ev .text._ZN18AccelerometerWin32D2Ev) }
     .accelerometer_win32_delete 0x0034da8c : { *sdk-startup-accelerometerwin32.o(.text._ZN18AccelerometerWin32D0Ev) }

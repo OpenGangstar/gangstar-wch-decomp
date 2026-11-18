@@ -77,3 +77,10 @@ void AccelerometerWin32::setWide(bool value)
         moved(0.0f, -0.5f, 0.0f);
     wide = value;
 }
+
+
+// The retail bool callback is an empty stub and does not define a result.
+// Preserve that missing-return behavior; do not invent a false/true default.
+bool AccelerometerWin32::OnEvent(const irr::SEvent&)
+{
+}
