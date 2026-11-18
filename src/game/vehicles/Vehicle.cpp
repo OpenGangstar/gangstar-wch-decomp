@@ -747,8 +747,8 @@ void Vehicle::resetPreviousPos()
     const b2Vec2& bodyPosition = collisionBody->GetXForm().position;
     const float x = 100.0f * bodyPosition.x;
     const float y = 100.0f * bodyPosition.y;
-    const float height = (wheelPositions[0].Z + wheelPositions[1].Z +
-        wheelPositions[2].Z + wheelPositions[3].Z) * 0.25f;
+    const float height = (wheelPosition0.Z + wheelPosition1.Z +
+        wheelPosition2.Z + wheelPosition3.Z) * 0.25f;
     previousPosition = irr::core::vector3d<float>(x, y, height - offsetZ);
 }
 
@@ -1727,16 +1727,16 @@ void Vehicle::UpdateCarTireTrails(int, int alpha)
         vector3d<float> position;
         switch (wheel) {
         case 0:
-            position = wheelPositions[0];
+            position = wheelPosition0;
             break;
         case 1:
-            position = wheelPositions[1];
+            position = wheelPosition1;
             break;
         case 2:
-            position = wheelPositions[3];
+            position = wheelPosition3;
             break;
         case 3:
-            position = wheelPositions[2];
+            position = wheelPosition2;
             break;
         }
 
@@ -2283,4 +2283,171 @@ static void _GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE()
 {
     vehicleStaticInitialization(1, 65535);
 }
+}
+
+Vehicle::Vehicle(int type)
+    : LevelObject(type),
+      wheelGroundHeights(),
+      lightNodes(),
+      unknown56(0.0f),
+      unknown60(1.0f),
+      unknown64(0.0f),
+      init104(0.0f),
+      init108(0.0f),
+      init112(0.0f),
+      unknown116(0.0f),
+      unknown120(0.0f),
+      unknown124(0.0f),
+      unknown132(0),
+      init136(0),
+      aiTarget(0),
+      rotationZ(0.0f),
+      rotationX(0.0f),
+      rotationY(0.0f),
+      init156(0.0f),
+      init160(0.0f),
+      init164(0.0f),
+      mass(0),
+      skidThreshold(0.0f),
+      init180(0.0f),
+      init184(0.0f),
+      unknown188(0.0f),
+      savedRadioStation(0),
+      init200(0),
+      init204(0),
+      init208(0.0f),
+      init212(0.0f),
+      init216(0.0f),
+      init220(0.0f),
+      tireTrailWidth(0),
+      init228(0),
+      init232(0.0f),
+      init236(1.0f),
+      unknown240(-1),
+      targetingCharacter(0),
+      gearProfile(-1),
+      gearProgress(0.0f),
+      pathToFollow(0),
+      currentWaypoint(0),
+      turnLeft(true),
+      turnAmount(0.0f),
+      flags344(8388608),
+      init348(-1),
+      init352(0.0f),
+      accelerationAmount(0.0f),
+      brakeAmount(0.0f),
+      init364(-1),
+      gear(1),
+      init372(0.0f),
+      init376(0.0f),
+      init380(0.0f),
+      init388(0),
+      init389(0),
+      init392(0.0f),
+      init396(0.0f),
+      waitElapsed(0),
+      waitDuration(0),
+      repairTexture(0),
+      damageTexture(0),
+      repairFlag420(false),
+      explosionFlag(0),
+      vehicleIndex(-1),
+      carSounds(0),
+      carSoundParameters(0),
+      carSoundMode(0),
+      carSoundTrigger(false),
+      enginePitchFalloff(1.0f),
+      enginePitchSpeed(0.0f),
+      soundMaximumSpeed(0.0f),
+      soundLoadDuration(10),
+      hasBeenStolen(false),
+      unknown505(0),
+      unknown506(false),
+      unknown507(false),
+      unknown508(false),
+      unknown509(false),
+      unknown510(0),
+      unknown511(0),
+      init560(0.0f),
+      init564(0.0f),
+      init568(0.0f),
+      init572(0.0f),
+      init576(0.0f),
+      init580(0.0f),
+      init584(0.0f),
+      init588(0.0f),
+      init592(0.0f),
+      init596(0.0f),
+      init600(0.0f),
+      init604(0.0f),
+      init608(0.0f),
+      init612(0.0f),
+      init616(0.0f),
+      collisionBody(0),
+      leftCollisionBody(0),
+      rightCollisionBody(0),
+      init644(0),
+      skidAmount(0.0f),
+      init652(0.0f),
+      enabledSceneNode(0),
+      driver(0),
+      init700(0.0f),
+      init704(0.0f),
+      init708(0.0f),
+      init712(0.0f),
+      init716(0.0f),
+      init720(0.0f),
+      init724(0.0f),
+      init728(0.0f),
+      init732(0.0f),
+      init736(0.0f),
+      init740(0.0f),
+      init744(0.0f),
+      init748(0),
+      init768(0),
+      init772(0),
+      sensorContactCount(0),
+      spawnType(-1),
+      turnSoundPlaying(false),
+      skidSoundPlaying(false),
+      scenePool812(-1),
+      repairGlassNode(0),
+      sceneData820(0),
+      lightPool824(-1),
+      lightPool828(-1),
+      sceneData848(0),
+      sceneData852(0),
+      scenePool880(-1),
+      pooledNode884(0),
+      sceneData888(0),
+      scenePool892(-1),
+      repairLightNode(0),
+      exploding(false),
+      explosionFinished(false),
+      doorSoundSuppression(0),
+      repairVisualState(0),
+      maxHealth(100),
+      health(100),
+      unknown924(0),
+      animationClipIndex(999999),
+      driverMetatype(-1),
+      driverBehavior(-1),
+      speed(0.0f),
+      init980(0.0f),
+      unknown984(0.0f),
+      unknown988(0.0f),
+      unknown992(0.0f),
+      leftDoorClosed(true),
+      rightDoorClosed(true),
+      leftDoorTransition(false),
+      rightDoorTransition(false),
+      immobilized(false),
+      init1008(1000.0f)
+{
+    Application::GetInstance();
+    init748 = new irr::core::vector3d<float>[4];
+    wheelTrails[0] = 0;
+    wheelTrails[1] = 0;
+    wheelTrails[2] = 0;
+    wheelTrails[3] = 0;
 }

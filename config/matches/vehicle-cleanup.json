@@ -223,7 +223,9 @@
         "_ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev",
         "_ZN3irr7collada21CSkinnedMeshSceneNodeD1Ev",
         "_ZTv0_n12_N3irr2io26IAttributeExchangingObjectD0Ev",
-        "_ZN3irr7collada21CSkinnedMeshSceneNodeD2Ev"
+        "_ZN3irr7collada21CSkinnedMeshSceneNodeD2Ev",
+        "_ZN7VehicleC1Ei",
+        "_ZN7VehicleC2Ei"
     ],
     "sections": [
         ".vehicle_light00_asset",
@@ -338,7 +340,9 @@
         ".skin_table_16",
         ".skin_table_17",
         ".skin_table_18",
-        ".skin_table_19"
+        ".skin_table_19",
+        ".ctor_family_8",
+        ".ctor_table_8"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -579,6 +583,7 @@
         "_ZTv0_n12_N3irr5scene10ISceneNodeD0Ev",
         "_ZNK3irr2io26IAttributeExchangingObject19serializeAttributesEPNS0_11IAttributesEPNS0_26SAttributeReadWriteOptionsE",
         "_ZN3irr2io26IAttributeExchangingObject21deserializeAttributesEPNS0_11IAttributesEPNS0_26SAttributeReadWriteOptionsE",
-        "_ZN3irr5scene10ISceneNodeD2Ev"
+        "_ZN3irr5scene10ISceneNodeD2Ev",
+        "_ZN11LevelObjectC1Ei"
     ]
 }
