@@ -33,3 +33,16 @@ SECTIONS
     .contact_listener_destructor 0x0032032c : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN15ContactListenerD1Ev) }
     .b2_contact_listener_vtable 0x004abd38 : { *ai-startup-physicattributes.o(.gnu.linkonce.d.rel.ro._ZTV17b2ContactListener) }
 }
+
+/* Verified binary navigation loader and its original readonly literals. */
+_Znaj = 0x001c3ff8;
+fopen = 0x001c45bc;
+fread = 0x001c4598;
+fclose = 0x001c4628;
+__stack_chk_fail = 0x001c42e0;
+SECTIONS
+{
+    .physics_load_arrays 0x00319ed4 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes10LoadArraysEPc) }
+    .load_arrays_mode 0x004014f0 : { *ai-startup-physicattributes.o(.rodata.loadArraysMode) }
+    .load_arrays_error 0x00420a68 : { *ai-startup-physicattributes.o(.rodata.loadArraysError) }
+}

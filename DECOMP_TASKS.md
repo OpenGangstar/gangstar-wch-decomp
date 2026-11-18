@@ -1080,8 +1080,18 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x0034b6f5 | std::__stl_throw_out_of_range(char const*) | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0031ad31 | PhysicAttributes::SetHeightAttributes(vector3df const&, PhysicInfo*) | lock_init | BLOCKED | 1400/1388-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x0030d149 | Vehicle::CreateWheels(Box2DUserInfo*) | hud_glyphs | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030d149 | Vehicle::CreateWheels(Box2DUserInfo*) | hud_glyphs | BLOCKED | 1440/1408-byte candidate; six forms exhausted | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00319ed5 | PhysicAttributes::LoadArrays(char*) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319ed5 | PhysicAttributes::LoadArrays(char*) | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | hud_registration | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | hud_registration | BLOCKED | 1354/1360 bytes; six forms exhausted, no credit | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | hud_glyphs | BLOCKED | 1380/1368-byte candidate; three equivalent forms identical | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | lock_init | BLOCKED | 1688/1668-byte supported candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | hud_registration | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | hud_glyphs | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |

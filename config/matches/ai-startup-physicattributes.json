@@ -14,7 +14,9 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=70",
+        "-fstack-protector",
+        "-fno-merge-constants"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -69,7 +71,8 @@
         {
             "name": "_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE",
             "address": "0x0031d78d"
-        }
+        },
+        "_ZN16PhysicAttributes10LoadArraysEPc"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -80,7 +83,10 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".physics_load_arrays",
+        ".load_arrays_mode",
+        ".load_arrays_error"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -92,6 +98,8 @@
         "_ZN7b2World18SetContactListenerEP17b2ContactListener",
         "_ZN7b2WorldC1ERK6b2AABBRK6b2Vec2b",
         "_ZN7b2WorldD1Ev",
-        "_ZNK3irr5scene10ISceneNode11getChildrenEv"
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_Z21ekd_makestringfile255PKcPc",
+        "_Z13ekd_debug_outPKcPc"
     ]
 }

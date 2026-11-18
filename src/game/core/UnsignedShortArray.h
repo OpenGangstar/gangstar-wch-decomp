@@ -25,6 +25,7 @@ namespace irr { namespace core {
 // Observed unsigned-short specialization of the fork's array deletion interface.
 template<> class array<unsigned short, irrAllocator<unsigned short> > {
 public:
+    array():data(0),allocated(0),used(0),free_when_destroyed(true),is_sorted(true),unknown16(1) {}
     unsigned short* data;
     unsigned int allocated;
     unsigned int used;

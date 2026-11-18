@@ -269,6 +269,8 @@
         "_ZNK6Weapon8getRangeEv",
         "_ZNK6Weapon9getDamageEv",
         "_ZNK7Vehicle12isDoorClosedEb",
-        "_ZNK7Vehicle12isDoorOpenedEb"
+        "_ZNK7Vehicle12isDoorOpenedEb",
+        "_Z21ekd_makestringfile255PKcPc",
+        "_Z13ekd_debug_outPKcPc"
     ]
 }

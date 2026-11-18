@@ -13,14 +13,17 @@ struct AStarNode;
 // Partial layout of the observed 120-byte allocation.
 class PhysicAttributes {
 public:
+    static void LoadArrays(char*);
+    static int MATERIAL_TYPE_ROAD, MATERIAL_TYPE_PARK, MATERIAL_TYPE_BUILDING_BASE, MATERIAL_TYPE_INTERSECTION, MATERIAL_TYPE_CLIFF, MATERIAL_TYPE_WATER;
     static int MATERIAL_TYPE_DEATH_WATER;
     static unsigned short*** s_neighbors;
     static unsigned char** s_neighborsWrongWay;
     static unsigned short* s_neighborsCnt;
     static irr::core::array<unsigned short>** s_overlapping;
     // Cleanup-only POD views; original cliff-map element types remain unrecovered.
-    static unsigned int* s_cliffVertexKeyMap;
-    static unsigned int* s_cliffTriMap;
+    // LoadArrays now confirms unsigned-short elements for both maps.
+    static unsigned short* s_cliffVertexKeyMap;
+    static unsigned short* s_cliffTriMap;
     static float** s_nodeCost;
     void AddCollisionShapes(int slot, unsigned short vertex);
     static bool SegmentsIntersect(const irr::core::vector3d<float>& a,
@@ -46,7 +49,7 @@ public:
     static void InitWorld();
     static void Clean();
     static void CleanWorld();
-    static unsigned short MATERIAL_TYPE_SIDEWALK;
+    static int MATERIAL_TYPE_SIDEWALK;
     static irr::core::vector3d<float> GetRandomDestination(unsigned short material, unsigned short& surface,
         const irr::core::vector3d<float>& origin, float minimum, float maximum);
     static void CreateNeighborTris(irr::scene::ISceneNode* node, int id);

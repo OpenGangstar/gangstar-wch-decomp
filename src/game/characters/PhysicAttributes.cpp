@@ -517,3 +517,85 @@ void PhysicAttributes::Init(unsigned short region,unsigned short surface,const i
     info->unknown64=position;
     UpdateEdgesCollisions(0);
 }
+
+
+#include "../core/NativeStdio.h"
+#include "../core/PathName.h"
+#include "../core/Debug_Log.h"
+void* operator new[](unsigned int);
+static const char loadArraysMode[]="rb";
+static const char loadArraysError[]="ERROR-fopen=0: PhysicAttributes::LoadArrays-fullname='%s' \n";
+void PhysicAttributes::LoadArrays(char* filename)
+{
+    char fullName[255];
+    ekd_makestringfile255(filename,fullName);
+    NativeFile* file=fopen(fullName,loadArraysMode);
+    if(!file) ekd_debug_out(loadArraysError,fullName);
+    int count=0;
+    fread(&count,4,1,file);
+    s_neighborsCnt=new unsigned short[count];
+    s_neighbors=new unsigned short**[count];
+    s_neighborsWrongWay=new unsigned char*[count];
+    s_overlapping=new irr::core::array<unsigned short>*[count];
+    fread(s_neighborsCnt,2,count,file);
+    for(int i=0;i<count;++i) {
+        s_neighbors[i]=new unsigned short*[8];
+        s_neighborsWrongWay[i]=new unsigned char[static_cast<unsigned short>(s_neighborsCnt[i]/3)];
+        s_overlapping[i]=new irr::core::array<unsigned short>[static_cast<unsigned short>(s_neighborsCnt[i]/3)];
+    }
+    for(int i=0;i<count;++i) {
+        for(int j=0;j<8;++j) {
+            *reinterpret_cast<unsigned short**>(reinterpret_cast<unsigned char*>(s_neighbors[i])+j*4)=new unsigned short[static_cast<unsigned short>(*reinterpret_cast<unsigned short*>(reinterpret_cast<unsigned char*>(s_neighborsCnt)+i*2)/3)];
+            fread(*reinterpret_cast<unsigned short**>(reinterpret_cast<unsigned char*>(s_neighbors[i])+j*4),2,static_cast<unsigned short>(*reinterpret_cast<unsigned short*>(reinterpret_cast<unsigned char*>(s_neighborsCnt)+i*2)/3),file);
+        }
+    }
+    for(int i=0;i<count;++i)
+        fread(s_neighborsWrongWay[i],1,static_cast<unsigned short>(s_neighborsCnt[i]/3),file);
+    fread(&MATERIAL_TYPE_ROAD,4,1,file);
+    fread(&MATERIAL_TYPE_SIDEWALK,4,1,file);
+    fread(&MATERIAL_TYPE_PARK,4,1,file);
+    fread(&MATERIAL_TYPE_BUILDING_BASE,4,1,file);
+    fread(&MATERIAL_TYPE_INTERSECTION,4,1,file);
+    fread(&MATERIAL_TYPE_CLIFF,4,1,file);
+    fread(&MATERIAL_TYPE_WATER,4,1,file);
+    fread(&MATERIAL_TYPE_DEATH_WATER,4,1,file);
+    unsigned short length;
+    fread(&length,2,1,file);
+    s_cliffVertexKeyMap=new unsigned short[length];
+    fread(s_cliffVertexKeyMap,2,length,file);
+    fread(&length,2,1,file);
+    s_cliffTriMap=new unsigned short[length];
+    fread(s_cliffTriMap,2,length,file);
+    for(int i=0;i<count;++i) {
+        for(int j=0;j<static_cast<unsigned short>(s_neighborsCnt[i]/3);++j) {
+            unsigned short overlapLength;
+            fread(&overlapLength,1,2,file);
+            for(int k=0;k<overlapLength/2;++k) {
+                unsigned short pair[2];
+                fread(pair,2,2,file);
+                s_overlapping[i][j].push_back(pair[0]);
+                s_overlapping[i][j].push_back(pair[1]);
+            }
+        }
+    }
+    fclose(file);
+    s_nodeCost=new float*[2];
+    s_nodeCost[0]=new float[count];
+    s_nodeCost[1]=new float[count];
+    s_nodeCost[0][MATERIAL_TYPE_SIDEWALK]=1.0f;
+    s_nodeCost[0][MATERIAL_TYPE_ROAD]=999.0f;
+    s_nodeCost[0][MATERIAL_TYPE_PARK]=1.0f;
+    s_nodeCost[0][MATERIAL_TYPE_BUILDING_BASE]=999.0f;
+    s_nodeCost[0][MATERIAL_TYPE_INTERSECTION]=999.0f;
+    s_nodeCost[0][MATERIAL_TYPE_CLIFF]=999.0f;
+    s_nodeCost[0][MATERIAL_TYPE_WATER]=999.0f;
+    s_nodeCost[0][MATERIAL_TYPE_DEATH_WATER]=999.0f;
+    s_nodeCost[1][MATERIAL_TYPE_SIDEWALK]=999.0f;
+    s_nodeCost[1][MATERIAL_TYPE_ROAD]=1.0f;
+    s_nodeCost[1][MATERIAL_TYPE_PARK]=999.0f;
+    s_nodeCost[1][MATERIAL_TYPE_BUILDING_BASE]=999.0f;
+    s_nodeCost[1][MATERIAL_TYPE_INTERSECTION]=1.0f;
+    s_nodeCost[1][MATERIAL_TYPE_CLIFF]=999.0f;
+    s_nodeCost[1][MATERIAL_TYPE_WATER]=999.0f;
+    s_nodeCost[1][MATERIAL_TYPE_DEATH_WATER]=999.0f;
+}
