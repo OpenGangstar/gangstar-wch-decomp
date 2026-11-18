@@ -113,3 +113,63 @@ const char* Preferences::GetDefaultFilename()
 Preferences::~Preferences()
 {
 }
+
+
+#include "../persistence/DataStream.h"
+#include "OptionGameSettings.h"
+#include "../app/Application.h"
+#include "../audio/SoundManager.h"
+#include "../hud/CHudManager.h"
+#include "../scripting/ScriptManager.h"
+
+extern "C" void _ZN10DataStreamD1Ev(void*) __attribute__((weak));
+extern "C" void _ZN11Persistence8BlockIntD1Ev(void*) __attribute__((weak));
+
+namespace {
+struct StringPreferenceFields {
+    unsigned char unknown0[4];
+    int observed4;
+};
+}
+
+bool Preferences::SampleAndSave(const char* name)
+{
+    FileStream file(name, 32);
+    if (!file.IsValid())
+        return false;
+    unsigned int dataStorage[sizeof(DataStream) / sizeof(unsigned int)];
+    DataStream& data = *new (dataStorage) DataStream(file, DataStream::LittleEndian);
+    SetDataStream(&data);
+    unsigned int blockStorage[sizeof(BlockInt) / sizeof(unsigned int)];
+    BlockInt& block = *new (blockStorage) BlockInt;
+    CHudManager* hud = Application::GetInstance()->GetHudManager();
+    block.id = -1;
+    block.value = 0x30500;
+    WriteBlock(block);
+    block.id = 0;
+    block.value = hud->steeringMode;
+    WriteBlock(block);
+    block.id = 1;
+    block.value = hud->throttleMode;
+    WriteBlock(block);
+    block.id = 2;
+    block.value = reinterpret_cast<StringPreferenceFields*>(Application::GetInstance()->GetStringManager())->observed4;
+    WriteBlock(block);
+    block.id = 3;
+    block.value = ScriptManager::getInstance()->unknown78;
+    WriteBlock(block);
+    block.id = 4;
+    block.value = static_cast<int>(100.0f * SoundManager::getInstance()->effectsPlaybackVolume);
+    WriteBlock(block);
+    block.id = 5;
+    block.value = static_cast<int>(100.0f * SoundManager::getInstance()->playbackVolume);
+    WriteBlock(block);
+    block.id = 6;
+    block.value = Menus::OptionGameSettings::GetOrientation();
+    WriteBlock(block);
+    SetDataStream(0);
+    file.Close();
+    _ZN11Persistence8BlockIntD1Ev(&block);
+    _ZN10DataStreamD1Ev(&data);
+    return true;
+}

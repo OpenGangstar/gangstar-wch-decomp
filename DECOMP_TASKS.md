@@ -674,7 +674,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x003437c9 | Preferences deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | hud_glyphs | ASSIGNED | recover archived exact336B using proven real-object lifetime wrappers; canonical destructor headers unchanged; no credit pending all gates | src/game/ui/Preferences.cpp |
+| libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | — | COMPLETED | 100%;336B; coordinator native target/full182-profile gate exact; canonical headers unchanged | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002eb5d9 | Menus::Services::Notify | vehicle_side | BLOCKED | pending | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | lock_init | BLOCKED | pending | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |

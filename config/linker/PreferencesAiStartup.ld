@@ -1,3 +1,5 @@
+__aeabi_fmul = 0x001c4724;
+__aeabi_f2iz = 0x001c44cc;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-preferences/retail-symbols.ld
@@ -16,6 +18,7 @@ _ZN30retail_preferences_transitions22scripted_vehicle_transE = 0x00433600;
 sprintf = 0x001c46ac;
 SECTIONS
 {
+ .preferences_sample_save 0x3438e4 : { *ai-startup-preferences.o(.text._ZN11Preferences13SampleAndSaveEPKc) }
     .preferences_vtable 0x004ad128 : { *ai-startup-preferences.o(.data.rel.ro._ZTV11Preferences) }
     .preferences_dtor 0x003437f0 : { *ai-startup-preferences.o(.text._ZN11PreferencesD1Ev .text._ZN11PreferencesD2Ev) }
     .preferences_delete 0x003437c8 : { *ai-startup-preferences.o(.text._ZN11PreferencesD0Ev) }
