@@ -44,7 +44,7 @@ public:
     virtual void setTransform(E_TRANSFORMATION_STATE state, const core::matrix4& transform);
     virtual void unknown16();
     virtual void setMaterial(const SMaterial&);
-    virtual void unknown18(); virtual void unknown19(); virtual void unknown20();
+    virtual void set2DMaterial(SMaterial&); virtual void unknown19(); virtual void unknown20();
     virtual ITexture* getTexture(const char* filename); virtual void unknown22(); virtual void unknown23();
     virtual void unknown24(); virtual void unknown25(); virtual void unknown26();
     virtual void unknown27(); virtual void unknown28(); virtual void unknown29();
@@ -58,7 +58,7 @@ public:
     virtual void draw3DLine(const core::vector3d<float>& start,
         const core::vector3d<float>& end, SColor color);
     virtual void unknown44(); virtual void unknown45();
-    virtual void unknown46(); virtual void unknown47(); virtual void unknown48();
+    virtual void unknown46(); virtual void draw2DImage(const ITexture*, const core::position2d<int>&, const core::rect<int>&, const core::rect<int>*, SColor, bool); virtual void unknown48();
     virtual void unknown49();
     virtual void draw2DRectangle(SColor color, const core::rect<int>& position,
         const core::rect<int>* clip = 0);

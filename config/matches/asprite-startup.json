@@ -74,7 +74,9 @@
         "_ZNK7ASprite7GetAnimEi",
         "_ZNK7ASprite8GetFrameEi",
         "_ZNK7ASprite10GetFModuleEi",
-        "_ZNK7ASprite9GetModuleEi"
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7ASprite12GetFrameRectEii",
+        "_ZN7ASprite9GetAFrameEii"
     ],
     "sections": [
         ".asprite_function_0",
@@ -114,7 +116,8 @@
         ".asprite_geometry_3",
         ".asprite_get_anim",
         ".asprite_get_frame",
-        ".asprite_get_module"
+        ".asprite_get_module",
+        ".asprite_get_frame_rect"
     ],
     "retail_got": true,
     "external_thumb_functions": [

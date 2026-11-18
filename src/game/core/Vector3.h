@@ -32,6 +32,14 @@ public:
     vector3d(const vector3d& other) : X(other.X), Y(other.Y), Z(other.Z) {}
     vector3d<T>& operator=(const vector3d<T>& other) { X=other.X; Y=other.Y; Z=other.Z; return *this; }
     vector3d<T>& operator*=(T scalar) { X*=scalar; Y*=scalar; Z*=scalar; return *this; }
+    // Modified-fork/native-expression reconstruction of Irrlicht crossProduct.
+    // Upstream 1.4.2 uses subtraction; retail preserves signed products plus adds.
+    vector3d<T> crossProduct(const vector3d<T>& other) const
+    {
+        return vector3d<T>(-other.Y * Z + other.Z * Y,
+                           -other.Z * X + Z * other.X,
+                           Y * -other.X + other.Y * X);
+    }
     vector3d<T>& normalize() __attribute__((weak));
     T getLength() const { return (T) sqrt((double)(X*X + Y*Y + Z*Z)); }
     T getLengthSQ() const { return X*X + Y*Y + Z*Z; }

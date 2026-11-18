@@ -2,6 +2,8 @@
 #define WCH_HUD_MINI_MAP_H
 
 #include "../ui/VirtualButton.h"
+#include "../core/Rect.h"
+#include "../core/Vector3.h"
 
 class LevelObject;
 class AnimObject;
@@ -19,6 +21,7 @@ public:
     void setFollowedObject(LevelObject* object) { followedObject = object; }
 
 private:
+    irr::core::position2d<int> _calculateXYOffset(const irr::core::vector3d<float>&, const irr::core::rect<int>&, bool, bool) const;
     struct TrackingLink {
         TrackingLink* next;
         TrackingLink* previous;
@@ -37,7 +40,7 @@ private:
     float minimumSpeed, maximumSpeed;
     float minimumScale, maximumScale;
     // Observed constructor allocation is 116 bytes.
-    unsigned char unknown112[4];
+    int unknown112;
 };
 
 #endif

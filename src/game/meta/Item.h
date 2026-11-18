@@ -9,6 +9,7 @@ template<class T, class Alloc> class array;
 } }
 class CustomBillboardSceneNode;
 class Item : public Transformation {
+    friend class MiniMap;
 public:
     Item(int type);
     virtual irr::scene::ISceneNode* grabSceneNode(int id, void*** parameters);

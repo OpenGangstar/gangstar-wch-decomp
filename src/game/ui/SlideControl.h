@@ -15,14 +15,16 @@ public:
     virtual void draw2d() const;
 
 private:
-    unsigned char unknown56[16];
+    int minimumX, maximumX, minimumY, maximumY;
     int mode;
     float unknown76;
     float unknown80;
     float unknown84;
-    unsigned char unknown88[8];
-    bool releasedUp, releasedRight;
-    unsigned char unknown98[2];
+    float knobCenterX, knobCenterY;
+    union { bool releasedUp; bool upward; };
+    union { bool releasedRight; bool rightward; };
+    bool horizontal;
+    unsigned char unknown99;
     int handleFrame;
 };
 

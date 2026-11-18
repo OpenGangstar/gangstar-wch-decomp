@@ -1,0 +1,85 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "nonmatching/rendering/_ZN24CustomBillboardSceneNode9OnAnimateEj.cpp",
+    "linker_script": "config/linker/CustomBillboardAnimateThunk.ld",
+    "functions": [
+        "_ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE",
+        "_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
+        "_ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
+        "_ZN24CustomBillboardSceneNodeD1Ev",
+        "_ZN24CustomBillboardSceneNodeD0Ev",
+        "_ZTv0_n12_N24CustomBillboardSceneNodeD0Ev",
+        "_ZTv0_n24_N24CustomBillboardSceneNodeD0Ev",
+        "_ZThn100_N24CustomBillboardSceneNodeD0Ev",
+        "_ZTv0_n12_N24CustomBillboardSceneNodeD1Ev",
+        "_ZTv0_n24_N24CustomBillboardSceneNodeD1Ev",
+        "_ZThn100_N24CustomBillboardSceneNodeD1Ev",
+        "_ZN24CustomBillboardSceneNode6renderEv",
+        "_ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE",
+        "_ZN24CustomBillboardSceneNode9setLengthEj",
+        "_ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
+        "_ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
+        {
+            "name": "__tcf_2",
+            "address": "0x002f7a25"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x002f7dd1"
+        },
+        {
+            "name": "_GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
+            "address": "0x002f7e3d"
+        },
+        "_ZThn100_N24CustomBillboardSceneNode9OnAnimateEj"
+    ],
+    "sections": [
+        ".billboard_table_0",
+        ".billboard_table_1",
+        ".billboard_table_2",
+        ".billboard_table_3",
+        ".billboard_table_4",
+        ".billboard_table_5",
+        ".billboard_table_6",
+        ".sdk_startup_function_0",
+        ".sdk_startup_function_1",
+        ".sdk_startup_function_2",
+        ".shared_startup_empty_text",
+        {
+            "name": ".got",
+            "offset": 864
+        },
+        ".billboard_animate_thunk"
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
+        "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
+        "_ZNK3irr5scene10ISceneNode12getAnimatorsEv",
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZNK13CameraManager9getCameraEv"
+    ]
+}

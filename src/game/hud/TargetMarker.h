@@ -4,6 +4,7 @@
 class ASprite;
 
 class TargetMarker {
+    friend class MiniMap;
 public:
     void draw() const;
     static TargetMarker* getInstance() __attribute__((weak, used));

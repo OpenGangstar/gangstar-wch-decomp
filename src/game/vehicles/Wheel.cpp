@@ -121,7 +121,16 @@ void Wheel::processTouchRelease()
 
 class EvWheelTurn : public IEvent {
 public:
+    EvWheelTurn() {}
+    EvWheelTurn(bool direction, float movement)
+        : positiveDirection(direction), displacement(movement)
+    {
+        eventID = 14;
+    }
     virtual ~EvWheelTurn() __attribute__((used));
+private:
+    bool positiveDirection;
+    float displacement;
 };
 
 inline EvWheelTurn::~EvWheelTurn()

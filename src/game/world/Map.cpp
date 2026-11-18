@@ -36,7 +36,7 @@ Map::~Map()
 
 Map::Map()
     : texture(0), offsetX(0.0f), offsetY(0.0f),
-      unknown20(0), unknown24(0), unknown28(0), unknown32(0), unknown36(0), unknown40(0),
+      offsetPixelX(0), offsetPixelY(0), clip(0, 0, 0, 0),
       minX(0.0f), minY(0.0f), maxX(0.0f), maxY(0.0f), unknown60(0.0f), unknown64(0.0f)
 {
     setMap(DefaultMap);

@@ -1,0 +1,103 @@
+{
+  "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+  "compiler_flags": [
+    "-O2",
+    "-fpic",
+    "-fno-toplevel-reorder",
+    "-fno-strict-aliasing",
+    "-fno-rtti",
+    "-fno-exceptions",
+    "-mthumb",
+    "-mthumb-interwork",
+    "-march=armv5te",
+    "-mtune=xscale",
+    "-mfloat-abi=softfp",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-finline-limit=70"
+  ],
+  "assembler_flags": [
+    "-march=armv5te",
+    "-mfloat-abi=softfp",
+    "-mfpu=vfp",
+    "-meabi=4"
+  ],
+  "source": "nonmatching/missions/_ZN18WantedLevelManager6updateEd.cpp",
+  "linker_script": "config/linker/WantedUpdateThunk.ld",
+  "functions": [
+    "_ZN18WantedLevelManager19_processWantedLevelEv",
+    "_ZN15EvWantedEscapedD0Ev",
+    "_ZN15EvWantedEscapedD1Ev",
+    "_ZThn4_N18WantedLevelManagerD0Ev",
+    "_ZN18WantedLevelManagerD0Ev",
+    "_ZThn4_N18WantedLevelManagerD1Ev",
+    "_ZN18WantedLevelManagerD1Ev",
+    "_ZN18WantedLevelManagerD2Ev",
+    "_ZN18WantedLevelManager5cleanEv",
+    "_ZN18WantedLevelManager16storeWantedLevelEv",
+    "_ZN18WantedLevelManager4lockEi",
+    "_ZN18WantedLevelManager6unlockEv",
+    "_ZN18WantedLevelManager18restoreWantedLevelEv",
+    "_ZN18WantedLevelManager16resetWantedLevelEv",
+    {
+      "name": "__tcf_5",
+      "address": "0x00342a89"
+    },
+    {
+      "name": "_Z41__static_initialization_and_destruction_0ii",
+      "address": "0x00342bc1"
+    },
+    {
+      "name": "_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE",
+      "address": "0x00342d05"
+    },
+    {
+      "name": "__tcf_4",
+      "address": "0x00342ab9",
+      "compiled_name": "__tcf_0"
+    },
+    "_ZThn4_N18WantedLevelManager6updateEd"
+  ],
+  "sections": [
+    ".wanted_process_jump_table",
+    ".wanted_level_changed_vtable",
+    ".wanted_escaped_delete",
+    ".wanted_escaped_destroy",
+    ".wanted_escaped_vtable",
+    ".wanted_delete_thunk",
+    ".wanted_delete",
+    ".wanted_destroy_thunk",
+    ".wanted_destroy",
+    ".wanted_vtable",
+    ".wanted_clean",
+    ".wanted_store",
+    ".wanted_lock",
+    ".wanted_unlock",
+    ".wanted_restore",
+    ".wanted_reset",
+    ".ai_startup_function_0",
+    ".ai_startup_function_1",
+    ".ai_startup_function_2",
+    ".shared_startup_empty_text",
+    {
+      "name": ".got",
+      "offset": 864
+    },
+    ".state_machine_cleanup",
+    ".wanted_update_thunk"
+  ],
+  "retail_got": true,
+  "external_thumb_functions": [
+    "_ZN11MenuManager11getInstanceEv",
+    "_ZN11MenuManager14setTutorialIdsEii",
+    "_ZN12EventManager5raiseERK6IEvent",
+    "_ZN13ScriptManager11getInstanceEv",
+    "_ZN18AchievementManager17recordWantedLevelEi",
+    "_ZNK13ScriptManager13isInCinematicEv",
+    "_ZN12EventManager6detachEiP14IEventReceiver",
+    "_ZN11Application11GetInstanceEv",
+    "_ZN12StateMachineC1Ev",
+    "_ZN12StateMachineD1Ev",
+    "_ZN18AchievementManager19recordBadgesEscapedEi"
+  ]
+}

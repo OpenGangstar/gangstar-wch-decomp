@@ -53,6 +53,7 @@ public:
     void GetFrameMarkers(int frame, int* output) const;
     int GetNumberOfFrameMarkers(int frame) const;
     const SpriteFrame* GetFrame(int frame) const;
+    const SpriteBounds* GetFrameRect(int frame, int rectangle) const;
     int GetFrameFromAFrame(int animation, int frame) const;
     const SpriteBounds& GetFrameBoundingRect(int frame) const;
     const unsigned char* GetAFrame(int index) const;
