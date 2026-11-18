@@ -23,6 +23,7 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 SECTIONS
 {
+    .npc_car_under_wheel 0x002fe784 : { *ai-startup-npc.o(.text._ZN3NPC24UpdateCarPosIfUnderWheelEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002fd6f0 : { *ai-startup-npc.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-npc.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

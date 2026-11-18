@@ -24,6 +24,7 @@ public:
     void setHitByCar(bool hit);
     void clearGoToVehicle();
     void UpdateSceneNode();
+    void UpdateCarPosIfUnderWheel();
     virtual void enable();
     virtual irr::core::vector3d<float> GetPosition() const;
     void _arrest();
