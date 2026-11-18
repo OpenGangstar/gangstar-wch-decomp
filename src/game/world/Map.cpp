@@ -87,3 +87,37 @@ static void _GLOBAL__I__ZN3MapC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+static const char mapPath0[] = "./minimap_map.bmp";
+static const char mapPath1[] = "./prison_map.bmp";
+
+void Map::setMap(eMapType type)
+{
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+    switch (type) {
+    case 0:
+        if (texture) driver->removeTexture(texture);
+        texture = driver->getTexture(mapPath0);
+        unknown60 = -80000.0f;
+        unknown64 = -80000.0f;
+        minX = -80000.0f;
+        minY = -80000.0f;
+        maxX = 80000.0f;
+        maxY = 80000.0f;
+        break;
+    case 1:
+        if (texture) driver->removeTexture(texture);
+        texture = driver->getTexture(mapPath1);
+        unknown60 = 184700.0f;
+        unknown64 = 6000.0f;
+        minY = unknown64;
+        minX = unknown60;
+        maxX = 190700.0f;
+        maxY = 12000.0f;
+        break;
+    }
+    float width = static_cast<float>(texture->getSize().Width);
+    float extent = maxX - minX;
+    pixelsPerUnit = width / extent;
+    unitsPerPixel = extent / width;
+}

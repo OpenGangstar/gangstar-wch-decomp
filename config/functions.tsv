@@ -8795,8 +8795,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3b39	0x28	FileManager.cpp	game	persistence	matched	_ZN11FileManager4InitEv	FileManager::Init()
 0x002d3b61	0x6c	FileManager.cpp	game	persistence	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002d3bcd	0x14	FileManager.cpp	game	persistence	matched	_GLOBAL__I__ZN11FileManager5s_mgrE	_GLOBAL__I__ZN11FileManager5s_mgrE
-0x002d3be1	0x2	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhone9playMovieEPKc	MediaPlayerIPhone::playMovie(char const*)
-0x002d3be5	0x2	MediaPlayerIPhone.cpp	game	app	pending	_ZN17MediaPlayerIPhone9stopMovieEv	MediaPlayerIPhone::stopMovie()
+0x002d3be1	0x2	MediaPlayerIPhone.cpp	game	app	matched	_ZN17MediaPlayerIPhone9playMovieEPKc	MediaPlayerIPhone::playMovie(char const*)
+0x002d3be5	0x2	MediaPlayerIPhone.cpp	game	app	matched	_ZN17MediaPlayerIPhone9stopMovieEv	MediaPlayerIPhone::stopMovie()
 0x002d3be9	0x1c	MediaPlayerIPhone.cpp	game	app	matched	_ZNK17MediaPlayerIPhone6_traceEPKc	MediaPlayerIPhone::_trace(char const*) const
 0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	matched	_ZN17MediaPlayerIPhoneC1Ev	MediaPlayerIPhone::MediaPlayerIPhone()
 0x002d3c05	0x30	MediaPlayerIPhone.cpp	game	app	matched	_ZN17MediaPlayerIPhoneC2Ev	MediaPlayerIPhone::MediaPlayerIPhone()
@@ -9307,9 +9307,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e1de5	0x30	GSFailure.cpp	game	app	matched	__tcf_4	__tcf_4
 0x002e1e15	0x134	GSFailure.cpp	game	app	pending	_ZN9GSFailure6draw2dEPK12StateMachine	GSFailure::draw2d(StateMachine const*)
 0x002e1f49	0x1c	GSFailure.cpp	game	app	matched	__tcf_3	__tcf_3
-0x002e1f65	0x6e	GSFailure.cpp	game	app	pending	_ZN9GSFailure4dtorEPK12StateMachine	GSFailure::dtor(StateMachine const*)
-0x002e1fd5	0x108	GSFailure.cpp	game	app	pending	_ZN9GSFailure4ctorEPK12StateMachine	GSFailure::ctor(StateMachine const*)
-0x002e20dd	0x260	GSFailure.cpp	game	app	pending	_ZN9GSFailure6updateEP12StateMachine	GSFailure::update(StateMachine*)
+0x002e1f65	0x6e	GSFailure.cpp	game	app	matched	_ZN9GSFailure4dtorEPK12StateMachine	GSFailure::dtor(StateMachine const*)
+0x002e1fd5	0x108	GSFailure.cpp	game	app	matched	_ZN9GSFailure4ctorEPK12StateMachine	GSFailure::ctor(StateMachine const*)
+0x002e20dd	0x260	GSFailure.cpp	game	app	matched	_ZN9GSFailure6updateEP12StateMachine	GSFailure::update(StateMachine*)
 0x002e233d	0x1c	GSFailure.cpp	game	app	matched	_ZN9GSFailureC1Ev	GSFailure::GSFailure()
 0x002e233d	0x1c	GSFailure.cpp	game	app	matched	_ZN9GSFailureC2Ev	GSFailure::GSFailure()
 0x002e2359	0x144	GSFailure.cpp	game	app	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -10336,7 +10336,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fe4bd	0x144	NPC.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fe601	0x14	NPC.cpp	game	ai	matched	_GLOBAL__I__ZN3NPC16s_combatSXFTimerE	_GLOBAL__I__ZN3NPC16s_combatSXFTimerE
 0x002fe615	0x170	NPC.cpp	game	ai	pending	_ZN3NPC16triggerCombatSFXEi	NPC::triggerCombatSFX(int)
-0x002fe785	0x1e4	NPC.cpp	game	ai	pending	_ZN3NPC24UpdateCarPosIfUnderWheelEv	NPC::UpdateCarPosIfUnderWheel()
+0x002fe785	0x1e4	NPC.cpp	game	ai	matched	_ZN3NPC24UpdateCarPosIfUnderWheelEv	NPC::UpdateCarPosIfUnderWheel()
 0x002fe969	0x30	NPC.cpp	game	ai	matched	__tcf_4	__tcf_4
 0x002fe999	0xe0	NPC.cpp	game	ai	pending	_ZN3NPC6freezeEv	NPC::freeze()
 0x002fea79	0xd0	NPC.cpp	game	ai	matched	_ZN3NPC4fleeERKN3irr4core8vector3dIfEE	NPC::flee(irr::core::vector3d<float> const&)
@@ -10508,7 +10508,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003067d5	0x224	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint5spawnEv	SpawnPoint::spawn()
 0x003069f9	0x118	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint5spawnEi	SpawnPoint::spawn(int)
 0x00306b11	0x21c	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE	SpawnPoint::Load(Structs::SpawnPoint const&)
-0x00306d2d	0xc4	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint17hasCloseNeighborsEv	SpawnPoint::hasCloseNeighbors() const
+0x00306d2d	0xc4	SpawnPoint.cpp	game	world	matched	_ZNK10SpawnPoint17hasCloseNeighborsEv	SpawnPoint::hasCloseNeighbors() const
 0x00306df1	0x34	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointC2Ei	SpawnPoint::SpawnPoint(int)
 0x00306df1	0x34	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPointC1Ei	SpawnPoint::SpawnPoint(int)
 0x00306e25	0x1c0	SpawnPoint.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -10716,12 +10716,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00311e55	0x48	Vehicle.cpp	game	vehicles	matched	_ZN16CCarMorphingMeshD0Ev	CCarMorphingMesh::~CCarMorphingMesh()
 0x00311e9d	0x14	Vehicle.cpp	game	vehicles	matched	_ZTv0_n12_N16CCarMorphingMeshD1Ev	virtual thunk to CCarMorphingMesh::~CCarMorphingMesh()
 0x00311eb1	0x40	Vehicle.cpp	game	vehicles	matched	_ZN16CCarMorphingMeshD1Ev	CCarMorphingMesh::~CCarMorphingMesh()
-0x00311ef1	0x14	Vehicle.cpp	game	vehicles	pending	_ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
-0x00311f05	0x14	Vehicle.cpp	game	vehicles	pending	_ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
-0x00311f19	0x74	Vehicle.cpp	game	vehicles	pending	_ZN26CustomSkinnedMeshSceneNodeD0Ev	CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
-0x00311f8d	0x14	Vehicle.cpp	game	vehicles	pending	_ZTv0_n12_N26CustomSkinnedMeshSceneNodeD1Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
-0x00311fa1	0x14	Vehicle.cpp	game	vehicles	pending	_ZTv0_n24_N26CustomSkinnedMeshSceneNodeD1Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
-0x00311fb5	0x6c	Vehicle.cpp	game	vehicles	pending	_ZN26CustomSkinnedMeshSceneNodeD1Ev	CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
+0x00311ef1	0x14	Vehicle.cpp	game	vehicles	matched	_ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
+0x00311f05	0x14	Vehicle.cpp	game	vehicles	matched	_ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
+0x00311f19	0x74	Vehicle.cpp	game	vehicles	matched	_ZN26CustomSkinnedMeshSceneNodeD0Ev	CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
+0x00311f8d	0x14	Vehicle.cpp	game	vehicles	matched	_ZTv0_n12_N26CustomSkinnedMeshSceneNodeD1Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
+0x00311fa1	0x14	Vehicle.cpp	game	vehicles	matched	_ZTv0_n24_N26CustomSkinnedMeshSceneNodeD1Ev	virtual thunk to CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
+0x00311fb5	0x6c	Vehicle.cpp	game	vehicles	matched	_ZN26CustomSkinnedMeshSceneNodeD1Ev	CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
 0x00312021	0x5c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9playSirenEv	Vehicle::playSiren()
 0x00312081	0xc94	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15_processAIFlagsEv	Vehicle::_processAIFlags()
 0x00312d19	0x2a0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12playDriveSfxEj	Vehicle::playDriveSfx(unsigned int)
@@ -10926,7 +10926,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00321631	0x28	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4Node14setupUnmanagedEi	SceneNodeManager::Node::setupUnmanaged(int)
 0x00321659	0x40	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4NodeC1EPN3irr5scene10ISceneNodeE	SceneNodeManager::Node::Node(irr::scene::ISceneNode*)
 0x00321659	0x40	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4NodeC2EPN3irr5scene10ISceneNodeE	SceneNodeManager::Node::Node(irr::scene::ISceneNode*)
-0x00321699	0x88	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager6manageEiP11LevelObjecti	SceneNodeManager::manage(int, LevelObject*, int)
+0x00321699	0x88	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager6manageEiP11LevelObjecti	SceneNodeManager::manage(int, LevelObject*, int)
 0x00321721	0x180	SceneNodeManager.cpp	game	world	pending	_ZNK16SceneNodeManager6reportEv	SceneNodeManager::report() const
 0x003218a1	0x36	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi	SceneNodeManager::Pool::Pool(char const*, irr::collada::CColladaFactory*, int)
 0x003218a1	0x36	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi	SceneNodeManager::Pool::Pool(char const*, irr::collada::CColladaFactory*, int)
@@ -11290,7 +11290,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328b11	0x24	Map.cpp	game	world	matched	_ZN3Map5cleanEv	Map::clean()
 0x00328b35	0xc	Map.cpp	game	world	matched	_ZN3MapD1Ev	Map::~Map()
 0x00328b35	0xc	Map.cpp	game	world	matched	_ZN3MapD2Ev	Map::~Map()
-0x00328b41	0xd4	Map.cpp	game	world	pending	_ZN3Map6setMapENS_8eMapTypeE	Map::setMap(Map::eMapType)
+0x00328b41	0xd4	Map.cpp	game	world	matched	_ZN3Map6setMapENS_8eMapTypeE	Map::setMap(Map::eMapType)
 0x00328c15	0x34	Map.cpp	game	world	matched	_ZN3MapC1Ev	Map::Map()
 0x00328c15	0x34	Map.cpp	game	world	matched	_ZN3MapC2Ev	Map::Map()
 0x00328c49	0x130	Map.cpp	game	world	pending	_ZNK3Map4drawEv	Map::draw() const

@@ -287,7 +287,8 @@ private:
     b2Body* rightCollisionBody;
     unsigned char unknown644[4];
     float skidAmount;
-    unsigned char unknown652[20];
+    unsigned char unknown652[4];
+    float wheelGroundHeights[4];
     irr::scene::ISceneNode* enabledSceneNode;
     irr::scene::ISceneNode* wheelNodes[4];
     irr::scene::ISceneNode* exterior;

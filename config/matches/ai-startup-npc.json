@@ -108,7 +108,8 @@
             "name": "__tcf_3",
             "address": "0x002fd6f1",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN3NPC24UpdateCarPosIfUnderWheelEv"
     ],
     "sections": [
         ".npc_vtable",

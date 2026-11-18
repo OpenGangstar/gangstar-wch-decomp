@@ -31,8 +31,31 @@ __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 __cxa_pure_virtual = 0;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+ .skin_family_0 0x21a958 : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD2Ev) }
+ .skin_family_1 0x21a91c : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD1Ev) }
+ .skin_family_2 0x21a8d4 : { *(.gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD0Ev) }
+ .skin_family_3 0x2a5080 : { *(.gnu.linkonce.t._ZN3irr7collada21CSkinnedMeshSceneNodeD2Ev) }
+ .skin_family_4 0x2a4ff0 : { *(.gnu.linkonce.t._ZN3irr7collada21CSkinnedMeshSceneNodeD1Ev) }
+ .skin_family_5 0x2a51d4 : { *(.gnu.linkonce.t._ZN3irr7collada21CSkinnedMeshSceneNodeD0Ev) }
+ .skin_family_6 0x311f8c : { *(.gnu.linkonce.t._ZN26CustomSkinnedMeshSceneNodeD1Ev) }
+ .skin_family_7 0x311ef0 : { *(.gnu.linkonce.t._ZN26CustomSkinnedMeshSceneNodeD0Ev) }
+ .skin_family_8 0x257f78 : { *(.gnu.linkonce.t._ZN3irr5scene14IMeshSceneNodeD1Ev) }
+ .skin_family_9 0x257ee4 : { *(.gnu.linkonce.t._ZN3irr5scene14IMeshSceneNodeD0Ev) }
+ .skin_table_1 0x4ab390 : { *(.data.rel.ro._ZTV26CustomSkinnedMeshSceneNode .gnu.linkonce.d.rel.ro._ZTV26CustomSkinnedMeshSceneNode .rodata._ZTV26CustomSkinnedMeshSceneNode) }
+ .skin_table_2 0x4ab348 : { *(.data.rel.ro._ZTT26CustomSkinnedMeshSceneNode .gnu.linkonce.d.rel.ro._ZTT26CustomSkinnedMeshSceneNode .rodata._ZTT26CustomSkinnedMeshSceneNode) }
+ .skin_table_11 0x4ab4e8 : { *(.data.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr7collada21CSkinnedMeshSceneNodeE .gnu.linkonce.d.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr7collada21CSkinnedMeshSceneNodeE .rodata._ZTC26CustomSkinnedMeshSceneNode0_N3irr7collada21CSkinnedMeshSceneNodeE) }
+ .skin_table_12 0x4ab640 : { *(.data.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene21CColladaMeshSceneNodeE .gnu.linkonce.d.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene21CColladaMeshSceneNodeE .rodata._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene21CColladaMeshSceneNodeE) }
+ .skin_table_13 0x4ab798 : { *(.data.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene14IMeshSceneNodeE .gnu.linkonce.d.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene14IMeshSceneNodeE .rodata._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene14IMeshSceneNodeE) }
+ .skin_table_14 0x4ab8e8 : { *(.data.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene10ISceneNodeE .gnu.linkonce.d.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene10ISceneNodeE .rodata._ZTC26CustomSkinnedMeshSceneNode0_N3irr5scene10ISceneNodeE) }
+ .skin_table_15 0x4aba28 : { *(.data.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr2io26IAttributeExchangingObjectE .gnu.linkonce.d.rel.ro._ZTC26CustomSkinnedMeshSceneNode0_N3irr2io26IAttributeExchangingObjectE .rodata._ZTC26CustomSkinnedMeshSceneNode0_N3irr2io26IAttributeExchangingObjectE) }
+ .skin_table_16 0x48a050 : { *(.data.rel.ro._ZTVN3irr5scene14IMeshSceneNodeE .gnu.linkonce.d.rel.ro._ZTVN3irr5scene14IMeshSceneNodeE .rodata._ZTVN3irr5scene14IMeshSceneNodeE) }
+ .skin_table_17 0x48a1a0 : { *(.data.rel.ro._ZTTN3irr5scene14IMeshSceneNodeE .gnu.linkonce.d.rel.ro._ZTTN3irr5scene14IMeshSceneNodeE .rodata._ZTTN3irr5scene14IMeshSceneNodeE) }
+ .skin_table_18 0x48a1c0 : { *(.data.rel.ro._ZTCN3irr5scene14IMeshSceneNodeE0_NS0_10ISceneNodeE .gnu.linkonce.d.rel.ro._ZTCN3irr5scene14IMeshSceneNodeE0_NS0_10ISceneNodeE .rodata._ZTCN3irr5scene14IMeshSceneNodeE0_NS0_10ISceneNodeE) }
+ .skin_table_19 0x48a300 : { *(.data.rel.ro._ZTCN3irr5scene14IMeshSceneNodeE0_NS_2io26IAttributeExchangingObjectE .gnu.linkonce.d.rel.ro._ZTCN3irr5scene14IMeshSceneNodeE0_NS_2io26IAttributeExchangingObjectE .rodata._ZTCN3irr5scene14IMeshSceneNodeE0_NS_2io26IAttributeExchangingObjectE) }
+
     .vehicle_startup_wrapper 0x0030b59c : { *vehicle-cleanup.o(.text._GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE) }
     .vehicle_grab_scene_node 0x00310498 : { *(.text._ZN7Vehicle13grabSceneNodeEiPPPv) }
     .vehicle_light00_asset 0x0041f72c : { *(.rodata.*vehicleLight00Asset*) }

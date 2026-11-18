@@ -3,6 +3,8 @@
 
 #include "../core/StateBase.h"
 
+class AnimObject;
+
 // Observed allocation extent, StateBase interface and constructor stores.
 // Remaining callback bodies and field meanings are provisional.
 class GSFailure : public StateBase {
@@ -18,8 +20,11 @@ public:
         return StateBase::isKindOf(kind);
     }
 private:
-    unsigned int unknown4;
-    unsigned int unknown8;
+    static bool s_bCutsceneDie;
+    static bool s_bCutsceneBusted;
+    static bool s_bCutsceneMissionFailed;
+    AnimObject* animation;
+    int timer;
 };
 
 #endif

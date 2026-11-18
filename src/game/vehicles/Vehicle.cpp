@@ -64,6 +64,22 @@ namespace scene {
 class IMeshBuffer;
 class CColladaMeshSceneNode : public IMeshSceneNode {
 public:
+    virtual ~CColladaMeshSceneNode();
+    virtual void OnRegisterSceneNode();
+    virtual void OnAnimate(unsigned int);
+    virtual void render(void*);
+    virtual unsigned int getRenderVertexCount(void*);
+    virtual const core::aabbox3d<float>& getBoundingBox() const;
+    virtual void setVisible(bool);
+    virtual const char* getUID() const;
+    virtual video::SMaterial& getMaterial(unsigned int);
+    virtual unsigned int getMaterialCount() const;
+    virtual void notifyMaterialChanged();
+    virtual int getType() const;
+    virtual void onMaterialChanged();
+    virtual void notifyVisibilityChanged(bool);
+    virtual void setMesh(IMesh*);
+    virtual IMesh* getMesh();
     virtual void setReadOnlyMaterials(bool);
     virtual bool isReadOnlyMaterials() const;
     virtual IMeshBuffer* getMeshBuffer(unsigned int);
@@ -74,6 +90,13 @@ class CSkinnedMeshSceneNode : public scene::CColladaMeshSceneNode {
 public:
     CSkinnedMeshSceneNode(scene::IColladaMesh*, IRootSceneNode*, SNode*, int,
         const core::vector3d<float>&, const core::quaternion&, const core::vector3d<float>&);
+    virtual ~CSkinnedMeshSceneNode() {}
+    virtual void serializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*) const;
+    virtual void deserializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*);
+    virtual void OnAnimate(unsigned int);
+    virtual void render(void*);
+    virtual const core::aabbox3d<float>& getTransformedBoundingBox() const;
+    virtual int getType() const;
     void setIsSkinningEnabled(bool);
 protected:
     unsigned char unknown328[4];
@@ -87,7 +110,7 @@ class CustomSkinnedMeshSceneNode : public irr::collada::CSkinnedMeshSceneNode {
 public:
     CustomSkinnedMeshSceneNode(irr::scene::IColladaMesh*, irr::collada::IRootSceneNode*, irr::collada::SNode*, int,
         const irr::core::vector3d<float>&, const irr::core::quaternion&, const irr::core::vector3d<float>&);
-    virtual ~CustomSkinnedMeshSceneNode();
+    virtual ~CustomSkinnedMeshSceneNode() {}
     virtual const irr::core::aabbox3d<float>& getBoundingBox() const __attribute__((weak));
     virtual const irr::core::aabbox3d<float>& getTransformedBoundingBox() const __attribute__((weak));
 };

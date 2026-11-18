@@ -27,7 +27,9 @@
     "functions": [
         "_ZN17MediaPlayerIPhoneC1Ev",
         "_ZN17MediaPlayerIPhoneC2Ev",
-        "_ZNK17MediaPlayerIPhone6_traceEPKc"
+        "_ZNK17MediaPlayerIPhone6_traceEPKc",
+        "_ZN17MediaPlayerIPhone9playMovieEPKc",
+        "_ZN17MediaPlayerIPhone9stopMovieEv"
     ],
     "sections": [
         ".media_ctor",

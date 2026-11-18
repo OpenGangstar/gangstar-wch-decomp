@@ -48,6 +48,7 @@ class IAttributeExchangingObject : public virtual IReferenceCounted {
 public:
     virtual void serializeAttributes(IAttributes*, SAttributeReadWriteOptions*) const;
     virtual void deserializeAttributes(IAttributes*, SAttributeReadWriteOptions*);
+    virtual ~IAttributeExchangingObject() {}
 };
 }
 namespace core {

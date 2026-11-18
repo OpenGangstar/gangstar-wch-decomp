@@ -15,8 +15,10 @@ public:
 };
 class IMeshSceneNode : public ISceneNode {
 public:
-    virtual void unknown66();
-    virtual IMesh* getMesh();
+    virtual void setMesh(IMesh*) = 0;
+    virtual IMesh* getMesh() = 0;
+    virtual void setReadOnlyMaterials(bool) = 0;
+    virtual bool isReadOnlyMaterials() const = 0;
 };
 class IAnimatedMeshSceneNode : public ISceneNode {
 public:
