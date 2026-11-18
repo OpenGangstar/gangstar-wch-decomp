@@ -71,7 +71,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301418 | PlayerTest::applyDamage (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301101 | PlayerTest::getCarAnimName | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | BLOCKED | — | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | lock_init | ASSIGNED | bounded destructor-family support | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030a3e5 | Vehicle::mobilize | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -163,7 +163,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00311e55 | CCarMorphingMesh::~CCarMorphingMesh (D0) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311e9d | CCarMorphingMesh::~CCarMorphingMesh (virtual D1 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030b68d | Vehicle::ResetBodyPosition | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00311fb5 | CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode (D1) | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311fb5 | CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode (D1) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030bccd | Vehicle::setSpeed | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310499 | Vehicle::grabSceneNode | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
@@ -506,7 +506,6 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | vehicle_side | BLOCKED | — | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn | camera_tap | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003ee801 | RenderFX deleting destructor (D0) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee885 | RenderFX destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ec961 | RenderFX::Initialize | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
@@ -771,7 +770,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f2a79 | Character deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f6c45 | Character::punched | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | lock_init | ASSIGNED | private facing-field initializer migration only; tracked match remains exact | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f26ad | Character::ready | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
@@ -806,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo | lock_init | ASSIGNED | private true-hierarchy ABI regression only; tracked match remains exact | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -920,7 +919,7 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 
 | libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 
-| libsanangeles.so | 0x00321445 | SceneNodeManager::getPoolID(int) const | hud_registration | BLOCKED | 66/68-byte prefix, 72-byte candidate (unmatched) | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x00321445 | SceneNodeManager::getPoolID(int) const | hud_registration | BLOCKED | 72-byte candidate; context/order unchanged | src/game/world/SceneNodeManager.cpp |
 
 Coordinator reviewed _zoomMap: three materially different forms emitted identical complete bytes; parked under the early-stop rule without credit.
 
@@ -990,18 +989,58 @@ Coordinator approves one contextual replay per parked volume/pitch function afte
 | libsanangeles.so | 0x002e37d9 | GSSplash::ctor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 | libsanangeles.so | 0x002e3831 | GSSplash::update(StateMachine*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 
-| libsanangeles.so | 0x002e1f65 | GSFailure::dtor(StateMachine const*) | hud_glyphs | REVIEW | 100% (private proof) | src/game/app/GSFailure.cpp |
-| libsanangeles.so | 0x002e1fd5 | GSFailure::ctor(StateMachine const*) | lock_init | REVIEW | 100% (private proof) | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002e1f65 | GSFailure::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002e1fd5 | GSFailure::ctor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 
 | libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | hud_registration | BLOCKED | 98/308 bytes (unmatched) | src/game/app/GSFailure.cpp |
 
-| libsanangeles.so | 0x002e20dd | GSFailure::update(StateMachine*) | hud_glyphs | REVIEW | 100% (private proof) | src/game/app/GSFailure.cpp |
-| libsanangeles.so | 0x002d3be1 | MediaPlayerIPhone::playMovie(char const*) | lock_init | REVIEW | 100% bytes; inferred return type | src/game/app/MediaPlayerIPhone.cpp |
-| libsanangeles.so | 0x002d3be5 | MediaPlayerIPhone::stopMovie() | lock_init | REVIEW | 100% bytes; inferred return type | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x002e20dd | GSFailure::update(StateMachine*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002d3be1 | MediaPlayerIPhone::playMovie(char const*) | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x002d3be5 | MediaPlayerIPhone::stopMovie() | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |
 
-| libsanangeles.so | 0x00321699 | SceneNodeManager::manage(int, LevelObject*, int) | hud_registration | REVIEW | 100% (private proof) | src/game/world/SceneNodeManager.cpp |
-| libsanangeles.so | 0x00306d2d | SpawnPoint::hasCloseNeighbors() const | hud_glyphs | REVIEW | 100% (private proof) | src/game/world/SpawnPoint.cpp |
-| libsanangeles.so | 0x00328b41 | Map::setMap(Map::eMapType) | lock_init | ASSIGNED | pending | src/game/world/Map.cpp |
+| libsanangeles.so | 0x00321699 | SceneNodeManager::manage(int, LevelObject*, int) | — | COMPLETED | 100% | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x00306d2d | SpawnPoint::hasCloseNeighbors() const | — | COMPLETED | 100% | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x00328b41 | Map::setMap(Map::eMapType) | — | COMPLETED | 100% | src/game/world/Map.cpp |
 
-| libsanangeles.so | 0x003219cd | SceneNodeManager::drop(int, irr::scene::ISceneNode const*) | hud_registration | ASSIGNED | pending | src/game/world/SceneNodeManager.cpp |
-| libsanangeles.so | 0x003065e5 | SpawnPoint::CreateAllSpawnInstances() | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x003219cd | SceneNodeManager::drop(int, irr::scene::ISceneNode const*) | hud_registration | BLOCKED | 208/210-byte size; context/order unchanged | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003065e5 | SpawnPoint::CreateAllSpawnInstances() | hud_glyphs | BLOCKED | 327/336 bytes (unmatched) | src/game/world/SpawnPoint.cpp |
+
+| libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | hud_glyphs | BLOCKED | canonical context unchanged; no credit | src/game/world/GameObjectManager.cpp |
+| libsanangeles.so | 0x00328c49 | Map::draw() const | lock_init | BLOCKED | 294/304 bytes; original-order trial unchanged | src/game/world/Map.cpp |
+| libsanangeles.so | 0x003218d9 | SceneNodeManager::reclaimGarbage() | hud_registration | BLOCKED | 238/244 bytes; context/order unchanged | src/game/world/SceneNodeManager.cpp |
+
+Coordinator authorizes one unchanged-best integrated-context replay for each parked SceneNodeManager getPoolID, drop and reclaimGarbage after the exact bool manage implementation/header refinement. If needed, one combined original-address method-order trial is allowed with every existing function byte check. No further source search. Map::draw receives only one original-address method-order comparison using its proven typed layout and exact setMap. These are bounded context escalations, not reopened unbounded searches.
+
+| libsanangeles.so | 0x00315f39 | GameObjectManager::getDistanceFromAttackableTarget(Character*, int, LevelObject*, bool) | hud_glyphs | BLOCKED | canonical context unchanged; no credit | src/game/world/GameObjectManager.cpp |
+
+| libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | lock_init | BLOCKED | 392/384-byte size (unmatched) | src/game/world/SceneNodeManager.cpp |
+
+| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00311ef1 | _ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311f05 | _ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311f19 | _ZN26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311f8d | _ZTv0_n12_N26CustomSkinnedMeshSceneNodeD1Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311fa1 | _ZTv0_n24_N26CustomSkinnedMeshSceneNodeD1Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x00315a41 | GameObjectManager::GetMetatypeFromName(char const*) (existing match, private API-context regression review only) | — | COMPLETED | 100% (no body change) | src/game/world/GameObjectManager.cpp |
+
+Coordinator approves a bounded canonical NPC::isHostileTo declaration/member-call replay for the two parked attackable functions. The worker identified that the proper declaration perturbs an old match; at most one independent local declaration-order repair to that old function may be proposed privately, with complete byte verification. No unrelated source changes. Destructor-family scope includes the legacy parked complete destructor only as necessary support for the previously unworked deleting variant and adjustment thunks; preserve and review previous evidence before new candidates.
+
+Coordinator approves one coherent private PlayerTest header-migration prototype as a prerequisite to the assigned destructor family. Scope: PlayerTest shared header and legacy call-view aliases, Character facing fields/constructor initializer only, a shared vector-view declaration if necessary, and unchanged existing PlayerTest bodies except mechanical names/casts required by the authentic base interfaces. Preserve actual primary IMapTrackable plus Character at +4 and payload at +300; no duplicate prefix storage. No other active agent owns these prerequisites. Prove native field offsets, all existing PlayerTest/Character checks, and destructor/table bytes before any integration or credit. Any mismatch must be reported; no broad iterative retuning of existing bodies.
+
+Coordinator authorizes one final mechanically corrected coherent PlayerTest prototype based on the demonstrated context-record overlap and the two wrapper code-generation gaps: represent the actual two 16-byte records once, map distance counters into record 1 (no duplicate storage), and replace legacy position() call names with the corresponding genuine GetPosition/SetPosition calls where needed. No semantic body retuning, extra source-form search, or credit without all old Player/Character and family/table comparisons. This is a bounded layout/API correction to the preserved prototype.
+
+| libsanangeles.so | 0x00311251 | _ZN7VehicleD0Ev | hud_registration | BLOCKED | event-construction scheduling; identical-output stop | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00311499 | _ZN7VehicleD1Ev, _ZN7VehicleD2Ev | hud_registration | BLOCKED | event-construction scheduling; identical-output stop | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002fe785 | NPC::UpdateCarPosIfUnderWheel() | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
+
+Coordinator permits a focused diagnostic of the sole old photo regression in the coherent PlayerTest prototype, with at most two mechanically justified ABI/cast/declaration-order proposals only after locating the extra four bytes. No algorithm changes, assembly, register constraints, barriers, or broad source search. All old 76 Player/107 Character functions and destructor/table comparisons must pass for readiness.
+
+
+| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) (C1/C2 aliases) | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030a955 | Vehicle::Vehicle(int) (C1/C2 aliases) | hud_registration | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
+
+Coordinator approves private Vehicle-constructor layout refinement of the four native vector members at 512/524/536/548, replacing only constant-index references mechanically in preserved Vehicle/NPC bodies. Storage extent and offsets must remain unchanged. All old Vehicle and NPC/dependency checks plus accepted custom/support/table checks must pass before readiness; no other algorithm changes or additional overlapping storage.
