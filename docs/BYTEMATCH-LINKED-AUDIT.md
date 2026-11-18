@@ -135,3 +135,23 @@ ByteMatch will show the corrected linked percentage after these changes are
 approved, reach the default branch, and its successful push artifact is ingested.
 The site is not updated merely by generating a report locally. No PR or upload
 is required to inspect these local results; no PR was created for this work.
+
+
+## Verification after PR 711
+
+The current catalogue reports 4,205/4,661 matched functions and 332,482/575,264
+matched bytes (57.80%). Fully Linked code is 103,742/575,264 bytes (18.03%),
+covering 118/208 viewer units and 105 complete original-source groups. Fuzzy
+Matched remains 57.80%. These values supersede the earlier baseline totals.
+
+A fresh native executable audit checked all 1,598 qualifying function/alias
+entries. Each has a real executable STT_FUNC definition at the retail address,
+with the correct size and identical native bytes. No qualifying entry lacks a
+linked executable proof. The full current ARM build passed 182 profiles and
+10,258 function/section/GOT comparisons. Local evidence is retained in
+_scratch/linked-current-full.log/.exit and
+_scratch/linked-current-executable-audit.json.
+
+Comparison with the preceding exporter proved that every field outside completion
+metadata and completion measures is identical. All 89 tests and repository and
+progress checks pass. The changes are now integrated for the next reviewed PR.
