@@ -10709,7 +10709,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00311251	0x248	Vehicle.cpp	game	vehicles	pending	_ZN7VehicleD0Ev	Vehicle::~Vehicle()
 0x00311499	0x244	Vehicle.cpp	game	vehicles	pending	_ZN7VehicleD1Ev	Vehicle::~Vehicle()
 0x00311499	0x244	Vehicle.cpp	game	vehicles	pending	_ZN7VehicleD2Ev	Vehicle::~Vehicle()
-0x003116dd	0x600	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle10stepPhysicEv	Vehicle::stepPhysic()
+0x003116dd	0x600	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10stepPhysicEv	Vehicle::stepPhysic()
 0x00311cdd	0xcc	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11getVelDirecEv	Vehicle::getVelDirec()
 0x00311da9	0x98	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle11_shiftGearsEj	Vehicle::_shiftGears(unsigned int)
 0x00311e41	0x14	Vehicle.cpp	game	vehicles	matched	_ZTv0_n12_N16CCarMorphingMeshD0Ev	virtual thunk to CCarMorphingMesh::~CCarMorphingMesh()

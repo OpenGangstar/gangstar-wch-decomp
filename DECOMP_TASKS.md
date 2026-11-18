@@ -1090,8 +1090,16 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | lock_init | BLOCKED | 1688/1668-byte supported candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | hud_registration | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | lock_init | BLOCKED | 1732/1748-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | hud_glyphs | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | hud_glyphs | BLOCKED | 892/900-byte candidate; six forms, full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
+
+| libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | hud_registration | BLOCKED | faithful 1836/1816-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+
+| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | hud_registration | ASSIGNED | pending | src/game/ai/NPC.cpp |

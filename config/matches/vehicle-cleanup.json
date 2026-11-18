@@ -225,7 +225,8 @@
         "_ZTv0_n12_N3irr2io26IAttributeExchangingObjectD0Ev",
         "_ZN3irr7collada21CSkinnedMeshSceneNodeD2Ev",
         "_ZN7VehicleC1Ei",
-        "_ZN7VehicleC2Ei"
+        "_ZN7VehicleC2Ei",
+        "_ZN7Vehicle10stepPhysicEv"
     ],
     "sections": [
         ".vehicle_light00_asset",
@@ -584,6 +585,9 @@
         "_ZNK3irr2io26IAttributeExchangingObject19serializeAttributesEPNS0_11IAttributesEPNS0_26SAttributeReadWriteOptionsE",
         "_ZN3irr2io26IAttributeExchangingObject21deserializeAttributesEPNS0_11IAttributesEPNS0_26SAttributeReadWriteOptionsE",
         "_ZN3irr5scene10ISceneNodeD2Ev",
-        "_ZN11LevelObjectC1Ei"
+        "_ZN11LevelObjectC1Ei",
+        "_ZN10PlayerTest17addDistanceDrivenEf",
+        "_ZN10PlayerTest23addCurrentDriftDistanceEf",
+        "_ZN10PlayerTest22addCurrentJumpDistanceEf"
     ]
 }

@@ -2451,3 +2451,66 @@ Vehicle::Vehicle(int type)
     wheelTrails[2] = 0;
     wheelTrails[3] = 0;
 }
+
+#include "../core/Geometry.h"
+extern "C" float acosf(float);
+extern "C" float fabsf(float);
+void Vehicle::stepPhysic()
+{
+    using irr::core::vector3d;
+    using irr::core::quaternion;
+    using irr::core::clamp;
+    const irr::core::matrix4& transform = sceneNode->getAbsoluteTransformation();
+    const b2Vec2& bodyPosition = collisionBody->GetXForm().position;
+    const float x = 100.0f * bodyPosition.x;
+    const float y = 100.0f * bodyPosition.y;
+    const float height = (wheelPosition0.Z + wheelPosition1.Z + wheelPosition2.Z + wheelPosition3.Z) * 0.25f;
+    const float offsetZ = bodyOffset.X * transform[2] + bodyOffset.Y * transform[6] + bodyOffset.Z * transform[10];
+    vector3d<float> position(x, y, height - offsetZ);
+    vector3d<float> forward = (wheelPosition1 + wheelPosition0) * 0.5f - (wheelPosition3 + wheelPosition2) * 0.5f;
+    vector3d<float> right = (wheelPosition1 + wheelPosition3) * 0.5f - (wheelPosition0 + wheelPosition2) * 0.5f;
+    forward.normalize();
+    right.normalize();
+    vector3d<float> normal(
+        -forward.Y * right.Z + forward.Z * right.Y,
+        -forward.Z * right.X + right.Z * forward.X,
+        right.Y * -forward.X + forward.Y * right.X);
+    normal.normalize();
+    if (fabsf(forward.Z) > 0.95f) {
+        unknown506 = false;
+        unknown507 = false;
+        unknown508 = false;
+        unknown509 = false;
+        init1008 = 1000.0f;
+    }
+    vector3d<float> flatForward(forward);
+    vector3d<float> flatRight(right);
+    flatForward.Z = 0.0f;
+    flatRight.Z = 0.0f;
+    flatForward.normalize();
+    flatRight.normalize();
+    float forwardAngle = acosf(clamp(flatForward.dotProduct(forward), -1.0f, 1.0f));
+    float rightAngle = acosf(clamp(flatRight.dotProduct(right), -1.0f, 1.0f));
+    if (vector3d<float>(0, 0, 1).dotProduct(forward) < 0.0f)
+        forwardAngle = -forwardAngle;
+    if (vector3d<float>(0, 0, 1).dotProduct(right) < 0.0f)
+        rightAngle = -rightAngle;
+    quaternion yaw;
+    quaternion pitch;
+    quaternion roll;
+    yaw.fromAngleAxis(rotationZ * 0.01745329238474369f, vector3d<float>(0, 0, 1));
+    pitch.fromAngleAxis(forwardAngle, vector3d<float>(1, 0, 0));
+    roll.fromAngleAxis(-rightAngle, vector3d<float>(0, 1, 0));
+    sceneNode->setRotation(yaw * pitch * roll);
+    sceneNode->setPosition(position);
+    sceneNode->updateAbsolutePosition(false);
+    if (driver == reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()))) {
+        float distance = position.getDistanceFrom(previousPosition);
+        PlayerTest::GetPlayer()->addDistanceDriven(distance);
+        if (skidAmount > 0.0f)
+            PlayerTest::GetPlayer()->addCurrentDriftDistance(distance);
+        if (unknown505)
+            PlayerTest::GetPlayer()->addCurrentJumpDistance(distance);
+    }
+    previousPosition = position;
+}
