@@ -329,7 +329,8 @@
         "appRun",
         "appDeinit",
         "appOnAccelerometer",
-        "appPause"
+        "appPause",
+        "nativeOpenBrowser"
     ],
     "dependencies": [
         "gs3d-stuff",
@@ -341,7 +342,8 @@
         "file-stream",
         "level-object",
         "weapon",
-        "weapon-manager"
+        "weapon-manager",
+        "jni-gangstar"
     ],
     "external_thumb_functions": [
         "_ZN17GameObjectManager7despawnEP11LevelObject",
@@ -418,7 +420,6 @@
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application6ResumeEv",

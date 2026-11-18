@@ -8662,7 +8662,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d16f1	0x2	importgl.c	game	core	matched	importGLDeinit	importGLDeinit
 0x002d16f5	0x140	jni_Gangstar.c	game	app	pending	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit	Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit
 0x002d1835	0x34	jni_Gangstar.c	game	app	pending	nativeNotifyPause	nativeNotifyPause
-0x002d1869	0x5c	jni_Gangstar.c	game	app	pending	nativeOpenBrowser	nativeOpenBrowser
+0x002d1869	0x5c	jni_Gangstar.c	game	app	matched	nativeOpenBrowser	nativeOpenBrowser
 0x002d18c5	0x34	jni_Gangstar.c	game	app	pending	nativeExit	nativeExit
 0x002d18f9	0x34	jni_Gangstar.c	game	app	pending	nativedetectPhoneLang	nativedetectPhoneLang
 0x002d192d	0x34	jni_Gangstar.c	game	app	pending	nativeUnlockDemo	nativeUnlockDemo

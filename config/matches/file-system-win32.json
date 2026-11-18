@@ -103,15 +103,16 @@
         "appRun",
         "appDeinit",
         "appOnAccelerometer",
-        "appPause"
+        "appPause",
+        "nativeOpenBrowser"
     ],
     "dependencies": [
         "file-system-base",
         "path-name",
-        "debug-log"
+        "debug-log",
+        "jni-gangstar"
     ],
     "external_thumb_functions": [
-        "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application6ResumeEv",

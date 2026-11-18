@@ -59,10 +59,10 @@
         "appRun",
         "appDeinit",
         "appOnAccelerometer",
-        "appPause"
+        "appPause",
+        "nativeOpenBrowser"
     ],
     "external_thumb_functions": [
-        "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application6ResumeEv",
@@ -72,5 +72,8 @@
         "nativeUnloadSoundBig",
         "_ZN11Application4QuitEv",
         "_ZN11Application5PauseEv"
+    ],
+    "dependencies": [
+        "jni-gangstar"
     ]
 }

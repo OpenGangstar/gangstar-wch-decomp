@@ -143,3 +143,7 @@ INCLUDE config/linker/WrapperRuntimeSections.ld
 ASSERT(SIZEOF(.wrapper_application) == 4, "native wrapper app pointer extent");
 
 ASSERT(SIZEOF(.wrapper_device) == 4, "native wrapper device pointer extent");
+
+INCLUDE config/linker/JNIGangstarBrowserSections.ld
+ASSERT(SIZEOF(.gangstar_class)==4,"JNI Gangstar class cache extent");
+ASSERT(SIZEOF(.gangstar_browser_method)==4,"JNI browser method cache extent");

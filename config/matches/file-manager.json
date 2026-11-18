@@ -121,7 +121,8 @@
         "appRun",
         "appDeinit",
         "appOnAccelerometer",
-        "appPause"
+        "appPause",
+        "nativeOpenBrowser"
     ],
     "dependencies": [
         "stream",
@@ -129,10 +130,10 @@
         "debug-log",
         "file-stream",
         "buffer-stream",
-        "data-stream"
+        "data-stream",
+        "jni-gangstar"
     ],
     "external_thumb_functions": [
-        "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application6ResumeEv",

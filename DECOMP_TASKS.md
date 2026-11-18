@@ -1230,10 +1230,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1421 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeResize | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d144d | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeInit | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d1ddd | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
-| libsanangeles.so | 0x002d1869 | nativeOpenBrowser | hud_registration | REVIEW | exact 92-byte first candidate; shared JNI prefix and callers pass | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x002d1869 | nativeOpenBrowser | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eeb71 | RenderFX::SetMember(char const*, char const*, char const*) | lock_init | REVIEW | exact 96-byte candidate; eight-profile old-header graph passes | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eca0d | CanHandleMouseEvent(gameswf::character*) | hud_glyphs | BLOCKED | six candidates, 80/92 bytes; old matches preserved, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eccd9 | GetLocalPosition(gameswf::character*, float, float) | lock_init | REVIEW | exact 112-byte first candidate; affected matrix users pass | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eca69 | sprite_can_handle_mouse_event_callback(gameswf::character*) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x002d1835 | nativeNotifyPause | hud_registration | ASSIGNED | pending | src/game/app/jni_Gangstar.c |
+| libsanangeles.so | 0x003eca69 | sprite_can_handle_mouse_event_callback(gameswf::character*) | hud_glyphs | REVIEW | exact 12-byte candidate; old RenderFX family passes | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d1835 | nativeNotifyPause | hud_registration | REVIEW | exact 52-byte candidate; browser, Media and callers pass | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002d18c5 | nativeExit | hud_registration | ASSIGNED | pending | src/game/app/jni_Gangstar.c |

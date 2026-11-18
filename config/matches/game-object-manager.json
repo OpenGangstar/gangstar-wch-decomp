@@ -126,7 +126,8 @@
         "appRun",
         "appDeinit",
         "appOnAccelerometer",
-        "appPause"
+        "appPause",
+        "nativeOpenBrowser"
     ],
     "sections": [
         ".gom_event_get_id",
@@ -406,7 +407,6 @@
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "nativeOpenBrowser",
         "_ZN11Application14appKeyReleasedEi",
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application6ResumeEv",
@@ -427,6 +427,7 @@
         "res-stream",
         "file-stream",
         "path-name",
-        "debug-log"
+        "debug-log",
+        "jni-gangstar"
     ]
 }
