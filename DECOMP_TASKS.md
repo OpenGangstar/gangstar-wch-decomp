@@ -1128,3 +1128,11 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x0039c751 | dump_memory_stats(char const*, int, char const*) | — | COMPLETED | 100% | src/game/core/utility.cpp |
+
+| libsanangeles.so | 0x003935bd | png_memset(void*, unsigned char, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x003935c9 | png_memcpy(void*, void const*, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x003935d5 | png_memcmp(void const*, void const*, int) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |
+
+| libsanangeles.so | 0x003935e1 | png_strlen(char const*) | — | COMPLETED | 100% | src/game/core/png_helper.cpp |

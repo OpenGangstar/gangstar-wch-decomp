@@ -14649,10 +14649,10 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00393555	0x22	membuf.cpp	gameswf	-	matched	_ZNK7gameswf6membufneERKS0_	gameswf::membuf::operator!=(gameswf::membuf const&) const
 0x00393579	0x22	membuf.cpp	gameswf	-	matched	_ZNK7gameswf6membufeqERKS0_	gameswf::membuf::operator==(gameswf::membuf const&) const
 0x0039359d	0x20	membuf.cpp	gameswf	-	matched	_ZN7gameswf6membufaSERKS0_	gameswf::membuf::operator=(gameswf::membuf const&)
-0x003935bd	0xc	png_helper.cpp	game	core	pending	_Z10png_memsetPvhi	png_memset(void*, unsigned char, int)
-0x003935c9	0xc	png_helper.cpp	game	core	pending	_Z10png_memcpyPvPKvi	png_memcpy(void*, void const*, int)
-0x003935d5	0xc	png_helper.cpp	game	core	pending	_Z10png_memcmpPKvS0_i	png_memcmp(void const*, void const*, int)
-0x003935e1	0xc	png_helper.cpp	game	core	pending	_Z10png_strlenPKc	png_strlen(char const*)
+0x003935bd	0xc	png_helper.cpp	game	core	matched	_Z10png_memsetPvhi	png_memset(void*, unsigned char, int)
+0x003935c9	0xc	png_helper.cpp	game	core	matched	_Z10png_memcpyPvPKvi	png_memcpy(void*, void const*, int)
+0x003935d5	0xc	png_helper.cpp	game	core	matched	_Z10png_memcmpPKvS0_i	png_memcmp(void const*, void const*, int)
+0x003935e1	0xc	png_helper.cpp	game	core	matched	_Z10png_strlenPKc	png_strlen(char const*)
 0x003935ed	0x62	postscript.cpp	gameswf	-	matched	_ZN7gameswf10postscript6updateEff	gameswf::postscript::update(float, float)
 0x00393651	0xa0	postscript.cpp	gameswf	-	matched	_ZN7gameswf10postscript3boxEffff	gameswf::postscript::box(float, float, float, float)
 0x003936f1	0xa4	postscript.cpp	gameswf	-	matched	_ZN7gameswf10postscript9rectangleEffff	gameswf::postscript::rectangle(float, float, float, float)
