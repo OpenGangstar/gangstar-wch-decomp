@@ -1203,7 +1203,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | BLOCKED | GCC weak destructor alias assembly failure after two forms; no credit | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | bounded3-form escalation; two identical592/596 with frame28/104; explicitweak still assembler failure; no credit | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
 
@@ -1262,3 +1262,5 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | six forms; best4040/4020; old188/112 and 48-profile header gate pass; no credit | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
+
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | coordinator | IN_PROGRESS | fresh620-byte function; reuse recovered node/array geometry; six-form cap | src/game/rendering/GS3DStuff.cpp |
