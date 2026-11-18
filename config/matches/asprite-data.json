@@ -38,7 +38,8 @@
         "_ZN3RctIiE9_validateEv",
         "_ZN3RctIiED0Ev",
         "_ZN3RctIiED1Ev",
-        "_ZN11ASpriteData4SwapEv"
+        "_ZN11ASpriteData4SwapEv",
+        "_ZN11ASpriteData5DebugEv"
     ],
     "sections": [
         ".asprite_data_ctor",
@@ -46,7 +47,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".asprite_data_rect_vtable"
+        ".asprite_data_rect_vtable",
+        ".asprite_debug_literals"
     ],
     "retail_got": true
 }

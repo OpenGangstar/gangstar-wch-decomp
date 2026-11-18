@@ -456,7 +456,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | hud_registration | ASSIGNED | bounded current-context replay and actual position-temporary lifetime correction; reuse native seven-state enum evidence, no broad search | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | — | BLOCKED | two current/lifetime forms identical732B; target/dispatch fail; old143/134 and55 header profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
@@ -845,9 +845,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | ASSIGNED | reuse new exact Debug pointer/index canonicalization evidence; bounded two nonduplicate source forms, all old matches required | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | — | BLOCKED | single TER-pass diagnostic leaves target bytes identical and regresses seven old functions; rejected, no credit | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | ASSIGNED | new exact Debug address-operand evidence after rejected TER probe; bounded two nonduplicate declaration/address forms | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -868,7 +868,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349815 | ASprite::GetModule | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349815 | ASprite::GetModule | hud_glyphs | ASSIGNED | reuse new exact Debug explicit pointer/index address form; bounded two nonduplicate forms, unchanged headers | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
@@ -1157,13 +1157,13 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034ae61 | ASpriteData::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | hud_glyphs | ASSIGNED | two-form bounded indexed-load source/RTL canonicalization review; prior1294/1296; no other source changes | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | — | COMPLETED | 100%;1296B plus1140B literal blob; coordinator full183-profile/10267-comparison gate exact | src/game/rendering/ASpriteData.cpp |
 
 | libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | BLOCKED | 500/512 bytes; six forms; rejected two old header regressions | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | BLOCKED | 292/296 bytes; six forms; shared declaration extraction and old graph exact | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | lock_init | ASSIGNED | two likelihood-hint forms for documented return-tail difference; prior30/32, native float/NaN semantics preserved | src/game/app/IPhone.cpp |
+| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | coordinator | BLOCKED | 80/82-byte candidate; five forms, all old 36 functions and 32 section/regions exact | src/game/rendering/ASprite.cpp |
 
