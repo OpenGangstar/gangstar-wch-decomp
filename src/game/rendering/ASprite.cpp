@@ -333,3 +333,38 @@ int ASprite::GetFrameIdx(const char* name)
     }
     return -1;
 }
+
+
+const ASpriteData::Anim* ASprite::GetAnim(int index) const
+{
+    const ASpriteData* spriteData = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::Anim* animations = reinterpret_cast<const ASpriteData::Anim*>(
+        reinterpret_cast<const unsigned char*>(spriteData) + spriteData->animations);
+    return animations + index;
+}
+
+const SpriteFrame* ASprite::GetFrame(int index) const
+{
+    const ASpriteData* blob = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::Frame* frames = reinterpret_cast<const ASpriteData::Frame*>(
+        reinterpret_cast<const char*>(blob) + blob->frames);
+    return reinterpret_cast<const SpriteFrame*>(frames + index);
+}
+
+
+const SpriteFrameModule* ASprite::GetFModule(int index) const
+{
+    const ASpriteData* blob = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::FModule* modules = reinterpret_cast<const ASpriteData::FModule*>(
+        reinterpret_cast<const unsigned char*>(blob) + blob->frameModules);
+    return reinterpret_cast<const SpriteFrameModule*>(modules + index);
+}
+
+
+const SpriteModule* ASprite::GetModule(int index) const
+{
+    const ASpriteData* spriteData = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::Module* modules = reinterpret_cast<const ASpriteData::Module*>(
+        reinterpret_cast<const unsigned char*>(spriteData) + spriteData->modules);
+    return reinterpret_cast<const SpriteModule*>(modules + index);
+}

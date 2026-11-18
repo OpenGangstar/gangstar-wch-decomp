@@ -136,11 +136,10 @@ void Cash::drawCash(int amount, const int*, int& x, int y) const
     const char* text = Application::GetInstance()->GetStringManager()->formatAmount(amount, false, true);
     int length = strlen(text);
     int frames[32];
-    int i = 0;
     int extraWidth = 0;
     int frameCount = 0;
 
-    for (; i < length; ++i) {
+    for (int i = 0; i < length; ++i) {
         frames[frameCount] = -1;
         unsigned char character = text[i];
         if (static_cast<unsigned char>(character - '0') <= 9) {

@@ -1,6 +1,6 @@
 #ifndef WCH_CORE_ASPRITE_DATA_H
 #define WCH_CORE_ASPRITE_DATA_H
-#include "ASprite.h"
+#include "SpriteBounds.h"
 class ASpriteData {
     friend class ASprite;
 public:
