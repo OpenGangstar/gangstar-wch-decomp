@@ -533,7 +533,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327be9 | Cash::draw2d | vehicle_side | BLOCKED | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | hud_glyphs | ASSIGNED | one current-context genuine compiler thunk audit/replay using frozen faithful Cash draw2d candidate; parent unchanged/uncredited | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x003275c8 | Background deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
@@ -548,7 +548,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032ab54 | RetroEffect complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
 | libsanangeles.so | 0x0032aa99 | RetroEffect constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
 | libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d | camera_tap | BLOCKED | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | camera_tap | REVIEW | — | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | hud_registration | ASSIGNED | one current-context genuine compiler thunk audit/replay using frozen faithful RetroEffect draw2d candidate; parent unchanged/uncredited | src/game/rendering/RetroEffect.cpp |
 | libsanangeles.so | 0x0032b158 | SlideControl deleting destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b16d | SlideControl deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b19c | SlideControl complete destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
@@ -583,8 +583,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | lock_init | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | — | COMPLETED | 100% | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_side | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
-| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | camera_tap | BLOCKED | — | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | camera_tap | BLOCKED | — | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | lock_init | ASSIGNED | one genuine current-class ABI replay of native empty bool callback plus generated thunk; preserve undefined retail return like documented WeaponManager precedent; no guessed return | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | lock_init | ASSIGNED | one genuine current-class ABI replay of native empty bool callback plus generated thunk; preserve undefined retail return like documented WeaponManager precedent; no guessed return | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
@@ -1291,6 +1291,6 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | — | BLOCKED | native/DEX/relocation/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
 
-| libsanangeles.so | 0x0032a0e0 | non-virtual thunk to MiniMap::draw2d() const | lock_init | ASSIGNED | audit compiler-generated thunk from preserved faithful draw2d v5 candidate; no parent body edits or credit | src/game/hud/MiniMap.cpp |
+| libsanangeles.so | 0x0032a0e0 | non-virtual thunk to MiniMap::draw2d() const | — | COMPLETED | 100%; full184-profile10311-comparison gate exact; original Map initializer semantics retained; only20Bthunk adds credit, parentdraw2d unmatched | src/game/hud/MiniMap.cpp |
 
-| libsanangeles.so | 0x00328c15 | Map::Map() C1/C2 existing-match compatibility | coordinator | IN_PROGRESS | one private canonical pixel-offset/rectangle initializer migration; preserve all existing native bytes; no new credit | src/game/world/Map.cpp |
+| libsanangeles.so | 0x00328c15 | Map::Map() C1/C2 existing-match compatibility | — | COMPLETED | 100%; full184-profile10311-comparison gate exact; original Map initializer semantics retained; only20Bthunk adds credit, parentdraw2d unmatched | src/game/world/Map.cpp |

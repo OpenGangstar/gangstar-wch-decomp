@@ -1,0 +1,119 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70",
+        "-fno-tree-ch"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "nonmatching/hud/_ZNK7MiniMap6draw2dEv.cpp",
+    "linker_script": "config/linker/MiniMapDrawThunk.ld",
+    "functions": [
+        {
+            "name": "__tcf_5",
+            "address": "0x003298cd"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x0032984d"
+        },
+        {
+            "name": "_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii",
+            "address": "0x003298b9"
+        },
+        "_ZN7MiniMap27deregisterAllForMapTrackingEv",
+        "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
+        "_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject",
+        "_ZThn4_N7MiniMapD0Ev",
+        "_ZN7MiniMapD0Ev",
+        "_ZThn4_N7MiniMapD1Ev",
+        "_ZN7MiniMapD1Ev",
+        "_ZN7MiniMapD2Ev",
+        "_ZN7MiniMap6updateEd",
+        {
+            "name": "__tcf_3",
+            "address": "0x0032945d",
+            "compiled_name": "__tcf_0"
+        },
+        {
+            "name": "__tcf_2",
+            "address": "0x00329361",
+            "compiled_name": "__tcf_1"
+        },
+        {
+            "name": "__tcf_4",
+            "address": "0x00329441",
+            "compiled_name": "__tcf_2"
+        },
+        "_ZThn4_NK7MiniMap6draw2dEv"
+    ],
+    "sections": [
+        ".sdk_startup_function_0",
+        ".sdk_startup_function_1",
+        ".sdk_startup_function_2",
+        ".shared_startup_empty_text",
+        {
+            "name": ".got",
+            "offset": 864
+        },
+        ".minimap_deregister",
+        ".minimap_register",
+        ".minimap_deregister_one",
+        ".minimap_delete_thunk",
+        ".minimap_delete",
+        ".minimap_destroy_thunk",
+        ".minimap_destroy",
+        ".minimap_vtable",
+        ".minimap_update",
+        ".target_marker_cleanup",
+        ".map_cleanup",
+        ".wanted_cleanup",
+        ".minimap_draw_thunk"
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10AnimObject11SetPositionEfff",
+        "_ZN10AnimObject11UpdateFrameEv",
+        "_ZN10AnimObject4DrawEv",
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10AnimObjectD1Ev",
+        "_ZN12TargetMarkerC1Ev",
+        "_ZN12TargetMarkerD1Ev",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN3MapC1Ev",
+        "_ZN3MapD1Ev",
+        "_ZNK12TargetMarker4drawEv",
+        "_ZNK13CameraManager11getPositionEv",
+        "_ZNK13CameraManager9getLookAtEv",
+        "_ZNK3Map4drawEv",
+        "_ZNK4Item8unlockedEv",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb"
+    ],
+    "dependencies": [
+        "sdk-startup-minimap"
+    ]
+}
