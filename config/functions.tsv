@@ -8877,9 +8877,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d5a61	0x180	Application.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIPvSt4lessIS1_ESt4pairIKS1_PKcENS_10_Select1stIS8_EENS_11_MapTraitsTIS8_EESaIS8_EE13insert_uniqueENS_17_Rb_tree_iteratorIS8_SC_EERKS8_	stlp_priv::_Rb_tree<void*, std::less<void*>, std::pair<void* const, char const*>, stlp_priv::_Select1st<std::pair<void* const, char const*> >, stlp_priv::_MapTraitsT<std::pair<void* const, char const*> >, std::allocator<std::pair<void* const, char const*> > >::insert_unique(stlp_priv::_Rb_tree_iterator<std::pair<void* const, char const*>, stlp_priv::_MapTraitsT<std::pair<void* const, char const*> > >, std::pair<void* const, char const*> const&)
 0x002d5be1	0x60	Application.cpp	stlport	-	matched	_ZNSt3mapIPvPKcSt4lessIS0_ESaISt4pairIKS0_S2_EEEixIS0_EERS2_RKT_	char const*& std::map<void*, char const*, std::less<void*>, std::allocator<std::pair<void* const, char const*> > >::operator[]<void*>(void* const&)
 0x002d5c41	0x24	Application.cpp	game	app	matched	_ZN11Application15startMonitoringEPvPKc	Application::startMonitoring(void*, char const*)
-0x002d5c65	0x94	Application.cpp	game	app	pending	_ZN11ApplicationD0Ev	Application::~Application()
-0x002d5cf9	0x90	Application.cpp	game	app	pending	_ZN11ApplicationD2Ev	Application::~Application()
-0x002d5cf9	0x90	Application.cpp	game	app	pending	_ZN11ApplicationD1Ev	Application::~Application()
+0x002d5c65	0x94	Application.cpp	game	app	matched	_ZN11ApplicationD0Ev	Application::~Application()
+0x002d5cf9	0x90	Application.cpp	game	app	matched	_ZN11ApplicationD2Ev	Application::~Application()
+0x002d5cf9	0x90	Application.cpp	game	app	matched	_ZN11ApplicationD1Ev	Application::~Application()
 0x002d5d89	0x1c	Application.cpp	game	app	matched	__tcf_4	__tcf_4
 0x002d5da5	0x24	Application.cpp	game	app	matched	_ZN11EvMouseMoveD1Ev	EvMouseMove::~EvMouseMove()
 0x002d5dc9	0x2c	Application.cpp	game	app	matched	_ZN10EvKeyboardD0Ev	EvKeyboard::~EvKeyboard()

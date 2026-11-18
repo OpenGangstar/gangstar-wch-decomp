@@ -686,3 +686,7 @@ Application* Application::GetInstance()
     static Application app;
     return &app;
 }
+
+Application::~Application()
+{
+}

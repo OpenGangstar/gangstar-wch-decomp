@@ -186,7 +186,12 @@
         "nativeUnlockDemo",
         "nativeGetVersionMode",
         "nativeGetNumLaunch",
-        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
+        "_ZN11ApplicationD0Ev",
+        "_ZN11ApplicationD1Ev",
+        "_ZN11ApplicationD2Ev",
+        "_ZN3irr14IEventReceiverD0Ev",
+        "_ZN3irr14IEventReceiverD1Ev"
     ],
     "sections": [
         ".hook_0",
@@ -397,7 +402,9 @@
         ".jni_text_413288",
         ".jni_text_41328c",
         ".jni_text_413298",
-        ".jni_text_4132a8"
+        ".jni_text_4132a8",
+        ".application_vtable",
+        ".application_receiver_vtable"
     ],
     "retail_got": true,
     "source_first": true,
@@ -517,13 +524,13 @@
         "_ZN11MenuManager5popToEPKcbb",
         "_ZN11MenuManager13preloadGlyphsEb",
         "_ZN11ApplicationC1Ev",
-        "_ZN11ApplicationD1Ev",
         "_ZN9GSLoading12isGameLoadedEv",
         "_ZN15CControlManagerD1Ev",
         "_ZN12SoundManager15stopLowFpsMusicEv",
         "_ZN12SoundManager4initEv",
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZNK11MenuManager8getStateEPKc",
-        "_ZNK11MenuManager8getDepthEv"
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZN11Application7OnEventERKN3irr6SEventE"
     ]
 }
