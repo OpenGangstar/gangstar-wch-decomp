@@ -502,7 +502,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00342e05 | WantedLevelManager::_processWantedLevel | — | COMPLETED | 100% | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent | camera_tap | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
-| libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | vehicle_side | REVIEW | — | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | hud_registration | ASSIGNED | one unchanged faithful parent replay to prove real ARM20B compiler thunk with current dependencies; parentupdate uncredited | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | vehicle_side | BLOCKED | — | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -533,7 +533,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327be9 | Cash::draw2d | vehicle_side | BLOCKED | — | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | hud_glyphs | ASSIGNED | one current-context genuine compiler thunk audit/replay using frozen faithful Cash draw2d candidate; parent unchanged/uncredited | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | — | COMPLETED | 100%; real 20-byte ARM thunk; combined 186-profile native gate exact; parent remains unmatched and uncredited | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x003275c8 | Background deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
@@ -548,7 +548,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032ab54 | RetroEffect complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
 | libsanangeles.so | 0x0032aa99 | RetroEffect constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/RetroEffect.cpp |
 | libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d | camera_tap | BLOCKED | — | src/game/rendering/RetroEffect.cpp |
-| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | hud_registration | ASSIGNED | one current-context genuine compiler thunk audit/replay using frozen faithful RetroEffect draw2d candidate; parent unchanged/uncredited | src/game/rendering/RetroEffect.cpp |
+| libsanangeles.so | 0x0032abd4 | RetroEffect::draw2d non-virtual thunk | — | COMPLETED | 100%; real 20-byte ARM thunk; combined 186-profile native gate exact; parent remains unmatched and uncredited | src/game/rendering/RetroEffect.cpp |
 | libsanangeles.so | 0x0032b158 | SlideControl deleting destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b16d | SlideControl deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b19c | SlideControl complete destructor thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
@@ -561,12 +561,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b665 | SlideControl::processTouch | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b650 | SlideControl::processTouch non-virtual thunk | vehicle_side | REVIEW | — | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b650 | _ZThn8_N12SlideControl12processTouchEl | lock_init | ASSIGNED | one current-context faithful parent replay for real ARM20B compiler thunk; parent stays unmatched/uncredited | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x003268e1 | AnalogStick::processTouch | camera_tap | BLOCKED | â€” | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x003268cc | AnalogStick::processTouch non-virtual thunk | camera_tap | REVIEW | â€” | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268cc | _ZThn8_N11AnalogStick12processTouchEl | hud_glyphs | ASSIGNED | one current-context faithful parent replay for real ARM20B compiler thunk; parent stays unmatched/uncredited | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x0034cfa5 | TouchScreenIPhone deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cff5 | TouchScreenIPhone complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cf90 | TouchScreenIPhone deleting destructor thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
@@ -583,8 +583,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | lock_init | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | — | COMPLETED | 100% | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_side | BLOCKED | — | src/game/input/TouchScreenBase.cpp |
-| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | lock_init | ASSIGNED | one genuine current-class ABI replay of native empty bool callback plus generated thunk; preserve undefined retail return like documented WeaponManager precedent; no guessed return | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | lock_init | ASSIGNED | one genuine current-class ABI replay of native empty bool callback plus generated thunk; preserve undefined retail return like documented WeaponManager precedent; no guessed return | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | lock_init | REVIEW | private executable native gate exact; coordinator integrated comparison pending; original undefined callback result retained where applicable | src/game/input/AccelerometerWin32.cpp |
+| libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | lock_init | REVIEW | private executable native gate exact; coordinator integrated comparison pending; original undefined callback result retained where applicable | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034dad9 | AccelerometerWin32 complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da78 | AccelerometerWin32 deleting destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
