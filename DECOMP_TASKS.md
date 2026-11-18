@@ -181,11 +181,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032d0f9 | EvWheelReleased::~EvWheelReleased (D1) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cbe1 | Wheel::Wheel (C1/C2 aliases) | camera_tap | BLOCKED | — | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032d131 | Wheel::processTouchRelease | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
-| libsanangeles.so | 0x0032cf95 | EvWheelTurn::~EvWheelTurn (D1) | coordinator | IN_PROGRESS | Private real EvWheelTurn payload/constructor refinement; preserve existing destructor bodies and native bytes; no new credit | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032cf95 | EvWheelTurn::~EvWheelTurn (D1) | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cfcd | Wheel::processTouch | vehicle_side | BLOCKED | — | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032ccf5 | Wheel::draw2d | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cf69 | EvWheelReleased::~EvWheelReleased (D0) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
-| libsanangeles.so | 0x0032d18d | EvWheelTurn::~EvWheelTurn (D0) | coordinator | IN_PROGRESS | Private real EvWheelTurn payload/constructor refinement; preserve existing destructor bodies and native bytes; no new credit | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032d18d | EvWheelTurn::~EvWheelTurn (D0) | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032d11c | Wheel::processTouchRelease (thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cb24 | Wheel::~Wheel (D0 thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cb39 | Wheel::~Wheel (D0) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
@@ -292,7 +292,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f83f0 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 CSceneNode thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002d2f51 | LODSceneNode::LODSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate | vehicle_side | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x002f7ff8 | _ZThn100_N24CustomBillboardSceneNode9OnAnimateEj | hud_glyphs | ASSIGNED | One unchanged faithful parent replay using current real class to verify the 20-byte generated ARM thunk; parent remains pending | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7ff8 | _ZThn100_N24CustomBillboardSceneNode9OnAnimateEj | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor | camera_tap | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7b3d | CustomBillboardSceneNode::CustomBillboardSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7bf1 | CustomBillboardSceneNode::CustomBillboardSceneNode (C2) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
@@ -328,7 +328,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034934d | AnimObject::Reset | — | COMPLETED | 100% | src/game/characters/AnimObject.cpp |
 | libsanangeles.so | 0x00349445 | AnimObject::IsAnimOver | vehicle_side | BLOCKED | — | src/game/characters/AnimObject.cpp |
 | libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | lock_init | BLOCKED | — | src/game/ui/menufx.cpp |
-| libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | hud_registration | ASSIGNED | One unchanged faithful parent replay using current real class to verify the 20-byte generated ARM thunk; parent remains pending | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x00300bc5 | Path::Load | vehicle_side | BLOCKED | — | src/game/world/Path.cpp |
 | libsanangeles.so | 0x0034228d | NPCController::onEvent | camera_tap | BLOCKED | — | src/game/ai/NPCController.cpp |
 | libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | lock_init | BLOCKED | — | src/game/audio/CSoundDecoderMSADPCM.cpp |
@@ -561,7 +561,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032b5ad | SlideControl::processTouchRelease | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b598 | SlideControl::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x0032b665 | SlideControl::processTouch | vehicle_side | BLOCKED | — | src/game/ui/SlideControl.cpp |
-| libsanangeles.so | 0x0032b650 | _ZThn8_N12SlideControl12processTouchEl | lock_init | ASSIGNED | one current-context faithful parent replay for real ARM20B compiler thunk; parent stays unmatched/uncredited | src/game/ui/SlideControl.cpp |
+| libsanangeles.so | 0x0032b650 | _ZThn8_N12SlideControl12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/ui/SlideControl.cpp |
 | libsanangeles.so | 0x00326581 | AnalogStick constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
@@ -1295,14 +1295,14 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00328c15 | Map::Map() C1/C2 existing-match compatibility | — | COMPLETED | 100%; full184-profile10311-comparison gate exact; original Map initializer semantics retained; only20Bthunk adds credit, parentdraw2d unmatched | src/game/world/Map.cpp |
 
-| libsanangeles.so | 0x00326795 | EvStickMove D1 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326795 | EvStickMove D1 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |
 
-| libsanangeles.so | 0x00326e15 | EvStickMove D0 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326e15 | EvStickMove D0 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |
 
-| libsanangeles.so | 0x003267dd | EvUpDownStickMove D0 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003267dd | EvUpDownStickMove D0 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |
 
-| libsanangeles.so | 0x00326809 | EvUpDownStickMove D1 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x00326809 | EvUpDownStickMove D1 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |
 
-| libsanangeles.so | 0x0032687d | EvLeftRightStickMove D0 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x0032687d | EvLeftRightStickMove D0 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |
 
-| libsanangeles.so | 0x003268a9 | EvLeftRightStickMove D1 existing-match compatibility | coordinator | IN_PROGRESS | Private canonical event declaration prerequisite; preserve destructor bytes and all existing matches; no new credit | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268a9 | EvLeftRightStickMove D1 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |

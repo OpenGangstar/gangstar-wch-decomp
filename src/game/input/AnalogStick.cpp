@@ -81,15 +81,7 @@ void AnalogStick::draw2d() const
 // Event declarations for the recovered destructor and vtable layout.
 inline __attribute__((used)) EvStickMove::~EvStickMove() {}
 
-class EvUpDownStickMove : public IEvent {
-public:
-    virtual ~EvUpDownStickMove() __attribute__((used)) {}
-};
-
-class EvLeftRightStickMove : public IEvent {
-public:
-    virtual ~EvLeftRightStickMove() __attribute__((used)) {}
-};
+#include "DirectionalStickEvents.h"
 
 void operator delete(void*) throw();
 extern "C" {

@@ -16,7 +16,9 @@ private:
     bool positiveDirection;
     float displacement;
     // Constructor allocation proves an 84-byte extent; remaining tail is opaque.
-    unsigned char unknown64[20];
+    unsigned char unknown64[8];
+    unsigned int maximumDisplacement;
+    unsigned char unknown76[8];
 };
 
 #endif

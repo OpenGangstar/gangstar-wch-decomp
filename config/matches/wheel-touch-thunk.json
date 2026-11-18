@@ -1,0 +1,86 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "nonmatching/vehicles/_ZN5Wheel12processTouchEl.cpp",
+    "linker_script": "config/linker/WheelTouchThunk.ld",
+    "functions": [
+        "_ZNK5Wheel6draw2dEv",
+        "_ZThn4_NK5Wheel6draw2dEv",
+        "_ZN15EvWheelReleasedD0Ev",
+        "_ZN15EvWheelReleasedD1Ev",
+        "_ZN11EvWheelTurnD0Ev",
+        "_ZN11EvWheelTurnD1Ev",
+        "_ZThn8_N5Wheel19processTouchReleaseEv",
+        "_ZN5Wheel19processTouchReleaseEv",
+        "_ZN5Wheel7setHandEb",
+        "_ZThn4_N5WheelD0Ev",
+        "_ZN5WheelD0Ev",
+        "_ZThn4_N5WheelD1Ev",
+        "_ZN5WheelD1Ev",
+        "_ZN5Wheel6updateEd",
+        {
+            "name": "__tcf_2",
+            "address": "0x0032caf5"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x0032cee9"
+        },
+        {
+            "name": "_GLOBAL__I__ZN5WheelC2EP7ASpritei",
+            "address": "0x0032cf55"
+        },
+        "_ZThn8_N5Wheel12processTouchEl",
+        "_ZN7Point2DIsED0Ev",
+        "_ZN7Point2DIsED1Ev"
+    ],
+    "sections": [
+        ".wheel_event_release_vtable",
+        ".wheel_event_turn_vtable",
+        ".wheel_vtable",
+        ".sdk_startup_function_0",
+        ".sdk_startup_function_1",
+        ".sdk_startup_function_2",
+        ".shared_startup_empty_text",
+        {
+            "name": ".got",
+            "offset": 864
+        },
+        ".wheel_touch_thunk",
+        ".point2d_delete",
+        ".point2d_destroy",
+        ".point2d_table"
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite9GetModuleEi",
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZNK10HudElement6draw2dEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN10HudElementD1Ev",
+        "_ZN11Application11GetInstanceEv"
+    ]
+}

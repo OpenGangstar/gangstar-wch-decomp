@@ -10192,7 +10192,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f7dd1	0x6c	CustomBillboardSceneNode.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002f7e3d	0x14	CustomBillboardSceneNode.cpp	game	rendering	matched	_GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	_GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE
 0x002f7e51	0x1a8	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE	CustomBillboardSceneNode::debug(irr::video::IVideoDriver*)
-0x002f7ff8	0x14	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZThn100_N24CustomBillboardSceneNode9OnAnimateEj	non-virtual thunk to CustomBillboardSceneNode::OnAnimate(unsigned int)
+0x002f7ff8	0x14	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZThn100_N24CustomBillboardSceneNode9OnAnimateEj	non-virtual thunk to CustomBillboardSceneNode::OnAnimate(unsigned int)
 0x002f800d	0x2c0	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode9OnAnimateEj	CustomBillboardSceneNode::OnAnimate(unsigned int)
 0x002f82cd	0x48	CustomBillboardSceneNode.cpp	irrlicht	-	matched	_ZN3irr7collada14CRootSceneNodeD2Ev	irr::collada::CRootSceneNode::~CRootSceneNode()
 0x002f8315	0x14	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZTv0_n12_N24CustomBillboardSceneNodeD0Ev	virtual thunk to CustomBillboardSceneNode::~CustomBillboardSceneNode()
@@ -11396,7 +11396,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032b585	0x14	SlideControl.cpp	game	ui	matched	_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE
 0x0032b598	0x14	SlideControl.cpp	game	ui	matched	_ZThn8_N12SlideControl19processTouchReleaseEv	non-virtual thunk to SlideControl::processTouchRelease()
 0x0032b5ad	0xa4	SlideControl.cpp	game	ui	matched	_ZN12SlideControl19processTouchReleaseEv	SlideControl::processTouchRelease()
-0x0032b650	0x14	SlideControl.cpp	game	ui	pending	_ZThn8_N12SlideControl12processTouchEl	non-virtual thunk to SlideControl::processTouch(long)
+0x0032b650	0x14	SlideControl.cpp	game	ui	matched	_ZThn8_N12SlideControl12processTouchEl	non-virtual thunk to SlideControl::processTouch(long)
 0x0032b665	0x29c	SlideControl.cpp	game	ui	pending	_ZN12SlideControl12processTouchEl	SlideControl::processTouch(long)
 0x0032b901	0x2	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge6updateEd	SpyGauge::update(double)
 0x0032b905	0x6	SpyGauge.cpp	game	hud	matched	_ZN8SpyGauge14useDriveWellBGEv	SpyGauge::useDriveWellBG()
@@ -11495,7 +11495,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032cf55	0x14	Wheel.cpp	game	vehicles	matched	_GLOBAL__I__ZN5WheelC2EP7ASpritei	_GLOBAL__I__ZN5WheelC2EP7ASpritei
 0x0032cf69	0x2c	Wheel.cpp	game	vehicles	matched	_ZN15EvWheelReleasedD0Ev	EvWheelReleased::~EvWheelReleased()
 0x0032cf95	0x24	Wheel.cpp	game	vehicles	matched	_ZN11EvWheelTurnD1Ev	EvWheelTurn::~EvWheelTurn()
-0x0032cfb8	0x14	Wheel.cpp	game	vehicles	pending	_ZThn8_N5Wheel12processTouchEl	non-virtual thunk to Wheel::processTouch(long)
+0x0032cfb8	0x14	Wheel.cpp	game	vehicles	matched	_ZThn8_N5Wheel12processTouchEl	non-virtual thunk to Wheel::processTouch(long)
 0x0032cfcd	0x12c	Wheel.cpp	game	vehicles	pending	_ZN5Wheel12processTouchEl	Wheel::processTouch(long)
 0x0032d0f9	0x24	Wheel.cpp	game	vehicles	matched	_ZN15EvWheelReleasedD1Ev	EvWheelReleased::~EvWheelReleased()
 0x0032d11c	0x14	Wheel.cpp	game	vehicles	matched	_ZThn8_N5Wheel19processTouchReleaseEv	non-virtual thunk to Wheel::processTouchRelease()

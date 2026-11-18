@@ -1,0 +1,57 @@
+__aeabi_fsub = 0x001c4328;
+__aeabi_i2f = 0x001c41e4;
+memset = 0x001c45d4;
+__cxa_pure_virtual = 0;
+OUTPUT_FORMAT("elf32-littlearm")
+OUTPUT_ARCH(arm)
+INCLUDE build/matches/custom-billboard-animate-thunk/retail-symbols.ld
+_ZdlPv = 0x001c42b0;
+__aeabi_atexit = 0x001c494c;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+SECTIONS
+{
+ .billboard_animate_thunk 0x002f7ff8 : { *custom-billboard-animate-thunk.o(.text._ZThn100_N24CustomBillboardSceneNode9OnAnimateEj) }
+ .billboard_nonmatching_animate 0x002f800c : { *custom-billboard-animate-thunk.o(.text._ZN24CustomBillboardSceneNode9OnAnimateEj) }
+
+    .billboard_debug 0x002f7e50 : { *(.text._ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE) }
+    .billboard_ctor_1 0x002f7b3c : { *(.text._ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
+    .billboard_ctor_2 0x002f7bf0 : { *(.text._ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
+    .billboard_render 0x002f7a20 : { *(.text._ZN24CustomBillboardSceneNode6renderEv) }
+    .billboard_set_parent 0x002f79e4 : { *(.text._ZN24CustomBillboardSceneNode9setParentEPN3irr5scene10ISceneNodeE) }
+    .billboard_func_0 0x2f8404 : { *custom-billboard-animate-thunk.o(.text._ZN24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZN24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_1 0x2f8350 : { *custom-billboard-animate-thunk.o(.text._ZN24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZN24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_2 0x2f8314 : { *custom-billboard-animate-thunk.o(.text._ZTv0_n12_N24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZTv0_n12_N24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_3 0x2f8328 : { *custom-billboard-animate-thunk.o(.text._ZTv0_n24_N24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZTv0_n24_N24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_4 0x2f833c : { *custom-billboard-animate-thunk.o(.text._ZThn100_N24CustomBillboardSceneNodeD0Ev .gnu.linkonce.t._ZThn100_N24CustomBillboardSceneNodeD0Ev) }
+    .billboard_func_5 0x2f83c8 : { *custom-billboard-animate-thunk.o(.text._ZTv0_n12_N24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZTv0_n12_N24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_6 0x2f83dc : { *custom-billboard-animate-thunk.o(.text._ZTv0_n24_N24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZTv0_n24_N24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_7 0x2f83f0 : { *custom-billboard-animate-thunk.o(.text._ZThn100_N24CustomBillboardSceneNodeD1Ev .gnu.linkonce.t._ZThn100_N24CustomBillboardSceneNodeD1Ev) }
+    .billboard_func_8 0x21a8d4 : { *custom-billboard-animate-thunk.o(.text._ZN3irr2io26IAttributeExchangingObjectD0Ev .gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD0Ev) }
+    .billboard_func_9 0x21a91c : { *custom-billboard-animate-thunk.o(.text._ZN3irr2io26IAttributeExchangingObjectD1Ev .gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD1Ev) }
+    .billboard_func_10 0x21a958 : { *custom-billboard-animate-thunk.o(.text._ZN3irr2io26IAttributeExchangingObjectD2Ev .gnu.linkonce.t._ZN3irr2io26IAttributeExchangingObjectD2Ev) }
+    .billboard_table_0 0x4aa228 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTV24CustomBillboardSceneNode .gnu.linkonce.d.rel.ro._ZTV24CustomBillboardSceneNode) }
+    .billboard_table_1 0x4aa3a8 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTT24CustomBillboardSceneNode .gnu.linkonce.d.rel.ro._ZTT24CustomBillboardSceneNode) }
+    .billboard_table_2 0x4aa3f8 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTC24CustomBillboardSceneNode0_N3irr7collada14CRootSceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode0_N3irr7collada14CRootSceneNodeE) }
+    .billboard_table_3 0x4aa570 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr7collada10CSceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr7collada10CSceneNodeE) }
+    .billboard_table_4 0x4aa6b8 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene15CEmptySceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene15CEmptySceneNodeE) }
+    .billboard_table_5 0x4aa800 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene10ISceneNodeE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr5scene10ISceneNodeE) }
+    .billboard_table_6 0x4aa940 : { *custom-billboard-animate-thunk.o(.data.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr2io26IAttributeExchangingObjectE .gnu.linkonce.d.rel.ro._ZTC24CustomBillboardSceneNode100_N3irr2io26IAttributeExchangingObjectE) }
+    /DISCARD/ : { *(.text._ZN24CustomBillboardSceneNodeD2Ev) }
+    .sdk_startup_function_0 0x002f7a24 : { *custom-billboard-animate-thunk.o(.text.__tcf_2) }
+    .billboard_set_length 0x002f7a54 : { *custom-billboard-animate-thunk.o(.text._ZN24CustomBillboardSceneNode9setLengthEj) }
+    .billboard_material_type 0x002f7c70 : { *custom-billboard-animate-thunk.o(.text._ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE) }
+    .billboard_material_flag 0x002f7ca8 : { *custom-billboard-animate-thunk.o(.text._ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb) }
+    .sdk_startup_function_1 0x002f7dd0 : { *custom-billboard-animate-thunk.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .sdk_startup_function_2 0x002f7e3c : { *custom-billboard-animate-thunk.o(.text._GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
+    .sdk_startup_storage_0 0x004b7ed4 (NOLOAD) : { *custom-billboard-animate-thunk.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
+    .sdk_startup_storage_1 0x004b7ef4 (NOLOAD) : { *custom-billboard-animate-thunk.o(.bss._ZN3irr2ps5vHalfE) }
+    .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+    .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
+    .verification 0x00600000 : { *retail-got.o(.text) }
+}
+ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
+ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+
+ASSERT(SIZEOF(.billboard_animate_thunk)==20,"native ARM thunk span");
+ASSERT(SIZEOF(.billboard_nonmatching_animate)<=704,"uncredited parent must fit native span");

@@ -61,7 +61,7 @@ public:
     explicit CRootSceneNode(const CColladaDatabase&) __attribute__((long_call));
     virtual void addSkinnedMesh(scene::CColladaSkinnedMesh*);
     virtual const char* getUID() const;
-    virtual void OnAnimate(unsigned int time);
+    virtual void OnAnimate(unsigned int time) __attribute__((long_call));
     virtual void serializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*) const;
     virtual void deserializeAttributes(io::IAttributes*, io::SAttributeReadWriteOptions*);
     virtual void OnRegisterSceneNode();

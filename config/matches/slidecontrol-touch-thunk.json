@@ -1,0 +1,89 @@
+{
+    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "compiler_flags": [
+        "-O2",
+        "-fpic",
+        "-fno-toplevel-reorder",
+        "-fno-strict-aliasing",
+        "-fno-rtti",
+        "-fno-exceptions",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-march=armv5te",
+        "-mtune=xscale",
+        "-mfloat-abi=softfp",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-finline-limit=70"
+    ],
+    "assembler_flags": [
+        "-march=armv5te",
+        "-mfloat-abi=softfp",
+        "-mfpu=vfp",
+        "-meabi=4"
+    ],
+    "source": "nonmatching/ui/_ZN12SlideControl12processTouchEl.cpp",
+    "linker_script": "config/linker/SlideControlTouchThunk.ld",
+    "functions": [
+        "_ZN12SlideControl19processTouchReleaseEv",
+        "_ZThn8_N12SlideControl19processTouchReleaseEv",
+        "_ZNK12SlideControl6draw2dEv",
+        "_ZThn4_NK12SlideControl6draw2dEv",
+        "_ZN12SlideControlD0Ev",
+        "_ZN12SlideControlD1Ev",
+        "_ZThn4_N12SlideControlD0Ev",
+        "_ZThn4_N12SlideControlD1Ev",
+        "_ZN12SlideControl5resetEv",
+        "_ZN12SlideControl6updateEd",
+        {
+            "name": "__tcf_2",
+            "address": "0x0032b129"
+        },
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x0032b519"
+        },
+        {
+            "name": "_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE",
+            "address": "0x0032b585"
+        },
+        "_ZThn8_N12SlideControl12processTouchEl",
+        "_ZN17EvUpDownStickMoveD0Ev",
+        "_ZN17EvUpDownStickMoveD1Ev",
+        "_ZN20EvLeftRightStickMoveD0Ev",
+        "_ZN20EvLeftRightStickMoveD1Ev"
+    ],
+    "sections": [
+        ".slidecontrol_vtable",
+        ".sdk_startup_function_0",
+        ".sdk_startup_function_1",
+        ".sdk_startup_function_2",
+        ".shared_startup_empty_text",
+        {
+            "name": ".got",
+            "offset": 864
+        },
+        ".slidecontrol_process_thunk",
+        ".slidecontrol_invalid_touch",
+        ".move_up_D0",
+        ".move_up_D1",
+        ".move_up_vtable",
+        ".move_right_D0",
+        ".move_right_D1",
+        ".move_right_vtable",
+        ".event_id",
+        ".event_delete",
+        ".event_destructor",
+        ".event_vtable"
+    ],
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN10HudElementD1Ev",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZNK7ASprite10PaintFrameEiiii"
+    ],
+    "dependencies": [
+        "sdk-startup-slidecontrol"
+    ]
+}
