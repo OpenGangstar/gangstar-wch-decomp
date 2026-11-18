@@ -495,3 +495,40 @@ void Application::appKeyReleased(int key)
         }
     }
 }
+
+#include "../hud/MenuManager.h"
+extern bool bIsInCutscene;
+extern int iAdditionMenuDepth;
+
+void Application::appKeyPressed(int key)
+{
+    if (bIsInCutscene || lastPressedKey == key)
+        return;
+    lastPressedKey = key;
+    if (key == 82) {
+        if (stateMachine->states.back()->isKindOf(16)) {
+            if (MenuManager::getInstance()->getDepth() - iAdditionMenuDepth <= 1)
+                ProcessKeyEvent(true, 1);
+        } else if (stateMachine->states.back()->isKindOf(1)) {
+            ProcessKeyEvent(true, 2);
+        }
+    } else if (key == 4) {
+        if (stateMachine->states.back()->isKindOf(16)) {
+            if (MenuManager::getInstance()->getDepth() - iAdditionMenuDepth > 1)
+                ProcessKeyEvent(true, 1);
+            else
+                ProcessKeyEvent(true, 3);
+        } else if (stateMachine->states.back()->isKindOf(18)) {
+            if (MenuManager::getInstance()->getDepth() - iAdditionMenuDepth > 1)
+                ProcessKeyEvent(true, 1);
+            else
+                ProcessKeyEvent(true, 4);
+        } else if (stateMachine->states.back()->isKindOf(1)) {
+            ProcessKeyEvent(true, 2);
+        } else if (stateMachine->states.back()->isKindOf(23)) {
+            ProcessKeyEvent(true, 1);
+        } else if (stateMachine->states.back()->isKindOf(22)) {
+            ProcessKeyEvent(true, 1);
+        }
+    }
+}

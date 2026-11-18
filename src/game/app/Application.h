@@ -21,6 +21,7 @@ class Application {
 public:
     void ProcessKeyEvent(bool pressed, int type);
     void appKeyReleased(int key);
+    void appKeyPressed(int key);
     bool IsLogoOver();
     bool IsGlobalResumingOver();
     static Application* GetInstance();

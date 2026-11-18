@@ -1173,7 +1173,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | hud_glyphs | IN_PROGRESS | one replay against newly integrated genuine application interfaces | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | lock_init | REVIEW | exact 272-byte candidate; coherent header integration validation pending | src/game/app/Application.cpp |
 
@@ -1185,6 +1185,10 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d50f1 | Application::Update() | lock_init | REVIEW | exact 264-byte candidate; coordinator integration validation pending | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | hud_registration | REVIEW | exact 416-byte candidate; all 123 header profiles and retained dependency proof pass | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |

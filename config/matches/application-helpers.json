@@ -93,7 +93,8 @@
             "compiled_name": "__tcf_0"
         },
         "_ZN11Application15ProcessKeyEventEbi",
-        "_ZN11Application14appKeyReleasedEi"
+        "_ZN11Application14appKeyReleasedEi",
+        "_ZN11Application13appKeyPressedEi"
     ],
     "sections": [
         ".screen_dimensions",
