@@ -1,3 +1,5 @@
+__aeabi_ui2f = 0x001c4574;
+__aeabi_fdiv = 0x001c4520;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/renderfx-animation/retail-symbols.ld

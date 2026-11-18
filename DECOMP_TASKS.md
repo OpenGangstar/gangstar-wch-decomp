@@ -1237,5 +1237,5 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003eca69 | sprite_can_handle_mouse_event_callback(gameswf::character*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d1835 | nativeNotifyPause | hud_registration | REVIEW | exact 52-byte candidate; browser, Media and callers pass | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18c5 | nativeExit | hud_registration | ASSIGNED | pending | src/game/app/jni_Gangstar.c |

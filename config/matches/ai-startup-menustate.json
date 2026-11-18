@@ -267,7 +267,8 @@
         },
         "_ZN8RenderFX9SetMemberEPKcS1_S1_",
         "_Z16GetLocalPositionPN7gameswf9characterEff",
-        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE"
+        "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
+        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj"
     ],
     "sections": [
         ".help_empty_icon",
@@ -445,7 +446,6 @@
         "_ZNK7gameswf6matrix11get_y_scaleEv",
         "_ZNK7gameswf6matrix12get_rotationEv",
         "_ZN7gameswf6matrix18set_scale_rotationEfff",
-        "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
         "_Z7SwfFreePv",
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
         "_ZN10PlayerTest9GetPlayerEv",
@@ -476,6 +476,7 @@
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev",
         "_ZN7gameswf6matrix11set_inverseERKS0_",
-        "_Z19CanHandleMouseEventPN7gameswf9characterE"
+        "_Z19CanHandleMouseEventPN7gameswf9characterE",
+        "_ZN7gameswf6cxformC1Ev"
     ]
 }

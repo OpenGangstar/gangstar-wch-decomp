@@ -133,6 +133,7 @@ public:
 
 class cxform {
 public:
+    cxform();
     static cxform identity;
 
     float channels[4][2];
@@ -1320,4 +1321,29 @@ bool CanHandleMouseEvent(gameswf::character* character);
 bool sprite_can_handle_mouse_event_callback(gameswf::character* character)
 {
     return CanHandleMouseEvent(character);
+}
+
+namespace {
+inline void applyCharacterColor(gameswf::character* character, const gameswf::cxform& color)
+{
+    CharacterTransform& target = *reinterpret_cast<CharacterTransform*>(character);
+    target.color = color;
+    target.hasColor = true;
+}
+}
+
+void RenderFX::SetColorTransform(gameswf::character* character, unsigned int multiply, unsigned int add)
+{
+    if (!character)
+        return;
+    gameswf::cxform color;
+    color.channels[0][0] = finiteColor(static_cast<float>((multiply >> 16) & 255u) / 255.0f);
+    color.channels[1][0] = finiteColor(static_cast<float>((multiply >> 8) & 255u) / 255.0f);
+    color.channels[2][0] = finiteColor(static_cast<float>(multiply & 255u) / 255.0f);
+    color.channels[3][0] = finiteColor(static_cast<float>(multiply >> 24) / 255.0f);
+    color.channels[0][1] = finiteColor(static_cast<float>((add >> 16) & 255u));
+    color.channels[1][1] = finiteColor(static_cast<float>((add >> 8) & 255u));
+    color.channels[2][1] = finiteColor(static_cast<float>(add & 255u));
+    color.channels[3][1] = finiteColor(static_cast<float>(add >> 24));
+    applyCharacterColor(character, color);
 }
