@@ -1269,8 +1269,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | — | BLOCKED | six forms; best1568/1580 frame180/172; old109/118 exact;95/96 header profiles pass, fixture incomplete; no credit | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | hud_registration | IN_PROGRESS | native prerequisites approved; bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | ASSIGNED | pending; inspect historical evidence before bounded reconstruction | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x0030c035 | Vehicle::step() | lock_init | ASSIGNED | pending; inspect prior evidence then bounded reconstruction | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | — | BLOCKED | five forms; best4320/4372 frame612/620; old188/112 exact; no credit | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | hud_registration | ASSIGNED | pending; distinct5038-byte overload, inspect prior evidence | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | lock_init | ASSIGNED | pending; reuse vehicle/physics relatives after historical audit | src/game/vehicles/Vehicle.cpp |
