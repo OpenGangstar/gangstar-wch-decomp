@@ -1279,8 +1279,10 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | — | BLOCKED | six forms; best9116/9212, native412B frame; old188/112 and all95 header profiles exact; no credit | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | hud_registration | IN_PROGRESS | native 118-case CFG recovered read-only; 12636 bytes unchanged; reusing command records, no credit | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | — | BLOCKED | five forms;12384/12636, frame324/332; old/support exact and93 baseline header profiles pass; buffer extent provisional; no credit | src/game/scripting/Script.cpp |
 
 | libsanangeles.so | 0x002d1de1 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic | hud_glyphs | ASSIGNED | recover JNI descriptor/provenance from existing packaged classes.dex before reconstructing2B stub; no credit | src/game/app/jni_GLMediaPlayer.c |
 
 | libsanangeles.so | 0x002d1349 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeCanInterrupt | lock_init | ASSIGNED | recover JNI descriptor/provenance from existing packaged classes.dex before reconstructing2B stub; no credit | src/game/app/app-android.c |
+
+| libsanangeles.so | 0x002d1335 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeGetJNIEnv | hud_registration | ASSIGNED | recover exact packaged Java descriptor/provenance and genuine cached-env symbol before20B JNI reconstruction; no engine implementation scope | src/game/core/CIrrDevicePS3.cpp |
