@@ -18,6 +18,9 @@
 namespace irr { namespace core {
 template<class T> class dimension2d {
 public:
+    // Faithful Irrlicht 1.4.2 constructors; dimensions keep their original type.
+    dimension2d() : Width(0), Height(0) {}
+    dimension2d(const T& width, const T& height) : Width(width), Height(height) {}
     T Width, Height;
 };
 template<class T> class position2d {

@@ -1221,7 +1221,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d25a9 | appOnAccelerometer | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2731 | appPause | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d5d89 | Application.cpp::__tcf_4 generated singleton cleanup | — | COMPLETED | 100% | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d2759 | appInit | lock_init | BLOCKED | exact 192-byte candidate; InitWin32 declaration regresses existing Cash332 by five bytes; no credit | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2759 | appInit | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d13f5 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativePause | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d13d9 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeResume | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d13a1 | Java_com_gameloft_android_GAND_GloftGANG_GameGLSurfaceView_nativeOnTouch | — | COMPLETED | 100% | src/game/app/app-android.c |

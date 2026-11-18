@@ -1,6 +1,8 @@
 /* Reconstructed wrapper functions and the complete original browser URL. */
 SECTIONS
 {
+    .wrapper_init 0x002d2758 : { *path-name.o(.text.appInit) }
+    .wrapper_resource_path 0x004134e4 : { *path-name.o(.rodata.wrapper_resource_path) }
     .wrapper_deinit 0x002d26f0 : { *path-name.o(.text.appDeinit) }
     .wrapper_accelerometer 0x002d25a8 : { *path-name.o(.text.appOnAccelerometer) }
     .wrapper_pause 0x002d2730 : { *path-name.o(.text.appPause) }
