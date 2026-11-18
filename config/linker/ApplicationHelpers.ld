@@ -99,3 +99,5 @@ ASSERT(SIZEOF(.app_s_frameUpdateCount) == 4, "s_frameUpdateCount extent");
 ASSERT(SIZEOF(.app_s_frameUpdateTime) == 4, "s_frameUpdateTime extent");
 
 INCLUDE config/linker/ApplicationNumberSections.ld
+
+INCLUDE config/linker/ApplicationResumeSections.ld

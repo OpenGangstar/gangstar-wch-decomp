@@ -124,7 +124,8 @@
         {
             "name": "_GLOBAL__I__ZN13ScriptManager12s_playerTestE",
             "address": "0x0033fb1d"
-        }
+        },
+        "_ZN11Application6ResumeEv"
     ],
     "sections": [
         ".hook_0",
@@ -320,7 +321,11 @@
         ".application_event_EvKeyboard_vtable",
         ".application_event_EvMouseWheel_vtable",
         ".application_event_EvMouseButton_vtable",
-        ".hud_toggle_touch"
+        ".hud_toggle_touch",
+        ".application_resume_tag",
+        ".application_resume_message",
+        ".application_resume_map",
+        ".application_first_resume"
     ],
     "retail_got": true,
     "source_first": true,
@@ -433,6 +438,11 @@
         "_ZN11Application7_UpdateEi",
         "_ZN11Application5_DrawEv",
         "_ZN12SoundManager15playLowFpsMusicEib",
-        "_ZNK7ASprite10PaintFrameEiiii"
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZNK11MenuManager12isInGameMenuEv",
+        "_ZN12SoundManager15resumeAllSoundsEv",
+        "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
+        "_ZN11MenuManager5popToEPKcbb",
+        "_ZN11MenuManager13preloadGlyphsEb"
     ]
 }

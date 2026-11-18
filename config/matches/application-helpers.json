@@ -98,7 +98,8 @@
         "_ZN11Application13appKeyPressedEi",
         "_ZN11Application20GlobalResumingUpdateEv",
         "_ZN11Application6UpdateEv",
-        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc"
+        "_ZN11Application26displayNumberWithHUDSpriteEiiiPKc",
+        "_ZN11Application6ResumeEv"
     ],
     "sections": [
         ".screen_dimensions",
@@ -129,7 +130,11 @@
         ".resume_update_literals",
         ".application_update_loop",
         ".application_number_frames",
-        ".application_number_format"
+        ".application_number_format",
+        ".application_resume_tag",
+        ".application_resume_message",
+        ".application_resume_map",
+        ".application_first_resume"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -154,6 +159,15 @@
         "_ZN3irr5video15CTextureManager13reloadTextureEi",
         "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
         "_ZN11Application7_UpdateEi",
-        "_ZN11Application5_DrawEv"
+        "_ZN11Application5_DrawEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN11CHudManager16isMinimapVisibleEv",
+        "_ZNK11CHudManager8isLockedEv",
+        "_ZNK11MenuManager12isInGameMenuEv",
+        "_ZN12SoundManager15resumeAllSoundsEv",
+        "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
+        "_ZN11MenuManager5popToEPKcbb",
+        "_ZN11MenuManager13preloadGlyphsEb"
     ]
 }

@@ -27,6 +27,7 @@ public:
     virtual unsigned int getTextureCount() const;
     void reloadTexture(int index);
     void reloadAllTextures();
+    void unloadAllTextures();
 };
 typedef CTextureManager ITextureManager;
 class IVideoDriver {

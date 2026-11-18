@@ -41,6 +41,7 @@ public:
     void stopMonitoring(void* pointer);
     void SetDrawAll(bool enabled);
     void Pause();
+    void Resume();
     void StartGlobalResuming();
     void GlobalResumingDraw();
     void GlobalResumingUpdate();

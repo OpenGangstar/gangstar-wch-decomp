@@ -1187,7 +1187,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d4861 | Application::displayNumberWithHUDSprite(int, int, int, char const*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4e89 | Application::Resume() | lock_init | REVIEW | exact 344-byte candidate; coherent full integration validation pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4e89 | Application::Resume() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | hud_glyphs | REVIEW | exact 118-byte candidate; 95-profile old/support proof passed | src/game/app/Application.cpp |
 
@@ -1201,8 +1201,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d5591 | Application::Init(irr::IrrlichtDevice*) | lock_init | REVIEW | exact 656-byte candidate; oldCash header context difference and link limitations pending | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d528d | Application::GetInstance() | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d528d | Application::GetInstance() | hud_registration | REVIEW | exact 84-byte candidate; integration pending | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | hud_glyphs | BLOCKED | GCC weak destructor alias assembly failure after two forms; no credit | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | ASSIGNED | pending | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002d24f5 | appResume | hud_registration | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d1415 | Java_com_gameloft_android_GAND_GloftGANG_GameRenderer_nativeDone | lock_init | ASSIGNED | pending | src/game/app/app-android.c |
+| libsanangeles.so | 0x002d2715 | launchTwitter | hud_glyphs | ASSIGNED | pending | src/game/core/wrapper.cpp |

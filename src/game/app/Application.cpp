@@ -640,3 +640,47 @@ void Application::displayNumberWithHUDSprite(int number, int horizontalAlign, in
         ++i;
     }
 }
+
+
+#include "../input/TouchScreenBase.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MenuManager.h"
+#include "../ui/GSInGameMenu.h"
+
+template<> GSInGameMenu* StateMachine::pushState<GSInGameMenu>() __attribute__((weak));
+extern int needInterruptReload;
+static bool isFirstTime = true;
+static const char applicationResumeTag[] __attribute__((section(".rodata.application_resume_tag"))) = "m_stateMachine->wakeup();";
+static const char applicationResumeMessage[] __attribute__((section(".rodata.application_resume_message"))) = "m_stateMachine->wakeup() 111111111111111";
+static const char applicationResumeMap[] __attribute__((section(".rodata.application_resume_map"))) = "Map";
+
+void Application::Resume()
+{
+    if (isFirstTime) {
+        isFirstTime = false;
+    } else if (needInterruptReload) {
+        device->getVideoDriver()->getTextureManager()->unloadAllTextures();
+        device->reinitDriver();
+        if (!stateMachine->states.back()->isKindOf(21))
+            StartGlobalResuming();
+        StartGlobalResuming();
+        if (stateMachine->states.back()->isKindOf(21))
+            MenuManager::getInstance()->preloadGlyphs(true);
+        needInterruptReload = 0;
+    }
+
+    if (PlayerTest::GetPlayer() && !(PlayerTest::GetPlayer()->flags240 & 1)
+        && !hudManager->isLocked())
+        PlayerTest::GetPlayer()->Stop();
+    lastUpdateTime = device->getTimer()->getRealTime();
+    touchScreen->clear();
+    stateMachine->wakeup();
+    __android_log_print(4, applicationResumeTag, applicationResumeMessage);
+    if (hudManager->isMinimapVisible() && !hudManager->isLocked()) {
+        stateMachine->pushState<GSInGameMenu>();
+    } else if (MenuManager::getInstance()->isInGameMenu()) {
+        MenuManager::getInstance()->popTo(applicationResumeMap, false, true);
+    } else if (IsGlobalResumingOver()) {
+        SoundManager::getInstance()->resumeAllSounds();
+    }
+}

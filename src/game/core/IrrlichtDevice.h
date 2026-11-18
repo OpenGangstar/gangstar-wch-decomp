@@ -22,7 +22,7 @@ struct SEvent;
 class IEventReceiver;
 class IrrlichtDevice {
 public:
-    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
+    virtual void unknown0(); virtual void unknown1(); virtual void reinitDriver();
     virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
     virtual video::IVideoDriver* getVideoDriver();
     virtual io::IFileSystem* getFileSystem(); virtual void* getGUIEnvironment();
