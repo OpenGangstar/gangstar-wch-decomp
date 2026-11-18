@@ -12274,7 +12274,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342e05	0x148	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager19_processWantedLevelEv	WantedLevelManager::_processWantedLevel()
 0x00342f4d	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager18restoreWantedLevelEv	WantedLevelManager::restoreWantedLevel()
 0x00342f7d	0x36	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager16resetWantedLevelEv	WantedLevelManager::resetWantedLevel()
-0x00342fb4	0x14	WantedLevelManager.cpp	game	missions	pending	_ZThn4_N18WantedLevelManager6updateEd	non-virtual thunk to WantedLevelManager::update(double)
+0x00342fb4	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManager6updateEd	non-virtual thunk to WantedLevelManager::update(double)
 0x00342fc9	0x178	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager6updateEd	WantedLevelManager::update(double)
 0x00343141	0x170	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager	WantedLevelManager::onEvent(IEvent const*, EventManager const*)
 0x003432b1	0x1c	Persistence.cpp	game	persistence	matched	_ZN11PersistenceC2Ev	Persistence::Persistence()

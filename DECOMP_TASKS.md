@@ -181,11 +181,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032d0f9 | EvWheelReleased::~EvWheelReleased (D1) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cbe1 | Wheel::Wheel (C1/C2 aliases) | camera_tap | BLOCKED | — | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032d131 | Wheel::processTouchRelease | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
-| libsanangeles.so | 0x0032cf95 | EvWheelTurn::~EvWheelTurn (D1) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032cf95 | EvWheelTurn::~EvWheelTurn (D1) | coordinator | IN_PROGRESS | Private real EvWheelTurn payload/constructor refinement; preserve existing destructor bodies and native bytes; no new credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cfcd | Wheel::processTouch | vehicle_side | BLOCKED | — | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032ccf5 | Wheel::draw2d | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cf69 | EvWheelReleased::~EvWheelReleased (D0) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
-| libsanangeles.so | 0x0032d18d | EvWheelTurn::~EvWheelTurn (D0) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032d18d | EvWheelTurn::~EvWheelTurn (D0) | coordinator | IN_PROGRESS | Private real EvWheelTurn payload/constructor refinement; preserve existing destructor bodies and native bytes; no new credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032d11c | Wheel::processTouchRelease (thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cb24 | Wheel::~Wheel (D0 thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x0032cb39 | Wheel::~Wheel (D0) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
@@ -292,7 +292,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f83f0 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1 CSceneNode thunk) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002d2f51 | LODSceneNode::LODSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate | vehicle_side | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x002f7ff8 | CustomBillboardSceneNode::OnAnimate (thunk) | vehicle_side | REVIEW | — | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f7ff8 | _ZThn100_N24CustomBillboardSceneNode9OnAnimateEj | hud_glyphs | ASSIGNED | One unchanged faithful parent replay using current real class to verify the 20-byte generated ARM thunk; parent remains pending | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor | camera_tap | BLOCKED | — | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7b3d | CustomBillboardSceneNode::CustomBillboardSceneNode (C1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f7bf1 | CustomBillboardSceneNode::CustomBillboardSceneNode (C2) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
@@ -328,7 +328,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034934d | AnimObject::Reset | — | COMPLETED | 100% | src/game/characters/AnimObject.cpp |
 | libsanangeles.so | 0x00349445 | AnimObject::IsAnimOver | vehicle_side | BLOCKED | — | src/game/characters/AnimObject.cpp |
 | libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | lock_init | BLOCKED | — | src/game/ui/menufx.cpp |
-| libsanangeles.so | 0x0032cfb8 | Wheel::processTouch secondary thunk | camera_tap | REVIEW | — | src/game/vehicles/Wheel.cpp |
+| libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | hud_registration | ASSIGNED | One unchanged faithful parent replay using current real class to verify the 20-byte generated ARM thunk; parent remains pending | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x00300bc5 | Path::Load | vehicle_side | BLOCKED | — | src/game/world/Path.cpp |
 | libsanangeles.so | 0x0034228d | NPCController::onEvent | camera_tap | BLOCKED | — | src/game/ai/NPCController.cpp |
 | libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | lock_init | BLOCKED | — | src/game/audio/CSoundDecoderMSADPCM.cpp |
@@ -502,7 +502,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00342e05 | WantedLevelManager::_processWantedLevel | — | COMPLETED | 100% | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent | camera_tap | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | vehicle_side | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
-| libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | hud_registration | ASSIGNED | one unchanged faithful parent replay to prove real ARM20B compiler thunk with current dependencies; parentupdate uncredited | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | — | COMPLETED | 100%; real 20-byte ARM thunk; full 187-profile, 10,400-comparison native gate exact; parent remains unmatched | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | vehicle_side | BLOCKED | — | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x0030b59d | Vehicle translation-unit initializer wrapper | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -566,7 +566,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00326d3d | AnalogStick::processTouchRelease | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x00326d28 | AnalogStick::processTouchRelease non-virtual thunk | — | COMPLETED | 100% | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x003268e1 | AnalogStick::processTouch | camera_tap | BLOCKED | â€” | src/game/input/AnalogStick.cpp |
-| libsanangeles.so | 0x003268cc | _ZThn8_N11AnalogStick12processTouchEl | hud_glyphs | ASSIGNED | one current-context faithful parent replay for real ARM20B compiler thunk; parent stays unmatched/uncredited | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268cc | _ZThn8_N11AnalogStick12processTouchEl | — | BLOCKED | Current faithful parent emits 1028/1016 bytes and overlaps its next native neighbor; one replay stopped; no linked thunk proof or credit | src/game/input/AnalogStick.cpp |
 | libsanangeles.so | 0x0034cfa5 | TouchScreenIPhone deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cff5 | TouchScreenIPhone complete destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cf90 | TouchScreenIPhone deleting destructor thunk | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |

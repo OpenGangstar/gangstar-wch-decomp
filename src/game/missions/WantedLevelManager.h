@@ -28,9 +28,10 @@ private:
     int lockedLevel;
     int unknown16, unknown20;
     int savedLevel, savedLockedLevel, savedUnknown16, savedUnknown20;
-    unsigned char unknown40[36];
+    double unknown40, unknown48, unknown56, unknown64;
+    int unknown72;
     bool unknown76;
-    unsigned char unknown77[2];
+    bool unknown77, unknown78;
     bool locked;
 };
 

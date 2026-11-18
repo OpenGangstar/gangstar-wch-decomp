@@ -20,6 +20,7 @@ public:
     void resetTimer() { timer = 0; }
 
 private:
+    friend class WantedLevelManager;
     AnimObject* stars[5];
     unsigned int wantedLevel;
     unsigned int timer;
