@@ -218,7 +218,9 @@
         "_Z16GetLocalPositionPN7gameswf9characterEff",
         "_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE",
         "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
-        "_ZN8RenderFX11SearchIndex4FindEPKc"
+        "_ZN8RenderFX11SearchIndex4FindEPKc",
+        "_ZN8RenderFX9SendEventERNS_5EventE",
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
     ],
     "sections": [
         ".volumesButton",
@@ -377,7 +379,16 @@
         ".widget_mission_cashvalue",
         ".widget_mission_icon",
         ".widget_mission_button",
-        ".widget_mission_buttontext"
+        ".widget_mission_buttontext",
+        ".renderfx_send_table",
+        ".renderfx_send_0",
+        ".renderfx_send_1",
+        ".renderfx_send_2",
+        ".renderfx_send_4",
+        ".renderfx_send_6",
+        ".renderfx_send_7",
+        ".renderfx_send_8",
+        ".renderfx_send_9"
     ],
     "retail_got": true,
     "external_thumb_functions": [

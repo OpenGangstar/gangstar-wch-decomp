@@ -1244,10 +1244,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d192d | nativeUnlockDemo | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d1961 | nativeGetVersionMode | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x003ef139 | RenderFX::SendEvent(RenderFX::Event&) | hud_glyphs | REVIEW | exact 200-byte first candidate; code, table and literals pass full header graph | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef139 | RenderFX::SendEvent(RenderFX::Event&) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d1995 | nativeGetNumLaunch | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | lock_init | REVIEW | exact 280-byte first candidate; old family and header users pass | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | ASSIGNED | pending | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | IN_PROGRESS | source search parked344/368; bounded two compiler-profile diagnostics on frozen candidate | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | BLOCKED | five source forms; native-size248 but 12 bytes differ in cold-tail order, no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | BLOCKED | six source forms; native-size356 but branch/register differences, no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | hud_registration | ASSIGNED | pending | src/game/rendering/menufx.cpp |

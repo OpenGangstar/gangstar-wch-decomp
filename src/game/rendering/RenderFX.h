@@ -131,8 +131,19 @@ public:
         gameswf::character* character;
         const char* characterName;
         int type;
-        unsigned char unknown12[24];
+        union {
+            unsigned char unknown12[24];
+            struct {
+                float x;
+                float y;
+                float z;
+                int unknown24;
+                unsigned char unknown28[4];
+                int controller;
+            } payload;
+        };
         bool consumed;
+        char characterPath[256];
     };
     class EventListener {
     public:
@@ -141,6 +152,7 @@ public:
         virtual bool CanHandleEvent(Event& event);
     };
     void FSCommand(const char* command, const char* args);
+    void SendEvent(Event& event);
     void SetEventListener(EventListener* listener);
     void SetInputBehavior(int behavior);
     void SetOrientation(gameswf::orientation_mode orientation);
@@ -155,6 +167,7 @@ public:
     static void Finalize();
     static void DestroyContext(gameswf::player_context* context);
     static void ClearGlyphTextureCaches(gameswf::player_context* context);
+    static void ClearFonts(gameswf::player_context* context);
 
     void SetBounds(int left, int top, int right, int bottom);
     void SetViewport(int x, int y, int width, int height);

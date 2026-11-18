@@ -17,3 +17,5 @@ SECTIONS
 }
 
 INCLUDE config/linker/RenderFXUtilitySections.ld
+
+SECTIONS { .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) } }

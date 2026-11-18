@@ -278,7 +278,9 @@
         "nativeUnlockDemo",
         "nativeGetVersionMode",
         "nativeGetNumLaunch",
-        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit"
+        "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
+        "_ZN8RenderFX9SendEventERNS_5EventE",
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
     ],
     "sections": [
         ".help_empty_icon",
@@ -361,7 +363,16 @@
         ".jni_text_413288",
         ".jni_text_41328c",
         ".jni_text_413298",
-        ".jni_text_4132a8"
+        ".jni_text_4132a8",
+        ".renderfx_send_table",
+        ".renderfx_send_0",
+        ".renderfx_send_1",
+        ".renderfx_send_2",
+        ".renderfx_send_4",
+        ".renderfx_send_6",
+        ".renderfx_send_7",
+        ".renderfx_send_8",
+        ".renderfx_send_9"
     ],
     "retail_got": true,
     "external_thumb_functions": [
