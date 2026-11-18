@@ -53,6 +53,7 @@ public:
     void SetDrawAll(bool enabled);
     void Pause();
     void Resume();
+    void Quit();
     void StartGlobalResuming();
     void GlobalResumingDraw();
     void GlobalResumingUpdate();
@@ -92,7 +93,7 @@ public:
 private:
     void* unknown52;
     EventManager* eventManager;
-    unsigned char unknown60[4];
+    void* unknown60;
     StateMachine* stateMachine;
     StringManager* stringManager;
     CControlManager* controlManager;

@@ -772,3 +772,68 @@ void Application::Init(irr::IrrlichtDevice* newDevice)
     s_materialRenderer = new (irr::DefaultMemHint) CCustomMaterialRenderer_VERTEX_COLOR_ALPHA(
         static_cast<irr::video::CCommonGLDriver*>(newDevice->getVideoDriver()));
 }
+
+#include "../input/AccelerometerBase.h"
+#include "../input/TouchScreenBase.h"
+#include "../hud/CHudManager.h"
+#include "../combat/WeaponManager.h"
+#include "../persistence/StringManager.h"
+#include "../persistence/FileSystemBase.h"
+#include "../persistence/FileManager.h"
+#include "../meta/Achievements.h"
+#include "../rendering/GS3DStuff.h"
+#include "../scripting/ScriptManager.h"
+#include "../missions/Mission.h"
+#include "../core/EventManager.h"
+#include "../core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.h"
+void Application::Quit()
+{
+    if (GSLoading::isGameLoaded()
+        && static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getState() != 4) {
+        SaveGame save;
+        save.SampleAndSave(SaveGame::GetDefaultFilename());
+    }
+    stopSoundThread();
+    UnRegisterForUpdate(SoundManager::getInstance());
+    AchievementManager::s_achievementManager->clear();
+    if (stateMachine)
+        while (static_cast<int>(stateMachine->states.size()) > 0)
+            stateMachine->popState();
+    GS3DStuff::tearDown();
+    // Concrete type is not recovered. The native ABI calls its deleting
+    // destructor through vtable slot1 with the unchanged object receiver.
+    if (unknown60) {
+        typedef void (*DeletingDestructor)(void*);
+        DeletingDestructor* table = *reinterpret_cast<DeletingDestructor**>(unknown60);
+        table[1](unknown60);
+    }
+    unknown60 = 0;
+    if (unknown52)
+        ::operator delete(unknown52);
+    unknown52 = 0;
+    delete accelerometer;
+    accelerometer = 0;
+    delete touchScreen;
+    touchScreen = 0;
+    delete fileSystem;
+    fileSystem = 0;
+    SafeDelete(controlManager);
+    delete hudManager;
+    hudManager = 0;
+    delete weaponManager;
+    weaponManager = 0;
+    delete stringManager;
+    stringManager = 0;
+    delete eventManager;
+    eventManager = 0;
+    Vehicle::UnRegisterCarSoundsCallbacks();
+    if (device) {
+        device->closeDevice();
+        device->drop();
+    }
+    if (s_materialRenderer && !s_materialRenderer->drop()) {
+        delete s_materialRenderer;
+        s_materialRenderer = 0;
+    }
+    FileManager::Destroy();
+}

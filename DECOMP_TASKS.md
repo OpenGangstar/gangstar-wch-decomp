@@ -1193,7 +1193,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | BLOCKED | native148B aliases unmatched; three forms; authentic180B header and old123-profile proof pass | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4cd1 | Application::Quit() | lock_init | REVIEW | exact 368-byte candidate; genuine alias hierarchy proof passed except known fixture | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4cd1 | Application::Quit() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d5cf9 | Application::~Application() D1/D2 | — | COMPLETED | 100% | src/game/app/Application.cpp |
 

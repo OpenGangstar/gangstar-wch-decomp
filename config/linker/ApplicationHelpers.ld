@@ -130,3 +130,5 @@ INCLUDE config/linker/ApplicationDestructorSections.ld
 INCLUDE config/linker/ApplicationInitWin32Sections.ld
 
 INCLUDE config/linker/ApplicationInitSections.ld
+
+INCLUDE config/linker/ApplicationQuitSections.ld

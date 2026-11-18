@@ -43,6 +43,7 @@ public:
     static GS3DLightNodes lightsNodes;
     static int load(int step, int& percent);
     static void unload();
+    static void tearDown();
     static irr::scene::ISceneNode* sunNode;
     static irr::core::array<CollisionBodyDef*>* VisibleNodes;
     static irr::core::array<CollisionBodyDef*>* LastVisibleNodes;
