@@ -155,3 +155,7 @@ _scratch/linked-current-executable-audit.json.
 Comparison with the preceding exporter proved that every field outside completion
 metadata and completion measures is identical. All 89 tests and repository and
 progress checks pass. The changes are now integrated for the next reviewed PR.
+
+The regenerated current report also passes objdiff-cli 3.8.1 `report changes`
+against itself with exit zero. Evidence is retained in
+_scratch/linked-current-schema-validation.json and .exit.

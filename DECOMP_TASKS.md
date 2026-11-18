@@ -1265,8 +1265,10 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | six forms; best616/620, native156 frame; old274 checks pass; no credit | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | hud_glyphs | ASSIGNED | pending; fresh bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | — | BLOCKED | one unchanged context replay; 4 instruction/21 GOT differences in GC diagnostic; old destructor overlap blocks integration | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | lock_init | ASSIGNED | pending; fresh bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | lock_init | IN_PROGRESS | native prerequisites approved; bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | hud_registration | ASSIGNED | pending; fresh bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | hud_registration | IN_PROGRESS | native prerequisites approved; bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | ASSIGNED | pending; inspect historical evidence before bounded reconstruction | src/game/rendering/GS3DStuff.cpp |
