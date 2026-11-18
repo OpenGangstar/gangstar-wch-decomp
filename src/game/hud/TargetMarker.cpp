@@ -72,3 +72,43 @@ static void _GLOBAL__I__ZN12TargetMarkerC2Ev()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+#include "../app/Application.h"
+#include "../core/SceneNode.h"
+#include "../core/ASprite.h"
+#include "../core/Matrix4.h"
+void TargetMarker::draw() const
+{
+    if (enabled) {
+        Application::GetInstance()->GetDevice()->getVideoDriver();
+        const SpriteFrame* targetSpriteFrame=sprite->GetFrame(targetFrame);
+        const SpriteFrameModule* targetFrameModule=sprite->GetFModule(targetSpriteFrame->firstModule);
+        const SpriteModule* targetModule=sprite->GetModule(targetFrameModule->module);
+            int x=offsetX;
+            int y=offsetY;
+            irr::core::matrix4 transform;
+            transform.setRotationRadians(irr::core::vector3d<float>(0,0,depth));
+            irr::core::vector3d<float> translation(-x,-y,0);
+            transform.rotateVect(translation);
+            translation = translation + irr::core::vector3d<float>(x,y,0);
+            transform.setTranslation(translation);
+            ASprite::s_global_transform=transform;
+        sprite->PaintFrame(targetFrame,offsetX+2-(targetModule->width>>1),offsetY+2-(targetModule->height>>1),0);
+        const SpriteFrame* markerSpriteFrame=sprite->GetFrame(markerFrame);
+        const SpriteFrameModule* markerFrameModule=sprite->GetFModule(markerSpriteFrame->firstModule);
+        const SpriteModule* markerModule=sprite->GetModule(markerFrameModule->module);
+            int y2;
+            int x2;
+            x2=offsetX;
+            y2=offsetY;
+            irr::core::matrix4 transform2;
+            transform2.setRotationRadians(irr::core::vector3d<float>(0,0,depth));
+            irr::core::vector3d<float> translation2(-x2,-y2,0);
+            transform2.rotateVect(translation2);
+            translation2 = translation2 + irr::core::vector3d<float>(x2,y2,0);
+            transform2.setTranslation(translation2);
+            ASprite::s_global_transform=transform2;
+        sprite->PaintFrame(markerFrame,offsetX-(markerModule->width>>1),offsetY-(markerModule->height>>1),0);
+        ASprite::s_global_transform=irr::core::matrix4();
+    }
+}
