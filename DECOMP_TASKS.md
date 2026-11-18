@@ -1050,7 +1050,7 @@ Coordinator approves private Vehicle-constructor layout refinement of the four n
 
 | libsanangeles.so | 0x00307101 | SpawnPoint::UpdateSpawnCenters() | hud_glyphs | BLOCKED | 872/848-byte candidate; repeated compiler CSE output | src/game/world/SpawnPoint.cpp |
 | libsanangeles.so | 0x0031d7a1 | ContactListener::Persist(b2ContactPoint const*) | hud_registration | BLOCKED | 341/604 bytes after six candidates; branch layout | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, plane3df const&, vector3df const&, vector3df const&, vector3df&, vector3df&) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, plane3df const&, vector3df const&, vector3df const&, vector3df&, vector3df&) | lock_init | BLOCKED | 4848/4800-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
 Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canSpawn against the newly integrated authentic Vehicle constructor header (real IMapTrackable, scalar wheel members, accurate initialization fields). Preserve all existing unit checks; stop unchanged targets without source search, then proceed to the newly assigned centers function.
 
@@ -1065,5 +1065,9 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003238a1 | std::__stl_throw_overflow_error(char const*) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x002f4441 | b2CircleDef::~b2CircleDef() (D1) | hud_glyphs | ASSIGNED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f462d | b2CircleDef::~b2CircleDef() (D0) | hud_glyphs | ASSIGNED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f4441 | b2CircleDef::~b2CircleDef() (D1) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f462d | b2CircleDef::~b2CircleDef() (D0) | hud_glyphs | REVIEW | 100% private proof; held for next hourly batch | src/game/characters/Character.cpp |
+
+| libsanangeles.so | 0x00318be5 | LevelObject::canGoToPoint(vector3df const&) | hud_glyphs | ASSIGNED | pending | src/game/world/LevelObject.cpp |
+
+| libsanangeles.so | 0x0031b3e9 | PhysicAttributes::SetHeightAttributes(ISceneNode*, vector3df const&, PhysicInfo&) | lock_init | ASSIGNED | pending | src/game/characters/PhysicAttributes.cpp |
