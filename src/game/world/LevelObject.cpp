@@ -532,3 +532,57 @@ static void _GLOBAL__I__ZN11LevelObject12s_highlightsE()
     __static_initialization_and_destruction_0(1, 65535);
 }
 }
+
+bool LevelObject::canGoToPoint(const irr::core::vector3d<float>& target)
+{
+    b2World* world = PhysicAttributes::s_world;
+    b2Shape* shapes[100] = {0};
+    b2AABB bounds;
+    if (GetPosition().X > target.X) {
+        bounds.lowerBound.x = target.X / 100.0f;
+        bounds.upperBound.x = GetPosition().X / 100.0f;
+    } else {
+        bounds.lowerBound.x = GetPosition().X / 100.0f;
+        bounds.upperBound.x = target.X / 100.0f;
+    }
+    if (GetPosition().Y > target.Y) {
+        bounds.lowerBound.y = target.Y / 100.0f;
+        bounds.upperBound.y = GetPosition().Y / 100.0f;
+    } else {
+        bounds.lowerBound.y = GetPosition().Y / 100.0f;
+        bounds.upperBound.y = target.Y / 100.0f;
+    }
+    if (bounds.lowerBound.x == bounds.upperBound.x) bounds.upperBound.x += 0.01f;
+    if (bounds.lowerBound.y == bounds.upperBound.y) bounds.upperBound.y += 0.01f;
+    world->Query(bounds, shapes, 100);
+    float fraction = 1.0f;
+    b2Vec2 normal;
+    irr::core::vector3d<float> direction=target-GetPosition();
+    direction.normalize();
+    b2Segment segment;
+    segment.p1.x = GetPosition().X / 100.0f;
+    segment.p1.y = GetPosition().Y / 100.0f;
+    segment.p2.x = target.X / 100.0f;
+    segment.p2.y = target.Y / 100.0f;
+    for (int i = 0; i < 100; ++i) {
+        b2Shape* shape = shapes[i];
+        if (!shape) break;
+        if ((shape->GetFilterData().categoryBits == 0 &&
+             (shape->GetFilterData().groupIndex != unknown24->getIndex() + 1 || shape->GetFilterData().maskBits == 0)) ||
+            shape->IsSensor()) continue;
+        PhysicsBodyData* data = static_cast<PhysicsBodyData*>(shape->GetBody()->GetUserData());
+        if (data && data->owner == this) continue;
+        if (shape->TestSegment(shape->GetBody()->GetXForm(), &fraction, &normal, segment, 1.0f)) {
+            if (data->node) {
+                irr::core::aabbox3d<float> box=data->node->getTransformedBoundingBox();
+                float height=(GetPosition()+(target-GetPosition())*fraction).Z;
+                if(box.MinEdge.Z>height || box.MaxEdge.Z<height) continue;
+            } else if(data->lowerHeight!=data->upperHeight) {
+                float height=(GetPosition()+(target-GetPosition())*fraction).Z;
+                if(height<data->lowerHeight || height>data->upperHeight) continue;
+            }
+            return fraction>=1.0f;
+        }
+    }
+    return fraction==1.0f;
+}
