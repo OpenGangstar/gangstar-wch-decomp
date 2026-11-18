@@ -1212,7 +1212,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d2715 | launchTwitter | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d134d | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyUp | — | COMPLETED | 100% | src/game/app/app-android.c |
 | libsanangeles.so | 0x002d135d | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeOnKeyDown | — | COMPLETED | 100% | src/game/app/app-android.c |
-| libsanangeles.so | 0x002d1dd5 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds | lock_init | REVIEW | exact 6-byte candidate; integration pending | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1dd5 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
 | libsanangeles.so | 0x002d2655 | appOnKeyUp | hud_registration | ASSIGNED | pending | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2679 | appOnKeyDown | hud_glyphs | ASSIGNED | pending | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2511 | appOnTouch | lock_init | ASSIGNED | pending | src/game/core/wrapper.cpp |

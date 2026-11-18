@@ -251,6 +251,12 @@ void nativeSetPitch(jint sound, jint instance, jfloat pitch)
 {
     (*mEnv)->CallStaticVoidMethod(mEnv,mClassGLMediaPlayer,setPitchID,sound,instance,pitch);
 }
+jint Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds(
+    JNIEnv* unusedEnv, jclass unusedClass)
+{
+    return 274;
+}
+
 #ifdef __cplusplus
 }
 #endif
