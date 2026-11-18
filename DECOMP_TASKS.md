@@ -1271,10 +1271,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | ASSIGNED | pending; inspect historical evidence before bounded reconstruction | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | hud_glyphs | IN_PROGRESS | five forms; latest2564/2576; old GS3D comparisons pass; sixth form pending, no credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x0030c035 | Vehicle::step() | — | BLOCKED | five forms; best4320/4372 frame612/620; old188/112 exact; no credit | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | hud_registration | ASSIGNED | pending; distinct5038-byte overload, inspect prior evidence | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | — | BLOCKED | six forms; nearest4992/5038; old37/9 and all30 baseline header profiles pass; no credit | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | lock_init | ASSIGNED | pending; reuse vehicle/physics relatives after historical audit | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | lock_init | IN_PROGRESS | native CFG recovered read-only; 9212 bytes unchanged; reconstructing first candidate, no credit | src/game/vehicles/Vehicle.cpp |
+
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | hud_registration | IN_PROGRESS | native 118-case CFG recovered read-only; 12636 bytes unchanged; reusing command records, no credit | src/game/scripting/Script.cpp |
