@@ -871,7 +871,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00349815 | ASprite::GetModule | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349c85 | ASprite::GetFModule | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
-| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | — | COMPLETED | 100%; canonical34B and36Bsection; coordinator full183-profile10276-comparison gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325c79 | CSniperHud::hide | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |
 | libsanangeles.so | 0x00322dd5 | CCameraHud::hide | — | COMPLETED | 100% | src/game/hud/CCameraHud.cpp |
@@ -913,7 +913,7 @@ Coordinator approved one final initMap v8 proof on new instruction-diff evidence
 Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh reports: neither is an exact match; both remain parked without credit. The undelivered _zoomMap assignment is released.
 
 | libsanangeles.so | 0x00349a81 | ASprite::GetFrameIdx(char const*) | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | — | BLOCKED | canonical one-form remains62/64; old40/35 and full28-profile declaration closure801functions664regions exact; frozen no credit | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | — | BLOCKED | helper reuse retains non-nativeGetAnim call; canonicaldirect62/64 remainsbest; old41/36 and28-profile closure802/665 exact; frozen no credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100%; loop-scoped first counter restores native332B under canonical sprite API; full183-profile gate exact; no new credit | src/game/ui/Cash.cpp |
 
@@ -1159,13 +1159,13 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | — | COMPLETED | 100%;1296B plus1140B literal blob; coordinator full183-profile/10267-comparison gate exact | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_registration | ASSIGNED | one canonical ASpriteData::Module table/index reuse form; six historical forms remain frozen | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | — | BLOCKED | canonical500/512 unmatched; current40/35 and full121-profile header closure3956functions3913regions exact; frozen no credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | — | BLOCKED | bounded canonical record trial remains unmatched; frozen private proof reviewed; no credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 
-| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | lock_init | ASSIGNED | canonical80/82 first30B exact; bounded two-form native-order firstFrame/base lifetime escalation; no credit | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | canonical80/82 first30B exact; firstFrame-before-base identical; old40/35 exact; frozen no credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x002d4a01 | Application::_Update(int) | lock_init | BLOCKED | 108/106 bytes; six forms; old45/15 exact, header110/111 known fixture incomplete | src/game/app/Application.cpp |
 

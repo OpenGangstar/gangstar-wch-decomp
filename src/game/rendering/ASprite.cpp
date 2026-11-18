@@ -368,3 +368,13 @@ const SpriteModule* ASprite::GetModule(int index) const
         reinterpret_cast<const unsigned char*>(spriteData) + spriteData->modules);
     return reinterpret_cast<const SpriteModule*>(modules + index);
 }
+
+const SpriteBounds* ASprite::GetFrameRect(int frameIndex, int rectangle) const
+{
+    const ASpriteData::Frame* frame = reinterpret_cast<const ASpriteData::Frame*>(GetFrame(frameIndex));
+    int index = frame->unknown22 + rectangle;
+    const ASpriteData* spriteData = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::__rect* rectangles = reinterpret_cast<const ASpriteData::__rect*>(
+        reinterpret_cast<const unsigned char*>(spriteData) + spriteData->rectangles);
+    return reinterpret_cast<const SpriteBounds*>(rectangles + index);
+}
