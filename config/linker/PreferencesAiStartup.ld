@@ -18,6 +18,10 @@ _ZN30retail_preferences_transitions22scripted_vehicle_transE = 0x00433600;
 sprintf = 0x001c46ac;
 SECTIONS
 {
+    .preferences_get_orientation 0x00343834 : { *ai-startup-preferences.o(.text._ZN11Preferences14GetOrientationEPKc) }
+    .orientation_datastream_d1 0x002d3654 : { *ai-startup-preferences.o(.gnu.linkonce.t._ZN10DataStreamD1Ev .text._ZN10DataStreamD1Ev) }
+    .orientation_blockint_d1 0x003435e8 : { *ai-startup-preferences.o(.gnu.linkonce.t._ZN11Persistence8BlockIntD1Ev .text._ZN11Persistence8BlockIntD1Ev) }
+
  .preferences_sample_save 0x3438e4 : { *ai-startup-preferences.o(.text._ZN11Preferences13SampleAndSaveEPKc) }
     .preferences_vtable 0x004ad128 : { *ai-startup-preferences.o(.data.rel.ro._ZTV11Preferences) }
     .preferences_dtor 0x003437f0 : { *ai-startup-preferences.o(.text._ZN11PreferencesD1Ev .text._ZN11PreferencesD2Ev) }
@@ -61,3 +65,5 @@ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 
 ASSERT(SIZEOF(.preferences_filename_storage) == 256, "preferences filename extent");
+
+ASSERT(SIZEOF(.preferences_get_orientation) == 176, "native GetOrientation extent");

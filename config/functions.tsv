@@ -12319,7 +12319,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003437f1	0x20	Preferences.cpp	game	ui	matched	_ZN11PreferencesD2Ev	Preferences::~Preferences()
 0x00343811	0x24	Preferences.cpp	game	ui	matched	_ZN11PreferencesC2Ev	Preferences::Preferences()
 0x00343811	0x24	Preferences.cpp	game	ui	matched	_ZN11PreferencesC1Ev	Preferences::Preferences()
-0x00343835	0xb0	Preferences.cpp	game	ui	pending	_ZN11Preferences14GetOrientationEPKc	Preferences::GetOrientation(char const*)
+0x00343835	0xb0	Preferences.cpp	game	ui	matched	_ZN11Preferences14GetOrientationEPKc	Preferences::GetOrientation(char const*)
 0x003438e5	0x150	Preferences.cpp	game	ui	matched	_ZN11Preferences13SampleAndSaveEPKc	Preferences::SampleAndSave(char const*)
 0x00343a39	0x25c	Preferences.cpp	game	ui	pending	_ZN11Preferences12LoadAndApplyEPKc	Preferences::LoadAndApply(char const*)
 0x00343c99	0x144	Preferences.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

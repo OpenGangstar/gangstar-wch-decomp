@@ -173,3 +173,21 @@ bool Preferences::SampleAndSave(const char* name)
     _ZN10DataStreamD1Ev(&data);
     return true;
 }
+
+int Preferences::GetOrientation(const char* name)
+{
+    FileStream file(name, 1);
+    if (!file.IsValid())
+        return -1;
+    DataStream data(file, DataStream::LittleEndian);
+    SetDataStream(&data);
+    if (file.Size() > 0) {
+        BlockInt block;
+        for (int i = 0; i < 8; ++i) {
+            ReadBlock(block);
+            if (block.id == 6)
+                return block.value;
+        }
+    }
+    return -1;
+}
