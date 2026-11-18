@@ -260,3 +260,15 @@ jint Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds
 #ifdef __cplusplus
 }
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+jint Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance(
+    JNIEnv* unusedEnv, jclass unusedClass)
+{
+    return 0;
+}
+#ifdef __cplusplus
+}
+#endif

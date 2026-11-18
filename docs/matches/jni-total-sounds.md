@@ -18,3 +18,17 @@ A positive constant alone cannot prove signedness or distinguish a positive
 16-bit Java return descriptor. The 32-bit integer-count interpretation is
 consistent with the bridge's existing sound identifiers and native return ABI;
 the unavailable Java declaration is not claimed as recovered evidence.
+
+
+The related nativeGetTotalSoundsOfSameInstance stub returns the original zero:
+
+```text
+OK  Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance  0x002d1ddd  4 bytes
+```
+
+The combined JNI image passes all 31 function and 40 region comparisons in
+_scratch/jni-total-same-root.log. This stub reads no arguments and queries no
+counter. The standard JNI prefix and integer return follow the existing count
+bridge; the full Java descriptor, additional ignored arguments and static versus
+instance declaration are unverified. No behavior beyond the native zero return
+is invented. No shared header or old body changes are needed for this addition.
