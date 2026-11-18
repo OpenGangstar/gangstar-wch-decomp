@@ -1,3 +1,24 @@
+
+#include "../core/ASprite.h"
+#include "../core/PointerVector.h"
+#include "../ui/VirtualButton.h"
+#include "../ui/SlideControl.h"
+#include "../ui/Cash.h"
+#include "../ui/Background.h"
+#include "../rendering/RetroEffect.h"
+#include "MiniMap.h"
+#include "../missions/WantedMeter.h"
+#include "../audio/Radio.h"
+#include "../ui/ToggleButton.h"
+#include "../missions/Reward.h"
+#include "../combat/HitWarning.h"
+
+#include "CCameraHud.h"
+#include "SniperHud.h"
+#include "HealthBar.h"
+#include "ArmorBar.h"
+#include "CarBar.h"
+#include "../vehicles/Wheel.h"
 /*
  * CHudManager
  *
@@ -25,7 +46,7 @@ extern bool bIsInCutscene;
 
 void CHudManager::init()
 {
-    cameraManager = 0;
+    defaultReceiver = 0;
     activeHud = initialHud;
 }
 
@@ -165,8 +186,8 @@ void CHudManager::driving()
 
 void CHudManager::hide()
 {
-    for (unsigned int index = 0; index < static_cast<unsigned int>(resetElementsEnd - resetElementsBegin); ++index)
-        resetElementsBegin[index]->reset();
+    for (unsigned int index = 0; index < static_cast<unsigned int>(resetElements.end() - resetElements.begin()); ++index)
+        resetElements.begin()[index]->reset();
     activeHud->hide();
 }
 
@@ -260,4 +281,359 @@ void CHudManager::limitToWeapon(int weaponId)
 bool CHudManager::isAnyMessageDisplayed()
 {
     return static_cast<Message*>(message176)->isDisplayed() || static_cast<Message*>(message172)->isDisplayed();
+}
+
+#include "../missions/WantedMeter.h"
+#include "../missions/Reward.h"
+void CHudManager::unregUpdatableComponents()
+{
+    Application* app = Application::GetInstance();
+    app->UnRegisterForUpdate(minimap);
+    app->UnRegisterForUpdate(component140);
+    app->UnRegisterForUpdate(component144);
+    app->UnRegisterForUpdate(component148);
+    app->UnRegisterForUpdate(ammoDisplay);
+    app->UnRegisterForUpdate(component160);
+    app->UnRegisterForUpdate(wantedMeter);
+    app->UnRegisterForUpdate(spyGauge);
+    app->UnRegisterForUpdate(component168);
+    app->UnRegisterForUpdate(component120);
+    app->UnRegisterForUpdate(component124);
+    app->UnRegisterForUpdate(reinterpret_cast<IUpdatable*>(component116));
+    app->UnRegisterForUpdate(radioButton);
+    app->UnRegisterForUpdate(message172);
+    app->UnRegisterForUpdate(message176);
+    app->UnRegisterForUpdate(reward);
+}
+
+#include "../missions/WantedMeter.h"
+#include "../missions/Reward.h"
+void CHudManager::regUpdatableComponents()
+{
+    Application* app = Application::GetInstance();
+    app->RegisterForUpdate(minimap);
+    app->RegisterForUpdate(component140);
+    app->RegisterForUpdate(component144);
+    app->RegisterForUpdate(component148);
+    app->RegisterForUpdate(ammoDisplay);
+    app->RegisterForUpdate(component160);
+    app->RegisterForUpdate(wantedMeter);
+    app->RegisterForUpdate(spyGauge);
+    app->RegisterForUpdate(component168);
+    app->RegisterForUpdate(component120);
+    app->RegisterForUpdate(component124);
+    app->RegisterForUpdate(reinterpret_cast<IUpdatable*>(component116));
+    app->RegisterForUpdate(radioButton);
+    app->RegisterForUpdate(message172);
+    app->RegisterForUpdate(message176);
+    app->RegisterForUpdate(reward);
+}
+
+#include "../missions/WantedMeter.h"
+#include "../missions/Reward.h"
+void CHudManager::regDrawableComponents()
+{
+    Application* app = Application::GetInstance();
+    for (unsigned int index = 0; index < static_cast<unsigned int>(resetElements.end() - resetElements.begin()); ++index)
+        app->RegisterForDrawingOnHUD(resetElements.begin()[index]);
+    app->RegisterForDrawingOnHUD(component140);
+    app->RegisterForDrawingOnHUD(component144);
+    app->RegisterForDrawingOnHUD(component148);
+    app->RegisterForDrawingOnHUD(ammoDisplay);
+    app->RegisterForDrawingOnHUD(component160);
+    app->RegisterForDrawingOnHUD(wantedMeter);
+    app->RegisterForDrawingOnHUD(spyGauge);
+    app->RegisterForDrawingOnHUD(component168);
+    app->RegisterForDrawingOnHUD(message172);
+    app->RegisterForDrawingOnHUD(message176);
+    app->RegisterForDrawingOnHUD(reward);
+}
+
+#include "../missions/WantedMeter.h"
+#include "../missions/Reward.h"
+void CHudManager::unregDrawableComponents()
+{
+    Application* app = Application::GetInstance();
+    for (unsigned int index = 0; index < static_cast<unsigned int>(resetElements.end() - resetElements.begin()); ++index)
+        app->UnRegisterForDrawingOnHUD(resetElements.begin()[index]);
+    app->UnRegisterForDrawingOnHUD(component140);
+    app->UnRegisterForDrawingOnHUD(component144);
+    app->UnRegisterForDrawingOnHUD(component148);
+    app->UnRegisterForDrawingOnHUD(ammoDisplay);
+    app->UnRegisterForDrawingOnHUD(component160);
+    app->UnRegisterForDrawingOnHUD(wantedMeter);
+    app->UnRegisterForDrawingOnHUD(spyGauge);
+    app->UnRegisterForDrawingOnHUD(component168);
+    app->UnRegisterForDrawingOnHUD(message172);
+    app->UnRegisterForDrawingOnHUD(message176);
+    app->UnRegisterForDrawingOnHUD(reward);
+}
+
+void CHudManager::blink(int component)
+{
+    switch (component) {
+    case 0:
+        analogStick->blink(true, false);
+        break;
+    case 1:
+        component84->blink(true, false);
+        component40->blink(true, false);
+        break;
+    case 2:
+        component80->blink(true, false);
+        component52->blink(true, false);
+        component60->blink(true, false);
+        component56->blink(true, false);
+        component64->blink(true, false);
+        break;
+    case 3:
+        component76->blink(true, false);
+        break;
+    case 4:
+        enterCarButton->blink(true, true);
+        break;
+    case 5:
+        enterShopButton->blink(true, true);
+        break;
+    case 6:
+        weaponSelector->blink(true, false);
+        weaponSelectorExtra->blink(true, false);
+        break;
+    }
+}
+
+void CHudManager::setThrottleMode(ThrottleMode mode)
+{
+    throttleMode = mode;
+    switch (mode) {
+    case ObservedThrottleA:
+        drivingHud->unknown8 |= mode;
+        drivingHud->unknown8 &= 0xffbcfff3u;
+        break;
+    case ObservedThrottleB:
+    case ObservedThrottleC:
+        if (drivingHud->unknown8 & 0x00800000u) {
+            drivingHud->unknown8 |= 0x00400008u;
+            drivingHud->unknown8 &= 0xffe0fffbu;
+        } else {
+            drivingHud->unknown8 |= 0x00030004u;
+            drivingHud->unknown8 &= 0xffa3fff7u;
+        }
+        break;
+    }
+    if (drivingHud->isVisible()) {
+        drivingHud->hide();
+        drivingHud->show();
+    }
+}
+
+void CHudManager::setSteeringMode(SteeringMode mode)
+{
+    steeringMode = mode;
+    switch (mode) {
+    case ObservedSteering2:
+        drivingHud->unknown8 |= 2;
+        drivingHud->unknown8 &= ~0xa00001u;
+        break;
+    case ObservedSteering200000:
+        drivingHud->unknown8 |= 0x200000;
+        drivingHud->unknown8 &= ~0x800003u;
+        break;
+    case ObservedSteering800000:
+        drivingHud->unknown8 |= 0x800000;
+        drivingHud->unknown8 &= ~0x200003u;
+        break;
+    default:
+        drivingHud->unknown8 |= 1;
+        drivingHud->unknown8 &= ~0xa00002u;
+        break;
+    }
+    if (mode == ObservedSteering800000) {
+        if ((drivingHud->unknown8 & 0x30004u) == 0x30004u)
+            setThrottleMode(ObservedThrottleB);
+    } else {
+        if ((drivingHud->unknown8 & 0x400008u) == 0x400008u)
+            setThrottleMode(ObservedThrottleC);
+    }
+    if (drivingHud->isVisible()) {
+        drivingHud->hide();
+        drivingHud->show();
+    }
+}
+
+#include "CCameraHud.h"
+#include "SniperHud.h"
+#include "HealthBar.h"
+#include "ArmorBar.h"
+#include "CarBar.h"
+#include "../vehicles/Wheel.h"
+
+#include "../input/AnalogStick.h"
+#include "../core/ASprite.h"
+#include "../core/PointerVector.h"
+#include "../ui/VirtualButton.h"
+#include "../ui/SlideControl.h"
+#include "../ui/Cash.h"
+#include "../ui/Background.h"
+#include "../rendering/RetroEffect.h"
+#include "MiniMap.h"
+#include "../missions/WantedMeter.h"
+#include "../audio/Radio.h"
+#include "../ui/ToggleButton.h"
+#include "../missions/Reward.h"
+#include "../combat/HitWarning.h"
+
+extern int sWindowWidth;
+static const char hudSpriteHigh[] = "./huds.bsprite";
+static const char hudSpriteLow[] = "./huds_2.bsprite";
+
+CHudManager::CHudManager()
+    : activeHud(0), initialHud(new CWalkingHud(this)), drivingHud(new CDrivingHud(this)),
+      sniperHud(new CSniperHud(this)), cameraHud(new CCameraHud(this)),
+      steeringMode(ObservedSteering800000), throttleMode(ObservedThrottleC),
+      resetElements(), defaultReceiver(0), locked(false)
+{
+    if (sWindowWidth > 800)
+        reviveSprite = new ASprite(hudSpriteHigh);
+    else
+        reviveSprite = new ASprite(hudSpriteLow);
+    reviveSprite->MakeImage(0,0);
+    reviveSprite->unknown33=false;
+    analogStick=new AnalogStick(reviveSprite,0,1);
+    component40=new Wheel(reviveSprite,115);
+    component44=new VirtualButton(reviveSprite,105,static_cast<EvVButton::ButtonType::Type>(2),true);
+    component48=new VirtualButton(reviveSprite,104,static_cast<EvVButton::ButtonType::Type>(0),true);
+    component52=new VirtualButton(reviveSprite,106,static_cast<EvVButton::ButtonType::Type>(4),true);
+    component56=new VirtualButton(reviveSprite,107,static_cast<EvVButton::ButtonType::Type>(5),true);
+    component60=new VirtualButton(reviveSprite,175,static_cast<EvVButton::ButtonType::Type>(4),true);
+    component64=new VirtualButton(reviveSprite,176,static_cast<EvVButton::ButtonType::Type>(5),true);
+    component80=new SlideControl(reviveSprite,100,101,SlideControl::Vertical);
+    component84=new SlideControl(reviveSprite,102,103,SlideControl::Horizontal);
+    component88=new VirtualButton(reviveSprite,98,static_cast<EvVButton::ButtonType::Type>(2),true);
+    component92=new VirtualButton(reviveSprite,99,static_cast<EvVButton::ButtonType::Type>(0),true);
+    component96=new VirtualButton(reviveSprite,174,static_cast<EvVButton::ButtonType::Type>(2),true);
+    component100=new VirtualButton(reviveSprite,173,static_cast<EvVButton::ButtonType::Type>(0),true);
+    enterShopButton=new VirtualButton(reviveSprite,111,static_cast<EvVButton::ButtonType::Type>(3),true);
+    enterCarButton=new VirtualButton(reviveSprite,2,static_cast<EvVButton::ButtonType::Type>(2),true);
+    component76=new VirtualButton(reviveSprite,3,static_cast<EvVButton::ButtonType::Type>(0),true);
+    weaponSelectorExtra=new AnimatedButton(reviveSprite,0,static_cast<EvVButton::ButtonType::Type>(6));
+    radioButton=new AnimatedButton(reviveSprite,42,static_cast<EvVButton::ButtonType::Type>(11));
+    retroOverlay=new RetroEffect;
+    minimap=new MiniMap(reviveSprite,5,6,7,22);
+    component140=new HealthBar(reviveSprite,23,24,25);
+    component144=new ArmorBar(reviveSprite,26,27,28);
+    component148=new CarBar(reviveSprite,112,113,114);
+    spyGauge=new SpyGauge(reviveSprite,140,141,143,109,177);
+    ammoDisplay=new Ammo(reviveSprite,38);
+    component160=new Cash(reviveSprite,87,86,97,172,-1);
+    wantedMeter=new WantedMeter(reviveSprite,1);
+    radioToggle=new ToggleButton(reviveSprite,145,147);
+    radio=new Radio(reviveSprite,144,26,32,37,146,31);
+    weaponSelector=new AnimatedButton(reviveSprite,15,static_cast<EvVButton::ButtonType::Type>(-1));
+    component168=new HitWarning(reviveSprite,116);
+    component112=new HudElement(reviveSprite,130,false);
+    component120=new VirtualButton(reviveSprite,133,static_cast<EvVButton::ButtonType::Type>(10),true);
+    component124=new VirtualButton(reviveSprite,132,static_cast<EvVButton::ButtonType::Type>(0),true);
+    component116=new Background(reviveSprite,131);
+    message172=new Message(reviveSprite,static_cast<MenuManager::eText>(9),12,14);
+    message176=new Message(reviveSprite,static_cast<MenuManager::eText>(10),-2,-3);
+    reward=new Reward(reviveSprite,13);
+    resetElements.push_back(minimap);
+    resetElements.push_back(retroOverlay);
+    resetElements.push_back(component112);
+    resetElements.push_back(component116);
+    resetElements.push_back(analogStick);
+    resetElements.push_back(component40);
+    resetElements.push_back(component44);
+    resetElements.push_back(component48);
+    resetElements.push_back(component52);
+    resetElements.push_back(component56);
+    resetElements.push_back(component60);
+    resetElements.push_back(component64);
+    resetElements.push_back(component80);
+    resetElements.push_back(component84);
+    resetElements.push_back(component88);
+    resetElements.push_back(component92);
+    resetElements.push_back(component96);
+    resetElements.push_back(component100);
+    resetElements.push_back(enterCarButton);
+    resetElements.push_back(enterShopButton);
+    resetElements.push_back(component76);
+    resetElements.push_back(weaponSelectorExtra);
+    resetElements.push_back(radioToggle);
+    resetElements.push_back(radio);
+    resetElements.push_back(weaponSelector);
+    resetElements.push_back(component120);
+    resetElements.push_back(component124);
+    resetElements.push_back(radioButton);
+    regDrawableComponents();
+    regUpdatableComponents();
+    activeHud=initialHud;
+}
+
+#include "../core/ASprite.h"
+#include "../core/PointerVector.h"
+#include "../missions/WantedMeter.h"
+#include "../missions/Reward.h"
+#include "../audio/Radio.h"
+#include "../ui/ToggleButton.h"
+class CSniperHud;
+class CCameraHud;
+template<class T> void SafeDelete(T*&) __attribute__((weak));
+namespace {
+template<class T> inline void destroyHudObject(T*& object)
+{
+    delete object;
+    object = 0;
+}
+}
+CHudManager::~CHudManager()
+{
+    unregDrawableComponents();
+    unregUpdatableComponents();
+    destroyHudObject(reviveSprite);
+    destroyHudObject(analogStick);
+    destroyHudObject(component40);
+    destroyHudObject(component80);
+    destroyHudObject(component84);
+    destroyHudObject(component88);
+    destroyHudObject(component92);
+    destroyHudObject(component96);
+    destroyHudObject(component100);
+    destroyHudObject(enterCarButton);
+    destroyHudObject(enterShopButton);
+    destroyHudObject(component76);
+    destroyHudObject(retroOverlay);
+    destroyHudObject(minimap);
+    destroyHudObject(component140);
+    destroyHudObject(component144);
+    destroyHudObject(component148);
+    destroyHudObject(spyGauge);
+    destroyHudObject(ammoDisplay);
+    destroyHudObject(component160);
+    destroyHudObject(weaponSelector);
+    destroyHudObject(weaponSelectorExtra);
+    destroyHudObject(component112);
+    destroyHudObject(reinterpret_cast<HudElement*&>(component116));
+    destroyHudObject(component120);
+    destroyHudObject(component124);
+    SafeDelete(reinterpret_cast<CDrivingHud*&>(drivingHud));
+    SafeDelete(reinterpret_cast<CWalkingHud*&>(initialHud));
+    SafeDelete(reinterpret_cast<CSniperHud*&>(sniperHud));
+    SafeDelete(reinterpret_cast<CCameraHud*&>(cameraHud));
+    destroyHudObject(wantedMeter);
+    destroyHudObject(component168);
+    destroyHudObject(message172);
+    destroyHudObject(message176);
+    destroyHudObject(reward);
+    destroyHudObject(component44);
+    destroyHudObject(component48);
+    destroyHudObject(component52);
+    destroyHudObject(component56);
+    destroyHudObject(component60);
+    destroyHudObject(component64);
+    destroyHudObject(radio);
+    destroyHudObject(radioToggle);
+    destroyHudObject(radioButton);
+
 }

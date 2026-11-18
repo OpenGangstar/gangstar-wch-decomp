@@ -1,3 +1,4 @@
+INCLUDE config/linker/CHudManagerRecoveredSections.ld
 SECTIONS
 {
     .message_2e7638 0x002e7638 : { *hud-manager-helpers.o(.text._ZN11CHudManager21isAnyMessageDisplayedEv) }

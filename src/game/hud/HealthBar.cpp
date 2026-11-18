@@ -11,13 +11,7 @@
 #include "Gauge.h"
 #include "../characters/PlayerTest.h"
 
-class HealthBar : public Gauge {
-public:
-    HealthBar(ASprite*, int, int, int);
-    virtual ~HealthBar();
-    virtual void update(double);
-    virtual void draw2d() const;
-};
+#include "HealthBar.h"
 
 void HealthBar::draw2d() const
 {

@@ -1,13 +1,29 @@
 #ifndef WCH_HUD_CHUD_MANAGER_H
 #define WCH_HUD_CHUD_MANAGER_H
 
+#include "../core/FrameInterfaces.h"
+#include "../core/PointerVector.h"
+
 class AnalogStick;
+class Wheel;
+class VirtualButton;
+class SlideControl;
+class MiniMap;
+class HealthBar;
+class ArmorBar;
+class CarBar;
+class Cash;
+class HitWarning;
+class Background;
+class Message;
+class RetroEffect;
 class Ammo;
 class ASprite;
 class AnimatedButton;
 class CameraManager;
 class HudElement;
 class IHud;
+class ITouchable;
 class SpyGauge;
 class Radio;
 class Reward;
@@ -19,8 +35,20 @@ struct HudComponent116 {
     unsigned char unknown0[56];
     bool unknown56;
 };
-class CHudManager {
+class CHudManager : public IUpdatable {
 public:
+    CHudManager();
+    virtual ~CHudManager();
+    virtual void update(double elapsed);
+    enum SteeringMode { ObservedSteering2 = 2, ObservedSteering200000 = 0x200000, ObservedSteering800000 = 0x800000 };
+    enum ThrottleMode { ObservedThrottleA = 0x001c0000, ObservedThrottleB = 0x00400008, ObservedThrottleC = 0x00030004 };
+    void setSteeringMode(SteeringMode mode) __attribute__((weak));
+    void setThrottleMode(ThrottleMode mode) __attribute__((weak));
+    void regUpdatableComponents();
+    void unregUpdatableComponents();
+    void regDrawableComponents();
+    void unregDrawableComponents();
+    void blink(int component);
     void useSpyBGInSpyGauge();
     void useDriveBadBGInSpyGauge();
     void useDriveWellBGInSpyGauge();
@@ -33,42 +61,55 @@ public:
     void toggleWeaponSelector(bool visible);
     void switchWeapon(int type);
     void switchWeapon();
-    unsigned char unknown0[4];
     IHud* activeHud;
     IHud* initialHud;
     IHud* drivingHud;
     IHud* sniperHud;
     IHud* cameraHud;
-    unsigned char unknown24[8];
+    SteeringMode steeringMode;
+    ThrottleMode throttleMode;
     ASprite* reviveSprite;
     AnalogStick* analogStick;
-    unsigned char unknown40[28];
-    HudElement* enterCarButton;
-    HudElement* enterShopButton;
-    unsigned char unknown76[28];
+    Wheel* component40;
+    VirtualButton* component44;
+    VirtualButton* component48;
+    VirtualButton* component52;
+    VirtualButton* component56;
+    VirtualButton* component60;
+    VirtualButton* component64;
+    VirtualButton* enterCarButton;
+    VirtualButton* enterShopButton;
+    VirtualButton* component76;
+    SlideControl* component80;
+    SlideControl* component84;
+    VirtualButton* component88;
+    VirtualButton* component92;
+    VirtualButton* component96;
+    VirtualButton* component100;
     ToggleButton* radioToggle;
     Radio* radio;
-    unsigned char unknown112[4];
-    HudComponent116* component116;
-    unsigned char unknown120[8];
+    HudElement* component112;
+    Background* component116;
+    VirtualButton* component120;
+    VirtualButton* component124;
     AnimatedButton* radioButton;
-    HudElement* retroOverlay;
-    HudElement* minimap;
-    unsigned char unknown140[12];
+    RetroEffect* retroOverlay;
+    MiniMap* minimap;
+    HealthBar* component140;
+    ArmorBar* component144;
+    CarBar* component148;
     SpyGauge* spyGauge;
     Ammo* ammoDisplay;
-    unsigned char unknown160[4];
+    Cash* component160;
     WantedMeter* wantedMeter;
-    unsigned char unknown168[4];
-    HudElement* message172;
-    HudElement* message176;
+    HitWarning* component168;
+    Message* message172;
+    Message* message176;
     Reward* reward;
     AnimatedButton* weaponSelector;
-    HudElement* weaponSelectorExtra;
-    HudElement** resetElementsBegin;
-    HudElement** resetElementsEnd;
-    HudElement** resetElementsCapacity;
-    CameraManager* cameraManager;
+    AnimatedButton* weaponSelectorExtra;
+    std::vector<HudElement*> resetElements;
+    ITouchable* defaultReceiver;
     bool locked;
 
     void nearCar();

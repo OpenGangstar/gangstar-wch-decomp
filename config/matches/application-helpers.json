@@ -25,6 +25,8 @@
     "source": "src/game/app/Application.cpp",
     "linker_script": "config/linker/ApplicationHelpers.ld",
     "functions": [
+        "_ZN11Application10IsLogoOverEv",
+        "_ZN11Application20IsGlobalResumingOverEv",
         "_ZN11EvMouseMoveD1Ev",
         "_ZN11EvMouseMoveD0Ev",
         "_ZN10EvKeyboardD1Ev",

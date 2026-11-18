@@ -24,7 +24,9 @@ struct SpriteAnimation {
 };
 
 struct SpriteData {
-    unsigned char unknown0[32];
+    unsigned char unknown0[12];
+    int frameCount;
+    unsigned char unknown16[16];
     unsigned int modules;
     unsigned char unknown36[4];
     unsigned int frames;
@@ -306,4 +308,26 @@ static void _GLOBAL__I__ZN7ASprite18s_global_transformE()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+int ASprite::GetAFrameTime(int animation, int frame) const
+{
+    const char* bytes = reinterpret_cast<const char*>(data);
+    const SpriteAnimation* entry = reinterpret_cast<const SpriteAnimation*>(bytes + (data->animations + animation * 12));
+    int index = entry->firstFrame + frame;
+    return reinterpret_cast<const unsigned short*>(bytes + data->animationFrames + index * 9)[1];
+}
+
+extern "C" int strcmp(const char*,const char*);
+int ASprite::GetFrameIdx(const char* name)
+{
+    SpriteData* bytes=data;
+    int count=bytes->frameCount;
+    for (int index=0;index<count;++index) {
+        const SpriteFrame* frames=reinterpret_cast<const SpriteFrame*>(reinterpret_cast<const unsigned char*>(bytes)+bytes->frames);
+        const char* frameName=reinterpret_cast<const char*>(bytes)+frames[index].nameOffset;
+        if (strcmp(name,frameName)==0)
+            return index;
+    }
+    return -1;
 }

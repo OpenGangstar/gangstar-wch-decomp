@@ -13,14 +13,7 @@
 #include "../app/Application.h"
 #include "CHudManager.h"
 
-class ArmorBar : public Gauge {
-public:
-    ArmorBar(ASprite*, int, int, int);
-    virtual ~ArmorBar();
-    virtual void update(double);
-    virtual void draw2d() const;
-    virtual void show();
-};
+#include "ArmorBar.h"
 
 inline void ArmorBar::show() {}
 

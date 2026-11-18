@@ -15,6 +15,10 @@ _ZN30retail_cdrivinghud_transitions11guard_transE = 0x00421ccc;
 _ZN30retail_cdrivinghud_transitions22scripted_vehicle_transE = 0x00421d74;
 SECTIONS
 {
+    .recovered_ai_startup_cdrivinghud_3230ac 0x003230ac : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud4showEv .gnu.linkonce.t._ZN11CDrivingHud4showEv) }
+    .recovered_ai_startup_cdrivinghud_323300 0x00323300 : { *ai-startup-cdrivinghud.o(.text._ZN11CDrivingHud4hideEv .gnu.linkonce.t._ZN11CDrivingHud4hideEv) }
+    .ai_startup_cdrivinghud_vtable 0x004abd98 : { *ai-startup-cdrivinghud.o(.data.rel.ro._ZTV11CDrivingHud) }
+
     .ai_startup_function_0 0x0032307c : { *ai-startup-cdrivinghud.o(.text.__tcf_3) }
     .ai_startup_function_1 0x0032344c : { *ai-startup-cdrivinghud.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00323590 : { *ai-startup-cdrivinghud.o(.text._GLOBAL__I__ZN11CDrivingHudC2EP11CHudManager) }
@@ -51,3 +55,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+INCLUDE config/linker/ControlHandlerInterfaceSections.ld

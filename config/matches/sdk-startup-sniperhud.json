@@ -25,6 +25,12 @@
     "source": "src/game/hud/SniperHud.cpp",
     "linker_script": "config/linker/SniperHudSdkStartup.ld",
     "functions": [
+        "_ZN10CSniperHudC1EP11CHudManager",
+        "_ZN10CSniperHudC2EP11CHudManager",
+        "_ZN10CSniperHudD1Ev",
+        "_ZN10CSniperHudD2Ev",
+        "_ZN10CSniperHud4showEv",
+        "_ZN10CSniperHud4hideEv",
         {
             "name": "__tcf_2",
             "address": "0x00325d4d"
@@ -46,7 +52,9 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".sdk_startup_sniperhud_vtable"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": []
 }

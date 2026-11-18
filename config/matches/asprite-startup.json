@@ -26,6 +26,7 @@
     "source": "src/game/rendering/ASprite.cpp",
     "linker_script": "config/linker/ASpriteStartup.ld",
     "functions": [
+        "_ZNK7ASprite13GetAFrameTimeEii",
         {
             "name": "__tcf_2",
             "address": "0x00349849"
@@ -68,7 +69,8 @@
         "_ZN7ASprite21GetTransformFromFlagsEj",
         "_ZNK3RctIiE14isIntersectingEii",
         "_ZNK7ASprite15GetFrameMarkersEiPi",
-        "_ZNK7ASprite23GetNumberOfFrameMarkersEi"
+        "_ZNK7ASprite23GetNumberOfFrameMarkersEi",
+        "_ZN7ASprite11GetFrameIdxEPKc"
     ],
     "sections": [
         ".asprite_function_0",

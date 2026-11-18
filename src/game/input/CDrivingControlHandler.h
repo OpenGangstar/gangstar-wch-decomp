@@ -9,6 +9,7 @@ class Vehicle;
 class CControlManager;
 
 class CDrivingControlHandler : public IControlHandler {
+    friend class CDrivingHud;
 public:
     explicit CDrivingControlHandler(CControlManager* manager);
     void init();

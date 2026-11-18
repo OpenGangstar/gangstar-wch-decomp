@@ -8,8 +8,11 @@ _ZdaPv = 0x001c461c;
 _Znaj = 0x001c3ff8;
 strcspn = 0x001c46d0;
 __stack_chk_fail = 0x001c42e0;
+strcmp = 0x001c4658;
 SECTIONS
 {
+    .sprite_frame_idx 0x00349a80 : { *asprite-startup.o(.text._ZN7ASprite11GetFrameIdxEPKc) }
+    .asprite_aframe_time 0x003499b8 : { *asprite-startup.o(.text._ZNK7ASprite13GetAFrameTimeEii) }
     .asprite_function_0 0x00349848 : { *asprite-startup.o(.text.__tcf_2) }
     .asprite_function_1 0x0034a184 : { *asprite-startup.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .asprite_function_2 0x0034a21c : { *asprite-startup.o(.text._GLOBAL__I__ZN7ASprite18s_global_transformE) }

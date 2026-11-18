@@ -863,15 +863,79 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d5e95 | EvMouseButton destructor (D1) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d5e69 | EvMouseButton deleting destructor (D0) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate | lock_init | BLOCKED | pending | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | camera_tap | REVIEW | pending | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | vehicle_side | REVIEW | pending | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3c7d | Application::InitIPhone | camera_tap | BLOCKED | pending | src/game/app/Application.cpp |
-| libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
-| libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | lock_init | REVIEW | pending | src/game/rendering/ASpriteData.cpp |
-| libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | camera_tap | REVIEW | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349815 | ASprite::GetModule | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349c85 | ASprite::GetFModule | lock_init | BLOCKED | pending | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | vehicle_side | REVIEW | pending | src/game/hud/SniperHud.cpp |
-| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00325c79 | CSniperHud::hide | vehicle_side | ASSIGNED | pending | src/game/hud/SniperHud.cpp |
-| libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | lock_init | ASSIGNED | pending | src/game/core/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00325c79 | CSniperHud::hide | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x002d3c05 | MediaPlayerIPhone constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x00322dd5 | CCameraHud::hide | — | COMPLETED | 100% | src/game/hud/CCameraHud.cpp |
+| libsanangeles.so | 0x00325b25 | CSniperHud::show | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
+| libsanangeles.so | 0x002d3be9 | MediaPlayerIPhone::_trace | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x00322c5d | CCameraHud::show | — | COMPLETED | 100% | src/game/hud/CCameraHud.cpp |
+| libsanangeles.so | 0x00325809 | CWalkingHud::hide | — | COMPLETED | 100% | src/game/hud/CWalkingHud.cpp |
+| libsanangeles.so | 0x003238f5 | CHudManager::unregUpdatableComponents | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x003256dd | CWalkingHud::show | — | COMPLETED | 100% | src/game/hud/CWalkingHud.cpp |
+| libsanangeles.so | 0x0032399d | CHudManager::regUpdatableComponents | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323be9 | CHudManager::regDrawableComponents | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323da9 | CHudManager::unregDrawableComponents | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323705 | CHudManager::blink | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00323301 | CDrivingHud::hide | — | COMPLETED | 100% | src/game/hud/CDrivingHud.cpp |
+| libsanangeles.so | 0x002ebc9d | CHudManager::setThrottleMode | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x002ebd29 | CHudManager::setSteeringMode | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x003230ad | CDrivingHud::show | — | COMPLETED | 100% | src/game/hud/CDrivingHud.cpp |
+| libsanangeles.so | 0x00324979 | CHudManager destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00324399 | CHudManager::update | hud_drawables | BLOCKED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00324c85 | CHudManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00324669 | CHudManager deleting destructor (D0) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x003295a5 | MiniMap constructor (C1/C2 aliases) | hud_registration | BLOCKED | pending | src/game/hud/MiniMap.cpp |
+| libsanangeles.so | 0x0032be75 | TargetMarker::draw | — | COMPLETED | 100% | src/game/hud/TargetMarker.cpp |
+| libsanangeles.so | 0x0032a0f9 | MiniMap::draw2d | hud_show | BLOCKED | pending | src/game/hud/MiniMap.cpp |
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset | hud_drawables | BLOCKED | pending | src/game/hud/MiniMap.cpp |
+| libsanangeles.so | 0x002eb45d | Menus::ServiceWeaponShop::Update | hud_registration | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e6fe1 | MenuManager::updateMap | hud_registration | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6ab1 | MenuManager::_drawMap | hud_show | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e7165 | MenuManager::initMap | hud_drawables | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e7ac5 | Menus::ServiceWeaponShop::Refresh | hud_registration | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e5e4d | MenuManager::preloadGlyphs | hud_glyphs | BLOCKED | 452/460 bytes (unmatched) | src/game/ui/MenuManager.cpp |
+
+Coordinator approved one additional initMap comparison on 2026-11-18: separate the address-taken cosine temporary from the final angle, based on the four identified excess halfword stores/reload. Stop after this single proof and retain the original six-pass evidence.
+
+Coordinator approved one final initMap v8 proof on new instruction-diff evidence: v7 leaves exactly one redundant store because its address-taken cosine is assigned twice. Use a separate unaddressed numerator and initialize the clamp input once after division. No other source hypotheses; stop after this proof.
+| libsanangeles.so | 0x002e6db1 | MenuManager::_zoomMap | hud_glyphs | BLOCKED | 481/560 bytes (unmatched) | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002eb761 | Menus::ServiceCarRental::Notify | lock_init | BLOCKED | 196/448 bytes (unmatched) | src/game/ui/MenuState.cpp |
+
+Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh reports: neither is an exact match; both remain parked without credit. The undelivered _zoomMap assignment is released.
+
+| libsanangeles.so | 0x00349a81 | ASprite::GetFrameIdx(char const*) | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | hud_registration | BLOCKED | 62/64 bytes (unmatched) | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100% (no new credit) | src/game/ui/Cash.cpp |
+
+| libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | hud_registration | REVIEW | 100% (private proof) | src/game/app/GSSplash.cpp |
+
+| libsanangeles.so | 0x00321445 | SceneNodeManager::getPoolID(int) const | hud_registration | BLOCKED | 66/68-byte prefix, 72-byte candidate (unmatched) | src/game/world/SceneNodeManager.cpp |
+
+Coordinator reviewed _zoomMap: three materially different forms emitted identical complete bytes; parked under the early-stop rule without credit.
+
+| libsanangeles.so | 0x0034eed9 | ResStream::~ResStream() (deleting D0) | hud_glyphs | BLOCKED | 54/60 bytes (unmatched) | src/game/world/ResStream.cpp |
+
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() (complete/base D1/D2 aliases) | hud_glyphs | BLOCKED | 50/56 bytes (unmatched) | src/game/world/ResStream.cpp |
+
+Coordinator approves the associated ResStream complete/base destructor aliases required by the deleting-destructor definition. They remain exclusive to hud_glyphs.
+
+| libsanangeles.so | 0x002d6bcd | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onUnsetMaterial() | hud_registration | REVIEW | 100% (private proof) | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+
+| libsanangeles.so | 0x002d6af1 | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onSetMaterial | lock_init | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d1f31 | nativePauseSound | hud_glyphs | ASSIGNED | pending | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d6c11 | _ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c25 | _ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c71 | _ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c85 | _ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |

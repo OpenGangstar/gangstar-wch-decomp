@@ -6,6 +6,10 @@ __aeabi_atexit = 0x001c494c;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .recovered_sdk_startup_ccamerahud_322c5c 0x00322c5c : { *sdk-startup-ccamerahud.o(.text._ZN10CCameraHud4showEv .gnu.linkonce.t._ZN10CCameraHud4showEv) }
+    .recovered_sdk_startup_ccamerahud_322dd4 0x00322dd4 : { *sdk-startup-ccamerahud.o(.text._ZN10CCameraHud4hideEv .gnu.linkonce.t._ZN10CCameraHud4hideEv) }
+    .sdk_startup_ccamerahud_vtable 0x004abd68 : { *sdk-startup-ccamerahud.o(.data.rel.ro._ZTV10CCameraHud) }
+
     .sdk_startup_function_0 0x00322ea8 : { *sdk-startup-ccamerahud.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00322ed8 : { *sdk-startup-ccamerahud.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00322f44 : { *sdk-startup-ccamerahud.o(.text._GLOBAL__I__ZN10CCameraHudC2EP11CHudManager) }

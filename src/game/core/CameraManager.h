@@ -2,6 +2,7 @@
 #define WCH_CORE_CAMERA_MANAGER_H
 
 #include "SceneNode.h"
+#include "TouchInterfaces.h"
 #include "Vector3.h"
 #include "Rect.h"
 
@@ -39,7 +40,7 @@ public:
     float duration;
 };
 
-class CameraManager {
+class CameraManager : public ITouchable {
 public:
     static CameraManager* getInstance();
     ~CameraManager();

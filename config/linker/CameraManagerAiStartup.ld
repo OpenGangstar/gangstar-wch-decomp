@@ -25,8 +25,10 @@ _ZN32retail_cameramanager_transitions17civ_vehicle_transE = 0x00428d6c;
 _ZN32retail_cameramanager_transitions17cop_vehicle_transE = 0x00428dfc;
 _ZN32retail_cameramanager_transitions11guard_transE = 0x00428eb0;
 _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
+__cxa_pure_virtual = 0;
 SECTIONS
 {
+    .touchable_vtable 0x004ac418 : { *ai-startup-cameramanager.o(.gnu.linkonce.d.rel.ro._ZTV10ITouchable) }
     .manager_touch_release 0x00333094 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager19processTouchReleaseEv) }
     .manager_touch_release_log 0x00428fac : { *ai-startup-cameramanager.o(.rodata.touchReleaseLogText) }
     .manager_tapped_target 0x00332f94 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager12tappedTargetERKN3irr4core10position2dIiEERKNS1_8vector3dIfEE) }
@@ -87,3 +89,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+ASSERT(SIZEOF(.touchable_vtable) == 24, "ITouchable vtable extent");

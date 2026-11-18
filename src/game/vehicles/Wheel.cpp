@@ -64,19 +64,7 @@ static void _GLOBAL__I__ZN5WheelC2EP7ASpritei()
 #include "../core/GameEventMethods.h"
 #include "../core/PlacementNew.h"
 
-class Wheel : public HudElement {
-public:
-    Wheel(ASprite*, int);
-    virtual ~Wheel();
-    virtual void update(double);
-    virtual void setHand(bool);
-    virtual void processTouch(long);
-    virtual void processTouchRelease();
-    virtual void draw2d() const;
-private:
-    bool positiveDirection;
-    float displacement;
-};
+#include "Wheel.h"
 
 Wheel::~Wheel()
 {
