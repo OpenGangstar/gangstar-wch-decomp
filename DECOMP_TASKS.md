@@ -918,7 +918,7 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 
 | libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100% (no new credit) | src/game/ui/Cash.cpp |
 
-| libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | hud_registration | REVIEW | 100% (private proof) | src/game/app/GSSplash.cpp |
+| libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 
 | libsanangeles.so | 0x00321445 | SceneNodeManager::getPoolID(int) const | hud_registration | BLOCKED | 66/68-byte prefix, 72-byte candidate (unmatched) | src/game/world/SceneNodeManager.cpp |
 
@@ -930,12 +930,75 @@ Coordinator reviewed _zoomMap: three materially different forms emitted identica
 
 Coordinator approves the associated ResStream complete/base destructor aliases required by the deleting-destructor definition. They remain exclusive to hud_glyphs.
 
-| libsanangeles.so | 0x002d6bcd | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onUnsetMaterial() | hud_registration | REVIEW | 100% (private proof) | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6bcd | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onUnsetMaterial() | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
 
-| libsanangeles.so | 0x002d6af1 | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onSetMaterial | lock_init | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
-| libsanangeles.so | 0x002d1f31 | nativePauseSound | hud_glyphs | ASSIGNED | pending | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d6af1 | CCustomMaterialRenderer_VERTEX_COLOR_ALPHA::onSetMaterial | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d1f31 | nativePauseSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
 
-| libsanangeles.so | 0x002d6c11 | _ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
-| libsanangeles.so | 0x002d6c25 | _ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
-| libsanangeles.so | 0x002d6c71 | _ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
-| libsanangeles.so | 0x002d6c85 | _ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev | hud_registration | ASSIGNED | pending | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c11 | _ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c25 | _ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD0Ev | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c71 | _ZTv0_n12_N42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+| libsanangeles.so | 0x002d6c85 | _ZN42CCustomMaterialRenderer_VERTEX_COLOR_ALPHAD1Ev | — | COMPLETED | 100% | src/game/core/CCustomMaterialRenderer_VERTEX_COLOR_ALPHA.cpp |
+
+| libsanangeles.so | 0x002d1fd5 | nativeResumeSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d2045 | nativeStopSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d20b5 | nativeUnloadSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d2125 | nativeIsSoundLoaded | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1ded | nativeLoadSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1f6d | nativePauseSoundBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d19c9 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeInit | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1fa1 | nativePauseAllSounds | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d2011 | nativeResumeSoundBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d2081 | nativeStopSoundBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d20f1 | nativeUnloadSoundBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d2161 | nativeIsSoundLoadedBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1e29 | nativeLoadSoundBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d225d | nativeResetSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d21fd | nativeSetVolumeBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d2195 | nativeSetVolume | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d22f9 | nativeStopAllSounds | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d2291 | nativeSetPitch | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d232d | nativeUnloadAllSounds | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d2361 | nativeStopAllSoundPool | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d2395 | nativeStopAllBigSound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d23c9 | nativeDestroySoundPool | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d23fd | nativeInitSoundPoolArray | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d2431 | nativeLoadMovie | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d248d | nativeIsMediaPlaying | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d24c1 | nativeIsVideoPlayDone | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+| libsanangeles.so | 0x002d1ec5 | nativePlaySoundBig | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+| libsanangeles.so | 0x002d1e5d | nativePlaySound | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
+
+Coordinator approves one contextual replay per parked volume/pitch function after integration of the original 1036-byte initializer and JNI declarations; first test unchanged best bodies in current full source. If still unmatched, one coordinated original-address source-order candidate may be tested for both functions, preserving every accepted wrapper. No further iteration without new evidence.
+
+| libsanangeles.so | 0x002e37d9 | GSSplash::ctor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
+| libsanangeles.so | 0x002e3831 | GSSplash::update(StateMachine*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
+
+| libsanangeles.so | 0x002e1f65 | GSFailure::dtor(StateMachine const*) | hud_glyphs | REVIEW | 100% (private proof) | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002e1fd5 | GSFailure::ctor(StateMachine const*) | lock_init | REVIEW | 100% (private proof) | src/game/app/GSFailure.cpp |
+
+| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | hud_registration | BLOCKED | 98/308 bytes (unmatched) | src/game/app/GSFailure.cpp |
+
+| libsanangeles.so | 0x002e20dd | GSFailure::update(StateMachine*) | hud_glyphs | REVIEW | 100% (private proof) | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002d3be1 | MediaPlayerIPhone::playMovie(char const*) | lock_init | REVIEW | 100% bytes; inferred return type | src/game/app/MediaPlayerIPhone.cpp |
+| libsanangeles.so | 0x002d3be5 | MediaPlayerIPhone::stopMovie() | lock_init | REVIEW | 100% bytes; inferred return type | src/game/app/MediaPlayerIPhone.cpp |
+
+| libsanangeles.so | 0x00321699 | SceneNodeManager::manage(int, LevelObject*, int) | hud_registration | ASSIGNED | pending | src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x00306d2d | SpawnPoint::hasCloseNeighbors() const | hud_glyphs | ASSIGNED | pending | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x00328b41 | Map::setMap(Map::eMapType) | lock_init | ASSIGNED | pending | src/game/world/Map.cpp |

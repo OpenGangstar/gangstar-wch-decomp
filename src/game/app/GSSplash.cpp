@@ -60,3 +60,58 @@ static void __tcf_3()
 }
 
 GSSplash::~GSSplash() {}
+
+#include "Application.h"
+#include "../input/TouchScreenBase.h"
+#include "../hud/MenuManager.h"
+extern "C" void _ZN11MenuManager3popEb(MenuManager*, bool);
+
+void GSSplash::dtor(const StateMachine*)
+{
+    Application::GetInstance()->GetTouchScreen()->clear();
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(14), -1, 0);
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(13), -1, 0);
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(1), -1, 0);
+    _ZN11MenuManager3popEb(MenuManager::getInstance(), true);
+}
+
+#include "../core/SceneNode.h"
+static const char splashMenuName[]="Splash";
+extern "C" bool m_splash;
+void GSSplash::ctor(const StateMachine*)
+{
+    Application::GetInstance()->GetTouchScreen()->clear();
+    MenuManager::getInstance()->showTexts();
+    MenuManager::getInstance()->push(splashMenuName,true);
+    startedAt=Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    m_splash=true;
+}
+
+#include "../audio/SoundManager.h"
+#include "../core/SceneNode.h"
+#include "../core/Rect.h"
+extern bool m_splash;
+extern "C" unsigned char nativeIsVideoPlayDone(void);
+extern "C" void* _ZN12StateMachine11switchStateI10GSMainMenuEEPT_v(StateMachine*) __attribute__((weak));
+void GSSplash::update(StateMachine* machine)
+{
+    if (m_splash) {
+        SoundManager::getInstance()->init();
+        if (nativeIsVideoPlayDone()) {
+            SoundManager::getInstance()->playLowFpsMusic(29,true);
+            m_splash=false;
+        }
+    }
+    MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(1),0x5002,0);
+    Application* application=Application::GetInstance();
+    if (application->GetDevice()->getTimer()->getRealTime() & 0x200)
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(13),0x5001,0);
+    else
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(13),-1,0);
+    TouchScreenBase* touch=application->GetTouchScreen();
+    const irr::core::rect<float> region(0,0,480,320);
+    if (touch->isRegionPressed(region)) {
+        SoundManager::getInstance()->stopLowFpsMusic();
+        _ZN12StateMachine11switchStateI10GSMainMenuEEPT_v(machine);
+    }
+}
