@@ -845,9 +845,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | IN_PROGRESS | new address form reaches15/16; one bounded signed-offset conversion diagnostic on that same form, no field/layout change | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497e5 | ASprite::GetAnim | lock_init | IN_PROGRESS | signed-offset probe unchanged; diagnostic-only GIMPLE/RTL pass audit of address association, no new source/flag variants | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | IN_PROGRESS | new address form reaches15/16; one bounded signed-offset conversion diagnostic on that same form, no field/layout change | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003497f5 | ASprite::GetFrame | hud_registration | IN_PROGRESS | signed-offset probe unchanged; one existing r4b-vs1.6 compiler differential with unchanged source/flags and all old checks | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
@@ -869,7 +869,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349815 | ASprite::GetModule | — | BLOCKED | replay plus two new address forms still16B unmatched; all36 old functions/32 regions exact, no credit | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | hud_glyphs | ASSIGNED | reuse exact Debug indexed-address evidence and current header context; inspect prior forms, at most two grounded nonduplicate source forms | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349c85 | ASprite::GetFModule | hud_glyphs | IN_PROGRESS | two forms reached14B with4 differing bytes; one native R1-parameter lifetime form only if not previously tried | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325add | CSniperHud constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x00349825 | ASprite::GetFrameRect | camera_tap | BLOCKED | pending | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00325c79 | CSniperHud::hide | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
