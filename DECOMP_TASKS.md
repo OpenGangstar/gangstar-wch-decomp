@@ -1248,8 +1248,15 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1995 | nativeGetNumLaunch | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | IN_PROGRESS | source search parked344/368; bounded two compiler-profile diagnostics on frozen candidate | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | BLOCKED | source344/368; two flag diagnostics fail old strict linking, no flag adopted | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | BLOCKED | five source forms; native-size248 but 12 bytes differ in cold-tail order, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | BLOCKED | six source forms; native-size356 but branch/register differences, no credit | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | ASSIGNED | pending | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | hud_registration | ASSIGNED | pending | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | BLOCKED | five forms; best852 differs, current110 old functions and headers preserved; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | hud_registration | BLOCKED | six forms; best1996/2012, inline-functions diagnostic unchanged; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | hud_glyphs | BLOCKED | current-header unchanged replay492/496, old50checks pass; no credit | src/game/combat/BulletTraceManager.cpp |
+| libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | lock_init | BLOCKED | five forms; best656/652 overlaps native neighbor, old baseline proof retained; no credit | src/game/audio/CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | hud_glyphs | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | hud_registration | ASSIGNED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | lock_init | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | hud_glyphs | ASSIGNED | pending | src/game/vehicles/Vehicle.cpp |
