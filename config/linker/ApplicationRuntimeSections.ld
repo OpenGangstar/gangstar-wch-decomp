@@ -1,5 +1,8 @@
 SECTIONS
 {
+    .application_completion_0 0x002d3cb8 : { *application-helpers.o(.text._ZN11Application10IsLogoOverEv) }
+    .application_completion_1 0x002d3c9c : { *application-helpers.o(.text._ZN11Application20IsGlobalResumingOverEv) }
+
     .application_stop_monitoring 0x002d53e0 : { *application-helpers.o(.text._ZN11Application14stopMonitoringEPv) }
     .application_start_monitoring 0x002d5c40 : { *application-helpers.o(.text._ZN11Application15startMonitoringEPvPKc) }
     .application_logo_draw 0x002d4a6c : { *application-helpers.o(.text._ZN11Application8LogoDrawEv) }

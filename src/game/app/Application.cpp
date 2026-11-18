@@ -385,3 +385,23 @@ class EvMouseButton : public IEvent {
 public:
     virtual ~EvMouseButton() __attribute__((used)) {}
 };
+
+bool Application::IsLogoOver()
+{
+    bool playing;
+    if (logoFrame < logoFrameCount)
+        playing = true;
+    else
+        playing = false;
+    return !playing;
+}
+
+bool Application::IsGlobalResumingOver()
+{
+    bool resuming;
+    if(resumeElapsed<resumeTextureCount)
+        resuming=true;
+    else
+        resuming=false;
+    return !resuming;
+}

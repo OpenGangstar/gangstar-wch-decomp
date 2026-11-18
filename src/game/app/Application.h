@@ -19,6 +19,8 @@ namespace irr { class IrrlichtDevice; class IEventReceiver; }
 // Do not instantiate or use sizeof until the complete class is recovered.
 class Application {
 public:
+    bool IsLogoOver();
+    bool IsGlobalResumingOver();
     static Application* GetInstance();
     void SetIsDemoVersion(bool enabled);
     bool GetIsDemoVersion();
