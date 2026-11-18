@@ -98,7 +98,8 @@
         "appResume",
         "launchTwitter",
         "appOnKeyUp",
-        "appOnKeyDown"
+        "appOnKeyDown",
+        "appOnTouch"
     ],
     "dependencies": [
         "file-system-base",

@@ -8703,7 +8703,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d248d	0x34	jni_GLMediaPlayer.c	game	app	matched	nativeIsMediaPlaying	nativeIsMediaPlaying
 0x002d24c1	0x34	jni_GLMediaPlayer.c	game	app	matched	nativeIsVideoPlayDone	nativeIsVideoPlayDone
 0x002d24f5	0x18	wrapper.cpp	game	core	matched	appResume	appResume
-0x002d2511	0x98	wrapper.cpp	game	core	pending	appOnTouch	appOnTouch
+0x002d2511	0x98	wrapper.cpp	game	core	matched	appOnTouch	appOnTouch
 0x002d25a9	0x7c	wrapper.cpp	game	core	pending	appOnAccelerometer	appOnAccelerometer
 0x002d2625	0x30	wrapper.cpp	game	core	matched	__tcf_4	__tcf_4
 0x002d2655	0x24	wrapper.cpp	game	core	matched	appOnKeyUp	appOnKeyUp

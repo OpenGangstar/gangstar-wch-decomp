@@ -54,7 +54,8 @@
         "appResume",
         "launchTwitter",
         "appOnKeyUp",
-        "appOnKeyDown"
+        "appOnKeyDown",
+        "appOnTouch"
     ],
     "external_thumb_functions": [
         "nativeOpenBrowser",

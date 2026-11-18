@@ -1,3 +1,6 @@
+__aeabi_dmul = 0x001c4298;
+__aeabi_d2iz = 0x001c4844;
+__aeabi_i2d = 0x001c452c;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 ENTRY(_ZN10FileStreamC1Ev)
@@ -124,3 +127,5 @@ ASSERT(SIZEOF(.module_startup_path_name_storage_11) == 8, "path-name _ZN8gamelof
 INCLUDE config/linker/WrapperRuntimeSections.ld
 
 ASSERT(SIZEOF(.wrapper_application) == 4, "native wrapper app pointer extent");
+
+ASSERT(SIZEOF(.wrapper_device) == 4, "native wrapper device pointer extent");

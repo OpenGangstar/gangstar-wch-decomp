@@ -121,7 +121,8 @@
         "appResume",
         "launchTwitter",
         "appOnKeyUp",
-        "appOnKeyDown"
+        "appOnKeyDown",
+        "appOnTouch"
     ],
     "sections": [
         ".gom_event_get_id",

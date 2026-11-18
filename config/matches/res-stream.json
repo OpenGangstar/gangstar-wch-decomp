@@ -72,7 +72,8 @@
         "appResume",
         "launchTwitter",
         "appOnKeyUp",
-        "appOnKeyDown"
+        "appOnKeyDown",
+        "appOnTouch"
     ],
     "dependencies": [
         "buffer-stream",

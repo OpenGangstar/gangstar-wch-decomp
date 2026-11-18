@@ -1215,6 +1215,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1dd5 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSounds | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
 | libsanangeles.so | 0x002d2655 | appOnKeyUp | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d2679 | appOnKeyDown | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
-| libsanangeles.so | 0x002d2511 | appOnTouch | lock_init | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d2511 | appOnTouch | — | COMPLETED | 100% | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d26f1 | appDeinit | hud_glyphs | ASSIGNED | pending | src/game/core/wrapper.cpp |
 | libsanangeles.so | 0x002d269d | appRun | hud_registration | ASSIGNED | pending | src/game/core/wrapper.cpp |
+| libsanangeles.so | 0x002d25a9 | appOnAccelerometer | lock_init | ASSIGNED | pending | src/game/core/wrapper.cpp |

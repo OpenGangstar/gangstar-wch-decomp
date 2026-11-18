@@ -117,3 +117,42 @@ extern "C" void appOnKeyDown(int key)
     if (app)
         app->appKeyPressed(key);
 }
+
+
+#include "../input/TouchScreenMouseEvent.h"
+#include "IrrlichtDevice.h"
+static irr::IrrlichtDevice* device;
+extern "C" {
+extern bool mouseLButtHeld;
+extern int __pointerId;
+void appOnTouch(int pointerId, int action, int x, int y)
+{
+    __pointerId = pointerId;
+    irr::SEvent event;
+    irr::SEvent::MouseEvent mouseEvent;
+    switch (action) {
+    case 0:
+        mouseLButtHeld = false;
+        event.type = irr::SEvent::MouseInputEvent;
+        mouseEvent = irr::SEvent::LeftReleased;
+        break;
+    case 1:
+        mouseLButtHeld = true;
+        event.type = irr::SEvent::MouseInputEvent;
+        mouseEvent = irr::SEvent::LeftPressed;
+        break;
+    case 2:
+        if (!mouseLButtHeld)
+            return;
+        event.type = irr::SEvent::MouseInputEvent;
+        mouseEvent = irr::SEvent::MouseMoved;
+        break;
+    default:
+        return;
+    }
+    event.mouse.event = mouseEvent;
+    event.mouse.x = static_cast<int>(x * 0.6666);
+    event.mouse.y = static_cast<int>(y * 0.6666);
+    device->postEventFromUser(event);
+}
+}
