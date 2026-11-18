@@ -164,3 +164,23 @@ A broader executable audit also checked every currently credited game entry. All
 4,205 entries covering 332,482 catalogue bytes have matching native-address
 executable definitions. The audit found zero missing proofs. Local evidence is
 _scratch/matched-current-executable-audit.json.
+
+## Published report verification
+
+PR 712 merged as `6bf7063e05ad51b980c9f9f631a2ca4c91d37ad2` after both
+pull-request checks passed. The default-branch CI run `44328683329` also passed
+and published `android-arm_report`, artifact `14438805689`. Downloading that
+artifact independently confirmed 332,482 matched bytes, 103,742 complete bytes,
+575,264 total bytes, 118 complete units and 4,205 matched functions. This checks
+the uploaded report, rather than relying only on local export output.
+
+A fresh full native build before publication passed all 182 profiles and 10,258
+function/section/region comparisons with exit zero. All 89 tooling tests and
+repository/progress checks passed. Local build evidence is retained in
+`_scratch/hourly-linked-final-full.log` and `.exit`; the downloaded public report
+is retained in `_scratch/pr712-main-artifact-report.json`.
+
+The browser verification still showed the preceding PR 711 commit, with 57.80%
+matched and 0.00% linked. Thus publication is verified, while ingestion of the
+new commit was still pending at that observation. Do not interpret the older
+page as a failed comparison or claim that the live site has updated yet.
