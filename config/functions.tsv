@@ -12605,7 +12605,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349979	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASpriteD1Ev	ASprite::~ASprite()
 0x00349979	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASpriteD2Ev	ASprite::~ASprite()
 0x003499b9	0x24	ASprite.cpp	game	rendering	matched	_ZNK7ASprite13GetAFrameTimeEii	ASprite::GetAFrameTime(int, int) const
-0x003499dd	0x6a	ASprite.cpp	game	rendering	pending	_ZN7ASprite9GetAFrameEii	ASprite::GetAFrame(int, int)
+0x003499dd	0x6a	ASprite.cpp	game	rendering	matched	_ZN7ASprite9GetAFrameEii	ASprite::GetAFrame(int, int)
 0x00349a49	0x22	ASprite.cpp	game	rendering	matched	_ZNK7ASprite18GetFrameFromAFrameEii	ASprite::GetFrameFromAFrame(int, int) const
 0x00349a6d	0x12	ASprite.cpp	game	rendering	matched	_ZNK7ASprite24GetAnimFrameBoundingRectEii	ASprite::GetAnimFrameBoundingRect(int, int) const
 0x00349a81	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASprite11GetFrameIdxEPKc	ASprite::GetFrameIdx(char const*)

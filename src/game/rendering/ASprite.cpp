@@ -378,3 +378,24 @@ const SpriteBounds* ASprite::GetFrameRect(int frameIndex, int rectangle) const
         reinterpret_cast<const unsigned char*>(spriteData) + spriteData->rectangles);
     return reinterpret_cast<const SpriteBounds*>(rectangles + index);
 }
+
+int ASprite::GetAFrame(int animation, int time)
+{
+    const ASpriteData* blob = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::Anim* animations = reinterpret_cast<const ASpriteData::Anim*>(
+        reinterpret_cast<const unsigned char*>(blob) + blob->animations);
+    const ASpriteData::Anim* entry = animations + animation;
+    Application::GetInstance();
+    short count = entry->count;
+    if (count > 0) {
+        const ASpriteData* frameBlob = reinterpret_cast<const ASpriteData*>(data);
+        const char* frames = reinterpret_cast<const char*>(frameBlob) + frameBlob->animationFrames;
+        int total = 0;
+        for (int i = 0; i < count; ++i) {
+            total += *reinterpret_cast<const unsigned short*>(frames + (entry->firstFrame + i) * 9 + 2);
+            if (__builtin_expect(time < total, 0))
+                return i;
+        }
+    }
+    return count - 1;
+}

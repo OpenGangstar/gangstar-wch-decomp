@@ -1159,7 +1159,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | — | COMPLETED | 100%;1296B plus1140B literal blob; coordinator full183-profile/10267-comparison gate exact | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_registration | ASSIGNED | read-only PIC prologue/register-liveness diagnosis of frozen canonical500/512 input versus matched PaintFrame; no source forms | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | — | BLOCKED | likelihood0/1 emit476/488 versusnative512; oldcurrent42/36 exact; no adoption | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | — | BLOCKED | bounded canonical record trial remains unmatched; frozen private proof reviewed; no credit | src/game/rendering/ASprite.cpp |
 
@@ -1169,7 +1169,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d4a01 | Application::_Update(int) | lock_init | BLOCKED | 108/106 bytes; six forms; old45/15 exact, header110/111 known fixture incomplete | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | hud_glyphs | ASSIGNED | canonical106B differs6 register bytes; old61/55/2 caller gate exact; read-only compiler-liveness investigation, no new source forms | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | — | COMPLETED | 100%; GNU expect0 hint; full183-profile10277-comparison native gate and caller63/56/2 exact | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
@@ -1292,3 +1292,5 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1de9 | GetNativeResourceSoundRawLength | — | BLOCKED | native/DEX/relocation/local-reference audit found no prototype; zero source forms, no credit | src/game/app/jni_GLMediaPlayer.c |
 
 | libsanangeles.so | 0x0032a0e0 | non-virtual thunk to MiniMap::draw2d() const | lock_init | ASSIGNED | audit compiler-generated thunk from preserved faithful draw2d v5 candidate; no parent body edits or credit | src/game/hud/MiniMap.cpp |
+
+| libsanangeles.so | 0x00328c15 | Map::Map() C1/C2 existing-match compatibility | coordinator | IN_PROGRESS | one private canonical pixel-offset/rectangle initializer migration; preserve all existing native bytes; no new credit | src/game/world/Map.cpp |
