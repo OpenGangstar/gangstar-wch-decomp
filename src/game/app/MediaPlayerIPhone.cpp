@@ -12,6 +12,8 @@
 class MediaPlayerIPhone {
 public:
     MediaPlayerIPhone();
+    void playMovie(const char* filename);
+    void stopMovie();
     void _trace(const char* text) const;
 };
 namespace {
@@ -32,3 +34,7 @@ void MediaPlayerIPhone::_trace(const char* text) const
 {
     Logs::trace(traceCategory, text);
 }
+
+
+void MediaPlayerIPhone::playMovie(const char*) {}
+void MediaPlayerIPhone::stopMovie() {}
