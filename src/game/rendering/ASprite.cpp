@@ -9,6 +9,7 @@
  */
 
 #include "../core/ASprite.h"
+#include "../core/ASpriteData.h"
 #include "../core/Matrix4.h"
 #include "../core/Rct.h"
 #include "../core/SceneNode.h"

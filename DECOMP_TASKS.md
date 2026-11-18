@@ -1157,8 +1157,22 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034ae61 | ASpriteData::Swap() | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | lock_init | ASSIGNED | pending | src/game/rendering/ASpriteData.cpp |
+| libsanangeles.so | 0x0034a729 | ASpriteData::Debug() | coordinator | BLOCKED | shared-header replay unchanged 1294/1296 bytes; no credit | src/game/rendering/ASpriteData.cpp |
 
-| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | hud_glyphs | BLOCKED | 500/512 bytes; six forms; rejected two old header regressions | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | ASSIGNED | pending | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | hud_registration | BLOCKED | 292/296 bytes; six forms; shared declaration extraction and old graph exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | coordinator | BLOCKED | 30/32 bytes; four comparisons, return-register tail differs, no credit | src/game/app/IPhone.cpp |
+
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | coordinator | BLOCKED | 80/82-byte candidate; five forms, all old 36 functions and 32 section/regions exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | lock_init | BLOCKED | 108/106 bytes; six forms; old45/15 exact, header110/111 known fixture incomplete | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | hud_glyphs | BLOCKED | 106-byte candidate unmatched; six forms; 57 old functions and 54 section/regions exact | src/game/rendering/ASprite.cpp |
+
+| libsanangeles.so | 0x002d40fd | Application::ProcessKeyEvent(bool, int) | hud_registration | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4709 | Application::appKeyPressed(int) | hud_glyphs | ASSIGNED | pending | src/game/app/Application.cpp |
+
+| libsanangeles.so | 0x002d4bc1 | Application::GlobalResumingUpdate() | lock_init | ASSIGNED | pending | src/game/app/Application.cpp |

@@ -140,3 +140,34 @@ Debug remains pending, so the original source is still incomplete. Native
 Windows port files and all shared headers remain unchanged. The rectangle
 worker also freshly verified ASprite, ScriptManager, Mission and TouchScreenBase
 Rct callers without changing their sources or the Rct interface.
+
+## Shared declaration for sprite readers
+
+The complete recovered ASpriteData declaration now lives in core/ASpriteData.h,
+included by ASpriteData.cpp and ASprite.cpp. Every original nested-record comment
+and field is preserved. ASprite is a friend so future verified readers can use
+the genuine records rather than inventing a second class with the same name.
+The older partial SpriteData reader remains unchanged; no existing method body
+was migrated or rewritten. The __rect intersection declaration now explicitly
+has the original native weak linkage; its complete 92-byte definition remains
+exact. No unverified PixelInfo or Debug body is included by this extraction.
+
+Before and after the move, the coordinator ran:
+
+```text
+python tools/build.py asprite-data asprite-startup
+```
+
+Both runs exited zero. The full comparison output was identical, including all
+49 existing function checks and 35 section/region checks. A byte-for-byte log
+comparison printed:
+
+```text
+Unchanged comparison output: 49 functions; 35 section/region checks
+```
+
+The shared declaration does not add matching credit. Catalogue, matched bytes
+and function counts remain unchanged by the move. A single separately owned
+Debug replay after extraction still differed in its indexed-load instruction;
+that body remains private and uncredited. Native Windows port files and existing
+ASprite public header are unchanged.
