@@ -1264,3 +1264,9 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
 
 | libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | six forms; best616/620, native156 frame; old274 checks pass; no credit | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | hud_glyphs | ASSIGNED | pending; fresh bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | lock_init | ASSIGNED | pending; fresh bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | hud_registration | ASSIGNED | pending; fresh bounded six-form pass | src/game/rendering/GS3DStuff.cpp |
