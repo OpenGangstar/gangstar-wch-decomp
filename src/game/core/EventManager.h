@@ -17,6 +17,7 @@ public:
     bool attach(int eventID, IEventReceiver* receiver);
 
 private:
+    friend class Application;
     enum { Capacity = 200 };
 
     struct ListenerGroup {

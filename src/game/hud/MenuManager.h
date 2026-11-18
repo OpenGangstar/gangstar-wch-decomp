@@ -43,6 +43,8 @@ public:
     void MenuPause();
     void MenuResume();
     void popTo(const char* name, bool first, bool second);
+    void setup(bool asian);
+    void enableAsianFont(bool enabled);
     void preloadGlyphs(bool force);
     void setTutorialIds(int, int);
     void setRepairCost(int);

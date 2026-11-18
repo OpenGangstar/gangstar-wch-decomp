@@ -8869,7 +8869,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d5401	0x144	Application.cpp	game	app	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002d5545	0x14	Application.cpp	game	app	matched	_GLOBAL__I_iAdditionMenuDepth	_GLOBAL__I_iAdditionMenuDepth
 0x002d5559	0x38	Application.cpp	game	app	matched	_ZN11Application25RegisterForDrawingInSceneEP9IDrawable	Application::RegisterForDrawingInScene(IDrawable*)
-0x002d5591	0x290	Application.cpp	game	app	pending	_ZN11Application4InitEPN3irr14IrrlichtDeviceE	Application::Init(irr::IrrlichtDevice*)
+0x002d5591	0x290	Application.cpp	game	app	matched	_ZN11Application4InitEPN3irr14IrrlichtDeviceE	Application::Init(irr::IrrlichtDevice*)
 0x002d5821	0x76	Application.cpp	game	app	matched	_ZN11Application9InitWin32EPN3irr14IrrlichtDeviceE	Application::InitWin32(irr::IrrlichtDevice*)
 0x002d5899	0x38	Application.cpp	game	app	matched	_ZN11Application10LogoUpdateEv	Application::LogoUpdate()
 0x002d58d1	0xcc	Application.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIPvSt4lessIS1_ESt4pairIKS1_PKcENS_10_Select1stIS8_EENS_11_MapTraitsTIS8_EESaIS8_EE9_M_insertEPNS_18_Rb_tree_node_baseERKS8_SG_SG_	stlp_priv::_Rb_tree<void*, std::less<void*>, std::pair<void* const, char const*>, stlp_priv::_Select1st<std::pair<void* const, char const*> >, stlp_priv::_MapTraitsT<std::pair<void* const, char const*> >, std::allocator<std::pair<void* const, char const*> > >::_M_insert(stlp_priv::_Rb_tree_node_base*, std::pair<void* const, char const*> const&, stlp_priv::_Rb_tree_node_base*, stlp_priv::_Rb_tree_node_base*)

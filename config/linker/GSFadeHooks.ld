@@ -1,3 +1,6 @@
+memcpy = 0x001c4190;
+memset = 0x001c45d4;
+srand48 = 0x001c4580;
 __stack_chk_fail = 0x001c42e0;
 sprintf = 0x001c46ac;
 __aeabi_fdiv = 0x001c4520;
@@ -281,3 +284,5 @@ ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
 INCLUDE config/linker/ApplicationDestructorSections.ld
 
 INCLUDE config/linker/ApplicationInitWin32Sections.ld
+
+INCLUDE config/linker/ApplicationInitSections.ld
