@@ -295,7 +295,9 @@
         "_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti",
         "_ZN5Menus7Options6NotifyEPK10MenuWidgeti",
         "_ZN5Menus8Services6NotifyEPK10MenuWidgeti",
-        "_ZN5Menus13OptionVolumes6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus13OptionVolumes6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus5Infos6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".help_empty_icon",
@@ -434,7 +436,10 @@
         ".services_notify",
         ".servicesWeaponShopName",
         ".servicesCarRentalName",
-        ".option_volumes_notify"
+        ".option_volumes_notify",
+        ".infos_notify",
+        ".infos_notify_table",
+        ".service_weaponshop_notify"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -443,7 +448,6 @@
         "_ZNK13ScriptManager26getAvailableMissionScriptsERSt6vectorIP6ScriptSaIS2_EE",
         "_ZNK6Script12getMissionIdEv",
         "_ZNK7Mission7missionEi",
-        "_ZN5Menus5Infos6NotifyEPK10MenuWidgeti",
         "_ZN7Widgets4Help7SetIconEPKc",
         "_ZN11Preferences13SampleAndSaveEPKc",
         "_ZN11Preferences18GetDefaultFilenameEv",
@@ -570,6 +574,7 @@
         "_ZN7gameswf9tu_string15utf8_char_countEPKci",
         "_ZNK7gameswf9tu_string14utf8_substringEii",
         "_ZN7Widgets12Achievements11SetCategoryEi",
-        "_ZNK12SoundManager16getPlaylistCountEv"
+        "_ZNK12SoundManager16getPlaylistCountEv",
+        "_ZN5Menus17ServiceWeaponShop7RefreshEv"
     ]
 }

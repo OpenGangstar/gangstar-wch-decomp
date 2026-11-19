@@ -6,7 +6,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
-| libsanangeles.so | 0x002fe269 | NPC::equipWeapon(bool, bool) | — | COMPLETED | 100%; two independent pointer declarations swapped for Application-header compatibility. Complete 208-byte native match; all 454 private and coordinator consumer checks pass. | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe269 | NPC::equipWeapon(bool, bool) | — | COMPLETED | 100%; current root declaration order and complete 208-byte match remain unchanged. Private settings prerequisites and alternative order remain unintegrated. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002e41f1 | gameswf::tu_string constructor/layout preservation prerequisite | — | COMPLETED | Historical union accepted after 190 profiles and 10,656 native comparisons; all prior matches and linked proofs preserved. Actual 16-byte ABI assertions pass; no new game credit. | src/game/rendering/RetailSwfString.h |
 | libsanangeles.so | 0x003b1e41 | gameswf::font::get_glyph historical-source support | — | COMPLETED | Older source confirms POD rectangle but not retail glyph hierarchy; native entity48 nonowning and word56 provider clearing clarified. No new constructor/ownership correction or trial. | native support evidence |
 | libsanangeles.so | 0x00389b01 | gameswf::tu_string::resize(int) verification support | — | COMPLETED | Pinned2008 source has exact tag-first layout and four native resize transition algorithms; constructor/allocator differences remain. No compiled match or game credit. | native support evidence |
@@ -215,7 +215,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7395 | Menus::MainMenu::SetPause | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e87f5 | Menus::MainMenu::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea699 | Menus::MainMenu::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify | — | BLOCKED | Two switch hints produce identical unmatched 544 bytes and regress an old function. RTL proves the old zero-init difference precedes register allocation; no source correction adopted. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify | — | BLOCKED | Complete typed widget interface produces identical unmatched 544-byte archived best. All 1,054 old checks retained; no further form authorized. | src/game/ui/MenuState.cpp (private) |
 | libsanangeles.so | 0x0032cce0 | Wheel::draw2d (thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x002e7611 | Menus::OptionGameSettings::SetOrientation (int) | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e75f1 | Menus::OptionGameSettings::SetOrientation (enum) | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
@@ -240,13 +240,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7d51 | Menus::Achievement::SetAchievement | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea2e5 | Menus::Achievement::Show | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e7815 | Menus::InGameMenu::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | — | BLOCKED | Canonical member-getter probe retains seven register-byte differences in 168 bytes after verified Thumb metadata repair. All 635 old functions and 413 regions pass; no new source form authorized. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e78ad | Menus::Map::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | — | COMPLETED | 100%; complete 168-byte function and physical section using the real Volumes interface. Coordinator full gate passes 190 profiles and 10,670 comparisons; all prior matches retained. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | player_update | ASSIGNED | Read-only actual interface/dataflow audit against newly matched Services parent and complete widget declarations. No source or compiler changes before coordinator review. | src/game/ui/MenuState.cpp (private) |
+| libsanangeles.so | 0x002e78ad | Menus::Map::Notify | — | BLOCKED | Best complete typed/case-0 form retains 21 tail-sharing differences in 220 bytes; grouped-case form is short at 216 and regresses prefix. All evidence frozen; no further permutations authorized. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | — | COMPLETED | 100%; complete 188-byte function/section using real Shop interface and Refresh declaration. Final full gate passes; old function bodies unchanged. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | — | BLOCKED | Authentic 184-byte candidate remains eight bytes short. Read-only ledger attributes the gap to merged return tails and padding; traversal/proxy operations agree. No new semantic or API correction. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | — | BLOCKED | Canonical getter emits identical 308-byte candidate versus native 304; strict four-byte overlap remains. No additional form authorized. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | — | COMPLETED | 100%; exact 304-byte function and 20-byte switch table; real compiled definition replaces native import. Final 190-profile, 10,675-comparison gate passes. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | prefs_loader | ASSIGNED | Read-only complete interface audit against actual widget declarations and newly matched Services parent. No source or compiler trial before coordinator review. | src/game/ui/MenuState.cpp (private) |
 | libsanangeles.so | 0x002ebf09 | Widgets::Shop::SetAvailabilityText | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ebf0d | Widgets::Shop::GetSelectedItem | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002eef25 | Widgets::Shop::Reset | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -1116,7 +1116,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002eb12d | Menus::ServiceCarRental::Update() | lock_init | BLOCKED | 816-byte candidate unmatched; six forms; one private baseline link incomplete | src/game/ui/MenuState.cpp |
 
-| libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify(MenuWidget const*, int) | hud_registration | BLOCKED | 1064/1056-byte candidate; six forms, old full graph exact | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify | — | BLOCKED | Corrected type snapshot and boolean evaluation order emit 1048/native 1056; complete canonical classes produce identical bytes. All private prerequisites and diagnostics frozen, uncredited. | src/game/ui/MenuState.cpp |
 
 | libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | hud_registration | BLOCKED | 872-byte candidate unmatched; six forms; rejected two old MenuState regressions | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002e51fd | MenuManager::setText(eText, char const*, int*) | — | BLOCKED | Read-only typed switch recovery confirms SP80 is destroyed before SP40 construction; no missing lifetime or ABI operation. Candidate remains 1100/native 1104. Project metadata rolled back; no sixth source form justified. | src/game/ui/MenuManager.cpp |
