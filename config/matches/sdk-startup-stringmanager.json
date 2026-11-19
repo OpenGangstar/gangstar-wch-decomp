@@ -14,7 +14,7 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=70"
+        "-finline-limit=80"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -49,7 +49,10 @@
             "name": "_GLOBAL__I__ZN13StringManager9LANGUAGESE",
             "address": "0x0034bc3d"
         },
-        "_ZSt24__stl_throw_out_of_rangePKc"
+        "_ZSt24__stl_throw_out_of_rangePKc",
+        "_ZN13StringManagerD1Ev",
+        "_ZN13StringManagerD2Ev",
+        "_ZN13StringManagerD0Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -60,7 +63,10 @@
             "name": ".got",
             "offset": 864
         },
-        ".string_out_of_range"
+        ".string_out_of_range",
+        ".string_manager_d1",
+        ".string_manager_d0",
+        ".string_manager_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [

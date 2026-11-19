@@ -170,3 +170,14 @@ void __stl_throw_out_of_range(const char* message)
     abort();
 }
 }
+
+StringManager::~StringManager()
+{
+    for (unsigned int pack = 0; pack < 6; ++pack)
+        unloadPack(pack);
+    for (int index = 0; index < styles.size(); ++index) {
+        delete[] styles.at(index)->fontName;
+        delete styles.at(index);
+    }
+    styles.erase(styles.begin(), styles.end());
+}

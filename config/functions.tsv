@@ -12662,9 +12662,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034bc51	0x30	StringManager.cpp	game	persistence	matched	__tcf_2	__tcf_2
 0x0034bc81	0xd0	StringManager.cpp	stlport	-	matched	_ZNSt6vectorIPN7Structs9TextStyleESaIS2_EE18_M_insert_overflowEPS2_RKS2_RKSt11__true_typejb	std::vector<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_insert_overflow(Structs::TextStyle**, Structs::TextStyle* const&, std::__true_type const&, unsigned int, bool)
 0x0034bd51	0x14c	StringManager.cpp	game	persistence	pending	_ZN13StringManager10loadStylesEPKc	StringManager::loadStyles(char const*)
-0x0034be9d	0xf0	StringManager.cpp	game	persistence	pending	_ZN13StringManagerD2Ev	StringManager::~StringManager()
-0x0034be9d	0xf0	StringManager.cpp	game	persistence	pending	_ZN13StringManagerD1Ev	StringManager::~StringManager()
-0x0034bf8d	0xf8	StringManager.cpp	game	persistence	pending	_ZN13StringManagerD0Ev	StringManager::~StringManager()
+0x0034be9d	0xf0	StringManager.cpp	game	persistence	matched	_ZN13StringManagerD2Ev	StringManager::~StringManager()
+0x0034be9d	0xf0	StringManager.cpp	game	persistence	matched	_ZN13StringManagerD1Ev	StringManager::~StringManager()
+0x0034bf8d	0xf8	StringManager.cpp	game	persistence	matched	_ZN13StringManagerD0Ev	StringManager::~StringManager()
 0x0034c085	0x2	DataReloaderManager.cpp	game	world	matched	_ZNK19DataReloaderManager6_traceEPKc	DataReloaderManager::_trace(char const*) const
 0x0034c089	0x2	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManager12monitorFilesEPKcS1_P13IDataReloader	DataReloaderManager::monitorFiles(char const*, char const*, IDataReloader*)
 0x0034c08d	0x12	DataReloaderManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN19DataReloaderManager15_MonitoredFilesESaIS3_EED1Ev	stlp_priv::_Vector_base<DataReloaderManager::_MonitoredFiles*, std::allocator<DataReloaderManager::_MonitoredFiles*> >::~_Vector_base()
