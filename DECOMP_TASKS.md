@@ -275,7 +275,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d2ac9 | LODSceneNode::GetMeshBoundingBox | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2e95 | LODSceneNode::OnRegisterSceneNode | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2edd | LODSceneNode::GetMeshTransformedBoundingBox | — | COMPLETED | 100%;84B authentic iterator/list-helper reuse, full190-profile gate and current old checks exact, no flags or layout changes | src/game/rendering/LODSceneNode.cpp |
-| libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel | player_update | ASSIGNED | Measured037copyprop1 reverses first comparison; authorize ONE whole LOD-profile fno-tree-copy-prop diagnostic on unchanged strongest source, all28 old functions/10 regions mandatory | src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel | — | BLOCKED | SDK accessor and whole-profile no-copy-prop produce same306B/4 residual bytes; old28/10 exact, copyprop/ivopts causes frozen, no credit | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2be9 | LODSceneNode::setLODNodesPosition | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2bad | LODSceneNode::setLODNodesRotation | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
 | libsanangeles.so | 0x002d2c25 | LODSceneNode::removeAnimators | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
@@ -582,7 +582,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034cdd9 | TouchScreenIPhone::isRegionPressed | — | COMPLETED | 100% | src/game/input/TouchScreenIPhone.cpp |
 | libsanangeles.so | 0x0034cbc1 | TouchScreenBase::getTouchIDList | — | COMPLETED | 100%;88B authentic iterator/list-helper reuse, full190-profile gate and current old checks exact, no flags or layout changes | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034c8c5 | TouchScreenBase::getTouchDisplacement | — | COMPLETED | 100% | src/game/input/TouchScreenBase.cpp |
-| libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | vehicle_camera | ASSIGNED | Six forms audited; best140B differs7 register/store-order bytes; authorize ONE unchanged current best-source dump-only allocation/scheduling and actual return-value audit, no source forms | src/game/input/TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan | — | BLOCKED | Six forms plus unchanged allocation audit; best140B differs7 bytes, exact headers/ABI; no source/return-type correction proved | src/game/input/TouchScreenBase.cpp |
 | libsanangeles.so | 0x0034d989 | AccelerometerWin32 OnEvent | — | COMPLETED | 100%; actual bool ABI and original missing return preserved; full 186-profile, 10,358-comparison native gate exact | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034d974 | AccelerometerWin32 OnEvent non-virtual thunk | — | COMPLETED | 100%; actual bool ABI and original missing return preserved; full 186-profile, 10,358-comparison native gate exact | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034da8d | AccelerometerWin32 deleting destructor (D0) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
@@ -710,15 +710,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034b619 | StringManager::unloadPack | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b351 | strRev | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b375 | strchrs | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b5a5 | StringManager::unloadPackSheet | — | BLOCKED | Canonical proof repaired:108/114B, all current16 functions/6 regions exact, zero compiled ABS masks; no source/type correction found | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b5a5 | StringManager::unloadPackSheet | vehicle_camera | ASSIGNED | Read-only exact semantic-operation and lifetime ledger for corrected108/114B canonical proof; distinguish missing operations from register/CFG residuals, no repeat compile | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b745 | StringManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bb9d | StringManager::loadPack | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bb5d | StringManager::getString | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b649 | Structs::TextStyle::Read | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | camera_tap | BLOCKED | pending | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | prefs_loader | ASSIGNED | Read-only formatAmount recovery against verified whole-profile80/stack protection and actual return/formatting helper ABI; no compile before evidence | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034be9d | StringManager destructor (D1/D2 aliases) | — | COMPLETED | 100%; real240/240/248B family, authentic erase and whole-profile inline80; full190-profile gate and66-build helper closure exact | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bd51 | StringManager::loadStyles | — | COMPLETED | 100%;332B loader/default40B exact; valid aligned owner/native D1 once, actual Read weak/whole-profile canary metadata; full190 gate and15-build closure pass | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | lock_init | BLOCKED | pending | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | player_update | ASSIGNED | Read-only loadPackSheet recovery against current genuine resource/TextStyle/container interfaces and native canary policy; audit prior forms before replay | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x002e2bb5 | GSLoading::LoadingPaused | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2b71 | GSLoading::LoadingResumed | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2ce5 | GSLoading::ctor | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
