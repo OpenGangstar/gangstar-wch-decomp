@@ -15,7 +15,8 @@ SECTIONS
     .physic_cleanup_0 0x00319cd4 : { *ai-startup-physicattributes.o(.text._ZN10PhysicInfo5ResetEP7b2World .gnu.linkonce.t._ZN10PhysicInfo5ResetEP7b2World) }
     .physic_cleanup_1 0x00319c20 : { *ai-startup-physicattributes.o(.text._Z15SafeDeleteArrayIN3irr4core5arrayItNS1_12irrAllocatorItEEEEEvRPT_ .gnu.linkonce.t._Z15SafeDeleteArrayIN3irr4core5arrayItNS1_12irrAllocatorItEEEEEvRPT_) }
     .physic_attributes_destructor 0x00321324 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributesD1Ev .text._ZN16PhysicAttributesD2Ev) }
-    .physic_info_ctor 0x00319dd0 : { *ai-startup-physicattributes.o(.text._ZN10PhysicInfoC1Ev .text._ZN10PhysicInfoC2Ev) }
+    .physic_info_ctor 0x00319dd0 : { *ai-startup-physicattributes.o(.text._ZN10PhysicInfoC1Ev .text._ZN10PhysicInfoC2Ev .gnu.linkonce.t._ZN10PhysicInfoC1Ev .gnu.linkonce.t._ZN10PhysicInfoC2Ev) *ai-startup-character.o(.gnu.linkonce.t._ZN10PhysicInfoC1Ev .gnu.linkonce.t._ZN10PhysicInfoC2Ev) }
+    ASSERT(SIZEOF(.physic_info_ctor) == 96, "PhysicInfo native96 extent")
     .physic_attributes_reset_info 0x00319d64 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes15ResetPhysicInfoEv) }
     .physic_delete_world 0x00319e30 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._Z10SafeDeleteI7b2WorldEvRPT_) }
     .physic_clean_world 0x00319e50 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes10CleanWorldEv) }

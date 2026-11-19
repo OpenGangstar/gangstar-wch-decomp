@@ -55,7 +55,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301821 | PlayerTest::driftFinished | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301ebd | PlayerTest::setLastUsedVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Genuine-hierarchy replay still emits identical 60 bytes with nine native register differences. All 347 existing functions/117 regions, five destructors, photo668 and vtable288 pass; no NPC change. No further local-order or flag trial. | src/game/ai/PlayerTest.cpp (private) |
+| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | vehicle_camera | IN_PROGRESS | Original compiler COFF/STABS and hostGDB read real qty types. One bounded same-binary private read-only allocator trace authorized, exact frozen60/candidate payloads and342/112 old checks required; no source/optimization/inferior-state changes. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | — | BLOCKED | Canonical current-hierarchy replay is 62 bytes with exact native 2-byte physical padding; four load/store-order bytes differ at +0x32/+0x34/+0x36/+0x38. All 347 existing functions and 117 regions pass. One form stopped; no credit. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100%; restored native weak/default binding. Integrated declaration-only correction independently proved all 48 bytes and passed 190 profiles/10,687 checks; no body edits or new progress credit. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -76,7 +76,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00334ee5 | SceneCamera::init | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334ee9 | SceneCamera::debug | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334eed | SceneCamera::update | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
-| libsanangeles.so | 0x0031ccf1 | PhysicAttributes::SetCurrentJumpShape | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031ccf1 | PhysicAttributes::SetCurrentJumpShape | — | COMPLETED | Existing100%; five-vector storage maps corners0..3 and center4. Only final destination spelling changed; all644 native bytes independently preserved and root190/10,690 pass. | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00301df9 | PlayerTest::finishedStopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301261 | PlayerTest::_SetTarget | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030142d | PlayerTest::applyDamage | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -348,8 +348,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032d72d | CControlManager::update | vehicle_side | BLOCKED | — | src/game/input/CControlManager.cpp |
 | libsanangeles.so | 0x00354665 | EventManager::_attach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
-| libsanangeles.so | 0x00319dd1 | PhysicInfo::PhysicInfo (C1 only; native C2 absent) | prefs_loader | IN_PROGRESS | Private ordinary-inline linkage prerequisite investigation; manual weak out-of-line form emits invalid GCC INTERNAL directive when used by new[]. Same body and native weak 96-byte proof required, no output editing. | src/game/characters/PhysicInfo.h; src/game/characters/PhysicAttributes.cpp (private) |
-| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | prefs_loader | IN_PROGRESS | Current-model prerequisite passed 190/10,687 after correcting per-profile toolchain setup. Target assembly failed on generated weak C1 INTERNAL directive; no target bytes. One ordinary-inline actual PhysicInfo prerequisite investigation authorized; preserve four jump vertices plus center and generic Array. | src/game/characters/PhysicAttributes.cpp (private) |
+| libsanangeles.so | 0x00319dd1 | PhysicInfo::PhysicInfo (C1 only; native C2 absent) | — | COMPLETED | Existing96-byte body moved unchanged to ordinary inline definition, natural weak binding. Root190/10,690 and independent native equality in both images; no output edits or new credit. | src/game/characters/PhysicInfo.h; src/game/characters/PhysicAttributes.cpp (private) |
+| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | — | BLOCKED | Genuine inline PhysicInfo and five-vector storage prerequisite root190/10,690 pass. One unchanged target260 is byte-identical historicalv1 with same6bytes different; all47 old ownerchecks pass. No target credit or more store-order variants. | src/game/characters/PhysicAttributes.cpp (private) |
 | libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | lock_init | BLOCKED | — | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x003279f5 | Cash::GetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x003279f1 | Cash::SetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
@@ -693,7 +693,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | — | COMPLETED | 100%;604B plus native608B region and32B dispatch exact; full190-profile gate passes, completes all13 Preferences.cpp entries | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | — | COMPLETED | 100%; complete 224-byte function and section, two documented branch hints. Coordinator full gate passes 190 profiles and 10,658 comparisons; all previous matches retained. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100%; diagnostic and ordinary objects agree. MainMenu private declaration context reverses independent initializations before first RTL; rejected context remains unintegrated. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | Existing root100% preserved. Private independent initialization-order compatibility edit restored284 native bytes and full190/10,687 for SDK trial; not integrated because pending target remains unmatched. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86fd | MenuState::GotFocus | — | BLOCKED | Typed first-pass getter produces the same 248-byte candidate and 12 register differences. All 234 existing functions and 89 section/region checks pass; no further source trials. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
@@ -811,7 +811,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00303b58 | PlayerTest::shoot non-virtual thunk | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_camera | IN_PROGRESS | Six old trials recovered; authentic SDK nonmember b2Vec2 plus/Set differs from synthetic member helpers. One private prerequisite gate then one natural-expression replay authorized; no source-order search. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | — | BLOCKED | Authentic licensed SDK nonmember plus/Set prerequisite passed 190/10,687 with approved private InfoHelp compatibility edit; one canonical replay116/native132. Stopped pre-link; no credit or further forms. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302241 | PlayerTest::orientTowards | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -1111,7 +1111,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | — | BLOCKED | Native-order/reference corrections materialize, but the candidate remains 1,820 versus 1,816 native bytes. Strict linking fails; all artifacts retained, no further variant authorized. | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | player_update | IN_PROGRESS | Read-only recovery of six exhausted forms, incomplete historical gate and current actual hierarchy/ABI differences. No replay authorized without new evidence. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | — | BLOCKED | Six forms exhausted; best 1088/1072. Historical gate terminal with 66 successful profiles and one unresolved GameObjectManager fresh-link failure. Current canonical fields add no new ABI/helper evidence; no replay. | src/game/ai/PlayerTest.cpp |
 
 | libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
@@ -1136,7 +1136,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | hud_glyphs | BLOCKED | 3024/3012 bytes; six forms; header-only 36 profiles exact, combined dependent link incomplete | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | — | BLOCKED | Six forms exhausted; best3024/3012. Current audit finds all51 function bindings and92 external calls/modes already native. Separate36-profile header gate does not prove candidate; combined link terminal/discarded NPC definition. No new replay justified. | src/game/ai/NPC.cpp |
 
 | libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | lock_init | BLOCKED | best extent 2364/2384 bytes; six forms; header sweep 43/44, known fixture incomplete | src/game/characters/PhysicAttributes.cpp |
 
@@ -1178,7 +1178,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 
-| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Indexed loop emits 74 bytes versus native 82; canonical 80-byte candidate remains best; all old checks pass; one new form stopped | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Canonical80/native82 remains best. Actual helper reuse86 retains non-native call. Causal whole-TU no-TER probe emits82 but breaks multiple old native extents; configuration rejected, no credit. Primary-source SSA/load causality recorded; no type/alias fix proven. | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x002d4a01 | Application::_Update(int) | — | COMPLETED | 100%; reviewed native bytes and full190-profile10539-comparison gate exact | src/game/app/Application.cpp |
 

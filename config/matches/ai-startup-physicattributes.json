@@ -86,7 +86,8 @@
         },
         ".physics_load_arrays",
         ".load_arrays_mode",
-        ".load_arrays_error"
+        ".load_arrays_error",
+        ".physic_info_ctor"
     ],
     "retail_got": true,
     "external_thumb_functions": [

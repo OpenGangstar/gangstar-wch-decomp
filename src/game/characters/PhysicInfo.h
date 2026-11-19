@@ -7,7 +7,13 @@ class b2Body;
 class b2World;
 
 struct PhysicInfo {
-    PhysicInfo() __attribute__((weak));
+    PhysicInfo() __attribute__((used))
+    {
+        unknown64.Z = 999999.0f;
+        for (int i = 0; i < 12; ++i)
+            bodies[i] = 0;
+        Reset(0);
+    }
     // The retail array allocation has an ARM EABI cookie.
     ~PhysicInfo() {}
     void Reset(b2World* world) __attribute__((weak));

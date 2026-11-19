@@ -151,7 +151,8 @@
         "_ZN11b2CircleDefD1Ev",
         "_ZN11b2CircleDefD0Ev",
         "_ZN10b2ShapeDefD1Ev",
-        "_ZN10b2ShapeDefD0Ev"
+        "_ZN10b2ShapeDefD0Ev",
+        "_ZN10PhysicInfoC1Ev"
     ],
     "sections": [
         ".character_animation_resource",
@@ -186,7 +187,8 @@
         ".circle_shape_base_d1",
         ".circle_shape_base_d0",
         ".circle_shape_base_table",
-        ".circle_shape_table"
+        ".circle_shape_table",
+        ".physic_info_ctor"
     ],
     "dependencies": [
         "ai-startup-physicattributes"

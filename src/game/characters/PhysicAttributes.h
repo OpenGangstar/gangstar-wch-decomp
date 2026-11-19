@@ -12,6 +12,18 @@ struct PhysicInfo;
 struct AStarNode;
 // Partial layout of the observed 120-byte allocation.
 class PhysicAttributes {
+    // Local observed initialization view; adds no storage to the 20-byte array.
+    struct PathArray : irr::core::array<AStarNode> {
+        PathArray()
+        {
+            data = 0;
+            allocated = 0;
+            used = 0;
+            free_when_destroyed = true;
+            is_sorted = true;
+            unknown16 = 1;
+        }
+    };
 public:
     static void LoadArrays(char*);
     static int MATERIAL_TYPE_ROAD, MATERIAL_TYPE_PARK, MATERIAL_TYPE_BUILDING_BASE, MATERIAL_TYPE_INTERSECTION, MATERIAL_TYPE_CLIFF, MATERIAL_TYPE_WATER;
@@ -62,17 +74,18 @@ public:
     // Observed slot index at offset zero; no standalone accessor is credited.
     int getIndex() const { return index; }
     int index;
-    unsigned char unknown4[4];
+    union { unsigned char unknown4[4]; b2Body* body; };
     PhysicInfo* info;
     int infoCount;
-    irr::core::array<AStarNode> path;
+    PathArray path;
     irr::core::vector3d<float> pathTarget;
     int pathLength;
     void SetCurrentJumpShape(b2Shape* shape);
-    irr::core::vector3d<float> jumpVertices[4];
-    irr::core::vector3d<float> jumpCenter;
+    // Slots 0..3 are corners; slot 4 is their computed center.
+    irr::core::vector3d<float> jumpVertices[5];
     bool hasJumpShape;
     unsigned char jumpFlags;
-    unsigned char unknown114[6];
+    unsigned char unknown114[2];
+    int unknown116;
 };
 #endif
