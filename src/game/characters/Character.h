@@ -2,6 +2,7 @@
 #define WCH_CHARACTERS_CHARACTER_H
 
 #include "../world/LevelObject.h"
+#include "SaveVector3.h"
 
 class Vehicle;
 class b2Body;
@@ -19,6 +20,8 @@ class Character : public LevelObject {
     friend class TaxiSideMission;
     friend class SideMission;
 public:
+    irr::core::vector3d<float> position() const { return GetPosition(); }
+    void position(const SaveVector3& value) { SetPosition(reinterpret_cast<const irr::core::vector3d<float>&>(value)); }
     struct AnimationInfo {
         AnimationInfo() : unknown0(0), unknown4(0), skinMesh(0), shadowNode(0) {}
         irr::scene::ISceneNodeAnimator* unknown0;
@@ -128,7 +131,8 @@ private:
     int getSpecificAnimation(int id);
     unsigned short collisionMask;
     short collisionGroup;
-    float unknown56, unknown60, unknown64, unknown68, unknown72, unknown76;
+    SaveVector3 facing;
+    float unknown68, unknown72, unknown76;
     irr::core::vector3d<float> cameraOffset;
     irr::core::vector3d<float> destination;
     irr::core::vector3d<float> adjustedDestination;
@@ -158,17 +162,17 @@ public:
 private:
     unsigned char unknown200[12];
     int unknown212;
-    int maxHealth;
+    union { int maxHealth; int maximumHealth; };
     int health;
     int punchIndex;
     int unknown228;
     int kickIndex;
-    unsigned int movementFlags;
+    union { unsigned int movementFlags; unsigned int flags240; };
     int driverBehavior;
     int nextAnimation;
     int unknown248;
     int unknown252;
-    bool unknown256;
+    union { bool unknown256; bool unknown260; };
     unsigned char unknown257[3];
     LevelObject* target;
     LevelObject* unknown264;

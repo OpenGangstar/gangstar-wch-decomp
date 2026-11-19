@@ -139,7 +139,7 @@ void GuardController::switchState(gameloft::ai::StateID next, gameloft::ai::Tran
             if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
                 npc->runToLocation(PlayerTest::GetPlayer()->getVehicle()->GetPosition());
             else
-                npc->runToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).position());
+                npc->runToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).GetPosition());
         }
         break;
     }

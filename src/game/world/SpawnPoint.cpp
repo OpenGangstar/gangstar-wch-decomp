@@ -225,7 +225,7 @@ void SpawnPoint::spawn()
 LevelObject* SpawnPoint::spawn(int metatype)
 {
     PlayerTest* player = PlayerTest::GetPlayer();
-    const irr::core::vector3d<float> origin = player->position();
+    const irr::core::vector3d<float> origin = player->GetPosition();
     const irr::core::quaternion orientation = player->GetRotation();
     const unsigned short material = player->GetMatID();
     const unsigned short triangle = player->GetTriID();

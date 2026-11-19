@@ -6,8 +6,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
+| libsanangeles.so | 0x0034425d | SaveGame::LoadAndApply(char const*) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/persistence/SaveGame.cpp |
+| libsanangeles.so | 0x003069f9 | SpawnPoint::spawn(int) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/world/SpawnPoint.cpp |
+| libsanangeles.so | 0x00300e2d | PlayerTest::addCurrentDriftDistance | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00300e4d | PlayerTest::addCurrentJumpDistance | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00419e70 | Shared tutorialPartFormat data prerequisite | — | BLOCKED | Preservation review accepted privately: 640 functions, 421 regions and 832 allocated payloads unchanged. No accepted consumer requires external linkage yet, so no root integration or progress credit. | src/game/ui/MenuWidget.cpp; src/game/ui/MenuState.cpp; shared declaration header (private) |
-| libsanangeles.so | 0x002fe269 | NPC::equipWeapon(bool, bool) | — | COMPLETED | 100%; root unchanged. Coordinator's private callback compatibility edit restores 208 native bytes and all 342 existing function/112 region checks, but callback still mismatches, so declaration and compatibility edit remain unintegrated. | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe269 | NPC::equipWeapon(bool, bool) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002e41f1 | gameswf::tu_string constructor/layout preservation prerequisite | — | COMPLETED | Historical union accepted after 190 profiles and 10,656 native comparisons; all prior matches and linked proofs preserved. Actual 16-byte ABI assertions pass; no new game credit. | src/game/rendering/RetailSwfString.h |
 | libsanangeles.so | 0x003b1e41 | gameswf::font::get_glyph historical-source support | — | COMPLETED | Older source confirms POD rectangle but not retail glyph hierarchy; native entity48 nonowning and word56 provider clearing clarified. No new constructor/ownership correction or trial. | native support evidence |
 | libsanangeles.so | 0x00389b01 | gameswf::tu_string::resize(int) verification support | — | COMPLETED | Pinned2008 source has exact tag-first layout and four native resize transition algorithms; constructor/allocator differences remain. No compiled match or game credit. | native support evidence |
@@ -19,14 +23,14 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00334a81 | LockCamera::init | lock_init | BLOCKED | — | src/game/core/LockCamera.cpp |
 | libsanangeles.so | 0x003351dd | VehicleCamera::goToSide | vehicle_side | BLOCKED | — | src/game/vehicles/VehicleCamera.cpp |
 | libsanangeles.so | 0x00333095 | CameraManager::processTouchRelease | — | COMPLETED | 100% | src/game/core/CameraManager.cpp |
-| libsanangeles.so | 0x003340c1 | FPSCamera::exit | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x003340c1 | FPSCamera::exit | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x0033530d | VehicleCamera::init | — | COMPLETED | 100% | src/game/vehicles/VehicleCamera.cpp |
 | libsanangeles.so | 0x00305ccd | Shop::triggered | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x00301759 | PlayerTest::justStoleCar | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00332cf5 | CameraManager::getClickedTarget | — | BLOCKED | 668/672B; authentic SDK center helper form leaves whole assembly/object/ELF identical; old27/9 exact, no credit | src/game/core/CameraManager.cpp |
 | libsanangeles.so | 0x003336ad | FollowCamera::getFacing | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
 | libsanangeles.so | 0x00335769 | VehicleCamera::getFacing | vehicle_side | BLOCKED | — | src/game/vehicles/VehicleCamera.cpp |
-| libsanangeles.so | 0x00333f71 | FPSCamera::enter | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00333f71 | FPSCamera::enter | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00333fed | FPSCamera::init | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00305e29 | Shop::trigger | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x003344f5 | FPSCamera::update | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
@@ -46,11 +50,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00333ab1 | FollowCamera::update | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
 | libsanangeles.so | 0x002e1571 | GSCarRepairMenu::draw2d | lock_init | BLOCKED | — | src/game/ui/GSCarRepairMenu.cpp |
 | libsanangeles.so | 0x00334c25 | LockCamera::update | camera_tap | BLOCKED | — | src/game/core/LockCamera.cpp |
-| libsanangeles.so | 0x003017ed | PlayerTest::jumpFinished | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00301821 | PlayerTest::driftFinished | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003017ed | PlayerTest::jumpFinished | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301821 | PlayerTest::driftFinished | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301ebd | PlayerTest::setLastUsedVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Canonical callback plus correct hide Thumb metadata reproduces the original 60-byte candidate and its nine register differences. All 342 existing functions and 112 regions pass. Reproducible nonmatching patch preserves declaration and private NPC compatibility prerequisites; no production integration. | nonmatching/ai/PlayerTest-onTargetReached.patch |
+| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Unchanged lreg-details run proves actual local map this103 to r4, offset109 to r5, and preserves 60 bytes plus 342 old functions/112 regions. Quantity priorities and original source cause remain unavailable; no further form. | nonmatching/ai/PlayerTest-onTargetReached.patch (private diagnostic) |
 | libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -79,7 +83,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301a28 | PlayerTest::Stop (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301418 | PlayerTest::applyDamage (secondary thunk) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301101 | PlayerTest::getCarAnimName | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015e5 | PlayerTest::~PlayerTest (D1/D2 aliases) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x0030a3e5 | Vehicle::mobilize | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00309189 | Vehicle::stopDriving | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030a491 | Vehicle::cleanTargets | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
@@ -687,7 +691,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | — | COMPLETED | 100%;604B plus native608B region and32B dispatch exact; full190-profile gate passes, completes all13 Preferences.cpp entries | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | — | COMPLETED | 100%; complete 224-byte function and section, two documented branch hints. Coordinator full gate passes 190 profiles and 10,658 comparisons; all previous matches retained. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100%; diagnostic and ordinary objects agree. MainMenu private declaration context reverses independent initializations before first RTL; rejected context remains unintegrated. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86fd | MenuState::GotFocus | — | BLOCKED | Typed first-pass getter produces the same 248-byte candidate and 12 register differences. All 234 existing functions and 89 section/region checks pass; no further source trials. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
@@ -778,7 +782,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f2a79 | Character deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f6c45 | Character::punched | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100% tracked; private migration remains unintegrated | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f26ad | Character::ready | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
@@ -809,13 +813,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302241 | PlayerTest::orientTowards | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00304895 | PlayerTest::teleportTo | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00304895 | PlayerTest::teleportTo | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00305a1d | PlayerTest::attack | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003020f1 | PlayerTest::debug | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340945 | CivAgressiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x00303079 | PlayerTest::photo(Weapon*) | — | COMPLETED | Production 668-byte match unchanged. Historical named-value/YZX form was already tried and is byte-identical to const-reference form with eight coherent-context stack differences; no replay or source edit. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303079 | PlayerTest::photo(Weapon*) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp (private compatibility trial) |
 | libsanangeles.so | 0x00340901 | CivAgressiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
-| libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030577d | PlayerTest::snipe | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340c35 | CivPassiveController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
 | libsanangeles.so | 0x00304c05 | PlayerTest::onObjectKilled | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00340bf1 | CivPassiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -833,11 +837,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00341305 | CopController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
 | libsanangeles.so | 0x0034084d | CivAgressiveController::onEvent | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x00340cd5 | CivPassiveController::onEvent | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
-| libsanangeles.so | 0x00341139 | CopController::switchState | — | COMPLETED | 100% | src/game/ai/CopController.cpp |
+| libsanangeles.so | 0x00341139 | CopController::switchState | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/CopController.cpp |
 | libsanangeles.so | 0x00341f31 | GuardController::onEvent | lock_init | BLOCKED | pending | src/game/ai/GuardController.cpp |
-| libsanangeles.so | 0x003420cd | GuardController::switchState | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
+| libsanangeles.so | 0x003420cd | GuardController::switchState | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00342585 | VehicleController::onEvent | lock_init | BLOCKED | pending | src/game/ai/VehicleController.cpp |
-| libsanangeles.so | 0x0034171d | CopVehicleController::switchState | — | COMPLETED | 100% | src/game/ai/CopVehicleController.cpp |
+| libsanangeles.so | 0x0034171d | CopVehicleController::switchState | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/CopVehicleController.cpp |
 | libsanangeles.so | 0x00341381 | CopController::onEvent | vehicle_side | BLOCKED | pending | src/game/ai/CopController.cpp |
 | libsanangeles.so | 0x003406a9 | AIManager::clean | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x003426b5 | VehicleController::switchState | — | COMPLETED | 100% | src/game/ai/VehicleController.cpp |
@@ -1022,9 +1026,9 @@ Coordinator authorizes one unchanged-best integrated-context replay for each par
 
 | libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | — | BLOCKED | One unchanged current-context replay reproduces the historical bytes; strict target fails, all old checks retained; no further forms | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | — | BLOCKED | Frozen coherent family exact privately; original photo stack regression and owned compatibility prerequisites still block integration | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003015d0 | _ZThn4_N10PlayerTestD1Ev | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303618 | _ZThn4_N10PlayerTestD0Ev | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030362d | _ZN10PlayerTestD0Ev | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00311ef1 | _ZTv0_n12_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f05 | _ZTv0_n24_N26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311f19 | _ZN26CustomSkinnedMeshSceneNodeD0Ev | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |

@@ -2,6 +2,7 @@
 #define WCH_CHARACTERS_PLAYER_TEST_H
 
 #include "../core/Array.h"
+#include "Character.h"
 
 class Vehicle;
 class PhysicAttributes;
@@ -13,85 +14,30 @@ namespace irr { namespace scene { class ISceneNode; } namespace video { class IV
 namespace irr { namespace core { class quaternion; template<class T> class vector3d; } }
 
 // Partial observed layout and call interfaces, not the complete original class.
-struct SaveVector3 {
-    float x, y, z;
-    SaveVector3() {}
-    SaveVector3(float a, float b, float c) : x(a), y(b), z(c) {}
-};
-class SavePositionInterface {
-public:
-    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
-    virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
-    virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
-    virtual void unknown9();
-    virtual unsigned short GetMatID() const;
-    virtual unsigned short GetTriID() const;
-    virtual irr::core::vector3d<float> position() const;
-    virtual const irr::core::quaternion& GetRotation() const;
-    virtual void unknown14(); virtual void unknown15();
-    virtual void position(const SaveVector3& value);
-    virtual void unknown17();
-    virtual void unknown18();
-    virtual int getMaxHealth() const;
-    virtual int getHealth() const;
-    virtual bool isDead();
-    virtual void unknown22();
-    virtual void unknown23();
-    virtual void unknown24();
-    virtual void unknown25();
-    virtual void unknown26();
-    virtual void unknown27();
-    virtual void Stop();
-    virtual void unknown29();
-    virtual void unknown30();
-    virtual void unknown31();
-    virtual void unknown32();
-    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
-    virtual void unknown34();
-    virtual bool setAnimation(const char* name, int speed, bool a, bool b, bool c);
-    virtual void unknown36();
-    virtual void unknown37();
-    virtual void setNextAnimation(int, int, bool, bool, bool);
-    virtual void unknown39();
-    virtual bool setAnimation(int, float, bool, bool, bool);
-    virtual bool shoot(float, bool);
-    virtual void unknown42();
-    virtual void unknown43();
-    virtual void unknown44();
-    virtual void unknown45();
-    virtual void setVehicle(Vehicle* value);
-    virtual Vehicle* getVehicle() const;
-    virtual void unknown48(); virtual void unknown49(); virtual void unknown50();
-    virtual void unknown51();
-    virtual void walkToLocation(const irr::core::vector3d<float>& point);
-    virtual void runToLocation(const irr::core::vector3d<float>& point);
-    virtual Weapon* getWeapon() const;
-    virtual void SetTarget(LevelObject* target);
-};
+class PlayerTest;
+typedef PlayerTest SavePrimaryInterface;
+typedef Character SavePositionInterface;
 
-class SavePrimaryInterface {
-public:
-    virtual void unknownPrimary();
-    virtual ~SavePrimaryInterface();
-    virtual void Stop();
-    virtual void setVehicle(Vehicle* value);
-    virtual void unknownPrimary5();
-    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
-    virtual Vehicle* getVehicle() const;
-    virtual Weapon* getWeapon() const;
-};
 namespace playertest { struct PlayerCarState { enum ePlayerCarState { MovingOut = 7 }; }; }
 
-class PlayerTest : public SavePrimaryInterface, public SavePositionInterface {
+#include "../core/IMapTrackable.h"
+
+class PlayerTest : public IMapTrackable, public Character {
 public:
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
+    virtual void Stop();
+    virtual void setVehicle(Vehicle* value);
     virtual bool shoot(float elapsed, bool pressed);
+    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
+    virtual Vehicle* getVehicle() const;
+    virtual Weapon* getWeapon() const;
+    virtual void walkToLocation(const irr::core::vector3d<float>& point);
+    virtual void runToLocation(const irr::core::vector3d<float>& point);
+
     void stopMoving(bool fast);
     void move(float direction, float magnitude);
     void setAnim(int animation, bool first, bool second, bool third, float speed);
-    virtual void Stop();
-    virtual void applyDamage(int amount, LevelObject* source, bool bypassArmor);
 
     // Reconstructed inline armor access; these names claim no retail symbols.
     int getContextArmor() const { return contextValues[contextWord]; }
@@ -102,8 +48,6 @@ public:
         if (getContextArmor() > 200)
             setContextArmor(200);
     }
-    virtual Vehicle* getVehicle() const;
-    virtual Weapon* getWeapon() const;
     enum eContext { Context0 = 0, Context1 = 1, AnyContext = -1 };
     static PlayerTest* GetPlayer();
     void acquireTarget();
@@ -141,8 +85,6 @@ public:
     void setLastUsedVehicle(Vehicle* replacement);
     void switchContext(eContext context, bool flag);
     void switchWeapon(bool unarmed);
-    virtual void walkToLocation(const irr::core::vector3d<float>& point);
-    virtual void runToLocation(const irr::core::vector3d<float>& point);
     void lockSwitchWeapon();
     void unlockSwitchWeapon();
     void Respawn();
@@ -152,7 +94,6 @@ public:
     void startDriving();
     void SetSpeed();
     void ResetPlayerTest(bool);
-    void setVehicle(Vehicle* value);
     void teleportTo(const LevelObject* object);
     void stopDriving(playertest::PlayerCarState::ePlayerCarState state, bool instant);
     void finishedStopDriving();
@@ -162,29 +103,18 @@ public:
     bool isFacingTarget();
     bool orientTowards(irr::core::vector3d<float> direction);
     void debug(irr::video::IVideoDriver* driver);
-    unsigned char unknown8[12];
-    irr::scene::ISceneNode* sceneNode;
-    unsigned char unknown24[4];
-    PhysicAttributes* physicAttributes;
-    unsigned char unknown32[28];
-    SaveVector3 facing;
-    unsigned char unknown72[108];
-    irr::scene::ISceneNode* shadowNode;
-    b2Body* collisionBody;
-    unsigned char unknown188[4];
-    Vehicle* vehicle;
-    unsigned char unknown196[4];
-    Vehicle* lastHitVehicle;
-    unsigned char unknown204[16];
-    int maximumHealth;
-    int health;
-    unsigned char unknown228[12];
-    unsigned int flags240;
-    unsigned char unknown244[16];
-    bool unknown260;
-    unsigned char unknown261[3];
-    LevelObject* target;
-    unsigned char unknown268[44];
+    using Character::facing;
+    using Character::shadowNode;
+    using Character::collisionBody;
+    using Character::vehicle;
+    using Character::lastHitVehicle;
+    using Character::maximumHealth;
+    using Character::health;
+    using Character::flags240;
+    using Character::unknown260;
+    using Character::target;
+    using LevelObject::physicAttributes;
+    unsigned char unknown300[12];
     LevelObject* unknown312;
     LevelObject* unknown316;
     Shop* closestShop;
@@ -216,10 +146,13 @@ public:
     // Item::add reads the complete word at 428; existing enum users retain
     // their observed access width. Both views occupy the same storage.
     union { eContext context; int contextWord; };
-    unsigned char unknown432[40];
-    int currentDistanceDriven;
-    int currentDriftDistance;
-    int currentJumpDistance;
+    irr::scene::ISceneNode* inactiveContextNodes[2];
+    unsigned char unknown440[12];
+    struct ContextRecord {
+        irr::scene::ISceneNode* node;
+        int data0, data1, data2;
+    };
+    ContextRecord contextRecords[2];
     irr::core::array<LevelObject*> photoTargets;
     bool weaponSwitchLocked;
     unsigned char unknown505[3];

@@ -8,7 +8,8 @@ namespace Structs { struct Rocket; }
 namespace irr { namespace video { class IVideoDriver; } }
 class b2Body;
 class Weapon;
-class SavePositionInterface;
+class Character;
+typedef Character SavePositionInterface;
 
 // Observed primary base and 120-byte allocation extent; unresolved fields
 // retain their offsets. The owner uses the observed secondary-base view.

@@ -223,12 +223,12 @@ int PlayerTest::getAmbientSound() const
 
 void PlayerTest::addCurrentDriftDistance(float distance)
 {
-    currentDriftDistance += distance;
+    contextRecords[1].data1 += distance;
 }
 
 void PlayerTest::addCurrentJumpDistance(float distance)
 {
-    currentJumpDistance += distance;
+    contextRecords[1].data2 += distance;
 }
 
 void PlayerTest::addPhotoTarget(LevelObject* target)
@@ -364,25 +364,25 @@ Weapon* PlayerTest::getWeapon() const
 
 void PlayerTest::jumpFinished()
 {
-    const int distance = currentJumpDistance / 100;
+    const int distance = contextRecords[1].data2 / 100;
     if (distance > 0)
         AchievementManager::s_achievementManager->recordJump(distance);
-    currentJumpDistance = 0;
+    contextRecords[1].data2 = 0;
 }
 
 void PlayerTest::driftFinished()
 {
-    const int distance = currentDriftDistance / 100;
+    const int distance = contextRecords[1].data1 / 100;
     if (distance > 0)
         AchievementManager::s_achievementManager->recordDrift(distance);
-    currentDriftDistance = 0;
+    contextRecords[1].data1 = 0;
 }
 
 void PlayerTest::addDistanceDriven(float distance)
 {
-    currentDistanceDriven += distance;
-    if (currentDistanceDriven >= 100000) {
-        currentDistanceDriven = 0;
+    contextRecords[1].data0 += distance;
+    if (contextRecords[1].data0 >= 100000) {
+        contextRecords[1].data0 = 0;
         AchievementManager::s_achievementManager->recordKmDriven();
     }
 }
@@ -701,11 +701,11 @@ void PlayerTest::teleportTo(const LevelObject* destination)
     ResetPlayerTest(false);
     Application::GetInstance()->GetHudManager()->walking();
     sceneNode->setRotation(destination->GetRotation());
-    position->position(reinterpret_cast<const SaveVector3&>(static_cast<const irr::core::vector3d<float>&>(destination->GetPosition())));
+    position->SetPosition(destination->GetPosition());
     PhysicAttributes* physics=physicAttributes;
     unsigned short material=destination->GetMatID();
     unsigned short triangle=destination->GetTriID();
-    physics->Init(material,triangle,position->position());
+    physics->Init(material,triangle,position->GetPosition());
 }
 
 #include "../ui/Message.h"
@@ -729,7 +729,16 @@ bool PlayerTest::photo(Weapon* weapon)
     for (int i=0;i<photoTargets.used;++i) {
         if (!photoTargets.data[i] || !photoTargets.data[i]->isEnabled())
             continue;
-        irr::core::vector3d<float> direction=photoTargets.data[i]->GetPosition()-CameraManager::getInstance()->getPosition();
+        const irr::core::vector3d<float>* targetPosition;
+        const irr::core::vector3d<float>* cameraPosition;
+        float directionY,directionZ,directionX;
+        irr::core::vector3d<float> direction((
+            targetPosition=&static_cast<const irr::core::vector3d<float>&>(photoTargets.data[i]->GetPosition()),
+            cameraPosition=&CameraManager::getInstance()->getPosition(),
+            directionY=targetPosition->Y-cameraPosition->Y,
+            directionZ=targetPosition->Z-cameraPosition->Z,
+            directionX=targetPosition->X-cameraPosition->X,
+            irr::core::vector3d<float>(directionX,directionY,directionZ)));
         double distance=sqrt((double)direction.getLengthSQ());
         float angle=acosf(photoClamp(forward.dotProduct(direction.normalize()),-1.0f,1.0f));
         if (angle < float(CameraManager::getInstance()->getFOV())*0.5f*0.01745329238474369049f*7.0f*0.125f) {
@@ -753,7 +762,7 @@ bool PlayerTest::snipe(Weapon* weapon)
 {
     Application* app = Application::GetInstance();
     Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*this));
-    irr::core::vector3d<float> start = static_cast<SavePositionInterface*>(this)->position();
+    irr::core::vector3d<float> start = static_cast<SavePositionInterface*>(this)->GetPosition();
     start.Z += 75.0f;
     const irr::core::vector3d<float>& lookAt = CameraManager::getInstance()->getLookAt();
     const irr::core::vector3d<float>& cameraPosition = CameraManager::getInstance()->getPosition();
@@ -827,4 +836,23 @@ void PlayerTest::onObjectKilled(LevelObject* object)
         else
             Application::GetInstance()->GetEventManager()->raise(EvPlayer(0));
     }
+}
+
+#include "../core/IrrlichtDevice.h"
+
+PlayerTest::~PlayerTest()
+{
+    cleanPhysic();
+    irr::scene::ISceneNode* root = Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode();
+    for (int i=0;i<2;++i) {
+        if (i!=contextWord) {
+            if (inactiveContextNodes[i]) {
+                inactiveContextNodes[i]->remove();
+                inactiveContextNodes[i]->drop();
+            }
+            root->removeChild(contextRecords[i].node);
+        }
+    }
+    s_player=0;
+    if (__builtin_expect(photoTargets.free_when_destroyed, 1)) ::operator delete(photoTargets.data);
 }
