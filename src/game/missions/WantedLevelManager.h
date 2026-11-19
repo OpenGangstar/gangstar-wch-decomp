@@ -23,6 +23,7 @@ public:
     int unknown8;
 
 private:
+    friend class WantedMeter;
     WantedLevelManager();
     // The retail singleton occupies 80 bytes. The remaining members are pending.
     int lockedLevel;

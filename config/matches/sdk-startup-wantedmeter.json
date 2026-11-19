@@ -48,7 +48,8 @@
             "name": "__tcf_2",
             "address": "0x0032c835",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN11WantedMeter6updateEd"
     ],
     "sections": [
         ".wanted_meter_vtable",
@@ -60,7 +61,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".wanted_meter_update"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -68,6 +70,8 @@
         "_ZN10HudElementD1Ev",
         "_ZN10AnimObject4DrawEv",
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN10AnimObject7SetAnimEi",
+        "_ZN10AnimObject11UpdateFrameEv"
     ]
 }

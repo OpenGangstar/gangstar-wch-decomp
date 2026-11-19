@@ -501,7 +501,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032c7e8 | WantedMeter::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032addd | Reward::update | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032c919 | WantedMeter destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c851 | WantedMeter::update | vehicle_side | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c851 | WantedMeter::update | — | COMPLETED | 100%; indexed-loop reuse plus permitted likelihood hint, exact80 and full190/10937 preservation | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032ae69 | Reward constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
@@ -1425,3 +1425,52 @@ declarations, production flags or existing body changes are proposed. Diagnostic
 ownership is released. The additional genuine const-SDK octree context is
 byte-identical to the first 616-byte accessor replay and is also parked before
 linking; no further iteration is authorized without new evidence.
+
+### WantedMeter current-context bounded review
+
+The coordinator reviewed and released the old vehicle_side assignment, then
+claimed only WantedMeter::update(double), Thumb 0x0032c851/80. Six saved forms
+remain exhausted. The saved first form has four source-level
+SetAnim/UpdateFrame calls; later forms have two. These source counts alone do
+not establish the emitted static call inventory. Since then the actual
+WantedLevelManager fields have been recovered as four doubles and two bools,
+replacing opaque byte arrays without changing layout. The measured declaration
+ordering diagnostic justifies one current-context replay of the faithful
+peeled-loop form. First validate only its ordinary friend access declaration
+with the target absent; no field, algorithm, production flag or old body change.
+
+The current first-form replay emits 100/native80 bytes and only the target.
+Assembly review found that GCC peels another iteration, emitting six static
+animation calls, not the four counted in its source. The earlier selection
+rationale incorrectly equated source calls with emitted calls; it is corrected
+here. This concrete compiler-peeling evidence authorizes one additional bounded
+replay of saved v3, the ordinary pointer loop, against the same independently
+preserved prerequisite. It must verify the emitted call inventory before any
+matching claim; no new algorithm, declaration, flag or source variation. The
+first replay remains a failed, counted attempt, not a budget reset.
+
+The saved-v3 current replay emits 84/native80 bytes, only the target, and the
+native four animation call sites. Assembly isolates an outlined timer<=0
+addition with an extra branch and one extra this-to-array-pointer copy. This
+new emitted-CFG evidence authorizes one ordinary __builtin_expect(cond,1) on
+that existing timer condition, as permitted by the maintainer clarification.
+No other source, declaration or flag change is authorized. Any credit still
+requires the complete native function and affected existing comparisons.
+
+The single pointer-loop likelihood form remains 84/native80 bytes. It restores
+the native timer branch layout, leaving a this-to-pointer copy and alignment
+gap. The coordinator authorizes one final bounded reuse of the saved indexed
+loop (also the traversal style of matched WantedMeter::draw2d) with the same
+hint. This uses the actual fixed member array and removes the explicit cursor
+local; no invented declarations or register controls. Stop after this form
+unless a complete exact match warrants ordinary integration/closure checks.
+
+The final indexed-loop likelihood candidate matches all 80 native function
+bytes and its complete physical section. Root full verification passed all
+190 profiles and 10,937 comparisons (5,426 functions, 5,330 sections, 181
+regions), exit 0, no mismatch or skip, all 955 frozen inputs stable. Native and
+linked SHA256 is 5d1df700fb9cbc7586421a81c2db36f0dc6da836ffc63d7d7f8056928be2af74.
+The coordinator accepted it, removed only its verified assembly marker and
+released ownership. The GNU hint and exact comparison output are documented
+in docs/matches/wanted-meter-update.md. Constructor aliases remain pending;
+no Fully Linked credit is added. No existing matched body changes.
