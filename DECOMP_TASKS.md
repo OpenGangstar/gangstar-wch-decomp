@@ -6,6 +6,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
+| libsanangeles.so | 0x004ab060 | EvNPCVehicle construction support (vtable anchor; no out-of-line constructor credit) | — | BLOCKED | Direct and implicit-copy support probes emit identical 56-byte sections and relocations, one event/raise/cleanup, with no retained base-vptr construction sequence. Local copy hypothesis rejected. Four-site native audit confirms mixed retained/elided base-vptr stores; no unique constructor/linkage inference. No game body or shared constructor changed. | src/game/characters/NPCVehicleEvent.h; private probe |
 | libsanangeles.so | 0x0034425d | SaveGame::LoadAndApply(char const*) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/persistence/SaveGame.cpp |
 | libsanangeles.so | 0x003069f9 | SpawnPoint::spawn(int) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/world/SpawnPoint.cpp |
 | libsanangeles.so | 0x00300e2d | PlayerTest::addCurrentDriftDistance | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
@@ -54,9 +55,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301821 | PlayerTest::driftFinished | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301ebd | PlayerTest::setLastUsedVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Unchanged lreg-details run proves actual local map this103 to r4, offset109 to r5, and preserves 60 bytes plus 342 old functions/112 regions. Quantity priorities and original source cause remain unavailable; no further form. | nonmatching/ai/PlayerTest-onTargetReached.patch (private diagnostic) |
-| libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Genuine-hierarchy replay still emits identical 60 bytes with nine native register differences. All 347 existing functions/117 regions, five destructors, photo668 and vtable288 pass; no NPC change. No further local-order or flag trial. | src/game/ai/PlayerTest.cpp (private) |
+| libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | — | BLOCKED | Canonical current-hierarchy replay is 62 bytes with exact native 2-byte physical padding; four load/store-order bytes differ at +0x32/+0x34/+0x36/+0x38. All 347 existing functions and 117 regions pass. One form stopped; no credit. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100%; restored native weak/default binding. Integrated declaration-only correction independently proved all 48 bytes and passed 190 profiles/10,687 checks; no body edits or new progress credit. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302685 | PlayerTest::UpdateSceneNode | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003013bd | PlayerTest::ResetPlayerTest | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -347,7 +348,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032d72d | CControlManager::update | vehicle_side | BLOCKED | — | src/game/input/CControlManager.cpp |
 | libsanangeles.so | 0x00354665 | EventManager::_attach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
-| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00319dd1 | PhysicInfo::PhysicInfo (C1 only; native C2 absent) | prefs_loader | IN_PROGRESS | Private ordinary-inline linkage prerequisite investigation; manual weak out-of-line form emits invalid GCC INTERNAL directive when used by new[]. Same body and native weak 96-byte proof required, no output editing. | src/game/characters/PhysicInfo.h; src/game/characters/PhysicAttributes.cpp (private) |
+| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | prefs_loader | IN_PROGRESS | Current-model prerequisite passed 190/10,687 after correcting per-profile toolchain setup. Target assembly failed on generated weak C1 INTERNAL directive; no target bytes. One ordinary-inline actual PhysicInfo prerequisite investigation authorized; preserve four jump vertices plus center and generic Array. | src/game/characters/PhysicAttributes.cpp (private) |
 | libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | lock_init | BLOCKED | — | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x003279f5 | Cash::GetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x003279f1 | Cash::SetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
@@ -809,7 +811,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00303b58 | PlayerTest::shoot non-virtual thunk | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_side | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | vehicle_camera | IN_PROGRESS | Six old trials recovered; authentic SDK nonmember b2Vec2 plus/Set differs from synthetic member helpers. One private prerequisite gate then one natural-expression replay authorized; no source-order search. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302241 | PlayerTest::orientTowards | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -1050,7 +1052,7 @@ Coordinator authorizes one final mechanically corrected coherent PlayerTest prot
 Coordinator permits a focused diagnostic of the sole old photo regression in the coherent PlayerTest prototype, with at most two mechanically justified ABI/cast/declaration-order proposals only after locating the extra four bytes. No algorithm changes, assembly, register constraints, barriers, or broad source search. All old 76 Player/107 Character functions and destructor/table comparisons must pass for readiness.
 
 
-| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) (C1/C2 aliases) | lock_init | BLOCKED | 864/872-byte candidate; private old photo regression remains | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) (C1/C2 aliases) | — | BLOCKED | Four old forms already used genuine hierarchy; best 864/native872. Native/candidate 100-byte literal pools equal; eight-byte gap precedes pool. No missing operation among 14 calls proven. Private field/container/shape prerequisites remain unintegrated; no global Array constructor change. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x0030a955 | Vehicle::Vehicle(int) (C1/C2 aliases) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | hud_glyphs | BLOCKED | post-constructor replay unchanged; 539/540 bytes | src/game/world/SpawnPoint.cpp |
 
@@ -1109,7 +1111,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | — | BLOCKED | Native-order/reference corrections materialize, but the candidate remains 1,820 versus 1,816 native bytes. Strict linking fails; all artifacts retained, no further variant authorized. | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | BLOCKED | 1088/1072 bytes; six forms; one private baseline link gate incomplete | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | player_update | IN_PROGRESS | Read-only recovery of six exhausted forms, incomplete historical gate and current actual hierarchy/ABI differences. No replay authorized without new evidence. | src/game/ai/PlayerTest.cpp |
 
 | libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
@@ -1268,7 +1270,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | — | BLOCKED | Five distinct forms verified; best656 exceeds native652. Native arithmetic matches saved expressions, with no justified sixth-form correction. Relocated/vtable failures are not native proof. | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
 | libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | hud_glyphs | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
-| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Reviewed complete83-profile typed-header gate and safe2212/2228B candidate; no relevant current ABI/helper drift or new replay evidence | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Prerequisite-only current gate passed all 190 profiles/10,687 comparisons with 11 layout assertions. Unchanged safe-v4 current-context body compiled to 2192/2228 bytes; strict extent failed, stopped before linking. Native SetSpeed weak/default versus current global/default is new independently verified ABI evidence. Weak-declaration gate passed 190/10,687; unchanged replay emits 2200/2228 bytes, with actual GOT relocation restored. Stopped pre-link; no source variations or shared event constructor edits. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | — | BLOCKED | Current unchanged safe3060/3220 identical archive; old188/112 and complete76-build header closure2587 functions/2821 regions exact; fixture failures resolved, no credit | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | six forms; best4040/4020; old188/112 and 48-profile header gate pass; no credit | src/game/vehicles/Vehicle.cpp |
 
