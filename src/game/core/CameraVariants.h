@@ -67,6 +67,7 @@ public:
     virtual void enter();
     virtual void debug(irr::video::IVideoDriver* driver);
 private:
+    irr::core::vector3d<float> getFacing() const;
     void updatePosition(float elapsed, const irr::core::vector3d<float>& pivot,
         float distance, irr::core::vector3d<float>& yawAxis,
         irr::core::vector3d<float>&, float, float);

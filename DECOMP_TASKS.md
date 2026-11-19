@@ -32,8 +32,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305ccd | Shop::triggered | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x00301759 | PlayerTest::justStoleCar | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00332cf5 | CameraManager::getClickedTarget | — | BLOCKED | 668/672B; authentic SDK center helper form leaves whole assembly/object/ELF identical; old27/9 exact, no credit | src/game/core/CameraManager.cpp |
-| libsanangeles.so | 0x003336ad | FollowCamera::getFacing | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00335769 | VehicleCamera::getFacing | vehicle_side | BLOCKED | — | src/game/vehicles/VehicleCamera.cpp |
+| libsanangeles.so | 0x003336ad | FollowCamera::getFacing | — | COMPLETED | 100%;220-byte function and complete section exact, recovered crossProduct reused. Combined190-profile/10943-comparison native gate passes with959inputs stable. Ownership released after coordinator acceptance. | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00335769 | VehicleCamera::getFacing | — | COMPLETED | 100%;220-byte function and complete section exact via matched sibling reuse. Ordinary private declaration adds no storage/virtual slot. Combined190-profile/10943-comparison gate passes; ownership released after acceptance. | src/game/vehicles/VehicleCamera.cpp; src/game/core/CameraVariants.h |
 | libsanangeles.so | 0x00333f71 | FPSCamera::enter | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00333fed | FPSCamera::init | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00305e29 | Shop::trigger | — | COMPLETED | 100% | src/game/ui/Shop.cpp |

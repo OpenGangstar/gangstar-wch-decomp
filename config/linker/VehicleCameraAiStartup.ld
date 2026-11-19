@@ -22,6 +22,8 @@ _ZN32retail_vehiclecamera_transitions11guard_transE = 0x0042a618;
 _ZN32retail_vehiclecamera_transitions22scripted_vehicle_transE = 0x0042a6c0;
 SECTIONS
 {
+    .vehicle_camera_facing 0x00335768 : { *ai-startup-vehiclecamera.o(.text._ZNK13VehicleCamera9getFacingEv) }
+    ASSERT(SIZEOF(.vehicle_camera_facing) == 220, "Native VehicleCamera facing extent")
     .vehicle_camera_init 0x0033530c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera4initEP11LevelObjecti) }
     .vehicle_camera_position 0x0033560c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }
     .vehicle_camera_vtable 0x004acde0 : { *ai-startup-vehiclecamera.o(.data.rel.ro._ZTV13VehicleCamera) }

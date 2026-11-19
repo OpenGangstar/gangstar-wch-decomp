@@ -148,3 +148,16 @@ void VehicleCamera::updatePosition(float elapsed, const irr::core::vector3d<floa
     direction.normalize();
     position = (rotation * direction) * distance + pivot;
 }
+
+#include "../world/LevelObject.h"
+irr::core::vector3d<float> VehicleCamera::getFacing() const
+{
+    irr::core::vector3d<float> facing;
+    if (vehicle) {
+        facing = vehicle->GetPosition() - position;
+        const irr::core::vector3d<float> up(0.0f, 0.0f, 1.0f);
+        facing = up.crossProduct(facing);
+        facing = facing.normalize();
+    }
+    return facing;
+}
