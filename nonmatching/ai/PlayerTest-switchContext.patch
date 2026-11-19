@@ -1,0 +1,176 @@
+--- a/src/game/ai/PlayerTest.cpp
++++ b/src/game/ai/PlayerTest.cpp
+@@ -868,3 +868,96 @@
+         unknown72 = y;
+     }
+ }
++
++#include "../world/Map.h"
++#include "../core/Material.h"
++#include "../core/Collada.h"
++#include "../rendering/GS3DStuff.h"
++#include "../persistence/SaveGame.h"
++namespace retail_player_context_text {
++extern const char normal[] __attribute__((visibility("hidden")));
++extern const char jail[] __attribute__((visibility("hidden")));
++extern const char bip[] __attribute__((visibility("hidden")));
++}
++struct PlayerContextStorageView {
++    irr::scene::ISceneNode* nodes[2];
++    Character::AnimationInfo animations[2];
++};
++typedef char PlayerContextStorageExtent[sizeof(PlayerContextStorageView)==40?1:-1];
++class Box2DUserInfo {
++public:
++    Box2DUserInfo(LevelObject* owner,irr::scene::ISceneNode* node)
++        : owner(owner),node(node),lowerHeight(0),upperHeight(0),unknown16(0),unknown20(0),flag24(false),flag25(false) {}
++    LevelObject* owner;
++    irr::scene::ISceneNode* node;
++    float lowerHeight,upperHeight,unknown16,unknown20;
++    bool flag24,flag25;
++};
++typedef char PlayerBodyDataExtent[sizeof(Box2DUserInfo)==28?1:-1];
++void PlayerTest::switchContext(eContext next,bool save)
++{
++    int previous=contextWord;
++    if(previous==next)return;
++    ScriptManager* scripts=ScriptManager::getInstance();
++    scripts->freezeRunningScripts(0,context);
++    contextWord=next;
++    ScriptManager::getInstance()->unlockFrozenScripts();
++    Application* app=Application::GetInstance();
++    irr::core::vector3d<float> position;
++    irr::core::quaternion rotation;
++    if(sceneNode) {
++        position=sceneNode->getPosition();
++        rotation=sceneNode->getRotation();
++    }
++    WantedLevelManager::getInstance()->resetWantedLevel();
++    Character* character=this;
++    PlayerContextStorageView& savedContexts=*reinterpret_cast<PlayerContextStorageView*>(inactiveContextNodes);
++    if(savedContexts.nodes[contextWord]) {
++        sceneNode=savedContexts.nodes[contextWord];
++        *reinterpret_cast<Character::AnimationInfo*>(&unknown164Pointer)=savedContexts.animations[contextWord];
++    } else {
++        const char* filename=0;
++        if(contextWord==Context0)filename=retail_player_context_text::normal;
++        else if(contextWord==Context1)filename=retail_player_context_text::jail;
++        sceneNode=irr::collada::CColladaDatabase::constructScene(filename,&irr::collada::CColladaDatabase::DefaultFactory);
++        savedContexts.nodes[contextWord]=sceneNode;
++        Character::AnimationInfo& animation=*reinterpret_cast<Character::AnimationInfo*>(&unknown164Pointer);
++        character->bindAnimation(retail_player_context_text::bip,animation,0);
++        savedContexts.animations[contextWord]=animation;
++        GS3DStuff::SetMaterialFlag(sceneNode,irr::video::MaterialFlag16,true);
++        GS3DStuff::SetMaterialFlag(sceneNode,irr::video::MaterialFlag2,true);
++        GS3DStuff::SetMaterialFlag(sceneNode,irr::video::MaterialFlag4,true);
++        GS3DStuff::SetMaterialFiltering(sceneNode,false,true);
++        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,63,63,63),GS3DStuff::Color3);
++        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,255,255,255),GS3DStuff::Color0);
++        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,255,255,255),GS3DStuff::Color1);
++        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,229,229,229),GS3DStuff::Color2);
++        GS3DStuff::SetCulling(sceneNode,static_cast<irr::scene::E_CULLING_TYPE>(2));
++        GS3DStuff::CleanNode(sceneNode);
++        irr::IrrlichtDevice* device=app->GetDevice();
++        device->getVideoDriver();
++        device->getSceneManager()->getRootSceneNode()->addChild(sceneNode);
++    }
++    sceneNode->setRotation(rotation);
++    sceneNode->setPosition(position);
++    if(collisionBody->data) ::operator delete(collisionBody->data);
++    collisionBody->data=new Box2DUserInfo(character,GS3DStuff::FindAMesh(sceneNode));
++    irr::core::vector3d<float> direction=character->GetFront();
++    facing.x=direction.X;facing.y=direction.Y;facing.z=direction.Z;
++    character->setAnimation(165,1.0f,false,false,false);
++    character->resetCollisions();
++    app->GetHudManager()->switchWeapon(0);
++    app->GetHudManager()->showCash(contextWord==Context0);
++    irr::video::ITexture* sky=contextWord==Context1?0:GS3DStuff::getSkyBoxTexture();
++    if(sky!=GS3DStuff::getSkyBox()->getMaterial(0).layers[0].texture) {
++        GS3DStuff::setSkyColor(contextWord==Context1);
++        GS3DStuff::getSkyBox()->setMaterialTexture(0,sky);
++        GS3DStuff::getSkyBox()->notifyMaterialChanged();
++    }
++    Map::getInstance()->setMap(static_cast<Map::eMapType>(contextWord==Context1));
++    app->GetHudManager()->retroEffect(contextWord==Context1);
++    if(save && previous!=AnyContext) {
++        SaveGame game;
++        game.SampleAndSave(SaveGame::GetDefaultFilename());
++    }
++}
+--- a/src/game/world/Map.h
++++ b/src/game/world/Map.h
+@@ -9,6 +9,7 @@
+ 
+ class Map {
+     friend class MiniMap;
++    friend class PlayerTest;
+ public:
+     static Map* getInstance() __attribute__((weak, used));
+ 
+--- a/config/matches/ai-startup-playertest.json
++++ b/config/matches/ai-startup-playertest.json
+@@ -126,7 +126,8 @@
+         "_ZThn4_N10PlayerTestD0Ev",
+         "_ZN10PlayerTest7setAnimEibbbf",
+         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
+-        "_ZN9Character20getSpecificAnimationEi"
++        "_ZN9Character20getSpecificAnimationEi",
++        "_ZN10PlayerTest13switchContextENS_8eContextEb"
+     ],
+     "sections": [
+         ".player_car_open_clip",
+@@ -157,7 +158,8 @@
+         ".player_vtable",
+         ".player_set_anim",
+         ".physic_find_lower",
+-        ".character_specific_animation"
++        ".character_specific_animation",
++        ".player_switch_context"
+     ],
+     "dependencies": [
+         "ai-startup-physicattributes",
+@@ -352,6 +354,22 @@
+         "_ZNK7Vehicle12isDoorOpenedEb",
+         "_Z21ekd_makestringfile255PKcPc",
+         "_Z13ekd_debug_outPKcPc",
+-        "_ZNK6Weapon11isTwoHandedEv"
++        "_ZNK6Weapon11isTwoHandedEv",
++        "_ZN13ScriptManager20freezeRunningScriptsEPK6ScriptN10PlayerTest8eContextE",
++        "_ZN13ScriptManager19unlockFrozenScriptsEv",
++        "_ZN18WantedLevelManager16resetWantedLevelEv",
++        "_ZN9GS3DStuff16getSkyBoxTextureEv",
++        "_ZN9GS3DStuff9getSkyBoxEv",
++        "_ZN9GS3DStuff11setSkyColorEb",
++        "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
++        "_ZN3Map6setMapENS_8eMapTypeE",
++        "_ZN8SaveGameC1Ev",
++        "_ZN8SaveGame18GetDefaultFilenameEv",
++        "_ZN8SaveGame13SampleAndSaveEPKc",
++        "_ZN8SaveGameD1Ev",
++        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",
++        "_ZN9GS3DStuff20SetMaterialFilteringEPN3irr5scene10ISceneNodeEbb",
++        "_ZN9GS3DStuff10SetCullingEPN3irr5scene10ISceneNodeENS1_14E_CULLING_TYPEE",
++        "_ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE"
+     ]
+ }
+--- a/config/linker/PlayerTestAiStartup.ld
++++ b/config/linker/PlayerTestAiStartup.ld
+@@ -36,6 +36,8 @@
+ 
+ SECTIONS
+ {
++    .player_switch_context 0x00301a74 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13switchContextENS_8eContextEb) }
++
+     .player_set_anim 0x003018d0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7setAnimEibbbf) }
+     ASSERT(SIZEOF(.player_set_anim) == 64, "Native62 function plus proven2 byte padding")
+     .player_weapon_callback_0 0x0030577c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5snipeEP6Weapon) }
+@@ -167,3 +169,9 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
++
++"_ZN26retail_player_context_text6normalE" = 0x41df94;
++"_ZN26retail_player_context_text4jailE" = 0x41df7c;
++"_ZN26retail_player_context_text3bipE" = 0x41d8d0;
++
++ASSERT(SIZEOF(.player_switch_context) == 900, "native Player context span");

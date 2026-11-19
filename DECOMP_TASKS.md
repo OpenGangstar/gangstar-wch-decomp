@@ -1110,7 +1110,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | lock_init | BLOCKED | 1732/1748-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | hud_glyphs | BLOCKED | 892/900-byte candidate; six forms, full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | — | BLOCKED | One current-layout/NDK-enum replay emits884/native900 bytes; only target newly emitted, prelink3, no owner linked proof. See nonmatching/ai/PlayerTest-switchContext.md. | src/game/ai/PlayerTest.cpp |
 
 | libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | — | BLOCKED | Native-order/reference corrections materialize, but the candidate remains 1,820 versus 1,816 native bytes. Strict linking fails; all artifacts retained, no further variant authorized. | src/game/characters/PhysicAttributes.cpp |
 
