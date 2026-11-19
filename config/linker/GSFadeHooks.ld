@@ -81,8 +81,6 @@ SECTIONS
     .application_key_post 0x00413c30 : { *(.rodata.application_key_post) }
     .application_key_main 0x00413c7c : { *(.rodata.application_key_main) }
 
-
-
     /DISCARD/ : { *application-helpers.o(.text.__tcf_0) }
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
     .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
@@ -288,3 +286,6 @@ INCLUDE config/linker/ApplicationInitWin32Sections.ld
 INCLUDE config/linker/ApplicationInitSections.ld
 
 INCLUDE config/linker/ApplicationQuitSections.ld
+
+ASSERT(SIZEOF(.application_update) == 108, "Application update section extent");
+ASSERT(SIZEOF(.application_draw) == 272, "Application draw section extent");

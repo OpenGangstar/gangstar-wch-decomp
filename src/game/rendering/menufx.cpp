@@ -145,27 +145,11 @@ public:
     float channels[4][2];
 };
 
-class tu_string {
-public:
-    // The retail call resolves the constructor through the GOT.
-    explicit tu_string(const char* text) __attribute__((long_call));
-    tu_string(const char* text, int length) __attribute__((long_call));
-    ~tu_string()
-    {
-        if (__builtin_expect(storage[0] == 255, 1))
-            SwfFree(heap);
-    }
+} // namespace gameswf
 
-    const char* c_str() const
-    {
-        return storage[0] == 255 ? static_cast<const char*>(heap)
-                                 : reinterpret_cast<const char*>(storage + 1);
-    }
+#include "RetailSwfString.h"
 
-private:
-    unsigned char storage[12];
-    void* heap;
-};
+namespace gameswf {
 
 class as_value {
 public:

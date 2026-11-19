@@ -198,7 +198,9 @@
         "_ZNK16TouchScreenWin3211getTopBoundEv",
         "_ZNK16TouchScreenWin3214getBottomBoundEv",
         "_ZN11Application4InitEPN3irr14IrrlichtDeviceE",
-        "_ZN11Application4QuitEv"
+        "_ZN11Application4QuitEv",
+        "_ZN11Application7_UpdateEi",
+        "_ZN11Application5_DrawEv"
     ],
     "sections": [
         ".hook_0",
@@ -413,7 +415,9 @@
         ".application_vtable",
         ".application_receiver_vtable",
         ".application_text_styles",
-        ".application_achievements"
+        ".application_achievements",
+        ".application_update",
+        ".application_draw"
     ],
     "retail_got": true,
     "source_first": true,
@@ -523,8 +527,6 @@
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZN3irr5video15CTextureManager13reloadTextureEi",
         "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
-        "_ZN11Application7_UpdateEi",
-        "_ZN11Application5_DrawEv",
         "_ZN12SoundManager15playLowFpsMusicEib",
         "_ZNK7ASprite10PaintFrameEiiii",
         "_ZNK11MenuManager12isInGameMenuEv",
@@ -567,6 +569,9 @@
         "_ZN9GS3DStuff8tearDownEv",
         "_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv",
         "_ZN11FileManager7DestroyEv",
-        "_ZNK7Mission8getStateEv"
+        "_ZNK7Mission8getStateEv",
+        "_ZN12StateMachine10isDrawableEv",
+        "_ZN11MenuManager4drawEPK12StateMachine",
+        "_ZN11MenuManager6updateEP12StateMachine"
     ]
 }

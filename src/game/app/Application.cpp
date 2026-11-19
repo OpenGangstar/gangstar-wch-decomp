@@ -837,3 +837,56 @@ void Application::Quit()
     }
     FileManager::Destroy();
 }
+
+#include "ApplicationListIterator.h"
+
+void Application::_Update(int elapsed)
+{
+    typedef stlp_priv::_List_iterator<IUpdatable*, std::_Nonconst_traits<IUpdatable*> > iterator;
+    iterator first(updatables._M_node.next);
+    const double time = elapsed;
+    iterator last(&updatables._M_node);
+    for (; first != last; ++first)
+        (*first)->update(time);
+    stateMachine->update(time);
+    MenuManager::getInstance()->update(stateMachine);
+    device->getVideoDriver();
+    device->getSceneManager()->getParameters();
+}
+
+#include "ApplicationListIterator.h"
+#include "../scripting/ScriptManager.h"
+void Application::_Draw()
+{
+    if (!stateMachine->isDrawable())
+        return;
+    irr::video::IVideoDriver* driver = device->getVideoDriver();
+    irr::scene::ISceneManager* scene = device->getSceneManager();
+    device->getGUIEnvironment();
+    driver->setClearColor(irr::video::SColor(255, 0, 0, 0));
+    driver->beginScene();
+    driver->clearBuffers(3);
+    scene->update(-123456.0f, false);
+    if (drawAll)
+        scene->drawAll(0);
+    typedef stlp_priv::_List_iterator<IDrawable*, std::_Nonconst_traits<IDrawable*> > iterator;
+    {
+        iterator first(sceneDrawables._M_node.next);
+        iterator last(&sceneDrawables._M_node);
+        for (; first != last; ++first)
+            (*first)->draw();
+    }
+    driver->beginScene2D();
+    {
+        iterator first(hudDrawables._M_node.next);
+        iterator last(&hudDrawables._M_node);
+        for (; first != last; ++first)
+            (*first)->draw2d();
+    }
+    stateMachine->draw2d();
+    ScriptManager::getInstance()->draw();
+    driver->endScene2D();
+    MenuManager::getInstance()->draw(StateMachine::getInstance());
+    driver->endScene();
+    driver->swapBuffers(0);
+}

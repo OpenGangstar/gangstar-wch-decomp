@@ -1,3 +1,4 @@
+__aeabi_i2d = 0x001c452c;
 memcpy = 0x001c4190;
 memset = 0x001c45d4;
 srand48 = 0x001c4580;
@@ -41,7 +42,6 @@ SECTIONS
     .application_key_device 0x00413bf4 : { *(.rodata.application_key_device) }
     .application_key_post 0x00413c30 : { *(.rodata.application_key_post) }
     .application_key_main 0x00413c7c : { *(.rodata.application_key_main) }
-
 
     .application_delete_control 0x002d458c : { *(.gnu.linkonce.t._Z10SafeDeleteI15CControlManagerEvRPT_) }
     .application_logo_sprite 0x00413d30 : { *(.rodata.application_logo_sprite) }
@@ -132,3 +132,6 @@ INCLUDE config/linker/ApplicationInitWin32Sections.ld
 INCLUDE config/linker/ApplicationInitSections.ld
 
 INCLUDE config/linker/ApplicationQuitSections.ld
+
+ASSERT(SIZEOF(.application_update) == 108, "Application update section extent");
+ASSERT(SIZEOF(.application_draw) == 272, "Application draw section extent");
