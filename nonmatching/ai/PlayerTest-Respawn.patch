@@ -1,0 +1,102 @@
+--- a/src/game/ai/PlayerTest.cpp
++++ b/src/game/ai/PlayerTest.cpp
+@@ -868,3 +868,54 @@
+         unknown72 = y;
+     }
+ }
++
++#include "../meta/Factions.h"
++void PlayerTest::Respawn()
++{
++    Application* app=Application::GetInstance();
++    CControlManager* controls=app->GetControlManager();
++    app->GetEventManager()->raise(EvPlayer(11));
++    flags240=0;
++    unknown424=false;
++    _SetTarget(0,false);
++    WantedLevelManager* wanted=WantedLevelManager::getInstance();
++    wanted->unknown8=0;
++    wanted->_processWantedLevel();
++    SavePositionInterface* position=static_cast<SavePositionInterface*>(this);
++    health=position->getMaxHealth();
++    if (vehicle) {
++        unknown324=0;
++        controls->exitCar(true);
++        static_cast<SavePrimaryInterface*>(this)->setVehicle(0);
++        unknown316=0;
++        unknown372=0;
++        ResetPlayerTest(false);
++        SoundManager* sound=SoundManager::getInstance();
++        int ambient=PlayerTest::GetPlayer()->getAmbientSound();
++        sound->unknown140=true;
++        sound->playEx(ambient,0,true,1.0f,0,true,1.0f,0);
++        sound->unknown140=false;
++    }
++    LevelObject* object=GameObjectManager::s_gom->getObjectList(2)->GetFirst();
++    float nearestDistance=-1.0f;
++    LevelObject* nearest=0;
++    for (;object;object=object->next) {
++        if (object->GetMetatype()==125) {
++            float distance=position->GetPosition().getDistanceFromSQ(object->GetPosition());
++            if (!nearest || distance<nearestDistance) {
++                nearest=object;
++                nearestDistance=distance;
++            }
++        }
++    }
++    if (nearest)
++        teleportTo(nearest);
++    static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
++    switchWeapon(true);
++    controls->unlock();
++    clearPhotoTargets();
++    Factions::init();
++    position->setAnimation(-1,1.0f,false,false,false);
++    position->setAnimation(165,1.0f,false,false,false);
++    nextAnimation=-1;
++}
+--- a/config/matches/ai-startup-playertest.json
++++ b/config/matches/ai-startup-playertest.json
+@@ -124,7 +124,8 @@
+         "_ZThn4_N10PlayerTestD1Ev",
+         "_ZThn4_N10PlayerTestD0Ev",
+         "_ZN10PlayerTest7setAnimEibbbf",
+-        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
++        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
++        "_ZN10PlayerTest7RespawnEv"
+     ],
+     "sections": [
+         ".player_car_open_clip",
+@@ -154,7 +155,8 @@
+         ".player_thunk_d0",
+         ".player_vtable",
+         ".player_set_anim",
+-        ".physic_find_lower"
++        ".physic_find_lower",
++        ".player_respawn"
+     ],
+     "dependencies": [
+         "ai-startup-physicattributes",
+@@ -349,6 +351,10 @@
+         "_ZNK7Vehicle12isDoorClosedEb",
+         "_ZNK7Vehicle12isDoorOpenedEb",
+         "_Z21ekd_makestringfile255PKcPc",
+-        "_Z13ekd_debug_outPKcPc"
++        "_Z13ekd_debug_outPKcPc",
++        "_ZN18WantedLevelManager19_processWantedLevelEv",
++        "_ZN8Factions4initEv",
++        "_ZN17GameObjectManager13getObjectListEi",
++        "_ZNK14GameObjectList8GetFirstEv"
+     ]
+ }
+--- a/config/linker/PlayerTestAiStartup.ld
++++ b/config/linker/PlayerTestAiStartup.ld
+@@ -36,6 +36,8 @@
+ 
+ SECTIONS
+ {
++    .player_respawn 0x003049e4 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7RespawnEv) }
++    ASSERT(SIZEOF(.player_respawn) == 544, "Native Respawn extent")
+     .player_set_anim 0x003018d0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7setAnimEibbbf) }
+     ASSERT(SIZEOF(.player_set_anim) == 64, "Native62 function plus proven2 byte padding")
+     .player_weapon_callback_0 0x0030577c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5snipeEP6Weapon) }

@@ -831,7 +831,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00341d25 | GuardController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00341d65 | GuardController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00302361 | PlayerTest::moveTo | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | vehicle_side | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | — | BLOCKED | One recovered-hierarchy adaptation retains544B extent and all37 native call modes/destinations, but fails at0x46; owner83functions24sections1region preserved. Reviewed unapplied reproduction patch; no credit. Ownership released; no further ordering/zero-allocation forms without new evidence. | src/game/ai/PlayerTest.cpp; nonmatching/ai/PlayerTest-Respawn.patch |
 | libsanangeles.so | 0x00342221 | GuardController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00340985 | CivAgressiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x00340c75 | CivPassiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
