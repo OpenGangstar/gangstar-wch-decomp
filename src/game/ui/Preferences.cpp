@@ -191,3 +191,81 @@ int Preferences::GetOrientation(const char* name)
     }
     return -1;
 }
+
+#include "../persistence/StringManager.h"
+#include "../hud/MenuManager.h"
+
+bool Preferences::LoadAndApply(const char* name)
+{
+    FileStream file(name, 1);
+    if (!file.IsValid())
+        return false;
+    DataStream data(file, DataStream::LittleEndian);
+    SetDataStream(&data);
+    Application* app = Application::GetInstance();
+    CHudManager* hud = app->GetHudManager();
+    bool result = false;
+    if (file.Size() > 0) {
+        Block header;
+        BlockInt block;
+        result = true;
+        while (result && PeekBlock(header)) {
+            switch (header.id) {
+            default:
+                result = true;
+                break;
+            case -1: {
+                BlockInt version;
+                result = ReadBlock(version);
+                break;
+            }
+            case 0:
+                result = ReadBlock(block);
+                if (result)
+                    hud->setSteeringMode(static_cast<CHudManager::SteeringMode>(block.value));
+                break;
+            case 1:
+                result = ReadBlock(block);
+                if (result)
+                    hud->setThrottleMode(static_cast<CHudManager::ThrottleMode>(block.value));
+                // Native case 1 enters case 2 even when its throttle read fails.
+            case 2:
+                result = ReadBlock(block);
+                if (result) {
+                    app->GetStringManager()->loadPack(block.value);
+                    app->GetStringManager()->switchPack(block.value);
+                    MenuManager::getInstance()->enableAsianFont(block.value == 5);
+                    MenuManager::getInstance()->preloadGlyphs(true);
+                }
+                break;
+            case 3:
+                result = ReadBlock(block);
+                if (result) {
+                    if (block.value)
+                        ScriptManager::getInstance()->unknown78 = true;
+                    else
+                        ScriptManager::getInstance()->unknown78 = false;
+                }
+                break;
+            case 4:
+                result = ReadBlock(block);
+                if (result)
+                    SoundManager::getInstance()->setSfxVolume(static_cast<float>(block.value) * 0.01);
+                break;
+            case 5:
+                result = ReadBlock(block);
+                if (result)
+                    SoundManager::getInstance()->setMusicVolume(static_cast<float>(block.value) * 0.01);
+                break;
+            case 6:
+                result = ReadBlock(block);
+                if (result)
+                    Menus::OptionGameSettings::SetOrientation(block.value);
+                break;
+            }
+        }
+    }
+    SetDataStream(0);
+    file.Close();
+    return result;
+}
