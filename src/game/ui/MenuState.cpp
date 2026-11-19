@@ -1795,3 +1795,48 @@ bool Menus::Services::Notify(const MenuWidget* widget, int event)
     }
     return false;
 }
+
+namespace Widgets {
+class Volumes : public MenuWidget {
+public:
+    Volumes();
+    virtual void Show();
+    virtual void Hide(bool);
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    void SetPlaylist(int playlist);
+
+private:
+    static int s_playlist;
+    int selectedPlaylist;
+};
+}
+
+bool Menus::OptionVolumes::Notify(const MenuWidget* widget, int event)
+{
+    if (Options::Notify(widget, event))
+        return true;
+    Widgets::Volumes* volumes = static_cast<Widgets::Volumes*>(MenuManager::getInstance()->getWidgetByIndex(7));
+    if (widget != volumes)
+        return false;
+    const int previous = selectedChannel;
+    int playlist;
+    if (event == 1) {
+        playlist = --selectedChannel;
+        if (playlist < -2)
+            playlist = selectedChannel = SoundManager::getInstance()->getPlaylistCount() - 1;
+    } else if (event == 2) {
+        ++selectedChannel;
+        if (selectedChannel >= SoundManager::getInstance()->getPlaylistCount())
+            playlist = selectedChannel = -2;
+        else
+            playlist = selectedChannel;
+    } else {
+        return false;
+    }
+    if (previous == playlist)
+        return false;
+    volumes->SetPlaylist(playlist);
+    volumes->UpdateLocalization();
+    return true;
+}

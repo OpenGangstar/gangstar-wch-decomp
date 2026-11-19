@@ -294,7 +294,8 @@
         "_ZN7Widgets7Confirm18UpdateLocalizationEv",
         "_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti",
         "_ZN5Menus7Options6NotifyEPK10MenuWidgeti",
-        "_ZN5Menus8Services6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus8Services6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus13OptionVolumes6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".help_empty_icon",
@@ -432,7 +433,8 @@
         ".options_notify",
         ".services_notify",
         ".servicesWeaponShopName",
-        ".servicesCarRentalName"
+        ".servicesCarRentalName",
+        ".option_volumes_notify"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -567,6 +569,7 @@
         "_ZN7gameswf9tu_stringC1EPKc",
         "_ZN7gameswf9tu_string15utf8_char_countEPKci",
         "_ZNK7gameswf9tu_string14utf8_substringEii",
-        "_ZN7Widgets12Achievements11SetCategoryEi"
+        "_ZN7Widgets12Achievements11SetCategoryEi",
+        "_ZNK12SoundManager16getPlaylistCountEv"
     ]
 }
