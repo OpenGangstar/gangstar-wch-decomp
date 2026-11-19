@@ -1,0 +1,80 @@
+--- a/src/game/ai/NPC.cpp
++++ b/src/game/ai/NPC.cpp
+@@ -31,7 +31,8 @@
+         unsigned int running : 1;
+         unsigned int : 1;
+         unsigned int waiting : 1;
+-        unsigned int : 2;
++        unsigned int frozen : 1;
++        unsigned int : 1;
+         unsigned int attacking : 1;
+     } bits;
+ };
+@@ -817,3 +818,29 @@
+             lastHitVehicle->wheelGroundHeights[3]=bounds.MaxEdge.Z;
+     }
+ }
++
++extern "C" long lrand48();
++
++void NPC::freeze()
++{
++    if (isDead()) return;
++    MovementFlags flags;
++    flags.word = flags356 & ~15u;
++    flags.bits.frozen = 1;
++    flags356 = flags.word;
++    if (targetingCharacter)
++        turnToward(targetingCharacter->GetPosition());
++    setAnimation(37, 1.0f, false, false, false);
++    int soundId;
++    switch (lrand48() % 2) {
++    case 0: soundId = 88; if (!driverBehavior) soundId = 86; break;
++    case 1: soundId = driverBehavior ? 76 : 73; break;
++    default: return;
++    }
++    SoundManager* sound = SoundManager::getInstance();
++    sound->unknown140 = true;
++    sound->playEx(soundId, 0, false, 1.0f, 0, true, 1.0f, 0);
++    sound->unknown140 = false;
++}
++
++
+--- a/config/matches/ai-startup-npc.json
++++ b/config/matches/ai-startup-npc.json
+@@ -112,7 +112,8 @@
+         },
+         "_ZN3NPC24UpdateCarPosIfUnderWheelEv",
+         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
+-        "_ZN9Character20getSpecificAnimationEi"
++        "_ZN9Character20getSpecificAnimationEi",
++        "_ZN3NPC6freezeEv"
+     ],
+     "sections": [
+         ".npc_vtable",
+@@ -132,7 +133,8 @@
+         },
+         ".ai_manager_cleanup",
+         ".physic_find_lower",
+-        ".character_specific_animation"
++        ".character_specific_animation",
++        ".npc_freeze"
+     ],
+     "dependencies": [
+         "ai-startup-physicattributes",
+--- a/config/linker/NPCAiStartup.ld
++++ b/config/linker/NPCAiStartup.ld
+@@ -23,6 +23,7 @@
+ INCLUDE config/linker/NPCFunctionSections.ld
+ SECTIONS
+ {
++    .npc_freeze 0x002fe998 : { *ai-startup-npc.o(.text._ZN3NPC6freezeEv) }
+     .npc_car_under_wheel 0x002fe784 : { *ai-startup-npc.o(.text._ZN3NPC24UpdateCarPosIfUnderWheelEv) }
+     .ai_manager_singleton 0x002dbae8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+     .ai_manager_cleanup 0x002fd6f0 : { *ai-startup-npc.o(.text.__tcf_0) }
+@@ -61,3 +62,5 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
++
++ASSERT(SIZEOF(.npc_freeze) == 224, "native NPC freeze extent");

@@ -73,3 +73,23 @@ function bytes and two table bytes differ. This private owning image preserves
 114 existing functions, 32 sections and one GOT region, including the new exact
 selector. Callee visibility does not resolve the layout; no further source
 variation or credit follows from this replay.
+
+
+## Single switch-likelihood escalation
+
+At main PR #743 (`68f0bc30`), one separately bounded experiment wraps only the
+weapon-type selector in `__builtin_expect(getWeapon()->getWeaponType(), 8)`.
+This tests whether weighting the earlier native case-8 handler resolves the
+known case-7/case-8 physical inversion. Every case payload, field store and
+ordinary compiler flag remains unchanged. No probability grid or additional
+case reorder is attempted.
+
+It does not resolve placement: the complete 284-byte function AND complete
+36-byte table are byte-identical to the unhinted saved image. Function/section
+still fail first at 0x96; table fails first at 0x1c. The valid owning run preserves
+114 existing functions, 32 sections and the GOT region, plus its PhysicsAttributes
+dependency (38 functions, ten sections and one GOT region); exit 1. No new whole-
+project gate is claimed. The hint does not qualify for production or credit.
+Character-ready-switch-likelihood.patch is a complete independent unapplied
+reproducer against this newer baseline, not a delta on the older patch above.
+The original assembly and every credited function remain unchanged.

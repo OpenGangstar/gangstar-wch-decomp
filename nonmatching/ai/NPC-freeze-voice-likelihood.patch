@@ -1,0 +1,11 @@
+--- a/src/game/ai/NPC.cpp
++++ b/src/game/ai/NPC.cpp
+@@ -834,7 +834,7 @@
+     int soundId;
+     switch (lrand48() % 2) {
+     case 0: soundId = 88; if (!driverBehavior) soundId = 86; break;
+-    case 1: soundId = driverBehavior ? 76 : 73; break;
++    case 1: soundId = __builtin_expect(driverBehavior != 0, 1) ? 76 : 73; break;
+     default: return;
+     }
+     SoundManager* sound = SoundManager::getInstance();

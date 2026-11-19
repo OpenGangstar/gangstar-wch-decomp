@@ -1,0 +1,77 @@
+--- a/src/game/rendering/GS3DStuff.cpp
++++ b/src/game/rendering/GS3DStuff.cpp
+@@ -1084,3 +1084,36 @@
+     static_cast<Base&>(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles).~Base();
+ }
+ }
++
++void GS3DStuff::SetAlpha(irr::scene::ISceneNode* node, unsigned char alpha, eColorType type)
++{
++    const int nodeType = node->getType();
++    if (nodeType == 0x6d656164 || nodeType == 0x73656164) {
++        if (type != Color0)
++            return;
++
++        irr::video::SMaterial& material = node->getMaterial(0);
++        if (alpha == material.color84.a)
++            return;
++
++        material.dirtyFlags |= 8;
++        unsigned int flags = material.flags40;
++        material.color84.a = alpha;
++        typedef unsigned int ColorWord __attribute__((may_alias));
++        if ((flags & 2) && !(material.unknown0 & 1) &&
++            reinterpret_cast<const ColorWord&>(material.color84) !=
++                reinterpret_cast<const ColorWord&>(material.color48)) {
++            if (flags & 4)
++                material.dirtyFlags |= 1;
++            flags &= ~4u;
++            material.flags40 = flags;
++        } else {
++            if (!(flags & 4))
++                material.dirtyFlags |= 1;
++            flags |= 4u;
++            material.flags40 = flags;
++        }
++    } else {
++        applyToChildren(node, SetAlpha, alpha, type);
++    }
++}
+--- a/config/matches/gs3d-stuff.json
++++ b/config/matches/gs3d-stuff.json
+@@ -170,7 +170,8 @@
+         "_Z10SafeDeleteI11OctTreeAABBEvRPT_",
+         "_ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE",
+         "_ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE",
+-        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
++        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE",
++        "_ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE"
+     ],
+     "sections": [
+         ".gs_perf_selector",
+@@ -293,7 +294,8 @@
+         ".gs_delete_octree",
+         ".gs_octree_spawn_point_nodes",
+         ".gs_octree_count_renderables",
+-        ".gs_add_renderables"
++        ".gs_add_renderables",
++        ".gs3d_set_alpha"
+     ],
+     "external_thumb_functions": [
+         "_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf",
+--- a/config/linker/GS3DStuff.ld
++++ b/config/linker/GS3DStuff.ld
+@@ -30,6 +30,7 @@
+ INCLUDE config/linker/GS3DSceneTraversal.ld
+ __aeabi_fcmpeq = 0x001c470c;
+ SECTIONS {
++    .gs3d_set_alpha 0x002df34c : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE) }
+     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+     .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }
+     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
+@@ -182,3 +183,5 @@
+ ASSERT(SIZEOF(.wanted_instance) == 80, "WantedLevelManager singleton storage extent");
+ ASSERT(SIZEOF(.ai_manager_guard) == 4, "AIManager singleton guard extent");
+ ASSERT(SIZEOF(.ai_manager_instance) == 24, "AIManager singleton storage extent");
++
++ASSERT(SIZEOF(.gs3d_set_alpha) == 168, "native SetAlpha extent");

@@ -1,0 +1,91 @@
+--- a/src/game/ui/Shop.cpp
++++ b/src/game/ui/Shop.cpp
+@@ -218,3 +218,36 @@
+     if (map)
+         map->registerForMapTracking(this, false);
+ }
++
++void Shop::Update(int elapsed)
++{
++    Checkpoint::Update(elapsed);
++    if (!(unknown4 & 2u))
++        return;
++
++    if (GetMetatype() == 32) {
++        PlayerTest* player = PlayerTest::GetPlayer();
++        if (!(player->flags240 & 0x400u) || !static_cast<SavePositionInterface*>(player)->getVehicle())
++            return;
++
++        Vehicle* car = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
++        if (car) {
++        const int distanceSquared = static_cast<int>(car->GetPosition().getDistanceFromSQ(GetPosition()));
++        if (distanceSquared < radius * radius) {
++            if (!triggerActive)
++                trigger(true);
++        } else if (triggerActive) {
++            trigger(false);
++        }
++        }
++    } else {
++        PlayerTest* player = PlayerTest::GetPlayer();
++        if (reinterpret_cast<unsigned int>(this) - reinterpret_cast<unsigned int>(player->closestShop) == 0u)
++            return;
++
++        const float radiusSquared = static_cast<float>(radius * radius);
++        if (radiusSquared > static_cast<SavePositionInterface*>(player)->position().getDistanceFromSQ(GetPosition()))
++            player->setClosestShop(this);
++    }
++}
++
+--- a/config/matches/ai-startup-shop.json
++++ b/config/matches/ai-startup-shop.json
+@@ -58,7 +58,8 @@
+             "name": "__tcf_3",
+             "address": "0x00305d19",
+             "compiled_name": "__tcf_0"
+-        }
++        },
++        "_ZN4Shop6UpdateEi"
+     ],
+     "sections": [
+         ".shop_vtable",
+@@ -70,7 +71,8 @@
+             "name": ".got",
+             "offset": 864
+         },
+-        ".state_machine_cleanup"
++        ".state_machine_cleanup",
++        ".shop_update"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -99,6 +101,8 @@
+         "_ZN10Checkpoint4LoadERKN7Structs10CheckpointE",
+         "_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb",
+         "_ZN12StateMachineC1Ev",
+-        "_ZN12StateMachineD1Ev"
++        "_ZN12StateMachineD1Ev",
++        "_ZN10Checkpoint6UpdateEi",
++        "_ZN10PlayerTest14setClosestShopEP4Shop"
+     ]
+ }
+--- a/config/linker/ShopAiStartup.ld
++++ b/config/linker/ShopAiStartup.ld
+@@ -21,8 +21,11 @@
+ __aeabi_fmul = 0x001c4724;
+ __aeabi_fadd = 0x001c4154;
+ __aeabi_fcmpgt = 0x001c419c;
++__aeabi_i2f = 0x001c41e4;
++__aeabi_f2iz = 0x001c44cc;
+ SECTIONS
+ {
++    .shop_update 0x00305f5c : { *ai-startup-shop.o(.text._ZN4Shop6UpdateEi) }
+     .shop_reset_counters 0x00305ca4 : { *(.text._ZN4Shop24resetAchievementCountersEv) }
+     .shop_lock 0x00306340 : { *(.text._ZN4Shop4lockEv) }
+     .shop_unlock 0x003060dc : { *(.text._ZN4Shop6unlockEv) }
+@@ -76,3 +79,5 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
++
++ASSERT(SIZEOF(.shop_update) == 384, "native Shop Update extent");

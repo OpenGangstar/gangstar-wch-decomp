@@ -1,0 +1,25 @@
+--- a/src/game/ui/Shop.cpp
++++ b/src/game/ui/Shop.cpp
+@@ -219,6 +219,13 @@
+         map->registerForMapTracking(this, false);
+ }
+ 
++namespace {
++inline irr::core::vector3d<float> shopVehiclePosition(const Vehicle* car)
++{
++    return car->GetPosition();
++}
++}
++
+ void Shop::Update(int elapsed)
+ {
+     Checkpoint::Update(elapsed);
+@@ -232,7 +239,7 @@
+ 
+         Vehicle* car = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+         if (car) {
+-        const int distanceSquared = static_cast<int>(car->GetPosition().getDistanceFromSQ(GetPosition()));
++        const int distanceSquared = static_cast<int>(shopVehiclePosition(car).getDistanceFromSQ(GetPosition()));
+         if (distanceSquared < radius * radius) {
+             if (!triggerActive)
+                 trigger(true);
