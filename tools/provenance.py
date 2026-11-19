@@ -79,7 +79,8 @@ LIBRARIES: tuple[Library, ...] = (
         upstream="https://github.com/kennethshackleton/gameswf",
         license="zlib",
         scopes=("gameswf",),
-        file_patterns=(r"^gameswf_", r"^as_", r"^tu_", r"^http_helper",),
+        file_patterns=(r"^gameswf_", r"^as_", r"^tu_", r"^http_helper",
+                       r"^logger\.cpp$", r"^file_util\.cpp$"),
     ),
     Library(
         key="box2d",
@@ -142,7 +143,7 @@ LIBRARIES: tuple[Library, ...] = (
         c_patterns=(r"^ft_", r"^FT_", r"^TT_", r"^_ft_", r"^tt_", r"^FTC_", r"^ftc_"),
         file_patterns=(
             r"^(af|autofit|bdf|bdfparse|cff|cffparse|cid|cidparse|psaux|psbase|"
-            r"pshinter|pshutil|pcf|pfr|pfrparse|raster|sfnt|smooth|truetype|"
+            r"pshinter|pshutil|psmodule|pcf|pfr|pfrparse|raster|sfnt|smooth|truetype|"
             r"ttcmap|ttgload|ttinterp|ttload|ttobjs|ttpost|ttsbit|ttmtx|"
             r"type1|type1cid|type42|winfnt|gxvalid|gxload|otvalid|otload|"
             r"ftbase|ftbbox|ftcache|ftcalc|ftcid|ftdebug|ftgload|ftglyph|ftinit|ftkern|"

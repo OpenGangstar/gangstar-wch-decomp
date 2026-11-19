@@ -15,13 +15,17 @@ The original 4,661-entry game classification is fully accounted for as:
 
 | Classification | Functions | Catalogue code bytes |
 | --- | ---: | ---: |
-| Corrected game target | 4,566 | 563,270 |
-| FreeType entries listed below | 95 | 11,994 |
+| Corrected game target | 4,550 | 561,716 |
+| FreeType entries listed below | 103 | 13,054 |
+| gameswf base entries listed below | 8 | 494 |
 | Original classification total | 4,661 | 575,264 |
 
-All 95 reclassified functions remain **pending**. The global pending count is
-still 401: 306 game entries and these 95 dependency entries. Existing assembly
-markers remain at their original paths; vendor lookup preserves their status,
+All 111 reclassified functions remain **pending**. Classification alone
+preserves every pending status. Its frozen audit baseline had 401 pending
+entries: 290 game, 103 FreeType and 8 gameswf base entries. Separate verified
+constructor work subsequently matches two game aliases; it does not alter any
+of these 111 dependency statuses. Existing dependency assembly markers remain
+at their original paths; vendor lookup preserves their status,
 including the host filesystem's case rules. No source or verification-profile
 input changes.
 
@@ -40,7 +44,7 @@ majority inference could not recover from unanimous incorrect initial votes.
 The classifier adds those two exact filenames and anchored prefixes. It does
 not classify arbitrary `cid_`, `parse_` or similar game names as FreeType.
 
-## Reporting effect, not decompilation progress
+## Historical FreeType cache/CID reporting effect
 
 | Measure | Before correction | After correction |
 | --- | ---: | ---: |
@@ -60,7 +64,7 @@ and the following table retain the dependency accounting.
 Historical match notes and CI reports retain their original classification
 basis. This correction does not revise their recorded native comparison output.
 
-## Every reclassified function
+## Every reclassified FreeType function
 
 All entries below remain in the full function table with origin `freetype`,
 area `-` and status `pending`; their original classification was `game/core`.
@@ -162,3 +166,133 @@ area `-` and status `pending`; their original classification was `game/core`.
 | `0x003870e9` | `cid_face_init` | 2658 | `type1cid.c` | pending |
 | `0x00387b4d` | `parse_fd_array` | 116 | `type1cid.c` | pending |
 | `0x00387bc1` | `cid_get_interface` | 28 | `type1cid.c` | pending |
+
+
+## gameswf base utility correction
+
+The subsequent eight-entry correction recognizes two actual gameswf base
+translation units, rather than treating a generic filename as proof.
+The pinned historical source at commit
+`b29f4cc842244eb8e1daf3b7c4d8ce2693c04853` contains all six retail logger
+names and signatures in
+[`base/logger.cpp`](https://github.com/weihuoya/gameswf/blob/b29f4cc842244eb8e1daf3b7c4d8ce2693c04853/tu-testbed/base/logger.cpp),
+with their callback type independently declared in
+[`logger.h`](https://github.com/weihuoya/gameswf/blob/b29f4cc842244eb8e1daf3b7c4d8ce2693c04853/tu-testbed/base/logger.h).
+The same source identifies both the local `reverse_scan` helper and
+`file_util::get_extension` in
+[`base/file_util.cpp`](https://github.com/weihuoya/gameswf/blob/b29f4cc842244eb8e1daf3b7c4d8ce2693c04853/tu-testbed/base/file_util.cpp).
+These files retain their original public-domain notices. This identifies
+source provenance, not an exact retail revision or a new byte match.
+
+Only the exact `logger.cpp` and `file_util.cpp` source filenames are added to
+classification. Unsourced generic logger functions and `reverse_scan` remain
+unchanged. `PVRTDecompress.cpp` is not part of this correction.
+
+| Measure | Before gameswf correction | After gameswf correction |
+| --- | ---: | ---: |
+| Game functions / code bytes | 4,566 / 563,270 | 4,558 / 562,776 |
+| Matched function entries | 4,260 | 4,260 |
+| Matched code bytes | 342,294 | 342,294 |
+| Fully linked code bytes | 111,046 | 111,046 |
+| Matched / fuzzy percentage | 60.77% | 60.82% |
+| Fully linked percentage | 19.71% | 19.73% |
+| Complete / total report units | 124 / 206 | 124 / 204 |
+
+Zero matched or fully linked bytes are added. All 204 retained report units
+remain unchanged. The two excluded units contain only these pending gameswf
+entries. All original function identities and pending/matched statuses remain
+in the full catalogue. At that stage, the original 4,661-entry classification
+was exactly 4,558 game + 95 FreeType + 8 gameswf entries. The earlier reporting table
+above records the historical FreeType-only correction, not the latest totals.
+
+### Every reclassified gameswf base function
+
+Each row changes only origin `game` to `gameswf` and area `core` to `-`.
+Addresses, symbols, sizes, source attribution and status remain unchanged.
+
+| Native address | Symbol | Bytes | Source file | Before origin / area / status | After origin / area / status |
+| --- | --- | ---: | --- | --- | --- |
+| `0x0039110d` | `_Z12reverse_scanPKcS0_c` | 34 | `file_util.cpp` | game / core / pending | gameswf / - / pending |
+| `0x00391131` | `_ZN9file_util13get_extensionEPKc` | 52 | `file_util.cpp` | game / core / pending | gameswf / - / pending |
+| `0x0039324d` | `_ZN6logger21register_log_callbackEPFvNS_8log_typeEPKcE` | 20 | `logger.cpp` | game / core / pending | gameswf / - / pending |
+| `0x00393261` | `_ZN6logger25set_standard_log_handlersEv` | 28 | `logger.cpp` | game / core / pending | gameswf / - / pending |
+| `0x0039327d` | `_ZN6logger5errorEPKcz` | 100 | `logger.cpp` | game / core / pending | gameswf / - / pending |
+| `0x003932e1` | `_ZN6logger3msgEPKcz` | 100 | `logger.cpp` | game / core / pending | gameswf / - / pending |
+| `0x00393345` | `_ZN6logger4vmsgEPKcz` | 116 | `logger.cpp` | game / core / pending | gameswf / - / pending |
+| `0x003933b9` | `_ZN6logger15standard_loggerENS_8log_typeEPKc` | 44 | `logger.cpp` | game / core / pending | gameswf / - / pending |
+
+
+## FreeType PSNames module correction
+
+FreeType's pinned official
+[`src/psnames/psmodule.c`](https://github.com/freetype/freetype/blob/VER-2-3-7/src/psnames/psmodule.c)
+defines all eight pending functions below. Its included
+[`pstables.h`](https://github.com/freetype/freetype/blob/VER-2-3-7/src/psnames/pstables.h)
+defines the existing `ft_get_adobe_glyph_index` helper. Official
+[`rules.mk`](https://github.com/freetype/freetype/blob/VER-2-3-7/src/psnames/rules.mk)
+selects `psmodule.c` for both single-object and multi-object PSNames builds.
+This identifies the source family, not the exact retail FreeType version.
+
+The existing `ft_` rule correctly identifies the 280-byte helper, but the
+other eight symbols previously produced game votes. Their majority prevented
+object inference from recognizing the rest. Only the exact `psmodule.c`
+filename is added; generic `ps_` and comparator names remain unchanged.
+
+All nine entries remain in the catalogue. The already classified 280-byte
+helper at `0x0037525d` retains origin `freetype`, area `-`, status `matched`,
+and every other field unchanged. Its existing catalogue status adds no new
+vendor verification or byte credit. Only eight pending entries change origin.
+The source manifest already identified this file as FreeType from its first
+function, so its 689 rows and the current 182 game-file count do not change.
+
+| Measure | Before PSNames correction | After PSNames correction |
+| --- | ---: | ---: |
+| Game functions / code bytes | 4,558 / 562,776 | 4,550 / 561,716 |
+| Matched function entries | 4,260 | 4,260 |
+| Matched code bytes | 342,294 | 342,294 |
+| Fully linked code bytes | 111,046 | 111,046 |
+| Matched / fuzzy percentage | 60.82% | 60.94% |
+| Fully linked percentage | 19.73% | 19.77% |
+| Complete / total report units | 124 / 204 | 124 / 203 |
+
+Zero matched or linked bytes are added. All 203 retained report units are
+unchanged; the excluded PSNames game fragment contained only pending entries.
+The earlier reporting tables record their respective historical corrections.
+The original target remains fully accounted for: 4,550 game + 103 FreeType +
+8 gameswf = 4,661 functions, and 561,716 + 13,054 + 494 = 575,264 bytes.
+No function identity, status, source byte, match profile or assembly marker
+is removed or changed. `PVRTDecompress.cpp` remains outside these corrections.
+
+### Every reclassified PSNames function
+
+Each row changes only origin and area. Status and all identity fields remain.
+
+| Native address | Symbol | Bytes | Source file | Before origin / area / status | After origin / area / status |
+| --- | --- | ---: | --- | --- | --- |
+| `0x00375375` | `ps_unicode_value` | 224 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x00375455` | `compare_uni_maps` | 32 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x00375475` | `ps_unicodes_char_index` | 96 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x003754d5` | `ps_unicodes_char_next` | 148 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x00375569` | `ps_get_macintosh_name` | 48 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x00375599` | `ps_get_standard_strings` | 48 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x003755c9` | `ps_unicodes_init` | 436 | `psmodule.c` | game / core / pending | freetype / - / pending |
+| `0x0037577d` | `psnames_get_service` | 28 | `psmodule.c` | game / core / pending | freetype / - / pending |
+
+## Current report after separate constructor matching
+
+The independently verified [Application constructor](matches/application-constructor.md)
+adds two genuine matched alias entries for one physical 148-byte body. That
+separate source change adds 296 catalogue matched bytes; these provenance
+corrections add none. The combined current report is:
+
+```text
+ByteMatch: 4262/4550 functions; 342590/561716 bytes (60.99%); Fully Linked 111046/561716 bytes (19.77%, 124/203 units); Fuzzy Matched 60.99%
+```
+
+The sixteen additional dependency corrections preserve all 17,703 identities
+and every status from the post-constructor baseline. All 203 retained report
+units are identical to that baseline. The three removed game-report fragments
+contain only pending vendor functions. All 1,321 source, assembly, match-profile,
+linker and nonmatching input hashes remain unchanged by classification. The
+existing 280-byte FreeType helper in psmodule.c is unchanged and receives no
+new match credit.
