@@ -27,6 +27,8 @@ _ZN31retail_followcamera_transitions11guard_transE = 0x004294a8;
 _ZN31retail_followcamera_transitions22scripted_vehicle_transE = 0x00429550;
 SECTIONS
 {
+    .follow_camera_facing 0x003336ac : { *ai-startup-followcamera.o(.text._ZNK12FollowCamera9getFacingEv) }
+    ASSERT(SIZEOF(.follow_camera_facing) == 220, "Native FollowCamera facing extent")
     .camera_variant_ctor 0x00333974 : { *ai-startup-followcamera.o(.text._ZN12FollowCameraC1EP9Character .text._ZN12FollowCameraC2EP9Character) }
     .camera_variant_angles 0x0033321c : { *ai-startup-followcamera.o(.text._ZN12FollowCamera12updateAnglesEii) }
     .follow_camera_position 0x00333450 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }

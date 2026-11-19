@@ -1,0 +1,94 @@
+--- a/src/game/characters/PhysicAttributes.cpp
++++ b/src/game/characters/PhysicAttributes.cpp
+@@ -613,3 +613,34 @@
+     *index = selected;
+     return best;
+ }
++
++namespace irr { namespace core {
++template<class T> class plane3d {
++public:
++    plane3d(const vector3d<T>& point,const vector3d<T>& normal): Normal(normal),D(-point.dotProduct(Normal)) {}
++    vector3d<T> Normal;
++    T D;
++};
++} }
++float PhysicAttributes::IntersectSegmentWithHeightMap(const irr::core::vector3d<float>& start,
++    const irr::core::vector3d<float>& end,irr::core::vector3d<float>& hit,irr::core::vector3d<float>& normal)
++{
++    irr::core::vector3d<float> delta=end-start;
++    irr::core::vector3d<float> planeNormal=irr::core::vector3d<float>(delta.Y,-delta.X,0.0f).crossProduct(delta);
++    planeNormal.normalize();
++    irr::core::plane3d<float> plane(start,planeNormal);
++    PhysicInfo temporary;
++    if (!info[0].unknown4) return 1.0f;
++    temporary.unknown0=info[0].unknown0;
++    temporary.unknown4=info[0].unknown4;
++    temporary.unknown8=info[0].unknown8;
++    temporary.vector12=info[0].vector12;
++    temporary.vector24=info[0].vector24;
++    temporary.vector36=info[0].vector36;
++    temporary.unknown76=info[0].unknown76;
++    temporary.unknown78=info[0].unknown78;
++    temporary.unknown80=info[0].unknown80;
++    s_currentUsed+=4;
++    if (!IntersectSegmentWithHeightMap(temporary,plane,start,end,hit,normal)) return 1.0f;
++    return (hit-start).getLength()/(end-start).getLength();
++}
+--- a/src/game/characters/PhysicAttributes.h
++++ b/src/game/characters/PhysicAttributes.h
+@@ -8,6 +8,7 @@
+ class b2ContactFilter;
+ class b2ContactListener;
+ namespace irr { namespace scene { class ISceneNode; } }
++namespace irr { namespace core { template<class T> class plane3d; } }
+ struct PhysicInfo;
+ struct AStarNode;
+ // Partial layout of the observed 120-byte allocation.
+@@ -26,6 +27,8 @@
+     };
+ public:
+     static void LoadArrays(char*);
++    static unsigned short s_currentUsed;
++    bool IntersectSegmentWithHeightMap(PhysicInfo&, const irr::core::plane3d<float>&, const irr::core::vector3d<float>&, const irr::core::vector3d<float>&, irr::core::vector3d<float>&, irr::core::vector3d<float>&);
+     static int MATERIAL_TYPE_ROAD, MATERIAL_TYPE_PARK, MATERIAL_TYPE_BUILDING_BASE, MATERIAL_TYPE_INTERSECTION, MATERIAL_TYPE_CLIFF, MATERIAL_TYPE_WATER;
+     static int MATERIAL_TYPE_DEATH_WATER;
+     static unsigned short*** s_neighbors;
+--- a/config/matches/ai-startup-physicattributes.json
++++ b/config/matches/ai-startup-physicattributes.json
+@@ -73,7 +73,8 @@
+             "address": "0x0031d78d"
+         },
+         "_ZN16PhysicAttributes10LoadArraysEPc",
+-        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
++        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
++        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_"
+     ],
+     "sections": [
+         ".ai_startup_function_0",
+@@ -103,6 +104,7 @@
+         "_ZN7b2WorldD1Ev",
+         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+         "_Z21ekd_makestringfile255PKcPc",
+-        "_Z13ekd_debug_outPKcPc"
++        "_Z13ekd_debug_outPKcPc",
++        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_"
+     ]
+ }
+--- a/config/linker/PhysicAttributesAiStartup.ld
++++ b/config/linker/PhysicAttributesAiStartup.ld
+@@ -1,3 +1,6 @@
++sqrt = 0x001c401c;
++__aeabi_f2d = 0x001c48f8;
++__aeabi_d2f = 0x001c4310;
+ __aeabi_fcmplt = 0x001c479c;
+ __aeabi_f2iz = 0x001c44cc;
+ __aeabi_i2f = 0x001c41e4;
+@@ -23,6 +26,7 @@
+ INCLUDE config/linker/PhysicAttributesResetSections.ld
+ SECTIONS
+ {
++    .physics_segment_height 0x0031da28 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_) }
+ 
+     .physic_jump_shape 0x0031ccf0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape) }
+     .physic_get_path_pos 0x0031b7f8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes10GetPathPosEi) }

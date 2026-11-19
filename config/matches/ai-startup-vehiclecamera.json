@@ -24,7 +24,9 @@
     ],
     "source": "src/game/vehicles/VehicleCamera.cpp",
     "linker_script": "config/linker/VehicleCameraAiStartup.ld",
-    "dependencies": ["string-startup-camera"],
+    "dependencies": [
+        "string-startup-camera"
+    ],
     "functions": [
         "_ZN13VehicleCamera4initEP11LevelObjecti",
         "_ZN13VehicleCamera5enterEv",
@@ -46,7 +48,8 @@
         {
             "name": "_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject",
             "address": "0x003355f9"
-        }
+        },
+        "_ZNK13VehicleCamera9getFacingEv"
     ],
     "sections": [
         ".vehicle_camera_vtable",
@@ -57,8 +60,12 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".vehicle_camera_facing"
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN13VehicleCamera6updateEf", "_ZN7Vehicle13onCameraEnterEv"]
+    "external_thumb_functions": [
+        "_ZN13VehicleCamera6updateEf",
+        "_ZN7Vehicle13onCameraEnterEv"
+    ]
 }

@@ -283,3 +283,49 @@ The experiment stopped before the owner linker. Dependency checks printed by
 the build do not establish an owner native comparison or old-owner closure.
 The candidate was rejected; no function definition, marker, compiler option or
 progress credit changed. Further variations require new evidence.
+
+### NPC freeze voice-selection escalation
+
+The archived best `NPC::freeze()` candidate already has the native 224-byte
+extent at Thumb `0x002fe999`; its second voice-selection branch differs in
+polarity and the placement of sound IDs 76 and 73. One bounded escalation
+replaced only that branch's assignment-plus-if form with a conditional
+expression, retaining the first branch and the other operations.
+
+The current production frontend emits exactly the same complete linked target
+as the archived best candidate. Native differences remain at offsets `0x83`,
+`0x84` and `0xb8`. The target comparison prints:
+
+```text
+MISMATCH  _ZN3NPC6freezeEv  0x002fe999
+  expected : d1 f0 23 eb 58 00 2b 19 d0 4c 23 98 46 14 4b 8c
+  actual   : d1 f0 23 eb 58 00 2b 19 d1 49 23 98 46 14 4b 8c
+  differs at 0x83
+```
+
+The owner retains all 70 existing function checks, 13 section checks and
+1 region checks. This is an owner/dependency proof, not a new full-profile
+gate. The private explicit frozen-bit declaration and candidate were not
+integrated. No matching credit was added; further expression variants require
+new evidence.
+
+### Failure overlay alpha capture
+
+`GSFailure::draw2d` at Thumb `0x002e1e15` narrows its positive alpha value to a
+byte before the second failure-cause call. One bounded escalation of archived
+form four explicitly captured that byte before constructing the overlay color.
+The unchanged archived form was also compiled as a current-context control.
+Both emit the identical complete 284-byte unlinked target, versus native 308:
+SHA256 `b640f66c9562e779567cbc1a7f2ba0b7b842e4a97f6d0d1254649ae05e89c45b`.
+Both define only the intended new function. Explicit source narrowing does not
+restore the native lifetime/register choice in this experiment.
+
+The first attempt did not compile: the current device type was incomplete and
+the failure getter was declared nonstatic. The private contexts then included
+`IrrlichtDevice.h` and declared the failure getter static, following the already
+recorded native call evidence. These changes enabled the diagnostics; they
+were not integrated or given a shared-header preservation proof. The successful
+compiler/assembler runs deliberately stop at the extent guard before linking;
+no owner or full-profile native closure is claimed. No function or marker was
+changed in production. The old registry's `98/308` described same-offset byte
+equality for a different 308-byte form, not a 98-byte reconstruction.

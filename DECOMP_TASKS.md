@@ -32,8 +32,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305ccd | Shop::triggered | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x00301759 | PlayerTest::justStoleCar | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00332cf5 | CameraManager::getClickedTarget | — | BLOCKED | 668/672B; authentic SDK center helper form leaves whole assembly/object/ELF identical; old27/9 exact, no credit | src/game/core/CameraManager.cpp |
-| libsanangeles.so | 0x003336ad | FollowCamera::getFacing | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00335769 | VehicleCamera::getFacing | vehicle_side | BLOCKED | — | src/game/vehicles/VehicleCamera.cpp |
+| libsanangeles.so | 0x003336ad | FollowCamera::getFacing | — | COMPLETED | 100%;220-byte function and complete section exact, recovered crossProduct reused. Combined190-profile/10943-comparison native gate passes with959inputs stable. Ownership released after coordinator acceptance. | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00335769 | VehicleCamera::getFacing | — | COMPLETED | 100%;220-byte function and complete section exact via matched sibling reuse. Ordinary private declaration adds no storage/virtual slot. Combined190-profile/10943-comparison gate passes; ownership released after acceptance. | src/game/vehicles/VehicleCamera.cpp; src/game/core/CameraVariants.h |
 | libsanangeles.so | 0x00333f71 | FPSCamera::enter | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00333fed | FPSCamera::init | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x00305e29 | Shop::trigger | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
@@ -765,7 +765,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002fe0e9 | NPC::isHostileTo | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002febc9 | NPC::clearOnAlert | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fef75 | NPC::setHitByCar | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fe999 | NPC::freeze | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe999 | NPC::freeze | — | BLOCKED | One bounded conditional-expression escalation reproduces the entire archived best 224-byte linked target. Native differences remain exactly +0x83/+0x84/+0xb8 in second voice branch layout. Current old-function/section checks pass; no match or credit, private bitfield support not integrated. Ownership released after review; no further voice-expression forms without new evidence. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fdb79 | NPC destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fdb29 | NPC deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fd565 | NPC::isOutsideSearchRadius | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
@@ -831,7 +831,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00341d25 | GuardController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00341d65 | GuardController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00302361 | PlayerTest::moveTo | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | vehicle_side | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | — | BLOCKED | One recovered-hierarchy adaptation retains544B extent and all37 native call modes/destinations, but fails at0x46; owner83functions24sections1region preserved. Reviewed unapplied reproduction patch; no credit. Ownership released; no further ordering/zero-allocation forms without new evidence. | src/game/ai/PlayerTest.cpp; nonmatching/ai/PlayerTest-Respawn.patch |
 | libsanangeles.so | 0x00342221 | GuardController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00340985 | CivAgressiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x00340c75 | CivPassiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -1008,7 +1008,7 @@ Coordinator approves one contextual replay per parked volume/pitch function afte
 | libsanangeles.so | 0x002e1f65 | GSFailure::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 | libsanangeles.so | 0x002e1fd5 | GSFailure::ctor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 
-| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | hud_registration | BLOCKED | 98/308 bytes (unmatched) | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | — | BLOCKED | One bounded early-byte-alpha capture and unchanged-form control emit identical 284-byte targets versus native 308; stopped prelink, no owner closure or credit. Private static failure getter and device include only; no shared change integrated. Historical 98/308 means same-offset byte equality, not function extent. Ownership released after review. | src/game/app/GSFailure.cpp |
 
 | libsanangeles.so | 0x002e20dd | GSFailure::update(StateMachine*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 | libsanangeles.so | 0x002d3be1 | MediaPlayerIPhone::playMovie(char const*) | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |
@@ -1061,7 +1061,7 @@ Coordinator permits a focused diagnostic of the sole old photo regression in the
 
 Coordinator approves private Vehicle-constructor layout refinement of the four native vector members at 512/524/536/548, replacing only constant-index references mechanically in preserved Vehicle/NPC bodies. Storage extent and offsets must remain unchanged. All old Vehicle and NPC/dependency checks plus accepted custom/support/table checks must pass before readiness; no other algorithm changes or additional overlapping storage.
 | libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | hud_glyphs | BLOCKED | post-constructor replay unchanged; candidate 820/816 bytes | src/game/world/SpawnPoint.cpp |
-| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | lock_init | BLOCKED | unmatched plane/cross-product code generation | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | — | BLOCKED | Recovered crossProduct and real PhysicInfo local restore native arithmetic/196B frame; plain592/native596 differs in return layout. Early/nested forms identical; hint596 fails. Owner38functions10sections1GOT preserved. Reviewed unapplied patch, no credit; ownership released. | src/game/characters/PhysicAttributes.cpp; nonmatching/characters/PhysicAttributes-segment-heightmap.patch |
 | libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination | hud_registration | BLOCKED | 713/724 bytes; stack-slot operands | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x00307101 | SpawnPoint::UpdateSpawnCenters() | hud_glyphs | BLOCKED | 872/848-byte candidate; repeated compiler CSE output | src/game/world/SpawnPoint.cpp |

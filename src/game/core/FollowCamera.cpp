@@ -180,3 +180,16 @@ void FollowCamera::updatePosition(float elapsed, const irr::core::vector3d<float
     direction.normalize();
     position = (rotation * direction) * distance + pivot;
 }
+
+#include "../characters/Character.h"
+irr::core::vector3d<float> FollowCamera::getFacing() const
+{
+    irr::core::vector3d<float> facing;
+    if (owner) {
+        facing = owner->GetPosition() - position;
+        const irr::core::vector3d<float> up(0.0f, 0.0f, 1.0f);
+        facing = up.crossProduct(facing);
+        facing = facing.normalize();
+    }
+    return facing;
+}
