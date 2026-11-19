@@ -399,3 +399,16 @@ int ASprite::GetAFrame(int animation, int time)
     }
     return count - 1;
 }
+
+int ASprite::GetAnimIdx(const char* name)
+{
+    ASpriteData* bytes=reinterpret_cast<ASpriteData*>(data);
+    int count=bytes->animationCount;
+    for (int index=0;index<count;++index) {
+        const ASpriteData::Anim* animations=reinterpret_cast<const ASpriteData::Anim*>(reinterpret_cast<const unsigned char*>(bytes)+bytes->animations);
+        const char* animationName=reinterpret_cast<const char*>(bytes)+animations[index].nameOffset;
+        if (strcmp(name,animationName)==0)
+            return index;
+    }
+    return -1;
+}

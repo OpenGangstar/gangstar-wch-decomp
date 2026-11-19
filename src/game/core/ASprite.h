@@ -96,6 +96,7 @@ private:
     friend class CHudManager;
 public:
     int GetAFrameTime(int animation, int frame) const;
+    int GetAnimIdx(const char* name);
     int GetFrameIdx(const char* name);
 };
 

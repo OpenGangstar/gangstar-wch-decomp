@@ -11,6 +11,7 @@ __stack_chk_fail = 0x001c42e0;
 strcmp = 0x001c4658;
 SECTIONS
 {
+    .asprite_anim_index 0x00349dd4 : { *asprite-startup.o(.text._ZN7ASprite10GetAnimIdxEPKc) }
     .asprite_get_aframe 0x003499dc : { *asprite-startup.o(.text._ZN7ASprite9GetAFrameEii) }
     .asprite_get_frame_rect 0x00349824 : { *asprite-startup.o(.text._ZNK7ASprite12GetFrameRectEii) }
     .asprite_get_module 0x00349814 : { *asprite-startup.o(.text._ZNK7ASprite9GetModuleEi) }
@@ -59,3 +60,5 @@ SECTIONS
 }
 ASSERT(SIZEOF(.asprite_storage_0) == 32, "local string extent");
 ASSERT(SIZEOF(.asprite_storage_1) == 12, "half-vector extent");
+
+ASSERT(SIZEOF(.asprite_anim_index) == 64, "ASprite animation index extent");
