@@ -15,7 +15,8 @@
         "-march=armv5te",
         "-mtune=xscale",
         "-mfloat-abi=softfp",
-        "-fdata-sections"
+        "-fdata-sections",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

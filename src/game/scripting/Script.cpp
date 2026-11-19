@@ -233,3 +233,15 @@ void Script::setScriptObjectAction(LevelObject* object, eScriptAction action)
 {
     objectActions[object] |= action;
 }
+
+void Script::setState(State newState, PlayerTest::eContext newContext)
+{
+    state = newState;
+    if (newState != State2)
+        return;
+    if (newContext == PlayerTest::AnyContext)
+        newContext = PlayerTest::GetPlayer()->context;
+    else if (newContext != PlayerTest::GetPlayer()->context)
+        state = State1;
+    context = newContext;
+}

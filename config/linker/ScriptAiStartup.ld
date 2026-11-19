@@ -20,6 +20,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .script_set_state 0x0033922c : { *ai-startup-script.o(.text._ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE) }
+
     .script_set_action 0x0033999c : { *ai-startup-script.o(.text._ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE) }
     .script_constructor 0x003392a0 : { *ai-startup-script.o(.text._ZN6ScriptC2Ei .text._ZN6ScriptC1Ei) }
     .script_clear_actions 0x003399c4 : { *ai-startup-script.o(.text._ZN6Script23clearScriptObjectActionEv) }
@@ -81,3 +83,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+ASSERT(SIZEOF(.script_set_state) == 60, "native Script::setState physical section");

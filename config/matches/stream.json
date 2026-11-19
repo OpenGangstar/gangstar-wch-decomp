@@ -5,7 +5,8 @@
         "-O2", "-fpic", "-fno-toplevel-reorder", "-ffunction-sections",
         "-fstack-protector", "-fno-strict-aliasing", "-fno-rtti", "-fno-exceptions",
         "-mthumb", "-mthumb-interwork", "-march=armv5te", "-mtune=xscale",
-        "-mfloat-abi=softfp"
+        "-mfloat-abi=softfp",
+        "-fno-short-enums"
     ],
     "assembler_flags": ["-march=armv5te", "-mfloat-abi=softfp", "-mfpu=vfp", "-meabi=4"],
     "retail_got": true,

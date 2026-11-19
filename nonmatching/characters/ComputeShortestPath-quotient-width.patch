@@ -1,0 +1,22 @@
+--- a/src/game/characters/PhysicAttributes.cpp
++++ b/src/game/characters/PhysicAttributes.cpp
+@@ -638,16 +638,16 @@
+     while(open.used) {
+         int index;
+         AStarNode current=FindLowerCostNode(&open,&index);
+-        s_neighbors[current.region][6][static_cast<unsigned short>(current.triangleOffset/3)]=m_AStarStatusIncrement+2;
++        s_neighbors[current.region][6][(current.triangleOffset/3)]=m_AStarStatusIncrement+2;
+         closed.push_back(current);
+         open.erase(index);
+         for(int edge=0;edge<3;++edge) {
+-            unsigned short triangle=static_cast<unsigned short>(current.triangleOffset/3);
++            unsigned int triangle=(current.triangleOffset/3);
+             unsigned short next=s_neighbors[current.region][edge][triangle];
+             unsigned short region=s_neighbors[current.region][edge+3][triangle];
+             if(next==static_cast<unsigned short>(-1) || s_nodeCost[mode][region]==999.0f) continue;
+             if(mode==1 && ((s_neighborsWrongWay[current.region][triangle]&3)==edge+1 || ((s_neighborsWrongWay[current.region][triangle]>>2)&3)==edge+1)) continue;
+-            unsigned short nextTriangle=static_cast<unsigned short>(next/3);
++            unsigned int nextTriangle=(next/3);
+             unsigned short state=s_neighbors[region][6][nextTriangle];
+             if(state==m_AStarStatusIncrement+2) continue;
+             irr::core::vector3d<float> a=GetTriCenter(current.region,current.triangleOffset);

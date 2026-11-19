@@ -1,0 +1,292 @@
+--- a/src/game/scripting/ScriptManager.h
++++ b/src/game/scripting/ScriptManager.h
+@@ -37,6 +37,8 @@
+     Script* findScript(int id) const;
+     void resetGame(bool skipAutomaticScripts, int scriptId);
+     static void moveObject(LevelObject* object, LevelObject* target);
++    enum State { State0, State1, State2, State3, State4, State5, State6 };
++    void setState(State state);
+     void update(int);
+     void resume();
+     void pause();
+--- a/src/game/world/SpawnPoint.h
++++ b/src/game/world/SpawnPoint.h
+@@ -40,6 +40,7 @@
+     static Center s_outterCenterParkedCar;
+     static SpawnPointList s_spawnPoints;
+ private:
++    friend class ScriptManager;
+     struct SpawnConstants {
+         int type;
+         int unknown4;
+--- a/src/game/rendering/GS3DStuff.cpp
++++ b/src/game/rendering/GS3DStuff.cpp
+@@ -84,43 +84,7 @@
+     int references;
+ };
+ 
+-class OctTreeAABB {
+-public:
+-    struct RootNode {
+-        RootNode() : sceneNode(0), collision(0), spawn(0),
+-            bounds(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f))
+-        {
+-            bounds.MaxEdge = irr::core::vector3d<float>(1.0f, 1.0f, 1.0f);
+-        }
+-        inline ~RootNode();
+-        irr::scene::ISceneNode* sceneNode;
+-        CollisionBodyDef* collision;
+-        SpawnPoint* spawn;
+-        irr::core::aabbox3d<float> bounds;
+-    };
+-
+-    struct OctTreeAABBNode {
+-        inline ~OctTreeAABBNode();
+-        void getPolysIter(const irr::core::aabbox3d<float>& box,
+-            irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
+-            irr::core::array<irr::scene::ISceneNode*>* nodes) const __attribute__((weak));
+-        irr::core::aabbox3d<float> bounds;
+-        irr::core::array<RootNode*>* roots;
+-        OctTreeAABBNode* children[8];
+-    };
+-
+-    inline ~OctTreeAABB();
+-    inline void BuildSpawnPointNodes(irr::core::array<RootNode*>* roots) __attribute__((used));
+-    inline int CountRenderableNodes(irr::scene::ISceneNode* node) __attribute__((used));
+-    inline void BuildRootNodes(irr::scene::ISceneNode* node,
+-        irr::core::array<RootNode*>* roots) __attribute__((used));
+-    inline void calculatePolys(const irr::core::aabbox3d<float>& box,
+-        irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
+-        irr::core::array<irr::scene::ISceneNode*>* nodes) __attribute__((used));
+-private:
+-    OctTreeAABBNode* root;
+-    irr::core::array<RootNode*>* roots;
+-};
++#include "OctTreeAABB.h"
+ 
+ namespace {
+ template<class T>
+--- /dev/null
++++ b/src/game/rendering/OctTreeAABB.h
+@@ -0,0 +1,46 @@
++#ifndef WCH_RENDERING_OCT_TREE_AABB_H
++#define WCH_RENDERING_OCT_TREE_AABB_H
++#include "../core/Geometry.h"
++#include "../core/Array.h"
++namespace irr { namespace scene { class ISceneNode; } }
++class SpawnPoint;
++class CollisionBodyDef;
++class OctTreeAABB {
++public:
++    struct RootNode {
++        RootNode() : sceneNode(0), collision(0), spawn(0),
++            bounds(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f))
++        {
++            bounds.MaxEdge = irr::core::vector3d<float>(1.0f, 1.0f, 1.0f);
++        }
++        inline ~RootNode();
++        irr::scene::ISceneNode* sceneNode;
++        CollisionBodyDef* collision;
++        SpawnPoint* spawn;
++        irr::core::aabbox3d<float> bounds;
++    };
++
++    struct OctTreeAABBNode {
++        inline ~OctTreeAABBNode();
++        void getPolysIter(const irr::core::aabbox3d<float>& box,
++            irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
++            irr::core::array<irr::scene::ISceneNode*>* nodes) const __attribute__((weak));
++        irr::core::aabbox3d<float> bounds;
++        irr::core::array<RootNode*>* roots;
++        OctTreeAABBNode* children[8];
++    };
++
++    inline ~OctTreeAABB();
++    inline void BuildSpawnPointNodes(irr::core::array<RootNode*>* roots) __attribute__((used));
++    inline int CountRenderableNodes(irr::scene::ISceneNode* node) __attribute__((used));
++    inline void BuildRootNodes(irr::scene::ISceneNode* node,
++        irr::core::array<RootNode*>* roots) __attribute__((used));
++    inline void calculatePolys(const irr::core::aabbox3d<float>& box,
++        irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
++        irr::core::array<irr::scene::ISceneNode*>* nodes) __attribute__((used));
++private:
++    friend class ScriptManager;
++    OctTreeAABBNode* root;
++    irr::core::array<RootNode*>* roots;
++};
++#endif
+--- a/src/game/scripting/ScriptManager.cpp
++++ b/src/game/scripting/ScriptManager.cpp
+@@ -1776,3 +1776,98 @@
+     if (revive)
+         revive->draw2d();
+ }
++
++#include "../characters/Character.h"
++#include "../characters/PhysicAttributes.h"
++#include "../core/CameraManager.h"
++#include "../core/SceneNode.h"
++#include "../input/CControlManager.h"
++#include "../rendering/GS3DStuff.h"
++#include "../rendering/OctTreeAABB.h"
++#include "../world/SpawnPoint.h"
++
++void ScriptManager::setState(State state)
++{
++    if (cinematicState == state)
++        return;
++
++    Application* application = Application::GetInstance();
++    switch (state) {
++    case State0:
++        application->GetHudManager()->show();
++        CameraManager::getInstance()->setTouchScreenInputs(true);
++        static_cast<SavePositionInterface&>(*s_playerTest).setNextAnimation(-1, 1, false, false, false);
++        application->GetControlManager()->unlock();
++        break;
++
++    case State4:
++        bIsInCutscene = true;
++        cinematicBars->animation = -1;
++    case State1: {
++        bIsInCutscene = true;
++        application->GetHudManager()->hide();
++        showSkipButton();
++        s_playerTest->_SetTarget(0, false);
++        reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*s_playerTest)).goToIdle();
++        CameraManager::getInstance()->setTouchScreenInputs(false);
++        CameraManager::getInstance()->updateUpVector(0.0f);
++        application->GetControlManager()->lock();
++        WantedLevelManager::getInstance()->storeWantedLevel();
++        WantedLevelManager::getInstance()->resetWantedLevel();
++        WantedLevelManager::getInstance()->lock(0);
++        GS3DStuff::forceDespawn(3);
++        GS3DStuff::forceDespawn(5);
++
++        Vehicle* vehicle = static_cast<Vehicle*>(s_playerTest->unknown316);
++        if (!vehicle || !vehicle->sceneNode || !vehicle->sceneNode->isVisible())
++            break;
++        if (vehicle->driver != 0) {
++            if (static_cast<Mission*>(getMission())->getState() == 4)
++                break;
++        }
++        if (vehicle->unknown28 && *vehicle->unknown28) {
++            if ((vehicle->unknown4 & 0x400) == 0)
++                break;
++        }
++
++        irr::core::array<OctTreeAABB::RootNode*>* roots = GS3DStuff::getSceneOctTree()->roots;
++        const irr::core::vector3d<float>& playerPosition =
++            static_cast<SavePositionInterface&>(*s_playerTest).position();
++        SpawnPoint* closest = 0;
++        float closestDistance = 0.0f;
++        for (unsigned int i = 0; i < roots->used; ++i) {
++            SpawnPoint* point = roots->data[i]->spawn;
++            if (!point || SpawnPoint::s_metatypesSpawnCst[point->spawnGroup]->type != 11)
++                continue;
++            const float distance = playerPosition.getDistanceFromSQ(point->position);
++            if ((!closest || distance < closestDistance) && !point->hasCloseNeighbors()) {
++                closest = point;
++                closestDistance = distance;
++            }
++        }
++        irr::core::vector3d<float> vehiclePosition = closest->position;
++        vehiclePosition.Z = vehicle->unknown24->GetHeight(vehiclePosition, 0, false);
++        vehicle->SetRotation(closest->rotation);
++        vehicle->SetPosition(vehiclePosition);
++        break;
++    }
++
++    case State3:
++    case State6:
++        hideSkipButton();
++        if (cutsceneSkipped) {
++            resumeBlockingCommands();
++            cutsceneSkipped = false;
++        }
++        WantedLevelManager::getInstance()->unlock();
++        WantedLevelManager::getInstance()->restoreWantedLevel();
++        s_playerTest->flag383 = false;
++        bIsInCutscene = false;
++        break;
++
++    default:
++        break;
++    }
++    cinematicState = state;
++}
++
+--- a/config/matches/script-manager-helpers.json
++++ b/config/matches/script-manager-helpers.json
+@@ -190,7 +190,8 @@
+             "name": "__tcf_4",
+             "address": "0x0033e759",
+             "compiled_name": "__tcf_2"
+-        }
++        },
++        "_ZN13ScriptManager8setStateENS_5StateE"
+     ],
+     "sections": [
+         ".script_setup_intro",
+@@ -329,7 +330,9 @@
+         ".script_manager_first_checkpoint",
+         ".script_manager_minimap_tracking",
+         ".wanted_cleanup",
+-        ".state_machine_cleanup"
++        ".state_machine_cleanup",
++        ".script_manager_set_state",
++        ".script_manager_state_table"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -408,6 +411,25 @@
+         "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
+         "_ZN10PlayerTest10teleportToEPK11LevelObject",
+         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
+-        "_ZN10PlayerTest19finishedStopDrivingEv"
++        "_ZN10PlayerTest19finishedStopDrivingEv",
++        "_ZN11CHudManager4hideEv",
++        "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
++        "_ZN9Character8goToIdleEv",
++        "_ZN13CameraManager11getInstanceEv",
++        "_ZN13CameraManager20setTouchScreenInputsEb",
++        "_ZN13CameraManager14updateUpVectorEf",
++        "_ZN15CControlManager4lockEv",
++        "_ZN18WantedLevelManager16storeWantedLevelEv",
++        "_ZN18WantedLevelManager16resetWantedLevelEv",
++        "_ZN18WantedLevelManager4lockEi",
++        "_ZN9GS3DStuff12forceDespawnEi",
++        "_ZN9GS3DStuff15getSceneOctTreeEv",
++        "_ZNK10SpawnPoint17hasCloseNeighborsEv",
++        "_ZN18WantedLevelManager6unlockEv",
++        "_ZN18WantedLevelManager18restoreWantedLevelEv",
++        "_ZN11CHudManager4showEv",
++        "_ZN15CControlManager6unlockEv",
++        "_ZNK7Mission8getStateEv",
++        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib"
+     ]
+ }
+--- a/config/linker/ScriptManagerHelpers.ld
++++ b/config/linker/ScriptManagerHelpers.ld
+@@ -18,6 +18,9 @@
+ __cxa_guard_release = 0x001c46c4;
+ SECTIONS
+ {
++    .script_manager_set_state 0x0033f1ec : { *script-manager-helpers.o(.text._ZN13ScriptManager8setStateENS_5StateE) }
++    .script_manager_state_table 0x0042f270 : { *script-manager-helpers.o(.rodata._ZN13ScriptManager8setStateENS_5StateE) }
++
+     .state_machine_singleton 0x002d44c4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
+     .state_machine_cleanup 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
+     .state_machine_guard 0x004b6904 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
+@@ -65,3 +68,11 @@
+ ASSERT(SIZEOF(.module_startup_script_manager_helpers_storage_11) == 8, "script-manager-helpers _ZN8gameloft2ai16scripted_vehicleE extent");
+ ASSERT(SIZEOF(.script_manager_instance_guard) == 4, "ScriptManager singleton guard extent");
+ ASSERT(SIZEOF(.script_manager_instance_storage) == 108, "ScriptManager singleton storage extent");
++
++ASSERT(SIZEOF(.script_manager_set_state) == 732, "native manager state extent");
++ASSERT(SIZEOF(.script_manager_state_table) == 28, "native manager state dispatch");
++
++__aeabi_fsub = 0x001c4328;
++__aeabi_fmul = 0x001c4724;
++__aeabi_fadd = 0x001c4154;
++__aeabi_fcmplt = 0x001c479c;

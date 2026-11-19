@@ -16,7 +16,8 @@
         "-ffunction-sections",
         "-fdata-sections",
         "-fstack-protector",
-        "-fno-default-inline"
+        "-fno-default-inline",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

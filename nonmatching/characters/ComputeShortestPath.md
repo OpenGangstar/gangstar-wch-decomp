@@ -84,3 +84,45 @@ The raw object digest is an artifact identity, not a native byte-match claim.
 The first public-probe invocation lacked the retail path and stopped before
 compilation; providing the explicit `--baselib` argument produced the result
 above. No game data or proprietary toolchain is included in these artifacts.
+
+
+## Bounded quotient-width follow-up after PR #741
+
+A comparison of adjacent shift pairs suggested a possible unnecessary
+unsigned-short truncation after division by three. One bounded source form
+removed the three casts around `current.triangleOffset / 3` and `next / 3`,
+and changed only the two quotient locals to unsigned int. Actual ushort wire
+fields, sentinels, constructor parameters, layouts, array operations, flags and
+all existing function bodies remained unchanged. Each numerator is a ushort;
+its quotient is at most 21,845, so these local arithmetic changes preserve
+its value. This is an investigation of intermediate arithmetic, not permission
+to widen stored fields or change the algorithm.
+
+The hypothesis failed: the candidate grows to 1,692 bytes, versus the supported
+1,688-byte baseline and 1,668-byte retail target. Its constructor remains weak,
+96 bytes, and byte-identical to the verified prerequisite object. Only the
+assigned pending function is newly emitted. The probe stops before linking,
+exit 3; no existing-function or native linked comparison is claimed.
+
+```text
+BUILD ai-startup-physicattributes
+{"size": 1692, "native_size": 1668, "section_size": 1692, "new_definitions": ["_ZN16PhysicAttributes19ComputeShortestPathEiiN3irr4core8vector3dIfEES3_f"], "raw_sha256": "d65149058121a1efe73a47b9f3c576212b6c75536849552d7fe086de41b6eae8", "ctor_size": 96, "ctor_binding": 2, "ctor_raw_identical_to_prerequisite": true, "linked": false}
+Prelink analysis only; no linked comparison claimed.
+```
+
+Both candidates and retail retain three unsigned divide calls. Removing the
+source casts does not remove the generated extension/scaling sequences: all
+three contain three left shifts by 16, with differently scheduled right shifts
+and scaling. Adjacent-pair counts alone do not establish that retail omits an
+operation or that the source type causes it. No signed-division correction,
+flag variation, additional source form or shared-header change was attempted.
+The original 1,688-byte candidate remains the supported baseline; this larger
+candidate earns no credit and does not replace it.
+
+To reproduce this diagnostic, first apply `ComputeShortestPath.patch` in an
+isolated checkout, then apply `ComputeShortestPath-quotient-width.patch` and
+run the existing prelink probe with the retail path. The small second patch
+requires the first; it is not meant to apply directly to production source.
+Current production base used for this follow-up: PR #741, main `91833d3c`.
+Further quotient-cast trials require new evidence. The same pure cast-removal
+hypothesis should not be blindly repeated on neighboring physics functions.

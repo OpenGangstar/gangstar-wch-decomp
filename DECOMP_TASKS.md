@@ -473,13 +473,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | — | BLOCKED | Separate54 scoped handlers preserve operations; numeric order212B has33 differing function bytes versus141 archived. Full table also fails. Owner143functions133sections1GOT retained. Reviewed unapplied patch, no credit; ownership released, no further ordering forms without new evidence. | src/game/scripting/ScriptManager.cpp; nonmatching/scripting/ScriptManager-cleanCommand.patch |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | — | BLOCKED | two current/lifetime forms identical732B; target/dispatch fail; old143/134 and55 header profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(State) | — | BLOCKED | One verified NDK enum-width replay is byte-identical to archived unmatched732B; target/section/table fail, existing143functions133sections1GOT pass. See nonmatching/scripting/ScriptManager-setState.md. | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003399c5 | Script::clearScriptObjectAction | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033999d | Script::setScriptObjectAction | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
-| libsanangeles.so | 0x0033922d | Script::setState | — | BLOCKED | Historical best56/58 bytes; enum-parameter escalation66B fails strict overlap; measured sink/local allocation causes preserved, no credit | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0033922d | Script::setState(State, PlayerTest::eContext) | — | COMPLETED | 100%; exact 58-byte executable and full 60-byte section under original NDK enum-width baseline. Full root190/10951 proof passes; no existing body changes. | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction | camera_tap | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033ce19 | Script::nextCommand | lock_init | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003399f1 | Script::rewind | vehicle_side | BLOCKED | — | src/game/scripting/Script.cpp |
@@ -1104,13 +1104,13 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | — | BLOCKED | Genuine-object replay 1688/native1668; native weak C1/GOT corrected, no link or credit | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | — | BLOCKED | One quotient-width follow-up worsens 1688 to 1692/native1668 bytes and retains extension/scaling sequences; constructor96 weak unchanged, no link or credit. Preserve original best; see nonmatching/characters/ComputeShortestPath.md. | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | lock_init | BLOCKED | 1732/1748-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | hud_glyphs | BLOCKED | 892/900-byte candidate; six forms, full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | — | BLOCKED | One current-layout/NDK-enum replay emits884/native900 bytes; only target newly emitted, prelink3, no owner linked proof. See nonmatching/ai/PlayerTest-switchContext.md. | src/game/ai/PlayerTest.cpp |
 
 | libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | — | BLOCKED | Native-order/reference corrections materialize, but the candidate remains 1,820 versus 1,816 native bytes. Strict linking fails; all artifacts retained, no further variant authorized. | src/game/characters/PhysicAttributes.cpp |
 
@@ -1612,3 +1612,14 @@ exits 3 before linker/harness invocation. No field, source body, declaration,
 production flag, marker or progress credit is integrated. Current shared types
 and all existing matches remain intact. Ownership released; further source
 search needs new evidence. See docs/COMPILER-NOTES.md for exact scope.
+
+
+## Coordinator review: original NDK enum-width baseline
+
+On 2026-11-19, the coordinator reviewed both original NDK setup files and a
+controlled 190-profile replay of `-fno-short-enums`. All 10,949 comparisons
+passed without failures or skips. The 180 ARM profiles that omitted this
+SDK-default flag now list the exact verified arguments; ten were unchanged.
+No function ownership, source body, assembly status or progress credit changes.
+See docs/COMPILER-NOTES.md. This is a compiler prerequisite, not completion of
+any pending function or a substitute for its byte comparison.

@@ -13,7 +13,8 @@
         "-mtune=xscale",
         "-mfloat-abi=softfp",
         "-ffunction-sections",
-        "-fdata-sections"
+        "-fdata-sections",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",
