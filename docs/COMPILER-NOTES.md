@@ -266,3 +266,20 @@ interchangeable for all code. The production toolchain remains unchanged. The
 earlier Map::Notify and ASprite::GetAnimIdx frontend experiments are separate;
 an older inventory's absence of r3 records must not be read as a current claim
 that r3 has never been tested.
+
+### Pickup proximity value capture
+
+After review of the six archived `GS3DStuff::checkPickableProximity` forms,
+one bounded value-lifetime experiment combined a named by-value `GetPosition()`
+result with a complete vector subtraction before the three range tests. The
+existing `PlayerTest`/`Character` position interfaces already return the correct
+vector value; no ABI or shared-header correction was justified.
+
+The current production frontend emitted 360 target bytes versus native 356 at
+Thumb `0x002deba1`, with an additional out-of-line `Character::position()` helper.
+The complete unlinked target SHA256 was
+`3b05a35d2fccec25b7ac8bc42b349099c7c667af12a1224a10f69307af65a465`.
+The experiment stopped before the owner linker. Dependency checks printed by
+the build do not establish an owner native comparison or old-owner closure.
+The candidate was rejected; no function definition, marker, compiler option or
+progress credit changed. Further variations require new evidence.
