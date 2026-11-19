@@ -284,7 +284,8 @@
         "_ZN9MenuState4HideEv",
         "_ZNK11MenuManager15areAnimsEnabledEv",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
-        "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE"
+        "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii"
     ],
     "sections": [
         ".help_empty_icon",
@@ -382,7 +383,15 @@
         ".renderfx_collect_characters",
         ".renderfx_trace_context",
         ".renderfx_found_child",
-        ".renderfx_child_sprite"
+        ".renderfx_child_sprite",
+        ".renderfx_trace_hierarchy",
+        ".renderfx_hierarchy_start",
+        ".renderfx_hierarchy_indent",
+        ".renderfx_hierarchy_edit",
+        ".renderfx_hierarchy_play",
+        ".renderfx_hierarchy_stop",
+        ".renderfx_hierarchy_sprite",
+        ".renderfx_hierarchy_character"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -514,6 +523,7 @@
         "_ZN12StateMachineD1Ev",
         "_ZN7gameswf6matrix11set_inverseERKS0_",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
-        "_ZN7gameswf6cxformC1Ev"
+        "_ZN7gameswf6cxformC1Ev",
+        "_ZN7gameswf9character16get_world_cxformEv"
     ]
 }

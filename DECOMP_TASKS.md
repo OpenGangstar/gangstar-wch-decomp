@@ -512,7 +512,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003ec961 | RenderFX::Initialize | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0030b311 | Vehicle translation-unit initializer | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | vehicle_camera | IN_PROGRESS | One authentic hash iterator/E helper trial authorized, preserving the native pre-increment range check and specific Entry-array cleanup only. Generic arrays and hash clearing remain unchanged. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
@@ -523,7 +523,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | — | COMPLETED | 100%; exact 240-byte native definition in all three images, full 190-profile/10,545-comparison gate passes. Original source remains incomplete, so no Fully Linked credit. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ecb09 | RenderFX::TraceHierarchy | prefs_loader | IN_PROGRESS | One bounded matched-relative trial authorized after exact CollectCharacters and TraceContext: preserve faithful unhinted algorithm, use canonical name/string chain and honest native color-transform reference. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ecb09 | RenderFX::TraceHierarchy | — | COMPLETED | 100%; exact 464-byte native target and seven literal regions in three images. Full 190-profile/10,584-comparison gate passes; no Fully Linked credit added. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x00327d85 | Cash destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327d41 | Cash deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327d2c | Cash deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
@@ -1240,8 +1240,8 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18c5 | nativeExit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | player_update | IN_PROGRESS | One faithful v4 trial using the newly exact name/c_str chain is authorized. Preserve first-byte, substring, parser and manual parent cleanup semantics; no metadata-length substitution or parent-call replacement. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | lock_init | BLOCKED | six candidates; best 476/488 bytes, old 108 functions and headers exact; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | — | BLOCKED | Typed name-chain candidate is 408 versus 416 native bytes; strict size assertion rejects it before linking. No current old-gate or linked match claim; no further variant authorized. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | player_update | IN_PROGRESS | One authentic hash get/E and Entry-array push_back/operator[] trial authorized on faithful v2, preserving signed length and parent cleanup. Coordinate shared helper interfaces with Clear; no generic array mutation. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d192d | nativeUnlockDemo | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d1961 | nativeGetVersionMode | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
@@ -1249,7 +1249,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1995 | nativeGetNumLaunch | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | vehicle_camera | ASSIGNED | Read-only matched-relative audit against actual gameswf callback/value interfaces and newly exact name/string helper chain; recover old evidence before any trial. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | — | BLOCKED | Read-only review confirms three identical 344-byte forms versus 368 native; new character-name APIs do not apply and prior flag probes remain rejected. No new semantic gap. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | BLOCKED | five source forms; native-size248 but 12 bytes differ in cold-tail order, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | BLOCKED | six source forms; native-size356 but branch/register differences, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | BLOCKED | five forms; best852 differs, current110 old functions and headers preserved; no credit | src/game/rendering/menufx.cpp |

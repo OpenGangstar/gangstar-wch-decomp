@@ -17280,7 +17280,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ecaa9	0x1a	menufx.cpp	game	ui	matched	_ZN6MenuFX15GetCurrentStateEv	MenuFX::GetCurrentState()
 0x003ecac5	0x30	menufx.cpp	game	ui	matched	_ZN6MenuFX14IsStateInStackEPNS_5StateE	MenuFX::IsStateInStack(MenuFX::State*)
 0x003ecaf5	0x14	menufx.cpp	game	rendering	matched	_ZNK8RenderFX8GetAlphaEPN7gameswf9characterE	RenderFX::GetAlpha(gameswf::character*) const
-0x003ecb09	0x1d0	menufx.cpp	game	rendering	pending	_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii	RenderFX::TraceHierarchy(gameswf::character*, int, int)
+0x003ecb09	0x1d0	menufx.cpp	game	rendering	matched	_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii	RenderFX::TraceHierarchy(gameswf::character*, int, int)
 0x003eccd9	0x70	menufx.cpp	game	core	matched	_Z16GetLocalPositionPN7gameswf9characterEff	GetLocalPosition(gameswf::character*, float, float)
 0x003ecd49	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX23ClearGlyphTextureCachesEPN7gameswf14player_contextE	RenderFX::ClearGlyphTextureCaches(gameswf::player_context*)
 0x003ecd89	0x3c	menufx.cpp	game	ui	matched	_ZN6MenuFX8GetStateEPKc	MenuFX::GetState(char const*)
