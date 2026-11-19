@@ -3,8 +3,10 @@
 The retail library records the name of every translation unit it compiled, in
 link order, in its `STT_FILE` symbols. `config/files.tsv` is that list.
 
-**689 source files.** 186 of them belong to the game; the rest are the engine
-and its dependencies.
+**689 source files.** 184 of them belong to the game; the rest are the engine
+and its dependencies. The [provenance ledger](PROVENANCE-CORRECTIONS.md)
+accounts for the two corrected FreeType objects without removing any original
+function or assembly marker.
 
 `src/game/` reproduces the game's own layout one for one, so that a function
 that was compiled from `Vehicle.cpp` is decompiled in
@@ -33,13 +35,13 @@ them. That is why a number of Irrlicht translation units are attributed to
 
 ## The gameplay areas
 
-The 186 game files fall into sixteen areas. The areas are how the project is
+The 184 game files fall into sixteen areas. The areas are how the project is
 organised, how the assembly is filed and how the progress is reported.
 
 | Area | Functions | What it holds |
 | --- | ---: | --- |
 | `ui` | 807 | The menu system, its widgets, the individual game menus |
-| `core` | 372 | Shared helpers, containers, threading, cameras, logging |
+| `core` | 277 | Shared helpers, containers, threading, cameras, logging |
 | `rendering` | 366 | Render effects, billboards, sky boxes, LOD, sprites |
 | `ai` | 313 | NPC and police behaviour, the behaviour model, state machines, the player test harness |
 | `vehicles` | 307 | Vehicles, their sounds, their wheels |
