@@ -1417,3 +1417,100 @@ class b2CircleDef : public b2ShapeDef {
 public:
     virtual ~b2CircleDef() __attribute__((used)) {}
 };
+
+int Character::getSpecificAnimation(int id)
+{
+    switch (id) {
+    case 0:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 208;
+            if (getWeapon()->isTwoHanded()) return 205;
+            return 0;
+        case 1: return 0;
+        case 2: return 0;
+        }
+        break;
+    case 165:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 169;
+            if (getWeapon()->isTwoHanded()) return 166;
+            return 165;
+        case 1: return 36;
+        case 2: return 42;
+        }
+        break;
+    case 179:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 170;
+            if (getWeapon()->isTwoHanded()) return 167;
+            return 179;
+        case 1: return 179;
+        case 2: return 179;
+        }
+        break;
+    case 180:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 171;
+            if (getWeapon()->isTwoHanded()) return 168;
+            return 180;
+        case 1: return 38;
+        case 2: return 43;
+        }
+        break;
+    case 188:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 192;
+            if (getWeapon()->isTwoHanded()) return 189;
+            return 188;
+        case 1: return 39;
+        case 2: return 44;
+        }
+        break;
+    case 198:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 193;
+            if (getWeapon()->isTwoHanded()) return 190;
+            return 198;
+        case 1: return 198;
+        case 2: return 198;
+        }
+        break;
+    case 200:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 194;
+            if (getWeapon()->isTwoHanded()) return 191;
+            return 200;
+        case 1: return 200;
+        case 2: return 200;
+        }
+        break;
+    case 202:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 206;
+            if (getWeapon()->isTwoHanded()) return 203;
+            return 202;
+        case 1: return 40;
+        case 2: return 48;
+        }
+        break;
+    case 212:
+        switch (unknown212) {
+        case 0:
+            if (getWeapon()->getWeaponType() == 7) return 207;
+            if (getWeapon()->isTwoHanded()) return 204;
+            return 212;
+        case 1: return 41;
+        case 2: return 49;
+        }
+        break;
+    }
+    return -1;
+}

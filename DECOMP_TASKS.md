@@ -51,7 +51,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | BLOCKED | — | src/game/core/CameraManager.cpp |
 | libsanangeles.so | 0x00301a3d | PlayerTest::Stop | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00333789 | FollowCamera::init | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00333ab1 | FollowCamera::update | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00333ab1 | FollowCamera::update | — | BLOCKED | Real-hierarchy adaptation784/native776; one recovered crossProduct reuse restores776extent but frame196/native204 fails0xe. Owner13functions6sections1GOT exact. Reviewed unapplied patch retained; no credit or further lifetime/ordering forms without new evidence. Ownership released. | src/game/core/FollowCamera.cpp; nonmatching/core/FollowCamera-update.patch |
 | libsanangeles.so | 0x002e1571 | GSCarRepairMenu::draw2d | lock_init | BLOCKED | — | src/game/ui/GSCarRepairMenu.cpp |
 | libsanangeles.so | 0x00334c25 | LockCamera::update | camera_tap | BLOCKED | — | src/game/core/LockCamera.cpp |
 | libsanangeles.so | 0x003017ed | PlayerTest::jumpFinished | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
@@ -353,7 +353,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x00319dd1 | PhysicInfo::PhysicInfo (C1 only; native C2 absent) | — | COMPLETED | Existing96-byte body moved unchanged to ordinary inline definition, natural weak binding. Root190/10,690 and independent native equality in both images; no output edits or new credit. | src/game/characters/PhysicInfo.h; src/game/characters/PhysicAttributes.cpp (private) |
 | libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | — | BLOCKED | Canonical260 and all47 old checks/payloads/relocs unchanged under diagnostic. Floatzero154 getsR3 in137lreg, reload picks infoR3/bodyR2 in138greg,149sched2 hoistsbodycopy; no nativeIR cause or further source trial. | src/game/characters/PhysicAttributes.cpp (private) |
-| libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | lock_init | BLOCKED | — | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | — | BLOCKED | Plain separate handlers leave only function bytes76/9a and8 table bytes different. Two case orders identical; owner113functions31sections1GOT retained. Reviewed unapplied patch, no credit or further ordering variants without new evidence. Ownership released. | src/game/characters/Character.cpp; nonmatching/characters/Character-combat-idle.patch |
 | libsanangeles.so | 0x003279f5 | Cash::GetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x003279f1 | Cash::SetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x003279e9 | Cash::SetPosition | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
@@ -788,7 +788,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f6c45 | Character::punched | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f26ad | Character::ready | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f26ad | Character::ready | — | BLOCKED | Separate handlers leave2 function/2 table bytes different; three forms identical. Unchanged replay with compiled selector also identical; owner114functions32sections1GOT preserved. No credit or further variants without new evidence; ownership released. | src/game/characters/Character.cpp; nonmatching/characters/Character-ready.patch |
 | libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f512d | EvPlayer deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f405d | Character::Update | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4465 | Character::initPhysic | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4a79 | Character::positionInVehicle | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | — | COMPLETED | 100%;714-byte function and716-byte section exact in Character/NPC/Player images. Four alias-return pairs separated; full190-profile10949-comparison gate passes with965inputs stable. Ownership released after acceptance. | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f517d | Character::switchCombatAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f3489 | Character::updateAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f661d | Character::switchMoveAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |

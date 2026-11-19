@@ -124,7 +124,8 @@
         "_ZThn4_N10PlayerTestD1Ev",
         "_ZThn4_N10PlayerTestD0Ev",
         "_ZN10PlayerTest7setAnimEibbbf",
-        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
+        "_ZN9Character20getSpecificAnimationEi"
     ],
     "sections": [
         ".player_car_open_clip",
@@ -154,7 +155,8 @@
         ".player_thunk_d0",
         ".player_vtable",
         ".player_set_anim",
-        ".physic_find_lower"
+        ".physic_find_lower",
+        ".character_specific_animation"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -312,7 +314,6 @@
         "_ZN9Character14goToCombatIdleEv",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
-        "_ZN9Character20getSpecificAnimationEi",
         "_ZN9Character21switchCombatAnimationEv",
         "_ZN9Character3dieEb",
         "_ZN9Character4showEv",
@@ -349,6 +350,7 @@
         "_ZNK7Vehicle12isDoorClosedEb",
         "_ZNK7Vehicle12isDoorOpenedEb",
         "_Z21ekd_makestringfile255PKcPc",
-        "_Z13ekd_debug_outPKcPc"
+        "_Z13ekd_debug_outPKcPc",
+        "_ZNK6Weapon11isTwoHandedEv"
     ]
 }
