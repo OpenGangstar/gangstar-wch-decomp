@@ -297,7 +297,8 @@
         "_ZN5Menus8Services6NotifyEPK10MenuWidgeti",
         "_ZN5Menus13OptionVolumes6NotifyEPK10MenuWidgeti",
         "_ZN5Menus5Infos6NotifyEPK10MenuWidgeti",
-        "_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus3Map6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".help_empty_icon",
@@ -439,7 +440,8 @@
         ".option_volumes_notify",
         ".infos_notify",
         ".infos_notify_table",
-        ".service_weaponshop_notify"
+        ".service_weaponshop_notify",
+        ".map_notify"
     ],
     "retail_got": true,
     "external_thumb_functions": [

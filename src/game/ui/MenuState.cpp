@@ -1932,3 +1932,34 @@ bool Menus::ServiceWeaponShop::Notify(const MenuWidget* widget, int event)
     }
     return false;
 }
+
+bool Menus::Map::Notify(const MenuWidget* widget, int event)
+{
+    if (InGameMenu::Notify(widget, event))
+        return true;
+
+    MenuManager* manager = MenuManager::getInstance();
+    const Widgets::IGMenu* menu = static_cast<const Widgets::IGMenu*>(manager->getWidgetByIndex(1));
+    if (!(widget == menu && event == 2))
+        return false;
+
+    switch (menu->GetLastPressedButton()) {
+    case 1:
+        manager->push(optionVolumesName, false);
+        break;
+    case 2:
+        manager->push(infoAchievementsName, false);
+        break;
+    case 0:
+        manager->push(serviceMissionsName, false);
+        return true;
+    case 3:
+        unknown104 = true;
+        Dialog* confirmation = static_cast<Dialog*>(manager->getState(confirmMenuName));
+        confirmation->SetMessage(static_cast<const Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4
+            ? 0x1021 : 0x1020);
+        manager->push(confirmMenuName, false);
+        break;
+    }
+    return true;
+}
