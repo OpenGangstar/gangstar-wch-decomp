@@ -100,7 +100,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003490f9 | TrailMgr::Update | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x003490dd | TrailMgr::~TrailMgr (D1/D2 aliases) | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00349121 | TrailMgr::SetSegmentWidth | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
-| libsanangeles.so | 0x00349271 | TrailMgr::Render | — | BLOCKED | The declaration prerequisite preserved 21 profiles and the real two-byte callee. Three distinct faithful body forms all emit identical 48 bytes versus native 56, with one shared loop latch instead of two. Stopped before linking under the three-identical-forms rule; no credit or root integration. | src/game/world/TrailMgr.cpp |
+| libsanangeles.so | 0x00349271 | TrailMgr::Render | — | BLOCKED | One explicit count-cache escalation reproduces the same48/native56 bytes as the three guard forms; prelink3, no link or body/header closure. Native two latches remain merged. No credit or further local loop variants. | nonmatching/world/TrailMgr-Render-count-cache.patch; src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x003490b9 | TrailMgr::~TrailMgr (D0) | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00349149 | TrailMgr::CleanUp | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00348fb5 | TrailMgr::AllocTrailList | lock_init | BLOCKED | — | src/game/world/TrailMgr.cpp |
