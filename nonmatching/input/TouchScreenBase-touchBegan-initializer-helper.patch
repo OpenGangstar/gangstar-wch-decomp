@@ -1,0 +1,82 @@
+--- a/src/game/input/TouchScreenBase.cpp
++++ b/src/game/input/TouchScreenBase.cpp
+@@ -333,3 +333,33 @@
+     const Point2D<short>& previous = points[id].previous;
+     return Point2D<short>(currentX - previous.x, current.y - previous.y);
+ }
++
++static inline void initializeFirstTouch(Point2D<short>& first, int& direction,
++    int& count, const Point2D<short>& point)
++{
++    const short x = point.x;
++    const short y = point.y;
++    direction = 0;
++    first.x = x;
++    first.y = y;
++    count = 1;
++}
++
++static const char beginMessage[] = "Finger pression detected";
++
++void TouchScreenBase::touchBegan(const Point2D<short>& point, long id)
++{
++    _trace(beginMessage);
++    if (slotCount < id)
++        slotCount = id + 1;
++
++    _TouchPointInfo& slot = points[id];
++    if (!slot.active)
++        initializeFirstTouch(slot.first, slot.swipeDirection, slot.numPoints, point);
++
++    slot.previous = slot.current;
++    slot.current = point;
++    slot.active = true;
++    slot.hasPoints = true;
++    slot.lastTouchTime = currentTime;
++}
+--- a/config/matches/string-startup-touchscreenbase.json
++++ b/config/matches/string-startup-touchscreenbase.json
+@@ -159,7 +159,8 @@
+             "name": "_ZN15TouchScreenBaseD2Ev",
+             "address": "0x0034cc99"
+         },
+-        "_ZNK15TouchScreenBase14getTouchIDListEv"
++        "_ZNK15TouchScreenBase14getTouchIDListEv",
++        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl"
+     ],
+     "sections": [
+         ".string_startup_function_0",
+@@ -209,11 +210,12 @@
+         ".touchscreen_base_updatable_vtable",
+         ".touchscreen_base_updatable_delete",
+         ".touchscreen_base_updatable_destructor",
+-        ".touchscreen_id_list"
++        ".touchscreen_id_list",
++        ".touch_began",
++        ".touch_begin_message"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+-        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
+         "_ZNSaIN9stlp_priv10_List_nodeIlEEE8allocateEjPKv",
+         "_ZN9stlp_priv7_S_sortIlSaIlESt4lessIlEEEvRSt4listIT_T0_ET1_",
+         "_ZN9stlp_priv10_List_baseIlSaIlEE5clearEv"
+--- a/config/linker/TouchScreenBaseStringStartup.ld
++++ b/config/linker/TouchScreenBaseStringStartup.ld
+@@ -12,6 +12,9 @@
+ INCLUDE config/linker/TouchScreenBaseSections.ld
+ SECTIONS
+ {
++    .touch_began 0x0034ccf0 : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase10touchBeganERK7Point2DIsEl) }
++    .touch_begin_message 0x0043604c : { *string-startup-touchscreenbase.o(.rodata.beginMessage) }
++
+     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
+     .verification 0x00600000 : { *retail-got.o(.text) }
+@@ -19,3 +22,6 @@
+ ASSERT(SIZEOF(.string_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
+ 
+ ASSERT(SIZEOF(.touchscreen_id_list) == 88, "Touch ID list native span");
++
++ASSERT(SIZEOF(.touch_began) == 140, "native touchBegan extent");
++ASSERT(SIZEOF(.touch_begin_message) == 28, "native begin message extent");
