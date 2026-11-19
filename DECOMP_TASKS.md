@@ -182,7 +182,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00311fb5 | CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode (D1) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030bccd | Vehicle::setSpeed | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310499 | Vehicle::grabSceneNode | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody | — | BLOCKED | Six forms exhausted. Final canonical candidate is 1,060 versus 1,044 native bytes; native wheel peeling and 436-byte frame restored, but strict linking fails. No old linked checks or match credit claimed. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody | — | BLOCKED | Reviewed SDK-source/word-enum model1040/native1044; real weak SDK destructors and436B frame, four-byte pre-wheel size deficit. Current-main/getter replays identical; no link, helper/header closure or credit. Reject1050B strong-binding pragma form. | nonmatching/vehicles/Vehicle-CreateBody-sdk-reuse.patch; src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310909 | Vehicle::shoot | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0032f0e1 | SniperControlHandler::handleStickMove | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
 | libsanangeles.so | 0x0032f0e5 | SniperControlHandler::handleStickReleased | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
