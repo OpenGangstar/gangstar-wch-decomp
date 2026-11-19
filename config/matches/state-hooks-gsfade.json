@@ -201,7 +201,9 @@
         "_ZN11Application4QuitEv",
         "_ZN11Application7_UpdateEi",
         "_ZN11Application5_DrawEv",
-        "_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff"
+        "_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff",
+        "_ZN11ApplicationC1Ev",
+        "_ZN11ApplicationC2Ev"
     ],
     "sections": [
         ".hook_0",
@@ -419,7 +421,8 @@
         ".application_achievements",
         ".application_update",
         ".application_draw",
-        ".application_init_iphone"
+        ".application_init_iphone",
+        ".application_ctor"
     ],
     "retail_got": true,
     "source_first": true,
@@ -536,7 +539,6 @@
         "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
         "_ZN11MenuManager5popToEPKcbb",
         "_ZN11MenuManager13preloadGlyphsEb",
-        "_ZN11ApplicationC1Ev",
         "_ZN9GSLoading12isGameLoadedEv",
         "_ZN15CControlManagerD1Ev",
         "_ZN12SoundManager15stopLowFpsMusicEv",
