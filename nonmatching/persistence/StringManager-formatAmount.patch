@@ -1,0 +1,169 @@
+--- a/src/game/persistence/StringManager.cpp
++++ b/src/game/persistence/StringManager.cpp
+@@ -211,3 +211,103 @@
+         styles.push_back(style);
+     }
+ }
++
++extern const char amountReversedNbsp[] __attribute__((visibility("hidden")));
++static const char amountHtmlSuffix[] = "&nbsp;$";
++static const char amountSpaceSuffix[] = " $";
++extern "C" char* nativeStrcat(char*, const char*);
++void strRev(char*) __attribute__((noinline));
++
++const char* StringManager::formatAmount(int amount, bool html, bool currency) const
++{
++    static const char* nbsp = amountReversedNbsp;
++    static int nbspSize = nativeStrlen(nbsp);
++    static char szBuffer[64];
++    memset(szBuffer, 0, sizeof(szBuffer));
++    char* output = szBuffer;
++    const int originalAmount = amount;
++    int remaining = amount;
++    if (!amount)
++        *output++ = '0';
++    else {
++        int digits = 0;
++        while (remaining) {
++            const int quotient = remaining / 10;
++            *output++ = remaining - quotient * 10 + '0';
++            remaining = quotient;
++            if (++digits == 3) {
++                if (remaining) switch (currentPack) {
++                case 0:
++                    *output++ = ',';
++                    break;
++                case 1:
++                    if (originalAmount <= 9999)
++                        break;
++                    // Fall through to insert a space for larger amounts.
++                    if (html) {
++                        nativeStrcat(output, nbsp);
++                        output += nbspSize;
++                    } else
++                        *output++ = ' ';
++                    break;
++                case 3:
++                    if (originalAmount <= 9999)
++                        break;
++                    // Fall through to insert a space for larger amounts.
++                    if (html) {
++                        nativeStrcat(output, nbsp);
++                        output += nbspSize;
++                    } else
++                        *output++ = ' ';
++                    break;
++                case 4:
++                    if (html) {
++                        nativeStrcat(output, nbsp);
++                        output += nbspSize;
++                    } else
++                        *output++ = ' ';
++                    break;
++                case 2:
++                    *output++ = '.';
++                    break;
++                case 5:
++                    *output++ = '.';
++                    break;
++                }
++                digits = 0;
++            }
++        }
++    }
++    if (currency) {
++        if (currentPack == 0 || currentPack == 3) {
++            *output = '$';
++            output[1] = 0;
++        } else {
++            *output = 0;
++        }
++        strRev(szBuffer);
++        switch (currentPack) {
++        case 1:
++            nativeStrcat(szBuffer, html ? amountHtmlSuffix : amountSpaceSuffix);
++            break;
++        case 2:
++            nativeStrcat(szBuffer, html ? amountHtmlSuffix : amountSpaceSuffix);
++            break;
++        case 5:
++            nativeStrcat(szBuffer, html ? amountHtmlSuffix : amountSpaceSuffix);
++            break;
++        case 4: {
++            char* end = szBuffer + nativeStrlen(szBuffer);
++            *end++ = '$';
++            *end = 0;
++            break;
++        }
++        }
++    } else {
++        *output = currency;
++        strRev(szBuffer);
++    }
++    return szBuffer;
++}
++
++
+--- a/config/matches/sdk-startup-stringmanager.json
++++ b/config/matches/sdk-startup-stringmanager.json
+@@ -54,7 +54,8 @@
+         "_ZN13StringManagerD1Ev",
+         "_ZN13StringManagerD2Ev",
+         "_ZN13StringManagerD0Ev",
+-        "_ZN13StringManager10loadStylesEPKc"
++        "_ZN13StringManager10loadStylesEPKc",
++        "_ZNK13StringManager12formatAmountEibb"
+     ],
+     "sections": [
+         ".sdk_startup_function_0",
+@@ -70,7 +71,12 @@
+         ".string_manager_d0",
+         ".string_manager_vtable",
+         ".string_load_styles",
+-        ".string_style_default"
++        ".string_style_default",
++        ".amount_function",
++        ".amount_nbsp",
++        ".amount_table",
++        ".amount_html_suffix",
++        ".amount_space_suffix"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+--- a/config/linker/StringManagerSdkStartup.ld
++++ b/config/linker/StringManagerSdkStartup.ld
+@@ -10,6 +10,16 @@
+ nativeStrlen = 0x001c48bc;
+ SECTIONS
+ {
++    .amount_function 0x0034b3c4 : { *sdk-startup-stringmanager.o(.text._ZNK13StringManager12formatAmountEibb) }
++
++    .amount_nbsp 0x0047b208 : { *(.data.rel.ro._ZZNK13StringManager12formatAmountEibbE4nbsp .data.rel.ro.local._ZZNK13StringManager12formatAmountEibbE4nbsp) }
++    .amount_buffer 0x004bb7d8 (NOLOAD) : { *(.bss._ZZNK13StringManager12formatAmountEibbE8szBuffer) }
++    .amount_nbsp_guard 0x004bb7d4 (NOLOAD) : { *(.bss._ZGVZNK13StringManager12formatAmountEibbE8nbspSize) }
++    .amount_nbsp_size 0x004bb818 (NOLOAD) : { *(.bss._ZZNK13StringManager12formatAmountEibbE8nbspSize) }
++    .amount_table 0x00435f94 : { *(.rodata._ZNK13StringManager12formatAmountEibb) }
++    .amount_html_suffix 0x00435ee4 : { *(.rodata.amountHtmlSuffix) }
++    .amount_space_suffix 0x00435eec : { *(.rodata.amountSpaceSuffix) }
++
+     .string_load_styles 0x0034bd50 : { *sdk-startup-stringmanager.o(.text._ZN13StringManager10loadStylesEPKc) }
+     .string_style_default 0x00435fac : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager10loadStylesEPKcE4C.* .rodata.C.*) }
+     .string_data_stream_d1 0x002d3654 : { *sdk-startup-stringmanager.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
+@@ -50,3 +60,17 @@
+ __stack_chk_fail = 0x001c42e0;
+ ASSERT(SIZEOF(.string_load_styles) == 332, "native loadStyles span");
+ ASSERT(SIZEOF(.string_style_default) == 40, "native TextStyle default extent");
++
++amountReversedNbsp = 0x00435f64; nativeStrcat = 0x001c43a0;
++__aeabi_idiv = 0x001c43dc;
++__aeabi_idivmod = 0x001c4934;
++__cxa_guard_acquire = 0x001c4958;
++__cxa_guard_release = 0x001c46c4;
++ASSERT(SIZEOF(.amount_function) == 480, ".amount_function native extent");
++ASSERT(SIZEOF(.amount_nbsp) == 4, ".amount_nbsp native extent");
++ASSERT(SIZEOF(.amount_buffer) == 64, ".amount_buffer native extent");
++ASSERT(SIZEOF(.amount_nbsp_guard) == 4, ".amount_nbsp_guard native extent");
++ASSERT(SIZEOF(.amount_nbsp_size) == 4, ".amount_nbsp_size native extent");
++ASSERT(SIZEOF(.amount_table) == 24, ".amount_table native extent");
++ASSERT(SIZEOF(.amount_html_suffix) == 8, ".amount_html_suffix native extent");
++ASSERT(SIZEOF(.amount_space_suffix) == 4, ".amount_space_suffix native extent");

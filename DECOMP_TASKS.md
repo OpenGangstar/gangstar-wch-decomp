@@ -346,7 +346,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | — | BLOCKED | Authentic ownership source gives 124/142 bytes at limit 70; measured limit-80 probe inlines the checker but emits 168 bytes and fails strict overlap. No profile change adopted. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x00300bc5 | Path::Load | — | BLOCKED | Genuine SDK whole-vector assignment retains native200extent, four bytes differ at68/6a/72/78 in source/Z registers. All18 existing checks pass; one bounded family trial stopped, no credit or further forms. | src/game/world/Path.cpp |
-| libsanangeles.so | 0x0034228d | NPCController::onEvent | camera_tap | BLOCKED | — | src/game/ai/NPCController.cpp |
+| libsanangeles.so | 0x0034228d | NPCController::onEvent | — | BLOCKED | One bounded switch trial remains 94/96 bytes; no linked credit. Full-word TransitionCondition prerequisite independently preserves all six affected profiles (137 comparisons); candidate in nonmatching/ai/NPCController-onEvent.md. | src/game/ai/NPCController.cpp; src/game/ai/NPCController.h |
 | libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | lock_init | BLOCKED | — | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x0032d72d | CControlManager::update | vehicle_side | BLOCKED | — | src/game/input/CControlManager.cpp |
 | libsanangeles.so | 0x00354665 | EventManager::_attach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
@@ -471,7 +471,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033ed95 | ScriptManager::resetGame | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033fcb1 | ScriptManager::unload | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | vehicle_side | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | — | BLOCKED | Separate54 scoped handlers preserve operations; numeric order212B has33 differing function bytes versus141 archived. Full table also fails. Owner143functions133sections1GOT retained. Reviewed unapplied patch, no credit; ownership released, no further ordering forms without new evidence. | src/game/scripting/ScriptManager.cpp; nonmatching/scripting/ScriptManager-cleanCommand.patch |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f1ed | ScriptManager::setState | — | BLOCKED | two current/lifetime forms identical732B; target/dispatch fail; old143/134 and55 header profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
@@ -629,7 +629,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032f391 | SniperControlHandler::onEvent | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
 | libsanangeles.so | 0x002e26ad | GSInGameMenu::draw2d | — | COMPLETED | 100% | src/game/ui/GSInGameMenu.cpp |
 | libsanangeles.so | 0x0032e69d | COnFootControlHandler::handleAttackReleased | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x0032f201 | SniperControlHandler::onKeyboardEvent | camera_tap | BLOCKED | — | src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x0032f201 | SniperControlHandler::onKeyboardEvent | — | BLOCKED | Unmatched: one split-alias follow-up emits 476/400 bytes; prelink guard exit 3, no linked preservation. See nonmatching/input/SniperControlHandler-keyboard.md. | src/game/input/SniperControlHandler.cpp |
 | libsanangeles.so | 0x002e2725 | GSInGameMenu::update | lock_init | BLOCKED | — | src/game/ui/GSInGameMenu.cpp |
 | libsanangeles.so | 0x0032e6f9 | COnFootControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032e76d | COnFootControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
@@ -732,7 +732,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034bb9d | StringManager::loadPack | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bb5d | StringManager::getString | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b649 | Structs::TextStyle::Read | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | — | BLOCKED | Six forms exhausted; best452/480B, current helper changes unused; no new ABI/layout/configuration evidence for replay | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | — | BLOCKED | Unmatched: one bounded separate-case transfer preserves fallthrough but emits 464/480 bytes; prelink guard exit 3, no linked comparison. See nonmatching/persistence/StringManager-formatAmount.md. | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034be9d | StringManager destructor (D1/D2 aliases) | — | COMPLETED | 100%; real240/240/248B family, authentic erase and whole-profile inline80; full190-profile gate and66-build helper closure exact | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bd51 | StringManager::loadStyles | — | COMPLETED | 100%;332B loader/default40B exact; valid aligned owner/native D1 once, actual Read weak/whole-profile canary metadata; full190 gate and15-build closure pass | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | — | BLOCKED | Third form1040/976B strict link fails; reviewed +64B block ledger finds compiler allocation/tail duplication, no new semantic gap; parked uncredited | src/game/persistence/StringManager.cpp |
@@ -851,7 +851,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003406a9 | AIManager::clean | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x003426b5 | VehicleController::switchState | — | COMPLETED | 100% | src/game/ai/VehicleController.cpp |
 | libsanangeles.so | 0x00340741 | AIManager::onEvent | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
-| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, StateID) | lock_init | BLOCKED | pending | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, StateID) | — | BLOCKED | Unmatched: one bounded NPC common-tail reuse emits 244/336 bytes; prelink guard exit 3, no linked comparison. See nonmatching/ai/AIManager-addAI-Vehicle.md. | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x00340455 | AIManager::addAI(NPC*, StateID) | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x003520c1 | RadioStationController::selectRandomJingle | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x003522b1 | RadioStationController::selectRandomSong | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
