@@ -287,7 +287,11 @@
         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
-        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE"
+        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+        "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
+        "_Z19CanHandleMouseEventPN7gameswf9characterE",
+        "_ZN7Widgets7Volumes18UpdateLocalizationEv",
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv"
     ],
     "sections": [
         ".help_empty_icon",
@@ -395,7 +399,32 @@
         ".renderfx_hierarchy_sprite",
         ".renderfx_hierarchy_character",
         ".set_character_focus",
-        ".renderfx_set_member_value"
+        ".renderfx_set_member_value",
+        ".widgets_tutorial_localize",
+        ".tutorialTitleSuffix",
+        ".tutorialContentSuffix",
+        ".tutorialTextHeightName",
+        ".can_handle_mouse",
+        ".widgets_volumes_localization",
+        ".volumeSfxText",
+        ".volumeSfxSlider",
+        ".volumeMuteOn",
+        ".volumeSfxMute",
+        ".volumeValueFormat",
+        ".volumeSfxValue",
+        ".volumeMusicText",
+        ".volumeMusicSlider",
+        ".volumeMusicMute",
+        ".volumeMusicValue",
+        ".volumePlaylistTitle",
+        ".volumePlaylistFormat",
+        ".volumePlaylistValue",
+        ".volumeMuteOff",
+        ".widgets_confirm_localize",
+        ".confirmMessageFormat",
+        ".confirmYesFormat",
+        ".confirmNoFormat",
+        ".widgets_confirm_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -421,7 +450,6 @@
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK12SoundManager20isLowFpsMusicPlayingEv",
         "_ZN12SoundManager4stopEiii",
-        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
         "_ZN7gameswf9character16get_world_matrixEv",
         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -500,7 +528,6 @@
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZNK13StringManager12formatAmountEibb",
-        "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_ZN11Application11GetInstanceEv",
         "_ZNK13StringManager9getStringEi",
         "_ZN7Widgets6IGMenu9GoToFrameEPKc",
@@ -524,8 +551,13 @@
         "_ZN12StateMachineC1Ev",
         "_ZN12StateMachineD1Ev",
         "_ZN7gameswf6matrix11set_inverseERKS0_",
-        "_Z19CanHandleMouseEventPN7gameswf9characterE",
         "_ZN7gameswf6cxformC1Ev",
-        "_ZN7gameswf9character16get_world_cxformEv"
+        "_ZN7gameswf9character16get_world_cxformEv",
+        "_ZN7gameswf8as_valueC1Ev",
+        "_ZNK7gameswf8as_value9to_numberEv",
+        "_ZNK12SoundManager15getPlaylistNameEiPc",
+        "_ZN7gameswf9tu_stringC1EPKc",
+        "_ZN7gameswf9tu_string15utf8_char_countEPKci",
+        "_ZNK7gameswf9tu_string14utf8_substringEii"
     ]
 }

@@ -148,18 +148,9 @@ public:
 } // namespace gameswf
 
 #include "RetailSwfString.h"
+#include "RetailSwfValue.h"
 
 namespace gameswf {
-
-class as_value {
-public:
-    explicit as_value(const char* value);
-    explicit as_value(int value);
-    ~as_value() __attribute__((long_call));
-
-private:
-    unsigned char storage[40] __attribute__((aligned(8)));
-};
 
 class as_object {
 public:
@@ -1626,4 +1617,24 @@ void RenderFX::SetMember(const char* characterName, const char* member, gameswf:
 
     if (character)
         animationMethods(character).setMember(character, gameswf::tu_stringi(memberName), value);
+}
+
+extern "C" char* strstr(const char* text, const char* part);
+namespace {
+struct CharacterMouseState {
+    unsigned char prefix[0x88];
+    gameswf::tu_string name;
+    unsigned char beforeUnknown133[0x9b];
+    bool unknown133;
+};
+}
+
+bool CanHandleMouseEvent(gameswf::character* character)
+{
+    CharacterMouseState* fields = reinterpret_cast<CharacterMouseState*>(character);
+    if (!strstr(reinterpret_cast<const CharacterCollectionFields*>(character)->get_name().c_str(), widgetButtonPrefix))
+        return fields->unknown133;
+    if (!animationMethods(character).is(character, 2))
+        return true;
+    return reinterpret_cast<SpriteEnabledState*>(character)->enabled;
 }

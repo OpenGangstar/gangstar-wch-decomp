@@ -9967,7 +9967,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002edc7d	0xf0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu18UpdateLocalizationEv	Widgets::IGMenu::UpdateLocalization()
 0x002edd6d	0xf0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6IGMenu7OnEventERN8RenderFX5EventE	Widgets::IGMenu::OnEvent(RenderFX::Event&)
 0x002ede5d	0x64	MenuWidget.cpp	game	ui	matched	_ZN7Widgets11Achievement18UpdateLocalizationEv	Widgets::Achievement::UpdateLocalization()
-0x002edec1	0xfc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Confirm18UpdateLocalizationEv	Widgets::Confirm::UpdateLocalization()
+0x002edec1	0xfc	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Confirm18UpdateLocalizationEv	Widgets::Confirm::UpdateLocalization()
 0x002edfbd	0xa4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets14ConfirmPayment18UpdateLocalizationEv	Widgets::ConfirmPayment::UpdateLocalization()
 0x002ee061	0x260	MenuWidget.cpp	game	ui	pending	_ZN7Widgets6Dialog7OnEventERN8RenderFX5EventE	Widgets::Dialog::OnEvent(RenderFX::Event&)
 0x002ee2c1	0x148	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Statistics18UpdateLocalizationEv	Widgets::Statistics::UpdateLocalization()
@@ -9991,8 +9991,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ef0b1	0x20c	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Corruption18UpdateLocalizationEv	Widgets::Corruption::UpdateLocalization()
 0x002ef2bd	0x144	MenuWidget.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002ef401	0x14	MenuWidget.cpp	game	ui	matched	_GLOBAL__I__ZN10MenuWidgetC2EPKc	_GLOBAL__I__ZN10MenuWidgetC2EPKc
-0x002ef415	0x2e0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets7Volumes18UpdateLocalizationEv	Widgets::Volumes::UpdateLocalization()
-0x002ef6f5	0x1d0	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8Tutorial18UpdateLocalizationEv	Widgets::Tutorial::UpdateLocalization()
+0x002ef415	0x2e0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets7Volumes18UpdateLocalizationEv	Widgets::Volumes::UpdateLocalization()
+0x002ef6f5	0x1d0	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8Tutorial18UpdateLocalizationEv	Widgets::Tutorial::UpdateLocalization()
 0x002ef8c5	0x3c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets16BlockingTutorial18UpdateLocalizationEv	Widgets::BlockingTutorial::UpdateLocalization()
 0x002ef901	0xfc	MenuWidget.cpp	game	ui	pending	_ZN7Widgets9Objective7OnEventERN8RenderFX5EventE	Widgets::Objective::OnEvent(RenderFX::Event&)
 0x002ef9fd	0x100	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8MainMenu7OnEventERN8RenderFX5EventE	Widgets::MainMenu::OnEvent(RenderFX::Event&)
@@ -17273,7 +17273,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ec9c5	0x8	menufx.cpp	game	rendering	matched	_ZN8RenderFX23SetTextBufferingEnabledEb	RenderFX::SetTextBufferingEnabled(bool)
 0x003ec9cd	0x6	menufx.cpp	game	rendering	matched	_ZNK8RenderFX12GetFlashRootEv	RenderFX::GetFlashRoot() const
 0x003ec9d5	0x38	menufx.cpp	game	rendering	matched	_ZN8RenderFX7GetTextEPN7gameswf9characterE	RenderFX::GetText(gameswf::character*)
-0x003eca0d	0x5c	menufx.cpp	game	core	pending	_Z19CanHandleMouseEventPN7gameswf9characterE	CanHandleMouseEvent(gameswf::character*)
+0x003eca0d	0x5c	menufx.cpp	game	core	matched	_Z19CanHandleMouseEventPN7gameswf9characterE	CanHandleMouseEvent(gameswf::character*)
 0x003eca69	0xc	menufx.cpp	game	core	matched	_Z38sprite_can_handle_mouse_event_callbackPN7gameswf9characterE	sprite_can_handle_mouse_event_callback(gameswf::character*)
 0x003eca74	0x14	menufx.cpp	game	ui	matched	_ZThn204_N6MenuFX11OnFSCommandEPKcS1_	non-virtual thunk to MenuFX::OnFSCommand(char const*, char const*)
 0x003eca89	0x20	menufx.cpp	game	ui	matched	_ZN6MenuFX11OnFSCommandEPKcS1_	MenuFX::OnFSCommand(char const*, char const*)

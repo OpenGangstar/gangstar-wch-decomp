@@ -20,6 +20,8 @@
 #include "MenuState.h"
 #include "../rendering/CharacterVisibility.h"
 #include "../rendering/FlashMatrix.h"
+#include "../rendering/RetailSwfString.h"
+#include "../rendering/RetailSwfValue.h"
 #include "../audio/SoundManager.h"
 #include "../core/NativeStrings.h"
 #include "../hud/MenuManager.h"
@@ -2187,4 +2189,132 @@ void Widgets::Mission::UpdateLocalization()
     } else {
         _ZN8RenderFX7SetTextEPKcS1_b(renderFX,missionMessagePath,_ZNK13StringManager9getStringEi(strings,0x104b),true);
     }
+}
+
+static const char volumeSfxText[] = "widgetVolumes.txtSFX";
+static const char volumeSfxSlider[] = "widgetVolumes.barSFX.btnVolume";
+static const char volumeMuteOn[] = "on";
+static const char volumeSfxMute[] = "widgetVolumes.barSFX.btnMute";
+static const char volumeValueFormat[] = "%d";
+static const char volumeSfxValue[] = "widgetVolumes.barSFX.txtVolume";
+static const char volumeMusicText[] = "widgetVolumes.txtMusic";
+static const char volumeMusicSlider[] = "widgetVolumes.barMusic.btnVolume";
+static const char volumeMusicMute[] = "widgetVolumes.barMusic.btnMute";
+static const char volumeMusicValue[] = "widgetVolumes.barMusic.txtVolume";
+static const char volumePlaylistTitle[] = "widgetVolumes.playlist.txtTitle";
+static const char volumePlaylistFormat[] = "<font face=\"fontall\">%s</font>";
+static const char volumePlaylistValue[] = "widgetVolumes.playlist.txtValue";
+static const char volumeMuteOff[] = "off";
+
+void Widgets::Volumes::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    SoundManager::getInstance();
+    const float effects = SoundManager::getInstance()->effectsPlaybackVolume;
+    const float music = SoundManager::getInstance()->playbackVolume;
+
+    renderFX->SetText(volumeSfxText, _ZNK13StringManager9getStringEi(strings, 0x1013), true);
+    renderFX->GotoFrame(volumeSfxSlider, static_cast<int>(effects * 10.0f), false);
+    renderFX->GotoFrame(volumeSfxMute, effects ? volumeMuteOn : volumeMuteOff, false);
+    _ZN8RenderFX10FormatTextEPKcS1_z(renderFX, volumeSfxValue, volumeValueFormat, static_cast<int>(effects * 100.0f));
+
+    renderFX->SetText(volumeMusicText, _ZNK13StringManager9getStringEi(strings, 0x1012), true);
+    renderFX->GotoFrame(volumeMusicSlider, static_cast<int>(music * 10.0f), false);
+    renderFX->GotoFrame(volumeMusicMute, music ? volumeMuteOn : volumeMuteOff, false);
+    _ZN8RenderFX10FormatTextEPKcS1_z(renderFX, volumeMusicValue, volumeValueFormat, static_cast<int>(music * 100.0f));
+
+    renderFX->SetText(volumePlaylistTitle, _ZNK13StringManager9getStringEi(strings, 0x1014), true);
+    char formatted[256];
+    char playlistName[128];
+    if (s_playlist == -2) {
+        strcpy(playlistName, _ZNK13StringManager9getStringEi(strings, 0x1015));
+    } else if (s_playlist == -1) {
+        strcpy(playlistName, _ZNK13StringManager9getStringEi(strings, 0x1016));
+    } else {
+        SoundManager::getInstance()->getPlaylistName(s_playlist, playlistName);
+        const gameswf::tu_string name(playlistName);
+        if (name.utf8_length() > 20) {
+            const gameswf::tu_string shortened = name.utf8_substring(0, 17);
+            strcpy(playlistName, shortened.c_str());
+            int end = strlen(playlistName);
+            if (playlistName[end - 1] == ' ')
+                --end;
+            playlistName[end++] = '.';
+            playlistName[end++] = '.';
+            playlistName[end++] = '.';
+            playlistName[end] = 0;
+        }
+    }
+    sprintf(formatted, volumePlaylistFormat, playlistName);
+    renderFX->SetText(volumePlaylistValue, formatted, true);
+}
+
+
+extern "C" bool _ZNK11MenuManager14getTutorialIdsERiS0_(const MenuManager*, int& title, int& body);
+
+namespace {
+// Authentic get_name const-reference API adapted to observed retail name+136.
+// Partial field view only, never constructed or copied; no complete character claim.
+struct TutorialLocalizationNameFields {
+    unsigned char opaque[136];
+    gameswf::tu_string name;
+    const gameswf::tu_string& get_name() const { return name; }
+};
+
+struct TutorialTextMethods {
+    void (*beforeGetMember[8])();
+    bool (*getMember)(gameswf::character*, const gameswf::tu_stringi&, gameswf::as_value*);
+};
+
+inline const TutorialTextMethods& tutorialTextMethods(const gameswf::character* character)
+{
+    return **reinterpret_cast<const TutorialTextMethods* const*>(character);
+}
+}
+
+static const char tutorialTitleSuffix[] = ".group.txtTitle";
+static const char tutorialContentSuffix[] = ".group.btnScroll.txtContent";
+static const char tutorialTextHeightName[] = "textHeight";
+
+void Widgets::Tutorial::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    int title, body;
+    _ZNK11MenuManager14getTutorialIdsERiS0_(MenuManager::getInstance(), title, body);
+    char name[128];
+    const TutorialLocalizationNameFields& characterName = *reinterpret_cast<const TutorialLocalizationNameFields*>(character);
+    const char* titleName = characterName.get_name().c_str();
+    sprintf(name, tutorialPartFormat, titleName, tutorialTitleSuffix);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, title), true);
+    sprintf(name, tutorialPartFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str(), tutorialContentSuffix);
+    gameswf::character* content = renderFX->Find(name);
+    renderFX->SetText(content, _ZNK13StringManager9getStringEi(strings, body), true);
+    gameswf::as_value height;
+    tutorialTextMethods(content).getMember(content, gameswf::tu_stringi(tutorialTextHeightName), &height);
+    unknown36 = static_cast<int>(height.to_number());
+    sprintf(name, tutorialPartFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str(), tutorialScrollPart);
+    renderFX->GotoFrame(name, 0, false);
+    sprintf(name, tutorialPartFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str(), tutorialArrowUpPart);
+    renderFX->SetVisible(name, false);
+    sprintf(name, tutorialPartFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str(), tutorialArrowDownPart);
+    renderFX->SetVisible(name, unknown36 > 75);
+}
+
+static const char confirmMessageFormat[] = "%s.txtMessage";
+static const char confirmYesFormat[] = "%s.btnYes.text";
+static const char confirmNoFormat[] = "%s.btnNo.text";
+
+void Widgets::Confirm::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    char name[128];
+    if (GetMessageId() != -1) {
+        sprintf(name, confirmMessageFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, GetMessageId()), true);
+    }
+    sprintf(name, confirmYesFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, 0x1029), true);
+    sprintf(name, confirmNoFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, 0x102a), true);
 }
