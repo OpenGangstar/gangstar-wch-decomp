@@ -1,0 +1,21 @@
+--- a/src/game/core/Physics.h
++++ b/src/game/core/Physics.h
+@@ -12,6 +12,7 @@
+     float x, y;
+     b2Vec2() {}
+     void SetZero() { x = 0.0f; y = 0.0f; }
++    void Set(float x_, float y_) { x = x_; y = y_; }
+     b2Vec2(float x, float y) : x(x), y(y) {}
+ };
+ struct b2MassData;
+--- a/src/game/characters/Character.cpp
++++ b/src/game/characters/Character.cpp
+@@ -1514,7 +1514,7 @@
+     if (!unknown24) unknown24 = new PhysicAttributes(1,0);
+     if (vehicle) unknown24->SetPhysicInfo(*vehicle->unknown24->info,0);
+     b2BodyDef body;
+-    body.position = b2Vec2(GetPosition().X / 100.0f, GetPosition().Y / 100.0f);
++    body.position.Set(GetPosition().X / 100.0f, GetPosition().Y / 100.0f);
+     body.allowSleep = false;
+     collisionBody = PhysicAttributes::s_world->CreateBody(&body);
+     b2CircleDef shape;

@@ -1,0 +1,70 @@
+--- a/config/matches/ai-startup-character.json
++++ b/config/matches/ai-startup-character.json
+@@ -155,7 +155,10 @@
+         "_ZN10b2ShapeDefD0Ev",
+         "_ZN10PhysicInfoC1Ev",
+         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
+-        "_ZN9Character20getSpecificAnimationEi"
++        "_ZN9Character20getSpecificAnimationEi",
++        "_ZN9Character10initPhysicEv",
++        "_ZN12b2PolygonDefD1Ev",
++        "_ZN12b2PolygonDefD0Ev"
+     ],
+     "sections": [
+         ".character_animation_resource",
+@@ -193,7 +196,11 @@
+         ".circle_shape_table",
+         ".physic_info_ctor",
+         ".physic_find_lower",
+-        ".character_specific_animation"
++        ".character_specific_animation",
++        ".trial_init_physic",
++        ".trial_polygon_d1",
++        ".trial_polygon_d0",
++        ".trial_polygon_table"
+     ],
+     "dependencies": [
+         "ai-startup-physicattributes"
+@@ -278,6 +285,10 @@
+         "_ZNK7Vehicle12isDoorOpenedEb",
+         "_Z21ekd_makestringfile255PKcPc",
+         "_Z13ekd_debug_outPKcPc",
+-        "_ZNK6Weapon11isTwoHandedEv"
++        "_ZNK6Weapon11isTwoHandedEv",
++        "_ZN16PhysicAttributesC1EiP6b2Body",
++        "_ZN6b2Body11CreateShapeEP10b2ShapeDef",
++        "_ZN6b2Body17SetMassFromShapesEv",
++        "_ZN7b2World10CreateBodyEPK9b2BodyDef"
+     ]
+ }
+--- a/config/linker/CharacterAiStartup.ld
++++ b/config/linker/CharacterAiStartup.ld
+@@ -2,6 +2,7 @@
+ OUTPUT_ARCH(arm)
+ INCLUDE build/matches/ai-startup-character/retail-symbols.ld
+ _ZdlPv = 0x001c42b0;
++_Znwj = 0x001c4814;
+ __aeabi_atexit = 0x001c494c;
+ _ZN28retail_character_transitions16civPassive_transE = 0x0041c640;
+ _ZN28retail_character_transitions17scriptedNpc_transE = 0x0041c76c;
+@@ -21,6 +22,11 @@
+ INCLUDE config/linker/CharacterStateSections.ld
+ SECTIONS
+ {
++    .trial_init_physic 0x002f4464 : { *ai-startup-character.o(.text._ZN9Character10initPhysicEv) }
++    .trial_polygon_d1 0x002df3f4 : { *ai-startup-character.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
++    .trial_polygon_d0 0x002df628 : { *ai-startup-character.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
++    .trial_polygon_table 0x004a8ac8 : { *ai-startup-character.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
++
+     .ai_manager_singleton 0x002dbae8 : { *ai-startup-character.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+     .ai_manager_cleanup 0x002f1a14 : { *ai-startup-character.o(.text.__tcf_0) }
+     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
+@@ -57,3 +63,8 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
++
++ASSERT(SIZEOF(.trial_init_physic) <= 456, "unmatched candidate must remain within its native span");
++ASSERT(SIZEOF(.trial_polygon_d1) == 36, "native polygon destructor extent");
++ASSERT(SIZEOF(.trial_polygon_d0) == 44, "native deleting polygon destructor extent");
++ASSERT(SIZEOF(.trial_polygon_table) == 16, "native polygon vtable extent");

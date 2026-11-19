@@ -77,8 +77,79 @@ it. These observations identify actual differences, not a proven source fix.
 
 Older retained linked candidates have extents 436 and 440 bytes; neither was
 matched. Equality of an extent does not establish equality of this new body
-with an old one. This trial has no linked-byte comparison or old-match closure.
+with an old one. The initial compile-only trial has no linked-byte comparison or old-match
+closure; the unchanged-source diagnostic follow-up below supplies the local
+closure and confirms that the target still fails.
 No source-order, lifetime, likelihood, register or compiler-flag grid follows.
 The candidate is parked until new evidence explains the remaining differences.
 The complete native function and affected old/header consumers must all pass
 before any assembly marker can be removed or progress credited.
+
+## Unchanged-source native placement and local preservation
+
+A subsequent normal build uses the same source and object identity, places the
+candidate at its actual retail address, and checks the original owning profile.
+This is a diagnostic link, not acceptance of the function. The optional
+`Character-initPhysic-sdk-reuse-link.patch` adds only that diagnostic profile
+configuration. Apply it after the source patch in an isolated checkout, then:
+
+```powershell
+python tools/build.py --baselib C:/path/to/libsanangeles.so ai-startup-character
+```
+
+Expected normal build exit: **1**, with exactly the following two failed checks:
+
+```text
+MISMATCH  _ZN9Character10initPhysicEv  0x002f4465
+  expected : 4d 46 44 46 f0 b4 b4 22 63 49 86 58 9d b0 8b 46
+  actual   : 4d 46 44 46 f0 b4 b4 22 5f 49 86 58 9f b0 89 46
+  differs at 0xe
+MISMATCH SECTION .trial_init_physic
+  expected : 4d 46 44 46 f0 b4 b4 22 63 49 86 58 9d b0 8b 46
+  actual   : 4d 46 44 46 f0 b4 b4 22 5f 49 86 58 9f b0 89 46
+  differs at 0xe
+```
+
+All **114 original function checks and 33 original section/region checks pass**,
+including the native GOT comparison. The three newly emitted polygon definition
+sections are placed at their real native addresses and pass ordinary checks;
+the two added polygon function comparisons pass too. All six SDK destructor
+bodies and three SDK vtables are additionally audited against retail bytes at
+the actual addresses: genuine allocated definitions, preserved weak bindings,
+correct native extents. The target is a genuine allocated 440-byte definition
+at its native address and fails comparison. No absolute import masks a compiled
+SDK definition or the target.
+
+The native placement has a maximum-span guard of 456 bytes to prevent overlap;
+it deliberately does not turn the shorter function into a 456-byte function.
+The ordinary function comparison and section comparison remain mandatory and
+both fail. No previous extent assertion was removed or relaxed, and no padding
+was inserted. The frozen 885 source/configuration/tool inputs remain stable
+through this normal build. This local closure does not substitute for a full
+190-profile header-consumer gate. No new source form was compiled or credited.
+The source and configuration patches remain unapplied in production.
+
+## One subsequent original SDK vector API transfer
+
+After reviewing the first trial, the cached original Box2D 2.0.1 archive's
+`Source/Common/b2Math.h` confirms the inline two-float b2Vec2::Set interface.
+The old fifth source already used it in its old context. The coordinator allowed
+one transfer into this new complete-class context, with no other body or flag
+change: use Set for body.position instead of assigning a temporary b2Vec2.
+`Character-initPhysic-sdk-set.patch` is that optional delta, applied after the
+source patch. It does not depend on the diagnostic link patch. Reuse the same
+compile-only probe to inspect it; expected exit remains 3.
+
+Actual output:
+
+```text
+{"symbol": "_ZN9Character10initPhysicEv", "native_address": "0x2f4465", "native_size": 456, "compiled_size": 440, "input_section_size": 440, "raw_sha256": "c5a7138eccdd6c9c9d29371c510d81d4a97805b441021a2ae1610dc3bb4a8754", "native_extent_matches": false, "linked": false, "native_bytes_compared": false, "old_match_closure_checked": false, "credited": false}
+COMPILE-ONLY: no native byte comparison or old-match proof.
+```
+
+All 885 frozen inputs remain stable. The frame remains 124 bytes. GOT and X
+allocation move to native FP/R9, but body/shape addresses and the remaining
+extent gap persist. No normal link or old/header closure is claimed for this
+API-transfer variant. The first source form and its measured local preservation
+remain the primary saved candidate. This single API transfer ends the bounded
+SDK escalation; no further lifetime, source-order or register search follows.
