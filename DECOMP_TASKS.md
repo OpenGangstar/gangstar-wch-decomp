@@ -858,7 +858,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00352335 | RadioStationController constructor (C1/C2 aliases) | vehicle_side | BLOCKED | pending | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x00319cd5 | PhysicInfo::Reset | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00319c21 | SafeDeleteArray<array<unsigned short> > | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x0031a40d | PhysicAttributes::FindLowerCostNode | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031a40d | PhysicAttributes::FindLowerCostNode | — | COMPLETED | 100%; one genuine size/indexed-access adaptation restores all192 bytes. Existing24-byte fields preserved; default constructor recovered. Full190/10,935 passes with the real definition verified in all four images, SHA44df9ac5048ac0eb763c8be9f4106770ce089ebea763ef08010f04113702a797. Verified marker removed. | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003196fd | PhysicAttributes::SegmentsIntersect | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e0c9 | PhysicAttributes::Clean | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x0031e99d | PhysicAttributes::UpdateEdgesCollisions | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |

@@ -123,7 +123,8 @@
         "_ZN10PlayerTestD0Ev",
         "_ZThn4_N10PlayerTestD1Ev",
         "_ZThn4_N10PlayerTestD0Ev",
-        "_ZN10PlayerTest7setAnimEibbbf"
+        "_ZN10PlayerTest7setAnimEibbbf",
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
     ],
     "sections": [
         ".player_car_open_clip",
@@ -152,7 +153,8 @@
         ".player_thunk_d1",
         ".player_thunk_d0",
         ".player_vtable",
-        ".player_set_anim"
+        ".player_set_anim",
+        ".physic_find_lower"
     ],
     "dependencies": [
         "ai-startup-physicattributes",

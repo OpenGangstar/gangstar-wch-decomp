@@ -72,7 +72,8 @@
             "name": "_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE",
             "address": "0x0031d78d"
         },
-        "_ZN16PhysicAttributes10LoadArraysEPc"
+        "_ZN16PhysicAttributes10LoadArraysEPc",
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -87,7 +88,8 @@
         ".physics_load_arrays",
         ".load_arrays_mode",
         ".load_arrays_error",
-        ".physic_info_ctor"
+        ".physic_info_ctor",
+        ".physic_find_lower"
     ],
     "retail_got": true,
     "external_thumb_functions": [

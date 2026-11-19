@@ -109,7 +109,8 @@
             "address": "0x002fd6f1",
             "compiled_name": "__tcf_0"
         },
-        "_ZN3NPC24UpdateCarPosIfUnderWheelEv"
+        "_ZN3NPC24UpdateCarPosIfUnderWheelEv",
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
     ],
     "sections": [
         ".npc_vtable",
@@ -127,7 +128,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".ai_manager_cleanup"
+        ".ai_manager_cleanup",
+        ".physic_find_lower"
     ],
     "dependencies": [
         "ai-startup-physicattributes",

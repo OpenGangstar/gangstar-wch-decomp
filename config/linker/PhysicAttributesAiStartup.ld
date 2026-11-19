@@ -1,3 +1,6 @@
+__aeabi_fcmplt = 0x001c479c;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_i2f = 0x001c41e4;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 PROVIDE(_ZdaPv = 0x001c461c);

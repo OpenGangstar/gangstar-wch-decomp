@@ -152,7 +152,8 @@
         "_ZN11b2CircleDefD0Ev",
         "_ZN10b2ShapeDefD1Ev",
         "_ZN10b2ShapeDefD0Ev",
-        "_ZN10PhysicInfoC1Ev"
+        "_ZN10PhysicInfoC1Ev",
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
     ],
     "sections": [
         ".character_animation_resource",
@@ -188,7 +189,8 @@
         ".circle_shape_base_d0",
         ".circle_shape_base_table",
         ".circle_shape_table",
-        ".physic_info_ctor"
+        ".physic_info_ctor",
+        ".physic_find_lower"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
