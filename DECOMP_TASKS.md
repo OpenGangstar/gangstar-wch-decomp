@@ -1096,7 +1096,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(eContext, bool) | hud_glyphs | BLOCKED | 892/900-byte candidate; six forms, full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | vehicle_camera | ASSIGNED | Read-only audit of existing shape lifetime/support proofs and authentic Box2D constructors versus previous forms; recover a genuine remaining source gap before compilation. | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | vehicle_camera | IN_PROGRESS | One bounded authentic Box2D by-value b2Max helper trial is authorized for the native inner height maximum. Preserve the outer Irrlicht max, all actual support checks and the strict native span. | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | lock_init | BLOCKED | 1088/1072 bytes; six forms; one private baseline link gate incomplete | src/game/ai/PlayerTest.cpp |
 
@@ -1113,7 +1113,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify(MenuWidget const*, int) | hud_registration | BLOCKED | 1064/1056-byte candidate; six forms, old full graph exact | src/game/ui/MenuState.cpp |
 
 | libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | hud_registration | BLOCKED | 872-byte candidate unmatched; six forms; rejected two old MenuState regressions | src/game/ui/MenuManager.cpp |
-| libsanangeles.so | 0x002e51fd | MenuManager::setText(eText, char const*, int*) | player_update | ASSIGNED | Read-only audit of four previous forms and actual text/string interfaces, including newly recovered gameswf helpers; identify a genuine source gap before the remaining budget is used. | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e51fd | MenuManager::setText(eText, char const*, int*) | — | BLOCKED | Four compiled forms reviewed; best is 1,088 versus 1,104 native bytes. Native uses separate nonoverlapping 40-byte value slots; no missing operation or new API correction was found. No additional trial. | src/game/ui/MenuManager.cpp |
 
 | libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | lock_init | BLOCKED | 1384/1388 bytes; swapped independent STR/MOV pair; five forms parked | src/game/persistence/SaveGame.cpp |
 
