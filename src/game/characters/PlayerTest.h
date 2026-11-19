@@ -92,7 +92,7 @@ public:
     bool snipe(Weapon* weapon);
     void onObjectKilled(LevelObject* object);
     void startDriving();
-    void SetSpeed();
+    void SetSpeed() __attribute__((weak));
     void ResetPlayerTest(bool);
     void teleportTo(const LevelObject* object);
     void stopDriving(playertest::PlayerCarState::ePlayerCarState state, bool instant);
