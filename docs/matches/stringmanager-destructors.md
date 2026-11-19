@@ -42,5 +42,6 @@ vtable are newly emitted.
 Reproduce with `python tools/build.py sdk-startup-stringmanager`.
 The current-root affected closure passes 66 builds, 3,041 function checks,
 3,291 sections and 65 regions. Canonical full verification passes 190
-profiles and 10,524 comparisons. Four other StringManager methods remain
-pending, so this family adds no Fully Linked completion credit.
+profiles and 10,524 comparisons. After the subsequent [style-loader match](stringmanager-load-styles.md), three
+other StringManager methods remain pending. Neither change completes the source
+unit or adds Fully Linked completion credit.
