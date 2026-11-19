@@ -1283,7 +1283,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | Mapping/call audit finds2 code-layout bytes plus2 padding gap, identical pools and16 call sites; no supported linkage/ABI correction. Historical147/127 proof separate; no replay. | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | Existing array API replay 616/native620; const header rejected, no link or credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | — | BLOCKED | one unchanged context replay; 4 instruction/21 GOT differences in GC diagnostic; old destructor overlap blocks integration | src/game/rendering/GS3DStuff.cpp |
 
@@ -1361,3 +1361,39 @@ post-body closure or matching percentage is claimed. Public unapplied patch,
 Windows prelink reproducer and exact limits are preserved under
 nonmatching/characters/ComputeShortestPath*. Ownership is released; no further
 source iteration is authorized without new evidence.
+
+### Bounded const-array octree query review after PR735
+
+The coordinator owns only getPolysIter at Thumb 0x002dd33d/620. All six
+archived forms use raw array fields. The genuine release size/indexed interfaces
+now established by the checkpoint and lower-cost-node matches justify one
+const-array accessor adaptation of saved v5. First validate the ordinary const
+operator[] interface with the target absent across all profiles. No traversal,
+comparison, field, flag, helper, or existing-body changes are authorized.
+
+The private const-overload gate failed an existing WeaponManager function/section
+and two dependents skipped. That header change is rejected and preserved only
+privately. Native root-array fields are mutable pointers even on a const node;
+the single body adaptation will use the existing non-const indexed accessor
+and size(), removing the old candidate local pointer's unnecessary constness.
+No header changes are needed. All 945 canonical native inputs remain identical
+to the accepted full 190-profile/10,935-comparison proof; that exact target-absent
+baseline is reused after hashing every input, rather than claiming the rejected
+const-overload gate passed. No body trial has occurred before this correction.
+
+The coordinator reviewed the octree replay and released ownership. Its only
+new definition is getPolysIter; function and section remain 616/native 620
+bytes, with 16 normalized relocations identical to archived v5. Eight raw byte
+offsets differ from that old object; this is not a linked/native comparison or
+a claimed improvement. The single body adaptation is parked before linking.
+No traversal/comparison/field/flag changes, shared headers, canonical bodies,
+assembly markers or matching credit were integrated. The failed const-overload
+prerequisite and the existing-interface replay are retained separately.
+
+Read-only queue audits also confirmed WantedMeter::update has six saved forms
+(100, 84, 84, 84, 88, 88 bytes against native 80); current interfaces provide no
+new call/layout gap. No replay was performed. ScriptManager::reachRunningCommand
+uses raw script arrays, not the recovered list iterator; six saved source forms
+remain parked. The six unregistered PVRTC entries remain unchanged and pending:
+legacy dependency-family evidence exists, but exact wrapper/revision attribution
+is unresolved. No source assignment or provenance correction was made for them.
