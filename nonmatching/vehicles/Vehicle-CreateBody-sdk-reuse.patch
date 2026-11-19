@@ -1,0 +1,202 @@
+--- a/src/game/core/Physics.h
++++ b/src/game/core/Physics.h
+@@ -12,6 +12,7 @@
+     float x, y;
+     b2Vec2() {}
+     b2Vec2(float x, float y) : x(x), y(y) {}
++    void SetZero() { x = 0.0f; y = 0.0f; }
+ };
+ struct b2MassData;
+ struct b2AABB { b2Vec2 lowerBound, upperBound; };
+@@ -24,10 +25,14 @@
+     float lowerHeight, upperHeight;
+ };
+ class b2Shape;
++class b2ShapeDef;
+ class b2Body {
+ public:
+     unsigned char unknown0[4];
+     void SetMassFromShapes();
++    float GetInertia() const { return inertia; }
++    const b2Vec2& GetLocalCenter() const { return localCenter; }
++    b2Shape* CreateShape(b2ShapeDef* definition);
+     void SetMass(const b2MassData* massData);
+     bool SetXForm(const b2Vec2& position, float angle);
+     const b2XForm& GetXForm() const { return transform; }
+--- a/src/game/vehicles/Vehicle.h
++++ b/src/game/vehicles/Vehicle.h
+@@ -4,6 +4,7 @@
+ #include "../core/Physics.h"
+ namespace Structs { struct Car; }
+ class Character;
++struct Box2DUserInfo;
+ struct VehicleRepairVisualState;
+ namespace irr { namespace video { class ITexture; } }
+ class Trail;
+@@ -61,6 +62,7 @@
+     virtual void init();
+     virtual void clean();
+     void CreateBody();
++    void CreateWheels(Box2DUserInfo* user);
+     virtual void Stop();
+     virtual void SetPosition(const irr::core::vector3d<float>& position);
+     virtual void SetRotation(const irr::core::quaternion& rotation);
+--- a/src/game/vehicles/Vehicle.cpp
++++ b/src/game/vehicles/Vehicle.cpp
+@@ -2515,3 +2515,94 @@
+     }
+     previousPosition = position;
+ }
++
++#include "VehicleBodyShapes.h"
++struct Box2DUserInfo {
++    LevelObject* owner;
++    irr::scene::ISceneNode* node;
++    float lowerHeight, upperHeight;
++    float unknown16, unknown20;
++    bool unknown24, unknown25;
++};
++
++
++void Vehicle::CreateBody()
++{
++    b2World* world = PhysicAttributes::s_world;
++    b2BodyDef definition;
++    collisionBody = world->CreateBody(&definition);
++    unknown24 = new PhysicAttributes(5, collisionBody);
++    unknown24->SetIsOnGround(1, true);
++    unknown24->SetIsOnGround(2, true);
++    unknown24->SetIsOnGround(3, true);
++    unknown24->SetIsOnGround(4, true);
++
++    const float halfWidth = reinterpret_cast<irr::scene::ISceneNode*>(skinnedMesh)->getBoundingBox().MaxEdge.X / 100.0f;
++    const float front = halfWidth + reinterpret_cast<irr::scene::ISceneNode*>(skinnedMesh)->getBoundingBox().MinEdge.Y / 100.0f;
++    const float rear = reinterpret_cast<irr::scene::ISceneNode*>(skinnedMesh)->getBoundingBox().MaxEdge.Y / 100.0f - halfWidth;
++
++    b2PolygonDef hull;
++    hull.vertices[0] = b2Vec2(-halfWidth, front);
++    hull.vertices[1] = b2Vec2(halfWidth, front);
++    hull.vertices[2] = b2Vec2(halfWidth, rear);
++    hull.vertices[3] = b2Vec2(-halfWidth, rear);
++    hull.vertexCount = 4;
++    hull.density = 1.0f;
++    hull.filter.categoryBits = 8;
++    hull.filter.maskBits = 0xffff;
++    hull.filter.groupIndex = unknown24->getIndex() + 1;
++
++    b2CircleDef frontCap;
++    frontCap.filter = hull.filter;
++    frontCap.localPosition = b2Vec2(0.0f, rear);
++    frontCap.radius = halfWidth;
++    frontCap.density = 1.0f;
++
++    b2CircleDef rearCap;
++    rearCap.filter = hull.filter;
++    rearCap.localPosition = b2Vec2(0.0f, front);
++    rearCap.radius = halfWidth;
++    rearCap.density = 1.0f;
++
++    b2PolygonDef sensor;
++    const b2Vec2 sensorCenter(0.0f, (static_cast<float>(static_cast<unsigned int>(init204)) + 500.0f) * -0.5f / 100.0f);
++    sensor.SetAsBox(static_cast<float>(static_cast<unsigned int>(init200)) * 0.5f / 100.0f, 2.5f, sensorCenter, 0.0f);
++    sensor.isSensor = true;
++    sensor.density = 1.0f;
++
++    collisionBody->CreateShape(&hull);
++    collisionBody->CreateShape(&frontCap);
++    collisionBody->CreateShape(&rearCap);
++    collisionBody->CreateShape(&sensor);
++
++    b2Body* body = collisionBody;
++    const float x = GetPosition().X / 100.0f;
++    const float y = GetPosition().Y / 100.0f;
++    body->SetXForm(b2Vec2(x, y), -0.017453292519943295f * rotationZ);
++    collisionBody->SetMassFromShapes();
++    body = collisionBody;
++    b2MassData massData;
++    massData.I = body->GetInertia();
++    massData.center = body->GetLocalCenter();
++    massData.mass = static_cast<float>(mass) / 3.0f;
++    body->SetMass(&massData);
++
++    body = collisionBody;
++    Box2DUserInfo* user = new Box2DUserInfo;
++    user->owner = this;
++    user->node = reinterpret_cast<irr::scene::ISceneNode*>(skinnedMesh);
++    user->lowerHeight = 0.0f;
++    user->upperHeight = 0.0f;
++    user->unknown16 = 0.0f;
++    user->unknown20 = 0.0f;
++    user->unknown24 = false;
++    user->unknown25 = false;
++    body->data = user;
++    CreateWheels(static_cast<Box2DUserInfo*>(collisionBody->data));
++
++    for (int i = 0; i < 4; ++i) {
++        init748[i].X = static_cast<float>(mass) * 0.25f;
++        init748[i].Y = 0.0f;
++    }
++}
++
+--- /dev/null
++++ b/src/game/vehicles/VehicleBodyShapes.h
+@@ -0,0 +1,59 @@
++/*
++* Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
++*
++* This software is provided 'as-is', without any express or implied
++* warranty.  In no event will the authors be held liable for any damages
++* arising from the use of this software.
++* Permission is granted to anyone to use this software for any purpose,
++* including commercial applications, and to alter it and redistribute it
++* freely, subject to the following restrictions:
++* 1. The origin of this software must not be misrepresented; you must not
++* claim that you wrote the original software. If you use this software
++* in a product, an acknowledgment in the product documentation would be
++* appreciated but is not required.
++* 2. Altered source versions must be plainly marked as such, and must not be
++* misrepresented as being the original software.
++* 3. This notice may not be removed or altered from any source distribution.
++*/
++// Altered: licensed Box2D 2.0.1 shape definitions with native weak destructor imports.
++#ifndef WCH_VEHICLE_CREATE_BODY_SHAPES_H
++#define WCH_VEHICLE_CREATE_BODY_SHAPES_H
++#include "../core/PhysicsBodyDef.h"
++enum b2ShapeType { e_unknownShape=-1, e_circleShape, e_polygonShape, e_shapeTypeCount };
++struct b2ShapeDef {
++    b2ShapeDef() {
++        type = e_unknownShape;
++        userData = 0;
++        friction = 0.2f;
++        restitution = 0.0f;
++        density = 0.0f;
++        filter.categoryBits = 0x0001;
++        filter.maskBits = 0xffff;
++        filter.groupIndex = 0;
++        isSensor = false;
++    }
++    virtual ~b2ShapeDef() {}
++    b2ShapeType type;
++    void* userData;
++    float friction, restitution, density;
++    bool isSensor;
++    b2FilterData filter;
++};
++struct b2PolygonDef : b2ShapeDef {
++    b2PolygonDef() { type = e_polygonShape; vertexCount = 0; }
++    virtual ~b2PolygonDef() __attribute__((used)) {}
++    void SetAsBox(float hx, float hy, const b2Vec2& center, float angle);
++    b2Vec2 vertices[8];
++    int vertexCount;
++};
++struct b2CircleDef : b2ShapeDef {
++    b2CircleDef() { type = e_circleShape; localPosition.SetZero(); radius = 1.0f; }
++    virtual ~b2CircleDef() __attribute__((used)) {}
++    b2Vec2 localPosition;
++    float radius;
++};
++#endif
++
++// Diagnostic reuse: these destructor bodies already compare exactly in the
++// accepted Character/GS3DStuff objects; this complete-class emission still
++// requires its own native-byte proof. No synthetic noinline body is added.
