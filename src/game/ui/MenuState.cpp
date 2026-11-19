@@ -1733,3 +1733,65 @@ bool Menus::InfoAchievements::Notify(const MenuWidget* widget, int event)
     }
     return true;
 }
+
+namespace Widgets { class IGMenu : public MenuWidget { public: int GetLastPressedButton() const; }; }
+
+extern "C" void _ZN11MenuManager8switchToEPKcb(MenuManager*, const char*, bool);
+
+bool Menus::Options::Notify(const MenuWidget* widget, int event)
+{
+    if (InGameMenu::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    const Widgets::IGMenu* menu = static_cast<const Widgets::IGMenu*>(manager->getWidgetByIndex(1));
+    if (widget != menu || event != 2)
+        return false;
+    SoundManager* sound = SoundManager::getInstance();
+    bool& playbackOverride = sound->unknown140;
+    playbackOverride = true;
+    sound->playEx(222, 0, false, 1.0f, 0, true, 1.0f, 0);
+    playbackOverride = false;
+    switch (menu->GetLastPressedButton()) {
+    case 0:
+        _ZN11MenuManager8switchToEPKcb(manager, optionVolumesName, false);
+        break;
+    case 1:
+        _ZN11MenuManager8switchToEPKcb(manager, optionControlsName, false);
+        break;
+    case 2:
+        _ZN11MenuManager8switchToEPKcb(manager, optionLanguageName, false);
+        break;
+    case 3:
+        _ZN11MenuManager8switchToEPKcb(manager, optionGameSettingsName, false);
+        break;
+    }
+    return true;
+}
+
+extern "C" {
+int _ZNK7Widgets6IGMenu20GetLastPressedButtonEv(const void*);
+void _ZN11MenuManager8switchToEPKcb(MenuManager*, const char*, bool);
+}
+static const char servicesWeaponShopName[] = "ServiceWeaponShop";
+static const char servicesCarRentalName[] = "ServiceCarRental";
+bool Menus::Services::Notify(const MenuWidget* widget, int event)
+{
+    if (InGameMenu::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    const Widgets::IGMenu* menu = static_cast<const Widgets::IGMenu*>(manager->getWidgetByIndex(1));
+    if (widget == menu && event == 2) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(222, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+        switch (menu->GetLastPressedButton()) {
+        case 0: _ZN11MenuManager8switchToEPKcb(manager, serviceMissionsName, false); break;
+        case 1: _ZN11MenuManager8switchToEPKcb(manager, servicesWeaponShopName, false); break;
+        case 2: _ZN11MenuManager8switchToEPKcb(manager, servicesCarRentalName, false); break;
+        case 3: _ZN11MenuManager8switchToEPKcb(manager, serviceCorruptionName, false); break;
+        }
+        return true;
+    }
+    return false;
+}

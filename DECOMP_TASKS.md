@@ -6,6 +6,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
+| libsanangeles.so | 0x002fe269 | NPC::equipWeapon(bool, bool) | — | COMPLETED | 100%; two independent pointer declarations swapped for Application-header compatibility. Complete 208-byte native match; all 454 private and coordinator consumer checks pass. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002e41f1 | gameswf::tu_string constructor/layout preservation prerequisite | — | COMPLETED | Historical union accepted after 190 profiles and 10,656 native comparisons; all prior matches and linked proofs preserved. Actual 16-byte ABI assertions pass; no new game credit. | src/game/rendering/RetailSwfString.h |
 | libsanangeles.so | 0x003b1e41 | gameswf::font::get_glyph historical-source support | — | COMPLETED | Older source confirms POD rectangle but not retail glyph hierarchy; native entity48 nonowning and word56 provider clearing clarified. No new constructor/ownership correction or trial. | native support evidence |
 | libsanangeles.so | 0x00389b01 | gameswf::tu_string::resize(int) verification support | — | COMPLETED | Pinned2008 source has exact tag-first layout and four native resize transition algorithms; constructor/allocator differences remain. No compiled match or game credit. | native support evidence |
@@ -214,7 +215,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7395 | Menus::MainMenu::SetPause | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e87f5 | Menus::MainMenu::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea699 | Menus::MainMenu::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify | — | BLOCKED | Two switch hints produce identical unmatched 544 bytes and regress an old function. RTL proves the old zero-init difference precedes register allocation; no source correction adopted. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0032cce0 | Wheel::draw2d (thunk) | — | COMPLETED | 100% | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x002e7611 | Menus::OptionGameSettings::SetOrientation (int) | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e75f1 | Menus::OptionGameSettings::SetOrientation (enum) | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
@@ -239,12 +240,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7d51 | Menus::Achievement::SetAchievement | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea2e5 | Menus::Achievement::Show | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e7815 | Menus::InGameMenu::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | — | BLOCKED | Canonical member-getter probe retains seven register-byte differences in 168 bytes after verified Thumb metadata repair. All 635 old functions and 413 regions pass; no new source form authorized. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e78ad | Menus::Map::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | — | BLOCKED | Authentic 184-byte candidate remains eight bytes short. Read-only ledger attributes the gap to merged return tails and padding; traversal/proxy operations agree. No new semantic or API correction. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | — | BLOCKED | Canonical getter emits identical 308-byte candidate versus native 304; strict four-byte overlap remains. No additional form authorized. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ebf09 | Widgets::Shop::SetAvailabilityText | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ebf0d | Widgets::Shop::GetSelectedItem | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -535,7 +536,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00327d70 | Cash complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327bbd | Cash::update | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327db1 | Cash constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327a71 | Cash::drawCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash | — | COMPLETED | 100%; current Application declaration context preserves all bytes and entire Cash object; no source repair. | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327be9 | Cash::draw2d | vehicle_side | BLOCKED | — | src/game/ui/Cash.cpp |
@@ -678,13 +679,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent | vehicle_side | BLOCKED | pending | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002e56b1 | MenuManager::updateLocalization | — | COMPLETED | 100% | src/game/hud/MenuManager.cpp |
 | libsanangeles.so | 0x003437f1 | Preferences destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x002eab95 | Menus::Options::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eab95 | Menus::Options::Notify | — | COMPLETED | 100%; canonical typed member getter, exact 208-byte function and section without hints. Combined coordinator closure passes. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x003437c9 | Preferences deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x003438e5 | Preferences::SampleAndSave | — | COMPLETED | 100%;336B; coordinator native target/full182-profile gate exact; canonical headers unchanged | src/game/ui/Preferences.cpp |
-| libsanangeles.so | 0x002eb5d9 | Menus::Services::Notify | vehicle_side | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb5d9 | Menus::Services::Notify | — | COMPLETED | 100%; canonical getter and typed IGMenu member, exact 208-byte function/section and both 20-byte literals. Combined coordinator closure passes. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | — | COMPLETED | 100%;604B plus native608B region and32B dispatch exact; full190-profile gate passes, completes all13 Preferences.cpp entries | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | — | COMPLETED | 100%; complete 224-byte function and section, two documented branch hints. Coordinator full gate passes 190 profiles and 10,658 comparisons; all previous matches retained. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100%; diagnostic and ordinary objects agree. MainMenu private declaration context reverses independent initializations before first RTL; rejected context remains unintegrated. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86fd | MenuState::GotFocus | — | BLOCKED | Typed first-pass getter produces the same 248-byte candidate and 12 register differences. All 234 existing functions and 89 section/region checks pass; no further source trials. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
@@ -870,7 +871,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate | — | BLOCKED | Exact _Update helper is identical to failed authentic unregister helpers; conversion-call lifetime boundary is absent here, no new API/inlining evidence; parked uncredited | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | — | BLOCKED | Reviewed current authentic layout already existed in failed Cash closure; only unused transitive vector API context changed, no causal fix or return ABI evidence; old exact18B uncredited | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | — | COMPLETED | 100%; exact 18-byte function and 20-byte physical section in two images. Actual helper retained; current Cash unchanged, NPC compatibility restored. Full final recheck running. | src/game/app/Application.cpp |
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
@@ -921,7 +922,6 @@ Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh r
 | libsanangeles.so | 0x00349a81 | ASprite::GetFrameIdx(char const*) | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | — | BLOCKED | helper reuse retains non-nativeGetAnim call; canonicaldirect62/64 remainsbest; old41/36 and28-profile closure802/665 exact; frozen no credit | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const (existing-match regression) | — | COMPLETED | 100%; loop-scoped first counter restores native332B under canonical sprite API; full183-profile gate exact; no new credit | src/game/ui/Cash.cpp |
 
 | libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
 

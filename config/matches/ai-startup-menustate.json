@@ -292,7 +292,9 @@
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
         "_ZN7Widgets7Volumes18UpdateLocalizationEv",
         "_ZN7Widgets7Confirm18UpdateLocalizationEv",
-        "_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus7Options6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus8Services6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".help_empty_icon",
@@ -426,7 +428,11 @@
         ".confirmYesFormat",
         ".confirmNoFormat",
         ".widgets_confirm_vtable",
-        ".info_achievements_notify"
+        ".info_achievements_notify",
+        ".options_notify",
+        ".services_notify",
+        ".servicesWeaponShopName",
+        ".servicesCarRentalName"
     ],
     "retail_got": true,
     "external_thumb_functions": [
