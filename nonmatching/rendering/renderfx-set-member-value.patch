@@ -1,0 +1,175 @@
+--- a/src/game/rendering/menufx.cpp
++++ b/src/game/rendering/menufx.cpp
+@@ -213,7 +213,9 @@
+ struct CharacterAnimationMethods {
+     void (*firstMethods[2])();
+     bool (*is)(const gameswf::character*, int);
+-    void (*beforePlayState[31])();
++    void (*beforeSetMember[4])();
++    bool (*setMember)(gameswf::character*, const gameswf::tu_stringi&, const gameswf::as_value&);
++    void (*beforePlayState[26])();
+     void (*setPlayState)(gameswf::character*, int);
+     void (*beforeGotoLabeledFrame)();
+     bool (*gotoLabeledFrame)(gameswf::character*, const char*);
+@@ -1612,3 +1614,16 @@
+         }
+     }
+ }
++
++void RenderFX::SetMember(const char* characterName, const char* member, gameswf::as_value& value)
++{
++    gameswf::tu_string memberName(member);
++    gameswf::character* found = Find(characterName);
++    gameswf::as_object* object = reinterpret_cast<gameswf::as_object*>(found);
++    if (!found)
++        object = root.get()->get_root_movie()->find_target(gameswf::as_value(characterName));
++    gameswf::character* character = reinterpret_cast<gameswf::character*>(object);
++
++    if (character)
++        animationMethods(character).setMember(character, gameswf::tu_stringi(memberName), value);
++}
+--- a/src/game/rendering/RetailSwfString.h
++++ b/src/game/rendering/RetailSwfString.h
+@@ -12,6 +12,7 @@
+ public:
+     // The retail call resolves the constructor through the GOT.
+     explicit tu_string(const char* text) __attribute__((long_call));
++    tu_string(const tu_string& other) __attribute__((long_call));
+     tu_string(const char* text, int length) __attribute__((long_call));
+     ~tu_string()
+     {
+@@ -54,6 +55,16 @@
+     unsigned char storage[12];
+     void* heap;
+ };
++// container.h -- Thatcher Ulrich <tu@tulrich.com> 31 July 2001.
++// This source code has been donated to the Public Domain.
++// Authentic tu_stringi composition; measured retail tu_string storage retained.
++class tu_stringi {
++public:
++    tu_stringi(const tu_string& str) : m_string(str) {}
++    ~tu_stringi() {}
++private:
++    tu_string m_string;
++};
+ } // namespace gameswf
+
+ #endif
+--- /dev/null
++++ b/config/linker/RenderFXSetMemberValue.ld
+@@ -0,0 +1,4 @@
++SECTIONS {
++ .renderfx_set_member_value 0x003eea48 : { *renderfx-animation.o(.text._ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE) }
++ ASSERT(SIZEOF(.renderfx_set_member_value) == 200, "native SetMember value strict span")
++}
+--- a/config/matches/renderfx-animation.json
++++ b/config/matches/renderfx-animation.json
+@@ -140,7 +140,8 @@
+         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
++        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
++        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE"
+     ],
+     "sections": [
+         ".renderfx_initialize_warning",
+@@ -178,12 +179,12 @@
+         ".renderfx_hierarchy_stop",
+         ".renderfx_hierarchy_sprite",
+         ".renderfx_hierarchy_character",
+-        ".set_character_focus"
++        ".set_character_focus",
++        ".renderfx_set_member_value"
+     ],
+     "external_thumb_functions": [
+         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
+         "_ZN7gameswf8as_valueC1Ei",
+-        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
+--- a/config/matches/ai-startup-menuwidget.json
++++ b/config/matches/ai-startup-menuwidget.json
+@@ -224,7 +224,8 @@
+         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
++        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
++        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE"
+     ],
+     "sections": [
+         ".volumesButton",
+@@ -405,7 +406,8 @@
+         ".renderfx_hierarchy_stop",
+         ".renderfx_hierarchy_sprite",
+         ".renderfx_hierarchy_character",
+-        ".set_character_focus"
++        ".set_character_focus",
++        ".renderfx_set_member_value"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -434,7 +436,6 @@
+         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
+         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
+         "_ZN7gameswf8as_valueC1Ei",
+-        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
+--- a/config/matches/ai-startup-menustate.json
++++ b/config/matches/ai-startup-menustate.json
+@@ -286,7 +286,8 @@
+         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
++        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
++        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE"
+     ],
+     "sections": [
+         ".help_empty_icon",
+@@ -393,7 +394,8 @@
+         ".renderfx_hierarchy_stop",
+         ".renderfx_hierarchy_sprite",
+         ".renderfx_hierarchy_character",
+-        ".set_character_focus"
++        ".set_character_focus",
++        ".renderfx_set_member_value"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -424,7 +426,6 @@
+         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
+         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
+         "_ZN7gameswf8as_valueC1Ei",
+-        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
+--- a/config/linker/RenderFXAnimation.ld
++++ b/config/linker/RenderFXAnimation.ld
+@@ -35,3 +35,5 @@
+ ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");
+
+ ASSERT(SIZEOF(.set_character_focus) == 356, "SetFocus native356 exact extent");
++
++INCLUDE config/linker/RenderFXSetMemberValue.ld
+--- a/config/linker/MenuWidgetAiStartup.ld
++++ b/config/linker/MenuWidgetAiStartup.ld
+@@ -77,3 +77,5 @@
+ ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");
+
+ ASSERT(SIZEOF(.set_character_focus) == 356, "SetFocus native356 exact extent");
++
++INCLUDE config/linker/RenderFXSetMemberValue.ld
+--- a/config/linker/MenuStateAiStartup.ld
++++ b/config/linker/MenuStateAiStartup.ld
+@@ -374,3 +374,5 @@
+ ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");
+
+ ASSERT(SIZEOF(.set_character_focus) == 356, "SetFocus native356 exact extent");
++
++INCLUDE config/linker/RenderFXSetMemberValue.ld
