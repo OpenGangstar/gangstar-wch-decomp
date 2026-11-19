@@ -473,7 +473,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | — | BLOCKED | Separate54 scoped handlers preserve operations; numeric order212B has33 differing function bytes versus141 archived. Full table also fails. Owner143functions133sections1GOT retained. Reviewed unapplied patch, no credit; ownership released, no further ordering forms without new evidence. | src/game/scripting/ScriptManager.cpp; nonmatching/scripting/ScriptManager-cleanCommand.patch |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState | — | BLOCKED | two current/lifetime forms identical732B; target/dispatch fail; old143/134 and55 header profiles exact, no credit | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(State) | — | BLOCKED | One verified NDK enum-width replay is byte-identical to archived unmatched732B; target/section/table fail, existing143functions133sections1GOT pass. See nonmatching/scripting/ScriptManager-setState.md. | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update | camera_tap | BLOCKED | — | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
