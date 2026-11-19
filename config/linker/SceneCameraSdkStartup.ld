@@ -3,9 +3,14 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-scenecamera/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+INCLUDE config/linker/SceneCameraGS3DProvider.ld
+__aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
-    .scene_factory_cleanup 0x00334ef0 : { *sdk-startup-scenecamera.o(.text.__tcf_1) }
+    .scene_camera_load 0x00334fe8 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4LoadERKN7Structs11SceneCameraE) }
+    ASSERT(SIZEOF(.scene_camera_load) == 96, "SceneCamera Load native96 strict extent")
+    .scene_factory_cleanup 0x00334ef0 : { *sdk-startup-scenecamera.o(.text.__tcf_0) }
+    ASSERT(SIZEOF(.scene_factory_cleanup) == 36, "SceneCamera actual cleanup native36 extent")
     .scene_camera_init 0x00334ee4 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4initEP11LevelObjecti) }
     .scene_camera_vtable 0x004acd10 : { *sdk-startup-scenecamera.o(.data.rel.ro._ZTV11SceneCamera) }
     .scene_camera_base_spawn_type 0x002f74d0 : { *(.gnu.linkonce.t._ZN11LevelObject12getSpawnTypeEv) }

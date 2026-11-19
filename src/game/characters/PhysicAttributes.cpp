@@ -83,13 +83,6 @@ void PhysicAttributes::ResetPhysicInfo()
     }
 }
 
-PhysicInfo::PhysicInfo()
-{
-    unknown64.Z = 999999.0f;
-    for (int i = 0; i < 12; ++i)
-        bodies[i] = 0;
-    Reset(0);
-}
 
 template void SafeDelete<b2World>(b2World*&);
 
@@ -366,7 +359,7 @@ void PhysicAttributes::SetCurrentJumpShape(b2Shape* shape)
     setJumpVertex(jumpVertices[1], shape->GetBody(), polygon->vertices[1], data->heights[1]);
     setJumpVertex(jumpVertices[2], shape->GetBody(), polygon->vertices[2], data->heights[2]);
     setJumpVertex(jumpVertices[3], shape->GetBody(), polygon->vertices[3], data->heights[3]);
-    jumpCenter = (jumpVertices[0] + jumpVertices[1] + jumpVertices[2] + jumpVertices[3]) * 0.25f;
+    jumpVertices[4] = (jumpVertices[0] + jumpVertices[1] + jumpVertices[2] + jumpVertices[3]) * 0.25f;
     hasJumpShape = true;
     jumpFlags = data->flags;
 }
