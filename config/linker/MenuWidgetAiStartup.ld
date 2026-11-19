@@ -26,6 +26,8 @@ _ZN29retail_menuwidget_transitions22scripted_vehicle_transE = 0x0041bc44;
 INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 INCLUDE config/linker/MenuWidgetMissionSections.ld
+INCLUDE config/linker/WidgetConfirmLocalization.ld
+
 SECTIONS
 {
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }

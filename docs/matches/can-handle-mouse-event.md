@@ -21,8 +21,8 @@ The sole new definition is the real target. All three images retain its original
 address, complete section check and 92-byte assertion. Stale Thumb imports are
 removed only where the compiled definition now supplies the symbol.
 
-The combined localization/mouse closure passes 632 functions, 397 sections and
-five GOT regions. The full integrated gate passes 190 profiles and 10,644
+The combined localization/mouse closure passes 634 functions, 407 sections and
+five GOT regions. The full integrated gate passes 190 profiles and 10,656
 comparisons, exit 0, with no mismatches or skipped profiles. Existing matched
 payloads remain unchanged. The function belongs to the core progress area while
 its original source remains `menufx.cpp`; no catalogue reclassification is made.

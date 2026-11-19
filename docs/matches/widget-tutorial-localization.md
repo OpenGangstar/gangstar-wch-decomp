@@ -28,8 +28,8 @@ Only the target and three native-placed literal arrays are newly emitted.
 Existing helper bodies, compiler flags, layouts and matched payloads are
 preserved; no hints, register constraints or output edits are used.
 
-The combined localization/mouse closure passes 632 functions, 397 sections and
-five GOT regions. The full integrated gate passes 190 profiles and 10,644
+The combined localization/mouse closure passes 634 functions, 407 sections and
+five GOT regions. The full integrated gate passes 190 profiles and 10,656
 comparisons, exit 0, with no mismatches or skipped profiles. The original source
 remains incomplete, so no Fully Linked credit is added.
 

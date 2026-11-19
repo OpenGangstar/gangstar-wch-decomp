@@ -290,7 +290,8 @@
         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
         "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
-        "_ZN7Widgets7Volumes18UpdateLocalizationEv"
+        "_ZN7Widgets7Volumes18UpdateLocalizationEv",
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv"
     ],
     "sections": [
         ".help_empty_icon",
@@ -418,7 +419,12 @@
         ".volumePlaylistTitle",
         ".volumePlaylistFormat",
         ".volumePlaylistValue",
-        ".volumeMuteOff"
+        ".volumeMuteOff",
+        ".widgets_confirm_localize",
+        ".confirmMessageFormat",
+        ".confirmYesFormat",
+        ".confirmNoFormat",
+        ".widgets_confirm_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -444,7 +450,6 @@
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK12SoundManager20isLowFpsMusicPlayingEv",
         "_ZN12SoundManager4stopEiii",
-        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
         "_ZN7gameswf9character16get_world_matrixEv",
         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",

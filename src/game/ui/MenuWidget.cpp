@@ -2300,3 +2300,21 @@ void Widgets::Tutorial::UpdateLocalization()
     sprintf(name, tutorialPartFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str(), tutorialArrowDownPart);
     renderFX->SetVisible(name, unknown36 > 75);
 }
+
+static const char confirmMessageFormat[] = "%s.txtMessage";
+static const char confirmYesFormat[] = "%s.btnYes.text";
+static const char confirmNoFormat[] = "%s.btnNo.text";
+
+void Widgets::Confirm::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    char name[128];
+    if (GetMessageId() != -1) {
+        sprintf(name, confirmMessageFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, GetMessageId()), true);
+    }
+    sprintf(name, confirmYesFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, 0x1029), true);
+    sprintf(name, confirmNoFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, 0x102a), true);
+}

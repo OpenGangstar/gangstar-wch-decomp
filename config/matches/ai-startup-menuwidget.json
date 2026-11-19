@@ -228,7 +228,8 @@
         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
         "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
-        "_ZN7Widgets7Volumes18UpdateLocalizationEv"
+        "_ZN7Widgets7Volumes18UpdateLocalizationEv",
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv"
     ],
     "sections": [
         ".volumesButton",
@@ -430,7 +431,12 @@
         ".volumePlaylistTitle",
         ".volumePlaylistFormat",
         ".volumePlaylistValue",
-        ".volumeMuteOff"
+        ".volumeMuteOff",
+        ".widgets_confirm_localize",
+        ".confirmMessageFormat",
+        ".confirmYesFormat",
+        ".confirmNoFormat",
+        ".widgets_confirm_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -451,7 +457,6 @@
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK12SoundManager20isLowFpsMusicPlayingEv",
         "_ZN12SoundManager4stopEiii",
-        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
         "_ZN11MenuManager3popEb",
         "_ZN11MenuManager13consumeCursorEv",
         "_ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb",

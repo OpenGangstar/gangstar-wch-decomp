@@ -27,8 +27,8 @@ Only the target and 14 native-placed, byte-checked literal arrays are new. The
 consumer selects them before its existing discard rule. The linker asserts the
 complete 736-byte extent; no actual definition is masked by a retail binding.
 
-The combined localization/mouse closure passes 632 functions, 397 sections and
-five GOT regions. The full integrated gate passes 190 profiles and 10,644
+The combined localization/mouse closure passes 634 functions, 407 sections and
+five GOT regions. The full integrated gate passes 190 profiles and 10,656
 comparisons, exit 0, with no mismatches or skipped profiles. Existing matched
 functions, sections and GOT regions remain exact. No Fully Linked credit is
 added because the original source is incomplete.
