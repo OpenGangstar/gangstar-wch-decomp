@@ -421,12 +421,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00346dd1 | SideMission::addCheckpoint | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346ce1 | SideMission::fadeInFadeOut | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346e31 | SideMission::removeNPC | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x00346f55 | SideMission::isInCheckpointsRange | — | BLOCKED | Reviewed actual Irrlicht ABI and array audit: no type drift; historical best70B differs2 compare/branch bytes; no replay justified | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346f55 | SideMission::isInCheckpointsRange | — | COMPLETED | 100%; genuine release array size/operator[] reuse restores the final comparison order. All70 function bytes and72 physical bytes match; root190/10,927 passes with945 frozen inputs. Verified marker removed; allocator/storage and existing matched bodies unchanged. | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346d1d | SideMission::start | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346b8d | SideMission::finished | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346e55 | SideMission::getCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346f9d | SideMission::disableCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x003470f9 | SideMission::enableCheckpoints | lock_init | BLOCKED | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003470f9 | SideMission::enableCheckpoints | — | BLOCKED | Bounded accessor adaptation remains319/332 bytes, first+0x92; existing owner checks pass. The final unsigned-index for-loop API form emits338/native332 and stops before linking. Both preserved privately; no credit or canonical target integration. New evidence required before another form. | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00347245 | SideMission::update | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x003477a1 | SideMissionManager::confirm | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x003477ed | SideMissionManager::setNextMissionTimer | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
