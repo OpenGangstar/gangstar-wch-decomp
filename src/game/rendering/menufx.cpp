@@ -213,7 +213,9 @@ namespace {
 struct CharacterAnimationMethods {
     void (*firstMethods[2])();
     bool (*is)(const gameswf::character*, int);
-    void (*beforePlayState[31])();
+    void (*beforeSetMember[4])();
+    bool (*setMember)(gameswf::character*, const gameswf::tu_stringi&, const gameswf::as_value&);
+    void (*beforePlayState[26])();
     void (*setPlayState)(gameswf::character*, int);
     void (*beforeGotoLabeledFrame)();
     bool (*gotoLabeledFrame)(gameswf::character*, const char*);
@@ -1611,4 +1613,17 @@ void RenderFX::SetFocus(gameswf::character* character, int index)
             controllers[index].first.set_ref(0);
         }
     }
+}
+
+void RenderFX::SetMember(const char* characterName, const char* member, gameswf::as_value& value)
+{
+    gameswf::tu_string memberName(member);
+    gameswf::character* found = Find(characterName);
+    gameswf::as_object* object = reinterpret_cast<gameswf::as_object*>(found);
+    if (!found)
+        object = root.get()->get_root_movie()->find_target(gameswf::as_value(characterName));
+    gameswf::character* character = reinterpret_cast<gameswf::character*>(object);
+
+    if (character)
+        animationMethods(character).setMember(character, gameswf::tu_stringi(memberName), value);
 }

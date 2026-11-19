@@ -1,9 +1,12 @@
 # RenderFX::SetMember(as_value&) composition candidate
 
-This is an uncounted candidate for the 200-byte Thumb function at
-`0x003eea49`. Its assembly file remains present. The accompanying
+This is a historical uncounted candidate for the 200-byte Thumb function at
+`0x003eea49`, before the subsequent destructor correction. The accompanying
 [patch](renderfx-set-member-value.patch) preserves the source, native placement
-and comparison selectors against source baseline `5012b833`.
+and comparison selectors against source baseline `5012b833`. The function now
+matches through the correction documented in
+[the accepted match note](../../docs/matches/renderfx-set-member-value.md);
+the archived patch is not applied to the current matched source.
 
 The public-domain gameswf
 [container.h](https://github.com/weihuoya/gameswf/blob/7fdd64b3cdae7ad36ecaf1da023a5cb61cd38a9e/tu-testbed/base/container.h)
