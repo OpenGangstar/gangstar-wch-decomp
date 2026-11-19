@@ -710,15 +710,15 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034b619 | StringManager::unloadPack | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b351 | strRev | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b375 | strchrs | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b5a5 | StringManager::unloadPackSheet | vehicle_camera | ASSIGNED | Read-only exact semantic-operation and lifetime ledger for corrected108/114B canonical proof; distinguish missing operations from register/CFG residuals, no repeat compile | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b5a5 | StringManager::unloadPackSheet | — | BLOCKED | Canonical108/114B semantic ledger proves all deletes/zeroing present; gap is save/alignment/cursor allocation, six old forms exhausted, no new helper evidence | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b745 | StringManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bb9d | StringManager::loadPack | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bb5d | StringManager::getString | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034b649 | Structs::TextStyle::Read | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | prefs_loader | ASSIGNED | Read-only formatAmount recovery against verified whole-profile80/stack protection and actual return/formatting helper ABI; no compile before evidence | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount | — | BLOCKED | Six forms exhausted; best452/480B, current helper changes unused; no new ABI/layout/configuration evidence for replay | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034be9d | StringManager destructor (D1/D2 aliases) | — | COMPLETED | 100%; real240/240/248B family, authentic erase and whole-profile inline80; full190-profile gate and66-build helper closure exact | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0034bd51 | StringManager::loadStyles | — | COMPLETED | 100%;332B loader/default40B exact; valid aligned owner/native D1 once, actual Read weak/whole-profile canary metadata; full190 gate and15-build closure pass | src/game/persistence/StringManager.cpp |
-| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | player_update | ASSIGNED | Read-only loadPackSheet recovery against current genuine resource/TextStyle/container interfaces and native canary policy; audit prior forms before replay | src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet | player_update | ASSIGNED | Second source corrects real zero-test but1032/976B strict span still fails; read-only semantic/call/layout ledger to identify next actual mismatch, no new compile | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x002e2bb5 | GSLoading::LoadingPaused | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2b71 | GSLoading::LoadingResumed | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2ce5 | GSLoading::ctor | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
@@ -1167,7 +1167,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Indexed loop emits 74 bytes versus native 82; canonical 80-byte candidate remains best; all old checks pass; one new form stopped | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | lock_init | BLOCKED | 108/106 bytes; six forms; old45/15 exact, header110/111 known fixture incomplete | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | prefs_loader | ASSIGNED | Read-only update-list callback history versus authentic STLport iterator APIs and current named list storage; no repeated source without new evidence | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | — | COMPLETED | 100%; GNU expect0 hint; full183-profile10277-comparison native gate and caller63/56/2 exact | src/game/rendering/ASprite.cpp |
 
@@ -1181,7 +1181,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | hud_registration | BLOCKED | 276/272 bytes; three identical forms; oldTouch header context differs | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | vehicle_camera | ASSIGNED | Read-only draw-list callback history versus actual container/driver interfaces and authentic list helpers; recover prior budget before replay | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d50f1 | Application::Update() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
