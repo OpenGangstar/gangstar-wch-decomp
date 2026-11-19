@@ -67,6 +67,8 @@ INCLUDE config/linker/ApplicationRuntimeSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+    .application_init_iphone 0x002d3c7c : { *application-helpers.o(.text._ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff) }
+    ASSERT(SIZEOF(.application_init_iphone) == 20, "InitIPhone native 18-byte function and 2-byte padding")
     .application_stop_sound 0x002d4440 : { *application-helpers.o(.text._ZN11Application15stopSoundThreadEv) }
     .application_resume_sprite 0x00413c88 : { *application-helpers.o(.rodata.application_resume_sprite) }
     .application_logo_sprite 0x00413d30 : { *application-helpers.o(.rodata.application_logo_sprite) }

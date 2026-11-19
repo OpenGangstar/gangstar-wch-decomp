@@ -890,3 +890,12 @@ void Application::_Draw()
     driver->endScene();
     driver->swapBuffers(0);
 }
+
+// Literal reconstruction of the observed Android platform stub.
+// Its unconditional write to address zero is not resolved to any known field.
+// Return type is provisional without a live call-site use.
+void Application::InitIPhone(irr::IrrlichtDevice*, float, float, float, float)
+{
+    InitIPhoneFileSystem();
+    *static_cast<bool*>(0) = true;
+}
