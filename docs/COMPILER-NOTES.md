@@ -283,3 +283,28 @@ The experiment stopped before the owner linker. Dependency checks printed by
 the build do not establish an owner native comparison or old-owner closure.
 The candidate was rejected; no function definition, marker, compiler option or
 progress credit changed. Further variations require new evidence.
+
+### NPC freeze voice-selection escalation
+
+The archived best `NPC::freeze()` candidate already has the native 224-byte
+extent at Thumb `0x002fe999`; its second voice-selection branch differs in
+polarity and the placement of sound IDs 76 and 73. One bounded escalation
+replaced only that branch's assignment-plus-if form with a conditional
+expression, retaining the first branch and the other operations.
+
+The current production frontend emits exactly the same complete linked target
+as the archived best candidate. Native differences remain at offsets `0x83`,
+`0x84` and `0xb8`. The target comparison prints:
+
+```text
+MISMATCH  _ZN3NPC6freezeEv  0x002fe999
+  expected : d1 f0 23 eb 58 00 2b 19 d0 4c 23 98 46 14 4b 8c
+  actual   : d1 f0 23 eb 58 00 2b 19 d1 49 23 98 46 14 4b 8c
+  differs at 0x83
+```
+
+The owner retains all 70 existing function checks, 13 section checks and
+1 region checks. This is an owner/dependency proof, not a new full-profile
+gate. The private explicit frozen-bit declaration and candidate were not
+integrated. No matching credit was added; further expression variants require
+new evidence.

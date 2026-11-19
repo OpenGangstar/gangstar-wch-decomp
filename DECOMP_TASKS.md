@@ -765,7 +765,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002fe0e9 | NPC::isHostileTo | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002febc9 | NPC::clearOnAlert | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fef75 | NPC::setHitByCar | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fe999 | NPC::freeze | camera_tap | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fe999 | NPC::freeze | — | BLOCKED | One bounded conditional-expression escalation reproduces the entire archived best 224-byte linked target. Native differences remain exactly +0x83/+0x84/+0xb8 in second voice branch layout. Current old-function/section checks pass; no match or credit, private bitfield support not integrated. Ownership released after review; no further voice-expression forms without new evidence. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fdb79 | NPC destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fdb29 | NPC deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fd565 | NPC::isOutsideSearchRadius | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
