@@ -506,7 +506,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c904 | WantedMeter complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | — | BLOCKED | Two real SDK-value forms emit268/native272; prerequisite20checks preserved, no link or credit | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032b0e1 | Reward destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032ad65 | Reward::setAnim | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032b07d | Reward deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
@@ -930,7 +930,7 @@ Coordinator approved one final initMap v8 proof on new instruction-diff evidence
 Coordinator reviewed the six-pass preloadGlyphs and ServiceWeaponShop::Refresh reports: neither is an exact match; both remain parked without credit. The undelivered _zoomMap assignment is released.
 
 | libsanangeles.so | 0x00349a81 | ASprite::GetFrameIdx(char const*) | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | — | BLOCKED | helper reuse retains non-nativeGetAnim call; canonicaldirect62/64 remainsbest; old41/36 and28-profile closure802/665 exact; frozen no credit | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349dd5 | ASprite::GetAnimIdx(char const*) | — | COMPLETED | 100%; direct matched frame-lookup reuse, exact64 and full190/10939 preservation; no existing bodies changed | src/game/rendering/ASprite.cpp |
 
 
 | libsanangeles.so | 0x002e3791 | GSSplash::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSSplash.cpp |
@@ -1474,3 +1474,88 @@ The coordinator accepted it, removed only its verified assembly marker and
 released ownership. The GNU hint and exact comparison output are documented
 in docs/matches/wanted-meter-update.md. Constructor aliases remain pending;
 no Fully Linked credit is added. No existing matched body changes.
+
+### WantedMeter constructor rectangle-value review
+
+The coordinator reviewed the six archived constructor forms and releases the
+old lock_init ownership. All manually store four touch-region coordinates.
+The current engine rectangle interface is already used by touchscreen region
+queries and has the same four-float layout. One bounded value-construction
+trial from saved v6 may test that genuine interface without changing storage,
+public signatures, allocation, loop or existing matched bodies. First verify
+only the required includes with the target absent in its sole owning profile;
+all other native inputs must match the accepted full baseline exactly.
+
+The rectangle-value form emits 268/native272 bytes and only the two constructor
+aliases; it stops before linking. Its emitted height load is still late. One
+final bounded check may reuse the existing SDK dimension2d<int> value constructor
+for the native integer width/height, then convert those dimensions when storing
+the four coordinates. This tests actual value capture through the recovered
+const-reference dimension interface; no shared header, field, flag, allocation
+or loop changes. Stop after this additional API form if it is not exact.
+
+The coordinator reviewed and parked both bounded SDK-value forms. Rectangle
+and dimension candidates each emit 268/native272 bytes; their raw target hashes
+differ, and only the two intended C1/C2 aliases are newly defined. Both stop
+before linking. The includes-only, target-absent prerequisite passed 12 function,
+7 section and 1 region checks with all 955 frozen inputs stable. A file-by-file
+audit proves WantedMeter.cpp is the only changed native input and its sole
+profile is sdk-startup-wantedmeter; all other source/config/tool inputs are
+identical to the accepted full baseline. This is owner prerequisite proof, not
+a fresh full-190 or post-body linked proof. Original touch-region type identity
+is still unproven; compatible rectangle layout alone does not establish it.
+No shared type, header, canonical body, marker, matching credit or Fully Linked
+credit is changed. Ownership is released; no further constructor forms are
+authorized without new evidence.
+
+### Canonical ASprite data-pointer review
+
+The coordinator owns only GetAnimIdx at Thumb 0x00349dd5/64. Its six archived
+forms and later record/helper trials remain exhausted. Current ASprite still
+stores its data through a duplicate SpriteData proxy although the actual
+ASpriteData header already models the same record/count/offset layout. One
+isolated recovery may use ASpriteData* for that field, remove the duplicate
+proxy, and make only necessary type-name compatibility edits in _setPtr,
+PaintAFrame and GetFrameIdx. Preserve storage, signatures, allocation and all
+existing compiled bytes. Validate the target-absent prerequisite across all
+190 profiles before one saved canonical lookup replay. Accept no refactor
+unless the pending function matches and all old matches survive.
+
+The canonical-data target still differs only at ADD bytes 0x14/0x15: 62/64
+linked bytes agree, all 42 existing owner functions, 35 sections and one region
+pass. Source recovery alone is not accepted. The existing toolchain provenance
+audit identifies r3 as a distinct, previously unrepresented frontend in saved
+fidelity comparisons. One controlled diagnostic may replace only the owning
+ASprite C++ frontend with r3 while freezing source/options and retaining the
+known 1.6 assembler, linker and harness frontend. No production configuration
+change or toolchain identity claim is authorized by this diagnostic.
+
+The r3-only frontend diagnostic preserves all 42 old functions, 35 sections and
+one region, but emits an identical raw lookup and the same two mismatches.
+The coordinator authorizes one final direct-family reuse: copy the existing
+matched GetFrameIdx traversal, changing only function/count/table/record names
+for animation lookup. It uses the actual mutable data pointer of this non-const
+method, unlike every saved const-view form. The canonical-data prerequisite
+already preserves all old bytes. No new declarations, helpers, flags, layout
+or synthetic operations may be added; park if this direct reuse still fails.
+
+Direct GetFrameIdx reuse matches the complete native64 function and section,
+SHA256 a79ca34d6b096e5534188720f8374fd14e6b63176ba3d8e6738e2c1388111d8d; all
+existing owner checks pass. Before integration, one compatibility reduction
+checks the original shared data view: only add the ordinary GetAnimIdx
+declaration, then use an explicit mutable ASpriteData view in the same proven
+lookup body. This may avoid type-only compatibility edits to three existing
+functions. It is not a new search or algorithm variant; preserve the fully
+verified canonical candidate if the reduced prerequisite does not preserve
+all old matches. No production source has changed yet.
+
+The reduced declaration-only prerequisite passed all 190 profiles and 10,937
+comparisons, target absent, all 955 inputs stable. The same direct-family lookup
+with an explicit mutable ASpriteData view matches all native64 bytes and its
+complete section; the broader pointer refactor is not integrated. Final root
+full verification passed 190 profiles and 10,939 comparisons (5,427 functions,
+5,331 sections, 181 regions), exit0, no mismatch or skip, all 955 inputs stable.
+SHA256 a79ca34d6b096e5534188720f8374fd14e6b63176ba3d8e6738e2c1388111d8d.
+Only the independently verified marker is removed. No existing body, layout,
+production option or denominator changes. Ownership released; exact proof in
+docs/matches/asprite-animation-name.md.
