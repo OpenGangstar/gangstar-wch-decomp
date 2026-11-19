@@ -35,7 +35,9 @@ by branch probability. The three candidate case blocks also have equal
 recorded frequency. Consequently, a likelihood hint is not supported by this
 pair-selection finding. Native code itself shares tails, so disabling
 cross-jumping is not established as a correct retail compiler setting either.
-The original source-level reason for the different pairing remains unknown.
+The initial diagnostic did not establish the original source-level cause.
+A separately authorized case-order trial subsequently matched all 220 bytes;
+see [Map notification match](map-notify.md).
 
 ## Sound selection: redundant-load elimination before RTL
 
@@ -60,6 +62,27 @@ The extra native load alone does not justify inventing a volatile qualifier,
 callback, barrier or memory side effect. A new experiment requires actual
 declaration, helper or compiler-context evidence explaining why the original
 queries were not equivalent to the compiler.
+
+### Bounded FRE-only falsification
+
+A separately authorized private experiment added only `-fno-tree-fre` to the
+frozen sound candidate. It still emitted a 222-byte function. Its physical
+section was 224 bytes, but alignment outside the function does not satisfy the
+224-byte function requirement. The strict guard stopped before linking:
+
+```text
+STRICT SIZE FAILURE actual 222 physical 224 native224; no link/old closure invoked
+```
+
+The linked 71-function/75-section/GOT closure was not run in this experiment.
+All 71 old unrelocated function payloads remained identical, which is not a
+replacement for that linked proof. The new target raw bytes changed, so target
+identity is not claimed.
+
+Without FRE, `067t.pre` instead reuses the earlier slot value; `112r.cse1`
+later removes the repeated test. Disabling FRE alone therefore does not retain
+the native reload, restore its extent or establish a retail compiler setting.
+No additional optimization-flag sweep follows from this result.
 
 ## Target arrival: historical input recovery and allocation
 
@@ -87,8 +110,41 @@ Retail uses the reverse legal allocation. Later register renaming and scheduling
 retain those roles. The dumps do not expose the precise earlier local-allocation
 priority decision or establish an original-source correction.
 
+### Current canonical replay
+
+A separately bounded replay used the current canonical pointer type and actual
+compiled `justStoleCar` body. The initial compile exposed a missing callback
+declaration. Adding its ordinary, nonvirtual declaration then changed two
+instructions in the existing NPC match. Reversing only two independent pointer
+declarations restored that old match in the private context.
+
+The replay also exposed missing Thumb metadata for the external `Weapon::hide`
+callee in this profile's closure. Correcting that metadata restored its native
+BL instruction. The actual compiled `justStoleCar` call was already correct;
+its definition was not overridden.
+
+With these prerequisites, the same complete 60-byte historical candidate was
+reproduced, still differing from native in nine register-role bytes. All 342
+current existing function checks and 112 region checks passed, with no skips.
+The missing-declaration failure, NPC regression and wrong-call-mode result were
+retained separately rather than counted as successful verification.
+
+The [reproducible nonmatching patch](../../nonmatching/ai/PlayerTest-onTargetReached.md)
+preserves the source and prerequisites against an identified baseline. None is
+applied to production source; the assembly and progress remain unchanged.
+
 ## Disposition
 
-All three functions remain parked with their assembly and original matching status.
-No source permutation, optimization-flag change, output modification or new
-branch hint follows from these diagnostics alone.
+Sound selection and target arrival remain parked with their assembly and
+matching status. Map's separate, bounded source-order trial is now verified and
+integrated. The flag experiment remains private, and no output modification or
+new branch hint was introduced.
+
+The matched Map result prompted three bounded family audits. MainMenu already
+shares the native button-0/button-1 pair, and reversing its outer event clauses
+was already tested. Settings has only one currently eligible pair of equivalent
+localization tails; its relevant type-body order already matches native, while
+the earlier R1/R1 versus native R2/R1 allocation remains unexplained. CarRental's
+untried canonical 16-byte record has the same used fields at offsets 0/4/8 as
+the private prefix, with no record-stride operation. None of these audits
+established another source correction, and none ran another compilation.

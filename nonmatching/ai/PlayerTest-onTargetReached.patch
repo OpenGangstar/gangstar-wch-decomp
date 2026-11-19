@@ -1,0 +1,77 @@
+--- a/src/game/ai/PlayerTest.cpp
++++ b/src/game/ai/PlayerTest.cpp
+@@ -828,3 +828,14 @@
+             Application::GetInstance()->GetEventManager()->raise(EvPlayer(0));
+     }
+ }
++
++void PlayerTest::onTargetReached()
++{
++    combatMode = false;
++    static_cast<SavePrimaryInterface*>(this)->getWeapon()->hide();
++    justStoleCar(static_cast<Vehicle*>(unknown368));
++    unknown372 = 1;
++    flags240 &= ~moveToTargetFlag;
++    unknown368 = 0;
++}
++
+--- a/src/game/characters/PlayerTest.h
++++ b/src/game/characters/PlayerTest.h
+@@ -149,6 +149,7 @@
+     bool photo(Weapon* weapon);
+     bool snipe(Weapon* weapon);
+     void onObjectKilled(LevelObject* object);
++    void onTargetReached();
+     void startDriving();
+     void SetSpeed();
+     void ResetPlayerTest(bool);
+--- a/src/game/ai/NPC.cpp
++++ b/src/game/ai/NPC.cpp
+@@ -224,5 +224,5 @@
++    irr::scene::ISceneNode* leftModel = 0;
+     irr::scene::ISceneNode* rightModel = 0;
+-    irr::scene::ISceneNode* leftModel = 0;
+     if (weapon->getWeaponType() != 0) {
+         if (swapHands) {
+             leftModel = weapon->projectileSceneNode();
+--- a/config/matches/ai-startup-playertest.json
++++ b/config/matches/ai-startup-playertest.json
+@@ -117,7 +117,8 @@
+             "address": "0x003010b9",
+             "compiled_name": "__tcf_1"
+         },
+-        "_ZN11CHudManager7walkingEv"
++        "_ZN11CHudManager7walkingEv",
++        "_ZN10PlayerTest15onTargetReachedEv"
+     ],
+     "sections": [
+         ".player_car_open_clip",
+@@ -140,7 +141,8 @@
+         ".wanted_cleanup",
+         ".character_recovered_002f61f9",
+         ".character_recovered_002f512d",
+-        ".character_player_event_vtable"
++        ".character_player_event_vtable",
++        ".player_on_target_reached"
+     ],
+     "dependencies": [
+         "ai-startup-physicattributes",
+@@ -336,6 +338,7 @@
+         "_ZNK7Vehicle12isDoorClosedEb",
+         "_ZNK7Vehicle12isDoorOpenedEb",
+         "_Z21ekd_makestringfile255PKcPc",
+-        "_Z13ekd_debug_outPKcPc"
++        "_Z13ekd_debug_outPKcPc",
++        "_ZN6Weapon4hideEv"
+     ]
+ }
+--- a/config/linker/PlayerTestAiStartup.ld
++++ b/config/linker/PlayerTestAiStartup.ld
+@@ -34,5 +34,7 @@
+ INCLUDE config/linker/CHudManagerCleanupSections.ld
+ SECTIONS
+ {
++    .player_on_target_reached 0x003017b0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest15onTargetReachedEv) }
++    ASSERT(SIZEOF(.player_on_target_reached) == 60, "onTargetReached native60 strict extent")
+     .player_weapon_callback_0 0x0030577c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5snipeEP6Weapon) }
+     .player_weapon_callback_1 0x00304c04 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14onObjectKilledEP11LevelObject) }
