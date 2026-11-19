@@ -1077,7 +1077,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00323bc9 | SafeDelete<CCameraHud>(CCameraHud*&) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 
-| libsanangeles.so | 0x00341a3d | CopVehicleController::onEvent(IEvent const*, EventManager const*) | hud_registration | BLOCKED | 728/744 bytes; authentic event initialization regresses old caller | src/game/ai/CopVehicleController.cpp |
+| libsanangeles.so | 0x00341a3d | CopVehicleController::onEvent(IEvent const*, EventManager const*) | — | BLOCKED | 728/744 bytes; authentic event initialization regresses old caller | src/game/ai/CopVehicleController.cpp |
 
 | libsanangeles.so | 0x003238a1 | std::__stl_throw_overflow_error(char const*) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 
@@ -1100,7 +1100,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00319ed5 | PhysicAttributes::LoadArrays(char*) | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | hud_registration | BLOCKED | 1354/1360 bytes; six forms exhausted, no credit | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | — | BLOCKED | 1354/1360 bytes; six forms exhausted, no credit | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
@@ -1116,9 +1116,9 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | — | BLOCKED | Six forms exhausted; best 1088/1072. Historical gate terminal with 66 successful profiles and one unresolved GameObjectManager fresh-link failure. Current canonical fields add no new ABI/helper evidence; no replay. | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | hud_glyphs | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | — | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | hud_registration | BLOCKED | 2088/2108-byte candidate; six forms exhausted | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | — | BLOCKED | 2088/2108-byte candidate; six forms exhausted | src/game/ai/NPC.cpp |
 
 | libsanangeles.so | 0x0034bf8d | StringManager::~StringManager() | — | COMPLETED | 100%; real240/240/248B family, authentic erase and whole-profile inline80; full190-profile gate and66-build helper closure exact | src/game/persistence/StringManager.cpp |
 
@@ -1128,7 +1128,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify | — | BLOCKED | Map follow-up finds only one eligible pair of localization tails, with native type-body order already preserved. The unproven upstream receiver allocation R1/R1 versus native R2/R1 remains; no measured alternative peer ordering or new source proposal. | src/game/ui/MenuState.cpp (private) |
 
-| libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | hud_registration | BLOCKED | 872-byte candidate unmatched; six forms; rejected two old MenuState regressions | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | — | BLOCKED | 872-byte candidate unmatched; six forms; rejected two old MenuState regressions | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002e51fd | MenuManager::setText(eText, char const*, int*) | — | BLOCKED | Read-only typed switch recovery confirms SP80 is destroyed before SP40 construction; no missing lifetime or ABI operation. Candidate remains 1100/native 1104. Project metadata rolled back; no sixth source form justified. | src/game/ui/MenuManager.cpp |
 
 | libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | lock_init | BLOCKED | 1384/1388 bytes; swapped independent STR/MOV pair; five forms parked | src/game/persistence/SaveGame.cpp |
@@ -1272,11 +1272,11 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | — | BLOCKED | Current name-chain trial remains 248 bytes with 17 differing bytes; all 114 old functions and 33 region checks pass. Old best has 12 differences; no further hint or source variant authorized. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | — | COMPLETED | 100%; exact 356-byte target in three images, full 190-profile/10,590-comparison gate passes. All previous matches retained; no Fully Linked credit. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | — | BLOCKED | Authentic copy/name/subscript trial emits 840 versus 852 native bytes; strict extent fails and runtime imports remain unresolved. No linked old-gate or match claim; no further source variant. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | hud_registration | BLOCKED | six forms; best1996/2012, inline-functions diagnostic unchanged; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | — | BLOCKED | six forms; best1996/2012, inline-functions diagnostic unchanged; no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | — | BLOCKED | Both machine ABI and primary Irrlicht const-list/value-iterator/pointer-reference APIs already correct; unused stock-position differences irrelevant. No justified trial. | src/game/combat/BulletTraceManager.cpp |
 | libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | — | BLOCKED | Five distinct forms verified; best656 exceeds native652. Native arithmetic matches saved expressions, with no justified sixth-form correction. Relocated/vtable failures are not native proof. | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
-| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | hud_glyphs | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | — | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
 | libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Prerequisite-only current gate passed all 190 profiles/10,687 comparisons with 11 layout assertions. Unchanged safe-v4 current-context body compiled to 2192/2228 bytes; strict extent failed, stopped before linking. Native SetSpeed weak/default versus current global/default is new independently verified ABI evidence. Weak-declaration gate passed 190/10,687; unchanged replay emits 2200/2228 bytes, with actual GOT relocation restored. Stopped pre-link; no source variations or shared event constructor edits. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | — | BLOCKED | Current unchanged safe3060/3220 identical archive; old188/112 and complete76-build header closure2587 functions/2821 regions exact; fixture failures resolved, no credit | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | six forms; best4040/4020; old188/112 and 48-profile header gate pass; no credit | src/game/vehicles/Vehicle.cpp |
@@ -1623,3 +1623,99 @@ SDK-default flag now list the exact verified arguments; ten were unchanged.
 No function ownership, source body, assembly status or progress credit changes.
 See docs/COMPILER-NOTES.md. This is a compiler prerequisite, not completion of
 any pending function or a substitute for its byte comparison.
+
+
+## Coordinator SDK-default replay batch, 2026-11-19
+
+The following assignments superseded the historical parked owners during this
+read-only compiler-baseline audit. Root reviewed all results and released
+ownership; no C++ or
+header changes are permitted. Compile each exact saved context twice, first
+with its recorded ordinary flags and then with only the verified NDK default
+-fno-short-enums added. Other flags must equal the current production profile
+with that one flag removed. No arbitrary flag combinations, linking, credit or
+integration are authorized by this batch. Stop after one pair per context.
+The coordinator reviews results and releases ownership. Worker quota remains
+unavailable; compiler subprocesses are not sub-agents.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002ecb9d | `_ZN7Widgets6IGMenu9GoToFrameEPKc` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/igmenu-frame-bool-current/src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x003017b1 | `_ZN10PlayerTest15onTargetReachedEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/player-on-target-reached-gdb-return-trace-current/src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00352cad | `_ZN12SoundManager24getNumberOfPlayingSoundsEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/sound-playing-diagnostics-current/src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00349445 | `_ZN10AnimObject10IsAnimOverEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/animobject-over-negative-likelihood-current/src/game/characters/AnimObject.cpp |
+| libsanangeles.so | 0x00300bc5 | `_ZN4Path4LoadERKN7Structs4PathEPN3irr7collada15CColladaFactoryE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/path-load-vector-assignment-current/src/game/world/Path.cpp |
+| libsanangeles.so | 0x0033ffc1 | `_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/script-clean-command-separate-cases-current/src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0034a015 | `_ZNK7ASprite12PaintFModuleEiiiii` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/asprite-paint-fmodule-canonical-current/src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x002e8551 | `_ZN9MenuState7OnEventERN8RenderFX5EventE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menu-state-on-event-typed-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x003218d9 | `_ZN16SceneNodeManager14reclaimGarbageEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/scene-reclaim-current-context/src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x002e86fd | `_ZN9MenuState8GotFocusEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menustate-gotfocus-typed-first-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x003f0041 | `_ZN8RenderFX6UpdateEib` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-update-chain-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ece05 | `_ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-force-textures-typed-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0031b29d | `_ZN16PhysicAttributesC1EiP6b2Body` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/physic-attributes-ctor-rtl-current/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b29d | `_ZN16PhysicAttributesC2EiP6b2Body` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/physic-attributes-ctor-rtl-current/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00333e41 | `_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/fps-scroll-real-character-prerequisite-current/src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x002f2581 | `_ZN9Character14goToCombatIdleEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/character-combat-idle-plain-cases-current/src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002d2d61 | `_ZN12LODSceneNode15computeLODLevelEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/lod-compute-sdk-array-current/src/game/rendering/LODSceneNode.cpp |
+| libsanangeles.so | 0x003470f9 | `_ZN11SideMission17enableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEENS1_8vector3dIfEE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/side-mission-enable-array-api-current/src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003edc7d | `_ZN8RenderFX13PreloadGlyphsEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-preload-all-subscript-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002eb761 | `_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/car-rental-full-typed-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002ea479 | `_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/mainmenu-notify-switch-likelihood-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x003049e5 | `_ZN10PlayerTest7RespawnEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/player-respawn-character-interface-current/src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x0034f555 | `_ZN9CarSounds21UpdateOffEngineSoundsEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/carsounds-off-engine-canonical-current/src/game/vehicles/CarSounds.cpp |
+| libsanangeles.so | 0x002d5eb9 | `_ZN11Application7OnEventERKN3irr6SEventE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/application-on-event-iterator-current/src/game/app/Application.cpp |
+| libsanangeles.so | 0x00330015 | `_ZN6Rocket6launchEN3irr4core8vector3dIfEE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/rocket-current-context/src/game/combat/Rocket.cpp |
+| libsanangeles.so | 0x00333ab1 | `_ZN12FollowCamera6updateEf` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/follow-camera-update-matched-facing-current/src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x002e4e7d | `_ZN11MenuManager6updateEP12StateMachine` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menu-manager-update/src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x00335849 | `_ZN13VehicleCamera6updateEf` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/vehicle-camera-update-negative-product-current/src/game/vehicles/VehicleCamera.cpp |
+| libsanangeles.so | 0x00313385 | `_ZN7Vehicle9collisionEN3irr4core8vector3dIfEEi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/vehicle-collision/src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030406d | `_ZN10PlayerTest20updateCarInteractionEv` | — | BLOCKED | Code unchanged; anonymous constant payload identical; unlinked, no credit | _scratch/player-car-interaction/src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x002e574d | `_ZN11MenuManager5setupEb` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menu-manager-setup-qualified-stream-current/src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002d4015 | `_ZN11Application19UnRegisterForUpdateEP10IUpdatable` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/application-unregister-update-iterator-current/src/game/app/Application.cpp |
+| libsanangeles.so | 0x00349d81 | `_ZN7ASprite15GetAnimDurationEi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/asprite-duration-frontend-r4b-current/src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x0034228d | `_ZN13NPCController7onEventEPK6IEventPK12EventManager` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/npc-controller-event-switch-current/src/game/ai/NPCController.cpp |
+| libsanangeles.so | 0x003219cd | `_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/scene-drop-current-context/src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003ee721 | `_ZN8RenderFX11SearchIndex5ClearEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-search-clear-iterator-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0032c961 | `_ZN11WantedMeterC1EP7ASpritei` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/wanted-meter-ctor-dimension-value-current/src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c961 | `_ZN11WantedMeterC2EP7ASpritei` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/wanted-meter-ctor-dimension-value-current/src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0034a28d | `_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/asprite-pixel-info/src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003f02c5 | `_ZN8RenderFX11SearchIndex4InitERS_` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-search-init-typed-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x002f064d | `_ZN18BulletTraceManager9OnAnimateEj` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/bullet-trace-on-animate/src/game/combat/BulletTraceManager.cpp |
+| libsanangeles.so | 0x0031da29 | `_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/physics-segment-fork-cross-current/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00332cf5 | `_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/camera-clicked-center-helper-current/src/game/core/CameraManager.cpp |
+| libsanangeles.so | 0x0031b3e9 | `_ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/physics-set-height-cross-current/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002e51fd | `_ZN11MenuManager7setTextENS_5eTextEPKcPi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menu-manager-set-text-composition-current/src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0031e285 | `_ZN16PhysicAttributes18AddCollisionShapesEit` | — | BLOCKED | Corrected 1820 / native 1816 bytes; unlinked, no credit | _scratch/physics-add-collision-native-order-current/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002e76e9 | `_ZN8RenderFX5Event16GetCharacterPathEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-event-character-path-typed-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x00321721 | `_ZNK16SceneNodeManager6reportEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/scene-report-current-context/src/game/world/SceneNodeManager.cpp |
+| libsanangeles.so | 0x003ed6e5 | `_ZN8RenderFX4FindEPKcPN7gameswf9characterE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-find-context-name-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed9ed | `_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-preload-glyph-array-faithful-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0030b68d | `_ZN7Vehicle17ResetBodyPositionEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/vehicle-reset-body-position-box2d-current/src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002eac65 | `_ZN5Menus18OptionGameSettings6NotifyEPK10MenuWidgeti` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/option-game-settings-member-getter-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eb6a9 | `_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/service-corruption-full-typed-current/src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x00349e15 | `_ZNK7ASprite11PaintModuleEiiii` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/asprite-paint-module/src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x003efced | `_ZN8RenderFX11UpdateInputEii` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-update-input-typed-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0034b3c5 | `_ZNK13StringManager12formatAmountEibb` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/stringmanager-format-amount-separate-cases-current/src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x00341a3d | `_ZN20CopVehicleController7onEventEPK6IEventPK12EventManager` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/cop-vehicle-on-event/src/game/ai/CopVehicleController.cpp |
+| libsanangeles.so | 0x0030fac9 | `_ZN7Vehicle10CreateBodyEv` | — | BLOCKED | Corrected 1060 / native 1044 bytes; unlinked, no credit | _scratch/vehicle-create-body-sixth-current/src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x003f01d1 | `_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menufx-state-handler-typed-current/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x00320ca1 | `_ZN16PhysicAttributes19ComputeShortestPathEiiN3irr4core8vector3dIfEES3_f` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/physics-shortest-current-replay/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002ff5d1 | `_ZN3NPC12attackTargetEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/npc-attack-target/src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x00313b01 | `_ZN7Vehicle6UpdateEi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/vehicle-update/src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002e1e15 | `_ZN9GSFailure6draw2dEPK12StateMachine` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/gsfailure-alpha-control-current/src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x003eefad | `_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-invoke-as-callback/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef511 | `_ZN8RenderFX12UpdateCursorERNS_6CursorEi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-update-cursor/src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0034b78d | `_ZN13StringManager13loadPackSheetEjj` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/stringmanager-load-pack-sheet-cursor-current/src/game/persistence/StringManager.cpp |
+| libsanangeles.so | 0x0032f201 | `_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/sniper-keyboard-separate-cases-current/src/game/input/SniperControlHandler.cpp |
+| libsanangeles.so | 0x00340305 | `_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/ai-manager-vehicle-npc-reuse-current/src/game/ai/AIManager.cpp |
+
+Coordinator review completed: all 66 contexts compiled and assembled both ways,
+with unchanged tracked source/header/manifest hashes. Of 68 functions, 65 retain
+identical target bytes and relocation signatures. PlayerTest::updateCarInteraction
+retains identical code and a byte-identical 14-byte referenced constant; only its
+compiler-generated anonymous-namespace symbol name changes. Two targets change
+instruction bytes but still fail native extent: AddCollisionShapes 1820/1816 and
+Vehicle::CreateBody 1060/1044. Repeated old-flag controls reproduce both original
+raw hashes. No links, native target acceptance, header closure or credit follow.
+See docs/matches/ndk-enum-default-replay.md and its complete 68-entry JSON ledger.
+The function statuses remain BLOCKED; this is not a global goal blocker.
