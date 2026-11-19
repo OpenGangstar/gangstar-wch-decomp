@@ -907,7 +907,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ebd29 | CHudManager::setSteeringMode | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x003230ad | CDrivingHud::show | — | COMPLETED | 100% | src/game/hud/CDrivingHud.cpp |
 | libsanangeles.so | 0x00324979 | CHudManager destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
-| libsanangeles.so | 0x00324399 | CHudManager::update | hud_drawables | BLOCKED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00324399 | CHudManager::update(double) | — | BLOCKED | Authentic accepted TouchIDList and STLport distance reuse reduces26 to14 differing bytes in native720B; 49 old functions/42 old regions exact. One hint712B rejected by strict720 bound. Reviewed unapplied candidate; no credit or further grids without new evidence. | src/game/hud/CHudManager.cpp; nonmatching/hud/CHudManager-update-authentic-list.patch |
 | libsanangeles.so | 0x00324c85 | CHudManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x00324669 | CHudManager deleting destructor (D0) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x003295a5 | MiniMap constructor (C1/C2 aliases) | hud_registration | BLOCKED | pending | src/game/hud/MiniMap.cpp |
