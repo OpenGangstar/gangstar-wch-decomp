@@ -1,0 +1,99 @@
+--- a/src/game/core/CameraVariants.h
++++ b/src/game/core/CameraVariants.h
+@@ -86,6 +86,7 @@
+     FPSCamera();
+     ~FPSCamera();
+     void incVerticalAngle(float delta);
++    void scroll(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points);
+     void zoom(int degrees);
+     void zoom(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points);
+     virtual void init(LevelObject* owner, int mode);
+--- a/src/game/core/FPSCamera.cpp
++++ b/src/game/core/FPSCamera.cpp
+@@ -113,6 +113,29 @@
+     const TouchPointLink* last;
+ };
+ }
++
++void FPSCamera::scroll(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points)
++{
++    const TouchPointListView& links = reinterpret_cast<const TouchPointListView&>(points);
++    const Point2D<short>* point = links.first->point;
++    const int x = point->x;
++    const int y = point->y;
++    const int oldY = value48;
++    const int dx = value44 - x;
++    const int horizontalFov = CameraManager::getInstance()->getFOV();
++    const int verticalFov = CameraManager::getInstance()->getFOV();
++
++    using irr::core::quaternion;
++    Character& player = static_cast<Character&>(*PlayerTest::GetPlayer());
++    player.SetRotation(static_cast<Character&>(*PlayerTest::GetPlayer()).GetRotation()
++        * quaternion(0.0f, 0.0f, (horizontalFov / 320.0f) * dx * -0.017453292f));
++
++    const float verticalDelta = (verticalFov / 480.0f) * (oldY - y);
++    incVerticalAngle(-verticalDelta);
++    value44 = x;
++    value48 = y;
++}
++
+ 
+ void FPSCamera::zoom(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points)
+ {
+--- a/config/matches/ai-startup-fpscamera.json
++++ b/config/matches/ai-startup-fpscamera.json
+@@ -24,8 +24,11 @@
+     ],
+     "source": "src/game/core/FPSCamera.cpp",
+     "linker_script": "config/linker/FPSCameraAiStartup.ld",
+-    "dependencies": ["string-startup-camera"],
++    "dependencies": [
++        "string-startup-camera"
++    ],
+     "functions": [
++        "_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE",
+         "_ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE",
+         "_ZN9FPSCamera6updateEf",
+         "_ZN9FPSCamera4initEP11LevelObjecti",
+@@ -52,6 +55,7 @@
+         }
+     ],
+     "sections": [
++        ".fps_scroll",
+         ".fps_vtable",
+         ".ai_startup_function_0",
+         ".ai_startup_function_1",
+@@ -73,6 +77,8 @@
+         "_ZN15CControlManager11exitSnipingEb",
+         "_ZN9FPSCamera17updateTouchInputsEv",
+         "_ZN13CameraManager11getInstanceEv",
+-        "_ZN13CameraManager6setFOVEi"
++        "_ZN13CameraManager6setFOVEi",
++        "_ZN13CameraManager6getFOVEv",
++        "_ZN10PlayerTest9GetPlayerEv"
+     ]
+ }
+--- a/config/linker/FPSCameraAiStartup.ld
++++ b/config/linker/FPSCameraAiStartup.ld
+@@ -7,6 +7,7 @@
+ __aeabi_fcmplt = 0x001c479c;
+ __aeabi_fadd = 0x001c4154;
+ __aeabi_fmul = 0x001c4724;
++__aeabi_fdiv = 0x001c4520;
+ __aeabi_i2f = 0x001c41e4;
+ __aeabi_f2iz = 0x001c44cc;
+ __aeabi_fsub = 0x001c4328;
+@@ -25,6 +26,7 @@
+ _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
+ SECTIONS
+ {
++    .fps_scroll 0x00333e40 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE) }
+     .fps_zoom_touch 0x003342ac : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE) }
+     .fps_update 0x003344f4 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6updateEf) }
+     .fps_init 0x00333fec : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4initEP11LevelObjecti) }
+@@ -67,3 +69,5 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
++
++ASSERT(SIZEOF(.fps_scroll) == 280, "FPSCamera scroll native extent");

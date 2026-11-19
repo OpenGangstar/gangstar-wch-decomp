@@ -1624,8 +1624,8 @@ bool Menus::InfoHelp::Notify(const MenuWidget* widget, int event)
     if (widget != arrows || (event != 1 && event != 2))
         return false;
     const int page = arrows->GetCurrentPage();
-    unsigned int category = 0;
     int firstPage = 0;
+    unsigned int category = 0;
     for (; category < sizeof(s_helpCategories) / sizeof(s_helpCategories[0]); ++category) {
         const int pageCount = s_helpCategories[category].endPage - s_helpCategories[category].firstPage;
         const int categoryPage = page - firstPage;

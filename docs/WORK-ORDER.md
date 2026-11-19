@@ -5,11 +5,11 @@ with a workflow based on OpenRAC's
 [family selection](https://github.com/OpenRAC/rac1-decomp/blob/main/docs/AGENT_WORKFLOW.md#picking-functions-family-order)
 and [bounded worker attempts](https://github.com/OpenRAC/rac1-decomp/blob/main/docs/AGENT_WORKFLOW.md#what-a-worker-does).
 Select work for the matched bytes and reusable knowledge it can unlock. Work may
-cross gameplay areas. The full objective is still all 4,566 game functions,
-563,270 retail code bytes, matched byte for byte; vendored dependencies stay
+cross gameplay areas. The full objective is still all 4,550 game functions,
+561,716 retail code bytes, matched byte for byte; vendored dependencies stay
 outside that budget. No verification rule is relaxed. The
 [provenance ledger](PROVENANCE-CORRECTIONS.md) retains all original entries,
-including 95 pending FreeType functions corrected from the original target.
+including 103 pending FreeType and 8 pending gameswf functions corrected from the original target.
 Use catalogue `origin=game` to select work; retained legacy dependency assembly
 markers are not game assignments.
 

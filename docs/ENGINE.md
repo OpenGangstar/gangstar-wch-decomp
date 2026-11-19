@@ -75,7 +75,7 @@ byte 29 and avoid deleting an inline buffer at byte 13. Preserve observed fork
 layouts until native comparisons establish compatibility. Engine code remains
 outside the game-code progress totals.
 
-### gameswf — 2,842 functions
+### gameswf — 2,850 functions
 
 A [gameswf](https://github.com/kennethshackleton/gameswf) build for the
 Flash based interface. Its symbols are clearly visible:
@@ -122,7 +122,7 @@ vendored gameswf code remains outside game-code totals.
 [Erin Catto's Box2D](https://github.com/erincatto/box2d), used for the
 vehicle and character physics.
 
-### FreeType — 1,061 functions
+### FreeType — 1,069 functions
 
 The font engine, with the usual module prefixes (`tt_`, `psh_`, `cff_`,
 `type1_`, `sfnt_`, `bdf_`, ...).
@@ -147,10 +147,10 @@ The ARM soft float helpers (`__aeabi_f2uiz` and friends).
 
 ## The game code
 
-**4,566 functions, 563,270 bytes.** That is what this project decompiles.
+**4,550 functions, 561,716 bytes.** That is what this project decompiles.
 
 The [provenance correction ledger](PROVENANCE-CORRECTIONS.md) accounts for all
-95 pending FreeType entries moved out of the original game classification. All
+103 pending FreeType and 8 pending gameswf entries moved out of the original game classification. All
 17,703 retail function entries remain in the full catalogue.
 
 The game's own classes are in the global namespace, with names that make the

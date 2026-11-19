@@ -205,22 +205,22 @@ inline void appendRegistration(void* list, stlp_priv::RegistrationLink*& tail, T
 
 void Application::RegisterForIrrlichtEvents(irr::IEventReceiver* receiver)
 {
-    appendRegistration(&eventReceivers, eventReceivers._M_node.previous, receiver);
+    appendRegistration(&eventReceivers, eventReceivers._M_node._M_data.previous, receiver);
 }
 
 void Application::RegisterForDrawingInScene(IDrawable* drawable)
 {
-    appendRegistration(&sceneDrawables, sceneDrawables._M_node.previous, drawable);
+    appendRegistration(&sceneDrawables, sceneDrawables._M_node._M_data.previous, drawable);
 }
 
 void Application::RegisterForDrawingOnHUD(IDrawable* drawable)
 {
-    appendRegistration(&hudDrawables, hudDrawables._M_node.previous, drawable);
+    appendRegistration(&hudDrawables, hudDrawables._M_node._M_data.previous, drawable);
 }
 
 void Application::RegisterForUpdate(IUpdatable* object)
 {
-    appendRegistration(&updatables, updatables._M_node.previous, object);
+    appendRegistration(&updatables, updatables._M_node._M_data.previous, object);
 }
 
 void Application::Pause()
@@ -843,9 +843,9 @@ void Application::Quit()
 void Application::_Update(int elapsed)
 {
     typedef stlp_priv::_List_iterator<IUpdatable*, std::_Nonconst_traits<IUpdatable*> > iterator;
-    iterator first(updatables._M_node.next);
+    iterator first(updatables._M_node._M_data.next);
     const double time = elapsed;
-    iterator last(&updatables._M_node);
+    iterator last(&updatables._M_node._M_data);
     for (; first != last; ++first)
         (*first)->update(time);
     stateMachine->update(time);
@@ -871,15 +871,15 @@ void Application::_Draw()
         scene->drawAll(0);
     typedef stlp_priv::_List_iterator<IDrawable*, std::_Nonconst_traits<IDrawable*> > iterator;
     {
-        iterator first(sceneDrawables._M_node.next);
-        iterator last(&sceneDrawables._M_node);
+        iterator first(sceneDrawables._M_node._M_data.next);
+        iterator last(&sceneDrawables._M_node._M_data);
         for (; first != last; ++first)
             (*first)->draw();
     }
     driver->beginScene2D();
     {
-        iterator first(hudDrawables._M_node.next);
-        iterator last(&hudDrawables._M_node);
+        iterator first(hudDrawables._M_node._M_data.next);
+        iterator last(&hudDrawables._M_node._M_data);
         for (; first != last; ++first)
             (*first)->draw2d();
     }
@@ -898,4 +898,23 @@ void Application::InitIPhone(irr::IrrlichtDevice*, float, float, float, float)
 {
     InitIPhoneFileSystem();
     *static_cast<bool*>(0) = true;
+}
+
+extern "C" int nativedetectPhoneLang();
+Application::Application()
+    : fileSystem(0), unknown96(0.0f), drawAll(false), soundNeedsInit(true),
+      soundThreadPlaying(false)
+{
+    touchScreen=0;
+    accelerometer=0;
+    unknown52=0;
+    unknown60=0;
+    stateMachine=0;
+    controlManager=0;
+    hudManager=0;
+    weaponManager=0;
+    unknown100=0;
+    defaultLanguage=nativedetectPhoneLang();
+    unknown144[0]=0;
+    lastPressedKey=-1;
 }

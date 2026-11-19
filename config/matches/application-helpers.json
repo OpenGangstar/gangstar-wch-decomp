@@ -128,7 +128,9 @@
         "_ZN11Application4QuitEv",
         "_ZN11Application7_UpdateEi",
         "_ZN11Application5_DrawEv",
-        "_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff"
+        "_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff",
+        "_ZN11ApplicationC1Ev",
+        "_ZN11ApplicationC2Ev"
     ],
     "sections": [
         ".screen_dimensions",
@@ -181,7 +183,8 @@
         ".application_achievements",
         ".application_update",
         ".application_draw",
-        ".application_init_iphone"
+        ".application_init_iphone",
+        ".application_ctor"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -213,7 +216,6 @@
         "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
         "_ZN11MenuManager5popToEPKcbb",
         "_ZN11MenuManager13preloadGlyphsEb",
-        "_ZN11ApplicationC1Ev",
         "_ZN11Application7OnEventERKN3irr6SEventE",
         "_ZN15FileSystemWin32C1Ev",
         "_ZN16TouchScreenWin32C1Ev",

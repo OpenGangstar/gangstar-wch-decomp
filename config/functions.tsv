@@ -8857,8 +8857,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d4e89	0x158	Application.cpp	game	app	matched	_ZN11Application6ResumeEv	Application::Resume()
 0x002d4fe1	0x110	Application.cpp	game	app	matched	_ZN11Application5_DrawEv	Application::_Draw()
 0x002d50f1	0x108	Application.cpp	game	app	matched	_ZN11Application6UpdateEv	Application::Update()
-0x002d51f9	0x94	Application.cpp	game	app	pending	_ZN11ApplicationC1Ev	Application::Application()
-0x002d51f9	0x94	Application.cpp	game	app	pending	_ZN11ApplicationC2Ev	Application::Application()
+0x002d51f9	0x94	Application.cpp	game	app	matched	_ZN11ApplicationC1Ev	Application::Application()
+0x002d51f9	0x94	Application.cpp	game	app	matched	_ZN11ApplicationC2Ev	Application::Application()
 0x002d528d	0x54	Application.cpp	game	app	matched	_ZN11Application11GetInstanceEv	Application::GetInstance()
 0x002d52e1	0x22	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP10IUpdatableSaIS2_EE5clearEv	stlp_priv::_List_base<IUpdatable*, std::allocator<IUpdatable*> >::clear()
 0x002d5305	0x22	Application.cpp	stlport	-	matched	_ZN9stlp_priv10_List_baseIP9IDrawableSaIS2_EE5clearEv	stlp_priv::_List_base<IDrawable*, std::allocator<IDrawable*> >::clear()
@@ -14026,14 +14026,14 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003745e5	0x2c	pshinter.c	freetype	-	matched	ps_hints_close	ps_hints_close
 0x00374611	0xc4c	pshinter.c	freetype	-	matched	ps_hints_apply	ps_hints_apply
 0x0037525d	0x118	psmodule.c	freetype	-	matched	ft_get_adobe_glyph_index	ft_get_adobe_glyph_index
-0x00375375	0xe0	psmodule.c	game	core	pending	ps_unicode_value	ps_unicode_value
-0x00375455	0x20	psmodule.c	game	core	pending	compare_uni_maps	compare_uni_maps
-0x00375475	0x60	psmodule.c	game	core	pending	ps_unicodes_char_index	ps_unicodes_char_index
-0x003754d5	0x94	psmodule.c	game	core	pending	ps_unicodes_char_next	ps_unicodes_char_next
-0x00375569	0x30	psmodule.c	game	core	pending	ps_get_macintosh_name	ps_get_macintosh_name
-0x00375599	0x30	psmodule.c	game	core	pending	ps_get_standard_strings	ps_get_standard_strings
-0x003755c9	0x1b4	psmodule.c	game	core	pending	ps_unicodes_init	ps_unicodes_init
-0x0037577d	0x1c	psmodule.c	game	core	pending	psnames_get_service	psnames_get_service
+0x00375375	0xe0	psmodule.c	freetype	-	pending	ps_unicode_value	ps_unicode_value
+0x00375455	0x20	psmodule.c	freetype	-	pending	compare_uni_maps	compare_uni_maps
+0x00375475	0x60	psmodule.c	freetype	-	pending	ps_unicodes_char_index	ps_unicodes_char_index
+0x003754d5	0x94	psmodule.c	freetype	-	pending	ps_unicodes_char_next	ps_unicodes_char_next
+0x00375569	0x30	psmodule.c	freetype	-	pending	ps_get_macintosh_name	ps_get_macintosh_name
+0x00375599	0x30	psmodule.c	freetype	-	pending	ps_get_standard_strings	ps_get_standard_strings
+0x003755c9	0x1b4	psmodule.c	freetype	-	pending	ps_unicodes_init	ps_unicodes_init
+0x0037577d	0x1c	psmodule.c	freetype	-	pending	psnames_get_service	psnames_get_service
 0x00375799	0x76	raster.c	freetype	-	matched	New_Profile	New_Profile
 0x00375811	0x58	raster.c	freetype	-	matched	End_Profile	End_Profile
 0x00375869	0x76	raster.c	freetype	-	matched	Insert_Y_Turn	Insert_Y_Turn
@@ -14554,8 +14554,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00391021	0x58	ear_clip_triangulate_sint16.cpp	gameswf	-	matched	_ZN7gameswf16ear_clip_wrapperIsNS_20ear_clip_triangulate17ear_clip_array_ioIsEES3_E17triangulate_planeEPNS4_8tristateE	gameswf::ear_clip_wrapper<short, gameswf::ear_clip_triangulate::ear_clip_array_io<short>, gameswf::ear_clip_triangulate::ear_clip_array_io<short> >::triangulate_plane(gameswf::ear_clip_wrapper<short, gameswf::ear_clip_triangulate::ear_clip_array_io<short>, gameswf::ear_clip_triangulate::ear_clip_array_io<short> >::tristate*)
 0x00391079	0x68	ear_clip_triangulate_sint16.cpp	gameswf	-	matched	_ZN7gameswf16ear_clip_wrapperIsNS_20ear_clip_triangulate17ear_clip_array_ioIsEES3_E26compute_triangulation_implEPS3_S5_iPNS_5arrayIsEE	gameswf::ear_clip_wrapper<short, gameswf::ear_clip_triangulate::ear_clip_array_io<short>, gameswf::ear_clip_triangulate::ear_clip_array_io<short> >::compute_triangulation_impl(gameswf::ear_clip_triangulate::ear_clip_array_io<short>*, gameswf::ear_clip_triangulate::ear_clip_array_io<short>*, int, gameswf::array<short>*)
 0x003910e1	0x2c	ear_clip_triangulate_sint16.cpp	gameswf	-	matched	_ZN7gameswf20ear_clip_triangulate7computeEPNS_5arrayIsEEiPKS2_iS3_	gameswf::ear_clip_triangulate::compute(gameswf::array<short>*, int, gameswf::array<short> const*, int, gameswf::array<short>*)
-0x0039110d	0x22	file_util.cpp	game	core	pending	_Z12reverse_scanPKcS0_c	reverse_scan(char const*, char const*, char)
-0x00391131	0x34	file_util.cpp	game	core	pending	_ZN9file_util13get_extensionEPKc	file_util::get_extension(char const*)
+0x0039110d	0x22	file_util.cpp	gameswf	-	pending	_Z12reverse_scanPKcS0_c	reverse_scan(char const*, char const*, char)
+0x00391131	0x34	file_util.cpp	gameswf	-	pending	_ZN9file_util13get_extensionEPKc	file_util::get_extension(char const*)
 0x00391165	0x28	image.cpp	gameswf	-	matched	_ZN7gameswf10image_baseC1EPhiiiNS0_8id_imageE	gameswf::image_base::image_base(unsigned char*, int, int, int, gameswf::image_base::id_image)
 0x00391165	0x28	image.cpp	gameswf	-	matched	_ZN7gameswf10image_baseC2EPhiiiNS0_8id_imageE	gameswf::image_base::image_base(unsigned char*, int, int, int, gameswf::image_base::id_image)
 0x0039118d	0xe	image.cpp	gameswf	-	matched	_ZN7gameswf8scanlineEPNS_10image_baseEi	gameswf::scanline(gameswf::image_base*, int)
@@ -14620,12 +14620,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00393241	0x4	jpeg.cpp	gameswf	-	matched	_ZN7gameswf4jpeg5input6createEPNS_7tu_fileE	gameswf::jpeg::input::create(gameswf::tu_file*)
 0x00393245	0x4	jpeg.cpp	gameswf	-	matched	_ZN7gameswf4jpeg5input28create_swf_jpeg2_header_onlyEPNS_7tu_fileE	gameswf::jpeg::input::create_swf_jpeg2_header_only(gameswf::tu_file*)
 0x00393249	0x4	jpeg.cpp	gameswf	-	matched	_ZN7gameswf4jpeg6output6createEPNS_7tu_fileEiii	gameswf::jpeg::output::create(gameswf::tu_file*, int, int, int)
-0x0039324d	0x14	logger.cpp	game	core	pending	_ZN6logger21register_log_callbackEPFvNS_8log_typeEPKcE	logger::register_log_callback(void (*)(logger::log_type, char const*))
-0x00393261	0x1c	logger.cpp	game	core	pending	_ZN6logger25set_standard_log_handlersEv	logger::set_standard_log_handlers()
-0x0039327d	0x64	logger.cpp	game	core	pending	_ZN6logger5errorEPKcz	logger::error(char const*, ...)
-0x003932e1	0x64	logger.cpp	game	core	pending	_ZN6logger3msgEPKcz	logger::msg(char const*, ...)
-0x00393345	0x74	logger.cpp	game	core	pending	_ZN6logger4vmsgEPKcz	logger::vmsg(char const*, ...)
-0x003933b9	0x2c	logger.cpp	game	core	pending	_ZN6logger15standard_loggerENS_8log_typeEPKc	logger::standard_logger(logger::log_type, char const*)
+0x0039324d	0x14	logger.cpp	gameswf	-	pending	_ZN6logger21register_log_callbackEPFvNS_8log_typeEPKcE	logger::register_log_callback(void (*)(logger::log_type, char const*))
+0x00393261	0x1c	logger.cpp	gameswf	-	pending	_ZN6logger25set_standard_log_handlersEv	logger::set_standard_log_handlers()
+0x0039327d	0x64	logger.cpp	gameswf	-	pending	_ZN6logger5errorEPKcz	logger::error(char const*, ...)
+0x003932e1	0x64	logger.cpp	gameswf	-	pending	_ZN6logger3msgEPKcz	logger::msg(char const*, ...)
+0x00393345	0x74	logger.cpp	gameswf	-	pending	_ZN6logger4vmsgEPKcz	logger::vmsg(char const*, ...)
+0x003933b9	0x2c	logger.cpp	gameswf	-	pending	_ZN6logger15standard_loggerENS_8log_typeEPKc	logger::standard_logger(logger::log_type, char const*)
 0x003933e5	0xc	membuf.cpp	gameswf	-	matched	_ZN7gameswf6membufC1Ev	gameswf::membuf::membuf()
 0x003933e5	0xc	membuf.cpp	gameswf	-	matched	_ZN7gameswf6membufC2Ev	gameswf::membuf::membuf()
 0x003933f1	0xe	membuf.cpp	gameswf	-	matched	_ZN7gameswf6membufC1ENS0_14read_only_enumEPKvi	gameswf::membuf::membuf(gameswf::membuf::read_only_enum, void const*, int)

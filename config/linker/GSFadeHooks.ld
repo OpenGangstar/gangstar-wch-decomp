@@ -67,6 +67,8 @@ INCLUDE config/linker/ApplicationRuntimeSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+    .application_ctor 0x002d51f8 : { *application-helpers.o(.text._ZN11ApplicationC1Ev) }
+    ASSERT(SIZEOF(.application_ctor) == 148, "Application constructor native148 strict extent")
     .application_init_iphone 0x002d3c7c : { *application-helpers.o(.text._ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff) }
     ASSERT(SIZEOF(.application_init_iphone) == 20, "InitIPhone native 18-byte function and 2-byte padding")
     .application_stop_sound 0x002d4440 : { *application-helpers.o(.text._ZN11Application15stopSoundThreadEv) }

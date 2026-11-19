@@ -566,11 +566,11 @@ configvars.cpp	-	-	0
 container.cpp	gameswf	-	15
 ear_clip_triangulate_float.cpp	gameswf	-	82
 ear_clip_triangulate_sint16.cpp	gameswf	-	81
-file_util.cpp	game	core	2
+file_util.cpp	gameswf	-	2
 image.cpp	gameswf	-	37
 image_filters.cpp	gameswf	-	24
 jpeg.cpp	gameswf	-	3
-logger.cpp	game	core	6
+logger.cpp	gameswf	-	6
 membuf.cpp	gameswf	-	23
 png_helper.cpp	game	core	4
 postscript.cpp	gameswf	-	22
