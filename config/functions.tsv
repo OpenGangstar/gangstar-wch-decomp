@@ -8734,7 +8734,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d2c99	0xc8	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf	LODSceneNode::addLOD(irr::scene::ISceneNode*, float)
 0x002d2d61	0x132	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode15computeLODLevelEv	LODSceneNode::computeLODLevel()
 0x002d2e95	0x46	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode19OnRegisterSceneNodeEv	LODSceneNode::OnRegisterSceneNode()
-0x002d2edd	0x54	LODSceneNode.cpp	game	rendering	pending	_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshTransformedBoundingBox(irr::scene::ISceneNode const*) const
+0x002d2edd	0x54	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshTransformedBoundingBox(irr::scene::ISceneNode const*) const
 0x002d2f31	0x1e	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode25getTransformedBoundingBoxEv	LODSceneNode::getTransformedBoundingBox() const
 0x002d2f51	0xd0	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNodeC1EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_	LODSceneNode::LODSceneNode(int, irr::core::vector3d<float> const&, irr::core::quaternion const&, irr::core::vector3d<float> const&)
 0x002d3021	0x6c	LODSceneNode.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -12709,7 +12709,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034cb11	0x58	TouchScreenBase.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034cb69	0x14	TouchScreenBase.cpp	game	input	matched	_GLOBAL__I__ZN15TouchScreenBase14CLEAN_UP_DELAYE	_GLOBAL__I__ZN15TouchScreenBase14CLEAN_UP_DELAYE
 0x0034cb7d	0x44	TouchScreenBase.cpp	stlport	-	matched	_ZNSt4listIlSaIlEEC1IN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEEEET_S8_RKS0_	std::list<long, std::allocator<long> >::list<stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> > >(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::allocator<long> const&)
-0x0034cbc1	0x58	TouchScreenBase.cpp	game	input	pending	_ZNK15TouchScreenBase14getTouchIDListEv	TouchScreenBase::getTouchIDList() const
+0x0034cbc1	0x58	TouchScreenBase.cpp	game	input	matched	_ZNK15TouchScreenBase14getTouchIDListEv	TouchScreenBase::getTouchIDList() const
 0x0034cc19	0x1c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase15_TouchPointInfoD1Ev	TouchScreenBase::_TouchPointInfo::~_TouchPointInfo()
 0x0034cc35	0x64	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD0Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()

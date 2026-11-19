@@ -60,7 +60,8 @@
         {
             "name": "_GLOBAL__I__ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_",
             "address": "0x002d308d"
-        }
+        },
+        "_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE"
     ],
     "sections": [
         ".lod_vtable",
@@ -74,13 +75,13 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".lod_mesh_transformed"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
         "_ZN12LODSceneNode15computeLODLevelEv",
-        "_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE",
         "_ZN3irr5scene10ISceneNodeC2EiRKNS_4core8vector3dIfEERKNS2_10quaternionES6_",
         "_ZN3irr5scene10ISceneNodeD2Ev",
         "_ZN19CCustomSceneManager12CleanParentsEPN3irr5scene10ISceneNodeE",

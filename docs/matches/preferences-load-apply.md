@@ -36,7 +36,7 @@ corrected after independently checking this native boundary. No padding
 or compiler output was edited. Function SHA-256:
 `3df61033cdd31d8dd4bf215f841e00bbe3082ab7cf47eec2515b641352d9222d`.
 
-Canonical full verification passes 190 profiles and 10,512 function/section/region
+At this function's integration, full verification passed 190 profiles and 10,512 function/section/region
 comparisons. The affected caller/header closure passes five builds, 390 function
 comparisons, 247 sections and five regions. All old Preferences comparisons,
 including GetOrientation, SampleAndSave and both real D1 copies, remain enabled.
