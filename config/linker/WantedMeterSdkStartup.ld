@@ -7,6 +7,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_meter_update 0x0032c850 : { *sdk-startup-wantedmeter.o(.text._ZN11WantedMeter6updateEd) }
     .wanted_meter_destructor 0x0032c918 : { *sdk-startup-wantedmeter.o(.text._ZN11WantedMeterD1Ev .text._ZN11WantedMeterD2Ev) }
     .wanted_meter_delete 0x0032c8b4 : { *sdk-startup-wantedmeter.o(.text._ZN11WantedMeterD0Ev) }
     .wanted_meter_destructor_thunk 0x0032c904 : { *sdk-startup-wantedmeter.o(.text._ZThn4_N11WantedMeterD1Ev) }
@@ -29,3 +30,5 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+
+ASSERT(SIZEOF(.wanted_meter_update) == 80, "WantedMeter update extent");

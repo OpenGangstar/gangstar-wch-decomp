@@ -501,7 +501,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032c7e8 | WantedMeter::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032addd | Reward::update | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032c919 | WantedMeter destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c851 | WantedMeter::update | vehicle_side | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c851 | WantedMeter::update | — | COMPLETED | 100%; indexed-loop reuse plus permitted likelihood hint, exact80 and full190/10937 preservation | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032ae69 | Reward constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
@@ -1104,7 +1104,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | lock_init | BLOCKED | 1688/1668-byte supported candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | — | BLOCKED | Genuine-object replay 1688/native1668; native weak C1/GOT corrected, no link or credit | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 
@@ -1283,7 +1283,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | Mapping/call audit finds2 code-layout bytes plus2 padding gap, identical pools and16 call sites; no supported linkage/ABI correction. Historical147/127 proof separate; no replay. | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | Const-SDK context also identical616/native620; both accessor trials parked without integration or credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | — | BLOCKED | one unchanged context replay; 4 instruction/21 GOT differences in GC diagnostic; old destructor overlap blocks integration | src/game/rendering/GS3DStuff.cpp |
 
@@ -1334,3 +1334,143 @@ Coordinator completed the latest read-only queue triage and assigns prefs_loader
 Coordinator assigns player_update only Tutorial localization implementation. Volumes localization and setText require separate ownership before any future implementation. Shared string changes stay in isolated candidate mirrors; the coordinator alone integrates common declarations.
 
 Coordinator assigns vehicle_camera read-only queue triage for additional pending game functions with concrete absent canonical string/value/name APIs. Exclude active Tutorial and Volumes localization; no implementation ownership or compile permission is granted by triage. SetText remains parked.
+
+### Bounded pathfinding constructor review after PR735
+
+The coordinator owns only ComputeShortestPath at Thumb 0x00320ca1/1668.
+A separate ordinary-object fixture now proves the current PhysicInfo interface
+emits the accepted weak 96-byte C1 and a native GOT call. Old v5/v6 emitted a
+strong C1/direct call. One replay of the saved genuine-object algorithm is
+allowed after independently validating its genuine container/node interfaces
+with the target absent. No first-pass budget reset, unrelated body changes,
+flags, output edits, or unchecked overlapping verification image are allowed.
+
+The first private prerequisite gate rejected a generic array constructor: it
+changed existing CollisionBodyDef and LODSceneNode matches. That failed tree
+and full log are retained. Recovery removes only that generic constructor;
+the target will reuse the existing zero-storage PathArray initialization view
+for its two arrays. This restriction adds no body iteration and changes no
+existing matched function. A fresh full target-absent gate is required.
+
+The coordinator reviewed and parked the single current-interface replay. The
+restricted target-absent prerequisite passed all 190 profiles and 10,935
+comparisons with 952 frozen inputs stable. The body is 1,688/native 1,668 bytes,
+frame 460; C1 is the accepted weak 96-byte constructor with R_ARM_GOT32 call,
+and only the target is newly emitted. The probe stopped before linking. No
+post-body closure or matching percentage is claimed. Public unapplied patch,
+Windows prelink reproducer and exact limits are preserved under
+nonmatching/characters/ComputeShortestPath*. Ownership is released; no further
+source iteration is authorized without new evidence.
+
+### Bounded const-array octree query review after PR735
+
+The coordinator owns only getPolysIter at Thumb 0x002dd33d/620. All six
+archived forms use raw array fields. The genuine release size/indexed interfaces
+now established by the checkpoint and lower-cost-node matches justify one
+const-array accessor adaptation of saved v5. First validate the ordinary const
+operator[] interface with the target absent across all profiles. No traversal,
+comparison, field, flag, helper, or existing-body changes are authorized.
+
+The private const-overload gate failed an existing WeaponManager function/section
+and two dependents skipped. That header change is rejected and preserved only
+privately. Native root-array fields are mutable pointers even on a const node;
+the single body adaptation will use the existing non-const indexed accessor
+and size(), removing the old candidate local pointer's unnecessary constness.
+No header changes are needed. All 945 canonical native inputs remain identical
+to the accepted full 190-profile/10,935-comparison proof; that exact target-absent
+baseline is reused after hashing every input, rather than claiming the rejected
+const-overload gate passed. No body trial has occurred before this correction.
+
+The coordinator reviewed the octree replay and released ownership. Its only
+new definition is getPolysIter; function and section remain 616/native 620
+bytes, with 16 normalized relocations identical to archived v5. Eight raw byte
+offsets differ from that old object; this is not a linked/native comparison or
+a claimed improvement. The single body adaptation is parked before linking.
+No traversal/comparison/field/flag changes, shared headers, canonical bodies,
+assembly markers or matching credit were integrated. The failed const-overload
+prerequisite and the existing-interface replay are retained separately.
+
+Read-only queue audits also confirmed WantedMeter::update has six saved forms
+(100, 84, 84, 84, 88, 88 bytes against native 80); current interfaces provide no
+new call/layout gap. No replay was performed. ScriptManager::reachRunningCommand
+uses raw script arrays, not the recovered list iterator; six saved source forms
+remain parked. The six unregistered PVRTC entries remain unchanged and pending:
+legacy dependency-family evidence exists, but exact wrapper/revision attribution
+is unresolved. No source assignment or provenance correction was made for them.
+
+| libsanangeles.so | 0x00331a09 | WeaponManager::getKeepWeaponsWhenBustedCost() compiler diagnostic only | — | COMPLETED | Diagnostic complete; both entire objects reproduced, PHI/zero-order divergence isolated; canonical 100% match unchanged | src/game/combat/WeaponManager.cpp |
+
+The coordinator will compare the accepted and rejected-header contexts using
+compiler tree/RTL dumps, after proving diagnostic output matches each archived
+object. No existing function body, production flag or shared header may change.
+
+A new two-context diagnostic reproduces both complete WeaponManager objects
+byte for byte with compiler dumps enabled. The only input difference is the
+genuine const array accessor. Equivalent trees first differ in PHI order, then
+SSA destruction reverses i/total zero initialization; final assembly removes
+one Thumb zero instruction and two alignment bytes. This measured cause
+permits one additional private octree const-accessor context check, retaining
+the saved const pointer and genuine SDK read APIs. It does not authorize
+integration of the regressing header or any unrelated body change.
+
+The two diagnostic compiles reproduce the entire accepted 264-byte and rejected
+260-byte WeaponManager objects exactly. Each contains 116 numbered dumps.
+After temporary/SSA-name normalization, PHI ordering first differs during SSA
+construction; statements remain equivalent through uncprop, and SSA destruction
+reverses i/total initialization. Final assembly removes one zero instruction
+and two alignment bytes before the unchanged 16-byte literal pool. Pinned GCC
+4.2.1 sources explain a consistent declaration-ID/hash/PHI-order mechanism;
+Android patch identity is not assumed. See docs/COMPILER-CONTEXT.md. No dummy
+declarations, production flags or existing body changes are proposed. Diagnostic
+ownership is released. The additional genuine const-SDK octree context is
+byte-identical to the first 616-byte accessor replay and is also parked before
+linking; no further iteration is authorized without new evidence.
+
+### WantedMeter current-context bounded review
+
+The coordinator reviewed and released the old vehicle_side assignment, then
+claimed only WantedMeter::update(double), Thumb 0x0032c851/80. Six saved forms
+remain exhausted. The saved first form has four source-level
+SetAnim/UpdateFrame calls; later forms have two. These source counts alone do
+not establish the emitted static call inventory. Since then the actual
+WantedLevelManager fields have been recovered as four doubles and two bools,
+replacing opaque byte arrays without changing layout. The measured declaration
+ordering diagnostic justifies one current-context replay of the faithful
+peeled-loop form. First validate only its ordinary friend access declaration
+with the target absent; no field, algorithm, production flag or old body change.
+
+The current first-form replay emits 100/native80 bytes and only the target.
+Assembly review found that GCC peels another iteration, emitting six static
+animation calls, not the four counted in its source. The earlier selection
+rationale incorrectly equated source calls with emitted calls; it is corrected
+here. This concrete compiler-peeling evidence authorizes one additional bounded
+replay of saved v3, the ordinary pointer loop, against the same independently
+preserved prerequisite. It must verify the emitted call inventory before any
+matching claim; no new algorithm, declaration, flag or source variation. The
+first replay remains a failed, counted attempt, not a budget reset.
+
+The saved-v3 current replay emits 84/native80 bytes, only the target, and the
+native four animation call sites. Assembly isolates an outlined timer<=0
+addition with an extra branch and one extra this-to-array-pointer copy. This
+new emitted-CFG evidence authorizes one ordinary __builtin_expect(cond,1) on
+that existing timer condition, as permitted by the maintainer clarification.
+No other source, declaration or flag change is authorized. Any credit still
+requires the complete native function and affected existing comparisons.
+
+The single pointer-loop likelihood form remains 84/native80 bytes. It restores
+the native timer branch layout, leaving a this-to-pointer copy and alignment
+gap. The coordinator authorizes one final bounded reuse of the saved indexed
+loop (also the traversal style of matched WantedMeter::draw2d) with the same
+hint. This uses the actual fixed member array and removes the explicit cursor
+local; no invented declarations or register controls. Stop after this form
+unless a complete exact match warrants ordinary integration/closure checks.
+
+The final indexed-loop likelihood candidate matches all 80 native function
+bytes and its complete physical section. Root full verification passed all
+190 profiles and 10,937 comparisons (5,426 functions, 5,330 sections, 181
+regions), exit 0, no mismatch or skip, all 955 frozen inputs stable. Native and
+linked SHA256 is 5d1df700fb9cbc7586421a81c2db36f0dc6da836ffc63d7d7f8056928be2af74.
+The coordinator accepted it, removed only its verified assembly marker and
+released ownership. The GNU hint and exact comparison output are documented
+in docs/matches/wanted-meter-update.md. Constructor aliases remain pending;
+no Fully Linked credit is added. No existing matched body changes.

@@ -72,3 +72,21 @@ WantedMeter::~WantedMeter()
     for (int i = 0; i < 5; ++i)
         delete stars[i];
 }
+
+#include "WantedMeter.h"
+#include "../characters/AnimObject.h"
+
+void WantedMeter::update(double)
+{
+    if (!(flags & 1))
+        return;
+
+    int firstAnimation = frame;
+    if (__builtin_expect(WantedLevelManager::getInstance()->unknown72 <= 0, 1))
+        firstAnimation += 5;
+
+    for (int i = 0; i < 5; ++i) {
+        stars[i]->SetAnim(firstAnimation + i);
+        stars[i]->UpdateFrame();
+    }
+}

@@ -1,0 +1,115 @@
+diff --git a/src/game/core/Array.h b/src/game/core/Array.h
+--- a/src/game/core/Array.h
++++ b/src/game/core/Array.h
+@@ -18,10 +18,15 @@
+
+ // Observed fork storage/call view only; not a general container implementation.
+ // Item's TU initializes and cleans up its static instance explicitly.
++void operator delete(void*) throw();
++
+ namespace irr { namespace core {
+ template<class T> class irrAllocator;
+ template<class T, class Alloc = irrAllocator<T> > class array {
+ public:
++    void clear() { ::operator delete(data); data=0; used=0; allocated=0; is_sorted=true; }
++    void erase(unsigned int index) { for(unsigned int i=index+1;i<used;++i) data[i-1]=data[i]; --used; }
++    int linear_reverse_search(const T& value) const { for(int i=used-1;i>=0;--i) if(data[i]==value) return i; return -1; }
+     T* data;
+     unsigned int allocated;
+     unsigned int used;
+diff --git a/src/game/characters/PhysicAttributes.h b/src/game/characters/PhysicAttributes.h
+--- a/src/game/characters/PhysicAttributes.h
++++ b/src/game/characters/PhysicAttributes.h
+@@ -25,6 +25,8 @@
+         }
+     };
+ public:
++    void ComputeShortestPath(int,int,irr::core::vector3d<float>,irr::core::vector3d<float>,float);
++    static unsigned short m_AStarStatusIncrement;
+     static void LoadArrays(char*);
+     static int MATERIAL_TYPE_ROAD, MATERIAL_TYPE_PARK, MATERIAL_TYPE_BUILDING_BASE, MATERIAL_TYPE_INTERSECTION, MATERIAL_TYPE_CLIFF, MATERIAL_TYPE_WATER;
+     static int MATERIAL_TYPE_DEATH_WATER;
+diff --git a/src/game/characters/PhysicAttributes.cpp b/src/game/characters/PhysicAttributes.cpp
+--- a/src/game/characters/PhysicAttributes.cpp
++++ b/src/game/characters/PhysicAttributes.cpp
+@@ -137,6 +137,11 @@
+     AStarNode() : triangleOffset(65535), region(65535),
+         parentTriangleOffset(65535), parentRegion(65535), cost(0), pathCost(0),
+         unknown16(0), unknown18(0), unknown20(65535) {}
++    AStarNode(unsigned short triangle,unsigned short buffer,unsigned short parentTriangle=0,unsigned short parentBuffer=0,float path=0,float heuristic=0)
++        : triangleOffset(triangle),region(buffer),parentTriangleOffset(parentTriangle),parentRegion(parentBuffer),cost(path+heuristic),pathCost(path),unknown16(0),unknown18(0),unknown20(static_cast<unsigned short>(-1)) {}
++    bool operator==(const AStarNode& other) const {
++        return *reinterpret_cast<const unsigned int*>(this)==*reinterpret_cast<const unsigned int*>(&other);
++    }
+     unsigned short triangleOffset, region;
+     unsigned short parentTriangleOffset, parentRegion;
+     float cost, pathCost;
+@@ -613,3 +618,68 @@
+     *index = selected;
+     return best;
+ }
++
++
++
++void PhysicAttributes::ComputeShortestPath(int infoIndex,int mode,irr::core::vector3d<float> source,irr::core::vector3d<float> destination,float)
++{
++    PathArray closed,open;
++    PhysicInfo target;
++    m_AStarStatusIncrement+=3;
++    if(info[infoIndex].unknown8==static_cast<unsigned short>(-1)) {
++        if(open.free_when_destroyed) ::operator delete(open.data);
++        if(closed.free_when_destroyed) ::operator delete(closed.data);
++        return;
++    }
++    pathTarget=destination;
++    AStarNode first(info[infoIndex].unknown8,info[infoIndex].unknown0,static_cast<unsigned short>(-1),static_cast<unsigned short>(-1),0.0f,(source-destination).getLengthSQ());
++    open.push_back(first);
++    int selected=-1;
++    while(open.used) {
++        int index;
++        AStarNode current=FindLowerCostNode(&open,&index);
++        s_neighbors[current.region][6][static_cast<unsigned short>(current.triangleOffset/3)]=m_AStarStatusIncrement+2;
++        closed.push_back(current);
++        open.erase(index);
++        for(int edge=0;edge<3;++edge) {
++            unsigned short triangle=static_cast<unsigned short>(current.triangleOffset/3);
++            unsigned short next=s_neighbors[current.region][edge][triangle];
++            unsigned short region=s_neighbors[current.region][edge+3][triangle];
++            if(next==static_cast<unsigned short>(-1) || s_nodeCost[mode][region]==999.0f) continue;
++            if(mode==1 && ((s_neighborsWrongWay[current.region][triangle]&3)==edge+1 || ((s_neighborsWrongWay[current.region][triangle]>>2)&3)==edge+1)) continue;
++            unsigned short nextTriangle=static_cast<unsigned short>(next/3);
++            unsigned short state=s_neighbors[region][6][nextTriangle];
++            if(state==m_AStarStatusIncrement+2) continue;
++            irr::core::vector3d<float> a=GetTriCenter(current.region,current.triangleOffset);
++            irr::core::vector3d<float> b=GetTriCenter(region,next);
++            if(state==m_AStarStatusIncrement+1) {
++                int found=open.linear_reverse_search(AStarNode(next,region));
++                float cost=current.pathCost+(a-b).getLengthSQ()*s_nodeCost[mode][region];
++                if(cost<open.data[found].pathCost) {
++                    open.data[found].parentTriangleOffset=current.triangleOffset;
++                    open.data[found].parentRegion=current.region;
++                    open.data[found].cost=cost+(b-destination).getLengthSQ();
++                    open.data[found].pathCost=cost;
++                }
++            } else {
++                float cost=current.pathCost+(a-b).getLengthSQ()*s_nodeCost[mode][region];
++                AStarNode node(next,region,current.triangleOffset,current.region,cost,(b-destination).getLengthSQ());
++                s_neighbors[region][6][nextTriangle]=m_AStarStatusIncrement+1;
++                open.push_back(node);
++            }
++        }
++        selected=closed.linear_reverse_search(AStarNode(target.unknown8,target.unknown0));
++        if(selected!=-1) break;
++    }
++    pathLength=0;
++    path.clear();
++    while(selected!=-1) {
++        ++pathLength;
++        path.insert(closed.data[selected],0);
++        int next=closed.linear_reverse_search(AStarNode(closed.data[selected].parentTriangleOffset,closed.data[selected].parentRegion));
++        if(selected==next) break;
++        selected=next;
++    }
++    if(open.free_when_destroyed) ::operator delete(open.data);
++    if(closed.free_when_destroyed) ::operator delete(closed.data);
++}

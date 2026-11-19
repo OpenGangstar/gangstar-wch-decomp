@@ -11470,7 +11470,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c7e8	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_NK11WantedMeter6draw2dEv	non-virtual thunk to WantedMeter::draw2d() const
 0x0032c7fd	0x38	WantedMeter.cpp	game	missions	matched	_ZNK11WantedMeter6draw2dEv	WantedMeter::draw2d() const
 0x0032c835	0x1c	WantedMeter.cpp	game	missions	matched	__tcf_2	__tcf_2
-0x0032c851	0x50	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeter6updateEd	WantedMeter::update(double)
+0x0032c851	0x50	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeter6updateEd	WantedMeter::update(double)
 0x0032c8a0	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_N11WantedMeterD0Ev	non-virtual thunk to WantedMeter::~WantedMeter()
 0x0032c8b5	0x50	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD0Ev	WantedMeter::~WantedMeter()
 0x0032c904	0x14	WantedMeter.cpp	game	missions	matched	_ZThn4_N11WantedMeterD1Ev	non-virtual thunk to WantedMeter::~WantedMeter()
