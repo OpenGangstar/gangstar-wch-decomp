@@ -1008,7 +1008,7 @@ Coordinator approves one contextual replay per parked volume/pitch function afte
 | libsanangeles.so | 0x002e1f65 | GSFailure::dtor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 | libsanangeles.so | 0x002e1fd5 | GSFailure::ctor(StateMachine const*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 
-| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | hud_registration | BLOCKED | 98/308 bytes (unmatched) | src/game/app/GSFailure.cpp |
+| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | — | BLOCKED | One bounded early-byte-alpha capture and unchanged-form control emit identical 284-byte targets versus native 308; stopped prelink, no owner closure or credit. Private static failure getter and device include only; no shared change integrated. Historical 98/308 means same-offset byte equality, not function extent. Ownership released after review. | src/game/app/GSFailure.cpp |
 
 | libsanangeles.so | 0x002e20dd | GSFailure::update(StateMachine*) | — | COMPLETED | 100% | src/game/app/GSFailure.cpp |
 | libsanangeles.so | 0x002d3be1 | MediaPlayerIPhone::playMovie(char const*) | — | COMPLETED | 100% | src/game/app/MediaPlayerIPhone.cpp |

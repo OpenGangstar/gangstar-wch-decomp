@@ -308,3 +308,24 @@ The owner retains all 70 existing function checks, 13 section checks and
 gate. The private explicit frozen-bit declaration and candidate were not
 integrated. No matching credit was added; further expression variants require
 new evidence.
+
+### Failure overlay alpha capture
+
+`GSFailure::draw2d` at Thumb `0x002e1e15` narrows its positive alpha value to a
+byte before the second failure-cause call. One bounded escalation of archived
+form four explicitly captured that byte before constructing the overlay color.
+The unchanged archived form was also compiled as a current-context control.
+Both emit the identical complete 284-byte unlinked target, versus native 308:
+SHA256 `b640f66c9562e779567cbc1a7f2ba0b7b842e4a97f6d0d1254649ae05e89c45b`.
+Both define only the intended new function. Explicit source narrowing does not
+restore the native lifetime/register choice in this experiment.
+
+The first attempt did not compile: the current device type was incomplete and
+the failure getter was declared nonstatic. The private contexts then included
+`IrrlichtDevice.h` and declared the failure getter static, following the already
+recorded native call evidence. These changes enabled the diagnostics; they
+were not integrated or given a shared-header preservation proof. The successful
+compiler/assembler runs deliberately stop at the extent guard before linking;
+no owner or full-profile native closure is claimed. No function or marker was
+changed in production. The old registry's `98/308` described same-offset byte
+equality for a different 308-byte form, not a 98-byte reconstruction.
