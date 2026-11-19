@@ -148,18 +148,9 @@ public:
 } // namespace gameswf
 
 #include "RetailSwfString.h"
+#include "RetailSwfValue.h"
 
 namespace gameswf {
-
-class as_value {
-public:
-    explicit as_value(const char* value);
-    explicit as_value(int value);
-    ~as_value() __attribute__((long_call));
-
-private:
-    unsigned char storage[40] __attribute__((aligned(8)));
-};
 
 class as_object {
 public:
