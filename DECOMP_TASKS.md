@@ -519,7 +519,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003edde5 | RenderFX::Load | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | coordinator | REVIEW | Exact 124-byte target and two native literal sections verified in all three images; all 616 functions, 326 sections and five GOT checks pass. Full coordinator gate pending. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | — | COMPLETED | 100%; exact 124-byte target and both 24-byte physical literal sections verified in three images. Full 190-profile/10,557-comparison gate passes. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | — | COMPLETED | 100%; exact 240-byte native definition in all three images, full 190-profile/10,545-comparison gate passes. Original source remains incomplete, so no Fully Linked credit. | src/game/rendering/menufx.cpp |
@@ -1075,7 +1075,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002ff181 | NPC::_detect() | hud_glyphs | BLOCKED | 1100/1104-byte candidate; three distinct forms identical | src/game/ai/NPC.cpp |
 
-| libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | vehicle_camera | ASSIGNED | Read-only SDK/call-interface audit of old collision-filter forms using current actual body/shape/user-data interfaces. No source or compiler trial authorized. | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | — | BLOCKED | Six old forms reviewed; faithful unhinted candidate is 1,084 versus 1,100 bytes. Corrected forms already model actual APIs and native custom filtering; no new source gap found. | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003179d5 | LevelObject::CastRay(vector3df const&, vector3df const&, vector3df&, vector3df&, LevelObject*&, bool) | hud_glyphs | BLOCKED | 1484/1504 bytes; unchanged-context replay stopped | src/game/world/LevelObject.cpp |
 
 | libsanangeles.so | 0x0034b6f5 | std::__stl_throw_out_of_range(char const*) | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
@@ -1240,7 +1240,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003eed69 | RenderFX::SearchIndex::Find(char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ecf05 | RenderFX::SetColorTransform(gameswf::character*, unsigned int, unsigned int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18c5 | nativeExit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
-| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | player_update | ASSIGNED | Read-only matched-relative audit of old Find forms versus newly exact character collection/name/string helpers; no compilation authorized. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | player_update | IN_PROGRESS | One faithful v4 trial using the newly exact name/c_str chain is authorized. Preserve first-byte, substring, parser and manual parent cleanup semantics; no metadata-length substitution or parent-call replacement. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | lock_init | BLOCKED | six candidates; best 476/488 bytes, old 108 functions and headers exact; no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d18f9 | nativedetectPhoneLang | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d192d | nativeUnlockDemo | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
@@ -1249,7 +1249,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1995 | nativeGetNumLaunch | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | hud_glyphs | BLOCKED | source344/368; two flag diagnostics fail old strict linking, no flag adopted | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | vehicle_camera | ASSIGNED | Read-only matched-relative audit against actual gameswf callback/value interfaces and newly exact name/string helper chain; recover old evidence before any trial. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | BLOCKED | five source forms; native-size248 but 12 bytes differ in cold-tail order, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | hud_registration | BLOCKED | six source forms; native-size356 but branch/register differences, no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | BLOCKED | five forms; best852 differs, current110 old functions and headers preserved; no credit | src/game/rendering/menufx.cpp |

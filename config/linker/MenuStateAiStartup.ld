@@ -39,6 +39,10 @@ _ZN5Menus24s_helpSpecializedEntriesE = 0x0047b1b8;
 INCLUDE config/linker/MenuWidgetMissionSections.ld
 SECTIONS
 {
+    .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
+    .renderfx_found_child 0x0044ddf8 : { *renderfx-animation.o(.rodata.renderfx_found_child) }
+    .renderfx_child_sprite 0x0044de10 : { *renderfx-animation.o(.rodata.renderfx_child_sprite) }
+
     .renderfx_collect_characters 0x003ed1bc : { *renderfx-animation.o(.text._ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci) }
     .menu_anims_enabled 0x002e3f84 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15areAnimsEnabledEv) }
     .menu_state_hide 0x002e8654 : { *ai-startup-menustate.o(.text._ZN9MenuState4HideEv) }
@@ -362,3 +366,9 @@ ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
 ASSERT(SIZEOF(.menu_state_hide) == 104, "MenuState Hide native104B extent");
 
 ASSERT(SIZEOF(.renderfx_collect_characters) == 240, "native CollectCharacters dependency span");
+
+printf = 0x001c4058;
+puts = 0x001c41b4;
+ASSERT(SIZEOF(.renderfx_trace_context) == 124, "native TraceContext strict span");
+ASSERT(SIZEOF(.renderfx_found_child) == 24, "native found-child format extent");
+ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");

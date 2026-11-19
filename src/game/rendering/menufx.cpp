@@ -1501,3 +1501,24 @@ void RenderFX::CollectCharacters(gameswf::character* character, const char* name
             CollectCharacters(children.elements[i], name, flags);
     }
 }
+
+namespace {
+
+static const char foundChildFormat[] __attribute__((section(".rodata.renderfx_found_child"))) =
+    "Found child named %s\n";
+static const char childSpriteMessage[] __attribute__((section(".rodata.renderfx_child_sprite"))) =
+    "child is a sprite ...";
+
+} // namespace
+
+void RenderFX::DBG_TraceContextInformation(gameswf::character* character)
+{
+    const gameswf::array<gameswf::character*>& children = FindCharacters(character, 0, 0);
+    for (int i = 0; i < children.size; ++i) {
+        const CharacterCollectionFields* child = reinterpret_cast<const CharacterCollectionFields*>(children.elements[i]);
+        printf(foundChildFormat, child->get_name().c_str());
+        gameswf::character* current = children.elements[i];
+        if (animationMethods(current).is(current, 2))
+            puts(childSpriteMessage);
+    }
+}

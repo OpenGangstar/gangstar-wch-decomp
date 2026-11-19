@@ -283,7 +283,8 @@
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
         "_ZN9MenuState4HideEv",
         "_ZNK11MenuManager15areAnimsEnabledEv",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+        "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE"
     ],
     "sections": [
         ".help_empty_icon",
@@ -378,7 +379,10 @@
         ".renderfx_send_9",
         ".menu_state_hide",
         ".menu_anims_enabled",
-        ".renderfx_collect_characters"
+        ".renderfx_collect_characters",
+        ".renderfx_trace_context",
+        ".renderfx_found_child",
+        ".renderfx_child_sprite"
     ],
     "retail_got": true,
     "external_thumb_functions": [

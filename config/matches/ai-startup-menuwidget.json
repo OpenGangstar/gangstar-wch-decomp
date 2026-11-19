@@ -221,7 +221,8 @@
         "_ZN8RenderFX11SearchIndex4FindEPKc",
         "_ZN8RenderFX9SendEventERNS_5EventE",
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+        "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE"
     ],
     "sections": [
         ".volumesButton",
@@ -390,7 +391,10 @@
         ".renderfx_send_7",
         ".renderfx_send_8",
         ".renderfx_send_9",
-        ".renderfx_collect_characters"
+        ".renderfx_collect_characters",
+        ".renderfx_trace_context",
+        ".renderfx_found_child",
+        ".renderfx_child_sprite"
     ],
     "retail_got": true,
     "external_thumb_functions": [
