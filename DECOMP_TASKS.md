@@ -645,23 +645,23 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ed809 | Widgets::DemoBuy::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002edd6d | Widgets::IGMenu::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ee979 | Widgets::Tutorial::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ef6f5 | Widgets::Tutorial::UpdateLocalization | — | COMPLETED | 100%; native464 exact in owner and consumer. Combined190-profile10644-check root gate passes with previous matches retained; shared value/string interfaces and genuine name chain reused. | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef6f5 | Widgets::Tutorial::UpdateLocalization | — | COMPLETED | 100%; native464 exact in owner and consumer. Combined190-profile10656-check root gate passes with previous matches retained; shared value/string interfaces and genuine name chain reused. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecd99 | Widgets::Volumes::Hide | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ee409 | Widgets::Statistics::Show | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ef0b1 | Widgets::Corruption::UpdateLocalization | coordinator | IN_PROGRESS | Read-only genuine character-name chain relevance audit; old typed SetText forwarding alone was irrelevant. No source trial authorized. | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ef415 | Widgets::Volumes::UpdateLocalization | — | COMPLETED | 100%; ordinary truth-value mute selections and authentic UTF8 interfaces match736 in both images, no hints. Full190-profile10644-comparison coordinator gate passes; no Fully Linked credit. | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef0b1 | Widgets::Corruption::UpdateLocalization | — | BLOCKED | Coordinator source audit finds only static paths and no borrowedname/string/value construction. Real name chain irrelevant; prior three identical forms and typed SetText forwarding supply no new correction. | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef415 | Widgets::Volumes::UpdateLocalization | — | COMPLETED | 100%; ordinary truth-value mute selections and authentic UTF8 interfaces match736 in both images, no hints. Full190-profile10656-comparison coordinator gate passes; no Fully Linked credit. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ee67d | Widgets::Achievements::SetCategory | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002edfbd | Widgets::ConfirmPayment::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002edec1 | Widgets::Confirm::UpdateLocalization | player_update | IN_PROGRESS | Three native borrowed-name reads prove relevant SDKchain absent from six old forms. One faithful hint-free strict252 trial authorized using existing shared name view, original receiver reloads and all old checks. | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002edec1 | Widgets::Confirm::UpdateLocalization | — | COMPLETED | 100%;252 nativecode bytes and compiler-generated vtable36-symbol/40-section match bothimages. Full190-profile10656-comparison coordinator gate passes; no Fully Linked credit. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002eec15 | Widgets::Statistics::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ee2c1 | Widgets::Statistics::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ee489 | Widgets::Achievements::UpdateLocalization | — | BLOCKED | Saved candidate is500/native500 with only8 spill-slot bytes different, not492-byte size. No borrowedname/string/value dataflow; SDK name chain irrelevant. No replay. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ee6ed | Widgets::Controls::UpdateLocalization | — | BLOCKED | Six old292-byte forms; no borrowedname/string/value flow and current HUD fields agree with native widths/choice data. New name chain irrelevant; no replay. | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ef901 | Widgets::Objective::OnEvent | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ef901 | Widgets::Objective::OnEvent | — | BLOCKED | Actual Thumb/GOT modes already correct; native duplicates a call that old248 candidate merges, with frame/register differences. Event name is already a pointer; no relevant SDK correction. No replay. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002eeda1 | Widgets::Achievements::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ef9fd | Widgets::MainMenu::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent | camera_tap | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent | — | BLOCKED | Two historical six-form waves exhausted; event-name pointer and native singleton/playback call modes already correct. Relocated320-byte diagnostics are not native proof; no new ABI/helper gap. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002f01c5 | Widgets::Volumes::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002f0249 | Widgets::Arrows::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -1236,7 +1236,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d1ddd | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeGetTotalSoundsOfSameInstance | — | COMPLETED | 100% | src/game/app/jni_GLMediaPlayer.c |
 | libsanangeles.so | 0x002d1869 | nativeOpenBrowser | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eeb71 | RenderFX::SetMember(char const*, char const*, char const*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eca0d | CanHandleMouseEvent(gameswf::character*) | — | COMPLETED | 100%; exact92 in owner and both consumers. Combined190-profile10644-check root gate passes; only actualnameaccess expression changed, no hints/flags/data. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eca0d | CanHandleMouseEvent(gameswf::character*) | — | COMPLETED | 100%; exact92 in owner and both consumers. Combined190-profile10656-check root gate passes; only actualnameaccess expression changed, no hints/flags/data. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eccd9 | GetLocalPosition(gameswf::character*, float, float) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eca69 | sprite_can_handle_mouse_event_callback(gameswf::character*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002d1835 | nativeNotifyPause | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
