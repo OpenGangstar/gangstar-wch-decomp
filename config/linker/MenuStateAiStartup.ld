@@ -44,6 +44,17 @@ INCLUDE config/linker/WidgetConfirmLocalization.ld
 
 SECTIONS
 {
+    .service_weaponshop_notify 0x002eb920 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.service_weaponshop_notify) == 188, "ServiceWeaponShop Notify must retain native 188-byte extent")
+
+    .infos_notify 0x002ea7f4 : { *ai-startup-menustate.o(.text._ZN5Menus5Infos6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.infos_notify) == 304, "Infos Notify must retain native 304-byte extent")
+    .infos_notify_table 0x0041a070 : { *ai-startup-menustate.o(.rodata._ZN5Menus5Infos6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.infos_notify_table) == 20, "Infos switch table must retain native 20-byte extent")
+
+    .option_volumes_notify 0x002eb084 : { *ai-startup-menustate.o(.text._ZN5Menus13OptionVolumes6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.option_volumes_notify) == 168, "OptionVolumes Notify must retain native 168-byte extent")
+
     .services_notify 0x002eb5d8 : { *ai-startup-menustate.o(.text._ZN5Menus8Services6NotifyEPK10MenuWidgeti) }
     ASSERT(SIZEOF(.services_notify) == 208, "Services Notify must retain native 208-byte extent")
     .servicesWeaponShopName 0x00418fdc : { *ai-startup-menustate.o(.rodata.servicesWeaponShopName) }

@@ -212,6 +212,7 @@ protected:
 class ServiceWeaponShop : public Services {
 public:
     explicit ServiceWeaponShop(const char* name);
+    void Refresh();
     virtual inline ~ServiceWeaponShop() __attribute__((used));
     virtual void GotFocus();
     virtual void LostFocus();
@@ -1791,6 +1792,142 @@ bool Menus::Services::Notify(const MenuWidget* widget, int event)
         case 2: _ZN11MenuManager8switchToEPKcb(manager, servicesCarRentalName, false); break;
         case 3: _ZN11MenuManager8switchToEPKcb(manager, serviceCorruptionName, false); break;
         }
+        return true;
+    }
+    return false;
+}
+
+namespace Widgets {
+class Volumes : public MenuWidget {
+public:
+    Volumes();
+    virtual void Show();
+    virtual void Hide(bool);
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    void SetPlaylist(int playlist);
+
+private:
+    static int s_playlist;
+    int selectedPlaylist;
+};
+}
+
+bool Menus::OptionVolumes::Notify(const MenuWidget* widget, int event)
+{
+    if (Options::Notify(widget, event))
+        return true;
+    Widgets::Volumes* volumes = static_cast<Widgets::Volumes*>(MenuManager::getInstance()->getWidgetByIndex(7));
+    if (widget != volumes)
+        return false;
+    const int previous = selectedChannel;
+    int playlist;
+    if (event == 1) {
+        playlist = --selectedChannel;
+        if (playlist < -2)
+            playlist = selectedChannel = SoundManager::getInstance()->getPlaylistCount() - 1;
+    } else if (event == 2) {
+        ++selectedChannel;
+        if (selectedChannel >= SoundManager::getInstance()->getPlaylistCount())
+            playlist = selectedChannel = -2;
+        else
+            playlist = selectedChannel;
+    } else {
+        return false;
+    }
+    if (previous == playlist)
+        return false;
+    volumes->SetPlaylist(playlist);
+    volumes->UpdateLocalization();
+    return true;
+}
+
+bool Menus::Infos::Notify(const MenuWidget* widget, int event)
+{
+    if (InGameMenu::Notify(widget, event))
+        return true;
+
+    MenuManager* manager = MenuManager::getInstance();
+    const Widgets::IGMenu* menu = static_cast<const Widgets::IGMenu*>(manager->getWidgetByIndex(1));
+    if (!(widget == menu && event == 2))
+        return false;
+
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(222, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+
+    switch (menu->GetLastPressedButton()) {
+    case 0:
+        _ZN11MenuManager8switchToEPKcb(manager, infoAchievementsName, false);
+        break;
+    case 1:
+        _ZN11MenuManager8switchToEPKcb(manager, infoStatisticsName, false);
+        break;
+    case 2:
+        _ZN11MenuManager8switchToEPKcb(manager, infoHelpName, false);
+        break;
+    case 3:
+        _ZN11MenuManager8switchToEPKcb(manager, infoAboutName, false);
+        break;
+    case 4:
+        _ZN11MenuManager10clearFocusEv(manager);
+        if (_ZN9GSLoading12isGameLoadedEv()) {
+            unknown104 = true;
+            Dialog* confirmation = static_cast<Dialog*>(manager->getState(confirmMenuName));
+            confirmation->SetMessage(static_cast<const Mission*>(ScriptManager::getInstance()->getMission())->getState() == 4
+                ? 0x1021 : 0x1020);
+            manager->push(confirmMenuName, false);
+        } else {
+            launchTwitter();
+        }
+        break;
+    }
+    return true;
+}
+
+namespace Widgets {
+class Shop : public MenuWidget {
+public:
+    Shop();
+    void SetAvailabilityText(int id);
+    int GetSelectedItem() const;
+    void Reset();
+    void SetItem(int index, int textId, int value, const char* frame, int flags);
+    virtual void OnEvent(RenderFX::Event& event);
+    virtual void UpdateLocalization();
+
+private:
+    struct Item {
+        Item() : textId(-1), value(0), flags(0) {}
+        int textId;
+        int value;
+        int flags;
+    };
+    Item items[4];
+    int selectedItem;
+    int availabilityTextId;
+};
+}
+
+bool Menus::ServiceWeaponShop::Notify(const MenuWidget* widget, int event)
+{
+    if (Services::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    Widgets::Arrows* arrows = static_cast<Widgets::Arrows*>(manager->getWidgetByIndex(18));
+    Widgets::Shop* shop = static_cast<Widgets::Shop*>(manager->getWidgetByIndex(3));
+    if (widget == arrows) {
+        if (static_cast<unsigned int>(event) - 1u > 1u)
+            return false;
+        Refresh();
+        return true;
+    }
+    if (widget == shop && event == 1) {
+        const int selected = shop->GetSelectedItem();
+        selectedWeapon = arrows->GetCurrentPage() * 4 + selected;
+        static_cast<Dialog*>(manager->getState(confirmMenuName))->SetMessage(0x1024);
+        manager->push(confirmMenuName, false);
         return true;
     }
     return false;
