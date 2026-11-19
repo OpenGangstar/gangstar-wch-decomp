@@ -133,6 +133,10 @@ irr::scene::ISceneNode* PhysicAttributes::GetSceneNodeFromID(irr::scene::ISceneN
 }
 
 struct AStarNode {
+    // Native default record: invalid keys, zero costs/state, invalid final key.
+    AStarNode() : triangleOffset(65535), region(65535),
+        parentTriangleOffset(65535), parentRegion(65535), cost(0), pathCost(0),
+        unknown16(0), unknown18(0), unknown20(65535) {}
     unsigned short triangleOffset, region;
     unsigned short parentTriangleOffset, parentRegion;
     float cost, pathCost;
@@ -591,4 +595,21 @@ void PhysicAttributes::LoadArrays(char* filename)
     s_nodeCost[1][MATERIAL_TYPE_CLIFF]=999.0f;
     s_nodeCost[1][MATERIAL_TYPE_WATER]=999.0f;
     s_nodeCost[1][MATERIAL_TYPE_DEATH_WATER]=999.0f;
+}
+
+
+AStarNode PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode>* nodes, int* index)
+{
+    AStarNode best;
+    int minimum = 999999999;
+    int selected = 0;
+    for (int i = 0; nodes->size() > static_cast<unsigned int>(i); ++i) {
+        if ((*nodes)[i].cost < minimum) {
+            best = (*nodes)[i];
+            minimum = (*nodes)[i].cost;
+            selected = i;
+        }
+    }
+    *index = selected;
+    return best;
 }

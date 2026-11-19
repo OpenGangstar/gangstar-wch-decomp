@@ -7,6 +7,8 @@ PROVIDE(__aeabi_fcmple = 0x001c43ac);
 _ZdaPv = 0x001c461c;
 SECTIONS
 {
+    .physic_find_lower 0x0031a40c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi) }
+    ASSERT(SIZEOF(.physic_find_lower) == 192, "Strict native192 lower-cost-node extent")
     .physic_surface_0 0x0031e99c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes21UpdateEdgesCollisionsEi) }
     .physic_surface_1 0x0031e0c8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes5CleanEv) }
     .physic_surface_2 0x003200f8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE) }

@@ -37,6 +37,7 @@ public:
     static unsigned short* s_cliffVertexKeyMap;
     static unsigned short* s_cliffTriMap;
     static float** s_nodeCost;
+    AStarNode FindLowerCostNode(irr::core::array<AStarNode>*, int*);
     void AddCollisionShapes(int slot, unsigned short vertex);
     static bool SegmentsIntersect(const irr::core::vector3d<float>& a,
         const irr::core::vector3d<float>& b, const irr::core::vector3d<float>& c,
