@@ -12,10 +12,11 @@ class tu_string {
 public:
     // The retail call resolves the constructor through the GOT.
     explicit tu_string(const char* text) __attribute__((long_call));
+    tu_string(const tu_string& other) __attribute__((long_call));
     tu_string(const char* text, int length) __attribute__((long_call));
     ~tu_string()
     {
-        if (__builtin_expect(storage[0] == 255, 1))
+        if (using_heap())
             SwfFree(heap);
     }
 
@@ -53,6 +54,16 @@ private:
     }
     unsigned char storage[12];
     void* heap;
+};
+// container.h -- Thatcher Ulrich <tu@tulrich.com> 31 July 2001.
+// This source code has been donated to the Public Domain.
+// Authentic tu_stringi composition; measured retail tu_string storage retained.
+class tu_stringi {
+public:
+    tu_stringi(const tu_string& str) : m_string(str) {}
+    ~tu_stringi() {}
+private:
+    tu_string m_string;
 };
 } // namespace gameswf
 

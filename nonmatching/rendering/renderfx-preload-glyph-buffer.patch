@@ -1,0 +1,353 @@
+--- a/src/game/rendering/menufx.cpp
++++ b/src/game/rendering/menufx.cpp
+@@ -1182,9 +1182,33 @@
+ bitmap_info* create_bitmap_info_texture(irr::video::ITexture* texture);
+ }
+
+-class character_def {
+-    unsigned char storage[32];
+-};
++class rect;
++class tu_file;
++class cache_options;
++class stream;
++class as_function;
++
++// The actual retail base constructor and vtable retain the SDK character_def
++// interface.  Unknown instance fields stay an opaque, observed 20-byte payload.
++// All implementations remain external; the existing bitmap child stays 36 bytes.
++class character_def : public ref_counted {
++public:
++    explicit character_def(player* owner);
++    virtual ~character_def();
++    virtual bool is(int classId) const;
++    virtual void display(character* instance);
++    virtual bool point_test_local(float x, float y);
++    virtual void get_bound(rect* bounds);
++    virtual character* create_character_instance(character* parent, int id);
++    virtual void output_cached_data(tu_file* output, const cache_options& options);
++    virtual void input_cached_data(tu_file* input);
++    virtual void csm_textsetting(stream* input, int tagType);
++    virtual as_function* instanciate_class(character* instance) const;
++
++private:
++    unsigned char unknown12[20];
++};
++typedef char RetailCharacterDefSize[sizeof(character_def) == 32 ? 1 : -1];
+
+ class bitmap_character : public character_def {
+ public:
+@@ -1193,6 +1217,121 @@
+ private:
+     bitmap_info* bitmap;
+ };
++typedef char RetailBitmapCharacterSize[sizeof(bitmap_character) == 36 ? 1 : -1];
++
++// Primary gameswf_font.h public-domain helper algorithms, adapted only to
++// independently verified retail fork fields and ownership. Unknown retail fields
++// remain opaque; all real destructor/font/get_glyph implementations stay native.
++class shape_character_def;
++class glyph : public ref_counted {
++public:
++    glyph() : index(-1), scale(512.0f), data(0), code(0), unknown56(0) {}
++    virtual ~glyph() __attribute__((long_call));
++
++    int index;
++    float scale;
++    smart_ptr<shape_character_def> shape;
++    smart_ptr<bitmap_info> resource;
++    unsigned char bounds28[16];
++    int size;
++    void* data;
++    unsigned short code;
++    int unknown56;
++};
++typedef char RetailGlyphSize[sizeof(glyph) == 60 ? 1 : -1];
++
++class font : public character_def {
++public:
++    explicit font(player* owner);
++    virtual ~font();
++    bool get_glyph(glyph* result, unsigned short code, int size) const;
++    void set_name(const tu_string& value) { name = value; }
++    void set_bold(bool value) { bold = value; }
++    void set_italic(bool value) { italic = value; }
++
++private:
++    unsigned char unknown32[16];
++    tu_string name;
++    unsigned char unknown64[8];
++    bool italic;
++    bool bold;
++    unsigned char unknown74[58];
++};
++typedef char RetailFontSize[sizeof(font) == 132 ? 1 : -1];
++
++class rect {
++public:
++    float xMin, xMax, yMin, yMax;
++};
++class glyph_texture_cache {
++public:
++    struct filter_info { unsigned char blur, blurX, blurY; };
++    void get_glyph_region(unsigned short code, void* textureData, int size, filter_info& info, rect& bounds);
++    unsigned char unknown0[44];
++    void* entity;
++};
++class bitmap_glyph_texture_cache {
++public:
++    void get_glyph_region(unsigned short code, void* textureData, int size, rect& bounds);
++};
++// Read-only retail field access view, never instantiated/allocated as a filter.
++class filter {
++public:
++    unsigned int type;
++    unsigned char unknown4[28];
++    float blurX;
++    float blurY;
++};
++
++
++
++} // namespace gameswf
++
++namespace {
++struct GlyphPlayerContextFields {
++    unsigned char unknown0[96];
++    gameswf::player_context* context;
++};
++}
++
++int RenderFX::PreloadGlyphs(unsigned short* glyphs, int count, const char* fontName, int size,
++                            bool bold, bool italic, gameswf::filter* filter)
++{
++    gameswf::smart_ptr<gameswf::font> font(new (swf::DefaultMemHint) gameswf::font(player.get()));
++    font->set_bold(bold);
++    font->set_italic(italic);
++    font->set_name(gameswf::tu_string(fontName));
++    gameswf::player_context* context = reinterpret_cast<GlyphPlayerContextFields*>(player.get())->context;
++    int index = 0;
++    for (; index < count; ++index) {
++        gameswf::glyph glyph;
++        glyph.size = size;
++        glyph.code = glyphs[index];
++        if (font->get_glyph(&glyph, glyph.code, size)) {
++            if (context->outlineGlyphs->cache || context->bitmapGlyphs->cache) {
++                gameswf::rect bounds;
++                if (glyph.resource.get() == reinterpret_cast<gameswf::glyph_texture_cache*>(context->outlineGlyphs->cache)->entity) {
++                    gameswf::glyph_texture_cache::filter_info info = {0, 0, 0};
++                    if (filter) {
++                        if (filter->type == 2) {
++                            const float maxBlur = filter->blurX > filter->blurY ? filter->blurX : filter->blurY;
++                            info.blur = static_cast<unsigned char>(static_cast<unsigned int>(maxBlur));
++                        } else if (filter->type <= 1) {
++                            info.blurX = static_cast<unsigned int>(filter->blurX);
++                            info.blurY = static_cast<unsigned int>(filter->blurY);
++                        }
++                    }
++                    reinterpret_cast<gameswf::glyph_texture_cache*>(context->outlineGlyphs->cache)->get_glyph_region(glyph.code, glyph.data, glyph.size, info, bounds);
++                } else {
++                    reinterpret_cast<gameswf::bitmap_glyph_texture_cache*>(context->bitmapGlyphs->cache)->get_glyph_region(glyph.code, glyph.data, glyph.size, bounds);
++                }
++            }
++        }
++    }
++    return index;
++}
++
++namespace gameswf {
+
+ struct player_weak_ptr {
+     struct proxy_ptr {
+--- a/src/game/rendering/RenderFX.h
++++ b/src/game/rendering/RenderFX.h
+@@ -17,15 +17,31 @@
+ class tu_string;
+ class root;
+
++// Retail C1/C2 and vtable prove the 12-byte polymorphic base.  Existing
++// drop_ref callers retain their native call interface; no engine body is defined.
+ class ref_counted {
+ public:
++    ref_counted();
++    virtual ~ref_counted();
++    void add_ref() const;
+     void drop_ref();
+-};
++
++private:
++    int referenceCount;
++    void* weakProxy;
++};
++typedef char RetailRefCountedSize[sizeof(ref_counted) == 12 ? 1 : -1];
+
+ template <typename T>
+ class smart_ptr {
+ public:
+     smart_ptr() : value(0) {}
++    // Authentic public-domain smart_ptr pointer-taking ownership constructor.
++    explicit smart_ptr(T* object) : value(object)
++    {
++        if (value)
++            reinterpret_cast<const ref_counted*>(value)->add_ref();
++    }
+     ~smart_ptr()
+     {
+         if (value)
+--- a/src/game/rendering/RetailSwfString.h
++++ b/src/game/rendering/RetailSwfString.h
+@@ -13,6 +13,8 @@
+     // The retail call resolves the constructor through the GOT.
+     explicit tu_string(const char* text) __attribute__((long_call));
+     tu_string(const char* text, int length) __attribute__((long_call));
++    // SDK assignment deliberately returns void; retail weak native callee agrees.
++    void operator=(const tu_string& other) __attribute__((weak, long_call));
+     ~tu_string()
+     {
+         if (__builtin_expect(storage[0] == 255, 1))
+--- a/config/linker/RenderFXUtilitySections.ld
++++ b/config/linker/RenderFXUtilitySections.ld
+@@ -1,6 +1,7 @@
+ /* Exact reconstructed string setter, coordinate helper and mouse callback. */
+ SECTIONS
+ {
++    .renderfx_preload_glyph_buffer 0x003ed9ec : { *renderfx-animation.o(.text._ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE) }
+     .renderfx_send_event 0x003ef138 : { *renderfx-animation.o(.text._ZN8RenderFX9SendEventERNS_5EventE) }
+     .renderfx_send_table 0x0044dea4 : { *renderfx-animation.o(.rodata._ZN8RenderFX9SendEventERNS_5EventE) }
+     .renderfx_send_0 0x0044de3c : { *renderfx-animation.o(.rodata.renderfx_send_0) }
+--- a/config/matches/ai-startup-menustate.json
++++ b/config/matches/ai-startup-menustate.json
+@@ -286,7 +286,8 @@
+         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
++        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
++        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE"
+     ],
+     "sections": [
+         ".help_empty_icon",
+@@ -393,7 +394,8 @@
+         ".renderfx_hierarchy_stop",
+         ".renderfx_hierarchy_sprite",
+         ".renderfx_hierarchy_character",
+-        ".set_character_focus"
++        ".set_character_focus",
++        ".renderfx_preload_glyph_buffer"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -427,7 +429,6 @@
+         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+-        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
+         "_ZNK13ScriptManager13isInCinematicEv",
+         "_ZN7Widgets11Achievement7SetIconEPKc",
+         "_ZN13ScriptManager11getInstanceEv",
+@@ -525,6 +526,13 @@
+         "_ZN7gameswf6matrix11set_inverseERKS0_",
+         "_Z19CanHandleMouseEventPN7gameswf9characterE",
+         "_ZN7gameswf6cxformC1Ev",
+-        "_ZN7gameswf9character16get_world_cxformEv"
++        "_ZN7gameswf9character16get_world_cxformEv",
++        "_ZN7gameswf11ref_countedC1Ev",
++        "_ZN7gameswf4fontC1EPNS_6playerE",
++        "_ZNK7gameswf4font9get_glyphEPNS_5glyphEti",
++        "_ZN7gameswf5glyphD1Ev",
++        "_ZN7gameswf9tu_stringaSERKS0_",
++        "_ZN7gameswf19glyph_texture_cache16get_glyph_regionEtPviRNS0_11filter_infoERNS_4rectE",
++        "_ZN7gameswf26bitmap_glyph_texture_cache16get_glyph_regionEtPviRNS_4rectE"
+     ]
+ }
+--- a/config/matches/ai-startup-menuwidget.json
++++ b/config/matches/ai-startup-menuwidget.json
+@@ -224,7 +224,8 @@
+         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
++        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
++        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE"
+     ],
+     "sections": [
+         ".volumesButton",
+@@ -405,7 +406,8 @@
+         ".renderfx_hierarchy_stop",
+         ".renderfx_hierarchy_sprite",
+         ".renderfx_hierarchy_character",
+-        ".set_character_focus"
++        ".set_character_focus",
++        ".renderfx_preload_glyph_buffer"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -437,7 +439,6 @@
+         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+-        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
+         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
+         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
+         "_ZN8RenderFX11SearchIndex4InitERS_",
+@@ -500,6 +501,13 @@
+         "_ZN7gameswf6matrix11set_inverseERKS0_",
+         "_Z19CanHandleMouseEventPN7gameswf9characterE",
+         "_ZN7gameswf6cxformC1Ev",
+-        "_ZN7gameswf9character16get_world_cxformEv"
++        "_ZN7gameswf9character16get_world_cxformEv",
++        "_ZN7gameswf11ref_countedC1Ev",
++        "_ZN7gameswf4fontC1EPNS_6playerE",
++        "_ZNK7gameswf4font9get_glyphEPNS_5glyphEti",
++        "_ZN7gameswf5glyphD1Ev",
++        "_ZN7gameswf9tu_stringaSERKS0_",
++        "_ZN7gameswf19glyph_texture_cache16get_glyph_regionEtPviRNS0_11filter_infoERNS_4rectE",
++        "_ZN7gameswf26bitmap_glyph_texture_cache16get_glyph_regionEtPviRNS_4rectE"
+     ]
+ }
+--- a/config/matches/renderfx-animation.json
++++ b/config/matches/renderfx-animation.json
+@@ -140,7 +140,8 @@
+         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
+         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
+         "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
++        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
++        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE"
+     ],
+     "sections": [
+         ".renderfx_initialize_warning",
+@@ -178,7 +179,8 @@
+         ".renderfx_hierarchy_stop",
+         ".renderfx_hierarchy_sprite",
+         ".renderfx_hierarchy_character",
+-        ".set_character_focus"
++        ".set_character_focus",
++        ".renderfx_preload_glyph_buffer"
+     ],
+     "external_thumb_functions": [
+         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
+@@ -186,7 +188,6 @@
+         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
+         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
+         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
+-        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
+         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
+         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
+         "_ZN8RenderFX11SearchIndex4InitERS_",
+@@ -239,7 +240,14 @@
+         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
+         "_Z19CanHandleMouseEventPN7gameswf9characterE",
+         "_ZN7gameswf6cxformC1Ev",
+-        "_ZN7gameswf9character16get_world_cxformEv"
++        "_ZN7gameswf9character16get_world_cxformEv",
++        "_ZN7gameswf11ref_countedC1Ev",
++        "_ZN7gameswf4fontC1EPNS_6playerE",
++        "_ZNK7gameswf4font9get_glyphEPNS_5glyphEti",
++        "_ZN7gameswf5glyphD1Ev",
++        "_ZN7gameswf9tu_stringaSERKS0_",
++        "_ZN7gameswf19glyph_texture_cache16get_glyph_regionEtPviRNS0_11filter_infoERNS_4rectE",
++        "_ZN7gameswf26bitmap_glyph_texture_cache16get_glyph_regionEtPviRNS_4rectE"
+     ],
+     "retail_got": true
+ }

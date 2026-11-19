@@ -14,6 +14,7 @@ strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
+ .set_character_focus 0x003ef200 : { *renderfx-animation.o(.text._ZN8RenderFX8SetFocusEPN7gameswf9characterEi) }
  .renderfx_trace_hierarchy 0x003ecb08 : { *renderfx-animation.o(.text._ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii) }
  ASSERT(SIZEOF(.renderfx_trace_hierarchy) <= 464, "TraceHierarchy native464B span")
  .renderfx_hierarchy_start 0x0044dd84 : { *(.rodata.renderfx_hierarchy_start) }

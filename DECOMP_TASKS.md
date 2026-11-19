@@ -6,6 +6,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
+| libsanangeles.so | 0x00389b01 | gameswf::tu_string::resize(int) verification support | — | COMPLETED | Retail zero-length resize and fixed strncpy15 heap-to-inline behavior verified against native PLT and pinned SDK; no implementation or game credit. | native support evidence |
+| libsanangeles.so | 0x003d8891 | gameswf::glyph destructor verification support | — | COMPLETED | Native destructor ownership and actual vtable verified independently; vendor evidence only, no game credit. | native support evidence |
+| libsanangeles.so | 0x003d8a39 | gameswf::array<glyph>::resize verification support | — | COMPLETED | Native stride60, halfword52 initialization and inline constructor verified; vendor evidence only, no game credit. | native support evidence |
 | libsanangeles.so | 0x002e73e1 | gameswf::weak_ptr<gameswf::character>::check_proxy() const | — | COMPLETED | Exact 52-byte executable vendor support body independently verified. This does not add game-progress credit; the owning game target remains unmatched. | src/game/rendering/CharacterParentAccess.h (private trial) |
 | libsanangeles.so | 0x00301091 | PlayerTest::setClosestShop(Shop*) | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00332f95 | CameraManager::tappedTarget | — | COMPLETED | 100% | src/game/core/CameraManager.cpp |
@@ -57,7 +60,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0031ff49 | PhysicAttributes::GetHeight (position overload) | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00334fa1 | SceneCamera::SceneCamera (C1/C2 aliases) | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334f71 | SceneCamera::~SceneCamera (D1/D2 aliases) | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
-| libsanangeles.so | 0x0031a67d | PhysicAttributes::IsPositionOnJump | lock_init | BLOCKED | — | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031a67d | PhysicAttributes::IsPositionOnJump | — | BLOCKED | Five logs but only two unmapped source artifacts survive; last three forms demonstrably not all identical. Actual vector APIs and float ABI reveal no new gap; no justified source replay. | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00334f29 | SceneCamera::~SceneCamera (D0) | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334f5c | SceneCamera::~SceneCamera (D1 thunk) | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
 | libsanangeles.so | 0x00334f14 | SceneCamera::~SceneCamera (D0 thunk) | — | COMPLETED | 100% | src/game/core/SceneCamera.cpp |
@@ -514,13 +517,13 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003ee1ed | RenderFX::SetTexture | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear | — | BLOCKED | Authentic iterator candidate is 176 versus 180 native bytes. All 112 existing functions and 24 region checks pass; generic arrays are unchanged and no further source variant is authorized. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | prefs_loader | ASSIGNED | Read-only matched-relative audit against current actual gameswf APIs; recover old forms and confirm any genuine new helper gap before a trial. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | lock_init | BLOCKED | — | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003edde5 | RenderFX::Load | camera_tap | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | — | BLOCKED | Authentic const-subscript candidate is 360 bytes with only two differing load-encoding bytes. All 113 old functions and 32 region checks pass; consumers are skipped after target failure. No further trial authorized. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | prefs_loader | IN_PROGRESS | Read-only actual native float-max/conversion and code-layout audit after 520/native492 failure. No source trial authorized; baseline115/34 proof remains separate. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edde5 | RenderFX::Load | — | BLOCKED | Native separate 16-byte stack lifetime remains unexplained by authenticated SDK string APIs; old four forms lack safe linking proof. No speculative dummy object or new trial. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | vehicle_side | BLOCKED | — | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | — | COMPLETED | 100%; exact 200-byte native target in all three images. Shared destructor hint removed with all previous matches retained; full 190-profile, 10596-comparison coordinator gate passes. No Fully Linked credit. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | — | COMPLETED | 100%; exact 124-byte target and both 24-byte physical literal sections verified in three images. Full 190-profile/10,557-comparison gate passes. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | player_update | ASSIGNED | Read-only matched-relative audit against current actual gameswf APIs; recover old forms and confirm any genuine new helper gap before a trial. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM | — | BLOCKED | Mutable subscript candidate remains 256 bytes with the same two commuted load encodings. All 113 old functions and 32 region checks pass; consumers skipped after target failure. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ee98d | RenderFX::SetLocalVariable | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed1bd | RenderFX::CollectCharacters | — | COMPLETED | 100%; exact 240-byte native definition in all three images, full 190-profile/10,545-comparison gate passes. Original source remains incomplete, so no Fully Linked credit. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ecb09 | RenderFX::TraceHierarchy | — | COMPLETED | 100%; exact 464-byte native target and seven literal regions in three images. Full 190-profile/10,584-comparison gate passes; no Fully Linked credit added. | src/game/rendering/menufx.cpp |
@@ -1118,7 +1121,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | lock_init | BLOCKED | 1384/1388 bytes; swapped independent STR/MOV pair; five forms parked | src/game/persistence/SaveGame.cpp |
 
-| libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | hud_glyphs | BLOCKED | 1788/1792 bytes; first form parked on old visibility regression | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | vehicle_camera | REVIEW | Correct weak Read and qualified stream calls emit native-size1792; 50 bytes still differ in spills/initialization. All previous owning and new data checks pass; no matching credit. Further source evidence review pending. | src/game/ui/MenuManager.cpp |
 
 | libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | — | BLOCKED | three hint forms2440/2436; strict overlap4B; corrected aggregate selectors, no credit | src/game/scripting/ScriptManager.cpp |
 
@@ -1250,12 +1253,12 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002d16f5 | Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit | — | COMPLETED | 100% | src/game/app/jni_Gangstar.c |
 | libsanangeles.so | 0x003eee95 | RenderFX::ClearFonts(gameswf::player_context*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | — | BLOCKED | Read-only review confirms three identical 344-byte forms versus 368 native; new character-name APIs do not apply and prior flag probes remain rejected. No new semantic gap. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | lock_init | BLOCKED | five source forms; native-size248 but 12 bytes differ in cold-tail order, no credit | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | vehicle_camera | ASSIGNED | Read-only matched-relative audit against current actual gameswf APIs; recover old forms and confirm any genuine new helper gap before a trial. | src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | lock_init | BLOCKED | five forms; best852 differs, current110 old functions and headers preserved; no credit | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | — | BLOCKED | Current name-chain trial remains 248 bytes with 17 differing bytes; all 114 old functions and 33 region checks pass. Old best has 12 differences; no further hint or source variant authorized. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003ef201 | RenderFX::SetFocus(gameswf::character*, int) | — | COMPLETED | 100%; exact 356-byte target in three images, full 190-profile/10,590-comparison gate passes. All previous matches retained; no Fully Linked credit. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | — | BLOCKED | Authentic copy/name/subscript trial emits 840 versus 852 native bytes; strict extent fails and runtime imports remain unresolved. No linked old-gate or match claim; no further source variant. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | hud_registration | BLOCKED | six forms; best1996/2012, inline-functions diagnostic unchanged; no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | hud_glyphs | BLOCKED | current-header unchanged replay492/496, old50checks pass; no credit | src/game/combat/BulletTraceManager.cpp |
-| libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | lock_init | BLOCKED | five forms; best656/652 overlaps native neighbor, old baseline proof retained; no credit | src/game/audio/CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | — | BLOCKED | Five distinct forms verified; best656 exceeds native652. Native arithmetic matches saved expressions, with no justified sixth-form correction. Relocated/vtable failures are not native proof. | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
 | libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | hud_glyphs | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
 | libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Reviewed complete83-profile typed-header gate and safe2212/2228B candidate; no relevant current ABI/helper drift or new replay evidence | src/game/ai/PlayerTest.cpp |
@@ -1309,3 +1312,5 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003268a9 | EvLeftRightStickMove D1 existing-match compatibility | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/input/AnalogStick.cpp |
 
 Coordinator queue review: player_update audits saved candidates of pending game functions >=512 bytes for unspent first-pass budgets or concrete new helper evidence; prefs_loader audits pending <=511-byte saved candidates for exact-but-unintegrated genuine native proofs. Both tasks are read-only queue triage, not function ownership, and neither permits source edits or compilation. Coordinator will identify and assign each next function before decompilation.
+
+Coordinator completed the latest read-only queue triage and assigns prefs_loader only the registered IsPositionOnJump ledger audit. No compilation is authorized for that scope.

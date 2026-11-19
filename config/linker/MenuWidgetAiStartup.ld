@@ -75,3 +75,7 @@ puts = 0x001c41b4;
 ASSERT(SIZEOF(.renderfx_trace_context) == 124, "native TraceContext strict span");
 ASSERT(SIZEOF(.renderfx_found_child) == 24, "native found-child format extent");
 ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");
+
+ASSERT(SIZEOF(.set_character_focus) == 356, "SetFocus native356 exact extent");
+
+INCLUDE config/linker/RenderFXSetMemberValue.ld

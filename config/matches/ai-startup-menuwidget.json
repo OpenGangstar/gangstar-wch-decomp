@@ -223,7 +223,9 @@
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
-        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii"
+        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
+        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE"
     ],
     "sections": [
         ".volumesButton",
@@ -403,7 +405,9 @@
         ".renderfx_hierarchy_play",
         ".renderfx_hierarchy_stop",
         ".renderfx_hierarchy_sprite",
-        ".renderfx_hierarchy_character"
+        ".renderfx_hierarchy_character",
+        ".set_character_focus",
+        ".renderfx_set_member_value"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -432,7 +436,6 @@
         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
         "_ZN7gameswf8as_valueC1Ei",
-        "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
@@ -486,7 +489,6 @@
         "_ZN11MenuManager13setMenuFXTextEPKcS1_bb",
         "_ZN11Application11GetInstanceEv",
         "_ZNK13StringManager9getStringEi",
-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN7gameswf4root14get_root_movieEv",
