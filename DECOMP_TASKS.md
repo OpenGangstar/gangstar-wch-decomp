@@ -133,7 +133,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0034f9a5 | CarSounds::UpdateRumbleSound | — | COMPLETED | 100% | src/game/vehicles/CarSounds.cpp |
 | libsanangeles.so | 0x003502a9 | CarSounds::~CarSounds (D1/D2 aliases) | — | COMPLETED | 100% | src/game/vehicles/CarSounds.cpp |
 | libsanangeles.so | 0x0034f555 | CarSounds::UpdateOffEngineSounds | — | BLOCKED | Third canonical560B form unchanged506/560; native typed fields established, all242oldfunctions123sections2GOT pass; no new source evidence, parked | src/game/vehicles/CarSounds.cpp |
-| libsanangeles.so | 0x0034f785 | CarSounds::UpdateOnEngineSounds | player_update | ASSIGNED | Read-only old budget and native on-engine field/call semantics versus newly proven off-engine typed fields; no compile without new concrete source evidence | src/game/vehicles/CarSounds.cpp |
+| libsanangeles.so | 0x0034f785 | CarSounds::UpdateOnEngineSounds | — | BLOCKED | Six source forms reviewed; the surviving fifth candidate is 544 bytes with 52 differing bytes. No new semantic or API correction was found; parked without credit. | src/game/vehicles/CarSounds.cpp |
 | libsanangeles.so | 0x0034fbf9 | CarSounds::UpdateTurboSounds | camera_tap | BLOCKED | — | src/game/vehicles/CarSounds.cpp |
 | libsanangeles.so | 0x00350019 | CarSounds::AddTurboSounds | lock_init | BLOCKED | — | src/game/vehicles/CarSounds.cpp |
 | libsanangeles.so | 0x0035047d | CarSounds::Init | vehicle_side | BLOCKED | — | src/game/vehicles/CarSounds.cpp |
@@ -162,11 +162,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00311e41 | CCarMorphingMesh::~CCarMorphingMesh (virtual D0 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311e55 | CCarMorphingMesh::~CCarMorphingMesh (D0) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311e9d | CCarMorphingMesh::~CCarMorphingMesh (virtual D1 thunk) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030b68d | Vehicle::ResetBodyPosition | prefs_loader | IN_PROGRESS | One licensed actual Box2D transform/helper-chain trial authorized, same storage/ABI and current flags, all old checks; no fake records or forced inline | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030b68d | Vehicle::ResetBodyPosition | — | BLOCKED | Fourth candidate is 784 versus 792 native bytes. All 188 existing functions and 112 section/region checks pass. No helper emissions or further source trials; parked without credit. | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00311fb5 | CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode (D1) | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0030bccd | Vehicle::setSpeed | lock_init | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310499 | Vehicle::grabSceneNode | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody | vehicle_camera | ASSIGNED | Read-only current genuine Vehicle/physics types versus three archived forms; recover concrete semantic/helper gap before remaining-budget compile | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody | vehicle_camera | IN_PROGRESS | Fifth lifetime adaptation assembles to 1,068 versus 1,044 native bytes; strict linking rejects overlap. Read-only 24-byte cost and lifetime audit authorized; no sixth source trial. | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x00310909 | Vehicle::shoot | vehicle_side | BLOCKED | — | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x0032f0e1 | SniperControlHandler::handleStickMove | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
 | libsanangeles.so | 0x0032f0e5 | SniperControlHandler::handleStickReleased | — | COMPLETED | 100% | src/game/input/SniperControlHandler.cpp |
@@ -228,7 +228,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e8639 | Menus::Map::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e90cd | Menus::Map::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ebb31 | Menus::Map::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e8551 | MenuState::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e8551 | MenuState::OnEvent | player_update | IN_PROGRESS | Typed source setup hit an existing dependency scheduling regression. One final access-control repair is authorized: protected State.menu with direct target access, no added getter function or layout change; preserve every old check | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e7659 | Menus::Achievement::Update | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e7d51 | Menus::Achievement::SetAchievement | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea2e5 | Menus::Achievement::Show | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
@@ -237,7 +237,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e78ad | Menus::Map::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | vehicle_side | BLOCKED | — | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | prefs_loader | ASSIGNED | Read-only audit of authentic gameswf string and parent-handle helpers versus six previous forms. Coordinate with the new Event caller declaration; no compilation authorized. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | camera_tap | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify | lock_init | BLOCKED | — | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ebf09 | Widgets::Shop::SetAvailabilityText | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -680,7 +680,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e86fd | MenuState::GotFocus | camera_tap | BLOCKED | pending | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e86fd | MenuState::GotFocus | — | BLOCKED | Typed first-pass getter produces the same 248-byte candidate and 12 register differences. All 234 existing functions and 89 section/region checks pass; no further source trials. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002e6149 | MenuManager::tearDown | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
