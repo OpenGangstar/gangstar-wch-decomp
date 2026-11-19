@@ -347,7 +347,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x00300bc5 | Path::Load | — | BLOCKED | Genuine SDK whole-vector assignment retains native200extent, four bytes differ at68/6a/72/78 in source/Z registers. All18 existing checks pass; one bounded family trial stopped, no credit or further forms. | src/game/world/Path.cpp |
 | libsanangeles.so | 0x0034228d | NPCController::onEvent | — | BLOCKED | One bounded switch trial remains 94/96 bytes; no linked credit. Full-word TransitionCondition prerequisite independently preserves all six affected profiles (137 comparisons); candidate in nonmatching/ai/NPCController-onEvent.md. | src/game/ai/NPCController.cpp; src/game/ai/NPCController.h |
-| libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | lock_init | BLOCKED | — | src/game/audio/CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | — | BLOCKED | Six constructor-reuse forms:138/132/132/130/132/132B versus native134; forms2/5/6 exact same raw code and relocations. Retained native placement fails target; old22functions/19regions exact. Reviewed unapplied candidate; no credit or more forms without new evidence. | src/game/audio/CSoundDecoderMSADPCM.cpp; nonmatching/audio/CSoundDecoderMSADPCM-Init.patch |
 | libsanangeles.so | 0x0032d72d | CControlManager::update | vehicle_side | BLOCKED | — | src/game/input/CControlManager.cpp |
 | libsanangeles.so | 0x00354665 | EventManager::_attach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
@@ -803,7 +803,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f48b1 | Character::initInVehicle | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f6299 | Character::hitByCar | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f405d | Character::Update | — | COMPLETED | 100% | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f4465 | Character::initPhysic | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f4465 | Character::initPhysic | — | BLOCKED | Complete SDK-class reuse remains 440/native456 bytes, frame124/native116. Normal native placement fails target at+0x0e; all114 old functions/33 old regions and six SDK bodies/three vtables exact. One real SDK Set transfer also440B, no link/credit. Unapplied patches reviewed; no further form without new evidence. | src/game/characters/Character.cpp; nonmatching/characters/Character-initPhysic-sdk-reuse.patch |
 | libsanangeles.so | 0x002f4a79 | Character::positionInVehicle | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | — | COMPLETED | 100%;714-byte function and716-byte section exact in Character/NPC/Player images. Four alias-return pairs separated; full190-profile10949-comparison gate passes with965inputs stable. Ownership released after acceptance. | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f517d | Character::switchCombatAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
@@ -907,7 +907,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ebd29 | CHudManager::setSteeringMode | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x003230ad | CDrivingHud::show | — | COMPLETED | 100% | src/game/hud/CDrivingHud.cpp |
 | libsanangeles.so | 0x00324979 | CHudManager destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
-| libsanangeles.so | 0x00324399 | CHudManager::update | hud_drawables | BLOCKED | pending | src/game/hud/CHudManager.cpp |
+| libsanangeles.so | 0x00324399 | CHudManager::update(double) | — | BLOCKED | Authentic accepted TouchIDList and STLport distance reuse reduces26 to14 differing bytes in native720B; 49 old functions/42 old regions exact. One hint712B rejected by strict720 bound. Reviewed unapplied candidate; no credit or further grids without new evidence. | src/game/hud/CHudManager.cpp; nonmatching/hud/CHudManager-update-authentic-list.patch |
 | libsanangeles.so | 0x00324c85 | CHudManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x00324669 | CHudManager deleting destructor (D0) | — | COMPLETED | 100% | src/game/hud/CHudManager.cpp |
 | libsanangeles.so | 0x003295a5 | MiniMap constructor (C1/C2 aliases) | hud_registration | BLOCKED | pending | src/game/hud/MiniMap.cpp |

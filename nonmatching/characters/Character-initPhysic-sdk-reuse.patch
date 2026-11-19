@@ -1,0 +1,140 @@
+--- a/src/game/core/Physics.h
++++ b/src/game/core/Physics.h
+@@ -11,6 +11,7 @@
+ struct b2Vec2 {
+     float x, y;
+     b2Vec2() {}
++    void SetZero() { x = 0.0f; y = 0.0f; }
+     b2Vec2(float x, float y) : x(x), y(y) {}
+ };
+ struct b2MassData;
+@@ -19,14 +20,19 @@
+ struct b2XForm { b2Vec2 position; float rotation[4]; };
+ struct b2FilterData { unsigned short categoryBits, maskBits; short groupIndex; };
+ struct PhysicsBodyData {
++    PhysicsBodyData(LevelObject* object, irr::scene::ISceneNode* mesh) : owner(object), node(mesh), lowerHeight(0), upperHeight(0), unknown16(0), unknown20(0), unknown24(false), unknown25(false) {}
+     LevelObject* owner;
+     irr::scene::ISceneNode* node;
+     float lowerHeight, upperHeight;
++    float unknown16, unknown20;
++    bool unknown24, unknown25;
+ };
++class b2ShapeDef;
+ class b2Shape;
+ class b2Body {
+ public:
+     unsigned char unknown0[4];
++    b2Shape* CreateShape(b2ShapeDef*);
+     void SetMassFromShapes();
+     void SetMass(const b2MassData* massData);
+     bool SetXForm(const b2Vec2& position, float angle);
+--- a/src/game/characters/Character.cpp
++++ b/src/game/characters/Character.cpp
+@@ -1409,14 +1409,7 @@
+ }
+
+ // Existing partial Box2D SDK destructor interface reused from GS3DStuff.cpp.
+-class b2ShapeDef {
+-public:
+-    virtual ~b2ShapeDef() {}
+-};
+-class b2CircleDef : public b2ShapeDef {
+-public:
+-    virtual ~b2CircleDef() __attribute__((used)) {}
+-};
++#include "../vehicles/VehicleBodyShapes.h"
+
+ int Character::getSpecificAnimation(int id)
+ {
+@@ -1514,3 +1507,29 @@
+     }
+     return -1;
+ }
++
++void Character::initPhysic()
++{
++    if (collisionBody) return;
++    if (!unknown24) unknown24 = new PhysicAttributes(1,0);
++    if (vehicle) unknown24->SetPhysicInfo(*vehicle->unknown24->info,0);
++    b2BodyDef body;
++    body.position = b2Vec2(GetPosition().X / 100.0f, GetPosition().Y / 100.0f);
++    body.allowSleep = false;
++    collisionBody = PhysicAttributes::s_world->CreateBody(&body);
++    b2CircleDef shape;
++    shape.radius = 0.5f;
++    shape.restitution = 0.0f;
++    shape.density = 1.0f;
++    shape.friction = 0.3f;
++    shape.filter.categoryBits = static_cast<void*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == this ? 2 : 4;
++    shape.filter.maskBits = 0xffff;
++    shape.filter.groupIndex = unknown24->getIndex()+1;
++    collisionCategory = shape.filter.categoryBits;
++    collisionMask = shape.filter.maskBits;
++    collisionGroup = shape.filter.groupIndex;
++    collisionBody->CreateShape(&shape);
++    collisionBody->SetMassFromShapes();
++    collisionBody->data = new PhysicsBodyData(this,static_cast<irr::scene::ISceneNode*>(getSkinMesh()));
++}
++
+--- /dev/null
++++ b/src/game/vehicles/VehicleBodyShapes.h
+@@ -0,0 +1,59 @@
++/*
++* Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
++*
++* This software is provided 'as-is', without any express or implied
++* warranty.  In no event will the authors be held liable for any damages
++* arising from the use of this software.
++* Permission is granted to anyone to use this software for any purpose,
++* including commercial applications, and to alter it and redistribute it
++* freely, subject to the following restrictions:
++* 1. The origin of this software must not be misrepresented; you must not
++* claim that you wrote the original software. If you use this software
++* in a product, an acknowledgment in the product documentation would be
++* appreciated but is not required.
++* 2. Altered source versions must be plainly marked as such, and must not be
++* misrepresented as being the original software.
++* 3. This notice may not be removed or altered from any source distribution.
++*/
++// Altered: licensed Box2D 2.0.1 shape definitions with native weak destructor imports.
++#ifndef WCH_VEHICLE_CREATE_BODY_SHAPES_H
++#define WCH_VEHICLE_CREATE_BODY_SHAPES_H
++#include "../core/PhysicsBodyDef.h"
++enum b2ShapeType { e_unknownShape=-1, e_circleShape, e_polygonShape, e_shapeTypeCount };
++struct b2ShapeDef {
++    b2ShapeDef() {
++        type = e_unknownShape;
++        userData = 0;
++        friction = 0.2f;
++        restitution = 0.0f;
++        density = 0.0f;
++        filter.categoryBits = 0x0001;
++        filter.maskBits = 0xffff;
++        filter.groupIndex = 0;
++        isSensor = false;
++    }
++    virtual ~b2ShapeDef() {}
++    b2ShapeType type;
++    void* userData;
++    float friction, restitution, density;
++    bool isSensor;
++    b2FilterData filter;
++};
++struct b2PolygonDef : b2ShapeDef {
++    b2PolygonDef() { type = e_polygonShape; vertexCount = 0; }
++    virtual ~b2PolygonDef() __attribute__((used)) {}
++    void SetAsBox(float hx, float hy, const b2Vec2& center, float angle);
++    b2Vec2 vertices[8];
++    int vertexCount;
++};
++struct b2CircleDef : b2ShapeDef {
++    b2CircleDef() { type = e_circleShape; localPosition.SetZero(); radius = 1.0f; }
++    virtual ~b2CircleDef() __attribute__((used)) {}
++    b2Vec2 localPosition;
++    float radius;
++};
++#endif
++
++// Diagnostic reuse: these destructor bodies already compare exactly in the
++// accepted Character/GS3DStuff objects; this complete-class emission still
++// requires its own native-byte proof. No synthetic noinline body is added.

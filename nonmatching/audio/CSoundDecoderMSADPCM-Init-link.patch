@@ -1,0 +1,47 @@
+--- a/config/matches/msadpcm-decoder-pool.json
++++ b/config/matches/msadpcm-decoder-pool.json
+@@ -44,7 +44,8 @@
+         "_ZN20CSoundDecoderMSADPCMD2Ev",
+         "_ZN20CSoundDecoderMSADPCMD1Ev",
+         "_ZN20CSoundDecoderMSADPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader",
+-        "_ZN20CSoundDecoderMSADPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader"
++        "_ZN20CSoundDecoderMSADPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader",
++        "_ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader"
+     ],
+     "linker_script": "config/linker/MSAdpcmDecoderPool.ld",
+     "sections": [
+@@ -69,14 +70,14 @@
+         {
+             "name": ".got",
+             "offset": 864
+-        }
++        },
++        ".msadpcm_init_trial"
+     ],
+     "retail_got": true,
+     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+     "external_thumb_functions": [
+         "_ZN10AdpcmStateC1Ev",
+         "_ZN10AdpcmStateD1Ev",
+-        "_ZN20CSoundDecoderMSADPCM6DecodeEPsib",
+-        "_ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader"
++        "_ZN20CSoundDecoderMSADPCM6DecodeEPsib"
+     ]
+ }
+--- a/config/linker/MSAdpcmDecoderPool.ld
++++ b/config/linker/MSAdpcmDecoderPool.ld
+@@ -12,6 +12,8 @@
+ __aeabi_uidivmod = 0x001c47c0;
+ SECTIONS
+ {
++    .msadpcm_init_trial 0x003511b8 : { *msadpcm-decoder-pool.o(.text._ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader) }
++
+     .msadpcm_method_0 0x00351070 : { *msadpcm-decoder-pool.o(.text._ZNK20CSoundDecoderMSADPCM15GetSamplingRateEv) }
+     .msadpcm_method_1 0x00351078 : { *msadpcm-decoder-pool.o(.text._ZNK20CSoundDecoderMSADPCM10GetChannelEv) }
+     .msadpcm_method_2 0x00351080 : { *msadpcm-decoder-pool.o(.text._ZNK20CSoundDecoderMSADPCM10GetPCMSizeEv) }
+@@ -33,3 +35,5 @@
+     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
+     .verification 0x00600000 : { *retail-got.o(.text) }
+ }
++
++ASSERT(SIZEOF(.msadpcm_init_trial) <= 134, "unmatched Init candidate must fit native span");

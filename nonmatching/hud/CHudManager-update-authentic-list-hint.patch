@@ -1,0 +1,11 @@
+--- a/src/game/hud/CHudManager.cpp
++++ b/src/game/hud/CHudManager.cpp
+@@ -674,7 +674,7 @@
+         radio->radioFlags &= ~1u;
+     else
+         radio->radioFlags |= 1u;
+-    if (!locked) {
++    if (__builtin_expect(!locked, 1)) {
+         TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+         TouchIDList used;
+         for (unsigned int index=0; index<resetElements.size(); ++index) {

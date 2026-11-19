@@ -44,3 +44,23 @@ hash. Commands, source/header hashes, objects and logs remain in the private
 `_scratch/ndk-enum-bounded-replay-current/` case directories. The audit runs
 compiler subprocesses; no game execution or sub-agent integration occurs.
 Root reviewed all results and released all 68 function assignments.
+
+## AddCollisionShapes layout follow-up
+
+A read-only audit of case 044's already compiled objects confirms that the enum
+correction leaves the remaining layout costs unchanged. No new source form or
+link is attempted:
+
+| Image | Function bytes | Code and alignment | Literal pools |
+| --- | ---: | ---: | ---: |
+| Recorded-default control | 1820 | 1724 | 96 |
+| Corrected enum default | 1820 | 1724 | 96 |
+| Native | 1816 | 1728 | 88 |
+
+Both objects have Thumb/data mapping boundaries at offsets 0, 944, 988 and
+1768; native boundaries are 0, 808, 844 and 1764. The actual corrected assembly
+still reserves a 356-byte frame versus native 364. The corrected shape type
+stores become words, and several scalar spill slots move, but the net four-byte
+excess remains code/alignment minus four plus literal pools plus eight.
+The previous source-order/minimum/maximum attempts remain parked. The SDK enum
+finding alone does not justify another such source or compiler-flag grid.

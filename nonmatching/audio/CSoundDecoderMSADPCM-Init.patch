@@ -1,0 +1,31 @@
+--- a/src/game/audio/CSoundDecoderMSADPCM.cpp
++++ b/src/game/audio/CSoundDecoderMSADPCM.cpp
+@@ -134,3 +134,28 @@
+ {
+     delete[] buffer;
+ }
++
++void CSoundDecoderMSADPCM::Init(__sFILE* input, RiffHeader* riff, FormatHeader* format)
++{
++    stream = input;
++    formatHeader = format;
++    riffHeader = riff;
++    flags = 1;
++    channelIndex = 0;
++    samplesRemaining = 0;
++    position = 0;
++    ended = false;
++    if (formatHeader->size > 16)
++        fseek(reinterpret_cast<NativeFile*>(stream), formatHeader->size - 16, 1);
++    fread(&fact, sizeof(fact), 1, reinterpret_cast<NativeFile*>(stream));
++    fread(&data, sizeof(data), 1, reinterpret_cast<NativeFile*>(stream));
++    FormatHeader* wavFormat = formatHeader;
++    unsigned char headerSize = wavFormat->channels * 4;
++    blockHeaderSize = headerSize;
++    if (wavFormat->channels == 1)
++        samplesPerBlock = (wavFormat->blockAlignment - headerSize) * 2 + 1;
++    else
++        samplesPerBlock = wavFormat->blockAlignment + 1 - headerSize;
++    pcmSize = ((data.size / wavFormat->blockAlignment) * samplesPerBlock) << 2;
++    effectiveSamples = fact.samples;
++}

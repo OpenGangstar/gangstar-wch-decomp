@@ -1,0 +1,148 @@
+--- a/src/game/hud/CHudManager.cpp
++++ b/src/game/hud/CHudManager.cpp
+@@ -654,3 +654,79 @@
+ template void SafeDelete<CWalkingHud>(CWalkingHud*&);
+ template void SafeDelete<CSniperHud>(CSniperHud*&);
+ template void SafeDelete<CCameraHud>(CCameraHud*&);
++
++#include "../input/TouchScreenBase.h"
++#include "../input/TouchIDListSupport.h"
++#include "MenuManager.h"
++#include "../core/Rect.h"
++extern "C" int __android_log_print(int, const char*, const char*, ...);
++static const char hudDefaultRelease[] = "m_default->processTouchRelease()";
++static const char hudDefaultUsed[] = "m_default->isUsed()";
++static const char hudBlockingTutorial[] = "BlockingTutorial";
++
++static inline const irr::core::rect<float>& hudRegion(const HudTouchRegion& region)
++{
++    return reinterpret_cast<const irr::core::rect<float>&>(region);
++}
++void CHudManager::update(double elapsed)
++{
++    if (radioToggle->toggled)
++        radio->radioFlags &= ~1u;
++    else
++        radio->radioFlags |= 1u;
++    if (!locked) {
++        TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
++        TouchIDList used;
++        for (unsigned int index=0; index<resetElements.size(); ++index) {
++            HudElement* element=resetElements[index];
++            long touch=screen->getTouchIDInitiatedInRegion(hudRegion(element->getTouchRegion()));
++            if (touch!=-1) {
++                if (element->isVisible()) {
++                    element->blink(false,false);
++                    element->processTouch(touch);
++                    used.push_back(touch);
++                }
++            } else if (element->isUsed()) {
++                element->blink(false,false);
++                element->processTouchRelease();
++            }
++            if (element->isVisible() && element->isBlinking())
++                element->updateBlinkTimer(static_cast<int>(elapsed));
++            element->setWasInRegionLastFrame(screen->getTouchIDInRegion(hudRegion(element->getTouchRegion()))!=-1);
++        }
++        used.sort();
++        TouchIDList ids=screen->getTouchIDList();
++        if (defaultReceiver) {
++            if (used.size()<ids.size()) {
++                TouchIDList::const_iterator usedLink=used.begin();
++                TouchIDList::const_iterator idLink=ids.begin();
++                while (idLink!=ids.end()) {
++                    if (usedLink==used.end() || *idLink!=*usedLink) {
++                        defaultReceiver->processTouch(*idLink);
++                        goto refreshDrivingHud;
++                    }
++                    ++usedLink;
++                    ++idLink;
++                }
++            } else if (defaultReceiver->isUsed()) {
++                __android_log_print(4,hudDefaultRelease,hudDefaultUsed);
++                defaultReceiver->processTouchRelease();
++            }
++        }
++    }
++refreshDrivingHud:
++    if (activeHud==drivingHud && activeHud->isVisible()) {
++        unsigned int oldFlags=drivingHud->unknown8;
++        if (MenuManager::getInstance()->getDepth()==0) {
++            drivingHud->unknown8 |= 0x1000000;
++            drivingHud->unknown8 |= 16;
++        } else if (MenuManager::getInstance()->getDepth()!=0 && !MenuManager::getInstance()->isCurrentState(hudBlockingTutorial)) {
++            drivingHud->unknown8 &= ~0x1000000u;
++            drivingHud->unknown8 &= ~16u;
++        }
++        if (((oldFlags>>24)&1u)!=((drivingHud->unknown8>>24)&1u)) {
++            drivingHud->hide();
++            drivingHud->show();
++        }
++    }
++}
+--- a/src/game/input/TouchIDListSupport.h
++++ b/src/game/input/TouchIDListSupport.h
+@@ -75,10 +75,22 @@
+ struct ConstIterator {
+     NodeBase* _M_node;
+     explicit ConstIterator(NodeBase* node) : _M_node(node) {}
++    ConstIterator(const Iterator& other) : _M_node(other._M_node) {}
+     const long& operator*() const { return static_cast<Node*>(_M_node)->_M_data; }
+     ConstIterator& operator++() { _M_node = _M_node->_M_next; return *this; }
++    bool operator==(ConstIterator other) const { return _M_node == other._M_node; }
+     bool operator!=(ConstIterator other) const { return _M_node != other._M_node; }
+ };
++// Adapted STLport input-iterator distance dispatch, preserving its copy boundary.
++inline int distance_input(const ConstIterator& first, const ConstIterator& last) {
++    int count = 0;
++    ConstIterator current(first);
++    while (current != last) { ++current; ++count; }
++    return count;
++}
++inline int distance(ConstIterator first, ConstIterator last) {
++    return distance_input(first, last);
++}
+ }
+ struct TouchIDList {
+     typedef touch_id_list_detail::NodeBase NodeBase;
+@@ -110,6 +122,10 @@
+         next->_M_prev = node;
+         return iterator(node);
+     }
++    unsigned int size() const {
++        unsigned int result = touch_id_list_detail::distance(begin(), end());
++        return result;
++    }
+     void push_back(const long& value) { insert(end(), value); }
+     void sort() {
+         _ZN9stlp_priv7_S_sortIlSaIlESt4lessIlEEEvRSt4listIT_T0_ET1_(*this, std::less<long>());
+--- a/src/game/hud/MenuManager.h
++++ b/src/game/hud/MenuManager.h
+@@ -36,6 +36,7 @@
+     const char* getText(eText slot) const;
+     static MenuCheatZone s_cheatActivationZones[2];
+     int getDepth() const;
++    bool isCurrentState(const char*) const;
+     void showTexts();
+     void hideTexts();
+     void popAll(bool);
+--- a/src/game/ui/ToggleButton.h
++++ b/src/game/ui/ToggleButton.h
+@@ -13,6 +13,7 @@
+
+ private:
+     friend class CControlManager;
++    friend class CHudManager;
+     int inactiveFrame;
+     bool toggled;
+ };
+--- a/src/game/audio/Radio.h
++++ b/src/game/audio/Radio.h
+@@ -16,6 +16,7 @@
+
+ private:
+     friend class CControlManager;
++    friend class CHudManager;
+     AnimObject* animation;
+     int stationAnimation;
+     int unknown68;
