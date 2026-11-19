@@ -238,3 +238,48 @@ comparison and full 637-function/417-region closure were not completed in this
 experiment. The production compiler remains unchanged. Map subsequently matched
 with the original 1.6 toolchain and a bounded source-order correction, as
 documented in [its match note](matches/map-notify.md).
+
+### Controlled animation-duration frontend comparison
+
+A separate controlled experiment used the frozen canonical
+`ASprite::GetAnimDuration(int)` candidate at Thumb `0x00349d81` (native 82 bytes).
+All 955 source, configuration, tool and nonmatching input files were identical
+across three contexts. Only the owning C++ frontend executable changed. The
+original 1.6 r1 assembler and production options were retained.
+
+| C++ frontend | Function bytes | Input-section bytes | Result |
+| --- | ---: | ---: | --- |
+| NDK 1.6 r1 | 80 | 80 | Stopped before linking |
+| NDK r3 | 80 | 80 | Stopped before linking |
+| NDK r4b | 80 | 80 | Stopped before linking |
+
+All three emitted the identical complete unlinked target:
+`c8cda221040383236d7bb1e8c719bc0963bf8832c4eceefd266fe5b2d7b13d3a` (SHA256).
+Each emitted only the intended new function. Compiler and assembler succeeded;
+the prelink native-extent guard deliberately exited 3 because 80 is not 82.
+The linker and harness frontend were not invoked after that guard. No linked
+native comparison or old-function/region closure is claimed for these runs.
+
+These installed frontend choices do not resolve this candidate's fused signed
+halfword load. This is a case-specific result, not proof that the frontends are
+interchangeable for all code. The production toolchain remains unchanged. The
+earlier Map::Notify and ASprite::GetAnimIdx frontend experiments are separate;
+an older inventory's absence of r3 records must not be read as a current claim
+that r3 has never been tested.
+
+### Pickup proximity value capture
+
+After review of the six archived `GS3DStuff::checkPickableProximity` forms,
+one bounded value-lifetime experiment combined a named by-value `GetPosition()`
+result with a complete vector subtraction before the three range tests. The
+existing `PlayerTest`/`Character` position interfaces already return the correct
+vector value; no ABI or shared-header correction was justified.
+
+The current production frontend emitted 360 target bytes versus native 356 at
+Thumb `0x002deba1`, with an additional out-of-line `Character::position()` helper.
+The complete unlinked target SHA256 was
+`3b05a35d2fccec25b7ac8bc42b349099c7c667af12a1224a10f69307af65a465`.
+The experiment stopped before the owner linker. Dependency checks printed by
+the build do not establish an owner native comparison or old-owner closure.
+The candidate was rejected; no function definition, marker, compiler option or
+progress credit changed. Further variations require new evidence.

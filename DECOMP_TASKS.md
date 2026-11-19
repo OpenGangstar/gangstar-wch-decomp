@@ -327,7 +327,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002dbde5 | GS3DStuff::setPerformanceType | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002de919 | GS3DStuff::unload | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dc715 | GS3DStuff::checkVehicleProximity | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002deba1 | GS3DStuff::checkPickableProximity | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002deba1 | GS3DStuff::checkPickableProximity | — | BLOCKED | Six archived forms reviewed. One bounded named-position/full-delta value capture emits 360 bytes versus native 356 and an extra Character::position() helper. Stopped before owner linking; no native match or owner closure claimed. Private candidate rejected, production inputs unchanged; ownership released after review. | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dd0c1 | GS3DStuff::checkForDespawn | lock_init | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002de6dd | GS3DStuff::PrintNodeProperties | camera_tap | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002df419 | GS3DStuff::tearDown | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
@@ -1181,7 +1181,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
 
-| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Canonical80/native82 remains best. Actual helper reuse86 retains non-native call. Causal whole-TU no-TER probe emits82 but breaks multiple old native extents; configuration rejected, no credit. Primary-source SSA/load causality recorded; no type/alias fix proven. | src/game/rendering/ASprite.cpp |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Snapshot86, cursor80, sibling74/native82; canonical80 identical across three frontends, no integration or credit | src/game/rendering/ASprite.cpp |
 
 | libsanangeles.so | 0x002d4a01 | Application::_Update(int) | — | COMPLETED | Existing100%; reviewed authentic STLport proxy reader-path migration (_M_node._M_data); no algorithm/signature change. All native bytes preserved in root190/10923 gate. | src/game/app/Application.cpp |
 
@@ -1559,3 +1559,56 @@ SHA256 a79ca34d6b096e5534188720f8374fd14e6b63176ba3d8e6738e2c1388111d8d.
 Only the independently verified marker is removed. No existing body, layout,
 production option or denominator changes. Ownership released; exact proof in
 docs/matches/asprite-animation-name.md.
+
+### Animation-duration value capture review after PR737
+
+The coordinator owns only GetAnimDuration at Thumb 0x00349d81/native82. The
+actual first pass had five source forms, followed by separately bounded
+canonical, order, indexed and helper studies; no budget is reset. Existing
+compiler dumps prove TER replaces the single-use firstFrame memory load with
+a fused signed load. One actual Anim-record value snapshot after the existing
+Application singleton call may test whether genuine aggregate value capture
+preserves the narrow value. Keep the cached record pointer, count guard, data
+reload, signed fields, end-pointer loop and runtime stride of 9 bytes. No new helper,
+header, field type, attribute, production option or synthetic use is allowed.
+
+The Anim-value snapshot emits 86/native 82 bytes (section 88), only the target,
+and stops before linking. It retains the firstFrame halfword but reads it
+before the positive-count guard. The existing primary GCC audit also documents
+TER invalidation on a real same-root variable definition. One final bounded
+dataflow form may reuse a byte cursor first for the cached animation record,
+then for the reloaded frame table; both assignments must serve actual reads.
+This keeps the firstFrame read inside the guard while testing ordinary buffer
+cursor lifetime. No unused operations, volatile, barrier, attribute or flag
+changes are allowed. Earlier source/order variants used separate entry/base
+variables, not this two-phase cursor. Stop after this form if unmatched.
+
+The two-phase cursor also emits 80/native 82 bytes and is byte-identical in its
+entire unlinked target to the archived canonical80; it remains uncredited.
+Further inspection of the existing matched two-argument GetAFrame method
+revealed a distinct direct-family form: typed frame-data reload and accumulator
+inside the positive-count branch, unlike the earlier indexed-duration trial.
+The coordinator permits one direct copy of that proven traversal, removing
+only the early time exit and returning the accumulated duration (or zero for
+nonpositive count). No helper call, new declaration, flag or synthetic narrow
+use. This is a separately bounded reuse check, not a reset of earlier attempts.
+
+Direct matched GetAFrame body reuse emits 74/native 82 bytes (section 76), retains
+an extra index counter, and stops before linking. Source variants are stopped.
+One final controlled diagnostic compares the canonical80 source with the three
+installed GCC4.2.1 frontends, holding source/options, original1.6 assembler,
+linker and harness frontend fixed. Each non-native extent stops before linking.
+This is not a flag search, source-budget reset or production toolchain change.
+
+The coordinator reviewed and parked all duration work. The record snapshot
+emits 86/native 82 bytes (section 88), the real two-phase cursor emits 80 (section 80)
+and is byte-identical to the old canonical target, and direct GetAFrame-body
+reuse emits 74 (section 76) with the extra index counter. Only the target is newly
+emitted in each case. All stop before linking; no post-body closure is claimed.
+The canonical source then emits identical 80-byte targets with the 1.6 r1, r3
+and r4b frontends while source/options and original assembler remain fixed.
+All 955 input files are identical across the three contexts. Each extent guard
+exits 3 before linker/harness invocation. No field, source body, declaration,
+production flag, marker or progress credit is integrated. Current shared types
+and all existing matches remain intact. Ownership released; further source
+search needs new evidence. See docs/COMPILER-NOTES.md for exact scope.
