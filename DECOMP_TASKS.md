@@ -1283,7 +1283,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
 
-| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | Existing array API replay 616/native620; const header rejected, no link or credit | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter (const box and three output arrays) | — | BLOCKED | Const-SDK context also identical616/native620; both accessor trials parked without integration or credit | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | — | BLOCKED | one unchanged context replay; 4 instruction/21 GOT differences in GC diagnostic; old destructor overlap blocks integration | src/game/rendering/GS3DStuff.cpp |
 
@@ -1397,3 +1397,31 @@ uses raw script arrays, not the recovered list iterator; six saved source forms
 remain parked. The six unregistered PVRTC entries remain unchanged and pending:
 legacy dependency-family evidence exists, but exact wrapper/revision attribution
 is unresolved. No source assignment or provenance correction was made for them.
+
+| libsanangeles.so | 0x00331a09 | WeaponManager::getKeepWeaponsWhenBustedCost() compiler diagnostic only | — | COMPLETED | Diagnostic complete; both entire objects reproduced, PHI/zero-order divergence isolated; canonical 100% match unchanged | src/game/combat/WeaponManager.cpp |
+
+The coordinator will compare the accepted and rejected-header contexts using
+compiler tree/RTL dumps, after proving diagnostic output matches each archived
+object. No existing function body, production flag or shared header may change.
+
+A new two-context diagnostic reproduces both complete WeaponManager objects
+byte for byte with compiler dumps enabled. The only input difference is the
+genuine const array accessor. Equivalent trees first differ in PHI order, then
+SSA destruction reverses i/total zero initialization; final assembly removes
+one Thumb zero instruction and two alignment bytes. This measured cause
+permits one additional private octree const-accessor context check, retaining
+the saved const pointer and genuine SDK read APIs. It does not authorize
+integration of the regressing header or any unrelated body change.
+
+The two diagnostic compiles reproduce the entire accepted 264-byte and rejected
+260-byte WeaponManager objects exactly. Each contains 116 numbered dumps.
+After temporary/SSA-name normalization, PHI ordering first differs during SSA
+construction; statements remain equivalent through uncprop, and SSA destruction
+reverses i/total initialization. Final assembly removes one zero instruction
+and two alignment bytes before the unchanged 16-byte literal pool. Pinned GCC
+4.2.1 sources explain a consistent declaration-ID/hash/PHI-order mechanism;
+Android patch identity is not assumed. See docs/COMPILER-CONTEXT.md. No dummy
+declarations, production flags or existing body changes are proposed. Diagnostic
+ownership is released. The additional genuine const-SDK octree context is
+byte-identical to the first 616-byte accessor replay and is also parked before
+linking; no further iteration is authorized without new evidence.
