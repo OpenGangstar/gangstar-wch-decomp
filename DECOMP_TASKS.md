@@ -788,7 +788,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f6c45 | Character::punched | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f26ad | Character::ready | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f26ad | Character::ready | — | BLOCKED | Separate duplicate handlers restore all284 function bytes except0x96/0x106; table differs1c/20. Three tested case/return forms identical; owner113functions31sections1GOT preserved. Reviewed unapplied patch; no credit. Ownership released, no further variations without new evidence. | src/game/characters/Character.cpp; nonmatching/characters/Character-ready.patch |
 | libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f512d | EvPlayer deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
