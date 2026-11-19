@@ -1,0 +1,187 @@
+--- a/src/game/input/SniperControlHandler.cpp
++++ b/src/game/input/SniperControlHandler.cpp
+@@ -184,3 +184,99 @@
+     }
+     }
+ }
++
++#include "../characters/Character.h"
++#include "../core/CameraManager.h"
++#include "../core/CameraVariants.h"
++#include "../core/Quaternion.h"
++
++class EvKeyboard : public IEvent {
++public:
++    unsigned int character;
++    int key;
++    bool pressed;
++};
++
++static int fov __attribute__((section(".data.sniper_keyboard_fov"))) = 50;
++
++void SniperControlHandler::onKeyboardEvent(const IEvent* event)
++{
++    const EvKeyboard* keyboard = static_cast<const EvKeyboard*>(event);
++    if (keyboard->pressed) {
++    PlayerTest* player = PlayerTest::GetPlayer();
++    switch (keyboard->key) {
++    case 39: {
++        Character& character = reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player));
++        character.SetRotation(character.GetRotation() * irr::core::quaternion(0.0f, 0.0f, 0.0174532925199433f));
++        break;
++    }
++    case 'D': {
++        Character& character = reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player));
++        character.SetRotation(character.GetRotation() * irr::core::quaternion(0.0f, 0.0f, 0.0174532925199433f));
++        break;
++    }
++    case 37: {
++        Character& character = reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player));
++        character.SetRotation(character.GetRotation() * irr::core::quaternion(0.0f, 0.0f, -0.0174532925199433f));
++        break;
++    }
++    case 'A': {
++        Character& character = reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player));
++        character.SetRotation(character.GetRotation() * irr::core::quaternion(0.0f, 0.0f, -0.0174532925199433f));
++        break;
++    }
++    case 38:
++        CameraManager::getInstance()->getFPSCamera()->incVerticalAngle(1.0f);
++        break;
++    case 'W':
++        CameraManager::getInstance()->getFPSCamera()->incVerticalAngle(1.0f);
++        break;
++    case 40:
++        CameraManager::getInstance()->getFPSCamera()->incVerticalAngle(-1.0f);
++        break;
++    case 'S':
++        CameraManager::getInstance()->getFPSCamera()->incVerticalAngle(-1.0f);
++        break;
++    case '1':
++        CameraManager::getInstance()->enterMode(4, reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player)), 0.3f, 0);
++        break;
++    case '2':
++        CameraManager::getInstance()->enterMode(0, reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player)), 0.3f, 0);
++        break;
++    case '3':
++        player->hideMesh();
++        reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player)).hide();
++        break;
++    case '4':
++        player->showMesh();
++        reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player)).show();
++        break;
++    case 'E':
++        if (fov < 50)
++            CameraManager::getInstance()->getFPSCamera()->zoom(fov++);
++        break;
++    case 134:
++        if (fov < 50)
++            CameraManager::getInstance()->getFPSCamera()->zoom(fov++);
++        break;
++    case 'F':
++        if (unknown12 == 1)
++            handleAttackHeld();
++        else
++            handleAttackPressed();
++        break;
++    case 'Q':
++        if (fov > 6)
++            CameraManager::getInstance()->getFPSCamera()->zoom(fov--);
++        break;
++    case 133:
++        if (fov > 6)
++            CameraManager::getInstance()->getFPSCamera()->zoom(fov--);
++        break;
++    }
++    } else if (keyboard->key == 'F') {
++        handleAttackReleased();
++    }
++}
++
++
+--- a/src/game/core/CameraManager.h
++++ b/src/game/core/CameraManager.h
+@@ -50,6 +50,7 @@
+     void setFOV(int degrees);
+     int getFOV();
+     irr::scene::ICameraSceneNode* getCamera() const;
++    FPSCamera* getFPSCamera() const { return fpsCamera; }
+     int getMode() const { return mode; }
+     void debug(irr::video::IVideoDriver*);
+     void setSceneCamera(SceneCamera* scene);
+--- a/src/game/characters/Character.h
++++ b/src/game/characters/Character.h
+@@ -112,6 +112,7 @@
+     virtual void SetTarget(LevelObject* value);
+     virtual void goToVehicle(Vehicle*, bool, bool, bool, bool);
+ private:
++    friend class SniperControlHandler;
+     void positionAtDoor(bool left);
+     void getInVehicle(bool left);
+     void openVehicleDoor(bool left);
+--- a/config/matches/ai-startup-snipercontrolhandler.json
++++ b/config/matches/ai-startup-snipercontrolhandler.json
+@@ -52,7 +52,8 @@
+         {
+             "name": "_GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager",
+             "address": "0x0032f565"
+-        }
++        },
++        "_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent"
+     ],
+     "sections": [
+         ".handler_vtable",
+@@ -63,18 +64,28 @@
+         {
+             "name": ".got",
+             "offset": 864
+-        }
++        },
++        ".sniper_keyboard_event",
++        ".sniper_keyboard_fov",
++        ".sniper_keyboard_switch"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+         "_ZNK15CControlManager8isLockedEv",
+-        "_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent",
+         "_ZN15CControlManager11enterCombatEv",
+         "_ZN10PlayerTest9GetPlayerEv",
+         "_ZN10PlayerTest6attackEb",
+         "_ZN15CControlManager11exitSnipingEb",
+         "_ZN11Application11GetInstanceEv",
+         "_ZN12EventManager6attachEiP14IEventReceiver",
+-        "_ZN12EventManager6detachEiP14IEventReceiver"
++        "_ZN12EventManager6detachEiP14IEventReceiver",
++        "_ZN13CameraManager11getInstanceEv",
++        "_ZN9FPSCamera4zoomEi",
++        "_ZN10PlayerTest8showMeshEv",
++        "_ZN9Character4showEv",
++        "_ZN10PlayerTest8hideMeshEv",
++        "_ZN9Character4hideEv",
++        "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
++        "_ZN9FPSCamera16incVerticalAngleEf"
+     ]
+ }
+--- a/config/linker/SniperControlHandlerAiStartup.ld
++++ b/config/linker/SniperControlHandlerAiStartup.ld
+@@ -16,6 +16,10 @@
+ __cxa_pure_virtual = 0;
+ SECTIONS
+ {
++    .sniper_keyboard_event 0x0032f200 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler15onKeyboardEventEPK6IEvent) }
++    .sniper_keyboard_fov 0x004b5970 : { *(.data.sniper_keyboard_fov) }
++    .sniper_keyboard_switch 0x00426a74 : { *(.rodata._ZN20SniperControlHandler15onKeyboardEventEPK6IEvent) }
++
+     .sniper_on_event 0x0032f390 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler7onEventEPK6IEventPK12EventManager) }
+     .sniper_attack_pressed 0x0032f158 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler19handleAttackPressedEv) }
+     .sniper_attack_held 0x0032f0f8 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler16handleAttackHeldEv) }
+@@ -68,3 +72,7 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
++
++ASSERT(SIZEOF(.sniper_keyboard_event) == 400, "Sniper keyboard extent");
++ASSERT(SIZEOF(.sniper_keyboard_fov) == 4, "Sniper fov extent");
++ASSERT(SIZEOF(.sniper_keyboard_switch) == 392, "Sniper key table extent");
