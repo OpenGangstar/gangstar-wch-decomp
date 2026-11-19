@@ -1,0 +1,110 @@
+--- a/src/game/ai/AIManager.cpp
++++ b/src/game/ai/AIManager.cpp
+@@ -323,3 +323,54 @@
+     previous->next = node;
+     firstList.previous = node;
+ }
++
++
++#include "VehicleController.h"
++#include "../vehicles/Vehicle.h"
++class CopVehicleController : public VehicleController {
++public:
++    CopVehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
++        gameloft::ai::StateID state);
++    virtual ~CopVehicleController();
++    virtual void onEvent(const IEvent*, const EventManager*);
++    virtual void switchState(gameloft::ai::StateID);
++
++private:
++    int unknown28;
++};
++void AIManager::addAI(Vehicle* value, gameloft::ai::StateID initial)
++{
++    VehicleController* controller;
++    switch (value->unknown240) {
++    case 0:
++        if (initial == 0)
++            controller = new VehicleController(value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_vehicle), static_cast<gameloft::ai::StateID>(1));
++        else
++            controller = new VehicleController(value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_vehicle), initial);
++        break;
++    case 3: {
++        CopVehicleController* cop;
++        if (initial == 0)
++            cop = new CopVehicleController(value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::cop_vehicle), static_cast<gameloft::ai::StateID>(1));
++        else
++            cop = new CopVehicleController(value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::cop_vehicle), initial);
++        EvWantedLevelChanged event;
++        cop->onEvent(&event, Application::GetInstance()->GetEventManager());
++        controller = cop;
++        break;
++    }
++    case 6:
++        controller = new VehicleController(value, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::scripted_vehicle), initial);
++        break;
++    default:
++        return;
++    }
++    typedef std::allocator<stlp_priv::_List_node<IEventReceiver*> > Allocator;
++    ReceiverNode* node = reinterpret_cast<ReceiverNode*>(reinterpret_cast<Allocator*>(&secondList)->allocate(1,0));
++    node->receiver = controller;
++    node->next = &secondList;
++    ReceiverList* previous = secondList.previous;
++    node->previous = previous;
++    previous->next = node;
++    secondList.previous = node;
++}
+--- a/src/game/vehicles/Vehicle.h
++++ b/src/game/vehicles/Vehicle.h
+@@ -15,6 +15,7 @@
+ 
+ // The secondary marker interface starts at offset 52 in the 1012-byte extent.
+ class Vehicle : public LevelObject, public IMapTrackable {
++    friend class AIManager;
+     friend class MissionConditionDriveWell;
+ public:
+     void explode();
+--- a/config/matches/ai-startup-aimanager.json
++++ b/config/matches/ai-startup-aimanager.json
+@@ -50,7 +50,8 @@
+         {
+             "name": "_GLOBAL__I__ZN9AIManagerC2Ev",
+             "address": "0x003402cd"
+-        }
++        },
++        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE"
+     ],
+     "sections": [
+         ".ai_remove_vehicle",
+@@ -71,7 +72,8 @@
+             "offset": 864
+         },
+         ".ai_add_npc_table",
+-        ".ai_add_invalid_text"
++        ".ai_add_invalid_text",
++        ".ai_add_vehicle"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -81,6 +83,8 @@
+         "_ZN13CopControllerC1EP3NPCN8gameloft2ai7StateIDE",
+         "_ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE",
+         "_ZN20CivPassiveControllerC1EP3NPCRKN8gameloft2ai10TransitionENS3_7StateIDE",
+-        "_ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE"
++        "_ZN22CivAgressiveControllerC1EP3NPCN8gameloft2ai7StateIDE",
++        "_ZN17VehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
++        "_ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE"
+     ]
+ }
+--- a/config/linker/AIManagerAiStartup.ld
++++ b/config/linker/AIManagerAiStartup.ld
+@@ -19,6 +19,8 @@
+ INCLUDE config/linker/ApplicationEventSections.ld
+ SECTIONS
+ {
++    .ai_add_vehicle 0x00340304 : { *ai-startup-aimanager.o(.text._ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE) }
++    ASSERT(SIZEOF(.ai_add_vehicle) == 336, "Native AI vehicle factory extent")
+     .ai_add_npc 0x00340454 : { *ai-startup-aimanager.o(.text._ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE) }
+     .ai_add_npc_table 0x0042fabc : { *ai-startup-aimanager.o(.rodata._ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE) }
+     .ai_add_invalid_text 0x0042fa84 : { *ai-startup-aimanager.o(.rodata.aiInvalidType) }

@@ -851,7 +851,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003406a9 | AIManager::clean | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x003426b5 | VehicleController::switchState | — | COMPLETED | 100% | src/game/ai/VehicleController.cpp |
 | libsanangeles.so | 0x00340741 | AIManager::onEvent | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
-| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, StateID) | lock_init | BLOCKED | pending | src/game/ai/AIManager.cpp |
+| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, StateID) | — | BLOCKED | Unmatched: one bounded NPC common-tail reuse emits 244/336 bytes; prelink guard exit 3, no linked comparison. See nonmatching/ai/AIManager-addAI-Vehicle.md. | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x00340455 | AIManager::addAI(NPC*, StateID) | — | COMPLETED | 100% | src/game/ai/AIManager.cpp |
 | libsanangeles.so | 0x003520c1 | RadioStationController::selectRandomJingle | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
 | libsanangeles.so | 0x003522b1 | RadioStationController::selectRandomSong | — | COMPLETED | 100% | src/game/ai/RadioStationController.cpp |
