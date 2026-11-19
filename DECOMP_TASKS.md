@@ -1104,7 +1104,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | lock_init | BLOCKED | 1688/1668-byte supported candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | — | BLOCKED | Genuine-object replay 1688/native1668; native weak C1/GOT corrected, no link or credit | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 
@@ -1334,3 +1334,30 @@ Coordinator completed the latest read-only queue triage and assigns prefs_loader
 Coordinator assigns player_update only Tutorial localization implementation. Volumes localization and setText require separate ownership before any future implementation. Shared string changes stay in isolated candidate mirrors; the coordinator alone integrates common declarations.
 
 Coordinator assigns vehicle_camera read-only queue triage for additional pending game functions with concrete absent canonical string/value/name APIs. Exclude active Tutorial and Volumes localization; no implementation ownership or compile permission is granted by triage. SetText remains parked.
+
+### Bounded pathfinding constructor review after PR735
+
+The coordinator owns only ComputeShortestPath at Thumb 0x00320ca1/1668.
+A separate ordinary-object fixture now proves the current PhysicInfo interface
+emits the accepted weak 96-byte C1 and a native GOT call. Old v5/v6 emitted a
+strong C1/direct call. One replay of the saved genuine-object algorithm is
+allowed after independently validating its genuine container/node interfaces
+with the target absent. No first-pass budget reset, unrelated body changes,
+flags, output edits, or unchecked overlapping verification image are allowed.
+
+The first private prerequisite gate rejected a generic array constructor: it
+changed existing CollisionBodyDef and LODSceneNode matches. That failed tree
+and full log are retained. Recovery removes only that generic constructor;
+the target will reuse the existing zero-storage PathArray initialization view
+for its two arrays. This restriction adds no body iteration and changes no
+existing matched function. A fresh full target-absent gate is required.
+
+The coordinator reviewed and parked the single current-interface replay. The
+restricted target-absent prerequisite passed all 190 profiles and 10,935
+comparisons with 952 frozen inputs stable. The body is 1,688/native 1,668 bytes,
+frame 460; C1 is the accepted weak 96-byte constructor with R_ARM_GOT32 call,
+and only the target is newly emitted. The probe stopped before linking. No
+post-body closure or matching percentage is claimed. Public unapplied patch,
+Windows prelink reproducer and exact limits are preserved under
+nonmatching/characters/ComputeShortestPath*. Ownership is released; no further
+source iteration is authorized without new evidence.
