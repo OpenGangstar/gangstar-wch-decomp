@@ -153,7 +153,8 @@
         "_ZN10b2ShapeDefD1Ev",
         "_ZN10b2ShapeDefD0Ev",
         "_ZN10PhysicInfoC1Ev",
-        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
+        "_ZN9Character20getSpecificAnimationEi"
     ],
     "sections": [
         ".character_animation_resource",
@@ -190,7 +191,8 @@
         ".circle_shape_base_table",
         ".circle_shape_table",
         ".physic_info_ctor",
-        ".physic_find_lower"
+        ".physic_find_lower",
+        ".character_specific_animation"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -254,7 +256,6 @@
         "_ZN9Character12setAnimationEifbbb",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
-        "_ZN9Character20getSpecificAnimationEi",
         "_ZN9Character21switchCombatAnimationEv",
         "_ZN9Character4showEv",
         "_ZN9Character5punchEv",
@@ -275,6 +276,7 @@
         "_ZNK7Vehicle12isDoorClosedEb",
         "_ZNK7Vehicle12isDoorOpenedEb",
         "_Z21ekd_makestringfile255PKcPc",
-        "_Z13ekd_debug_outPKcPc"
+        "_Z13ekd_debug_outPKcPc",
+        "_ZNK6Weapon11isTwoHandedEv"
     ]
 }

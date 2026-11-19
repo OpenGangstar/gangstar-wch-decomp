@@ -788,7 +788,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f6c45 | Character::punched | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f2ed9 | Character::goToVehicle | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f3231 | Character constructor (C1/C2 aliases) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f26ad | Character::ready | — | BLOCKED | Separate duplicate handlers restore all284 function bytes except0x96/0x106; table differs1c/20. Three tested case/return forms identical; owner113functions31sections1GOT preserved. Reviewed unapplied patch; no credit. Ownership released, no further variations without new evidence. | src/game/characters/Character.cpp; nonmatching/characters/Character-ready.patch |
+| libsanangeles.so | 0x002f26ad | Character::ready | — | BLOCKED | Separate handlers leave2 function/2 table bytes different; three forms identical. Unchanged replay with compiled selector also identical; owner114functions32sections1GOT preserved. No credit or further variants without new evidence; ownership released. | src/game/characters/Character.cpp; nonmatching/characters/Character-ready.patch |
 | libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f61f9 | EvPlayer destructor (D1) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f512d | EvPlayer deleting destructor (D0) | — | COMPLETED | 100% | src/game/characters/Character.cpp |
@@ -805,7 +805,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f405d | Character::Update | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4465 | Character::initPhysic | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f4a79 | Character::positionInVehicle | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | — | COMPLETED | 100%;714-byte function and716-byte section exact in Character/NPC/Player images. Four alias-return pairs separated; full190-profile10949-comparison gate passes with965inputs stable. Ownership released after acceptance. | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f517d | Character::switchCombatAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f3489 | Character::updateAnimation | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f661d | Character::switchMoveAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |

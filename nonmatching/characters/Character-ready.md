@@ -64,3 +64,12 @@ full section and full table independently, with strict 284/36-byte extent
 assertions and normal overlap checking. No new support definition is emitted.
 This is an owner/dependency proof, not a new 190-profile run. The unapplied
 patch changes no production progress, shared headers, flags or existing bodies.
+
+## Replay after the selector match
+
+One unchanged-source replay against the newly compiled getSpecificAnimation
+callee produces the identical full unlinked target hash above. The same two
+function bytes and two table bytes differ. This private owning image preserves
+114 existing functions, 32 sections and one GOT region, including the new exact
+selector. Callee visibility does not resolve the layout; no further source
+variation or credit follows from this replay.
