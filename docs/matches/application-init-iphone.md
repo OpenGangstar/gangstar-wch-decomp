@@ -49,3 +49,11 @@ function; its values, calls, control flow and behavior remain unchanged. The
 private NPC/PlayerTest closure passes all 454 checks. The coordinator's combined
 ten-profile recheck passes 979 function, 519 section and ten region comparisons
 (1,508 total), including both menu notifications and the NPC consumer.
+
+The final integrated `python tools/build.py --all` exits 0 across all 190 profiles:
+5,295 function, 5,192 section and 181 region comparisons (10,668 total), with no
+failed or skipped profiles. Independent native executable audits have no missing
+proofs for all 4,250 credited entries and all 1,647 completed-source entries.
+All 89 tests, repository/progress checks and pinned objdiff schema validation pass.
+The four-entry hourly batch adds 658 bytes: Matched/Fuzzy is 59.22%, and Fully
+Linked remains 19.19%.

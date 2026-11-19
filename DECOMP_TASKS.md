@@ -871,7 +871,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate | — | BLOCKED | Exact _Update helper is identical to failed authentic unregister helpers; conversion-call lifetime boundary is absent here, no new API/inlining evidence; parked uncredited | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3cb9 | Application::IsLogoOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
 | libsanangeles.so | 0x002d3c9d | Application::IsGlobalResumingOver | — | COMPLETED | 100% | src/game/app/Application.cpp |
-| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | — | COMPLETED | 100%; exact 18-byte function and 20-byte physical section in two images. Actual helper retained; current Cash unchanged, NPC compatibility restored. Full final recheck running. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d3c7d | Application::InitIPhone | — | COMPLETED | 100%; exact 18-byte function and 20-byte physical section in two images. Actual helper retained; current Cash unchanged, NPC compatibility restored. Final 190-profile, 10,668-comparison gate passes with no failures or skips. | src/game/app/Application.cpp |
 | libsanangeles.so | 0x00325b0d | CSniperHud destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/hud/SniperHud.cpp |
 | libsanangeles.so | 0x0034a3b5 | ASpriteData constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/rendering/ASpriteData.cpp |
 | libsanangeles.so | 0x003499b9 | ASprite::GetAFrameTime | — | COMPLETED | 100% | src/game/rendering/ASprite.cpp |

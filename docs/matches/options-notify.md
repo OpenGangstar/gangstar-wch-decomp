@@ -39,3 +39,11 @@ roundtrip: the differing choice already existed during allocation/reload.
 Only the canonical source-interface reuse succeeded. Diagnostic compilations
 preserved their corresponding ordinary assembly, objects and linked images;
 none of their flags or failed candidate bodies are adopted.
+
+The final integrated `python tools/build.py --all` exits 0 across all 190 profiles:
+5,295 function, 5,192 section and 181 region comparisons (10,668 total), with no
+failed or skipped profiles. Independent native executable audits have no missing
+proofs for all 4,250 credited entries and all 1,647 completed-source entries.
+All 89 tests, repository/progress checks and pinned objdiff schema validation pass.
+The four-entry hourly batch adds 658 bytes: Matched/Fuzzy is 59.22%, and Fully
+Linked remains 19.19%.
