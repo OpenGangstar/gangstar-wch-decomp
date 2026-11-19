@@ -1223,7 +1223,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | Reviewed case-order trial emits 600/native596 bytes with all six native temporary slots and the native 104-byte frame. Four extra bytes remain in the empty-list cold block. All historical forms use raw nodes; genuine existing STLport iterator reuse is untried. Worker usage limit interrupted before further authorization or compilation; no match credit. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | Coordinator iterator reuse restores native596 size, 104-byte frame and all six event slots. Exactly26 scheduling bytes differ at +0x1f6..+0x20f; switch table and all existing owner/JNI comparisons pass. Reviewed unapplied patch preserves evidence without canonical source changes or credit. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
 
