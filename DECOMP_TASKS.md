@@ -1612,3 +1612,14 @@ exits 3 before linker/harness invocation. No field, source body, declaration,
 production flag, marker or progress credit is integrated. Current shared types
 and all existing matches remain intact. Ownership released; further source
 search needs new evidence. See docs/COMPILER-NOTES.md for exact scope.
+
+
+## Coordinator review: original NDK enum-width baseline
+
+On 2026-11-19, the coordinator reviewed both original NDK setup files and a
+controlled 190-profile replay of `-fno-short-enums`. All 10,949 comparisons
+passed without failures or skips. The 180 ARM profiles that omitted this
+SDK-default flag now list the exact verified arguments; ten were unchanged.
+No function ownership, source body, assembly status or progress credit changes.
+See docs/COMPILER-NOTES.md. This is a compiler prerequisite, not completion of
+any pending function or a substitute for its byte comparison.

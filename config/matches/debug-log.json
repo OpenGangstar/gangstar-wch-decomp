@@ -16,7 +16,8 @@
         "-mtune=xscale",
         "-mfloat-abi=softfp",
         "-fdata-sections",
-        "-fno-merge-constants"
+        "-fno-merge-constants",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

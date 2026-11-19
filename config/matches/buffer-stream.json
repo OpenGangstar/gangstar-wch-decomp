@@ -14,7 +14,8 @@
         "-mthumb-interwork",
         "-march=armv5te",
         "-mtune=xscale",
-        "-mfloat-abi=softfp"
+        "-mfloat-abi=softfp",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

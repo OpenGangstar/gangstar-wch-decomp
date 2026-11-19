@@ -16,7 +16,8 @@
         "-mtune=xscale",
         "-mfloat-abi=softfp",
         "-fdata-sections",
-        "-finline-limit=40"
+        "-finline-limit=40",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

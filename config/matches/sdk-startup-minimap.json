@@ -15,7 +15,8 @@
         "-ffunction-sections",
         "-fdata-sections",
         "-finline-limit=70",
-        "-fno-tree-ch"
+        "-fno-tree-ch",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

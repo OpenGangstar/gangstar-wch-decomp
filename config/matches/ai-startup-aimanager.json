@@ -16,7 +16,8 @@
         "-fdata-sections",
         "-finline-limit=70",
         "-fno-tree-ch",
-        "-fno-delete-null-pointer-checks"
+        "-fno-delete-null-pointer-checks",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",

@@ -4,7 +4,8 @@
         "-O2", "-fpic", "-fno-toplevel-reorder",
         "-fno-strict-aliasing", "-fno-rtti", "-fno-exceptions",
         "-mthumb", "-mthumb-interwork", "-march=armv5te",
-        "-mtune=xscale", "-mfloat-abi=softfp"
+        "-mtune=xscale", "-mfloat-abi=softfp",
+        "-fno-short-enums"
     ],
     "assembler_flags": ["-march=armv5te", "-mfloat-abi=softfp", "-mfpu=vfp", "-meabi=4"],
     "linker_script": "config/linker/Logs.ld",

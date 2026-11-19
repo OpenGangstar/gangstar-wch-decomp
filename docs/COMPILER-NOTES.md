@@ -329,3 +329,38 @@ compiler/assembler runs deliberately stop at the extent guard before linking;
 no owner or full-profile native closure is claimed. No function or marker was
 changed in production. The old registry's `98/308` described same-offset byte
 equality for a different 308-byte form, not a 98-byte reconstruction.
+
+
+## NDK enum-width baseline verification (2026-11-19)
+
+The installed NDK 1.6 r1 and r4b ARM GCC 4.2.1 setup files both explicitly add
+`-fno-short-enums` to `TARGET_CFLAGS.common`, which also feeds `TARGET_CXXFLAGS`.
+The 1.6 r1 reference is
+`build/toolchains/arm-eabi-4.2.1/setup.mk`, line 37. Directly invoking cc1plus
+without this flag therefore differs from that documented NDK build default.
+This is primary SDK configuration evidence; it does not independently identify
+every flag or override used by Gameloft's retail build.
+
+A controlled isolated replay added only this one flag to profiles that lacked
+it, retaining all other source, headers, manifests, flags, compiler versions,
+linker placements and checks. Ten profiles already specified it; 180 did not.
+All 190 profiles passed: 5,432 function checks, 5,336 sections and 181 regions,
+10,949 comparisons in total, with no mismatches or dependency skips. Private
+and production source/configuration/tool/nonmatching inputs stayed frozen
+throughout. The replay supplied the additional flag through a copied manifest
+passed to the ordinary build function; it did not rewrite compiler output or
+relax any verification.
+
+The 180 production ARM matching manifests now explicitly list the exact
+measured compiler flag. Every resulting argument list was checked against the
+recorded successful replay. No second full-root run is claimed merely for
+copying those measured arguments into the manifests. Existing explicit enum
+range markers are retained; no unrelated source cleanup is included.
+
+This establishes compatibility with all existing checked native matches, not
+completion of pending functions or proof of their remaining type declarations.
+It supplies the original NDK's word-sized enum baseline for future ARM
+reconstruction. No Windows/x86 or launcher configuration changes. All matched,
+Fully Linked and Fuzzy Matched progress and every original catalogue entry
+remain unchanged. Never credit a pending function solely because a compiler
+flag is now better supported; its complete native comparison is still required.

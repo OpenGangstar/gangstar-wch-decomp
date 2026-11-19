@@ -10,7 +10,8 @@
         "-mthumb-interwork",
         "-march=armv5te",
         "-mfloat-abi=softfp",
-        "-fno-toplevel-reorder"
+        "-fno-toplevel-reorder",
+        "-fno-short-enums"
     ],
     "assembler_flags": [
         "-march=armv5te",
