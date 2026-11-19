@@ -9600,7 +9600,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e77a9	0x26	MenuState.cpp	gameswf	-	matched	_ZN7gameswf9smart_ptrINS_9characterEE7set_refEPS1_	gameswf::smart_ptr<gameswf::character>::set_ref(gameswf::character*)
 0x002e77d1	0x44	MenuState.cpp	game	ui	matched	_ZN6MenuFX5StateC1EPKc	MenuFX::State::State(char const*)
 0x002e7815	0x98	MenuState.cpp	game	ui	matched	_ZN5Menus10InGameMenu6NotifyEPK10MenuWidgeti	Menus::InGameMenu::Notify(MenuWidget const*, int)
-0x002e78ad	0xdc	MenuState.cpp	game	ui	pending	_ZN5Menus3Map6NotifyEPK10MenuWidgeti	Menus::Map::Notify(MenuWidget const*, int)
+0x002e78ad	0xdc	MenuState.cpp	game	ui	matched	_ZN5Menus3Map6NotifyEPK10MenuWidgeti	Menus::Map::Notify(MenuWidget const*, int)
 0x002e7989	0x4c	MenuState.cpp	game	ui	matched	_ZN5Menus18OptionGameSettings7RefreshEv	Menus::OptionGameSettings::Refresh()
 0x002e79d5	0x50	MenuState.cpp	game	ui	matched	_ZN5Menus14InfoStatistics11OnFSCommandEPKcS2_	Menus::InfoStatistics::OnFSCommand(char const*, char const*)
 0x002e7a25	0x50	MenuState.cpp	game	ui	matched	_ZN5Menus16InfoAchievements11OnFSCommandEPKcS2_	Menus::InfoAchievements::OnFSCommand(char const*, char const*)

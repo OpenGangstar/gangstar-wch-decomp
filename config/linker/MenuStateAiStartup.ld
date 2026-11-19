@@ -42,6 +42,8 @@ INCLUDE config/linker/WidgetTutorialLocalization.ld
 
 INCLUDE config/linker/WidgetConfirmLocalization.ld
 
+INCLUDE config/linker/MapNotifySections.ld
+
 SECTIONS
 {
     .service_weaponshop_notify 0x002eb920 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti) }

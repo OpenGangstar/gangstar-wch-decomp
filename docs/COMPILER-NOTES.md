@@ -186,3 +186,55 @@ one assembler compilation unit for GCC's `config/arm/ieee754-sf.S`, covering
 entries. `arm-eabi-readelf --debug-dump=info baselib/libsanangeles.so` reproduces
 that coverage. A different build with game C++ DWARF could provide useful type
 information; the debug-section names in this retail build alone do not provide it.
+
+## Installed GCC 4.2.1 identity audit (2026-11-19)
+
+The existing NDK 1.6 r1, r3 and r4b installations contain genuinely distinct
+compiler code, despite their common GCC 4.2.1 version string. Both complete
+`cc1plus.exe` hashes and PE code-section hashes differ. The installed compiler,
+assembler and linker executables match their corresponding local archive
+members; duplicate assembler/linker paths within one SDK are exact aliases.
+No executable was patched or newly downloaded for this inventory.
+
+| NDK | `cc1plus.exe` bytes | SHA-256 |
+| --- | ---: | --- |
+| 1.6 r1 | 16,231,115 | `914b3fe8024cdfe8358b6fc6f78ce672136db1f03ccd609a8cb8a432de7bb734` |
+| r3 | 7,011,268 | `6f9f288e1313fae4cba64239a06b19613f52c2c1d870355dab767f696c1ee643` |
+| r4b | 6,234,112 | `9a2945efb802aac30e6584476003b4c174ec84e2b06a0fab3f8cc89e14b5fe4c` |
+
+The 1.6 r1 driver records the `digit/Android` build path seen in retail runtime
+debug information and uses binutils 2.17. The r3 and r4b build paths differ and
+their binutils versions are 2.19. Retail's lone assembler compilation unit
+therefore supports the earlier runtime lineage, but does not identify the
+compiler binary or patch set used for game C++. Linking an older runtime into
+objects produced by a different compiler remains possible.
+
+Binary identity is not a function-matching result. The existing r4b ASprite
+experiment changed the whole SDK, retained the target mismatch and regressed
+14 old functions and nine regions; those failures cannot all be attributed to
+the C++ frontend because assembler and linker also changed. A controlled
+frontend comparison must keep source, flags, assembler, linker and native
+placements fixed, and report its actual old closure. Such a mixed diagnostic
+does not establish an original or production toolchain.
+
+### Controlled r3 frontend result
+
+One such diagnostic compiled only the frozen 220-byte `Menus::Map::Notify`
+owning translation unit with the r3 frontend, holding all dependency compilers,
+assembler, linker, source and flags at their original 1.6 r1 settings. The
+target's raw bytes and semantic relocations were identical to the 1.6 output;
+there was no observed target code-generation improvement.
+
+All 391 dependency function checks and 284 region checks passed. The owner
+link then failed on orphan overlaps: 26 existing weak sections changed from
+`.gnu.linkonce.t.*` names to `.text.*` naming/group conventions, outside the
+old placement selectors. All 257 mapped owner allocated payloads and 572
+dependency payloads remained unchanged. This was a linker-layout compatibility
+failure, not evidence that those old function bytes changed or that a native
+extent assertion failed.
+
+No placement repair or second compile was attempted. The linked native target
+comparison and full 637-function/417-region closure were not completed in this
+experiment. The production compiler remains unchanged. Map subsequently matched
+with the original 1.6 toolchain and a bounded source-order correction, as
+documented in [its match note](matches/map-notify.md).
