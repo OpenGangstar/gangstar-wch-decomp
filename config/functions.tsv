@@ -11984,7 +11984,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003391d5	0x1c	Script.cpp	game	scripting	matched	__tcf_5	__tcf_5
 0x003391f1	0x20	StateMachine.cpp	game	ai	matched	_ZN12StateMachine9pushStateI18GSBlockingTutorialEEPT_v	GSBlockingTutorial* StateMachine::pushState<GSBlockingTutorial>()
 0x00339211	0x1c	Script.cpp	game	scripting	matched	__tcf_4	__tcf_4
-0x0033922d	0x3a	Script.cpp	game	scripting	pending	_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE	Script::setState(Script::State, PlayerTest::eContext)
+0x0033922d	0x3a	Script.cpp	game	scripting	matched	_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE	Script::setState(Script::State, PlayerTest::eContext)
 0x00339269	0x1a	Script.cpp	game	scripting	matched	_ZN6Script12unlockScriptEi	Script::unlockScript(int)
 0x00339285	0x1a	Script.cpp	game	scripting	matched	_ZN6Script12freezeScriptEi	Script::freezeScript(int)
 0x003392a1	0x50	Script.cpp	game	scripting	matched	_ZN6ScriptC1Ei	Script::Script(int)

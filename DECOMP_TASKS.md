@@ -479,7 +479,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003399c5 | Script::clearScriptObjectAction | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033999d | Script::setScriptObjectAction | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
-| libsanangeles.so | 0x0033922d | Script::setState | — | BLOCKED | Historical best56/58 bytes; enum-parameter escalation66B fails strict overlap; measured sink/local allocation causes preserved, no credit | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0033922d | Script::setState(State, PlayerTest::eContext) | — | COMPLETED | 100%; exact 58-byte executable and full 60-byte section under original NDK enum-width baseline. Full root190/10951 proof passes; no existing body changes. | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction | camera_tap | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033ce19 | Script::nextCommand | lock_init | BLOCKED | — | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003399f1 | Script::rewind | vehicle_side | BLOCKED | — | src/game/scripting/Script.cpp |
