@@ -6,7 +6,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
-| libsanangeles.so | 0x0039324d | Catalogue provenance support: logger/file_util/PVRTC candidates (no decompilation) | player_update | IN_PROGRESS | Read-only primary-source identity audit of14 pending entries/2666bytes; all tableentries/statuses mustremain. No additional classification changes before coordinator review. | tools/provenance.py; fullcatalogue (read-only) |
+| libsanangeles.so | 0x0039324d | Catalogue provenance support: logger/file_util/PVRTC candidates (no decompilation) | — | COMPLETED | The eight proven gameswf entries (494 bytes) are reclassified after coordinator review. All 17,703 identities and post-constructor statuses remain unchanged; no matched or linked bytes are added. PVRTC remains deferred. | tools/provenance.py; docs/PROVENANCE-CORRECTIONS.md |
+| libsanangeles.so | 0x00375375 | Catalogue provenance support: psmodule.c (no decompilation) | — | COMPLETED | The eight pending PSNames entries (1,060 bytes) are correctly classified as FreeType. The existing 280-byte helper is unchanged. All identities, statuses and native inputs are preserved; 102 tests and report audits pass. | tools/provenance.py; docs/PROVENANCE-CORRECTIONS.md |
 | libsanangeles.so | 0x00364bf5 | Catalogue provenance support: ftcache.c (FTC_MruNode_Prepend anchor; no engine decompilation) | — | COMPLETED | Maintainer-approved95-function FreeType correction verified; all17,703 functionidentities/statuses retained, all95 staypending and publicauditlistsall95. Zero matched/linkedbytes added;96tests pass. | tools/provenance.py; tools/layout.py; config/functions.tsv (read-only) |
 | libsanangeles.so | 0x004ab060 | EvNPCVehicle construction support (vtable anchor; no out-of-line constructor credit) | — | BLOCKED | Direct and implicit-copy support probes emit identical 56-byte sections and relocations, one event/raise/cleanup, with no retained base-vptr construction sequence. Local copy hypothesis rejected. Four-site native audit confirms mixed retained/elided base-vptr stores; no unique constructor/linkage inference. No game body or shared constructor changed. | src/game/characters/NPCVehicleEvent.h; private probe |
 | libsanangeles.so | 0x0034425d | SaveGame::LoadAndApply(char const*) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/persistence/SaveGame.cpp |
@@ -41,9 +42,9 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00305cd5 | Shop::getId | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x003342ad | FPSCamera::zoom (touch list) | — | COMPLETED | 100% | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x0033560d | VehicleCamera::updatePosition | — | COMPLETED | 100% | src/game/vehicles/VehicleCamera.cpp |
-| libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | — | BLOCKED | The real Character receiver and completed float product restore native 280-byte extent, 32-byte pool and all 20 call instructions. Exactly 14 bytes still differ in spills/scheduling, first at +0x1e; all 40 existing comparisons pass. Reviewed uncredited patch and complete evidence preserved; no further form without new evidence. | src/game/core/FPSCamera.cpp; nonmatching/core/FPSCamera-scroll.patch |
 | libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
-| libsanangeles.so | 0x00335849 | VehicleCamera::update | — | BLOCKED | Five forms; best third968B with native long prefix, clamp/multiply/negation residuals; all old25/12 and Vehicle188/112 pass; no credit | src/game/vehicles/VehicleCamera.cpp |
+| libsanangeles.so | 0x00335849 | VehicleCamera::update | — | BLOCKED | A full negative-branch float product remains an untried sixth form. Private getter/signed-distance prerequisites stopped on an omitted existing Cash fixture, not a mismatch. Worker usage limit interrupted setup recovery; current native preservation is unproven and no target trial is authorized. | src/game/vehicles/VehicleCamera.cpp |
 | libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c49 | GSWeaponShopMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
@@ -58,7 +59,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301ebd | PlayerTest::setLastUsedVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Original-compiler GDB trace completed with same60/payloads/relocs and342/112 old checks. Actual priorities5555(this)/3333(offset)/625(zero) and live conflicts explain current R4/R5/R6; retail input difference unknown. No source/flag trial justified. | src/game/ai/PlayerTest.cpp (private) |
-| libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | — | BLOCKED | Canonical current-hierarchy replay is 62 bytes with exact native 2-byte physical padding; four load/store-order bytes differ at +0x32/+0x34/+0x36/+0x38. All 347 existing functions and 117 regions pass. One form stopped; no credit. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | — | BLOCKED | Four prior source forms are confirmed. One ordinary real vector-value snapshot is untried and was conditionally authorized after prerequisite review; the worker usage limit interrupted before its preparation or compilation. Existing 62-byte candidate and four terminal differences remain uncredited. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100%; restored native weak/default binding. Integrated declaration-only correction independently proved all 48 bytes and passed 190 profiles/10,687 checks; no body edits or new progress credit. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302685 | PlayerTest::UpdateSceneNode | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -99,7 +100,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003490f9 | TrailMgr::Update | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x003490dd | TrailMgr::~TrailMgr (D1/D2 aliases) | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00349121 | TrailMgr::SetSegmentWidth | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
-| libsanangeles.so | 0x00349271 | TrailMgr::Render | vehicle_side | BLOCKED | — | src/game/world/TrailMgr.cpp |
+| libsanangeles.so | 0x00349271 | TrailMgr::Render | — | BLOCKED | The declaration prerequisite preserved 21 profiles and the real two-byte callee. Three distinct faithful body forms all emit identical 48 bytes versus native 56, with one shared loop latch instead of two. Stopped before linking under the three-identical-forms rule; no credit or root integration. | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x003490b9 | TrailMgr::~TrailMgr (D0) | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00349149 | TrailMgr::CleanUp | — | COMPLETED | 100% | src/game/world/TrailMgr.cpp |
 | libsanangeles.so | 0x00348fb5 | TrailMgr::AllocTrailList | lock_init | BLOCKED | — | src/game/world/TrailMgr.cpp |
@@ -695,7 +696,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | — | COMPLETED | 100%;604B plus native608B region and32B dispatch exact; full190-profile gate passes, completes all13 Preferences.cpp entries | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | — | COMPLETED | 100%; complete 224-byte function and section, two documented branch hints. Coordinator full gate passes 190 profiles and 10,658 comparisons; all previous matches retained. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100%; diagnostic and ordinary objects agree. MainMenu private declaration context reverses independent initializations before first RTL; rejected context remains unintegrated. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | prefs_loader | IN_PROGRESS | Existing root100%; private authentic STLport prerequisite flips two independent zero initializations. One mechanical declaration-order compatibility trial authorized, no algorithm/flags changes; native284 and fullgate required. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | Existing100%; approved adjacent declaration-order compatibility edit restores native284 exactly, SHA566c03298467bb5debc364b1e71953d6a4e0a86cff63bfdcb3fd7ca1c5bf4949. Private190/10917 and integrated root190/10923 passed; no algorithm/flags changes. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86fd | MenuState::GotFocus | — | BLOCKED | Typed first-pass getter produces the same 248-byte candidate and 12 register differences. All 234 existing functions and 89 section/region checks pass; no further source trials. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
@@ -1182,7 +1183,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Canonical80/native82 remains best. Actual helper reuse86 retains non-native call. Causal whole-TU no-TER probe emits82 but breaks multiple old native extents; configuration rejected, no credit. Primary-source SSA/load causality recorded; no type/alias fix proven. | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | prefs_loader | IN_PROGRESS | Existing100%; private authenticSTLportproxy reader-path migration only (_M_node._M_data), no algorithm/signature change; full native preservation required. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | — | COMPLETED | Existing100%; reviewed authentic STLport proxy reader-path migration (_M_node._M_data); no algorithm/signature change. All native bytes preserved in root190/10923 gate. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | — | COMPLETED | 100%; GNU expect0 hint; full183-profile10277-comparison native gate and caller63/56/2 exact | src/game/rendering/ASprite.cpp |
 
@@ -1196,7 +1197,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | prefs_loader | IN_PROGRESS | Existing100%; private authenticSTLportproxy reader-path migration only (_M_node._M_data), no algorithm/signature change; full native preservation required. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | — | COMPLETED | Existing100%; reviewed authentic STLport proxy reader-path migration (_M_node._M_data); no algorithm/signature change. All native bytes preserved in root190/10923 gate. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d50f1 | Application::Update() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
@@ -1206,7 +1207,11 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | prefs_loader | IN_PROGRESS | CurrentRAII replay148 still88bytesdifferent, all144oldchecks pass. AuthenticSTLportallocator/proxy/PODnode construction chain undergoing privateprerequisite-only migration; six reader algorithms unchanged, fullpreservation required beforeCtortrial. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4319 | Application::RegisterForIrrlichtEvents(irr::IEventReceiver*) | — | COMPLETED | Existing100%; reviewed mechanical _M_node._M_data reader-path integration under explicit Application prerequisite scope. Original algorithm/signature and all bytes preserved, root190/10923 pass. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5559 | Application::RegisterForDrawingInScene(IDrawable*) | — | COMPLETED | Existing100%; reviewed mechanical _M_node._M_data reader-path integration under explicit Application prerequisite scope. Original algorithm/signature and all bytes preserved, root190/10923 pass. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4391 | Application::RegisterForDrawingOnHUD(IDrawable*) | — | COMPLETED | Existing100%; reviewed mechanical _M_node._M_data reader-path integration under explicit Application prerequisite scope. Original algorithm/signature and all bytes preserved, root190/10923 pass. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4409 | Application::RegisterForUpdate(IUpdatable*) | — | COMPLETED | Existing100%; reviewed mechanical _M_node._M_data reader-path integration under explicit Application prerequisite scope. Original algorithm/signature and all bytes preserved, root190/10923 pass. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | — | COMPLETED | 100%; both genuine native aliases share exact148-byte body SHA95b28574ae2cf97b30d8c5f91277f100d7ef1d508e4e87fd045bf4ae0ede55f3. Independently verified full190/10923, zero mismatch/skip; two markers removed after acceptance. Catalogue counts296 alias bytes, no new fullylinked unit. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4cd1 | Application::Quit() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
@@ -1218,7 +1223,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | bounded3-form escalation; two identical592/596 with frame28/104; explicitweak still assembler failure; no credit | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | Reviewed case-order trial emits 600/native596 bytes with all six native temporary slots and the native 104-byte frame. Four extra bytes remain in the empty-list cold block. All historical forms use raw nodes; genuine existing STLport iterator reuse is untried. Worker usage limit interrupted before further authorization or compilation; no match credit. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
 
