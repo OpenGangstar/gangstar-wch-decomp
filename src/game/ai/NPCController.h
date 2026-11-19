@@ -5,7 +5,12 @@
 
 namespace gameloft { namespace ai {
 struct Transition;
-enum TransitionCondition { UnknownTransitionCondition = 0, ObservedTransitionCondition21 = 21 };
+enum TransitionCondition {
+    UnknownTransitionCondition = 0,
+    ObservedTransitionCondition21 = 21,
+    // Preserve full-word condition values observed at the retail call site.
+    TransitionConditionForceWidth = 0xffffffffu
+};
 } }
 
 class NPCController : public IEventReceiver {

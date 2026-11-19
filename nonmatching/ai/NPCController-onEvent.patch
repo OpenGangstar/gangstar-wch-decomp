@@ -1,0 +1,91 @@
+--- a/src/game/ai/NPCController.cpp
++++ b/src/game/ai/NPCController.cpp
+@@ -94,3 +94,34 @@
+     __static_initialization_and_destruction_0(1, 65535);
+ }
+ }
++
++#include "../characters/NPCEvent.h"
++namespace gameloft { namespace ai {
++struct Transition { const unsigned int* transitions; int count; };
++} }
++void NPCController::onEvent(const IEvent* event, const EventManager*)
++{
++    switch (event->getEventID()) {
++    case 16: {
++        const EvNPC* request = static_cast<const EvNPC*>(event);
++        if (request->getNPC() != npc)
++            break;
++        const int count = transition.count;
++        if (count <= 0)
++            break;
++        const unsigned int currentState = state;
++        const unsigned int* entry = transition.transitions;
++        for (int index = 0; index < count; index += 3, entry += 3) {
++            const unsigned int from = entry[0];
++            const unsigned int condition = entry[1];
++            const unsigned int to = entry[2];
++            if (from == currentState && condition == static_cast<unsigned int>(request->getState())) {
++                switchState(static_cast<gameloft::ai::StateID>(to),
++                    static_cast<gameloft::ai::TransitionCondition>(request->getState()));
++                break;
++            }
++        }
++        break;
++    }
++    }
++}
+--- a/config/matches/ai-startup-npccontroller.json
++++ b/config/matches/ai-startup-npccontroller.json
+@@ -42,7 +42,11 @@
+         {
+             "name": "_GLOBAL__I__ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
+             "address": "0x00342481"
+-        }
++        },
++        "_ZN13NPCController7onEventEPK6IEventPK12EventManager",
++        "_ZNK6IEvent10getEventIDEv",
++        "_ZN6IEventD1Ev",
++        "_ZN6IEventD0Ev"
+     ],
+     "sections": [
+         ".npc_controller_switch",
+@@ -57,7 +61,12 @@
+         {
+             "name": ".got",
+             "offset": 864
+-        }
++        },
++        ".npc_event_function",
++        ".npc_event_get_id",
++        ".npc_event_d1",
++        ".npc_event_d0",
++        ".npc_event_vtable"
+     ],
+     "retail_got": true
+ }
+--- a/config/linker/NPCControllerAiStartup.ld
++++ b/config/linker/NPCControllerAiStartup.ld
+@@ -16,6 +16,12 @@
+ __cxa_pure_virtual = 0;
+ SECTIONS
+ {
++    .npc_event_function 0x0034228c : { *ai-startup-npccontroller.o(.text._ZN13NPCController7onEventEPK6IEventPK12EventManager) }
++    .npc_event_get_id 0x002d3c34 : { *ai-startup-npccontroller.o(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
++    .npc_event_d1 0x002d4094 : { *ai-startup-npccontroller.o(.gnu.linkonce.t._ZN6IEventD1Ev) }
++    .npc_event_d0 0x002d4074 : { *ai-startup-npccontroller.o(.gnu.linkonce.t._ZN6IEventD0Ev) }
++    .npc_event_vtable 0x004a6198 : { *ai-startup-npccontroller.o(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
++
+     .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
+     .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
+     .npc_controller_switch 0x00342288 : { *(.text._ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
+@@ -54,3 +60,9 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 12, "_ZN3irr2ps5vHalfE extent");
++
++ASSERT(SIZEOF(.npc_event_function) == 96, ".npc_event_function native extent");
++ASSERT(SIZEOF(.npc_event_get_id) == 4, ".npc_event_get_id native extent");
++ASSERT(SIZEOF(.npc_event_d1) == 24, ".npc_event_d1 native extent");
++ASSERT(SIZEOF(.npc_event_d0) == 32, ".npc_event_d0 native extent");
++ASSERT(SIZEOF(.npc_event_vtable) == 20, "IEvent vtable native extent");

@@ -346,7 +346,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | — | BLOCKED | Authentic ownership source gives 124/142 bytes at limit 70; measured limit-80 probe inlines the checker but emits 168 bytes and fails strict overlap. No profile change adopted. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x00300bc5 | Path::Load | — | BLOCKED | Genuine SDK whole-vector assignment retains native200extent, four bytes differ at68/6a/72/78 in source/Z registers. All18 existing checks pass; one bounded family trial stopped, no credit or further forms. | src/game/world/Path.cpp |
-| libsanangeles.so | 0x0034228d | NPCController::onEvent | camera_tap | BLOCKED | — | src/game/ai/NPCController.cpp |
+| libsanangeles.so | 0x0034228d | NPCController::onEvent | — | BLOCKED | One bounded switch trial remains 94/96 bytes; no linked credit. Full-word TransitionCondition prerequisite independently preserves all six affected profiles (137 comparisons); candidate in nonmatching/ai/NPCController-onEvent.md. | src/game/ai/NPCController.cpp; src/game/ai/NPCController.h |
 | libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | lock_init | BLOCKED | — | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x0032d72d | CControlManager::update | vehicle_side | BLOCKED | — | src/game/input/CControlManager.cpp |
 | libsanangeles.so | 0x00354665 | EventManager::_attach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
