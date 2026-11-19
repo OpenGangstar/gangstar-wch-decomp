@@ -1,0 +1,12 @@
+--- a/src/game/ui/Shop.cpp
++++ b/src/game/ui/Shop.cpp
+@@ -230,8 +230,7 @@
+         if (!(player->flags240 & 0x400u) || !static_cast<SavePositionInterface*>(player)->getVehicle())
+             return;
+ 
+-        Vehicle* car = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+-        if (car) {
++        if (Vehicle* car = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()) {
+         const int distanceSquared = static_cast<int>(car->GetPosition().getDistanceFromSQ(GetPosition()));
+         if (distanceSquared < radius * radius) {
+             if (!triggerActive)

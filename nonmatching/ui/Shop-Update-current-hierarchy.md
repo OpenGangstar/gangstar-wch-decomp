@@ -73,3 +73,29 @@ Only Shop::Update is newly defined. Each diagnostic deliberately exits 3 after
 assembly; the linker and GOT-harness frontend are not invoked. No new linked
 old-closure or whole-project proof is claimed. Different installed GCC 4.2.1
 frontends therefore do not resolve this function's copy-choice difference.
+
+
+## Unchanged-source RTL audit and scoped declaration
+
+A single diagnostic compile adds only GCC tree/RTL dump switches to the same
+source, ordinary options and original compiler. Every allocated object payload
+and every semantic relocation entry remains identical to the ordinary object;
+all 986 preexisting input hashes are preserved. The 117 generated dump files
+are outputs beneath the source directory, not changed compiler inputs. An
+initial inventory assertion included those new outputs; comparison against the
+original input key set confirms no input mutation.
+
+Target instruction 54 already addresses the vtable through car pseudo 116 in
+104r.expand. It retains that pseudo until 138r.greg assigns it R1; every later
+pass retains R1. This rules out a later R0-to-R1 rewrite as an observed cause.
+The audit does not establish the original source spelling or why retail chose
+R0, and does not justify a blind optimization-flag search. No new linked proof
+is claimed for the dump object; object equality establishes noninterference.
+
+One separately bounded lifetime model moves the existing vehicle declaration
+into `if (Vehicle* car = ...getVehicle())`. No extra call or operation is added.
+It reproduces the EXACT same complete 384-byte executable and single 0xea
+mismatch, retaining the 20/6/1 owning comparisons and failing target/section,
+exit 1. Shop-Update-scoped-if.patch is an optional DELTA requiring the baseline
+patch first. Ownership is released; further local syntax/flag variations are
+stopped pending a new causal lead.
