@@ -27,6 +27,7 @@ if __package__ in (None, ""):  # allow "python tools/catalogue.py.py" as well
 
 import argparse
 from pathlib import Path
+from os.path import normcase
 
 from .demangle import demangle_many
 from .elf import ElfFile
@@ -53,10 +54,19 @@ FILE_HEADER = [
 ]
 
 
-def status_for(area: str | None, symbol: str, address: int, asm_root: Path, naming) -> str:
+def status_for(area: str | None, symbol: str, address: int, asm_root: Path, naming,
+               pending_filenames: set[str] | None = None) -> str:
     """``matched``/``pending`` depending on whether the asm file is gone."""
-    area_dir = asm_root / (area or "game")
-    if (area_dir / naming.filename(symbol, address)).exists():
+    filename = naming.filename(symbol, address)
+    if area is None:
+        # A corrected vendor origin can still have a pending marker in its old
+        # gameplay area. Preserve that status without moving assembly files,
+        # including case-insensitive matches on the host filesystem.
+        if pending_filenames is None:
+            pending_filenames = {normcase(path.name) for path in asm_root.rglob("*.s")}
+        return "pending" if normcase(filename) in pending_filenames else "matched"
+    area_dir = asm_root / area
+    if (area_dir / filename).exists():
         return "pending"
     return "matched"
 
@@ -65,6 +75,7 @@ def build_function_rows(elf: ElfFile, asm_root: Path) -> list[list[object]]:
     attribution = build_attribution(elf)
     origins = build_object_origins(elf)
     naming = AsmNaming(elf)
+    pending_filenames = {normcase(path.name) for path in asm_root.rglob("*.s")}
     functions = elf.functions(".symtab")
     demangled = demangle_many([f.name for f in functions if f.name.startswith("_Z")])
 
@@ -82,7 +93,8 @@ def build_function_rows(elf: ElfFile, asm_root: Path) -> list[list[object]]:
                 owner,
                 origin,
                 info.area or "-",
-                status_for(info.area, function.name, function.st_value, asm_root, naming),
+                status_for(info.area, function.name, function.st_value, asm_root, naming,
+                           pending_filenames),
                 function.name,
                 demangled.get(function.name, function.name),
             ]

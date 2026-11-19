@@ -18,7 +18,7 @@ source.
 | audio | 281 | 18996 | 83.61% |
 | characters | 232 | 58870 | 37.22% |
 | combat | 145 | 15952 | 92.23% |
-| core | 372 | 37240 | 51.54% |
+| core | 277 | 25246 | 76.02% |
 | hud | 232 | 26776 | 83.06% |
 | input | 229 | 19642 | 67.15% |
 | meta | 130 | 9930 | 100.00% |
@@ -29,7 +29,7 @@ source.
 | ui | 807 | 74484 | 74.28% |
 | vehicles | 307 | 67932 | 39.70% |
 | world | 289 | 36978 | 68.89% |
-| **total** | **4661** | **575264** | **59.50%** |
+| **total** | **4566** | **563270** | **60.77%** |
 <!-- progress:end -->
 
 ---
@@ -49,8 +49,8 @@ is unusually generous.
 | **The exact toolchain** | GCC 4.2.1 for ARM EABI, built from the Android NDK as `arm-eabi-4.2.1` |
 | **The engine identified** | Irrlicht 1.4.2, plus gameswf, Box2D, libpng, freetype, libjpeg and zlib |
 
-So the project starts with the answers: the game has 4,661 functions of its
-own across 16 gameplay systems, it was built from 186 of its own translation
+So the project starts with the answers: the game has 4,566 functions of its
+own across 16 gameplay systems, it was built from 184 of its own translation
 units, and every one of those functions is already disassembled and filed
 under the right name.
 
@@ -58,16 +58,21 @@ under the right name.
 
 | Origin | Functions | Bytes | Note |
 | --- | ---: | ---: | --- |
-| **Gameloft game code** | 4,661 | 575,264 | the decompilation target |
+| **Gameloft game code** | 4,566 | 563,270 | the decompilation target |
 | Irrlicht 1.4.2 | 8,005 | 943,776 | vendored, upstream open source |
 | gameswf | 2,842 | 418,022 | vendored, upstream open source |
-| FreeType | 966 | 201,554 | vendored, upstream open source |
+| FreeType | 1,061 | 213,548 | vendored, upstream open source |
 | libpng | 335 | 74,784 | vendored, upstream open source |
 | Box2D 2.0.2 | 324 | 72,858 | vendored, upstream open source |
 | libjpeg | 284 | 66,478 | vendored, upstream open source |
 | STLport | 203 | 23,648 | vendored, from the NDK |
 | zlib | 81 | 27,388 | vendored, upstream open source |
 | GCC support routines | 2 | 168 | vendored |
+
+All 17,703 original function entries remain in the full catalogue. The
+[provenance correction ledger](docs/PROVENANCE-CORRECTIONS.md) accounts for
+95 pending FreeType entries previously counted as game code; its percentage
+change adds no matched bytes.
 
 Only the first row is in scope. The rest is upstream code that gets vendored
 rather than decompiled, exactly as in the established console decompilation

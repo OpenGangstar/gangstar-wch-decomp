@@ -13,8 +13,12 @@ Hustle** (Gameloft, 2013, Android). The target is `libsanangeles.so`, an
 ARM EABI shared object built with GCC 4.2.1 from a Gameloft fork of the
 Irrlicht engine.
 
-The game code is 4,661 functions in 186 translation units. The vendored
+The game code is 4,566 functions in 184 translation units. The vendored
 engine and its dependencies are out of scope.
+The complete catalogue retains all 17,703 retail function entries, including
+95 pending FreeType functions corrected from the original game classification.
+See `docs/PROVENANCE-CORRECTIONS.md`; no original entry or assembly marker was
+removed. Select game work by `origin=game` in `config/functions.tsv`.
 
 ## The repository in one paragraph
 

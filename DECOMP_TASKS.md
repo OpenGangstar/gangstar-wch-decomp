@@ -6,6 +6,8 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
+| libsanangeles.so | 0x0039324d | Catalogue provenance support: logger/file_util/PVRTC candidates (no decompilation) | player_update | IN_PROGRESS | Read-only primary-source identity audit of14 pending entries/2666bytes; all tableentries/statuses mustremain. No additional classification changes before coordinator review. | tools/provenance.py; fullcatalogue (read-only) |
+| libsanangeles.so | 0x00364bf5 | Catalogue provenance support: ftcache.c (FTC_MruNode_Prepend anchor; no engine decompilation) | — | COMPLETED | Maintainer-approved95-function FreeType correction verified; all17,703 functionidentities/statuses retained, all95 staypending and publicauditlistsall95. Zero matched/linkedbytes added;96tests pass. | tools/provenance.py; tools/layout.py; config/functions.tsv (read-only) |
 | libsanangeles.so | 0x004ab060 | EvNPCVehicle construction support (vtable anchor; no out-of-line constructor credit) | — | BLOCKED | Direct and implicit-copy support probes emit identical 56-byte sections and relocations, one event/raise/cleanup, with no retained base-vptr construction sequence. Local copy hypothesis rejected. Four-site native audit confirms mixed retained/elided base-vptr stores; no unique constructor/linkage inference. No game body or shared constructor changed. | src/game/characters/NPCVehicleEvent.h; private probe |
 | libsanangeles.so | 0x0034425d | SaveGame::LoadAndApply(char const*) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/persistence/SaveGame.cpp |
 | libsanangeles.so | 0x003069f9 | SpawnPoint::spawn(int) | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/world/SpawnPoint.cpp |
@@ -529,7 +531,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x003edbd9 | RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | — | BLOCKED | Authentic const-subscript candidate is 360 bytes with only two differing load-encoding bytes. All 113 old functions and 32 region checks pass; consumers are skipped after target failure. No further trial authorized. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | — | BLOCKED | Reviewed single implicit-conversion probe: 520 bytes, identical to prior faithful candidate; native target 492 bytes. Strict native overlap fails, exit 2; no linked proof or matching credit. No further form authorized. | src/game/rendering/menufx.cpp (private) |
-| libsanangeles.so | 0x003edde5 | RenderFX::Load | — | BLOCKED | Read-only Ghidra baseline/typed pass preserves native bytes and rolls back types. Unknown local still has no proven identity or native escape; indirect type propagation remains incomplete. No source trial justified. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x003edde5 | RenderFX::Load | — | BLOCKED | Current16-byte union/sourceAPI already covered in prior typedpass; SP20 identity/lifetime/escape stillunproved. Fourforms276/268/268/268 vs312 have no fullpreservationproof; no new source trial. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eeb11 | RenderFX::SetMember(char const*, char const*, int) | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003eea49 | RenderFX::SetMember(char const*, char const*, gameswf::as_value&) | — | COMPLETED | 100%; exact 200-byte native target in all three images. Shared destructor hint removed with all previous matches retained; full 190-profile, 10596-comparison coordinator gate passes. No Fully Linked credit. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x003ed2f5 | RenderFX::DBG_TraceContextInformation | — | COMPLETED | 100%; exact 124-byte target and both 24-byte physical literal sections verified in three images. Full 190-profile/10,557-comparison gate passes. | src/game/rendering/menufx.cpp |
@@ -693,7 +695,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00343a39 | Preferences::LoadAndApply | — | COMPLETED | 100%;604B plus native608B region and32B dispatch exact; full190-profile gate passes, completes all13 Preferences.cpp entries | src/game/ui/Preferences.cpp |
 | libsanangeles.so | 0x002ea925 | Menus::InfoAchievements::Notify | — | COMPLETED | 100%; complete 224-byte function and section, two documented branch hints. Coordinator full gate passes 190 profiles and 10,658 comparisons; all previous matches retained. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e8fe9 | Menus::ServiceMissions::GotFocus | — | COMPLETED | 100%; diagnostic and ordinary objects agree. MainMenu private declaration context reverses independent initializations before first RTL; rejected context remains unintegrated. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | — | COMPLETED | Existing root100% preserved. Private independent initialization-order compatibility edit restored284 native bytes and full190/10,687 for SDK trial; not integrated because pending target remains unmatched. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002eaa05 | Menus::InfoHelp::Notify | prefs_loader | IN_PROGRESS | Existing root100%; private authentic STLport prerequisite flips two independent zero initializations. One mechanical declaration-order compatibility trial authorized, no algorithm/flags changes; native284 and fullgate required. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e86fd | MenuState::GotFocus | — | BLOCKED | Typed first-pass getter produces the same 248-byte candidate and 12 register differences. All 234 existing functions and 89 section/region checks pass; no further source trials. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x0034c085 | DataReloaderManager::_trace | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002e4695 | MenuManager::draw | — | COMPLETED | 100% | src/game/ui/MenuManager.cpp |
@@ -1099,7 +1101,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | hud_registration | BLOCKED | 1354/1360 bytes; six forms exhausted, no credit | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | hud_glyphs | BLOCKED | 1380/1368-byte candidate; three equivalent forms identical | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | lock_init | BLOCKED | 1688/1668-byte supported candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
 
@@ -1180,7 +1182,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Canonical80/native82 remains best. Actual helper reuse86 retains non-native call. Causal whole-TU no-TER probe emits82 but breaks multiple old native extents; configuration rejected, no credit. Primary-source SSA/load causality recorded; no type/alias fix proven. | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | — | COMPLETED | 100%; reviewed native bytes and full190-profile10539-comparison gate exact | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4a01 | Application::_Update(int) | prefs_loader | IN_PROGRESS | Existing100%; private authenticSTLportproxy reader-path migration only (_M_node._M_data), no algorithm/signature change; full native preservation required. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x003499dd | ASprite::GetAFrame(int, int) | — | COMPLETED | 100%; GNU expect0 hint; full183-profile10277-comparison native gate and caller63/56/2 exact | src/game/rendering/ASprite.cpp |
 
@@ -1194,7 +1196,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d45ad | Application::appKeyReleased(int) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | — | COMPLETED | 100%; reviewed native bytes and full190-profile10539-comparison gate exact | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d4fe1 | Application::_Draw() | prefs_loader | IN_PROGRESS | Existing100%; private authenticSTLportproxy reader-path migration only (_M_node._M_data), no algorithm/signature change; full native preservation required. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d50f1 | Application::Update() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
@@ -1204,7 +1206,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d5821 | Application::InitWin32(irr::IrrlichtDevice*) | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | hud_registration | BLOCKED | native148B aliases unmatched; three forms; authentic180B header and old123-profile proof pass | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d51f9 | Application::Application() C1/C2 aliases | prefs_loader | IN_PROGRESS | CurrentRAII replay148 still88bytesdifferent, all144oldchecks pass. AuthenticSTLportallocator/proxy/PODnode construction chain undergoing privateprerequisite-only migration; six reader algorithms unchanged, fullpreservation required beforeCtortrial. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002d4cd1 | Application::Quit() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
@@ -1280,7 +1282,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | — | BLOCKED | one unchanged context replay; 4 instruction/21 GOT differences in GC diagnostic; old destructor overlap blocks integration | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | — | BLOCKED | six forms; best1568/1580 frame180/172; old109/118 exact;95/96 header profiles pass, fixture incomplete; no credit | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies | — | BLOCKED | Prerequisite190/10917 pass. One canonical compoundposition trial1568/native1580, frame180/native172, realordinaryquaternionC1helper28 emitted. Stopped pre-link; no helperoverride/forcedinline/credit. | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
 

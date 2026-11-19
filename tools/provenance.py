@@ -139,13 +139,13 @@ LIBRARIES: tuple[Library, ...] = (
         version="2.x",
         upstream="https://freetype.org",
         license="FTL / GPL-2",
-        c_patterns=(r"^ft_", r"^FT_", r"^TT_", r"^_ft_", r"^tt_"),
+        c_patterns=(r"^ft_", r"^FT_", r"^TT_", r"^_ft_", r"^tt_", r"^FTC_", r"^ftc_"),
         file_patterns=(
             r"^(af|autofit|bdf|bdfparse|cff|cffparse|cid|cidparse|psaux|psbase|"
             r"pshinter|pshutil|pcf|pfr|pfrparse|raster|sfnt|smooth|truetype|"
             r"ttcmap|ttgload|ttinterp|ttload|ttobjs|ttpost|ttsbit|ttmtx|"
-            r"type1|type42|winfnt|gxvalid|gxload|otvalid|otload|"
-            r"ftbase|ftbbox|ftcalc|ftcid|ftdebug|ftgload|ftglyph|ftinit|ftkern|"
+            r"type1|type1cid|type42|winfnt|gxvalid|gxload|otvalid|otload|"
+            r"ftbase|ftbbox|ftcache|ftcalc|ftcid|ftdebug|ftgload|ftglyph|ftinit|ftkern|"
             r"ftlcd|ftmm|ftoutln|ftpfr|fts|ftstream|fttrigon|gzip)\.c$",
         ),
     ),

@@ -64,7 +64,8 @@ The assembly file was removed only after that root verification.
 
 The normal generated report adds 96 matched bytes and 646 fully linked bytes:
 342,294 matched bytes (59.50%) and 111,046 fully linked bytes (19.30%), with
-124 of 208 units complete. The game-code denominator stays 575,264
-bytes. Fuzzy progress remains equal to matched progress; no partial credit is
+124 of 208 units complete. At this match's publication, the game-code denominator was 575,264
+bytes; the later [provenance correction](../PROVENANCE-CORRECTIONS.md) changes
+that classification without adding matched bytes. Fuzzy progress remains equal to matched progress; no partial credit is
 introduced. Independent audits find executable proofs for all 4,260 matched
 entries and all 1,662 entries in complete source groups.

@@ -533,7 +533,7 @@ bdf.c	freetype	-	34
 cff.c	freetype	-	67
 ftbase.c	freetype	-	209
 ftbitmap.c	freetype	-	5
-ftcache.c	game	core	76
+ftcache.c	freetype	-	76
 ftdebug.c	freetype	-	1
 ftgasp.c	-	-	0
 ftglyph.c	freetype	-	17
@@ -558,7 +558,7 @@ raster.c	freetype	-	34
 sfnt.c	freetype	-	114
 truetype.c	freetype	-	92
 type1.c	freetype	-	47
-type1cid.c	game	core	19
+type1cid.c	freetype	-	19
 type42.c	freetype	-	23
 winfnt.c	freetype	-	12
 component_hackery.cpp	gameswf	-	1
