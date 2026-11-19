@@ -12661,7 +12661,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034bc3d	0x14	StringManager.cpp	game	persistence	matched	_GLOBAL__I__ZN13StringManager9LANGUAGESE	_GLOBAL__I__ZN13StringManager9LANGUAGESE
 0x0034bc51	0x30	StringManager.cpp	game	persistence	matched	__tcf_2	__tcf_2
 0x0034bc81	0xd0	StringManager.cpp	stlport	-	matched	_ZNSt6vectorIPN7Structs9TextStyleESaIS2_EE18_M_insert_overflowEPS2_RKS2_RKSt11__true_typejb	std::vector<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_insert_overflow(Structs::TextStyle**, Structs::TextStyle* const&, std::__true_type const&, unsigned int, bool)
-0x0034bd51	0x14c	StringManager.cpp	game	persistence	pending	_ZN13StringManager10loadStylesEPKc	StringManager::loadStyles(char const*)
+0x0034bd51	0x14c	StringManager.cpp	game	persistence	matched	_ZN13StringManager10loadStylesEPKc	StringManager::loadStyles(char const*)
 0x0034be9d	0xf0	StringManager.cpp	game	persistence	matched	_ZN13StringManagerD2Ev	StringManager::~StringManager()
 0x0034be9d	0xf0	StringManager.cpp	game	persistence	matched	_ZN13StringManagerD1Ev	StringManager::~StringManager()
 0x0034bf8d	0xf8	StringManager.cpp	game	persistence	matched	_ZN13StringManagerD0Ev	StringManager::~StringManager()

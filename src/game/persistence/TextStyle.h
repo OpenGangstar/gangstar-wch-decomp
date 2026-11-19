@@ -6,7 +6,7 @@ class DataStream;
 // Observed 40-byte serialized record; font field names remain provisional.
 namespace Structs {
 struct TextStyle {
-    void Read(DataStream& stream);
+    void Read(DataStream& stream) __attribute__((weak));
     int unknown0;
     char* fontName;
     int fontSize;

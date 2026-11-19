@@ -14,7 +14,8 @@
         "-mfloat-abi=softfp",
         "-ffunction-sections",
         "-fdata-sections",
-        "-finline-limit=80"
+        "-finline-limit=80",
+        "-fstack-protector"
     ],
     "assembler_flags": [
         "-march=armv5te",
@@ -52,7 +53,8 @@
         "_ZSt24__stl_throw_out_of_rangePKc",
         "_ZN13StringManagerD1Ev",
         "_ZN13StringManagerD2Ev",
-        "_ZN13StringManagerD0Ev"
+        "_ZN13StringManagerD0Ev",
+        "_ZN13StringManager10loadStylesEPKc"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -66,7 +68,9 @@
         ".string_out_of_range",
         ".string_manager_d1",
         ".string_manager_d0",
-        ".string_manager_vtable"
+        ".string_manager_vtable",
+        ".string_load_styles",
+        ".string_style_default"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -74,6 +78,11 @@
         "_ZN13StringManager13loadPackSheetEjj",
         "_ZN10DataStream7ReadIntEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
-        "_ZN10DataStream11ReadBooleanEv"
+        "_ZN10DataStream11ReadBooleanEv",
+        "_ZN9ResStreamC1EPKci",
+        "_ZN9ResStreamD1Ev",
+        "_ZN10DataStreamC1ER6StreamNS_6endianE",
+        "_ZNK10DataStream4TellEv",
+        "_ZN10DataStream4SeekEii"
     ]
 }
