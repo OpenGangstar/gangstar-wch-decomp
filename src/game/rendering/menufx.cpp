@@ -1458,3 +1458,115 @@ void RenderFX::ClearFonts(gameswf::player_context* context)
         }
     }
 }
+
+namespace {
+
+struct CharacterCollectionFields {
+    unsigned char unknown0[136];
+    gameswf::tu_string name;
+    // Authentic get_name const-reference API, adapted to observed +136 view.
+    const gameswf::tu_string& get_name() const { return name; }
+    unsigned char unknown152[154];
+    bool visible;
+};
+
+struct SpriteCollectionFields {
+    unsigned char unknown0[324];
+    gameswf::array<gameswf::character*> children;
+};
+
+} // namespace
+
+void RenderFX::CollectCharacters(gameswf::character* character, const char* name, int flags)
+{
+    const CharacterCollectionFields& fields = *reinterpret_cast<const CharacterCollectionFields*>(character);
+    bool visible = !(flags & 1) || fields.visible;
+    if (animationMethods(character).is(character, 2) && (flags & 2) &&
+        !reinterpret_cast<const SpriteEnabledState*>(character)->enabled)
+        visible = false;
+    if (!visible)
+        return;
+
+    if ((!name || strstr(fields.get_name().c_str(), name)) &&
+        (!(flags & 4) || fields.get_name().size() != 0)) {
+        int index = matches.size;
+        matches.resize(index + 1);
+        matches.elements[index] = character;
+    }
+
+    if (animationMethods(character).is(character, 2)) {
+        const gameswf::array<gameswf::character*>& children =
+            reinterpret_cast<const SpriteCollectionFields*>(character)->children;
+        for (int i = 0; i < children.size; ++i)
+            CollectCharacters(children.elements[i], name, flags);
+    }
+}
+
+namespace {
+
+static const char foundChildFormat[] __attribute__((section(".rodata.renderfx_found_child"))) =
+    "Found child named %s\n";
+static const char childSpriteMessage[] __attribute__((section(".rodata.renderfx_child_sprite"))) =
+    "child is a sprite ...";
+
+} // namespace
+
+void RenderFX::DBG_TraceContextInformation(gameswf::character* character)
+{
+    const gameswf::array<gameswf::character*>& children = FindCharacters(character, 0, 0);
+    for (int i = 0; i < children.size; ++i) {
+        const CharacterCollectionFields* child = reinterpret_cast<const CharacterCollectionFields*>(children.elements[i]);
+        printf(foundChildFormat, child->get_name().c_str());
+        gameswf::character* current = children.elements[i];
+        if (animationMethods(current).is(current, 2))
+            puts(childSpriteMessage);
+    }
+}
+
+extern "C" const gameswf::cxform& _ZN7gameswf9character16get_world_cxformEv(gameswf::character*);
+
+namespace {
+
+static const char hierarchyStart[] __attribute__((section(".rodata.renderfx_hierarchy_start"))) = "Hierarchy:\n";
+static const char hierarchyIndent[] __attribute__((section(".rodata.renderfx_hierarchy_indent"))) = "   ";
+static const char hierarchyEdit[] __attribute__((section(".rodata.renderfx_hierarchy_edit"))) = "%s edit: '%s' text='%s' @ 0x%x\n";
+static const char hierarchyPlay[] __attribute__((section(".rodata.renderfx_hierarchy_play"))) = "PLAY";
+static const char hierarchyStop[] __attribute__((section(".rodata.renderfx_hierarchy_stop"))) = "STOP";
+static const char hierarchySprite[] __attribute__((section(".rodata.renderfx_hierarchy_sprite"))) = "%s sprite: '%s' f=%d %s @ 0x%x\n";
+static const char hierarchyCharacter[] __attribute__((section(".rodata.renderfx_hierarchy_character"))) = "%s ch: '%s' @ 0x%x\n";
+
+} // namespace
+
+void RenderFX::TraceHierarchy(gameswf::character* character, int flags, int depth)
+{
+    if (!character)
+        character = reinterpret_cast<gameswf::character*>(
+            reinterpret_cast<const FlashCharacterRoot*>(root.get())->flashRoot);
+    if (depth == 0)
+        gameswf::log_msg(hierarchyStart);
+    const CharacterCollectionFields& fields = *reinterpret_cast<const CharacterCollectionFields*>(character);
+    if ((flags & 1) && (!fields.visible || _ZN7gameswf9character16get_world_cxformEv(character).channels[3][0] == 0.0f))
+        return;
+
+    char indent[256] = {};
+    for (int i = 0; i < depth; ++i)
+        memcpy(indent + strlen(indent), hierarchyIndent, sizeof(hierarchyIndent));
+
+    if (animationMethods(character).is(character, 30)) {
+        const char* name = fields.get_name().c_str();
+        const char* text = reinterpret_cast<const EditTextStorage*>(character)->text.c_str();
+        gameswf::log_msg(hierarchyEdit, indent, name, text, character);
+    } else if (animationMethods(character).is(character, 2)) {
+        const char* name = fields.get_name().c_str();
+        int frame = animationMethods(character).getCurrentFrame(character);
+        int state = getCharacterPlayState(character);
+        gameswf::log_msg(hierarchySprite, indent, name, frame,
+                         state ? hierarchyPlay : hierarchyStop, character);
+        const gameswf::array<gameswf::character*>& children =
+            reinterpret_cast<const SpriteCollectionFields*>(character)->children;
+        for (int i = 0; i < children.size; ++i)
+            TraceHierarchy(children.elements[i], flags, depth + 1);
+    } else {
+        gameswf::log_msg(hierarchyCharacter, indent, fields.get_name().c_str(), character);
+    }
+}

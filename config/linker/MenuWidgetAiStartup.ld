@@ -28,6 +28,11 @@ INCLUDE config/linker/RenderFXAnimationFunctions.ld
 INCLUDE config/linker/MenuWidgetMissionSections.ld
 SECTIONS
 {
+    .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
+    .renderfx_found_child 0x0044ddf8 : { *renderfx-animation.o(.rodata.renderfx_found_child) }
+    .renderfx_child_sprite 0x0044de10 : { *renderfx-animation.o(.rodata.renderfx_child_sprite) }
+
+    .renderfx_collect_characters 0x003ed1bc : { *renderfx-animation.o(.text._ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci) }
 
     .ai_startup_function_0 0x002ec014 : { *ai-startup-menuwidget.o(.text.__tcf_3) }
     .ai_startup_function_1 0x002ef2bc : { *ai-startup-menuwidget.o(.text._Z41__static_initialization_and_destruction_0ii) }
@@ -62,3 +67,11 @@ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 
 INCLUDE config/linker/RenderFXUtilitySections.ld
+
+ASSERT(SIZEOF(.renderfx_collect_characters) == 240, "native CollectCharacters dependency span");
+
+printf = 0x001c4058;
+puts = 0x001c41b4;
+ASSERT(SIZEOF(.renderfx_trace_context) == 124, "native TraceContext strict span");
+ASSERT(SIZEOF(.renderfx_found_child) == 24, "native found-child format extent");
+ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");

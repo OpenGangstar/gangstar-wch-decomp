@@ -1,3 +1,5 @@
+__aeabi_fcmpeq = 0x001c470c;
+memset = 0x001c45d4;
 __cxa_pure_virtual = 0;
 _ZdlPv = 0x001c42b0;
 __stack_chk_fail = 0x001c42e0;
@@ -12,6 +14,23 @@ strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
+ .renderfx_trace_hierarchy 0x003ecb08 : { *renderfx-animation.o(.text._ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii) }
+ ASSERT(SIZEOF(.renderfx_trace_hierarchy) <= 464, "TraceHierarchy native464B span")
+ .renderfx_hierarchy_start 0x0044dd84 : { *(.rodata.renderfx_hierarchy_start) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_start) == 12, "hierarchy start native extent")
+ .renderfx_hierarchy_indent 0x0044dd90 : { *(.rodata.renderfx_hierarchy_indent) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_indent) == 4, "hierarchy indent native extent")
+ .renderfx_hierarchy_edit 0x0044dd94 : { *(.rodata.renderfx_hierarchy_edit) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_edit) == 32, "hierarchy edit native extent")
+ .renderfx_hierarchy_play 0x0044ddb4 : { *(.rodata.renderfx_hierarchy_play) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_play) == 8, "hierarchy play native extent")
+ .renderfx_hierarchy_stop 0x0044ddbc : { *(.rodata.renderfx_hierarchy_stop) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_stop) == 8, "hierarchy stop native extent")
+ .renderfx_hierarchy_sprite 0x0044ddc4 : { *(.rodata.renderfx_hierarchy_sprite) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_sprite) == 32, "hierarchy sprite native extent")
+ .renderfx_hierarchy_character 0x0044dde4 : { *(.rodata.renderfx_hierarchy_character) }
+ ASSERT(SIZEOF(.renderfx_hierarchy_character) == 20, "hierarchy character native extent")
+
     .renderfx_set_local_variable 0x003ee98c : { *renderfx-animation.o(.text._ZN8RenderFX16SetLocalVariableEPKcS1_RN7gameswf8as_valueE) }
     .renderfx_set_member_int 0x003eeb10 : { *renderfx-animation.o(.text._ZN8RenderFX9SetMemberEPKcS1_i) }
     .renderfx_set_texture 0x003ee1ec : { *renderfx-animation.o(.text._ZN8RenderFX10SetTextureEPKcPN3irr5video8ITextureE) }

@@ -200,6 +200,8 @@ public:
     void SetMember(const char* characterName, const char* member, int value);
     void SetMember(const char* characterName, const char* member, const char* value);
     void SetMember(const char* characterName, const char* member, gameswf::as_value& value);
+    void TraceHierarchy(gameswf::character* character, int flags, int depth);
+    void DBG_TraceContextInformation(gameswf::character* character);
     void SetVisible(const char* characterName, bool visible);
     bool RegisterDisplayCallback(const char* characterName, void (*callback)(gameswf::render_state&, void*), void* context);
     bool RegisterDisplayCallback(gameswf::character* character, void (*callback)(gameswf::render_state&, void*), void* context);
