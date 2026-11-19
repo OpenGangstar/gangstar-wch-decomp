@@ -139,7 +139,7 @@ void CopVehicleController::switchState(gameloft::ai::StateID next)
         break;
     }
     case 10:
-        vehicle->driveToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).position(), true);
+        vehicle->driveToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).GetPosition(), true);
         break;
     }
 }

@@ -25,7 +25,7 @@ static inline PlayerTest* getSceneOwner(SavePositionInterface* owner)
 {
     PlayerTest* player = 0;
     if (owner)
-        player = reinterpret_cast<PlayerTest*>(reinterpret_cast<char*>(owner) - sizeof(SavePrimaryInterface));
+        player = static_cast<PlayerTest*>(owner);
     return player;
 }
 

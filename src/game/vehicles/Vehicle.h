@@ -11,10 +11,7 @@ class CarSounds;
 struct CarSoundParameters;
 class Path;
 namespace irr { namespace collada { class CSkinnedMeshSceneNode; } }
-class IMapTrackable {
-public:
-    virtual int getMarkerType() = 0;
-};
+#include "../core/IMapTrackable.h"
 
 // The secondary marker interface starts at offset 52 in the 1012-byte extent.
 class Vehicle : public LevelObject, public IMapTrackable {

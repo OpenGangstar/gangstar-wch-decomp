@@ -120,11 +120,11 @@ void CopController::switchState(gameloft::ai::StateID next,gameloft::ai::Transit
         npc->wait(5);
         break;
     case static_cast<gameloft::ai::StateID>(6):
-        npc->goToLocation(PlayerTest::GetPlayer()->position());
+        npc->goToLocation(PlayerTest::GetPlayer()->GetPosition());
         break;
     case static_cast<gameloft::ai::StateID>(10):
         npc->flags356 &= ~0x40u;
-        npc->runToLocation(PlayerTest::GetPlayer()->position());
+        npc->runToLocation(PlayerTest::GetPlayer()->GetPosition());
         break;
     case static_cast<gameloft::ai::StateID>(8): {
         LevelObject* target=reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));

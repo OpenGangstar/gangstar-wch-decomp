@@ -153,7 +153,7 @@ bool SaveGame::LoadAndApply(const char* name)
                 result = ReadBlock(block);
                 if (result && GSLoading::isGameLoaded()) {
                     SaveVector3 position(block.x, block.y, block.z);
-                    PlayerTest::GetPlayer()->position(position);
+                    PlayerTest::GetPlayer()->SetPosition(reinterpret_cast<const irr::core::vector3d<float>&>(position));
                     PlayerTest::GetPlayer()->Respawn();
                 }
                 break;

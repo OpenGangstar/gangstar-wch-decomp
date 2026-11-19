@@ -117,7 +117,12 @@
             "address": "0x003010b9",
             "compiled_name": "__tcf_1"
         },
-        "_ZN11CHudManager7walkingEv"
+        "_ZN11CHudManager7walkingEv",
+        "_ZN10PlayerTestD1Ev",
+        "_ZN10PlayerTestD2Ev",
+        "_ZN10PlayerTestD0Ev",
+        "_ZThn4_N10PlayerTestD1Ev",
+        "_ZThn4_N10PlayerTestD0Ev"
     ],
     "sections": [
         ".player_car_open_clip",
@@ -140,7 +145,12 @@
         ".wanted_cleanup",
         ".character_recovered_002f61f9",
         ".character_recovered_002f512d",
-        ".character_player_event_vtable"
+        ".character_player_event_vtable",
+        ".player_d1",
+        ".player_d0",
+        ".player_thunk_d1",
+        ".player_thunk_d0",
+        ".player_vtable"
     ],
     "dependencies": [
         "ai-startup-physicattributes",

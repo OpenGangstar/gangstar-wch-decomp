@@ -11,7 +11,7 @@ template<class T, class Alloc> class list;
 
 class PhysicAttributes;
 class Character;
-class SavePositionInterface;
+typedef Character SavePositionInterface;
 class Vehicle;
 
 inline __attribute__((always_inline))

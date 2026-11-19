@@ -111,7 +111,7 @@ public:
 protected:
     irr::scene::ISceneNode* sceneNode;
     irr::scene::ISceneNode* unknown20;
-    PhysicAttributes* unknown24;
+    union { PhysicAttributes* unknown24; PhysicAttributes* physicAttributes; };
     char* unknown28;
     GameObjectList* objectList;
     unsigned char objectType;

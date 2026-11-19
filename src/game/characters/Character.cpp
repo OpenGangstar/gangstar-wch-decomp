@@ -1160,7 +1160,7 @@ void Character::goToVehicle(Vehicle* value, bool left, bool run, bool, bool)
 }
 
 Character::Character(int type)
-    : LevelObject(type), unknown56(0.0f), unknown60(0.0f), unknown64(0.0f),
+    : LevelObject(type), facing(0.0f, 0.0f, 0.0f),
       unknown68(0.0f), unknown72(0.0f), unknown76(0.0f), destinationLimitSquared(10000),
       animationSpeedMultiplier(1), unknown156(0.0f), shadowBaseHeight(0.0f),
       unknown164Pointer(0), unknown168Pointer(0), skinMesh(0), shadowNode(0), collisionBody(0),

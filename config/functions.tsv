@@ -10409,9 +10409,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301569	0x2c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest17onTargetCancelledEv	PlayerTest::onTargetCancelled()
 0x00301595	0x24	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest8showMeshEv	PlayerTest::showMesh()
 0x003015b9	0x18	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest15resumeAttackingEv	PlayerTest::resumeAttacking()
-0x003015d0	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTestD1Ev	non-virtual thunk to PlayerTest::~PlayerTest()
-0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD1Ev	PlayerTest::~PlayerTest()
-0x003015e5	0xd0	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD2Ev	PlayerTest::~PlayerTest()
+0x003015d0	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTestD1Ev	non-virtual thunk to PlayerTest::~PlayerTest()
+0x003015e5	0xd0	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTestD1Ev	PlayerTest::~PlayerTest()
+0x003015e5	0xd0	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTestD2Ev	PlayerTest::~PlayerTest()
 0x003016b5	0x7c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12switchWeaponEb	PlayerTest::switchWeapon(bool)
 0x00301730	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_NK10PlayerTest9getWeaponEv	non-virtual thunk to PlayerTest::getWeapon() const
 0x00301745	0x12	PlayerTest.cpp	game	ai	matched	_ZNK10PlayerTest9getWeaponEv	PlayerTest::getWeapon() const
@@ -10443,8 +10443,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00303079	0x29c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest5photoEP6Weapon	PlayerTest::photo(Weapon*)
 0x00303315	0x2bc	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_	PlayerTest::getAttackableTarget(LevelObject*, Weapon*, LevelObject*)
 0x003035d1	0x48	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest13acquireTargetEv	PlayerTest::acquireTarget()
-0x00303618	0x14	PlayerTest.cpp	game	ai	pending	_ZThn4_N10PlayerTestD0Ev	non-virtual thunk to PlayerTest::~PlayerTest()
-0x0030362d	0xd4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestD0Ev	PlayerTest::~PlayerTest()
+0x00303618	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTestD0Ev	non-virtual thunk to PlayerTest::~PlayerTest()
+0x0030362d	0xd4	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTestD0Ev	PlayerTest::~PlayerTest()
 0x00303701	0x368	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestC2EP7b2World	PlayerTest::PlayerTest(b2World*)
 0x00303701	0x368	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTestC1EP7b2World	PlayerTest::PlayerTest(b2World*)
 0x00303a69	0x2c	PlayerTest.cpp	game	ai	matched	_ZN12EvNPCVehicleD0Ev	EvNPCVehicle::~EvNPCVehicle()
