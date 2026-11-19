@@ -353,7 +353,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x00319dd1 | PhysicInfo::PhysicInfo (C1 only; native C2 absent) | — | COMPLETED | Existing96-byte body moved unchanged to ordinary inline definition, natural weak binding. Root190/10,690 and independent native equality in both images; no output edits or new credit. | src/game/characters/PhysicInfo.h; src/game/characters/PhysicAttributes.cpp (private) |
 | libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | — | BLOCKED | Canonical260 and all47 old checks/payloads/relocs unchanged under diagnostic. Floatzero154 getsR3 in137lreg, reload picks infoR3/bodyR2 in138greg,149sched2 hoistsbodycopy; no nativeIR cause or further source trial. | src/game/characters/PhysicAttributes.cpp (private) |
-| libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | lock_init | BLOCKED | — | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | — | BLOCKED | Plain separate handlers leave only function bytes76/9a and8 table bytes different. Two case orders identical; owner113functions31sections1GOT retained. Reviewed unapplied patch, no credit or further ordering variants without new evidence. Ownership released. | src/game/characters/Character.cpp; nonmatching/characters/Character-combat-idle.patch |
 | libsanangeles.so | 0x003279f5 | Cash::GetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x003279f1 | Cash::SetCash | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x003279e9 | Cash::SetPosition | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
