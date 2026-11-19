@@ -1458,3 +1458,46 @@ void RenderFX::ClearFonts(gameswf::player_context* context)
         }
     }
 }
+
+namespace {
+
+struct CharacterCollectionFields {
+    unsigned char unknown0[136];
+    gameswf::tu_string name;
+    // Authentic get_name const-reference API, adapted to observed +136 view.
+    const gameswf::tu_string& get_name() const { return name; }
+    unsigned char unknown152[154];
+    bool visible;
+};
+
+struct SpriteCollectionFields {
+    unsigned char unknown0[324];
+    gameswf::array<gameswf::character*> children;
+};
+
+} // namespace
+
+void RenderFX::CollectCharacters(gameswf::character* character, const char* name, int flags)
+{
+    const CharacterCollectionFields& fields = *reinterpret_cast<const CharacterCollectionFields*>(character);
+    bool visible = !(flags & 1) || fields.visible;
+    if (animationMethods(character).is(character, 2) && (flags & 2) &&
+        !reinterpret_cast<const SpriteEnabledState*>(character)->enabled)
+        visible = false;
+    if (!visible)
+        return;
+
+    if ((!name || strstr(fields.get_name().c_str(), name)) &&
+        (!(flags & 4) || fields.get_name().size() != 0)) {
+        int index = matches.size;
+        matches.resize(index + 1);
+        matches.elements[index] = character;
+    }
+
+    if (animationMethods(character).is(character, 2)) {
+        const gameswf::array<gameswf::character*>& children =
+            reinterpret_cast<const SpriteCollectionFields*>(character)->children;
+        for (int i = 0; i < children.size; ++i)
+            CollectCharacters(children.elements[i], name, flags);
+    }
+}

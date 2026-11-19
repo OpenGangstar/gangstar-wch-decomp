@@ -282,7 +282,8 @@
         "_ZN8RenderFX9SendEventERNS_5EventE",
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
         "_ZN9MenuState4HideEv",
-        "_ZNK11MenuManager15areAnimsEnabledEv"
+        "_ZNK11MenuManager15areAnimsEnabledEv",
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
     ],
     "sections": [
         ".help_empty_icon",
@@ -376,7 +377,8 @@
         ".renderfx_send_8",
         ".renderfx_send_9",
         ".menu_state_hide",
-        ".menu_anims_enabled"
+        ".menu_anims_enabled",
+        ".renderfx_collect_characters"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -502,7 +504,6 @@
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN12StateMachineC1Ev",

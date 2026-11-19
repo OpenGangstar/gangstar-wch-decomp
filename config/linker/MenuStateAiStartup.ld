@@ -39,6 +39,7 @@ _ZN5Menus24s_helpSpecializedEntriesE = 0x0047b1b8;
 INCLUDE config/linker/MenuWidgetMissionSections.ld
 SECTIONS
 {
+    .renderfx_collect_characters 0x003ed1bc : { *renderfx-animation.o(.text._ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci) }
     .menu_anims_enabled 0x002e3f84 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15areAnimsEnabledEv) }
     .menu_state_hide 0x002e8654 : { *ai-startup-menustate.o(.text._ZN9MenuState4HideEv) }
     .service_missions_focus 0x002e8fe8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions8GotFocusEv) }
@@ -359,3 +360,5 @@ ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
 ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
 
 ASSERT(SIZEOF(.menu_state_hide) == 104, "MenuState Hide native104B extent");
+
+ASSERT(SIZEOF(.renderfx_collect_characters) == 240, "native CollectCharacters dependency span");

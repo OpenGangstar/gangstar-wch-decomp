@@ -220,7 +220,8 @@
         "_ZN8RenderFX17SetColorTransformEPN7gameswf9characterEjj",
         "_ZN8RenderFX11SearchIndex4FindEPKc",
         "_ZN8RenderFX9SendEventERNS_5EventE",
-        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
+        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci"
     ],
     "sections": [
         ".volumesButton",
@@ -388,7 +389,8 @@
         ".renderfx_send_6",
         ".renderfx_send_7",
         ".renderfx_send_8",
-        ".renderfx_send_9"
+        ".renderfx_send_9",
+        ".renderfx_collect_characters"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -477,7 +479,6 @@
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",
-        "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10getMissionEv",
         "_ZNK6Script12getMissionIdEv",
