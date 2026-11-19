@@ -54,3 +54,22 @@ Production source/configuration, the assembly marker and progress stay intact.
 No new whole-project proof is claimed for these rejected artifacts. Ownership
 is released after coordinator review; another syntax or probability grid needs
 new evidence or an explicitly bounded escalation with a distinct hypothesis.
+
+
+## Controlled compiler-frontends comparison
+
+One final bounded diagnostic compiles the unchanged unhinted full owning
+translation unit with the installed NDK 1.6 r1, r3 and r4b GCC 4.2.1 frontends.
+Their executable hashes are checked against the inventories in
+[COMPILER-NOTES.md](../../docs/COMPILER-NOTES.md). All source, configuration,
+tool and nonmatching input hashes are identical across the three contexts;
+only the selected C++ frontend executable changes. The original 1.6 assembler,
+linker and options remain fixed. This is not a production SDK change.
+
+All three emit the same complete 384-byte target and identical semantic
+relocations, raw SHA256
+`fbb5aa87dffc1f3f53235144f48a6d618507c6af7659c175bb78d01fb18f8eba`.
+Only Shop::Update is newly defined. Each diagnostic deliberately exits 3 after
+assembly; the linker and GOT-harness frontend are not invoked. No new linked
+old-closure or whole-project proof is claimed. Different installed GCC 4.2.1
+frontends therefore do not resolve this function's copy-choice difference.

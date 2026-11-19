@@ -212,7 +212,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f76bd | Checkpoint::Checkpoint (C1/C2 aliases) | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f7601 | Checkpoint::Load | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f763d | Checkpoint::grabSceneNode | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
-| libsanangeles.so | 0x00305f5d | Shop::Update | — | BLOCKED | Current hierarchy replay, one hot-car branch hint and one ordinary inline position helper all reproduce the same384B/single0xea byte miss. Existing owning closure preserved; no credit. | nonmatching/ui/Shop-Update-current-hierarchy.patch; src/game/ui/Shop.cpp |
+| libsanangeles.so | 0x00305f5d | Shop::Update | — | BLOCKED | Current hierarchy, hot-car hint and ordinary inline helper all preserve one0xea byte miss. Controlled1.6/r3/r4b frontends also emit identical384B target and semantic relocations; no new link or credit. | nonmatching/ui/Shop-Update-current-hierarchy.patch; src/game/ui/Shop.cpp |
 | libsanangeles.so | 0x002f7539 | Checkpoint::SetPosition | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x002f7675 | Checkpoint::~Checkpoint (D0) | — | COMPLETED | 100% | src/game/missions/Checkpoint.cpp |
 | libsanangeles.so | 0x00306365 | Shop::~Shop (D0) | — | COMPLETED | 100% | src/game/ui/Shop.cpp |
