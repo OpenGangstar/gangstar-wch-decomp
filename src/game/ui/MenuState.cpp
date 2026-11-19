@@ -1602,7 +1602,7 @@ bool Menus::InGameMenu::Notify(const MenuWidget* widget, int event)
 
 namespace Widgets {
 class Arrows : public MenuWidget { public: int GetCurrentPage() const; };
-class Title : public MenuWidget { public: void SetTextId(int); };
+class Title : public MenuWidget { public: void SetTextId(int); void SetIcon(const char*); };
 class Help : public MenuWidget { public: void SetTextId(int); void SetIcon(const char*); };
 }
 namespace Menus {
@@ -1694,4 +1694,42 @@ void MenuState::Hide()
         }
     }
     depth = 0;
+}
+
+namespace Widgets {
+class Achievements : public MenuWidget { public: void SetCategory(int); void Reset(); };
+}
+
+bool Menus::InfoAchievements::Notify(const MenuWidget* widget, int event)
+{
+    if (Infos::Notify(widget, event))
+        return true;
+    const Widgets::Arrows* arrows = static_cast<const Widgets::Arrows*>(
+        getWidgetByIndex(MenuManager::getInstance(), 18));
+    if (widget != arrows || (event != 1 && event != 2))
+        return false;
+    // Keep the native title-null fallback in the cold tail.
+    MenuManager* titleManager = MenuManager::getInstance();
+    const MenuWidgetTable& titleTable =
+        *reinterpret_cast<const MenuWidgetTable*>(titleManager);
+    Widgets::Title* title = static_cast<Widgets::Title*>(
+        __builtin_expect(15 < titleTable.count, 1) ? titleTable.widgets[15] : 0);
+    title->SetTextId(
+        retail_achievement_menu::icons[arrows->GetCurrentPage()].textId);
+    title->SetIcon(
+        retail_achievement_menu::icons[arrows->GetCurrentPage()].icon);
+    title->UpdateLocalization();
+    // This native successful-load tail follows the title-null tail.
+    MenuManager* achievementsManager = MenuManager::getInstance();
+    const MenuWidgetTable& achievementsTable =
+        *reinterpret_cast<const MenuWidgetTable*>(achievementsManager);
+    Widgets::Achievements* achievements = static_cast<Widgets::Achievements*>(
+        __builtin_expect(11 < achievementsTable.count, 0)
+            ? achievementsTable.widgets[11] : 0);
+    achievements->SetCategory(arrows->GetCurrentPage());
+    if (event == 1) {
+        achievements->Reset();
+        achievements->UpdateLocalization();
+    }
+    return true;
 }

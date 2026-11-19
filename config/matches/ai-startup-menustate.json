@@ -291,7 +291,8 @@
         "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
         "_ZN7Widgets7Volumes18UpdateLocalizationEv",
-        "_ZN7Widgets7Confirm18UpdateLocalizationEv"
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
+        "_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".help_empty_icon",
@@ -424,7 +425,8 @@
         ".confirmMessageFormat",
         ".confirmYesFormat",
         ".confirmNoFormat",
-        ".widgets_confirm_vtable"
+        ".widgets_confirm_vtable",
+        ".info_achievements_notify"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -558,6 +560,7 @@
         "_ZNK12SoundManager15getPlaylistNameEiPc",
         "_ZN7gameswf9tu_stringC1EPKc",
         "_ZN7gameswf9tu_string15utf8_char_countEPKci",
-        "_ZNK7gameswf9tu_string14utf8_substringEii"
+        "_ZNK7gameswf9tu_string14utf8_substringEii",
+        "_ZN7Widgets12Achievements11SetCategoryEi"
     ]
 }

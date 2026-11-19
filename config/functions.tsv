@@ -9792,7 +9792,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ea479	0x220	MenuState.cpp	game	ui	pending	_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti	Menus::MainMenu::Notify(MenuWidget const*, int)
 0x002ea699	0x15c	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu6UpdateEv	Menus::MainMenu::Update()
 0x002ea7f5	0x130	MenuState.cpp	game	ui	pending	_ZN5Menus5Infos6NotifyEPK10MenuWidgeti	Menus::Infos::Notify(MenuWidget const*, int)
-0x002ea925	0xe0	MenuState.cpp	game	ui	pending	_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti	Menus::InfoAchievements::Notify(MenuWidget const*, int)
+0x002ea925	0xe0	MenuState.cpp	game	ui	matched	_ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti	Menus::InfoAchievements::Notify(MenuWidget const*, int)
 0x002eaa05	0x11c	MenuState.cpp	game	ui	matched	_ZN5Menus8InfoHelp6NotifyEPK10MenuWidgeti	Menus::InfoHelp::Notify(MenuWidget const*, int)
 0x002eab21	0x74	MenuState.cpp	game	ui	matched	_ZN5Menus5Infos6UpdateEv	Menus::Infos::Update()
 0x002eab95	0xd0	MenuState.cpp	game	ui	pending	_ZN5Menus7Options6NotifyEPK10MenuWidgeti	Menus::Options::Notify(MenuWidget const*, int)

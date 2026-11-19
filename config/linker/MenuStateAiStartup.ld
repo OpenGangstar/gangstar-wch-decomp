@@ -44,6 +44,8 @@ INCLUDE config/linker/WidgetConfirmLocalization.ld
 
 SECTIONS
 {
+    .info_achievements_notify 0x002ea924 : { *ai-startup-menustate.o(.text._ZN5Menus16InfoAchievements6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.info_achievements_notify) == 224, "InfoAchievements Notify must retain native 224-byte extent")
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
     .renderfx_found_child 0x0044ddf8 : { *renderfx-animation.o(.rodata.renderfx_found_child) }
     .renderfx_child_sprite 0x0044de10 : { *renderfx-animation.o(.rodata.renderfx_child_sprite) }
