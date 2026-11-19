@@ -51,7 +51,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | BLOCKED | — | src/game/core/CameraManager.cpp |
 | libsanangeles.so | 0x00301a3d | PlayerTest::Stop | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00333789 | FollowCamera::init | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00333ab1 | FollowCamera::update | vehicle_side | BLOCKED | — | src/game/core/FollowCamera.cpp |
+| libsanangeles.so | 0x00333ab1 | FollowCamera::update | — | BLOCKED | Real-hierarchy adaptation784/native776; one recovered crossProduct reuse restores776extent but frame196/native204 fails0xe. Owner13functions6sections1GOT exact. Reviewed unapplied patch retained; no credit or further lifetime/ordering forms without new evidence. Ownership released. | src/game/core/FollowCamera.cpp; nonmatching/core/FollowCamera-update.patch |
 | libsanangeles.so | 0x002e1571 | GSCarRepairMenu::draw2d | lock_init | BLOCKED | — | src/game/ui/GSCarRepairMenu.cpp |
 | libsanangeles.so | 0x00334c25 | LockCamera::update | camera_tap | BLOCKED | — | src/game/core/LockCamera.cpp |
 | libsanangeles.so | 0x003017ed | PlayerTest::jumpFinished | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
