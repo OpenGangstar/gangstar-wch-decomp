@@ -14,6 +14,7 @@ strcmp = 0x001c4658;
 vsprintf = 0x001c4070;
 SECTIONS
 {
+ .can_handle_mouse 0x003eca0c : { *renderfx-animation.o(.text._Z19CanHandleMouseEventPN7gameswf9characterE) }
  .set_character_focus 0x003ef200 : { *renderfx-animation.o(.text._ZN8RenderFX8SetFocusEPN7gameswf9characterEi) }
  .renderfx_trace_hierarchy 0x003ecb08 : { *renderfx-animation.o(.text._ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii) }
  ASSERT(SIZEOF(.renderfx_trace_hierarchy) <= 464, "TraceHierarchy native464B span")

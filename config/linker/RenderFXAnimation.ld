@@ -37,3 +37,5 @@ ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");
 ASSERT(SIZEOF(.set_character_focus) == 356, "SetFocus native356 exact extent");
 
 INCLUDE config/linker/RenderFXSetMemberValue.ld
+
+ASSERT(SIZEOF(.can_handle_mouse) == 92, "CanHandleMouse native92 exact extent");

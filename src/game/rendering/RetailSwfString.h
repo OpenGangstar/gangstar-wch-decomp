@@ -33,6 +33,10 @@ public:
     }
     int size() const { return length(); }
 
+    static int utf8_char_count(const char* buffer, int byteLength);
+    int utf8_length() const { return utf8_char_count(get_buffer(), length()); }
+    tu_string utf8_substring(int start, int end) const;
+
     operator const char*() const { return get_buffer(); }
     const char* c_str() const { return static_cast<const char*>(*this); }
 
@@ -60,6 +64,7 @@ private:
 // Authentic tu_stringi composition; measured retail tu_string storage retained.
 class tu_stringi {
 public:
+    tu_stringi(const char* str) : m_string(str) {}
     tu_stringi(const tu_string& str) : m_string(str) {}
     ~tu_stringi() {}
 private:

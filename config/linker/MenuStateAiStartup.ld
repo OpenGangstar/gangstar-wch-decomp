@@ -37,6 +37,9 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 _ZN5Menus24s_helpSpecializedEntriesE = 0x0047b1b8;
 INCLUDE config/linker/MenuWidgetMissionSections.ld
+INCLUDE config/linker/WidgetVolumesLocalizationSections.ld
+INCLUDE config/linker/WidgetTutorialLocalization.ld
+
 SECTIONS
 {
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
@@ -376,3 +379,6 @@ ASSERT(SIZEOF(.renderfx_child_sprite) == 24, "native child-sprite text extent");
 ASSERT(SIZEOF(.set_character_focus) == 356, "SetFocus native356 exact extent");
 
 INCLUDE config/linker/RenderFXSetMemberValue.ld
+
+
+ASSERT(SIZEOF(.can_handle_mouse) == 92, "CanHandleMouse native92 exact extent");
