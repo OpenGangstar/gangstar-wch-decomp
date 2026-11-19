@@ -341,3 +341,13 @@ void SideMission::update(int elapsed)
     if (passenger && passenger->isCurrentAnimation(181))
         passenger->turnToward(vehicle->GetPosition());
 }
+
+bool SideMission::isInCheckpointsRange(irr::core::vector3d<float> position,
+    irr::core::array<Checkpoint*>& checkpoints)
+{
+    for (int i = 0; checkpoints.size() > static_cast<unsigned int>(i); ++i) {
+        if (isInCheckpointRange(position, checkpoints[i]))
+            return true;
+    }
+    return false;
+}

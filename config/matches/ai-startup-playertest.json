@@ -122,7 +122,8 @@
         "_ZN10PlayerTestD2Ev",
         "_ZN10PlayerTestD0Ev",
         "_ZThn4_N10PlayerTestD1Ev",
-        "_ZThn4_N10PlayerTestD0Ev"
+        "_ZThn4_N10PlayerTestD0Ev",
+        "_ZN10PlayerTest7setAnimEibbbf"
     ],
     "sections": [
         ".player_car_open_clip",
@@ -150,7 +151,8 @@
         ".player_d0",
         ".player_thunk_d1",
         ".player_thunk_d0",
-        ".player_vtable"
+        ".player_vtable",
+        ".player_set_anim"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -169,7 +171,6 @@
         "_ZN10HudElementC1EP7ASpriteib",
         "_ZN10PlayerTest14isFacingTargetEv",
         "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
-        "_ZN10PlayerTest7setAnimEibbbf",
         "_ZN11AnalogStick10switchModeENS_4ModeE",
         "_ZN11AnalogStickC1EP7ASpriteii",
         "_ZN11Application11GetInstanceEv",

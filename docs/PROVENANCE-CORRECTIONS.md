@@ -278,12 +278,12 @@ Each row changes only origin and area. Status and all identity fields remain.
 | `0x003755c9` | `ps_unicodes_init` | 436 | `psmodule.c` | game / core / pending | freetype / - / pending |
 | `0x0037577d` | `psnames_get_service` | 28 | `psmodule.c` | game / core / pending | freetype / - / pending |
 
-## Current report after separate constructor matching
+## Historical report after separate constructor matching
 
 The independently verified [Application constructor](matches/application-constructor.md)
 adds two genuine matched alias entries for one physical 148-byte body. That
 separate source change adds 296 catalogue matched bytes; these provenance
-corrections add none. The combined current report is:
+corrections add none. The combined report at that baseline was:
 
 ```text
 ByteMatch: 4262/4550 functions; 342590/561716 bytes (60.99%); Fully Linked 111046/561716 bytes (19.77%, 124/203 units); Fuzzy Matched 60.99%

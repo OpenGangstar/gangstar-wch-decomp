@@ -44,7 +44,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033560d | VehicleCamera::updatePosition | — | COMPLETED | 100% | src/game/vehicles/VehicleCamera.cpp |
 | libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | — | BLOCKED | The real Character receiver and completed float product restore native 280-byte extent, 32-byte pool and all 20 call instructions. Exactly 14 bytes still differ in spills/scheduling, first at +0x1e; all 40 existing comparisons pass. Reviewed uncredited patch and complete evidence preserved; no further form without new evidence. | src/game/core/FPSCamera.cpp; nonmatching/core/FPSCamera-scroll.patch |
 | libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
-| libsanangeles.so | 0x00335849 | VehicleCamera::update | — | BLOCKED | A full negative-branch float product remains an untried sixth form. Private getter/signed-distance prerequisites stopped on an omitted existing Cash fixture, not a mismatch. Worker usage limit interrupted setup recovery; current native preservation is unproven and no target trial is authorized. | src/game/vehicles/VehicleCamera.cpp |
+| libsanangeles.so | 0x00335849 | VehicleCamera::update | — | BLOCKED | Correct per-profile prerequisite gate passed190/10,923 after setup recovery. Sixth form retains native968 extent but matches553/968 bytes; all existing owner checks pass. Target and full section fail, first+0x1e. Six-form budget exhausted; preserve evidence, no credit or canonical integration. | src/game/vehicles/VehicleCamera.cpp |
 | libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | camera_tap | BLOCKED | — | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c49 | GSWeaponShopMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
@@ -59,7 +59,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100%; current coherent Player hierarchy preserves this definition under full 190-profile/10,687-comparison gate. Existing-body compatibility edits and all native bytes reviewed by coordinator. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301ebd | PlayerTest::setLastUsedVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Original-compiler GDB trace completed with same60/payloads/relocs and342/112 old checks. Actual priorities5555(this)/3333(offset)/625(zero) and live conflicts explain current R4/R5/R6; retail input difference unknown. No source/flag trial justified. | src/game/ai/PlayerTest.cpp (private) |
-| libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | — | BLOCKED | Four prior source forms are confirmed. One ordinary real vector-value snapshot is untried and was conditionally authorized after prerequisite review; the worker usage limit interrupted before its preparation or compilation. Existing 62-byte candidate and four terminal differences remain uncredited. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | — | COMPLETED | 100%; coordinator fifth form uses the genuine vector value copy. All62 bytes and native64-byte physical section match, SHA0e50d2448d90d307aec64981e5bb4349de63db5db3786feaac5b7afb0168315c. Full190/10,925 passes with frozen inputs; verified marker removed. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100%; restored native weak/default binding. Integrated declaration-only correction independently proved all 48 bytes and passed 190 profiles/10,687 checks; no body edits or new progress credit. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00302685 | PlayerTest::UpdateSceneNode | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -421,12 +421,12 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00346dd1 | SideMission::addCheckpoint | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346ce1 | SideMission::fadeInFadeOut | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346e31 | SideMission::removeNPC | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x00346f55 | SideMission::isInCheckpointsRange | — | BLOCKED | Reviewed actual Irrlicht ABI and array audit: no type drift; historical best70B differs2 compare/branch bytes; no replay justified | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x00346f55 | SideMission::isInCheckpointsRange | — | COMPLETED | 100%; genuine release array size/operator[] reuse restores the final comparison order. All70 function bytes and72 physical bytes match; root190/10,927 passes with945 frozen inputs. Verified marker removed; allocator/storage and existing matched bodies unchanged. | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346d1d | SideMission::start | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346b8d | SideMission::finished | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346e55 | SideMission::getCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00346f9d | SideMission::disableCheckpoints | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
-| libsanangeles.so | 0x003470f9 | SideMission::enableCheckpoints | lock_init | BLOCKED | — | src/game/missions/SideMission.cpp |
+| libsanangeles.so | 0x003470f9 | SideMission::enableCheckpoints | — | BLOCKED | Bounded accessor adaptation remains319/332 bytes, first+0x92; existing owner checks pass. The final unsigned-index for-loop API form emits338/native332 and stops before linking. Both preserved privately; no credit or canonical target integration. New evidence required before another form. | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x00347245 | SideMission::update | — | COMPLETED | 100% | src/game/missions/SideMission.cpp |
 | libsanangeles.so | 0x003477a1 | SideMissionManager::confirm | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
 | libsanangeles.so | 0x003477ed | SideMissionManager::setNextMissionTimer | — | COMPLETED | 100% | src/game/missions/SideMissionManager.cpp |
@@ -1223,7 +1223,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002d528d | Application::GetInstance() | — | COMPLETED | 100% | src/game/app/Application.cpp |
 
-| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | Reviewed case-order trial emits 600/native596 bytes with all six native temporary slots and the native 104-byte frame. Four extra bytes remain in the empty-list cold block. All historical forms use raw nodes; genuine existing STLport iterator reuse is untried. Worker usage limit interrupted before further authorization or compilation; no match credit. | src/game/app/Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | — | BLOCKED | Coordinator iterator reuse restores native596 size, 104-byte frame and all six event slots. Exactly26 scheduling bytes differ at +0x1f6..+0x20f; switch table and all existing owner/JNI comparisons pass. Reviewed unapplied patch preserves evidence without canonical source changes or credit. | src/game/app/Application.cpp |
 
 | libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | lock_init | BLOCKED | six candidates; best 452/440 bytes; no credit | src/game/rendering/GS3DStuff.cpp |
 

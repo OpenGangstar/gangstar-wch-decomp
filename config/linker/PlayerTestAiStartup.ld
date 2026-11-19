@@ -36,6 +36,8 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .player_set_anim 0x003018d0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7setAnimEibbbf) }
+    ASSERT(SIZEOF(.player_set_anim) == 64, "Native62 function plus proven2 byte padding")
     .player_weapon_callback_0 0x0030577c : { *ai-startup-playertest.o(.text._ZN10PlayerTest5snipeEP6Weapon) }
     .player_weapon_callback_1 0x00304c04 : { *ai-startup-playertest.o(.text._ZN10PlayerTest14onObjectKilledEP11LevelObject) }
 
