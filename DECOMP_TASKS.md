@@ -506,7 +506,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032c8b5 | WantedMeter deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c8a0 | WantedMeter deleting destructor thunk (D0) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032c904 | WantedMeter complete destructor thunk (D1) | — | COMPLETED | 100% | src/game/missions/WantedMeter.cpp |
-| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | lock_init | BLOCKED | — | src/game/missions/WantedMeter.cpp |
+| libsanangeles.so | 0x0032c961 | WantedMeter constructor (C1/C2 aliases) | — | BLOCKED | Two real SDK-value forms emit268/native272; prerequisite20checks preserved, no link or credit | src/game/missions/WantedMeter.cpp |
 | libsanangeles.so | 0x0032b0e1 | Reward destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032ad65 | Reward::setAnim | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x0032b07d | Reward deleting destructor (D0) | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
@@ -1474,3 +1474,36 @@ The coordinator accepted it, removed only its verified assembly marker and
 released ownership. The GNU hint and exact comparison output are documented
 in docs/matches/wanted-meter-update.md. Constructor aliases remain pending;
 no Fully Linked credit is added. No existing matched body changes.
+
+### WantedMeter constructor rectangle-value review
+
+The coordinator reviewed the six archived constructor forms and releases the
+old lock_init ownership. All manually store four touch-region coordinates.
+The current engine rectangle interface is already used by touchscreen region
+queries and has the same four-float layout. One bounded value-construction
+trial from saved v6 may test that genuine interface without changing storage,
+public signatures, allocation, loop or existing matched bodies. First verify
+only the required includes with the target absent in its sole owning profile;
+all other native inputs must match the accepted full baseline exactly.
+
+The rectangle-value form emits 268/native272 bytes and only the two constructor
+aliases; it stops before linking. Its emitted height load is still late. One
+final bounded check may reuse the existing SDK dimension2d<int> value constructor
+for the native integer width/height, then convert those dimensions when storing
+the four coordinates. This tests actual value capture through the recovered
+const-reference dimension interface; no shared header, field, flag, allocation
+or loop changes. Stop after this additional API form if it is not exact.
+
+The coordinator reviewed and parked both bounded SDK-value forms. Rectangle
+and dimension candidates each emit 268/native272 bytes; their raw target hashes
+differ, and only the two intended C1/C2 aliases are newly defined. Both stop
+before linking. The includes-only, target-absent prerequisite passed 12 function,
+7 section and 1 region checks with all 955 frozen inputs stable. A file-by-file
+audit proves WantedMeter.cpp is the only changed native input and its sole
+profile is sdk-startup-wantedmeter; all other source/config/tool inputs are
+identical to the accepted full baseline. This is owner prerequisite proof, not
+a fresh full-190 or post-body linked proof. Original touch-region type identity
+is still unproven; compatible rectangle layout alone does not establish it.
+No shared type, header, canonical body, marker, matching credit or Fully Linked
+credit is changed. Ownership is released; no further constructor forms are
+authorized without new evidence.
