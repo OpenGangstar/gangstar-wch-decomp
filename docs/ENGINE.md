@@ -117,10 +117,24 @@ source, and accept reconstructed game functions only after complete native byte
 comparisons. Reference research adds no matched or fully linked progress, and
 vendored gameswf code remains outside game-code totals.
 
-### Box2D 2.0.2 — 324 functions
+### Box2D 2.0.1 (recorded version) — 324 functions
 
 [Erin Catto's Box2D](https://github.com/erincatto/box2d), used for the
 vehicle and character physics.
+
+The retail `b2_version` object at `0x004b6068` contains three little-endian
+32-bit integers: `(2, 0, 1)`. Both symbol-table entries identify the same 12-byte
+object. This corrects the earlier 2.0.2 label; the function catalogue and its
+324 Box2D entries remain unchanged. The observation uses the verified retail
+library with SHA-256
+`b322b642d365a34c48e140234b7ef4efd965d1e81acd2b95d9034e2f4386ea8a`.
+
+Treat this as the engine's recorded base version. Gameloft modifications and
+individual source/header reconstructions still require native byte comparison.
+For example, directly transferring the stock 2.0.1 body-definition constructor
+into the current matching context regresses the existing `InitWorld` match;
+that transfer remains rejected and unapplied.
+
 
 ### FreeType — 1,069 functions
 

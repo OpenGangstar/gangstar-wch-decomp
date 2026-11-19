@@ -63,7 +63,7 @@ under the right name.
 | gameswf | 2,850 | 418,516 | vendored, upstream open source |
 | FreeType | 1,069 | 214,608 | vendored, upstream open source |
 | libpng | 335 | 74,784 | vendored, upstream open source |
-| Box2D 2.0.2 | 324 | 72,858 | vendored, upstream open source |
+| Box2D 2.0.1 | 324 | 72,858 | vendored, upstream open source |
 | libjpeg | 284 | 66,478 | vendored, upstream open source |
 | STLport | 203 | 23,648 | vendored, from the NDK |
 | zlib | 81 | 27,388 | vendored, upstream open source |
