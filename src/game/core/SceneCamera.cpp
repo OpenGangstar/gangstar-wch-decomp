@@ -12,6 +12,8 @@
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "SceneCamera.h"
+#include "../world/ObjectData.h"
+#include "../app/CGameFactory.h"
 
 void SceneCamera::init(LevelObject*, int)
 {
@@ -32,6 +34,15 @@ SceneCamera::SceneCamera(int type) : Camera(), Transformation(type), vector112()
 
 SceneCamera::~SceneCamera()
 {
+}
+
+void SceneCamera::Load(const Structs::SceneCamera& data)
+{
+    LevelObject::Load(data, CGameFactory::getInstance());
+    Camera::position = GetPosition();
+    const float x = static_cast<float>(data.unknown88.X);
+    const float y = static_cast<float>(data.unknown88.Y);
+    lookAt = irr::core::vector3d<float>(x, y, static_cast<float>(data.unknown88.Z));
 }
 
 void operator delete(void*) throw();
@@ -78,14 +89,3 @@ static void __tcf_2()
 }
 
 namespace irr { namespace collada { class CColladaFactory; } }
-
-extern "C" {
-extern irr::collada::CColladaFactory _ZZN12CGameFactory11getInstanceEvE2gf __attribute__((weak));
-void _ZN12CGameFactoryD1Ev(irr::collada::CColladaFactory*) __attribute__((weak));
-
-static void __tcf_1() __attribute__((used));
-static void __tcf_1()
-{
-    _ZN12CGameFactoryD1Ev(&_ZZN12CGameFactory11getInstanceEvE2gf);
-}
-}
