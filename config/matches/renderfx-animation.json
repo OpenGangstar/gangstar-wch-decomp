@@ -139,7 +139,8 @@
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
-        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii"
+        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -176,7 +177,8 @@
         ".renderfx_hierarchy_play",
         ".renderfx_hierarchy_stop",
         ".renderfx_hierarchy_sprite",
-        ".renderfx_hierarchy_character"
+        ".renderfx_hierarchy_character",
+        ".set_character_focus"
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -228,7 +230,6 @@
         "_ZN7gameswf6matrix18set_scale_rotationEfff",
         "_Z7SwfFreePv",
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",

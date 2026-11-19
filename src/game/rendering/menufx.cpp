@@ -1570,3 +1570,45 @@ void RenderFX::TraceHierarchy(gameswf::character* character, int flags, int dept
         gameswf::log_msg(hierarchyCharacter, indent, fields.get_name().c_str(), character);
     }
 }
+
+void RenderFX::SetFocus(gameswf::character* character, int index)
+{
+    Event event;
+    gameswf::character* previous = controllers[index].first.get();
+    if (previous == character)
+        return;
+    if (previous && animationMethods(previous).is(previous, 2) &&
+        reinterpret_cast<SpriteEnabledState*>(previous)->enabled) {
+        PlayAnim(previous, focusOutAnimation, 0);
+        event.character = previous;
+        event.payload.y = 0.0f;
+        event.payload.x = 0.0f;
+        event.payload.z = 0.0f;
+        event.payload.unknown24 = 0;
+        event.type = 1;
+        event.characterName = reinterpret_cast<const CharacterCollectionFields*>(previous)->get_name().c_str();
+        event.characterPath[0] = 0;
+        event.consumed = false;
+        event.payload.controller = index;
+        SendEvent(event);
+    }
+    controllers[index].first.set_ref(character);
+    if (character) {
+        event.character = character;
+        event.payload.y = 0.0f;
+        event.payload.x = 0.0f;
+        event.payload.z = 0.0f;
+        event.payload.unknown24 = 0;
+        event.type = 0;
+        event.characterName = reinterpret_cast<const CharacterCollectionFields*>(character)->get_name().c_str();
+        event.characterPath[0] = 0;
+        event.consumed = false;
+        event.payload.controller = index;
+        if (listener->CanHandleEvent(event)) {
+            PlayAnim(character, focusInAnimation, 0);
+            SendEvent(event);
+        } else {
+            controllers[index].first.set_ref(0);
+        }
+    }
+}

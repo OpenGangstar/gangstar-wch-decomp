@@ -285,7 +285,8 @@
         "_ZNK11MenuManager15areAnimsEnabledEv",
         "_ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci",
         "_ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE",
-        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii"
+        "_ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii",
+        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi"
     ],
     "sections": [
         ".help_empty_icon",
@@ -391,7 +392,8 @@
         ".renderfx_hierarchy_play",
         ".renderfx_hierarchy_stop",
         ".renderfx_hierarchy_sprite",
-        ".renderfx_hierarchy_character"
+        ".renderfx_hierarchy_character",
+        ".set_character_focus"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -511,7 +513,6 @@
         "_ZN7gameswf11ref_counted8drop_refEv",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
-        "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN9MenuState8GotFocusEv",
         "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN7gameswf4root14get_root_movieEv",
