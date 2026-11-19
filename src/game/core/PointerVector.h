@@ -33,6 +33,7 @@
 // Observed STLport pointer-vector interface only. Allocation, base destruction
 // and overflow remain retail calls; this is not a general STL replacement.
 namespace std { struct __true_type {}; }
+#include "PointerVectorErase.h"
 namespace stlp_priv {
 template<class T, class Alloc> class _Vector_base {
 public:
@@ -53,11 +54,27 @@ class vector : public stlp_priv::_Vector_base<T, Alloc> {
 public:
     typedef unsigned int size_type;
     typedef T* iterator;
+    typedef T* pointer;
+    typedef typename __type_traits<T>::has_trivial_assignment_operator _TrivialCopy;
     vector() {}
     iterator begin() { return this->first; }
     iterator end() { return this->last; }
     void clear() { if (this->first != this->last) this->last = this->first; }
     size_type size() const { return size_type(this->last - this->first); }
+    void _M_range_check(size_type index) const __attribute__((weak));
+    T& at(size_type index) { _M_range_check(index); return (*this)[index]; }
+private:
+    iterator _M_erase(iterator first, iterator last, const __false_type&) {
+        pointer i = stlp_priv::__copy_ptrs(last, this->last, first, _TrivialCopy());
+        std::_Destroy_Range(i, this->last);
+        this->last = i;
+        return first;
+    }
+public:
+    iterator erase(iterator first, iterator last) {
+        if (first == last) return first;
+        return _M_erase(first, last, __false_type());
+    }
     T& operator[](size_type index) { return *(begin() + index); }
     void resize(size_type size, const T& value) __attribute__((weak));
     void push_back(const T& value) {

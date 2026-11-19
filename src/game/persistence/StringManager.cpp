@@ -170,3 +170,44 @@ void __stl_throw_out_of_range(const char* message)
     abort();
 }
 }
+
+StringManager::~StringManager()
+{
+    for (unsigned int pack = 0; pack < 6; ++pack)
+        unloadPack(pack);
+    for (int index = 0; index < styles.size(); ++index) {
+        delete[] styles.at(index)->fontName;
+        delete styles.at(index);
+    }
+    styles.erase(styles.begin(), styles.end());
+}
+
+#include "../world/ResStream.h"
+void* operator new(unsigned int);
+
+extern "C" void _ZN10DataStreamD1Ev(void*) __attribute__((weak));
+
+void StringManager::loadStyles(const char* name)
+{
+    struct DataStreamOwner {
+        unsigned int storage[sizeof(DataStream) / sizeof(unsigned int)];
+        DataStreamOwner(Stream& source, DataStream::endian order) {
+            new (storage) DataStream(source, order);
+        }
+        ~DataStreamOwner() { _ZN10DataStreamD1Ev(storage); }
+        DataStream& object() { return *reinterpret_cast<DataStream*>(storage); }
+    };
+    ResStream resource(name, 1);
+    DataStreamOwner dataOwner(resource, DataStream::BigEndian);
+    DataStream& data = dataOwner.object();
+    const int count = data.ReadInt();
+    for (int i = 0; i < count; ++i) {
+        int size = data.ReadInt();
+        int end = data.DataStream::Tell() + size;
+        Structs::TextStyle* style = new Structs::TextStyle();
+        style->Read(data);
+        if (data.DataStream::Tell() != end)
+            data.DataStream::Seek(end, 0);
+        styles.push_back(style);
+    }
+}

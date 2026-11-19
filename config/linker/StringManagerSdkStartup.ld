@@ -10,6 +10,12 @@ strlen = 0x001c48bc;
 nativeStrlen = 0x001c48bc;
 SECTIONS
 {
+    .string_load_styles 0x0034bd50 : { *sdk-startup-stringmanager.o(.text._ZN13StringManager10loadStylesEPKc) }
+    .string_style_default 0x00435fac : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager10loadStylesEPKcE4C.* .rodata.C.*) }
+    .string_data_stream_d1 0x002d3654 : { *sdk-startup-stringmanager.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
+    .string_manager_d1 0x0034be9c : { *sdk-startup-stringmanager.o(.text._ZN13StringManagerD1Ev .text._ZN13StringManagerD2Ev) }
+    .string_manager_d0 0x0034bf8c : { *sdk-startup-stringmanager.o(.text._ZN13StringManagerD0Ev) }
+    .string_manager_vtable 0x004ad2c8 : { *sdk-startup-stringmanager.o(.data.rel.ro._ZTV13StringManager) }
  .string_out_of_range 0x34b6f4 : { *sdk-startup-stringmanager.o(.text._ZSt24__stl_throw_out_of_rangePKc .gnu.linkonce.t._ZSt24__stl_throw_out_of_rangePKc) }
 
     .string_get_text 0x0034bb5c : { *sdk-startup-stringmanager.o(.text._ZNK13StringManager9getStringEi) }
@@ -34,3 +40,13 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+
+memmove = 0x001c40ac;
+_ZdaPv = 0x001c461c;
+ASSERT(SIZEOF(.string_manager_d1) == 240, "native StringManager D1/D2 span");
+ASSERT(SIZEOF(.string_manager_d0) == 248, "native StringManager D0 span");
+
+_Znwj = 0x001c4814;
+__stack_chk_fail = 0x001c42e0;
+ASSERT(SIZEOF(.string_load_styles) == 332, "native loadStyles span");
+ASSERT(SIZEOF(.string_style_default) == 40, "native TextStyle default extent");
