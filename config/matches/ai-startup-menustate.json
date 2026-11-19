@@ -280,7 +280,9 @@
         "nativeGetNumLaunch",
         "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
         "_ZN8RenderFX9SendEventERNS_5EventE",
-        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE"
+        "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
+        "_ZN9MenuState4HideEv",
+        "_ZNK11MenuManager15areAnimsEnabledEv"
     ],
     "sections": [
         ".help_empty_icon",
@@ -372,7 +374,9 @@
         ".renderfx_send_6",
         ".renderfx_send_7",
         ".renderfx_send_8",
-        ".renderfx_send_9"
+        ".renderfx_send_9",
+        ".menu_state_hide",
+        ".menu_anims_enabled"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -423,7 +427,6 @@
         "_ZN9GS3DStuff6unloadEv",
         "_ZN11MenuManager9updateMapEv",
         "_ZN11MenuManager13updateMarkersEv",
-        "_ZN9MenuState4HideEv",
         "_ZN12StateMachine8popStateEv",
         "_ZN9MenuState7OnEventERN8RenderFX5EventE",
         "launchTwitter",

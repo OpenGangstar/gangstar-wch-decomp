@@ -1,6 +1,8 @@
 /* Native code and data for the application frame and texture-reload updates. */
 SECTIONS
 {
+    .application_update 0x002d4a00 : { *application-helpers.o(.text._ZN11Application7_UpdateEi) }
+    .application_draw 0x002d4fe0 : { *application-helpers.o(.text._ZN11Application5_DrawEv) }
     .application_global_resuming_update 0x002d4bc0 : { *application-helpers.o(.text._ZN11Application20GlobalResumingUpdateEv) }
     .application_main_update 0x002d50f0 : { *application-helpers.o(.text._ZN11Application6UpdateEv) }
     .resume_update_literals 0x00413ca0 : { *application-helpers.o(.rodata.str1.4) }

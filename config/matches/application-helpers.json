@@ -125,7 +125,9 @@
         "_ZNK16TouchScreenWin3211getTopBoundEv",
         "_ZNK16TouchScreenWin3214getBottomBoundEv",
         "_ZN11Application4InitEPN3irr14IrrlichtDeviceE",
-        "_ZN11Application4QuitEv"
+        "_ZN11Application4QuitEv",
+        "_ZN11Application7_UpdateEi",
+        "_ZN11Application5_DrawEv"
     ],
     "sections": [
         ".screen_dimensions",
@@ -175,7 +177,9 @@
         ".application_vtable",
         ".application_receiver_vtable",
         ".application_text_styles",
-        ".application_achievements"
+        ".application_achievements",
+        ".application_update",
+        ".application_draw"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -198,8 +202,6 @@
         "_ZNK11MenuManager8getDepthEv",
         "_ZN3irr5video15CTextureManager13reloadTextureEi",
         "_ZN3irr5video15CTextureManager17reloadAllTexturesEv",
-        "_ZN11Application7_UpdateEi",
-        "_ZN11Application5_DrawEv",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN11CHudManager16isMinimapVisibleEv",
@@ -243,7 +245,11 @@
         "_ZN7Vehicle28UnRegisterCarSoundsCallbacksEv",
         "_ZN11FileManager7DestroyEv",
         "_ZNK13ScriptManager10getMissionEv",
-        "_ZNK7Mission8getStateEv"
+        "_ZNK7Mission8getStateEv",
+        "_ZN11MenuManager6updateEP12StateMachine",
+        "_ZN12StateMachine10isDrawableEv",
+        "_ZN13ScriptManager4drawEv",
+        "_ZN11MenuManager4drawEPK12StateMachine"
     ],
     "dependencies": [
         "jni-gangstar"

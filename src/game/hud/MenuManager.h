@@ -17,10 +17,12 @@ struct MenuCheatZone {
 };
 
 class MenuWidget;
+class StateMachine;
 
 class MenuManager {
 public:
     void updateLocalization();
+    void update(StateMachine* machine);
     MenuManager();
     virtual ~MenuManager();
     static MenuManager* getInstance();

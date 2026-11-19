@@ -1680,3 +1680,18 @@ void Menus::ServiceMissions::GotFocus()
     arrows->SetListener(this);
     _ZN7Widgets6Arrows12SetPageCountEiib(arrows, count, 0, true);
 }
+
+void MenuState::Hide()
+{
+    MenuManager* manager = MenuManager::getInstance();
+    bool animate = manager->areAnimsEnabled();
+    if (depth == 1) {
+        for (int index = 0; index < 32; ++index) {
+            MenuWidget* widget = manager->getWidgetByIndex(index);
+            if (widget && widget->IsVisible() && widget->AutoHide()) {
+                widget->Hide(animate);
+            }
+        }
+    }
+    depth = 0;
+}

@@ -248,7 +248,7 @@ public:
     virtual void unknown41(); virtual void unknown42(); virtual ICameraSceneNode* getActiveCamera();
     virtual void unknown44(); virtual void unknown45(); virtual void unknown46();
     virtual unsigned int registerNodeForRendering(ISceneNode*, const video::SMaterial*, void*, E_SCENE_NODE_RENDER_PASS);
-    virtual void unknown48(); virtual void unknown49(); virtual void unknown50();
+    virtual void unknown48(); virtual void drawAll(ISceneNode* root); virtual void update(float elapsed, bool updateOnly);
     virtual void unknown51(); virtual void unknown52(); virtual void unknown53();
     virtual void unknown54(); virtual void unknown55(); virtual void unknown56();
     virtual void unknown57(); virtual void unknown58(); virtual void unknown59();
@@ -260,7 +260,7 @@ public:
     virtual void addToDeletionQueue(ISceneNode* node);
     virtual void unknown70();
     virtual void unknown71();
-    virtual void unknown72();
+    virtual io::IAttributes* getParameters();
     virtual void unknown73();
     virtual void unknown74();
     virtual void unknown75();
