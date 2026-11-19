@@ -15,6 +15,7 @@
 #include "../core/Rect.h"
 #include "../rendering/GS3DStuff.h"
 #include "TouchScreenBase.h"
+#include "TouchIDListSupport.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -279,6 +280,17 @@ long TouchScreenBase::getTouchIDInRegion(const irr::core::rect<float>& region) c
             return i;
     }
     return -1;
+}
+
+TouchIDList TouchScreenBase::getTouchIDList() const
+{
+    TouchIDList list;
+    for (int i = 0; i < 8; ++i) {
+        if (points[i].active)
+            list.push_back(i);
+    }
+    list.sort();
+    return list;
 }
 
 inline TouchScreenBase::_TouchPointInfo::~_TouchPointInfo()

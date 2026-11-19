@@ -12,6 +12,7 @@ __aeabi_fmul = 0x001c4724;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .lod_mesh_transformed 0x002d2edc : { *sdk-startup-lodscenenode.o(.text._ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE) }
     .lod_ctor_base 0x002d2b30 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_) }
     .lod_ctor_complete 0x002d2f50 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeC1EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_) }
     .lod_add_lod 0x002d2c98 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf) }
@@ -54,3 +55,5 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+
+ASSERT(SIZEOF(.lod_mesh_transformed) == 84, "native LOD transformed helper span");

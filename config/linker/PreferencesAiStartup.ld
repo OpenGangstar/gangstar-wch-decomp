@@ -18,6 +18,8 @@ _ZN30retail_preferences_transitions22scripted_vehicle_transE = 0x00433600;
 sprintf = 0x001c46ac;
 SECTIONS
 {
+    .preferences_load_apply 0x00343a38 : { *ai-startup-preferences.o(.text._ZN11Preferences12LoadAndApplyEPKc) }
+    .preferences_load_dispatch 0x00433064 : { *ai-startup-preferences.o(.rodata .rodata._ZN11Preferences12LoadAndApplyEPKc) }
     .preferences_get_orientation 0x00343834 : { *ai-startup-preferences.o(.text._ZN11Preferences14GetOrientationEPKc) }
     .orientation_datastream_d1 0x002d3654 : { *ai-startup-preferences.o(.gnu.linkonce.t._ZN10DataStreamD1Ev .text._ZN10DataStreamD1Ev) }
     .orientation_blockint_d1 0x003435e8 : { *ai-startup-preferences.o(.gnu.linkonce.t._ZN11Persistence8BlockIntD1Ev .text._ZN11Persistence8BlockIntD1Ev) }
@@ -67,3 +69,11 @@ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE 
 ASSERT(SIZEOF(.preferences_filename_storage) == 256, "preferences filename extent");
 
 ASSERT(SIZEOF(.preferences_get_orientation) == 176, "native GetOrientation extent");
+
+__aeabi_i2f = 0x001c41e4;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_dmul = 0x001c4298;
+__aeabi_d2f = 0x001c4310;
+ASSERT(SIZEOF(.preferences_load_apply) == 608, "native LoadAndApply function and alignment region");
+
+ASSERT(SIZEOF(.preferences_load_dispatch) == 32, "native preferences dispatch extent");

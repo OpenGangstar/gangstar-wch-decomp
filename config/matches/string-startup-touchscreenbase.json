@@ -157,7 +157,8 @@
         {
             "name": "_ZN15TouchScreenBaseD2Ev",
             "address": "0x0034cc99"
-        }
+        },
+        "_ZNK15TouchScreenBase14getTouchIDListEv"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -206,11 +207,14 @@
         ".touchscreen_base_vtable",
         ".touchscreen_base_updatable_vtable",
         ".touchscreen_base_updatable_delete",
-        ".touchscreen_base_updatable_destructor"
+        ".touchscreen_base_updatable_destructor",
+        ".touchscreen_id_list"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
-        "_ZNK15TouchScreenBase14getTouchIDListEv"
+        "_ZNSaIN9stlp_priv10_List_nodeIlEEE8allocateEjPKv",
+        "_ZN9stlp_priv7_S_sortIlSaIlESt4lessIlEEEvRSt4listIT_T0_ET1_",
+        "_ZN9stlp_priv10_List_baseIlSaIlEE5clearEv"
     ]
 }

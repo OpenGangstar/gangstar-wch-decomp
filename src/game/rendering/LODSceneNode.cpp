@@ -178,3 +178,26 @@ void LODSceneNode::addLOD(irr::scene::ISceneNode* node, float distance)
         CCustomSceneManager::CleanParents(parent);
     node->setVisible(false);
 }
+
+#include "../core/NativeSceneChildList.h"
+// Genuine member ABI: this in r0, actual SDK const-list reference in r0.
+extern "C" const irr::core::list<irr::scene::ISceneNode*>&
+_ZNK3irr5scene10ISceneNode11getChildrenEv(const irr::scene::ISceneNode* node);
+
+typedef char NativeChildListExtent[(sizeof(irr::core::list<irr::scene::ISceneNode*>) == 12) ? 1 : -1];
+typedef char NativeConstIteratorExtent[(sizeof(irr::core::list<irr::scene::ISceneNode*>::ConstIterator) == 4) ? 1 : -1];
+
+const irr::core::aabbox3d<float>& LODSceneNode::GetMeshTransformedBoundingBox(
+    const irr::scene::ISceneNode* node) const
+{
+    const int colladaMeshNode = 0x6d656164;
+    const int colladaSkinnedNode = 0x73656164;
+    if (node->getType() == colladaMeshNode || node->getType() == colladaSkinnedNode)
+        return node->getTransformedBoundingBox();
+
+    for (irr::core::list<irr::scene::ISceneNode*>::ConstIterator child =
+             _ZNK3irr5scene10ISceneNode11getChildrenEv(node).begin();
+         child != _ZNK3irr5scene10ISceneNode11getChildrenEv(node).end(); ++child) {
+        return GetMeshTransformedBoundingBox(*child);
+    }
+}

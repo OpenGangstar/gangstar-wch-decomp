@@ -112,7 +112,8 @@
         {
             "name": "_ZThn472_N16TouchScreenWin32D1Ev",
             "address": "0x0034d190"
-        }
+        },
+        "_ZNK15TouchScreenBase14getTouchIDListEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -142,14 +143,14 @@
         ".win32_vtable",
         ".win32_receiver_d0",
         ".win32_receiver_d1",
-        ".win32_receiver_vtable"
+        ".win32_receiver_vtable",
+        ".touchscreen_id_list"
     ],
     "retail_got": true,
     "dependencies": [
         "string-startup-touchscreenbase"
     ],
     "external_thumb_functions": [
-        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
-        "_ZNK15TouchScreenBase14getTouchIDListEv"
+        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl"
     ]
 }

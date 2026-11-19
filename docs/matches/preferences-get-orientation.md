@@ -41,10 +41,10 @@ Earlier private placement-storage candidates remained eight bytes different.
 An older exact experiment changed global destructor declarations; those changes
 are unnecessary for this current natural-object match and are not included.
 No controlled experiment identified a unique cause of the older-context
-difference. LoadAndApply remains pending, so this does not complete the source
-unit or increase Fully Linked progress.
+difference. [LoadAndApply](preferences-load-apply.md) subsequently completes the remaining
+source entry and qualifies the original unit for Fully Linked progress.
 
-Canonical full verification also passed: `python tools/build.py --all`,
+Verification when GetOrientation landed: canonical full verification passed: `python tools/build.py --all`,
 190 profiles and 10,509 successful function/section/region comparisons, with
 all prior checks retained. Independent executable audits cover all 4,227
 credited functions / 334,746 bytes and all 1,634 Fully Linked entries /

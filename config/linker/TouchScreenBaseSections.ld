@@ -1,6 +1,7 @@
 /* Retail section placement shared with the platform input verifier. */
 SECTIONS
 {
+    .touchscreen_id_list 0x0034cbc0 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase14getTouchIDListEv) }
     .touchscreen_displacement 0x0034c8c4 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase20getTouchDisplacementEl) }
     .touchscreen_convert_coord 0x0034c33c : { *string-startup-touchscreenbase.o(.text._ZN15TouchScreenBase12ConvertCoordER7Point2DIsE) }
     .touchscreen_trace 0x0034c394 : { *string-startup-touchscreenbase.o(.text._ZNK15TouchScreenBase6_traceEPKc) }

@@ -1,5 +1,5 @@
 {
-    "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
+    "toolchain": "C:/Users/Ethan/Documents/GitHub/OpenGangstar/games/gangstar-wch/toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "compiler_flags": [
         "-O2",
         "-fpic",
@@ -47,7 +47,8 @@
         "_ZN11Preferences13SampleAndSaveEPKc",
         "_ZN11Preferences14GetOrientationEPKc",
         "_ZN10DataStreamD1Ev",
-        "_ZN11Persistence8BlockIntD1Ev"
+        "_ZN11Persistence8BlockIntD1Ev",
+        "_ZN11Preferences12LoadAndApplyEPKc"
     ],
     "sections": [
         ".preferences_vtable",
@@ -63,7 +64,9 @@
         },
         ".preferences_get_orientation",
         ".orientation_datastream_d1",
-        ".orientation_blockint_d1"
+        ".orientation_blockint_d1",
+        ".preferences_load_apply",
+        ".preferences_load_dispatch"
     ],
     "external_thumb_functions": [
         "_ZN11PersistenceD1Ev",
@@ -81,7 +84,16 @@
         "_ZN13ScriptManager11getInstanceEv",
         "_ZN5Menus18OptionGameSettings14GetOrientationEv",
         "_ZN10FileStream4SizeEv",
-        "_ZN11Persistence9ReadBlockERNS_5BlockE"
+        "_ZN11Persistence9ReadBlockERNS_5BlockE",
+        "_ZN11Persistence9PeekBlockERNS_5BlockE",
+        "_ZN12SoundManager14setMusicVolumeEf",
+        "_ZN12SoundManager12setSfxVolumeEf",
+        "_ZN13StringManager8loadPackEj",
+        "_ZN13StringManager10switchPackEj",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN11MenuManager15enableAsianFontEb",
+        "_ZN11MenuManager13preloadGlyphsEb",
+        "_ZN5Menus18OptionGameSettings14SetOrientationEi"
     ],
     "retail_got": true
 }
