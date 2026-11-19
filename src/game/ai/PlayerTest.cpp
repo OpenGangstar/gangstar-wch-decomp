@@ -856,3 +856,15 @@ PlayerTest::~PlayerTest()
     s_player=0;
     if (__builtin_expect(photoTargets.free_when_destroyed, 1)) ::operator delete(photoTargets.data);
 }
+
+void PlayerTest::setAnim(int animation, bool loop, bool force, bool mirror, float speed)
+{
+    Character* character = this;
+    if (character->setAnimation(animation, speed, loop, force, mirror) && unknown168Pointer) {
+        const irr::core::vector3d<float> rootPosition = static_cast<irr::scene::ISceneNode*>(unknown168Pointer)->getPosition();
+        const float x = rootPosition.X;
+        const float y = rootPosition.Y;
+        unknown68 = x;
+        unknown72 = y;
+    }
+}

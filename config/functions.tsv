@@ -10421,7 +10421,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00301821	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest13driftFinishedEv	PlayerTest::driftFinished()
 0x00301855	0x48	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest17addDistanceDrivenEf	PlayerTest::addDistanceDriven(float)
 0x0030189d	0x34	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7subCashEi	PlayerTest::subCash(int)
-0x003018d1	0x3e	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest7setAnimEibbbf	PlayerTest::setAnim(int, bool, bool, bool, float)
+0x003018d1	0x3e	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest7setAnimEibbbf	PlayerTest::setAnim(int, bool, bool, bool, float)
 0x00301911	0xb8	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest11initDrivingEb	PlayerTest::initDriving(bool)
 0x003019c9	0x60	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10stopMovingEb	PlayerTest::stopMoving(bool)
 0x00301a28	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTest4StopEv	non-virtual thunk to PlayerTest::Stop()
