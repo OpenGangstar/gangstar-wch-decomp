@@ -84,6 +84,39 @@ Flash based interface. Its symbols are clearly visible:
 _ZN7gameswf5arrayINS_9tesselate12fill_segmentEE6resizeEi
 ```
 
+#### Source references and version boundaries
+
+The [original gameswf website](https://tulrich.com/geekstuff/gameswf.html)
+provides project history, public-domain licensing information and links to the
+tu-testbed source project and historical snapshots. Use it to establish source
+provenance and locate older implementations.
+
+The [Marmalade port](https://github.com/marmalade/gameswf), reviewed at commit
+`1f16bc87aab11ae9dcc8b61a3d3f5900355cdd4c`, is another useful reference for
+interfaces and platform adaptations. Its
+[README](https://github.com/marmalade/gameswf/blob/1f16bc87aab11ae9dcc8b61a3d3f5900355cdd4c/README)
+documents changes including replacing `strcasecmp` with `strcmp`. That changes
+case-comparison behavior; ARM support alone does not establish compatibility with
+Gameloft's fork. Its `tu_string` also uses a later buffer-free-count encoding,
+rather than the retail tag-first representation.
+
+For the retail string layout and resize algorithm, a closer historical reference
+is the 2008-11-18 revision
+[`b29f4cc842244eb8e1daf3b7c4d8ce2693c04853`](https://github.com/weihuoya/gameswf/tree/b29f4cc842244eb8e1daf3b7c4d8ce2693c04853/tu-testbed/base).
+Its `container.h` and `container.cpp` describe the 16-byte union with the tag at
+offset 0, inline characters at offset 1, and heap size, capacity and pointer at
+offsets 4, 8 and 12 on the target ABI. Heap size includes the terminator; inline
+capacity is 14 characters. Its resize implementation also retains the
+`strcpy`/`strncpy` transitions observed in retail code. Later upstream revisions
+change these copy operations and then the representation itself.
+
+This correspondence identifies a useful source family, not the complete retail
+fork. Constructor null checks, allocation interfaces and individual class layouts
+still require retail verification. Keep original license notices when reusing
+source, and accept reconstructed game functions only after complete native byte
+comparisons. Reference research adds no matched or fully linked progress, and
+vendored gameswf code remains outside game-code totals.
+
 ### Box2D 2.0.2 — 324 functions
 
 [Erin Catto's Box2D](https://github.com/erincatto/box2d), used for the
