@@ -50,7 +50,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00301821 | PlayerTest::driftFinished | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301855 | PlayerTest::addDistanceDriven | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301ebd | PlayerTest::setLastUsedVehicle | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Reviewed60B candidate differs9bytes only from r4/r5 role swap; real matched hide/justStoleCar and zero-offset cast supply no causal correction; parked | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached | — | BLOCKED | Exact historical source recovered from Git blob identities and invariant 78-file closure. One unchanged diagnostic reproduces all 60 candidate bytes and 289 old positive checks. Physical r4/r5 roles first visible at 138r.greg; original allocation cause remains unknown. No new source or flag form. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x003018d1 | PlayerTest::setAnim | camera_tap | BLOCKED | — | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00301f69 | PlayerTest::SetSpeed | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003019c9 | PlayerTest::stopMoving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -243,7 +243,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e7815 | Menus::InGameMenu::Notify | — | COMPLETED | 100% | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb085 | Menus::OptionVolumes::Notify | — | COMPLETED | 100%; complete 168-byte function and physical section using the real Volumes interface. Coordinator full gate passes 190 profiles and 10,670 comparisons; all prior matches retained. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify | — | BLOCKED | Complete widget interface remains 196/native 184. Wanted and Player APIs are already canonical; prior callable cache form was tested. No new genuine interface or dataflow gap found. | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e78ad | Menus::Map::Notify | — | BLOCKED | Best complete typed/case-0 form retains 21 tail-sharing differences in 220 bytes; grouped-case form is short at 216 and regresses prefix. All evidence frozen; no further permutations authorized. | src/game/ui/MenuState.cpp |
+| libsanangeles.so | 0x002e78ad | Menus::Map::Notify | — | BLOCKED | Unchanged diagnostic proves 143r.csa first chooses the non-native case-0/case-1 shared tail; pairing follows CFG traversal, not hotness ranking. Complete object unchanged; 637 old functions and 417 regions pass. No supported source repair or new variant. | src/game/ui/MenuState.cpp (private) |
 | libsanangeles.so | 0x002eb921 | Menus::ServiceWeaponShop::Notify | — | COMPLETED | 100%; complete 188-byte function/section using real Shop interface and Refresh declaration. Final full gate passes; old function bodies unchanged. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath | — | BLOCKED | Authentic 184-byte candidate remains eight bytes short. Read-only ledger attributes the gap to merged return tails and padding; traversal/proxy operations agree. No new semantic or API correction. | src/game/ui/MenuState.cpp |
 | libsanangeles.so | 0x002ea7f5 | Menus::Infos::Notify | — | COMPLETED | 100%; exact 304-byte function and 20-byte switch table; real compiled definition replaces native import. Final 190-profile, 10,675-comparison gate passes. | src/game/ui/MenuState.cpp |
@@ -857,7 +857,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight | lock_init | BLOCKED | pending | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x003497f5 | ASprite::GetFrame | — | COMPLETED | 100%; canonical records; coordinator full183-profile gate exact | src/game/rendering/ASprite.cpp |
 | libsanangeles.so | 0x003200f9 | PhysicAttributes::Init | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | camera_tap | BLOCKED | pending | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound | — | BLOCKED | All five sources include the second slot query. 034t.fre reuses its value; 041t.dom1 removes its null test. Historical 222-byte object unchanged and 71 old functions/75 sections pass. No original memory-effect declaration or compiler context recovered to justify a repair. | src/game/audio/SoundManager.cpp (private) |
 | libsanangeles.so | 0x00352a55 | SoundManager::endCutscene | lock_init | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00353175 | SoundManager::update | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x00353525 | SoundManager constructor (C1/C2 aliases) | vehicle_side | BLOCKED | pending | src/game/audio/SoundManager.cpp |
