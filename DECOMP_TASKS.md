@@ -1061,7 +1061,7 @@ Coordinator permits a focused diagnostic of the sole old photo regression in the
 
 Coordinator approves private Vehicle-constructor layout refinement of the four native vector members at 512/524/536/548, replacing only constant-index references mechanically in preserved Vehicle/NPC bodies. Storage extent and offsets must remain unchanged. All old Vehicle and NPC/dependency checks plus accepted custom/support/table checks must pass before readiness; no other algorithm changes or additional overlapping storage.
 | libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | hud_glyphs | BLOCKED | post-constructor replay unchanged; candidate 820/816 bytes | src/game/world/SpawnPoint.cpp |
-| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | lock_init | BLOCKED | unmatched plane/cross-product code generation | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap | — | BLOCKED | Recovered crossProduct and real PhysicInfo local restore native arithmetic/196B frame; plain592/native596 differs in return layout. Early/nested forms identical; hint596 fails. Owner38functions10sections1GOT preserved. Reviewed unapplied patch, no credit; ownership released. | src/game/characters/PhysicAttributes.cpp; nonmatching/characters/PhysicAttributes-segment-heightmap.patch |
 | libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination | hud_registration | BLOCKED | 713/724 bytes; stack-slot operands | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x00307101 | SpawnPoint::UpdateSpawnCenters() | hud_glyphs | BLOCKED | 872/848-byte candidate; repeated compiler CSE output | src/game/world/SpawnPoint.cpp |
