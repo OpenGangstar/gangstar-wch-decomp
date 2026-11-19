@@ -32,6 +32,8 @@ sprintf = 0x001c46ac;
 __aeabi_fcmpgt = 0x001c419c;
 SECTIONS
 {
+ .side_mission_checkpoints_range 0x00346f54 : { *ai-startup-sidemission.o(.text._ZN11SideMission20isInCheckpointsRangeEN3irr4core8vector3dIfEERNS1_5arrayIP10CheckpointNS1_12irrAllocatorIS6_EEEE) }
+ ASSERT(SIZEOF(.side_mission_checkpoints_range) == 72, "Native70 function plus proven2 byte padding")
     .side_mission_update 0x00347244 : { *ai-startup-sidemission.o(.text._ZN11SideMission6updateEi) }
     .side_mission_goal_format 0x0043487c : { *(.rodata.side_mission_goal_format) }
     .side_mission_update_switch 0x00434888 : { *(.rodata._ZN11SideMission6updateEi) }
