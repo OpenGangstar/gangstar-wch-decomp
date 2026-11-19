@@ -1,0 +1,266 @@
+{
+  "binary": "libsanangeles.so",
+  "symbol": "_ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader",
+  "native_address": "0x3511b9",
+  "native_size": 134,
+  "retained_variant": 2,
+  "variants": [
+    {
+      "number": 1,
+      "description": "Constructor reuse, multiply by four",
+      "primary_probe_exit": 3,
+      "signature": {
+        "defined": true,
+        "size": 138,
+        "section_size": 140,
+        "raw_sha256": "5a1be50dd65fcec0dd0abae6d1a7870278d38bd6a6e78c9e9deeb423cfdbbf08",
+        "relocations": [
+          [
+            46,
+            10,
+            "fread",
+            0
+          ],
+          [
+            60,
+            10,
+            "fread",
+            0
+          ],
+          [
+            94,
+            10,
+            "__aeabi_uidiv",
+            0
+          ],
+          [
+            120,
+            10,
+            "fseek",
+            0
+          ]
+        ]
+      },
+      "frozen_input_count": 884,
+      "later_diagnostic_config_changes": [],
+      "source_delta_from_retained_candidate": "--- a/src/game/audio/CSoundDecoderMSADPCM.cpp\n+++ b/src/game/audio/CSoundDecoderMSADPCM.cpp\n@@ -156,6 +156,6 @@\n         samplesPerBlock = (wavFormat->blockAlignment - headerSize) * 2 + 1;\n     else\n         samplesPerBlock = wavFormat->blockAlignment + 1 - headerSize;\n-    pcmSize = ((data.size / wavFormat->blockAlignment) * samplesPerBlock) << 2;\n+    pcmSize = (data.size / wavFormat->blockAlignment) * samplesPerBlock * 4;\n     effectiveSamples = fact.samples;\n }\n"
+    },
+    {
+      "number": 2,
+      "description": "Product then explicit shift",
+      "primary_probe_exit": 3,
+      "signature": {
+        "defined": true,
+        "size": 132,
+        "section_size": 132,
+        "raw_sha256": "8b62c5b8fe9aceb35bb80ad1bada1b68c6fb46166ce71d116b2de316ce4b5568",
+        "relocations": [
+          [
+            44,
+            10,
+            "fread",
+            0
+          ],
+          [
+            58,
+            10,
+            "fread",
+            0
+          ],
+          [
+            92,
+            10,
+            "__aeabi_uidiv",
+            0
+          ],
+          [
+            114,
+            10,
+            "fseek",
+            0
+          ]
+        ]
+      },
+      "frozen_input_count": 884,
+      "later_diagnostic_config_changes": [
+        "config\\linker\\MSAdpcmDecoderPool.ld",
+        "config\\matches\\msadpcm-decoder-pool.json"
+      ],
+      "source_delta_from_retained_candidate": ""
+    },
+    {
+      "number": 3,
+      "description": "Flags before riff assignment",
+      "primary_probe_exit": 3,
+      "signature": {
+        "defined": true,
+        "size": 132,
+        "section_size": 132,
+        "raw_sha256": "2ccde0f791a8b0581ed120631e4b5858e6049d6a77cc4c6ef73f7e5c670baa1a",
+        "relocations": [
+          [
+            44,
+            10,
+            "fread",
+            0
+          ],
+          [
+            58,
+            10,
+            "fread",
+            0
+          ],
+          [
+            92,
+            10,
+            "__aeabi_uidiv",
+            0
+          ],
+          [
+            114,
+            10,
+            "fseek",
+            0
+          ]
+        ]
+      },
+      "frozen_input_count": 884,
+      "later_diagnostic_config_changes": [],
+      "source_delta_from_retained_candidate": "--- a/src/game/audio/CSoundDecoderMSADPCM.cpp\n+++ b/src/game/audio/CSoundDecoderMSADPCM.cpp\n@@ -139,8 +139,8 @@\n {\n     stream = input;\n     formatHeader = format;\n+    flags = 1;\n     riffHeader = riff;\n-    flags = 1;\n     channelIndex = 0;\n     samplesRemaining = 0;\n     position = 0;\n"
+    },
+    {
+      "number": 4,
+      "description": "Matched constructor member order",
+      "primary_probe_exit": 3,
+      "signature": {
+        "defined": true,
+        "size": 130,
+        "section_size": 132,
+        "raw_sha256": "2dc3081a6d2ace52391d8dce49fe4e3828ddfd0e67bf36028038c9a32bc72ce3",
+        "relocations": [
+          [
+            44,
+            10,
+            "fread",
+            0
+          ],
+          [
+            58,
+            10,
+            "fread",
+            0
+          ],
+          [
+            92,
+            10,
+            "__aeabi_uidiv",
+            0
+          ],
+          [
+            112,
+            10,
+            "fseek",
+            0
+          ]
+        ]
+      },
+      "frozen_input_count": 884,
+      "later_diagnostic_config_changes": [],
+      "source_delta_from_retained_candidate": "--- a/src/game/audio/CSoundDecoderMSADPCM.cpp\n+++ b/src/game/audio/CSoundDecoderMSADPCM.cpp\n@@ -138,13 +138,13 @@\n void CSoundDecoderMSADPCM::Init(__sFILE* input, RiffHeader* riff, FormatHeader* format)\n {\n     stream = input;\n-    formatHeader = format;\n-    riffHeader = riff;\n-    flags = 1;\n     channelIndex = 0;\n     samplesRemaining = 0;\n+    riffHeader = riff;\n+    formatHeader = format;\n     position = 0;\n     ended = false;\n+    flags = 1;\n     if (formatHeader->size > 16)\n         fseek(reinterpret_cast<NativeFile*>(stream), formatHeader->size - 16, 1);\n     fread(&fact, sizeof(fact), 1, reinterpret_cast<NativeFile*>(stream));\n"
+    },
+    {
+      "number": 5,
+      "description": "Staged unsigned PCM calculation",
+      "primary_probe_exit": 3,
+      "signature": {
+        "defined": true,
+        "size": 132,
+        "section_size": 132,
+        "raw_sha256": "8b62c5b8fe9aceb35bb80ad1bada1b68c6fb46166ce71d116b2de316ce4b5568",
+        "relocations": [
+          [
+            44,
+            10,
+            "fread",
+            0
+          ],
+          [
+            58,
+            10,
+            "fread",
+            0
+          ],
+          [
+            92,
+            10,
+            "__aeabi_uidiv",
+            0
+          ],
+          [
+            114,
+            10,
+            "fseek",
+            0
+          ]
+        ]
+      },
+      "frozen_input_count": 884,
+      "later_diagnostic_config_changes": [],
+      "source_delta_from_retained_candidate": "--- a/src/game/audio/CSoundDecoderMSADPCM.cpp\n+++ b/src/game/audio/CSoundDecoderMSADPCM.cpp\n@@ -156,6 +156,7 @@\n         samplesPerBlock = (wavFormat->blockAlignment - headerSize) * 2 + 1;\n     else\n         samplesPerBlock = wavFormat->blockAlignment + 1 - headerSize;\n-    pcmSize = ((data.size / wavFormat->blockAlignment) * samplesPerBlock) << 2;\n+    pcmSize = (data.size / wavFormat->blockAlignment) * samplesPerBlock;\n+    pcmSize <<= 2;\n     effectiveSamples = fact.samples;\n }\n"
+    },
+    {
+      "number": 6,
+      "description": "Seek from supplied arguments",
+      "primary_probe_exit": 3,
+      "signature": {
+        "defined": true,
+        "size": 132,
+        "section_size": 132,
+        "raw_sha256": "8b62c5b8fe9aceb35bb80ad1bada1b68c6fb46166ce71d116b2de316ce4b5568",
+        "relocations": [
+          [
+            44,
+            10,
+            "fread",
+            0
+          ],
+          [
+            58,
+            10,
+            "fread",
+            0
+          ],
+          [
+            92,
+            10,
+            "__aeabi_uidiv",
+            0
+          ],
+          [
+            114,
+            10,
+            "fseek",
+            0
+          ]
+        ]
+      },
+      "frozen_input_count": 884,
+      "later_diagnostic_config_changes": [],
+      "source_delta_from_retained_candidate": "--- a/src/game/audio/CSoundDecoderMSADPCM.cpp\n+++ b/src/game/audio/CSoundDecoderMSADPCM.cpp\n@@ -145,8 +145,8 @@\n     samplesRemaining = 0;\n     position = 0;\n     ended = false;\n-    if (formatHeader->size > 16)\n-        fseek(reinterpret_cast<NativeFile*>(stream), formatHeader->size - 16, 1);\n+    if (format->size > 16)\n+        fseek(reinterpret_cast<NativeFile*>(input), format->size - 16, 1);\n     fread(&fact, sizeof(fact), 1, reinterpret_cast<NativeFile*>(stream));\n     fread(&data, sizeof(data), 1, reinterpret_cast<NativeFile*>(stream));\n     FormatHeader* wavFormat = formatHeader;\n"
+    }
+  ],
+  "three_material_forms_identical": [
+    2,
+    5,
+    6
+  ],
+  "existing_functions_passed": 22,
+  "existing_sections_regions_passed": 19,
+  "normal_build_exit": 1,
+  "actual_linked_size": 132,
+  "linked_sha256": "639b7f87ed87626e32add46d68303706ccbe553708db89d7c865eb46b00360dc",
+  "frozen_link_input_count": 884,
+  "frozen_link_inputs_stable": true,
+  "credited": false,
+  "baseline": "d151cad3d53bfd1a6628b362a9d298a158a41bdb"
+}
