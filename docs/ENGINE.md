@@ -133,7 +133,9 @@ Treat this as the engine's recorded base version. Gameloft modifications and
 individual source/header reconstructions still require native byte comparison.
 For example, directly transferring the stock 2.0.1 body-definition constructor
 into the current matching context regresses the existing `InitWorld` match;
-that transfer remains rejected and unapplied.
+that transfer remains rejected and unapplied. Detailed comparison and the
+rejected source transfer are preserved in the
+[Character filter candidate](../nonmatching/characters/Character-initPhysic-filter-aggregate.md).
 
 
 ### FreeType — 1,069 functions
