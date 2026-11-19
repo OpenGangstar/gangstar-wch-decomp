@@ -127,7 +127,8 @@
         "_ZN11Application4InitEPN3irr14IrrlichtDeviceE",
         "_ZN11Application4QuitEv",
         "_ZN11Application7_UpdateEi",
-        "_ZN11Application5_DrawEv"
+        "_ZN11Application5_DrawEv",
+        "_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff"
     ],
     "sections": [
         ".screen_dimensions",
@@ -179,7 +180,8 @@
         ".application_text_styles",
         ".application_achievements",
         ".application_update",
-        ".application_draw"
+        ".application_draw",
+        ".application_init_iphone"
     ],
     "retail_got": true,
     "external_thumb_functions": [

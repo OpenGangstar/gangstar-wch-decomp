@@ -123,6 +123,10 @@ private:
     bool soundThreadPlaying;
     unsigned char unknown153[3];
     ApplicationMonitoredPointerStorage monitoredPointers;
+public:
+    // Return type inferred from platform API; original declaration is unproven.
+    void InitIPhone(irr::IrrlichtDevice*, float, float, float, float);
+
 };
 
 #endif

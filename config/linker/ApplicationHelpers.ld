@@ -32,6 +32,8 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/ApplicationRuntimeSections.ld
 SECTIONS
 {
+    .application_init_iphone 0x002d3c7c : { *application-helpers.o(.text._ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff) }
+    ASSERT(SIZEOF(.application_init_iphone) == 20, "InitIPhone native 18-byte function and 2-byte padding")
     .application_key_pressed 0x002d4708 : { *(.text._ZN11Application13appKeyPressedEi) }
     .application_key_released 0x002d45ac : { *(.text._ZN11Application14appKeyReleasedEi) }
     .application_process_key 0x002d40fc : { *(.text._ZN11Application15ProcessKeyEventEbi) }
