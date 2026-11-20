@@ -18,6 +18,10 @@ class Vehicle : public LevelObject, public IMapTrackable {
     friend class MissionConditionDriveWell;
 public:
     void explode();
+    void collision(irr::core::vector3d<float>, int);
+    static const int s_smallImpactSounds[3];
+    static const int s_mediumImpactSounds[3];
+    static const int s_hardImpactSounds[3];
     bool hasExplosionFlag() const { return explosionFlag != 0; }
     Vehicle(int type);
     virtual ~Vehicle();
@@ -196,7 +200,7 @@ private:
     float unknown116;
     float unknown120;
     float unknown124;
-    unsigned char unknown128[4];
+    float unknown128;
     int unknown132;
     int init136;
     LevelObject* aiTarget;
@@ -383,7 +387,7 @@ private:
     unsigned char unknown902[2];
     int doorSoundSuppression;
     VehicleRepairVisualState* repairVisualState;
-    unsigned char unknown912[4];
+    float unknown912;
     int maxHealth;
     int health;
     int unknown924;

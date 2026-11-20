@@ -35,6 +35,9 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+ .vehicle_collision 0x313384 : { *vehicle-cleanup.o(.text._ZN7Vehicle9collisionEN3irr4core8vector3dIfEEi) }
+ ASSERT(SIZEOF(.vehicle_collision) == 1360, "Vehicle collision native extent")
+
  .vehicle_step_physic 0x3116dc : { *(.text._ZN7Vehicle10stepPhysicEv) }
  .ctor_family_8 0x30a954 : { *(.text._ZN7VehicleC1Ei) }
  .ctor_table_8 0x4ab050 : { *(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }

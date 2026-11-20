@@ -1110,7 +1110,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00319ed5 | PhysicAttributes::LoadArrays(char*) | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | decomp_running_command | IN_PROGRESS | Current v5 control1360B retains6 differences; genuine two-helper adaptation1356 fails strict extent. OWN RTL proves generated calls const/u versus two plain calls; one truthful const-declaration follow-up approved only after all old comparisons pass. No aliases/barriers/padding/extra variants; private mirror only. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | — | COMPLETED | 100%; coordinator independently rebuilt1360B function/fullsection and actual onDoorClosed neighbor, then191 profiles/10957 comparisons exact with1068 stableinputs. Truthful math-helper const contracts preserve all old matches; only verified marker removed, no denominator change. Ownership released after acceptance. | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
