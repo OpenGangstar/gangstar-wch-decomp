@@ -2090,7 +2090,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0020c5bd	0x130	PVRTDecompress.cpp	game	rendering	pending	_Z18GetModulationValueiiiPA16_KiS1_PiS2_	GetModulationValue(int, int, int, int const (*) [16], int const (*) [16], int*, int*)
 0x0020c6ed	0x4e	PVRTDecompress.cpp	game	rendering	pending	_Z9TwiddleUVmmmm	TwiddleUV(unsigned long, unsigned long, unsigned long, unsigned long)
 0x0020c73d	0x598	PVRTDecompress.cpp	game	rendering	pending	_Z10DecompressP17AMTC_BLOCK_STRUCTiiiiPh	Decompress(AMTC_BLOCK_STRUCT*, int, int, int, int, unsigned char*)
-0x0020ccd5	0x14	PVRTDecompress.cpp	game	rendering	pending	_Z15PVRTCDecompressPKviiiPh	PVRTCDecompress(void const*, int, int, int, unsigned char*)
+0x0020ccd5	0x14	PVRTDecompress.cpp	game	rendering	matched	_Z15PVRTCDecompressPKviiiPh	PVRTCDecompress(void const*, int, int, int, unsigned char*)
 0x0020cce9	0x68	CDefaultSceneNodeAnimatorFactory.cpp	irrlicht	-	matched	_ZN3irr5scene32CDefaultSceneNodeAnimatorFactoryC1EPNS0_13ISceneManagerEPNS_3gui14ICursorControlE	irr::scene::CDefaultSceneNodeAnimatorFactory::CDefaultSceneNodeAnimatorFactory(irr::scene::ISceneManager*, irr::gui::ICursorControl*)
 0x0020cd51	0x4	CDefaultSceneNodeAnimatorFactory.cpp	irrlicht	-	matched	_ZNK3irr5scene32CDefaultSceneNodeAnimatorFactory38getCreatableSceneNodeAnimatorTypeCountEv	irr::scene::CDefaultSceneNodeAnimatorFactory::getCreatableSceneNodeAnimatorTypeCount() const
 0x0020cd55	0xe	CDefaultSceneNodeAnimatorFactory.cpp	irrlicht	-	matched	_ZNK3irr5scene32CDefaultSceneNodeAnimatorFactory34getCreateableSceneNodeAnimatorTypeEj	irr::scene::CDefaultSceneNodeAnimatorFactory::getCreateableSceneNodeAnimatorType(unsigned int) const
