@@ -1,0 +1,78 @@
+--- a/src/game/scripting/ScriptManager.cpp
++++ b/src/game/scripting/ScriptManager.cpp
+@@ -1776,3 +1776,21 @@
+     if (revive)
+         revive->draw2d();
+ }
++
++void ScriptManager::reachRunningCommand(int command)
++{
++    Script** runningScripts = new Script*[scriptCount];
++    int runningCount = 0;
++    int scriptIndex = 0;
++    if (scriptCount > scriptIndex) {
++        do {
++            if (__builtin_expect(scripts[scriptIndex]->getState() == Script::State2, 1)) {
++                runningScripts[runningCount++] = scripts[scriptIndex];
++            }
++            ++scriptIndex;
++        } while (scriptCount > scriptIndex);
++    }
++    for (int i = 0; i < runningCount; ++i)
++        runningScripts[i]->nextCommand(command);
++    ::operator delete(runningScripts);
++}
+--- a/src/game/scripting/ScriptManager.h
++++ b/src/game/scripting/ScriptManager.h
+@@ -44,6 +44,7 @@
+     void playerDrives(Vehicle* vehicle);
+     void drawFade() const;
+     void rewindRunningScripts();
++    void reachRunningCommand(int command);
+     void skipBlockingCommands();
+     void* getMission() const;
+     void* getCinematicsHudSprite() const;
+--- a/config/matches/script-manager-helpers.json
++++ b/config/matches/script-manager-helpers.json
+@@ -190,7 +190,8 @@
+             "name": "__tcf_4",
+             "address": "0x0033e759",
+             "compiled_name": "__tcf_2"
+-        }
++        },
++        "_ZN13ScriptManager19reachRunningCommandEi"
+     ],
+     "sections": [
+         ".script_setup_intro",
+@@ -329,7 +330,8 @@
+         ".script_manager_first_checkpoint",
+         ".script_manager_minimap_tracking",
+         ".wanted_cleanup",
+-        ".state_machine_cleanup"
++        ".state_machine_cleanup",
++        ".handler"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -408,6 +410,7 @@
+         "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
+         "_ZN10PlayerTest10teleportToEPK11LevelObject",
+         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
+-        "_ZN10PlayerTest19finishedStopDrivingEv"
++        "_ZN10PlayerTest19finishedStopDrivingEv",
++        "_ZN6Script11nextCommandEi"
+     ]
+ }
+--- a/config/linker/ScriptManagerHelpers.ld
++++ b/config/linker/ScriptManagerHelpers.ld
+@@ -16,8 +16,10 @@
+ INCLUDE config/linker/ScriptManagerQuerySections.ld
+ __cxa_guard_acquire = 0x001c4958;
+ __cxa_guard_release = 0x001c46c4;
++_Znaj = 0x001c3ff8;
+ SECTIONS
+ {
++    .handler 0x0033d270 : { *script-manager-helpers.o(.text._ZN13ScriptManager19reachRunningCommandEi) }
+     .state_machine_singleton 0x002d44c4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
+     .state_machine_cleanup 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
+     .state_machine_guard 0x004b6904 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }

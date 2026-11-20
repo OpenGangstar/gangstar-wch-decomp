@@ -1,0 +1,61 @@
+{
+  "native_size": 112,
+  "candidate_size": 112,
+  "native_address": "0x33d271",
+  "sha256": "5d58ffb92afe3530e878f2af66b80b768c55bcfb3e10c569a75853497009e8a3",
+  "different_offsets": [
+    8,
+    22,
+    35,
+    36,
+    38,
+    54,
+    64,
+    67,
+    68,
+    71
+  ],
+  "ok_functions": 143,
+  "ok_sections": 133,
+  "ok_regions": 1,
+  "mismatches": [
+    "MISMATCH  _ZN13ScriptManager19reachRunningCommandEi  0x0033d271",
+    "MISMATCH SECTION .handler"
+  ],
+  "exit": 1,
+  "credited": false,
+  "function_compare_exit": 1,
+  "section_pass": false,
+  "exact_comparison_output": "MISMATCH  _ZN13ScriptManager19reachRunningCommandEi  0x0033d271\n  expected : f0 b5 57 46 46 46 c0 b4 06 1c 80 68 81 b0 8a 46\n  actual   : f0 b5 57 46 46 46 c0 b4 05 1c 80 68 81 b0 8a 46\n  differs at 0x8\nMISMATCH SECTION .handler\n  expected : f0 b5 57 46 46 46 c0 b4 06 1c 80 68 81 b0 8a 46\n  actual   : f0 b5 57 46 46 46 c0 b4 05 1c 80 68 81 b0 8a 46\n  differs at 0x8\n",
+  "existing_closure": {
+    "functions": 143,
+    "sections": 133,
+    "got_regions": 1,
+    "all_passed": true
+  },
+  "attempts": [
+    {
+      "kind": "archived plain form on current real TU/header",
+      "size": 122,
+      "exit": 2,
+      "reason": "Strict native placement overlaps following missionIdle section. No new function native-byte comparison or old closure completed."
+    },
+    {
+      "kind": "archived best source on current real TU/header",
+      "size": 112,
+      "exit": 1,
+      "reason": "Same complete function bytes as archived ELF;10 differing bytes remain."
+    }
+  ],
+  "new_source_search_performed": false,
+  "best_source_contains_unaccepted_hint": true,
+  "mainline_files_edited": false,
+  "coordinator_review": "The coordinator independently loaded the current linked ELF, verified its full function hash and size, and ran the native function comparison. The target remains mismatched. Production inputs and assembly markers are unchanged.",
+  "isolated_public_patch_replay": {
+    "patch_applied": true,
+    "canonical_build_exit": 1,
+    "compiled_size": 112,
+    "linked_sha256": "5d58ffb92afe3530e878f2af66b80b768c55bcfb3e10c569a75853497009e8a3",
+    "credited": false
+  }
+}

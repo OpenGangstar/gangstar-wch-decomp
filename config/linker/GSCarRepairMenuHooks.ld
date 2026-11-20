@@ -1,5 +1,6 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
+__aeabi_idiv = 0x001c43dc;
 INCLUDE build/matches/state-hooks-gscarrepairmenu/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_i2d = 0x001c452c;
@@ -55,6 +56,7 @@ INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 SECTIONS
 {
+    .repair_draw2d 0x002e1570 : { *state-hooks-gscarrepairmenu.o(.text._ZN15GSCarRepairMenu6draw2dEPK12StateMachine) }
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
     .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x0033d3b4 : { *script-manager-helpers.o(.text.__tcf_1) }
@@ -242,3 +244,5 @@ ASSERT(SIZEOF(.menu_startup_storage_10) == 8, "MenuManager _ZN8gameloft2ai11cop_
 ASSERT(SIZEOF(.menu_startup_storage_11) == 8, "MenuManager _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.menu_startup_storage_12) == 8, "MenuManager _ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.menu_startup_storage_13) == 32, "MenuManager _ZN11MenuManager22s_cheatActivationZonesE extent");
+
+ASSERT(SIZEOF(.repair_draw2d) == 136, "Native repair draw2d extent");
