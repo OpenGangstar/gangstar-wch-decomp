@@ -1,0 +1,26 @@
+{
+  "patch_applies_to_current_root": true,
+  "compiled_size": 732,
+  "linked_sha256": "589587327cea7fe88fb9088ca2eb4e2800cb619fe9de0527df87f475036eb2de",
+  "canonical_build_exit": 1,
+  "functions_passed": 143,
+  "sections_passed": 133,
+  "regions_passed": 1,
+  "mismatches": [
+    "MISMATCH  _ZN13ScriptManager8setStateENS_5StateE  0x0033f1ed",
+    "MISMATCH SECTION .script_manager_set_state",
+    "MISMATCH SECTION .script_manager_state_table"
+  ],
+  "credited": false,
+  "binary": "libsanangeles.so",
+  "address": "0x0033f1ed",
+  "native_size": 732,
+  "native_literal_address": "0x0033f4c4",
+  "native_literal_bytes": "79 01 00 00",
+  "correct_byte_offset": 377,
+  "old_byte_offset": 383,
+  "changed_linked_byte": 728,
+  "old_linked_value": 127,
+  "new_linked_value": 121,
+  "production_changes": false
+}

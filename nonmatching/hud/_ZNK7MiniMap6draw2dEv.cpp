@@ -88,8 +88,9 @@ void MiniMap::draw2d() const
     const int width=module->width, height=module->height;
     const int moduleX=frameModule->x,moduleY=frameModule->y;
     TargetMarker::getInstance()->depth=targetAngle;
-    TargetMarker::getInstance()->offsetX=width/2+moduleX;
-    TargetMarker::getInstance()->offsetY=height/2+moduleY;
+    TargetMarker* marker=TargetMarker::getInstance();
+    marker->offsetX=width/2+moduleX;
+    marker->offsetY=height/2+moduleY;
     TargetMarker::getInstance()->draw();
 }
 

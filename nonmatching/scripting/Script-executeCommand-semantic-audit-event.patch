@@ -1,0 +1,9 @@
+--- a/src/game/characters/NPCDespawnEvent.h
++++ b/src/game/characters/NPCDespawnEvent.h
+@@ -8,5 +8,5 @@
+ class EvNPCDespawn : public IEvent {
+ public:
+-    explicit EvNPCDespawn(LevelObject* object) : object(object) { eventID = 18; }
++    explicit EvNPCDespawn(LevelObject* object) : IEvent(18), object(object) {}
+     LevelObject* getTarget() const { return object; }
+     virtual ~EvNPCDespawn() {}
