@@ -1,3 +1,6 @@
+strncmp = 0x001c44b4;
+strcmp = 0x001c4658;
+strrchr = 0x001c4340;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-soundmanager/retail-symbols.ld
@@ -14,6 +17,11 @@ __aeabi_fcmpgt = 0x001c419c;
 _Znaj = 0x001c3ff8;
 SECTIONS
 {
+ .soundmanager_ctor 0x00353524 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManagerC1Ev .text._ZN12SoundManagerC2Ev) }
+ .memorySoundPrefix 0x00436374 : { *(.rodata.memorySoundPrefix) }
+ .musicSoundPrefix 0x0043637c : { *(.rodata.musicSoundPrefix) }
+ .swavSuffix 0x00436380 : { *(.rodata.swavSuffix) }
+ .wavSuffix 0x00436388 : { *(.rodata.wavSuffix) }
     .sdk_startup_function_0 0x003539ac : { *sdk-startup-soundmanager.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x003534a4 : { *sdk-startup-soundmanager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .sdk_startup_function_2 0x00353510 : { *sdk-startup-soundmanager.o(.text._GLOBAL__I__ZN12SoundManager15s_soundsPlayingE) }
@@ -99,3 +107,7 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+
+ASSERT(ADDR(.soundmanager_ctor)==0x00353524,"SoundManager ctor native start");
+ASSERT(SIZEOF(.soundmanager_ctor)==680,"SoundManager ctor native680 extent");
+ASSERT(ADDR(.soundmanager_ctor)+SIZEOF(.soundmanager_ctor)==0x003537cc,"SoundManager ctor next native neighbor");

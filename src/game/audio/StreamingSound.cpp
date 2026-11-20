@@ -18,37 +18,7 @@
 
 extern "C" const char* _ZN11FileManager10GetDvdNameEPKc(const char* name) __attribute__((weak));
 
-class StreamingSound : public CSound {
-public:
-    StreamingSound(int bufferSize);
-    StreamingSound(CSoundData* soundData, int decodeRate);
-    virtual ~StreamingSound();
-    virtual void Play(bool loop, float volume, int fade);
-    virtual void Update(int elapsed);
-    static void InitStaticParameters(CSoundBuffers* buffers, CMSWavPool* wavPool);
-    void SaturateBuffersAndFlush();
-    void Init(CSoundData* soundData);
-    void UnInit();
-    void Flush(int buffer);
-    bool UpdateDecoding();
-    void _SaturateAndFlushLite();
-
-private:
-    ISoundDecoder* decoder;
-    int bufferSize;
-    char* buffers[5];
-    int bufferIndex;
-    int samplesPerDecode;
-    int decodesPerBuffer;
-    int decodedChunks;
-    int decodedSamples;
-    unsigned int flags;
-    int streamState;
-    int localBufferCount;
-    static CSoundBuffers* s_pBuffersPool;
-    static CMSWavPool* s_pMsWavPool;
-};
-
+#include "StreamingSound.h"
 CSoundBuffers* StreamingSound::s_pBuffersPool;
 CMSWavPool* StreamingSound::s_pMsWavPool;
 
@@ -84,22 +54,7 @@ StreamingSound::StreamingSound(int size)
             buffers[i] = new char[bufferSize];
 }
 
-class CStreamingPool {
-public:
-    CStreamingPool(int capacity, int initialCount);
-    ~CStreamingPool();
-    StreamingSound* GetStreamingSound(CSoundData* data);
-    void ReleaseStreamingSound(StreamingSound* decoder);
-
-private:
-    StreamingSound** slots;
-    int capacity;
-    int initialCount;
-    int firstFree;
-    int lastUsed;
-    int* state;
-};
-
+#include "StreamingSoundPool.h"
 
 CStreamingPool::~CStreamingPool()
 {

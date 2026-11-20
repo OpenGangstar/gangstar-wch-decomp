@@ -13220,8 +13220,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0035349d	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager19getNumRadioStationsEv	SoundManager::getNumRadioStations() const
 0x003534a5	0x6c	SoundManager.cpp	game	audio	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00353511	0x14	SoundManager.cpp	game	audio	matched	_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE	_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE
-0x00353525	0x2a8	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerC1Ev	SoundManager::SoundManager()
-0x00353525	0x2a8	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerC2Ev	SoundManager::SoundManager()
+0x00353525	0x2a8	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerC1Ev	SoundManager::SoundManager()
+0x00353525	0x2a8	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerC2Ev	SoundManager::SoundManager()
 0x003537cd	0x54	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17playPriorityAudioEib	SoundManager::playPriorityAudio(int, bool)
 0x00353821	0x2c	SoundManager.cpp	game	audio	matched	_Z16soundEndCallbackv	soundEndCallback()
 0x0035384d	0x30	SoundManager.cpp	game	audio	matched	_ZN12SoundManager16setPitchCallbackEiif	SoundManager::setPitchCallback(int, int, float)

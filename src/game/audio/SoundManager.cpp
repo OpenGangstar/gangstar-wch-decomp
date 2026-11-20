@@ -600,3 +600,60 @@ static void __tcf_2()
         ::operator delete(value.array);
 }
 }
+
+extern "C" void* memset(void*, int, unsigned int);
+#include "SoundBuffersPool.h"
+#include "CSoundDecoderPCM.h"
+#include "CSoundDecoderMSADPCM.h"
+#include "StaticSoundPool.h"
+#include "StreamingSoundPool.h"
+#include "StreamingSound.h"
+extern "C" int strncmp(const char*,const char*,unsigned int);
+extern "C" int strcmp(const char*,const char*);
+extern "C" const char* strrchr(const char*,int);
+static const char memorySoundPrefix[] __attribute__((section(".rodata.memorySoundPrefix")))="mem_";
+static const char musicSoundPrefix[] __attribute__((section(".rodata.musicSoundPrefix")))="m_";
+static const char swavSuffix[] __attribute__((section(".rodata.swavSuffix")))="_swav";
+static const char wavSuffix[] __attribute__((section(".rodata.wavSuffix")))="_wav";
+
+SoundManager::SoundManager()
+    : lowFpsSound(0),lowFpsData(0),radioTrack(-1),radioStation(0),flags(0),unknown60(0.0f),
+      frequencyCount(s_playFreqs[0]+s_playFreqs[1]+s_playFreqs[2]),frequenciesRemaining(frequencyCount),
+      trackFrequencies(new int[frequencyCount]),previousJingle(false),sfxVolume(1.0f),
+      playbackVolume(0.8f),effectsPlaybackVolume(0.8f),soundCount(0),resourceIdBase(-1),
+      unknown140(false)
+{
+    unknown141[0]=false;
+    unknown144=0;
+    _resetFrequencies();
+    soundCount=FileManager::s_mgr->_GetResIdsFromDvdFolder(localStartupEmptyText,0,0);
+    int ids[512];
+    FileManager::s_mgr->_GetResIdsFromDvdFolder(localStartupEmptyText,ids,512);
+    resourceIdBase=ids[0];
+    soundSlots=new CSound**[soundCount];
+    for(int i=0;i<soundCount;++i) {
+        soundSlots[i]=new CSound*[4];
+        CSound** channels=soundSlots[i];
+        memset(channels,0,4*sizeof(CSound*));
+    }
+    soundEntries=new SoundEntry[soundCount];
+    for(int i=0;i<soundCount;++i) {
+        const char* name=FileManager::s_mgr->_GetName(ids[i]);
+        if(!strncmp(name,memorySoundPrefix,4))soundEntries[i].type=0x300001;
+        else if(!strncmp(name,musicSoundPrefix,2))soundEntries[i].type=0x400002;
+        else soundEntries[i].type=2;
+        const char* suffix=strrchr(name,'_');
+        if(!strcmp(suffix,swavSuffix))soundEntries[i].type|=0x20000;
+        else if(!strcmp(suffix,wavSuffix))soundEntries[i].type|=0x40000;
+    }
+    *reinterpret_cast<CSoundBuffers**>(&unknown28[0])=new CSoundBuffers(150,1,32656);
+    soundDataPool=new CSoundDataPool(30,1);
+    *reinterpret_cast<CStaticSoundsPool**>(&unknown4[4])=new CStaticSoundsPool(30,1);
+    wavPool=new CMSWavPool(30,1);
+    StreamingSound::InitStaticParameters(*reinterpret_cast<CSoundBuffers**>(&unknown28[0]),wavPool);
+    *reinterpret_cast<CStreamingPool**>(&unknown4[0])=new CStreamingPool(30,1);
+    *reinterpret_cast<CPcmPool**>(&unknown16[0])=new CPcmPool(30,1);
+    *reinterpret_cast<CMSAdpcmPool**>(&unknown16[4])=new CMSAdpcmPool(30,1);
+    CSoundDecoderMSWAV::InitStaticParameters(*reinterpret_cast<CPcmPool**>(&unknown16[0]),*reinterpret_cast<CMSAdpcmPool**>(&unknown16[4]));
+    *reinterpret_cast<unsigned int*>(&unknown28[4])=0;
+}

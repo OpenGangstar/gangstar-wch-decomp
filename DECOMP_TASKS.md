@@ -1774,7 +1774,7 @@ and separately bounded coordinator approval.
 | --- | --- | --- | --- | --- | --- | --- |
 | libsanangeles.so | 0x0020c485 | InterpolateColours(int const*,int const*,int const*,int const*,int,int,int,int*), `_Z18InterpolateColoursPKiS0_S0_S0_iiiPi` | — | COMPLETED | 100%; coordinator independently rebuilt complete native function/fullsection and verified all191 profiles/10967 comparisons exact,1068 frozen inputs stable. Only verified marker removed; ownership released. | src/game/rendering/PVRTDecompress.cpp; _scratch/worker-pvrtc-interpolate-current/ |
 | libsanangeles.so | 0x0020c5bd | GetModulationValue(int,int,int,int const (*)[16],int const (*)[16],int*,int*), `_Z18GetModulationValueiiiPA16_KiS1_PiS2_` | — | COMPLETED | 100%; coordinator independently rebuilt complete native function/fullsection and verified all191 profiles/10967 comparisons exact,1068 frozen inputs stable. Only verified marker removed; ownership released. | src/game/rendering/PVRTDecompress.cpp; _scratch/worker-pvrtc-modulation-current/ |
-| libsanangeles.so | 0x0020c73d | Decompress(AMTC_BLOCK_STRUCT*,int,int,int,int,unsigned char*), `_Z10DecompressP17AMTC_BLOCK_STRUCTiiiiPh` | decomp_running_command | ASSIGNED | Pending1432B; genuine cached legacy PVRTC reuse, native ABI/helper imports require verification before reconstruction. | src/game/rendering/PVRTDecompress.cpp; _scratch/worker-pvrtc-decompress-current/ |
+| libsanangeles.so | 0x0020c73d | Decompress(AMTC_BLOCK_STRUCT*,int,int,int,int,unsigned char*), `_Z10DecompressP17AMTC_BLOCK_STRUCTiiiiPh` | — | COMPLETED | 100%; coordinator independently rebuilt complete native function(s)/sections, then all191 profiles/10977 comparisons exact with1072 stable inputs, including coherent complete sound class headers. Only verified marker(s) removed; ownership released. | src/game/rendering/PVRTDecompress.cpp; _scratch/worker-pvrtc-decompress-current/ |
 
 ## Physics and trail follow-up selection
 
@@ -1783,6 +1783,19 @@ and separately bounded coordinator approval.
 | libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight(vector3df const&,int), `_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi` | — | BLOCKED | Coordinator reran audit.py0: all six historical images short and mismatched; current38/38 functions and11/11 regions exact, no new source cause or compile. Ownership released. | src/game/characters/PhysicAttributes.cpp; _scratch/worker-physics-jump-height-current/ |
 | libsanangeles.so | 0x00348fb5 | TrailMgr::AllocTrailList(Trail**,int), `_ZN8TrailMgr14AllocTrailListEPP5Traili` | — | BLOCKED | Coordinator reran check-evidence.py exit0: actual152/native154B function/fullsection fail;19 frozen inputs stable, current relevant types unchanged, four prior forms. No new cause or compile; ownership released. | src/game/world/TrailMgr.cpp; _scratch/worker-trail-allocate-current/ |
 
-| libsanangeles.so | 0x00353525 | SoundManager::SoundManager(), `_ZN12SoundManagerC1Ev` and same-address C2 alias | decomp_npc_hostility | ASSIGNED | Pending680B aliases; recover all prior trials and actual constructor/pool/model evidence before new compilation. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-constructor-current/ |
+| libsanangeles.so | 0x00353525 | SoundManager::SoundManager(), `_ZN12SoundManagerC1Ev` and same-address C2 alias | — | COMPLETED | 100%; coordinator independently rebuilt complete native function(s)/sections, then all191 profiles/10977 comparisons exact with1072 stable inputs, including coherent complete sound class headers. Only verified marker(s) removed; ownership released. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-constructor-current/ |
 
-| libsanangeles.so | 0x002fe999 | NPC::freeze(), `_ZN3NPC6freezeEv`, native224B | decomp_achievements | ASSIGNED | One bounded complete-if/else source-shape escalation in case1 only, informed by measured TwiddleUV phi formation. Recover and preserve six prior forms; no extra trials or credit. | src/game/ai/NPC.cpp; _scratch/worker-npc-freeze-complete-branch-current/ |
+| libsanangeles.so | 0x002fe999 | NPC::freeze(), `_ZN3NPC6freezeEv`, native224B | — | BLOCKED | Coordinator reran finalize.py0: sole complete-branch escalation reproduces same224B and three differences83/84/b8. All223/59 prior checks exact,886 inputs stable; no credit, ownership released. | src/game/ai/NPC.cpp; _scratch/worker-npc-freeze-complete-branch-current/ |
+
+## Bounded reuse of demonstrated compiler/source patterns
+
+The complete PVRTC source-unit context resolved a measured stack-slot permutation.
+Ordinary constant-sized memset resolved the SoundManager constructor's row-store
+sequence. The following distinct investigations may test those specific patterns;
+they do not reopen arbitrary ordering or flag searches.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*), `_ZN8SaveGame13SampleAndSaveEPKc` | decomp_achievements | ASSIGNED | One bounded complete source-unit placement/context control of best1388B source; six prior forms remain exhausted. No body or flag grid. | src/game/persistence/SaveGame.cpp; _scratch/worker-savegame-unit-context-current/ |
+| libsanangeles.so | 0x003360c1 | Mission::Mission(), `_ZN7MissionC1Ev` and C2 alias | decomp_npc_hostility | ASSIGNED | Inspect genuine native constant-zero array/subobject initialization for reuse of ordinary memset pattern. No compilation until specific native-backed hypothesis approved. | src/game/missions/Mission.cpp; _scratch/worker-mission-zero-initialization-current/ |
+| libsanangeles.so | 0x00333e41 | FPSCamera::scroll(touch list), `_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE` | decomp_running_command | ASSIGNED | One bounded complete source-unit placement/context control of best280B native-hierarchy candidate; no body, helper or flag grid. | src/game/core/FPSCamera.cpp; _scratch/worker-fps-scroll-unit-context-current/ |

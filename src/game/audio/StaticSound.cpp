@@ -10,16 +10,7 @@
 
 #include "CSound.h"
 
-class StaticSound : public CSound {
-public:
-    StaticSound();
-    StaticSound(CSoundData* soundData);
-    virtual ~StaticSound();
-    virtual void Stop(int fade);
-    void Init(CSoundData* soundData);
-    void UnInit();
-};
-
+#include "StaticSound.h"
 void StaticSound::Stop(int fade) { CSound::Stop(fade); }
 void StaticSound::UnInit() { CSound::UnInit(); }
 void StaticSound::Init(CSoundData* soundData) { CSound::Init(soundData); }
@@ -27,22 +18,7 @@ StaticSound::~StaticSound() {}
 StaticSound::StaticSound(CSoundData* soundData) : CSound(soundData) {}
 StaticSound::StaticSound() {}
 
-class CStaticSoundsPool {
-public:
-    CStaticSoundsPool(int capacity, int initialCount);
-    ~CStaticSoundsPool();
-    StaticSound* GetStaticSound(CSoundData* data);
-    void ReleaseStaticSound(StaticSound* decoder);
-
-private:
-    StaticSound** slots;
-    int capacity;
-    int initialCount;
-    int firstFree;
-    int lastUsed;
-    int* state;
-};
-
+#include "StaticSoundPool.h"
 
 CStaticSoundsPool::~CStaticSoundsPool()
 {
