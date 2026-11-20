@@ -27,9 +27,19 @@
     "source": "src/game/rendering/PVRTDecompress.cpp",
     "linker_script": "config/linker/PVRTDecompress.ld",
     "functions": [
+        "_Z22util_number_is_power_2j",
+        "_Z18InterpolateColoursPKiS0_S0_S0_iiiPi",
+        "_Z18GetModulationValueiiiPA16_KiS1_PiS2_",
+        "_Z9TwiddleUVmmmm",
         "_Z15PVRTCDecompressPKviiiPh"
     ],
     "sections": [
+        ".pvrtc_power_two",
+        ".pvrtc_interpolate",
+        ".pvrtc_modulation",
+        ".pvrtc_rep0",
+        ".pvrtc_rep1",
+        ".pvrtc_twiddle",
         ".pvrtc_wrapper"
     ],
     "external_thumb_functions": [
