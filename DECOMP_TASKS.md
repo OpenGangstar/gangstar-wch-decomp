@@ -1796,6 +1796,21 @@ they do not reopen arbitrary ordering or flag searches.
 
 | Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | --- | --- |
-| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*), `_ZN8SaveGame13SampleAndSaveEPKc` | decomp_achievements | ASSIGNED | One bounded complete source-unit placement/context control of best1388B source; six prior forms remain exhausted. No body or flag grid. | src/game/persistence/SaveGame.cpp; _scratch/worker-savegame-unit-context-current/ |
-| libsanangeles.so | 0x003360c1 | Mission::Mission(), `_ZN7MissionC1Ev` and C2 alias | decomp_npc_hostility | ASSIGNED | Inspect genuine native constant-zero array/subobject initialization for reuse of ordinary memset pattern. No compilation until specific native-backed hypothesis approved. | src/game/missions/Mission.cpp; _scratch/worker-mission-zero-initialization-current/ |
-| libsanangeles.so | 0x00333e41 | FPSCamera::scroll(touch list), `_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE` | decomp_running_command | ASSIGNED | One bounded complete source-unit placement/context control of best280B native-hierarchy candidate; no body, helper or flag grid. | src/game/core/FPSCamera.cpp; _scratch/worker-fps-scroll-unit-context-current/ |
+| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*), `_ZN8SaveGame13SampleAndSaveEPKc` | — | BLOCKED | Sole complete-unit context escalation still1388B/four differing bytes88..8b; coordinator reran finalize.py0, all476/757 previous checks exact,890 inputs stable. No credit; ownership released. | src/game/persistence/SaveGame.cpp; _scratch/worker-savegame-unit-context-current/ |
+| libsanangeles.so | 0x003360c1 | Mission::Mission(), `_ZN7MissionC1Ev` and C2 alias | — | COMPLETED | 100%; coordinator reran audit0 and independently rebuilt both128B aliases/fullsection at native definition order, then191profiles/10980 comparisons exact with1072stableinputs. Only verified markers removed; ownership released. | src/game/missions/Mission.cpp; _scratch/worker-mission-zero-initialization-current/ |
+| libsanangeles.so | 0x00333e41 | FPSCamera::scroll(touch list), `_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE` | — | BLOCKED | Sole updated-canonical unit-context control remains280B/same14-byte miss. Coordinator reran final-audit.py0, genuine current header/dependency checks exact; accepted body texts preserved, no credit; ownership released. | src/game/core/FPSCamera.cpp; _scratch/worker-fps-scroll-unit-context-current/ |
+
+## Next hourly batch: verified zero-initialization pattern investigations
+
+These scopes use the demonstrated ordinary memset pattern only when native
+array extent, writes and lifetime support it. No worker may broaden zeroing to
+padding, neighboring fields or conditionally initialized storage. Recover prior
+budgets before proposing one explicitly bounded trial; wait for coordinator
+approval before compiling any exhausted target. Positive results after the PR755
+cutoff remain private for the next hourly batch.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode constructor, `_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE` and C2 alias | decomp_achievements | ASSIGNED | Pending832B; investigate native eight-child pointer zeroing with proven32B Mission pattern, no compile until justified and approved. | src/game/rendering/GS3DStuff.cpp; _scratch/worker-octree-child-initialization-current/ |
+| libsanangeles.so | 0x003295a5 | MiniMap::MiniMap(ASprite*,int,int,int,int), `_ZN7MiniMapC1EP7ASpriteiiii` and C2 alias | decomp_npc_hostility | ASSIGNED | Pending212B; investigate genuine16B unknown80 array zeroing and prior store-source forms. No field or flag permutations. | src/game/hud/MiniMap.cpp; _scratch/worker-minimap-zero-initialization-current/ |
+| libsanangeles.so | 0x00326581 | AnalogStick::AnalogStick(ASprite*,int,int), `_ZN11AnalogStickC1EP7ASpriteii` and C2 alias | decomp_running_command | ASSIGNED | Pending360B; investigate genuine16B unknown84 zeroing; prior first187B already exact, so stop if no plausible new source/API effect on residual. | src/game/input/AnalogStick.cpp; _scratch/worker-analog-zero-initialization-current/ |

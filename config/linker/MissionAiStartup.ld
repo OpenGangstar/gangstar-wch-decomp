@@ -25,6 +25,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+ .mission_constructor 0x003360c0 : { *ai-startup-mission.o(.text._ZN7MissionC1Ev .text._ZN7MissionC2Ev) }
     .mission_draw 0x0033620c : { *ai-startup-mission.o(.text._ZN7Mission4drawEv) }
     .mission_start 0x003363d0 : { *ai-startup-mission.o(.text._ZN7Mission5startEii) }
     .mission_load 0x00335e60 : { *ai-startup-mission.o(.text._ZN7Mission4loadEPKc) }
@@ -90,3 +91,7 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+
+ASSERT(ADDR(.mission_constructor)==0x003360c0,"Mission ctor native start");
+ASSERT(SIZEOF(.mission_constructor)==128,"Mission ctor native128 extent");
+ASSERT(ADDR(.mission_constructor)+SIZEOF(.mission_constructor)==0x00336140,"Mission ctor actual next compiled neighbor");

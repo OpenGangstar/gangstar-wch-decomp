@@ -266,6 +266,17 @@ Mission::~Mission()
     delete introSprite;
 }
 
+Mission::Mission()
+    : currentMissionId(-1), unknown8(-1), unknown12(0), unknown16(1),
+      currentMessage(-1), lastObjectiveText(-1), state(0), missions(0),
+      conditionCount(0), lastFailureCause(-1), failures(0),
+      unknown240(false), skipFade(false)
+{
+    introSprite = 0;
+    memset(conditions, 0, sizeof conditions);
+    introSpriteName[0] = '\0';
+}
+
 Rct<int> getFrameModuleRect(ASprite* sprite, int frameIndex, int moduleIndex, int occurrence)
 {
     Rct<int> result(0, 0, 0, 0);

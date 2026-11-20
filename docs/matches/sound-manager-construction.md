@@ -45,8 +45,8 @@ of the later coherent-header integration.
 
 The coordinator independently rebuilt the constructor and both existing sound
 owner profiles after extracting the complete declarations, then ran the final
-combined 191-profile gate. It passed 5,443 functions, 5,353 sections and 181
-regions: all 10,977 comparisons exact, exit 0, all 1,072 inputs stable.
+combined 191-profile gate. It passed 5,445 functions, 5,354 sections and 181
+regions: all 10,980 comparisons exact, exit 0, all 1,072 inputs stable.
 
 Exact constructor comparison lines:
 

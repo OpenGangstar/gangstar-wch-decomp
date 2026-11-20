@@ -3,7 +3,7 @@
 Five additional functions from `PVRTDecompress.cpp` are reconstructed using the
 legacy PVRTC source retained in cocos2d-x commit
 [e4b6a5ef8fcdc99a7ebea606312b67fe4c534b9f](https://github.com/cocos2d/cocos2d-x/blob/e4b6a5ef8fcdc99a7ebea606312b67fe4c534b9f/cocos/base/pvr.cpp).
-The source retains Imagination Technologies Limited's 2000Ã¢â‚¬â€œ2008 copyright
+The source retains Imagination Technologies Limited's 2000ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“2008 copyright
 notice. The exact revision incorporated into the retail game remains unknown;
 this is source reuse supported by complete native byte comparisons, not a
 provenance reclassification. All original catalogue identities remain present.
@@ -124,6 +124,10 @@ totaling 10,977 exact comparisons, exit 0. All 1,072 frozen inputs remain stable
 Only the five verified PVRTC markers and two constructor alias markers are
 removed across the complete batch; official tables are regenerated.
 
-The complete batch reports 349,298/561,716 matched bytes (62.18%), 4,281/4,550
+The complete batch reports 349,554/561,716 matched bytes (62.23%), 4,283/4,550
 functions. Fully Linked is 114,548/561,716 bytes (20.39%), 126/203 units. No
 provenance, original identity or denominator changes occur.
+
+The final hourly batch additionally includes the two Mission constructor aliases.
+Its independent gate passes 191 profiles, 5,445 functions, 5,354 sections and
+181 regions: all 10,980 comparisons exact, with all 1,072 inputs stable.
