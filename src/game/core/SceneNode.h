@@ -98,7 +98,8 @@ public:
     virtual core::matrix4 getRelativeTransformation() const;
     virtual void setRelativeTransformation(const core::matrix4&);
     virtual bool isVisible() const;
-    virtual float getVisibility();
+    // Observed ABI: address of visibility storage; original pointee type unknown.
+    virtual void* getVisibility();
     virtual void setVisible(bool);
     virtual bool isAnimated(ESCENE_NODE_ANIMATION_FLAG) const;
     virtual void setIsAnimated(ESCENE_NODE_ANIMATION_FLAG,bool);
