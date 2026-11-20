@@ -1,0 +1,1036 @@
+--- a/src/game/audio/SoundManager.cpp
++++ b/src/game/audio/SoundManager.cpp
+@@ -25,48 +25,27 @@
+-SoundManager* SoundManager::getInstance()
+-{
+-    if (!s_soundManager)
+-        s_soundManager = new SoundManager;
+-    return s_soundManager;
+-}
+-
+-void SoundManager::clear()
+-{
+-    delete this;
+-    s_soundManager = 0;
+-}
+-
+-void SoundManager::toggleSound()
+-{
+-    if (flags & 2)
+-        unInit();
+-    else
+-        init();
+-}
+-
+-void SoundManager::init()
+-{
+-    if (!(flags & 2))
+-        flags |= 2;
+-}
+-
+-void SoundManager::unInit() {}
+-void SoundManager::useIPodRadio() {}
+-void SoundManager::useBuiltInRadio() { flags &= ~32u; }
+-bool SoundManager::canUseIPod() const { return false; }
+-void SoundManager::initIPod() {}
+-void SoundManager::cleanupIPod() {}
+-bool SoundManager::iPodIsInitialized() const { return false; }
+-int SoundManager::getPlaylistCount() const { return -1; }
+-void SoundManager::getPlaylistName(int, char*) const {}
+-int SoundManager::getPlaylistIndexFromString(const char*) const { return -1; }
+-int SoundManager::getCurPlaylist() const { return -1; }
+-void SoundManager::setPlaylist(int) {}
+-void SoundManager::setListenerPos(const irr::core::vector3d<float>&,
+-                                  const irr::core::vector3d<float>&,
+-                                  const irr::core::vector3d<float>&) {}
+-int SoundManager::_getSoundId(int resourceId) { return resourceId - resourceIdBase; }
+-int SoundManager::_getResId(int soundId) { return soundId + resourceIdBase; }
+-int SoundManager::_getSoundType(int soundId) { return soundEntries[soundId].type; }
+-void SoundManager::disableMusic() { flags |= 256; }
+-void SoundManager::enableMusic() { flags &= ~256u; }
+-int SoundManager::getNumRadioStations() const { return radio.stationCount; }
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
+@@ -82 +61,160 @@
+-void SoundManager::playLowFpsMusic(int id, bool loop)
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++namespace irr { namespace core {
++template<class Scalar, class T>
++vector3d<T> operator*(Scalar scalar, const vector3d<T>& vector) __attribute__((weak));
++} }
++
++
++
++
++
++
++
++
++
++
++
++
++
++int SoundManager::s_soundsPlaying;
++
++
++
++
++
++
++
++
++
++
++
++const int SoundManager::s_playFreqs[3] = {3, 1, 2};
++
++
++
++
++
++
++
++
++
++
++
++
++
++extern bool bIsInCutscene;
++
++
++
++
++
++void operator delete(void*) throw();
++extern "C" {
++static void __tcf_2() __attribute__((used));
++}
++
++extern void* __dso_handle;
++extern "C" {
++int __aeabi_atexit(void*, void (*)(void*), void*);
++void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
++}
++
++static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
++
++
++extern "C" {
++static void _GLOBAL__I__ZN12SoundManager15s_soundsPlayingE() __attribute__((used));
++
++}
++
++extern "C" {
++
++}
++
++extern "C" void* memset(void*, int, unsigned int);
++#include "SoundBuffersPool.h"
++#include "CSoundDecoderPCM.h"
++#include "CSoundDecoderMSADPCM.h"
++#include "StaticSoundPool.h"
++#include "StreamingSoundPool.h"
++#include "StreamingSound.h"
++extern "C" int strncmp(const char*,const char*,unsigned int);
++extern "C" int strcmp(const char*,const char*);
++extern "C" const char* strrchr(const char*,int);
++static const char memorySoundPrefix[] __attribute__((section(".rodata.memorySoundPrefix")))="mem_";
++static const char musicSoundPrefix[] __attribute__((section(".rodata.musicSoundPrefix")))="m_";
++static const char swavSuffix[] __attribute__((section(".rodata.swavSuffix")))="_swav";
++static const char wavSuffix[] __attribute__((section(".rodata.wavSuffix")))="_wav";
++
++
++
++void soundEndCallback();
++SoundManager* SoundManager::getInstance()
++{
++    if (!s_soundManager)
++        s_soundManager = new SoundManager;
++    return s_soundManager;
++}
++
++void SoundManager::clear()
++{
++    delete this;
++    s_soundManager = 0;
++}
++
++void SoundManager::init()
++{
++    if (!(flags & 2))
++        flags |= 2;
++}
++
++void SoundManager::unInit() {}
++
++void SoundManager::toggleSound()
+@@ -85 +223,3 @@
+-        nativePlaySoundBig(id, playbackVolume, loop);
++        unInit();
++    else
++        init();
+@@ -109,13 +249,140 @@
+-void SoundManager::resumeLowFpsMusic()
+-{
+-    if ((flags & 2) && lowFpsSound && lowFpsSound->GetStatus() == 1)
+-        lowFpsSound->Resume();
+-}
+-
+-bool SoundManager::isLowFpsMusicPlaying() const
+-{
+-    if (lowFpsSound && (lowFpsSound->GetStatus() == 0 || lowFpsSound->GetStatus() == 1)) {
+-        lowFpsSound->GetStatus();
+-        return true;
+-    }
+-    return false;
++void SoundManager::useIPodRadio() {}
++
++void SoundManager::useBuiltInRadio() { flags &= ~32u; }
++
++bool SoundManager::canUseIPod() const { return false; }
++
++void SoundManager::initIPod() {}
++
++void SoundManager::cleanupIPod() {}
++
++bool SoundManager::iPodIsInitialized() const { return false; }
++
++int SoundManager::getPlaylistCount() const { return -1; }
++
++void SoundManager::getPlaylistName(int, char*) const {}
++
++int SoundManager::getPlaylistIndexFromString(const char*) const { return -1; }
++
++int SoundManager::getCurPlaylist() const { return -1; }
++
++void SoundManager::setPlaylist(int) {}
++
++void SoundManager::setListenerPos(const irr::core::vector3d<float>&,
++                                  const irr::core::vector3d<float>&,
++                                  const irr::core::vector3d<float>&) {}
++
++int SoundManager::getNumberOfAllocatedSounds()
++{
++    int count = 0;
++    for (int id = 0; id < soundCount; ++id)
++        for (int channel = 0; channel < 4; ++channel)
++            if (soundSlots[id][channel])
++                ++count;
++    return count;
++}
++
++int SoundManager::_getSoundId(int resourceId) { return resourceId - resourceIdBase; }
++
++int SoundManager::_getResId(int soundId) { return soundId + resourceIdBase; }
++
++int SoundManager::_getSoundType(int soundId) { return soundEntries[soundId].type; }
++
++void SoundManager::disableMusic() { flags |= 256; }
++
++void SoundManager::enableMusic() { flags &= ~256u; }
++
++void SoundManager::_resetFrequencies()
++{
++    int index = 0;
++    int end = s_playFreqs[0];
++    for (; index < end; ++index)
++        trackFrequencies[index] = 0;
++    end += s_playFreqs[1];
++    for (; index < end; ++index)
++        trackFrequencies[index] = 1;
++    end += s_playFreqs[2];
++    for (; index < end; ++index)
++        trackFrequencies[index] = 2;
++    frequenciesRemaining = frequencyCount;
++}
++
++void SoundManager::setPitch(int resourceId, int channel, float pitch)
++{
++    if (flags & 2) {
++        int soundId = _getSoundId(resourceId);
++        CSound* sound = soundSlots[soundId][channel];
++        if (sound)
++            sound->SetPitch(pitch);
++    }
++}
++
++void SoundManager::setSourcePos(int resourceId, int channel,
++                                const irr::core::vector3d<float>& position)
++{
++    if (flags & 2) {
++        int soundId = _getSoundId(resourceId);
++        CSound* sound = soundSlots[soundId][channel];
++        if (sound)
++            sound->SetPosition(position);
++    }
++}
++
++bool SoundManager::isRestrictedSfx(int id) const
++{
++    return id == 241 || id == 123 || id == 106 || id == 119 ||
++           id == 111 || id == 103 || id == 167 || id == 159 ||
++           id == 157 || id == 168 || id == 163 || id == 165 ||
++           id == 160 || id == 158 || id == 164 || id == 162 ||
++           id == 161 || id == 166 || id == 180 || id == 173 ||
++           id == 174 || id == 181 || id == 169 || id == 170 ||
++           id == 177 || id == 179 || id == 172 || id == 171 ||
++           id == 178 || id == 176 || id == 190 || id == 182 ||
++           id == 186 || id == 183 || id == 191 || id == 187 ||
++           id == 189 || id == 192 || id == 193 || id == 184 ||
++           id == 185 || id == 188 || id == 197 || id == 208 ||
++           id == 203 || id == 209 || id == 199 || id == 205 ||
++           id == 194 || id == 198 || id == 195 || id == 206 ||
++           id == 202;
++}
++
++irr::core::vector3d<float> SoundManager::convertVisual3DToSound3D(
++    const irr::core::vector3d<float>& position)
++{
++    return 0.01f * position;
++}
++
++int SoundManager::playEx(int id, const irr::core::vector3d<float>*, bool loop,
++                          float volume, int, bool, float, void (*)())
++{
++    if (flags & 2) {
++        float gain;
++        if (soundEntries[id].type & 0x400000)
++            gain = volume * playbackVolume;
++        else
++            gain = volume * effectsPlaybackVolume;
++        nativePlaySoundBig(id, gain, loop);
++    }
++    return true;
++}
++
++void SoundManager::playLowFpsMusic(int id, bool loop)
++{
++    if (flags & 2)
++        nativePlaySoundBig(id, playbackVolume, loop);
++}
++
++void SoundManager::setSfxVolume(float volume)
++{
++    if (volume < 0.0f)
++        effectsPlaybackVolume = 0.0f;
++    else if (volume > 1.0f)
++        effectsPlaybackVolume = 1.0f;
++    else
++        effectsPlaybackVolume = volume;
++
++    if (flags & 2) {
++        for (int id = 0; id < soundCount; ++id)
++            if (!(soundEntries[id].type & 0x400000))
++                nativeSetVolumeBig(id, effectsPlaybackVolume);
++    }
+@@ -128,95 +394,0 @@
+-}
+-
+-void SoundManager::stopAllMusic()
+-{
+-    if (flags & 2)
+-        nativeStopAllSounds();
+-}
+-
+-void SoundManager::stopAllSounds()
+-{
+-    if (flags & 2)
+-        nativeStopAllSounds();
+-}
+-
+-void SoundManager::pauseAllSounds()
+-{
+-    if (flags & 2) {
+-        flags |= 128;
+-        nativeStopAllSounds();
+-    }
+-}
+-
+-void SoundManager::stopLowFpsMusic()
+-{
+-    if (flags & 2)
+-        nativeStopAllSounds();
+-}
+-
+-void SoundManager::stop(int id, int, int)
+-{
+-    if (flags & 2)
+-        nativeStopSoundBig(id);
+-}
+-
+-void SoundManager::resume(int id)
+-{
+-    if (flags & 2)
+-        nativeResumeSoundBig(id);
+-}
+-
+-void SoundManager::pause(int id)
+-{
+-    if (flags & 2)
+-        nativePauseSoundBig(id);
+-}
+-
+-void SoundManager::playRadio(int station)
+-{
+-    if (!(flags & 1)) {
+-        if (station != -1)
+-            radioStation = station;
+-        radioTrack = _getRadioTrack(radioStation);
+-        nativePlaySoundBig(radioTrack, playbackVolume, false);
+-        flags |= 1;
+-    }
+-}
+-
+-void SoundManager::stopRadio()
+-{
+-    if (flags & 1) {
+-        stop(radioTrack, soundEntries[radioTrack].channel, 2000);
+-        flags &= ~1u;
+-    }
+-}
+-
+-void SoundManager::changeRadioStation(int station)
+-{
+-    if (flags & 1) {
+-        stop(radioTrack, soundEntries[radioTrack].channel, 0);
+-        radioTrack = 124;
+-        unknown140 = true;
+-        playEx(124, 0, false, 1.0f, 2000, true, 1.0f, 0);
+-        unknown140 = false;
+-        radioStation = station;
+-    }
+-}
+-
+-void SoundManager::lastRadioStation()
+-{
+-    if (flags & 1) {
+-        int station = radioStation - 1;
+-        if (station < 0)
+-            station = radio.stationCount - 1;
+-        changeRadioStation(station);
+-    }
+-}
+-
+-void SoundManager::nextRadioStation()
+-{
+-    if (flags & 1) {
+-        int station = radioStation + 1;
+-        if (station >= radio.stationCount)
+-            station = 0;
+-        changeRadioStation(station);
+-    }
+@@ -236,10 +407,0 @@
+-}
+-
+-int SoundManager::getNumberOfAllocatedSounds()
+-{
+-    int count = 0;
+-    for (int id = 0; id < soundCount; ++id)
+-        for (int channel = 0; channel < 4; ++channel)
+-            if (soundSlots[id][channel])
+-                ++count;
+-    return count;
+@@ -264,73 +426,22 @@
+-void SoundManager::setPitch(int resourceId, int channel, float pitch)
+-{
+-    if (flags & 2) {
+-        int soundId = _getSoundId(resourceId);
+-        CSound* sound = soundSlots[soundId][channel];
+-        if (sound)
+-            sound->SetPitch(pitch);
+-    }
+-}
+-
+-void SoundManager::setSourcePos(int resourceId, int channel,
+-                                const irr::core::vector3d<float>& position)
+-{
+-    if (flags & 2) {
+-        int soundId = _getSoundId(resourceId);
+-        CSound* sound = soundSlots[soundId][channel];
+-        if (sound)
+-            sound->SetPosition(position);
+-    }
+-}
+-
+-namespace irr { namespace core {
+-template<class Scalar, class T>
+-vector3d<T> operator*(Scalar scalar, const vector3d<T>& vector) __attribute__((weak));
+-} }
+-
+-irr::core::vector3d<float> SoundManager::convertVisual3DToSound3D(
+-    const irr::core::vector3d<float>& position)
+-{
+-    return 0.01f * position;
+-}
+-
+-int SoundManager::playEx(int id, const irr::core::vector3d<float>*, bool loop,
+-                          float volume, int, bool, float, void (*)())
+-{
+-    if (flags & 2) {
+-        float gain;
+-        if (soundEntries[id].type & 0x400000)
+-            gain = volume * playbackVolume;
+-        else
+-            gain = volume * effectsPlaybackVolume;
+-        nativePlaySoundBig(id, gain, loop);
+-    }
+-    return true;
+-}
+-
+-void SoundManager::setPitchCallback(int id, int channel, float pitch)
+-{
+-    if (channel >= 0)
+-        getInstance()->setPitch(id, channel, pitch);
+-}
+-
+-void SoundManager::setVolumeCallback(int id, int channel, float volume)
+-{
+-    if (channel >= 0) {
+-        SoundManager* manager = getInstance();
+-        float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
+-        manager->setVolume(id, channel, gain);
+-    }
+-}
+-
+-void SoundManager::stopSoundCallback(int id, int channel)
+-{
+-    if (channel >= 0) {
+-        getInstance()->setVolume(id, channel, 0.0f);
+-        getInstance()->stop(id, channel, 0);
+-    }
+-}
+-
+-bool SoundManager::isSoundPlayingCallback(int id, int channel)
+-{
+-    if (channel >= 0)
+-        return getInstance()->isSoundPlaying(id, channel);
++int SoundManager::getNumberOfPlayingSounds()
++{
++    int count = 0;
++    if (flags & 2) {
++        for (int id = 0; id < soundCount; ++id) {
++            for (int channel = 0; channel < 4; ++channel) {
++                CSound** channels = soundSlots[id];
++                CSound* sound = channels[channel];
++                if (sound && sound->GetStatus() != 4)
++                    ++count;
++            }
++        }
++    }
++    return count;
++}
++
++bool SoundManager::isLowFpsMusicPlaying() const
++{
++    if (lowFpsSound && (lowFpsSound->GetStatus() == 0 || lowFpsSound->GetStatus() == 1)) {
++        lowFpsSound->GetStatus();
++        return true;
++    }
+@@ -340,23 +451,49 @@
+-int SoundManager::s_soundsPlaying;
+-
+-void soundEndCallback()
+-{
+-    if (SoundManager::s_soundsPlaying > 0)
+-        SoundManager::getInstance()->endCutscene();
+-}
+-
+-int SoundManager::playSoundCallback(int id, bool loop, float volume, float pitch)
+-{
+-    SoundManager* manager = getInstance();
+-    float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
+-    return manager->playEx(id, 0, loop, gain, 0, pitch != 0.0f, 1.0f, 0);
+-}
+-
+-SoundManager::~SoundManager()
+-{
+-    unInit();
+-    delete[] soundEntries;
+-    for (int i = 0; i < 4; ++i)
+-        delete[] soundSlots[i];
+-    delete[] soundSlots;
+-    delete[] trackFrequencies;
++void SoundManager::setMusicVolume(float volume)
++{
++    if (volume < 0.0f)
++        playbackVolume = 0.0f;
++    else if (volume > 1.0f)
++        playbackVolume = 1.0f;
++    else
++        playbackVolume = volume;
++
++    if (flags & 2) {
++        for (int id = 0; id < soundCount; ++id)
++            if (soundEntries[id].type & 0x400000)
++                nativeSetVolumeBig(id, playbackVolume);
++        if (isLowFpsMusicPlaying())
++            setLowFpsMusicVolume(playbackVolume);
++    }
++}
++
++void SoundManager::resumeLowFpsMusic()
++{
++    if ((flags & 2) && lowFpsSound && lowFpsSound->GetStatus() == 1)
++        lowFpsSound->Resume();
++}
++
++void SoundManager::resumeAllSounds()
++{
++    if (flags & 2) {
++        flags &= ~128u;
++        resumeLowFpsMusic();
++        for (int id = 0; id < soundCount; ++id) {
++            if (id != radioTrack) {
++                for (int channel = 0; channel < 4; ++channel) {
++                    CSound* sound = soundSlots[id][channel];
++                    if (sound) {
++                        if ((soundEntries[id].type & 0x400000) && (flags & 256))
++                            sound->Stop(0);
++                        else if (sound->GetStatus() == 1)
++                            soundSlots[id][channel]->Resume();
++                    }
++                }
++            }
++        }
++        if ((flags & 1) && !(flags & 256)) {
++            if (flags & 64)
++                flags &= ~64u;
++        } else {
++            flags &= ~64u;
++        }
++    }
+@@ -402,21 +539,9 @@
+-void SoundManager::_resetFrequencies()
+-{
+-    int index = 0;
+-    int end = s_playFreqs[0];
+-    for (; index < end; ++index)
+-        trackFrequencies[index] = 0;
+-    end += s_playFreqs[1];
+-    for (; index < end; ++index)
+-        trackFrequencies[index] = 1;
+-    end += s_playFreqs[2];
+-    for (; index < end; ++index)
+-        trackFrequencies[index] = 2;
+-    frequenciesRemaining = frequencyCount;
+-}
+-
+-const int SoundManager::s_playFreqs[3] = {3, 1, 2};
+-
+-int SoundManager::playPriorityAudio(int id, bool loop)
+-{
+-    getInstance()->beginCutscene();
+-    return getInstance()->playEx(id, 0, loop, 1.0f, 0, true, 1.0f, soundEndCallback);
++void SoundManager::playRadio(int station)
++{
++    if (!(flags & 1)) {
++        if (station != -1)
++            radioStation = station;
++        radioTrack = _getRadioTrack(radioStation);
++        nativePlaySoundBig(radioTrack, playbackVolume, false);
++        flags |= 1;
++    }
+@@ -462,53 +587,39 @@
+-void SoundManager::setSfxVolume(float volume)
+-{
+-    if (volume < 0.0f)
+-        effectsPlaybackVolume = 0.0f;
+-    else if (volume > 1.0f)
+-        effectsPlaybackVolume = 1.0f;
+-    else
+-        effectsPlaybackVolume = volume;
+-
+-    if (flags & 2) {
+-        for (int id = 0; id < soundCount; ++id)
+-            if (!(soundEntries[id].type & 0x400000))
+-                nativeSetVolumeBig(id, effectsPlaybackVolume);
+-    }
+-}
+-
+-void SoundManager::setMusicVolume(float volume)
+-{
+-    if (volume < 0.0f)
+-        playbackVolume = 0.0f;
+-    else if (volume > 1.0f)
+-        playbackVolume = 1.0f;
+-    else
+-        playbackVolume = volume;
+-
+-    if (flags & 2) {
+-        for (int id = 0; id < soundCount; ++id)
+-            if (soundEntries[id].type & 0x400000)
+-                nativeSetVolumeBig(id, playbackVolume);
+-        if (isLowFpsMusicPlaying())
+-            setLowFpsMusicVolume(playbackVolume);
+-    }
+-}
+-
+-bool SoundManager::isRestrictedSfx(int id) const
+-{
+-    return id == 241 || id == 123 || id == 106 || id == 119 ||
+-           id == 111 || id == 103 || id == 167 || id == 159 ||
+-           id == 157 || id == 168 || id == 163 || id == 165 ||
+-           id == 160 || id == 158 || id == 164 || id == 162 ||
+-           id == 161 || id == 166 || id == 180 || id == 173 ||
+-           id == 174 || id == 181 || id == 169 || id == 170 ||
+-           id == 177 || id == 179 || id == 172 || id == 171 ||
+-           id == 178 || id == 176 || id == 190 || id == 182 ||
+-           id == 186 || id == 183 || id == 191 || id == 187 ||
+-           id == 189 || id == 192 || id == 193 || id == 184 ||
+-           id == 185 || id == 188 || id == 197 || id == 208 ||
+-           id == 203 || id == 209 || id == 199 || id == 205 ||
+-           id == 194 || id == 198 || id == 195 || id == 206 ||
+-           id == 202;
+-}
+-
+-extern bool bIsInCutscene;
++void SoundManager::stopAllMusic()
++{
++    if (flags & 2)
++        nativeStopAllSounds();
++}
++
++void SoundManager::stopAllSounds()
++{
++    if (flags & 2)
++        nativeStopAllSounds();
++}
++
++void SoundManager::pauseAllSounds()
++{
++    if (flags & 2) {
++        flags |= 128;
++        nativeStopAllSounds();
++    }
++}
++
++void SoundManager::stopLowFpsMusic()
++{
++    if (flags & 2)
++        nativeStopAllSounds();
++}
++
++void SoundManager::stop(int id, int, int)
++{
++    if (flags & 2)
++        nativeStopSoundBig(id);
++}
++
++void SoundManager::stopRadio()
++{
++    if (flags & 1) {
++        stop(radioTrack, soundEntries[radioTrack].channel, 2000);
++        flags &= ~1u;
++    }
++}
+@@ -534,28 +645,14 @@
+-void SoundManager::resumeAllSounds()
+-{
+-    if (flags & 2) {
+-        flags &= ~128u;
+-        resumeLowFpsMusic();
+-        for (int id = 0; id < soundCount; ++id) {
+-            if (id != radioTrack) {
+-                for (int channel = 0; channel < 4; ++channel) {
+-                    CSound* sound = soundSlots[id][channel];
+-                    if (sound) {
+-                        if ((soundEntries[id].type & 0x400000) && (flags & 256))
+-                            sound->Stop(0);
+-                        else if (sound->GetStatus() == 1)
+-                            soundSlots[id][channel]->Resume();
+-                    }
+-                }
+-            }
+-        }
+-        if ((flags & 1) && !(flags & 256)) {
+-            if (flags & 64)
+-                flags &= ~64u;
+-        } else {
+-            flags &= ~64u;
+-        }
+-    }
+-}
+-
+-void operator delete(void*) throw();
++void SoundManager::resume(int id)
++{
++    if (flags & 2)
++        nativeResumeSoundBig(id);
++}
++
++void SoundManager::pause(int id)
++{
++    if (flags & 2)
++        nativePauseSoundBig(id);
++}
++
++int SoundManager::getNumRadioStations() const { return radio.stationCount; }
++
+@@ -563,26 +659,0 @@
+-static void __tcf_2() __attribute__((used));
+-}
+-
+-extern void* __dso_handle;
+-extern "C" {
+-int __aeabi_atexit(void*, void (*)(void*), void*);
+-void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
+-}
+-
+-static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
+-static void __static_initialization_and_destruction_0(int initialize, int priority)
+-{
+-    if (initialize == 1 && priority == 65535) {
+-        irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
+-        value.array = 0;
+-        value.allocated = 0;
+-        value.used = 0;
+-        value.reference = false;
+-        _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(&value, localStartupEmptyText);
+-        __aeabi_atexit(0, reinterpret_cast<void (*)(void*)>(__tcf_2), &__dso_handle);
+-        new (irr::ps::vHalf) irr::ps::LocalVector3(0.5f, 0.5f, 0.5f);
+-    }
+-}
+-
+-extern "C" {
+-static void _GLOBAL__I__ZN12SoundManager15s_soundsPlayingE() __attribute__((used));
+@@ -594,24 +664,0 @@
+-
+-extern "C" {
+-static void __tcf_2()
+-{
+-    irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
+-    if (!value.reference && value.array && value.array != value.inlineBuffer)
+-        ::operator delete(value.array);
+-}
+-}
+-
+-extern "C" void* memset(void*, int, unsigned int);
+-#include "SoundBuffersPool.h"
+-#include "CSoundDecoderPCM.h"
+-#include "CSoundDecoderMSADPCM.h"
+-#include "StaticSoundPool.h"
+-#include "StreamingSoundPool.h"
+-#include "StreamingSound.h"
+-extern "C" int strncmp(const char*,const char*,unsigned int);
+-extern "C" int strcmp(const char*,const char*);
+-extern "C" const char* strrchr(const char*,int);
+-static const char memorySoundPrefix[] __attribute__((section(".rodata.memorySoundPrefix")))="mem_";
+-static const char musicSoundPrefix[] __attribute__((section(".rodata.musicSoundPrefix")))="m_";
+-static const char swavSuffix[] __attribute__((section(".rodata.swavSuffix")))="_swav";
+-static const char wavSuffix[] __attribute__((section(".rodata.wavSuffix")))="_wav";
+@@ -659,0 +707,114 @@
++
++int SoundManager::playPriorityAudio(int id, bool loop)
++{
++    getInstance()->beginCutscene();
++    return getInstance()->playEx(id, 0, loop, 1.0f, 0, true, 1.0f, soundEndCallback);
++}
++
++void soundEndCallback()
++{
++    if (SoundManager::s_soundsPlaying > 0)
++        SoundManager::getInstance()->endCutscene();
++}
++
++static void __static_initialization_and_destruction_0(int initialize, int priority)
++{
++    if (initialize == 1 && priority == 65535) {
++        irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
++        value.array = 0;
++        value.allocated = 0;
++        value.used = 0;
++        value.reference = false;
++        _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(&value, localStartupEmptyText);
++        __aeabi_atexit(0, reinterpret_cast<void (*)(void*)>(__tcf_2), &__dso_handle);
++        new (irr::ps::vHalf) irr::ps::LocalVector3(0.5f, 0.5f, 0.5f);
++    }
++}
++
++void SoundManager::setPitchCallback(int id, int channel, float pitch)
++{
++    if (channel >= 0)
++        getInstance()->setPitch(id, channel, pitch);
++}
++
++void SoundManager::setVolumeCallback(int id, int channel, float volume)
++{
++    if (channel >= 0) {
++        SoundManager* manager = getInstance();
++        float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
++        manager->setVolume(id, channel, gain);
++    }
++}
++
++void SoundManager::stopSoundCallback(int id, int channel)
++{
++    if (channel >= 0) {
++        getInstance()->setVolume(id, channel, 0.0f);
++        getInstance()->stop(id, channel, 0);
++    }
++}
++
++int SoundManager::playSoundCallback(int id, bool loop, float volume, float pitch)
++{
++    SoundManager* manager = getInstance();
++    float gain = volume * 0.01f * getInstance()->effectsPlaybackVolume;
++    return manager->playEx(id, 0, loop, gain, 0, pitch != 0.0f, 1.0f, 0);
++}
++
++bool SoundManager::isSoundPlayingCallback(int id, int channel)
++{
++    if (channel >= 0)
++        return getInstance()->isSoundPlaying(id, channel);
++    return false;
++}
++
++extern "C" {
++static void __tcf_2()
++{
++    irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
++    if (!value.reference && value.array && value.array != value.inlineBuffer)
++        ::operator delete(value.array);
++}
++}
++
++void SoundManager::changeRadioStation(int station)
++{
++    if (flags & 1) {
++        stop(radioTrack, soundEntries[radioTrack].channel, 0);
++        radioTrack = 124;
++        unknown140 = true;
++        playEx(124, 0, false, 1.0f, 2000, true, 1.0f, 0);
++        unknown140 = false;
++        radioStation = station;
++    }
++}
++
++void SoundManager::lastRadioStation()
++{
++    if (flags & 1) {
++        int station = radioStation - 1;
++        if (station < 0)
++            station = radio.stationCount - 1;
++        changeRadioStation(station);
++    }
++}
++
++void SoundManager::nextRadioStation()
++{
++    if (flags & 1) {
++        int station = radioStation + 1;
++        if (station >= radio.stationCount)
++            station = 0;
++        changeRadioStation(station);
++    }
++}
++
++SoundManager::~SoundManager()
++{
++    unInit();
++    delete[] soundEntries;
++    for (int i = 0; i < 4; ++i)
++        delete[] soundSlots[i];
++    delete[] soundSlots;
++    delete[] trackFrequencies;
++}
+--- a/src/game/audio/SoundManager.h
++++ b/src/game/audio/SoundManager.h
+@@ -128,0 +129,2 @@
++public:
++    int getNumberOfPlayingSounds();
+--- a/src/game/ui/MenuManager.cpp
++++ b/src/game/ui/MenuManager.cpp
+@@ -412,0 +413 @@
++    int index = 0;
+@@ -414 +415 @@
+-    for (int index = 0; index < 32; ++index) {
++    for (; index < 32; ++index) {
+--- a/config/matches/sdk-startup-soundmanager.json
++++ b/config/matches/sdk-startup-soundmanager.json
+@@ -28,0 +29 @@
++        "_ZN12SoundManager24getNumberOfPlayingSoundsEv",
+@@ -112,0 +114 @@
++        ".sound_playing_count",
+--- a/config/linker/SoundManagerSdkStartup.ld
++++ b/config/linker/SoundManagerSdkStartup.ld
+@@ -19,0 +20 @@
++ .sound_playing_count 0x00352cac : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager24getNumberOfPlayingSoundsEv) }
+@@ -113,0 +115,4 @@
++
++ASSERT(ADDR(.sound_playing_count)==0x00352cac,"count native start");
++ASSERT(SIZEOF(.sound_playing_count)==80,"count native full80 extent");
++ASSERT(ADDR(.sound_playing_count)+SIZEOF(.sound_playing_count)==0x00352cfc,"count native successor boundary");
