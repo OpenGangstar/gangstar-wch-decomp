@@ -1,0 +1,146 @@
+--- a/src/game/ui/MenuManager.cpp
++++ b/src/game/ui/MenuManager.cpp
+@@ -813,2 +813,50 @@
+     reinterpret_cast<MyMenuFX*>(menuFX)->Render();
+ }
++
++#include "../characters/PlayerTest.h"
++#include "../vehicles/Vehicle.h"
++#include "../core/Rect.h"
++#include "../hud/CHudManager.h"
++#include "../hud/MiniMap.h"
++#include "../characters/AnimObject.h"
++
++void MenuManager::updateMarkers()
++{
++    PlayerTest* player = PlayerTest::GetPlayer();
++    const irr::core::vector3d<float> position = player->GetPosition();
++    float playerX = position.X;
++    float playerY = position.Y;
++    Vehicle* vehicle = player->getVehicle();
++    if (vehicle) {
++        const irr::core::vector3d<float> vehiclePosition = vehicle->GetPosition();
++        playerX = vehiclePosition.X;
++        playerY = vehiclePosition.Y;
++    }
++    Map* map = Map::getInstance();
++    const float minX = map->minX;
++    const float minY = map->minY;
++    const float maxX = map->maxX;
++    const float maxY = map->maxY;
++    const float relativeX = (playerX - minX) / (maxX - minX);
++    const float relativeY = (-playerY - minY) / (maxY - minY);
++    irr::core::dimension2d<int> size;
++    Map::getInstance()->getScaledSize(size);
++    const int x = static_cast<int>(static_cast<float>(size.Width) * relativeX);
++    const int y = static_cast<int>(static_cast<float>(size.Height) * relativeY);
++    if (x >= unknown12 && y >= unknown16 && x <= unknown20 && y <= unknown24) {
++        const int offset = mapScreenX - unknown12;
++        TargetMarker* marker = TargetMarker::getInstance();
++        marker->offsetY = y - unknown16;
++        marker->offsetX = offset + x;
++        TargetMarker::getInstance()->setEnabled(true);
++    } else {
++        TargetMarker::getInstance()->setEnabled(false);
++    }
++    MiniMap* minimap = static_cast<MiniMap*>(Application::GetInstance()->GetHudManager()->minimap);
++    for (MiniMap::TrackingLink* link = minimap->trackedObjects.next;
++         link != &minimap->trackedObjects; link = link->next) {
++        MiniMap::TrackingNode* node = static_cast<MiniMap::TrackingNode*>(link);
++        if (node->flag)
++            node->marker->UpdateFrame();
++    }
++}
+--- a/src/game/hud/MenuManager.h
++++ b/src/game/hud/MenuManager.h
+@@ -82,5 +82,6 @@
+     int unknown20;
+     int unknown24;
+-    unsigned char unknown28[12];
++    int mapScreenX;
++    unsigned char unknown32[8];
+     float unknown40;
+     int unknown44;
+--- a/src/game/world/Map.h
++++ b/src/game/world/Map.h
+@@ -18,4 +18,5 @@
+
+ private:
++    friend class MenuManager;
+     enum eMapType { DefaultMap = 1 };
+     void setMap(eMapType type);
+--- a/src/game/hud/TargetMarker.h
++++ b/src/game/hud/TargetMarker.h
+@@ -14,4 +14,5 @@
+
+ private:
++    friend class MenuManager;
+     TargetMarker();
+     ~TargetMarker();
+--- a/src/game/hud/MiniMap.h
++++ b/src/game/hud/MiniMap.h
+@@ -22,4 +22,5 @@
+
+ private:
++    friend class MenuManager;
+     irr::core::position2d<int> _calculateXYOffset(const irr::core::vector3d<float>&, const irr::core::rect<int>&, bool, bool) const;
+     struct TrackingLink {
+--- a/config/matches/menu-manager-helpers.json
++++ b/config/matches/menu-manager-helpers.json
+@@ -45,5 +45,9 @@
+         "_ZN11MenuManager6popAllEb",
+         "_ZN7Structs9CarRental4ReadER10DataStream",
+-        {"name": "__tcf_7", "address": "0x002e62b1", "compiled_name": "__tcf_1"},
++        {
++            "name": "__tcf_7",
++            "address": "0x002e62b1",
++            "compiled_name": "__tcf_1"
++        },
+         "_Z12get_fontfilePKcbbPci",
+         "_Z10StrToLowerPc",
+@@ -118,5 +122,6 @@
+             "address": "0x002e425d",
+             "compiled_name": "__tcf_0"
+-        }
++        },
++        "_ZN11MenuManager13updateMarkersEv"
+     ],
+     "sections": [
+@@ -159,5 +164,6 @@
+         },
+         ".shared_startup_empty_text",
+-        ".map_cleanup"
++        ".map_cleanup",
++        ".menu_update_markers_candidate"
+     ],
+     "retail_got": true,
+@@ -189,5 +195,7 @@
+         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
+         "_ZN3MapC1Ev",
+-        "_ZN3MapD1Ev"
++        "_ZN3MapD1Ev",
++        "_ZN10AnimObject11UpdateFrameEv",
++        "_ZN10PlayerTest9GetPlayerEv"
+     ]
+ }
+--- a/config/linker/MenuManagerHelpers.ld
++++ b/config/linker/MenuManagerHelpers.ld
+@@ -1,2 +1,7 @@
++__aeabi_fsub = 0x001c4328;
++__aeabi_fdiv = 0x001c4520;
++__aeabi_i2f = 0x001c41e4;
++__aeabi_fmul = 0x001c4724;
++__aeabi_f2iz = 0x001c44cc;
+ OUTPUT_FORMAT("elf32-littlearm")
+ OUTPUT_ARCH(arm)
+@@ -19,4 +24,5 @@
+ SECTIONS
+ {
++    .menu_update_markers_candidate 0x002e6948 : { *menu-manager-helpers.o(.text._ZN11MenuManager13updateMarkersEv) }
+     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
+     .map_cleanup 0x2e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
+@@ -78,2 +84,4 @@
+ ASSERT(SIZEOF(.menu_startup_storage_12) == 8, "MenuManager _ZN8gameloft2ai16scripted_vehicleE extent");
+ ASSERT(SIZEOF(.menu_startup_storage_13) == 32, "MenuManager _ZN11MenuManager22s_cheatActivationZonesE extent");
++
++ASSERT(SIZEOF(.menu_update_markers_candidate) <= 360, "updateMarkers must fit its native extent");

@@ -6,6 +6,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 | Binary/library | Address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | ---: | --- |
+| libsanangeles.so | 0x002e3f61 | MenuManager::enableAsianFont(bool) declaration consistency | — | COMPLETED | Existing22B body unchanged; public return corrected void-to-bool to match implementation/nativecaller. Full190profiles/10953comparisons exact,1036stableinputs. No newbytes/status changes; ownership released after coordinator acceptance. | src/game/hud/MenuManager.h; docs/matches/menu-asian-font-return.md |
 | libsanangeles.so | 0x0039324d | Catalogue provenance support: logger/file_util/PVRTC candidates (no decompilation) | — | COMPLETED | The eight proven gameswf entries (494 bytes) are reclassified after coordinator review. All 17,703 identities and post-constructor statuses remain unchanged; no matched or linked bytes are added. PVRTC remains deferred. | tools/provenance.py; docs/PROVENANCE-CORRECTIONS.md |
 | libsanangeles.so | 0x00375375 | Catalogue provenance support: psmodule.c (no decompilation) | — | COMPLETED | The eight pending PSNames entries (1,060 bytes) are correctly classified as FreeType. The existing 280-byte helper is unchanged. All identities, statuses and native inputs are preserved; 102 tests and report audits pass. | tools/provenance.py; docs/PROVENANCE-CORRECTIONS.md |
 | libsanangeles.so | 0x00364bf5 | Catalogue provenance support: ftcache.c (FTC_MruNode_Prepend anchor; no engine decompilation) | — | COMPLETED | Maintainer-approved95-function FreeType correction verified; all17,703 functionidentities/statuses retained, all95 staypending and publicauditlistsall95. Zero matched/linkedbytes added;96tests pass. | tools/provenance.py; tools/layout.py; config/functions.tsv (read-only) |
@@ -473,7 +474,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033fda9 | ScriptManager::tearDown | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand | — | BLOCKED | Separate54 scoped handlers preserve operations; numeric order212B has33 differing function bytes versus141 archived. Full table also fails. Owner143functions133sections1GOT retained. Reviewed unapplied patch, no credit; ownership released, no further ordering forms without new evidence. | src/game/scripting/ScriptManager.cpp; nonmatching/scripting/ScriptManager-cleanCommand.patch |
 | libsanangeles.so | 0x0033fe71 | ScriptManager::draw | — | COMPLETED | 100% | src/game/scripting/ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(State) | — | BLOCKED | One verified NDK enum-width replay is byte-identical to archived unmatched732B; target/section/table fail, existing143functions133sections1GOT pass. See nonmatching/scripting/ScriptManager-setState.md. | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(State) | decomp_running_command | ASSIGNED | Prior canonicalenum replay unchanged732B. New assignment is native semantic call/store/global/sentinel audit first; compile only after actualcausal discrepancy, no repeated oldordering/flags grid. Private mirror only. | src/game/scripting/ScriptManager.cpp; _scratch/worker-manager-set-state-current |
 | libsanangeles.so | 0x0033f511 | ScriptManager::update(int) | — | BLOCKED | Reviewed current-header replay:1228/native1220B, raw object equals archive with71 identical semantic relocations. Strict fixed native startup overlap rejects link, exit2; old moved-startup image is not closure. No credit. | _scratch/worker-script-update-current/README.md; src/game/scripting/ScriptManager.cpp |
 | libsanangeles.so | 0x00339385 | Script destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003392a1 | Script constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/scripting/Script.cpp |
@@ -482,7 +483,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0033922d | Script::setState(State, PlayerTest::eContext) | — | COMPLETED | 100%; exact 58-byte executable and full 60-byte section under original NDK enum-width baseline. Full root190/10951 proof passes; no existing body changes. | src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction(LevelObject*, eScriptAction) | — | BLOCKED | Reviewed authentic iterator/find reuse:128/native136B,98 overlapping differences plus8 missing bytes. Three complete raw outputs/semantic relocations identical; old27functions/12sections/1GOT region exact,885inputs stable. No credit. | _scratch/worker-unset-action-current/README.md; src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x0033ce19 | Script::nextCommand(int) | — | BLOCKED | Reviewed current-interface254/native252B object identical archive; strict256B section overlap, exit2. All4native callers ignore return, so bool vsint unproven; declarations stayprivate. Targeted declaration-only317 comparisons exact, no new game credit. | _scratch/worker-next-command-current/README.md; src/game/scripting/Script.cpp |
-| libsanangeles.so | 0x003399f1 | Script::rewind() | decomp_running_command | IN_PROGRESS | Coordinator confirmed pending656B native marker; previous owner no longer live. Recover priorledger before bounded reuse of real Script/state/container interfaces, only with new evidence. Private mirror only. | src/game/scripting/Script.cpp; _scratch/worker-script-rewind-current |
+| libsanangeles.so | 0x003399f1 | Script::rewind() | — | BLOCKED | Reviewed real hierarchy/const-key iterator and corrected duplicate virtual call:656/native656B,357 differences. Best native image hash068c75bf..., old27functions/12sections/1GOT exact,885inputs stable. Five forms688/664/656/656/660; no credit or further grid. | _scratch/worker-script-rewind-current/README.md; src/game/scripting/Script.cpp |
 | libsanangeles.so | 0x003365a5 | Mission::idle | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
 | libsanangeles.so | 0x00335d8d | Mission::fail | — | COMPLETED | 100% | src/game/missions/Mission.cpp |
 | libsanangeles.so | 0x00336345 | Mission::message | — | BLOCKED | Reviewed six forms124/120B; extra same-ID timer tail and scheduling remain, current APIs already correct; no new replay evidence | src/game/missions/Mission.cpp |
@@ -549,7 +550,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x00327a71 | Cash::drawCash | — | COMPLETED | 100%; current Application declaration context preserves all bytes and entire Cash object; no source repair. | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a29 | Cash::AlignRight | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327a4d | Cash::AlignLeft | — | COMPLETED | 100% | src/game/ui/Cash.cpp |
-| libsanangeles.so | 0x00327be9 | Cash::draw2d() const | decomp_achievements | IN_PROGRESS | Coordinator confirmed pending324B marker and exact20B thunk. Recover priorledger and current sprite/number-rendering relatives; bounded reuse only with new evidence. Private mirror only. | src/game/ui/Cash.cpp; _scratch/worker-cash-draw-current |
+| libsanangeles.so | 0x00327be9 | Cash::draw2d() const | — | BLOCKED | Reviewed canonical current-layout320/native324B replay, same old sixth object. Diagnostic17oldfunctions/6regions and exact20B ARM thunk preserved;884inputs stable. No further grid or credit. | _scratch/worker-cash-draw-current/REVIEW.md; src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327bd4 | Cash::draw2d non-virtual thunk | — | COMPLETED | 100%; real 20-byte ARM thunk; combined 186-profile native gate exact; parent remains unmatched and uncredited | src/game/ui/Cash.cpp |
 | libsanangeles.so | 0x00327621 | Background destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
 | libsanangeles.so | 0x003275dd | Background deleting destructor (D0) | — | COMPLETED | 100% | src/game/ui/Background.cpp |
@@ -633,7 +634,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e2725 | GSInGameMenu::update | lock_init | BLOCKED | — | src/game/ui/GSInGameMenu.cpp |
 | libsanangeles.so | 0x0032e6f9 | COnFootControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032e76d | COnFootControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
-| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent | lock_init | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent(RenderFX::Event&) | — | BLOCKED | Reviewed real popTo member/current-TU replay:132B unchanged,6 register bytes differ. Old192functions/202regions and2native literals exact;308/239 includingdependency,884inputs stable. No credit or repeatedguardgrid. | _scratch/worker-widget-mission-event-current/REVIEW.md; src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x0032ed5d | COnFootControlHandler::onEvent | — | COMPLETED | 100% | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032e835 | COnFootControlHandler::onKeyboardEvent | vehicle_side | BLOCKED | — | src/game/input/COnFootControlHandler.cpp |
 | libsanangeles.so | 0x0032d945 | CDrivingControlHandler::disableAccelerometer | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
@@ -650,7 +651,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ee811 | Widgets::About::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ec821 | Widgets::MapLegend constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecf0d | Widgets::MapLegend::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ed299 | Widgets::MapLegend::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ed299 | Widgets::MapLegend::OnEvent(RenderFX::Event&) | — | BLOCKED | Reviewed current248/native240B object, same archivedform4; strictlink2. Relocated diagnostic1 rejects targetaddress;192oldfunctions pass,201/202regions, vtable fails real relocatedmethod. No fullclosure or credit;884stableinputs. | _scratch/worker-widget-maplegend-event-current/REVIEW.md; src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002edb61 | Widgets::MapLegend::UpdateLocalization | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ed139 | Widgets::Corruption::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ed1c5 | Widgets::DemoBuy::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -672,10 +673,10 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002ee6ed | Widgets::Controls::UpdateLocalization | — | BLOCKED | Six old292-byte forms; no borrowedname/string/value flow and current HUD fields agree with native widths/choice data. New name chain irrelevant; no replay. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ef901 | Widgets::Objective::OnEvent | — | BLOCKED | Actual Thumb/GOT modes already correct; native duplicates a call that old248 candidate merges, with frame/register differences. Event name is already a pointer; no relevant SDK correction. No replay. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002eeda1 | Widgets::Achievements::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent(RenderFX::Event&) | decomp_achievements | IN_PROGRESS | Coordinator confirmed pending372B marker and widget/Preferences relatives; oldowner no longer live. Recover priorledger, typedAPI reuse only with concrete evidence. Private mirror only. | src/game/ui/MenuWidget.cpp; _scratch/worker-widget-controls-event-current |
 | libsanangeles.so | 0x002ef9fd | Widgets::MainMenu::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent | — | BLOCKED | Two historical six-form waves exhausted; event-name pointer and native singleton/playback call modes already correct. Relocated320-byte diagnostics are not native proof; no new ABI/helper gap. | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent | vehicle_side | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent(RenderFX::Event&) | — | BLOCKED | Reviewed typedAPI372B target,80differences, sameoldbestbytes. Old192functions/202regions exact,884stableinputs; hintsremainunaccepted. Confirmed Asianfont bool declaration inconsistency separately handed to coordinator; no targetcredit. | _scratch/worker-widget-language-event-current/REVIEW.md; src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002f01c5 | Widgets::Volumes::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002f0249 | Widgets::Arrows::OnEvent | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002e33f1 | GSSideMissionMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSSideMissionMenu.cpp |
@@ -703,11 +704,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002e6149 | MenuManager::tearDown | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c089 | DataReloaderManager::monitorFiles | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x0034c211 | DataReloaderManager constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint | vehicle_side | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint(vector2df&) | — | BLOCKED | Reviewed typed-Map312/native308B object, strict native fit rejects, builder2; no targetcomparison/closure. Header-only75functions/36regions exact;24model-layout measurements unchanged,884inputs stable. One newform, no credit. | _scratch/worker-position-map-current/REPORT.md; src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c0a1 | DataReloaderManager::_MonitoredFiles destructor | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers | camera_tap | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers() | — | BLOCKED | Reviewed two faithful current-API356/native360B forms, differing only4 raw bytes; frame36/native44 remains. Both old75functions/36regions exact,884stableinputs,28model-layout measurements preserved. No credit or further source grid. | _scratch/worker-update-markers-current/REPORT.md; src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c0c5 | DataReloaderManager destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
-| libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap | vehicle_side | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap(const std::list<Point2D<short>*>&) | — | BLOCKED | Reviewed authentic readonly list-front232/native228B object; strictlink2, no targetimage/bytecomparison/closure. Support-only75functions/36regions exact;31model-layout values unchanged,885stableinputs; no extrahelpers. Oneform, no credit. | _scratch/worker-scroll-map-current/REPORT.md; src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x0034c2e1 | DataReloaderManager deleting destructor (D0) | — | COMPLETED | 100% | src/game/world/DataReloaderManager.cpp |
 | libsanangeles.so | 0x002d3349 | SwfFree | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x002d3355 | IrrFree | — | COMPLETED | 100% | src/game/core/Memory.cpp |
@@ -915,11 +916,11 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x0032a0f9 | MiniMap::draw2d | hud_show | BLOCKED | pending | src/game/hud/MiniMap.cpp |
 | libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset | hud_drawables | BLOCKED | pending | src/game/hud/MiniMap.cpp |
 | libsanangeles.so | 0x002eb45d | Menus::ServiceWeaponShop::Update | hud_registration | BLOCKED | pending | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e6fe1 | MenuManager::updateMap | hud_registration | BLOCKED | pending | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e6fe1 | MenuManager::updateMap() | decomp_npc_hostility | IN_PROGRESS | Coordinator confirmed pending388B marker; priorowner no longer live. Recover priorledger, actualcurrent point/list/map/event interfaces with causal evidence only. Private mirror only. | src/game/ui/MenuManager.cpp; _scratch/worker-menu-update-map-current |
 | libsanangeles.so | 0x002e6ab1 | MenuManager::_drawMap | hud_show | BLOCKED | pending | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002e7165 | MenuManager::initMap | hud_drawables | BLOCKED | pending | src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002e7ac5 | Menus::ServiceWeaponShop::Refresh | hud_registration | BLOCKED | pending | src/game/ui/MenuState.cpp |
-| libsanangeles.so | 0x002e5e4d | MenuManager::preloadGlyphs(bool) | decomp_npc_hostility | IN_PROGRESS | Coordinator confirmed pending460B catalogue/marker and old452B candidate. Recover priorledger, current font/string/glyph interfaces and licensed reference evidence before any bounded replay. Private mirror only. | src/game/ui/MenuManager.cpp; _scratch/worker-preload-glyphs-current |
+| libsanangeles.so | 0x002e5e4d | MenuManager::preloadGlyphs(bool) | — | BLOCKED | Reviewed original const-array subscript reuse:460B caller identical oldv5,8 differences;452 was agreeing-byte count, not extent. Old75functions/36regions+3texts exact,884inputs stable; no credit or further grid. | _scratch/worker-preload-glyphs-current/REPORT.md; src/game/ui/MenuManager.cpp |
 
 Coordinator approved one additional initMap comparison on 2026-11-18: separate the address-taken cosine temporary from the final angle, based on the four identified excess halfword stores/reload. Stop after this single proof and retain the original six-pass evidence.
 
@@ -1299,7 +1300,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | — | BLOCKED | six forms; best9116/9212, native412B frame; old188/112 and all95 header profiles exact; no credit | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | — | BLOCKED | five forms;12384/12636, frame324/332; old/support exact and93 baseline header profiles pass; buffer extent provisional; no credit | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | — | BLOCKED | Reviewed6forms, final12380/native12636B,frame324/332. Native-backed manager/global, evaluationorder,fade-999,WaitKilled901,base-ID constructor fixes retained privately; WaitStolen421 restored after invalid5thform. Oldgraph31functions/28sections/1GOT exact,842stableinputs; not currentrootclosure. No credit. | _scratch/worker-execute-command-current/README.md; src/game/scripting/Script.cpp |
 
 | libsanangeles.so | 0x002d1de1 | Java_com_gameloft_android_GAND_GloftGANG_GLMediaPlayer_nativeSetStopOnMusic | — | COMPLETED | 100%;2B; DEX-proven ABI; coordinator target and full183-profile gate exact | src/game/app/jni_GLMediaPlayer.c |
 
