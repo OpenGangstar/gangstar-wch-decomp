@@ -1,0 +1,16 @@
+{
+  "kind": "print",
+  "actual_size": 528,
+  "build_exit": 1,
+  "inputs": 884,
+  "inputs_stable": true,
+  "credited": false,
+  "functions_passed": 147,
+  "regions_passed": 130,
+  "raw_sha256": "767d6b729f66aef438d51262309e18317b30d2a1b6c01528b2639416b6566dca",
+  "graph": "Current root plus this public patch, independently applied.",
+  "linked_sha256": "550fc9bfa2581681b7cecaa15c5bb196b0cd1cbe0839dfd24e9e3339dd6212e6",
+  "exact_target_output": "MISMATCH  _ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi  0x002de6dd\n  expected : fa 44 91 46 52 46 53 58 03 91 d4 27 1b 68 80 46\n  actual   : fa 44 91 46 52 46 53 58 04 91 d4 27 1b 68 80 46\n  differs at 0x1e\n",
+  "candidate_image": true,
+  "source_sha256": "6d966453f1c5248748140bf654f12dd4f10641bdde1d518bb7f68dea02878b3e"
+}

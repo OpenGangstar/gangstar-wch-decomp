@@ -1,0 +1,92 @@
+--- a/src/game/rendering/GS3DStuff.cpp
++++ b/src/game/rendering/GS3DStuff.cpp
+@@ -1085,2 +1085,45 @@
+ }
+ }
++
++namespace {
++template<unsigned int offset>
++inline unsigned int despawnWord(const LevelObject* object)
++{
++    return *reinterpret_cast<const unsigned int*>(reinterpret_cast<const char*>(object) + offset);
++}
++}
++
++LevelObject* GS3DStuff::checkForDespawn(LevelObject* object)
++{
++    using irr::core::vector3d;
++    if (!(object->unknown4 & 0x490u))
++        return object;
++
++    PlayerTest* player = PlayerTest::GetPlayer();
++    if (LevelObject::s_type[object->objectType] == 5 && !object->isDead()) {
++        const vector3d<float> difference = static_cast<SavePositionInterface&>(*player).GetPosition() - object->GetPosition();
++        if (despawnWord<428>(object) == 3 && (despawnWord<356>(object) & 0x200u) &&
++            static_cast<float>(sqrt(difference.getLengthSQ())) < 15000.0f)
++            return object;
++    }
++    if (LevelObject::s_type[object->objectType] == 3 && !object->isDead()) {
++        const vector3d<float> difference = static_cast<SavePositionInterface&>(*player).GetPosition() - object->GetPosition();
++        if (despawnWord<240>(object) == 3 && (despawnWord<344>(object) & 0x1000u) &&
++            static_cast<float>(sqrt(difference.getLengthSQ())) < 15000.0f)
++            return object;
++        if (object == player->unknown368 || object == player->unknown312 || object == player->unknown316)
++            return object;
++    }
++
++    int distanceSquared = 9000000;
++    const SpawnPoint::Center* center = &SpawnPoint::s_outterCenterCiv;
++    if (LevelObject::s_type[object->objectType] == 3) {
++        center = &SpawnPoint::s_outterCenterCar;
++        distanceSquared = 32397042;
++    }
++    if ((object->unknown4 & 0x800u) ||
++        object->GetPosition().getDistanceFromSQ(reinterpret_cast<const vector3d<float>&>(*center)) >= static_cast<float>(distanceSquared) ||
++        LevelObject::s_type[object->objectType] == 12)
++        return gom->despawn(object);
++    return object;
++}
+--- a/config/matches/gs3d-stuff.json
++++ b/config/matches/gs3d-stuff.json
+@@ -171,5 +171,6 @@
+         "_ZN11OctTreeAABB20BuildSpawnPointNodesEPN3irr4core5arrayIPNS_8RootNodeENS1_12irrAllocatorIS4_EEEE",
+         "_ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE",
+-        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
++        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE",
++        "_ZN9GS3DStuff15checkForDespawnEP11LevelObject"
+     ],
+     "sections": [
+@@ -294,5 +295,6 @@
+         ".gs_octree_spawn_point_nodes",
+         ".gs_octree_count_renderables",
+-        ".gs_add_renderables"
++        ".gs_add_renderables",
++        ".gs_check_despawn"
+     ],
+     "external_thumb_functions": [
+--- a/config/linker/GS3DStuff.ld
++++ b/config/linker/GS3DStuff.ld
+@@ -1,2 +1,11 @@
++__aeabi_fsub = 0x001c4328;
++__aeabi_fmul = 0x001c4724;
++__aeabi_fadd = 0x001c4154;
++__aeabi_i2f = 0x001c41e4;
++__aeabi_fcmpge = 0x001c4364;
++__aeabi_fcmplt = 0x001c479c;
++__aeabi_f2d = 0x001c48f8;
++__aeabi_d2f = 0x001c4310;
++sqrt = 0x001c401c;
+ OUTPUT_FORMAT("elf32-littlearm")
+ OUTPUT_ARCH(arm)
+@@ -31,4 +40,5 @@
+ __aeabi_fcmpeq = 0x001c470c;
+ SECTIONS {
++    .gs_check_despawn 0x002dd0c0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff15checkForDespawnEP11LevelObject) }
+     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
+     .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }
+@@ -183,2 +193,5 @@
+ ASSERT(SIZEOF(.ai_manager_guard) == 4, "AIManager singleton guard extent");
+ ASSERT(SIZEOF(.ai_manager_instance) == 24, "AIManager singleton storage extent");
++
++ASSERT(SIZEOF(.gs_check_despawn)==636,"despawn native extent");
++ASSERT(ADDR(.gs_check_despawn)+SIZEOF(.gs_check_despawn)==0x002dd33c,"despawn neighbor");

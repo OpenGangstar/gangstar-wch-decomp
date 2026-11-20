@@ -1,0 +1,15 @@
+{
+  "kind": "despawn",
+  "actual_size": 656,
+  "build_exit": 2,
+  "inputs": 884,
+  "inputs_stable": true,
+  "credited": false,
+  "functions_passed": 38,
+  "regions_passed": 9,
+  "raw_sha256": "4debc83d1fc2a4787cdf148aac308b59056dbc4576a22f55fd8103c78eed3c27",
+  "graph": "Current root plus this public patch, independently applied.",
+  "candidate_image": false,
+  "strict_failure": true,
+  "source_sha256": "d16772605360fbcfe9452f0a3811f39bfe499c776358baf58d2d84b3408ec5c7"
+}
