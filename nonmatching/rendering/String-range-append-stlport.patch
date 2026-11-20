@@ -1,8 +1,6 @@
 --- a/src/game/rendering/GS3DStuff.cpp
 +++ b/src/game/rendering/GS3DStuff.cpp
-@@ -1046,13 +1046,131 @@
- }
-
+@@ -1048,0 +1049,29 @@
 +/*
 + *
 + *
@@ -32,11 +30,11 @@
 +// Restricted char-string path; the generated wrapper retains upstream notices.
 +#include "../app/ApplicationStorage.h"
 +#include "../core/Geometry.h"
- namespace std {
+@@ -1049,0 +1079,3 @@
 +template<> struct __type_traits<char> { typedef __true_type has_trivial_assignment_operator; typedef __true_type has_trivial_destructor; };
 +template<> char* allocator<char>::allocate(unsigned int, unsigned int&) __attribute__((weak));
 +template<> inline void allocator<char>::deallocate(char* value, unsigned int) { ::operator delete(value); }
- template<class T> struct char_traits;
+@@ -1050,0 +1083,47 @@
 +template<> struct char_traits<char> {
 +    static char* copy(char* target, const char* source, unsigned int count) {
 +        return count == 0 ? target : static_cast<char*>(memcpy(target, source, count));
@@ -84,21 +82,20 @@
 +};
 +}
 +namespace std {
- template<class T, class Traits = char_traits<T>, class Alloc = allocator<T> >
+@@ -1052 +1131 @@
 -class basic_string {
 +class basic_string : protected stlp_priv::_String_base<T, Alloc> {
- public:
+@@ -1053,0 +1133,2 @@
 +    typedef unsigned int size_type;
 +    typedef T* pointer;
-     basic_string& append(const T* text);
+@@ -1054,0 +1136,3 @@
 +    size_type size() const { return this->_M_Finish() - this->_M_Start(); }
 +    size_type capacity() const { return this->_M_end_of_storage._M_data - this->_M_Start() - 1; }
 +    pointer end() { return this->_M_finish; }
- private:
-     basic_string& _M_append(const T* first, const T* last) __attribute__((weak));
+@@ -1056,0 +1141,2 @@
 +    void _M_construct_null(T* value) const { *value = 0; }
 +    void _M_copy(const T* first, const T* last, T* result) { Traits::copy(result, first, last - first); }
- };
+@@ -1057,0 +1144,35 @@
 +template<>
 +basic_string<char>& basic_string<char>::_M_append(const char* first, const char* last)
 +{
@@ -115,15 +112,18 @@
 +            new_finish = stlp_priv::string_uninitialized_copy(first, last, new_finish);
 +            _M_construct_null(new_finish);
 +            this->_M_destroy_range();
-+            this->_M_deallocate_block();
++            if (!this->_M_using_static_buf() && this->_M_buffers._M_dynamic_buf != 0)
++                ::operator delete(this->_M_buffers._M_dynamic_buf);
 +            this->_M_reset(new_start, new_finish, new_start + length);
 +        } else {
 +            const char* next = first;
 +            ++next;
-+            if (this->_M_using_static_buf())
-+                _M_copy(next, last, this->_M_Finish() + 1);
-+            else
++            if (!this->_M_using_static_buf())
 +                stlp_priv::string_uninitialized_copy(next, last, this->_M_finish + 1);
++            else {
++                if (last - next != 0)
++                    memcpy(this->_M_Finish() + 1, next, last - next);
++            }
 +            _M_construct_null(this->_M_finish + count);
 +            char_traits<char>::assign(*end(), *first);
 +            this->_M_finish += count;
@@ -131,14 +131,25 @@
 +    }
 +    return *this;
 +}
- template<>
- basic_string<char>& basic_string<char>::append(const char* text)
 --- a/src/game/core/NativeAllocator.h
 +++ b/src/game/core/NativeAllocator.h
-@@ -46,4 +46,6 @@
-     ~allocator() throw() {}
-     T* allocate(unsigned int count, const void* hint = 0);
+@@ -47,0 +48,2 @@
 +    T* allocate(unsigned int count, unsigned int& allocatedCount);
 +    void deallocate(T* value, unsigned int count);
- };
- }
+--- a/config/matches/gs3d-stuff.json
++++ b/config/matches/gs3d-stuff.json
+@@ -173 +173,2 @@
+-        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
++        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE",
++        "_ZNSs9_M_appendEPKcS0_"
+@@ -296 +297,2 @@
+-        ".gs_add_renderables"
++        ".gs_add_renderables",
++        ".gs_string_range_append"
+--- a/config/linker/GS3DStuff.ld
++++ b/config/linker/GS3DStuff.ld
+@@ -32,0 +33 @@
++    .gs_string_range_append 0x002dcd28 : { *gs3d-stuff.o(.text._ZNSs9_M_appendEPKcS0_) }
+@@ -184,0 +186,2 @@
++
++ASSERT(SIZEOF(.gs_string_range_append)==372,"range append native372 extent");

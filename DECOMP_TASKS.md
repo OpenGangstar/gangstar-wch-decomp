@@ -1811,7 +1811,7 @@ cutoff remain private for the next hourly batch.
 
 | Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | --- | --- |
-| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode constructor, `_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE` (retail C1 only; any emitted C2 alias receives no separate credit) | decomp_achievements | ASSIGNED | Pending832B; investigate native eight-child pointer zeroing with proven32B Mission pattern, no compile until justified and approved. | src/game/rendering/GS3DStuff.cpp; _scratch/worker-octree-child-initialization-current/ |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode constructor, `_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE` (retail C1 only; any emitted C2 alias receives no separate credit) | — | BLOCKED | Coordinator reran diagnostic proof and independently rebuilt final public patch: actual828/native832,611 common differences+4missing;147 old functions118 owner regions exact. Uncredited packet published in PR756; ownership released. | src/game/rendering/GS3DStuff.cpp; _scratch/worker-octree-child-initialization-current/ |
 | libsanangeles.so | 0x003295a5 | MiniMap::MiniMap(ASprite*,int,int,int,int), `_ZN7MiniMapC1EP7ASpriteiiii` and C2 alias | — | BLOCKED | Coordinator reran audit0: single bounded memset form remains212B/same39-byte miss at68; all15/17 owner checks and14profile header gate exact,1072 inputs stable. No credit; ownership released. | src/game/hud/MiniMap.cpp; _scratch/worker-minimap-zero-initialization-current/ |
 | libsanangeles.so | 0x00326581 | AnalogStick::AnalogStick(ASprite*,int,int), `_ZN11AnalogStickC1EP7ASpriteii` and C2 alias | — | BLOCKED | Coordinator reran audit0: six actual360B aliases retain147 differences beyond exact187B prefix. Native zero stores already exact; opaque storage does not establish original zero-array type or causal link. No new compile or credit; ownership released. | src/game/input/AnalogStick.cpp; _scratch/worker-analog-zero-initialization-current/ |
 
@@ -1819,9 +1819,35 @@ cutoff remain private for the next hourly batch.
 
 | Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | --- | --- |
-| libsanangeles.so | 0x00352335 | RadioStationController::RadioStationController(), `_ZN22RadioStationControllerC1Ev` and C2 alias if present in catalogue | decomp_npc_hostility | IN_PROGRESS | Zero-aggregate hypothesis rejected after coordinator reran check-evidence0: existing604B code still12 differences, queue copy alreadyexact. Scope now read-only natural DataStream lifetime/weak-dtor compiler prerequisite investigation; no compile before approved source/linkage plan. | src/game/ai/RadioStationController.cpp; _scratch/worker-radio-construction-current/ |
+| libsanangeles.so | 0x00352335 | RadioStationController::RadioStationController(), `_ZN22RadioStationControllerC1Ev` and C2 alias if present in catalogue | unassigned | BLOCKED | Coordinator reran best-policy and caller-accounting proofs exit0: corrected count-store order,608/native604 and helper40/native36. No link or credit; ownership released. | src/game/ai/RadioStationController.cpp; _scratch/worker-radio-construction-current/ |
 | libsanangeles.so | 0x002f96e9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(ITexture*,ISceneNode*,int), `_ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi` | — | BLOCKED | Coordinator reran audit0: actual native Material140B/64instructions/zero calls agrees semantic model; old5040B target already invokes real imported constructor, so inline zeroing cannot explain56B overrun. No new compile/credit; ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp; src/game/core/Material.h (read-only); _scratch/worker-skybox-material-initialization-current/ |
 
 | libsanangeles.so | 0x0030c035 | Vehicle::step(), `_ZN7Vehicle4stepEv` | — | BLOCKED | Coordinator reran audit0: all six clamps/twelve native+actual branch sites agree tie/NaN operand selection. Candidate4336/native4372 unchanged; real96B PhysicInfo constructor exact. No new compile/cause/credit; ownership released. | src/game/vehicles/Vehicle.cpp; _scratch/worker-vehicle-step-clamp-current/ |
 
-| libsanangeles.so | 0x0034eed9 and 0x0034ef15 | ResStream destructor family: `_ZN9ResStreamD0Ev` (60B), `_ZN9ResStreamD1Ev`/D2 (shared56B) | decomp_running_command | ASSIGNED | Investigate one complete current source-unit/native-definition placement control, only if exact source-context combination was not previously tested. Preserve best bodies/flags; no compile until missing private prerequisites reviewed. | src/game/world/ResStream.cpp; _scratch/worker-resstream-unit-context-current/ |
+| libsanangeles.so | 0x0034eed9 and 0x0034ef15 | ResStream destructor family: `_ZN9ResStreamD0Ev` (60B), `_ZN9ResStreamD1Ev`/D2 (shared56B) | — | BLOCKED | Coordinator reran audit0: all five actual D0/60 and D1/D2/56 images same six-byte residual; exact current source context/native placement already tested. No new compile/cause/credit; ownership released. | src/game/world/ResStream.cpp; _scratch/worker-resstream-unit-context-current/ |
+
+## Next independent source-evidence scopes
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002d1de5 and 0x002d1de9 | GetNativeSoundRaw; GetNativeResourceSoundRawLength (2B each) | unassigned | BLOCKED | Coordinator reran audit exit0:228 pinned files,zero prototype hits,no justified ABI or compile. Both markers retained; ownership released. | src/game/app/jni_GLMediaPlayer.c; _scratch/worker-native-sound-prototypes-current/ |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds(), `_ZN12SoundManager24getNumberOfPlayingSoundsEv` | decomp_running_command | IN_PROGRESS | Coordinator reran diagnostic audit0: identical whole object, first operand swap in VRP2. Public unhinted packet independently replayed,2274 existing functions2210 regions exact. One bounded matched-relative reuse trial now approved: direct soundSlots[id][channel] load replaces named row local only; all other source/flags preserved. No adoption before exact target and affected/full gates. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-count-unit-context-current/ |
+
+| libsanangeles.so | 0x002e49ad | MenuManager::updateWidgetVisibility(), `_ZN11MenuManager22updateWidgetVisibilityEv`, existing104B match | unassigned | BLOCKED | Coordinator private initializer-order repair independently passes all affected35 profiles2274 functions2210 regions with count API. Canonical existing body unchanged; prerequisite remains unapplied with unmatched count packet. Ownership released. | src/game/ui/MenuManager.cpp; _scratch/coordinator-sound-count-menu-compat/ |
+
+
+## Reactivated independent workers after PR 756
+
+Runtime permits three workers alongside the coordinator. Each assignment is
+exclusive. Recover historical budgets before compilation; exhausted targets need
+a demonstrated source discrepancy and bounded coordinator approval. Use private
+scratch mirrors only.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount(int,bool,bool) const | unassigned | BLOCKED | Coordinator reran semantic audit0:50304 modeled cases agree, genuine native signed behavior preserved. No new source discrepancy or compilation; ownership released. | src/game/persistence/StringManager.cpp; _scratch/worker-format-amount-semantics-current/ |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int),native82B | unassigned | BLOCKED | Coordinator reran actual-object audit0:80/native82 and first difference+1e. All later helper/frontend variants recovered; no new source cause or compile. Ownership released. | src/game/rendering/ASprite.cpp; _scratch/worker-asprite-duration-current/ |
+
+| libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*,const char*),native372B | unassigned | BLOCKED | Coordinator independently applied and rebuilt final public form3:372B,112 exact prefix,60 differences;147 old functions124 sections3 regions exact. No surplus helpers or credit; published unapplied packet, ownership released. | src/game/rendering/GS3DStuff.cpp; src/game/core/NativeAllocator.h (private prerequisites only); _scratch/worker-string-append-inline-current/ |
+
+| libsanangeles.so | 0x00342b09 | WantedLevelManager::WantedLevelManager(),C1/C2 aliases,native184B | unassigned | BLOCKED | Coordinator reran actual-image proof0: recovered correct184B aliases retain16 differences from+28; all18 old functions22 regions exact. Invalid176B candidate rejected, no credit; ownership released. | src/game/missions/WantedLevelManager.cpp; _scratch/worker-wanted-constructor-correct-current/ |

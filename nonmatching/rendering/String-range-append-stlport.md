@@ -1,66 +1,92 @@
-# STLport range append: bounded source reuse
+# STLport range append: native-backed inline reconstruction, unmatched
 
-This is an unapplied candidate for `_ZNSs9_M_appendEPKcS0_`, the 372-byte
-Thumb function at `0x002dcd29` in `libsanangeles.so`. It remains pending in
-the function catalogue and its assembly marker remains present. No bytes
-are credited and no production source or matching profile is changed.
+The unapplied patch reconstructs `_ZNSs9_M_appendEPKcS0_`, the 372-byte
+`std::string::_M_append(const char*,const char*)` at Thumb `0x002dcd29`.
+It remains pending, with its assembly marker intact and zero matching credit.
+Canonical game sources, compiler flags, generated tables and Windows code are
+unchanged. Apply this packet independently of other unapplied candidates.
 
-The candidate reuses the licensed Android STLport range-append algorithm,
-short-string representation, reference-returning maximum, allocator proxy,
-and random-access uninitialized-copy loop. The public source commit is
-`e64e7c849b0b659d3e198e4efaed563601e554be`; this is a reference revision,
-not a claim about the exact retail STLport revision. Source URLs and hashes
-are recorded in the adjacent JSON. The patch retains the source notices
-and documents the altered implementation.
+## Current result
 
-The native string has a 16-byte union followed by its finish pointer and
-allocator proxy at offsets 16 and 20. Native GOT references identify the
-weak length-error helper and `allocator<char>::allocate(unsigned int,
-unsigned int&)`. The private allocator interface adds that observed overload
-without replacing the existing overload used by other code.
+The coordinator independently applied the final public patch to a fresh copy
+of current source/configuration/tools and rebuilt the genuine `gs3d-stuff`
+profile, including its stream/data-stream dependencies. Ordinary build exit is
+**1**: the complete function and strict 372-byte section differ at 60 byte
+positions, beginning at `0x70`. The first 112 bytes are exact. Linked SHA-256 is
+`5398c03b4c66f23f82296738a4bf75ec599268a5f800e299ec157fd7d560e943`.
+All 147 existing graph function checks, 124 section checks and three region
+checks pass with the target present. These include the existing public append.
+No surplus helper definition or diagnostic-address placement remains.
 
-Three source forms were compiled using the owning `gs3d-stuff` profile and
-the original NDK 1.6 r1 GCC 4.2.1 compiler and assembler:
+```text
+MISMATCH  _ZNSs9_M_appendEPKcS0_  0x002dcd29
+  expected : 47 46 01 97 41 45 00 d2 6d e0 03 ab 1b 68 01 31
+  actual   : 47 46 01 97 41 45 00 d2 73 e0 03 ab 1b 68 01 31
+  differs at 0x70
+```
 
-1. The adapted original range-append algorithm.
-2. The original `char_traits<char>::copy` zero-length guard restored.
-3. The original trivial character assignment/destruction traits restored.
+The exact actual excerpt above is checked against the final replay log before
+publication; the adjacent JSON records all actual differing offsets. Equal
+function size and a longer exact prefix do not establish a match.
 
-Every primary function is 372 bytes with SHA-256
-`f7e4752f99d37f699eabe352d618dae80b8106fb91954b36201246bcd3a246e2`.
-Their primary GOT references also agree. Each compile-only diagnostic exits
-3 and prints `COMPILE-ONLY: no native byte comparison or old-match proof.`
-The repository's three-identical-output stopping rule applies.
+## Bounded reconstruction changes
 
-Equal size does not establish a match. The generated caller retains calls
-to `_M_deallocate_block` and `_M_copy`, whereas the retail function contains
-the corresponding operations inline. The guarded traits implementation
-also emits a separate `char_traits<char>::copy`. None of those three helper
-definitions is present under that symbol in the retail library.
+The prior three original/traits forms emitted identical 372-byte callers with
+unsupported `_M_deallocate_block` and `_M_copy` calls. Their old diagnostic image
+placed helpers at artificial addresses, differed at 275 bytes and failed existing
+GOT comparisons. That was not a valid owner closure. Its historical results and
+source provenance remain recorded in the JSON; those placements are absent from
+the current patch.
 
-A diagnostic image placed the caller at its native address and the extra
-helpers at diagnostic addresses `0x00500100`, `0x00500200`, and `0x00500300`.
-No compiled definition was replaced with an absolute retail import. The
-caller differs at 275 byte positions; its linked SHA-256 is
-`0c5b1d34d8eaa95feef4b725e357537a418126252cb5a11201c9ef2ac75b7322`.
-The exact target comparison output and differing offsets are in the JSON.
-The extra symbols change GOT ordering, causing existing function mismatches.
-The build exits 2 with `BUILD FAILED: comparison extends beyond a retail
-section: .got`. Consequently, this is not a successful existing-match
-closure. Earlier diagnostic setup attempts also failed before comparison:
-one failed to insert the linker placements and another put diagnostic helpers
-outside Thumb call range. Neither attempt is counted as a source iteration.
+A separately authorized escalation compiled exactly three source forms:
 
-The adjacent patch retains the third source form. Apply it only in a private
-checkout. The adjacent probe uses the real build implementation but stops
-after primary assembly; it does not link, compare native bytes, or accept a
-match. An isolated current-checkout patch-application replay reproduced the
-recorded 372-byte primary hash using this public probe, with intentional
-exit 3. Both patched source files also equal the retained private source.
+1. Reconstruct the observed dynamic-buffer cleanup directly in the caller:
+   check dynamic storage and nonnull buffer, then call genuine operator delete.
+   This removes `_M_deallocate_block` but emits 376 bytes; strict native extent
+   prevents linking. No linked preservation result is claimed for this form.
+2. Also reconstruct the original static-buffer `_M_copy`/traits chain as guarded
+   memcpy, preserving the dynamic uninitialized byte-copy loop. This removes
+   every surplus helper, emits 372 bytes and differs at 86 positions. All existing
+   graph checks pass under real native placements.
+3. Reverse only the static/dynamic source if-else arm spelling to match the
+   observed native dynamic fallthrough and out-of-line static copy. This reduces
+   differing bytes to 60 without changing the algorithm, interfaces or flags.
+   No fourth source form, likelihood hint or optimizer-option sweep was tried.
 
-Further work requires new evidence about the original source or inlining
-context. Repeating operand, hint, or compiler-flag searches without that
-evidence is not justified. Before production integration, remove the extra
-helper calls through supported C++ reconstruction, verify the entire native
-function, preserve the existing public append match in every owning profile,
-and run all affected header/profile checks and the complete native gate.
+These direct operations reconstruct the observed original algorithm; they are
+not claimed to reproduce its exact original source spelling. Native cleanup
+calls operator delete, and the static nonzero copy calls memcpy. No emitted
+helper is replaced with a retail import, discarded or moved to a fake address.
+
+The adapted source retains the original licensed STLport notices. Public source
+revision `e64e7c849b0b659d3e198e4efaed563601e554be` is a reference, not an identified
+retail revision. The native 16-byte buffer union, finish at 16 and allocator
+proxy at 20 remain unchanged. Private allocator declarations add only the
+observed two-argument allocation overload and deallocation interface.
+
+## Reproduction and remaining requirements
+
+```sh
+git apply --unidiff-zero nonmatching/rendering/String-range-append-stlport.patch
+python tools/build.py gs3d-stuff
+```
+
+Configure the documented retail library and matching toolchain first. Expected
+exit is 1, with both target and full-section mismatches. Native start and strict
+372-byte extent assertions remain enforced. The adjacent compile-only probe
+still exits 3 intentionally after assembly; it supplies no linked proof.
+
+The initial coordinator replay failed to apply a context patch to the Windows
+checkout before any compilation. The final zero-context patch was independently
+applied and rebuilt successfully; that application format is required above.
+No compiler output was edited. All 890 worker source/configuration/tool inputs
+were frozen during each trial.
+
+The full affected-header gate has **not** run: the target is unmatched and the
+patch remains unapplied. The worker inventories 86 direct header users and 100
+planned profiles including dependencies. Header compatibility beyond the tested
+owner graph is unproven. Before adoption, obtain exact complete native function
+and section bytes, run all affected header checks and the full native gate, and
+preserve every existing match. No compilation unit becomes fully linked here.
+Further source trials require distinct evidence or another explicit bounded
+escalation; this packet does not reset the first-pass budget.
