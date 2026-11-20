@@ -1,0 +1,27 @@
+{
+  "exit": 1,
+  "size": 2084,
+  "native_size": 2108,
+  "linked_sha256": "6689327faeee3cca2793de24413d4cb2f516ebf2cceffe944ccb4ad2fb81ebd2",
+  "exact_existing_functions": 223,
+  "exact_existing_regions": 59,
+  "stable_inputs": 886,
+  "only_new_definition": "_ZN3NPC12attackTargetEv",
+  "target_matched": false,
+  "credited": false,
+  "binary": "libsanangeles.so",
+  "address": "0x002ff5d1",
+  "symbol": "_ZN3NPC12attackTargetEv",
+  "baseline_commit": "56f6a80c",
+  "patch_sha256": "99624135943977ef35b35e48ce688827ed758b5a46f5f28c6cd792b15f873cad",
+  "apply_arguments": [
+    "--unidiff-zero"
+  ],
+  "native_receiver_windows": {
+    "0x002ff616": "f858aa4c2423c35c2a599b009b58052b",
+    "0x002ff630": "381ca421f1f79aff002834d0",
+    "0x002ff7c6": "a421f1f7d0fe002800d12ee7"
+  },
+  "unmatched_source_correction": "first animation164 receiver is target Character; subsequent owner check unchanged",
+  "exact_comparison_output": "MISMATCH  _ZN3NPC12attackTargetEv  0x002ff5d1\n  expected : d5 f7 54 fe 82 24 64 00 b5 4d 80 46 86 6b 38 59\n  actual   : d5 f7 54 fe 82 24 64 00 a4 4e 80 46 85 6b 38 59\n  differs at 0x18"
+}

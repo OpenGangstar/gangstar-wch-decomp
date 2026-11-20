@@ -107,6 +107,7 @@ public:
         irr::core::aabbox3d<float> bounds;
         irr::core::array<RootNode*>* roots;
         OctTreeAABBNode* children[8];
+        int depth;
     };
 
     inline ~OctTreeAABB();

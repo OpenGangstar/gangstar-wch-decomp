@@ -1,0 +1,131 @@
+--- a/src/game/ai/NPC.cpp
++++ b/src/game/ai/NPC.cpp
+@@ -819,0 +820,92 @@
++
++#include "../core/IrrlichtDevice.h"
++
++
++extern "C" long lrand48();
++bool NPC::attackTarget()
++{
++    Application* app=Application::GetInstance();
++    EventManager* events=app->GetEventManager();
++retryTarget:
++    if(target){
++      if(faction!=2 || LevelObject::s_type[target->getObjectType()]==8 || target->getHealth()>25){
++    if(target->isDead()){target=0;return false;}
++    if((LevelObject::s_type[target->getObjectType()]==5 || LevelObject::s_type[target->getObjectType()]==8) && static_cast<Character*>(target)->isCurrentAnimation(164))return false;
++    if(isCurrentAnimation(164)||isCurrentAnimation(86)||isCurrentAnimation(175)||(movementFlags&0x100000u))return false;
++    if(LevelObject::s_type[target->getObjectType()]==3 && weapon->getWeaponType()==0){goToVehicle(static_cast<Vehicle*>(target),true,true,false,true);return false;}
++    if((LevelObject::s_type[target->getObjectType()]==5||LevelObject::s_type[target->getObjectType()]==8) && (static_cast<Character*>(target)->movementFlags&0x400u) && static_cast<Character*>(target)->getVehicle()){
++        if(weapon->getWeaponType()==0){goToVehicle(static_cast<Character*>(target)->getVehicle(),true,true,false,true);return false;}
++        unknown316=reinterpret_cast<unsigned int>(target);SetTarget(static_cast<Character*>(target)->getVehicle());
++    }
++    if(LevelObject::s_type[target->getObjectType()]==3 && !static_cast<Vehicle*>(target)->getDriver()){
++        if(unknown316){SetTarget(reinterpret_cast<LevelObject*>(unknown316));unknown316=0;}else events->raise(EvNPC(EvNPC::TargetLost,this));
++    }
++    const irr::core::vector3d<float> position=GetPosition();
++    const irr::core::vector3d<float> targetPosition=target->GetPosition();
++    const float distance=position.getDistanceFrom(targetPosition);
++    WeaponManager* weapons=app->GetWeaponManager();
++    if(weapon->getWeaponType()==0 && weaponType!=0 && distance>weapons->getWeaponInList(0,static_cast<PlayerTest::eContext>(-1))->getRange() && !(flags356&0x80u)){
++        equipWeapon(false,false);goToCombatIdle();
++    }
++    if(weapon->getWeaponType()==8){
++        turnTowardTarget(unknown432);
++        unsigned int now=app->GetDevice()->getTimer()->getRealTime();
++        if(!isFacingTarget(target) || !(now>static_cast<unsigned int>(unknown340+unknown344)))return false;
++        unknown432=5.0f;
++        if(distance>=weapon->getRange()*40 && distance<=weapon->getRange()*60)unknown252=20;
++        else if(distance>weapon->getRange()*40)unknown252=13;
++        else if(distance<weapon->getRange()*60)unknown252=25;
++        else unknown252=0;
++        bool attacked=(flags356&0x800000u)?false:attack();
++        unknown340=now;unknown344=lrand48()%1000+1500;return attacked;
++    }
++    if(distance>weapon->getRange()){
++        if(!isOutsideSearchRadius())runToTarget(0);
++        unknown436=true;unknown252=0;return false;
++    }
++    if(weapon->getWeaponType()!=0 && distance<=weapons->getWeaponInList(0,static_cast<PlayerTest::eContext>(-1))->getRange()){
++        equipWeapon(true,false);goToCombatIdle();
++    }
++    weapon->getWeaponType();
++    if(weapon->getWeaponType()!=0){
++        if(distance>=static_cast<float>(weapon->getRange())*0.4f && distance<=static_cast<float>(weapon->getRange())*0.6f){
++            unknown396=0;unknown400=lrand48()%5;unknown252=weapon->getWeaponType()==8?20:16;
++        }
++    }else {unknown396=0;unknown400=0;unknown252=16;}
++    bool attacked=false;
++    if(flags356&0x800000u){unknown396=0;unknown400=1;attacked=true;}
++    if(unknown396>unknown400){
++        if((movementFlags&0x10000000u) && !(movementFlags&0x20000000u))return attacked;
++        if(distance>static_cast<float>(weapon->getRange())*0.4f){
++            if(!isOutsideSearchRadius())runToTarget(0);
++            unknown252=weapon->getWeaponType()==8?13:0;
++            if(lrand48()%1000>990){unknown396=0;unknown400=1;}
++            return attacked;
++        }
++        if(distance<static_cast<float>(weapon->getRange())*0.6f){
++            if(!isOutsideSearchRadius()){weapon->getWeaponType();runToTarget(static_cast<int>(static_cast<float>(weapon->getRange())*0.5f));}
++            unknown432=10.0f;
++            if(lrand48()%1000>990){unknown396=0;unknown400=1;}
++            unknown252=weapon->getWeaponType()==8?25:100;
++        }
++        return attacked;
++    }
++    if((movementFlags&0x4000000u) && !isCurrentAnimation(getSpecificAnimation(188)) && !isCurrentAnimation(getSpecificAnimation(202))){
++        turnTowardTarget(unknown432);
++        unsigned int now=app->GetDevice()->getTimer()->getRealTime();
++        if(isFacingTarget(target) && now>static_cast<unsigned int>(unknown340+unknown344)){
++            unknown432=5.0f;
++            if(!(flags356&0x800000u))attacked=attack();
++            unknown340=now;++unknown396;
++            if(weapon->getWeaponType()==0)unknown344=lrand48()%(unknown408-unknown404)+unknown404;
++            else unknown344=lrand48()%1000+1500;
++        }
++    }else goToCombatIdle();
++    return attacked;
++      }else{target=0;events->raise(EvNPC(EvNPC::TargetIncapacitated,this));return false;}
++    }else{
++        acquireTarget();
++        if(target)goto retryTarget;
++        goToIdle();events->raise(EvNPC(EvNPC::TargetLost,this));flags356&=~0x40u;return false;
++    }
++}
+--- a/src/game/ai/NPC.h
++++ b/src/game/ai/NPC.h
+@@ -50,0 +51,2 @@
++    bool attackTarget();
++    bool isOutsideSearchRadius();
+--- a/src/game/characters/Character.h
++++ b/src/game/characters/Character.h
+@@ -209,0 +210 @@
++    void runToTarget(int);
+--- a/src/game/characters/NPCEvent.h
++++ b/src/game/characters/NPCEvent.h
+@@ -10 +10 @@
+-    enum State { Targeted = 3, Untargeted = 4, Death = 14, DeathFlag512 = 19 };
++    enum State { TargetIncapacitated = 12, TargetLost = 13, Targeted = 3, Untargeted = 4, Death = 14, DeathFlag512 = 19 };
+--- a/config/matches/ai-startup-npc.json
++++ b/config/matches/ai-startup-npc.json
+@@ -115 +115,2 @@
+-        "_ZN9Character20getSpecificAnimationEi"
++        "_ZN9Character20getSpecificAnimationEi",
++        "_ZN3NPC12attackTargetEv"
+@@ -135 +136,2 @@
+-        ".character_specific_animation"
++        ".character_specific_animation",
++        ".owned_attack_target"
+@@ -249 +251,3 @@
+-        "_ZNK6Weapon11isTwoHandedEv"
++        "_ZNK6Weapon11isTwoHandedEv",
++        "_ZN3NPC21isOutsideSearchRadiusEv",
++        "_ZN9Character11runToTargetEi"
+--- a/config/linker/NPCAiStartup.ld
++++ b/config/linker/NPCAiStartup.ld
+@@ -25,0 +26 @@
++ .owned_attack_target 0x002ff5d0 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEv) }
+@@ -63,0 +65,2 @@
++
++ASSERT(SIZEOF(.owned_attack_target) <= 2108, "attackTarget must fit native extent");

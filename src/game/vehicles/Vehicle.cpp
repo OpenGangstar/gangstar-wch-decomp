@@ -41,7 +41,8 @@ extern const char billboard[] __attribute__((visibility("hidden")));
 #include "../world/TrailMgr.h"
 #include "../world/Trail.h"
 
-extern "C" float __aeabi_fmul(float, float);
+extern "C" float __aeabi_fmul(float, float) __attribute__((const));
+extern "C" float __aeabi_fadd(float, float) __attribute__((const));
 extern "C" int puts(const char*);
 void aTransitionCallback(irr::scene::ITimelineController*, void*);
 
@@ -2514,4 +2515,105 @@ void Vehicle::stepPhysic()
             PlayerTest::GetPlayer()->addCurrentJumpDistance(distance);
     }
     previousPosition = position;
+}
+
+#include "../meta/Achievements.h"
+#include "../core/Geometry.h"
+extern "C" long lrand48();
+void Vehicle::collision(irr::core::vector3d<float> impact, int type)
+{
+    using irr::core::vector3d;
+    using irr::core::min_;
+    using irr::core::max_;
+    using irr::core::clamp;
+    flags344 |= 0x20000u;
+    unknown511 = 0;
+    if (type == -1) {
+        if (flags344 & 0x80000u)
+            flags344 &= ~0x80000u;
+        else {
+            vector3d<float> previousFront = GetFront();
+            init372 = previousFront.X;
+            init376 = previousFront.Y;
+            init380 = previousFront.Z;
+            flags344 |= 0x80000u;
+        }
+    }
+    float impactSpeed = impact.getLength() / 1000.0f * 3600.0f;
+    unknown128 = impactSpeed;
+    if (!(impactSpeed > 10.0f))
+        return;
+    const float& damageFactor = unknown912;
+    float amount = damageFactor * (impactSpeed / 100.0f);
+    vector3d<float> front = GetFront();
+    float frontDot;
+    float inverseSpeed = 1.0f / impactSpeed;
+    frontDot = vector3d<float>(impact.X * inverseSpeed, impact.Y * inverseSpeed,
+        __aeabi_fmul(impact.Z, inverseSpeed)).dotProduct(front);
+    int damage;
+    if (type == 5 || type == 8)
+        damage = static_cast<int>(amount * 0.0f);
+    else {
+        VehicleRepairVisualState* visual = repairVisualState;
+        if (visual) {
+            if (frontDot >= 0.0f) {
+                VehicleRepairVisualBlock* block = visual->block;
+                float value = block->value12;
+                float changed = amount + value;
+                if (changed > 1.0f)
+                    changed = 1.0f;
+                if (changed != value) {
+                    block->value12 = changed;
+                    visual->dirty = true;
+                }
+            } else {
+                VehicleRepairVisualBlock* block = visual->block;
+                float value = block->value20;
+                float changed = amount + value;
+                if (changed > 1.0f)
+                    changed = 1.0f;
+                if (changed != value) {
+                    block->value20 = changed;
+                    visual->dirty = true;
+                }
+            }
+        }
+        damage = static_cast<int>(amount * 90.0f);
+    }
+    health -= damage;
+    if (static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle() == this ||
+        (flags344 & 0x1000u) || unknown240 == 6)
+        AchievementManager::s_achievementManager->recordDamage(damage);
+    else
+        unknown511 |= 1;
+    if (type != 5 && type != 8 && unknown506 && unknown507 && unknown508 && unknown509) {
+        const vector3d<float>& right = GetRight();
+        float rightDot = (impact * inverseSpeed).dotProduct(right);
+        init732 += clamp((rightDot - frontDot) * impactSpeed * 30.0f, 0.0f, 700.0f);
+        init736 = __aeabi_fadd(init736, clamp((-frontDot - rightDot) * impactSpeed * 30.0f, 0.0f, 700.0f));
+        init740 += clamp((frontDot + rightDot) * impactSpeed * 30.0f, 0.0f, 700.0f);
+        init744 += clamp((frontDot - rightDot) * impactSpeed * 30.0f, 0.0f, 700.0f);
+        unknown506 = false;
+        unknown507 = false;
+        unknown508 = false;
+        unknown509 = false;
+    }
+    if (!(GetSpeed() > 10.0f))
+        return;
+    int sound;
+    if (type == 5 || type == 8) {
+        unknown511 |= 2;
+        sound = s_smallImpactSounds[lrand48() % 3];
+    } else if (impactSpeed > 60.0f)
+        sound = s_hardImpactSounds[lrand48() % 3];
+    else if (impactSpeed > 30.0f)
+        sound = s_mediumImpactSounds[lrand48() % 3];
+    else
+        sound = s_smallImpactSounds[lrand48() % 3];
+    if (static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle() == this || type == 8) {
+        SoundManager* sounds = SoundManager::getInstance();
+        sounds->unknown140 = true;
+        sounds->playEx(sound, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sounds->unknown140 = false;
+    }
 }
