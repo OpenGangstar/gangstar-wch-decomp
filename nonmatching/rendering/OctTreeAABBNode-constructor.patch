@@ -1,0 +1,115 @@
+--- a/src/game/rendering/GS3DStuff.cpp
++++ b/src/game/rendering/GS3DStuff.cpp
+@@ -102,0 +103 @@
++        inline OctTreeAABBNode(int&, int, irr::core::array<RootNode*>*, unsigned int, irr::core::aabbox3d<float>) __attribute__((used));
+@@ -1087,0 +1089,62 @@
++
++// Private compile-time model checks, no executable definitions.
++typedef char octree_model_size64[(sizeof(OctTreeAABB::OctTreeAABBNode)==64)?1:-1];
++typedef char octree_model_align4[(__alignof__(OctTreeAABB::OctTreeAABBNode)==4)?1:-1];
++typedef char octree_model_children28[(__builtin_offsetof(OctTreeAABB::OctTreeAABBNode,children)==28)?1:-1];
++typedef char octree_model_children32[(sizeof(((OctTreeAABB::OctTreeAABBNode*)0)->children)==32)?1:-1];
++typedef char octree_model_depth60[(__builtin_offsetof(OctTreeAABB::OctTreeAABBNode,depth)==60)?1:-1];
++
++OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
++    int& count, int parentDepth, irr::core::array<RootNode*>* incoming,
++    unsigned int limit, irr::core::aabbox3d<float> inputBounds)
++    : bounds(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f)), roots(0)
++{
++    using namespace irr::core;
++    bounds.MaxEdge = vector3d<float>(1.0f, 1.0f, 1.0f);
++    depth = parentDepth + 1;
++    ++count;
++    children[0] = 0;
++    for (unsigned int i = 0; i < 8; ++i)
++        children[i] = 0;
++
++    if (!incoming->used) {
++        SafeDelete(incoming);
++        return;
++    }
++
++    bounds = inputBounds;
++    const vector3d<float> center = (bounds.MinEdge + bounds.MaxEdge) * 0.5f;
++    vector3d<float> corners[8];
++    bounds.getEdges(corners);
++    if (incoming->used <= limit || bounds.MinEdge.equals(bounds.MaxEdge, 0.000001f)) {
++        roots = incoming;
++        return;
++    }
++
++    for (unsigned int i = 0; i < 8; ++i) {
++        aabbox3d<float> childBounds(center);
++        childBounds.addInternalPoint(corners[i]);
++        const unsigned int capacity = incoming->used;
++        array<RootNode*>* childRoots = newPointerArray<RootNode>();
++        childRoots->reallocate(capacity);
++        unsigned int intersections = 0;
++        for (unsigned int j = 0; j < incoming->used; ++j) {
++            RootNode*& root = incoming->data[j];
++            const aabbox3d<float>& box = root->bounds;
++            if ((childBounds.MinEdge <= box.MaxEdge && childBounds.MaxEdge >= box.MinEdge)) {
++                childRoots->push_back(root);
++                ++intersections;
++            }
++        }
++
++        if (intersections) {
++            childRoots->reallocate(intersections);
++            children[i] = new OctTreeAABBNode(count, depth, childRoots, limit, childBounds);
++        } else {
++            SafeDelete(childRoots);
++        }
++    }
++
++    if (depth != 1)
++        SafeDelete(incoming);
++}
+--- a/src/game/core/Geometry.h
++++ b/src/game/core/Geometry.h
+@@ -28,0 +29,13 @@
++    void addInternalPoint(const vector3d<T>& point) { addInternalPoint(point.X, point.Y, point.Z); }
++    void addInternalPoint(T x, T y, T z)
++    {
++        if (x>MaxEdge.X) MaxEdge.X=x;
++        if (y>MaxEdge.Y) MaxEdge.Y=y;
++        if (z>MaxEdge.Z) MaxEdge.Z=z;
++        if (x<MinEdge.X) MinEdge.X=x;
++        if (y<MinEdge.Y) MinEdge.Y=y;
++        if (z<MinEdge.Z) MinEdge.Z=z;
++    }
++    bool intersectsWithBox(const aabbox3d<T>& other) const
++    { return (MinEdge <= other.MaxEdge && MaxEdge >= other.MinEdge); }
++    void getEdges(vector3d<T>* edges) const __attribute__((weak));
+--- a/src/game/core/Vector3.h
++++ b/src/game/core/Vector3.h
+@@ -30,0 +31,3 @@
++    bool operator<=(const vector3d<T>& other) const { return X<=other.X && Y<=other.Y && Z<=other.Z; }
++    bool operator>=(const vector3d<T>& other) const { return X>=other.X && Y>=other.Y && Z>=other.Z; }
++    bool equals(const vector3d<T>& other, const T tolerance) const __attribute__((weak));
+--- a/config/matches/gs3d-stuff.json
++++ b/config/matches/gs3d-stuff.json
+@@ -173 +173,2 @@
+-        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE"
++        "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE",
++        "_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE"
+@@ -296 +297,2 @@
+-        ".gs_add_renderables"
++        ".gs_add_renderables",
++        ".octree_child_ctor"
+--- a/config/linker/GS3DStuff.ld
++++ b/config/linker/GS3DStuff.ld
+@@ -0,0 +1,6 @@
++__aeabi_fadd = 0x1c4154;
++__aeabi_fmul = 0x1c4724;
++__aeabi_fcmplt = 0x1c479c;
++__aeabi_fcmpgt = 0x1c419c;
++__aeabi_fcmpge = 0x1c4364;
++__aeabi_fcmple = 0x1c43ac;
+@@ -32,0 +39,2 @@
++ .octree_child_ctor 0x002df654 : { *gs3d-stuff.o(.text._ZN11OctTreeAABB15OctTreeAABBNodeC2ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE .text._ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE .gnu.linkonce.t._ZN11OctTreeAABB15OctTreeAABBNodeC2ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE .gnu.linkonce.t._ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE) }
++
+@@ -184,0 +193,3 @@
++
++ASSERT(SIZEOF(.octree_child_ctor)==832,"Octree child native832 extent");
++ASSERT(ADDR(.octree_child_ctor)+SIZEOF(.octree_child_ctor)==0x002df994,"Octree child native next boundary");

@@ -1,0 +1,23 @@
+{
+  "actual_size": 828,
+  "native_size": 832,
+  "actual_section_size": 828,
+  "linked_sha256": "2cebe0b4e95fb6e70e3b45dc1ba9a8477feb239f30a3b91b7465c794494b0359",
+  "raw_sha256": "b4448f2897be503085b9a7922ba95540b4c722864b264e4cf6dc1e0043472f38",
+  "different_common_bytes": 611,
+  "missing_bytes": 4,
+  "first_difference": 14,
+  "matched": false,
+  "credited": false,
+  "canonical_source_changed": false,
+  "compiler_output_edited": false,
+  "original_retained_marker": "asm/rendering/_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE.s",
+  "diagnostic_only": true,
+  "independent_public_patch_replay": true,
+  "strict_build_exit": 2,
+  "diagnostic_link_exit": 0,
+  "target_compare_exit": 1,
+  "preserved_existing_function_checks": 147,
+  "preserved_owner_section_region_checks": 118,
+  "same_object_relinked": true
+}
