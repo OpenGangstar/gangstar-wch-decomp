@@ -1,0 +1,144 @@
+--- a/src/game/rendering/GS3DStuff.cpp
++++ b/src/game/rendering/GS3DStuff.cpp
+@@ -1046,13 +1046,131 @@
+ }
+
++/*
++ *
++ *
++ * Copyright (c) 1994
++ * Hewlett-Packard Company
++ *
++ * Copyright (c) 1996,1997
++ * Silicon Graphics Computer Systems, Inc.
++ *
++ * Copyright (c) 1997
++ * Moscow Center for SPARC Technology
++ *
++ * Copyright (c) 1999
++ * Boris Fomitchev
++ *
++ * This material is provided "as is", with absolutely no warranty expressed
++ * or implied. Any use is at your own risk.
++ *
++ * Permission to use or copy this software for any purpose is hereby granted
++ * without fee, provided the above notices are retained on all copies.
++ * Permission to modify the code and to distribute modified code is granted,
++ * provided the above notices are retained, and a notice that the code was
++ * modified is included with the above copyright notice.
++ *
++ */
++// Modified: observed native char-string path and existing native imports only.
++// Restricted char-string path; the generated wrapper retains upstream notices.
++#include "../app/ApplicationStorage.h"
++#include "../core/Geometry.h"
+ namespace std {
++template<> struct __type_traits<char> { typedef __true_type has_trivial_assignment_operator; typedef __true_type has_trivial_destructor; };
++template<> char* allocator<char>::allocate(unsigned int, unsigned int&) __attribute__((weak));
++template<> inline void allocator<char>::deallocate(char* value, unsigned int) { ::operator delete(value); }
+ template<class T> struct char_traits;
++template<> struct char_traits<char> {
++    static char* copy(char* target, const char* source, unsigned int count) {
++        return count == 0 ? target : static_cast<char*>(memcpy(target, source, count));
++    }
++    static void assign(char& target, const char& source) { target = source; }
++};
++}
++namespace stlp_priv {
++template<class Input, class Output>
++inline Output string_uninitialized_copy(Input first, Input last, Output result) {
++    Output current = result;
++    for (int count = last - first; count > 0; --count) {
++        std::_Copy_Construct(&*current, *first);
++        ++first;
++        ++current;
++    }
++    return current;
++}
++template<class T, class Alloc> class _String_base {
++protected:
++    enum { _DEFAULT_SIZE = 16 };
++    union _Buffers { T* _M_dynamic_buf; T _M_static_buf[_DEFAULT_SIZE]; } _M_buffers;
++    T* _M_finish;
++    _STLP_alloc_proxy<T*, T, Alloc> _M_end_of_storage;
++    bool _M_using_static_buf() const { return _M_end_of_storage._M_data == _M_buffers._M_static_buf + _DEFAULT_SIZE; }
++    const T* _M_Start() const { return _M_using_static_buf() ? _M_buffers._M_static_buf : _M_buffers._M_dynamic_buf; }
++    T* _M_Start() { return _M_using_static_buf() ? _M_buffers._M_static_buf : _M_buffers._M_dynamic_buf; }
++    const T* _M_Finish() const { return _M_finish; }
++    T* _M_Finish() { return _M_finish; }
++    unsigned int max_size() const { return static_cast<unsigned int>(-1) / sizeof(T) - 1; }
++    void _M_destroy_range(unsigned int from = 0, unsigned int to = 1) {
++        if (!_M_using_static_buf())
++            std::_Destroy_Range(_M_buffers._M_dynamic_buf + from, _M_finish + to);
++    }
++    void _M_deallocate_block() {
++        if (!_M_using_static_buf() && _M_buffers._M_dynamic_buf != 0)
++            _M_end_of_storage.deallocate(_M_buffers._M_dynamic_buf, _M_end_of_storage._M_data - _M_buffers._M_dynamic_buf);
++    }
++    void _M_reset(T* start, T* finish, T* limit) {
++        _M_buffers._M_dynamic_buf = start;
++        _M_finish = finish;
++        _M_end_of_storage._M_data = limit;
++    }
++    void _M_throw_length_error() const __attribute__((weak, noreturn));
++};
++}
++namespace std {
+ template<class T, class Traits = char_traits<T>, class Alloc = allocator<T> >
+-class basic_string {
++class basic_string : protected stlp_priv::_String_base<T, Alloc> {
+ public:
++    typedef unsigned int size_type;
++    typedef T* pointer;
+     basic_string& append(const T* text);
++    size_type size() const { return this->_M_Finish() - this->_M_Start(); }
++    size_type capacity() const { return this->_M_end_of_storage._M_data - this->_M_Start() - 1; }
++    pointer end() { return this->_M_finish; }
+ private:
+     basic_string& _M_append(const T* first, const T* last) __attribute__((weak));
++    void _M_construct_null(T* value) const { *value = 0; }
++    void _M_copy(const T* first, const T* last, T* result) { Traits::copy(result, first, last - first); }
+ };
++template<>
++basic_string<char>& basic_string<char>::_M_append(const char* first, const char* last)
++{
++    if (first != last) {
++        const size_type old_size = size();
++        int count = last - first;
++        if (static_cast<size_type>(count) > this->max_size() || old_size > this->max_size() - count)
++            this->_M_throw_length_error();
++        if (old_size + count > capacity()) {
++            size_type length = old_size + irr::core::max_(old_size, static_cast<size_type>(count)) + 1;
++            pointer new_start = this->_M_end_of_storage.allocate(length, length);
++            pointer new_finish = new_start;
++            new_finish = stlp_priv::string_uninitialized_copy(this->_M_Start(), this->_M_Finish(), new_start);
++            new_finish = stlp_priv::string_uninitialized_copy(first, last, new_finish);
++            _M_construct_null(new_finish);
++            this->_M_destroy_range();
++            this->_M_deallocate_block();
++            this->_M_reset(new_start, new_finish, new_start + length);
++        } else {
++            const char* next = first;
++            ++next;
++            if (this->_M_using_static_buf())
++                _M_copy(next, last, this->_M_Finish() + 1);
++            else
++                stlp_priv::string_uninitialized_copy(next, last, this->_M_finish + 1);
++            _M_construct_null(this->_M_finish + count);
++            char_traits<char>::assign(*end(), *first);
++            this->_M_finish += count;
++        }
++    }
++    return *this;
++}
+ template<>
+ basic_string<char>& basic_string<char>::append(const char* text)
+--- a/src/game/core/NativeAllocator.h
++++ b/src/game/core/NativeAllocator.h
+@@ -46,4 +46,6 @@
+     ~allocator() throw() {}
+     T* allocate(unsigned int count, const void* hint = 0);
++    T* allocate(unsigned int count, unsigned int& allocatedCount);
++    void deallocate(T* value, unsigned int count);
+ };
+ }
