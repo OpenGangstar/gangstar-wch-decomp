@@ -24,6 +24,39 @@
 #include "../core/LocalStartupStorage.h"
 
 #include "../core/LocalStartupText.h"
+#include "../core/VideoDriver.h"
+#include "../core/IrrlichtDevice.h"
+
+void GSCarRepairMenu::draw2d(const StateMachine*)
+{
+    if (unknown4 == 0)
+        return;
+
+    int alpha;
+    switch (unknown4) {
+    case 2:
+        alpha = 255;
+        goto draw;
+    case 3:
+        alpha = unknown12 * 255 / unknown8;
+        break;
+    case 1:
+        alpha = 255 - unknown12 * 255 / unknown8;
+        break;
+    default:
+        return;
+    }
+    if (alpha <= 0)
+        return;
+
+draw:
+    Application* app = Application::GetInstance();
+    irr::video::IVideoDriver* driver = app->GetDevice()->getVideoDriver();
+    int width, height;
+    app->GetScreenDimensions(width, height);
+    driver->draw2DRectangle(irr::video::SColor(alpha, 0, 0, 0),
+        irr::core::rect<int>(0, 0, width, height));
+}
 
 void operator delete(void*) throw();
 extern "C" {

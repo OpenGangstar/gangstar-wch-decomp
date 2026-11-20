@@ -9275,7 +9275,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e1539	0x24	GSCarRentalMenu.cpp	game	ui	matched	_ZN15GSCarRentalMenuD1Ev	GSCarRentalMenu::~GSCarRentalMenu()
 0x002e155d	0xe	GSCarRepairMenu.cpp	game	ui	matched	_ZN15GSCarRepairMenu8isKindOfEi	GSCarRepairMenu::isKindOf(int)
 0x002e156d	0x2	GSCarRepairMenu.cpp	game	ui	matched	_ZN15GSCarRepairMenu4drawEPK12StateMachine	GSCarRepairMenu::draw(StateMachine const*)
-0x002e1571	0x88	GSCarRepairMenu.cpp	game	ui	pending	_ZN15GSCarRepairMenu6draw2dEPK12StateMachine	GSCarRepairMenu::draw2d(StateMachine const*)
+0x002e1571	0x88	GSCarRepairMenu.cpp	game	ui	matched	_ZN15GSCarRepairMenu6draw2dEPK12StateMachine	GSCarRepairMenu::draw2d(StateMachine const*)
 0x002e15f9	0x1c	GSCarRepairMenu.cpp	game	ui	matched	__tcf_3	__tcf_3
 0x002e1615	0x22	GSCarRepairMenu.cpp	game	ui	matched	_ZN15GSCarRepairMenu4dtorEPK12StateMachine	GSCarRepairMenu::dtor(StateMachine const*)
 0x002e1639	0x8c	GSCarRepairMenu.cpp	game	ui	matched	_ZN15GSCarRepairMenu4ctorEPK12StateMachine	GSCarRepairMenu::ctor(StateMachine const*)
