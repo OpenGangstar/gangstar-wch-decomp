@@ -1,0 +1,15 @@
+{
+  "kind": "keyboard",
+  "actual_size": 1332,
+  "build_exit": 2,
+  "inputs": 839,
+  "inputs_stable": true,
+  "credited": false,
+  "functions_passed": 0,
+  "regions_passed": 0,
+  "raw_sha256": "da64eae629f3c8a7aba6a2abaed4d06f908f5693820fd8bc60ff016bb441b4bb",
+  "graph": "Archived on-foot model plus exact public fragment; current owner metadata.",
+  "candidate_image": false,
+  "strict_failure": true,
+  "source_sha256": "3a908b052a0959d48895603fbe35c8bec66387b119c6de49e10c79d1044faf14"
+}
