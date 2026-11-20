@@ -105,7 +105,9 @@
         "_ZNK12SoundManager15isRestrictedSfxEi",
         "_ZN12SoundManager13beginCutsceneEv",
         "_ZN12SoundManager15resumeAllSoundsEv",
-        "_ZN12SoundManager13_getSoundDataEi"
+        "_ZN12SoundManager13_getSoundDataEi",
+        "_ZN12SoundManagerC1Ev",
+        "_ZN12SoundManagerC2Ev"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -185,7 +187,12 @@
         ".sound_manager_cutscene_0",
         ".sound_manager_cutscene_1",
         ".sound_manager_resume",
-        ".sound_manager_data_load"
+        ".sound_manager_data_load",
+        ".soundmanager_ctor",
+        ".memorySoundPrefix",
+        ".musicSoundPrefix",
+        ".swavSuffix",
+        ".wavSuffix"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -196,7 +203,6 @@
         "nativePauseSoundBig",
         "nativePlaySoundBig",
         "_ZNK6CSound9GetStatusEv",
-        "_ZN12SoundManagerC1Ev",
         "_ZN22RadioStationControllerD1Ev",
         "_ZN12SoundManager6updateEd",
         "_ZN3irr2os10Randomizer4randEv",
@@ -207,6 +213,18 @@
         "_ZN11FileManager11_GetDvdNameEi",
         "_ZN14CSoundDataPool12GetSoundDataEiiiiPci",
         "_ZN10CMSWavPool15GetMSWAVDecoderEPKc",
-        "_ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV"
+        "_ZN10CMSWavPool19ReleaseMSWAVDecoderEP18CSoundDecoderMSWAV",
+        "_ZN22RadioStationControllerC1Ev",
+        "_ZN11FileManager23_GetResIdsFromDvdFolderEPKcPii",
+        "_ZN11FileManager8_GetNameEi",
+        "_ZN13CSoundBuffersC1Eiii",
+        "_ZN14CSoundDataPoolC1Eii",
+        "_ZN17CStaticSoundsPoolC1Eii",
+        "_ZN10CMSWavPoolC1Eii",
+        "_ZN14StreamingSound20InitStaticParametersEP13CSoundBuffersP10CMSWavPool",
+        "_ZN14CStreamingPoolC1Eii",
+        "_ZN8CPcmPoolC1Eii",
+        "_ZN12CMSAdpcmPoolC1Eii",
+        "_ZN18CSoundDecoderMSWAV20InitStaticParametersEP8CPcmPoolP12CMSAdpcmPool"
     ]
 }

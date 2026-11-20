@@ -2085,11 +2085,11 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0020c241	0x1e4	PDomain.cpp	irrlicht	-	matched	_ZN3irr2ps5PDBox9transformERKNS_4core8CMatrix4IfEE	irr::ps::PDBox::transform(irr::core::CMatrix4<float> const&)
 0x0020c425	0x30	PSManager.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0020c455	0x14	PSManager.cpp	game	ai	matched	_GLOBAL__I_.._GangstarAndroid_.._lib_Irrlicht_source_Irrlicht_particlesystem_scr_PSManager.cpp_33AAFEDA_05D2067C	_GLOBAL__I_.._GangstarAndroid_.._lib_Irrlicht_source_Irrlicht_particlesystem_scr_PSManager.cpp_33AAFEDA_05D2067C
-0x0020c469	0x1c	PVRTDecompress.cpp	game	rendering	pending	_Z22util_number_is_power_2j	util_number_is_power_2(unsigned int)
-0x0020c485	0x136	PVRTDecompress.cpp	game	rendering	pending	_Z18InterpolateColoursPKiS0_S0_S0_iiiPi	InterpolateColours(int const*, int const*, int const*, int const*, int, int, int, int*)
-0x0020c5bd	0x130	PVRTDecompress.cpp	game	rendering	pending	_Z18GetModulationValueiiiPA16_KiS1_PiS2_	GetModulationValue(int, int, int, int const (*) [16], int const (*) [16], int*, int*)
-0x0020c6ed	0x4e	PVRTDecompress.cpp	game	rendering	pending	_Z9TwiddleUVmmmm	TwiddleUV(unsigned long, unsigned long, unsigned long, unsigned long)
-0x0020c73d	0x598	PVRTDecompress.cpp	game	rendering	pending	_Z10DecompressP17AMTC_BLOCK_STRUCTiiiiPh	Decompress(AMTC_BLOCK_STRUCT*, int, int, int, int, unsigned char*)
+0x0020c469	0x1c	PVRTDecompress.cpp	game	rendering	matched	_Z22util_number_is_power_2j	util_number_is_power_2(unsigned int)
+0x0020c485	0x136	PVRTDecompress.cpp	game	rendering	matched	_Z18InterpolateColoursPKiS0_S0_S0_iiiPi	InterpolateColours(int const*, int const*, int const*, int const*, int, int, int, int*)
+0x0020c5bd	0x130	PVRTDecompress.cpp	game	rendering	matched	_Z18GetModulationValueiiiPA16_KiS1_PiS2_	GetModulationValue(int, int, int, int const (*) [16], int const (*) [16], int*, int*)
+0x0020c6ed	0x4e	PVRTDecompress.cpp	game	rendering	matched	_Z9TwiddleUVmmmm	TwiddleUV(unsigned long, unsigned long, unsigned long, unsigned long)
+0x0020c73d	0x598	PVRTDecompress.cpp	game	rendering	matched	_Z10DecompressP17AMTC_BLOCK_STRUCTiiiiPh	Decompress(AMTC_BLOCK_STRUCT*, int, int, int, int, unsigned char*)
 0x0020ccd5	0x14	PVRTDecompress.cpp	game	rendering	matched	_Z15PVRTCDecompressPKviiiPh	PVRTCDecompress(void const*, int, int, int, unsigned char*)
 0x0020cce9	0x68	CDefaultSceneNodeAnimatorFactory.cpp	irrlicht	-	matched	_ZN3irr5scene32CDefaultSceneNodeAnimatorFactoryC1EPNS0_13ISceneManagerEPNS_3gui14ICursorControlE	irr::scene::CDefaultSceneNodeAnimatorFactory::CDefaultSceneNodeAnimatorFactory(irr::scene::ISceneManager*, irr::gui::ICursorControl*)
 0x0020cd51	0x4	CDefaultSceneNodeAnimatorFactory.cpp	irrlicht	-	matched	_ZNK3irr5scene32CDefaultSceneNodeAnimatorFactory38getCreatableSceneNodeAnimatorTypeCountEv	irr::scene::CDefaultSceneNodeAnimatorFactory::getCreatableSceneNodeAnimatorTypeCount() const
@@ -11837,8 +11837,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00335f91	0x9c	Mission.cpp	game	missions	matched	_ZN7MissionD0Ev	Mission::~Mission()
 0x0033602d	0x94	Mission.cpp	game	missions	matched	_ZN7MissionD2Ev	Mission::~Mission()
 0x0033602d	0x94	Mission.cpp	game	missions	matched	_ZN7MissionD1Ev	Mission::~Mission()
-0x003360c1	0x80	Mission.cpp	game	missions	pending	_ZN7MissionC2Ev	Mission::Mission()
-0x003360c1	0x80	Mission.cpp	game	missions	pending	_ZN7MissionC1Ev	Mission::Mission()
+0x003360c1	0x80	Mission.cpp	game	missions	matched	_ZN7MissionC2Ev	Mission::Mission()
+0x003360c1	0x80	Mission.cpp	game	missions	matched	_ZN7MissionC1Ev	Mission::Mission()
 0x00336141	0xcc	Mission.cpp	game	missions	matched	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
 0x0033620d	0x138	Mission.cpp	game	missions	matched	_ZN7Mission4drawEv	Mission::draw()
 0x00336345	0x78	Mission.cpp	game	missions	pending	_ZN7Mission7messageEi	Mission::message(int)
@@ -13220,8 +13220,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0035349d	0x6	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager19getNumRadioStationsEv	SoundManager::getNumRadioStations() const
 0x003534a5	0x6c	SoundManager.cpp	game	audio	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00353511	0x14	SoundManager.cpp	game	audio	matched	_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE	_GLOBAL__I__ZN12SoundManager15s_soundsPlayingE
-0x00353525	0x2a8	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerC1Ev	SoundManager::SoundManager()
-0x00353525	0x2a8	SoundManager.cpp	game	audio	pending	_ZN12SoundManagerC2Ev	SoundManager::SoundManager()
+0x00353525	0x2a8	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerC1Ev	SoundManager::SoundManager()
+0x00353525	0x2a8	SoundManager.cpp	game	audio	matched	_ZN12SoundManagerC2Ev	SoundManager::SoundManager()
 0x003537cd	0x54	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17playPriorityAudioEib	SoundManager::playPriorityAudio(int, bool)
 0x00353821	0x2c	SoundManager.cpp	game	audio	matched	_Z16soundEndCallbackv	soundEndCallback()
 0x0035384d	0x30	SoundManager.cpp	game	audio	matched	_ZN12SoundManager16setPitchCallbackEiif	SoundManager::setPitchCallback(int, int, float)

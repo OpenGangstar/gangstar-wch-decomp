@@ -93,6 +93,7 @@ public:
     static bool isSoundPlayingCallback(int id, int channel);
 
     struct SoundEntry {
+        SoundEntry():type(0),channel(-1),data(0) {}
         int type;
         int channel;
         CSoundData* data;
@@ -109,7 +110,7 @@ public:
     int radioTrack;
     int radioStation;
     unsigned int flags;
-    unsigned char unknown60[4];
+    float unknown60;
     int frequencyCount;
     int frequenciesRemaining;
     int* trackFrequencies;
@@ -123,7 +124,8 @@ public:
     int resourceIdBase;
     RadioStationController radio;
     bool unknown140;
-    unsigned char unknown141[7];
+    unsigned char unknown141[3];
+    unsigned int unknown144;
 };
 
 #endif

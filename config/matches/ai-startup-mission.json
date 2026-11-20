@@ -80,7 +80,9 @@
             "name": "__tcf_3",
             "address": "0x00335df1",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN7MissionC1Ev",
+        "_ZN7MissionC2Ev"
     ],
     "sections": [
         ".mission_vtable",
@@ -111,7 +113,8 @@
         ".mission_set_failure_count",
         ".mission_objective",
         ".mission_read",
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".mission_constructor"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -160,6 +163,7 @@
         "_ZN10DataStream7ReadIntEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN10AnimObjectC1Ev"
     ]
 }
