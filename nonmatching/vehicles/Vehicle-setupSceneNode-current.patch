@@ -1,0 +1,163 @@
+--- a/src/game/vehicles/Vehicle.cpp
++++ b/src/game/vehicles/Vehicle.cpp
+@@ -2515,3 +2515,93 @@
+     }
+     previousPosition = position;
+ }
++
++extern "C" {
++#define VEHICLE_ASSET(name) extern const char vehicleSetup##name[] __attribute__((visibility("hidden")));
++VEHICLE_ASSET(LeftDoor)
++VEHICLE_ASSET(RightDoor)
++VEHICLE_ASSET(BodyMorph)
++VEHICLE_ASSET(Interior)
++VEHICLE_ASSET(BaseTexture)
++VEHICLE_ASSET(DamageTexture)
++VEHICLE_ASSET(Shadow)
++VEHICLE_ASSET(WheelFL)
++VEHICLE_ASSET(WheelFR)
++VEHICLE_ASSET(WheelBL)
++VEHICLE_ASSET(WheelBR)
++VEHICLE_ASSET(CarBody)
++VEHICLE_ASSET(SmokeNode)
++VEHICLE_ASSET(SmokeScene)
++VEHICLE_ASSET(FireScene)
++#undef VEHICLE_ASSET
++}
++
++namespace {
++struct BillboardRecord {
++    unsigned char unknown0[8];
++    void* value;
++};
++struct BillboardVehicleView {
++    unsigned char unknown0[40];
++    BillboardRecord* record;
++};
++}
++
++void Vehicle::setupSceneNode(int id, irr::scene::ISceneNode* node, int count, void** params)
++{
++    LevelObject::setupSceneNode(id, node, count, params);
++    irr::IrrlichtDevice* device = Application::GetInstance()->GetDevice();
++    irr::video::IVideoDriver* driver = device->getVideoDriver();
++    GS3DStuff::SetColor(node, irr::video::SColor(255, 102, 102, 102), GS3DStuff::Color3);
++    GS3DStuff::SetColor(node, irr::video::SColor(255, 229, 229, 229), GS3DStuff::Color2);
++
++    CustomBillboardSceneNode* billboard = static_cast<CustomBillboardSceneNode*>(
++        static_cast<irr::collada::CSceneNode*>(node));
++    params[0] = reinterpret_cast<const BillboardVehicleView*>(billboard)->record->value;
++    irr::scene::ISceneNodeAnimator* animator = irr::collada::CColladaDatabase::constructAnimator(
++        init768, &irr::collada::CColladaDatabase::DefaultFactory);
++    node->addAnimator(animator);
++    params[1] = animator;
++    animator->drop();
++
++    animator = irr::collada::CColladaDatabase::constructAnimator(
++        init772, &irr::collada::CColladaDatabase::DefaultFactory);
++    node->addAnimator(animator);
++    params[2] = animator;
++    animator->drop();
++
++    const char* morphUID = vehicleSetupBodyMorph;
++    params[3] = node->getSceneNodeFromUID(vehicleSetupLeftDoor);
++    params[4] = node->getSceneNodeFromUID(vehicleSetupRightDoor);
++    params[5] = node->getSceneNodeFromUID(morphUID);
++    params[6] = node->getSceneNodeFromUID(vehicleSetupInterior);
++    params[7] = driver->getTexture(vehicleSetupBaseTexture);
++    params[8] = driver->getTexture(vehicleSetupDamageTexture);
++    params[9] = node->getSceneNodeFromUID(morphUID);
++
++    irr::scene::ISceneNode* shadow = node->getSceneNodeFromUID(vehicleSetupShadow);
++    shadow->getChildren().begin()->value->setRenderingLayer(1);
++    GS3DStuff::SetColor(shadow, irr::video::SColor(255, 0, 0, 0), GS3DStuff::Color3);
++    GS3DStuff::SetColor(shadow, irr::video::SColor(255, 255, 255, 255), GS3DStuff::Color0);
++    GS3DStuff::SetColor(shadow, irr::video::SColor(255, 255, 255, 255), GS3DStuff::Color1);
++    GS3DStuff::SetColor(shadow, irr::video::SColor(255, 255, 255, 255), GS3DStuff::Color2);
++    GS3DStuff::SetMaterialFlag(shadow, irr::video::MaterialFlag1024, false);
++    GS3DStuff::SetMaterialFlag(shadow, irr::video::MaterialFlag512, false);
++    GS3DStuff::SetMaterialFlag(shadow, irr::video::MaterialFlag4, true);
++    device->getSceneManager()->getRootSceneNode()->addChild(shadow);
++    params[10] = shadow;
++
++    params[11] = node->getSceneNodeFromUID(vehicleSetupWheelFL);
++    params[12] = node->getSceneNodeFromUID(vehicleSetupWheelFR);
++    params[13] = node->getSceneNodeFromUID(vehicleSetupWheelBL);
++    params[14] = node->getSceneNodeFromUID(vehicleSetupWheelBR);
++    params[15] = node->getSceneNodeFromUID(vehicleSetupCarBody);
++    irr::scene::ISceneNode* smoke = node->getSceneNodeFromUID(vehicleSetupSmokeNode);
++    params[16] = smoke;
++    if (smoke) {
++        params[17] = reinterpret_cast<void*>(SceneNodeManager::getInstance()->findOrCreatePool(
++            vehicleSetupSmokeScene, 5, _ZN12CGameFactory11getInstanceEv()));
++        params[18] = reinterpret_cast<void*>(SceneNodeManager::getInstance()->findOrCreatePool(
++            vehicleSetupFireScene, 5, _ZN12CGameFactory11getInstanceEv()));
++    }
++}
+--- a/config/matches/vehicle-cleanup.json
++++ b/config/matches/vehicle-cleanup.json
+@@ -227,7 +227,8 @@
+         "_ZN3irr7collada21CSkinnedMeshSceneNodeD2Ev",
+         "_ZN7VehicleC1Ei",
+         "_ZN7VehicleC2Ei",
+-        "_ZN7Vehicle10stepPhysicEv"
++        "_ZN7Vehicle10stepPhysicEv",
++        "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv"
+     ],
+     "sections": [
+         ".vehicle_light00_asset",
+@@ -344,7 +345,8 @@
+         ".skin_table_18",
+         ".skin_table_19",
+         ".ctor_family_8",
+-        ".ctor_table_8"
++        ".ctor_table_8",
++        ".vehicle_setup_scene_node"
+     ],
+     "retail_got": true,
+     "external_thumb_functions": [
+@@ -589,6 +591,7 @@
+         "_ZN11LevelObjectC1Ei",
+         "_ZN10PlayerTest17addDistanceDrivenEf",
+         "_ZN10PlayerTest23addCurrentDriftDistanceEf",
+-        "_ZN10PlayerTest22addCurrentJumpDistanceEf"
++        "_ZN10PlayerTest22addCurrentJumpDistanceEf",
++        "_ZN11LevelObject14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv"
+     ]
+ }
+--- a/config/linker/VehicleCleanup.ld
++++ b/config/linker/VehicleCleanup.ld
+@@ -1,3 +1,18 @@
++vehicleSetupLeftDoor = 0x41f5c0;
++vehicleSetupRightDoor = 0x41f5dc;
++vehicleSetupBodyMorph = 0x41f5f8;
++vehicleSetupInterior = 0x41f614;
++vehicleSetupBaseTexture = 0x41f624;
++vehicleSetupDamageTexture = 0x41f638;
++vehicleSetupShadow = 0x41bcc4;
++vehicleSetupWheelFL = 0x41f654;
++vehicleSetupWheelFR = 0x41f66c;
++vehicleSetupWheelBL = 0x41f684;
++vehicleSetupWheelBR = 0x41f69c;
++vehicleSetupCarBody = 0x41f6b4;
++vehicleSetupSmokeNode = 0x41f6c4;
++vehicleSetupSmokeScene = 0x41f6dc;
++vehicleSetupFireScene = 0x41f6f0;
+ acosf = 0x1c4694;
+ OUTPUT_FORMAT("elf32-littlearm")
+ OUTPUT_ARCH(arm)
+@@ -35,6 +50,7 @@
+ __cxa_pure_virtual = 0;
+ SECTIONS
+ {
++    .vehicle_setup_scene_node 0x00309a4c : { *vehicle-cleanup.o(.text._ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv) }
+  .vehicle_step_physic 0x3116dc : { *(.text._ZN7Vehicle10stepPhysicEv) }
+  .ctor_family_8 0x30a954 : { *(.text._ZN7VehicleC1Ei) }
+  .ctor_table_8 0x4ab050 : { *(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }
+@@ -265,3 +281,6 @@
+     .verification_unused_morph_dtor : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD2Ev) }
+ }
+ ASSERT(SIZEOF(.vehicle_empty_string) == 32, "Vehicle empty string extent");
++
++ASSERT(SIZEOF(.vehicle_setup_scene_node)==736,"vehicle setup native extent");
++ASSERT(ADDR(.vehicle_setup_scene_node)+SIZEOF(.vehicle_setup_scene_node)==0x00309d2c,"vehicle setup neighbor");

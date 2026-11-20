@@ -1,0 +1,21 @@
+{
+  "kind": "explode",
+  "public_patch_sha256": "76266ecae16a2ac818771ca8d89c5165f051044c8aa513aa892a3f6bc19ee021",
+  "actual_size": 740,
+  "actual_address": "0x3130a1",
+  "linked_sha256": "a58f97941d088b08ad26a8834e7b4434bda26bfd52745e706b2100e007be5189",
+  "build_exit": 1,
+  "native_comparison_exit": 1,
+  "exact_target_output": "MISMATCH  _ZN7Vehicle7explodeEv  0x003130a1\n  expected : 95 b0 07 1c 00 2b 00 d0 01 e1 01 23 9b 46 bb 54\n  actual   : 95 b0 07 1c 00 2b 00 d0 02 e1 01 23 9b 46 bb 54\n  differs at 0x20\n",
+  "existing_functions_exact": 188,
+  "existing_sections_regions_exact": 112,
+  "failures": [
+    "MISMATCH  _ZN7Vehicle7explodeEv  0x003130a1",
+    "MISMATCH SECTION .vehicle_explode_candidate"
+  ],
+  "only_new_definition": "_ZN7Vehicle7explodeEv",
+  "frozen_inputs": 884,
+  "all_inputs_stable": true,
+  "credited": false,
+  "graph": "Current root plus this one unapplied public patch; independent from the other vehicle candidate."
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "setup",
+  "public_patch_sha256": "10492b49c82b083f23a07ab756647f46cc9784a4ad83e0c6e7716f9c2a3645cb",
+  "actual_size": 736,
+  "actual_address": "0x309a4d",
+  "linked_sha256": "c39efcc20cac54a3a5b872a66a90f4f86d6ea70472b882bb998ecb3c939c9a29",
+  "build_exit": 1,
+  "native_comparison_exit": 1,
+  "exact_target_output": "MISMATCH  _ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv  0x00309a4d\n  expected : 8b b0 17 1c 14 9a 81 46 01 24 00 92 90 46 3a 1c\n  actual   : 8b b0 17 1c 14 9a 81 46 9f 4c 00 92 92 46 3a 1c\n  differs at 0x14\n",
+  "existing_functions_exact": 188,
+  "existing_sections_regions_exact": 112,
+  "failures": [
+    "MISMATCH  _ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv  0x00309a4d",
+    "MISMATCH SECTION .vehicle_setup_scene_node"
+  ],
+  "only_new_definition": "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
+  "frozen_inputs": 884,
+  "all_inputs_stable": true,
+  "credited": false,
+  "graph": "Current root plus this one unapplied public patch; independent from the other vehicle candidate."
+}

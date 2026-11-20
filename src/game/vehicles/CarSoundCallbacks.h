@@ -88,7 +88,7 @@ struct CarSoundSettings {
     int auxiliaryTurboCount;
     int* auxiliaryTurboIds;
     int* auxiliaryTurboThresholds;
-    int turboValue192;
+    float auxiliaryTurboGain;
     bool filterRpm;
     unsigned char unknown197[3];
     float filterFrequency;
