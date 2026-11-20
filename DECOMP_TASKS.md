@@ -717,7 +717,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d337d | SwfAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x002d3389 | IrrAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x002d3395 | IrrAlloc(unsigned int, irr::MemHint, int, const char*, int) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles | vehicle_side | BLOCKED | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles() const | — | BLOCKED | Original STLport short-string accessor reconstruction restores native248B extent;21 bytes differ. Three ordinary forms have identical raw bytes/relocations; old11functions/7regions exact. Reviewed unapplied source/configuration and const-vector API prerequisite; no credit or more grids without new evidence. | src/game/world/DataReloaderManager.cpp; nonmatching/world/DataReloaderManager-checkFiles.patch |
 | libsanangeles.so | 0x002e2b19 | GSLoading::isGameLoaded | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2b2d | GSLoading::setGameLoaded | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x0034b2c5 | StringManager::isPackLoaded | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |

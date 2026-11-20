@@ -1,0 +1,128 @@
+{
+  "native_size": 248,
+  "compiled_size": 248,
+  "raw_signature": {
+    "defined": true,
+    "size": 248,
+    "section_size": 248,
+    "raw_sha256": "8e76e287df5460f24254a1fe65eae6679348b985f7e5c28e01ac0645eb8f4e45",
+    "relocations": [
+      [
+        18,
+        10,
+        "_ZN11Application11GetInstanceEv",
+        0
+      ],
+      [
+        112,
+        10,
+        "_ZNK19DataReloaderManager6_traceEPKc",
+        1
+      ],
+      [
+        128,
+        10,
+        "_ZNK19DataReloaderManager6_traceEPKc",
+        1
+      ],
+      [
+        186,
+        10,
+        "_ZN4Logs5errorEPKc",
+        0
+      ],
+      [
+        200,
+        10,
+        "_ZN4Logs5errorEPKc",
+        0
+      ],
+      [
+        236,
+        25,
+        "_GLOBAL_OFFSET_TABLE_",
+        0
+      ],
+      [
+        240,
+        24,
+        "reloaderReloadedMessage",
+        0
+      ],
+      [
+        244,
+        24,
+        "reloaderOpenError",
+        0
+      ]
+    ]
+  },
+  "three_forms_identical": true,
+  "different_bytes": 21,
+  "different_offsets": [
+    14,
+    22,
+    26,
+    42,
+    48,
+    50,
+    80,
+    110,
+    120,
+    126,
+    132,
+    135,
+    136,
+    140,
+    204,
+    207,
+    208,
+    224,
+    226,
+    228,
+    230
+  ],
+  "linked_sha256": "98e52e529076aee56c998f0b15386a74f3b2ac185e62ff61cc22c1ed626f4386",
+  "old_archived_candidate_size": 240,
+  "old_overlapping_different_byte_count": 231,
+  "existing_functions_passed": 11,
+  "existing_sections_regions_passed": 7,
+  "frozen_inputs_stable": true,
+  "normal_build_exit": 1,
+  "credited": false,
+  "binary": "libsanangeles.so",
+  "symbol": "_ZNK19DataReloaderManager10checkFilesEv",
+  "native_address": "0x0034c119",
+  "baseline": "7fcefedd0e5ceb4358967c234de717c8ea5dbd2b",
+  "variants": [
+    {
+      "name": "separate_loop_iterators",
+      "normal_build_exit": 1,
+      "source_delta_from_retained": ""
+    },
+    {
+      "name": "shared_iterator",
+      "normal_build_exit": 1,
+      "source_delta_from_retained": "--- a/src/game/world/DataReloaderManager.cpp\n+++ b/src/game/world/DataReloaderManager.cpp\n@@ -162,11 +162,12 @@\n\n void DataReloaderManager::checkFiles() const\n {\n+    typedef std::vector<_MonitoredFiles*>::const_iterator Iterator;\n+    Iterator it;\n     Application* app = Application::GetInstance();\n-    typedef std::vector<_MonitoredFiles*>::const_iterator Iterator;\n-    for (Iterator it = monitoredFiles.begin(); it != monitoredFiles.end(); ++it)\n+    for (it = monitoredFiles.begin(); it != monitoredFiles.end(); ++it)\n         (*it)->changed = true;\n-    for (Iterator it = monitoredFiles.begin(); it != monitoredFiles.end(); ++it) {\n+    for (it = monitoredFiles.begin(); it != monitoredFiles.end(); ++it) {\n         _MonitoredFiles* item = *it;\n         if (!item->changed)\n             continue;\n"
+    },
+    {
+      "name": "positive_changed_guard",
+      "normal_build_exit": 1,
+      "source_delta_from_retained": "--- a/src/game/world/DataReloaderManager.cpp\n+++ b/src/game/world/DataReloaderManager.cpp\n@@ -168,8 +168,7 @@\n         (*it)->changed = true;\n     for (Iterator it = monitoredFiles.begin(); it != monitoredFiles.end(); ++it) {\n         _MonitoredFiles* item = *it;\n-        if (!item->changed)\n-            continue;\n+        if (item->changed) {\n         IFileStream* file = app->GetFileSystem()->openResource(item->filename.c_str());\n         if (file) {\n             item->reloader->reload(file, item->filename.c_str());\n@@ -181,5 +180,6 @@\n             Logs::error(reloaderOpenError);\n             Logs::error(item->filename.c_str());\n         }\n+        }\n     }\n }\n"
+    }
+  ],
+  "only_new_primary_definition": [
+    "_ZNK19DataReloaderManager10checkFilesEv"
+  ],
+  "full_root_gate_run": false,
+  "source_references": [
+    {
+      "url": "https://android.googlesource.com/platform/external/stlport/+/e64e7c849b0b659d3e198e4efaed563601e554be/stl/_string.h?format=TEXT",
+      "sha256": "bada67eec87f1791bf3d0fc8a6256a803e6ebae8d503d0afa87c3644d0939209"
+    },
+    {
+      "url": "https://android.googlesource.com/platform/external/stlport/+/e64e7c849b0b659d3e198e4efaed563601e554be/stl/_string_base.h?format=TEXT",
+      "sha256": "5349d7c0163fe9f748816b43bb12ed2a2c6d5f9eb2f38b84de160a7d0566fd6e"
+    }
+  ]
+}
