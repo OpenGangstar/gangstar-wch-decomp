@@ -717,7 +717,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002d337d | SwfAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x002d3389 | IrrAlloc(size, hint) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
 | libsanangeles.so | 0x002d3395 | IrrAlloc(unsigned int, irr::MemHint, int, const char*, int) | — | COMPLETED | 100% | src/game/core/Memory.cpp |
-| libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles | vehicle_side | BLOCKED | pending | src/game/world/DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles() const | — | BLOCKED | Original STLport short-string accessor reconstruction restores native248B extent;21 bytes differ. Three ordinary forms have identical raw bytes/relocations; old11functions/7regions exact. Reviewed unapplied source/configuration and const-vector API prerequisite; no credit or more grids without new evidence. | src/game/world/DataReloaderManager.cpp; nonmatching/world/DataReloaderManager-checkFiles.patch |
 | libsanangeles.so | 0x002e2b19 | GSLoading::isGameLoaded | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x002e2b2d | GSLoading::setGameLoaded | — | COMPLETED | 100% | src/game/app/GSLoading.cpp |
 | libsanangeles.so | 0x0034b2c5 | StringManager::isPackLoaded | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
@@ -803,7 +803,7 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 | libsanangeles.so | 0x002f48b1 | Character::initInVehicle | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f6299 | Character::hitByCar | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f405d | Character::Update | — | COMPLETED | 100% | src/game/characters/Character.cpp |
-| libsanangeles.so | 0x002f4465 | Character::initPhysic | — | BLOCKED | Complete SDK-class reuse remains 440/native456 bytes, frame124/native116. Normal native placement fails target at+0x0e; all114 old functions/33 old regions and six SDK bodies/three vtables exact. One real SDK Set transfer also440B, no link/credit. Unapplied patches reviewed; no further form without new evidence. | src/game/characters/Character.cpp; nonmatching/characters/Character-initPhysic-sdk-reuse.patch |
+| libsanangeles.so | 0x002f4465 | Character::initPhysic | — | BLOCKED | Aggregate filter model preserves20 layout values, restores native116B frame and three-halfword copy; target452/native456B, old114functions/33regions exact. Two SDK transfers stay452B; stock constructor regresses InitWorld and is rejected. Reviewed unapplied delta; no credit or further grid without new evidence. | src/game/characters/Character.cpp; nonmatching/characters/Character-initPhysic-filter-aggregate.patch |
 | libsanangeles.so | 0x002f4a79 | Character::positionInVehicle | vehicle_side | BLOCKED | pending | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f1a31 | Character::getSpecificAnimation | — | COMPLETED | 100%;714-byte function and716-byte section exact in Character/NPC/Player images. Four alias-return pairs separated; full190-profile10949-comparison gate passes with965inputs stable. Ownership released after acceptance. | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f517d | Character::switchCombatAnimation | lock_init | BLOCKED | pending | src/game/characters/Character.cpp |

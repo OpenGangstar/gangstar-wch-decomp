@@ -1,0 +1,76 @@
+--- /dev/null
++++ b/src/game/core/PhysicsFilterData.h
+@@ -0,0 +1,6 @@
++#ifndef WCH_CORE_PHYSICS_FILTER_DATA_H
++#define WCH_CORE_PHYSICS_FILTER_DATA_H
++
++struct b2FilterData { unsigned short categoryBits, maskBits; short groupIndex; };
++
++#endif
+--- a/src/game/core/Physics.h
++++ b/src/game/core/Physics.h
+@@ -18,7 +18,7 @@
+ struct b2AABB { b2Vec2 lowerBound, upperBound; };
+ struct b2Segment { b2Vec2 p1, p2; };
+ struct b2XForm { b2Vec2 position; float rotation[4]; };
+-struct b2FilterData { unsigned short categoryBits, maskBits; short groupIndex; };
++#include "PhysicsFilterData.h"
+ struct PhysicsBodyData {
+     PhysicsBodyData(LevelObject* object, irr::scene::ISceneNode* mesh) : owner(object), node(mesh), lowerHeight(0), upperHeight(0), unknown16(0), unknown20(0), unknown24(false), unknown25(false) {}
+     LevelObject* owner;
+--- a/src/game/world/LevelObject.h
++++ b/src/game/world/LevelObject.h
+@@ -121,7 +121,6 @@
+     int unknown44;
+     unsigned char unknown48;
+     unsigned char unknown49;
+-    unsigned short collisionCategory;
+ };
+
+ #endif
+--- a/src/game/characters/Character.h
++++ b/src/game/characters/Character.h
+@@ -2,6 +2,7 @@
+ #define WCH_CHARACTERS_CHARACTER_H
+
+ #include "../world/LevelObject.h"
++#include "../core/PhysicsFilterData.h"
+ #include "SaveVector3.h"
+
+ class Vehicle;
+@@ -129,8 +130,7 @@
+     bool isCurrentAnimation(int id);
+     bool canAnimationBeInterrupted(int id);
+     int getSpecificAnimation(int id);
+-    unsigned short collisionMask;
+-    short collisionGroup;
++    b2FilterData collisionFilter;
+     SaveVector3 facing;
+     float unknown68, unknown72, unknown76;
+     irr::core::vector3d<float> cameraOffset;
+--- a/src/game/characters/Character.cpp
++++ b/src/game/characters/Character.cpp
+@@ -893,9 +893,9 @@
+ {
+     if (collisionBody) {
+         for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next) {
+-            shape->filter.categoryBits = collisionCategory;
+-            shape->filter.maskBits = collisionMask;
+-            shape->filter.groupIndex = collisionGroup;
++            shape->filter.categoryBits = collisionFilter.categoryBits;
++            shape->filter.maskBits = collisionFilter.maskBits;
++            shape->filter.groupIndex = collisionFilter.groupIndex;
+             PhysicAttributes::s_world->Refilter(shape);
+         }
+     }
+@@ -1525,9 +1525,7 @@
+     shape.filter.categoryBits = static_cast<void*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == this ? 2 : 4;
+     shape.filter.maskBits = 0xffff;
+     shape.filter.groupIndex = unknown24->getIndex()+1;
+-    collisionCategory = shape.filter.categoryBits;
+-    collisionMask = shape.filter.maskBits;
+-    collisionGroup = shape.filter.groupIndex;
++    collisionFilter = shape.filter;
+     collisionBody->CreateShape(&shape);
+     collisionBody->SetMassFromShapes();
+     collisionBody->data = new PhysicsBodyData(this,static_cast<irr::scene::ISceneNode*>(getSkinMesh()));
