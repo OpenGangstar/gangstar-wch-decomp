@@ -1,0 +1,185 @@
+--- a/src/game/ai/NPC.h
++++ b/src/game/ai/NPC.h
+@@ -47,4 +47,5 @@
+     void Load(const Structs::NPC&);
+     bool isCop();
++    bool isHostileTo(LevelObject*);
+     void notifyTargeted(bool targeted, Character* by);
+     void attackTarget(LevelObject* object);
+--- a/src/game/vehicles/Vehicle.cpp
++++ b/src/game/vehicles/Vehicle.cpp
+@@ -2516,2 +2516,107 @@
+     previousPosition = position;
+ }
++
++#include "../characters/PlayerEvent.h"
++
++#include "../app/Application.h"
++#include "../combat/Weapon.h"
++#include "../combat/WeaponManager.h"
++#include "../core/EventManager.h"
++#include "../core/Lock.h"
++#include "../core/PlacementNew.h"
++#include "../world/GameObjectManager.h"
++
++extern "C" long lrand48();
++extern "C" void _ZN8EvPlayerD1Ev(void*) __attribute__((weak));
++
++
++
++void Vehicle::shoot()
++{
++    Application* application = Application::GetInstance();
++    application->GetDevice()->getTimer()->getRealTime();
++    Character* shooter = driver;
++    if (!shooter)
++        return;
++    Weapon* weapon = shooter->getWeapon();
++    if (!weapon || !weapon->getWeaponType())
++        return;
++    weapon->getWeaponType();
++    if (!weapon->isReady(false))
++        return;
++    LevelObject* target = Lock::getInstance()->target;
++    if (weapon->isGun()) {
++        irr::core::vector3d<float> hitPoint;
++        irr::core::vector3d<float> shotDirection;
++        irr::core::vector3d<float> normal;
++        irr::core::vector3d<float> source = GetPosition();
++        source.Z += 100.0f;
++        if (!(target && s_type[target->getObjectType()] == 5
++            && static_cast<NPC*>(target)->isHostileTo(this))) {
++            if (shooter->isPlayer()) {
++                target = PlayerTest::getAttackableTarget(this, weapon, target);
++            } else {
++                for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
++                    if (s_type[object->getObjectType()] == 5 && static_cast<NPC*>(object)->isHostileTo(this)) {
++                        target = object;
++                        break;
++                    }
++                }
++            }
++        }
++        if (target) {
++            const float xVariation = (float(lrand48() % 100) - 50.0f) / 50.0f;
++            const float yVariation = (float(lrand48() % 100) - 50.0f) / 50.0f;
++            const float zVariation = float(lrand48() % 100) - 50.0f;
++            const irr::core::vector3d<float> targetPosition = target->GetPosition();
++            const int aimSetting = *reinterpret_cast<const int*>(reinterpret_cast<const char*>(shooter) + 252);
++            const float deviation = 200.0f - float(aimSetting * 2);
++            const float xSpread = xVariation * deviation;
++            const float ySpread = yVariation * deviation;
++            const float aimX = xSpread + targetPosition.X;
++            const float aimY = ySpread + targetPosition.Y;
++            const float aimZ = zVariation / 50.0f * deviation + targetPosition.Z;
++            const float deltaZ = aimZ - source.Z;
++            shotDirection.X = aimX - source.X;
++            shotDirection.Y = aimY - source.Y;
++            shotDirection.Z = deltaZ;
++            if (s_type[target->getObjectType()] == 3)
++                shotDirection.Z += 100.0f;
++            shotDirection.normalize();
++        } else {
++            shotDirection = GetFront();
++        }
++        Lock::getInstance()->setTarget(target);
++        const float range = float(weapon->getRange());
++        const bool hit = CastRay(source, shotDirection * range, hitPoint, normal, target, false);
++        if (target)
++            target->shooted(weapon->getDamage(), this);
++        irr::core::vector3d<float> end = hit ? shotDirection * 7500.0f + source : hitPoint;
++        weapon->shootFromCar(hit, source, end, normal);
++    } else if (weapon->isProjectile()) {
++        irr::core::vector3d<float> direction;
++        if (target) {
++            const irr::core::vector3d<float> targetPosition = target->GetPosition();
++            const irr::core::vector3d<float> source = GetPosition();
++            direction = targetPosition - source;
++            direction.normalize();
++        } else {
++            direction = GetFront();
++        }
++        weapon->shootProjectile(direction);
++    }
++
++    Character* currentDriver = driver;
++    Character* player = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
++    if (currentDriver != player)
++        return;
++    if (target && target->getHealth() <= 0)
++        PlayerTest::GetPlayer()->onObjectKilled(target);
++    EventManager* events = application->GetEventManager();
++    unsigned int storage[sizeof(EvPlayer) / sizeof(unsigned int)];
++    EvPlayer* event = new (storage) EvPlayer(2);
++    events->raise(*event);
++    _ZN8EvPlayerD1Ev(event);
++    if (weapon->getClip() <= 0 && application->GetWeaponManager()->getAmmo(weapon->getAmmoType(), PlayerTest::AnyContext) > 0)
++        weapon->reload(false);
++}
+--- a/config/matches/vehicle-cleanup.json
++++ b/config/matches/vehicle-cleanup.json
+@@ -228,5 +228,8 @@
+         "_ZN7VehicleC1Ei",
+         "_ZN7VehicleC2Ei",
+-        "_ZN7Vehicle10stepPhysicEv"
++        "_ZN7Vehicle10stepPhysicEv",
++        "_ZN8EvPlayerD0Ev",
++        "_ZN8EvPlayerD1Ev",
++        "_ZN7Vehicle5shootEv"
+     ],
+     "sections": [
+@@ -345,5 +348,9 @@
+         ".skin_table_19",
+         ".ctor_family_8",
+-        ".ctor_table_8"
++        ".ctor_table_8",
++        ".character_recovered_002f61f9",
++        ".character_recovered_002f512d",
++        ".character_player_event_vtable",
++        ".vehicle_shoot_candidate"
+     ],
+     "retail_got": true,
+@@ -590,5 +597,22 @@
+         "_ZN10PlayerTest17addDistanceDrivenEf",
+         "_ZN10PlayerTest23addCurrentDriftDistanceEf",
+-        "_ZN10PlayerTest22addCurrentJumpDistanceEf"
++        "_ZN10PlayerTest22addCurrentJumpDistanceEf",
++        "_ZNK6Weapon13getWeaponTypeEv",
++        "_ZN6Weapon7isReadyEb",
++        "_ZNK6Weapon5isGunEv",
++        "_ZN3NPC11isHostileToEP11LevelObject",
++        "_ZN4Lock9setTargetEP11LevelObject",
++        "_ZNK6Weapon8getRangeEv",
++        "_ZN11LevelObject7CastRayERKN3irr4core8vector3dIfEES5_RS3_S6_RPS_b",
++        "_ZNK6Weapon9getDamageEv",
++        "_ZN6Weapon12shootFromCarEbRKN3irr4core8vector3dIfEES5_RS3_",
++        "_ZNK6Weapon7getClipEv",
++        "_ZNK6Weapon11getAmmoTypeEv",
++        "_ZN13WeaponManager7getAmmoEiN10PlayerTest8eContextE",
++        "_ZN6Weapon6reloadEb",
++        "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
++        "_ZNK6Weapon12isProjectileEv",
++        "_ZN6Weapon15shootProjectileERKN3irr4core8vector3dIfEE",
++        "_ZN10PlayerTest14onObjectKilledEP11LevelObject"
+     ]
+ }
+--- a/config/linker/VehicleCleanup.ld
++++ b/config/linker/VehicleCleanup.ld
+@@ -36,4 +36,8 @@
+ SECTIONS
+ {
++ .vehicle_shoot_candidate 0x00310908 : { *vehicle-cleanup.o(.text._ZN7Vehicle5shootEv) }
++    .character_recovered_002f61f9 0x002f61f8 : { *(.text._ZN8EvPlayerD1Ev .gnu.linkonce.t._ZN8EvPlayerD1Ev) }
++    .character_recovered_002f512d 0x002f512c : { *(.text._ZN8EvPlayerD0Ev .gnu.linkonce.t._ZN8EvPlayerD0Ev) }
++    .character_player_event_vtable 0x004aa138 : { *(.gnu.linkonce.d.rel.ro._ZTV8EvPlayer) }
+  .vehicle_step_physic 0x3116dc : { *(.text._ZN7Vehicle10stepPhysicEv) }
+  .ctor_family_8 0x30a954 : { *(.text._ZN7VehicleC1Ei) }
+@@ -266,2 +270,8 @@
+ }
+ ASSERT(SIZEOF(.vehicle_empty_string) == 32, "Vehicle empty string extent");
++
++ASSERT(SIZEOF(.character_recovered_002f61f9) == 36, "EvPlayer D1 extent");
++ASSERT(SIZEOF(.character_recovered_002f512d) == 44, "EvPlayer D0 extent");
++ASSERT(SIZEOF(.character_player_event_vtable) == 24, "EvPlayer vtable extent");
++
++ASSERT(SIZEOF(.vehicle_shoot_candidate) <= 1140, "shoot must fit native extent");

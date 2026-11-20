@@ -1,0 +1,20 @@
+--- before.cpp
++++ corrected.cpp
+@@ -429,7 +429,7 @@
+             break;
+         case 'V':
+             car->immobilize();
+-            if (!car->immobilized)
++            if (car->immobilized)
+                 car->mobilize();
+             car->unknown984 = 1.0f;
+             break;
+@@ -541,7 +541,7 @@
+             car = static_cast<Vehicle*>(SpawnPoint::spawn(5));
+             break;
+         case 'Y':
+-            if (!car->immobilized)
++            if (car->immobilized)
+                 car->mobilize();
+             car->unknown984 = 1.0f;
+             break;
