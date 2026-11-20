@@ -1,0 +1,55 @@
+--- a/archived-candidate.cpp
++++ b/archived-candidate.cpp
+@@ -156,9 +156,10 @@
+ LevelObject* target=ScriptManager::findObject(cmd.argument2,false);
+ LevelObject* object=ScriptManager::findObject(cmd.argument1,false);
+ if(LevelObject::s_type[target->getObjectType()]==5 && LevelObject::s_type[object->getObjectType()]==3) {
++ EventManager* events = Application::GetInstance()->GetEventManager();
+  unsigned int storage[sizeof(EvNPCDespawn)/sizeof(unsigned int)];
+  EvNPCDespawn* event=new(storage) EvNPCDespawn(target);
+- Application::GetInstance()->GetEventManager()->raise(*event);_ZN12EvNPCDespawnD1Ev(event);
++ events->raise(*event);_ZN12EvNPCDespawnD1Ev(event);
+  static_cast<Character*>(target)->initInVehicle(static_cast<Vehicle*>(object));
+ } else {
+  const V& first=target->GetPosition();const V& second=object->GetPosition();
+@@ -255,18 +256,18 @@
+     case 41: {
+         const Structs::FadeIn& cmd=*reinterpret_cast<const Structs::FadeIn*>(command);
+ if(cmd.argument>0 && !ScriptManager::getInstance()->areBlockingCommandsSkipped()) {
+- if(ScriptManager::s_fadeTime==-1) {Application::GetInstance()->GetControlManager()->lock();ScriptManager::s_fadeIntensity=255;ScriptManager::s_fadeTime=cmd.argument;return false;}
++ if(ScriptManager::s_fadeTime==-999) {Application::GetInstance()->GetControlManager()->lock();ScriptManager::s_fadeIntensity=255;ScriptManager::s_fadeTime=cmd.argument;return false;}
+  if(ScriptManager::s_fadeTime>0) {Application::GetInstance()->GetControlManager()->lock();ScriptManager::s_fadeTime-=elapsed;ScriptManager::s_fadeIntensity=ScriptManager::s_fadeTime*255/cmd.argument;return false;}
+ }
+-if(!ScriptManager::getInstance()->isInCinematic())Application::GetInstance()->GetControlManager()->unlock();ScriptManager::s_fadeTime=-1;ScriptManager::s_fadeIntensity=-1;ScriptManager::getInstance()->missionResumeFadeOut();return true;
++if(!ScriptManager::getInstance()->isInCinematic())Application::GetInstance()->GetControlManager()->unlock();ScriptManager::s_fadeTime=-999;ScriptManager::s_fadeIntensity=-999;ScriptManager::getInstance()->missionResumeFadeOut();return true;
+     }
+     case 42: {
+         const Structs::FadeOut& cmd=*reinterpret_cast<const Structs::FadeOut*>(command);
+ if(cmd.argument>0 && !ScriptManager::getInstance()->areBlockingCommandsSkipped()) {
+- if(ScriptManager::s_fadeIntensity==-1) {Application::GetInstance()->GetControlManager()->lock();ScriptManager::s_fadeIntensity=0;ScriptManager::s_fadeTime=cmd.argument;return false;}
++ if(ScriptManager::s_fadeIntensity==-999) {Application::GetInstance()->GetControlManager()->lock();ScriptManager::s_fadeIntensity=0;ScriptManager::s_fadeTime=cmd.argument;return false;}
+  if(ScriptManager::s_fadeTime>0) {Application::GetInstance()->GetControlManager()->lock();ScriptManager::s_fadeTime-=elapsed;ScriptManager::s_fadeIntensity=255-ScriptManager::s_fadeTime*255/cmd.argument;return false;}
+ }
+-if(!ScriptManager::getInstance()->isInCinematic())Application::GetInstance()->GetControlManager()->unlock();ScriptManager::s_fadeIntensity=255;ScriptManager::s_fadeTime=-1;ScriptManager::getInstance()->missionSkipFadeOut();return true;
++if(!ScriptManager::getInstance()->isInCinematic())Application::GetInstance()->GetControlManager()->unlock();ScriptManager::s_fadeIntensity=255;ScriptManager::s_fadeTime=-999;ScriptManager::getInstance()->missionSkipFadeOut();return true;
+     }
+     case 43: {
+         const Structs::SetDecal& cmd=*reinterpret_cast<const Structs::SetDecal*>(command);
+@@ -283,7 +284,7 @@
+ if(LevelObject::s_type[object->getObjectType()]==5) static_cast<NPC*>(object)->faction=2; return true;
+     }
+     case 46: {
+-for(LevelObject* object=GS3DStuff::gom->GetFirst(0);object;object=object->next) {
++for(LevelObject* object=GameObjectManager::s_gom->GetFirst(0);object;object=object->next) {
+  if(LevelObject::s_type[object->getObjectType()]==5) {
+   NPC* npc=static_cast<NPC*>(object);
+   if(npc->faction==2 || npc->faction==1) {npc->setNextAnimation(-1,1,false,false,false);npc->attackTarget(0);}
+@@ -643,7 +644,7 @@
+     case 87: {
+         const Structs::WaitKilled& cmd=*reinterpret_cast<const Structs::WaitKilled*>(command);
+ if(!source)source=ScriptManager::findObject(cmd.argument,false);
+-bool flag=LevelObject::s_type[source->getObjectType()]!=3 || static_cast<Vehicle*>(source)->explosionFlag;
++bool flag=LevelObject::s_type[source->getObjectType()]!=3 || static_cast<Vehicle*>(source)->explosionFinished;
+ if((!source->isDead() || !flag) && !ScriptManager::getInstance()->areBlockingCommandsSkipped()) {
+  source->showHighlight(0);ScriptManager::displayOnMinimap(source,true,true);setScriptObjectAction(source,Flag2);setScriptObjectAction(source,MinimapObject);return false;
+ }
