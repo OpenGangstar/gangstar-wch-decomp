@@ -4,6 +4,10 @@ The main Codex agent records assignments and releases ownership after review
 and acceptance. Use the binary, address, and function name to identify each
 entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
+The coordinator restored native OctTreeAABBNode depth at offset60 and size64.
+All190 profiles/10953 comparisons remain exact,1063 frozeninputs stable. No
+constructor body or byte credit changes. See docs/matches/octree-node-depth.md.
+
 The coordinator accepted the CarSoundSettings auxiliary gain declaration correction
 after all 190 native profiles and 10,953 existing comparisons passed. This shared
 field change adds no matched function or bytes; Init and UpdateTurboSounds remain
@@ -51,10 +55,10 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x00333e41 | FPSCamera::scroll (touch list) | — | BLOCKED | The real Character receiver and completed float product restore native 280-byte extent, 32-byte pool and all 20 call instructions. Exactly 14 bytes still differ in spills/scheduling, first at +0x1e; all 40 existing comparisons pass. Reviewed uncredited patch and complete evidence preserved; no further form without new evidence. | src/game/core/FPSCamera.cpp; nonmatching/core/FPSCamera-scroll.patch |
 | libsanangeles.so | 0x002e3c1d | GSWeaponShopMenu::dtor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00335849 | VehicleCamera::update | — | BLOCKED | Correct per-profile prerequisite gate passed190/10,923 after setup recovery. Sixth form retains native968 extent but matches553/968 bytes; all existing owner checks pass. Target and full section fail, first+0x1e. Six-form budget exhausted; preserve evidence, no credit or canonical integration. | src/game/vehicles/VehicleCamera.cpp |
-| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | decomp_running_command | IN_PROGRESS | Coordinator confirmed the pending364-byte function and no live prior owner. Recover earlier attempts; audit native touch/camera state against genuine current input/player interfaces and matched relatives before bounded causal work. Private mirror only. | src/game/core/FPSCamera.cpp |
+| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs | — | BLOCKED | Coordinator reran native162-instruction/18-call/12-store audit. Saved380/native364B target spills16B into real neighbor; no current closure. Six forms and three-identical stop exhausted, no new compile/credit; ownership released. | src/game/core/FPSCamera.cpp |
 | libsanangeles.so | 0x002e3c49 | GSWeaponShopMenu::ctor | — | COMPLETED | 100% | src/game/ui/GSWeaponShopMenu.cpp |
 | libsanangeles.so | 0x00333451 | FollowCamera::updatePosition | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
-| libsanangeles.so | 0x00332771 | CameraManager::update | camera_tap | BLOCKED | — | src/game/core/CameraManager.cpp |
+| libsanangeles.so | 0x00332771 | CameraManager::update | — | BLOCKED | Coordinator reran actual1120/native1148B comparison, mismatch12; separate current27/9 exact,24 historical inputs stable. Native operations already preserved; no new causal correction/compile/credit; ownership released. | src/game/core/CameraManager.cpp |
 | libsanangeles.so | 0x00301a3d | PlayerTest::Stop | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00333789 | FollowCamera::init | — | COMPLETED | 100% | src/game/core/FollowCamera.cpp |
 | libsanangeles.so | 0x00333ab1 | FollowCamera::update | — | BLOCKED | Real-hierarchy adaptation784/native776; one recovered crossProduct reuse restores776extent but frame196/native204 fails0xe. Owner13functions6sections1GOT exact. Reviewed unapplied patch retained; no credit or further lifetime/ordering forms without new evidence. Ownership released. | src/game/core/FollowCamera.cpp; nonmatching/core/FollowCamera-update.patch |
@@ -282,7 +286,7 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x002fbe15 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D0 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbec1 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbed5 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | lock_init | BLOCKED | — | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | — | BLOCKED | Coordinator reran real C2 audit:4988/4992 versus native4936B, mismatch12 and neighbor overrun. Native2066 instruction encodings and geometry1768B verified; no missing source operation or justified trial. No credit; ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | — | BLOCKED | Coordinator checked the single genuine SDK vertex trial:3996/native4120B, strict extent failure. Diagnostic native-address function fails at0xc;16existingfunctions/9regions pass only diagnostically. Layout and886inputs stable; no credit or production edits. Ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
@@ -341,9 +345,9 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x002dce9d | std::string::append(const char*) | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002deebd | GS3DStuff::AddXRef | — | BLOCKED | Coordinator reran actual-image audit:820/native824B fails0xc,181common differences plus4missing; six forms exhausted, no new ownership operation. Historical107/118 is not current closure; no new compile/credit. Ownership released. | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*, const char*) | — | BLOCKED | Reviewed bounded STLport reuse: three source forms have identical 372-byte caller bytes; native extent agrees, but diagnostic link differs at 275 bytes, emits extra helpers and fails existing GOT comparisons. No match credit. Revisit with new inlining/source evidence. | nonmatching/rendering/String-range-append-stlport.* |
-| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode | decomp_achievements | IN_PROGRESS | Coordinator confirmed the pending832-byte nested constructor and no live prior owner. Recover earlier attempts; audit native node/array/bounds initialization against genuine current types and matched relatives before bounded causal work. Private mirror only. | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode | — | BLOCKED | Coordinator reran saved executable alias comparison:812/native832B, mismatch0xe,612 differing common bytes and20 missing. Six forms exhausted; no new compile/credit. Native depth field at60 referred for separate coordinator layout review; constructor ownership released. | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dad71 | GS3DStuff.cpp::__tcf_8 | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
-| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody | vehicle_side | BLOCKED | — | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody | — | BLOCKED | Coordinator selected actual928B diagnostic definition and reproduced mismatch12; raw/linked hashes identical to old v6. Current genuine GetPosition adds no helper;147 existing functions/118 owner regions pass,884 stableinputs. Strict936 equality fails, no credit; ownership released. | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x002dada9 | GS3DStuff.cpp::__tcf_7 | — | COMPLETED | 100% | src/game/rendering/GS3DStuff.cpp |
 | libsanangeles.so | 0x00328df9 | Message::isDisplayed | — | COMPLETED | 100% | src/game/ui/Message.cpp |
 | libsanangeles.so | 0x00334ef1 | SceneCamera.cpp::__tcf_1 | — | COMPLETED | 100%; handwritten wrapper replaced by real generated__tcf_0 with explicit native/compiled selector, all36 bytes exact. Both native cleanupaddresses retained; root190/10,917 pass. | src/game/core/SceneCamera.cpp |
@@ -352,11 +356,11 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler | — | BLOCKED | Authentic ownership source gives 124/142 bytes at limit 70; measured limit-80 probe inlines the checker but emits 168 bytes and fails strict overlap. No profile change adopted. | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0032cfb8 | _ZThn8_N5Wheel12processTouchEl | — | COMPLETED | 100%; full 190-profile, 10,501-comparison native gate exact; existing event destructor bodies preserved; unmatched parents receive no credit | src/game/vehicles/Wheel.cpp |
 | libsanangeles.so | 0x00300bc5 | Path::Load | — | BLOCKED | Genuine SDK whole-vector assignment retains native200extent, four bytes differ at68/6a/72/78 in source/Z registers. All18 existing checks pass; one bounded family trial stopped, no credit or further forms. | src/game/world/Path.cpp |
-| libsanangeles.so | 0x0034228d | NPCController::onEvent | — | BLOCKED | One bounded switch trial remains 94/96 bytes; no linked credit. Full-word TransitionCondition prerequisite independently preserves all six affected profiles (137 comparisons); candidate in nonmatching/ai/NPCController-onEvent.md. | src/game/ai/NPCController.cpp; src/game/ai/NPCController.h |
+| libsanangeles.so | 0x0034228d | NPCController::onEvent | — | BLOCKED | Coordinator reran audit: original real v1 is96B with15differences, first42; later94B object has stale ABS-only ELF and no linked proof. Load/gate/pointer scheduling differs but no new semantic API defect; six forms exhausted, no compile/credit. Ownership released. | src/game/ai/NPCController.cpp; src/game/ai/NPCController.h |
 | libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init | — | BLOCKED | Six constructor-reuse forms:138/132/132/130/132/132B versus native134; forms2/5/6 exact same raw code and relocations. Retained native placement fails target; old22functions/19regions exact. Reviewed unapplied candidate; no credit or more forms without new evidence. | src/game/audio/CSoundDecoderMSADPCM.cpp; nonmatching/audio/CSoundDecoderMSADPCM-Init.patch |
 | libsanangeles.so | 0x0032d72d | CControlManager::update | — | BLOCKED | Coordinator reran native/event audit:176instructions/21calls,396/native400B fails0x6. Selected18realfunctions/6regions exact; six earlier forms recovered, no new causal discrepancy or compile. No credit; ownership released. | src/game/input/CControlManager.cpp |
 | libsanangeles.so | 0x00354665 | EventManager::_attach | — | BLOCKED | Coordinator reviewed and reran actual six-image comparisons: forms1–5 identical188/native192B; final192B has97differences. Native fixed inline storage already modeled, no allocation or new source evidence. No fresh compile/current closure/credit; ownership released. | src/game/scripting/EventManager.cpp |
-| libsanangeles.so | 0x00354725 | EventManager::_detach | camera_tap | BLOCKED | — | src/game/scripting/EventManager.cpp |
+| libsanangeles.so | 0x00354725 | EventManager::_detach | — | BLOCKED | Coordinator reran all six real images284..316B/native316, all mismatch2. Native151instructions/onecall/sixstores verified; no13 current owner definitions present, no current closure/credit. No new correction/compile; ownership released. | src/game/scripting/EventManager.cpp |
 | libsanangeles.so | 0x00319dd1 | PhysicInfo::PhysicInfo (C1 only; native C2 absent) | — | COMPLETED | Existing96-byte body moved unchanged to ordinary inline definition, natural weak binding. Root190/10,690 and independent native equality in both images; no output edits or new credit. | src/game/characters/PhysicInfo.h; src/game/characters/PhysicAttributes.cpp (private) |
 | libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes (C1/C2 aliases) | — | BLOCKED | Canonical260 and all47 old checks/payloads/relocs unchanged under diagnostic. Floatzero154 getsR3 in137lreg, reload picks infoR3/bodyR2 in138greg,149sched2 hoistsbodycopy; no nativeIR cause or further source trial. | src/game/characters/PhysicAttributes.cpp (private) |
 | libsanangeles.so | 0x002f2581 | Character::goToCombatIdle | — | BLOCKED | Plain separate handlers leave only function bytes76/9a and8 table bytes different. Two case orders identical; owner113functions31sections1GOT retained. Reviewed unapplied patch, no credit or further ordering variants without new evidence. Ownership released. | src/game/characters/Character.cpp; nonmatching/characters/Character-combat-idle.patch |
@@ -523,8 +527,8 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x0032ad9c | Reward::draw2d non-virtual thunk | — | COMPLETED | 100% | src/game/missions/Reward.cpp |
 | libsanangeles.so | 0x00342b09 | WantedLevelManager constructor (C1/C2 aliases) | — | BLOCKED | Coordinator verified native double literals and recovered the correct earlier body: offsets56/64 must be0.0, not10000.0. Retained176B image is semantically invalid; correct184B historical image is missing. No new compile, credit or current closure; ownership released. | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00342e05 | WantedLevelManager::_processWantedLevel | — | COMPLETED | 100% | src/game/missions/WantedLevelManager.cpp |
-| libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent | camera_tap | BLOCKED | — | src/game/missions/WantedLevelManager.cpp |
-| libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | decomp_npc_hostility | IN_PROGRESS | Coordinator confirmed the pending376-byte function and no live prior owner. Recover earlier attempts; audit native wanted-level/time state against genuine current manager/player types and matched relatives before bounded causal work. Private mirror only. | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent | — | BLOCKED | Coordinator reran actual368B target/table failures and historical17/20 plus separate root18/22 exact closures. Six prior forms exhausted,28 stableinputs, no new causal correction/compile/credit; ownership released. | src/game/missions/WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fc9 | WantedLevelManager::update | — | BLOCKED | Coordinator reran actual old/current parent audit:360/native376B, mismatch2. Current18/22 and thunk19/23 closures exact,407 inputs stable. No new causal correction or compile/credit; ownership released. | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x00342fb4 | WantedLevelManager::update non-virtual thunk | — | COMPLETED | 100%; real 20-byte ARM thunk; full 187-profile, 10,400-comparison native gate exact; parent remains unmatched | src/game/missions/WantedLevelManager.cpp |
 | libsanangeles.so | 0x003ed9a9 | RenderFX fscommand_callback_handler regression | — | COMPLETED | 100% | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds | — | BLOCKED | 78/80 bytes; measured VRP2 address-operand commutation, ordinary/dump outputs identical, old71 functions/75 regions pass; no new form justified | src/game/audio/SoundManager.cpp |
@@ -614,7 +618,7 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x0034dac4 | AccelerometerWin32 complete destructor thunk | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034d9bd | AccelerometerWin32 constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
 | libsanangeles.so | 0x0034d941 | AccelerometerWin32::setWide | — | COMPLETED | 100% | src/game/input/AccelerometerWin32.cpp |
-| libsanangeles.so | 0x0034d479 | AccelerometerBase::_calcAngles | camera_tap | BLOCKED | — | src/game/input/AccelerometerBase.cpp |
+| libsanangeles.so | 0x0034d479 | AccelerometerBase::_calcAngles | — | BLOCKED | Coordinator reran five real256/native264B images; v3-v6 identical, mismatch6. Old13/23 closures exact,39 stableinputs; current moved absent. No new causal evidence/compile/credit; ownership released. | src/game/input/AccelerometerBase.cpp |
 | libsanangeles.so | 0x0034d689 | AccelerometerBase::moved | — | COMPLETED | 100% | src/game/input/AccelerometerBase.cpp |
 | libsanangeles.so | 0x0032d925 | CDrivingControlHandler::handleAttackHeld | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
 | libsanangeles.so | 0x0032d935 | CDrivingControlHandler::handleAttackPressed | — | COMPLETED | 100% | src/game/input/CDrivingControlHandler.cpp |
@@ -648,7 +652,7 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x002ef041 | Widgets::About::Disable | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ebf35 | Widgets::About::Update | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon | — | BLOCKED | Three forms same6 scheduling bytes; actual original MenuWidget ownership and current flags confirmed, no API or literal correction; no replay | src/game/ui/MenuWidget.cpp |
-| libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon | coordinator | BLOCKED | — | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon | — | BLOCKED | Coordinator reproduced actual32B r4b target unchanged from1.6r1 and reviewed own149r.sched2 cause. All308 old functions pass but two vtable selectors missing and GOT regresses; compiler control rejected, no credit. Ownership released. | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame | — | BLOCKED | Bool forwarding is byte-identical to the mismatching void model; disabling sched2 regresses 140 old functions and two sections; all experiments rejected | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ece95 | Widgets::About::Show | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
 | libsanangeles.so | 0x002ec565 | Widgets::About constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ui/MenuWidget.cpp |
@@ -781,10 +785,10 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x002fe3c9 | NPC constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fdcfd | NPC::Load | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fe169 | NPC::goToVehicle | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x003009d1 | NPC::SetTarget | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x003009d1 | NPC::SetTarget | — | BLOCKED | Coordinator reran real320B hinted target comparison and native receiver/null/type/lifetime audit.57/13 historical checks pass but14 current functions/two regions absent;422 stableinputs. No new causal defect/compile/credit; ownership released. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fe615 | NPC::triggerCombatSFX(int) | — | BLOCKED | Reviewed actual archived v1/v3/v4: same368B hash072e25f3...,8 byte differences. Stop rule already reached;0 new compiles; old closure is historical only. No credit. | _scratch/worker-npc-combat-sfx-current/REPORT.md; src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002fdbed | NPC::debug | — | COMPLETED | 100% | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x002fde51 | NPC::isUnderCar | vehicle_side | BLOCKED | pending | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002fde51 | NPC::isUnderCar | — | BLOCKED | Coordinator reran actual420/native416B relocated380001 artifact audit; strict native-address check rejects, no transferable byte proof. Native receiver/halfplanes/lifetimes already preserved; old67/13 only,421 stableinputs, no compile/credit; ownership released. | src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x002f7415 | Character::attack | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f1839 | Character.cpp::__tcf_1 | — | COMPLETED | 100% | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x002f710d | Character::punch | camera_tap | BLOCKED | pending | src/game/characters/Character.cpp |
@@ -819,7 +823,7 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x00303b6d | PlayerTest::shoot | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303b58 | PlayerTest::shoot non-virtual thunk | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x003035d1 | PlayerTest::acquireTarget | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | lock_init | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget | decomp_achievements | ASSIGNED | Coordinator reviewed parked record/no live prior owner. Exclusive700-byte attackable-target native semantic audit; recover old forms and inspect receiver/category/filter, spatial math, callback reload and lifetime semantics against current interfaces/matched relatives. No compile without concrete new causal evidence/coordinator approval; private mirror only. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim | — | BLOCKED | Authentic licensed SDK nonmember plus/Set prerequisite passed 190/10,687 with approved private InfoHelp compatibility edit; one canonical replay116/native132. Stopped pre-link; no credit or further forms. | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00303ab9 | PlayerTest::startDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
 | libsanangeles.so | 0x00304701 | PlayerTest::stopDriving | — | COMPLETED | 100% | src/game/ai/PlayerTest.cpp |
@@ -836,8 +840,8 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x00340bf1 | CivPassiveController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
 | libsanangeles.so | 0x00341d25 | GuardController destructor (D1/D2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00341d65 | GuardController deleting destructor (D0) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
-| libsanangeles.so | 0x00302361 | PlayerTest::moveTo | camera_tap | BLOCKED | pending | src/game/ai/PlayerTest.cpp |
-| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | — | BLOCKED | One recovered-hierarchy adaptation retains544B extent and all37 native call modes/destinations, but fails at0x46; owner83functions24sections1region preserved. Reviewed unapplied reproduction patch; no credit. Ownership released; no further ordering/zero-allocation forms without new evidence. | src/game/ai/PlayerTest.cpp; nonmatching/ai/PlayerTest-Respawn.patch |
+| libsanangeles.so | 0x00302361 | PlayerTest::moveTo | decomp_npc_hostility | ASSIGNED | Coordinator reviewed parked record/no live prior owner. Exclusive620-byte moveTo(const Vehicle&) native semantic review. Recover previous forms and inspect receiver identity, position/door/math predicates, callback reloads and temporary lifetimes against current genuine APIs/matched relatives. No compile without concrete causal evidence/coordinator approval; private mirror only. | src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn | — | BLOCKED | Coordinator reran actual544B receiver/lifetime/37-call audit; mismatch70, no semantic correction. Old83/25 remain exact but newer animation helper absent, no full current closure.887 stableinputs, no compile/credit; ownership released. | src/game/ai/PlayerTest.cpp; nonmatching/ai/PlayerTest-Respawn.patch |
 | libsanangeles.so | 0x00342221 | GuardController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/GuardController.cpp |
 | libsanangeles.so | 0x00340985 | CivAgressiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivAgressiveController.cpp |
 | libsanangeles.so | 0x00340c75 | CivPassiveController constructor (C1/C2 aliases) | — | COMPLETED | 100% | src/game/ai/CivPassiveController.cpp |
@@ -1106,11 +1110,11 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x00319ed5 | PhysicAttributes::LoadArrays(char*) | — | COMPLETED | 100% | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | — | BLOCKED | 1354/1360 bytes; six forms exhausted, no credit | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313385 | Vehicle::collision(vector3df, int) | decomp_running_command | IN_PROGRESS | Current v5 control1360B retains6 differences; genuine two-helper adaptation1356 fails strict extent. OWN RTL proves generated calls const/u versus two plain calls; one truthful const-declaration follow-up approved only after all old comparisons pass. No aliases/barriers/padding/extra variants; private mirror only. | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | — | BLOCKED | All7 conversions scalar; SceneCamera boundary inapplicable. Sixforms/threeequivalent outputs1380/native1368 confirmed; currentprivateprereqs absent but no new authentic API cause. No replay. | src/game/vehicles/Vehicle.cpp |
 
-| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | — | BLOCKED | One quotient-width follow-up worsens 1688 to 1692/native1668 bytes and retains extension/scaling sequences; constructor96 weak unchanged, no link or credit. Preserve original best; see nonmatching/characters/ComputeShortestPath.md. | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | — | BLOCKED | Coordinator reran supported1688/native1668 and rejected1692 object/weak96B constructor/GOT audit. Eleven old images retain overlap/relocation limits;77 inputs stable, full semantic audit found no new causal discrepancy. No compile/credit; ownership released. | src/game/characters/PhysicAttributes.cpp |
 
 | libsanangeles.so | 0x003116dd | Vehicle::stepPhysic() | — | COMPLETED | 100% | src/game/vehicles/Vehicle.cpp |
 
@@ -1124,7 +1128,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | — | BLOCKED | 1684-byte candidate not matched; six forms; full 74-profile old gate passed | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | — | BLOCKED | 2088/2108-byte candidate; six forms exhausted | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | — | BLOCKED | Coordinator reran223 old functions/59 regions and independently checked native first164 receiver is target, second owner. Corrected2084/native2108B remains mismatched18; original2088B reproduced, sole new definition,1063 stableinputs. Accurate correction preserved unapplied, no credit; ownership released. | src/game/ai/NPC.cpp |
 
 | libsanangeles.so | 0x0034bf8d | StringManager::~StringManager() | — | COMPLETED | 100%; real240/240/248B family, authentic erase and whole-profile inline80; full190-profile gate and66-build helper closure exact | src/game/persistence/StringManager.cpp |
 
@@ -1145,7 +1149,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | hud_registration | BLOCKED | final 2512/2496 bytes; six forms, strict photo overlap; old header/photo graph exact | src/game/ai/PlayerTest.cpp |
 
-| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | — | BLOCKED | Six forms exhausted; best3024/3012. Current audit finds all51 function bindings and92 external calls/modes already native. Separate36-profile header gate does not prove candidate; combined link terminal/discarded NPC definition. No new replay justified. | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | — | BLOCKED | Coordinator reran actual3024/native3012B object/helper audit; sole byte102 category1->5 fixes initial chase. Header-only86profiles/7371checks pass,1065inputs stable; target/helper placement fails, no candidateELF/native comparison/credit. Correction frozen unapplied; ownership released. | src/game/ai/NPC.cpp |
 
 | libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | lock_init | BLOCKED | best extent 2364/2384 bytes; six forms; header sweep 43/44, known fixture incomplete | src/game/characters/PhysicAttributes.cpp |
 
@@ -1185,7 +1189,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | — | BLOCKED | bounded canonical record trial remains unmatched; frozen private proof reviewed; no credit | src/game/rendering/ASprite.cpp |
 
-| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | two hints and one crossjumping-pass diagnostic failed; original32B still differs2bytes; oldcaller21/22 exact, no credit | src/game/app/IPhone.cpp |
+| libsanangeles.so | 0x00349315 | FSelect(float, float, float) | — | BLOCKED | Coordinator reran two-revision audit: distinct1.6r1/r4b compilers emit identical32B body, target/fullsection fail at18/1a. Identical source/flags and fixed assembler/linker; no new codegen hypothesis or credit; ownership released. | src/game/app/IPhone.cpp |
 
 | libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | — | BLOCKED | Snapshot86, cursor80, sibling74/native82; canonical80 identical across three frontends, no integration or credit | src/game/rendering/ASprite.cpp |
 
@@ -1283,9 +1287,9 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | — | BLOCKED | Five distinct forms verified; best656 exceeds native652. Native arithmetic matches saved expressions, with no justified sixth-form correction. Relocated/vtable failures are not native proof. | src/game/audio/CSoundDecoderMSADPCM.cpp |
 | libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
 | libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | — | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
-| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Prerequisite-only current gate passed all 190 profiles/10,687 comparisons with 11 layout assertions. Unchanged safe-v4 current-context body compiled to 2192/2228 bytes; strict extent failed, stopped before linking. Native SetSpeed weak/default versus current global/default is new independently verified ABI evidence. Weak-declaration gate passed 190/10,687; unchanged replay emits 2200/2228 bytes, with actual GOT relocation restored. Stopped pre-link; no source variations or shared event constructor edits. | src/game/ai/PlayerTest.cpp (private) |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Coordinator reviewed native965-instruction receiver/timer/lifetime audit; no new semantic correction. Current2200/native2228 object unlinked; old2212 diagnostic lacks eight current definitions, no closure transfer.38 stableinputs, no compile/credit; ownership released. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | — | BLOCKED | Current unchanged safe3060/3220 identical archive; old188/112 and complete76-build header closure2587 functions/2821 regions exact; fixture failures resolved, no credit | src/game/vehicles/Vehicle.cpp |
-| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | six forms; best4040/4020; old188/112 and 48-profile header gate pass; no credit | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | — | BLOCKED | Coordinator reran1639-instruction native audit; two true lifetime/traction predicate fixes preserved. Private model48 profiles/3709 comparisons pass, but sole corrected4036/native4020B fails strict prelink3 with actual PhysicInfo aliases disclosed. No targetELF/closure/credit; ownership released. | src/game/vehicles/Vehicle.cpp |
 
 | libsanangeles.so | 0x003215b5 | SceneNodeManager::crc(char const*) const (existing-match regression) | — | COMPLETED | 100% (independent initialization order restored under renderer alias; no new credit) | src/game/world/SceneNodeManager.cpp |
 
@@ -1679,7 +1683,7 @@ unavailable; compiler subprocesses are not sub-agents.
 | libsanangeles.so | 0x002e574d | `_ZN11MenuManager5setupEb` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menu-manager-setup-qualified-stream-current/src/game/ui/MenuManager.cpp |
 | libsanangeles.so | 0x002d4015 | `_ZN11Application19UnRegisterForUpdateEP10IUpdatable` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/application-unregister-update-iterator-current/src/game/app/Application.cpp |
 | libsanangeles.so | 0x00349d81 | `_ZN7ASprite15GetAnimDurationEi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/asprite-duration-frontend-r4b-current/src/game/rendering/ASprite.cpp |
-| libsanangeles.so | 0x0034228d | `_ZN13NPCController7onEventEPK6IEventPK12EventManager` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/npc-controller-event-switch-current/src/game/ai/NPCController.cpp |
+| libsanangeles.so | 0x0034228d | `_ZN13NPCController7onEventEPK6IEventPK12EventManager` | — | BLOCKED | Coordinator reran audit: original real v1 is96B with15differences, first42; later94B object has stale ABS-only ELF and no linked proof. Load/gate/pointer scheduling differs but no new semantic API defect; six forms exhausted, no compile/credit. Ownership released. | _scratch/npc-controller-event-switch-current/src/game/ai/NPCController.cpp |
 | libsanangeles.so | 0x003219cd | `_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/scene-drop-current-context/src/game/world/SceneNodeManager.cpp |
 | libsanangeles.so | 0x003ee721 | `_ZN8RenderFX11SearchIndex5ClearEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-search-clear-iterator-current/src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x0032c961 | `_ZN11WantedMeterC1EP7ASpritei` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/wanted-meter-ctor-dimension-value-current/src/game/missions/WantedMeter.cpp |
@@ -1705,8 +1709,8 @@ unavailable; compiler subprocesses are not sub-agents.
 | libsanangeles.so | 0x00341a3d | `_ZN20CopVehicleController7onEventEPK6IEventPK12EventManager` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/cop-vehicle-on-event/src/game/ai/CopVehicleController.cpp |
 | libsanangeles.so | 0x0030fac9 | `_ZN7Vehicle10CreateBodyEv` | — | BLOCKED | Corrected 1060 / native 1044 bytes; unlinked, no credit | _scratch/vehicle-create-body-sixth-current/src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x003f01d1 | `_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/menufx-state-handler-typed-current/src/game/rendering/menufx.cpp |
-| libsanangeles.so | 0x00320ca1 | `_ZN16PhysicAttributes19ComputeShortestPathEiiN3irr4core8vector3dIfEES3_f` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/physics-shortest-current-replay/src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x002ff5d1 | `_ZN3NPC12attackTargetEv` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/npc-attack-target/src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x00320ca1 | `_ZN16PhysicAttributes19ComputeShortestPathEiiN3irr4core8vector3dIfEES3_f` | — | BLOCKED | Coordinator reran supported1688/native1668 and rejected1692 object/weak96B constructor/GOT audit. Eleven old images retain overlap/relocation limits;77 inputs stable, full semantic audit found no new causal discrepancy. No compile/credit; ownership released. | _scratch/physics-shortest-current-replay/src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002ff5d1 | `_ZN3NPC12attackTargetEv` | — | BLOCKED | Coordinator reran223 old functions/59 regions and independently checked native first164 receiver is target, second owner. Corrected2084/native2108B remains mismatched18; original2088B reproduced, sole new definition,1063 stableinputs. Accurate correction preserved unapplied, no credit; ownership released. | _scratch/npc-attack-target/src/game/ai/NPC.cpp |
 | libsanangeles.so | 0x00313b01 | `_ZN7Vehicle6UpdateEi` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/vehicle-update/src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x002e1e15 | `_ZN9GSFailure6draw2dEPK12StateMachine` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/gsfailure-alpha-control-current/src/game/app/GSFailure.cpp |
 | libsanangeles.so | 0x003eefad | `_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc` | — | BLOCKED | Paired target bytes/relocations unchanged; unlinked, no credit | _scratch/renderfx-invoke-as-callback/src/game/rendering/menufx.cpp |
@@ -1725,3 +1729,13 @@ Vehicle::CreateBody 1060/1044. Repeated old-flag controls reproduce both origina
 raw hashes. No links, native target acceptance, header closure or credit follow.
 See docs/matches/ndk-enum-default-replay.md and its complete 68-entry JSON ledger.
 The function statuses remain BLOCKED; this is not a global goal blocker.
+
+## PVRTC provenance investigation
+
+The initial assignment was read-only source attribution. After native argument
+and caller review, the coordinator authorized exactly one thin-adapter candidate
+without changing provenance. The independently verified result is recorded below.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0020ccd5 | PVRTCDecompress(void const*, int, int, int, unsigned char*) | — | COMPLETED | 100%; coordinator independently rebuilt20B function/fullsection and verified sole definition/native boundaries, then191 profiles/10955 comparisons exact with1065 stableinputs. Only verified marker removed, all17703 identities retained; no provenance/denominator change. Inferred return view documented; ownership released. | src/game/rendering/PVRTDecompress.cpp; local Irrlicht source; private evidence |
