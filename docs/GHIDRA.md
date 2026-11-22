@@ -155,3 +155,93 @@ and result fixes that analysis error. Ghidra represents this join as
 double-to-float helpers require corresponding split-register storage. Read back
 both the PLT thunk and its resolved external function; a displayed C prototype
 alone is insufficient. These changes affect analysis metadata only.
+
+
+## Returning calls in physics analysis
+
+A correct callee prototype does not remove an existing instruction-level
+`CALL_RETURN` override. Inspect the actual call instruction as well as its
+resolved callee. The following retail-verified repairs restore normal returning
+float operations and `operator delete`; no machine-code byte was changed.
+
+| Retail function | Thumb entry | Complete executable bytes | Separate padding | Literal bytes |
+| --- | --- | ---: | ---: | ---: |
+| ContactFilter::ShouldCollide | 0x0031dc7d | 1,058 | 2 | 40 |
+| PhysicAttributes::ComputeShortestPath | 0x00320ca1 | 1,620 | 0 | 48 |
+| PhysicAttributes::FindLowerCostNode | 0x0031a40d | 184 | 0 | 8 |
+| PhysicAttributes::GetTriCenter | 0x0031a4cd | 274 | 2 | 12 |
+| PhysicAttributes::GetHeight(vector3df const&, int, bool) | 0x0031ff49 | 234 | 2 | 12 |
+
+For `ShouldCollide`, four false float-call termination overrides hid 102 real
+instruction bytes. Its complete instruction listing also includes a separate
+two-byte alignment instruction, which is intentionally outside the function
+body. For `ComputeShortestPath`, float-call repairs alone restored only 1,452
+of 1,620 executable bytes. Three additional stale overrides on returning
+`operator delete` calls at retail 0x003210ae, 0x00321154 and 0x003212ee blocked
+reconstruction and cleanup. Removing those specific overrides restores every
+one of its 751 native instruction entries. Decode only verified instructions;
+the intervening literal pool is not executable code.
+
+These functions also require explicit physical ABI views. The shortest-path
+member returns void and receives `self`, index, mode and the source vector
+carrier in `r0` through `r3`; destination vector carrier and final float occupy
+incoming stack offsets zero and four. The source API still passes the two
+nontrivial vectors by value. Analysis pointers represent their invisible
+reference carriers and do not change that API.
+
+`FindLowerCostNode` receives its 24-byte result buffer in `r0`, receiver in
+`r1`, array in `r2` and index-output pointer in `r3`. `GetTriCenter` is static:
+its 12-byte result buffer occupies `r0`, followed by material and triangle
+carriers in `r1` and `r2`. Both return the result pointer in `r0`. The small
+`GetHeight` member takes receiver, position reference, signed slot and bool in
+`r0` through `r3`, returning a float through `r0`. These are analysis storage
+models; no extra automatic hidden parameter may be inserted.
+
+A complete repaired CFG is evidence for analysis, not a matching claim. Source
+candidates remain pending until compilation and the authoritative exact-byte
+checker succeed.
+
+
+The same returning-call check also restored complete real code for
+`GS3DStuff::checkPickableProximity` (330 bytes),
+`MenuManager::_positionMapOnPoint` (288 bytes), `updateMarkers` (338 bytes),
+and `ContactListener::Persist` (578 bytes). Their retail extents additionally
+include alignment and literal pools. Native instruction ownership was checked
+separately from those non-executable bytes. `GSFailure::draw2d` already had its
+complete 292-byte code body but omitted its receiver in the inferred prototype;
+its explicit physical view now takes receiver and callback state in `r0` and
+`r1` and returns void.
+
+Menu callers exposed further untyped imports: `__aeabi_i2d`, `__aeabi_dsub`
+and `__aeabi_d2iz`. Their explicit models use `r1:r0` for the low/high double
+pair and `r3:r2` for the second double argument to subtraction. Signed integer
+input and output use `r0`. Readback verifies both each PLT thunk and its
+resolved target. `StateMachine::getTimeStamp` returns the double pair;
+`PlayerTest::getAmbientSound` returns a signed integer in `r0`.
+
+`SoundManager::playEx` needs nine physical values, including its receiver.
+Receiver, sound ID, position pointer and first bool occupy `r0` through `r3`;
+float, integer, bool, float and callback follow at incoming stack offsets zero,
+four, eight, twelve and sixteen. The bool occupies one byte within its ABI
+slot. Its result is an integer in `r0`. Omitting the receiver shifts every
+argument and produces misleading inferred float and callback values. Existing
+source declarations and literals already agree with retail and remain
+unchanged by these analysis repairs.
+
+
+Subsequent restricted repairs restore `ContactListener::Add` to its complete
+2,298 executable bytes (1,053 owned instructions, two bytes of separate
+padding and 84 literal bytes within the 2,384-byte retail extent),
+`MenuManager::tearDown` to 284 executable bytes, and `_zoomMap` to 546.
+Each repair removes only inspected false returning-call termination overrides
+and preserves ordinary game calls. No internal long-branch overrides were
+needed in these functions. Complete native instruction coverage supports the
+analysis; it does not reopen an exhausted source budget by itself.
+
+`MenuManager::_drawMap` subsequently expands from 226 to 390 executable bytes
+after removing its inspected false float-call termination. `AddCollisionShapes`
+expands from 286 to 1,726 executable bytes after four such repairs and correcting
+two verified Thumb instructions previously decoded as ARM. Its 781 real native
+instructions are all owned; a separate padding instruction and 88 literal bytes
+complete the 1,816-byte retail extent. Its physical view uses receiver in `r0`,
+signed slot in `r1`, unsigned-short vertex in `r2:2` and a void result.

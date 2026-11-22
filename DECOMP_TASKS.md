@@ -22,7 +22,7 @@ rejected without credit; their ownership is released.
 | libsanangeles.so | 0x00331a09 | WeaponManager::getKeepWeaponsWhenBustedCost() regression diagnosis only | unassigned | COMPLETED | Original shared header restored; canonical targeted gate passes. Worker control caught restored state and does not isolate compiler cause; no function edits | src/game/combat/WeaponManager.cpp; src/game/core/SceneNode.h |
 | libsanangeles.so | 0x002f39e1 | Character::runToTarget(int) | unassigned | BLOCKED | Reviewed native contracts and four prior forms; no new source discrepancy, ownership released | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | unassigned | BLOCKED | Reviewed actual identical 316-byte forms and 12-byte discrepancy; no new source correction, ownership released | src/game/world/GameObjectManager.cpp |
-| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | unassigned | BLOCKED | Reviewed corrected helper and physical ABI analysis; no new source correction. Ownership released | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | resume_mission | ASSIGNED | Reviewed corrected helper and physical ABI analysis; no new source correction. Ownership released | src/game/characters/PhysicAttributes.cpp |
 | libsanangeles.so | 0x00328c49 | Map::draw() const | unassigned | BLOCKED | Reviewed unchanged-object diagnostic: first group differs before RTL and second at sched2; no source trial justified, ownership released | src/game/world/Map.cpp |
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Reviewed pinned upstream API and matched callees; no new wrapper mechanism, ownership released | src/game/ui/MenuWidget.cpp |
 
@@ -73,9 +73,45 @@ rejected without credit; their ownership is released.
 
 | libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination - current-context replay | unassigned | BLOCKED | Current replay retains exactly old724-byte target and11 stack operands; all41 raw functions, owner38/11 and Character/NPC dependencies pass. No new source form justified; ownership released | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | resume_count | ASSIGNED | Read-only complete corrected Ghidra and native callback/layout audit, using confirmed body and actor interfaces. Preserve prior attempt limits; no compilation or metadata writes | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | resume_mission | ASSIGNED | Read-only reuse assessment with now-verified FindLowerCostNode and LoadArrays definitions and current AStar/array interfaces; verify complete native flow before source conclusions | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap(vector3df const&, vector3df const&, vector3df&, vector3df&) - current-context proposal | resume_string | ASSIGNED | Prepare unchanged faithful wrapper body on current prefix only if no complete current replay exists. Audit constructor, plane and large-call interfaces; no compiler or source variant yet | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | unassigned | BLOCKED | Complete1058-byte native code and explicit bool ABI verified; faithful v2 remains1084/native1100, no new source gap or compile justified. Ownership released | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, vector3df, vector3df, float) | unassigned | BLOCKED | Original-terminal predicate corrected once:1672/native1668, strict prelink rejected;41 old raw functions and semantic relocations unchanged. Portable incremental patch accepted; ownership released | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap(vector3df const&, vector3df const&, vector3df&, vector3df&) - current-context proposal | unassigned | BLOCKED | Reactivated: resolve whether the remaining enum flag or later declarations actually affect this wrapper or its inlined callees. Audit existing objects and declarations only; no speculative replay, compilation or metadata writes | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x002deba1 | GS3DStuff::checkPickableProximity(std::vector<Item*>&) | unassigned | BLOCKED | Complete330-byte native code restored and faithful source audited;352 artifact lacks exact historical input closure,360 control already rejected. No further trial; ownership released | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | unassigned | BLOCKED | Complete292-byte native code and explicit self/callback ABI verified;284/native308 source has no newly identified gap. No compile; ownership released | src/game/app/GSFailure.cpp |
+
+| libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint(vector2df&) | unassigned | BLOCKED | Complete288-byte native code and self/point ABI restored; typed312/native308 source matches native constraints, no new trial. Ownership released | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002e2725 | GSInGameMenu::update(StateMachine*) | unassigned | BLOCKED | Complete332-byte native code verified;356/native352 source snapshots and interfaces agree. Double/audio analysis prototypes repaired separately; no compile, ownership released | src/game/ui/GSInGameMenu.cpp |
+
+| libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap(std::list<Point2D<short>*> const&) | unassigned | BLOCKED | Complete216-byte native code verified against retained232/native228 source; signed list/point and callback snapshots agree. No compile; ownership released | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers() | unassigned | BLOCKED | One native-supported pre-getter top snapshot compiled356/native360;77 old functions and semantic relocations unchanged, strict extent rejected before link. Corrected candidate preserved; ownership released | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x002eb45d | Menus::ServiceWeaponShop::Update() | unassigned | BLOCKED | Complete356-byte native code verified; retained380-byte candidate remains80-byte mismatch with no new source gap. No compile; ownership released | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x0031d7a1 | ContactListener::Persist(b2ContactPoint const*) | unassigned | BLOCKED | Complete578-byte native code and two-carrier void ABI verified; six forms exhausted,604-byte candidate still341 equal bytes historically. No new source gap; ownership released | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x002e6149 | MenuManager::tearDown() | unassigned | BLOCKED | Complete284-byte native code restored after returning-delete overrides; saved300-byte candidate retains only two known compare/branch differences. No new trial; ownership released | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Complete328-byte native code verified; retained340-byte candidate remains113-byte mismatch, signed loop/callback snapshots agree. No compile; ownership released | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | unassigned | BLOCKED | Read-only complete native CFG, callback/body snapshot and contact-interface audit reusing confirmed Persist contracts. Six prior forms retained; recover fixture limits before conclusions. No compiler or metadata writes. | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x002e6db1 | MenuManager::_zoomMap(std::list<Point2D<short>*> const&) | unassigned | BLOCKED | Read-only complete native CFG, pinch-point lifetime and repeated Map callback snapshot audit. Preserve prior identical-form stop; no compiler or metadata writes. | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Read-only complete native CFG, callback snapshot and Wanted/Player/widget physical interfaces audit. Prior196/native184 forms retained; no compiler or metadata writes. | src/game/ui/MenuState.cpp |
+
+| libsanangeles.so | 0x002e6ab1 | MenuManager::_drawMap() const | unassigned | BLOCKED | Read-only complete native CFG and texture/rectangle/matrix callback snapshot audit against current432/native424 candidate. Preserve prior layout controls; no compiler or metadata writes. | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | unassigned | BLOCKED | Complete1726-byte native code verified; sole per-edge info-array snapshot control1808/native1816 preserves44 old functions and semantic relocations. Strict prelink rejected, no linked checks. Corrected source retained; ownership released. | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Read-only complete native CFG, localization/font and callback snapshot audit. Prior372-byte typed-API candidate and80 differences retained; no compiler or metadata writes. | src/game/ui/MenuWidget.cpp |
+
+| libsanangeles.so | 0x002e6fe1 | MenuManager::updateMap() | unassigned | BLOCKED | Read-only complete native CFG, touch-list dispatch and callback-sensitive state snapshots. Retain authentic388-byte candidate and rejected old hint; no compiler or metadata writes. | src/game/ui/MenuManager.cpp |
+
+| libsanangeles.so | 0x002e7165 | MenuManager::initMap() | unassigned | BLOCKED | Read-only complete native CFG and texture/hierarchy/clamp snapshots using related confirmed Map interfaces. Eight previous forms preserved; no compiler or metadata writes. | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Read-only complete native CFG and HUD/Preferences callback lifetimes using related confirmed Language interfaces. Existing372-byte form retained; no compiler or metadata writes. | src/game/ui/MenuWidget.cpp |
+
+| libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | resume_count | ASSIGNED | Read-only complete native CFG, double-timer and game/menu callback snapshots. Preserve six forms and two rejected historical regressions; no compiler or metadata writes. | src/game/ui/MenuManager.cpp |
+| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent(RenderFX::Event&) | resume_string | ASSIGNED | Read-only complete native CFG and Preferences/event/sound snapshots using confirmed sibling interfaces. Two previous six-form waves retained; no compiler or metadata writes. | src/game/ui/MenuWidget.cpp |
 
 <!-- active-ownership:end -->
 
