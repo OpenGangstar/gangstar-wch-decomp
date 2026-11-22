@@ -81,3 +81,77 @@ original C++ types.
 API behavior above was checked against the installed Ghidra source archives,
 scripts and actual project readback. Preserve negative source candidates and
 their attempt budgets when an analysis repair reveals no new source constraint.
+
+
+## Incorrect ARM decoding inside Thumb functions
+
+A missing Thumb continuation can leave existing ARM instructions in the middle
+of an otherwise correct Thumb function. Restoring the return edge alone does
+not replace these definitions. In the verified large-function repairs, the
+native listing exposed 30 incorrect ARM definitions across two functions.
+
+Construct an instruction whitelist from authoritative retail disassembly,
+excluding literal pools. Verify each instruction encoding against both the
+original ELF and imported program before changing analysis metadata. Clear only
+incorrect code units whose entire span lies inside verified instruction bytes.
+Set `TMode` to one only over the newly undefined instruction spans, then use
+`ArmDisassembleCommand` with the whitelist as its restricted address set.
+Setting context across existing instructions can raise
+`ContextChangeException`; do not suppress that error or extend the repair into
+adjacent data. Recompute the function body and verify every resulting instruction
+encoding and width again.
+
+This restored all 800 listed MiniMap offset instructions, 2,171 large height-query
+instructions and 782 random-position instructions: 8,448 instruction bytes,
+including ten alignment bytes. These are analysis repairs, not matched code.
+
+## Internal Thumb BL instructions can be long branches
+
+GCC 4.2.1 can encode a jump between distant blocks using Thumb `BL`. Do not
+classify every such instruction as a source call. Establish its role from native
+control flow, use of the current stack frame, lack of a separate callee prologue,
+a shared parent epilogue and corresponding compiler local-label evidence.
+Actual recursive calls must retain call semantics.
+
+For the large `PhysicAttributes::GetHeight` routine at retail Thumb
+`0x0031eb99`, twelve internal long branches required `FlowOverride.BRANCH`;
+three genuine calls back to the function entry remained calls. Four overrides
+recovered 34 previously unowned executable bytes. The other eight were also
+necessary for an accurate CFG even though their destination blocks already
+belonged to the function. Function ownership alone does not prove correct flow.
+After fixup, all 4,890 executable bytes belong to the function; only three
+two-byte alignment instructions remain outside its body.
+
+## Explicit physical ABI views
+
+Inferred method prototypes can omit both the hidden result pointer and the
+receiver. For MiniMap's offset calculation, caller and callee instructions prove
+an output pointer in `r0`, receiver in `r1`, position pointer in `r2`, rectangle
+pointer in `r3`, and bool arguments in incoming stack slots zero and four. The
+output pointer returns in `r0`. The nominal C++ coordinate return class remains
+unproven.
+
+Use an explicitly labelled analysis-only view when the physical ABI is known
+but the source return type is not. The verified update uses
+`Function.updateFunction` with `CUSTOM_STORAGE`, six explicit `ParameterImpl`
+objects and a `ReturnParameterImpl`. Pointer storage is four bytes in `r0` through
+`r3`; each bool occupies one byte at its four-byte-spaced stack slot. This avoids
+an additional inferred hidden parameter. It does not assert that the original
+source function returned an `int*`.
+
+Enumerate the actual program's compiler conventions before applying a name. The
+corrected ARMv5t/default project reports `__stdcall` and `__thiscall`; its default
+`__stdcall` supplies the soft-float GPR convention. A similarly named model from
+a different installed compiler specification is not interchangeable. Read back
+the complete parameter and return storage after updating it.
+
+
+A correct formal math signature does not guarantee correct physical storage.
+The verified `sqrt(double)` import originally returned through `r1:r0` but
+incorrectly took its argument from `Stack[0x0]:8`. Native callers pass the low
+word in `r0` and high word in `r1`. Explicit custom storage for both the argument
+and result fixes that analysis error. Ghidra represents this join as
+`r1:4,r0:4`, with the most significant word first. Float-to-double and
+double-to-float helpers require corresponding split-register storage. Read back
+both the PLT thunk and its resolved external function; a displayed C prototype
+alone is insufficient. These changes affect analysis metadata only.
