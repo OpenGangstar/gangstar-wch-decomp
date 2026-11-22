@@ -22,9 +22,14 @@ rejected without credit; their ownership is released.
 | libsanangeles.so | 0x00331a09 | WeaponManager::getKeepWeaponsWhenBustedCost() regression diagnosis only | unassigned | COMPLETED | Original shared header restored; canonical targeted gate passes. Worker control caught restored state and does not isolate compiler cause; no function edits | src/game/combat/WeaponManager.cpp; src/game/core/SceneNode.h |
 | libsanangeles.so | 0x002f39e1 | Character::runToTarget(int) | unassigned | BLOCKED | Reviewed native contracts and four prior forms; no new source discrepancy, ownership released | src/game/characters/Character.cpp |
 | libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | unassigned | BLOCKED | Reviewed actual identical 316-byte forms and 12-byte discrepancy; no new source correction, ownership released | src/game/world/GameObjectManager.cpp |
-| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | resume_mission | ASSIGNED | Read-only caller/callee and original SDK contract audit; preserve prior six-form budget, no compilation authorized | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x00328c49 | Map::draw() const | resume_count | ASSIGNED | Read-only native rendering API contract and prior budget audit; no compilation authorized | src/game/world/Map.cpp |
-| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | resume_string | ASSIGNED | Read-only original gameswf source and matched sibling contract audit; no compilation authorized | src/game/ui/MenuWidget.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | unassigned | BLOCKED | Reviewed full native call and SDK contracts, best 1732/1748 remains unmatched; no new source correction, ownership released | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00328c49 | Map::draw() const | unassigned | BLOCKED | Reviewed unchanged-object diagnostic: first group differs before RTL and second at sched2; no source trial justified, ownership released | src/game/world/Map.cpp |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Reviewed pinned upstream API and matched callees; no new wrapper mechanism, ownership released | src/game/ui/MenuWidget.cpp |
+
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | resume_mission | ASSIGNED | Read-only complete ordered native/source contract audit of large pending routine; recover exhausted forms, no compiler trial without a concrete discrepancy | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | ASSIGNED | Read-only full ordered native/source contract audit; prior six forms and diagnostic closure failures retained, no compilation without a concrete discrepancy | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&, recti const&, bool, bool) const | resume_count | ASSIGNED | Recover prior ownership/budget and native/source evidence; initial reconstruction permitted only within remaining first-pass budget, preserve old matches | src/game/hud/MiniMap.cpp |
 
 <!-- active-ownership:end -->
 
