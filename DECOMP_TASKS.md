@@ -7,19 +7,29 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 <!-- active-ownership:start -->
 ## Current coordinator dispatches
 
-This summary identifies current dispatches. Detailed outcomes and prior scope
-records follow below. Only the coordinator updates ownership. Compilation still
-requires the specific bounded approval recorded for each scope.
+The runtime permits three workers plus the coordinator. Assignments below are
+exclusive. Workers use private scratch files; only the coordinator integrates
+canonical changes. Prior SoundManager and Billboard probes were reviewed and
+rejected without credit; their ownership is released.
 
 | Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | --- | --- |
-| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | resume_count | IN_PROGRESS | 0% credited | src/game/audio/SoundManager.cpp |
-| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int) | unassigned | BLOCKED | Reviewed actual13-byte discrepancy audit: scratch registers and store/GOT-load order only; scalar/helper/call contracts agree existing source. No new correction or compile; ownership released. | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor(bool) | unassigned | BLOCKED | Retail BGRA/register passing verified; paired legacy-GCC probe changes lowering but cannot establish retail alignment. No type correction or game-header change accepted; review complete, ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x003485f1 | Trail::Update() | resume_mission | IN_PROGRESS | 0% credited | src/game/world/Trail.cpp |
-| libsanangeles.so | 0x00348735 | Trail::BuildPoint(int, bool) | resume_mission | IN_PROGRESS | 0% credited | src/game/world/Trail.cpp |
-| libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode() | resume_mission | IN_PROGRESS | Sole archived declaration-order trial produced identical object and linked500B four-byte miss; old16 functions6 regions and UV table exact. No further source variant approved. One unchanged-source compiler-dump diagnostic authorized below. | src/game/world/Trail.cpp |
-| libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor(irr::scene::ISceneNode*, irr::video::SColor) | resume_string | IN_PROGRESS | 0% credited | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | unassigned | BLOCKED | Reviewed unchanged-object diagnostic: first reversal at post-reload sched2, no justified source trial; ownership released | src/game/persistence/SaveGame.cpp |
+| libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode() | unassigned | COMPLETED | 100%; canonical function/full section exact, 191 profiles and 10,984 comparisons pass, all 4,285 matched entries directly verified. Ownership released after acceptance | src/game/world/Trail.cpp; src/game/core/SceneNode.h |
+| libsanangeles.so | 0x0034fbf9 | CarSounds::UpdateTurboSounds() | unassigned | BLOCKED | Reviewed family audit confirms prior trial already used accepted types; no new experiment justified, ownership released | src/game/vehicles/CarSounds.cpp; src/game/vehicles/CarSoundCallbacks.h |
+| libsanangeles.so | 0x003485f1 | Trail::Update() | unassigned | BLOCKED | Reviewed single derived-offset trial: 320/324 bytes and 312 differences, baseline remains better. Mesh and old owner checks exact; ownership released | src/game/world/Trail.cpp |
+| libsanangeles.so | 0x00348735 | Trail::BuildPoint(int, bool) | unassigned | BLOCKED | Reviewed full contracts and helper census; no new discrepancy, 760/812 remains unmatched; ownership released | src/game/world/Trail.cpp |
+| libsanangeles.so | 0x00331a09 | WeaponManager::getKeepWeaponsWhenBustedCost() regression diagnosis only | unassigned | COMPLETED | Original shared header restored; canonical targeted gate passes. Worker control caught restored state and does not isolate compiler cause; no function edits | src/game/combat/WeaponManager.cpp; src/game/core/SceneNode.h |
+| libsanangeles.so | 0x002f39e1 | Character::runToTarget(int) | unassigned | BLOCKED | Reviewed native contracts and four prior forms; no new source discrepancy, ownership released | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | unassigned | BLOCKED | Reviewed actual identical 316-byte forms and 12-byte discrepancy; no new source correction, ownership released | src/game/world/GameObjectManager.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | unassigned | BLOCKED | Reviewed full native call and SDK contracts, best 1732/1748 remains unmatched; no new source correction, ownership released | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00328c49 | Map::draw() const | unassigned | BLOCKED | Reviewed unchanged-object diagnostic: first group differs before RTL and second at sched2; no source trial justified, ownership released | src/game/world/Map.cpp |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Reviewed pinned upstream API and matched callees; no new wrapper mechanism, ownership released | src/game/ui/MenuWidget.cpp |
+
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | resume_mission | ASSIGNED | Read-only complete ordered native/source contract audit of large pending routine; recover exhausted forms, no compiler trial without a concrete discrepancy | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | ASSIGNED | Read-only full ordered native/source contract audit; prior six forms and diagnostic closure failures retained, no compilation without a concrete discrepancy | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&, recti const&, bool, bool) const | resume_count | ASSIGNED | Recover prior ownership/budget and native/source evidence; initial reconstruction permitted only within remaining first-pass budget, preserve old matches | src/game/hud/MiniMap.cpp |
 
 <!-- active-ownership:end -->
 
@@ -2115,3 +2125,12 @@ functions, six support regions and UV table. No candidate was credited.
 
 | libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | resume_count | IN_PROGRESS | Read-only existing IR/address-provenance audit of native80B/two-byte discrepancy; recover prior diagnostics before proposing any new work. No source edit or compiler invocation authorized. | _scratch/worker-sound-count-address-provenance/; src/game/audio/SoundManager.cpp |
 | libsanangeles.so | 0x002f7ce9 | Billboard setColor cached-channel type audit | resume_string | IN_PROGRESS | Read-only comparison of preserved local channel types and SDK getter contracts after rejecting class alignment. No type correction or new compile authorized. | _scratch/worker-billboard-channel-type-audit/ |
+
+
+PR760 merged after both CI checks passed and conflict-free status was confirmed.
+Its main artifact exactly equals the previous ByteMatch report; no progress added.
+
+| libsanangeles.so | 0x00348cfd | Trail mesh derived-vertex control | resume_mission | IN_PROGRESS | One bounded private trial approved from SSA evidence: derive loop-local u16 vertex as2*(i-1) modulo65536, remove only dead outer induction/update. Preserve all stored values, other expressions, types, flags, imports and accepted methods. No second form. | _scratch/worker-trail-mesh-derived-vertex/ |
+| libsanangeles.so | 0x002f7ce9 | Billboard cached-channel width measurement | resume_string | IN_PROGRESS | One private measurement approved: widen only four cached channel locals uchar-to-unsigned-int; input values remain0..255, class layout/constructor/body operations/order unchanged. No recovered retail-type claim or second form. | _scratch/worker-billboard-channel-width-measurement/ |
+
+| libsanangeles.so | 0x00352cad | SoundManager count single VRP configuration probe | resume_count | IN_PROGRESS | One genuinely untested whole-TU -fno-tree-vrp probe approved from documented VRP2 commutation. Keep verified80B-source context and every other flag/body/header fixed; require strict target and all73 functions80 regions under the same primary-unit flag. Any regression rejects policy; no flag matrix. | _scratch/worker-sound-count-no-vrp/ |

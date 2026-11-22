@@ -1,3 +1,6 @@
+_Znwj = 0x001c4814;
+_ZN12trail_assets8meshNameE = 0x00435a30;
+_ZN12trail_assets11texturePathE = 0x00435a3c;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-trail/retail-symbols.ld
@@ -13,6 +16,7 @@ __aeabi_fcmpgt = 0x001c419c;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .trail_mesh 0x00348cfc : { *sdk-startup-trail.o(.text._ZN5Trail19CreateMeshSceneNodeEv) }
     .trail_add_point 0x00348a60 : { *sdk-startup-trail.o(.text._ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b) }
     .trail_last_added_point 0x003484e4 : { *sdk-startup-trail.o(.text._ZN5Trail17SetLastAddedPointEN3irr4core8vector3dIfEE) }
     .trail_segment_width 0x00348488 : { *sdk-startup-trail.o(.text._ZN5Trail15SetSegmentWidthEf) }
@@ -36,3 +40,5 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.trail_mesh) == 500, "mesh native500 extent");
+ASSERT(ADDR(.trail_mesh)+SIZEOF(.trail_mesh) == 0x00348ef0, "mesh next Init");

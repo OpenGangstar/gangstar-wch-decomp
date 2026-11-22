@@ -217,3 +217,108 @@ void Trail::AddPoint(irr::core::vector3d<float>& left,
     if (activePointCount > 1)
         BuildPoint(0, buildFlag);
 }
+
+#include "../core/Array.h"
+#include "../core/VideoDriver.h"
+
+namespace irr {
+namespace video {
+struct S3DVertex {
+    core::vector3d<float> position;
+    core::vector3d<float> normal;
+    SColor color;
+    float textureCoordinates[2];
+};
+}
+namespace scene {
+template <class Vertex>
+struct CMeshBuffer : IMeshBuffer, virtual IReferenceCounted {
+    CMeshBuffer() __attribute__((weak));
+    unsigned char unknown4[116];
+    core::array<Vertex> vertices;
+    core::array<unsigned short> indices;
+    unsigned char unknown160[24];
+};
+
+struct SMesh : IMesh, virtual IReferenceCounted {
+    unsigned char unknown4[32];
+    core::array<IMeshBuffer*> meshBuffers;
+    unsigned char unknown56[24];
+};
+}
+}
+
+extern "C" void _ZN3irr5scene5SMeshC1Ev(irr::scene::SMesh*) __attribute__((weak));
+
+namespace trail_assets {
+extern const char meshName[] __attribute__((visibility("hidden")));
+extern const char texturePath[] __attribute__((visibility("hidden")));
+}
+
+// Observed scene-manager prefix used only by the mesh factory call. Keeping
+// this view local avoids changing unrelated legacy-compiler translation units.
+class TrailMeshFactory {
+public:
+    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
+    virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
+    virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
+    virtual void unknown9(); virtual void unknown10(); virtual void unknown11();
+    virtual void unknown12();
+    virtual irr::scene::ISceneNode* addMeshSceneNode(irr::scene::IMesh*,
+        irr::scene::ISceneNode*, int, const irr::core::vector3d<float>&,
+        const irr::core::vector3d<float>&, const irr::core::vector3d<float>&, bool);
+};
+
+void Trail::CreateMeshSceneNode()
+{
+    using namespace irr;
+    scene::CMeshBuffer<video::S3DVertex>* buffer = new scene::CMeshBuffer<video::S3DVertex>();
+    const unsigned int usedVertices = vertexCount;
+    if (usedVertices > buffer->vertices.allocated)
+        buffer->vertices.reallocate(usedVertices);
+    buffer->vertices.used = usedVertices;
+
+    indices = new unsigned short[indexCount];
+    int i = 1;
+    int index = 6;
+    for (; i < trailPointCount; ++i, index += 6) {
+        const unsigned short vertex = static_cast<unsigned short>((static_cast<unsigned int>(i) - 1u) * 2u);
+        const unsigned short following = static_cast<unsigned short>(i) << 1;
+        const unsigned short right = vertex + 1;
+        indices[index - 6] = vertex;
+        indices[index - 5] = right;
+        indices[index - 4] = following;
+        indices[index - 3] = vertex + 3;
+        indices[index - 2] = following;
+        indices[index - 1] = right;
+    }
+
+    scene::SMesh* mesh = static_cast<scene::SMesh*>(::operator new(sizeof(scene::SMesh)));
+    _ZN3irr5scene5SMeshC1Ev(mesh);
+    scene::IMeshBuffer* meshBuffer = buffer;
+    ++buffer->references;
+    mesh->meshBuffers.push_back(meshBuffer);
+    buffer->drop();
+
+    scene::ISceneManager* sceneManager = Application::GetInstance()->GetDevice()->getSceneManager();
+    meshSceneNode = reinterpret_cast<TrailMeshFactory*>(sceneManager)->addMeshSceneNode(mesh, 0, -1,
+        core::vector3d<float>(), core::vector3d<float>(), core::vector3d<float>(1.0f, 1.0f, 1.0f), false);
+    mesh->drop();
+    if (meshSceneNode) {
+        sceneManager->getRootSceneNode()->addChild(meshSceneNode);
+        meshSceneNode->setName(trail_assets::meshName);
+        meshSceneNode->setMaterialType(static_cast<video::E_MATERIAL_TYPE>(25));
+        meshSceneNode->setMaterialFlag(video::MaterialFlag256, false);
+        meshSceneNode->setMaterialFlag(video::MaterialFlag128, true);
+        meshSceneNode->setMaterialFlag(video::MaterialFlag16, false);
+        meshSceneNode->setMaterialFlag(video::MaterialFlag2, false);
+        meshSceneNode->setAutomaticCulling(scene::EAC_OFF);
+        meshSceneNode->setVisible(false);
+        video::ITexture* texture = Application::GetInstance()->GetDevice()->getVideoDriver()->getTexture(trail_assets::texturePath);
+        meshSceneNode->setMaterialTexture(0, texture);
+    }
+}
+
+typedef char CheckVertex36[sizeof(irr::video::S3DVertex)==36?1:-1];
+typedef char CheckBuffer196[sizeof(irr::scene::CMeshBuffer<irr::video::S3DVertex>)==196?1:-1];
+typedef char CheckMesh92[sizeof(irr::scene::SMesh)==92?1:-1];
