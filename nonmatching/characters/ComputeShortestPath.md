@@ -4,6 +4,10 @@ Target: `libsanangeles.so`, Thumb `0x00320ca1`, 1,668 bytes. This patch is
 unapplied and unmatched. The original assembly marker, catalogue status and
 canonical source remain unchanged. It adds no matched or Fully Linked bytes.
 
+The latest evidence-supported candidate is **1,672/native 1,668 bytes** after
+the original-terminal correction below. The historical 1,688-byte patch and
+rejected quotient-width control are retained for provenance.
+
 ## New evidence and bounded scope
 
 Six earlier forms exhausted the first-pass budget. Their supported candidate
@@ -126,3 +130,67 @@ requires the first; it is not meant to apply directly to production source.
 Current production base used for this follow-up: PR #741, main `91833d3c`.
 Further quotient-cast trials require new evidence. The same pure cast-removal
 hypothesis should not be blindly repeated on neighboring physics functions.
+
+
+## Original-terminal correction
+
+Complete retail instruction ownership was restored before this review. The
+reconstruction stop predicate in the historical source was wrong: it compared
+the found parent index against the changing traversal cursor. Retail instead
+keeps the original terminal index in `r5`, initializes traversal from it at
+0x003210c8, and compares each found parent to that unchanged `r5` at
+0x003212dc. There is no write to `r5` on the reconstruction loop; intervening
+calls preserve it under ARM EABI. The earlier audit's description of this
+register as the previous cursor is superseded.
+
+The [incremental correction](ComputeShortestPath-original-terminal.patch)
+adds an immutable terminal snapshot and changes only the stop comparison:
+
+```cpp
+const int originalTerminal = selected;
+// Within the existing reconstruction loop:
+if (originalTerminal == next) break;
+selected = next;
+```
+
+This preserves the retail termination rule, including its limitations. A
+self-parent encountered after leaving the terminal is not the same condition
+as returning to the terminal. No additional cycle guard or gameplay repair is
+introduced.
+
+Apply the incremental patch after the historical base patch in its documented
+source context. Do not apply the quotient-width patch:
+
+```powershell
+git apply nonmatching/characters/ComputeShortestPath.patch
+git apply --check nonmatching/characters/ComputeShortestPath-original-terminal.patch
+git apply nonmatching/characters/ComputeShortestPath-original-terminal.patch
+python nonmatching/characters/ComputeShortestPath-probe.py --baselib C:/path/to/libsanangeles.so
+```
+
+The coordinator independently populated the three affected files from Git
+commit `32ef85f0cfddeeee04e462d81f310540413f2b04`, applied both patches with
+strict Git checks and confirmed that the resulting source exactly equals the
+actual compiled control. Source SHA-256:
+`728082fffb6f4ad823157147155b3d957a572c9a3ec2339e4424573574337b95`.
+
+One approved source-only compile emitted a 1,672-byte function and input
+section, retaining the 460-byte local frame and weak 96-byte PhysicInfo C1.
+Target payload SHA-256:
+`83e1123c3beec7abe49982c889e8f4340f64c0dfdafebf120c71afcb3b6ef27d`.
+All 41 existing function payloads, their semantic relocations and 53 other
+allocated-section payloads remained identical to the supported object. The
+same 41 functions also agree with the current canonical object; 953 frozen
+inputs remained stable. The coordinator independently reread the real object
+and verified its target extent/hash and all 41 old function payloads.
+
+The strict gate printed:
+
+```text
+REJECT PRELINK: target does not have exact native1668-byte function/section extent; native link and owner/support checks SKIPPED
+```
+
+No linked target comparison or post-body owner/support gate was run. The
+four-byte size excess does not mean only four bytes differ. The function
+remains unmatched, its assembly marker remains, and matching progress is
+unchanged. No second source form was compiled for this correction.

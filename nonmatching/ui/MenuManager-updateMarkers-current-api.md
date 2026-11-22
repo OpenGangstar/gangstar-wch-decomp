@@ -58,3 +58,42 @@ the second source delta to apply after the first patch. A future accepted
 consumer would require all affected shared-header closures and the full
 native gate. This package does not claim either broader verification or
 production integration. Further source searches require new causal evidence.
+
+
+## Pre-getter viewport-top snapshot
+
+A later complete native audit found one previously untested scalar lifetime.
+Retail loads viewport top at 0x002e6a22, preserves it in `r8`, and uses that same
+value after the TargetMarker getter at 0x002e6a86. Both faithful candidates and
+all four older forms instead reloaded manager top after that call. The getter
+is not shown to mutate this manager; the evidence concerns the caller's actual
+memory snapshot and generated instructions.
+
+The [incremental snapshot patch](MenuManager-updateMarkers-top-snapshot.patch)
+applies after the first adjacent current-interface patch. It captures top
+immediately before the getter and uses the captured value for `offsetY`. No
+other expression, bound, type, header, compiler flag or linker input changes.
+Do not combine the second mutable-vector variant with this control.
+
+One approved compile and assembly completed successfully. The corrected
+function and input section are still **356/native 360 bytes**; the 36-byte
+frame also remains unchanged. Its target payload SHA-256 is
+`2e48f04982239ce85c54c53ecf432e3596935e7c1a630f74a5d2a46b7234daf8`.
+The compiler now preserves top across the getter and emits the native-supported
+`blx r5; mov r2, r8; sub r3, r6, r2` sequence. This verifies the narrow snapshot
+hypothesis, not the complete function.
+
+All 77 previous section-backed function definitions retain their raw payloads
+and semantic relocations; all other allocated sections are unchanged. The
+884-file input snapshot is stable, with only the approved source differing
+from the baseline. The coordinator independently reread the emitted object,
+verified the target extent/hash and compared all 77 old function payloads.
+The incremental patch was independently applied with strict Git checks;
+resulting source content matches the compiled control after line-ending
+normalization required by this repository.
+
+The stricter exact-360-byte pre-link gate rejected the short candidate before
+harness generation or linking. No new target ELF, native byte comparison or
+fresh 75-function/36-region/GOT gate exists. Historical successful checks above
+remain historical. No second source form was tried, no assembly marker was
+removed, and no matching progress was added.

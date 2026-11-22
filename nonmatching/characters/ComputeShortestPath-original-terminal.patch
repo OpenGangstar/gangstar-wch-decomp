@@ -1,0 +1,16 @@
+--- a/src/game/characters/PhysicAttributes.cpp
++++ b/src/game/characters/PhysicAttributes.cpp
+@@ -673,11 +673,12 @@
+     }
+     pathLength=0;
+     path.clear();
++    const int originalTerminal = selected;
+     while(selected!=-1) {
+         ++pathLength;
+         path.insert(closed.data[selected],0);
+         int next=closed.linear_reverse_search(AStarNode(closed.data[selected].parentTriangleOffset,closed.data[selected].parentRegion));
+-        if(selected==next) break;
++        if(originalTerminal==next) break;
+         selected=next;
+     }
+     if(open.free_when_destroyed) ::operator delete(open.data);
