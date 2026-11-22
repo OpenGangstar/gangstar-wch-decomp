@@ -18,13 +18,13 @@ rejected without credit; their ownership is released.
 | libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode() | unassigned | COMPLETED | 100%; canonical function/full section exact, 191 profiles and 10,984 comparisons pass, all 4,285 matched entries directly verified. Ownership released after acceptance | src/game/world/Trail.cpp; src/game/core/SceneNode.h |
 | libsanangeles.so | 0x0034fbf9 | CarSounds::UpdateTurboSounds() | unassigned | BLOCKED | Reviewed family audit confirms prior trial already used accepted types; no new experiment justified, ownership released | src/game/vehicles/CarSounds.cpp; src/game/vehicles/CarSoundCallbacks.h |
 | libsanangeles.so | 0x003485f1 | Trail::Update() | unassigned | BLOCKED | Reviewed single derived-offset trial: 320/324 bytes and 312 differences, baseline remains better. Mesh and old owner checks exact; ownership released | src/game/world/Trail.cpp |
-| libsanangeles.so | 0x00348735 | Trail::BuildPoint(int, bool) | resume_mission | ASSIGNED | Read-only first-divergence and confirmed mesh-layout contract audit; no compilation authorized | src/game/world/Trail.cpp |
-
+| libsanangeles.so | 0x00348735 | Trail::BuildPoint(int, bool) | unassigned | BLOCKED | Reviewed full contracts and helper census; no new discrepancy, 760/812 remains unmatched; ownership released | src/game/world/Trail.cpp |
 | libsanangeles.so | 0x00331a09 | WeaponManager::getKeepWeaponsWhenBustedCost() regression diagnosis only | unassigned | COMPLETED | Original shared header restored; canonical targeted gate passes. Worker control caught restored state and does not isolate compiler cause; no function edits | src/game/combat/WeaponManager.cpp; src/game/core/SceneNode.h |
-
-| libsanangeles.so | 0x002f39e1 | Character::runToTarget(int) | resume_string | ASSIGNED | Read-only prior-budget and native/source evidence audit; no source or compile trial authorized yet | src/game/characters/Character.cpp |
-
-| libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | resume_count | ASSIGNED | Read-only native contracts and prior budget audit, no compilation authorized | src/game/world/GameObjectManager.cpp |
+| libsanangeles.so | 0x002f39e1 | Character::runToTarget(int) | unassigned | BLOCKED | Reviewed native contracts and four prior forms; no new source discrepancy, ownership released | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | unassigned | BLOCKED | Reviewed actual identical 316-byte forms and 12-byte discrepancy; no new source correction, ownership released | src/game/world/GameObjectManager.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, vector3df) | resume_mission | ASSIGNED | Read-only caller/callee and original SDK contract audit; preserve prior six-form budget, no compilation authorized | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00328c49 | Map::draw() const | resume_count | ASSIGNED | Read-only native rendering API contract and prior budget audit; no compilation authorized | src/game/world/Map.cpp |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | resume_string | ASSIGNED | Read-only original gameswf source and matched sibling contract audit; no compilation authorized | src/game/ui/MenuWidget.cpp |
 
 <!-- active-ownership:end -->
 
