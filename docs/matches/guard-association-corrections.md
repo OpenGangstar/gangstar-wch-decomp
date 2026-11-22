@@ -129,3 +129,58 @@ definitions and 221/226 old allocated payloads remain identical. Semantic
 relocations also change. No native linker ran. The flag policy is rejected and
 not integrated; the corrected 3,924-byte default-profile source stays preferred.
 All failed gates, baselines and exact name-pairing evidence remain preserved.
+
+## Player Update: preserve a single death dispatch
+
+The preferred PlayerTest::Update fragment now also preserves the native single
+death dispatch. Native captures virtual slot 168 before the optional vehicle
+getter, forms a Boolean, then calls the captured callee once. The prior source
+authored separate die(false) and die(true) calls. One bounded source-only control
+replaces that pair with a single call using the same short-circuit predicate.
+The actual compiler captures the callee before the getter and emits one BLX;
+this ordering was inspected rather than assumed from C++ evaluation rules.
+
+The resulting function and input section are both 2,204 bytes versus retail
+2,228. The earlier car-interaction else and updateAbsolutePosition(false)
+corrections remain. Exact control output:
+
+```text
+STRICT PRELINK EXTENT {"symbol_size": 2204, "input_section_size": 2204, "input_section": ".text._ZN10PlayerTest6UpdateEv", "native_required": 2228}
+STOP: function/inputsection must both equal native2228; native link skipped
+```
+
+The coordinator independently verified the object extent and raw target SHA-256
+2a9cdc033c56ebc6da33b53343cafa7eafa01599d3b28cd9cbf69c5bb9b117b8.
+All 84 other raw definitions and 945 frozen inputs remain unchanged. Other
+allocated payloads, semantic relocations and imports are preserved. The strict
+extent gate stopped before linking; target, whole-section, owner, GOT,
+dependency and global linked checks were skipped. No match is credited.
+The earlier constructor and historical prerequisite-closure limitations remain.
+Full source, commands, objects and exact comparison evidence are retained in
+`_scratch/worker-player-update-single-die-control`. The published LF fragment
+still requires that full private translation-unit context for reproduction.
+
+## Complete analysis of step and computed dispatch
+
+Further Ghidra repairs recover Vehicle::step's 4,214 instruction bytes and
+Script::executeCommand's 12,106 instruction bytes. Only verified normal-return
+overrides, wrong ARM decoding and proven same-frame internal branch ownership
+were repaired. Native external calls and complete retail memory remain intact.
+Eleven step and 387 script internal BL instructions are proven same-frame joins;
+they receive analysis-only branch flow overrides, with no binary rewriting.
+
+Script's computed switch has 118 table entries and 95 unique targets; Player
+car interaction has 17 entries and 12 targets. Exact signed table entries,
+dispatch instructions and destination addresses support Ghidra jump tables.
+Independent readback verifies all 4,902 Script and 725 car-interaction live
+instructions against retail bytes. Script decompiler case labels are normalized
+target addresses, so coverage is checked against actual table indices rather
+than treating those labels as opcode numbers. All original function/table
+memory is unchanged. These repairs earn no matching or linked credit.
+
+Car-interaction's completed case audit found no new source discrepancy.
+Script's newly visible cases 64/105 instead reveal a wanted-bound message
+selector difference: native tests combined bound failure and selects the low
+message whenever wanted is below minimum; the prior candidate gives maximum
+failure priority. One source-only control is assigned for that concrete finding;
+no result is claimed until compilation and coordinator review complete.
