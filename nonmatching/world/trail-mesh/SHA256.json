@@ -1,0 +1,18 @@
+{
+  ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+  "diagnostic-identity.json": "17e23f5abfd8c0e49e3992477f35db19f74c38e18876c0ac3710d58d0418938c",
+  "exact-comparison.txt": "b461db425aaae55d2329d9d4d93e3f9552d1a610590c0c29b4ad9f871448764d",
+  "linked-proof.json": "ce4ad05807bf5699085eec3ecbe459f66367417141ed42c310c23715fb2622c6",
+  "profile-reference-NONMATCHING.json": "1a7e96b642c62f13bcdfa4ee1f4e3aeed39ab3be2b9803394437b8b088c55f6a",
+  "README.md": "bfc7114298b60eb5f64ac1fbc787c75fa91423e981f8961f1e427bf0586c1461",
+  "reproduce.py": "b289efb93d7e9a4e358887906c73885dd8c213cf90a75602dd7d3c3d7c82b3de",
+  "SceneNode.h": "adf00478035cc9aa3c30151ee98dd898318ea79fad97190b7f2136e932468888",
+  "source-prerequisites.patch": "7c8a8c47a29b63d2c04354c69689adaada3d07a130a9c52f998b2dd53304e3b9",
+  "Trail-complete-context.ld": "18e269bfff57e7e298d286e6f11779f91e3bdc6b19351a25bf1b94009cc4d51c",
+  "Trail.cpp": "0f8cb3ed9809aa413183c6cb5dae624e0d08fdc7f9f91b690c8e8b127b3a3820",
+  "Trail.cpp.083t.cunroll.mesh-excerpt.txt": "180b98a1acc1fbce19da86073133f45bee52fe65c6460bf12af2b89a2d2e2291",
+  "Trail.cpp.085t.ivopts.mesh-excerpt.txt": "9b9b00b964b54ac683f69e7e300dfcf2293ec2ebad9f2945ede4f02754986503",
+  "Trail.cpp.098t.uncprop.mesh-excerpt.txt": "496c7b8aeca4112a491beceb79ed5497483a8810b0e9c07666279c7571f3625f",
+  "Trail.cpp.099t.optimized.mesh-excerpt.txt": "c2aed9a1c5a8a932678b498f1ae7ced98bd8a48ffe68627a5be9861fedb8983a",
+  "Trail.cpp.104r.expand.mesh-excerpt.txt": "044d5fa19a0c14f8b69522effb0b1c8d827ea2396f832f3debb19caf81d3ca8d"
+}

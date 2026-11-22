@@ -4,6 +4,25 @@ The main Codex agent records assignments and releases ownership after review
 and acceptance. Use the binary, address, and function name to identify each
 entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
+<!-- active-ownership:start -->
+## Current coordinator dispatches
+
+This summary identifies current dispatches. Detailed outcomes and prior scope
+records follow below. Only the coordinator updates ownership. Compilation still
+requires the specific bounded approval recorded for each scope.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | resume_count | IN_PROGRESS | 0% credited | src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int) | unassigned | BLOCKED | Reviewed actual13-byte discrepancy audit: scratch registers and store/GOT-load order only; scalar/helper/call contracts agree existing source. No new correction or compile; ownership released. | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor(bool) | unassigned | BLOCKED | Retail BGRA/register passing verified; paired legacy-GCC probe changes lowering but cannot establish retail alignment. No type correction or game-header change accepted; review complete, ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x003485f1 | Trail::Update() | resume_mission | IN_PROGRESS | 0% credited | src/game/world/Trail.cpp |
+| libsanangeles.so | 0x00348735 | Trail::BuildPoint(int, bool) | resume_mission | IN_PROGRESS | 0% credited | src/game/world/Trail.cpp |
+| libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode() | resume_mission | IN_PROGRESS | Sole archived declaration-order trial produced identical object and linked500B four-byte miss; old16 functions6 regions and UV table exact. No further source variant approved. One unchanged-source compiler-dump diagnostic authorized below. | src/game/world/Trail.cpp |
+| libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor(irr::scene::ISceneNode*, irr::video::SColor) | resume_string | IN_PROGRESS | 0% credited | src/game/rendering/CustomBillboardSceneNode.cpp |
+
+<!-- active-ownership:end -->
+
 The coordinator restored native OctTreeAABBNode depth at offset60 and size64.
 All190 profiles/10953 comparisons remain exact,1063 frozeninputs stable. No
 constructor body or byte credit changes. See docs/matches/octree-node-depth.md.
@@ -287,7 +306,7 @@ unmatched. See docs/matches/car-sound-auxiliary-gain.md.
 | libsanangeles.so | 0x002fbec1 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IReferenceCounted thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002fbed5 | CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode (D1 IAttributeExchangingObject thunk) | — | COMPLETED | 100% | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode (C2) | — | BLOCKED | Coordinator reran real C2 audit:4988/4992 versus native4936B, mismatch12 and neighbor overrun. Native2066 instruction encodings and geometry1768B verified; no missing source operation or justified trial. No credit; ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
-| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | — | BLOCKED | Coordinator checked the single genuine SDK vertex trial:3996/native4120B, strict extent failure. Diagnostic native-address function fails at0xc;16existingfunctions/9regions pass only diagnostically. Layout and886inputs stable; no credit or production edits. Ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor | unassigned | BLOCKED | Retail BGRA/register passing verified; paired legacy-GCC probe changes lowering but cannot establish retail alignment. No type correction or game-header change accepted; review complete, ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp |
 | libsanangeles.so | 0x002f7a21 | CustomBillboardSceneNode::render | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002f8405 | CustomBillboardSceneNode::~CustomBillboardSceneNode (D1) | — | COMPLETED | 100% | src/game/rendering/CustomBillboardSceneNode.cpp |
 | libsanangeles.so | 0x002d2999 | LODSceneNode::render | — | COMPLETED | 100% | src/game/rendering/LODSceneNode.cpp |
@@ -1101,7 +1120,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x002ff181 | NPC::_detect() | — | BLOCKED | Coordinator reran actual four-image audit; v2/v3/v4 identical1100/native1104B, three-identical stop confirmed. Native callbacks/events already correct; no array/list destructor model applies. Old69/13 separate from current71/15;895 stableinputs, no compile/credit; ownership released. | src/game/ai/NPC.cpp |
 
 | libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | — | BLOCKED | Six old forms reviewed; faithful unhinted candidate is 1,084 versus 1,100 bytes. Corrected forms already model actual APIs and native custom filtering; no new source gap found. | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x003179d5 | LevelObject::CastRay(vector3df const&, vector3df const&, vector3df&, vector3df&, LevelObject*&, bool) | hud_glyphs | BLOCKED | 1484/1504 bytes; unchanged-context replay stopped | src/game/world/LevelObject.cpp |
+| libsanangeles.so | 0x003179d5 | LevelObject::CastRay(vector3df const&, vector3df const&, vector3df&, vector3df&, LevelObject*&, bool) | unassigned | BLOCKED | 1484/1504 bytes; unchanged-context replay stopped | src/game/world/LevelObject.cpp |
 
 | libsanangeles.so | 0x0034b6f5 | std::__stl_throw_out_of_range(char const*) | — | COMPLETED | 100% | src/game/persistence/StringManager.cpp |
 | libsanangeles.so | 0x0031ad31 | PhysicAttributes::SetHeightAttributes(vector3df const&, PhysicInfo*) | lock_init | BLOCKED | 1400/1388-byte candidate; six forms exhausted | src/game/characters/PhysicAttributes.cpp |
@@ -1285,7 +1304,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 | libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | — | BLOCKED | six forms; best1996/2012, inline-functions diagnostic unchanged; no credit | src/game/rendering/menufx.cpp |
 | libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | — | BLOCKED | Both machine ABI and primary Irrlicht const-list/value-iterator/pointer-reference APIs already correct; unused stock-position differences irrelevant. No justified trial. | src/game/combat/BulletTraceManager.cpp |
 | libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | — | BLOCKED | Five distinct forms verified; best656 exceeds native652. Native arithmetic matches saved expressions, with no justified sixth-form correction. Relocated/vtable failures are not native proof. | src/game/audio/CSoundDecoderMSADPCM.cpp |
-| libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | hud_registration | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
+| libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(vector3df const&, vector3df&, vector3df&) | unassigned | BLOCKED | bounded3forms identical3120B,3032equal; current sibling/callers pass; no credit | src/game/world/LevelObject.cpp |
 | libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | — | BLOCKED | one current-interface unchanged replay744B,125bytes differ; old39checks pass; no credit | src/game/combat/Rocket.cpp |
 | libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | — | BLOCKED | Coordinator reviewed native965-instruction receiver/timer/lifetime audit; no new semantic correction. Current2200/native2228 object unlinked; old2212 diagnostic lacks eight current definitions, no closure transfer.38 stableinputs, no compile/credit; ownership released. | src/game/ai/PlayerTest.cpp (private) |
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | — | BLOCKED | Current unchanged safe3060/3220 identical archive; old188/112 and complete76-build header closure2587 functions/2821 regions exact; fixture failures resolved, no credit | src/game/vehicles/Vehicle.cpp |
@@ -2039,6 +2058,60 @@ compile without coordinator acceptance. Historical budgets remain unchanged.
 
 | Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | --- | --- |
-| libsanangeles.so | 0x0032cbe1,0x0032cfcd | Wheel constructor C1/C2 and processTouch(long) | resume_count | ASSIGNED | Unmatched. Recover both bodies and prove complete-context novelty/compatibility before any compile. | src/game/vehicles/Wheel.cpp; _scratch/worker-wheel-complete-context/ |
-| libsanangeles.so | 0x00332771,0x00332cf5 | CameraManager::update(float),getClickedTarget(line3df,bool)const | resume_mission | ASSIGNED | Unmatched. Recover both bodies and compatible native interfaces; investigate whether combined context is genuinely untested. | src/game/core/CameraManager.cpp; _scratch/worker-camera-manager-complete-context/ |
-| libsanangeles.so | 0x0034b3c5,0x0034b5a5,0x0034b78d | StringManager::formatAmount,unloadPackSheet,loadPackSheet | resume_string | ASSIGNED | Unmatched. Recover all three bodies and compatible interfaces; prove complete-context novelty before requesting a bounded compile. | src/game/persistence/StringManager.cpp; _scratch/worker-string-manager-complete-context/ |
+| libsanangeles.so | 0x0032cbe1,0x0032cfcd | Wheel constructor C1/C2 and processTouch(long) | unassigned | BLOCKED | Coordinator reran audit0:1061 frozen inputs stable; constructor256 and parent300 entirely identical historical linked bytes. Old20 functions12 regions and accepted20-byte thunk exact. One context only, no credit; ownership released. | src/game/vehicles/Wheel.cpp; _scratch/worker-wheel-complete-context/ |
+| libsanangeles.so | 0x00332771,0x00332cf5 | CameraManager::update(float),getClickedTarget(line3df,bool)const | unassigned | BLOCKED | Coordinator reviewed final report and independently read actual object sizes/hashes. Sole complete context fails native extents; no target link or credit. Historical identity caveats retained, ownership released. | src/game/core/CameraManager.cpp; _scratch/worker-camera-manager-complete-context/ |
+| libsanangeles.so | 0x0034b3c5,0x0034b5a5,0x0034b78d | StringManager::formatAmount,unloadPackSheet,loadPackSheet | unassigned | BLOCKED | Coordinator reviewed final report and independently read actual object sizes/hashes. Sole complete context fails native extents; no target link or credit. Historical identity caveats retained, ownership released. | src/game/persistence/StringManager.cpp; _scratch/worker-string-manager-complete-context/ |
+
+
+## Next recovery after reviewed Wheel, CameraManager and StringManager controls
+
+The previous scopes are reviewed and released. Historical inactive LevelObject
+owners are released by the coordinator before reassignment. Preserve historical
+budgets; first recover genuine bodies/interfaces and prove complete-context
+novelty. No compilation without coordinator acceptance. No guessed source or
+layout changes, canonical/shared edits, Git operations or delegation by workers.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00354665,0x00354725 | EventManager::_attach(int,IEventReceiver*),_detach(int,IEventReceiver*) | unassigned | BLOCKED | Reviewed actual historical combined sources/logs: both pending methods and all current accepted method/storage declarations already tested together. No fresh compile; prior budgets preserved, ownership released. | src/game/scripting/EventManager.cpp; _scratch/worker-event-manager-complete-context/ |
+| libsanangeles.so | 0x003351dd,0x00335849 | VehicleCamera::goToSide(bool),update(float) | unassigned | BLOCKED | Coordinator independently reran native comparisons: side304B/eight differences, update968B/415 differences; actual compiled getFacing220B exact. Old26 functions13 regions pass; one context, no new credit. Ownership released. | src/game/vehicles/VehicleCamera.cpp; _scratch/worker-vehicle-camera-complete-context/ |
+| libsanangeles.so | 0x003179d5,0x00317fb5 | LevelObject::CastRay and canGoToPoint(vector3df const&,vector3df&,vector3df&) | unassigned | BLOCKED | Coordinator reviewed final report and actual object: ray1484/native1504, movement3120/native3120 both unchanged from historical payloads/relocations;65 old raw functions unchanged. No target link or credit; ownership released. | src/game/world/LevelObject.cpp; _scratch/worker-level-object-complete-context/ |
+
+| libsanangeles.so | 0x00321721,0x003218d9,0x003219cd | SceneNodeManager::report,reclaimGarbage,drop | unassigned | BLOCKED | Coordinator reran audit0:873 frozen inputs stable, all three target raw payloads identical prior,29 old raw functions unchanged. Report392/native384 and drop208/native210 reject linking; reclaim244 unchanged mismatch. No credit; ownership released. | src/game/world/SceneNodeManager.cpp; _scratch/worker-scene-manager-complete-context/ |
+
+| libsanangeles.so | 0x003485f1,0x00348735,0x00348cfd | Trail::Update(),BuildPoint(int,bool),CreateMeshSceneNode() | resume_mission | IN_PROGRESS | Mesh now500/native500 with only four initialization-order bytes different; same-object strict native link preserves both short actual methods, old16 functions6 regions and24B UV table exact. No credit. Read-only prior-loop/compiler evidence audit before any new source trial. | src/game/world/Trail.cpp; _scratch/worker-trail-unit-complete-context/ |
+| libsanangeles.so | 0x002f7ce9,0x002f800d | CustomBillboardSceneNode::setColor and OnAnimate | unassigned | BLOCKED | Coordinator independently compared native image: Color232/65 differences, parent704/13 differences; accepted20B thunk exact. Old20 functions12 sections and GOT pass; complete context unchanged, ownership released. | src/game/rendering/CustomBillboardSceneNode.cpp; _scratch/worker-billboard-complete-context/ |
+
+| libsanangeles.so | 0x0032b1f5,0x0032b665 | SlideControl constructor C1/C2 and processTouch(long) | unassigned | BLOCKED | Coordinator reran audit0:873 inputs stable, all target objects identical historical,18 old raw functions unchanged. Constructor500/native492 rejects linking; no second form or credit. Ownership released. | src/game/ui/SlideControl.cpp; _scratch/worker-slide-complete-context/ |
+
+
+## Evidence-directed follow-up
+
+Recent independent complete-context controls mostly emitted unchanged bytes.
+Further escalation must identify a concrete called-definition, source/type or
+compiler mechanism; an untried combination alone is insufficient. Preserve all
+negative evidence and original per-function budgets.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor(bool) | unassigned | BLOCKED | Retail BGRA/register passing verified; paired legacy-GCC probe changes lowering but cannot establish retail alignment. No type correction or game-header change accepted; review complete, ownership released. | src/game/rendering/CustomSkyBoxSceneNode.cpp; _scratch/worker-sky-color-abi-audit/ |
+| libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor(ISceneNode*,SColor) | resume_string | IN_PROGRESS | Unmatched; read-only prior-form and SColor alignment/call-ABI audit. Stock source is reference, not proof of retail packing. No compile authorized. | src/game/rendering/CustomBillboardSceneNode.cpp; _scratch/worker-billboard-color-abi-audit/ |
+
+
+| libsanangeles.so | 0x00348cfd | Trail::CreateMeshSceneNode() | resume_mission | IN_PROGRESS | Sole archived declaration-order trial produced identical object and linked500B four-byte miss; old16 functions6 regions and UV table exact. No further source variant approved. One unchanged-source compiler-dump diagnostic authorized below. | _scratch/worker-trail-mesh-declaration-order/; src/game/world/Trail.cpp (read-only canonical) |
+
+
+| libsanangeles.so | 0x002f84c9 | SColor ABI compiler probe supporting setSkyColor investigation | unassigned | BLOCKED | Retail BGRA/register passing verified; paired legacy-GCC probe changes lowering but cannot establish retail alignment. No type correction or game-header change accepted; review complete, ownership released. | _scratch/worker-sky-color-abi-audit/compiler-probe/ |
+
+
+| libsanangeles.so | 0x00348cfd | Trail mesh compiler-pass diagnostic | resume_mission | IN_PROGRESS | One diagnostic-only compiler/as invocation on unchanged500B source with tree/RTL dumps; verify identical function bytes/semantic relocations before interpreting induction/preheader ordering. No new source trial. Prepare a portable unapplied candidate packet afterward for main-agent review. | _scratch/worker-trail-mesh-ivopts-audit/ |
+| libsanangeles.so | 0x002f7ce9 | Billboard setColor class-alignment measurement | unassigned | BLOCKED | Rejected. Coordinator independently read actual object: target276/native232 and existing debug436/native424. Physical color/material sizes unchanged; no link, canonical type untouched. | _scratch/worker-billboard-class-alignment-measurement/ |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int) | unassigned | BLOCKED | Reviewed actual13-byte discrepancy audit: scratch registers and store/GOT-load order only; scalar/helper/call contracts agree existing source. No new correction or compile; ownership released. | _scratch/worker-billboard-animate-contract-audit/ |
+
+
+The coordinator reproduced the portable mesh packet independently before
+publication. It retains the exact four-byte mismatch and all16 accepted
+functions, six support regions and UV table. No candidate was credited.
+
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | resume_count | IN_PROGRESS | Read-only existing IR/address-provenance audit of native80B/two-byte discrepancy; recover prior diagnostics before proposing any new work. No source edit or compiler invocation authorized. | _scratch/worker-sound-count-address-provenance/; src/game/audio/SoundManager.cpp |
+| libsanangeles.so | 0x002f7ce9 | Billboard setColor cached-channel type audit | resume_string | IN_PROGRESS | Read-only comparison of preserved local channel types and SDK getter contracts after rejecting class alignment. No type correction or new compile authorized. | _scratch/worker-billboard-channel-type-audit/ |

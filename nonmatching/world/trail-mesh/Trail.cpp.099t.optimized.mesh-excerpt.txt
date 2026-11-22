@@ -1,0 +1,135 @@
+;; Function void Trail::CreateMeshSceneNode() (_ZN5Trail19CreateMeshSceneNodeEv)
+
+Analyzing Edge Insertions.
+void Trail::CreateMeshSceneNode() (this)
+{
+  struct ISceneNode * temp.955;
+  struct ISceneNode * temp.948;
+  unsigned int ivtmp.943;
+  struct ITexture * texture;
+  const short unsigned int right;
+  const short unsigned int following;
+  struct ISceneManager * sceneManager;
+  struct IMeshBuffer * meshBuffer;
+  struct SMesh * mesh;
+  short unsigned int vertex;
+  int i;
+  const unsigned int usedVertices;
+  struct CMeshBuffer<irr::video::S3DVertex> * buffer;
+  const char * texturePath.38;
+  struct IVideoDriver * D.7356;
+  struct IrrlichtDevice * D.7352;
+  struct Application * D.7350;
+  const char * meshName.37;
+  struct ISceneNode * D.7339;
+  struct ISceneNode * D.7329;
+  struct vector3d<float> D.7273;
+  struct vector3d<float> D.7272;
+  struct vector3d<float> D.7271;
+  int (*__vtbl_ptr_type) (void) D.7327;
+  struct IrrlichtDevice * D.7320;
+  struct Application * D.7318;
+  struct IReferenceCounted * D.7314;
+  struct IReferenceCounted * buffer.34;
+  void * D.7307;
+  short unsigned int * D.7294;
+  void * D.7282;
+  void * D.7275;
+
+<bb 2>:
+  D.7275 = operator new (196);
+  buffer = (struct CMeshBuffer<irr::video::S3DVertex> *) D.7275;
+  __comp_ctor  (buffer);
+  usedVertices = (unsigned int) this->vertexCount;
+  if (usedVertices > buffer->vertices.allocated) goto <L0>; else goto <L1>;
+
+<L0>:;
+  reallocate (&buffer->vertices, usedVertices);
+
+<L1>:;
+  buffer->vertices.used = usedVertices;
+  D.7282 = operator new [] ((unsigned int) this->indexCount * 2);
+  this->indices = (short unsigned int *) D.7282;
+  if (this->trailPointCount > 1) goto <L24>; else goto <L4>;
+
+<L24>:;
+  i = 1;
+  vertex = 0;
+  ivtmp.943 = 12;
+
+<L22>:;
+  following = (short unsigned int) i << 1;
+  right = vertex + 1;
+  D.7294 = (short unsigned int *) ivtmp.943;
+  *(this->indices - 12B + D.7294) = vertex;
+  *(this->indices - 10B + D.7294) = right;
+  *(this->indices - 8B + D.7294) = following;
+  *(this->indices - 6B + D.7294) = vertex + 3;
+  *(this->indices - 4B + D.7294) = following;
+  *(D.7294 + this->indices - 2B) = right;
+  vertex = vertex + 2;
+  i = i + 1;
+  ivtmp.943 = ivtmp.943 + 12;
+  if (this->trailPointCount > i) goto <L22>; else goto <L4>;
+
+<L4>:;
+  D.7307 = operator new (92);
+  mesh = (struct SMesh *) D.7307;
+  _ZN3irr5scene5SMeshC1Ev (mesh);
+  meshBuffer = (struct IMeshBuffer *) buffer;
+  buffer.34 = (struct IReferenceCounted *) buffer;
+  D.7314 = buffer.34 + *(int *) (buffer->D.7199._vptr.IMeshBuffer + -12);
+  D.7314->references = D.7314->references + 1;
+  push_back (&mesh->meshBuffers, &meshBuffer);
+  drop (buffer.34 + *(int *) (buffer->D.7199._vptr.IMeshBuffer + -12));
+  D.7318 = GetInstance ();
+  D.7320 = D.7318->device;
+  sceneManager = OBJ_TYPE_REF(*(D.7320->_vptr.IrrlichtDevice + 36B);D.7320->9) (D.7320);
+  D.7327 = *(sceneManager->_vptr.ISceneManager + 52B);
+  D.7271.X = 0.0;
+  D.7271.Y = 0.0;
+  D.7271.Z = 0.0;
+
+<L7>:;
+  D.7272.X = 0.0;
+  D.7272.Y = 0.0;
+  D.7272.Z = 0.0;
+
+<L8>:;
+  D.7273.X = 1.0e+0;
+  D.7273.Y = 1.0e+0;
+  D.7273.Z = 1.0e+0;
+
+<L9>:;
+  D.7329 = OBJ_TYPE_REF(D.7327;sceneManager->13) (sceneManager, (struct IMesh *) mesh, 0B, -1, &D.7271, &D.7272, &D.7273, 0);
+  this->meshSceneNode = D.7329;
+  drop ((struct IReferenceCounted *) mesh + *(int *) (mesh->D.7121._vptr.IMesh + -12));
+  if (this->meshSceneNode != 0B) goto <L5>; else goto <L6>;
+
+<L5>:;
+  D.7339 = OBJ_TYPE_REF(*(sceneManager->_vptr.ISceneManager + 148B);sceneManager->37) (sceneManager);
+  OBJ_TYPE_REF(*(D.7339->D.4988._vptr.IAttributeExchangingObject + 108B);D.7339->27) (D.7339, this->meshSceneNode);
+  temp.948 = this->meshSceneNode;
+  meshName.37 = (const char *) &meshName;
+  OBJ_TYPE_REF(*(temp.948->D.4988._vptr.IAttributeExchangingObject + 40B);temp.948->10) (temp.948, meshName.37);
+  setMaterialType (this->meshSceneNode, 25);
+  setMaterialFlag (this->meshSceneNode, 256, 0);
+  setMaterialFlag (this->meshSceneNode, 128, 1);
+  setMaterialFlag (this->meshSceneNode, 16, 0);
+  setMaterialFlag (this->meshSceneNode, 2, 0);
+  setAutomaticCulling (this->meshSceneNode, 0);
+  temp.955 = this->meshSceneNode;
+  OBJ_TYPE_REF(*(temp.955->D.4988._vptr.IAttributeExchangingObject + 80B);temp.955->20) (temp.955, 0);
+  D.7350 = GetInstance ();
+  D.7352 = D.7350->device;
+  D.7356 = OBJ_TYPE_REF(*(D.7352->_vptr.IrrlichtDevice + 24B);D.7352->6) (D.7352);
+  texturePath.38 = (const char *) &texturePath;
+  texture = OBJ_TYPE_REF(*(D.7356->_vptr.IVideoDriver + 84B);D.7356->21) (D.7356, texturePath.38);
+  setMaterialTexture (this->meshSceneNode, 0, texture);
+
+<L6>:;
+  return;
+
+}
+
+
