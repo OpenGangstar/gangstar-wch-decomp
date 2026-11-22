@@ -245,3 +245,29 @@ two verified Thumb instructions previously decoded as ARM. Its 781 real native
 instructions are all owned; a separate padding instruction and 88 literal bytes
 complete the 1,816-byte retail extent. Its physical view uses receiver in `r0`,
 signed slot in `r1`, unsigned-short vertex in `r2:2` and a void result.
+
+
+## World flow and verified computed switches
+
+Restricted repairs restore `LevelObject::CastRay` to 1,418 executable bytes
+and `canGoToPoint` to 3,022. Their explicit physical views include the receiver;
+CastRay has three additional stack slots for its two remaining outputs and bool.
+Both return a bool in the low byte of `r0`. Only the two native long BLs at
+0x00318a76 and 0x00318a86 are classified as internal branches to 0x00318226;
+ordinary calls remain calls. Retail has no function entry at that target and
+the project had no separate function boundary to remove. Native byte/width and
+ownership audits account separately for alignment and literal pools.
+
+The same pass restores MenuManager updateMap and initMap to their complete
+372-byte and 400-byte executable bodies. Setup already had its complete
+1,682-byte body; its physical view now includes receiver and unused bool.
+These repairs change analysis metadata only.
+
+MenuManager setText owns its instructions but requires a computed-switch
+override. The 17 signed-relative entries at retail 0x004191e4 derive the exact
+targets for `mov pc,r3` at 0x002e5436. Function and table hashes were verified
+before and after the update; no memory byte changed. The recovered decompilation
+contains all 17 cases and deliberately warns that the switch is overridden.
+Ghidra 12 adds a display-format argument: its shipped SwitchOverride script uses
+`JumpTable(address, destinations, true, 0)`. The first old-API attempt rolled
+back safely; the installed source verified the corrected constructor before retry.
