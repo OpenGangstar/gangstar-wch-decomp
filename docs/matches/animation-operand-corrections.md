@@ -82,3 +82,39 @@ in that old fixture; no stale image is substituted for a new link. The two
 actual control packets are `_scratch/worker-player-switch-anim-eject-loop-control`
 and `_scratch/worker-player-switch-anim-target-locked-control`. Further source
 experiments require new evidence; smaller extent is not a matching percentage.
+
+## Later bounded Player compiler controls
+
+A structural census of the corrected 1,084-byte object localizes eight excess
+bytes to address materialization around its inline four-byte memcpy. The
+original six forms all use that intrinsic. A separately bounded experiment
+expresses the same transport as unsigned 32-bit lvalue load/store at the same
+proven aligned offsets, Vehicle312 to Player148, under the unchanged
+-fno-strict-aliasing profile. This is a raw storage view, not a recovered
+semantic destination type, float conversion, new field or layout change.
+
+That one control emits a 1,076-byte function/input section. Its four-instruction
+copy sequence, `3b591a599423fa50`, equals the corresponding eight native bytes.
+The complete function still fails the strict 1,072-byte gate; linking is skipped.
+
+Another separately bounded control gives cases 22/23 a driver-present state12
+and break, with driver-absent fallthrough into cases 26/28's shared state3.
+This matches the native shared-join structure with one driver read, preserving
+all other states, calls and corrections. The function/input section remain
+1,076 bytes. Raw hash of this final preferred fragment:
+`f4597c7ffb08f2dafcc3995a7ef9b09afd51fc57dff0561767925f3395061d62`.
+
+For both controls, all 79 other raw definitions, 110 other allocated payloads,
+66 other semantic relocation sections, imports and 485 inputs stay unchanged.
+The coordinator independently extracts and verifies each object and old raw
+definitions. No native function/full-section/table or linked owner/dependency
+checks run after the failed extent gates. Exact contexts and outputs remain in
+`_scratch/worker-player-switch-anim-raw-word-control` and
+`_scratch/worker-player-switch-anim-state3-join-control`.
+
+The final object has the same 491 real instructions, 1,028 real code bytes and
+44 literal bytes as native, but also four unreachable alignment bytes before
+literal pools. This does not establish byte identity: block order, register and
+stack assignments, instruction encodings, pool references and table payloads
+still differ. Padding is neither removed nor credited. The candidate is parked
+unmatched; no additional source or flag trial follows from equal counts alone.

@@ -62,7 +62,7 @@ void PlayerTest::switchAnim()
             if(!car->isDoorClosed(left)) static_cast<Vehicle*>(unknown312)->closeDoor(left);
             setAnim(getCarAnimName(static_cast<Vehicle*>(unknown312)->getCloseDoorAnim(),left),false,false,false,1.0f);
             car=static_cast<Vehicle*>(unknown312);
-            __builtin_memcpy(unknown132+16,&car->doorAnimationScale,4);
+            *reinterpret_cast<unsigned int*>(unknown132+16) = *reinterpret_cast<const unsigned int*>(&car->doorAnimationScale);
             if(!ScriptManager::getInstance()->isInCinematic()) {
                 left=!left;
                 if(static_cast<Vehicle*>(unknown312)->isDoorOpened(left)) static_cast<Vehicle*>(unknown312)->closeDoor(left);
@@ -96,8 +96,7 @@ void PlayerTest::switchAnim()
         static_cast<SavePositionInterface*>(this)->setAnimation(-1,1.0f,false,false,false);
         break;
     case 22: case 23:
-        unknown372=static_cast<Vehicle*>(unknown312)->getDriver()?12:3;
-        break;
+        if(static_cast<Vehicle*>(unknown312)->getDriver()) {unknown372=12;break;}
     case 26: case 28:
         unknown372=3;
         break;
