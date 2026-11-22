@@ -321,3 +321,35 @@ for mov pc,r3 at 0x002fe66c. Independent readback verifies all 157 instructions
 and 330 real bytes, the complete 28-byte table and all seven decompiled cases.
 The explicit view is static void with event type in r0 and no receiver. Complete
 function and table hashes are unchanged; the existing source remains unmatched.
+
+Further independent readbacks verify these additional complete bodies:
+
+| Function | Real instruction bytes | Real instructions |
+| --- | ---: | ---: |
+| Vehicle::_processAIFlags | 3,000 | 1,345 |
+| RenderFX::UpdateCursor | 1,962 | 916 |
+| PlayerTest::Update | 2,108 | 963 |
+| Vehicle::Update | 3,744 | 1,633 |
+| PlayerTest::move | 2,342 | 1,040 |
+
+Vehicle AI needs six proven internal BL overrides; Player Update needs one and
+Vehicle Update needs 48. Cursor and Player movement need none. Conditional
+targets can also reveal automatic interior function boundaries, so examining
+only long-BL destinations is insufficient. Boundary removal still requires a
+native instruction entry, no retail function symbol and incoming references
+entirely within the verified original function. All real external calls retain
+their original call semantics.
+
+Cursor's explicit physical view includes self, cursor reference and signed index
+in r0/r1/r2. Player movement includes self and two floats in those registers.
+Player Update and vehicle AI take only self; Vehicle Update also takes signed
+elapsed time in r1. All return void. Independent readback separates complete
+code from literal pools and alignment rather than counting instruction-looking
+padding as executable coverage.
+
+A coordinator audit compares the complete original-function memory hashes for
+all ten repaired bodies against retail, including their data and padding. All
+ten agree, with 186 individually proven internal branches restored in total.
+These are analysis improvements only. The resulting native/source guard
+corrections remain [unmatched candidates](matches/guard-association-corrections.md)
+until their compiled functions pass authoritative byte comparison.
