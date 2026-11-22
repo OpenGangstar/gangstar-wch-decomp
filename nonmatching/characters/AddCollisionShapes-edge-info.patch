@@ -1,0 +1,22 @@
+--- a/src/game/characters/PhysicAttributes.cpp
++++ b/src/game/characters/PhysicAttributes.cpp
+@@ -638,8 +638,9 @@
+                 break;
+             }
+             b2Vec2 position(ax/100.0f,ay/100.0f);
++            PhysicInfo* edgeInfo=info;
+             for(int i=0;i<infoCount;++i){
+-                for(int b=0;b<12;++b){b2Body* old=info[i].bodies[b];if(!old)break;
++                for(int b=0;b<12;++b){b2Body* old=edgeInfo[i].bodies[b];if(!old)break;
+                     if(position.x==old->transform.position.x&&position.y==old->transform.position.y)goto nextEdge;}
+             }
+             {
+@@ -666,7 +667,7 @@
+             shape.vertices[2]=b2Vec2(dx/100.0f,dy/100.0f);shape.vertices[3]=b2Vec2(0,0);
+             shape.vertexCount=4;shape.filter.categoryBits=0;shape.filter.maskBits=65535;shape.friction=1.0f;shape.restitution=0;
+             shape.filter.groupIndex=index+1;created->CreateShape(&shape);
+-            for(int b=0;b<12;++b)if(!info[slot].bodies[b]){info[slot].bodies[b]=created;break;}
++            for(int b=0;b<12;++b)if(!edgeInfo[slot].bodies[b]){edgeInfo[slot].bodies[b]=created;break;}
+             _ZN12b2PolygonDefD1Ev(&shape);
+             break;
+             }
