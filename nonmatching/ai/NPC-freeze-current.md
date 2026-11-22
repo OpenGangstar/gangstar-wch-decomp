@@ -1,3 +1,13 @@
+# Superseded by the verified NPC::freeze implementation
+
+The canonical function now matches all 224 bytes using plain C++ with no branch
+hints. See [the accepted match](../../docs/matches/npc-freeze.md). The patches
+and report below preserve the earlier failed experiments; do not apply them to
+the current matched source. Statements below about production status describe
+the historical baseline, not the accepted implementation.
+
+---
+
 # NPC freeze: rejected voice likelihood
 
 Target `NPC::freeze()`, Thumb `0x002fe999`, native 224 bytes. Baseline main

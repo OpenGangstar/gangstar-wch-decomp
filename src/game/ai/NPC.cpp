@@ -31,7 +31,8 @@ union MovementFlags {
         unsigned int running : 1;
         unsigned int : 1;
         unsigned int waiting : 1;
-        unsigned int : 2;
+        unsigned int frozen : 1;
+        unsigned int : 1;
         unsigned int attacking : 1;
     } bits;
 };
@@ -816,4 +817,28 @@ void NPC::UpdateCarPosIfUnderWheel()
             bounds.MaxEdge.Z >= lastHitVehicle->wheelPosition3.Z)
             lastHitVehicle->wheelGroundHeights[3]=bounds.MaxEdge.Z;
     }
+}
+
+extern "C" long lrand48();
+
+void NPC::freeze()
+{
+    if (isDead()) return;
+    MovementFlags flags;
+    flags.word = flags356 & ~15u;
+    flags.bits.frozen = 1;
+    flags356 = flags.word;
+    if (targetingCharacter)
+        turnToward(targetingCharacter->GetPosition());
+    setAnimation(37, 1.0f, false, false, false);
+    int soundId;
+    switch (lrand48() % 2) {
+    case 0: soundId = 88; if (!driverBehavior) soundId = 86; break;
+    case 1: soundId = 76; if (!driverBehavior) soundId = 73; break;
+    default: return;
+    }
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(soundId, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
 }

@@ -112,7 +112,8 @@
         },
         "_ZN3NPC24UpdateCarPosIfUnderWheelEv",
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
-        "_ZN9Character20getSpecificAnimationEi"
+        "_ZN9Character20getSpecificAnimationEi",
+        "_ZN3NPC6freezeEv"
     ],
     "sections": [
         ".npc_vtable",
@@ -132,7 +133,8 @@
         },
         ".ai_manager_cleanup",
         ".physic_find_lower",
-        ".character_specific_animation"
+        ".character_specific_animation",
+        ".npc_freeze"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
