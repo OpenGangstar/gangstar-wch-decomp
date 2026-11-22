@@ -1,9 +1,10 @@
 # Quaternion header preservation investigation
 
-The pending `GS3DStuff::load(int, int&)` reconstruction at Thumb address
-`0x002dfb15` remains unmatched. Its portable factory-expression candidate has
-the correct 2,576-byte extent, but four bytes differ. No source, assembly marker,
-matching profile, or progress credit is changed by this investigation.
+This records prerequisite failures during reconstruction of
+`GS3DStuff::load(int, int&)` at Thumb address `0x002dfb15`. The factory-expression
+candidate initially had the correct 2,576-byte extent with four differing bytes.
+Those failed proposals received no credit. The final genuine array-type
+correction matches exactly; see [the accepted loader](gs3d-loading.md).
 
 ## Existing-match regression isolated
 
@@ -84,10 +85,39 @@ lifetimes without global constructor attributes, raw-storage lifetime tricks,
 output editing, or changes to the already matched Cash function. A loader-local
 factory using canonical default construction was measured at 2,588 bytes,
 12 bytes over the native extent. It receives no matching credit. A separate
-trial will test a loader-local inline definition with the declaration-only
-header; its result and broad preservation must be verified before integration.
+trial restored the four-byte best with a loader-local inline definition and
+declaration-only header. The subsequent array-type correction and full fresh
+preservation gate passed before final acceptance.
 
 Private reproducibility packets are `worker-cash-header-isolation` and
 `worker-gs3d-load-header-only-preservation-complete-inputs` under `_scratch`.
 They retain full commands, frozen input hashes, raw comparison logs, and
 relocation inventories. Retail data and toolchains are not committed.
+
+## Declaration-only broad preservation verified
+
+A separate complete-input header-only snapshot replaces only the failing
+Quaternion header with the declaration-only control. It retains the other
+six proposed headers, local OctTree size correction, all canonical nonmatching
+sources, original selectors, dependency ordering, and per-profile toolchains.
+The coordinator ran it once; all 191 profiles passed, with 5,447 function,
+5,356 section, and 181 region OK lines (10,984 comparisons). All 1,097 frozen
+inputs remained unchanged. There were no mismatches, skipped dependencies,
+missing sections, or build errors.
+
+The loader candidate separately defines the empty tag constructor inline in
+GS3DStuff.cpp before its factory. That real compile/link restores the 2,576-byte
+portable best with the same four differences, while all 147 scoped existing
+function checks and 132 support checks pass. No factory or constructor helper
+is emitted. This is still an unmatched candidate. The global header-only run
+excludes that body, so actual-body downstream dependency closure remains a
+separate requirement. No canonical source or matching credit has changed.
+
+The complete broad-preservation evidence is retained privately under
+`_scratch/worker-gs3d-header-declaration-complete-inputs`; the body evidence is
+under `_scratch/worker-gs3d-load-local-tag-definition-control`.
+
+The accepted loader subsequently passed all 191 profiles with its actual body,
+including all seven dependent images: 11,112 exact comparisons and 880 additional
+cross-image GS function checks. The shared header uses only the declaration;
+the definition remains local. Only the loader receives new matching credit.

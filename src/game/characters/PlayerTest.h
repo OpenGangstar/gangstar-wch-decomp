@@ -7,6 +7,7 @@
 class Vehicle;
 class PhysicAttributes;
 class b2Body;
+class b2World;
 class Weapon;
 class LevelObject;
 class Shop;
@@ -24,6 +25,7 @@ namespace playertest { struct PlayerCarState { enum ePlayerCarState { MovingOut 
 
 class PlayerTest : public IMapTrackable, public Character {
 public:
+    PlayerTest(b2World*);
     // The retail destructor is pending. Its declaration keeps vtable emission with its definition.
     virtual ~PlayerTest();
     virtual void Stop();

@@ -24,6 +24,10 @@ template<class T> class CMatrix4;
 class quaternion {
 public:
     float X, Y, Z, W;
+    // SDK reconstruction adapter: begin a quaternion lifetime before set().
+    // This tag is not a recovered retail API and adds no instance storage.
+    struct uninitialized_t {};
+    explicit quaternion(uninitialized_t);
     quaternion() : X(0),Y(0),Z(0),W(1) {}
     quaternion(float x, float y, float z) { set(x, y, z); }
     quaternion(const CMatrix4<float>& matrix) { *this = matrix; }

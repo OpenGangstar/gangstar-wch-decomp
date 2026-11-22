@@ -496,7 +496,11 @@ SECTIONS {
         *stream.o(.text._ZN6StreamD1Ev .text._ZN6StreamD2Ev .gnu.linkonce.t._ZN6StreamD1Ev .gnu.linkonce.t._ZN6StreamD2Ev)
     }
     .streamvtable 0x004ad6c8 : { *stream.o(.data.rel.ro) }
-    .verification 0x00600000 : { *retail-got.o(.text) }
+    .verification 0x00600000 : { *retail-got.o(.text)
+        *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
+        *gs3d-stuff.o(.rodata.*7lodNodeE)
+ }
 
 
     .filetext 0x0034eb7c : {
@@ -625,3 +629,8 @@ ASSERT(SIZEOF(.gangstar_unlock_method)==4,"JNI unlock method cache extent");
 ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
 
 ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
+INCLUDE config/linker/GS3DLoadSections.ld
+ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
+ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
+ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
+ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");

@@ -16,6 +16,10 @@ public:
     CCustomSceneManager(irr::video::IVideoDriver*, irr::io::IFileSystem*,
         irr::gui::ICursorControl*, irr::scene::IMeshCache*, irr::gui::IGUIEnvironment*);
     void clean();
+    void setBatchRoot(irr::scene::ISceneNode*);
+    void compileBatch();
+    void toggleCullBatch();
+    void* getRenderableNodeList();
     static void CleanParents(irr::scene::ISceneNode* node);
 };
 

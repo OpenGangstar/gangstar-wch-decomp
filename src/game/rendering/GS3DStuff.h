@@ -22,6 +22,7 @@ class LevelObject;
 class PlayerTest;
 class GameObjectManager;
 class WorldDescriptor;
+namespace irr { namespace scene { class IBillboardSceneNode; } }
 namespace irr { namespace video { class ITexture; } }
 namespace Structs {
 struct PhonePerformanceProfile {
@@ -34,7 +35,7 @@ struct PhonePerformanceProfile {
 
 // Observed 28-byte prefix, two bases and their virtual slots only.
 // Do not instantiate or infer complete scene-state layout from this prefix.
-struct GS3DLightNodes;
+typedef irr::core::array<irr::scene::ISceneNode*> GS3DLightNodes;
 
 class LODSceneNode;
 
@@ -119,6 +120,9 @@ public:
     static int s_perfConfig;
     static Structs::PhonePerformanceProfile s_phonePerformanceProfile;
     static unsigned int lastTime;
+    static char** s_cityParts;
+    static int s_cityPartsNum, s_curCityPart, s_curCityStep;
+    static irr::scene::IBillboardSceneNode* sunGlow;
     static Vehicle* s_vehicle;
     static PlayerTest* playerTest;
     static GameObjectManager* gom;

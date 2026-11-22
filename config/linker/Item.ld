@@ -320,7 +320,11 @@ SECTIONS {
     .item_add 0x002fca3c : { *item.o(.text._ZN4Item3addEv) }
     .item_add_switch 0x0041d2a0 : { *item.o(.rodata._ZN4Item3addEv) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
-    .verification 0x00600000 : { *retail-got.o(.text) }
+    .verification 0x00600000 : { *retail-got.o(.text)
+        *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
+        *gs3d-stuff.o(.rodata.*7lodNodeE)
+ }
     /* Local callback numbering differs in this partial translation unit. */
     .item_factory_singleton_cleanup 0x002fce8c : { *item.o(.text.__tcf_0) }
     .item_wanted_singleton_cleanup 0x002fc27c : { *item.o(.text.__tcf_2) }
@@ -356,3 +360,8 @@ ASSERT(SIZEOF(.gs3d_startup_storage_9) == 8, "GS3DStuff _ZN8gameloft2ai5guardE e
 ASSERT(SIZEOF(.gs3d_startup_storage_10) == 8, "GS3DStuff _ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_11) == 12, "GS3DStuff _ZN3irr2ps5vHalfE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_12) == 20, "GS3DStuff _ZN9GS3DStuff11lightsNodesE extent");
+INCLUDE config/linker/GS3DLoadSections.ld
+ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
+ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
+ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
+ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");

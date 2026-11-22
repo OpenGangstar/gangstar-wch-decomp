@@ -27,16 +27,34 @@ rejected without credit; their ownership is released.
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Reviewed pinned upstream API and matched callees; no new wrapper mechanism, ownership released | src/game/ui/MenuWidget.cpp |
 
 | libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | unassigned | BLOCKED | Behavior-correct condition trial reviewed: 4982/5038 remains unmatched; all 37 existing functions and nine regions exact. Preserve corrected candidate over historical wrong guard; ownership released | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | IN_PROGRESS | Current-type loader has four differing bytes. Complete-input snapshot reviewed as prepared. Canonical-default factory trial exceeds native extent by 12 bytes; preserve strict failed link. Declaration-only Cash control supplies new evidence: one loader-local inline tag-constructor definition trial approved, strict existing checks unchanged | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | unassigned | COMPLETED | 100%; function/full section2576B exact, all191 profiles11112 comparisons pass,880 additional merged GS checks exact,1098 frozeninputs stable. Genuine array alias and loader-local adapter accepted; ownership released | src/game/rendering/GS3DStuff.cpp; config/linker/GS3DLoadSections.ld |
 
 | libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&, recti const&, bool, bool) const | unassigned | BLOCKED | Unchanged diagnostic reproduced exact object; first spills at greg, no source trial. Coordinator physical ABI and complete body verified live; no new source constraint. Pending candidate unchanged; ownership released | src/game/hud/MiniMap.cpp |
 
 | libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | unassigned | BLOCKED | Corrected complete CFG and native truth tables agree candidate; no new source correction, ownership released | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | unassigned | BLOCKED | Complete repaired CFG and native predicate audit agree corrected 2084/2108 candidate; no new source trial. Reviewed and released | src/game/ai/NPC.cpp |
-| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination(unsigned short, unsigned short&, vector3df const&, float, float) | resume_mission | ASSIGNED | Actual v3 size724 verified, with 713 equal positions and eleven stack-operand differences. Read-only native/candidate slot correspondence and real temporary-lifetime audit approved; no compilation or repeated v4/v5 forms | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination(unsigned short, unsigned short&, vector3df const&, float, float) | unassigned | BLOCKED | Reviewed all eleven differences as three scalar spill slots, with identical frame and address-taken buffers. Approve one unchanged-v3 diagnostic dump build to identify the first allocation decision, requiring exact emitted payload identity; no source or optimizer changes | src/game/characters/PhysicAttributes.cpp |
 
-| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const - header regression diagnosis only | resume_count | ASSIGNED | Two controls reviewed: nested Quaternion tag alone reproduces the Cash regression; six other headers preserve all owner checks. Reviewed read-only audit: type and constructor additions remain confounded. Type-only and declaration-only controls preserve Cash exactly. Prepare a fresh complete-input header-only snapshot with declaration-only Quaternion and six other reviewed headers; coordinator runs the global gate | src/game/ui/Cash.cpp; proposed SDK headers |
+| libsanangeles.so | 0x00327a71 | Cash::drawCash(int, int const*, int&, int) const - header regression diagnosis only | unassigned | COMPLETED | Two controls reviewed: nested Quaternion tag alone reproduces the Cash regression; six other headers preserve all owner checks. Reviewed read-only audit: type and constructor additions remain confounded. Type-only and declaration-only controls preserve Cash exactly. Prepare a fresh complete-input header-only snapshot with declaration-only Quaternion and six other reviewed headers; coordinator runs the global gate | src/game/ui/Cash.cpp; proposed SDK headers |
+
+| libsanangeles.so | 0x00316c29 | LevelObject::grabSceneNode(int, void***) - loader dependency preservation audit only | unassigned | COMPLETED | Coordinator ran actual-loader closure: original owner and dependency checks exact, fourteen support sections exact; pending loader function/full section retain exactly four differences. Ownership released | src/game/world/LevelObject.cpp; config/matches/level-object.json; config/linker/LevelObject.ld |
+
+| libsanangeles.so | 0x002df605 | __tcf_10 GS3D light array cleanup - existing match type audit only | unassigned | COMPLETED | Reviewed exact restricted-array layout and lifetime; unknown16 semantics remain unresolved. Read-only compare GS3DLightNodes placeholder and existing Irrlicht array layout/lifetime with matched native startup and cleanup. Identify exact mechanical field mapping and risks; no source edits or compilation | src/game/rendering/GS3DStuff.cpp; src/game/rendering/GS3DStuff.h; src/game/core/Array.h |
+
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch(long) | unassigned | BLOCKED | Corrected complete CFG verified against native; no new source discrepancy. Existing 1028/native1016 candidate remains unmatched; no new compile, ownership released | src/game/input/AnalogStick.cpp; _scratch/worker-analog-complete-context/ |
+
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | unassigned | BLOCKED | Complete repaired CFG verified byte for byte; remaining cache differences were already investigated. No new source experiment justified; ownership released | src/game/combat/Rocket.cpp |
+
+| libsanangeles.so | 0x002fc495 | Item::isUsable() - exact-loader dependency preservation fixture only | unassigned | COMPLETED | Fixture preparation reviewed and accepted; coordinator executing fresh 191-profile gate. No claim of completed global verification yet; ownership released | src/game/meta/Item.cpp; config/matches; config/linker |
+
+| libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | unassigned | BLOCKED | Complete repaired CFG matches preserved source constraints; new loader types are unused here. No new trial justified, original target-only/full-context limitations retained; ownership released | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB(ISceneNode*, unsigned int) | resume_count | ASSIGNED | Read-only reassessment of newly verified sixteen-byte parent extent and trailing8 native writes, with complete corrected Ghidra flow. Compare archived 388/native384 candidate; no repeat array lifecycle forms or compilation | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode constructor | resume_mission | ASSIGNED | Read-only corrected Ghidra completeness and native source audit of final published 828/native832 candidate. Reuse confirmed depth60/layout and known loop constraints; no repeated forms or compilation | src/game/rendering/GS3DStuff.cpp; _scratch/worker-octree-child-initialization-current/ |
+
+| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, plane3df const&, vector3df const&, vector3df const&, vector3df&, vector3df&) | resume_string | ASSIGNED | Read-only complete corrected Ghidra flow/physical ABI audit using proven float-helper fixes and existing candidate. No repeated source forms, compilation, or metadata writes | src/game/characters/PhysicAttributes.cpp |
 
 <!-- active-ownership:end -->
 
@@ -1337,7 +1355,7 @@ Coordinator authorizes one unchanged-source replay each for SpawnPoint Load/canS
 
 | libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | — | BLOCKED | six forms; native-size1944 still differs; accessor header regresses Cash; no credit | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | — | BLOCKED | six forms; best2568/2576; target/switch differ; Cash header regression and LevelObject link overlap; no credit | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | unassigned | COMPLETED | 100%; function/full section2576B exact, all191 profiles11112 comparisons pass,880 additional merged GS checks exact,1098 frozeninputs stable. Genuine array alias and loader-local adapter accepted; ownership released | src/game/rendering/GS3DStuff.cpp; config/linker/GS3DLoadSections.ld |
 
 | libsanangeles.so | 0x0030c035 | Vehicle::step() | — | BLOCKED | Coordinator reran v6 real4336/native4372B target/fullsection failures; four FP args fixed, old189/113+C1/full96 exact, C2 same real alias,1068inputs stable. No nextcompiled CreateWheels claim, six-source cap reached/no credit; ownership released. | src/game/vehicles/Vehicle.cpp |
 

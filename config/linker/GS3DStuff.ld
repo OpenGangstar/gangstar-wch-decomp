@@ -1,3 +1,4 @@
+__aeabi_fmul = 0x001c4724;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 ENTRY(_ZN12CGameFactory11getInstanceEv)
@@ -145,7 +146,11 @@ SECTIONS {
     .factory_guard 0x004b6724 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN12CGameFactory11getInstanceEvE2gf) }
     .factory_instance 0x004b6b4c (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZZN12CGameFactory11getInstanceEvE2gf) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
-    .verification 0x00600000 : { *retail-got.o(.text) }
+    /* Existing verification-only area; these three unreferenced source constants
+       have no retail identity or native-match credit. Never route helpers here. */
+    .verification 0x00600000 : { *retail-got.o(.text)
+        *gs3d-stuff.o(.rodata.*15colladaMeshNodeE .rodata.*18colladaSkinnedNodeE .rodata.*7lodNodeE)
+    }
     .gs3d_startup_function_0 0x002dd090 : { *gs3d-stuff.o(.text.__tcf_9) }
     .gs3d_startup_function_1 0x002dcec4 : { *gs3d-stuff.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .gs3d_startup_function_2 0x002dd034 : { *gs3d-stuff.o(.text._GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE) }
@@ -164,6 +169,7 @@ SECTIONS {
     .gs3d_startup_storage_11 0x004b6a60 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN3irr2ps5vHalfE) }
     .gs3d_startup_storage_12 0x004b69a0 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff11lightsNodesE) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+
 }
 ASSERT(SIZEOF(.gs3d_startup_storage_0) == 32, "GS3DStuff _ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_1) == 8, "GS3DStuff _ZN8gameloft2ai11civ_passiveE extent");
@@ -182,3 +188,8 @@ ASSERT(SIZEOF(.wanted_guard) == 4, "WantedLevelManager singleton guard extent");
 ASSERT(SIZEOF(.wanted_instance) == 80, "WantedLevelManager singleton storage extent");
 ASSERT(SIZEOF(.ai_manager_guard) == 4, "AIManager singleton guard extent");
 ASSERT(SIZEOF(.ai_manager_instance) == 24, "AIManager singleton storage extent");
+INCLUDE config/linker/GS3DLoadSections.ld
+ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
+ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
+ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
+ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");
