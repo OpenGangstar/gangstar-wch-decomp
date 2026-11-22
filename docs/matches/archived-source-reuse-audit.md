@@ -32,3 +32,21 @@ therefore proposes a testable hypothesis only; neither similarity nor these
 partial fragments establish a match. Any accepted result still requires a new
 full-function and section comparison, unchanged existing matches and coordinator
 review.
+
+
+The sole CarRental combined control was subsequently rejected: its emitted
+function and physical section are both 452 bytes, versus native448. The strict
+extent guard stopped before native linking, binding generation and GOT harness
+work. No candidate ELF exists. The coordinator independently checked actual
+baseline/candidate objects: all 252 other emitted functions retain their raw
+bytes, and all 940 frozen inputs remain unchanged. The worker's semantic
+relocation audit and 261 other allocated payload comparisons also pass. Linked
+owner/dependency, GOT, suffix and target comparisons were skipped; their older
+640-function/421-region results belong only to the archived baseline. No further
+form or credit is authorized by this result.
+
+The MenuManager setText follow-up also found no viable composition. Thirteen
+actual artifacts reduce to three code classes; earlier forms supply no genuine
+missing whole block. The only apparently useful fragment loads a different text
+path and destination slot once its PC-relative literal is resolved. All 59 target
+relocations were checked per artifact. No new compilation followed.
