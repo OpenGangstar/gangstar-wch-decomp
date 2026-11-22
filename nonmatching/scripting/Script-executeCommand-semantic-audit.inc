@@ -440,8 +440,7 @@ if(LevelObject::s_type[source->getObjectType()]==13) {
   if(!done)showMarker=true;
   else {
    int minimum=static_cast<Checkpoint*>(source)->unknown88;int maximum=static_cast<Checkpoint*>(source)->unknown92;int wanted=WantedLevelManager::getInstance()->unknown8;
-   if(maximum!=-1 && maximum<wanted) {message=0x3021;done=false;showMarker=true;}
-   else if(minimum!=-1 && wanted<minimum) {message=0x3022;done=false;showMarker=true;}
+   if((maximum!=-1 && maximum<wanted) || (minimum!=-1 && wanted<minimum)) {message=wanted<minimum?0x3022:0x3021;done=false;showMarker=true;}
    else ScriptManager::displayOnMinimap(source,false,true);
   }
  } else showMarker=!done;

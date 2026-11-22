@@ -63,3 +63,37 @@ The six-form source budget is exhausted. Any inherited likelihood hints and
 manual imported event-destruction idiom remain quarantined with the candidate.
 No function is credited, no marker is removed, and no data-size or complete
 unit claim is made. Further work requires new causal source or ABI evidence.
+
+## Later wanted-bound predicate correction
+
+Complete native switch recovery exposed a concrete discrepancy in shared cases
+64/105. When maximum is exceeded, native still compares wanted against minimum
+before selecting the message. The prior if/else-if gives maximum failure
+priority. The fragment now uses the combined bound-violation predicate and then
+selects low message 0x3022 when wanted is below minimum, otherwise high 0x3021.
+For contradictory bounds minimum=3, maximum=1, wanted=2, native selects low;
+the old candidate selects high. No claim is made that assets contain such bounds.
+
+One separately authorized source-only control emits a 12,396-byte function and
+12,400-byte input section versus native 12,636. Exact output:
+
+```text
+COMMAND 0 EXIT 0
+COMMAND 1 EXIT 0
+REJECT PRELINK: function/section extents differ from native12636; no target link attempted
+```
+
+Actual assembly now tests minimum on the maximum-failure path. The coordinator
+independently verifies function SHA-256
+`6f6b30f25a0ec9848310b9012d21e71ebb64b9cf50cb1bfeef1534b723349676`,
+35 other raw function definitions unchanged and 842 stable inputs. All 201
+imports and 68 other allocated section payloads remain unchanged. The local
+frame remains 324 bytes. No native link or owner/dependency/switch/full-section
+linked checks ran; the old 31/28/1 proof above remains historical only.
+
+This correction supersedes the earlier 12,380-byte preferred semantic body;
+it does not supersede its linked verification with a new successful result.
+The published LF fragment still requires the full preserved private translation
+unit, headers and compiler profile. Exact source, commands, failed gates and
+objects are retained in `_scratch/worker-script-execute-wanted-bound-control`.
+No marker, matching credit or compiler-output bytes were changed.
