@@ -1,0 +1,13 @@
+--- a/src/game/ui/MenuManager.cpp
++++ b/src/game/ui/MenuManager.cpp
+@@ -845,8 +845,9 @@
+     const int y = static_cast<int>(static_cast<float>(size.Height) * relativeY);
+     if (x >= unknown12 && y >= unknown16 && x <= unknown20 && y <= unknown24) {
+         const int offset = mapScreenX - unknown12;
++        const int top = unknown16;
+         TargetMarker* marker = TargetMarker::getInstance();
+-        marker->offsetY = y - unknown16;
++        marker->offsetY = y - top;
+         marker->offsetX = offset + x;
+         TargetMarker::getInstance()->setEnabled(true);
+     } else {
