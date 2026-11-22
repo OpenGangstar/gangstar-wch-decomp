@@ -45,3 +45,44 @@ further source variation or shared-header migration was attempted. Further
 work requires new evidence beyond the already tried enum-width replay. All
 production Player methods, current destructor/photo matches and source layouts
 remain unchanged because this patch is not applied.
+
+## Later node-cache index snapshot correction
+
+Complete native instruction coverage and repaired delete-flow analysis expose
+a concrete source lifetime difference. Native snapshots context428 into a
+scaled index after resetWantedLevel and before node lookup/construction. That
+same index survives constructScene and selects the node-cache insertion slot.
+The 884-byte candidate instead reloads context428 after construction. Both
+native and candidate correctly reread context after bindAnimation for the
+separate animation-cache operation; those later fresh reads must remain.
+
+One separately authorized source-only control captures const int nodeIndex
+before lookup and uses it only for the post-construction node insertion. Actual
+compiler output retains the pre-construction index and preserves the fresh
+animation index. Function/input section become 876 bytes versus native 900.
+Exact output:
+
+```text
+STRICT EXTENT {"symbol_size": 876, "inputsection_size": 876, "raw_sha256": "6332d1debd61e75569811024f785449bc5e0f249974dd7f8066e2a9efe2dcd86"}
+STOP: native LD/target/fullsection/linked owner+dependency gates SKIPPED; nonexact native900 extent
+```
+
+All 85 other raw definitions, 116 other allocated payloads, 70 other semantic
+relocation sections, imports and 976 frozen inputs remain unchanged. The
+coordinator independently extracts the object and verifies function extent,
+hash, old raw definitions and input stability. No native link or linked
+target/owner/dependency result exists for this control, and no credit is added.
+
+The [preferred node-index fragment](PlayerTest-switchContext-node-index.cpp)
+uses repository LF endings and needs the full private compilation context in
+`_scratch/worker-player-switch-context-node-index-control`. It does not replace
+the unapplied 884-byte patch above or erase the historical 892-byte attempts.
+The genuine hierarchy, enum/API, Map friend prerequisite and earlier closure
+limitations remain. No second source form, layout or compiler-flag trial ran.
+
+Separately, Ghidra had an actual stale CALL_RETURN on native operator delete at
+0x00301b60. Clearing that metadata makes both null and nonnull data paths rejoin
+the original common body. Independent readback verifies all 393 real
+instructions / 862 bytes and the complete 900-byte retail memory, including two
+padding and 36 literal bytes. No original code or binary data was changed;
+analysis repair itself earns no matching or Fully Linked progress.
