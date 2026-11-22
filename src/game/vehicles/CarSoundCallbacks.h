@@ -98,7 +98,23 @@ struct TurboSoundSettings {
     TurboSoundSettings();
     ~TurboSoundSettings();
 
-    unsigned char unknown0[60];
+    bool customPrimaryRpm;
+    unsigned char unknown1[3];
+    int primaryRpm;
+    bool customSecondaryRpm;
+    unsigned char unknown9[3];
+    int secondaryRpm;
+    int primarySoundId;
+    float blend;
+    int primaryRpm236;
+    float primaryGain;
+    int primaryRpm244;
+    int primaryRpm248;
+    int secondarySoundId;
+    float secondaryGain;
+    int primaryRpm264;
+    int primaryRpm268;
+    int auxiliaryCount;
     int* auxiliaryTurboIds;
     int* auxiliaryTurboThresholds;
     float auxiliaryTurboGain;
@@ -112,6 +128,7 @@ public:
     void Update(CarSoundParameters* parameters);
     void Init(CarSoundSettings* settings);
     void RemoveTurboSounds(TurboSoundSettings* settings);
+    void AddTurboSounds(TurboSoundSettings* settings);
     static void Clean();
     static CarSoundCallbacks s_SoundCallbacks;
     static void UnregisterCallbacks();
@@ -202,14 +219,21 @@ private:
     int secondaryTurboRpm;
     int turboSoundId;
     int turboChannel;
-    unsigned char unknown232[20];
+    float turboPitchMix;
+    int turboReferenceRpm;
+    float turboGain;
+    int turboMaximumRpm;
+    int turboMinimumRpm;
     int secondaryTurboSoundId;
     int secondaryTurboChannel;
-    unsigned char unknown260[12];
+    float secondaryTurboGain;
+    int secondaryTurboMaximumRpm;
+    int secondaryTurboMinimumRpm;
     int auxiliaryTurboCount;
     int* auxiliaryTurboIds;
     int* auxiliaryTurboChannels;
-    void* turboArray284;
+    int* turboArray284;
+    float auxiliaryTurboGain;
 };
 
 #endif

@@ -121,7 +121,8 @@
         {
             "name": "_GLOBAL__I__ZN18CarSoundParametersC2Ev",
             "address": "0x0034fb49"
-        }
+        },
+        "_ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings"
     ],
     "sections": [
         ".callback_function_0",
@@ -139,7 +140,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".car_sounds_add_turbo"
     ],
     "retail_got": true,
     "external_thumb_functions": [
