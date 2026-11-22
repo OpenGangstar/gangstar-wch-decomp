@@ -1,0 +1,1507 @@
+;; Function void Trail::CreateMeshSceneNode() (_ZN5Trail19CreateMeshSceneNodeEv)
+
+Partition 3: size 4 align 4
+	meshBuffer, offset 0
+Partition 2: size 12 align 4
+	D.7271, offset 0
+Partition 1: size 12 align 4
+	D.7272, offset 0
+Partition 0: size 12 align 4
+	D.7273, offset 0
+
+;; Generating RTL for tree basic block 2
+
+;; Generating RTL for tree basic block 3
+
+;; Generating RTL for tree basic block 4
+
+;; Generating RTL for tree basic block 5
+
+;; Generating RTL for tree basic block 6
+
+;; Generating RTL for tree basic block 7
+
+;; Generating RTL for tree basic block 8
+
+;; Generating RTL for tree basic block 9
+
+;; Generating RTL for tree basic block 10
+
+;; Generating RTL for tree basic block 11
+
+;; Generating RTL for tree basic block 12
+
+
+;;
+;; Full RTL generated for this function:
+;;
+(note 2 0 131 NOTE_INSN_DELETED)
+
+(note 131 2 139 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn 139 131 140 2 (set (reg:SI 257)
+        (unspec:SI [
+                (const:SI (minus:SI (const (symbol_ref:SI ("_GLOBAL_OFFSET_TABLE_")))
+                        (const:SI (plus:SI (unspec:SI [
+                                        (const_int 7 [0x7])
+                                    ] 21)
+                                (const_int 4 [0x4])))))
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 140 139 141 2 (parallel [
+            (set (reg:SI 257)
+                (unspec:SI [
+                        (plus:SI (reg:SI 257)
+                            (const (plus:SI (pc)
+                                    (const_int 4 [0x4]))))
+                    ] 4))
+            (use (const_int 7 [0x7]))
+        ]) -1 (nil)
+    (nil))
+
+(insn 141 140 129 2 (use (reg:SI 257)) -1 (nil)
+    (nil))
+
+(insn 129 141 130 2 (set (reg/f:SI 255 [ this ])
+        (reg:SI 0 r0 [ this ])) -1 (nil)
+    (nil))
+
+(note 130 129 132 2 NOTE_INSN_FUNCTION_BEG)
+
+(note 132 130 134 3 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 134 132 135 3 (set (reg:SI 0 r0)
+        (const_int 196 [0xc4])) -1 (nil)
+    (nil))
+
+(call_insn 135 134 136 3 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("_Znwj") [flags 0x41] <function_decl 0x7fd45dc0 operator new>) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 136 135 137 3 (set (reg:SI 254 [ D.7275 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 137 136 138 3 (set (reg/v/f:SI 238 [ buffer ])
+        (reg:SI 254 [ D.7275 ])) -1 (nil)
+    (nil))
+
+(insn 138 137 142 3 (set (reg:SI 0 r0)
+        (reg/v/f:SI 238 [ buffer ])) -1 (nil)
+    (nil))
+
+(insn 142 138 143 3 (set (reg:SI 259)
+        (unspec:SI [
+                (symbol_ref/i:SI ("#_ZN3irr5scene11CMeshBufferINS_5video9S3DVertexEEC1Ev") [flags 0x41] <function_decl 0x7fac1d10 __comp_ctor >)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 143 142 144 3 (set (reg:SI 258)
+        (mem/u/c:SI (plus:SI (reg:SI 257)
+                (reg:SI 259)) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr5scene11CMeshBufferINS_5video9S3DVertexEEC1Ev") [flags 0x41] <function_decl 0x7fac1d10 __comp_ctor >)
+        (nil)))
+
+(insn 144 143 145 3 (set (reg:SI 256)
+        (reg:SI 258)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr5scene11CMeshBufferINS_5video9S3DVertexEEC1Ev") [flags 0x41] <function_decl 0x7fac1d10 __comp_ctor >)
+        (nil)))
+
+(call_insn 145 144 147 3 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg:SI 256) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 147 145 149 3 (set (reg/v:SI 237 [ usedVertices ])
+        (mem/s/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 28 [0x1c])) [0 <variable>.vertexCount+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 149 147 150 3 (set (reg:SI 260)
+        (mem/s/j:SI (plus:SI (reg/v/f:SI 238 [ buffer ])
+                (const_int 124 [0x7c])) [0 <variable>.vertices.allocated+0 S4 A32])) -1 (nil)
+    (nil))
+
+(jump_insn 150 149 151 3 (set (pc)
+        (if_then_else (leu (reg/v:SI 237 [ usedVertices ])
+                (reg:SI 260))
+            (label_ref 161)
+            (pc))) -1 (nil)
+    (expr_list:REG_BR_PROB (const_int 7000 [0x1b58])
+        (nil)))
+
+(code_label 151 150 152 4 150 "" [0 uses])
+
+(note 152 151 154 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 154 152 155 4 (set (reg:SI 261)
+        (plus:SI (reg/v/f:SI 238 [ buffer ])
+            (const_int 120 [0x78]))) -1 (nil)
+    (nil))
+
+(insn 155 154 156 4 (set (reg:SI 0 r0)
+        (reg:SI 261)) -1 (nil)
+    (nil))
+
+(insn 156 155 157 4 (set (reg:SI 1 r1)
+        (reg/v:SI 237 [ usedVertices ])) -1 (nil)
+    (nil))
+
+(insn 157 156 158 4 (set (reg:SI 264)
+        (unspec:SI [
+                (symbol_ref/i:SI ("#_ZN3irr4core5arrayINS_5video9S3DVertexENS0_12irrAllocatorIS3_EEE10reallocateEj") [flags 0x41] <function_decl 0x7fac0b40 reallocate>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 158 157 159 4 (set (reg:SI 263)
+        (mem/u/c:SI (plus:SI (reg:SI 257)
+                (reg:SI 264)) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr4core5arrayINS_5video9S3DVertexENS0_12irrAllocatorIS3_EEE10reallocateEj") [flags 0x41] <function_decl 0x7fac0b40 reallocate>)
+        (nil)))
+
+(insn 159 158 160 4 (set (reg:SI 262)
+        (reg:SI 263)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr4core5arrayINS_5video9S3DVertexENS0_12irrAllocatorIS3_EEE10reallocateEj") [flags 0x41] <function_decl 0x7fac0b40 reallocate>)
+        (nil)))
+
+(call_insn 160 159 161 4 (parallel [
+            (call (mem:SI (reg:SI 262) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(code_label 161 160 162 5 149 "" [1 uses])
+
+(note 162 161 164 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 164 162 165 5 (set (reg:SI 265)
+        (const_int 128 [0x80])) -1 (nil)
+    (nil))
+
+(insn 165 164 167 5 (set (mem/s/j:SI (plus:SI (reg/v/f:SI 238 [ buffer ])
+                (reg:SI 265)) [0 <variable>.vertices.used+0 S4 A32])
+        (reg/v:SI 237 [ usedVertices ])) -1 (nil)
+    (nil))
+
+(insn 167 165 168 5 (set (reg:SI 267)
+        (mem/s/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 32 [0x20])) [0 <variable>.indexCount+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 168 167 169 5 (set (reg:SI 266)
+        (ashift:SI (reg:SI 267)
+            (const_int 1 [0x1]))) -1 (nil)
+    (nil))
+
+(insn 169 168 170 5 (set (reg:SI 0 r0)
+        (reg:SI 266)) -1 (nil)
+    (nil))
+
+(call_insn 170 169 171 5 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("_Znaj") [flags 0x41] <function_decl 0x7fd45eb0 operator new []>) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 171 170 172 5 (set (reg:SI 253 [ D.7282 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 172 171 174 5 (set (mem/s/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])
+        (reg:SI 253 [ D.7282 ])) -1 (nil)
+    (nil))
+
+(insn 174 172 175 5 (set (reg:SI 268)
+        (mem/s/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 16 [0x10])) [0 <variable>.trailPointCount+0 S4 A32])) -1 (nil)
+    (nil))
+
+(jump_insn 175 174 176 5 (set (pc)
+        (if_then_else (le (reg:SI 268)
+                (const_int 1 [0x1]))
+            (label_ref 238)
+            (pc))) -1 (nil)
+    (expr_list:REG_BR_PROB (const_int 1000 [0x3e8])
+        (nil)))
+
+(code_label 176 175 177 6 152 "" [0 uses])
+
+(note 177 176 178 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 178 177 179 6 (set (reg/v:SI 236 [ i ])
+        (const_int 1 [0x1])) -1 (nil)
+    (nil))
+
+(insn 179 178 180 6 (set (reg/v:SI 235 [ vertex ])
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 180 179 181 6 (set (reg:SI 229 [ ivtmp.943 ])
+        (const_int 12 [0xc])) -1 (nil)
+    (nil))
+
+(code_label 181 180 182 7 153 "" [1 uses])
+
+(note 182 181 184 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 184 182 185 7 (set (reg:HI 269)
+        (subreg:HI (reg/v:SI 236 [ i ]) 0)) -1 (nil)
+    (nil))
+
+(insn 185 184 186 7 (set (reg:SI 270)
+        (ashift:SI (subreg:SI (reg:HI 269) 0)
+            (const_int 1 [0x1]))) -1 (nil)
+    (nil))
+
+(insn 186 185 187 7 (set (reg:SI 271)
+        (ashift:SI (reg:SI 270)
+            (const_int 16 [0x10]))) -1 (nil)
+    (nil))
+
+(insn 187 186 188 7 (set (reg/v:SI 232 [ following ])
+        (lshiftrt:SI (reg:SI 271)
+            (const_int 16 [0x10]))) -1 (nil)
+    (expr_list:REG_EQUAL (zero_extend:SI (subreg:HI (reg:SI 270) 0))
+        (nil)))
+
+(insn 188 187 189 7 (set (reg:SI 272)
+        (plus:SI (reg/v:SI 235 [ vertex ])
+            (const_int 1 [0x1]))) -1 (nil)
+    (nil))
+
+(insn 189 188 190 7 (set (reg:SI 273)
+        (ashift:SI (reg:SI 272)
+            (const_int 16 [0x10]))) -1 (nil)
+    (nil))
+
+(insn 190 189 191 7 (set (reg/v:SI 231 [ right ])
+        (lshiftrt:SI (reg:SI 273)
+            (const_int 16 [0x10]))) -1 (nil)
+    (expr_list:REG_EQUAL (zero_extend:SI (subreg:HI (reg:SI 272) 0))
+        (nil)))
+
+(insn 191 190 193 7 (set (reg:SI 252 [ D.7294 ])
+        (reg:SI 229 [ ivtmp.943 ])) -1 (nil)
+    (nil))
+
+(insn 193 191 194 7 (set (reg/f:SI 274)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 194 193 195 7 (set (reg:SI 275)
+        (plus:SI (reg:SI 252 [ D.7294 ])
+            (reg/f:SI 274))) -1 (nil)
+    (nil))
+
+(insn 195 194 196 7 (set (reg/f:SI 276)
+        (plus:SI (reg:SI 275)
+            (const_int -12 [0xfffffffffffffff4]))) -1 (nil)
+    (nil))
+
+(insn 196 195 197 7 (set (reg:HI 277)
+        (subreg/s/u:HI (reg/v:SI 235 [ vertex ]) 0)) -1 (nil)
+    (nil))
+
+(insn 197 196 199 7 (set (mem:HI (reg/f:SI 276) [0 S2 A16])
+        (reg:HI 277)) -1 (nil)
+    (nil))
+
+(insn 199 197 200 7 (set (reg/f:SI 278)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 200 199 201 7 (set (reg:SI 279)
+        (plus:SI (reg:SI 252 [ D.7294 ])
+            (reg/f:SI 278))) -1 (nil)
+    (nil))
+
+(insn 201 200 202 7 (set (reg/f:SI 280)
+        (plus:SI (reg:SI 279)
+            (const_int -10 [0xfffffffffffffff6]))) -1 (nil)
+    (nil))
+
+(insn 202 201 203 7 (set (reg:HI 281)
+        (subreg/s/u:HI (reg/v:SI 231 [ right ]) 0)) -1 (nil)
+    (nil))
+
+(insn 203 202 205 7 (set (mem:HI (reg/f:SI 280) [0 S2 A16])
+        (reg:HI 281)) -1 (nil)
+    (nil))
+
+(insn 205 203 206 7 (set (reg/f:SI 282)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 206 205 207 7 (set (reg:SI 283)
+        (plus:SI (reg:SI 252 [ D.7294 ])
+            (reg/f:SI 282))) -1 (nil)
+    (nil))
+
+(insn 207 206 208 7 (set (reg/f:SI 284)
+        (plus:SI (reg:SI 283)
+            (const_int -8 [0xfffffffffffffff8]))) -1 (nil)
+    (nil))
+
+(insn 208 207 209 7 (set (reg:HI 285)
+        (subreg/s/u:HI (reg/v:SI 232 [ following ]) 0)) -1 (nil)
+    (nil))
+
+(insn 209 208 211 7 (set (mem:HI (reg/f:SI 284) [0 S2 A16])
+        (reg:HI 285)) -1 (nil)
+    (nil))
+
+(insn 211 209 212 7 (set (reg/f:SI 286)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 212 211 213 7 (set (reg:SI 287)
+        (plus:SI (reg:SI 252 [ D.7294 ])
+            (reg/f:SI 286))) -1 (nil)
+    (nil))
+
+(insn 213 212 214 7 (set (reg/f:SI 288)
+        (plus:SI (reg:SI 287)
+            (const_int -6 [0xfffffffffffffffa]))) -1 (nil)
+    (nil))
+
+(insn 214 213 215 7 (set (reg:SI 289)
+        (plus:SI (reg/v:SI 235 [ vertex ])
+            (const_int 3 [0x3]))) -1 (nil)
+    (nil))
+
+(insn 215 214 216 7 (set (reg:HI 290)
+        (subreg:HI (reg:SI 289) 0)) -1 (nil)
+    (nil))
+
+(insn 216 215 218 7 (set (mem:HI (reg/f:SI 288) [0 S2 A16])
+        (reg:HI 290)) -1 (nil)
+    (nil))
+
+(insn 218 216 219 7 (set (reg/f:SI 291)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 219 218 220 7 (set (reg:SI 292)
+        (plus:SI (reg:SI 252 [ D.7294 ])
+            (reg/f:SI 291))) -1 (nil)
+    (nil))
+
+(insn 220 219 221 7 (set (reg/f:SI 293)
+        (plus:SI (reg:SI 292)
+            (const_int -4 [0xfffffffffffffffc]))) -1 (nil)
+    (nil))
+
+(insn 221 220 222 7 (set (reg:HI 294)
+        (subreg/s/u:HI (reg/v:SI 232 [ following ]) 0)) -1 (nil)
+    (nil))
+
+(insn 222 221 224 7 (set (mem:HI (reg/f:SI 293) [0 S2 A16])
+        (reg:HI 294)) -1 (nil)
+    (nil))
+
+(insn 224 222 225 7 (set (reg/f:SI 295)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 72 [0x48])) [0 <variable>.indices+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 225 224 226 7 (set (reg:SI 296)
+        (plus:SI (reg:SI 252 [ D.7294 ])
+            (reg/f:SI 295))) -1 (nil)
+    (nil))
+
+(insn 226 225 227 7 (set (reg/f:SI 297)
+        (plus:SI (reg:SI 296)
+            (const_int -2 [0xfffffffffffffffe]))) -1 (nil)
+    (nil))
+
+(insn 227 226 228 7 (set (reg:HI 298)
+        (subreg/s/u:HI (reg/v:SI 231 [ right ]) 0)) -1 (nil)
+    (nil))
+
+(insn 228 227 230 7 (set (mem:HI (reg/f:SI 297) [0 S2 A16])
+        (reg:HI 298)) -1 (nil)
+    (nil))
+
+(insn 230 228 231 7 (set (reg:SI 299)
+        (plus:SI (reg/v:SI 235 [ vertex ])
+            (const_int 2 [0x2]))) -1 (nil)
+    (nil))
+
+(insn 231 230 232 7 (set (reg:SI 300)
+        (ashift:SI (reg:SI 299)
+            (const_int 16 [0x10]))) -1 (nil)
+    (nil))
+
+(insn 232 231 234 7 (set (reg/v:SI 235 [ vertex ])
+        (lshiftrt:SI (reg:SI 300)
+            (const_int 16 [0x10]))) -1 (nil)
+    (expr_list:REG_EQUAL (zero_extend:SI (subreg:HI (reg:SI 299) 0))
+        (nil)))
+
+(insn 234 232 235 7 (set (reg/v:SI 236 [ i ])
+        (plus:SI (reg/v:SI 236 [ i ])
+            (const_int 1 [0x1]))) -1 (nil)
+    (nil))
+
+(insn 235 234 236 7 (set (reg:SI 229 [ ivtmp.943 ])
+        (plus:SI (reg:SI 229 [ ivtmp.943 ])
+            (const_int 12 [0xc]))) -1 (nil)
+    (nil))
+
+(insn 236 235 237 7 (set (reg:SI 301)
+        (mem/s/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 16 [0x10])) [0 <variable>.trailPointCount+0 S4 A32])) -1 (nil)
+    (nil))
+
+(jump_insn 237 236 238 7 (set (pc)
+        (if_then_else (gt (reg:SI 301)
+                (reg/v:SI 236 [ i ]))
+            (label_ref 181)
+            (pc))) -1 (nil)
+    (expr_list:REG_BR_PROB (const_int 9000 [0x2328])
+        (nil)))
+
+(code_label 238 237 239 8 151 "" [1 uses])
+
+(note 239 238 241 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 241 239 242 8 (set (reg:SI 0 r0)
+        (const_int 92 [0x5c])) -1 (nil)
+    (nil))
+
+(call_insn 242 241 243 8 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("_Znwj") [flags 0x41] <function_decl 0x7fd45dc0 operator new>) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 243 242 244 8 (set (reg:SI 251 [ D.7307 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 244 243 246 8 (set (reg/v/f:SI 234 [ mesh ])
+        (reg:SI 251 [ D.7307 ])) -1 (nil)
+    (nil))
+
+(insn 246 244 247 8 (set (reg:SI 0 r0)
+        (reg/v/f:SI 234 [ mesh ])) -1 (nil)
+    (nil))
+
+(insn 247 246 248 8 (set (reg:SI 304)
+        (unspec:SI [
+                (symbol_ref/i:SI ("#_ZN3irr5scene5SMeshC1Ev") [flags 0x41] <function_decl 0x7facfe10 _ZN3irr5scene5SMeshC1Ev>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 248 247 249 8 (set (reg:SI 303)
+        (mem/u/c:SI (plus:SI (reg:SI 257)
+                (reg:SI 304)) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr5scene5SMeshC1Ev") [flags 0x41] <function_decl 0x7facfe10 _ZN3irr5scene5SMeshC1Ev>)
+        (nil)))
+
+(insn 249 248 250 8 (set (reg:SI 302)
+        (reg:SI 303)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr5scene5SMeshC1Ev") [flags 0x41] <function_decl 0x7facfe10 _ZN3irr5scene5SMeshC1Ev>)
+        (nil)))
+
+(call_insn 250 249 252 8 (parallel [
+            (call (mem:SI (reg:SI 302) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 252 250 253 8 (set (reg/f:SI 305)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -4 [0xfffffffffffffffc]))) -1 (nil)
+    (nil))
+
+(insn 253 252 255 8 (set (mem/c/i:SI (reg/f:SI 305) [0 meshBuffer+0 S4 A32])
+        (reg/v/f:SI 238 [ buffer ])) -1 (nil)
+    (nil))
+
+(insn 255 253 256 8 (set (reg:SI 250 [ buffer.34 ])
+        (reg/v/f:SI 238 [ buffer ])) -1 (nil)
+    (nil))
+
+(insn 256 255 257 8 (set (reg/f:SI 306)
+        (mem/s/f/j:SI (reg/v/f:SI 238 [ buffer ]) [0 <variable>.D.7199._vptr.IMeshBuffer+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 257 256 258 8 (set (reg/f:SI 307)
+        (plus:SI (reg/f:SI 306)
+            (const_int -12 [0xfffffffffffffff4]))) -1 (nil)
+    (nil))
+
+(insn 258 257 259 8 (set (reg:SI 308)
+        (mem:SI (reg/f:SI 307) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 259 258 260 8 (set (reg:SI 249 [ D.7314 ])
+        (plus:SI (reg:SI 250 [ buffer.34 ])
+            (reg:SI 308))) -1 (nil)
+    (nil))
+
+(insn 260 259 261 8 (set (reg:SI 309)
+        (mem/s/j:SI (plus:SI (reg:SI 249 [ D.7314 ])
+                (const_int 4 [0x4])) [0 <variable>.references+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 261 260 262 8 (set (reg:SI 310)
+        (plus:SI (reg:SI 309)
+            (const_int 1 [0x1]))) -1 (nil)
+    (nil))
+
+(insn 262 261 264 8 (set (mem/s/j:SI (plus:SI (reg:SI 249 [ D.7314 ])
+                (const_int 4 [0x4])) [0 <variable>.references+0 S4 A32])
+        (reg:SI 310)) -1 (nil)
+    (nil))
+
+(insn 264 262 265 8 (set (reg:SI 311)
+        (plus:SI (reg/v/f:SI 234 [ mesh ])
+            (const_int 36 [0x24]))) -1 (nil)
+    (nil))
+
+(insn 265 264 266 8 (set (reg:SI 312)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -4 [0xfffffffffffffffc]))) -1 (nil)
+    (nil))
+
+(insn 266 265 267 8 (set (reg:SI 0 r0)
+        (reg:SI 311)) -1 (nil)
+    (nil))
+
+(insn 267 266 268 8 (set (reg:SI 1 r1)
+        (reg:SI 312)) -1 (nil)
+    (nil))
+
+(insn 268 267 269 8 (set (reg:SI 315)
+        (unspec:SI [
+                (symbol_ref/i:SI ("#_ZN3irr4core5arrayIPNS_5scene11IMeshBufferENS0_12irrAllocatorIS4_EEE9push_backERKS4_") [flags 0x41] <function_decl 0x7facf0f0 push_back>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 269 268 270 8 (set (reg:SI 314)
+        (mem/u/c:SI (plus:SI (reg:SI 257)
+                (reg:SI 315)) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr4core5arrayIPNS_5scene11IMeshBufferENS0_12irrAllocatorIS4_EEE9push_backERKS4_") [flags 0x41] <function_decl 0x7facf0f0 push_back>)
+        (nil)))
+
+(insn 270 269 271 8 (set (reg:SI 313)
+        (reg:SI 314)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZN3irr4core5arrayIPNS_5scene11IMeshBufferENS0_12irrAllocatorIS4_EEE9push_backERKS4_") [flags 0x41] <function_decl 0x7facf0f0 push_back>)
+        (nil)))
+
+(call_insn 271 270 273 8 (parallel [
+            (call (mem:SI (reg:SI 313) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 273 271 274 8 (set (reg/f:SI 316)
+        (mem/s/f/j:SI (reg/v/f:SI 238 [ buffer ]) [0 <variable>.D.7199._vptr.IMeshBuffer+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 274 273 275 8 (set (reg/f:SI 317)
+        (plus:SI (reg/f:SI 316)
+            (const_int -12 [0xfffffffffffffff4]))) -1 (nil)
+    (nil))
+
+(insn 275 274 276 8 (set (reg:SI 319)
+        (mem:SI (reg/f:SI 317) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 276 275 277 8 (set (reg:SI 318)
+        (plus:SI (reg:SI 250 [ buffer.34 ])
+            (reg:SI 319))) -1 (nil)
+    (nil))
+
+(insn 277 276 278 8 (set (reg:SI 0 r0)
+        (reg:SI 318)) -1 (nil)
+    (nil))
+
+(insn 278 277 279 8 (set (reg:SI 322)
+        (unspec:SI [
+                (symbol_ref/i:SI ("#_ZNK3irr17IReferenceCounted4dropEv") [flags 0x41] <function_decl 0x7fc62a30 drop>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 279 278 280 8 (set (reg:SI 321)
+        (mem/u/c:SI (plus:SI (reg:SI 257)
+                (reg:SI 322)) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZNK3irr17IReferenceCounted4dropEv") [flags 0x41] <function_decl 0x7fc62a30 drop>)
+        (nil)))
+
+(insn 280 279 281 8 (set (reg:SI 320)
+        (reg:SI 321)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZNK3irr17IReferenceCounted4dropEv") [flags 0x41] <function_decl 0x7fc62a30 drop>)
+        (nil)))
+
+(call_insn 281 280 283 8 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg:SI 320) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(call_insn 283 281 284 8 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("_ZN11Application11GetInstanceEv") [flags 0x41] <function_decl 0x7fc29c90 GetInstance>) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (nil))
+
+(insn 284 283 286 8 (set (reg:SI 248 [ D.7318 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 286 284 288 8 (set (reg/f:SI 247 [ D.7320 ])
+        (mem/s/f/j:SI (plus:SI (reg:SI 248 [ D.7318 ])
+                (const_int 36 [0x24])) [0 <variable>.device+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 288 286 289 8 (set (reg/f:SI 323)
+        (mem/s/f/j:SI (reg/f:SI 247 [ D.7320 ]) [0 <variable>._vptr.IrrlichtDevice+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 289 288 290 8 (set (reg/f:SI 324)
+        (mem/f:SI (plus:SI (reg/f:SI 323)
+                (const_int 36 [0x24])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 290 289 291 8 (set (reg:SI 0 r0)
+        (reg/f:SI 247 [ D.7320 ])) -1 (nil)
+    (nil))
+
+(call_insn 291 290 292 8 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg/f:SI 324) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 292 291 294 8 (set (reg/v/f:SI 233 [ sceneManager ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 294 292 295 8 (set (reg/f:SI 325)
+        (mem/s/f/j:SI (reg/v/f:SI 233 [ sceneManager ]) [0 <variable>._vptr.ISceneManager+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 295 294 297 8 (set (reg:SI 246 [ D.7327 ])
+        (mem/f:SI (plus:SI (reg/f:SI 325)
+                (const_int 52 [0x34])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 297 295 298 8 (set (reg/f:SI 326)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -16 [0xfffffffffffffff0]))) -1 (nil)
+    (nil))
+
+(insn 298 297 299 8 (set (reg:SF 327)
+        (const_double:SF 0.0 [0x0.0p+0])) -1 (nil)
+    (nil))
+
+(insn 299 298 300 8 (set (mem/s/j/c:SF (reg/f:SI 326) [0 D.7271.X+0 S4 A64])
+        (reg:SF 327)) -1 (nil)
+    (nil))
+
+(insn 300 299 301 8 (set (reg/f:SI 328)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -16 [0xfffffffffffffff0]))) -1 (nil)
+    (nil))
+
+(insn 301 300 302 8 (set (reg:SF 329)
+        (const_double:SF 0.0 [0x0.0p+0])) -1 (nil)
+    (nil))
+
+(insn 302 301 303 8 (set (mem/s/j/c:SF (plus:SI (reg/f:SI 328)
+                (const_int 4 [0x4])) [0 D.7271.Y+0 S4 A32])
+        (reg:SF 329)) -1 (nil)
+    (nil))
+
+(insn 303 302 304 8 (set (reg/f:SI 330)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -16 [0xfffffffffffffff0]))) -1 (nil)
+    (nil))
+
+(insn 304 303 305 8 (set (reg:SF 331)
+        (const_double:SF 0.0 [0x0.0p+0])) -1 (nil)
+    (nil))
+
+(insn 305 304 306 8 (set (mem/s/j/c:SF (plus:SI (reg/f:SI 330)
+                (const_int 8 [0x8])) [0 D.7271.Z+0 S4 A64])
+        (reg:SF 331)) -1 (nil)
+    (nil))
+
+(code_label 306 305 307 9 154 "" [0 uses])
+
+(note 307 306 308 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 308 307 309 9 (set (reg/f:SI 332)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -28 [0xffffffffffffffe4]))) -1 (nil)
+    (nil))
+
+(insn 309 308 310 9 (set (reg:SF 333)
+        (const_double:SF 0.0 [0x0.0p+0])) -1 (nil)
+    (nil))
+
+(insn 310 309 311 9 (set (mem/s/j/c:SF (reg/f:SI 332) [0 D.7272.X+0 S4 A32])
+        (reg:SF 333)) -1 (nil)
+    (nil))
+
+(insn 311 310 312 9 (set (reg/f:SI 334)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -28 [0xffffffffffffffe4]))) -1 (nil)
+    (nil))
+
+(insn 312 311 313 9 (set (reg:SF 335)
+        (const_double:SF 0.0 [0x0.0p+0])) -1 (nil)
+    (nil))
+
+(insn 313 312 314 9 (set (mem/s/j/c:SF (plus:SI (reg/f:SI 334)
+                (const_int 4 [0x4])) [0 D.7272.Y+0 S4 A32])
+        (reg:SF 335)) -1 (nil)
+    (nil))
+
+(insn 314 313 315 9 (set (reg/f:SI 336)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -28 [0xffffffffffffffe4]))) -1 (nil)
+    (nil))
+
+(insn 315 314 316 9 (set (reg:SF 337)
+        (const_double:SF 0.0 [0x0.0p+0])) -1 (nil)
+    (nil))
+
+(insn 316 315 317 9 (set (mem/s/j/c:SF (plus:SI (reg/f:SI 336)
+                (const_int 8 [0x8])) [0 D.7272.Z+0 S4 A32])
+        (reg:SF 337)) -1 (nil)
+    (nil))
+
+(code_label 317 316 318 10 155 "" [0 uses])
+
+(note 318 317 320 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 320 318 321 10 (set (reg/f:SI 338)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -40 [0xffffffffffffffd8]))) -1 (nil)
+    (nil))
+
+(insn 321 320 322 10 (set (reg:SF 339)
+        (const_double:SF 1.0e+0 [0x0.8p+1])) -1 (nil)
+    (nil))
+
+(insn 322 321 323 10 (set (mem/s/j/c:SF (reg/f:SI 338) [0 D.7273.X+0 S4 A64])
+        (reg:SF 339)) -1 (nil)
+    (nil))
+
+(insn 323 322 324 10 (set (reg/f:SI 340)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -40 [0xffffffffffffffd8]))) -1 (nil)
+    (nil))
+
+(insn 324 323 325 10 (set (reg:SF 341)
+        (const_double:SF 1.0e+0 [0x0.8p+1])) -1 (nil)
+    (nil))
+
+(insn 325 324 326 10 (set (mem/s/j/c:SF (plus:SI (reg/f:SI 340)
+                (const_int 4 [0x4])) [0 D.7273.Y+0 S4 A32])
+        (reg:SF 341)) -1 (nil)
+    (nil))
+
+(insn 326 325 327 10 (set (reg/f:SI 342)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -40 [0xffffffffffffffd8]))) -1 (nil)
+    (nil))
+
+(insn 327 326 328 10 (set (reg:SF 343)
+        (const_double:SF 1.0e+0 [0x0.8p+1])) -1 (nil)
+    (nil))
+
+(insn 328 327 329 10 (set (mem/s/j/c:SF (plus:SI (reg/f:SI 342)
+                (const_int 8 [0x8])) [0 D.7273.Z+0 S4 A64])
+        (reg:SF 343)) -1 (nil)
+    (nil))
+
+(code_label 329 328 330 11 156 "" [0 uses])
+
+(note 330 329 332 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(insn 332 330 333 11 (set (reg:SI 344)
+        (const_int -1 [0xffffffffffffffff])) -1 (nil)
+    (nil))
+
+(insn 333 332 334 11 (set (reg:SI 345)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -16 [0xfffffffffffffff0]))) -1 (nil)
+    (nil))
+
+(insn 334 333 335 11 (set (mem:SI (reg/f:SI 99 virtual-outgoing-args) [0 S4 A32])
+        (reg:SI 345)) -1 (nil)
+    (nil))
+
+(insn 335 334 336 11 (set (reg:SI 346)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -28 [0xffffffffffffffe4]))) -1 (nil)
+    (nil))
+
+(insn 336 335 337 11 (set (reg/f:SI 347)
+        (reg/f:SI 99 virtual-outgoing-args)) -1 (nil)
+    (nil))
+
+(insn 337 336 338 11 (set (mem:SI (plus:SI (reg/f:SI 347)
+                (const_int 4 [0x4])) [0 S4 A32])
+        (reg:SI 346)) -1 (nil)
+    (nil))
+
+(insn 338 337 339 11 (set (reg:SI 348)
+        (plus:SI (reg/f:SI 97 virtual-stack-vars)
+            (const_int -40 [0xffffffffffffffd8]))) -1 (nil)
+    (nil))
+
+(insn 339 338 340 11 (set (reg/f:SI 349)
+        (reg/f:SI 99 virtual-outgoing-args)) -1 (nil)
+    (nil))
+
+(insn 340 339 341 11 (set (mem:SI (plus:SI (reg/f:SI 349)
+                (const_int 8 [0x8])) [0 S4 A32])
+        (reg:SI 348)) -1 (nil)
+    (nil))
+
+(insn 341 340 342 11 (set (reg/f:SI 350)
+        (reg/f:SI 99 virtual-outgoing-args)) -1 (nil)
+    (nil))
+
+(insn 342 341 343 11 (set (reg:SI 351)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 343 342 344 11 (set (mem:SI (plus:SI (reg/f:SI 350)
+                (const_int 12 [0xc])) [0 S4 A32])
+        (reg:SI 351)) -1 (nil)
+    (nil))
+
+(insn 344 343 345 11 (set (reg:SI 0 r0)
+        (reg/v/f:SI 233 [ sceneManager ])) -1 (nil)
+    (nil))
+
+(insn 345 344 346 11 (set (reg:SI 1 r1)
+        (reg/v/f:SI 234 [ mesh ])) -1 (nil)
+    (nil))
+
+(insn 346 345 347 11 (set (reg:SI 2 r2)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 347 346 348 11 (set (reg:SI 3 r3)
+        (reg:SI 344)) -1 (nil)
+    (nil))
+
+(call_insn 348 347 349 11 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg:SI 246 [ D.7327 ]) [0 S4 A32])
+                    (const_int 16 [0x10])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 3 r3))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 2 r2))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+                (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+                    (nil))))))
+
+(insn 349 348 350 11 (set (reg:SI 245 [ D.7329 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 350 349 352 11 (set (mem/s/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])
+        (reg:SI 245 [ D.7329 ])) -1 (nil)
+    (nil))
+
+(insn 352 350 353 11 (set (reg/f:SI 352)
+        (mem/s/f/j:SI (reg/v/f:SI 234 [ mesh ]) [0 <variable>.D.7121._vptr.IMesh+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 353 352 354 11 (set (reg/f:SI 353)
+        (plus:SI (reg/f:SI 352)
+            (const_int -12 [0xfffffffffffffff4]))) -1 (nil)
+    (nil))
+
+(insn 354 353 355 11 (set (reg:SI 355)
+        (mem:SI (reg/f:SI 353) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 355 354 356 11 (set (reg:SI 354)
+        (plus:SI (reg/v/f:SI 234 [ mesh ])
+            (reg:SI 355))) -1 (nil)
+    (nil))
+
+(insn 356 355 357 11 (set (reg:SI 0 r0)
+        (reg:SI 354)) -1 (nil)
+    (nil))
+
+(insn 357 356 358 11 (set (reg:SI 358)
+        (unspec:SI [
+                (symbol_ref/i:SI ("#_ZNK3irr17IReferenceCounted4dropEv") [flags 0x41] <function_decl 0x7fc62a30 drop>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 358 357 359 11 (set (reg:SI 357)
+        (mem/u/c:SI (plus:SI (reg:SI 257)
+                (reg:SI 358)) [0 S4 A32])) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZNK3irr17IReferenceCounted4dropEv") [flags 0x41] <function_decl 0x7fc62a30 drop>)
+        (nil)))
+
+(insn 359 358 360 11 (set (reg:SI 356)
+        (reg:SI 357)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref/i:SI ("#_ZNK3irr17IReferenceCounted4dropEv") [flags 0x41] <function_decl 0x7fc62a30 drop>)
+        (nil)))
+
+(call_insn 360 359 362 11 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg:SI 356) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 362 360 363 11 (set (reg:SI 359)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(jump_insn 363 362 364 11 (set (pc)
+        (if_then_else (eq (reg:SI 359)
+                (const_int 0 [0x0]))
+            (label_ref 457)
+            (pc))) -1 (nil)
+    (expr_list:REG_BR_PROB (const_int 2124 [0x84c])
+        (nil)))
+
+(code_label 364 363 365 12 158 "" [0 uses])
+
+(note 365 364 367 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 367 365 368 12 (set (reg/f:SI 360)
+        (mem/s/f/j:SI (reg/v/f:SI 233 [ sceneManager ]) [0 <variable>._vptr.ISceneManager+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 368 367 369 12 (set (reg:SI 361)
+        (const_int 148 [0x94])) -1 (nil)
+    (nil))
+
+(insn 369 368 370 12 (set (reg/f:SI 362)
+        (mem/f:SI (plus:SI (reg/f:SI 360)
+                (reg:SI 361)) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 370 369 371 12 (set (reg:SI 0 r0)
+        (reg/v/f:SI 233 [ sceneManager ])) -1 (nil)
+    (nil))
+
+(call_insn 371 370 372 12 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg/f:SI 362) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 372 371 373 12 (set (reg/f:SI 244 [ D.7339 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 373 372 374 12 (set (reg/f:SI 363)
+        (mem/s/f/j:SI (reg/f:SI 244 [ D.7339 ]) [0 <variable>.D.4988._vptr.IAttributeExchangingObject+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 374 373 375 12 (set (reg:SI 364)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 375 374 376 12 (set (reg/f:SI 365)
+        (mem/f:SI (plus:SI (reg/f:SI 363)
+                (const_int 108 [0x6c])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 376 375 377 12 (set (reg:SI 0 r0)
+        (reg/f:SI 244 [ D.7339 ])) -1 (nil)
+    (nil))
+
+(insn 377 376 378 12 (set (reg:SI 1 r1)
+        (reg:SI 364)) -1 (nil)
+    (nil))
+
+(call_insn 378 377 380 12 (parallel [
+            (call (mem:SI (reg/f:SI 365) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 380 378 381 12 (set (reg/f:SI 228 [ temp.948 ])
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 381 380 382 12 (set (reg:SI 367)
+        (unspec:SI [
+                (symbol_ref:SI ("_ZN12trail_assets8meshNameE") [flags 0x42] <var_decl 0x7faedf90 meshName>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 382 381 383 12 (set (reg:SI 366)
+        (plus:SI (reg:SI 257)
+            (reg:SI 367))) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref:SI ("_ZN12trail_assets8meshNameE") [flags 0x42] <var_decl 0x7faedf90 meshName>)
+        (nil)))
+
+(insn 383 382 384 12 (set (reg:SI 243 [ meshName.37 ])
+        (reg:SI 366)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref:SI ("_ZN12trail_assets8meshNameE") [flags 0x42] <var_decl 0x7faedf90 meshName>)
+        (nil)))
+
+(insn 384 383 385 12 (set (reg/f:SI 368)
+        (mem/s/f/j:SI (reg/f:SI 228 [ temp.948 ]) [0 <variable>.D.4988._vptr.IAttributeExchangingObject+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 385 384 386 12 (set (reg/f:SI 369)
+        (mem/f:SI (plus:SI (reg/f:SI 368)
+                (const_int 40 [0x28])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 386 385 387 12 (set (reg:SI 0 r0)
+        (reg/f:SI 228 [ temp.948 ])) -1 (nil)
+    (nil))
+
+(insn 387 386 388 12 (set (reg:SI 1 r1)
+        (reg:SI 243 [ meshName.37 ])) -1 (nil)
+    (nil))
+
+(call_insn 388 387 390 12 (parallel [
+            (call (mem:SI (reg/f:SI 369) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 390 388 391 12 (set (reg:SI 370)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 391 390 392 12 (set (reg:SI 0 r0)
+        (reg:SI 370)) -1 (nil)
+    (nil))
+
+(insn 392 391 393 12 (set (reg:SI 1 r1)
+        (const_int 25 [0x19])) -1 (nil)
+    (nil))
+
+(call_insn 393 392 395 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE") [flags 0x41] <function_decl 0x7fc69150 setMaterialType>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 395 393 396 12 (set (reg:SI 371)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 396 395 397 12 (set (reg:SI 372)
+        (const_int 256 [0x100])) -1 (nil)
+    (nil))
+
+(insn 397 396 398 12 (set (reg:SI 0 r0)
+        (reg:SI 371)) -1 (nil)
+    (nil))
+
+(insn 398 397 399 12 (set (reg:SI 1 r1)
+        (reg:SI 372)) -1 (nil)
+    (nil))
+
+(insn 399 398 400 12 (set (reg:SI 2 r2)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(call_insn 400 399 402 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb") [flags 0x41] <function_decl 0x7fc69240 setMaterialFlag>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 2 r2))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+                (nil)))))
+
+(insn 402 400 403 12 (set (reg:SI 373)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 403 402 404 12 (set (reg:SI 0 r0)
+        (reg:SI 373)) -1 (nil)
+    (nil))
+
+(insn 404 403 405 12 (set (reg:SI 1 r1)
+        (const_int 128 [0x80])) -1 (nil)
+    (nil))
+
+(insn 405 404 406 12 (set (reg:SI 2 r2)
+        (const_int 1 [0x1])) -1 (nil)
+    (nil))
+
+(call_insn 406 405 408 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb") [flags 0x41] <function_decl 0x7fc69240 setMaterialFlag>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 2 r2))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+                (nil)))))
+
+(insn 408 406 409 12 (set (reg:SI 374)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 409 408 410 12 (set (reg:SI 0 r0)
+        (reg:SI 374)) -1 (nil)
+    (nil))
+
+(insn 410 409 411 12 (set (reg:SI 1 r1)
+        (const_int 16 [0x10])) -1 (nil)
+    (nil))
+
+(insn 411 410 412 12 (set (reg:SI 2 r2)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(call_insn 412 411 414 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb") [flags 0x41] <function_decl 0x7fc69240 setMaterialFlag>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 2 r2))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+                (nil)))))
+
+(insn 414 412 415 12 (set (reg:SI 375)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 415 414 416 12 (set (reg:SI 0 r0)
+        (reg:SI 375)) -1 (nil)
+    (nil))
+
+(insn 416 415 417 12 (set (reg:SI 1 r1)
+        (const_int 2 [0x2])) -1 (nil)
+    (nil))
+
+(insn 417 416 418 12 (set (reg:SI 2 r2)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(call_insn 418 417 420 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb") [flags 0x41] <function_decl 0x7fc69240 setMaterialFlag>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 2 r2))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+                (nil)))))
+
+(insn 420 418 421 12 (set (reg:SI 376)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 421 420 422 12 (set (reg:SI 0 r0)
+        (reg:SI 376)) -1 (nil)
+    (nil))
+
+(insn 422 421 423 12 (set (reg:SI 1 r1)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(call_insn 423 422 425 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE") [flags 0x41] <function_decl 0x7fc68ca0 setAutomaticCulling>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 425 423 426 12 (set (reg/f:SI 227 [ temp.955 ])
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 426 425 427 12 (set (reg/f:SI 377)
+        (mem/s/f/j:SI (reg/f:SI 227 [ temp.955 ]) [0 <variable>.D.4988._vptr.IAttributeExchangingObject+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 427 426 428 12 (set (reg/f:SI 378)
+        (mem/f:SI (plus:SI (reg/f:SI 377)
+                (const_int 80 [0x50])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 428 427 429 12 (set (reg:SI 0 r0)
+        (reg/f:SI 227 [ temp.955 ])) -1 (nil)
+    (nil))
+
+(insn 429 428 430 12 (set (reg:SI 1 r1)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(call_insn 430 429 432 12 (parallel [
+            (call (mem:SI (reg/f:SI 378) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(call_insn 432 430 433 12 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("_ZN11Application11GetInstanceEv") [flags 0x41] <function_decl 0x7fc29c90 GetInstance>) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (nil))
+
+(insn 433 432 435 12 (set (reg:SI 242 [ D.7350 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 435 433 437 12 (set (reg/f:SI 241 [ D.7352 ])
+        (mem/s/f/j:SI (plus:SI (reg:SI 242 [ D.7350 ])
+                (const_int 36 [0x24])) [0 <variable>.device+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 437 435 438 12 (set (reg/f:SI 379)
+        (mem/s/f/j:SI (reg/f:SI 241 [ D.7352 ]) [0 <variable>._vptr.IrrlichtDevice+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 438 437 439 12 (set (reg/f:SI 380)
+        (mem/f:SI (plus:SI (reg/f:SI 379)
+                (const_int 24 [0x18])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 439 438 440 12 (set (reg:SI 0 r0)
+        (reg/f:SI 241 [ D.7352 ])) -1 (nil)
+    (nil))
+
+(call_insn 440 439 441 12 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg/f:SI 380) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+        (nil)))
+
+(insn 441 440 442 12 (set (reg/f:SI 240 [ D.7356 ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 442 441 443 12 (set (reg:SI 382)
+        (unspec:SI [
+                (symbol_ref:SI ("_ZN12trail_assets11texturePathE") [flags 0x42] <var_decl 0x7faee000 texturePath>)
+            ] 3)) -1 (nil)
+    (nil))
+
+(insn 443 442 444 12 (set (reg:SI 381)
+        (plus:SI (reg:SI 257)
+            (reg:SI 382))) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref:SI ("_ZN12trail_assets11texturePathE") [flags 0x42] <var_decl 0x7faee000 texturePath>)
+        (nil)))
+
+(insn 444 443 445 12 (set (reg:SI 239 [ texturePath.38 ])
+        (reg:SI 381)) -1 (nil)
+    (expr_list:REG_EQUAL (symbol_ref:SI ("_ZN12trail_assets11texturePathE") [flags 0x42] <var_decl 0x7faee000 texturePath>)
+        (nil)))
+
+(insn 445 444 446 12 (set (reg/f:SI 383)
+        (mem/s/f/j:SI (reg/f:SI 240 [ D.7356 ]) [0 <variable>._vptr.IVideoDriver+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 446 445 447 12 (set (reg/f:SI 384)
+        (mem/f:SI (plus:SI (reg/f:SI 383)
+                (const_int 84 [0x54])) [0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 447 446 448 12 (set (reg:SI 0 r0)
+        (reg/f:SI 240 [ D.7356 ])) -1 (nil)
+    (nil))
+
+(insn 448 447 449 12 (set (reg:SI 1 r1)
+        (reg:SI 239 [ texturePath.38 ])) -1 (nil)
+    (nil))
+
+(call_insn 449 448 450 12 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (reg/f:SI 384) [0 S4 A32])
+                    (const_int 0 [0x0])))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 450 449 452 12 (set (reg/v/f:SI 230 [ texture ])
+        (reg:SI 0 r0)) -1 (nil)
+    (nil))
+
+(insn 452 450 453 12 (set (reg:SI 385)
+        (mem/s/f/j:SI (plus:SI (reg/f:SI 255 [ this ])
+                (const_int 68 [0x44])) [0 <variable>.meshSceneNode+0 S4 A32])) -1 (nil)
+    (nil))
+
+(insn 453 452 454 12 (set (reg:SI 0 r0)
+        (reg:SI 385)) -1 (nil)
+    (nil))
+
+(insn 454 453 455 12 (set (reg:SI 1 r1)
+        (const_int 0 [0x0])) -1 (nil)
+    (nil))
+
+(insn 455 454 456 12 (set (reg:SI 2 r2)
+        (reg/v/f:SI 230 [ texture ])) -1 (nil)
+    (nil))
+
+(call_insn 456 455 457 12 (parallel [
+            (call (mem:SI (symbol_ref:SI ("_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE") [flags 0x41] <function_decl 0x7fc69330 setMaterialTexture>) [0 S4 A32])
+                (const_int 0 [0x0]))
+            (use (const_int 0 [0x0]))
+            (clobber (reg:SI 14 lr))
+        ]) -1 (nil)
+    (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 2 r2))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+            (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+                (nil)))))
+
+(code_label 457 456 458 13 157 "" [1 uses])
+
+(note 458 457 459 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+(note 459 458 465 NOTE_INSN_FUNCTION_END)
+
+(note 465 459 462 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 462 465 463 14 (set (pc)
+        (label_ref 464)) -1 (nil)
+    (nil))
+
+(barrier 463 462 461)
+
+(code_label 461 463 466 15 148 "" [0 uses])
+
+(note 466 461 464 15 [bb 15] NOTE_INSN_BASIC_BLOCK)
+
+(code_label 464 466 467 16 159 "" [1 uses])
+
+(note 467 464 0 16 [bb 16] NOTE_INSN_BASIC_BLOCK)
