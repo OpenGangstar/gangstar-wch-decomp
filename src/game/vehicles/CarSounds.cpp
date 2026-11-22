@@ -482,3 +482,59 @@ void CarSounds::UnregisterCallbacks()
     CarSoundCallbacks callbacks;
     s_SoundCallbacks = callbacks;
 }
+
+void CarSounds::AddTurboSounds(TurboSoundSettings* settings)
+{
+    if (!engineSoundsEnabled)
+        return;
+
+    turboEnabled = true;
+    useRpmCopyB = settings->customPrimaryRpm;
+    if (useRpmCopyB) {
+        turboRpm = settings->primaryRpm;
+        turboMaximumRpm = settings->primaryRpm244;
+        turboMinimumRpm = settings->primaryRpm248;
+        turboReferenceRpm = settings->primaryRpm236;
+        secondaryTurboMaximumRpm = settings->primaryRpm264;
+        secondaryTurboMinimumRpm = settings->primaryRpm268;
+    } else {
+        turboRpm = rpm;
+        turboReferenceRpm = static_cast<int>(static_cast<float>(maximumRpm) * 0.3f);
+        turboMaximumRpm = static_cast<int>(static_cast<float>(maximumRpm) * 0.6f);
+        turboMinimumRpm = static_cast<int>(static_cast<float>(maximumRpm) * 0.08f);
+        secondaryTurboMaximumRpm = maximumRpm;
+        secondaryTurboMinimumRpm = 0;
+    }
+    turboSoundId = settings->primarySoundId;
+    turboChannel = -1;
+    turboPitchMix = 1.0f - settings->blend;
+    turboGain = settings->primaryGain;
+    secondaryTurboSoundId = settings->secondarySoundId;
+    secondaryTurboChannel = -1;
+    secondaryTurboGain = settings->secondaryGain;
+
+    auxiliaryTurboCount = settings->auxiliaryCount;
+    auxiliaryTurboIds = new int[auxiliaryTurboCount];
+    auxiliaryTurboChannels = new int[auxiliaryTurboCount];
+    for (int i = 0; i < auxiliaryTurboCount; ++i) {
+        auxiliaryTurboIds[i] = settings->auxiliaryTurboIds[i];
+        auxiliaryTurboChannels[i] = -1;
+    }
+
+    const int rpmCount = auxiliaryTurboCount + 1;
+    turboArray284 = new int[rpmCount];
+    useRpmCopyA = settings->customSecondaryRpm;
+    if (useRpmCopyA) {
+        secondaryTurboRpm = settings->secondaryRpm;
+        for (int i = 0; i < rpmCount; ++i)
+            turboArray284[i] = settings->auxiliaryTurboThresholds[i];
+    } else {
+        secondaryTurboRpm = rpm;
+        turboArray284[0] = 0;
+        turboArray284[auxiliaryTurboCount] = maximumRpm;
+        const int step = static_cast<int>(static_cast<float>(maximumRpm) / static_cast<float>(auxiliaryTurboCount));
+        for (int i = auxiliaryTurboCount - 1; i != 0; --i)
+            turboArray284[i] = turboArray284[i + 1] - step;
+    }
+    auxiliaryTurboGain = settings->auxiliaryTurboGain;
+}

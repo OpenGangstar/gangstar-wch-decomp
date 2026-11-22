@@ -22,6 +22,7 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_f2d = 0x001c48f8;
 SECTIONS
 {
+    .car_sounds_add_turbo 0x00350018 : { *car-sound-callbacks.o(.text._ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings) }
     .car_sound_settings_ctor 0x0034f158 : { *car-sound-callbacks.o(.text._ZN16CarSoundSettingsC1Ev .text._ZN16CarSoundSettingsC2Ev) }
     .car_sound_settings_dtor 0x00350238 : { *car-sound-callbacks.o(.text._ZN16CarSoundSettingsD1Ev .text._ZN16CarSoundSettingsD2Ev) }
     .turbo_sound_settings_ctor 0x0034f174 : { *car-sound-callbacks.o(.text._ZN18TurboSoundSettingsC1Ev .text._ZN18TurboSoundSettingsC2Ev) }
@@ -67,3 +68,5 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
 }
+
+ASSERT(SIZEOF(.car_sounds_add_turbo)==464,"native CarSounds AddTurboSounds extent");

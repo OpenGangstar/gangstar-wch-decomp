@@ -12992,7 +12992,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034fbf9	0x1fc	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds17UpdateTurboSoundsEv	CarSounds::UpdateTurboSounds()
 0x0034fdf5	0x190	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds6UpdateEP18CarSoundParameters	CarSounds::Update(CarSoundParameters*)
 0x0034ff89	0x8c	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds24SetRPMFilterCoefficientsEf	CarSounds::SetRPMFilterCoefficients(float)
-0x00350019	0x1d0	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings	CarSounds::AddTurboSounds(TurboSoundSettings*)
+0x00350019	0x1d0	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings	CarSounds::AddTurboSounds(TurboSoundSettings*)
 0x003501e9	0x24	CarSounds.cpp	game	vehicles	matched	_ZN9SoundFade5CleanEv	SoundFade::Clean()
 0x0035020d	0x10	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds5CleanEv	CarSounds::Clean()
 0x0035021d	0x1c	CarSounds.cpp	game	vehicles	matched	_ZN18TurboSoundSettingsD1Ev	TurboSoundSettings::~TurboSoundSettings()
