@@ -29,6 +29,7 @@ namespace video {
 struct SMaterial;
 class IVideoDriver;
 class ITexture;
+class SColor;
 // Numeric values are observed; enumerator names are reconstruction labels.
 enum E_MATERIAL_TYPE { MaterialType13 = 13, MaterialType15 = 15 };
 enum E_MATERIAL_FLAG { MaterialFlag2 = 2, MaterialFlag4 = 4, MaterialFlag16 = 16, MaterialFlag128 = 128, MaterialFlag256 = 256, MaterialFlag512 = 512, MaterialFlag1024 = 1024 };
@@ -54,15 +55,18 @@ public:
 namespace core {
 template<class T> class irrAllocator;
 template<class T, class A> class string;
+template<class T, class A> class array;
+template<class T> class dimension2d;
 template<class T> class line3d;
 template<class T> class position2d;
 }
 namespace scene {
 enum E_CULLING_TYPE { EAC_OFF = 0, EAC_BOX = 1, EAC_FRUSTUM_BOX = 2 };
 enum E_OPTION_FLAG { SceneOption1 = 1 };
-enum ESCENE_NODE_TYPE { ESNT_ANY = 0x5f796e61 };
+enum ESCENE_NODE_TYPE { ESNT_ANY = 0x5f796e61, ESNT_LIGHT = 0x7468676c };
 enum E_SCENE_NODE_RENDER_PASS { RenderPass2 = 2, RenderPass6 = 6 };
 class ITimelineController;
+class IBillboardSceneNode;
 class ISceneNodeAnimator;
 class ITriangleSelector;
 class ISceneNode;
@@ -150,6 +154,7 @@ public:
     void setAutomaticCulling(E_CULLING_TYPE);
     ISceneNode* getSceneNodeFromUID(const char*);
     const SceneAnimatorList& getAnimators() const;
+    void getSceneNodesFromType(ESCENE_NODE_TYPE, core::array<ISceneNode*, core::irrAllocator<ISceneNode*> >&);
     const SceneNodeList& getChildren() const;
     void SetOption(E_OPTION_FLAG option, bool enabled);
     void setMaterialType(video::E_MATERIAL_TYPE type);
@@ -237,7 +242,9 @@ public:
     virtual ICameraSceneNode* addCameraSceneNode(ISceneNode*, const core::vector3d<float>&,
                                                 const core::vector3d<float>&, int);
     virtual void unknown18(); virtual void unknown19(); virtual void unknown20();
-    virtual void unknown21(); virtual void unknown22(); virtual void unknown23();
+    virtual void unknown21();
+    virtual IBillboardSceneNode* addBillboardSceneNode(ISceneNode*, const core::dimension2d<float>&, const core::vector3d<float>&, int, video::SColor, video::SColor);
+    virtual void unknown23();
     virtual void unknown24(); virtual void unknown25(); virtual void unknown26();
     virtual void unknown27(); virtual void unknown28();
     virtual ISceneNode* addEmptySceneNode(ISceneNode* parent, int id);
@@ -250,7 +257,7 @@ public:
     virtual void unknown44(); virtual void unknown45(); virtual void unknown46();
     virtual unsigned int registerNodeForRendering(ISceneNode*, const video::SMaterial*, void*, E_SCENE_NODE_RENDER_PASS);
     virtual void unknown48(); virtual void drawAll(ISceneNode* root); virtual void update(float elapsed, bool updateOnly);
-    virtual void unknown51(); virtual void unknown52(); virtual void unknown53();
+    virtual void enableCulling(); virtual void disableCulling(); virtual void unknown53();
     virtual void unknown54(); virtual void unknown55(); virtual void unknown56();
     virtual void unknown57(); virtual void unknown58(); virtual void unknown59();
     virtual void unknown60(); virtual void unknown61(); virtual void unknown62();

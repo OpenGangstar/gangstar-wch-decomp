@@ -1,3 +1,4 @@
+__aeabi_fmul = 0x001c4724;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-scenecamera/retail-symbols.ld
@@ -28,7 +29,16 @@ SECTIONS
     .sdk_startup_storage_1 0x004b9f00 (NOLOAD) : { *sdk-startup-scenecamera.o(.bss._ZN3irr2ps5vHalfE) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
-    .verification 0x00600000 : { *retail-got.o(.text) }
+    .verification 0x00600000 : { *retail-got.o(.text)
+        *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
+        *gs3d-stuff.o(.rodata.*7lodNodeE)
+ }
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+INCLUDE config/linker/GS3DLoadSections.ld
+ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
+ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
+ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
+ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");

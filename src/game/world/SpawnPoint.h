@@ -15,6 +15,7 @@ struct SpawnPointList {
 // The constructor and dispatcher establish a 40-byte allocation extent.
 class SpawnPoint {
 public:
+    static void CreateAllSpawnInstances();
     SpawnPoint(int type);
     virtual ~SpawnPoint();
     static void add(SpawnPoint* point);

@@ -121,6 +121,7 @@ public:
 private:
     OctTreeAABBNode* root;
     irr::core::array<RootNode*>* roots;
+    unsigned char unknown8[8];
 };
 
 namespace {
@@ -755,14 +756,6 @@ irr::scene::ISceneNode* GS3DStuff::loadCityPart(const char* path)
     return city;
 }
 
-struct GS3DLightNodes {
-    irr::scene::ISceneNode** data;
-    unsigned int allocated;
-    unsigned int used;
-    bool ownsData;
-    bool sorted;
-    unsigned int reserved;
-};
 
 GS3DLightNodes GS3DStuff::lightsNodes;
 
@@ -824,9 +817,9 @@ static void __static_initialization_and_destruction_0(int initialize, int priori
         nodes.data = 0;
         nodes.allocated = 0;
         nodes.used = 0;
-        nodes.ownsData = true;
-        nodes.sorted = true;
-        nodes.reserved = 1;
+        nodes.free_when_destroyed = true;
+        nodes.is_sorted = true;
+        nodes.unknown16 = 1;
         __aeabi_atexit(0, reinterpret_cast<void (*)(void*)>(__tcf_10), &__dso_handle);
     }
 }
@@ -843,7 +836,7 @@ extern "C" {
 static void __tcf_10()
 {
     GS3DLightNodes& nodes = GS3DStuff::lightsNodes;
-    if (nodes.ownsData)
+    if (nodes.free_when_destroyed)
         ::operator delete(nodes.data);
 }
 }
@@ -992,7 +985,7 @@ void GS3DStuff::unload()
     lightsNodes.data = 0;
     lightsNodes.used = 0;
     lightsNodes.allocated = 0;
-    lightsNodes.sorted = true;
+    lightsNodes.is_sorted = true;
 
     freeGameData(Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode());
     if (sunNode)
@@ -1085,3 +1078,275 @@ static void __tcf_7()
     static_cast<Base&>(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles).~Base();
 }
 }
+
+#include "../combat/Weapon.h"
+#include "../combat/BulletTraceManager.h"
+#include "../combat/WeaponManager.h"
+#include "../hud/MenuManager.h"
+#include "../ui/MainMenu.h"
+#include "../core/Rect.h"
+
+namespace irr { namespace scene {
+// Observed call-only primary interface. The scene-node receiver is at +4.
+class IBillboardSceneNode {
+public:
+    virtual void setSize(const core::dimension2d<float>&) = 0;
+};
+class CSceneManager { public: void collectAllNodes(); };
+} }
+extern "C" void _ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj(OctTreeAABB*, irr::scene::ISceneNode*, unsigned int) __attribute__((weak));
+extern "C" int _ZNK11MenuManager11getPlaylistEv(const MenuManager*);
+extern "C" bool _ZN13ScriptManager7debugOnE;
+
+extern "C" {
+static const int LoadingPercents[14] = {1,1,2,4,2,3,3,2,2,5,3,2,2,1};
+}
+// Loader-local definition of the SDK lifetime adapter; no shared-header body.
+inline irr::core::quaternion::quaternion(irr::core::quaternion::uninitialized_t) {}
+
+namespace {
+static const char loadingProfile[] __attribute__((section(".rodata.gs_load_profile"))) = "./PhonePerformanceProfiles.gmap";
+static const char loadingSun[] __attribute__((section(".rodata.gs_load_sun"))) = "sun_dummy-node";
+static const char loadingHeightmap[] __attribute__((section(".rodata.gs_load_heightmap"))) = "./santa_monica_heightmap.bdae";
+static const char loadingNavigation[] __attribute__((section(".rodata.gs_load_navigation"))) = "./nav_mesh_arrays.bin";
+static const char loadingBackground[] __attribute__((section(".rodata.gs_load_background"))) = "./backgroundTex.tga";
+static const char loadingGlow[] __attribute__((section(".rodata.gs_load_glow"))) = "./add-glow.tga";
+static const char loadingMainMenu[] __attribute__((section(".rodata.gs_load_main_menu"))) = "MainMenu";
+static const char loadingMissions[] __attribute__((section(".rodata.gs_load_missions"))) = "./Missions.gmap";
+static const char loadingScripts[] __attribute__((section(".rodata.gs_load_scripts"))) = "./allscripts.gmap";
+static const char loadingHighlights[] __attribute__((section(".rodata.gs_load_highlights"))) = "./Highlights.array";
+static const char loadingBloodPuddle[] __attribute__((section(".rodata.gs_load_blood_puddle"))) = "./blood_puddle.bdae";
+static const char loadingBloodParticle[] __attribute__((section(".rodata.gs_load_blood_particle"))) = "./p_blood_00.bdae";
+struct LoadingApplicationFields { unsigned char prefix[88]; int targetFrameRate; };
+struct LoadingObjectFields { unsigned char prefix[16]; irr::scene::ISceneNode* sceneNode; };
+struct LoadingType15Fields { unsigned char prefix[88]; int value; };
+struct LoadingRenderableFields { unsigned char prefix[8]; unsigned int count; };
+inline __attribute__((always_inline)) irr::core::quaternion makeLoadingQuaternion(float x, float y, float z)
+{
+    irr::core::quaternion result((irr::core::quaternion::uninitialized_t()));
+    result.set(x, y, z);
+    return result;
+}
+
+inline irr::scene::ISceneNode& loadingBillboardNode(irr::scene::IBillboardSceneNode& billboard)
+{
+    return *reinterpret_cast<irr::scene::ISceneNode*>(reinterpret_cast<unsigned char*>(&billboard) + 4);
+}
+}
+
+int GS3DStuff::load(int step, int& percent)
+{
+    Application* application = Application::GetInstance();
+    irr::IrrlichtDevice* device = application->GetDevice();
+    irr::video::IVideoDriver* driver = device->getVideoDriver();
+    irr::scene::ISceneManager* manager = device->getSceneManager();
+    percent += LoadingPercents[step];
+    switch (step) {
+    case 0:
+        loadPerformanceProfile(loadingProfile);
+        SceneNodeManager::getInstance()->setup();
+        driver->addMaterialRenderer(reinterpret_cast<irr::video::IMaterialRenderer*>(Application::GetInstance()->GetMaterialRenderer()), 0);
+        return 1;
+    case 1:
+        driver->setOption(128, true);
+        lastTime = device->getTimer()->getRealTime();
+        reinterpret_cast<LoadingApplicationFields*>(application)->targetFrameRate = 100;
+        return 2;
+    case 2:
+        GameObjectManager::Setup();
+        LevelObject::setup();
+        s_cityPartsNum = loadCityDesc(cityPartsFile, s_cityParts);
+        s_curCityPart = 0;
+        s_curCityStep = 0;
+        city = 0;
+        return 3;
+    case 3: {
+        WorldDescriptor descriptor(s_cityParts[s_curCityPart]);
+        if (s_curCityStep == 0) {
+            loadCityVisual(descriptor);
+            ++s_curCityPart;
+        } else {
+            loadCityGameObjects(descriptor, true);
+            ++s_curCityPart;
+        }
+        if (s_curCityPart >= s_cityPartsNum) {
+            s_curCityPart = 0;
+            ++s_curCityStep;
+        }
+        if (s_curCityPart < s_cityPartsNum && s_curCityStep <= 1)
+            return 3;
+        return 4;
+    }
+    case 4: {
+        sunNode = city->getSceneNodeFromUID(loadingSun);
+        ++sunNode->references;
+        city->getSceneNodesFromType(irr::scene::ESNT_LIGHT, lightsNodes);
+        for (int i = 0; i < lightsNodes.used; ++i) {
+            irr::scene::ISceneNode* parent = lightsNodes.data[i]->getParent();
+            manager->getRootSceneNode()->addChild(lightsNodes.data[i]);
+            if (parent)
+                CCustomSceneManager::CleanParents(parent);
+            lightsNodes.data[i]->setRelativeTransformation(const_cast<irr::core::matrix4&>(lightsNodes.data[i]->getAbsoluteTransformation()));
+        }
+        irr::video::IVideoDriver* currentDriver = Application::GetInstance()->GetDevice()->getVideoDriver();
+        SetMaterialTypeCondition(city, irr::video::MaterialType15, currentDriver->getTexture(cityPropsAlpha));
+        SetMaterialTypeCondition(city, irr::video::MaterialType15, currentDriver->getTexture(cityPropsAlphaAlt));
+        OctTreeAABB* createdTree = static_cast<OctTreeAABB*>(::operator new(sizeof(OctTreeAABB)));
+        _ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj(createdTree, city, 20);
+        sceneOcttree = createdTree;
+        SetVisibility(city, true);
+        CCustomSceneManager* custom = reinterpret_cast<CCustomSceneManager*>(manager);
+        custom->setBatchRoot(city);
+        manager->disableCulling();
+        reinterpret_cast<irr::scene::CSceneManager*>(manager)->collectAllNodes();
+        manager->enableCulling();
+        custom->compileBatch();
+        custom->toggleCullBatch();
+        reinterpret_cast<LoadingRenderableFields*>(custom->getRenderableNodeList())->count = 0;
+        return 5;
+    }
+    case 5:
+        gom = GameObjectManager::s_gom;
+        for (int i = 0; i < s_cityPartsNum; ++i) {
+            WorldDescriptor descriptor(s_cityParts[i]);
+            loadCityGameObjects(descriptor, false);
+            delete[] s_cityParts[i];
+        }
+        delete[] s_cityParts;
+        SpawnPoint::CreateAllSpawnInstances();
+        CameraManager::getInstance();
+        CameraManager::getInstance()->getCamera()->setFarValue(9000.0f);
+        return 6;
+    case 6: {
+        irr::scene::ISceneNode* heightmap = irr::collada::CColladaDatabase::constructScene(loadingHeightmap, &irr::collada::CColladaDatabase::DefaultFactory);
+        PhysicAttributes::CreateNeighborTris(heightmap, 0);
+        heightmap->drop();
+        PhysicAttributes::LoadArrays(const_cast<char*>(loadingNavigation));
+        PhysicAttributes::InitWorld();
+        LastVisibleNodes = newPointerArray<CollisionBodyDef>();
+        VisibleNodes = newPointerArray<CollisionBodyDef>();
+        LastVisibleSceneNodes = newPointerArray<irr::scene::ISceneNode>();
+        VisibleSceneNodes = newPointerArray<irr::scene::ISceneNode>();
+        VisibleSpawnPoint = newPointerArray<SpawnPoint>();
+        return 7;
+    }
+    case 7: {
+        driver->setOption(16, false);
+        skyBox = new CustomSkyBoxSceneNode(driver->getTexture(loadingBackground), sunNode, 0);
+        skyBoxTexture = skyBox->getMaterial(0).layers[0].texture;
+        driver->setOption(16, true);
+        manager->getRootSceneNode()->addChild(skyBox);
+        skyBox->setRotation(makeLoadingQuaternion(-1.5707963705062866f, 0, 0));
+        skyBox->drop();
+        return 8;
+    }
+    case 8: {
+        sunGlow = manager->addBillboardSceneNode(0, irr::core::dimension2d<float>(10,10),
+            irr::core::vector3d<float>(0,0,0), -1,
+            irr::video::SColor(255,255,255,255), irr::video::SColor(255,255,255,255));
+        loadingBillboardNode(*sunGlow).setMaterialTexture(0, driver->getTexture(loadingGlow));
+        loadingBillboardNode(*sunGlow).setMaterialType(irr::video::MaterialType13);
+        loadingBillboardNode(*sunGlow).setMaterialFlag(irr::video::MaterialFlag2, false);
+        loadingBillboardNode(*sunGlow).setMaterialFlag(static_cast<irr::video::E_MATERIAL_FLAG>(128), false);
+        loadingBillboardNode(*sunGlow).setMaterialFlag(irr::video::MaterialFlag256, false);
+        loadingBillboardNode(*sunGlow).setMaterialFlag(irr::video::MaterialFlag512, false);
+        sunGlow->setSize(irr::core::dimension2d<float>(2048,2048));
+        irr::core::vector3d<float> position = sunNode->getPosition();
+        position.normalize();
+        position *= 1000.0f;
+        loadingBillboardNode(*sunGlow).setPosition(position);
+        loadingBillboardNode(*sunGlow).setRenderingLayer(-1);
+        loadingBillboardNode(*sunGlow).setVisible(true);
+        manager->getActiveCamera()->addChild(sunGlow ? &loadingBillboardNode(*sunGlow) : 0);
+        return 9;
+    }
+    case 9: {
+        b2World* const world = PhysicAttributes::s_world;
+        playerTest = new PlayerTest(world);
+        const unsigned char type = reinterpret_cast<const unsigned char*>(playerTest)[40];
+        gom->AddGameObjectOfType(LevelObject::s_type[type]);
+        application->GetWeaponManager()->init();
+        application->GetWeaponManager()->setPlayer(reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(playerTest)));
+        CHudManager* hud = application->GetHudManager();
+        LevelObject* followed = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(playerTest));
+        MiniMap* map = reinterpret_cast<MiniMap*>(hud->minimap);
+        if (map)
+            map->setFollowedObject(followed);
+        playerTest->switchContext(PlayerTest::Context0, false);
+        return 10;
+    }
+    case 10:
+        for (int i = 0; i < 3; ++i) {
+            for (LevelObject* object = gom->GetFirst(i); object; object = object->next) {
+                switch (LevelObject::s_type[object->getObjectType()]) {
+                case 5: object->init(); break;
+                case 15:
+                    if (reinterpret_cast<LoadingType15Fields*>(object)->value == 3) {
+                        MiniMap* map = reinterpret_cast<MiniMap*>(application->GetHudManager()->minimap);
+                        if (map)
+                            map->registerForMapTracking(object, false);
+                    }
+                    break;
+                case 4: application->GetWeaponManager()->addWeapon(static_cast<Weapon*>(object)); break;
+                }
+                CleanNode(reinterpret_cast<LoadingObjectFields*>(object)->sceneNode);
+            }
+        }
+        return 11;
+    case 11: {
+        GSLoading::setGameLoaded(true);
+        ScriptManager* scripts = ScriptManager::getInstance();
+        _ZN13ScriptManager7debugOnE = false;
+        scripts->loadMissions(loadingMissions);
+        bool continuing = static_cast<Menus::MainMenu*>(MenuManager::getInstance()->getState(loadingMainMenu))->GameContinue();
+        scripts->loadScript(loadingScripts, continuing);
+        LevelObject::loadHighlights(loadingHighlights);
+        Character::loadBloodObjects(loadingBloodPuddle, loadingBloodParticle);
+        ScriptManager::s_playerTest = playerTest;
+        CameraManager::getInstance()->enterMode(0,
+            reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(playerTest)), 0, 0);
+        return 12;
+    }
+    case 12:
+        s_bulletManager = new BulletTraceManager();
+        manager->getRootSceneNode()->addChild(s_bulletManager);
+        s_bulletManager->drop();
+        s_TrailMgr = new TrailMgr();
+        s_TrailMgr->Init(4, 60, 0, 600, 25.0f, 0.15f);
+        driver->setFog(irr::video::SColor(255,255,218,160), true,
+            static_cast<float>(s_phonePerformanceProfile.unknown4 - 13000),
+            static_cast<float>(s_phonePerformanceProfile.unknown4 + 10000), 0.00001f, false, false);
+        driver->setOrientation3D(irr::video::OrthoOrientation0);
+        driver->setOrthoOrientation(irr::video::OrthoOrientation0);
+        WantedLevelManager::getInstance();
+        return 13;
+    case 13: {
+        SoundManager::getInstance()->allocBuffers();
+        CameraManager::getInstance()->setTouchScreenInputs(!ScriptManager::getInstance()->isInCinematic());
+        application->SetDrawAll(true);
+        CControlManager* controls = Application::GetInstance()->GetControlManager();
+        controls->init();
+        if (controls->isLocked())
+            controls->unlock();
+        int playlist = _ZNK11MenuManager11getPlaylistEv(MenuManager::getInstance());
+        if (playlist > -2) {
+            SoundManager::getInstance()->initIPod();
+            SoundManager::getInstance()->useIPodRadio();
+            SoundManager::getInstance()->setPlaylist(playlist);
+        }
+        return 14;
+    }
+    }
+}
+
+// Unapplied compile-time requirements; no current layout claim without GCC proof.
+typedef char load_pointer_4[(sizeof(void*) == 4) ? 1 : -1];
+typedef char load_quaternion_16[(sizeof(irr::core::quaternion) == 16) ? 1 : -1];
+typedef char load_vector_12[(sizeof(irr::core::vector3d<float>) == 12) ? 1 : -1];
+typedef char load_player_516[(sizeof(PlayerTest) == 516) ? 1 : -1];
+typedef char load_octtree_16[(sizeof(OctTreeAABB) == 16) ? 1 : -1];
+typedef char load_skybox_2304[(sizeof(CustomSkyBoxSceneNode) == 2304) ? 1 : -1];
+typedef char load_bullet_1768[(sizeof(BulletTraceManager) == 1768) ? 1 : -1];
+typedef char load_trail_24[(sizeof(TrailMgr) == 24) ? 1 : -1];
+typedef char load_lights_20[(sizeof(GS3DLightNodes) == 20) ? 1 : -1];
+typedef char load_array_20[(sizeof(irr::core::array<irr::scene::ISceneNode*>) == 20) ? 1 : -1];

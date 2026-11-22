@@ -438,7 +438,11 @@ SECTIONS {
     .text 0x003167a4 : { *level-object.o(.text._ZN11LevelObjectC1Ei .text._ZN11LevelObjectC2Ei) }
     .levelobject_update 0x00316cc0 : { *level-object.o(.text._ZN11LevelObject6UpdateEi) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
-    .verification 0x00600000 : { *retail-got.o(.text) }
+    .verification 0x00600000 : { *retail-got.o(.text)
+        *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
+        *gs3d-stuff.o(.rodata.*7lodNodeE)
+ }
     .module_startup_game_object_manager_function_0 0x00314f4c : { *game-object-manager.o(.text.__tcf_4) }
     .module_startup_game_object_manager_function_1 0x00316420 : { *game-object-manager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .module_startup_game_object_manager_function_2 0x00316564 : { *game-object-manager.o(.text._GLOBAL__I__ZN17GameObjectManagerC2Ev) }
@@ -549,3 +553,8 @@ ASSERT(SIZEOF(.gangstar_unlock_method)==4,"JNI unlock method cache extent");
 ASSERT(SIZEOF(.gangstar_version_method)==4,"JNI version method cache extent");
 
 ASSERT(SIZEOF(.gangstar_launch_method)==4,"JNI launch method cache extent");
+INCLUDE config/linker/GS3DLoadSections.ld
+ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
+ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
+ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
+ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");

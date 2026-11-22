@@ -368,7 +368,11 @@ SECTIONS {
     .loading 0x00330664 : { *weapon.o(.text._ZN6Weapon4LoadERKN7Structs6WeaponE) }
     .unlock 0x00330834 : { *weapon.o(.text._ZN6Weapon6unlockEv) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
-    .verification 0x00600000 : { *retail-got.o(.text) }
+    .verification 0x00600000 : { *retail-got.o(.text)
+        *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
+        *gs3d-stuff.o(.rodata.*7lodNodeE)
+ }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .gs3d_startup_function_0 0x002dd090 : { *gs3d-stuff.o(.text.__tcf_9) }
     .gs3d_startup_function_1 0x002dcec4 : { *gs3d-stuff.o(.text._Z41__static_initialization_and_destruction_0ii) }
@@ -401,3 +405,8 @@ ASSERT(SIZEOF(.gs3d_startup_storage_9) == 8, "GS3DStuff _ZN8gameloft2ai5guardE e
 ASSERT(SIZEOF(.gs3d_startup_storage_10) == 8, "GS3DStuff _ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_11) == 12, "GS3DStuff _ZN3irr2ps5vHalfE extent");
 ASSERT(SIZEOF(.gs3d_startup_storage_12) == 20, "GS3DStuff _ZN9GS3DStuff11lightsNodesE extent");
+INCLUDE config/linker/GS3DLoadSections.ld
+ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
+ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
+ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
+ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");

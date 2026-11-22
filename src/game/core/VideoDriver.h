@@ -16,6 +16,7 @@ enum E_VERTEX_TYPE { EVT_STANDARD = 0 };
 enum E_INDEX_TYPE { EIT_16BIT = 0 };
 struct SMaterial;
 class IDriverBinding;
+class IMaterialRenderer;
 class ITexture;
 class CTextureManager {
 public:
@@ -64,7 +65,9 @@ public:
         const core::rect<int>* clip = 0);
     virtual void unknown51(); virtual void unknown52(); virtual void unknown53();
     virtual void unknown54(); virtual void unknown55(); virtual void unknown56();
-    virtual void unknown57(); virtual void unknown58(); virtual void unknown59();
+    virtual void unknown57();
+    virtual void setFog(SColor, bool, float, float, float, bool, bool);
+    virtual void unknown59();
     virtual const core::dimension2d<unsigned int>& getScreenSize() const;
     virtual void unknown61();
     virtual void unknown62();
@@ -89,7 +92,7 @@ public:
     virtual void unknown81();
     virtual void unknown82();
     virtual void unknown83();
-    virtual void unknown84();
+    virtual int addMaterialRenderer(IMaterialRenderer*, const char*);
     virtual void unknown85();
     virtual void unknown86();
     virtual void unknown87();
@@ -122,7 +125,7 @@ public:
     virtual void unknown114();
     virtual void unknown115();
     virtual void unknown116();
-    virtual void unknown117();
+    virtual void setOption(unsigned int, bool);
     virtual void flush();
     virtual void unknown119();
     virtual void unknown120();
