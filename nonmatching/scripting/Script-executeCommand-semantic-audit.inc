@@ -233,8 +233,10 @@ AIManager::getInstance()->removeAI(car);AIManager::getInstance()->addAI(car,stat
 PlayerTest* player=PlayerTest::GetPlayer();
 if((player->flags240&0x400) && static_cast<SavePositionInterface*>(player)->getVehicle()) car->aiTarget=player->getVehicle();
 else car->aiTarget=reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(player));
-car->flags344|=0x400800;
-unsigned int flag=(lrand48()&1)?0x100000:0x200000;car->flags344|=flag;
+const unsigned int savedFlags=car->flags344|0x400800;
+car->flags344=savedFlags;
+unsigned int flag=(lrand48()&1)?0x100000:0x200000;
+car->flags344=savedFlags|flag;
 if(car->aiTarget) {car->unknown776=car->unknown188;car->flags344|=0x1000;}return true;
     }
     case 38: {
@@ -544,13 +546,14 @@ if(type==3) static_cast<Vehicle*>(object)->tagForKill(true);else if(type==5) sta
     case 86: {
 if(!source) {
  s_driveBadPoints=1000.0f;s_driveBadVehicle=PlayerTest::GetPlayer()->getVehicle();source=s_driveBadVehicle;if(!s_driveBadVehicle)return false;
- s_driveBadLastHealth=s_driveBadVehicle->getHealth();s_driveBadPointsSpeed=0.0f;s_driveBadPointsJumping=0.0f;s_driveBadPointsDrifting=0.0f;s_driveBadPointsWantedLevel=0.0f;
+ s_driveBadLastHealth=s_driveBadVehicle->getHealth();s_driveBadPointsSpeed=0.0f;s_driveBadPointsJumping=0.0f;
  s_driveBadLastWantedLevel=WantedLevelManager::getInstance()->unknown8;Application::GetInstance()->GetHudManager()->showSpyGauge(true);
  ScriptManager::getInstance()->unknown100=static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getLastObjectiveText();
 }
 if(s_driveBadVehicle) {
  CHudManager* hud=Application::GetInstance()->GetHudManager();
- if(ScriptManager::s_playerTest->getVehicle()==s_driveBadVehicle && ScriptManager::s_playerTest->getVehicle()==s_driveBadVehicle) {
+ if(ScriptManager::s_playerTest->getVehicle()==s_driveBadVehicle) {
+  if(ScriptManager::s_playerTest->getVehicle()!=s_driveBadVehicle) return false;
   if(static_cast<Mission*>(ScriptManager::getInstance()->getMission())->getLastObjectiveText()!=ScriptManager::getInstance()->unknown100) {
    ScriptManager::getInstance()->missionObjective(ScriptManager::getInstance()->unknown100,false);s_driveBadVehicle->showHighlight(-1);ScriptManager::displayOnMinimap(s_driveBadVehicle,false,true);unsetScriptObjectAction(s_driveBadVehicle,MinimapObject);hud->showSpyGauge(true);s_driveBadLastHealth=s_driveBadVehicle->getHealth();
   }
@@ -694,8 +697,8 @@ LevelObject* object=ScriptManager::findObject(cmd.argument1,false);ScriptManager
         const Structs::WaitEscape& cmd=*reinterpret_cast<const Structs::WaitEscape*>(command);
 LevelObject* original=ScriptManager::findObject(cmd.argument1,false);int minimum=cmd.argument2;LevelObject* target=original;
 if(LevelObject::s_type[original->getObjectType()]==5 && (!original->isEnabled() || ((static_cast<Character*>(original)->movementFlags&0x400) && static_cast<Character*>(original)->getVehicle()))) target=static_cast<Character*>(original)->getVehicle();
-if(!original->sceneNode || !original->sceneNode->isVisible()) {
- if(LevelObject::s_type[original->getObjectType()]==5) {original->showHighlight(0);Character* actor=static_cast<Character*>(original);if(actor->getVehicle()){actor->getVehicle()->showHighlight(0);setScriptObjectAction(actor->getVehicle(),Flag2);}}
+if(!original->unknown20 || !original->unknown20->isVisible()) {
+ if(LevelObject::s_type[original->getObjectType()]==5) {original->showHighlight(0);Character* actor=static_cast<Character*>(original);Vehicle* const car=actor->getVehicle();if(car){car->showHighlight(0);setScriptObjectAction(car,Flag2);}}
  else original->showHighlight(-1);
  ScriptManager::displayOnMinimap(original,true,true);setScriptObjectAction(original,Flag2);setScriptObjectAction(original,MinimapObject);
 }
@@ -705,10 +708,12 @@ if((player->flags240&0x400) && static_cast<SavePositionInterface*>(player)->getV
 }else {
  const V& playerPosition=reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()))->GetPosition();const V& targetPosition=target->GetPosition();distance=(playerPosition-targetPosition).getLength();
 }
-int type=LevelObject::s_type[target->getObjectType()];
-if(target->isEnabled() && ((type!=5 && type!=3) || !target->isDead()) && !(distance>=minimum) && !ScriptManager::getInstance()->areBlockingCommandsSkipped()) return false;
+if(target->isEnabled()) {
+ int type=LevelObject::s_type[target->getObjectType()];
+ if(((type!=5 && type!=3) || !target->isDead()) && !(distance>=minimum) && !ScriptManager::getInstance()->areBlockingCommandsSkipped()) return false;
+}
 original->showHighlight(-1);
-if(LevelObject::s_type[original->getObjectType()]==5 && static_cast<Character*>(original)->getVehicle()) {Vehicle* car=static_cast<Character*>(original)->getVehicle();car->showHighlight(-1);unsetScriptObjectAction(car,Flag2);}
+if(LevelObject::s_type[original->getObjectType()]==5) {Vehicle* const car=static_cast<Character*>(original)->getVehicle();if(car){car->showHighlight(-1);unsetScriptObjectAction(car,Flag2);}}
 ScriptManager::displayOnMinimap(original,false,true);unsetScriptObjectAction(original,ActiveObject);unsetScriptObjectAction(original,Flag2);unsetScriptObjectAction(original,MinimapObject);return true;
     }
     case 102: {
