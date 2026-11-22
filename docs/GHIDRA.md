@@ -353,3 +353,87 @@ ten agree, with 186 individually proven internal branches restored in total.
 These are analysis improvements only. The resulting native/source guard
 corrections remain [unmatched candidates](matches/guard-association-corrections.md)
 until their compiled functions pass authoritative byte comparison.
+
+Vehicle::CreateWheels required no internal BL overrides. One actual false
+CALL_RETURN on the normal fadd call at program 0x0031d20a prevented its
+continuation; three later instructions were incorrectly decoded as ARM.
+Guarded metadata repair restores 598 real instructions / 1,338 code bytes.
+The original assembly's 599th instruction-looking entry is an unreachable
+two-byte alignment halfword at retail 0x0030d546. Together with 68 literal
+bytes, these account for the complete 1,408-byte retail function extent.
+
+Fresh independent MCP readback verifies all 527 two-byte and 71 four-byte
+instructions, zero real holes, and the complete decompiled body. Physical ABI
+is void with self in r0 and Box2DUserInfo in r1, both explicit nonautomatic
+parameters. Public getters confirm the two-formal signature; custom storage
+is verified separately in the saved project export. Full function memory
+remains identical to retail, SHA-256
+`3a99c436cec6deda048e31f44e79fdf6ef36d8660a7f91ec56770415fdcc8c5a`.
+The completed source-tail audit finds no new discrepancy in the preserved
+1,440-byte candidate. No compiler attempt or matching credit follows from
+this analysis repair.
+
+Three animation functions also needed computed-switch metadata despite complete
+instruction ownership. Each native mov pc,r3 dispatch used a verified signed
+relative table. The saved jump table and branch flow model restore all cases:
+
+| Function | Real instructions | Real code bytes | Table entries | Unique targets |
+| --- | ---: | ---: | ---: | ---: |
+| Character::switchMoveAnimation | 548 | 1,154 | 206 | 23 |
+| Character::switchCombatAnimation | 505 | 1,050 | 125 | 26 |
+| PlayerTest::switchAnim | 491 | 1,028 | 213 | 12 |
+
+The combat index is unsigned(animation - 51), so its 125 indices represent
+animation values 51 through 175. Decompiler case labels initially contain
+physical destination addresses; independent readback maps those destinations
+back to actual table indices and animation values before reviewing source.
+All instructions, widths and destinations agree with retail. Whole original
+function and table memories remain unchanged. Physical signatures use explicit
+self in r0; the Character methods return bool in r0 and Player switchAnim
+returns void. No implicit duplicate receiver is introduced.
+
+Complete move-animation cases reveal no new source constraint. Combat and
+Player cases expose [unmatched source corrections](matches/animation-operand-corrections.md)
+for a shared ready tail, an eject Boolean and a lock-state byte. Restored
+analysis metadata itself adds no byte-matching or Fully Linked progress.
+
+Additional guarded normal-return repairs and independent fresh readbacks cover:
+
+| Function | Real instructions | Real code bytes | Other original bytes |
+| --- | ---: | ---: | --- |
+| Character::punch | 344 | 734 | 2 padding, 40 literals |
+| Character::punched | 400 | 844 | 40 literals |
+| Character::updateAnimation | 383 | 874 | 2 padding, 16 literals |
+| Character::show | 252 | 544 | 56 literals |
+| Character::initInVehicle | 186 | 404 | 52 literals |
+| Character::positionInVehicle | 268 | 588 | 52 literals |
+| PlayerTest::switchContext | 393 | 862 | 2 padding, 36 literals |
+
+Punch needs one actual false fadd CALL_RETURN cleared; animation update needs
+two fadd and one fsub override cleared. Show and vehicle positioning each need
+two fadd continuations, while vehicle initialization needs one. All are
+original returning math calls. No global callee flags, original calls, memory,
+function boundaries or internal BL flow are changed for these repairs. An
+initial animation-update transaction rolls back when a second hidden false
+return still blocks ownership; the later guarded pass removes only the actual
+verified math overrides and passes complete ownership validation.
+
+Punched uses a verified 55-entry, six-target computed table indexed by unsigned
+(animation - 90). Its physical signature is void(self, animation, damage,
+attacker), explicitly in r0/r1/r2/r3. Punch returns bool; animation update returns
+bool and takes elapsed float in r1. Show is void(self); vehicle initialization
+and positioning are void with vehicle pointer and bool respectively in r1.
+
+Context switching already owns all real instructions, yet its decompiler
+incorrectly ends the nonnull body-data path after operator delete. An actual
+CALL_RETURN at program 0x00311b60 causes that error. Clearing only that override
+restores the original common continuation at 0x00311b64. The explicit view is
+void(self, context word, force bool), in r0/r1/r2. Independent full 900-byte
+memory verification and fresh decompilation confirm both delete paths join the
+common body. Its [node-index source correction](../nonmatching/ai/PlayerTest-switchContext.md)
+is still unmatched.
+
+Every listed original instruction encoding and width is independently exact.
+Whole original function memory, including all excluded padding and pools,
+remains retail-identical. Complete analysis does not prove candidate identity:
+these source candidates retain their assembly markers and matching budgets.
