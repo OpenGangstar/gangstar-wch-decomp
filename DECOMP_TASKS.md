@@ -1831,7 +1831,7 @@ cutoff remain private for the next hourly batch.
 | Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
 | --- | --- | --- | --- | --- | --- | --- |
 | libsanangeles.so | 0x002d1de5 and 0x002d1de9 | GetNativeSoundRaw; GetNativeResourceSoundRawLength (2B each) | unassigned | BLOCKED | Coordinator reran audit exit0:228 pinned files,zero prototype hits,no justified ABI or compile. Both markers retained; ownership released. | src/game/app/jni_GLMediaPlayer.c; _scratch/worker-native-sound-prototypes-current/ |
-| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds(), `_ZN12SoundManager24getNumberOfPlayingSoundsEv` | decomp_running_command | IN_PROGRESS | Coordinator reran diagnostic audit0: identical whole object, first operand swap in VRP2. Public unhinted packet independently replayed,2274 existing functions2210 regions exact. One bounded matched-relative reuse trial now approved: direct soundSlots[id][channel] load replaces named row local only; all other source/flags preserved. No adoption before exact target and affected/full gates. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-count-unit-context-current/ |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds(), `_ZN12SoundManager24getNumberOfPlayingSoundsEv` | unassigned | BLOCKED | Coordinator reran relative-reuse audit0: one direct-index matched-relative trial produced identical whole object and same two-byte miss. Public packet published in PR757, no credit; ownership released. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-count-unit-context-current/ |
 
 | libsanangeles.so | 0x002e49ad | MenuManager::updateWidgetVisibility(), `_ZN11MenuManager22updateWidgetVisibilityEv`, existing104B match | unassigned | BLOCKED | Coordinator private initializer-order repair independently passes all affected35 profiles2274 functions2210 regions with count API. Canonical existing body unchanged; prerequisite remains unapplied with unmatched count packet. Ownership released. | src/game/ui/MenuManager.cpp; _scratch/coordinator-sound-count-menu-compat/ |
 
@@ -1851,3 +1851,56 @@ scratch mirrors only.
 | libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*,const char*),native372B | unassigned | BLOCKED | Coordinator independently applied and rebuilt final public form3:372B,112 exact prefix,60 differences;147 old functions124 sections3 regions exact. No surplus helpers or credit; published unapplied packet, ownership released. | src/game/rendering/GS3DStuff.cpp; src/game/core/NativeAllocator.h (private prerequisites only); _scratch/worker-string-append-inline-current/ |
 
 | libsanangeles.so | 0x00342b09 | WantedLevelManager::WantedLevelManager(),C1/C2 aliases,native184B | unassigned | BLOCKED | Coordinator reran actual-image proof0: recovered correct184B aliases retain16 differences from+28; all18 old functions22 regions exact. Invalid176B candidate rejected, no credit; ownership released. | src/game/missions/WantedLevelManager.cpp; _scratch/worker-wanted-constructor-correct-current/ |
+
+
+## Complete SoundManager translation-unit context
+
+The prior current-context control included accepted definitions plus one target,
+not all four pending definitions. This wave recovers each exact preserved best
+body separately; only the coordinator combines the shared file. No independent
+new source forms or optimizer changes are authorized. One complete-source context
+compile may proceed after genuine interfaces, layouts and per-function semantic
+checks are reviewed. Strict native boundaries and every old match remain binding.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00352a55 | SoundManager::endCutscene(),native236B | unassigned | BLOCKED | One complete-four-body native context reproduces historical misses: end236/6diff,count80/2diff,ready222/native224,update428/2diff. All73 old functions80 regions exact,1078 inputs stable; no source adoption or credit. Ownership released. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-end-complete-unit/ |
+| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound(int),native224B | unassigned | BLOCKED | One complete-four-body native context reproduces historical misses: end236/6diff,count80/2diff,ready222/native224,update428/2diff. All73 old functions80 regions exact,1078 inputs stable; no source adoption or credit. Ownership released. | src/game/audio/SoundManager.cpp; src/game/audio/SoundManager.h (read-only); _scratch/worker-sound-ready-complete-unit/ |
+| libsanangeles.so | 0x00353175 | SoundManager::update(double),native428B | unassigned | BLOCKED | One complete-four-body native context reproduces historical misses: end236/6diff,count80/2diff,ready222/native224,update428/2diff. All73 old functions80 regions exact,1078 inputs stable; no source adoption or credit. Ownership released. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-update-complete-unit/ |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds(),native80B | unassigned | BLOCKED | One complete-four-body native context reproduces historical misses: end236/6diff,count80/2diff,ready222/native224,update428/2diff. All73 old functions80 regions exact,1078 inputs stable; no source adoption or credit. Ownership released. | src/game/audio/SoundManager.cpp; _scratch/coordinator-sound-complete-unit/ |
+
+| libsanangeles.so | 0x002e49ad | Existing MenuManager::updateWidgetVisibility(),104B compatibility | unassigned | COMPLETED | Existing match preserved privately; full191 prerequisite profiles10980 checks exact. No canonical source integration or new credit; ownership released. | src/game/ui/MenuManager.cpp; _scratch/coordinator-sound-complete-unit/ |
+
+| libsanangeles.so | 0x002e8fe9 | Existing Menus::ServiceMissions::GotFocus() compatibility | unassigned | COMPLETED | Existing match preserved privately; full191 prerequisite profiles10980 checks exact. No canonical source integration or new credit; ownership released. | src/game/ui/MenuState.cpp; _scratch/coordinator-sound-complete-unit/ |
+
+
+## Next independent bounded investigations
+
+The coordinator reviewed and accepted the three recovered SoundManager body
+packages for private integration and now owns their combined context test.
+Workers are released from those functions; no matching credit is implied.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*,const char*),372B | unassigned | BLOCKED | Unmatched. Reviewed the original STLport header feasibility report. No compilation ran. The pinned header routing requires a native include path missing from the local NDK. Kept the fixture and provenance manifest for reference. | src/game/rendering/GS3DStuff.cpp; _scratch/worker-string-original-headers/FEASIBILITY.md |
+| libsanangeles.so | 0x00342b09 | WantedLevelManager constructor,C1/C2,184B | unassigned | BLOCKED | Coordinator reran final audit0: one bool-chain trial184B/19diff, first+28, old18/22 exact and890 inputs stable. Integer form excluded, no credit; ownership released. | src/game/missions/WantedLevelManager.cpp; _scratch/worker-wanted-zero-chains/ |
+| libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init(FILE*,RiffHeader*,FormatHeader*),134B | unassigned | BLOCKED | Coordinator reran audit0:63 native instructions, six actual forms, correct wire signedness/U8 truncation and identical current accepted context. No source defect, compile or credit; ownership released. | src/game/audio/CSoundDecoderMSADPCM.cpp; _scratch/worker-adpcm-init-native-fields/ |
+
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds(),80B | unassigned | BLOCKED | Unmatched. The unsigned accumulator produces 78 of 80 native bytes, with the first mismatch at 0x4b. All 73 existing function and 80 region checks pass. The bounded trial is finished. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-count-unsigned-total/REPORT.md |
+
+| libsanangeles.so | 0x003365f1 | Mission::update(int),native536B | unassigned | BLOCKED | Unmatched. The replay reproduces the 524-byte historical candidate against 536 native bytes. The function and switch table differ. All 34 existing function and 27 region checks pass. The bounded replay is finished. | src/game/missions/Mission.cpp; _scratch/worker-mission-update-after-constructor/REPORT.md |
+
+Coordinator recovery: prior worker handles are absent from the live agent inventory. The three scopes were reassigned without resetting their investigation budgets. The coordinator reviewed the results above and released ownership. Preserve all saved artifacts and check for completed work before any new compilation. Runtime supports three workers alongside the coordinator.
+
+
+## Resumed evidence-driven investigations
+
+The coordinator authorizes the following bounded scopes after reviewing the
+prior negative results. Each scope has a different owner. The runtime permits
+three workers alongside the coordinator. All candidate inputs stay private.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds(),80B | unassigned | BLOCKED | Coordinator reran audit0: unsigned-return control reproduces original80B/two-byte mismatch and identical whole object. All73 old functions80 regions exact. Bounded control finished; ownership released. | src/game/audio/SoundManager.cpp; _scratch/worker-sound-count-unsigned-return/ |
+| libsanangeles.so | 0x002dcd29 | std::string::_M_append(const char*,const char*),372B | resume_string | IN_PROGRESS | Active include closure81 inputs verified by successful preprocessing. Coordinator approves ONE unchanged original-header fixture compile/as at canonical40 with documented Android config. Verify24B ABI, target extent and all emitted definitions before any native-only diagnostic link; standalone result does not establish owning-unit preservation. | _scratch/worker-string-original-headers/ |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(const char*),32B | resume_mission | ASSIGNED | New Ghidra cross-reference and callee ABI audit against retained reconstruction. Recover prior budgets; no new compile without concrete new evidence. | src/game/ui/MenuWidget.cpp; _scratch/worker-help-icon-ghidra/ |

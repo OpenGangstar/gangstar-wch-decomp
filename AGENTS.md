@@ -63,6 +63,9 @@ That is expected in CI, which has no game data.
 
 ## How a function is decompiled
 
+Follow the [Autonomous Matching Decompilation Procedure](DECOMPILATION-AGENT.md)
+for target selection, analysis, verification, and reporting.
+
 1. Pick a function that still has an assembly file. `config/functions.tsv`
    lists them; the files are sorted by area.
 2. Read the assembly. `tools/elf.py` and the symbol map tell you what the
