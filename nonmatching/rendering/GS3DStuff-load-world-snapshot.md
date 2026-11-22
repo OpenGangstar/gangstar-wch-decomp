@@ -76,3 +76,14 @@ the simpler corrected candidate as the reference. The global Quaternion
 float-constructor annotation, Cash regression and incomplete dependent closure
 remain unresolved prerequisites; none of these scoped results supplies the
 current complete repository gate or matching credit.
+
+
+A separate current-type prerequisite trial removes the rejected global
+constructor annotation using an explicitly documented no-initialization SDK tag
+and the existing quaternion setter. All ten layout assertions compile, only the
+pending load definition is added, and all 112 existing object-function payloads
+remain unchanged. However, this adaptation emits 2,568 target bytes. The strict
+linker correctly stops with `arm-eabi-ld: load native extent`; no candidate ELF
+exists and no native-image comparison is claimed for it. The shared-header and
+dependent full-repository gates remain unproven. Both the four-byte legacy
+candidate and this unapplied current-type proposal are retained separately.

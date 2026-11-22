@@ -27,7 +27,7 @@ rejected without credit; their ownership is released.
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Reviewed pinned upstream API and matched callees; no new wrapper mechanism, ownership released | src/game/ui/MenuWidget.cpp |
 
 | libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | unassigned | BLOCKED | Behavior-correct condition trial reviewed: 4982/5038 remains unmatched; all 37 existing functions and nine regions exact. Preserve corrected candidate over historical wrong guard; ownership released | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | IN_PROGRESS | Corrected load is 2576 bytes with four differing bytes; receiver snapshot trial identical, stopped. Prepare unapplied current-type prerequisite proposal, avoid rejected global constructor annotation; no compilation authorized | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | IN_PROGRESS | Current-type tagged trial compiled all layouts, only load added, 112 old payloads stable; target 2568 fails strict extent and no ELF exists. Read-only paired old/current assembly analysis authorized, no further compile | src/game/rendering/GS3DStuff.cpp |
 
 | libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&, recti const&, bool, bool) const | unassigned | BLOCKED | Unchanged diagnostic reproduced exact object; first spills at greg, no source trial. Coordinator physical ABI and complete body verified live; no new source constraint. Pending candidate unchanged; ownership released | src/game/hud/MiniMap.cpp |
 
