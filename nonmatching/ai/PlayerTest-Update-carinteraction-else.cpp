@@ -20,10 +20,7 @@ void PlayerTest::Update()
     if (!(flags240 & 0x4000u)) {
         if (!(flags240 & 0x2000u) && health <= 0) {
             if (!character->isInHitByCarAnimation()) {
-                if (((flags240 & 0x400u) && static_cast<SavePositionInterface*>(this)->getVehicle()) || updateState.hitFlag)
-                    character->die(false);
-                else
-                    character->die(true);
+                character->die(!(((flags240 & 0x400u) && static_cast<SavePositionInterface*>(this)->getVehicle()) || updateState.hitFlag));
                 int soundChoice = lrand48() % 2;
                 if (soundChoice == 0) {
                     SoundManager* sound = SoundManager::getInstance();
