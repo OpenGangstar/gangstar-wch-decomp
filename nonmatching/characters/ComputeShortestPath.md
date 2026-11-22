@@ -194,3 +194,31 @@ No linked target comparison or post-body owner/support gate was run. The
 four-byte size excess does not mean only four bytes differ. The function
 remains unmatched, its assembly marker remains, and matching progress is
 unchanged. No second source form was compiled for this correction.
+
+
+## Later bounded diagnostics
+
+The 1,672-byte corrected candidate contains the same 1,620 real instruction
+bytes, 48 literal bytes and 751 real instructions as retail. Its four-byte
+size excess is two two-byte alignment fills before the literal pools. The
+real chunks are 950/670 bytes rather than retail 948/672. Call-target counts
+also agree. This is structural evidence, not instruction identity or permission
+to remove padding.
+
+One native-array identity control replaced only the two local derived array
+objects with the primary array type and identical observed field initialization.
+The entire emitted object was byte-identical. A subsequent unchanged-source
+compiler-dump run also reproduced the entire baseline object and assembly.
+The first self spill/reload appears in `138r.greg`; `149r.sched2` moves the
+reload to its emitted position. Block placement changes at `147r.bbro`, while
+`154r.mach` first creates the pools and alignment directives. Final offsets
+come from assembly/object bytes, not estimated addresses in intermediate dumps.
+
+A separate single cleanup-factoring control tested the observed six delete
+sites before allocation versus four later. It reduced the pre-allocation
+sites to four but retained the self spill and emitted 1,664/native 1,668 bytes.
+All 41 old functions, their semantic relocations and 53 other allocated
+payloads remained unchanged. Strict pre-link validation again stopped before
+native linking or owner/GOT checks. No second factoring form was tried.
+The preferred snapshot-corrected 1,672-byte candidate remains preserved;
+these negative controls establish no new match or original compiler-option claim.
