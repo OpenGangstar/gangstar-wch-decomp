@@ -3,6 +3,9 @@
 This guide covers the matching toolchain and how to verify compiled functions
 against the retail library.
 
+For Ghidra MCP configuration and verified repairs for incomplete ARM/Thumb
+analysis, see [Ghidra analysis and MCP](GHIDRA.md).
+
 For the proposed setup, single-command verification and complete-library build
 milestones, see [Command-driven build plan](COMMAND-BUILD-PLAN.md).
 
