@@ -4,6 +4,8 @@ This is an unapplied diagnostic packet. All three pending Trail methods remain
 unmatched. No progress credit or assembly-marker deletion accompanies it. Keep
 `profile-reference-NONMATCHING.json` outside the active profile directory.
 
+`exact-comparison.txt` preserves the complete verified comparison output.
+
 The source and narrow header patch preserve accepted definitions and layouts.
 Restricted mesh views have verified sizes: vertex 36 bytes, mesh buffer 196 bytes,
 and mesh 92 bytes. Constructors are genuine retail imports; their implementations
@@ -15,7 +17,7 @@ modified output consumed by the build.
 | --- | --- | --- |
 | Update | 320 / 324 | Unmatched |
 | BuildPoint | 760 / 812 | Unmatched |
-| CreateMeshSceneNode | 500 / 500 | Four differing bytes at offsets 0x46–0x49 |
+| CreateMeshSceneNode | 500 / 500 | Four differing bytes at offsets 0x46Ã¢â‚¬â€œ0x49 |
 
 The mesh mismatch swaps two independent initialization instructions. All other
 mesh bytes match, including literal pools. The same image preserves all 16
@@ -54,3 +56,6 @@ The expected mesh SHA-256 is
 `9440c3fd19bec7e47ff2c81c23367ecd245c37fdbadae38411461e4e429493f0`.
 The input source/header patch, complete private inputs, linker, reference selectors,
 comparison logs and selected compiler-pass excerpts are included for review.
+
+The packet uses LF line endings, including on Windows checkouts; `SHA256.json`
+hashes those exact text-file bytes.
