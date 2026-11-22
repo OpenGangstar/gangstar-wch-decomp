@@ -144,3 +144,14 @@ corrected ARMv5t/default project reports `__stdcall` and `__thiscall`; its defau
 `__stdcall` supplies the soft-float GPR convention. A similarly named model from
 a different installed compiler specification is not interchangeable. Read back
 the complete parameter and return storage after updating it.
+
+
+A correct formal math signature does not guarantee correct physical storage.
+The verified `sqrt(double)` import originally returned through `r1:r0` but
+incorrectly took its argument from `Stack[0x0]:8`. Native callers pass the low
+word in `r0` and high word in `r1`. Explicit custom storage for both the argument
+and result fixes that analysis error. Ghidra represents this join as
+`r1:4,r0:4`, with the most significant word first. Float-to-double and
+double-to-float helpers require corresponding split-register storage. Read back
+both the PLT thunk and its resolved external function; a displayed C prototype
+alone is insufficient. These changes affect analysis metadata only.
