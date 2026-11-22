@@ -50,11 +50,17 @@ rejected without credit; their ownership is released.
 
 | libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | unassigned | BLOCKED | Complete repaired CFG matches preserved source constraints; new loader types are unused here. No new trial justified, original target-only/full-context limitations retained; ownership released | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB(ISceneNode*, unsigned int) | resume_count | ASSIGNED | Read-only reassessment of newly verified sixteen-byte parent extent and trailing8 native writes, with complete corrected Ghidra flow. Compare archived 388/native384 candidate; no repeat array lifecycle forms or compilation | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB(ISceneNode*, unsigned int) | unassigned | BLOCKED | Full344-byte native code CFG verified after normal delete-flow repairs; preserved388/native384 candidate already models counters and cleanup. No new source trial justified; ownership released | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode constructor | resume_mission | ASSIGNED | Read-only corrected Ghidra completeness and native source audit of final published 828/native832 candidate. Reuse confirmed depth60/layout and known loop constraints; no repeated forms or compilation | src/game/rendering/GS3DStuff.cpp; _scratch/worker-octree-child-initialization-current/ |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode constructor | unassigned | BLOCKED | Full repaired CFG verified against native and final828/native832 candidate; no new source discrepancy or trial justified. Ownership released | src/game/rendering/GS3DStuff.cpp; _scratch/worker-octree-child-initialization-current/ |
 
 | libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, plane3df const&, vector3df const&, vector3df const&, vector3df&, vector3df&) | resume_string | ASSIGNED | Read-only complete corrected Ghidra flow/physical ABI audit using proven float-helper fixes and existing candidate. No repeated source forms, compilation, or metadata writes | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x0031ad31 | PhysicAttributes::SetHeightAttributes(vector3df const&, PhysicInfo*) | resume_mission | ASSIGNED | Read-only corrected Ghidra flow/physical ABI audit and comparison with saved1400/native1388 candidate. Preserve six-form budget; no compilation or metadata writes | src/game/characters/PhysicAttributes.cpp |
+
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter(...) const | unassigned | BLOCKED | Complete602-byte code CFG independently verified; saved616/native620 candidate already uses genuine arrays and known predicates. No new source trial justified; ownership released | src/game/rendering/GS3DStuff.cpp |
+
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap(vector3df const&, vector3df const&, vector3df&, vector3df&) | resume_count | ASSIGNED | Read-only caller-wrapper CFG and physical ABI audit using corrected large intersection signature; inspect prior attempts, no repeated forms or compilation | src/game/characters/PhysicAttributes.cpp |
 
 <!-- active-ownership:end -->
 
