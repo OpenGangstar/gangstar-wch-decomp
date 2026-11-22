@@ -50,7 +50,8 @@
         {
             "name": "_GLOBAL__I__ZN5TrailC2Ev",
             "address": "0x00348ce9"
-        }
+        },
+        "_ZN5Trail19CreateMeshSceneNodeEv"
     ],
     "sections": [
         ".trail_vtable",
@@ -61,12 +62,16 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".trail_mesh"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN5Trail10BuildPointEib",
         "_ZN11Application11GetInstanceEv",
-        "_ZN5Trail19CreateMeshSceneNodeEv"
+        "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
+        "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
+        "_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE",
+        "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE"
     ]
 }
