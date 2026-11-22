@@ -26,10 +26,10 @@ rejected without credit; their ownership is released.
 | libsanangeles.so | 0x00328c49 | Map::draw() const | unassigned | BLOCKED | Reviewed unchanged-object diagnostic: first group differs before RTL and second at sched2; no source trial justified, ownership released | src/game/world/Map.cpp |
 | libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Reviewed pinned upstream API and matched callees; no new wrapper mechanism, ownership released | src/game/ui/MenuWidget.cpp |
 
-| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | resume_mission | ASSIGNED | Read-only complete ordered native/source contract audit of large pending routine; recover exhausted forms, no compiler trial without a concrete discrepancy | src/game/characters/PhysicAttributes.cpp |
-| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | ASSIGNED | Read-only full ordered native/source contract audit; prior six forms and diagnostic closure failures retained, no compilation without a concrete discrepancy | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, vector3df const&, bool, bool) | resume_mission | IN_PROGRESS | Stack graph audit reviewed without new source change. Read-only validation of repaired Ghidra unowned blocks and native long-branch flow authorized; coordinator owns metadata writes | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x002dfb15 | GS3DStuff::load(int, int&) | resume_string | IN_PROGRESS | Reviewed snapshot trial restores native read-before-allocation order but remains 2572/2576 bytes, no credit. Read-only case-4 induction graph and prior-form audit in progress; no new compilation authorized | src/game/rendering/GS3DStuff.cpp |
 
-| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&, recti const&, bool, bool) const | resume_count | ASSIGNED | Recover prior ownership/budget and native/source evidence; initial reconstruction permitted only within remaining first-pass budget, preserve old matches | src/game/hud/MiniMap.cpp |
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&, recti const&, bool, bool) const | resume_count | IN_PROGRESS | Unchanged diagnostic reproduced exact object; first spills at greg, no source trial. Explicit physical ABI applied by coordinator; read-only persisted prototype and new-dataflow verification in progress, no worker metadata writes | src/game/hud/MiniMap.cpp |
 
 <!-- active-ownership:end -->
 
