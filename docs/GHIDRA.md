@@ -271,3 +271,85 @@ contains all 17 cases and deliberately warns that the switch is overridden.
 Ghidra 12 adds a display-format argument: its shipped SwitchOverride script uses
 `JumpTable(address, destinations, true, 0)`. The first old-API attempt rolled
 back safely; the installed source verified the corrected constructor before retry.
+
+
+## Large AI and vehicle functions
+
+Complete native branch analysis exposed additional truncated bodies. Restricted
+metadata repairs, followed by independent worker readback, restore these real
+instruction ranges:
+
+| Function | Original real code | Real instructions | Previous owned body |
+| --- | ---: | ---: | ---: |
+| NPC::Update | 2,850 bytes | 1,320 | 84 bytes |
+| Vehicle::UpdatePhysic | 8,848 bytes | 3,799 | 76 bytes |
+| ServiceCarRental::Update | 778 bytes | 358 | 476 bytes |
+| VehicleCamera::goToSide | 300 bytes | 133 | 112 bytes |
+| VehicleCamera::update | 900 bytes | 387 | 90 bytes |
+
+Their retail extents additionally contain alignment and literal pools. Every
+real instruction is independently checked for native bytes, width and function
+ownership. Physics pagination covers 2,000 plus 1,799 instructions; the first
+page alone is not a completeness result. Alignment remains separately recorded.
+
+NPC Update has 13 proven internal Thumb BLs and vehicle physics has 118. Each
+target is an interior block of the same original retail function, retains its
+outer frame and has no separate retail function symbol. Only these verified
+edges receive BRANCH overrides. Automatic interior function boundaries are
+removed only after checking their names and that every incoming reference comes
+from the verified native instruction set. Ordinary external calls remain calls.
+
+The same repair removes inspected false CALL_RETURN overrides on established
+returning math/delete helpers and the already verified small GetHeight method.
+Fixing a callee's no-return property alone can leave a stale caller override.
+The first batch rolled back because NPC Update still stopped at its GetHeight
+call; removing that actual caller override allowed complete ownership. Wrong ARM
+instructions were cleared only within independently verified Thumb instruction
+spans. All five complete function-memory hashes remain unchanged.
+
+Explicit physical views retain receiver in r0 and argument in r1: signed elapsed
+for NPC Update, float elapsed for physics/camera update and bool for camera side.
+CarRental Update takes only its receiver. All return void. Live getters verify
+signatures and complete decompilation; register-storage and auto-parameter flags
+are separately verified in the saved project export where the public RPC does
+not expose them. These metadata repairs confer no matching credit or new source
+attempt budget.
+
+NPC triggerCombatSFX also required a computed switch. Its seven signed entries
+at retail 0x0041d8fc are added to that table base, producing the original targets
+for mov pc,r3 at 0x002fe66c. Independent readback verifies all 157 instructions
+and 330 real bytes, the complete 28-byte table and all seven decompiled cases.
+The explicit view is static void with event type in r0 and no receiver. Complete
+function and table hashes are unchanged; the existing source remains unmatched.
+
+Further independent readbacks verify these additional complete bodies:
+
+| Function | Real instruction bytes | Real instructions |
+| --- | ---: | ---: |
+| Vehicle::_processAIFlags | 3,000 | 1,345 |
+| RenderFX::UpdateCursor | 1,962 | 916 |
+| PlayerTest::Update | 2,108 | 963 |
+| Vehicle::Update | 3,744 | 1,633 |
+| PlayerTest::move | 2,342 | 1,040 |
+
+Vehicle AI needs six proven internal BL overrides; Player Update needs one and
+Vehicle Update needs 48. Cursor and Player movement need none. Conditional
+targets can also reveal automatic interior function boundaries, so examining
+only long-BL destinations is insufficient. Boundary removal still requires a
+native instruction entry, no retail function symbol and incoming references
+entirely within the verified original function. All real external calls retain
+their original call semantics.
+
+Cursor's explicit physical view includes self, cursor reference and signed index
+in r0/r1/r2. Player movement includes self and two floats in those registers.
+Player Update and vehicle AI take only self; Vehicle Update also takes signed
+elapsed time in r1. All return void. Independent readback separates complete
+code from literal pools and alignment rather than counting instruction-looking
+padding as executable coverage.
+
+A coordinator audit compares the complete original-function memory hashes for
+all ten repaired bodies against retail, including their data and padding. All
+ten agree, with 186 individually proven internal branches restored in total.
+These are analysis improvements only. The resulting native/source guard
+corrections remain [unmatched candidates](matches/guard-association-corrections.md)
+until their compiled functions pass authoritative byte comparison.
