@@ -1,0 +1,43 @@
+--- a/src/game/input/COnFootControlHandler.cpp
++++ b/src/game/input/COnFootControlHandler.cpp
+@@ -429,6 +429,7 @@
+             break;
+         case 'V':
+             car->immobilize();
++        case 'Y':
+             if (car->immobilized)
+                 car->mobilize();
+             car->unknown984 = 1.0f;
+@@ -512,7 +513,7 @@
+                     car->getDriver()->positionInVehicle(true);
+                     car->getDriver()->show();
+                 }
+-                car->openDoor(true);
++                goto openDoorCall;
+             }
+             break;
+         case '9':
+@@ -523,8 +524,10 @@
+             car = static_cast<Vehicle*>(SpawnPoint::spawn(112));
+             break;
+         case '5':
+-            if (car)
++            if (car) {
++openDoorCall:
+                 car->openDoor(true);
++            }
+             break;
+         case '3':
+             car = static_cast<Vehicle*>(Lock::getInstance()->target);
+@@ -540,11 +543,6 @@
+         case 'M':
+             car = static_cast<Vehicle*>(SpawnPoint::spawn(5));
+             break;
+-        case 'Y':
+-            if (car->immobilized)
+-                car->mobilize();
+-            car->unknown984 = 1.0f;
+-            break;
+         }
+     }
+ }

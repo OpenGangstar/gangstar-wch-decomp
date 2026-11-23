@@ -1,0 +1,23 @@
+--- a/input/CDrivingControlHandler.cpp
++++ b/input/CDrivingControlHandler.cpp
+@@ -426,14 +426,16 @@
+             case 69:
+                 static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()->health = 0;
+                 break;
+-            case 73:
++            case 73: {
+                 vehicle->getMesh()->setVisible(!vehicle->getMesh()->isVisible());
+-                if (vehicle->getMesh()->isVisible())
+-                    vehicle->unknown4 |= 2;
++                Vehicle* const visibilityVehicle = vehicle;
++                if (visibilityVehicle->getMesh()->isVisible())
++                    visibilityVehicle->unknown4 |= 2;
+                 else
+-                    vehicle->unknown4 &= ~2;
++                    visibilityVehicle->unknown4 &= ~2;
+                 PlayerTest::GetPlayer()->sceneNode->setVisible(true);
+                 break;
++            }
+             case 131:
+                 if (--unknown20 < 0) {
+                     unknown20 = 4;

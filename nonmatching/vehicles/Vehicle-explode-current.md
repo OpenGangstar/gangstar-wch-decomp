@@ -1,5 +1,10 @@
 # Vehicle explosion: corrected reconstruction
 
+**Historical unmatched attempt.** Superseded by the
+[verified canonical reconstruction](../../docs/matches/vehicle-explode.md).
+Do not apply this retained patch to current source; the failure evidence below
+describes the earlier two-receiver form.
+
 This unapplied patch corrects Vehicle::explode at 0x003130a1. Native GetPlayer
 at 0x0031333e is followed by immediate 224 and a zero-word store, with no shift:
 `ed f7 43 fd e0 23 42 46 c2 50`. The old candidate wrote 448. The corrected

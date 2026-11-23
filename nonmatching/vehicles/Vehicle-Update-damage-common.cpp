@@ -1,3 +1,6 @@
+// UNMATCHED: 3936 function/section bytes versus 4020 native in the retained context.
+// Requires EvVehicleDestroyed(Vehicle*) : IEvent(20), vehicle(value) {}.
+// See Vehicle-Update-event-contract.md; this is not a standalone translation unit.
 void Vehicle::Update(int elapsed)
 {
     using irr::core::vector3d;
@@ -118,8 +121,9 @@ void Vehicle::Update(int elapsed)
         stopDriving();
         Stop();
         {
+            EventManager* events = Application::GetInstance()->GetEventManager();
             EvVehicleDestroyed event(this);
-            Application::GetInstance()->GetEventManager()->raise(event);
+            events->raise(event);
         }
         stopSiren();
         cleanupTargetDetection();

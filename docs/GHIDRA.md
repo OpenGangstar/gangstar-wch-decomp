@@ -437,3 +437,103 @@ Every listed original instruction encoding and width is independently exact.
 Whole original function memory, including all excluded padding and pools,
 remains retail-identical. Complete analysis does not prove candidate identity:
 these source candidates retain their assembly markers and matching budgets.
+
+## Independent ready, target-selection and state readback
+
+Fresh independent MCP readback also verifies the following original function
+memories and real instruction listings against the retail ELF:
+
+| Function | Thumb entry | Real instructions | Code bytes | Other original bytes |
+| --- | --- | ---: | ---: | --- |
+| Character::ready(float) | 0x002f26ad | 133 | 272 | 12 literals |
+| PlayerTest::getAttackableTarget | 0x00303315 | 298 | 662 | 2 padding, 36 literals |
+| ScriptManager::setState | 0x0033f1ed | 312 | 698 | 2 padding, 32 literals |
+| PlayerTest::updateAnim(float) | 0x00303fe9 | 54 | 120 | 12 literals |
+| Character::shoot(float, bool) | 0x002f55d1 | 1,160 | 2,526 | 2 padding, 80 literals |
+| ScriptManager::cleanCommand | 0x0033ffc1 | 90 | 202 | 2 padding, 8 literals |
+
+Ready's verified 36-byte relative table contains nine indices and seven unique
+targets. Fresh decompilation recovers every target; physical-address labels are
+normalized against the original table before source review. The saved 284-byte
+candidate remains unmatched: function offsets `0x96` and `0x106` differ, with
+corresponding table differences at `0x1c` and `0x20`.
+
+Target selection is static, not a Player receiver method: its source, weapon and
+fallback pointer carriers occupy r0/r1/r2 and the pointer result uses r0. Its
+five saved returning-call repairs affect only actual false float/delete
+CALL_RETURN overrides. Fresh full memory, all instructions and untruncated
+decompilation corroborate the saved repair. The preferred candidate is still
+696 bytes versus 700 native bytes; neither its diagnostic relaxed link nor
+separate historical dependency checks establish an accepted target.
+
+State's repaired normal fsub and GetHeight continuations restore every real
+instruction, but **complete ownership alone does not recover its computed
+switch**. Initial fresh pseudocode still treated program `0x0034f232` as an
+indirect call and omitted the case bodies. The original 28-byte table at retail
+`0x0042f270` has seven indices and five unique destinations.
+
+A subsequent guarded coordinator transaction restores only that dispatch's
+branch flow and exact jump-table override. Its five existing analysis references
+use operand index -1, not 0; they are preserved, including provenance and primary
+flags, rather than duplicated or replaced. Initial preflight/reference assumptions
+stop execution before mutation and are corrected against actual OS/project
+evidence. The committed transaction verifies all function boundaries, global
+function ABI/callee properties, every original instruction, full function/table
+memory, and non-dispatch flows/references unchanged. Its decompiler guard requires
+all five destinations, switch cases and BRANCHIND without the former indirect-call
+warnings. Independent fresh post-repair MCP readback confirms the full memories
+and all five target groups, including the empty common state-store join.
+This grants no source attempt or matching credit. Native instructions prove a
+full-word state argument in r1; the existing local integer analysis view does not
+resize or establish the width of the shared enum.
+
+Player animation originally owns only 46 instructions and 100 executable bytes.
+One actual false CALL_RETURN at native `0x00304038` hides eight instructions,
+including a second fadd and both velocity stores. Its second fadd at `0x0030404a`
+already has normal flow and is not changed. A guarded coordinator transaction
+clears only the first override, decodes undefined original Thumb spans, and
+restores the exact 120-byte code body without ABI, global-callee or branch edits.
+Whole initialized program memory, other function boundaries and existing ABI
+remain unchanged. Independent fresh readback verifies all 54 encodings/widths,
+full 132-byte memory and complete untruncated pseudocode. The previously tried
+Y-first arithmetic ordering remains the only known source distinction; no new
+source trial or matching credit follows.
+
+Character::shoot has a separate guarded normal-flow repair: nine actual false
+returning-float overrides and three proven internal long branches to its own
+epilogue are corrected. The transaction decodes 278 previously undefined native
+instructions and restores ownership of all 1,160 instructions / 2,526 code bytes.
+Its full 2,608-byte function and 572 table bytes, all 141 genuine external calls,
+existing references, ABI and unrelated function metadata remain unchanged.
+That initial phase deliberately leaves both computed-switch overrides untouched;
+complete instruction ownership must not be presented as complete case pseudocode.
+Independent fresh readback confirms full function/table memory, all instruction
+encodings and widths, body ranges and all 103 encoded direct destinations.
+Its initial pseudocode remains identical to the pre-repair output and omits cases.
+The nine actual override removals, three branch overrides and global preservation
+details remain coordinator-receipt evidence, not public getter observations.
+
+A separate guarded transaction then restores the two exact computed switches:
+134 signed entries/eight targets and nine entries/seven targets. Existing actual
+reference operands, provenance, primary flags and symbol associations are
+preserved, along with all normal-flow repairs and unrelated symbols. Fresh
+independent readback normalizes all 143 indices and 15 target groups; complete
+pseudocode no longer has either unresolved-switch/call warning.
+
+This exposes a genuine [blocked-shot HUD guard correction](../nonmatching/characters/Character-shoot-blocked-hud.md):
+native skips both damage and HUD updates when blocked. The one isolated source
+control saves four bytes but remains unmatched at 2,622 function / 2,624 section
+bytes versus 2,608 required; strict prelink rejection prevents any linker run.
+
+CleanCommand's separately guarded 118-entry/nine-target switch repair preserves
+its complete 212-byte function and 472-byte table, all instructions/references,
+ABI and unrelated function metadata. Fresh readback recovers eight explicit
+cleanup cases plus the empty epilogue, with no unresolved-switch warning.
+Visible cleanup paths agree with the retained candidate, including opcode 114's
+delete without clearing; no new source trial follows.
+
+For these readbacks, public MCP getters expose signatures, memories and
+instruction listings, but not explicit custom-storage flags or automatic
+parameter flags. Those details remain saved-export evidence, corroborated by
+native register use rather than misreported as independently queried metadata.
+Analysis repairs themselves add no byte-matched functions or Fully Linked credit.

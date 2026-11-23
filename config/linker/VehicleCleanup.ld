@@ -35,6 +35,9 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+ .vehicle_explode 0x003130a0 : { *vehicle-cleanup.o(.text._ZN7Vehicle7explodeEv) }
+ ASSERT(SIZEOF(.vehicle_explode) == 740, "Vehicle explode exact native extent")
+
  .vehicle_collision 0x313384 : { *vehicle-cleanup.o(.text._ZN7Vehicle9collisionEN3irr4core8vector3dIfEEi) }
  ASSERT(SIZEOF(.vehicle_collision) == 1360, "Vehicle collision native extent")
 

@@ -228,7 +228,8 @@
         "_ZN3irr7collada21CSkinnedMeshSceneNodeD2Ev",
         "_ZN7VehicleC1Ei",
         "_ZN7VehicleC2Ei",
-        "_ZN7Vehicle10stepPhysicEv"
+        "_ZN7Vehicle10stepPhysicEv",
+        "_ZN7Vehicle7explodeEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -346,7 +347,8 @@
         ".skin_table_18",
         ".skin_table_19",
         ".ctor_family_8",
-        ".ctor_table_8"
+        ".ctor_table_8",
+        ".vehicle_explode"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -592,6 +594,9 @@
         "_ZN11LevelObjectC1Ei",
         "_ZN10PlayerTest17addDistanceDrivenEf",
         "_ZN10PlayerTest23addCurrentDriftDistanceEf",
-        "_ZN10PlayerTest22addCurrentJumpDistanceEf"
+        "_ZN10PlayerTest22addCurrentJumpDistanceEf",
+        "_ZN9Explosion13drawExplosionEN3irr4core8vector3dIfEES3_",
+        "_ZN9Explosion20applyExplosionDamageEP11LevelObjectN3irr4core8vector3dIfEEfi",
+        "_ZN18AchievementManager22recordDestroyedVehicleERK7Vehicle"
     ]
 }
