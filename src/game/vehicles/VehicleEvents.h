@@ -15,6 +15,8 @@ public:
 
 class EvVehicleDestroyed : public IEvent {
 public:
+    EvVehicleDestroyed() {}
+    explicit EvVehicleDestroyed(Vehicle* value) : IEvent(20), vehicle(value) {}
     virtual ~EvVehicleDestroyed() __attribute__((used));
     Vehicle* getTarget() const { return vehicle; }
 private:

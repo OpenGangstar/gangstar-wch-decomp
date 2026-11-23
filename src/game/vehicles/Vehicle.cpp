@@ -2517,9 +2517,92 @@ void Vehicle::stepPhysic()
     previousPosition = position;
 }
 
+#include "../combat/Explosion.h"
 #include "../meta/Achievements.h"
 #include "../core/Geometry.h"
 extern "C" long lrand48();
+extern "C" void _ZN18EvVehicleDestroyedD1Ev(void*) __attribute__((weak));
+
+void Vehicle::explode()
+{
+    if (exploding)
+        return;
+    exploding = true;
+    if (flags344 & 0x10000u) {
+        showHighlight(-1);
+        ScriptManager::displayOnMinimap(this, false, true);
+    }
+
+    const irr::video::SColor burnedColor(255, 35, 25, 25);
+    GS3DStuff::SetMaterialFlag(sceneNode, irr::video::MaterialFlag2, false);
+    GS3DStuff::SetColor(sceneNode, burnedColor, GS3DStuff::Color0);
+    GS3DStuff::SetColor(interior, burnedColor, GS3DStuff::Color0);
+    if (explosionTimeline) {
+        enableSkinning(true);
+        toggleInterior(true);
+        enableBackfaceCulling(false);
+        sceneNode->addAnimator(explosionAnimator);
+        explosionTimeline->setClip(0);
+        explosionTimeline->setLoop(false);
+        explosionTimeline->jumpTo(explosionTimeline->startTime);
+        irr::scene::ITimelineController* const timeline = explosionTimeline;
+        timeline->callbackData = this;
+        timeline->callback = VehicleExplosionAnimCallback;
+    }
+
+    VehicleRepairVisualState* visual = repairVisualState;
+    if (visual) {
+        VehicleRepairVisualBlock* block = visual->block;
+        const float previous = block->value12;
+        float weight = previous + 1.0f;
+        if (weight > 1.0f)
+            weight = 1.0f;
+        if (weight != previous) {
+            block->value12 = weight;
+            visual->dirty = true;
+            visual = repairVisualState;
+            block = visual->block;
+        }
+        const float previousSecond = block->value20;
+        float secondWeight = previousSecond + 1.0f;
+        if (secondWeight > 1.0f)
+            secondWeight = 1.0f;
+        if (secondWeight != previousSecond) {
+            block->value20 = secondWeight;
+            visual->dirty = true;
+        }
+    }
+
+    if (repairMaterialNode && !repairFlag420 &&
+        static_cast<float>(health) / static_cast<float>(maxHealth) < 0.5f) {
+        repairMaterialNode->getMaterial(0).setTexture(0, damageTexture);
+        repairFlag420 = true;
+    }
+
+    health = 0;
+    if (PlayerTest::GetPlayer()->getVehicle() == this)
+        PlayerTest::GetPlayer()->health = 0;
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(110, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    Explosion::drawExplosion(GetPosition(), irr::core::vector3d<float>(50.0f, 50.0f, 50.0f));
+    Explosion::applyExplosionDamage(this, GetPosition(), 700.0f, 800);
+    stopDriving();
+    Stop();
+
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    unsigned int storage[sizeof(EvVehicleDestroyed) / sizeof(unsigned int)];
+    EvVehicleDestroyed* event = new (storage) EvVehicleDestroyed(this);
+    events->raise(*event);
+    _ZN18EvVehicleDestroyedD1Ev(event);
+    stopSiren();
+    cleanupTargetDetection();
+    explosionFlag = true;
+    showHighlight(-1);
+    AchievementManager::s_achievementManager->recordDestroyedVehicle(*this);
+}
+
 void Vehicle::collision(irr::core::vector3d<float> impact, int type)
 {
     using irr::core::vector3d;
