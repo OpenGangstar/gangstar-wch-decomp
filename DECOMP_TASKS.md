@@ -296,9 +296,96 @@ rejected without credit; their ownership is released.
 
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), corrected-source structural review | unassigned | BLOCKED | Reviewed native476 frame/all10 event homes and corrected300 clears; preservation-passing candidate3044 remains unmatched. Base-phase composition3168 rejected: matched cleanupTargetDetection84-to96 regression. Failed model not integrated; ownership released for dependency diagnosis. | src/game/vehicles/Vehicle.cpp; _scratch/worker-vehicle-ai-flags-adjusted-snapshot-control/ |
 
-| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df), returned-value reuse review | /root/event_character_punched | IN_PROGRESS | Fresh bounded review using verified named-value versus returned-temporary storage lesson. Check actual getter ABI/lifetimes and prior forms before proposing one source control; launch parameter ABI remains by value. No compiler/source/header changes approved. | src/game/combat/Rocket.cpp |
-| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int), returned-value reuse review | /root/event_on_despawn | IN_PROGRESS | Fresh bounded return/storage-context review of13-byte near miss using newly verified NPC/Vehicle lessons. Preserve canonical20B thunk and old owner checks; no source/compiler/prototype changes approved. | src/game/rendering/CustomBillboardSceneNode.cpp |
-| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), shared-constructor regression diagnosis | /root/event_vehicle_destructor | IN_PROGRESS | Canonical remains100-percent matched84B; private IEvent19 composition96B rejected. Read-only native/source/context/prior-form review for one genuine automatic-event construction alternative; no shared header/body/compile changes approved. | src/game/vehicles/Vehicle.cpp; src/game/characters/NPCVehicleEvent.h |
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df), returned-value reuse review | unassigned | BLOCKED | Reviewed53 recovered definitions: genuine value returns already use native distinct homes; matrix getter returns a real reference and native requires its snapshot copy. No eligible transfer/source trial; ownership released. | src/game/combat/Rocket.cpp |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int), returned-value reuse review | /root/decomp_billboard | IN_PROGRESS | Previous worker handle absent after review; restored under new owner. Authorize ONE cameraPosition const-reference binding to genuine by-value result on authenticated704-byte seed. Preserve snapshot callbacks, target VALUE,20B thunk and all old payloads; strict704 then stop beforeLD. | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), shared-constructor regression diagnosis | /root/decomp_cleanup | IN_PROGRESS | Previous read-only handle absent; canonical remains100-percent matched84B. Resume existing evidence before work; prepare ONE genuine automatic/copy-init context proposal for private IEvent19 regression96B. No source/header/compiler changes approved. | src/game/vehicles/Vehicle.cpp; src/game/characters/NPCVehicleEvent.h |
+
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination, scalar-declaration reuse review | /root/decomp_random | IN_PROGRESS | Fresh reuse of measured NPC scalar declaration-to-spill mapping. Actual724-byte candidate has11 scalar spill operand differences; inspect exact three scalar identities/allocator/prior forms for one native-order proposal. No source/compiler/ABI/header changes approved. | src/game/characters/PhysicAttributes.cpp |
+
+
+### Reactivated native worker assignments
+
+The coordinator reviewed the preceding negative results. No matching credit is added. These bounded follow-ups retain the same exclusive owners; only three worker slots are exposed by this runtime.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), constructor preservation prerequisite | /root/decomp_cleanup | IN_PROGRESS | Canonical remains 100%, 84 bytes. Approve exactly one private automatic-event candidate under the frozen IEvent(19) constructor; compare all previous definitions and relocations, then stop before linking. | src/game/vehicles/Vehicle.cpp; src/game/characters/NPCVehicleEvent.h |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int), target snapshot context review | /root/decomp_billboard | IN_PROGRESS | Pending. Reviewed camera-reference trial: entire object unchanged. Read-only review of genuine target-reference immediate scalar snapshots and prior forms; no compilation or source edits authorized. | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination, SSA root mechanism review | /root/decomp_random | IN_PROGRESS | Pending, 724 bytes with 11 differing operand bytes. Reviewed scalar declaration audit. Read-only pinned compiler SSA-root and existing branch-form evidence review; no new source changes or compilation authorized. | src/game/characters/PhysicAttributes.cpp |
+
+
+### Coordinator review and bounded follow-ups
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int), immediate scalar snapshots | /root/decomp_billboard | IN_PROGRESS | Approve ONE private target-reference plus immediate XY scalar-capture candidate after reviewed novelty and native snapshot proof. Same authentic704-byte baseline; camera value, arithmetic, callbacks and thunk unchanged. Stop before LD. No predicted match or credit. | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), latest candidate strict link | /root | IN_PROGRESS | Pending1220/1224 candidate has verified raw off-target preservation. Coordinator will link the immutable failure-inverted candidate at original addresses, verify all existing functions/sections/full GOT and record resolved differences. No source changes or credit. | src/game/scripting/ScriptManager.cpp; nonmatching/scripting/ScriptManager-update.cpp |
+
+
+### Next evidence wave after coordinator review
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int) | unassigned | BLOCKED | Reviewed both genuine scalar/reference trials: whole object identical, no credit. Local spelling trials parked; ownership released. | src/game/rendering/CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), native destructor closure | /root/decomp_cleanup | IN_PROGRESS | Canonical100%,84 bytes. Automatic private candidate restores raw84; only undefined D1 binding and expected target-size references differ. Prepare a read-only genuine native destructor link/closure plan, no build or source changes. | src/game/vehicles/Vehicle.cpp; src/game/ai/PlayerTest.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), base-construction phase review | /root/decomp_billboard | ASSIGNED | Pending. Review authenticated3168-byte candidate with restored84-byte cleanup against native3220. Read-only ledger of base/derived vptr, event lifetimes and native surplus; no source changes, compilation or linking. | src/game/vehicles/Vehicle.cpp; src/game/characters/NPCVehicleEvent.h |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination, missing SSA coalescing-map diagnosis | /root/decomp_random | IN_PROGRESS | Pending724 bytes,11 scalar operands. Authorize preparation of exactly one unchanged-source diagnostic with the specific missing SSA partition/coalescing details. Verify supported dump option and predict needed evidence before invocation; no source/optimizer changes or candidate trial. | src/game/characters/PhysicAttributes.cpp |
+
+
+### Bounded diagnostic approvals
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination, SSA DETAILS diagnostic | /root/decomp_random | IN_PROGRESS | Approve exactly one unchanged-source frontend/as adding only supported -fdump-tree-optimized-details. Require entire22672-byte object SHA685697c71a8b0ff1d80e66c26c495f46ed5968b81dee4bf35d857320af769cbf and317 semantic relocations identical before interpretation. No source candidate or LD. | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), established verifier resolution plan | /root/decomp_cleanup | IN_PROGRESS | Read-only preparation of existing Vehicle verifier with sanctioned retail Thumb D1 binding; genuine destructor separately matched, no native-dependency claim. Do not expand to a six-unit union. Preserve emitted AI definition at its real entry and disclose its3168/native3220 size failure. No compilation/LD yet. | src/game/vehicles/Vehicle.cpp; config/matches/vehicle-cleanup.json |
+
+
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), explicit native flag short circuit | /root | IN_PROGRESS | New linked evidence: native separately tests bits14/13, but current003t.original already folds logical AND into mask0x6000 comparison, changing branch prediction and failure-arm layout. Approve ONE plain-C++ explicit short-circuit control-flow candidate on immutable latest fixture; preserve all callbacks and old bytes, no hints/flags/headers changed, stop before LD. | src/game/scripting/ScriptManager.cpp |
+
+
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), immutable diagnostic link | /root/decomp_cleanup | IN_PROGRESS | Approve exactly one LD using unchanged authenticated frozen Vehicle script, candidate8ff435db and existing GOT/Thumb objects. No target/auxiliary compilation. Verify native84 cleanup, all189 function/113 region checks and complete GOT independently; AI3168/native3220 must remain failed and uncredited. D1 uses sanctioned retail binding, not a claimed native dependency. | src/game/vehicles/Vehicle.cpp |
+
+
+### Reviewed evidence and next coordinated assignments
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination | unassigned | BLOCKED | Reviewed exact whole-object DETAILS diagnostic and measured synthetic-root creation order. Missing map recovered; no justified source or arm-order trial. Preserve best724-byte candidate with11 differences; ownership released. | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), remaining layout review | /root/decomp_random | IN_PROGRESS | Coordinator completed one explicit native flag short-circuit candidate:1220/1224, restored separate bit tests, linked target791 differing bytes, old143 functions136 sections exact. Root releases ownership to worker for read-only remaining CFG/pool-layout origin review using existing new dumps. No compilation/source edits authorized. | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), merged-tail origin diagnostic | /root/decomp_billboard | IN_PROGRESS | Reviewed3168 phase/home/frame proof and real linked deficit52 executable bytes. Authorize exactly one unchanged-source frontend/as with neutral tree/RTL diagnostics, require whole8ff435db object identity and all935 inputs stable before interpreting first tail-merge stage. No candidate source or LD. | src/game/vehicles/Vehicle.cpp |
+
+
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection(), current-context acceptance candidate | /root/decomp_cleanup | IN_PROGRESS | Reviewed exact84 linked cleanup and all188 old function112 region passes in historical fixture. Authorize one private fresh-current source/header candidate using natural automatic event, IEvent(19) constructor and used,long_call D1 declaration, removing only obsolete explicit D1 declaration. Verify current Vehicle and PlayerTest native closure with unchanged manifests. No canonical adoption or Git; main reviews and runs global gate. | src/game/vehicles/Vehicle.cpp; src/game/characters/NPCVehicleEvent.h |
+
+
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), failed diagnostic identity review | /root/decomp_billboard | IN_PROGRESS | Sole neutral diagnostic whole-object/assembly identity failed despite935 inputs/tools stable; no dumps interpreted. Authorize read-only complete raw field difference inventory and exact anonymous-name correspondence investigation, not a recompile or retroactive passing gate. Root must review explained delta before any dump interpretation. | src/game/vehicles/Vehicle.cpp |
+
+
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), native inline-execute control | /root/decomp_random | IN_PROGRESS | Measured new flag-CFG candidate defers execute to466 under experimental1-percent hint, whereas native and all old no-hint forms keep execute inline. Authorize ONE private removal of only that remaining experimental hint on new explicit-short-circuit seed. Preserve all inputs and old payloads; stop before LD even if extent fits. No opposite hint or loop/source permutation. | src/game/scripting/ScriptManager.cpp |
+
+
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), explained name-only diagnostic | /root/decomp_billboard | IN_PROGRESS | Reviewed368 differences exclusively string tables,23 bijective anonymous section/symbol pairs; all198 functions229 allocated sections294 imports1603 semantic relocations preserve under explicit name correspondence. Original whole-file gate remains failed. Authorize reading existing diagnostic only as code/relocation-equivalent evidence; no rewritten output, compile or LD. | src/game/vehicles/Vehicle.cpp |
+
+
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), unhinted native-layout link | /root/decomp_random | IN_PROGRESS | Reviewed sole unhinted control1220/1224, native gap, all old payloads and restored native loop/pool/callback positions. Authorize one strict native-address diagnostic LD, no target recompilation; all old function/section checks and complete GOT reported. No new source form or credit. | src/game/scripting/ScriptManager.cpp |
+
+
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), recovered cross-jump configuration control | /root/decomp_billboard | IN_PROGRESS | Native has10 event tails; measured143csa cross-jumping reduces candidate to8 and merges seven other groups. Authorize ONE private compiler-configuration experiment adding only -fno-crossjumping to original authenticated935-input source context. No source/header changes. Require all existing off-target payloads/semantic references preserved, report every regression, strict3220 extent before any possible LD; no flag adoption or credit. | src/game/vehicles/Vehicle.cpp |
+
+
+| libsanangeles.so | 0x00310881 | Vehicle::cleanupTargetDetection() | unassigned | COMPLETED | Existing100% match preserved in readable automatic-event reconstruction; coordinator and worker independently verified all191 profiles11125 comparisons and every4292 credited selector. Source/header integrated in5b28ced4; no new bytes credited. Ownership released. | src/game/vehicles/Vehicle.cpp; src/game/characters/NPCVehicleEvent.h |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), event-tail configuration reuse review | /root/decomp_cleanup | IN_PROGRESS | Pending corrected2072/native2108. New measured Vehicle143csa event-tail sharing motivates bounded read-only comparison of native/candidate event homes/phases/static call tails and available existing dumps. No source changes, new dump or compiler invocation authorized. | src/game/ai/NPC.cpp |
+
+
+### Reviewed hourly batch and continuing ownership
+
+The coordinator accepted the exact cleanup reconstruction after independent191-profile verification. It adds no matched bytes. Unmatched source fragments and negative evidence are preserved separately. Script has196 resolved target differences; Vehicle AI remains3168/native3220. The no-crossjumping control is rejected because it overshoots and regresses five existing functions. NPC attack has three separate event tails already; a coincidental36-byte extent gap is not a Vehicle-style tail-sharing proof.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), remaining widget layout review | /root/decomp_random | IN_PROGRESS | Prior strict link reviewed:143 old functions136 sections exact,196 target differences. Read-only provenance of inline widget-hide arm order and matched helper relatives; identify supported call-local reconstruction without modifying shared APIs. No compiler/source changes approved. | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), predicate-fold reuse review | /root/decomp_billboard | IN_PROGRESS | Cross-jump flag trial reviewed and rejected. Reuse Script's measured frontend bitmask-fold mechanism to inspect actual3168 original-tree/CFG predicates against native before first pool and steering guard. Read-only, no new source/compiler/flags. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), event storage identity review | /root/decomp_cleanup | IN_PROGRESS | Reviewed three genuine tails/phases and frame84; two candidate event homes8/40 reverse native40/8. Read-only prior-form and source lifetime/declaration inventory against accepted Character::punched storage pattern; no speculative placement trial or compiler authorized. | src/game/ai/NPC.cpp |
 
 <!-- active-ownership:end -->
 
