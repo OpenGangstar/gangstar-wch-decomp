@@ -42,5 +42,78 @@
     8
   ],
   "publication": "LF text equals tested helper/function fragment after CRLF normalization. Fragment not separately compiled; requires the complete paired historical prefix, interfaces and configuration.",
-  "receipt": "_scratch/worker-renderfx-find-typed-tail-control/REPORT.md"
+  "receipt": "_scratch/worker-renderfx-find-typed-tail-control/REPORT.md",
+  "const_parent_control": {
+    "matched": false,
+    "function_bytes": 420,
+    "input_bytes": 420,
+    "native_size": 416,
+    "native_link_run": false,
+    "compiler_as_linker_counts": [
+      1,
+      1,
+      0
+    ],
+    "source_sha256": "98676d0207ce851d49b69cc5355112086e76ed7bda734101e950eda178721796",
+    "object_sha256": "464808a6c742ac089e98530b217b9beeb490b4cff3e7c046cfe974fbb8fd11e0",
+    "raw_target_sha256": "a51031807b67f8181e8aac168e28d58aa81cadef0281459ce4d6c09d3ed85a42",
+    "target_bytes_and_11_references_unchanged": true,
+    "old_functions_preserved": 113,
+    "offtarget_payloads_preserved": 138,
+    "offtarget_semantic_references_preserved": 448,
+    "frozen_inputs": 858,
+    "tool_runtime_files": 119,
+    "anonymous_suffix_before": "0455821E",
+    "anonymous_suffix_after": "C5B77F53",
+    "whole_object_difference": "Only 16 bytes in .strtab change for two anonymous namespace names; executable payloads and metadata are unchanged under that explicit identity correspondence.",
+    "patch_file": "RenderFX-Find-const-parent.patch",
+    "patch_sha256": "bc495a01dcf9a462c8286f872036731d024b0ba6d7fe3589c30b57a2678371bf",
+    "patch_base": "Historical full-TU authentic 420-byte fixture, not canonical source or standalone public fragment.",
+    "strict_extent_passed": false,
+    "tested_original_patch_sha256": "6ad46687232d8354233536c8c4989dbab28d33cdc61d8734b015db135c9196cc",
+    "patch_publication": "Same before/after source changes, LF text and one context line. Applies to normalized historical fixture; private apply/check reproduces tested candidate after newline normalization."
+  },
+  "null_separator_likelihood_control": {
+    "matched": false,
+    "native_size": 416,
+    "function_bytes": 404,
+    "input_bytes": 404,
+    "strict_extent_passed": false,
+    "native_link_run": false,
+    "compiler_as_linker_counts": [
+      1,
+      1,
+      0
+    ],
+    "source_sha256": "1cb345b50c8f24d7abe36e5fb754944ec8e4bdfa838f105440379c139d2d2ee4",
+    "object_sha256": "70e6a0dab770b917137549ba6bfb1ec9f74a3981c42e48d6bb56e8dae7eb2a47",
+    "raw_target_sha256": "ecaf2ccb206b0bffea0ea5c6df7a40cb700e04706d62f7f091991b9ccdd5ed26",
+    "code_padding_literals": [
+      394,
+      2,
+      8
+    ],
+    "frame": 316,
+    "direct_call_sites": 8,
+    "strchr_sites": 1,
+    "old_functions_preserved": 113,
+    "offtarget_payloads_preserved": 138,
+    "offtarget_semantic_references": 448,
+    "strict_semantic_reference_identity": false,
+    "target_size_consequences": "Only two off-target references change referenced target size from 420 to 404. Other fields and raw caller instructions remain exact.",
+    "target_mapping_symbol_consequence": "Target-owned literal marker changes from 412 to 396.",
+    "anonymous_identity_pair": [
+      "C5B77F53",
+      "150956E5"
+    ],
+    "frozen_inputs": 858,
+    "tool_runtime_files": 119,
+    "patch": "RenderFX-Find-null-separator-hint.patch",
+    "patch_sha256": "babc045de8c29f71f9c61a61f98108fdac6904020d988b80bdbfc85a0a198f3e",
+    "patch_base": "Historical full const-parent 420-byte fixture; not canonical source.",
+    "preparation_failure": "Driver import failed before any frontend/as/source application; workspace parent path corrected, then sole actual frontend/as ran.",
+    "disposition": "Layout hypothesis failed: loop shares one strchr instead of native two sites; initial conditional still expands. No LD, opposite hint, refinement or match credit.",
+    "tested_original_patch_sha256": "a3893d4b8182ef1c2481c89e62d48fdd772fb430f73db42c3d2730285ccbbbde",
+    "patch_publication": "Original patch text normalized from CRLF to LF for Git; source changes unchanged."
+  }
 }

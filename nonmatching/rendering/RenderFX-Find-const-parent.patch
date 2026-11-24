@@ -1,0 +1,63 @@
+--- a/src/game/rendering/menufx.cpp
++++ b/src/game/rendering/menufx.cpp
+@@ -1527,25 +1527,35 @@
+ namespace {
++struct CharacterParentHandle {
++    mutable gameswf::player_weak_ptr::proxy_ptr proxy;
++    mutable gameswf::character* owner;
++
++    void check_proxy() const
++    {
++        if (!owner)
++            return;
++        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(proxy.value) +
++            __builtin_offsetof(MovieWeakReference, alive);
++        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
++            proxy.clear();
++            owner = 0;
++        }
++    }
++
++    gameswf::character* get_ptr() const
++    {
++        check_proxy();
++        return owner;
++    }
++};
++
+ struct CharacterFindFields {
+     unsigned char prefix[128];
+-    mutable gameswf::player_weak_ptr::proxy_ptr parentReference;
+-    mutable gameswf::character* parent;
++    CharacterParentHandle parent;
+     gameswf::tu_string name;
+-};
+-inline void checkFindParent(CharacterFindFields& fields)
+-{
+-    if (fields.parent) {
+-        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(fields.parentReference.value)
+-            + __builtin_offsetof(MovieWeakReference, alive);
+-        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
+-            fields.parentReference.clear();
+-            fields.parent = 0;
+-        }
+-    }
+-}
+-inline gameswf::character* findParentCharacter(gameswf::character* character)
+-{
+-    CharacterFindFields& fields = *reinterpret_cast<CharacterFindFields*>(character);
+-    checkFindParent(fields);
+-    return fields.parent;
+-}
++
++    gameswf::character* get_parent() const
++    {
++        return parent.get_ptr();
++    }
++};
+ }
+@@ -1582,3 +1592,3 @@
+                     ++depth;
+-                    character = findParentCharacter(character);
++                    character = reinterpret_cast<const CharacterFindFields*>(character)->get_parent();
+                 } while (character != parent && character);
