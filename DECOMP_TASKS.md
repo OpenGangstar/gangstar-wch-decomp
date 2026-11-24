@@ -7,6 +7,45 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 <!-- active-ownership:start -->
 ## Current coordinator dispatches
 
+### Live ownership checkpoint, 2026-11-24 10:35 UTC
+
+This checkpoint and the final narrow-assignment table supersede historical
+dispatch rows. Three native workers are active; the runtime limit includes the
+coordinator and prevents a fourth worker. Only the coordinator integrates work.
+
+| Worker | Binary / address | Function | Status | Current permission |
+| --- | --- | --- | --- | --- |
+| /root/decomp_cleanup | libsanangeles.so / 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | IN_PROGRESS | Existing compiler-origin evidence and one diagnostic proposal; no compiler yet |
+| /root/decomp_random | libsanangeles.so / 0x0034a015 | ASprite::PaintFModule(int,int,int,int,int) const | IN_PROGRESS | ONE approved unchanged-source diagnostic frontend/as; exact whole11056-byte object identity before interpretation; no source change or LD |
+| /root/decomp_billboard | libsanangeles.so / 0x0035047d | CarSounds::Init(CarSoundSettings*) | IN_PROGRESS | ONE approved unchanged-source diagnostic frontend/as; exact whole object and assembly identity before interpretation; no source change or LD |
+
+The two bounded rendering source controls failed strict extents and remain
+unmatched. The 252-target matched-relative census and bounded return-root
+reviews produced no fresh source trial. Full identities and limitations remain
+below. No matching statistics, canonical function or assembly marker changed.
+
+
+### Worker reactivation, 2026-11-24 (latest ownership)
+
+The coordinator reviewed the completed independent-thunk feasibility, parent ABI,
+and const-parent Find reports. They remain unmatched; those scopes are released.
+This table supersedes historical active rows for these functions. Runtime permits
+three workers plus the coordinator, so four sub-agents cannot run here.
+
+| Binary | Address | Function | Owner | Status | Matching | Source and scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch(long) | unassigned | BLOCKED | Unmatched; native 1016, candidate 1028 bytes | src/game/input/AnalogStick.cpp; private residual instruction/call census against authentic current object; preserve six-form budget; no compilation without reviewed new evidence |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*, gameswf::character*) | unassigned | BLOCKED | Unmatched; native 416, candidate 420 bytes | src/game/rendering/menufx.cpp; ONE approved private end-null likelihood control on authenticated const420 fixture; source SHA 1cb345b50c8f24d7abe36e5fb754944ec8e4bdfa838f105440379c139d2d2ee4; original frontend/as only, complete preservation gates, strict416 extent, stop before LD regardless of result; no second form |
+| libsanangeles.so | 0x002d2d61 | LODSceneNode::computeLODLevel() | unassigned | BLOCKED | Unmatched; native 306 bytes | src/game/rendering/LODSceneNode.cpp; recover previous candidate budgets, identify evidence-supported reusable implementation opportunity; ONE approved guarded reverse-cursor representation trial on authenticated SDK best; preserve index conversion, callback timing, all old payloads/refs, function306 versus input308 distinction; unchanged frontend/as once, stop before LD |
+
+| libsanangeles.so | 0x002d1de5; 0x002d1de9 | GetNativeSoundRaw; GetNativeResourceSoundRawLength | unassigned | BLOCKED | Unmatched; native 2 bytes each, prototype unknown | src/game/app/jni_GLMediaPlayer.c; bounded primary-source prototype search beyond authenticated local 228-file audit; do not invent ABI or compile without actual declaration evidence |
+
+Workers may write only their dedicated private scratch directories. No shared or
+canonical edits, registry edits, Git operations, additional agents, invented match
+credit, or attempt-budget resets. Report exact evidence and proposed next control
+to the coordinator.
+
+
 The previous four-worker OpenCode batch was published in PR772. This execution
 exposes three native worker slots plus the coordinator; the prior OpenCode
 command/tool surface is unavailable here. Three independent reuse reviews are
@@ -2880,3 +2919,303 @@ Coordinator post-archive scopes: exact AnalogStick thunk cannot be credited unti
 Publication PR774: merged14792067766a1b6d932917452472c5628b4bb423 after both checks/clean mergeability. Entire main run45320982401 artifact14887371765 report equals accepted local4292/4550,356686/561716,63.50%; FullyLinked114548/20.39%,126/203. Next comparator controls are explicit one-form source-abstraction hypotheses based on frontend DECL/ADDR canonicalization; only ordinary freely optimized C++ helpers are permitted, never opaque scheduling barriers, register constraints, data-type forcing, hints or output changes. No default budget reset or matching credit before full verification.
 
 Coordinator reviewed both equality-helper failures without credit: normal helper source altered CFG extent, so that abstraction is spent. New one-form direct comparison control preserves ordinary pointer-predicate structure and uses the already matched Vehicle destructor field-first spellings plus the genuine nonvirtual LevelObject identity interface; no existing data declaration or layout changes, opaque barrier, integer cast, hint or forced register/inlining is permitted. This is an explicit bounded source hypothesis, not an original-source claim or default-budget reset. Spawn typed store control is separately bounded after exact baseline identity.
+
+Coordinator accepted AnalogStick residual census: native 938 code + 2 alignment + 76 pool, actual 948 + 4 + 76. Calls and branch counts agree; no justified source change. Ownership released, no credit.
+
+## Latest disjoint matched-relative discovery assignments
+
+Prior RenderFX hint and sound-prototype reports reviewed negative, ownership released.
+This is a bounded canonical-source reuse census, not another archive-image search
+or source-form budget reset. Workers may analyze only listed pending targets;
+existing matched functions are read-only source relatives. No implementation,
+compilation, integration or credit is authorized. The coordinator reviews proposed
+relatives before granting an implementation scope.
+
+| Binary | Address | Function | Assigned agent | Status | Matching | Relevant source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002d4015 | Application::UnRegisterForUpdate(IUpdatable*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Application.cpp |
+| libsanangeles.so | 0x002d5eb9 | Application::OnEvent(irr::SEvent const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Application.cpp |
+| libsanangeles.so | 0x002dc715 | GS3DStuff::checkVehicleProximity(std::vector<Vehicle*, std::allocator<Vehicle*> >&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody(b2Body*, irr::video::SColor) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002dcd29 | std::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, char const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd0c1 | GS3DStuff::checkForDespawn(LevelObject*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002dd33d | OctTreeAABB::OctTreeAABBNode::getPolysIter(irr::core::aabbox3d<float> const&, irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*, irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> >*, irr::core::array<irr::scene::ISceneNode*, irr::core::irrAllocator<irr::scene::ISceneNode*> >*) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002de6dd | GS3DStuff::PrintNodeProperties(irr::scene::ISceneNode*, bool, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002deba1 | GS3DStuff::checkPickableProximity(std::vector<Item*, std::allocator<Item*> >&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002ded05 | GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002deebd | GS3DStuff::AddXRef(irr::scene::ISceneNode*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002df34d | GS3DStuff::SetAlpha(irr::scene::ISceneNode*, unsigned char, GS3DStuff::eColorType) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002df419 | GS3DStuff::tearDown() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002df655 | OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(int&, int, irr::core::array<OctTreeAABB::RootNode*, irr::core::irrAllocator<OctTreeAABB::RootNode*> >*, unsigned int, irr::core::aabbox3d<float>) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002df995 | OctTreeAABB::OctTreeAABB(irr::scene::ISceneNode*, unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002e1e15 | GSFailure::draw2d(StateMachine const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GSFailure.cpp |
+| libsanangeles.so | 0x002e2725 | GSInGameMenu::update(StateMachine*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GSInGameMenu.cpp |
+| libsanangeles.so | 0x002e4e7d | MenuManager::update(StateMachine*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e5e4d | MenuManager::preloadGlyphs(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6149 | MenuManager::tearDown() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6731 | MenuManager::_positionMapOnPoint(irr::core::vector2d<float>&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6865 | MenuManager::_scrollMap(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6949 | MenuManager::updateMarkers() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6ab1 | MenuManager::_drawMap() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6db1 | MenuManager::_zoomMap(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e6fe1 | MenuManager::updateMap() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e7165 | MenuManager::initMap() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002e7ac5 | Menus::ServiceWeaponShop::Refresh() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002e8551 | MenuState::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002e86fd | MenuState::GotFocus() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002ea479 | Menus::MainMenu::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002eb12d | Menus::ServiceCarRental::Update() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002eb45d | Menus::ServiceWeaponShop::Update() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002eb6a9 | Menus::ServiceCorruption::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002eb761 | Menus::ServiceCarRental::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002eb9dd | Menus::ServiceMissions::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ecb9d | Widgets::IGMenu::GoToFrame(char const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ecbbd | Widgets::Achievement::SetIcon(char const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ed299 | Widgets::MapLegend::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ee061 | Widgets::Dialog::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ee409 | Widgets::Statistics::Show() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ee489 | Widgets::Achievements::UpdateLocalization() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ee67d | Widgets::Achievements::SetCategory(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ee6ed | Widgets::Controls::UpdateLocalization() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ef0b1 | Widgets::Corruption::UpdateLocalization() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002ef901 | Widgets::Objective::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002efafd | Widgets::GameSetting::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002efc31 | Widgets::Language::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002efda5 | Widgets::Controls::OnEvent(RenderFX::Event&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuWidget.cpp |
+| libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | BulletTraceManager.cpp |
+| libsanangeles.so | 0x002f1d91 | Character::setAnimation(int, float, bool, bool, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f2581 | Character::goToCombatIdle() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f26ad | Character::ready(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f2d95 | Character::die(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f3489 | Character::updateAnimation(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f39e1 | Character::runToTarget(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f4465 | Character::initPhysic() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f4659 | Character::show() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f48b1 | Character::initInVehicle(Vehicle*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f4a79 | Character::positionInVehicle(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f4cf9 | Character::throwOutDriver(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f710d | Character::punch() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f7ce9 | CustomBillboardSceneNode::setColor(irr::scene::ISceneNode*, irr::video::SColor) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002f800d | CustomBillboardSceneNode::OnAnimate(unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CustomBillboardSceneNode.cpp |
+| libsanangeles.so | 0x002fd291 | Lock::render() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Lock.cpp |
+| libsanangeles.so | 0x002fd565 | NPC::isOutsideSearchRadius() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x002fde51 | NPC::isUnderCar() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x002fe0e9 | NPC::isHostileTo(LevelObject*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x002fe615 | NPC::triggerCombatSFX(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x003009d1 | NPC::SetTarget(LevelObject*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x00300bc5 | Path::Load(Structs::Path const&, irr::collada::CColladaFactory*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Path.cpp |
+| libsanangeles.so | 0x003017b1 | PlayerTest::onTargetReached() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00301911 | PlayerTest::initDriving(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00301a75 | PlayerTest::switchContext(PlayerTest::eContext, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00302361 | PlayerTest::moveTo(Vehicle const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x003025cd | PlayerTest::isFacingTarget() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget(LevelObject*, Weapon*, LevelObject*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00303701 | PlayerTest::PlayerTest(b2World*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00303fe9 | PlayerTest::updateAnim(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x003049e5 | PlayerTest::Respawn() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00305a1d | PlayerTest::attack(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00305f5d | Shop::Update(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Shop.cpp |
+| libsanangeles.so | 0x003065e5 | SpawnPoint::CreateAllSpawnInstances() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
+| libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
+| libsanangeles.so | 0x00307101 | SpawnPoint::UpdateSpawnCenters() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
+| libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
+| libsanangeles.so | 0x00309a4d | Vehicle::setupSceneNode(int, irr::scene::ISceneNode*, int, void**) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030a731 | Vehicle::isDoorClear(bool, b2Body*) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030ae3d | Vehicle::getCollisionRect(irr::core::vector3d<float>*, float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030b311 | __static_initialization_and_destruction_0(int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030b68d | Vehicle::ResetBodyPosition() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030bccd | Vehicle::setSpeed() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00310e75 | Vehicle::OnDespawn() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00310fa9 | Vehicle::disable() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00312d19 | Vehicle::playDriveSfx(unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00315f39 | GameObjectManager::getDistanceFromAttackableTarget(Character*, int, LevelObject*, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GameObjectManager.cpp |
+| libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GameObjectManager.cpp |
+| libsanangeles.so | 0x0031a67d | PhysicAttributes::IsPositionOnJump(irr::core::vector3d<float> const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031a6fd | PhysicAttributes::GetJumpHeight(irr::core::vector3d<float> const&, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031aa5d | PhysicAttributes::GetRandomDestination(unsigned short, unsigned short&, irr::core::vector3d<float> const&, float, float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes(int, b2Body*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b29d | PhysicAttributes::PhysicAttributes(int, b2Body*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031d7a1 | ContactListener::Persist(b2ContactPoint const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031da29 | PhysicAttributes::IntersectSegmentWithHeightMap(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031ff49 | PhysicAttributes::GetHeight(irr::core::vector3d<float> const&, int, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x00321721 | SceneNodeManager::report() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SceneNodeManager.cpp |
+| libsanangeles.so | 0x003218d9 | SceneNodeManager::reclaimGarbage() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SceneNodeManager.cpp |
+| libsanangeles.so | 0x003219cd | SceneNodeManager::drop(int, irr::scene::ISceneNode const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SceneNodeManager.cpp |
+| libsanangeles.so | 0x00324399 | CHudManager::update(double) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CHudManager.cpp |
+| libsanangeles.so | 0x00326581 | AnalogStick::AnalogStick(ASprite*, int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AnalogStick.cpp |
+| libsanangeles.so | 0x00326581 | AnalogStick::AnalogStick(ASprite*, int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AnalogStick.cpp |
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch(long) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AnalogStick.cpp |
+| libsanangeles.so | 0x00327be9 | Cash::draw2d() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Cash.cpp |
+| libsanangeles.so | 0x00328c49 | Map::draw() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Map.cpp |
+| libsanangeles.so | 0x003295a5 | MiniMap::MiniMap(ASprite*, int, int, int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MiniMap.cpp |
+| libsanangeles.so | 0x003295a5 | MiniMap::MiniMap(ASprite*, int, int, int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MiniMap.cpp |
+| libsanangeles.so | 0x0032abe9 | RetroEffect::draw2d() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | RetroEffect.cpp |
+| libsanangeles.so | 0x0032b1f5 | SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SlideControl.cpp |
+| libsanangeles.so | 0x0032b1f5 | SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SlideControl.cpp |
+| libsanangeles.so | 0x0032b665 | SlideControl::processTouch(long) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SlideControl.cpp |
+| libsanangeles.so | 0x0032c961 | WantedMeter::WantedMeter(ASprite*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | WantedMeter.cpp |
+| libsanangeles.so | 0x0032c961 | WantedMeter::WantedMeter(ASprite*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | WantedMeter.cpp |
+| libsanangeles.so | 0x0032cbe1 | Wheel::Wheel(ASprite*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Wheel.cpp |
+| libsanangeles.so | 0x0032cbe1 | Wheel::Wheel(ASprite*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Wheel.cpp |
+| libsanangeles.so | 0x0032cfcd | Wheel::processTouch(long) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Wheel.cpp |
+| libsanangeles.so | 0x0032d72d | CControlManager::update() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CControlManager.cpp |
+| libsanangeles.so | 0x0032f201 | SniperControlHandler::onKeyboardEvent(IEvent const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SniperControlHandler.cpp |
+| libsanangeles.so | 0x00330015 | Rocket::launch(irr::core::vector3d<float>) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Rocket.cpp |
+| libsanangeles.so | 0x00332cf5 | CameraManager::getClickedTarget(irr::core::line3d<float>, bool) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CameraManager.cpp |
+| libsanangeles.so | 0x00333ab1 | FollowCamera::update(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | FollowCamera.cpp |
+| libsanangeles.so | 0x00333e41 | FPSCamera::scroll(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | FPSCamera.cpp |
+| libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | FPSCamera.cpp |
+| libsanangeles.so | 0x00334a81 | LockCamera::init(LevelObject*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | LockCamera.cpp |
+| libsanangeles.so | 0x00334c25 | LockCamera::update(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | LockCamera.cpp |
+| libsanangeles.so | 0x003351dd | VehicleCamera::goToSide(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | VehicleCamera.cpp |
+| libsanangeles.so | 0x00335849 | VehicleCamera::update(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | VehicleCamera.cpp |
+| libsanangeles.so | 0x00336345 | Mission::message(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Mission.cpp |
+| libsanangeles.so | 0x003365f1 | Mission::update(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Mission.cpp |
+| libsanangeles.so | 0x0033820d | MissionConditionStayWithin::evaluate(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MissionConditionStayWithin.cpp |
+| libsanangeles.so | 0x003398b5 | Script::unsetScriptObjectAction(LevelObject*, Script::eScriptAction) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Script.cpp |
+| libsanangeles.so | 0x003399f1 | Script::rewind() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Script.cpp |
+| libsanangeles.so | 0x0033ce19 | Script::nextCommand(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Script.cpp |
+| libsanangeles.so | 0x0033d271 | ScriptManager::reachRunningCommand(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(ScriptManager::State) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x0033f4c9 | ScriptManager::checkScreenPress() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand(Structs::ScriptCommand*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, gameloft::ai::StateID) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AIManager.cpp |
+| libsanangeles.so | 0x00341381 | CopController::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CopController.cpp |
+| libsanangeles.so | 0x00341a3d | CopVehicleController::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CopVehicleController.cpp |
+| libsanangeles.so | 0x00341f31 | GuardController::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GuardController.cpp |
+| libsanangeles.so | 0x0034228d | NPCController::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPCController.cpp |
+| libsanangeles.so | 0x00342585 | VehicleController::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | VehicleController.cpp |
+| libsanangeles.so | 0x00342b09 | WantedLevelManager::WantedLevelManager() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342b09 | WantedLevelManager::WantedLevelManager() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | WantedLevelManager.cpp |
+| libsanangeles.so | 0x00342fc9 | WantedLevelManager::update(double) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | WantedLevelManager.cpp |
+| libsanangeles.so | 0x00343141 | WantedLevelManager::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | WantedLevelManager.cpp |
+| libsanangeles.so | 0x003470f9 | SideMission::enableCheckpoints(irr::core::array<Checkpoint*, irr::core::irrAllocator<Checkpoint*> >&, irr::core::vector3d<float>) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SideMission.cpp |
+| libsanangeles.so | 0x003485f1 | Trail::Update() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Trail.cpp |
+| libsanangeles.so | 0x00348735 | Trail::BuildPoint(int, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Trail.cpp |
+| libsanangeles.so | 0x00348fb5 | TrailMgr::AllocTrailList(Trail**, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | TrailMgr.cpp |
+| libsanangeles.so | 0x00349271 | TrailMgr::Render() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | TrailMgr.cpp |
+| libsanangeles.so | 0x00349445 | AnimObject::IsAnimOver() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AnimObject.cpp |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ASprite.cpp |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int, int, int, int) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ASprite.cpp |
+| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int, int, int, int, int) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ASprite.cpp |
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int, int, int, int&, int&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ASprite.cpp |
+| libsanangeles.so | 0x0034b3c5 | StringManager::formatAmount(int, bool, bool) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | StringManager.cpp |
+| libsanangeles.so | 0x0034b5a5 | StringManager::unloadPackSheet(unsigned int, unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | StringManager.cpp |
+| libsanangeles.so | 0x0034b78d | StringManager::loadPackSheet(unsigned int, unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | StringManager.cpp |
+| libsanangeles.so | 0x0034c119 | DataReloaderManager::checkFiles() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | DataReloaderManager.cpp |
+| libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan(Point2D<short> const&, long) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | TouchScreenBase.cpp |
+| libsanangeles.so | 0x0034d479 | AccelerometerBase::_calcAngles() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AccelerometerBase.cpp |
+| libsanangeles.so | 0x0034eed9 | ResStream::~ResStream() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ResStream.cpp |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ResStream.cpp |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ResStream.cpp |
+| libsanangeles.so | 0x0034f555 | CarSounds::UpdateOffEngineSounds() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CarSounds.cpp |
+| libsanangeles.so | 0x0034f785 | CarSounds::UpdateOnEngineSounds() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CarSounds.cpp |
+| libsanangeles.so | 0x0034fbf9 | CarSounds::UpdateTurboSounds() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CarSounds.cpp |
+| libsanangeles.so | 0x003511b9 | CSoundDecoderMSADPCM::Init(__sFILE*, RiffHeader*, FormatHeader*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x003514b9 | CSoundDecoderMSADPCM::Decode(short*, int, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CSoundDecoderMSADPCM.cpp |
+| libsanangeles.so | 0x00352335 | RadioStationController::RadioStationController() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | RadioStationController.cpp |
+| libsanangeles.so | 0x00352335 | RadioStationController::RadioStationController() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | RadioStationController.cpp |
+| libsanangeles.so | 0x00352a55 | SoundManager::endCutscene() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SoundManager.cpp |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SoundManager.cpp |
+| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SoundManager.cpp |
+| libsanangeles.so | 0x00353175 | SoundManager::update(double) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SoundManager.cpp |
+| libsanangeles.so | 0x00354665 | EventManager::_attach(int, IEventReceiver*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | EventManager.cpp |
+| libsanangeles.so | 0x00354725 | EventManager::_detach(int, IEventReceiver*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | EventManager.cpp |
+| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM(bool, gameswf::player_context*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003ed9ed | RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003edc7d | RenderFX::PreloadGlyphs() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003edde5 | RenderFX::Load(char const*, gameswf::player_context*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003ee721 | RenderFX::SearchIndex::Clear() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003eefad | RenderFX::InvokeASCallback(gameswf::character*, char const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003efced | RenderFX::UpdateInput(int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003f0041 | RenderFX::Update(int, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003f01d1 | MenuFX::GetStateHandler(gameswf::character*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+| libsanangeles.so | 0x003f02c5 | RenderFX::SearchIndex::Init(RenderFX&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+
+Coordinator accepted sole LOD cursor trial negative: function302/input304 versus native306/input308; all37 other raw functions,41 allocated sections,93 imports and222 off-target refs preserved. No LD or retry; original306-byte best retained, ownership released.
+
+## Independent long-function source-family review
+
+| Binary | Address | Function | Assigned agent | Status | Matching | Relevant source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | unassigned | BLOCKED | Unmatched, native2384 bytes; source-family evidence only | src/game/characters/PhysicAttributes.cpp; recover actual prior receipt and reuse previously established native Persist ABI contracts (Persist is pending, not matched) for a new supported source constraint; no compile or budget reset |
+
+## Large-function matched-relative discovery assignment
+
+The Add review found no new source constraint; ownership is released. The following
+pending targets form the disjoint large-function extension to the read-only reuse
+census. No implementation, compiler, link, budget reset or match credit is authorized.
+
+| Binary | Address | Function | Assigned agent | Status | Matching | Relevant source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002dd7e1 | GS3DStuff::updateVisibility(unsigned int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002ddf79 | GS3DStuff::CreateStaticBodies(irr::scene::ISceneNode*, irr::scene::ISceneNode*, irr::scene::ISceneNode*, irr::scene::ISceneNode*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002e078d | GS3DStuff::update(StateMachine*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | GS3DStuff.cpp |
+| libsanangeles.so | 0x002e51fd | MenuManager::setText(MenuManager::eText, char const*, int*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002e574d | MenuManager::setup(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuManager.cpp |
+| libsanangeles.so | 0x002eac65 | Menus::OptionGameSettings::Notify(MenuWidget const*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MenuState.cpp |
+| libsanangeles.so | 0x002f517d | Character::switchCombatAnimation() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f55d1 | Character::shoot(float, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f661d | Character::switchMoveAnimation() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Character.cpp |
+| libsanangeles.so | 0x002f84c9 | CustomSkyBoxSceneNode::setSkyColor(bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002f96e9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002faab9 | CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CustomSkyBoxSceneNode.cpp |
+| libsanangeles.so | 0x002ff181 | NPC::_detect() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | NPC.cpp |
+| libsanangeles.so | 0x003026b9 | PlayerTest::move(float, float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x0030406d | PlayerTest::updateCarInteraction() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PlayerTest.cpp |
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030d149 | Vehicle::CreateWheels(Box2DUserInfo*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030fac9 | Vehicle::CreateBody() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x0030ff41 | Vehicle::Load(Structs::Car const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00310909 | Vehicle::shoot() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
+| libsanangeles.so | 0x003179d5 | LevelObject::CastRay(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&, LevelObject*&, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | LevelObject.cpp |
+| libsanangeles.so | 0x00317fb5 | LevelObject::canGoToPoint(irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | LevelObject.cpp |
+| libsanangeles.so | 0x0031ad31 | PhysicAttributes::SetHeightAttributes(irr::core::vector3d<float> const&, PhysicInfo*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b3e9 | PhysicAttributes::SetHeightAttributes(irr::scene::ISceneNode*, irr::core::vector3d<float> const&, PhysicInfo&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, irr::core::plane3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int, int, irr::core::vector3d<float>) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031dc7d | ContactFilter::ShouldCollide(b2Shape*, b2Shape*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031e285 | PhysicAttributes::AddCollisionShapes(int, unsigned short) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x0031eb99 | PhysicAttributes::GetHeight(int, irr::core::vector3d<float> const&, bool, bool) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320351 | ContactListener::Add(b2ContactPoint const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x00320ca1 | PhysicAttributes::ComputeShortestPath(int, int, irr::core::vector3d<float>, irr::core::vector3d<float>, float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | PhysicAttributes.cpp |
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(irr::core::vector3d<float> const&, irr::core::rect<int> const&, bool, bool) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MiniMap.cpp |
+| libsanangeles.so | 0x0032a0f9 | MiniMap::draw2d() const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | MiniMap.cpp |
+| libsanangeles.so | 0x0032da91 | CDrivingControlHandler::onEvent(IEvent const*, EventManager const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CDrivingControlHandler.cpp |
+| libsanangeles.so | 0x0032e835 | COnFootControlHandler::onKeyboardEvent(IEvent const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | COnFootControlHandler.cpp |
+| libsanangeles.so | 0x00332771 | CameraManager::update(float) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CameraManager.cpp |
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*, int, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Script.cpp |
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x00344821 | SaveGame::SampleAndSave(char const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SaveGame.cpp |
+| libsanangeles.so | 0x0035047d | CarSounds::Init(CarSoundSettings*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CarSounds.cpp |
+| libsanangeles.so | 0x003ef511 | RenderFX::UpdateCursor(RenderFX::Cursor&, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | menufx.cpp |
+
+Coordinator reviewed both small-function reuse census packets (110 and93 entries), including bounded value/class filters, as negative. Their ownership is retained only for a new bounded return-root discovery scope: inspect existing authenticated compiler dumps and source for the exact user-parameter/output-root merge demonstrated by matched FSelect. Do not repeat generic named-result controls already spent. Analyze only each existing partition, prioritize actual nonvoid output merges, report at most two new source-backed proposals. No new dumps, compiler, source edits or budget reset. Large49-target census remains independent.
+
+Coordinator reviewed49-target large-function census negative and released ownership. CarSounds::Init0x0035047d is reassigned exclusively to /root/decomp_billboard for ONE bounded8-byte addressing-residual/compiler-origin review: authentic current1032-byte candidate, matched AddTurbo field correspondence, existing dumps first. No source change/compiler unless root separately reviews a concrete diagnostic plan. This is a targeted FSelect compiler-root transfer feasibility review, not another API/context replay or six-form reset.
+
+## Latest narrow compiler-origin assignments
+
+Both203-target return-root feasibility reviews are accepted negative and released.
+No generic named-result source change is justified. New scopes below are bounded
+unchanged-source compiler-origin plans for specific preserved residuals, not more
+source forms. Reuse any existing trace first; no compiler without reviewed plan.
+
+| Binary | Address | Function | Assigned agent | Status | Matching | Relevant source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | /root/decomp_cleanup | IN_PROGRESS | Unmatched, native316 bytes | src/game/world/GameObjectManager.cpp; actual native/candidate return and operand-origin comparison; existing dumps first, at most one neutral diagnostic plan |
+| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int,int,int,int,int) const | /root/decomp_random | IN_PROGRESS | Unmatched, native220 bytes | src/game/rendering/ASprite.cpp; exact entry/word-address residual origin, exclude settled narrow load widths; existing dumps first, at most one neutral diagnostic plan |
+| libsanangeles.so | 0x0035047d | CarSounds::Init(CarSoundSettings*) | /root/decomp_billboard | IN_PROGRESS | Unmatched, native1032 bytes | src/game/vehicles/CarSounds.cpp; eight addressing-byte residual origin and settings/tail roots, existing dumps first, no context replay |
