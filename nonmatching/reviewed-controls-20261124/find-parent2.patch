@@ -1,0 +1,32 @@
+--- const-parent420/src/game/rendering/menufx.cpp
++++ proposed/src/game/rendering/menufx.cpp
+@@ -1565,13 +1565,13 @@
+     char component[256];
+     if (!name)
+         return 0;
+-    const int nameLength = strlen(name);
++    const unsigned int nameLength = strlen(name);
+     const char* part = name;
+     do {
+         const char* end = strchr(part, '.');
+         if (!end)
+             end = name + nameLength;
+-        const int length = end - part;
++        const unsigned int length = end - part;
+         memcpy(component, part, length);
+         component[length] = 0;
+         const gameswf::array<gameswf::character*>& candidates = FindCharacters(parent, component, 0);
+@@ -1580,11 +1580,8 @@
+         for (int i = 0; i < candidates.size; ++i) {
+             gameswf::character* character = candidates.elements[i];
+             const char* candidateName = reinterpret_cast<const CharacterCollectionFields*>(character)->get_name().c_str();
+-            if (!*candidateName)
+-                continue;
+-            if (strstr(part, candidateName) != part)
+-                continue;
+-            if (length != strlen(candidateName))
++            if (!*candidateName || strstr(part, candidateName) != part ||
++                length != strlen(candidateName))
+                 continue;
+             int depth = 0;
+             if (character != parent) {

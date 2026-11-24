@@ -7,6 +7,59 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 <!-- active-ownership:start -->
 ## Current coordinator dispatches
 
+### Worker reuse follow-up, 2026-11-24 12:36 UTC
+
+This table supersedes the previous live table. The coordinator reviewed the
+negative Path and AnimObject transfer reports and released those scopes. Path's
+actual two address additions already match native; AnimObject calls the existing
+out-of-line duration API and has no relevant table expression. Vehicle step's
+sole conditional trial remains unmatched at4324/native4372: receiver capture and
+common calls improve, but both quaternion operands use one stack home. No LD or
+source refinement is approved. Its ownership is released after packet review.
+
+The following ten-minute scopes use the newly byte-matched PaintFModule
+typed-record/integer-before-blob association as their sole new evidence. First
+recover historical budgets and authentic preferred source/object pairs. Inspect
+only actual indexed pointer/record address expressions and their first meaningful
+native mismatch. Do not repeat generic CFG, API or call-count audits. If the
+new fact does not apply, report the precise negative without source replay.
+
+| Binary | Address | Function | Owner | Status | Matching | Source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*,int,int) | /root/decomp_random | IN_PROGRESS | Unmatched; native12636 | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&,plane3df const&,vector3df const&,vector3df const&,vector3df&,vector3df&) | /root/decomp_cleanup | IN_PROGRESS | Unmatched; native4800 | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&,recti const&,bool,bool) const | /root/decomp_billboard | IN_PROGRESS | Unmatched; native2012 | src/game/hud/MiniMap.cpp |
+
+Only private scratch evidence and at most one unapplied, evidence-supported
+proposal per function are allowed. No compiler/as/LD, new dumps, canonical or
+shared edits, registry changes, Git mutations or agents. Existing budgets stay
+spent; the coordinator must separately review any source experiment.
+
+
+### Worker reactivation, 2026-11-24 12:31 UTC
+
+This checkpoint supersedes earlier active ownership tables. PR783 is merged and
+its entire main report is verified. The runtime allows three workers plus the
+coordinator. All assignments below are exclusive; no worker may edit canonical
+or shared files, change ownership, run Git mutations or spawn agents.
+
+The coordinator reviewed the Vehicle Update and UpdatePhysic negative reports.
+Both prior scopes are released without credit. UpdatePhysic is 9088/native9212,
+all 200 old function payloads exact; raw anonymous-name drift is disclosed, not
+waived. No LD was run. Existing attempt budgets remain binding.
+
+| Binary | Address | Function | Owner | Status | Matching | Source and scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00300bc5 | Path::Load(Structs::Path const&, irr::collada::CColladaFactory*) | /root/decomp_cleanup | IN_PROGRESS | Unmatched; native200 | src/game/world/Path.cpp; bounded review of newly matched ASprite serialized-address association versus the saved native200 candidate; recover prior budget first, no compiler or source changes |
+| libsanangeles.so | 0x00349445 | AnimObject::IsAnimOver() | /root/decomp_billboard | IN_PROGRESS | Unmatched; native112 | src/game/characters/AnimObject.cpp; bounded review of newly matched ASprite typed-record/address association against actual native table accesses; no repeated CFG census, compiler or source changes |
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | /root/decomp_random | IN_PROGRESS | Unmatched; native4372, trial4324 | src/game/vehicles/Vehicle.cpp; finish actual receiver-capture and preservation audit of sole approved conditional-expression trial; no refinement or LD |
+
+Each new reuse review is limited to ten minutes. Report an evidence-supported
+unapplied proposal only if the new match supplies a real untried constraint;
+otherwise record the precise negative and park without replaying old forms.
+Only private worker scratch files may be written.
+
+
 ### Live matching checkpoint, 2026-11-24 11:02 UTC
 
 PaintFModule is COMPLETED and ownership released after coordinator acceptance:
@@ -3261,3 +3314,20 @@ Coordinator reviewed ASprite PaintModule/PixelInfo transfer reports negative: na
 Coordinator reviewed all three current-context preparations and performed one private coherent ASprite frontend/assembler measurement. Each exact preferred body remains bit-identical to its individual candidate: Duration80/native82, PaintModule500/native512, PixelInfo300/native296. All44 prior unlinked function bodies remain exact; every copied source/tool pin stayed stable. Strict extents fail, so no LD or native/shared-Cash/global gate ran for this private context. Canonical headers remain unchanged. Source patch and exact provenance are preserved in nonmatching/rendering/ASprite-complete-current-context.*; all three scopes are BLOCKED and ownership released after review. This does not change the accepted canonical PaintFModule220-byte match or reset previous budgets.
 
 Next bounded feasibility scopes after accepted negative ASprite union context: decomp_random exclusively owns RenderFX::Find0x003ed6e5 for a single historical parent-2 unsigned-length/ordinary predicate composition proposal in the genuine typed context; decomp_billboard exclusively owns CarSounds::Init0x0035047d for source byte-offset induction feasibility against the newly traced late SSA-copy substitution; decomp_cleanup exclusively owns SoundManager::getNumberOfPlayingSounds0x00352cad for a fresh-per-iteration table-value loop representation feasibility preserving native callback/read phases. These are at most six-minute read-only proposal scopes, not compiler or source-form authorization. Each must first reject any already tested representation; no type hacks, barriers, dummy roots, flags, changed callback order or budget reset. Only one concrete faithful proposal per owner may be submitted for coordinator review.
+
+Coordinator approves one private Find composition trial per worker-find-parent2-composition/UNAPPLIED.patch: only unsigned size locals and historical shared rejection guard in authenticated const420 context. One original frontend/as, complete old payload/reference/metadata preservation with explicitly recorded target-owned and anonymous-identity consequences; strict416 function/input before any link; stop before LD regardless, no refinement or hint.
+Coordinator also approves one private Sound count table-refresh trial per UNAPPLIED-REFRESH.patch: preserve flags, signed fresh outer bound, four channels and exactly one fresh table field read per entered channel, never after last or empty iteration. One original frontend/as, old object payloads/metadata/refs exact, strict80 function/input; stop before LD regardless. No shared headers, flags, types, source alternatives or budget reset for either trial.
+
+Coordinator reviewed Find420/native416 and Sound refresh96/native80 as failed bounded trials; off-target preservation and all source/tool pins passed, no LD or matching credit. Ownership released after review.
+Coordinator approves ONE CarSounds Init two-role-loop trial per TWO-ROLE-PROPOSAL.md/proposed-two-role-loops.patch. Keep signed i for exact fresh member guards and independent unsigned byte offsets for genuine address uses; modulo relation and valid-input alias/store/callback proof reviewed. Only the two existing loops change, no new scope/type/flags/header or pointer-field caching. One original frontend/as on the authenticated full-five context, full old object preservation, native1032 function/input checks, stop before LD regardless. No second form or refinement, no budget reset.
+
+Coordinator reviewed the two-role Init trial: function/input remain1032, only four target bytes change (two auxiliary fixes, two new threshold misses); all58 other functions,49 allocated payloads,212 symbols,27 imports and245 references preserved. No LD or credit; ownership released.
+Next independent six-minute read-only Vehicle scopes: /root/decomp_random owns step0x0030c035/native4372 to compare actual quaternion constructor/lifetime/return usage behind the known duplicated native rotation tails; /root/decomp_cleanup owns UpdatePhysic0x0030d6c9/native9212 to determine whether the fourth visibility callback can faithfully share the native common tail or is already common in source; /root/decomp_billboard owns Load0x0030ff41/native1368 for native/current relative-pointer or record-address association evidence only, excluding settled seven scalar conversions and prior camera/enum/helper replays. No source apply or compiler is authorized. Each must reject an already tested or unsupported idea and report at most one concrete faithful proposal.
+
+Coordinator approves ONE UpdatePhysic common-fourth-visibility trial per UNAPPLIED.patch4dbb5441: preserve first three callbacks and fresh receiver/vptr reload for fourth, selected boolean and member-slot addresses, all timeline dereference phases. One original frontend/as from authenticated preferred9104 source, exact patch/reverse and old preservation gates, native9212 function/input checks, stop before LD regardless. No shared/header/flag/source refinements or further variants authorized.
+Vehicle step initial sharing premise is corrected: native shares set/setRotation tail; candidate duplicates it. Existing six forms already use two real float3 quaternion temporaries. A further read-only feasibility question may inspect a single common member-call full-expression with a conditional quaternion argument while preserving native receiver/callee capture before constructor; no compiler or named-local/default-constructor change authorized.
+
+Vehicle Load address-transfer review is accepted negative and released: native/preferred copy absolute car-field pointers directly; root adjustment was already tested, no relative indexed mismatch. New exclusive /root/decomp_billboard scope: Vehicle::Update(int), libsanangeles.so0x00313b01, native4020, src/game/vehicles/Vehicle.cpp. Six-minute read-only actual-source visibility-tail factoring audit only: first verify native/candidate sharing direction and whether the known dynamic-call-site difference corresponds to an untried faithful common/duplicated source representation. Do not recount all calls or change other math/control/headers; no compiler or source apply.
+
+Coordinator approves ONE Vehicle step conditional-full-expression trial per UNAPPLIED-CONDITIONAL.patchbbdd6519. Preserve single isDead call via its real saved bool, both unchanged position arms, and one member-call full expression with selected genuine float3 quaternion. Actual receiver/callee capture before constructor, temporary/copy/home behavior must be measured; no named/default/fluent object or extra hoist. One original frontend/as on authenticated4336 context with full old preservation and1068-input/tool pins, strict4372 function/input checks, stop before LD regardless; no refinement, flags or headers.
+Vehicle Update visibility-source review accepted negative and released: native duplicates, source already duplicates in all six forms, compiler shares; actual glass reloads remain correct, no new source proposal.
