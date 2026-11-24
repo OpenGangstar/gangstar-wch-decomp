@@ -1,6 +1,6 @@
 # Vehicle AI: callback snapshots and real scalar lifetimes
 
-The accompanying fragment preserves the tested **3192-byte unmatched**
+The accompanying fragment preserves the tested **3224-byte unmatched**
 `Vehicle::_processAIFlags()` reconstruction, Thumb `0x00312081`, native
 3220 bytes. It is a historical private-fixture method fragment, not a standalone
 translation unit or an accepted current-source implementation. The older
@@ -30,20 +30,30 @@ this improvement.
 
 ## Actual verification and limits
 
-The scalar reconstruction and subsequent even-first control each used one
-original GCC 4.2.1 frontend and assembler pair, both successful. Object function and
-input section are both 3192 bytes, alignment 8, without padding. The frame remains
-476 bytes. Mapped executable bytes are 2972, pool bytes 220; native has 3000 and
-220 respectively. The strict extent gate therefore fails by **28 executable
-bytes**. This aggregate deficit is not attributed entirely to one branch or
-event tail.
+The same native scalar structure also occurs in the pursuit lateral branch.
+Its earlier dynamic offset shared four helper sites; retail has two constant
+paths and a common Y addition, seven sites. Applying the verified genuine scalar
+pattern there recovers native captures, operand order, X-result lifetime and
+shared late X store. Static multiplication/addition counts now equal retail;
+this does not prove every control edge or operand equal.
+
+The initial scalar reconstruction, even-first control and pursuit reconstruction
+each used one successful original GCC 4.2.1 frontend/assembler pair. Latest object
+function and input section are both 3224 bytes, alignment 8, without padding.
+The frame remains 476 bytes. Mapped executable bytes are 3004, pool bytes 220;
+native has 3000 and 220 respectively. The strict extent gate fails: the actual
+function is **four executable bytes longer**, not a native-sized function plus
+padding. This is an aggregate extent difference, not a claim that only four bytes
+of code differ. Relocation, layout and control-flow differences remain, including
+shared event tails.
 
 All 197 old functions, 225 nonempty off-target allocated payloads, definition
 metadata, 294 import entries and 1446 off-target semantic relocations are
 preserved. Compiler-generated anonymous identities differ: 23 section and 23
 symbol names have an explicitly enumerated collision-free correspondence
 `2D56FD8F` to `B254F827` for the scalar control and `B254F827` to `29BA2EC2`
-for the even-first control. Whole-object identity is not claimed. No output was
+for the even-first control, then `29BA2EC2` to `04723354` for pursuit.
+Whole-object identity is not claimed. No output was
 rewritten. Source/object/raw target identities and the object gate summary are
 recorded in the JSON.
 
@@ -51,7 +61,7 @@ No linker ran. The ordinary object checker exited 1 because the function still
 has unresolved relocations; exact output:
 
 ```text
-_ZN7Vehicle15_processAIFlagsEv has 160 relocation(s); the bytes cannot be compared until they are resolved:
+_ZN7Vehicle15_processAIFlagsEv has 163 relocation(s); the bytes cannot be compared until they are resolved:
   0x30, 0x7e, 0x118, 0x122, 0x12a, 0x134, 0x13c, 0x162, 0x16c, 0x176, 0x19e, 0x1a8, 0x1b0, 0x1ba, 0x1c2, 0x1c6
 ```
 
@@ -63,16 +73,22 @@ or header context is not the recorded experiment.
 
 Private evidence resides in `_scratch/worker-vehicle-ai-used-scalars/` and
 `_scratch/worker-vehicle-ai-even-first/`: original
-commands, source-only patch, pinned input/tool manifest, complete preservation
-inventories, raw metadata-name correspondence, target bytes/disassembly and
-`SEQUENCE-PROOF.json`. Its report discloses two corrected analysis-only failures
+commands, source-only patches and pinned manifests. The latest pursuit packet is
+`_scratch/worker-vehicle-ai-pursuit-scalars/`; its native proof and unapplied
+proposal were reviewed in `_scratch/worker-vehicle-ai-residual3192/` before that
+single compilation. They also retain complete preservation inventories, raw
+metadata-name correspondence, target bytes/disassembly and `SEQUENCE-PROOF.json`.
+The used-scalars report discloses two corrected analysis-only failures
 (Python helper shadowing `inspect` and objdump runtime PATH); the compiler and
 assembler were each invoked only once. The prior callback, scalar-dot and literal
 branch packets remain separately retained.
 
-The published fragment is the later even-first control. Inverting only the
+The published fragment includes the later pursuit reconstruction. In the
+preceding even-first control, inverting only the
 random-sign condition and exchanging the existing branch bodies restores retail's
 even/positive inline and odd/negative outlined layout. Exactly four raw target
 bytes change; extent remains 3192. The JSON retains both control identities and
-the complete four-byte delta. This local correction does not explain the remaining
-28-byte deficit or establish a complete native match.
+the complete four-byte delta. This local correction does not explain the
+then-remaining 28-byte deficit or establish a complete native match. Pursuit then
+adds 32 executable bytes; its separate identities and measured result are recorded
+in the JSON. The previous controls remain immutable private packets.

@@ -1,4 +1,4 @@
-// UNMATCHED: 3192 function bytes versus 3220 native; no native-address link.
+// UNMATCHED: 3224 function bytes versus 3220 native; no native-address link.
 // Historical private-fixture method fragment; not a standalone compilation unit.
 void Vehicle::_processAIFlags()
 {
@@ -95,10 +95,24 @@ void Vehicle::_processAIFlags()
             if (flags344 & 0x400000u) {
                 if (flags344 & 0x100000u) {
                     const vector3df targetPosition = aiTarget->GetPosition();
+                    const float targetY = targetPosition.Y;
+                    const float targetX = targetPosition.X;
                     const vector3df front = GetFront();
-                    const float offset = (irr::os::Randomizer::rand() & 1) ? -200.0f : 200.0f;
-                    destination.X = targetPosition.X + front.Y * offset;
-                    destination.Y = targetPosition.Y + front.X * offset;
+                    const float frontX = front.X;
+                    const float frontY = front.Y;
+                    float resultX;
+                    float productY;
+                    if ((irr::os::Randomizer::rand() & 1) == 0) {
+                        const float productX = frontY * 200.0f;
+                        resultX = targetX + productX;
+                        productY = frontX * 200.0f;
+                    } else {
+                        const float productX = frontY * -200.0f;
+                        resultX = targetX + productX;
+                        productY = frontX * -200.0f;
+                    }
+                    destination.X = resultX;
+                    destination.Y = productY + targetY;
                     destination.Z = targetPosition.Z;
                 } else if (flags344 & 0x200000u) {
                     destination = aiTarget->GetPosition() + GetFront() * 300.0f;
