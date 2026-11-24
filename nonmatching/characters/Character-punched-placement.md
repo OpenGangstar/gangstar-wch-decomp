@@ -1,5 +1,10 @@
 # Character::punched: preserved unmatched placement candidate
 
+Historical candidate, superseded by the verified implementation described in
+[Character::punched match](../../docs/matches/character-punched.md). The patch
+targets the earlier prefix and must not be applied over current matched source.
+The failure and control history below describe that preserved earlier candidate.
+
 Target `_ZN9Character7punchedEiiP11LevelObject`, Thumb `0x002f6c45`, 884 bytes.
 `Character-punched-placement.patch` appends the retained helper and candidate
 to `src/game/characters/Character.cpp`; it is **not applied** to canonical source.

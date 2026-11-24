@@ -155,7 +155,8 @@
         "_ZN10b2ShapeDefD0Ev",
         "_ZN10PhysicInfoC1Ev",
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
-        "_ZN9Character20getSpecificAnimationEi"
+        "_ZN9Character20getSpecificAnimationEi",
+        "_ZN9Character7punchedEiiP11LevelObject"
     ],
     "sections": [
         ".character_animation_resource",
@@ -193,7 +194,9 @@
         ".circle_shape_table",
         ".physic_info_ctor",
         ".physic_find_lower",
-        ".character_specific_animation"
+        ".character_specific_animation",
+        ".character_punched",
+        ".character_punched_table"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -261,7 +264,6 @@
         "_ZN9Character4showEv",
         "_ZN9Character5punchEv",
         "_ZN9Character5readyEf",
-        "_ZN9Character7punchedEiiP11LevelObject",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE",
