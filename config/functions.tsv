@@ -10335,7 +10335,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fe3c9	0xf4	NPC.cpp	game	ai	matched	_ZN3NPCC1Ei	NPC::NPC(int)
 0x002fe4bd	0x144	NPC.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fe601	0x14	NPC.cpp	game	ai	matched	_GLOBAL__I__ZN3NPC16s_combatSXFTimerE	_GLOBAL__I__ZN3NPC16s_combatSXFTimerE
-0x002fe615	0x170	NPC.cpp	game	ai	pending	_ZN3NPC16triggerCombatSFXEi	NPC::triggerCombatSFX(int)
+0x002fe615	0x170	NPC.cpp	game	ai	matched	_ZN3NPC16triggerCombatSFXEi	NPC::triggerCombatSFX(int)
 0x002fe785	0x1e4	NPC.cpp	game	ai	matched	_ZN3NPC24UpdateCarPosIfUnderWheelEv	NPC::UpdateCarPosIfUnderWheel()
 0x002fe969	0x30	NPC.cpp	game	ai	matched	__tcf_4	__tcf_4
 0x002fe999	0xe0	NPC.cpp	game	ai	matched	_ZN3NPC6freezeEv	NPC::freeze()

@@ -16,12 +16,15 @@
 #include "../characters/PhysicAttributes.h"
 #include "../world/Path.h"
 #include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
 #include "../characters/NPCEvent.h"
 #include "../combat/Weapon.h"
 #include "../combat/WeaponManager.h"
 #include "../core/EventManager.h"
 #include "../meta/Item.h"
 #include "../world/GameObjectManager.h"
+
+int NPC::s_combatSXFTimer;
 
 namespace {
 union MovementFlags {
@@ -841,4 +844,39 @@ void NPC::freeze()
     sound->unknown140 = true;
     sound->playEx(soundId, 0, false, 1.0f, 0, true, 1.0f, 0);
     sound->unknown140 = false;
+}
+
+void NPC::triggerCombatSFX(int type)
+{
+    if (!type) return;
+    const int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    if (now < s_combatSXFTimer + 5000) return;
+    if (lrand48() % 100 <= 50) {
+        s_combatSXFTimer = now;
+        return;
+    }
+    int soundId;
+    switch (type) {
+    case 1: soundId = 72; if (lrand48() % 2 == 1) soundId = 68; break;
+    case 2: soundId = 56; if (lrand48() % 2 == 1) soundId = 84; break;
+    case 3: soundId = 96; break;
+    case 5: soundId = 87; break;
+    case 4: soundId = 58; break;
+    case 6:
+        if (!(lrand48() % 2 == 1)) soundId = 55;
+        else soundId = 64;
+        break;
+    default: return;
+    }
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(soundId, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
+        if (LevelObject::s_type[object->getObjectType()] == 5) {
+            NPC* npc = static_cast<NPC*>(object);
+            if (npc->flags356 & 0x40u)
+                npc->attackState452 = true;
+        }
+    }
 }
