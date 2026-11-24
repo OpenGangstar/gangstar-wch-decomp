@@ -12556,7 +12556,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349271	0x38	TrailMgr.cpp	game	world	pending	_ZN8TrailMgr6RenderEv	TrailMgr::Render()
 0x003492a9	0x58	TrailMgr.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00349301	0x14	TrailMgr.cpp	game	world	matched	_GLOBAL__I__ZN8TrailMgrC2Ev	_GLOBAL__I__ZN8TrailMgrC2Ev
-0x00349315	0x20	IPhone.cpp	game	app	pending	_Z7FSelectfff	FSelect(float, float, float)
+0x00349315	0x20	AnimObject.cpp	game	characters	matched	_Z7FSelectfff	FSelect(float, float, float)
 0x00349335	0x4	AnimObject.cpp	game	characters	matched	_Z18PlayPolicy_Onetimefff	PlayPolicy_Onetime(float, float, float)
 0x00349339	0x6	AnimObject.cpp	game	characters	matched	_ZN10AnimObject6UnloadEv	AnimObject::Unload()
 0x00349341	0xc	AnimObject.cpp	game	characters	matched	_ZN10AnimObject4LoadEv	AnimObject::Load()

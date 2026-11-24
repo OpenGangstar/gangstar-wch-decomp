@@ -146,6 +146,15 @@ def build_attribution(elf: ElfFile) -> dict[int, str]:
         scope, _ = mangled_scope(function.name)
         if scope and scope in scope_hints:
             attribution[function.st_value] = scope + ".cpp"
+
+    # Empty IPhone/Win32 objects share the entry mapping symbol at 0x349314.
+    # AnimObject owns FSelect's internal $d at 0x349330 and its module
+    # initializer, _GLOBAL__I__Z7FSelectfff. The first boundary anchor alone
+    # therefore attributes this leading function to the wrong object.
+    for function in elf.functions(".symtab"):
+        if (function.name == "_Z7FSelectfff" and function.st_value == 0x00349315
+                and "AnimObject.cpp" in manifest):
+            attribution[function.st_value] = "AnimObject.cpp"
     return attribution
 
 

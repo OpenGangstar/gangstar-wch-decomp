@@ -387,6 +387,57 @@ The coordinator accepted the exact cleanup reconstruction after independent191-p
 | libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), predicate-fold reuse review | /root/decomp_billboard | IN_PROGRESS | Cross-jump flag trial reviewed and rejected. Reuse Script's measured frontend bitmask-fold mechanism to inspect actual3168 original-tree/CFG predicates against native before first pool and steering guard. Read-only, no new source/compiler/flags. | src/game/vehicles/Vehicle.cpp |
 | libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), event storage identity review | /root/decomp_cleanup | IN_PROGRESS | Reviewed three genuine tails/phases and frame84; two candidate event homes8/40 reverse native40/8. Read-only prior-form and source lifetime/declaration inventory against accepted Character::punched storage pattern; no speculative placement trial or compiler authorized. | src/game/ai/NPC.cpp |
 
+
+### Follow-up after merged PR777
+
+PR777 merged after exact-head CI and conflict checks. Main report artifact14897040582 from run45342106072 equals the complete local report. The goal remains active; no new matching credit was claimed.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), fresh steering callback snapshot | /root/decomp_billboard | IN_PROGRESS | New native/candidate evidence shows init372/376/380 loaded before opaque GetFront in candidate but after it in retail. Approve ONE private genuine by-value GetFront snapshot binding before constructing the existing initialization vector, preserving dot-product operand order. Authenticate native ABI/order first; no other source/header/flags changes; stop before LD. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), flat admission composition proposal | /root/decomp_cleanup | IN_PROGRESS | Earlier flat source forms have native event homes40/24/8; later retryTarget nesting reverses acquisition/driver homes. Prepare an unapplied exact diff composing earlier flat admission with both latest semantic fixes and unchanged geometry/callbacks. Root reviews before compilation. | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), remaining widget layout | /root/decomp_random | REVIEW | Reviewed negative widget audit: SSA-exit null PHI edge and50/50 layout cause inversion; matched pause confirms helper itself works. No supported source trial. Preserve196 differences pending root next assignment. | src/game/scripting/ScriptManager.cpp |
+
+
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), reviewed flat composition trial | /root/decomp_cleanup | IN_PROGRESS | Root reviewed exact two-hunk diff and all acquisition/admission/retarget paths. Approve ONE compilation of proposed full source SHA69d3728be952cd84b1fc3eab88cc07780a92019a87b7c30bf6ff1a09a36d87c3 on authenticated1063-input seed. All later body bytes and semantic fixes retained. Preserve old definitions/refs, record frame/event homes and strict2108 extent; stop before LD. | src/game/ai/NPC.cpp |
+
+
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), strict native link of flat composition | /root/decomp_cleanup | IN_PROGRESS | Reviewed approved source, native2108 function/input, frame84 and event homes24/40/8. All71 old functions94 allocated payloads359 off-target semantic refs exact. Authorize one immutable-target strict native-address LD and original dependency/owner/table/GOT checks; no target recompile, helper fallback or source refinements. | src/game/ai/NPC.cpp |
+
+
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), scalar dot-product load provenance | /root/decomp_billboard | IN_PROGRESS | Reviewed corrected GetFront-before-fields boundary and unchanged3168 extent. Native Y/Z reads interleave arithmetic; candidate aggregate construction eagerly snapshots them. Authorize ONE direct scalar expression matching the existing float dot-product grouping/operand order on authenticated aadcfd83 candidate, only after verifying actual inline definition and novelty. Preserve callback snapshot and every other statement; one frontend/as, old payload/refs gates, stop before LD. | src/game/vehicles/Vehicle.cpp |
+
+
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int), indexed-load provenance reuse | /root/decomp_random | IN_PROGRESS | Widget rewrite rejected after review. Bound read-only next work to two remaining indexed loads at1b8/1c6 in actual unhinted fixture: locate first PLUS-operand commutation, actual pointer/index SSA and RTL identities, and one exact loop relative. Reuse established Sound count primary-source mechanism without repeating that target or compiling. No source/flags/API changes. | src/game/scripting/ScriptManager.cpp |
+
+
+### Next independent callback-order reviews
+
+The coordinator reviewed the linked NPC flat candidate: native extent and homes are restored, but 1,935 target bytes differ; all original owner/dependency checks pass. The AI scalar control preserves its corrected callback order and reproduces a local native field/helper sequence, but remains 3,160 versus 3,220 bytes. Neither is credited. Script's widget and indexed-load audits identify compiler stages without a supported source correction; ownership is released.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0033f511 | ScriptManager::update(int) | unassigned | BLOCKED | Reviewed 196 resolved target differences and negative widget/index provenance. Preserve unhinted candidate; no source permutation or compiler invocation supported. Ownership released. | src/game/scripting/ScriptManager.cpp |
+| libsanangeles.so | 0x002f55d1 | Character::shoot(float,bool), callback snapshot reuse review | /root/decomp_random | ASSIGNED | Pending native 2608, retained HUD-corrected 2622/2624 candidate. Read-only targeted compound-receiver and field-snapshot timing review using the verified Vehicle GetFront lesson. Preserve private prerequisites and prior budgets; no source changes or compilation. | nonmatching/characters/Character-shoot-blocked-hud.cpp; src/game/characters/Character.cpp |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), detection destination snapshot review | /root/decomp_billboard | IN_PROGRESS | Read-only native/candidate targetPosition/GetFront-to-destination region after detected event, on latest scalar 3160 context. Check exact arithmetic operands and snapshot/reload boundaries, not expected geometry. Do not repeat solved steering-tail or event phases. No new candidate/compiler. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), first remaining callback-order review | /root/decomp_cleanup | IN_PROGRESS | Read-only linked 2108 candidate entry/admission through first geometry snapshots. Distinguish literal/register/layout changes from genuine callback or fresh-field ordering discrepancies. Reuse existing truth table and event proofs; no source or compiler changes. | src/game/ai/NPC.cpp |
+
+
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), native constant arithmetic branches | /root/decomp_billboard | IN_PROGRESS | Native initial lateral region has separate positive/negative constant-specific arithmetic paths and shared final Y addition; candidate uses an offset PHI and four shared helpers. Approve ONE initial-region explicit constant-branch reconstruction on authenticated scalar3160 seed, preserving calls/buffers/signs and using native multiplication/Y-add operand order. No pursuit-region change, added captures, flags or other edits. One frontend/as, all old preservation, stop before LD. | src/game/vehicles/Vehicle.cpp |
+
+
+| libsanangeles.so | 0x002f55d1 | Character::shoot(float,bool) | unassigned | BLOCKED | Reviewed authenticated 2622/2624 callback audit: no analogous stale-field snapshot gap. Previous private prerequisites and budgets remain; no new source or compiler. Ownership released. | src/game/characters/Character.cpp |
+| libsanangeles.so | 0x00349315 | FSelect(float,float,float), cold-return origin review | /root/decomp_random | IN_PROGRESS | Pending32 bytes, two-byte cold-copy/branch miss. Reuse existing RTL dumps and primary GCC code to locate first choice of positive-parameter destination versus native return register. Existing no-crossjumping control is whole-code-identical, so that pass is excluded. Read-only; no new source, flags or compilation. | src/game/app/IPhone.cpp |
+
+
+| libsanangeles.so | 0x00349315 | FSelect(float,float,float), actual return-root diagnostic | /root/decomp_random | IN_PROGRESS | Reviewed pre-allocation cold assignment and primary copyrename rules. Approve ONE unchanged ordinary-source frontend/as adding only -fdump-tree-all-details to existing command. Require entire924-byte object SHAda7385c20f7b40855e7860178c1f365835f47da702ac484c85a7cecfbc1bd8c1 identical and all receipts stable before tracing actual ignored-return-temp to positive root. No source candidate or LD. | src/game/app/IPhone.cpp |
+
+
+| libsanangeles.so | 0x00349315 | FSelect(float,float,float), named result reconstruction | /root/decomp_random | IN_PROGRESS | Actual DETAILS proves ignored return-temp PHI renamed to positive in032copyrename1 and cold positive=negative inserted in099. Primary rules reject two user roots and exclude final remerging. Approve ONE ordinary uninitialized float result assigned in both comparison arms and returned once; original flags/ABI/IEEE semantics unchanged. One frontend/as; strict32 then one native LD, conditional exact-target caller verification only. No further forms or credit before root review. | src/game/app/IPhone.cpp |
+
+
+| libsanangeles.so | 0x00349315 | FSelect(float,float,float) | unassigned | COMPLETED | 100%; coordinator independently verified function/full32-byte section in original AnimObject TU and all191 profiles11127 comparisons. All4293 credited selectors covered. Corrected empty IPhone/Win32 boundary attribution, retained17703 function identities/689 source entries. Adds32 matched bytes, no Fully Linked bytes; ownership released after acceptance. | src/game/characters/AnimObject.cpp; tools/layout.py; docs/matches/fselect.md |
+
 <!-- active-ownership:end -->
 
 The coordinator restored native OctTreeAABBNode depth at offset60 and size64.

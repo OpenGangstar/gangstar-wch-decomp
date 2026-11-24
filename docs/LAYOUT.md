@@ -3,8 +3,9 @@
 The retail library records the name of every translation unit it compiled, in
 link order, in its `STT_FILE` symbols. `config/files.tsv` is that list.
 
-**689 source files.** 182 of them belong to the game; the rest are the engine
-and its dependencies. The [provenance ledger](PROVENANCE-CORRECTIONS.md)
+**689 source files.** 181 are classified as game objects; other entries
+include the engine, its dependencies and empty platform objects. Game helpers
+also occur in mixed-origin objects. The [provenance ledger](PROVENANCE-CORRECTIONS.md)
 accounts for the two corrected FreeType objects without removing any original
 function or assembly marker.
 
@@ -35,7 +36,7 @@ them. That is why a number of Irrlicht translation units are attributed to
 
 ## The gameplay areas
 
-The 182 game files fall into sixteen areas. The areas are how the project is
+The 181 files classified as game objects fall into sixteen areas. The areas are how the project is
 organised, how the assembly is filed and how the progress is reported.
 
 | Area | Functions | What it holds |
