@@ -1,5 +1,8 @@
 SECTIONS
 {
+    .npc_combat_sfx 0x002fe614 : { *ai-startup-npc.o(.text._ZN3NPC16triggerCombatSFXEi) }
+    .npc_combat_sfx_table 0x0041d8fc : { *ai-startup-npc.o(.rodata._ZN3NPC16triggerCombatSFXEi) }
+    .npc_combat_sfx_timer 0x004b803c (NOLOAD) : { *ai-startup-npc.o(.bss._ZN3NPC16s_combatSXFTimerE) }
     .npc_freeze 0x002fe998 : { *ai-startup-npc.o(.text._ZN3NPC6freezeEv) }
     .npc_debug 0x002fdbec : { *ai-startup-npc.o(.text._ZN3NPC5debugEPN3irr5video12IVideoDriverE) }
     .npc_lifecycle_002fdb79 0x002fdb78 : { *ai-startup-npc.o(.text._ZN3NPCD2Ev .text._ZN3NPCD1Ev) }

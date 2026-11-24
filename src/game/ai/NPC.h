@@ -11,6 +11,7 @@ class NPC : public Character {
     friend class CopController;
 public:
     NPC(int type);
+    static void triggerCombatSFX(int type);
     void debug(irr::video::IVideoDriver* driver);
     virtual void Stop();
     virtual void OnDespawn();
@@ -63,6 +64,7 @@ public:
     virtual void walkToLocation(const irr::core::vector3d<float>& point);
     virtual void runToLocation(const irr::core::vector3d<float>& point);
 private:
+    static int s_combatSXFTimer;
     void SetWeapon(int type) __attribute__((noinline));
     void notifyAttacked(LevelObject*) __attribute__((noinline));
     friend class AchievementManager;

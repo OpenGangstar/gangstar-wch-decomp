@@ -63,3 +63,8 @@ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.npc_freeze) == 224, "NPC freeze native extent");
 ASSERT(ADDR(.npc_freeze) + SIZEOF(.npc_freeze) == 0x002fea78, "NPC freeze next boundary");
+
+ASSERT(SIZEOF(.npc_combat_sfx) == 368, "NPC combat SFX native extent");
+ASSERT(ADDR(.npc_combat_sfx) + SIZEOF(.npc_combat_sfx) == 0x002fe784, "NPC combat SFX next function");
+ASSERT(SIZEOF(.npc_combat_sfx_table) == 28, "NPC combat SFX switch table extent");
+ASSERT(SIZEOF(.npc_combat_sfx_timer) == 4, "NPC combat SFX timer extent");
