@@ -1,0 +1,19 @@
+{
+  "function": "_ZN3NPC6UpdateEi",
+  "address": "0x002ffe0d",
+  "native_size": 3012,
+  "actual_function_size": 3044,
+  "actual_input_size": 3044,
+  "native_frame": 284,
+  "actual_frame": 308,
+  "raw_target_sha256": "a8027b874343c919ad967a7fbc01312f3dbea921aed31814c55b765b34e57ce0",
+  "public_lf_body_sha256": "f46e0b2910be6d1172ad0b3047ba487c96a5d4a6c93e8e7d096e30b9f80f93c0",
+  "old_raw_definitions_preserved": 73,
+  "frozen_dependency_function_checks": 152,
+  "frozen_dependency_section_region_checks": 44,
+  "frozen_inputs": 1065,
+  "current_root_drift_paths": 71,
+  "native_link_run": false,
+  "matched": false,
+  "context": "Authenticated historical frozen fixture; not current-main/global verification."
+}
