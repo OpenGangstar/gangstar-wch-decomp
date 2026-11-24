@@ -1,0 +1,79 @@
+--- a/src/game/rendering/GS3DStuff.cpp
++++ b/src/game/rendering/GS3DStuff.cpp
+@@ -1350,3 +1350,64 @@
+ typedef char load_trail_24[(sizeof(TrailMgr) == 24) ? 1 : -1];
+ typedef char load_lights_20[(sizeof(GS3DLightNodes) == 20) ? 1 : -1];
+ typedef char load_array_20[(sizeof(irr::core::array<irr::scene::ISceneNode*>) == 20) ? 1 : -1];
++
++#include "../vehicles/CarSoundCallbacks.h"
++
++namespace {
++template<class T>
++inline __attribute__((always_inline)) void deletePointerArray(irr::core::array<T*>* array)
++{
++    if (array) {
++        if (array->free_when_destroyed)
++            ::operator delete(array->data);
++        delete array;
++    }
++}
++}
++
++void GS3DStuff::tearDown()
++{
++    AIManager::getInstance()->clean();
++    GameObjectManager::s_gom->Clear();
++    SceneNodeManager::getInstance()->tearDown();
++    ScriptManager::getInstance()->tearDown();
++    MenuManager::getInstance()->tearDown();
++
++    for (int index = 0; static_cast<unsigned int>(index) < lightsNodes.used; ++index)
++        lightsNodes.data[index]->remove();
++    ::operator delete(lightsNodes.data);
++    lightsNodes.data = 0;
++    lightsNodes.used = 0;
++    lightsNodes.allocated = 0;
++    lightsNodes.is_sorted = true;
++
++    freeGameData(Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode());
++    if (sunNode)
++        sunNode->drop();
++    CameraManager::getInstance()->clean();
++    PhysicAttributes::Clean();
++    Character::cleanTimelineController();
++    Lock::clean();
++    SafeDelete(sceneOcttree);
++    SpawnPoint::ClearAllSpawnInstances();
++    delete playerTest;
++    playerTest = 0;
++    PhysicAttributes::CleanWorld();
++
++    if (s_TrailMgr) {
++        s_TrailMgr->CleanUp();
++        delete s_TrailMgr;
++        s_TrailMgr = 0;
++    }
++    LevelObject::freeHighlights();
++    Map::getInstance()->clean();
++    CarSounds::Clean();
++    SoundManager::getInstance()->clear();
++
++    deletePointerArray(VisibleNodes);
++    deletePointerArray(LastVisibleNodes);
++    deletePointerArray(VisibleSceneNodes);
++    deletePointerArray(LastVisibleSceneNodes);
++    deletePointerArray(VisibleSpawnPoint);
++}
++
+--- a/src/game/hud/MenuManager.h
++++ b/src/game/hud/MenuManager.h
+@@ -25,7 +25,8 @@
+     void update(StateMachine* machine);
+     MenuManager();
+     virtual ~MenuManager();
+-    static MenuManager* getInstance();
++    static MenuManager* getInstance();
++    void tearDown();
+     MenuWidget* getWidgetByIndex(int index) const
+     {
+         return index < widgets.size ? widgets.elements[index] : 0;
