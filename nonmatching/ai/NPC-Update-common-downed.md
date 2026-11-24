@@ -113,3 +113,10 @@ missing paths against current main are explicitly disclosed in the private
 packet. These are historical-context checks, not a current-main/global build.
 No helper import replaces the real PhysicInfo constructor, whose native placement
 remains unresolved. The single trial stopped without further source variants.
+## Later reconstruction
+
+This earlier fragment is retained as historical evidence. The newer
+[storage and callback reconstruction](NPC-Update-storage.cpp) also restores the
+post-getVehicle category reload. See the
+[reviewed reconstruction notes](../2026-11-24-reconstruction-notes.md) for its
+actual failed extent and context limitations. Neither fragment is matched.

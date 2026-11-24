@@ -1,3 +1,5 @@
+// Historical candidate. The later reconstruction corrects three arrival fields
+// and event construction contexts; see Vehicle-processAIFlags-reconstruction.cpp.
 void Vehicle::_processAIFlags()
 {
     using irr::core::vector3d;

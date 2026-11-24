@@ -1,0 +1,58 @@
+{
+  "function": "_ZN3NPC6UpdateEi",
+  "retail_address": "0x002ffe0d",
+  "native_size": 3012,
+  "function_size": 3044,
+  "input_size": 3044,
+  "frame": 284,
+  "native_frame": 284,
+  "public_file": "NPC-Update-storage.cpp",
+  "public_lf_sha256": "eaa865f4b79096cfbcd728d5f7d689bf499751ceeba88ea8ef48fb802c563838",
+  "tested_private_source_sha256": "c9f3f5688a27a0bf420a9dde5647728062dff0fdafa706d387d824d452e54f71",
+  "object_sha256": "9e3766a81bd1fd07a2be8acc1fa47b6cfb50184743f378a268498d37cacfdd61",
+  "raw_target_sha256": "a954199bf09c4c9644a9ead0c01b79e26ce20317bb212f59420763e5b1d4f68d",
+  "mapped_event_homes": {
+    "wait": 24,
+    "arrival": 40,
+    "weapon_range": 56,
+    "cinematic_cancellation": 72,
+    "chase_cancellation": 88
+  },
+  "mapped_scalar_homes": {
+    "is_down": 8,
+    "avoid_vehicle": 12,
+    "y": 16,
+    "x": 20
+  },
+  "mapped_vector_homes": {
+    "early_position": 260,
+    "height_argument": 248,
+    "scene_position": 236,
+    "avoidance_self": 224,
+    "avoidance_vehicle": 212,
+    "turn_destination": 200,
+    "entry_800_nearest": 188,
+    "entry_800_x": 176,
+    "entry_800_y": 164,
+    "entry_800_z": 152,
+    "entry_2000_nearest": 140,
+    "entry_2000_x": 128,
+    "entry_2000_y": 116,
+    "entry_2000_z": 104,
+    "entry_vectors_shared_with_arrival": 40
+  },
+  "mapped_clamp_homes": [
+    272,
+    276
+  ],
+  "old_raw_definitions_preserved": 73,
+  "frozen_inputs": 1065,
+  "actual_tool_runtime_pins": 6,
+  "frozen_dependency_function_checks": 152,
+  "frozen_dependency_section_region_checks": 44,
+  "dependency_checks_fresh": true,
+  "native_link_run": false,
+  "matched": false,
+  "context": "Historical frozen source/type fixture; not current-main or global native verification.",
+  "publication": "LF method text equals the tested method after line-ending normalization; standalone publication was not separately compiled."
+}
