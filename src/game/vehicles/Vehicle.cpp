@@ -1505,7 +1505,6 @@ void __attribute__((weak)) Vehicle::stopSiren()
     }
 }
 
-extern "C" void _ZN12EvNPCVehicleD1Ev(void*) __attribute__((weak));
 
 
 #include "VehicleEvents.h"
@@ -1552,10 +1551,8 @@ void Vehicle::cleanupTargetDetection()
     if (flags344 & detectingTarget) {
         flags344 &= ~detectingTarget;
         EventManager* events = Application::GetInstance()->GetEventManager();
-        unsigned int storage[sizeof(EvNPCVehicle) / sizeof(unsigned int)] __attribute__((aligned(__alignof__(EvNPCVehicle))));
-        EvNPCVehicle* event = new (storage) EvNPCVehicle(19, this);
-        events->raise(*event);
-        _ZN12EvNPCVehicleD1Ev(event);
+        EvNPCVehicle event(19, this);
+        events->raise(event);
     }
 }
 
