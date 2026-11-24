@@ -1,0 +1,12 @@
+[
+  {
+    "patch": "height-snapshot.patch",
+    "original_patch_sha256": "c19b8c812ef8801fd60bbde95e4138d1eb482e2b83b24a752fcb2224055fbacc",
+    "published_lf_patch_sha256": "249e84e886a248ecc7c30f3d96433a8e8c5f6afa51c071670a64fab35d366ee6"
+  },
+  {
+    "patch": "common-bottom.patch",
+    "original_patch_sha256": "7b53e587bd6cc41a6eb723f66677bf4d5c7031b7457f25b3af8f87358db33767",
+    "published_lf_patch_sha256": "18a7291689a99b92698d6d66c17fb61e2761c0b197d01ec5ca2dc8b58025062d"
+  }
+]
