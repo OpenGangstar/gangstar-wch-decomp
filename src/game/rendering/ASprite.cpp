@@ -412,3 +412,38 @@ int ASprite::GetAnimIdx(const char* name)
     }
     return -1;
 }
+
+// Native const-member ABI import: receiver followed by four integer arguments.
+extern "C" void _ZNK7ASprite11PaintModuleEiiii(const ASprite*, int, int, int, int);
+
+void ASprite::PaintFModule(int frame, int module, int x, int y, int flags) const
+{
+    const ASpriteData* blob = reinterpret_cast<const ASpriteData*>(data);
+    const unsigned char* bytes = reinterpret_cast<const unsigned char*>(blob);
+    const ASpriteData::Frame* entry = reinterpret_cast<const ASpriteData::Frame*>(
+        bytes + (blob->frames + static_cast<unsigned int>(frame) * sizeof(ASpriteData::Frame)));
+    int index = entry->firstModule + module;
+    const ASpriteData::FModule* frameModules = reinterpret_cast<const ASpriteData::FModule*>(bytes + blob->frameModules);
+    const ASpriteData::FModule* record = frameModules + index;
+    unsigned int moduleFlags = record->flags;
+    unsigned int moduleIndex = record->module;
+    if (moduleFlags & 8) {
+        PaintFrame(moduleIndex, x + record->x, y + record->y, flags ^ ((moduleFlags & 15) << 4));
+    } else {
+        int flipX = flags & 16;
+        int px = flipX ? x - record->x : x + record->x;
+        int flipY = flags & 32;
+        int py = flipY ? y - record->y : y + record->y;
+        if (flipX) {
+            const ASpriteData::Module* shape = reinterpret_cast<const ASpriteData::Module*>(
+                bytes + (blob->modules + moduleIndex * sizeof(ASpriteData::Module)));
+            px -= shape->width;
+        }
+        if (flipY) {
+            const ASpriteData::Module* shape = reinterpret_cast<const ASpriteData::Module*>(
+                bytes + (blob->modules + moduleIndex * sizeof(ASpriteData::Module)));
+            py -= shape->height;
+        }
+        _ZNK7ASprite11PaintModuleEiiii(this, moduleIndex, px, py, flags ^ ((moduleFlags & 15) << 4));
+    }
+}

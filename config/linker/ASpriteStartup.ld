@@ -34,6 +34,7 @@ SECTIONS
     .asprite_animation_1 0x002d4550 : { *asprite-startup.o(.text._ZN7ASprite13GetFrameWidthEi) }
     .asprite_animation_2 0x0034979c : { *asprite-startup.o(.text._ZNK7ASprite9GetAFrameEi) }
     .asprite_animation_5 0x00349d60 : { *asprite-startup.o(.text._ZNK7ASprite19GetModuleFromAFrameEii) }
+    .asprite_paint_fmodule 0x0034a014 : { *asprite-startup.o(.text._ZNK7ASprite12PaintFModuleEiiiii) }
     .asprite_paint_frame 0x0034a0f0 : { *asprite-startup.o(.text._ZNK7ASprite10PaintFrameEiiii) }
     .asprite_paint_animation 0x0034a144 : { *asprite-startup.o(.text._ZNK7ASprite11PaintAFrameEiiiii) }
     .asprite_storage_method_0 0x003496e4 : { *asprite-startup.o(.text._ZN7ASpriteC1Ev .text._ZN7ASpriteC2Ev) }
@@ -62,3 +63,5 @@ ASSERT(SIZEOF(.asprite_storage_0) == 32, "local string extent");
 ASSERT(SIZEOF(.asprite_storage_1) == 12, "half-vector extent");
 
 ASSERT(SIZEOF(.asprite_anim_index) == 64, "ASprite animation index extent");
+
+ASSERT(SIZEOF(.asprite_paint_fmodule) == 220, "ASprite frame module extent");
