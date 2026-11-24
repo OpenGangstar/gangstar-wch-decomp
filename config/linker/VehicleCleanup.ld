@@ -1,3 +1,4 @@
+_ZdaPv = 0x001c461c;
 acosf = 0x1c4694;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
@@ -35,6 +36,16 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+ .vehicle_d1 0x00311498 : { *vehicle-cleanup.o(.text._ZN7VehicleD1Ev) }
+ ASSERT(SIZEOF(.vehicle_d1) == 580, "Vehicle D1 exact native input")
+ ASSERT(ADDR(.vehicle_d1) + SIZEOF(.vehicle_d1) == 0x003116dc, "Vehicle D1 native end")
+ .vehicle_d0 0x00311250 : { *vehicle-cleanup.o(.text._ZN7VehicleD0Ev) }
+ ASSERT(SIZEOF(.vehicle_d0) == 584, "Vehicle D0 exact native input")
+ ASSERT(ADDR(.vehicle_d0) + SIZEOF(.vehicle_d0) == 0x00311498, "Vehicle D0 native end")
+ .vehicle_vtable 0x004ab1f8 : { *vehicle-cleanup.o(.data.rel.ro._ZTV7Vehicle) }
+ ASSERT(SIZEOF(.vehicle_vtable) == 192, "Vehicle table complete input")
+ ASSERT(ADDR(.vehicle_vtable) + SIZEOF(.vehicle_vtable) == 0x004ab2b8, "Vehicle table native end")
+
  .vehicle_explode 0x003130a0 : { *vehicle-cleanup.o(.text._ZN7Vehicle7explodeEv) }
  ASSERT(SIZEOF(.vehicle_explode) == 740, "Vehicle explode exact native extent")
 

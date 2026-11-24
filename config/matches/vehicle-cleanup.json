@@ -229,7 +229,19 @@
         "_ZN7VehicleC1Ei",
         "_ZN7VehicleC2Ei",
         "_ZN7Vehicle10stepPhysicEv",
-        "_ZN7Vehicle7explodeEv"
+        "_ZN7Vehicle7explodeEv",
+        {
+            "name": "_ZN7VehicleD1Ev",
+            "address": "0x00311499"
+        },
+        {
+            "name": "_ZN7VehicleD2Ev",
+            "address": "0x00311499"
+        },
+        {
+            "name": "_ZN7VehicleD0Ev",
+            "address": "0x00311251"
+        }
     ],
     "sections": [
         ".vehicle_collision",
@@ -348,7 +360,10 @@
         ".skin_table_19",
         ".ctor_family_8",
         ".ctor_table_8",
-        ".vehicle_explode"
+        ".vehicle_explode",
+        ".vehicle_d1",
+        ".vehicle_d0",
+        ".vehicle_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -597,6 +612,31 @@
         "_ZN10PlayerTest22addCurrentJumpDistanceEf",
         "_ZN9Explosion13drawExplosionEN3irr4core8vector3dIfEES3_",
         "_ZN9Explosion20applyExplosionDamageEP11LevelObjectN3irr4core8vector3dIfEEfi",
-        "_ZN18AchievementManager22recordDestroyedVehicleERK7Vehicle"
+        "_ZN18AchievementManager22recordDestroyedVehicleERK7Vehicle",
+        "_ZN10PlayerTest10initMoveToEPK7Vehicle",
+        "_ZN10PlayerTest10stopMovingEb",
+        "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
+        "_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle",
+        "_ZN11LevelObject11SetRotationERKN3irr4core8vector3dIfEE",
+        "_ZN11LevelObject12setAnimationEPKcibbb",
+        "_ZN11LevelObject12setAnimationEiibbb",
+        "_ZN11LevelObject16setNextAnimationEPKcibbb",
+        "_ZN11LevelObject16setNextAnimationEiibbb",
+        "_ZN11LevelObject27setAnimationSpeedMultiplierEi",
+        "_ZN11LevelObjectD1Ev",
+        "_ZN18CarSoundParametersD1Ev",
+        "_ZN7Vehicle13dropSceneNodeEv",
+        "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
+        "_ZN7Vehicle6UpdateEi",
+        "_ZN7Vehicle7disableEv",
+        "_ZN7Vehicle9OnDespawnEv",
+        "_ZN9CarSoundsD1Ev",
+        "_ZNK11LevelObject11GetPositionEv",
+        "_ZNK11LevelObject11GetRotationEv",
+        "_ZNK11LevelObject8GetFrontEv",
+        "_ZNK11LevelObject8GetMatIDEv",
+        "_ZNK11LevelObject8GetRightEv",
+        "_ZNK11LevelObject8GetTriIDEv",
+        "_ZNK3irr17IReferenceCounted4dropEv"
     ]
 }

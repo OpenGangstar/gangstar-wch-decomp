@@ -2700,3 +2700,65 @@ void Vehicle::collision(irr::core::vector3d<float> impact, int type)
         sounds->unknown140 = false;
     }
 }
+
+Vehicle::~Vehicle()
+{
+    _cleanupSounds();
+    stopSiren();
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (flags344 & (1u << 16)) {
+        showHighlight(-1);
+        ScriptManager::displayOnMinimap(this, false, true);
+    }
+    if (PlayerTest::GetPlayer()) {
+        if (PlayerTest::GetPlayer()->getVehicle() == this) {
+            player->stopDriving(playertest::PlayerCarState::MovingOut, true);
+            player->setVehicle(0);
+            player->unknown312 = 0;
+            player->setLastUsedVehicle(0);
+        }
+        if (PlayerTest::GetPlayer()->unknown368 == this) {
+            player->initMoveTo(0);
+            player->stopMoving(false);
+            player->flags240 &= ~0x1000u;
+        }
+    }
+    if (collisionBody) {
+        DestroyWheels();
+        if (collisionBody->data) {
+            ::operator delete(collisionBody->data);
+            collisionBody->data = 0;
+        }
+        PhysicAttributes::s_world->DestroyBody(collisionBody);
+        collisionBody = 0;
+    }
+    if (unknown24) {
+        delete unknown24;
+        unknown24 = 0;
+    }
+    Application* app = Application::GetInstance();
+    EventManager* events = app->GetEventManager();
+    {
+        EvVehicleDestroyed event(this);
+        events->raise(event);
+    }
+    delete carSounds;
+    delete carSoundParameters;
+    delete[] enterAnim;
+    delete[] exitAnim;
+    delete[] closeDoorAnim;
+    delete[] init748;
+    delete[] init768;
+    delete[] init772;
+    explosionAnimator->drop();
+    if (!hasSceneNodePool() && enabledSceneNode) {
+        app->GetDevice()->getSceneManager()->getRootSceneNode()->removeChild(enabledSceneNode);
+        enabledSceneNode = 0;
+    }
+    for (int i = 0; i < 4; ++i) {
+        if (wheelTrails[i]) {
+            GS3DStuff::GetTrailMgr()->FreeTrail(wheelTrails[i]);
+            wheelTrails[i] = 0;
+        }
+    }
+}
