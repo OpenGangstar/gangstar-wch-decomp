@@ -54,12 +54,20 @@ void ScriptManager::update(int elapsed)
 
     if (!s_failure) {
         const unsigned int flags = PlayerTest::GetPlayer()->flags240;
-        if ((flags & 0x4000u) && !(flags & 0x2000u))
-            s_failure |= 5;
-        else if (mission->getState() == 6)
+        if (!(flags & 0x4000u))
+            goto checkMissionFailure;
+        if (flags & 0x2000u)
+            goto checkMissionFailure;
+        s_failure |= 5;
+        goto failureDetectionDone;
+
+    checkMissionFailure:
+        if (mission->getState() == 6)
             s_failure |= 1;
         else if (static_cast<unsigned char>(PlayerTest::GetPlayer()->unknown424))
             s_failure |= 2;
+
+    failureDetectionDone:
 
         if (s_failure) {
             ScriptManager::getInstance()->setState(State0);
@@ -79,7 +87,7 @@ void ScriptManager::update(int elapsed)
     if (!s_failure) {
         mission->update(elapsed);
         for (int i = 0; i < scriptCount; ++i) {
-            if (__builtin_expect(scripts[i]->getState() == Script::State2, 0))
+            if (scripts[i]->getState() == Script::State2)
                 scripts[i]->execute(elapsed);
         }
     }
