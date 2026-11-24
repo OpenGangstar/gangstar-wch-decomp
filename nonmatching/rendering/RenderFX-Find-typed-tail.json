@@ -1,0 +1,46 @@
+{
+  "function": "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
+  "retail_address": "0x003ed6e5",
+  "native_size": 416,
+  "function_bytes": 420,
+  "input_bytes": 420,
+  "frame": 316,
+  "matched": false,
+  "native_link_run": false,
+  "public_file": "RenderFX-Find-typed-tail.cpp",
+  "public_lf_sha256": "59f8643fee83e8b94553fd3cee5504014bd608b834722f335a8fe1332087fa75",
+  "body_lf_sha256": "c5f9a3c58271982d38cf391e222e5736915915f5329bbce0e10711d665101de0",
+  "tested_body_sha256": "9996d3d3229e5a849318e79b6de8387c94957051db8a61207acef59f5ac2b8bc",
+  "tested_full_source_sha256": "b2f34a5baf6c7990b4cd615d8fe71dc2bd8bb5933a18eaed7f55ef192de500a3",
+  "object_sha256": "d218438fb47563e0eaa9245b3faac042699e633d5ffd2b2aca6b99682c244642",
+  "raw_target_sha256": "a51031807b67f8181e8aac168e28d58aa81cadef0281459ce4d6c09d3ed85a42",
+  "frozen_inputs": 858,
+  "tool_runtime_files": 119,
+  "compiler_as_linker_counts": [
+    1,
+    1,
+    0
+  ],
+  "old_functions_preserved": 113,
+  "offtarget_allocated_payloads_preserved": 138,
+  "initial_strict_preservation_gate_passed": false,
+  "offtarget_semantic_records": 448,
+  "identical_semantic_records": 446,
+  "remaining_two_records": "Only referenced target st_size changes 408 to 420; names, sites, types, binding, section, value and raw caller instructions unchanged.",
+  "other_metadata_delta": "Target FUNC size 408 to 420 and target-owned $d literal marker 400 to 412.",
+  "anonymous_token_before": "8C1B7E2E",
+  "anonymous_token_after": "0455821E",
+  "target_strchr_sites": 2,
+  "native_code_padding_pool": [
+    406,
+    2,
+    8
+  ],
+  "candidate_code_padding_pool": [
+    410,
+    2,
+    8
+  ],
+  "publication": "LF text equals tested helper/function fragment after CRLF normalization. Fragment not separately compiled; requires the complete paired historical prefix, interfaces and configuration.",
+  "receipt": "_scratch/worker-renderfx-find-typed-tail-control/REPORT.md"
+}

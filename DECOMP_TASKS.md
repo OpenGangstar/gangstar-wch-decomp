@@ -534,6 +534,60 @@ Coordinator approved two bounded measurements after report review. Vehicle curre
 
 PlayerTest getAttackableTarget pointer-root review accepted negative: actual v7 already has independent named best and the same fallback-to-best/common-return topology as native;886 inputs stable, seven forms unchanged. Same owner now receives bounded read-only relevant historical-versus-current owning-model comparison before any proposed integration replay. Identify exact real declarations/layout/interface differences and old match pairing; no compiler/source change, artificial context or automatic replay authorization.
 
+
+Publication PR780 merged295402ffffed43b564a94801ecd6170699931074 after both CI checks, exact headc739440e5952a16cd9efb3bee60cc73bfde01403 and clean unchanged-base review. Source/profile/catalogue matching inputs remain unchanged; entire main progress report verified equal to accepted local report (run45358540123, artifact14902803446).
+
+RenderFX Find diagnostic neutral pairing accepted after root independently compared the entire45876-byte objects in memory under exactly two generated anonymous-token occurrences:16 raw .strtab bytes differ, no output edited. All code/data/metadata/semantic-reference gates pass. Authorize interpretation of existing118 dumps only; no further compiler/as/LD/source change. Trace actual Find return carrier and parent/result/character identities, separately from inline helper returns; source reconstruction remains unapproved.
+
+
+Coordinator accepted Vehicle current replay evidence: actual3224/native3220 unchanged extent, all current202 and historical197 raw old functions preserved, generated local/anonymous name mappings explicit, real96-byte constructor C1/C2 alias emitted, expected Reset plus four AI imports only. No LD or credit. Same owner receives read-only localization of the ten changed target bytes versus historical3224 and their native correspondence; no speculative source fix or new compile. Player attackable owning-model review accepted negative and ownership released; necessary NPC declarations were already tested, not new replay evidence.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00315f39 | GameObjectManager::getDistanceFromAttackableTarget(Character*,int,LevelObject*,bool) | /root/decomp_random | IN_PROGRESS | Pending416. Bounded read-only actual scalar result/native return-transfer review and retained evidence reuse. No fresh complete-context replay or generic result rewrite; previous budgets remain. No source/compiler/LD/dump. | src/game/world/GameObjectManager.cpp |
+
+
+### Reuse follow-up after verified PR780
+
+Vehicle AI current-context delta reviewed: ten bytes are only steering Y/Z register transport, final XYZ and GetPlayer offsets remain native-correct. Preserve current3224 fixture/integration patch; ownership released and source grid parked. GameObjectManager distance review accepted negative: actual return is int, named distance/sentinel/common return already exact; only two faction-register bytes differ. Ownership released.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0031ff49 | PhysicAttributes::GetHeight(vector3df const&,int,bool) | /root/decomp_billboard | IN_PROGRESS | Pending248. Read-only eligibility/proposal review using genuine current PhysicInfo ctor support; recover five old failures and determine whether support is actually new. No source/compiler/LD/dump before review. | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*,gameswf::character*) | /root/decomp_cleanup | IN_PROGRESS | Pending416/authentic408. Measured copyrename parent-root adoption accepted, with later outSSA split caveat. Prepare at most one unapplied genuine named function-output proposal only after checking all spent histories; no compile/source application yet. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0031cf75 | PhysicAttributes::GetNextRandomPos(int,int,vector3df) | /root/decomp_random | IN_PROGRESS | Pending1748/latest1732. Read-only current native constructor/helper reuse eligibility review and spent-history recovery; no old header transplant or automatic trial. No source/compiler/LD/dump. | src/game/characters/PhysicAttributes.cpp |
+
+
+Coordinator reviewed Find output-history negative and explicitly authorizes ONE bounded controlled composition, not a wider output lifetime or default budget reset. New exact032 trace identifies current return-parent root; retained parent-2 proves the native early-R0/two-strchr shape, while current authenticated body has the subsequently verified typed get_name interface and proxy helper. Keep the entire current typed body/helpers/headers/flags; replace ONLY final do-while continuation with explicit if(part>=name+nameLength)return result inside the existing per-iteration scope, then while(true). This reuses the exact old per-iteration output role without adding variables or copying old headers. One frontend/as; strict416 extent and all old113 functions/off-target allocated/metadata/import/semantic-reference gates; stop before LD. If an exact same complete typed composition already has a measured result, do not repeat it.
+
+
+Physics constructor reuse eligibility reviews accepted negative and ownership released: both wrappers already had exact native C1/Reset support, and neither target calls those helpers. Find sole typed-tail composition reviewed:420/native416, desired early-R0/two-strchr structure recovered,113 old functions138 off-target payloads unchanged. Initial strict inventory failure is retained; two caller referenced-size changes and target-own literal marker explain its complete metadata delta, not an old payload regression. No LD or credit. Same Find owner gets read-only structural accounting of remaining native versus420 code/pool/guard/helper differences, no further source trial.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | /root/decomp_billboard | IN_PROGRESS | Native82/latest80. Bounded read-only novel compiler-representation review: signed16 serialized field versus genuine packed bit-field extraction lowering, using existing TER/backend traces and all spent histories. No shared data-layout change, volatile/barrier, compile or arbitrary cast grid; proposal only if genuinely supported/new. | src/game/rendering/ASprite.cpp; src/game/core/ASpriteData.h |
+| libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int,int,int,int,int)const | /root/decomp_random | IN_PROGRESS | Native220/candidate220 with28 differing bytes. Bounded read-only signed serialized-coordinate load/canonicalization evidence inventory; identify whether same narrow-load mechanism actually exists or reject. Three identical original forms remain spent; no source/header/compiler/dump/LD. | src/game/rendering/ASprite.cpp; src/game/core/ASpriteData.h |
+
+
+ASprite duration bit-field primary-source review accepted negative: aligned full16 extraction collapses to the same signed-memory path; no forced packing/alignment or compile. PaintFModule review accepted negative: all11 narrow loads exact,28 residual bytes elsewhere; ownership of both released.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int,int,int,int)const | /root/decomp_billboard | IN_PROGRESS | Pending512. Read-only actual native/candidate serialized Module/Image field, flag and coordinate provenance ledger, reusing existing complete proofs first. No new header/source/compiler before a concrete discrepancy. | src/game/rendering/ASprite.cpp; src/game/core/ASpriteData.h |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*,gameswf::character*) | /root/decomp_cleanup | IN_PROGRESS | Current420/native416. Read-only original pinned gameswf character.get_parent const -> weak_ptr.get_ptr const -> check_proxy const/smart_ptr set_ref API comparison against current free helper and exact SetTexture relative. Proposal only if distinct genuine API structure not already tried; no compiler yet. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int,int,int,int&,int&) | /root/decomp_random | IN_PROGRESS | Pending296. Read-only native/candidate serialized pixel Module/Image/Frame field and flag ledger; accurate signedness/coordinate/palette roles only, no speculative renderer behavior. No shared-header edits/compiler. | src/game/rendering/ASprite.cpp; src/game/core/ASpriteData.h |
+
+
+Coordinator reviewed the pinned original gameswf const parent proposal and exact UNAPPLIED.patch. Authorize ONE frontend/as on authentic420, applying only that patch. Keep all typed-name/loop source and flags unchanged; same existing proxy clear implementation,8-byte subobject at128/132/name136, no foreign layout or forced inline. Verify actual layout/access ordering, extent416,113 old functions138 payloads/imports/off-target refs under disclosed target-size and mapping-marker consequences, and inventory any naturally outlined helpers. Stop before LD regardless of extent; no refinement or new flags. This is source-API reuse supported by upstream get_parent/get_ptr/check_proxy const and an existing exact SetTexture relative, not a register-offset prescription.
+
+
+Reviewed completed field/API work: PaintModule and PixelInfo serialized ledgers found no source discrepancy; ownership released. Find const-parent API trial420 is byte/target-reference identical to prior420, with all113 old functions138payloads448off-target refs preserved; no outlined helpers or imports. Source API equivalence is useful but no credit. Same Find owner receives one bounded private branch-probability feasibility/control proposal based on the two precisely measured range expansions; production hint eligibility still requires whole native match plus affected existing checks.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x003268cc | non-virtual thunk to AnalogStick::processTouch(long),_ZThn8_N11AnalogStick12processTouchEl | /root/decomp_billboard | IN_PROGRESS | Native20 exact archive lead remains uncredited. Read-only primary GCC/C++ feasibility for independently reconstructing the genuine ARM ABI forwarder without defining/replacing unmatched parent; no assembly/output rewrite, helper fiction or source compile before root review. | src/game/input/AnalogStick.cpp |
+| libsanangeles.so | 0x003268e1 | AnalogStick::processTouch(long),_ZN11AnalogStick12processTouchEl | /root/decomp_random | IN_PROGRESS | Native1016/latest1028 unmatched. Read-only physical callable/interface/vtable contract and genuine import/local-binding evidence for the separately owned thunk, not a new parent algorithm trial. No parent definition substitution or overlap with thunk work. | src/game/input/AnalogStick.cpp; src/game/input/AnalogStick.h |
+
 <!-- active-ownership:end -->
 
 The coordinator restored native OctTreeAABBNode depth at offset60 and size64.
