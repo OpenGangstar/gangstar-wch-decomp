@@ -70,3 +70,25 @@ Do not infer permission for qualifier, integer-cast, helper or flag grids.
 All controls remain unmatched. No Matched, Fully Linked or fuzzy progress is
 added, no generated catalogue row is hand-edited, and no game data or compiler
 output is included in these artifacts.
+
+## Rejected consumed-pointer follow-up
+
+One later OnDespawn control introduced an actual `LevelObject*` target and
+sequential consumed locals for the two player fields. It preserved the field
+observation and callback phases, including reading the second field after the
+possible first-field clear. One compiler/assembler pair produced the identical
+308-byte target, all 12 target relocations and the complete target assembly.
+The same three CMP bytes remain different. No new link was run; the resolved
+native comparison remains the saved direct-control ELF comparison above.
+
+Whole-object identity initially failed: generated anonymous-namespace names
+changed from suffix `98E71C6E` to `2A1B45AA`. Independent review accounted for
+every changed object byte inside complete namespace strings, with corresponding
+off-target symbols, sections, references and payloads otherwise preserved.
+That specific correspondence permitted target review; it did not turn the raw
+identity failure into a pass or establish the runtime cause of the suffix.
+
+The unchanged raw target SHA256 is
+`e272daaa5bdadaaad8f9a579719c4c6579d76bbb6713b0fb7863fe3854e6f24d`.
+No pass dumps establish where the source distinction disappeared. This negative
+control does not justify another alias, qualifier or declaration-order search.
