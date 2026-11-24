@@ -1,0 +1,11 @@
+--- accepted-const420/src/game/rendering/menufx.cpp
++++ unapplied-one-null-end-hint/src/game/rendering/menufx.cpp
+@@ -1569,7 +1569,7 @@
+     const char* part = name;
+     do {
+         const char* end = strchr(part, '.');
+-        if (!end)
++        if (__builtin_expect(end == 0, 0))
+             end = name + nameLength;
+         const int length = end - part;
+         memcpy(component, part, length);
