@@ -104,11 +104,11 @@ were recorded; an unavailable historical compiler binary hash was not inferred.
 
 RTL expansion represents `this` as pseudo 103 and offset 368 as pseudo 109.
 `112r.cse1` shares an offset value across `justStoleCar`, and `131r.split1`
-splits its materialization into 184 followed by a shift. The first dump exposing
-physical register roles is `138r.greg`: `this` uses r4 and the offset uses r5.
+splits its materialization into 184 followed by a shift. The initial diagnostic's
+first fully substituted RTL display is `138r.greg`: `this` uses r4 and the offset uses r5.
 Retail uses the reverse legal allocation. Later register renaming and scheduling
-retain those roles. The dumps do not expose the precise earlier local-allocation
-priority decision or establish an original-source correction.
+retain those roles. Those initial dumps do not expose the precise earlier
+local-allocation priority decision or establish an original-source correction.
 
 ### Current canonical replay
 
@@ -132,6 +132,27 @@ retained separately rather than counted as successful verification.
 The [reproducible nonmatching patch](../../nonmatching/ai/PlayerTest-onTargetReached.md)
 preserves the source and prerequisites against an identified baseline. None is
 applied to production source; the assembly and progress remain unchanged.
+
+### Reused detailed allocation evidence
+
+A later audit recovered already completed local-details and runtime records;
+no duplicate debugger or compiler run was needed. The detailed `137r.lreg`
+records assign pseudo 103 to R4 and 109 to R5 before global allocation. Thus
+138 is the first substituted display in the earlier diagnostic, rather than
+the origin of these choices.
+
+The retained runtime observes 13 quantities, not the ResStream three-item case.
+Quantity 0 (`this`) has priority 5555; its suggested R0 attempt fails and the
+ordinary attempt returns R4. Quantity 6 (offset 368), priority 3333, is attempted
+later: R4 is live throughout its interval and R5 is free, so it returns R5.
+Actual call/liveness/return records already explain the candidate's allocation.
+They do not explain the native reversal or justify another source/flag grid.
+
+The audit rehashed 879 retained inputs and all 15 recorded object identities,
+and independently confirmed the same 60-byte target and nine native differences.
+This remains historical frozen-context evidence; anonymous-name drift and its
+preservation limits are disclosed in the private receipts. It does not claim
+whole-object identity or a new replay against today's complete checkout.
 
 ## Disposition
 
