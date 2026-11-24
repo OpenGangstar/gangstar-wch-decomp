@@ -1,0 +1,21 @@
+--- preserved signed-count v2 fragment
++++ UNAPPLIED faithful table refresh fragment
+@@ -3,11 +3,16 @@
+     int count = 0;
+     if (flags & 2) {
+         for (int id = 0; id < soundCount; ++id) {
+-            for (int channel = 0; channel < 4; ++channel) {
+-                CSound** channels = soundSlots[id];
++            int channel = 0;
++            CSound*** table = soundSlots;
++            for (;;) {
++                CSound** channels = table[id];
+                 CSound* sound = channels[channel];
+                 if (sound && sound->GetStatus() != 4)
+                     ++count;
++                if (++channel == 4)
++                    break;
++                table = soundSlots;
+             }
+         }
+     }

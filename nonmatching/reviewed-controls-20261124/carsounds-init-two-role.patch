@@ -1,0 +1,27 @@
+--- a/src/game/vehicles/CarSounds.cpp
++++ b/src/game/vehicles/CarSounds.cpp
+@@ -777,8 +777,8 @@
+     engineArray88 = new int[onEngineCount];
+     engineArray92 = new int[onEngineCount];
+     engineArray96 = new int[onEngineCount];
+-    for (int i = 0; i < onEngineCount; ++i) {
+-        const unsigned int byteOffset = i * sizeof(int);
++    unsigned int byteOffset = 0;
++    for (int i = 0; i < onEngineCount; ++i, byteOffset += sizeof(int)) {
+         *reinterpret_cast<int*>(reinterpret_cast<unsigned int>(onEngineIds) + byteOffset) = *reinterpret_cast<int*>(reinterpret_cast<unsigned int>(settings->onEngineIds) + byteOffset);
+         *reinterpret_cast<int*>(reinterpret_cast<unsigned int>(onEngineChannels) + byteOffset) = -1;
+         *reinterpret_cast<int*>(reinterpret_cast<unsigned int>(engineArray88) + byteOffset) = *reinterpret_cast<int*>(byteOffset + reinterpret_cast<unsigned int>(settings->onEngineReferenceRpm));
+@@ -860,9 +860,10 @@
+         auxiliaryTurboCount = settings->auxiliaryTurboCount;
+         auxiliaryTurboIds = new int[auxiliaryTurboCount];
+         auxiliaryTurboChannels = new int[auxiliaryTurboCount];
+-        for (int i = 0; i < auxiliaryTurboCount; ++i) {
+-            auxiliaryTurboIds[i] = settings->auxiliaryTurboIds[i];
+-            auxiliaryTurboChannels[i] = -1;
++        unsigned int auxiliaryByteOffset = 0;
++        for (int i = 0; i < auxiliaryTurboCount; ++i, auxiliaryByteOffset += sizeof(int)) {
++            auxiliaryTurboIds[auxiliaryByteOffset / sizeof(int)] = settings->auxiliaryTurboIds[auxiliaryByteOffset / sizeof(int)];
++            auxiliaryTurboChannels[auxiliaryByteOffset / sizeof(int)] = -1;
+         }
+         const int thresholdCount = auxiliaryTurboCount + 1;
+         turboArray284 = new int[thresholdCount];

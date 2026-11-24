@@ -1,0 +1,23 @@
+--- preferred9104/body.cpp
++++ UNAPPLIED common fourth visibility callback
+@@ -336,16 +336,18 @@
+                 p=vector3d<float>(sceneOffset868.X,sceneOffset868.Y,sceneOffset868.Z+init748[2].Y);
+                 sceneData852->setPosition(rotation*p);
+                 irr::scene::ISceneNode** first=0;irr::scene::ISceneNode** second=0;
++                bool fourthVisible;
+                 if(unknown132==3) {
+                     lightNodes[0]->setVisible(false);lightNodes[1]->setVisible(false);
+-                    lightNodes[2]->setVisible(true);lightNodes[3]->setVisible(true);
++                    lightNodes[2]->setVisible(true);fourthVisible=true;
+                     first=&lightNodes[2];second=&lightNodes[3];
+                 } else if(unknown132==1) {
+                     lightNodes[0]->setVisible(true);lightNodes[1]->setVisible(true);
+-                    lightNodes[2]->setVisible(false);lightNodes[3]->setVisible(false);
++                    lightNodes[2]->setVisible(false);fourthVisible=false;
+                     first=&lightNodes[0];second=&lightNodes[1];
+                 }
+                 if(first) {
++                    lightNodes[3]->setVisible(fourthVisible);
+                     ITimelineController* c0=(*(*first)->getAnimators().begin())->getTimelineCtrl();
+                     ITimelineController* c1=(*(*second)->getAnimators().begin())->getTimelineCtrl();
+                     if(c0 && c1){c0->jumpTo(c0->startTime);c1->jumpTo(c1->startTime);c0->setScale(1);c1->setScale(1);}
