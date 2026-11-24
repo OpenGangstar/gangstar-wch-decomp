@@ -196,6 +196,18 @@ assembler and linker executables match their corresponding local archive
 members; duplicate assembler/linker paths within one SDK are exact aliases.
 No executable was patched or newly downloaded for this inventory.
 
+An additional bounded ResStream D1/D2 frontend-only control on 2026-11-24
+preserved the source, ordered flags, original 1.6 r1 assembler and runtime while
+substituting r4b cc1plus once. Both commands exited 0; all nine emitted function
+payloads, nine allocated payloads and 31 semantic references stayed exact.
+The shared 56-byte target retains all six nonnative entry bytes. Raw object
+metadata changes because r4b adds a nonallocated zero-size `.note.GNU-stack`
+section and corresponding bookkeeping; those failures are retained, not waived.
+All 2120 input/tool pins remained stable. No linker, compiler adoption or match
+credit followed. This case-specific negative does not justify a frontend grid.
+Detailed receipts remain under
+`_scratch/worker-resstream-r4b-feasibility/control/evidence/`.
+
 | NDK | `cc1plus.exe` bytes | SHA-256 |
 | --- | ---: | --- |
 | 1.6 r1 | 16,231,115 | `914b3fe8024cdfe8358b6fc6f78ce672136db1f03ccd609a8cb8a432de7bb734` |

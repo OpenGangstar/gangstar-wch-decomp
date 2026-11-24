@@ -1,0 +1,13 @@
+--- conditional4324/src/game/vehicles/Vehicle.cpp
++++ reference-conditional/src/game/vehicles/Vehicle.cpp
+@@ -2693,7 +2693,9 @@
+     } else {
+         exterior->setPosition(vector3d<float>(0,0,(init748[0].Y+init748[1].Y+init748[2].Y+init748[3].Y)*0.25f));
+     }
+-    exterior->setRotation(dead ? quaternion(0,0,0) : quaternion(-rotationX,-rotationY,0));
++    exterior->setRotation(dead
++        ? static_cast<const quaternion&>(quaternion(0,0,0))
++        : static_cast<const quaternion&>(quaternion(-rotationX,-rotationY,0)));
+     wheelNodes[0]->setPosition(vector3d<float>(init572+0.0f,0.0f+init576,__aeabi_fadd(init700, static_cast<float>(tireTrailWidth))+init580));
+     wheelNodes[1]->setPosition(vector3d<float>(init584+0.0f,0.0f+init588,__aeabi_fadd(init704, static_cast<float>(tireTrailWidth))+init592));
+     wheelNodes[2]->setPosition(vector3d<float>(init596+0.0f,0.0f+init600,__aeabi_fadd(init708, static_cast<float>(tireTrailWidth))+init604));
