@@ -1,5 +1,39 @@
 # Vehicle::Update: event-construction contract, still unmatched
 
+## Later placement-storage control: unchanged output
+
+A later bounded control tested the ordinary placement-storage idiom used by
+matched Vehicle::explode and Character::punched. One real 12-byte event buffer
+replaced the automatic event, with the genuine constructor, identical manager
+capture and lexical scope, and the existing-style weak D1 call before cleanup.
+No padding, extra object, header/type change or compiler option was introduced.
+
+One unchanged baseline compile/assemble pair reproduced the retained 3,936-byte
+function and entire input section. One placement candidate pair then emitted
+the **identical 3,936 target bytes and every target semantic relocation**:
+`fc1c951e944a292f0df364d71d608cfc37ade1c52aaa6c343498e1b5c3d17756`.
+Both retain all 199 off-target executable definitions, 226 allocated payloads,
+1,448 off-target semantic relocations and 306 imports, including real event
+destructor/vtables. Compiler-generated namespace metadata is compared through
+an explicitly recorded bijection; complete object-file byte identity is not
+claimed. No output was edited.
+
+The native 4,020-byte function/input gates still fail. The 228-byte frame and
+event home at SP192 remain unchanged, versus native frame228/eventSP196. The previously correct
+weak-D1/GOT and lifetime boundary were not missing operations. No linker ran,
+no second form followed, and no matched progress was added. The public source
+fragment retains the simpler automatic form because placement adds no benefit.
+
+This experiment deliberately used the coherent retained source/header/helper
+fixture. Current canonical Vehicle has a float unknown128 where that fixture
+used byte storage, and omits two pending member declarations. Those context
+differences were disclosed rather than silently reverting current headers.
+The result is not a current-main/global build or acceptance of the private
+helper/type proposals. Exact commands, complete inputs, source delta and
+preservation proofs remain in the coordinator's private placement-review packet.
+
+## Earlier event-construction control
+
 Target `_ZN7Vehicle6UpdateEi`, Thumb `0x00313b01`, native **4,020 bytes**.
 The retained [source fragment](Vehicle-Update-damage-common.cpp) now reflects
 the proved event construction/order. It is not a standalone or configured

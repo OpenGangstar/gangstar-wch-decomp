@@ -9,7 +9,7 @@ void NPC::Update(int elapsed)
         if(target) {
             LevelObject* initialTarget=target;
             PlayerTest* player=PlayerTest::GetPlayer();
-            if(initialTarget==reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player))) {
+            if(player && initialTarget==reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player))) {
                 player=PlayerTest::GetPlayer();
                 if(!(player->flags240&0x400u) || !static_cast<SavePositionInterface*>(player)->getVehicle()) lost=true;
             }
