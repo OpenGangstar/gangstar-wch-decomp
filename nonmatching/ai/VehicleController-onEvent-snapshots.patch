@@ -1,0 +1,97 @@
+--- a/src/game/ai/VehicleController.cpp
++++ b/src/game/ai/VehicleController.cpp
+@@ -181,3 +181,54 @@
+     }
+     state = next;
+ }
++
++
++#include "../characters/PlayerTest.h"
++#include "../characters/PlayerEvent.h"
++#include "../characters/NPCVehicleEvent.h"
++namespace gameloft { namespace ai {
++struct Transition { const unsigned int* values; int count; };
++} }
++void VehicleController::onEvent(const IEvent* event, const EventManager*)
++{
++    switch(event->getEventID()) {
++    case 19: {
++        const EvNPCVehicle* vehicleEvent = static_cast<const EvNPCVehicle*>(event);
++        if (vehicleEvent->getVehicle() == vehicle) {
++            int count = transition.count;
++            for (int i = 0; i < count; i += 3) {
++                unsigned int from = transition.values[i];
++                unsigned int condition = transition.values[i + 1];
++                unsigned int to = transition.values[i + 2];
++                if (from == state && condition == vehicleEvent->getType()) {
++                    switchState(static_cast<gameloft::ai::StateID>(to));
++                    break;
++                }
++            }
++        }
++        break;
++    }
++    case 22: {
++        const EvPlayer* playerEvent = static_cast<const EvPlayer*>(event);
++        switch (playerEvent->getState()) {
++        case 9:
++            if (state == 8) {
++                LevelObject* target = vehicle->aiTarget;
++                LevelObject* playerTarget = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
++                if (playerTarget == target)
++                    vehicle->aiTarget = PlayerTest::GetPlayer()->getVehicle();
++            }
++            break;
++        case 10:
++            if (state == 8) {
++                LevelObject* target = vehicle->aiTarget;
++                LevelObject* playerTarget = PlayerTest::GetPlayer()->getVehicle();
++                if (target == playerTarget)
++                    vehicle->aiTarget = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
++            }
++            break;
++        }
++        break;
++    }
++    }
++}
+--- a/src/game/characters/NPCVehicleEvent.h
++++ b/src/game/characters/NPCVehicleEvent.h
+@@ -9,6 +9,8 @@
+ public:
+     EvNPCVehicle(int type, Vehicle* vehicle) : IEvent(19), type(type), vehicle(vehicle) {}
+     virtual ~EvNPCVehicle() __attribute__((used, long_call));
++    int getType() const { return type; }
++    const Vehicle* getVehicle() const { return vehicle; }
+
+ private:
+     int type;
+--- a/config/matches/ai-startup-vehiclecontroller.json
++++ b/config/matches/ai-startup-vehiclecontroller.json
+@@ -93,6 +93,7 @@
+         "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
+         "_ZNK4Path7getSizeEv",
+         "_ZNK7Vehicle15getPathToFollowEv",
+-        "_ZNK7Vehicle23isLoopingOnPathToFollowEv"
++        "_ZNK7Vehicle23isLoopingOnPathToFollowEv",
++        "_ZN10PlayerTest9GetPlayerEv"
+     ]
+ }
+--- a/config/linker/VehicleControllerAiStartup.ld
++++ b/config/linker/VehicleControllerAiStartup.ld
+@@ -19,6 +19,8 @@
+ __aeabi_idivmod = 0x001c4934;
+ SECTIONS
+ {
++    .vehicle_event 0x00342584 : { *ai-startup-vehiclecontroller.o(.text._ZN17VehicleController7onEventEPK6IEventPK12EventManager) }
++
+     .vehicle_switch_state 0x003426b4 : { *ai-startup-vehiclecontroller.o(.text._ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE) }
+     .vehicle_switch_table 0x004323e0 : { *ai-startup-vehiclecontroller.o(.rodata._ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE) }
+     .vehicle_controller_next_point 0x0034264c : { *(.text._ZN17VehicleController12getNextPointEv) }
+@@ -64,3 +66,6 @@
+ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai5guardE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ ASSERT(SIZEOF(.ai_startup_storage_11) == 12, "_ZN3irr2ps5vHalfE extent");
++
++INCLUDE config/linker/PlayerEventSections.ld
++ASSERT(SIZEOF(.vehicle_event) == 200, "VehicleController onEvent strict input200");
