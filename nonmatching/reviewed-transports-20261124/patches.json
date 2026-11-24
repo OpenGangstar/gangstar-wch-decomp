@@ -1,0 +1,17 @@
+[
+  {
+    "patch": "path-local-snapshot.patch",
+    "original_patch_sha256": "e3a593b4e480ccaed9f5745811db2aa218a8391565464c65cd98ce0afcac80ec",
+    "published_lf_patch_sha256": "274702e5525e0074060584dea162eaa12ed0f41b9c5dbfb72a76527562005403"
+  },
+  {
+    "patch": "asprite-duration-memcpy.patch",
+    "original_patch_sha256": "f30a52434c31e685a75e0fc4353dc3d2a43119ee03b678534f8dfe30b46348f1",
+    "published_lf_patch_sha256": "f30a52434c31e685a75e0fc4353dc3d2a43119ee03b678534f8dfe30b46348f1"
+  },
+  {
+    "patch": "sound-fixed-row.patch",
+    "original_patch_sha256": "86274f3dcf5879fd998d22e3587d8faee2dca6fca393072774a03ac526b3331f",
+    "published_lf_patch_sha256": "4e17e5169991d73ed2e910875e155f9800f4cdc3ebd1ccb4fc511bc52a625eff"
+  }
+]
