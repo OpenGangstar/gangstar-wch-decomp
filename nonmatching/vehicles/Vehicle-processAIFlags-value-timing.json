@@ -130,5 +130,50 @@
     "late_Z_home": 372,
     "static_helpers": 7,
     "frame": 476
+  },
+  "current_context_replay": {
+    "base_matching_source_commit": "295402ffffed43b564a94801ecd6170699931074",
+    "source_sha256": "38bf5e5f343b0b8088f26e2d38f38406995dcd14005c7cb754153ad355504e23",
+    "object_sha256": "32c86b056e6bcef71cc7c8735f746d52635446f50d07d07e0b6dead40cc68841",
+    "raw_target_sha256": "834e68168869250f89a6bbeda145a6a1ab16900d3357b66b0cd951b221974599",
+    "function_bytes": 3224,
+    "input_bytes": 3224,
+    "native_required": 3220,
+    "frame": 476,
+    "strict_extent_passed": false,
+    "native_link_run": false,
+    "matched": false,
+    "fixture_inputs": 1142,
+    "all_inputs_tools_stable_during_run": true,
+    "accepted_relevant_input_hashes_equal": 884,
+    "historical_old_functions_preserved": 197,
+    "current_old_functions_preserved": 202,
+    "current_nonempty_offtarget_payloads_preserved": 230,
+    "current_semantic_references_preserved": 1688,
+    "current_imports_preserved": 323,
+    "current_imports_added": 5,
+    "historical_vtable_binding_transition": "Previously undefined _ZTV7Vehicle becomes the genuine current 188-byte definition; not identical historical symbol metadata.",
+    "generated_name_correspondence": "Explicit anonymous pairs plus .L982/.L977 to .L996/.L991 and historical C.131/current C.145 to C.146; raw unmapped failures retained.",
+    "new_constructor": {
+      "C1_C2_same_physical_section_alias": true,
+      "bytes": 96,
+      "raw_sha256": "d84638d18e6e4e919450c16e4658f41824283505494af1e344e34f3911291e30",
+      "matches_two_genuine_provider_objects": true,
+      "Reset_dependency": "genuine weak undefined GOT reference",
+      "separate_named_retail_C2": false,
+      "relocated_native_comparison_performed": false
+    },
+    "integration_patch": "Vehicle-processAIFlags-current-context.patch",
+    "integration_patch_sha256": "e5ed30b6721f238cb2759d6f1ff5a76bf244fe24a0566b882c54186bd8648ab1",
+    "historical_target_byte_differences": 10,
+    "difference_role": "Eight Thumb instructions permute Y/Z register transport; final XYZ and GetPlayer offsets remain unchanged.",
+    "compiler_as_linker_counts": [
+      1,
+      1,
+      0
+    ],
+    "receipt": "_scratch/worker-vehicle-ai-current-prepare/CURRENT-REPORT.md",
+    "private_raw_patch_sha256": "199ca65b5e1dca8e61cf738cd3b75a939aa07f1ab08e841f29a6a3284fb04d6d",
+    "public_patch_normalization": "CRLF to LF; optional prefix on one empty context line omitted. Original private patch retained; git apply --check passes."
   }
 }

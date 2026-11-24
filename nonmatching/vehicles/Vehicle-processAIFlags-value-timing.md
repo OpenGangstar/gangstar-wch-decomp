@@ -92,3 +92,8 @@ the complete four-byte delta. This local correction does not explain the
 then-remaining 28-byte deficit or establish a complete native match. Pursuit then
 adds 32 executable bytes; its separate identities and measured result are recorded
 in the JSON. The previous controls remain immutable private packets.
+
+The later [current-model integration replay](Vehicle-processAIFlags-current-context.md)
+uses this exact method with genuine current headers and constructor support. Its
+separate source/object identities and preservation limits are in the JSON's
+`current_context_replay` section; it also remains 3224 bytes and unmatched.
