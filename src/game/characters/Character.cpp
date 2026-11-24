@@ -1514,3 +1514,76 @@ int Character::getSpecificAnimation(int id)
     }
     return -1;
 }
+
+extern "C" void _ZN5EvNPCD1Ev(void*) __attribute__((weak));
+extern "C" void _ZN8EvPlayerD1Ev(void*) __attribute__((weak));
+#include "../characters/NPCEvent.h"
+#include "../core/EventManager.h"
+#include "PlayerEvent.h"
+inline __attribute__((always_inline)) void playPunchedSound(int id)
+{
+    SoundManager* sound = SoundManager::getInstance();
+    sound->unknown140 = true;
+    sound->playEx(id, 0, false, 1.0f, 0, true, 1.0f, 0);
+    sound->unknown140 = false;
+}
+void Character::punched(int animation, int damage, LevelObject* attacker)
+{
+    if (movementFlags & 0x10000u)
+        return;
+    applyDamage(damage, attacker, true);
+    int voice = -1;
+    if (!isPlayer() && lrand48() % 100 < 30) {
+        switch (lrand48() % 3) {
+        case 0: switch (driverBehavior) { case 0: voice = 245; break; default: voice = 242; break; } break;
+        case 1: switch (driverBehavior) { case 0: voice = 231; break; default: voice = 238; break; } break;
+        case 2: switch (driverBehavior) { case 0: voice = 240; break; default: voice = 237; break; } break;
+        }
+    }
+    switch (animation) {
+    case 90: case 91:
+        setAnimation(162, 1.0f, false, false, false);
+        if (isPlayer()) playPunchedSound(129);
+        break;
+    case 92:
+        setAnimation(85, 1.0f, false, false, false);
+        if (isPlayer()) playPunchedSound(129);
+        if (voice != -1) playPunchedSound(voice);
+        break;
+    case 93: case 94:
+        setAnimation(84, 1.0f, false, false, false);
+        if (isPlayer()) playPunchedSound(151);
+        if (voice != -1) playPunchedSound(voice);
+        break;
+    case 95:
+        setAnimation(86, 1.0f, false, false, false);
+        if (isPlayer()) playPunchedSound(129);
+        if (voice != -1) playPunchedSound(voice);
+        break;
+    case 144:
+        setAnimation(83, 1.0f, false, false, false);
+        if (isPlayer()) playPunchedSound(151);
+        if (voice != -1) playPunchedSound(voice);
+        break;
+    }
+    switch (lrand48() % 3) {
+    case 0: playPunchedSound(152); break;
+    case 1: playPunchedSound(128); break;
+    case 2: playPunchedSound(139); break;
+    }
+    if (s_type[getObjectType()] == 5) {
+        EventManager* events = Application::GetInstance()->GetEventManager();
+        unsigned int storage[sizeof(EvNPC) / sizeof(unsigned int)];
+        EvNPC* event = new (storage) EvNPC(static_cast<EvNPC::State>(8), static_cast<NPC*>(this));
+        events->raise(*event);
+        _ZN5EvNPCD1Ev(event);
+        if (static_cast<NPC*>(this)->category428 == 3) {
+            unsigned int storage[sizeof(EvPlayer) / sizeof(unsigned int)];
+            EvPlayer* event = new (storage) EvPlayer(3);
+            events->raise(*event);
+            _ZN8EvPlayerD1Ev(event);
+        }
+    }
+    if (Lock::getInstance()->target == this)
+        Lock::getInstance()->billboard->activateAnimation();
+}
