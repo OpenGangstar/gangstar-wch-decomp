@@ -107,3 +107,23 @@ in R7 and index in R0, and pass 147 complements the branch without commuting it.
 Keep this improved candidate distinct from the three-byte-residual ordinary
 baseline. Further source changes require a new supported constraint; the earlier
 six-form budget is not reset. Matching and Fully Linked progress remain unchanged.
+
+## Rejected header-copying option control
+
+One additional causal control kept the improved source and all 16 ordinary
+compiler options unchanged, appending only `-fno-tree-ch` for the entire owning
+translation unit. One frontend and assembler invocation succeeded. The result
+was a 186-byte function in a 188-byte input section, so it fails the required
+200/200 extent before linking. No linker invocation or flag refinement followed.
+
+The index-first comparison appeared, but disabling header copying also changed
+the loop shape, receiver register, initial guard and transition-pointer handling.
+It therefore does not solve the two-byte residual. The 22 other function bodies,
+41 allocated payloads and 42 imports remained exact. Raw reference metadata
+comparison failed because the vtable references the changed target symbol size;
+that failure remains recorded rather than relabelled as an exact metadata pass.
+
+The rejected object SHA256 is
+`89a4dcb68f35cba3857e3134c299c9b7c74df521d22df13a34247102fe884b25`.
+The 200-byte improved candidate above remains the preferred unmatched result.
+No production compiler configuration, source definition or progress changed.
