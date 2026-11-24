@@ -7,6 +7,35 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 <!-- active-ownership:start -->
 ## Current coordinator dispatches
 
+### Worker reuse follow-up, 2026-11-24 12:36 UTC
+
+This table supersedes the previous live table. The coordinator reviewed the
+negative Path and AnimObject transfer reports and released those scopes. Path's
+actual two address additions already match native; AnimObject calls the existing
+out-of-line duration API and has no relevant table expression. Vehicle step's
+sole conditional trial remains unmatched at4324/native4372: receiver capture and
+common calls improve, but both quaternion operands use one stack home. No LD or
+source refinement is approved. Its ownership is released after packet review.
+
+The following ten-minute scopes use the newly byte-matched PaintFModule
+typed-record/integer-before-blob association as their sole new evidence. First
+recover historical budgets and authentic preferred source/object pairs. Inspect
+only actual indexed pointer/record address expressions and their first meaningful
+native mismatch. Do not repeat generic CFG, API or call-count audits. If the
+new fact does not apply, report the precise negative without source replay.
+
+| Binary | Address | Function | Owner | Status | Matching | Source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00339cb9 | Script::executeCommand(Structs::ScriptCommand const*,int,int) | /root/decomp_random | IN_PROGRESS | Unmatched; native12636 | src/game/scripting/Script.cpp |
+| libsanangeles.so | 0x0031b9a9 | PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&,plane3df const&,vector3df const&,vector3df const&,vector3df&,vector3df&) | /root/decomp_cleanup | IN_PROGRESS | Unmatched; native4800 | src/game/characters/PhysicAttributes.cpp |
+| libsanangeles.so | 0x00329901 | MiniMap::_calculateXYOffset(vector3df const&,recti const&,bool,bool) const | /root/decomp_billboard | IN_PROGRESS | Unmatched; native2012 | src/game/hud/MiniMap.cpp |
+
+Only private scratch evidence and at most one unapplied, evidence-supported
+proposal per function are allowed. No compiler/as/LD, new dumps, canonical or
+shared edits, registry changes, Git mutations or agents. Existing budgets stay
+spent; the coordinator must separately review any source experiment.
+
+
 ### Worker reactivation, 2026-11-24 12:31 UTC
 
 This checkpoint supersedes earlier active ownership tables. PR783 is merged and

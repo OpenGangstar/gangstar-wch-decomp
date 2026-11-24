@@ -22,7 +22,7 @@
       "original_patch": "_scratch/worker-find-parent2-composition/UNAPPLIED.patch",
       "original_patch_sha256": "221132e5bf2a49e5955d6123d2e310787ceb9076b0589bb78a702e17e405f418",
       "public_patch": "find-parent2.patch",
-      "public_patch_sha256": "f1027fdedd18db52a45ccf2f795ed8587438b0732f3e57e6102d732e73f18c4b",
+      "public_patch_sha256": "330bcb9927b181ece8d5e74c068657af1e5525044a5785bbc2a48868776e9919",
       "detailed_local_report": "_scratch/worker-find-parent2-composition/trial/REPORT.md",
       "detailed_local_report_sha256": "0603d076314874b6db5a0024411466ff09a0f8284bd81656dece24b6967963f6"
     },
