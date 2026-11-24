@@ -34,7 +34,7 @@ void Script::addCommand(Structs::ScriptCommand* command)
     if (commandCount < commandCapacity) {
         commands[commandCount++] = command;
         if (command->opcode == 65)
-            missionId = command->argument;
+            missionId = reinterpret_cast<const Structs::MissionStart*>(command)->argument;
     }
 }
 

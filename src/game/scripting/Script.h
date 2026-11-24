@@ -3,10 +3,17 @@
 
 #include "../characters/PlayerTest.h"
 
+class DataStream;
+
 namespace Structs {
 struct ScriptCommand {
     int opcode;
+};
+
+struct MissionStart {
+    int opcode;
     int argument;
+    void Read(DataStream& stream) __attribute__((used));
 };
 }
 

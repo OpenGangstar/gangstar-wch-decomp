@@ -85,7 +85,7 @@ public:
     int unknown104;
 
     void taggedKilled();
-    void printCommand(const Structs::ScriptCommand& command);
+    static void printCommand(const Structs::ScriptCommand& command);
     void addScript(Script* script);
     Structs::ScriptCommand* loadCommand(DataStream& stream);
     static void cleanCommand(Structs::ScriptCommand* command);
