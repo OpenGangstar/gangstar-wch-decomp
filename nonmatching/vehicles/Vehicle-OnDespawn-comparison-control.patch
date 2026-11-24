@@ -1,0 +1,47 @@
+--- a/src/game/vehicles/Vehicle.cpp
++++ b/src/game/vehicles/Vehicle.cpp
+@@ -2762,3 +2762,44 @@
+         }
+     }
+ }
++
++void Vehicle::OnDespawn()
++{
++    LevelObject::OnDespawn();
++    unknown960Word = -5000;
++    unknown4 &= ~0x800u;
++    stopSiren();
++    cleanupTargetDetection();
++    repair();
++    Stop();
++    clean();
++    cleanTargets();
++    aiTarget = 0;
++
++    PlayerTest* player = PlayerTest::GetPlayer();
++    if (static_cast<const LevelObject*>(this) == player->lastHitVehicle)
++        player->lastHitVehicle = 0;
++    if (player->target == this) {
++        static_cast<SavePositionInterface*>(player)->SetTarget(0);
++        player->_SetTarget(0, true);
++    }
++    SavePrimaryInterface* primary = player;
++    if (primary->getVehicle() == this)
++        primary->setVehicle(0);
++    if (player->unknown368 == this)
++        player->unknown368 = 0;
++    if (player->unknown312 == this)
++        player->unknown312 = 0;
++
++    EventManager* events = Application::GetInstance()->GetEventManager();
++    unsigned int storage[sizeof(EvVehicleDeactivated) / sizeof(unsigned int)];
++    EvVehicleDeactivated* event = new (storage) EvVehicleDeactivated(this);
++    events->raise(*event);
++    flags344 = 1u << 23;
++    if (hasSceneNodePool())
++        dropSceneNode();
++    else
++        sceneNode->setVisible(false);
++    _ZN20EvVehicleDeactivatedD1Ev(event);
++}
++

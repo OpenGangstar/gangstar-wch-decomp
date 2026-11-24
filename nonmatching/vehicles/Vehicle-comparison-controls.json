@@ -1,0 +1,38 @@
+{
+  "canonical_prefix_sha256": "3e0b138f3d0f5db3bef0bfb93e8089fcde23e305e13d2a59455b4ace527f3c77",
+  "controls": [
+    {
+      "function": "Vehicle::disable()",
+      "address": "0x00310fa9",
+      "size": 416,
+      "patch": "Vehicle-disable-comparison-control.patch",
+      "patch_sha256": "4c90dbed03640d95e376f12f9a89eac443dfbcb475d9a60db1f09f4b7408fbdd",
+      "source_sha256": "a8083e0e06d67c880e28e5018d7576f9b2df18f2ae9c8c8dc8b8750f97f3a2c4",
+      "linked_sha256": "31bc39603be87be8b1a8ebd4c3d643ad33e9061bf47f530c7357e20b7e838471",
+      "differing_byte_offsets": [
+        "0x4a",
+        "0x54"
+      ],
+      "old_functions_exact": 193,
+      "old_sections_regions_exact": 117,
+      "matched": false
+    },
+    {
+      "function": "Vehicle::OnDespawn()",
+      "address": "0x00310e75",
+      "size": 308,
+      "patch": "Vehicle-OnDespawn-comparison-control.patch",
+      "patch_sha256": "119bc6831d34af901963d53d620799b37a1aa59092487769e7186bd10bffb971",
+      "source_sha256": "946ea61cfc596f675bdb226b7e91719d9302e19425f20d9377b6f6b5f579cd9e",
+      "linked_sha256": "4d3d7569bbab038f5e7ecdbf4b10f7312241ed749944e8c8b72bd32a4dfd88cd",
+      "differing_byte_offsets": [
+        "0x7e",
+        "0x88",
+        "0xec"
+      ],
+      "old_functions_exact": 193,
+      "old_sections_regions_exact": 117,
+      "matched": false
+    }
+  ]
+}
