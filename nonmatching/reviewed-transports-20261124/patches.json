@@ -13,5 +13,10 @@
     "patch": "sound-fixed-row.patch",
     "original_patch_sha256": "86274f3dcf5879fd998d22e3587d8faee2dca6fca393072774a03ac526b3331f",
     "published_lf_patch_sha256": "4e17e5169991d73ed2e910875e155f9800f4cdc3ebd1ccb4fc511bc52a625eff"
+  },
+  {
+    "patch": "sound-byte-induction.patch",
+    "original_patch_sha256": "9b8ee2d927ad7db13566519c064dfbda1575f6b220a60b18a3fcf5166e730e2b",
+    "published_lf_patch_sha256": "c97a21a64b82549fac3abee9f38fdf10ae2ece20643992086dcb6f3ee863cb5f"
   }
 ]

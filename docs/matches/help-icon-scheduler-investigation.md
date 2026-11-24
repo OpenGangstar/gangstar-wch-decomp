@@ -65,16 +65,83 @@ The release tag/commit and fetched-file hashes are retained in the local primary
 provenance receipt. They identify upstream policy, not the proprietary compiler
 fork's complete source.
 
-The saved diagnostic contains issued cycles and an empty final ready list. It
-does not print intermediate candidate priorities, comparator outcomes or the
-complete dynamically built dependency graph. The precise deciding rank branch
-is therefore unproven. Do not substitute load-latency or register-pressure
-speculation for that missing evidence.
+The initial diagnostic contains issued cycles and an empty final ready list.
+It does not print intermediate priorities or dependency candidates, so that
+packet alone could not establish the deciding rank branch. The separately
+reviewed measurement below supplies the missing state.
+
+## Exact neutral higher-verbosity measurement
+
+One additional unchanged-source frontend/assembler pair added only
+`-fsched-verbose=7` to the existing diagnostic options. Both commands exited 0.
+The complete object and assembly again match the hashes above, with all 180
+emitted definitions, 341 allocated sections, 111 imports and 1135 references
+identical, including Help and its literal. All 1925 original pins and 891 fresh
+copied files stayed stable. No generated-name correspondence, linker or source
+change was used. This is a neutral diagnostic, not a native match.
+
+The measured candidates have equal scheduling priority 65:
+
+| UID | Instruction role | Forward successors |
+| --- | --- | --- |
+| 9 | Load receiver into R0 | 35, 20 |
+| 17 | Move path into R1 | 36, 35, 20 |
+| 19 | Set false argument in R3 | 36, 35, 20 |
+
+Receiver 9 is ready from cycle 0. At cycle 5 the sorted ready list is
+`34 19 9 17`, printed lowest to highest priority; 17 issues. At cycle 6 the
+list is `34 9 19`; 19 issues. Receiver 9 then issues at cycle 7.
+
+The recorded priorities, groups, block identity, last-issued relationships and
+ready-list semantics establish the first nonzero comparison in the pinned
+upstream ranking implementation: **three forward dependents beat two**. Direct
+register pressure is disabled after reload, and critical-path priorities are
+equal. Original-order fallback is never reached. This reconstructs the deciding
+rule from measured inputs; GCC does not directly print comparator-return traces.
+
+UID 35 is the compiler's restored-R4 lifetime clobber; UID 36 is its volatile
+epilogue marker. Dependency construction retains prior R1/R3 set histories for
+the epilogue, while the call's explicit R0 result supersedes the receiver's
+previous R0 definition. These are conservative compiler histories, not genuine
+argument-value uses after the call. Edge kinds are derived from primary rules
+and actual RTL; successor membership and counts are printed directly.
+
+Additional primary references:
+[Thumb epilogue construction](https://github.com/gcc-mirror/gcc/blob/0d5acec7b636b19aac6ed7517a1dea8fb9f6b0dc/gcc/config/arm/arm.c#L13861),
+[dependency histories](https://github.com/gcc-mirror/gcc/blob/0d5acec7b636b19aac6ed7517a1dea8fb9f6b0dc/gcc/sched-deps.c#L1250).
+The installed compiler's complete source remains unproven. No incorrect return
+ABI or missing source operation follows from this scheduler explanation.
+
+A read-only trace-parser newline error was corrected without rerunning the
+compiler or changing outputs. The complete trace, policy reconstruction and raw
+identity evidence remain in `_scratch/worker-help-scheduler-verbosity-plan/`.
+
+## Rejected Thumb epilogue-option control
+
+Primary Thumb prologue/epilogue construction tests `TARGET_SCHED_PROLOG`.
+Consequently one separately approved unchanged-source control added only
+`-mno-sched-prolog` to the authenticated verbose diagnostic. This inserts
+compiler-generated scheduling markers; no source barrier was written.
+
+The sole frontend/assembler pair exited 0. Help remains function/input 32/32,
+with the identical raw target hash
+`b8e1ffaef7479ac82121ced4eefeb838b695107dc7f2f939cdf47f95eba0a9fc`.
+The new barrier receives the extra argument-history edges instead of eliminating
+their count advantage. All three priorities become 97, but argument moves still
+precede the receiver. The same six native instruction bytes remain wrong.
+
+The option also changes 100 existing function payloads. Definition, allocated
+section, import and reference counts remain 180/341/111/1135; stable counts do
+not excuse the real regressions. Adoption is rejected. No linker, production
+profile change, per-function exception, source refinement or credit follows.
+Full raw failures and controlled inputs remain in
+`_scratch/worker-help-no-sched-prolog-feasibility/`.
 
 No omitted source operation, load width, alias relation, return ABI or callback
-was found. Repeating pointer spellings, source statement order, scheduler flags,
-barriers or artificial dependencies is not justified. Preserve the spent source
-budget and park until genuinely new source/compiler evidence exists.
+was found. Repeating pointer spellings, source statement order, barriers or
+artificial dependencies is not justified. Any compiler-option control needs a
+specific primary-supported hypothesis and separate coordinator approval;
+production flags remain unchanged. Preserve the spent source budget.
 
 Detailed commands, source reversal, the failed original gate, continuation,
 complete inventories and Help-only pass extracts remain under

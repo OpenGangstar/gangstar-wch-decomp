@@ -132,6 +132,39 @@ declared void. All ten recovered direct callers discarded its return. This does
 not prove an original signature or exhaustive indirect-call coverage; no return
 type trial was justified or compiled.
 
+## Follow-up byte-offset composition
+
+One separately reviewed follow-up retained the genuine row-array reference but
+used a byte offset advancing by `sizeof(CSound*)`, indexing the array with that
+offset divided by `sizeof(CSound*)`. It preserves fresh row reads and the same
+four live pointer elements. This composition was proposed only after the actual
+82-byte result exposed its extra channel-scaling instruction.
+
+Exactly one original frontend/assembler pair exited 0. Function/input are 84/84,
+failing native 80; no linker ran. Byte induction now advances four and compares
+sixteen, but both the index divide and subsequent element scale survive as
+right-two/left-two shifts. The outer table-first load still selects the wrong
+row register. All 84 bytes are function code: the preceding candidate's two
+alignment bytes were consumed, not removed to create a match.
+
+Object SHA-256:
+`0758491f99db8c8941486e2fa7a0dfb471e385900be69264714a98a4b6965f22`.
+Target SHA-256:
+`2015cd0b7b3bfc54a12fbc64cb3aa02a4cfcab67c6cd7fbbd769d7e284af461c`.
+All 73 off-target definitions, 83 off-target allocated payloads and 151 off-target
+references remain exact against both the original 80-byte and measured 82-byte
+objects. All 2080 pins are stable. Complete raw symbol/reference equality fails
+for the target size and call-offset changes; original target section growth is
+also retained. No namespace mapping, output editing or credit is used. A
+post-build read-only audit-generation quoting error was corrected without a
+compiler or source retry. The unapplied follow-up patch is
+`sound-byte-induction.patch`; its original/public hashes are in `patches.json`.
+
+A further direct-byte-access feasibility review proposed no trial: it would
+discard the array-reference distinction and return to the already measured
+pointer-address mechanism. Its source spelling alone does not justify another
+experiment.
+
 Verified progress remains 4294/4550 game functions and 356938/561716 matched
 bytes (63.54%). Fully Linked remains 114548 bytes (20.39%). Unmatched candidates
 and instruction similarity do not contribute to either count.

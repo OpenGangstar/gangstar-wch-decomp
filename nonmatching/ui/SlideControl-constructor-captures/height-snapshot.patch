@@ -1,0 +1,27 @@
+--- a/src/game/ui/SlideControl.cpp
++++ b/src/game/ui/SlideControl.cpp
+@@ -183,10 +183,11 @@
+         const float top = track->y - 20;
+         const float trackWidth = trackModule->width;
+         const float right = trackWidth + left;
++        const int regionHeight = (trackModule->height + 20) << 1;
+         touchRegion.coordinates[0] = left;
+         touchRegion.coordinates[1] = top;
+         touchRegion.coordinates[2] = right;
+-        touchRegion.coordinates[3] = top + static_cast<float>((trackModule->height + 20) << 1);
++        touchRegion.coordinates[3] = top + static_cast<float>(regionHeight);
+     } else {
+         horizontal = false;
+         const int halfWidthDifference = (trackModule->width - knobModule->width) >> 1;
+@@ -197,9 +198,10 @@
+         const float top = track->y;
+         const float trackWidth = (trackModule->width + 16) << 1;
+         const float right = trackWidth + left;
++        const short regionHeight = trackModule->height;
+         touchRegion.coordinates[0] = left;
+         touchRegion.coordinates[1] = top;
+         touchRegion.coordinates[2] = right;
+-        touchRegion.coordinates[3] = top + static_cast<float>(trackModule->height);
++        touchRegion.coordinates[3] = top + static_cast<float>(regionHeight);
+     }
+ }

@@ -1,0 +1,31 @@
+--- authentic captured504 constructor
++++ UNAPPLIED shared bottom constructor
+@@ -30,6 +30,8 @@
+     knobCenterX = centerX;
+     knobCenterY = centerY;
+
++    int bottomHeight;
++    float regionTop;
+     if (this->mode == Horizontal) {
+         horizontal = true;
+         const int halfHeightDifference = (trackModule->height - knobModule->height) >> 1;
+@@ -44,7 +46,8 @@
+         touchRegion.coordinates[0] = left;
+         touchRegion.coordinates[1] = top;
+         touchRegion.coordinates[2] = right;
+-        touchRegion.coordinates[3] = top + static_cast<float>(regionHeight);
++        bottomHeight = regionHeight;
++        regionTop = top;
+     } else {
+         horizontal = false;
+         const int halfWidthDifference = (trackModule->width - knobModule->width) >> 1;
+@@ -59,6 +62,8 @@
+         touchRegion.coordinates[0] = left;
+         touchRegion.coordinates[1] = top;
+         touchRegion.coordinates[2] = right;
+-        touchRegion.coordinates[3] = top + static_cast<float>(regionHeight);
++        bottomHeight = regionHeight;
++        regionTop = top;
+     }
++    touchRegion.coordinates[3] = regionTop + static_cast<float>(bottomHeight);
+ }
