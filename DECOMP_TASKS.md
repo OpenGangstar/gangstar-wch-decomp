@@ -7,6 +7,79 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 <!-- active-ownership:start -->
 ## Current coordinator dispatches
 
+### Reviewed wave checkpoint, 2026-11-24 13:27 UTC
+
+The coordinator reviewed and accepted all completed packets as negative evidence
+only. This bounded source/ABI queue is exhausted; ownership below is released.
+No canonical source/header or assembly marker changed. Progress remains4294/4550
+functions,356938/561716 bytes(63.54%), FullyLinked114548(20.39%). The overall100%
+matching objective remains active and incomplete; no external blocker is claimed.
+
+| Binary | Address | Function | Owner | Status | Matching | Relevant source and unresolved cause |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | unassigned | BLOCKED | Unmatched; native4372 | src/game/vehicles/Vehicle.cpp; conditional4324/reference4332/void-set4336 fail extent, no header adoption |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | unassigned | BLOCKED | Unmatched; native4020 | src/game/vehicles/Vehicle.cpp; void-angle control3936 also regresses protected stepPhysic |
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | unassigned | BLOCKED | Unmatched; native744 | src/game/combat/Rocket.cpp; void-rotation744 regresses8 exact-prefix bytes |
+| libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | unassigned | BLOCKED | Unmatched; native496 | src/game/combat/BulletTraceManager.cpp; checked496 source recovered, void-rotation496 regresses4 exact bytes |
+| libsanangeles.so | 0x00303bb9 | PlayerTest::switchAnim() | unassigned | BLOCKED | Unmatched; native1072 | src/game/ai/PlayerTest.cpp; latestfour-correction1076 and void1076 remain distinct, existing GOM/global limits retained |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | unassigned | BLOCKED | Unmatched; native32 | src/game/ui/MenuWidget.cpp; own149scheduler cause measured, no justified source change |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() D1/D2 aliases | unassigned | BLOCKED | Unmatched; native56 | src/game/world/ResStream.cpp; r4b revision control preserves all code including six nonnative entry bytes |
+
+These statuses park individual functions under existing budgets; they do not
+change the overall goal status. Stock Irrlicht void signatures do not establish
+the Gameloft fork API; no tested declaration is adopted. All raw identity failures,
+explicit namespace/file correspondences, preparation-only failures and actual
+compiler counts remain disclosed. No failed candidate was linked or credited.
+Fresh assignments require a different concrete evidence-supported opportunity.
+
+
+### Return-contract family dispatch, 2026-11-24 12:58 UTC
+
+This table supersedes prior live scopes. Coordinator reviewed the ResStream r4b
+control and Help scheduler-policy reports as negative; those scopes are released
+without credit. A concrete new family finding is the pinned Irrlicht1.4.2 void
+return declaration for set, rotationFromTo and fromAngleAxis, while our partial
+headers declare quaternion-reference returns. Primary GCC4.2.1 initially lowers
+these differently even when results are discarded. The shipped fork's contracts
+remain unproven; no canonical header correction is approved from upstream alone.
+
+| Binary | Address | Function | Owner | Status | Matching | Source and scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | /root/decomp_random | IN_PROGRESS | Unmatched; native4372 | src/game/vehicles/Vehicle.cpp; sole approved private void-set declaration control on original4336 fixture, no body composition, stop beforeLD |
+| libsanangeles.so | 0x00330015 | Rocket::launch(vector3df) | /root/decomp_billboard | IN_PROGRESS | Unmatched; native744 | src/game/combat/Rocket.cpp; ten-minute void rotationFromTo contract feasibility review, authentic latest corrected candidate and spent budgets first; no compiler yet |
+| libsanangeles.so | 0x002f064d | BulletTraceManager::OnAnimate(unsigned int) | /root/decomp_cleanup | IN_PROGRESS | Unmatched; native496 | src/game/combat/BulletTraceManager.cpp; ten-minute void rotationFromTo contract feasibility review, authentic latest corrected candidate and spent budgets first; no compiler yet |
+
+Workers may write only private scratch evidence and at most one unapplied
+one-declaration proposal per review. No invented fork ABI, ignored-return
+identity assumption, source permutation, shared/canonical edits, Git or agents.
+Directly observed native returned-reference use defeats the proposed void API;
+incidental R0 state does not establish a return contract. Any source experiment
+requires separate coordinator approval and full affected-match preservation.
+
+
+### Compiler-evidence dispatch, 2026-11-24 12:41 UTC
+
+The coordinator reviewed all three negative ASprite-transfer reports and releases
+those scopes without credit. Script uses its authentic corrected12320 baseline;
+heightmap's historical4848 and later corrected4864 contexts remain distinct;
+MiniMap's relevant getters remain out of line. No source experiment was justified.
+
+These exclusive scopes supersede earlier live tables. Workers may write only
+private scratch files. No canonical/shared/ownership edits, Git or spawning.
+
+| Binary | Address | Function | Owner | Status | Matching | Source and bounded scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0030c035 | Vehicle::step() | /root/decomp_random | IN_PROGRESS | Unmatched; native4372, conditional4324 | src/game/vehicles/Vehicle.cpp; prepare one unapplied conditional const-reference operand proposal from the newly measured copy-elided single-home result; same member-call full expression, genuine branch temporaries only; no compile yet |
+| libsanangeles.so | 0x002ecb01 | Widgets::Help::SetIcon(char const*) | /root/decomp_billboard | IN_PROGRESS | Unmatched; native32 | src/game/ui/MenuWidget.cpp; recover authentic historical source/commands and propose one neutral diagnostic pair for this function's previously unmeasured own scheduler cause; no compiler yet |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() D1/D2 shared definition | /root/decomp_cleanup | IN_PROGRESS | Unmatched; native56 | src/game/world/ResStream.cpp; bounded actual first register-mismatch origin review using retained baseline/dumps only; distinguish scheduler choice from register allocation and identify whether a neutral diagnostic is genuinely missing; no new dump or compiler |
+
+All scopes are at most ten minutes and preserve spent source budgets. No source
+or optimizer grid, hints, barriers, register pins, raw storage or dummy objects.
+The step proposal must explicitly analyze ordinary reference-conditional lifetime
+and ABI semantics, copy behavior and receiver capture without promising native
+stack allocation. Coordinator review is required before any compilation.
+
+
 ### Worker reuse follow-up, 2026-11-24 12:36 UTC
 
 This table supersedes the previous live table. The coordinator reviewed the
@@ -3331,3 +3404,37 @@ Vehicle Load address-transfer review is accepted negative and released: native/p
 
 Coordinator approves ONE Vehicle step conditional-full-expression trial per UNAPPLIED-CONDITIONAL.patchbbdd6519. Preserve single isDead call via its real saved bool, both unchanged position arms, and one member-call full expression with selected genuine float3 quaternion. Actual receiver/callee capture before constructor, temporary/copy/home behavior must be measured; no named/default/fluent object or extra hoist. One original frontend/as on authenticated4336 context with full old preservation and1068-input/tool pins, strict4372 function/input checks, stop before LD regardless; no refinement, flags or headers.
 Vehicle Update visibility-source review accepted negative and released: native duplicates, source already duplicates in all six forms, compiler shares; actual glass reloads remain correct, no new source proposal.
+
+Coordinator approves ONE Vehicle step const-reference conditional trial per patch4ab5fd0035b7516e4e299f6ab1f59174f67e55b16802ae64a636e48b233f7e08. Genuine standard const-reference binding selects the existing branch temporary in the same member-call full expression; no raw storage, named lifetime extension or additional objects. Fresh clone of authentic4324 source2ec63f89/objectfc884440, exact single patch/reverse, original flags/paths/frontend/as, complete old payload/import/reference/metadata audit and1068+119 stable pins. Measure actual capture, copy/home/call behavior and strict4372 function/input. Stop before LD regardless; no refinement, header/flag/hint or second form authorized. This is one evidence-based escalation from the measured single-prvalue-home result, not a budget reset.
+Coordinator reviewed ResStream sharedD1D2 origin negative: actual neutral wholeobject/assembly identity already exists; first explicit R2/R3 hard binding occurs138greg, not149scheduler. No missing measurement or justified source change; ownership released without credit.
+
+Coordinator approves Help diagnostic script6409fb62614d3701e3bf3da974c186c76fae695984fa9701c828f3eacf37bbce with exactly three original frontend/as pairs: unchanged canonical current control, only retained Help body baseline, then exact same source plus dump-only options. Full raw old payload/symbol/ref and actual added-literal/definition gates before neutral; stop on any raw preservation failure. Whole .o AND .s byte identity mandatory before interpreting any dump. All906 pins/source reversibility and original relative paths/flags must remain valid. No LD, source variant, code-generation option, automatic retry or anonymous-name waiver.
+New exclusive decomp_cleanup scope: libsanangeles.so0x0034ef15 ResStream shared D1/D2/native56, src/game/world/ResStream.cpp. At most ten-minute feasibility review of ONE GCC4.2.1 r4b frontend-revision control against authenticated same-source canonical1.6 baseline, newly justified by measured local-allocation origin and distinct available frontends. First prove this precise control has not already been run; no compiler yet. Preserve originalflags/source/assembler, all current old proofs and spent forms; no tuning grid, no D0 scope or canonical edits.
+
+Help executed two normal frontend/as pairs, all exit0. Old allocated payloads/metadata, all old symbols and semantic references remain raw-exact. Analysis script then stopped because actual local literal is helpIconPath, not guessed _ZL12helpIconPath. Coordinator independently loaded baseline.o and verified sole new Help32 definition and literal16 object in .rodata.helpIconPath, with only expected mapping/section bookkeeping and no new imports. Approve a mechanical RESUME-ONLY correction: derive actual literal by local object identity/payload, validate all existing outputs and original906pins, rerun analysis gates without compilation, then ONLY the remaining one dump-only frontend/as pair. No current-control/baseline recompilation, source/flag changes, retry of compiler or waived neutral .s/.o byte identity. Preserve original failed script/report unchanged; new continuation script/provenance separately hashed.
+
+Coordinator reviewed Vehicle reference-conditional4332/native4372 as failed: two genuine homes and capture preserved, but Euler-set helper sites still duplicated. Raw200 old functions exact; disclosed anonymous bijection accounts for230 payloads/1530 references. No LD or credit, source-control ownership released. New exclusive decomp_random read-only scope remains Vehicle step0x0030c035/native4372: audit the concrete upstream set(float,float,float) void return versus partial-header quaternion-reference declaration, whether this was previously tested, whether actual native callers establish a changed Gameloft contract, and whether ignored return lowering could affect this constructor. Ten minutes, no source/header/compiler/LD or new source form. Do not infer a return contract from incidental R0 contents or treat upstream as proof of fork identity.
+
+Coordinator reviewed Help own neutral diagnostic: whole4054b3c8 object and106768b5 assembly exact; all179 old functions/339 allocated payloads/111 imports/1132 references raw unchanged. First own reversal149sched2, no source form justified. New exclusive decomp_billboard read-only scope remains Help0x002ecb01/native32: use its newly authenticated ready-list/dependency trace plus pinned primary GCC4.2.1 scheduling implementation to identify the exact prioritization rule choosing receiver-after-argument moves. At most ten minutes; no new compiler/verbosity/options/source/LD. If retained trace cannot establish rule, report that precise limit without assuming a type defect or repeating sibling controls.
+
+Coordinator approves ONE ResStream D1/D2 frontend-revision control exactly PROPOSED-COMMANDS.json: authenticated source642264be and baselineobject18235e70, replace only1.6_r1 cc1plus with existing r4b9a2945ef; same original16 flags/relativepaths/runtime and1.6 assembler. Fresh private clone, complete1186 preparation+copied/include/tool pins, raw off-target7function/section/import/symbol/reference gates, D0 opaque preservation only, strict56function/input and genuine D1/D2 aliases. Compare assigned six nonrelocated native bytes only after recording full raw deltas. One frontend/as, no retry/dumps/source/header/flag/placement changes; STOP BEFORE LD regardless. No compiler adoption or match credit authorized.
+
+Coordinator approves ONE private quaternion set-return declaration control for Vehicle step, exact patch7a4e3922d8f41ae69d8314beb48d97f7c5d1b22e86e55f65fdaa1804f48dfbd2. Original4336 sourceb7e929/objectb710 remains byte-identical; only paired Quaternion.h return quaternion-reference becomes void as in actual1.4.2 source. Concrete GCC4.2.1 CALL_VALUE versus CALL lowering and examined native callers discarding result justify a bounded test, not a shipped-fork type claim. One original frontend/as, original paths/flags, complete200function/230payload/1530offref/import/symbol/metadata and1068+119pins with actualincludes. Rawfailuresfirst, no globalheaderadoption or sourcecomposition; strict4372function/input, actual capture/home/call audit. Stop beforeLD regardless; no second baseline/refinement/dumps/hints/ABI assumption.
+ResStream r4b control reviewed negative: all9 allocated/function payloads and31 semantic refs unchanged; assigned six native bytes still fail. New .note.GNU-stack and bookkeeping rawmetadata failures retained, not waived. NoLD/adoption/credit; ownership released and sole revision control spent.
+
+Coordinator reviewed Vehicle void-set control4336/native4372 negative: only four pre-constructor move bytes change, no home/frame/shared-call repair, all200 old functions exact with disclosed namespace-only correspondence for remaining metadata. NoLD/headeradoption/credit. Release step ownership. New exclusive decomp_random scope: libsanangeles.so0x00313b01 Vehicle::Update(int), native4020, src/game/vehicles/Vehicle.cpp. Ten-minute feasibility only for originalIrr1.4.2 void fromAngleAxis return versus reference declaration, using authentic latest3936/source-object pair from worker-vehicle-update-visibility-source and retained damage-common corrections. Check prior exactvoid control and actual returned-reference consumption first. At most one unapplied declaration-only proposal; no compilation, body/header adoption, constructor/lifetime/source grid or repeat of settled visibility-tail audit.
+
+Coordinator approves Rocket void-rotationFromTo control patch49fe8f31735d141872b15a31549ea162f195a70ce24cbabd1347f5abfca5a342 with an added untouched-baseline gate because complete historical tool/input pins are absent. Fresh exact retained src/config clone; first ONE original normal frontend/as pair must reproduce historical744 object and old raw payload/reference/metadata identity before ANY header change. Stop/report failure without void trial. Then only ONE declaration change in paired Quaternion.h70cc4e22->4d34c664, unchanged Rocket.cpp513923e2, same original14flags/paths/tools and originalassembler once. Two pairs total, all888+copied/include/tool pins, strict744function/input and full18oldfunctions/36payloads/92imports/144offrefs/metadata. Rawfailuresfirst, no waiver/retry/dumps/LD/sourcecomposition/forktypeclaim. Stop beforeLD regardless; adoption or credit requires later fullnative/current proof.
+
+Coordinator created compatibility aliases without replacing/deleting the existing legacy root: legacy/src points to relocated donor/src, and legacy/_scratch/animate-linked-permuter-checked/scalar points ONLY to the worker private fixture. Root verified resolved targets and original cd663eff header; donor remains unchanged. Receipt _scratch/bullettrace-legacy-alias-setup.json. Approve BulletTrace two-pair protocol: untouched exact-source baseline first, authenticate saved496 rawbf737c88 plus complete old executable/payload/import/ref/metadata identity before any void header. On raw failure stop for review. Then ONLY patch0c9d52987961e1fe4ea98e8e39a99a7375f25e1227e01d385168eb13001420cc in private QuaternionView.h cd663eff->67c4e7e2, source8b498943 unchanged, original14/4flags/relativebasename/tools. Freeze all donor/actualalias-resolved includes/tools and preserve both original and controlled-private-header expected delta. Two frontend/as pairs total, no retry/dumps/LD/flag/body/source-include edits or donor changes. Strict496function/input and fulloldofftargetgates; noforktype/adoption/creditclaim.
+Approve Vehicle Update one fromAngleAxis declaration control patch2b4a9ad1092266c093e03ae07033ea19f99a763fe5bcbb7fd093dae23401ead4 ONLY after one untouched original3936 baseline frontend/as pair reproduces historical object359d25e7 and complete old raw payload/reference/metadata identity. Raw failure stops before header. Then paired Quaternion.h sole declaration change, source7a1d7995/eventheader unchanged, original16/4flags/paths/tools, one frontend/as, full199oldfunctions/226payloads/306imports/1448offrefs/allmetadata/pins. No legacy drift waiver, sourcecomposition, retries, dumps, LD or globalheaderadoption; strict4020function/input.
+Rocket void-rotation control reviewed negative: baseline wholeobject/assembly identity passed, all18olddefs/36payloads/92imports/144offrefs exact. Trial744 introduces8nonrelocated differences inside formerly native-exact prefix without improving later mismatch. NoLD/headeradoption/credit; ownership released.
+
+New exclusive decomp_billboard scope after reviewed Rocket negative: libsanangeles.so0x00303bb9 PlayerTest::switchAnim(), native1072, src/game/ai/PlayerTest.cpp. Ten-minute rotationFromTo void-return feasibility using the newly demonstrated CALL_VALUE/CALL code-generation distinction. Recover latest driver-eject, targetLocked and raw32-transport corrections/budgets and authentic paired source/object FIRST; no stale1088 or1084 source rollback. Check exact void-return history and actual native result use. At most one unapplied declaration-only proposal if supported; no compiler/header/sourceapply, no constructor/copy/boolean/layout/sourcegrid or globalheaderadoption.
+
+Coordinator independently reviewed both stopped baselines. Update: replacing ONLY the full E643FAE7 anonymous prefix by E040BFDD accounts for EVERY byte in entire object and assembly (46object/118assembly occurrences); allactual199oldfunctions/226payloads/306imports/1448offrefs unchanged. Root proof _scratch/update-baseline-root-name-proof.json. BulletTrace: independent complete symbol comparison finds ONLY STT_FILE job-fd00cf0cdd7f-102.cpp versus verification-source-best.cpp; all29functions/36allocatedpayloads/all288refs/imports raw unchanged, associated string/file offsets explain differences. The original wholefile/rawmetadata gates remain FAILED and preserved. Separately approve these exact metadata-only correspondences as sufficient unchanged-program evidence for the private controls, NOT as wholefile identity or matching credit. No output bytes may be edited.
+Approve RESUME ONLY the unused ONE frontend/as pair for each: Update paired Quaternion.h exactpatch2b4a9ad1 fromAngleAxis void on authentic untouched3936 source; Bullet private QuaternionView.h exactpatch0c9d5298 rotationFromTo void on untouched496 source8b498943 through verifiedaliases. Reauthenticate alloriginal/private/runtime/actualincludes/preservedbaselineoutputs and source/header expectedchanges; no baselinecompile/retry/newsource/refinement. Allprevious realcode/data/import/definition/semanticref/symbol gates remain mandatory, rawfirst and anynewmetadatafullydisclosed; strictnative4020 and496function/input. STOPbeforeLD regardless; no globalheaderadoption/credit.
+
+Coordinator approves Player switchAnim void-rotation declaration control exactpatch18dee63146ec1f2e11d762fed74fba79fc21b3e8db2b299562445f41451fe28c on lastfourcorrection1076 context ONLY, with one untouched baseline pair first. Preserve source5c7bd48e, nested active Quaternion.h70cc4e22, untouched fallback/header and all485historical+615prepared/tool pins. Original14flags/orderedincludeoptions/relativepaths/assembler. Baseline must reproduce raw1076f4597c7f/table852 and all79oldfunctions/110payloads/132imports/426offrefs/semanticmetadata; preserve raw wholefile/symbol failure first and STOP for rootreview if any generated/file identity differs. No candidateheader until accepted baseline. Then onlyone nestedheader declaration quaternion-reference tovoid/header4d34c664, exactreverse/sourceunchanged, one samefrontend/as, strict1072function/input andfulloldgates. Total2pairsMAX, no retry/dumps/sourcecomposition/fallbacksync/LD/adoption/credit. Existing GOM/currentglobal limits remain.
+
+Player switchAnim baseline rawidentity failure reviewed independently by coordinator: replacement of ONLY complete anonymous prefix29E510B7->B7937B2A accounts for EVERY byte of wholeobject AND assembly; seven actual carconstant objects/sections and their references, all80functionpayloads/table852 otherwise exact. Rootproof _scratch/player-switch-baseline-root-name-proof.json. Originalfailedwholefile gates remain recorded. Separately approve exact metadata-only correspondence for this private control, not matchingcredit/outputediting. RESUME ONLY unusedONE frontend/as pair exactpatch18dee631 in active nested Quaternion.h70cc4e22->4d34c664, all485original/copied+615prepared/tools/source5c7bd48e/fallbackheader stable; no baseline recompile, retries, sourcecomposition, dumps orLD. Alloldcode/data/import/ref/metadata gates rawfirst, strict1072function/input/table852; actualnative forkreturn stillunproven, no adoption/credit.
