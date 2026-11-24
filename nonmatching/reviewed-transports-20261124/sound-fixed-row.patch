@@ -1,0 +1,12 @@
+--- authentic target fragment
++++ UNAPPLIED fixed row array view
+@@ -4,7 +4,8 @@
+     if (flags & 2) {
+         for (int id = 0; id < soundCount; ++id) {
+             for (int channel = 0; channel < 4; ++channel) {
+-                CSound** channels = soundSlots[id];
++                typedef CSound* ChannelRow[4];
++                ChannelRow& channels = *reinterpret_cast<ChannelRow*>(soundSlots[id]);
+                 CSound* sound = channels[channel];
+                 if (sound && sound->GetStatus() != 4)
+                     ++count;

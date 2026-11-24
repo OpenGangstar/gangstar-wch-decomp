@@ -1,0 +1,26 @@
+--- a/src/game/world/Path.cpp
++++ b/src/game/world/Path.cpp
+@@ -94,18 +94,17 @@
+
+ void Path::Load(const Structs::Path& data, irr::collada::CColladaFactory*)
+ {
++    struct SourceCoordinates { int X, Y, Z; };
+     LevelObject::Load(data, getPathGameFactory());
+     waypointCount = data.count / 3;
+     waypoints = new irr::core::vector3d<float>[waypointCount];
+     for (int i = 0; i < waypointCount; ++i) {
+         irr::core::vector3d<float>& waypoint = waypoints[i];
+         const int* coordinates = data.values + i * 3;
+-        const int x = coordinates[0];
+-        const int y = coordinates[1];
+-        const int z = coordinates[2];
+-        const float fx = static_cast<float>(x);
+-        const float fy = static_cast<float>(y);
+-        waypoint = irr::core::vector3d<float>(fx, fy, static_cast<float>(z));
++        const SourceCoordinates point = {coordinates[0], coordinates[1], coordinates[2]};
++        const float fx = static_cast<float>(point.X);
++        const float fy = static_cast<float>(point.Y);
++        waypoint = irr::core::vector3d<float>(fx, fy, static_cast<float>(point.Z));
+     }
+     delete[] data.values;
+ }

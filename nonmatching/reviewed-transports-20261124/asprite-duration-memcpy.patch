@@ -1,0 +1,13 @@
+--- a/src/game/rendering/ASprite.cpp
++++ b/src/game/rendering/ASprite.cpp
+@@ -459,7 +459,9 @@
+     int duration = 0;
+     if (count > 0) {
+         unsigned char* base = reinterpret_cast<unsigned char*>(data) + data->animationFrames;
+-        short first = entry->firstFrame;
++        unsigned short firstBits;
++        memcpy(&firstBits, &entry->firstFrame, sizeof firstBits);
++        short first = static_cast<short>(firstBits);
+         unsigned char* current = base + first * 9 + 2;
+         unsigned char* end = base + (first + count) * 9 + 2;
+         do {

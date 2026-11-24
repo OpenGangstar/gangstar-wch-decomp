@@ -5,7 +5,56 @@ and acceptance. Use the binary, address, and function name to identify each
 entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 <!-- active-ownership:start -->
+## Worker reactivation, 2026-11-24 14:24 UTC
+
+Coordinator reviewed the completed Path local snapshot, ASprite two-byte memcpy
+transport and SoundManager fixed-row trials as negative. No matching credit or
+canonical changes. Their previous scopes are released. The following exclusive
+assignments supersede earlier active tables. Runtime permits three workers plus
+the coordinator; a fourth worker cannot run concurrently in this session.
+
+| Binary | Address | Function | Owner | Status | Matching | Source and explicit scope |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | /root/decomp_cleanup | ASSIGNED | Unmatched; native80 | src/game/audio/SoundManager.cpp; review one fixed-row plus native byte-offset induction composition after measured82-byte result; proposal only |
+| libsanangeles.so | 0x00300bc5 | Path::Load(Structs::Path const&,CColladaFactory*) | /root/decomp_billboard | ASSIGNED | Unmatched; native200 | src/game/world/Path.cpp; audit actual LevelObject::Load return consumption and declaration history for the remaining four-byte residual; no guessed ABI |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | /root/decomp_random | ASSIGNED | Unmatched; native82 | src/game/rendering/ASprite.cpp; bounded primary ARM backend audit of signed-memory versus register sign-extension selection, using existing dumps/history; no repeat unsigned-alias or memcpy trial |
+
+Each scope is a ten-minute feasibility investigation. Preserve existing budgets;
+no compiler, new dump, patch application, shared/canonical edits, registry edits,
+Git operations or agent spawning. Report one evidence-supported unapplied
+proposal at most, or a precise negative result. Coordinator approval is required
+before a subsequent source trial.
+
 ## Current coordinator dispatches
+
+### Next bounded feasibility wave, 2026-11-24 13:45 UTC
+
+PR785 is merged c2b20d69692946af37d8c84f397f3d9bd9f811d7; bothCI and entire main
+report verified. Canonical matching code is unchanged. The coordinator removed
+only its temporary BulletTrace junctions/empty parent directories after the
+completed trial; original donor/private files and existing legacy root remain.
+All prior declarations and failed candidates remain unadopted.
+
+These exclusive proposal scopes supersede the released wave table. Each is at
+most ten minutes, must recover all earlier budgets/source attempts first, and
+must reject an already tried representation. No compiler, source application,
+header edit, new dump, canonical/shared/registry/Git mutation or agent spawning.
+Only private evidence and at most one unapplied proposal per owner are allowed.
+
+| Binary | Address | Function | Owner | Status | Matching | Source and hypothesis |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00300bc5 | Path::Load(Structs::Path const&,CColladaFactory*) | /root/decomp_billboard | IN_PROGRESS | Unmatched; native200 | src/game/world/Path.cpp; distinguish a real three-int coordinate record view from prior scalar/float-vector forms; this is NOT the rejected serialized-offset reassociation |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | /root/decomp_random | IN_PROGRESS | Unmatched; native82 | src/game/rendering/ASprite.cpp; determine whether standard two-byte memcpy transport followed by explicit signed conversion is an untried, faithful way to express the measured unsigned-load/sign-extension boundary |
+| libsanangeles.so | 0x0034ef15 | ResStream::~ResStream() sharedD1/D2 | /root/decomp_cleanup | IN_PROGRESS | Unmatched; native56 | src/game/world/ResStream.cpp; read-only inherited BufferStream::Close return-contract evidence, motivated by measured CALL_VALUE/CALL allocation effects; do not guess a new return type |
+
+Path must preserve actual12-byte stride/field offsets, input/field/callback
+phases and ABI; no public format change, dummy objects or lifetime trick.
+Duration must preserve exact two source bytes, signed value, loop/helper order
+and standard C++ without volatile/barriers/flags. ResStream must find actual
+returned-result consumption or authoritative declaration evidence, not incidental
+R0 state or a tail call. Any change required in another function must be reported
+to the coordinator; no source experiment is approved by this dispatch.
+
 
 ### Reviewed wave checkpoint, 2026-11-24 13:27 UTC
 
@@ -3438,3 +3487,11 @@ Approve RESUME ONLY the unused ONE frontend/as pair for each: Update paired Quat
 Coordinator approves Player switchAnim void-rotation declaration control exactpatch18dee63146ec1f2e11d762fed74fba79fc21b3e8db2b299562445f41451fe28c on lastfourcorrection1076 context ONLY, with one untouched baseline pair first. Preserve source5c7bd48e, nested active Quaternion.h70cc4e22, untouched fallback/header and all485historical+615prepared/tool pins. Original14flags/orderedincludeoptions/relativepaths/assembler. Baseline must reproduce raw1076f4597c7f/table852 and all79oldfunctions/110payloads/132imports/426offrefs/semanticmetadata; preserve raw wholefile/symbol failure first and STOP for rootreview if any generated/file identity differs. No candidateheader until accepted baseline. Then onlyone nestedheader declaration quaternion-reference tovoid/header4d34c664, exactreverse/sourceunchanged, one samefrontend/as, strict1072function/input andfulloldgates. Total2pairsMAX, no retry/dumps/sourcecomposition/fallbacksync/LD/adoption/credit. Existing GOM/currentglobal limits remain.
 
 Player switchAnim baseline rawidentity failure reviewed independently by coordinator: replacement of ONLY complete anonymous prefix29E510B7->B7937B2A accounts for EVERY byte of wholeobject AND assembly; seven actual carconstant objects/sections and their references, all80functionpayloads/table852 otherwise exact. Rootproof _scratch/player-switch-baseline-root-name-proof.json. Originalfailedwholefile gates remain recorded. Separately approve exact metadata-only correspondence for this private control, not matchingcredit/outputediting. RESUME ONLY unusedONE frontend/as pair exactpatch18dee631 in active nested Quaternion.h70cc4e22->4d34c664, all485original/copied+615prepared/tools/source5c7bd48e/fallbackheader stable; no baseline recompile, retries, sourcecomposition, dumps orLD. Alloldcode/data/import/ref/metadata gates rawfirst, strict1072function/input/table852; actualnative forkreturn stillunproven, no adoption/credit.
+
+Coordinator approves ONE ASprite Duration byte-transport trial exactpatchf30a52434c31e685a75e0fc4353dc3d2a43119ee03b678534f8dfe30b46348f1/sourcef645e863 on authentic postFModule coherent source20aa4311/object9dff716b. Only standard memcpy2 into real unsignedshort and signed-short conversion replace the existing guarded field read; pinned target compiler conversion semantics reviewed. No include/header/API/loop/otherbody changes. Freshclone440original/copy/29actualinclude+5known tools plus ENTIRE legacy tool/runtime pins beforedispatch, originalorderedflags/paths/frontend/as once. Preserve every44credited andotheremittedofftarget definition/payload/import/ref/metadata, rawfailuresfirst and anygenuineidentifiercorrespondenceexplicit; extraemittedmemcpycall is rejection. Strict82function/input; STOPbeforeLDregardless, no retries/dumps/source/flag variants/adoption/credit.
+Path POD-view feasibility reviewed negative and released: no live source-record evidence, no reinterpret-view trial. New bounded decomp_billboard feasibility scope remains PathLoad0x00300bc5/native200: a REAL const three-int LOCAL snapshot initialized from existing scalar elements avoids the fake source-object premise. Coordinator relaxes only its own no-extra-object preparation constraint for this meaningful, fully consumed data snapshot; dummy objects/artificial lifetimes remain prohibited. Preserve allthree inputread/phases and floating/helper order; if unsafe across callbacks or alreadytested, reject. At most one unapplied proposal, no compileyet.
+ResStream inherited Close audit reviewed negative:10 recovered directcallers discardreturn, no nonvoidcontractproof/type trial; ownership released. New exclusive decomp_cleanup feasibility scope SoundManager::getNumberOfPlayingSounds(),libsanangeles.so0x00352cad/native80,src/game/audio/SoundManager.cpp. Six-minute actualrow-allocation/standardC++fixed-four-pointer-array-view feasibility; MUSTprove genuine four-element source array lifetime/allocation before proposing array view, not inferfromloopbound. Check prior sourceforms/refresh96 and distinct GCCARRAY_REFvsINDIRECT_REF mechanism; no callback/tablehoist or compiler/source/header/dump/LD yet.
+
+Coordinator approves ONE Path local-record snapshot trial exactpatche3a593b4e480ccaed9f5745811db2aa218a8391565464c65cd98ce0afcac80ec: source8ca0cfd9->0ad6cb78, only replace three real intlocals with a real const three-int local initialized from same reads, then use its fields in unchanged floating conversions/vectorassignment. No reinterpret-source view or external lifetime premise, no new data/ABI/header. Original orderedflags/relativepaths/frontend/as once,997original+copied/actualincludes/entiretool/runtime pins, full12otherdefs/17offpayloads/53imports/69offrefs/symbol+sectionmeta rawfirst, genuineidentifiercorrespondenceexplicit. Strict200function/input, actualsource phases/code/frame/calls; STOPbeforeLDregardless, no retry/dumps/refinement/adoption/credit.
+Coordinator approves ONE Sound count fixed-row trial patch86274f3dcf5879fd998d22e3587d8faee2dca6fca393072774a03ac526b3331f on authentic80 source9f5d39f1/objectf5922644, not refresh96. Genuine matched producer allocates each separate row with newCSound*[4]; only inner samefreshrowload becomes reference to that actual four-pointer array. No whole-table cast/header/layout/callback/read-phase change. PrimaryARRAY_REFvsINDIRECT_REF hypothesis reviewed with explicit outer-load effect uncertainty. Original orderedflags/paths/frontend/as once; freeze original/copied/actualinclude/wholetool/runtime pins, all73oldfunctions/83offallocated/import/symbol/ref/metadata rawfirst, strict80function/input and fresh table/row eachenteredchannel. STOPbeforeLDregardless, no source/type/flaggrid/hoist/extra read/refinement/adoption/credit.
+Duration memcpy trial reviewednegative92/native82 with8Bscratch and signedstackreload; all46offtargetdefs unchanged, noLD/credit, candidatepreserved. New6-minute read-only decomp_random scope remains Duration0x00349d81: determine whether direct corresponding-unsigned-short alias read into nonaddressable scalar followed by signed conversion is already tried or provably folded identical. Unlike memcpy this needs no addressed destination; standard corresponding signed/unsigned access rule and target conversion must be established, not guessed. No compiler/patchapplyyet; atmostone unappliedproposal if newdistinct mechanism; no packing/extra-width read/header/volatile/flags/dummyuses.
