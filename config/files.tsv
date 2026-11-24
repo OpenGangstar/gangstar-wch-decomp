@@ -492,9 +492,9 @@ SideMissionManager.cpp	game	missions	19
 TaxiSideMission.cpp	game	vehicles	19
 Trail.cpp	game	world	19
 TrailMgr.cpp	game	world	16
-IPhone.cpp	game	app	1
+IPhone.cpp	-	-	0
 Win32.cpp	-	-	0
-AnimObject.cpp	game	characters	22
+AnimObject.cpp	game	characters	23
 ASprite.cpp	game	rendering	47
 ASpriteData.cpp	game	rendering	11
 StringManager.cpp	game	persistence	29

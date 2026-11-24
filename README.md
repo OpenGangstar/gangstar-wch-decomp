@@ -14,9 +14,9 @@ source.
 | Area | Functions | Bytes | Matched |
 | --- | ---: | ---: | ---: |
 | ai | 313 | 50734 | 51.87% |
-| app | 222 | 17338 | 94.30% |
+| app | 221 | 17306 | 94.48% |
 | audio | 281 | 18996 | 90.77% |
-| characters | 232 | 58870 | 40.26% |
+| characters | 233 | 58902 | 40.29% |
 | combat | 145 | 15952 | 92.23% |
 | core | 261 | 23692 | 81.93% |
 | hud | 232 | 26776 | 83.06% |
@@ -29,7 +29,7 @@ source.
 | ui | 807 | 74484 | 74.46% |
 | vehicles | 307 | 67932 | 46.36% |
 | world | 289 | 36978 | 70.24% |
-| **total** | **4550** | **561716** | **63.50%** |
+| **total** | **4550** | **561716** | **63.51%** |
 <!-- progress:end -->
 
 ---
@@ -50,8 +50,8 @@ is unusually generous.
 | **The engine identified** | Irrlicht 1.4.2, plus gameswf, Box2D, libpng, freetype, libjpeg and zlib |
 
 So the project starts with the answers: the game has 4,550 functions of its
-own across 16 gameplay systems, it was built from 182 of its own translation
-units, and every one of those functions is already disassembled and filed
+own across 16 gameplay systems, with 181 objects classified as game code and
+additional shared helpers, and every function is already disassembled and filed
 under the right name.
 
 ## What the library contains

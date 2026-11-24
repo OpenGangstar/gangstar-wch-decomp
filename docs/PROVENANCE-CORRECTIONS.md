@@ -296,3 +296,21 @@ contain only pending vendor functions. All 1,321 source, assembly, match-profile
 linker and nonmatching input hashes remain unchanged by classification. The
 existing 280-byte FreeType helper in psmodule.c is unchanged and receives no
 new match credit.
+
+## FSelect translation-unit ownership
+
+The 32-byte `_Z7FSelectfff` at Thumb `0x00349315` belongs to `AnimObject.cpp`,
+not `IPhone.cpp`. Empty IPhone and Win32 object groups retain coincident `$t`
+markers at its start; AnimObject owns the internal `$d` at `0x00349330` and
+`_GLOBAL__I__Z7FSelectfff`. The former nearest-anchor rule kept the first
+empty platform marker. A narrowly identified correction and regression tests
+now preserve the actual owner. See [FSelect verification](matches/fselect.md).
+
+All 17,703 function identities and 689 source-file entries remain in the
+generated tables. Only FSelect changes source/area and gains verified matched
+status. There are still 4,550 game functions and 561,716 target bytes, now
+attributed to 184 source-file groups, including 181 files classified as game
+objects and mixed-origin entries. Empty IPhone and Win32 entries remain
+present. The report has 202 code-bearing area/source groups;
+no new completed unit or Fully Linked bytes are credited because AnimObject
+still contains pending code.

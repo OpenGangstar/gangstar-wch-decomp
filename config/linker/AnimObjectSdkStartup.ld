@@ -15,6 +15,7 @@ fmodf = 0x001c3fec;
 memmove = 0x001c40ac;
 SECTIONS
 {
+    .fselect 0x00349314 : { *sdk-startup-animobject.o(.text._Z7FSelectfff) }
     .anim_reset 0x0034934c : { *sdk-startup-animobject.o(.text._ZN10AnimObject5ResetEv) }
     .sdk_startup_function_0 0x00349414 : { *sdk-startup-animobject.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x00349644 : { *sdk-startup-animobject.o(.text._Z41__static_initialization_and_destruction_0ii) }
@@ -42,5 +43,6 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
 }
+ASSERT(SIZEOF(.fselect) == 32, "native FSelect function and literal extent");
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");

@@ -11,6 +11,16 @@
 #include "AnimObject.h"
 #include "../core/ASprite.h"
 
+float FSelect(float value, float positive, float negative)
+{
+    float result;
+    if (value >= 0.0f)
+        result = positive;
+    else
+        result = negative;
+    return result;
+}
+
 float PlayPolicy_Onetime(float, float, float end) { return end; }
 
 void AnimObject::Unload() { sprite = 0; }
