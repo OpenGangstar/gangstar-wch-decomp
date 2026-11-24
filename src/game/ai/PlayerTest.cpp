@@ -868,3 +868,33 @@ void PlayerTest::setAnim(int animation, bool loop, bool force, bool mirror, floa
         unknown72 = y;
     }
 }
+
+void PlayerTest::initDriving(bool value)
+{
+    unknown377 = value;
+    if (ScriptManager::getInstance()->isInCinematic() && value)
+        return;
+
+    _SetTarget(0, true);
+    if (!unknown368) {
+        unknown368 = unknown312;
+        if (ScriptManager::getInstance()->isInCinematic())
+            return;
+        CameraManager::getInstance()->goBehind(unknown368);
+        CameraManager::getInstance()->setTouchScreenInputs(false);
+        return;
+    }
+    {
+        if (!ScriptManager::getInstance()->isInCinematic())
+            CameraManager::getInstance()->setTouchScreenInputs(true);
+
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+        setAnim(character->getSpecificAnimation(165), true, false, false, 1.0f);
+        justStoleCar(static_cast<Vehicle*>(unknown312));
+
+        unknown368 = 0;
+        const unsigned int flags = flags240;
+        unknown312 = 0;
+        flags240 = flags & ~moveToTargetFlag;
+    }
+}
