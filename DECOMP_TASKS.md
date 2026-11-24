@@ -481,6 +481,28 @@ GS3DStuff checkForDespawn review accepted negative; ownership released, no new s
 | libsanangeles.so | 0x002f55d1 | Character::shoot(float,bool) | /root/decomp_cleanup | IN_PROGRESS | Pending native2608; review actual saved HUD-corrected source, all prior budgets, return types and native return transfers. Determine whether any genuine user-root versus generated PRE issue is evidenced; no automatic named-result rewrite or new diagnostic/compiler. | src/game/characters/Character.cpp; nonmatching/characters/Character-shoot-blocked-hud.cpp |
 | libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath() | /root/decomp_random | IN_PROGRESS | Pending native192. Read actual candidate/history/types and native return-value/snapshot boundaries for a supported reusable reconstruction opportunity, preserving all budgets; no source/compiler/LD/dumps. | src/game/ui/MenuState.cpp; asm/ui/_ZN8RenderFX5Event16GetCharacterPathEv.s |
 
+
+Coordinator accepted Character shoot and RenderFX path opportunity reviews as negative; ownership released and no source/dump trial. Do not continue generic return-root transplants. Vehicle residual review found the still-dynamic pursuit lateral branch differs from native constant-specific scalar structure; proposal remains read-only until exact native value/callback proof and root review.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody(b2Body*,SColor) | /root/decomp_cleanup | IN_PROGRESS | Native936/latest928 unmatched. Read-only callback/field-snapshot and genuine Box2D value-return ledger on actual paired source; reuse previous proofs and stop if ledger already complete. No source/compiler/dump/LD. | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x003025cd | PlayerTest::isFacingTarget() | /root/decomp_random | IN_PROGRESS | Pending native184. Read-only actual source/history and receiver/position callback snapshot review; no generic return-root rewrite or repeated source/type/grid. No source/compiler/dump/LD. | src/game/ai/PlayerTest.cpp |
+
+
+Coordinator reviewed residual3192 REPORT and proposed-pursuit.patch. Authorize ONE source-only pursuit lateral reconstruction from actual even-first3192 object50117c42 and frozen935-input context. Apply exactly the reviewed proposal, no other changes. It reuses actual native scalar snapshots, even-first constant branches, X-result lifetime and shared late store/Yadd; native proof supports all values and history21 shows novelty. One original frontend/as; verify strict3220 target/input extent and full197/225/294/1446 preservation with raw name correspondence. Stop before LD regardless of extent for root review. No flags/types/headers/hints, output edits, refined second form or credit.
+
+
+Coordinator accepted DrawBody and Player isFacingTarget callback-ledger reviews as negative; ownership released, budgets unchanged. The following disjoint larger routines receive bounded10-minute read-only residual static-call/control accounting, following the concrete pursuit lead found by the same technique. Count differences are investigation leads, never proof of missing runtime operations or byte identity.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | /root/decomp_cleanup | IN_PROGRESS | Native4020/latest3936 unmatched; authenticate latest corrected damage/common-join object. Compare named arithmetic/gameplay calls, opaque/local transfers, genuine construction/cleanup sites and associated source/control blocks. No source/compiler/LD/dump; no event lifetime grid. | src/game/vehicles/Vehicle.cpp; nonmatching/vehicles/Vehicle-Update-damage-common.cpp |
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | /root/decomp_random | IN_PROGRESS | Native3012/latest3044 unmatched; authenticate latest common-downed correction object. Compare named arithmetic/gameplay calls, opaque/local transfers, event phases and actual control blocks; reuse prior proofs and do not redo common-down correction. No source/compiler/LD/dump. | src/game/ai/NPC.cpp; nonmatching/ai/NPC-Update-common-downed.cpp |
+
+
+Coordinator reviewed sole pursuit trial: actual function/input3224, native3220; frame476, code3004/pool220, all old payload/import/reference gates pass. Genuine native scalar sequence recovered; no LD or matching credit. Preserve latest3224 fragment and both3192 identities. Same owner now performs read-only actual3224 event-phase/call recheck and relevant private-versus-current owning-TU include/profile comparison. Identify concrete current declarations/source changes before proposing any context replay; no automatic compile, artificial context edits or further local source grid.
+
 <!-- active-ownership:end -->
 
 The coordinator restored native OctTreeAABBNode depth at offset60 and size64.
