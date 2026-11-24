@@ -65,12 +65,32 @@ module checks distinguish loader-reported names from actual kernel-backed files.
 Completion events without a preceding owned three-item entry are counted without
 reading quantity state; active sequences retain strict bounds.
 
-The trace proves installed small-three sorting behavior for this function.
-It ends before hard-register allocation. It does not establish the retail
-compiler revision, prove that correcting the sort would match retail, or justify
-a source, compiler-option or toolchain change. Keep those questions separate
-from the existing native R2/R3 mismatch and preserve the spent source budget.
+The sort trace proves installed small-three sorting behavior for this function.
+It ends before hard-register allocation. The separate observation below covers
+that next step. Neither observation establishes the retail compiler revision,
+proves that correcting the sort would match retail, or justifies a source,
+compiler-option or toolchain change. Preserve the spent source budget.
 
 The complete private receipts are under
 `_scratch/worker-resstream-allocation-policy/debugger-preparation/paired-sort-completion/`.
 No compiler executable, game data or generated binary is included here.
+
+## Separate actual allocation observation
+
+A second bounded debugger/compiler/assembler run reproduced the same entire
+object, assembly and inventory exactly. All input and live checks passed before
+interpreting its eight owned events. No linker or source change was involved.
+
+The actual register preference begins R3,R2,R1,R0. Quantity 0 is attempted first;
+both R3 and R2 are free, and it selects R3. Its call adds only the R3 bit across
+its ten live entries. Quantity 1 then overlaps two of those entries: its actual
+exclusion mask contains R3 and leaves R2 free. It scans R3, skips it, then selects
+R2. The captured fixed/class/live masks explain every exclusion bit.
+
+Post-propagation records directly confirm 106 maps to R3 and 104/105 map to R2,
+with zero offsets. This measures the installed sorting-to-allocation path, beyond
+correlation with final assembly. The saved native comparison requires the
+opposite PIC/vtable register roles. No reordered allocation was executed, and no
+retail compiler state or matching source correction follows from this result.
+
+Complete receipts: the sibling private `allocation-observer/` packet.
