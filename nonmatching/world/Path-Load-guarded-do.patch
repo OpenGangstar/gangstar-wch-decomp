@@ -1,0 +1,31 @@
+--- preferred Path.cpp8ca unchanged prefix/body
++++ UNAPPLIED guarded-do wrapper
+@@ -97,15 +97,19 @@
+     LevelObject::Load(data, getPathGameFactory());
+     waypointCount = data.count / 3;
+     waypoints = new irr::core::vector3d<float>[waypointCount];
+-    for (int i = 0; i < waypointCount; ++i) {
+-        irr::core::vector3d<float>& waypoint = waypoints[i];
+-        const int* coordinates = data.values + i * 3;
+-        const int x = coordinates[0];
+-        const int y = coordinates[1];
+-        const int z = coordinates[2];
+-        const float fx = static_cast<float>(x);
+-        const float fy = static_cast<float>(y);
+-        waypoint = irr::core::vector3d<float>(fx, fy, static_cast<float>(z));
++    if (waypointCount > 0) {
++        int i = 0;
++        do {
++            irr::core::vector3d<float>& waypoint = waypoints[i];
++            const int* coordinates = data.values + i * 3;
++            const int x = coordinates[0];
++            const int y = coordinates[1];
++            const int z = coordinates[2];
++            const float fx = static_cast<float>(x);
++            const float fy = static_cast<float>(y);
++            waypoint = irr::core::vector3d<float>(fx, fy, static_cast<float>(z));
++            ++i;
++        } while (i < waypointCount);
+     }
+     delete[] data.values;
+ }
