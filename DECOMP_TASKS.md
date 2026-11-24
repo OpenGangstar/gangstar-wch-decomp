@@ -7,6 +7,32 @@ entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 <!-- active-ownership:start -->
 ## Current coordinator dispatches
 
+### Live matching checkpoint, 2026-11-24 11:02 UTC
+
+PaintFModule is COMPLETED and ownership released after coordinator acceptance:
+libsanangeles.so0x0034a015,220 bytes; current44functions/38regions and full191
+profiles/11129comparisons exact; all4294creditedfunctions covered after credit.
+Game progress is now356938/561716 bytes(63.54%), FullyLinked114548 unchanged.
+The source/table/marker changes are local pending the next hourly PR batch.
+
+The three scopes below supersede earlier live-dispatch tables. Each is preparation
+for one coherent current ASprite translation-unit context, using the new matched
+PaintFModule and the same preferred previously reviewed bodies. No new source
+form, header edit or compiler is authorized for workers. Each first audits prior
+full-unit attempts and reports exact minimal declarations/dependencies and source
+provenance; only the coordinator may assemble or compile the combined context.
+
+| Binary | Address | Function | Owner | Status | Matching | Relevant source |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int) | /root/decomp_random | IN_PROGRESS | Unmatched,native82 | src/game/rendering/ASprite.cpp; exact preferred80-byte body/current-context preparation only |
+| libsanangeles.so | 0x00349e15 | ASprite::PaintModule(int,int,int,int) const | /root/decomp_billboard | IN_PROGRESS | Unmatched,native512 | src/game/rendering/ASprite.cpp; exact preferred500-byte body/current-context preparation only |
+| libsanangeles.so | 0x0034a28d | ASprite::GetPixelInfoInFrame(int,int,int,int&,int&) | /root/decomp_cleanup | IN_PROGRESS | Unmatched,native296 | src/game/rendering/ASprite.cpp; exact preferred300-byte body/current-context preparation only |
+
+Preserve all prior budgets and negative addressing/width/bitfield findings. This
+scoped unit-completion feasibility review is not another form or source replay.
+No worker edits shared/canonical files, registry assignments or another function.
+
+
 ### Live ownership checkpoint, 2026-11-24 10:35 UTC
 
 This checkpoint and the final narrow-assignment table supersede historical
@@ -3219,3 +3245,19 @@ source forms. Reuse any existing trace first; no compiler without reviewed plan.
 | libsanangeles.so | 0x003160d9 | GameObjectManager::getAttackableTarget(Character*) | /root/decomp_cleanup | IN_PROGRESS | Unmatched, native316 bytes | src/game/world/GameObjectManager.cpp; actual native/candidate return and operand-origin comparison; existing dumps first, at most one neutral diagnostic plan |
 | libsanangeles.so | 0x0034a015 | ASprite::PaintFModule(int,int,int,int,int) const | /root/decomp_random | IN_PROGRESS | Unmatched, native220 bytes | src/game/rendering/ASprite.cpp; exact entry/word-address residual origin, exclude settled narrow load widths; existing dumps first, at most one neutral diagnostic plan |
 | libsanangeles.so | 0x0035047d | CarSounds::Init(CarSoundSettings*) | /root/decomp_billboard | IN_PROGRESS | Unmatched, native1032 bytes | src/game/vehicles/CarSounds.cpp; eight addressing-byte residual origin and settings/tail roots, existing dumps first, no context replay |
+
+Coordinator review after PR782: ASprite neutral diagnostic reproduced exact whole11056-byte object, all70sections/153symbols/64relocs. Its address association first appears at104expand; receiver/load ordering changes at149sched2, no FSelect root merge. Approve ONE private composition in the actual typed220 context: the three serialized byte-offset-before-blob expressions specified in BYTE-OFFSET-PROPOSAL.md, preserving unsigned promotions, field phases and terminal calls. Freeze/reverse-check exact three-site patch before one original frontend/as; preserve all old object metadata/payloads/refs, require function AND input220 before any LD, stop before LD regardless. No second source form or scheduling/type/flag/helper change. This combines two separately native-backed findings and does not reset old raw-record budgets.
+
+Coordinator approves ONE unchanged-source GOM getAttackableTarget diagnostic per reviewed REPORT/PROPOSED-COMMANDS: same relative paths and ordered original flags, only neutral dump flags, actual624-or-expanded genuine input pins before/after. Require exact wholeobjectcc4f7970 and complete56definitions/77allocatedsections/484refs before interpreting only owned passes. Any drift/error stops, no metadata waiver/retry/source change or LD. Existing named target and commonR9 return already agree with retail; investigate comparison/temporary/argument-order origins separately, not a presumed FSelect defect.
+
+Coordinator accepted CarSounds neutral diagnostic: whole object/assembly exact,873inputs/8tools andall50allocatedsections/212symbols/245refs preserved. Eight address paths already base-first in003original/104expand and remain so through39RTL stages; no FSelect merge. No new source form; Init ownership released. New exclusive assignment: libsanangeles.so0x00349e15 _ZNK7ASprite11PaintModuleEiiii, native512, /root/decomp_billboard IN_PROGRESS, src/game/rendering/ASprite.cpp. Read-only transfer audit of the newly measured serialized-byte-offset association versus actual canonical500 candidate; preserve old six/canonical budgets and prior field-width ledger. No compiler/source change unless coordinator reviews a novel faithful proposal. Must not analyze/edit separately owned PaintFModule implementation; use coordinator-provided pattern only.
+
+Coordinator reviewed ASprite saved-object preservation and exact LD-only PLAN. Approve ONE original LD with primary0f8cf2cf, saved genuine GOT/externalThumb objects and unmodified native layout/symbol scripts. No compiler/as/harness/source/metadata changes. Require positive real executable targetThumb34a015/function220/input220/output220 and emitted PaintFrame neighbor34a0f0; all40functions/34historicalregions plusfulltargetsection exact. GOT body17972 atoffset864 mustmatchretail, complete18836 mustequaloldcandidate and retain disclosed642prefixdifferences; do not claimfullnativeGOTexact. Stop on any gatefailure withno retry orcredit; private historical-context proof only until currentglobalintegration.
+
+Coordinator reviewed exact GOM diagnostic: whole33792-byte objectcc4f7970 identical,56functions/77allocated/484refs and1118pins preserved. Expansion/reload/final-scheduling findings are independent; no FSelect defect or new source form. Release GOM. New exclusive /root/decomp_cleanup assignment: libsanangeles.so0x0034a28d _ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_, native296, src/game/rendering/ASprite.cpp, IN_PROGRESS. Read-only native-versus-canonical300 address-association transfer audit using the newly measured typed-record/integer-offset pattern; preserve all old field/row/palette/callback findings and budgets, no compiler/source changes without new reviewed proposal. Other two ASprite functions remain separately owned and must not be edited/analyzed.
+
+Coordinator reviewed ASprite PaintModule/PixelInfo transfer reports negative: native already uses their existing table-base associations; earlier integer-offset forms were spent. Release those two scopes. New bounded primary-compiler feasibility scopes (no build/source changes): /root/decomp_billboard owns CarSounds::Init0x0035047d for original frontend canonicalization-rule identification after exact-neutral measurement; /root/decomp_cleanup owns SoundManager::getNumberOfPlayingSounds0x00352cad/native80 for the already localized089VRP indexed-load commutation rule. Each may inspect primary GCC source and existing owned dumps only to predict one faithful untried source representation, or report no such support; no repeated diagnostic or operand/type/flag grid. PaintFModule remains REVIEW under coordinator current-context full191-profile gate; all oldcurrent44functions/38regions alreadyexact, markerretained.
+
+Coordinator reviewed all three current-context preparations and performed one private coherent ASprite frontend/assembler measurement. Each exact preferred body remains bit-identical to its individual candidate: Duration80/native82, PaintModule500/native512, PixelInfo300/native296. All44 prior unlinked function bodies remain exact; every copied source/tool pin stayed stable. Strict extents fail, so no LD or native/shared-Cash/global gate ran for this private context. Canonical headers remain unchanged. Source patch and exact provenance are preserved in nonmatching/rendering/ASprite-complete-current-context.*; all three scopes are BLOCKED and ownership released after review. This does not change the accepted canonical PaintFModule220-byte match or reset previous budgets.
+
+Next bounded feasibility scopes after accepted negative ASprite union context: decomp_random exclusively owns RenderFX::Find0x003ed6e5 for a single historical parent-2 unsigned-length/ordinary predicate composition proposal in the genuine typed context; decomp_billboard exclusively owns CarSounds::Init0x0035047d for source byte-offset induction feasibility against the newly traced late SSA-copy substitution; decomp_cleanup exclusively owns SoundManager::getNumberOfPlayingSounds0x00352cad for a fresh-per-iteration table-value loop representation feasibility preserving native callback/read phases. These are at most six-minute read-only proposal scopes, not compiler or source-form authorization. Each must first reject any already tested representation; no type hacks, barriers, dummy roots, flags, changed callback order or budget reset. Only one concrete faithful proposal per owner may be submitted for coordinator review.

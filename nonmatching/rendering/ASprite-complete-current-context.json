@@ -1,0 +1,141 @@
+{
+  "targets": {
+    "_ZN7ASprite15GetAnimDurationEi": {
+      "native": 82,
+      "function": 80,
+      "input": 80,
+      "raw_sha256": "c8cda221040383236d7bb1e8c719bc0963bf8832c4eceefd266fe5b2d7b13d3a",
+      "strict_extent": false
+    },
+    "_ZNK7ASprite11PaintModuleEiiii": {
+      "native": 512,
+      "function": 500,
+      "input": 500,
+      "raw_sha256": "bd4590a5b827dd32a7e256a55f426c8b3b09ce086f58d894ea8bf3504b16770d",
+      "strict_extent": false
+    },
+    "_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_": {
+      "native": 296,
+      "function": 300,
+      "input": 300,
+      "raw_sha256": "5bce6d1c9ba3089f79bc5f67b7d62acadd30fcf9b3feef6c25bce2f4377327ec",
+      "strict_extent": false
+    }
+  },
+  "old_functions_preserved": 44,
+  "old_functions_changed": [],
+  "preserved_names": [
+    "__tcf_2",
+    "_Z41__static_initialization_and_destruction_0ii",
+    "_GLOBAL__I__ZN7ASprite18s_global_transformE",
+    "_ZN7ASprite21GetTransformFromFlagsEj",
+    "_ZN7ASpriteC1Ev",
+    "_ZN7ASpriteC1ERKS_",
+    "_ZNK7ASprite6_traceEPKc",
+    "_ZN7ASprite7_setPtrEPh",
+    "_ZN7ASpriteC1EPh",
+    "_ZN7ASprite12GetModuleIdxEPKc",
+    "_ZN7ASprite9MakeImageEij",
+    "_ZN7ASprite9_erasePtrEv",
+    "_ZN7ASpriteC1EP11IFileStream",
+    "_ZN7ASpriteC1EPKc",
+    "_ZN7ASpriteD1Ev",
+    "_ZN7ASpriteD0Ev",
+    "_ZNK7ASprite9GetAFrameEi",
+    "_ZN7ASprite14GetFrameHeightEi",
+    "_ZNK7ASprite20GetFrameBoundingRectEi",
+    "_ZN7ASprite13GetFrameWidthEi",
+    "_ZNK7ASprite19GetModuleFromAFrameEii",
+    "_ZNK7ASprite8GetFrameEi",
+    "_ZNK7ASprite18GetFrameFromAFrameEii",
+    "_ZNK7ASprite24GetAnimFrameBoundingRectEii",
+    "_ZNK7ASprite15GetFrameMarkersEiPi",
+    "_ZNK7ASprite10GetFModuleEi",
+    "_ZNK7ASprite9GetModuleEi",
+    "_ZNK7ASprite23GetNumberOfFrameMarkersEi",
+    "_ZNK7ASprite10PaintFrameEiiii",
+    "_ZNK7ASprite12PaintFModuleEiiiii",
+    "_ZNK7ASprite11PaintAFrameEiiiii",
+    "_ZNK7ASprite13GetAFrameTimeEii",
+    "_ZN7ASprite11GetFrameIdxEPKc",
+    "_ZNK7ASprite7GetAnimEi",
+    "_ZNK7ASprite12GetFrameRectEii",
+    "_ZN7ASprite9GetAFrameEii",
+    "_ZN7ASprite10GetAnimIdxEPKc",
+    "_ZNK3RctIiE14isIntersectingEii",
+    "_ZN7ASpriteC2Ev",
+    "_ZN7ASpriteC2ERKS_",
+    "_ZN7ASpriteC2EPh",
+    "_ZN7ASpriteC2EP11IFileStream",
+    "_ZN7ASpriteC2EPKc",
+    "_ZN7ASpriteD2Ev"
+  ],
+  "LD": "NOT RUN; strict prelink extent check only",
+  "canonical_changes": false,
+  "new_source_forms": false,
+  "base_commit": "60f678b65eca3b102132baac3b2df681092121ea",
+  "patch": "ASprite-complete-current-context.patch",
+  "patch_sha256": "53c6c5df4820eac79edf94f32f7faeae6d6e077cb93ce128052e67cdc3ce4a9f",
+  "patch_context": 0,
+  "apply_requires": "git apply --unidiff-zero",
+  "patch_apply_and_complete_source_reconstruction": true,
+  "files": [
+    {
+      "file": "src/game/core/ASprite.h",
+      "before_lf_sha256": "111790bb9e4305e3341d8e73b9d4123a9e685cd2ad891a578ba4c8aefa585c9d",
+      "after_lf_sha256": "9abe1f6b0d68d605decc1c3c0c078e52f9f9dae3b001ea9810f17d658dc52f02"
+    },
+    {
+      "file": "src/game/core/Matrix4.h",
+      "before_lf_sha256": "41d580ca31b8aaf41b46acb4a7a3724d7d9329e71e5920e4fa36a320ede78439",
+      "after_lf_sha256": "87e0d5e831d44bf976b6fa4c202fdae69b81c6fe2d78728ef649ad1832685321"
+    },
+    {
+      "file": "src/game/core/VideoDriver.h",
+      "before_lf_sha256": "50fccdbeebaa04dd2833a5ce9333b3c115d8f020b943021679a842c08e9fd248",
+      "after_lf_sha256": "ef691a5217ef891c6ac963ad945c2a347cd88892dfa14f7f31e713f3b0c2c672"
+    },
+    {
+      "file": "src/game/rendering/ASprite.cpp",
+      "before_lf_sha256": "2d6d1fc697a32deecb3c5669b9410e9872eaa7bc329214c0888485bbe1260b95",
+      "after_lf_sha256": "20aa4311dfcd131db50278a508365a6e70c6ddaca06607a518c6cddd3be297b0"
+    }
+  ],
+  "fragment_provenance": [
+    {
+      "name": "duration",
+      "path": "C:\\Users\\Ethan\\.codex\\worktrees\\combat-rocket-review\\gangstar-wch\\_scratch\\asprite-complete-current-plans\\duration\\preferred-body.txt",
+      "raw_sha256": "2d4fc7cc83ddb8dce934607952ee5ba743962b9f4d743fe5f39714a58a1a554d",
+      "lf_fragment_sha256": "52069505c78d5ed773def7cc361f70bc9b3719552ead6762719281e42e213c9a",
+      "verbatim_after_newline_normalization": true
+    },
+    {
+      "name": "module",
+      "path": "C:\\Users\\Ethan\\.codex\\worktrees\\combat-rocket-review\\gangstar-wch\\_scratch\\asprite-complete-current-plans\\module\\preferred-fragment.cpp.txt",
+      "raw_sha256": "cd70830ad1506041a6501080ab19cc3c2f575f55954f164ba8124a2457c718f2",
+      "lf_fragment_sha256": "6b57e447d0b6991098ab6a752fcfed1e1ddebc6dc66d1c4b7214d54e434cc5cd",
+      "verbatim_after_newline_normalization": true
+    },
+    {
+      "name": "pixel",
+      "path": "C:\\Users\\Ethan\\.codex\\worktrees\\combat-rocket-review\\gangstar-wch\\_scratch\\asprite-complete-current-plans\\pixel\\preferred-fragment.cpp",
+      "raw_sha256": "018b0c3b105afb0248089e9b125120e1a2779db6aae5a2ee9af527115f975e6a",
+      "lf_fragment_sha256": "4439cebb0ea405acef52702530a6ff6b167cdbd644d135c250b48a9c0dbdfb83",
+      "verbatim_after_newline_normalization": true
+    }
+  ],
+  "input_count": 440,
+  "tool_runtime_count": 5,
+  "source_and_tool_pins_stable": true,
+  "compiler_as_linker_counts": [
+    1,
+    1,
+    0
+  ],
+  "matching_credit_added": 0,
+  "canonical_header_changes": false,
+  "old_function_comparison": "Unlinked raw code only. No private native-linked, full metadata, GOT or wider Cash consumer gate ran.",
+  "preparation_errors": "Initial audit command had a shell newline syntax error; file-based reader then lacked repository sys.path. Both corrected without another frontend/as. An obsolete v1.o lookup failed; authenticated preferred-object path was recovered from the worker manifest without recompiling.",
+  "historical_module_raw_sha256": "bd4590a5b827dd32a7e256a55f426c8b3b09ce086f58d894ea8bf3504b16770d",
+  "module_raw_equal_preferred": true
+}
