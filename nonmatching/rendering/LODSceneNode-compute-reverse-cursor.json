@@ -1,0 +1,140 @@
+{
+  "whole_object_equal": false,
+  "baseline_object_sha256": "5c20b8a6e3389177b335d81d14edfb9b48386b3e6bdf21ef123e15e212e93dc0",
+  "candidate_object_sha256": "7753ca641029514fd58c92a5fcd7774df3f3b1fb709c9e8724d641b4e76681d1",
+  "target_function_size": 302,
+  "target_input_size": 304,
+  "strict_native_function306_gate": false,
+  "strict_native_input308_gate": false,
+  "target_raw_function_sha256": "c6073f02245662a515ec3079ef322798a8154e5195639d9ccea76e25f104cfd4",
+  "target_raw_input_sha256": "408a50517091ba269df5d570849bf97c6e0716ac57f22813e5aa1db8f10f6c7b",
+  "target_padding": "c046",
+  "baseline_raw_target_sha256": "fa232b5ce8d3243cd7918422e8403137ade328ad34df3023e7d5da439181d6cc",
+  "raw_name_identity": true,
+  "generated_name_mapping": "NONE NEEDED: all raw names/section indices retain identity",
+  "defined_functions_excluding_target": 37,
+  "old_functions_all_equal": true,
+  "old_allocated_sections_excluding_target": 41,
+  "old_allocated_payload_metadata_all_equal": true,
+  "imports_including_null": 94,
+  "imports_metadata_identical": true,
+  "offtarget_relocations": 222,
+  "offtarget_semantic_relocations_identical": true,
+  "target_relocations_baseline": 11,
+  "target_relocations_candidate": 11,
+  "symbol_delta": [
+    {
+      "ordinal": 136,
+      "baseline": {
+        "name": "_ZN12LODSceneNode15computeLODLevelEv",
+        "value": 1,
+        "size": 306,
+        "info": 18,
+        "other": 0,
+        "section": ".text._ZN12LODSceneNode15computeLODLevelEv",
+        "table": ".symtab"
+      },
+      "candidate": {
+        "name": "_ZN12LODSceneNode15computeLODLevelEv",
+        "value": 1,
+        "size": 302,
+        "info": 18,
+        "other": 0,
+        "section": ".text._ZN12LODSceneNode15computeLODLevelEv",
+        "table": ".symtab"
+      }
+    }
+  ],
+  "raw_section_delta": [
+    {
+      "name": ".text._ZN12LODSceneNode15computeLODLevelEv",
+      "baseline": {
+        "type": 1,
+        "flags": 6,
+        "align": 4,
+        "size": 308,
+        "entry_size": 0,
+        "link": 0,
+        "info": 0,
+        "sha256": "0337af66ad69e5dc57596aa1a317c7f458f9f3f2ebe971d0de2ee139d0b2df72"
+      },
+      "candidate": {
+        "type": 1,
+        "flags": 6,
+        "align": 4,
+        "size": 304,
+        "entry_size": 0,
+        "link": 0,
+        "info": 0,
+        "sha256": "408a50517091ba269df5d570849bf97c6e0716ac57f22813e5aa1db8f10f6c7b"
+      }
+    },
+    {
+      "name": ".rel.text._ZN12LODSceneNode15computeLODLevelEv",
+      "baseline": {
+        "type": 9,
+        "flags": 0,
+        "align": 4,
+        "size": 88,
+        "entry_size": 8,
+        "link": 73,
+        "info": 60,
+        "sha256": "24346d29ad88bb28f29340ef9665b22b9c43581e0abb7858654bb7546c217ed1"
+      },
+      "candidate": {
+        "type": 9,
+        "flags": 0,
+        "align": 4,
+        "size": 88,
+        "entry_size": 8,
+        "link": 73,
+        "info": 60,
+        "sha256": "03bea10962b7e90d6c6a5a63d36594d92d5e4271e2012eabca2bd39a9dfc6289"
+      }
+    },
+    {
+      "name": ".symtab",
+      "baseline": {
+        "type": 2,
+        "flags": 0,
+        "align": 4,
+        "size": 3760,
+        "entry_size": 16,
+        "link": 74,
+        "info": 106,
+        "sha256": "944244a41af749e954b7ebe0240991bbc2c8bdbdfcf078f2a5081e6bc2920dce"
+      },
+      "candidate": {
+        "type": 2,
+        "flags": 0,
+        "align": 4,
+        "size": 3760,
+        "entry_size": 16,
+        "link": 74,
+        "info": 106,
+        "sha256": "6aeb26c3d4f85f74b42cf22bfc476d0da8132772ea525bd97b243982710397ec"
+      }
+    }
+  ],
+  "LD": "NOT INVOKED",
+  "native_linked_comparisons": "SKIPPED; historical28function/10region receipts only",
+  "function": "_ZN12LODSceneNode15computeLODLevelEv",
+  "retail_address": "0x002d2d61",
+  "matched": false,
+  "native_function_bytes": 306,
+  "native_input_bytes": 308,
+  "source_sha256": "e59216f2def0b65038a95e22e35f4a540b3744ce6a45fceb56d91712d5cd180b",
+  "public_fragment_sha256": "46e0d17abd88af9f6261ba94fbe035bb875eef4e515088856d901594b081f25e",
+  "patch_sha256": "b8572f5790951f70efced8daa489e06fd3123d807eb5f2d9e8803ffc57dce2f6",
+  "patch_base": "Historical complete SDK-array fixture, with LF text normalization; not canonical source.",
+  "patch_apply_and_normalized_source_reconstruction_pass": true,
+  "frozen_fixture_files": 1031,
+  "tool_runtime_pins": 8,
+  "compiler_as_linker_counts": [
+    1,
+    1,
+    0
+  ],
+  "disposition": "Guarded cursor representation changes loop CFG; it retains the initial GT helper instead of native LT. No refinement or matching credit.",
+  "patch_publication": "LF with one optional leading blank context omitted and hunk ranges adjusted; source changes unchanged."
+}
