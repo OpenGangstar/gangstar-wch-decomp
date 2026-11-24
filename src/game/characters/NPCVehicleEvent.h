@@ -7,8 +7,8 @@ class Vehicle;
 
 class EvNPCVehicle : public IEvent {
 public:
-    EvNPCVehicle(int type, Vehicle* vehicle) : type(type), vehicle(vehicle) { eventID = 19; }
-    virtual ~EvNPCVehicle() __attribute__((used));
+    EvNPCVehicle(int type, Vehicle* vehicle) : IEvent(19), type(type), vehicle(vehicle) {}
+    virtual ~EvNPCVehicle() __attribute__((used, long_call));
 
 private:
     int type;

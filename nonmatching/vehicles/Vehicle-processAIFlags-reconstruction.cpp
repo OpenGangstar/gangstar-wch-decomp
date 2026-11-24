@@ -1,4 +1,4 @@
-// UNMATCHED: 3044 function bytes versus 3220 native.
+// UNMATCHED: 3168 function bytes versus 3220 native.
 // This is a source fragment for the documented historical private fixture.
 void Vehicle::_processAIFlags()
 {
