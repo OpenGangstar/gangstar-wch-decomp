@@ -1,0 +1,109 @@
+{
+  "function": "_ZN7Vehicle15_processAIFlagsEv",
+  "retail_address": "0x00312081",
+  "native_size": 3220,
+  "matched": false,
+  "native_link_run": false,
+  "public_file": "Vehicle-processAIFlags-value-timing.cpp",
+  "public_lf_sha256": "07f10f0853cffa5eaa2b08c0adc2ef179c49cb7e91441bf6631d76221d6e1aac",
+  "method_lf_sha256": "74a03c40810e0dc3ea3714a3f1fe2727af7059ca41dd31050fa944dfa20552d8",
+  "tested_private_source_sha256": "a36828aa3aeb148553425a794f9b6d088549d7af5ebb10ddce975d24add50ea9",
+  "fixture_inputs": 935,
+  "fixture_manifest_sha256": "9aa7e70878f10217ba92db96f5effa6dd542844328f3fde1a3a530a18c4451c0",
+  "object_verification": {
+    "object_sha256": "50117c428c6d1daadbbe6c9c51647d3dc852533f07e24756e45bff1f2696bf45",
+    "before_target": {
+      "function_bytes": 3192,
+      "section_bytes": 3192,
+      "section_alignment": 8,
+      "raw_sha256": "d6a7b8276d02c1907eae3676068d8fd7a4f46da236d3657c358f68121348d49e",
+      "section_sha256": "d6a7b8276d02c1907eae3676068d8fd7a4f46da236d3657c358f68121348d49e",
+      "section_tail_hex": ""
+    },
+    "after_target": {
+      "function_bytes": 3192,
+      "section_bytes": 3192,
+      "section_alignment": 8,
+      "raw_sha256": "53d0334f24f540912d8a4f727841b7cf1b82cbfeffd698777a0ac582834b37f6",
+      "section_sha256": "53d0334f24f540912d8a4f727841b7cf1b82cbfeffd698777a0ac582834b37f6",
+      "section_tail_hex": ""
+    },
+    "strict_native3220": false,
+    "offtarget_function_regressions": [],
+    "offtarget_allocated_regressions": [],
+    "definition_metadata_preserved": true,
+    "imports_preserved": true,
+    "offtarget_semantic_references_preserved": true,
+    "offtarget_reference_removed": 0,
+    "offtarget_reference_added": 0,
+    "new_function_definitions": [],
+    "removed_function_definitions": [],
+    "offtarget_preservation_rejected": false,
+    "compiler_as_linker_counts": [
+      1,
+      1,
+      0
+    ]
+  },
+  "offtarget_preservation_counts": {
+    "functions": 197,
+    "nonempty_allocated_payloads": 225,
+    "imports": 294,
+    "semantic_relocations": 1446
+  },
+  "anonymous_metadata_correspondence": {
+    "before": "B254F827",
+    "after": "29BA2EC2",
+    "section_pairs": 23,
+    "symbol_pairs": 23,
+    "whole_object_identical": false
+  },
+  "frame": 476,
+  "native_frame": 476,
+  "mapped_executable_bytes": 2972,
+  "native_mapped_executable_bytes": 3000,
+  "pool_bytes": 220,
+  "native_pool_bytes": 220,
+  "publication": "Method text equals tested full-source method after CRLF normalization. Fragment not separately compiled; no current canonical/global acceptance gate or matching credit.",
+  "previous_odd_first_control": {
+    "source_sha256": "4f44049e7c99f2ef1b0b8aa0ebeb8e2756125f16d6a51bfdbfbe48d900203b56",
+    "object_sha256": "c04d4e5aaf35421ec5de192e6851da69624bea705b9d2350c5aa25b4b2da4b10",
+    "target": {
+      "function_bytes": 3192,
+      "section_bytes": 3192,
+      "section_alignment": 8,
+      "raw_sha256": "d6a7b8276d02c1907eae3676068d8fd7a4f46da236d3657c358f68121348d49e",
+      "section_sha256": "d6a7b8276d02c1907eae3676068d8fd7a4f46da236d3657c358f68121348d49e",
+      "section_tail_hex": ""
+    },
+    "retained_packet": "_scratch/worker-vehicle-ai-used-scalars/"
+  },
+  "branch_layout_control": {
+    "whole_target_identical": false,
+    "before_size": 3192,
+    "after_size": 3192,
+    "changed_byte_count": 4,
+    "differences": [
+      {
+        "offset": "0xa75",
+        "before": "0xd4",
+        "after": "0xd5"
+      },
+      {
+        "offset": "0xa7a",
+        "before": "0x16",
+        "after": "0x1b"
+      },
+      {
+        "offset": "0xa88",
+        "before": "0x12",
+        "after": "0x17"
+      },
+      {
+        "offset": "0xc67",
+        "before": "0x43",
+        "after": "0xc3"
+      }
+    ]
+  }
+}
