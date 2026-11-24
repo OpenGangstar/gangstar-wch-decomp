@@ -42,3 +42,10 @@ regression tests. Generated tables retain every original retail function and
 source-file entry. FSelect moves from app/IPhone to characters/AnimObject and
 adds 32 genuinely matched bytes. AnimObject still contains unmatched code;
 this change does not create a completed IPhone unit or add Fully Linked bytes.
+
+## Reuse limits
+
+See [return-root reuse](return-root-reuse.md) for the measured mechanism and
+subsequent applicability checks. Named results are useful when actual declaration
+coalescing supports the hypothesis; void returns, already protected results and
+native intentional pointer-root reuse require different explanations.

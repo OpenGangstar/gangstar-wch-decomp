@@ -438,6 +438,102 @@ The coordinator reviewed the linked NPC flat candidate: native extent and homes 
 
 | libsanangeles.so | 0x00349315 | FSelect(float,float,float) | unassigned | COMPLETED | 100%; coordinator independently verified function/full32-byte section in original AnimObject TU and all191 profiles11127 comparisons. All4293 credited selectors covered. Corrected empty IPhone/Win32 boundary attribution, retained17703 function identities/689 source entries. Adds32 matched bytes, no Fully Linked bytes; ownership released after acceptance. | src/game/characters/AnimObject.cpp; tools/layout.py; docs/matches/fselect.md |
 
+
+### Reuse wave after verified PR779
+
+PR779 merged at 127733715986db768613920978b7b19daf0e01e1 after both CI checks and clean exact-head review. Its complete main report matches local verification (run45351710609, artifact14899694681). FSelect adds32 verified bytes; all4293 credited selectors are covered. Fully Linked remains114548 bytes,126/202 groups. New source investigations below are private and uncredited.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags(), native scalar value-lifetime proposal | /root/decomp_billboard | IN_PROGRESS | Latest3184 candidate remains36 short, all old payloads preserved. Prepare an unapplied initial-lateral reconstruction using actual native scalar capture and X-result lifetime through second multiplication; preserve exact arithmetic/signs/calls and late Z. Reuse named-user-root evidence, no arbitrary aliases or compiler invocation. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget(), return-root reuse investigation | /root/decomp_cleanup | IN_PROGRESS | Linked2108 candidate still1935 differences; callbacks/homes valid. Read-only existing return-transfer/root inventory and precise missing trace proposal, asking whether ignored return temp coalesces with a live user boolean as in FSelect. Do not assume it does; no source changes or compile. | src/game/ai/NPC.cpp |
+| libsanangeles.so | 0x00349d81 | ASprite::GetAnimDuration(int), return-root opportunity review | /root/decomp_random | ASSIGNED | Native82, best80. Read existing actual source/dumps/prior budgets to determine whether return-temp coalescing is relevant to the known first mismatch. No new source, helper/type/header/flags change or diagnostic/compiler authorized. | src/game/rendering/ASprite.cpp |
+
+
+### Maintainer-requested worker reactivation after PR779
+
+The coordinator reviewed the three previous reports. ASprite duration's named-return hypothesis is negative and its ownership is released; it remains unmatched. The runtime exposes three worker slots plus the coordinator. The scopes below supersede the previous reuse-wave scopes; no worker may expand them, edit canonical/shared files, claim credit, or use Git.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | /root/decomp_billboard | IN_PROGRESS | Unmatched, native3220/latest3184. One explicitly bounded initial-lateral scalar-lifetime candidate from reviewed proposed-source.patch; one frontend/assembler, no LD until extent and all old payload/semantic relocation gates reviewed. Preserve actual callback order, signed constants, float grouping and late Z. | src/game/vehicles/Vehicle.cpp; _scratch/worker-vehicle-ai-scalar-proposal/proposed-source.patch |
+| libsanangeles.so | 0x002ff5d1 | NPC::attackTarget() | /root/decomp_cleanup | IN_PROGRESS | Unmatched, linked2108 has1935 differences. Authorize one unchanged-source tree/RTL diagnostic only, exact1063-input fixture and original flags plus dump options. Require actual target and complete old payload/semantic identity before interpreting return-root coalescing. No source candidate or LD. | src/game/ai/NPC.cpp; _scratch/worker-npc-attack-flat-control/ |
+| libsanangeles.so | 0x002ed215 | Widgets::Mission::OnEvent(RenderFX::Event&) | /root/decomp_random | IN_PROGRESS | Pending native132. Read-only existing history/source/assembly review for a concrete reusable compiler/type/control-flow opportunity. Preserve prior attempt budgets; no source/compile/dump authorized before coordinator review. | src/game/ui/MenuWidget.cpp; asm/ui/_ZN7Widgets7Mission7OnEventERN8RenderFX5EventE.s |
+
+
+Coordinator review: Mission OnEvent opportunity packet accepted negative; void return and exhausted register-only residual provide no new trial. Ownership released, function remains unmatched. NPC unchanged-source diagnostic accepted for interpretation after root independently proved whole-object equality under exactly two anonymous metadata-name occurrences (14 raw bytes); code/data/relocations unchanged, no output edited.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002dd0c1 | GS3DStuff::checkForDespawn(LevelObject*) | /root/decomp_random | IN_PROGRESS | Pending native636, saved656. Read-only reuse review of genuine pointer return roots/callback boundaries using actual retained source and all prior budgets; no source/compile/dump authorized. | src/game/rendering/GS3DStuff.cpp; nonmatching/rendering/GS3DStuff-checkForDespawn-current.patch |
+
+
+Coordinator reviewed Vehicle used-scalars packet: actual3192/native3220, all old payload/reference gates pass. Intended real X-result lifetime/operand/store sequence recovered, no LD or credit. Authorize one bounded follow-up ONLY after historical novelty check: invert initial random-sign condition and exchange the existing positive/negative arm bodies, preserving all actual operations. Native even/positive falls through and odd/negative is outlined; candidate has opposite layout. No hint, flags, header/type change, extra source adjustment, pursuit edit or LD. If this exact condition/arm composition was already tested, stop without compilation. One original frontend/as maximum, full preservation and strict extent gates required; stop after result.
+
+
+### Reviewed continuation after scalar and return-root measurements
+
+GS3DStuff checkForDespawn review accepted negative; ownership released, no new source/measurement. NPC attack diagnostic reviewed: generated integer PRE root, not a merge into either bool attacked variable; no source/type change justified. Vehicle even-first control changes only four target bytes and restores native branch orientation; remains3192/native3220. The existing public candidate packets remain explicitly unmatched. The scopes below supersede prior assignments; each is private read-only and bounded initially to10minutes.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | /root/decomp_billboard | IN_PROGRESS | Unmatched3192/native3220. Account for residual native versus actual candidate static named-call and event/control-flow differences after corrected scalar/sign block. Reuse old evidence; no source/compiler/LD. | src/game/vehicles/Vehicle.cpp; _scratch/worker-vehicle-ai-even-first/ |
+| libsanangeles.so | 0x002f55d1 | Character::shoot(float,bool) | /root/decomp_cleanup | IN_PROGRESS | Pending native2608; review actual saved HUD-corrected source, all prior budgets, return types and native return transfers. Determine whether any genuine user-root versus generated PRE issue is evidenced; no automatic named-result rewrite or new diagnostic/compiler. | src/game/characters/Character.cpp; nonmatching/characters/Character-shoot-blocked-hud.cpp |
+| libsanangeles.so | 0x002e76e9 | RenderFX::Event::GetCharacterPath() | /root/decomp_random | IN_PROGRESS | Pending native192. Read actual candidate/history/types and native return-value/snapshot boundaries for a supported reusable reconstruction opportunity, preserving all budgets; no source/compiler/LD/dumps. | src/game/ui/MenuState.cpp; asm/ui/_ZN8RenderFX5Event16GetCharacterPathEv.s |
+
+
+Coordinator accepted Character shoot and RenderFX path opportunity reviews as negative; ownership released and no source/dump trial. Do not continue generic return-root transplants. Vehicle residual review found the still-dynamic pursuit lateral branch differs from native constant-specific scalar structure; proposal remains read-only until exact native value/callback proof and root review.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x002dc959 | GS3DStuff::DrawBody(b2Body*,SColor) | /root/decomp_cleanup | IN_PROGRESS | Native936/latest928 unmatched. Read-only callback/field-snapshot and genuine Box2D value-return ledger on actual paired source; reuse previous proofs and stop if ledger already complete. No source/compiler/dump/LD. | src/game/rendering/GS3DStuff.cpp |
+| libsanangeles.so | 0x003025cd | PlayerTest::isFacingTarget() | /root/decomp_random | IN_PROGRESS | Pending native184. Read-only actual source/history and receiver/position callback snapshot review; no generic return-root rewrite or repeated source/type/grid. No source/compiler/dump/LD. | src/game/ai/PlayerTest.cpp |
+
+
+Coordinator reviewed residual3192 REPORT and proposed-pursuit.patch. Authorize ONE source-only pursuit lateral reconstruction from actual even-first3192 object50117c42 and frozen935-input context. Apply exactly the reviewed proposal, no other changes. It reuses actual native scalar snapshots, even-first constant branches, X-result lifetime and shared late store/Yadd; native proof supports all values and history21 shows novelty. One original frontend/as; verify strict3220 target/input extent and full197/225/294/1446 preservation with raw name correspondence. Stop before LD regardless of extent for root review. No flags/types/headers/hints, output edits, refined second form or credit.
+
+
+Coordinator accepted DrawBody and Player isFacingTarget callback-ledger reviews as negative; ownership released, budgets unchanged. The following disjoint larger routines receive bounded10-minute read-only residual static-call/control accounting, following the concrete pursuit lead found by the same technique. Count differences are investigation leads, never proof of missing runtime operations or byte identity.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00313b01 | Vehicle::Update(int) | /root/decomp_cleanup | IN_PROGRESS | Native4020/latest3936 unmatched; authenticate latest corrected damage/common-join object. Compare named arithmetic/gameplay calls, opaque/local transfers, genuine construction/cleanup sites and associated source/control blocks. No source/compiler/LD/dump; no event lifetime grid. | src/game/vehicles/Vehicle.cpp; nonmatching/vehicles/Vehicle-Update-damage-common.cpp |
+| libsanangeles.so | 0x002ffe0d | NPC::Update(int) | /root/decomp_random | IN_PROGRESS | Native3012/latest3044 unmatched; authenticate latest common-downed correction object. Compare named arithmetic/gameplay calls, opaque/local transfers, event phases and actual control blocks; reuse prior proofs and do not redo common-down correction. No source/compiler/LD/dump. | src/game/ai/NPC.cpp; nonmatching/ai/NPC-Update-common-downed.cpp |
+
+
+Coordinator reviewed sole pursuit trial: actual function/input3224, native3220; frame476, code3004/pool220, all old payload/import/reference gates pass. Genuine native scalar sequence recovered; no LD or matching credit. Preserve latest3224 fragment and both3192 identities. Same owner now performs read-only actual3224 event-phase/call recheck and relevant private-versus-current owning-TU include/profile comparison. Identify concrete current declarations/source changes before proposing any context replay; no automatic compile, artificial context edits or further local source grid.
+
+
+Coordinator accepted Vehicle Update static-call ledger as negative; named census matches and residual physical tail/branch sharing already audited. NPC Update static ledger also accepted negative; its public common-down fragment corresponds to the documented later short-circuit trial, not an uncompiled guard. Newest published storage fragment covers separate fresh-category context. Ownership of both functions is released after these clarifications.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x0030d6c9 | Vehicle::UpdatePhysic(float) | /root/decomp_cleanup | IN_PROGRESS | Native9212/latest9104 unmatched. Initial10-minute read-only latest paired-source/history review and static named-call/control-gap census only if prior retained evidence has not already answered it; no compiler/source/LD/dumps. | src/game/vehicles/Vehicle.cpp |
+| libsanangeles.so | 0x00304ec9 | PlayerTest::Update() | /root/decomp_random | IN_PROGRESS | Native2228 unmatched. Initial10-minute read-only actual paired source/history and static named-call/control-gap census only if genuinely new; explicit proxy/native call identity mapping required. No compiler/source/LD/dumps. | src/game/ai/PlayerTest.cpp |
+
+
+Vehicle UpdatePhysic census review accepted: prior native-constraints structure/math alignment already answers all named-call deltas, authentic9104 unchanged. Same owner receives a narrower unresolved evidence task: identify the extra actual register-indirect call site (61 actual versus60 native), distinguish real callbacks from statically resolved long calls, and prove corresponding dynamic paths/receiver/slot or expose one source discrepancy. Read-only10-minute bound; do not repeat named census, compiler/source budget or claim static counts prove behavior.
+
+
+PlayerTest Update latest2204 call review accepted negative: exact90 named identities and40 register-indirect sites agree with native,945 inputs stable. Ownership released. Assign /root/decomp_random exclusively libsanangeles.so Thumb0x0030c035 _ZN7Vehicle4stepEv, Vehicle::step(), native4372, src/game/vehicles/Vehicle.cpp. StatusIN_PROGRESS, unmatched latest4336; bounded10-minute read-only review of prior full call census first, adding native/actual named-operation comparison only if genuinely missing. Preserve all six forms and later clamp/ABI budgets; no source/compiler/as/LD/dumps.
+
+
+### Current-model preparation and compatible-pointer return reviews
+
+Vehicle UpdatePhysic extra indirect site is resolved as physical duplication of native shared fourth visibility call; no extra runtime invocation, ownership released. Vehicle step review accepted negative: named287 equal and known exterior rotation-tail sharing explains32/34 indirect sites; ownership released. Root independently rehashed884 canonical source/tool/profile/linker inputs against the accepted191-profile gate: no drift.
+
+| Binary/library | Function address | Function name | Assigned agent | Status | Matching percentage | Relevant source files |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00312081 | Vehicle::_processAIFlags() | /root/decomp_billboard | IN_PROGRESS | Unmatched3224/native3220. Prepare current-canonical private fixture and unapplied minimal integration proposal only: exact reviewed method, real current includes, nonvirtual declaration/friend access if required. Keep used PhysicInfo ctor intact; enumerate expected emitted support/import changes. No compiler/LD before root review. | src/game/vehicles/Vehicle.cpp; src/game/vehicles/Vehicle.h; src/game/world/LevelObject.h |
+| libsanangeles.so | 0x003ed6e5 | RenderFX::Find(char const*,gameswf::character*) | /root/decomp_cleanup | IN_PROGRESS | Pending416/latest408. Bounded read-only actual compatible-pointer return-root review, reusing complete prior parent-lifetime/source/native proofs. No generic result rewrite or diagnostic/compiler without evidence. | src/game/rendering/menufx.cpp |
+| libsanangeles.so | 0x00303315 | PlayerTest::getAttackableTarget(LevelObject*,Weapon*,LevelObject*) | /root/decomp_random | IN_PROGRESS | Pending700/latest696. Bounded read-only actual same-type parameter/return-root and retained compiler-trace review, preserving seven-form budget and closure limits. No source/compiler/dump/LD. | src/game/ai/PlayerTest.cpp |
+
+
+Coordinator approved two bounded measurements after report review. Vehicle current-model integration.patch has exactly three private deltas and exact tested method: authorize ONE unchanged-current-profile frontend/as, no LD, all current baseline functions/data/refs audited plus expected real PhysicInfo C1/C2 alias/Reset dependency changes explicitly enumerated. Do not suppress current ctor, relax extent, or refine source after failure. Compare historical197 and current202 old methods separately. RenderFX Find authorizes ONE unchanged-source tree-details/RTL diagnostic: preserve raw408/all10targetrefs/all114 functions139allocatedpayloads/imports/all semanticrefs before interpreting; generated-name-only drift requires explicit bijection and root review. Freeze full real input/tool closure and disclose any historical pairing limits. No source/type/header rewrite or LD for that diagnostic. Both workers stop after measured output for root review.
+
+
+PlayerTest getAttackableTarget pointer-root review accepted negative: actual v7 already has independent named best and the same fallback-to-best/common-return topology as native;886 inputs stable, seven forms unchanged. Same owner now receives bounded read-only relevant historical-versus-current owning-model comparison before any proposed integration replay. Identify exact real declarations/layout/interface differences and old match pairing; no compiler/source change, artificial context or automatic replay authorization.
+
 <!-- active-ownership:end -->
 
 The coordinator restored native OctTreeAABBNode depth at offset60 and size64.
