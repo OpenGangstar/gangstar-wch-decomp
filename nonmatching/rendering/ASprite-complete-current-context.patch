@@ -1,0 +1,127 @@
+--- a/src/game/core/ASprite.h
++++ b/src/game/core/ASprite.h
+@@ -29 +29,2 @@
+-    unsigned char unknown1[5];
++    unsigned char unknown1;
++    unsigned short sourceX, sourceY;
+@@ -68,0 +70,2 @@
++    void PaintModule(int module, int x, int y, int flags) const;
++    bool GetPixelInfoInFrame(int frame, int x, int y, int& moduleIndex, int& color);
+@@ -85 +88 @@
+-    unsigned char unknown16[16];
++    mutable SpriteBounds bounds;
+--- a/src/game/core/Matrix4.h
++++ b/src/game/core/Matrix4.h
+@@ -78,0 +79 @@
++extern matrix4 IdentityMatrix;
+--- a/src/game/core/VideoDriver.h
++++ b/src/game/core/VideoDriver.h
+@@ -63 +63,3 @@
+-    virtual void unknown49();
++    virtual void draw2DImage(const ITexture* texture, const core::rect<int>& destRect,
++        const core::rect<int>& sourceRect, const core::rect<int>* clipRect = 0,
++        SColor* colors = 0, bool useAlphaChannelOfTexture = false) = 0;
+--- a/src/game/rendering/ASprite.cpp
++++ b/src/game/rendering/ASprite.cpp
+@@ -449,0 +450,101 @@
++
++int ASprite::GetAnimDuration(int animation)
++{
++    const ASpriteData* spriteData = reinterpret_cast<const ASpriteData*>(data);
++    const ASpriteData::Anim* animations = reinterpret_cast<const ASpriteData::Anim*>(
++        reinterpret_cast<const unsigned char*>(spriteData) + spriteData->animations);
++    const ASpriteData::Anim* entry = animations + animation;
++    Application::GetInstance();
++    short count = entry->count;
++    int duration = 0;
++    if (count > 0) {
++        unsigned char* base = reinterpret_cast<unsigned char*>(data) + data->animationFrames;
++        short first = entry->firstFrame;
++        unsigned char* current = base + first * 9 + 2;
++        unsigned char* end = base + (first + count) * 9 + 2;
++        do {
++            duration += *reinterpret_cast<unsigned short*>(current);
++            current += 9;
++        } while (current != end);
++    }
++    return duration;
++}
++
++#include "../core/Geometry.h"
++namespace { inline int spriteAbsolute(const int& value) { return value<0 ? -value : value; } }
++void ASprite::PaintModule(int module,int x,int y,int flags) const
++{
++    if(texture) {
++    Application* app=Application::GetInstance();
++    const char* bytes=reinterpret_cast<const char*>(data);
++    const ASpriteData* blob=reinterpret_cast<const ASpriteData*>(data);
++    const ASpriteData::Module* record=reinterpret_cast<const ASpriteData::Module*>(bytes+blob->modules)+module;
++    const SpriteModule* entry=reinterpret_cast<const SpriteModule*>(record);
++    unsigned short sourceX=entry->sourceX;
++    unsigned short sourceY=entry->sourceY;
++    int width=entry->width;
++    int height=entry->height;
++    if(unknown32) {
++        bounds.left=irr::core::min_(x,bounds.left);
++        bounds.top=irr::core::min_(y,bounds.top);
++        bounds.right=irr::core::max_(bounds.right,x+width);
++        bounds.bottom=irr::core::max_(bounds.bottom,y+height);
++    } else if(entry->kind!=5) {
++    if(unknown33) { x+=165; y-=80; }
++    int clipWidth=unknown44;
++    if(clipWidth<0) clipWidth=width;
++    int clipHeight=unknown48;
++    if(clipHeight<0) clipHeight=height;
++    irr::core::rect<int> clip(x+unknown36,y+unknown40,x+clipWidth,y+clipHeight);
++    irr::core::rect<int> source(static_cast<short>(sourceX),static_cast<short>(sourceY),static_cast<short>(sourceX)+width,static_cast<short>(sourceY)+height);
++    if(flags&16) {
++        int value=source.LowerRightCorner.X;
++        source.LowerRightCorner.X=source.UpperLeftCorner.X;
++        source.UpperLeftCorner.X=value;
++    }
++    if(flags&32) {
++        int value=source.LowerRightCorner.Y;
++        source.LowerRightCorner.Y=source.UpperLeftCorner.Y;
++        source.UpperLeftCorner.Y=value;
++    }
++    app->GetDevice()->getVideoDriver()->setTransform(irr::video::ETS_WORLD,s_global_transform);
++    app->GetDevice()->getVideoDriver()->draw2DImage(texture,
++        irr::core::rect<int>(x,y,x+spriteAbsolute(source.LowerRightCorner.X-source.UpperLeftCorner.X),
++                            y+spriteAbsolute(source.LowerRightCorner.Y-source.UpperLeftCorner.Y)),
++        source,&clip,s_global_color,true);
++    app->GetDevice()->getVideoDriver()->setTransform(irr::video::ETS_VIEW,irr::core::IdentityMatrix);
++    }
++    }
++}
++
++
++#include "../core/ASpriteData.h"
++bool ASprite::GetPixelInfoInFrame(int frame,int x,int y,int& moduleIndex,int& color)
++{
++    ASpriteData* blob=reinterpret_cast<ASpriteData*>(data);
++    ASpriteData::Frame* entry=reinterpret_cast<ASpriteData::Frame*>(reinterpret_cast<char*>(blob)+blob->frames)+frame;
++    for(int i=0;i<entry->moduleCount;++i){
++        blob=reinterpret_cast<ASpriteData*>(data);
++        const int index=entry->firstModule+i;
++        ASpriteData::FModule* record=reinterpret_cast<ASpriteData::FModule*>(reinterpret_cast<char*>(blob)+blob->frameModules)+index;
++        ASpriteData::Module* module=reinterpret_cast<ASpriteData::Module*>(reinterpret_cast<char*>(blob)+blob->modules)+record->module;
++        if(module->kind==0){
++            ASpriteData::__rect rect;rect.left=0;rect.right=0;rect.top=0;rect.bottom=0;
++            rect.left=record->x;rect.right=module->width+record->x;
++            rect.top=record->y;rect.bottom=record->y+module->height;
++            if(rect.isIntersecting(x,y)){
++                blob=reinterpret_cast<ASpriteData*>(data);
++                ASpriteData::Image* image=reinterpret_cast<ASpriteData::Image*>(reinterpret_cast<char*>(blob)+blob->images)+module->unknown1;
++                const unsigned int row=image->unknown0*(module->unknown4-record->y+y);
++                const unsigned char* rowAddress=reinterpret_cast<unsigned char*>(blob)+image->unknown16+x+row;
++                const unsigned char pixel=rowAddress[module->unknown2-record->x];
++                moduleIndex=index;
++                const char* bytes=reinterpret_cast<const char*>(data);
++                unsigned int paletteOffset=reinterpret_cast<const unsigned int*>(bytes+image->unknown12)[1];
++                color=reinterpret_cast<const unsigned int*>(bytes+paletteOffset)[pixel]&0x00ffffffu;
++                return true;
++            }
++        }
++    }
++    return false;
++}
