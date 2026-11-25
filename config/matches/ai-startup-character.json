@@ -169,7 +169,8 @@
         "_ZN9Character14throwOutDriverEb",
         "_ZN9Character4showEv",
         "_ZN9Character17positionInVehicleEb",
-        "_ZN9Character19switchMoveAnimationEv"
+        "_ZN9Character19switchMoveAnimationEv",
+        "_ZN9Character21switchCombatAnimationEv"
     ],
     "sections": [
         ".character_init_physic",
@@ -226,7 +227,9 @@
         ".character_show",
         ".character_position_in_vehicle",
         ".character_switch_move_animation",
-        ".character_switch_move_animation_table"
+        ".character_switch_move_animation_table",
+        ".character_switch_combat_animation",
+        ".character_switch_combat_animation_table"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -294,7 +297,6 @@
         "_ZN9AIManager8removeAIEP3NPC",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN9Character21switchCombatAnimationEv",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE",

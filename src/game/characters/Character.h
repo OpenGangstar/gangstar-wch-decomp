@@ -201,7 +201,7 @@ private:
     bool isTargetInRange(float range, float degrees);
     void switchAnimation();
     bool switchMoveAnimation();
-    void switchCombatAnimation();
+    bool switchCombatAnimation();
 
     void ready(float speed);
     void checkForWeaponReload();
