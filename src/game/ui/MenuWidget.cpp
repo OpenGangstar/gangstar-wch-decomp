@@ -1623,6 +1623,43 @@ void Widgets::Corruption::OnEvent(RenderFX::Event& event)
     event.consumed = true;
 }
 
+static const char corruptionBadgeGroup[] = "widgetCorruption.badges";
+static const char corruptionTitle[] = "widgetCorruption.txtTitle";
+static const char corruptionSlashField[] = "widgetCorruption.txtSlash";
+static const char corruptionPrice[] = "widgetCorruption.txtPrice";
+static const char corruptionValue[] = "widgetCorruption.txtValue";
+static const char corruptionPerBadge[] = "widgetCorruption.txtPerBadge";
+static const char corruptionButton[] = "widgetCorruption.btnCorrupt";
+static const char corruptionButtonText[] = "widgetCorruption.btnCorrupt.text";
+static const char corruptionNoWantedLevel[] = "widgetCorruption.badges.txtWantedLevel0";
+static const char corruptionSlash[] = "/";
+
+void Widgets::Corruption::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    renderFX->GotoFrame(corruptionBadgeGroup, wantedLevel, false);
+    renderFX->SetVisible(corruptionTitle, wantedLevel != 0);
+    renderFX->SetVisible(corruptionSlashField, wantedLevel != 0);
+    renderFX->SetVisible(corruptionPrice, wantedLevel != 0);
+    renderFX->SetVisible(corruptionValue, wantedLevel != 0);
+    renderFX->SetVisible(corruptionPerBadge, wantedLevel != 0);
+    renderFX->SetEnabled(corruptionButton, wantedLevel != 0);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionButtonText, _ZNK13StringManager9getStringEi(strings, 0x1050), true);
+    renderFX->SetVisible(corruptionNoWantedLevel, wantedLevel == 0);
+    if (wantedLevel == 0) {
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionNoWantedLevel, _ZNK13StringManager9getStringEi(strings, 0x104d), true);
+    } else {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        const bool canAfford = player->isRichAsCroesus() || player->cash >= 1500;
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionTitle, _ZNK13StringManager9getStringEi(strings, 0x104c), true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionSlashField, corruptionSlash, true);
+        renderFX->SetEnabled(corruptionButton, canAfford);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionPrice, _ZNK13StringManager9getStringEi(strings, 0x104e), true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionPerBadge, _ZNK13StringManager9getStringEi(strings, 0x104f), true);
+        _ZN8RenderFX7SetTextEPKcS1_b(renderFX, corruptionValue, strings->formatAmount(1500, true, true), true);
+    }
+}
+
 extern "C" void _ZN11MenuManager3popEb(MenuManager*, bool);
 static const char demoBuyConfirmButtonName[] = "btnBuy";
 static const char menuBackButtonName[] = "btnBack";
@@ -2361,3 +2398,36 @@ void Widgets::Controls::UpdateLocalization()
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, controlsThrottleValue, _ZNK13StringManager9getStringEi(strings, s_choiceThrottles[previousSelection].textId), true);
 }
 
+void Widgets::GameSetting::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    if (listener) switch (event.type) {
+    case 6: {
+        const char* name = event.characterName;
+        SoundManager* sound;
+        if (strcmp(name, volumesLeftButton) == 0) {
+            sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            listener->Notify(this, 2);
+            event.consumed = true;
+        } else if (strcmp(name, volumesRightButton) == 0) {
+            sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            listener->Notify(this, 3);
+            event.consumed = true;
+        } else if (strcmp(name, tutorialOkButton) == 0) {
+            sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            listener->Notify(this, 1);
+            event.consumed = true;
+        }
+        break;
+    }
+    }
+}

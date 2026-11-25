@@ -231,7 +231,9 @@
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
         "_ZN7Widgets7Volumes18UpdateLocalizationEv",
         "_ZN7Widgets7Confirm18UpdateLocalizationEv",
-        "_ZN7Widgets8Controls18UpdateLocalizationEv"
+        "_ZN7Widgets8Controls18UpdateLocalizationEv",
+        "_ZN7Widgets11GameSetting7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets10Corruption18UpdateLocalizationEv"
     ],
     "sections": [
         ".volumesButton",
@@ -443,7 +445,20 @@
         ".controlsSteeringTitle",
         ".controlsSteeringValue",
         ".controlsThrottleTitle",
-        ".controlsThrottleValue"
+        ".controlsThrottleValue",
+        ".widgets_game_setting_event",
+        ".widgets_game_setting_vtable",
+        ".widgets_corruption_localize",
+        ".corruptionBadgeGroup",
+        ".corruptionTitle",
+        ".corruptionSlashField",
+        ".corruptionPrice",
+        ".corruptionValue",
+        ".corruptionPerBadge",
+        ".corruptionButton",
+        ".corruptionButtonText",
+        ".corruptionNoWantedLevel",
+        ".corruptionSlash"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -541,6 +556,7 @@
         "_ZNK12SoundManager15getPlaylistNameEiPc",
         "_ZN7gameswf9tu_stringC1EPKc",
         "_ZN7gameswf9tu_string15utf8_char_countEPKci",
-        "_ZNK7gameswf9tu_string14utf8_substringEii"
+        "_ZNK7gameswf9tu_string14utf8_substringEii",
+        "_ZNK10PlayerTest15isRichAsCroesusEv"
     ]
 }

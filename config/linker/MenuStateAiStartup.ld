@@ -42,6 +42,8 @@ INCLUDE config/linker/WidgetTutorialLocalization.ld
 
 INCLUDE config/linker/WidgetConfirmLocalization.ld
 INCLUDE config/linker/WidgetControlsLocalization.ld
+INCLUDE config/linker/WidgetGameSettingEvent.ld
+INCLUDE config/linker/WidgetCorruptionLocalization.ld
 
 INCLUDE config/linker/MapNotifySections.ld
 

@@ -28,6 +28,8 @@ INCLUDE config/linker/RenderFXAnimationFunctions.ld
 INCLUDE config/linker/MenuWidgetMissionSections.ld
 INCLUDE config/linker/WidgetConfirmLocalization.ld
 INCLUDE config/linker/WidgetControlsLocalization.ld
+INCLUDE config/linker/WidgetGameSettingEvent.ld
+INCLUDE config/linker/WidgetCorruptionLocalization.ld
 
 SECTIONS
 {
