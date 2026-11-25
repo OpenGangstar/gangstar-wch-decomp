@@ -218,3 +218,35 @@ void Shop::unlock()
     if (map)
         map->registerForMapTracking(this, false);
 }
+
+void Shop::Update(int elapsed)
+{
+    Checkpoint::Update(elapsed);
+    if (!(unknown4 & 2u))
+        return;
+
+    if (GetMetatype() == 32) {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle()) {
+            Vehicle* car = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+            if (car) {
+                const int distanceSquared = static_cast<int>(car->GetPosition().getDistanceFromSQ(GetPosition()));
+                if (distanceSquared < radius * radius) {
+                    if (!triggerActive)
+                        trigger(true);
+                } else if (triggerActive) {
+                    trigger(false);
+                }
+            }
+        }
+    } else {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if (reinterpret_cast<unsigned int>(this) - reinterpret_cast<unsigned int>(player->closestShop) == 0u)
+            return;
+
+        const float radiusSquared = static_cast<float>(radius * radius);
+        if (radiusSquared > static_cast<SavePositionInterface*>(player)->position().getDistanceFromSQ(GetPosition()))
+            player->setClosestShop(this);
+    }
+}
+
