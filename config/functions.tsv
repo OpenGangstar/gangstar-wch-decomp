@@ -9207,7 +9207,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dd7e1	0x798	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff16updateVisibilityEj	GS3DStuff::updateVisibility(unsigned int)
 0x002ddf79	0x62c	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_	GS3DStuff::CreateStaticBodies(irr::scene::ISceneNode*, irr::scene::ISceneNode*, irr::scene::ISceneNode*, irr::scene::ISceneNode*)
 0x002de5a5	0x138	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff13AddToSceneMgrEPN3irr5scene10ISceneNodeES3_	GS3DStuff::AddToSceneMgr(irr::scene::ISceneNode*, irr::scene::ISceneNode*)
-0x002de6dd	0x210	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi	GS3DStuff::PrintNodeProperties(irr::scene::ISceneNode*, bool, int)
+0x002de6dd	0x210	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi	GS3DStuff::PrintNodeProperties(irr::scene::ISceneNode*, bool, int)
 0x002de8ed	0x28	GS3DStuff.cpp	game	rendering	matched	_Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_	void SafeDelete<irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> > >(irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*&)
 0x002de919	0x284	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6unloadEv	GS3DStuff::unload()
 0x002deba1	0x164	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE	GS3DStuff::checkPickableProximity(std::vector<Item*, std::allocator<Item*> >&)

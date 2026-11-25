@@ -28,6 +28,7 @@
     "source": "src/game/rendering/GS3DStuff.cpp",
     "linker_script": "config/linker/GS3DStuff.ld",
     "functions": [
+        "_ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi",
         "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE",
         {
@@ -176,6 +177,10 @@
         "_ZN9GS3DStuff4loadEiRi"
     ],
     "sections": [
+        ".gs_print_node_properties",
+        ".gs_node_format",
+        ".gs_leaf_format",
+        ".gs_indent",
         ".gs_set_color",
         ".gs_set_alpha",
         ".gs_perf_selector",

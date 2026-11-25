@@ -5,6 +5,10 @@ PROVIDE(strlen = 0x001c48bc);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables = 0x004b6a74);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles = 0x004b6a80);
 SECTIONS {
+    .gs_print_node_properties 0x002de6dc : { *gs3d-stuff.o(.text._ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi) }
+    .gs_node_format 0x00414508 : { *gs3d-stuff.o(.rodata.gs_node_type_format) }
+    .gs_leaf_format 0x00414524 : { *gs3d-stuff.o(.rodata.gs_leaf_type_format) }
+    .gs_indent 0x00410720 : { *gs3d-stuff.o(.rodata.gs_indent) }
     .gs_set_color 0x002ded04 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE) }
     .gs_set_alpha 0x002df34c : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE) }
     .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_7) }
