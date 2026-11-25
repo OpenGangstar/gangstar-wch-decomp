@@ -3456,3 +3456,66 @@ void Vehicle::_processAIFlags()
             turn(true, amount);
     }
 }
+
+struct VehicleDoorClearView {
+    unsigned char pad0[316];
+    irr::scene::ISceneNode* leftDoor;
+    irr::scene::ISceneNode* rightDoor;
+    unsigned char pad324[632 - 324];
+    b2Body* collisionBody;
+};
+
+static inline bool otherGroup(b2Shape* s, const Vehicle* self)
+{
+    if (s->GetFilterData().groupIndex != self->getPhysicAttributes()->getIndex() + 1) return true;
+    return false;
+}
+
+static inline bool skipBody(b2Shape* s, b2Body* body, const VehicleDoorClearView* v)
+{
+    if (body != 0) {
+        if (s->GetBody() == body) return true;
+        if (s->GetBody() == v->collisionBody) return true;
+        return false;
+    }
+    if (s->GetBody() == v->collisionBody) return true;
+    return false;
+}
+
+extern "C" bool _ZNK7Vehicle11isDoorClearEbP6b2Body(const Vehicle* self, bool left, b2Body* body)
+{
+    const VehicleDoorClearView* view = reinterpret_cast<const VehicleDoorClearView*>(self);
+    b2World* world = PhysicAttributes::s_world;
+    b2Shape* shapes[20] = {0};
+    irr::core::vector3d<float> pos;
+    if (left)
+        pos = view->leftDoor->getAbsolutePosition();
+    else
+        pos = view->rightDoor->getAbsolutePosition();
+    b2AABB bounds;
+    bounds.lowerBound.x = pos.X / 100.0f - 0.5f;
+    bounds.lowerBound.y = pos.Y / 100.0f - 0.5f;
+    bounds.upperBound.x = pos.X / 100.0f + 0.5f;
+    bounds.upperBound.y = pos.Y / 100.0f + 0.5f;
+    float fraction = 1.0f;
+    b2Vec2 normal;
+    b2Segment first;
+    first.p1 = bounds.lowerBound;
+    first.p2 = bounds.upperBound;
+    b2Segment second;
+    second.p1.x = bounds.upperBound.x;
+    second.p1.y = bounds.lowerBound.y;
+    second.p2.x = bounds.lowerBound.x;
+    second.p2.y = bounds.upperBound.y;
+    world->Query(bounds, shapes, 20);
+    for (int i = 0; i < 20; ++i) {
+        b2Shape* shape = shapes[i];
+        if (!shape) break;
+        if (shape->GetFilterData().categoryBits == 0 && otherGroup(shape, self)) continue;
+        if (shape->GetFilterData().categoryBits == 0 && shape->GetFilterData().maskBits == 0) continue;
+        if (shape->IsSensor() || skipBody(shape, body, view)) continue;
+        if (shape->TestSegment(shape->GetBody()->GetXForm(), &fraction, &normal, first, 1.0f)) return false;
+        if (shapes[i]->TestSegment(shapes[i]->GetBody()->GetXForm(), &fraction, &normal, second, 1.0f)) return false;
+    }
+    return true;
+}

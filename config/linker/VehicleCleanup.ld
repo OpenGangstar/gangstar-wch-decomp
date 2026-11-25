@@ -1,3 +1,4 @@
+PROVIDE(memset = 0x001c45d4);
 PROVIDE(__aeabi_dcmplt = 0x001c4244);
 PROVIDE(__aeabi_ui2d = 0x1c4208);
 PROVIDE(__aeabi_dmul = 0x1c4298);
@@ -42,6 +43,7 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_is_door_clear 0x0030a730 : { *vehicle-cleanup.o(.text._ZNK7Vehicle11isDoorClearEbP6b2Body) }
     .vehicle_physic_info_ctor 0x00319dd0 : { *vehicle-cleanup.o(.text._ZN10PhysicInfoC1Ev .text._ZN10PhysicInfoC2Ev .gnu.linkonce.t._ZN10PhysicInfoC1Ev .gnu.linkonce.t._ZN10PhysicInfoC2Ev) }
     ASSERT(SIZEOF(.vehicle_physic_info_ctor) == 96, "PhysicInfo native96 extent")
     .vehicle_process_ai_flags 0x00312080 : { *vehicle-cleanup.o(.text._ZN7Vehicle15_processAIFlagsEv) }
