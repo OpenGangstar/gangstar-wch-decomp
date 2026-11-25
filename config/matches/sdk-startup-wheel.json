@@ -53,7 +53,9 @@
             "address": "0x0032cf55"
         },
         "_ZN5WheelC1EP7ASpritei",
-        "_ZN5WheelC2EP7ASpritei"
+        "_ZN5WheelC2EP7ASpritei",
+        "_ZN5Wheel12processTouchEl",
+        "_ZThn8_N5Wheel12processTouchEl"
     ],
     "sections": [
         ".wheel_event_release_vtable",
@@ -67,7 +69,9 @@
             "name": ".got",
             "offset": 864
         },
-        ".wheel_constructor"
+        ".wheel_constructor",
+        ".wheel_process_touch",
+        ".wheel_process_touch_thunk"
     ],
     "retail_got": true,
     "external_thumb_functions": [
