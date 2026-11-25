@@ -2031,6 +2031,67 @@ bool Menus::ServiceWeaponShop::Notify(const MenuWidget* widget, int event)
     return false;
 }
 
+struct WeaponShopEntry {
+    int price;
+    union { int code; unsigned short category; };
+    int textId;
+    const char* frame;
+    bool contextRestricted;
+};
+extern "C" { extern WeaponShopEntry _ZN11MenuManager16s_WeaponShopDataE[]; }
+
+void Menus::ServiceWeaponShop::Refresh()
+{
+    int count;
+    WeaponManager* weapons;
+    PlayerTest* player;
+    int price;
+    Widgets::Shop* shop;
+    Widgets::Arrows* arrows;
+    MenuManager* manager = MenuManager::getInstance();
+    const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+    shop = static_cast<Widgets::Shop*>(3 < table.count ? table.widgets[3] : 0);
+    // Retail places the missing-arrows block after __stack_chk_fail.
+    arrows = static_cast<Widgets::Arrows*>(__builtin_expect(18 < table.count, 1) ? table.widgets[18] : 0);
+    weapons = Application::GetInstance()->GetWeaponManager();
+    shop->Reset();
+    shop->SetAvailabilityText(
+        weapons->getWeaponLimitedTo(PlayerTest::AnyContext) != -1 ? 0x104a : 0x103b);
+    player = PlayerTest::GetPlayer();
+    count = MenuManager::s_WeaponShopDataCount;
+    for (int i = 0; i != 4; ++i) {
+        int index = arrows->GetCurrentPage() * 4 + i;
+        if (i >= count)
+            break;
+        price = static_cast<int>(_ZN11MenuManager16s_WeaponShopDataE[index].price * scale);
+        int flags;
+        if (weapons->getWeaponLimitedTo(PlayerTest::AnyContext) == -1 && (inGame || !_ZN11MenuManager16s_WeaponShopDataE[index].contextRestricted))
+            flags = (player->contextWord == 0 && (player->isRichAsCroesus() || price <= player->cash)) ? 7 : 6;
+        else
+            flags = 4;
+        int code = _ZN11MenuManager16s_WeaponShopDataE[index].code;
+        switch (_ZN11MenuManager16s_WeaponShopDataE[index].category) {
+        case 73:
+            switch (code >> 16) {
+            case 2:
+                if (player->getMaxHealth() == player->getHealth())
+                    flags &= ~1;
+                break;
+            case 1:
+                if (player->getContextArmor() == 200)
+                    flags &= ~1;
+                break;
+            }
+            break;
+        }
+        char frame[32];
+        sprintf(frame, carRentalTutorialPartFormat, _ZN11MenuManager16s_WeaponShopDataE[index].frame,
+                (flags & 1) ? carRentalSelectedSuffix : localStartupEmptyText);
+        shop->SetItem(i, _ZN11MenuManager16s_WeaponShopDataE[index].textId, price, frame, flags);
+    }
+    UpdateLocalization();
+}
+
 namespace Widgets { class Corruption : public MenuWidget { public: void SetWantedLevel(int level); }; }
 
 bool Menus::ServiceCorruption::Notify(const MenuWidget* widget, int event)
