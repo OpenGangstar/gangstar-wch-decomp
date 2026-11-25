@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/event-manager/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __cxa_pure_virtual = 0;
+PROVIDE(memcpy = 0x001c4190);
 SECTIONS
 {
     .event_manager_constructor 0x00354644 : { *event-manager.o(.text._ZN12EventManagerC1Ev) }
@@ -10,6 +11,8 @@ SECTIONS
     .event_manager_attach 0x00354860 : { *event-manager.o(.text._ZN12EventManager6attachEiP14IEventReceiver) }
     .event_manager_detach 0x0035488c : { *event-manager.o(.text._ZN12EventManager6detachEiP14IEventReceiver) }
     .event_manager_async 0x003548b8 : { *event-manager.o(.text._ZNK12EventManager10raiseAsyncEPK6IEvent) }
+    .event_manager_private_detach 0x00354724 : { *event-manager.o(.text._ZN12EventManager7_detachEiP14IEventReceiver) }
+    .event_manager_private_attach 0x00354664 : { *event-manager.o(.text._ZN12EventManager7_attachEiP14IEventReceiver) }
     .event_manager_refresh 0x003548d8 : { *event-manager.o(.text._ZN12EventManager7refreshEv) }
     .event_manager_raise 0x0035494c : { *event-manager.o(.text._ZN12EventManager5raiseERK6IEvent) }
     .event_manager_raise_ptr 0x003549d4 : { *event-manager.o(.text._ZN12EventManager5raiseEPK6IEvent) }
@@ -23,3 +26,5 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
 }
+ASSERT(SIZEOF(.event_manager_private_attach) == 192, "Native EventManager _attach extent");
+ASSERT(SIZEOF(.event_manager_private_detach) == 316, "Native EventManager _detach extent");

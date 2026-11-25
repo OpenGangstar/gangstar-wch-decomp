@@ -5,6 +5,7 @@ PROVIDE(strlen = 0x001c48bc);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables = 0x004b6a74);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles = 0x004b6a80);
 SECTIONS {
+    .gs_set_alpha 0x002df34c : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE) }
     .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_7) }
     .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_8) }
     .gs_string_append 0x002dce9c : { *gs3d-stuff.o(.text._ZNSs6appendEPKc) }
