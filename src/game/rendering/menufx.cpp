@@ -160,6 +160,7 @@ public:
 class root {
 public:
     as_object* get_root_movie();
+    void advance(float delta, bool render);
 };
 
 class edit_text_character {
@@ -1561,6 +1562,35 @@ void RenderFX::TraceHierarchy(gameswf::character* character, int flags, int dept
             TraceHierarchy(children.elements[i], flags, depth + 1);
     } else {
         gameswf::log_msg(hierarchyCharacter, indent, fields.get_name().c_str(), character);
+    }
+}
+
+template <class T>
+static inline bool hasCharacter(const gameswf::smart_ptr<T>& pointer)
+{
+    return pointer.get() != 0;
+}
+
+void RenderFX::Update(int elapsed, bool render)
+{
+    DisplayRoot root(player->get_root());
+    root.get()->advance(elapsed / 1000.0f, render);
+    for (int index = 0; index < 4; ++index) {
+        if (hasCharacter(controllers[index].fourth) && getCharacterPlayState(controllers[index].fourth.get()) == 1) {
+            Event event;
+            event.character = controllers[index].fourth.get();
+            event.payload.y = 0.0f;
+            event.payload.x = 0.0f;
+            event.payload.z = 0.0f;
+            event.payload.unknown24 = 0;
+            event.type = 2;
+            event.characterName = reinterpret_cast<const CharacterCollectionFields*>(event.character)->get_name().c_str();
+            event.characterPath[0] = 0;
+            event.consumed = false;
+            event.payload.controller = index;
+            SendEvent(event);
+            controllers[index].fourth.set_ref(0);
+        }
     }
 }
 

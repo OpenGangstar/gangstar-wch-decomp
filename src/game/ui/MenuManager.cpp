@@ -1168,3 +1168,116 @@ void MenuManager::updateMarkers()
             (*it).marker->UpdateFrame();
     }
 }
+
+struct ScrollMapFields {
+    void* vtable;
+    int width;
+    int height;
+    int left;
+    int top;
+    int right;
+    int bottom;
+    unsigned char unknown28[20];
+    int previousX;
+    int previousY;
+};
+struct ScrollMapClip {
+    unsigned char unknown0[28];
+    irr::core::rect<int> clip;
+};
+extern "C" void _ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE(MenuManager* self, const MapPointList& points)
+{
+    ScrollMapFields& f = *reinterpret_cast<ScrollMapFields*>(self);
+    const Point2D<short>* point = *points.begin();
+    int y, x;
+    x = point->x;
+    y = point->y;
+    int dx = f.previousX - x;
+    int dy = f.previousY - y;
+    irr::core::dimension2d<int> size;
+    Map::getInstance()->getScaledSize(size);
+    f.left += dx;
+    f.right += dx;
+    f.top += dy;
+    f.bottom += dy;
+    if (f.left + dx <= 0) {
+        f.left = 0;
+        f.right = f.width;
+    } else if (f.right + dx >= size.Width) {
+        f.left = size.Width - f.width;
+        f.right = size.Width;
+    }
+    if (f.top + dy <= 0) {
+        f.top = 0;
+        f.bottom = f.height;
+    } else if (f.bottom + dy >= size.Height) {
+        f.bottom = size.Height;
+        f.top = size.Height - f.height;
+    }
+    ScrollMapClip* map = reinterpret_cast<ScrollMapClip*>(Map::getInstance());
+    map->clip.UpperLeftCorner.X = f.left;
+    map->clip.UpperLeftCorner.Y = f.top;
+    map->clip.LowerRightCorner.X = f.right;
+    map->clip.LowerRightCorner.Y = f.bottom;
+    f.previousX = x;
+    f.previousY = y;
+}
+
+#include "../core/Material.h"
+struct ZoomFields {
+    void* vtable;
+    int width, height, left, top, right, bottom, panel;
+    float zoom, maximum, minimum;
+    int unknown44, previousX, previousY, previousDistance, mode;
+    float step;
+};
+struct ZoomMapFields {
+    irr::video::ITexture* texture;
+    float rotation, scale, offsetX, offsetY;
+    int screenX, screenY, left, top, right, bottom;
+};
+extern "C" void _ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE(MenuManager* manager, const MapPointList& points)
+{
+    ZoomFields& m = *reinterpret_cast<ZoomFields*>(manager);
+    Point2D<short>* first = *points.begin();
+    MapPointList::const_iterator tail = points.end();
+    tail._M_decr();
+    Point2D<short>* last = *tail;
+    float y = first->y - last->y;
+    float x = first->x - last->x;
+    int distance = static_cast<int>(sqrtf(x * x + y * y));
+    int delta = distance - m.previousDistance;
+    if (delta < 0) delta = -delta;
+    float old = m.zoom;
+    if (distance < m.previousDistance) {
+        m.zoom += delta * m.step;
+        if (m.zoom >= m.maximum) m.zoom = m.maximum;
+    } else if (distance > m.previousDistance) {
+        m.zoom -= delta * m.step;
+        if (m.zoom <= m.minimum) m.zoom = m.minimum;
+    }
+    m.previousDistance = distance;
+    if (m.zoom != old) {
+        const irr::core::dimension2d<int>& size = reinterpret_cast<ZoomMapFields*>(Map::getInstance())->texture->getSize();
+        int halfWidth = m.width / 2;
+        float textureWidth = size.Width;
+        float oldInverse = 1.0f / old;
+        float textureHeight = size.Height;
+        float inverse = 1.0f / m.zoom;
+        int scaledWidth = textureWidth * inverse;
+        int scaledHeight = textureHeight * inverse;
+        int centerY = static_cast<int>(static_cast<float>(scaledHeight) * (static_cast<float>(m.height / 2 + m.top) / (oldInverse * textureHeight)));
+        int centerX = static_cast<int>(static_cast<float>(scaledWidth) * (static_cast<float>(halfWidth + m.left) / (textureWidth * oldInverse)));
+        m.left = centerX - halfWidth;
+        m.top = centerY - m.height / 2;
+        m.right = m.left + m.width;
+        m.bottom = m.top + m.height;
+        if (m.left <= 0) { m.left = 0; m.right = m.width; }
+        else if (static_cast<int>(textureWidth * (1.0f / m.zoom)) <= m.right) { m.left = scaledWidth - m.width; m.right = scaledWidth; }
+        if (m.top <= 0) { m.top = 0; m.bottom = m.height; }
+        else if (m.bottom >= scaledHeight) { m.top = scaledHeight - m.height; m.bottom = scaledHeight; }
+        ZoomMapFields* map = reinterpret_cast<ZoomMapFields*>(Map::getInstance());
+        map->left = m.left; map->top = m.top; map->right = m.right; map->bottom = m.bottom;
+    }
+    reinterpret_cast<ZoomMapFields*>(Map::getInstance())->scale = m.zoom;
+}

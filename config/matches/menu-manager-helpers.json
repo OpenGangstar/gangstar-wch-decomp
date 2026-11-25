@@ -125,7 +125,9 @@
         "_ZN11MenuManager13preloadGlyphsEb",
         "_ZN11MenuManager9updateMapEv",
         "_ZNK11MenuManager8_drawMapEv",
-        "_ZN11MenuManager13updateMarkersEv"
+        "_ZN11MenuManager13updateMarkersEv",
+        "_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE",
+        "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -173,7 +175,9 @@
         ".preload_error",
         ".menu_update_map",
         ".menu_draw_map",
-        ".menu_update_markers"
+        ".menu_update_markers",
+        ".menu_manager_scroll_map",
+        ".menu_manager_zoom_map"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -206,8 +210,6 @@
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
         "_ZN8RenderFX13PreloadGlyphsEv",
         "_ZN8RenderFX14FindCharactersEPN7gameswf9characterEPKci",
-        "_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE",
-        "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE",
         "_ZN10AnimObject11SetPositionEfff",
         "_ZN10AnimObject4DrawEv",
         "_ZNK12TargetMarker4drawEv",

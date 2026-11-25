@@ -22,8 +22,12 @@ _ZN29retail_spawnpoint_transitions11guard_transE = 0x0041f3b4;
 _ZN29retail_spawnpoint_transitions22scripted_vehicle_transE = 0x0041f45c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(_Znaj = 0x001c3ff8);
+PROVIDE(_ZdaPv = 0x001c461c);
 SECTIONS
 {
+    .spawn_point_load 0x00306b10 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE) }
     .spawn_close_neighbors 0x00306d2c : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint17hasCloseNeighborsEv .gnu.linkonce.t._ZNK10SpawnPoint17hasCloseNeighborsEv) }
 
     .spawn_random_place 0x003067d4 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint5spawnEv) }
