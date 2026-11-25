@@ -19,8 +19,10 @@ _ZN28retail_gsfailure_transitions22scripted_vehicle_transE = 0x00416f4c;
 __aeabi_atexit = 0x001c494c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+PROVIDE(__aeabi_idiv = 0x001c43dc);
 SECTIONS
 {
+    .gsfailure_draw2d 0x002e1e14 : { *state-hooks-gsfailure.o(.text._ZN9GSFailure6draw2dEPK12StateMachine) }
     .gsfailure_dtor 0x002e1f64 : { *state-hooks-gsfailure.o(.text._ZN9GSFailure4dtorEPK12StateMachine .gnu.linkonce.t._ZN9GSFailure4dtorEPK12StateMachine) }
     .gsfailure_state_ctor 0x002e1fd4 : { *state-hooks-gsfailure.o(.text._ZN9GSFailure4ctorEPK12StateMachine .gnu.linkonce.t._ZN9GSFailure4ctorEPK12StateMachine) }
     .gsfailure_update 0x002e20dc : { *state-hooks-gsfailure.o(.text._ZN9GSFailure6updateEP12StateMachine .gnu.linkonce.t._ZN9GSFailure6updateEP12StateMachine) }
@@ -83,3 +85,4 @@ ASSERT(SIZEOF(.local_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.local_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.state_instance_guard) == 4, "StateMachine guard extent");
 ASSERT(SIZEOF(.state_instance_storage) == 40, "StateMachine storage extent");
+ASSERT(SIZEOF(.gsfailure_draw2d) == 308, "Native _ZN9GSFailure6draw2dEPK12StateMachine extent");

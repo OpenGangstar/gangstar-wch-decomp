@@ -61,3 +61,4 @@ ASSERT(SIZEOF(.character_combat_idle) == 300, "Native Character combat idle exte
 ASSERT(SIZEOF(.character_combat_idle_table) == 36, "Native Character combat idle table extent");
 ASSERT(SIZEOF(.character_ready) == 284, "Native Character ready extent");
 ASSERT(SIZEOF(.character_ready_table) == 36, "Native Character ready table extent");
+ASSERT(SIZEOF(.character_set_animation) == 396, "Native Character setAnimation extent");

@@ -9305,7 +9305,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e1db1	0x24	GSFade.cpp	game	app	matched	_ZN6GSFadeD1Ev	GSFade::~GSFade()
 0x002e1dd5	0xe	GSFailure.cpp	game	app	matched	_ZN9GSFailure8isKindOfEi	GSFailure::isKindOf(int)
 0x002e1de5	0x30	GSFailure.cpp	game	app	matched	__tcf_4	__tcf_4
-0x002e1e15	0x134	GSFailure.cpp	game	app	pending	_ZN9GSFailure6draw2dEPK12StateMachine	GSFailure::draw2d(StateMachine const*)
+0x002e1e15	0x134	GSFailure.cpp	game	app	matched	_ZN9GSFailure6draw2dEPK12StateMachine	GSFailure::draw2d(StateMachine const*)
 0x002e1f49	0x1c	GSFailure.cpp	game	app	matched	__tcf_3	__tcf_3
 0x002e1f65	0x6e	GSFailure.cpp	game	app	matched	_ZN9GSFailure4dtorEPK12StateMachine	GSFailure::dtor(StateMachine const*)
 0x002e1fd5	0x108	GSFailure.cpp	game	app	matched	_ZN9GSFailure4ctorEPK12StateMachine	GSFailure::ctor(StateMachine const*)
@@ -9335,7 +9335,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e2665	0x18	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenu10skipFadeInEv	GSInGameMenu::skipFadeIn()
 0x002e267d	0x30	GSInGameMenu.cpp	game	ui	matched	__tcf_4	__tcf_4
 0x002e26ad	0x78	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenu6draw2dEPK12StateMachine	GSInGameMenu::draw2d(StateMachine const*)
-0x002e2725	0x160	GSInGameMenu.cpp	game	ui	pending	_ZN12GSInGameMenu6updateEP12StateMachine	GSInGameMenu::update(StateMachine*)
+0x002e2725	0x160	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenu6updateEP12StateMachine	GSInGameMenu::update(StateMachine*)
 0x002e2885	0x50	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenu4dtorEPK12StateMachine	GSInGameMenu::dtor(StateMachine const*)
 0x002e28d5	0x6c	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenu4ctorEPK12StateMachine	GSInGameMenu::ctor(StateMachine const*)
 0x002e2941	0x20	GSInGameMenu.cpp	game	ui	matched	_ZN12GSInGameMenuC1Ev	GSInGameMenu::GSInGameMenu()
@@ -10072,7 +10072,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1cfd	0x40	Character.cpp	game	characters	matched	_ZN9Character8goToIdleEv	Character::goToIdle()
 0x002f1d3d	0x3c	Character.cpp	game	characters	matched	_ZN9Character4StopEv	Character::Stop()
 0x002f1d79	0x18	Character.cpp	game	characters	matched	_ZN9Character16onRocketLaunchedEv	Character::onRocketLaunched()
-0x002f1d91	0x18c	Character.cpp	game	characters	pending	_ZN9Character12setAnimationEifbbb	Character::setAnimation(int, float, bool, bool, bool)
+0x002f1d91	0x18c	Character.cpp	game	characters	matched	_ZN9Character12setAnimationEifbbb	Character::setAnimation(int, float, bool, bool, bool)
 0x002f1f1d	0x16	Character.cpp	game	characters	matched	_ZN9Character6isDeadEv	Character::isDead()
 0x002f1f35	0x10	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEiibbb	Character::setNextAnimation(int, int, bool, bool, bool)
 0x002f1f45	0x58	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEPKcibbb	Character::setNextAnimation(char const*, int, bool, bool, bool)

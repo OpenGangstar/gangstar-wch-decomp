@@ -26,6 +26,7 @@
     "source": "src/game/app/GSFailure.cpp",
     "linker_script": "config/linker/GSFailureHooks.ld",
     "functions": [
+        "_ZN9GSFailure6draw2dEPK12StateMachine",
         "_ZN9GSFailureC1Ev",
         "_ZN9GSFailureC2Ev",
         "_ZN9StateBase8isKindOfEi",
@@ -72,6 +73,7 @@
         "_ZN9GSFailure6updateEP12StateMachine"
     ],
     "sections": [
+        ".gsfailure_draw2d",
         ".state_ctor",
         {
             "name": ".got",
@@ -146,6 +148,10 @@
         "_ZNK13ScriptManager10getMissionEv",
         "_ZNK13ScriptManager22getCinematicsHudSpriteEv",
         "_ZNK6Script8getStateEv",
-        "_ZNK7Mission8getStateEv"
+        "_ZNK7Mission8getStateEv",
+        "_ZN10AnimObject4DrawEv",
+        "_ZN13ScriptManager15getFailureCauseEv",
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_ZNK7Mission12failureCauseEv"
     ]
 }

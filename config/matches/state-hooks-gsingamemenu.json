@@ -26,6 +26,7 @@
     "source": "src/game/ui/GSInGameMenu.cpp",
     "linker_script": "config/linker/GSInGameMenuHooks.ld",
     "functions": [
+        "_ZN12GSInGameMenu6updateEP12StateMachine",
         "_ZN12GSInGameMenu6draw2dEPK12StateMachine",
         "_ZN12GSInGameMenu4ctorEPK12StateMachine",
         "_ZN12GSInGameMenu4dtorEPK12StateMachine",
@@ -64,6 +65,7 @@
         }
     ],
     "sections": [
+        ".gsingamemenu_update",
         ".blocking_tutorial_text",
         ".hook_0",
         ".state_ctor",
@@ -110,7 +112,18 @@
         "_ZN11CHudManager6unlockEv",
         "_ZN15TouchScreenBase5clearEv",
         "_ZN13CameraManager11getInstanceEv",
-        "_ZN13CameraManager20setTouchScreenInputsEb"
+        "_ZN13CameraManager20setTouchScreenInputsEb",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN11Application10SetDrawAllEb",
+        "_ZN11CHudManager4hideEv",
+        "_ZN11CHudManager4showEv",
+        "_ZN11MenuManager13topSetVisibleEb",
+        "_ZN11MenuManager4pushEPKcb",
+        "_ZN12SoundManager15resumeAllSoundsEv",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN12StateMachine8popStateEv",
+        "_ZNK10PlayerTest15getAmbientSoundEv",
+        "_ZNK12StateMachine12getTimeStampEv"
     ],
     "retail_got": true
 }

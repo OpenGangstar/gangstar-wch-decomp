@@ -51,6 +51,53 @@ static void __tcf_4()
 }
 }
 
+#include "Application.h"
+#include "../core/VideoDriver.h"
+#include "../core/IrrlichtDevice.h"
+#include "../scripting/ScriptManager.h"
+#include "../missions/Mission.h"
+#include "../hud/MenuManager.h"
+#include "../characters/AnimObject.h"
+extern "C" int _ZN13ScriptManager15getFailureCauseEv();
+void GSFailure::draw2d(const StateMachine*)
+{
+    Application* app = Application::GetInstance();
+    int width, height;
+    app->GetScreenDimensions(width, height);
+    irr::video::IVideoDriver* driver = app->GetDevice()->getVideoDriver();
+    if (_ZN13ScriptManager15getFailureCauseEv() & 6) {
+        int alpha = timer > 0 ? 128 - timer * 128 / 1000 : 128;
+        if (alpha > 0) {
+            irr::video::SColor color(alpha, 0, 0, 0);
+            if (_ZN13ScriptManager15getFailureCauseEv() & 2)
+                color.r = 255;
+            else
+                color.b = 255;
+            driver->draw2DRectangle(color, irr::core::rect<int>(0, 0, width, height));
+        }
+    }
+    animation->Draw();
+    if (animation->IsAnimOver()) {
+        int text, value;
+        if (_ZN13ScriptManager15getFailureCauseEv() & 4) {
+            text = 0x305a;
+            value = -1;
+        } else if (_ZN13ScriptManager15getFailureCauseEv() & 2) {
+            text = 0x305d;
+            value = -1;
+        } else {
+            value = static_cast<Mission*>(ScriptManager::getInstance()->getMission())->failureCause();
+            text = 0x304d;
+        }
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(4), text, 0);
+        MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(5), value, 0);
+        if (timer < 0 && (timer & 0x200))
+            MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(6), 0x5001, 0);
+        else
+            MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(6), -1, 0);
+    }
+}
+
 extern "C" {
 static void __tcf_3()
 {

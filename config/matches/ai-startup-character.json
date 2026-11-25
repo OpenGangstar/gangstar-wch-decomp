@@ -26,6 +26,7 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character12setAnimationEifbbb",
         "_ZN9Character11exitVehicleEb",
         "_ZN9Character5readyEf",
         "_ZN9Character14goToCombatIdleEv",
@@ -162,6 +163,7 @@
         "_ZN9Character3dieEb"
     ],
     "sections": [
+        ".character_set_animation",
         ".character_ready",
         ".character_ready_table",
         ".character_combat_idle",
@@ -212,6 +214,9 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN6Weapon12reloadRocketEv",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",
         "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
@@ -265,7 +270,6 @@
         "_ZN9AIManager8removeAIEP3NPC",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN9Character12setAnimationEifbbb",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",

@@ -199,8 +199,8 @@ public:
     virtual void jumpTo(int time);
     virtual void setClip(int clip); virtual void unknown5();
     virtual int getClipIndex(const char* name) const;
-    virtual void unknown7(); virtual void unknown8(); virtual void unknown9();
-    virtual void unknown10(); virtual void unknown11(); virtual void unknown12();
+    virtual void unknown7(); virtual int getClipStart(int clip) const; virtual int getClipEnd(int clip) const;
+    virtual int getClipLength(int clip) const; virtual void unknown11(); virtual void unknown12();
     virtual int getCurrentClipLength() const; virtual int getCurrentClipIndex() const; virtual void unknown15();
     virtual void setLoop(bool loop);
     virtual bool getLoop() const;

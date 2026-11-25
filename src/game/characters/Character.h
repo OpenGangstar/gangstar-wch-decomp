@@ -140,12 +140,15 @@ private:
     unsigned char unknown117[3];
     int destinationLimitSquared;
     int currentAnimation;
-    unsigned char unknown128[8];
+    int animationStartFrame;
+    int animationEndFrame;
     int animationFrameCount;
     float animationFrame;
-    unsigned char unknown144[4];
+    float animationSpeed;
     bool animationLoops;
-    unsigned char unknown149[3];
+    bool animationFlag149;
+    bool animationFlag150;
+    unsigned char unknown151;
     int animationSpeedMultiplier;
     float unknown156;
     float shadowBaseHeight;

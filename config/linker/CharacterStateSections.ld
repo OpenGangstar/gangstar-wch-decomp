@@ -16,6 +16,7 @@ lrand48 = 0x001c4664;
 SECTIONS
 {
     .character_die 0x002f2d94 : { *ai-startup-character.o(.text._ZN9Character3dieEb) }
+    .character_set_animation 0x002f1d90 : { *ai-startup-character.o(.text._ZN9Character12setAnimationEifbbb) }
     .character_combat_idle 0x002f2580 : { *ai-startup-character.o(.text._ZN9Character14goToCombatIdleEv) }
     .character_combat_idle_table 0x0041bcf4 : { *ai-startup-character.o(.rodata._ZN9Character14goToCombatIdleEv) }
     .character_ready 0x002f26ac : { *ai-startup-character.o(.text._ZN9Character5readyEf) }
