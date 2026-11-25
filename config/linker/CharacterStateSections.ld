@@ -1,3 +1,4 @@
+PROVIDE(_Znwj = 0x001c4814);
 __aeabi_fadd = 0x001c4154;
 __aeabi_f2iz = 0x001c44cc;
 __aeabi_idivmod = 0x001c4934;
@@ -16,6 +17,10 @@ lrand48 = 0x001c4664;
 SECTIONS
 {
     .character_die 0x002f2d94 : { *ai-startup-character.o(.text._ZN9Character3dieEb) }
+    .character_init_physic 0x002f4464 : { *ai-startup-character.o(.text._ZN9Character10initPhysicEv) }
+    .character_polygon_d1 0x002df3f4 : { *ai-startup-character.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
+    .character_polygon_d0 0x002df628 : { *ai-startup-character.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
+    .character_polygon_table 0x004a8ac8 : { *ai-startup-character.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
     .character_set_animation 0x002f1d90 : { *ai-startup-character.o(.text._ZN9Character12setAnimationEifbbb) }
     .character_combat_idle 0x002f2580 : { *ai-startup-character.o(.text._ZN9Character14goToCombatIdleEv) }
     .character_combat_idle_table 0x0041bcf4 : { *ai-startup-character.o(.rodata._ZN9Character14goToCombatIdleEv) }

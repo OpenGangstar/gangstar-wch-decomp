@@ -11,22 +11,28 @@ namespace irr { namespace scene { class ISceneNode; } }
 struct b2Vec2 {
     float x, y;
     b2Vec2() {}
+    void SetZero() { x = 0.0f; y = 0.0f; }
     b2Vec2(float x, float y) : x(x), y(y) {}
 };
 struct b2MassData;
 struct b2AABB { b2Vec2 lowerBound, upperBound; };
 struct b2Segment { b2Vec2 p1, p2; };
 struct b2XForm { b2Vec2 position; float rotation[4]; };
-struct b2FilterData { unsigned short categoryBits, maskBits; short groupIndex; };
+#include "PhysicsFilterData.h"
 struct PhysicsBodyData {
+    PhysicsBodyData(LevelObject* object, irr::scene::ISceneNode* mesh) : owner(object), node(mesh), lowerHeight(0), upperHeight(0), unknown16(0), unknown20(0), unknown24(false), unknown25(false) {}
     LevelObject* owner;
     irr::scene::ISceneNode* node;
     float lowerHeight, upperHeight;
+    float unknown16, unknown20;
+    bool unknown24, unknown25;
 };
+class b2ShapeDef;
 class b2Shape;
 class b2Body {
 public:
     unsigned char unknown0[4];
+    b2Shape* CreateShape(b2ShapeDef*);
     void SetMassFromShapes();
     void SetMass(const b2MassData* massData);
     bool SetXForm(const b2Vec2& position, float angle);

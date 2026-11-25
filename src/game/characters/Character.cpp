@@ -946,9 +946,9 @@ void Character::resetCollisions()
 {
     if (collisionBody) {
         for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next) {
-            shape->filter.categoryBits = collisionCategory;
-            shape->filter.maskBits = collisionMask;
-            shape->filter.groupIndex = collisionGroup;
+            shape->filter.categoryBits = collisionFilter.categoryBits;
+            shape->filter.maskBits = collisionFilter.maskBits;
+            shape->filter.groupIndex = collisionFilter.groupIndex;
             PhysicAttributes::s_world->Refilter(shape);
         }
     }
@@ -1484,14 +1484,7 @@ void Character::exitVehicle(bool left)
 }
 
 // Existing partial Box2D SDK destructor interface reused from GS3DStuff.cpp.
-class b2ShapeDef {
-public:
-    virtual ~b2ShapeDef() {}
-};
-class b2CircleDef : public b2ShapeDef {
-public:
-    virtual ~b2CircleDef() __attribute__((used)) {}
-};
+#include "../vehicles/VehicleBodyShapes.h"
 
 int Character::getSpecificAnimation(int id)
 {
@@ -1748,3 +1741,35 @@ void Character::ready(float speed)
         break;
     }
 }
+
+void Character::initPhysic()
+{
+    if (collisionBody) return;
+    if (!unknown24) unknown24 = new PhysicAttributes(1,0);
+    if (vehicle) unknown24->SetPhysicInfo(*vehicle->unknown24->info,0);
+    b2BodyDef body;
+    body.linearDamping = 0.0f;
+    body.angularDamping = 0.0f;
+    body.isBullet = false;
+    body.position = b2Vec2(GetPosition().X / 100.0f, GetPosition().Y / 100.0f);
+    body.allowSleep = false;
+    collisionBody = PhysicAttributes::s_world->CreateBody(&body);
+    b2CircleDef shape;
+    shape.radius = 0.5f;
+    shape.restitution = 0.0f;
+    shape.density = 1.0f;
+    shape.friction = 0.3f;
+    if (static_cast<void*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == this) {
+        shape.filter.categoryBits = 2;
+        shape.filter.maskBits = 0xffff;
+    } else {
+        shape.filter.categoryBits = 4;
+        shape.filter.maskBits = 0xffff;
+    }
+    shape.filter.groupIndex = unknown24->getIndex()+1;
+    collisionFilter = shape.filter;
+    collisionBody->CreateShape(&shape);
+    collisionBody->SetMassFromShapes();
+    collisionBody->data = new PhysicsBodyData(this,static_cast<irr::scene::ISceneNode*>(getSkinMesh()));
+}
+

@@ -313,7 +313,6 @@
         "_ZN9AIManager8removeAIEP3NPC",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN9Character10initPhysicEv",
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
