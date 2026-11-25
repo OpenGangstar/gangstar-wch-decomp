@@ -10,6 +10,14 @@ PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(memset = 0x001c45d4);
 SECTIONS
 {
+    .script_load_command_table 0x0042f098 : { *script-manager-helpers.o(.rodata._ZN13ScriptManager11loadCommandER10DataStream) }
+    .script_load_command_c172 0x0042fa34 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.172) }
+    .script_load_command_c168 0x0042fa44 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.168) }
+    .script_load_command_c149 0x0042fa54 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.149) }
+    .script_load_command_c106 0x0042fa64 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.106) }
+    .script_load_command_c137 0x0042fa74 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.137) }
+    .script_manager_load_command 0x0033ddd4 : { *script-manager-helpers.o(.text._ZN13ScriptManager11loadCommandER10DataStream) }
+    ASSERT(SIZEOF(.script_manager_load_command) == 2436, "Native ScriptManager loadCommand extent")
     .script_entry_33ed94 0x0033ed94 : { *script-manager-helpers.o(.text._ZN13ScriptManager9resetGameEbi) }
     .script_entry_33f0f8 0x0033f0f8 : { *script-manager-helpers.o(.text._ZN13ScriptManager10moveObjectEP11LevelObjectS1_) }
     .script_entry_33ef8c 0x0033ef8c : { *script-manager-helpers.o(.text._ZN13ScriptManager10loadScriptEPKcb) }

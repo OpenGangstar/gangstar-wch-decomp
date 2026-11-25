@@ -190,7 +190,8 @@
             "name": "__tcf_4",
             "address": "0x0033e759",
             "compiled_name": "__tcf_2"
-        }
+        },
+        "_ZN13ScriptManager11loadCommandER10DataStream"
     ],
     "sections": [
         ".script_setup_intro",
@@ -329,7 +330,14 @@
         ".script_manager_first_checkpoint",
         ".script_manager_minimap_tracking",
         ".wanted_cleanup",
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".script_manager_load_command",
+        ".script_load_command_table",
+        ".script_load_command_c172",
+        ".script_load_command_c168",
+        ".script_load_command_c149",
+        ".script_load_command_c106",
+        ".script_load_command_c137"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -392,7 +400,6 @@
         "_ZN10DataStreamC1ER6StreamNS_6endianE",
         "_ZN6ScriptC1Ei",
         "_ZNK10DataStream4TellEv",
-        "_ZN13ScriptManager11loadCommandER10DataStream",
         "_ZN10DataStream4SeekEii",
         "_ZN6Script10addCommandEPN7Structs13ScriptCommandE",
         "_ZN9ResStreamD1Ev",
@@ -408,6 +415,7 @@
         "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
         "_ZN10PlayerTest10teleportToEPK11LevelObject",
         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
-        "_ZN10PlayerTest19finishedStopDrivingEv"
+        "_ZN10PlayerTest19finishedStopDrivingEv",
+        "_ZN10DataStream5Peek4Ev"
     ]
 }
