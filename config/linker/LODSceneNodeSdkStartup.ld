@@ -1,3 +1,10 @@
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_fcmpge = 0x001c4364);
+PROVIDE(__aeabi_fcmple = 0x001c43ac);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-lodscenenode/retail-symbols.ld
@@ -12,6 +19,7 @@ __aeabi_fmul = 0x001c4724;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .lod_compute_level 0x002d2d60 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNode15computeLODLevelEv) }
     .lod_mesh_transformed 0x002d2edc : { *sdk-startup-lodscenenode.o(.text._ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE) }
     .lod_ctor_base 0x002d2b30 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeC2EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_) }
     .lod_ctor_complete 0x002d2f50 : { *sdk-startup-lodscenenode.o(.text._ZN12LODSceneNodeC1EiRKN3irr4core8vector3dIfEERKNS1_10quaternionES5_) }

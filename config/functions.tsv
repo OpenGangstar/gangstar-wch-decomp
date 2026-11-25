@@ -8732,7 +8732,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d2c25	0x3a	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode15removeAnimatorsEv	LODSceneNode::removeAnimators()
 0x002d2c61	0x38	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode11addAnimatorEPN3irr5scene18ISceneNodeAnimatorE	LODSceneNode::addAnimator(irr::scene::ISceneNodeAnimator*)
 0x002d2c99	0xc8	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf	LODSceneNode::addLOD(irr::scene::ISceneNode*, float)
-0x002d2d61	0x132	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode15computeLODLevelEv	LODSceneNode::computeLODLevel()
+0x002d2d61	0x132	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode15computeLODLevelEv	LODSceneNode::computeLODLevel()
 0x002d2e95	0x46	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode19OnRegisterSceneNodeEv	LODSceneNode::OnRegisterSceneNode()
 0x002d2edd	0x54	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshTransformedBoundingBox(irr::scene::ISceneNode const*) const
 0x002d2f31	0x1e	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode25getTransformedBoundingBoxEv	LODSceneNode::getTransformedBoundingBox() const
