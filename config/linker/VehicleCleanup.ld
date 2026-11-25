@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_dcmplt = 0x001c4244);
 PROVIDE(__aeabi_ui2d = 0x1c4208);
 PROVIDE(__aeabi_dmul = 0x1c4298);
 PROVIDE(__aeabi_d2f = 0x1c4310);
@@ -41,6 +42,9 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_physic_info_ctor 0x00319dd0 : { *vehicle-cleanup.o(.text._ZN10PhysicInfoC1Ev .text._ZN10PhysicInfoC2Ev .gnu.linkonce.t._ZN10PhysicInfoC1Ev .gnu.linkonce.t._ZN10PhysicInfoC2Ev) }
+    ASSERT(SIZEOF(.vehicle_physic_info_ctor) == 96, "PhysicInfo native96 extent")
+    .vehicle_process_ai_flags 0x00312080 : { *vehicle-cleanup.o(.text._ZN7Vehicle15_processAIFlagsEv) }
     .vehicle_load 0x0030ff40 : { *vehicle-cleanup.o(.text._ZN7Vehicle4LoadERKN7Structs3CarE) }
     .vehicle_load_explosion_asset 0x0041f714 : { *vehicle-cleanup.o(.rodata.*vehicleLoadExplosionAssetE) }
     .vehicle_setup_scene_node 0x00309a4c : { *vehicle-cleanup.o(.text._ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv) }

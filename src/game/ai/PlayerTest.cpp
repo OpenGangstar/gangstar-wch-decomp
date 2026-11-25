@@ -580,6 +580,71 @@ void PlayerTest::_SetTarget(LevelObject* replacement, bool changeCamera)
     Lock::getInstance()->setTarget(target);
 }
 
+void operator delete(void*) throw();
+namespace irr { namespace core {
+template<> class array<NPC*, irrAllocator<NPC*> > {
+public:
+    array():data(0),allocated(0),used(0),free_when_destroyed(true),is_sorted(true),unknown16(1) {}
+    NPC** data;
+    unsigned int allocated;
+    unsigned int used;
+    bool free_when_destroyed;
+    bool is_sorted;
+    unsigned int unknown16;
+    ~array() { if (free_when_destroyed) { is_sorted = true; allocated = 0; used = 0; data = 0; ::operator delete(data); } }
+    NPC*& operator[](unsigned int index) { return data[index]; }
+    unsigned int size() const { return used; }
+    void clear() { ::operator delete(data); }
+    void push_back(NPC* const& value) __attribute__((weak));
+};
+} }
+extern "C" bool _ZN3NPC12isTargetableEv(NPC*) __attribute__((weak));
+LevelObject* PlayerTest::getAttackableTarget(LevelObject* source, Weapon* weapon, LevelObject* fallback)
+{
+    LevelObject* best = 0;
+    bool melee = weapon->getWeaponType() == 0;
+    irr::core::array<NPC*> candidates;
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
+        if (LevelObject::s_type[object->getObjectType()] != 5)
+            continue;
+        NPC* npc = static_cast<NPC*>(object);
+        if (!_ZN3NPC12isTargetableEv(npc))
+            continue;
+        if (!npc->isVisibleOnScreen())
+            continue;
+        if (npc->isHostileTo(source) || melee)
+            candidates.push_back(npc);
+    }
+    float range = float(weapon->getRange());
+    if (melee)
+        range += range;
+    range *= range;
+    irr::core::vector3d<float> position = source->GetPosition();
+    float bestScore = 0.0f;
+    for (int i = 0; (unsigned int)i < candidates.size(); ++i) {
+        irr::core::vector3d<float> targetPosition = candidates[i]->GetPosition();
+        float distanceSq = position.getDistanceFromSQ(targetPosition);
+        if (melee && distanceSq > range)
+            continue;
+        irr::core::vector3d<float> direction = targetPosition - position;
+        irr::core::vector3d<float> normal = direction.normalize();
+        irr::core::vector3d<float> front;
+        front = source->GetFront();
+        float factor = 1.0f;
+        if (candidates[i]->category428 == 1)
+            factor = 0.6f;
+        float score = normal.dotProduct(front) * (1.0f - distanceSq / range) * factor;
+        if (!best || score > bestScore) {
+            best = candidates[i];
+            bestScore = score;
+        }
+    }
+    candidates.clear();
+    if (!best)
+        best = fallback;
+    return best;
+}
+
 void PlayerTest::acquireTarget()
 {
     Weapon* weapon = Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();

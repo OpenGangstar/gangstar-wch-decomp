@@ -175,6 +175,7 @@ private:
     friend class CopVehicleController;
     void _cleanupSounds();
     void resetPreviousPos();
+    void _processAIFlags();
     void ResetBodyPosition();
     int getVelDirec();
     void _shiftGears(unsigned int speed);

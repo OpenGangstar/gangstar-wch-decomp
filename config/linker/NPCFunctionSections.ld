@@ -1,5 +1,6 @@
 SECTIONS
 {
+    .npc_is_hostile_to 0x002fe0e8 : { *ai-startup-npc.o(.text._ZN3NPC11isHostileToEP11LevelObject) }
     .npc_is_under_car 0x002fde50 : { *ai-startup-npc.o(.text._ZN3NPC10isUnderCarEv) }
     .npc_outside_search_radius 0x002fd564 : { *ai-startup-npc.o(.text._ZN3NPC21isOutsideSearchRadiusEv) }
     .npc_combat_sfx 0x002fe614 : { *ai-startup-npc.o(.text._ZN3NPC16triggerCombatSFXEi) }
