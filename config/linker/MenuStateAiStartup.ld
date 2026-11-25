@@ -42,6 +42,10 @@ INCLUDE config/linker/WidgetTutorialLocalization.ld
 
 INCLUDE config/linker/WidgetConfirmLocalization.ld
 INCLUDE config/linker/WidgetControlsLocalization.ld
+INCLUDE config/linker/WidgetGameSettingEvent.ld
+INCLUDE config/linker/WidgetCorruptionLocalization.ld
+INCLUDE config/linker/WidgetMissionMapLegendEvents.ld
+INCLUDE config/linker/WidgetDialogObjectiveLanguageEvents.ld
 
 INCLUDE config/linker/MapNotifySections.ld
 
@@ -361,6 +365,8 @@ SECTIONS
     .map_instance 0x004b6b00 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     /* Retail merges preloadGlyphs' "rb" with RenderFX's read mode at 0x004014f0; this image places only
        RenderFX's copy there and gives the unchecked MenuManager duplicate a non-retail home. */
+    /* Retail shares "Map" (0x0040b608) between MenuState and Widgets::Mission; this image checks MenuState's copy. */
+    .menu_widget_duplicate_map_name 0x00700010 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }
     .menu_manager_duplicate_read_mode 0x00700000 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     /DISCARD/ : { *ai-startup-menuwidget.o(*) *menu-manager-helpers.o(*) }
 }

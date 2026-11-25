@@ -19,6 +19,8 @@ __cxa_pure_virtual = 0;
 INCLUDE config/linker/ApplicationEventSections.ld
 SECTIONS
 {
+    .ai_add_vehicle 0x00340304 : { *ai-startup-aimanager.o(.text._ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE) }
+    ASSERT(SIZEOF(.ai_add_vehicle) == 336, "Native AI vehicle factory extent")
     .ai_add_npc 0x00340454 : { *ai-startup-aimanager.o(.text._ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE) }
     .ai_add_npc_table 0x0042fabc : { *ai-startup-aimanager.o(.rodata._ZN9AIManager5addAIEP3NPCN8gameloft2ai7StateIDE) }
     .ai_add_invalid_text 0x0042fa84 : { *ai-startup-aimanager.o(.rodata.aiInvalidType) }

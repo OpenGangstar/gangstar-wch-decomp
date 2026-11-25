@@ -8,6 +8,7 @@
  * functions of AIManager.cpp here, in the order they appear in the library.
  */
 
+#include "../vehicles/Vehicle.h"
 #include "AIManager.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
@@ -266,6 +267,54 @@ template<> stlp_priv::_List_node<IEventReceiver*>* allocator<stlp_priv::_List_no
 #include "CivAgressiveController.h"
 #include "CopController.h"
 #include "GuardController.h"
+#include "VehicleController.h"
+class CopVehicleController : public VehicleController {
+public:
+    CopVehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
+        gameloft::ai::StateID state);
+    virtual ~CopVehicleController();
+    virtual void onEvent(const IEvent*, const EventManager*);
+    virtual void switchState(gameloft::ai::StateID);
+
+private:
+    int unknown28;
+};
+inline void AIManager::ReceiverList::append(IEventReceiver* receiver)
+{
+    typedef std::allocator<stlp_priv::_List_node<IEventReceiver*> > Allocator;
+    ReceiverNode* node = reinterpret_cast<ReceiverNode*>(reinterpret_cast<Allocator*>(this)->allocate(1,0));
+    node->receiver = receiver;
+    node->next = this;
+    ReceiverList* last = previous;
+    node->previous = last;
+    last->next = node;
+    previous = node;
+}
+void AIManager::addAI(Vehicle* vehicle, gameloft::ai::StateID initial)
+{
+    switch (vehicle->unknown240) {
+    case 3: {
+        CopVehicleController* cop;
+        if (initial == 0)
+            cop = new CopVehicleController(vehicle, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::cop_vehicle), static_cast<gameloft::ai::StateID>(1));
+        else
+            cop = new CopVehicleController(vehicle, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::cop_vehicle), initial);
+        EvWantedLevelChanged event;
+        cop->onEvent(&event, Application::GetInstance()->GetEventManager());
+        secondList.append(cop);
+        break;
+    }
+    case 0:
+        if (initial == 0)
+            secondList.append(new VehicleController(vehicle, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_vehicle), static_cast<gameloft::ai::StateID>(1)));
+        else
+            secondList.append(new VehicleController(vehicle, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::civ_vehicle), initial));
+        break;
+    case 6:
+        secondList.append(new VehicleController(vehicle, reinterpret_cast<const gameloft::ai::Transition&>(gameloft::ai::scripted_vehicle), initial));
+        break;
+    }
+}
 static const char aiInvalidType[] = "AIManager was asked to addAI on an invalid AI Type: %i\n";
 void AIManager::addAI(NPC* npc,gameloft::ai::StateID initial)
 {
