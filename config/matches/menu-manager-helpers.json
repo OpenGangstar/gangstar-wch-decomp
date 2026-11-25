@@ -122,7 +122,8 @@
             "address": "0x002e425d",
             "compiled_name": "__tcf_0"
         },
-        "_ZN11MenuManager13preloadGlyphsEb"
+        "_ZN11MenuManager13preloadGlyphsEb",
+        "_ZN11MenuManager9updateMapEv"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -167,7 +168,8 @@
         ".menu_preload_glyphs",
         ".preload_format",
         ".preload_binary_mode",
-        ".preload_error"
+        ".preload_error",
+        ".menu_update_map"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -200,6 +202,8 @@
         "_ZN3MapD1Ev",
         "_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE",
         "_ZN8RenderFX13PreloadGlyphsEv",
-        "_ZN8RenderFX14FindCharactersEPN7gameswf9characterEPKci"
+        "_ZN8RenderFX14FindCharactersEPN7gameswf9characterEPKci",
+        "_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE",
+        "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE"
     ]
 }
