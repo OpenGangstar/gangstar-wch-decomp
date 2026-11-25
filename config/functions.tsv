@@ -10135,7 +10135,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f50c9	0x62	Character.cpp	game	characters	matched	_ZN9Character12enterVehicleEbbb	Character::enterVehicle(bool, bool, bool)
 0x002f512d	0x2c	Character.cpp	game	characters	matched	_ZN8EvPlayerD0Ev	EvPlayer::~EvPlayer()
 0x002f5159	0x24	Character.cpp	game	characters	matched	_ZN5EvNPCD1Ev	EvNPC::~EvNPC()
-0x002f517d	0x454	Character.cpp	game	characters	pending	_ZN9Character21switchCombatAnimationEv	Character::switchCombatAnimation()
+0x002f517d	0x454	Character.cpp	game	characters	matched	_ZN9Character21switchCombatAnimationEv	Character::switchCombatAnimation()
 0x002f55d1	0xa30	Character.cpp	game	characters	pending	_ZN9Character5shootEfb	Character::shoot(float, bool)
 0x002f6001	0x1f8	Character.cpp	game	characters	matched	_ZN9Character11exitVehicleEb	Character::exitVehicle(bool)
 0x002f61f9	0x24	Character.cpp	game	characters	matched	_ZN8EvPlayerD1Ev	EvPlayer::~EvPlayer()
