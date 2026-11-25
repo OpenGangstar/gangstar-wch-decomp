@@ -623,3 +623,34 @@ bool PhysicAttributes::IsPositionOnJump(const irr::core::vector3d<float>& p)
         outside = true;
     return !outside;
 }
+
+namespace irr { namespace core {
+template<class T> class plane3d {
+public:
+    plane3d(const vector3d<T>& point,const vector3d<T>& normal): Normal(normal),D(-point.dotProduct(Normal)) {}
+    vector3d<T> Normal;
+    T D;
+};
+} }
+float PhysicAttributes::IntersectSegmentWithHeightMap(const irr::core::vector3d<float>& start,
+    const irr::core::vector3d<float>& end,irr::core::vector3d<float>& hit,irr::core::vector3d<float>& normal)
+{
+    irr::core::vector3d<float> delta=end-start;
+    irr::core::vector3d<float> planeNormal=irr::core::vector3d<float>(delta.Y,-delta.X,0.0f).crossProduct(delta);
+    planeNormal.normalize();
+    irr::core::plane3d<float> plane(start,planeNormal);
+    PhysicInfo temporary;
+    if (!info[0].heightmap) return 1.0f;
+    temporary.unknown0=info[0].unknown0;
+    temporary.heightmap=info[0].heightmap;
+    temporary.unknown8=info[0].unknown8;
+    temporary.vector12=info[0].vector12;
+    temporary.vector24=info[0].vector24;
+    temporary.vector36=info[0].vector36;
+    temporary.unknown76=info[0].unknown76;
+    temporary.unknown78=info[0].unknown78;
+    temporary.unknown80=info[0].unknown80;
+    s_currentUsed+=4;
+    if (!IntersectSegmentWithHeightMap(temporary,plane,start,end,hit,normal)) return 1.0f;
+    return (hit-start).getLength()/(end-start).getLength();
+}

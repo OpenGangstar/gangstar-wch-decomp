@@ -5,6 +5,7 @@
 
 class b2Body;
 class b2World;
+namespace irr { namespace scene { class ISceneNode; } }
 
 struct PhysicInfo {
     PhysicInfo() __attribute__((used))
@@ -20,7 +21,7 @@ struct PhysicInfo {
 
     unsigned short unknown0;
     unsigned char unknown2[2];
-    unsigned int unknown4;
+    union { unsigned int unknown4; irr::scene::ISceneNode* heightmap; };
     unsigned short unknown8;
     unsigned char unknown10[2];
     irr::core::vector3d<float> vector12, vector24, vector36, vector48;

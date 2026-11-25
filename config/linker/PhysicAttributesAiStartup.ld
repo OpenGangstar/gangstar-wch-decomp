@@ -65,3 +65,4 @@ ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.physic_position_on_jump) == 128, "Native PhysicAttributes IsPositionOnJump extent");
+ASSERT(SIZEOF(.physics_segment_height) == 596, "Native PhysicAttributes IntersectSegmentWithHeightMap extent");
