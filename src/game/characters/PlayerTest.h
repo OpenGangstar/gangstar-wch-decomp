@@ -159,12 +159,23 @@ public:
     // their observed access width. Both views occupy the same storage.
     union { eContext context; int contextWord; };
     irr::scene::ISceneNode* inactiveContextNodes[2];
-    int unknown440, unknown444, unknown448;
     struct ContextRecord {
         irr::scene::ISceneNode* node;
         int data0, data1, data2;
     };
-    ContextRecord contextRecords[2];
+    struct ContextAnimation {
+        void* animator;
+        irr::scene::ISceneNode* node;
+        void* skinMesh;
+        irr::scene::ISceneNode* shadowNode;
+    };
+    union {
+        struct {
+            int unknown440, unknown444, unknown448;
+            ContextRecord contextRecords[2];
+        };
+        ContextAnimation contextAnimations[2];
+    };
     irr::core::array<LevelObject*> photoTargets;
     bool weaponSwitchLocked;
     unsigned char unknown505[3];
