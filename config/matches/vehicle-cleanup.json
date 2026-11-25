@@ -248,7 +248,8 @@
         "_ZN7Vehicle13dropSceneNodeEv",
         "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
         "_ZN7Vehicle4LoadERKN7Structs3CarE",
-        "_ZN7Vehicle15_processAIFlagsEv"
+        "_ZN7Vehicle15_processAIFlagsEv",
+        "_ZNK7Vehicle11isDoorClearEbP6b2Body"
     ],
     "sections": [
         ".vehicle_collision",
@@ -378,7 +379,8 @@
         ".vehicle_setup_scene_node",
         ".vehicle_load",
         ".vehicle_load_explosion_asset",
-        ".vehicle_process_ai_flags"
+        ".vehicle_process_ai_flags",
+        ".vehicle_is_door_clear"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -665,6 +667,7 @@
         "_ZN9CarSoundsC1Ev",
         "_ZN11LevelObject17canSeeLevelObjectEPS_RN3irr4core8vector3dIfEE",
         "_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE",
-        "_ZN3irr2os10Randomizer4randEv"
+        "_ZN3irr2os10Randomizer4randEv",
+        "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei"
     ]
 }
