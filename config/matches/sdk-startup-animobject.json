@@ -26,6 +26,7 @@
     "source": "src/game/characters/AnimObject.cpp",
     "linker_script": "config/linker/AnimObjectSdkStartup.ld",
     "functions": [
+        "_ZN10AnimObject10IsAnimOverEv",
         "_Z7FSelectfff",
         "_ZN10AnimObject5ResetEv",
         {
@@ -59,6 +60,7 @@
         "_ZN10AnimObject22GetCurrentBoundingRectEv"
     ],
     "sections": [
+        ".anim_is_over",
         ".fselect",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",

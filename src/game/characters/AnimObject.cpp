@@ -111,6 +111,27 @@ void AnimObject::UpdateFrame()
 
 void AnimObject::Update(int) { UpdateFrame(); }
 
+static inline bool IsPlayingBackward(float value)
+{
+    return value < 0.0f;
+}
+
+bool AnimObject::IsAnimOver()
+{
+    int duration = sprite->GetAnimDuration(animation);
+    if (duration > 1) {
+        float end = static_cast<float>(duration);
+        float next = speed * frameStep + frame;
+        if (IsPlayingBackward(speed) && next <= 0.0f)
+            return true;
+        if (speed > 0.0f) {
+            bool over = next >= end;
+            return over;
+        }
+    }
+    return false;
+}
+
 // Recovered translation-unit SDK startup callbacks.
 #include "../core/LocalSdkStartupStorage.h"
 #include "../core/LocalStartupText.h"

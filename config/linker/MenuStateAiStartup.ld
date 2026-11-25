@@ -53,6 +53,7 @@ INCLUDE config/linker/MapNotifySections.ld
 carRentalTutorialPartFormat = 0x00419e70;
 SECTIONS
 {
+    .event_character_path 0x002e76e8 : { *ai-startup-menustate.o(.text._ZN8RenderFX5Event16GetCharacterPathEv) }
     .car_rental_notify 0x002eb760 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti) }
     ASSERT(SIZEOF(.car_rental_notify) == 448, "Native car_rental_notify extent")
     .main_menu_notify 0x002ea478 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti) }
@@ -427,3 +428,4 @@ INCLUDE config/linker/RenderFXSetMemberValue.ld
 
 
 ASSERT(SIZEOF(.can_handle_mouse) == 92, "CanHandleMouse native92 exact extent");
+ASSERT(SIZEOF(.event_character_path) == 192, "Native RenderFX Event GetCharacterPath extent");
