@@ -1216,6 +1216,103 @@ void PlayerTest::initDriving(bool value)
     }
 }
 
+#include "../world/Map.h"
+#include "../core/Material.h"
+#include "../core/Collada.h"
+#include "../rendering/GS3DStuff.h"
+#include "../persistence/SaveGame.h"
+namespace retail_player_context_text {
+// Context model and bone names, placed at their retail addresses.
+extern const char normal[] __attribute__((visibility("hidden")));
+extern const char jail[] __attribute__((visibility("hidden")));
+// The bone name is the retail string NPC.cpp also uses.
+extern const char bip[] __attribute__((visibility("hidden")));
+}
+struct PlayerContextStorageView {
+    irr::scene::ISceneNode* nodes[2];
+    Character::AnimationInfo animations[2];
+};
+typedef char PlayerContextStorageExtent[sizeof(PlayerContextStorageView)==40?1:-1];
+class Box2DUserInfo {
+public:
+    Box2DUserInfo(LevelObject* owner,irr::scene::ISceneNode* node)
+        : owner(owner),node(node),lowerHeight(0),upperHeight(0),unknown16(0),unknown20(0),flag24(false),flag25(false) {}
+    LevelObject* owner;
+    irr::scene::ISceneNode* node;
+    float lowerHeight,upperHeight,unknown16,unknown20;
+    bool flag24,flag25;
+};
+typedef char PlayerBodyDataExtent[sizeof(Box2DUserInfo)==28?1:-1];
+void PlayerTest::switchContext(eContext next,bool save)
+{
+    int previous=contextWord;
+    if(previous==next)return;
+    ScriptManager* scripts=ScriptManager::getInstance();
+    scripts->freezeRunningScripts(0,context);
+    contextWord=next;
+    ScriptManager::getInstance()->unlockFrozenScripts();
+    Application* app=Application::GetInstance();
+    irr::core::vector3d<float> position;
+    irr::core::quaternion rotation;
+    if(sceneNode) {
+        position=sceneNode->getPosition();
+        rotation=sceneNode->getRotation();
+    }
+    WantedLevelManager::getInstance()->resetWantedLevel();
+    const int nodeIndex=contextWord;
+    if(!inactiveContextNodes[contextWord]) {
+        const char* filename=0;
+        switch(contextWord) {
+        case Context1: filename=retail_player_context_text::jail; break;
+        case Context0: filename=retail_player_context_text::normal; break;
+        }
+        sceneNode=irr::collada::CColladaDatabase::constructScene(filename,&irr::collada::CColladaDatabase::DefaultFactory);
+        inactiveContextNodes[nodeIndex]=sceneNode;
+        Character* const self=reinterpret_cast<Character*>(reinterpret_cast<char*>(this)+4);
+        Character::AnimationInfo& animation=*reinterpret_cast<Character::AnimationInfo*>(&self->unknown164Pointer);
+        self->bindAnimation(retail_player_context_text::bip,animation,0);
+        contextAnimations[contextWord]=*reinterpret_cast<ContextAnimation*>(&animation);
+        GS3DStuff::SetMaterialFlag(sceneNode,irr::video::MaterialFlag16,true);
+        GS3DStuff::SetMaterialFlag(sceneNode,irr::video::MaterialFlag2,true);
+        GS3DStuff::SetMaterialFlag(sceneNode,irr::video::MaterialFlag4,true);
+        GS3DStuff::SetMaterialFiltering(sceneNode,false,true);
+        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,63,63,63),GS3DStuff::Color3);
+        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,255,255,255),GS3DStuff::Color0);
+        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,255,255,255),GS3DStuff::Color1);
+        GS3DStuff::SetColor(sceneNode,irr::video::SColor(255,229,229,229),GS3DStuff::Color2);
+        GS3DStuff::SetCulling(sceneNode,static_cast<irr::scene::E_CULLING_TYPE>(2));
+        GS3DStuff::CleanNode(sceneNode);
+        irr::IrrlichtDevice* device=app->GetDevice();
+        device->getVideoDriver();
+        device->getSceneManager()->getRootSceneNode()->addChild(sceneNode);
+    } else {
+        sceneNode=inactiveContextNodes[contextWord];
+        *reinterpret_cast<ContextAnimation*>(&unknown164Pointer)=contextAnimations[contextWord];
+    }
+    sceneNode->setRotation(rotation);
+    sceneNode->setPosition(position);
+    if(collisionBody->data) ::operator delete(collisionBody->data);
+    collisionBody->data=new Box2DUserInfo(this,GS3DStuff::FindAMesh(sceneNode));
+    irr::core::vector3d<float> direction=GetFront();
+    facing.x=direction.X;facing.y=direction.Y;facing.z=direction.Z;
+    setAnimation(165,1.0f,false,false,false);
+    resetCollisions();
+    app->GetHudManager()->switchWeapon(0);
+    app->GetHudManager()->showCash(contextWord==Context0);
+    irr::video::ITexture* sky=contextWord==Context1?0:GS3DStuff::getSkyBoxTexture();
+    if(sky!=GS3DStuff::getSkyBox()->getMaterial(0).layers[0].texture) {
+        GS3DStuff::setSkyColor(contextWord==Context1);
+        GS3DStuff::getSkyBox()->setMaterialTexture(0,sky);
+        GS3DStuff::getSkyBox()->notifyMaterialChanged();
+    }
+    Map::getInstance()->setMap(static_cast<Map::eMapType>(contextWord==Context1));
+    app->GetHudManager()->retroEffect(contextWord==Context1);
+    if(save && previous!=AnyContext) {
+        SaveGame game;
+        game.SampleAndSave(SaveGame::GetDefaultFilename());
+    }
+}
+
 #include "../vehicles/VehicleBodyShapes.h"
 #include "../meta/Factions.h"
 

@@ -1,3 +1,6 @@
+PROVIDE(_ZN26retail_player_context_text4jailE = 0x0041df7c);
+PROVIDE(_ZN26retail_player_context_text6normalE = 0x0041df94);
+PROVIDE(_ZN26retail_player_context_text3bipE = 0x0041d8d0);
 PROVIDE(__aeabi_ui2f = 0x001c4574);
 PROVIDE(cosf = 0x001c4304);
 OUTPUT_FORMAT("elf32-littlearm")
@@ -40,6 +43,9 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .player_switch_retro_effect 0x003235fc : { *hud-manager-helpers.o(.text._ZN11CHudManager11retroEffectEb) }
+    .player_switch_show_cash 0x003237e0 : { *hud-manager-helpers.o(.text._ZN11CHudManager8showCashEb) }
+    .player_test_switch_context 0x00301a74 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13switchContextENS_8eContextEb) }
     .player_update_isNearShop 0x00323a44 : { *hud-manager-helpers.o(.text._ZNK11CHudManager10isNearShopEv) }
     .player_update_notNearShop 0x00323a5c : { *hud-manager-helpers.o(.text._ZN11CHudManager11notNearShopEv) }
     .player_update_nearShop 0x00323a74 : { *hud-manager-helpers.o(.text._ZN11CHudManager8nearShopEv) }

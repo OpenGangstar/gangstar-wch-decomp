@@ -10,6 +10,7 @@ namespace video { class ITexture; }
 
 class Map {
     friend class MiniMap;
+    friend class PlayerTest;
 public:
     static Map* getInstance() __attribute__((weak, used));
 

@@ -132,7 +132,8 @@
         "_ZN10PlayerTestC1EP7b2World",
         "_ZN10PlayerTestC2EP7b2World",
         "_ZN10PlayerTest10switchAnimEv",
-        "_ZN10PlayerTest6UpdateEv"
+        "_ZN10PlayerTest6UpdateEv",
+        "_ZN10PlayerTest13switchContextENS_8eContextEb"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -169,7 +170,8 @@
         ".player_test_ctor",
         ".player_test_switch_anim",
         ".player_test_switch_anim_table",
-        ".player_test_update"
+        ".player_test_update",
+        ".player_test_switch_context"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -370,6 +372,22 @@
         "_ZN10PlayerTest4moveEff",
         "_ZN10PlayerTest6moveToERK7Vehicle",
         "_ZN15CControlManager6updateEv",
-        "_ZN18WantedLevelManager19_processWantedLevelEv"
+        "_ZN18WantedLevelManager19_processWantedLevelEv",
+        "_ZN13ScriptManager19unlockFrozenScriptsEv",
+        "_ZN13ScriptManager20freezeRunningScriptsEPK6ScriptN10PlayerTest8eContextE",
+        "_ZN18WantedLevelManager16resetWantedLevelEv",
+        "_ZN3Map6setMapENS_8eMapTypeE",
+        "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
+        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",
+        "_ZN8SaveGame13SampleAndSaveEPKc",
+        "_ZN8SaveGame18GetDefaultFilenameEv",
+        "_ZN8SaveGameC1Ev",
+        "_ZN8SaveGameD1Ev",
+        "_ZN9GS3DStuff10SetCullingEPN3irr5scene10ISceneNodeENS1_14E_CULLING_TYPEE",
+        "_ZN9GS3DStuff11setSkyColorEb",
+        "_ZN9GS3DStuff16getSkyBoxTextureEv",
+        "_ZN9GS3DStuff20SetMaterialFilteringEPN3irr5scene10ISceneNodeEbb",
+        "_ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE",
+        "_ZN9GS3DStuff9getSkyBoxEv"
     ]
 }
