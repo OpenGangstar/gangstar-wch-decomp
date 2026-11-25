@@ -9974,7 +9974,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ee409	0x80	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Statistics4ShowEv	Widgets::Statistics::Show()
 0x002ee489	0x1f4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements18UpdateLocalizationEv	Widgets::Achievements::UpdateLocalization()
 0x002ee67d	0x70	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements11SetCategoryEi	Widgets::Achievements::SetCategory(int)
-0x002ee6ed	0x124	MenuWidget.cpp	game	ui	pending	_ZN7Widgets8Controls18UpdateLocalizationEv	Widgets::Controls::UpdateLocalization()
+0x002ee6ed	0x124	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8Controls18UpdateLocalizationEv	Widgets::Controls::UpdateLocalization()
 0x002ee811	0x168	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5About7OnEventERN8RenderFX5EventE	Widgets::About::OnEvent(RenderFX::Event&)
 0x002ee979	0x24c	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8Tutorial7OnEventERN8RenderFX5EventE	Widgets::Tutorial::OnEvent(RenderFX::Event&)
 0x002eebc5	0x50	MenuWidget.cpp	game	ui	matched	_ZN7Widgets16BlockingTutorial7OnEventERN8RenderFX5EventE	Widgets::BlockingTutorial::OnEvent(RenderFX::Event&)
@@ -12227,12 +12227,12 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00341da9	0x144	GuardController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00341eed	0x14	GuardController.cpp	game	ai	matched	_GLOBAL__I__ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE	_GLOBAL__I__ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE
 0x00341f01	0x30	GuardController.cpp	game	ai	matched	__tcf_3	__tcf_3
-0x00341f31	0x19c	GuardController.cpp	game	ai	pending	_ZN15GuardController7onEventEPK6IEventPK12EventManager	GuardController::onEvent(IEvent const*, EventManager const*)
+0x00341f31	0x19c	GuardController.cpp	game	ai	matched	_ZN15GuardController7onEventEPK6IEventPK12EventManager	GuardController::onEvent(IEvent const*, EventManager const*)
 0x003420cd	0x154	GuardController.cpp	game	ai	matched	_ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	GuardController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
 0x00342221	0x68	GuardController.cpp	game	ai	matched	_ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
 0x00342221	0x68	GuardController.cpp	game	ai	matched	_ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE	GuardController::GuardController(NPC*, gameloft::ai::StateID)
 0x00342289	0x2	NPCController.cpp	game	ai	matched	_ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE	NPCController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionCondition)
-0x0034228d	0x60	NPCController.cpp	game	ai	pending	_ZN13NPCController7onEventEPK6IEventPK12EventManager	NPCController::onEvent(IEvent const*, EventManager const*)
+0x0034228d	0x60	NPCController.cpp	game	ai	matched	_ZN13NPCController7onEventEPK6IEventPK12EventManager	NPCController::onEvent(IEvent const*, EventManager const*)
 0x003422ed	0x30	NPCController.cpp	game	ai	matched	__tcf_2	__tcf_2
 0x0034231d	0x20	NPCController.cpp	game	ai	matched	_ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	NPCController::NPCController(gameloft::ai::StateID, NPC*, gameloft::ai::Transition const&)
 0x0034231d	0x20	NPCController.cpp	game	ai	matched	_ZN13NPCControllerC1EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE	NPCController::NPCController(gameloft::ai::StateID, NPC*, gameloft::ai::Transition const&)

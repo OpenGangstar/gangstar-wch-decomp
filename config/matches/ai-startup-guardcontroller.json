@@ -43,7 +43,8 @@
         {
             "name": "_GLOBAL__I__ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE",
             "address": "0x00341eed"
-        }
+        },
+        "_ZN15GuardController7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -55,7 +56,8 @@
             "offset": 864
         },
         ".guard_vtable",
-        ".guard_switch_table"
+        ".guard_switch_table",
+        ".guard_controller_on_event"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -69,6 +71,8 @@
         "_ZN3NPC12clearOnAlertEv",
         "_ZN3NPC4waitEi",
         "_ZN9Character8goToIdleEv",
-        "_ZNK6Weapon13getWeaponTypeEv"
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZN11LevelObject17canSeeLevelObjectEPS_RN3irr4core8vector3dIfEE",
+        "_ZN13NPCController7onEventEPK6IEventPK12EventManager"
     ]
 }

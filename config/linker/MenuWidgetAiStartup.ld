@@ -27,6 +27,7 @@ INCLUDE config/linker/MenuWidgetFunctions.ld
 INCLUDE config/linker/RenderFXAnimationFunctions.ld
 INCLUDE config/linker/MenuWidgetMissionSections.ld
 INCLUDE config/linker/WidgetConfirmLocalization.ld
+INCLUDE config/linker/WidgetControlsLocalization.ld
 
 SECTIONS
 {

@@ -230,7 +230,8 @@
         "_ZN7Widgets8Tutorial18UpdateLocalizationEv",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
         "_ZN7Widgets7Volumes18UpdateLocalizationEv",
-        "_ZN7Widgets7Confirm18UpdateLocalizationEv"
+        "_ZN7Widgets7Confirm18UpdateLocalizationEv",
+        "_ZN7Widgets8Controls18UpdateLocalizationEv"
     ],
     "sections": [
         ".volumesButton",
@@ -437,7 +438,12 @@
         ".confirmMessageFormat",
         ".confirmYesFormat",
         ".confirmNoFormat",
-        ".widgets_confirm_vtable"
+        ".widgets_confirm_vtable",
+        ".widgets_controls_localize",
+        ".controlsSteeringTitle",
+        ".controlsSteeringValue",
+        ".controlsThrottleTitle",
+        ".controlsThrottleValue"
     ],
     "retail_got": true,
     "external_thumb_functions": [

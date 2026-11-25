@@ -1,6 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-guardcontroller/retail-symbols.ld
+INCLUDE config/linker/PlayerEventSections.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZN34retail_guardcontroller_transitions16civPassive_transE = 0x00431840;
@@ -15,6 +16,8 @@ _ZN34retail_guardcontroller_transitions11guard_transE = 0x00431d14;
 _ZN34retail_guardcontroller_transitions22scripted_vehicle_transE = 0x00431dbc;
 SECTIONS
 {
+    .guard_controller_on_event 0x00341f30 : { *ai-startup-guardcontroller.o(.text._ZN15GuardController7onEventEPK6IEventPK12EventManager) }
+    ASSERT(SIZEOF(.guard_controller_on_event) == 412, "Native GuardController onEvent extent")
     .guard_switch_state 0x003420cc : { *ai-startup-guardcontroller.o(.text._ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
     .guard_switch_table 0x00431814 : { *ai-startup-guardcontroller.o(.rodata._ZN15GuardController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
     .guardcontroller_constructor 0x00342220 : { *ai-startup-guardcontroller.o(.text._ZN15GuardControllerC1EP3NPCN8gameloft2ai7StateIDE .text._ZN15GuardControllerC2EP3NPCN8gameloft2ai7StateIDE) }

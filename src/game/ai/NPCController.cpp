@@ -24,6 +24,29 @@ void NPCController::switchState(gameloft::ai::StateID, gameloft::ai::TransitionC
 {
 }
 
+#include "../characters/NPCEvent.h"
+namespace gameloft { namespace ai {
+struct Transition { const unsigned int* transitions; int count; };
+} }
+void NPCController::onEvent(const IEvent* event, const EventManager*)
+{
+    if (event->getEventID() == 16) {
+        const EvNPC* request = static_cast<const EvNPC*>(event);
+        if (request->getNPC() == npc) {
+            for (int index = 0; index < transition.count; index += 3) {
+                const unsigned int from = transition.transitions[index];
+                const unsigned int condition = transition.transitions[index + 1];
+                const unsigned int to = transition.transitions[index + 2];
+                if (from == state && condition == static_cast<unsigned int>(request->getState())) {
+                    switchState(static_cast<gameloft::ai::StateID>(to),
+                        static_cast<gameloft::ai::TransitionCondition>(request->getState()));
+                    return;
+                }
+            }
+        }
+    }
+}
+
 // Recovered translation-unit SDK and AI startup callbacks.
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"

@@ -41,6 +41,7 @@ INCLUDE config/linker/WidgetVolumesLocalizationSections.ld
 INCLUDE config/linker/WidgetTutorialLocalization.ld
 
 INCLUDE config/linker/WidgetConfirmLocalization.ld
+INCLUDE config/linker/WidgetControlsLocalization.ld
 
 INCLUDE config/linker/MapNotifySections.ld
 
