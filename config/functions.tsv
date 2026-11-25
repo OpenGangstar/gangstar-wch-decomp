@@ -11813,7 +11813,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003355f9	0x14	VehicleCamera.cpp	game	vehicles	matched	_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject	_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject
 0x0033560d	0x15c	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff	VehicleCamera::updatePosition(float, irr::core::vector3d<float> const&, float, irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float)
 0x00335769	0xdc	VehicleCamera.cpp	game	vehicles	matched	_ZNK13VehicleCamera9getFacingEv	VehicleCamera::getFacing() const
-0x00335849	0x3c8	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera6updateEf	VehicleCamera::update(float)
+0x00335849	0x3c8	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera6updateEf	VehicleCamera::update(float)
 0x00335c11	0x6	Mission.cpp	game	missions	matched	_ZN7Mission14setTextToPrintEi	Mission::setTextToPrint(int)
 0x00335c19	0x1c	Mission.cpp	game	missions	matched	_ZNK7Mission7missionEi	Mission::mission(int) const
 0x00335c35	0x12	Mission.cpp	game	missions	matched	_ZNK7Mission20getLastObjectiveTextEv	Mission::getLastObjectiveText() const

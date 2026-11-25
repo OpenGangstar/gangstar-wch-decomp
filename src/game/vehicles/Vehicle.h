@@ -392,7 +392,8 @@ private:
     int maxHealth;
     int health;
     int unknown924;
-    unsigned char unknown928[8];
+    unsigned char unknown928[4];
+    int cameraMinDistance;
     int cameraSideDistance;
     int cameraPositionHeight;
     int cameraLookHeight;

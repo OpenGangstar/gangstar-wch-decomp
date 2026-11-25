@@ -1,3 +1,8 @@
+PROVIDE(__aeabi_f2d = 0x1c48f8);
+PROVIDE(__aeabi_dcmplt = 0x1c4244);
+PROVIDE(__aeabi_dcmpgt = 0x1c4418);
+PROVIDE(__aeabi_fcmpgt = 0x1c419c);
+PROVIDE(__aeabi_fcmplt = 0x1c479c);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-vehiclecamera/retail-symbols.ld
@@ -22,6 +27,7 @@ _ZN32retail_vehiclecamera_transitions11guard_transE = 0x0042a618;
 _ZN32retail_vehiclecamera_transitions22scripted_vehicle_transE = 0x0042a6c0;
 SECTIONS
 {
+    .vehicle_camera_update 0x00335848 : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera6updateEf) }
     .vehicle_camera_facing 0x00335768 : { *ai-startup-vehiclecamera.o(.text._ZNK13VehicleCamera9getFacingEv) }
     ASSERT(SIZEOF(.vehicle_camera_facing) == 220, "Native VehicleCamera facing extent")
     .vehicle_camera_init 0x0033530c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera4initEP11LevelObjecti) }
