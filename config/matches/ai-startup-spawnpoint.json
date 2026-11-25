@@ -69,7 +69,8 @@
             "compiled_name": "__tcf_1"
         },
         "_ZNK10SpawnPoint17hasCloseNeighborsEv",
-        "_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE"
+        "_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE",
+        "_ZN10SpawnPoint23CreateAllSpawnInstancesEv"
     ],
     "sections": [
         ".spawn_vtable",
@@ -85,7 +86,8 @@
         },
         ".wanted_cleanup",
         ".ai_manager_cleanup",
-        ".spawn_point_load"
+        ".spawn_point_load",
+        ".spawn_point_create_all_instances"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -107,6 +109,7 @@
         "_ZN9AIManagerD1Ev",
         "_ZNK10SpawnPoint8canSpawnEv",
         "_ZnwjN3irr7MemHintE",
-        "_ZN17GameObjectManager19GetMetatypeFromNameEPKc"
+        "_ZN17GameObjectManager19GetMetatypeFromNameEPKc",
+        "_ZN17GameObjectManager28CreateGameObjectFromMetatypeEi"
     ]
 }
