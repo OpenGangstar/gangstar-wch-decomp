@@ -19,6 +19,7 @@
 #include "../characters/NPCDespawnEvent.h"
 #include "../characters/PhysicAttributes.h"
 #include "../ai/NPC.h"
+#include "../meta/Factions.h"
 #include "../characters/PlayerTest.h"
 #include "../vehicles/Vehicle.h"
 #include "../combat/Weapon.h"
@@ -644,4 +645,49 @@ LevelObject* GameObjectManager::getAttackableTarget(Character* character)
             best = PlayerTest::GetPlayer();
     }
     return best;
+}
+static inline bool areFactionsHostile(unsigned int otherFaction, int faction)
+{
+    if (faction == 2)
+        return otherFaction == 1;
+    if (faction == 1)
+        return otherFaction == 2;
+    return false;
+}
+
+int GameObjectManager::getDistanceFromAttackableTarget(Character* character, int range, LevelObject* target, bool flag)
+{
+    if (target == character)
+        return -1;
+    if (LevelObject::s_type[target->getObjectType()] != 8 && !(target->unknown4 & 4))
+        return -1;
+    if (target->isDead())
+        return -1;
+    NPC* npc = 0;
+    if (LevelObject::s_type[target->getObjectType()] == 5)
+        npc = static_cast<NPC*>(target);
+    if (character->isPlayer()) {
+        if (flag && npc && !npc->isHostileTo(character) && !Factions::isFactionEnemy(npc->faction))
+            return -1;
+        if (!target->isVisibleOnScreen())
+            return -1;
+    } else if (npc) {
+        if (!npc->isHostileTo(character)
+            && !areFactionsHostile(static_cast<NPC*>(character)->faction, npc->faction))
+            return -1;
+        if (static_cast<NPC*>(character)->faction == 2 && npc->getHealth() <= 25)
+            return -1;
+    } else if (LevelObject::s_type[target->getObjectType()] == 8
+               && Factions::isFactionFriendly(static_cast<NPC*>(character)->faction)) {
+        return -1;
+    }
+    irr::core::vector3d<float> targetPos = target->GetPosition();
+    irr::core::vector3d<float> characterPos = character->GetPosition();
+    float dx = targetPos.X - characterPos.X;
+    float dy = targetPos.Y - characterPos.Y;
+    float dz = targetPos.Z - characterPos.Z;
+    int distance = (int)(float)sqrt((double)(dx * dx + dy * dy + dz * dz));
+    if (character->isPlayer() && distance > range)
+        return -1;
+    return distance;
 }

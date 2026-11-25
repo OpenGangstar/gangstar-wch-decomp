@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
 __aeabi_ddiv = 0x001c4274;
 __aeabi_fmul = 0x001c4724;
 __aeabi_dmul = 0x001c4298;
@@ -95,6 +96,7 @@ _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
+    .gom_distance_from_attackable_target 0x00315f38 : { *game-object-manager.o(.text._ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb) }
     .gom_get_attackable_target 0x003160d8 : { *game-object-manager.o(.text._ZN17GameObjectManager19getAttackableTargetEP9Character) }
     .gom_spawn_npc 0x00316214 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiii) }
     .gom_spawn_npc_vehicle 0x00316330 : { *game-object-manager.o(.text._ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii) }

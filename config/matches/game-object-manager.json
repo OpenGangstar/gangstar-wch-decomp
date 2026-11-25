@@ -137,7 +137,8 @@
         "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
         "appInit",
         "_ZN9GS3DStuff4loadEiRi",
-        "_ZN17GameObjectManager19getAttackableTargetEP9Character"
+        "_ZN17GameObjectManager19getAttackableTargetEP9Character",
+        "_ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb"
     ],
     "sections": [
         ".gom_event_get_id",
@@ -368,7 +369,8 @@
         ".gs_load_highlights",
         ".gs_load_blood_puddle",
         ".gs_load_blood_particle",
-        ".gom_get_attackable_target"
+        ".gom_get_attackable_target",
+        ".gom_distance_from_attackable_target"
     ],
     "external_thumb_functions": [
         "_ZN9Character13initInVehicleEP7Vehicle",
@@ -531,9 +533,12 @@
         "_ZNK5Menus8MainMenu12GameContinueEv",
         "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE",
         "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
-        "_ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb",
         "_ZNK6Weapon13getWeaponTypeEv",
-        "_ZNK6Weapon8getRangeEv"
+        "_ZNK6Weapon8getRangeEv",
+        "_ZN3NPC11isHostileToEP11LevelObject",
+        "_ZN8Factions14isFactionEnemyEi",
+        "_ZN8Factions17isFactionFriendlyEi",
+        "_ZNK9Character8isPlayerEv"
     ],
     "dependencies": [
         "gs3d-stuff",
