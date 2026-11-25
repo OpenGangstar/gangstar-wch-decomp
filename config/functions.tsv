@@ -9801,7 +9801,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002eb12d	0x330	MenuState.cpp	game	ui	pending	_ZN5Menus16ServiceCarRental6UpdateEv	Menus::ServiceCarRental::Update()
 0x002eb45d	0x17c	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceWeaponShop6UpdateEv	Menus::ServiceWeaponShop::Update()
 0x002eb5d9	0xd0	MenuState.cpp	game	ui	matched	_ZN5Menus8Services6NotifyEPK10MenuWidgeti	Menus::Services::Notify(MenuWidget const*, int)
-0x002eb6a9	0xb8	MenuState.cpp	game	ui	pending	_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti	Menus::ServiceCorruption::Notify(MenuWidget const*, int)
+0x002eb6a9	0xb8	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti	Menus::ServiceCorruption::Notify(MenuWidget const*, int)
 0x002eb761	0x1c0	MenuState.cpp	game	ui	matched	_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti	Menus::ServiceCarRental::Notify(MenuWidget const*, int)
 0x002eb921	0xbc	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti	Menus::ServiceWeaponShop::Notify(MenuWidget const*, int)
 0x002eb9dd	0x154	MenuState.cpp	game	ui	pending	_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti	Menus::ServiceMissions::Notify(MenuWidget const*, int)

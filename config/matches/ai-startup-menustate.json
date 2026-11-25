@@ -303,7 +303,8 @@
         "_ZN5Menus3Map6NotifyEPK10MenuWidgeti",
         "_ZN5Menus17ServiceWeaponShop6UpdateEv",
         "_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti",
-        "_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".event_character_path",
@@ -452,7 +453,8 @@
         ".car_rental_notify",
         ".main_menu_notify",
         ".car_rental_selected_suffix",
-        ".main_menu_promotion_url"
+        ".main_menu_promotion_url",
+        ".service_corruption_notify"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -589,6 +591,7 @@
         "_ZN10PlayerTest7subCashEi",
         "_ZN11CHudManager12switchWeaponEi",
         "_ZN13WeaponManager12unlockWeaponEi",
-        "_ZNK10PlayerTest15isRichAsCroesusEv"
+        "_ZNK10PlayerTest15isRichAsCroesusEv",
+        "_ZN18WantedLevelManager19_processWantedLevelEv"
     ]
 }

@@ -1998,6 +1998,31 @@ bool Menus::ServiceWeaponShop::Notify(const MenuWidget* widget, int event)
     return false;
 }
 
+namespace Widgets { class Corruption : public MenuWidget { public: void SetWantedLevel(int level); }; }
+
+bool Menus::ServiceCorruption::Notify(const MenuWidget* widget, int event)
+{
+    if (Services::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    Widgets::Corruption* corruption = static_cast<Widgets::Corruption*>(getWidgetByIndex(manager, 5));
+    if (widget == corruption && event == 1) {
+        int level = WantedLevelManager::getInstance()->unknown8;
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if (level > 0 && (player->isRichAsCroesus() || player->cash >= 1500)) {
+            --level;
+            WantedLevelManager* wanted = WantedLevelManager::getInstance();
+            wanted->unknown8 = level < 0 ? 0 : (level > 5 ? 5 : level);
+            wanted->_processWantedLevel();
+            player->subCash(1500);
+            corruption->SetWantedLevel(level);
+            UpdateLocalization();
+            return true;
+        }
+    }
+    return false;
+}
+
 bool Menus::Map::Notify(const MenuWidget* widget, int event)
 {
     if (InGameMenu::Notify(widget, event))
