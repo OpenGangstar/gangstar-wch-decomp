@@ -3,8 +3,10 @@ printf = 0x001c4058;
 INCLUDE config/linker/ApplicationEventSections.ld
 PROVIDE(__aeabi_fcmplt = 0x001c479c);
 PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(atan2f = 0x001c4718);
 SECTIONS
 {
+    .accelerometer_calc_angles 0x0034d478 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBase11_calcAnglesEv) }
     .accelerometer_base_moved 0x0034d688 : { *sdk-startup-accelerometerbase.o(.text._ZN17AccelerometerBase5movedEfff) }
     .input_EvAcceleration_D0 0x0034d638 : { *sdk-startup-accelerometerbase.o(.gnu.linkonce.t._ZN14EvAccelerationD0Ev) }
     .input_EvAcceleration_D1 0x0034d664 : { *sdk-startup-accelerometerbase.o(.gnu.linkonce.t._ZN14EvAccelerationD1Ev) }

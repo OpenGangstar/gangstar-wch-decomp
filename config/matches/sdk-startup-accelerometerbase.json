@@ -78,7 +78,8 @@
         {
             "name": "_ZN14EvAccelerationD1Ev",
             "address": "0x0034d665"
-        }
+        },
+        "_ZN17AccelerometerBase11_calcAnglesEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -106,13 +107,13 @@
         ".event_id",
         ".event_delete",
         ".event_destructor",
-        ".event_vtable"
+        ".event_vtable",
+        ".accelerometer_calc_angles"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN11Application11GetInstanceEv",
-        "_ZN12EventManager5raiseERK6IEvent",
-        "_ZN17AccelerometerBase11_calcAnglesEv"
+        "_ZN12EventManager5raiseERK6IEvent"
     ],
     "dependencies": [
         "logs"

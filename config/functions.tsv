@@ -10280,7 +10280,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd079	0x154	Lock.cpp	game	core	matched	_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb	Lock::Lock(char const*, irr::scene::ISceneNode*, bool)
 0x002fd1cd	0x38	Lock.cpp	game	core	matched	_ZN4Lock11getInstanceEv	Lock::getInstance()
 0x002fd205	0x8c	Lock.cpp	game	core	matched	_ZN4Lock9setTargetEP11LevelObject	Lock::setTarget(LevelObject*)
-0x002fd291	0x130	Lock.cpp	game	core	pending	_ZN4Lock6renderEv	Lock::render()
+0x002fd291	0x130	Lock.cpp	game	core	matched	_ZN4Lock6renderEv	Lock::render()
 0x002fd3c1	0x6c	Lock.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fd42d	0x14	Lock.cpp	game	core	matched	_GLOBAL__I__ZN4Lock6s_lockE	_GLOBAL__I__ZN4Lock6s_lockE
 0x002fd441	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC9getWeaponEv	NPC::getWeapon() const
@@ -12759,7 +12759,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d421	0xc	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase6updateEd	AccelerometerBase::update(double)
 0x0034d42d	0x30	AccelerometerBase.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0034d45d	0x1c	AccelerometerBase.cpp	game	input	matched	_ZNK17AccelerometerBase6_traceEPKc	AccelerometerBase::_trace(char const*) const
-0x0034d479	0x108	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
+0x0034d479	0x108	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
 0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC1Ev	AccelerometerBase::AccelerometerBase()
 0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC2Ev	AccelerometerBase::AccelerometerBase()
 0x0034d5b9	0x6c	AccelerometerBase.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

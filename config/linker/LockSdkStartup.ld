@@ -1,3 +1,8 @@
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-lock/retail-symbols.ld
@@ -6,6 +11,7 @@ _Znwj = 0x001c4814;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .lock_render 0x002fd290 : { *sdk-startup-lock.o(.text._ZN4Lock6renderEv) }
     .lock_factory_create 0x002fc25c : { *sdk-startup-lock.o(.gnu.linkonce.t._ZN21CGameBillboardFactory11createSceneERKN3irr7collada16CColladaDatabaseE) }
     .lock_factory_delete 0x002fce60 : { *sdk-startup-lock.o(.gnu.linkonce.t._ZN21CGameBillboardFactoryD0Ev) }
     .lock_factory_destructor 0x002fceb0 : { *sdk-startup-lock.o(.gnu.linkonce.t._ZN21CGameBillboardFactoryD1Ev .gnu.linkonce.t._ZN21CGameBillboardFactoryD2Ev) }
