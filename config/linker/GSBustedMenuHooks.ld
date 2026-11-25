@@ -50,6 +50,8 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
+INCLUDE config/linker/CHudManagerUpdateSections.ld
+INCLUDE config/linker/CHudManagerUpdateText.ld
 SECTIONS
 {
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }

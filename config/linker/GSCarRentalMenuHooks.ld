@@ -39,6 +39,8 @@ INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
+INCLUDE config/linker/CHudManagerUpdateSections.ld
+INCLUDE config/linker/CHudManagerUpdateText.ld
 SECTIONS
 {
     .state_machine_singleton 0x002d44c4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }

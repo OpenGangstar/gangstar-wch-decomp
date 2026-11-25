@@ -75,10 +75,22 @@ struct Iterator {
 struct ConstIterator {
     NodeBase* _M_node;
     explicit ConstIterator(NodeBase* node) : _M_node(node) {}
+    ConstIterator(const Iterator& other) : _M_node(other._M_node) {}
     const long& operator*() const { return static_cast<Node*>(_M_node)->_M_data; }
     ConstIterator& operator++() { _M_node = _M_node->_M_next; return *this; }
+    bool operator==(ConstIterator other) const { return _M_node == other._M_node; }
     bool operator!=(ConstIterator other) const { return _M_node != other._M_node; }
 };
+// Adapted STLport input-iterator distance dispatch, preserving its copy boundary.
+inline int distance_input(const ConstIterator& first, const ConstIterator& last) {
+    int count = 0;
+    ConstIterator current(first);
+    while (current != last) { ++current; ++count; }
+    return count;
+}
+inline int distance(ConstIterator first, ConstIterator last) {
+    return distance_input(first, last);
+}
 }
 struct TouchIDList {
     typedef touch_id_list_detail::NodeBase NodeBase;
@@ -109,6 +121,10 @@ struct TouchIDList {
         previous->_M_next = node;
         next->_M_prev = node;
         return iterator(node);
+    }
+    unsigned int size() const {
+        unsigned int result = touch_id_list_detail::distance(begin(), end());
+        return result;
     }
     void push_back(const long& value) { insert(end(), value); }
     void sort() {

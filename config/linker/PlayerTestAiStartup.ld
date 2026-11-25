@@ -32,6 +32,8 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 _ZdlPv = 0x001c42b0;
 INCLUDE config/linker/CHudManagerCleanupSections.ld
+INCLUDE config/linker/CHudManagerUpdateSections.ld
+INCLUDE config/linker/CHudManagerUpdateText.ld
 INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS

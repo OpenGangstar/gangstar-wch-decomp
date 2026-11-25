@@ -18,6 +18,8 @@ __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
+INCLUDE config/linker/CHudManagerUpdateSections.ld
+INCLUDE config/linker/CHudManagerUpdateText.ld
 SECTIONS
 {
 
@@ -57,3 +59,4 @@ ASSERT(SIZEOF(.module_startup_hud_manager_helpers_storage_8) == 8, "hud-manager-
 ASSERT(SIZEOF(.module_startup_hud_manager_helpers_storage_9) == 8, "hud-manager-helpers _ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.module_startup_hud_manager_helpers_storage_10) == 8, "hud-manager-helpers _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.module_startup_hud_manager_helpers_storage_11) == 8, "hud-manager-helpers _ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.hud_manager_update) == 720, "CHudManager::update extent");

@@ -654,3 +654,74 @@ template void SafeDelete<CDrivingHud>(CDrivingHud*&);
 template void SafeDelete<CWalkingHud>(CWalkingHud*&);
 template void SafeDelete<CSniperHud>(CSniperHud*&);
 template void SafeDelete<CCameraHud>(CCameraHud*&);
+
+#include "../input/TouchScreenBase.h"
+#include "../input/TouchIDListSupport.h"
+#include "MenuManager.h"
+#include "../core/Rect.h"
+extern "C" int __android_log_print(int, const char*, const char*, ...);
+static const char hudDefaultRelease[] = "m_default->processTouchRelease()";
+static const char hudDefaultUsed[] = "m_default->isUsed()";
+static const char hudBlockingTutorial[] = "BlockingTutorial";
+
+void CHudManager::update(double elapsed)
+{
+    if (radioToggle->toggled)
+        radio->radioFlags &= ~1u;
+    else
+        radio->radioFlags |= 1u;
+    if (!locked) {
+        TouchScreenBase* screen = Application::GetInstance()->GetTouchScreen();
+        TouchIDList used;
+        for (unsigned int index=0; index<resetElements.size(); ++index) {
+            HudElement* element=resetElements[index];
+            long touch=screen->getTouchIDInitiatedInRegion(element->getTouchRegion());
+            if (touch!=-1) {
+                if (element->isVisible()) {
+                    element->blink(false,false);
+                    element->processTouch(touch);
+                    used.push_back(touch);
+                }
+            } else if (element->isUsed()) {
+                element->blink(false,false);
+                element->processTouchRelease();
+            }
+            if (element->isVisible() && element->isBlinking())
+                element->updateBlinkTimer(static_cast<int>(elapsed));
+            element->setWasInRegionLastFrame(screen->getTouchIDInRegion(element->getTouchRegion())!=-1);
+        }
+        used.sort();
+        TouchIDList ids=screen->getTouchIDList();
+        if (defaultReceiver) {
+            if (used.size()<ids.size()) {
+                TouchIDList::const_iterator usedLink=used.begin();
+                TouchIDList::const_iterator idLink=ids.begin();
+                while (idLink!=ids.end()) {
+                    if (usedLink==used.end() || *idLink!=*usedLink) {
+                        defaultReceiver->processTouch(*idLink);
+                        break;
+                    }
+                    ++usedLink;
+                    ++idLink;
+                }
+            } else if (defaultReceiver->isUsed()) {
+                __android_log_print(4,hudDefaultRelease,hudDefaultUsed);
+                defaultReceiver->processTouchRelease();
+            }
+        }
+    }
+    if (activeHud==drivingHud && activeHud->isVisible()) {
+        unsigned int oldFlags=drivingHud->unknown8;
+        if (MenuManager::getInstance()->getDepth()==0) {
+            drivingHud->unknown8 |= 0x1000000;
+            drivingHud->unknown8 |= 16;
+        } else if (MenuManager::getInstance()->getDepth()!=0 && !MenuManager::getInstance()->isCurrentState(hudBlockingTutorial)) {
+            drivingHud->unknown8 &= ~0x1000000u;
+            drivingHud->unknown8 &= ~16u;
+        }
+        if (((oldFlags>>24)&1u)!=((drivingHud->unknown8>>24)&1u)) {
+            drivingHud->hide();
+            drivingHud->show();
+        }
+    }
+}

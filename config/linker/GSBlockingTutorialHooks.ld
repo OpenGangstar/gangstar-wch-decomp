@@ -51,6 +51,7 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
+INCLUDE config/linker/CHudManagerUpdateSections.ld
 SECTIONS
 {
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
@@ -96,6 +97,7 @@ SECTIONS
     .entry_0 0x002e0c88 : { *state-hooks-gsblockingtutorial.o(.text._ZN18GSBlockingTutorial6updateEP12StateMachine .gnu.linkonce.t._ZN18GSBlockingTutorial6updateEP12StateMachine) }
     .entry_1 0x002e0cf4 : { *state-hooks-gsblockingtutorial.o(.text._ZN18GSBlockingTutorial4ctorEPK12StateMachine .gnu.linkonce.t._ZN18GSBlockingTutorial4ctorEPK12StateMachine) }
     .entry_text 0x00414c84 : { *state-hooks-gsblockingtutorial.o(.rodata.str1.4 .rodata.str1.1) }
+    .hud_update_duplicate_blocking_text 0x00700100 : { *hud-manager-helpers.o(.rodata.hudBlockingTutorial) }
     .menu_manager_helpers_0 0x002e3e7c : { *menu-manager-helpers.o(.text._ZN11MenuManager21resetWidgetVisibilityEv .gnu.linkonce.t._ZN11MenuManager21resetWidgetVisibilityEv) }
     .menu_manager_helpers_1 0x002e3e84 : { *menu-manager-helpers.o(.text._ZN11MenuManager9MenuPauseEv .gnu.linkonce.t._ZN11MenuManager9MenuPauseEv) }
     .menu_manager_helpers_2 0x002e3e88 : { *menu-manager-helpers.o(.text._ZN11MenuManager10MenuResumeEv .gnu.linkonce.t._ZN11MenuManager10MenuResumeEv) }

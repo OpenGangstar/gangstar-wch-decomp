@@ -13,6 +13,7 @@ public:
 
 private:
     friend class CControlManager;
+    friend class CHudManager;
     int inactiveFrame;
     bool toggled;
 };

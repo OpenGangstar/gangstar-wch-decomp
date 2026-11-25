@@ -11054,7 +11054,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00324101	0x60	CHudManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEEC1ERKS1_	std::list<long, std::allocator<long> >::list(std::list<long, std::allocator<long> > const&)
 0x00324161	0x64	CHudManager.cpp	stlport	-	matched	_ZN9stlp_priv8_S_mergeIlSaIlESt4lessIlEEEvRSt4listIT_T0_ES8_T1_	void stlp_priv::_S_merge<long, std::allocator<long>, std::less<long> >(std::list<long, std::allocator<long> >&, std::list<long, std::allocator<long> >&, std::less<long>)
 0x003241c5	0x1d4	CHudManager.cpp	stlport	-	matched	_ZN9stlp_priv7_S_sortIlSaIlESt4lessIlEEEvRSt4listIT_T0_ET1_	void stlp_priv::_S_sort<long, std::allocator<long>, std::less<long> >(std::list<long, std::allocator<long> >&, std::less<long>)
-0x00324399	0x2d0	CHudManager.cpp	game	hud	pending	_ZN11CHudManager6updateEd	CHudManager::update(double)
+0x00324399	0x2d0	CHudManager.cpp	game	hud	matched	_ZN11CHudManager6updateEd	CHudManager::update(double)
 0x00324669	0x310	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerD0Ev	CHudManager::~CHudManager()
 0x00324979	0x30c	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerD2Ev	CHudManager::~CHudManager()
 0x00324979	0x30c	CHudManager.cpp	game	hud	matched	_ZN11CHudManagerD1Ev	CHudManager::~CHudManager()
