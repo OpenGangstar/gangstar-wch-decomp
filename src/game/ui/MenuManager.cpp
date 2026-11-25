@@ -1611,3 +1611,133 @@ void MenuManager::update(StateMachine* machine)
     if (!widgetVisibility || charAutoLineFeed != 0)
         reinterpret_cast<RenderFX*>(menuFX)->Update(static_cast<int>(_ZNK12StateMachine12getTimeStampEv(machine)), false);
 }
+
+#include "../rendering/RetailSwfString.h"
+#include "../rendering/RetailSwfValue.h"
+
+namespace {
+// Text slot clip names, in eText order, then the property names read and written.
+const char textCarName[] = "Texts.txtCarName";
+const char textCopyright[] = "Texts.txtCopyright";
+const char textCutsceneDialog[] = "Texts.txtCutsceneDialog";
+const char textYName[] = "_y";
+const char textCutsceneSkipButton[] = "Texts.txtCutsceneSkipButton";
+const char textFailureEvent[] = "Texts.txtFailureEvent";
+const char textFailureCause[] = "Texts.txtFailureCause";
+const char textFailureTouchScreen[] = "Texts.txtFailureTouchScreen";
+const char textLoadingTitle[] = "Texts.txtLoadingTitle";
+const char textLoadingPerc[] = "Texts.txtLoadingPerc";
+const char textMissionObjective[] = "Texts.txtMissionObjective";
+const char textMissionCompleted[] = "Texts.txtMissionCompleted";
+const char textMissionTitle[] = "Texts.txtMissionTitle";
+const char textRaceTimer[] = "Texts.txtRaceTimer";
+const char textSplashTouchScreen[] = "Texts.txtSplashTouchScreen";
+const char textSplashMoreGames[] = "Texts.txtSplashMoreGames";
+const char textTimer[] = "Texts.txtTimer";
+const char textWarning[] = "Texts.txtWarning";
+const char textHeightProperty[] = "textHeight";
+
+// Partial field view of the text slots; never constructed or copied.
+struct MenuManagerTextFields {
+    unsigned char beforeMenuFX[188];
+    MyMenuFX* menuFX;
+    unsigned char beforeTexts[76];
+    const char* texts[17];
+    gameswf::character* characters[17];
+    int visibleTexts;
+    unsigned char beforeDialogY[8];
+    int dialogY;
+};
+
+// gameswf::character member accessors at vtable slots 7 and 8.
+struct TextMemberMethods {
+    void (*beforeSetMember[7])();
+    bool (*setMember)(gameswf::character*, const gameswf::tu_stringi&, const gameswf::as_value&);
+    bool (*getMember)(gameswf::character*, const gameswf::tu_stringi&, gameswf::as_value*);
+};
+
+inline const TextMemberMethods& textMemberMethods(const gameswf::character* character)
+{
+    return **reinterpret_cast<const TextMemberMethods* const*>(character);
+}
+}
+
+extern "C" void _ZN7gameswf8as_value10set_doubleEd(gameswf::as_value* value, double number);
+
+extern "C" bool _ZN11MenuManager7setTextENS_5eTextEPKcPi(
+    MenuManager* manager, MenuManager::eText slot, const char* text, int* arguments)
+{
+    MenuManagerTextFields& fields = *reinterpret_cast<MenuManagerTextFields*>(manager);
+    if (static_cast<unsigned int>(slot) > 16)
+        return false;
+    if (fields.characters[slot] == 0) {
+        switch (slot) {
+        case 0: fields.characters[0] = fields.menuFX->Find(textCarName); break;
+        case 1: fields.characters[1] = fields.menuFX->Find(textCopyright); break;
+        case 2:
+            fields.characters[2] = fields.menuFX->Find(textCutsceneDialog);
+            if (fields.dialogY == -1) {
+                gameswf::as_value y;
+                textMemberMethods(fields.characters[2]).getMember(
+                    fields.characters[2], gameswf::tu_stringi(textYName), &y);
+                fields.dialogY = static_cast<int>(y.to_number());
+            }
+            break;
+        case 3: fields.characters[3] = fields.menuFX->Find(textCutsceneSkipButton); break;
+        case 4: fields.characters[4] = fields.menuFX->Find(textFailureEvent); break;
+        case 5: fields.characters[5] = fields.menuFX->Find(textFailureCause); break;
+        case 6: fields.characters[6] = fields.menuFX->Find(textFailureTouchScreen); break;
+        case 7: fields.characters[7] = fields.menuFX->Find(textLoadingTitle); break;
+        case 8: fields.characters[8] = fields.menuFX->Find(textLoadingPerc); break;
+        case 9: fields.characters[9] = fields.menuFX->Find(textMissionObjective); break;
+        case 10: fields.characters[10] = fields.menuFX->Find(textMissionCompleted); break;
+        case 11: fields.characters[11] = fields.menuFX->Find(textMissionTitle); break;
+        case 12: fields.characters[12] = fields.menuFX->Find(textRaceTimer); break;
+        case 13: fields.characters[13] = fields.menuFX->Find(textSplashTouchScreen); break;
+        case 14: fields.characters[14] = fields.menuFX->Find(textSplashMoreGames); break;
+        case 15: fields.characters[15] = fields.menuFX->Find(textTimer); break;
+        case 16: fields.characters[16] = fields.menuFX->Find(textWarning); break;
+        }
+    }
+    gameswf::character* character = fields.characters[slot];
+    if (character == 0)
+        return false;
+    if (!isCharacterVisible(character) && text)
+        ++fields.visibleTexts;
+    else if (isCharacterVisible(fields.characters[slot]) && !text)
+        --fields.visibleTexts;
+    gameswf::character* shown = fields.characters[slot];
+    const bool visible = text != 0;
+    setCharacterVisible(shown, visible);
+    fields.texts[slot] = text;
+    if (!visible)
+        return true;
+    _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(
+        manager, fields.characters[slot], text, true, false);
+    gameswf::as_value value;
+    if (arguments || slot == 2) {
+        textMemberMethods(fields.characters[slot]).getMember(
+            fields.characters[slot], gameswf::tu_stringi(textHeightProperty), &value);
+        int height = static_cast<int>(value.to_number());
+        if (arguments)
+            *arguments = height;
+        if (slot == 2) {
+            height += 4;
+            if (arguments)
+                *arguments = height;
+            int screenWidth, screenHeight;
+            Application::GetInstance()->GetScreenDimensions(screenWidth, screenHeight);
+            const int bottom = screenHeight;
+            const int dialogY = fields.dialogY;
+            int y;
+            if (height > bottom - dialogY)
+                y = bottom - height;
+            else
+                y = dialogY;
+            _ZN7gameswf8as_value10set_doubleEd(&value, y);
+            textMemberMethods(fields.characters[slot]).setMember(
+                fields.characters[slot], gameswf::tu_stringi(textYName), value);
+        }
+    }
+    return true;
+}

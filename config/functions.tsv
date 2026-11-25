@@ -9525,7 +9525,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e4e19	0x64	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEEaSERKS1_	std::list<long, std::allocator<long> >::operator=(std::list<long, std::allocator<long> > const&)
 0x002e4e7d	0x368	MenuManager.cpp	game	ui	matched	_ZN11MenuManager6updateEP12StateMachine	MenuManager::update(StateMachine*)
 0x002e51e5	0x18	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf8as_valueD1Ev	gameswf::as_value::~as_value()
-0x002e51fd	0x450	MenuManager.cpp	game	ui	pending	_ZN11MenuManager7setTextENS_5eTextEPKcPi	MenuManager::setText(MenuManager::eText, char const*, int*)
+0x002e51fd	0x450	MenuManager.cpp	game	ui	matched	_ZN11MenuManager7setTextENS_5eTextEPKcPi	MenuManager::setText(MenuManager::eText, char const*, int*)
 0x002e564d	0x62	MenuManager.cpp	game	ui	matched	_ZN11MenuManager7setTextENS_5eTextEiPi	MenuManager::setText(MenuManager::eText, int, int*)
 0x002e56b1	0x9c	MenuManager.cpp	game	ui	matched	_ZN11MenuManager18updateLocalizationEv	MenuManager::updateLocalization()
 0x002e574d	0x700	MenuManager.cpp	game	ui	matched	_ZN11MenuManager5setupEb	MenuManager::setup(bool)

@@ -390,6 +390,8 @@ SECTIONS
     .menu_manager_duplicate_read_mode 0x00700000 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     .menu_manager_duplicate_update_state 0x00700040 : { *menu-manager-helpers.o(.rodata.*menuUpdateSettingsStateE) }
     .menu_manager_duplicate_setup_data 0x00700100 : { *menu-manager-helpers.o(.rodata.setupCarRentals .rodata.setupMenuFile .rodata.setupWidgetConfirm .rodata.setupWidgetCarRepair .rodata.setupWidgetTutorial .rodata.setupWidgetSplash .rodata.setupWidgetRetroEffect .rodata.setupStateCharacter .rodata.setupServiceWeaponShop .rodata.setupServiceCarRental .rodata.setupConfirm .rodata.setupTutorial .rodata._ZZN11MenuManager5setupEbE*) }
+    /* Retail shares "textHeight" (0x00418f50) between MenuState and setText; this image checks MenuState's copy. */
+    .menu_manager_duplicate_text_height 0x00700200 : { *menu-manager-helpers.o(.rodata._ZN27_GLOBAL__N__Z10StrToLowerPc18textHeightPropertyE) }
     .menu_state_cheats_allowed 0x002e3ee4 : { *menu-manager-helpers.o(.text._ZNK11MenuManager21isCheatsUnlockAllowedEv .gnu.linkonce.t._ZNK11MenuManager21isCheatsUnlockAllowedEv) }
     /DISCARD/ : { *ai-startup-menuwidget.o(*) *menu-manager-helpers.o(*) }
 }
