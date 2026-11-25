@@ -1656,3 +1656,43 @@ void Character::goToCombatIdle()
         break;
     }
 }
+
+void Character::ready(float speed)
+{
+    if (!isCurrentAnimation(getSpecificAnimation(165))) return;
+    switch (getWeapon()->getWeaponType()) {
+    case 0:
+        setAnimation(143, speed, false, false, false);
+        punchIndex = 0;
+        unknown228 = 0;
+        kickIndex = 5;
+        break;
+    case 1:
+        if (s_type[objectType] == 5 && static_cast<NPC*>(this)->category428 == 3)
+            setAnimation(141, speed, false, false, false);
+        else
+            setAnimation(140, speed, false, false, false);
+        break;
+    case 2:
+        setAnimation(142, speed, false, false, false);
+        break;
+    case 4:
+        setAnimation(146, speed, false, false, false);
+        break;
+    case 3:
+        setAnimation(146, speed, false, false, false);
+        break;
+    case 5:
+        setAnimation(140, speed, false, false, false);
+        break;
+    case 6:
+        setAnimation(142, speed, false, false, false);
+        break;
+    case 7:
+        setAnimation(138, speed, false, false, false);
+        break;
+    case 8:
+        setAnimation(145, speed, false, false, false);
+        break;
+    }
+}

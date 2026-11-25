@@ -27,6 +27,9 @@
     "linker_script": "config/linker/WantedLevelManagerAiStartup.ld",
     "functions": [
         "_ZN18WantedLevelManager19_processWantedLevelEv",
+        "_ZN18WantedLevelManagerC1Ev",
+        "_ZN18WantedLevelManagerC2Ev",
+        "_ZN18WantedLevelManager6updateEd",
         "_ZN15EvWantedEscapedD0Ev",
         "_ZN15EvWantedEscapedD1Ev",
         "_ZThn4_N18WantedLevelManagerD0Ev",
@@ -60,6 +63,8 @@
         "_ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
+        ".wanted_constructor",
+        ".wanted_update",
         ".wanted_process_jump_table",
         ".wanted_level_changed_vtable",
         ".wanted_escaped_delete",
@@ -94,6 +99,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN18AchievementManager19recordBadgesEscapedEi",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager14setTutorialIdsEii",
         "_ZN12EventManager5raiseERK6IEvent",

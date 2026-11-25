@@ -27,6 +27,7 @@
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
         "_ZN9Character11exitVehicleEb",
+        "_ZN9Character5readyEf",
         "_ZN9Character14goToCombatIdleEv",
         "_ZN9Character13bindAnimationEPKcRNS_13AnimationInfoEPN3irr5scene10ISceneNodeE",
         "_ZN9Character6UpdateEi",
@@ -161,6 +162,8 @@
         "_ZN9Character3dieEb"
     ],
     "sections": [
+        ".character_ready",
+        ".character_ready_table",
         ".character_combat_idle",
         ".character_combat_idle_table",
         ".character_animation_resource",
@@ -268,7 +271,6 @@
         "_ZN9Character21switchCombatAnimationEv",
         "_ZN9Character4showEv",
         "_ZN9Character5punchEv",
-        "_ZN9Character5readyEf",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE",

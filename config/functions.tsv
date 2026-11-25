@@ -10085,7 +10085,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f22d5	0x128	Character.cpp	game	characters	matched	_ZN9Character10turnTowardEN3irr4core8vector3dIfEEf	Character::turnToward(irr::core::vector3d<float>, float)
 0x002f23fd	0x184	Character.cpp	game	characters	matched	_ZN9Character13bindAnimationEPKcRNS_13AnimationInfoEPN3irr5scene10ISceneNodeE	Character::bindAnimation(char const*, Character::AnimationInfo&, irr::scene::ISceneNode*)
 0x002f2581	0x12c	Character.cpp	game	characters	matched	_ZN9Character14goToCombatIdleEv	Character::goToCombatIdle()
-0x002f26ad	0x11c	Character.cpp	game	characters	pending	_ZN9Character5readyEf	Character::ready(float)
+0x002f26ad	0x11c	Character.cpp	game	characters	matched	_ZN9Character5readyEf	Character::ready(float)
 0x002f27c9	0x124	Character.cpp	game	characters	matched	_ZN9Character18goFromCombatToIdleEv	Character::goFromCombatToIdle()
 0x002f28ed	0x120	Character.cpp	game	characters	matched	_ZN9Character12switchWeaponEv	Character::switchWeapon()
 0x002f2a0d	0x6c	Character.cpp	game	characters	matched	_ZN9Character9OnDespawnEv	Character::OnDespawn()
@@ -12260,8 +12260,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342a89	0x30	WantedLevelManager.cpp	game	missions	matched	__tcf_5	__tcf_5
 0x00342ab9	0x1c	WantedLevelManager.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00342ad5	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager5cleanEv	WantedLevelManager::clean()
-0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC2Ev	WantedLevelManager::WantedLevelManager()
-0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC1Ev	WantedLevelManager::WantedLevelManager()
+0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerC2Ev	WantedLevelManager::WantedLevelManager()
+0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerC1Ev	WantedLevelManager::WantedLevelManager()
 0x00342bc1	0x144	WantedLevelManager.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00342d05	0x14	WantedLevelManager.cpp	game	missions	matched	_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE	_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE
 0x00342d18	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManagerD0Ev	non-virtual thunk to WantedLevelManager::~WantedLevelManager()
@@ -12275,7 +12275,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342f4d	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager18restoreWantedLevelEv	WantedLevelManager::restoreWantedLevel()
 0x00342f7d	0x36	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager16resetWantedLevelEv	WantedLevelManager::resetWantedLevel()
 0x00342fb4	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManager6updateEd	non-virtual thunk to WantedLevelManager::update(double)
-0x00342fc9	0x178	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager6updateEd	WantedLevelManager::update(double)
+0x00342fc9	0x178	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager6updateEd	WantedLevelManager::update(double)
 0x00343141	0x170	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager	WantedLevelManager::onEvent(IEvent const*, EventManager const*)
 0x003432b1	0x1c	Persistence.cpp	game	persistence	matched	_ZN11PersistenceC2Ev	Persistence::Persistence()
 0x003432b1	0x1c	Persistence.cpp	game	persistence	matched	_ZN11PersistenceC1Ev	Persistence::Persistence()
