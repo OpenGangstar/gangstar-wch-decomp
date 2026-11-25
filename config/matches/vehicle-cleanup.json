@@ -241,7 +241,9 @@
         {
             "name": "_ZN7VehicleD0Ev",
             "address": "0x00311251"
-        }
+        },
+        "_ZN7Vehicle7disableEv",
+        "_ZN7Vehicle9OnDespawnEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -363,7 +365,9 @@
         ".vehicle_explode",
         ".vehicle_d1",
         ".vehicle_d0",
-        ".vehicle_vtable"
+        ".vehicle_vtable",
+        ".vehicle_on_despawn",
+        ".vehicle_disable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -628,8 +632,6 @@
         "_ZN7Vehicle13dropSceneNodeEv",
         "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
         "_ZN7Vehicle6UpdateEi",
-        "_ZN7Vehicle7disableEv",
-        "_ZN7Vehicle9OnDespawnEv",
         "_ZN9CarSoundsD1Ev",
         "_ZNK11LevelObject11GetPositionEv",
         "_ZNK11LevelObject11GetRotationEv",
@@ -637,6 +639,13 @@
         "_ZNK11LevelObject8GetMatIDEv",
         "_ZNK11LevelObject8GetRightEv",
         "_ZNK11LevelObject8GetTriIDEv",
-        "_ZNK3irr17IReferenceCounted4dropEv"
+        "_ZNK3irr17IReferenceCounted4dropEv",
+        "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
+        "_ZN11CHudManager7walkingEv",
+        "_ZN11LevelObject7disableEv",
+        "_ZN11LevelObject9OnDespawnEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
+        "_ZN15CControlManager7exitCarEb"
     ]
 }
