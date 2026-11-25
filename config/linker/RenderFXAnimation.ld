@@ -1,3 +1,4 @@
+PROVIDE(strcat = 0x001c43a0);
 strlen = 0x001c48bc;
 strrchr = 0x001c4340;
 strstr = 0x001c446c;
@@ -12,6 +13,7 @@ _ZdlPv = 0x001c42b0;
 sprintf = 0x001c46ac;
 SECTIONS
 {
+    .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
     .renderfx_found_child 0x0044ddf8 : { *renderfx-animation.o(.rodata.renderfx_found_child) }

@@ -17373,7 +17373,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003f0275	0x20	menufx.cpp	game	ui	matched	_ZN6MenuFX14CanHandleEventERN8RenderFX5EventE	MenuFX::CanHandleEvent(RenderFX::Event&)
 0x003f0294	0x14	menufx.cpp	game	ui	matched	_ZThn204_N6MenuFX7OnEventERN8RenderFX5EventE	non-virtual thunk to MenuFX::OnEvent(RenderFX::Event&)
 0x003f02a9	0x1c	menufx.cpp	game	ui	matched	_ZN6MenuFX7OnEventERN8RenderFX5EventE	MenuFX::OnEvent(RenderFX::Event&)
-0x003f02c5	0x1e8	menufx.cpp	game	rendering	pending	_ZN8RenderFX11SearchIndex4InitERS_	RenderFX::SearchIndex::Init(RenderFX&)
+0x003f02c5	0x1e8	menufx.cpp	game	rendering	matched	_ZN8RenderFX11SearchIndex4InitERS_	RenderFX::SearchIndex::Init(RenderFX&)
 0x003f04ad	0x12	menufx.cpp	game	rendering	matched	_ZN8RenderFX14GetSearchIndexEv	RenderFX::GetSearchIndex()
 0x003f04c1	0x38	http_helper.cpp	gameswf	-	matched	_ZN7gameswf10hex_to_intEc	gameswf::hex_to_int(char)
 0x003f04f9	0x30	http_helper.cpp	gameswf	-	matched	_ZN7gameswf20is_special_characterEc	gameswf::is_special_character(char)

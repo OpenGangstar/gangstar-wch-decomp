@@ -1344,8 +1344,16 @@ namespace gameswf {
 template <>
 class array<RenderFX::SearchIndex::Entry> {
 public:
+    array() : elements(0), size(0), capacity(0), unknown12(false) {}
     ~array() { release_buffer(); }
     void release_buffer() __attribute__((long_call));
+    void resize(int size) __attribute__((weak, long_call));
+    void push_back(const RenderFX::SearchIndex::Entry& value)
+    {
+        const int index = size;
+        resize(index + 1);
+        elements[index] = value;
+    }
     RenderFX::SearchIndex::Entry* elements;
     int size;
     int capacity;
@@ -1416,6 +1424,92 @@ inline SearchHashIterator searchBegin(SearchHash* hash)
     return SearchHashIterator(hash, i0);
 }
 inline SearchHashIterator searchEnd() { return SearchHashIterator(0, 0); }
+}
+
+extern "C" char* strcat(char* destination, const char* source);
+
+namespace {
+struct SearchWeakProxy {
+    int references;
+    bool alive;
+};
+
+struct SearchCharacterFields {
+    unsigned char unknown0[128];
+    SearchWeakProxy* parentProxy;
+    SearchCharacterFields* parent;
+    gameswf::tu_string name;
+
+    SearchCharacterFields* get_parent()
+    {
+        if (!parent)
+            return 0;
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(parentProxy) +
+            __builtin_offsetof(SearchWeakProxy, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
+            if (parentProxy) {
+                SearchWeakProxy* previous = parentProxy;
+                if (--previous->references == 0)
+                    delete previous;
+                parentProxy = 0;
+            }
+            parent = 0;
+        }
+        return parent;
+    }
+};
+
+inline SearchCharacterFields& searchFields(gameswf::character* character)
+{
+    return *reinterpret_cast<SearchCharacterFields*>(character);
+}
+
+inline const gameswf::tu_string& searchName(gameswf::character* character)
+{
+    const unsigned int address = reinterpret_cast<unsigned int>(character);
+    return reinterpret_cast<const SearchCharacterFields*>(address)->name;
+}
+}
+
+extern "C" void _ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE3addERKS1_RKS7_(
+    void* hash, const gameswf::tu_string& key, const SearchEntryList& value) __attribute__((long_call));
+
+void RenderFX::SearchIndex::Init(RenderFX& owner)
+{
+    Clear();
+    const gameswf::array<gameswf::character*>& characters = owner.FindCharacters(owner.context, 0, 4);
+    for (int i = 0; i < characters.size; ++i) {
+        gameswf::character* character = characters.elements[i];
+        if (searchName(character).length() > 0) {
+            SearchEntryList list = 0;
+            const gameswf::tu_string& name = *reinterpret_cast<const gameswf::tu_string*>(reinterpret_cast<const char*>(character) + 136);
+            const int index = entries.find_index(name);
+            if (index >= 0) {
+                list = reinterpret_cast<SearchHash*>(&entries)->E(index).second;
+            } else {
+                list = new (swf::DefaultMemHint) gameswf::array<Entry>();
+                _ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE3addERKS1_RKS7_(
+                    this, name, list);
+            }
+            Entry entry;
+            memset(&entry, 0, sizeof(entry));
+            entry.character = character;
+            const char* parts[32];
+            int count = 0;
+            for (SearchCharacterFields* part = &searchFields(entry.character); part; part = part->get_parent()) {
+                if (*part->name.c_str())
+                    parts[count++] = part->name.c_str();
+            }
+            strcpy(entry.path, "");
+            while (count > 0) {
+                --count;
+                strcat(entry.path, parts[count]);
+                if (count != 0)
+                    strcat(entry.path, ".");
+            }
+            list->push_back(entry);
+        }
+    }
 }
 
 void RenderFX::SearchIndex::Clear()

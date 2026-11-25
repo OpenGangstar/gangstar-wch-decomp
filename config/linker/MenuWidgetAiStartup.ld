@@ -37,6 +37,7 @@ INCLUDE config/linker/WidgetControlsEvent.ld
 
 SECTIONS
 {
+    .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }
     .mission_map_name 0x0040b608 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
