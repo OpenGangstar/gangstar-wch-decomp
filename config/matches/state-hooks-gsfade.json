@@ -448,7 +448,6 @@
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11AnalogStick10switchModeENS_4ModeE",
         "_ZN11AnalogStickC1EP7ASpriteii",
-        "_ZN11Application19UnRegisterForUpdateEP10IUpdatable",
         "_ZN11CDrivingHud12showSpyGaugeEb",
         "_ZN11CDrivingHud20toggleWeaponSelectorEb",
         "_ZN11CDrivingHud8showCashEb",

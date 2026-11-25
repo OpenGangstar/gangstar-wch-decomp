@@ -8820,7 +8820,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3fa1	0x2c	Application.cpp	stlport	-	matched	_ZNSt4listIP9IDrawableSaIS1_EE6removeERKS1_	std::list<IDrawable*, std::allocator<IDrawable*> >::remove(IDrawable* const&)
 0x002d3fcd	0x24	Application.cpp	game	app	matched	_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable	Application::UnRegisterForDrawingOnHUD(IDrawable*)
 0x002d3ff1	0x24	Application.cpp	game	app	matched	_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable	Application::UnRegisterForDrawingInScene(IDrawable*)
-0x002d4015	0x30	Application.cpp	game	app	pending	_ZN11Application19UnRegisterForUpdateEP10IUpdatable	Application::UnRegisterForUpdate(IUpdatable*)
+0x002d4015	0x30	Application.cpp	game	app	matched	_ZN11Application19UnRegisterForUpdateEP10IUpdatable	Application::UnRegisterForUpdate(IUpdatable*)
 0x002d4045	0x30	Application.cpp	game	app	matched	__tcf_5	__tcf_5
 0x002d4075	0x20	Application.cpp	game	app	matched	_ZN6IEventD0Ev	IEvent::~IEvent()
 0x002d4095	0x18	Application.cpp	game	app	matched	_ZN6IEventD1Ev	IEvent::~IEvent()

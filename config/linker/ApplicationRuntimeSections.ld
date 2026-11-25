@@ -1,5 +1,6 @@
 SECTIONS
 {
+    .application_unregister_update 0x002d4014 : { *application-helpers.o(.text._ZN11Application19UnRegisterForUpdateEP10IUpdatable) }
     .application_completion_0 0x002d3cb8 : { *application-helpers.o(.text._ZN11Application10IsLogoOverEv) }
     .application_completion_1 0x002d3c9c : { *application-helpers.o(.text._ZN11Application20IsGlobalResumingOverEv) }
 
