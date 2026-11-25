@@ -9662,7 +9662,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e8655	0x68	MenuState.cpp	game	ui	matched	_ZN9MenuState4HideEv	MenuState::Hide()
 0x002e86bd	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus15InGameCarRental4HideEv	Menus::InGameCarRental::Hide()
 0x002e86dd	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus16InGameWeaponShop4HideEv	Menus::InGameWeaponShop::Hide()
-0x002e86fd	0xf8	MenuState.cpp	game	ui	pending	_ZN9MenuState8GotFocusEv	MenuState::GotFocus()
+0x002e86fd	0xf8	MenuState.cpp	game	ui	matched	_ZN9MenuState8GotFocusEv	MenuState::GotFocus()
 0x002e87f5	0x84	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu8GotFocusEv	Menus::MainMenu::GotFocus()
 0x002e8879	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus6Dialog8GotFocusEv	Menus::Dialog::GotFocus()
 0x002e8899	0x10	MenuState.cpp	game	ui	matched	_ZN5Menus7Confirm8GotFocusEv	Menus::Confirm::GotFocus()

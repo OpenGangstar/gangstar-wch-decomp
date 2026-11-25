@@ -1065,6 +1065,39 @@ void Menus::OptionVolumes::LostFocus()
 
 extern "C" void _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(void*, int, int, bool, bool);
 
+void MenuState::GotFocus()
+{
+    const int count = widgetIds.size;
+    MenuManager* manager = MenuManager::getInstance();
+    const bool animate = manager->areAnimsEnabled();
+    for (int index = 0; index < 32; ++index) {
+        MenuWidget* widget = manager->getWidgetByIndex(index);
+        if (widget->IsVisible()) {
+            bool included = false;
+            for (int entry = 0; entry < count; ++entry) {
+                if (widgetIds.elements[entry] == index) {
+                    included = true;
+                    break;
+                }
+            }
+            if (included)
+                widget->Enable();
+            else if (IsModal())
+                widget->Disable();
+            else if (widget->AutoHide())
+                widget->Hide(animate);
+        }
+    }
+    for (int entry = 0; entry < count; ++entry) {
+        const int index = widgetIds.elements[entry];
+        const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+        MenuWidget* widget = index >= 0 && index < table.count
+            ? static_cast<MenuWidget*>(table.widgets[index]) : 0;
+        if (!widget->IsVisible())
+            widget->Show();
+    }
+}
+
 void Menus::MainMenu::GotFocus()
 {
     MenuState::GotFocus();

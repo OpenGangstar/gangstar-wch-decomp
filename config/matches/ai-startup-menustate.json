@@ -304,7 +304,8 @@
         "_ZN5Menus17ServiceWeaponShop6UpdateEv",
         "_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti",
         "_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti",
-        "_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti",
+        "_ZN9MenuState8GotFocusEv"
     ],
     "sections": [
         ".event_character_path",
@@ -454,7 +455,8 @@
         ".main_menu_notify",
         ".car_rental_selected_suffix",
         ".main_menu_promotion_url",
-        ".service_corruption_notify"
+        ".service_corruption_notify",
+        ".menustate_got_focus"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -567,7 +569,6 @@
         "_ZN7gameswf11ref_counted8drop_refEv",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
-        "_ZN9MenuState8GotFocusEv",
         "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
