@@ -16,6 +16,12 @@ _ZN32retail_npccontroller_transitions22scripted_vehicle_transE = 0x0043238c;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .npc_event_function 0x0034228c : { *ai-startup-npccontroller.o(.text._ZN13NPCController7onEventEPK6IEventPK12EventManager) }
+    ASSERT(SIZEOF(.npc_event_function) == 96, "Native NPCController onEvent extent")
+    .npc_event_get_id 0x002d3c34 : { *ai-startup-npccontroller.o(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
+    .npc_event_d1 0x002d4094 : { *ai-startup-npccontroller.o(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .npc_event_d0 0x002d4074 : { *ai-startup-npccontroller.o(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .npc_event_vtable 0x004a6198 : { *ai-startup-npccontroller.o(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
     .receiver_delete 0x002db4b4 : { *(.gnu.linkonce.t._ZN14IEventReceiverD0Ev) }
     .receiver_vtable 0x004a8b48 : { *(.gnu.linkonce.d.rel.ro._ZTV14IEventReceiver) }
     .npc_controller_switch 0x00342288 : { *(.text._ZN13NPCController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }

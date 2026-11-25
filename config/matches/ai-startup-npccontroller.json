@@ -43,7 +43,8 @@
         {
             "name": "_GLOBAL__I__ZN13NPCControllerC2EN8gameloft2ai7StateIDEP3NPCRKNS1_10TransitionE",
             "address": "0x00342481"
-        }
+        },
+        "_ZN13NPCController7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".npc_controller_switch",
@@ -58,7 +59,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".npc_event_function"
     ],
     "retail_got": true
 }
