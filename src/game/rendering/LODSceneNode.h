@@ -40,6 +40,8 @@ private:
         irr::scene::ISceneNode* sceneNode;
     };
     irr::core::array<SLODLevel> levels;
+    irr::scene::ISceneNode* getLODNode(int level) { return levels[level].sceneNode; }
+    void setLODVisible(int level, bool visible) { getLODNode(level)->setVisible(visible); }
     float maxDistanceSquared;
     float animationTime;
     int lodLevel;

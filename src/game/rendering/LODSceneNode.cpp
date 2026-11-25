@@ -201,3 +201,26 @@ const irr::core::aabbox3d<float>& LODSceneNode::GetMeshTransformedBoundingBox(
         return GetMeshTransformedBoundingBox(*child);
     }
 }
+void LODSceneNode::computeLODLevel()
+{
+    irr::core::vector3d<float> cameraPosition = sceneManager->getActiveCamera()->getPosition();
+    float distance = cameraPosition.getDistanceFromSQ(getLODNode(0)->getAbsolutePosition());
+    if (distance > maxDistanceSquared) {
+        if (lodLevel != -1) {
+            setLODVisible(lodLevel, false);
+            lodLevel = -1;
+        }
+        return;
+    }
+    for (int i = levels.size() - 1; i >= 0; --i) {
+        if (distance > levels[i].distanceSquared) {
+            if (lodLevel != i) {
+                if (lodLevel != -1)
+                    setLODVisible(lodLevel, false);
+                lodLevel = i;
+                setLODVisible(lodLevel, true);
+            }
+            return;
+        }
+    }
+}

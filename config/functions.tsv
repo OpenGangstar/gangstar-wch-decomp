@@ -8732,7 +8732,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d2c25	0x3a	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode15removeAnimatorsEv	LODSceneNode::removeAnimators()
 0x002d2c61	0x38	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode11addAnimatorEPN3irr5scene18ISceneNodeAnimatorE	LODSceneNode::addAnimator(irr::scene::ISceneNodeAnimator*)
 0x002d2c99	0xc8	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf	LODSceneNode::addLOD(irr::scene::ISceneNode*, float)
-0x002d2d61	0x132	LODSceneNode.cpp	game	rendering	pending	_ZN12LODSceneNode15computeLODLevelEv	LODSceneNode::computeLODLevel()
+0x002d2d61	0x132	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode15computeLODLevelEv	LODSceneNode::computeLODLevel()
 0x002d2e95	0x46	LODSceneNode.cpp	game	rendering	matched	_ZN12LODSceneNode19OnRegisterSceneNodeEv	LODSceneNode::OnRegisterSceneNode()
 0x002d2edd	0x54	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode29GetMeshTransformedBoundingBoxEPKN3irr5scene10ISceneNodeE	LODSceneNode::GetMeshTransformedBoundingBox(irr::scene::ISceneNode const*) const
 0x002d2f31	0x1e	LODSceneNode.cpp	game	rendering	matched	_ZNK12LODSceneNode25getTransformedBoundingBoxEv	LODSceneNode::getTransformedBoundingBox() const
@@ -10125,7 +10125,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f4465	0x1c8	Character.cpp	game	characters	matched	_ZN9Character10initPhysicEv	Character::initPhysic()
 0x002f462d	0x2c	Character.cpp	game	characters	matched	_ZN11b2CircleDefD0Ev	b2CircleDef::~b2CircleDef()
 0x002f4659	0x258	Character.cpp	game	characters	pending	_ZN9Character4showEv	Character::show()
-0x002f48b1	0x1c8	Character.cpp	game	characters	pending	_ZN9Character13initInVehicleEP7Vehicle	Character::initInVehicle(Vehicle*)
+0x002f48b1	0x1c8	Character.cpp	game	characters	matched	_ZN9Character13initInVehicleEP7Vehicle	Character::initInVehicle(Vehicle*)
 0x002f4a79	0x280	Character.cpp	game	characters	pending	_ZN9Character17positionInVehicleEb	Character::positionInVehicle(bool)
 0x002f4cf9	0x120	Character.cpp	game	characters	pending	_ZN9Character14throwOutDriverEb	Character::throwOutDriver(bool)
 0x002f4e19	0x94	Character.cpp	game	characters	matched	_ZN9Character16ejectFromVehicleEb	Character::ejectFromVehicle(bool)
@@ -10188,7 +10188,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f7bf1	0x80	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	CustomBillboardSceneNode::CustomBillboardSceneNode(irr::collada::CColladaDatabase const&, irr::collada::SNode*)
 0x002f7c71	0x36	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE	CustomBillboardSceneNode::setChildrenMaterialType(irr::scene::ISceneNode*, irr::video::E_MATERIAL_TYPE)
 0x002f7ca9	0x40	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb	CustomBillboardSceneNode::setChildrenMaterialFlag(irr::scene::ISceneNode*, irr::video::E_MATERIAL_FLAG, bool)
-0x002f7ce9	0xe8	CustomBillboardSceneNode.cpp	game	rendering	pending	_ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE	CustomBillboardSceneNode::setColor(irr::scene::ISceneNode*, irr::video::SColor)
+0x002f7ce9	0xe8	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE	CustomBillboardSceneNode::setColor(irr::scene::ISceneNode*, irr::video::SColor)
 0x002f7dd1	0x6c	CustomBillboardSceneNode.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002f7e3d	0x14	CustomBillboardSceneNode.cpp	game	rendering	matched	_GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE	_GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE
 0x002f7e51	0x1a8	CustomBillboardSceneNode.cpp	game	rendering	matched	_ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE	CustomBillboardSceneNode::debug(irr::video::IVideoDriver*)
@@ -11845,7 +11845,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003363bd	0x14	Mission.cpp	game	missions	matched	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
 0x003363d1	0x1d4	Mission.cpp	game	missions	matched	_ZN7Mission5startEii	Mission::start(int, int)
 0x003365a5	0x4c	Mission.cpp	game	missions	matched	_ZN7Mission4idleEv	Mission::idle()
-0x003365f1	0x218	Mission.cpp	game	missions	pending	_ZN7Mission6updateEi	Mission::update(int)
+0x003365f1	0x218	Mission.cpp	game	missions	matched	_ZN7Mission6updateEi	Mission::update(int)
 0x00336809	0x144	Mission.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033694d	0x14	Mission.cpp	game	missions	matched	_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii	_GLOBAL__I__Z18getFrameModuleRectP7ASpriteiii
 0x00336961	0x10c	Mission.cpp	game	missions	matched	_ZN7Mission3endEv	Mission::end()

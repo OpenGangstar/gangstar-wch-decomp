@@ -164,7 +164,8 @@
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN9Character7punchedEiiP11LevelObject",
         "_ZN9Character3dieEb",
-        "_ZN9Character5punchEv"
+        "_ZN9Character5punchEv",
+        "_ZN9Character13initInVehicleEP7Vehicle"
     ],
     "sections": [
         ".character_init_physic",
@@ -215,7 +216,8 @@
         ".character_punched",
         ".character_punched_table",
         ".character_die",
-        ".character_punch"
+        ".character_punch",
+        ".character_init_in_vehicle"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -304,6 +306,8 @@
         "_Z21ekd_makestringfile255PKcPc",
         "_Z13ekd_debug_outPKcPc",
         "_ZNK6Weapon11isTwoHandedEv",
-        "_ZN18AchievementManager11recordDeathER9Character"
+        "_ZN18AchievementManager11recordDeathER9Character",
+        "_ZN7Vehicle12isLowVehicleEv",
+        "_ZN7Vehicle18getSeatedAnimationEv"
     ]
 }

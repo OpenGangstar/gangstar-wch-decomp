@@ -25,6 +25,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .mission_update 0x003365f0 : { *ai-startup-mission.o(.text._ZN7Mission6updateEi) }
+    .mission_update_table 0x0042a714 : { *ai-startup-mission.o(.rodata._ZN7Mission6updateEi) }
  .mission_constructor 0x003360c0 : { *ai-startup-mission.o(.text._ZN7MissionC1Ev .text._ZN7MissionC2Ev) }
     .mission_draw 0x0033620c : { *ai-startup-mission.o(.text._ZN7Mission4drawEv) }
     .mission_message 0x00336344 : { *ai-startup-mission.o(.text._ZN7Mission7messageEi) }

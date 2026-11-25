@@ -83,7 +83,8 @@
             "compiled_name": "__tcf_0"
         },
         "_ZN7MissionC1Ev",
-        "_ZN7MissionC2Ev"
+        "_ZN7MissionC2Ev",
+        "_ZN7Mission6updateEi"
     ],
     "sections": [
         ".mission_vtable",
@@ -116,7 +117,9 @@
         ".mission_objective",
         ".mission_read",
         ".wanted_cleanup",
-        ".mission_constructor"
+        ".mission_constructor",
+        ".mission_update",
+        ".mission_update_table"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -165,6 +168,13 @@
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
-        "_ZN10AnimObjectC1Ev"
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10AnimObject10IsAnimOverEv",
+        "_ZN10AnimObject6UpdateEi",
+        "_ZN11CHudManager4showEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager16checkScreenPressEv",
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZNK13ScriptManager26areBlockingCommandsSkippedEv"
     ]
 }

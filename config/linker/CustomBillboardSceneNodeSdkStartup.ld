@@ -11,6 +11,7 @@ __aeabi_i2f = 0x001c41e4;
 memset = 0x001c45d4;
 SECTIONS
 {
+    .billboard_set_color 0x002f7ce8 : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE) }
     .billboard_on_animate 0x002f800c : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode9OnAnimateEj) }
     .billboard_on_animate_thunk 0x002f7ff8 : { *sdk-startup-custombillboardscenenode.o(.text._ZThn100_N24CustomBillboardSceneNode9OnAnimateEj) }
     .billboard_debug 0x002f7e50 : { *(.text._ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE) }

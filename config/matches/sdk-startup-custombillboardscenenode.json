@@ -54,7 +54,8 @@
         {
             "name": "_GLOBAL__I__ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
             "address": "0x002f7e3d"
-        }
+        },
+        "_ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE"
     ],
     "sections": [
         ".billboard_on_animate",
@@ -72,7 +73,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".billboard_set_color"
     ],
     "retail_got": true,
     "external_thumb_functions": [
