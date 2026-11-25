@@ -175,7 +175,8 @@
         "_ZN11OctTreeAABB20CountRenderableNodesEPN3irr5scene10ISceneNodeE",
         "_ZN9GS3DStuff14AddRenderablesEPN3irr5scene10ISceneNodeERNS0_4core5arrayIS3_NS4_12irrAllocatorIS3_EEEENS1_16ESCENE_NODE_TYPEE",
         "_ZN9GS3DStuff4loadEiRi",
-        "_ZNSs9_M_appendEPKcS0_"
+        "_ZNSs9_M_appendEPKcS0_",
+        "_ZN9GS3DStuff8tearDownEv"
     ],
     "sections": [
         ".gs_print_node_properties",
@@ -320,7 +321,8 @@
         ".gs_load_blood_puddle",
         ".gs_load_blood_particle",
         ".gs_load_switch",
-        ".gs3d_string_m_append"
+        ".gs3d_string_m_append",
+        ".gs3d_stuff_teardown"
     ],
     "external_thumb_functions": [
         "_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf",
@@ -446,7 +448,10 @@
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK5Menus8MainMenu12GameContinueEv",
         "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE",
-        "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj"
+        "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
+        "_ZN11MenuManager8tearDownEv",
+        "_ZN13ScriptManager8tearDownEv",
+        "_ZN9CarSounds5CleanEv"
     ],
     "dependencies": [
         "stream",

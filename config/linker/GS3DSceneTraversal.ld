@@ -5,6 +5,7 @@ PROVIDE(strlen = 0x001c48bc);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables = 0x004b6a74);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles = 0x004b6a80);
 SECTIONS {
+    .gs3d_stuff_teardown 0x002df418 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8tearDownEv) }
     .gs_print_node_properties 0x002de6dc : { *gs3d-stuff.o(.text._ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi) }
     .gs_node_format 0x00414508 : { *gs3d-stuff.o(.rodata.gs_node_type_format) }
     .gs_leaf_format 0x00414524 : { *gs3d-stuff.o(.rodata.gs_leaf_type_format) }

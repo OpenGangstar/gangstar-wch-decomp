@@ -1330,6 +1330,78 @@ inline irr::scene::ISceneNode& loadingBillboardNode(irr::scene::IBillboardSceneN
 }
 }
 
+#include "../vehicles/CarSoundCallbacks.h"
+extern "C" void _ZN11MenuManager8tearDownEv(MenuManager*);
+
+namespace {
+template<class T>
+inline __attribute__((always_inline)) void deletePointerArray(irr::core::array<T*>* storage)
+{
+    if (storage) {
+        if (storage->free_when_destroyed)
+            ::operator delete(storage->data);
+        delete storage;
+    }
+}
+template<class T>
+inline __attribute__((always_inline)) void deletePointerArraySplit(irr::core::array<T*>* storage)
+{
+    if (storage) {
+        if (!storage->free_when_destroyed) {
+            ::operator delete(storage);
+        } else {
+            ::operator delete(storage->data);
+            ::operator delete(storage);
+        }
+    }
+}
+}
+
+void GS3DStuff::tearDown()
+{
+    AIManager::getInstance()->clean();
+    GameObjectManager::s_gom->Clear();
+    SceneNodeManager::getInstance()->tearDown();
+    ScriptManager::getInstance()->tearDown();
+    _ZN11MenuManager8tearDownEv(MenuManager::getInstance());
+
+    for (int index = 0; static_cast<unsigned int>(index) < lightsNodes.used; ++index)
+        lightsNodes.data[index]->remove();
+    ::operator delete(lightsNodes.data);
+    lightsNodes.data = 0;
+    lightsNodes.used = 0;
+    lightsNodes.allocated = 0;
+    lightsNodes.is_sorted = true;
+
+    freeGameData(Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode());
+    if (sunNode)
+        sunNode->drop();
+    CameraManager::getInstance()->clean();
+    PhysicAttributes::Clean();
+    Character::cleanTimelineController();
+    Lock::clean();
+    SafeDelete(sceneOcttree);
+    SpawnPoint::ClearAllSpawnInstances();
+    delete playerTest;
+    playerTest = 0;
+    PhysicAttributes::CleanWorld();
+    if (s_TrailMgr) {
+        s_TrailMgr->CleanUp();
+        delete s_TrailMgr;
+        s_TrailMgr = 0;
+    }
+    LevelObject::freeHighlights();
+    Map::getInstance()->clean();
+    CarSounds::Clean();
+    SoundManager::getInstance()->clear();
+
+    deletePointerArraySplit(VisibleNodes);
+    deletePointerArray(LastVisibleNodes);
+    deletePointerArray(VisibleSceneNodes);
+    deletePointerArraySplit(LastVisibleSceneNodes);
+    deletePointerArraySplit(VisibleSpawnPoint);
+}
+
 int GS3DStuff::load(int step, int& percent)
 {
     Application* application = Application::GetInstance();
