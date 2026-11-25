@@ -4,8 +4,25 @@ INCLUDE build/matches/sdk-startup-slidecontrol/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_f2iz = 0x001c44cc;
 __aeabi_atexit = 0x001c494c;
+__aeabi_i2f = 0x001c41e4;
+printf = 0x001c4058;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fcmpgt = 0x001c419c;
 SECTIONS
 {
+    .slide_event_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .slide_event_destructor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .slide_event_vtable 0x004a6198 : { *(.gnu.linkonce.d.rel.ro._ZTV6IEvent .data.rel.ro._ZTV6IEvent) }
+    .move_up_D0 0x003267dc : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN17EvUpDownStickMoveD0Ev) }
+    .move_up_D1 0x00326808 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN17EvUpDownStickMoveD1Ev) }
+    .move_up_vtable 0x004abf58 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.d.rel.ro._ZTV17EvUpDownStickMove) }
+    .move_right_D0 0x0032687c : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD0Ev) }
+    .move_right_D1 0x003268a8 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD1Ev) }
+    .move_right_vtable 0x004abf40 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.d.rel.ro._ZTV20EvLeftRightStickMove) }
+    .slide_process_touch 0x0032b664 : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControl12processTouchEl) }
+    .slide_process_touch_thunk 0x0032b650 : { *sdk-startup-slidecontrol.o(.text._ZThn8_N12SlideControl12processTouchEl) }
+    .slide_invalid_touch 0x00424d68 : { *sdk-startup-slidecontrol.o(.rodata.slide_invalid_touch) }
     .stick_release_0 0x0032b5ac : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControl19processTouchReleaseEv) }
     .stick_release_1 0x0032b598 : { *sdk-startup-slidecontrol.o(.text._ZThn8_N12SlideControl19processTouchReleaseEv) }
     .input_EvStickReleased_D0 0x00326cd8 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN15EvStickReleasedD0Ev) }
@@ -37,3 +54,4 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.slide_process_touch) == 668, "Native SlideControl processTouch extent");

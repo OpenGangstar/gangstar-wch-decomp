@@ -8,15 +8,15 @@ __aeabi_f2iz = 0x001c44cc;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
- .slidecontrol_process_thunk 0x0032b650 : { *slidecontrol-touch-thunk.o(.text._ZThn8_N12SlideControl12processTouchEl) }
- .slidecontrol_nonmatching_process 0x0032b664 : { *slidecontrol-touch-thunk.o(.text._ZN12SlideControl12processTouchEl) }
- .slidecontrol_invalid_touch 0x00424d68 : { *slidecontrol-touch-thunk.o(.rodata.slide_invalid_touch) }
- .move_up_D0 0x003267dc : { *slidecontrol-touch-thunk.o(.gnu.linkonce.t._ZN17EvUpDownStickMoveD0Ev) }
- .move_up_D1 0x00326808 : { *slidecontrol-touch-thunk.o(.gnu.linkonce.t._ZN17EvUpDownStickMoveD1Ev) }
- .move_up_vtable 0x004abf58 : { *slidecontrol-touch-thunk.o(.gnu.linkonce.d.rel.ro._ZTV17EvUpDownStickMove) }
- .move_right_D0 0x0032687c : { *slidecontrol-touch-thunk.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD0Ev) }
- .move_right_D1 0x003268a8 : { *slidecontrol-touch-thunk.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD1Ev) }
- .move_right_vtable 0x004abf40 : { *slidecontrol-touch-thunk.o(.gnu.linkonce.d.rel.ro._ZTV20EvLeftRightStickMove) }
+ .slidecontrol_process_thunk 0x0032b650 : { *sdk-startup-slidecontrol.o(.text._ZThn8_N12SlideControl12processTouchEl) }
+ .slidecontrol_nonmatching_process 0x0032b664 : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControl12processTouchEl) }
+ .slidecontrol_invalid_touch 0x00424d68 : { *sdk-startup-slidecontrol.o(.rodata.slide_invalid_touch) }
+ .move_up_D0 0x003267dc : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN17EvUpDownStickMoveD0Ev) }
+ .move_up_D1 0x00326808 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN17EvUpDownStickMoveD1Ev) }
+ .move_up_vtable 0x004abf58 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.d.rel.ro._ZTV17EvUpDownStickMove) }
+ .move_right_D0 0x0032687c : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD0Ev) }
+ .move_right_D1 0x003268a8 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD1Ev) }
+ .move_right_vtable 0x004abf40 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.d.rel.ro._ZTV20EvLeftRightStickMove) }
 
     .stick_release_0 0x0032b5ac : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControl19processTouchReleaseEv) }
     .stick_release_1 0x0032b598 : { *sdk-startup-slidecontrol.o(.text._ZThn8_N12SlideControl19processTouchReleaseEv) }

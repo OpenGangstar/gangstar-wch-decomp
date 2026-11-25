@@ -17,6 +17,11 @@
 #include "../core/Physics.h"
 #include "../world/ObjectData.h"
 #include "../audio/SoundManager.h"
+#include "../app/Application.h"
+#include "../core/IrrlichtDevice.h"
+#include "../vehicles/VehicleBodyShapes.h"
+#include "../rendering/GS3DStuff.h"
+#include "../world/GameObjectManager.h"
 
 void* operator new(unsigned int);
 void operator delete(void*) throw();
@@ -220,4 +225,50 @@ static void _GLOBAL__I__ZN6RocketC2Ei()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+void Rocket::launch(irr::core::vector3d<float> direction)
+{
+    unknown96 = direction;
+    unknown24->SetPhysicInfo(*reinterpret_cast<RocketOwnerPhysicsView*>(owner)->attributes->info, 0);
+    unknown108 = GetPosition();
+    launched = true;
+    unknown88 = 0;
+    irr::core::matrix4 transformation(sceneNode->getAbsoluteTransformation(), irr::core::matrix4::EM4CONST_COPY);
+    Application::GetInstance()->GetDevice()->getSceneManager()->getRootSceneNode()->addChild(sceneNode);
+    sceneNode->setRelativeTransformation(transformation);
+    if (direction.getLengthSQ() == 0.0f) {
+        direction = -GetRight();
+    } else {
+        irr::core::quaternion rotation;
+        rotation.rotationFromTo(direction, irr::core::vector3d<float>(1, 0, 0));
+        sceneNode->setRotation(rotation);
+    }
+    sceneNode->updateAbsolutePosition(false);
+    sceneNode->setVisible(true);
+    b2BodyDef bodyDefinition;
+    bodyDefinition.linearDamping = 0.0f;
+    bodyDefinition.angularDamping = 0.0f;
+    bodyDefinition.isBullet = false;
+    bodyDefinition.position = b2Vec2(GetPosition().X / 100.0f, GetPosition().Y / 100.0f);
+    bodyDefinition.allowSleep = true;
+    body = PhysicAttributes::s_world->CreateBody(&bodyDefinition);
+    b2CircleDef circle;
+    circle.radius = static_cast<float>(unknown76) / 100.0f;
+    circle.density = 1.0f;
+    circle.restitution = 0.0f;
+    circle.friction = 0.3f;
+    circle.filter.categoryBits = 2;
+    circle.filter.maskBits = 0xffff;
+    circle.filter.groupIndex = unknown24->getIndex() + 1;
+    circle.isSensor = true;
+    body->CreateShape(&circle);
+    body->SetMassFromShapes();
+    body->data = new PhysicsBodyData(this, GS3DStuff::FindAMesh(sceneNode));
+    GameObjectManager::s_gom->Add(this, 0);
+    body->linearVelocity = b2Vec2(static_cast<float>(unknown72) * direction.X, static_cast<float>(unknown72) * direction.Y);
+    RocketSleepingBodyView* state = reinterpret_cast<RocketSleepingBodyView*>(body);
+    state->flags &= ~8;
+    state->unknown140 = 0.0f;
+    unknown24->SetIsOnGround(0, false);
 }

@@ -6,8 +6,13 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
+__aeabi_i2f = 0x001c41e4;
+memset = 0x001c45d4;
 SECTIONS
 {
+    .billboard_on_animate 0x002f800c : { *sdk-startup-custombillboardscenenode.o(.text._ZN24CustomBillboardSceneNode9OnAnimateEj) }
+    .billboard_on_animate_thunk 0x002f7ff8 : { *sdk-startup-custombillboardscenenode.o(.text._ZThn100_N24CustomBillboardSceneNode9OnAnimateEj) }
     .billboard_debug 0x002f7e50 : { *(.text._ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE) }
     .billboard_ctor_1 0x002f7b3c : { *(.text._ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
     .billboard_ctor_2 0x002f7bf0 : { *(.text._ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE) }
@@ -46,3 +51,4 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.billboard_on_animate) == 704, "Native CustomBillboardSceneNode OnAnimate extent");
