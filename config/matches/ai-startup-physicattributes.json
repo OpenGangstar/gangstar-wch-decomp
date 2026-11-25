@@ -28,6 +28,7 @@
     "source": "src/game/characters/PhysicAttributes.cpp",
     "linker_script": "config/linker/PhysicAttributesAiStartup.ld",
     "functions": [
+        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_",
         "_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE",
         "_ZN16PhysicAttributes21UpdateEdgesCollisionsEi",
         "_ZN16PhysicAttributes5CleanEv",
@@ -78,6 +79,7 @@
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
     ],
     "sections": [
+        ".physics_segment_height",
         ".physic_position_on_jump",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -96,6 +98,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_",
         "_ZN16PhysicAttributes18AddCollisionShapesEit",
         "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
         "_ZN7b2World10CreateBodyEPK9b2BodyDef",

@@ -10,6 +10,7 @@ class b2ContactListener;
 namespace irr { namespace scene { class ISceneNode; } }
 struct PhysicInfo;
 struct AStarNode;
+namespace irr { namespace core { template<class T> class plane3d; } }
 // Partial layout of the observed 120-byte allocation.
 class PhysicAttributes {
     // Local observed initialization view; adds no storage to the 20-byte array.
@@ -26,6 +27,8 @@ class PhysicAttributes {
     };
 public:
     static void LoadArrays(char*);
+    static unsigned short s_currentUsed;
+    bool IntersectSegmentWithHeightMap(PhysicInfo&, const irr::core::plane3d<float>&, const irr::core::vector3d<float>&, const irr::core::vector3d<float>&, irr::core::vector3d<float>&, irr::core::vector3d<float>&);
     static int MATERIAL_TYPE_ROAD, MATERIAL_TYPE_PARK, MATERIAL_TYPE_BUILDING_BASE, MATERIAL_TYPE_INTERSECTION, MATERIAL_TYPE_CLIFF, MATERIAL_TYPE_WATER;
     static int MATERIAL_TYPE_DEATH_WATER;
     static unsigned short*** s_neighbors;

@@ -10894,7 +10894,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031d78d	0x14	PhysicAttributes.cpp	game	characters	matched	_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE	_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE
 0x0031d7a1	0x25c	PhysicAttributes.cpp	game	characters	pending	_ZN15ContactListener7PersistEPK14b2ContactPoint	ContactListener::Persist(b2ContactPoint const*)
 0x0031d9fd	0x2c	PhysicAttributes.cpp	game	characters	matched	_ZN13ContactFilterD0Ev	ContactFilter::~ContactFilter()
-0x0031da29	0x254	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_	PhysicAttributes::IntersectSegmentWithHeightMap(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
+0x0031da29	0x254	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_	PhysicAttributes::IntersectSegmentWithHeightMap(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
 0x0031dc7d	0x44c	PhysicAttributes.cpp	game	characters	pending	_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_	ContactFilter::ShouldCollide(b2Shape*, b2Shape*)
 0x0031e0c9	0x1bc	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes5CleanEv	PhysicAttributes::Clean()
 0x0031e285	0x718	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes18AddCollisionShapesEit	PhysicAttributes::AddCollisionShapes(int, unsigned short)
@@ -12003,7 +12003,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033993d	0x60	Script.cpp	game	scripting	matched	_ZN6Script10lockScriptEi	Script::lockScript(int)
 0x0033999d	0x28	Script.cpp	game	scripting	matched	_ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE	Script::setScriptObjectAction(LevelObject*, Script::eScriptAction)
 0x003399c5	0x2c	Script.cpp	game	scripting	matched	_ZN6Script23clearScriptObjectActionEv	Script::clearScriptObjectAction()
-0x003399f1	0x290	Script.cpp	game	scripting	pending	_ZN6Script6rewindEv	Script::rewind()
+0x003399f1	0x290	Script.cpp	game	scripting	matched	_ZN6Script6rewindEv	Script::rewind()
 0x00339c81	0x34	Script.cpp	game	scripting	matched	_ZN6Script8finalizeEv	Script::finalize()
 0x00339cb9	0x315c	Script.cpp	game	scripting	pending	_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii	Script::executeCommand(Structs::ScriptCommand const*, int, int)
 0x0033ce19	0xfc	Script.cpp	game	scripting	matched	_ZN6Script11nextCommandEi	Script::nextCommand(int)
