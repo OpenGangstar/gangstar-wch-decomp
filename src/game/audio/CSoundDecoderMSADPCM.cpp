@@ -11,6 +11,10 @@
 #include "CSoundDecoderMSADPCM.h"
 #include "../core/NativeStdio.h"
 
+extern "C" short _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState(int code, AdpcmState* state)
+    __attribute__((weak));
+
+
 int CSoundDecoderMSADPCM::GetSamplingRate() const { return formatHeader->sampleRate; }
 int CSoundDecoderMSADPCM::GetChannel() const { return formatHeader->channels; }
 int CSoundDecoderMSADPCM::GetPCMSize() const { return pcmSize; }
@@ -128,6 +132,112 @@ CSoundDecoderMSADPCM::CSoundDecoderMSADPCM(__sFILE* input, RiffHeader* riff, For
         samplesPerBlock = wavFormat->blockAlignment + 1 - headerSize;
     pcmSize = fact.samples * 4;
     effectiveSamples = fact.samples;
+}
+
+struct MSAdpcmSizeView {
+    char pad[20];
+    int bufferSize;
+};
+
+struct AdpcmHeader {
+    short sample;
+    unsigned char index;
+};
+
+int CSoundDecoderMSADPCM::Decode(short* output, int count, bool loop)
+{
+    ended = false;
+    unsigned int blocks = count / samplesPerBlock;
+    unsigned int bytes = formatHeader->blockAlignment * blocks;
+    int toRead;
+    if (bytes + position < data.size)
+        toRead = bytes;
+    else
+        toRead = data.size - position;
+    int chunk = reinterpret_cast<const MSAdpcmSizeView*>(this)->bufferSize;
+    int chunks = toRead / chunk;
+    if (toRead > chunk * chunks)
+        ++chunks;
+    short* left = output;
+    short* right = output + 1;
+    int decoded = 0;
+    while (chunks--) {
+        int size = bufferSize;
+        int request = toRead;
+        if (request > size)
+            request = size;
+        int got = fread(buffer, 1, request, reinterpret_cast<NativeFile*>(stream));
+        position += got;
+        const unsigned char* input = buffer;
+        int align = formatHeader->blockAlignment;
+        int nb = got / align;
+        toRead -= size;
+        decoded += samplesPerBlock * nb;
+        if (formatHeader->channels == 1) {
+            unsigned int n = (align + 1 - blockHeaderSize) * nb;
+            while (n--) {
+                if (flags & 1) {
+                    *reinterpret_cast<AdpcmHeader*>(&this->left) = *reinterpret_cast<const AdpcmHeader*>(input);
+                    *left = this->left.sample;
+                    left += 1;
+                    unsigned int header = blockHeaderSize;
+                    input += header;
+                    samplesRemaining = header;
+                    flags &= ~1;
+                } else {
+                    *left++ = _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState(*input & 15, &this->left);
+                    *left++ = _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState((*input++ >> 4) & 15, &this->left);
+                    if (++samplesRemaining >= formatHeader->blockAlignment)
+                        flags |= 1;
+                }
+            }
+        } else {
+            int n = samplesPerBlock * nb;
+            while (n--) {
+                if (flags & 1) {
+                    *reinterpret_cast<AdpcmHeader*>(&this->left) = *reinterpret_cast<const AdpcmHeader*>(input);
+                    *reinterpret_cast<AdpcmHeader*>(&this->right) = *reinterpret_cast<const AdpcmHeader*>(input + 4);
+                    *left = this->left.sample;
+                    *right = this->right.sample;
+                    left += 2;
+                    right += 2;
+                    unsigned int header = blockHeaderSize;
+                    input += header;
+                    samplesRemaining = header;
+                    flags &= ~1;
+                } else {
+                    if (channelIndex < 4) {
+                        left[0] = _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState(*input & 15, &this->left);
+                        left += 2;
+                        left[0] = _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState((*input >> 4) & 15, &this->left);
+                        left += 2;
+                    } else {
+                        *right = _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState(*input & 15, &this->right);
+                        right += 2;
+                        *right = _ZN12AdpcmDecoder11DecodeAdpcmEiP10AdpcmState((*input >> 4) & 15, &this->right);
+                        right += 2;
+                    }
+                    ++input;
+                    ++channelIndex;
+                    ++samplesRemaining;
+                    if (channelIndex > 7) {
+                        channelIndex = 0;
+                        if (samplesRemaining >= formatHeader->blockAlignment)
+                            flags |= 1;
+                    }
+                }
+            }
+        }
+    }
+    ended = position == data.size;
+    if (loop && ended) {
+        GoTo(0);
+        int rest = fact.samples % count;
+        // Retail predicts the leftover-samples return as the unlikely edge.
+        if (__builtin_expect(rest != 0, 0))
+            return rest;
+    }
+    return decoded;
 }
 
 CSoundDecoderMSADPCM::~CSoundDecoderMSADPCM()
