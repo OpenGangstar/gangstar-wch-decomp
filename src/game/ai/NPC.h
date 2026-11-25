@@ -71,6 +71,7 @@ private:
     void SetWeapon(int type) __attribute__((noinline));
     void notifyAttacked(LevelObject*) __attribute__((noinline));
     friend class AchievementManager;
+    friend class GameObjectManager;
     friend class Character;
     friend class GuardController;
     friend class PlayerTest;

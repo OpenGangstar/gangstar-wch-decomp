@@ -1668,3 +1668,81 @@ bool CanHandleMouseEvent(gameswf::character* character)
         return true;
     return reinterpret_cast<SpriteEnabledState*>(character)->enabled;
 }
+namespace {
+struct CharacterFindFields {
+    unsigned char prefix[128];
+    mutable gameswf::player_weak_ptr::proxy_ptr parentReference;
+    mutable gameswf::character* parent;
+    gameswf::tu_string name;
+};
+inline void checkFindParent(CharacterFindFields& fields)
+{
+    if (fields.parent) {
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(fields.parentReference.value)
+            + __builtin_offsetof(MovieWeakReference, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress)) {
+            fields.parentReference.clear();
+            fields.parent = 0;
+        }
+    }
+}
+// Parent accessor kept with the Find views: removing this unused inline
+// changes declaration numbering and perturbs RenderFX::Find register allocation.
+inline gameswf::character* findParentCharacter(gameswf::character* character)
+{
+    CharacterFindFields& fields = *reinterpret_cast<CharacterFindFields*>(character);
+    checkFindParent(fields);
+    return fields.parent;
+}
+}
+
+gameswf::character* RenderFX::Find(const char* name, gameswf::character* parent)
+{
+    char component[256];
+    if (!name)
+        return 0;
+    const int nameLength = strlen(name);
+    const char* part = name;
+    do {
+        const char* end = strchr(part, '.');
+        if (!end)
+            end = name + nameLength;
+        const int length = end - part;
+        memcpy(component, part, length);
+        component[length] = 0;
+        const gameswf::array<gameswf::character*>& candidates = FindCharacters(parent, component, 0);
+        gameswf::character* result = 0;
+        int bestDepth = 1000;
+        for (int i = 0; i < candidates.size; ++i) {
+            CharacterFindFields* character = reinterpret_cast<CharacterFindFields*>(candidates.elements[i]);
+            const char* candidateName = character->name.c_str();
+            if (!*candidateName)
+                continue;
+            if (strstr(part, candidateName) != part)
+                continue;
+            if (length != strlen(candidateName))
+                continue;
+            int depth = 0;
+            if (parent != reinterpret_cast<gameswf::character*>(character)) {
+                for (;;) {
+                    ++depth;
+                    checkFindParent(*character);
+                    gameswf::character* next = character->parent;
+                    if (parent == next || !next)
+                        break;
+                    character = reinterpret_cast<CharacterFindFields*>(next);
+                }
+            }
+            if (depth < bestDepth) {
+                bestDepth = depth;
+                result = candidates.elements[i];
+            }
+        }
+        if (!result)
+            return 0;
+        parent = result;
+        part = end + 1;
+        if (part >= name + nameLength)
+            return result;
+    } while (true);
+}

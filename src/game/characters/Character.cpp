@@ -1883,3 +1883,50 @@ void Character::initPhysic()
     collisionBody->data = new PhysicsBodyData(this,static_cast<irr::scene::ISceneNode*>(getSkinMesh()));
 }
 
+
+
+struct CharacterThrowOutView {
+    unsigned char unknown0[0xbc];
+    Vehicle* vehicle;
+};
+
+extern "C" {
+void _ZN9Character17positionInVehicleEb(Character* self, bool left);
+void _ZN9Character4showEv(Character* self);
+}
+
+static inline bool hasDriver(const Character* driver)
+{
+    return driver != 0;
+}
+
+extern "C" void _ZN9Character14throwOutDriverEb(Character* self, bool left)
+{
+    CharacterThrowOutView* view = reinterpret_cast<CharacterThrowOutView*>(self);
+    if (!view->vehicle)
+        return;
+    Character* driver = view->vehicle->getDriver();
+    if (!hasDriver(driver))
+        return;
+
+    self->getPhysicAttributes()->SetPhysicInfo(*view->vehicle->getPhysicAttributes()->info, 0);
+    if (driver->isPlayer()) {
+        view->vehicle->Stop();
+        self->setAnimation(view->vehicle->getLeftThrowAnimation(), 1.0f, false, true, false);
+        static_cast<PlayerTest*>(driver)->stopDriving(static_cast<playertest::PlayerCarState::ePlayerCarState>(14), true);
+        return;
+    }
+    _ZN9Character17positionInVehicleEb(driver, left);
+    _ZN9Character4showEv(driver);
+    if (left) {
+        self->setAnimation(view->vehicle->getLeftThrowAnimation(), 1.0f, false, true, false);
+        driver->setAnimation(view->vehicle->getLeftThrownAnimation(), 1.0f, false, true, false);
+        view->vehicle->setDriver(0);
+    } else {
+        _ZN9Character17positionInVehicleEb(self, false);
+        _ZN9Character4showEv(self);
+        view->vehicle->openDoorFromInside(true);
+        driver->setAnimation(view->vehicle->getLeftEjectAnimation(), 1.0f, false, true, left);
+        view->vehicle->setDriver(self);
+    }
+}

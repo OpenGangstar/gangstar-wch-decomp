@@ -165,7 +165,8 @@
         "_ZN9Character7punchedEiiP11LevelObject",
         "_ZN9Character3dieEb",
         "_ZN9Character5punchEv",
-        "_ZN9Character13initInVehicleEP7Vehicle"
+        "_ZN9Character13initInVehicleEP7Vehicle",
+        "_ZN9Character14throwOutDriverEb"
     ],
     "sections": [
         ".character_init_physic",
@@ -217,7 +218,8 @@
         ".character_punched_table",
         ".character_die",
         ".character_punch",
-        ".character_init_in_vehicle"
+        ".character_init_in_vehicle",
+        ".character_throw_out_driver"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -308,6 +310,9 @@
         "_ZNK6Weapon11isTwoHandedEv",
         "_ZN18AchievementManager11recordDeathER9Character",
         "_ZN7Vehicle12isLowVehicleEv",
-        "_ZN7Vehicle18getSeatedAnimationEv"
+        "_ZN7Vehicle18getSeatedAnimationEv",
+        "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
+        "_ZN7Vehicle21getLeftThrowAnimationEv",
+        "_ZN7Vehicle22getLeftThrownAnimationEv"
     ]
 }

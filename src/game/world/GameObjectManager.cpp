@@ -19,6 +19,7 @@
 #include "../characters/NPCDespawnEvent.h"
 #include "../characters/PhysicAttributes.h"
 #include "../ai/NPC.h"
+#include "../characters/PlayerTest.h"
 #include "../vehicles/Vehicle.h"
 #include "../combat/Weapon.h"
 #include "../combat/Rocket.h"
@@ -612,4 +613,35 @@ static void _GLOBAL__I__ZN17GameObjectManagerC2Ev()
 {
     __static_initialization_and_destruction_0(1, 65535);
 }
+}
+
+LevelObject* GameObjectManager::getAttackableTarget(Character* character)
+{
+    LevelObject* best = 0;
+    int bestDistance;
+    LevelObject* object = s_gom->GetFirst(0);
+    if (object) {
+        for (; object; object = object->next) {
+            if (LevelObject::s_type[object->getObjectType()] != 5)
+                continue;
+            if (object->isEnabled() || (object->unknown4 & 0x80)) {
+                int distance = getDistanceFromAttackableTarget(character, character->getWeapon()->getRange(),
+                    object, character->getWeapon()->getWeaponType() != 9);
+                if (distance <= -1)
+                    continue;
+                if (!best || distance < bestDistance) {
+                    bestDistance = distance;
+                    best = object;
+                }
+            }
+        }
+    }
+    if (LevelObject::s_type[character->getObjectType()] == 5
+        && static_cast<NPC*>(character)->faction == 2) {
+        int distance = getDistanceFromAttackableTarget(character, character->getWeapon()->getRange(),
+            PlayerTest::GetPlayer(), true);
+        if (distance > -1 && (!best || distance < bestDistance))
+            best = PlayerTest::GetPlayer();
+    }
+    return best;
 }

@@ -144,7 +144,8 @@
         "_ZN8RenderFX8SetFocusEPN7gameswf9characterEi",
         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
-        "_ZN8RenderFX6UpdateEib"
+        "_ZN8RenderFX6UpdateEib",
+        "_ZN8RenderFX4FindEPKcPN7gameswf9characterE"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -185,7 +186,8 @@
         ".set_character_focus",
         ".renderfx_set_member_value",
         ".can_handle_mouse",
-        ".renderfx_update"
+        ".renderfx_update",
+        ".renderfx_find"
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -235,7 +237,6 @@
         "_ZN7gameswf6matrix18set_scale_rotationEfff",
         "_Z7SwfFreePv",
         "_ZN7gameswf19edit_text_character14set_text_valueERKNS_9tu_stringEb",
-        "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",

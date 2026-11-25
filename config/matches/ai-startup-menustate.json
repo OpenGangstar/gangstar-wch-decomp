@@ -568,7 +568,6 @@
         "_ZN7gameswf11ref_counted8drop_refEv",
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
-        "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN7gameswf4root14get_root_movieEv",
         "_ZN7gameswf8as_valueC1EPKc",
         "_ZN7gameswf9as_object11find_targetERKNS_8as_valueE",

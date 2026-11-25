@@ -18,6 +18,7 @@ SECTIONS
 
     .renderfx_collect_characters 0x003ed1bc : { *renderfx-animation.o(.text._ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci) }
     .renderfx_update 0x003f0040 : { *renderfx-animation.o(.text._ZN8RenderFX6UpdateEib) }
+    .renderfx_find 0x003ed6e4 : { *renderfx-animation.o(.text._ZN8RenderFX4FindEPKcPN7gameswf9characterE) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
 }

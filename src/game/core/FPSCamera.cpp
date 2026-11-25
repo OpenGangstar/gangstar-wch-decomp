@@ -114,6 +114,37 @@ struct TouchPointListView {
 };
 }
 
+struct FPSCameraScrollFields {
+    unsigned char unknown0[44];
+    int previousX;
+    int previousY;
+};
+extern "C" void _ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE(FPSCamera* self, const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points)
+{
+    FPSCameraScrollFields& f = *reinterpret_cast<FPSCameraScrollFields*>(self);
+    const TouchPointListView& links = reinterpret_cast<const TouchPointListView&>(points);
+    const Point2D<short>* point = links.first->point;
+    int y, x;
+    x = point->x;
+    y = point->y;
+    const int dx = f.previousX - x;
+    const int oldY = f.previousY;
+    const int horizontalFov = CameraManager::getInstance()->getFOV();
+    const float verticalScale = CameraManager::getInstance()->getFOV() / 480.0f;
+
+    using irr::core::quaternion;
+    Character& player = static_cast<Character&>(*PlayerTest::GetPlayer());
+    player.SetRotation(static_cast<Character&>(*PlayerTest::GetPlayer()).GetRotation()
+        * quaternion(0.0f, 0.0f, (horizontalFov / 320.0f) * dx * -0.017453292f));
+
+    const float dy = oldY - y;
+    const float verticalDelta = verticalScale * dy;
+    self->incVerticalAngle(-verticalDelta);
+    f.previousX = x;
+    f.previousY = y;
+}
+
+
 void FPSCamera::zoom(const std::list<Point2D<short>*, std::allocator<Point2D<short>*> >& points)
 {
     const TouchPointListView& links = reinterpret_cast<const TouchPointListView&>(points);
