@@ -243,7 +243,8 @@
             "address": "0x00311251"
         },
         "_ZN7Vehicle7disableEv",
-        "_ZN7Vehicle9OnDespawnEv"
+        "_ZN7Vehicle9OnDespawnEv",
+        "_ZN7Vehicle12playDriveSfxEj"
     ],
     "sections": [
         ".vehicle_collision",
@@ -367,7 +368,8 @@
         ".vehicle_d0",
         ".vehicle_vtable",
         ".vehicle_on_despawn",
-        ".vehicle_disable"
+        ".vehicle_disable",
+        ".vehicle_play_drive_sfx"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -646,6 +648,7 @@
         "_ZN11LevelObject9OnDespawnEv",
         "_ZN13CameraManager11getInstanceEv",
         "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
-        "_ZN15CControlManager7exitCarEb"
+        "_ZN15CControlManager7exitCarEb",
+        "_ZN12SoundManager14isSoundPlayingEi"
     ]
 }

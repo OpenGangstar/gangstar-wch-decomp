@@ -1680,6 +1680,78 @@ void Vehicle::playHorn()
     turnSoundPlaying = true;
 }
 
+struct VehicleDriveSfxView {
+    unsigned char pad0[132];
+    int unknown132;
+    unsigned char pad136[344 - 136];
+    unsigned int flags344;
+    unsigned char pad348[364 - 348];
+    int init364;
+    unsigned char pad368[506 - 368];
+    bool unknown506;
+    bool unknown507;
+    bool unknown508;
+    bool unknown509;
+    unsigned char unknown510;
+    unsigned char pad511[648 - 511];
+    float skidAmount;
+};
+
+extern "C" float _ZN7Vehicle18_adjustEnginePitchEj(Vehicle* self, unsigned int speed);
+
+extern "C" void _ZN7Vehicle12playDriveSfxEj(Vehicle* self, unsigned int speed)
+{
+    VehicleDriveSfxView* view = reinterpret_cast<VehicleDriveSfxView*>(self);
+    if (!(view->flags344 & 0x10))
+        return;
+
+    if (view->skidAmount > 0.0f && view->unknown509 && view->unknown508 && view->unknown507 && view->unknown506
+        && !SoundManager::getInstance()->isSoundPlaying(123)) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(123, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    } else if (view->skidAmount > 0.0f && view->unknown509 && view->unknown508 && view->unknown507 && view->unknown506
+               && !view->unknown510 && !(view->skidAmount <= 0.0f)) {
+        if ((view->flags344 & 2) && view->unknown132 == 1 && !view->unknown510
+            && !SoundManager::getInstance()->isSoundPlaying(106)) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(106, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        } else if (!((view->flags344 & 2) && view->unknown132 == 1 && !view->unknown510)
+                   && SoundManager::getInstance()->isSoundPlaying(106)) {
+            SoundManager::getInstance()->stop(106, -1, 0);
+        }
+    } else {
+        SoundManager::getInstance()->stop(123, -1, 0);
+    }
+
+    if (!view->unknown506 && !view->unknown507 && !view->unknown508 && !view->unknown509)
+        view->unknown510 = true;
+    if (view->unknown510 && (view->unknown506 || view->unknown507 || view->unknown508 || view->unknown509)) {
+        view->unknown510 = false;
+        SoundManager* sound = SoundManager::getInstance();
+        int id = Vehicle::s_smallImpactSounds[lrand48() % 3];
+        sound->unknown140 = true;
+        sound->playEx(id, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+
+    int newState;
+    int state;
+    if (speed > 1) {
+        _ZN7Vehicle18_adjustEnginePitchEj(self, speed);
+        newState = 1;
+        state = 1;
+    } else {
+        newState = 0;
+        state = 0;
+    }
+    if (view->init364 != state)
+        view->init364 = newState;
+}
+
 void Vehicle::debug(irr::video::IVideoDriver* videoDriver)
 {
     irr::core::vector3d<float> corners[4];

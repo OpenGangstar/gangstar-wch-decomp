@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fcmple = 0x001c43ac);
 _ZdaPv = 0x001c461c;
 acosf = 0x1c4694;
 OUTPUT_FORMAT("elf32-littlearm")
@@ -36,6 +37,7 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_play_drive_sfx 0x00312d18 : { *vehicle-cleanup.o(.text._ZN7Vehicle12playDriveSfxEj) }
     .vehicle_on_despawn 0x00310e74 : { *vehicle-cleanup.o(.text._ZN7Vehicle9OnDespawnEv) }
     ASSERT(SIZEOF(.vehicle_on_despawn) == 308, "Native Vehicle OnDespawn extent")
     .vehicle_disable 0x00310fa8 : { *vehicle-cleanup.o(.text._ZN7Vehicle7disableEv) }

@@ -10724,7 +10724,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00311fb5	0x6c	Vehicle.cpp	game	vehicles	matched	_ZN26CustomSkinnedMeshSceneNodeD1Ev	CustomSkinnedMeshSceneNode::~CustomSkinnedMeshSceneNode()
 0x00312021	0x5c	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9playSirenEv	Vehicle::playSiren()
 0x00312081	0xc94	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle15_processAIFlagsEv	Vehicle::_processAIFlags()
-0x00312d19	0x2a0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12playDriveSfxEj	Vehicle::playDriveSfx(unsigned int)
+0x00312d19	0x2a0	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12playDriveSfxEj	Vehicle::playDriveSfx(unsigned int)
 0x00312fb9	0xe8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle8playHornEv	Vehicle::playHorn()
 0x003130a1	0x2e4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle7explodeEv	Vehicle::explode()
 0x00313385	0x550	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle9collisionEN3irr4core8vector3dIfEEi	Vehicle::collision(irr::core::vector3d<float>, int)
