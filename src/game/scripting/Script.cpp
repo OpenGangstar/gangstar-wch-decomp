@@ -10,6 +10,7 @@
 
 #include "Script.h"
 #include "../missions/WantedLevelManagerSingleton.h"
+#include "../missions/Mission.h"
 #include "ScriptManager.h"
 #include "../app/Application.h"
 #include "../core/EventManager.h"
@@ -34,7 +35,7 @@ void Script::addCommand(Structs::ScriptCommand* command)
     if (commandCount < commandCapacity) {
         commands[commandCount++] = command;
         if (command->opcode == 65)
-            missionId = command->argument;
+            missionId = reinterpret_cast<const Structs::MissionStart*>(command)->argument;
     }
 }
 
@@ -244,4 +245,33 @@ void Script::setState(State newState, PlayerTest::eContext newContext)
     else if (newContext != PlayerTest::GetPlayer()->context)
         state = State1;
     context = newContext;
+}
+
+bool Script::nextCommand(int index)
+{
+    if (index == -1) {
+        if (commandIndex < commandCount) {
+            ScriptManager::getInstance()->printCommand(*commands[commandIndex]);
+            ++commandIndex;
+            unknown72 = 0;
+            source = 0;
+        }
+        return commandIndex < commandCount;
+    }
+
+    ScriptManager* manager = ScriptManager::getInstance();
+    manager->skipBlockingCommands();
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    while (!isEnded() && __builtin_expect(getState() == State2, 1) && commands[commandIndex]->opcode != index) {
+        if (static_cast<Mission*>(manager->getMission())->getState() == 0 &&
+            (commands[commandIndex]->opcode == 64 || commands[commandIndex]->opcode == 105))
+            break;
+        executeCommand(commands[commandIndex], 0, index);
+        events->refresh();
+        nextCommand(-1);
+    }
+    ScriptManager::getInstance()->resumeBlockingCommands();
+    if (isEnded())
+        finalize();
+    return commands[commandIndex]->opcode == index;
 }

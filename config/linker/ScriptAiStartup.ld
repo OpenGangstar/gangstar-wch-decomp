@@ -20,6 +20,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .script_next_command 0x0033ce18 : { *ai-startup-script.o(.text._ZN6Script11nextCommandEi) }
     .script_set_state 0x0033922c : { *ai-startup-script.o(.text._ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE) }
 
     .script_set_action 0x0033999c : { *ai-startup-script.o(.text._ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE) }
@@ -85,3 +86,6 @@ ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 
 ASSERT(SIZEOF(.script_set_state) == 60, "native Script::setState physical section");
+
+ASSERT(SIZEOF(.script_next_command) == 252, "nextCommand native input252");
+ASSERT(ADDR(.script_next_command) + SIZEOF(.script_next_command) == 0x0033cf14, "nextCommand native next boundary");

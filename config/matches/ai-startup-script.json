@@ -73,7 +73,8 @@
             "address": "0x003391b9",
             "compiled_name": "__tcf_2"
         },
-        "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE"
+        "_ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE",
+        "_ZN6Script11nextCommandEi"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -91,7 +92,8 @@
         ".wanted_cleanup",
         ".state_machine_cleanup",
         ".ai_manager_cleanup",
-        ".script_set_state"
+        ".script_set_state",
+        ".script_next_command"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -102,7 +104,6 @@
         "_ZN13ScriptManager8saveGameEv",
         "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
         "_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
-        "_ZN6Script11nextCommandEi",
         "_ZN11Application11GetInstanceEv",
         "_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii",
         "_ZN12EventManager7refreshEv",
@@ -112,6 +113,11 @@
         "_ZN12StateMachineD1Ev",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN10PlayerTest9GetPlayerEv"
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZNK13ScriptManager10getMissionEv",
+        "_ZN13ScriptManager20skipBlockingCommandsEv",
+        "_ZN13ScriptManager22resumeBlockingCommandsEv",
+        "_ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE",
+        "_ZNK7Mission8getStateEv"
     ]
 }

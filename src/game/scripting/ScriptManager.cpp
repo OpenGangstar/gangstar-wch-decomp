@@ -623,11 +623,6 @@ inline void PlayMusic::Read(DataStream& stream)
     argument = stream.ReadInt();
 }
 
-struct MissionStart {
-    int opcode;
-    int argument;
-    void Read(DataStream& stream) __attribute__((used));
-};
 
 inline void MissionStart::Read(DataStream& stream)
 {
