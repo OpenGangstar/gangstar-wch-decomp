@@ -35,7 +35,7 @@ Map::~Map()
 }
 
 Map::Map()
-    : texture(0), offsetX(0.0f), offsetY(0.0f),
+    : texture(0), offset(0.0f, 0.0f),
       offsetPixelX(0), offsetPixelY(0), clip(0, 0, 0, 0),
       minX(0.0f), minY(0.0f), maxX(0.0f), maxY(0.0f), unknown60(0.0f), unknown64(0.0f)
 {
@@ -122,3 +122,22 @@ void Map::setMap(eMapType type)
     pixelsPerUnit = width / extent;
     unitsPerPixel = extent / width;
 }
+
+extern "C" void* _ZN3irr4core8CMatrix4IfE21buildTextureTransformEfRKNS0_8vector2dIfEES6_S6_(
+    irr::core::matrix4*, float, const irr::core::vector2d<float>&, const irr::core::vector2d<float>&,
+    const irr::core::vector2d<float>&) __attribute__((long_call));
+
+void Map::draw() const
+{
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+    driver->setTransform(irr::video::ETS_WORLD, irr::core::matrix4());
+    irr::core::matrix4 textureMatrix;
+    _ZN3irr4core8CMatrix4IfE21buildTextureTransformEfRKNS0_8vector2dIfEES6_S6_(&textureMatrix, rotation,
+        irr::core::vector2d<float>(-offset.X, -offset.Y), irr::core::vector2d<float>(offset.X, offset.Y),
+        irr::core::vector2d<float>(scale, scale));
+    driver->setTransform(static_cast<irr::video::E_TRANSFORMATION_STATE>(3), textureMatrix);
+    driver->draw2DImage(texture, *reinterpret_cast<const irr::core::position2d<int>*>(&offsetPixelX), clip, 0,
+        irr::video::SColor(255, 255, 255, 255), true);
+    driver->setTransform(static_cast<irr::video::E_TRANSFORMATION_STATE>(3), irr::core::matrix4());
+}
+

@@ -997,6 +997,183 @@ PlayerTest::~PlayerTest()
     if (__builtin_expect(photoTargets.free_when_destroyed, 1)) ::operator delete(photoTargets.data);
 }
 
+
+#include "../characters/PhysicInfo.h"
+#include "../characters/PhysicAttributes.h"
+extern "C" float cosf(float);
+
+// Separate mask and compare statements keep the retail and/cmp form.
+static inline bool hasFlags(unsigned int flags, unsigned int mask)
+{
+    return (flags & mask) == mask;
+}
+extern "C" void _ZN15CControlManager6updateEv(CControlManager*);
+extern "C" void _ZN10PlayerTest20updateCarInteractionEv(PlayerTest*);
+extern "C" bool _ZN10PlayerTest6moveToERK7Vehicle(PlayerTest*, const Vehicle&);
+extern "C" void _ZN10PlayerTest15onTargetReachedEv(PlayerTest*);
+
+void PlayerTest::Update()
+{
+    using irr::core::vector3d;
+    Application* application = Application::GetInstance();
+    irr::IrrlichtDevice* device = application->GetDevice();
+    if (turning && turnToward(turnDirection, turnSpeed)) {
+        setAnimation(getSpecificAnimation(165), 1.0f, false, false, false);
+        turning = false;
+        turnDirection = vector3d<float>(0.0f, 0.0f, 0.0f);
+    }
+    int now = device->getTimer()->getRealTime();
+    int previousTime = unknown388;
+    if (!ScriptManager::getInstance()->isInCinematic() || (flags240 & 0x1000u))
+        CheckDestination();
+    else
+        adjustedDestination = destination;
+    if (physicAttributes->info->unknown0 == PhysicAttributes::MATERIAL_TYPE_DEATH_WATER)
+        health = 0;
+    if (!hasFlags(flags240, 0x4000u)) {
+        if (!(flags240 & 0x2000u) && health <= 0) {
+            if (!isInHitByCarAnimation()) {
+                die(!(((flags240 & 0x400u) && static_cast<Character*>(this)->getVehicle()) || unknown384[0]));
+                int soundChoice = lrand48() % 2;
+                if (soundChoice == 0) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(138, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                } else if (soundChoice == 1) {
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(127, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                }
+                goto afterWanted;
+            }
+            if (hasFlags(flags240, 0x4000u))
+                goto checkWanted;
+        }
+    } else {
+checkWanted:
+        if (!hasFlags(flags240, 0x2000u)) {
+            WantedLevelManager* wanted = WantedLevelManager::getInstance();
+            wanted->unknown8 = 0;
+            wanted->_processWantedLevel();
+        }
+    }
+afterWanted:
+    collisionBody->angularVelocity = 0.0f;
+    if (flags240 & 0x800u) {
+        if (vehicle) {
+            if (sceneNode->isVisible())
+                sceneNode->setVisible(false);
+            if (shadowNode->isVisible())
+                shadowNode->setVisible(false);
+        }
+    } else {
+        checkForWeaponReload();
+        if (flags240 & 0x8000u) {
+            turnToward(vector3d<float>(adjustedDestination));
+            animationFlag149 = true;
+            vector3d<float> position = GetPosition();
+            position.Z = destination.Z;
+            if (destination.getDistanceFromSQ(position) < destinationLimitSquared) {
+                flags240 &= ~0x8000u;
+                Stop();
+                startTurn(8.0f);
+            }
+        }
+        unknown336 = (device->getTimer()->getRealTime() - unknown332) / 1000.0f;
+        if (movementKeys[0] && unknown336 >= -0.001f)
+            move(0.0f, 1.0f);
+        if (movementKeys[1])
+            move(1.5707964f, 1.0f);
+        if (movementKeys[2])
+            move(3.1415927f, 1.0f);
+        if (movementKeys[3])
+            move(-1.5707964f, 1.0f);
+        if (targetLocked && target) {
+            if (target->isDead()) {
+                onObjectKilled(target);
+                _SetTarget(0, !ScriptManager::getInstance()->isInCinematic());
+            } else if (target->sceneNode && target->sceneNode->isVisible()) {
+                if (!(flags240 & 0xfeu))
+                    lockUpdatePending = orientTowards(GetPosition() - target->GetPosition());
+            } else {
+                _SetTarget(0, !ScriptManager::getInstance()->isInCinematic());
+            }
+            if (target) {
+                const vector3d<float> normal = (target->GetPosition() - GetPosition()).normalize();
+                const float dot = normal.dotProduct(vector3d<float>(0.0f, 0.0f, 1.0f));
+                if (__builtin_fabsf(dot) > cosf(0.2617994f))
+                    _SetTarget(0, true);
+            }
+        }
+        if (unknown368) {
+            if (ScriptManager::getInstance()->isInCinematic() && unknown377) {
+                unknown368 = 0;
+            } else {
+                if (!hasFlags(flags240, 0x1000u)) {
+                    application->GetEventManager()->raise(EvNPCVehicle(10, static_cast<Vehicle*>(unknown312)));
+                    flags240 |= 0x1000u;
+                }
+                if (unknown312 && !unknown368->isDead()) {
+                    if (_ZN10PlayerTest6moveToERK7Vehicle(this, *static_cast<Vehicle*>(unknown368)))
+                        _ZN10PlayerTest15onTargetReachedEv(this);
+                } else {
+                    onTargetCancelled();
+                }
+            }
+        }
+        if (unknown372)
+            _ZN10PlayerTest20updateCarInteractionEv(this);
+        else if (!vehicleVisibleInCinematic)
+            finishedStopDriving();
+        if (!sceneNode->isVisible())
+            sceneNode->setVisible(true);
+        if (!shadowNode->isVisible())
+            shadowNode->setVisible(true);
+        updateAnim(static_cast<float>(now - previousTime));
+        vector3d<float> position = GetPosition();
+        shadowBaseHeight = physicAttributes->GetHeight(GetPosition(), 0, false);
+        sceneNode->setPosition(vector3d<float>(position.X, position.Y,
+            shadowBaseHeight + unknown156));
+        sceneNode->updateAbsolutePosition(false);
+        if (isCurrentAnimation(-1) && health > 0)
+            setAnimation(164, 1.0f, false, false, false);
+        if (unknown260 && !isCurrentAnimation(15) &&
+            !isCurrentAnimation(13) && !isCurrentAnimation(16) &&
+            !isCurrentAnimation(14) && !isCurrentAnimation(30) &&
+            !isCurrentAnimation(31) && !isCurrentAnimation(32) &&
+            !isCurrentAnimation(33) && !isCurrentAnimation(7) &&
+            !isCurrentAnimation(8)) {
+            resetCollisions();
+            unknown260 = false;
+        }
+        unknown332 = device->getTimer()->getRealTime();
+    }
+    _ZN15CControlManager6updateEv(application->GetControlManager());
+    if (unknown4 & 16u)
+        vehicle->GetSpeed();
+    else
+        SetSpeed();
+    CHudManager* hud = application->GetHudManager();
+    if (closestShop && !unknown312) {
+        int radius = closestShop->getRadius();
+        float radiusSquared = radius * radius;
+        float distance = (closestShop->GetPosition() - GetPosition()).getLengthSQ();
+        if (radiusSquared > distance) {
+            if (!hud->isNearShop())
+                hud->nearShop();
+        } else if (hud->isNearShop()) {
+            hud->notNearShop();
+            closestShop = 0;
+        }
+    } else if (hud->isNearShop()) {
+        hud->notNearShop();
+        closestShop = 0;
+    }
+    unknown388 = now;
+}
+
 void PlayerTest::setAnim(int animation, bool loop, bool force, bool mirror, float speed)
 {
     Character* character = this;

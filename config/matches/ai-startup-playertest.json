@@ -131,7 +131,8 @@
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN10PlayerTestC1EP7b2World",
         "_ZN10PlayerTestC2EP7b2World",
-        "_ZN10PlayerTest10switchAnimEv"
+        "_ZN10PlayerTest10switchAnimEv",
+        "_ZN10PlayerTest6UpdateEv"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -167,7 +168,8 @@
         ".character_specific_animation",
         ".player_test_ctor",
         ".player_test_switch_anim",
-        ".player_test_switch_anim_table"
+        ".player_test_switch_anim_table",
+        ".player_test_update"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -361,6 +363,13 @@
         "_ZN8Factions4initEv",
         "_ZN7Vehicle18getSeatedAnimationEv",
         "_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE",
-        "_ZNK7Vehicle16getCloseDoorAnimEv"
+        "_ZNK7Vehicle16getCloseDoorAnimEv",
+        "_ZN10PlayerTest10updateAnimEf",
+        "_ZN10PlayerTest15onTargetReachedEv",
+        "_ZN10PlayerTest20updateCarInteractionEv",
+        "_ZN10PlayerTest4moveEff",
+        "_ZN10PlayerTest6moveToERK7Vehicle",
+        "_ZN15CControlManager6updateEv",
+        "_ZN18WantedLevelManager19_processWantedLevelEv"
     ]
 }
