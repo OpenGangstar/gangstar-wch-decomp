@@ -260,7 +260,7 @@ public:
 private:
     int unknown20, unknown24, unknown28, unknown32, unknown36;
     gameswf::character* animation;
-    unsigned char unknown44[96];
+    int achievementIds[24];
     int unknown140;
 };
 
@@ -2047,6 +2047,57 @@ void Widgets::Achievements::OnEvent(RenderFX::Event& event)
     }
     event.consumed = true;
 }
+
+static const char achievementsRowTitlePath[] = "widgetAchievements.content.anim.btnScroll.entry%d.txtTitle";
+static const char achievementsRowDescriptionPath[] = "widgetAchievements.content.anim.btnScroll.entry%d.txtDescription";
+static const char achievementsRowIconPath[] = "widgetAchievements.content.anim.btnScroll.entry%d.icon";
+static const char achievementsCompletedDescription[] = "<font color=\"#FFFF99\">%s</font>";
+static const char achievementsUnlockedFrame[] = "unlock";
+static const char achievementsEntryFormat[] = "widgetAchievements.content.anim.btnScroll.entry%d";
+static const char achievementsLayoutCallback[] = "updateLayout";
+static const char achievementsLockedFrame[] = "lock";
+
+void Widgets::Achievements::UpdateLocalization()
+{
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    MenuManager* manager = MenuManager::getInstance();
+    char name[128];
+    char description[512];
+    for (int row = 0; row < 4; ++row) {
+        int index = (unknown20 + row) % (unknown140 + 2);
+        if (index < 0)
+            index += unknown140 + 2;
+        if (index < unknown140) {
+            const AchievementManager::Achievement* achievement =
+                AchievementManager::s_achievementManager->getAchievementFromID(achievementIds[index]);
+            sprintf(name, achievementsRowTitlePath, row);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, name,
+                _ZNK13StringManager9getStringEi(strings, achievement->titleId), true, false);
+            sprintf(name, achievementsRowDescriptionPath, row);
+            if (achievement->flags & 2u) {
+                sprintf(description, achievementsCompletedDescription,
+                    _ZNK13StringManager9getStringEi(strings, *reinterpret_cast<const int*>(achievement->unknown12)));
+                _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, name, description, true, false);
+            } else {
+                _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, name,
+                    _ZNK13StringManager9getStringEi(strings, *reinterpret_cast<const int*>(achievement->unknown12)), true, false);
+            }
+            sprintf(name, achievementsRowIconPath, row);
+            renderFX->SetVisible(name, true);
+            renderFX->GotoFrame(name, achievement->flags & 2u ? achievementsUnlockedFrame : achievementsLockedFrame, false);
+            sprintf(name, achievementsEntryFormat, row);
+            renderFX->InvokeASCallback(name, achievementsLayoutCallback);
+        } else {
+            sprintf(name, achievementsRowTitlePath, row);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, name, localStartupEmptyText, false, false);
+            sprintf(name, achievementsRowDescriptionPath, row);
+            _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager, name, localStartupEmptyText, false, false);
+            sprintf(name, achievementsRowIconPath, row);
+            renderFX->SetVisible(name, false);
+        }
+    }
+}
+
 
 static const char mainButtonPrefix[] = "btnMain";
 static const char mainTwitterButton[] = "btnTwitter";

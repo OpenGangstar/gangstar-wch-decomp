@@ -239,7 +239,8 @@
         "_ZN7Widgets9Objective7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets6Dialog7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets8Language7OnEventERN8RenderFX5EventE",
-        "_ZN7Widgets8Controls7OnEventERN8RenderFX5EventE"
+        "_ZN7Widgets8Controls7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets12Achievements18UpdateLocalizationEv"
     ],
     "sections": [
         ".volumesButton",
@@ -492,7 +493,8 @@
         ".dialogIgnoreButton",
         ".widgets_controls_event",
         ".controlsSteeringPart",
-        ".controlsThrottlePart"
+        ".controlsThrottlePart",
+        ".widgets_achievements_localize"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -603,6 +605,7 @@
         "_ZN11MenuManager15enableAsianFontEb",
         "_ZN11MenuManager18updateLocalizationEv",
         "_ZN13StringManager10switchPackEj",
-        "_ZN13StringManager8loadPackEj"
+        "_ZN13StringManager8loadPackEj",
+        "_ZNK18AchievementManager20getAchievementFromIDEi"
     ]
 }
