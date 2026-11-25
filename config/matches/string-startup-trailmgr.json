@@ -26,6 +26,8 @@
     "source": "src/game/world/TrailMgr.cpp",
     "linker_script": "config/linker/TrailMgrStringStartup.ld",
     "functions": [
+        "_ZN8TrailMgr14AllocTrailListEPP5Traili",
+        "_ZN8TrailMgr6RenderEv",
         "_ZN8TrailMgrC1Ev",
         "_ZN8TrailMgrC2Ev",
         "_ZN8TrailMgrD0Ev",
@@ -51,6 +53,8 @@
         }
     ],
     "sections": [
+        ".trail_alloc_list",
+        ".trail_render",
         ".trail_mgr_vtable",
         ".string_startup_function_0",
         ".string_startup_function_1",
@@ -63,6 +67,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN5Trail6RenderEv",
         "_ZN5TrailC1Ev",
         "_ZN5Trail4InitEiiiff",
         "_ZN5Trail6UpdateEv",

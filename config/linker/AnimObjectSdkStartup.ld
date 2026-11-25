@@ -11,10 +11,12 @@ __aeabi_fsub = 0x001c4328;
 __aeabi_fcmple = 0x001c43ac;
 __aeabi_fcmplt = 0x001c479c;
 __aeabi_fcmpge = 0x001c4364;
+__aeabi_fcmpgt = 0x001c419c;
 fmodf = 0x001c3fec;
 memmove = 0x001c40ac;
 SECTIONS
 {
+    .anim_is_over 0x00349444 : { *sdk-startup-animobject.o(.text._ZN10AnimObject10IsAnimOverEv) }
     .fselect 0x00349314 : { *sdk-startup-animobject.o(.text._Z7FSelectfff) }
     .anim_reset 0x0034934c : { *sdk-startup-animobject.o(.text._ZN10AnimObject5ResetEv) }
     .sdk_startup_function_0 0x00349414 : { *sdk-startup-animobject.o(.text.__tcf_2) }
@@ -46,3 +48,4 @@ SECTIONS
 ASSERT(SIZEOF(.fselect) == 32, "native FSelect function and literal extent");
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.anim_is_over) == 112, "Native AnimObject IsAnimOver extent");

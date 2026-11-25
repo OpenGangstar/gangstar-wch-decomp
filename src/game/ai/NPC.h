@@ -47,6 +47,7 @@ public:
     virtual bool isPhotographed() const;
     void Load(const Structs::NPC&);
     bool isCop();
+    bool isOutsideSearchRadius();
     void notifyTargeted(bool targeted, Character* by);
     void attackTarget(LevelObject* object);
     bool isTargetable();

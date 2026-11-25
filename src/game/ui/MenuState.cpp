@@ -2161,3 +2161,42 @@ bool Menus::MainMenu::Notify(const MenuWidget* widget, int event)
     return false;
 }
 
+
+extern "C" char* strcat(char* destination, const char* source);
+#include "../rendering/RetailSwfString.h"
+extern "C" void _ZNK7gameswf8weak_ptrINS_9characterEE11check_proxyEv(const void*)
+    __attribute__((long_call));
+namespace {
+struct PathCharacter {
+    unsigned char unknown0[0x80];
+    void* parentProxy;
+    gameswf::character* parent;
+    gameswf::tu_string name;
+};
+}
+inline PathCharacter* pathCharacter(gameswf::character* ch)
+{
+    return reinterpret_cast<PathCharacter*>(ch);
+}
+extern "C" const char* _ZN8RenderFX5Event16GetCharacterPathEv(RenderFX::Event* event)
+{
+    if (!event->characterPath[0]) {
+        gameswf::character* ch = event->character;
+        const char* names[32];
+        int count = 0;
+        while (ch) {
+            if (pathCharacter(ch)->name.c_str()[0])
+                names[count++] = pathCharacter(ch)->name.c_str();
+            _ZNK7gameswf8weak_ptrINS_9characterEE11check_proxyEv(&pathCharacter(ch)->parentProxy);
+            ch = pathCharacter(ch)->parent;
+        }
+        char* path = event->characterPath;
+        strcpy(path, "");
+        while (count > 0) {
+            strcat(path, names[--count]);
+            if (count > 0)
+                strcat(path, ".");
+        }
+    }
+    return event->characterPath;
+}

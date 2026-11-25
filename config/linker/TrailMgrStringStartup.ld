@@ -9,6 +9,8 @@ memset = 0x001c45d4;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .trail_alloc_list 0x00348fb4 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr14AllocTrailListEPP5Traili) }
+    .trail_render 0x00349270 : { *string-startup-trailmgr.o(.text._ZN8TrailMgr6RenderEv) }
     .trail_mgr_ctor 0x00348f94 : { *string-startup-trailmgr.o(.text._ZN8TrailMgrC1Ev .text._ZN8TrailMgrC2Ev) }
     .trail_mgr_dtor 0x003490dc : { *string-startup-trailmgr.o(.text._ZN8TrailMgrD1Ev .text._ZN8TrailMgrD2Ev) }
     .trail_mgr_delete 0x003490b8 : { *string-startup-trailmgr.o(.text._ZN8TrailMgrD0Ev) }
@@ -28,3 +30,5 @@ SECTIONS
     .verification 0x00600000 : { *retail-got.o(.text) }
 }
 ASSERT(SIZEOF(.string_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
+ASSERT(SIZEOF(.trail_render) == 56, "Native TrailMgr Render extent");
+ASSERT(SIZEOF(.trail_alloc_list) == 156, "Native TrailMgr AllocTrailList extent with alignment padding");

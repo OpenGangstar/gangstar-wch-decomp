@@ -613,3 +613,13 @@ AStarNode PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode>* nodes
     *index = selected;
     return best;
 }
+
+bool PhysicAttributes::IsPositionOnJump(const irr::core::vector3d<float>& p)
+{
+    if (!hasJumpShape)
+        return false;
+    bool outside = false;
+    if (!(p.getDistanceFromSQ(jumpVertices[4]) < 90000.0f))
+        outside = true;
+    return !outside;
+}

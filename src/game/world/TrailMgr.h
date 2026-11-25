@@ -13,6 +13,8 @@ public:
     void CleanUp();
     void FreeTrail(Trail* trail);
     Trail* AllocTrail();
+    bool AllocTrailList(Trail** list, int count);
+    void Render();
 
 private:
     Trail** trails;

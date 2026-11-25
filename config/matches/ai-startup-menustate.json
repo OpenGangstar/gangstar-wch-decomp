@@ -33,6 +33,7 @@
     ],
     "linker_script": "config/linker/MenuStateAiStartup.ld",
     "functions": [
+        "_ZN8RenderFX5Event16GetCharacterPathEv",
         "_ZN5Menus15ServiceMissions8GotFocusEv",
         "_ZN5Menus8InfoHelp6NotifyEPK10MenuWidgeti",
         "_ZN5Menus10InGameMenu6NotifyEPK10MenuWidgeti",
@@ -305,6 +306,7 @@
         "_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
+        ".event_character_path",
         ".help_empty_icon",
         ".menu_update_statistics",
         ".menu_update_achievements",

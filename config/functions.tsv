@@ -9211,7 +9211,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002de8ed	0x28	GS3DStuff.cpp	game	rendering	matched	_Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_	void SafeDelete<irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> > >(irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*&)
 0x002de919	0x284	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6unloadEv	GS3DStuff::unload()
 0x002deba1	0x164	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE	GS3DStuff::checkPickableProximity(std::vector<Item*, std::allocator<Item*> >&)
-0x002ded05	0x1b8	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE	GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType)
+0x002ded05	0x1b8	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE	GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType)
 0x002deebd	0x338	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE	GS3DStuff::AddXRef(irr::scene::ISceneNode*)
 0x002df1f5	0xf0	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff12loadCityPartERK15WorldDescriptorRPN3irr5scene10ISceneNodeE	GS3DStuff::loadCityPart(WorldDescriptor const&, irr::scene::ISceneNode*&)
 0x002df2e5	0x1c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff14loadCityVisualERK15WorldDescriptor	GS3DStuff::loadCityVisual(WorldDescriptor const&)
@@ -9596,7 +9596,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e761d	0x1c	MenuState.cpp	game	ui	matched	__tcf_2	__tcf_2
 0x002e7639	0x1e	CHudManager.cpp	game	hud	matched	_ZN11CHudManager21isAnyMessageDisplayedEv	CHudManager::isAnyMessageDisplayed()
 0x002e7659	0x90	MenuState.cpp	game	ui	matched	_ZN5Menus11Achievement6UpdateEv	Menus::Achievement::Update()
-0x002e76e9	0xc0	MenuState.cpp	game	ui	pending	_ZN8RenderFX5Event16GetCharacterPathEv	RenderFX::Event::GetCharacterPath()
+0x002e76e9	0xc0	MenuState.cpp	game	ui	matched	_ZN8RenderFX5Event16GetCharacterPathEv	RenderFX::Event::GetCharacterPath()
 0x002e77a9	0x26	MenuState.cpp	gameswf	-	matched	_ZN7gameswf9smart_ptrINS_9characterEE7set_refEPS1_	gameswf::smart_ptr<gameswf::character>::set_ref(gameswf::character*)
 0x002e77d1	0x44	MenuState.cpp	game	ui	matched	_ZN6MenuFX5StateC1EPKc	MenuFX::State::State(char const*)
 0x002e7815	0x98	MenuState.cpp	game	ui	matched	_ZN5Menus10InGameMenu6NotifyEPK10MenuWidgeti	Menus::InGameMenu::Notify(MenuWidget const*, int)
@@ -10296,7 +10296,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd511	0x28	NPC.cpp	game	ai	matched	_ZN3NPC16loopPathToFollowEb	NPC::loopPathToFollow(bool)
 0x002fd539	0x1e	NPC.cpp	game	ai	matched	_ZN3NPC15setPathToFollowEPK4Path	NPC::setPathToFollow(Path const*)
 0x002fd559	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC23isLoopingOnPathToFollowEv	NPC::isLoopingOnPathToFollow() const
-0x002fd565	0xac	NPC.cpp	game	ai	pending	_ZN3NPC21isOutsideSearchRadiusEv	NPC::isOutsideSearchRadius()
+0x002fd565	0xac	NPC.cpp	game	ai	matched	_ZN3NPC21isOutsideSearchRadiusEv	NPC::isOutsideSearchRadius()
 0x002fd611	0x24	NPC.cpp	game	ai	matched	__tcf_1	__tcf_1
 0x002fd635	0x2a	NPC.cpp	game	ai	matched	_ZN3NPC5isCopEv	NPC::isCop()
 0x002fd661	0x60	NPC.cpp	game	ai	matched	_ZN3NPC10tagForKillEb	NPC::tagForKill(bool)
@@ -10361,7 +10361,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00300b65	0x34	Path.cpp	game	world	matched	_ZN4PathD0Ev	Path::~Path()
 0x00300b99	0x2c	Path.cpp	game	world	matched	_ZN4PathD1Ev	Path::~Path()
 0x00300b99	0x2c	Path.cpp	game	world	matched	_ZN4PathD2Ev	Path::~Path()
-0x00300bc5	0xc8	Path.cpp	game	world	pending	_ZN4Path4LoadERKN7Structs4PathEPN3irr7collada15CColladaFactoryE	Path::Load(Structs::Path const&, irr::collada::CColladaFactory*)
+0x00300bc5	0xc8	Path.cpp	game	world	matched	_ZN4Path4LoadERKN7Structs4PathEPN3irr7collada15CColladaFactoryE	Path::Load(Structs::Path const&, irr::collada::CColladaFactory*)
 0x00300c8d	0x40	Path.cpp	game	world	matched	_ZN4PathC2Ei	Path::Path(int)
 0x00300c8d	0x40	Path.cpp	game	world	matched	_ZN4PathC1Ei	Path::Path(int)
 0x00300ccd	0x6c	Path.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -10876,7 +10876,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031a40d	0xc0	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi	PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode, irr::core::irrAllocator<AStarNode> >*, int*)
 0x0031a4cd	0x120	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes12GetTriCenterEtt	PhysicAttributes::GetTriCenter(unsigned short, unsigned short)
 0x0031a5ed	0x90	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener6RemoveEPK14b2ContactPoint	ContactListener::Remove(b2ContactPoint const*)
-0x0031a67d	0x80	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE	PhysicAttributes::IsPositionOnJump(irr::core::vector3d<float> const&)
+0x0031a67d	0x80	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE	PhysicAttributes::IsPositionOnJump(irr::core::vector3d<float> const&)
 0x0031a6fd	0x254	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi	PhysicAttributes::GetJumpHeight(irr::core::vector3d<float> const&, int)
 0x0031a951	0x10c	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes9InitWorldEv	PhysicAttributes::InitWorld()
 0x0031aa5d	0x2d4	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff	PhysicAttributes::GetRandomDestination(unsigned short, unsigned short&, irr::core::vector3d<float> const&, float, float)
@@ -12542,7 +12542,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00348f65	0x30	Trail.cpp	game	world	matched	__tcf_2	__tcf_2
 0x00348f95	0x20	TrailMgr.cpp	game	world	matched	_ZN8TrailMgrC2Ev	TrailMgr::TrailMgr()
 0x00348f95	0x20	TrailMgr.cpp	game	world	matched	_ZN8TrailMgrC1Ev	TrailMgr::TrailMgr()
-0x00348fb5	0x9a	TrailMgr.cpp	game	world	pending	_ZN8TrailMgr14AllocTrailListEPP5Traili	TrailMgr::AllocTrailList(Trail**, int)
+0x00348fb5	0x9a	TrailMgr.cpp	game	world	matched	_ZN8TrailMgr14AllocTrailListEPP5Traili	TrailMgr::AllocTrailList(Trail**, int)
 0x00349051	0x36	TrailMgr.cpp	game	world	matched	_ZN8TrailMgr9FreeTrailEP5Trail	TrailMgr::FreeTrail(Trail*)
 0x00349089	0x30	TrailMgr.cpp	game	world	matched	__tcf_0	__tcf_0
 0x003490b9	0x24	TrailMgr.cpp	game	world	matched	_ZN8TrailMgrD0Ev	TrailMgr::~TrailMgr()
@@ -12553,7 +12553,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349149	0x3e	TrailMgr.cpp	game	world	matched	_ZN8TrailMgr7CleanUpEv	TrailMgr::CleanUp()
 0x00349189	0xa8	TrailMgr.cpp	game	world	matched	_ZN8TrailMgr4InitEiiiiff	TrailMgr::Init(int, int, int, int, float, float)
 0x00349231	0x3e	TrailMgr.cpp	game	world	matched	_ZN8TrailMgr10AllocTrailEv	TrailMgr::AllocTrail()
-0x00349271	0x38	TrailMgr.cpp	game	world	pending	_ZN8TrailMgr6RenderEv	TrailMgr::Render()
+0x00349271	0x38	TrailMgr.cpp	game	world	matched	_ZN8TrailMgr6RenderEv	TrailMgr::Render()
 0x003492a9	0x58	TrailMgr.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00349301	0x14	TrailMgr.cpp	game	world	matched	_GLOBAL__I__ZN8TrailMgrC2Ev	_GLOBAL__I__ZN8TrailMgrC2Ev
 0x00349315	0x20	AnimObject.cpp	game	characters	matched	_Z7FSelectfff	FSelect(float, float, float)
@@ -12571,7 +12571,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003493d9	0x28	AnimObject.cpp	game	characters	matched	_ZN10AnimObject7SetAnimEi	AnimObject::SetAnim(int)
 0x00349401	0x12	AnimObject.cpp	game	characters	matched	_ZN10AnimObject7SetAnimEii	AnimObject::SetAnim(int, int)
 0x00349415	0x30	AnimObject.cpp	game	characters	matched	__tcf_2	__tcf_2
-0x00349445	0x70	AnimObject.cpp	game	characters	pending	_ZN10AnimObject10IsAnimOverEv	AnimObject::IsAnimOver()
+0x00349445	0x70	AnimObject.cpp	game	characters	matched	_ZN10AnimObject10IsAnimOverEv	AnimObject::IsAnimOver()
 0x003494b5	0x58	AnimObject.cpp	game	characters	matched	_ZN10AnimObject22GetCurrentBoundingRectEv	AnimObject::GetCurrentBoundingRect()
 0x0034950d	0x54	AnimObject.cpp	game	characters	matched	_ZN10AnimObject4DrawEv	AnimObject::Draw()
 0x00349561	0x50	AnimObject.cpp	game	characters	matched	_Z15PlayPolicy_Loopfff	PlayPolicy_Loop(float, float, float)

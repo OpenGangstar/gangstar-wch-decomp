@@ -19,6 +19,38 @@ TrailMgr::TrailMgr() : trails(0), allocated(0), trailCount(0)
 {
 }
 
+static inline bool IsTrailDead(Trail* trail)
+{
+    return trail->points[0].remainingLife <= 0;
+}
+
+bool TrailMgr::AllocTrailList(Trail** list, int count)
+{
+    int found = 0;
+    int i;
+    if (!trails)
+        return false;
+    for (i = 0; i < trailCount; ++i) {
+        Trail* trail = trails[i];
+        if (trail && !allocated[i] && IsTrailDead(trail)) {
+            list[found] = trail;
+            allocated[i] = true;
+            ++found;
+        }
+    }
+    if (found != count) {
+        int j = 0;
+        for (i = 0; i < trailCount && j < count && list[j]; ++i) {
+            if (list[j] == trails[i]) {
+                allocated[i] = false;
+                ++j;
+            }
+        }
+        return false;
+    }
+    return true;
+}
+
 TrailMgr::~TrailMgr()
 {
     trailCount = 0;
@@ -91,6 +123,15 @@ void TrailMgr::FreeTrail(Trail* trail)
             allocated[i] = false;
             return;
         }
+    }
+}
+
+void TrailMgr::Render()
+{
+    for (int i = 0; i < trailCount; ++i) {
+        Trail* trail = trails[i];
+        if (trail && !IsTrailDead(trail))
+            trail->Render();
     }
 }
 

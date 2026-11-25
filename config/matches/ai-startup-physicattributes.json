@@ -28,6 +28,7 @@
     "source": "src/game/characters/PhysicAttributes.cpp",
     "linker_script": "config/linker/PhysicAttributesAiStartup.ld",
     "functions": [
+        "_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE",
         "_ZN16PhysicAttributes21UpdateEdgesCollisionsEi",
         "_ZN16PhysicAttributes5CleanEv",
         "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
@@ -77,6 +78,7 @@
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
     ],
     "sections": [
+        ".physic_position_on_jump",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",

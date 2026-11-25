@@ -82,6 +82,7 @@ public:
     irr::core::vector3d<float> pathTarget;
     int pathLength;
     void SetCurrentJumpShape(b2Shape* shape);
+    bool IsPositionOnJump(const irr::core::vector3d<float>& p);
     // Slots 0..3 are corners; slot 4 is their computed center.
     irr::core::vector3d<float> jumpVertices[5];
     bool hasJumpShape;

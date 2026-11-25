@@ -376,7 +376,6 @@
         "_ZN17GameObjectManager22RemoveGameObjectOfTypeEi",
         "_ZN17GameObjectManager19AddGameObjectOfTypeEi",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
-        "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN11Application11GetInstanceEv",
         "_ZN17GameObjectManager13getObjectListEi",
         "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",

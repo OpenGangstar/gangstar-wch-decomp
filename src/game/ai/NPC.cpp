@@ -880,3 +880,13 @@ void NPC::triggerCombatSFX(int type)
         }
     }
 }
+
+bool NPC::isOutsideSearchRadius()
+{
+    if (category428 != 5)
+        return false;
+    bool inside = false;
+    if (!(GetPosition().getDistanceFromSQ(searchOrigin) > searchRadiusSquared))
+        inside = true;
+    return !inside;
+}
