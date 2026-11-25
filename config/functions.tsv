@@ -9559,7 +9559,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e6d9d	0x14	MenuManager_Map.cpp	game	ui	matched	_GLOBAL__I__ZN11MenuManager7initMapEv	_GLOBAL__I__ZN11MenuManager7initMapEv
 0x002e6db1	0x230	MenuManager.cpp	game	ui	matched	_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE	MenuManager::_zoomMap(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
 0x002e6fe1	0x184	MenuManager.cpp	game	ui	matched	_ZN11MenuManager9updateMapEv	MenuManager::updateMap()
-0x002e7165	0x1ac	MenuManager.cpp	game	ui	pending	_ZN11MenuManager7initMapEv	MenuManager::initMap()
+0x002e7165	0x1ac	MenuManager.cpp	game	ui	matched	_ZN11MenuManager7initMapEv	MenuManager::initMap()
 0x002e7311	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State6CreateEv	MenuFX::State::Create()
 0x002e7315	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State4ShowEv	MenuFX::State::Show()
 0x002e7319	0x2	MenuState.cpp	game	ui	matched	_ZN6MenuFX5State4HideEv	MenuFX::State::Hide()
@@ -10213,9 +10213,9 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f954d	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_GLOBAL__I__ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	_GLOBAL__I__ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi
 0x002f9561	0x30	CustomSkyBoxSceneNode.cpp	game	rendering	matched	__tcf_2	__tcf_2
 0x002f9591	0x158	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNode6renderEPv	CustomSkyBoxSceneNode::render(void*)
-0x002f96e9	0x1378	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int)
+0x002f96e9	0x1378	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int)
 0x002faa61	0x58	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNode5cloneEPN3irr5scene10ISceneNodeEPNS1_13ISceneManagerE	CustomSkyBoxSceneNode::clone(irr::scene::ISceneNode*, irr::scene::ISceneManager*)
-0x002faab9	0x1348	CustomSkyBoxSceneNode.cpp	game	rendering	pending	_ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int)
+0x002faab9	0x1348	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi	CustomSkyBoxSceneNode::CustomSkyBoxSceneNode(irr::video::ITexture*, irr::scene::ISceneNode*, int)
 0x002fbe01	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZTv0_n12_N21CustomSkyBoxSceneNodeD0Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
 0x002fbe15	0x14	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZTv0_n24_N21CustomSkyBoxSceneNodeD0Ev	virtual thunk to CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
 0x002fbe29	0x98	CustomSkyBoxSceneNode.cpp	game	rendering	matched	_ZN21CustomSkyBoxSceneNodeD0Ev	CustomSkyBoxSceneNode::~CustomSkyBoxSceneNode()
@@ -12033,7 +12033,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033d1b9	0x28	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager14showSkipButtonEv	ScriptManager::showSkipButton()
 0x0033d1e1	0x4a	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager27getFirstAvailableCheckpointEv	ScriptManager::getFirstAvailableCheckpoint() const
 0x0033d22d	0x44	ScriptManager.cpp	stlport	-	matched	_ZNSaIP6ScriptE8allocateEjRj	std::allocator<Script*>::allocate(unsigned int, unsigned int&)
-0x0033d271	0x70	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager19reachRunningCommandEi	ScriptManager::reachRunningCommand(int)
+0x0033d271	0x70	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager19reachRunningCommandEi	ScriptManager::reachRunningCommand(int)
 0x0033d2e1	0x12	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager11missionIdleEv	ScriptManager::missionIdle()
 0x0033d2f5	0x5c	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager8drawFadeEv	ScriptManager::drawFade() const
 0x0033d351	0xe	ScriptManager.cpp	game	scripting	matched	_ZNK13ScriptManager17drawCinematicBarsEv	ScriptManager::drawCinematicBars() const

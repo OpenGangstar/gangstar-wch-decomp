@@ -490,7 +490,6 @@
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10getMissionEv",
         "_ZNK7Mission20getLastObjectiveTextEv",
-        "_ZN11MenuManager7initMapEv",
         "_ZNK12StateMachine12getTimeStampEv",
         "_ZNK7Mission8getStateEv",
         "_ZN8SaveGameC1Ev",

@@ -25,10 +25,16 @@ template<class T> inline const T clamp(const T& value, const T& low, const T& hi
 { return min_(max_(value, low), high); }
 template<class T> class aabbox3d {
 public:
+    aabbox3d() : MinEdge(-1, -1, -1), MaxEdge(1, 1, 1) {}
     aabbox3d(const vector3d<T>& init) : MinEdge(init), MaxEdge(init) {}
+    void reset(T x, T y, T z) { MaxEdge = vector3d<T>(x, y, z); MinEdge = MaxEdge; }
     vector3d<T> MinEdge, MaxEdge;
-private:
-    aabbox3d(); // The default constructor remains unrecovered.
+};
+template<class T> class vector2d {
+public:
+    vector2d() : X(0), Y(0) {}
+    vector2d(T x, T y) : X(x), Y(y) {}
+    T X, Y;
 };
 template<class T> class line3d {
 public:

@@ -51,7 +51,9 @@
             "name": "_GLOBAL__I__ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi",
             "address": "0x002f954d"
         },
-        "_ZN21CustomSkyBoxSceneNode11setSkyColorEb"
+        "_ZN21CustomSkyBoxSceneNode11setSkyColorEb",
+        "_ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi",
+        "_ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi"
     ],
     "sections": [
         ".skybox_vtable",
@@ -66,13 +68,20 @@
             "name": ".got",
             "offset": 864
         },
-        ".skybox_set_sky_color"
+        ".skybox_set_sky_color",
+        ".skybox_ctor_c2",
+        ".skybox_ctor_c1"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN3irr5scene10ISceneNodeD2Ev",
         "_ZN3irr5scene10ISceneNode19OnRegisterSceneNodeEv",
         "_ZN3irr5scene10ISceneNode12cloneMembersEPS1_",
-        "_ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
+        "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
+        "_ZN3irr5scene10ISceneNode18setMaterialTextureEjPNS_5video8ITextureE",
+        "_ZN3irr5scene10ISceneNode19setAutomaticCullingENS0_14E_CULLING_TYPEE",
+        "_ZN3irr5scene10ISceneNodeC2EiRKNS_4core8vector3dIfEERKNS2_10quaternionES6_"
     ]
 }
