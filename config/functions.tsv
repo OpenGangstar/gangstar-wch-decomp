@@ -10323,7 +10323,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fdbed	0x110	NPC.cpp	game	ai	matched	_ZN3NPC5debugEPN3irr5video12IVideoDriverE	NPC::debug(irr::video::IVideoDriver*)
 0x002fdcfd	0xec	NPC.cpp	game	ai	matched	_ZN3NPC4LoadERKN7Structs3NPCE	NPC::Load(Structs::NPC const&)
 0x002fdde9	0x68	NPC.cpp	game	ai	matched	_ZN3NPC15getNextWaypointEv	NPC::getNextWaypoint()
-0x002fde51	0x1a0	NPC.cpp	game	ai	pending	_ZN3NPC10isUnderCarEv	NPC::isUnderCar()
+0x002fde51	0x1a0	NPC.cpp	game	ai	matched	_ZN3NPC10isUnderCarEv	NPC::isUnderCar()
 0x002fdff1	0x94	NPC.cpp	game	ai	matched	_ZN3NPC12getNextPointERN3irr4core8vector3dIfEE	NPC::getNextPoint(irr::core::vector3d<float>&)
 0x002fe085	0x64	NPC.cpp	game	ai	matched	_ZN3NPC13goToNextPointEb	NPC::goToNextPoint(bool)
 0x002fe0e9	0x80	NPC.cpp	game	ai	pending	_ZN3NPC11isHostileToEP11LevelObject	NPC::isHostileTo(LevelObject*)
@@ -11933,7 +11933,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338179	0x30	MissionConditionStayWithin.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x003381a9	0x64	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinC1EP11LevelObjectii	MissionConditionStayWithin::MissionConditionStayWithin(LevelObject*, int, int)
 0x003381a9	0x64	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinC2EP11LevelObjectii	MissionConditionStayWithin::MissionConditionStayWithin(LevelObject*, int, int)
-0x0033820d	0x20c	MissionConditionStayWithin.cpp	game	missions	pending	_ZN26MissionConditionStayWithin8evaluateEi	MissionConditionStayWithin::evaluate(int)
+0x0033820d	0x20c	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithin8evaluateEi	MissionConditionStayWithin::evaluate(int)
 0x00338419	0x144	MissionConditionStayWithin.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033855d	0x14	MissionConditionStayWithin.cpp	game	missions	matched	_GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii	_GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii
 0x00338571	0x68	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinD0Ev	MissionConditionStayWithin::~MissionConditionStayWithin()

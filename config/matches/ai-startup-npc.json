@@ -26,6 +26,7 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC10isUnderCarEv",
         "_ZN3NPC21isOutsideSearchRadiusEv",
         "_ZN3NPC5debugEPN3irr5video12IVideoDriverE",
         {
@@ -118,6 +119,7 @@
         "_ZN3NPC16triggerCombatSFXEi"
     ],
     "sections": [
+        ".npc_is_under_car",
         ".npc_outside_search_radius",
         ".npc_vtable",
         ".npcAnimationRootName",
@@ -148,6 +150,7 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf",
         "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN11Application11GetInstanceEv",

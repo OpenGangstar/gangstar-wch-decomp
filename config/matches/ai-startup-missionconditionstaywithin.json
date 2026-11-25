@@ -15,6 +15,7 @@
         "-ffunction-sections",
         "-fdata-sections",
         "-finline-limit=70",
+        "-fstack-protector",
         "-fno-short-enums"
     ],
     "assembler_flags": [
@@ -26,6 +27,7 @@
     "source": "src/game/missions/MissionConditionStayWithin.cpp",
     "linker_script": "config/linker/MissionConditionStayWithinAiStartup.ld",
     "functions": [
+        "_ZN26MissionConditionStayWithin8evaluateEi",
         {
             "name": "__tcf_3",
             "address": "0x00338179"
@@ -46,6 +48,7 @@
         "_ZN26MissionConditionStayWithinD2Ev"
     ],
     "sections": [
+        ".stay_within_evaluate",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -67,7 +70,10 @@
         "_ZN11LevelObject13showHighlightEi",
         "_ZN11MenuManager11getInstanceEv",
         "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
-        "_ZN26MissionConditionStayWithin8evaluateEi",
-        "_ZNK17IMissionCondition5causeEv"
+        "_ZNK17IMissionCondition5causeEv",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK11MenuManager7getTextENS_5eTextE",
+        "_ZNK13StringManager9getStringEi"
     ]
 }

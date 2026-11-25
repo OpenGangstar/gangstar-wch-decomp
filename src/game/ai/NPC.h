@@ -48,6 +48,8 @@ public:
     void Load(const Structs::NPC&);
     bool isCop();
     bool isOutsideSearchRadius();
+    bool isUnderCar();
+    bool isHostileTo(LevelObject* object);
     void notifyTargeted(bool targeted, Character* by);
     void attackTarget(LevelObject* object);
     bool isTargetable();
