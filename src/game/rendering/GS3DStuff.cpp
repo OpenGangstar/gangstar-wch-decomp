@@ -1153,15 +1153,97 @@ void GS3DStuff::unload()
     Vehicle::RegisterCarSoundsCallbacks();
 }
 
+/* basic_string<char>::_M_append follows STLport 5.x _string.c.
+ * Copyright (c) 1994 Hewlett-Packard Company
+ * Copyright (c) 1996,1997 Silicon Graphics Computer Systems, Inc.
+ * Copyright (c) 1997 Moscow Center for SPARC Technology
+ * Copyright (c) 1999 Boris Fomitchev
+ * Distributed under the notice reproduced above in this file.
+ * Modified: char-only private view with the allocator and length-error calls
+ * bound to their native symbols; helper bodies written inline.
+ */
+extern "C" {
+char* _ZNSaIcE8allocateEjRj(std::allocator<char>*, unsigned int, unsigned int&) __attribute__((weak));
+void _ZNK9stlp_priv12_String_baseIcSaIcEE21_M_throw_length_errorEv(const void*) __attribute__((weak, noreturn));
+}
 namespace std {
 template<class T> struct char_traits;
 template<class T, class Traits = char_traits<T>, class Alloc = allocator<T> >
 class basic_string {
 public:
+    typedef unsigned int size_type;
     basic_string& append(const T* text);
 private:
+    struct Proxy : public Alloc { T* _M_data; };
+    union Buffers { T* _M_dynamic_buf; T _M_static_buf[16]; } _M_buffers;
+    T* _M_finish;
+    Proxy _M_end_of_storage;
+    bool _M_using_static_buf() const
+    { return _M_end_of_storage._M_data == _M_buffers._M_static_buf + 16; }
+    const T* _M_Start() const
+    { return _M_using_static_buf() ? _M_buffers._M_static_buf : _M_buffers._M_dynamic_buf; }
+    T* _M_Finish() { return _M_finish; }
+    size_type size() const { return _M_finish - _M_Start(); }
+    size_type max_size() const { return size_type(-1) / sizeof(T) - 1; }
+    size_type capacity() const { return (_M_end_of_storage._M_data - _M_Start()) - 1; }
+    void _M_throw_length_error() const __attribute__((noreturn))
+    { _ZNK9stlp_priv12_String_baseIcSaIcEE21_M_throw_length_errorEv(this); }
+    void _M_reset(T* start, T* finish, T* end)
+    {
+        _M_buffers._M_dynamic_buf = start;
+        _M_finish = finish;
+        _M_end_of_storage._M_data = end;
+    }
+    static void _M_construct_null(T* p) { *p = 0; }
+    static T* __ucopy(const T* first, const T* last, T* result)
+    {
+        T* cur = result;
+        for (int n = last - first; n > 0; --n) {
+            *cur = *first;
+            ++first;
+            ++cur;
+        }
+        return cur;
+    }
+    static const size_type& max_ref(const size_type& a, const size_type& b) { return a < b ? b : a; }
     basic_string& _M_append(const T* first, const T* last) __attribute__((weak));
 };
+template<>
+basic_string<char>& basic_string<char>::_M_append(const char* first, const char* last)
+{
+    if (first != last) {
+        const size_type old_size = size();
+        int n = last - first;
+        if (n > max_size() || old_size > max_size() - n)
+            _M_throw_length_error();
+        if (old_size + n > capacity()) {
+            size_type len = old_size + max_ref(old_size, static_cast<size_type>(n)) + 1;
+            char* new_start = _ZNSaIcE8allocateEjRj(&_M_end_of_storage, len, len);
+            char* new_finish = new_start;
+            new_finish = __ucopy(_M_Start(), _M_Finish(), new_start);
+            new_finish = __ucopy(first, last, new_finish);
+            _M_construct_null(new_finish);
+            if (_M_buffers._M_static_buf + 16 != _M_end_of_storage._M_data &&
+                _M_buffers._M_dynamic_buf != 0)
+                ::operator delete(_M_buffers._M_dynamic_buf);
+            _M_reset(new_start, new_finish, new_start + len);
+        } else {
+            const char* f1 = first;
+            ++f1;
+            if (_M_using_static_buf()) {
+                char* res = _M_Finish() + 1;
+                int count = last - f1;
+                if (count != 0)
+                    memcpy(res, f1, count);
+            } else
+                __ucopy(f1, last, _M_Finish() + 1);
+            _M_construct_null(_M_Finish() + n);
+            *_M_finish = *first;
+            _M_finish += n;
+        }
+    }
+    return *this;
+}
 template<>
 basic_string<char>& basic_string<char>::append(const char* text)
 {

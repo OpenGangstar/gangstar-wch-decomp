@@ -1,3 +1,4 @@
+__aeabi_f2iz = 0x001c44cc;
 __aeabi_i2d = 0x001c452c;
 memcpy = 0x001c4190;
 memset = 0x001c45d4;
@@ -30,6 +31,7 @@ INCLUDE config/linker/ApplicationEventSections.ld
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/ApplicationRuntimeSections.ld
+INCLUDE config/linker/ApplicationOnEventSections.ld
 SECTIONS
 {
     .application_ctor 0x002d51f8 : { *application-helpers.o(.text._ZN11ApplicationC1Ev) }

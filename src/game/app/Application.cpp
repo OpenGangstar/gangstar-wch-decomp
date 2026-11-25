@@ -8,6 +8,8 @@
  * functions of Application.cpp here, in the order they appear in the library.
  */
 
+#include "../core/VideoDriver.h"
+#include "../input/TouchScreenMouseEvent.h"
 #include "Application.h"
 #include "../core/ASprite.h"
 #include "../core/SafeDelete.h"
@@ -384,28 +386,53 @@ void Application::startMonitoring(void* pointer, const char* name)
     (*reinterpret_cast<MonitoredPointerMap*>(&monitoredPointers))[pointer] = name;
 }
 
+// Historical partial-interface note, superseded by the recovery below.
 // Observed IEvent-derived interface only; payload layout is not asserted.
+// Native event payload recovered from Application::OnEvent.
 class EvMouseMove : public IEvent {
 public:
+    // Payload recovered from the native event translation path.
+    EvMouseMove(short a, short b) : IEvent(1), x(a), y(b) {}
+    short x, y;
     virtual ~EvMouseMove() __attribute__((used)) {}
 };
 
+// Historical partial-interface note, superseded by the recovery below.
 // Observed deletion interface only; payload and allocation extent remain unrecovered.
 // Do not instantiate this partial event interface.
+// Native keyboard payload; the trailing byte is initialized false.
 class EvKeyboard : public IEvent {
 public:
+    // Payload recovered from the native event translation path.
+    EvKeyboard(wchar_t a, int b, bool c, bool d, bool e)
+        : IEvent(0), character(a), key(b), pressed(c), shift(d), control(e), unknown19(false) {}
+    wchar_t character;
+    int key;
+    bool pressed, shift, control, unknown19;
     virtual ~EvKeyboard() __attribute__((used)) {}
 };
 
+// Historical partial-interface note, superseded by the recovery below.
 // Observed event hierarchy only; no payload extent is asserted.
+// Native wheel payload; the float input is converted before construction.
 class EvMouseWheel : public IEvent {
 public:
+    // Payload recovered from the native event translation path.
+    explicit EvMouseWheel(int a) : IEvent(3), delta(a) {}
+    int delta;
     virtual ~EvMouseWheel() __attribute__((used)) {}
 };
 
+// Historical partial-interface note, superseded by the recovery below.
 // Partial event interface only; mouse-button payload remains unrecovered.
+// Native button payload with 16-bit coordinate storage.
 class EvMouseButton : public IEvent {
 public:
+    // Payload recovered from the native event translation path.
+    EvMouseButton(int a, bool b, short c, short d) : IEvent(2), button(a), pressed(b), x(c), y(d) {}
+    int button;
+    bool pressed;
+    short x, y;
     virtual ~EvMouseButton() __attribute__((used)) {}
 };
 
@@ -943,4 +970,70 @@ Application::Application()
     defaultLanguage=nativedetectPhoneLang();
     unknown144[0]=0;
     lastPressedKey=-1;
+}
+
+namespace {
+// Keyboard payload of irr::SEvent, which shares storage with the mouse payload.
+// Event kinds handled by Application::OnEvent beyond the shared mouse prefix.
+enum InputEventKind { KeyInputEvent = 2 };
+enum MouseInputKind { RightPressed = 1, MiddlePressed = 2, RightReleased = 4, MiddleReleased = 5, MouseWheel = 7 };
+
+struct KeyInputEventView {
+    int type;
+    unsigned char unknown4[4];
+    wchar_t character;
+    int key;
+    bool pressed;
+    bool shift;
+    bool control;
+};
+}
+
+bool Application::OnEvent(const irr::SEvent& event)
+{
+    bool handled = false;
+    typedef stlp_priv::_List_iterator<irr::IEventReceiver*, std::_Nonconst_traits<irr::IEventReceiver*> > iterator;
+    iterator first(eventReceivers._M_node._M_data.next);
+    iterator last(&eventReceivers._M_node._M_data);
+    for (; first != last; ++first)
+        handled |= (*first)->OnEvent(event);
+    if (event.type == KeyInputEvent) {
+        const KeyInputEventView& key = reinterpret_cast<const KeyInputEventView&>(event);
+        if (key.character == L'b' && key.pressed)
+            device->getVideoDriver()->setOption(128, !device->getVideoDriver()->getOption(128));
+        eventManager->raise(EvKeyboard(key.character, key.key, key.pressed,
+                              key.shift, key.control));
+        return true;
+    } else if (event.type == irr::SEvent::MouseInputEvent) {
+        switch (event.mouse.event) {
+        case irr::SEvent::MouseMoved: {
+            eventManager->raise(EvMouseMove(event.mouse.x, event.mouse.y));
+            break;
+        }
+        case MouseWheel: {
+            eventManager->raise(EvMouseWheel(static_cast<int>(event.mouse.wheel)));
+            break;
+        }
+        case irr::SEvent::LeftPressed:
+        case irr::SEvent::LeftReleased: {
+            eventManager->raise(EvMouseButton(0, event.mouse.event == irr::SEvent::LeftPressed,
+                                     event.mouse.x, event.mouse.y));
+            break;
+        }
+        case MiddlePressed:
+        case MiddleReleased: {
+            eventManager->raise(EvMouseButton(1, event.mouse.event == MiddlePressed,
+                                     event.mouse.x, event.mouse.y));
+            break;
+        }
+        case RightPressed:
+        case RightReleased: {
+            eventManager->raise(EvMouseButton(2, event.mouse.event == RightPressed,
+                                     event.mouse.x, event.mouse.y));
+            break;
+        }
+        }
+        return true;
+    }
+    return handled;
 }

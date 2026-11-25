@@ -13,6 +13,7 @@ SECTIONS {
     .gs_set_alpha 0x002df34c : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE) }
     .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_7) }
     .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_8) }
+    .gs3d_string_m_append 0x002dcd28 : { *gs3d-stuff.o(.text._ZNSs9_M_appendEPKcS0_) }
     .gs_string_append 0x002dce9c : { *gs3d-stuff.o(.text._ZNSs6appendEPKc) }
     .gs_unload 0x002de918 : { *gs3d-stuff.o(.text._ZN9GS3DStuff6unloadEv) }
     .gs_global_4b6994 0x004b6994 (NOLOAD) : { *gs3d-stuff.o(.bss._ZN9GS3DStuff7sunNodeE) }

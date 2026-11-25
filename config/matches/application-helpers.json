@@ -132,7 +132,8 @@
         "_ZN11Application10InitIPhoneEPN3irr14IrrlichtDeviceEffff",
         "_ZN11ApplicationC1Ev",
         "_ZN11ApplicationC2Ev",
-        "_ZN11Application19UnRegisterForUpdateEP10IUpdatable"
+        "_ZN11Application19UnRegisterForUpdateEP10IUpdatable",
+        "_ZN11Application7OnEventERKN3irr6SEventE"
     ],
     "sections": [
         ".screen_dimensions",
@@ -187,7 +188,9 @@
         ".application_draw",
         ".application_init_iphone",
         ".application_ctor",
-        ".application_unregister_update"
+        ".application_unregister_update",
+        ".application_on_event",
+        ".application_on_event_switch"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -219,7 +222,6 @@
         "_ZN3irr5video15CTextureManager17unloadAllTexturesEv",
         "_ZN11MenuManager5popToEPKcbb",
         "_ZN11MenuManager13preloadGlyphsEb",
-        "_ZN11Application7OnEventERKN3irr6SEventE",
         "_ZN15FileSystemWin32C1Ev",
         "_ZN16TouchScreenWin32C1Ev",
         "_ZN18AccelerometerWin32C1Ev",
@@ -255,7 +257,8 @@
         "_ZN11MenuManager6updateEP12StateMachine",
         "_ZN12StateMachine10isDrawableEv",
         "_ZN13ScriptManager4drawEv",
-        "_ZN11MenuManager4drawEPK12StateMachine"
+        "_ZN11MenuManager4drawEPK12StateMachine",
+        "_ZN12EventManager5raiseERK6IEvent"
     ],
     "dependencies": [
         "jni-gangstar"

@@ -1,3 +1,4 @@
+__aeabi_f2iz = 0x001c44cc;
 memcpy = 0x001c4190;
 memset = 0x001c45d4;
 srand48 = 0x001c4580;
@@ -64,6 +65,7 @@ INCLUDE config/linker/CHudManagerSpySections.ld
 INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 INCLUDE config/linker/ApplicationRuntimeSections.ld
+INCLUDE config/linker/ApplicationOnEventSections.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
 INCLUDE config/linker/CHudManagerUpdateSections.ld
 INCLUDE config/linker/CHudManagerUpdateText.ld

@@ -124,7 +124,7 @@ public:
     virtual void unknown113();
     virtual void unknown114();
     virtual void unknown115();
-    virtual void unknown116();
+    virtual bool getOption(unsigned int option) const;
     virtual void setOption(unsigned int, bool);
     virtual void flush();
     virtual void unknown119();
