@@ -1,3 +1,5 @@
+PROVIDE(__aeabi_ui2f = 0x001c4574);
+PROVIDE(cosf = 0x001c4304);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 PROVIDE(lrand48 = 0x001c4664);
@@ -38,6 +40,11 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .player_update_isNearShop 0x00323a44 : { *hud-manager-helpers.o(.text._ZNK11CHudManager10isNearShopEv) }
+    .player_update_notNearShop 0x00323a5c : { *hud-manager-helpers.o(.text._ZN11CHudManager11notNearShopEv) }
+    .player_update_nearShop 0x00323a74 : { *hud-manager-helpers.o(.text._ZN11CHudManager8nearShopEv) }
+    .player_update_get_height 0x0031ff48 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib) }
+    .player_test_update 0x00304ec8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest6UpdateEv) }
     .player_test_switch_anim 0x00303bb8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10switchAnimEv) }
     .player_test_switch_anim_table 0x0041dfa8 : { *ai-startup-playertest.o(.rodata._ZN10PlayerTest10switchAnimEv) }
     .player_map_trackable_vtable 0x004ab050 : { *ai-startup-playertest.o(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }

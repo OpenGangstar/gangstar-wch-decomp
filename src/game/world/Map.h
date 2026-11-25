@@ -1,6 +1,7 @@
 #ifndef WCH_WORLD_MAP_H
 #define WCH_WORLD_MAP_H
 #include "../core/Rect.h"
+#include "../core/Geometry.h"
 
 namespace irr {
 namespace core { template<class T> class dimension2d; }
@@ -26,7 +27,7 @@ private:
     irr::video::ITexture* texture;
     float rotation;
     float scale;
-    float offsetX, offsetY;
+    irr::core::vector2d<float> offset;
     int offsetPixelX, offsetPixelY;
     irr::core::rect<int> clip;
     float minX, minY, maxX, maxY, unknown60, unknown64;

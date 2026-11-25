@@ -42,8 +42,8 @@ void MiniMap::draw2d() const
     if (!(direction.X>0)) angle=-angle;
     Map::getInstance()->rotation=angle;
     Map* offsetMap=Map::getInstance();
-    offsetMap->offsetX=mapX;
-    offsetMap->offsetY=mapY;
+    offsetMap->offset.X=mapX;
+    offsetMap->offset.Y=mapY;
     Map::getInstance()->scale=scale;
     const SpriteFrameModule* frameModule=sprite->GetFModule(sprite->GetFrame(frame)->firstModule);
     const SpriteModule* module=sprite->GetModule(frameModule->module);

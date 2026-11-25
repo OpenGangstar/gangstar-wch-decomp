@@ -10459,7 +10459,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00304895	0x150	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10teleportToEPK11LevelObject	PlayerTest::teleportTo(LevelObject const*)
 0x003049e5	0x220	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest7RespawnEv	PlayerTest::Respawn()
 0x00304c05	0x2c4	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest14onObjectKilledEP11LevelObject	PlayerTest::onObjectKilled(LevelObject*)
-0x00304ec9	0x8b4	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest6UpdateEv	PlayerTest::Update()
+0x00304ec9	0x8b4	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest6UpdateEv	PlayerTest::Update()
 0x0030577d	0x2a0	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest5snipeEP6Weapon	PlayerTest::snipe(Weapon*)
 0x00305a1d	0x160	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest6attackEb	PlayerTest::attack(bool)
 0x00305b7d	0x2	RenderObject.cpp	game	characters	matched	_ZNK12RenderObject6RenderEv	RenderObject::Render() const
@@ -11293,7 +11293,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00328b41	0xd4	Map.cpp	game	world	matched	_ZN3Map6setMapENS_8eMapTypeE	Map::setMap(Map::eMapType)
 0x00328c15	0x34	Map.cpp	game	world	matched	_ZN3MapC1Ev	Map::Map()
 0x00328c15	0x34	Map.cpp	game	world	matched	_ZN3MapC2Ev	Map::Map()
-0x00328c49	0x130	Map.cpp	game	world	pending	_ZNK3Map4drawEv	Map::draw() const
+0x00328c49	0x130	Map.cpp	game	world	matched	_ZNK3Map4drawEv	Map::draw() const
 0x00328d79	0x6c	Map.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00328de5	0x14	Map.cpp	game	core	matched	_GLOBAL__I__ZN3MapC2Ev	_GLOBAL__I__ZN3MapC2Ev
 0x00328df9	0x2a	Message.cpp	game	ui	matched	_ZN7Message11isDisplayedEv	Message::isDisplayed()

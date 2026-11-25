@@ -44,7 +44,8 @@
             "name": "_GLOBAL__I__ZN3MapC2Ev",
             "address": "0x00328de5"
         },
-        "_ZN3Map6setMapENS_8eMapTypeE"
+        "_ZN3Map6setMapENS_8eMapTypeE",
+        "_ZNK3Map4drawEv"
     ],
     "sections": [
         ".map_scaled_size",
@@ -60,7 +61,8 @@
             "offset": 864
         },
         ".map_path0",
-        ".map_path1"
+        ".map_path1",
+        ".map_draw"
     ],
     "retail_got": true,
     "external_thumb_functions": [
