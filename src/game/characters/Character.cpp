@@ -912,6 +912,41 @@ void Character::hide()
     }
 }
 
+static inline irr::core::vector3d<float> scaleVector(const irr::core::vector3d<float>& vector, const float& scale)
+{
+    return vector * scale;
+}
+
+void Character::initInVehicle(Vehicle* value)
+{
+    hide();
+    setVehicle(value);
+    vehicle->setDriver(this);
+    movementFlags |= 0x400;
+    removeCollisions();
+    SetPosition(vehicle->GetPosition());
+
+    irr::core::matrix4 transform(vehicle->sceneNode->getAbsoluteTransformation(), irr::core::matrix4::EM4CONST_COPY);
+    irr::core::quaternion rotation(transform);
+    rotation = irr::core::quaternion(0.0f, 0.0f, 1.57079637f) * rotation;
+    sceneNode->setRotation(rotation);
+
+    float rightOffset;
+    float frontOffset;
+    if (vehicle->isLowVehicle()) {
+        rightOffset = 111.0f;
+        frontOffset = 11.0f;
+    } else {
+        rightOffset = 118.0f;
+        frontOffset = 21.0f;
+    }
+    irr::core::vector3d<float> point = vehicle->leftDoor->getAbsolutePosition()
+        + scaleVector(vehicle->GetRight(), rightOffset) + scaleVector(vehicle->GetFront(), frontOffset);
+    collisionBody->SetXForm(b2Vec2(point.X / 100.0f, point.Y / 100.0f), 0.0f);
+    setAnimation(vehicle->getSeatedAnimation(), 1.0f, false, false, false);
+}
+
+
 void Character::removeCollisions()
 {
     if (collisionBody) {
