@@ -443,3 +443,91 @@ bool Mission::start(int id, int duration)
     WantedLevelManager::getInstance()->resetWantedLevel();
     return true;
 }
+
+#include "../scripting/ScriptManager.h"
+
+static inline bool screenPressed()
+{
+    return ScriptManager::getInstance()->checkScreenPress();
+}
+
+static inline bool blockingSkipped()
+{
+    return ScriptManager::getInstance()->areBlockingCommandsSkipped();
+}
+
+static inline bool skipRequested()
+{
+    return screenPressed() || blockingSkipped();
+}
+
+void Mission::update(int elapsed)
+{
+    if (unknown8 > 0)
+        unknown8 -= elapsed;
+
+    switch (state) {
+    case 1:
+        if (unknown8 <= 0 || blockingSkipped()) {
+            unknown12 = unknown8 = 3000;
+            Application::GetInstance()->GetHudManager()->message172
+                ->setMessage(currentMessage, -1, static_cast<MenuManager::eText>(11));
+            state = 2;
+        }
+        break;
+    case 2:
+        if (introAnimation.animation != -1 && __builtin_expect(!introAnimation.IsAnimOver(), 0))
+            introAnimation.Update(elapsed);
+        if (skipRequested()
+            || unknown12 <= 0 || unknown8 <= 0) {
+            unknown12 = unknown8 = 1000;
+            state = 3;
+            unknown16 = 0;
+            if (blockingSkipped()) {
+                state = 4;
+                unknown12 = unknown8 = 0;
+                CameraManager::getInstance()->setTouchScreenInputs(true);
+                if (unknown240 && !ScriptManager::getInstance()->isInCinematic())
+                    Application::GetInstance()->GetHudManager()->show();
+                setTextToPrint(-1);
+                Application::GetInstance()->GetHudManager()->message172->clearMessage(false);
+            } else {
+                setTextToPrint(-1);
+                Application::GetInstance()->GetHudManager()->message172->clearMessage(false);
+            }
+        }
+        break;
+    case 3:
+        if (unknown8 <= 0 || blockingSkipped()) {
+            unknown12 = unknown8 = 0;
+            state = 4;
+            CameraManager::getInstance()->setTouchScreenInputs(true);
+            if (unknown240 && !ScriptManager::getInstance()->isInCinematic())
+                Application::GetInstance()->GetHudManager()->show();
+            Application::GetInstance()->GetHudManager()->message172->clearMessage(true);
+        }
+        break;
+    case 4:
+        for (int i = 0; i < conditionCount; ++i) {
+            if (!conditions[i]->evaluate(elapsed)) {
+                lastFailureCause = conditions[i]->cause();
+                fail();
+                goto clearText;
+            }
+        }
+        break;
+    case 5:
+        if (unknown12 <= 0 || unknown8 <= 0 || blockingSkipped()) {
+            state = 0;
+            currentMissionId = -1;
+            setTextToPrint(-1);
+            MenuManager::getInstance()->setText(static_cast<MenuManager::eText>(10), -1, 0);
+        }
+        break;
+    }
+
+    if (currentMessage >= 0 && (unknown12 <= 0 || unknown8 <= 0)) {
+clearText:
+        setTextToPrint(-1);
+    }
+}
