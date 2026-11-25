@@ -813,6 +813,75 @@ void MenuManager::draw(const StateMachine*)
     reinterpret_cast<MyMenuFX*>(menuFX)->Render();
 }
 
+#include "../missions/WantedLevelManager.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MiniMap.h"
+#include "../core/Vector3.h"
+#include "../core/Rect.h"
+#include "../characters/AnimObject.h"
+#include "../meta/Item.h"
+#include "Shop.h"
+
+struct DrawMapBoundsView {
+    unsigned char unknown0[44];
+    float minX, minY, maxX, maxY;
+};
+struct DrawMapTrackingLink {
+    DrawMapTrackingLink* next;
+    DrawMapTrackingLink* previous;
+};
+struct DrawMapTrackingNode : DrawMapTrackingLink {
+    LevelObject* object;
+    AnimObject* marker;
+};
+struct DrawMapMiniMapView {
+    unsigned char unknown0[60];
+    DrawMapTrackingLink trackedObjects;
+};
+struct DrawMapItemView {
+    unsigned char unknown0[88];
+    int itemType;
+};
+struct MenuManagerViewportFields {
+    unsigned char unknown0[12];
+    int left;
+    int top;
+    int right;
+    int bottom;
+    int offsetX;
+};
+
+extern "C" void _ZNK11MenuManager8_drawMapEv(const MenuManager* self)
+{
+    const MenuManagerViewportFields& view = *reinterpret_cast<const MenuManagerViewportFields*>(self);
+    const DrawMapBoundsView* map=reinterpret_cast<const DrawMapBoundsView*>(Map::getInstance());
+    const irr::core::rect<float> bounds(map->minX,map->minY,map->maxX,map->maxY);
+    irr::core::dimension2d<int> size;
+    Map::getInstance()->getScaledSize(size);
+    const DrawMapMiniMapView* minimap=reinterpret_cast<const DrawMapMiniMapView*>(Application::GetInstance()->GetHudManager()->minimap);
+    DrawMapTrackingLink* link=minimap->trackedObjects.next;
+    while (link!=&minimap->trackedObjects) {
+        DrawMapTrackingNode* node=static_cast<DrawMapTrackingNode*>(link);
+        LevelObject* object=node->object;
+        const int type=LevelObject::s_type[object->getObjectType()];
+        if(type==13) {
+            if(!static_cast<Shop*>(object)->unlocked()) { link=link->next; continue; }
+        } else if(type==15 && reinterpret_cast<const DrawMapItemView*>(object)->itemType==3) {
+            if(WantedLevelManager::getInstance()->unknown8<=0 || !static_cast<Item*>(object)->unlocked()) { link=link->next; continue; }
+        }
+        const irr::core::vector3d<float> position=object->GetPosition();
+        const irr::core::position2d<int> point(static_cast<int>(size.Width*((position.X-bounds.UpperLeftCorner.X)/(bounds.LowerRightCorner.X-bounds.UpperLeftCorner.X))),
+                                               static_cast<int>(size.Height*((-position.Y-bounds.UpperLeftCorner.Y)/(bounds.LowerRightCorner.Y-bounds.UpperLeftCorner.Y))));
+        if (__builtin_expect(view.left <= point.X && view.top <= point.Y && view.right >= point.X && view.bottom >= point.Y, 1)) {
+            AnimObject* marker=node->marker;
+            marker->SetPosition(view.offsetX-view.left+point.X,point.Y-view.top,0);
+            marker->Draw();
+        }
+        link=link->next;
+    }
+    TargetMarker::getInstance()->draw();
+}
+
 struct GlyphOptimizerEntry { const char* font; const char* size; const char* name; };
 extern "C" const GlyphOptimizerEntry _ZN11MenuManager19s_GlypOptimizerDataE[14];
 extern "C" const char* _ZN13StringManager9LANGUAGESE[7];
@@ -862,4 +931,162 @@ void MenuManager::preloadGlyphs(bool clearFonts)
     _ZN8RenderFX13PreloadGlyphsEv(reinterpret_cast<MyMenuFX*>(menuFX));
     for (int index=0; index<17; ++index)
         _ZN11MenuManager7setTextENS_5eTextEiPi(manager,static_cast<MenuManager::eText>(index),-1,0);
+}
+
+#include "../app/ApplicationStorage.h"
+#include "../app/ApplicationListIterator.h"
+#include "../core/PointerVector.h"
+#include "../core/Point2D.h"
+#include "../input/TouchIDListSupport.h"
+#include "../input/TouchScreenBase.h"
+namespace stlp_priv {
+template<> struct _List_node<Point2D<short>*> : _List_node_base {
+    Point2D<short>* value;
+};
+}
+namespace std {
+template<> stlp_priv::_List_node<Point2D<short>*>*
+allocator<stlp_priv::_List_node<Point2D<short>*> >::allocate(unsigned int, const void*) __attribute__((weak));
+}
+namespace map_point_list_detail {
+typedef stlp_priv::_List_node_base NodeBase;
+struct _List_iterator_base {
+    NodeBase* _M_node;
+    _List_iterator_base(NodeBase* x) : _M_node(x) {}
+    void _M_incr() { _M_node = _M_node->_M_next; }
+    void _M_decr() { _M_node = _M_node->_M_prev; }
+};
+template<class T, class Traits> struct _List_iterator : public _List_iterator_base {
+    typedef typename Traits::reference reference;
+    typedef _List_iterator<T, Traits> _Self;
+    typedef _List_iterator<T, typename Traits::_NonConstTraits> iterator;
+    typedef _List_iterator<T, typename Traits::_ConstTraits> const_iterator;
+    typedef stlp_priv::_List_node<T> _Node;
+    explicit _List_iterator(NodeBase* x) : _List_iterator_base(x) {}
+    _List_iterator() : _List_iterator_base(0) {}
+    _List_iterator(const iterator& x) : _List_iterator_base(x._M_node) {}
+    reference operator*() const { return static_cast<_Node*>(this->_M_node)->value; }
+    _Self& operator++() { this->_M_incr(); return *this; }
+    bool operator==(const_iterator y) const { return this->_M_node == y._M_node; }
+    bool operator!=(const_iterator y) const { return this->_M_node != y._M_node; }
+};
+}
+namespace stlp_priv {
+template<> class _List_base<Point2D<short>*, std::allocator<Point2D<short>*> > {
+protected:
+    typedef std::allocator<Point2D<short>*> Allocator;
+    typedef _List_node<Point2D<short>*> Node;
+    typedef std::allocator<Node> NodeAllocator;
+    typedef _STLP_alloc_proxy<_List_node_base, Node, NodeAllocator> AllocProxy;
+    AllocProxy _M_node;
+    explicit _List_base(const Allocator& allocator)
+        : _M_node(NodeAllocator(allocator), _List_node_base()) { _M_empty_initialize(); }
+    ~_List_base() { clear(); }
+    void clear() __attribute__((weak));
+    void _M_empty_initialize() {
+        _M_node._M_data._M_next = &_M_node._M_data;
+        _M_node._M_data._M_prev = _M_node._M_data._M_next;
+    }
+};
+}
+namespace std {
+template<class T, class Alloc> class list;
+template<> class list<Point2D<short>*, allocator<Point2D<short>*> >
+    : public stlp_priv::_List_base<Point2D<short>*, allocator<Point2D<short>*> > {
+    typedef stlp_priv::_List_base<Point2D<short>*, allocator<Point2D<short>*> > Base;
+public:
+    typedef Point2D<short>* value_type;
+    typedef allocator<value_type> allocator_type;
+    typedef value_type& reference;
+    typedef const value_type& const_reference;
+    typedef unsigned int size_type;
+    typedef map_point_list_detail::_List_iterator<value_type, _Nonconst_traits<value_type> > iterator;
+    typedef map_point_list_detail::_List_iterator<value_type, _Const_traits<value_type> > const_iterator;
+    list() : Base(allocator_type()) {}
+    iterator begin() { return iterator(this->_M_node._M_data._M_next); }
+    const_iterator begin() const { return const_iterator(this->_M_node._M_data._M_next); }
+    iterator end() { return iterator(&this->_M_node._M_data); }
+    const_iterator end() const { return const_iterator(const_cast<stlp_priv::_List_node_base*>(&this->_M_node._M_data)); }
+    reference front() { return *begin(); }
+    reference back() { iterator last = end(); last._M_decr(); return *last; }
+    size_type size() const {
+        int count = 0;
+        const_iterator current(begin());
+        const_iterator last(end());
+        while (current != last) {
+            ++current;
+            ++count;
+        }
+        return count;
+    }
+    iterator insert(iterator position, const_reference value) {
+        stlp_priv::_List_node_base* inserted = _M_create_node(value);
+        stlp_priv::_List_node_base* next = position._M_node;
+        stlp_priv::_List_node_base* previous = next->_M_prev;
+        inserted->_M_next = next;
+        inserted->_M_prev = previous;
+        previous->_M_next = inserted;
+        next->_M_prev = inserted;
+        return iterator(inserted);
+    }
+    void push_back(const_reference value) { insert(end(), value); }
+private:
+    stlp_priv::_List_node_base* _M_create_node(const_reference value) {
+        Node* node = this->_M_node.allocate(1, 0);
+        std::_Copy_Construct(&node->value, value);
+        return node;
+    }
+};
+}
+typedef std::list<Point2D<short>*, std::allocator<Point2D<short>*> > MapPointList;
+extern "C" {
+void _ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE(MenuManager*, const MapPointList&);
+void _ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE(MenuManager*, const MapPointList&);
+float sqrtf(float);
+}
+struct MenuManagerMapFields {
+    void* vtable;
+    int width;
+    int height;
+    unsigned char unknown12[16];
+    int offsetX;
+    unsigned char unknown32[16];
+    int previousX;
+    int previousY;
+    int previousDistance;
+    int mapMode;
+};
+void MenuManager::updateMap()
+{
+    MenuManagerMapFields& fields = *reinterpret_cast<MenuManagerMapFields*>(this);
+    TouchScreenBase* touch = Application::GetInstance()->GetTouchScreen();
+    const TouchIDList ids = touch->getTouchIDList();
+    MapPointList points;
+    for (TouchIDList::const_iterator i = ids.begin(); i != ids.end(); ++i) {
+        Point2D<short>* first = touch->getFirstTouchPoint(*i);
+        if (first->x > fields.offsetX && first->x < fields.offsetX + fields.width
+            && first->y > 0 && first->y < fields.height)
+            points.push_back(touch->getTouchPoint(*i));
+    }
+    if (static_cast<int>(points.size()) != fields.mapMode) {
+        fields.mapMode = points.size();
+        if (fields.mapMode == 1) {
+            Point2D<short>* point = points.front();
+            int x = point->x;
+            int y = point->y;
+            fields.previousX = x;
+            fields.previousY = y;
+        } else if (fields.mapMode == 2) {
+            Point2D<short>* first = points.front();
+            Point2D<short>* last = points.back();
+            float y = first->y - last->y;
+            float x = first->x - last->x;
+            fields.previousDistance = static_cast<int>(sqrtf(x * x + y * y));
+        }
+    } else {
+        if (fields.mapMode == 1)
+            _ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE(this, points);
+        else if (fields.mapMode == 2)
+            _ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE(this, points);
+    }
 }

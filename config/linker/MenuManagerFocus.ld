@@ -1,3 +1,10 @@
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(sqrtf = 0x001c4184);
 sprintf = 0x001c46ac;
 memset = 0x001c45d4;
 strcmp = 0x001c4658;
@@ -23,6 +30,10 @@ menuMapStateName = 0x0040b608;
 glFlush = 0x001c4160;
 SECTIONS
 {
+    .menu_draw_map 0x002e6ab0 : { *menu-manager-helpers.o(.text._ZNK11MenuManager8_drawMapEv) }
+    ASSERT(SIZEOF(.menu_draw_map) == 424, "native _drawMap extent")
+    .menu_update_map 0x002e6fe0 : { *menu-manager-helpers.o(.text._ZN11MenuManager9updateMapEv) }
+    ASSERT(SIZEOF(.menu_update_map) == 388, "native updateMap extent")
     .preload_format 0x00419004 : { *menu-manager-helpers.o(.rodata.preloadFormat) }
     .preload_error 0x00419014 : { *menu-manager-helpers.o(.rodata.preloadError) }
     .menu_preload_glyphs 0x002e5e4c : { *menu-manager-helpers.o(.text._ZN11MenuManager13preloadGlyphsEb) }
