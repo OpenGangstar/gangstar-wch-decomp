@@ -1,3 +1,6 @@
+PROVIDE(__aeabi_fdiv = 0x1c4520);
+PROVIDE(__aeabi_fcmpgt = 0x1c419c);
+PROVIDE(printf = 0x1c4058);
 PROVIDE(__aeabi_i2f = 0x1c41e4);
 PROVIDE(__aeabi_fadd = 0x1c4154);
 PROVIDE(__aeabi_ui2f = 0x1c4574);
@@ -13,6 +16,12 @@ memcpy = 0x001c4190;
 memset = 0x001c45d4;
 SECTIONS
 {
+    .wheel_process_touch_thunk 0x0032cfb8 : { *(.text._ZThn8_N5Wheel12processTouchEl) }
+    .wheel_point2d_d0 0x00326374 : { *sdk-startup-wheel.o(.gnu.linkonce.t._ZN7Point2DIsED0Ev) }
+    .wheel_point2d_d1 0x00326394 : { *sdk-startup-wheel.o(.gnu.linkonce.t._ZN7Point2DIsED1Ev) }
+    .wheel_point2d_vtable 0x004abf88 : { *sdk-startup-wheel.o(.gnu.linkonce.d.rel.ro._ZTV7Point2DIsE) }
+    .wheel_process_touch 0x0032cfcc : { *sdk-startup-wheel.o(.text._ZN5Wheel12processTouchEl) }
+    .wheel_invalid_touch_text 0x00425374 : { *sdk-startup-wheel.o(.rodata.wheelInvalidTouchFormat) }
     .wheel_constructor 0x0032cbe0 : { *sdk-startup-wheel.o(.text._ZN5WheelC1EP7ASpritei .text._ZN5WheelC2EP7ASpritei) }
     ASSERT(SIZEOF(.wheel_constructor) == 256, "Native Wheel constructor extent")
     .base_getid 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }

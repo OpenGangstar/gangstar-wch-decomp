@@ -2,7 +2,6 @@ PROVIDE(__aeabi_i2f = 0x1c41e4);
 PROVIDE(__aeabi_fadd = 0x1c4154);
 PROVIDE(__aeabi_ui2f = 0x1c4574);
 printf = 0x001c4058; __aeabi_ui2f = 0x001c4574; __aeabi_fdiv = 0x001c4520; __aeabi_fcmpgt = 0x001c419c;
-wheelInvalidTouchFormat = 0x00425374;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/wheel-touch-thunk/retail-symbols.ld
@@ -21,6 +20,7 @@ SECTIONS
     .point2d_table 0x004abf88 : { *wheel-touch-thunk.o(.gnu.linkonce.d.rel.ro._ZTV7Point2DIsE) }
     .wheel_touch_thunk 0x0032cfb8 : { *wheel-touch-thunk.o(.text._ZThn8_N5Wheel12processTouchEl) }
     .wheel_nonmatching_touch 0x0032cfcc : { *wheel-touch-thunk.o(.text._ZN5Wheel12processTouchEl) }
+    .wheel_invalid_touch_text 0x00425374 : { *wheel-touch-thunk.o(.rodata.wheelInvalidTouchFormat) }
     .base_getid 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
     .base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .base_destructor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
