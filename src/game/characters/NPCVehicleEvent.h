@@ -10,6 +10,8 @@ public:
     EvNPCVehicle(int type, Vehicle* vehicle) : IEvent(19), type(type), vehicle(vehicle) {}
     virtual ~EvNPCVehicle() __attribute__((used, long_call));
 
+    int getType() const { return type; }
+
 private:
     int type;
     Vehicle* vehicle;

@@ -18,6 +18,12 @@
 #include "../hud/MenuManager.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
+#include "../ai/NPC.h"
+#include "../characters/NPCEvent.h"
+#include "../characters/NPCVehicleEvent.h"
+#include "../characters/PlayerEvent.h"
+#include "../characters/PlayerTest.h"
+#include "../core/NativeStdio.h"
 
 class EvWantedEscaped : public IEvent {
 public:
@@ -192,4 +198,75 @@ void WantedLevelManager::_processWantedLevel()
         }
     }
     AchievementManager::s_achievementManager->recordWantedLevel(unknown8);
+}
+
+static const char footArrived[] = "%i cops: +1 foot cop\n";
+static const char footRemoved[] = "%i cops: -1 foot cop\n";
+static const char carArrived[] = "%i cops: +1 cop car\n";
+static const char carRemoved[] = "%i cops: -1 cop car\n";
+void WantedLevelManager::onEvent(const IEvent* event, const EventManager*)
+{
+    lockedLevel = unknown8;
+    switch (event->getEventID()) {
+    case 16: {
+        const EvNPC* npcEvent = static_cast<const EvNPC*>(event);
+        if (npcEvent->getNPC()->category428 != 3)
+            return;
+        if (npcEvent->getState() == 18) {
+            printf(footArrived, ++unknown72);
+            unknown76 = true;
+        } else if (npcEvent->getState() == 19)
+            printf(footRemoved, --unknown72);
+        break;
+    }
+    case 19: {
+        const EvNPCVehicle* vehicleEvent = static_cast<const EvNPCVehicle*>(event);
+        switch (vehicleEvent->getType()) {
+        case 18:
+            printf(carArrived, ++unknown72);
+            unknown76 = true;
+            break;
+        case 19:
+            printf(carRemoved, --unknown72);
+            break;
+        }
+        break;
+    }
+    case 22:
+        unknown56 = 0.0;
+        switch (static_cast<const EvPlayer*>(event)->getState()) {
+        case 0:
+            ++unknown16;
+            break;
+        case 3:
+        case 4:
+        case 5:
+            if (unknown8 <= 0)
+                unknown8 = 1;
+            break;
+        case 7:
+            ++unknown20;
+            // fall through
+        case 6:
+        case 8:
+            if (unknown8 <= 1)
+                unknown8 = 2;
+            break;
+        }
+        break;
+    }
+
+    if (PlayerTest::GetPlayer()->contextWord == 1)
+        unknown8 = 0;
+    else if (unknown16 > 2 && unknown8 <= 0)
+        unknown8 = 1;
+    else if (unknown16 > 2 && unknown8 < 2)
+        unknown8 = 2;
+    else if ((unknown16 > 7 || unknown20 > 2) && unknown8 <= 2)
+        unknown8 = 3;
+    else if ((unknown16 > 13 || unknown20 > 5) && unknown8 <= 3)
+        unknown8 = 4;
+    else if ((unknown16 > 19 || unknown20 > 9) && unknown8 <= 4)
+        unknown8 = 5;
+    _processWantedLevel();
 }
