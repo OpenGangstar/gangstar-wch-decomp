@@ -12151,7 +12151,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033ef8d	0x16c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager10loadScriptEPKcb	ScriptManager::loadScript(char const*, bool)
 0x0033f0f9	0xf4	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager10moveObjectEP11LevelObjectS1_	ScriptManager::moveObject(LevelObject*, LevelObject*)
 0x0033f1ed	0x2dc	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager8setStateENS_5StateE	ScriptManager::setState(ScriptManager::State)
-0x0033f4c9	0x48	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager16checkScreenPressEv	ScriptManager::checkScreenPress()
+0x0033f4c9	0x48	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager16checkScreenPressEv	ScriptManager::checkScreenPress()
 0x0033f511	0x4c4	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager6updateEi	ScriptManager::update(int)
 0x0033f9d9	0x144	ScriptManager.cpp	game	scripting	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033fb1d	0x14	ScriptManager.cpp	game	scripting	matched	_GLOBAL__I__ZN13ScriptManager12s_playerTestE	_GLOBAL__I__ZN13ScriptManager12s_playerTestE
@@ -12644,7 +12644,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034b351	0x24	StringManager.cpp	game	persistence	matched	_Z6strRevPc	strRev(char*)
 0x0034b375	0x50	StringManager.cpp	game	persistence	matched	_Z7strchrsPcPKc	strchrs(char*, char const*)
 0x0034b3c5	0x1e0	StringManager.cpp	game	persistence	pending	_ZNK13StringManager12formatAmountEibb	StringManager::formatAmount(int, bool, bool) const
-0x0034b5a5	0x72	StringManager.cpp	game	persistence	pending	_ZN13StringManager15unloadPackSheetEjj	StringManager::unloadPackSheet(unsigned int, unsigned int)
+0x0034b5a5	0x72	StringManager.cpp	game	persistence	matched	_ZN13StringManager15unloadPackSheetEjj	StringManager::unloadPackSheet(unsigned int, unsigned int)
 0x0034b619	0x2e	StringManager.cpp	game	persistence	matched	_ZN13StringManager10unloadPackEj	StringManager::unloadPack(unsigned int)
 0x0034b649	0x68	StringManager.cpp	game	persistence	matched	_ZN7Structs9TextStyle4ReadER10DataStream	Structs::TextStyle::Read(DataStream&)
 0x0034b6b1	0x44	StringManager.cpp	stlport	-	matched	_ZNSaIPN7Structs9TextStyleEE8allocateEjRj	std::allocator<Structs::TextStyle*>::allocate(unsigned int, unsigned int&)

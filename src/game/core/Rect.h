@@ -34,6 +34,8 @@ template<class T> class rect {
 public:
     rect(T x, T y, T x2, T y2)
         : UpperLeftCorner(x, y), LowerRightCorner(x2, y2) {}
+    rect(const position2d<T>& upperLeft, const position2d<T>& lowerRight)
+        : UpperLeftCorner(upperLeft), LowerRightCorner(lowerRight) {}
     position2d<T> UpperLeftCorner;
     position2d<T> LowerRightCorner;
 };

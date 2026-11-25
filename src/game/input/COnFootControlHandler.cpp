@@ -247,7 +247,7 @@ void COnFootControlHandler::onEvent(const IEvent* event, const EventManager*)
                 sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
                 sound->unknown140 = false;
                 ScriptManager::getInstance()->skipCutscene();
-                ScriptManager::getInstance()->unknown24[0] = 0;
+                ScriptManager::getInstance()->screenPressed = false;
             }
         }
         return;

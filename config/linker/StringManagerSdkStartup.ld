@@ -10,6 +10,7 @@ strlen = 0x001c48bc;
 nativeStrlen = 0x001c48bc;
 SECTIONS
 {
+    .string_unload_pack_sheet 0x0034b5a4 : { *sdk-startup-stringmanager.o(.text._ZN13StringManager15unloadPackSheetEjj) }
     .string_load_styles 0x0034bd50 : { *sdk-startup-stringmanager.o(.text._ZN13StringManager10loadStylesEPKc) }
     .string_style_default 0x00435fac : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager10loadStylesEPKcE4C.* .rodata.C.*) }
     .string_data_stream_d1 0x002d3654 : { *sdk-startup-stringmanager.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
@@ -50,3 +51,4 @@ _Znwj = 0x001c4814;
 __stack_chk_fail = 0x001c42e0;
 ASSERT(SIZEOF(.string_load_styles) == 332, "native loadStyles span");
 ASSERT(SIZEOF(.string_style_default) == 40, "native TextStyle default extent");
+ASSERT(SIZEOF(.string_unload_pack_sheet) == 116, "Native StringManager unloadPackSheet extent with alignment padding");
