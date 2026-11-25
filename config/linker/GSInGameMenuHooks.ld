@@ -16,8 +16,17 @@ __aeabi_atexit = 0x001c494c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(__aeabi_i2d = 0x001c452c);
+PROVIDE(__aeabi_dsub = 0x001c4454);
+PROVIDE(__aeabi_d2iz = 0x001c4844);
+inGameMenuMapName = 0x0040b608;
 SECTIONS
 {
+    .state_instance 0x002d44c4 : { *state-hooks-gsingamemenu.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv .text._ZN12StateMachine11getInstanceEv) }
+    .state_instance_cleanup 0x002d4518 : { *state-hooks-gsingamemenu.o(.text.__tcf_0) }
+    .state_instance_guard 0x004b6904 (NOLOAD) : { *state-hooks-gsingamemenu.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm .bss._ZGVZN12StateMachine11getInstanceEvE2sm) }
+    .state_instance_storage 0x004b6908 (NOLOAD) : { *state-hooks-gsingamemenu.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm .bss._ZZN12StateMachine11getInstanceEvE2sm) }
+    .gsingamemenu_update 0x002e2724 : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenu6updateEP12StateMachine) }
     .gsingame_draw2d 0x002e26ac : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenu6draw2dEPK12StateMachine) }
     .gsingame_ctor 0x002e28d4 : { *state-hooks-gsingamemenu.o(.text._ZN12GSInGameMenu4ctorEPK12StateMachine) }
     .blocking_tutorial_text 0x00414c84 : { *state-hooks-gsingamemenu.o(.rodata.str1.4 .rodata.str1.1) }
@@ -77,3 +86,4 @@ ASSERT(SIZEOF(.local_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE ext
 ASSERT(SIZEOF(.local_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.local_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.gsingame_skip_fade_in_flag) == 1, "GSInGameMenu fade flag extent");
+ASSERT(SIZEOF(.gsingamemenu_update) == 352, "Native _ZN12GSInGameMenu6updateEP12StateMachine extent");

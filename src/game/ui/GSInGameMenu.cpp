@@ -156,3 +156,54 @@ void GSInGameMenu::draw2d(const StateMachine*)
             irr::core::rect<int>(0, 0, width, height));
     }
 }
+
+#include "../ai/StateMachine.h"
+#include "../characters/PlayerTest.h"
+extern "C" void _ZN11MenuManager13topSetVisibleEb(MenuManager*, bool);
+// Retail shares the tail of a merged "LightingMap" literal for this name.
+extern const char inGameMenuMapName[] __attribute__((visibility("hidden")));
+
+void GSInGameMenu::update(StateMachine* machine)
+{
+    Application* app = Application::GetInstance();
+    switch (static_cast<int>(unknown4)) {
+    case 0:
+        unknown8 = static_cast<int>(static_cast<int>(unknown8) - machine->getTimeStamp());
+        if (static_cast<int>(unknown8) <= 0) {
+            unknown4 = 1;
+            _ZN11MenuManager13topSetVisibleEb(MenuManager::getInstance(), false);
+            MenuManager::getInstance()->push(inGameMenuMapName, false);
+            app->GetTouchScreen()->clear();
+            app->SetDrawAll(false);
+            app->GetHudManager()->hide();
+            Application::GetInstance()->GetTouchScreen()->clear();
+        }
+        break;
+    case 1:
+        if (MenuManager::getInstance()->getDepth() <= static_cast<int>(unknown16)) {
+            unknown4 = 2;
+            app->SetDrawAll(true);
+            app->GetHudManager()->show();
+            unknown8 = unknown12 = 350;
+            if (s_skipFadeIn) {
+                unknown8 = 0;
+                s_skipFadeIn = false;
+            }
+            _ZN11MenuManager13topSetVisibleEb(MenuManager::getInstance(), true);
+        }
+        break;
+    case 2:
+        unknown8 = static_cast<int>(static_cast<int>(unknown8) - machine->getTimeStamp());
+        if (static_cast<int>(unknown8) <= 0) {
+            SoundManager::getInstance()->resumeAllSounds();
+            SoundManager* sound = SoundManager::getInstance();
+            int ambient = PlayerTest::GetPlayer()->getAmbientSound();
+            sound->unknown140 = true;
+            sound->playEx(ambient, 0, true, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            Application::GetInstance()->GetTouchScreen()->clear();
+            machine->popState();
+        }
+        break;
+    }
+}
