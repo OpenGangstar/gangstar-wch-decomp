@@ -38,6 +38,7 @@ __cxa_pure_virtual = 0;
 SECTIONS
 {
     .vehicle_play_drive_sfx 0x00312d18 : { *vehicle-cleanup.o(.text._ZN7Vehicle12playDriveSfxEj) }
+    .vehicle_drop_scene_node 0x00309f0c : { *vehicle-cleanup.o(.text._ZN7Vehicle13dropSceneNodeEv) }
     .vehicle_on_despawn 0x00310e74 : { *vehicle-cleanup.o(.text._ZN7Vehicle9OnDespawnEv) }
     ASSERT(SIZEOF(.vehicle_on_despawn) == 308, "Native Vehicle OnDespawn extent")
     .vehicle_disable 0x00310fa8 : { *vehicle-cleanup.o(.text._ZN7Vehicle7disableEv) }
