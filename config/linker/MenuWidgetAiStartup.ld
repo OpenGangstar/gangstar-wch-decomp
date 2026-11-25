@@ -31,6 +31,7 @@ INCLUDE config/linker/WidgetControlsLocalization.ld
 INCLUDE config/linker/WidgetGameSettingEvent.ld
 INCLUDE config/linker/WidgetCorruptionLocalization.ld
 INCLUDE config/linker/WidgetMissionMapLegendEvents.ld
+INCLUDE config/linker/WidgetDialogObjectiveLanguageEvents.ld
 
 SECTIONS
 {

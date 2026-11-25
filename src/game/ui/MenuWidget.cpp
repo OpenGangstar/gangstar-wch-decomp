@@ -789,6 +789,30 @@ void Widgets::Objective::Show()
     renderFX->GotoFrame(objectiveArrow, expanded ? objectiveArrowUp : objectiveArrowDown, false);
 }
 
+extern const char objectiveButtonLabel[] __attribute__((visibility("hidden")));
+
+void Widgets::Objective::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    switch (event.type) {
+    case 6:
+        if (strcmp(event.characterName, objectiveButtonLabel) == 0) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+
+            expanded = !expanded;
+            renderFX->GotoFrame(character, expanded ? objectiveOpen : objectiveClose, false);
+            renderFX->GotoFrame(objectiveButton, expanded ? objectiveOpen : objectiveClose, false);
+            renderFX->GotoFrame(objectiveArrow, expanded ? objectiveArrowUp : objectiveArrowDown, false);
+            UpdateLocalization();
+            event.consumed = true;
+        }
+        break;
+    }
+}
+
 Widgets::Achievement::Achievement()
     : MenuWidget(widgetAchievementName), titleId(-1)
 {
@@ -2489,5 +2513,119 @@ void Widgets::Mission::OnEvent(RenderFX::Event& event)
     event.consumed = true;
         }
         break;
+    }
+}
+
+static const char dialogButtonPart[] = ".btn";
+static const char dialogOpenButton[] = "btnOpen";
+static const char dialogSaveButton[] = "btnSave";
+static const char dialogCancelButton[] = "btnCancel";
+static const char dialogDiscardButton[] = "btnDiscard";
+static const char dialogApplyButton[] = "btnApply";
+static const char dialogResetButton[] = "btnReset";
+static const char dialogRestoreDefaultsButton[] = "btnRestoreDefaults";
+static const char dialogHelpButton[] = "btnHelp";
+static const char dialogSaveAllButton[] = "btnSaveAll";
+static const char dialogYesButton[] = "btnYes";
+static const char dialogYesToAllButton[] = "btnYesToAll";
+static const char dialogNoButton[] = "btnNo";
+static const char dialogNoToAllButton[] = "btnNoToAll";
+static const char dialogAbortButton[] = "btnAbort";
+static const char dialogRetryButton[] = "btnRetry";
+static const char dialogIgnoreButton[] = "btnIgnore";
+
+void Widgets::Dialog::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    switch (event.type) {
+    case 6: {
+        char name[128];
+        sprintf(name, tutorialPartFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str(), dialogButtonPart);
+        if (strstr(_ZN8RenderFX5Event16GetCharacterPathEv(&event), name) == _ZN8RenderFX5Event16GetCharacterPathEv(&event)) {
+            const char* button = event.characterName;
+            if (strcmp(button, tutorialOkButton) == 0)
+                pressedButton = 0;
+            else if (strcmp(button, dialogOpenButton) == 0)
+                pressedButton = 1;
+            else if (strcmp(button, dialogSaveButton) == 0)
+                pressedButton = 2;
+            else if (strcmp(button, dialogCancelButton) == 0)
+                pressedButton = 3;
+            else if (strcmp(button, tutorialCloseButtonLabel) == 0)
+                pressedButton = 4;
+            else if (strcmp(button, dialogDiscardButton) == 0)
+                pressedButton = 5;
+            else if (strcmp(button, dialogApplyButton) == 0)
+                pressedButton = 6;
+            else if (strcmp(button, dialogResetButton) == 0)
+                pressedButton = 7;
+            else if (strcmp(button, dialogRestoreDefaultsButton) == 0)
+                pressedButton = 8;
+            else if (strcmp(button, dialogHelpButton) == 0)
+                pressedButton = 9;
+            else if (strcmp(button, dialogSaveAllButton) == 0)
+                pressedButton = 10;
+            else if (strcmp(button, dialogYesButton) == 0)
+                pressedButton = 11;
+            else if (strcmp(button, dialogYesToAllButton) == 0)
+                pressedButton = 12;
+            else if (strcmp(button, dialogNoButton) == 0)
+                pressedButton = 13;
+            else if (strcmp(button, dialogNoToAllButton) == 0)
+                pressedButton = 14;
+            else if (strcmp(button, dialogAbortButton) == 0)
+                pressedButton = 15;
+            else if (strcmp(button, dialogRetryButton) == 0)
+                pressedButton = 16;
+            else if (strcmp(button, dialogIgnoreButton) == 0)
+                pressedButton = 17;
+            if (listener)
+                listener->Notify(this, 1);
+            event.consumed = true;
+        }
+        break;
+    }
+    }
+}
+
+void Widgets::Language::OnEvent(RenderFX::Event& event)
+{
+    switch (event.type) {
+    case 6: {
+        int oldSelection = selection;
+        const char* button = event.characterName;
+        if (strcmp(tutorialOkButton, button) == 0) {
+            MenuManager* manager = MenuManager::getInstance();
+            StringManager* strings = Application::GetInstance()->GetStringManager();
+            strings->loadPack(selection);
+            strings->switchPack(selection);
+            if (manager->enableAsianFont(selection == 5))
+                manager->preloadGlyphs(true);
+            manager->updateLocalization();
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            Preferences preferences;
+            preferences.SampleAndSave(Preferences::GetDefaultFilename());
+            event.consumed = true;
+        } else if (strcmp(volumesLeftButton, button) == 0) {
+            selection = oldSelection - 1;
+            if (selection < 0)
+                selection = 5;
+            event.consumed = true;
+        } else if (strcmp(volumesRightButton, button) == 0) {
+            selection = (oldSelection + 1) % 6;
+            event.consumed = true;
+        }
+        if (selection != oldSelection) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            UpdateLocalization();
+        }
+        break;
+    }
     }
 }

@@ -235,7 +235,10 @@
         "_ZN7Widgets11GameSetting7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets10Corruption18UpdateLocalizationEv",
         "_ZN7Widgets7Mission7OnEventERN8RenderFX5EventE",
-        "_ZN7Widgets9MapLegend7OnEventERN8RenderFX5EventE"
+        "_ZN7Widgets9MapLegend7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets9Objective7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets6Dialog7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets8Language7OnEventERN8RenderFX5EventE"
     ],
     "sections": [
         ".volumesButton",
@@ -465,7 +468,27 @@
         ".widgets_maplegend_event",
         ".startMissionButton",
         ".mapLegendArrow",
-        ".mission_map_name"
+        ".mission_map_name",
+        ".widgets_objective_event",
+        ".widgets_dialog_event",
+        ".widgets_language_event",
+        ".dialogButtonPart",
+        ".dialogOpenButton",
+        ".dialogSaveButton",
+        ".dialogCancelButton",
+        ".dialogDiscardButton",
+        ".dialogApplyButton",
+        ".dialogResetButton",
+        ".dialogRestoreDefaultsButton",
+        ".dialogHelpButton",
+        ".dialogSaveAllButton",
+        ".dialogYesButton",
+        ".dialogYesToAllButton",
+        ".dialogNoButton",
+        ".dialogNoToAllButton",
+        ".dialogAbortButton",
+        ".dialogRetryButton",
+        ".dialogIgnoreButton"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -571,6 +594,11 @@
         "_ZN13ScriptManager10findObjectEPKcb",
         "_ZN13ScriptManager17finishReviveAnimsEv",
         "_ZN13ScriptManager18missionSkipFadeOutEv",
-        "_ZNK6Script11peekCommandEi"
+        "_ZNK6Script11peekCommandEi",
+        "_ZN11MenuManager13preloadGlyphsEb",
+        "_ZN11MenuManager15enableAsianFontEb",
+        "_ZN11MenuManager18updateLocalizationEv",
+        "_ZN13StringManager10switchPackEj",
+        "_ZN13StringManager8loadPackEj"
     ]
 }
