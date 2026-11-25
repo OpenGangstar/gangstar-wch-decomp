@@ -1340,6 +1340,91 @@ public:
     char path[256];
 };
 
+namespace gameswf {
+template <>
+class array<RenderFX::SearchIndex::Entry> {
+public:
+    ~array() { release_buffer(); }
+    void release_buffer() __attribute__((long_call));
+    RenderFX::SearchIndex::Entry* elements;
+    int size;
+    int capacity;
+    bool unknown12;
+};
+}
+
+typedef gameswf::array<RenderFX::SearchIndex::Entry>* SearchEntryList;
+extern "C" void _ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE5clearEv(
+    void* hash) __attribute__((long_call));
+
+namespace {
+// container.h hash iterator view over the SearchIndex entries table.
+struct SearchHashEntry {
+    int m_next_in_chain;
+    unsigned int m_hash_value;
+    unsigned char key[16];
+    SearchEntryList second;
+    bool is_empty() const { return m_next_in_chain == -2 || m_hash_value == 0xFFFFFFFFu; }
+};
+struct SearchHashTable {
+    int m_entry_count;
+    int m_size_mask;
+};
+struct SearchHash {
+    SearchHashTable* m_table;
+    SearchHashEntry& E(int index) { return *(reinterpret_cast<SearchHashEntry*>(m_table + 1) + index); }
+};
+struct SearchHashIterator {
+    SearchHash* m_hash;
+    int m_index;
+    SearchHashIterator(SearchHash* hash, int index) : m_hash(hash), m_index(index) {}
+    SearchHashEntry& operator*() const { return m_hash->E(m_index); }
+    SearchHashEntry* operator->() const { return &m_hash->E(m_index); }
+    void operator++()
+    {
+        const int mask = m_hash->m_table->m_size_mask;
+        const int index = m_index;
+        if (mask >= index) {
+            m_index++;
+            while (m_index <= m_hash->m_table->m_size_mask && m_hash->E(m_index).is_empty())
+                m_index++;
+        }
+    }
+    bool is_end() const
+    {
+        if (m_hash == 0 || m_hash->m_table == 0)
+            return true;
+        const int mask = m_hash->m_table->m_size_mask;
+        const int index = m_index;
+        return mask < index;
+    }
+    bool operator==(const SearchHashIterator& it) const
+    {
+        if (is_end() && it.is_end())
+            return true;
+        return m_hash == it.m_hash && m_index == it.m_index;
+    }
+    bool operator!=(const SearchHashIterator& it) const { return !(*this == it); }
+};
+inline SearchHashIterator searchBegin(SearchHash* hash)
+{
+    if (hash->m_table == 0)
+        return SearchHashIterator(0, 0);
+    int i0 = 0;
+    while (i0 <= hash->m_table->m_size_mask && hash->E(i0).is_empty())
+        i0++;
+    return SearchHashIterator(hash, i0);
+}
+inline SearchHashIterator searchEnd() { return SearchHashIterator(0, 0); }
+}
+
+void RenderFX::SearchIndex::Clear()
+{
+    SearchHash* hash = reinterpret_cast<SearchHash*>(&entries);
+    for (SearchHashIterator it = searchBegin(hash); it != searchEnd(); ++it)
+        delete it->second;
+    _ZN7gameswf4hashINS_9tu_stringEPNS_5arrayIN8RenderFX11SearchIndex5EntryEEENS_19string_hash_functorIS1_EEE5clearEv(&entries);
+}
 extern "C" char* strrchr(const char*, int);
 
 gameswf::character* RenderFX::SearchIndex::Find(const char* name)
