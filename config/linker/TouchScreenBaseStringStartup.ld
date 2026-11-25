@@ -19,3 +19,4 @@ SECTIONS
 ASSERT(SIZEOF(.string_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 
 ASSERT(SIZEOF(.touchscreen_id_list) == 88, "Touch ID list native span");
+ASSERT(SIZEOF(.touchscreen_touch_began) == 140, "touchBegan native span");

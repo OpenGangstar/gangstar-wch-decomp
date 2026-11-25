@@ -12714,7 +12714,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034cc35	0x64	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD0Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD2Ev	TouchScreenBase::~TouchScreenBase()
-0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
+0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
 0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
 0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const
 0x0034cd8d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone11getTopBoundEv	TouchScreenIPhone::getTopBound() const

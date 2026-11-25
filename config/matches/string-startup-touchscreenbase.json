@@ -104,6 +104,10 @@
             "address": "0x0034c395"
         },
         {
+            "name": "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
+            "address": "0x0034ccf1"
+        },
+        {
             "name": "_ZN15TouchScreenBase10touchEndedERK7Point2DIsEl",
             "address": "0x0034c3c9"
         },
@@ -197,6 +201,8 @@
         ".touchscreen_update",
         ".touchscreen_moved",
         ".touchscreen_move_message",
+        ".touchscreen_touch_began",
+        ".touchscreen_begin_message",
         ".touchscreen_initiated_in_region",
         ".touchscreen_region_pressed",
         ".touchscreen_id_in_region",
@@ -213,7 +219,6 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl",
         "_ZNSaIN9stlp_priv10_List_nodeIlEEE8allocateEjPKv",
         "_ZN9stlp_priv7_S_sortIlSaIlESt4lessIlEEEvRSt4listIT_T0_ET1_",
         "_ZN9stlp_priv10_List_baseIlSaIlEE5clearEv"
