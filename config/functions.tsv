@@ -9605,7 +9605,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e79d5	0x50	MenuState.cpp	game	ui	matched	_ZN5Menus14InfoStatistics11OnFSCommandEPKcS2_	Menus::InfoStatistics::OnFSCommand(char const*, char const*)
 0x002e7a25	0x50	MenuState.cpp	game	ui	matched	_ZN5Menus16InfoAchievements11OnFSCommandEPKcS2_	Menus::InfoAchievements::OnFSCommand(char const*, char const*)
 0x002e7a75	0x50	MenuState.cpp	game	ui	matched	_ZN5Menus9InfoAbout11OnFSCommandEPKcS2_	Menus::InfoAbout::OnFSCommand(char const*, char const*)
-0x002e7ac5	0x238	MenuState.cpp	game	ui	pending	_ZN5Menus17ServiceWeaponShop7RefreshEv	Menus::ServiceWeaponShop::Refresh()
+0x002e7ac5	0x238	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceWeaponShop7RefreshEv	Menus::ServiceWeaponShop::Refresh()
 0x002e7cfd	0x52	MenuState.cpp	game	ui	matched	_ZN9MenuState18UpdateLocalizationEv	MenuState::UpdateLocalization()
 0x002e7d51	0x48	MenuState.cpp	game	ui	matched	_ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE	Menus::Achievement::SetAchievement(AchievementManager::Achievement const*)
 0x002e7d99	0x38	MenuState.cpp	game	ui	matched	_ZN9MenuStateC1EPKc	MenuState::MenuState(char const*)
