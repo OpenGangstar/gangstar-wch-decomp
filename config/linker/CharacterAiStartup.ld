@@ -57,3 +57,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.character_combat_idle) == 300, "Native Character combat idle extent");
+ASSERT(SIZEOF(.character_combat_idle_table) == 36, "Native Character combat idle table extent");

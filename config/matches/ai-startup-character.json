@@ -27,6 +27,7 @@
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
         "_ZN9Character11exitVehicleEb",
+        "_ZN9Character14goToCombatIdleEv",
         "_ZN9Character13bindAnimationEPKcRNS_13AnimationInfoEPN3irr5scene10ISceneNodeE",
         "_ZN9Character6UpdateEi",
         "_ZN9Character5debugEPN3irr5video12IVideoDriverE",
@@ -160,6 +161,8 @@
         "_ZN9Character3dieEb"
     ],
     "sections": [
+        ".character_combat_idle",
+        ".character_combat_idle_table",
         ".character_animation_resource",
         ".character_animation_shadow",
         ".character_hit_car_table",

@@ -235,6 +235,51 @@ void Script::setScriptObjectAction(LevelObject* object, eScriptAction action)
     objectActions[object] |= action;
 }
 
+struct ScriptActionNode : stlp_priv::_Rb_tree_node_base {
+    LevelObject* first;
+    int second;
+};
+
+extern "C" unsigned int eraseUniqueScriptAction(
+    ScriptActionTree*, LevelObject* const&)
+    __asm__("_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE12erase_uniqueERS6_")
+    __attribute__((weak));
+
+static inline stlp_priv::_Rb_tree_node_base* findScriptAction(
+    const ScriptActionTree& tree, LevelObject* const& key)
+{
+    stlp_priv::_Rb_tree_node_base* header =
+        reinterpret_cast<stlp_priv::_Rb_tree_node_base*>(const_cast<unsigned char*>(&tree.headerColor));
+    stlp_priv::_Rb_tree_node_base* y = header;
+    stlp_priv::_Rb_tree_node_base* x = tree.root;
+    while (x != 0)
+        if (!(static_cast<ScriptActionNode*>(x)->first < key))
+            y = x, x = x->_M_left;
+        else
+            x = x->_M_right;
+    if (header != y) {
+        if (key < static_cast<ScriptActionNode*>(y)->first)
+            y = header;
+    }
+    return y;
+}
+
+struct ScriptActionIterator {
+    stlp_priv::_Rb_tree_node_base* _M_node;
+    explicit ScriptActionIterator(stlp_priv::_Rb_tree_node_base* node) : _M_node(node) {}
+    bool operator!=(const ScriptActionIterator& other) const { return _M_node != other._M_node; }
+};
+
+void Script::unsetScriptObjectAction(LevelObject* object, eScriptAction action)
+{
+    ScriptActionIterator it(findScriptAction(objectActions, object));
+    if (it != ScriptActionIterator(reinterpret_cast<stlp_priv::_Rb_tree_node_base*>(&objectActions))) {
+        objectActions[object] &= ~action;
+        if (objectActions[object] == 0)
+            eraseUniqueScriptAction(&objectActions, object);
+    }
+}
+
 void Script::setState(State newState, PlayerTest::eContext newContext)
 {
     state = newState;
