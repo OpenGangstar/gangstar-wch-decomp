@@ -79,7 +79,8 @@
         "_ZNK7ASprite12GetFrameRectEii",
         "_ZN7ASprite9GetAFrameEii",
         "_ZN7ASprite10GetAnimIdxEPKc",
-        "_ZNK7ASprite12PaintFModuleEiiiii"
+        "_ZNK7ASprite12PaintFModuleEiiiii",
+        "_ZN7ASprite15GetAnimDurationEi"
     ],
     "sections": [
         ".asprite_function_0",
@@ -122,7 +123,8 @@
         ".asprite_get_module",
         ".asprite_get_frame_rect",
         ".asprite_anim_index",
-        ".asprite_paint_fmodule"
+        ".asprite_paint_fmodule",
+        ".asprite_anim_duration"
     ],
     "retail_got": true,
     "external_thumb_functions": [

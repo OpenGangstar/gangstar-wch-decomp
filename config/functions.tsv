@@ -12615,7 +12615,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349c95	0x6e	ASprite.cpp	game	rendering	matched	_ZNK7ASprite15GetFrameMarkersEiPi	ASprite::GetFrameMarkers(int, int*) const
 0x00349d05	0x5a	ASprite.cpp	game	rendering	matched	_ZNK7ASprite23GetNumberOfFrameMarkersEi	ASprite::GetNumberOfFrameMarkers(int) const
 0x00349d61	0x20	ASprite.cpp	game	rendering	matched	_ZNK7ASprite19GetModuleFromAFrameEii	ASprite::GetModuleFromAFrame(int, int) const
-0x00349d81	0x52	ASprite.cpp	game	rendering	pending	_ZN7ASprite15GetAnimDurationEi	ASprite::GetAnimDuration(int)
+0x00349d81	0x52	ASprite.cpp	game	rendering	matched	_ZN7ASprite15GetAnimDurationEi	ASprite::GetAnimDuration(int)
 0x00349dd5	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASprite10GetAnimIdxEPKc	ASprite::GetAnimIdx(char const*)
 0x00349e15	0x200	ASprite.cpp	game	rendering	pending	_ZNK7ASprite11PaintModuleEiiii	ASprite::PaintModule(int, int, int, int) const
 0x0034a015	0xdc	ASprite.cpp	game	rendering	matched	_ZNK7ASprite12PaintFModuleEiiiii	ASprite::PaintFModule(int, int, int, int, int) const
