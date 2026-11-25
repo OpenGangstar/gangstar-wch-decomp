@@ -19,6 +19,13 @@ __cxa_pure_virtual = 0;
 __aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
+    .vehicle_controller_on_event 0x00342584 : { *ai-startup-vehiclecontroller.o(.text._ZN17VehicleController7onEventEPK6IEventPK12EventManager) }
+    .vc_event_delete 0x002d4074 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .vc_event_dtor 0x002d4094 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .vc_event_vtable 0x004a6198 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .vc_player_event_delete 0x002f512c : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.t._ZN8EvPlayerD0Ev) }
+    .vc_player_event_dtor 0x002f61f8 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.t._ZN8EvPlayerD1Ev) }
+    .vc_player_event_vtable 0x004aa138 : { *ai-startup-vehiclecontroller.o(.gnu.linkonce.d.rel.ro._ZTV8EvPlayer) }
     .vehicle_switch_state 0x003426b4 : { *ai-startup-vehiclecontroller.o(.text._ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE) }
     .vehicle_switch_table 0x004323e0 : { *ai-startup-vehiclecontroller.o(.rodata._ZN17VehicleController11switchStateEN8gameloft2ai7StateIDE) }
     .vehicle_controller_next_point 0x0034264c : { *(.text._ZN17VehicleController12getNextPointEv) }

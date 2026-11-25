@@ -283,6 +283,7 @@ public:
     virtual bool AutoHide() const;
     virtual void UpdateLocalization();
     void SetTitle(int id);
+    void SetIcon(const char* icon);
 
 private:
     int titleId;
@@ -293,6 +294,7 @@ public:
     Help();
     void SetTextId(int id);
     virtual void UpdateLocalization();
+    void SetIcon(const char* icon);
 
 private:
     int textId;
@@ -2731,4 +2733,21 @@ void Widgets::Language::OnEvent(RenderFX::Event& event)
         break;
     }
     }
+}
+
+extern "C" void _ZN8RenderFX9GotoFrameEPKcS1_b(RenderFX* self, const char* characterName,
+                                              const char* label, bool play);
+
+static const char widgetHelpIcon[] = "widgetHelp.icon";
+
+void Widgets::Help::SetIcon(const char* icon)
+{
+    _ZN8RenderFX9GotoFrameEPKcS1_b(renderFX, widgetHelpIcon, icon, false);
+}
+
+static const char widgetAchievementIcon[] = "widgetAchievement.anim.icon";
+
+void Widgets::Achievement::SetIcon(const char* icon)
+{
+    _ZN8RenderFX9GotoFrameEPKcS1_b(renderFX, widgetAchievementIcon, icon, false);
 }
