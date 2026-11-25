@@ -17,6 +17,7 @@ SECTIONS
     .character_recovered_002f1839 0x002f1838 : { *ai-startup-character.o(.text.__tcf_1 .gnu.linkonce.t.__tcf_1) }
     .character_recovered_002f7415 0x002f7414 : { *ai-startup-character.o(.text._ZN9Character6attackEv .gnu.linkonce.t._ZN9Character6attackEv) }
     .character_recovered_002f6fb9 0x002f6fb8 : { *ai-startup-character.o(.text._ZN9Character4kickEv .gnu.linkonce.t._ZN9Character4kickEv) }
+    .character_punch 0x002f710c : { *ai-startup-character.o(.text._ZN9Character5punchEv) }
     .character_recovered_002f2af5 0x002f2af4 : { *ai-startup-character.o(.text._ZN9CharacterD2Ev .gnu.linkonce.t._ZN9CharacterD2Ev .text._ZN9CharacterD1Ev .gnu.linkonce.t._ZN9CharacterD1Ev) }
     .character_recovered_002f2a79 0x002f2a78 : { *ai-startup-character.o(.text._ZN9CharacterD0Ev .gnu.linkonce.t._ZN9CharacterD0Ev) }
     .character_recovered_002f2ed9 0x002f2ed8 : { *ai-startup-character.o(.text._ZN9Character11goToVehicleEP7Vehiclebbbb .gnu.linkonce.t._ZN9Character11goToVehicleEP7Vehiclebbbb) }

@@ -54,6 +54,8 @@ INCLUDE config/linker/CHudManagerWalkingSections.ld
 INCLUDE config/linker/ScriptManagerQuerySections.ld
 INCLUDE config/linker/MenuManagerFocus.ld
 INCLUDE config/linker/CHudManagerCleanupSections.ld
+INCLUDE config/linker/CHudManagerUpdateSections.ld
+INCLUDE config/linker/CHudManagerUpdateText.ld
 SECTIONS
 {
     .repair_draw2d 0x002e1570 : { *state-hooks-gscarrepairmenu.o(.text._ZN15GSCarRepairMenu6draw2dEPK12StateMachine) }

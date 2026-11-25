@@ -17,6 +17,7 @@ __aeabi_fcmpgt = 0x001c419c;
 _Znaj = 0x001c3ff8;
 SECTIONS
 {
+    .sound_end_cutscene 0x00352a54 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager11endCutsceneEv) }
  .soundmanager_ctor 0x00353524 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManagerC1Ev .text._ZN12SoundManagerC2Ev) }
  .memorySoundPrefix 0x00436374 : { *(.rodata.memorySoundPrefix) }
  .musicSoundPrefix 0x0043637c : { *(.rodata.musicSoundPrefix) }

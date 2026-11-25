@@ -5,6 +5,7 @@ class ASprite;
 #include "../core/TouchInterfaces.h"
 // Four floats written by SetElemRegion; coordinate meanings remain provisional.
 struct HudTouchRegion { float coordinates[4]; };
+#include "../core/Rect.h"
 // Recovered virtual slots and 56-byte extent. Coordinate meanings and the
 // two zero-initialized fields at offsets 32/36 remain provisional.
 class HudElement : public IUpdatable, public IDrawable, public ITouchable {
@@ -16,7 +17,7 @@ public:
     virtual void show();
     virtual bool isVisible() const;
     virtual bool isBlinking() const;
-    virtual HudTouchRegion getTouchRegion() const;
+    virtual irr::core::rect<float> getTouchRegion() const;
     virtual void reset();
     virtual void setHand(bool);
     virtual void processTouch(long);

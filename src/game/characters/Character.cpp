@@ -1188,6 +1188,81 @@ done:
     return kicked;
 }
 
+bool Character::punch()
+{
+    Character* victim;
+    bool punched = isCurrentAnimation(89);
+    if (punched) {
+        if (punchIndex == unknown228)
+            punchIndex = 1;
+        movementFlags |= 0x10000000u;
+        setAnimation(s_fistsCombatSequence[punchIndex], 1.0f, false, true, false);
+        unknown228 = punchIndex;
+    } else if (isCurrentAnimation(getSpecificAnimation(165))) {
+        movementFlags |= 0x1c000000u;
+        setAnimation(s_fistsCombatSequence[0], 1.0f, false, true, false);
+        punchIndex = 1;
+        unknown228 = 1;
+    } else {
+        goto done;
+    }
+    {
+        SoundManager* sound;
+        switch (lrand48() % 3) {
+        case 0:
+            sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(145, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            break;
+        case 1:
+            sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(146, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            break;
+        case 2:
+            sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(154, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            break;
+        }
+    }
+    if (target) {
+        if (s_type[target->getObjectType()] == 8) {
+            if (!PlayerTest::GetPlayer()->unknown372)
+                goto hit;
+        } else if (!(static_cast<Character*>(target)->unknown4 & 4u)) {
+            goto skip;
+        }
+        if (s_type[target->getObjectType()] == 5) {
+        hit:
+            if (isTargetInRange(getWeapon()->getRange(), getWeapon()->getCone())) {
+                victim = static_cast<Character*>(target);
+                if (!victim->isDying() && victim->currentAnimation != 164 && !victim->isDead()
+                    && (!victim->isDown() || (unsigned)(currentAnimation - 90) <= 1u)) {
+                    float height = unknown156 * 0.5f;
+                    victim->position();
+                    showBloodSplash(irr::core::vector3d<float>(target->GetPosition().X, target->GetPosition().Y,
+                                        target->GetPosition().Z + height),
+                        irr::core::vector3d<float>(0.0f, 0.0f, 0.0f));
+                    victim->punched(currentAnimation, getWeapon()->getDamage(), this);
+                    nextPunch();
+                }
+            }
+        } else if (s_type[target->getObjectType()] == 3) {
+            target->applyDamage(5, this, true);
+            nextPunch();
+        }
+    }
+skip:
+    punched = true;
+done:
+    movementFlags &= ~0x20000000u;
+    return punched;
+}
+
 Character::~Character()
 {
     if (__builtin_expect(s_nodePoolID[objectType] == 255, 1) && shadowNode)

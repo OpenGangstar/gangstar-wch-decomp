@@ -36,6 +36,7 @@ public:
     const char* getText(eText slot) const;
     static MenuCheatZone s_cheatActivationZones[2];
     int getDepth() const;
+    bool isCurrentState(const char*) const;
     void showTexts();
     void hideTexts();
     void popAll(bool);

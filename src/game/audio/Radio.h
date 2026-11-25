@@ -16,6 +16,7 @@ public:
 
 private:
     friend class CControlManager;
+    friend class CHudManager;
     AnimObject* animation;
     int stationAnimation;
     int unknown68;

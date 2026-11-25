@@ -60,14 +60,11 @@ void HudElement::draw() const {}
 
 void HudElement::update(double) {}
 
-HudTouchRegion HudElement::getTouchRegion() const
+irr::core::rect<float> HudElement::getTouchRegion() const
 {
-    HudTouchRegion result;
-    result.coordinates[0] = touchRegion.coordinates[0];
-    result.coordinates[1] = touchRegion.coordinates[1];
-    result.coordinates[2] = touchRegion.coordinates[2];
-    result.coordinates[3] = touchRegion.coordinates[3];
-    return result;
+    typedef irr::core::position2d<float> Corner;
+    return irr::core::rect<float>(reinterpret_cast<const Corner&>(touchRegion.coordinates[0]),
+                                  reinterpret_cast<const Corner&>(touchRegion.coordinates[2]));
 }
 
 void HudElement::SetElemRegion(float a, float b, float c, float d)
