@@ -1065,6 +1065,39 @@ void Menus::OptionVolumes::LostFocus()
 
 extern "C" void _ZN7Widgets8MainMenu13SetButtonInfoENS0_7eButtonEibb(void*, int, int, bool, bool);
 
+void MenuState::GotFocus()
+{
+    const int count = widgetIds.size;
+    MenuManager* manager = MenuManager::getInstance();
+    const bool animate = manager->areAnimsEnabled();
+    for (int index = 0; index < 32; ++index) {
+        MenuWidget* widget = manager->getWidgetByIndex(index);
+        if (widget->IsVisible()) {
+            bool included = false;
+            for (int entry = 0; entry < count; ++entry) {
+                if (widgetIds.elements[entry] == index) {
+                    included = true;
+                    break;
+                }
+            }
+            if (included)
+                widget->Enable();
+            else if (IsModal())
+                widget->Disable();
+            else if (widget->AutoHide())
+                widget->Hide(animate);
+        }
+    }
+    for (int entry = 0; entry < count; ++entry) {
+        const int index = widgetIds.elements[entry];
+        const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+        MenuWidget* widget = index >= 0 && index < table.count
+            ? static_cast<MenuWidget*>(table.widgets[index]) : 0;
+        if (!widget->IsVisible())
+            widget->Show();
+    }
+}
+
 void Menus::MainMenu::GotFocus()
 {
     MenuState::GotFocus();
@@ -1994,6 +2027,31 @@ bool Menus::ServiceWeaponShop::Notify(const MenuWidget* widget, int event)
         static_cast<Dialog*>(manager->getState(confirmMenuName))->SetMessage(0x1024);
         manager->push(confirmMenuName, false);
         return true;
+    }
+    return false;
+}
+
+namespace Widgets { class Corruption : public MenuWidget { public: void SetWantedLevel(int level); }; }
+
+bool Menus::ServiceCorruption::Notify(const MenuWidget* widget, int event)
+{
+    if (Services::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    Widgets::Corruption* corruption = static_cast<Widgets::Corruption*>(getWidgetByIndex(manager, 5));
+    if (widget == corruption && event == 1) {
+        int level = WantedLevelManager::getInstance()->unknown8;
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if (level > 0 && (player->isRichAsCroesus() || player->cash >= 1500)) {
+            --level;
+            WantedLevelManager* wanted = WantedLevelManager::getInstance();
+            wanted->unknown8 = level < 0 ? 0 : (level > 5 ? 5 : level);
+            wanted->_processWantedLevel();
+            player->subCash(1500);
+            corruption->SetWantedLevel(level);
+            UpdateLocalization();
+            return true;
+        }
     }
     return false;
 }

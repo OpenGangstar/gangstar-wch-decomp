@@ -9662,7 +9662,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e8655	0x68	MenuState.cpp	game	ui	matched	_ZN9MenuState4HideEv	MenuState::Hide()
 0x002e86bd	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus15InGameCarRental4HideEv	Menus::InGameCarRental::Hide()
 0x002e86dd	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus16InGameWeaponShop4HideEv	Menus::InGameWeaponShop::Hide()
-0x002e86fd	0xf8	MenuState.cpp	game	ui	pending	_ZN9MenuState8GotFocusEv	MenuState::GotFocus()
+0x002e86fd	0xf8	MenuState.cpp	game	ui	matched	_ZN9MenuState8GotFocusEv	MenuState::GotFocus()
 0x002e87f5	0x84	MenuState.cpp	game	ui	matched	_ZN5Menus8MainMenu8GotFocusEv	Menus::MainMenu::GotFocus()
 0x002e8879	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus6Dialog8GotFocusEv	Menus::Dialog::GotFocus()
 0x002e8899	0x10	MenuState.cpp	game	ui	matched	_ZN5Menus7Confirm8GotFocusEv	Menus::Confirm::GotFocus()
@@ -9801,7 +9801,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002eb12d	0x330	MenuState.cpp	game	ui	pending	_ZN5Menus16ServiceCarRental6UpdateEv	Menus::ServiceCarRental::Update()
 0x002eb45d	0x17c	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceWeaponShop6UpdateEv	Menus::ServiceWeaponShop::Update()
 0x002eb5d9	0xd0	MenuState.cpp	game	ui	matched	_ZN5Menus8Services6NotifyEPK10MenuWidgeti	Menus::Services::Notify(MenuWidget const*, int)
-0x002eb6a9	0xb8	MenuState.cpp	game	ui	pending	_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti	Menus::ServiceCorruption::Notify(MenuWidget const*, int)
+0x002eb6a9	0xb8	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti	Menus::ServiceCorruption::Notify(MenuWidget const*, int)
 0x002eb761	0x1c0	MenuState.cpp	game	ui	matched	_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti	Menus::ServiceCarRental::Notify(MenuWidget const*, int)
 0x002eb921	0xbc	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti	Menus::ServiceWeaponShop::Notify(MenuWidget const*, int)
 0x002eb9dd	0x154	MenuState.cpp	game	ui	pending	_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti	Menus::ServiceMissions::Notify(MenuWidget const*, int)
@@ -9972,7 +9972,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ee061	0x260	MenuWidget.cpp	game	ui	matched	_ZN7Widgets6Dialog7OnEventERN8RenderFX5EventE	Widgets::Dialog::OnEvent(RenderFX::Event&)
 0x002ee2c1	0x148	MenuWidget.cpp	game	ui	matched	_ZN7Widgets10Statistics18UpdateLocalizationEv	Widgets::Statistics::UpdateLocalization()
 0x002ee409	0x80	MenuWidget.cpp	game	ui	pending	_ZN7Widgets10Statistics4ShowEv	Widgets::Statistics::Show()
-0x002ee489	0x1f4	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements18UpdateLocalizationEv	Widgets::Achievements::UpdateLocalization()
+0x002ee489	0x1f4	MenuWidget.cpp	game	ui	matched	_ZN7Widgets12Achievements18UpdateLocalizationEv	Widgets::Achievements::UpdateLocalization()
 0x002ee67d	0x70	MenuWidget.cpp	game	ui	pending	_ZN7Widgets12Achievements11SetCategoryEi	Widgets::Achievements::SetCategory(int)
 0x002ee6ed	0x124	MenuWidget.cpp	game	ui	matched	_ZN7Widgets8Controls18UpdateLocalizationEv	Widgets::Controls::UpdateLocalization()
 0x002ee811	0x168	MenuWidget.cpp	game	ui	matched	_ZN7Widgets5About7OnEventERN8RenderFX5EventE	Widgets::About::OnEvent(RenderFX::Event&)
@@ -10280,7 +10280,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd079	0x154	Lock.cpp	game	core	matched	_ZN4LockC1EPKcPN3irr5scene10ISceneNodeEb	Lock::Lock(char const*, irr::scene::ISceneNode*, bool)
 0x002fd1cd	0x38	Lock.cpp	game	core	matched	_ZN4Lock11getInstanceEv	Lock::getInstance()
 0x002fd205	0x8c	Lock.cpp	game	core	matched	_ZN4Lock9setTargetEP11LevelObject	Lock::setTarget(LevelObject*)
-0x002fd291	0x130	Lock.cpp	game	core	pending	_ZN4Lock6renderEv	Lock::render()
+0x002fd291	0x130	Lock.cpp	game	core	matched	_ZN4Lock6renderEv	Lock::render()
 0x002fd3c1	0x6c	Lock.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002fd42d	0x14	Lock.cpp	game	core	matched	_GLOBAL__I__ZN4Lock6s_lockE	_GLOBAL__I__ZN4Lock6s_lockE
 0x002fd441	0x8	NPC.cpp	game	ai	matched	_ZNK3NPC9getWeaponEv	NPC::getWeapon() const
@@ -12615,7 +12615,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00349c95	0x6e	ASprite.cpp	game	rendering	matched	_ZNK7ASprite15GetFrameMarkersEiPi	ASprite::GetFrameMarkers(int, int*) const
 0x00349d05	0x5a	ASprite.cpp	game	rendering	matched	_ZNK7ASprite23GetNumberOfFrameMarkersEi	ASprite::GetNumberOfFrameMarkers(int) const
 0x00349d61	0x20	ASprite.cpp	game	rendering	matched	_ZNK7ASprite19GetModuleFromAFrameEii	ASprite::GetModuleFromAFrame(int, int) const
-0x00349d81	0x52	ASprite.cpp	game	rendering	pending	_ZN7ASprite15GetAnimDurationEi	ASprite::GetAnimDuration(int)
+0x00349d81	0x52	ASprite.cpp	game	rendering	matched	_ZN7ASprite15GetAnimDurationEi	ASprite::GetAnimDuration(int)
 0x00349dd5	0x40	ASprite.cpp	game	rendering	matched	_ZN7ASprite10GetAnimIdxEPKc	ASprite::GetAnimIdx(char const*)
 0x00349e15	0x200	ASprite.cpp	game	rendering	pending	_ZNK7ASprite11PaintModuleEiiii	ASprite::PaintModule(int, int, int, int) const
 0x0034a015	0xdc	ASprite.cpp	game	rendering	matched	_ZNK7ASprite12PaintFModuleEiiiii	ASprite::PaintFModule(int, int, int, int, int) const
@@ -12759,7 +12759,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034d421	0xc	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase6updateEd	AccelerometerBase::update(double)
 0x0034d42d	0x30	AccelerometerBase.cpp	game	input	matched	__tcf_2	__tcf_2
 0x0034d45d	0x1c	AccelerometerBase.cpp	game	input	matched	_ZNK17AccelerometerBase6_traceEPKc	AccelerometerBase::_trace(char const*) const
-0x0034d479	0x108	AccelerometerBase.cpp	game	input	pending	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
+0x0034d479	0x108	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBase11_calcAnglesEv	AccelerometerBase::_calcAngles()
 0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC1Ev	AccelerometerBase::AccelerometerBase()
 0x0034d581	0x38	AccelerometerBase.cpp	game	input	matched	_ZN17AccelerometerBaseC2Ev	AccelerometerBase::AccelerometerBase()
 0x0034d5b9	0x6c	AccelerometerBase.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

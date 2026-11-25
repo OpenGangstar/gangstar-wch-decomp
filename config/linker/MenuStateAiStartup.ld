@@ -44,6 +44,7 @@ INCLUDE config/linker/WidgetConfirmLocalization.ld
 INCLUDE config/linker/WidgetControlsLocalization.ld
 INCLUDE config/linker/WidgetGameSettingEvent.ld
 INCLUDE config/linker/WidgetCorruptionLocalization.ld
+INCLUDE config/linker/WidgetAchievementsLocalization.ld
 INCLUDE config/linker/WidgetMissionMapLegendEvents.ld
 INCLUDE config/linker/WidgetDialogObjectiveLanguageEvents.ld
 INCLUDE config/linker/WidgetControlsEvent.ld
@@ -62,6 +63,8 @@ SECTIONS
     .main_menu_promotion_url 0x00419f14 : { *ai-startup-menustate.o(.rodata.mainMenuPromotionUrl) }
     .weapon_shop_update 0x002eb45c : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6UpdateEv) }
     ASSERT(SIZEOF(.weapon_shop_update) == 380, "Native ServiceWeaponShop Update extent")
+    .menustate_got_focus 0x002e86fc : { *ai-startup-menustate.o(.text._ZN9MenuState8GotFocusEv) }
+    .service_corruption_notify 0x002eb6a8 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti) }
     .service_weaponshop_notify 0x002eb920 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti) }
     ASSERT(SIZEOF(.service_weaponshop_notify) == 188, "ServiceWeaponShop Notify must retain native 188-byte extent")
 

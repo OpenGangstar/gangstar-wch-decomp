@@ -400,6 +400,24 @@ int ASprite::GetAFrame(int animation, int time)
     return count - 1;
 }
 
+
+int ASprite::GetAnimDuration(int animation)
+{
+    const ASpriteData* blob = reinterpret_cast<const ASpriteData*>(data);
+    const ASpriteData::Anim* animations = reinterpret_cast<const ASpriteData::Anim*>(
+        reinterpret_cast<const unsigned char*>(blob) + blob->animations);
+    const ASpriteData::Anim* entry = animations + animation;
+    Application::GetInstance();
+    int total = 0;
+    for (int i = 0; i < entry->count; ++i) {
+        const ASpriteData* frameBlob = reinterpret_cast<const ASpriteData*>(data);
+        const char* frames = reinterpret_cast<const char*>(frameBlob);
+        frames += frameBlob->animationFrames;
+        total += *reinterpret_cast<const unsigned short*>(frames + (entry->firstFrame + i) * 9 + 2);
+    }
+    return total;
+}
+
 int ASprite::GetAnimIdx(const char* name)
 {
     ASpriteData* bytes=reinterpret_cast<ASpriteData*>(data);

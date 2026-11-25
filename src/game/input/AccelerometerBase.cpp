@@ -86,6 +86,33 @@ static void __tcf_2()
 }
 }
 
+
+struct Float {
+    static const float EPSILON;
+    static const float HALF_PI;
+};
+extern "C" float atan2f(float, float);
+extern "C" float fabsf(float);
+
+void AccelerometerBase::_calcAngles()
+{
+    angleX = curX;
+    if (fabsf(x) < Float::EPSILON)
+        curX = angleX > 0.0f ? Float::HALF_PI : -Float::HALF_PI;
+    else
+        curX = atan2f(y, x);
+    angleY = curY;
+    if (fabsf(y) < Float::EPSILON)
+        curY = angleY > 0.0f ? Float::HALF_PI : -Float::HALF_PI;
+    else
+        curY = atan2f(z, y);
+    angleZ = curX;
+    if (fabsf(z) < Float::EPSILON)
+        curZ = angleZ > 0.0f ? Float::HALF_PI : -Float::HALF_PI;
+    else
+        curZ = atan2f(x, z);
+}
+
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
 static void __static_initialization_and_destruction_0(int initialize, int priority)
 {

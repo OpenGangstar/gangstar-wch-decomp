@@ -17,6 +17,7 @@
 #include "IrrlichtDevice.h"
 #include "../rendering/GameBillboardFactory.h"
 #include "../world/LevelObject.h"
+#include "Color.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -102,6 +103,39 @@ void Lock::setTarget(LevelObject* object)
     } else {
         billboard->setParent(0);
     }
+}
+
+// Existing CustomBillboardSceneNode::setColor(ISceneNode*, SColor); a header
+// declaration perturbs GameObjectManager::GetMetatypeFromName.
+extern "C" void _ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE(
+    CustomBillboardSceneNode*, irr::scene::ISceneNode*, irr::video::SColor);
+
+void Lock::render()
+{
+    if (!target)
+        return;
+    if (target->getHealth() <= 0) {
+        setTarget(0);
+        billboard->setVisible(false);
+        billboard->render();
+        return;
+    }
+    irr::IrrlichtDevice* device = Application::GetInstance()->GetDevice();
+    unsigned int now = device->getTimer()->getRealTime();
+    if (now >= unknown0 + 750 && now < unknown0 + 1000) {
+        _ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE(billboard, billboard, irr::video::SColor(255, 255, 255, 255));
+    } else if (now < unknown0 + 1000) {
+        int health = target->getHealth();
+        int maxHealth = target->getMaxHealth();
+        CustomBillboardSceneNode* node = billboard;
+        irr::scene::ISceneNode* sceneNode = node;
+        unsigned char value = (int)((1.0f - (float)health / (float)maxHealth) * 255.0f);
+        _ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE(node, sceneNode, irr::video::SColor(255, 0, 255 - value, value));
+    } else {
+        unknown0 = device->getTimer()->getRealTime();
+    }
+    billboard->setVisible(true);
+    billboard->render();
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));

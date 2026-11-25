@@ -28,11 +28,11 @@ private:
     float maxY;
     float maxZ;
     float angleX;
-    unsigned char unknown56[4];
+    float curX;
     float angleY;
-    unsigned char unknown64[4];
+    float curY;
     float angleZ;
-    unsigned char unknown72[4];
+    float curZ;
 };
 
 #endif

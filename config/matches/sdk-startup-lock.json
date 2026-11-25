@@ -42,7 +42,8 @@
         {
             "name": "_GLOBAL__I__ZN4Lock6s_lockE",
             "address": "0x002fd42d"
-        }
+        },
+        "_ZN4Lock6renderEv"
     ],
     "sections": [
         ".lock_resource",
@@ -57,7 +58,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".lock_render"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -67,6 +69,7 @@
         "_ZN24CustomBillboardSceneNode23setChildrenMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
         "_ZN24CustomBillboardSceneNode23setChildrenMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
-        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE"
+        "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",
+        "_ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE"
     ]
 }
