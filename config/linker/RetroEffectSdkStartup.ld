@@ -3,8 +3,11 @@ OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-retroeffect/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+lrand48 = 0x001c4664;
 SECTIONS
 {
+    .retro_draw2d 0x0032abe8 : { *sdk-startup-retroeffect.o(.text._ZNK11RetroEffect6draw2dEv) }
+    .retro_draw2d_thunk 0x0032abd4 : { *sdk-startup-retroeffect.o(.text._ZThn4_NK11RetroEffect6draw2dEv) }
     .retroeffect_constructor 0x0032aa98 : { *sdk-startup-retroeffect.o(.text._ZN11RetroEffectC1Ev .text._ZN11RetroEffectC2Ev) }
     .retro_effect_texture_name 0x00424788 : { *sdk-startup-retroeffect.o(.rodata.retroEffectTexture) }
     .sdk_material_ctor 0x0020e7ec : { *sdk-startup-retroeffect.o(.text._ZN3irr5video9SMaterialC1Ev .gnu.linkonce.t._ZN3irr5video9SMaterialC1Ev) }
@@ -25,3 +28,4 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.retro_draw2d) == 332, "Native RetroEffect draw2d extent");

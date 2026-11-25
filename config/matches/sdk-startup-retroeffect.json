@@ -26,6 +26,7 @@
     "source": "src/game/rendering/RetroEffect.cpp",
     "linker_script": "config/linker/RetroEffectSdkStartup.ld",
     "functions": [
+        "_ZNK11RetroEffect6draw2dEv",
         "_ZN11RetroEffectC1Ev",
         "_ZN11RetroEffectC2Ev",
         "_ZN11RetroEffectD0Ev",
@@ -47,6 +48,7 @@
         }
     ],
     "sections": [
+        ".retro_draw2d",
         ".retroeffect_vtable",
         ".retro_effect_texture_name",
         ".sdk_startup_function_0",
@@ -62,6 +64,8 @@
     "external_thumb_functions": [
         "_ZN10HudElementC1EP7ASpriteib",
         "_ZN10HudElementD1Ev",
-        "_ZN11Application11GetInstanceEv"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZNK10MenuWidget9IsVisibleEv"
     ]
 }
