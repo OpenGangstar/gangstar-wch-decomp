@@ -1,3 +1,5 @@
+_Znaj = 0x001c3ff8;
+_Znwj = 0x001c4814;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/menu-manager-helpers/retail-symbols.ld
@@ -18,6 +20,20 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
+    .setup_car_rentals 0x00418f5c : { *menu-manager-helpers.o(.rodata.setupCarRentals) }
+    .setup_menu_file 0x00418f70 : { *menu-manager-helpers.o(.rodata.setupMenuFile) }
+    .setup_widget_confirm 0x00418f80 : { *menu-manager-helpers.o(.rodata.setupWidgetConfirm) }
+    .setup_widget_car_repair 0x00418f90 : { *menu-manager-helpers.o(.rodata.setupWidgetCarRepair) }
+    .setup_widget_tutorial 0x00418fa0 : { *menu-manager-helpers.o(.rodata.setupWidgetTutorial) }
+    .setup_widget_splash 0x00418fb0 : { *menu-manager-helpers.o(.rodata.setupWidgetSplash) }
+    .setup_widget_retro 0x00418fc0 : { *menu-manager-helpers.o(.rodata.setupWidgetRetroEffect) }
+    .setup_state_character 0x00418fd4 : { *menu-manager-helpers.o(.rodata.setupStateCharacter) }
+    .setup_service_weapon_shop 0x00418fdc : { *menu-manager-helpers.o(.rodata.setupServiceWeaponShop) }
+    .setup_service_car_rental 0x00418ff0 : { *menu-manager-helpers.o(.rodata.setupServiceCarRental) }
+    .setup_confirm 0x00418138 : { *menu-manager-helpers.o(.rodata.setupConfirm) }
+    .setup_tutorial 0x00414c8c : { *menu-manager-helpers.o(.rodata.setupTutorial) }
+    .setup_car_rental_init 0x00419820 : { *menu-manager-helpers.o(.rodata._ZZN11MenuManager5setupEbE*) }
+    .setup_datastream_dtor 0x002d3654 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .menu_manager_update_state_name 0x00418da0 : { *menu-manager-helpers.o(.rodata.*menuUpdateSettingsStateE) }
     .preload_binary_mode 0x004014f0 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }

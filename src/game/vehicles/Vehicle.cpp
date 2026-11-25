@@ -29,6 +29,7 @@ namespace GameFactoryProperties {
 extern const char billboard[] __attribute__((visibility("hidden")));
 }
 #include "../core/LocalStringStartupStorage.h"
+#include "../world/ObjectData.h"
 #include "../core/NativeStrings.h"
 #include "../core/Lock.h"
 #include "../rendering/CustomBillboardSceneNode.h"
@@ -3004,6 +3005,141 @@ void Vehicle::setupSceneNode(int id, irr::scene::ISceneNode* node, int count, vo
         params[17] = reinterpret_cast<void*>(manager->findOrCreatePool(vehicleSetupSmokeEffect, 5, _ZN12CGameFactory11getInstanceEv()));
         manager = SceneNodeManager::getInstance();
         params[18] = reinterpret_cast<void*>(manager->findOrCreatePool(vehicleSetupFireEffect, 5, _ZN12CGameFactory11getInstanceEv()));
+    }
+}
+
+// Asset name passed to loadExplosion by Vehicle::Load.
+namespace {
+const char vehicleLoadExplosionAsset[] = "./anim_car_explode.bdae";
+}
+
+// Observed Vehicle words the header still declares as other types:
+// offset 176 holds a float and offset 928 an int copied from the record.
+struct VehicleLoadView {
+    unsigned char unknown0[176];
+    float value176;
+    unsigned char unknown180[928 - 180];
+    int value928;
+};
+
+void Vehicle::Load(const Structs::Car& data)
+{
+    using namespace irr;
+    VehicleLoadView* view = reinterpret_cast<VehicleLoadView*>(this);
+    LevelObject::Load(data, CCarFactory::getInstance());
+    vehicleIndex = data.unknown80;
+    init768 = data.unknown132;
+    init772 = data.unknown172;
+    view->value928 = data.unknown16;
+    unknown240 = data.unknown72;
+    gearProfile = data.unknown124;
+    init156 = data.unknown104;
+    init160 = data.unknown168;
+    init164 = data.unknown76;
+    mass = data.unknown148;
+    init180 = mass * 9.80665;
+    init184 = data.unknown88;
+    view->value176 = data.unknown212;
+    skidThreshold = data.unknown204;
+    unknown188 = (float)data.unknown160 * 1000.0f / 3600.0f;
+    defaultRadioStation = data.unknown96;
+    init200 = data.unknown224;
+    init204 = data.unknown136;
+    init208 = data.unknown192;
+    init212 = data.unknown180;
+    init216 = data.unknown184;
+    init220 = data.unknown188;
+    tireTrailWidth = data.unknown220;
+    init228 = data.unknown216;
+    repairPrice = data.unknown92;
+    init232 = data.unknown196;
+    init236 = data.unknown200;
+    enterAnim = data.unknown108;
+    exitAnim = data.unknown116;
+    closeDoorAnim = data.unknown84;
+    unknown912 = data.unknown208;
+    maxHealth = data.unknown156;
+    health = data.unknown128;
+    cameraMinDistance = data.unknown164;
+    cameraSideDistance = data.unknown152;
+    cameraPositionHeight = data.unknown100;
+    cameraLookHeight = data.unknown144;
+    cameraLookAhead = data.unknown140;
+    entryAnimationScale = data.unknown112;
+    doorAnimationScale = data.unknown120;
+    if (!hasSceneNodePool()) {
+        GS3DStuff::SetColor(sceneNode, video::SColor(255, 102, 102, 102), GS3DStuff::Color3);
+        GS3DStuff::SetColor(sceneNode, video::SColor(255, 229, 229, 229), GS3DStuff::Color2);
+        IrrlichtDevice* device = Application::GetInstance()->GetDevice();
+        video::IVideoDriver* driver = device->getVideoDriver();
+        core::vector3d<float> angles;
+        GetRotation().toEulerDegree(angles);
+        rotationX = angles.X;
+        rotationY = angles.Y;
+        rotationZ = angles.Z;
+        scene::ISceneNode* node = sceneNode;
+        VehicleSetupRootRecord* record = !node
+            ? reinterpret_cast<VehicleSetupRootView*>(node)->record40
+            : reinterpret_cast<VehicleSetupRootView*>(static_cast<collada::CRootSceneNode*>(node))->record40;
+        repairVisualState = reinterpret_cast<VehicleRepairVisualState*>(record->value8);
+        leftDoorAnimator = collada::CColladaDatabase::constructAnimator(init768, &collada::CColladaDatabase::DefaultFactory);
+        rightDoorAnimator = collada::CColladaDatabase::constructAnimator(init772, &collada::CColladaDatabase::DefaultFactory);
+        sceneNode->addAnimator(leftDoorAnimator);
+        leftDoorAnimator->drop();
+        sceneNode->addAnimator(rightDoorAnimator);
+        rightDoorAnimator->drop();
+        leftDoor = sceneNode->getSceneNodeFromUID(vehicleSetupDoorFrontLeft);
+        rightDoor = sceneNode->getSceneNodeFromUID(vehicleSetupDoorFrontRight);
+        skinnedMesh = reinterpret_cast<collada::CSkinnedMeshSceneNode*>(sceneNode->getSceneNodeFromUID(vehicleSetupBodySkin));
+        interior = sceneNode->getSceneNodeFromUID(vehicleSetupInterior);
+        repairTexture = driver->getTexture(vehicleSetupTexture);
+        damageTexture = driver->getTexture(vehicleSetupDamageTexture);
+        repairMaterialNode = sceneNode->getSceneNodeFromUID(vehicleSetupBodySkin);
+        enabledSceneNode = sceneNode->getSceneNodeFromUID(vehicleSetupShadowNode);
+        enabledSceneNode->getChildren().first->value->setRenderingLayer(1);
+        GS3DStuff::SetColor(enabledSceneNode, video::SColor(255, 0, 0, 0), GS3DStuff::Color3);
+        GS3DStuff::SetColor(enabledSceneNode, video::SColor(255, 255, 255, 255), GS3DStuff::Color0);
+        GS3DStuff::SetColor(enabledSceneNode, video::SColor(255, 255, 255, 255), GS3DStuff::Color1);
+        GS3DStuff::SetColor(enabledSceneNode, video::SColor(255, 255, 255, 255), GS3DStuff::Color2);
+        GS3DStuff::SetMaterialFlag(enabledSceneNode, video::MaterialFlag1024, false);
+        GS3DStuff::SetMaterialFlag(enabledSceneNode, video::MaterialFlag512, false);
+        GS3DStuff::SetMaterialFlag(enabledSceneNode, video::MaterialFlag4, true);
+        wheelNodes[0] = sceneNode->getSceneNodeFromUID(vehicleSetupWheelFrontLeft);
+        wheelNodes[1] = sceneNode->getSceneNodeFromUID(vehicleSetupWheelFrontRight);
+        wheelNodes[2] = sceneNode->getSceneNodeFromUID(vehicleSetupWheelBackLeft);
+        wheelNodes[3] = sceneNode->getSceneNodeFromUID(vehicleSetupWheelBackRight);
+        exterior = sceneNode->getSceneNodeFromUID(vehicleSetupBodyNode);
+        if (unknown4 & 1u)
+            CreateBody();
+        enableSkinning(false);
+        enableBackfaceCulling(true);
+        toggleInterior(false);
+        device->getSceneManager()->getRootSceneNode()->addChild(enabledSceneNode);
+    }
+    loadExplosion(vehicleLoadExplosionAsset);
+    carSounds = new CarSounds();
+    if (carSounds) {
+        carSoundParameters = new CarSoundParameters();
+        carSoundMode = 0;
+        carSoundParameters->load = 0;
+        soundMaximumSpeed = data.unknown160;
+        soundLoadCountdown = 0;
+        switch (data.unknown176) {
+        case 0: Init4CylNaSounds(); break;
+        case 1: InitV6naSounds(); break;
+        case 2: InitV6TurboSounds(); break;
+        case 3: InitV8Z06Sounds(); break;
+        }
+    }
+    switch (GetMetatype()) {
+    case 5:
+        driverMetatype = 104;
+        driverBehavior = 0;
+        break;
+    case 38:
+        driverMetatype = 48;
+        driverBehavior = 0;
+        break;
     }
 }
 

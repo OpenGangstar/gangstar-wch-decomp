@@ -291,7 +291,7 @@ SECTIONS
     .option_game_settings_complete_destructor 0x002e9dc8 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettingsD1Ev .text._ZN5Menus18OptionGameSettingsD2Ev) }
     .option_game_settings_vtable 0x004a9248 : { *ai-startup-menustate.o(.data.rel.ro._ZTVN5Menus18OptionGameSettingsE) }
     .scriptChapterStartup_path 0x00419ea0 : { *ai-startup-menustate.o(.rodata.scriptChapterStartupPath) }
-    .data_stream_dtor 0x002d3654 : { *ai-startup-menustate.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) }
+    .data_stream_dtor 0x002d3654 : { *ai-startup-menustate.o(.text._ZN10DataStreamD1Ev .gnu.linkonce.t._ZN10DataStreamD1Ev) *menu-manager-helpers.o(.gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .optionLanguage_constructor 0x002e81f8 : { *ai-startup-menustate.o(.text._ZN5Menus14OptionLanguageC1Ev .text._ZN5Menus14OptionLanguageC2Ev) }
     .optionLanguage_name 0x00419ec0 : { *ai-startup-menustate.o(.rodata.optionLanguageName) }
     .optionControls_constructor 0x002e823c : { *ai-startup-menustate.o(.text._ZN5Menus14OptionControlsC1Ev .text._ZN5Menus14OptionControlsC2Ev) }
@@ -386,6 +386,7 @@ SECTIONS
     .menu_widget_duplicate_map_name 0x00700010 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }
     .menu_manager_duplicate_read_mode 0x00700000 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     .menu_manager_duplicate_update_state 0x00700040 : { *menu-manager-helpers.o(.rodata.*menuUpdateSettingsStateE) }
+    .menu_manager_duplicate_setup_data 0x00700100 : { *menu-manager-helpers.o(.rodata.setupCarRentals .rodata.setupMenuFile .rodata.setupWidgetConfirm .rodata.setupWidgetCarRepair .rodata.setupWidgetTutorial .rodata.setupWidgetSplash .rodata.setupWidgetRetroEffect .rodata.setupStateCharacter .rodata.setupServiceWeaponShop .rodata.setupServiceCarRental .rodata.setupConfirm .rodata.setupTutorial .rodata._ZZN11MenuManager5setupEbE*) }
     .menu_state_cheats_allowed 0x002e3ee4 : { *menu-manager-helpers.o(.text._ZNK11MenuManager21isCheatsUnlockAllowedEv .gnu.linkonce.t._ZNK11MenuManager21isCheatsUnlockAllowedEv) }
     /DISCARD/ : { *ai-startup-menuwidget.o(*) *menu-manager-helpers.o(*) }
 }

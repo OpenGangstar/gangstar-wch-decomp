@@ -28,6 +28,8 @@ _ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
 INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
+    .menu_setup_datastream_dtor 0x002d3654 : { *(.gnu.linkonce.t._ZN10DataStreamD1Ev) }
+    .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
     .map_cleanup 0x002e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
     .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }

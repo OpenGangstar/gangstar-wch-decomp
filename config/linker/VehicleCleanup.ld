@@ -1,3 +1,7 @@
+PROVIDE(__aeabi_ui2d = 0x1c4208);
+PROVIDE(__aeabi_dmul = 0x1c4298);
+PROVIDE(__aeabi_d2f = 0x1c4310);
+PROVIDE(__aeabi_f2d = 0x1c48f8);
 PROVIDE(__aeabi_fcmple = 0x001c43ac);
 _ZdaPv = 0x001c461c;
 acosf = 0x1c4694;
@@ -37,6 +41,8 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_load 0x0030ff40 : { *vehicle-cleanup.o(.text._ZN7Vehicle4LoadERKN7Structs3CarE) }
+    .vehicle_load_explosion_asset 0x0041f714 : { *vehicle-cleanup.o(.rodata.*vehicleLoadExplosionAssetE) }
     .vehicle_setup_scene_node 0x00309a4c : { *vehicle-cleanup.o(.text._ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv) }
     .vehicle_play_drive_sfx 0x00312d18 : { *vehicle-cleanup.o(.text._ZN7Vehicle12playDriveSfxEj) }
     .vehicle_drop_scene_node 0x00309f0c : { *vehicle-cleanup.o(.text._ZN7Vehicle13dropSceneNodeEv) }
