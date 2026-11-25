@@ -146,3 +146,75 @@ void GuardController::switchState(gameloft::ai::StateID next, gameloft::ai::Tran
     }
     state = next;
 }
+
+#include "../characters/PlayerTest.h"
+#include "../characters/PlayerEvent.h"
+#include "../characters/NPCEvent.h"
+#include "../vehicles/Vehicle.h"
+#include "../core/Quaternion.h"
+void GuardController::onEvent(const IEvent* event, const EventManager* manager)
+{
+    NPCController::onEvent(event, manager);
+    switch (event->getEventID()) {
+    case 22: {
+        const EvPlayer* playerEvent = static_cast<const EvPlayer*>(event);
+        switch (playerEvent->getState()) {
+        case 9: {
+            irr::core::vector3d<float> point(0,0,0);
+            if (npc->canSeeLevelObject(PlayerTest::GetPlayer()->getVehicle(), point)) {
+                NPC* guard = npc;
+                LevelObject* target = PlayerTest::GetPlayer()->getVehicle();
+                guard->SetTarget(target);
+                guard->flags356 |= 128;
+            } else {
+                NPC* guard = npc;
+                LevelObject* target = PlayerTest::GetPlayer()->getVehicle();
+                guard->SetTarget(target);
+                guard->flags356 |= 384;
+                switchState(static_cast<gameloft::ai::StateID>(3),static_cast<gameloft::ai::TransitionCondition>(19));
+            }
+            break;
+        }
+        case 10: {
+            irr::core::vector3d<float> point(0,0,0);
+            if (npc->canSeeLevelObject(PlayerTest::GetPlayer()->getVehicle(), point)) {
+                NPC* guard = npc;
+                LevelObject* target = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+                guard->SetTarget(target);
+                guard->flags356 |= 128;
+            } else {
+                NPC* guard = npc;
+                LevelObject* target = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+                guard->SetTarget(target);
+                guard->flags356 |= 384;
+                switchState(static_cast<gameloft::ai::StateID>(3),static_cast<gameloft::ai::TransitionCondition>(19));
+            }
+            break;
+        }
+        }
+        break;
+    }
+    }
+    const EvNPC* npcEvent = static_cast<const EvNPC*>(event);
+    if (npcEvent->getNPC() == npc) {
+        switch(npcEvent->getState()) {
+        case 5:
+            if (state == 1) npc->flags356 &= ~0x10000u;
+            break;
+        case 21: {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            if ((player->flags240 & 0x400) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                npc->SetTarget(PlayerTest::GetPlayer()->getVehicle());
+            else
+                npc->SetTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+            break;
+        }
+        case 1:
+            if (state == 1) {
+                const_cast<NPC*>(npcEvent->getNPC())->SetRotation(reinterpret_cast<const irr::core::quaternion&>(npc->unknown372));
+                npc->flags356 &= ~0x80000u;
+            }
+            break;
+        }
+    }
+}
