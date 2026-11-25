@@ -193,3 +193,4 @@ ASSERT(ADDR(.gs_load) == 0x002dfb14, "load native placement");
 ASSERT(SIZEOF(.gs_load) == 2576, "load native extent");
 ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
 ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");
+ASSERT(SIZEOF(.gs_set_alpha) == 168, "Native GS3DStuff SetAlpha extent");

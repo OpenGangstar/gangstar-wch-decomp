@@ -1350,3 +1350,44 @@ typedef char load_bullet_1768[(sizeof(BulletTraceManager) == 1768) ? 1 : -1];
 typedef char load_trail_24[(sizeof(TrailMgr) == 24) ? 1 : -1];
 typedef char load_lights_20[(sizeof(GS3DLightNodes) == 20) ? 1 : -1];
 typedef char load_array_20[(sizeof(irr::core::array<irr::scene::ISceneNode*>) == 20) ? 1 : -1];
+
+namespace {
+inline unsigned int colorAlpha(const irr::video::SColor& c) { return c.a; }
+typedef unsigned int ColorWord __attribute__((may_alias));
+inline __attribute__((always_inline)) bool sameColor(const irr::video::SColor& a, const irr::video::SColor& b)
+{
+    return reinterpret_cast<const ColorWord&>(a) == reinterpret_cast<const ColorWord&>(b);
+}
+
+inline __attribute__((always_inline)) void updateColorBlend(irr::video::SMaterial& m)
+{
+    if (!(m.flags40 & 2) || (m.unknown0 & 1) || sameColor(m.color84, m.color48)) {
+        if (!(m.flags40 & 4))
+            m.dirtyFlags |= 1;
+        m.flags40 |= 4u;
+    } else {
+        if (m.flags40 & 4)
+            m.dirtyFlags |= 1;
+        m.flags40 &= ~4u;
+    }
+}
+}
+
+void GS3DStuff::SetAlpha(irr::scene::ISceneNode* node, unsigned char alpha, eColorType type)
+{
+    const int nodeType = node->getType();
+    if (nodeType == 0x6d656164 || nodeType == 0x73656164) {
+        if (type != Color0)
+            return;
+
+        irr::video::SMaterial& material = node->getMaterial(0);
+        if ((unsigned int)alpha == colorAlpha(material.color84))
+            return;
+
+        material.dirtyFlags |= 8;
+        material.color84.a = alpha;
+        updateColorBlend(material);
+    } else {
+        applyToChildren(node, SetAlpha, alpha, type);
+    }
+}
