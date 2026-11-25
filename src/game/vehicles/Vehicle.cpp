@@ -1680,6 +1680,78 @@ void Vehicle::playHorn()
     turnSoundPlaying = true;
 }
 
+struct VehicleDriveSfxView {
+    unsigned char pad0[132];
+    int unknown132;
+    unsigned char pad136[344 - 136];
+    unsigned int flags344;
+    unsigned char pad348[364 - 348];
+    int init364;
+    unsigned char pad368[506 - 368];
+    bool unknown506;
+    bool unknown507;
+    bool unknown508;
+    bool unknown509;
+    unsigned char unknown510;
+    unsigned char pad511[648 - 511];
+    float skidAmount;
+};
+
+extern "C" float _ZN7Vehicle18_adjustEnginePitchEj(Vehicle* self, unsigned int speed);
+
+extern "C" void _ZN7Vehicle12playDriveSfxEj(Vehicle* self, unsigned int speed)
+{
+    VehicleDriveSfxView* view = reinterpret_cast<VehicleDriveSfxView*>(self);
+    if (!(view->flags344 & 0x10))
+        return;
+
+    if (view->skidAmount > 0.0f && view->unknown509 && view->unknown508 && view->unknown507 && view->unknown506
+        && !SoundManager::getInstance()->isSoundPlaying(123)) {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(123, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    } else if (view->skidAmount > 0.0f && view->unknown509 && view->unknown508 && view->unknown507 && view->unknown506
+               && !view->unknown510 && !(view->skidAmount <= 0.0f)) {
+        if ((view->flags344 & 2) && view->unknown132 == 1 && !view->unknown510
+            && !SoundManager::getInstance()->isSoundPlaying(106)) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(106, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        } else if (!((view->flags344 & 2) && view->unknown132 == 1 && !view->unknown510)
+                   && SoundManager::getInstance()->isSoundPlaying(106)) {
+            SoundManager::getInstance()->stop(106, -1, 0);
+        }
+    } else {
+        SoundManager::getInstance()->stop(123, -1, 0);
+    }
+
+    if (!view->unknown506 && !view->unknown507 && !view->unknown508 && !view->unknown509)
+        view->unknown510 = true;
+    if (view->unknown510 && (view->unknown506 || view->unknown507 || view->unknown508 || view->unknown509)) {
+        view->unknown510 = false;
+        SoundManager* sound = SoundManager::getInstance();
+        int id = Vehicle::s_smallImpactSounds[lrand48() % 3];
+        sound->unknown140 = true;
+        sound->playEx(id, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+    }
+
+    int newState;
+    int state;
+    if (speed > 1) {
+        _ZN7Vehicle18_adjustEnginePitchEj(self, speed);
+        newState = 1;
+        state = 1;
+    } else {
+        newState = 0;
+        state = 0;
+    }
+    if (view->init364 != state)
+        view->init364 = newState;
+}
+
 void Vehicle::debug(irr::video::IVideoDriver* videoDriver)
 {
     irr::core::vector3d<float> corners[4];
@@ -2853,5 +2925,85 @@ void Vehicle::OnDespawn()
     else
         sceneNode->setVisible(false);
     _ZN20EvVehicleDeactivatedD1Ev(event);
+}
+
+struct VehicleDropSceneView {
+    unsigned char pad0[316];
+    irr::scene::ISceneNode* leftDoor;
+    irr::scene::ISceneNode* rightDoor;
+    irr::collada::CSkinnedMeshSceneNode* skinnedMesh;
+    irr::scene::ISceneNode* interior;
+    unsigned char pad332[408 - 332];
+    irr::video::ITexture* repairTexture;
+    irr::video::ITexture* damageTexture;
+    irr::scene::ISceneNode* repairMaterialNode;
+    unsigned char pad420[672 - 420];
+    irr::scene::ISceneNode* enabledSceneNode;
+    irr::scene::ISceneNode* wheelNodes[4];
+    irr::scene::ISceneNode* exterior;
+    unsigned char pad696[760 - 696];
+    irr::scene::ISceneNodeAnimator* leftDoorAnimator;
+    irr::scene::ISceneNodeAnimator* rightDoorAnimator;
+    unsigned char pad768[812 - 768];
+    int scenePool812;
+    irr::scene::ISceneNode* repairGlassNode;
+    irr::scene::ISceneNode* sceneData820;
+    int lightPool824;
+    int lightPool828;
+    irr::scene::ISceneNode* lightNodes[3];
+    irr::scene::ISceneNode* lightNode844;
+    irr::scene::ISceneNode* sceneData848;
+    irr::scene::ISceneNode* sceneData852;
+    unsigned char pad856[880 - 856];
+    int scenePool880;
+    irr::scene::ISceneNode* pooledNode884;
+    irr::scene::ISceneNode* sceneData888;
+    int scenePool892;
+    irr::scene::ISceneNode* repairLightNode;
+    unsigned char pad900[908 - 900];
+    VehicleRepairVisualState* repairVisualState;
+};
+
+extern "C" void _ZN7Vehicle13dropSceneNodeEv(Vehicle* self)
+{
+    VehicleDropSceneView* view = reinterpret_cast<VehicleDropSceneView*>(self);
+    if (view->enabledSceneNode)
+        view->enabledSceneNode->setVisible(false);
+    self->LevelObject::dropSceneNode();
+    view->repairVisualState = 0;
+    view->leftDoorAnimator = 0;
+    view->rightDoorAnimator = 0;
+    view->leftDoor = 0;
+    view->rightDoor = 0;
+    view->skinnedMesh = 0;
+    view->interior = 0;
+    view->repairTexture = 0;
+    view->damageTexture = 0;
+    view->repairMaterialNode = 0;
+    view->wheelNodes[0] = 0;
+    view->wheelNodes[1] = 0;
+    view->wheelNodes[2] = 0;
+    view->wheelNodes[3] = 0;
+    view->exterior = 0;
+    view->sceneData820 = 0;
+    view->sceneData848 = 0;
+    view->sceneData852 = 0;
+    view->enabledSceneNode = 0;
+    view->sceneData888 = 0;
+    SceneNodeManager* manager = SceneNodeManager::getInstance();
+    manager->drop(view->scenePool812, view->repairGlassNode);
+    manager->drop(view->scenePool892, view->repairLightNode);
+    manager->drop(view->lightPool824, view->lightNodes[0]);
+    manager->drop(view->lightPool824, view->lightNodes[1]);
+    manager->drop(view->lightPool828, view->lightNodes[2]);
+    manager->drop(view->lightPool828, view->lightNode844);
+    manager->drop(view->scenePool880, view->pooledNode884);
+    view->repairGlassNode = 0;
+    view->repairLightNode = 0;
+    view->lightNodes[0] = 0;
+    view->lightNodes[1] = 0;
+    view->lightNodes[2] = 0;
+    view->lightNode844 = 0;
+    view->pooledNode884 = 0;
 }
 

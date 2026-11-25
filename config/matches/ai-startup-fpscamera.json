@@ -53,7 +53,8 @@
             "name": "_GLOBAL__I__ZN9FPSCameraC2Ev",
             "address": "0x00334299"
         },
-        "_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE"
+        "_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE",
+        "_ZN9FPSCamera17updateTouchInputsEv"
     ],
     "sections": [
         ".fps_vtable",
@@ -65,7 +66,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".fps_scroll"
+        ".fps_scroll",
+        ".fps_update_touch_inputs"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -76,10 +78,11 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN10PlayerTest8showMeshEv",
         "_ZN15CControlManager11exitSnipingEb",
-        "_ZN9FPSCamera17updateTouchInputsEv",
         "_ZN13CameraManager11getInstanceEv",
         "_ZN13CameraManager6setFOVEi",
         "_ZN10PlayerTest9GetPlayerEv",
-        "_ZN13CameraManager6getFOVEv"
+        "_ZN13CameraManager6getFOVEv",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZNK11MenuManager15consumedCursorsEv"
     ]
 }

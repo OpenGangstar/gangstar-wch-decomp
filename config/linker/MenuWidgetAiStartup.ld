@@ -45,6 +45,7 @@ SECTIONS
     .renderfx_collect_characters 0x003ed1bc : { *renderfx-animation.o(.text._ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci) }
     .renderfx_update 0x003f0040 : { *renderfx-animation.o(.text._ZN8RenderFX6UpdateEib) }
     .renderfx_find 0x003ed6e4 : { *renderfx-animation.o(.text._ZN8RenderFX4FindEPKcPN7gameswf9characterE) }
+    .renderfx_load 0x003edde4 : { *renderfx-animation.o(.text._ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE) }
 
     .ai_startup_function_0 0x002ec014 : { *ai-startup-menuwidget.o(.text.__tcf_3) }
     .ai_startup_function_1 0x002ef2bc : { *ai-startup-menuwidget.o(.text._Z41__static_initialization_and_destruction_0ii) }

@@ -145,7 +145,8 @@
         "_ZN8RenderFX9SetMemberEPKcS1_RN7gameswf8as_valueE",
         "_Z19CanHandleMouseEventPN7gameswf9characterE",
         "_ZN8RenderFX6UpdateEib",
-        "_ZN8RenderFX4FindEPKcPN7gameswf9characterE"
+        "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
+        "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -187,7 +188,8 @@
         ".renderfx_set_member_value",
         ".can_handle_mouse",
         ".renderfx_update",
-        ".renderfx_find"
+        ".renderfx_find",
+        ".renderfx_load"
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -195,7 +197,6 @@
         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
-        "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN8RenderFX11SearchIndex4InitERS_",
         "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE",
@@ -245,7 +246,10 @@
         "_ZNK7gameswf6matrix9transformEPNS_5pointERKS1_",
         "_ZN7gameswf6cxformC1Ev",
         "_ZN7gameswf9character16get_world_cxformEv",
-        "_ZN7gameswf4root7advanceEfb"
+        "_ZN7gameswf4root7advanceEfb",
+        "_ZN7gameswf6player11set_workdirEPKc",
+        "_ZN7gameswf6player9load_fileEPKc",
+        "_ZN7gameswf6playerC1EPNS_14player_contextE"
     ],
     "retail_got": true
 }
