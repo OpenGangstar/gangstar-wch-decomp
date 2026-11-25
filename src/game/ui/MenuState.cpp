@@ -9,6 +9,8 @@
  */
 
 // Recovered translation-unit SDK and AI startup callbacks.
+// The button-name prefix is the retail string menufx.cpp defines.
+extern const char widgetButtonPrefix[] __attribute__((visibility("hidden")));
 #include "../core/LocalStartupStorage.h"
 #include "../missions/WantedLevelManagerSingleton.h"
 #include "../core/LocalStartupText.h"
@@ -1451,6 +1453,43 @@ void Menus::Map::OnEvent(RenderFX::Event& event)
         event.consumed = true;
     else
         MenuState::OnEvent(event);
+}
+
+extern "C" const char* _ZN8RenderFX5Event16GetCharacterPathEv(RenderFX::Event* event)
+    __attribute__((long_call));
+struct MenuStateFXView {
+    void* vtable;
+    MenuFX* menu;
+};
+void MenuState::OnEvent(RenderFX::Event& event)
+{
+    const int count = widgetIds.size;
+    MenuManager* manager = MenuManager::getInstance();
+    bool focusedButton = false;
+    if (event.type == 8
+        && strstr(event.characterName, widgetButtonPrefix) == event.characterName) {
+        reinterpret_cast<MenuStateFXView*>(this)->menu->SetFocus(_ZN8RenderFX5Event16GetCharacterPathEv(&event), 0);
+        focusedButton = true;
+    }
+    for (int index = 0; index < count; ++index) {
+        if (event.consumed) {
+            manager->consumeCursor();
+            return;
+        }
+        const int id = widgetIds.elements[index];
+        const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+        MenuWidget* widget = id >= 0 && id < table.count ? static_cast<MenuWidget*>(table.widgets[id]) : 0;
+        if (widget->IsVisible())
+            widget->OnEvent(event);
+    }
+    if (!event.consumed && !focusedButton)
+        return;
+    if (event.consumed) {
+        manager->consumeCursor();
+        return;
+    }
+    event.consumed = true;
+    manager->consumeCursor();
 }
 
 extern "C" void launchTwitter();
