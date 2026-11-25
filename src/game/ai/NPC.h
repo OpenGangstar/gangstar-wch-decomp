@@ -9,6 +9,7 @@ class NPC : public Character {
     friend class AIManager;
     friend class VehicleController;
     friend class CopController;
+    friend class ContactListener;
 public:
     NPC(int type);
     static void triggerCombatSFX(int type);

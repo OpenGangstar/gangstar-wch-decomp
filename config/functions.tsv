@@ -10892,7 +10892,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031cf75	0x6d4	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE	PhysicAttributes::GetNextRandomPos(int, int, irr::core::vector3d<float>)
 0x0031d649	0x144	PhysicAttributes.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0031d78d	0x14	PhysicAttributes.cpp	game	characters	matched	_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE	_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE
-0x0031d7a1	0x25c	PhysicAttributes.cpp	game	characters	pending	_ZN15ContactListener7PersistEPK14b2ContactPoint	ContactListener::Persist(b2ContactPoint const*)
+0x0031d7a1	0x25c	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener7PersistEPK14b2ContactPoint	ContactListener::Persist(b2ContactPoint const*)
 0x0031d9fd	0x2c	PhysicAttributes.cpp	game	characters	matched	_ZN13ContactFilterD0Ev	ContactFilter::~ContactFilter()
 0x0031da29	0x254	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_	PhysicAttributes::IntersectSegmentWithHeightMap(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
 0x0031dc7d	0x44c	PhysicAttributes.cpp	game	characters	pending	_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_	ContactFilter::ShouldCollide(b2Shape*, b2Shape*)
