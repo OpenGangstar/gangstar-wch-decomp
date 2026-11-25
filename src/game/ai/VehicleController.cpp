@@ -181,3 +181,53 @@ void VehicleController::switchState(gameloft::ai::StateID next)
     }
     state = next;
 }
+
+
+#include "../characters/NPCVehicleEvent.h"
+#include "../characters/PlayerTest.h"
+#include "../characters/PlayerEvent.h"
+namespace gameloft { namespace ai {
+struct Transition { const unsigned int* values; int count; };
+} }
+void VehicleController::onEvent(const IEvent* event, const EventManager*)
+{
+    switch (event->getEventID()) {
+    case 19: {
+        const EvNPCVehicle* vehicleEvent = static_cast<const EvNPCVehicle*>(event);
+        if (vehicleEvent->getVehicle() == vehicle) {
+            for (unsigned int i = 0; static_cast<int>(i) < transition.count; i += 3) {
+                const unsigned int from = transition.values[i];
+                const unsigned int condition = transition.values[i + 1];
+                const unsigned int to = transition.values[i + 2];
+                if (from == state && condition == static_cast<unsigned int>(vehicleEvent->getType())) {
+                    switchState(static_cast<gameloft::ai::StateID>(to));
+                    return;
+                }
+            }
+        }
+        break;
+    }
+    case 22: {
+        const EvPlayer* playerEvent = static_cast<const EvPlayer*>(event);
+        switch (playerEvent->getState()) {
+        case 9:
+            if (state == 8) {
+                LevelObject* target = vehicle->aiTarget;
+                LevelObject* playerTarget = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+                if (playerTarget == target)
+                    vehicle->aiTarget = PlayerTest::GetPlayer()->getVehicle();
+            }
+            break;
+        case 10:
+            if (state == 8) {
+                LevelObject* target = vehicle->aiTarget;
+                LevelObject* playerTarget = PlayerTest::GetPlayer()->getVehicle();
+                if (target == playerTarget)
+                    vehicle->aiTarget = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+            }
+            break;
+        }
+        break;
+    }
+    }
+}

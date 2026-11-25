@@ -51,7 +51,8 @@
         "_ZN17VehicleControllerD1Ev",
         "_ZN17VehicleControllerD2Ev",
         "_ZN17VehicleController15getNextWaypointEv",
-        "_ZN17VehicleController12getNextPointEv"
+        "_ZN17VehicleController12getNextPointEv",
+        "_ZN17VehicleController7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -69,7 +70,8 @@
         ".vehicle_controller_vtable",
         ".vehicle_controller_waypoint",
         ".vehicle_controller_next_point",
-        ".vehicle_switch_table"
+        ".vehicle_switch_table",
+        ".vehicle_controller_on_event"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -93,6 +95,7 @@
         "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
         "_ZNK4Path7getSizeEv",
         "_ZNK7Vehicle15getPathToFollowEv",
-        "_ZNK7Vehicle23isLoopingOnPathToFollowEv"
+        "_ZNK7Vehicle23isLoopingOnPathToFollowEv",
+        "_ZN10PlayerTest9GetPlayerEv"
     ]
 }

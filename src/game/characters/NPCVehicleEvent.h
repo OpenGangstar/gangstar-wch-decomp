@@ -11,6 +11,7 @@ public:
     virtual ~EvNPCVehicle() __attribute__((used, long_call));
 
     int getType() const { return type; }
+    const Vehicle* getVehicle() const { return vehicle; }
 
 private:
     int type;
