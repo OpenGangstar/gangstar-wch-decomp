@@ -813,6 +813,75 @@ void MenuManager::draw(const StateMachine*)
     reinterpret_cast<MyMenuFX*>(menuFX)->Render();
 }
 
+#include "../missions/WantedLevelManager.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MiniMap.h"
+#include "../core/Vector3.h"
+#include "../core/Rect.h"
+#include "../characters/AnimObject.h"
+#include "../meta/Item.h"
+#include "Shop.h"
+
+struct DrawMapBoundsView {
+    unsigned char unknown0[44];
+    float minX, minY, maxX, maxY;
+};
+struct DrawMapTrackingLink {
+    DrawMapTrackingLink* next;
+    DrawMapTrackingLink* previous;
+};
+struct DrawMapTrackingNode : DrawMapTrackingLink {
+    LevelObject* object;
+    AnimObject* marker;
+};
+struct DrawMapMiniMapView {
+    unsigned char unknown0[60];
+    DrawMapTrackingLink trackedObjects;
+};
+struct DrawMapItemView {
+    unsigned char unknown0[88];
+    int itemType;
+};
+struct MenuManagerViewportFields {
+    unsigned char unknown0[12];
+    int left;
+    int top;
+    int right;
+    int bottom;
+    int offsetX;
+};
+
+extern "C" void _ZNK11MenuManager8_drawMapEv(const MenuManager* self)
+{
+    const MenuManagerViewportFields& view = *reinterpret_cast<const MenuManagerViewportFields*>(self);
+    const DrawMapBoundsView* map=reinterpret_cast<const DrawMapBoundsView*>(Map::getInstance());
+    const irr::core::rect<float> bounds(map->minX,map->minY,map->maxX,map->maxY);
+    irr::core::dimension2d<int> size;
+    Map::getInstance()->getScaledSize(size);
+    const DrawMapMiniMapView* minimap=reinterpret_cast<const DrawMapMiniMapView*>(Application::GetInstance()->GetHudManager()->minimap);
+    DrawMapTrackingLink* link=minimap->trackedObjects.next;
+    while (link!=&minimap->trackedObjects) {
+        DrawMapTrackingNode* node=static_cast<DrawMapTrackingNode*>(link);
+        LevelObject* object=node->object;
+        const int type=LevelObject::s_type[object->getObjectType()];
+        if(type==13) {
+            if(!static_cast<Shop*>(object)->unlocked()) { link=link->next; continue; }
+        } else if(type==15 && reinterpret_cast<const DrawMapItemView*>(object)->itemType==3) {
+            if(WantedLevelManager::getInstance()->unknown8<=0 || !static_cast<Item*>(object)->unlocked()) { link=link->next; continue; }
+        }
+        const irr::core::vector3d<float> position=object->GetPosition();
+        const irr::core::position2d<int> point(static_cast<int>(size.Width*((position.X-bounds.UpperLeftCorner.X)/(bounds.LowerRightCorner.X-bounds.UpperLeftCorner.X))),
+                                               static_cast<int>(size.Height*((-position.Y-bounds.UpperLeftCorner.Y)/(bounds.LowerRightCorner.Y-bounds.UpperLeftCorner.Y))));
+        if (__builtin_expect(view.left <= point.X && view.top <= point.Y && view.right >= point.X && view.bottom >= point.Y, 1)) {
+            AnimObject* marker=node->marker;
+            marker->SetPosition(view.offsetX-view.left+point.X,point.Y-view.top,0);
+            marker->Draw();
+        }
+        link=link->next;
+    }
+    TargetMarker::getInstance()->draw();
+}
+
 struct GlyphOptimizerEntry { const char* font; const char* size; const char* name; };
 extern "C" const GlyphOptimizerEntry _ZN11MenuManager19s_GlypOptimizerDataE[14];
 extern "C" const char* _ZN13StringManager9LANGUAGESE[7];

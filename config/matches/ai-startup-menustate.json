@@ -454,7 +454,6 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZNK11MenuManager8_drawMapEv",
         "_ZNK3Map4drawEv",
         "_ZNK13ScriptManager26getAvailableMissionScriptsERSt6vectorIP6ScriptSaIS2_EE",
         "_ZNK6Script12getMissionIdEv",

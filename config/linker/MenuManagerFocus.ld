@@ -1,3 +1,5 @@
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
 PROVIDE(__aeabi_i2f = 0x001c41e4);
 PROVIDE(__aeabi_fmul = 0x001c4724);
 PROVIDE(__aeabi_fadd = 0x001c4154);
@@ -28,6 +30,8 @@ menuMapStateName = 0x0040b608;
 glFlush = 0x001c4160;
 SECTIONS
 {
+    .menu_draw_map 0x002e6ab0 : { *menu-manager-helpers.o(.text._ZNK11MenuManager8_drawMapEv) }
+    ASSERT(SIZEOF(.menu_draw_map) == 424, "native _drawMap extent")
     .menu_update_map 0x002e6fe0 : { *menu-manager-helpers.o(.text._ZN11MenuManager9updateMapEv) }
     ASSERT(SIZEOF(.menu_update_map) == 388, "native updateMap extent")
     .preload_format 0x00419004 : { *menu-manager-helpers.o(.rodata.preloadFormat) }

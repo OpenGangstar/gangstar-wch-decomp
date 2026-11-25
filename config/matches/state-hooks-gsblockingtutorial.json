@@ -464,7 +464,6 @@
         "_ZNK10MenuWidget9IsVisibleEv",
         "_ZNK11Application19GetScreenDimensionsERiS0_",
         "_ZNK11CWalkingHud10isNearShopEv",
-        "_ZNK11MenuManager8_drawMapEv",
         "_ZNK13StringManager9getStringEi",
         "_ZNK3Map4drawEv",
         "_ZNK6Script11peekCommandEi",
