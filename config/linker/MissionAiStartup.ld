@@ -27,6 +27,7 @@ SECTIONS
 {
  .mission_constructor 0x003360c0 : { *ai-startup-mission.o(.text._ZN7MissionC1Ev .text._ZN7MissionC2Ev) }
     .mission_draw 0x0033620c : { *ai-startup-mission.o(.text._ZN7Mission4drawEv) }
+    .mission_message 0x00336344 : { *ai-startup-mission.o(.text._ZN7Mission7messageEi) }
     .mission_start 0x003363d0 : { *ai-startup-mission.o(.text._ZN7Mission5startEii) }
     .mission_load 0x00335e60 : { *ai-startup-mission.o(.text._ZN7Mission4loadEPKc) }
     .mission_deleting_destructor 0x00335f90 : { *ai-startup-mission.o(.text._ZN7MissionD0Ev) }
@@ -95,3 +96,4 @@ ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE 
 ASSERT(ADDR(.mission_constructor)==0x003360c0,"Mission ctor native start");
 ASSERT(SIZEOF(.mission_constructor)==128,"Mission ctor native128 extent");
 ASSERT(ADDR(.mission_constructor)+SIZEOF(.mission_constructor)==0x00336140,"Mission ctor actual next compiled neighbor");
+ASSERT(SIZEOF(.mission_message) == 120, "Mission::message native span");

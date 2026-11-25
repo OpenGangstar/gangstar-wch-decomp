@@ -11841,7 +11841,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003360c1	0x80	Mission.cpp	game	missions	matched	_ZN7MissionC1Ev	Mission::Mission()
 0x00336141	0xcc	Mission.cpp	game	missions	matched	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
 0x0033620d	0x138	Mission.cpp	game	missions	matched	_ZN7Mission4drawEv	Mission::draw()
-0x00336345	0x78	Mission.cpp	game	missions	pending	_ZN7Mission7messageEi	Mission::message(int)
+0x00336345	0x78	Mission.cpp	game	missions	matched	_ZN7Mission7messageEi	Mission::message(int)
 0x003363bd	0x14	Mission.cpp	game	missions	matched	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
 0x003363d1	0x1d4	Mission.cpp	game	missions	matched	_ZN7Mission5startEii	Mission::start(int, int)
 0x003365a5	0x4c	Mission.cpp	game	missions	matched	_ZN7Mission4idleEv	Mission::idle()

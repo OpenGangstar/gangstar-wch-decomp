@@ -117,6 +117,21 @@ inline void Mission::Read(DataStream& stream)
 
 } // namespace Structs
 
+void Mission::message(int id)
+{
+    if (currentMessage != id) {
+        setTextToPrint(id);
+        if (id != -1) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(224, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    }
+    unknown12 = unknown8 = (id != -1) ? 3000 : 0;
+    Application::GetInstance()->GetHudManager()->message172->setMessage(currentMessage, unknown12, static_cast<MenuManager::eText>(9));
+}
+
 bool Mission::objective(int id, bool silent)
 {
     lastObjectiveText = id;

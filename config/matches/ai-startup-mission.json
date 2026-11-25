@@ -28,6 +28,7 @@
     "linker_script": "config/linker/MissionAiStartup.ld",
     "functions": [
         "_ZN7Mission4drawEv",
+        "_ZN7Mission7messageEi",
         "_ZN7Mission5startEii",
         "_ZN7Mission4loadEPKc",
         "_ZN7MissionD0Ev",
@@ -86,6 +87,7 @@
     ],
     "sections": [
         ".mission_vtable",
+        ".mission_message",
         ".mission_load_initializer",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -159,7 +161,6 @@
         "_ZN11MenuManager7setTextENS_5eTextEiPi",
         "_ZN11Application11GetInstanceEv",
         "_ZN7Message12clearMessageEb",
-        "_ZN7Mission7messageEi",
         "_ZN10DataStream7ReadIntEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN18WantedLevelManagerC1Ev",
