@@ -1,3 +1,15 @@
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_fcmpge = 0x001c4364);
+PROVIDE(__aeabi_fcmple = 0x001c43ac);
+PROVIDE(__aeabi_fcmpeq = 0x001c470c);
+PROVIDE(sqrtf = 0x001c4184);
 PROVIDE(__aeabi_fsub = 0x001c4328);
 PROVIDE(__aeabi_fdiv = 0x001c4520);
 PROVIDE(__aeabi_i2f = 0x001c41e4);
@@ -36,6 +48,7 @@ SECTIONS
     ASSERT(SIZEOF(.menu_draw_map) == 424, "native _drawMap extent")
     .menu_update_map 0x002e6fe0 : { *menu-manager-helpers.o(.text._ZN11MenuManager9updateMapEv) }
     .menu_manager_scroll_map 0x002e6864 : { *menu-manager-helpers.o(.text._ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE) }
+    .menu_manager_zoom_map 0x002e6db0 : { *menu-manager-helpers.o(.text._ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE) }
     ASSERT(SIZEOF(.menu_update_map) == 388, "native updateMap extent")
     .preload_format 0x00419004 : { *menu-manager-helpers.o(.rodata.preloadFormat) }
     .preload_error 0x00419014 : { *menu-manager-helpers.o(.rodata.preloadError) }
