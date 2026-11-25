@@ -328,6 +328,86 @@ void SoundFade::InitFadeGains(int frames)
     }
 }
 
+void CarSounds::UpdateOffEngineSounds()
+{
+    int previousUpper;
+    int id;
+    int channel;
+    int reference;
+    int lower;
+    int upper;
+    int nextLower;
+    int minimum;
+    int maximum;
+    int margin;
+    int* lowers;
+    bool playing;
+    float pitch;
+    float volume;
+    float gain;
+    int i;
+    int engineRpm;
+    const int state = offFade->GetState();
+    const int remaining = offFade->GetNbRemainingFades();
+    if (state == 2 && remaining == 0) {
+        for (i = 0; i < offEngineCount; ++i) {
+            s_SoundCallbacks.stop(offEngineIds[i], offEngineChannels[i]);
+            offEngineChannels[i] = -1;
+            offEngineActive = 0;
+        }
+    } else if (state == 1 && remaining == s_onOffCrossFadeDuration) {
+        offEngineActive = 1;
+    }
+    if (offEngineActive != 1)
+        return;
+
+    if (state == 0)
+        gain = offEngineGain * masterVolume;
+    else
+        gain = offEngineGain * masterVolume * offFade->GetVolume();
+
+    previousUpper = 0;
+    for (i = 0; i < offEngineCount; ++i) {
+        id = offEngineIds[i];
+        channel = offEngineChannels[i];
+        reference = static_cast<int*>(engineArray124)[i];
+        lowers = static_cast<int*>(engineArray128);
+        lower = lowers[i];
+        upper = static_cast<int*>(engineArray132)[i];
+        if (i < offEngineCount - 1)
+            nextLower = lowers[i + 1];
+        else
+            nextLower = maximumRpm;
+        margin = rpmMargin;
+        minimum = lower - margin;
+        maximum = upper + margin;
+        playing = s_SoundCallbacks.isSoundPlaying(id, channel);
+        if (playing && ((engineRpm = rpm) < minimum || engineRpm > maximum)) {
+            s_SoundCallbacks.stop(id, channel);
+            offEngineChannels[i] = -1;
+        } else if (playing || ((engineRpm = rpm) >= lower && engineRpm <= upper)) {
+            pitch = static_cast<float>(engineRpm) / static_cast<float>(reference);
+            if (engineRpm < lower)
+                volume = 0.0f;
+            else if (engineRpm < previousUpper)
+                volume = InterpolateLinear(lower, previousUpper, engineRpm, 0.0f, gain);
+            else if (engineRpm < nextLower)
+                volume = gain;
+            else if (engineRpm < upper)
+                volume = InterpolateLinear(nextLower, upper, engineRpm, gain, 0.0f);
+            else
+                volume = 0.0f;
+            if (!playing) {
+                offEngineChannels[i] = s_SoundCallbacks.play(id, true, volume, pitch);
+            } else {
+                s_SoundCallbacks.setVolume(id, channel, volume);
+                s_SoundCallbacks.setPitch(id, channel, pitch);
+            }
+        }
+        previousUpper = upper;
+    }
+}
+
 void CarSounds::Update(CarSoundParameters* parameters)
 {
     soundMode = parameters->mode;
@@ -538,3 +618,84 @@ void CarSounds::AddTurboSounds(TurboSoundSettings* settings)
     }
     auxiliaryTurboGain = settings->auxiliaryTurboGain;
 }
+
+void CarSounds::UpdateOnEngineSounds()
+{
+    int previousUpper;
+    int id;
+    int channel;
+    int reference;
+    int lower;
+    int upper;
+    int nextLower;
+    int minimum;
+    int maximum;
+    int margin;
+    int* lowers;
+    bool playing;
+    float pitch;
+    float volume;
+    float gain;
+    int i;
+    int engineRpm;
+    const int state = onFade->GetState();
+    const int remaining = onFade->GetNbRemainingFades();
+    if (state == 2 && remaining == 0) {
+        for (i = 0; i < onEngineCount; ++i) {
+            s_SoundCallbacks.stop(onEngineIds[i], onEngineChannels[i]);
+            onEngineChannels[i] = -1;
+            onEngineActive = 0;
+        }
+    } else if (state == 1 && remaining == s_onOffCrossFadeDuration) {
+        onEngineActive = 1;
+    }
+    if (onEngineActive != 1)
+        return;
+
+    if (state == 0)
+        gain = onEngineGain * masterVolume;
+    else
+        gain = onEngineGain * masterVolume * onFade->GetVolume();
+
+    previousUpper = 0;
+    for (i = 0; i < onEngineCount; ++i) {
+        id = onEngineIds[i];
+        channel = onEngineChannels[i];
+        reference = static_cast<int*>(engineArray88)[i];
+        lowers = static_cast<int*>(engineArray92);
+        lower = lowers[i];
+        upper = static_cast<int*>(engineArray96)[i];
+        if (i < onEngineCount - 1)
+            nextLower = lowers[i + 1];
+        else
+            nextLower = maximumRpm;
+        margin = rpmMargin;
+        minimum = lower - margin;
+        maximum = upper + margin;
+        playing = s_SoundCallbacks.isSoundPlaying(id, channel);
+        if (playing && ((engineRpm = rpm) < minimum || engineRpm > maximum)) {
+            s_SoundCallbacks.stop(id, channel);
+            onEngineChannels[i] = -1;
+        } else if (playing || ((engineRpm = rpm) >= lower && engineRpm <= upper)) {
+            pitch = static_cast<float>(engineRpm) / static_cast<float>(reference);
+            if (engineRpm < lower)
+                volume = 0.0f;
+            else if (engineRpm < previousUpper)
+                volume = InterpolateLinear(lower, previousUpper, engineRpm, 0.0f, gain);
+            else if (engineRpm < nextLower)
+                volume = gain;
+            else if (engineRpm < upper)
+                volume = InterpolateLinear(nextLower, upper, engineRpm, gain, 0.0f);
+            else
+                volume = 0.0f;
+            if (!playing) {
+                onEngineChannels[i] = s_SoundCallbacks.play(id, true, volume, pitch);
+            } else {
+                s_SoundCallbacks.setVolume(id, channel, volume);
+                s_SoundCallbacks.setPitch(id, channel, pitch);
+            }
+        }
+        previousUpper = upper;
+    }
+}
+

@@ -9187,7 +9187,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dc959	0x3a8	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE	GS3DStuff::DrawBody(b2Body*, irr::video::SColor)
 0x002dcd01	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP7VehicleSaIS1_EE8_M_clearEv	std::vector<Vehicle*, std::allocator<Vehicle*> >::_M_clear()
 0x002dcd15	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP4ItemSaIS1_EE8_M_clearEv	std::vector<Item*, std::allocator<Item*> >::_M_clear()
-0x002dcd29	0x174	GS3DStuff.cpp	game	rendering	pending	_ZNSs9_M_appendEPKcS0_	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, char const*)
+0x002dcd29	0x174	GS3DStuff.cpp	game	rendering	matched	_ZNSs9_M_appendEPKcS0_	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, char const*)
 0x002dce9d	0x28	GS3DStuff.cpp	game	rendering	matched	_ZNSs6appendEPKc	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::append(char const*)
 0x002dcec5	0x170	GS3DStuff.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002dd035	0x14	GS3DStuff.cpp	game	rendering	matched	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE	_GLOBAL__I__ZN9GS3DStuff15s_bulletManagerE
@@ -12981,8 +12981,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034f361	0x44	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds17InterpolateLinearEiiiff	CarSounds::InterpolateLinear(int, int, int, float, float)
 0x0034f3a5	0x170	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds13StopAllSoundsEv	CarSounds::StopAllSounds()
 0x0034f515	0x40	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds17UpdateClutchSoundEv	CarSounds::UpdateClutchSound()
-0x0034f555	0x230	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds21UpdateOffEngineSoundsEv	CarSounds::UpdateOffEngineSounds()
-0x0034f785	0x220	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds20UpdateOnEngineSoundsEv	CarSounds::UpdateOnEngineSounds()
+0x0034f555	0x230	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds21UpdateOffEngineSoundsEv	CarSounds::UpdateOffEngineSounds()
+0x0034f785	0x220	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds20UpdateOnEngineSoundsEv	CarSounds::UpdateOnEngineSounds()
 0x0034f9a5	0xe8	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds17UpdateRumbleSoundEv	CarSounds::UpdateRumbleSound()
 0x0034fa8d	0x60	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds18UpdateStartupSoundEv	CarSounds::UpdateStartupSound()
 0x0034faed	0x1c	CarSounds.cpp	game	vehicles	matched	__tcf_0	__tcf_0
