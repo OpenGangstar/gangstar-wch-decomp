@@ -2,6 +2,11 @@ PROVIDE(__aeabi_fcmpge = 0x001c4364);
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .character_despawn_event_delete 0x002f621c : { *ai-startup-character.o(.gnu.linkonce.t._ZN12EvNPCDespawnD0Ev) }
+    .character_despawn_event_dtor 0x002f6248 : { *ai-startup-character.o(.gnu.linkonce.t._ZN12EvNPCDespawnD1Ev) }
+    .character_despawn_event_vtable 0x004aa150 : { *ai-startup-character.o(.gnu.linkonce.d.rel.ro._ZTV12EvNPCDespawn) }
+    .character_switch_move_animation 0x002f661c : { *ai-startup-character.o(.text._ZN9Character19switchMoveAnimationEv) }
+    .character_switch_move_animation_table 0x0041c22c : { *ai-startup-character.o(.rodata._ZN9Character19switchMoveAnimationEv) }
     .character_show 0x002f4658 : { *ai-startup-character.o(.text._ZN9Character4showEv) }
     .character_position_in_vehicle 0x002f4a78 : { *ai-startup-character.o(.text._ZN9Character17positionInVehicleEb) }
     .character_npc_event_dtor 0x002f5158 : { *ai-startup-character.o(.gnu.linkonce.t._ZN5EvNPCD1Ev) }

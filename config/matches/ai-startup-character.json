@@ -168,7 +168,8 @@
         "_ZN9Character13initInVehicleEP7Vehicle",
         "_ZN9Character14throwOutDriverEb",
         "_ZN9Character4showEv",
-        "_ZN9Character17positionInVehicleEb"
+        "_ZN9Character17positionInVehicleEb",
+        "_ZN9Character19switchMoveAnimationEv"
     ],
     "sections": [
         ".character_init_physic",
@@ -223,7 +224,9 @@
         ".character_init_in_vehicle",
         ".character_throw_out_driver",
         ".character_show",
-        ".character_position_in_vehicle"
+        ".character_position_in_vehicle",
+        ".character_switch_move_animation",
+        ".character_switch_move_animation_table"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -291,7 +294,6 @@
         "_ZN9AIManager8removeAIEP3NPC",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
@@ -315,6 +317,7 @@
         "_ZN7Vehicle18getSeatedAnimationEv",
         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
         "_ZN7Vehicle21getLeftThrowAnimationEv",
-        "_ZN7Vehicle22getLeftThrownAnimationEv"
+        "_ZN7Vehicle22getLeftThrownAnimationEv",
+        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE"
     ]
 }
