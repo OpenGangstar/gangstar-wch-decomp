@@ -812,3 +812,54 @@ void MenuManager::draw(const StateMachine*)
     render->SetViewport(0, 0, width, height);
     reinterpret_cast<MyMenuFX*>(menuFX)->Render();
 }
+
+struct GlyphOptimizerEntry { const char* font; const char* size; const char* name; };
+extern "C" const GlyphOptimizerEntry _ZN11MenuManager19s_GlypOptimizerDataE[14];
+extern "C" const char* _ZN13StringManager9LANGUAGESE[7];
+static const char preloadFormat[]="%s.%s.%s.glyph";
+static const char preloadBinaryMode[]="rb";
+static const char preloadError[]="ERROR-fopen=0: MenuManager::preloadGlyphs-name='%s' \n";
+extern "C" void _ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE(gameswf::player_context*);
+extern "C" void _ZN8RenderFX13PreloadGlyphsEv(RenderFX*);
+struct PreloadStringFields { void* vtable; int language; };
+struct PreloadRootFields { unsigned char beforeCharacter[16]; gameswf::character* character; };
+struct PreloadCharacterMethods { void (*firstMethods[2])(); bool (*is)(const gameswf::character*,int); };
+void MenuManager::preloadGlyphs(bool clearFonts)
+{
+    MenuManager* manager=this;
+    char text[1025];
+    char name[255];
+    const char* language = _ZN13StringManager9LANGUAGESE[
+        reinterpret_cast<PreloadStringFields*>(Application::GetInstance()->GetStringManager())->language];
+    if (clearFonts)
+        _ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE(0);
+    MenuManagerFocusFields& fields = *reinterpret_cast<MenuManagerFocusFields*>(manager);
+    if (asianFont)
+        return;
+    RenderFX* render = reinterpret_cast<MyMenuFX*>(menuFX);
+    gameswf::character* root = reinterpret_cast<PreloadRootFields*>(
+        reinterpret_cast<MyMenuFX*>(MenuManager::getInstance()->getMenuFX())->GetRoot())->character;
+    const gameswf::array<gameswf::character*>& characters = render->FindCharacters(root,0,0);
+    for (int index=0; index<characters.size; ++index) {
+        gameswf::character* character = characters.elements[index];
+        const PreloadCharacterMethods& methods = **reinterpret_cast<const PreloadCharacterMethods* const*>(character);
+        if (methods.is(character,30))
+            _ZN11MenuManager13setMenuFXTextEPN7gameswf9characterEPKcbb(manager,characters.elements[index],localStartupEmptyText,false,false);
+    }
+    for (int index=0; index<14; ++index) {
+        const GlyphOptimizerEntry& entry = _ZN11MenuManager19s_GlypOptimizerDataE[index];
+        sprintf(name,preloadFormat,entry.font,language,entry.size);
+        NativeFile* file=fopen(name,preloadBinaryMode);
+        if (!file)
+            ekd_debug_out(preloadError,name);
+        fseek(file,0,2);
+        int size=ftell(file);
+        fseek(file,0,0);
+        fread(text,size,1,file);
+        text[size]=0;
+        _ZN11MenuManager13setMenuFXTextEPKcS1_bb(manager,entry.name,text,false,false);
+    }
+    _ZN8RenderFX13PreloadGlyphsEv(reinterpret_cast<MyMenuFX*>(menuFX));
+    for (int index=0; index<17; ++index)
+        _ZN11MenuManager7setTextENS_5eTextEiPi(manager,static_cast<MenuManager::eText>(index),-1,0);
+}

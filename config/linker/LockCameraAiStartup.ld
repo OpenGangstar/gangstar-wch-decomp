@@ -1,6 +1,9 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-lockcamera/retail-symbols.ld
+__aeabi_fadd = 0x001c4154;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
 INCLUDE config/linker/CameraSections.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
@@ -16,9 +19,14 @@ _ZN29retail_lockcamera_transitions11guard_transE = 0x0042a048;
 _ZN29retail_lockcamera_transitions22scripted_vehicle_transE = 0x0042a0f0;
 SECTIONS
 {
+    .lock_camera_vtable 0x004accf0 : { *ai-startup-lockcamera.o(.data.rel.ro._ZTV10LockCamera) }
     .lock_camera_debug 0x00334a2c : { *ai-startup-lockcamera.o(.text._ZN10LockCamera5debugEPN3irr5video12IVideoDriverE) }
     .lock_camera_destructor 0x00334a60 : { *ai-startup-lockcamera.o(.text._ZN10LockCameraD1Ev .text._ZN10LockCameraD2Ev) }
+    .lock_camera_init 0x00334a80 : { *ai-startup-lockcamera.o(.text._ZN10LockCamera4initEP11LevelObjecti) }
+    ASSERT(SIZEOF(.lock_camera_init) == 376, "Native LockCamera init extent")
     .lock_camera_constructor 0x00334bf8 : { *ai-startup-lockcamera.o(.text._ZN10LockCameraC1EP11LevelObject .text._ZN10LockCameraC2EP11LevelObject) }
+    .lock_camera_update 0x00334c24 : { *ai-startup-lockcamera.o(.text._ZN10LockCamera6updateEf) }
+    ASSERT(SIZEOF(.lock_camera_update) == 360, "Native LockCamera update extent")
     .ai_startup_function_0 0x00334a30 : { *ai-startup-lockcamera.o(.text.__tcf_3) }
     .ai_startup_function_1 0x00334d8c : { *ai-startup-lockcamera.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .ai_startup_function_2 0x00334ed0 : { *ai-startup-lockcamera.o(.text._GLOBAL__I__ZN10LockCameraC2EP11LevelObject) }

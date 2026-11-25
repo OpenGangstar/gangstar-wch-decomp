@@ -36,6 +36,10 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_on_despawn 0x00310e74 : { *vehicle-cleanup.o(.text._ZN7Vehicle9OnDespawnEv) }
+    ASSERT(SIZEOF(.vehicle_on_despawn) == 308, "Native Vehicle OnDespawn extent")
+    .vehicle_disable 0x00310fa8 : { *vehicle-cleanup.o(.text._ZN7Vehicle7disableEv) }
+    ASSERT(SIZEOF(.vehicle_disable) == 416, "Native Vehicle disable extent")
  .vehicle_d1 0x00311498 : { *vehicle-cleanup.o(.text._ZN7VehicleD1Ev) }
  ASSERT(SIZEOF(.vehicle_d1) == 580, "Vehicle D1 exact native input")
  ASSERT(ADDR(.vehicle_d1) + SIZEOF(.vehicle_d1) == 0x003116dc, "Vehicle D1 native end")

@@ -15,6 +15,8 @@ INCLUDE config/linker/PhysicAttributesResetSections.ld
 lrand48 = 0x001c4664;
 SECTIONS
 {
+    .character_die 0x002f2d94 : { *ai-startup-character.o(.text._ZN9Character3dieEb) }
+    ASSERT(SIZEOF(.character_die) == 324, "Native Character die extent")
     .character_punched 0x002f6c44 : { *ai-startup-character.o(.text._ZN9Character7punchedEiiP11LevelObject) }
     ASSERT(SIZEOF(.character_punched) == 884 && ADDR(.character_punched) + SIZEOF(.character_punched) == 0x002f6fb8, "Character punched exact native extent")
     .character_punched_table 0x0041c564 : { *ai-startup-character.o(.rodata._ZN9Character7punchedEiiP11LevelObject) }

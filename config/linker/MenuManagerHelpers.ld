@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
+    .preload_binary_mode 0x004014f0 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
     .map_cleanup 0x2e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
     .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
@@ -77,3 +78,4 @@ ASSERT(SIZEOF(.menu_startup_storage_10) == 8, "MenuManager _ZN8gameloft2ai11cop_
 ASSERT(SIZEOF(.menu_startup_storage_11) == 8, "MenuManager _ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.menu_startup_storage_12) == 8, "MenuManager _ZN8gameloft2ai16scripted_vehicleE extent");
 ASSERT(SIZEOF(.menu_startup_storage_13) == 32, "MenuManager _ZN11MenuManager22s_cheatActivationZonesE extent");
+

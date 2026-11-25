@@ -1771,3 +1771,610 @@ void ScriptManager::draw()
     if (revive)
         revive->draw2d();
 }
+
+namespace Structs {
+
+struct NoPayloadCommand {
+    int opcode;
+    void Read(DataStream& stream);
+};
+
+inline void NoPayloadCommand::Read(DataStream& stream)
+{
+    opcode = stream.ReadInt();
+}
+
+}
+
+Structs::ScriptCommand* ScriptManager::loadCommand(DataStream& stream)
+{
+    Structs::ScriptCommand* command = 0;
+    switch (stream.Peek4()) {
+    case 0:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetMe());
+        reinterpret_cast<Structs::SetMe*>(command)->Read(stream);
+        break;
+    }
+    case 1:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::PlayScript());
+        reinterpret_cast<Structs::PlayScript*>(command)->Read(stream);
+        break;
+    }
+    case 2:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::LockScript());
+        reinterpret_cast<Structs::LockScript*>(command)->Read(stream);
+        break;
+    }
+    case 3:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::UnlockScript());
+        reinterpret_cast<Structs::UnlockScript*>(command)->Read(stream);
+        break;
+    }
+    case 4:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 5:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitForStop());
+        reinterpret_cast<Structs::WaitForStop*>(command)->Read(stream);
+        break;
+    }
+    case 6:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetAnim());
+        reinterpret_cast<Structs::SetAnim*>(command)->Read(stream);
+        break;
+    }
+    case 7:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetAnim2());
+        reinterpret_cast<Structs::SetAnim2*>(command)->Read(stream);
+        break;
+    }
+    case 8:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetAnimSpeed());
+        reinterpret_cast<Structs::SetAnimSpeed*>(command)->Read(stream);
+        break;
+    }
+    case 9:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::DebugScript());
+        reinterpret_cast<Structs::DebugScript*>(command)->Read(stream);
+        break;
+    }
+    case 12:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::CamSet());
+        reinterpret_cast<Structs::CamSet*>(command)->Read(stream);
+        break;
+    }
+    case 13:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::CamDefault());
+        reinterpret_cast<Structs::CamDefault*>(command)->Read(stream);
+        break;
+    }
+    case 15:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 16:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 17:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 18:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 21:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::Enable());
+        reinterpret_cast<Structs::Enable*>(command)->Read(stream);
+        break;
+    }
+    case 22:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::Disable());
+        reinterpret_cast<Structs::Disable*>(command)->Read(stream);
+        break;
+    }
+    case 23:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::Release());
+        reinterpret_cast<Structs::Release*>(command)->Read(stream);
+        break;
+    }
+    case 24:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::MoveTo());
+        reinterpret_cast<Structs::MoveTo*>(command)->Read(stream);
+        break;
+    }
+    case 25:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorWalkTo());
+        reinterpret_cast<Structs::ActorWalkTo*>(command)->Read(stream);
+        break;
+    }
+    case 26:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorRunTo());
+        reinterpret_cast<Structs::ActorRunTo*>(command)->Read(stream);
+        break;
+    }
+    case 29:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorAttack());
+        reinterpret_cast<Structs::ActorAttack*>(command)->Read(stream);
+        break;
+    }
+    case 32:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorFollow());
+        reinterpret_cast<Structs::ActorFollow*>(command)->Read(stream);
+        break;
+    }
+    case 33:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorStopFollow());
+        reinterpret_cast<Structs::ActorStopFollow*>(command)->Read(stream);
+        break;
+    }
+    case 34:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorWalkPath());
+        reinterpret_cast<Structs::ActorWalkPath*>(command)->Read(stream);
+        break;
+    }
+    case 35:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorRunPath());
+        reinterpret_cast<Structs::ActorRunPath*>(command)->Read(stream);
+        break;
+    }
+    case 36:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorLoopPath());
+        reinterpret_cast<Structs::ActorLoopPath*>(command)->Read(stream);
+        break;
+    }
+    case 37:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::VehicleChasePlayer());
+        reinterpret_cast<Structs::VehicleChasePlayer*>(command)->Read(stream);
+        break;
+    }
+    case 38:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorGetIn());
+        reinterpret_cast<Structs::ActorGetIn*>(command)->Read(stream);
+        break;
+    }
+    case 39:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ActorGetOut());
+        reinterpret_cast<Structs::ActorGetOut*>(command)->Read(stream);
+        break;
+    }
+    case 41:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::FadeIn());
+        reinterpret_cast<Structs::FadeIn*>(command)->Read(stream);
+        break;
+    }
+    case 42:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::FadeOut());
+        reinterpret_cast<Structs::FadeOut*>(command)->Read(stream);
+        break;
+    }
+    case 43:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetDecal());
+        reinterpret_cast<Structs::SetDecal*>(command)->Read(stream);
+        break;
+    }
+    case 44:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::AttackAsGood());
+        reinterpret_cast<Structs::AttackAsGood*>(command)->Read(stream);
+        break;
+    }
+    case 45:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::AttackAsBad());
+        reinterpret_cast<Structs::AttackAsBad*>(command)->Read(stream);
+        break;
+    }
+    case 46:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 47:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ShowTutorial());
+        reinterpret_cast<Structs::ShowTutorial*>(command)->Read(stream);
+        break;
+    }
+    case 48:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 49:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitPathEnded());
+        reinterpret_cast<Structs::WaitPathEnded*>(command)->Read(stream);
+        break;
+    }
+    case 52:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::CarDriveTo());
+        reinterpret_cast<Structs::CarDriveTo*>(command)->Read(stream);
+        break;
+    }
+    case 53:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::CarSetSpeed());
+        reinterpret_cast<Structs::CarSetSpeed*>(command)->Read(stream);
+        break;
+    }
+    case 55:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::CarSetPath());
+        reinterpret_cast<Structs::CarSetPath*>(command)->Read(stream);
+        break;
+    }
+    case 56:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::Dialog());
+        reinterpret_cast<Structs::Dialog*>(command)->Read(stream);
+        break;
+    }
+    case 57:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::Wait());
+        reinterpret_cast<Structs::Wait*>(command)->Read(stream);
+        break;
+    }
+    case 60:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::PlaySfx());
+        reinterpret_cast<Structs::PlaySfx*>(command)->Read(stream);
+        break;
+    }
+    case 61:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::StopSfx());
+        reinterpret_cast<Structs::StopSfx*>(command)->Read(stream);
+        break;
+    }
+    case 62:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::PlayMusic());
+        reinterpret_cast<Structs::PlayMusic*>(command)->Read(stream);
+        break;
+    }
+    case 63:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::StopMusic());
+        reinterpret_cast<Structs::StopMusic*>(command)->Read(stream);
+        break;
+    }
+    case 64:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitCheckpoint());
+        reinterpret_cast<Structs::WaitCheckpoint*>(command)->Read(stream);
+        break;
+    }
+    case 65:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::MissionStart());
+        reinterpret_cast<Structs::MissionStart*>(command)->Read(stream);
+        break;
+    }
+    case 66:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::MissionObjective());
+        reinterpret_cast<Structs::MissionObjective*>(command)->Read(stream);
+        break;
+    }
+    case 67:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 68:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 69:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ProtectNPC());
+        reinterpret_cast<Structs::ProtectNPC*>(command)->Read(stream);
+        break;
+    }
+    case 70:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ProtectCar());
+        reinterpret_cast<Structs::ProtectCar*>(command)->Read(stream);
+        break;
+    }
+    case 71:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::StayWithin());
+        reinterpret_cast<Structs::StayWithin*>(command)->Read(stream);
+        break;
+    }
+    case 72:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 73:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::BeQuick());
+        reinterpret_cast<Structs::BeQuick*>(command)->Read(stream);
+        break;
+    }
+    case 74:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetUsUpTheBomb());
+        reinterpret_cast<Structs::SetUsUpTheBomb*>(command)->Read(stream);
+        break;
+    }
+    case 76:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::LockShop());
+        reinterpret_cast<Structs::LockShop*>(command)->Read(stream);
+        break;
+    }
+    case 77:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::UnlockShop());
+        reinterpret_cast<Structs::UnlockShop*>(command)->Read(stream);
+        break;
+    }
+    case 79:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::GiveWeapon());
+        reinterpret_cast<Structs::GiveWeapon*>(command)->Read(stream);
+        break;
+    }
+    case 80:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::LimitToWeapon());
+        reinterpret_cast<Structs::LimitToWeapon*>(command)->Read(stream);
+        break;
+    }
+    case 81:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 82:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NPCWeapon());
+        reinterpret_cast<Structs::NPCWeapon*>(command)->Read(stream);
+        break;
+    }
+    case 83:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::PlaceItem());
+        reinterpret_cast<Structs::PlaceItem*>(command)->Read(stream);
+        break;
+    }
+    case 84:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 85:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::TagForKill());
+        reinterpret_cast<Structs::TagForKill*>(command)->Read(stream);
+        break;
+    }
+    case 86:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 87:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitKilled());
+        reinterpret_cast<Structs::WaitKilled*>(command)->Read(stream);
+        break;
+    }
+    case 88:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitShot());
+        reinterpret_cast<Structs::WaitShot*>(command)->Read(stream);
+        break;
+    }
+    case 89:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitStolen());
+        reinterpret_cast<Structs::WaitStolen*>(command)->Read(stream);
+        break;
+    }
+    case 90:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitWantedLevel());
+        reinterpret_cast<Structs::WaitWantedLevel*>(command)->Read(stream);
+        break;
+    }
+    case 91:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 96:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetWantedLevel());
+        reinterpret_cast<Structs::SetWantedLevel*>(command)->Read(stream);
+        break;
+    }
+    case 97:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::RaiseWantedLevel());
+        reinterpret_cast<Structs::RaiseWantedLevel*>(command)->Read(stream);
+        break;
+    }
+    case 98:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::DropWantedLevel());
+        reinterpret_cast<Structs::DropWantedLevel*>(command)->Read(stream);
+        break;
+    }
+    case 99:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::StopObject());
+        reinterpret_cast<Structs::StopObject*>(command)->Read(stream);
+        break;
+    }
+    case 100:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SpyTarget());
+        reinterpret_cast<Structs::SpyTarget*>(command)->Read(stream);
+        break;
+    }
+    case 101:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitEscape());
+        reinterpret_cast<Structs::WaitEscape*>(command)->Read(stream);
+        break;
+    }
+    case 102:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::StartRace());
+        reinterpret_cast<Structs::StartRace*>(command)->Read(stream);
+        break;
+    }
+    case 103:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::AddRacer());
+        reinterpret_cast<Structs::AddRacer*>(command)->Read(stream);
+        break;
+    }
+    case 104:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 105:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitCheckpointCar());
+        reinterpret_cast<Structs::WaitCheckpointCar*>(command)->Read(stream);
+        break;
+    }
+    case 106:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::DestroyCar());
+        reinterpret_cast<Structs::DestroyCar*>(command)->Read(stream);
+        break;
+    }
+    case 107:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::KillNPC());
+        reinterpret_cast<Structs::KillNPC*>(command)->Read(stream);
+        break;
+    }
+    case 108:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitForLock());
+        reinterpret_cast<Structs::WaitForLock*>(command)->Read(stream);
+        break;
+    }
+    case 113:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 109:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 110:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::NoPayloadCommand());
+        reinterpret_cast<Structs::NoPayloadCommand*>(command)->Read(stream);
+        break;
+    }
+    case 111:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::HudHighlight());
+        reinterpret_cast<Structs::HudHighlight*>(command)->Read(stream);
+        break;
+    }
+    case 112:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::ShowTutorial());
+        reinterpret_cast<Structs::ShowTutorial*>(command)->Read(stream);
+        break;
+    }
+    case 114:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::SetPhotoTarget());
+        reinterpret_cast<Structs::SetPhotoTarget*>(command)->Read(stream);
+        break;
+    }
+    case 115:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::FlagAsInRace());
+        reinterpret_cast<Structs::FlagAsInRace*>(command)->Read(stream);
+        break;
+    }
+    case 116:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::WaitIfNotPhotographed());
+        reinterpret_cast<Structs::WaitIfNotPhotographed*>(command)->Read(stream);
+        break;
+    }
+    case 117:
+    {
+        command = reinterpret_cast<Structs::ScriptCommand*>(new Structs::PhotographQuickly());
+        reinterpret_cast<Structs::PhotographQuickly*>(command)->Read(stream);
+        break;
+    }
+    default:
+        break;
+    }
+    if (command) printCommand(*command);
+    return command;
+}

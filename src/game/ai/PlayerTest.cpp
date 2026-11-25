@@ -387,6 +387,19 @@ void PlayerTest::addDistanceDriven(float distance)
     }
 }
 
+bool PlayerTest::isFacingTarget()
+{
+    LevelObject* target = _GetTarget();
+    irr::core::vector3d<float> direction = target->GetPosition() - GetPosition();
+    direction.Z = 0.0f;
+    direction.normalize();
+
+    irr::core::vector3d<float> front = GetFront();
+    front.Z = 0.0f;
+    front.normalize();
+    return front.dotProduct(direction) > 0.9f;
+}
+
 void PlayerTest::UpdateSceneNode()
 {
     if (_GetTarget())

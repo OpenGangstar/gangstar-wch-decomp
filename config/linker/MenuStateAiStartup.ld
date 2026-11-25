@@ -358,6 +358,9 @@ SECTIONS
     .map_cleanup 0x002e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
     .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
     .map_instance 0x004b6b00 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
+    /* Retail merges preloadGlyphs' "rb" with RenderFX's read mode at 0x004014f0; this image places only
+       RenderFX's copy there and gives the unchecked MenuManager duplicate a non-retail home. */
+    .menu_manager_duplicate_read_mode 0x00700000 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     /DISCARD/ : { *ai-startup-menuwidget.o(*) *menu-manager-helpers.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");

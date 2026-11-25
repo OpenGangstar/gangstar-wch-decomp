@@ -2759,3 +2759,99 @@ Vehicle::~Vehicle()
         }
     }
 }
+
+#include "../core/CameraManager.h"
+#include "../hud/MiniMap.h"
+#include "../input/CControlManager.h"
+void Vehicle::disable()
+{
+    if (!isEnabled())
+        return;
+    if (flags344 & 0x02000000u)
+        tagForKill(false);
+
+    PlayerTest* player = PlayerTest::GetPlayer();
+    SavePrimaryInterface* primary = player;
+    if (primary->getVehicle() == this) {
+        CHudManager* hud = Application::GetInstance()->GetHudManager();
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player));
+        if (hud->minimap)
+            static_cast<MiniMap*>(hud->minimap)->setFollowedObject(character);
+        if ((player->flags240 & 0x400u) && character->getVehicle()) {
+            player->stopDriving(playertest::PlayerCarState::MovingOut, true);
+            character->setAnimation(165, 1.0f, false, false, false);
+            Application::GetInstance()->GetHudManager()->walking();
+            Application::GetInstance()->GetControlManager()->exitCar(true);
+        } else {
+            CameraManager::getInstance()->enterMode(0, character, 0.3f, 0);
+        }
+        primary->setVehicle(0);
+    }
+    if (static_cast<const LevelObject*>(this) == player->lastHitVehicle)
+        player->lastHitVehicle = 0;
+    if (player->target == this) {
+        static_cast<SavePositionInterface*>(player)->SetTarget(0);
+        player->_SetTarget(0, true);
+    }
+    if (static_cast<Vehicle*>(player->unknown368) == this)
+        player->unknown368 = 0;
+    if (static_cast<Vehicle*>(player->unknown312) == this)
+        player->unknown312 = 0;
+
+    stopSiren();
+    _cleanupSounds();
+    cleanupTargetDetection();
+    repair();
+    Stop();
+    clean();
+    cleanTargets();
+    aiTarget = 0;
+
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    unsigned int storage[sizeof(EvVehicleDeactivated) / sizeof(unsigned int)];
+    EvVehicleDeactivated* event = new (storage) EvVehicleDeactivated(this);
+    events->raise(*event);
+    flags344 = 1u << 23;
+    LevelObject::disable();
+    _ZN20EvVehicleDeactivatedD1Ev(event);
+}
+void Vehicle::OnDespawn()
+{
+    LevelObject::OnDespawn();
+    unknown960Word = -5000;
+    unknown4 &= ~0x800u;
+    stopSiren();
+    cleanupTargetDetection();
+    repair();
+    Stop();
+    clean();
+    cleanTargets();
+    aiTarget = 0;
+
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (static_cast<const LevelObject*>(this) == player->lastHitVehicle)
+        player->lastHitVehicle = 0;
+    if (player->target == this) {
+        static_cast<SavePositionInterface*>(player)->SetTarget(0);
+        player->_SetTarget(0, true);
+    }
+    SavePrimaryInterface* primary = player;
+    if (primary->getVehicle() == this)
+        primary->setVehicle(0);
+    if (static_cast<Vehicle*>(player->unknown368) == this)
+        player->unknown368 = 0;
+    if (static_cast<Vehicle*>(player->unknown312) == this)
+        player->unknown312 = 0;
+
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    unsigned int storage[sizeof(EvVehicleDeactivated) / sizeof(unsigned int)];
+    EvVehicleDeactivated* event = new (storage) EvVehicleDeactivated(this);
+    events->raise(*event);
+    flags344 = 1u << 23;
+    if (hasSceneNodePool())
+        dropSceneNode();
+    else
+        sceneNode->setVisible(false);
+    _ZN20EvVehicleDeactivatedD1Ev(event);
+}
+

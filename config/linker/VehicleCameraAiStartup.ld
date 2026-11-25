@@ -27,6 +27,7 @@ SECTIONS
     .vehicle_camera_init 0x0033530c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera4initEP11LevelObjecti) }
     .vehicle_camera_position 0x0033560c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff) }
     .vehicle_camera_vtable 0x004acde0 : { *ai-startup-vehiclecamera.o(.data.rel.ro._ZTV13VehicleCamera) }
+    .vehicle_camera_go_to_side 0x003351dc : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera8goToSideEb) }
     .vehicle_camera_enter 0x003351a0 : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera5enterEv) }
     .camera_variant_ctor 0x0033546c : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCameraC1EP11LevelObject .text._ZN13VehicleCameraC2EP11LevelObject) }
     .camera_variant_angles 0x003350fc : { *ai-startup-vehiclecamera.o(.text._ZN13VehicleCamera12updateAnglesEii) }

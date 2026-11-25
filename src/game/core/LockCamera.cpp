@@ -12,6 +12,7 @@
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
 #include "CameraVariants.h"
+#include "../characters/PlayerTest.h"
 
 void LockCamera::debug(irr::video::IVideoDriver*)
 {
@@ -21,9 +22,45 @@ LockCamera::~LockCamera()
 {
 }
 
+void LockCamera::init(LevelObject* object, int)
+{
+    owner = object;
+    if (!owner)
+        return;
+    LevelObject* target = static_cast<PlayerTest*>(object)->_GetTarget();
+    if (!target)
+        return;
+    irr::core::vector3d<float> direction = target->GetPosition() - static_cast<PlayerTest*>(owner)->GetPosition();
+    direction.normalize();
+    irr::core::vector3d<float> pos = owner->GetPosition() - direction * 300.0f;
+    pos += static_cast<PlayerTest*>(owner)->GetRight() * 80.0f;
+    pos.Z = owner->GetPosition().Z + 150.0f;
+    setPosition(pos);
+    setLookAt(target->GetPosition());
+    lookAt.Z = target->GetPosition().Z + 120.0f;
+}
+
 LockCamera::LockCamera(LevelObject* object)
 {
     init(object, 0);
+}
+
+void LockCamera::update(float)
+{
+    if (!owner)
+        return;
+    LevelObject* target = static_cast<PlayerTest*>(owner)->_GetTarget();
+    if (!target)
+        return;
+
+    irr::core::vector3d<float> direction = target->GetPosition() - owner->GetPosition();
+    direction.normalize();
+    irr::core::vector3d<float> pos = owner->GetPosition() - direction * 300.0f;
+    pos += static_cast<PlayerTest*>(owner)->GetRight() * 80.0f;
+    pos.Z = owner->GetPosition().Z + 150.0f;
+    setPosition(pos);
+    setLookAt(target->GetPosition());
+    lookAt.Z = target->GetPosition().Z + 120.0f;
 }
 
 void operator delete(void*) throw();

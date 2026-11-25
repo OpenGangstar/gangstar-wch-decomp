@@ -30,6 +30,7 @@
 #include "../combat/WeaponManager.h"
 #include "../rendering/GS3DStuff.h"
 #include "../world/SceneNodeManager.h"
+#include "../meta/Achievements.h"
 
 irr::scene::ITimelineController* Character::s_timelineController;
 bool Character::b_isBloodOn = true;
@@ -1143,6 +1144,28 @@ Character::~Character()
         s_bloodpuddle = -1;
         bloodPuddle = 0;
     }
+}
+
+void Character::die(bool animate)
+{
+    unknown264 = 0;
+    if (!isPlayer() && Lock::getInstance()->target == this)
+        Lock::getInstance()->setTarget(0);
+    if (animate && !isCurrentAnimation(86) && !isCurrentAnimation(162) && !isCurrentAnimation(175)
+        && !isCurrentAnimation(24) && !isCurrentAnimation(25) && !isCurrentAnimation(17)
+        && !isCurrentAnimation(18) && !isCurrentAnimation(19) && !isCurrentAnimation(20) && !isCurrentAnimation(21)) {
+        if (__builtin_expect(!(movementFlags & 0x08000000u), 0))
+            setAnimation(175, 1.0f, false, false, false);
+        else
+            setAnimation(86, 1.0f, false, false, false);
+        movementFlags |= 0x2000u;
+    } else {
+        movementFlags |= 0x4000u;
+    }
+    showBloodPuddle(shadowNode->getAbsolutePosition());
+    if (isPlayer())
+        removeBloodPuddle();
+    AchievementManager::s_achievementManager->recordDeath(*this);
 }
 
 void Character::goToVehicle(Vehicle* value, bool left, bool run, bool, bool)

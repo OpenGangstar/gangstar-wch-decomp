@@ -65,6 +65,18 @@ void VehicleCamera::init(LevelObject* owner, int)
     previousSpeed = 0.0f;
 }
 
+void VehicleCamera::goToSide(bool left)
+{
+    if (!vehicle)
+        return;
+    const irr::core::vector3d<float> front = vehicle->GetFront();
+    vector40 = front * static_cast<float>(vehicle->cameraLookAhead);
+    vector40.Z = static_cast<float>(vehicle->cameraLookHeight);
+    setLookAt(vehicle->GetPosition() + vector40);
+    vector52 = (left ? vehicle->GetRight() : -vehicle->GetRight()) * static_cast<float>(vehicle->cameraSideDistance);
+    setPosition(vehicle->GetPosition() - vector52);
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_3() __attribute__((used));

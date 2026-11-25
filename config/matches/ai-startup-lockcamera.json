@@ -30,6 +30,8 @@
         "_ZN10LockCamera5debugEPN3irr5video12IVideoDriverE",
         "_ZN10LockCameraD1Ev",
         "_ZN10LockCameraD2Ev",
+        "_ZN10LockCamera4initEP11LevelObjecti",
+        "_ZN10LockCamera6updateEf",
         "_ZN10LockCameraC1EP11LevelObject",
         "_ZN10LockCameraC2EP11LevelObject",
         {
@@ -46,6 +48,7 @@
         }
     ],
     "sections": [
+        ".lock_camera_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -53,8 +56,10 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".lock_camera_init",
+        ".lock_camera_update"
     ],
     "retail_got": true,
-    "external_thumb_functions": ["_ZN10LockCamera4initEP11LevelObjecti"]
+    "external_thumb_functions": ["_ZN10PlayerTest10_GetTargetEv"]
 }
