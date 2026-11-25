@@ -51,7 +51,8 @@
             "name": "_GLOBAL__I__ZN13VehicleCameraC2EP11LevelObject",
             "address": "0x003355f9"
         },
-        "_ZNK13VehicleCamera9getFacingEv"
+        "_ZNK13VehicleCamera9getFacingEv",
+        "_ZN13VehicleCamera6updateEf"
     ],
     "sections": [
         ".vehicle_camera_vtable",
@@ -64,11 +65,12 @@
             "offset": 864
         },
         ".vehicle_camera_facing",
-        ".vehicle_camera_go_to_side"
+        ".vehicle_camera_go_to_side",
+        ".vehicle_camera_update"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN13VehicleCamera6updateEf",
-        "_ZN7Vehicle13onCameraEnterEv"
+        "_ZN7Vehicle13onCameraEnterEv",
+        "_ZN7Vehicle11getVelDirecEv"
     ]
 }

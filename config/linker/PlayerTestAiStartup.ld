@@ -38,6 +38,17 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .player_map_trackable_vtable 0x004ab050 : { *ai-startup-playertest.o(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }
+    .player_shape_def_d0 0x002db47c : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
+    .player_shape_def_d1 0x002db49c : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
+    .player_polygon_def_d0 0x002df628 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
+    .player_polygon_def_d1 0x002df3f4 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
+    .player_circle_def_d0 0x002f462c : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN11b2CircleDefD0Ev) }
+    .player_circle_def_d1 0x002f4440 : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN11b2CircleDefD1Ev) }
+    .player_shape_def_vtable 0x004a8ad8 : { *ai-startup-playertest.o(.gnu.linkonce.d.rel.ro._ZTV10b2ShapeDef) }
+    .player_polygon_def_vtable 0x004a8ac8 : { *ai-startup-playertest.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
+    .player_circle_def_vtable 0x004aa168 : { *ai-startup-playertest.o(.gnu.linkonce.d.rel.ro._ZTV11b2CircleDef) }
+    .player_test_ctor 0x00303700 : { *ai-startup-playertest.o(.text._ZN10PlayerTestC1EP7b2World .text._ZN10PlayerTestC2EP7b2World) }
     .player_is_facing_target 0x003025cc : { *ai-startup-playertest.o(.text._ZN10PlayerTest14isFacingTargetEv) }
     ASSERT(SIZEOF(.player_is_facing_target) == 184, "Native PlayerTest isFacingTarget extent")
     .player_set_anim 0x003018d0 : { *ai-startup-playertest.o(.text._ZN10PlayerTest7setAnimEibbbf) }

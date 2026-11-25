@@ -1281,3 +1281,86 @@ extern "C" void _ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE(MenuMan
     }
     reinterpret_cast<ZoomMapFields*>(Map::getInstance())->scale = m.zoom;
 }
+
+namespace {
+// Menu state refreshed when the cheat sequence completes.
+const char menuUpdateSettingsState[] = "OptionGameSettings";
+}
+
+extern "C" {
+double _ZNK12StateMachine12getTimeStampEv(const StateMachine* machine);
+void _ZN8RenderFX12UpdateCursorERNS_6CursorEi(RenderFX* render, void* cursor, int index);
+bool _ZNK7Widgets8Tutorial15IsCursorPressedEv(const MenuWidget* widget);
+void _ZN5Menus18OptionGameSettings7RefreshEv(void* state);
+extern const int _ZN11MenuManager25s_cheatActivationSequenceE[];
+TouchIDList& _ZNSt4listIlSaIlEEaSERKS1_(TouchIDList* list, const TouchIDList& other) __attribute__((weak));
+}
+
+void MenuManager::update(StateMachine* machine)
+{
+    consumedCursorCount = 0;
+    if (getDepth() > 0) {
+        unknown192 += _ZNK12StateMachine12getTimeStampEv(machine);
+        TouchScreenBase* touch = Application::GetInstance()->GetTouchScreen();
+        for (int i = 0; i < unknown184; ++i)
+            entries[i].unknown12 = 0;
+        TouchIDList ids = touch->getTouchIDList();
+        if (isCheatsUnlockAllowed() && !cheatsUnlocked && ids.size() != 0) {
+            const MenuCheatZone& zone = s_cheatActivationZones[
+                _ZN11MenuManager25s_cheatActivationSequenceE[_ZN11MenuManager19s_currentSequenceIdE]];
+            if (touch->isRegionPressed(reinterpret_cast<const irr::core::rect<float>&>(zone))) {
+                ++_ZN11MenuManager19s_currentSequenceIdE;
+                cheatsUnlocked = _ZN11MenuManager19s_currentSequenceIdE == 8;
+                touch->clear();
+                _ZNSt4listIlSaIlEEaSERKS1_(&ids, touch->getTouchIDList());
+                if (cheatsUnlocked) {
+                    void* state = getState(menuUpdateSettingsState);
+                    if (getDepth() == static_cast<MenuState*>(state)->GetDepth())
+                        _ZN5Menus18OptionGameSettings7RefreshEv(state);
+                    SoundManager* sound = SoundManager::getInstance();
+                    sound->unknown140 = true;
+                    sound->playEx(217, 0, false, 1.0f, 0, true, 1.0f, 0);
+                    sound->unknown140 = false;
+                }
+            } else {
+                _ZN11MenuManager19s_currentSequenceIdE = 0;
+            }
+        }
+        for (TouchIDList::const_iterator it = ids.begin(); it != ids.end(); ++it) {
+            int index;
+            for (index = 0; index < unknown184; ++index) {
+                if (unknown168[index] == -1 || unknown168[index] == *it)
+                    break;
+            }
+            if (index < 4) {
+                if (unknown168[index] == -1) {
+                    ++unknown184;
+                    unknown168[index] = *it;
+                }
+                Point2D<short>* point = touch->getTouchPoint(unknown168[index]);
+                entries[index].unknown12 = 1;
+                entries[index].unknown0 = point->x;
+                entries[index].unknown4 = point->y;
+            }
+        }
+        for (int i = 0; i < unknown184; ++i)
+            _ZN8RenderFX12UpdateCursorERNS_6CursorEi(reinterpret_cast<RenderFX*>(menuFX), &entries[i], i);
+        for (int i = 0; i < unknown184; ++i) {
+            if (entries[i].unknown12 == 0) {
+                entries[i] = entries[unknown184 - 1];
+                unknown168[i] = unknown168[unknown184 - 1];
+                unknown168[unknown184 - 1] = -1;
+                --unknown184;
+                --i;
+            }
+        }
+        MenuWidget* widget = getWidgetByIndex(23);
+        if (consumedCursorCount == 0 && widget->IsVisible()
+            && _ZNK7Widgets8Tutorial15IsCursorPressedEv(widget))
+            consumeCursor();
+    }
+    if (!widgetVisibility)
+        widgetVisibility = _ZN11MenuManager22updateWidgetVisibilityEv(this);
+    if (!widgetVisibility || charAutoLineFeed != 0)
+        reinterpret_cast<RenderFX*>(menuFX)->Update(static_cast<int>(_ZNK12StateMachine12getTimeStampEv(machine)), false);
+}

@@ -37,6 +37,7 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_setup_scene_node 0x00309a4c : { *vehicle-cleanup.o(.text._ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv) }
     .vehicle_play_drive_sfx 0x00312d18 : { *vehicle-cleanup.o(.text._ZN7Vehicle12playDriveSfxEj) }
     .vehicle_drop_scene_node 0x00309f0c : { *vehicle-cleanup.o(.text._ZN7Vehicle13dropSceneNodeEv) }
     .vehicle_on_despawn 0x00310e74 : { *vehicle-cleanup.o(.text._ZN7Vehicle9OnDespawnEv) }
@@ -201,6 +202,8 @@ SECTIONS
     .vehicle_show_wheels 0x00309078 : { *(.text._ZN7Vehicle10showWheelsEv) }
     .vehicle_hide_wheels 0x003090b0 : { *(.text._ZN7Vehicle10hideWheelsEv) }
     .vehicle_no_animators_message 0x0041f4b0 : { *(.rodata.*noAnimatorsMessage*) }
+    .vehicle_setup_names 0x0041f5c0 : { *vehicle-cleanup.o(.rodata.*vehicleSetupDoorFrontLeftE) *vehicle-cleanup.o(.rodata.*vehicleSetupDoorFrontRightE) *vehicle-cleanup.o(.rodata.*vehicleSetupBodySkinE) *vehicle-cleanup.o(.rodata.*vehicleSetupInteriorE) *vehicle-cleanup.o(.rodata.*vehicleSetupTextureE) *vehicle-cleanup.o(.rodata.*vehicleSetupDamageTextureE) *vehicle-cleanup.o(.rodata.*vehicleSetupWheelFrontLeftE) *vehicle-cleanup.o(.rodata.*vehicleSetupWheelFrontRightE) *vehicle-cleanup.o(.rodata.*vehicleSetupWheelBackLeftE) *vehicle-cleanup.o(.rodata.*vehicleSetupWheelBackRightE) *vehicle-cleanup.o(.rodata.*vehicleSetupBodyNodeE) *vehicle-cleanup.o(.rodata.*vehicleSetupSmokeDummyE) *vehicle-cleanup.o(.rodata.*vehicleSetupSmokeEffectE) *vehicle-cleanup.o(.rodata.*vehicleSetupFireEffectE) }
+    .vehicle_setup_shadow_name 0x0041bcc4 : { *vehicle-cleanup.o(.rodata.*vehicleSetupShadowNodeE) }
     .vehicle_no_timeline_message 0x0041f4d4 : { *(.rodata.*noTimelineMessage*) }
     .vehicle_no_callback_timeline_message 0x0041f4f0 : { *(.rodata.*noCallbackTimelineMessage*) }
     .vehicle_close_left_door_clip 0x0041f514 : { *(.rodata.*closeLeftDoorClip*) }

@@ -173,3 +173,50 @@ irr::core::vector3d<float> VehicleCamera::getFacing() const
     }
     return facing;
 }
+
+void VehicleCamera::update(float elapsed)
+{
+    if (!vehicle)
+        return;
+    const float oldZ = position.Z;
+    const float oldHeight = previousHeight;
+    position.Z = vehicle->GetPosition().Z;
+    const int velDir = vehicle->getVelDirec();
+    const float speed = vehicle->GetSpeed();
+    const float accel = speed - previousSpeed;
+    const irr::core::vector3d<float> facing = getFacing();
+    const irr::core::vector3d<float> axisX = vehicle->basisX;
+    const float frontDot = axisX.dotProduct(facing);
+    const irr::core::vector3d<float> facing2 = getFacing();
+    const irr::core::vector3d<float> axisY = vehicle->basisY;
+    const float sideDot = axisY.dotProduct(facing2);
+    irr::core::vector3d<float> dir = (position - vehicle->GetPosition()).normalize();
+
+    if (frontDot < -0.9 && frontDot > -1.0f)
+        distance += (float)vehicle->cameraSideDistance * (accel / 1000.0f) * elapsed;
+    else if (frontDot > 0.9 && frontDot < 1.0f)
+        distance += (float)vehicle->cameraMinDistance * (accel / -1000.0f) * elapsed;
+    previousSpeed = speed;
+
+    if (distance < (float)vehicle->cameraMinDistance)
+        distance = (float)vehicle->cameraMinDistance;
+    if ((float)vehicle->cameraSideDistance < distance)
+        distance = (float)vehicle->cameraSideDistance;
+
+    if (frontDot < -0.5f && velDir == 3) {
+        const float angle = speed * 1.5f * elapsed * (sideDot > 0.0f ? 1.0f : -1.0f);
+        dir.rotateXYBy(-angle, irr::core::vector3d<float>(0.0f, 0.0f, 0.0f));
+    } else if (frontDot > 0.5f && velDir == 1) {
+        dir.rotateXYBy(speed * 1.5f * elapsed * (sideDot > 0.0f ? 1.0f : -1.0f), irr::core::vector3d<float>(0.0f, 0.0f, 0.0f));
+    }
+
+    const irr::core::vector3d<float> front = vehicle->GetFront();
+    vector40 = front * (float)vehicle->cameraLookAhead;
+    vector40.Z = (float)vehicle->cameraLookHeight;
+    setLookAt(vehicle->GetPosition() + vector40);
+    previousHeight = vehicle->GetPosition().Z;
+    vector52 = dir * distance;
+    vector52.Z = (float)vehicle->cameraPositionHeight;
+    setPosition(vehicle->GetPosition() + vector52);
+    position.Z = previousHeight + (oldZ - oldHeight);
+}

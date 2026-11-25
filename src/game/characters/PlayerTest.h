@@ -116,20 +116,26 @@ public:
     using Character::unknown260;
     using Character::target;
     using LevelObject::physicAttributes;
-    unsigned char unknown300[12];
+    unsigned char unknown300[8];
+    float unknown308;
     LevelObject* unknown312;
     LevelObject* unknown316;
     Shop* closestShop;
     int unknown324;
     int attackState;
-    unsigned char unknown332[4];
+    int unknown332;
     float unknown336;
-    unsigned char unknown340[13];
+    float unknown340, unknown344, unknown348;
+    bool unknown352;
     bool lockRequested;
     bool targetLocked;
     bool lockUpdatePending;
     bool combatMode;
-    unsigned char unknown357[11];
+    bool unknown357;
+    unsigned char unknown358;
+    bool unknown359;
+    b2World* world;
+    int unknown364;
     LevelObject* unknown368;
     int unknown372;
     bool vehicleVisibleInCinematic;
@@ -137,7 +143,9 @@ public:
     bool movementKeys[4];
     bool damageDisabled;
     bool flag383;
-    unsigned char unknown384[28];
+    unsigned char unknown384[4];
+    unsigned int unknown388;
+    unsigned char unknown392[20];
     float speed;
     bool richAsCroesusEnabled;
     bool unknown417;
@@ -149,7 +157,7 @@ public:
     // their observed access width. Both views occupy the same storage.
     union { eContext context; int contextWord; };
     irr::scene::ISceneNode* inactiveContextNodes[2];
-    unsigned char unknown440[12];
+    int unknown440, unknown444, unknown448;
     struct ContextRecord {
         irr::scene::ISceneNode* node;
         int data0, data1, data2;

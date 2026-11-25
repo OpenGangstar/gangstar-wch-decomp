@@ -2927,6 +2927,86 @@ void Vehicle::OnDespawn()
     _ZN20EvVehicleDeactivatedD1Ev(event);
 }
 
+// Observed root-scene view: CRootSceneNode places ISceneNode 100 bytes in;
+// field 40 points at a record whose field 8 is the stored setup value.
+namespace {
+// Scene-node, texture and effect names read by Vehicle::setupSceneNode.
+const char vehicleSetupDoorFrontLeft[] = "dummy_door_front_left-node";
+const char vehicleSetupDoorFrontRight[] = "dummy_door_front_right-node";
+const char vehicleSetupBodySkin[] = "car_body-mesh-morpher-skin";
+const char vehicleSetupInterior[] = "interior-node";
+const char vehicleSetupTexture[] = "./car_texture.tga";
+const char vehicleSetupDamageTexture[] = "./car_texture_damage.tga";
+const char vehicleSetupWheelFrontLeft[] = "wheel_front_left-node";
+const char vehicleSetupWheelFrontRight[] = "wheel_front_right-node";
+const char vehicleSetupWheelBackLeft[] = "wheel_back_left-node";
+const char vehicleSetupWheelBackRight[] = "wheel_back_right-node";
+const char vehicleSetupBodyNode[] = "car_body-node";
+const char vehicleSetupSmokeDummy[] = "dummy_p_smoke_00-node";
+const char vehicleSetupSmokeEffect[] = "./p_smoke_00.bdae";
+const char vehicleSetupFireEffect[] = "./p_fire_00.bdae";
+const char vehicleSetupShadowNode[] = "shadow-node";
+}
+
+struct VehicleSetupRootRecord {
+    unsigned char unknown0[8];
+    void* value8;
+};
+struct VehicleSetupRootView {
+    unsigned char unknown0[40];
+    VehicleSetupRootRecord* record40;
+};
+
+void Vehicle::setupSceneNode(int id, irr::scene::ISceneNode* node, int count, void** params)
+{
+    using namespace irr;
+    LevelObject::setupSceneNode(id, node, count, params);
+    IrrlichtDevice* device = Application::GetInstance()->GetDevice();
+    video::IVideoDriver* driver = device->getVideoDriver();
+    GS3DStuff::SetColor(node, video::SColor(255, 102, 102, 102), GS3DStuff::Color3);
+    GS3DStuff::SetColor(node, video::SColor(255, 229, 229, 229), GS3DStuff::Color2);
+    params[0] = reinterpret_cast<VehicleSetupRootView*>(static_cast<collada::CRootSceneNode*>(node))->record40->value8;
+    scene::ISceneNodeAnimator* animator =
+        collada::CColladaDatabase::constructAnimator(init768, &collada::CColladaDatabase::DefaultFactory);
+    node->addAnimator(animator);
+    params[1] = animator;
+    animator->drop();
+    animator = collada::CColladaDatabase::constructAnimator(init772, &collada::CColladaDatabase::DefaultFactory);
+    node->addAnimator(animator);
+    params[2] = animator;
+    animator->drop();
+    params[3] = node->getSceneNodeFromUID(vehicleSetupDoorFrontLeft);
+    params[4] = node->getSceneNodeFromUID(vehicleSetupDoorFrontRight);
+    params[5] = node->getSceneNodeFromUID(vehicleSetupBodySkin);
+    params[6] = node->getSceneNodeFromUID(vehicleSetupInterior);
+    params[7] = driver->getTexture(vehicleSetupTexture);
+    params[8] = driver->getTexture(vehicleSetupDamageTexture);
+    params[9] = node->getSceneNodeFromUID(vehicleSetupBodySkin);
+    scene::ISceneNode* shadow = node->getSceneNodeFromUID(vehicleSetupShadowNode);
+    shadow->getChildren().first->value->setRenderingLayer(1);
+    GS3DStuff::SetColor(shadow, video::SColor(255, 0, 0, 0), GS3DStuff::Color3);
+    GS3DStuff::SetColor(shadow, video::SColor(255, 255, 255, 255), GS3DStuff::Color0);
+    GS3DStuff::SetColor(shadow, video::SColor(255, 255, 255, 255), GS3DStuff::Color1);
+    GS3DStuff::SetColor(shadow, video::SColor(255, 255, 255, 255), GS3DStuff::Color2);
+    GS3DStuff::SetMaterialFlag(shadow, video::MaterialFlag1024, false);
+    GS3DStuff::SetMaterialFlag(shadow, video::MaterialFlag512, false);
+    GS3DStuff::SetMaterialFlag(shadow, video::MaterialFlag4, true);
+    device->getSceneManager()->getRootSceneNode()->addChild(shadow);
+    params[10] = shadow;
+    params[11] = node->getSceneNodeFromUID(vehicleSetupWheelFrontLeft);
+    params[12] = node->getSceneNodeFromUID(vehicleSetupWheelFrontRight);
+    params[13] = node->getSceneNodeFromUID(vehicleSetupWheelBackLeft);
+    params[14] = node->getSceneNodeFromUID(vehicleSetupWheelBackRight);
+    params[15] = node->getSceneNodeFromUID(vehicleSetupBodyNode);
+    params[16] = node->getSceneNodeFromUID(vehicleSetupSmokeDummy);
+    if (params[16]) {
+        SceneNodeManager* manager = SceneNodeManager::getInstance();
+        params[17] = reinterpret_cast<void*>(manager->findOrCreatePool(vehicleSetupSmokeEffect, 5, _ZN12CGameFactory11getInstanceEv()));
+        manager = SceneNodeManager::getInstance();
+        params[18] = reinterpret_cast<void*>(manager->findOrCreatePool(vehicleSetupFireEffect, 5, _ZN12CGameFactory11getInstanceEv()));
+    }
+}
+
 struct VehicleDropSceneView {
     unsigned char pad0[316];
     irr::scene::ISceneNode* leftDoor;

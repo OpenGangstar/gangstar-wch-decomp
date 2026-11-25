@@ -911,3 +911,104 @@ void PlayerTest::initDriving(bool value)
         flags240 = flags & ~moveToTargetFlag;
     }
 }
+
+#include "../vehicles/VehicleBodyShapes.h"
+#include "../meta/Factions.h"
+
+PlayerTest::PlayerTest(b2World* world)
+    : Character(8)
+{
+    unknown308 = 0.0f;
+    unknown312 = 0;
+    unknown316 = 0;
+    closestShop = 0;
+    unknown324 = 0;
+    attackState = 0;
+    unknown340 = 0.0f;
+    unknown344 = 0.0f;
+    unknown348 = 0.0f;
+    unknown352 = false;
+    lockRequested = false;
+    targetLocked = false;
+    lockUpdatePending = false;
+    combatMode = false;
+    unknown357 = false;
+    unknown359 = false;
+    unknown364 = 0;
+    unknown368 = 0;
+    unknown372 = 0;
+    vehicleVisibleInCinematic = true;
+    unknown377 = 0;
+    movementKeys[0] = false;
+    movementKeys[1] = false;
+    movementKeys[2] = false;
+    movementKeys[3] = false;
+    damageDisabled = false;
+    flag383 = false;
+    unknown384[0] = 0;
+    speed = 0.0f;
+    richAsCroesusEnabled = false;
+    unknown417 = false;
+    cash = 10000;
+    unknown424 = false;
+    contextWord = -1;
+    unknown440 = 0;
+    unknown444 = 0;
+    unknown448 = 0;
+    contextRecords[0].node = 0;
+    contextRecords[0].data0 = 0;
+    contextRecords[0].data1 = 0;
+    contextRecords[0].data2 = 0;
+    contextRecords[1].node = 0;
+    contextRecords[1].data0 = 0;
+    contextRecords[1].data1 = 0;
+    contextRecords[1].data2 = 0;
+    photoTargets.data = 0;
+    photoTargets.allocated = 0;
+    photoTargets.used = 0;
+    photoTargets.free_when_destroyed = true;
+    photoTargets.is_sorted = true;
+    photoTargets.unknown16 = 1;
+    weaponSwitchLocked = false;
+    __builtin_memset(inactiveContextNodes, 0, sizeof(inactiveContextNodes));
+    __builtin_memset(contextValues, 0, sizeof(contextValues));
+    s_player = this;
+    irr::IrrlichtDevice* device = Application::GetInstance()->GetDevice();
+    int moveFlags = static_cast<int>(movementFlags) >> 8;
+    movementFlags = (moveFlags << 8) | 1;
+    device->getSceneManager();
+    currentAnimation = 999999;
+    unknown332 = 0;
+    physicAttributes = new PhysicAttributes(1, 0);
+    _SetTarget(0, false);
+    b2BodyDef bodyDef;
+    bodyDef.linearDamping = 0.0f;
+    bodyDef.angularDamping = 0.0f;
+    bodyDef.isBullet = false;
+    bodyDef.position.SetZero();
+    bodyDef.allowSleep = true;
+    collisionBody = world->CreateBody(&bodyDef);
+    b2CircleDef shape;
+    shape.radius = 0.5f;
+    shape.density = 1.0f;
+    shape.friction = 0.3f;
+    shape.filter.categoryBits = 2;
+    shape.filter.maskBits = 0xffff;
+    shape.filter.groupIndex = physicAttributes->getIndex() + 1;
+    collisionFilter = shape.filter;
+    collisionBody->CreateShape(&shape);
+    collisionBody->SetMassFromShapes();
+    b2MassData massData;
+    massData.I = collisionBody->inertia;
+    massData.center = collisionBody->localCenter;
+    massData.mass = 0.01f;
+    collisionBody->SetMass(&massData);
+    this->world = world;
+    unknown388 = device->getTimer()->getRealTime();
+    maxHealth = 300;
+    health = 300;
+    unknown4 = 3;
+    objectType = 254;
+    LevelObject::s_type[254] = 8;
+    Factions::init();
+}

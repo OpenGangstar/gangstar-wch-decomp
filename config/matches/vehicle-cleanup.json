@@ -245,7 +245,8 @@
         "_ZN7Vehicle7disableEv",
         "_ZN7Vehicle9OnDespawnEv",
         "_ZN7Vehicle12playDriveSfxEj",
-        "_ZN7Vehicle13dropSceneNodeEv"
+        "_ZN7Vehicle13dropSceneNodeEv",
+        "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -371,7 +372,8 @@
         ".vehicle_on_despawn",
         ".vehicle_disable",
         ".vehicle_play_drive_sfx",
-        ".vehicle_drop_scene_node"
+        ".vehicle_drop_scene_node",
+        ".vehicle_setup_scene_node"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -633,7 +635,6 @@
         "_ZN11LevelObject27setAnimationSpeedMultiplierEi",
         "_ZN11LevelObjectD1Ev",
         "_ZN18CarSoundParametersD1Ev",
-        "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
         "_ZN7Vehicle6UpdateEi",
         "_ZN9CarSoundsD1Ev",
         "_ZNK11LevelObject11GetPositionEv",
@@ -652,6 +653,7 @@
         "_ZN15CControlManager7exitCarEb",
         "_ZN12SoundManager14isSoundPlayingEi",
         "_ZN11LevelObject13dropSceneNodeEv",
-        "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE"
+        "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE",
+        "_ZN11LevelObject14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv"
     ]
 }
