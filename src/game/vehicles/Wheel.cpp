@@ -67,6 +67,34 @@ static void _GLOBAL__I__ZN5WheelC2EP7ASpritei()
 
 #include "Wheel.h"
 
+Wheel::Wheel(ASprite* source, int frameIndex)
+    : HudElement(source, frameIndex, true),
+      positiveDirection(false), displacement(0.0f), centerX(0.0f), centerY(0.0f),
+      previousTouchX(0.0f), previousTouchY(0.0f)
+{
+    const SpriteFrame* spriteFrame = sprite->GetFrame(frame);
+    const SpriteFrameModule* module = sprite->GetFModule(spriteFrame->firstModule);
+    setAnchor(module->x, module->y);
+    const SpriteModule* image = sprite->GetModule(module->module);
+    const float left = static_cast<float>(module->x - 30);
+    const float top = static_cast<float>(module->y - 30);
+    float right = static_cast<float>(image->width + 30);
+    const int height = image->height;
+    right = left + right;
+    touchRegion.coordinates[2] = right;
+    touchRegion.coordinates[0] = left;
+    touchRegion.coordinates[1] = top;
+    const float heightFloat = static_cast<float>(height + 30);
+    const float bottom = top + heightFloat;
+    touchRegion.coordinates[3] = bottom;
+
+    maximumDisplacement = 70;
+    const float y = static_cast<float>(module->y + (image->height >> 1));
+    const float x = static_cast<float>(module->x + maximumDisplacement);
+    centerX = x;
+    centerY = y;
+}
+
 Wheel::~Wheel()
 {
 }

@@ -23,6 +23,7 @@ public:
 private:
     irr::core::position2d<int> _calculateXYOffset(const irr::core::vector3d<float>&, const irr::core::rect<int>&, bool, bool) const;
     struct TrackingLink {
+        TrackingLink() : next(this), previous(this) {}
         TrackingLink* next;
         TrackingLink* previous;
     };

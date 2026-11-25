@@ -1,3 +1,6 @@
+PROVIDE(__aeabi_i2f = 0x1c41e4);
+PROVIDE(__aeabi_fadd = 0x1c4154);
+PROVIDE(__aeabi_fsub = 0x1c4328);
 __aeabi_i2f = 0x1c41e4; __aeabi_f2iz = 0x1c44cc; __aeabi_fcmpgt = 0x1c419c; __aeabi_f2d = 0x1c48f8; sqrt = 0x1c401c; __aeabi_d2f = 0x1c4310; acosf = 0x1c4694;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
@@ -15,6 +18,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .minimap_constructor 0x003295a4 : { *sdk-startup-minimap.o(.text._ZN7MiniMapC1EP7ASpriteiiii .text._ZN7MiniMapC2EP7ASpriteiiii) }
  .minimap_draw_thunk 0x0032a0e0 : { *minimap-draw-thunk.o(.text._ZThn4_NK7MiniMap6draw2dEv) }
  .minimap_nonmatching_draw 0x0032a0f8 : { *minimap-draw-thunk.o(.text._ZNK7MiniMap6draw2dEv) }
     .wanted_singleton 0x002dba04 : { *sdk-startup-minimap.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }

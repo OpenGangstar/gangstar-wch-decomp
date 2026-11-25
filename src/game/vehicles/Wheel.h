@@ -13,12 +13,14 @@ public:
     virtual void processTouchRelease();
     virtual void draw2d() const;
 private:
+    void setAnchor(float x, float y) { unknown32 = x; unknown36 = y; }
     bool positiveDirection;
     float displacement;
-    // Constructor allocation proves an 84-byte extent; remaining tail is opaque.
-    unsigned char unknown64[8];
+    float centerX;
+    float centerY;
     unsigned int maximumDisplacement;
-    unsigned char unknown76[8];
+    float previousTouchX;
+    float previousTouchY;
 };
 
 #endif

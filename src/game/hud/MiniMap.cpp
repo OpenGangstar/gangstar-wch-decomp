@@ -9,6 +9,7 @@
  */
 
 #include "MiniMap.h"
+#include "../core/NativeStdio.h"
 #include "TargetMarkerSingleton.h"
 #include "../world/MapSingleton.h"
 #include "../missions/WantedLevelManagerSingleton.h"
@@ -163,4 +164,26 @@ static void __tcf_5()
     if (!value.reference && value.array && value.array != value.inlineBuffer)
         ::operator delete(value.array);
 }
+}
+
+MiniMap::MiniMap(ASprite* spriteValue, int frame, int markerFrame, int targetFrame, int value112)
+    : VirtualButton(spriteValue, frame, static_cast<EvVButton::ButtonType::Type>(7), true),
+      followedObject(0), inset(18), scale(1.0f), minimumSpeed(30.0f), maximumSpeed(100.0f),
+      minimumScale(1.5f), maximumScale(2.5f), unknown112(value112)
+{
+    memset(unknown80, 0, sizeof unknown80);
+    TargetMarker::getInstance()->init(spriteValue, markerFrame, targetFrame);
+    float amount = static_cast<float>(inset);
+    float left = touchRegion.coordinates[0];
+    float top = touchRegion.coordinates[1];
+    float right = touchRegion.coordinates[2];
+    float bottom = touchRegion.coordinates[3];
+    left = amount + left;
+    touchRegion.coordinates[0] = left;
+    top = amount + top;
+    touchRegion.coordinates[1] = top;
+    right -= amount;
+    touchRegion.coordinates[2] = right;
+    bottom -= amount;
+    touchRegion.coordinates[3] = bottom;
 }

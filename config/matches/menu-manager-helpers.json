@@ -124,7 +124,8 @@
         },
         "_ZN11MenuManager13preloadGlyphsEb",
         "_ZN11MenuManager9updateMapEv",
-        "_ZNK11MenuManager8_drawMapEv"
+        "_ZNK11MenuManager8_drawMapEv",
+        "_ZN11MenuManager13updateMarkersEv"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -171,7 +172,8 @@
         ".preload_binary_mode",
         ".preload_error",
         ".menu_update_map",
-        ".menu_draw_map"
+        ".menu_draw_map",
+        ".menu_update_markers"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -210,6 +212,8 @@
         "_ZN10AnimObject4DrawEv",
         "_ZNK12TargetMarker4drawEv",
         "_ZNK4Item8unlockedEv",
-        "_ZNK4Shop8unlockedEv"
+        "_ZNK4Shop8unlockedEv",
+        "_ZN10AnimObject11UpdateFrameEv",
+        "_ZN10PlayerTest9GetPlayerEv"
     ]
 }

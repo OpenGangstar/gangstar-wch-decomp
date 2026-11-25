@@ -9553,7 +9553,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e66f1	0x40	MenuManager_Map.cpp	stlport	-	matched	_ZNSaIN9stlp_priv10_List_nodeIP7Point2DIsEEEE8allocateEjPKv	std::allocator<stlp_priv::_List_node<Point2D<short>*> >::allocate(unsigned int, void const*)
 0x002e6731	0x134	MenuManager.cpp	game	ui	pending	_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE	MenuManager::_positionMapOnPoint(irr::core::vector2d<float>&)
 0x002e6865	0xe4	MenuManager.cpp	game	ui	pending	_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE	MenuManager::_scrollMap(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
-0x002e6949	0x168	MenuManager.cpp	game	ui	pending	_ZN11MenuManager13updateMarkersEv	MenuManager::updateMarkers()
+0x002e6949	0x168	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13updateMarkersEv	MenuManager::updateMarkers()
 0x002e6ab1	0x1a8	MenuManager.cpp	game	ui	matched	_ZNK11MenuManager8_drawMapEv	MenuManager::_drawMap() const
 0x002e6c59	0x144	MenuManager_Map.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x002e6d9d	0x14	MenuManager_Map.cpp	game	ui	matched	_GLOBAL__I__ZN11MenuManager7initMapEv	_GLOBAL__I__ZN11MenuManager7initMapEv
@@ -11323,8 +11323,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00329479	0x40	MiniMap.cpp	stlport	-	matched	_ZNSaIN9stlp_priv10_List_nodeIN7MiniMap15TrackableObjectEEEE8allocateEjPKv	std::allocator<stlp_priv::_List_node<MiniMap::TrackableObject> >::allocate(unsigned int, void const*)
 0x003294b9	0xaa	MiniMap.cpp	game	hud	matched	_ZN7MiniMap6updateEd	MiniMap::update(double)
 0x00329565	0x40	MiniMap.cpp	game	hud	matched	_ZN7MiniMap27deregisterAllForMapTrackingEv	MiniMap::deregisterAllForMapTracking()
-0x003295a5	0xd4	MiniMap.cpp	game	hud	pending	_ZN7MiniMapC1EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)
-0x003295a5	0xd4	MiniMap.cpp	game	hud	pending	_ZN7MiniMapC2EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)
+0x003295a5	0xd4	MiniMap.cpp	game	hud	matched	_ZN7MiniMapC1EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)
+0x003295a5	0xd4	MiniMap.cpp	game	hud	matched	_ZN7MiniMapC2EP7ASpriteiiii	MiniMap::MiniMap(ASprite*, int, int, int, int)
 0x00329679	0x80	MiniMap.cpp	game	hud	matched	_ZN7MiniMap22registerForMapTrackingEP11LevelObjectb	MiniMap::registerForMapTracking(LevelObject*, bool)
 0x003296f9	0x42	MiniMap.cpp	game	hud	matched	_ZN7MiniMap24deregisterForMapTrackingEP11LevelObject	MiniMap::deregisterForMapTracking(LevelObject*)
 0x0032973c	0x14	MiniMap.cpp	game	hud	matched	_ZThn4_N7MiniMapD0Ev	non-virtual thunk to MiniMap::~MiniMap()
@@ -11487,8 +11487,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032cb68	0x14	Wheel.cpp	game	vehicles	matched	_ZThn4_N5WheelD1Ev	non-virtual thunk to Wheel::~Wheel()
 0x0032cb7d	0x2c	Wheel.cpp	game	vehicles	matched	_ZN5WheelD1Ev	Wheel::~Wheel()
 0x0032cba9	0x36	Wheel.cpp	game	vehicles	matched	_ZN5Wheel6updateEd	Wheel::update(double)
-0x0032cbe1	0x100	Wheel.cpp	game	vehicles	pending	_ZN5WheelC2EP7ASpritei	Wheel::Wheel(ASprite*, int)
-0x0032cbe1	0x100	Wheel.cpp	game	vehicles	pending	_ZN5WheelC1EP7ASpritei	Wheel::Wheel(ASprite*, int)
+0x0032cbe1	0x100	Wheel.cpp	game	vehicles	matched	_ZN5WheelC2EP7ASpritei	Wheel::Wheel(ASprite*, int)
+0x0032cbe1	0x100	Wheel.cpp	game	vehicles	matched	_ZN5WheelC1EP7ASpritei	Wheel::Wheel(ASprite*, int)
 0x0032cce0	0x14	Wheel.cpp	game	vehicles	matched	_ZThn4_NK5Wheel6draw2dEv	non-virtual thunk to Wheel::draw2d() const
 0x0032ccf5	0x1f4	Wheel.cpp	game	vehicles	matched	_ZNK5Wheel6draw2dEv	Wheel::draw2d() const
 0x0032cee9	0x6c	Wheel.cpp	game	vehicles	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

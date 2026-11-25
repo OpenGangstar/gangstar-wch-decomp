@@ -1,3 +1,6 @@
+PROVIDE(__aeabi_i2f = 0x1c41e4);
+PROVIDE(__aeabi_fadd = 0x1c4154);
+PROVIDE(__aeabi_fsub = 0x1c4328);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-minimap/retail-symbols.ld
@@ -14,6 +17,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .minimap_constructor 0x003295a4 : { *sdk-startup-minimap.o(.text._ZN7MiniMapC1EP7ASpriteiiii .text._ZN7MiniMapC2EP7ASpriteiiii) }
+    ASSERT(SIZEOF(.minimap_constructor) == 212, "Native MiniMap constructor extent")
     .wanted_singleton 0x002dba04 : { *sdk-startup-minimap.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x00329440 : { *sdk-startup-minimap.o(.text.__tcf_2) }
     .wanted_guard 0x004b6728 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZGVZN18WantedLevelManager11getInstanceEvE3wlm) }

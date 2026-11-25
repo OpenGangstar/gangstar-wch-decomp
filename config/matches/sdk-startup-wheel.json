@@ -51,7 +51,9 @@
         {
             "name": "_GLOBAL__I__ZN5WheelC2EP7ASpritei",
             "address": "0x0032cf55"
-        }
+        },
+        "_ZN5WheelC1EP7ASpritei",
+        "_ZN5WheelC2EP7ASpritei"
     ],
     "sections": [
         ".wheel_event_release_vtable",
@@ -64,7 +66,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".wheel_constructor"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -75,6 +78,7 @@
         "_ZNK10HudElement6draw2dEv",
         "_ZN12EventManager5raiseERK6IEvent",
         "_ZN10HudElementD1Ev",
-        "_ZN11Application11GetInstanceEv"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN10HudElementC1EP7ASpriteib"
     ]
 }

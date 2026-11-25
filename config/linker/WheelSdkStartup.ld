@@ -1,3 +1,6 @@
+PROVIDE(__aeabi_i2f = 0x1c41e4);
+PROVIDE(__aeabi_fadd = 0x1c4154);
+PROVIDE(__aeabi_ui2f = 0x1c4574);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-wheel/retail-symbols.ld
@@ -10,6 +13,8 @@ memcpy = 0x001c4190;
 memset = 0x001c45d4;
 SECTIONS
 {
+    .wheel_constructor 0x0032cbe0 : { *sdk-startup-wheel.o(.text._ZN5WheelC1EP7ASpritei .text._ZN5WheelC2EP7ASpritei) }
+    ASSERT(SIZEOF(.wheel_constructor) == 256, "Native Wheel constructor extent")
     .base_getid 0x002d3c34 : { *(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
     .base_delete 0x002d4074 : { *(.gnu.linkonce.t._ZN6IEventD0Ev) }
     .base_destructor 0x002d4094 : { *(.gnu.linkonce.t._ZN6IEventD1Ev) }
