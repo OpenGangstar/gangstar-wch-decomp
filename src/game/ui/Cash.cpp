@@ -201,3 +201,35 @@ Cash::Cash(ASprite* image, int baseFrame, int frame104, int frame108, int frame1
     digitFrames[9] = baseFrame + 8;
     digitFrames[0] = baseFrame + 9;
 }
+#include "../core/IrrlichtDevice.h"
+#include "../core/VideoDriver.h"
+#include "../core/Matrix4.h"
+void Cash::draw2d() const
+{
+    if (PlayerTest::GetPlayer() && (flags & 1)) {
+        Application::GetInstance()->GetDevice()->getVideoDriver()->setTransform(
+            irr::video::ETS_WORLD, irr::core::matrix4());
+        int x = positionX;
+        const bool left = alignedLeft;
+        if (left) {
+            if (unknown116 != -1) {
+                sprite->PaintFrame(unknown116, x, positionY, 0);
+                x = sprite->GetFrameWidth(unknown116) + (x + 1);
+                sprite->PaintFrame(unknown116, x, positionY, 0);
+                x = sprite->GetFrameWidth(unknown116) + (x + 1);
+            }
+        } else {
+            drawCash(cash, digitFrames, x, positionY);
+        }
+        if (left)
+            drawCash(cash, digitFrames, x, positionY);
+        if (!left && unknown116 != -1) {
+            int frameWidth = sprite->GetFrameWidth(unknown116);
+            x = x + 1 - frameWidth;
+            sprite->PaintFrame(unknown116, x, positionY, 0);
+            frameWidth = sprite->GetFrameWidth(unknown116);
+            x = x + 1 - frameWidth;
+            sprite->PaintFrame(unknown116, x, positionY, 0);
+        }
+    }
+}

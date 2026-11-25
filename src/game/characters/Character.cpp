@@ -2204,3 +2204,42 @@ extern "C" void _ZN9Character14throwOutDriverEb(Character* self, bool left)
         view->vehicle->setDriver(self);
     }
 }
+
+struct CharacterRunToTargetView {
+    unsigned char unknown0[0xec];
+    unsigned int movementFlags;
+    unsigned char unknownF0[0x104 - 0xf0];
+    LevelObject* target;
+};
+
+extern "C" {
+bool _ZN9Character18isCurrentAnimationEi(Character* self, int id);
+}
+
+static inline irr::core::vector3d<float> positionOf(const LevelObject* object) { return object->GetPosition(); }
+
+extern "C" void _ZN9Character11runToTargetEi(Character* self, int distance)
+{
+    CharacterRunToTargetView* view = reinterpret_cast<CharacterRunToTargetView*>(self);
+    if (!view->target)
+        return;
+    if (_ZN9Character18isCurrentAnimationEi(self, 83))
+        return;
+    if (_ZN9Character18isCurrentAnimationEi(self, 84))
+        return;
+    if (_ZN9Character18isCurrentAnimationEi(self, 85))
+        return;
+    if (view->movementFlags & 0x10000000u)
+        return;
+
+    if (distance > 0) {
+        irr::core::vector3d<float> point;
+        const irr::core::vector3d<float> targetPosition = positionOf(view->target);
+        irr::core::vector3d<float> direction = self->GetPosition() - targetPosition;
+        direction.normalize();
+        point = direction * (float)distance + targetPosition;
+        self->runToLocation(point);
+    } else {
+        self->runToLocation(view->target->GetPosition());
+    }
+}

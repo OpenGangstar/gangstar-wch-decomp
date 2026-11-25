@@ -51,7 +51,9 @@
         {
             "name": "_GLOBAL__I__ZN4CashC2EP7ASpriteiiiii",
             "address": "0x00327f79"
-        }
+        },
+        "_ZNK4Cash6draw2dEv",
+        "_ZThn4_NK4Cash6draw2dEv"
     ],
     "sections": [
         ".cash_vtable",
@@ -62,7 +64,9 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".cash_draw2d",
+        ".cash_draw2d_thunk"
     ],
     "retail_got": true,
     "external_thumb_functions": [
