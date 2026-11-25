@@ -30,9 +30,11 @@ INCLUDE config/linker/WidgetConfirmLocalization.ld
 INCLUDE config/linker/WidgetControlsLocalization.ld
 INCLUDE config/linker/WidgetGameSettingEvent.ld
 INCLUDE config/linker/WidgetCorruptionLocalization.ld
+INCLUDE config/linker/WidgetMissionMapLegendEvents.ld
 
 SECTIONS
 {
+    .mission_map_name 0x0040b608 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
     .renderfx_found_child 0x0044ddf8 : { *renderfx-animation.o(.rodata.renderfx_found_child) }
     .renderfx_child_sprite 0x0044de10 : { *renderfx-animation.o(.rodata.renderfx_child_sprite) }

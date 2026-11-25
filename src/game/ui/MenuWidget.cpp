@@ -1611,6 +1611,29 @@ void Widgets::MapLegend::UpdateLocalization()
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, mapLegendButtonText, _ZNK13StringManager9getStringEi(strings, 0x1052), true);
 }
 
+extern const char mapLegendButtonName[] __attribute__((visibility("hidden")));
+static const char mapLegendArrow[] = "widgetMapLegend.arrow";
+
+void Widgets::MapLegend::OnEvent(RenderFX::Event& event)
+{
+    MenuWidget::OnEvent(event);
+    switch (event.type) {
+    case 6:
+        if (strcmp(event.characterName, mapLegendButtonName) == 0) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            expanded = !expanded;
+            renderFX->GotoFrame(character, expanded ? objectiveOpen : objectiveClose, false);
+            renderFX->GotoFrame(mapLegendButton, expanded ? objectiveOpen : objectiveClose, false);
+            renderFX->GotoFrame(mapLegendArrow, expanded ? objectiveArrowDown : objectiveArrowUp, false);
+            event.consumed = true;
+        }
+        break;
+    }
+}
+
 static const char corruptButtonName[] = "btnCorrupt";
 
 void Widgets::Corruption::OnEvent(RenderFX::Event& event)
@@ -2429,5 +2452,42 @@ void Widgets::GameSetting::OnEvent(RenderFX::Event& event)
         }
         break;
     }
+    }
+}
+
+#include "GSInGameMenu.h"
+
+namespace {
+struct MissionTeleportCommand {
+    int opcode;
+    const char* objectName;
+};
+}
+
+static const char startMissionButton[] = "btnStartMission";
+static const char missionMapName[] = "Map";
+
+void Widgets::Mission::OnEvent(RenderFX::Event& event)
+{
+    switch (event.type) {
+    case 6:
+        if (strcmp(event.characterName, startMissionButton) == 0) {
+
+    if (script) {
+        const MissionTeleportCommand* command = reinterpret_cast<const MissionTeleportCommand*>(script->peekCommand(0));
+        if (command->opcode == 64) {
+            LevelObject* object = ScriptManager::findObject(command->objectName, false);
+            if (object) {
+                PlayerTest::GetPlayer()->teleportTo(object);
+                GSInGameMenu::skipFadeIn();
+                ScriptManager::getInstance()->missionSkipFadeOut();
+            }
+        }
+        MenuManager::getInstance()->popTo(missionMapName, true, true);
+        ScriptManager::getInstance()->finishReviveAnims();
+    }
+    event.consumed = true;
+        }
+        break;
     }
 }
