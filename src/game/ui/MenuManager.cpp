@@ -1090,3 +1090,81 @@ void MenuManager::updateMap()
             _ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE(this, points);
     }
 }
+
+#include "../characters/PlayerTest.h"
+#include "../vehicles/Vehicle.h"
+#include "../hud/CHudManager.h"
+#include "../hud/MiniMap.h"
+#include "../characters/AnimObject.h"
+
+struct MarkerMapFields {
+    unsigned char unknown0[44];
+    irr::core::rect<float> bounds;
+};
+struct MarkerTargetFields {
+    unsigned char unknown0[16];
+    int offsetX, offsetY;
+    bool enabled;
+};
+struct MarkerManagerFields {
+    void* vtable;
+    int unknown4, unknown8;
+    int left, top, right, bottom;
+    int mapScreenX;
+};
+struct MarkerLink { MarkerLink* next; MarkerLink* previous; };
+struct MarkerTracking { LevelObject* object; AnimObject* marker; bool flag; };
+struct MarkerNode : MarkerLink { MarkerTracking data; };
+struct MarkerIterator {
+    MarkerLink* node;
+    explicit MarkerIterator(MarkerLink* x) : node(x) {}
+    MarkerIterator(const MarkerIterator& x) : node(x.node) {}
+    MarkerTracking& operator*() const { return static_cast<MarkerNode*>(node)->data; }
+    MarkerIterator& operator++() { node = node->next; return *this; }
+    bool operator!=(MarkerIterator y) const { return node != y.node; }
+};
+struct MarkerList {
+    MarkerLink head;
+    MarkerIterator begin() { return MarkerIterator(head.next); }
+    MarkerIterator end() { return MarkerIterator(&head); }
+};
+struct MarkerMiniMapFields { unsigned char unknown0[60]; MarkerList trackedObjects; };
+
+void MenuManager::updateMarkers()
+{
+    MarkerManagerFields& fields = *reinterpret_cast<MarkerManagerFields*>(this);
+    PlayerTest* player = PlayerTest::GetPlayer();
+    const irr::core::vector3d<float> position = player->GetPosition();
+    float playerX = position.X;
+    float playerY = position.Y;
+    Vehicle* vehicle = player->getVehicle();
+    if (vehicle) {
+        const irr::core::vector3d<float> vehiclePosition = vehicle->GetPosition();
+        playerX = vehiclePosition.X;
+        playerY = vehiclePosition.Y;
+    }
+    MarkerMapFields* map = reinterpret_cast<MarkerMapFields*>(Map::getInstance());
+    const irr::core::rect<float> bounds = map->bounds;
+    const float relativeX = (playerX - bounds.UpperLeftCorner.X) / (bounds.LowerRightCorner.X - bounds.UpperLeftCorner.X);
+    const float relativeY = (-playerY - bounds.UpperLeftCorner.Y) / (bounds.LowerRightCorner.Y - bounds.UpperLeftCorner.Y);
+    irr::core::dimension2d<int> size;
+    Map::getInstance()->getScaledSize(size);
+    const irr::core::position2d<int> pos(static_cast<int>(static_cast<float>(size.Width) * relativeX),
+                                         static_cast<int>(static_cast<float>(size.Height) * relativeY));
+    if (pos.X >= fields.left && pos.Y >= fields.top && pos.X <= fields.right && pos.Y <= fields.bottom) {
+        const int offset = fields.mapScreenX - fields.left;
+        const int top = fields.top;
+        MarkerTargetFields* marker = reinterpret_cast<MarkerTargetFields*>(TargetMarker::getInstance());
+        marker->offsetX = offset;
+        marker->offsetY = pos.Y - top;
+        marker->offsetX += pos.X;
+        TargetMarker::getInstance()->setEnabled(true);
+    } else {
+        TargetMarker::getInstance()->setEnabled(false);
+    }
+    MarkerMiniMapFields* minimap = reinterpret_cast<MarkerMiniMapFields*>(Application::GetInstance()->GetHudManager()->minimap);
+    for (MarkerIterator it = minimap->trackedObjects.begin(); it != minimap->trackedObjects.end(); ++it) {
+        if ((*it).flag)
+            (*it).marker->UpdateFrame();
+    }
+}

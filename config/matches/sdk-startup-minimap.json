@@ -62,7 +62,9 @@
             "name": "__tcf_4",
             "address": "0x00329441",
             "compiled_name": "__tcf_2"
-        }
+        },
+        "_ZN7MiniMapC1EP7ASpriteiiii",
+        "_ZN7MiniMapC2EP7ASpriteiiii"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -84,7 +86,8 @@
         ".minimap_update",
         ".target_marker_cleanup",
         ".map_cleanup",
-        ".wanted_cleanup"
+        ".wanted_cleanup",
+        ".minimap_constructor"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -97,6 +100,8 @@
         "_ZN3MapC1Ev",
         "_ZN3MapD1Ev",
         "_ZN18WantedLevelManagerC1Ev",
-        "_ZN18WantedLevelManagerD1Ev"
+        "_ZN18WantedLevelManagerD1Ev",
+        "_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
+        "_ZN12TargetMarker4initEP7ASpriteii"
     ]
 }

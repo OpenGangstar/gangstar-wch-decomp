@@ -30,6 +30,8 @@ menuMapStateName = 0x0040b608;
 glFlush = 0x001c4160;
 SECTIONS
 {
+    .menu_update_markers 0x002e6948 : { *menu-manager-helpers.o(.text._ZN11MenuManager13updateMarkersEv) }
+    ASSERT(SIZEOF(.menu_update_markers) == 360, "native updateMarkers extent")
     .menu_draw_map 0x002e6ab0 : { *menu-manager-helpers.o(.text._ZNK11MenuManager8_drawMapEv) }
     ASSERT(SIZEOF(.menu_draw_map) == 424, "native _drawMap extent")
     .menu_update_map 0x002e6fe0 : { *menu-manager-helpers.o(.text._ZN11MenuManager9updateMapEv) }

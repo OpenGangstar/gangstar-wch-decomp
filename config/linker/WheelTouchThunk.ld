@@ -1,3 +1,6 @@
+PROVIDE(__aeabi_i2f = 0x1c41e4);
+PROVIDE(__aeabi_fadd = 0x1c4154);
+PROVIDE(__aeabi_ui2f = 0x1c4574);
 printf = 0x001c4058; __aeabi_ui2f = 0x001c4574; __aeabi_fdiv = 0x001c4520; __aeabi_fcmpgt = 0x001c419c;
 wheelInvalidTouchFormat = 0x00425374;
 OUTPUT_FORMAT("elf32-littlearm")
@@ -12,6 +15,7 @@ memcpy = 0x001c4190;
 memset = 0x001c45d4;
 SECTIONS
 {
+    .wheel_constructor 0x0032cbe0 : { *wheel-touch-thunk.o(.text._ZN5WheelC1EP7ASpritei .text._ZN5WheelC2EP7ASpritei) }
     .point2d_delete 0x00326374 : { *wheel-touch-thunk.o(.gnu.linkonce.t._ZN7Point2DIsED0Ev) }
     .point2d_destroy 0x00326394 : { *wheel-touch-thunk.o(.gnu.linkonce.t._ZN7Point2DIsED1Ev) }
     .point2d_table 0x004abf88 : { *wheel-touch-thunk.o(.gnu.linkonce.d.rel.ro._ZTV7Point2DIsE) }
