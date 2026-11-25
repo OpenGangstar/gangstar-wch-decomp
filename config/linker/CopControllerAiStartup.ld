@@ -1,3 +1,7 @@
+PROVIDE(__aeabi_fadd = 0x1c4154);
+PROVIDE(__aeabi_fcmple = 0x1c43ac);
+PROVIDE(__aeabi_fmul = 0x1c4724);
+PROVIDE(__aeabi_fsub = 0x1c4328);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-copcontroller/retail-symbols.ld
@@ -17,6 +21,7 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .cop_controller_on_event 0x00341380 : { *ai-startup-copcontroller.o(.text._ZN13CopController7onEventEPK6IEventPK12EventManager) }
     .cop_switch_state 0x00341138 : { *ai-startup-copcontroller.o(.text._ZN13CopController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
     .cop_switch_table 0x00430c48 : { *ai-startup-copcontroller.o(.rodata._ZN13CopController11switchStateEN8gameloft2ai7StateIDENS1_19TransitionConditionE) }
     .cop_constructor 0x00341304 : { *ai-startup-copcontroller.o(.text._ZN13CopControllerC1EP3NPCN8gameloft2ai7StateIDE .text._ZN13CopControllerC2EP3NPCN8gameloft2ai7StateIDE) }

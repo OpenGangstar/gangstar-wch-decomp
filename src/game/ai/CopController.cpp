@@ -158,3 +158,123 @@ void CopController::switchState(gameloft::ai::StateID next,gameloft::ai::Transit
     }
     state=next;
 }
+
+#include "../characters/NPCEvent.h"
+#include "../missions/WantedLevelManager.h"
+static inline void raiseWantedLevel(WantedLevelManager* manager, const int level)
+{
+    if (manager->unknown8 < level) {
+        manager->unknown8 = level;
+        manager->_processWantedLevel();
+    }
+}
+// File-local view of the NPC fields this unit writes outside its friend access.
+struct CopNPCView {
+    unsigned char unknown0[236];
+    unsigned int movementFlags;
+    unsigned char unknown240[116];
+    unsigned int flags356;
+};
+static inline void pursue(NPC* pursuer, LevelObject* target, bool aggressive)
+{
+    pursuer->SetTarget(target);
+    reinterpret_cast<CopNPCView*>(pursuer)->flags356 |= 0x80u;
+    if (aggressive)
+        reinterpret_cast<CopNPCView*>(pursuer)->flags356 |= 0x100u;
+}
+void CopController::onEvent(const IEvent* event, const EventManager* manager)
+{
+    NPCController::onEvent(event, manager);
+    WantedLevelManager* (*getWanted)() = WantedLevelManager::getInstance;
+    int wanted = getWanted()->unknown8;
+    switch (event->getEventID()) {
+    case 16: {
+        const EvNPC* change = static_cast<const EvNPC*>(event);
+        NPC* affected = const_cast<NPC*>(change->getNPC());
+        NPC* mine = npc;
+        if (affected != mine)
+            break;
+        switch (change->getState()) {
+        case 5:
+            if (state == 1) {
+                if (unknown16)
+                    pursue(affected, reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())), false);
+                npc->flags356 &= ~0x10000u;
+            }
+        case 21:
+            if (wanted) {
+                PlayerTest* player = PlayerTest::GetPlayer();
+                if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                    npc->SetTarget(static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle());
+                else
+                    npc->SetTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+            }
+            break;
+        }
+        break;
+    }
+    case 22:
+        switch (static_cast<const EvPlayer*>(event)->getState()) {
+        case 2:
+            if ((static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).GetPosition() - npc->GetPosition()).getLengthSQ() <= 9000000.0f) {
+                PlayerTest* player = PlayerTest::GetPlayer();
+                if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                    npc->attackTarget(static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle());
+                else
+                    npc->attackTarget(reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+                raiseWantedLevel(getWanted(), 1);
+            }
+            break;
+        case 9:
+            if (wanted > 0) {
+                npc->SetTarget(static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle());
+                if (!s_hasAttemptedArrest && state == 8) {
+                    s_hasAttemptedArrest = true;
+                    unknown20 = true;
+                    npc->goToVehicle(static_cast<Vehicle*>(static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle()), true, true, false, true);
+                }
+            }
+            break;
+        case 10:
+            if (wanted > 0) {
+                npc->clearOnAlert();
+                npc->flags356 = 0;
+                reinterpret_cast<CopNPCView*>(npc)->movementFlags = 0;
+                pursue(npc, reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())), true);
+                if (unknown20) {
+                    unknown20 = false;
+                    s_hasAttemptedArrest = false;
+                }
+            }
+            break;
+        case 11:
+            unknown16 = 0;
+            npc->clearOnAlert();
+            switchState(static_cast<gameloft::ai::StateID>(1), static_cast<gameloft::ai::TransitionCondition>(14));
+            break;
+        }
+        break;
+    case 23:
+        if (wanted > 0) {
+            if (wanted > 2)
+                unknown16 = 3;
+            else
+                unknown16 = wanted;
+        } else
+            unknown16 = 0;
+        if (wanted > 0) {
+            bool aggressive = wanted > 2;
+            PlayerTest* player = PlayerTest::GetPlayer();
+            if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                pursue(npc, static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle(), aggressive);
+            else
+                pursue(npc, reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())), aggressive);
+            break;
+        }
+    case 24:
+        unknown16 = 0;
+        npc->clearOnAlert();
+        switchState(static_cast<gameloft::ai::StateID>(1), static_cast<gameloft::ai::TransitionCondition>(19));
+        break;
+    }
+}

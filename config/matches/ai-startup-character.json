@@ -166,7 +166,9 @@
         "_ZN9Character3dieEb",
         "_ZN9Character5punchEv",
         "_ZN9Character13initInVehicleEP7Vehicle",
-        "_ZN9Character14throwOutDriverEb"
+        "_ZN9Character14throwOutDriverEb",
+        "_ZN9Character4showEv",
+        "_ZN9Character17positionInVehicleEb"
     ],
     "sections": [
         ".character_init_physic",
@@ -219,7 +221,9 @@
         ".character_die",
         ".character_punch",
         ".character_init_in_vehicle",
-        ".character_throw_out_driver"
+        ".character_throw_out_driver",
+        ".character_show",
+        ".character_position_in_vehicle"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -287,10 +291,8 @@
         "_ZN9AIManager8removeAIEP3NPC",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
-        "_ZN9Character4showEv",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN9GS3DStuff9FindAMeshEPN3irr5scene10ISceneNodeE",
