@@ -1912,6 +1912,69 @@ private:
 };
 }
 
+
+struct CarRentalOffer {
+    const char* name;
+    int textId;
+    int price;
+};
+extern "C" { extern CarRentalOffer** _ZN11MenuManager15s_CarRentalDataE; }
+// Retail shares "%s%s" with MenuWidget at 0x00419e70; the linker binds it there.
+extern const char carRentalTutorialPartFormat[] __attribute__((visibility("hidden")));
+static const char carRentalSelectedSuffix[] = "_sel";
+
+bool Menus::ServiceCarRental::Notify(const MenuWidget* widget, int event)
+{
+    if (Services::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    Widgets::Arrows* arrows = static_cast<Widgets::Arrows*>(manager->getWidgetByIndex(18));
+    Widgets::Shop* shop = static_cast<Widgets::Shop*>(manager->getWidgetByIndex(3));
+    if (widget == arrows) {
+        switch (event) {
+        case 1:
+        case 2:
+            break;
+        default:
+            return false;
+        }
+        shop->SetAvailabilityText(0x103b);
+        shop->Reset();
+        PlayerTest* player = PlayerTest::GetPlayer();
+        for (int i = 0; i < 4; ++i) {
+            int index = arrows->GetCurrentPage() * 4 + i;
+            if (index >= _ZN11MenuManager20s_CarRentalDataCountE)
+                break;
+            int price = _ZN11MenuManager15s_CarRentalDataE[index]->price * scale;
+            const char* name;
+            const char* suffix;
+            int flags;
+            if (player->contextWord == 0 && (player->isRichAsCroesus() || price <= player->cash)) {
+                flags = 7;
+                name = _ZN11MenuManager15s_CarRentalDataE[index]->name;
+                suffix = carRentalSelectedSuffix;
+            } else {
+                flags = 6;
+                name = _ZN11MenuManager15s_CarRentalDataE[index]->name;
+                suffix = localStartupEmptyText;
+            }
+            char frame[32];
+            sprintf(frame, carRentalTutorialPartFormat, name, suffix);
+            shop->SetItem(i, _ZN11MenuManager15s_CarRentalDataE[index]->textId, price, frame, flags);
+        }
+        UpdateLocalization();
+        return true;
+    }
+    if (widget == shop && event == 1) {
+        int selected = shop->GetSelectedItem();
+        selectedVehicle = arrows->GetCurrentPage() * 4 + selected;
+        static_cast<Dialog*>(manager->getState(confirmMenuName))->SetMessage(0x1020);
+        manager->push(confirmMenuName, false);
+        return true;
+    }
+    return false;
+}
+
 bool Menus::ServiceWeaponShop::Notify(const MenuWidget* widget, int event)
 {
     if (Services::Notify(widget, event))
@@ -2017,3 +2080,84 @@ void Menus::ServiceWeaponShop::Update()
         selectedWeapon = -1;
     }
 }
+
+extern "C" {
+void nativeOpenBrowser(const char*);
+}
+namespace Widgets { class MainMenu : public MenuWidget { public: int GetPressedButton() const; }; }
+static const char mainMenuPromotionUrl[] =
+    "http://ingameads.gameloft.com/redir/?from=GAHP&op=TBFV&lg=EN&ver=2.1";
+
+bool Menus::MainMenu::Notify(const MenuWidget* widget, int event)
+{
+    if (MenuState::Notify(widget, event))
+        return true;
+
+    MenuManager* manager = MenuManager::getInstance();
+    const Widgets::MainMenu* menu = static_cast<const Widgets::MainMenu*>(manager->getWidgetByIndex(0));
+    if (widget != menu)
+        return false;
+
+    switch (event) {
+    case 1:
+        switch (menu->GetPressedButton()) {
+        case 0: {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            unknown104 = true;
+            _ZN12StateMachine11switchStateI9GSLoadingEEPT_v(_ZN12StateMachine11getInstanceEv());
+            break;
+        }
+        case 1:
+            if (FileStream::Exist(SaveGame::GetDefaultFilename())) {
+                unknown105 = true;
+                static_cast<Menus::Dialog*>(manager->getState(confirmMenuName))->SetMessage(0x1023);
+                manager->push(confirmMenuName, false);
+            } else {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                _ZN12StateMachine11switchStateI9GSLoadingEEPT_v(_ZN12StateMachine11getInstanceEv());
+            }
+            break;
+        case 2:
+            manager->push(optionVolumesName, false);
+            break;
+        case 3: {
+            unknown106 = true;
+            static_cast<Menus::Dialog*>(manager->getState(confirmMenuName))->SetMessage(0x101e);
+            manager->push(confirmMenuName, false);
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+            break;
+        }
+        }
+        return true;
+    case 2: {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+        break;
+    }
+    case 3:
+        manager->push(infoAchievementsName, false);
+        break;
+    case 4: {
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(214, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+        _ZN11MenuManager10clearFocusEv(manager);
+        nativeOpenBrowser(mainMenuPromotionUrl);
+        break;
+    }
+    }
+    return false;
+}
+

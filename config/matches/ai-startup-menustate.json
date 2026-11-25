@@ -300,7 +300,9 @@
         "_ZN5Menus5Infos6NotifyEPK10MenuWidgeti",
         "_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti",
         "_ZN5Menus3Map6NotifyEPK10MenuWidgeti",
-        "_ZN5Menus17ServiceWeaponShop6UpdateEv"
+        "_ZN5Menus17ServiceWeaponShop6UpdateEv",
+        "_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".help_empty_icon",
@@ -444,7 +446,11 @@
         ".infos_notify_table",
         ".service_weaponshop_notify",
         ".map_notify",
-        ".weapon_shop_update"
+        ".weapon_shop_update",
+        ".car_rental_notify",
+        ".main_menu_notify",
+        ".car_rental_selected_suffix",
+        ".main_menu_promotion_url"
     ],
     "retail_got": true,
     "external_thumb_functions": [

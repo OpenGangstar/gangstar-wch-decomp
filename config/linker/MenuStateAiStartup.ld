@@ -50,8 +50,15 @@ INCLUDE config/linker/WidgetControlsEvent.ld
 
 INCLUDE config/linker/MapNotifySections.ld
 
+carRentalTutorialPartFormat = 0x00419e70;
 SECTIONS
 {
+    .car_rental_notify 0x002eb760 : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.car_rental_notify) == 448, "Native car_rental_notify extent")
+    .main_menu_notify 0x002ea478 : { *ai-startup-menustate.o(.text._ZN5Menus8MainMenu6NotifyEPK10MenuWidgeti) }
+    ASSERT(SIZEOF(.main_menu_notify) == 544, "Native main_menu_notify extent")
+    .car_rental_selected_suffix 0x00419e68 : { *ai-startup-menustate.o(.rodata.carRentalSelectedSuffix) }
+    .main_menu_promotion_url 0x00419f14 : { *ai-startup-menustate.o(.rodata.mainMenuPromotionUrl) }
     .weapon_shop_update 0x002eb45c : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6UpdateEv) }
     ASSERT(SIZEOF(.weapon_shop_update) == 380, "Native ServiceWeaponShop Update extent")
     .service_weaponshop_notify 0x002eb920 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti) }
