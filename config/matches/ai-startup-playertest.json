@@ -130,7 +130,8 @@
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN10PlayerTestC1EP7b2World",
-        "_ZN10PlayerTestC2EP7b2World"
+        "_ZN10PlayerTestC2EP7b2World",
+        "_ZN10PlayerTest10switchAnimEv"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -164,7 +165,9 @@
         ".player_init_driving",
         ".physic_find_lower",
         ".character_specific_animation",
-        ".player_test_ctor"
+        ".player_test_ctor",
+        ".player_test_switch_anim",
+        ".player_test_switch_anim_table"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -356,6 +359,9 @@
         "_ZN6b2Body17SetMassFromShapesEv",
         "_ZN6b2Body7SetMassEPK10b2MassData",
         "_ZN7b2World10CreateBodyEPK9b2BodyDef",
-        "_ZN8Factions4initEv"
+        "_ZN8Factions4initEv",
+        "_ZN7Vehicle18getSeatedAnimationEv",
+        "_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE",
+        "_ZNK7Vehicle16getCloseDoorAnimEv"
     ]
 }

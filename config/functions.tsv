@@ -10452,7 +10452,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00303ab9	0xa0	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest12startDrivingEv	PlayerTest::startDriving()
 0x00303b58	0x14	PlayerTest.cpp	game	ai	matched	_ZThn4_N10PlayerTest5shootEfb	non-virtual thunk to PlayerTest::shoot(float, bool)
 0x00303b6d	0x4c	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest5shootEfb	PlayerTest::shoot(float, bool)
-0x00303bb9	0x430	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10switchAnimEv	PlayerTest::switchAnim()
+0x00303bb9	0x430	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest10switchAnimEv	PlayerTest::switchAnim()
 0x00303fe9	0x84	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest10updateAnimEf	PlayerTest::updateAnim(float)
 0x0030406d	0x694	PlayerTest.cpp	game	ai	pending	_ZN10PlayerTest20updateCarInteractionEv	PlayerTest::updateCarInteraction()
 0x00304701	0x194	PlayerTest.cpp	game	ai	matched	_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb	PlayerTest::stopDriving(playertest::PlayerCarState::ePlayerCarState, bool)

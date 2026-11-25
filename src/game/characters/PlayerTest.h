@@ -101,6 +101,8 @@ public:
     void finishedStopDriving();
     int getCarAnimName(const char* name, bool left);
     void Update();
+    void switchAnim();
+    void updateAnim(float elapsed);
     void UpdateSceneNode();
     bool isFacingTarget();
     bool orientTowards(irr::core::vector3d<float> direction);
