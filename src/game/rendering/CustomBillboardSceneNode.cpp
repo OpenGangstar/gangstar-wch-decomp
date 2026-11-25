@@ -13,6 +13,7 @@
 #include "../core/LocalStartupText.h"
 #include "CustomBillboardSceneNode.h"
 #include "../core/VideoDriver.h"
+#include "../core/Material.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -102,6 +103,55 @@ void CustomBillboardSceneNode::setChildrenMaterialFlag(
     for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
          child != node->getChildren().end(); child = child->next) {
         setChildrenMaterialFlag(child->value, flag, enabled);
+    }
+}
+
+namespace {
+typedef unsigned int ColorWord __attribute__((may_alias));
+inline __attribute__((always_inline)) bool sameColor(const irr::video::SColor& a, const irr::video::SColor& b)
+{
+    return reinterpret_cast<const ColorWord&>(a) == reinterpret_cast<const ColorWord&>(b);
+}
+
+inline __attribute__((always_inline)) void updateColorBlend(irr::video::SMaterial& m)
+{
+    if (!(m.flags40 & 2) || (m.unknown0 & 1) || sameColor(m.color84, m.color48)) {
+        if (!(m.flags40 & 4))
+            m.dirtyFlags |= 1;
+        m.flags40 |= 4u;
+    } else {
+        if (m.flags40 & 4)
+            m.dirtyFlags |= 1;
+        m.flags40 &= ~4u;
+    }
+}
+
+inline __attribute__((always_inline)) void setColor84(irr::video::SMaterial& m, const irr::video::SColor& c)
+{
+    if (sameColor(c, m.color84))
+        return;
+    m.dirtyFlags |= 8;
+    m.color84 = c;
+    updateColorBlend(m);
+}
+}
+
+
+extern "C" void _ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE(
+    CustomBillboardSceneNode* self, irr::scene::ISceneNode* node, irr::video::SColor color)
+{
+    const unsigned int a = color.a;
+    const unsigned int b = color.b;
+    const unsigned int g = color.g;
+    const unsigned int r = color.r;
+    const int nodeType = node->getType();
+    if (nodeType == 0x6d656164 || nodeType == 0x73656164) {
+        setColor84(node->getMaterial(0), irr::video::SColor(a, r, g, b));
+    } else {
+        for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+             child != node->getChildren().end(); child = child->next) {
+            _ZN24CustomBillboardSceneNode8setColorEPN3irr5scene10ISceneNodeENS0_5video6SColorE(self, child->value, color);
+        }
     }
 }
 
