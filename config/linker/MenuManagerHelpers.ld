@@ -20,6 +20,7 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
+    .menu_manager_set_text_height_name 0x00418f50 : { *menu-manager-helpers.o(.rodata._ZN27_GLOBAL__N__Z10StrToLowerPc18textHeightPropertyE) }
     .setup_car_rentals 0x00418f5c : { *menu-manager-helpers.o(.rodata.setupCarRentals) }
     .setup_menu_file 0x00418f70 : { *menu-manager-helpers.o(.rodata.setupMenuFile) }
     .setup_widget_confirm 0x00418f80 : { *menu-manager-helpers.o(.rodata.setupWidgetConfirm) }

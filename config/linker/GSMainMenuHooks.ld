@@ -28,6 +28,7 @@ _ZN30retail_menumanager_transitions22scripted_vehicle_transE = 0x004197cc;
 INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
+    .menu_manager_set_text_height_name 0x00418f50 : { *menu-manager-helpers.o(.rodata._ZN27_GLOBAL__N__Z10StrToLowerPc18textHeightPropertyE) }
     .menu_setup_datastream_dtor 0x002d3654 : { *(.gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }

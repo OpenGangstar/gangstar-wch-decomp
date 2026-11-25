@@ -130,7 +130,8 @@
         "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE",
         "_ZN11MenuManager6updateEP12StateMachine",
         "_ZN11MenuManager5setupEb",
-        "_ZN11MenuManager7initMapEv"
+        "_ZN11MenuManager7initMapEv",
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -184,7 +185,9 @@
         ".menu_manager_update",
         ".menu_manager_update_state_name",
         ".menu_manager_setup",
-        ".menu_manager_init_map"
+        ".menu_manager_init_map",
+        ".menu_manager_set_text",
+        ".menu_manager_set_text_table"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -200,7 +203,6 @@
         "_ZNK8RenderFX7GetRootEv",
         "_Z13ekd_debug_outPKcPc",
         "_Z21ekd_makestringfile255PKcPc",
-        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
         "_ZNK13StringManager9getStringEi",
         "_ZN11Application11GetInstanceEv",
         "_ZN8RenderFX10FormatHTMLEPN7gameswf9characterEPKcz",
@@ -292,6 +294,10 @@
         "_ZN9ResStreamD1Ev",
         "_ZNK10DataStream4TellEv",
         "_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE",
-        "_ZNK11Application19GetScreenDimensionsERiS0_"
+        "_ZNK11Application19GetScreenDimensionsERiS0_",
+        "_Z7SwfFreePv",
+        "_ZN7gameswf8as_value10set_doubleEd",
+        "_ZN7gameswf8as_valueC1Ev",
+        "_ZNK7gameswf8as_value9to_numberEv"
     ]
 }

@@ -393,7 +393,6 @@
         "_ZN11CWalkingHud8nearShopEv",
         "_ZN11CWalkingHud8showCashEb",
         "_ZN11CWalkingHudC1EP11CHudManager",
-        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
         "_ZN11RetroEffectC1Ev",
         "_ZN11WantedMeterC1EP7ASpritei",
         "_ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE",
