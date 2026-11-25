@@ -317,7 +317,6 @@
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
         "_ZN9Character4showEv",
-        "_ZN9Character5punchEv",
         "_ZN9Character5shootEfb",
         "_ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb",
         "_ZN9GS3DStuff15SetMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE",
