@@ -11,6 +11,8 @@ PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(memset = 0x001c45d4);
 SECTIONS
 {
+    .script_manager_clean_command 0x0033ffc0 : { *script-manager-helpers.o(.text._ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE) }
+    .script_manager_clean_command_table 0x0042f28c : { *script-manager-helpers.o(.rodata._ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE) }
     .script_manager_reach_running 0x0033d270 : { *script-manager-helpers.o(.text._ZN13ScriptManager19reachRunningCommandEi) }
     .script_check_screen_press 0x0033f4c8 : { *script-manager-helpers.o(.text._ZN13ScriptManager16checkScreenPressEv) }
     .script_load_command_table 0x0042f098 : { *script-manager-helpers.o(.rodata._ZN13ScriptManager11loadCommandER10DataStream) }
