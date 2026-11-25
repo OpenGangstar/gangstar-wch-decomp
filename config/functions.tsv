@@ -10072,7 +10072,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f1cfd	0x40	Character.cpp	game	characters	matched	_ZN9Character8goToIdleEv	Character::goToIdle()
 0x002f1d3d	0x3c	Character.cpp	game	characters	matched	_ZN9Character4StopEv	Character::Stop()
 0x002f1d79	0x18	Character.cpp	game	characters	matched	_ZN9Character16onRocketLaunchedEv	Character::onRocketLaunched()
-0x002f1d91	0x18c	Character.cpp	game	characters	pending	_ZN9Character12setAnimationEifbbb	Character::setAnimation(int, float, bool, bool, bool)
+0x002f1d91	0x18c	Character.cpp	game	characters	matched	_ZN9Character12setAnimationEifbbb	Character::setAnimation(int, float, bool, bool, bool)
 0x002f1f1d	0x16	Character.cpp	game	characters	matched	_ZN9Character6isDeadEv	Character::isDead()
 0x002f1f35	0x10	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEiibbb	Character::setNextAnimation(int, int, bool, bool, bool)
 0x002f1f45	0x58	Character.cpp	game	characters	matched	_ZN9Character16setNextAnimationEPKcibbb	Character::setNextAnimation(char const*, int, bool, bool, bool)

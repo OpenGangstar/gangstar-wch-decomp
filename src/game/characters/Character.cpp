@@ -31,6 +31,7 @@
 #include "../rendering/GS3DStuff.h"
 #include "../world/SceneNodeManager.h"
 #include "../meta/Achievements.h"
+#include "../scripting/ScriptManager.h"
 
 irr::scene::ITimelineController* Character::s_timelineController;
 bool Character::b_isBloodOn = true;
@@ -417,6 +418,57 @@ void Character::onRocketLaunched()
     flags.word = movementFlags & 0xefffffffu;
     flags.bits.rocketLaunched = 1;
     movementFlags = flags.word;
+}
+
+static inline bool isAnimationLocked(unsigned int flags)
+{
+    return static_cast<int>(flags << 20) < 0;
+}
+
+bool Character::setAnimation(int id, float speed, bool loop, bool flag149, bool flag150)
+{
+    if (isAnimationLocked(movementFlags))
+        return false;
+
+    if (id == -1) {
+        currentAnimation = -1;
+        animationStartFrame = 0;
+        animationEndFrame = 0;
+        animationFrameCount = 0;
+        animationSpeed = 0.0f;
+        animationLoops = false;
+        animationFlag149 = false;
+        animationFlag150 = false;
+        animationFrame = 0.0f;
+        return false;
+    }
+
+    if (currentAnimation == id)
+        return false;
+    if (!animationLoops && animationFrame < static_cast<float>(animationFrameCount)
+        && !canAnimationBeInterrupted(currentAnimation)
+        && !ScriptManager::getInstance()->isInCinematic()) {
+        if (!canAnimationBeInterrupted(id))
+            setNextAnimation(id, static_cast<int>(speed), loop, flag149, flag150);
+        return false;
+    }
+
+    if (currentAnimation == 67 && getWeapon()->getWeaponType() == 7)
+        getWeapon()->reloadRocket();
+    if (id == 164)
+        movementFlags |= 0x80000000u;
+
+    nextAnimation = -1;
+    currentAnimation = id;
+    animationStartFrame = s_timelineController->getClipStart(currentAnimation);
+    animationEndFrame = s_timelineController->getClipEnd(currentAnimation);
+    animationFrameCount = s_timelineController->getClipLength(currentAnimation);
+    animationSpeed = static_cast<float>(animationSpeedMultiplier) * speed;
+    animationLoops = loop;
+    animationFlag149 = flag149;
+    animationFlag150 = flag150;
+    animationFrame = 0.0f;
+    return true;
 }
 
 bool __attribute__((weak)) Character::isDead()
