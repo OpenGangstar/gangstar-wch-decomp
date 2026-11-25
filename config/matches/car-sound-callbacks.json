@@ -124,7 +124,8 @@
         },
         "_ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings",
         "_ZN9CarSounds20UpdateOnEngineSoundsEv",
-        "_ZN9CarSounds21UpdateOffEngineSoundsEv"
+        "_ZN9CarSounds21UpdateOffEngineSoundsEv",
+        "_ZN9CarSounds17UpdateTurboSoundsEv"
     ],
     "sections": [
         ".callback_function_0",
@@ -145,10 +146,9 @@
         },
         ".car_sounds_add_turbo",
         ".car_sounds_update_on",
-        ".car_sounds_update_off"
+        ".car_sounds_update_off",
+        ".car_sounds_update_turbo"
     ],
     "retail_got": true,
-    "external_thumb_functions": [
-        "_ZN9CarSounds17UpdateTurboSoundsEv"
-    ]
+    "external_thumb_functions": []
 }

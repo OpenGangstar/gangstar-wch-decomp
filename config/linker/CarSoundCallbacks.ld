@@ -22,6 +22,7 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_f2d = 0x001c48f8;
 SECTIONS
 {
+    .car_sounds_update_turbo 0x0034fbf8 : { *car-sound-callbacks.o(.text._ZN9CarSounds17UpdateTurboSoundsEv) }
     .car_sounds_update_on 0x0034f784 : { *car-sound-callbacks.o(.text._ZN9CarSounds20UpdateOnEngineSoundsEv) }
     .car_sounds_update_off 0x0034f554 : { *car-sound-callbacks.o(.text._ZN9CarSounds21UpdateOffEngineSoundsEv) }
     .car_sounds_add_turbo 0x00350018 : { *car-sound-callbacks.o(.text._ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings) }

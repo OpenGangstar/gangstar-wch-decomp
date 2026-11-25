@@ -699,3 +699,52 @@ void CarSounds::UpdateOnEngineSounds()
     }
 }
 
+
+void CarSounds::UpdateTurboSounds()
+{
+    const float primaryGain = masterVolume * turboGain;
+    float volume;
+    if (turboRpm > turboMaximumRpm)
+        volume = primaryGain;
+    else if (turboRpm > turboMinimumRpm)
+        volume = InterpolateFlatEnded(turboMinimumRpm, turboMaximumRpm, turboRpm, 0.0f, primaryGain);
+    else
+        volume = 0.0f;
+    const float ratio = static_cast<float>(turboRpm) / static_cast<float>(turboReferenceRpm);
+    const float pitchOffset = (1.0f - ratio) * turboPitchMix;
+    const float pitch = ratio + pitchOffset;
+    if (!s_SoundCallbacks.isSoundPlaying(turboSoundId, turboChannel)) {
+        turboChannel = s_SoundCallbacks.play(turboSoundId, true, volume, pitch);
+    } else {
+        s_SoundCallbacks.setVolume(turboSoundId, turboChannel, volume);
+        s_SoundCallbacks.setPitch(turboSoundId, turboChannel, pitch);
+    }
+
+    const float secondaryGain = masterVolume * secondaryTurboGain;
+    if (turboRpm > secondaryTurboMaximumRpm)
+        volume = secondaryGain;
+    else if (turboRpm > secondaryTurboMinimumRpm)
+        volume = InterpolateFlatEnded(secondaryTurboMinimumRpm, secondaryTurboMaximumRpm, turboRpm, 0.0f, secondaryGain);
+    else
+        volume = 0.0f;
+    if (!s_SoundCallbacks.isSoundPlaying(secondaryTurboSoundId, secondaryTurboChannel))
+        secondaryTurboChannel = s_SoundCallbacks.play(secondaryTurboSoundId, true, volume, 1.0f);
+    else
+        s_SoundCallbacks.setVolume(secondaryTurboSoundId, secondaryTurboChannel, volume);
+
+    if (clutchTriggered || (load == 0 && previousLoad != 0)) {
+        int index = 1;
+        int threshold = turboArray284[index];
+        while (threshold < secondaryTurboRpm && index <= auxiliaryTurboCount) {
+            ++index;
+            threshold = turboArray284[index];
+        }
+        if (secondaryTurboRpm > turboArray284[0] && secondaryTurboRpm < turboArray284[auxiliaryTurboCount]) {
+            const int id = auxiliaryTurboIds[index - 1];
+            const float volumeScale = masterVolume;
+            const float gain = auxiliaryTurboGain;
+            if (!s_SoundCallbacks.isSoundPlaying(id, auxiliaryTurboChannels[index - 1]))
+                auxiliaryTurboChannels[index - 1] = s_SoundCallbacks.play(id, false, volumeScale * gain, 1.0f);
+        }
+    }
+}

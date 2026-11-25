@@ -546,7 +546,6 @@
         "_ZN7Vehicle26RegisterCarSoundsCallbacksEv",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZNK11MenuManager8getDepthEv",
-        "_ZN11Application7OnEventERKN3irr6SEventE",
         "_ZN15FileSystemWin32C1Ev",
         "_ZN16TouchScreenWin32C1Ev",
         "_ZN18AccelerometerWin32C1Ev",

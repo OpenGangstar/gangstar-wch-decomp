@@ -8888,7 +8888,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d5e45	0x24	Application.cpp	game	app	matched	_ZN12EvMouseWheelD1Ev	EvMouseWheel::~EvMouseWheel()
 0x002d5e69	0x2c	Application.cpp	game	app	matched	_ZN13EvMouseButtonD0Ev	EvMouseButton::~EvMouseButton()
 0x002d5e95	0x24	Application.cpp	game	app	matched	_ZN13EvMouseButtonD1Ev	EvMouseButton::~EvMouseButton()
-0x002d5eb9	0x254	Application.cpp	game	app	pending	_ZN11Application7OnEventERKN3irr6SEventE	Application::OnEvent(irr::SEvent const&)
+0x002d5eb9	0x254	Application.cpp	game	app	matched	_ZN11Application7OnEventERKN3irr6SEventE	Application::OnEvent(irr::SEvent const&)
 0x002d610d	0x2c	Application.cpp	game	app	matched	_ZN11EvMouseMoveD0Ev	EvMouseMove::~EvMouseMove()
 0x002d6139	0x2	Logs.cpp	game	core	matched	_ZN4Logs5debugEPKc	Logs::debug(char const*)
 0x002d613d	0x2	Logs.cpp	game	core	matched	_ZN4Logs5traceEPKcS1_	Logs::trace(char const*, char const*)
@@ -12989,7 +12989,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034fb09	0x40	CarSounds.cpp	game	vehicles	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034fb49	0x14	CarSounds.cpp	game	vehicles	matched	_GLOBAL__I__ZN18CarSoundParametersC2Ev	_GLOBAL__I__ZN18CarSoundParametersC2Ev
 0x0034fb61	0x94	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds20InterpolateFlatEndedEiiiff	CarSounds::InterpolateFlatEnded(int, int, int, float, float)
-0x0034fbf9	0x1fc	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds17UpdateTurboSoundsEv	CarSounds::UpdateTurboSounds()
+0x0034fbf9	0x1fc	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds17UpdateTurboSoundsEv	CarSounds::UpdateTurboSounds()
 0x0034fdf5	0x190	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds6UpdateEP18CarSoundParameters	CarSounds::Update(CarSoundParameters*)
 0x0034ff89	0x8c	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds24SetRPMFilterCoefficientsEf	CarSounds::SetRPMFilterCoefficients(float)
 0x00350019	0x1d0	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings	CarSounds::AddTurboSounds(TurboSoundSettings*)
