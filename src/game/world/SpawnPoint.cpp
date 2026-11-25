@@ -390,3 +390,42 @@ bool SpawnPoint::hasCloseNeighbors() const
     }
     return false;
 }
+#include "ObjectData.h"
+void SpawnPoint::Load(const Structs::SpawnPoint& data)
+{
+    position=irr::core::vector3d<float>(data.position.X,data.position.Y,data.position.Z);
+    SetRotation(irr::core::vector3d<float>(data.rotation.X,data.rotation.Y,data.rotation.Z));
+    materialId=data.unknown72;
+    triangleId=data.unknown88;
+    if (materialId>59999) triangleId=materialId=0;
+    if (!s_metatypesCount) {
+        s_metatypesCount=new unsigned char[256];
+        s_spawnMetatypes=new unsigned char*[256];
+        s_metatypesSpawnCst=new const SpawnConstants*[256];
+        for (unsigned index=0;index<256;++index) {
+            s_metatypesCount[index]=0;
+            s_spawnMetatypes[index]=0;
+        }
+    }
+    const SpawnConstants* constants;
+    switch (data.unknown84) {
+    case 11: constants=&s_parkedCarSpawnCst;break;
+    case 16: constants=&s_prisonerSpawnCst;break;
+    case 3: constants=&s_carSpawnCst;break;
+    default: constants=&s_civSpawnCst;break;
+    }
+    spawnGroup=GameObjectManager::s_gom->GetMetatypeFromName(data.name);
+    if (!s_metatypesCount[spawnGroup]) {
+        s_metatypesCount[spawnGroup]=data.count;
+        s_spawnMetatypes[spawnGroup]=new unsigned char[s_metatypesCount[spawnGroup]];
+        s_metatypesSpawnCst[spawnGroup]=constants;
+        for (int index=0;index<s_metatypesCount[spawnGroup];++index)
+            s_spawnMetatypes[spawnGroup][index]=data.values[index];
+    }
+    resetSpawnTime(s_metatypesSpawnCst[spawnGroup]->retryMin,s_metatypesSpawnCst[spawnGroup]->retryMax);
+    delete[] data.sceneName;
+    delete[] data.name;
+    delete[] data.nodeName;
+    delete[] data.values;
+    add(this);
+}
