@@ -11805,7 +11805,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003351a1	0x1c	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera5enterEv	VehicleCamera::enter()
 0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraD2Ev	VehicleCamera::~VehicleCamera()
 0x003351bd	0x20	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraD1Ev	VehicleCamera::~VehicleCamera()
-0x003351dd	0x130	VehicleCamera.cpp	game	vehicles	pending	_ZN13VehicleCamera8goToSideEb	VehicleCamera::goToSide(bool)
+0x003351dd	0x130	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera8goToSideEb	VehicleCamera::goToSide(bool)
 0x0033530d	0x160	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCamera4initEP11LevelObjecti	VehicleCamera::init(LevelObject*, int)
 0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraC2EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)
 0x0033546d	0x48	VehicleCamera.cpp	game	vehicles	matched	_ZN13VehicleCameraC1EP11LevelObject	VehicleCamera::VehicleCamera(LevelObject*)

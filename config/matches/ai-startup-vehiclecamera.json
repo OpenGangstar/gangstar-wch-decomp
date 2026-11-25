@@ -30,6 +30,7 @@
     ],
     "functions": [
         "_ZN13VehicleCamera4initEP11LevelObjecti",
+        "_ZN13VehicleCamera8goToSideEb",
         "_ZN13VehicleCamera5enterEv",
         "_ZN13VehicleCameraC1EP11LevelObject",
         "_ZN13VehicleCameraC2EP11LevelObject",
@@ -62,7 +63,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".vehicle_camera_facing"
+        ".vehicle_camera_facing",
+        ".vehicle_camera_go_to_side"
     ],
     "retail_got": true,
     "external_thumb_functions": [
