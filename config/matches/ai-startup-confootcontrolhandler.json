@@ -61,7 +61,8 @@
             "name": "__tcf_2",
             "address": "0x0032e649",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent"
     ],
     "sections": [
         ".on_foot_on_event_switch",
@@ -74,7 +75,9 @@
             "name": ".got",
             "offset": 864
         },
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".onfoot_keyboard_event",
+        ".onfoot_keyboard_event_tables"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -83,7 +86,6 @@
         "_ZNK13ScriptManager13isInCinematicEv",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
         "_ZN13ScriptManager12skipCutsceneEv",
-        "_ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent",
         "_ZN12SoundManager14pauseAllSoundsEv",
         "_ZN15CControlManager4lockEv",
         "_ZN15CControlManager12enterSnipingEb",
@@ -103,6 +105,25 @@
         "_ZN12EventManager6attachEiP14IEventReceiver",
         "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN10PlayerTest14addPhotoTargetEP11LevelObject",
+        "_ZN10PlayerTest17clearPhotoTargetsEv",
+        "_ZN10PlayerTest7addCashEii",
+        "_ZN10SpawnPoint5spawnEi",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN18AchievementManager29setNextAchievementAsCompletedEv",
+        "_ZN4Item20removeAllPlacedItemsEv",
+        "_ZN4Item5placeEiN3irr4core8vector3dIfEE",
+        "_ZN4Lock11getInstanceEv",
+        "_ZN7Vehicle10immobilizeEv",
+        "_ZN7Vehicle11resetDriverEv",
+        "_ZN7Vehicle8mobilizeEv",
+        "_ZN7Vehicle8openDoorEb",
+        "_ZN9Character17positionInVehicleEb",
+        "_ZN9Character4showEv",
+        "_ZNK13CameraManager9getCameraEv",
+        "_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE",
+        "_ZNK7Vehicle15getPathToFollowEv",
+        "_ZNK7Vehicle18getCurrentWaypointEv"
     ]
 }

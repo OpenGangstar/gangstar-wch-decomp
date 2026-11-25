@@ -1,3 +1,5 @@
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fsub = 0x001c4328);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-confootcontrolhandler/retail-symbols.ld
@@ -19,6 +21,14 @@ __cxa_pure_virtual = 0;
 PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 SECTIONS
 {
+    .onfoot_keyboard_guard_v 0x004b9a14 (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.bss._ZGVZN21COnFootControlHandler15onKeyboardEventEPK6IEventE1v) }
+    .onfoot_keyboard_guard_next 0x004b9a18 (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.bss._ZGVZN21COnFootControlHandler15onKeyboardEventEPK6IEventE4next) }
+    .onfoot_keyboard_guard_path 0x004b9a1c (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.bss._ZGVZN21COnFootControlHandler15onKeyboardEventEPK6IEventE4path) }
+    .onfoot_keyboard_path 0x004b9a20 (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.bss._ZZN21COnFootControlHandler15onKeyboardEventEPK6IEventE4path) }
+    .onfoot_keyboard_next 0x004b9a24 (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.bss._ZZN21COnFootControlHandler15onKeyboardEventEPK6IEventE4next) }
+    .onfoot_keyboard_v 0x004b9a28 (NOLOAD) : { *ai-startup-confootcontrolhandler.o(.bss._ZZN21COnFootControlHandler15onKeyboardEventEPK6IEventE1v) }
+    .onfoot_keyboard_event 0x0032e834 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent) }
+    .onfoot_keyboard_event_tables 0x00426228 : { *ai-startup-confootcontrolhandler.o(.rodata._ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent) }
     .on_foot_on_event_switch 0x00426484 : { *ai-startup-confootcontrolhandler.o(.rodata._ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager) }
     .on_foot_on_event 0x0032ed5c : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager) }
     .onfoot_attack_held 0x0032e6f8 : { *ai-startup-confootcontrolhandler.o(.text._ZN21COnFootControlHandler16handleAttackHeldEv) }

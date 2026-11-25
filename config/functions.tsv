@@ -11556,7 +11556,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032e6f9	0x74	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler16handleAttackHeldEv	COnFootControlHandler::handleAttackHeld()
 0x0032e76d	0x90	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler19handleAttackPressedEv	COnFootControlHandler::handleAttackPressed()
 0x0032e7fd	0x38	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler10deactivateEv	COnFootControlHandler::deactivate()
-0x0032e835	0x528	COnFootControlHandler.cpp	game	input	pending	_ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent	COnFootControlHandler::onKeyboardEvent(IEvent const*)
+0x0032e835	0x528	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler15onKeyboardEventEPK6IEvent	COnFootControlHandler::onKeyboardEvent(IEvent const*)
 0x0032ed5d	0x194	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandler7onEventEPK6IEventPK12EventManager	COnFootControlHandler::onEvent(IEvent const*, EventManager const*)
 0x0032eef1	0x24	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerC1EP15CControlManager	COnFootControlHandler::COnFootControlHandler(CControlManager*)
 0x0032eef1	0x24	COnFootControlHandler.cpp	game	input	matched	_ZN21COnFootControlHandlerC2EP15CControlManager	COnFootControlHandler::COnFootControlHandler(CControlManager*)
