@@ -13197,7 +13197,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352c25	0x18	SoundManager.cpp	game	audio	matched	_ZN12SoundManager9setVolumeEiif	SoundManager::setVolume(int, int, float)
 0x00352c3d	0x34	SoundManager.cpp	game	audio	matched	_ZN12SoundManager14isSoundPlayingEi	SoundManager::isSoundPlaying(int)
 0x00352c71	0x3a	SoundManager.cpp	game	audio	matched	_ZN12SoundManager14isSoundPlayingEii	SoundManager::isSoundPlaying(int, int)
-0x00352cad	0x50	SoundManager.cpp	game	audio	pending	_ZN12SoundManager24getNumberOfPlayingSoundsEv	SoundManager::getNumberOfPlayingSounds()
+0x00352cad	0x50	SoundManager.cpp	game	audio	matched	_ZN12SoundManager24getNumberOfPlayingSoundsEv	SoundManager::getNumberOfPlayingSounds()
 0x00352cfd	0x2a	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager20isLowFpsMusicPlayingEv	SoundManager::isLowFpsMusicPlaying() const
 0x00352d29	0x7c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager14setMusicVolumeEf	SoundManager::setMusicVolume(float)
 0x00352da5	0x24	SoundManager.cpp	game	audio	matched	_ZN12SoundManager17resumeLowFpsMusicEv	SoundManager::resumeLowFpsMusic()

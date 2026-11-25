@@ -261,6 +261,18 @@ bool SoundManager::isSoundPlaying(int resourceId, int channel)
     return false;
 }
 
+int SoundManager::getNumberOfPlayingSounds()
+{
+    int count = 0;
+    if (flags & 2) {
+        for (int id = 0; id < soundCount; ++id)
+            for (int channel = 0; channel < 4; ++channel)
+                if (soundSlots[id][channel] && soundSlots[id][channel]->GetStatus() != 4)
+                    count++;
+    }
+    return count;
+}
+
 void SoundManager::setPitch(int resourceId, int channel, float pitch)
 {
     if (flags & 2) {

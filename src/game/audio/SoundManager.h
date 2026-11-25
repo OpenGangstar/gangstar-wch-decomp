@@ -76,6 +76,7 @@ public:
     bool isSoundPlaying(int resourceId);
     bool isSoundPlaying(int resourceId, int channel);
     int getNumberOfAllocatedSounds();
+    int getNumberOfPlayingSounds();
 
     static int playSoundCallback(int id, bool loop, float volume, float pitch);
     static int s_soundsPlaying;
