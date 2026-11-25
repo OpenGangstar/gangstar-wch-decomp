@@ -54,6 +54,7 @@ INCLUDE config/linker/MapNotifySections.ld
 carRentalTutorialPartFormat = 0x00419e70;
 SECTIONS
 {
+    .menu_state_on_event 0x002e8550 : { *ai-startup-menustate.o(.text._ZN9MenuState7OnEventERN8RenderFX5EventE) }
     .service_weapon_shop_refresh 0x002e7ac4 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop7RefreshEv) }
     .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }

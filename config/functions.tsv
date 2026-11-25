@@ -9657,7 +9657,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e84ed	0x3c	MenuState.cpp	game	ui	matched	_ZN5Menus8TutorialC1EPKc	Menus::Tutorial::Tutorial(char const*)
 0x002e84ed	0x3c	MenuState.cpp	game	ui	matched	_ZN5Menus8TutorialC2EPKc	Menus::Tutorial::Tutorial(char const*)
 0x002e8529	0x26	MenuState.cpp	game	ui	matched	_ZN5Menus14ConfirmPayment8SetPriceEi	Menus::ConfirmPayment::SetPrice(int)
-0x002e8551	0xe8	MenuState.cpp	game	ui	pending	_ZN9MenuState7OnEventERN8RenderFX5EventE	MenuState::OnEvent(RenderFX::Event&)
+0x002e8551	0xe8	MenuState.cpp	game	ui	matched	_ZN9MenuState7OnEventERN8RenderFX5EventE	MenuState::OnEvent(RenderFX::Event&)
 0x002e8639	0x1a	MenuState.cpp	game	ui	matched	_ZN5Menus3Map7OnEventERN8RenderFX5EventE	Menus::Map::OnEvent(RenderFX::Event&)
 0x002e8655	0x68	MenuState.cpp	game	ui	matched	_ZN9MenuState4HideEv	MenuState::Hide()
 0x002e86bd	0x20	MenuState.cpp	game	ui	matched	_ZN5Menus15InGameCarRental4HideEv	Menus::InGameCarRental::Hide()
