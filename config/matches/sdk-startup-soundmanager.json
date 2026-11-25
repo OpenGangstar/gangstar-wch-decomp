@@ -108,7 +108,8 @@
         "_ZN12SoundManager15resumeAllSoundsEv",
         "_ZN12SoundManager13_getSoundDataEi",
         "_ZN12SoundManagerC1Ev",
-        "_ZN12SoundManagerC2Ev"
+        "_ZN12SoundManagerC2Ev",
+        "_ZN12SoundManager11endCutsceneEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -194,7 +195,8 @@
         ".memorySoundPrefix",
         ".musicSoundPrefix",
         ".swavSuffix",
-        ".wavSuffix"
+        ".wavSuffix",
+        ".sound_end_cutscene"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -211,7 +213,6 @@
         "_ZN22RadioStationController14selectRandomAdEv",
         "_ZN22RadioStationController16selectRandomSongEi",
         "_ZN22RadioStationController18selectRandomJingleEi",
-        "_ZN12SoundManager11endCutsceneEv",
         "_ZN11FileManager11_GetDvdNameEi",
         "_ZN14CSoundDataPool12GetSoundDataEiiiiPci",
         "_ZN10CMSWavPool15GetMSWAVDecoderEPKc",

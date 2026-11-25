@@ -543,6 +543,36 @@ void SoundManager::beginCutscene()
     stop(radioTrack, -1, 0);
 }
 
+void SoundManager::endCutscene()
+{
+    if (flags & 16) {
+        if (--s_soundsPlaying == 0) {
+            flags &= ~0x50u;
+            for (int id = 0; id < soundCount; ++id) {
+                if ((soundEntries[id].type & 0x400000) && !(flags & 256)) {
+                    if (id == radioTrack) {
+                        if (!(flags & 1) && soundEntries[id].channel >= 0) {
+                            if (soundSlots[id][soundEntries[id].channel])
+                                soundSlots[id][soundEntries[id].channel]->Stop(0);
+                        } else if (soundEntries[id].channel != -1) {
+                            if (soundSlots[id][soundEntries[id].channel])
+                                soundSlots[id][soundEntries[id].channel]->SetVolume(playbackVolume);
+                        }
+                    } else {
+                        for (int channel = 0; channel < 4; ++channel)
+                            if (soundSlots[id][channel])
+                                soundSlots[id][channel]->SetVolume(playbackVolume);
+                    }
+                } else if (isRestrictedSfx(id)) {
+                    for (int channel = 0; channel < 4; ++channel)
+                        if (soundSlots[id][channel])
+                            soundSlots[id][channel]->SetVolume(effectsPlaybackVolume);
+                }
+            }
+        }
+    }
+}
+
 void SoundManager::resumeAllSounds()
 {
     if (flags & 2) {

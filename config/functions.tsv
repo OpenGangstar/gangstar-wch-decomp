@@ -12532,7 +12532,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00348595	0x5c	Trail.cpp	game	world	matched	_ZN5TrailC2Ev	Trail::Trail()
 0x00348595	0x5c	Trail.cpp	game	world	matched	_ZN5TrailC1Ev	Trail::Trail()
 0x003485f1	0x144	Trail.cpp	game	world	pending	_ZN5Trail6UpdateEv	Trail::Update()
-0x00348735	0x32c	Trail.cpp	game	world	pending	_ZN5Trail10BuildPointEib	Trail::BuildPoint(int, bool)
+0x00348735	0x32c	Trail.cpp	game	world	matched	_ZN5Trail10BuildPointEib	Trail::BuildPoint(int, bool)
 0x00348a61	0x142	Trail.cpp	game	world	matched	_ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b	Trail::AddPoint(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
 0x00348ba5	0xd8	Trail.cpp	game	world	matched	_ZN5Trail6UpdateERN3irr4core8vector3dIfEES4_b	Trail::Update(irr::core::vector3d<float>&, irr::core::vector3d<float>&, bool)
 0x00348c7d	0x6c	Trail.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -13189,7 +13189,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00352921	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager8setPitchEiif	SoundManager::setPitch(int, int, float)
 0x0035294d	0x2c	SoundManager.cpp	game	audio	matched	_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE	SoundManager::setSourcePos(int, int, irr::core::vector3d<float> const&)
 0x00352979	0xdc	SoundManager.cpp	game	audio	matched	_ZNK12SoundManager15isRestrictedSfxEi	SoundManager::isRestrictedSfx(int) const
-0x00352a55	0xec	SoundManager.cpp	game	audio	pending	_ZN12SoundManager11endCutsceneEv	SoundManager::endCutscene()
+0x00352a55	0xec	SoundManager.cpp	game	audio	matched	_ZN12SoundManager11endCutsceneEv	SoundManager::endCutscene()
 0x00352b41	0x28	SoundManager.cpp	game	audio	matched	_ZN12SoundManager24convertVisual3DToSound3DERKN3irr4core8vector3dIfEE	SoundManager::convertVisual3DToSound3D(irr::core::vector3d<float> const&)
 0x00352b69	0x3e	SoundManager.cpp	game	audio	matched	_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE	SoundManager::playEx(int, irr::core::vector3d<float> const*, bool, float, int, bool, float, void (*)())
 0x00352ba9	0x14	SoundManager.cpp	game	audio	matched	_ZN12SoundManager15playLowFpsMusicEib	SoundManager::playLowFpsMusic(int, bool)

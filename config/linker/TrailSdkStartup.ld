@@ -14,8 +14,11 @@ __aeabi_fsub = 0x001c4328;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fcmpgt = 0x001c419c;
 __aeabi_atexit = 0x001c494c;
+PROVIDE(sqrtf = 0x001c4184);
 SECTIONS
 {
+    .trail_build_point 0x00348734 : { *sdk-startup-trail.o(.text._ZN5Trail10BuildPointEib) }
+    .trail_tex_offset_y 0x00435a48 : { *sdk-startup-trail.o(.rodata.g_trailTexOffsetY) }
     .trail_mesh 0x00348cfc : { *sdk-startup-trail.o(.text._ZN5Trail19CreateMeshSceneNodeEv) }
     .trail_add_point 0x00348a60 : { *sdk-startup-trail.o(.text._ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b) }
     .trail_last_added_point 0x003484e4 : { *sdk-startup-trail.o(.text._ZN5Trail17SetLastAddedPointEN3irr4core8vector3dIfEE) }

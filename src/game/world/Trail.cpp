@@ -322,3 +322,92 @@ void Trail::CreateMeshSceneNode()
 typedef char CheckVertex36[sizeof(irr::video::S3DVertex)==36?1:-1];
 typedef char CheckBuffer196[sizeof(irr::scene::CMeshBuffer<irr::video::S3DVertex>)==196?1:-1];
 typedef char CheckMesh92[sizeof(irr::scene::SMesh)==92?1:-1];
+// Integrate with the shared trail mesh vertex/buffer view if available.
+#include "Trail.h"
+#include "../core/Color.h"
+#include "../core/MeshBufferInterfaces.h"
+#include "../core/MeshSceneInterfaces.h"
+
+extern "C" float sqrtf(float value);
+extern const float g_trailTexOffsetY[3][2] __attribute__((visibility("hidden")));
+const float g_trailTexOffsetY[3][2] = {
+    {0.0f, 1.0f},
+    {0.25f, 0.5f},
+    {0.5f, 0.75f}
+};
+
+namespace {
+struct TrailBuildVertexView {
+    irr::core::vector3d<float> position;
+    irr::core::vector3d<float> normal;
+    irr::video::SColor color;
+    float u;
+    float v;
+};
+struct TrailBuildMeshBufferView {
+    unsigned char unknown0[120];
+    TrailBuildVertexView* vertices;
+};
+}
+
+void Trail::BuildPoint(int index, bool transparent)
+{
+    typedef irr::core::vector3d<float> Vector;
+    Vector direction;
+    if (index == 0)
+        direction = points[0].left - points[1].left;
+    else
+        direction = points[index - 1].left - points[index].left;
+    direction.normalize();
+
+    Vector normal;
+    normal = points[index].right.crossProduct(direction);
+    normal.normalize();
+
+    const Vector& center = points[index].left;
+    const float halfWidth = 0.5f * segmentWidth;
+    Vector p1 = center - normal * halfWidth;
+    Vector p2 = normal * halfWidth + center;
+    float length = 0.0f;
+    if (index != activePointCount) {
+        Vector d = center - points[index + 1].left;
+        length += sqrtf(d.X * d.X + d.Y * d.Y + d.Z * d.Z);
+    }
+
+    irr::scene::IMeshBuffer* buffer =
+        static_cast<irr::scene::IMeshSceneNode*>(meshSceneNode)->getMesh()->getMeshBuffer(0);
+    TrailBuildMeshBufferView* mesh = reinterpret_cast<TrailBuildMeshBufferView*>(buffer);
+    float leftU = 0.0f;
+    float rightU = 0.0f;
+    if (index == 0) {
+        TrailBuildVertexView* vertices = mesh->vertices;
+        leftU = length + vertices[2].u;
+        rightU = length + vertices[3].u;
+    }
+
+    const int leftIndex = 2 * index;
+    const int rightIndex = leftIndex + 1;
+    mesh->vertices[leftIndex].position.X = p1.X;
+    mesh->vertices[leftIndex].position.Y = p1.Y;
+    mesh->vertices[leftIndex].position.Z = p1.Z;
+    *reinterpret_cast<unsigned int*>(&mesh->vertices[leftIndex].color) =
+        *reinterpret_cast<const unsigned int*>(unknown64);
+    mesh->vertices[rightIndex].position.X = p2.X;
+    mesh->vertices[rightIndex].position.Y = p2.Y;
+    mesh->vertices[rightIndex].position.Z = p2.Z;
+    *reinterpret_cast<unsigned int*>(&mesh->vertices[rightIndex].color) =
+        *reinterpret_cast<const unsigned int*>(unknown64);
+    if (transparent) {
+        mesh->vertices[leftIndex].u = 0.0f;
+        mesh->vertices[leftIndex].v = 0.0f;
+        mesh->vertices[rightIndex].u = 0.0f;
+        mesh->vertices[rightIndex].v = 0.0f;
+        mesh->vertices[rightIndex].color.a = 0;
+        mesh->vertices[leftIndex].color.a = 0;
+    } else {
+        mesh->vertices[leftIndex].u = leftU;
+        mesh->vertices[leftIndex].v = 1.0f - g_trailTexOffsetY[trailMode][1];
+        mesh->vertices[rightIndex].u = rightU;
+        mesh->vertices[rightIndex].v = 1.0f - g_trailTexOffsetY[trailMode][0];
+    }
+}
