@@ -10006,7 +10006,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f035d	0x42	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager19OnRegisterSceneNodeEv	BulletTraceManager::OnRegisterSceneNode()
 0x002f03a1	0x260	BulletTraceManager.cpp	irrlicht	-	matched	_ZN3irr4core10quaternion14rotationFromToERKNS0_8vector3dIfEES5_	irr::core::quaternion::rotationFromTo(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&)
 0x002f0601	0x4c	BulletTraceManager.cpp	game	combat	matched	_ZNK18BulletTraceManager14getBoundingBoxEv	BulletTraceManager::getBoundingBox() const
-0x002f064d	0x1f0	BulletTraceManager.cpp	game	combat	pending	_ZN18BulletTraceManager9OnAnimateEj	BulletTraceManager::OnAnimate(unsigned int)
+0x002f064d	0x1f0	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager9OnAnimateEj	BulletTraceManager::OnAnimate(unsigned int)
 0x002f083d	0x188	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager15PlayBulletTraceERKN3irr4core8vector3dIfEES5_bS5_	BulletTraceManager::PlayBulletTrace(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, bool, irr::core::vector3d<float> const&)
 0x002f09c5	0x2a8	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager6renderEPv	BulletTraceManager::render(void*)
 0x002f0c6d	0x6c	BulletTraceManager.cpp	game	combat	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

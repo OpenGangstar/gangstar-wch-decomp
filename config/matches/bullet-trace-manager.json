@@ -26,6 +26,7 @@
     "source": "src/game/combat/BulletTraceManager.cpp",
     "linker_script": "config/linker/BulletTraceManager.ld",
     "sections": [
+        ".bullet_trace_on_animate",
         ".bullet_trace_startup",
         ".bullet_trace_startup_wrapper",
         ".bullet_trace_string_cleanup",
@@ -55,6 +56,7 @@
         ".bullet_render"
     ],
     "functions": [
+        "_ZN18BulletTraceManager9OnAnimateEj",
         {
             "name": "_Z41__static_initialization_and_destruction_0ii",
             "address": "0x002f0c6d"
@@ -92,6 +94,7 @@
         "_ZN3irr5scene10ISceneNodeD2Ev",
         "_ZN3irr5scene10ISceneNodeC2EiRKNS_4core8vector3dIfEERKNS2_10quaternionES6_",
         "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcbPNS0_15CColladaFactoryE",
-        "_ZN11Application11GetInstanceEv"
+        "_ZN11Application11GetInstanceEv",
+        "_ZNK3irr5scene10ISceneNode12getAnimatorsEv"
     ]
 }

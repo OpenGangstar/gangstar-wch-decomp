@@ -22,6 +22,7 @@ __aeabi_fcmpgt = 0x001c419c;
 memset = 0x001c45d4;
 SECTIONS
 {
+    .bullet_trace_on_animate 0x002f064c : { *bullet-trace-manager.o(.text._ZN18BulletTraceManager9OnAnimateEj) }
     .bullet_trace_startup 0x002f0c6c : { *bullet-trace-manager.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .bullet_trace_startup_wrapper 0x002f0cd8 : { *bullet-trace-manager.o(.text._GLOBAL__I__ZN18BulletTraceManagerC2Ev) }
     .bullet_trace_string_cleanup 0x002f0cec : { *bullet-trace-manager.o(.text.__tcf_2) }
@@ -64,3 +65,4 @@ ASSERT(SIZEOF(.bullet_trace_string) == 32, "BulletTraceManager string extent");
 ASSERT(SIZEOF(.bullet_trace_half) == 12, "BulletTraceManager half-vector extent");
 ASSERT(SIZEOF(.bullet_trace_bounds_guard) == 4, "BulletTraceManager box guard extent");
 ASSERT(SIZEOF(.bullet_trace_bounds_storage) == 24, "BulletTraceManager box extent");
+ASSERT(SIZEOF(.bullet_trace_on_animate) == 496, "Native BulletTraceManager OnAnimate extent");
