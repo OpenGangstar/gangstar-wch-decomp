@@ -76,7 +76,8 @@
             "address": "0x0031d78d"
         },
         "_ZN16PhysicAttributes10LoadArraysEPc",
-        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi"
+        "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib"
     ],
     "sections": [
         ".physics_segment_height",
@@ -94,13 +95,13 @@
         ".load_arrays_mode",
         ".load_arrays_error",
         ".physic_info_ctor",
-        ".physic_find_lower"
+        ".physic_find_lower",
+        ".physic_get_height"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_",
         "_ZN16PhysicAttributes18AddCollisionShapesEit",
-        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
         "_ZN7b2World10CreateBodyEPK9b2BodyDef",
         "_ZN7b2World11DestroyBodyEP6b2Body",
         "_ZN7b2World16SetContactFilterEP15b2ContactFilter",
@@ -109,6 +110,8 @@
         "_ZN7b2WorldD1Ev",
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
         "_Z21ekd_makestringfile255PKcPc",
-        "_Z13ekd_debug_outPKcPc"
+        "_Z13ekd_debug_outPKcPc",
+        "_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi",
+        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb"
     ]
 }
