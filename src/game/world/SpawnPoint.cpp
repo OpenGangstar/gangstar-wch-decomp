@@ -153,6 +153,44 @@ void SpawnPoint::releaseSpawnObject(LevelObject* object)
     }
 }
 
+void SpawnPoint::CreateAllSpawnInstances()
+{
+    GameObjectManager* manager = GameObjectManager::s_gom;
+    int counts[SpawnPoolSize] = {0};
+    for (SpawnPointList::Node* node = s_spawnPoints.head; node; node = node->next) {
+        SpawnPoint* point = node->value;
+        unsigned char group = point->spawnGroup;
+        unsigned char count = s_metatypesCount[group];
+        for (int i = 0; i < count; ++i) {
+            int metatype = s_spawnMetatypes[group][i];
+            int needed = (metatype == 48 || metatype == 161 || metatype == 38) ? 3 : 1;
+            if (counts[metatype] < needed)
+                counts[metatype] = needed;
+        }
+    }
+    counts[161] = 3;
+    int slot = 0;
+    for (int metatype = 0; metatype < SpawnPoolSize; ++metatype) {
+        int count = counts[metatype];
+        for (int i = 0; i < count; ++i) {
+            s_spawnPool[slot] = manager->CreateGameObjectFromMetatype(metatype);
+            s_spawnPool[slot]->GetMetatype();
+            LevelObject* object = s_spawnPool[slot];
+            delete[] object->unknown28;
+            object->unknown28 = 0;
+            s_spawnPool[slot]->clean();
+            ++slot;
+        }
+    }
+    while (s_spawnPoints.head) {
+        SpawnPointList::Node* next = s_spawnPoints.head->next;
+        delete s_spawnPoints.head;
+        s_spawnPoints.head = next;
+    }
+    s_spawnPoints.tail = 0;
+    s_spawnPoints.count = 0;
+}
+
 LevelObject* SpawnPoint::getSpawnObject(int metatype)
 {
     GameObjectManager* manager = GameObjectManager::s_gom;

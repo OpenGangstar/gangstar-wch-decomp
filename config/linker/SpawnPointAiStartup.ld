@@ -1,3 +1,4 @@
+PROVIDE(memset = 0x001c45d4);
 PROVIDE(__aeabi_fcmplt = 0x001c479c);
 PROVIDE(__aeabi_fadd = 0x001c4154);
 PROVIDE(__aeabi_fmul = 0x001c4724);
@@ -27,6 +28,7 @@ PROVIDE(_Znaj = 0x001c3ff8);
 PROVIDE(_ZdaPv = 0x001c461c);
 SECTIONS
 {
+    .spawn_point_create_all_instances 0x003065e4 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint23CreateAllSpawnInstancesEv) }
     .spawn_point_load 0x00306b10 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE) }
     .spawn_close_neighbors 0x00306d2c : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint17hasCloseNeighborsEv .gnu.linkonce.t._ZNK10SpawnPoint17hasCloseNeighborsEv) }
 
