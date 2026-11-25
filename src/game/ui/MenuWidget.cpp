@@ -1997,6 +1997,28 @@ void Widgets::Statistics::UpdateLocalization()
     }
 }
 
+void Widgets::Statistics::Show()
+{
+    MenuWidget::Show();
+    unknown20 = 0;
+    const int statCount = AchievementManager::s_statCount;
+    unknown96 = 0;
+    if (statCount > 0) {
+        // unknown20 was just reset to 0; reading it back keeps retail's register overlap.
+        int id = unknown20;
+        const AchievementManager* manager = AchievementManager::s_achievementManager;
+        do {
+            if (*reinterpret_cast<const unsigned int*>(manager->getStatFromID(id)) & 1)
+                statisticIds[unknown96++] = id;
+        } while (++id != statCount);
+    }
+
+    unknown20 = unknown96;
+    UpdateLocalization();
+    unknown20 = unknown96 ? (unknown20 + 1) % (unknown96 + 4) : 0;
+    renderFX->GotoFrame(animation, 0, true);
+}
+
 void Widgets::Achievements::OnEvent(RenderFX::Event& event)
 {
     if (strcmp(event.characterName, tutorialScrollButtonLabel) != 0)

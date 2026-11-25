@@ -243,7 +243,8 @@
         "_ZN7Widgets12Achievements18UpdateLocalizationEv",
         "_ZN7Widgets4Help7SetIconEPKc",
         "_ZN7Widgets11Achievement7SetIconEPKc",
-        "_ZN7Widgets6IGMenu9GoToFrameEPKc"
+        "_ZN7Widgets6IGMenu9GoToFrameEPKc",
+        "_ZN7Widgets10Statistics4ShowEv"
     ],
     "sections": [
         ".volumesButton",
@@ -500,7 +501,8 @@
         ".widgets_achievements_localize",
         ".widget_help_set_icon",
         ".widget_achievement_set_icon",
-        ".widget_igmenu_goto_frame"
+        ".widget_igmenu_goto_frame",
+        ".widgets_statistics_show"
     ],
     "retail_got": true,
     "external_thumb_functions": [

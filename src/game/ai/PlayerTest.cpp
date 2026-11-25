@@ -1000,6 +1000,28 @@ PlayerTest::~PlayerTest()
 
 #include "../characters/PhysicInfo.h"
 #include "../characters/PhysicAttributes.h"
+// Character::updateAnimation is not declared in Character.h; a declaration there
+// changes ServiceCarRental::Notify in ai-startup-menustate.
+extern "C" bool _ZN9Character15updateAnimationEf(Character*, float);
+
+void PlayerTest::updateAnim(float elapsed)
+{
+    if (currentAnimation != -1 && unknown164Pointer) {
+        if (_ZN9Character15updateAnimationEf(this, elapsed))
+            switchAnim();
+    }
+    PhysicInfo* info = physicAttributes->info;
+    if (info->unknown0 == PhysicAttributes::MATERIAL_TYPE_CLIFF) {
+        b2Vec2 push(info->vector48.X, info->vector48.Y);
+        b2Body* body = collisionBody;
+        const float velocityY = body->linearVelocity.y;
+        const float velocityX = body->linearVelocity.x;
+        b2Vec2 velocity(velocityX, velocityY);
+        body->linearVelocity.y = velocity.y + push.y * 5.0f;
+        body->linearVelocity.x = velocity.x + push.x * 5.0f;
+    }
+}
+
 extern "C" float cosf(float);
 
 // Separate mask and compare statements keep the retail and/cmp form.
