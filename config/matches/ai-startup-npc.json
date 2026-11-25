@@ -26,6 +26,7 @@
     "source": "src/game/ai/NPC.cpp",
     "linker_script": "config/linker/NPCAiStartup.ld",
     "functions": [
+        "_ZN3NPC21isOutsideSearchRadiusEv",
         "_ZN3NPC5debugEPN3irr5video12IVideoDriverE",
         {
             "name": "__tcf_1",
@@ -117,6 +118,7 @@
         "_ZN3NPC16triggerCombatSFXEi"
     ],
     "sections": [
+        ".npc_outside_search_radius",
         ".npc_vtable",
         ".npcAnimationRootName",
         ".npcLeftWeaponNodeName",

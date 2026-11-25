@@ -10296,7 +10296,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fd511	0x28	NPC.cpp	game	ai	matched	_ZN3NPC16loopPathToFollowEb	NPC::loopPathToFollow(bool)
 0x002fd539	0x1e	NPC.cpp	game	ai	matched	_ZN3NPC15setPathToFollowEPK4Path	NPC::setPathToFollow(Path const*)
 0x002fd559	0xc	NPC.cpp	game	ai	matched	_ZNK3NPC23isLoopingOnPathToFollowEv	NPC::isLoopingOnPathToFollow() const
-0x002fd565	0xac	NPC.cpp	game	ai	pending	_ZN3NPC21isOutsideSearchRadiusEv	NPC::isOutsideSearchRadius()
+0x002fd565	0xac	NPC.cpp	game	ai	matched	_ZN3NPC21isOutsideSearchRadiusEv	NPC::isOutsideSearchRadius()
 0x002fd611	0x24	NPC.cpp	game	ai	matched	__tcf_1	__tcf_1
 0x002fd635	0x2a	NPC.cpp	game	ai	matched	_ZN3NPC5isCopEv	NPC::isCop()
 0x002fd661	0x60	NPC.cpp	game	ai	matched	_ZN3NPC10tagForKillEb	NPC::tagForKill(bool)
@@ -10876,7 +10876,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031a40d	0xc0	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi	PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode, irr::core::irrAllocator<AStarNode> >*, int*)
 0x0031a4cd	0x120	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes12GetTriCenterEtt	PhysicAttributes::GetTriCenter(unsigned short, unsigned short)
 0x0031a5ed	0x90	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener6RemoveEPK14b2ContactPoint	ContactListener::Remove(b2ContactPoint const*)
-0x0031a67d	0x80	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE	PhysicAttributes::IsPositionOnJump(irr::core::vector3d<float> const&)
+0x0031a67d	0x80	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE	PhysicAttributes::IsPositionOnJump(irr::core::vector3d<float> const&)
 0x0031a6fd	0x254	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi	PhysicAttributes::GetJumpHeight(irr::core::vector3d<float> const&, int)
 0x0031a951	0x10c	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes9InitWorldEv	PhysicAttributes::InitWorld()
 0x0031aa5d	0x2d4	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff	PhysicAttributes::GetRandomDestination(unsigned short, unsigned short&, irr::core::vector3d<float> const&, float, float)

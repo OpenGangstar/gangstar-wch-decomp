@@ -68,3 +68,4 @@ ASSERT(SIZEOF(.npc_combat_sfx) == 368, "NPC combat SFX native extent");
 ASSERT(ADDR(.npc_combat_sfx) + SIZEOF(.npc_combat_sfx) == 0x002fe784, "NPC combat SFX next function");
 ASSERT(SIZEOF(.npc_combat_sfx_table) == 28, "NPC combat SFX switch table extent");
 ASSERT(SIZEOF(.npc_combat_sfx_timer) == 4, "NPC combat SFX timer extent");
+ASSERT(SIZEOF(.npc_outside_search_radius) == 172, "Native NPC isOutsideSearchRadius extent");
