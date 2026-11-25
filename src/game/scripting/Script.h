@@ -64,7 +64,7 @@ public:
     void lockScript(int id);
     void execute(int elapsed);
     void executeSubScript(int id, int command);
-    void nextCommand(int index);
+    bool nextCommand(int index);
     bool executeCommand(const Structs::ScriptCommand* command, int elapsed, int argument);
     enum eScriptAction { ActiveObject = 1, MinimapObject = 4 };
     void clearScriptObjectAction();
