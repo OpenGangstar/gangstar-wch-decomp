@@ -1485,6 +1485,50 @@ extern "C" void _ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE(MenuMan
     reinterpret_cast<ZoomMapFields*>(Map::getInstance())->scale = m.zoom;
 }
 
+#include "../core/Geometry.h"
+extern "C" float acosf(float);
+extern "C" double sqrt(double) __attribute__((const));
+struct InitMapPoint { float X, Y; };
+extern "C" void _ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE(MenuManager*, InitMapPoint&);
+struct InitMapMarker { unsigned char unknown0[12]; float angle; };
+void MenuManager::initMap()
+{
+    ZoomFields& m = *reinterpret_cast<ZoomFields*>(this);
+    int height, width;
+    Application::GetInstance()->GetScreenDimensions(width, height);
+    m.width = height;
+    m.height = height;
+    m.panel = width - height;
+    m.maximum = static_cast<float>(reinterpret_cast<ZoomMapFields*>(Map::getInstance())->texture->getSize().Width) / m.width;
+    reinterpret_cast<ZoomMapFields*>(Map::getInstance())->rotation = 0.0f;
+    int panel = m.panel;
+    ZoomMapFields* map = reinterpret_cast<ZoomMapFields*>(Map::getInstance());
+    map->screenX = panel;
+    map->screenY = 0;
+    PlayerTest* player = PlayerTest::GetPlayer();
+    irr::core::vector3d<float> position = player->GetPosition();
+    Vehicle* vehicle = player->getVehicle();
+    if (vehicle)
+        position = vehicle->GetPosition();
+    InitMapPoint point = { position.X, position.Y };
+    _ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE(this, point);
+    irr::core::vector3d<float> front;
+    const irr::core::vector3d<float> playerFront = player->GetFront();
+    front.X = playerFront.X;
+    front.Z = playerFront.Z;
+    front.Y = playerFront.Y;
+    if (vehicle)
+        front = vehicle->GetFront();
+    float dot = front.dotProduct(irr::core::vector3d<float>(0.0f, 1.0f, 0.0f));
+    float length = front.getLength();
+    float cosine = dot / length;
+    float angle = acosf(irr::core::clamp(cosine, -1.0f, 1.0f));
+    if (!(front.X > 0.0f))
+        angle = -angle;
+    reinterpret_cast<InitMapMarker*>(TargetMarker::getInstance())->angle = angle;
+}
+
+
 namespace {
 // Menu state refreshed when the cheat sequence completes.
 const char menuUpdateSettingsState[] = "OptionGameSettings";

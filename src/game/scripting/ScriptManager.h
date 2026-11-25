@@ -98,6 +98,7 @@ public:
     int getFailureCause();
     void finishReviveAnims();
     void missionIdle();
+    void reachRunningCommand(int command);
     void drawCinematicBars() const;
     void missionResumeFadeOut();
     void missionSkipFadeOut();

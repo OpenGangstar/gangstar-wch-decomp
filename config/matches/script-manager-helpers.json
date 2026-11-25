@@ -192,7 +192,8 @@
             "address": "0x0033e759",
             "compiled_name": "__tcf_2"
         },
-        "_ZN13ScriptManager11loadCommandER10DataStream"
+        "_ZN13ScriptManager11loadCommandER10DataStream",
+        "_ZN13ScriptManager19reachRunningCommandEi"
     ],
     "sections": [
         ".script_check_screen_press",
@@ -339,7 +340,8 @@
         ".script_load_command_c168",
         ".script_load_command_c149",
         ".script_load_command_c106",
-        ".script_load_command_c137"
+        ".script_load_command_c137",
+        ".script_manager_reach_running"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -419,6 +421,7 @@
         "_ZN10PlayerTest10teleportToEPK11LevelObject",
         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
         "_ZN10PlayerTest19finishedStopDrivingEv",
-        "_ZN10DataStream5Peek4Ev"
+        "_ZN10DataStream5Peek4Ev",
+        "_ZN6Script11nextCommandEi"
     ]
 }

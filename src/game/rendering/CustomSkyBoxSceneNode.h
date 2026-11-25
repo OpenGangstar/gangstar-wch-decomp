@@ -23,10 +23,10 @@ public:
 private:
     irr::core::aabbox3d<float> boundingBox;
     struct SkyVertex {
-        float position[3];
-        float normal[3];
+        irr::core::vector3d<float> position;
+        irr::core::vector3d<float> normal;
         irr::video::SColor color;
-        float uv[2];
+        irr::core::vector2d<float> uv;
     };
     unsigned short indices[84];
     SkyVertex vertices[46];

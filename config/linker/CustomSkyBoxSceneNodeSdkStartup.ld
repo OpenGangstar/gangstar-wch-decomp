@@ -8,6 +8,10 @@ __aeabi_fmul = 0x001c4724;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .skybox_sun_name 0x0041d1e0 : { *sdk-startup-customskyboxscenenode.o(.rodata.str1.4) }
+    .skybox_material_ctor 0x0020e7ec : { *sdk-startup-customskyboxscenenode.o(.text._ZN3irr5video9SMaterialC1Ev .gnu.linkonce.t._ZN3irr5video9SMaterialC1Ev) }
+    .skybox_ctor_c2 0x002faab8 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi) }
+    .skybox_ctor_c1 0x002f96e8 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNodeC1EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi) }
     .skybox_set_sky_color 0x002f84c8 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNode11setSkyColorEb) }
     .skybox_dtor_0 0x002fbee8 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNodeD1Ev .gnu.linkonce.t._ZN21CustomSkyBoxSceneNodeD1Ev) }
     .skybox_dtor_1 0x002fbe28 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNodeD0Ev .gnu.linkonce.t._ZN21CustomSkyBoxSceneNodeD0Ev) }

@@ -2381,6 +2381,24 @@ Structs::ScriptCommand* ScriptManager::loadCommand(DataStream& stream)
     return command;
 }
 
+static inline bool isScriptRunning(const Script* script)
+{
+    return script->getState() == Script::State2;
+}
+
+void ScriptManager::reachRunningCommand(int command)
+{
+    Script** runningScripts = new Script*[scriptCount];
+    int runningCount = 0;
+    for (int i = 0; i < scriptCount; ++i) {
+        if (isScriptRunning(scripts[i]))
+            runningScripts[runningCount++] = scripts[i];
+    }
+    for (int i = 0; i < runningCount; ++i)
+        runningScripts[i]->nextCommand(command);
+    ::operator delete(runningScripts);
+}
+
 bool ScriptManager::checkScreenPress()
 {
     Application* application = Application::GetInstance();

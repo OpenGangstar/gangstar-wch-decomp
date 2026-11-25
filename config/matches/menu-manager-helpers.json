@@ -129,7 +129,8 @@
         "_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE",
         "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE",
         "_ZN11MenuManager6updateEP12StateMachine",
-        "_ZN11MenuManager5setupEb"
+        "_ZN11MenuManager5setupEb",
+        "_ZN11MenuManager7initMapEv"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -182,7 +183,8 @@
         ".menu_manager_zoom_map",
         ".menu_manager_update",
         ".menu_manager_update_state_name",
-        ".menu_manager_setup"
+        ".menu_manager_setup",
+        ".menu_manager_init_map"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -288,6 +290,8 @@
         "_ZN8RenderFX16SetInputBehaviorEi",
         "_ZN9ResStreamC1EPKci",
         "_ZN9ResStreamD1Ev",
-        "_ZNK10DataStream4TellEv"
+        "_ZNK10DataStream4TellEv",
+        "_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE",
+        "_ZNK11Application19GetScreenDimensionsERiS0_"
     ]
 }
