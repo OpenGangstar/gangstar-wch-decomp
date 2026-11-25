@@ -185,6 +185,32 @@ void Application::UnRegisterForDrawingInScene(IDrawable* drawable)
     removeRegistration(&sceneDrawables, drawable);
 }
 
+#include "ApplicationListIterator.h"
+
+void Application::UnRegisterForUpdate(IUpdatable* object)
+{
+    if (object) {
+        typedef stlp_priv::_List_iterator<IUpdatable*, std::_Nonconst_traits<IUpdatable*> > iterator;
+        typedef stlp_priv::_List_node<IUpdatable*> Node;
+        IUpdatable* const& value = object;
+        iterator first(updatables._M_node._M_data.next);
+        iterator last(&updatables._M_node._M_data);
+        while (first != last) {
+            iterator next = first;
+            ++next;
+            if (value == *first) {
+                stlp_priv::RegistrationLink* nextNode = first._M_node->next;
+                stlp_priv::RegistrationLink* prevNode = first._M_node->previous;
+                Node* node = static_cast<Node*>(first._M_node);
+                prevNode->next = nextNode;
+                nextNode->previous = prevNode;
+                ::operator delete(node);
+            }
+            first = next;
+        }
+    }
+}
+
 namespace {
 template<class T>
 inline void appendRegistration(void* list, stlp_priv::RegistrationLink*& tail, T* object)

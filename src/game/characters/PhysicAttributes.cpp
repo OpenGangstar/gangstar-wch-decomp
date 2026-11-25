@@ -598,6 +598,36 @@ void PhysicAttributes::LoadArrays(char* filename)
 }
 
 
+extern "C" float _ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb(
+    PhysicAttributes* self, int slot, const irr::core::vector3d<float>& position, bool useHeightmap, bool detailed);
+extern "C" float _ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi(
+    PhysicAttributes* self, const irr::core::vector3d<float>& position, int slot);
+
+float PhysicAttributes::GetHeight(const irr::core::vector3d<float>& position, int slot, bool detailed)
+{
+    if (info[slot].unknown64.Z == 999999.0f)
+        info[slot].unknown64 = position;
+    info[slot].unknown60 = false;
+    if (__builtin_expect(info[slot].unknown4 != 0, 1)) {
+        s_currentUsed += 4;
+        float height = _ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb(this, slot, position, true, detailed);
+        if (height != 999999.0f) {
+            info[slot].unknown64 = position;
+            if (hasJumpShape) {
+                if (slot == 0)
+                    unknown116 = 0;
+                const float jump = _ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi(this, position, slot);
+                if (height < jump && jump != 999999.0f)
+                    height = jump;
+            }
+            info[slot].unknown64.Z = height;
+            return info[slot].unknown64.Z;
+        }
+    }
+    return info[slot].unknown64.Z;
+}
+
+
 AStarNode PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode>* nodes, int* index)
 {
     AStarNode best;
@@ -654,3 +684,4 @@ float PhysicAttributes::IntersectSegmentWithHeightMap(const irr::core::vector3d<
     if (!IntersectSegmentWithHeightMap(temporary,plane,start,end,hit,normal)) return 1.0f;
     return (hit-start).getLength()/(end-start).getLength();
 }
+

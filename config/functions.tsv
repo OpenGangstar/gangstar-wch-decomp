@@ -8820,7 +8820,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002d3fa1	0x2c	Application.cpp	stlport	-	matched	_ZNSt4listIP9IDrawableSaIS1_EE6removeERKS1_	std::list<IDrawable*, std::allocator<IDrawable*> >::remove(IDrawable* const&)
 0x002d3fcd	0x24	Application.cpp	game	app	matched	_ZN11Application25UnRegisterForDrawingOnHUDEP9IDrawable	Application::UnRegisterForDrawingOnHUD(IDrawable*)
 0x002d3ff1	0x24	Application.cpp	game	app	matched	_ZN11Application27UnRegisterForDrawingInSceneEP9IDrawable	Application::UnRegisterForDrawingInScene(IDrawable*)
-0x002d4015	0x30	Application.cpp	game	app	pending	_ZN11Application19UnRegisterForUpdateEP10IUpdatable	Application::UnRegisterForUpdate(IUpdatable*)
+0x002d4015	0x30	Application.cpp	game	app	matched	_ZN11Application19UnRegisterForUpdateEP10IUpdatable	Application::UnRegisterForUpdate(IUpdatable*)
 0x002d4045	0x30	Application.cpp	game	app	matched	__tcf_5	__tcf_5
 0x002d4075	0x20	Application.cpp	game	app	matched	_ZN6IEventD0Ev	IEvent::~IEvent()
 0x002d4095	0x18	Application.cpp	game	app	matched	_ZN6IEventD1Ev	IEvent::~IEvent()
@@ -10901,7 +10901,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031e99d	0x178	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes21UpdateEdgesCollisionsEi	PhysicAttributes::UpdateEdgesCollisions(int)
 0x0031eb15	0x84	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi	PhysicAttributes::SetPhysicInfo(PhysicInfo const&, int)
 0x0031eb99	0x13ae	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb	PhysicAttributes::GetHeight(int, irr::core::vector3d<float> const&, bool, bool)
-0x0031ff49	0xf8	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib	PhysicAttributes::GetHeight(irr::core::vector3d<float> const&, int, bool)
+0x0031ff49	0xf8	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib	PhysicAttributes::GetHeight(irr::core::vector3d<float> const&, int, bool)
 0x00320041	0xb6	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes13GetHeightFromEiRKN3irr4core8vector3dIfEEi	PhysicAttributes::GetHeightFrom(int, irr::core::vector3d<float> const&, int)
 0x003200f9	0x208	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE	PhysicAttributes::Init(unsigned short, unsigned short, irr::core::vector3d<float> const&)
 0x00320301	0x2c	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListenerD0Ev	ContactListener::~ContactListener()
