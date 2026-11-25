@@ -48,7 +48,8 @@
             "name": "__tcf_3",
             "address": "0x00340ec1",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN13CopController7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -68,7 +69,8 @@
         ".character_base_event_vtable",
         ".character_base_event_dtor",
         ".character_base_event_delete",
-        ".character_base_event_id"
+        ".character_base_event_id",
+        ".cop_controller_on_event"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -84,6 +86,9 @@
         "_ZN3NPC12attackTargetEP11LevelObject",
         "_ZN3NPC12goToLocationERKN3irr4core8vector3dIfEE",
         "_ZN3NPC13goToNextPointEb",
-        "_ZN3NPC4waitEi"
+        "_ZN3NPC4waitEi",
+        "_ZN13NPCController7onEventEPK6IEventPK12EventManager",
+        "_ZN18WantedLevelManager19_processWantedLevelEv",
+        "_ZN3NPC12clearOnAlertEv"
     ]
 }
