@@ -18,6 +18,8 @@ SECTIONS
     .volumesLeftButton 0x0041b5fc : { *ai-startup-menuwidget.o(.rodata.volumesLeftButton) }
     .volumesRightButton 0x0041b604 : { *ai-startup-menuwidget.o(.rodata.volumesRightButton) }
     .widget_volumes_event 0x002eff18 : { *ai-startup-menuwidget.o(.text._ZN7Widgets7Volumes7OnEventERN8RenderFX5EventE) }
+    .widgets_statistics_show 0x002ee408 : { *ai-startup-menuwidget.o(.text._ZN7Widgets10Statistics4ShowEv) }
+    .widget_statistics_vtable 0x004a9890 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets10StatisticsE) }
     .widget_mainmenu_vtable 0x004a9868 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets8MainMenuE) }
     .widget_volumes_vtable 0x004a99d0 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets7VolumesE) }
     .widget_arrows_vtable 0x004a9a98 : { *ai-startup-menuwidget.o(.data.rel.ro._ZTVN7Widgets6ArrowsE) }

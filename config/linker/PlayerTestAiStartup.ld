@@ -43,6 +43,7 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .player_test_update_anim 0x00303fe8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10updateAnimEf) }
     .player_switch_retro_effect 0x003235fc : { *hud-manager-helpers.o(.text._ZN11CHudManager11retroEffectEb) }
     .player_switch_show_cash 0x003237e0 : { *hud-manager-helpers.o(.text._ZN11CHudManager8showCashEb) }
     .player_test_switch_context 0x00301a74 : { *ai-startup-playertest.o(.text._ZN10PlayerTest13switchContextENS_8eContextEb) }
