@@ -23,6 +23,9 @@
 struct b2ContactPoint {
     b2Shape* shape1;
     b2Shape* shape2;
+    b2Vec2 position;
+    b2Vec2 velocity;
+    b2Vec2 normal;
 };
 
 // Emit the inline destructors while the key virtual methods remain retail imports.
@@ -64,6 +67,66 @@ void ContactListener::Remove(const b2ContactPoint* point)
 
 void ContactListener::Result(const b2ContactResult*)
 {
+}
+
+#include "../ai/NPC.h"
+extern "C" bool _ZNK3irr4core8vector3dIfE6equalsERKS2_f(
+    const irr::core::vector3d<float>* self, const irr::core::vector3d<float>& other, float tolerance) __attribute__((weak));
+// Character::destination (+92) is private; read it through a file-local view.
+struct CharacterDestinationView {
+    unsigned char unknown0[92];
+    irr::core::vector3d<float> destination;
+};
+static inline bool IsCategory(unsigned int category, unsigned int value)
+{
+    return category == value;
+}
+static inline bool IsMoving(unsigned int category)
+{
+    if (category == 0) return true;
+    if (category == 1) return true;
+    return category == 2;
+}
+
+void ContactListener::Persist(const b2ContactPoint* point)
+{
+    const PhysicsBodyData* firstData = static_cast<const PhysicsBodyData*>(point->shape1->GetBody()->GetUserData());
+    LevelObject* first = firstData ? firstData->owner : 0;
+    const PhysicsBodyData* secondData = static_cast<const PhysicsBodyData*>(point->shape2->GetBody()->GetUserData());
+    LevelObject* second = secondData ? secondData->owner : 0;
+    if (!second) {
+        if (first) {
+        if (LevelObject::s_type[first->getObjectType()] == 5) {
+            NPC* npc = static_cast<NPC*>(first);
+            if ((IsMoving(npc->category428)) && !npc->getPathToFollow()) {
+                if (!_ZNK3irr4core8vector3dIfE6equalsERKS2_f(&npc->unknown296, irr::core::vector3d<float>(0.0f, 0.0f, 0.0f), 0.000001f)) {
+                    npc->unknown296 += irr::core::vector3d<float>(point->normal.x, point->normal.y, 0.0f);
+                    npc->setDestination(first->GetPosition() + npc->unknown296 * 500.0f, 100);
+                    if (npc->flags356 & 4) {
+                        npc->Character::runToLocation(irr::core::vector3d<float>(reinterpret_cast<const CharacterDestinationView*>(npc)->destination));
+                    }
+                } else {
+                    npc->unknown296 = irr::core::vector3d<float>(point->normal.x, point->normal.y, 0.0f);
+                }
+            }
+        }
+        }
+    } else if (__builtin_expect(!first && secondData, 0)) {
+        if (LevelObject::s_type[second->getObjectType()] == 5) {
+            NPC* npc = static_cast<NPC*>(second);
+            if ((IsMoving(npc->category428)) && !npc->getPathToFollow()) {
+                if (!_ZNK3irr4core8vector3dIfE6equalsERKS2_f(&npc->unknown296, irr::core::vector3d<float>(0.0f, 0.0f, 0.0f), 0.000001f)) {
+                    npc->unknown296 += irr::core::vector3d<float>(point->normal.x, point->normal.y, 0.0f);
+                    npc->setDestination(second->GetPosition() + npc->unknown296 * 500.0f, 100);
+                    if (npc->flags356 & 4) {
+                        npc->Character::runToLocation(irr::core::vector3d<float>(reinterpret_cast<const CharacterDestinationView*>(npc)->destination));
+                    }
+                } else {
+                    npc->unknown296 = irr::core::vector3d<float>(point->normal.x, point->normal.y, 0.0f);
+                }
+            }
+        }
+    }
 }
 
 #include "PhysicInfo.h"

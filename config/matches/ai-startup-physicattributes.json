@@ -77,7 +77,8 @@
         },
         "_ZN16PhysicAttributes10LoadArraysEPc",
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
-        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib"
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
+        "_ZN15ContactListener7PersistEPK14b2ContactPoint"
     ],
     "sections": [
         ".physics_segment_height",
@@ -96,7 +97,8 @@
         ".load_arrays_error",
         ".physic_info_ctor",
         ".physic_find_lower",
-        ".physic_get_height"
+        ".physic_get_height",
+        ".contact_listener_persist"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -112,6 +114,9 @@
         "_Z21ekd_makestringfile255PKcPc",
         "_Z13ekd_debug_outPKcPc",
         "_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi",
-        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb"
+        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb",
+        "_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE",
+        "_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi",
+        "_ZNK3NPC15getPathToFollowEv"
     ]
 }
