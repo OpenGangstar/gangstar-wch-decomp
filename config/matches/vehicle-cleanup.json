@@ -247,7 +247,8 @@
         "_ZN7Vehicle12playDriveSfxEj",
         "_ZN7Vehicle13dropSceneNodeEv",
         "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
-        "_ZN7Vehicle4LoadERKN7Structs3CarE"
+        "_ZN7Vehicle4LoadERKN7Structs3CarE",
+        "_ZN7Vehicle15_processAIFlagsEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -376,7 +377,8 @@
         ".vehicle_drop_scene_node",
         ".vehicle_setup_scene_node",
         ".vehicle_load",
-        ".vehicle_load_explosion_asset"
+        ".vehicle_load_explosion_asset",
+        ".vehicle_process_ai_flags"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -660,6 +662,9 @@
         "_ZN11LevelObject14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
         "_ZN11LevelObject4LoadERKN7Structs15GameObjectBasicEPN3irr7collada15CColladaFactoryE",
         "_ZN18CarSoundParametersC1Ev",
-        "_ZN9CarSoundsC1Ev"
+        "_ZN9CarSoundsC1Ev",
+        "_ZN11LevelObject17canSeeLevelObjectEPS_RN3irr4core8vector3dIfEE",
+        "_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE",
+        "_ZN3irr2os10Randomizer4randEv"
     ]
 }
