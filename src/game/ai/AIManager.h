@@ -36,6 +36,7 @@ private:
         ~ReceiverList();
         void removeForTarget(const void* target);
         void clearOwnedReceivers();
+        void append(IEventReceiver* receiver);
 
         ReceiverList* next;
         ReceiverList* previous;

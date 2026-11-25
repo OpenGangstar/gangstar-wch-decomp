@@ -15,6 +15,7 @@ namespace irr { namespace collada { class CSkinnedMeshSceneNode; } }
 
 // The secondary marker interface starts at offset 52 in the 1012-byte extent.
 class Vehicle : public LevelObject, public IMapTrackable {
+    friend class AIManager;
     friend class MissionConditionDriveWell;
 public:
     void explode();
