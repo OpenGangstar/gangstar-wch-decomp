@@ -784,6 +784,209 @@ void MenuManager::updateLocalization()
     }
 }
 
+#include "../hud/CHudManager.h"
+#include "../world/ResStream.h"
+
+struct RenderFX::InitializationParameters {
+    InitializationParameters()
+        : driver(0), textureLoader(0), glyphCacheWidth(0), glyphCacheHeight(0),
+          unknown16(0), unknown20(0), unknown24(true) {}
+    irr::video::IVideoDriver* driver;
+    irr::video::ITexture* (*textureLoader)(const char*, int, int);
+    int glyphCacheWidth;
+    int glyphCacheHeight;
+    int unknown16;
+    int unknown20;
+    bool unknown24;
+};
+
+namespace Widgets {
+class MainMenu : public MenuWidget { public: MainMenu(); private: unsigned char unknown20[36]; };
+class IGMenu : public MenuWidget { public: IGMenu(); private: unsigned char unknown20[56]; };
+class Objective : public MenuWidget { public: Objective(); private: unsigned char unknown20[8]; };
+class Shop : public MenuWidget { public: Shop(); private: unsigned char unknown20[56]; };
+class MapLegend : public MenuWidget { public: MapLegend(); private: unsigned char unknown20[36]; };
+class Corruption : public MenuWidget { public: Corruption(); private: unsigned char unknown20[4]; };
+class Mission : public MenuWidget { public: Mission(); private: unsigned char unknown20[4]; };
+class Volumes : public MenuWidget { public: Volumes(); private: unsigned char unknown20[4]; };
+class Controls : public MenuWidget { public: Controls(); private: unsigned char unknown20[8]; };
+class Language : public MenuWidget { public: Language(); private: unsigned char unknown20[4]; };
+class Achievement : public MenuWidget { public: Achievement(); private: unsigned char unknown20[4]; };
+class Achievements : public MenuWidget { public: Achievements(); private: unsigned char unknown20[124]; };
+class Statistics : public MenuWidget { public: Statistics(); private: unsigned char unknown20[336]; };
+class Help : public MenuWidget { public: Help(); private: unsigned char unknown20[4]; };
+class About : public MenuWidget { public: About(); private: unsigned char unknown20[68]; };
+class Title : public MenuWidget { public: Title(); private: unsigned char unknown20[4]; };
+class Money : public MenuWidget { public: Money(); };
+class ContentBox : public MenuWidget { public: ContentBox(); };
+class Arrows : public MenuWidget { public: Arrows(); private: unsigned char unknown20[8]; };
+class BackgroundInGame : public MenuWidget { public: BackgroundInGame(); };
+class BackgroundMainMenu : public MenuWidget { public: BackgroundMainMenu(); };
+class Tutorial : public MenuWidget { public: explicit Tutorial(const char* name); private: unsigned char unknown20[20]; };
+class BlockingTutorial : public MenuWidget { public: BlockingTutorial(); private: unsigned char unknown20[20]; };
+class GameSetting : public MenuWidget { public: GameSetting(); private: unsigned char unknown20[8]; };
+class BlackBox : public MenuWidget { public: BlackBox(); private: unsigned char unknown20[4]; };
+class DemoBuy : public MenuWidget { public: DemoBuy(); };
+class BackgroundDemoBuy : public MenuWidget { public: BackgroundDemoBuy(); };
+}
+
+namespace Menus {
+class MainMenu : public MenuState { public: MainMenu(); private: unsigned char unknown104[4]; };
+class Map : public MenuState { public: Map(); private: unsigned char unknown104[8]; };
+class ServiceMissions : public MenuState { public: ServiceMissions(); };
+class ServiceWeaponShop : public MenuState { public: explicit ServiceWeaponShop(const char* name); private: unsigned char unknown104[12]; };
+class ServiceCarRental : public MenuState { public: explicit ServiceCarRental(const char* name); private: unsigned char unknown104[8]; };
+class ServiceCorruption : public MenuState { public: ServiceCorruption(); };
+class OptionVolumes : public MenuState { public: OptionVolumes(); private: unsigned char unknown104[4]; };
+class OptionControls : public MenuState { public: OptionControls(); };
+class OptionLanguage : public MenuState { public: OptionLanguage(); };
+class OptionGameSettings : public MenuState { public: OptionGameSettings(); private: unsigned char unknown104[56]; };
+class InfoHelp : public MenuState { public: InfoHelp(); private: unsigned char unknown104[4]; };
+class InfoAbout : public MenuState { public: InfoAbout(); private: unsigned char unknown104[4]; };
+class InfoAchievements : public MenuState { public: InfoAchievements(); private: unsigned char unknown104[4]; };
+class InfoStatistics : public MenuState { public: InfoStatistics(); private: unsigned char unknown104[4]; };
+class Confirm : public MenuState { public: explicit Confirm(const char* name); private: unsigned char unknown104[8]; };
+class Achievement : public MenuState { public: Achievement(); private: unsigned char unknown104[4]; };
+class BlockingTutorial : public MenuState { public: BlockingTutorial(); };
+class Tutorial : public MenuState { public: explicit Tutorial(const char* name); };
+class InGameWeaponShop : public MenuState { public: InGameWeaponShop(); private: unsigned char unknown104[12]; };
+class InGameCarRental : public MenuState { public: InGameCarRental(); private: unsigned char unknown104[8]; };
+class CarRepair : public MenuState { public: CarRepair(); private: unsigned char unknown104[8]; };
+class CopBribe : public MenuState { public: CopBribe(); private: unsigned char unknown104[8]; };
+class Splash : public MenuState { public: Splash(); };
+}
+
+extern "C" {
+extern int _ZN11MenuManager20s_CarRentalDataCountE;
+extern Structs::CarRental** _ZN11MenuManager15s_CarRentalDataE;
+void _ZN7Structs9CarRental4ReadER10DataStream(Structs::CarRental* rental, DataStream& stream)
+    __attribute__((long_call));
+void _ZN7gameswf5arrayIP10MenuWidgetE6resizeEi(void* array, int size) __attribute__((long_call));
+}
+
+static const char setupCarRentals[] = "./CarRentals.gmap";
+static const char setupMenuFile[] = "./newmenu.swf";
+static const char setupWidgetConfirm[] = "widgetConfirm";
+static const char setupWidgetCarRepair[] = "widgetCarRepair";
+static const char setupWidgetTutorial[] = "widgetTutorial";
+static const char setupWidgetSplash[] = "widgetSplash";
+static const char setupWidgetRetroEffect[] = "widgetRetroEffect";
+static const char setupStateCharacter[] = "dummy";
+static const char setupServiceWeaponShop[] = "ServiceWeaponShop";
+static const char setupServiceCarRental[] = "ServiceCarRental";
+static const char setupConfirm[] = "Confirm";
+static const char setupTutorial[] = "Tutorial";
+
+struct SetupMiniMapView {
+    unsigned char unknown0[44];
+    int unknown44;
+};
+
+void MenuManager::setup(bool)
+{
+    ResStream resource(setupCarRentals, 1);
+    DataStream stream(resource, DataStream::BigEndian);
+    _ZN11MenuManager20s_CarRentalDataCountE = stream.ReadInt();
+    if (_ZN11MenuManager20s_CarRentalDataCountE > 0) {
+        _ZN11MenuManager15s_CarRentalDataE = new Structs::CarRental*[_ZN11MenuManager20s_CarRentalDataCountE + 1];
+        memset(_ZN11MenuManager15s_CarRentalDataE, 0,
+               (_ZN11MenuManager20s_CarRentalDataCountE + 1) * sizeof(Structs::CarRental*));
+        for (int i = 0; i < _ZN11MenuManager20s_CarRentalDataCountE; ++i) {
+            const int length = stream.ReadInt();
+            const int next = stream.Tell() + length;
+            Structs::CarRental* record = new Structs::CarRental();
+            _ZN7Structs9CarRental4ReadER10DataStream(record, stream);
+            if (stream.Tell() != next)
+                stream.Seek(next, 0);
+            _ZN11MenuManager15s_CarRentalDataE[i] = record;
+        }
+    }
+
+    unknown44 = reinterpret_cast<const SetupMiniMapView*>(
+        Application::GetInstance()->GetHudManager()->minimap)->unknown44;
+    for (int i = 0; i < 4; ++i) {
+        entries[i].unknown4 = -1.0f;
+        entries[i].unknown0 = -1.0f;
+        entries[i].unknown12 = 0;
+    }
+
+    RenderFX::InitializationParameters parameters;
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+    parameters.glyphCacheWidth = 512;
+    parameters.glyphCacheHeight = 512;
+    parameters.unknown24 = true;
+    parameters.driver = driver;
+    parameters.textureLoader = SwfTextureLoader;
+    RenderFX::Initialize(parameters);
+
+    MyMenuFX* fx = new MyMenuFX();
+    menuFX = reinterpret_cast<MenuFXPrefix*>(fx);
+    fx->Load(setupMenuFile, 0);
+    reinterpret_cast<MyMenuFX*>(menuFX)->SetInputBehavior(4);
+
+    _ZN7gameswf5arrayIP10MenuWidgetE6resizeEi(&widgets, 32);
+    widgets.elements[0] = new Widgets::MainMenu();
+    widgets.elements[1] = new Widgets::IGMenu();
+    widgets.elements[2] = new Widgets::Objective();
+    widgets.elements[3] = new Widgets::Shop();
+    widgets.elements[4] = new Widgets::MapLegend();
+    widgets.elements[5] = new Widgets::Corruption();
+    widgets.elements[6] = new Widgets::Mission();
+    widgets.elements[7] = new Widgets::Volumes();
+    widgets.elements[8] = new Widgets::Controls();
+    widgets.elements[9] = new Widgets::Language();
+    widgets.elements[10] = new Widgets::Achievement();
+    widgets.elements[11] = new Widgets::Achievements();
+    widgets.elements[12] = new Widgets::Statistics();
+    widgets.elements[13] = new Widgets::Help();
+    widgets.elements[14] = new Widgets::About();
+    widgets.elements[15] = new Widgets::Title();
+    widgets.elements[16] = new Widgets::Money();
+    widgets.elements[17] = new Widgets::ContentBox();
+    widgets.elements[18] = new Widgets::Arrows();
+    widgets.elements[19] = new Widgets::BackgroundInGame();
+    widgets.elements[20] = new Widgets::BackgroundMainMenu();
+    widgets.elements[21] = new Widgets::Confirm(setupWidgetConfirm);
+    widgets.elements[22] = new MenuWidget(setupWidgetCarRepair);
+    widgets.elements[23] = new Widgets::Tutorial(setupWidgetTutorial);
+    widgets.elements[24] = new Widgets::BlockingTutorial();
+    widgets.elements[25] = new MenuWidget(setupWidgetSplash);
+    widgets.elements[29] = new MenuWidget(setupWidgetRetroEffect);
+    widgets.elements[26] = new Widgets::GameSetting();
+    widgets.elements[27] = new Widgets::BlackBox();
+    widgets.elements[28] = new Widgets::ConfirmPayment();
+    widgets.elements[30] = new Widgets::DemoBuy();
+    widgets.elements[31] = new Widgets::BackgroundDemoBuy();
+
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::MainMenu(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::Map(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::ServiceMissions(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::ServiceWeaponShop(setupServiceWeaponShop), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::ServiceCarRental(setupServiceCarRental), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::ServiceCorruption(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::OptionVolumes(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::OptionControls(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::OptionLanguage(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::OptionGameSettings(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::InfoHelp(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::InfoAbout(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::InfoAchievements(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::InfoStatistics(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::Confirm(setupConfirm), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::Achievement(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::BlockingTutorial(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::Tutorial(setupTutorial), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::InGameWeaponShop(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::InGameCarRental(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::CarRepair(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::CopBribe(), setupStateCharacter);
+    reinterpret_cast<MyMenuFX*>(menuFX)->RegisterState(new Menus::Splash(), setupStateCharacter);
+
+    for (int i = 0; i < 17; ++i)
+        _ZN11MenuManager7setTextENS_5eTextEiPi(this, static_cast<eText>(i), -1, 0);
+    _ZN11MenuManager15hideDialogArrowEv(this);
+}
+
 extern "C" {
 void _ZNK3Map4drawEv(const Map*);
 void _ZNK11MenuManager8_drawMapEv(const MenuManager*);

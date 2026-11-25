@@ -1,3 +1,5 @@
+PROVIDE(_Znwj = 0x001c4814);
+PROVIDE(_Znaj = 0x001c3ff8);
 PROVIDE(__aeabi_i2d = 0x1c452c);
 PROVIDE(__aeabi_dadd = 0x1c4394);
 PROVIDE(__aeabi_d2iz = 0x1c4844);
@@ -45,6 +47,7 @@ menuMapStateName = 0x0040b608;
 glFlush = 0x001c4160;
 SECTIONS
 {
+    .menu_manager_setup 0x002e574c : { *menu-manager-helpers.o(.text._ZN11MenuManager5setupEb) }
     .menu_manager_update 0x002e4e7c : { *menu-manager-helpers.o(.text._ZN11MenuManager6updateEP12StateMachine) }
     .menu_update_markers 0x002e6948 : { *menu-manager-helpers.o(.text._ZN11MenuManager13updateMarkersEv) }
     ASSERT(SIZEOF(.menu_update_markers) == 360, "native updateMarkers extent")
