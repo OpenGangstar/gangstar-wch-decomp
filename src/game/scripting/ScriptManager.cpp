@@ -1388,6 +1388,242 @@ static void _GLOBAL__I__ZN13ScriptManager12s_playerTestE()
 }
 }
 
+void ScriptManager::cleanCommand(Structs::ScriptCommand* command)
+{
+    switch (command->opcode) {
+    case 0:
+    case 5:
+    case 8:
+    case 9:
+    case 12:
+    case 22:
+    case 23:
+    case 33: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 6:
+    case 21: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument2;
+        args->argument2 = 0;
+        delete[] args->argument1;
+        args->argument1 = 0;
+        break;
+    }
+    case 7: {
+        Structs::SetAnim2* args = reinterpret_cast<Structs::SetAnim2*>(command);
+        delete[] args->argument3;
+        args->argument3 = 0;
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 24: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument2;
+        args->argument2 = 0;
+        delete[] args->argument1;
+        args->argument1 = 0;
+        break;
+    }
+    case 25: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 26: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 29:
+    case 32:
+    case 34:
+    case 35:
+    case 38:
+    case 52: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 36:
+    case 39:
+    case 44:
+    case 45:
+    case 49: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 53: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 55: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 64: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 69: {
+        Structs::ProtectNPC* args = reinterpret_cast<Structs::ProtectNPC*>(command);
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 70:
+    case 71:
+    case 76: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 74:
+    case 83: {
+        Structs::ProtectNPC* args = reinterpret_cast<Structs::ProtectNPC*>(command);
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 77:
+    case 82:
+    case 85:
+    case 87: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 88: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 89: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 99: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 100: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 101: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 102: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 103: {
+        Structs::AddRacer* args = reinterpret_cast<Structs::AddRacer*>(command);
+        delete[] args->argument3;
+        args->argument3 = 0;
+        delete[] args->argument1;
+        args->argument1 = 0;
+        break;
+    }
+    case 105: {
+        Structs::SetAnim* args = reinterpret_cast<Structs::SetAnim*>(command);
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 37: {
+        Structs::VehicleChasePlayer* args = reinterpret_cast<Structs::VehicleChasePlayer*>(command);
+        delete[] args->argument1;
+        args->argument1 = 0;
+        delete[] args->argument2;
+        args->argument2 = 0;
+        break;
+    }
+    case 106: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 107: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 108: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 114: {
+        Structs::SetPhotoTarget* args = reinterpret_cast<Structs::SetPhotoTarget*>(command);
+        delete[] args->argument;
+        break;
+    }
+    case 115: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 116: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+    case 117: {
+        Structs::WaitCheckpoint* args = reinterpret_cast<Structs::WaitCheckpoint*>(command);
+        delete[] args->argument;
+        args->argument = 0;
+        break;
+    }
+
+    }
+}
 void ScriptManager::freezeRunningScripts(const Script* script, PlayerTest::eContext context)
 {
     unsigned int targetContext = context;

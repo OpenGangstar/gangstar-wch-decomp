@@ -193,7 +193,8 @@
             "compiled_name": "__tcf_2"
         },
         "_ZN13ScriptManager11loadCommandER10DataStream",
-        "_ZN13ScriptManager19reachRunningCommandEi"
+        "_ZN13ScriptManager19reachRunningCommandEi",
+        "_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE"
     ],
     "sections": [
         ".script_check_screen_press",
@@ -341,7 +342,9 @@
         ".script_load_command_c149",
         ".script_load_command_c106",
         ".script_load_command_c137",
-        ".script_manager_reach_running"
+        ".script_manager_reach_running",
+        ".script_manager_clean_command",
+        ".script_manager_clean_command_table"
     ],
     "retail_got": true,
     "external_thumb_functions": [
