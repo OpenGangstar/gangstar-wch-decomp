@@ -432,7 +432,6 @@
         "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
         "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
-        "_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE",
         "_ZN3irr7collada16CColladaDatabase14constructSceneEPKcPNS0_15CColladaFactoryE",
         "_ZN3irr7collada16CColladaDatabase13constructNodeEPKcS3_PNS0_15CColladaFactoryE",
         "_ZN16PhysicAttributesD1Ev",

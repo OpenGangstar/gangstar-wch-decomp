@@ -1391,3 +1391,69 @@ void GS3DStuff::SetAlpha(irr::scene::ISceneNode* node, unsigned char alpha, eCol
         applyToChildren(node, SetAlpha, alpha, type);
     }
 }
+
+namespace {
+inline __attribute__((always_inline)) void setColor84(irr::video::SMaterial& m, const irr::video::SColor& c)
+{
+    if (sameColor(c, m.color84))
+        return;
+    m.dirtyFlags |= 8;
+    m.color84 = c;
+    updateColorBlend(m);
+}
+
+inline __attribute__((always_inline)) void setColor48(irr::video::SMaterial& m, const irr::video::SColor& c)
+{
+    if (sameColor(m.color48, c))
+        return;
+    m.dirtyFlags |= 4;
+    m.color48 = c;
+    updateColorBlend(m);
+}
+
+inline __attribute__((always_inline)) void setColor56(irr::video::SMaterial& m, const irr::video::SColor& c)
+{
+    if (sameColor(c, m.color56))
+        return;
+    m.dirtyFlags |= 4;
+    m.color56 = c;
+}
+
+inline __attribute__((always_inline)) void setColor52(irr::video::SMaterial& m, const irr::video::SColor& c)
+{
+    if (sameColor(c, m.color52))
+        return;
+    m.dirtyFlags |= 4;
+    m.color52 = c;
+}
+}
+
+void GS3DStuff::SetColor(irr::scene::ISceneNode* node, irr::video::SColor color, eColorType type)
+{
+    const unsigned int a = color.a;
+    const unsigned int b = color.b;
+    const unsigned int g = color.g;
+    const unsigned int r = color.r;
+    const int nodeType = node->getType();
+    if (nodeType == 0x6d656164 || nodeType == 0x73656164) {
+        switch (type) {
+        case Color0:
+            setColor84(node->getMaterial(0), irr::video::SColor(a, r, g, b));
+            break;
+        case Color1:
+            setColor48(node->getMaterial(0), irr::video::SColor(a, r, g, b));
+            break;
+        case Color2:
+            setColor56(node->getMaterial(0), irr::video::SColor(a, r, g, b));
+            break;
+        case Color3:
+            setColor52(node->getMaterial(0), irr::video::SColor(a, r, g, b));
+            break;
+        }
+    } else {
+        for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+             child != node->getChildren().end(); child = child->next) {
+            SetColor(child->value, color, type);
+        }
+    }
+}
