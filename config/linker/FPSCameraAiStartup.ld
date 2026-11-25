@@ -1,3 +1,6 @@
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-fpscamera/retail-symbols.ld
@@ -25,6 +28,7 @@ _ZN28retail_fpscamera_transitions11guard_transE = 0x00429a78;
 _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
 SECTIONS
 {
+    .fps_scroll 0x00333e40 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE) }
     .fps_zoom_touch 0x003342ac : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE) }
     .fps_update 0x003344f4 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6updateEf) }
     .fps_init 0x00333fec : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4initEP11LevelObjecti) }

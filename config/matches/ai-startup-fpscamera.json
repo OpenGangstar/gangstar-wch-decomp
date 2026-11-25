@@ -25,7 +25,9 @@
     ],
     "source": "src/game/core/FPSCamera.cpp",
     "linker_script": "config/linker/FPSCameraAiStartup.ld",
-    "dependencies": ["string-startup-camera"],
+    "dependencies": [
+        "string-startup-camera"
+    ],
     "functions": [
         "_ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE",
         "_ZN9FPSCamera6updateEf",
@@ -50,7 +52,8 @@
         {
             "name": "_GLOBAL__I__ZN9FPSCameraC2Ev",
             "address": "0x00334299"
-        }
+        },
+        "_ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE"
     ],
     "sections": [
         ".fps_vtable",
@@ -61,7 +64,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".fps_scroll"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -74,6 +78,8 @@
         "_ZN15CControlManager11exitSnipingEb",
         "_ZN9FPSCamera17updateTouchInputsEv",
         "_ZN13CameraManager11getInstanceEv",
-        "_ZN13CameraManager6setFOVEi"
+        "_ZN13CameraManager6setFOVEi",
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN13CameraManager6getFOVEv"
     ]
 }
