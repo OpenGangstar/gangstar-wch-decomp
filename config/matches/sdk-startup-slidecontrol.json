@@ -26,6 +26,7 @@
     "source": "src/game/ui/SlideControl.cpp",
     "linker_script": "config/linker/SlideControlSdkStartup.ld",
     "functions": [
+        "_ZN12SlideControl12processTouchEl",
         "_ZN12SlideControl19processTouchReleaseEv",
         "_ZThn8_N12SlideControl19processTouchReleaseEv",
         "_ZNK12SlideControl6draw2dEv",
@@ -50,6 +51,8 @@
         }
     ],
     "sections": [
+        ".slide_process_touch",
+        ".slide_invalid_touch",
         ".slidecontrol_vtable",
         ".sdk_startup_function_0",
         ".sdk_startup_function_1",

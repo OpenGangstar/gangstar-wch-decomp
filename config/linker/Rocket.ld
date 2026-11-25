@@ -21,8 +21,19 @@ _ZN25retail_rocket_transitions17civ_vehicle_transE = 0x00427b5c;
 _ZN25retail_rocket_transitions17cop_vehicle_transE = 0x00427bec;
 _ZN25retail_rocket_transitions11guard_transE = 0x00427ca0;
 _ZN25retail_rocket_transitions22scripted_vehicle_transE = 0x00427d48;
+__aeabi_fcmpeq = 0x001c470c;
 SECTIONS
 {
+    .rocket_launch 0x00330014 : { *rocket.o(.text._ZN6Rocket6launchEN3irr4core8vector3dIfEE) }
+    .rocket_polygon_d1 0x002df3f4 : { *rocket.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
+    .rocket_polygon_d0 0x002df628 : { *rocket.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
+    .rocket_polygon_table 0x004a8ac8 : { *rocket.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
+    .rocket_shape_d1 0x002db49c : { *rocket.o(.text._ZN10b2ShapeDefD1Ev .gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
+    .rocket_shape_d0 0x002db47c : { *rocket.o(.text._ZN10b2ShapeDefD0Ev .gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
+    .rocket_shape_table 0x004a8ad8 : { *rocket.o(.gnu.linkonce.d.rel.ro._ZTV10b2ShapeDef) }
+    .rocket_circle_table 0x004aa168 : { *rocket.o(.gnu.linkonce.d.rel.ro._ZTV11b2CircleDef) }
+    .rocket_circle_d1 0x002f4440 : { *rocket.o(.text._ZN11b2CircleDefD1Ev .gnu.linkonce.t._ZN11b2CircleDefD1Ev) }
+    .rocket_circle_d0 0x002f462c : { *rocket.o(.text._ZN11b2CircleDefD0Ev .gnu.linkonce.t._ZN11b2CircleDefD0Ev) }
     .rocket_debug 0x0032fac0 : { *rocket.o(.text._ZN6Rocket5debugEPN3irr5video12IVideoDriverE) }
     .rocket_constructor 0x0032fd90 : { *rocket.o(.text._ZN6RocketC1Ei) }
     .rocket_load 0x0032fb18 : { *rocket.o(.text._ZN6Rocket4LoadERKN7Structs6RocketE) }
@@ -65,3 +76,4 @@ ASSERT(SIZEOF(.rocket_startup_record_6) == 8, "Rocket startup record_6 extent");
 ASSERT(SIZEOF(.rocket_startup_record_7) == 8, "Rocket startup record_7 extent");
 ASSERT(SIZEOF(.rocket_startup_record_8) == 8, "Rocket startup record_8 extent");
 ASSERT(SIZEOF(.rocket_startup_record_9) == 8, "Rocket startup record_9 extent");
+ASSERT(SIZEOF(.rocket_launch) == 744, "Native Rocket launch extent");
