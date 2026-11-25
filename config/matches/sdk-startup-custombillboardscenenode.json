@@ -26,6 +26,7 @@
     "source": "src/game/rendering/CustomBillboardSceneNode.cpp",
     "linker_script": "config/linker/CustomBillboardSceneNodeSdkStartup.ld",
     "functions": [
+        "_ZN24CustomBillboardSceneNode9OnAnimateEj",
         "_ZN24CustomBillboardSceneNode5debugEPN3irr5video12IVideoDriverE",
         "_ZN24CustomBillboardSceneNodeC1ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
         "_ZN24CustomBillboardSceneNodeC2ERKN3irr7collada16CColladaDatabaseEPNS1_5SNodeE",
@@ -56,6 +57,7 @@
         }
     ],
     "sections": [
+        ".billboard_on_animate",
         ".billboard_table_0",
         ".billboard_table_1",
         ".billboard_table_2",
@@ -77,6 +79,8 @@
         "_ZN3irr5scene10ISceneNode15setMaterialTypeENS_5video15E_MATERIAL_TYPEE",
         "_ZN3irr5scene10ISceneNode15setMaterialFlagENS_5video15E_MATERIAL_FLAGEb",
         "_ZNK3irr5scene10ISceneNode12getAnimatorsEv",
-        "_ZNK3irr5scene10ISceneNode11getChildrenEv"
+        "_ZNK3irr5scene10ISceneNode11getChildrenEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZNK13CameraManager9getCameraEv"
     ]
 }
