@@ -2,6 +2,7 @@ OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-character/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
+_Znwj = 0x001c4814;
 __aeabi_atexit = 0x001c494c;
 _ZN28retail_character_transitions16civPassive_transE = 0x0041c640;
 _ZN28retail_character_transitions17scriptedNpc_transE = 0x0041c76c;
@@ -62,3 +63,7 @@ ASSERT(SIZEOF(.character_combat_idle_table) == 36, "Native Character combat idle
 ASSERT(SIZEOF(.character_ready) == 284, "Native Character ready extent");
 ASSERT(SIZEOF(.character_ready_table) == 36, "Native Character ready table extent");
 ASSERT(SIZEOF(.character_set_animation) == 396, "Native Character setAnimation extent");
+ASSERT(SIZEOF(.character_init_physic) == 456, "Native Character initPhysic extent");
+ASSERT(SIZEOF(.character_polygon_d1) == 36, "Native polygon destructor extent");
+ASSERT(SIZEOF(.character_polygon_d0) == 44, "Native deleting polygon destructor extent");
+ASSERT(SIZEOF(.character_polygon_table) == 16, "Native polygon vtable extent");

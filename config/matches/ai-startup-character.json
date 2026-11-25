@@ -26,6 +26,9 @@
     "source": "src/game/characters/Character.cpp",
     "linker_script": "config/linker/CharacterAiStartup.ld",
     "functions": [
+        "_ZN9Character10initPhysicEv",
+        "_ZN12b2PolygonDefD1Ev",
+        "_ZN12b2PolygonDefD0Ev",
         "_ZN9Character12setAnimationEifbbb",
         "_ZN9Character11exitVehicleEb",
         "_ZN9Character5readyEf",
@@ -163,6 +166,10 @@
         "_ZN9Character3dieEb"
     ],
     "sections": [
+        ".character_init_physic",
+        ".character_polygon_d1",
+        ".character_polygon_d0",
+        ".character_polygon_table",
         ".character_set_animation",
         ".character_ready",
         ".character_ready_table",
@@ -214,6 +221,10 @@
     "source_first": true,
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN7b2World10CreateBodyEPK9b2BodyDef",
+        "_ZN6b2Body17SetMassFromShapesEv",
+        "_ZN6b2Body11CreateShapeEP10b2ShapeDef",
+        "_ZN16PhysicAttributesC1EiP6b2Body",
         "_ZNK13ScriptManager13isInCinematicEv",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZN6Weapon12reloadRocketEv",

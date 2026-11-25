@@ -2,6 +2,7 @@
 #define WCH_CHARACTERS_CHARACTER_H
 
 #include "../world/LevelObject.h"
+#include "../core/PhysicsFilterData.h"
 #include "SaveVector3.h"
 
 class Vehicle;
@@ -129,8 +130,7 @@ private:
     bool isCurrentAnimation(int id);
     bool canAnimationBeInterrupted(int id);
     int getSpecificAnimation(int id);
-    unsigned short collisionMask;
-    short collisionGroup;
+    b2FilterData collisionFilter;
     SaveVector3 facing;
     float unknown68, unknown72, unknown76;
     irr::core::vector3d<float> cameraOffset;

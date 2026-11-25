@@ -10006,7 +10006,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f035d	0x42	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager19OnRegisterSceneNodeEv	BulletTraceManager::OnRegisterSceneNode()
 0x002f03a1	0x260	BulletTraceManager.cpp	irrlicht	-	matched	_ZN3irr4core10quaternion14rotationFromToERKNS0_8vector3dIfEES5_	irr::core::quaternion::rotationFromTo(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&)
 0x002f0601	0x4c	BulletTraceManager.cpp	game	combat	matched	_ZNK18BulletTraceManager14getBoundingBoxEv	BulletTraceManager::getBoundingBox() const
-0x002f064d	0x1f0	BulletTraceManager.cpp	game	combat	pending	_ZN18BulletTraceManager9OnAnimateEj	BulletTraceManager::OnAnimate(unsigned int)
+0x002f064d	0x1f0	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager9OnAnimateEj	BulletTraceManager::OnAnimate(unsigned int)
 0x002f083d	0x188	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager15PlayBulletTraceERKN3irr4core8vector3dIfEES5_bS5_	BulletTraceManager::PlayBulletTrace(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, bool, irr::core::vector3d<float> const&)
 0x002f09c5	0x2a8	BulletTraceManager.cpp	game	combat	matched	_ZN18BulletTraceManager6renderEPv	BulletTraceManager::render(void*)
 0x002f0c6d	0x6c	BulletTraceManager.cpp	game	combat	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
@@ -10122,7 +10122,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f405d	0x270	Character.cpp	game	characters	matched	_ZN9Character6UpdateEi	Character::Update(int)
 0x002f42cd	0x174	Character.cpp	game	characters	matched	_ZN9Character14updatePositionEN3irr4core10quaternionE	Character::updatePosition(irr::core::quaternion)
 0x002f4441	0x24	Character.cpp	game	characters	matched	_ZN11b2CircleDefD1Ev	b2CircleDef::~b2CircleDef()
-0x002f4465	0x1c8	Character.cpp	game	characters	pending	_ZN9Character10initPhysicEv	Character::initPhysic()
+0x002f4465	0x1c8	Character.cpp	game	characters	matched	_ZN9Character10initPhysicEv	Character::initPhysic()
 0x002f462d	0x2c	Character.cpp	game	characters	matched	_ZN11b2CircleDefD0Ev	b2CircleDef::~b2CircleDef()
 0x002f4659	0x258	Character.cpp	game	characters	pending	_ZN9Character4showEv	Character::show()
 0x002f48b1	0x1c8	Character.cpp	game	characters	pending	_ZN9Character13initInVehicleEP7Vehicle	Character::initInVehicle(Vehicle*)
@@ -10323,7 +10323,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fdbed	0x110	NPC.cpp	game	ai	matched	_ZN3NPC5debugEPN3irr5video12IVideoDriverE	NPC::debug(irr::video::IVideoDriver*)
 0x002fdcfd	0xec	NPC.cpp	game	ai	matched	_ZN3NPC4LoadERKN7Structs3NPCE	NPC::Load(Structs::NPC const&)
 0x002fdde9	0x68	NPC.cpp	game	ai	matched	_ZN3NPC15getNextWaypointEv	NPC::getNextWaypoint()
-0x002fde51	0x1a0	NPC.cpp	game	ai	pending	_ZN3NPC10isUnderCarEv	NPC::isUnderCar()
+0x002fde51	0x1a0	NPC.cpp	game	ai	matched	_ZN3NPC10isUnderCarEv	NPC::isUnderCar()
 0x002fdff1	0x94	NPC.cpp	game	ai	matched	_ZN3NPC12getNextPointERN3irr4core8vector3dIfEE	NPC::getNextPoint(irr::core::vector3d<float>&)
 0x002fe085	0x64	NPC.cpp	game	ai	matched	_ZN3NPC13goToNextPointEb	NPC::goToNextPoint(bool)
 0x002fe0e9	0x80	NPC.cpp	game	ai	pending	_ZN3NPC11isHostileToEP11LevelObject	NPC::isHostileTo(LevelObject*)
@@ -11933,7 +11933,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00338179	0x30	MissionConditionStayWithin.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x003381a9	0x64	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinC1EP11LevelObjectii	MissionConditionStayWithin::MissionConditionStayWithin(LevelObject*, int, int)
 0x003381a9	0x64	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinC2EP11LevelObjectii	MissionConditionStayWithin::MissionConditionStayWithin(LevelObject*, int, int)
-0x0033820d	0x20c	MissionConditionStayWithin.cpp	game	missions	pending	_ZN26MissionConditionStayWithin8evaluateEi	MissionConditionStayWithin::evaluate(int)
+0x0033820d	0x20c	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithin8evaluateEi	MissionConditionStayWithin::evaluate(int)
 0x00338419	0x144	MissionConditionStayWithin.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0033855d	0x14	MissionConditionStayWithin.cpp	game	missions	matched	_GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii	_GLOBAL__I__ZN26MissionConditionStayWithinC2EP11LevelObjectii
 0x00338571	0x68	MissionConditionStayWithin.cpp	game	missions	matched	_ZN26MissionConditionStayWithinD0Ev	MissionConditionStayWithin::~MissionConditionStayWithin()

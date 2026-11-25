@@ -52,6 +52,39 @@ const irr::core::aabbox3d<float>& BulletTraceManager::getBoundingBox() const
     return EmptyBox;
 }
 
+void WepaonAnimCallback(irr::scene::ITimelineController*, void*);
+
+void BulletTraceManager::OnAnimate(unsigned int)
+{
+    for (int i = 0; i < activeTraces; ++i) {
+        traces[i].current += traces[i].progress;
+        if (traces[i].current > 1.0f) {
+            if (traces[i].showImpact) {
+                impacts[i]->setVisible(true);
+                impacts[i]->setPosition(traces[i].direction);
+                irr::core::quaternion rotation;
+                irr::core::vector3d<float> axis(1, 0, 0);
+                rotation.rotationFromTo(traces[i].end, axis);
+                impacts[i]->setRotation(rotation);
+                impacts[i]->updateAbsolutePosition(true);
+                irr::scene::ITimelineController* controller =
+                    (*impacts[i]->getAnimators().begin())->getTimelineCtrl();
+                if (controller) {
+                    controller->setLoop(false);
+                    controller->jumpTo(controller->startTime);
+                    void (*callback)(irr::scene::ITimelineController*, void*) = WepaonAnimCallback;
+                    void* data = impacts[i];
+                    controller->callback = callback;
+                    controller->callbackData = data;
+                }
+            }
+            traces[i] = traces[activeTraces - 1];
+            --activeTraces;
+            --i;
+        }
+    }
+}
+
 extern "C" long lrand48();
 void BulletTraceManager::PlayBulletTrace(const irr::core::vector3d<float>& start,
     const irr::core::vector3d<float>& target, bool flag,

@@ -12,6 +12,11 @@
 #include "../hud/MenuManager.h"
 #include "../scripting/ScriptManager.h"
 #include "../world/LevelObject.h"
+#include "../characters/PlayerTest.h"
+#include "../vehicles/Vehicle.h"
+#include "../app/Application.h"
+#include "../persistence/StringManager.h"
+#include "MissionTimerText.h"
 
 class MissionConditionStayWithin : public IMissionCondition {
 public:
@@ -40,6 +45,35 @@ MissionConditionStayWithin::MissionConditionStayWithin(LevelObject* target, int 
     int radius = distance / 100;
     distanceSquared = radius * radius;
     this->timeLimit = timeLimit;
+}
+
+bool MissionConditionStayWithin::evaluate(int elapsed)
+{
+    PlayerTest* player = PlayerTest::GetPlayer();
+    const float distance = ((player->flags240 & 0x400) && static_cast<SavePositionInterface*>(player)->getVehicle())
+        ? PlayerTest::GetPlayer()->getVehicle()->GetPosition().getDistanceFromSQ(target->GetPosition())
+        : PlayerTest::GetPlayer()->GetPosition().getDistanceFromSQ(target->GetPosition());
+
+    if (static_cast<int>(distance / 10000.0f) > distanceSquared) {
+        timer -= elapsed;
+        if (!MenuManager::getInstance()->getText(MenuManager::StayWithinText))
+            MenuManager::getInstance()->setText(MenuManager::StayWithinText,
+                Application::GetInstance()->GetStringManager()->getString(timeLimit), 0);
+    } else {
+        timer = timerLimit;
+        if (MenuManager::getInstance()->getText(MenuManager::StayWithinText))
+            MenuManager::getInstance()->setText(MenuManager::StayWithinText, static_cast<const char*>(0), 0);
+    }
+
+    if (timer != timerLimit) {
+        if (timer < 0)
+            timer = 0;
+        char text[8];
+        showMissionTimer(text, timer);
+    } else {
+        MenuManager::getInstance()->setText(MenuManager::MissionTimerText, static_cast<const char*>(0), 0);
+    }
+    return timer > 0;
 }
 
 // Recovered translation-unit SDK and AI startup callbacks.

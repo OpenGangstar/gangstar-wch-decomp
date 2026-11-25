@@ -890,3 +890,27 @@ bool NPC::isOutsideSearchRadius()
         inside = true;
     return !inside;
 }
+
+bool NPC::isUnderCar()
+{
+    if (!lastHitVehicle)
+        return false;
+    irr::core::vector3d<float> corners[4];
+    lastHitVehicle->getCollisionRect(corners, 50.0f);
+    irr::core::vector3d<float> pos = GetPosition();
+    irr::core::vector3d<float> d0 = pos - corners[0];
+    irr::core::vector3d<float> e0 = corners[1] - corners[0];
+    irr::core::vector3d<float> d1 = pos - corners[1];
+    irr::core::vector3d<float> e1 = corners[2] - corners[1];
+    irr::core::vector3d<float> d2 = pos - corners[2];
+    irr::core::vector3d<float> e2 = corners[3] - corners[2];
+    irr::core::vector3d<float> d3 = pos - corners[3];
+    irr::core::vector3d<float> e3 = corners[0] - corners[3];
+    if (d0.Y * e0.X - d0.X * e0.Y < 0.0f)
+        return false;
+    if (d1.Y * e1.X - d1.X * e1.Y < 0.0f)
+        return false;
+    if (d2.Y * e2.X - d2.X * e2.Y < 0.0f)
+        return false;
+    return !(d3.Y * e3.X - d3.X * e3.Y < 0.0f);
+}

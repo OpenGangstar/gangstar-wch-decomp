@@ -14,8 +14,19 @@ _ZN45retail_missionconditionstaywithin_transitions17cop_vehicle_transE = 0x0042d
 _ZN45retail_missionconditionstaywithin_transitions11guard_transE = 0x0042db84;
 _ZN45retail_missionconditionstaywithin_transitions22scripted_vehicle_transE = 0x0042dc2c;
 __aeabi_idiv = 0x001c43dc;
+__stack_chk_fail = 0x001c42e0;
+sprintf = 0x001c46ac;
+__aeabi_idivmod = 0x001c4934;
+__aeabi_fsub = 0x001c4328;
+__aeabi_fmul = 0x001c4724;
+__aeabi_fadd = 0x001c4154;
+__aeabi_fdiv = 0x001c4520;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
+    .stay_within_evaluate 0x0033820c : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithin8evaluateEi) }
+    .stay_within_format 0x0042ad20 : { *ai-startup-missionconditionstaywithin.o(.rodata.str1.4 .rodata.str1.1) }
     .stay_within_00338174 0x00338174 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithin4drawEv) }
     .stay_within_003381a8 0x003381a8 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithinC1EP11LevelObjectii .text._ZN26MissionConditionStayWithinC2EP11LevelObjectii) }
     .stay_within_00338570 0x00338570 : { *ai-startup-missionconditionstaywithin.o(.text._ZN26MissionConditionStayWithinD0Ev) }
@@ -52,3 +63,4 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.stay_within_evaluate) == 524, "Native MissionConditionStayWithin evaluate extent");
