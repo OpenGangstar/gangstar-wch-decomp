@@ -4,6 +4,8 @@ INCLUDE build/matches/ai-startup-wantedlevelmanager/retail-symbols.ld
 INCLUDE config/linker/PlayerEventSections.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
+PROVIDE(__aeabi_dadd = 0x001c4394);
+PROVIDE(__aeabi_dcmpge = 0x001c4448);
 _ZN37retail_wantedlevelmanager_transitions16civPassive_transE = 0x00432a7c;
 _ZN37retail_wantedlevelmanager_transitions17scriptedNpc_transE = 0x00432ba8;
 _ZN37retail_wantedlevelmanager_transitions19civAggressive_transE = 0x00432bd8;
@@ -21,6 +23,9 @@ __cxa_guard_release = 0x001c46c4;
 printf = 0x001c4058;
 SECTIONS
 {
+    .wanted_constructor 0x00342b08 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManagerC2Ev .text._ZN18WantedLevelManagerC1Ev) }
+    .wanted_update 0x00342fc8 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager6updateEd) }
+    .wanted_update_thunk 0x00342fb4 : { *ai-startup-wantedlevelmanager.o(.text._ZThn4_N18WantedLevelManager6updateEd) }
     .wanted_on_event 0x00343140 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager) }
     ASSERT(SIZEOF(.wanted_on_event) == 368, "Native WantedLevelManager onEvent extent")
     .wanted_on_event_table 0x00432a58 : { *ai-startup-wantedlevelmanager.o(.rodata._ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager) }
@@ -86,3 +91,5 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.wanted_constructor) == 184, "Native WantedLevelManager constructor extent");
+ASSERT(SIZEOF(.wanted_update) == 376, "Native WantedLevelManager update extent");

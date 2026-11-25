@@ -27,6 +27,7 @@
     "linker_script": "config/linker/ScriptAiStartup.ld",
     "functions": [
         "_ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
+        "_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
         "_ZN6ScriptC1Ei",
         "_ZN6ScriptC2Ei",
         "_ZN6Script23clearScriptObjectActionEv",
@@ -77,6 +78,7 @@
         "_ZN6Script11nextCommandEi"
     ],
     "sections": [
+        ".script_unset_object_action",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
         ".ai_startup_function_2",
@@ -103,7 +105,6 @@
         "_ZN6Script6rewindEv",
         "_ZN13ScriptManager8saveGameEv",
         "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
-        "_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
         "_ZN11Application11GetInstanceEv",
         "_ZN6Script14executeCommandEPKN7Structs13ScriptCommandEii",
         "_ZN12EventManager7refreshEv",

@@ -150,8 +150,5 @@
     "retail_got": true,
     "dependencies": [
         "string-startup-touchscreenbase"
-    ],
-    "external_thumb_functions": [
-        "_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl"
     ]
 }

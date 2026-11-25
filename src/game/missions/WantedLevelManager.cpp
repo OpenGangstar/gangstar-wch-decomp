@@ -270,3 +270,64 @@ void WantedLevelManager::onEvent(const IEvent* event, const EventManager*)
         unknown8 = 5;
     _processWantedLevel();
 }
+
+WantedLevelManager::WantedLevelManager()
+    : unknown8(0), lockedLevel(0), savedLevel(0), savedLockedLevel(0),
+      savedUnknown16(0), savedUnknown20(0), unknown40(10000.0),
+      unknown48(5000.0), unknown56(0.0), unknown64(0.0), unknown72(0),
+      unknown76(false), unknown77(false), unknown78(false), locked(false)
+{
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    events->attach(22, this);
+    events->attach(16, this);
+    events->attach(19, this);
+}
+
+
+void WantedLevelManager::update(double elapsed)
+{
+    Application* application = Application::GetInstance();
+    if (unknown72 > 0) {
+        application->GetHudManager()->wantedMeter->resetTimer();
+        unknown77 = false;
+        unknown78 = false;
+        return;
+    }
+    if (unknown76) {
+        unknown56 = 0.0;
+        unknown77 = true;
+        unknown76 = false;
+        return;
+    }
+    if (unknown77) {
+        if (unknown56 >= unknown40) {
+            application->GetHudManager()->wantedMeter->timer = 1;
+            unknown77 = false;
+            unknown78 = true;
+            unknown64 = 0.0;
+        } else {
+            unknown56 = unknown56 + elapsed;
+        }
+        return;
+    }
+    if (unknown78) {
+        if (unknown64 >= unknown48) {
+            application->GetHudManager()->wantedMeter->timer = 0;
+            if (!locked)
+                lockedLevel = unknown8;
+            if (--unknown8 > 0) {
+                unknown76 = true;
+            } else {
+                application->GetEventManager()->raise(EvWantedEscaped());
+            }
+            if (unknown8 < 0)
+                unknown8 = 0;
+            else
+                AchievementManager::s_achievementManager->recordBadgesEscaped(1);
+            _processWantedLevel();
+            unknown78 = false;
+        } else {
+            unknown64 = elapsed + unknown64;
+        }
+    }
+}

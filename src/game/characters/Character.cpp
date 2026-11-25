@@ -1610,3 +1610,89 @@ void Character::punched(int animation, int damage, LevelObject* attacker)
     if (Lock::getInstance()->target == this)
         Lock::getInstance()->billboard->activateAnimation();
 }
+void Character::goToCombatIdle()
+{
+    const unsigned int combatIdleFlag = 0x04000000u;
+    switch (getWeapon()->getWeaponType()) {
+    case 0:
+        movementFlags |= combatIdleFlag;
+        setAnimation(89, 1.0f, true, false, false);
+        break;
+    case 1:
+        movementFlags |= combatIdleFlag;
+        if (s_type[getObjectType()] == 5 &&
+            static_cast<NPC*>(this)->category428 == 3)
+            setAnimation(55, 1.0f, true, false, false);
+        else
+            setAnimation(50, 1.0f, true, false, false);
+        break;
+    case 2:
+        movementFlags |= combatIdleFlag;
+        setAnimation(59, 1.0f, true, false, false);
+        break;
+    case 4:
+        movementFlags |= combatIdleFlag;
+        setAnimation(73, 1.0f, true, false, false);
+        break;
+    case 3:
+        movementFlags |= combatIdleFlag;
+        setAnimation(73, 1.0f, true, false, false);
+        break;
+    case 5:
+        movementFlags |= combatIdleFlag;
+        setAnimation(50, 1.0f, true, false, false);
+        break;
+    case 6:
+        movementFlags |= combatIdleFlag;
+        setAnimation(59, 1.0f, true, false, false);
+        break;
+    case 7:
+        movementFlags |= combatIdleFlag;
+        setAnimation(64, 1.0f, true, false, false);
+        break;
+    case 8:
+        movementFlags |= combatIdleFlag;
+        setAnimation(64, 1.0f, true, false, false);
+        break;
+    }
+}
+
+void Character::ready(float speed)
+{
+    if (!isCurrentAnimation(getSpecificAnimation(165))) return;
+    switch (getWeapon()->getWeaponType()) {
+    case 0:
+        setAnimation(143, speed, false, false, false);
+        punchIndex = 0;
+        unknown228 = 0;
+        kickIndex = 5;
+        break;
+    case 1:
+        if (s_type[objectType] == 5 && static_cast<NPC*>(this)->category428 == 3)
+            setAnimation(141, speed, false, false, false);
+        else
+            setAnimation(140, speed, false, false, false);
+        break;
+    case 2:
+        setAnimation(142, speed, false, false, false);
+        break;
+    case 4:
+        setAnimation(146, speed, false, false, false);
+        break;
+    case 3:
+        setAnimation(146, speed, false, false, false);
+        break;
+    case 5:
+        setAnimation(140, speed, false, false, false);
+        break;
+    case 6:
+        setAnimation(142, speed, false, false, false);
+        break;
+    case 7:
+        setAnimation(138, speed, false, false, false);
+        break;
+    case 8:
+        setAnimation(145, speed, false, false, false);
+        break;
+    }
+}

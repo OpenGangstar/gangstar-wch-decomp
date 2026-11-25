@@ -10084,8 +10084,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002f2185	0x150	Character.cpp	game	characters	matched	_ZN9Character5debugEPN3irr5video12IVideoDriverE	Character::debug(irr::video::IVideoDriver*)
 0x002f22d5	0x128	Character.cpp	game	characters	matched	_ZN9Character10turnTowardEN3irr4core8vector3dIfEEf	Character::turnToward(irr::core::vector3d<float>, float)
 0x002f23fd	0x184	Character.cpp	game	characters	matched	_ZN9Character13bindAnimationEPKcRNS_13AnimationInfoEPN3irr5scene10ISceneNodeE	Character::bindAnimation(char const*, Character::AnimationInfo&, irr::scene::ISceneNode*)
-0x002f2581	0x12c	Character.cpp	game	characters	pending	_ZN9Character14goToCombatIdleEv	Character::goToCombatIdle()
-0x002f26ad	0x11c	Character.cpp	game	characters	pending	_ZN9Character5readyEf	Character::ready(float)
+0x002f2581	0x12c	Character.cpp	game	characters	matched	_ZN9Character14goToCombatIdleEv	Character::goToCombatIdle()
+0x002f26ad	0x11c	Character.cpp	game	characters	matched	_ZN9Character5readyEf	Character::ready(float)
 0x002f27c9	0x124	Character.cpp	game	characters	matched	_ZN9Character18goFromCombatToIdleEv	Character::goFromCombatToIdle()
 0x002f28ed	0x120	Character.cpp	game	characters	matched	_ZN9Character12switchWeaponEv	Character::switchWeapon()
 0x002f2a0d	0x6c	Character.cpp	game	characters	matched	_ZN9Character9OnDespawnEv	Character::OnDespawn()
@@ -11841,7 +11841,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003360c1	0x80	Mission.cpp	game	missions	matched	_ZN7MissionC1Ev	Mission::Mission()
 0x00336141	0xcc	Mission.cpp	game	missions	matched	_Z18getFrameModuleRectP7ASpriteiii	getFrameModuleRect(ASprite*, int, int, int)
 0x0033620d	0x138	Mission.cpp	game	missions	matched	_ZN7Mission4drawEv	Mission::draw()
-0x00336345	0x78	Mission.cpp	game	missions	pending	_ZN7Mission7messageEi	Mission::message(int)
+0x00336345	0x78	Mission.cpp	game	missions	matched	_ZN7Mission7messageEi	Mission::message(int)
 0x003363bd	0x14	Mission.cpp	game	missions	matched	_ZN7Mission9objectiveEib	Mission::objective(int, bool)
 0x003363d1	0x1d4	Mission.cpp	game	missions	matched	_ZN7Mission5startEii	Mission::start(int, int)
 0x003365a5	0x4c	Mission.cpp	game	missions	matched	_ZN7Mission4idleEv	Mission::idle()
@@ -11999,7 +11999,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00339611	0xc4	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE13insert_uniqueERKS7_	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::insert_unique(std::pair<LevelObject* const, int> const&)
 0x003396d5	0x180	Script.cpp	stlport	-	matched	_ZN9stlp_priv8_Rb_treeIP11LevelObjectSt4lessIS2_ESt4pairIKS2_iENS_10_Select1stIS7_EENS_11_MapTraitsTIS7_EESaIS7_EE13insert_uniqueENS_17_Rb_tree_iteratorIS7_SB_EERKS7_	stlp_priv::_Rb_tree<LevelObject*, std::less<LevelObject*>, std::pair<LevelObject* const, int>, stlp_priv::_Select1st<std::pair<LevelObject* const, int> >, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> >, std::allocator<std::pair<LevelObject* const, int> > >::insert_unique(stlp_priv::_Rb_tree_iterator<std::pair<LevelObject* const, int>, stlp_priv::_MapTraitsT<std::pair<LevelObject* const, int> > >, std::pair<LevelObject* const, int> const&)
 0x00339855	0x60	Script.cpp	stlport	-	matched	_ZNSt3mapIP11LevelObjectiSt4lessIS1_ESaISt4pairIKS1_iEEEixIS1_EERiRKT_	int& std::map<LevelObject*, int, std::less<LevelObject*>, std::allocator<std::pair<LevelObject* const, int> > >::operator[]<LevelObject*>(LevelObject* const&)
-0x003398b5	0x88	Script.cpp	game	scripting	pending	_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE	Script::unsetScriptObjectAction(LevelObject*, Script::eScriptAction)
+0x003398b5	0x88	Script.cpp	game	scripting	matched	_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE	Script::unsetScriptObjectAction(LevelObject*, Script::eScriptAction)
 0x0033993d	0x60	Script.cpp	game	scripting	matched	_ZN6Script10lockScriptEi	Script::lockScript(int)
 0x0033999d	0x28	Script.cpp	game	scripting	matched	_ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE	Script::setScriptObjectAction(LevelObject*, Script::eScriptAction)
 0x003399c5	0x2c	Script.cpp	game	scripting	matched	_ZN6Script23clearScriptObjectActionEv	Script::clearScriptObjectAction()
@@ -12260,8 +12260,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342a89	0x30	WantedLevelManager.cpp	game	missions	matched	__tcf_5	__tcf_5
 0x00342ab9	0x1c	WantedLevelManager.cpp	game	missions	matched	__tcf_4	__tcf_4
 0x00342ad5	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager5cleanEv	WantedLevelManager::clean()
-0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC2Ev	WantedLevelManager::WantedLevelManager()
-0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManagerC1Ev	WantedLevelManager::WantedLevelManager()
+0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerC2Ev	WantedLevelManager::WantedLevelManager()
+0x00342b09	0xb8	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManagerC1Ev	WantedLevelManager::WantedLevelManager()
 0x00342bc1	0x144	WantedLevelManager.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00342d05	0x14	WantedLevelManager.cpp	game	missions	matched	_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE	_GLOBAL__I__ZN18WantedLevelManager18s_bTutoWantedLevelE
 0x00342d18	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManagerD0Ev	non-virtual thunk to WantedLevelManager::~WantedLevelManager()
@@ -12275,7 +12275,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00342f4d	0x2e	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager18restoreWantedLevelEv	WantedLevelManager::restoreWantedLevel()
 0x00342f7d	0x36	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager16resetWantedLevelEv	WantedLevelManager::resetWantedLevel()
 0x00342fb4	0x14	WantedLevelManager.cpp	game	missions	matched	_ZThn4_N18WantedLevelManager6updateEd	non-virtual thunk to WantedLevelManager::update(double)
-0x00342fc9	0x178	WantedLevelManager.cpp	game	missions	pending	_ZN18WantedLevelManager6updateEd	WantedLevelManager::update(double)
+0x00342fc9	0x178	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager6updateEd	WantedLevelManager::update(double)
 0x00343141	0x170	WantedLevelManager.cpp	game	missions	matched	_ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager	WantedLevelManager::onEvent(IEvent const*, EventManager const*)
 0x003432b1	0x1c	Persistence.cpp	game	persistence	matched	_ZN11PersistenceC2Ev	Persistence::Persistence()
 0x003432b1	0x1c	Persistence.cpp	game	persistence	matched	_ZN11PersistenceC1Ev	Persistence::Persistence()
@@ -12714,7 +12714,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034cc35	0x64	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD0Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD1Ev	TouchScreenBase::~TouchScreenBase()
 0x0034cc99	0x58	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBaseD2Ev	TouchScreenBase::~TouchScreenBase()
-0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	pending	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
+0x0034ccf1	0x8c	TouchScreenBase.cpp	game	input	matched	_ZN15TouchScreenBase10touchBeganERK7Point2DIsEl	TouchScreenBase::touchBegan(Point2D<short> const&, long)
 0x0034cd7d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone12getLeftBoundEv	TouchScreenIPhone::getLeftBound() const
 0x0034cd85	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone13getRightBoundEv	TouchScreenIPhone::getRightBound() const
 0x0034cd8d	0x8	TouchScreenIPhone.cpp	game	input	matched	_ZNK17TouchScreenIPhone11getTopBoundEv	TouchScreenIPhone::getTopBound() const

@@ -20,6 +20,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .script_unset_object_action 0x003398b4 : { *ai-startup-script.o(.text._ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE) }
+    ASSERT(SIZEOF(.script_unset_object_action) == 136, "Native Script unsetScriptObjectAction extent")
     .script_next_command 0x0033ce18 : { *ai-startup-script.o(.text._ZN6Script11nextCommandEi) }
     .script_set_state 0x0033922c : { *ai-startup-script.o(.text._ZN6Script8setStateENS_5StateEN10PlayerTest8eContextE) }
 

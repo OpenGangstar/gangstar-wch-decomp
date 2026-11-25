@@ -22,6 +22,8 @@ __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
+    .wanted_constructor 0x00342b08 : { *wanted-update-thunk.o(.text._ZN18WantedLevelManagerC2Ev .text._ZN18WantedLevelManagerC1Ev) }
+    .wanted_update 0x00342fc8 : { *wanted-update-thunk.o(.text._ZN18WantedLevelManager6updateEd) }
     .wanted_on_event 0x00343140 : { *wanted-update-thunk.o(.text._ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager) }
     ASSERT(SIZEOF(.wanted_on_event) == 368, "Native WantedLevelManager onEvent extent")
     .wanted_on_event_table 0x00432a58 : { *wanted-update-thunk.o(.rodata._ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager) }

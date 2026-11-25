@@ -333,3 +333,26 @@ Point2D<short> TouchScreenBase::getTouchDisplacement(long id) const
     const Point2D<short>& previous = points[id].previous;
     return Point2D<short>(currentX - previous.x, current.y - previous.y);
 }
+
+static const char beginMessage[] = "Finger pression detected";
+
+void TouchScreenBase::touchBegan(const Point2D<short>& point, long id)
+{
+    _trace(beginMessage);
+    if (slotCount < id)
+        slotCount = id + 1;
+
+    _TouchPointInfo& slot = points[id];
+    if (!slot.active) {
+        Point2D<short> p(point);
+        slot.first = p;
+        slot.swipeDirection = 0;
+        slot.numPoints = 1;
+    }
+
+    slot.previous = slot.current;
+    slot.current = point;
+    slot.active = true;
+    slot.hasPoints = true;
+    slot.lastTouchTime = currentTime;
+}
