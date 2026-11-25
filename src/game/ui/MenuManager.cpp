@@ -1168,3 +1168,57 @@ void MenuManager::updateMarkers()
             (*it).marker->UpdateFrame();
     }
 }
+
+struct ScrollMapFields {
+    void* vtable;
+    int width;
+    int height;
+    int left;
+    int top;
+    int right;
+    int bottom;
+    unsigned char unknown28[20];
+    int previousX;
+    int previousY;
+};
+struct ScrollMapClip {
+    unsigned char unknown0[28];
+    irr::core::rect<int> clip;
+};
+extern "C" void _ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE(MenuManager* self, const MapPointList& points)
+{
+    ScrollMapFields& f = *reinterpret_cast<ScrollMapFields*>(self);
+    const Point2D<short>* point = *points.begin();
+    int y, x;
+    x = point->x;
+    y = point->y;
+    int dx = f.previousX - x;
+    int dy = f.previousY - y;
+    irr::core::dimension2d<int> size;
+    Map::getInstance()->getScaledSize(size);
+    f.left += dx;
+    f.right += dx;
+    f.top += dy;
+    f.bottom += dy;
+    if (f.left + dx <= 0) {
+        f.left = 0;
+        f.right = f.width;
+    } else if (f.right + dx >= size.Width) {
+        f.left = size.Width - f.width;
+        f.right = size.Width;
+    }
+    if (f.top + dy <= 0) {
+        f.top = 0;
+        f.bottom = f.height;
+    } else if (f.bottom + dy >= size.Height) {
+        f.bottom = size.Height;
+        f.top = size.Height - f.height;
+    }
+    ScrollMapClip* map = reinterpret_cast<ScrollMapClip*>(Map::getInstance());
+    map->clip.UpperLeftCorner.X = f.left;
+    map->clip.UpperLeftCorner.Y = f.top;
+    map->clip.LowerRightCorner.X = f.right;
+    map->clip.LowerRightCorner.Y = f.bottom;
+    f.previousX = x;
+    f.previousY = y;
+}

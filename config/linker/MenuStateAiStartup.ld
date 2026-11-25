@@ -91,6 +91,7 @@ SECTIONS
     .renderfx_child_sprite 0x0044de10 : { *renderfx-animation.o(.rodata.renderfx_child_sprite) }
 
     .renderfx_collect_characters 0x003ed1bc : { *renderfx-animation.o(.text._ZN8RenderFX17CollectCharactersEPN7gameswf9characterEPKci) }
+    .renderfx_update 0x003f0040 : { *renderfx-animation.o(.text._ZN8RenderFX6UpdateEib) }
     .menu_anims_enabled 0x002e3f84 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15areAnimsEnabledEv) }
     .menu_state_hide 0x002e8654 : { *ai-startup-menustate.o(.text._ZN9MenuState4HideEv) }
     .service_missions_focus 0x002e8fe8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions8GotFocusEv) }

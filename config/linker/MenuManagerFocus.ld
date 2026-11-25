@@ -35,6 +35,7 @@ SECTIONS
     .menu_draw_map 0x002e6ab0 : { *menu-manager-helpers.o(.text._ZNK11MenuManager8_drawMapEv) }
     ASSERT(SIZEOF(.menu_draw_map) == 424, "native _drawMap extent")
     .menu_update_map 0x002e6fe0 : { *menu-manager-helpers.o(.text._ZN11MenuManager9updateMapEv) }
+    .menu_manager_scroll_map 0x002e6864 : { *menu-manager-helpers.o(.text._ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE) }
     ASSERT(SIZEOF(.menu_update_map) == 388, "native updateMap extent")
     .preload_format 0x00419004 : { *menu-manager-helpers.o(.rodata.preloadFormat) }
     .preload_error 0x00419014 : { *menu-manager-helpers.o(.rodata.preloadError) }
