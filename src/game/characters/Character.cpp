@@ -1486,6 +1486,117 @@ void Character::hijacked()
     }
 }
 
+#include "NPCDespawnEvent.h"
+#include "../core/EventManager.h"
+extern "C" void _ZN9Character14throwOutDriverEb(Character* self, bool left);
+static inline bool isGettingInVehicle(unsigned int flags)
+{
+    return static_cast<int>(flags << 14) < 0;
+}
+
+bool Character::switchMoveAnimation()
+{
+    switch(currentAnimation) {
+    case 7:case 8:
+        hijacked(); return true;
+    case 30:case 31:case 32:case 33:
+        hijacked(); return true;
+    case 2:case 4:
+        positionInVehicle(false);
+    case 1:case 3:
+        movementFlags &= ~0x10000u;
+        movementFlags |= 0x400u;
+        setAnimation(vehicle->getSeatedAnimation(),1.0f,true,false,false);
+        hide();
+        if(vehicle->immobilized) {
+            vehicle->mobilize();
+            if(vehicle->getDriver()->isPlayer()) Application::GetInstance()->GetControlManager()->unlock();
+        }
+        if(!vehicle->unknown28) vehicle->unknown4 |= 0x80u;
+        if(vehicle->getDriver()!=this) return true;
+        if(s_type[getObjectType()]==5 && (static_cast<NPC*>(this)->flags356 & 0x40u)) {
+            AIManager::getInstance()->addAI(vehicle,static_cast<gameloft::ai::StateID>(8));
+            PlayerTest* player=PlayerTest::GetPlayer();
+            if((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                vehicle->aiTarget=player->getVehicle();
+            else
+                vehicle->aiTarget=reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(player));
+            Vehicle* fleeing = vehicle;
+            const unsigned int flags = fleeing->flags344 | 0x400800u;
+            fleeing->flags344 = flags;
+            unsigned int randomFlag = 0x100000u;
+            if (!(lrand48() & 1)) randomFlag = 0x200000u;
+            fleeing->flags344 = flags | randomFlag;
+            Vehicle* pursuer = vehicle;
+            if(pursuer->aiTarget) {
+                pursuer->unknown776 = pursuer->unknown188;
+                pursuer->flags344 |= 0x1000u;
+            }
+        } else AIManager::getInstance()->addAI(vehicle,static_cast<gameloft::ai::StateID>(0));
+        Application::GetInstance()->GetEventManager()->raise(EvNPCDespawn(this));
+        return true;
+    case 17:case 18:case 19:case 20:case 21:
+        if(!isDead()) removeCollisions();
+        setAnimation(-1,1.0f,false,false,false); return true;
+    case 14:case 16:
+        exitVehicle(false); return true;
+    case 10:case 12:
+        shadowNode->setVisible(false);
+        if(movementFlags & 0x40000u) { closeVehicleDoorFromInside(false); movementFlags &= ~0x40000u; }
+        if(movementFlags & 0x80000u) { _ZN9Character14throwOutDriverEb(this, false); movementFlags &= ~0x80000u; }
+        return true;
+    case 174:
+        if(getWeapon() && getWeapon()->getWeaponType()==7) setAnimation(155,1.0f,true,true,false);
+        else setAnimation(154,1.0f,true,true,false);
+        return true;
+    case 13:case 15:
+        exitVehicle(true); return true;
+    case 9:case 11:
+        shadowNode->setVisible(false);
+        if(movementFlags & 0x40000u) { closeVehicleDoorFromInside(true); movementFlags &= ~0x40000u; }
+        return true;
+    case 26:case 28:
+        if(isGettingInVehicle(movementFlags)) { getInVehicle(true); movementFlags &= ~0x20000u; }
+        else { setAnimation(89,1.0f,true,false,false); movementFlags &= ~0x10000000u; }
+        return true;
+    case 22:
+        if(movementFlags & 0x20000u) { movementFlags &= ~0x20000u; getInVehicle(true); }
+        else if(movementFlags & 0x100000u) { _ZN9Character14throwOutDriverEb(this, true); movementFlags &= ~0x100000u; }
+        return true;
+    case 156:
+        if(getWeapon() && getWeapon()->getWeaponType()==7) setAnimation(149,1.0f,true,true,false);
+        else setAnimation(148,1.0f,true,true,false);
+        return true;
+    case 37:
+        setAnimation(34,1.0f,true,true,false); return true;
+    case 27:case 29:
+        if(isGettingInVehicle(movementFlags)) { getInVehicle(false); movementFlags &= ~0x20000u; }
+        else { setAnimation(89,1.0f,true,false,false); movementFlags &= ~0x10000000u; }
+        return true;
+    case 38:case 43:case 168:case 171:case 180:case 191:case 194:case 200:
+        setAnimation(getSpecificAnimation(202),1.0f,true,true,false); return true;
+    case 0:case 173:case 205:
+        setAnimation(getSpecificAnimation(188),1.0f,true,true,false); return true;
+    case 151:case 157:
+        setAnimation(getSpecificAnimation(165),1.0f,true,false,false); return true;
+    case 150:
+        if(getWeapon() && getWeapon()->getWeaponType()==7) setAnimation(155,1.0f,true,true,false);
+        else setAnimation(154,1.0f,true,true,false);
+        return true;
+    case 23:
+        if(movementFlags & 0x20000u) { movementFlags &= ~0x20000u; getInVehicle(false); }
+        else if(movementFlags & 0x100000u) { _ZN9Character14throwOutDriverEb(this, false); movementFlags &= ~0x100000u; }
+        return true;
+    case 41:
+        setAnimation(36,1.0f,true,true,false); return true;
+    case 49:
+        setAnimation(42,1.0f,true,true,false); return true;
+    case 35:
+        setAnimation(getSpecificAnimation(165),1.0f,true,true,false); return true;
+    default: return false;
+    }
+}
+
 void Character::hitByCar(int direction, float speed, LevelObject* source)
 {
     if (movementFlags & 0x10000u)

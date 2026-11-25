@@ -7,7 +7,7 @@ class LevelObject;
 
 class EvNPCDespawn : public IEvent {
 public:
-    explicit EvNPCDespawn(LevelObject* object) : object(object) { eventID = 18; }
+    explicit EvNPCDespawn(LevelObject* object) : IEvent(18), object(object) {}
     LevelObject* getTarget() const { return object; }
     virtual ~EvNPCDespawn() {}
 
