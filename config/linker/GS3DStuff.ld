@@ -195,3 +195,4 @@ ASSERT(SIZEOF(.gs_load_switch) == 56, "load switch extent");
 ASSERT(SIZEOF(.gs_load_weights) == 56, "load weights extent");
 ASSERT(SIZEOF(.gs_set_alpha) == 168, "Native GS3DStuff SetAlpha extent");
 ASSERT(SIZEOF(.gs_set_color) == 440, "Native GS3DStuff SetColor extent");
+ASSERT(SIZEOF(.gs_print_node_properties) == 528, "Native GS3DStuff PrintNodeProperties extent");

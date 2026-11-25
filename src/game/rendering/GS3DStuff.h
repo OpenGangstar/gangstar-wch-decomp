@@ -45,6 +45,7 @@ public:
     static int load(int step, int& percent);
     static void unload();
     static void tearDown();
+    static int PrintNodeProperties(irr::scene::ISceneNode*, bool, int);
     static irr::scene::ISceneNode* sunNode;
     static irr::core::array<CollisionBodyDef*>* VisibleNodes;
     static irr::core::array<CollisionBodyDef*>* LastVisibleNodes;

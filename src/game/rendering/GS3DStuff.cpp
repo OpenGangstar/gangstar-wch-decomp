@@ -489,6 +489,120 @@ void GS3DStuff::AddRenderables(irr::scene::ISceneNode* node,
     }
 }
 
+namespace {
+const char nodeTypeFormat[] __attribute__((section(".rodata.gs_node_type_format"))) = "Node->getType(): %c%c%c%c\n";
+const char leafTypeFormat[] __attribute__((section(".rodata.gs_leaf_type_format"))) = "LEAF: %c%c%c%c\n";
+const char indentation[] __attribute__((section(".rodata.gs_indent"))) = "  ";
+
+}
+
+/* STLport-derived inline structure, adapted to observed ARM32 char policy.
+ * Copyright (c) 1994 Hewlett-Packard Company
+ * Copyright (c) 1996,1997 Silicon Graphics Computer Systems, Inc.
+ * Copyright (c) 1997 Moscow Center for SPARC Technology
+ * Copyright (c) 1999 Boris Fomitchev
+ * This material is provided "as is", with absolutely no warranty expressed
+ * or implied. Any use is at your own risk.
+ * Permission to use or copy this software for any purpose is hereby granted
+ * without fee, provided the above notices are retained on all copies.
+ * Permission to modify the code and to distribute modified code is granted,
+ * provided the above notices are retained, and a notice that the code was
+ * modified is included with the above copyright notice.
+ * Modified: char-only private view; retain native allocation/append bindings
+ * and observed operator-delete policy, without reconstructing allocators.
+ */
+#include "../core/NativeAllocator.h"
+namespace {
+class NativeIndentBase;
+class NativeIndent;
+}
+extern "C" {
+void _ZN9stlp_priv12_String_baseIcSaIcEE17_M_allocate_blockEj(NativeIndentBase*, unsigned int)
+    __attribute__((weak));
+void _ZNSs6appendEPKc(NativeIndent*, const char*) __attribute__((weak));
+}
+namespace {
+class NativeIndentProxy : public std::allocator<char> {
+public:
+    char* _M_data;
+    NativeIndentProxy(const std::allocator<char>& allocator, char* end)
+        : std::allocator<char>(allocator), _M_data(end) {}
+};
+class NativeIndentBase {
+    union Buffers { char* _M_dynamic_buf; char _M_static_buf[16]; } _M_buffers;
+protected:
+    char* _M_finish;
+    NativeIndentProxy _M_end_of_storage;
+    bool _M_using_static_buf() const {
+        return _M_end_of_storage._M_data == _M_buffers._M_static_buf + 16;
+    }
+    void _M_deallocate_block() {
+        if (!_M_using_static_buf() && _M_buffers._M_dynamic_buf != 0)
+            ::operator delete(_M_buffers._M_dynamic_buf);
+    }
+    NativeIndentBase(const std::allocator<char>& allocator, unsigned int n)
+        : _M_finish(_M_buffers._M_static_buf),
+          _M_end_of_storage(allocator, _M_buffers._M_static_buf + 16) {
+        _ZN9stlp_priv12_String_baseIcSaIcEE17_M_allocate_blockEj(this, n);
+    }
+    ~NativeIndentBase() { _M_deallocate_block(); }
+    void _M_destroy_range() { /* char has trivial destruction */ }
+public:
+    static void verifyLayout() {
+        typedef char Size[sizeof(NativeIndentBase)==24?1:-1];
+        typedef char Alignment[__alignof__(NativeIndentBase)==4?1:-1];
+        typedef char Finish[__builtin_offsetof(NativeIndentBase,_M_finish)==16?1:-1];
+        typedef char End[__builtin_offsetof(NativeIndentBase,_M_end_of_storage)==20?1:-1];
+        typedef char UnionSize[sizeof(Buffers)==16?1:-1];
+        typedef char ProxySize[sizeof(NativeIndentProxy)==4?1:-1];
+    }
+};
+class NativeIndent : protected NativeIndentBase {
+    void _M_terminate_string() { *_M_finish = 0; }
+public:
+    explicit NativeIndent(const std::allocator<char>& allocator = std::allocator<char>())
+        : NativeIndentBase(allocator, 16) { _M_terminate_string(); }
+    ~NativeIndent() { _M_destroy_range(); }
+};
+typedef char DerivedSize[sizeof(NativeIndent)==24?1:-1];
+typedef char DerivedAlignment[__alignof__(NativeIndent)==4?1:-1];
+}
+
+int GS3DStuff::PrintNodeProperties(irr::scene::ISceneNode* node, bool recursive, int depth)
+{
+    int count = 0;
+    if (node->getType() == 0x79746d65 || node->getType() == 0x796d6d64 ||
+        node->getType() == 0x6e656164 || node->getType() == 0x72676d73) {
+        count = 1;
+    } else {
+        printf(nodeTypeFormat, static_cast<unsigned char>(node->getType()),
+            (static_cast<unsigned int>(node->getType()) << 16 >> 24),
+            (static_cast<unsigned int>(node->getType()) << 8 >> 24),
+            (static_cast<unsigned int>(node->getType()) >> 24));
+        count = 0;
+    }
+
+    irr::scene::SceneNodeList::Node* first = node->getChildren().begin();
+    if (first == node->getChildren().end() &&
+        node->getType() != 0x6d656164 && node->getType() != 0x73656164) {
+        printf(leafTypeFormat, static_cast<unsigned char>(node->getType()),
+            (static_cast<unsigned int>(node->getType()) << 16 >> 24),
+            (static_cast<unsigned int>(node->getType()) << 8 >> 24),
+            (static_cast<unsigned int>(node->getType()) >> 24));
+    }
+
+    NativeIndent indent;
+    for (int index = 0; index < depth; ++index)
+        _ZNSs6appendEPKc(&indent, indentation);
+
+    if (recursive) {
+        for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+             child != node->getChildren().end(); child = child->next)
+            count += PrintNodeProperties(child->value, true, depth + 1);
+    }
+    return count;
+}
+
 void GS3DStuff::setSkyColor(bool enabled)
 {
     static_cast<CustomSkyBoxSceneNode*>(skyBox)->setSkyColor(enabled);
