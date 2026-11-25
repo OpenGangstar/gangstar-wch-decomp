@@ -8,6 +8,7 @@ __aeabi_fmul = 0x001c4724;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .skybox_set_sky_color 0x002f84c8 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNode11setSkyColorEb) }
     .skybox_dtor_0 0x002fbee8 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNodeD1Ev .gnu.linkonce.t._ZN21CustomSkyBoxSceneNodeD1Ev) }
     .skybox_dtor_1 0x002fbe28 : { *sdk-startup-customskyboxscenenode.o(.text._ZN21CustomSkyBoxSceneNodeD0Ev .gnu.linkonce.t._ZN21CustomSkyBoxSceneNodeD0Ev) }
     .skybox_dtor_2 0x002fbe00 : { *sdk-startup-customskyboxscenenode.o(.text._ZTv0_n12_N21CustomSkyBoxSceneNodeD0Ev .gnu.linkonce.t._ZTv0_n12_N21CustomSkyBoxSceneNodeD0Ev) }

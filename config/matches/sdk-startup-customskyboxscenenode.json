@@ -50,7 +50,8 @@
         {
             "name": "_GLOBAL__I__ZN21CustomSkyBoxSceneNodeC2EPN3irr5video8ITextureEPNS0_5scene10ISceneNodeEi",
             "address": "0x002f954d"
-        }
+        },
+        "_ZN21CustomSkyBoxSceneNode11setSkyColorEb"
     ],
     "sections": [
         ".skybox_vtable",
@@ -64,7 +65,8 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".skybox_set_sky_color"
     ],
     "retail_got": true,
     "external_thumb_functions": [
