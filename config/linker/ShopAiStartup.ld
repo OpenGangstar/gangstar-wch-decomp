@@ -21,8 +21,11 @@ __aeabi_fsub = 0x001c4328;
 __aeabi_fmul = 0x001c4724;
 __aeabi_fadd = 0x001c4154;
 __aeabi_fcmpgt = 0x001c419c;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
+    .shop_update 0x00305f5c : { *ai-startup-shop.o(.text._ZN4Shop6UpdateEi) }
     .shop_reset_counters 0x00305ca4 : { *(.text._ZN4Shop24resetAchievementCountersEv) }
     .shop_lock 0x00306340 : { *(.text._ZN4Shop4lockEv) }
     .shop_unlock 0x003060dc : { *(.text._ZN4Shop6unlockEv) }
@@ -76,3 +79,4 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.shop_update) == 384, "Native Shop Update extent");

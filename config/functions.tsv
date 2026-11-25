@@ -10485,7 +10485,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00305df1	0x38	Shop.cpp	game	ui	matched	_ZN4ShopD2Ev	Shop::~Shop()
 0x00305df1	0x38	Shop.cpp	game	ui	matched	_ZN4ShopD1Ev	Shop::~Shop()
 0x00305e29	0x134	Shop.cpp	game	ui	matched	_ZN4Shop7triggerEb	Shop::trigger(bool)
-0x00305f5d	0x180	Shop.cpp	game	ui	pending	_ZN4Shop6UpdateEi	Shop::Update(int)
+0x00305f5d	0x180	Shop.cpp	game	ui	matched	_ZN4Shop6UpdateEi	Shop::Update(int)
 0x003060dd	0xdc	Shop.cpp	game	ui	matched	_ZN4Shop6unlockEv	Shop::unlock()
 0x003061b9	0x144	Shop.cpp	game	ui	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003062fd	0x14	Shop.cpp	game	ui	matched	_GLOBAL__I__ZN4Shop15s_numShopWeaponE	_GLOBAL__I__ZN4Shop15s_numShopWeaponE
@@ -11365,7 +11365,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD2Ev	RetroEffect::~RetroEffect()
 0x0032ab69	0x6c	RetroEffect.cpp	game	rendering	matched	_ZN11RetroEffectD1Ev	RetroEffect::~RetroEffect()
 0x0032abd4	0x14	RetroEffect.cpp	game	rendering	matched	_ZThn4_NK11RetroEffect6draw2dEv	non-virtual thunk to RetroEffect::draw2d() const
-0x0032abe9	0x14c	RetroEffect.cpp	game	rendering	pending	_ZNK11RetroEffect6draw2dEv	RetroEffect::draw2d() const
+0x0032abe9	0x14c	RetroEffect.cpp	game	rendering	matched	_ZNK11RetroEffect6draw2dEv	RetroEffect::draw2d() const
 0x0032ad35	0x30	Reward.cpp	game	missions	matched	__tcf_3	__tcf_3
 0x0032ad65	0x10	Reward.cpp	game	missions	matched	_ZN6Reward7setAnimEi	Reward::setAnim(int)
 0x0032ad75	0x26	Reward.cpp	game	missions	matched	_ZN6Reward10setMessageEii	Reward::setMessage(int, int)

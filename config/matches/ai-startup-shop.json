@@ -26,6 +26,7 @@
     "source": "src/game/ui/Shop.cpp",
     "linker_script": "config/linker/ShopAiStartup.ld",
     "functions": [
+        "_ZN4Shop6UpdateEi",
         "_ZN4Shop24resetAchievementCountersEv",
         "_ZN4Shop4lockEv",
         "_ZN4Shop6unlockEv",
@@ -61,6 +62,7 @@
         }
     ],
     "sections": [
+        ".shop_update",
         ".shop_vtable",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -74,6 +76,8 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN10PlayerTest14setClosestShopEP4Shop",
+        "_ZN10Checkpoint6UpdateEi",
         "_ZN13CameraManager11getInstanceEv",
         "_ZNK13CameraManager9getCameraEv",
         "_ZN17GameObjectManager3AddEP11LevelObjecti",
