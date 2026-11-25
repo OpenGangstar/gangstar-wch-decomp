@@ -5,6 +5,26 @@ and acceptance. Use the binary, address, and function name to identify each
 entry. Follow the workflow in [AGENTS.md](AGENTS.md).
 
 <!-- active-ownership:start -->
+## Claude coordinator checkpoint, 2026-11-25
+
+Claude is now the sole coordinator. Historical Codex assignments remain
+released; none is active. Claude workers write only under their own
+`_scratch/claude/<worker>/` directory, never edit canonical sources, and never
+commit, push, open PRs or spawn workers. The coordinator integrates.
+
+| Binary | Address | Function | Owner | Status | Matching | Relevant source and next step |
+| --- | --- | --- | --- | --- | --- | --- |
+| libsanangeles.so | 0x00352cad | SoundManager::getNumberOfPlayingSounds() | coordinator | REVIEW | 100%; 80 bytes | src/game/audio/SoundManager.cpp; repeated `soundSlots[id][channel]` in test and call restores retail `ldr r3,[r3,r6]` operand order; full 191-profile gate passed (5467 function/5490 section/181 region) |
+| libsanangeles.so | 0x00352a55 | SoundManager::endCutscene() | unassigned | BLOCKED | Unmatched; 236 bytes, 6 differing | src/game/audio/SoundManager.cpp; six further volume-loop forms (cached, row, assignment, pointer arithmetic, explicit compare) keep table-first operands; retail wants index-first in both volume loops |
+| libsanangeles.so | 0x002ecb01, 0x002ecb9d, 0x002ecbbd | Widgets::Help::SetIcon, IGMenu::GoToFrame, Achievement::SetIcon | unassigned | BLOCKED | Unmatched; 32 bytes each | src/game/ui/MenuWidget.cpp; sched2 dump: `mov r1,r4` wins over `ldr r0,[r0,#8]` by last-insn true-dependence rank; six forms identical |
+| libsanangeles.so | 0x00353175 | SoundManager::update(double) | unassigned | BLOCKED | Unmatched; 428 bytes, 2 differing (0xe6/0xe7) | src/game/audio/SoundManager.cpp; _scratch/claude/w1/REPORT.md: delete-branch slot clear retail `ldr r3,[r4,r2]` (offset first), ours table first; repeated, cached, reloaded-table and shared-clear (400B) forms fail; expand puts REG_POINTER table first, gcse1 copy-prop keeps order |
+| libsanangeles.so | 0x0034ccf1 | TouchScreenBase::touchBegan(Point2D<short> const&, long) | claude-w1b | ASSIGNED | Unmatched; 140 bytes, 7 differing | src/game/input/TouchScreenBase.cpp; scratch-only candidate search |
+| libsanangeles.so | 0x00354725 | EventManager::_detach(int, IEventReceiver*) | unassigned | BLOCKED | Unmatched; best new 292/native316 | src/game/scripting/EventManager.cpp; _scratch/claude/w2/REPORT.md: receiver part instruction-exact, group index kept in one register (retail r5 + ip copy); next: found=-1/break search form. Archived 316B/2-diff candidate remains reference |
+| libsanangeles.so | 0x003ece05 | RenderFX::ForceTexturesToVRAM(bool, gameswf::player_context*) | claude-w2b | ASSIGNED | Unmatched; 256 bytes, 4 differing | src/game/rendering/menufx.cpp; coordinator six forms identical; dumps show shared CSE index temp loses TER, giving table-first operands; bounded escalation on value-distinct index forms |
+| libsanangeles.so | 0x002e86fd | MenuState::GotFocus() | unassigned | BLOCKED | Unmatched; 248 bytes, 12 register diffs | src/game/ui/MenuState.cpp; _scratch/claude/w3/REPORT.md: lreg priority entry(~73) beats widget(~57) so widget gets r6; `__builtin_expect(!IsVisible(),1)` swaps registers but bb-reorder gives 236B; three forms identical. Next: shape giving widget >=8 refs or shorter live length without changing edge probabilities |
+| libsanangeles.so | 0x0033ddd5 | ScriptManager::loadCommand(DataStream&) | claude-w3b | ASSIGNED | Unmatched; 2440/native2436 | src/game/scripting/ScriptManager.cpp; bounded test of handoff ungrouped-no-payload-case edge/crossjump hypothesis |
+| libsanangeles.so | 0x00353095 | SoundManager::_getReadySound(int) | claude-w4 | ASSIGNED | Unmatched; 224 bytes | src/game/audio/SoundManager.cpp; scratch-only candidate search |
+
 ## Claude handoff checkpoint, 2026-11-25 (Pacific/Auckland)
 
 This is the authoritative ownership checkpoint. The user requested finishing the

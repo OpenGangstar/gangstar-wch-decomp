@@ -1,5 +1,8 @@
 # SoundManager playing-count reconstruction: unmatched
 
+> Superseded: the function now matches with a direct-subscript form; see
+> `docs/matches/sound-playing-count.md`. This record is kept as history.
+
 The unapplied patch reconstructs `SoundManager::getNumberOfPlayingSounds()` at
 Thumb `0x00352cad`, native 80 bytes. It has no branch hints, assembly, register
 constraints, output edits or progress credit. Preserve the assembly marker.

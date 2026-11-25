@@ -72,6 +72,7 @@ SECTIONS
     .sound_manager_slots_0 0x00352844 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager26getNumberOfAllocatedSoundsEv) }
     .sound_manager_slots_1 0x00352c3c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14isSoundPlayingEi) }
     .sound_manager_slots_2 0x00352c70 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14isSoundPlayingEii) }
+    .sound_playing_count 0x00352cac : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager24getNumberOfPlayingSoundsEv) }
     .sound_manager_dispatch_0 0x00352920 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager8setPitchEiif) }
     .sound_manager_dispatch_1 0x0035294c : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE) }
     .sound_manager_dispatch_2 0x00352b68 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE) }
