@@ -10326,7 +10326,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002fde51	0x1a0	NPC.cpp	game	ai	matched	_ZN3NPC10isUnderCarEv	NPC::isUnderCar()
 0x002fdff1	0x94	NPC.cpp	game	ai	matched	_ZN3NPC12getNextPointERN3irr4core8vector3dIfEE	NPC::getNextPoint(irr::core::vector3d<float>&)
 0x002fe085	0x64	NPC.cpp	game	ai	matched	_ZN3NPC13goToNextPointEb	NPC::goToNextPoint(bool)
-0x002fe0e9	0x80	NPC.cpp	game	ai	pending	_ZN3NPC11isHostileToEP11LevelObject	NPC::isHostileTo(LevelObject*)
+0x002fe0e9	0x80	NPC.cpp	game	ai	matched	_ZN3NPC11isHostileToEP11LevelObject	NPC::isHostileTo(LevelObject*)
 0x002fe169	0x100	NPC.cpp	game	ai	matched	_ZN3NPC11goToVehicleEP7Vehiclebbbb	NPC::goToVehicle(Vehicle*, bool, bool, bool, bool)
 0x002fe269	0xd0	NPC.cpp	game	ai	matched	_ZN3NPC11equipWeaponEbb	NPC::equipWeapon(bool, bool)
 0x002fe339	0x5c	NPC.cpp	game	ai	matched	_ZN3NPC12attackTargetEP11LevelObject	NPC::attackTarget(LevelObject*)

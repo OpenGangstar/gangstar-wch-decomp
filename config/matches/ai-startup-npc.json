@@ -116,7 +116,8 @@
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN3NPC6freezeEv",
-        "_ZN3NPC16triggerCombatSFXEi"
+        "_ZN3NPC16triggerCombatSFXEi",
+        "_ZN3NPC11isHostileToEP11LevelObject"
     ],
     "sections": [
         ".npc_is_under_car",
@@ -141,7 +142,8 @@
         ".character_specific_animation",
         ".npc_freeze",
         ".npc_combat_sfx",
-        ".npc_combat_sfx_table"
+        ".npc_combat_sfx_table",
+        ".npc_is_hostile_to"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -245,6 +247,7 @@
         "_ZNK7Vehicle12isDoorOpenedEb",
         "_Z21ekd_makestringfile255PKcPc",
         "_Z13ekd_debug_outPKcPc",
-        "_ZNK6Weapon11isTwoHandedEv"
+        "_ZNK6Weapon11isTwoHandedEv",
+        "_ZN8Factions14isFactionEnemyEi"
     ]
 }

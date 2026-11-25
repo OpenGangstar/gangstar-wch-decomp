@@ -914,3 +914,27 @@ bool NPC::isUnderCar()
         return false;
     return !(d3.Y * e3.X - d3.X * e3.Y < 0.0f);
 }
+
+#include "../characters/PlayerTest.h"
+#include "../meta/Factions.h"
+static inline bool areFactionsHostile(unsigned int otherFaction, int faction)
+{
+    if (faction == 2)
+        return otherFaction == 1;
+    if (faction == 1)
+        return otherFaction == 2;
+    return false;
+}
+
+bool NPC::isHostileTo(LevelObject* object)
+{
+    if (flags356 & 0x40u) {
+        if (target == object)
+            return true;
+        if (object == static_cast<LevelObject*>(PlayerTest::GetPlayer()))
+            return Factions::isFactionEnemy(faction);
+        if (LevelObject::s_type[object->getObjectType()] == 5)
+            return areFactionsHostile(static_cast<NPC*>(object)->faction, faction);
+    }
+    return false;
+}
