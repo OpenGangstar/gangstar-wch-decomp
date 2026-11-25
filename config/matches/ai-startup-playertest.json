@@ -26,6 +26,7 @@
     "source": "src/game/ai/PlayerTest.cpp",
     "linker_script": "config/linker/PlayerTestAiStartup.ld",
     "functions": [
+        "_ZN10PlayerTest14isFacingTargetEv",
         "_ZN10PlayerTest5snipeEP6Weapon",
         "_ZN10PlayerTest14onObjectKilledEP11LevelObject",
         "_ZN10PlayerTest5photoEP6Weapon",
@@ -130,6 +131,7 @@
         "_ZN9Character20getSpecificAnimationEi"
     ],
     "sections": [
+        ".player_is_facing_target",
         ".player_car_open_clip",
         ".player_car_enter_low_clip",
         ".player_car_enter_high_clip",
@@ -176,7 +178,6 @@
         "_ZN10HitWarningC1EP7ASpritei",
         "_ZN10HudElement5blinkEbb",
         "_ZN10HudElementC1EP7ASpriteib",
-        "_ZN10PlayerTest14isFacingTargetEv",
         "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
         "_ZN11AnalogStick10switchModeENS_4ModeE",
         "_ZN11AnalogStickC1EP7ASpriteii",
@@ -318,7 +319,6 @@
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
-        "_ZN9Character3dieEb",
         "_ZN9Character4showEv",
         "_ZN9Character5punchEv",
         "_ZN9Character5readyEf",

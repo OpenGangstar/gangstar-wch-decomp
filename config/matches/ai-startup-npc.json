@@ -221,7 +221,6 @@
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
-        "_ZN9Character3dieEb",
         "_ZN9Character4showEv",
         "_ZN9Character5punchEv",
         "_ZN9Character5readyEf",

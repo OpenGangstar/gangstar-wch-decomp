@@ -156,7 +156,8 @@
         "_ZN10PhysicInfoC1Ev",
         "_ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi",
         "_ZN9Character20getSpecificAnimationEi",
-        "_ZN9Character7punchedEiiP11LevelObject"
+        "_ZN9Character7punchedEiiP11LevelObject",
+        "_ZN9Character3dieEb"
     ],
     "sections": [
         ".character_animation_resource",
@@ -196,7 +197,8 @@
         ".physic_find_lower",
         ".character_specific_animation",
         ".character_punched",
-        ".character_punched_table"
+        ".character_punched_table",
+        ".character_die"
     ],
     "dependencies": [
         "ai-startup-physicattributes"
@@ -280,6 +282,7 @@
         "_ZNK7Vehicle12isDoorOpenedEb",
         "_Z21ekd_makestringfile255PKcPc",
         "_Z13ekd_debug_outPKcPc",
-        "_ZNK6Weapon11isTwoHandedEv"
+        "_ZNK6Weapon11isTwoHandedEv",
+        "_ZN18AchievementManager11recordDeathER9Character"
     ]
 }
