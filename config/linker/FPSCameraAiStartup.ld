@@ -29,6 +29,7 @@ _ZN28retail_fpscamera_transitions22scripted_vehicle_transE = 0x00429b20;
 SECTIONS
 {
     .fps_scroll 0x00333e40 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6scrollERKSt4listIP7Point2DIsESaIS3_EE) }
+    .fps_update_touch_inputs 0x00334388 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera17updateTouchInputsEv) }
     .fps_zoom_touch 0x003342ac : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE) }
     .fps_update 0x003344f4 : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera6updateEf) }
     .fps_init 0x00333fec : { *ai-startup-fpscamera.o(.text._ZN9FPSCamera4initEP11LevelObjecti) }

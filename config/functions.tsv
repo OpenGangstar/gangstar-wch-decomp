@@ -11758,7 +11758,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00334155	0x144	FPSCamera.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x00334299	0x14	FPSCamera.cpp	game	core	matched	_GLOBAL__I__ZN9FPSCameraC2Ev	_GLOBAL__I__ZN9FPSCameraC2Ev
 0x003342ad	0xdc	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera4zoomERKSt4listIP7Point2DIsESaIS3_EE	FPSCamera::zoom(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&)
-0x00334389	0x16c	FPSCamera.cpp	game	core	pending	_ZN9FPSCamera17updateTouchInputsEv	FPSCamera::updateTouchInputs()
+0x00334389	0x16c	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera17updateTouchInputsEv	FPSCamera::updateTouchInputs()
 0x003344f5	0x144	FPSCamera.cpp	game	core	matched	_ZN9FPSCamera6updateEf	FPSCamera::update(float)
 0x00334639	0x2	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera4initEP11LevelObjecti	FreeLookCamera::init(LevelObject*, int)
 0x0033463d	0x2	FreeLookCamera.cpp	game	core	matched	_ZN14FreeLookCamera6updateEf	FreeLookCamera::update(float)
@@ -17313,7 +17313,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ed9ed	0x1ec	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*)
 0x003edbd9	0xa4	menufx.cpp	game	rendering	matched	_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*)
 0x003edc7d	0x168	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEv	RenderFX::PreloadGlyphs()
-0x003edde5	0x138	menufx.cpp	game	rendering	pending	_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE	RenderFX::Load(char const*, gameswf::player_context*)
+0x003edde5	0x138	menufx.cpp	game	rendering	matched	_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE	RenderFX::Load(char const*, gameswf::player_context*)
 0x003edf1d	0x9c	menufx.cpp	game	rendering	matched	_ZN8RenderFX4FindEPKc	RenderFX::Find(char const*)
 0x003edfb9	0x68	menufx.cpp	game	ui	matched	_ZN6MenuFX13RegisterStateEPNS_5StateEPKc	MenuFX::RegisterState(MenuFX::State*, char const*)
 0x003ee021	0x12c	menufx.cpp	game	ui	matched	_ZN6MenuFX14RegisterStatesEPPNS_5StateEi	MenuFX::RegisterStates(MenuFX::State**, int)

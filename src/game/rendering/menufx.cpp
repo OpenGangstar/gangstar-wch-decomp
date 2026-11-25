@@ -1746,3 +1746,67 @@ gameswf::character* RenderFX::Find(const char* name, gameswf::character* parent)
             return result;
     } while (true);
 }
+
+extern "C" void _ZN7gameswf6playerC1EPNS_14player_contextE(gameswf::player* player, gameswf::player_context* context);
+extern "C" void _ZN7gameswf6player11set_workdirEPKc(gameswf::player* player, const char* directory);
+extern "C" gameswf::smart_ptr<gameswf::root> _ZN7gameswf6player9load_fileEPKc(gameswf::player* player, const char* name);
+
+namespace {
+struct LoadRootMovie {
+    unsigned char prefix[0x10];
+    gameswf::character* movie;
+};
+
+struct LoadWorkString {
+    LoadWorkString()
+    {
+        m_local.m_size = 1;
+        m_local.m_buffer[0] = 0;
+    }
+    ~LoadWorkString()
+    {
+        if (m_heap.m_all_ones == static_cast<char>(~0))
+            SwfFree(m_heap.m_buffer);
+    }
+    struct Local {
+        char m_size;
+        char m_buffer[15];
+    };
+    struct Heap {
+        char m_all_ones;
+        int m_size;
+        int m_capacity;
+        char* m_buffer;
+    };
+    union {
+        Local m_local;
+        Heap m_heap;
+    };
+};
+}
+
+void RenderFX::Load(const char* name, gameswf::player_context* context)
+{
+    if (!context)
+        context = s_default_context;
+
+    gameswf::player* created = static_cast<gameswf::player*>(operator new(104, swf::DefaultMemHint));
+    _ZN7gameswf6playerC1EPNS_14player_contextE(created, context);
+    player.set_ref(created);
+    reinterpret_cast<MovieRenderFX*>(player.get())->renderFX = this;
+
+    {
+        LoadWorkString workdir;
+        const char* end = name + strlen(name);
+        while (end >= name && *end != '/' && *end != '\\')
+            --end;
+        int length = end - name + 1;
+        if (length > 0) {
+            gameswf::tu_string directory(name, length);
+            _ZN7gameswf6player11set_workdirEPKc(player.get(), directory.c_str());
+        }
+    }
+
+    root.set_ref(_ZN7gameswf6player9load_fileEPKc(player.get(), name).get());
+    SetContext(reinterpret_cast<const LoadRootMovie*>(root.get())->movie);
+}
