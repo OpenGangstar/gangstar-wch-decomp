@@ -27,6 +27,7 @@
     "source": "src/game/scripting/ScriptManager.cpp",
     "linker_script": "config/linker/ScriptManagerHelpers.ld",
     "functions": [
+        "_ZN13ScriptManager16checkScreenPressEv",
         "_ZN13ScriptManager4drawEv",
         "_ZN13ScriptManager8tearDownEv",
         "_ZN13ScriptManager6unloadEv",
@@ -194,6 +195,7 @@
         "_ZN13ScriptManager11loadCommandER10DataStream"
     ],
     "sections": [
+        ".script_check_screen_press",
         ".script_setup_intro",
         ".script_setup_hud",
         ".script_setup_hud2",
@@ -341,6 +343,7 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
+        "_ZN15TouchScreenBase5clearEv",
         "_ZN6Revive6draw2dEv",
         "_ZN7Mission4drawEv",
         "_ZN10AnimObject7SetAnimEii",

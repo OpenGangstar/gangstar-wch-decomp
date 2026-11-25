@@ -25,6 +25,7 @@
 #include "../world/GameObjectManager.h"
 #include "../ui/WidgetDialog.h"
 #include "ScriptManager.h"
+#include "../input/TouchScreenBase.h"
 #include "Script.h"
 #include "../app/Application.h"
 #include "../hud/CHudManager.h"
@@ -277,6 +278,7 @@ void ScriptManager::loadGame(bool reset)
     if (reset || !game.LoadAndApply(SaveGame::GetDefaultFilename()))
         getInstance()->resetGame(false, -1);
 }
+
 
 void ScriptManager::displayOnMinimap(LevelObject* object, bool visible, bool flag)
 {
@@ -2377,4 +2379,17 @@ Structs::ScriptCommand* ScriptManager::loadCommand(DataStream& stream)
     }
     if (command) printCommand(*command);
     return command;
+}
+
+bool ScriptManager::checkScreenPress()
+{
+    Application* application = Application::GetInstance();
+    TouchScreenBase* touch = application->GetTouchScreen();
+    int width, height;
+    application->GetScreenDimensions(width, height);
+    const irr::core::rect<float> region(irr::core::position2d<float>(0, 0),
+                                        irr::core::position2d<float>(width, height));
+    screenPressed = touch->isRegionPressed(region);
+    touch->clear();
+    return screenPressed;
 }

@@ -59,7 +59,8 @@ public:
     int unknown12;
     int cinematicState;
     unsigned int commandCursor;
-    unsigned char unknown24[4];
+    bool screenPressed;
+    unsigned char unknown25[3];
     ASprite* introSprite;
     ASprite* cinematicsHudSprite;
     ASprite* cinematicCharacterSprite;

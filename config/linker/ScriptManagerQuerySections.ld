@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_i2f = 0x001c41e4);
 /* ScriptManager queries and script registration at retail addresses. */
 PROVIDE(_Znwj = 0x001c4814);
 PROVIDE(__cxa_guard_acquire = 0x001c4958);
@@ -10,6 +11,7 @@ PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(memset = 0x001c45d4);
 SECTIONS
 {
+    .script_check_screen_press 0x0033f4c8 : { *script-manager-helpers.o(.text._ZN13ScriptManager16checkScreenPressEv) }
     .script_load_command_table 0x0042f098 : { *script-manager-helpers.o(.rodata._ZN13ScriptManager11loadCommandER10DataStream) }
     .script_load_command_c172 0x0042fa34 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.172) }
     .script_load_command_c168 0x0042fa44 : { *script-manager-helpers.o(.rodata._ZZN13ScriptManager11loadCommandER10DataStreamE5C.168) }

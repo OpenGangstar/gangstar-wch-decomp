@@ -92,6 +92,20 @@ void StringManager::unloadPack(unsigned int pack)
     }
 }
 
+void StringManager::unloadPackSheet(unsigned int pack, unsigned int sheet)
+{
+    if (isPackSheetLoaded(pack, sheet)) {
+        char** strings = static_cast<char**>(packSheets[pack][sheet]);
+        for (int i = 0; strings[i]; ++i) {
+            delete strings[i];
+            strings[i] = 0;
+        }
+        strings = static_cast<char**>(packSheets[pack][sheet]);
+        delete[] strings;
+        packSheets[pack][sheet] = 0;
+    }
+}
+
 #include "../core/NativeStdio.h"
 
 StringManager::StringManager() : currentPack(-1), unknown296(-1)
