@@ -13,6 +13,10 @@
 #include "../core/LocalStartupText.h"
 #include "Path.h"
 
+#include "../world/ObjectData.h"
+extern "C" irr::collada::CColladaFactory* _ZN12CGameFactory11getInstanceEv() __attribute__((weak));
+static inline irr::collada::CColladaFactory* getPathGameFactory() { return _ZN12CGameFactory11getInstanceEv(); }
+
 void operator delete(void*) throw();
 extern "C" {
 extern irr::collada::CColladaFactory _ZZN12CGameFactory11getInstanceEvE2gf __attribute__((weak));
@@ -85,4 +89,20 @@ Path::Path(int type) : Transformation(type)
 Path::~Path()
 {
     delete[] waypoints;
+}
+
+void Path::Load(const Structs::Path& data, irr::collada::CColladaFactory*)
+{
+    LevelObject::Load(data, getPathGameFactory());
+    waypointCount = data.count / 3;
+    waypoints = new irr::core::vector3d<float>[waypointCount];
+    for (int i = 0; i < waypointCount; ++i) {
+        const int* coordinates = data.values + i * 3;
+        const int z = coordinates[2];
+        const int x = coordinates[0];
+        const int y = coordinates[1];
+        irr::core::vector3d<float>& waypoint = waypoints[i];
+        waypoint = irr::core::vector3d<float>(static_cast<float>(x), static_cast<float>(y), static_cast<float>(z));
+    }
+    delete[] data.values;
 }

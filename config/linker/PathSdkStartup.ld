@@ -4,8 +4,12 @@ INCLUDE build/matches/sdk-startup-path/retail-symbols.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZdaPv = 0x001c461c;
+PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(_Znaj = 0x001c3ff8);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
 SECTIONS
 {
+    .path_load 0x00300bc4 : { *sdk-startup-path.o(.text._ZN4Path4LoadERKN7Structs4PathEPN3irr7collada15CColladaFactoryE) }
     .path_ctor 0x00300c8c : { *(.text._ZN4PathC1Ei .text._ZN4PathC2Ei) }
     .path_dtor 0x00300b98 : { *(.text._ZN4PathD1Ev .text._ZN4PathD2Ev) }
     .path_delete 0x00300b64 : { *(.text._ZN4PathD0Ev) }
@@ -25,3 +29,4 @@ SECTIONS
 }
 ASSERT(SIZEOF(.sdk_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
+ASSERT(SIZEOF(.path_load) == 200, "Native Path Load extent");
