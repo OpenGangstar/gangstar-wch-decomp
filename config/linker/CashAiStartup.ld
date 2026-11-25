@@ -1,3 +1,4 @@
+PROVIDE(memset = 0x001c45d4);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-cash/retail-symbols.ld
@@ -16,6 +17,8 @@ _ZN23retail_cash_transitions11guard_transE = 0x00423ac4;
 _ZN23retail_cash_transitions22scripted_vehicle_transE = 0x00423b6c;
 SECTIONS
 {
+    .cash_draw2d_thunk 0x00327bd4 : { *ai-startup-cash.o(.text._ZThn4_NK4Cash6draw2dEv) }
+    .cash_draw2d 0x00327be8 : { *ai-startup-cash.o(.text._ZNK4Cash6draw2dEv) }
     .cash_constructor 0x00327db0 : { *ai-startup-cash.o(.text._ZN4CashC1EP7ASpriteiiiii .text._ZN4CashC2EP7ASpriteiiiii) }
     .cash_draw_cash 0x00327a70 : { *ai-startup-cash.o(.text._ZNK4Cash8drawCashEiPKiRii) }
     .cash_update 0x00327bbc : { *ai-startup-cash.o(.text._ZN4Cash6updateEd) }

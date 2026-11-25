@@ -22,6 +22,7 @@ __aeabi_fdiv = 0x001c4520;
 INCLUDE config/linker/CharacterStateSections.ld
 SECTIONS
 {
+    .character_run_to_target 0x002f39e0 : { *ai-startup-character.o(.text._ZN9Character11runToTargetEi) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-character.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002f1a14 : { *ai-startup-character.o(.text.__tcf_0) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *ai-startup-character.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }
