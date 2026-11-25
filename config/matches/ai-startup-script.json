@@ -26,6 +26,7 @@
     "source": "src/game/scripting/Script.cpp",
     "linker_script": "config/linker/ScriptAiStartup.ld",
     "functions": [
+        "_ZN6Script6rewindEv",
         "_ZN6Script21setScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
         "_ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE",
         "_ZN6ScriptC1Ei",
@@ -78,6 +79,7 @@
         "_ZN6Script11nextCommandEi"
     ],
     "sections": [
+        ".script_rewind",
         ".script_unset_object_action",
         ".ai_startup_function_0",
         ".ai_startup_function_1",
@@ -102,7 +104,6 @@
         "_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10findScriptEi",
-        "_ZN6Script6rewindEv",
         "_ZN13ScriptManager8saveGameEv",
         "_ZN13ScriptManager16displayOnMinimapEP11LevelObjectbb",
         "_ZN11Application11GetInstanceEv",
@@ -119,6 +120,27 @@
         "_ZN13ScriptManager20skipBlockingCommandsEv",
         "_ZN13ScriptManager22resumeBlockingCommandsEv",
         "_ZN13ScriptManager12printCommandERKN7Structs13ScriptCommandE",
-        "_ZNK7Mission8getStateEv"
+        "_ZNK7Mission8getStateEv",
+        "_ZN11CHudManager12showSpyGaugeEb",
+        "_ZN11CHudManager13limitToWeaponEi",
+        "_ZN11LevelObject13showHighlightEi",
+        "_ZN11MenuManager11getInstanceEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager14setSceneCameraEP11SceneCamera",
+        "_ZN13CameraManager20setTouchScreenInputsEb",
+        "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
+        "_ZN13ScriptManager8setStateENS_5StateE",
+        "_ZN18WantedLevelManager18restoreWantedLevelEv",
+        "_ZN18WantedLevelManager6unlockEv",
+        "_ZN3NPC10tagForKillEb",
+        "_ZN4Item20removeAllPlacedItemsEv",
+        "_ZN4Race5resetEv",
+        "_ZN4Shop4lockEv",
+        "_ZN4Shop6unlockEv",
+        "_ZN7Vehicle10tagForKillEb",
+        "_ZNK11LevelObject9isEnabledEv",
+        "_ZNK13ScriptManager7getRaceEv",
+        "_ZNK13WeaponManager18getWeaponLimitedToEN10PlayerTest8eContextE",
+        "_ZNK4Race8getStateEv"
     ]
 }

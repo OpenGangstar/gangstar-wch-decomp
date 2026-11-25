@@ -18,8 +18,10 @@ _ZN25retail_script_transitions11guard_transE = 0x0042eef4;
 _ZN25retail_script_transitions22scripted_vehicle_transE = 0x0042ef9c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__aeabi_fcmpgt = 0x001c419c;
 SECTIONS
 {
+    .script_rewind 0x003399f0 : { *ai-startup-script.o(.text._ZN6Script6rewindEv) }
     .script_unset_object_action 0x003398b4 : { *ai-startup-script.o(.text._ZN6Script23unsetScriptObjectActionEP11LevelObjectNS_13eScriptActionE) }
     ASSERT(SIZEOF(.script_unset_object_action) == 136, "Native Script unsetScriptObjectAction extent")
     .script_next_command 0x0033ce18 : { *ai-startup-script.o(.text._ZN6Script11nextCommandEi) }
@@ -91,3 +93,4 @@ ASSERT(SIZEOF(.script_set_state) == 60, "native Script::setState physical sectio
 
 ASSERT(SIZEOF(.script_next_command) == 252, "nextCommand native input252");
 ASSERT(ADDR(.script_next_command) + SIZEOF(.script_next_command) == 0x0033cf14, "nextCommand native next boundary");
+ASSERT(SIZEOF(.script_rewind) == 656, "Native Script rewind extent");

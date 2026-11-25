@@ -16,6 +16,15 @@
 #include "../core/EventManager.h"
 #include "../core/NativeStdio.h"
 #include "../world/LevelObject.h"
+#include "../meta/Race.h"
+#include "../hud/MenuManager.h"
+#include "../ui/Shop.h"
+#include "../ai/NPC.h"
+#include "../vehicles/Vehicle.h"
+#include "../meta/Item.h"
+#include "../combat/WeaponManager.h"
+#include "../hud/CHudManager.h"
+#include "../core/CameraManager.h"
 
 Script::Script(int capacity)
     : commandCapacity(capacity), commandCount(0), commandIndex(0), commands(0),
@@ -227,6 +236,103 @@ Script::~Script()
 void Script::clearScriptObjectAction()
 {
     objectActions.clear();
+}
+
+extern "C" stlp_priv::_Rb_tree_node_base* incrementScriptAction(stlp_priv::_Rb_tree_node_base*)
+    __asm__("_ZN9stlp_priv10_Rb_globalIbE12_M_incrementEPNS_18_Rb_tree_node_baseE")
+    __attribute__((weak));
+extern "C" void scriptManagerSetState(ScriptManager*, int)
+    __asm__("_ZN13ScriptManager8setStateENS_5StateE");
+extern float scriptDriveBadPoints __asm__("_ZN6Script16s_driveBadPointsE");
+
+struct ScriptRewindIterator {
+    stlp_priv::_Rb_tree_node_base* _M_node;
+    explicit ScriptRewindIterator(stlp_priv::_Rb_tree_node_base* node) : _M_node(node) {}
+    bool operator!=(const ScriptRewindIterator& other) const { return _M_node != other._M_node; }
+};
+
+struct ScriptActionEntry : stlp_priv::_Rb_tree_node_base {
+    LevelObject* first;
+    int second;
+};
+
+void Script::rewind()
+{
+    if (!isEnded()) {
+        Race* race = static_cast<Race*>(ScriptManager::getInstance()->getRace());
+        if (race->getState() != 0)
+            race->reset();
+        ScriptRewindIterator it(objectActions.left);
+        MenuManager::getInstance();
+        while (ScriptRewindIterator(reinterpret_cast<stlp_priv::_Rb_tree_node_base*>(&objectActions)) != it) {
+            ScriptActionEntry* entry = static_cast<ScriptActionEntry*>(it._M_node);
+            if (entry->second & 1) {
+                if (LevelObject::s_type[entry->first->getObjectType()] == 3 && !entry->first->isDead()
+                    && entry->first == reinterpret_cast<LevelObject*>(PlayerTest::GetPlayer()->getVehicle())) {
+                    PlayerTest* player = PlayerTest::GetPlayer();
+                    unsigned int driving = player->flags240 & 0x400u;
+                    if (driving == 0x400u && static_cast<SavePositionInterface*>(player)->getVehicle())
+                        reinterpret_cast<unsigned int*>(entry->first)[1] |= 0x400;
+                    else
+                        entry->first->disable();
+                } else {
+                    entry->first->disable();
+                }
+            }
+            if (entry->second & 2)
+                entry->first->showHighlight(-1);
+            if (entry->second & 4)
+                ScriptManager::displayOnMinimap(entry->first, false, true);
+            if (entry->second & 8)
+                reinterpret_cast<Shop*>(entry->first)->unlock();
+            else if (entry->second & 16)
+                reinterpret_cast<Shop*>(entry->first)->lock();
+            if (entry->second & 64) {
+                WantedLevelManager::getInstance()->unlock();
+                WantedLevelManager::getInstance()->restoreWantedLevel();
+            }
+            if (entry->second & 32) {
+                LevelObject* object = entry->first;
+                switch (LevelObject::s_type[object->getObjectType()]) {
+                case 3:
+                    reinterpret_cast<Vehicle*>(object)->tagForKill(false);
+                    break;
+                case 5:
+                    reinterpret_cast<NPC*>(object)->tagForKill(false);
+                    break;
+                }
+            }
+            if (entry->second & 128) {
+                if (Application::GetInstance()->GetWeaponManager()->getWeaponLimitedTo(PlayerTest::AnyContext) != -1)
+                    Application::GetInstance()->GetHudManager()->limitToWeapon(-1);
+            }
+            if (entry->second & 256)
+                Item::removeAllPlacedItems();
+            int cinematic = entry->second & 1024;
+            if (entry->second & (512 | cinematic)) {
+                scriptManagerSetState(ScriptManager::getInstance(), (entry->second & 512) ? 3 : 6);
+                CameraManager::getInstance()->setSceneCamera(0);
+                LevelObject* vehicle = reinterpret_cast<LevelObject*>(ScriptManager::s_playerTest->getVehicle());
+                if (vehicle && vehicle->isEnabled())
+                    CameraManager::getInstance()->enterMode(2,
+                        reinterpret_cast<LevelObject*>(ScriptManager::s_playerTest->getVehicle()), 0.1f, 0);
+                else
+                    CameraManager::getInstance()->enterMode(0, ScriptManager::s_playerTest, 0.0f, 0);
+                CameraManager::getInstance()->setTouchScreenInputs(true);
+            }
+            it._M_node = incrementScriptAction(it._M_node);
+        }
+        ScriptManager::getInstance()->taggedCount = 0;
+    }
+    clearScriptObjectAction();
+    commandIndex = 0;
+    unknown72 = 0;
+    source = 0;
+    unknown40 = -1;
+    if (scriptDriveBadPoints > 0.0f) {
+        Application::GetInstance()->GetHudManager()->showSpyGauge(false);
+        scriptDriveBadPoints = 0.0f;
+    }
 }
 
 
