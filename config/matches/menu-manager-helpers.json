@@ -127,7 +127,8 @@
         "_ZNK11MenuManager8_drawMapEv",
         "_ZN11MenuManager13updateMarkersEv",
         "_ZN11MenuManager10_scrollMapERKSt4listIP7Point2DIsESaIS3_EE",
-        "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE"
+        "_ZN11MenuManager8_zoomMapERKSt4listIP7Point2DIsESaIS3_EE",
+        "_ZN11MenuManager6updateEP12StateMachine"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -177,7 +178,9 @@
         ".menu_draw_map",
         ".menu_update_markers",
         ".menu_manager_scroll_map",
-        ".menu_manager_zoom_map"
+        ".menu_manager_zoom_map",
+        ".menu_manager_update",
+        ".menu_manager_update_state_name"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -216,6 +219,11 @@
         "_ZNK4Item8unlockedEv",
         "_ZNK4Shop8unlockedEv",
         "_ZN10AnimObject11UpdateFrameEv",
-        "_ZN10PlayerTest9GetPlayerEv"
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN15TouchScreenBase5clearEv",
+        "_ZN5Menus18OptionGameSettings7RefreshEv",
+        "_ZN8RenderFX12UpdateCursorERNS_6CursorEi",
+        "_ZNK12StateMachine12getTimeStampEv",
+        "_ZNK7Widgets8Tutorial15IsCursorPressedEv"
     ]
 }

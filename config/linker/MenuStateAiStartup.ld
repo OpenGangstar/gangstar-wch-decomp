@@ -385,6 +385,8 @@ SECTIONS
     /* Retail shares "Map" (0x0040b608) between MenuState and Widgets::Mission; this image checks MenuState's copy. */
     .menu_widget_duplicate_map_name 0x00700010 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }
     .menu_manager_duplicate_read_mode 0x00700000 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
+    .menu_manager_duplicate_update_state 0x00700040 : { *menu-manager-helpers.o(.rodata.*menuUpdateSettingsStateE) }
+    .menu_state_cheats_allowed 0x002e3ee4 : { *menu-manager-helpers.o(.text._ZNK11MenuManager21isCheatsUnlockAllowedEv .gnu.linkonce.t._ZNK11MenuManager21isCheatsUnlockAllowedEv) }
     /DISCARD/ : { *ai-startup-menuwidget.o(*) *menu-manager-helpers.o(*) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");

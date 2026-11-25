@@ -9523,7 +9523,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e4d69	0x20	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE6spliceEN9stlp_priv14_List_iteratorIlSt16_Nonconst_traitsIlEEERS1_	std::list<long, std::allocator<long> >::splice(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, std::list<long, std::allocator<long> >&)
 0x002e4d89	0x90	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEE25_M_splice_insert_dispatchIN9stlp_priv14_List_iteratorIlSt13_Const_traitsIlEEEEEvNS4_IlSt16_Nonconst_traitsIlEEET_SB_RKSt12__false_type	void std::list<long, std::allocator<long> >::_M_splice_insert_dispatch<stlp_priv::_List_iterator<long, std::_Const_traits<long> > >(stlp_priv::_List_iterator<long, std::_Nonconst_traits<long> >, stlp_priv::_List_iterator<long, std::_Const_traits<long> >, stlp_priv::_List_iterator<long, std::_Const_traits<long> >, std::__false_type const&)
 0x002e4e19	0x64	MenuManager.cpp	stlport	-	matched	_ZNSt4listIlSaIlEEaSERKS1_	std::list<long, std::allocator<long> >::operator=(std::list<long, std::allocator<long> > const&)
-0x002e4e7d	0x368	MenuManager.cpp	game	ui	pending	_ZN11MenuManager6updateEP12StateMachine	MenuManager::update(StateMachine*)
+0x002e4e7d	0x368	MenuManager.cpp	game	ui	matched	_ZN11MenuManager6updateEP12StateMachine	MenuManager::update(StateMachine*)
 0x002e51e5	0x18	MenuManager.cpp	gameswf	-	matched	_ZN7gameswf8as_valueD1Ev	gameswf::as_value::~as_value()
 0x002e51fd	0x450	MenuManager.cpp	game	ui	pending	_ZN11MenuManager7setTextENS_5eTextEPKcPi	MenuManager::setText(MenuManager::eText, char const*, int*)
 0x002e564d	0x62	MenuManager.cpp	game	ui	matched	_ZN11MenuManager7setTextENS_5eTextEiPi	MenuManager::setText(MenuManager::eText, int, int*)

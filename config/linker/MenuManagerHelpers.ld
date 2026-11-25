@@ -18,6 +18,7 @@ __cxa_guard_release = 0x001c46c4;
 INCLUDE config/linker/MenuManagerFocus.ld
 SECTIONS
 {
+    .menu_manager_update_state_name 0x00418da0 : { *menu-manager-helpers.o(.rodata.*menuUpdateSettingsStateE) }
     .preload_binary_mode 0x004014f0 : { *menu-manager-helpers.o(.rodata.preloadBinaryMode) }
     .map_singleton 0x002dbb58 : { *menu-manager-helpers.o(.gnu.linkonce.t._ZN3Map11getInstanceEv) }
     .map_cleanup 0x2e425c : { *menu-manager-helpers.o(.text.__tcf_0) }
