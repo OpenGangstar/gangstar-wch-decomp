@@ -46,11 +46,14 @@ INCLUDE config/linker/WidgetGameSettingEvent.ld
 INCLUDE config/linker/WidgetCorruptionLocalization.ld
 INCLUDE config/linker/WidgetMissionMapLegendEvents.ld
 INCLUDE config/linker/WidgetDialogObjectiveLanguageEvents.ld
+INCLUDE config/linker/WidgetControlsEvent.ld
 
 INCLUDE config/linker/MapNotifySections.ld
 
 SECTIONS
 {
+    .weapon_shop_update 0x002eb45c : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6UpdateEv) }
+    ASSERT(SIZEOF(.weapon_shop_update) == 380, "Native ServiceWeaponShop Update extent")
     .service_weaponshop_notify 0x002eb920 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti) }
     ASSERT(SIZEOF(.service_weaponshop_notify) == 188, "ServiceWeaponShop Notify must retain native 188-byte extent")
 

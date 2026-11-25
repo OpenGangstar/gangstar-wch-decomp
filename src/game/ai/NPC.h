@@ -71,6 +71,7 @@ private:
     friend class Character;
     friend class GuardController;
     friend class PlayerTest;
+    friend class WantedLevelManager;
     irr::core::vector3d<float> unknown296;
     Weapon* weapon;
     Character* targetingCharacter;

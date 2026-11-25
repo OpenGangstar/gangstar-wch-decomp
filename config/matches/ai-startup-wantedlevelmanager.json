@@ -56,7 +56,8 @@
             "name": "__tcf_4",
             "address": "0x00342ab9",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".wanted_process_jump_table",
@@ -83,7 +84,13 @@
             "name": ".got",
             "offset": 864
         },
-        ".state_machine_cleanup"
+        ".state_machine_cleanup",
+        ".wanted_on_event",
+        ".wanted_on_event_table",
+        ".wanted_carRemoved",
+        ".wanted_footRemoved",
+        ".wanted_carArrived",
+        ".wanted_footArrived"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -96,6 +103,7 @@
         "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN11Application11GetInstanceEv",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN10PlayerTest9GetPlayerEv"
     ]
 }

@@ -30,6 +30,7 @@
 #include "../scripting/ScriptManager.h"
 #include "../missions/Mission.h"
 #include "../characters/PlayerTest.h"
+#include "../combat/WeaponManager.h"
 
 extern "C" {
 void _ZN11MenuManager3popEb(MenuManager* manager, bool restoreFocus);
@@ -1963,4 +1964,56 @@ bool Menus::Map::Notify(const MenuWidget* widget, int event)
         break;
     }
     return true;
+}
+
+void Menus::ServiceWeaponShop::Update()
+{
+    MenuState::Update();
+    if (selectedWeapon >= 0) {
+        MenuManager* manager = MenuManager::getInstance();
+        Confirm* confirmation = static_cast<Confirm*>(manager->getState(confirmMenuName));
+        if (confirmation->Confirmed()) {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            int price = static_cast<int>(MenuManager::s_WeaponShopData[selectedWeapon].price * scale);
+            if (player->isRichAsCroesus() || price <= player->cash) {
+                int code = MenuManager::s_WeaponShopData[selectedWeapon].code;
+                int value = code >> 16;
+                switch (code & 0xffff) {
+                case 73:
+                    if (value == 1)
+                        player->setContextArmor(200);
+                    else if (value == 2)
+                        player->health = player->getMaxHealth();
+                    break;
+                case 163: {
+                    Application* application = Application::GetInstance();
+                    int weapon = application->GetWeaponManager()->unlockWeapon(value);
+                    application->GetHudManager()->switchWeapon(weapon);
+                    break;
+                }
+                }
+                player->subCash(price);
+                {
+                    const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+                    MenuWidget* widget;
+                    if (table.count <= 16)
+                        widget = 0;
+                    else
+                        widget = static_cast<MenuWidget*>(table.widgets[16]);
+                    widget->UpdateLocalization();
+                }
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(143, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                Refresh();
+            }
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+        selectedWeapon = -1;
+    }
 }

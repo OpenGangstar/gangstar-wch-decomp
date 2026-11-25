@@ -238,7 +238,8 @@
         "_ZN7Widgets9MapLegend7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets9Objective7OnEventERN8RenderFX5EventE",
         "_ZN7Widgets6Dialog7OnEventERN8RenderFX5EventE",
-        "_ZN7Widgets8Language7OnEventERN8RenderFX5EventE"
+        "_ZN7Widgets8Language7OnEventERN8RenderFX5EventE",
+        "_ZN7Widgets8Controls7OnEventERN8RenderFX5EventE"
     ],
     "sections": [
         ".volumesButton",
@@ -488,7 +489,10 @@
         ".dialogNoToAllButton",
         ".dialogAbortButton",
         ".dialogRetryButton",
-        ".dialogIgnoreButton"
+        ".dialogIgnoreButton",
+        ".widgets_controls_event",
+        ".controlsSteeringPart",
+        ".controlsThrottlePart"
     ],
     "retail_got": true,
     "external_thumb_functions": [

@@ -2445,6 +2445,58 @@ void Widgets::Controls::UpdateLocalization()
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, controlsThrottleValue, _ZNK13StringManager9getStringEi(strings, s_choiceThrottles[previousSelection].textId), true);
 }
 
+
+static const char controlsSteeringPart[] = "steering";
+static const char controlsThrottlePart[] = "throttle";
+
+void Widgets::Controls::OnEvent(RenderFX::Event& event)
+{
+    switch (event.type) {
+    case 6: {
+        Application* application = Application::GetInstance();
+        const char* button = event.characterName;
+        int direction;
+        if (strcmp(button, volumesRightButton) == 0)
+            direction = 1;
+        else if (strcmp(button, volumesLeftButton) == 0)
+            direction = -1;
+        else
+            direction = 0;
+
+        if (direction) {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(220, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+        const char* path = _ZN8RenderFX5Event16GetCharacterPathEv(&event);
+        if (strstr(path, controlsSteeringPart)) {
+            selection += direction;
+            if (selection < 0)
+                selection = 2;
+            else
+                selection %= 3;
+            application->GetHudManager()->setSteeringMode(static_cast<CHudManager::SteeringMode>(s_choiceSteerings[selection].value));
+        } else if (strstr(path, controlsThrottlePart)) {
+            previousSelection += direction;
+            if (previousSelection < 0)
+                previousSelection = 1;
+            else
+                previousSelection %= 2;
+            application->GetHudManager()->setThrottleMode(static_cast<CHudManager::ThrottleMode>(s_choiceThrottles[previousSelection].value));
+        }
+        event.consumed = true;
+        break;
+    }
+    }
+
+    if (event.consumed) {
+        Preferences preferences;
+        preferences.SampleAndSave(Preferences::GetDefaultFilename());
+        UpdateLocalization();
+    }
+}
+
 void Widgets::GameSetting::OnEvent(RenderFX::Event& event)
 {
     MenuWidget::OnEvent(event);

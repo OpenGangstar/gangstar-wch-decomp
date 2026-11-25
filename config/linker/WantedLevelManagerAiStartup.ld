@@ -1,6 +1,7 @@
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-wantedlevelmanager/retail-symbols.ld
+INCLUDE config/linker/PlayerEventSections.ld
 _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZN37retail_wantedlevelmanager_transitions16civPassive_transE = 0x00432a7c;
@@ -17,8 +18,16 @@ __cxa_pure_virtual = 0;
 INCLUDE config/linker/ApplicationEventSections.ld
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+printf = 0x001c4058;
 SECTIONS
 {
+    .wanted_on_event 0x00343140 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager) }
+    ASSERT(SIZEOF(.wanted_on_event) == 368, "Native WantedLevelManager onEvent extent")
+    .wanted_on_event_table 0x00432a58 : { *ai-startup-wantedlevelmanager.o(.rodata._ZN18WantedLevelManager7onEventEPK6IEventPK12EventManager) }
+    .wanted_carRemoved 0x00432a28 : { *ai-startup-wantedlevelmanager.o(.rodata.carRemoved) }
+    .wanted_footRemoved 0x004329f8 : { *ai-startup-wantedlevelmanager.o(.rodata.footRemoved) }
+    .wanted_carArrived 0x00432a10 : { *ai-startup-wantedlevelmanager.o(.rodata.carArrived) }
+    .wanted_footArrived 0x004329e0 : { *ai-startup-wantedlevelmanager.o(.rodata.footArrived) }
     .wanted_process 0x00342e04 : { *ai-startup-wantedlevelmanager.o(.text._ZN18WantedLevelManager19_processWantedLevelEv) }
     .wanted_process_jump_table 0x00432a40 : { *ai-startup-wantedlevelmanager.o(.rodata._ZN18WantedLevelManager19_processWantedLevelEv) }
     .wanted_level_changed_d1 0x003402e0 : { *ai-startup-wantedlevelmanager.o(.gnu.linkonce.t._ZN20EvWantedLevelChangedD1Ev) }
