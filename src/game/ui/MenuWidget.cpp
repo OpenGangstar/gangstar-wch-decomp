@@ -168,6 +168,8 @@ Widgets::ConfirmPayment::ConfirmPayment()
 
 class Script;
 
+struct ControlChoice { int value; int textId; };
+
 namespace Widgets {
 struct MenuButtonInfo {
     int textId;
@@ -337,6 +339,8 @@ public:
 private:
     int selection;
     int previousSelection;
+    static const ControlChoice s_choiceSteerings[3];
+    static const ControlChoice s_choiceThrottles[2];
 };
 
 class Volumes : public MenuWidget {
@@ -2318,3 +2322,42 @@ void Widgets::Confirm::UpdateLocalization()
     sprintf(name, confirmNoFormat, reinterpret_cast<const TutorialLocalizationNameFields*>(character)->get_name().c_str());
     _ZN8RenderFX7SetTextEPKcS1_b(renderFX, name, _ZNK13StringManager9getStringEi(strings, 0x102a), true);
 }
+
+#include "../hud/CHudManager.h"
+
+
+static const char controlsSteeringTitle[] = "widgetControls.steering.txtTitle";
+static const char controlsSteeringValue[] = "widgetControls.steering.txtValue";
+static const char controlsThrottleTitle[] = "widgetControls.throttle.txtTitle";
+static const char controlsThrottleValue[] = "widgetControls.throttle.txtValue";
+
+void Widgets::Controls::UpdateLocalization()
+{
+    MenuWidget::UpdateLocalization();
+    Application* application = Application::GetInstance();
+    if (selection == -1) {
+        const int steering = static_cast<int>(application->GetHudManager()->steeringMode);
+        for (int i = 0; i < 3; ++i) {
+            if (s_choiceSteerings[i].value == steering) {
+                selection = i;
+                break;
+            }
+        }
+    }
+    if (previousSelection == -1) {
+        const int throttle = static_cast<int>(application->GetHudManager()->throttleMode);
+        for (int i = 0; i < 2; ++i) {
+            if (s_choiceThrottles[i].value == throttle) {
+                previousSelection = i;
+                break;
+            }
+        }
+    }
+
+    StringManager* strings = Application::GetInstance()->GetStringManager();
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, controlsSteeringTitle, _ZNK13StringManager9getStringEi(strings, 0x1018), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, controlsSteeringValue, _ZNK13StringManager9getStringEi(strings, s_choiceSteerings[selection].textId), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, controlsThrottleTitle, _ZNK13StringManager9getStringEi(strings, 0x1019), true);
+    _ZN8RenderFX7SetTextEPKcS1_b(renderFX, controlsThrottleValue, _ZNK13StringManager9getStringEi(strings, s_choiceThrottles[previousSelection].textId), true);
+}
+
