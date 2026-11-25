@@ -20,6 +20,7 @@ public:
     virtual LevelObject* RemoveAndDestroy(LevelObject* object);
     LevelObject* GetFirst(int type);
     LevelObject* getAttackableTarget(Character* character);
+    int getDistanceFromAttackableTarget(Character* character, int range, LevelObject* target, bool flag);
     LevelObject* CreateGameObjectFromMetatype(int type);
     LevelObject* LoadGameObject(DataStream& stream);
     LevelObject* SpawnGameObject(int type);

@@ -95,6 +95,7 @@ _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
+    .gom_get_attackable_target 0x003160d8 : { *game-object-manager.o(.text._ZN17GameObjectManager19getAttackableTargetEP9Character) }
     .gom_spawn_npc 0x00316214 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiii) }
     .gom_spawn_npc_vehicle 0x00316330 : { *game-object-manager.o(.text._ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii) }
     .gom_spawn_npc_position 0x00316384 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiiN3irr4core8vector3dIfEEtt) }
