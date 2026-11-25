@@ -27,6 +27,8 @@
     "linker_script": "config/linker/EventManager.ld",
     "functions": [
         "_ZN12EventManagerC1Ev",
+        "_ZN12EventManager7_attachEiP14IEventReceiver",
+        "_ZN12EventManager7_detachEiP14IEventReceiver",
         "_ZN12EventManagerC2Ev",
         "_ZNK12EventManager6_traceEPKc",
         "_ZN12EventManager6attachEiP14IEventReceiver",
@@ -41,6 +43,8 @@
         "_ZN12EventManagerD2Ev"
     ],
     "sections": [
+        ".event_manager_private_attach",
+        ".event_manager_private_detach",
         ".event_manager_vtable",
         ".updatable_vtable",
         {
@@ -49,8 +53,5 @@
         }
     ],
     "retail_got": true,
-    "external_thumb_functions": [
-        "_ZN12EventManager7_attachEiP14IEventReceiver",
-        "_ZN12EventManager7_detachEiP14IEventReceiver"
-    ]
+    "external_thumb_functions": []
 }

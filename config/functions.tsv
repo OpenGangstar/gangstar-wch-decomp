@@ -13284,8 +13284,8 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00354645	0x1c	EventManager.cpp	game	scripting	matched	_ZN12EventManagerC2Ev	EventManager::EventManager()
 0x00354645	0x1c	EventManager.cpp	game	scripting	matched	_ZN12EventManagerC1Ev	EventManager::EventManager()
 0x00354661	0x2	EventManager.cpp	game	scripting	matched	_ZNK12EventManager6_traceEPKc	EventManager::_trace(char const*) const
-0x00354665	0xc0	EventManager.cpp	game	scripting	pending	_ZN12EventManager7_attachEiP14IEventReceiver	EventManager::_attach(int, IEventReceiver*)
-0x00354725	0x13c	EventManager.cpp	game	scripting	pending	_ZN12EventManager7_detachEiP14IEventReceiver	EventManager::_detach(int, IEventReceiver*)
+0x00354665	0xc0	EventManager.cpp	game	scripting	matched	_ZN12EventManager7_attachEiP14IEventReceiver	EventManager::_attach(int, IEventReceiver*)
+0x00354725	0x13c	EventManager.cpp	game	scripting	matched	_ZN12EventManager7_detachEiP14IEventReceiver	EventManager::_detach(int, IEventReceiver*)
 0x00354861	0x2c	EventManager.cpp	game	scripting	matched	_ZN12EventManager6attachEiP14IEventReceiver	EventManager::attach(int, IEventReceiver*)
 0x0035488d	0x2c	EventManager.cpp	game	scripting	matched	_ZN12EventManager6detachEiP14IEventReceiver	EventManager::detach(int, IEventReceiver*)
 0x003548b9	0x20	EventManager.cpp	game	scripting	matched	_ZNK12EventManager10raiseAsyncEPK6IEvent	EventManager::raiseAsync(IEvent const*) const
