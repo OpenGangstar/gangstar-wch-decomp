@@ -89,6 +89,8 @@ SECTIONS
     .widget_shop_item_icon_format 0x0041a9bc : { *ai-startup-menuwidget.o(.rodata.shop_item_icon_format) }
     .widget_help_set_icon 0x002ecb00 : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Help7SetIconEPKc) }
     .widget_achievement_set_icon 0x002ecbbc : { *ai-startup-menuwidget.o(.text._ZN7Widgets11Achievement7SetIconEPKc) }
+    .widget_igmenu_goto_frame 0x002ecb9c : { *ai-startup-menuwidget.o(.text._ZN7Widgets6IGMenu9GoToFrameEPKc) }
+    .widget_igmenu_buttons_text 0x0041a9d8 : { *ai-startup-menuwidget.o(.rodata.widgetIGMenuGroupButtons) }
     .widget_help_icon_text 0x0041a9ac : { *ai-startup-menuwidget.o(.rodata.widgetHelpIcon) }
     .widget_achievement_icon_text 0x0041a9f4 : { *ai-startup-menuwidget.o(.rodata.widgetAchievementIcon) }
     .widget_shop_localization 0x002ed6bc : { *ai-startup-menuwidget.o(.text._ZN7Widgets4Shop18UpdateLocalizationEv) }

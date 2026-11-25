@@ -192,6 +192,7 @@ public:
     void SetTitleText(int id);
     void SetBackButtonText(int id);
     int GetLastPressedButton() const;
+    void GoToFrame(const char* frame);
 
 private:
     template <bool show>
@@ -2743,6 +2744,13 @@ static const char widgetHelpIcon[] = "widgetHelp.icon";
 void Widgets::Help::SetIcon(const char* icon)
 {
     _ZN8RenderFX9GotoFrameEPKcS1_b(renderFX, widgetHelpIcon, icon, false);
+}
+
+static const char widgetIGMenuGroupButtons[] = "widgetIGMenu.groupBoutons";
+
+void Widgets::IGMenu::GoToFrame(const char* frame)
+{
+    _ZN8RenderFX9GotoFrameEPKcS1_b(renderFX, widgetIGMenuGroupButtons, frame, false);
 }
 
 static const char widgetAchievementIcon[] = "widgetAchievement.anim.icon";
