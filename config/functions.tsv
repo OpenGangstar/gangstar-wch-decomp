@@ -10354,7 +10354,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ff181	0x450	NPC.cpp	game	ai	pending	_ZN3NPC7_detectEv	NPC::_detect()
 0x002ff5d1	0x83c	NPC.cpp	game	ai	pending	_ZN3NPC12attackTargetEv	NPC::attackTarget()
 0x002ffe0d	0xbc4	NPC.cpp	game	ai	pending	_ZN3NPC6UpdateEi	NPC::Update(int)
-0x003009d1	0x140	NPC.cpp	game	ai	pending	_ZN3NPC9SetTargetEP11LevelObject	NPC::SetTarget(LevelObject*)
+0x003009d1	0x140	NPC.cpp	game	ai	matched	_ZN3NPC9SetTargetEP11LevelObject	NPC::SetTarget(LevelObject*)
 0x00300b11	0x4	Path.cpp	game	world	matched	_ZNK4Path7getSizeEv	Path::getSize() const
 0x00300b15	0x2a	Path.cpp	game	world	matched	_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE	Path::getWaypoint(int, irr::core::vector3d<float>&) const
 0x00300b41	0x24	Path.cpp	game	world	matched	__tcf_1	__tcf_1
@@ -12350,7 +12350,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034420d	0x2c	SaveGame.cpp	game	persistence	matched	_ZN8SaveGame9BlockAmmoD0Ev	SaveGame::BlockAmmo::~BlockAmmo()
 0x00344239	0x24	SaveGame.cpp	game	persistence	matched	_ZN8SaveGame9BlockAmmoD1Ev	SaveGame::BlockAmmo::~BlockAmmo()
 0x0034425d	0x5c4	SaveGame.cpp	game	persistence	matched	_ZN8SaveGame12LoadAndApplyEPKc	SaveGame::LoadAndApply(char const*)
-0x00344821	0x56c	SaveGame.cpp	game	persistence	pending	_ZN8SaveGame13SampleAndSaveEPKc	SaveGame::SampleAndSave(char const*)
+0x00344821	0x56c	SaveGame.cpp	game	persistence	matched	_ZN8SaveGame13SampleAndSaveEPKc	SaveGame::SampleAndSave(char const*)
 0x00344d8d	0x4	Achievements.cpp	game	meta	matched	_ZNK18AchievementManager4Stat8getValueEv	AchievementManager::Stat::getValue() const
 0x00344d91	0x1c	Achievements.cpp	game	meta	matched	_ZNK18AchievementManager20getAchievementFromIDEi	AchievementManager::getAchievementFromID(int) const
 0x00344dad	0x1c	Achievements.cpp	game	meta	matched	_ZNK18AchievementManager24getAchievementRuleFromIDEi	AchievementManager::getAchievementRuleFromID(int) const

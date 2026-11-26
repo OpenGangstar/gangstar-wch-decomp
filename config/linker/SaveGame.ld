@@ -382,6 +382,7 @@ SECTIONS {
     .weapon_unlock 0x00330834 : { *weapon.o(.text._ZN6Weapon6unlockEv) }
 
     .loading 0x0034425c : { *save-game.o(.text._ZN8SaveGame12LoadAndApplyEPKc) }
+    .sample_and_save 0x00344820 : { *save-game.o(.text._ZN8SaveGame13SampleAndSaveEPKc) }
     .load_cases 0x00433664 : { *save-game.o(.rodata._ZN8SaveGame12LoadAndApplyEPKc) }
     .sample 0x00343df0 : { *save-game.o(.text._ZN8SaveGame12SampleObjectEP11LevelObject .gnu.linkonce.t._ZN8SaveGame12SampleObjectEP11LevelObject) }
     .text 0x00343e24 : {
