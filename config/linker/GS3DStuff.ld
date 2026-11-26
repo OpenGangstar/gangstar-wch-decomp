@@ -30,8 +30,10 @@ _ZN28retail_gs3dstuff_transitions11guard_transE = 0x00414b50;
 _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 __aeabi_fcmpeq = 0x001c470c;
+__aeabi_fsub = 0x001c4328;
 SECTIONS {
     .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
+    .gs_update_visibility 0x002dd7e0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff16updateVisibilityEj) }
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
     .gs_get_polys_iter 0x002dd33c : { *gs3d-stuff.o(.text._ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE) }
     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
@@ -149,10 +151,11 @@ SECTIONS {
     .factory_guard 0x004b6724 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN12CGameFactory11getInstanceEvE2gf) }
     .factory_instance 0x004b6b4c (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZZN12CGameFactory11getInstanceEvE2gf) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
-    /* Existing verification-only area; these three unreferenced source constants
+    /* Existing verification-only area; these unreferenced source constants
        have no retail identity or native-match credit. Never route helpers here. */
     .verification 0x00600000 : { *retail-got.o(.text)
         *gs3d-stuff.o(.rodata.*15colladaMeshNodeE .rodata.*18colladaSkinnedNodeE .rodata.*7lodNodeE)
+        *gs3d-stuff.o(.rodata.*21visibilityColladaMeshE .rodata.*21visibilityColladaSkinE .rodata.*16visibilitySkyBoxE .rodata.*17visibilityUnknownE)
     }
     .gs3d_startup_function_0 0x002dd090 : { *gs3d-stuff.o(.text.__tcf_9) }
     .gs3d_startup_function_1 0x002dcec4 : { *gs3d-stuff.o(.text._Z41__static_initialization_and_destruction_0ii) }

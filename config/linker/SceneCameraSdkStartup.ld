@@ -9,6 +9,7 @@ __aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
+    .gs_update_visibility 0x002dd7e0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff16updateVisibilityEj) }
     .gs_get_polys_iter 0x002dd33c : { *gs3d-stuff.o(.text._ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE) }
     .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
     .scene_camera_load 0x00334fe8 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4LoadERKN7Structs11SceneCameraE) }
@@ -34,6 +35,7 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text)
         *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*21visibilityColladaMeshE .rodata.*21visibilityColladaSkinE .rodata.*16visibilitySkyBoxE .rodata.*17visibilityUnknownE)
         *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
         *gs3d-stuff.o(.rodata.*7lodNodeE)
  }
