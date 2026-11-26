@@ -151,7 +151,8 @@
         "_ZN8RenderFX11SearchIndex4InitERS_",
         "_ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE",
         "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE",
-        "_ZN8RenderFX13PreloadGlyphsEv"
+        "_ZN8RenderFX13PreloadGlyphsEv",
+        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -203,7 +204,6 @@
         "_ZN7gameswf8as_valueC1Ei",
         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
-        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN7gameswf7tu_fileC1EPKcS2_",
         "_ZN7gameswf29register_file_opener_callbackEPFPNS_7tu_fileEPKcE",
@@ -254,7 +254,12 @@
         "_ZN7gameswf4root7advanceEfb",
         "_ZN7gameswf6player11set_workdirEPKc",
         "_ZN7gameswf6player9load_fileEPKc",
-        "_ZN7gameswf6playerC1EPNS_14player_contextE"
+        "_ZN7gameswf6playerC1EPNS_14player_contextE",
+        "_ZN7gameswf11ref_countedC1Ev",
+        "_ZN7gameswf19glyph_texture_cache16get_glyph_regionEtPviRNS0_11filter_infoERNS_4rectE",
+        "_ZN7gameswf26bitmap_glyph_texture_cache16get_glyph_regionEtPviRNS_4rectE",
+        "_ZN7gameswf4fontC1EPNS_6playerE",
+        "_ZNK7gameswf4font9get_glyphEPNS_5glyphEti"
     ],
     "retail_got": true
 }
