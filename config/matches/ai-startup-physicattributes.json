@@ -81,7 +81,8 @@
         "_ZN15ContactListener7PersistEPK14b2ContactPoint",
         "_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi",
         "_ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff",
-        "_ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo"
+        "_ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo",
+        "_ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo"
     ],
     "sections": [
         ".physics_segment_height",

@@ -28,6 +28,7 @@ SECTIONS
 {
     .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
     .physic_set_height_attributes 0x0031ad30 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo) }
+    .physic_set_height_attributes_node 0x0031b3e8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo) }
     .contact_listener_persist 0x0031d7a0 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener7PersistEPK14b2ContactPoint) }
     .physic_get_height 0x0031ff48 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib) }
 

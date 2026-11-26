@@ -923,3 +923,66 @@ extern "C" float _ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3
     }
     return 999999.0f;
 }
+
+// Irrlicht aabbox3d::getCenter().
+static inline irr::core::vector3d<float> GetBoxCenter(const irr::core::aabbox3d<float>& box)
+{
+    return (box.MinEdge + box.MaxEdge) * 0.5f;
+}
+
+// Not declared in PhysicAttributes.h; defined through its mangled name.
+extern "C" void _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo(
+    PhysicAttributes* self, irr::scene::ISceneNode* node, const irr::core::vector3d<float>& position, PhysicInfo& info)
+{
+    using irr::core::vector3d;
+
+    vector3d<float> offset;
+    vector3d<float> a, b, c;
+    vector3d<float> pa, pb, pc, ab, bc, ca;
+    int type = node->getType();
+    if (type == 0x6d656164 || type == 0x73656164) {
+        const irr::core::aabbox3d<float>& box = node->getTransformedBoundingBox();
+        const vector3d<float> point(position.X, position.Y, GetBoxCenter(node->getTransformedBoundingBox()).Z);
+        if (point.X >= box.MinEdge.X && point.X <= box.MaxEdge.X
+            && point.Y >= box.MinEdge.Y && point.Y <= box.MaxEdge.Y
+            && point.Z >= box.MinEdge.Z && point.Z <= box.MaxEdge.Z) {
+            for (int i = 0; static_cast<irr::scene::IMeshSceneNode*>(node)->getMesh()->getMeshBufferCount() > (unsigned int)i; ++i) {
+                irr::scene::IMeshBuffer* buffer = static_cast<irr::scene::IMeshSceneNode*>(node)->getMesh()->getMeshBuffer(i);
+                unsigned short* indices = buffer->getIndices();
+                offset = SHAbsolutePosition(node);
+                for (unsigned int j = 0; j < buffer->getIndexCount(); j += 3) {
+                    int flags = PhysicAttributes::s_neighbors[i][7][j / 3] & 3;
+                    if (flags == 1 || flags == 2)
+                        continue;
+                    a = offset + buffer->getPosition(indices[j]);
+                    b = offset + buffer->getPosition(indices[j + 1]);
+                    c = offset + buffer->getPosition(indices[j + 2]);
+                    pa = position - a;
+                    pb = position - b;
+                    pc = position - c;
+                    ab = b - a;
+                    bc = c - b;
+                    ca = a - c;
+                    if (pa.Y * ab.X - pa.X * ab.Y < 0.0f || pb.Y * bc.X - pb.X * bc.Y < 0.0f || pc.Y * ca.X - pc.X * ca.Y < 0.0f)
+                        continue;
+                    info.unknown0 = i;
+                    info.heightmap = node;
+                    info.unknown8 = j;
+                    info.vector12 = a;
+                    info.vector24 = b;
+                    info.vector36 = c;
+                    const vector3d<float> ba = info.vector12 - info.vector24;
+                    const vector3d<float> cb = info.vector36 - info.vector24;
+                    info.vector48 = cb.crossProduct(ba).normalize();
+                    info.unknown60 = true;
+                    info.unknown64 = position;
+                    return;
+                }
+            }
+        }
+    }
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end(); child = child->next)
+        _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo(
+            self, child->value, position, info);
+}
