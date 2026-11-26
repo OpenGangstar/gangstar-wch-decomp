@@ -1,3 +1,10 @@
+PROVIDE(sprintf = 0x001c46ac);
+PROVIDE(memcpy = 0x001c4190);
+PROVIDE(strcat = 0x001c43a0);
+PROVIDE(strcpy = 0x001c3fd4);
+PROVIDE(_Znaj = 0x001c3ff8);
+PROVIDE(__cxa_guard_acquire = 0x001c4958);
+PROVIDE(__cxa_guard_release = 0x001c46c4);
 PROVIDE(puts = 0x001c41b4);
 PROVIDE(abort = 0x001c42d4);
 OUTPUT_FORMAT("elf32-littlearm")
@@ -10,6 +17,25 @@ strlen = 0x001c48bc;
 nativeStrlen = 0x001c48bc;
 SECTIONS
 {
+    .string_load_pack_sheet 0x0034b78c : { *sdk-startup-stringmanager.o(.text._ZN13StringManager13loadPackSheetEjj) }
+    .string_load_pack_path_format 0x00435ef0 : { *sdk-startup-stringmanager.o(.rodata.str1.4) }
+    .string_load_pack_needles_text 0x00435f6c : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager13loadPackSheetEjjE11needlesText) }
+    .string_load_pack_nbsp_text 0x00435f74 : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager13loadPackSheetEjjE8nbspText) }
+    .string_load_pack_font_open_text 0x00435f7c : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager13loadPackSheetEjjE12fontOpenText) }
+    .string_load_pack_font_close_text 0x00418d6c : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager13loadPackSheetEjjE13fontCloseText) }
+    .string_load_pack_needles 0x0047b20c : { *sdk-startup-stringmanager.o(.data.rel.ro.local._ZZN13StringManager13loadPackSheetEjjE7needles) }
+    .string_load_pack_empty 0x0047b210 : { *sdk-startup-stringmanager.o(.data.rel.ro._ZZN13StringManager13loadPackSheetEjjE8strEmpty) }
+    .string_load_pack_nbsp 0x0047b214 : { *sdk-startup-stringmanager.o(.data.rel.ro.local._ZZN13StringManager13loadPackSheetEjjE4nbsp) }
+    .string_load_pack_font_close 0x0047b218 : { *sdk-startup-stringmanager.o(.data.rel.ro.local._ZZN13StringManager13loadPackSheetEjjE9fontClose) }
+    .string_load_pack_font_open 0x0047b21c : { *sdk-startup-stringmanager.o(.data.rel.ro.local._ZZN13StringManager13loadPackSheetEjjE8fontOpen) }
+    .string_load_pack_guard_0 0x004bb81c (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZGVZN13StringManager13loadPackSheetEjjE12fontOpenSize) }
+    .string_load_pack_guard_1 0x004bb820 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZGVZN13StringManager13loadPackSheetEjjE13fontCloseSize) }
+    .string_load_pack_guard_2 0x004bb824 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZGVZN13StringManager13loadPackSheetEjjE8nbspSize) }
+    .string_load_pack_nbsp_size 0x004bb828 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZN13StringManager13loadPackSheetEjjE8nbspSize) }
+    .string_load_pack_font_close_size 0x004bb82c (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZN13StringManager13loadPackSheetEjjE13fontCloseSize) }
+    .string_load_pack_font_open_size 0x004bb830 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZN13StringManager13loadPackSheetEjjE12fontOpenSize) }
+    .string_load_pack_destination 0x004bb834 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZN13StringManager13loadPackSheetEjjE11destination) }
+    .string_load_pack_source 0x004bbc34 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZN13StringManager13loadPackSheetEjjE6source) }
     .string_unload_pack_sheet 0x0034b5a4 : { *sdk-startup-stringmanager.o(.text._ZN13StringManager15unloadPackSheetEjj) }
     .string_load_styles 0x0034bd50 : { *sdk-startup-stringmanager.o(.text._ZN13StringManager10loadStylesEPKc) }
     .string_style_default 0x00435fac : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager10loadStylesEPKcE4C.* .rodata.C.*) }

@@ -12653,7 +12653,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034b721	0x24	StringManager.cpp	stlport	-	matched	_ZNKSt6vectorIPN7Structs9TextStyleESaIS2_EE14_M_range_checkEj	std::vector<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_range_check(unsigned int) const
 0x0034b745	0x48	StringManager.cpp	game	persistence	matched	_ZN13StringManagerC2Ev	StringManager::StringManager()
 0x0034b745	0x48	StringManager.cpp	game	persistence	matched	_ZN13StringManagerC1Ev	StringManager::StringManager()
-0x0034b78d	0x3d0	StringManager.cpp	game	persistence	pending	_ZN13StringManager13loadPackSheetEjj	StringManager::loadPackSheet(unsigned int, unsigned int)
+0x0034b78d	0x3d0	StringManager.cpp	game	persistence	matched	_ZN13StringManager13loadPackSheetEjj	StringManager::loadPackSheet(unsigned int, unsigned int)
 0x0034bb5d	0x40	StringManager.cpp	game	persistence	matched	_ZNK13StringManager9getStringEi	StringManager::getString(int) const
 0x0034bb9d	0x20	StringManager.cpp	game	persistence	matched	_ZN13StringManager8loadPackEj	StringManager::loadPack(unsigned int)
 0x0034bbbd	0x12	StringManager.cpp	stlport	-	matched	_ZNSt6vectorIPN7Structs9TextStyleESaIS2_EE8_M_clearEv	std::vector<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::_M_clear()

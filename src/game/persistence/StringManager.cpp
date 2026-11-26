@@ -148,6 +148,134 @@ char* strchrs(char* text, const char* characters)
     return 0;
 }
 
+#include "IFileStream.h"
+#include "FileSystemBase.h"
+#include "StreamReader.h"
+#include "../app/Application.h"
+
+extern "C" const char* _ZN13StringManager6SHEETSE[];
+extern "C" const char* _ZN13StringManager9LANGUAGESE[];
+extern "C" void _ZN12StreamReader6readAsItEEvP11IStreamBasePT_(IStreamBase*, unsigned short*) __attribute__((weak));
+extern "C" int _ZN11MenuManager19getCharAutoLineFeedEv();
+extern "C" char* strcat(char* destination, const char* source);
+
+int StringManager::loadPackSheet(unsigned int pack, unsigned int sheet)
+{
+    static const char fontOpenText[] = "<font color=\"#FFFF33\">";
+    static const char fontCloseText[] = "</font>";
+    static const char nbspText[] = "&nbsp;";
+    static const char needlesText[] = "\\?!;|";
+    static const char* fontOpen = fontOpenText;
+    static const char* fontClose = fontCloseText;
+    static const char* nbsp = nbspText;
+    static const char* strEmpty = localStartupEmptyText;
+    static const char* needles = needlesText;
+    static char source[1024];
+    static char destination[1024];
+    Application* application = Application::GetInstance();
+    char path[100];
+    sprintf(path, "%s.%s", _ZN13StringManager6SHEETSE[sheet], _ZN13StringManager9LANGUAGESE[pack]);
+    IFileStream* stream = application->GetFileSystem()->openResource(path);
+    if (!stream)
+        return 0;
+    unsigned short count;
+    unsigned short length;
+    _ZN12StreamReader6readAsItEEvP11IStreamBasePT_(stream, &count);
+    {
+        int endian = 1;
+        if (*reinterpret_cast<char*>(&endian) == 0) {
+            char* first = reinterpret_cast<char*>(&count);
+            char* last = first + sizeof(count) - 1;
+            while (first < last) {
+                *first = *last ^ *first;
+                *last ^= *first;
+                *first ^= *last;
+                ++first;
+                --last;
+            }
+        }
+    }
+    char** strings = new char*[count + 1];
+    memset(strings, 0, count * sizeof(char*) + 1);
+    for (unsigned short i = 0; i < count; ++i) {
+        _ZN12StreamReader6readAsItEEvP11IStreamBasePT_(stream, &length);
+        {
+            int endian = 1;
+            if (*reinterpret_cast<char*>(&endian) == 0) {
+                char* first = reinterpret_cast<char*>(&length);
+                char* last = first + sizeof(length) - 1;
+                while (first < last) {
+                    *first = *last ^ *first;
+                    *last ^= *first;
+                    *first ^= *last;
+                    ++first;
+                    --last;
+                }
+            }
+        }
+        static int fontOpenSize = strlen(fontOpen);
+        static int fontCloseSize = strlen(fontClose);
+        static int nbspSize = strlen(nbsp);
+        source[0] = 0;
+        destination[0] = 0;
+        StreamReader::readStringEx(stream, source, length);
+        source[length] = 0;
+        char* last = source;
+        int size = 0;
+        char* found = strchrs(source, needles);
+        while (found) {
+            memcpy(destination + size, last, found - last);
+            size += found - last;
+            destination[size] = 0;
+            switch (*found) {
+            case '\\':
+                ++found;
+                switch (*found) {
+                case '0':
+                    memcpy(destination + size, fontOpen, fontOpenSize);
+                    size += fontOpenSize;
+                    break;
+                case '1':
+                    memcpy(destination + size, fontClose, fontCloseSize);
+                    size += fontCloseSize;
+                    break;
+                case '\\':
+                    destination[size++] = *found;
+                    break;
+                }
+                break;
+            case '?':
+            case '!':
+            case ';':
+                if (size != 0 && destination[size - 1] == ' ') {
+                    --size;
+                    memcpy(destination + size, nbsp, nbspSize);
+                    size += nbspSize;
+                }
+                destination[size++] = *found;
+                break;
+            case '|':
+                destination[size++] = _ZN11MenuManager19getCharAutoLineFeedEv();
+                break;
+            }
+            last = ++found;
+            found = strchrs(found, needles);
+        }
+        destination[size] = 0;
+        strcat(destination + size, last);
+        const int textLength = strlen(destination);
+        strings[i] = const_cast<char*>(strEmpty);
+        if (length != 0) {
+            strings[i] = new char[textLength + 1];
+            strcpy(strings[i], destination);
+        }
+    }
+    strings[count] = 0;
+    packSheets[pack][sheet] = strings;
+    application->GetFileSystem()->closeFile(stream);
+    return 1;
+}
+
 const char* StringManager::getString(int id) const
 {
     const unsigned int sheet = (static_cast<unsigned int>(id) >> 12) & 15u;
