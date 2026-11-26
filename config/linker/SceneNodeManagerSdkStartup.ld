@@ -1,3 +1,7 @@
+PROVIDE(puts = 0x001c41b4);
+PROVIDE(printf = 0x001c4058);
+PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(__aeabi_uidiv = 0x001c4604);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-scenenodemanager/retail-symbols.ld
@@ -14,6 +18,8 @@ memset = 0x001c45d4;
 __stack_chk_fail = 0x001c42e0;
 SECTIONS
 {
+    .scene_node_report 0x00321720 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager6reportEv) }
+    .scene_node_report_strings 0x00421074 : { *sdk-startup-scenenodemanager.o(.rodata.str1.4) }
  .scene_pool_id 0x00321444 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager9getPoolIDEi) }
 
     .scene_node_manage 0x00321698 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager6manageEiP11LevelObjecti .gnu.linkonce.t._ZN16SceneNodeManager6manageEiP11LevelObjecti) }

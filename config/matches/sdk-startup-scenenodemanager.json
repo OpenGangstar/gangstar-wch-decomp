@@ -68,7 +68,8 @@
             "address": "0x00321c09"
         },
         "_ZN16SceneNodeManager6manageEiP11LevelObjecti",
-        "_ZNK16SceneNodeManager9getPoolIDEi"
+        "_ZNK16SceneNodeManager9getPoolIDEi",
+        "_ZNK16SceneNodeManager6reportEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -79,7 +80,8 @@
             "name": ".got",
             "offset": 864
         },
-        ".scene_pool_id"
+        ".scene_pool_id",
+        ".scene_node_report_strings"
     ],
     "retail_got": true,
     "external_thumb_functions": [

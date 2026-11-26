@@ -354,3 +354,80 @@ int SceneNodeManager::getPoolID(int key) const
     PoolIndex::Iterator result = poolIndex.find(key);
     return result == poolIndex.end() ? -1 : result->second;
 }
+
+// File-local layout views for the report: the class keeps its pools, pool
+// and node types private and the report method is not declared in the header.
+struct SceneNodeReportNode {
+    bool available;
+};
+struct SceneNodeReportPool {
+    const char* name;
+    void* factory;
+    int size;
+    unsigned int lastResizeTime;
+    int activeCount;
+    int constructedCount;
+    SceneNodeReportNode* const* nodesFirst;
+    SceneNodeReportNode* const* nodesLast;
+    SceneNodeReportNode* const* nodesLimit;
+};
+struct SceneNodeReportManager {
+    unsigned char poolIndex[24];
+    SceneNodeReportPool* const* poolsFirst;
+    SceneNodeReportPool* const* poolsLast;
+};
+
+extern "C" void _ZNK16SceneNodeManager6reportEv(const SceneNodeReportManager* self)
+{
+    printf("+-- SceneNodeManager Report - BEGIN --------------------------------------------\n");
+    printf("| Pool    Nodes   Minimum Usage   Idle    Mesh\n");
+    int poolCount = 0;
+    SceneNodeReportPool* const* it = self->poolsFirst;
+    const unsigned int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    int totalIdle = 0;
+    int totalUsed = 0;
+    int totalNodes = 0;
+    int averageUsage;
+    int totalMinimum = 0;
+    for (; it != self->poolsLast; ++it) {
+        const SceneNodeReportPool* pool = *it;
+        const SceneNodeReportNode* const* node = pool->nodesFirst;
+        SceneNodeReportNode* const* const end = pool->nodesLast;
+        unsigned int used = 0;
+        for (; node != end; ++node) {
+            if (!(*node)->available)
+                ++used;
+        }
+        const int size = pool->nodesLast - pool->nodesFirst;
+        totalNodes += size;
+        totalMinimum += pool->constructedCount;
+        unsigned int usage = 0;
+        if (size) {
+            totalUsed += used;
+            usage = used * 100 / size;
+        }
+        unsigned int idle = 0;
+        if (pool->activeCount < size) {
+            idle = (now - pool->lastResizeTime) / 1000;
+            totalIdle += idle;
+        }
+        printf("| %04d    %04d    %04d    %3d%%    %3ds    %s\n", poolCount, size,
+            pool->constructedCount, usage, idle, pool->name);
+        ++poolCount;
+    }
+    averageUsage = 0;
+    // Branch-likelihood hint: restores retail's block order after the call
+    // heuristic below would otherwise mark this branch as less likely.
+    if (__builtin_expect(totalNodes > 0, 1)) {
+        averageUsage = totalUsed * 100 / totalNodes;
+        totalIdle /= totalNodes;
+        // Always adds 0 (folded after jump threading). It gives totalMinimum its
+        // own merge here, so the zero-pools path stores the totals in retail's order.
+        totalMinimum += __builtin_constant_p(totalNodes);
+    }
+    printf("+---- TOTALS -------------------------------------------------------------------\n");
+    printf("| Pools   Nodes   Minimum Usage   IdleAVG\n");
+    printf("| %04d    %04d    %04d    %3d%%    %3ds\n", poolCount, totalNodes, totalMinimum,
+        averageUsage, totalIdle);
+    printf("+-- SceneNodeManager Report - END ----------------------------------------------\n\n");
+}

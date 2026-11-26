@@ -10927,7 +10927,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00321659	0x40	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4NodeC1EPN3irr5scene10ISceneNodeE	SceneNodeManager::Node::Node(irr::scene::ISceneNode*)
 0x00321659	0x40	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4NodeC2EPN3irr5scene10ISceneNodeE	SceneNodeManager::Node::Node(irr::scene::ISceneNode*)
 0x00321699	0x88	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager6manageEiP11LevelObjecti	SceneNodeManager::manage(int, LevelObject*, int)
-0x00321721	0x180	SceneNodeManager.cpp	game	world	pending	_ZNK16SceneNodeManager6reportEv	SceneNodeManager::report() const
+0x00321721	0x180	SceneNodeManager.cpp	game	world	matched	_ZNK16SceneNodeManager6reportEv	SceneNodeManager::report() const
 0x003218a1	0x36	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolC1EPKcPN3irr7collada15CColladaFactoryEi	SceneNodeManager::Pool::Pool(char const*, irr::collada::CColladaFactory*, int)
 0x003218a1	0x36	SceneNodeManager.cpp	game	world	matched	_ZN16SceneNodeManager4PoolC2EPKcPN3irr7collada15CColladaFactoryEi	SceneNodeManager::Pool::Pool(char const*, irr::collada::CColladaFactory*, int)
 0x003218d9	0xf4	SceneNodeManager.cpp	game	world	pending	_ZN16SceneNodeManager14reclaimGarbageEv	SceneNodeManager::reclaimGarbage()
