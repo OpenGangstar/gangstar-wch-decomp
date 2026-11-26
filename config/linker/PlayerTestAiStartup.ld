@@ -43,6 +43,7 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .player_test_attack 0x00305a1c : { *ai-startup-playertest.o(.text._ZN10PlayerTest6attackEb) }
     .player_test_move_to 0x00302360 : { *ai-startup-playertest.o(.text._ZN10PlayerTest6moveToERK7Vehicle) }
     .player_test_get_attackable_target 0x00303314 : { *ai-startup-playertest.o(.text._ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_) }
     .player_test_update_anim 0x00303fe8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10updateAnimEf) }
