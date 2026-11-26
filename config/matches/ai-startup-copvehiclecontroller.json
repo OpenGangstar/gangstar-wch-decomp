@@ -48,7 +48,8 @@
         "_ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE",
         "_ZN20CopVehicleControllerD0Ev",
         "_ZN20CopVehicleControllerD1Ev",
-        "_ZN20CopVehicleControllerD2Ev"
+        "_ZN20CopVehicleControllerD2Ev",
+        "_ZN20CopVehicleController7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".ai_startup_function_0",
@@ -78,6 +79,13 @@
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN7Vehicle15driveToLocationERKN3irr4core8vector3dIfEEb",
         "_ZN7Vehicle4waitEi",
-        "_ZN7Vehicle6freezeEv"
+        "_ZN7Vehicle6freezeEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN17GameObjectManager17spawnNPCInVehicleEP7Vehicleii",
+        "_ZN17VehicleController7onEventEPK6IEventPK12EventManager",
+        "_ZN18WantedLevelManager19_processWantedLevelEv",
+        "_ZN7Vehicle12clearOnAlertEv",
+        "_ZN7Vehicle9setDriverEP9Character",
+        "_ZN9Character15getOutOfVehicleEbb"
     ]
 }

@@ -309,6 +309,46 @@ void SpawnPoint::ClearAllSpawnInstances()
 
 SpawnPoint::SpawnPoint(int) : materialId(0) {}
 
+#include "../core/CameraManager.h"
+void SpawnPoint::UpdateSpawnCenters()
+{
+    irr::scene::ICameraSceneNode* camera = CameraManager::getInstance()->getCamera();
+    const irr::core::vector3d<float> position = camera->getPosition();
+    irr::core::vector3d<float> direction = camera->getTarget() - position;
+    direction.normalize();
+    irr::core::vector3d<float> offset;
+    Vehicle* vehicle = PlayerTest::GetPlayer()->getVehicle();
+    if (vehicle) {
+        if (vehicle->GetSpeed() >= 100.0f)
+            offset = direction * 1000.0f;
+    }
+    irr::core::vector3d<float> center = position + direction * 3039.0f + offset;
+    reinterpret_cast<irr::core::vector3d<float>&>(s_innerCenterCar) = center;
+    center = position + direction * 3900.0f + offset;
+    reinterpret_cast<irr::core::vector3d<float>&>(s_outterCenterCar) = center;
+    center = position + direction * 1500.0f + offset;
+    reinterpret_cast<irr::core::vector3d<float>&>(s_innerCenterParkedCar) = center;
+    center = position + direction * 3000.0f + offset;
+    reinterpret_cast<irr::core::vector3d<float>&>(s_outterCenterParkedCar) = center;
+    center = position + direction * 1000.0f;
+    reinterpret_cast<irr::core::vector3d<float>&>(s_innerCenterCiv) = center;
+    center = position + direction * 1700.0f;
+    reinterpret_cast<irr::core::vector3d<float>&>(s_outterCenterCiv) = center;
+    PlayerTest* player = PlayerTest::GetPlayer();
+    Vehicle* current = player->getVehicle();
+    float height;
+    if (current)
+        height = current->GetPosition().Z;
+    else
+        height = player->GetPosition().Z;
+    s_innerCenterCar.z = height;
+    s_outterCenterCar.z = height;
+    s_innerCenterParkedCar.z = height;
+    s_outterCenterParkedCar.z = height;
+    s_innerCenterCiv.z = height;
+    s_outterCenterCiv.z = height;
+}
+
 void SpawnPoint::Update(int elapsed)
 {
     if (spawnTime > 0) {

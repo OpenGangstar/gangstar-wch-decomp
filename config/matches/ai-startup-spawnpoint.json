@@ -70,7 +70,8 @@
         },
         "_ZNK10SpawnPoint17hasCloseNeighborsEv",
         "_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE",
-        "_ZN10SpawnPoint23CreateAllSpawnInstancesEv"
+        "_ZN10SpawnPoint23CreateAllSpawnInstancesEv",
+        "_ZN10SpawnPoint18UpdateSpawnCentersEv"
     ],
     "sections": [
         ".spawn_vtable",
@@ -110,6 +111,8 @@
         "_ZNK10SpawnPoint8canSpawnEv",
         "_ZnwjN3irr7MemHintE",
         "_ZN17GameObjectManager19GetMetatypeFromNameEPKc",
-        "_ZN17GameObjectManager28CreateGameObjectFromMetatypeEi"
+        "_ZN17GameObjectManager28CreateGameObjectFromMetatypeEi",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZNK13CameraManager9getCameraEv"
     ]
 }

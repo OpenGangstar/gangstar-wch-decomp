@@ -12,6 +12,7 @@
 #include "../app/Application.h"
 #include "../core/EventManager.h"
 
+class LevelObject;
 class CopVehicleController : public VehicleController {
 public:
     CopVehicleController(Vehicle* vehicle, const gameloft::ai::Transition& transition,
@@ -19,6 +20,7 @@ public:
     virtual ~CopVehicleController();
     virtual void onEvent(const IEvent*, const EventManager*);
     virtual void switchState(gameloft::ai::StateID);
+    static void pursue(Vehicle* value, LevelObject* target);
 
 private:
     int unknown28;
@@ -140,6 +142,149 @@ void CopVehicleController::switchState(gameloft::ai::StateID next)
     }
     case 10:
         vehicle->driveToLocation(static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).GetPosition(), true);
+        break;
+    }
+}
+
+#include "../characters/Character.h"
+#include "../ai/NPC.h"
+#include "../characters/PlayerEvent.h"
+#include "../characters/NPCVehicleEvent.h"
+#include "../vehicles/VehicleEvents.h" // overlay
+#include "../world/GameObjectManager.h"
+extern "C" long lrand48();
+namespace {
+struct CopDriverView {
+    void* vtable;
+    unsigned int flags;
+};
+}
+extern "C" void _ZN20EvVehicleDeactivatedD1Ev(void*) __attribute__((weak));
+extern "C" void* const _ZTV6IEvent[];
+extern "C" void* const _ZTV20EvVehicleDeactivated[];
+namespace {
+// File-local view of the inlined IEvent(21) -> EvVehicleDeactivated construction.
+struct CopEventView {
+    void* const* vtable;
+    int eventID;
+    CopEventView(int id) : vtable(&_ZTV6IEvent[2]), eventID(id) {}
+};
+struct CopDeactivatedView : CopEventView {
+    Vehicle* vehicle;
+    CopDeactivatedView(Vehicle* value) : CopEventView(21), vehicle(value) { vtable = &_ZTV20EvVehicleDeactivated[2]; }
+};
+}
+extern "C" void _ZN7Vehicle9stopSirenEv(Vehicle*) __attribute__((weak));
+inline void CopVehicleController::pursue(Vehicle* value, LevelObject* target)
+{
+    value->aiTarget = target;
+    value->flags344 |= 0x2000u;
+    unsigned int mask;
+    if (!(lrand48() & 1))
+        mask = 0x100000u;
+    else
+        mask = 0x200000u;
+    value->flags344 |= mask;
+}
+static inline void raiseWantedLevel(WantedLevelManager* manager, const int level)
+{
+    if (manager->unknown8 < level) {
+        manager->unknown8 = level;
+        manager->_processWantedLevel();
+    }
+}
+void CopVehicleController::onEvent(const IEvent* event, const EventManager* manager)
+{
+    VehicleController::onEvent(event, manager);
+    WantedLevelManager* (*getWanted)() = WantedLevelManager::getInstance;
+    int wanted = getWanted()->unknown8;
+    switch (event->getEventID()) {
+    case 23:
+        if (wanted > 0) {
+            if (wanted > 2)
+                unknown28 = 3;
+            else
+                unknown28 = wanted;
+        } else
+            unknown28 = 0;
+        if (wanted > 0) {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            if ((player->flags240 & 0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle()) {
+                Vehicle* value = vehicle;
+                pursue(value, static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle());
+            } else {
+                Vehicle* value = vehicle;
+                pursue(value, reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())));
+            }
+            break;
+        }
+    case 24:
+        unknown28 = 0;
+        vehicle->clearOnAlert();
+        switchState(static_cast<gameloft::ai::StateID>(1));
+        break;
+    case 19: {
+        const EvNPCVehicle* change = static_cast<const EvNPCVehicle*>(event);
+        Vehicle* affected = const_cast<Vehicle*>(change->getVehicle());
+        Vehicle* mine = vehicle;
+        if (affected != mine)
+            break;
+        switch (change->getType()) {
+        case 5:
+            if (state == 1) {
+                _ZN7Vehicle9stopSirenEv(affected);
+                affected->unknown776 = *reinterpret_cast<const float*>(affected->unknown780);
+                affected->flags344 &= ~0x5000u;
+            }
+            break;
+        case 23: {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            LevelObject* last = player->unknown312 ? player->unknown312 : player->unknown368;
+            if (last == affected && PlayerTest::GetPlayer()->unknown372)
+                break;
+            Character* driver = vehicle->driver;
+            if (*reinterpret_cast<const unsigned int*>(&vehicle->driver) && !(reinterpret_cast<const CopDriverView*>(driver)->flags & 0x80u)) {
+                driver->disable();
+                vehicle->setDriver(0);
+            }
+            GameObjectManager::s_gom->spawnNPCInVehicle(vehicle, 48, -1)->getOutOfVehicle(true, false);
+            vehicle->clearOnAlert();
+            vehicle->flags344 = 0;
+            EventManager* events = Application::GetInstance()->GetEventManager();
+            CopDeactivatedView notice(vehicle);
+            events->raise(*reinterpret_cast<const IEvent*>(&notice));
+            _ZN20EvVehicleDeactivatedD1Ev(&notice);
+            break;
+        }
+        }
+        break;
+    }
+    case 22:
+        switch (static_cast<const EvPlayer*>(event)->getState()) {
+        case 2:
+            if ((static_cast<SavePositionInterface&>(*PlayerTest::GetPlayer()).GetPosition() - vehicle->GetPosition()).getLengthSQ() <= 9000000.0f) {
+                raiseWantedLevel(getWanted(), 1);
+                Vehicle* value = vehicle;
+                if (value->aiTarget) {
+                    value->unknown776 = value->unknown188;
+                    value->flags344 |= 0x1000u;
+                }
+            }
+            break;
+        case 9:
+            if (wanted > 0)
+                vehicle->aiTarget = static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle();
+            break;
+        case 10:
+            if (wanted > 0)
+                vehicle->aiTarget = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer()));
+            break;
+        case 11:
+            unknown28 = 0;
+            vehicle->clearOnAlert();
+            switchState(static_cast<gameloft::ai::StateID>(1));
+            break;
+        }
         break;
     }
 }
