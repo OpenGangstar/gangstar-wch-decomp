@@ -1756,6 +1756,83 @@ extern "C" void _ZN7Vehicle12playDriveSfxEj(Vehicle* self, unsigned int speed)
         view->init364 = newState;
 }
 
+namespace {
+inline void subtractVector(irr::core::vector3d<float>& target, const irr::core::vector3d<float>& value)
+{
+    target.X -= value.X;
+    target.Y -= value.Y;
+    target.Z -= value.Z;
+}
+
+inline void setVector(b2Vec2& u, float x, float y)
+{
+    u.x = x;
+    u.y = y;
+}
+
+inline irr::core::vector3d<float> scaledVector(const irr::core::vector3d<float>& v, const float& s)
+{
+    return irr::core::vector3d<float>(v.X * s, v.Y * s, v.Z * s);
+}
+
+inline void multiplyVector(b2Vec2& v, float a)
+{
+    v.x *= a;
+    v.y *= a;
+}
+
+}
+
+void Vehicle::getCollisionRect(irr::core::vector3d<float>* corners, float margin)
+{
+    if (!isEnabled())
+        return;
+    b2Vec2 points[4];
+    // Unused member reads (removed as dead code) release SSA names that the
+    // later scalarised right/front components reuse, which gives retail's
+    // operand order in the post-loop multiplies.
+    const float unusedA = unknown56;
+    const float unusedB = unknown60;
+    const float unusedC = unknown64;
+    const float unusedD = init104;
+    const float unusedE = init108;
+    const float unusedF = init112;
+    const float unusedG = unknown116;
+    (void)unusedA; (void)unusedB; (void)unusedC; (void)unusedD; (void)unusedE; (void)unusedF; (void)unusedG;
+    for (b2Shape* shape = collisionBody->shapeList; shape; shape = shape->next) {
+        const b2PolygonShape* polygon = static_cast<const b2PolygonShape*>(shape);
+        for (int i = 0; i < 4; ++i) {
+            const b2XForm& xf = collisionBody->GetXForm();
+            b2Vec2 r;
+            setVector(r, xf.rotation[0] * polygon->vertices[i].x + xf.rotation[2] * polygon->vertices[i].y, xf.rotation[1] * polygon->vertices[i].x + xf.rotation[3] * polygon->vertices[i].y);
+            float x = r.x;
+            float y = r.y;
+            const float px = xf.position.x;
+            y += xf.position.y;
+            // Overwritten below in the same iteration; keeps the angle load as a
+            // third float PRE value, which gives retail's spill-slot order.
+            points[static_cast<unsigned int>(i)].y = collisionBody->angle;
+            x += px;
+            points[i] = b2Vec2(x, y);
+            multiplyVector(points[i], 100.0f);
+        }
+    }
+    corners[0] = irr::core::vector3d<float>(points[0].x, points[0].y, 0.0f);
+    corners[1] = irr::core::vector3d<float>(points[1].x, points[1].y, 0.0f);
+    corners[2] = irr::core::vector3d<float>(points[2].x, points[2].y, 0.0f);
+    corners[3] = irr::core::vector3d<float>(points[3].x, points[3].y, 0.0f);
+    irr::core::vector3d<float> right = LevelObject::GetRight();
+    irr::core::vector3d<float> front = LevelObject::GetFront();
+    corners[0] += scaledVector(front, margin) * 3.0f;
+    corners[0] += scaledVector(right, margin);
+    corners[1] += scaledVector(front, margin) * 3.0f;
+    subtractVector(corners[1], scaledVector(right, margin));
+    subtractVector(corners[2], scaledVector(front, margin) * 3.0f);
+    subtractVector(corners[2], scaledVector(right, margin));
+    subtractVector(corners[3], scaledVector(front, margin) * 3.0f);
+    corners[3] += scaledVector(right, margin);
+}
+
 void Vehicle::debug(irr::video::IVideoDriver* videoDriver)
 {
     irr::core::vector3d<float> corners[4];
