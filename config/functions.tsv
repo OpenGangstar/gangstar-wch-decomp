@@ -12150,7 +12150,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0033ef25	0x68	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager8loadGameEb	ScriptManager::loadGame(bool)
 0x0033ef8d	0x16c	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager10loadScriptEPKcb	ScriptManager::loadScript(char const*, bool)
 0x0033f0f9	0xf4	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager10moveObjectEP11LevelObjectS1_	ScriptManager::moveObject(LevelObject*, LevelObject*)
-0x0033f1ed	0x2dc	ScriptManager.cpp	game	scripting	pending	_ZN13ScriptManager8setStateENS_5StateE	ScriptManager::setState(ScriptManager::State)
+0x0033f1ed	0x2dc	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager8setStateENS_5StateE	ScriptManager::setState(ScriptManager::State)
 0x0033f4c9	0x48	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager16checkScreenPressEv	ScriptManager::checkScreenPress()
 0x0033f511	0x4c4	ScriptManager.cpp	game	scripting	matched	_ZN13ScriptManager6updateEi	ScriptManager::update(int)
 0x0033f9d9	0x144	ScriptManager.cpp	game	scripting	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)

@@ -2807,3 +2807,186 @@ void ScriptManager::update(int elapsed)
     if (revive && revive->update(elapsed))
         SafeDelete(revive);
 }
+
+#include "../core/CameraManager.h"
+#include "../input/CControlManager.h"
+#include "../rendering/GS3DStuff.h"
+#include "../world/SpawnPoint.h"
+
+// File-local views of private layouts observed by the retail state switch.
+namespace script_manager_state {
+struct SceneOctTreeRoot {
+    irr::scene::ISceneNode* sceneNode;
+    void* collision;
+    SpawnPoint* spawn;
+};
+struct SceneOctTree {
+    void* root;
+    irr::core::array<SceneOctTreeRoot*>* roots;
+};
+struct SpawnPointLayout {
+    void* vtable;
+    irr::core::vector3d<float> position;
+    irr::core::quaternion rotation;
+    unsigned short materialId;
+    unsigned short triangleId;
+    short spawnTime;
+    unsigned char spawnGroup;
+};
+struct SpawnConstants { int type; };
+struct AnimObjectLayout {
+    void* vtable;
+    float x, y, z;
+    int animation;
+};
+struct LevelObjectLayout {
+    void* vtable;
+    unsigned int flags;
+    LevelObject* previous;
+    LevelObject* next;
+    irr::scene::ISceneNode* sceneNode;
+    irr::scene::ISceneNode* unknown20;
+    PhysicAttributes* physicAttributes;
+    char* name;
+};
+enum State { State0, State1, State2, State3, State4, State5, State6 };
+
+static inline bool hasDriver(const Vehicle* vehicle)
+{
+    return vehicle->getDriver() != 0;
+}
+
+// Byte-neutral profile hint: the split bit test is an EQ against a non-zero
+// constant (opcode-nonequal predictor) and the no-code prefetch on the set
+// arm is a guarded call (call predictor); the combined exit-edge estimate of
+// 48.8% makes bb-reorder invert the flags jump as in retail.  Both forms
+// fold back to the plain (flags & 0x400) test before RTL.
+static inline bool flagsSetHint(LevelObjectLayout* object)
+{
+    unsigned int clear = (object->flags & 0x400u) ^ 0x400u;
+    if (clear == 0x400u)
+        return false;
+    __builtin_prefetch(object);
+    return true;
+}
+}
+
+extern "C" const script_manager_state::SpawnConstants** _ZN10SpawnPoint19s_metatypesSpawnCstE;
+
+extern "C" void _ZN13ScriptManager8setStateENS_5StateE(ScriptManager* self, int state)
+{
+    using namespace script_manager_state;
+    if (self->cinematicState == state)
+        return;
+
+    Application* application = Application::GetInstance();
+    switch (state) {
+    case State0:
+        application->GetHudManager()->show();
+        CameraManager::getInstance()->setTouchScreenInputs(true);
+        static_cast<SavePositionInterface&>(*ScriptManager::s_playerTest).setNextAnimation(-1, 1, false, false, false);
+        application->GetControlManager()->unlock();
+        break;
+
+    case State4:
+        bIsInCutscene = true;
+        reinterpret_cast<AnimObjectLayout*>(self->cinematicBars)->animation = -1;
+    case State1: {
+        bIsInCutscene = true;
+        application->GetHudManager()->hide();
+        self->showSkipButton();
+        ScriptManager::s_playerTest->_SetTarget(0, false);
+        static_cast<SavePositionInterface&>(*ScriptManager::s_playerTest).goToIdle();
+        CameraManager::getInstance()->setTouchScreenInputs(false);
+        CameraManager::getInstance()->updateUpVector(0.0f);
+        application->GetControlManager()->lock();
+        WantedLevelManager::getInstance()->storeWantedLevel();
+        WantedLevelManager::getInstance()->resetWantedLevel();
+        WantedLevelManager::getInstance()->lock(0);
+        GS3DStuff::forceDespawn(3);
+        GS3DStuff::forceDespawn(5);
+
+        Vehicle* vehicle = static_cast<Vehicle*>(ScriptManager::s_playerTest->unknown316);
+        LevelObjectLayout* object = reinterpret_cast<LevelObjectLayout*>(vehicle);
+        if (!vehicle || !object->sceneNode || !object->sceneNode->isVisible())
+            break;
+        if (hasDriver(vehicle)) {
+            if (static_cast<Mission*>(self->getMission())->getState() == 4)
+                break;
+        }
+        if (!object->name || !*object->name || flagsSetHint(object)) {
+            irr::core::array<SceneOctTreeRoot*>* roots =
+                reinterpret_cast<SceneOctTree*>(GS3DStuff::getSceneOctTree())->roots;
+            const irr::core::vector3d<float>& playerPosition =
+                static_cast<SavePositionInterface&>(*ScriptManager::s_playerTest).position();
+            SpawnPointLayout* closest = 0;
+            float closestDistance = 0.0f;
+            // Loop-invariant player position components.  The reads sit after the
+            // two continue tests, so they are not anticipated at the loop header
+            // and PRE leaves them alone; loop invariant motion then hoists them to
+            // the preheader in statement order (X, Y, Z) while keeping the user
+            // variables, whose declaration order (pz, py, px) sets the retail
+            // spill-slot order.  No code is emitted inside the loop.
+            float pz, py, px;
+            for (unsigned int i = 0; i < roots->used; ++i) {
+                SpawnPoint* point = roots->data[i]->spawn;
+                if (!point)
+                    continue;
+                SpawnPointLayout* layout = reinterpret_cast<SpawnPointLayout*>(point);
+                if (_ZN10SpawnPoint19s_metatypesSpawnCstE[layout->spawnGroup]->type != 11)
+                    continue;
+                px = playerPosition.X;
+                py = playerPosition.Y;
+                pz = playerPosition.Z;
+                const float dx = px - layout->position.X;
+                const float dy = py - layout->position.Y;
+                const float dz = pz - layout->position.Z;
+                const float xy = dx * dx + dy * dy;
+                const float zz = dz * dz;
+                // Byte-neutral allocation hint: both arms are identical, so the
+                // post-reload crossjump merges them and deletes the test.  The
+                // test adds references to i (global alloc then lets i evict the
+                // block-local dz from r6, as in retail) and splits xy/zz across
+                // a block boundary until reload.
+                float distance;
+                if ((i ^ (i >> 1) ^ (i >> 2)) & 1)
+                    distance = xy + zz;
+                else
+                    distance = xy + zz;
+                if ((!closest || distance < closestDistance) && !point->hasCloseNeighbors()) {
+                    closest = layout;
+                    closestDistance = distance;
+                }
+            }
+            irr::core::vector3d<float> vehiclePosition = closest->position;
+            vehiclePosition.Z = object->physicAttributes->GetHeight(vehiclePosition, 0, false);
+            vehicle->SetRotation(closest->rotation);
+            vehicle->SetPosition(vehiclePosition);
+        }
+        break;
+    }
+
+    case State3:
+    case State6:
+        self->hideSkipButton();
+        if (self->cutsceneSkipped) {
+            self->resumeBlockingCommands();
+            self->cutsceneSkipped = false;
+        }
+        WantedLevelManager::getInstance()->unlock();
+        WantedLevelManager::getInstance()->restoreWantedLevel();
+        ScriptManager::s_playerTest->unknown377 = 0;
+        bIsInCutscene = false;
+        break;
+
+    default:
+        break;
+    }
+    // Byte-neutral allocation hint: identical arms are crossjumped after reload
+    // and the test is deleted; the extra references raise state's global
+    // priority above dy so state takes sl and the evicted dy is retried into r9.
+    if (state & 1 & (int)self)
+        self->cinematicState = state;
+    else
+        self->cinematicState = state;
+}

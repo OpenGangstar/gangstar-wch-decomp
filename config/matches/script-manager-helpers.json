@@ -195,7 +195,8 @@
         "_ZN13ScriptManager11loadCommandER10DataStream",
         "_ZN13ScriptManager19reachRunningCommandEi",
         "_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE",
-        "_ZN13ScriptManager6updateEi"
+        "_ZN13ScriptManager6updateEi",
+        "_ZN13ScriptManager8setStateENS_5StateE"
     ],
     "sections": [
         ".script_check_screen_press",
@@ -345,7 +346,8 @@
         ".script_load_command_c137",
         ".script_manager_reach_running",
         ".script_manager_clean_command",
-        ".script_manager_clean_command_table"
+        ".script_manager_clean_command_table",
+        ".script_manager_set_state_table"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -435,7 +437,6 @@
         "_ZN11MenuManager4pushEPKcb",
         "_ZN11MenuManager6popAllEb",
         "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
-        "_ZN13ScriptManager8setStateENS_5StateE",
         "_ZN18AchievementManager23popCompletedAchievementEv",
         "_ZN18AchievementManager27hasNewCompletedAchievementsEv",
         "_ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE",
@@ -445,6 +446,24 @@
         "_ZNK11MenuManager8getDepthEv",
         "_ZNK11MenuManager8getStateEPKc",
         "_ZNK11MenuManager9getTextIdENS_5eTextE",
-        "_ZNK7Mission8getStateEv"
+        "_ZNK7Mission8getStateEv",
+        "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
+        "_ZN11CHudManager4hideEv",
+        "_ZN11CHudManager4showEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager14updateUpVectorEf",
+        "_ZN13CameraManager20setTouchScreenInputsEb",
+        "_ZN15CControlManager4lockEv",
+        "_ZN15CControlManager6unlockEv",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
+        "_ZN18WantedLevelManager16resetWantedLevelEv",
+        "_ZN18WantedLevelManager16storeWantedLevelEv",
+        "_ZN18WantedLevelManager18restoreWantedLevelEv",
+        "_ZN18WantedLevelManager4lockEi",
+        "_ZN18WantedLevelManager6unlockEv",
+        "_ZN9Character8goToIdleEv",
+        "_ZN9GS3DStuff12forceDespawnEi",
+        "_ZN9GS3DStuff15getSceneOctTreeEv",
+        "_ZNK10SpawnPoint17hasCloseNeighborsEv"
     ]
 }

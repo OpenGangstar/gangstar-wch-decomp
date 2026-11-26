@@ -1,3 +1,7 @@
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fsub = 0x001c4328);
 PROVIDE(__aeabi_i2f = 0x001c41e4);
 /* ScriptManager queries and script registration at retail addresses. */
 PROVIDE(_Znwj = 0x001c4814);
@@ -11,6 +15,8 @@ PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(memset = 0x001c45d4);
 SECTIONS
 {
+    .script_manager_set_state_table 0x0042f270 : { *script-manager-helpers.o(.rodata._ZN13ScriptManager8setStateENS_5StateE) }
+    .script_manager_set_state 0x0033f1ec : { *script-manager-helpers.o(.text._ZN13ScriptManager8setStateENS_5StateE) }
     .script_manager_clean_command 0x0033ffc0 : { *script-manager-helpers.o(.text._ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE) }
     .script_manager_clean_command_table 0x0042f28c : { *script-manager-helpers.o(.rodata._ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE) }
     .script_manager_reach_running 0x0033d270 : { *script-manager-helpers.o(.text._ZN13ScriptManager19reachRunningCommandEi) }
