@@ -253,7 +253,8 @@
         "_ZN7Vehicle6UpdateEi",
         "_ZN7Vehicle12CreateWheelsEP13Box2DUserInfo",
         "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf",
-        "_ZN7Vehicle8setSpeedEv"
+        "_ZN7Vehicle8setSpeedEv",
+        "_ZN7Vehicle17ResetBodyPositionEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -449,7 +450,6 @@
         "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_",
         "_ZN11LevelObject11SetPositionERKN3irr4core8vector3dIfEE",
         "_ZN11LevelObject11SetRotationERKN3irr4core10quaternionE",
-        "_ZN7Vehicle17ResetBodyPositionEv",
         "_ZN6b2Body8SetXFormERK6b2Vec2f",
         "_ZN7b2World8RefilterEP7b2Shape",
         "_ZN4Lock11getInstanceEv",

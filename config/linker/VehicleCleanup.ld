@@ -45,6 +45,7 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_reset_body_position 0x0030b68c : { *vehicle-cleanup.o(.text._ZN7Vehicle17ResetBodyPositionEv) }
     .vehicle_set_speed 0x0030bccc : { *vehicle-cleanup.o(.text._ZN7Vehicle8setSpeedEv) }
     .vehicle_is_door_clear 0x0030a730 : { *vehicle-cleanup.o(.text._ZNK7Vehicle11isDoorClearEbP6b2Body) }
     .vehicle_physic_info_ctor 0x00319dd0 : { *vehicle-cleanup.o(.text._ZN10PhysicInfoC1Ev .text._ZN10PhysicInfoC2Ev .gnu.linkonce.t._ZN10PhysicInfoC1Ev .gnu.linkonce.t._ZN10PhysicInfoC2Ev) }

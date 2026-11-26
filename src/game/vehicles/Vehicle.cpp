@@ -1065,6 +1065,83 @@ void Vehicle::SetRotation(const irr::core::quaternion& rotation)
     rotationZ = angles.Z;
 }
 
+
+struct ResetBodyWheelView {
+    unsigned char unknown0[572];
+    irr::core::vector3d<float> wheelOffsets[4];
+    irr::core::vector3d<float> bodyOffset;
+};
+
+static inline b2Vec2 ResetBodyMulR(const b2XForm& T, const b2Vec2& v)
+{
+    return b2Vec2(T.rotation[0] * v.x + T.rotation[2] * v.y,
+        T.rotation[1] * v.x + T.rotation[3] * v.y);
+}
+
+static inline b2Vec2 ResetBodyAdd(const b2Vec2& a, const b2Vec2& b)
+{
+    return b2Vec2(a.x + b.x, a.y + b.y);
+}
+
+static inline b2Vec2 ResetBodyWorldPoint(const b2Body* body, const b2Vec2& v)
+{
+    return ResetBodyAdd(body->GetXForm().position, ResetBodyMulR(body->GetXForm(), v));
+}
+
+void Vehicle::ResetBodyPosition()
+{
+    if (!isEnabled())
+        return;
+    irr::core::vector3d<float> rotation;
+    GetRotation().toEulerDegree(rotation);
+    collisionBody->SetXForm(b2Vec2(GetPosition().X / 100.0f, GetPosition().Y / 100.0f),
+        rotation.Z * -0.017453292f);
+    resetPreviousPos();
+    if (wheelNodes[0]) {
+        ResetBodyWheelView* view = reinterpret_cast<ResetBodyWheelView*>(this);
+        const irr::core::vector3d<float>& front = wheelNodes[0]->getPosition();
+        // No-op write-back (the slot keeps its value). It materialises the 572 offset
+        // before front.X is loaded, which retail's reload choice needs; flow deletes the
+        // store as dead before register allocation.
+        view->wheelOffsets[0].X = init572;
+        const float frontX = front.X;
+        init572 = frontX;
+        init576 = front.Y;
+        init580 = 0.0f;
+        init584 = -frontX;
+        init588 = init576;
+        init592 = 0.0f;
+        const irr::core::vector3d<float>& rear = wheelNodes[2]->getPosition();
+        // Same no-op write-back for the 596 offset.
+        view->wheelOffsets[2].X = init596;
+        const float rearX = rear.X;
+        // Stores the value just loaded back to the wheel node (no behaviour change).
+        // The extra use of rearX lifts it above the 584 offset in local-alloc priority
+        // (retail keeps rearX in r4); postreload deletes the store as a no-op.
+        const_cast<irr::core::vector3d<float>&>(rear).X = rearX;
+        init596 = rearX;
+        init600 = rear.Y;
+        // init604..init616 written through the wheel-offset view: the different alias
+        // relationship to the Vehicle-field stores gives retail's sched2 order.
+        view->wheelOffsets[2].Z = 0.0f;
+        view->wheelOffsets[3].X = -rearX;
+        view->wheelOffsets[3].Y = init600;
+        view->wheelOffsets[3].Z = 0.0f;
+        // Vehicle::bodyOffset (not the view) so sched2 may hoist the leftCollisionBody load.
+        bodyOffset = (view->wheelOffsets[0] + view->wheelOffsets[1] +
+            view->wheelOffsets[2] + view->wheelOffsets[3]) * 0.25f;
+        if (leftCollisionBody && rightCollisionBody) {
+            leftCollisionBody->SetXForm(ResetBodyWorldPoint(collisionBody,
+                b2Vec2((init572 + init584) * 0.5f / 100.0f, (init576 + init588) * 0.5f / 100.0f)),
+                rotation.Z * -0.017453292f);
+            rightCollisionBody->SetXForm(ResetBodyWorldPoint(collisionBody,
+                b2Vec2((init596 + init608) * 0.5f / 100.0f, (init600 + init612) * 0.5f / 100.0f)),
+                rotation.Z * -0.017453292f);
+        }
+    }
+    init1008 = 1000.0f;
+}
+
 void Vehicle::SetPosition(const irr::core::vector3d<float>& position)
 {
     LevelObject::SetPosition(position);

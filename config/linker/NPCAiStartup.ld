@@ -24,6 +24,8 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 SECTIONS
 {
+    .character_run_to_target 0x002f39e0 : { *ai-startup-character.o(.text._ZN9Character11runToTargetEi) }
+    .npc_attack_target 0x002ff5d0 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEv) }
     .contact_filter_should_collide 0x0031dc7c : { *ai-startup-physicattributes.o(.text._ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_) }
     .physic_jump_shape 0x0031ccf0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape) }
     .contact_filter_vtable 0x004abd00 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV13ContactFilter) }
