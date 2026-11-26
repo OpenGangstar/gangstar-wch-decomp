@@ -26,6 +26,7 @@
     "source": "src/game/input/AnalogStick.cpp",
     "linker_script": "config/linker/AnalogStickSdkStartup.ld",
     "functions": [
+        "_ZN11AnalogStickC1EP7ASpriteii",
         "_ZN11AnalogStick19processTouchReleaseEv",
         "_ZThn8_N11AnalogStick19processTouchReleaseEv",
         {
@@ -178,7 +179,10 @@
     "external_thumb_functions": [
         "_ZN12EventManager5raiseERK6IEvent",
         "_ZN11Application11GetInstanceEv",
-        "_ZNK7ASprite10PaintFrameEiiii"
+        "_ZNK7ASprite10PaintFrameEiiii",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite9GetModuleEi"
     ],
     "dependencies": [
         "hud-element"
