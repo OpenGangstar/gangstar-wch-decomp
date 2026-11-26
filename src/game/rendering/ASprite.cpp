@@ -563,3 +563,57 @@ void ASprite::PaintFModule(int frame, int module, int x, int y, int flags) const
         _ZNK7ASprite11PaintModuleEiiii(this, moduleIndex, px, py, flags ^ ((moduleFlags & 15) << 4));
     }
 }
+
+namespace {
+// File-local view of the private ASpriteData section offsets read by GetPixelInfoInFrame.
+struct PixelBlobView {
+    int counts[7];
+    unsigned int images;
+    unsigned int modules;
+    unsigned int rectangles;
+    unsigned int frames;
+    unsigned int frameModules;
+};
+}
+
+extern "C" bool _ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_(ASprite* sprite, int frame, int x, int y, int& moduleIndex, int& color)
+{
+    PaintSpriteView* self = reinterpret_cast<PaintSpriteView*>(sprite);
+    const PixelBlobView* blob = reinterpret_cast<const PixelBlobView*>(self->data);
+    const char* frames = reinterpret_cast<const char*>(blob);
+    frames += blob->frames;
+    const ASpriteData::Frame* entry = reinterpret_cast<const ASpriteData::Frame*>(frames) + frame;
+    for (int i = 0; i < entry->moduleCount; ++i) {
+        const PixelBlobView* recordBlob = reinterpret_cast<const PixelBlobView*>(self->data);
+        const char* records = reinterpret_cast<const char*>(recordBlob);
+        records += recordBlob->frameModules;
+        const int index = entry->firstModule + i;
+        const ASpriteData::FModule* record = reinterpret_cast<const ASpriteData::FModule*>(records) + index;
+        const char* modules = reinterpret_cast<const char*>(recordBlob);
+        modules += recordBlob->modules;
+        const ASpriteData::Module* module = reinterpret_cast<const ASpriteData::Module*>(modules) + record->module;
+        if (module->kind == 0) {
+            ASpriteData::__rect rect; rect.left = 0; rect.right = 0; rect.top = 0; rect.bottom = 0;
+            rect.left = record->x; rect.right = record->x + module->width;
+            rect.top = record->y; rect.bottom = record->y + module->height;
+            if (rect.isIntersecting(x, y)) {
+                int imageIndex = module->unknown1;
+                const PixelBlobView* imageBlob = reinterpret_cast<const PixelBlobView*>(self->data);
+                const char* images = reinterpret_cast<const char*>(imageBlob);
+                images += imageBlob->images;
+                const ASpriteData::Image* image = reinterpret_cast<const ASpriteData::Image*>(images) + imageIndex;
+                int row = image->unknown0 * (module->unknown4 - record->y + y);
+                int column = module->unknown2 - record->x;
+                const unsigned char pixel = (reinterpret_cast<const unsigned char*>(imageBlob) + image->unknown16 + (x + row))[column];
+                moduleIndex = index;
+                const char* bytes = self->data;
+                const char* palette = bytes;
+                palette += image->unknown12;
+                unsigned int paletteOffset = reinterpret_cast<const unsigned int*>(palette)[1];
+                color = reinterpret_cast<const unsigned int*>(bytes + paletteOffset)[pixel] & 0x00ffffffu;
+                return true;
+            }
+        }
+    }
+    return false;
+}

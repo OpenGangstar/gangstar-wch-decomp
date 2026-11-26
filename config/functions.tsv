@@ -12624,7 +12624,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034a185	0x98	ASprite.cpp	game	rendering	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0034a21d	0x14	ASprite.cpp	game	rendering	matched	_GLOBAL__I__ZN7ASprite18s_global_transformE	_GLOBAL__I__ZN7ASprite18s_global_transformE
 0x0034a231	0x5c	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData6__rect14isIntersectingEii	ASpriteData::__rect::isIntersecting(int, int)
-0x0034a28d	0x128	ASprite.cpp	game	rendering	pending	_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_	ASprite::GetPixelInfoInFrame(int, int, int, int&, int&)
+0x0034a28d	0x128	ASprite.cpp	game	rendering	matched	_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_	ASprite::GetPixelInfoInFrame(int, int, int, int&, int&)
 0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteDataC2Ev	ASpriteData::ASpriteData()
 0x0034a3b5	0x12	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteDataC1Ev	ASpriteData::ASpriteData()
 0x0034a3c9	0xc8	ASpriteData.cpp	game	rendering	matched	_ZN11ASpriteData4Anim4SwapEv	ASpriteData::Anim::Swap()
