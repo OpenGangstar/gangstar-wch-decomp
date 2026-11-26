@@ -33,7 +33,7 @@ SECTIONS {
     .gs_check_vehicle_proximity 0x002dc714 : { *gs3d-stuff.o(.text._ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE) }
     .gs_check_pickable_proximity 0x002deba0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE) }
     .gs_oct_tree_ctor 0x002df994 : { *gs3d-stuff.o(.text._ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj) }
-    .gs_oct_tree_node_ctor_uncredited 0x002df654 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE) }
+    .gs_oct_tree_node_ctor 0x002df654 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE) }
     .gs_update_vehicles_guard 0x004b6a6c (NOLOAD) : { *gs3d-stuff.o(.bss._ZGVZN9GS3DStuff6updateEP12StateMachineE8vehicles) }
     .gs_update_pickables_guard 0x004b6a70 (NOLOAD) : { *gs3d-stuff.o(.bss._ZGVZN9GS3DStuff6updateEP12StateMachineE9pickables) }
     .gs_update_pickables 0x004b6a74 (NOLOAD) : { *gs3d-stuff.o(.bss._ZZN9GS3DStuff6updateEP12StateMachineE9pickables) }
@@ -112,5 +112,4 @@ SECTIONS {
     .gs_set_visibility 0x002dc038 : { *gs3d-stuff.o(.text._ZN9GS3DStuff13SetVisibilityEPN3irr5scene10ISceneNodeEb) }
     .gs_set_material_type 0x002dc0a4 : { *gs3d-stuff.o(.text._ZN9GS3DStuff15SetMaterialTypeEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_TYPEE) }
     .gs_set_material_flag 0x002dc0ec : { *gs3d-stuff.o(.text._ZN9GS3DStuff15SetMaterialFlagEPN3irr5scene10ISceneNodeENS0_5video15E_MATERIAL_FLAGEb) }
-    ASSERT(SIZEOF(.gs_oct_tree_node_ctor_uncredited) <= 832, "uncredited OctTreeAABBNode ctor must fit its retail span")
 }

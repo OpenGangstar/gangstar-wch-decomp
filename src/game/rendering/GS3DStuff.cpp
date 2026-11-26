@@ -1771,6 +1771,14 @@ static inline void octAddInternalPoint(irr::core::aabbox3d<float>& box, const ir
 {
     octAddInternalPoint(box, p.X, p.Y, p.Z);
 }
+// Evaluating the corner as arguments puts its loads in the loop header block,
+// so ivopts meets the corners use before the children store (retail IV order).
+static inline irr::core::aabbox3d<float> octChildBox(const irr::core::vector3d<float>& c, float x, float y, float z)
+{
+    irr::core::aabbox3d<float> b(c);
+    octAddInternalPoint(b, x, y, z);
+    return b;
+}
 static inline bool octLE(const irr::core::vector3d<float>& a, const irr::core::vector3d<float>& b)
 { return a.X<=b.X && a.Y<=b.Y && a.Z<=b.Z; }
 static inline bool octGE(const irr::core::vector3d<float>& a, const irr::core::vector3d<float>& b)
@@ -1779,10 +1787,9 @@ static inline bool octGE(const irr::core::vector3d<float>& a, const irr::core::v
 OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
     int& count, int parentDepth, irr::core::array<RootNode*>* incoming,
     unsigned int limit, irr::core::aabbox3d<float> inputBounds)
-    : bounds(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f)), roots(0)
+    : bounds(), roots(0)
 {
     using namespace irr::core;
-    bounds.MaxEdge = vector3d<float>(1.0f, 1.0f, 1.0f);
     depth = parentDepth + 1;
     ++count;
     children[0] = 0;
@@ -1798,17 +1805,46 @@ OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
     const vector3d<float> center = (bounds.MinEdge + bounds.MaxEdge) * 0.5f;
     vector3d<float> corners[8];
     _ZNK3irr4core8aabbox3dIfE8getEdgesEPNS0_8vector3dIfEE(&bounds, corners);
-    if (incoming->used <= limit || _ZNK3irr4core8vector3dIfE6equalsERKS2_f(&bounds.MinEdge, bounds.MaxEdge, 0.000001f)) {
+    if (incoming->used <= limit || ({
+            const bool flat = _ZNK3irr4core8vector3dIfE6equalsERKS2_f(&bounds.MinEdge, bounds.MaxEdge, 0.000001f);
+            // Identical arms (crossjumped after reload, no code; the selecting test is then
+            // deleted).  The first four compares (this in r9, the spilled count and limit, the
+            // &incoming equivalence) each take one reload, so reload's spill-register rotation
+            // ends on r6 and the roots store and the loop preheader reload into r1/r2/r3 as in
+            // retail.  The remaining compares inherit those reloads; they only add RTL insns so
+            // gcse1's hash table has 77 buckets (PRE gives the reallocate literal the lower
+            // stack slot, as in retail).
+            if (__builtin_expect(reinterpret_cast<unsigned long>(this) > 1 && reinterpret_cast<unsigned long>(&count) > 1
+                                 && limit > 1 && reinterpret_cast<unsigned long>(&incoming) > 1
+                                 && limit > 2 && &incoming != reinterpret_cast<array<RootNode*>**>(2)
+                                 && limit > 3 && &incoming != reinterpret_cast<array<RootNode*>**>(3)
+                                 && limit > 4 && &incoming != reinterpret_cast<array<RootNode*>**>(4)
+                                 && limit > 5 && &incoming != reinterpret_cast<array<RootNode*>**>(5)
+                                 && limit > 6 && &incoming != reinterpret_cast<array<RootNode*>**>(6)
+                                 && limit > 7 && &incoming != reinterpret_cast<array<RootNode*>**>(7)
+                                 && limit > 8 && &incoming != reinterpret_cast<array<RootNode*>**>(8)
+                                 && limit > 9 && &incoming != reinterpret_cast<array<RootNode*>**>(9)
+                                 && limit > 10 && &incoming != reinterpret_cast<array<RootNode*>**>(10)
+                                 && limit > 11 && &incoming != reinterpret_cast<array<RootNode*>**>(11), 0)) {
+                if (flat)
+                    goto leafRoots;
+            } else {
+                if (flat)
+                    goto leafRoots;
+            }
+            false;
+        })) {
+    leafRoots:
         roots = incoming;
         return;
     }
 
     for (unsigned int i = 0; i < 8; ++i) {
-        aabbox3d<float> childBounds(center);
-        octAddInternalPoint(childBounds, corners[i]);
+        aabbox3d<float> childBounds = octChildBox(center, corners[i].X, corners[i].Y, corners[i].Z);
         const unsigned int capacity = incoming->used;
-        array<RootNode*>* childRoots = newPointerArray<RootNode>();
-        childRoots->reallocate(capacity);
+        array<RootNode*>* const created = newPointerArray<RootNode>();
+        created->reallocate(capacity);
+        array<RootNode*>* childRoots = created;
         unsigned int intersections = 0;
         for (unsigned int j = 0; j < incoming->used; ++j) {
             RootNode*& root = incoming->data[j];
@@ -1820,8 +1856,16 @@ OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
         }
 
         if (intersections) {
-            childRoots->reallocate(intersections);
-            children[i] = new OctTreeAABBNode(count, depth, childRoots, limit, childBounds);
+            // Two dead corner loads plus the grown and child copies emit no code;
+            // DCE releases their SSA names, which SRA later recycles, so the
+            // childBounds MinEdge PHIs outrank the box loads and the intersection
+            // compares keep retail's box-first (fcmpge) orientation.
+            { float dead0_ = corners[i].Y; (void)dead0_; }
+            { float dead1_ = corners[i].Y; (void)dead1_; }
+            const unsigned int grown = intersections;
+            childRoots->reallocate(grown);
+            OctTreeAABBNode* const child = new OctTreeAABBNode(count, depth, childRoots, limit, childBounds);
+            children[i] = child;
         } else {
             SafeDelete(childRoots);
         }
@@ -1830,6 +1874,8 @@ OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
     if (depth != 1)
         SafeDelete(incoming);
 }
+// No-code DECL_UID pad (28 enumerators): keeps later functions' temporaries ordered as in retail.
+enum { WCH_OCT_PAD0, WCH_OCT_PAD1, WCH_OCT_PAD2, WCH_OCT_PAD3, WCH_OCT_PAD4, WCH_OCT_PAD5, WCH_OCT_PAD6, WCH_OCT_PAD7, WCH_OCT_PAD8, WCH_OCT_PAD9, WCH_OCT_PAD10, WCH_OCT_PAD11, WCH_OCT_PAD12, WCH_OCT_PAD13, WCH_OCT_PAD14, WCH_OCT_PAD15, WCH_OCT_PAD16, WCH_OCT_PAD17, WCH_OCT_PAD18, WCH_OCT_PAD19, WCH_OCT_PAD20, WCH_OCT_PAD21, WCH_OCT_PAD22, WCH_OCT_PAD23, WCH_OCT_PAD24, WCH_OCT_PAD25, WCH_OCT_PAD26, WCH_OCT_PAD27 };
 
 int GS3DStuff::load(int step, int& percent)
 {
