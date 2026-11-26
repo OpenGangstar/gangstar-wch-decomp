@@ -15,6 +15,14 @@ __aeabi_fmul = 0x001c4724;
 __aeabi_fcmplt = 0x001c479c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__aeabi_fcmpeq = 0x001c470c;
+__aeabi_fcmpgt = 0x001c419c;
+__aeabi_f2iz = 0x001c44cc;
+__aeabi_f2d = 0x001c48f8;
+__aeabi_d2f = 0x001c4310;
+sqrt = 0x001c401c;
+sqrtf = 0x001c4184;
+acosf = 0x001c4694;
 SECTIONS
 {
     .minimap_constructor 0x003295a4 : { *sdk-startup-minimap.o(.text._ZN7MiniMapC1EP7ASpriteiiii .text._ZN7MiniMapC2EP7ASpriteiiii) }
@@ -32,6 +40,7 @@ SECTIONS
     .target_marker_cleanup 0x0032945c : { *sdk-startup-minimap.o(.text.__tcf_0) }
     .target_marker_guard 0x004b7bd4 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZGVZN12TargetMarker11getInstanceEvE3map) }
     .target_marker_storage 0x004b7c54 (NOLOAD) : { *sdk-startup-minimap.o(.gnu.linkonce.b._ZZN12TargetMarker11getInstanceEvE3map) }
+    .minimap_xyoffset 0x00329900 : { *sdk-startup-minimap.o(.text._ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb) }
     .minimap_update 0x003294b8 : { *sdk-startup-minimap.o(.text._ZN7MiniMap6updateEd) }
     .minimap_delete_thunk 0x0032973c : { *sdk-startup-minimap.o(.text._ZThn4_N7MiniMapD0Ev) }
     .minimap_delete 0x00329750 : { *sdk-startup-minimap.o(.text._ZN7MiniMapD0Ev) }

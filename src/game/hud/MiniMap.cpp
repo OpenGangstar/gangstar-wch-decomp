@@ -187,3 +187,152 @@ MiniMap::MiniMap(ASprite* spriteValue, int frame, int markerFrame, int targetFra
     bottom -= amount;
     touchRegion.coordinates[3] = bottom;
 }
+
+// --- candidate: MiniMap::_calculateXYOffset ---
+#include "../core/CameraManager.h"
+#include "../core/ASprite.h"
+extern "C" float acosf(float);
+template<class T> inline const T& miniMax(const T& a,const T& b) { return a<b?b:a; }
+template<class T> inline const T& miniMin(const T& a,const T& b) { return a<b?a:b; }
+template<class T> inline const T miniClamp(const T& x,const T& low,const T& high) { return miniMin(miniMax(x,low),high); }
+extern "C" float sqrtf(float);
+// Irrlicht vector2d<float>::rotateBy, imported weak (see clearTrackedObjects in MiniMap.cpp).
+extern "C" void rotateVector2d(irr::core::vector2d<float>*, double, const irr::core::vector2d<float>&)
+    __asm__("_ZN3irr4core8vector2dIfE8rotateByEdRKS2_")
+    __attribute__((weak));
+
+irr::core::position2d<int> MiniMap::_calculateXYOffset(const irr::core::vector3d<float>& position, const irr::core::rect<int>& clip, bool north, bool special) const
+{
+    int width, height;
+    const float ratio = Map::getInstance()->pixelsPerUnit/scale;
+    irr::core::position2d<int> result(0,0);
+    const SpriteFrame* spriteFrame=sprite->GetFrame(frame);
+    const SpriteFrameModule* frameModule=sprite->GetFModule(spriteFrame->firstModule);
+    const SpriteModule* module=sprite->GetModule(frameModule->module);
+    width=module->width;
+    height=module->height;
+    irr::core::vector3d<float> direction = CameraManager::getInstance()->getLookAt();
+    const irr::core::vector3d<float> cameraPosition = CameraManager::getInstance()->getPosition();
+    direction.X -= cameraPosition.X;
+    direction.Y -= cameraPosition.Y;
+    direction.Z = 0;
+    direction.normalize();
+    float angle;
+    if (!north) {
+        const irr::core::vector3d<float> offset(position.X-followedObject->GetPosition().X,position.Y-followedObject->GetPosition().Y,0);
+        const float length=offset.getLength();
+        const bool zero=length==0;
+        if (zero) {
+        zeroLength:
+            result.X=static_cast<int>(ratio*followedObject->GetPosition().X);
+            result.Y=static_cast<int>(ratio*followedObject->GetPosition().Y);
+            return result;
+        }
+        angle = acosf(miniClamp(offset.dotProduct(direction)/(direction.getLength()*offset.getLength()),-1.0f,1.0f));
+        irr::core::vector3d<float> rotated=direction;
+        rotated.rotateXYBy(90,irr::core::vector3d<float>(0,0,0));
+        if (offset.dotProduct(rotated)>0) {
+            angle=-angle;
+            // No-code hint: repeats the zero-length test (false here); predicted 21%
+            // (opcode positive) at profile time it raises the zero-length arm's
+            // estimated frequency, then DOM removes it (retail block order).
+            if (({ struct L { int k; } u = { !zero }; L t = u; t.k<=0; })) goto zeroLength;
+        }
+        const float distance=ratio*length;
+        // One half-extent variable reused for both axes: its redefinition keeps the
+        // width square as its own statement ahead of the height (retail order).
+        float half=(clip.LowerRightCorner.X-clip.UpperLeftCorner.X)*0.5f;
+        float radiusSq=half*half;
+        half=(clip.LowerRightCorner.Y-clip.UpperLeftCorner.Y)*0.5f;
+        half*=half;
+        radiusSq+=half;
+        const int radius=static_cast<int>(sqrtf(radiusSq));
+        if (distance<radius) {
+            irr::core::vector2d<float> point(0,distance);
+            rotateVector2d(&point,(angle+3.14159265f)*(180.0f/3.14159265f),irr::core::vector2d<float>(0,0));
+            result.X=width/2+static_cast<int>(point.X);
+            result.Y=height/2+static_cast<int>(point.Y);
+            if (result.X>inset && result.X<width-inset && result.Y>inset && result.Y<height-inset) {
+                result.X+=frameModule->x;
+                result.Y+=frameModule->y;
+                return result;
+            }
+        }
+        if (special) {
+            result.X=-1;
+            result.Y=-1;
+            goto placed;
+        }
+    } else {
+        angle = acosf(miniClamp(direction.dotProduct(position)/(direction.getLength()*position.getLength()),-1.0f,1.0f));
+        if (direction.X>0) angle=-angle;
+    }
+    {
+    const float PI=3.14159265f;
+    const float HALF_PI=1.57079633f;
+    const float QUARTER_PI=0.785398163f;
+    const float THREE_QUARTER_PI=2.35619449f;
+    // No-code hint: the second, integer-typed spelling of the same zero test is
+    // predicted 29% (opcode nonequal) at profile time and removed by DOM afterwards;
+    // it only raises the zero arm's estimated frequency (retail block order).
+    if (angle==0 || ({ struct Z { unsigned k; } u = { angle==0 }; Z t = u; t.k==1u; })) {
+        // No-code hint: PRED_CALL lowers the zero-angle arm (retail block order).
+        __builtin_prefetch(frameModule);
+        result.X=width/2;
+        result.Y=inset;
+    } else if (angle==QUARTER_PI) {
+        result.X=width-inset;
+        result.Y=inset;
+    } else {
+    // No-code hint: PRED_CALL lowers the not-quarter edge (retail block order).
+    __builtin_prefetch(frameModule);
+    if (angle==HALF_PI) {
+        result.X=width-inset;
+        result.Y=height/2;
+    } else if (angle==THREE_QUARTER_PI) {
+        result.X=width-inset;
+        result.Y=height-inset;
+    } else {
+    // No-code hint: PRED_CALL lowers the not-three-quarter edge (retail block order).
+    __builtin_prefetch(frameModule);
+    if (angle==PI || angle==-PI) {
+        result.X=width/2;
+        result.Y=height-inset;
+    } else if (angle==-THREE_QUARTER_PI) {
+        result.X=inset;
+        result.Y=height-inset;
+    } else if (angle==-HALF_PI) {
+        result.X=inset;
+        result.Y=height/2;
+    } else if (angle==-QUARTER_PI) {
+        result.X=inset;
+        result.Y=inset;
+    } else if (angle>-QUARTER_PI && angle<QUARTER_PI) {
+        result.X=static_cast<int>((width-inset*2)*((angle+QUARTER_PI)/HALF_PI)+inset);
+        result.Y=inset;
+    } else if (angle>QUARTER_PI && angle<THREE_QUARTER_PI) {
+        result.X=width-inset;
+        result.Y=static_cast<int>((height-inset*2)*((angle-QUARTER_PI)/HALF_PI)+inset);
+    } else if (angle>THREE_QUARTER_PI || angle<-THREE_QUARTER_PI) {
+        if (angle<0) {
+            // Separate negation: keeps fold from rewriting -a-c as -c-a.
+            angle=-angle;
+            angle-=THREE_QUARTER_PI;
+        }
+        else angle=-(angle-PI-QUARTER_PI);
+        result.X=static_cast<int>((width-inset*2)*(angle/HALF_PI)+inset);
+        result.Y=height-inset;
+    } else {
+        result.X=inset;
+        // Negation as its own statement keeps fold from rewriting -a-c as -c-a.
+        angle=-angle;
+        result.Y=static_cast<int>((height-inset*2)*((angle-QUARTER_PI)/HALF_PI)+inset);
+    }
+    }
+    }
+    }
+placed:
+    result.X+=frameModule->x;
+    result.Y+=frameModule->y;
+    return result;
+}
