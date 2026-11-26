@@ -250,7 +250,8 @@
         "_ZN7Vehicle4LoadERKN7Structs3CarE",
         "_ZN7Vehicle15_processAIFlagsEv",
         "_ZNK7Vehicle11isDoorClearEbP6b2Body",
-        "_ZN7Vehicle6UpdateEi"
+        "_ZN7Vehicle6UpdateEi",
+        "_ZN7Vehicle12CreateWheelsEP13Box2DUserInfo"
     ],
     "sections": [
         ".vehicle_collision",
@@ -672,6 +673,12 @@
         "_ZN13ScriptManager12taggedKilledEv",
         "_ZN18AchievementManager18recordVehicleSpeedEi",
         "_ZN4Lock9setTargetEP11LevelObject",
-        "_ZNK15b2RevoluteJoint13GetJointAngleEv"
+        "_ZNK15b2RevoluteJoint13GetJointAngleEv",
+        "_ZN12b2PolygonDef8SetAsBoxEff",
+        "_ZN18b2RevoluteJointDef10InitializeEP6b2BodyS1_RK6b2Vec2",
+        "_ZN19b2PrismaticJointDef10InitializeEP6b2BodyS1_RK6b2Vec2S4_",
+        "_ZN6b2Body11CreateShapeEP10b2ShapeDef",
+        "_ZN7b2World10CreateBodyEPK9b2BodyDef",
+        "_ZN7b2World11CreateJointEPK10b2JointDef"
     ]
 }

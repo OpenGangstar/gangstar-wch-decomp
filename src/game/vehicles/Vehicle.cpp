@@ -3812,3 +3812,181 @@ extern "C" bool _ZNK7Vehicle11isDoorClearEbP6b2Body(const Vehicle* self, bool le
     }
     return true;
 }
+
+#include "../vehicles/VehicleBodyShapes.h"
+
+// Box2D 2.0.1 joint definitions (licensed SDK layout, see VehicleBodyShapes.h).
+enum b2JointType { e_unknownJoint, e_revoluteJoint, e_prismaticJoint };
+struct b2JointDef {
+    b2JointDef() { type = e_unknownJoint; userData = 0; body1 = 0; body2 = 0; collideConnected = false; }
+    b2JointType type;
+    void* userData;
+    b2Body* body1;
+    b2Body* body2;
+    bool collideConnected;
+};
+struct b2RevoluteJointDef : b2JointDef {
+    b2RevoluteJointDef()
+    {
+        type = e_revoluteJoint;
+        localAnchor1.SetZero();
+        localAnchor2.SetZero();
+        referenceAngle = 0.0f;
+        lowerAngle = 0.0f;
+        upperAngle = 0.0f;
+        maxMotorTorque = 0.0f;
+        motorSpeed = 0.0f;
+        enableLimit = false;
+        enableMotor = false;
+    }
+    void Initialize(b2Body* body1, b2Body* body2, const b2Vec2& anchor);
+    b2Vec2 localAnchor1, localAnchor2;
+    float referenceAngle;
+    bool enableLimit;
+    float lowerAngle, upperAngle;
+    bool enableMotor;
+    float motorSpeed, maxMotorTorque;
+};
+struct b2PrismaticJointDef : b2JointDef {
+    b2PrismaticJointDef()
+    {
+        type = e_prismaticJoint;
+        localAnchor1.SetZero();
+        localAnchor2.SetZero();
+        localAxis1.x = 1.0f; localAxis1.y = 0.0f;
+        referenceAngle = 0.0f;
+        enableLimit = false;
+        lowerTranslation = 0.0f;
+        upperTranslation = 0.0f;
+        enableMotor = false;
+        maxMotorForce = 0.0f;
+        motorSpeed = 0.0f;
+    }
+    void Initialize(b2Body* body1, b2Body* body2, const b2Vec2& anchor, const b2Vec2& axis);
+    b2Vec2 localAnchor1, localAnchor2, localAxis1;
+    float referenceAngle;
+    bool enableLimit;
+    float lowerTranslation, upperTranslation;
+    bool enableMotor;
+    float maxMotorForce, motorSpeed;
+};
+
+class b2Joint;
+struct Box2DUserInfo;
+extern "C" b2Joint* _ZN7b2World11CreateJointEPK10b2JointDef(b2World* world, const b2JointDef* def);
+extern "C" void _ZN12b2PolygonDef8SetAsBoxEff(b2PolygonDef* def, float hx, float hy);
+
+namespace {
+struct WheelView {
+    unsigned char unknown0[144];
+    float rotationZ;
+    unsigned char unknown148[20];
+    unsigned int mass;
+    unsigned char unknown172[52];
+    unsigned int tireWidth;
+    unsigned int tireLength;
+    unsigned char unknown232[340];
+    irr::core::vector3d<float> wheelOffset0;
+    irr::core::vector3d<float> wheelOffset1;
+    irr::core::vector3d<float> wheelOffset2;
+    irr::core::vector3d<float> wheelOffset3;
+    irr::core::vector3d<float> wheelCenter;
+    b2Body* collisionBody;
+    b2Body* leftCollisionBody;
+    b2Body* rightCollisionBody;
+    b2Joint* wheelJoint;
+    unsigned char unknown648[28];
+    irr::scene::ISceneNode* wheelNodes[4];
+};
+inline b2Vec2 bodyWorldPoint(const b2Body* body, const b2Vec2& v)
+{
+    const float* r = body->transform.rotation;
+    const b2Vec2 rotated(r[0] * v.x + r[2] * v.y, r[1] * v.x + r[3] * v.y);
+    return b2Vec2(body->transform.position.x + rotated.x, body->transform.position.y + rotated.y);
+}
+}
+
+inline const b2Vec2& bodyWorldCenter(const b2Body* body)
+{
+    return *reinterpret_cast<const b2Vec2*>(reinterpret_cast<const char*>(body) + 44);
+}
+
+extern "C" void _ZN7Vehicle12CreateWheelsEP13Box2DUserInfo(Vehicle* self, Box2DUserInfo* info)
+{
+    b2World* world = PhysicAttributes::s_world;
+    WheelView* view = reinterpret_cast<WheelView*>(self);
+    if (!view->wheelNodes[0])
+        return;
+    const irr::core::vector3d<float> front = view->wheelNodes[0]->getPosition();
+    view->wheelOffset0 = irr::core::vector3d<float>(front.X, front.Y, 0.0f);
+    view->wheelOffset1.X = -front.X;
+    view->wheelOffset1.Y = front.Y;
+    view->wheelOffset1.Z = 0.0f;
+    irr::scene::ISceneNode* rearNode = view->wheelNodes[2];
+    const irr::core::vector3d<float> rear = rearNode->getPosition();
+    view->wheelOffset2 = irr::core::vector3d<float>(rear.X, rear.Y, 0.0f);
+    view->wheelOffset3 = irr::core::vector3d<float>(-rear.X, rear.Y, 0.0f);
+    view->wheelCenter = (view->wheelOffset0 + view->wheelOffset1 + view->wheelOffset2 + view->wheelOffset3) * 0.25f;
+
+    b2BodyDef frontDef;
+    frontDef.linearDamping = 0.0f;
+    frontDef.angularDamping = 0.0f;
+    view->leftCollisionBody = world->CreateBody(&frontDef);
+    view->leftCollisionBody->SetXForm(bodyWorldPoint(view->collisionBody,
+                                                     b2Vec2((view->wheelOffset0.X + view->wheelOffset1.X) * 0.5f / 100.0f,
+                                                            (view->wheelOffset0.Y + view->wheelOffset1.Y) * 0.5f / 100.0f)),
+                                      -0.017453292f * view->rotationZ);
+    view->leftCollisionBody->data = info;
+
+    b2BodyDef rearDef;
+    rearDef.linearDamping = 0.0f;
+    rearDef.angularDamping = 0.0f;
+    view->rightCollisionBody = world->CreateBody(&rearDef);
+    view->rightCollisionBody->SetXForm(bodyWorldPoint(view->collisionBody,
+                                                     b2Vec2((view->wheelOffset2.X + view->wheelOffset3.X) * 0.5f / 100.0f,
+                                                            (view->wheelOffset2.Y + view->wheelOffset3.Y) * 0.5f / 100.0f)),
+                                      -0.017453292f * view->rotationZ);
+    view->rightCollisionBody->data = info;
+
+    b2PolygonDef frontShape;
+    _ZN12b2PolygonDef8SetAsBoxEff(&frontShape, view->tireWidth * 0.5f / 100.0f,
+                                  view->tireLength / 100.0f);
+    frontShape.density = 1.0f;
+    frontShape.filter.categoryBits = 0;
+    frontShape.filter.maskBits = 0;
+    frontShape.filter.groupIndex = 0;
+    view->leftCollisionBody->CreateShape(&frontShape);
+
+    b2PolygonDef rearShape;
+    _ZN12b2PolygonDef8SetAsBoxEff(&rearShape, view->tireWidth * 0.5f / 100.0f,
+                                  view->tireLength / 100.0f);
+    rearShape.density = 1.0f;
+    rearShape.filter.categoryBits = 0;
+    rearShape.filter.maskBits = 0;
+    rearShape.filter.groupIndex = 0;
+    view->rightCollisionBody->CreateShape(&rearShape);
+
+    view->leftCollisionBody->SetMassFromShapes();
+    view->rightCollisionBody->SetMassFromShapes();
+    b2MassData massData;
+    massData.I = view->leftCollisionBody->inertia;
+    massData.center = view->leftCollisionBody->localCenter;
+    massData.mass = view->mass / 3.0f;
+    view->leftCollisionBody->SetMass(&massData);
+    view->rightCollisionBody->SetMass(&massData);
+
+    b2RevoluteJointDef revolute;
+    revolute.Initialize(view->collisionBody, view->leftCollisionBody, bodyWorldCenter(view->leftCollisionBody));
+    revolute.enableMotor = false;
+    revolute.maxMotorTorque = 100.0f;
+    view->wheelJoint = (_ZN7b2World11CreateJointEPK10b2JointDef(world, &revolute));
+
+    b2PrismaticJointDef prismatic;
+    prismatic.Initialize(view->collisionBody, view->rightCollisionBody, bodyWorldCenter(view->rightCollisionBody), b2Vec2(1.0f, 0.0f));
+    prismatic.enableLimit = true;
+    prismatic.upperTranslation = 0.0f;
+    prismatic.lowerTranslation = 0.0f;
+    _ZN7b2World11CreateJointEPK10b2JointDef(world, &prismatic);
+
+    self->removeWheelCollisions();
+}
