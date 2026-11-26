@@ -56,7 +56,8 @@
         "_ZN13StringManagerD1Ev",
         "_ZN13StringManagerD2Ev",
         "_ZN13StringManagerD0Ev",
-        "_ZN13StringManager10loadStylesEPKc"
+        "_ZN13StringManager10loadStylesEPKc",
+        "_ZN13StringManager13loadPackSheetEjj"
     ],
     "sections": [
         ".string_unload_pack_sheet",
@@ -77,7 +78,6 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN13StringManager13loadPackSheetEjj",
         "_ZN10DataStream7ReadIntEv",
         "_ZN10DataStream21ReadAndAllocateStringEv",
         "_ZN10DataStream11ReadBooleanEv",
@@ -85,6 +85,9 @@
         "_ZN9ResStreamD1Ev",
         "_ZN10DataStreamC1ER6StreamNS_6endianE",
         "_ZNK10DataStream4TellEv",
-        "_ZN10DataStream4SeekEii"
+        "_ZN10DataStream4SeekEii",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11MenuManager19getCharAutoLineFeedEv",
+        "_ZN12StreamReader12readStringExEP11IStreamBasePcy"
     ]
 }
