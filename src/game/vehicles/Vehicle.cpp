@@ -2662,14 +2662,166 @@ int __attribute__((weak)) Vehicle::getMarkerType()
     return -1;
 }
 
-extern "C" void vehicleStaticInitialization(int initialize, int priority)
-    __asm__("_Z41__static_initialization_and_destruction_0ii");
+#include "../core/LocalStartupText.h"
+
+// Translation-unit startup objects. Retail Vehicle.o has its own copies of the
+// header-scope AI transition tables, the ps::vHalf vector and the gear
+// profiles. Table contents stay in the retail image; the linker script assigns
+// their addresses. The AI tables are declared with complete array types: an
+// incomplete extern array changes the PIC expansion order of each table address
+// relative to its destination.
+namespace irr { namespace ps {
+struct LocalVector3Storage {
+    float x, y, z;
+};
+static LocalVector3Storage vHalf;
+} }
+
+namespace gameloft { namespace ai {
+extern const unsigned int civPassive_trans[75] __attribute__((visibility("hidden")));
+extern const unsigned int scriptedNpc_trans[12] __attribute__((visibility("hidden")));
+extern const unsigned int civAggressive_trans[57] __attribute__((visibility("hidden")));
+extern const unsigned int gangMember_trans[3] __attribute__((visibility("hidden")));
+extern const unsigned int cop_trans[78] __attribute__((visibility("hidden")));
+extern const unsigned int swat_trans[3] __attribute__((visibility("hidden")));
+extern const unsigned int civ_vehicle_trans[36] __attribute__((visibility("hidden")));
+extern const unsigned int cop_vehicle_trans[45] __attribute__((visibility("hidden")));
+extern const unsigned int guard_trans[42] __attribute__((visibility("hidden")));
+extern const unsigned int scripted_vehicle_trans[21] __attribute__((visibility("hidden")));
+
+struct LocalTransitionListStorage {
+    const unsigned int* transitions;
+    unsigned int count;
+};
+static LocalTransitionListStorage civ_passive;
+static LocalTransitionListStorage npc_scripted;
+static LocalTransitionListStorage civ_agressive;
+static LocalTransitionListStorage gang_member;
+static LocalTransitionListStorage cop;
+static LocalTransitionListStorage swat;
+static LocalTransitionListStorage civ_vehicle;
+static LocalTransitionListStorage cop_vehicle;
+static LocalTransitionListStorage guard;
+static LocalTransitionListStorage scripted_vehicle;
+} }
+
+namespace gameloft { namespace vehicle { namespace gear_profiles {
+extern const unsigned int car0_gearChangeSpeeds[] __attribute__((visibility("hidden")));
+extern const float car0_gearPowers[] __attribute__((visibility("hidden")));
+extern const unsigned int car0_peakPowerSpeeds[] __attribute__((visibility("hidden")));
+extern const unsigned int car1_gearChangeSpeeds[] __attribute__((visibility("hidden")));
+extern const float car1_gearPowers[] __attribute__((visibility("hidden")));
+extern const unsigned int car1_peakPowerSpeeds[] __attribute__((visibility("hidden")));
+extern const unsigned int car2_gearChangeSpeeds[] __attribute__((visibility("hidden")));
+extern const float car2_gearPowers[] __attribute__((visibility("hidden")));
+extern const unsigned int car2_peakPowerSpeeds[] __attribute__((visibility("hidden")));
+extern const unsigned int truck1_gearChangeSpeeds[] __attribute__((visibility("hidden")));
+extern const float truck1_gearPowers[] __attribute__((visibility("hidden")));
+extern const unsigned int truck1_peakPowerSpeeds[] __attribute__((visibility("hidden")));
+
+struct GearProfileStorage {
+    unsigned int gearCount;
+    float unknown4;
+    float unknown8;
+    float unknown12;
+    const unsigned int* gearChangeSpeeds;
+    const float* gearPowers;
+    const unsigned int* peakPowerSpeeds;
+};
+static GearProfileStorage car0;
+static GearProfileStorage car1;
+static GearProfileStorage car2;
+static GearProfileStorage truck1;
+} } }
+
+extern void* __dso_handle;
+extern "C" {
+int __aeabi_atexit(void*, void (*)(void*), void*);
+void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
+}
+
+static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
+static void __static_initialization_and_destruction_0(int initialize, int priority)
+{
+    if (initialize == 1 && priority == 65535) {
+        irr::scene::quake3::LocalStringStorage& value = irr::scene::quake3::irrEmptyStringc;
+        value.array = 0;
+        value.allocated = 0;
+        value.used = 0;
+        value.reference = false;
+        _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(&value, localStartupEmptyText);
+        __aeabi_atexit(0, reinterpret_cast<void (*)(void*)>(__tcf_4), &__dso_handle);
+
+        irr::ps::vHalf.x = 0.5f;
+        irr::ps::vHalf.y = 0.5f;
+        irr::ps::vHalf.z = 0.5f;
+
+        using namespace gameloft::ai;
+        civ_passive.transitions = civPassive_trans;
+        civ_passive.count = 75;
+        npc_scripted.transitions = scriptedNpc_trans;
+        npc_scripted.count = 12;
+        civ_agressive.transitions = civAggressive_trans;
+        civ_agressive.count = 57;
+        gang_member.transitions = gangMember_trans;
+        gang_member.count = 3;
+        cop.transitions = cop_trans;
+        cop.count = 78;
+        swat.transitions = swat_trans;
+        swat.count = 3;
+        civ_vehicle.transitions = civ_vehicle_trans;
+        civ_vehicle.count = 36;
+        cop_vehicle.transitions = cop_vehicle_trans;
+        cop_vehicle.count = 45;
+        guard.transitions = guard_trans;
+        guard.count = 42;
+        scripted_vehicle.transitions = scripted_vehicle_trans;
+        scripted_vehicle.count = 21;
+
+        using namespace gameloft::vehicle::gear_profiles;
+        // Retail stores 0x3ed91688, one ulp above the nearest float to 0.424.
+        car0.gearCount = 5;
+        car0.unknown4 = 0.28f;
+        car0.unknown8 = 1.0f;
+        car0.unknown12 = 0.42400002f;
+        car0.gearChangeSpeeds = car0_gearChangeSpeeds;
+        car0.gearPowers = car0_gearPowers;
+        car0.peakPowerSpeeds = car0_peakPowerSpeeds;
+        car1.gearCount = 5;
+        car1.unknown4 = 0.28f;
+        car1.unknown8 = 1.0f;
+        car1.unknown12 = 0.42400002f;
+        car1.gearChangeSpeeds = car1_gearChangeSpeeds;
+        car1.gearPowers = car1_gearPowers;
+        car1.peakPowerSpeeds = car1_peakPowerSpeeds;
+        car2.gearCount = 4;
+        car2.unknown4 = 0.28f;
+        car2.unknown8 = 2.0f;
+        car2.unknown12 = 0.624f;
+        car2.gearChangeSpeeds = car2_gearChangeSpeeds;
+        car2.gearPowers = car2_gearPowers;
+        car2.peakPowerSpeeds = car2_peakPowerSpeeds;
+        truck1.gearCount = 5;
+        truck1.unknown4 = 0.28f;
+        truck1.unknown8 = 2.0f;
+        truck1.unknown12 = 0.624f;
+        truck1.gearChangeSpeeds = truck1_gearChangeSpeeds;
+        truck1.gearPowers = truck1_gearPowers;
+        truck1.peakPowerSpeeds = truck1_peakPowerSpeeds;
+
+        GearProfileStorage* table = reinterpret_cast<GearProfileStorage*>(profiles);
+        table[0] = car0;
+        table[1] = car1;
+        table[2] = car2;
+        table[3] = truck1;
+    }
+}
 
 extern "C" {
 static void _GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE() __attribute__((used));
 static void _GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE()
 {
-    vehicleStaticInitialization(1, 65535);
+    __static_initialization_and_destruction_0(1, 65535);
 }
 }
 

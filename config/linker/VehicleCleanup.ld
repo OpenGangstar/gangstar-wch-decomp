@@ -43,6 +43,28 @@ __aeabi_fadd = 0x001c4154;
 __aeabi_fsub = 0x001c4328;
 __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
+_ZN8gameloft2ai16civPassive_transE = 0x0041f808;
+_ZN8gameloft2ai17scriptedNpc_transE = 0x0041f934;
+_ZN8gameloft2ai19civAggressive_transE = 0x0041f964;
+_ZN8gameloft2ai16gangMember_transE = 0x0041fa48;
+_ZN8gameloft2ai9cop_transE = 0x0041fa54;
+_ZN8gameloft2ai10swat_transE = 0x0041fb8c;
+_ZN8gameloft2ai17civ_vehicle_transE = 0x0041fb98;
+_ZN8gameloft2ai17cop_vehicle_transE = 0x0041fc28;
+_ZN8gameloft2ai11guard_transE = 0x0041fcdc;
+_ZN8gameloft2ai22scripted_vehicle_transE = 0x0041fd84;
+_ZN8gameloft7vehicle13gear_profiles21car0_gearChangeSpeedsE = 0x0041fdd8;
+_ZN8gameloft7vehicle13gear_profiles15car0_gearPowersE = 0x0041fde8;
+_ZN8gameloft7vehicle13gear_profiles20car0_peakPowerSpeedsE = 0x0041fdfc;
+_ZN8gameloft7vehicle13gear_profiles21car1_gearChangeSpeedsE = 0x0041fe10;
+_ZN8gameloft7vehicle13gear_profiles15car1_gearPowersE = 0x0041fe20;
+_ZN8gameloft7vehicle13gear_profiles20car1_peakPowerSpeedsE = 0x0041fe34;
+_ZN8gameloft7vehicle13gear_profiles21car2_gearChangeSpeedsE = 0x0041fe48;
+_ZN8gameloft7vehicle13gear_profiles15car2_gearPowersE = 0x0041fe54;
+_ZN8gameloft7vehicle13gear_profiles20car2_peakPowerSpeedsE = 0x0041fe68;
+_ZN8gameloft7vehicle13gear_profiles23truck1_gearChangeSpeedsE = 0x0041fe78;
+_ZN8gameloft7vehicle13gear_profiles17truck1_gearPowersE = 0x0041fe88;
+_ZN8gameloft7vehicle13gear_profiles22truck1_peakPowerSpeedsE = 0x0041fe9c;
 SECTIONS
 {
     .vehicle_create_body 0x0030fac8 : { *vehicle-cleanup.o(.text._ZN7Vehicle10CreateBodyEv) }
@@ -109,6 +131,9 @@ SECTIONS
  .skin_table_19 0x48a300 : { *(.data.rel.ro._ZTCN3irr5scene14IMeshSceneNodeE0_NS_2io26IAttributeExchangingObjectE .gnu.linkonce.d.rel.ro._ZTCN3irr5scene14IMeshSceneNodeE0_NS_2io26IAttributeExchangingObjectE .rodata._ZTCN3irr5scene14IMeshSceneNodeE0_NS_2io26IAttributeExchangingObjectE) }
 
     .vehicle_startup_wrapper 0x0030b59c : { *vehicle-cleanup.o(.text._GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE) }
+    .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+    .vehicle_static_init 0x0030b310 : { *vehicle-cleanup.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .vehicle_startup_objects 0x004b8744 (NOLOAD) : { *vehicle-cleanup.o(.bss._ZN3irr2ps5vHalfE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11civ_passiveE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai12npc_scriptedE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai13civ_agressiveE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11gang_memberE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai3copE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai4swatE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11civ_vehicleE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11cop_vehicleE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai5guardE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai16scripted_vehicleE) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles4car0E) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles4car1E) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles4car2E) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles6truck1E) }
     .vehicle_grab_scene_node 0x00310498 : { *(.text._ZN7Vehicle13grabSceneNodeEiPPPv) }
     .vehicle_light00_asset 0x0041f72c : { *(.rodata.*vehicleLight00Asset*) }
     .vehicle_light01_asset 0x0041f740 : { *(.rodata.*vehicleLight01Asset*) }
@@ -325,3 +350,6 @@ SECTIONS
     .verification_unused_morph_dtor : { *(.gnu.linkonce.t._ZN16CCarMorphingMeshD2Ev) }
 }
 ASSERT(SIZEOF(.vehicle_empty_string) == 32, "Vehicle empty string extent");
+
+
+ASSERT(SIZEOF(.vehicle_startup_objects) == 0xcc, "Vehicle startup objects extent");

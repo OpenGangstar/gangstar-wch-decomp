@@ -256,7 +256,11 @@
         "_ZN7Vehicle8setSpeedEv",
         "_ZN7Vehicle17ResetBodyPositionEv",
         "_ZN7Vehicle5shootEv",
-        "_ZN7Vehicle10CreateBodyEv"
+        "_ZN7Vehicle10CreateBodyEv",
+        {
+            "name": "_Z41__static_initialization_and_destruction_0ii",
+            "address": "0x0030b311"
+        }
     ],
     "sections": [
         ".vehicle_collision",
@@ -392,10 +396,6 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN18AchievementManager12recordDamageEi",
-        {
-            "name": "_Z41__static_initialization_and_destruction_0ii",
-            "address": "0x0030b311"
-        },
         "_ZN3irr5scene10ISceneNode19getSceneNodeFromUIDEPKc",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",
         "_ZN11LevelObject13grabSceneNodeEiPPPv",

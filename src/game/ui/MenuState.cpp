@@ -1843,6 +1843,221 @@ bool Menus::Options::Notify(const MenuWidget* widget, int event)
     return true;
 }
 
+struct OptionGameSettingEntryView {
+    int id;
+    int type;
+    int titleId;
+    const char* title;
+    int count;
+};
+struct OptionGameSettingPreferencesView {
+    void* vtable;
+    int data;
+};
+extern "C" {
+extern const OptionGameSettingEntryView _ZN5Menus18OptionGameSettings14s_gameSettingsE[];
+void _ZN7Widgets11GameSetting8SetTitleEPKc(void*, const char*);
+void _ZN7Widgets11GameSetting10SetTitleIdEi(void*, int);
+void _ZN7Widgets11GameSetting10SetValueIdEi(void*, int);
+void _ZN7Widgets11GameSetting8SetValueEPKc(void*, const char*);
+void _ZN7Widgets11GameSetting13ShowSelectionEv(void*);
+void _ZN7Widgets11GameSetting13HideSelectionEv(void*);
+void _ZN7Widgets11GameSetting12ShowButtonOkEv(void*);
+void _ZN7Widgets11GameSetting12HideButtonOkEv(void*);
+void _ZN11PreferencesC1Ev(OptionGameSettingPreferencesView*);
+void _ZN11PreferencesD1Ev(OptionGameSettingPreferencesView*);
+const char* _ZN11Preferences18GetDefaultFilenameEv();
+bool _ZN11Preferences13SampleAndSaveEPKc(OptionGameSettingPreferencesView*, const char*);
+}
+
+// Retail strings shared through the merged string pool; placed by the linker.
+extern const char ogsNone[] __attribute__((visibility("hidden")));
+extern const char ogsChapterOne[] __attribute__((visibility("hidden")));
+extern const char ogsChapterFormat[] __attribute__((visibility("hidden")));
+extern const char ogsAll[] __attribute__((visibility("hidden")));
+
+inline void* ogsWidget26(MenuManager* manager, int index)
+{
+    const MenuWidgetTable& table =
+        *reinterpret_cast<const MenuWidgetTable*>(manager);
+    if (__builtin_expect(index < table.count, 1)) {
+        return table.widgets[index];
+    }
+    return 0;
+}
+bool Menus::OptionGameSettings::Notify(const MenuWidget* widget, int event)
+{
+    if (Options::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    int id;
+    const unsigned int arrowsKey = reinterpret_cast<unsigned int>(getWidgetByIndex(manager, 18));
+    // Defined before arrows so PRE orders the zero-path copies as retail.
+    const MenuWidget* const arrowsWidget = reinterpret_cast<const MenuWidget*>(arrowsKey);
+    const Widgets::Arrows* arrows = reinterpret_cast<const Widgets::Arrows*>(arrowsKey);
+    const unsigned int settingKey = reinterpret_cast<unsigned int>(ogsWidget26(manager, 26));
+    MenuWidget* setting = reinterpret_cast<MenuWidget*>(settingKey);
+    char text[16];
+    id = _ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].id;
+    if (widget == arrowsWidget) {
+        // No-code branch-probability hint: the aggregate copy hides the range
+        // test from the opcode heuristic until SRA folds it back.
+        struct EventGate { int open; };
+        const EventGate gate = { static_cast<unsigned int>(event - 1) <= 1u };
+        const EventGate copy = gate;
+        if (copy.open != 1) {
+            // No-code hint: the guarded no-op call cancels the call heuristic.
+            __builtin_prefetch(widget);
+            return false;
+        }
+        _ZN7Widgets11GameSetting8SetTitleEPKc(setting, _ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].title);
+        _ZN7Widgets11GameSetting10SetTitleIdEi(setting, _ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].titleId);
+        switch (_ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].type) {
+        case 0:
+            _ZN7Widgets11GameSetting13ShowSelectionEv(setting);
+            _ZN7Widgets11GameSetting12HideButtonOkEv(setting);
+            switch (id) {
+            case 0:
+                selections[0] = ScriptManager::getInstance()->unknown78;
+                break;
+            case 1:
+                selections[1] = PlayerTest::GetPlayer()->damageDisabled;
+                break;
+            case 2:
+                selections[2] = Application::GetInstance()->GetWeaponManager()->areAmmoUnlimited();
+                break;
+            case 3:
+                selections[3] = PlayerTest::GetPlayer()->isRichAsCroesus();
+                break;
+            }
+            _ZN7Widgets11GameSetting10SetValueIdEi(setting, selections[id] ? 0x1029 : 0x102a);
+            break;
+        case 1:
+            _ZN7Widgets11GameSetting13HideSelectionEv(setting);
+            _ZN7Widgets11GameSetting12ShowButtonOkEv(setting);
+            break;
+        case 2:
+            selections[id] = 0;
+            _ZN7Widgets11GameSetting13ShowSelectionEv(setting);
+            _ZN7Widgets11GameSetting12ShowButtonOkEv(setting);
+            switch (id) {
+            case 4:
+                _ZN7Widgets11GameSetting8SetValueEPKc(setting, ogsNone);
+                break;
+            case 7:
+                _ZN7Widgets11GameSetting8SetValueEPKc(setting, ogsChapterOne);
+                break;
+            }
+            break;
+        }
+        const_cast<Widgets::Arrows*>(arrows)->UpdateLocalization();
+        setting->UpdateLocalization();
+        return true;
+    }
+    __builtin_prefetch(arrows);
+    if (reinterpret_cast<unsigned int>(widget) != settingKey)
+        return false;
+    int step;
+    switch (event) {
+    case 3:
+        step = 1;
+        break;
+    case 1:
+        switch (id) {
+        case 4:
+            // No-code hint: dead test (known false here) raises the target's
+            // estimated frequency at profile time; folded by DOM after SRA.
+            if (__builtin_expect(({ struct L { int k; } u = { id }; L t = u; t.k != 4; }), 0))
+                goto reach;
+            if (selections[4])
+                Application::GetInstance()->GetWeaponManager()->unlockAllWeapons();
+            else
+                Application::GetInstance()->GetWeaponManager()->lockAllWeapons();
+            break;
+        case 5:
+        reach:
+            ScriptManager::getInstance()->reachRunningCommand(3);
+            break;
+        case 6:
+            ScriptManager::getInstance()->rewindRunningScripts();
+            break;
+        case 7:
+            ScriptManager::getInstance()->resetGame(false, chapterStartup[selections[7]]);
+            break;
+        }
+        return true;
+    case 2:
+        step = -1;
+        break;
+    default: {
+        OptionGameSettingPreferencesView preferences;
+        // No-code allocation hint: the identical arms are cross-jumped after
+        // reload and the test is deleted, but the extra settingKey reference
+        // lowers its global-alloc priority below arrowsKey (retail sl/r9).
+        if (reinterpret_cast<unsigned int>(this) == settingKey)
+            _ZN11PreferencesC1Ev(&preferences);
+        else
+            _ZN11PreferencesC1Ev(&preferences);
+        const char* const filename = _ZN11Preferences18GetDefaultFilenameEv();
+        _ZN11Preferences13SampleAndSaveEPKc(&preferences, filename);
+        _ZN11PreferencesD1Ev(&preferences);
+        return false;
+    }
+    }
+    if (_ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].count > 0) {
+        int& selection = selections[id];
+        selection += step;
+        if (selection >= _ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].count)
+            selection = 0;
+        else {
+            // No-code hint: guarded no-op call lowers this arm's frequency.
+            __builtin_prefetch(widget);
+            if (selection < 0)
+                selection = _ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].count - 1;
+        }
+    }
+    switch (_ZN5Menus18OptionGameSettings14s_gameSettingsE[arrows->GetCurrentPage()].type) {
+    case 0:
+        _ZN7Widgets11GameSetting10SetValueIdEi(setting, selections[id] ? 0x1029 : 0x102a);
+        switch (id) {
+        case 0:
+            if (selections[0])
+                ScriptManager::getInstance()->unknown78 = true;
+            else
+                ScriptManager::getInstance()->unknown78 = false;
+            break;
+        case 1:
+        case1:
+            PlayerTest::GetPlayer()->damageDisabled = selections[1] != 0;
+            break;
+        case 2:
+            Application::GetInstance()->GetWeaponManager()->unlimitedAmmo(selections[2] != 0);
+            break;
+        case 3:
+            // No-code hint: dead test (known false here) raises the target's
+            // estimated frequency at profile time; folded by DOM after SRA.
+            if (__builtin_expect(({ struct L { int k; } u = { id }; L t = u; t.k != 3; }), 0))
+                goto case1;
+            PlayerTest::GetPlayer()->richAsCroesus(selections[3] != 0);
+            break;
+        }
+        break;
+    case 2:
+        switch (id) {
+        case 4:
+            _ZN7Widgets11GameSetting8SetValueEPKc(setting, selections[4] ? ogsAll : ogsNone);
+            break;
+        case 7:
+            sprintf(text, ogsChapterFormat, selections[7] + 1);
+            _ZN7Widgets11GameSetting8SetValueEPKc(setting, text);
+            break;
+        }
+        break;
+    }
+    setting->UpdateLocalization();
+    return true;
+}
+
 extern "C" {
 int _ZNK7Widgets6IGMenu20GetLastPressedButtonEv(const void*);
 void _ZN11MenuManager8switchToEPKcb(MenuManager*, const char*, bool);

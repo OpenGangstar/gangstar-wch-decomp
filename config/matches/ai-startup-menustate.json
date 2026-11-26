@@ -309,7 +309,8 @@
         "_ZN5Menus17ServiceWeaponShop7RefreshEv",
         "_ZN9MenuState7OnEventERN8RenderFX5EventE",
         "_ZN5Menus16ServiceCarRental6UpdateEv",
-        "_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti"
+        "_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti",
+        "_ZN5Menus18OptionGameSettings6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".event_character_path",
@@ -462,7 +463,8 @@
         ".service_corruption_notify",
         ".menustate_got_focus",
         ".service_weapon_shop_refresh",
-        ".menu_state_on_event"
+        ".menu_state_on_event",
+        ".option_game_settings_notify"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -593,6 +595,14 @@
         "_ZN17GameObjectManager28CreateGameObjectFromMetatypeEi",
         "_ZN7Vehicle4rentEb",
         "_ZN9GS3DStuff15getSceneOctTreeEv",
-        "_ZNK10SpawnPoint17hasCloseNeighborsEv"
+        "_ZNK10SpawnPoint17hasCloseNeighborsEv",
+        "_ZN13WeaponManager16unlockAllWeaponsEv",
+        "_ZN10PlayerTest13richAsCroesusEb",
+        "_ZN13ScriptManager19reachRunningCommandEi",
+        "_ZN13ScriptManager20rewindRunningScriptsEv",
+        "_ZN13ScriptManager9resetGameEbi",
+        "_ZN13WeaponManager13unlimitedAmmoEb",
+        "_ZN13WeaponManager14lockAllWeaponsEv",
+        "_ZNK13WeaponManager16areAmmoUnlimitedEv"
     ]
 }
