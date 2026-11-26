@@ -38,6 +38,7 @@ INCLUDE config/linker/WidgetControlsEvent.ld
 SECTIONS
 {
     .renderfx_invoke_as_callback 0x003eefac : { *renderfx-animation.o(.text._ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc) }
+    .renderfx_update_input 0x003efcec : { *renderfx-animation.o(.text._ZN8RenderFX11UpdateInputEii) }
     .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }
     .mission_map_name 0x0040b608 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }

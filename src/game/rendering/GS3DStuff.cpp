@@ -195,6 +195,165 @@ template<> void SafeDelete(irr::core::array<CollisionBodyDef*>*& array)
     safeDeletePointerArray(array);
 }
 
+namespace {
+struct OctTreeQueryFrame {
+    const OctTreeAABB::OctTreeAABBNode* node;
+    int child;
+    int mode;
+};
+
+inline bool nextOctTreeQueryNode(OctTreeQueryFrame* frames, int& depth,
+    const OctTreeAABB::OctTreeAABBNode*& node, int& mode)
+{
+    while (depth > 0) {
+        OctTreeQueryFrame& frame = frames[--depth];
+        if (frame.child <= 6) {
+            ++frame.child;
+            mode = frame.mode;
+            node = frame.node->children[frame.child];
+            ++depth;
+            if (node)
+                return true;
+        }
+    }
+    return false;
+}
+
+// Copy of nextOctTreeQueryNode used at one call site only (keeps the
+// aliased-vop count below alias grouping, which would block the store sink).
+inline bool nextOctTreeQueryNodeHinted(OctTreeQueryFrame* frames, int& depth,
+    const OctTreeAABB::OctTreeAABBNode*& node, int& mode)
+{
+    while (depth > 0) {
+        OctTreeQueryFrame& frame = frames[--depth];
+        // No-code hint: two in-bounds byte loads from this frame (first byte of
+        // .node and of .mode; unsigned char may alias any object) that are live
+        // across the child test and only feed the identical-arm test below. They take r1/r0 in greg, so the
+        // shared frames-base pseudo conflicts with r0 and gets retail's r6
+        // (depth*2 then gets r0). Crossjump deletes the test; the loads die.
+        const int x = reinterpret_cast<const unsigned char*>(&frame)[0];
+        const int y = reinterpret_cast<const unsigned char*>(&frame)[8];
+        if (frame.child <= 6) {
+            int c;
+            // Identical arms: merged after reload, so the test emits no code.
+            if (x == y) c = ++frame.child; else c = ++frame.child;
+            mode = frame.mode;
+            node = frame.node->children[c];
+            ++depth;
+            if (node)
+                return true;
+        }
+    }
+    return false;
+}
+}
+
+// Shift indexing keeps retail's index-first address operand order.
+inline OctTreeAABB::RootNode* rootAt(OctTreeAABB::RootNode* const* data, int i)
+{
+    return *reinterpret_cast<OctTreeAABB::RootNode* const*>(
+        (i << 2) + reinterpret_cast<int>(data));
+}
+
+
+// Byte-pointer form for the null-collision branch: reassoc leaves pointer
+// arithmetic alone, so PRE's base-first insertion survives at the spawn reload.
+inline OctTreeAABB::RootNode* rootAtF1(OctTreeAABB::RootNode* const* data, int i)
+{ return *reinterpret_cast<OctTreeAABB::RootNode* const*>(reinterpret_cast<const char*>(data) + (i << 2)); }
+
+
+namespace {
+// Inlined box predicates; inlining remaps their temporaries (spill-slot order).
+inline bool boxesTouch(const irr::core::aabbox3d<float>& a, const irr::core::aabbox3d<float>& b)
+{
+    return a.MinEdge.X <= b.MaxEdge.X && a.MinEdge.Y <= b.MaxEdge.Y && a.MinEdge.Z <= b.MaxEdge.Z &&
+           a.MaxEdge.X >= b.MinEdge.X && a.MaxEdge.Y >= b.MinEdge.Y && a.MaxEdge.Z >= b.MinEdge.Z;
+}
+inline bool boxContains(const irr::core::aabbox3d<float>& box, const irr::core::aabbox3d<float>& b)
+{
+    return box.MinEdge.X <= b.MinEdge.X && box.MinEdge.Y <= b.MinEdge.Y && box.MinEdge.Z <= b.MinEdge.Z &&
+           box.MaxEdge.X >= b.MaxEdge.X && box.MaxEdge.Y >= b.MaxEdge.Y && box.MaxEdge.Z >= b.MaxEdge.Z;
+}
+}
+
+void OctTreeAABB::OctTreeAABBNode::getPolysIter(
+    const irr::core::aabbox3d<float>& box,
+    irr::core::array<CollisionBodyDef*>* collisions,
+    irr::core::array<SpawnPoint*>* spawns,
+    irr::core::array<irr::scene::ISceneNode*>* nodes) const
+{
+    OctTreeQueryFrame frames[10];
+    int depth = 0;
+    const OctTreeAABBNode* node = this;
+    int mode = 0;
+    do {
+    top:
+        if (mode != 2) {
+            if (!(boxesTouch(node->bounds, box))) {
+                if (nextOctTreeQueryNodeHinted(frames, depth, node, mode))
+                    goto top;
+                return;
+            }
+            mode = box.MinEdge.X <= bounds.MinEdge.X &&
+                   box.MinEdge.Y <= bounds.MinEdge.Y &&
+                   box.MinEdge.Z <= bounds.MinEdge.Z &&
+                   box.MaxEdge.X >= bounds.MaxEdge.X &&
+                   box.MaxEdge.Y >= bounds.MaxEdge.Y &&
+                   box.MaxEdge.Z >= bounds.MaxEdge.Z ? 2 : 1;
+        }
+        if (node->roots) {
+            const irr::core::array<RootNode*>* roots = node->roots;
+            const int count = static_cast<int>(roots->used);
+            for (int i = 0; i < count; ++i) {
+                CollisionBodyDef* collision = rootAt(roots->data, i)->collision;
+                if (collision) {
+                    if (collision->inQueryResults)
+                        continue;
+                    collisions->push_back(collision);
+                    if (rootAt(roots->data, i)->sceneNode)
+                        nodes->push_back(rootAt(roots->data, i)->sceneNode);
+                    collision->inQueryResults = true;
+                } else {
+                    if (rootAtF1(roots->data, i)->sceneNode)
+                        nodes->push_back(rootAtF1(roots->data, i)->sceneNode);
+            /* no-code: always-false object-size test, folded by objsz and removed by
+               store_ccp before PRE; shifts SSA-name recycling so PRE builds the
+               spawn reload base-first like retail. */
+            if (__builtin_object_size(&frames[depth], 0) == 0) { mode = 1; }
+                    if (rootAtF1(roots->data, i)->spawn)
+                        spawns->push_back(rootAtF1(roots->data, i)->spawn);
+                }
+            }
+            if (nextOctTreeQueryNode(frames, depth, node, mode))
+                goto top;
+            return;
+        } else {
+            frames[depth].node = node;
+            frames[depth].mode = mode;
+            // Re-read of the value just stored: RTL CSE turns it into a separate
+            // parent copy, so the loaded child keeps node's register and ivopts
+            // picks retail's child counter plus &children[1] pointer IV.
+            const OctTreeAABBNode* const parent = frames[depth].node;
+            int child = 0;
+            node = parent->children[0];
+            while (!node) {
+                ++child;
+                if (child == 8)
+                    break;
+                node = parent->children[child];
+            }
+            if (node) {
+                frames[depth++].child = child;
+            } else if (nextOctTreeQueryNode(frames, depth, node, mode)) {
+                goto top;
+            } else {
+                return;
+            }
+        }
+    } while (depth > 0);
+}
+
+
 template<> void SafeDelete(irr::core::array<SpawnPoint*>*& array) __attribute__((weak));
 template<> void SafeDelete(irr::core::array<SpawnPoint*>*& array)
 {

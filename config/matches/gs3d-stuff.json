@@ -185,7 +185,8 @@
         "_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE",
         "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
         "_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE",
-        "_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE"
+        "_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE",
+        "_ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE"
     ],
     "sections": [
         ".gs_print_node_properties",

@@ -153,7 +153,8 @@
         "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE",
         "_ZN8RenderFX13PreloadGlyphsEv",
         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
-        "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc"
+        "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
+        "_ZN8RenderFX11UpdateInputEii"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -198,7 +199,8 @@
         ".renderfx_find",
         ".renderfx_load",
         ".renderfx_search_index_clear",
-        ".renderfx_search_index_init"
+        ".renderfx_search_index_init",
+        ".renderfx_input_clicked"
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
