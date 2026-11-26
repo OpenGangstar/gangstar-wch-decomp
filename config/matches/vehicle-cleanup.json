@@ -255,7 +255,8 @@
         "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf",
         "_ZN7Vehicle8setSpeedEv",
         "_ZN7Vehicle17ResetBodyPositionEv",
-        "_ZN7Vehicle5shootEv"
+        "_ZN7Vehicle5shootEv",
+        "_ZN7Vehicle10CreateBodyEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -416,7 +417,6 @@
         "_ZN9AIManager8removeAIEP7Vehicle",
         "_ZN16PhysicAttributesD1Ev",
         "_ZN11LevelObject7OnSpawnEv",
-        "_ZN7Vehicle10CreateBodyEv",
         "_ZN11LevelObject6enableEv",
         "_ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE",
         "_ZN9GS3DStuff20SetMaterialFilteringEPN3irr5scene10ISceneNodeEbb",
@@ -697,6 +697,9 @@
         "_ZNK6Weapon5isGunEv",
         "_ZNK6Weapon7getClipEv",
         "_ZNK6Weapon8getRangeEv",
-        "_ZNK6Weapon9getDamageEv"
+        "_ZNK6Weapon9getDamageEv",
+        "_ZN12b2PolygonDef8SetAsBoxEffRK6b2Vec2f",
+        "_ZN16PhysicAttributes13SetIsOnGroundEib",
+        "_ZN16PhysicAttributesC1EiP6b2Body"
     ]
 }

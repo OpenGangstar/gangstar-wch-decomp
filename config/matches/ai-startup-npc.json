@@ -185,7 +185,6 @@
         "_ZN13WeaponManager7getAmmoEiN10PlayerTest8eContextE",
         "_ZN15CControlManager4lockEv",
         "_ZN15CControlManager6unlockEv",
-        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
         "_ZN16PhysicAttributes18AddCollisionShapesEit",
         "_ZN16SceneNodeManager11getInstanceEv",
         "_ZN16SceneNodeManager16findOrCreatePoolEPKciPN3irr7collada15CColladaFactoryE",

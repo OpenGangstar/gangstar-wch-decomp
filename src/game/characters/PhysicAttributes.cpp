@@ -801,6 +801,166 @@ float PhysicAttributes::IntersectSegmentWithHeightMap(const irr::core::vector3d<
 
 extern "C" long lrand48();
 extern "C" float fabsf(float);
+extern "C" long lrand48();
+// Whether `side` is one of the two wrong-way edges recorded in `wrongWay`.
+static inline bool GNIsWrongWay(unsigned char wrongWay, int side)
+{
+    return (wrongWay & 3) == side + 1 || ((wrongWay >> 2) & 3) == side + 1;
+}
+
+// Unused variant kept as a no-code hint: its declarations keep the
+// declaration numbering that the matched register allocation depends on.
+static inline bool GNIsWrongWayEdge(unsigned char wrongWay, int side)
+{
+    return side + 1 == (wrongWay & 3) || side + 1 == ((wrongWay >> 2) & 3);
+}
+
+// GNIsWrongWay reading the flags itself, with the edge number evaluated
+// before the table load (sets the compare operand order and reload order).
+static inline bool GNIsWrongWayAt(int side, unsigned char* const* table, unsigned int buffer, unsigned int tri)
+{
+    return side + 1 == (table[buffer][tri] & 3) || side + 1 == ((table[buffer][tri] >> 2) & 3);
+}
+
+irr::core::vector3d<float> PhysicAttributes::GetNextRandomPos(int slot, int mode, irr::core::vector3d<float> position)
+{
+    using irr::core::vector3d;
+    PhysicInfo& physic = info[slot];
+    // No-code hint: four dead scoped locals (removed by DCE) shift the local
+    // variable numbering so the loop PHI copies keep retail's order.
+    { int d0 = 0; (void)d0; }
+    { int d1 = 0; (void)d1; }
+    { int d2 = 0; (void)d2; }
+    { int d3 = 0; (void)d3; }
+    if (physic.unknown8 == 0xffff)
+        return position;
+    irr::scene::IMeshBuffer* meshBuffer = static_cast<irr::scene::IMeshSceneNode*>(s_heightmap)
+        ->getMesh()->getMeshBuffer(physic.unknown0);
+    unsigned short* indices = meshBuffer->getIndices();
+    const unsigned short buffer = physic.unknown80;
+    const int previous = physic.unknown78;
+    const unsigned short side = physic.unknown76;
+    if (side == 0xffff) {
+        int i;
+        float best = 9999999.0f;
+        int bestEdge = 0;
+        for (i = 0; i < 3; ++i) {
+            const unsigned short tri = physic.unknown8 / 3;
+            const unsigned short next = s_neighbors[physic.unknown0][i][tri];
+            const unsigned short neighbor = s_neighbors[physic.unknown0][i + 3][tri];
+            if (next == 0xffff || s_nodeCost[mode][neighbor] == 999.0f)
+                continue;
+            if (mode == 1) {
+                if (GNIsWrongWay(s_neighborsWrongWay[physic.unknown0][tri], i))
+                    continue;
+            }
+            const vector3d<float>& p0 = meshBuffer->getPosition(indices[physic.unknown8 + i]);
+            const vector3d<float>& p1 = meshBuffer->getPosition(indices[(i + 1) % 3 + physic.unknown8]);
+            const vector3d<float> middle = (p0 + p1) * 0.5f + s_heightmap->getAbsolutePosition();
+            const float distance = middle.getDistanceFromSQ(position);
+            if (distance < best) {
+                best = distance;
+                bestEdge = i;
+            }
+        }
+        physic.unknown76 = bestEdge;
+        physic.unknown78 = physic.unknown8;
+        physic.unknown80 = physic.unknown0;
+    } else {
+        // Byte offset computed first: retail adds side * 4 before the row load.
+        const int sideOffset = side * 4;
+        const int tri = previous / 3;
+        physic.unknown78 = (*reinterpret_cast<unsigned short**>(reinterpret_cast<char*>(s_neighbors[buffer]) + sideOffset))[tri];
+        physic.unknown80 = s_neighbors[buffer][side + 3][tri];
+    }
+
+    const int start = lrand48() % 3;
+    int i = start;
+    bool wrapped = false;
+    int chosen = -1;
+    while (!(wrapped && i == start)) {
+        if (i > 2) {
+            i = 0;
+            wrapped = true;
+            if (i == start)
+                break;
+        }
+        const unsigned short tri = physic.unknown78 / 3;
+        const unsigned short next = s_neighbors[physic.unknown80][i][tri];
+        // No-code hint: dead copy of position (removed by DCE).
+        { irr::core::vector3d<float> d(position); (void)d; }
+        const unsigned short neighbor = s_neighbors[physic.unknown80][i + 3][tri];
+        if (next == 0xffff || s_nodeCost[mode][neighbor] == 999.0f) {
+            // No-code hint: dead copy of position (removed by DCE); with the one
+            // above it frees SSA names that PRE reuses, giving retail's operand
+            // order for the wrong-way exit compare below.
+            { irr::core::vector3d<float> d(position); (void)d; }
+            ++i;
+            continue;
+        }
+        if (next == previous) {
+            chosen = i;
+            ++i;
+            continue;
+        }
+        if (mode == 1) {
+            if (GNIsWrongWayAt(i, s_neighborsWrongWay, physic.unknown80, tri)) {
+                ++i;
+                continue;
+            }
+        }
+        chosen = i;
+        break;
+    }
+
+    int exitEdge = chosen;
+    // Fallback first, then the mode 1 default: this block order sets retail's
+    // reload register rotation.
+    if (mode != 1 && chosen == -1) {
+        unsigned short surface;
+        const vector3d<float> destination = GetRandomDestination(MATERIAL_TYPE_SIDEWALK, surface, position, 0.0f, 0.0f);
+        physic.unknown80 = MATERIAL_TYPE_SIDEWALK;
+        physic.unknown78 = surface;
+        physic.unknown76 = 0xffff;
+        return destination;
+    }
+    if (chosen == -1)
+        exitEdge = 0;
+    if (mode == 1 && ((s_neighborsWrongWay[physic.unknown80][(unsigned short)(physic.unknown78 / 3)] >> 4) & 3) == exitEdge + 1) {
+        const unsigned int oldTri = physic.unknown78;
+        const int oldBuffer = physic.unknown80;
+        const unsigned short tri = oldTri / 3;
+        physic.unknown78 = s_neighbors[oldBuffer][exitEdge][tri];
+        physic.unknown80 = s_neighbors[oldBuffer][exitEdge + 3][tri];
+        const unsigned short nextTri = physic.unknown78 / 3;
+        for (int j = 0; j < 3; ++j) {
+            if (s_neighbors[physic.unknown80][j][nextTri] == oldTri
+                && s_neighbors[physic.unknown80][j + 3][nextTri] == oldBuffer) {
+                physic.unknown76 = (j + 1) % 3;
+                break;
+            }
+        }
+    } else {
+        physic.unknown76 = exitEdge;
+    }
+    if (physic.unknown80 == MATERIAL_TYPE_ROAD
+        && s_neighbors[physic.unknown80][physic.unknown76 + 3][(unsigned short)(physic.unknown78 / 3)] == MATERIAL_TYPE_INTERSECTION)
+        physic.unknown84 = true;
+
+    irr::scene::IMeshBuffer* edgeBuffer = static_cast<irr::scene::IMeshSceneNode*>(s_heightmap)
+        ->getMesh()->getMeshBuffer(physic.unknown80);
+    unsigned short* edgeIndices = edgeBuffer->getIndices();
+    const vector3d<float> edge = edgeBuffer->getPosition(edgeIndices[(physic.unknown76 + 1) % 3 + physic.unknown78])
+        - edgeBuffer->getPosition(edgeIndices[physic.unknown78 + physic.unknown76]);
+    int lanes = (s_neighborsWrongWay[physic.unknown80][(unsigned short)(physic.unknown78 / 3)] & 0xc0) >> 6;
+    if (lanes == 0)
+        lanes = 1;
+    const float width = 1.0f / (lanes * 2.0f);
+    if (physic.unknown82 > lanes)
+        physic.unknown82 = lanes;
+    return edgeBuffer->getPosition(edgeIndices[physic.unknown78 + physic.unknown76])
+        + edge * (physic.unknown82 * 2.0f - 1.0f) * width + s_heightmap->getAbsolutePosition();
+}
 irr::core::vector3d<float> PhysicAttributes::GetRandomDestination(unsigned short material, unsigned short& surface,
     const irr::core::vector3d<float>& origin, float minimum, float maximum)
 {
