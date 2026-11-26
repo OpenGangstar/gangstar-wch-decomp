@@ -31,6 +31,7 @@
 #include "../audio/SoundManager.h"
 #include "../combat/Explosion.h"
 #include "../world/LevelObject.h"
+#include "../world/GameObjectManager.h"
 
 extern "C" int __android_log_print(int priority, const char* tag, const char* format, ...);
 
@@ -283,6 +284,113 @@ void CameraManager::processTouch(long id)
         touchPoint.Y = point->y;
     }
     used = true;
+}
+
+namespace {
+// LevelObject prefix used by the click test; CameraManager is not a friend.
+struct ClickObjectFields {
+    void* methods;
+    unsigned int flags;
+    LevelObject* previous;
+    LevelObject* next;
+    irr::scene::ISceneNode* sceneNode;
+};
+inline ClickObjectFields& clickFields(LevelObject* object)
+{
+    return *reinterpret_cast<ClickObjectFields*>(object);
+}
+// Irrlicht 1.4.2 vector3d scalar division.
+inline irr::core::vector3d<float> divideVector(const irr::core::vector3d<float>& value, const float v)
+{
+    float i = (float)1.0 / v;
+    return irr::core::vector3d<float>(value.X * i, value.Y * i, value.Z * i);
+}
+// Irrlicht 1.4.2 aabbox3d subset: edge constructor and getCenter.
+struct ClickBox {
+    ClickBox() {}
+    ClickBox(const irr::core::vector3d<float>& minimum, const irr::core::vector3d<float>& maximum)
+        : MinEdge(minimum), MaxEdge(maximum) {}
+    irr::core::vector3d<float> getCenter() const { return divideVector(MinEdge + MaxEdge, 2); }
+    irr::core::vector3d<float> MinEdge, MaxEdge;
+};
+}
+extern "C" bool _ZNK3irr4core8aabbox3dIfE18intersectsWithLineERKNS0_6line3dIfEE(
+    const ClickBox* box, const irr::core::line3d<float>& ray) __attribute__((weak));
+
+inline bool intersectsWithLine(const ClickBox& box, const irr::core::line3d<float>& ray)
+{
+    return _ZNK3irr4core8aabbox3dIfE18intersectsWithLineERKNS0_6line3dIfEE(&box, ray);
+}
+
+namespace {
+// Padded bounding-box test of one candidate's mesh against the ray.
+inline bool clickTest(irr::scene::ISceneNode* mesh, bool transformed, float padding,
+                      const irr::core::line3d<float>& ray)
+{
+    using irr::core::aabbox3d;
+    using irr::core::vector3d;
+    ClickBox box;
+    vector3d<float> minEdge;
+    float maxX, maxY, maxZ;
+    if (!transformed) {
+        const aabbox3d<float>& source = mesh->getBoundingBox();
+        minEdge.X = source.MinEdge.X;
+        minEdge.Y = source.MinEdge.Y;
+        minEdge.Z = source.MinEdge.Z;
+        maxX = source.MaxEdge.X;
+        maxY = source.MaxEdge.Y;
+        maxZ = source.MaxEdge.Z;
+    } else {
+        const aabbox3d<float>& source = mesh->getTransformedBoundingBox();
+        minEdge.X = source.MinEdge.X;
+        minEdge.Y = source.MinEdge.Y;
+        minEdge.Z = source.MinEdge.Z;
+        maxX = source.MaxEdge.X;
+        maxY = source.MaxEdge.Y;
+        maxZ = source.MaxEdge.Z;
+    }
+    box = ClickBox(vector3d<float>(minEdge.X, minEdge.Y, minEdge.Z),
+                              vector3d<float>(maxX, maxY, maxZ));
+    const vector3d<float> center = box.getCenter();
+    vector3d<float> lower = box.MinEdge - center;
+    const vector3d<float> minimum = lower.normalize() * padding + box.MinEdge;
+    vector3d<float> upper = box.MaxEdge - center;
+    const vector3d<float> maximum = box.MaxEdge + upper.normalize() * padding;
+    return intersectsWithLine(ClickBox(minimum, maximum), ray);
+}
+}
+
+LevelObject* CameraManager::getClickedTarget(irr::core::line3d<float> ray, bool primary) const
+{
+    using irr::core::aabbox3d;
+    using irr::core::vector3d;
+    LevelObject* object = GameObjectManager::s_gom->GetFirst(0);
+    while (object) {
+        if (primary && LevelObject::s_type[object->getObjectType()] != 5) {
+            object = clickFields(object).next;
+            continue;
+        }
+        if (!object->isEnabled() || !clickFields(object).sceneNode || !clickFields(object).sceneNode->isVisible() ||
+            !object->isVisibleOnScreen() || !(clickFields(object).flags & 4) || object->isDead()) {
+            object = clickFields(object).next;
+            continue;
+        }
+
+        irr::scene::ISceneNode* mesh = static_cast<irr::scene::ISceneNode*>(object->getSkinMesh());
+        if (!mesh) {
+            object = clickFields(object).next;
+            continue;
+        }
+        float padding = object->GetPosition().getDistanceFromSQ(ray.start) / 40000.0f;
+        if (LevelObject::s_type[object->getObjectType()] == 5 &&
+            (PlayerTest::GetPlayer()->flags240 & 0xfe))
+            padding += padding;
+
+        if (clickTest(mesh, LevelObject::s_type[object->getObjectType()] == 3, padding, ray))
+            break;
+        object = clickFields(object).next;
+    }
+    return object;
 }
 
 LevelObject* CameraManager::tappedTarget(const irr::core::position2d<int>& point,
