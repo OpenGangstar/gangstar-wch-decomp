@@ -249,7 +249,8 @@
         "_ZN7Vehicle14setupSceneNodeEiPN3irr5scene10ISceneNodeEiPPv",
         "_ZN7Vehicle4LoadERKN7Structs3CarE",
         "_ZN7Vehicle15_processAIFlagsEv",
-        "_ZNK7Vehicle11isDoorClearEbP6b2Body"
+        "_ZNK7Vehicle11isDoorClearEbP6b2Body",
+        "_ZN7Vehicle6UpdateEi"
     ],
     "sections": [
         ".vehicle_collision",
@@ -642,7 +643,6 @@
         "_ZN11LevelObject27setAnimationSpeedMultiplierEi",
         "_ZN11LevelObjectD1Ev",
         "_ZN18CarSoundParametersD1Ev",
-        "_ZN7Vehicle6UpdateEi",
         "_ZN9CarSoundsD1Ev",
         "_ZNK11LevelObject11GetPositionEv",
         "_ZNK11LevelObject11GetRotationEv",
@@ -668,6 +668,10 @@
         "_ZN11LevelObject17canSeeLevelObjectEPS_RN3irr4core8vector3dIfEE",
         "_ZN12SoundManager12setSourcePosEiiRKN3irr4core8vector3dIfEE",
         "_ZN3irr2os10Randomizer4randEv",
-        "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei"
+        "_ZN7b2World5QueryERK6b2AABBPP7b2Shapei",
+        "_ZN13ScriptManager12taggedKilledEv",
+        "_ZN18AchievementManager18recordVehicleSpeedEi",
+        "_ZN4Lock9setTargetEP11LevelObject",
+        "_ZNK15b2RevoluteJoint13GetJointAngleEv"
     ]
 }

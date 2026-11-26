@@ -1725,3 +1725,43 @@ void GS3DStuff::SetColor(irr::scene::ISceneNode* node, irr::video::SColor color,
         }
     }
 }
+namespace {
+template<unsigned int offset>
+inline unsigned int despawnWord(const LevelObject* object)
+{
+    return *reinterpret_cast<const unsigned int*>(reinterpret_cast<const char*>(object) + offset);
+}
+}
+
+LevelObject* GS3DStuff::checkForDespawn(LevelObject* object)
+{
+    using irr::core::vector3d;
+    if (object->unknown4 & 0x490u) {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if (LevelObject::s_type[object->objectType] == 5 && !object->isDead()) {
+            const vector3d<float> difference = static_cast<SavePositionInterface&>(*player).GetPosition() - object->GetPosition();
+            if (despawnWord<428>(object) == 3 && (despawnWord<356>(object) & 0x200u) &&
+                static_cast<float>(sqrt(difference.getLengthSQ())) < 15000.0f)
+                return object;
+        } else if (LevelObject::s_type[object->objectType] == 3 && !object->isDead()) {
+            const vector3d<float> difference = static_cast<SavePositionInterface&>(*player).GetPosition() - object->GetPosition();
+            if (despawnWord<240>(object) == 3 && (despawnWord<344>(object) & 0x1000u) &&
+                static_cast<float>(sqrt(difference.getLengthSQ())) < 15000.0f)
+                return object;
+            if (object == player->unknown368 || object == player->unknown312 || object == player->unknown316)
+                return object;
+        }
+
+        int distanceSquared = 9000000;
+        const SpawnPoint::Center* center = &SpawnPoint::s_outterCenterCiv;
+        if (LevelObject::s_type[object->objectType] == 3) {
+            center = &SpawnPoint::s_outterCenterCar;
+            distanceSquared = 32397042;
+        }
+        if ((object->unknown4 & 0x800u) ||
+            object->GetPosition().getDistanceFromSQ(reinterpret_cast<const vector3d<float>&>(*center)) >= static_cast<float>(distanceSquared) ||
+            LevelObject::s_type[object->objectType] == 12)
+            object = gom->despawn(object);
+    }
+    return object;
+}
