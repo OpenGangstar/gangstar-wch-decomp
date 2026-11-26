@@ -1,3 +1,10 @@
+PROVIDE(__aeabi_d2f = 0x001c4310);
+PROVIDE(__aeabi_f2d = 0x001c48f8);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fcmpge = 0x001c4364);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(sqrt = 0x001c401c);
 PROVIDE(__aeabi_i2f = 0x001c41e4);
 PROVIDE(_ZdaPv = 0x001c461c);
 PROVIDE(strcmp = 0x001c4658);
@@ -6,6 +13,7 @@ PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE9pickables = 0x004b6a74);
 PROVIDE(_ZZN9GS3DStuff6updateEP12StateMachineE8vehicles = 0x004b6a80);
 SECTIONS {
     .gs3d_stuff_teardown 0x002df418 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8tearDownEv) }
+    .gs3d_stuff_check_for_despawn 0x002dd0c0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff15checkForDespawnEP11LevelObject) }
     .gs_print_node_properties 0x002de6dc : { *gs3d-stuff.o(.text._ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi) }
     .gs_node_format 0x00414508 : { *gs3d-stuff.o(.rodata.gs_node_type_format) }
     .gs_leaf_format 0x00414524 : { *gs3d-stuff.o(.rodata.gs_leaf_type_format) }

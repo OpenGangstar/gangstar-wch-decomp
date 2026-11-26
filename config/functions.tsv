@@ -9194,7 +9194,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dd049	0x24	GS3DStuff.cpp	game	rendering	matched	_ZN12CGameFactoryD1Ev	CGameFactory::~CGameFactory()
 0x002dd06d	0x24	GS3DStuff.cpp	game	rendering	matched	__tcf_2	__tcf_2
 0x002dd091	0x30	GS3DStuff.cpp	game	rendering	matched	__tcf_9	__tcf_9
-0x002dd0c1	0x27c	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff15checkForDespawnEP11LevelObject	GS3DStuff::checkForDespawn(LevelObject*)
+0x002dd0c1	0x27c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff15checkForDespawnEP11LevelObject	GS3DStuff::checkForDespawn(LevelObject*)
 0x002dd33d	0x26c	GS3DStuff.cpp	game	rendering	pending	_ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE	OctTreeAABB::OctTreeAABBNode::getPolysIter(irr::core::aabbox3d<float> const&, irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*, irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> >*, irr::core::array<irr::scene::ISceneNode*, irr::core::irrAllocator<irr::scene::ISceneNode*> >*) const
 0x002dd5a9	0x74	GS3DStuff.cpp	game	rendering	matched	_ZN11OctTreeAABB14calculatePolysERKN3irr4core8aabbox3dIfEEPNS1_5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS8_EEEEPNS6_IP10SpawnPointNS9_ISE_EEEEPNS6_IPNS0_5scene10ISceneNodeENS9_ISK_EEEE	OctTreeAABB::calculatePolys(irr::core::aabbox3d<float> const&, irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*, irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> >*, irr::core::array<irr::scene::ISceneNode*, irr::core::irrAllocator<irr::scene::ISceneNode*> >*)
 0x002dd61d	0x28	GS3DStuff.cpp	game	rendering	matched	_Z10SafeDeleteIN3irr4core5arrayIP10SpawnPointNS1_12irrAllocatorIS4_EEEEEvRPT_	void SafeDelete<irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> > >(irr::core::array<SpawnPoint*, irr::core::irrAllocator<SpawnPoint*> >*&)
@@ -10732,7 +10732,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00313955	0xa4	Vehicle.cpp	game	vehicles	matched	_Z22doorTransitionCallbackPN3irr5scene19ITimelineControllerEPv	doorTransitionCallback(irr::scene::ITimelineController*, void*)
 0x003139f9	0x84	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle18openDoorFromInsideEb	Vehicle::openDoorFromInside(bool)
 0x00313a7d	0x84	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle8openDoorEb	Vehicle::openDoor(bool)
-0x00313b01	0xfb4	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle6UpdateEi	Vehicle::Update(int)
+0x00313b01	0xfb4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle6UpdateEi	Vehicle::Update(int)
 0x00314ab9	0x1c	GameObjectList.cpp	game	world	matched	_ZN14GameObjectListC1Ev	GameObjectList::GameObjectList()
 0x00314ab9	0x1c	GameObjectList.cpp	game	world	matched	_ZN14GameObjectListC2Ev	GameObjectList::GameObjectList()
 0x00314ad5	0x18	GameObjectList.cpp	game	world	matched	_ZNK14GameObjectList4SizeEv	GameObjectList::Size() const
