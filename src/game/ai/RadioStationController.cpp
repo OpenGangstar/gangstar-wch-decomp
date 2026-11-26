@@ -102,6 +102,48 @@ static void _GLOBAL__I__ZN22RadioStationControllerC2Ev()
 }
 }
 
+#include "../world/ResStream.h"
+
+RadioStationController::RadioStationController()
+{
+    unknown0 = 0;
+    ResStream stationResource("./RadioStation.gmap", 1);
+    DataStream stationData(stationResource, DataStream::BigEndian);
+    stationCount = stationData.ReadInt();
+    stations = new Structs::RadioStation*[stationCount];
+    queues = new StationQueue*[stationCount];
+    for (int i = 0; i < stationCount; ++i) {
+        int size = stationData.ReadInt();
+        int end = stationData.DataStream::Tell() + size;
+        Structs::RadioStation* station = new Structs::RadioStation();
+        station->Read(stationData);
+        if (stationData.DataStream::Tell() != end)
+            stationData.DataStream::Seek(end, 0);
+        stations[i] = station;
+        queues[i] = new StationQueue();
+        queues[i]->songs = new int[stations[i]->songCount];
+        queues[i]->jingles = new int[stations[i]->jingleCount];
+        for (int j = 0; j < stations[i]->songCount; ++j)
+            queues[i]->songs[j] = stations[i]->songs[j];
+        queues[i]->songsRemaining = stations[i]->songCount;
+        for (int j = 0; j < stations[i]->jingleCount; ++j)
+            queues[i]->jingles[j] = stations[i]->jingles[j];
+        queues[i]->jinglesRemaining = stations[i]->jingleCount;
+    }
+    stationData.Stream::Close();
+    stationResource.BufferStream::Close();
+
+    ResStream adResource("./RadioAds.array", 1);
+    DataStream adData(adResource, DataStream::BigEndian);
+    adsRemaining = adCount = adData.ReadInt();
+    ads = new int[adCount];
+    availableAds = new int[adCount];
+    for (int i = 0; i < adCount; ++i)
+        availableAds[i] = ads[i] = adData.ReadInt();
+    adData.Stream::Close();
+    adResource.BufferStream::Close();
+}
+
 int RadioStationController::selectRandomJingle(int station)
 {
     if (!queues[station]->jinglesRemaining) {

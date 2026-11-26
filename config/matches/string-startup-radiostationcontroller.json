@@ -3,6 +3,7 @@
     "compiler_flags": [
         "-O2",
         "-fpic",
+        "-fstack-protector",
         "-fno-toplevel-reorder",
         "-fno-strict-aliasing",
         "-fno-rtti",
@@ -43,7 +44,8 @@
         "_ZN22RadioStationController14selectRandomAdEv",
         "_ZN22RadioStationControllerD1Ev",
         "_ZN22RadioStationControllerD2Ev",
-        "_ZN7Structs12RadioStation4ReadER10DataStream"
+        "_ZN7Structs12RadioStation4ReadER10DataStream",
+        "_ZN22RadioStationControllerC1Ev"
     ],
     "sections": [
         ".string_startup_function_0",
@@ -61,6 +63,13 @@
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN3irr2os10Randomizer4randEv",
-        "_ZN10DataStream7ReadIntEv"
+        "_ZN10DataStream7ReadIntEv",
+        "_ZN10DataStream4SeekEii",
+        "_ZN10DataStreamC1ER6StreamNS_6endianE",
+        "_ZN12BufferStream5CloseEv",
+        "_ZN6Stream5CloseEv",
+        "_ZN9ResStreamC1EPKci",
+        "_ZN9ResStreamD1Ev",
+        "_ZNK10DataStream4TellEv"
     ]
 }
