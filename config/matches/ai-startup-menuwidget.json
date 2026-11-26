@@ -533,7 +533,6 @@
         "_ZN7gameswf8as_valueC1Ei",
         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
-        "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
         "_ZN7gameswf7tu_fileC1EPKcS2_",
         "_ZN7gameswf29register_file_opener_callbackEPFPNS_7tu_fileEPKcE",
         "_ZN7gameswf27register_fscommand_callbackEPFvPNS_9characterEPKcS3_E",

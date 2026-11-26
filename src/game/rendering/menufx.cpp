@@ -2331,3 +2331,116 @@ int RenderFX::PreloadGlyphs(unsigned short* glyphs, int count, const char* fontN
     }
     return index;
 }
+
+namespace gameswf {
+class as_environment;
+as_value call_method(const as_value& method, as_environment* environment, const as_value& thisValue,
+                     int argumentCount, int firstArgumentBottomIndex);
+
+template <class T>
+class weak_ptr {
+public:
+    void check_proxy() const __attribute__((long_call));
+    T* get_ptr() const
+    {
+        check_proxy();
+        return m_ptr;
+    }
+
+    mutable player_weak_ptr::proxy_ptr m_proxy;
+    mutable T* m_ptr;
+};
+}
+
+namespace {
+struct CharacterCallbackMethods {
+    void (*firstMethods[2])();
+    bool (*is)(const gameswf::character*, int);
+    void (*beforeGetMember[5])();
+    bool (*getMember)(gameswf::character*, const gameswf::tu_stringi&, gameswf::as_value*);
+};
+
+struct CharacterCallbackFields {
+    unsigned char prefix[0x80];
+    gameswf::weak_ptr<gameswf::character> parent;
+};
+
+struct SpriteEnvironmentFields {
+    unsigned char prefix[0x1c0];
+    gameswf::as_value* stack;
+    int stackSize;
+};
+
+class CharacterReference {
+public:
+    explicit CharacterReference(gameswf::character* character) : character(character)
+    {
+        _ZNK7gameswf11ref_counted7add_refEv(reinterpret_cast<gameswf::root*>(character));
+    }
+    ~CharacterReference() { _ZN7gameswf11ref_counted8drop_refEv(reinterpret_cast<gameswf::root*>(character)); }
+
+private:
+    gameswf::character* character;
+};
+// RetailSwfValue.h does not declare the object constructor; it is named by
+// its mangled name and the value is destroyed through the declared destructor.
+extern "C" void _ZN7gameswf8as_valueC1EPNS_9as_objectE(void* value, gameswf::as_object* object);
+class ObjectValue {
+public:
+    explicit ObjectValue(gameswf::as_object* object) { _ZN7gameswf8as_valueC1EPNS_9as_objectE(this, object); }
+    ~ObjectValue() { value().~as_value(); }
+    const gameswf::as_value& value() const { return *reinterpret_cast<const gameswf::as_value*>(this); }
+    gameswf::as_value& value() { return *reinterpret_cast<gameswf::as_value*>(this); }
+
+private:
+    unsigned char storage[40] __attribute__((aligned(8)));
+};
+inline const CharacterCallbackMethods& callbackMethods(const gameswf::character* character)
+{
+    return **reinterpret_cast<const CharacterCallbackMethods* const*>(character);
+}
+}
+
+bool RenderFX::InvokeASCallback(gameswf::character* character, const char* callback)
+{
+    // Branch-likelihood hint: the null character is predicted unlikely.
+    if (__builtin_expect(!character, 0))
+        return false;
+    SpriteEnvironmentFields* sprite;
+    const bool typed = callbackMethods(character).is(character, 2);
+    // Contrived prediction form: the typed test compares against a non-zero
+    // constant through a one-field aggregate (later passes fold it back to the
+    // bool test), and the no-code prefetch marks the typed arm as a guarded call.
+    // Both only steer branch prediction.
+    struct { unsigned int k; } kind = {static_cast<unsigned int>(typed) + 1u};
+    if (kind.k != 1u) {
+        __builtin_prefetch(character);
+        sprite = reinterpret_cast<SpriteEnvironmentFields*>(character);
+    } else {
+        const CharacterCallbackFields& fields = *reinterpret_cast<const CharacterCallbackFields*>(character);
+        // Contrived prediction form: null parent test against a non-zero constant.
+        struct { unsigned int k; } link = {reinterpret_cast<unsigned int>(fields.parent.get_ptr()) + 1u};
+        if (link.k == 1u)
+            return false;
+        gameswf::character* parent = fields.parent.get_ptr();
+        // Contrived prediction form: parent type test against a non-zero constant.
+        struct { unsigned int k; } pkind = {static_cast<unsigned int>(callbackMethods(parent).is(parent, 2)) + 1u};
+        if (pkind.k != 2u)
+            return false;
+        sprite = reinterpret_cast<SpriteEnvironmentFields*>(findParentCharacter(character));
+        if (!sprite)
+            return false;
+    }
+    {
+        CharacterReference reference(character);
+        gameswf::tu_stringi name(callback);
+        gameswf::as_value method;
+        if (callbackMethods(character).getMember(character, name, &method)) {
+            ObjectValue thisValue(reinterpret_cast<gameswf::as_object*>(character));
+            gameswf::call_method(method, reinterpret_cast<gameswf::as_environment*>(&sprite->stack),
+                                 thisValue.value(), 0, sprite->stackSize - 1);
+            return true;
+        }
+    }
+    return false;
+}
