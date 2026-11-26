@@ -16,8 +16,11 @@ __aeabi_fmul = 0x001c4724;
 __aeabi_fcmplt = 0x001c479c;
 __cxa_guard_acquire = 0x001c4958;
 __cxa_guard_release = 0x001c46c4;
+__aeabi_fcmpeq = 0x001c470c;
+sqrtf = 0x001c4184;
 SECTIONS
 {
+    .minimap_xyoffset 0x00329900 : { *sdk-startup-minimap.o(.text._ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb) }
     .minimap_constructor 0x003295a4 : { *sdk-startup-minimap.o(.text._ZN7MiniMapC1EP7ASpriteiiii .text._ZN7MiniMapC2EP7ASpriteiiii) }
  .minimap_draw_thunk 0x0032a0e0 : { *minimap-draw-thunk.o(.text._ZThn4_NK7MiniMap6draw2dEv) }
  .minimap_nonmatching_draw 0x0032a0f8 : { *minimap-draw-thunk.o(.text._ZNK7MiniMap6draw2dEv) }

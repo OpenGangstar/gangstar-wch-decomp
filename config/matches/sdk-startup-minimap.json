@@ -64,7 +64,8 @@
             "compiled_name": "__tcf_2"
         },
         "_ZN7MiniMapC1EP7ASpriteiiii",
-        "_ZN7MiniMapC2EP7ASpriteiiii"
+        "_ZN7MiniMapC2EP7ASpriteiiii",
+        "_ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -87,7 +88,8 @@
         ".target_marker_cleanup",
         ".map_cleanup",
         ".wanted_cleanup",
-        ".minimap_constructor"
+        ".minimap_constructor",
+        ".minimap_xyoffset"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -102,6 +104,12 @@
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN13VirtualButtonC1EP7ASpriteiN9EvVButton10ButtonType4TypeEb",
-        "_ZN12TargetMarker4initEP7ASpriteii"
+        "_ZN12TargetMarker4initEP7ASpriteii",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZNK13CameraManager11getPositionEv",
+        "_ZNK13CameraManager9getLookAtEv",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite9GetModuleEi"
     ]
 }

@@ -112,8 +112,7 @@
         "_ZNK7ASprite10GetFModuleEi",
         "_ZNK7ASprite10PaintFrameEiiii",
         "_ZNK7ASprite8GetFrameEi",
-        "_ZNK7ASprite9GetModuleEi",
-        "_ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb"
+        "_ZNK7ASprite9GetModuleEi"
     ],
     "dependencies": [
         "sdk-startup-minimap"

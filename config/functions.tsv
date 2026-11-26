@@ -11335,7 +11335,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032984d	0x6c	MiniMap.cpp	game	hud	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003298b9	0x14	MiniMap.cpp	game	hud	matched	_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii	_GLOBAL__I__ZN7MiniMapC2EP7ASpriteiiii
 0x003298cd	0x30	MiniMap.cpp	game	hud	matched	__tcf_5	__tcf_5
-0x00329901	0x7dc	MiniMap.cpp	game	hud	pending	_ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb	MiniMap::_calculateXYOffset(irr::core::vector3d<float> const&, irr::core::rect<int> const&, bool, bool) const
+0x00329901	0x7dc	MiniMap.cpp	game	hud	matched	_ZNK7MiniMap18_calculateXYOffsetERKN3irr4core8vector3dIfEERKNS1_4rectIiEEbb	MiniMap::_calculateXYOffset(irr::core::vector3d<float> const&, irr::core::rect<int> const&, bool, bool) const
 0x0032a0e0	0x14	MiniMap.cpp	game	hud	matched	_ZThn4_NK7MiniMap6draw2dEv	non-virtual thunk to MiniMap::draw2d() const
 0x0032a0f9	0x564	MiniMap.cpp	game	hud	matched	_ZNK7MiniMap6draw2dEv	MiniMap::draw2d() const
 0x0032a661	0x44	Radio.cpp	game	audio	matched	_ZN5Radio4showEv	Radio::show()
