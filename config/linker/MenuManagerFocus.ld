@@ -56,6 +56,7 @@ SECTIONS
     .menu_manager_set_text 0x002e51fc : { *menu-manager-helpers.o(.text._ZN11MenuManager7setTextENS_5eTextEPKcPi) }
     .menu_manager_set_text_table 0x004191e4 : { *menu-manager-helpers.o(.rodata._ZN11MenuManager7setTextENS_5eTextEPKcPi) }
     .menu_manager_init_map 0x002e7164 : { *menu-manager-helpers.o(.text._ZN11MenuManager7initMapEv) }
+    .menu_manager_position_map_on_point 0x002e6730 : { *menu-manager-helpers.o(.text._ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE) }
     .menu_manager_setup 0x002e574c : { *menu-manager-helpers.o(.text._ZN11MenuManager5setupEb) }
     .menu_manager_update 0x002e4e7c : { *menu-manager-helpers.o(.text._ZN11MenuManager6updateEP12StateMachine) }
     .menu_update_markers 0x002e6948 : { *menu-manager-helpers.o(.text._ZN11MenuManager13updateMarkersEv) }

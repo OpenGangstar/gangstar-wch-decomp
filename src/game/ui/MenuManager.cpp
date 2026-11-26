@@ -1528,6 +1528,58 @@ void MenuManager::initMap()
     reinterpret_cast<InitMapMarker*>(TargetMarker::getInstance())->angle = angle;
 }
 
+namespace {
+struct PositionMapFields {
+    irr::video::ITexture* texture;
+    float rotation, scale, offsetX, offsetY;
+    int screenX, screenY, left, top, right, bottom;
+    float minX, minY, maxX, maxY;
+};
+struct PositionMapSize { int width, height; };
+}
+
+extern "C" void _ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE(MenuManager* manager, InitMapPoint& point)
+{
+    ZoomFields& m = *reinterpret_cast<ZoomFields*>(manager);
+    PositionMapFields* map = reinterpret_cast<PositionMapFields*>(Map::getInstance());
+    float minX = map->minX;
+    float minY = map->minY;
+    float normalizedX = map->maxX;
+    float maxY = map->maxY;
+    normalizedX -= minX;
+    normalizedX = (point.X - minX) / normalizedX;
+    float yDifference = -point.Y - minY;
+    const irr::core::dimension2d<int>& sizeRef = reinterpret_cast<PositionMapFields*>(Map::getInstance())->texture->getSize();
+    const irr::core::dimension2d<int> size = sizeRef;
+    float width = size.Width;
+    int left = static_cast<int>(normalizedX * width);
+    int top = reinterpret_cast<const PositionMapSize*>(&sizeRef)->height;
+    float scaledY = (yDifference / (maxY - minY)) * top;
+    const int viewWidth = m.width;
+    const int viewHeight = m.height;
+    left -= viewWidth / 2;
+    top = static_cast<int>(scaledY);
+    int y = top - viewHeight / 2;
+    if (left < 0) left = 0;
+    else if (left + m.width > size.Width) left = size.Width - m.width;
+    if (y < 0) y = 0;
+    else if (y + m.height > size.Height) y = size.Height - m.width;
+    m.left = left;
+    m.top = y;
+    m.right = left + m.width;
+    m.bottom = y + m.height;
+    m.zoom = 1.0f;
+    reinterpret_cast<PositionMapFields*>(Map::getInstance())->scale = m.zoom;
+    PositionMapFields* offsets = reinterpret_cast<PositionMapFields*>(Map::getInstance());
+    offsets->offsetX = 0.0f;
+    offsets->offsetY = 0.0f;
+    PositionMapFields* viewport = reinterpret_cast<PositionMapFields*>(Map::getInstance());
+    viewport->left = m.left;
+    viewport->top = m.top;
+    viewport->right = m.right;
+    viewport->bottom = m.bottom;
+}
+
 
 namespace {
 // Menu state refreshed when the cheat sequence completes.
