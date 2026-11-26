@@ -1,3 +1,8 @@
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fcmple = 0x001c43ac);
+PROVIDE(lrand48 = 0x001c4664);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-copvehiclecontroller/retail-symbols.ld
@@ -18,6 +23,13 @@ __cxa_guard_release = 0x001c46c4;
 SECTIONS
 {
     .cop_vehicle_switch 0x0034171c : { *ai-startup-copvehiclecontroller.o(.text._ZN20CopVehicleController11switchStateEN8gameloft2ai7StateIDE) }
+    .cop_vehicle_on_event 0x00341a3c : { *ai-startup-copvehiclecontroller.o(.text._ZN20CopVehicleController7onEventEPK6IEventPK12EventManager) }
+    .cop_event_delete 0x002d4074 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .cop_event_dtor 0x002d4094 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .cop_event_vtable 0x004a6198 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .cop_player_event_delete 0x002f512c : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.t._ZN8EvPlayerD0Ev) }
+    .cop_player_event_dtor 0x002f61f8 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.t._ZN8EvPlayerD1Ev) }
+    .cop_player_event_vtable 0x004aa138 : { *ai-startup-copvehiclecontroller.o(.gnu.linkonce.d.rel.ro._ZTV8EvPlayer) }
     .cop_vehicle_construct 0x0034185c : { *(.text._ZN20CopVehicleControllerC1EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE .text._ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE) }
     .cop_vehicle_delete 0x003417ac : { *(.text._ZN20CopVehicleControllerD0Ev) }
     .cop_vehicle_destroy 0x00341808 : { *(.text._ZN20CopVehicleControllerD1Ev .text._ZN20CopVehicleControllerD2Ev) }

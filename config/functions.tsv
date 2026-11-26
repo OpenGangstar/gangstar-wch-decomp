@@ -10516,7 +10516,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x00306ff9	0x30	SpawnPoint.cpp	game	world	matched	__tcf_5	__tcf_5
 0x00307029	0xa4	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint22ClearAllSpawnInstancesEv	SpawnPoint::ClearAllSpawnInstances()
 0x003070cd	0x34	SpawnPoint.cpp	game	world	matched	__tcf_6	__tcf_6
-0x00307101	0x350	SpawnPoint.cpp	game	world	pending	_ZN10SpawnPoint18UpdateSpawnCentersEv	SpawnPoint::UpdateSpawnCenters()
+0x00307101	0x350	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint18UpdateSpawnCentersEv	SpawnPoint::UpdateSpawnCenters()
 0x00307451	0x330	SpawnPoint.cpp	game	world	pending	_ZNK10SpawnPoint8canSpawnEv	SpawnPoint::canSpawn() const
 0x00307781	0x60	SpawnPoint.cpp	game	world	matched	_ZN10SpawnPoint6UpdateEi	SpawnPoint::Update(int)
 0x003077e1	0x6	Transformation.cpp	game	characters	matched	_ZNK14Transformation8GetMatIDEv	Transformation::GetMatID() const
@@ -12220,7 +12220,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003418b5	0x144	CopVehicleController.cpp	game	ai	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003419f9	0x14	CopVehicleController.cpp	game	ai	matched	_GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE	_GLOBAL__I__ZN20CopVehicleControllerC2EP7VehicleRKN8gameloft2ai10TransitionENS3_7StateIDE
 0x00341a0d	0x30	CopVehicleController.cpp	game	ai	matched	__tcf_5	__tcf_5
-0x00341a3d	0x2e8	CopVehicleController.cpp	game	ai	pending	_ZN20CopVehicleController7onEventEPK6IEventPK12EventManager	CopVehicleController::onEvent(IEvent const*, EventManager const*)
+0x00341a3d	0x2e8	CopVehicleController.cpp	game	ai	matched	_ZN20CopVehicleController7onEventEPK6IEventPK12EventManager	CopVehicleController::onEvent(IEvent const*, EventManager const*)
 0x00341d25	0x40	GuardController.cpp	game	ai	matched	_ZN15GuardControllerD2Ev	GuardController::~GuardController()
 0x00341d25	0x40	GuardController.cpp	game	ai	matched	_ZN15GuardControllerD1Ev	GuardController::~GuardController()
 0x00341d65	0x44	GuardController.cpp	game	ai	matched	_ZN15GuardControllerD0Ev	GuardController::~GuardController()

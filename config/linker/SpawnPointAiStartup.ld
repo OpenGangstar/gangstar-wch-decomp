@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fcmpge = 0x001c4364);
 PROVIDE(memset = 0x001c45d4);
 PROVIDE(__aeabi_fcmplt = 0x001c479c);
 PROVIDE(__aeabi_fadd = 0x001c4154);
@@ -44,6 +45,7 @@ SECTIONS
     .spawn_outer_center 0x003064e0 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint20GetOutterSpawnCenterEv) }
     .spawn_inner_center 0x00306524 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint19GetInnerSpawnCenterEv) }
     .spawn_update 0x00307780 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint6UpdateEi) }
+    .spawn_point_update_spawn_centers 0x00307100 : { *ai-startup-spawnpoint.o(.text._ZN10SpawnPoint18UpdateSpawnCentersEv) }
     .spawn_constants 0x004b53b4 : {
         *ai-startup-spawnpoint.o(.data._ZN10SpawnPoint13s_carSpawnCstE)
         *ai-startup-spawnpoint.o(.data._ZN10SpawnPoint13s_civSpawnCstE)
