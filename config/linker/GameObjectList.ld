@@ -57,6 +57,7 @@ INCLUDE config/linker/GS3DSceneTraversal.ld
 INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
+    .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }
     .ai_manager_guard 0x004b6a90 (NOLOAD) : { *gs3d-stuff.o(.gnu.linkonce.b._ZGVZN9AIManager11getInstanceEvE3aim) }

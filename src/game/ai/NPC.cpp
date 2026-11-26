@@ -1310,3 +1310,272 @@ extern "C" bool _ZN3NPC12attackTargetEv(NPC* self)
     }
     return attacked;
 }
+#include "../characters/PhysicInfo.h"
+#include "../core/Physics.h"
+void operator delete(void*) throw();
+namespace {
+// Partial field view: retail reads offset 320 as a Vehicle pointer; never constructed.
+struct NPCUpdateFields {
+    unsigned char beforeAvoidVehicle[320];
+    Vehicle* avoidVehicle;
+};
+// Box2D-style inline vector helpers (b2Math operator* and operator+), y component first.
+inline b2Vec2 npcVecScale(float s,const b2Vec2& a) { float y=s*a.y; return b2Vec2(s*a.x,y); }
+inline b2Vec2 npcVecAdd(const b2Vec2& a,const b2Vec2& b) { float y=a.y+b.y; return b2Vec2(a.x+b.x,y); }
+}
+extern "C" void _ZN3NPC7_detectEv(NPC*);
+extern "C" bool _ZN9Character6isDownEv(Character*) __attribute__((weak));
+extern "C" bool _ZN9Character15updateAnimationEf(Character*,float);
+void NPC::Update(int elapsed)
+{
+    unknown296=irr::core::vector3d<float>(0.0f,0.0f,0.0f);
+    if(flags356&0x2000u) {
+        LevelObject* initialTarget=target;
+        PlayerTest* player;
+        // Contrived prediction form: a one-field aggregate compare against a non-zero
+        // constant replaces the pointer heuristic with opcode-nonequal (71%), so the
+        // second GetPlayer trace is colder than the door stubs; folds back later.
+        if(({ struct { unsigned int k; } tv={reinterpret_cast<unsigned int>(initialTarget)+1u}; tv.k==1u; }) ||
+            ((player=PlayerTest::GetPlayer()) && initialTarget==reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player)) &&
+                (!((player=PlayerTest::GetPlayer())->flags240&0x400u) || !static_cast<SavePositionInterface*>(player)->getVehicle())) ||
+            (LevelObject::s_type[target->getObjectType()]==5 && (!(static_cast<Character*>(target)->movementFlags&0x400u) || !static_cast<Character*>(target)->getVehicle())) ||
+            (LevelObject::s_type[target->getObjectType()]==3 && !static_cast<Vehicle*>(target)->getDriver())) {
+            flags356&=~0x2000u;
+            Application::GetInstance()->GetEventManager()->raise(EvNPC(static_cast<EvNPC::State>(13),this));
+        }
+    }
+    if(ScriptManager::getInstance()->isInCinematic() && !unknown28 && category428!=3 && (flags356&0x40u)) {
+        flags356&=~0x40u;
+        Application::GetInstance()->GetEventManager()->raise(EvNPC(static_cast<EvNPC::State>(13),this));
+    }
+    if(isOutsideSearchRadius()) {
+        Weapon* current=getWeapon();
+        if(current && current->getWeaponType()!=0) {
+            int range=current->getRange()*2;
+            int cone=current->getCone();
+            if(!isTargetInRange(static_cast<float>(range),static_cast<float>(cone)))
+                Application::GetInstance()->GetEventManager()->raise(EvNPC(static_cast<EvNPC::State>(26),this));
+        }
+    }
+    if(ScriptManager::getInstance()->isInCinematic() && !(flags356&0x2800u))
+        adjustedDestination=destination;
+    else CheckDestination();
+    Character::Update(elapsed);
+    PlayerTest* player=PlayerTest::GetPlayer();
+    if(!isDead()) {
+        if(flags356&0x80u) _ZN3NPC7_detectEv(this);
+        collisionBody->angularVelocity=0.0f;
+        b2Body* body=collisionBody;
+        body->linearVelocity.y=0.0f;
+        body->linearVelocity.x=0.0f;
+        if(_ZN9Character6isDownEv(this) && health>0) {
+            UpdateCarPosIfUnderWheel();
+            unknown448+=elapsed;
+            if(isUnderCar()) {
+                if(unknown448>999) {
+                    int damage=static_cast<int>(static_cast<float>(getMaxHealth())*0.29999998211860657f);
+                    applyDamage(damage,lastHitVehicle,true);
+                    unknown448=0;
+                }
+            } else if(!isCurrentAnimation(164)) {
+                lastHitVehicle=0;
+                if(unknown448>2999) {
+                    setAnimation(164,1.0f,false,false,false);
+                    unknown448=0;
+                }
+            }
+        }
+    } else {
+        if(collisionBody && isCurrentAnimation(-1)) {
+            if(collisionBody->data) {
+                ::operator delete(collisionBody->data);
+                collisionBody->data=0;
+            }
+            PhysicAttributes::s_world->DestroyBody(collisionBody);
+            collisionBody=0;
+        }
+        if(flags356&0x100000u) {
+            tagForKill(false);
+            ScriptManager::getInstance()->taggedKilled();
+        }
+    }
+    if(currentAnimation!=-1 && unknown164Pointer) {
+        if(_ZN9Character15updateAnimationEf(this,static_cast<float>(elapsed))) switchAnim();
+        if(!(unknown4&2u)) return;
+    }
+    if(!unknown28 && isDead() && _ZN9Character6isDownEv(this)) {
+        cleanTimer+=elapsed;
+        int alpha=static_cast<int>(static_cast<float>(cleanTimer)/3000.0f*-255.0f+255.0f);
+        alpha=irr::core::clamp(alpha,0,255);
+        if(alpha<255) {
+            GS3DStuff::SetMaterialType(sceneNode,static_cast<irr::video::E_MATERIAL_TYPE>(25));
+            GS3DStuff::SetAlpha(sceneNode,static_cast<unsigned char>(alpha),GS3DStuff::Color0);
+            if(alpha==0) {
+                GS3DStuff::forceDespawn(this);
+                return;
+            }
+        }
+    }
+    if(_ZN9Character6isDownEv(this)) {
+        UpdateSceneNode();
+        if(lastHitVehicle) unknown448=0;
+        return;
+    }
+    if(unknown24->info->unknown0==PhysicAttributes::MATERIAL_TYPE_CLIFF) {
+        b2Body* body=collisionBody;
+        b2Vec2 slope(unknown24->info->vector48.X,unknown24->info->vector48.Y);
+        b2Vec2 velocity=body->linearVelocity;
+        body->linearVelocity=npcVecAdd(npcVecScale(5.0f,slope),velocity);
+    }
+    float y,x;
+    {
+        const irr::core::vector3d<float>& position=GetPosition();
+        y=position.Y;
+        x=position.X;
+    }
+    shadowBaseHeight=unknown24->GetHeight(GetPosition(),0,false);
+    sceneNode->setPosition(irr::core::vector3d<float>(x,y,shadowBaseHeight+unknown156));
+    sceneNode->updateAbsolutePosition(false);
+    if(!isDead()) {
+        NPCUpdateFields& fields=*reinterpret_cast<NPCUpdateFields*>(this);
+        if(fields.avoidVehicle && fields.avoidVehicle->isEnabled()) {
+            if(fields.avoidVehicle->explosionFlag || fields.avoidVehicle->explosionFinished) flags356|=2u;
+            else if(!(movementFlags&0x10000u) && !(flags356&0x800u)) {
+                float distance=(GetPosition()-fields.avoidVehicle->GetPosition()).getLengthSQ();
+                if(distance>=2250000.0f || (target && target->GetSpeed()>30.0f))
+                    goToVehicle(fields.avoidVehicle,true,true,true,false);
+            }
+        }
+        if(unknown264 && (unknown264==reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player)) ||
+            LevelObject::s_type[unknown264->getObjectType()]==1 || LevelObject::s_type[unknown264->getObjectType()]==5)) {
+            if((static_cast<Character*>(unknown264)->movementFlags&0x10000000u) && static_cast<Character*>(unknown264)->target!=target)
+                attackTarget(static_cast<Character*>(unknown264)->target);
+            else {
+                // No-code hints (both tests vanish after reload: crossjump merges the identical
+                // arms and the dead test operands are deleted). The prefetch keeps PRED_CALL on
+                // the edge into this block. The s_world test's PIC-register reload advances the
+                // reload rotation so the player null-check reload takes r1 (which also gives the
+                // SetTarget argument order); the elapsed test's reload, after the null check,
+                // puts the getVehicle base reload back in r0.
+                __builtin_prefetch(this);
+                if(PhysicAttributes::s_world) SetTarget(0); else SetTarget(0);
+                Character* pc=reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player));
+                LevelObject* u;
+                if(elapsed) u=unknown264; else u=unknown264;
+                // Cast on the right-hand side gives retail's cmp operand order.
+                if(pc==reinterpret_cast<Character*>(u)) {
+                    // Branch hint (no code): the player-has-vehicle path is likely, so the
+                    // getOutOfVehicle block is placed after the 0x2000 door stub.
+                    if(__builtin_expect(static_cast<SavePrimaryInterface*>(player)->getVehicle()!=0,1)) {
+                        if((player->flags240&0x400u) && static_cast<SavePositionInterface*>(player)->getVehicle())
+                            goToVehicle(static_cast<SavePrimaryInterface*>(player)->getVehicle(),false,true,true,false);
+                    } else if(getVehicle() && !(unknown4&2u)) getOutOfVehicle(true,false);
+                }
+            }
+        }
+        if(flags356&0x800u) {
+            Vehicle* previous=vehicle;
+            if(previous) {
+                vehicle=0;
+                goToVehicle(previous,entryDoor==previous->leftDoor,(flags356&2u)!=0,true,false);
+            } else flags356&=~0x800u;
+        }
+        if(flags356&0x2000u) {
+            Vehicle* previous=vehicle;
+            if(previous) {
+                vehicle=0;
+                goToVehicle(previous,entryDoor==previous->leftDoor,(flags356&2u)!=0,false,true);
+            } else flags356&=~0x2000u;
+        }
+        if(!(flags356&0x400u)) {
+            if((flags356&0x40u) && !(flags356&0x800u) && !(movementFlags&0x30000u) && !(flags356&0x2000u)) {
+                if(!attackState452 && !_ZN9Character6isDownEv(this)) triggerCombatSFX(unknown412);
+                _ZN3NPC12attackTargetEv(this);
+            } else if((flags356&1u) || (flags356&2u)) {
+                turnToward(irr::core::vector3d<float>(adjustedDestination));
+                animationFlag149=true;
+                // No-op write-backs (removed after reload) keep the destination loads as
+                // separate pseudos, giving retail's dY reload into r5 and dx in r4.
+                float dY=destination.Y;
+                destination.Y=dY;
+                float dX=destination.X;
+                destination.X=dX;
+                float dx=dX-x;
+                float dy=dY-y;
+                if(dx*dx+dy*dy<static_cast<float>(destinationLimitSquared)) {
+                    flags356&=~3u;
+                    // Contrived equality form: PRED_TREE_OPCODE_NONEQUAL joins PRED_CALL on the Stop edge.
+                    unsigned int stopFlag=(flags356&0x400000u)^0x400000u;
+                    if(stopFlag==0x400000u) Stop();
+                    if(flags356&0x800u) {
+                        if(vehicle && !vehicle->explosionFlag && !vehicle->explosionFinished) {
+                            // Inverted arm order: the keep path precedes the door path in RTL,
+                            // which gives retail's reload rotation for the 188-offset reloads.
+                            if(!(vehicle->GetSpeed()<=10.0f)) {
+                                if(vehicle) goto keep800;
+                            } else {
+                                // No-code hint: PRED_CALL makes the speed>10 path the fallthrough.
+                                __builtin_prefetch(this);
+                                if(vehicle) {
+                                    irr::scene::ISceneNode* door=vehicle->getNearestDoorDummy(GetPosition());
+                                    irr::core::vector3d<float> entryPosition(door->getAbsolutePosition().X,door->getAbsolutePosition().Y,GetPosition().Z);
+                                    SetPosition(entryPosition);
+                                    enterVehicle(door==vehicle->leftDoor,true,false);
+                                }
+                            }
+                            // One shared clear for the door and vehicle-gone paths.
+                            flags356&=~0x800u;
+                            keep800:;
+                        } else flags356&=~0x800u;
+                    } else {
+                    // No-code hint: PRED_CALL on this edge keeps the 0x800 path on the fallthrough.
+
+                    if(flags356&0x2000u) {
+                        if(vehicle) {
+                            // Same inverted arm order as the 0x800 path.
+                            if(!(vehicle->GetSpeed()<=10.0f)) {
+                                if(vehicle) goto keep2000;
+                            } else {
+                                // No-code hint: PRED_CALL makes the speed>10 path the fallthrough.
+                                __builtin_prefetch(this);
+                                if(vehicle) {
+                                    irr::scene::ISceneNode* door=vehicle->getNearestDoorDummy(GetPosition());
+                                    irr::core::vector3d<float> entryPosition(door->getAbsolutePosition().X,door->getAbsolutePosition().Y,GetPosition().Z);
+                                    SetPosition(entryPosition);
+                                    enterVehicle(door==vehicle->leftDoor,false,true);
+                                }
+                            }
+                        }
+                        // One shared clear for the door, vehicle-gone and no-vehicle paths.
+                        flags356&=~0x2000u;
+                        keep2000:;
+                    } else {
+                        flags356|=0x4000u;
+                        EvNPC event(static_cast<EvNPC::State>(1),this);
+                        Application::GetInstance()->GetEventManager()->raise(event);
+                        startTurn(8.0f);
+                    }
+                    }
+                }
+            } else if(flags356&8u) {
+                b2Body* body=collisionBody;
+                body->linearVelocity.y=0.0f;
+                body->linearVelocity.x=0.0f;
+                waitElapsed+=elapsed;
+                if(waitElapsed/1000>waitDuration) {
+                    Application::GetInstance()->GetEventManager()->raise(EvNPC(static_cast<EvNPC::State>(5),this));
+                    flags356&=~8u;
+                }
+            } else if(flags356&16u) {
+                b2Body* body=collisionBody;
+                body->linearVelocity.y=0.0f;
+                body->linearVelocity.x=0.0f;
+            }
+        }
+        if((flags356&4u) && isCurrentAnimation(getSpecificAnimation(165))) {
+            flags356|=0x8000u;
+            goToNextPoint(false);
+        }
+    }
+    UpdateSceneNode();
+}

@@ -100,6 +100,7 @@ SECTIONS {
     .resstream_destroy 0x0034ef14 : { *res-stream.o(.text._ZN9ResStreamD1Ev .text._ZN9ResStreamD2Ev) }
     .resstream_vtable 0x004ad698 : { *res-stream.o(.data.rel.ro._ZTV9ResStream) }
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
+    .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
     .gom_distance_from_attackable_target 0x00315f38 : { *game-object-manager.o(.text._ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb) }
     .gom_get_attackable_target 0x003160d8 : { *game-object-manager.o(.text._ZN17GameObjectManager19getAttackableTargetEP9Character) }
     .gom_spawn_npc 0x00316214 : { *game-object-manager.o(.text._ZN17GameObjectManager8spawnNPCEiii) }
