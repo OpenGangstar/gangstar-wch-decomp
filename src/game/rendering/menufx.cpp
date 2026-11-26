@@ -2444,3 +2444,159 @@ bool RenderFX::InvokeASCallback(gameswf::character* character, const char* callb
     }
     return false;
 }
+
+namespace {
+class InputCharacter {
+public:
+    explicit InputCharacter(gameswf::character* character) : character(character)
+    {
+        if (character)
+            _ZNK7gameswf11ref_counted7add_refEv(reinterpret_cast<gameswf::root*>(character));
+    }
+    ~InputCharacter()
+    {
+        if (character)
+            _ZN7gameswf11ref_counted8drop_refEv(reinterpret_cast<gameswf::root*>(character));
+    }
+    gameswf::character* get() const { return character; }
+    // Drops the reference early; the destructor then sees null and emits
+    // nothing on that path.
+    void release()
+    {
+        _ZN7gameswf11ref_counted8drop_refEv(reinterpret_cast<gameswf::root*>(character));
+        character = 0;
+    }
+
+private:
+    gameswf::character* character;
+};
+
+struct InputMatrix {
+    float elements[6];
+};
+
+// left/right/probe are scalarized by SRA after loop header copying, which
+// gives the retail SSA versions (fcmp operand order) and spill-slot order.
+struct InputBest {
+    float distance;
+    gameswf::character* character;
+};
+
+union InputOrigin {
+    float elements[6];
+};
+
+inline const InputMatrix& inputWorldMatrix(gameswf::character* character)
+{
+    return reinterpret_cast<const InputMatrix&>(_ZN7gameswf9character16get_world_matrixEv(character));
+}
+
+// RenderFX private fields reached by UpdateInput.
+struct InputRenderFXFields {
+    unsigned char unknown0[32];
+    gameswf::character* context;
+    RenderFX::Controller controllers[4];
+    int inputBehavior;
+    RenderFX::EventListener* listener;
+};
+}
+
+extern "C" int abs(int value);
+static const char inputClickedAnimation[] = "clicked";
+
+// RenderFX.h does not declare UpdateInput, so the method is named by its
+// mangled name.
+extern "C" void _ZN8RenderFX11UpdateInputEii(RenderFX* self, int keys, int index)
+{
+    InputRenderFXFields& fields = *reinterpret_cast<InputRenderFXFields*>(self);
+    InputCharacter current(fields.controllers[index].first.get());
+    if (current.get()) {
+        // Branch-likelihood hint (no code): sets block frequencies so the
+        // stack-guard call block and r9/sl/fp allocation follow retail.
+        if (__builtin_expect(!keys, 0)) {
+            // No-code allocation hint: identical-arm calls on a test of
+            // index.  The test adds index references on the cold early
+            // return path (where self is dead) so global allocation ranks
+            // index above current (retail r6/r7); after reload crossjumping
+            // merges the two drop_ref calls into the common exit and the
+            // test is deleted.
+            if (((index * index) & (index | 9) & (index ^ 3) & (index - 1) & (index * 13) & (index >> 1) & (index + 77)) != 0)
+                current.release();
+            else
+                current.release();
+            return;
+        }
+        if (!fields.controllers[index].fourth.get()) {
+            RenderFX::Event event;
+            event.payload.y = 0.0f;
+            event.payload.x = 0.0f;
+            event.payload.z = 0.0f;
+            event.payload.unknown24 = 0;
+            // Stored after unknown24: sched2 then emits the unknown24 store first.
+            event.character = current.get();
+            event.type = 3;
+            event.characterName = reinterpret_cast<const CharacterCollectionFields*>(current.get())->get_name().c_str();
+            event.characterPath[0] = 0;
+            event.consumed = false;
+            *reinterpret_cast<int*>(event.payload.unknown28) = keys;
+            event.payload.controller = index;
+            self->SendEvent(event);
+            if (!event.consumed) {
+                float scaleX;
+                float scaleY;
+                const gameswf::array<gameswf::character*>* candidates;
+                int i;
+                float originY;
+                float originX;
+                gameswf::character* up = 0;
+                float upDistance = 2147483648.0f;
+                gameswf::character* down = 0;
+                float downDistance = 2147483648.0f;
+                InputBest left = {2147483648.0f, 0};
+                InputBest right = {2147483648.0f, 0};
+                InputOrigin world = reinterpret_cast<const InputOrigin&>(inputWorldMatrix(current.get()));
+                originY = world.elements[5];
+                originX = world.elements[2];
+                scaleX = (keys & 12) ? 1.0f : 10.0f;
+                scaleY = ((keys & 1) || (keys & 2)) ? 1.0f : 10.0f;
+
+                candidates = &self->FindCharacters(fields.context, widgetButtonPrefix, 3);
+                for (i = 0; i < candidates->size; ++i) {
+                    InputBest probe;
+                    probe.character = candidates->elements[i];
+                    InputMatrix matrix = inputWorldMatrix(probe.character);
+                    float dx = scaleX * (matrix.elements[2] - originX);
+                    float dy = scaleY * (matrix.elements[5] - originY);
+                    probe.distance = dx * dx + dy * dy;
+                    if (dy < 0.0f && abs(dy) > 0.0f && probe.distance < upDistance) {
+                        upDistance = probe.distance;
+                        up = probe.character;
+                    }
+                    if (dy > 0.0f && abs(dy) > 0.0f && probe.distance < downDistance) {
+                        downDistance = probe.distance;
+                        down = probe.character;
+                    }
+                    if (dx < 0.0f && abs(dx) > 0.0f && left.distance > probe.distance) {
+                        left = probe;
+                    }
+                    if (dx > 0.0f && abs(dx) > 0.0f && right.distance > probe.distance) {
+                        right = probe;
+                    }
+                }
+
+                if ((keys & 1) && up)
+                    self->SetFocus(up, index);
+                else if ((keys & 2) && down)
+                    self->SetFocus(down, index);
+                else if ((keys & 4) && left.character)
+                    self->SetFocus(left.character, index);
+                else if ((keys & 8) && right.character)
+                    self->SetFocus(right.character, index);
+                else if ((keys & 16) && fields.listener) {
+                    self->PlayAnim(current.get(), inputClickedAnimation, 0);
+                    fields.controllers[index].fourth.set_ref(current.get());
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,11 @@
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__stack_chk_fail = 0x001c42e0);
 PROVIDE(strcat = 0x001c43a0);
 strlen = 0x001c48bc;
 strrchr = 0x001c4340;
@@ -14,6 +22,8 @@ sprintf = 0x001c46ac;
 SECTIONS
 {
     .renderfx_invoke_as_callback 0x003eefac : { *renderfx-animation.o(.text._ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc) }
+    .renderfx_update_input 0x003efcec : { *renderfx-animation.o(.text._ZN8RenderFX11UpdateInputEii) }
+    .renderfx_input_clicked 0x0044de94 : { *renderfx-animation.o(.rodata.inputClickedAnimation) }
     .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }

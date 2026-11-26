@@ -9,6 +9,7 @@ __aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
+    .gs_get_polys_iter 0x002dd33c : { *gs3d-stuff.o(.text._ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE) }
     .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
     .scene_camera_load 0x00334fe8 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4LoadERKN7Structs11SceneCameraE) }
     ASSERT(SIZEOF(.scene_camera_load) == 96, "SceneCamera Load native96 strict extent")
