@@ -10844,7 +10844,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031787d	0x144	LevelObject.cpp	game	world	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x003179c1	0x14	LevelObject.cpp	game	world	matched	_GLOBAL__I__ZN11LevelObject12s_highlightsE	_GLOBAL__I__ZN11LevelObject12s_highlightsE
 0x003179d5	0x5e0	LevelObject.cpp	game	world	matched	_ZN11LevelObject7CastRayERKN3irr4core8vector3dIfEES5_RS3_S6_RPS_b	LevelObject::CastRay(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&, LevelObject*&, bool)
-0x00317fb5	0xc30	LevelObject.cpp	game	world	pending	_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_	LevelObject::canGoToPoint(irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
+0x00317fb5	0xc30	LevelObject.cpp	game	world	matched	_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEERS3_S6_	LevelObject::canGoToPoint(irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
 0x00318be5	0x308	LevelObject.cpp	game	world	matched	_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEE	LevelObject::canGoToPoint(irr::core::vector3d<float> const&)
 0x00318eed	0x14	MeshCollision.cpp	game	world	matched	_ZN13MeshCollisionC1EPKN3irr5scene5IMeshEPKNS1_10ISceneNodeE	MeshCollision::MeshCollision(irr::scene::IMesh const*, irr::scene::ISceneNode const*)
 0x00318eed	0x14	MeshCollision.cpp	game	world	matched	_ZN13MeshCollisionC2EPKN3irr5scene5IMeshEPKNS1_10ISceneNodeE	MeshCollision::MeshCollision(irr::scene::IMesh const*, irr::scene::ISceneNode const*)
