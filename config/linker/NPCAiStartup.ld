@@ -34,6 +34,8 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 SECTIONS
 {
+    .physic_get_height 0x0031ff48 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib) }
+    .npc_update 0x002ffe0c : { *ai-startup-npc.o(.text._ZN3NPC6UpdateEi) }
     .physic_get_tri_center 0x0031a4cc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes12GetTriCenterEtt) }
     .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
     .physic_next_random_pos 0x0031cf74 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE) }

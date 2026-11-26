@@ -184,7 +184,8 @@
         "_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE",
         "_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE",
         "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
-        "_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE"
+        "_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE",
+        "_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE"
     ],
     "sections": [
         ".gs_print_node_properties",

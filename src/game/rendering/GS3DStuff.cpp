@@ -1964,6 +1964,90 @@ void GS3DStuff::update(StateMachine* state)
 }
 
 
+#include "../core/Physics.h"
+#include "../core/VideoDriver.h"
+extern "C" void _ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE(GS3DStuff* self,
+    b2Body* body, irr::video::SColor color)
+{
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+    // No-code hint: c3/c0/c1 first hold earlier real values (vehicle Z, player Z,
+    // the else-arm height sum) so their rotation SSA partitions become out-of-SSA
+    // temps created after the vtable spill temp -> spill slots c2<vfn<c3<c0<c1.
+    float c3, c0, c1;
+    c0 = GS3DStuff::playerTest->GetPosition().Z;
+    float height;
+    if (GS3DStuff::playerTest->getVehicle())
+        height = 200.0f + (c3 = GS3DStuff::playerTest->getVehicle()->GetPosition().Z);
+    else
+        height = (c1 = c0 + 200.0f);
+    for (b2Shape* shape = body->shapeList; shape; shape = shape->next) {
+        const b2XForm& xf = body->GetXForm();
+        float px, py;
+        float c2;
+        py = xf.position.y;
+        px = xf.position.x;
+        b2Vec2 points[4];
+        b2PolygonShape* polygon = static_cast<b2PolygonShape*>(shape);
+        const b2Vec2* v = polygon->vertices;
+        // Rotation components read once (load order c0, c2, c1, c3); the
+        // declaration order only sets their pseudo/spill-slot numbering.
+        c0 = xf.rotation[0];
+        c2 = xf.rotation[2];
+        c1 = xf.rotation[1];
+        c3 = xf.rotation[3];
+        for (int i = 0; i < 4; ) {
+            // No-code hint: increment at loop top + user label splits the header so
+            // ivopts sees the points stores before the vertex loads (points IV init
+            // emitted first in the preheader).
+            int j = i++;
+            load_v:
+            float vx = v[j].x;
+            float vy = v[j].y;
+            float x = vx * c0 + c2 * vy;
+            float y = vx * c1 + vy * c3;
+            y = y + py;
+            x = x + px;
+            x = x * 100.0f;
+            store_x:
+            points[j].x = x;
+            y = y * 100.0f;
+            store_y:
+            points[j].y = y;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (i == 3)
+                driver->draw3DLine(irr::core::vector3d<float>(points[3].x, points[3].y, height),
+                    irr::core::vector3d<float>(points[0].x, points[0].y, height), color);
+            else
+                driver->draw3DLine(irr::core::vector3d<float>(points[i].x, points[i].y, height),
+                    irr::core::vector3d<float>(points[i + 1].x, points[i + 1].y, height), color);
+        }
+        PhysicsBodyData* data = static_cast<PhysicsBodyData*>(shape->GetBody()->GetUserData());
+        if (data && !data->node) {
+            driver->draw3DLine(irr::core::vector3d<float>(px * 100.0f, py * 100.0f, data->lowerHeight),
+                irr::core::vector3d<float>((px + (c0 = xf.rotation[0]) /* no-code hint: later c0/c3 defs order their temp groups */) * 100.0f,
+                    (py + xf.rotation[1]) * 100.0f, data->lowerHeight),
+                irr::video::SColor(255, 0, 0, 255));
+            driver->draw3DLine(irr::core::vector3d<float>(px * 100.0f, py * 100.0f, data->lowerHeight),
+                irr::core::vector3d<float>((px + xf.rotation[2]) * 100.0f,
+                    (py + (c3 = xf.rotation[3])) * 100.0f, data->lowerHeight),
+                irr::video::SColor(255, 0, 255, 0));
+            driver->draw3DLine(irr::core::vector3d<float>(px * 100.0f, py * 100.0f, data->lowerHeight),
+                irr::core::vector3d<float>(px * 100.0f, py * 100.0f, data->upperHeight),
+                irr::video::SColor(255, 255, 0, 0));
+        } else {
+            driver->draw3DLine(irr::core::vector3d<float>(px * 100.0f, py * 100.0f, height),
+                irr::core::vector3d<float>((px + xf.rotation[0]) * 100.0f,
+                    (py + xf.rotation[1]) * 100.0f, height),
+                irr::video::SColor(255, 0, 0, 255));
+            driver->draw3DLine(irr::core::vector3d<float>(px * 100.0f, py * 100.0f, height),
+                irr::core::vector3d<float>((px + xf.rotation[2]) * 100.0f,
+                    (py + xf.rotation[3]) * 100.0f, height),
+                irr::video::SColor(255, 0, 255, 0));
+        }
+    }
+}
+
 extern "C" float fabsf(float);
 extern "C" bool _ZNK7Vehicle11isDoorClearEbP6b2Body(const Vehicle* self, bool left, b2Body* body);
 

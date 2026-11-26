@@ -9184,7 +9184,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dc6d9	0x3c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuffC1Ev	GS3DStuff::GS3DStuff()
 0x002dc6d9	0x3c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuffC2Ev	GS3DStuff::GS3DStuff()
 0x002dc715	0x244	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE	GS3DStuff::checkVehicleProximity(std::vector<Vehicle*, std::allocator<Vehicle*> >&)
-0x002dc959	0x3a8	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE	GS3DStuff::DrawBody(b2Body*, irr::video::SColor)
+0x002dc959	0x3a8	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE	GS3DStuff::DrawBody(b2Body*, irr::video::SColor)
 0x002dcd01	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP7VehicleSaIS1_EE8_M_clearEv	std::vector<Vehicle*, std::allocator<Vehicle*> >::_M_clear()
 0x002dcd15	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP4ItemSaIS1_EE8_M_clearEv	std::vector<Item*, std::allocator<Item*> >::_M_clear()
 0x002dcd29	0x174	GS3DStuff.cpp	game	rendering	matched	_ZNSs9_M_appendEPKcS0_	std::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, char const*)
@@ -10353,7 +10353,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002ff01d	0x164	NPC.cpp	game	ai	matched	_ZN3NPC3dieEb	NPC::die(bool)
 0x002ff181	0x450	NPC.cpp	game	ai	matched	_ZN3NPC7_detectEv	NPC::_detect()
 0x002ff5d1	0x83c	NPC.cpp	game	ai	matched	_ZN3NPC12attackTargetEv	NPC::attackTarget()
-0x002ffe0d	0xbc4	NPC.cpp	game	ai	pending	_ZN3NPC6UpdateEi	NPC::Update(int)
+0x002ffe0d	0xbc4	NPC.cpp	game	ai	matched	_ZN3NPC6UpdateEi	NPC::Update(int)
 0x003009d1	0x140	NPC.cpp	game	ai	matched	_ZN3NPC9SetTargetEP11LevelObject	NPC::SetTarget(LevelObject*)
 0x00300b11	0x4	Path.cpp	game	world	matched	_ZNK4Path7getSizeEv	Path::getSize() const
 0x00300b15	0x2a	Path.cpp	game	world	matched	_ZNK4Path11getWaypointEiRN3irr4core8vector3dIfEE	Path::getWaypoint(int, irr::core::vector3d<float>&) const

@@ -50,6 +50,10 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .character_run_to_target 0x002f39e0 : { *ai-startup-character.o(.text._ZN9Character11runToTargetEi) }
+    .npc_attack_target 0x002ff5d0 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEv) }
+    .npc_car_under_wheel 0x002fe784 : { *ai-startup-npc.o(.text._ZN3NPC24UpdateCarPosIfUnderWheelEv) }
+    .npc_update 0x002ffe0c : { *ai-startup-npc.o(.text._ZN3NPC6UpdateEi) }
     .physic_get_tri_center 0x0031a4cc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes12GetTriCenterEtt) }
     .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
     .physic_next_random_pos 0x0031cf74 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE) }
