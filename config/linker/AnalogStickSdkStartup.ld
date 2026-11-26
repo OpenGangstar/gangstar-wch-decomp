@@ -9,8 +9,21 @@ __aeabi_atexit = 0x001c494c;
 INCLUDE config/linker/ApplicationEventSections.ld
 __cxa_pure_virtual = 0;
 INCLUDE config/linker/HudElement-sections.ld
+PROVIDE(printf = 0x001c4058);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(sqrtf = 0x001c4184);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(atan2f = 0x001c4718);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
 SECTIONS
 {
+    .stick_touch 0x003268e0 : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick12processTouchEl) }
+    .stick_touch_thunk 0x003268cc : { *sdk-startup-analogstick.o(.text._ZThn8_N11AnalogStick12processTouchEl) }
+    .stick_touch_string 0x004229ec : { *sdk-startup-analogstick.o(.rodata.str1.4) }
     .stick_release_0 0x00326d3c : { *sdk-startup-analogstick.o(.text._ZN11AnalogStick19processTouchReleaseEv) }
     .stick_release_1 0x00326d28 : { *sdk-startup-analogstick.o(.text._ZThn8_N11AnalogStick19processTouchReleaseEv) }
     .analog_stick_delete_thunk 0x003263ac : { *sdk-startup-analogstick.o(.gnu.linkonce.t._ZN11AnalogStickD0Ev) }
