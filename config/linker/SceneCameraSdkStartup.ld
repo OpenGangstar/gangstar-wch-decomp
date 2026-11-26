@@ -8,6 +8,7 @@ INCLUDE config/linker/SceneCameraGS3DProvider.ld
 __aeabi_i2f = 0x001c41e4;
 SECTIONS
 {
+    .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
     .scene_camera_load 0x00334fe8 : { *sdk-startup-scenecamera.o(.text._ZN11SceneCamera4LoadERKN7Structs11SceneCameraE) }
     ASSERT(SIZEOF(.scene_camera_load) == 96, "SceneCamera Load native96 strict extent")
     .scene_factory_cleanup 0x00334ef0 : { *sdk-startup-scenecamera.o(.text.__tcf_0) }
