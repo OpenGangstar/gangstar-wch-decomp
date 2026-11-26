@@ -2187,6 +2187,131 @@ bool Menus::Map::Notify(const MenuWidget* widget, int event)
     return true;
 }
 
+struct CarRentalVehicleOffer {
+    const char* name;
+    int textId;
+    int price;
+    int metatype;
+};
+struct CarRentalSpawnPoint {
+    void* vtable;
+    irr::core::vector3d<float> position;
+    float rotation[4];
+    unsigned char unknown32[6];
+    unsigned char spawnGroup;
+};
+struct CarRentalOctTreeEntry {
+    int unknown0;
+    int unknown4;
+    CarRentalSpawnPoint* point;
+};
+struct CarRentalOctTreeList {
+    CarRentalOctTreeEntry** data;
+    unsigned int allocated;
+    unsigned int used;
+};
+struct CarRentalOctTree {
+    int unknown0;
+    CarRentalOctTreeList* list;
+};
+struct CarRentalPlayerFlags {
+    unsigned char unknown0[240];
+    unsigned int flags;
+};
+struct CarRentalPhysics {
+    int unknown0;
+    int unknown4;
+    const void* info;
+};
+extern "C" {
+LevelObject* _ZN17GameObjectManager28CreateGameObjectFromMetatypeEi(void* manager, int metatype);
+extern void* _ZN17GameObjectManager5s_gomE;
+bool _ZNK10SpawnPoint17hasCloseNeighborsEv(const CarRentalSpawnPoint* point);
+extern const int** _ZN10SpawnPoint19s_metatypesSpawnCstE;
+void _ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi(PhysicAttributes* physics, const void* info, int slot);
+float _ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib(PhysicAttributes* physics,
+    const irr::core::vector3d<float>& position, int flag, bool detailed);
+void _ZN7Vehicle4rentEb(LevelObject* vehicle, bool rented);
+}
+
+void Menus::ServiceCarRental::Update()
+{
+    MenuState::Update();
+    if (selectedVehicle >= 0) {
+        MenuManager* manager = MenuManager::getInstance();
+        Confirm* confirmation = static_cast<Confirm*>(manager->getState(confirmMenuName));
+        if (confirmation->Confirmed()) {
+            PlayerTest* player = PlayerTest::GetPlayer();
+            int price = static_cast<int>(_ZN11MenuManager15s_CarRentalDataE[selectedVehicle]->price * scale);
+            if (player->isRichAsCroesus() || price <= player->cash) {
+                LevelObject* vehicle = _ZN17GameObjectManager28CreateGameObjectFromMetatypeEi(_ZN17GameObjectManager5s_gomE,
+                    reinterpret_cast<CarRentalVehicleOffer*>(_ZN11MenuManager15s_CarRentalDataE[selectedVehicle])->metatype);
+                CarRentalOctTreeList* list = reinterpret_cast<CarRentalOctTree*>(GS3DStuff::getSceneOctTree())->list;
+                irr::core::vector3d<float> position = player->GetPosition();
+                // Empty then-branch: this shape places the vehicle-position block after the
+                // loop in instruction order, which gives retail's reload registers.
+                if (!(reinterpret_cast<CarRentalPlayerFlags*>(player)->flags & 0x400u)
+                    || !static_cast<Character*>(player)->getVehicle() || !player->getVehicle()) {
+                } else
+                    position = reinterpret_cast<LevelObject*>(player->getVehicle())->GetPosition();
+                CarRentalSpawnPoint* best = 0;
+                float bestDistance = 0.0f;
+                for (unsigned int i = 0; i < list->used; ++i) {
+                    CarRentalSpawnPoint* point = list->data[i]->point;
+                    if (!point)
+                        continue;
+                    if (*_ZN10SpawnPoint19s_metatypesSpawnCstE[point->spawnGroup] != 11)
+                        continue;
+                    float dx = position.X - point->position.X;
+                    float dy = position.Y - point->position.Y;
+                    float dz = position.Z - point->position.Z;
+                    float distance = dx * dx + dy * dy + dz * dz;
+                    if (best && !(distance < bestDistance))
+                        continue;
+                    if (_ZNK10SpawnPoint17hasCloseNeighborsEv(point))
+                        continue;
+                    best = point;
+                    bestDistance = distance;
+                }
+                irr::core::vector3d<float> location = best->position;
+                vehicle->enable();
+                _ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi(vehicle->getPhysicAttributes(),
+                    reinterpret_cast<CarRentalPhysics*>(static_cast<Character*>(player)->getPhysicAttributes())->info, 0);
+                location.Z = _ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib(
+                    vehicle->getPhysicAttributes(), location, 0, false);
+                vehicle->SetRotation(reinterpret_cast<const irr::core::quaternion&>(best->rotation));
+                vehicle->SetPosition(location);
+                vehicle->showHighlight(1);
+                player->setLastUsedVehicle(reinterpret_cast<Vehicle*>(vehicle));
+                _ZN7Vehicle4rentEb(vehicle, true);
+                vehicle->OnSpawn();
+                vehicle->Stop();
+                player->subCash(price);
+                {
+                    const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+                    MenuWidget* widget;
+                    if (table.count <= 16)
+                        widget = 0;
+                    else
+                        widget = static_cast<MenuWidget*>(table.widgets[16]);
+                    widget->UpdateLocalization();
+                }
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(147, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                MenuManager::getInstance()->popTo(mapName, false, true);
+            }
+        } else {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(219, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+        selectedVehicle = -1;
+    }
+}
+
 void Menus::ServiceWeaponShop::Update()
 {
     MenuState::Update();
