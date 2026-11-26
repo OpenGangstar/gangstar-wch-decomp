@@ -12643,7 +12643,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034b33d	0x12	StringManager.cpp	stlport	-	matched	_ZN9stlp_priv12_Vector_baseIPN7Structs9TextStyleESaIS3_EED1Ev	stlp_priv::_Vector_base<Structs::TextStyle*, std::allocator<Structs::TextStyle*> >::~_Vector_base()
 0x0034b351	0x24	StringManager.cpp	game	persistence	matched	_Z6strRevPc	strRev(char*)
 0x0034b375	0x50	StringManager.cpp	game	persistence	matched	_Z7strchrsPcPKc	strchrs(char*, char const*)
-0x0034b3c5	0x1e0	StringManager.cpp	game	persistence	pending	_ZNK13StringManager12formatAmountEibb	StringManager::formatAmount(int, bool, bool) const
+0x0034b3c5	0x1e0	StringManager.cpp	game	persistence	matched	_ZNK13StringManager12formatAmountEibb	StringManager::formatAmount(int, bool, bool) const
 0x0034b5a5	0x72	StringManager.cpp	game	persistence	matched	_ZN13StringManager15unloadPackSheetEjj	StringManager::unloadPackSheet(unsigned int, unsigned int)
 0x0034b619	0x2e	StringManager.cpp	game	persistence	matched	_ZN13StringManager10unloadPackEj	StringManager::unloadPack(unsigned int)
 0x0034b649	0x68	StringManager.cpp	game	persistence	matched	_ZN7Structs9TextStyle4ReadER10DataStream	Structs::TextStyle::Read(DataStream&)
@@ -12671,7 +12671,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0034c0a1	0x24	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManager15_MonitoredFilesD1Ev	DataReloaderManager::_MonitoredFiles::~_MonitoredFiles()
 0x0034c0c5	0x54	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerD1Ev	DataReloaderManager::~DataReloaderManager()
 0x0034c0c5	0x54	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerD2Ev	DataReloaderManager::~DataReloaderManager()
-0x0034c119	0xf8	DataReloaderManager.cpp	game	world	pending	_ZNK19DataReloaderManager10checkFilesEv	DataReloaderManager::checkFiles() const
+0x0034c119	0xf8	DataReloaderManager.cpp	game	world	matched	_ZNK19DataReloaderManager10checkFilesEv	DataReloaderManager::checkFiles() const
 0x0034c211	0x20	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerC2Ev	DataReloaderManager::DataReloaderManager()
 0x0034c211	0x20	DataReloaderManager.cpp	game	world	matched	_ZN19DataReloaderManagerC1Ev	DataReloaderManager::DataReloaderManager()
 0x0034c231	0x6c	DataReloaderManager.cpp	game	core	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
