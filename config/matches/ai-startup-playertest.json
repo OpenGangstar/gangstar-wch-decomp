@@ -139,7 +139,8 @@
         "_ZN10PlayerTest6moveToERK7Vehicle",
         "_ZN10PlayerTest6attackEb",
         "_ZN10PlayerTest20updateCarInteractionEv",
-        "_ZN10PlayerTest15onTargetReachedEv"
+        "_ZN10PlayerTest15onTargetReachedEv",
+        "_ZN10PlayerTest7RespawnEv"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -403,6 +404,8 @@
         "_ZN7Vehicle22getLeftThrownAnimationEv",
         "_ZNK7Vehicle11getExitAnimEv",
         "_ZNK7Vehicle12getEnterAnimEv",
-        "_ZN6Weapon4hideEv"
+        "_ZN6Weapon4hideEv",
+        "_ZN17GameObjectManager13getObjectListEi",
+        "_ZNK14GameObjectList8GetFirstEv"
     ]
 }

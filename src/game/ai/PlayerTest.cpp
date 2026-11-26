@@ -1179,6 +1179,65 @@ void PlayerTest::teleportTo(const LevelObject* destination)
     physics->Init(material,triangle,position->GetPosition());
 }
 
+#include "../meta/Factions.h"
+void PlayerTest::Respawn()
+{
+    Application* app=Application::GetInstance();
+    CControlManager* controls=app->GetControlManager();
+    app->GetEventManager()->raise(EvPlayer(11));
+    // Both arms do the same stores: the if/else join splits cse1 so the zero
+    // gets its own register, and flow2 cross-jumping later removes the branch
+    // without code, as retail's bytes require.
+    if (health > 0) {
+        flags240=0;
+        unknown424=false;
+    } else {
+        flags240=0;
+        unknown424=false;
+    }
+    _SetTarget(0,false);
+    WantedLevelManager* wanted=WantedLevelManager::getInstance();
+    wanted->unknown8=0;
+    wanted->_processWantedLevel();
+    SavePositionInterface* position=static_cast<SavePositionInterface*>(this);
+    health=position->getMaxHealth();
+    if (vehicle) {
+        unknown324=0;
+        controls->exitCar(true);
+        static_cast<SavePrimaryInterface*>(this)->setVehicle(0);
+        unknown316=0;
+        unknown372=0;
+        ResetPlayerTest(false);
+        SoundManager* sound=SoundManager::getInstance();
+        int ambient=PlayerTest::GetPlayer()->getAmbientSound();
+        sound->unknown140=true;
+        sound->playEx(ambient,0,true,1.0f,0,true,1.0f,0);
+        sound->unknown140=false;
+    }
+    LevelObject* object=GameObjectManager::s_gom->getObjectList(2)->GetFirst();
+    float nearestDistance=-1.0f;
+    LevelObject* nearest=0;
+    for (;object;object=object->next) {
+        if (object->GetMetatype()==125) {
+            float distance=position->GetPosition().getDistanceFromSQ(object->GetPosition());
+            if (!nearest || distance<nearestDistance) {
+                nearest=object;
+                nearestDistance=distance;
+            }
+        }
+    }
+    if (nearest)
+        teleportTo(nearest);
+    static_cast<SavePrimaryInterface*>(this)->getWeapon()->show();
+    switchWeapon(true);
+    controls->unlock();
+    clearPhotoTargets();
+    Factions::init();
+    position->setAnimation(-1,1.0f,false,false,false);
+    position->setAnimation(165,1.0f,false,false,false);
+    nextAnimation=-1;
+}
+
 #include "../ui/Message.h"
 #include "../core/Geometry.h"
 extern "C" float acosf(float);
