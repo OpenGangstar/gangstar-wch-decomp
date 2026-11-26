@@ -29,6 +29,7 @@
 #include "../ui/ToggleButton.h"
 #include "../core/LocalStartupStorage.h"
 #include "../core/LocalStartupText.h"
+#include "../ui/VirtualButtonEvent.h"
 
 void operator delete(void*) throw();
 extern "C" {
@@ -53,6 +54,7 @@ extern void* __dso_handle;
 extern "C" {
 int __aeabi_atexit(void*, void (*)(void*), void*);
 void* _ZN3irr4core6stringIcNS0_12irrAllocatorIcEEEaSIcEERS4_PKT_(void*, const char*) __attribute__((weak));
+bool _ZN9Character6isDownEv(void*) __attribute__((weak));
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
@@ -105,6 +107,50 @@ CControlManager::~CControlManager()
     drivingHandler = 0;
     delete sniperHandler;
     sniperHandler = 0;
+}
+
+void CControlManager::update()
+{
+    if (ScriptManager::getInstance()->isInCinematic())
+        return;
+    PlayerTest* player = PlayerTest::GetPlayer();
+    if (activeHandler == sniperHandler) {
+        Character* character = reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*player));
+        if (static_cast<int>(player->flags240 << 17) < 0 || (player->flags240 & 0x2000)
+            || character->getHealth() <= 0 || _ZN9Character6isDownEv(character))
+            exitSniping(!ScriptManager::getInstance()->isInCinematic());
+    }
+    unsigned int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    if (activeHandler != onFootHandler)
+        return;
+    if (!player->targetLocked && player->combatMode && now >= combatTimestamp + 5000) {
+        exitCombat();
+        reinterpret_cast<Character*>(&static_cast<SavePositionInterface&>(*player))->goFromCombatToIdle();
+    }
+    int weapon = player->getWeapon()->getWeaponType();
+    if (weapon == 0) {
+        unknown45 = now <= unknown28[2] + 500;
+        if (static_cast<int>(player->flags240 << 3) < 0)
+            return;
+        if (!unknown28[3]) {
+            // One-byte store of true. Written as a memset so the unfolded
+            // builtin call reaches branch prediction (call heuristic) like
+            // retail; it still expands to a single strb.
+            __builtin_memset(&static_cast<COnFootControlHandler*>(activeHandler)->unknown12, true, 1);
+            return;
+        }
+        if (unknown44) {
+            Application::GetInstance()->GetEventManager()->raise(EvVirtualButton(EvVirtualButton::Released, static_cast<EvVButton::ButtonType::Type>(0)));
+            return;
+        }
+        unknown44 = true;
+        Application::GetInstance()->GetEventManager()->raise(EvVirtualButton(EvVirtualButton::Pressed, static_cast<EvVButton::ButtonType::Type>(0)));
+    } else if (unknown28[0]) {
+        if (now >= unknown28[0] + 250 || unknown46) {
+            static_cast<COnFootControlHandler*>(activeHandler)->unknown12 = true;
+            unknown28[0] = 0;
+        }
+    }
 }
 
 void CControlManager::setCameraProxy(GS3DStuff* proxy)

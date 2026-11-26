@@ -28,6 +28,10 @@ SECTIONS
     .control_manager_exit_sniping 0x0032d45c : { *(.text._ZN15CControlManager11exitSnipingEb) }
     .control_manager_enter_combat 0x0032d4cc : { *(.text._ZN15CControlManager11enterCombatEv) }
     .control_manager_exit_combat 0x0032d1ec : { *(.text._ZN15CControlManager10exitCombatEv) }
+    .control_manager_update 0x0032d72c : { *(.text._ZN15CControlManager6updateEv) }
+    .control_manager_button_event_delete 0x0032c628 : { *(.gnu.linkonce.t._ZN15EvVirtualButtonD0Ev) }
+    .control_manager_button_event_base 0x0032c654 : { *(.gnu.linkonce.t._ZN15EvVirtualButtonD1Ev) }
+    .control_manager_button_event_vtable 0x004ac930 : { *(.gnu.linkonce.d.rel.ro._ZTV15EvVirtualButton) }
     .control_manager_lock 0x0032d1bc : { *(.text._ZN15CControlManager4lockEv) }
     .control_manager_is_locked 0x0032d1e8 : { *(.text._ZNK15CControlManager8isLockedEv) }
     .control_handler_delete 0x0032e468 : { *(.gnu.linkonce.t._ZN15IControlHandlerD0Ev) }
