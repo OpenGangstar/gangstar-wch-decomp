@@ -19,6 +19,7 @@ __stack_chk_fail = 0x001c42e0;
 SECTIONS
 {
     .scene_node_reclaim_garbage 0x003218d8 : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager14reclaimGarbageEv) }
+    .scene_node_drop 0x003219cc : { *sdk-startup-scenenodemanager.o(.text._ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE) }
     .scene_node_report 0x00321720 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager6reportEv) }
     .scene_node_report_strings 0x00421074 : { *sdk-startup-scenenodemanager.o(.rodata.str1.4) }
  .scene_pool_id 0x00321444 : { *sdk-startup-scenenodemanager.o(.text._ZNK16SceneNodeManager9getPoolIDEi) }

@@ -121,6 +121,50 @@ SceneNodeManager::Pool::Pool(const char* poolName, irr::collada::CColladaFactory
     strcpy(name, poolName);
 }
 
+// The found block is placed first in the source and the search is entered
+// by goto, which gives reload's block walk retail's register rotation. The
+// node accesses use a second index j that always equals i; reassigning it in
+// the latch makes ivopts build its offset IVs from size - 2 as in retail.
+bool SceneNodeManager::drop(int poolID, const irr::scene::ISceneNode* node)
+{
+    Pool* pool;
+    int size;
+    int i;
+    int j;
+    if (!node || poolID < 0 || static_cast<unsigned int>(poolID) >= pools.size())
+        return false;
+    goto start;
+found:
+    pool->nodes[j]->available = true;
+    pool->lastResizeTime = pool->nodes[j]->unknown12 =
+        Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    if (size - pool->activeCount != i) {
+        Node* entry = pool->nodes[j];
+        pool->nodes[j] = pool->nodes[size - pool->activeCount];
+        pool->nodes[size - pool->activeCount] = entry;
+    }
+    --pool->activeCount;
+    return true;
+start:
+    pool = pools[poolID];
+    size = pool->nodes.size();
+    if (!pool->activeCount)
+        return false;
+    {
+    const int last = size - 1;
+    const int stop = size - pool->activeCount - 1;
+    i = last;
+    j = i;
+    // j == i on every iteration (k runs one behind i).
+    for (int k = size - 2; ; --i, j = k--) {
+        if (i <= stop)
+            return false;
+        if (pool->nodes[j]->sceneNode == node)
+            goto found;
+    }
+    }
+}
+
 SceneNodeManager::Pool::~Pool()
 {
     delete[] name;
