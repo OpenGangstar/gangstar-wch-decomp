@@ -11,6 +11,7 @@ __stack_chk_fail = 0x001c42e0;
 strcmp = 0x001c4658;
 SECTIONS
 {
+    .asprite_paint_module 0x00349e14 : { *asprite-startup.o(.text._ZNK7ASprite11PaintModuleEiiii) }
     .asprite_anim_duration 0x00349d80 : { *asprite-startup.o(.text._ZN7ASprite15GetAnimDurationEi) }
     .asprite_anim_index 0x00349dd4 : { *asprite-startup.o(.text._ZN7ASprite10GetAnimIdxEPKc) }
     .asprite_get_aframe 0x003499dc : { *asprite-startup.o(.text._ZN7ASprite9GetAFrameEii) }

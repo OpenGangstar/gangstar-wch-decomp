@@ -1,3 +1,8 @@
+PROVIDE(__aeabi_d2f = 0x001c4310);
+PROVIDE(__aeabi_f2d = 0x001c48f8);
+PROVIDE(__aeabi_idivmod = 0x001c4934);
+PROVIDE(lrand48 = 0x001c4664);
+PROVIDE(sqrt = 0x001c401c);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-cameramanager/retail-symbols.ld
@@ -28,6 +33,7 @@ _ZN32retail_cameramanager_transitions22scripted_vehicle_transE = 0x00428f58;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .camera_manager_update 0x00332770 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6updateEf) }
     .touchable_vtable 0x004ac418 : { *ai-startup-cameramanager.o(.gnu.linkonce.d.rel.ro._ZTV10ITouchable) }
     .manager_touch_release 0x00333094 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager19processTouchReleaseEv) }
     .manager_touch_release_log 0x00428fac : { *ai-startup-cameramanager.o(.rodata.touchReleaseLogText) }
