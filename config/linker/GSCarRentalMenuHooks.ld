@@ -43,6 +43,7 @@ INCLUDE config/linker/CHudManagerUpdateSections.ld
 INCLUDE config/linker/CHudManagerUpdateText.ld
 SECTIONS
 {
+    /DISCARD/ : { *script-manager-helpers.o(.text._ZN13ScriptManager6updateEi .rodata.updateTutorialState .rodata.updateAchievementState) }
     .state_machine_singleton 0x002d44c4 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN12StateMachine11getInstanceEv) }
     .state_machine_guard 0x004b6904 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZGVZN12StateMachine11getInstanceEvE2sm) }
     .state_machine_instance 0x004b6908 (NOLOAD) : { *script-manager-helpers.o(.gnu.linkonce.b._ZZN12StateMachine11getInstanceEvE2sm) }

@@ -2647,3 +2647,163 @@ bool ScriptManager::checkScreenPress()
     touch->clear();
     return screenPressed;
 }
+
+#include "../meta/Achievements.h"
+#include "../audio/SoundManager.h"
+#include "../combat/Explosion.h"
+#include "../ui/WidgetDialog.h"
+
+extern "C" void _ZN13ScriptManager8setStateENS_5StateE(ScriptManager* manager, int state);
+extern "C" int _ZNK11MenuManager9getTextIdENS_5eTextE(const MenuManager* manager, int slot);
+extern "C" void _ZN11MenuManager15hideDialogArrowEv(MenuManager* manager);
+extern "C" void _ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE(
+    void* state, const AchievementManager::Achievement* achievement);
+extern "C" void* _ZN12StateMachine9pushStateI9GSFailureEEPT_v(StateMachine* machine) __attribute__((weak));
+extern "C" bool _ZN11MenuManager7setTextENS_5eTextEiPi(
+    MenuManager* manager, MenuManager::eText slot, int textId, int* arguments);
+struct MenuWidgetTableView { unsigned char unknown0[420]; MenuWidget** elements; int size; };
+static inline MenuWidget* getMenuWidgetHidden(MenuManager* menu, int index)
+{
+    const MenuWidgetTableView* view = reinterpret_cast<const MenuWidgetTableView*>(menu);
+    MenuWidget* widget;
+    if (index >= view->size)
+        widget = 0;
+    else
+        widget = view->elements[index];
+    return widget;
+}
+
+static const char updateAchievementState[] = "Achievement";
+static const char updateTutorialState[] = "Tutorial";
+
+void ScriptManager::update(int elapsed)
+{
+    if (paused)
+        return;
+
+    MenuManager* menu = MenuManager::getInstance();
+    if (vehicleNameAnimation->animation != -1) {
+        vehicleNameTimer -= elapsed;
+        if (!(vehicleNameTimer > 0 && !isInCinematic() &&
+              // No-code hint: PRED_CALL lowers the fade-test edge to match retail block order.
+              (__builtin_prefetch(&s_fadeIntensity), s_fadeIntensity <= 0))) {
+            _ZN11MenuManager7setTextENS_5eTextEiPi(menu, static_cast<MenuManager::eText>(0), -1, 0);
+            vehicleNameTimer = 0;
+            vehicleNameAnimation->SetAnim(-1);
+        } else if (!vehicleNameAnimation->IsAnimOver()) {
+            vehicleNameAnimation->Update(elapsed);
+        } else if (_ZNK11MenuManager9getTextIdENS_5eTextE(menu, 0) == -1) {
+            Vehicle* vehicle = PlayerTest::GetPlayer()->getVehicle();
+            if (vehicle)
+                _ZN11MenuManager7setTextENS_5eTextEiPi(menu, static_cast<MenuManager::eText>(0),
+                    *reinterpret_cast<const int*>(reinterpret_cast<const char*>(vehicle) + 424), 0);
+        }
+    }
+
+    Application* app = Application::GetInstance();
+    if (isInCinematic()) {
+        bIsInCutscene = true;
+        skipButton->update(0.0);
+        if (app->GetTouchScreen()->getTouchIDInitiatedInRegion(skipButton->getTouchRegion()) == -1)
+            checkScreenPress();
+    }
+
+    if (cinematicState == 1) {
+        cinematicBars->SetAnim(unknown88, 0);
+        if (cinematicBars->IsAnimOver())
+            _ZN13ScriptManager8setStateENS_5StateE(this, 2);
+    } else if (cinematicState == 3) {
+        cinematicBars->SetAnim(unknown84, 0);
+        if (cinematicBars->IsAnimOver())
+            _ZN13ScriptManager8setStateENS_5StateE(this, 0);
+    } else if (cinematicState == 4) {
+        _ZN13ScriptManager8setStateENS_5StateE(this, 5);
+    } else if (cinematicState == 6) {
+        _ZN13ScriptManager8setStateENS_5StateE(this, 0);
+    } else if (cinematicState == 2) {
+        if (cinematicBars->animation != -1 && cinematicBars->animation != unknown88)
+            cinematicBars->SetAnim(unknown88, 0);
+    }
+
+    if (!cinematicBars->IsAnimOver())
+        cinematicBars->Update(elapsed);
+
+    if (!s_failure) {
+        const unsigned int flags = PlayerTest::GetPlayer()->flags240;
+        if (!(flags & 0x4000u))
+            goto checkMissionFailure;
+        if (flags & 0x2000u)
+            goto checkMissionFailure;
+        s_failure |= 5;
+        goto failureDetectionDone;
+
+    checkMissionFailure:
+        if (mission->getState() == 6)
+            s_failure |= 1;
+        else if (static_cast<unsigned char>(PlayerTest::GetPlayer()->unknown424))
+            s_failure |= 2;
+
+    failureDetectionDone:
+
+        if (s_failure) {
+            _ZN13ScriptManager8setStateENS_5StateE(ScriptManager::getInstance(), 0);
+            menu->popAll(false);
+            mission->idle();
+            Explosion::s_cameraShakeTimer = 0.0f;
+            _ZN11MenuManager7setTextENS_5eTextEiPi(menu, static_cast<MenuManager::eText>(2), -1, 0);
+            _ZN11MenuManager15hideDialogArrowEv(menu);
+            cinematicCharacterAnimation->SetAnim(-1);
+            _ZN12StateMachine9pushStateI9GSFailureEEPT_v(StateMachine::getInstance());
+        }
+    } else {
+        rewindRunningScripts();
+        s_failure = 0;
+    }
+
+    if (!s_failure) {
+        mission->update(elapsed);
+        for (int i = 0; i < scriptCount; ++i) {
+            if ((*reinterpret_cast<Script**>((i << 2) + reinterpret_cast<int>(scripts)))->getState() == Script::State2)
+                (*reinterpret_cast<Script**>((i << 2) + reinterpret_cast<int>(scripts)))->execute(elapsed);
+        }
+    }
+
+    AchievementManager* achievements = AchievementManager::s_achievementManager;
+    if (achievements->hasNewCompletedAchievements() && !isInCinematic() && unknown104 <= 0) {
+        const AchievementManager::Achievement* completed = achievements->popCompletedAchievement();
+        MenuWidget* widget = menu->getWidgetByIndex(10);
+        _ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE(menu->getState(updateAchievementState), completed);
+        widget->Show();
+        widget->UpdateLocalization();
+        SoundManager* sound = SoundManager::getInstance();
+        sound->unknown140 = true;
+        sound->playEx(217, 0, false, 1.0f, 0, true, 1.0f, 0);
+        sound->unknown140 = false;
+        unknown104 = 5000;
+        menu->resetWidgetVisibility();
+    }
+    if (unknown104 > 0) {
+        unknown104 -= elapsed;
+        if (unknown104 <= 0 || isInCinematic()) {
+            unknown104 = 0;
+            getMenuWidgetHidden(menu, 10)->Hide(true);
+        }
+    }
+
+    if (unknown78 && menu->getDepth() <= 0 && !isInCinematic() &&
+        (static_cast<Mission*>(getMission())->getState() == 0 ||
+         static_cast<Mission*>(getMission())->getState() == 4) &&
+        vehicleNameTimer <= 0 && !app->GetHudManager()->isAnyMessageDisplayed() &&
+        !PlayerTest::GetPlayer()->flag383 && app->GetHudManager()->isWeaponVisible()) {
+        MenuManager::getInstance()->setTutorialIds(0x3074, 0x3075);
+        MenuManager::getInstance()->push(updateTutorialState, true);
+        app->GetHudManager()->blink(6);
+        PlayerTest::GetPlayer()->flag383 = true;
+    }
+
+    if (introAnimation->animation != -1 && !introAnimation->IsAnimOver())
+        introAnimation->Update(elapsed);
+
+    if (revive && revive->update(elapsed))
+        SafeDelete(revive);
+}
