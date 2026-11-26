@@ -285,6 +285,126 @@ bool Character::isAnimationLastFrame(float advance) const
     return false;
 }
 
+namespace {
+struct CharacterAnimatorView {
+    virtual void slot0();
+    virtual void slot1();
+    virtual void slot2();
+    virtual void slot3();
+    virtual void animateNode(irr::scene::ISceneNode* node, int frame);
+};
+// File-local view of Character's private animation state; offsets follow
+// the Character.h layout (facing 56, root position 68, animation 124..180).
+struct CharacterAnimationView {
+    unsigned char unknown0[16];
+    irr::scene::ISceneNode* sceneNode;
+    unsigned char unknown20[36];
+    b2Vec2 facing;
+    float facingZ;
+    irr::core::vector3d<float> lastRootPosition;
+    unsigned char unknown80[44];
+    int currentAnimation;
+    int animationStartFrame;
+    int animationEndFrame;
+    int animationFrameCount;
+    float animationFrame;
+    float animationSpeed;
+    bool animationLoops;
+    bool animationFlag149;
+    bool animationFlag150;
+    unsigned char unknown151;
+    int animationSpeedMultiplier;
+    float unknown156;
+    float shadowBaseHeight;
+    CharacterAnimatorView* animator;
+    irr::scene::ISceneNode* rootNode;
+    void* skinMesh;
+    irr::scene::ISceneNode* shadowNode;
+    b2Body* collisionBody;
+};
+struct CharacterBodySleepView {
+    unsigned short flags;
+    unsigned char unknown2[138];
+    float sleepTime;
+};
+}
+
+static inline void wakeCharacterBody(b2Body* body)
+{
+    CharacterBodySleepView* view = reinterpret_cast<CharacterBodySleepView*>(body);
+    view->flags &= ~8;
+    view->sleepTime = 0.0f;
+}
+
+static inline b2Vec2 scaleVelocity(const b2Vec2& velocity, float scale)
+{
+    return b2Vec2(velocity.x * scale, velocity.y * scale);
+}
+
+// Character::updateAnimation is not declared in Character.h (a declaration
+// there changes MenuState matches); define it by its mangled name.
+extern "C" bool _ZN9Character15updateAnimationEf(Character* self, float elapsed)
+{
+    CharacterAnimationView* c = reinterpret_cast<CharacterAnimationView*>(self);
+    if (!c->rootNode || c->currentAnimation == -1)
+        return true;
+    const float advance = elapsed * c->animationSpeed;
+    const bool lastFrame = self->isAnimationLastFrame(advance);
+    c->animationFrame += advance;
+    irr::core::vector3d<float> position;
+    irr::core::vector3d<float> delta(0.0f, 0.0f, 0.0f);
+    if (lastFrame) {
+        c->animator->animateNode(c->sceneNode, c->animationStartFrame + c->animationFrameCount - 1);
+        position = c->rootNode->getPosition();
+        delta = (position - c->lastRootPosition) * 0.001f;
+        if (c->animationLoops) {
+            c->animator->animateNode(c->sceneNode, c->animationStartFrame);
+            position = c->rootNode->getPosition();
+            c->lastRootPosition.X = position.X;
+            c->lastRootPosition.Y = position.Y;
+            c->lastRootPosition.Z = position.Z;
+        }
+    }
+    if (!lastFrame || c->animationLoops) {
+        c->animator->animateNode(c->sceneNode,
+            static_cast<int>(c->animationFrame) % c->animationFrameCount + c->animationStartFrame);
+        position = c->rootNode->getPosition();
+        delta += (position - c->lastRootPosition) * 0.001f;
+    }
+    if (advance > 0.0f && c->animationFlag149) {
+        const float time = elapsed * 0.0001f;
+        if (c->animationFlag150) {
+            const float length = delta.getLength();
+            b2Vec2 velocity(length * c->facing.x, length * c->facing.y);
+            velocity = scaleVelocity(velocity, 1.0f / time);
+            b2Body* body = c->collisionBody;
+            if (body) {
+                if (velocity.x != 0.0f || velocity.y != 0.0f) {
+                    wakeCharacterBody(body);
+                    // Re-read the body pointer after waking, as retail reloads it on this path.
+                    body = c->collisionBody;
+                }
+                body->linearVelocity = velocity;
+            }
+        } else {
+            const float scale = 1.0f / time;
+            const b2Vec2 velocity(delta.X * scale, delta.Y * scale);
+            if (c->collisionBody) {
+                if (velocity.x != 0.0f || velocity.y != 0.0f)
+                    wakeCharacterBody(c->collisionBody);
+                c->sceneNode->getAbsoluteTransformation().rotateVect(delta);
+                c->collisionBody->linearVelocity = b2Vec2(delta.X / time, delta.Y / time);
+            }
+        }
+    }
+    c->lastRootPosition.X = position.X;
+    c->lastRootPosition.Y = position.Y;
+    c->lastRootPosition.Z = position.Z;
+    c->unknown156 = c->rootNode->getPosition().Z;
+    c->rootNode->setPosition(irr::core::vector3d<float>(0.0f, 0.0f, 0.0f));
+    return lastFrame;
+}
+
 void Character::setLockTarget(Character*)
 {
 }

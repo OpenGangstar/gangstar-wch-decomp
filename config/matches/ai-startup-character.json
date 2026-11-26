@@ -171,7 +171,8 @@
         "_ZN9Character17positionInVehicleEb",
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
-        "_ZN9Character11runToTargetEi"
+        "_ZN9Character11runToTargetEi",
+        "_ZN9Character15updateAnimationEf"
     ],
     "sections": [
         ".character_init_physic",
@@ -231,7 +232,8 @@
         ".character_switch_move_animation_table",
         ".character_switch_combat_animation",
         ".character_switch_combat_animation_table",
-        ".character_run_to_target"
+        ".character_run_to_target",
+        ".character_update_animation"
     ],
     "dependencies": [
         "ai-startup-physicattributes"

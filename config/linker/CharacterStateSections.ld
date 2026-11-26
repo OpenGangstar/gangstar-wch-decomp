@@ -16,6 +16,7 @@ INCLUDE config/linker/PhysicAttributesResetSections.ld
 lrand48 = 0x001c4664;
 SECTIONS
 {
+    .character_update_animation 0x002f3488 : { *ai-startup-character.o(.text._ZN9Character15updateAnimationEf) }
     .character_switch_combat_animation 0x002f517c : { *ai-startup-character.o(.text._ZN9Character21switchCombatAnimationEv) }
     .character_switch_combat_animation_table 0x0041bddc : { *ai-startup-character.o(.rodata._ZN9Character21switchCombatAnimationEv) }
     .character_die 0x002f2d94 : { *ai-startup-character.o(.text._ZN9Character3dieEb) }
