@@ -150,7 +150,8 @@
         "_ZN8RenderFX11SearchIndex5ClearEv",
         "_ZN8RenderFX11SearchIndex4InitERS_",
         "_ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE",
-        "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE"
+        "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE",
+        "_ZN8RenderFX13PreloadGlyphsEv"
     ],
     "sections": [
         ".renderfx_initialize_warning",
