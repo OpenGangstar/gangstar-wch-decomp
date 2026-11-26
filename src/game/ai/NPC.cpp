@@ -1146,3 +1146,167 @@ extern "C" void _ZN3NPC7_detectEv(NPC* npc)
         }
     }
 }
+// File-local view of NPC+316, the target remembered while attacking a vehicle.
+struct NPCRememberedTargetView { unsigned char unknown0[316]; LevelObject* rememberedTarget; };
+static inline bool isRidingVehicle(unsigned int movementFlags, Character* character)
+{
+    return (movementFlags&0x400u) && character->getVehicle();
+}
+
+// NPC fields used by attackTarget are private; reach them through a layout view.
+// Character members used here are private to Character.
+struct NPCAttackCharacterView {
+    unsigned char pad0[236];
+    unsigned int movementFlags;
+    unsigned char pad240[12];
+    int unknown252;
+    unsigned char pad256[4];
+    LevelObject* target;
+};
+extern "C" void _ZN9Character16turnTowardTargetEf(Character*, float);
+extern "C" bool _ZN9Character14isFacingTargetEP11LevelObject(Character*, LevelObject*);
+struct NPCAttackTargetView {
+    unsigned char pad0[308];
+    Weapon* weapon;
+    unsigned char pad312[4];
+    unsigned int unknown316;
+    unsigned char pad320[20];
+    int unknown340;
+    int unknown344;
+    unsigned char pad348[8];
+    unsigned int flags356;
+    unsigned char pad360[32];
+    int weaponType;
+    int unknown396;
+    int unknown400;
+    int unknown404;
+    int unknown408;
+    unsigned char pad412[12];
+    int faction;
+    unsigned char pad428[4];
+    float unknown432;
+    bool unknown436;
+};
+extern "C" void _ZN3NPC13acquireTargetEv(NPC*);
+extern "C" void _ZN3NPC11equipWeaponEbb(NPC*, bool, bool);
+extern "C" bool _ZN9Character18isCurrentAnimationEi(Character*, int);
+extern "C" int _ZN9Character20getSpecificAnimationEi(Character*, int);
+extern "C" void _ZN9Character11runToTargetEi(Character* self, int distance);
+struct NPCAttackObjectTypeView { unsigned char pad0[36]; unsigned char objectType; };
+extern "C" bool _ZN3NPC12attackTargetEv(NPC* self)
+{
+    NPCAttackCharacterView* c=reinterpret_cast<NPCAttackCharacterView*>(self);
+    NPCAttackTargetView* v=reinterpret_cast<NPCAttackTargetView*>(self);
+    Application* app=Application::GetInstance();
+    EventManager* events=app->GetEventManager();
+    LevelObject* current=c->target;
+    if(!current){
+        _ZN3NPC13acquireTargetEv(self);
+        current=c->target;
+        if(!current){self->goToIdle();events->raise(EvNPC(static_cast<EvNPC::State>(13),self));v->flags356&=~0x40u;return false;}
+    }
+    if(v->faction==2 && LevelObject::s_type[current->getObjectType()]!=8 && current->getHealth()<=25){
+        c->target=0;events->raise(EvNPC(static_cast<EvNPC::State>(12),self));return false;
+    }
+    if(c->target->isDead()){c->target=0;return false;}
+    if((LevelObject::s_type[c->target->getObjectType()]==5 || LevelObject::s_type[c->target->getObjectType()]==8) && _ZN9Character18isCurrentAnimationEi(static_cast<Character*>(c->target),164))return false;
+    // The movement-flag test is a separate check; together with the single
+    // targetType lookup below this keeps native expansion and reload order.
+    if(_ZN9Character18isCurrentAnimationEi(self,164)||_ZN9Character18isCurrentAnimationEi(self,86)||_ZN9Character18isCurrentAnimationEi(self,175))return false;if(c->movementFlags&0x100000u)return false;
+    int targetType=LevelObject::s_type[reinterpret_cast<NPCAttackObjectTypeView*>(c->target)->objectType];
+    // Nested test keeps the goToVehicle exit ahead of the type reload in RTL order.
+    if(targetType==3){ if(v->weapon->getWeaponType()==0){self->goToVehicle(static_cast<Vehicle*>(c->target),true,true,false,true);return false;} }
+    if((LevelObject::s_type[reinterpret_cast<NPCAttackObjectTypeView*>(c->target)->objectType]==5||LevelObject::s_type[reinterpret_cast<NPCAttackObjectTypeView*>(c->target)->objectType]==8) && isRidingVehicle(reinterpret_cast<NPCAttackCharacterView*>(c->target)->movementFlags,static_cast<Character*>(c->target))){
+        if(v->weapon->getWeaponType()==0){self->goToVehicle(static_cast<Character*>(c->target)->getVehicle(),true,true,false,true);return false;}
+        v->unknown316=reinterpret_cast<unsigned int>(c->target);self->SetTarget(static_cast<Character*>(c->target)->getVehicle());
+    }
+    else if(LevelObject::s_type[reinterpret_cast<NPCAttackObjectTypeView*>(c->target)->objectType]==3 && !static_cast<Vehicle*>(c->target)->getDriver()){
+        NPCRememberedTargetView* memory=reinterpret_cast<NPCRememberedTargetView*>(self);
+        if(memory->rememberedTarget){self->SetTarget(memory->rememberedTarget);v->unknown316=0;}else events->raise(EvNPC(static_cast<EvNPC::State>(13),self));
+    }
+    const irr::core::vector3d<float> position=self->GetPosition();
+    const irr::core::vector3d<float> targetPosition=c->target->GetPosition();
+    const float distance=position.getDistanceFrom(targetPosition);
+    WeaponManager* weapons=app->GetWeaponManager();
+    if(v->weapon->getWeaponType()==0 && v->weaponType!=0 && distance>weapons->getWeaponInList(0,static_cast<PlayerTest::eContext>(-1))->getRange() && !(v->flags356&0x80u)){
+        _ZN3NPC11equipWeaponEbb(self,false,false);self->goToCombatIdle();
+    }
+    if(v->weapon->getWeaponType()==8){
+        _ZN9Character16turnTowardTargetEf(self,v->unknown432);
+        unsigned int now=app->GetDevice()->getTimer()->getRealTime();
+        // Contrived prediction form: the facing test compares against a non-zero
+        // constant through a one-field aggregate and the no-code prefetch marks
+        // the deadline test as guarded; both only steer branch prediction.
+        struct { unsigned int k; } facing={static_cast<unsigned int>(_ZN9Character14isFacingTargetEP11LevelObject(self,c->target))+1u};
+        if(facing.k==1u)return false;
+        __builtin_prefetch(self);
+        if(!(now>static_cast<unsigned int>(v->unknown340+v->unknown344)))return false;
+        v->unknown432=5.0f;
+        if(__builtin_expect(distance>=v->weapon->getRange()*40,1) && distance<=v->weapon->getRange()*60)c->unknown252=20;
+        else if(distance>v->weapon->getRange()*40)c->unknown252=13;
+        else if(distance<v->weapon->getRange()*60)c->unknown252=25;
+        else c->unknown252=0;
+        bool attacked=!(v->flags356&0x800000u);
+        // Contrived prediction form: the guard is compared against a non-zero
+        // constant through a one-field aggregate, so the branch predictor sees an
+        // equality test; later passes fold it back to the attacked test.
+        struct { unsigned int k; } guard={static_cast<unsigned int>(attacked)+1u}; if(guard.k==2u)attacked=self->attack();
+        v->unknown340=now;v->unknown344=lrand48()%1000+1500;return attacked;
+    }
+    if(distance>v->weapon->getRange()){
+        if(!self->isOutsideSearchRadius())_ZN9Character11runToTargetEi(self,0);
+        v->unknown436=true;c->unknown252=0;return false;
+    }
+    if(v->weapon->getWeaponType()!=0 && distance<=weapons->getWeaponInList(0,static_cast<PlayerTest::eContext>(-1))->getRange()){
+        _ZN3NPC11equipWeaponEbb(self,true,false);self->goToCombatIdle();
+    }
+    v->weapon->getWeaponType();
+    if(v->weapon->getWeaponType()==0){v->unknown396=0;v->unknown400=0;c->unknown252=16;}
+    else if(distance>=static_cast<float>(v->weapon->getRange())*0.4f && distance<=static_cast<float>(v->weapon->getRange())*0.6f){
+        v->unknown396=0;v->unknown400=lrand48()%5;if(v->weapon->getWeaponType()!=8)c->unknown252=16;else c->unknown252=20;
+    }
+    bool attacked=false;
+    if(v->flags356&0x800000u){v->unknown396=0;v->unknown400=1;attacked=true;}
+    if(v->unknown396<=v->unknown400){
+        // The idle exit is placed ahead of the attack checks; the checks fall
+        // through into the attack body.
+        if(0){
+        idle:
+            self->goToCombatIdle();
+            return attacked;
+        }
+        if(!(c->movementFlags&0x4000000u))goto idle;
+        if(_ZN9Character18isCurrentAnimationEi(self,_ZN9Character20getSpecificAnimationEi(self,188)))goto idle;
+        if(_ZN9Character18isCurrentAnimationEi(self,_ZN9Character20getSpecificAnimationEi(self,202)))goto idle;
+        {
+            _ZN9Character16turnTowardTargetEf(self,v->unknown432);
+            unsigned int now=app->GetDevice()->getTimer()->getRealTime();
+            // Facing flag join: the timer-deadline test is threaded out of line,
+            // which keeps native reload register order for the 344 offset.
+            bool facing=false; if(_ZN9Character14isFacingTargetEP11LevelObject(self,c->target))facing=true;
+            if(!facing)return attacked;
+            if(now>static_cast<unsigned int>(v->unknown340+v->unknown344)){
+                v->unknown432=5.0f;
+                if(!(v->flags356&0x800000u))attacked=self->attack();
+                v->unknown340=now;++v->unknown396;
+                if(v->weapon->getWeaponType()==0){v->unknown344=lrand48()%(v->unknown408-v->unknown404)+v->unknown404;return attacked;}
+                else{v->unknown344=lrand48()%1000+1500;return attacked;}
+            }
+        }
+        return attacked;
+    }
+    if(c->movementFlags&0x10000000u){if(!(c->movementFlags&0x20000000u))return attacked;}
+    if(distance>static_cast<float>(v->weapon->getRange())*0.4f){
+        if(!self->isOutsideSearchRadius())_ZN9Character11runToTargetEi(self,0);
+        if(v->weapon->getWeaponType()==8)c->unknown252=13;else c->unknown252=0;
+        if(lrand48()%1000>990){v->unknown396=0;v->unknown400=1;return attacked;}
+        return attacked;
+    }
+    if(distance<static_cast<float>(v->weapon->getRange())*0.6f){
+        if(!self->isOutsideSearchRadius()){v->weapon->getWeaponType();_ZN9Character11runToTargetEi(self,static_cast<int>(static_cast<float>(v->weapon->getRange())*0.5f));}
+        v->unknown432=10.0f;
+        if(lrand48()%1000>990){v->unknown396=0;v->unknown400=1;}
+        if(v->weapon->getWeaponType()==8){c->unknown252=25;return attacked;}else{c->unknown252=100;return attacked;}
+    }
+    return attacked;
+}
