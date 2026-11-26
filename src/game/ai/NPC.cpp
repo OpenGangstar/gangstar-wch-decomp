@@ -938,3 +938,82 @@ bool NPC::isHostileTo(LevelObject* object)
     }
     return false;
 }
+
+
+static inline bool isPlayerInVehicle(PlayerTest* player)
+{
+    return (player->flags240 & 0x400u) && static_cast<Character&>(*player).getVehicle();
+}
+
+// NPC::SetTarget is declared in NPC.h; define it by mangled name so the
+// shared header is unchanged. Character fields are reached through one view and
+// the NPC flags word through another, so the target store and the flags load are
+// not disambiguated (retail keeps the store ahead of the load).
+struct SetTargetCharacterView {
+    unsigned char pad0[236];
+    unsigned int movementFlags;
+    unsigned char pad240[20];
+    LevelObject* target;
+};
+struct SetTargetNPCView {
+    unsigned char pad0[356];
+    unsigned int flags356;
+};
+
+// The target store address is formed as self + (offset of flags356 in a view of
+// object - 356). The value is self; the form materialises the 356 constant before
+// the store, which gives retail's global register allocation (offset pseudo after
+// the flags pseudo). It forms an address from a possibly null object without
+// dereferencing it.
+extern "C" void _ZN3NPC9SetTargetEP11LevelObject(NPC* self, LevelObject* object)
+{
+    SetTargetCharacterView* c = reinterpret_cast<SetTargetCharacterView*>(self);
+    SetTargetNPCView* v = reinterpret_cast<SetTargetNPCView*>(self);
+    int soundId;
+    if (self->isCop() && !((c->movementFlags & 0x400u) && static_cast<Character*>(self)->getVehicle())
+        && !c->target && object) {
+        switch (lrand48() % 5) {
+        case 2: goto case2;
+        case 4: goto case4;
+        case 0: goto case0;
+        default: goto store;
+        }
+    play:
+        {
+            SoundManager* sound = SoundManager::getInstance();
+            sound->unknown140 = true;
+            sound->playEx(soundId, 0, false, 1.0f, 0, true, 1.0f, 0);
+            sound->unknown140 = false;
+        }
+    }
+store:
+    {
+        SetTargetNPCView* w = reinterpret_cast<SetTargetNPCView*>(object);
+        int d = reinterpret_cast<char*>(&w->flags356) - reinterpret_cast<char*>(object);
+        reinterpret_cast<SetTargetCharacterView*>(reinterpret_cast<char*>(self) + (d - 356))->target
+            = object;
+    }
+    if (v->flags356 & 0x2800u) {
+        if (!object) {
+            v->flags356 &= ~0x2800u;
+            return;
+        }
+        PlayerTest* player = PlayerTest::GetPlayer();
+        if ((player && object == static_cast<LevelObject*>(player)
+             && !isPlayerInVehicle(PlayerTest::GetPlayer()))
+            || (LevelObject::s_type[object->getObjectType()] == 5
+                && !((reinterpret_cast<SetTargetCharacterView*>(object)->movementFlags & 0x400u)
+                     && static_cast<Character*>(object)->getVehicle())))
+            v->flags356 &= ~0x2800u;
+    }
+    return;
+case4:
+    soundId = 64;
+    goto play;
+case0:
+    soundId = 97;
+    goto play;
+case2:
+    soundId = 79;
+    goto play;
+}

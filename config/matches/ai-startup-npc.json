@@ -117,7 +117,8 @@
         "_ZN9Character20getSpecificAnimationEi",
         "_ZN3NPC6freezeEv",
         "_ZN3NPC16triggerCombatSFXEi",
-        "_ZN3NPC11isHostileToEP11LevelObject"
+        "_ZN3NPC11isHostileToEP11LevelObject",
+        "_ZN3NPC9SetTargetEP11LevelObject"
     ],
     "sections": [
         ".npc_is_under_car",

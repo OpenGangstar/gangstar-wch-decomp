@@ -289,6 +289,149 @@ bool SaveGame::LoadAndApply(const char* name)
     return result;
 }
 
+extern "C" AchievementManager* const _ZN18AchievementManager20s_achievementManagerE;
+namespace {
+struct AchievementFlags {
+    unsigned int unlocked : 1;
+    unsigned int completed : 1;
+    unsigned int unknown2 : 30;
+};
+}
+bool SaveGame::SampleAndSave(const char* name)
+{
+    if (!GSLoading::isGameLoaded()) return false;
+    FileStream file(name, 32);
+    if (!file.IsValid()) return false;
+    DataStream stream(file, DataStream::LittleEndian);
+    SetDataStream(&stream);
+    WeaponManager* weapons = Application::GetInstance()->GetWeaponManager();
+    AchievementManager* achievements = _ZN18AchievementManager20s_achievementManagerE;
+
+    BlockInt version;
+    version.id = -1;
+    version.value = 0x30500;
+    WriteBlock(version);
+
+    BlockIntPair scriptBlock;
+    scriptBlock.id = 15;
+    for (int i = 0; i < ScriptManager::getInstance()->scriptCount; ++i) {
+        Script* script = ScriptManager::getInstance()->findScript(i);
+        if (script && !script->getParent() && script->getState() != Script::State0) {
+            scriptBlock.first = i;
+            scriptBlock.second = script->context;
+            WriteBlock(scriptBlock);
+        }
+    }
+
+    BlockInt cash;
+    cash.id = 1;
+    cash.value = PlayerTest::GetPlayer()->cash;
+    WriteBlock(cash);
+
+    BlockAmmo ammo;
+    ammo.id = 3;
+    BlockWeapon weaponBlock;
+    weaponBlock.id = 2;
+    for (int c = 0; c < 2; ++c) {
+        PlayerTest::eContext context = static_cast<PlayerTest::eContext>(c);
+        for (int type = 0; type < 7; ++type) {
+            ammo.type = type;
+            ammo.context = context;
+            ammo.count = weapons->getAmmo(type, context);
+            WriteBlock(ammo);
+        }
+        for (int id = 0; id < 10; ++id) {
+            Weapon* weapon = weapons->getWeaponInList(id, context);
+            weaponBlock.locked = weapon->isLocked();
+            weaponBlock.weaponId = id;
+            weaponBlock.context = context;
+            weaponBlock.clip = weapon->getClip();
+            weaponBlock.clipSize = weapon->getClipSize();
+            WriteBlock(weaponBlock);
+        }
+        BlockIntPair contextValue;
+        contextValue.id = 17;
+        contextValue.first = context;
+        contextValue.second = PlayerTest::GetPlayer()->contextValues[c];
+        WriteBlock(contextValue);
+    }
+
+    BlockV3D position;
+    position.id = 4;
+    irr::core::vector3d<float> value = PlayerTest::GetPlayer()->GetPosition();
+    position.x = value.X;
+    position.y = value.Y;
+    position.z = value.Z;
+    WriteBlock(position);
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) SampleObject(object);
+    for (LevelObject* object = GameObjectManager::s_gom->GetFirst(1); object; object = object->next) SampleObject(object);
+
+    BlockInt contact;
+    contact.id = 6;
+    contact.value = Checkpoint::s_bTutoCallContact;
+    WriteBlock(contact);
+    BlockInt wanted;
+    wanted.id = 7;
+    wanted.value = WantedLevelManager::s_bTutoWantedLevel;
+    WriteBlock(wanted);
+
+    BlockIntPair stat;
+    stat.id = 8;
+    int statCount = AchievementManager::s_statCount;
+    for (int i = 0; i < statCount; ++i) {
+        stat.first = i;
+        stat.second = AchievementManager::s_stats[i].getValue();
+        WriteBlock(stat);
+    }
+
+    BlockInt cutscene;
+    cutscene.id = 9;
+    cutscene.value = GSFailure::s_bCutsceneDie;
+    WriteBlock(cutscene);
+    cutscene.id = 10;
+    cutscene.value = GSFailure::s_bCutsceneBusted;
+    WriteBlock(cutscene);
+    cutscene.id = 11;
+    cutscene.value = GSFailure::s_bCutsceneMissionFailed;
+    WriteBlock(cutscene);
+
+    BlockInt context;
+    context.id = 12;
+    context.value = PlayerTest::GetPlayer()->context;
+    WriteBlock(context);
+    BlockInt limitedWeapon;
+    limitedWeapon.id = 13;
+    limitedWeapon.value = weapons->getWeaponLimitedTo(PlayerTest::AnyContext);
+    WriteBlock(limitedWeapon);
+    BlockInt playerFlag;
+    playerFlag.id = 14;
+    playerFlag.value = PlayerTest::GetPlayer()->flag383;
+    WriteBlock(playerFlag);
+
+    BlockInt achievement;
+    achievement.id = 16;
+    int achievementCount = AchievementManager::s_achievementCount;
+    for (int i = 0; i < achievementCount; ++i) {
+        unsigned int completed = reinterpret_cast<const AchievementFlags&>(achievements->getAchievementFromID(i)->flags).completed;
+        if (completed) {
+            achievement.value = i;
+            WriteBlock(achievement);
+        }
+    }
+
+    BlockInt camera;
+    camera.id = 18;
+    camera.value = CControlManager::s_cameraTutorial;
+    WriteBlock(camera);
+    BlockInt sniper;
+    sniper.id = 19;
+    sniper.value = CControlManager::s_sniperTutorial;
+    WriteBlock(sniper);
+    SetDataStream(0);
+    file.Close();
+    return true;
+}
+
 void operator delete(void*) throw();
 extern "C" {
 static void __tcf_4() __attribute__((used));
