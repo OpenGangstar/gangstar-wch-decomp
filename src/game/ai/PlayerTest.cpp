@@ -1060,6 +1060,47 @@ bool PlayerTest::snipe(Weapon* weapon)
     app->GetEventManager()->raise(EvPlayer(2));
     return true;
 }
+extern "C" bool _ZN9Character6isDownEv(Character*) __attribute__((weak));
+static inline bool attackHasFlags(unsigned int flags, unsigned int mask)
+{
+    return (flags & mask) == mask;
+}
+static inline bool attackAimed(PlayerTest* self)
+{
+    if (!self->targetLocked)
+        return true;
+    return self->isFacingTarget();
+}
+bool PlayerTest::attack(bool pressed)
+{
+    float speed = pressed ? 2.0f : 1.0f;
+    Weapon* weapon = Application::GetInstance()->GetWeaponManager()->getCurrentWeapon();
+    if (weapon->getWeaponType() == 8 || weapon->getWeaponType() == 9) {
+        if (weapon->isReady(false) && CameraManager::getInstance()->getMode() == 4) {
+            if (weapon->getWeaponType() == 8)
+                return snipe(weapon);
+            if (weapon->getWeaponType() == 9)
+                return photo(weapon);
+        }
+        return false;
+    }
+    acquireTarget();
+    if (weapon->isGun() || weapon->isProjectile()) {
+        if (attackHasFlags(flags240, 0x4000000) || pressed) {
+            if (attackAimed(this))
+                return shoot(speed, pressed);
+        } else
+            ready(speed);
+        return false;
+    }
+    if (target && (LevelObject::s_type[target->getObjectType()] == 5 || LevelObject::s_type[target->getObjectType()] == 8)
+        && _ZN9Character6isDownEv(static_cast<Character*>(target))
+        && isTargetInRange(weapon->getRange() * 2, weapon->getCone()))
+        return kick();
+    if (pressed)
+        goToIdle();
+    return punch();
+}
 
 extern "C" long lrand48();
 namespace {

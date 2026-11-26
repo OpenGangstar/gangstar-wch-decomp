@@ -136,7 +136,8 @@
         "_ZN10PlayerTest13switchContextENS_8eContextEb",
         "_ZN10PlayerTest10updateAnimEf",
         "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
-        "_ZN10PlayerTest6moveToERK7Vehicle"
+        "_ZN10PlayerTest6moveToERK7Vehicle",
+        "_ZN10PlayerTest6attackEb"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -177,7 +178,8 @@
         ".player_test_switch_context",
         ".player_test_update_anim",
         ".player_test_get_attackable_target",
-        ".player_test_move_to"
+        ".player_test_move_to",
+        ".player_test_attack"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -393,6 +395,7 @@
         "_ZN9GS3DStuff9getSkyBoxEv",
         "_ZN9Character15updateAnimationEf",
         "_ZN11LevelObject17isVisibleOnScreenEv",
-        "_ZNK7Vehicle11isDoorClearEbP6b2Body"
+        "_ZNK7Vehicle11isDoorClearEbP6b2Body",
+        "_ZN6Weapon7isReadyEb"
     ]
 }
