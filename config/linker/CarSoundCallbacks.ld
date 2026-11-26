@@ -1,3 +1,4 @@
+PROVIDE(_Znwj = 0x001c4814);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/car-sound-callbacks/retail-symbols.ld
@@ -22,6 +23,7 @@ __aeabi_fdiv = 0x001c4520;
 __aeabi_f2d = 0x001c48f8;
 SECTIONS
 {
+    .car_sounds_init 0x0035047c : { *car-sound-callbacks.o(.text._ZN9CarSounds4InitEP16CarSoundSettings) }
     .car_sounds_update_turbo 0x0034fbf8 : { *car-sound-callbacks.o(.text._ZN9CarSounds17UpdateTurboSoundsEv) }
     .car_sounds_update_on 0x0034f784 : { *car-sound-callbacks.o(.text._ZN9CarSounds20UpdateOnEngineSoundsEv) }
     .car_sounds_update_off 0x0034f554 : { *car-sound-callbacks.o(.text._ZN9CarSounds21UpdateOffEngineSoundsEv) }

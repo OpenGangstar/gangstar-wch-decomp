@@ -159,14 +159,15 @@ private:
     float masterVolume;
     int maximumRpm;
     int rpm;
-    unsigned char unknown32[4];
+    int unknown32;
     unsigned int soundGear;
     unsigned int previousGear;
     unsigned int unknownGear44;
     unsigned int unknownGear48;
     bool clutchTriggered;
     bool filterRpm;
-    unsigned char unknown54[6];
+    unsigned char unknown54[2];
+    float filterFrequency;
     float filteredRpm;
     float rpmInputCoefficient;
     float rpmFeedbackCoefficient;

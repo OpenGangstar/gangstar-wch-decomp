@@ -53,7 +53,8 @@
         {
             "name": "_GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager",
             "address": "0x0032f565"
-        }
+        },
+        "_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent"
     ],
     "sections": [
         ".handler_vtable",
@@ -64,18 +65,28 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".sniper_keyboard_event",
+        ".sniper_keyboard_fov",
+        ".sniper_keyboard_switch"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZNK15CControlManager8isLockedEv",
-        "_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent",
         "_ZN15CControlManager11enterCombatEv",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN10PlayerTest6attackEb",
         "_ZN15CControlManager11exitSnipingEb",
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6attachEiP14IEventReceiver",
-        "_ZN12EventManager6detachEiP14IEventReceiver"
+        "_ZN12EventManager6detachEiP14IEventReceiver",
+        "_ZN10PlayerTest8hideMeshEv",
+        "_ZN10PlayerTest8showMeshEv",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN13CameraManager9enterModeEiP11LevelObjectfi",
+        "_ZN9Character4hideEv",
+        "_ZN9Character4showEv",
+        "_ZN9FPSCamera16incVerticalAngleEf",
+        "_ZN9FPSCamera4zoomEi"
     ]
 }

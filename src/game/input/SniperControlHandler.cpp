@@ -184,3 +184,94 @@ void SniperControlHandler::onEvent(const IEvent* event, const EventManager*)
     }
     }
 }
+
+
+#include "../characters/Character.h"
+#include "../core/CameraManager.h"
+#include "../core/CameraVariants.h"
+#include "../core/Quaternion.h"
+
+struct SniperKeyboardEvent {
+    unsigned char unknown0[12];
+    int key;
+    bool pressed;
+};
+struct SniperCameraFields {
+    unsigned char unknown0[40];
+    FPSCamera* fpsCamera;
+};
+extern "C" void _ZN9Character4showEv(Character*);
+extern "C" void _ZN9Character4hideEv(Character*);
+
+static int fov = 50;
+
+static inline FPSCamera* sniperCamera()
+{
+    return reinterpret_cast<SniperCameraFields*>(CameraManager::getInstance())->fpsCamera;
+}
+
+void SniperControlHandler::onKeyboardEvent(const IEvent* event)
+{
+    const SniperKeyboardEvent* keyboard = reinterpret_cast<const SniperKeyboardEvent*>(event);
+    if (keyboard->pressed) {
+        PlayerTest* player = PlayerTest::GetPlayer();
+        switch (keyboard->key) {
+        case 'Q':
+        case 133:
+            if (fov > 6)
+                sniperCamera()->zoom(fov--);
+            break;
+        case 'F':
+            if (unknown12 == 1)
+                handleAttackHeld();
+            else
+                handleAttackPressed();
+            break;
+        case 'E':
+        case 134:
+            if (fov < 50)
+                sniperCamera()->zoom(fov++);
+            break;
+        case '4':
+            player->showMesh();
+            _ZN9Character4showEv(&reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player)));
+            break;
+        case '3':
+            player->hideMesh();
+            _ZN9Character4hideEv(&reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player)));
+            break;
+        case '2':
+            CameraManager::getInstance()->enterMode(0, reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player)), 0.3f, 0);
+            break;
+        case '1':
+            CameraManager::getInstance()->enterMode(4, reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(player)), 0.3f, 0);
+            break;
+        case 40:
+        case 'S':
+            sniperCamera()->incVerticalAngle(-1.0f);
+            break;
+        case 38:
+        case 'W':
+            sniperCamera()->incVerticalAngle(1.0f);
+            break;
+        case 37:
+        case 'A': {
+            Character& character = reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player));
+            character.SetRotation(character.GetRotation() * irr::core::quaternion(0.0f, 0.0f, -0.0174532925199433f));
+            break;
+        }
+        case 39:
+        case 'D': {
+            Character& character = reinterpret_cast<Character&>(static_cast<SavePositionInterface&>(*player));
+            character.SetRotation(character.GetRotation() * irr::core::quaternion(0.0f, 0.0f, 0.0174532925199433f));
+            break;
+        }
+        }
+    } else {
+        switch (keyboard->key) {
+        case 'F':
+            handleAttackReleased();
+            break;
+        }
+    }
+}
