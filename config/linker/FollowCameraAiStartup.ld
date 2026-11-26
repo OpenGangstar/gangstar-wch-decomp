@@ -1,3 +1,4 @@
+__aeabi_f2iz = 0x001c44cc;
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-followcamera/retail-symbols.ld
@@ -27,6 +28,7 @@ _ZN31retail_followcamera_transitions11guard_transE = 0x004294a8;
 _ZN31retail_followcamera_transitions22scripted_vehicle_transE = 0x00429550;
 SECTIONS
 {
+    .follow_camera_update 0x00333ab0 : { *ai-startup-followcamera.o(.text._ZN12FollowCamera6updateEf) }
     .follow_camera_facing 0x003336ac : { *ai-startup-followcamera.o(.text._ZNK12FollowCamera9getFacingEv) }
     ASSERT(SIZEOF(.follow_camera_facing) == 220, "Native FollowCamera facing extent")
     .camera_variant_ctor 0x00333974 : { *ai-startup-followcamera.o(.text._ZN12FollowCameraC1EP9Character .text._ZN12FollowCameraC2EP9Character) }
@@ -68,3 +70,4 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.follow_camera_update) == 776, "FollowCamera::update extent");
