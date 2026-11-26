@@ -1879,3 +1879,60 @@ void GS3DStuff::update(StateMachine* state)
         ++unknown24;
     }
 }
+
+
+extern "C" float fabsf(float);
+extern "C" bool _ZNK7Vehicle11isDoorClearEbP6b2Body(const Vehicle* self, bool left, b2Body* body);
+
+struct ProximityVehicleView {
+    unsigned char unknown0[928];
+    int proximityRange;
+};
+
+static inline bool inRange(float delta, float range)
+{
+    return fabsf(delta) < range;
+}
+
+static inline LevelObject* refreshNearCar(PlayerTest* const& playerTest)
+{
+    LevelObject* car;
+    if ((car = playerTest->unknown312) != 0 || (car = playerTest->unknown368) != 0) {
+        if (!car->isDead() && !ScriptManager::getInstance()->isInCinematic()) {
+            Application::GetInstance()->GetHudManager()->nearCar();
+            return car;
+        }
+    }
+    Application::GetInstance()->GetHudManager()->notNearCar();
+    return car;
+}
+
+extern "C" bool _ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE(GS3DStuff* self, std::vector<Vehicle*>& vehicles)
+{
+    PlayerTest* const& playerTest = GS3DStuff::playerTest;
+    irr::core::vector3d<float> center = static_cast<SavePositionInterface&>(*playerTest).GetPosition();
+    LevelObject* nearest = 0;
+    irr::core::vector3d<float> best(0.0f, 0.0f, 0.0f);
+    for (int i = 0; i < vehicles.size(); i++) {
+        irr::core::vector3d<float> d = vehicles[i]->GetPosition() - center;
+        Vehicle* vehicle = vehicles[i];
+        float range = reinterpret_cast<ProximityVehicleView*>(vehicle)->proximityRange;
+        if (inRange(d.X, range) && inRange(d.Y, range) && inRange(d.Z, range)
+            && (!nearest || d.getLengthSQ() < best.getLengthSQ())
+            && (_ZNK7Vehicle11isDoorClearEbP6b2Body(vehicle, true, playerTest->collisionBody)
+                || _ZNK7Vehicle11isDoorClearEbP6b2Body(vehicles[i], false, playerTest->collisionBody))) {
+            nearest = vehicles[i];
+            best = d;
+        }
+    }
+    if (nearest && !nearest->isDead()) {
+        if (!Application::GetInstance()->GetHudManager()->isNearShop()) {
+            Application::GetInstance()->GetHudManager()->nearCar();
+            playerTest->unknown312 = nearest;
+            return true;
+        }
+    }
+    playerTest->unknown312 = 0;
+    nearest = refreshNearCar(playerTest);
+    return false;
+}
