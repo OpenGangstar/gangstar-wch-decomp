@@ -30,6 +30,7 @@ SECTIONS {
     .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_5) }
     .gs_update 0x002e078c : { *gs3d-stuff.o(.text._ZN9GS3DStuff6updateEP12StateMachine) }
     .gs_check_vehicle_proximity 0x002dc714 : { *gs3d-stuff.o(.text._ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE) }
+    .gs_check_pickable_proximity 0x002deba0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE) }
     .gs_update_vehicles_guard 0x004b6a6c (NOLOAD) : { *gs3d-stuff.o(.bss._ZGVZN9GS3DStuff6updateEP12StateMachineE8vehicles) }
     .gs_update_pickables_guard 0x004b6a70 (NOLOAD) : { *gs3d-stuff.o(.bss._ZGVZN9GS3DStuff6updateEP12StateMachineE9pickables) }
     .gs_update_pickables 0x004b6a74 (NOLOAD) : { *gs3d-stuff.o(.bss._ZZN9GS3DStuff6updateEP12StateMachineE9pickables) }

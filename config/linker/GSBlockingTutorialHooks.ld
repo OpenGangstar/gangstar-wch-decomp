@@ -54,6 +54,7 @@ INCLUDE config/linker/CHudManagerCleanupSections.ld
 INCLUDE config/linker/CHudManagerUpdateSections.ld
 SECTIONS
 {
+    /DISCARD/ : { *menu-manager-helpers.o(.text._ZN11MenuManager8tearDownEv) }
     .menu_manager_set_text_height_name 0x00418f50 : { *menu-manager-helpers.o(.rodata._ZN27_GLOBAL__N__Z10StrToLowerPc18textHeightPropertyE) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     /DISCARD/ : { *script-manager-helpers.o(.text._ZN13ScriptManager6updateEi .rodata.updateTutorialState .rodata.updateAchievementState) }

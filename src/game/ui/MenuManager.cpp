@@ -1793,3 +1793,48 @@ extern "C" bool _ZN11MenuManager7setTextENS_5eTextEPKcPi(
     }
     return true;
 }
+
+struct MenuCarRentalEntry {
+    char* name;
+};
+namespace retail_menu_cleanup {
+extern MenuCarRentalEntry** rentalEntries __asm__("_ZN11MenuManager15s_CarRentalDataE");
+}
+extern "C" void _ZN7gameswf5arrayIP10MenuWidgetE6resizeEi(void*, int) __attribute__((long_call));
+struct TearDownWidgets {
+    MenuWidget** elements;
+    int size;
+    int capacity;
+};
+struct TearDownFields {
+    unsigned char unknown0[188];
+    MyMenuFX* menuFX;
+    unsigned char unknown192[228];
+    TearDownWidgets widgets;
+};
+extern "C" void _ZN11MenuManager8tearDownEv(MenuManager* manager)
+{
+    TearDownFields& f = *reinterpret_cast<TearDownFields*>(manager);
+    if (retail_menu_cleanup::rentalEntries) {
+        for (int index = 0; retail_menu_cleanup::rentalEntries[index]; ++index) {
+            delete[] retail_menu_cleanup::rentalEntries[index]->name;
+            ::operator delete(retail_menu_cleanup::rentalEntries[index]);
+        }
+        delete[] retail_menu_cleanup::rentalEntries;
+    }
+    f.menuFX->ClearStates();
+    for (int index = 0; index < f.widgets.size; ++index)
+        delete f.widgets.elements[index];
+    _ZN7gameswf5arrayIP10MenuWidgetE6resizeEi(&f.widgets, 0);
+    delete f.menuFX;
+    f.menuFX = 0;
+    RenderFX::Finalize();
+    // The increment goes through a pointer round trip (a no-op on this 32-bit
+    // target); it keeps the counter out of scalar evolution, as in retail.
+    for (int index = 0; static_cast<unsigned int>(index) < static_cast<unsigned int>(s_textures.end - s_textures.begin);
+         index = reinterpret_cast<int>(reinterpret_cast<char*>(index) + 1))
+        Application::GetInstance()->GetDevice()->getVideoDriver()->removeTexture(s_textures.begin[index]);
+    if (s_textures.end != s_textures.begin)
+        s_textures.end = s_textures.begin;
+    manager->cleanupMap();
+}

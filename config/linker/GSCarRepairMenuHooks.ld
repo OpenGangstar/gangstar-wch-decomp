@@ -58,6 +58,7 @@ INCLUDE config/linker/CHudManagerUpdateSections.ld
 INCLUDE config/linker/CHudManagerUpdateText.ld
 SECTIONS
 {
+    /DISCARD/ : { *menu-manager-helpers.o(.text._ZN11MenuManager8tearDownEv) }
     .menu_manager_set_text_height_name 0x00418f50 : { *menu-manager-helpers.o(.rodata._ZN27_GLOBAL__N__Z10StrToLowerPc18textHeightPropertyE) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
     .repair_draw2d 0x002e1570 : { *state-hooks-gscarrepairmenu.o(.text._ZN15GSCarRepairMenu6draw2dEPK12StateMachine) }

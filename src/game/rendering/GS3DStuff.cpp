@@ -1894,6 +1894,41 @@ static inline bool inRange(float delta, float range)
     return fabsf(delta) < range;
 }
 
+
+
+static inline bool playerInVehicle(PlayerTest* player)
+{
+    return (player->flags240 & 0x400) && static_cast<SavePositionInterface*>(player)->getVehicle();
+}
+
+
+static inline bool isNear(const irr::core::vector3d<float>& delta, float range)
+{
+    return inRange(delta.X, range) && inRange(delta.Y, range) && inRange(delta.Z, range);
+}
+
+void GS3DStuff::checkPickableProximity(std::vector<Item*>& items)
+{
+    irr::core::vector3d<float> center;
+    float range;
+    if (playerInVehicle(playerTest)) {
+        center = playerTest->getVehicle()->GetPosition();
+        range = 300.0f;
+    } else {
+        center = static_cast<SavePositionInterface&>(*playerTest).GetPosition();
+        range = 100.0f;
+    }
+    // The increment goes through a pointer round trip (a no-op on this 32-bit
+    // target); it keeps the counter out of scalar evolution, as in retail.
+    for (int i = 0; i < items.size(); i = reinterpret_cast<int>(reinterpret_cast<char*>(i) + 1)) {
+        irr::core::vector3d<float> d = items[i]->GetPosition() - center;
+        if (!isNear(d, range))
+            continue;
+        if (LevelObject::s_type[items[i]->getObjectType()] == 15)
+            items[i]->pickup();
+    }
+}
+
 static inline LevelObject* refreshNearCar(PlayerTest* const& playerTest)
 {
     LevelObject* car;
