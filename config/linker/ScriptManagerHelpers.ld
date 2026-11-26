@@ -32,6 +32,9 @@ SECTIONS
     .helper_3 0x0033d0a4 : { *script-manager-helpers.o(.text._ZNK13ScriptManager22getCinematicsHudSpriteEv .gnu.linkonce.t._ZNK13ScriptManager22getCinematicsHudSpriteEv) }
     .helper_4 0x0033d0a8 : { *script-manager-helpers.o(.text._ZNK13ScriptManager7getRaceEv .gnu.linkonce.t._ZNK13ScriptManager7getRaceEv) }
     .module_startup_script_manager_helpers_function_0 0x0033d0c0 : { *script-manager-helpers.o(.text.__tcf_6) }
+    .script_manager_update 0x0033f510 : { *script-manager-helpers.o(.text._ZN13ScriptManager6updateEi) }
+    .script_manager_update_tutorial 0x00414c8c : { *script-manager-helpers.o(.rodata.updateTutorialState) }
+    .script_manager_update_achievement 0x00419ef4 : { *script-manager-helpers.o(.rodata.updateAchievementState) }
     .module_startup_script_manager_helpers_function_1 0x0033f9d8 : { *script-manager-helpers.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .module_startup_script_manager_helpers_function_2 0x0033fb1c : { *script-manager-helpers.o(.text._GLOBAL__I__ZN13ScriptManager12s_playerTestE) }
     .module_startup_script_manager_helpers_storage_0 0x004ba59c (NOLOAD) : { *script-manager-helpers.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }

@@ -194,7 +194,8 @@
         },
         "_ZN13ScriptManager11loadCommandER10DataStream",
         "_ZN13ScriptManager19reachRunningCommandEi",
-        "_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE"
+        "_ZN13ScriptManager12cleanCommandEPN7Structs13ScriptCommandE",
+        "_ZN13ScriptManager6updateEi"
     ],
     "sections": [
         ".script_check_screen_press",
@@ -425,6 +426,25 @@
         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
         "_ZN10PlayerTest19finishedStopDrivingEv",
         "_ZN10DataStream5Peek4Ev",
-        "_ZN6Script11nextCommandEi"
+        "_ZN6Script11nextCommandEi",
+        "_ZN10AnimObject10IsAnimOverEv",
+        "_ZN11CHudManager5blinkEi",
+        "_ZN11MenuManager14setTutorialIdsEii",
+        "_ZN11MenuManager15hideDialogArrowEv",
+        "_ZN11MenuManager21resetWidgetVisibilityEv",
+        "_ZN11MenuManager4pushEPKcb",
+        "_ZN11MenuManager6popAllEb",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN13ScriptManager8setStateENS_5StateE",
+        "_ZN18AchievementManager23popCompletedAchievementEv",
+        "_ZN18AchievementManager27hasNewCompletedAchievementsEv",
+        "_ZN5Menus11Achievement14SetAchievementEPKN18AchievementManager11AchievementE",
+        "_ZN6Revive6updateEi",
+        "_ZN6Script7executeEi",
+        "_ZNK11CHudManager15isWeaponVisibleEv",
+        "_ZNK11MenuManager8getDepthEv",
+        "_ZNK11MenuManager8getStateEPKc",
+        "_ZNK11MenuManager9getTextIdENS_5eTextE",
+        "_ZNK7Mission8getStateEv"
     ]
 }

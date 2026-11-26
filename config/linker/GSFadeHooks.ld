@@ -90,6 +90,7 @@ SECTIONS
     .application_key_main 0x00413c7c : { *(.rodata.application_key_main) }
 
     /DISCARD/ : { *application-helpers.o(.text.__tcf_0) }
+    /DISCARD/ : { *script-manager-helpers.o(.text._ZN13ScriptManager6updateEi .rodata.updateTutorialState .rodata.updateAchievementState) }
     .state_cleanup_script_manager_helpers 0x0033e758 : { *script-manager-helpers.o(.text.__tcf_2) }
     .wanted_singleton 0x002dba04 : { *script-manager-helpers.o(.gnu.linkonce.t._ZN18WantedLevelManager11getInstanceEv) }
     .wanted_cleanup 0x0033d3b4 : { *script-manager-helpers.o(.text.__tcf_1) }
