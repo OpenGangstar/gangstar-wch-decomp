@@ -52,7 +52,8 @@
         {
             "name": "_GLOBAL__I__ZN15CControlManager16s_sniperTutorialE",
             "address": "0x0032d6b1"
-        }
+        },
+        "_ZN15CControlManager6updateEv"
     ],
     "sections": [
         ".control_manager_tutorial",
@@ -90,6 +91,8 @@
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN22CDrivingControlHandler4initEv",
         "_ZN21COnFootControlHandler4initEv",
-        "_ZN20SniperControlHandler4initEv"
+        "_ZN20SniperControlHandler4initEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZNK13ScriptManager13isInCinematicEv"
     ]
 }
