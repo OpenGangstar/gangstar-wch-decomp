@@ -17310,7 +17310,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ed959	0x28	menufx.cpp	game	rendering	matched	_ZN8RenderFX6RenderEv	RenderFX::Render()
 0x003ed981	0x28	menufx.cpp	game	rendering	matched	_ZN8RenderFX10EndDisplayEv	RenderFX::EndDisplay()
 0x003ed9a9	0x42	menufx.cpp	game	core	matched	_Z26fscommand_callback_handlerPN7gameswf9characterEPKcS3_	fscommand_callback_handler(gameswf::character*, char const*, char const*)
-0x003ed9ed	0x1ec	menufx.cpp	game	rendering	pending	_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*)
+0x003ed9ed	0x1ec	menufx.cpp	game	rendering	matched	_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(unsigned short*, int, char const*, int, bool, bool, gameswf::filter*)
 0x003edbd9	0xa4	menufx.cpp	game	rendering	matched	_ZN8RenderFX13PreloadGlyphsEPKcS1_ibbPN7gameswf6filterE	RenderFX::PreloadGlyphs(char const*, char const*, int, bool, bool, gameswf::filter*)
 0x003edc7d	0x168	menufx.cpp	game	rendering	matched	_ZN8RenderFX13PreloadGlyphsEv	RenderFX::PreloadGlyphs()
 0x003edde5	0x138	menufx.cpp	game	rendering	matched	_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE	RenderFX::Load(char const*, gameswf::player_context*)

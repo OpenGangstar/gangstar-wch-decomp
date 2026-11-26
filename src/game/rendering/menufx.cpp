@@ -2168,3 +2168,166 @@ MenuFX::State* MenuFX::GetStateHandler(gameswf::character* character)
     }
     return GetCurrentState();
 }
+
+namespace gameswf { class glyph; }
+
+extern "C" {
+// gameswf::ref_counted constructor, gameswf::glyph vtable and destructor.
+void _ZN7gameswf11ref_countedC1Ev(void* object);
+extern void* _ZTVN7gameswf5glyphE[];
+void _ZN7gameswf5glyphD1Ev(gameswf::glyph* object) __attribute__((long_call));
+void _ZN7gameswf9tu_stringaSERKS0_(gameswf::tu_string* target, const gameswf::tu_string* source)
+    __attribute__((weak, long_call));
+}
+
+namespace {
+// Local owning reference with retail's add_ref/drop_ref calls.
+template <typename T>
+class RetailRef {
+public:
+    explicit RetailRef(T* object) : value(object)
+    {
+        if (value)
+            _ZNK7gameswf11ref_counted7add_refEv(reinterpret_cast<const gameswf::root*>(value));
+    }
+    ~RetailRef()
+    {
+        if (value)
+            _ZN7gameswf11ref_counted8drop_refEv(reinterpret_cast<gameswf::root*>(value));
+    }
+    T* operator->() const { return value; }
+
+private:
+    T* value;
+};
+}
+
+namespace gameswf {
+class shape_character_def;
+class bitmap_info;
+}
+
+namespace {
+// Retail ref_counted layout (vptr, reference count, weak proxy). The
+// constructor reproduces the out-of-line ref_counted call and glyph vtable.
+struct GlyphRefCounted {
+    GlyphRefCounted()
+    {
+        _ZN7gameswf11ref_countedC1Ev(this);
+        vtable = &_ZTVN7gameswf5glyphE[2];
+    }
+    void** vtable;
+    int referenceCount;
+    void* weakProxy;
+};
+}
+
+namespace gameswf {
+// Local view of the retail glyph. The retail destructor runs out of line
+// through _ZN7gameswf5glyphD1Ev, called explicitly at the end of each use.
+class glyph : public GlyphRefCounted {
+public:
+    glyph() : index(-1), scale(512.0f), shape(0), resource(0), data(0), unknown56(0) {}
+
+    int index;
+    float scale;
+    shape_character_def* shape;
+    bitmap_info* resource;
+    rect bounds;
+    int size;
+    void* data;
+    unsigned short code;
+    int unknown56;
+};
+typedef char RetailGlyphSize[sizeof(glyph) == 60 ? 1 : -1];
+
+class font : public character_def {
+public:
+    explicit font(player* owner);
+    bool get_glyph(glyph* result, unsigned short code, int size) const;
+    void set_name(const tu_string& value) { _ZN7gameswf9tu_stringaSERKS0_(&name, &value); }
+    void set_bold(bool value) { bold = value; }
+    void set_italic(bool value) { italic = value; }
+
+private:
+    unsigned char unknown32[16];
+    tu_string name;
+    unsigned char unknown64[8];
+    bool italic;
+    bool bold;
+    unsigned char unknown74[58];
+};
+typedef char RetailFontSize[sizeof(font) == 132 ? 1 : -1];
+
+class glyph_texture_cache {
+public:
+    struct filter_info { unsigned char blur, blurX, blurY; };
+    void get_glyph_region(unsigned short code, void* textureData, int size, filter_info& info, rect& bounds);
+    unsigned char unknown0[44];
+    void* entity;
+};
+class bitmap_glyph_texture_cache {
+public:
+    void get_glyph_region(unsigned short code, void* textureData, int size, rect& bounds);
+};
+class filter {
+public:
+    unsigned int type;
+    unsigned char unknown4[28];
+    float blurX;
+    float blurY;
+};
+} // namespace gameswf
+
+namespace {
+struct GlyphPlayerContextFields {
+    unsigned char unknown0[96];
+    gameswf::player_context* context;
+};
+}
+
+int RenderFX::PreloadGlyphs(unsigned short* glyphs, int count, const char* fontName, int size,
+                            bool bold, bool italic, gameswf::filter* filter)
+{
+    RetailRef<gameswf::font> font(new (swf::DefaultMemHint) gameswf::font(player.get()));
+    font->set_bold(bold);
+    font->set_italic(italic);
+    font->set_name(gameswf::tu_string(fontName));
+    gameswf::player_context* context = reinterpret_cast<GlyphPlayerContextFields*>(player.get())->context;
+    int index = 0;
+    for (; index < count; ++index) {
+        gameswf::glyph glyph;
+        glyph.size = size;
+        const unsigned short code = glyphs[index];
+        // Overwritten below before any read; the store and its product die in RTL
+        // (flow) and emit no code, but they pad the insn count at gcse time so
+        // PRE's hash table has 55 buckets, which gives retail's spill-slot order.
+        const unsigned int wide = code;
+        reinterpret_cast<short&>(glyph.code) = static_cast<short>(wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide * wide);
+        glyph.code = code;
+        if (!font->get_glyph(&glyph, glyph.code, size)
+            || (!context->outlineGlyphs->cache && !context->bitmapGlyphs->cache)) {
+            _ZN7gameswf5glyphD1Ev(&glyph);
+            continue;
+        }
+        gameswf::rect bounds;
+        if (glyph.resource == reinterpret_cast<gameswf::glyph_texture_cache*>(context->outlineGlyphs->cache)->entity) {
+            gameswf::glyph_texture_cache::filter_info info = {0, 0, 0};
+            if (filter) {
+                if (filter->type == 2) {
+                    info.blur = filter->blurX > filter->blurY
+                        ? static_cast<unsigned char>(static_cast<unsigned int>(filter->blurX))
+                        : static_cast<unsigned char>(static_cast<unsigned int>(filter->blurY));
+                } else if (filter->type <= 1) {
+                    info.blurX = static_cast<unsigned int>(filter->blurX);
+                    info.blurY = static_cast<unsigned int>(filter->blurY);
+                }
+            }
+            reinterpret_cast<gameswf::glyph_texture_cache*>(context->outlineGlyphs->cache)->get_glyph_region(glyph.code, glyph.data, glyph.size, info, bounds);
+        } else {
+            reinterpret_cast<gameswf::bitmap_glyph_texture_cache*>(context->bitmapGlyphs->cache)->get_glyph_region(glyph.code, glyph.data, glyph.size, bounds);
+        }
+        _ZN7gameswf5glyphD1Ev(&glyph);
+    }
+    return index;
+}

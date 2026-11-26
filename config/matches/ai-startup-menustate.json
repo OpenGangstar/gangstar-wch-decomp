@@ -490,7 +490,6 @@
         "_ZN7gameswf8as_valueC1Ei",
         "_ZN7gameswf6render26create_bitmap_info_textureEPN3irr5video8ITextureE",
         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
-        "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
         "_ZNK13ScriptManager13isInCinematicEv",
         "_ZN13ScriptManager11getInstanceEv",
         "_ZNK13ScriptManager10getMissionEv",
