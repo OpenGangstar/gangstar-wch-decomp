@@ -411,3 +411,35 @@ void Trail::BuildPoint(int index, bool transparent)
         mesh->vertices[rightIndex].v = 1.0f - g_trailTexOffsetY[trailMode][0];
     }
 }
+
+#include "../core/Geometry.h"
+#include "../core/MeshSceneInterfaces.h"
+void Trail::Update()
+{
+    activePointCount = 0;
+    for (int i = 0; i < trailPointCount; ++i) {
+        points[i].remainingLife = irr::core::max_(points[i].remainingLife - 1, 0);
+        if (points[i].remainingLife <= 0)
+            break;
+        ++activePointCount;
+    }
+
+    const int activeIndexCount = activePointCount * 6 - 6;
+    if (activeIndexCount > 0) {
+        irr::scene::CMeshBuffer<irr::video::S3DVertex>* buffer = static_cast<irr::scene::CMeshBuffer<irr::video::S3DVertex>*>(static_cast<irr::scene::IMeshSceneNode*>(meshSceneNode)->getMesh()->getMeshBuffer(0));
+        if (static_cast<unsigned int>(activeIndexCount) > buffer->indices.allocated)
+            buffer->indices.reallocate(activeIndexCount);
+        buffer->indices.used = activeIndexCount;
+        for (int i = 0; i < activeIndexCount; ++i)
+            buffer->indices.data[i] = indices[i];
+
+        for (int i = 0; i < trailPointCount; ++i) {
+            const unsigned char alpha = static_cast<unsigned char>(static_cast<float>(points[i].remainingLife) / trailLifetime * 192.0f);
+            buffer->vertices[i * 2].color.a = alpha;
+            buffer->vertices[i * 2 + 1].color.a = alpha;
+        }
+        meshSceneNode->setVisible(true);
+    } else {
+        meshSceneNode->setVisible(false);
+    }
+}

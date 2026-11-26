@@ -131,7 +131,8 @@
         "_ZN11MenuManager6updateEP12StateMachine",
         "_ZN11MenuManager5setupEb",
         "_ZN11MenuManager7initMapEv",
-        "_ZN11MenuManager7setTextENS_5eTextEPKcPi"
+        "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
+        "_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -293,7 +294,6 @@
         "_ZN9ResStreamC1EPKci",
         "_ZN9ResStreamD1Ev",
         "_ZNK10DataStream4TellEv",
-        "_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE",
         "_ZNK11Application19GetScreenDimensionsERiS0_",
         "_Z7SwfFreePv",
         "_ZN7gameswf8as_value10set_doubleEd",

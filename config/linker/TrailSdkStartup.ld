@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fdiv = 0x001c4520);
 _Znwj = 0x001c4814;
 _ZN12trail_assets8meshNameE = 0x00435a30;
 _ZN12trail_assets11texturePathE = 0x00435a3c;
@@ -18,6 +19,7 @@ PROVIDE(sqrtf = 0x001c4184);
 SECTIONS
 {
     .trail_build_point 0x00348734 : { *sdk-startup-trail.o(.text._ZN5Trail10BuildPointEib) }
+    .trail_update 0x003485f0 : { *sdk-startup-trail.o(.text._ZN5Trail6UpdateEv) }
     .trail_tex_offset_y 0x00435a48 : { *sdk-startup-trail.o(.rodata.g_trailTexOffsetY) }
     .trail_mesh 0x00348cfc : { *sdk-startup-trail.o(.text._ZN5Trail19CreateMeshSceneNodeEv) }
     .trail_add_point 0x00348a60 : { *sdk-startup-trail.o(.text._ZN5Trail8AddPointERN3irr4core8vector3dIfEES4_b) }

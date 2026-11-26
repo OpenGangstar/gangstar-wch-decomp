@@ -52,7 +52,8 @@
             "address": "0x00348ce9"
         },
         "_ZN5Trail19CreateMeshSceneNodeEv",
-        "_ZN5Trail10BuildPointEib"
+        "_ZN5Trail10BuildPointEib",
+        "_ZN5Trail6UpdateEv"
     ],
     "sections": [
         ".trail_vtable",
