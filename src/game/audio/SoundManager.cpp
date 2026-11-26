@@ -699,3 +699,106 @@ SoundManager::SoundManager()
     CSoundDecoderMSWAV::InitStaticParameters(*reinterpret_cast<CPcmPool**>(&unknown16[0]),*reinterpret_cast<CMSAdpcmPool**>(&unknown16[4]));
     *reinterpret_cast<unsigned int*>(&unknown28[4])=0;
 }
+
+#include "StaticSound.h"
+extern "C" bool nativeIsMediaPlaying(int);
+namespace {
+struct SoundSlotRowView { CSound* sound[4]; };
+struct SoundSlotRowHolder { SoundSlotRowView* row; };
+// CSound::unknown9 is private; read it through a layout view.
+struct SoundReadyFlagView { unsigned char unknown0[9]; bool unknown9; };
+}
+// SoundManager.h does not declare _getReadySound; adding the declaration
+// changes Menus::ServiceMissions::GotFocus, so the method is defined through
+// its mangled name.
+extern "C" int _ZN12SoundManager14_getReadySoundEi(SoundManager* self, int id)
+{
+    int attempts = 3;
+    int channel;
+    do {
+        ++self->soundEntries[id].channel;
+        if (self->soundEntries[id].channel > 3)
+            self->soundEntries[id].channel = 0;
+        channel = self->soundEntries[id].channel;
+        CSound* slot = (reinterpret_cast<SoundSlotRowHolder*>(self->soundSlots) + id)->row->sound[channel];
+        if (!slot || reinterpret_cast<SoundReadyFlagView*>(slot)->unknown9)
+            goto readySound;
+    } while (--attempts);
+    return -1;
+readySound:
+    CSound* ready = self->soundSlots[id][channel];
+    if (ready) {
+        ready->Stop(0);
+        if (self->soundEntries[id].type & 2)
+            return channel;
+        if (self->soundEntries[id].type & 1)
+            return channel;
+        delete self->soundSlots[id][channel];
+        self->soundSlots[id][channel] = 0;
+    }
+    int type = self->_getSoundType(id);
+    CSound* sound;
+    if (type & 1)
+        sound = (*reinterpret_cast<CStaticSoundsPool**>(&self->unknown4[4]))->GetStaticSound(self->soundEntries[id].data);
+    else if (type & 2) {
+        CSoundData* data = self->_getSoundData(id);
+        if (!data)
+            return -1;
+        sound = (*reinterpret_cast<CStreamingPool**>(&self->unknown4[0]))->GetStreamingSound(data);
+    } else
+        sound = 0;
+    self->soundSlots[id][channel] = sound;
+    return channel;
+}
+
+namespace {
+struct SoundSlotTableView { CSound** row[1]; };
+}
+void SoundManager::update(double elapsed)
+{
+    if(flags&2u) {
+        unknown141[0]=true;
+        if(lowFpsSound) {
+            if((flags&256u) && lowFpsSound->GetStatus()==0)
+                lowFpsSound->Pause();
+            else if(!(flags&256u) && lowFpsSound->GetStatus()==1)
+                lowFpsSound->Resume();
+            else if(lowFpsSound->GetStatus()==4)
+                _cleanupLowFpsMusic();
+            else
+                lowFpsSound->Update(static_cast<int>(elapsed));
+        }
+        for(int i=0;i<soundCount;++i) {
+            if((flags&1u) && !nativeIsMediaPlaying(radioTrack) && !(flags&128u)) {
+                radioTrack=_getRadioTrack(radioStation);
+                unknown140=true;
+                playEx(radioTrack,0,false,1.0f,0,true,1.0f,0);
+                unknown140=false;
+            } else {
+                for(int j=0;j<4;++j) {
+                    if(soundSlots[i][j]) {
+                        soundSlots[i][j]->Update(static_cast<int>(elapsed));
+                        if(soundSlots[i][j]->GetStatus()==4) {
+                            int type=_getSoundType(i);
+                            if(type&2) {
+                                CSoundData* data=soundSlots[i][j]->GetSoundData();
+                                soundDataPool->ReleaseSoundData(data);
+                                (*reinterpret_cast<CStreamingPool**>(&unknown4[0]))->ReleaseStreamingSound(reinterpret_cast<StreamingSound*>(soundSlots[i][j]));
+                                soundSlots[i][j]=0;
+                            } else if(type&1) {
+                                (*reinterpret_cast<CStaticSoundsPool**>(&unknown4[4]))->ReleaseStaticSound(reinterpret_cast<StaticSound*>(soundSlots[i][j]));
+                                soundSlots[i][j]=0;
+                            } else {
+                                delete soundSlots[i][j];
+                                reinterpret_cast<SoundSlotTableView*>(soundSlots)->row[i][j]=0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        unknown141[0]=false;
+    }
+}
+
+

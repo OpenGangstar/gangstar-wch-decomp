@@ -109,7 +109,9 @@
         "_ZN12SoundManager13_getSoundDataEi",
         "_ZN12SoundManagerC1Ev",
         "_ZN12SoundManagerC2Ev",
-        "_ZN12SoundManager11endCutsceneEv"
+        "_ZN12SoundManager11endCutsceneEv",
+        "_ZN12SoundManager14_getReadySoundEi",
+        "_ZN12SoundManager6updateEd"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -208,7 +210,6 @@
         "nativePlaySoundBig",
         "_ZNK6CSound9GetStatusEv",
         "_ZN22RadioStationControllerD1Ev",
-        "_ZN12SoundManager6updateEd",
         "_ZN3irr2os10Randomizer4randEv",
         "_ZN22RadioStationController14selectRandomAdEv",
         "_ZN22RadioStationController16selectRandomSongEi",
@@ -228,6 +229,13 @@
         "_ZN14CStreamingPoolC1Eii",
         "_ZN8CPcmPoolC1Eii",
         "_ZN12CMSAdpcmPoolC1Eii",
-        "_ZN18CSoundDecoderMSWAV20InitStaticParametersEP8CPcmPoolP12CMSAdpcmPool"
+        "_ZN18CSoundDecoderMSWAV20InitStaticParametersEP8CPcmPoolP12CMSAdpcmPool",
+        "_ZN14CSoundDataPool16ReleaseSoundDataEP10CSoundData",
+        "_ZN14CStreamingPool21ReleaseStreamingSoundEP14StreamingSound",
+        "_ZN17CStaticSoundsPool18ReleaseStaticSoundEP11StaticSound",
+        "_ZN6CSound12GetSoundDataEv",
+        "nativeIsMediaPlaying",
+        "_ZN14CStreamingPool17GetStreamingSoundEP10CSoundData",
+        "_ZN17CStaticSoundsPool14GetStaticSoundEP10CSoundData"
     ]
 }
