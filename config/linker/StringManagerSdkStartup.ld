@@ -1,3 +1,5 @@
+PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(amountReversedNbsp = 0x00435f64);
 PROVIDE(sprintf = 0x001c46ac);
 PROVIDE(memcpy = 0x001c4190);
 PROVIDE(strcat = 0x001c43a0);
@@ -17,6 +19,14 @@ strlen = 0x001c48bc;
 nativeStrlen = 0x001c48bc;
 SECTIONS
 {
+    .format_amount_table 0x00435f94 : { *sdk-startup-stringmanager.o(.rodata._ZNK13StringManager12formatAmountEibb) }
+    .format_amount_html_suffix 0x00435ee4 : { *sdk-startup-stringmanager.o(.rodata.amountHtmlSuffix) }
+    .format_amount_space_suffix 0x00435eec : { *sdk-startup-stringmanager.o(.rodata.amountSpaceSuffix) }
+    .format_amount_nbsp 0x0047b208 : { *sdk-startup-stringmanager.o(.data.rel.ro._ZZNK13StringManager12formatAmountEibbE4nbsp) }
+    .format_amount_guard 0x004bb7d4 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZGVZNK13StringManager12formatAmountEibbE8nbspSize) }
+    .format_amount_buffer 0x004bb7d8 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZNK13StringManager12formatAmountEibbE8szBuffer) }
+    .format_amount_nbsp_size 0x004bb818 (NOLOAD) : { *sdk-startup-stringmanager.o(.bss._ZZNK13StringManager12formatAmountEibbE8nbspSize) }
+    .sdk_startup_stringmanager_atamounteibb 0x0034b3c4 : { *sdk-startup-stringmanager.o(.text._ZNK13StringManager12formatAmountEibb) }
     .string_load_pack_sheet 0x0034b78c : { *sdk-startup-stringmanager.o(.text._ZN13StringManager13loadPackSheetEjj) }
     .string_load_pack_path_format 0x00435ef0 : { *sdk-startup-stringmanager.o(.rodata.str1.4) }
     .string_load_pack_needles_text 0x00435f6c : { *sdk-startup-stringmanager.o(.rodata._ZZN13StringManager13loadPackSheetEjjE11needlesText) }

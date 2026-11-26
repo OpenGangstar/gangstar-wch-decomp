@@ -353,3 +353,97 @@ void StringManager::loadStyles(const char* name)
         styles.push_back(style);
     }
 }
+
+extern const char amountReversedNbsp[] __attribute__((visibility("hidden")));
+static const char amountHtmlSuffix[] = "&nbsp;$";
+static const char amountSpaceSuffix[] = " $";
+extern "C" char* strcat(char*, const char*);
+void strRev(char*) __attribute__((noinline));
+
+const char* StringManager::formatAmount(int amount, bool html, bool currency) const
+{
+    static const char* nbsp = amountReversedNbsp;
+    static int nbspSize = strlen(nbsp);
+    static char szBuffer[64];
+    memset(szBuffer, 0, sizeof(szBuffer));
+    char* output = szBuffer;
+    int remaining = amount;
+    if (!amount)
+        *output++ = '0';
+    else {
+        int digits = 0;
+        while (remaining) {
+            const int quotient = remaining / 10;
+            *output++ = remaining - quotient * 10 + '0';
+            remaining = quotient;
+            if (++digits == 3) {
+                if (remaining) switch (currentPack) {
+                case 4:
+                    if (html) {
+                        strcat(output, nbsp);
+                        output += nbspSize;
+                    } else
+                        *output++ = ' ';
+                    break;
+                case 2:
+                case 5:
+                    *output++ = '.';
+                    break;
+                case 1:
+                case 3:
+                    if (amount > 9999) {
+                        // No-code prediction hint: folds back to "html" after SRA.
+                        struct { unsigned int k; } htmlHint = {static_cast<unsigned int>(html) + 1u};
+                        if (htmlHint.k == 2u) {
+                            strcat(output, nbsp);
+                            output += nbspSize;
+                        } else
+                            *output++ = ' ';
+                    }
+                    break;
+                case 0:
+                    *output++ = ',';
+                    break;
+                }
+                digits = 0;
+            }
+        }
+    }
+    // No-code prediction hints: the one-field aggregates keep these
+    // tests opaque until SRA; both fold back to "currency" afterwards.
+    struct { unsigned int k; } currencyHint = {static_cast<unsigned int>(currency) + 1u};
+    struct { unsigned int k; } currencyHint2 = {static_cast<unsigned int>(currency) + 2u};
+    if (currencyHint.k != 1u && currencyHint2.k != 2u) {
+        if (currentPack == 0 || currentPack == 3) {
+            *output = '$';
+            output[1] = 0;
+            strRev(szBuffer);
+        } else {
+            // Byte-neutral allocation hint: both arms are identical, so the
+            // post-reload crossjump merges them and the test is deleted.  The
+            // test adds a reference to the szBuffer GOT offset so its global
+            // priority beats `this` (szBuffer takes r9 and `this` fp, as in retail).
+            if (output == szBuffer)
+                *output = 0;
+            else
+                *output = 0;
+            strRev(szBuffer);
+        }
+        switch (currentPack) {
+        case 1:
+        case 2:
+            strcat(szBuffer, html ? amountHtmlSuffix : (__builtin_prefetch(output), amountSpaceSuffix));
+            break;
+        case 4:
+            strcat(szBuffer, "$");
+            break;
+        case 5:
+            strcat(szBuffer, html ? amountHtmlSuffix : (__builtin_prefetch(output), amountSpaceSuffix));
+            break;
+        }
+    } else {
+        *output = currency;
+        strRev(szBuffer);
+    }
+    return szBuffer;
+}

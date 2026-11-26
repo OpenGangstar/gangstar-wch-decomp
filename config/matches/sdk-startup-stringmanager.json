@@ -57,7 +57,8 @@
         "_ZN13StringManagerD2Ev",
         "_ZN13StringManagerD0Ev",
         "_ZN13StringManager10loadStylesEPKc",
-        "_ZN13StringManager13loadPackSheetEjj"
+        "_ZN13StringManager13loadPackSheetEjj",
+        "_ZNK13StringManager12formatAmountEibb"
     ],
     "sections": [
         ".string_unload_pack_sheet",
@@ -74,7 +75,11 @@
         ".string_manager_d0",
         ".string_manager_vtable",
         ".string_load_styles",
-        ".string_style_default"
+        ".string_style_default",
+        ".format_amount_table",
+        ".format_amount_html_suffix",
+        ".format_amount_space_suffix",
+        ".format_amount_nbsp"
     ],
     "retail_got": true,
     "external_thumb_functions": [

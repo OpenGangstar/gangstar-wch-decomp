@@ -45,7 +45,8 @@
         {
             "name": "_GLOBAL__I__ZN19DataReloaderManagerC2Ev",
             "address": "0x0034c29d"
-        }
+        },
+        "_ZNK19DataReloaderManager10checkFilesEv"
     ],
     "sections": [
         ".datareloader_nested_destructor",
@@ -57,7 +58,13 @@
         {
             "name": ".got",
             "offset": 864
-        }
+        },
+        ".reloader_reloaded_message",
+        ".reloader_open_error"
     ],
-    "retail_got": true
+    "retail_got": true,
+    "external_thumb_functions": [
+        "_ZN11Application11GetInstanceEv",
+        "_ZN4Logs5errorEPKc"
+    ]
 }

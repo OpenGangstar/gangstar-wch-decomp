@@ -5,6 +5,9 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 SECTIONS
 {
+    .reloader_reloaded_message 0x00435fd4 : { *sdk-startup-datareloadermanager.o(.rodata.reloaderReloadedMessage) }
+    .reloader_open_error 0x00435fe4 : { *sdk-startup-datareloadermanager.o(.rodata.reloaderOpenError) }
+    .reloader_check_files 0x0034c118 : { *sdk-startup-datareloadermanager.o(.text._ZNK19DataReloaderManager10checkFilesEv) }
     .datareloader_nested_destructor 0x0034c0a0 : { *sdk-startup-datareloadermanager.o(.gnu.linkonce.t._ZN19DataReloaderManager15_MonitoredFilesD1Ev .gnu.linkonce.t._ZN19DataReloaderManager15_MonitoredFilesD2Ev) }
     .datareloader_vtable 0x004ad2d8 : { *sdk-startup-datareloadermanager.o(.data.rel.ro._ZTV19DataReloaderManager) }
     .reloader_dtor 0x0034c0c4 : { *sdk-startup-datareloadermanager.o(.text._ZN19DataReloaderManagerD1Ev .text._ZN19DataReloaderManagerD2Ev) }
