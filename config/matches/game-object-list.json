@@ -373,8 +373,7 @@
         "_ZN13WeaponManager9setPlayerEP9Character",
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK5Menus8MainMenu12GameContinueEv",
-        "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE",
-        "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj"
+        "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE"
     ],
     "dependencies": [
         "gs3d-stuff",

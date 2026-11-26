@@ -182,7 +182,8 @@
         "_ZN9GS3DStuff15checkForDespawnEP11LevelObject",
         "_ZN9GS3DStuff6updateEP12StateMachine",
         "_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE",
-        "_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE"
+        "_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE",
+        "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj"
     ],
     "sections": [
         ".gs_print_node_properties",
@@ -454,7 +455,6 @@
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK5Menus8MainMenu12GameContinueEv",
         "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE",
-        "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
         "_ZN11MenuManager8tearDownEv",
         "_ZN13ScriptManager8tearDownEv",
         "_ZN9CarSounds5CleanEv",
