@@ -118,7 +118,8 @@
         "_ZN3NPC6freezeEv",
         "_ZN3NPC16triggerCombatSFXEi",
         "_ZN3NPC11isHostileToEP11LevelObject",
-        "_ZN3NPC9SetTargetEP11LevelObject"
+        "_ZN3NPC9SetTargetEP11LevelObject",
+        "_ZN3NPC7_detectEv"
     ],
     "sections": [
         ".npc_is_under_car",
@@ -249,6 +250,8 @@
         "_Z21ekd_makestringfile255PKcPc",
         "_Z13ekd_debug_outPKcPc",
         "_ZNK6Weapon11isTwoHandedEv",
-        "_ZN8Factions14isFactionEnemyEi"
+        "_ZN8Factions14isFactionEnemyEi",
+        "_ZN11LevelObject17canSeeLevelObjectEPS_RN3irr4core8vector3dIfEE",
+        "_ZNK13ScriptManager13isInCinematicEv"
     ]
 }

@@ -15,7 +15,7 @@
         "-mtune=xscale",
         "-mfloat-abi=softfp",
         "-fdata-sections",
-        "-finline-limit=40",
+        "-finline-limit=70",
         "-fno-short-enums"
     ],
     "assembler_flags": [
@@ -33,11 +33,13 @@
         "_ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE",
         {
             "name": "__tcf_7",
-            "address": "0x002dada9"
+            "address": "0x002dada9",
+            "compiled_name": "__tcf_4"
         },
         {
             "name": "__tcf_8",
-            "address": "0x002dad71"
+            "address": "0x002dad71",
+            "compiled_name": "__tcf_5"
         },
         "_ZNSs6appendEPKc",
         "_ZN9GS3DStuff6unloadEv",
@@ -177,7 +179,8 @@
         "_ZN9GS3DStuff4loadEiRi",
         "_ZNSs9_M_appendEPKcS0_",
         "_ZN9GS3DStuff8tearDownEv",
-        "_ZN9GS3DStuff15checkForDespawnEP11LevelObject"
+        "_ZN9GS3DStuff15checkForDespawnEP11LevelObject",
+        "_ZN9GS3DStuff6updateEP12StateMachine"
     ],
     "sections": [
         ".gs_print_node_properties",
@@ -452,7 +455,24 @@
         "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
         "_ZN11MenuManager8tearDownEv",
         "_ZN13ScriptManager8tearDownEv",
-        "_ZN9CarSounds5CleanEv"
+        "_ZN9CarSounds5CleanEv",
+        "_ZN10PlayerTest15UpdateSceneNodeEv",
+        "_ZN10PlayerTest6UpdateEv",
+        "_ZN10SpawnPoint18UpdateSpawnCentersEv",
+        "_ZN12EventManager6attachEiP14IEventReceiver",
+        "_ZN13CameraManager6updateEf",
+        "_ZN13ScriptManager6updateEi",
+        "_ZN16SceneNodeManager6updateEi",
+        "_ZN7Vehicle10stepPhysicEv",
+        "_ZN7Vehicle12UpdatePhysicEf",
+        "_ZN7Vehicle16initializeDriverEv",
+        "_ZN7Vehicle4stepEv",
+        "_ZN7b2World4StepEfi",
+        "_ZN8TrailMgr6UpdateEv",
+        "_ZN9GS3DStuff16updateVisibilityEj",
+        "_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE",
+        "_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE",
+        "_ZNK12StateMachine12getTimeStampEv"
     ],
     "dependencies": [
         "stream",
