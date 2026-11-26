@@ -859,6 +859,70 @@ bool PlayerTest::orientTowards(irr::core::vector3d<float> direction)
     return dot < 0.01f && dot > -0.01f;
 }
 
+extern "C" bool _ZNK7Vehicle11isDoorClearEbP6b2Body(const Vehicle*, bool, b2Body*);
+extern "C" int _ZN9Character20getSpecificAnimationEi(Character*, int);
+
+// Vehicle::leftDoor/rightDoor are private; read them through a layout view.
+struct PlayerMoveToVehicleView {
+    unsigned char pad0[316];
+    irr::scene::ISceneNode* leftDoor;
+    irr::scene::ISceneNode* rightDoor;
+};
+
+// Character::destination/adjustedDestination are private; read them through a
+// PlayerTest layout view (Character subobject at +4).
+struct PlayerMoveToDestinationView {
+    unsigned char pad0[96];
+    irr::core::vector3d<float> destination;
+    irr::core::vector3d<float> adjustedDestination;
+};
+
+extern "C" bool _ZN10PlayerTest6moveToERK7Vehicle(PlayerTest* self, const Vehicle& car)
+{
+    const irr::core::vector3d<float> position = self->GetPosition();
+    const float y = position.Y;
+    const float x = position.X;
+    irr::scene::ISceneNode* left = reinterpret_cast<const PlayerMoveToVehicleView*>(&car)->leftDoor;
+    irr::scene::ISceneNode* right = reinterpret_cast<const PlayerMoveToVehicleView*>(&car)->rightDoor;
+    float leftDistance;
+    float rightDistance;
+    {
+        const irr::core::vector3d<float> leftPosition = left->getAbsolutePosition();
+        const irr::core::vector3d<float> rightPosition = right->getAbsolutePosition();
+        leftDistance = irr::core::vector3d<float>(x - leftPosition.X, y - leftPosition.Y, 0.0f).getLength();
+        rightDistance = irr::core::vector3d<float>(x - rightPosition.X, y - rightPosition.Y, 0.0f).getLength();
+    }
+    const bool rightClear = _ZNK7Vehicle11isDoorClearEbP6b2Body(&car, false, self->collisionBody);
+    const bool leftClear = _ZNK7Vehicle11isDoorClearEbP6b2Body(&car, true, self->collisionBody);
+    float distance;
+    if (rightClear && (leftDistance > rightDistance || !leftClear)) {
+        self->unknown324 = reinterpret_cast<int>(right);
+        distance = rightDistance;
+    } else if (leftClear) {
+        self->unknown324 = reinterpret_cast<int>(left);
+        distance = leftDistance;
+    } else {
+        self->initDriving(true);
+        return false;
+    }
+    if (distance <= 30.0f) {
+        irr::core::matrix4 transform(reinterpret_cast<irr::scene::ISceneNode*>(self->unknown324)->getAbsoluteTransformation(), irr::core::matrix4::EM4CONST_COPY);
+        const irr::core::vector3d<float> front(transform.mutableElement(4), transform.mutableElement(5), transform.mutableElement(6));
+        self->setAnim(_ZN9Character20getSpecificAnimationEi(&static_cast<Character&>(*self), 165), true, true, false, 1.0f);
+        return self->orientTowards(-front);
+    }
+    self->setAnim(_ZN9Character20getSpecificAnimationEi(&static_cast<Character&>(*self), 188), true, true, false, 1.0f);
+    reinterpret_cast<PlayerMoveToDestinationView*>(self)->destination = reinterpret_cast<irr::scene::ISceneNode*>(self->unknown324)->getAbsolutePosition();
+    const irr::core::vector3d<float> current = self->GetPosition();
+    const irr::core::vector3d<float> target = reinterpret_cast<const PlayerMoveToDestinationView*>(self)->adjustedDestination;
+    self->orientTowards(current - target);
+    const irr::core::vector3d<float> front = self->GetFront();
+    self->facing.x = front.X;
+    self->facing.y = front.Y;
+    self->facing.z = front.Z;
+    return false;
+}
+
 #include "../core/VideoDriver.h"
 void PlayerTest::debug(irr::video::IVideoDriver* driver)
 {
