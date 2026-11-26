@@ -71,7 +71,8 @@
         "_ZNK10SpawnPoint17hasCloseNeighborsEv",
         "_ZN10SpawnPoint4LoadERKN7Structs10SpawnPointE",
         "_ZN10SpawnPoint23CreateAllSpawnInstancesEv",
-        "_ZN10SpawnPoint18UpdateSpawnCentersEv"
+        "_ZN10SpawnPoint18UpdateSpawnCentersEv",
+        "_ZNK10SpawnPoint8canSpawnEv"
     ],
     "sections": [
         ".spawn_vtable",
@@ -108,7 +109,6 @@
         "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE",
         "_ZN9AIManagerC1Ev",
         "_ZN9AIManagerD1Ev",
-        "_ZNK10SpawnPoint8canSpawnEv",
         "_ZnwjN3irr7MemHintE",
         "_ZN17GameObjectManager19GetMetatypeFromNameEPKc",
         "_ZN17GameObjectManager28CreateGameObjectFromMetatypeEi",

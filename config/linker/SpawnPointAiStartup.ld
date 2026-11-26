@@ -1,3 +1,5 @@
+PROVIDE(__aeabi_uidiv = 0x001c4604);
+PROVIDE(__aeabi_fcmple = 0x1c43ac);
 PROVIDE(__aeabi_fcmpge = 0x001c4364);
 PROVIDE(memset = 0x001c45d4);
 PROVIDE(__aeabi_fcmplt = 0x001c479c);
@@ -94,6 +96,7 @@ SECTIONS
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
+    .spawn_point_can_spawn 0x00307450 : { *ai-startup-spawnpoint.o(.text._ZNK10SpawnPoint8canSpawnEv) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
