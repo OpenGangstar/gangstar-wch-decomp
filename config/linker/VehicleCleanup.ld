@@ -45,6 +45,10 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_player_event_delete 0x002f512c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN8EvPlayerD0Ev) }
+    .vehicle_player_event_dtor 0x002f61f8 : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN8EvPlayerD1Ev) }
+    .vehicle_player_event_vtable 0x004aa138 : { *vehicle-cleanup.o(.gnu.linkonce.d.rel.ro._ZTV8EvPlayer) }
+    .vehicle_shoot 0x00310908 : { *vehicle-cleanup.o(.text._ZN7Vehicle5shootEv) }
     .vehicle_reset_body_position 0x0030b68c : { *vehicle-cleanup.o(.text._ZN7Vehicle17ResetBodyPositionEv) }
     .vehicle_set_speed 0x0030bccc : { *vehicle-cleanup.o(.text._ZN7Vehicle8setSpeedEv) }
     .vehicle_is_door_clear 0x0030a730 : { *vehicle-cleanup.o(.text._ZNK7Vehicle11isDoorClearEbP6b2Body) }
