@@ -1,3 +1,9 @@
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fcmpeq = 0x001c470c);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_uidiv = 0x001c4604);
 PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 PROVIDE(_ZN26retail_player_context_text4jailE = 0x0041df7c);
 PROVIDE(_ZN26retail_player_context_text6normalE = 0x0041df94);
@@ -44,6 +50,9 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .physic_get_tri_center 0x0031a4cc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes12GetTriCenterEtt) }
+    .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
+    .physic_next_random_pos 0x0031cf74 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE) }
     .contact_filter_should_collide 0x0031dc7c : { *ai-startup-physicattributes.o(.text._ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_) }
     .physic_jump_shape 0x0031ccf0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape) }
     .contact_filter_vtable 0x004abd00 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV13ContactFilter) }

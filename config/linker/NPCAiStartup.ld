@@ -1,3 +1,13 @@
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fcmpeq = 0x001c470c);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fmul = 0x001c4724);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_idiv = 0x001c43dc);
+PROVIDE(__aeabi_idivmod = 0x001c4934);
+PROVIDE(__aeabi_uidiv = 0x001c4604);
+PROVIDE(lrand48 = 0x001c4664);
 PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
@@ -24,6 +34,9 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 SECTIONS
 {
+    .physic_get_tri_center 0x0031a4cc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes12GetTriCenterEtt) }
+    .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
+    .physic_next_random_pos 0x0031cf74 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE) }
     .character_run_to_target 0x002f39e0 : { *ai-startup-character.o(.text._ZN9Character11runToTargetEi) }
     .npc_attack_target 0x002ff5d0 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEv) }
     .contact_filter_should_collide 0x0031dc7c : { *ai-startup-physicattributes.o(.text._ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_) }

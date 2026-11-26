@@ -4303,3 +4303,150 @@ extern "C" void _ZN7Vehicle12CreateWheelsEP13Box2DUserInfo(Vehicle* self, Box2DU
 
     self->removeWheelCollisions();
 }
+
+
+#include "VehicleBodyShapes.h"
+struct Box2DUserInfo {
+    Box2DUserInfo(LevelObject* object, irr::scene::ISceneNode* mesh) : owner(object), node(mesh), lowerHeight(0), upperHeight(0), unknown16(0), unknown20(0), unknown24(false), unknown25(false) {}
+    LevelObject* owner;
+    irr::scene::ISceneNode* node;
+    float lowerHeight, upperHeight;
+    float unknown16, unknown20;
+    bool unknown24, unknown25;
+};
+
+struct VehicleBodyDefView {
+    VehicleBodyDefView()
+    {
+        // Dead integer stores, overwritten below by the float zeros (flow deletes them
+        // before register allocation, no code). The first makes cse create the shared
+        // constant-1 pseudo before the bool stores, so sched2 issues retail's
+        // movs r3,#1 / mov sl,r3 ahead of them. Together they hold the cse1 insn count
+        // at 424 (gcse1 PRE bucket count 107), which gives retail's frontCap/rearCap
+        // spill slots. The union members (no pointer temp) keep the loop's address
+        // operand order.
+        massBits = 1;
+        angleBits = 1;
+        isSleeping = false;
+        fixedRotation = false;
+        allowSleep = true;
+        isBullet = false;
+        userData = 0;
+        massData.centerX = 0.0f;
+        massData.centerY = 0.0f;
+        massData.mass = 0.0f;
+        massData.I = 0.0f;
+        angle = 0.0f;
+        position.x = 0.0f;
+        position.y = 0.0f;
+        linearDamping = 0.0f;
+        angularDamping = 0.0f;
+    }
+    union { struct { float mass, centerX, centerY, I; } massData; int massBits; };
+    void* userData;
+    b2Vec2 position;
+    union { float angle; int angleBits; };
+    float linearDamping, angularDamping;
+    bool allowSleep, isSleeping, fixedRotation, isBullet;
+};
+
+struct VehicleCreateBodyView {
+    unsigned char pad0[24];
+    PhysicAttributes* physic;
+    unsigned char pad28[144 - 28];
+    float rotationZ;
+    unsigned char pad148[168 - 148];
+    unsigned int mass;
+    unsigned char pad172[200 - 172];
+    unsigned int init200;
+    unsigned int init204;
+    unsigned char pad208[324 - 208];
+    irr::scene::ISceneNode* skinnedMesh;
+    unsigned char pad328[632 - 328];
+    b2Body* collisionBody;
+    unsigned char pad636[748 - 636];
+    irr::core::vector3d<float>* init748;
+};
+
+extern "C" void _ZN7Vehicle12CreateWheelsEP13Box2DUserInfo(Vehicle* self, Box2DUserInfo* user);
+
+extern "C" void _ZN7Vehicle10CreateBodyEv(Vehicle* self)
+{
+    VehicleCreateBodyView* view = reinterpret_cast<VehicleCreateBodyView*>(self);
+    b2World* world = PhysicAttributes::s_world;
+    VehicleBodyDefView definition;
+    view->collisionBody = world->CreateBody(reinterpret_cast<b2BodyDef*>(&definition));
+    view->physic = new PhysicAttributes(5, view->collisionBody);
+    view->physic->SetIsOnGround(1, true);
+    view->physic->SetIsOnGround(2, true);
+    view->physic->SetIsOnGround(3, true);
+    view->physic->SetIsOnGround(4, true);
+
+    b2Vec2 extent;
+    extent.x = view->skinnedMesh->getBoundingBox().MaxEdge.X / 100.0f;
+    const float halfWidth = extent.x;
+    const float front = extent.x + view->skinnedMesh->getBoundingBox().MinEdge.Y / 100.0f;
+    const float rear = view->skinnedMesh->getBoundingBox().MaxEdge.Y / 100.0f - halfWidth;
+
+    b2PolygonDef hull;
+    hull.vertexCount = 4;
+    hull.vertices[0].x = -halfWidth; hull.vertices[0].y = front;
+    hull.vertices[1].x = halfWidth; hull.vertices[1].y = front;
+    hull.vertices[2].x = halfWidth; hull.vertices[2].y = rear;
+    hull.vertices[3].x = -halfWidth; hull.vertices[3].y = rear;
+    hull.density = 1.0f;
+    hull.filter.categoryBits = 8;
+    hull.filter.maskBits = 0xffff;
+    hull.filter.groupIndex = view->physic->getIndex() + 1;
+
+    b2CircleDef frontCap;
+    // Repeats the constructor's restitution store (no behaviour change). The extra
+    // use of the float-zero pseudo lifts it above the init748 pointer in local-alloc
+    // priority (retail keeps 0.0f in r5); postreload deletes the store as a no-op.
+    frontCap.restitution = 0.0f;
+    frontCap.density = 1.0f;
+    frontCap.filter = hull.filter;
+    frontCap.radius = halfWidth;
+    frontCap.localPosition.x = 0.0f;
+    frontCap.localPosition.y = rear;
+
+    b2CircleDef rearCap;
+    // Same no-op repeat of the constructor store; postreload deletes it.
+    rearCap.restitution = 0.0f;
+    rearCap.density = 1.0f;
+    rearCap.filter = hull.filter;
+    rearCap.localPosition.y = front;
+    rearCap.localPosition.x = 0.0f;
+    rearCap.radius = halfWidth;
+
+    b2PolygonDef sensor;
+    sensor.SetAsBox(static_cast<float>(view->init200) * 0.5f / 100.0f, 2.5f, b2Vec2(0.0f, (static_cast<float>(view->init204) + 500.0f) * -0.5f / 100.0f), 0.0f);
+    sensor.isSensor = true;
+    sensor.density = 1.0f;
+
+    view->collisionBody->CreateShape(&hull);
+    view->collisionBody->CreateShape(&frontCap);
+    view->collisionBody->CreateShape(&rearCap);
+    view->collisionBody->CreateShape(&sensor);
+
+    b2Body* body = view->collisionBody;
+    const float x = self->GetPosition().X / 100.0f;
+    const float y = self->GetPosition().Y / 100.0f;
+    body->SetXForm(b2Vec2(x, y), -0.017453292519943295f * view->rotationZ);
+    view->collisionBody->SetMassFromShapes();
+    body = view->collisionBody;
+    b2MassData massData;
+    massData.I = body->inertia;
+    massData.center = body->localCenter;
+    massData.mass = static_cast<float>(view->mass) / 3.0f;
+    body->SetMass(&massData);
+
+    body = view->collisionBody;
+    body->data = new Box2DUserInfo(self, view->skinnedMesh);
+    _ZN7Vehicle12CreateWheelsEP13Box2DUserInfo(self, static_cast<Box2DUserInfo*>(view->collisionBody->data));
+
+    for (int i = 0; i < 4; ++i) {
+        view->init748[i].X = static_cast<float>(view->mass) * 0.25f;
+        view->init748[i].Y = 0.0f;
+    }
+}

@@ -10691,7 +10691,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030c035	0x1114	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle4stepEv	Vehicle::step()
 0x0030d149	0x580	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle12CreateWheelsEP13Box2DUserInfo	Vehicle::CreateWheels(Box2DUserInfo*)
 0x0030d6c9	0x23fc	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle12UpdatePhysicEf	Vehicle::UpdatePhysic(float)
-0x0030fac9	0x414	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle10CreateBodyEv	Vehicle::CreateBody()
+0x0030fac9	0x414	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10CreateBodyEv	Vehicle::CreateBody()
 0x0030fedd	0x64	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle4initEv	Vehicle::init()
 0x0030ff41	0x558	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle4LoadERKN7Structs3CarE	Vehicle::Load(Structs::Car const&)
 0x00310499	0x3e8	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle13grabSceneNodeEiPPPv	Vehicle::grabSceneNode(int, void***)
@@ -10889,7 +10889,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031b9a9	0x12c0	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_	PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo&, irr::core::plane3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
 0x0031cc69	0x88	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes18CreateNeighborTrisEPN3irr5scene10ISceneNodeEi	PhysicAttributes::CreateNeighborTris(irr::scene::ISceneNode*, int)
 0x0031ccf1	0x284	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape	PhysicAttributes::SetCurrentJumpShape(b2Shape*)
-0x0031cf75	0x6d4	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE	PhysicAttributes::GetNextRandomPos(int, int, irr::core::vector3d<float>)
+0x0031cf75	0x6d4	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE	PhysicAttributes::GetNextRandomPos(int, int, irr::core::vector3d<float>)
 0x0031d649	0x144	PhysicAttributes.cpp	game	characters	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0031d78d	0x14	PhysicAttributes.cpp	game	characters	matched	_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE	_GLOBAL__I__ZN16PhysicAttributes11s_neighborsE
 0x0031d7a1	0x25c	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener7PersistEPK14b2ContactPoint	ContactListener::Persist(b2ContactPoint const*)

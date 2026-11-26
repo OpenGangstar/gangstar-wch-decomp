@@ -84,7 +84,8 @@
         "_ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo",
         "_ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo",
         "_ZN16PhysicAttributesC1EiP6b2Body",
-        "_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_"
+        "_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_",
+        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE"
     ],
     "sections": [
         ".physics_segment_height",

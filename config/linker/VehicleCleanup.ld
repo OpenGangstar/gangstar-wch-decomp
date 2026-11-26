@@ -45,6 +45,7 @@ __cxa_pure_virtual = 0;
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .vehicle_create_body 0x0030fac8 : { *vehicle-cleanup.o(.text._ZN7Vehicle10CreateBodyEv) }
     .vehicle_player_event_delete 0x002f512c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN8EvPlayerD0Ev) }
     .vehicle_player_event_dtor 0x002f61f8 : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN8EvPlayerD1Ev) }
     .vehicle_player_event_vtable 0x004aa138 : { *vehicle-cleanup.o(.gnu.linkonce.d.rel.ro._ZTV8EvPlayer) }
