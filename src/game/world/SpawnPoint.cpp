@@ -507,3 +507,70 @@ void SpawnPoint::Load(const Structs::SpawnPoint& data)
     delete[] data.values;
     add(this);
 }
+extern "C" float fabsf(float);
+struct SpawnGameObjectManagerCountView {
+    unsigned char prefix[1048];
+    int* typeCounts;
+};
+
+static inline irr::core::vector3d<float> spawnFacing(const irr::core::quaternion& rotation)
+{
+    return rotation * irr::core::vector3d<float>(0.0f, -1.0f, 0.0f);
+}
+
+bool SpawnPoint::canSpawn() const
+{
+    const SpawnConstants* constants = s_metatypesSpawnCst[spawnGroup];
+    const int* counts = reinterpret_cast<SpawnGameObjectManagerCountView*>(GameObjectManager::s_gom)->typeCounts;
+    if (counts[constants->type] >= constants->unknown4)
+        return false;
+    if (counts[3] + counts[11] + counts[5] + counts[16] > 5)
+        return false;
+    irr::core::vector3d<float> origin(position);
+    if (fabsf(GetInnerSpawnCenter().z - origin.Z) >= 300.0f)
+        return false;
+    const Center& inner = GetInnerSpawnCenter();
+    float innerDistance = irr::core::vector3d<float>(inner.x - origin.X, inner.y - origin.Y, inner.z - origin.Z).getLengthSQ();
+    const Center& outer = GetOutterSpawnCenter();
+    irr::core::vector3d<float> outerOffset(outer.x - origin.X, outer.y - origin.Y, outer.z - origin.Z);
+    constants = s_metatypesSpawnCst[spawnGroup];
+    int minimumDistance = constants->unknown24;
+    int maximumDistance = constants->unknown32;
+    if (innerDistance >= minimumDistance) {
+        if (outerOffset.getLengthSQ() <= maximumDistance) {
+            int type = constants->type;
+            // Branch hint: type 11 is tested first and is the cold path.
+            if (!__builtin_expect(type == 11, 0)) {
+                switch (type) {
+                default:
+                    return true;
+                case 3:
+                    break;
+                }
+            }
+            // Branch hint: crowded spawn points are the cold path.
+            if (__builtin_expect(hasCloseNeighbors(), 0))
+                return false;
+            if (s_metatypesSpawnCst[spawnGroup]->type == 3) {
+                int lanes = (PhysicAttributes::s_neighborsWrongWay[materialId][static_cast<unsigned short>(triangleId / 3)] >> 6) & 3;
+                // Aggregate wrapper only shapes the scalarised distance's spill slot.
+                struct { float value; } distance = { 20.0f };
+                if (lanes)
+                    distance.value = lanes * 20.0f;
+                PlayerTest* player = PlayerTest::GetPlayer();
+                LevelObject* target;
+                if (player->getVehicle())
+                    target = player->getVehicle();
+                else
+                    target = player;
+                irr::core::vector3d<float> direction = spawnFacing(rotation).normalize() * distance.value;
+                irr::core::vector3d<float> velocity = target->GetFront().normalize() * target->GetSpeed();
+                irr::core::vector3d<float> relative = direction - velocity;
+                float alignment = relative.dotProduct(position - target->GetPosition());
+                return alignment <= 0.0f;
+            }
+            return true;
+        }
+    }
+    return false;
+}
