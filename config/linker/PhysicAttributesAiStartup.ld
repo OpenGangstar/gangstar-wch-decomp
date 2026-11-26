@@ -25,15 +25,22 @@ _ZN35retail_physicattributes_transitions17cop_vehicle_transE = 0x00420ec4;
 _ZN35retail_physicattributes_transitions11guard_transE = 0x00420f78;
 _ZN35retail_physicattributes_transitions22scripted_vehicle_transE = 0x00421020;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
+sqrtf = 0x001c4184;
 SECTIONS
 {
     .physic_next_random_pos 0x0031cf74 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE) }
+    .contact_event_delete 0x002d4074 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN6IEventD0Ev) }
+    .contact_event_dtor 0x002d4094 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN6IEventD1Ev) }
+    .contact_event_id 0x002d3c34 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZNK6IEvent10getEventIDEv) }
+    .contact_event_vtable 0x004a6198 : { *ai-startup-physicattributes.o(.gnu.linkonce.d.rel.ro._ZTV6IEvent) }
+    .contact_player_event_delete 0x002f512c : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN8EvPlayerD0Ev) }
+    .contact_player_event_dtor 0x002f61f8 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN8EvPlayerD1Ev) }
+    .contact_player_event_vtable 0x004aa138 : { *ai-startup-physicattributes.o(.gnu.linkonce.d.rel.ro._ZTV8EvPlayer) }
     .contact_filter_should_collide 0x0031dc7c : { *ai-startup-physicattributes.o(.text._ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_) }
     .contact_filter_vtable 0x004abd00 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV13ContactFilter) }
     .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
     .physic_set_height_attributes 0x0031ad30 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo) }
     .physic_set_height_attributes_node 0x0031b3e8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo) }
-    .contact_listener_persist 0x0031d7a0 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener7PersistEPK14b2ContactPoint) }
     .physic_get_height 0x0031ff48 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib) }
 
     .physic_jump_shape 0x0031ccf0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape) }
