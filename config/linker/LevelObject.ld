@@ -56,6 +56,7 @@ _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
+    .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
 
     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002dbb3c : { *gs3d-stuff.o(.text.__tcf_3) }

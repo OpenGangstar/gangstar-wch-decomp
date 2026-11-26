@@ -2025,6 +2025,154 @@ static inline LevelObject* refreshNearCar(PlayerTest* const& playerTest)
     return car;
 }
 
+namespace {
+enum { colladaSceneNode = 0x6e656164, colladaInstanceNode = 3 };
+
+struct ColladaInstanceView {
+    int type;
+    const char* const* url;
+};
+
+struct ColladaNodeView {
+    unsigned int unknown0[16];
+    int instanceCount;
+    ColladaInstanceView* instances;
+};
+
+struct ColladaSceneNodeView {
+    unsigned char unknown0[364];
+    ColladaNodeView* sourceNode;
+};
+
+struct LODLevelView {
+    float distanceSquared;
+    irr::scene::ISceneNode* sceneNode;
+};
+
+struct LODSceneNodeView {
+    unsigned char unknown0[328];
+    LODLevelView* levels;
+};
+}
+
+extern "C" void _ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_(
+    irr::scene::ISceneNode*, irr::scene::ISceneNode*, irr::scene::ISceneNode*, irr::scene::ISceneNode*);
+
+void GS3DStuff::AddXRef(irr::scene::ISceneNode* node)
+{
+    ++node->references;
+    node->updateAbsolutePosition(false);
+    irr::video::IVideoDriver* driver = Application::GetInstance()->GetDevice()->getVideoDriver();
+
+    if (node->getType() == colladaSceneNode) {
+        bool replaced = false;
+        const ColladaSceneNodeView* view = reinterpret_cast<const ColladaSceneNodeView*>(node);
+        if (view->sourceNode) {
+            for (int i = 0; i < view->sourceNode->instanceCount; ++i) {
+                const ColladaInstanceView& instance = view->sourceNode->instances[i];
+                if (instance.type != colladaInstanceNode || !*instance.url)
+                    continue;
+
+                irr::scene::ISceneNode* xref = irr::collada::CColladaDatabase::constructScene(
+                    *instance.url, CGameFactory::getInstance());
+                SetMaterialTypeCondition(xref, irr::video::MaterialType15, driver->getTexture(cityPropsAlpha));
+                SetMaterialTypeCondition(xref, irr::video::MaterialType15, driver->getTexture(cityPropsAlphaAlt));
+                irr::video::SColor black;
+                // Dead store, overwritten by the constructor below; it only pads
+                // the gcse hash table to retail's bucket count (GOT spill slots).
+                const unsigned int wide = reinterpret_cast<unsigned int>(xref);
+                reinterpret_cast<signed char&>(black.b) = static_cast<signed char>(wide * wide * wide * wide * wide * wide * wide * wide * wide);
+                new (&black) irr::video::SColor(0, 0, 0, 0);
+                SetColor(xref, black, Color3);
+                SetCulling(xref, irr::scene::EAC_FRUSTUM_BOX);
+                LODSceneNode* lod = parseSceneNodeForLOD(xref, 0);
+                xref->setPosition(node->getPosition());
+                xref->setRotation(node->getRotation());
+                if (lod) {
+                    lod->setLODNodesPosition(node->getPosition());
+                    lod->setLODNodesRotation(node->getRotation());
+                    const LODSceneNodeView* lodView = reinterpret_cast<const LODSceneNodeView*>(lod);
+                    lodView->levels[0].sceneNode->setVisible(true);
+                    irr::scene::ISceneNode* mesh = FindAMesh(lodView->levels[0].sceneNode);
+                    char value[256];
+                    // Taking the label address only pins the billboard block's
+                    // label; the value is unused, so no computed jump exists.
+                    void* const billboardLabel = &&billboardBlock;
+                    (void)billboardLabel;
+                    if (getProperty(lodView->levels[0].sceneNode->getUserProperty(),
+                            GameFactoryProperties::billboard, value) && atoi(value) == 1)
+                        goto billboardBlock;
+                    _ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_(
+                        xref, mesh, mesh, 0);
+                    {
+                        irr::scene::ISceneNode* parent = lodView->levels[0].sceneNode->getParent();
+                        node->getParent()->addChild(lodView->levels[0].sceneNode);
+                        if (parent)
+                            CCustomSceneManager::CleanParents(parent);
+                    }
+                billboardDone:
+                    lod->drop();
+                    goto xrefDrop;
+
+                    // The billboard arm sits after the LOD release so it is expanded
+                    // there; its own copy of the attach tail then rejoins at
+                    // billboardDone. The non-billboard arm is written as the goto's
+                    // fall-through so VRP threading moves it to the function end.
+                billboardBlock:
+                    _ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_(
+                        xref, lodView->levels[0].sceneNode, mesh, 0);
+                    lodView->levels[0].sceneNode->setVisible(false);
+                    {
+                        irr::scene::ISceneNode* parent = lodView->levels[0].sceneNode->getParent();
+                        node->getParent()->addChild(lodView->levels[0].sceneNode);
+                        if (parent)
+                            CCustomSceneManager::CleanParents(parent);
+                    }
+                    goto billboardDone;
+                } else {
+                    irr::scene::ISceneNode* mesh = FindAMesh(xref);
+                    _ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_(
+                        xref, mesh, mesh, node);
+                    irr::scene::ISceneNode* parent = xref->getParent();
+                    node->getParent()->addChild(xref);
+                    if (parent)
+                        CCustomSceneManager::CleanParents(parent);
+                }
+            xrefDrop:
+                xref->drop();
+
+                irr::scene::ISceneNode* parent = node->getParent();
+                node->remove();
+                if (parent)
+                    CCustomSceneManager::CleanParents(parent);
+                replaced = true;
+            }
+        }
+
+        if (node->getParent() && reinterpret_cast<const unsigned int&>(node->getChildren().first) ==
+                reinterpret_cast<unsigned int>(node->getChildren().end())) {
+            irr::scene::ISceneNode* parent = node->getParent();
+            node->remove();
+            if (parent)
+                CCustomSceneManager::CleanParents(parent);
+            goto release;
+        }
+        if (replaced)
+            goto release;
+    }
+
+    {
+        irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+        while (child != node->getChildren().end()) {
+            irr::scene::ISceneNode* current = child->value;
+            child = child->next;
+            AddXRef(current);
+        }
+    }
+release:
+    node->drop();
+}
+
 extern "C" bool _ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE(GS3DStuff* self, std::vector<Vehicle*>& vehicles)
 {
     PlayerTest* const& playerTest = GS3DStuff::playerTest;
