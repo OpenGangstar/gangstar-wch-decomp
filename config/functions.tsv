@@ -17356,7 +17356,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003eed29	0x40	menufx.cpp	game	rendering	matched	_ZN8RenderFX10FormatTextEPN7gameswf9characterEPKcz	RenderFX::FormatText(gameswf::character*, char const*, ...)
 0x003eed69	0x12c	menufx.cpp	game	rendering	matched	_ZN8RenderFX11SearchIndex4FindEPKc	RenderFX::SearchIndex::Find(char const*)
 0x003eee95	0x118	menufx.cpp	game	rendering	matched	_ZN8RenderFX10ClearFontsEPN7gameswf14player_contextE	RenderFX::ClearFonts(gameswf::player_context*)
-0x003eefad	0x170	menufx.cpp	game	rendering	pending	_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc	RenderFX::InvokeASCallback(gameswf::character*, char const*)
+0x003eefad	0x170	menufx.cpp	game	rendering	matched	_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc	RenderFX::InvokeASCallback(gameswf::character*, char const*)
 0x003ef11d	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX16InvokeASCallbackEPKcS1_	RenderFX::InvokeASCallback(char const*, char const*)
 0x003ef139	0xc8	menufx.cpp	game	rendering	matched	_ZN8RenderFX9SendEventERNS_5EventE	RenderFX::SendEvent(RenderFX::Event&)
 0x003ef201	0x164	menufx.cpp	game	rendering	matched	_ZN8RenderFX8SetFocusEPN7gameswf9characterEi	RenderFX::SetFocus(gameswf::character*, int)
