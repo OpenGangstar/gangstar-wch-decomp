@@ -100,6 +100,7 @@ SECTIONS {
     .resstream_destroy 0x0034ef14 : { *res-stream.o(.text._ZN9ResStreamD1Ev .text._ZN9ResStreamD2Ev) }
     .resstream_vtable 0x004ad698 : { *res-stream.o(.data.rel.ro._ZTV9ResStream) }
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
+    .gs_update_visibility 0x002dd7e0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff16updateVisibilityEj) }
     .gs_get_polys_iter 0x002dd33c : { *gs3d-stuff.o(.text._ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE) }
     .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
     .gom_distance_from_attackable_target 0x00315f38 : { *game-object-manager.o(.text._ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb) }
@@ -449,6 +450,7 @@ SECTIONS {
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text)
         *gs3d-stuff.o(.rodata.*15colladaMeshNodeE)
+        *gs3d-stuff.o(.rodata.*21visibilityColladaMeshE .rodata.*21visibilityColladaSkinE .rodata.*16visibilitySkyBoxE .rodata.*17visibilityUnknownE)
         *gs3d-stuff.o(.rodata.*18colladaSkinnedNodeE)
         *gs3d-stuff.o(.rodata.*7lodNodeE)
  }

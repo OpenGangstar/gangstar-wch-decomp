@@ -791,6 +791,216 @@ void GS3DStuff::SetMaterial(irr::scene::ISceneNode* node, irr::video::SMaterial*
 
     applyToChildren(node, SetMaterial, material);
 }
+#include "../combat/Explosion.h"
+#include "../combat/BulletTraceManager.h"
+
+class b2BodyDef;
+extern "C" {
+extern irr::scene::ISceneNode* _ZN9Character13m_bloodSplashE;
+void _ZN7b2World11DestroyBodyEP6b2Body(b2World* world, b2Body* body);
+b2Body* _ZN7b2World10CreateBodyEPK9b2BodyDef(b2World* world, const b2BodyDef* definition);
+void* _ZN6b2Body11CreateShapeEP10b2ShapeDef(b2Body* body, b2ShapeDef* definition);
+}
+
+namespace {
+const irr::scene::ESCENE_NODE_TYPE visibilityColladaMesh = static_cast<irr::scene::ESCENE_NODE_TYPE>(0x6d656164);
+const irr::scene::ESCENE_NODE_TYPE visibilityColladaSkin = static_cast<irr::scene::ESCENE_NODE_TYPE>(0x73656164);
+const irr::scene::ESCENE_NODE_TYPE visibilitySkyBox = static_cast<irr::scene::ESCENE_NODE_TYPE>(0x5f796b73);
+const irr::scene::ESCENE_NODE_TYPE visibilityUnknown = static_cast<irr::scene::ESCENE_NODE_TYPE>(0x6e6b6e75);
+
+struct VisibilityFrustumView {
+    unsigned char planes[108];
+    irr::core::aabbox3d<float> boundingBox;
+};
+
+struct VisibilityCollisionView {
+    irr::core::array<b2Body*>* bodies;
+    irr::core::array<b2BodyDef*>* bodyDefinitions;
+    irr::core::array<b2ShapeDef*>* shapeDefinitions;
+    bool inQueryResults;
+    bool active;
+};
+
+struct VisibilityWeaponView {
+    unsigned char unknown0[68];
+    irr::scene::ISceneNode* node;
+};
+
+struct VisibilityObjectView {
+    unsigned char unknown0[16];
+    irr::scene::ISceneNode* sceneNode;
+    irr::scene::ISceneNode* shadowNode;
+    unsigned char unknown24[60];
+    CustomBillboardSceneNode* itemBillboard;
+    unsigned char unknown88[88];
+    irr::scene::ISceneNode* vehicleNode;
+    unsigned char unknown180[492];
+    irr::scene::ISceneNode* characterNode;
+    unsigned char unknown676[120];
+    VisibilityWeaponView* weapons[4];
+    unsigned char unknown812[4];
+    irr::scene::ISceneNode* characterNode816;
+    unsigned char unknown820[76];
+    irr::scene::ISceneNode* characterNode896;
+};
+
+inline irr::scene::ISceneNode* visibilityNodeAt(const void* object, int offset)
+{
+    return *reinterpret_cast<irr::scene::ISceneNode* const*>(static_cast<const char*>(object) + offset);
+}
+
+inline irr::scene::ISceneNode* visibilityBillboardAt(const void* object, int offset)
+{
+    CustomBillboardSceneNode* billboard =
+        *reinterpret_cast<CustomBillboardSceneNode* const*>(static_cast<const char*>(object) + offset);
+    return billboard;
+}
+
+inline irr::core::array<irr::scene::ISceneNode*>& visibilityRenderables(CCustomSceneManager* manager)
+{
+    // The named locals are inlined into every call; the extra declarations keep
+    // checkVehicleProximity's retail stack-slot order later in this file.
+    CCustomSceneManager* sceneManager = manager;
+    void* list = sceneManager->getRenderableNodeList();
+    irr::core::array<irr::scene::ISceneNode*>* nodes = static_cast<irr::core::array<irr::scene::ISceneNode*>*>(list);
+    return *nodes;
+}
+
+template<class T>
+inline int visibilityFind(const irr::core::array<T*>& array, T* const& element)
+{
+    for (unsigned int i = 0; i < array.used; ++i)
+        if (element == array.data[i])
+            return i;
+    return -1;
+}
+}
+
+void GS3DStuff::updateVisibility(unsigned int elapsed)
+{
+    b2World* world = PhysicAttributes::s_world;
+    CCustomSceneManager* manager =
+        reinterpret_cast<CCustomSceneManager*>(Application::GetInstance()->GetDevice()->getSceneManager());
+    visibilityRenderables(manager).used = 0;
+    // The default box (-1, -1, -1)-(1, 1, 1) keeps the insn count that gives
+    // gcse retail's hash-table size, and so retail's spill-slot order.
+    irr::core::aabbox3d<float> box;
+    irr::scene::ICameraSceneNode* camera = CameraManager::getInstance()->getCamera();
+    box = reinterpret_cast<const VisibilityFrustumView*>(camera->getViewFrustum())->boundingBox;
+    irr::core::vector3d<float> direction = camera->getTarget() - camera->getPosition();
+    direction.normalize();
+
+    LastVisibleNodes->used = 0;
+    LastVisibleSceneNodes->used = 0;
+    const int nodeCount = VisibleNodes->used;
+    for (int i = 0; i < nodeCount; ++i)
+        LastVisibleNodes->push_back(VisibleNodes->data[i]);
+    const int sceneNodeCount = VisibleSceneNodes->used;
+    for (int i = 0; i < sceneNodeCount; ++i)
+        LastVisibleSceneNodes->push_back(VisibleSceneNodes->data[i]);
+    sceneOcttree->calculatePolys(box, VisibleNodes, VisibleSpawnPoint, VisibleSceneNodes);
+
+    // The pointer round trip keeps this counter out of loop canonicalisation, which
+    // leaves retail's SSA name recycling for the later loops.
+    for (unsigned int i = 0; i < LastVisibleSceneNodes->used; i = reinterpret_cast<unsigned int>(reinterpret_cast<char*>(i) + 1)) {
+        if (LastVisibleSceneNodes->data[i]->isVisible()
+            && visibilityFind(*VisibleSceneNodes, LastVisibleSceneNodes->data[i]) == -1)
+            LastVisibleSceneNodes->data[i]->setVisible(false);
+    }
+    for (unsigned int i = 0; i < VisibleSceneNodes->used; ++i) {
+        if (!VisibleSceneNodes->data[i]->isVisible())
+            VisibleSceneNodes->data[i]->setVisible(true);
+        AddRenderables(VisibleSceneNodes->data[i], visibilityRenderables(manager), irr::scene::ESNT_ANY);
+    }
+    // Pointer round trip: see above.
+    for (unsigned int i = 0; i < VisibleSpawnPoint->used; i = reinterpret_cast<unsigned int>(reinterpret_cast<char*>(i) + 1))
+        VisibleSpawnPoint->data[i]->Update(elapsed);
+    // Pointer round trip: see above.
+    for (unsigned int i = 0; i < LastVisibleNodes->used; i = reinterpret_cast<unsigned int>(reinterpret_cast<char*>(i) + 1)) {
+        VisibilityCollisionView* collision = reinterpret_cast<VisibilityCollisionView*>(LastVisibleNodes->data[i]);
+        if (collision->active && visibilityFind(*VisibleNodes, LastVisibleNodes->data[i]) == -1) {
+            // The two counters give retail's "x = j + 1; j = x" latch.
+            for (unsigned int j = 0, x = 0; x < collision->bodies->used; j = x) {
+                _ZN7b2World11DestroyBodyEP6b2Body(world, collision->bodies->data[x]);
+                x = j + 1;
+            }
+            collision->bodies->used = 0;
+            reinterpret_cast<VisibilityCollisionView*>(LastVisibleNodes->data[i])->active = false;
+        }
+    }
+
+    if (Explosion::s_explosion && Explosion::s_explosion->isVisible())
+        AddRenderables(Explosion::s_explosion, visibilityRenderables(manager), irr::scene::ESNT_ANY);
+    if (_ZN9Character13m_bloodSplashE && _ZN9Character13m_bloodSplashE->isVisible())
+        AddRenderables(_ZN9Character13m_bloodSplashE, visibilityRenderables(manager), irr::scene::ESNT_ANY);
+
+    for (LevelObject* object = gom->GetFirst(0); object; object = object->next) {
+        const VisibilityObjectView* view = reinterpret_cast<const VisibilityObjectView*>(object);
+        // A guarded body rather than an early continue gives retail's block layout.
+        if (view->sceneNode && view->sceneNode->isVisible()) {
+        if (LevelObject::s_type[object->getObjectType()] == 15)
+            AddRenderables(view->itemBillboard, visibilityRenderables(manager), visibilityColladaMesh);
+        if (LevelObject::s_type[object->getObjectType()] == 5) {
+            AddRenderables(view->vehicleNode, visibilityRenderables(manager), visibilityColladaMesh);
+            AddRenderables(view->sceneNode, visibilityRenderables(manager), visibilityColladaSkin);
+            AddRenderables(view->sceneNode, visibilityRenderables(manager), visibilityColladaMesh);
+        } else if (LevelObject::s_type[object->getObjectType()] == 3) {
+            AddRenderables(view->sceneNode, visibilityRenderables(manager), visibilityColladaSkin);
+            AddRenderables(view->sceneNode, visibilityRenderables(manager), visibilityColladaMesh);
+            AddRenderables(view->characterNode, visibilityRenderables(manager), visibilityColladaMesh);
+            if (view->characterNode816 && view->characterNode816->isVisible())
+                AddRenderables(view->characterNode816, visibilityRenderables(manager), irr::scene::ESNT_ANY);
+            if (view->characterNode896 && view->characterNode896->isVisible())
+                AddRenderables(view->characterNode896, visibilityRenderables(manager), irr::scene::ESNT_ANY);
+            for (int k = 0; k < 4; ++k) {
+                if (view->weapons[k] && view->weapons[k]->node && view->weapons[k]->node->isVisible())
+                    AddRenderables(view->weapons[k]->node, visibilityRenderables(manager), irr::scene::ESNT_ANY);
+            }
+        } else {
+            AddRenderables(view->sceneNode, visibilityRenderables(manager), visibilityColladaMesh);
+        }
+        if (view->shadowNode)
+            AddRenderables(view->shadowNode, visibilityRenderables(manager), visibilityColladaMesh);
+        }
+    }
+
+    visibilityRenderables(manager).push_back(sunGlow ? reinterpret_cast<irr::scene::ISceneNode*>(reinterpret_cast<unsigned char*>(sunGlow) + 4) : 0);
+    AddRenderables(skyBox, visibilityRenderables(manager), visibilitySkyBox);
+    AddRenderables(s_bulletManager, visibilityRenderables(manager), visibilityUnknown);
+    AddRenderables(visibilityNodeAt(playerTest, 20), visibilityRenderables(manager), visibilityColladaSkin);
+    AddRenderables(visibilityNodeAt(playerTest, 20), visibilityRenderables(manager), visibilityColladaMesh);
+    AddRenderables(visibilityNodeAt(playerTest, 180), visibilityRenderables(manager), visibilityColladaMesh);
+    {
+        CustomBillboardSceneNode* billboard = Lock::getInstance()->billboard;
+        irr::scene::ISceneNode* lockNode = billboard;
+        AddRenderables(lockNode, visibilityRenderables(manager), visibilityColladaMesh);
+    }
+    if (Explosion::getExplosionNode() && Explosion::getExplosionNode()->isVisible())
+        AddRenderables(Explosion::getExplosionNode(), visibilityRenderables(manager), visibilityColladaMesh);
+    if (_ZN9Character13m_bloodSplashE && _ZN9Character13m_bloodSplashE->isVisible())
+        AddRenderables(_ZN9Character13m_bloodSplashE, visibilityRenderables(manager), visibilityColladaMesh);
+    // An unsigned counter gives retail's ivtmp-first impact address.
+    for (unsigned int i = 0; i < 8; ++i)
+        AddRenderables(s_bulletManager->getImpacts()[i], visibilityRenderables(manager), visibilityColladaMesh);
+    // Pointer round trip: see above.
+    for (unsigned int i = 0; i < lightsNodes.used; i = reinterpret_cast<unsigned int>(reinterpret_cast<char*>(i) + 1))
+        visibilityRenderables(manager).push_back(lightsNodes.data[i]);
+
+    for (unsigned int i = 0; i < VisibleNodes->used; ++i) {
+        VisibilityCollisionView* collision = reinterpret_cast<VisibilityCollisionView*>(VisibleNodes->data[i]);
+        if (!collision->active) {
+            // The two counters give retail's "x = j + 1; j = x" latch.
+            for (unsigned int j = 0, x = 0; x < collision->bodyDefinitions->used; j = x) {
+                b2Body* body = _ZN7b2World10CreateBodyEPK9b2BodyDef(world, collision->bodyDefinitions->data[x]);
+                _ZN6b2Body11CreateShapeEP10b2ShapeDef(body, collision->shapeDefinitions->data[x]);
+                collision->bodies->push_back(body);
+                x = j + 1;
+            }
+            reinterpret_cast<VisibilityCollisionView*>(VisibleNodes->data[i])->active = true;
+        }
+    }
+}
+
 
 void irr::video::ITexture::setMinFilter(unsigned char filter)
 {
