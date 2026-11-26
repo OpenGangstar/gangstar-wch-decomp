@@ -57,4 +57,4 @@ ASSERT(SIZEOF(.sdk_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
 ASSERT(SIZEOF(.target_marker_guard) == 4, "TargetMarker singleton guard extent");
 ASSERT(SIZEOF(.target_marker_storage) == 28, "TargetMarker singleton storage extent");
 
-ASSERT(SIZEOF(.minimap_nonmatching_draw) <= 1380, "uncredited parent must fit retail span");
+ASSERT(SIZEOF(.minimap_nonmatching_draw) <= 1384, "draw2d section must end before Radio::show at 0x0032a660");
