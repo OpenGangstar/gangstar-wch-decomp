@@ -148,7 +148,9 @@
         "_ZN8RenderFX4FindEPKcPN7gameswf9characterE",
         "_ZN8RenderFX4LoadEPKcPN7gameswf14player_contextE",
         "_ZN8RenderFX11SearchIndex5ClearEv",
-        "_ZN8RenderFX11SearchIndex4InitERS_"
+        "_ZN8RenderFX11SearchIndex4InitERS_",
+        "_ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE",
+        "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE"
     ],
     "sections": [
         ".renderfx_initialize_warning",
@@ -202,7 +204,6 @@
         "_ZN7gameswf29decode_next_unicode_characterEPPKc",
         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
-        "_ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE",
         "_ZN7gameswf7tu_fileC1EPKcS2_",
         "_ZN7gameswf29register_file_opener_callbackEPFPNS_7tu_fileEPKcE",
         "_ZN7gameswf27register_fscommand_callbackEPFvPNS_9characterEPKcS3_E",

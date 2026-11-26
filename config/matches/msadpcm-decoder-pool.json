@@ -45,7 +45,8 @@
         "_ZN20CSoundDecoderMSADPCMD1Ev",
         "_ZN20CSoundDecoderMSADPCMC1EP7__sFILEP10RiffHeaderP12FormatHeader",
         "_ZN20CSoundDecoderMSADPCMC2EP7__sFILEP10RiffHeaderP12FormatHeader",
-        "_ZN20CSoundDecoderMSADPCM6DecodeEPsib"
+        "_ZN20CSoundDecoderMSADPCM6DecodeEPsib",
+        "_ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader"
     ],
     "linker_script": "config/linker/MSAdpcmDecoderPool.ld",
     "sections": [
@@ -77,7 +78,6 @@
     "toolchain": "toolchain/android-ndk-1.6_r1/build/prebuilt/windows/arm-eabi-4.2.1",
     "external_thumb_functions": [
         "_ZN10AdpcmStateC1Ev",
-        "_ZN10AdpcmStateD1Ev",
-        "_ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader"
+        "_ZN10AdpcmStateD1Ev"
     ]
 }

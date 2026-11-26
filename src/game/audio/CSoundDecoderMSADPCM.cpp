@@ -86,6 +86,30 @@ void CSoundDecoderMSADPCM::GoTo(int)
     position = 0;
 }
 
+void CSoundDecoderMSADPCM::Init(__sFILE* input, RiffHeader* riff, FormatHeader* format)
+{
+    stream = input;
+    formatHeader = format;
+    riffHeader = riff;
+    channelIndex = 0;
+    flags = 1;
+    samplesRemaining = 0;
+    position = 0;
+    ended = false;
+    unsigned int extra = format->size;
+    if (extra > 16)
+        fseek(reinterpret_cast<NativeFile*>(input), extra - 16, 1);
+    fread(&fact, sizeof(fact), 1, reinterpret_cast<NativeFile*>(stream));
+    fread(&data, sizeof(data), 1, reinterpret_cast<NativeFile*>(stream));
+    blockHeaderSize = formatHeader->channels * 4;
+    if (formatHeader->channels == 1)
+        samplesPerBlock = (formatHeader->blockAlignment - blockHeaderSize) * 2 + 1;
+    else
+        samplesPerBlock = formatHeader->blockAlignment + 1 - blockHeaderSize;
+    pcmSize = ((data.size / formatHeader->blockAlignment) * samplesPerBlock) << 2;
+    effectiveSamples = fact.samples;
+}
+
 CSoundDecoderMSADPCM::CSoundDecoderMSADPCM()
     : buffer(0), bufferSize(4096), channelIndex(0), samplesRemaining(0),
       fact(), data(), position(0), ended(false), flags(1)

@@ -14,6 +14,7 @@ __aeabi_uidivmod = 0x001c47c0;
 SECTIONS
 {
     .msadpcm_decode 0x003514b8 : { *msadpcm-decoder-pool.o(.text._ZN20CSoundDecoderMSADPCM6DecodeEPsib) }
+    .msadpcm_init 0x003511b8 : { *msadpcm-decoder-pool.o(.text._ZN20CSoundDecoderMSADPCM4InitEP7__sFILEP10RiffHeaderP12FormatHeader) }
     .msadpcm_method_0 0x00351070 : { *msadpcm-decoder-pool.o(.text._ZNK20CSoundDecoderMSADPCM15GetSamplingRateEv) }
     .msadpcm_method_1 0x00351078 : { *msadpcm-decoder-pool.o(.text._ZNK20CSoundDecoderMSADPCM10GetChannelEv) }
     .msadpcm_method_2 0x00351080 : { *msadpcm-decoder-pool.o(.text._ZNK20CSoundDecoderMSADPCM10GetPCMSizeEv) }
