@@ -52,6 +52,10 @@ INCLUDE config/linker/WidgetControlsEvent.ld
 INCLUDE config/linker/MapNotifySections.ld
 
 carRentalTutorialPartFormat = 0x00419e70;
+ogsNone = 0x0040d754;
+ogsChapterOne = 0x00419f5c;
+ogsChapterFormat = 0x00419f68;
+ogsAll = 0x0041b0a4;
 SECTIONS
 {
     .menustate_service_missions_notify 0x002eb9dc : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti) }
@@ -106,6 +110,7 @@ SECTIONS
     .menu_state_hide 0x002e8654 : { *ai-startup-menustate.o(.text._ZN9MenuState4HideEv) }
     .service_missions_focus 0x002e8fe8 : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions8GotFocusEv) }
     .help_empty_icon 0x00409c2c : { *ai-startup-menustate.o(.rodata.helpEmptyIcon) }
+    .option_game_settings_notify 0x002eac64 : { *ai-startup-menustate.o(.text._ZN5Menus18OptionGameSettings6NotifyEPK10MenuWidgeti) }
     .info_help_notify 0x002eaa04 : { *ai-startup-menustate.o(.text._ZN5Menus8InfoHelp6NotifyEPK10MenuWidgeti) }
     .menu_manager_clearing_focus 0x002e3f04 : { *menu-manager-helpers.o(.text._ZNK11MenuManager15isClearingFocusEv) }
     .menu_manager_consume_cursor 0x002e3f20 : { *menu-manager-helpers.o(.text._ZN11MenuManager13consumeCursorEv) }
