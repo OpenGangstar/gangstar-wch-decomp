@@ -1010,3 +1010,123 @@ PhysicAttributes::PhysicAttributes(int type, b2Body* b)
         }
     }
 }
+
+// ---- ContactFilter::ShouldCollide (appended to preserve earlier decl UIDs) ----
+#include "../core/Geometry.h"
+#include "PlayerTest.h"
+// Probe view: retail Character float at 0x9c (Character::unknown156, private).
+struct ContactHeightOwner { unsigned char unknown0[156]; float heightOffset; };
+static inline bool IsEmptyFilter(const b2FilterData& filter)
+{
+    return filter.categoryBits == 0 && filter.groupIndex == 0 && filter.maskBits == 0;
+}
+
+bool ContactFilter::ShouldCollide(b2Shape* first, b2Shape* second)
+{
+    const b2FilterData& filter1 = first->GetFilterData();
+    const b2FilterData& filter2 = second->GetFilterData();
+    if (IsEmptyFilter(filter1) || IsEmptyFilter(filter2))
+        return false;
+    bool collide = ((filter1.categoryBits == 0 || filter2.categoryBits == 0) && filter1.groupIndex == filter2.groupIndex)
+        // No-code hint (PRED_CALL) on the second mask test, matching retail's layout.
+        || ((filter1.maskBits & filter2.categoryBits) != 0
+            && (__builtin_prefetch(&filter2), (filter1.categoryBits & filter2.maskBits) != 0));
+    if (!collide)
+        return false;
+
+    const PhysicsBodyData* data1 = static_cast<const PhysicsBodyData*>(first->GetBody()->GetUserData());
+    if (!data1)
+        return true;
+    // No-code hint (PRED_CALL): retail's frequencies treat the rest as guarded.
+    __builtin_prefetch(data1);
+    const PhysicsBodyData* data2 = static_cast<const PhysicsBodyData*>(second->GetBody()->GetUserData());
+    if (!data2)
+        return true;
+    // No-code hint (PRED_CALL): retail's frequencies treat the rest as guarded.
+    __builtin_prefetch(data2);
+
+    float low1, high1, low2, high2;
+    if (data1->node) {
+        LevelObject* owner = data1->owner;
+        int type = LevelObject::s_type[owner->getObjectType()];
+        if (type == 3 && owner->getPhysicAttributes()->unknown116 > 0 && !data2->node)
+            return false;
+        if (type == 5 || static_cast<LevelObject*>(PlayerTest::GetPlayer()) == owner) {
+            // Retail re-reads data1->owner after the GetPlayer() call.
+            LevelObject* object = data1->owner;
+            low1 = object->GetPosition().Z - reinterpret_cast<ContactHeightOwner*>(object)->heightOffset - 25.0f;
+            high1 = low1 + 150.0f + 25.0f;
+        } else {
+            const irr::core::aabbox3d<float>& box = data1->node->getTransformedBoundingBox();
+            low1 = box.MinEdge.Z;
+            high1 = box.MaxEdge.Z;
+        }
+    } else if (data1->unknown24) {
+        low1 = irr::core::min_(data1->unknown20, irr::core::min_(data1->unknown16, irr::core::min_(data1->upperHeight, data1->lowerHeight)));
+        high1 = irr::core::max_(irr::core::max_(irr::core::max_(data1->lowerHeight, data1->upperHeight), data1->unknown16), data1->unknown20);
+    } else {
+        if (filter1.categoryBits == 0 || filter2.categoryBits == 0
+            || (first->GetBody()->GetXForm().position.x > -450.0f && first->GetBody()->GetXForm().position.x < -405.0f
+                && first->GetBody()->GetXForm().position.y > -560.0f && first->GetBody()->GetXForm().position.y < -420.0f))
+            low1 = data1->lowerHeight;
+        else
+            low1 = -999999.0f;
+        high1 = data1->upperHeight;
+    }
+    if (data2->node) {
+        LevelObject* owner = data2->owner;
+        int type = LevelObject::s_type[owner->getObjectType()];
+        if (type == 3 && owner->getPhysicAttributes()->unknown116 > 0 && !data1->node)
+            return false;
+        if (type == 5 || static_cast<LevelObject*>(PlayerTest::GetPlayer()) == owner) {
+            // Retail re-reads data2->owner after the GetPlayer() call.
+            LevelObject* object = data2->owner;
+            low2 = object->GetPosition().Z - reinterpret_cast<ContactHeightOwner*>(object)->heightOffset - 25.0f;
+            high2 = low2 + 150.0f + 25.0f;
+        } else {
+            const irr::core::aabbox3d<float>& box = data2->node->getTransformedBoundingBox();
+            low2 = box.MinEdge.Z;
+            high2 = box.MaxEdge.Z;
+        }
+    } else if (data2->unknown24) {
+        // Same min_ chain as data1, written as in-place updates of low2.
+        const float& lowest = irr::core::min_(data2->upperHeight, data2->lowerHeight);
+        if (data2->unknown16 < lowest)
+            low2 = data2->unknown16;
+        else
+            low2 = lowest;
+        if (data2->unknown20 < low2)
+            low2 = data2->unknown20;
+        high2 = irr::core::max_(irr::core::max_(irr::core::max_(data2->lowerHeight, data2->upperHeight), data2->unknown16), data2->unknown20);
+    } else {
+        if (filter1.categoryBits == 0 || filter2.categoryBits == 0
+            || (second->GetBody()->GetXForm().position.x > -450.0f && second->GetBody()->GetXForm().position.x < -405.0f
+                && second->GetBody()->GetXForm().position.y > -560.0f && second->GetBody()->GetXForm().position.y < -420.0f))
+            low2 = data2->lowerHeight;
+        else
+            low2 = -999999.0f;
+        high2 = data2->upperHeight;
+    }
+
+    bool overlap = low1 < high2 && high1 > low2;
+    if (data1->unknown24) {
+        b2Body* body1 = first->GetBody();
+        b2Body* body2 = second->GetBody();
+        if (body2->linearVelocity.x * body1->transform.rotation[2] + body2->linearVelocity.y * body1->transform.rotation[3] > 0.0f) {
+            data2->owner->getPhysicAttributes()->SetCurrentJumpShape(first);
+            return false;
+        }
+    } else if (data2->unknown24) {
+        b2Body* body1 = first->GetBody();
+        b2Body* body2 = second->GetBody();
+        // Documented no-code hint: retail lays this jump-shape path out as cold.
+        if (__builtin_expect(body1->linearVelocity.x * body2->transform.rotation[2] + body1->linearVelocity.y * body2->transform.rotation[3] > 0.0f, 0)) {
+            data1->owner->getPhysicAttributes()->SetCurrentJumpShape(second);
+            return false;
+        }
+    } else {
+        // No-code hint (PRED_CALL): balances the guarded expect call above.
+        __builtin_prefetch(data2);
+    }
+    return overlap;
+}

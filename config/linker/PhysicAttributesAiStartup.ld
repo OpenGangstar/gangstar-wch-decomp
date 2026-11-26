@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 PROVIDE(lrand48 = 0x001c4664);
 PROVIDE(__aeabi_idiv = 0x001c43dc);
 PROVIDE(__aeabi_idivmod = 0x001c4934);
@@ -26,6 +27,8 @@ _ZN35retail_physicattributes_transitions22scripted_vehicle_transE = 0x00421020;
 INCLUDE config/linker/PhysicAttributesResetSections.ld
 SECTIONS
 {
+    .contact_filter_should_collide 0x0031dc7c : { *ai-startup-physicattributes.o(.text._ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_) }
+    .contact_filter_vtable 0x004abd00 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV13ContactFilter) }
     .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
     .physic_set_height_attributes 0x0031ad30 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo) }
     .physic_set_height_attributes_node 0x0031b3e8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo) }
