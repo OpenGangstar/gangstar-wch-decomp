@@ -534,6 +534,224 @@ static void _GLOBAL__I__ZN11LevelObject12s_highlightsE()
 }
 }
 
+#include "../core/Geometry.h"
+// Retail call/layout views only; these engine objects must not be constructed.
+struct MovementShapeTypeView { unsigned int vtable; int type; };
+struct MovementPolygonView {
+    unsigned int unknown0[22];
+    b2Vec2 vertices[8];
+    b2Vec2 normals[8];
+};
+inline b2Vec2 movementRotate(const b2XForm& transform, const b2Vec2& value) {
+    b2Vec2 result;
+    result.x = transform.rotation[0] * value.x + transform.rotation[2] * value.y;
+    result.y = transform.rotation[1] * value.x + transform.rotation[3] * value.y;
+    return result;
+}
+inline b2Vec2 movementAdd(const b2Vec2& a, const b2Vec2& b) {
+    b2Vec2 result;
+    result.x = a.x + b.x;
+    result.y = a.y + b.y;
+    return result;
+}
+inline b2Vec2 movementTransform(const b2XForm& transform, const b2Vec2& value) {
+    return movementAdd(transform.position, movementRotate(transform, value));
+}
+
+// Four-float rotation value; not a complete Box2D object.
+struct MovementRotationView { b2Vec2 column1, column2; };
+// Retail body layout view: the transform position is followed by four rotation scalars.
+struct MovementScalarView { float value; };
+struct MovementBodyView { unsigned int unknown0; b2Vec2 position; MovementScalarView rotation[4]; };
+
+bool LevelObject::canGoToPoint(const irr::core::vector3d<float>& target,
+    irr::core::vector3d<float>& point, irr::core::vector3d<float>& adjusted)
+{
+    using irr::core::vector3d;
+    b2World* world = PhysicAttributes::s_world;
+    float radius;
+    int category = LevelObject::getSpawnType();
+    if (category == 3) radius = 1.5f;
+    else if (category == 5 || category == 8) radius = 0.5f;
+    else radius = 0.0f;
+    b2Shape* shapes[100] = {0};
+    b2AABB bounds;
+    if (GetPosition().X > target.X) {
+        bounds.lowerBound.x = target.X / 100.0f - radius;
+        bounds.upperBound.x = GetPosition().X / 100.0f + radius;
+    } else {
+        bounds.lowerBound.x = GetPosition().X / 100.0f - radius;
+        bounds.upperBound.x = target.X / 100.0f + radius;
+    }
+    if (GetPosition().Y > target.Y) {
+        bounds.lowerBound.y = target.Y / 100.0f - radius;
+        bounds.upperBound.y = GetPosition().Y / 100.0f + radius;
+    } else {
+        bounds.lowerBound.y = GetPosition().Y / 100.0f - radius;
+        bounds.upperBound.y = target.Y / 100.0f + radius;
+    }
+    world->Query(bounds, shapes, 100);
+    vector3d<float> hitPoint;
+    b2Vec2 closestNormal;
+    float fraction = 1.0f;
+    b2Vec2 shapeNormal;
+    vector3d<float> direction = target - GetPosition();
+    direction.normalize();
+    typedef vector3d<float> Vector;
+    Vector perpendicular(direction.Y, -direction.X, 0.0f);
+    b2Segment first, second;
+    first.p1.x = GetPosition().X / 100.0f - (radius * perpendicular.X);
+    first.p1.y = GetPosition().Y / 100.0f - (radius * perpendicular.Y);
+    first.p2.x = target.X / 100.0f - (radius * perpendicular.X);
+    first.p2.y = target.Y / 100.0f - (radius * perpendicular.Y);
+    second.p1.x = (radius * perpendicular.X) + GetPosition().X / 100.0f;
+    second.p1.y = (radius * perpendicular.Y) + GetPosition().Y / 100.0f;
+    second.p2.x = (radius * perpendicular.X) + target.X / 100.0f;
+    second.p2.y = (radius * perpendicular.Y) + target.Y / 100.0f;
+    float closest = 1.0f;
+    b2Shape* closestShape;
+    bool usedSecond = false;
+    for (int i = 0; i < 100; ++i) {
+        if (!shapes[i]) break;
+        if (shapes[i]->GetFilterData().categoryBits == 0 &&
+            (shapes[i]->GetFilterData().groupIndex != unknown24->getIndex() + 1 ||
+             shapes[i]->GetFilterData().maskBits == 0)) continue;
+        // No-code hint: the repeated pure getter folds away, but its dead inline
+        // copies (and the named body/user locals below) are released by dce2 on
+        // top of the SSA free list, so dom1's exit `closest` PHI recycles a low
+        // version while the header PHI stays above the fraction loads.  That keeps
+        // closest * delta operand order and fraction < closest compares.
+        if (shapes[i]->IsSensor() && shapes[i]->IsSensor()) continue;
+        b2Body* body = shapes[i]->GetBody();
+        void* user = body->GetUserData();
+        PhysicsBodyData* data = static_cast<PhysicsBodyData*>(user);
+        if (data && (data->owner == this || !data->owner)) continue;
+        if (shapes[i]->TestSegment(shapes[i]->GetBody()->GetXForm(), &fraction, &shapeNormal, first, 1.0f)) {
+            if (data->node) {
+                // Keep both height bounds across the following virtual getters.
+                irr::core::aabbox3d<float> box = data->node->getTransformedBoundingBox();
+                hitPoint = GetPosition() + (target - GetPosition()) * fraction;
+                if (box.MinEdge.Z > hitPoint.Z || box.MaxEdge.Z < hitPoint.Z) continue;
+            } else if (data->lowerHeight != data->upperHeight) {
+                hitPoint = GetPosition() + (target - GetPosition()) * fraction;
+                if (hitPoint.Z < data->lowerHeight || hitPoint.Z > data->upperHeight) continue;
+            }
+            if (fraction < closest) {
+                closestShape = shapes[i];
+                closestNormal = shapeNormal;
+                closest = fraction;
+                usedSecond = false;
+            }
+        } else if (shapes[i]->TestSegment(shapes[i]->GetBody()->GetXForm(), &fraction, &shapeNormal, second, 1.0f)) {
+            if (data->node) {
+                // Keep both height bounds across the following virtual getters.
+                irr::core::aabbox3d<float> box = data->node->getTransformedBoundingBox();
+                hitPoint = GetPosition() + (target - GetPosition()) * fraction;
+                if (box.MinEdge.Z > hitPoint.Z || box.MaxEdge.Z < hitPoint.Z) continue;
+            } else if (data->lowerHeight != data->upperHeight) {
+                hitPoint = GetPosition() + (target - GetPosition()) * fraction;
+                if (hitPoint.Z < data->lowerHeight || hitPoint.Z > data->upperHeight) continue;
+            }
+            if (fraction < closest) {
+                closestShape = shapes[i];
+                closestNormal = shapeNormal;
+                closest = fraction;
+                usedSecond = true;
+            }
+        }
+    }
+    if (closest != 1.0f) {
+        int type = reinterpret_cast<MovementShapeTypeView*>(closestShape)->type;
+        if (type == 0) {
+            const b2XForm& transform = closestShape->GetBody()->GetXForm();
+            PhysicsBodyData* data = static_cast<PhysicsBodyData*>(closestShape->GetBody()->GetUserData());
+            if (data->owner->LevelObject::getSpawnType() == 3) {
+                float bodyX, bodyY, lineX, lineY;
+                if (usedSecond) {
+                    bodyX = (transform.position.x - second.p1.x) * 100.0f;
+                    bodyY = (transform.position.y - second.p1.y) * 100.0f;
+                    lineX = (second.p2.x - second.p1.x) * 100.0f;
+                    lineY = (second.p2.y - second.p1.y) * 100.0f;
+                } else {
+                    bodyX = (transform.position.x - first.p1.x) * 100.0f;
+                    bodyY = (transform.position.y - first.p1.y) * 100.0f;
+                    lineX = (first.p2.x - first.p1.x) * 100.0f;
+                    lineY = (first.p2.y - first.p1.y) * 100.0f;
+                }
+                if (lineX * bodyY - lineY * bodyX <= 0.0f)
+                    adjusted = hitPoint - perpendicular * (radius * 100.0f + 50.0f);
+                else adjusted = hitPoint + perpendicular * (radius * 100.0f + 50.0f);
+            } else {
+                // Snapshot the unscaled center; each side scales its own coordinates.
+                b2Vec2 bodyCenter = transform.position;
+                if (usedSecond)
+                    adjusted = vector3d<float>(bodyCenter.x * 100.0f, bodyCenter.y * 100.0f, hitPoint.Z) - perpendicular * (radius * 100.0f + 75.0f);
+                else
+                    adjusted = vector3d<float>(bodyCenter.x * 100.0f, bodyCenter.y * 100.0f, hitPoint.Z) + perpendicular * (radius * 100.0f + 75.0f);
+            }
+        } else if (type == 1) {
+            const MovementPolygonView* polygon = reinterpret_cast<const MovementPolygonView*>(closestShape);
+            const b2XForm& transform = closestShape->GetBody()->GetXForm();
+            const MovementBodyView* bodyView = reinterpret_cast<const MovementBodyView*>(closestShape->GetBody());
+            MovementScalarView column2Y, column2X, column1Y, column1X;
+            column1X = bodyView->rotation[0]; column2X = bodyView->rotation[2];
+            column1Y = bodyView->rotation[1]; column2Y = bodyView->rotation[3];
+            int edge;
+            for (edge = 0; edge < 4; ++edge) {
+                const b2Vec2& normal = polygon->normals[edge];
+                if (closestNormal.x == column1X.value * normal.x + column2X.value * normal.y) {
+                    const float sideX = column1Y.value * normal.x;
+                    const float sideY = column2Y.value * normal.y;
+                    // No-code hint: a zeroed complex register whose real part carries the
+                    // sum.  cplxlower/SRA give the real part a late SSA version, so the
+                    // equality keeps closestNormal.y as the first fcmpeq operand, and the
+                    // zero imaginary part adds no loop-carried PHI ahead of dom1.
+                    typedef __complex__ float MovementComplex;
+                    MovementComplex side = MovementComplex();
+                    // Identical arms (crossjumped after reload, no code): the two pointer
+                    // compares (hi register / spilled pseudo) take reloads that advance
+                    // reload's spill-register rotation so the edge latch reloads into r4
+                    // as in retail; the small libcall arm keeps gcse1's hash table at 337
+                    // buckets, preserving the PRE address-pseudo (stack slot) order.
+                    if (__builtin_expect(reinterpret_cast<unsigned long>(this) > 1 && reinterpret_cast<unsigned long>(closestShape) > 1, 0))
+                        __real__ side = sideX + sideY;
+                    else
+                        __real__ side = sideX + sideY;
+                    if (closestNormal.y == __real__ side) break;
+                }
+            }
+            float bodyX, bodyY, lineX, lineY;
+            if (usedSecond) {
+                bodyX = (transform.position.x - second.p1.x) * 100.0f;
+                bodyY = (transform.position.y - second.p1.y) * 100.0f;
+                lineX = (second.p2.x - second.p1.x) * 100.0f;
+                lineY = (second.p2.y - second.p1.y) * 100.0f;
+            } else {
+                bodyX = (transform.position.x - first.p1.x) * 100.0f;
+                bodyY = (transform.position.y - first.p1.y) * 100.0f;
+                lineX = (first.p2.x - first.p1.x) * 100.0f;
+                lineY = (first.p2.y - first.p1.y) * 100.0f;
+            }
+            vector3d<float> center(transform.position.x * 100.0f, transform.position.y * 100.0f, hitPoint.Z);
+            b2Vec2 vertex;
+            if (lineX * bodyY - lineY * bodyX > 0.0f)
+                vertex = movementTransform(closestShape->GetBody()->GetXForm(), polygon->vertices[(edge + 1) % 4]);
+            else vertex = movementTransform(closestShape->GetBody()->GetXForm(), polygon->vertices[edge]);
+            vector3d<float> corner(vertex.x * 100.0f, vertex.y * 100.0f, hitPoint.Z);
+            center = corner - center;
+            center.normalize();
+            adjusted = corner + center * (radius * 100.0f + 50.0f);
+        }
+    }
+    // Retail materializes this call but never reads its returned coordinates.
+    vector3d<float> unused = GetPosition();
+    vector3d<float> base = GetPosition();
+    vector3d<float> delta = target - GetPosition();
+    vector3d<float> scaled = delta * closest;
+    point = scaled + base;
+    return closest == 1.0f;
+}
+
 bool LevelObject::canGoToPoint(const irr::core::vector3d<float>& target)
 {
     b2World* world = PhysicAttributes::s_world;
