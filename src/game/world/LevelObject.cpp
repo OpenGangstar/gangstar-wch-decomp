@@ -587,3 +587,138 @@ bool LevelObject::canGoToPoint(const irr::core::vector3d<float>& target)
     }
     return fraction==1.0f;
 }
+#include "MeshCollision.h"
+#include "../core/MeshSceneInterfaces.h"
+bool LevelObject::CastRay(const irr::core::vector3d<float>& start,
+    const irr::core::vector3d<float>& direction, irr::core::vector3d<float>& point,
+    irr::core::vector3d<float>& normal, LevelObject*& object, bool detailed)
+{
+    b2World* world = PhysicAttributes::s_world;
+    b2Shape* shapes[100] = {0};
+    b2AABB bounds;
+    if (direction.X < -5.0f) {
+        bounds.lowerBound.x = (direction.X + start.X) / 100.0f;
+        bounds.upperBound.x = start.X / 100.0f;
+    } else if (direction.X > 5.0f) {
+        bounds.lowerBound.x = start.X / 100.0f;
+        bounds.upperBound.x = (start.X + direction.X) / 100.0f;
+    } else {
+        bounds.lowerBound.x = (start.X - 5.0f) / 100.0f;
+        bounds.upperBound.x = (5.0f + start.X) / 100.0f;
+    }
+    if (direction.Y < -5.0f) {
+        bounds.lowerBound.y = (direction.Y + start.Y) / 100.0f;
+        bounds.upperBound.y = start.Y / 100.0f;
+    } else if (direction.Y > 5.0f) {
+        bounds.lowerBound.y = start.Y / 100.0f;
+        bounds.upperBound.y = (start.Y + direction.Y) / 100.0f;
+    } else {
+        bounds.lowerBound.y = (start.Y - 5.0f) / 100.0f;
+        bounds.upperBound.y = (5.0f + start.Y) / 100.0f;
+    }
+    world->Query(bounds, shapes, 100);
+    float fraction = 1.0f;
+    b2Vec2 shapeNormal;
+    b2Segment segment;
+    segment.p1.x = start.X / 100.0f;
+    segment.p1.y = start.Y / 100.0f;
+    segment.p2.x = (start.X + direction.X) / 100.0f;
+    segment.p2.y = (start.Y + direction.Y) / 100.0f;
+    float upper;
+    float closest = 1.0f;
+    bool player = reinterpret_cast<LevelObject*>(static_cast<SavePositionInterface*>(PlayerTest::GetPlayer())) == this ||
+        (static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle() &&
+         static_cast<SavePrimaryInterface*>(PlayerTest::GetPlayer())->getVehicle() == this);
+    float dirX;
+    float normalY, normalX;
+    int i = 0;
+    do {
+        if (!shapes[i]) break;
+        PhysicsBodyData* data = static_cast<PhysicsBodyData*>(shapes[i]->GetBody()->GetUserData());
+        bool locked = false;
+        if (data) {
+            if (data->owner == this) continue;
+            if (data->owner == Lock::getInstance()->target) locked = true;
+        }
+        if (player && !locked && shapes[i]->GetFilterData().categoryBits == 0 &&
+            (shapes[i]->GetFilterData().groupIndex != unknown24->getIndex() + 1 ||
+             shapes[i]->GetFilterData().maskBits == 0)) continue;
+        if (shapes[i]->IsSensor()) continue;
+        if (!shapes[i]->TestSegment(shapes[i]->GetBody()->GetXForm(), &fraction, &shapeNormal, segment, 1.0f)) continue;
+        irr::scene::ISceneNode* node = data->node;
+        // Match note: same tests as `if (!node) ... else if (detailed && spawn != 5) ...
+        // else if (!player || !locked) ...`, dispatched with gotos so the RTL order is
+        // node/detailed/spawn tests, non-node, mesh, box (gives retail's reload rotation).
+        if (node && detailed && data->owner->LevelObject::getSpawnType() != 5) goto do_mesh;
+        if (node) goto do_box;
+        // Match note: empty-then form orders the crossjump predecessors like retail.
+        if (data->lowerHeight == (upper = data->upperHeight)) {
+        } else {
+            float height = (direction * fraction + start).Z;
+            // Match note: no-code branch hint; shapes bb-reorder (mesh-check fallthrough).
+            if (__builtin_expect(data->lowerHeight > height || upper < height, 1)) continue;
+        }
+        goto check;
+    do_mesh: {
+            irr::core::line3d<float> ray(start, start + direction);
+            irr::scene::IMesh* mesh = 0;
+            switch (data->node->getType()) {
+            case 0x6873656d:
+            case 0x6d656164:
+            case 0x6e736762:
+            case 0x6e736162:
+                mesh = static_cast<irr::scene::IMeshSceneNode*>(data->node)->getMesh();
+                break;
+            case 0x73656164:
+            case 0x4d656164:
+                if (__builtin_expect(!reinterpret_cast<CollisionColladaNodeView*>(data->node)->source->collisionFlag, 1))
+                    mesh = static_cast<irr::scene::IMeshSceneNode*>(data->node)->getMesh();
+                break;
+            case 0x68736d61: {
+                irr::scene::IAnimatedMeshSceneNode* animated = static_cast<irr::scene::IAnimatedMeshSceneNode*>(data->node);
+                irr::scene::IAnimatedMesh* animation = animated->getMesh();
+                mesh = animation->getMesh((int) animated->getFrameNr(), 255, -1, -1);
+                break;
+            }
+            }
+            if (mesh) {
+                MeshCollision collision(mesh, node);
+                if (!collision.isRayCollideMesh(ray)) continue;
+            }
+        }
+        goto check;
+    do_box:
+        if (!player || !locked) {
+            const irr::core::aabbox3d<float>& box = node->getTransformedBoundingBox();
+            float low = box.MinEdge.Z;
+            float high = box.MaxEdge.Z;
+            // Match note: load fraction before dirX so reload sees it live (retail regs).
+            float f = fraction;
+            dirX = direction.X;
+            float height = (direction * f + start).Z;
+            if (data->owner->LevelObject::getSpawnType() == 5 && direction.Z < 0.0f) {
+                irr::core::vector3d<float> falling = direction;
+                falling.normalize();
+                // Match note: vector form keeps fmul(Z, 50) operand order.
+                height += (falling * 50.0f).Z;
+            }
+            if (height < low || height > high) continue;
+        }
+    check:
+        if (closest > fraction) {
+            closest = fraction;
+            normalY = shapeNormal.y;
+            normalX = shapeNormal.x;
+            if (data->owner) object = data->owner;
+            else object = 0;
+        }
+    } while (++i < 100);
+    float heightFraction = unknown24->IntersectSegmentWithHeightMap(start, start + direction, point, normal);
+    if (closest < heightFraction) {
+        point = direction * closest + start;
+        normal = irr::core::vector3d<float>(normalX, normalY, 0.0f);
+    } else object = 0;
+    // Match note: no-code branch hint; shapes bb-reorder of the bounds blocks.
+    return __builtin_expect(heightFraction == 1.0f, 1) && closest == 1.0f;
+}
+

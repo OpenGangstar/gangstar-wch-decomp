@@ -114,7 +114,8 @@
             "address": "0x002df605"
         },
         "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEE",
-        "_ZN9GS3DStuff4loadEiRi"
+        "_ZN9GS3DStuff4loadEiRi",
+        "_ZN11LevelObject7CastRayERKN3irr4core8vector3dIfEES5_RS3_S6_RPS_b"
     ],
     "sections": [
         ".text",
@@ -386,7 +387,9 @@
         "_ZN13WeaponManager9setPlayerEP9Character",
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK5Menus8MainMenu12GameContinueEv",
-        "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE"
+        "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE",
+        "_ZN13MeshCollisionC1EPKN3irr5scene5IMeshEPKNS1_10ISceneNodeE",
+        "_ZNK13MeshCollision16isRayCollideMeshERKN3irr4core6line3dIfEE"
     ],
     "dependencies": [
         "gs3d-stuff",
