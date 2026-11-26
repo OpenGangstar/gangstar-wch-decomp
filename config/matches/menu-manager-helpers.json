@@ -132,7 +132,8 @@
         "_ZN11MenuManager5setupEb",
         "_ZN11MenuManager7initMapEv",
         "_ZN11MenuManager7setTextENS_5eTextEPKcPi",
-        "_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE"
+        "_ZN11MenuManager19_positionMapOnPointERN3irr4core8vector2dIfEE",
+        "_ZN11MenuManager8tearDownEv"
     ],
     "sections": [
         ".menu_manager_vtable",
@@ -298,6 +299,8 @@
         "_Z7SwfFreePv",
         "_ZN7gameswf8as_value10set_doubleEd",
         "_ZN7gameswf8as_valueC1Ev",
-        "_ZNK7gameswf8as_value9to_numberEv"
+        "_ZNK7gameswf8as_value9to_numberEv",
+        "_ZN10MenuWidgetD1Ev",
+        "_ZN8RenderFX8FinalizeEv"
     ]
 }

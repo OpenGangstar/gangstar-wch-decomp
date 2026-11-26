@@ -1,3 +1,4 @@
+PROVIDE(_ZdaPv = 0x001c461c);
 _Znaj = 0x001c3ff8;
 _Znwj = 0x001c4814;
 OUTPUT_FORMAT("elf32-littlearm")
@@ -42,6 +43,7 @@ SECTIONS
     .map_guard 0x004b6a94 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZGVZN3Map11getInstanceEvE3map) }
     .map_instance 0x004b6b00 (NOLOAD) : { *menu-manager-helpers.o(.gnu.linkonce.b._ZZN3Map11getInstanceEvE3map) }
     .cleanup_map 0x002e66b4 : { *menu-manager-helpers.o(.text._ZN11MenuManager10cleanupMapEv) }
+    .menu_manager_teardown 0x002e6148 : { *menu-manager-helpers.o(.text._ZN11MenuManager8tearDownEv) }
     .helper_0 0x002e3e7c : { *menu-manager-helpers.o(.text._ZN11MenuManager21resetWidgetVisibilityEv .gnu.linkonce.t._ZN11MenuManager21resetWidgetVisibilityEv) }
     .helper_1 0x002e3e84 : { *menu-manager-helpers.o(.text._ZN11MenuManager9MenuPauseEv .gnu.linkonce.t._ZN11MenuManager9MenuPauseEv) }
     .helper_2 0x002e3e88 : { *menu-manager-helpers.o(.text._ZN11MenuManager10MenuResumeEv .gnu.linkonce.t._ZN11MenuManager10MenuResumeEv) }

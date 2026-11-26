@@ -9210,7 +9210,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002de6dd	0x210	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff19PrintNodePropertiesEPN3irr5scene10ISceneNodeEbi	GS3DStuff::PrintNodeProperties(irr::scene::ISceneNode*, bool, int)
 0x002de8ed	0x28	GS3DStuff.cpp	game	rendering	matched	_Z10SafeDeleteIN3irr4core5arrayIP16CollisionBodyDefNS1_12irrAllocatorIS4_EEEEEvRPT_	void SafeDelete<irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> > >(irr::core::array<CollisionBodyDef*, irr::core::irrAllocator<CollisionBodyDef*> >*&)
 0x002de919	0x284	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff6unloadEv	GS3DStuff::unload()
-0x002deba1	0x164	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE	GS3DStuff::checkPickableProximity(std::vector<Item*, std::allocator<Item*> >&)
+0x002deba1	0x164	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE	GS3DStuff::checkPickableProximity(std::vector<Item*, std::allocator<Item*> >&)
 0x002ded05	0x1b8	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE	GS3DStuff::SetColor(irr::scene::ISceneNode*, irr::video::SColor, GS3DStuff::eColorType)
 0x002deebd	0x338	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE	GS3DStuff::AddXRef(irr::scene::ISceneNode*)
 0x002df1f5	0xf0	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff12loadCityPartERK15WorldDescriptorRPN3irr5scene10ISceneNodeE	GS3DStuff::loadCityPart(WorldDescriptor const&, irr::scene::ISceneNode*&)
@@ -9532,7 +9532,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002e5e4d	0x1cc	MenuManager.cpp	game	ui	matched	_ZN11MenuManager13preloadGlyphsEb	MenuManager::preloadGlyphs(bool)
 0x002e6019	0xd0	MenuManager.cpp	stlport	-	matched	_ZNSt6vectorIPN3irr5video8ITextureESaIS3_EE18_M_insert_overflowEPS3_RKS3_RKSt11__true_typejb	std::vector<irr::video::ITexture*, std::allocator<irr::video::ITexture*> >::_M_insert_overflow(irr::video::ITexture**, irr::video::ITexture* const&, std::__true_type const&, unsigned int, bool)
 0x002e60e9	0x60	MenuManager.cpp	game	ui	matched	_Z16SwfTextureLoaderPKcii	SwfTextureLoader(char const*, int, int)
-0x002e6149	0x12c	MenuManager.cpp	game	ui	pending	_ZN11MenuManager8tearDownEv	MenuManager::tearDown()
+0x002e6149	0x12c	MenuManager.cpp	game	ui	matched	_ZN11MenuManager8tearDownEv	MenuManager::tearDown()
 0x002e6275	0x3c	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerD1Ev	MenuManager::~MenuManager()
 0x002e6275	0x3c	MenuManager.cpp	game	ui	matched	_ZN11MenuManagerD2Ev	MenuManager::~MenuManager()
 0x002e62b1	0x1c	MenuManager.cpp	game	ui	matched	__tcf_7	__tcf_7
