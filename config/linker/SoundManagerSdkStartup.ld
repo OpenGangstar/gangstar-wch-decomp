@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_d2iz = 0x001c4844);
 strncmp = 0x001c44b4;
 strcmp = 0x001c4658;
 strrchr = 0x001c4340;
@@ -18,6 +19,8 @@ _Znaj = 0x001c3ff8;
 SECTIONS
 {
     .sound_end_cutscene 0x00352a54 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager11endCutsceneEv) }
+    .sound_manager_get_ready_sound 0x00353094 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager14_getReadySoundEi) }
+    .sound_manager_update 0x00353174 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManager6updateEd) }
  .soundmanager_ctor 0x00353524 : { *sdk-startup-soundmanager.o(.text._ZN12SoundManagerC1Ev .text._ZN12SoundManagerC2Ev) }
  .memorySoundPrefix 0x00436374 : { *(.rodata.memorySoundPrefix) }
  .musicSoundPrefix 0x0043637c : { *(.rodata.musicSoundPrefix) }
