@@ -813,6 +813,197 @@ void PlayerTest::switchAnim()
 #include "../characters/PlayerEvent.h"
 #include "../core/EventManager.h"
 #include "../audio/SoundManager.h"
+#include "../rendering/GS3DStuff.h"
+extern "C" bool _ZN9Character18isCurrentAnimationEi(Character*, int);
+extern "C" int _ZN9Character20getSpecificAnimationEi(Character*, int);
+// Vehicle::entryAnimationScale/doorAnimationScale/leftDoor/immobilized are private;
+// read them through a layout view.
+struct PlayerCarInteractionVehicleView {
+    unsigned char pad0[308];
+    float entryAnimationScale;
+    float doorAnimationScale;
+    irr::scene::ISceneNode* leftDoor;
+    unsigned char pad320[686];
+    bool immobilized;
+};
+// Character::animationSpeed is private; write it through a PlayerTest layout view
+// (Character subobject at +4).
+struct PlayerCarInteractionAnimationView {
+    unsigned char pad0[148];
+    float animationSpeed;
+};
+extern "C" void _ZN9Character16removeCollisionsEv(Character*);
+// Character::facing is stored as a SaveVector3; assign it as a vector3d through a
+// PlayerTest layout view (Character subobject at +4).
+struct PlayerCarInteractionFacingView {
+    unsigned char pad0[60];
+    irr::core::vector3d<float> facing;
+    unsigned char pad72[120];
+    Vehicle* vehicle;
+};
+extern "C" void _ZN10PlayerTest20updateCarInteractionEv(PlayerTest* self)
+{
+    CControlManager* controls = Application::GetInstance()->GetControlManager();
+    switch (self->unknown372) {
+    case 1: {
+        Application::GetInstance()->GetControlManager()->lock();
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        _ZN9Character16removeCollisionsEv(character);
+        static_cast<Vehicle*>(self->unknown312)->immobilize();
+        bool left = static_cast<Vehicle*>(self->unknown312)->isLeftDoor(reinterpret_cast<irr::scene::ISceneNode*>(self->unknown324));
+        if (static_cast<Vehicle*>(self->unknown312)->isDoorOpened(left)) {
+            self->unknown372 = 3;
+        } else {
+            static_cast<SavePositionInterface*>(self)->SetPosition(reinterpret_cast<irr::scene::ISceneNode*>(self->unknown324)->getAbsolutePosition());
+            self->setAnim(self->getCarAnimName(carOpenDoor, left), false, false, false, 1.0f);
+            reinterpret_cast<PlayerCarInteractionAnimationView*>(self)->animationSpeed = reinterpret_cast<PlayerCarInteractionVehicleView*>(self->unknown312)->entryAnimationScale;
+            GS3DStuff::s_vehicle = static_cast<Vehicle*>(self->unknown312);
+            static_cast<Vehicle*>(self->unknown312)->openDoor(left);
+            self->unknown372 = 2;
+        }
+        break;
+    }
+    case 2:
+        break;
+    case 3:
+        self->setAnim(self->getCarAnimName(static_cast<Vehicle*>(self->unknown312)->getEnterAnim(), static_cast<Vehicle*>(self->unknown312)->isLeftDoor(reinterpret_cast<irr::scene::ISceneNode*>(self->unknown324))), false, true, false, 1.0f);
+        reinterpret_cast<PlayerCarInteractionAnimationView*>(self)->animationSpeed = reinterpret_cast<PlayerCarInteractionVehicleView*>(self->unknown312)->entryAnimationScale;
+        self->unknown372 = 4;
+        break;
+    case 7:
+        self->finishedStopDriving();
+        break;
+    case 12: {
+        Vehicle* car = static_cast<Vehicle*>(self->unknown312);
+        if (car->getDriver()->GetMetatype() == 48)
+            Application::GetInstance()->GetEventManager()->raise(EvPlayer(8));
+        bool left = static_cast<Vehicle*>(self->unknown312)->isLeftDoor(reinterpret_cast<irr::scene::ISceneNode*>(self->unknown324));
+        if (left) {
+            static_cast<SavePositionInterface*>(self)->setAnimation(static_cast<Vehicle*>(self->unknown312)->getLeftThrowAnimation(), 1.0f, false, true, false);
+            static_cast<Vehicle*>(self->unknown312)->getDriver()->setAnimation(static_cast<Vehicle*>(self->unknown312)->getLeftThrownAnimation(), 1.0f, false, true, false);
+            switch (lrand48() % 3) {
+            case 0: {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(89, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                break;
+            }
+            case 1: {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(81, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                break;
+            }
+            case 2: {
+                SoundManager* sound = SoundManager::getInstance();
+                sound->unknown140 = true;
+                sound->playEx(70, 0, false, 1.0f, 0, true, 1.0f, 0);
+                sound->unknown140 = false;
+                break;
+            }
+            }
+            self->unknown372 = 13;
+        } else {
+            Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+            static_cast<SavePositionInterface*>(self)->setAnimation(_ZN9Character20getSpecificAnimationEi(character, 165), 1.0f, true, false, false);
+            self->flags240 |= 0x80000u;
+            self->unknown372 = 3;
+        }
+        break;
+    }
+    case 5: {
+        controls->enterCar(!ScriptManager::getInstance()->isInCinematic());
+        controls->unlock();
+        static_cast<SavePositionInterface*>(self)->setAnimation(-1, 1.0f, false, false, false);
+        self->unknown372 = 0;
+        self->flags240 |= 0x400u;
+        self->setVehicle(self->vehicle);
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        self->vehicle->setDriver(character);
+        _ZN9Character16removeCollisionsEv(character);
+        if (reinterpret_cast<PlayerCarInteractionVehicleView*>(self->vehicle)->immobilized)
+            self->vehicle->mobilize();
+        if (!Application::GetInstance()->GetWeaponManager()->isWeaponUsableFromVehicle(self->getWeapon()->getWeaponType()))
+            Application::GetInstance()->GetHudManager()->switchWeapon();
+        break;
+    }
+    case 6: {
+        self->vehicle->immobilize();
+        Vehicle* car = self->vehicle;
+        bool left = car->isLeftDoor(car->getNearestDoorDummy(static_cast<SavePositionInterface*>(self)->GetPosition()));
+        if (!ScriptManager::getInstance()->isInCinematic()) {
+            CameraManager::getInstance()->goToSide(left);
+            CameraManager::getInstance()->setTouchScreenInputs(false);
+        }
+        self->vehicle->openDoorFromInside(left);
+        static_cast<SavePositionInterface*>(self)->setAnimation(self->getCarAnimName(self->vehicle->getExitAnim(), left), reinterpret_cast<PlayerCarInteractionVehicleView*>(self->vehicle)->doorAnimationScale, false, true, false);
+        self->_SetTarget(0, !ScriptManager::getInstance()->isInCinematic());
+        self->unknown372 = 8;
+        break;
+    }
+    case 8: {
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        if (!_ZN9Character18isCurrentAnimationEi(character, 15) && !_ZN9Character18isCurrentAnimationEi(character, 13)
+            && !_ZN9Character18isCurrentAnimationEi(character, 16) && !_ZN9Character18isCurrentAnimationEi(character, 14))
+            self->unknown372 = 7;
+        break;
+    }
+    case 9: {
+        self->SetPosition(reinterpret_cast<PlayerCarInteractionVehicleView*>(self->vehicle)->leftDoor->getAbsolutePosition());
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        self->collisionBody->SetXForm(b2Vec2(character->GetPosition().X / 100.0f, character->GetPosition().Y / 100.0f), 0.0f);
+        if (!ScriptManager::getInstance()->isInCinematic()) {
+            CameraManager::getInstance()->enterMode(0, character, 0.0f, 1);
+            CameraManager::getInstance()->setTouchScreenInputs(false);
+        }
+        self->vehicle->openDoorFromInside(true);
+        reinterpret_cast<PlayerCarInteractionFacingView*>(self)->facing = -self->vehicle->GetRight();
+        character->setAnimation(7, reinterpret_cast<PlayerCarInteractionVehicleView*>(self->vehicle)->doorAnimationScale, false, true, false);
+        self->_SetTarget(0, !ScriptManager::getInstance()->isInCinematic());
+        Application::GetInstance()->GetControlManager()->exitCar(true);
+        self->unknown372 = 10;
+        break;
+    }
+    case 10: {
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        if (!_ZN9Character18isCurrentAnimationEi(character, 7) && !_ZN9Character18isCurrentAnimationEi(character, 8))
+            self->unknown372 = 11;
+        break;
+    }
+    case 16:
+        self->finishedStopDriving();
+        break;
+    case 11:
+        self->finishedStopDriving();
+        break;
+    case 13:
+        break;
+    case 14: {
+        CameraManager::getInstance()->setTouchScreenInputs(false);
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        self->collisionBody->SetXForm(b2Vec2(character->GetPosition().X / 100.0f, character->GetPosition().Y / 100.0f), 0.0f);
+        reinterpret_cast<PlayerCarInteractionFacingView*>(self)->facing = -self->vehicle->GetRight();
+        character->setAnimation(32, reinterpret_cast<PlayerCarInteractionVehicleView*>(reinterpret_cast<PlayerCarInteractionFacingView*>(self)->vehicle)->doorAnimationScale, false, true, false);
+        self->_SetTarget(0, !ScriptManager::getInstance()->isInCinematic());
+        self->unknown372 = 15;
+        break;
+    }
+    case 15: {
+        Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(self));
+        if (!_ZN9Character18isCurrentAnimationEi(character, 30) && !_ZN9Character18isCurrentAnimationEi(character, 31)
+            && !_ZN9Character18isCurrentAnimationEi(character, 32) && !_ZN9Character18isCurrentAnimationEi(character, 33))
+            self->unknown372 = 16;
+        break;
+    }
+    }
+}
+
+
+#include "../characters/PlayerEvent.h"
+#include "../core/EventManager.h"
+#include "../audio/SoundManager.h"
 #include "../characters/PhysicAttributes.h"
 void PlayerTest::stopDriving(playertest::PlayerCarState::ePlayerCarState state, bool left)
 {

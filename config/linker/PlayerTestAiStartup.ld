@@ -57,6 +57,8 @@ SECTIONS
     .player_test_update 0x00304ec8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest6UpdateEv) }
     .player_test_switch_anim 0x00303bb8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest10switchAnimEv) }
     .player_test_switch_anim_table 0x0041dfa8 : { *ai-startup-playertest.o(.rodata._ZN10PlayerTest10switchAnimEv) }
+    .player_test_update_car_interaction 0x0030406c : { *ai-startup-playertest.o(.text._ZN10PlayerTest20updateCarInteractionEv) }
+    .player_test_update_car_interaction_table 0x0041e2fc : { *ai-startup-playertest.o(.rodata._ZN10PlayerTest20updateCarInteractionEv) }
     .player_map_trackable_vtable 0x004ab050 : { *ai-startup-playertest.o(.data.rel.ro._ZTV13IMapTrackable .gnu.linkonce.d.rel.ro._ZTV13IMapTrackable .rodata._ZTV13IMapTrackable) }
     .player_shape_def_d0 0x002db47c : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
     .player_shape_def_d1 0x002db49c : { *ai-startup-playertest.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }

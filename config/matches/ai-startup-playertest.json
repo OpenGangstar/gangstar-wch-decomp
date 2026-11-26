@@ -137,7 +137,8 @@
         "_ZN10PlayerTest10updateAnimEf",
         "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
         "_ZN10PlayerTest6moveToERK7Vehicle",
-        "_ZN10PlayerTest6attackEb"
+        "_ZN10PlayerTest6attackEb",
+        "_ZN10PlayerTest20updateCarInteractionEv"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -373,7 +374,6 @@
         "_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE",
         "_ZNK7Vehicle16getCloseDoorAnimEv",
         "_ZN10PlayerTest15onTargetReachedEv",
-        "_ZN10PlayerTest20updateCarInteractionEv",
         "_ZN10PlayerTest4moveEff",
         "_ZN15CControlManager6updateEv",
         "_ZN18WantedLevelManager19_processWantedLevelEv",
@@ -395,6 +395,14 @@
         "_ZN9GS3DStuff9getSkyBoxEv",
         "_ZN11LevelObject17isVisibleOnScreenEv",
         "_ZNK7Vehicle11isDoorClearEbP6b2Body",
-        "_ZN6Weapon7isReadyEb"
+        "_ZN6Weapon7isReadyEb",
+        "_ZN13CameraManager8goToSideEb",
+        "_ZN13WeaponManager25isWeaponUsableFromVehicleEi",
+        "_ZN15CControlManager8enterCarEb",
+        "_ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE",
+        "_ZN7Vehicle21getLeftThrowAnimationEv",
+        "_ZN7Vehicle22getLeftThrownAnimationEv",
+        "_ZNK7Vehicle11getExitAnimEv",
+        "_ZNK7Vehicle12getEnterAnimEv"
     ]
 }
