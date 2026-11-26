@@ -5,6 +5,8 @@ _ZdlPv = 0x001c42b0;
 __aeabi_atexit = 0x001c494c;
 _ZdaPv = 0x001c461c;
 _Znaj = 0x001c3ff8;
+PROVIDE(_Znwj = 0x001c4814);
+PROVIDE(__stack_chk_fail = 0x001c42e0);
 __aeabi_idivmod = 0x001c4934;
 SECTIONS
 {
@@ -19,6 +21,11 @@ SECTIONS
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
     .radio_function_0 0x00352068 : { *string-startup-radiostationcontroller.o(.text._ZN22RadioStationController14selectRandomAdEv) }
+    .radio_ctor 0x00352334 : { *string-startup-radiostationcontroller.o(.text._ZN22RadioStationControllerC1Ev .text._ZN22RadioStationControllerC2Ev) }
+    .radio_ctor_station_paths 0x00436328 : { *string-startup-radiostationcontroller.o(.rodata.str1.4) }
+    .radio_ctor_c968 0x00436350 : { *string-startup-radiostationcontroller.o(.rodata._ZZN22RadioStationControllerC1EvE*C.11) }
+    .radio_ctor_c965 0x00436360 : { *string-startup-radiostationcontroller.o(.rodata._ZZN22RadioStationControllerC1EvE*C.8) }
+    .radio_data_stream_d1 0x002d3654 : { *string-startup-radiostationcontroller.o(.gnu.linkonce.t._ZN10DataStreamD1Ev) }
     .radio_function_2 0x00352144 : { *string-startup-radiostationcontroller.o(.text._ZN22RadioStationControllerD1Ev .text._ZN22RadioStationControllerD2Ev) }
     .radio_function_3 0x003521d4 : { *string-startup-radiostationcontroller.o(.text._ZN7Structs12RadioStation4ReadER10DataStream) }
 }
