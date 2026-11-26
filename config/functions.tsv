@@ -11577,7 +11577,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032f1ad	0x38	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler8activateEv	SniperControlHandler::activate()
 0x0032f1e5	0x1c	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandlerC2EP15CControlManager	SniperControlHandler::SniperControlHandler(CControlManager*)
 0x0032f1e5	0x1c	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandlerC1EP15CControlManager	SniperControlHandler::SniperControlHandler(CControlManager*)
-0x0032f201	0x190	SniperControlHandler.cpp	game	input	pending	_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent	SniperControlHandler::onKeyboardEvent(IEvent const*)
+0x0032f201	0x190	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler15onKeyboardEventEPK6IEvent	SniperControlHandler::onKeyboardEvent(IEvent const*)
 0x0032f391	0x8e	SniperControlHandler.cpp	game	input	matched	_ZN20SniperControlHandler7onEventEPK6IEventPK12EventManager	SniperControlHandler::onEvent(IEvent const*, EventManager const*)
 0x0032f421	0x144	SniperControlHandler.cpp	game	input	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032f565	0x14	SniperControlHandler.cpp	game	input	matched	_GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager	_GLOBAL__I__ZN20SniperControlHandlerC2EP15CControlManager
@@ -13003,7 +13003,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003502a9	0xd6	CarSounds.cpp	game	vehicles	matched	_ZN9CarSoundsD1Ev	CarSounds::~CarSounds()
 0x00350381	0xbc	CarSounds.cpp	game	vehicles	matched	_ZN9SoundFade13InitFadeGainsEi	SoundFade::InitFadeGains(int)
 0x00350441	0x3c	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds23InitOnOffCrossFadeGainsEi	CarSounds::InitOnOffCrossFadeGains(int)
-0x0035047d	0x408	CarSounds.cpp	game	vehicles	pending	_ZN9CarSounds4InitEP16CarSoundSettings	CarSounds::Init(CarSoundSettings*)
+0x0035047d	0x408	CarSounds.cpp	game	vehicles	matched	_ZN9CarSounds4InitEP16CarSoundSettings	CarSounds::Init(CarSoundSettings*)
 0x00350885	0x18	CSound.cpp	game	audio	matched	_ZN6CSoundC2Ev	CSound::CSound()
 0x00350885	0x18	CSound.cpp	game	audio	matched	_ZN6CSoundC1Ev	CSound::CSound()
 0x0035089d	0x34	CSound.cpp	game	audio	matched	_ZN6CSoundC2EP10CSoundData	CSound::CSound(CSoundData*)

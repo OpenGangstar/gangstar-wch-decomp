@@ -125,7 +125,8 @@
         "_ZN9CarSounds14AddTurboSoundsEP18TurboSoundSettings",
         "_ZN9CarSounds20UpdateOnEngineSoundsEv",
         "_ZN9CarSounds21UpdateOffEngineSoundsEv",
-        "_ZN9CarSounds17UpdateTurboSoundsEv"
+        "_ZN9CarSounds17UpdateTurboSoundsEv",
+        "_ZN9CarSounds4InitEP16CarSoundSettings"
     ],
     "sections": [
         ".callback_function_0",

@@ -16,6 +16,9 @@ _ZN39retail_snipercontrolhandler_transitions22scripted_vehicle_transE = 0x004271
 __cxa_pure_virtual = 0;
 SECTIONS
 {
+    .sniper_keyboard_event 0x0032f200 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler15onKeyboardEventEPK6IEvent) }
+    .sniper_keyboard_fov 0x004b5970 : { *ai-startup-snipercontrolhandler.o(.data.fov) }
+    .sniper_keyboard_switch 0x00426a74 : { *ai-startup-snipercontrolhandler.o(.rodata._ZN20SniperControlHandler15onKeyboardEventEPK6IEvent) }
     .sniper_on_event 0x0032f390 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler7onEventEPK6IEventPK12EventManager) }
     .sniper_attack_pressed 0x0032f158 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler19handleAttackPressedEv) }
     .sniper_attack_held 0x0032f0f8 : { *ai-startup-snipercontrolhandler.o(.text._ZN20SniperControlHandler16handleAttackHeldEv) }
@@ -68,3 +71,6 @@ ASSERT(SIZEOF(.ai_startup_storage_8) == 8, "_ZN8gameloft2ai11civ_vehicleE extent
 ASSERT(SIZEOF(.ai_startup_storage_9) == 8, "_ZN8gameloft2ai11cop_vehicleE extent");
 ASSERT(SIZEOF(.ai_startup_storage_10) == 8, "_ZN8gameloft2ai5guardE extent");
 ASSERT(SIZEOF(.ai_startup_storage_11) == 8, "_ZN8gameloft2ai16scripted_vehicleE extent");
+ASSERT(SIZEOF(.sniper_keyboard_event) == 400, "Sniper keyboard extent");
+ASSERT(SIZEOF(.sniper_keyboard_fov) == 4, "Sniper fov extent");
+ASSERT(SIZEOF(.sniper_keyboard_switch) == 392, "Sniper key table extent");
