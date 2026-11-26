@@ -32,6 +32,10 @@
 #include "../world/SceneNodeManager.h"
 #include "../meta/Achievements.h"
 #include "../scripting/ScriptManager.h"
+#include "../core/CameraManager.h"
+#include "../meta/Factions.h"
+#include "../hud/CHudManager.h"
+#include "../combat/HitWarning.h"
 
 irr::scene::ITimelineController* Character::s_timelineController;
 bool Character::b_isBloodOn = true;
@@ -1366,6 +1370,211 @@ static void __tcf_1()
 {
     _ZN12CGameFactoryD1Ev(&_ZZN12CGameFactory11getInstanceEvE2gf);
 }
+}
+
+namespace { struct HitWarningView : HudElement { int timers[4]; int frames[4]; }; }
+
+bool Character::shoot(float speed, bool pressed)
+{
+    struct ShootingGuard { unsigned int& flags; ShootingGuard(unsigned int& flags): flags(flags) {} ~ShootingGuard() { flags &= ~0x20000000u; } } guard(movementFlags);
+    {
+        Application* app = Application::GetInstance();
+        app->GetDevice()->getTimer()->getRealTime();
+        Weapon* weapon = getWeapon();
+        int type = weapon->getWeaponType();
+        if (!weapon->isReady(s_type[objectType] == 5))
+            goto fail;
+        movementFlags &= ~0x10000000u;
+        // No-code hint (PRED_CALL on the ready edge): balances the fail-block
+        // prefetch so the isReady branch is predicted even.
+        __builtin_prefetch(this);
+        if (pressed) {
+            movementFlags &= ~0x200000u;
+            goToIdle();
+            ready(1.0f);
+            movementFlags |= 0x4000000u;
+            switchCombatAnimation();
+        }
+        if (movementFlags & 0x200000u) {
+            switch (currentAnimation) {
+            case 138:
+                movementFlags |= 0x10000000u;
+                setAnimation(69,speed,false,false,false);
+                movementFlags &= ~0x200000u;
+                goto fail;
+            case 140:
+                movementFlags |= 0x10000000u;
+                switch (type) {
+                    case 1: setAnimation(53,speed,false,false,false); break;
+                    case 5: setAnimation(52,speed,false,false,false); break;
+                    }
+                movementFlags &= ~0x200000u;
+                goto fail;
+            case 141:
+                movementFlags |= 0x10000000u;
+                setAnimation(57,speed,false,false,false);
+                movementFlags &= ~0x200000u;
+                goto fail;
+            case 142:
+                movementFlags |= 0x10000000u;
+                switch (type) {
+                    case 2: setAnimation(62,speed,false,false,false); break;
+                    case 6: setAnimation(61,speed,false,false,false); break;
+                    }
+                movementFlags &= ~0x200000u;
+                goto fail;
+            case 145:
+                movementFlags |= 0x10000000u;
+                switch (type) {
+                    case 7: setAnimation(69,speed,false,false,false); break;
+                    case 8: setAnimation(70,speed,false,false,false); break;
+                    }
+                movementFlags &= ~0x200000u;
+                goto fail;
+            case 146:
+                movementFlags |= 0x10000000u;
+                switch (type) {
+                    case 3: setAnimation(78,speed,false,false,false); break;
+                    case 4: setAnimation(77,speed,false,false,false); break;
+                    }
+                movementFlags &= ~0x200000u;
+                goto fail;
+            default:
+                movementFlags &= ~0x200000u;
+                goto fail;
+            }
+        }
+        switch (currentAnimation) {
+        case 36: case 42: case 165: case 166: case 169:
+            movementFlags |= 0x200000u;
+            ready(1.0f);
+            break;
+        case 50:
+            movementFlags |= 0x10000000u;
+            switch (type) {
+                case 1: setAnimation(53,speed,false,false,false); break;
+                case 5: setAnimation(52,speed,false,false,false); break;
+                }
+            break;
+        case 55:
+            movementFlags |= 0x10000000u;
+            setAnimation(57,speed,false,false,false);
+            break;
+        case 59:
+            movementFlags |= 0x10000000u;
+            switch (type) {
+                case 2: setAnimation(62,speed,false,false,false); break;
+                case 6: setAnimation(61,speed,false,false,false); break;
+                }
+            break;
+        case 64:
+            movementFlags |= 0x10000000u;
+            switch (type) {
+                case 7: setAnimation(69,speed,false,false,false); break;
+                case 8: setAnimation(70,speed,false,false,false); break;
+                }
+            break;
+        case 73:
+            movementFlags |= 0x10000000u;
+            switch (type) {
+                case 3: setAnimation(78,speed,false,false,false); break;
+                case 4: setAnimation(77,speed,false,false,false); break;
+                }
+            break;
+        case 52: case 53: case 57: case 61: case 62: case 69: case 70: case 77: case 78:
+        {
+            LevelObject* hit = 0;
+            if (weapon->isGun()) {
+                irr::core::vector3d<float> point, direction, rayDirection, normal;
+                irr::core::vector3d<float> source = GetPosition();
+                source.Z = weapon->GetPosition().Z;
+                if (target) {
+                    float randomX=(float(lrand48()%100)-50.0f)/50.0f;
+                    float randomY=(float(lrand48()%100)-50.0f)/50.0f;
+                    float randomZ=(float(lrand48()%100)-50.0f)/50.0f;
+                    irr::core::vector3d<float> noise(randomX,randomY,randomZ);
+                    direction = target->GetPosition()+noise*(200.0f-float(unknown252*2))-weapon->GetPosition();
+                    rayDirection = target->GetPosition()+noise*(200.0f-float(unknown252*2))-source;
+                    if (s_type[target->getObjectType()] == 3) {
+                        direction.Z += 100.0f;
+                        rayDirection.Z += 100.0f;
+                    }
+                    direction.normalize(); rayDirection.normalize();
+                } else {
+                    direction=GetFront(); rayDirection=GetFront();
+                }
+                bool blocked=CastRay(source,rayDirection*float(weapon->getRange()),point,normal,hit,false);
+                if (hit) {
+                    if (s_type[hit->getObjectType()]!=8 && hit!=PlayerTest::GetPlayer()->getVehicle() && !(static_cast<Character*>(hit)->unknown4&4u)) {
+                        blocked=true;
+                    } else if (s_type[hit->getObjectType()]==5) {
+                        if (s_type[objectType]==5) {
+                            int hitFaction=static_cast<NPC*>(hit)->faction;
+                            if (static_cast<NPC*>(this)->faction!=0 && hitFaction==static_cast<NPC*>(this)->faction)
+                                blocked=true;
+                        } else if (s_type[objectType]==8 && Factions::isFactionFriendly(static_cast<NPC*>(hit)->faction)) {
+                            blocked=true;
+                        }
+                    }
+                }
+                if (hit && (s_type[hit->getObjectType()]==8 || s_type[hit->getObjectType()]==5)) {
+                    showBloodSplash(point,normal);
+                    weapon->shoot(true,weapon->GetPosition()+direction*7500.0f,normal);
+                } else {
+                    weapon->shoot(blocked,blocked ? weapon->GetPosition()+direction*7500.0f : point,normal);
+                }
+                if (!blocked && hit) {
+                    if ((s_type[hit->getObjectType()]==8 && PlayerTest::GetPlayer()->unknown372==0)
+                        || s_type[hit->getObjectType()]==5 || s_type[hit->getObjectType()]==3)
+                        hit->shooted(weapon->getDamage(),this);
+                    if (hit) switch (s_type[hit->getObjectType()]) {
+                    case 8: {
+                        float incomingY, incomingX, cameraX;
+                        irr::core::vector3d<float> incoming=weapon->GetPosition()-point;
+                        incoming.normalize();
+                        irr::core::vector3d<float> camera=CameraManager::getInstance()->getPosition()-CameraManager::getInstance()->getLookAt();
+                        camera.normalize();
+                        float dot=(incomingX=incoming.X)*(cameraX=camera.X)+(incomingY=incoming.Y)*camera.Y+incoming.Z*camera.Z;
+                        CHudManager* hud=app->GetHudManager();
+                        if (dot>0.5f) reinterpret_cast<HitWarningView*>(hud->component168)->timers[1]=255;
+                        else if (dot< -0.5f) reinterpret_cast<HitWarningView*>(hud->component168)->timers[0]=255;
+                        else if (incoming.Z*camera.Z+(incoming.X*-camera.Y+camera.X*incoming.Y)<0.0f) reinterpret_cast<HitWarningView*>(hud->component168)->timers[2]=255;
+                        else reinterpret_cast<HitWarningView*>(hud->component168)->timers[3]=255;
+                        break;
+                    }
+                    default:
+                        // No-code hint (PRED_CALL): balances the call heuristic on case 8.
+                        __builtin_prefetch(this);
+                    }
+                }
+            } else if (weapon->isProjectile()) {
+                irr::core::vector3d<float> direction;
+                if (target) {
+                    const irr::core::vector3d<float>& targetPosition = target->GetPosition();
+                    const irr::core::vector3d<float>& ownPosition = GetPosition();
+                    float x=targetPosition.X-ownPosition.X;
+                    float y=targetPosition.Y-ownPosition.Y;
+                    float targetZ=targetPosition.Z;
+                    float ownZ=ownPosition.Z;
+                    // Y is stored twice: the extra use keeps the Y value live past the Z
+                    // loads as in retail; flow removes this first, dead store.
+                    direction.Y=y;
+                    direction.X=x;
+                    direction.Y=y;
+                    direction.Z=targetZ-ownZ-25.0f;
+                } else direction=GetFront();
+                direction.normalize();
+                weapon->shootProjectile(direction);
+            }
+            return true;
+        }
+        }
+        fail:
+        // No-code hint (Thumb-1 has no prefetch insn): keeps the shared
+        // return-false block from being removed as a tree forwarder.
+        __builtin_prefetch(this);
+        return false;
+    }
 }
 
 bool Character::attack()

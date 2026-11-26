@@ -43,6 +43,8 @@ INCLUDE config/linker/PlayerTestDestructorSections.ld
 
 SECTIONS
 {
+    .character_shoot 0x002f55d0 : { *ai-startup-character.o(.text._ZN9Character5shootEfb) }
+    .character_shoot_tables 0x0041bfd0 : { *ai-startup-character.o(.rodata._ZN9Character5shootEfb) }
     .player_test_attack 0x00305a1c : { *ai-startup-playertest.o(.text._ZN10PlayerTest6attackEb) }
     .player_test_move_to 0x00302360 : { *ai-startup-playertest.o(.text._ZN10PlayerTest6moveToERK7Vehicle) }
     .player_test_get_attackable_target 0x00303314 : { *ai-startup-playertest.o(.text._ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_) }
