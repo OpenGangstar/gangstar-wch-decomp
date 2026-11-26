@@ -17,20 +17,26 @@ template<class T> inline const T miniClamp(const T& x,const T& low,const T& high
 
 void MiniMap::draw2d() const
 {
+    irr::core::vector2d<float> position;
+    irr::core::vector2d<float> mapPos;
     if (!followedObject || !(flags & 1)) return;
-    const float x = followedObject->GetPosition().X;
-    const float y = followedObject->GetPosition().Y;
+    position.X = followedObject->GetPosition().X;
+    position.Y = followedObject->GetPosition().Y;
     Map* bounds = Map::getInstance();
     const float minX = bounds->minX;
     const float minY = bounds->minY;
-    const float maxX = bounds->maxX;
-    const float maxY = bounds->maxY;
-    const float mapWidth=maxX-minX;
-    const float mapX = (x-minX)/mapWidth;
-    const float mapY = (-y-minY)/(maxY-minY);
+    float mapX = bounds->maxX;
+    float mapHeight = bounds->maxY;
+    mapX-=minX;
+    mapX = (position.X-minX)/mapX;
+    mapHeight-=minY;
+    mapPos.Y = (-position.Y-minY)/mapHeight;
+    const float mapY = mapPos.Y;
     const irr::core::dimension2d<int>& textureSize = Map::getInstance()->texture->getSize();
-    const int pixelX = static_cast<int>(mapX*textureSize.Width);
-    const float pixelY = mapY*textureSize.Height;
+    const float textureWidth = textureSize.Width;
+    const float textureHeight = textureSize.Height;
+    const int pixelX = static_cast<int>(mapX*textureWidth);
+    const irr::core::position2d<int> pixel(pixelX,static_cast<int>(mapY*textureHeight));
     irr::core::vector3d<float> direction = CameraManager::getInstance()->getLookAt();
     const irr::core::vector3d<float> cameraPosition = CameraManager::getInstance()->getPosition();
     direction.X -= cameraPosition.X;
@@ -38,31 +44,43 @@ void MiniMap::draw2d() const
     direction.Z = 0;
     direction.normalize();
     const irr::core::vector3d<float> north(0,1,0);
-    float angle = acosf(miniClamp(direction.dotProduct(north)/direction.getLength(),-1.0f,1.0f));
-    if (!(direction.X>0)) angle=-angle;
+    float cosine = direction.dotProduct(north);
+    cosine /= direction.getLength();
+    float angle = acosf(miniClamp(static_cast<float>(cosine),-1.0f,1.0f));
+    angle = direction.X>0 ? angle : -angle;
     Map::getInstance()->rotation=angle;
     Map* offsetMap=Map::getInstance();
     offsetMap->offset.X=mapX;
     offsetMap->offset.Y=mapY;
     Map::getInstance()->scale=scale;
-    const SpriteFrameModule* frameModule=sprite->GetFModule(sprite->GetFrame(frame)->firstModule);
+    const SpriteFrame* spriteFrame=sprite->GetFrame(frame);
+    const SpriteFrameModule* frameModule=sprite->GetFModule(spriteFrame->firstModule);
     const SpriteModule* module=sprite->GetModule(frameModule->module);
-    const int left=pixelX-(module->width>>1);
-    const int top=static_cast<int>(pixelY)-(module->height>>1);
-    irr::core::rect<int> clip(left+inset,top+inset,0,0);
-    clip.LowerRightCorner.X=module->width-inset+left;
-    clip.LowerRightCorner.Y=module->height-inset+top;
-    const int offsetX=frameModule->x+inset;
-    const int offsetY=frameModule->y+inset;
+    const int left=pixel.X-(module->width>>1);
+    const int top=pixel.Y-(module->height>>1);
+    irr::core::rect<int> clip(0,0,0,0);
+    const int border=inset;
+    clip.UpperLeftCorner.X=left+border;
+    clip.UpperLeftCorner.Y=top+border;
+    clip.LowerRightCorner.X=module->width-border+left;
+    clip.LowerRightCorner.Y=module->height-border+top;
+    const int frameX=frameModule->x;
+    const int frameY=frameModule->y;
     Map* offsetPixelMap=Map::getInstance();
-    offsetPixelMap->offsetPixelX=offsetX;
-    offsetPixelMap->offsetPixelY=offsetY;
-    Map::getInstance()->clip=clip;
+    offsetPixelMap->offsetPixelX=frameX+border;
+    offsetPixelMap->offsetPixelY=frameY+border;
+    Map* clipMap=Map::getInstance();
+    clipMap->clip.UpperLeftCorner.X=clip.UpperLeftCorner.X;
+    clipMap->clip.UpperLeftCorner.Y=clip.UpperLeftCorner.Y;
+    clipMap->clip.LowerRightCorner.X=clip.LowerRightCorner.X;
+    clipMap->clip.LowerRightCorner.Y=clip.LowerRightCorner.Y;
     Map::getInstance()->draw();
     sprite->PaintFrame(frame,0,0,0);
     const irr::core::position2d<int> arrow=_calculateXYOffset(irr::core::vector3d<float>(0,1,0),clip,true,false);
     sprite->PaintFrame(unknown112,arrow.X,arrow.Y,0);
-    for (TrackingLink* link=trackedObjects.next;link!=&trackedObjects;link=link->next) {
+    TrackingLink* link=trackedObjects.next;
+    const TrackingLink* const end=&trackedObjects;
+    for (;link!=end;link=link->next) {
         TrackingNode* node=static_cast<TrackingNode*>(link);
         LevelObject* object=node->object;
         const int type=LevelObject::s_type[object->objectType];
@@ -73,20 +91,25 @@ void MiniMap::draw2d() const
             special=true;
         }
         const irr::core::position2d<int> point=_calculateXYOffset(object->GetPosition(),clip,false,special);
-        if (point.X>0 && point.Y>0) {
+        const int pointX=point.X, pointY=point.Y;
+        if (pointX>0 && pointY>0) {
             AnimObject* marker=node->marker;
-            marker->SetPosition(point.X,point.Y,0);
+            marker->SetPosition(pointX,pointY,0);
             marker->Draw();
         }
     }
     irr::core::vector3d<float> front=followedObject->GetFront();
     front.normalize();
-    float targetAngle=acosf(miniClamp(direction.dotProduct(front)/(direction.getLength()*front.getLength()),-1.0f,1.0f));
+    float targetCosine=direction.dotProduct(front);
+    targetCosine/=direction.getLength()*front.getLength();
+    float targetAngle=acosf(miniClamp(static_cast<float>(targetCosine),-1.0f,1.0f));
     irr::core::vector3d<float> rotated=direction;
     rotated.rotateXYBy(90,irr::core::vector3d<float>(0,0,0));
     if(rotated.dotProduct(front)>0) targetAngle=-targetAngle;
-    const int width=module->width, height=module->height;
-    const int moduleX=frameModule->x,moduleY=frameModule->y;
+    const short moduleX=frameModule->x;
+    const short width=module->width;
+    const short moduleY=frameModule->y;
+    const short height=module->height;
     TargetMarker::getInstance()->depth=targetAngle;
     TargetMarker* marker=TargetMarker::getInstance();
     marker->offsetX=width/2+moduleX;

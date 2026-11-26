@@ -63,7 +63,8 @@
             "address": "0x00329441",
             "compiled_name": "__tcf_2"
         },
-        "_ZThn4_NK7MiniMap6draw2dEv"
+        "_ZThn4_NK7MiniMap6draw2dEv",
+        "_ZNK7MiniMap6draw2dEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
