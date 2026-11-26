@@ -135,7 +135,8 @@
         "_ZN10PlayerTest6UpdateEv",
         "_ZN10PlayerTest13switchContextENS_8eContextEb",
         "_ZN10PlayerTest10updateAnimEf",
-        "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_"
+        "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
+        "_ZN10PlayerTest6moveToERK7Vehicle"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -175,7 +176,8 @@
         ".player_test_update",
         ".player_test_switch_context",
         ".player_test_update_anim",
-        ".player_test_get_attackable_target"
+        ".player_test_get_attackable_target",
+        ".player_test_move_to"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -371,7 +373,6 @@
         "_ZN10PlayerTest15onTargetReachedEv",
         "_ZN10PlayerTest20updateCarInteractionEv",
         "_ZN10PlayerTest4moveEff",
-        "_ZN10PlayerTest6moveToERK7Vehicle",
         "_ZN15CControlManager6updateEv",
         "_ZN18WantedLevelManager19_processWantedLevelEv",
         "_ZN13ScriptManager19unlockFrozenScriptsEv",
@@ -391,6 +392,7 @@
         "_ZN9GS3DStuff9CleanNodeEPN3irr5scene10ISceneNodeE",
         "_ZN9GS3DStuff9getSkyBoxEv",
         "_ZN9Character15updateAnimationEf",
-        "_ZN11LevelObject17isVisibleOnScreenEv"
+        "_ZN11LevelObject17isVisibleOnScreenEv",
+        "_ZNK7Vehicle11isDoorClearEbP6b2Body"
     ]
 }
