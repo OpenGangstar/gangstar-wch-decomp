@@ -172,7 +172,8 @@
         "_ZN9Character19switchMoveAnimationEv",
         "_ZN9Character21switchCombatAnimationEv",
         "_ZN9Character11runToTargetEi",
-        "_ZN9Character15updateAnimationEf"
+        "_ZN9Character15updateAnimationEf",
+        "_ZN9Character5shootEfb"
     ],
     "sections": [
         ".character_init_physic",
@@ -323,6 +324,16 @@
         "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
         "_ZN7Vehicle21getLeftThrowAnimationEv",
         "_ZN7Vehicle22getLeftThrownAnimationEv",
-        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE"
+        "_ZN9AIManager5addAIEP7VehicleN8gameloft2ai7StateIDE",
+        "_ZN11LevelObject7CastRayERKN3irr4core8vector3dIfEES5_RS3_S6_RPS_b",
+        "_ZN13CameraManager11getInstanceEv",
+        "_ZN6Weapon15shootProjectileERKN3irr4core8vector3dIfEE",
+        "_ZN6Weapon5shootEbRKN3irr4core8vector3dIfEERS3_",
+        "_ZN6Weapon7isReadyEb",
+        "_ZN8Factions17isFactionFriendlyEi",
+        "_ZNK13CameraManager11getPositionEv",
+        "_ZNK13CameraManager9getLookAtEv",
+        "_ZNK6Weapon12isProjectileEv",
+        "_ZNK6Weapon5isGunEv"
     ]
 }

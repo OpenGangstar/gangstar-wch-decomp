@@ -23,6 +23,8 @@ INCLUDE config/linker/NPCTargetEventSections.ld
 INCLUDE config/linker/NPCFunctionSections.ld
 SECTIONS
 {
+    .character_shoot 0x002f55d0 : { *ai-startup-character.o(.text._ZN9Character5shootEfb) }
+    .character_shoot_tables 0x0041bfd0 : { *ai-startup-character.o(.rodata._ZN9Character5shootEfb) }
     .npc_car_under_wheel 0x002fe784 : { *ai-startup-npc.o(.text._ZN3NPC24UpdateCarPosIfUnderWheelEv) }
     .ai_manager_singleton 0x002dbae8 : { *ai-startup-npc.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
     .ai_manager_cleanup 0x002fd6f0 : { *ai-startup-npc.o(.text.__tcf_0) }
