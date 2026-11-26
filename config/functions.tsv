@@ -10895,7 +10895,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031d7a1	0x25c	PhysicAttributes.cpp	game	characters	matched	_ZN15ContactListener7PersistEPK14b2ContactPoint	ContactListener::Persist(b2ContactPoint const*)
 0x0031d9fd	0x2c	PhysicAttributes.cpp	game	characters	matched	_ZN13ContactFilterD0Ev	ContactFilter::~ContactFilter()
 0x0031da29	0x254	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_	PhysicAttributes::IntersectSegmentWithHeightMap(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
-0x0031dc7d	0x44c	PhysicAttributes.cpp	game	characters	pending	_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_	ContactFilter::ShouldCollide(b2Shape*, b2Shape*)
+0x0031dc7d	0x44c	PhysicAttributes.cpp	game	characters	matched	_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_	ContactFilter::ShouldCollide(b2Shape*, b2Shape*)
 0x0031e0c9	0x1bc	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes5CleanEv	PhysicAttributes::Clean()
 0x0031e285	0x718	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes18AddCollisionShapesEit	PhysicAttributes::AddCollisionShapes(int, unsigned short)
 0x0031e99d	0x178	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes21UpdateEdgesCollisionsEi	PhysicAttributes::UpdateEdgesCollisions(int)
@@ -11388,7 +11388,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032b1b1	0x2c	SlideControl.cpp	game	ui	matched	_ZN12SlideControlD1Ev	SlideControl::~SlideControl()
 0x0032b1dd	0x18	SlideControl.cpp	game	ui	matched	_ZN12SlideControl5resetEv	SlideControl::reset()
 0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	matched	_ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
-0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	pending	_ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
+0x0032b1f5	0x1ec	SlideControl.cpp	game	ui	matched	_ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE	SlideControl::SlideControl(ASprite*, int, int, SlideControl::SlideControlMode)
 0x0032b3e1	0x36	SlideControl.cpp	game	ui	matched	_ZN12SlideControl6updateEd	SlideControl::update(double)
 0x0032b418	0x14	SlideControl.cpp	game	ui	matched	_ZThn4_NK12SlideControl6draw2dEv	non-virtual thunk to SlideControl::draw2d() const
 0x0032b42d	0xec	SlideControl.cpp	game	ui	matched	_ZNK12SlideControl6draw2dEv	SlideControl::draw2d() const
@@ -11477,7 +11477,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0032c919	0x48	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD2Ev	WantedMeter::~WantedMeter()
 0x0032c919	0x48	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterD1Ev	WantedMeter::~WantedMeter()
 0x0032c961	0x110	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterC1EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
-0x0032c961	0x110	WantedMeter.cpp	game	missions	pending	_ZN11WantedMeterC2EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
+0x0032c961	0x110	WantedMeter.cpp	game	missions	matched	_ZN11WantedMeterC2EP7ASpritei	WantedMeter::WantedMeter(ASprite*, int)
 0x0032ca71	0x6c	WantedMeter.cpp	game	missions	matched	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
 0x0032cadd	0x14	WantedMeter.cpp	game	missions	matched	_GLOBAL__I__ZN11WantedMeterC2EP7ASpritei	_GLOBAL__I__ZN11WantedMeterC2EP7ASpritei
 0x0032caf1	0x2	Wheel.cpp	game	vehicles	matched	_ZN5Wheel7setHandEb	Wheel::setHand(bool)

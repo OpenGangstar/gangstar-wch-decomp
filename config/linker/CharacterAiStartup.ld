@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-character/retail-symbols.ld
@@ -22,6 +23,9 @@ __aeabi_fdiv = 0x001c4520;
 INCLUDE config/linker/CharacterStateSections.ld
 SECTIONS
 {
+    .contact_filter_should_collide 0x0031dc7c : { *ai-startup-physicattributes.o(.text._ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_) }
+    .physic_jump_shape 0x0031ccf0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape) }
+    .contact_filter_vtable 0x004abd00 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV13ContactFilter) }
     .character_shoot 0x002f55d0 : { *ai-startup-character.o(.text._ZN9Character5shootEfb) }
     .character_shoot_tables 0x0041bfd0 : { *ai-startup-character.o(.rodata._ZN9Character5shootEfb) }
     .character_run_to_target 0x002f39e0 : { *ai-startup-character.o(.text._ZN9Character11runToTargetEi) }
