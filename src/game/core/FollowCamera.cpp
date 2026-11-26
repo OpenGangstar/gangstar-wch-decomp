@@ -193,3 +193,59 @@ irr::core::vector3d<float> FollowCamera::getFacing() const
     }
     return facing;
 }
+
+
+#include "../characters/PlayerTest.h"
+namespace {
+struct FollowCameraOwnerView {
+    unsigned char unknown0[156];
+    float height;
+};
+}
+
+static inline __attribute__((always_inline))
+float followCameraGroundHeight(const Character* character)
+{
+    return character->GetPosition().Z -
+        reinterpret_cast<const FollowCameraOwnerView*>(character)->height;
+}
+
+void FollowCamera::update(float)
+{
+    if (!owner)
+        return;
+
+    const float maximumDistance = 450.0f;
+    const float minimumDistance = 450.0f;
+    const float heightDelta = position.Z - previousHeight;
+    position.Z = owner->GetPosition().Z;
+    const irr::core::vector3d<float> offset = position - owner->GetPosition();
+    const irr::core::vector3d<float> facing = getFacing();
+    const irr::core::vector3d<float> right = static_cast<PlayerTest*>(owner)->GetRight();
+    const int distanceSquared = static_cast<int>(offset.getLengthSQ());
+
+    if (distanceSquared > static_cast<int>(maximumDistance * maximumDistance)) {
+        if (flag32) {
+            owner->setCameraOffset(followCameraOffset(getFacing()));
+            flag32 = false;
+        }
+        irr::core::vector3d<float> nextPosition = owner->GetPosition() + owner->getCameraOffset() * maximumDistance;
+        nextPosition.Z = followCameraGroundHeight(owner);
+        setPosition(nextPosition);
+    } else if (distanceSquared < static_cast<int>(minimumDistance * minimumDistance)) {
+        if (flag32) {
+            owner->setCameraOffset(followCameraOffset(getFacing()));
+            flag32 = false;
+        }
+        irr::core::vector3d<float> nextPosition = owner->GetPosition() + owner->getCameraOffset() * minimumDistance;
+        nextPosition.Z = followCameraGroundHeight(owner);
+        setPosition(nextPosition);
+    } else {
+        flag32 = true;
+    }
+
+    previousHeight = followCameraGroundHeight(owner);
+    position.Z = heightDelta + previousHeight;
+    setLookAt(owner->GetPosition());
+    lookAt.Z = followCameraGroundHeight(owner) + 180.0f;
+}

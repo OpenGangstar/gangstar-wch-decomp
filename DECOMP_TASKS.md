@@ -3628,7 +3628,7 @@ relatives before granting an implementation scope.
 | libsanangeles.so | 0x003065e5 | SpawnPoint::CreateAllSpawnInstances() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
 | libsanangeles.so | 0x00306b11 | SpawnPoint::Load(Structs::SpawnPoint const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
 | libsanangeles.so | 0x00307101 | SpawnPoint::UpdateSpawnCenters() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SpawnPoint.cpp |
-| libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | claude-w1zzt | ASSIGNED | Fresh reconstruction with this week's levers | SpawnPoint.cpp |
+| libsanangeles.so | 0x00307451 | SpawnPoint::canSpawn() const | claude-w1zzt | ASSIGNED | Round 2. w1zzt v4 (_scratch/claude/w1zzt/body4.inc) 816/816 frame 92, ratio .811: reused delta, int threshold locals, inline getPosition, combined neighbours condition. Residual: s_metatypesSpawnCst GOT reuse across hasCloseNeighbors, wrong-way & 3 combine (insn order), velocity register choices | SpawnPoint.cpp |
 | libsanangeles.so | 0x00309a4d | Vehicle::setupSceneNode(int, irr::scene::ISceneNode*, int, void**) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
 | libsanangeles.so | 0x00309f0d | Vehicle::dropSceneNode() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
 | libsanangeles.so | 0x0030a731 | Vehicle::isDoorClear(bool, b2Body*) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Vehicle.cpp |
@@ -3673,7 +3673,7 @@ relatives before granting an implementation scope.
 | libsanangeles.so | 0x0032f201 | SniperControlHandler::onKeyboardEvent(IEvent const*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | SniperControlHandler.cpp |
 | libsanangeles.so | 0x00330015 | Rocket::launch(irr::core::vector3d<float>) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Rocket.cpp |
 | libsanangeles.so | 0x00332cf5 | CameraManager::getClickedTarget(irr::core::line3d<float>, bool) const | unassigned | BLOCKED | Unmatched; relative-discovery scope only | CameraManager.cpp |
-| libsanangeles.so | 0x00333ab1 | FollowCamera::update(float) | claude-w2p | ASSIGNED | Fresh reconstruction with this week's levers | FollowCamera.cpp |
+| libsanangeles.so | 0x00333ab1 | FollowCamera::update(float) | coordinator | MATCHED | Exact 776 (w2p O3: next position built from owner->GetPosition() + getCameraOffset()*distance without a named origin; flag bodies start with the followCameraOffset call; ground height through a view helper; two distinct-condition arms as retail) | src/game/core/FollowCamera.cpp |
 | libsanangeles.so | 0x00333e41 | FPSCamera::scroll(std::list<Point2D<short>*, std::allocator<Point2D<short>*> > const&) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | FPSCamera.cpp |
 | libsanangeles.so | 0x00334389 | FPSCamera::updateTouchInputs() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | FPSCamera.cpp |
 | libsanangeles.so | 0x00334a81 | LockCamera::init(LevelObject*, int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | LockCamera.cpp |
@@ -3687,7 +3687,7 @@ relatives before granting an implementation scope.
 | libsanangeles.so | 0x003399f1 | Script::rewind() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Script.cpp |
 | libsanangeles.so | 0x0033ce19 | Script::nextCommand(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | Script.cpp |
 | libsanangeles.so | 0x0033d271 | ScriptManager::reachRunningCommand(int) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
-| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(ScriptManager::State) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
+| libsanangeles.so | 0x0033f1ed | ScriptManager::setState(ScriptManager::State) | claude-w2q | ASSIGNED | Fresh reconstruction with this week's levers | ScriptManager.cpp |
 | libsanangeles.so | 0x0033f4c9 | ScriptManager::checkScreenPress() | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
 | libsanangeles.so | 0x0033ffc1 | ScriptManager::cleanCommand(Structs::ScriptCommand*) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | ScriptManager.cpp |
 | libsanangeles.so | 0x00340305 | AIManager::addAI(Vehicle*, gameloft::ai::StateID) | unassigned | BLOCKED | Unmatched; relative-discovery scope only | AIManager.cpp |
