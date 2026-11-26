@@ -986,3 +986,27 @@ extern "C" void _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneN
         _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo(
             self, child->value, position, info);
 }
+
+PhysicAttributes::PhysicAttributes(int type, b2Body* b)
+{
+    infoCount = type;
+    PhysicInfo* p = new PhysicInfo[type];
+    info = p;
+    pathLength = 0;
+    pathTarget = irr::core::vector3d<float>(0.0f, 0.0f, 0.0f);
+    body = b;
+    hasJumpShape = false;
+    unknown116 = 0;
+    if (!s_PoolID) {
+        s_PoolID = new bool[50];
+        for (int i = 0; i < 50; ++i)
+            s_PoolID[i] = false;
+    }
+    for (int i = 0; i < 50; ++i) {
+        if (!s_PoolID[i]) {
+            index = i;
+            s_PoolID[i] = true;
+            break;
+        }
+    }
+}
