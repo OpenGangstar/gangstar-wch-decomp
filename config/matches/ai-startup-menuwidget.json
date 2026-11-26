@@ -244,7 +244,8 @@
         "_ZN7Widgets4Help7SetIconEPKc",
         "_ZN7Widgets11Achievement7SetIconEPKc",
         "_ZN7Widgets6IGMenu9GoToFrameEPKc",
-        "_ZN7Widgets10Statistics4ShowEv"
+        "_ZN7Widgets10Statistics4ShowEv",
+        "_ZN7Widgets12Achievements11SetCategoryEi"
     ],
     "sections": [
         ".volumesButton",

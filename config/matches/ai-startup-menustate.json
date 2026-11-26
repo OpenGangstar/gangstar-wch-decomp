@@ -580,7 +580,6 @@
         "_ZN7gameswf9tu_stringC1EPKc",
         "_ZN7gameswf9tu_string15utf8_char_countEPKci",
         "_ZNK7gameswf9tu_string14utf8_substringEii",
-        "_ZN7Widgets12Achievements11SetCategoryEi",
         "_ZNK12SoundManager16getPlaylistCountEv",
         "_ZN10PlayerTest7subCashEi",
         "_ZN11CHudManager12switchWeaponEi",
