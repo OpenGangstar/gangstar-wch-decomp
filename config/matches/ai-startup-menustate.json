@@ -307,7 +307,8 @@
         "_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti",
         "_ZN9MenuState8GotFocusEv",
         "_ZN5Menus17ServiceWeaponShop7RefreshEv",
-        "_ZN9MenuState7OnEventERN8RenderFX5EventE"
+        "_ZN9MenuState7OnEventERN8RenderFX5EventE",
+        "_ZN5Menus16ServiceCarRental6UpdateEv"
     ],
     "sections": [
         ".event_character_path",
@@ -585,6 +586,14 @@
         "_ZN13WeaponManager12unlockWeaponEi",
         "_ZNK10PlayerTest15isRichAsCroesusEv",
         "_ZN18WantedLevelManager19_processWantedLevelEv",
-        "_ZNK13WeaponManager18getWeaponLimitedToEN10PlayerTest8eContextE"
+        "_ZNK13WeaponManager18getWeaponLimitedToEN10PlayerTest8eContextE",
+        "_ZN10PlayerTest18setLastUsedVehicleEP7Vehicle",
+        "_ZN11LevelObject13showHighlightEi",
+        "_ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
+        "_ZN17GameObjectManager28CreateGameObjectFromMetatypeEi",
+        "_ZN7Vehicle4rentEb",
+        "_ZN9GS3DStuff15getSceneOctTreeEv",
+        "_ZNK10SpawnPoint17hasCloseNeighborsEv"
     ]
 }

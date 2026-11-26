@@ -66,6 +66,7 @@ SECTIONS
     .car_rental_selected_suffix 0x00419e68 : { *ai-startup-menustate.o(.rodata.carRentalSelectedSuffix) }
     .main_menu_promotion_url 0x00419f14 : { *ai-startup-menustate.o(.rodata.mainMenuPromotionUrl) }
     .weapon_shop_update 0x002eb45c : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop6UpdateEv) }
+    .car_rental_update 0x002eb12c : { *ai-startup-menustate.o(.text._ZN5Menus16ServiceCarRental6UpdateEv) }
     ASSERT(SIZEOF(.weapon_shop_update) == 380, "Native ServiceWeaponShop Update extent")
     .menustate_got_focus 0x002e86fc : { *ai-startup-menustate.o(.text._ZN9MenuState8GotFocusEv) }
     .service_corruption_notify 0x002eb6a8 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti) }
