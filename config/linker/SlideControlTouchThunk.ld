@@ -1,4 +1,5 @@
 __aeabi_i2f = 0x1c41e4; __aeabi_fsub = 0x1c4328; __aeabi_fdiv = 0x1c4520; __aeabi_fcmpgt = 0x1c419c; printf = 0x1c4058;
+PROVIDE(__aeabi_fadd = 0x001c4154);
 INCLUDE config/linker/ApplicationEventSections.ld
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
@@ -40,6 +41,7 @@ SECTIONS
     .slidecontrol_vtable 0x004ac6b0 : { *sdk-startup-slidecontrol.o(.data.rel.ro._ZTV12SlideControl .gnu.linkonce.d.rel.ro._ZTV12SlideControl) }
     .sdk_startup_function_0 0x0032b128 : { *sdk-startup-slidecontrol.o(.text.__tcf_2) }
     .sdk_startup_function_1 0x0032b518 : { *sdk-startup-slidecontrol.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .slide_control_ctor 0x0032b1f4 : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE .text._ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE) }
     .sdk_startup_function_2 0x0032b584 : { *sdk-startup-slidecontrol.o(.text._GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE) }
     .sdk_startup_storage_0 0x004b96e0 (NOLOAD) : { *sdk-startup-slidecontrol.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
     .sdk_startup_storage_1 0x004b9700 (NOLOAD) : { *sdk-startup-slidecontrol.o(.bss._ZN3irr2ps5vHalfE) }

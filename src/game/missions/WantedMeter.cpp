@@ -90,3 +90,38 @@ void WantedMeter::update(double)
         stars[i]->UpdateFrame();
     }
 }
+
+#include "../core/ASprite.h"
+
+WantedMeter::WantedMeter(ASprite* image, int animation)
+    : HudElement(image, animation, true), wantedLevel(0), timer(0)
+{
+    for (int i = 0; i < 5; ++i) {
+        AnimObject* star = new AnimObject;
+        stars[i] = star;
+        star->sprite = image;
+        stars[i]->SetAnim(animation + i);
+    }
+
+    const int firstFrame = sprite->GetFrameFromAFrame(animation, 0);
+    const SpriteFrame* first = sprite->GetFrame(firstFrame);
+    const SpriteFrameModule* firstPart = sprite->GetFModule(first->firstModule);
+    const int lastFrame = sprite->GetFrameFromAFrame(animation + 4, 0);
+    const SpriteFrame* last = sprite->GetFrame(lastFrame);
+    const SpriteFrameModule* lastPart = sprite->GetFModule(last->firstModule);
+    const SpriteModule* module = sprite->GetModule(lastPart->module);
+    const short left = firstPart->x;
+    const float x = left;
+    const float y = firstPart->y;
+    float right = lastPart->x + module->width - left;
+    const short height = module->height;
+    right = x + right;
+    // Stored again below; the extra use keeps the add in place so the
+    // stores follow it as in retail. Flow removes this first store.
+    touchRegion.coordinates[2] = right;
+    touchRegion.coordinates[0] = x;
+    touchRegion.coordinates[1] = y;
+    touchRegion.coordinates[2] = right;
+    const float heightFloat = height;
+    touchRegion.coordinates[3] = y + heightFloat;
+}

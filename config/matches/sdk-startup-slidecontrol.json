@@ -48,7 +48,8 @@
         {
             "name": "_GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE",
             "address": "0x0032b585"
-        }
+        },
+        "_ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE"
     ],
     "sections": [
         ".slide_process_touch",
@@ -68,6 +69,10 @@
         "_ZN12EventManager5raiseERK6IEvent",
         "_ZNK7ASprite10PaintFrameEiiii",
         "_ZN10HudElementD1Ev",
-        "_ZN11Application11GetInstanceEv"
+        "_ZN11Application11GetInstanceEv",
+        "_ZN10HudElementC1EP7ASpriteib",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite9GetModuleEi"
     ]
 }

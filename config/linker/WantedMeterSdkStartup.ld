@@ -1,3 +1,6 @@
+PROVIDE(_Znwj = 0x001c4814);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(__aeabi_fadd = 0x001c4154);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-wantedmeter/retail-symbols.ld
@@ -21,6 +24,7 @@ SECTIONS
     .wanted_instance 0x004b6a98 (NOLOAD) : { *sdk-startup-wantedmeter.o(.gnu.linkonce.b._ZZN18WantedLevelManager11getInstanceEvE3wlm) }
     .sdk_startup_function_0 0x0032c7b8 : { *sdk-startup-wantedmeter.o(.text.__tcf_3) }
     .sdk_startup_function_1 0x0032ca70 : { *sdk-startup-wantedmeter.o(.text._Z41__static_initialization_and_destruction_0ii) }
+    .wanted_meter_ctor 0x0032c960 : { *sdk-startup-wantedmeter.o(.text._ZN11WantedMeterC1EP7ASpritei .text._ZN11WantedMeterC2EP7ASpritei) }
     .sdk_startup_function_2 0x0032cadc : { *sdk-startup-wantedmeter.o(.text._GLOBAL__I__ZN11WantedMeterC2EP7ASpritei) }
     .sdk_startup_storage_0 0x004b982c (NOLOAD) : { *sdk-startup-wantedmeter.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
     .sdk_startup_storage_1 0x004b984c (NOLOAD) : { *sdk-startup-wantedmeter.o(.bss._ZN3irr2ps5vHalfE) }
