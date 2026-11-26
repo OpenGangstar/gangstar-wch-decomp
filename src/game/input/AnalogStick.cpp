@@ -162,3 +162,56 @@ void AnalogStick::processTouchRelease()
     magnitude = 0.0f;
     flags &= ~2u;
 }
+
+// Second access paths to the frame-module origin and module width. The
+// constructor reads the base origin and width again for the right edge;
+// through these views the reads are distinct memory expressions, so tree
+// value numbering does not share them with the left edge and the stores
+// keep retail order. RTL CSE later merges the duplicate loads.
+namespace {
+struct FrameModuleOrigin {
+    unsigned short module;
+    short x;
+    short y;
+};
+
+struct ModuleExtent {
+    unsigned char kind;
+    unsigned char unknown1[5];
+    short width;
+    short height;
+};
+}
+
+AnalogStick::AnalogStick(ASprite* image, int baseFrame, int handleFrame)
+    : HudElement(image, baseFrame, true), displacement(0.0f), releasedHorizontal(false), releasedVertical(false),
+      displacementX(0.0f), displacementY(0.0f), magnitude(0.0f), drawOriginX(0.0f), drawOriginY(0.0f),
+      drawPositionX(0.0f), drawPositionY(0.0f), mode(Mode2), stickFrame(handleFrame)
+{
+    const SpriteFrame* base = sprite->GetFrame(frame);
+    const SpriteFrameModule* basePart = sprite->GetFModule(base->firstModule);
+    const float y = basePart->y;
+    const float x = basePart->x;
+    unknown32 = x;
+    unknown36 = y;
+    const SpriteModule* baseModule = sprite->GetModule(basePart->module);
+    const float left = basePart->x - 70 + baseModule->width / 2;
+    const float top = basePart->y - 70 + baseModule->height / 2;
+    const float right = reinterpret_cast<const FrameModuleOrigin*>(basePart)->x - 70
+        + reinterpret_cast<const ModuleExtent*>(baseModule)->width / 2 + 140.0f;
+    touchRegion.coordinates[1] = top;
+    touchRegion.coordinates[0] = left;
+    touchRegion.coordinates[2] = right;
+    touchRegion.coordinates[3] = top + 140.0f;
+
+    const SpriteFrame* handle = sprite->GetFrame(stickFrame);
+    const SpriteFrameModule* handlePart = sprite->GetFModule(handle->firstModule);
+    displacementY = 0.0f;
+    magnitude = 0.0f;
+    const SpriteModule* handleModule = sprite->GetModule(handlePart->module);
+    const float centerX = (handleModule->width >> 1) + handlePart->x;
+    const float centerY = (handleModule->height >> 1) + handlePart->y;
+    drawOriginX = centerX;
+    drawOriginY = centerY;
+    stickRadius = static_cast<int>(static_cast<float>((baseModule->width >> 1) - (handleModule->width >> 1)) + 30.0f);
+}

@@ -17,14 +17,15 @@ public:
     virtual void processTouchRelease();
 
 private:
-    unsigned char unknown56[8];
+    unsigned char unknown56[4];
+    int stickRadius;
     float displacement;
     bool releasedHorizontal, releasedVertical;
     unsigned char unknown70[2];
     float displacementX;
     float displacementY;
     float magnitude;
-    unsigned char unknown84[16];
+    float drawOriginX, drawOriginY, drawPositionX, drawPositionY;
     Mode mode;
     int stickFrame;
 };
