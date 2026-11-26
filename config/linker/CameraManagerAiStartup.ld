@@ -34,6 +34,7 @@ __cxa_pure_virtual = 0;
 SECTIONS
 {
     .camera_manager_update 0x00332770 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager6updateEf) }
+    .camera_manager_get_clicked_target 0x00332cf4 : { *ai-startup-cameramanager.o(.text._ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb) }
     .touchable_vtable 0x004ac418 : { *ai-startup-cameramanager.o(.gnu.linkonce.d.rel.ro._ZTV10ITouchable) }
     .manager_touch_release 0x00333094 : { *ai-startup-cameramanager.o(.text._ZN13CameraManager19processTouchReleaseEv) }
     .manager_touch_release_log 0x00428fac : { *ai-startup-cameramanager.o(.rodata.touchReleaseLogText) }

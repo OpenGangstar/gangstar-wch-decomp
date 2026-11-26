@@ -62,7 +62,8 @@
             "name": "_GLOBAL__I__ZN13CameraManager4s_cmE",
             "address": "0x0033275d"
         },
-        "_ZN13CameraManager6updateEf"
+        "_ZN13CameraManager6updateEf",
+        "_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb"
     ],
     "sections": [
         ".manager_touch_release_log",
@@ -80,7 +81,6 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZNK13CameraManager16getClickedTargetEN3irr4core6line3dIfEEb",
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN10PlayerTest10_GetTargetEv",
         "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
@@ -109,6 +109,9 @@
         "_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
         "_ZN12SoundManager14setListenerPosERKN3irr4core8vector3dIfEES5_S5_",
         "_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
-        "_ZNK12FollowCamera9getFacingEv"
+        "_ZNK12FollowCamera9getFacingEv",
+        "_ZN11LevelObject17isVisibleOnScreenEv",
+        "_ZN17GameObjectManager8GetFirstEi",
+        "_ZNK11LevelObject9isEnabledEv"
     ]
 }
