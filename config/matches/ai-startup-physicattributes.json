@@ -80,7 +80,8 @@
         "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
         "_ZN15ContactListener7PersistEPK14b2ContactPoint",
         "_ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi",
-        "_ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff"
+        "_ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff",
+        "_ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo"
     ],
     "sections": [
         ".physics_segment_height",

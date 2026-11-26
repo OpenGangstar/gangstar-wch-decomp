@@ -846,3 +846,80 @@ irr::core::vector3d<float> PhysicAttributes::GetRandomDestination(unsigned short
     }
     return best;
 }
+
+// Irrlicht ISceneNode::getAbsolutePosition() copy.
+static inline irr::core::vector3d<float> SHAbsolutePosition(irr::scene::ISceneNode* node)
+{
+    irr::core::vector3d<float> position = node->getAbsolutePosition();
+    return position;
+}
+
+// Irrlicht array::operator[](u32).
+static inline const unsigned short& SHOverlapAt(const irr::core::array<unsigned short>& overlap, unsigned int index)
+{
+    return overlap.data[index];
+}
+
+// Not declared in PhysicAttributes.h; defined through its mangled name.
+extern "C" float _ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo(
+    PhysicAttributes* self, const irr::core::vector3d<float>& position, PhysicInfo* info)
+{
+    using irr::core::vector3d;
+    typedef PhysicAttributes PA;
+    vector3d<float> a, b, c;
+    vector3d<float> pa, pb, pc, ab, bc, ca;
+    const vector3d<float> offset = SHAbsolutePosition(PA::s_heightmap);
+    for (int k = 0; k < PA::s_overlapping[info->unknown0][(unsigned short)(info->unknown8 / 3)].used; k += 2) {
+        const irr::core::array<unsigned short>& overlap = PA::s_overlapping[info->unknown0][(unsigned short)(info->unknown8 / 3)];
+        const unsigned short buffer = SHOverlapAt(overlap, k);
+        const unsigned short index = SHOverlapAt(overlap, k + 1);
+        irr::scene::IMeshBuffer* meshBuffer = static_cast<irr::scene::IMeshSceneNode*>(PA::s_heightmap)
+            ->getMesh()->getMeshBuffer(buffer);
+        unsigned short* indices = meshBuffer->getIndices();
+        const unsigned short flags = PA::s_neighbors[buffer][7][(unsigned short)(index / 3)];
+        if ((flags & 3) == 1 || (flags & 3) == 2)
+            continue;
+        a = offset + meshBuffer->getPosition(indices[index]);
+        b = offset + meshBuffer->getPosition(indices[index + 1]);
+        c = offset + meshBuffer->getPosition(indices[index + 2]);
+        pa = position - a;
+        pb = position - b;
+        pc = position - c;
+        ab = b - a;
+        bc = c - b;
+        ca = a - c;
+        if (pa.Y * ab.X - pa.X * ab.Y < 0.0f && PA::SegmentsIntersect(info->unknown64, position, a, b)) {
+            info->unknown0 = buffer;
+            info->heightmap = PA::s_heightmap;
+            info->unknown8 = index;
+            return _ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo(self, position, info);
+        }
+        if (pb.Y * bc.X - pb.X * bc.Y < 0.0f && PA::SegmentsIntersect(info->unknown64, position, b, c)) {
+            info->unknown0 = buffer;
+            info->heightmap = PA::s_heightmap;
+            info->unknown8 = index;
+            return _ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo(self, position, info);
+        }
+        if (pc.Y * ca.X - pc.X * ca.Y < 0.0f && PA::SegmentsIntersect(info->unknown64, position, c, a)) {
+            info->unknown0 = buffer;
+            info->heightmap = PA::s_heightmap;
+            info->unknown8 = index;
+            return _ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo(self, position, info);
+        }
+        const float inverse = 1.0f / (ab.X * -ca.Y + ab.Y * ca.X);
+        const float u = ((position.X - b.X) * (b.Y - c.Y) - (b.X - c.X) * (position.Y - b.Y)) * inverse;
+        const float v = ((position.X - c.X) * (c.Y - a.Y) - (c.X - a.X) * (position.Y - c.Y)) * inverse;
+        info->unknown0 = buffer;
+        info->heightmap = PA::s_heightmap;
+        info->unknown8 = index;
+        info->vector12 = a;
+        info->vector24 = b;
+        info->vector36 = c;
+        const vector3d<float> ba = a - b;
+        const vector3d<float> cb = c - b;
+        info->vector48 = cb.crossProduct(ba).normalize();
+        info->unknown60 = true;
+        return ab.Z * v + a.Z - ca.Z * (1.0f - v - u);
+    }
+    return 999999.0f;
+}
