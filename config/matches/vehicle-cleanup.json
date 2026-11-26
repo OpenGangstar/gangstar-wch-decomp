@@ -252,7 +252,8 @@
         "_ZNK7Vehicle11isDoorClearEbP6b2Body",
         "_ZN7Vehicle6UpdateEi",
         "_ZN7Vehicle12CreateWheelsEP13Box2DUserInfo",
-        "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf"
+        "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf",
+        "_ZN7Vehicle8setSpeedEv"
     ],
     "sections": [
         ".vehicle_collision",

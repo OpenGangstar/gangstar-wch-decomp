@@ -1076,6 +1076,66 @@ void Vehicle::SetPosition(const irr::core::vector3d<float>& position)
     }
 }
 
+// Same as irr::core::max_, with the "below the floor" branch hinted unlikely so the
+// floor block stays after the unknown240 == 6 block in the retail layout.
+template<class T> static inline const T& setSpeedFloor(const T& a, const T& b) { return __builtin_expect(a < b, 0) ? b : a; }
+
+void Vehicle::setSpeed()
+{
+    using irr::core::vector3d;
+    using irr::core::min_;
+    using irr::core::max_;
+    const PhysicInfo* current = unknown24->info;
+    const int laneCount = PhysicAttributes::s_neighborsWrongWay[current->unknown0][static_cast<unsigned short>(current->unknown8 / 3)] >> 6;
+    const int lanes = laneCount ? laneCount : 1;
+    const vector3d<float> front = GetFront();
+    // Branch hint: weights the speed-computing arm (one more `this` access) so `this`
+    // outranks meshBuffer in global allocation and keeps r7, as retail does.
+    if (__builtin_expect(unknown240 == 6, 0)) {
+        speed = 0.0f;
+        *reinterpret_cast<float*>(unknown780) = unknown776;
+    } else {
+        *reinterpret_cast<float*>(unknown780) = speed = unknown776 = static_cast<float>(lanes) * unknown188 / 5.0f;
+    }
+    const b2Vec2 velocity(speed * front.X, speed * front.Y);
+    collisionBody->linearVelocity = velocity;
+    leftCollisionBody->linearVelocity = velocity;
+    rightCollisionBody->linearVelocity = velocity;
+    reinterpret_cast<b2Vec2&>(unknown116) = b2Vec2(collisionBody->linearVelocity.x, collisionBody->linearVelocity.y);
+    if (unknown24) {
+        const PhysicInfo* info = unknown24->info;
+        const unsigned short triangle = info->unknown8;
+        const unsigned short buffer = info->unknown0;
+        const unsigned char flags = PhysicAttributes::s_neighborsWrongWay[buffer][static_cast<unsigned short>(triangle / 3)];
+        const int wrongWay = (flags >> 4) & 3;
+        int edge;
+        if (wrongWay)
+            edge = wrongWay % 3;
+        else
+            edge = ((flags & 3) + 1) % 3;
+        vector3d<float> direction(0.0f, 0.0f, 0.0f);
+        irr::scene::IMeshBuffer* meshBuffer = static_cast<irr::scene::IMeshSceneNode*>(PhysicAttributes::s_heightmap)
+            ->getMesh()->getMeshBuffer(buffer);
+        unsigned short* indices = meshBuffer->getIndices();
+        vector3d<float> offset;
+        if (wrongWay) {
+            const vector3d<float>& a = meshBuffer->getPosition(indices[triangle + edge]);
+            edge = (edge + 1) % 3;
+            const vector3d<float>& b = meshBuffer->getPosition(indices[triangle + edge]);
+            direction = a - b;
+            offset = GetPosition() - meshBuffer->getPosition(indices[triangle + edge]) - PhysicAttributes::s_heightmap->getAbsolutePosition();
+        } else {
+            const vector3d<float>& a = meshBuffer->getPosition(indices[triangle + (edge + 1) % 3]);
+            const vector3d<float>& b = meshBuffer->getPosition(indices[triangle + edge]);
+            direction = a - b;
+            offset = GetPosition() - meshBuffer->getPosition(indices[triangle + edge]) - PhysicAttributes::s_heightmap->getAbsolutePosition();
+        }
+        direction.normalize();
+        unknown24->info->unknown82 = static_cast<unsigned short>(offset.dotProduct(direction) / 500.0f + 1.0f);
+        unknown24->info->unknown82 = min_(lanes, setSpeedFloor(static_cast<int>(unknown24->info->unknown82), 1));
+    }
+}
+
 void Vehicle::closeDoor(bool left)
 {
     if (left)
