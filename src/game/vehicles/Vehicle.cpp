@@ -1720,6 +1720,105 @@ void Vehicle::clearOnAlert()
     flags344 &= ~0x47000u;
 }
 
+#include "../characters/PlayerEvent.h"
+#include "../combat/Weapon.h"
+#include "../combat/WeaponManager.h"
+
+extern "C" long lrand48();
+extern "C" void _ZN8EvPlayerD1Ev(void*) __attribute__((weak));
+
+void Vehicle::shoot()
+{
+    Application* application = Application::GetInstance();
+    application->GetDevice()->getTimer()->getRealTime();
+    Character* shooter = driver;
+    if (!shooter)
+        return;
+    Weapon* weapon = shooter->getWeapon();
+    if (!weapon || !weapon->getWeaponType())
+        return;
+    weapon->getWeaponType();
+    if (!weapon->isReady(false))
+        return;
+    LevelObject* target = Lock::getInstance()->target;
+    if (weapon->isGun()) {
+        irr::core::vector3d<float> hitPoint;
+        irr::core::vector3d<float> shotDirection;
+        irr::core::vector3d<float> normal;
+        irr::core::vector3d<float> source = GetPosition();
+        source.Z += 100.0f;
+        if (!(target && LevelObject::s_type[target->getObjectType()] == 5
+            && static_cast<NPC*>(target)->isHostileTo(this))) {
+            if (shooter->isPlayer()) {
+                target = PlayerTest::getAttackableTarget(this, weapon, target);
+            } else {
+                for (LevelObject* object = GameObjectManager::s_gom->GetFirst(0); object; object = object->next) {
+                    if (LevelObject::s_type[object->getObjectType()] == 5 && static_cast<NPC*>(object)->isHostileTo(this)) {
+                        target = object;
+                        break;
+                    }
+                }
+            }
+        }
+        if (target) {
+            float x = (float(lrand48() % 100) - 50.0f) / 50.0f;
+            float y = (float(lrand48() % 100) - 50.0f) / 50.0f;
+            float z = float(lrand48() % 100) - 50.0f;
+            const irr::core::vector3d<float>& targetPosition = target->GetPosition();
+            const float deviation = 200.0f - float(shooter->unknown252 * 2);
+            x *= deviation;
+            y *= deviation;
+            x += targetPosition.X;
+            y += targetPosition.Y;
+            float sourceY = source.Y;
+            // No-op write-back of the just-loaded value: an extra use of sourceY that
+            // lifts its local-alloc priority above the aim sums; postreload deletes it.
+            source.Y = sourceY;
+            float targetZ = targetPosition.Z;
+            const float sourceX = source.X;
+            source.X = sourceX; // no-op write-back (see sourceY)
+            z /= 50.0f;
+            targetZ = z * deviation + targetZ;
+            sourceY = y - sourceY;
+            shotDirection = irr::core::vector3d<float>(x, sourceY, targetZ) - irr::core::vector3d<float>(sourceX, 0.0f, source.Z);
+            if (LevelObject::s_type[target->getObjectType()] == 3)
+                shotDirection.Z += 100.0f;
+            shotDirection.normalize();
+        } else {
+            shotDirection = GetFront();
+        }
+        Lock::getInstance()->setTarget(target);
+        const float range = float(weapon->getRange());
+        const bool hit = CastRay(source, shotDirection * range, hitPoint, normal, target, false);
+        if (target)
+            target->shooted(weapon->getDamage(), this);
+        weapon->shootFromCar(hit, source, hit ? shotDirection * 7500.0f + source : hitPoint, normal);
+    } else if (weapon->isProjectile()) {
+        irr::core::vector3d<float> direction;
+        if (target) {
+            direction = target->GetPosition() - GetPosition();
+            direction.normalize();
+        } else {
+            direction = GetFront();
+        }
+        weapon->shootProjectile(direction);
+    }
+
+    Character* const currentDriver = driver;
+    if (static_cast<Character*>(PlayerTest::GetPlayer()) != currentDriver)
+        return;
+    if (target && target->getHealth() <= 0)
+        PlayerTest::GetPlayer()->onObjectKilled(target);
+    EventManager* events = application->GetEventManager();
+    unsigned int storage[sizeof(EvPlayer) / sizeof(unsigned int)];
+    EvPlayer* event = new (storage) EvPlayer(2);
+    events->raise(*event);
+    _ZN8EvPlayerD1Ev(event);
+    if (weapon->getClip() <= 0 && application->GetWeaponManager()->getAmmo(weapon->getAmmoType(), PlayerTest::AnyContext) > 0)
+        weapon->reload(false);
+}
+
+
 void Vehicle::onCameraEnter()
 {
     const unsigned int radioEnabled = 1u << 23;

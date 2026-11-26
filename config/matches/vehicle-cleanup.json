@@ -254,7 +254,8 @@
         "_ZN7Vehicle12CreateWheelsEP13Box2DUserInfo",
         "_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf",
         "_ZN7Vehicle8setSpeedEv",
-        "_ZN7Vehicle17ResetBodyPositionEv"
+        "_ZN7Vehicle17ResetBodyPositionEv",
+        "_ZN7Vehicle5shootEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -680,6 +681,22 @@
         "_ZN19b2PrismaticJointDef10InitializeEP6b2BodyS1_RK6b2Vec2S4_",
         "_ZN6b2Body11CreateShapeEP10b2ShapeDef",
         "_ZN7b2World10CreateBodyEPK9b2BodyDef",
-        "_ZN7b2World11CreateJointEPK10b2JointDef"
+        "_ZN7b2World11CreateJointEPK10b2JointDef",
+        "_ZN10PlayerTest14onObjectKilledEP11LevelObject",
+        "_ZN10PlayerTest19getAttackableTargetEP11LevelObjectP6WeaponS1_",
+        "_ZN11LevelObject7CastRayERKN3irr4core8vector3dIfEES5_RS3_S6_RPS_b",
+        "_ZN13WeaponManager7getAmmoEiN10PlayerTest8eContextE",
+        "_ZN3NPC11isHostileToEP11LevelObject",
+        "_ZN6Weapon12shootFromCarEbRKN3irr4core8vector3dIfEES5_RS3_",
+        "_ZN6Weapon15shootProjectileERKN3irr4core8vector3dIfEE",
+        "_ZN6Weapon6reloadEb",
+        "_ZN6Weapon7isReadyEb",
+        "_ZNK6Weapon11getAmmoTypeEv",
+        "_ZNK6Weapon12isProjectileEv",
+        "_ZNK6Weapon13getWeaponTypeEv",
+        "_ZNK6Weapon5isGunEv",
+        "_ZNK6Weapon7getClipEv",
+        "_ZNK6Weapon8getRangeEv",
+        "_ZNK6Weapon9getDamageEv"
     ]
 }
