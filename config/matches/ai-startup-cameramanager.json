@@ -61,7 +61,8 @@
         {
             "name": "_GLOBAL__I__ZN13CameraManager4s_cmE",
             "address": "0x0033275d"
-        }
+        },
+        "_ZN13CameraManager6updateEf"
     ],
     "sections": [
         ".manager_touch_release_log",
@@ -104,6 +105,10 @@
         "_ZN12FollowCameraC1EP9Character",
         "_ZN10LockCameraC1EP11LevelObject",
         "_ZN13VehicleCameraC1EP11LevelObject",
-        "_ZN9FPSCameraC1Ev"
+        "_ZN9FPSCameraC1Ev",
+        "_ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
+        "_ZN12SoundManager14setListenerPosERKN3irr4core8vector3dIfEES5_S5_",
+        "_ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff",
+        "_ZNK12FollowCamera9getFacingEv"
     ]
 }

@@ -80,7 +80,8 @@
         "_ZN7ASprite9GetAFrameEii",
         "_ZN7ASprite10GetAnimIdxEPKc",
         "_ZNK7ASprite12PaintFModuleEiiiii",
-        "_ZN7ASprite15GetAnimDurationEi"
+        "_ZN7ASprite15GetAnimDurationEi",
+        "_ZNK7ASprite11PaintModuleEiiii"
     ],
     "sections": [
         ".asprite_function_0",
@@ -128,7 +129,6 @@
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN11Application11GetInstanceEv",
-        "_ZNK7ASprite11PaintModuleEiiii"
+        "_ZN11Application11GetInstanceEv"
     ]
 }

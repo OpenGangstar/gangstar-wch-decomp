@@ -434,6 +434,104 @@ int ASprite::GetAnimIdx(const char* name)
 // Native const-member ABI import: receiver followed by four integer arguments.
 extern "C" void _ZNK7ASprite11PaintModuleEiiii(const ASprite*, int, int, int, int);
 
+#include "../core/Geometry.h"
+namespace irr { namespace core { extern matrix4 IdentityMatrix; } }
+namespace {
+// File-local views of the private ASprite and ASpriteData fields read by PaintModule.
+struct PaintSpriteView {
+    void* vtable;
+    const char* data;
+    bool ownsData;
+    unsigned char unknown9[3];
+    irr::video::ITexture* texture;
+    SpriteBounds bounds;
+    bool unknown32;
+    bool unknown33;
+    unsigned char unknown34[2];
+    int unknown36;
+    int unknown40;
+    int unknown44;
+    int unknown48;
+};
+struct PaintBlobView {
+    int counts[7];
+    unsigned int images;
+    unsigned int modules;
+};
+// Video driver view naming vtable slot 49, the source-rectangle draw2DImage overload.
+class PaintDriverView {
+public:
+    virtual void s0(); virtual void s1(); virtual void s2(); virtual void s3(); virtual void s4();
+    virtual void s5(); virtual void s6(); virtual void s7(); virtual void s8(); virtual void s9();
+    virtual void s10(); virtual void s11(); virtual void s12(); virtual void s13(); virtual void s14();
+    virtual void s15(); virtual void s16(); virtual void s17(); virtual void s18(); virtual void s19();
+    virtual void s20(); virtual void s21(); virtual void s22(); virtual void s23(); virtual void s24();
+    virtual void s25(); virtual void s26(); virtual void s27(); virtual void s28(); virtual void s29();
+    virtual void s30(); virtual void s31(); virtual void s32(); virtual void s33(); virtual void s34();
+    virtual void s35(); virtual void s36(); virtual void s37(); virtual void s38(); virtual void s39();
+    virtual void s40(); virtual void s41(); virtual void s42(); virtual void s43(); virtual void s44();
+    virtual void s45(); virtual void s46(); virtual void s47(); virtual void s48();
+    virtual void draw2DImage(const irr::video::ITexture* texture, const irr::core::rect<int>& destRect,
+        const irr::core::rect<int>& sourceRect, const irr::core::rect<int>* clipRect,
+        irr::video::SColor* colors, bool useAlphaChannelOfTexture);
+};
+inline bool spriteHasTexture(const irr::video::ITexture* t) { return t != 0; }
+inline int spriteAbsolute(const int& value) { return value < 0 ? -value : value; }
+// Irrlicht 1.4.2 rect(position, dimension) constructor body.
+inline irr::core::rect<int> spriteDestRect(const irr::core::position2d<int>& pos, const irr::core::dimension2d<int>& size)
+{
+    return irr::core::rect<int>(pos.X, pos.Y, pos.X + size.Width, pos.Y + size.Height);
+}
+}
+
+extern "C" void _ZNK7ASprite11PaintModuleEiiii(const ASprite* sprite, int module, int x, int y, int flags)
+{
+    PaintSpriteView* self = reinterpret_cast<PaintSpriteView*>(const_cast<ASprite*>(sprite));
+    if (spriteHasTexture(self->texture)) {
+    Application* app = Application::GetInstance();
+    const char* bytes = self->data;
+    const PaintBlobView* blob = reinterpret_cast<const PaintBlobView*>(bytes);
+    const ASpriteData::Module* modules = reinterpret_cast<const ASpriteData::Module*>(bytes + blob->modules);
+    const ASpriteData::Module* record = modules + module;
+    const SpriteModule* entry = reinterpret_cast<const SpriteModule*>(record);
+    int sourceX = record->unknown2;
+    int sourceY = record->unknown4;
+    int width = entry->width;
+    int height = entry->height;
+    if (self->unknown32) {
+        self->bounds.left = irr::core::min_(x, self->bounds.left);
+        self->bounds.top = irr::core::min_(y, self->bounds.top);
+        self->bounds.right = irr::core::max_(self->bounds.right, x + width);
+        self->bounds.bottom = irr::core::max_(self->bounds.bottom, y + height);
+    } else if (entry->kind != 5) {
+    if (self->unknown33) { x += 165; y -= 80; }
+    int clipWidth = self->unknown44;
+    if (clipWidth < 0) clipWidth = width;
+    int clipHeight = self->unknown48;
+    if (clipHeight < 0) clipHeight = height;
+    irr::core::rect<int> clip(x + self->unknown36, y + self->unknown40, x + clipWidth, y + clipHeight);
+    irr::core::rect<int> source(sourceX, sourceY, sourceX + width, sourceY + height);
+    if (flags & 16) {
+        int value = source.LowerRightCorner.X;
+        source.LowerRightCorner.X = source.UpperLeftCorner.X;
+        source.UpperLeftCorner.X = value;
+    }
+    if (flags & 32) {
+        int value = source.LowerRightCorner.Y;
+        source.LowerRightCorner.Y = source.UpperLeftCorner.Y;
+        source.UpperLeftCorner.Y = value;
+    }
+    app->GetDevice()->getVideoDriver()->setTransform(irr::video::ETS_WORLD, ASprite::s_global_transform);
+    reinterpret_cast<PaintDriverView*>(app->GetDevice()->getVideoDriver())->draw2DImage(self->texture,
+        spriteDestRect(irr::core::position2d<int>(x, y),
+            irr::core::dimension2d<int>(spriteAbsolute(source.LowerRightCorner.X - source.UpperLeftCorner.X),
+                                        spriteAbsolute(source.LowerRightCorner.Y - source.UpperLeftCorner.Y))),
+        source, &clip, ASprite::s_global_color, true);
+    app->GetDevice()->getVideoDriver()->setTransform(irr::video::ETS_VIEW, irr::core::IdentityMatrix);
+    }
+    }
+}
+
 void ASprite::PaintFModule(int frame, int module, int x, int y, int flags) const
 {
     const ASpriteData* blob = reinterpret_cast<const ASpriteData*>(data);

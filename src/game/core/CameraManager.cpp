@@ -28,6 +28,9 @@
 #include "../input/TouchScreenBase.h"
 #include "../scripting/ScriptManager.h"
 #include "../vehicles/Vehicle.h"
+#include "../audio/SoundManager.h"
+#include "../combat/Explosion.h"
+#include "../world/LevelObject.h"
 
 extern "C" int __android_log_print(int priority, const char* tag, const char* format, ...);
 
@@ -373,6 +376,83 @@ bool CameraManager::updateTransition(float elapsed)
     }
     currentCamera->enter();
     return false;
+}
+
+
+extern "C" long lrand48(void);
+extern "C" void _ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff(
+    FollowCamera*, float, const irr::core::vector3d<float>&, float,
+    irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float);
+extern "C" void _ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff(
+    VehicleCamera*, float, const irr::core::vector3d<float>&, float,
+    irr::core::vector3d<float>&, irr::core::vector3d<float>&, float, float);
+extern "C" irr::core::vector3d<float> _ZNK12FollowCamera9getFacingEv(const FollowCamera*);
+
+void CameraManager::update(float dt)
+{
+    float elapsed = dt * 0.001f;
+    if (!updateTransition(elapsed)) {
+        currentCamera->update(elapsed);
+        SoundManager::getInstance()->setListenerPos(currentCamera->getPosition(),
+            currentCamera->getLookAt(), irr::core::vector3d<float>(0.0f, 0.0f, 1.0f));
+        if (mode == 3)
+            return;
+        if ((flag154 || flag155) && (mode == 0 || mode == 2)) {
+            irr::core::vector3d<float> up(0.0f, 0.0f, 1.0f);
+            const irr::core::vector3d<float>& lookAt = currentCamera->getLookAt();
+            const irr::core::vector3d<float>& position = currentCamera->getPosition();
+            irr::core::vector3d<float> side(lookAt.X - position.X, lookAt.Y - position.Y, 0.0f);
+            side.normalize();
+            side.rotateXYBy(90.0, irr::core::vector3d<float>(0.0f, 0.0f, 0.0f));
+            side.normalize();
+            if (!flag154 && flag155)
+                elapsed = 0.0f;
+            Camera* const camera = currentCamera;
+            FollowCamera* const follow = followCamera;
+            if (camera == follow)
+                _ZN12FollowCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff(followCamera,
+                    elapsed, target->GetPosition(),
+                    currentCamera->getPosition().getDistanceFrom(target->GetPosition()),
+                    up, side, 80.0f, 45.0f);
+            if (currentCamera == vehicleCamera)
+                _ZN13VehicleCamera14updatePositionEfRKN3irr4core8vector3dIfEEfRS3_S6_ff(vehicleCamera,
+                    elapsed, target->GetPosition(),
+                    currentCamera->getPosition().getDistanceFrom(target->GetPosition()),
+                    up, side, 80.0f, 45.0f);
+        }
+        {
+        float shakeY = 0.0f, shakeZ = 0.0f;
+        float shakeX = 0.0f;
+        float* const shakeXView = &shakeX;
+        float* shakeYPointer = &shakeY;
+        float* const* const shakeYView = &shakeYPointer;
+        if (Explosion::s_cameraShakeTimer > 0.0f) {
+            Explosion::s_cameraShakeTimer -= elapsed * 1000.0f;
+            if (Explosion::s_cameraShakeTimer < 0.0f)
+                Explosion::s_cameraShakeTimer = 0.0f;
+            const float amount = 100.0f * Explosion::s_cameraShakeTimer / 1000.0f;
+            const int x = lrand48();
+            const int y = lrand48();
+            const int z = lrand48();
+            const float fx = (x % 100) / 100.0f;
+            const float fy = (y % 100) / 100.0f;
+            const float fz = (z % 100) / 100.0f;
+            *shakeXView = amount * fx;
+            **shakeYView = amount * fy;
+            shakeZ = amount * fz;
+        }
+        cameraNode->setPosition(currentCamera->getPosition() + irr::core::vector3d<float>(*shakeXView, **shakeYView, shakeZ));
+        if (flag154 || flag155) {
+            const irr::core::vector3d<float> axis(0.0f, 0.0f, 1.0f);
+            if (currentCamera == followCamera)
+                static_cast<Character*>(target)->setCameraOffset(
+                    axis.crossProduct(_ZNK12FollowCamera9getFacingEv(followCamera)));
+            flag155 = false;
+        }
+        cameraNode->setTarget(currentCamera->getLookAt() + irr::core::vector3d<float>(*shakeXView, **shakeYView, shakeZ));
+        }
+    }
+    cameraNode->updateAbsolutePosition(false);
 }
 
 static void __static_initialization_and_destruction_0(int initialize, int priority) __attribute__((used));
