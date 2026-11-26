@@ -308,7 +308,8 @@
         "_ZN9MenuState8GotFocusEv",
         "_ZN5Menus17ServiceWeaponShop7RefreshEv",
         "_ZN9MenuState7OnEventERN8RenderFX5EventE",
-        "_ZN5Menus16ServiceCarRental6UpdateEv"
+        "_ZN5Menus16ServiceCarRental6UpdateEv",
+        "_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti"
     ],
     "sections": [
         ".event_character_path",
