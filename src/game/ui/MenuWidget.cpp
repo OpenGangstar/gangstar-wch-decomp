@@ -250,6 +250,7 @@ private:
 class Achievements : public MenuWidget {
 public:
     Achievements();
+    void SetCategory(int category);
     void Update(bool advanceFirst);
     void Reset();
     virtual void Show();
@@ -1969,6 +1970,30 @@ void Widgets::Statistics::OnEvent(RenderFX::Event& event)
 }
 
 #include "../meta/Achievements.h"
+
+namespace {
+struct AchievementsCountView {
+    unsigned char prefix[140];
+    int count;
+};
+}
+
+void Widgets::Achievements::SetCategory(int category)
+{
+    const int count = AchievementManager::s_achievementCount;
+    unknown36 = category;
+    unknown140 = 0;
+    // unknown140 was just reset to 0; reading it back through a view keeps the guard unpredicted.
+    if (count > reinterpret_cast<const AchievementsCountView*>(this)->count) {
+        const AchievementManager* manager = AchievementManager::s_achievementManager;
+        for (int id = 0; id < count; ++id) {
+            if (static_cast<unsigned int>(unknown36) == manager->getAchievementFromID(id)->unknown0)
+                achievementIds[unknown140++] = id;
+        }
+    }
+    unknown20 = unknown140;
+}
+
 
 static const char statisticsEntryFormat[] = "widgetStatistics.anim.btnScroll.entry%d";
 
