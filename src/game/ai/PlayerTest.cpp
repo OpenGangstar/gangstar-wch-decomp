@@ -489,6 +489,17 @@ void PlayerTest::justStoleCar(Vehicle* car)
     car->resetPreviousPos();
 }
 
+extern "C" void _ZN10PlayerTest15onTargetReachedEv(PlayerTest* self)
+{
+    self->combatMode = false;
+    self->getWeapon()->hide();
+    self->justStoleCar(static_cast<Vehicle*>(self->unknown368));
+    self->unknown368 = 0;
+    self->unknown372 = 1;
+    self->flags240 &= ~0x1000u;
+}
+
+
 void PlayerTest::subCash(int amount)
 {
     if (richAsCroesusEnabled && amount >= 0)
