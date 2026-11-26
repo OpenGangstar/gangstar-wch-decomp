@@ -81,7 +81,8 @@
         "_ZN7ASprite10GetAnimIdxEPKc",
         "_ZNK7ASprite12PaintFModuleEiiiii",
         "_ZN7ASprite15GetAnimDurationEi",
-        "_ZNK7ASprite11PaintModuleEiiii"
+        "_ZNK7ASprite11PaintModuleEiiii",
+        "_ZN7ASprite19GetPixelInfoInFrameEiiiRiS0_"
     ],
     "sections": [
         ".asprite_function_0",
