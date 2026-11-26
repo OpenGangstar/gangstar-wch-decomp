@@ -431,3 +431,83 @@ extern "C" void _ZNK16SceneNodeManager6reportEv(const SceneNodeReportManager* se
         averageUsage, totalIdle);
     printf("+-- SceneNodeManager Report - END ----------------------------------------------\n\n");
 }
+
+struct RGNode {
+    bool available;
+    void* sceneNode;
+    void** parameters;
+    unsigned int unknown12;
+};
+struct RGPool {
+    const char* name;
+    void* factory;
+    int requestedSize;
+    unsigned int lastResizeTime;
+    int activeCount;
+    int constructedCount;
+    RGNode** nodesFirst;
+    RGNode** nodesLast;
+    RGNode** nodesLimit;
+    RGNode** begin() { return nodesFirst; }
+    unsigned int size() const { return unsigned(nodesLast - nodesFirst); }
+    void pop_back() { --nodesLast; }
+    RGNode*& operator[](unsigned int index) { return *(begin() + index); }
+};
+struct RGManager {
+    unsigned char poolIndex[24];
+    RGPool* const* poolsFirst;
+    RGPool* const* poolsLast;
+    RGPool* const* begin() const { return poolsFirst; }
+    RGPool* const* end() const { return poolsLast; }
+};
+extern "C" void _ZN16SceneNodeManager4NodeD1Ev(RGNode* node);
+
+// Header-free view of SceneNodeManager::reclaimGarbage. The control flow is
+// rearranged without changing behaviour (all tests are side-effect free):
+// the inner loop is laid out before the time test so its poolsLast exit
+// splits come in retail order, and the size test is hoisted to the loop head.
+extern "C" void _ZN16SceneNodeManager14reclaimGarbageEv(RGManager* self)
+{
+    const unsigned int now = Application::GetInstance()->GetDevice()->getTimer()->getRealTime();
+    for (RGPool* const* it = self->begin(); it != self->end(); ++it) {
+        RGPool* pool = *it;
+        int size = pool->size();
+        if (!(size > pool->constructedCount))
+            continue;
+        goto tests;
+    inner:
+        {
+            int i = 0;
+            goto check;
+            for (;;) {
+                {
+                    RGNode* node = (*pool)[i];
+                    if (now - node->unknown12 > 60000) {
+                    _ZN16SceneNodeManager4NodeD1Ev(node);
+                    ::operator delete(node);
+                    (*pool)[i] = (*pool)[size - pool->activeCount - 1];
+                    (*pool)[size - pool->activeCount - 1] = (*pool)[size - 1];
+                    --size;
+                    // No-code hint: identical arms (crossjumped after reload) whose
+                    // test takes one reload, setting reload's register rotation.
+                    if ((int)now < 0) pool->pop_back(); else pool->pop_back();
+                    --i;
+                    }
+                }
+                ++i;
+            check:
+                if (!(i < size && (*pool)[i]->available && size > pool->constructedCount))
+                    break;
+            }
+            continue;
+        }
+    tests:
+        if (now - pool->lastResizeTime > 60000) {
+            // No-code hint: identical arms (crossjumped, selector deleted); the
+            // compare takes one reload, one rotation step as in retail. The
+            // `0 < size` test repeats the loop's first `i < size` check.
+            if ((int)now < 0) { if (!(0 < size)) continue; } else { if (!(0 < size)) continue; }
+            goto inner;
+        }
+    }
+}

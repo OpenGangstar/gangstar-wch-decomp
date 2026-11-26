@@ -69,7 +69,8 @@
         },
         "_ZN16SceneNodeManager6manageEiP11LevelObjecti",
         "_ZNK16SceneNodeManager9getPoolIDEi",
-        "_ZNK16SceneNodeManager6reportEv"
+        "_ZNK16SceneNodeManager6reportEv",
+        "_ZN16SceneNodeManager14reclaimGarbageEv"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -81,7 +82,8 @@
             "offset": 864
         },
         ".scene_pool_id",
-        ".scene_node_report_strings"
+        ".scene_node_report_strings",
+        ".scene_node_reclaim_garbage"
     ],
     "retail_got": true,
     "external_thumb_functions": [
