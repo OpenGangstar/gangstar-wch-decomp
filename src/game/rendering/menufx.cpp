@@ -1989,3 +1989,116 @@ void RenderFX::Load(const char* name, gameswf::player_context* context)
     root.set_ref(_ZN7gameswf6player9load_fileEPKc(player.get(), name).get());
     SetContext(reinterpret_cast<const LoadRootMovie*>(root.get())->movie);
 }
+
+namespace gameswf {
+class bitmap_info {
+public:
+    virtual ~bitmap_info();
+    virtual void layout();
+};
+struct rect { float xMin, xMax, yMin, yMax; };
+struct rgba { unsigned char r, g, b, a; };
+}
+
+extern "C" gameswf::root* _ZN7gameswf6player8get_rootEv(MovieRenderFX* movie);
+namespace {
+struct MovieDefinitionTextureFields {
+    unsigned char unknown0[156];
+    gameswf::array<gameswf::bitmap_info*> bitmaps;
+};
+struct RootDefinitionTextureFields {
+    unsigned char unknown0[12];
+    MovieDefinitionTextureFields* definition;
+};
+struct DrawBitmapMethods {
+    void (*beforeDrawBitmap[30])();
+    void (*drawBitmap)(gameswf::render_handler*, const gameswf::matrix&, gameswf::bitmap_info*,
+                       const gameswf::rect&, const gameswf::rect&, unsigned int);
+};
+inline const DrawBitmapMethods& drawBitmapMethods(const gameswf::render_handler* handler)
+{
+    return **reinterpret_cast<const DrawBitmapMethods* const*>(handler);
+}
+}
+namespace {
+struct BitmapTableView { gameswf::bitmap_info* bitmap[1]; };
+}
+
+// RenderFX.h does not declare ForceTexturesToVRAM and s_default_context is
+// private, so the method and the static are named by their mangled names.
+extern "C" gameswf::player_context* _ZN8RenderFX17s_default_contextE;
+extern "C" void _ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE(bool draw, gameswf::player_context* context)
+{
+    gameswf::rgba color;
+    color.r = 255;
+    color.g = 255;
+    color.b = 255;
+    color.a = 255;
+    gameswf::rect bounds;
+    gameswf::rect uv;
+    uv.xMax = 1.0f;
+    uv.xMin = 0.0f;
+    uv.yMax = 1.0f;
+    uv.yMin = 0.0f;
+    bounds.xMin = 0.0f;
+    bounds.yMin = 0.0f;
+    bounds.xMax = 0.0f;
+    bounds.yMax = 0.0f;
+    gameswf::matrix matrix;
+
+    if (!context)
+        context = _ZN8RenderFX17s_default_contextE;
+    for (int i = 0; i < context->movies.size; ++i) {
+        MovieRenderFX* player = context->movies.elements[i];
+        _ZN7gameswf4root13begin_displayEv(_ZN7gameswf6player8get_rootEv(player));
+        MovieDefinitionTextureFields* definition = reinterpret_cast<RootDefinitionTextureFields*>(_ZN7gameswf6player8get_rootEv(player))->definition;
+        for (int j = 0; j < definition->bitmaps.size; ++j) {
+            reinterpret_cast<BitmapTableView*>(definition->bitmaps.elements)->bitmap[j]->layout();
+            if (!draw)
+                continue;
+            gameswf::render_handler* handler = gameswf::get_render_handler();
+            drawBitmapMethods(handler).drawBitmap(handler, matrix, reinterpret_cast<BitmapTableView*>(definition->bitmaps.elements)->bitmap[j], bounds, uv, *reinterpret_cast<const unsigned int*>(&color));
+        }
+        _ZN7gameswf4root11end_displayEv(_ZN7gameswf6player8get_rootEv(player));
+    }
+}
+
+
+namespace {
+struct StateHandlerParentLink {
+    unsigned char prefix[128];
+    gameswf::player_weak_ptr::proxy_ptr reference;
+    gameswf::character* parent;
+
+    void reset()
+    {
+        reference.clear();
+        parent = 0;
+    }
+};
+inline gameswf::character* stateHandlerParent(gameswf::character* character)
+{
+    CharacterFindFields& fields = *reinterpret_cast<CharacterFindFields*>(character);
+    if (fields.parent) {
+        const unsigned int aliveAddress = reinterpret_cast<unsigned int>(fields.parentReference.value)
+            + __builtin_offsetof(MovieWeakReference, alive);
+        if (!*reinterpret_cast<const bool*>(aliveAddress))
+            reinterpret_cast<StateHandlerParentLink*>(character)->reset();
+    }
+    return fields.parent;
+}
+}
+
+MenuFX::State* MenuFX::GetStateHandler(gameswf::character* character)
+{
+    for (int index = stateStack.size - 1; index >= 0; --index) {
+        gameswf::character* current = character;
+        while (current) {
+            State* state = stateStack.elements[index];
+            if (state->getCharacter() == current)
+                return state;
+            current = stateHandlerParent(current);
+        }
+    }
+    return GetCurrentState();
+}
