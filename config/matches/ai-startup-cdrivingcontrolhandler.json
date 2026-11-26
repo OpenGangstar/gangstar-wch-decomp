@@ -58,7 +58,8 @@
             "name": "__tcf_2",
             "address": "0x0032d971",
             "compiled_name": "__tcf_0"
-        }
+        },
+        "_ZN22CDrivingControlHandler7onEventEPK6IEventPK12EventManager"
     ],
     "sections": [
         ".driving_handler_vtable",
@@ -84,6 +85,29 @@
         "_ZN11Application11GetInstanceEv",
         "_ZN12EventManager6detachEiP14IEventReceiver",
         "_ZN12StateMachineC1Ev",
-        "_ZN12StateMachineD1Ev"
+        "_ZN12StateMachineD1Ev",
+        "_ZN10PlayerTest10_SetTargetEP11LevelObjectb",
+        "_ZN10PlayerTest11stopDrivingEN10playertest14PlayerCarState15ePlayerCarStateEb",
+        "_ZN11LevelObject12canGoToPointERKN3irr4core8vector3dIfEE",
+        "_ZN12SoundManager14pauseAllSoundsEv",
+        "_ZN12SoundManager16nextRadioStationEv",
+        "_ZN12SoundManager6playExEiPKN3irr4core8vector3dIfEEbfibfPFvvE",
+        "_ZN12SoundManager9playRadioEi",
+        "_ZN12SoundManager9stopRadioEv",
+        "_ZN13ScriptManager11getInstanceEv",
+        "_ZN13ScriptManager12skipCutsceneEv",
+        "_ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff",
+        "_ZN16PhysicAttributes4InitEttRKN3irr4core8vector3dIfEE",
+        "_ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib",
+        "_ZN7Vehicle10accelerateEf",
+        "_ZN7Vehicle4turnEbf",
+        "_ZN7Vehicle5brakeEf",
+        "_ZN7Vehicle6repairEv",
+        "_ZN7Vehicle7getMeshEv",
+        "_ZN9Character8goToIdleEv",
+        "_ZNK13ScriptManager13isInCinematicEv",
+        "_ZNK13ScriptManager7getRaceEv",
+        "_ZNK15CControlManager8isLockedEv",
+        "_ZNK4Race8getStateEv"
     ]
 }

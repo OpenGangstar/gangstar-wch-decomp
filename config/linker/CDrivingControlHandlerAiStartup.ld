@@ -1,3 +1,16 @@
+PROVIDE(__aeabi_d2f = 0x001c4310);
+PROVIDE(__aeabi_dadd = 0x1c4394);
+PROVIDE(__aeabi_dsub = 0x001c4454);
+PROVIDE(__aeabi_f2d = 0x001c48f8);
+PROVIDE(__aeabi_fadd = 0x001c4154);
+PROVIDE(__aeabi_fcmpeq = 0x001c470c);
+PROVIDE(__aeabi_fcmpgt = 0x001c419c);
+PROVIDE(__aeabi_fcmplt = 0x001c479c);
+PROVIDE(__aeabi_fmul = 0x1c4724);
+PROVIDE(__aeabi_fsub = 0x001c4328);
+PROVIDE(__aeabi_i2f = 0x001c41e4);
+PROVIDE(atan2f = 0x001c4718);
+PROVIDE(sqrtf = 0x001c4184);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/ai-startup-cdrivingcontrolhandler/retail-symbols.ld
@@ -53,6 +66,10 @@ SECTIONS
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
     .got 0x004b0048 : { *(.got.plt) . = 0x360; *(.got) }
     .verification 0x00600000 : { *retail-got.o(.text) }
+    .driving_on_event 0x0032da90 : { *ai-startup-cdrivingcontrolhandler.o(.text._ZN22CDrivingControlHandler7onEventEPK6IEventPK12EventManager) }
+    .driving_on_event_tables 0x00425978 : { *ai-startup-cdrivingcontrolhandler.o(.rodata._ZN22CDrivingControlHandler7onEventEPK6IEventPK12EventManager) }
+    .driving_back_weight 0x004b9980 (NOLOAD) : { *ai-startup-cdrivingcontrolhandler.o(.bss._ZZN22CDrivingControlHandler7onEventEPK6IEventPK12EventManagerE10backWeight) }
+    .driving_front_weight 0x004b9984 (NOLOAD) : { *ai-startup-cdrivingcontrolhandler.o(.bss._ZZN22CDrivingControlHandler7onEventEPK6IEventPK12EventManagerE11frontWeight) }
 }
 ASSERT(SIZEOF(.ai_startup_storage_0) == 32, "_ZN3irr5scene6quake315irrEmptyStringcE extent");
 ASSERT(SIZEOF(.ai_startup_storage_1) == 12, "_ZN3irr2ps5vHalfE extent");
