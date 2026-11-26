@@ -2131,6 +2131,71 @@ void Menus::ServiceWeaponShop::Refresh()
     UpdateLocalization();
 }
 
+#include "../missions/MissionData.h"
+namespace Widgets {
+class Mission : public MenuWidget {
+public:
+    Mission();
+    virtual void Show();
+    virtual void OnEvent(RenderFX::Event&);
+    virtual void UpdateLocalization();
+    void SetScript(const Script* value);
+
+private:
+    const Script* script;
+};
+}
+
+bool Menus::ServiceMissions::Notify(const MenuWidget* widget, int event)
+{
+    if (Services::Notify(widget, event))
+        return true;
+    MenuManager* manager = MenuManager::getInstance();
+    const MenuWidgetTable& table = *reinterpret_cast<const MenuWidgetTable*>(manager);
+    void* pageSlot = 18 < table.count ? table.widgets[18] : 0;
+    const MenuWidget* pageWidget = static_cast<const MenuWidget*>(pageSlot);
+    const Widgets::Arrows* arrows = static_cast<const Widgets::Arrows*>(pageSlot);
+    if (widget != pageWidget)
+        return false;
+    switch (event) {
+    case 1:
+    case 2:
+        break;
+    default:
+        return false;
+    }
+    ScriptManager* scriptManager = ScriptManager::getInstance();
+    std::vector<Script*> scripts;
+    scriptManager->getAvailableMissionScripts(scripts);
+    Mission* mission = static_cast<Mission*>(ScriptManager::getInstance()->getMission());
+    Application::GetInstance();
+    const Script* chosen = 0;
+    const Structs::Mission* record = 0;
+    int valid = 0;
+    for (int i = 0; i < scripts.size() && valid <= arrows->GetCurrentPage(); ++i) {
+        record = mission->mission(scripts[i]->getMissionId());
+        if (record) {
+            chosen = scripts[i];
+            ++valid;
+        }
+    }
+    Widgets::Mission* missionWidget;
+    if (table.count <= 6)
+        missionWidget = 0;
+    else
+        missionWidget = static_cast<Widgets::Mission*>(table.widgets[6]);
+    missionWidget->SetScript(chosen);
+    missionWidget->UpdateLocalization();
+    Widgets::Title* title = static_cast<Widgets::Title*>(15 < table.count ? table.widgets[15] : 0);
+    if (record)
+        title->SetTextId(record->unknown16);
+    else
+        title->SetTextId(0x104a);
+    title->UpdateLocalization();
+    return true;
+}
+
+
 namespace Widgets { class Corruption : public MenuWidget { public: void SetWantedLevel(int level); }; }
 
 bool Menus::ServiceCorruption::Notify(const MenuWidget* widget, int event)

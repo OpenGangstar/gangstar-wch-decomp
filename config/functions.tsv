@@ -9804,7 +9804,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002eb6a9	0xb8	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceCorruption6NotifyEPK10MenuWidgeti	Menus::ServiceCorruption::Notify(MenuWidget const*, int)
 0x002eb761	0x1c0	MenuState.cpp	game	ui	matched	_ZN5Menus16ServiceCarRental6NotifyEPK10MenuWidgeti	Menus::ServiceCarRental::Notify(MenuWidget const*, int)
 0x002eb921	0xbc	MenuState.cpp	game	ui	matched	_ZN5Menus17ServiceWeaponShop6NotifyEPK10MenuWidgeti	Menus::ServiceWeaponShop::Notify(MenuWidget const*, int)
-0x002eb9dd	0x154	MenuState.cpp	game	ui	pending	_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti	Menus::ServiceMissions::Notify(MenuWidget const*, int)
+0x002eb9dd	0x154	MenuState.cpp	game	ui	matched	_ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti	Menus::ServiceMissions::Notify(MenuWidget const*, int)
 0x002ebb31	0x16c	MenuState.cpp	game	ui	matched	_ZN5Menus3Map6UpdateEv	Menus::Map::Update()
 0x002ebc9d	0x8c	CHudManager.cpp	game	hud	matched	_ZN11CHudManager15setThrottleModeENS_12ThrottleModeE	CHudManager::setThrottleMode(CHudManager::ThrottleMode)
 0x002ebd29	0xf4	CHudManager.cpp	game	hud	matched	_ZN11CHudManager15setSteeringModeENS_12SteeringModeE	CHudManager::setSteeringMode(CHudManager::SteeringMode)
