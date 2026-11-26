@@ -1017,3 +1017,132 @@ case2:
     soundId = 79;
     goto play;
 }
+
+#include "../scripting/ScriptManager.h"
+#include "../core/Geometry.h"
+
+namespace {
+// Partial field views used by the detection pass; never constructed or copied.
+struct NPCDetectFields {
+    unsigned char beforeSceneNode[16];
+    irr::scene::ISceneNode* sceneNode;
+    unsigned char beforeTarget[240];
+    LevelObject* target;
+    unsigned char beforeFlags[92];
+    unsigned int flags356;
+    unsigned char beforeRadius[28];
+    float searchRadiusSquared;
+    unsigned char beforeCategory[36];
+    unsigned int category428;
+};
+
+struct DetectCharacterFields {
+    unsigned char beforeSceneNode[16];
+    irr::scene::ISceneNode* sceneNode;
+    unsigned char beforeMovementFlags[216];
+    unsigned int movementFlags;
+};
+
+struct DetectPlayerFields {
+    unsigned char beforeMovementFlags[240];
+    unsigned int movementFlags;
+};
+
+inline void markDetected(NPCDetectFields& fields)
+{
+    MovementFlags flags;
+    flags.word = fields.flags356 | 0x200u;
+    flags.bits.waiting = 0;
+    fields.flags356 = flags.word;
+}
+
+// Detection flag word with the detected bit (0x200) named, so the word is
+// read before the bit is set.
+union DetectFlags {
+    unsigned int word;
+    struct {
+        unsigned int : 3;
+        unsigned int waiting : 1;
+        unsigned int : 5;
+        unsigned int detected : 1;
+    } bits;
+};
+
+inline void markDetectedBits(NPCDetectFields& fields)
+{
+    DetectFlags flags;
+    flags.word = fields.flags356;
+    flags.bits.detected = 1;
+    flags.bits.waiting = 0;
+    fields.flags356 = flags.word;
+}
+}
+
+extern "C" float acosf(float);
+extern "C" double sqrt(double);
+
+extern "C" void _ZN3NPC7_detectEv(NPC* npc)
+{
+    NPCDetectFields& fields = *reinterpret_cast<NPCDetectFields*>(npc);
+    if (ScriptManager::getInstance()->isInCinematic())
+        fields.flags356 |= 0x800000u;
+    else
+        fields.flags356 &= ~0x800000u;
+    if (!fields.target || !fields.sceneNode
+        || !reinterpret_cast<DetectCharacterFields*>(fields.target)->sceneNode)
+        return;
+    const int type = LevelObject::s_type[fields.target->getObjectType()];
+    // Taking the label address only pins the redirect block's label; the
+    // value is unused, so no computed jump exists.
+    void* const redirectLabel = &&vehicleRedirect;
+    (void)redirectLabel;
+    switch (type) {
+    case 5:
+    case 8:
+    vehicleRedirect:
+        if ((reinterpret_cast<DetectCharacterFields*>(fields.target)->movementFlags & 0x400u)
+            && static_cast<Character*>(fields.target)->getVehicle())
+            fields.target = static_cast<Character*>(fields.target)->getVehicle();
+        break;
+    }
+    EventManager* events = Application::GetInstance()->GetEventManager();
+    PlayerTest* player = PlayerTest::GetPlayer();
+    irr::core::vector3d<float> delta = fields.target->GetPosition() - npc->GetPosition();
+    const float distanceSquared = delta.getLengthSQ();
+    irr::core::vector3d<float> point(0.0f, 0.0f, 0.0f);
+    if (fields.flags356 & 0x100u) {
+        if (distanceSquared <= fields.searchRadiusSquared
+            && npc->canSeeLevelObject(fields.target, point)) {
+            if (!(fields.flags356 & 0x200u)) {
+                events->raise(EvNPC(static_cast<EvNPC::State>(18), npc));
+                markDetected(fields);
+            }
+            if (fields.category428 == 3 && fields.target == player && distanceSquared <= 40000.0f
+                && static_cast<int>(reinterpret_cast<DetectPlayerFields*>(player)->movementFlags) < 0)
+                npc->_arrest();
+        } else if (fields.flags356 & 0x200u) {
+            fields.flags356 &= ~0x240u;
+            events->raise(EvNPC(static_cast<EvNPC::State>(19), npc));
+        }
+    } else {
+        if (distanceSquared <= fields.searchRadiusSquared
+            && npc->canSeeLevelObject(fields.target, point)) {
+            if (!(fields.flags356 & 0x200u)) {
+                const float dot = delta.dotProduct(npc->GetFront());
+                const double length = sqrt(distanceSquared);
+                const float cosine = dot / (static_cast<float>(length) * npc->GetFront().getLength());
+                if (acosf(irr::core::clamp(cosine, -1.0f, 1.0f)) <= 1.5f
+                    || distanceSquared <= 0.0625f * fields.searchRadiusSquared) {
+                    events->raise(EvNPC(static_cast<EvNPC::State>(18), npc));
+                    markDetectedBits(fields);
+                }
+                if (fields.target == player && distanceSquared <= 40000.0f
+                    && static_cast<int>(reinterpret_cast<DetectPlayerFields*>(player)->movementFlags) < 0)
+                    npc->_arrest();
+            }
+        } else if (fields.flags356 & 0x200u) {
+            fields.flags356 &= ~0x240u;
+            events->raise(EvNPC(static_cast<EvNPC::State>(19), npc));
+        }
+    }
+}

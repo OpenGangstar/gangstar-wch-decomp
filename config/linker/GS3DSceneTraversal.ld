@@ -1,3 +1,8 @@
+PROVIDE(__aeabi_d2iz = 0x001c4844);
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
+PROVIDE(__aeabi_fdiv = 0x001c4520);
+PROVIDE(__aeabi_ui2f = 0x001c4574);
+PROVIDE(__aeabi_ui2d = 0x001c4208);
 PROVIDE(__aeabi_d2f = 0x001c4310);
 PROVIDE(__aeabi_f2d = 0x001c48f8);
 PROVIDE(__aeabi_fadd = 0x001c4154);
@@ -20,8 +25,13 @@ SECTIONS {
     .gs_indent 0x00410720 : { *gs3d-stuff.o(.rodata.gs_indent) }
     .gs_set_color 0x002ded04 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetColorEPN3irr5scene10ISceneNodeENS0_5video6SColorENS_10eColorTypeE) }
     .gs_set_alpha 0x002df34c : { *gs3d-stuff.o(.text._ZN9GS3DStuff8SetAlphaEPN3irr5scene10ISceneNodeEhNS_10eColorTypeE) }
-    .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_7) }
-    .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_8) }
+    .gs_tcf_7 0x002dada8 : { *gs3d-stuff.o(.text.__tcf_4) }
+    .gs_tcf_8 0x002dad70 : { *gs3d-stuff.o(.text.__tcf_5) }
+    .gs_update 0x002e078c : { *gs3d-stuff.o(.text._ZN9GS3DStuff6updateEP12StateMachine) }
+    .gs_update_vehicles_guard 0x004b6a6c (NOLOAD) : { *gs3d-stuff.o(.bss._ZGVZN9GS3DStuff6updateEP12StateMachineE8vehicles) }
+    .gs_update_pickables_guard 0x004b6a70 (NOLOAD) : { *gs3d-stuff.o(.bss._ZGVZN9GS3DStuff6updateEP12StateMachineE9pickables) }
+    .gs_update_pickables 0x004b6a74 (NOLOAD) : { *gs3d-stuff.o(.bss._ZZN9GS3DStuff6updateEP12StateMachineE9pickables) }
+    .gs_update_vehicles 0x004b6a80 (NOLOAD) : { *gs3d-stuff.o(.bss._ZZN9GS3DStuff6updateEP12StateMachineE8vehicles) }
     .gs3d_string_m_append 0x002dcd28 : { *gs3d-stuff.o(.text._ZNSs9_M_appendEPKcS0_) }
     .gs_string_append 0x002dce9c : { *gs3d-stuff.o(.text._ZNSs6appendEPKc) }
     .gs_unload 0x002de918 : { *gs3d-stuff.o(.text._ZN9GS3DStuff6unloadEv) }

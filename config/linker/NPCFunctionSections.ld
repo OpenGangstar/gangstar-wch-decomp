@@ -65,4 +65,5 @@ SECTIONS
     .npc_set_loop 0x002fd510 : { *ai-startup-npc.o(.text._ZN3NPC16loopPathToFollowEb) }
     .npc_set_path 0x002fd538 : { *ai-startup-npc.o(.text._ZN3NPC15setPathToFollowEPK4Path) }
     .npc_get_loop 0x002fd558 : { *ai-startup-npc.o(.text._ZNK3NPC23isLoopingOnPathToFollowEv) }
+    .npc_detect 0x002ff180 : { *ai-startup-npc.o(.text._ZN3NPC7_detectEv) }
 }

@@ -57,11 +57,13 @@
         "_ZN11SceneCamera4LoadERKN7Structs11SceneCameraE",
         {
             "name": "__tcf_7",
-            "address": "0x002dada9"
+            "address": "0x002dada9",
+            "compiled_name": "__tcf_4"
         },
         {
             "name": "__tcf_8",
-            "address": "0x002dad71"
+            "address": "0x002dad71",
+            "compiled_name": "__tcf_5"
         },
         "_ZNSs6appendEPKc",
         "_ZN9GS3DStuff6unloadEv",
