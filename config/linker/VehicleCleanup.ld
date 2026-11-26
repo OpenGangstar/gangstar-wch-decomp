@@ -297,6 +297,7 @@ SECTIONS
     .vehicle_is_looping 0x00307f84 : { *(.text._ZNK7Vehicle23isLoopingOnPathToFollowEv) }
     .vehicle_cleanup_0 0x00308014 : { *vehicle-cleanup.o(.text.__tcf_4) }
     .vehicle_cleanup_1 0x00308210 : { *vehicle-cleanup.o(.text.__tcf_3) }
+    .vehicle_get_collision_rect 0x0030ae3c : { *vehicle-cleanup.o(.text._ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf) }
     .vehicle_create_wheels 0x0030d148 : { *vehicle-cleanup.o(.text._ZN7Vehicle12CreateWheelsEP13Box2DUserInfo) }
     .vehicle_shape_def_d0 0x002db47c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
     .vehicle_shape_def_d1 0x002db49c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }

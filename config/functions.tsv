@@ -10672,7 +10672,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0030a8f5	0x60	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle10tagForKillEb	Vehicle::tagForKill(bool)
 0x0030a955	0x4e8	Vehicle.cpp	game	vehicles	matched	_ZN7VehicleC1Ei	Vehicle::Vehicle(int)
 0x0030a955	0x4e8	Vehicle.cpp	game	vehicles	matched	_ZN7VehicleC2Ei	Vehicle::Vehicle(int)
-0x0030ae3d	0x2f0	Vehicle.cpp	game	vehicles	pending	_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf	Vehicle::getCollisionRect(irr::core::vector3d<float>*, float)
+0x0030ae3d	0x2f0	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle16getCollisionRectEPN3irr4core8vector3dIfEEf	Vehicle::getCollisionRect(irr::core::vector3d<float>*, float)
 0x0030b12d	0x100	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle5debugEPN3irr5video12IVideoDriverE	Vehicle::debug(irr::video::IVideoDriver*)
 0x0030b22d	0xe4	Vehicle.cpp	game	vehicles	matched	_ZN7Vehicle19getNearestDoorDummyEN3irr4core8vector3dIfEE	Vehicle::getNearestDoorDummy(irr::core::vector3d<float>)
 0x0030b311	0x28c	Vehicle.cpp	game	vehicles	pending	_Z41__static_initialization_and_destruction_0ii	__static_initialization_and_destruction_0(int, int)
