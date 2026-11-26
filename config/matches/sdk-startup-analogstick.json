@@ -132,7 +132,9 @@
         {
             "name": "_ZNK11AnalogStick6draw2dEv",
             "address": "0x00326495"
-        }
+        },
+        "_ZN11AnalogStick12processTouchEl",
+        "_ZThn8_N11AnalogStick12processTouchEl"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -173,7 +175,10 @@
         ".analog_stick_update",
         ".analog_stick_delete_thunk",
         ".analog_stick_destructor_thunk",
-        ".analog_stick_vtable"
+        ".analog_stick_vtable",
+        ".stick_touch",
+        ".stick_touch_thunk",
+        ".stick_touch_string"
     ],
     "retail_got": true,
     "external_thumb_functions": [
