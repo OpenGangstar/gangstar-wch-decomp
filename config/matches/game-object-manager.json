@@ -393,7 +393,6 @@
         "_ZN10PlayerTest9GetPlayerEv",
         "_ZN4Lock11getInstanceEv",
         "_ZN4Lock9setTargetEP11LevelObject",
-        "_ZN9ResStreamD1Ev",
         "_ZN3NPCC1Ei",
         "_ZN3NPC4LoadERKN7Structs3NPCE",
         "_ZN7VehicleC1Ei",

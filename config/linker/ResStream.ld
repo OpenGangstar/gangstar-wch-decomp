@@ -41,6 +41,9 @@ _ZN26retail_wrapper_transitions11guard_transE = 0x004139dc;
 _ZN26retail_wrapper_transitions22scripted_vehicle_transE = 0x00413a84;
 __aeabi_atexit = 0x001c494c;
 SECTIONS {
+    .resstream_delete 0x0034eed8 : { *res-stream.o(.text._ZN9ResStreamD0Ev) }
+    .resstream_destroy 0x0034ef14 : { *res-stream.o(.text._ZN9ResStreamD1Ev .text._ZN9ResStreamD2Ev) }
+    .resstream_vtable 0x004ad698 : { *res-stream.o(.data.rel.ro._ZTV9ResStream) }
     .resstream_text 0x0034ef4c : {
         *res-stream.o(.text._ZN9ResStreamC1Ei .text._ZN9ResStreamC2Ei)
         *res-stream.o(.text._ZN9ResStreamC1Ev .text._ZN9ResStreamC2Ev)

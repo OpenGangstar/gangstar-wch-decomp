@@ -59,7 +59,8 @@
         ".jni_text_41328c",
         ".jni_text_413298",
         ".jni_text_4132a8",
-        ".wrapper_resource_path"
+        ".wrapper_resource_path",
+        ".resstream_vtable"
     ],
     "functions": [
         "_ZN9ResStreamC1Ei",
@@ -97,7 +98,10 @@
         "nativeGetVersionMode",
         "nativeGetNumLaunch",
         "Java_com_gameloft_android_GAND_GloftGANG_Gangstar_nativeInit",
-        "appInit"
+        "appInit",
+        "_ZN9ResStreamD0Ev",
+        "_ZN9ResStreamD1Ev",
+        "_ZN9ResStreamD2Ev"
     ],
     "dependencies": [
         "buffer-stream",

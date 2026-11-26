@@ -96,6 +96,9 @@ _ZN28retail_gs3dstuff_transitions22scripted_vehicle_transE = 0x00414bf8;
 INCLUDE config/linker/GS3DSceneTraversal.ld
 INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
+    .resstream_delete 0x0034eed8 : { *res-stream.o(.text._ZN9ResStreamD0Ev) }
+    .resstream_destroy 0x0034ef14 : { *res-stream.o(.text._ZN9ResStreamD1Ev .text._ZN9ResStreamD2Ev) }
+    .resstream_vtable 0x004ad698 : { *res-stream.o(.data.rel.ro._ZTV9ResStream) }
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
     .gom_distance_from_attackable_target 0x00315f38 : { *game-object-manager.o(.text._ZN17GameObjectManager31getDistanceFromAttackableTargetEP9CharacteriP11LevelObjectb) }
     .gom_get_attackable_target 0x003160d8 : { *game-object-manager.o(.text._ZN17GameObjectManager19getAttackableTargetEP9Character) }
