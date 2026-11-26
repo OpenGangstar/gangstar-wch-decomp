@@ -1168,6 +1168,72 @@ int RenderFX::PreloadGlyphs(const char* text, const char* fontName, int size,
     return 0;
 }
 
+namespace {
+// Observed root-movie character pointer at +16 of the native root.
+struct PreloadRootFields {
+    unsigned char prefix[16];
+    gameswf::character* rootCharacter;
+};
+// Observed RenderFX root smart pointer at +28; no full RenderFX layout is implied.
+struct PreloadMovieFields {
+    unsigned char prefix[28];
+    PreloadRootFields* root;
+};
+// Retail glyph filter records are 44 bytes; filter internals remain native.
+struct PreloadFilterRecord {
+    unsigned char bytes[44];
+};
+// Observed retail font fields read when preloading text glyphs.
+struct PreloadFontFields {
+    unsigned char prefix[48];
+    gameswf::tu_string name;
+    unsigned char unknown64[8];
+    bool italic;
+    bool bold;
+};
+// Observed retail edit-text fields read when preloading text glyphs.
+struct PreloadTextFields {
+    unsigned char prefix[284];
+    gameswf::array<PreloadFilterRecord> filters;
+    unsigned char unknown296[88];
+    gameswf::tu_string text;
+    unsigned char unknown400[40];
+    float textHeight;
+    PreloadFontFields* font;
+};
+inline gameswf::character* preloadRootCharacter(RenderFX* movie)
+{
+    return reinterpret_cast<PreloadMovieFields*>(movie)->root->rootCharacter;
+}
+inline gameswf::filter* preloadFilter(PreloadTextFields* text, int index)
+{
+    return reinterpret_cast<gameswf::filter*>(&text->filters.elements[index]);
+}
+inline gameswf::character* preloadCharacter(const gameswf::array<gameswf::character*>& characters, int index)
+{
+    return characters.elements[index];
+}
+}
+
+extern "C" int _ZN8RenderFX13PreloadGlyphsEv(RenderFX* movie)
+{
+    const gameswf::array<gameswf::character*>& characters = movie->FindCharacters(
+        preloadRootCharacter(movie), 0, 0);
+    for (int i = 0; i < characters.size; ++i) {
+        if (animationMethods(characters.elements[i]).is(characters.elements[i], 30)) {
+            PreloadTextFields* text = reinterpret_cast<PreloadTextFields*>(preloadCharacter(characters, i));
+            for (int j = 0; j < text->filters.size; ++j) {
+                gameswf::filter* filter = preloadFilter(text, j);
+                movie->PreloadGlyphs(text->text.c_str(), text->font->name.c_str(), (int)(text->textHeight / 20.0f),
+                                     text->font->bold, text->font->italic, filter);
+            }
+            movie->PreloadGlyphs(text->text.c_str(), text->font->name.c_str(), (int)(text->textHeight / 20.0f),
+                                 text->font->bold, text->font->italic, 0);
+        }
+    }
+    return 1;
+}
+
 namespace gameswf {
 
 class bitmap_info;

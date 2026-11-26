@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_f2iz = 0x001c44cc);
 __aeabi_fcmpeq = 0x001c470c;
 memset = 0x001c45d4;
 __cxa_pure_virtual = 0;
@@ -17,6 +18,7 @@ SECTIONS
  .can_handle_mouse 0x003eca0c : { *renderfx-animation.o(.text._Z19CanHandleMouseEventPN7gameswf9characterE) }
     .renderfx_force_textures_to_vram 0x003ece04 : { *renderfx-animation.o(.text._ZN8RenderFX19ForceTexturesToVRAMEbPN7gameswf14player_contextE) }
     .menufx_get_state_handler 0x003f01d0 : { *renderfx-animation.o(.text._ZN6MenuFX15GetStateHandlerEPN7gameswf9characterE) }
+    .renderfx_preload_glyphs 0x003edc7c : { *renderfx-animation.o(.text._ZN8RenderFX13PreloadGlyphsEv) }
  .set_character_focus 0x003ef200 : { *renderfx-animation.o(.text._ZN8RenderFX8SetFocusEPN7gameswf9characterEi) }
  .renderfx_trace_hierarchy 0x003ecb08 : { *renderfx-animation.o(.text._ZN8RenderFX14TraceHierarchyEPN7gameswf9characterEii) }
  ASSERT(SIZEOF(.renderfx_trace_hierarchy) <= 464, "TraceHierarchy native464B span")
