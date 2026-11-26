@@ -62,6 +62,77 @@ static void _GLOBAL__I__ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE()
 }
 }
 
+SlideControl::SlideControl(ASprite* sprite, int trackFrame, int handleFrame,
+                           SlideControlMode mode)
+    : HudElement(sprite, trackFrame, true)
+{
+    this->mode = mode;
+    unknown76 = 0.0f;
+    unknown80 = 0.0f;
+    unknown84 = 0.0f;
+    knobCenterX = 0.0f;
+    knobCenterY = 0.0f;
+    releasedUp = false;
+    releasedRight = false;
+    this->handleFrame = handleFrame;
+
+    const int trackIndex = frame;
+    const SpriteFrame* trackSpriteFrame = this->sprite->GetFrame(trackIndex);
+    const SpriteFrameModule* track = this->sprite->GetFModule(static_cast<int>(trackSpriteFrame->firstModule));
+    const float trackY = track->y;
+    const float trackX = track->x;
+    unknown32 = trackX;
+    unknown36 = trackY;
+    const SpriteModule* trackModule = this->sprite->GetModule(track->module);
+    const SpriteFrame* knobSpriteFrame = this->sprite->GetFrame(this->handleFrame);
+    const SpriteFrameModule* knob = this->sprite->GetFModule(knobSpriteFrame->firstModule);
+    unknown80 = 0;
+    unknown84 = 0;
+    const SpriteModule* knobModule = this->sprite->GetModule(knob->module);
+    const float centerY = (knobModule->height >> 1) + knob->y;
+    const float centerX = (knobModule->width >> 1) + knob->x;
+    knobCenterX = centerX;
+    knobCenterY = centerY;
+
+    if (this->mode == Horizontal) {
+        horizontal = true;
+        const int halfHeightDifference = (trackModule->height - knobModule->height) >> 1;
+        minimumX = knob->x - track->x - halfHeightDifference;
+        maximumX = track->x + trackModule->width - knob->x - knobModule->width - halfHeightDifference;
+        const float left = track->x;
+        const float top = track->y - 20;
+        float right = trackModule->width;
+        const int regionHeight = (trackModule->height + 20) << 1;
+        right = left + right;
+        // Stored again below; the extra use keeps the add in place so the
+        // stores follow it as in retail. Flow removes this first store.
+        touchRegion.coordinates[2] = right;
+        touchRegion.coordinates[0] = left;
+        touchRegion.coordinates[1] = top;
+        touchRegion.coordinates[2] = right;
+        const float heightFloat = regionHeight;
+        touchRegion.coordinates[3] = top + heightFloat;
+    } else {
+        horizontal = false;
+        const int halfWidthDifference = (trackModule->width - knobModule->width) >> 1;
+        minimumY = knob->y - track->y - halfWidthDifference;
+        maximumY = track->y + trackModule->height - knob->y - knobModule->height - halfWidthDifference;
+        const float left = track->x - 16;
+        const float top = track->y;
+        float right = (trackModule->width + 16) << 1;
+        const short regionHeight = trackModule->height;
+        right = left + right;
+        // Stored again below; the extra use keeps the add in place so the
+        // stores follow it as in retail. Flow removes this first store.
+        touchRegion.coordinates[2] = right;
+        touchRegion.coordinates[0] = left;
+        touchRegion.coordinates[1] = top;
+        touchRegion.coordinates[2] = right;
+        const float heightFloat = regionHeight;
+        touchRegion.coordinates[3] = top + heightFloat;
+    }
+}
+
 SlideControl::~SlideControl()
 {
 }

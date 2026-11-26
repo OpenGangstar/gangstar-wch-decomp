@@ -1,3 +1,4 @@
+PROVIDE(__aeabi_fadd = 0x001c4154);
 OUTPUT_FORMAT("elf32-littlearm")
 OUTPUT_ARCH(arm)
 INCLUDE build/matches/sdk-startup-slidecontrol/retail-symbols.ld
@@ -20,6 +21,7 @@ SECTIONS
     .move_right_D0 0x0032687c : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD0Ev) }
     .move_right_D1 0x003268a8 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.t._ZN20EvLeftRightStickMoveD1Ev) }
     .move_right_vtable 0x004abf40 : { *sdk-startup-slidecontrol.o(.gnu.linkonce.d.rel.ro._ZTV20EvLeftRightStickMove) }
+    .slide_control_ctor 0x0032b1f4 : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControlC1EP7ASpriteiiNS_16SlideControlModeE .text._ZN12SlideControlC2EP7ASpriteiiNS_16SlideControlModeE) }
     .slide_process_touch 0x0032b664 : { *sdk-startup-slidecontrol.o(.text._ZN12SlideControl12processTouchEl) }
     .slide_process_touch_thunk 0x0032b650 : { *sdk-startup-slidecontrol.o(.text._ZThn8_N12SlideControl12processTouchEl) }
     .slide_invalid_touch 0x00424d68 : { *sdk-startup-slidecontrol.o(.rodata.slide_invalid_touch) }

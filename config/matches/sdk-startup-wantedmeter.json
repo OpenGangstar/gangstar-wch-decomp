@@ -50,7 +50,8 @@
             "address": "0x0032c835",
             "compiled_name": "__tcf_0"
         },
-        "_ZN11WantedMeter6updateEd"
+        "_ZN11WantedMeter6updateEd",
+        "_ZN11WantedMeterC1EP7ASpritei"
     ],
     "sections": [
         ".wanted_meter_vtable",
@@ -73,6 +74,12 @@
         "_ZN18WantedLevelManagerC1Ev",
         "_ZN18WantedLevelManagerD1Ev",
         "_ZN10AnimObject7SetAnimEi",
-        "_ZN10AnimObject11UpdateFrameEv"
+        "_ZN10AnimObject11UpdateFrameEv",
+        "_ZN10AnimObjectC1Ev",
+        "_ZN10HudElementC1EP7ASpriteib",
+        "_ZNK7ASprite10GetFModuleEi",
+        "_ZNK7ASprite18GetFrameFromAFrameEii",
+        "_ZNK7ASprite8GetFrameEi",
+        "_ZNK7ASprite9GetModuleEi"
     ]
 }
