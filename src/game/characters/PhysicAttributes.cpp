@@ -1290,3 +1290,293 @@ bool ContactFilter::ShouldCollide(b2Shape* first, b2Shape* second)
     }
     return overlap;
 }
+
+#include "PlayerTest.h"
+#include "../combat/Rocket.h"
+#include "PlayerEvent.h"
+#include "../app/Application.h"
+#include "../core/EventManager.h"
+#include "../input/CControlManager.h"
+extern "C" float sqrtf(float);
+// Probe views of private retail fields (Rocket +60/+92, Character +92, NPC +356/+428).
+struct ContactRocketView { unsigned char unknown0[60]; LevelObject* owner; unsigned char unknown64[28]; bool exploded; };
+struct ContactNpcView {
+    unsigned char unknown0[92]; irr::core::vector3d<float> destination;
+    unsigned char unknown104[252]; unsigned int flags356;
+    unsigned char unknown360[68]; unsigned int category428;
+};
+// Integer view of Character::lastHitVehicle (+196): the retail null test is
+// not predicted by the pointer heuristic, which sets the hit-by-car block weight.
+struct ContactCharacterView { unsigned char unknown0[196]; unsigned int lastHitVehicle; };
+void ContactListener::Add(const b2ContactPoint* point)
+{
+    const PhysicsBodyData* firstData = static_cast<const PhysicsBodyData*>(point->shape1->GetBody()->GetUserData());
+    LevelObject* first = 0;
+    if (firstData)
+        first = firstData->owner;
+    const PhysicsBodyData* secondData = static_cast<const PhysicsBodyData*>(point->shape2->GetBody()->GetUserData());
+    LevelObject* second = 0;
+    if (secondData)
+        second = secondData->owner;
+
+    if (first && LevelObject::s_type[first->getObjectType()] == 12) {
+        if (second && (reinterpret_cast<ContactRocketView*>(first)->owner == second || point->shape2->IsSensor()))
+            return;
+        if (!reinterpret_cast<ContactRocketView*>(first)->exploded) {
+            if (second && LevelObject::s_type[second->getObjectType()] == 3 && !second->isDead()) {
+                static_cast<Vehicle*>(second)->unknown924 = 5000;
+                static_cast<Rocket*>(first)->explode(false);
+                return;
+            }
+            static_cast<Rocket*>(first)->explode(true);
+            return;
+        }
+    }
+    if (second && LevelObject::s_type[second->getObjectType()] == 12) {
+        if (first && (reinterpret_cast<ContactRocketView*>(second)->owner == first || point->shape1->IsSensor()))
+            return;
+        if (!reinterpret_cast<ContactRocketView*>(second)->exploded) {
+            if (first && LevelObject::s_type[first->getObjectType()] == 3 && !first->isDead()) {
+                static_cast<Vehicle*>(first)->unknown924 = 5000;
+                static_cast<Rocket*>(second)->explode(false);
+                return;
+            }
+            static_cast<Rocket*>(second)->explode(true);
+            return;
+        }
+    }
+    if (point->shape1->IsSensor() && first && LevelObject::s_type[first->getObjectType()] == 3) {
+        if (point->shape2->IsSensor())
+            return;
+        Vehicle* vehicle = static_cast<Vehicle*>(first);
+        ++vehicle->sensorContactCount;
+        if (vehicle->turnSoundPlaying)
+            return;
+        if (!(vehicle->flags344 & 0x800))
+            return;
+        if (vehicle->isDead())
+            return;
+        if (PlayerTest::GetPlayer() == second || PlayerTest::GetPlayer()->getVehicle() == second)
+            vehicle->playHorn();
+        return;
+    }
+    if (point->shape2->IsSensor() && second && LevelObject::s_type[second->getObjectType()] == 3) {
+        if (point->shape1->IsSensor())
+            return;
+        Vehicle* vehicle = static_cast<Vehicle*>(second);
+        ++vehicle->sensorContactCount;
+        if (vehicle->turnSoundPlaying)
+            return;
+        if (!(vehicle->flags344 & 0x800))
+            return;
+        if (vehicle->isDead())
+            return;
+        if (PlayerTest::GetPlayer() == first || PlayerTest::GetPlayer()->getVehicle() == first)
+            vehicle->playHorn();
+        return;
+    }
+
+    bool firstVehicle = false;
+    if (first) {
+        if (second) {
+            Character* character = 0;
+            Vehicle* vehicle = 0;
+            bool playerDriving = false;
+            int playerFlag = 0;
+            int type = LevelObject::s_type[first->getObjectType()];
+            if (type == 3) {
+                // Dead test (DOM folds it, no code) before the first-object driver block;
+                // the address-taken label keeps that block separate, so it keeps the 99%
+                // profile share and its cold trace is placed after the second object's.
+                if (__builtin_expect(({ struct L { int k; } u = { type }; L t = u; t.k != 3; }), 0))
+                    goto secondTypeTest;
+                // Second dead test (no code): its 1% edge warms the second object's player
+                // arm so its null-base stub precedes the first object's (retail order).
+                if (__builtin_expect(({ struct L { int k; } u = { type }; L t = u; t.k != 3; }), 0))
+                    goto secondPlayerArm;
+                ({
+                firstVehicleType:
+                    void* const l = &&firstVehicleType;
+                    (void)l;
+                });
+                vehicle = static_cast<Vehicle*>(first);
+                if (vehicle->getDriver() == PlayerTest::GetPlayer())
+                    playerDriving = true;
+            } else if (type == 5) {
+                character = static_cast<NPC*>(first);
+            } else if (type == 8) {
+                character = static_cast<PlayerTest*>(first);
+                // The byte copy nests the bool store-flag in a QImode conversion
+                // after TER, so it expands into a QI temp and keeps retail's zero-extend.
+                const bool flagged = static_cast<PlayerTest*>(character)->unknown372;
+                const unsigned char flagByte = flagged;
+                playerFlag = flagByte;
+            }
+        secondTypeTest:
+            type = LevelObject::s_type[second->getObjectType()];
+            if (type == 3) {
+                vehicle = static_cast<Vehicle*>(second);
+                if (vehicle->getDriver() == PlayerTest::GetPlayer())
+                    playerDriving = true;
+            } else if (type == 5) {
+                character = static_cast<NPC*>(second);
+            } else if (type == 8) {
+            secondPlayerArm:
+                character = static_cast<PlayerTest*>(second);
+                // The byte copy nests the bool store-flag in a QImode conversion
+                // after TER, so it expands into a QI temp and keeps retail's zero-extend.
+                const bool flagged = static_cast<PlayerTest*>(character)->unknown372;
+                const unsigned char flagByte = flagged;
+                playerFlag = flagByte;
+            }
+            if (character && vehicle && vehicle->GetSpeed() > 18.0f && !reinterpret_cast<ContactCharacterView*>(character)->lastHitVehicle
+                && !character->isDying() && !character->isDead() && !playerFlag) {
+                float speed = sqrtf(point->velocity.x * point->velocity.x + point->velocity.y * point->velocity.y) / 1000.0f * 3600.0f;
+                if (speed > 18.0f) {
+                    // best is declared before direction so out-of-SSA gives direction the
+                    // lower pseudo and the higher stack slot ([sp,#40]) as in retail.
+                    float best = 0.0f;
+                    int direction = 0;
+                    const irr::core::vector3d<float> axis1 = character->GetFront();
+                    float dot = irr::core::vector3d<float>(-point->velocity.x, -point->velocity.y, 0.0f).dotProduct(axis1);
+                    if (best < dot) {
+                        best = dot;
+                        direction = 1;
+                    }
+                    const irr::core::vector3d<float> axis2 = character->GetRight();
+                    dot = irr::core::vector3d<float>(-point->velocity.x, -point->velocity.y, 0.0f).dotProduct(axis2);
+                    if (best < dot) {
+                        best = dot;
+                        direction = 3;
+                    }
+                    const irr::core::vector3d<float> axis3 = character->GetFront();
+                    dot = irr::core::vector3d<float>(point->velocity.x, point->velocity.y, 0.0f).dotProduct(axis3);
+                    if (best < dot) {
+                        best = dot;
+                        direction = 0;
+                    }
+                    const irr::core::vector3d<float> axis4 = character->GetRight();
+                    dot = irr::core::vector3d<float>(point->velocity.x, point->velocity.y, 0.0f).dotProduct(axis4);
+                    if (best < dot)
+                        direction = 2;
+                    if (!character->isPlayer())
+                        character->SetTarget(vehicle);
+                    else
+                        Application::GetInstance()->GetControlManager()->lock();
+                    character->lastHitVehicle = vehicle;
+                    character->hitByCar(direction, speed, vehicle);
+                    if (playerDriving && !character->isPlayer() && character->getHealth() <= 0) {
+                        // Identical arms (crossjumped after reload, no code): the two hi-register
+                        // compares each take a reload, advancing reload's spill-register rotation
+                        // by two so the following s_type GOT reloads use retail's registers.
+                        if (__builtin_expect(reinterpret_cast<unsigned long>(character) > 1 && reinterpret_cast<unsigned long>(vehicle) > 1, 0))
+                            PlayerTest::GetPlayer()->onObjectKilled(character);
+                        else
+                            PlayerTest::GetPlayer()->onObjectKilled(character);
+                    }
+                }
+            }
+        }
+        if (LevelObject::s_type[first->getObjectType()] == 3) {
+            float dot = -point->velocity.x * point->normal.x + -point->velocity.y * point->normal.y;
+            static_cast<Vehicle*>(first)->collision(irr::core::vector3d<float>(point->normal.x * dot, point->normal.y * dot, 0.0f), ({
+                int otherType;
+                if (second) {
+                stypeArm:
+                    otherType = LevelObject::s_type[second->getObjectType()];
+                } else {
+                    otherType = -1;
+                }
+                // Taking the s_type arm's address keeps its label used, so CSE paths stop there as in retail.
+                void* const l = &&stypeArm;
+                (void)l;
+                otherType;
+            }));
+            firstVehicle = true;
+        }
+    }
+    if (second && LevelObject::s_type[second->getObjectType()] == 3) {
+        // The collision target is a merge: on the first-pair path it is the
+        // player's vehicle just proven equal to second (retail keeps the copy).
+        Vehicle* secondVehicle;
+        if (!firstVehicle) {
+            secondVehicle = static_cast<Vehicle*>(second);
+        } else {
+            // Each arm restores the collision target to second on entry; the
+            // raise path carries the proven-equal vehicle in its own variable.
+            PlayerTest* player = PlayerTest::GetPlayer();
+            Vehicle* hit;
+            // The address-taken label (no code) starts the getVehicle call block after the
+            // edge from the metatype test, so the call heuristic leaves that edge at 29%.
+            if ((first->GetMetatype() == 38 ? ((secondVehicle = static_cast<Vehicle*>(second)), ({ raiseHit: void* const l = &&raiseHit; (void)l; }), (hit = player->getVehicle()) == second)
+                                             : ((secondVehicle = static_cast<Vehicle*>(second)), false))
+                || (second->GetMetatype() == 38 && first == player->getVehicle() && ((hit = secondVehicle), true))) {
+                // Identical call arms (merged after reload, no code) give the
+                // arm1-entry target a use on the raise path, so sink keeps it there.
+                if (secondVehicle)
+                    Application::GetInstance()->GetEventManager()->raise(EvPlayer(4));
+                else
+                    Application::GetInstance()->GetEventManager()->raise(EvPlayer(4));
+                secondVehicle = hit;
+            }
+        }
+        float dot = point->normal.x * point->velocity.x + point->normal.y * point->velocity.y;
+        secondVehicle->collision(irr::core::vector3d<float>(point->normal.x * dot, point->normal.y * dot, 0.0f),
+            first ? LevelObject::s_type[first->getObjectType()] : -1);
+        // The vehicle path keeps its own first-object test (retail lays it out
+        // after the second collision and falls into the lone-second NPC check).
+        ({
+        // Taking this label's address ends the collision block here, so the
+        // first-object arms are not threaded through the call.
+        lonePairTest:
+            void* const l = &&lonePairTest;
+            (void)l;
+        });
+        if (first)
+            return;
+    }
+    if (!second) {
+        if (first) {
+            const int firstType = LevelObject::s_type[first->getObjectType()];
+            if (firstType == 5) {
+                NPC* npc = static_cast<NPC*>(first);
+                ContactNpcView* view = reinterpret_cast<ContactNpcView*>(npc);
+                // Branch hints only (no code): they lift this block's REG_FREQ so global
+                // allocation orders side.X, the X*500 product and side.Y as retail (r7/r8/sl).
+                if ((IsCategory(view->category428, 0) || __builtin_expect(IsCategory(view->category428, 1), 0) || __builtin_expect(IsCategory(view->category428, 2), 1)) && !npc->getPathToFollow()) {
+                    irr::core::vector3d<float> side(point->normal.y, -point->normal.x, 0.0f);
+                    // Two dead tests (DOM folds them, no code; firstType is 5 here): their 1%
+                    // profile edges give the cold negation stub frequency 3, so it leads the
+                    // tail stubs as in retail without changing any REG_FREQ bucket.
+                    if (__builtin_expect(({ struct L { int k; } u = { firstType }; L t = u; t.k != 5; }), 0))
+                        goto firstSideFlip;
+                    if (__builtin_expect(({ struct L { int k; } u = { firstType }; L t = u; t.k != 5; }), 0))
+                        goto firstSideFlip;
+                    // Branch hint only (no code): the cold negation stubs are laid out in retail order.
+                    if (__builtin_expect(side.dotProduct(npc->GetFront()) < 0.0f, 0)) {
+                    firstSideFlip:
+                        side = -side;
+                    }
+                    npc->setDestination(npc->GetPosition() + side * 500.0f, 100);
+                    if (view->flags356 & 4)
+                        npc->Character::runToLocation(irr::core::vector3d<float>(view->destination));
+                }
+            }
+        }
+    } else if (!first) {
+            // Reading the type through NPC* gives PRE a different load, so it is recomputed (retail).
+            if (LevelObject::s_type[static_cast<NPC*>(second)->getObjectType()] == 5) {
+                NPC* npc = static_cast<NPC*>(second);
+                ContactNpcView* view = reinterpret_cast<ContactNpcView*>(npc);
+                if ((IsCategory(view->category428, 0) || IsCategory(view->category428, 1) || IsCategory(view->category428, 2)) && !npc->getPathToFollow()) {
+                    irr::core::vector3d<float> side(point->normal.y, -point->normal.x, 0.0f);
+                    // Branch hint only (no code): the cold negation stubs are laid out in retail order.
+                    if (__builtin_expect(side.dotProduct(npc->GetFront()) < 0.0f, 0))
+                        side = -side;
+                    npc->setDestination(npc->GetPosition() + side * 500.0f, 100);
+                    if (view->flags356 & 4)
+                        npc->Character::runToLocation(irr::core::vector3d<float>(view->destination));
+                }
+            }
+    }
+}

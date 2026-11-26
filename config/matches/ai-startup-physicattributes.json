@@ -85,7 +85,8 @@
         "_ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo",
         "_ZN16PhysicAttributesC1EiP6b2Body",
         "_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_",
-        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE"
+        "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
+        "_ZN15ContactListener3AddEPK14b2ContactPoint"
     ],
     "sections": [
         ".physics_segment_height",
@@ -107,7 +108,9 @@
         ".physic_get_height",
         ".contact_listener_persist",
         ".physic_get_jump_height",
-        ".physic_get_random_destination"
+        ".physic_get_random_destination",
+        ".contact_listener_add",
+        ".contact_listener_vtable"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -126,6 +129,16 @@
         "_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE",
         "_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi",
         "_ZNK3NPC15getPathToFollowEv",
-        "_ZN10PlayerTest9GetPlayerEv"
+        "_ZN10PlayerTest9GetPlayerEv",
+        "_ZN10PlayerTest14onObjectKilledEP11LevelObject",
+        "_ZN11Application11GetInstanceEv",
+        "_ZN11LevelObject11GetMetatypeEv",
+        "_ZN12EventManager5raiseERK6IEvent",
+        "_ZN15CControlManager4lockEv",
+        "_ZN6Rocket7explodeEb",
+        "_ZN7Vehicle8playHornEv",
+        "_ZN7Vehicle9collisionEN3irr4core8vector3dIfEEi",
+        "_ZN9Character8hitByCarEifP11LevelObject",
+        "_ZNK9Character8isPlayerEv"
     ]
 }
