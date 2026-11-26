@@ -364,7 +364,6 @@
         "_Z13ekd_debug_outPKcPc",
         "_ZNK6Weapon11isTwoHandedEv",
         "_ZN13CameraManager8goBehindEP11LevelObject",
-        "_ZN16PhysicAttributesC1EiP6b2Body",
         "_ZN6b2Body11CreateShapeEP10b2ShapeDef",
         "_ZN6b2Body17SetMassFromShapesEv",
         "_ZN6b2Body7SetMassEPK10b2MassData",
