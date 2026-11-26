@@ -100,6 +100,8 @@ public:
     };
 
     struct OctTreeAABBNode {
+        inline OctTreeAABBNode(int& nodeId, int depth, irr::core::array<RootNode*>* roots,
+            unsigned int maxDepth, irr::core::aabbox3d<float> bounds) __attribute__((used));
         inline ~OctTreeAABBNode();
         void getPolysIter(const irr::core::aabbox3d<float>& box,
             irr::core::array<CollisionBodyDef*>* collisions, irr::core::array<SpawnPoint*>* spawns,
@@ -110,6 +112,7 @@ public:
         int depth;
     };
 
+    OctTreeAABB(irr::scene::ISceneNode* node, unsigned int maxDepth);
     inline ~OctTreeAABB();
     inline void BuildSpawnPointNodes(irr::core::array<RootNode*>* roots) __attribute__((used));
     inline int CountRenderableNodes(irr::scene::ISceneNode* node) __attribute__((used));
@@ -121,7 +124,8 @@ public:
 private:
     OctTreeAABBNode* root;
     irr::core::array<RootNode*>* roots;
-    unsigned char unknown8[8];
+    int nodeId;
+    int nodeCount;
 };
 
 namespace {
@@ -1379,6 +1383,85 @@ void GS3DStuff::tearDown()
     deletePointerArraySplit(VisibleSpawnPoint);
 }
 
+
+extern "C" void _ZNK3irr4core8aabbox3dIfE8getEdgesEPNS0_8vector3dIfEE(const irr::core::aabbox3d<float>*,
+    irr::core::vector3d<float>*) __attribute__((weak));
+extern "C" bool _ZNK3irr4core8vector3dIfE6equalsERKS2_f(const irr::core::vector3d<float>*,
+    const irr::core::vector3d<float>&, float) __attribute__((weak));
+
+static inline void octAddInternalPoint(irr::core::aabbox3d<float>& box, float x, float y, float z)
+{
+    if (x>box.MaxEdge.X) box.MaxEdge.X=x;
+    if (y>box.MaxEdge.Y) box.MaxEdge.Y=y;
+    if (z>box.MaxEdge.Z) box.MaxEdge.Z=z;
+    if (x<box.MinEdge.X) box.MinEdge.X=x;
+    if (y<box.MinEdge.Y) box.MinEdge.Y=y;
+    if (z<box.MinEdge.Z) box.MinEdge.Z=z;
+}
+static inline void octAddInternalPoint(irr::core::aabbox3d<float>& box, const irr::core::vector3d<float>& p)
+{
+    octAddInternalPoint(box, p.X, p.Y, p.Z);
+}
+static inline bool octLE(const irr::core::vector3d<float>& a, const irr::core::vector3d<float>& b)
+{ return a.X<=b.X && a.Y<=b.Y && a.Z<=b.Z; }
+static inline bool octGE(const irr::core::vector3d<float>& a, const irr::core::vector3d<float>& b)
+{ return a.X>=b.X && a.Y>=b.Y && a.Z>=b.Z; }
+
+OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
+    int& count, int parentDepth, irr::core::array<RootNode*>* incoming,
+    unsigned int limit, irr::core::aabbox3d<float> inputBounds)
+    : bounds(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f)), roots(0)
+{
+    using namespace irr::core;
+    bounds.MaxEdge = vector3d<float>(1.0f, 1.0f, 1.0f);
+    depth = parentDepth + 1;
+    ++count;
+    children[0] = 0;
+    for (unsigned int i = 0; i < 8; ++i)
+        children[i] = 0;
+
+    if (!incoming->used) {
+        SafeDelete(incoming);
+        return;
+    }
+
+    bounds = inputBounds;
+    const vector3d<float> center = (bounds.MinEdge + bounds.MaxEdge) * 0.5f;
+    vector3d<float> corners[8];
+    _ZNK3irr4core8aabbox3dIfE8getEdgesEPNS0_8vector3dIfEE(&bounds, corners);
+    if (incoming->used <= limit || _ZNK3irr4core8vector3dIfE6equalsERKS2_f(&bounds.MinEdge, bounds.MaxEdge, 0.000001f)) {
+        roots = incoming;
+        return;
+    }
+
+    for (unsigned int i = 0; i < 8; ++i) {
+        aabbox3d<float> childBounds(center);
+        octAddInternalPoint(childBounds, corners[i]);
+        const unsigned int capacity = incoming->used;
+        array<RootNode*>* childRoots = newPointerArray<RootNode>();
+        childRoots->reallocate(capacity);
+        unsigned int intersections = 0;
+        for (unsigned int j = 0; j < incoming->used; ++j) {
+            RootNode*& root = incoming->data[j];
+            const aabbox3d<float>& box = root->bounds;
+            if ((octLE(childBounds.MinEdge, box.MaxEdge) && octGE(childBounds.MaxEdge, box.MinEdge))) {
+                childRoots->push_back(root);
+                ++intersections;
+            }
+        }
+
+        if (intersections) {
+            childRoots->reallocate(intersections);
+            children[i] = new OctTreeAABBNode(count, depth, childRoots, limit, childBounds);
+        } else {
+            SafeDelete(childRoots);
+        }
+    }
+
+    if (depth != 1)
+        SafeDelete(incoming);
+}
+
 int GS3DStuff::load(int step, int& percent)
 {
     Application* application = Application::GetInstance();
@@ -1970,4 +2053,35 @@ extern "C" bool _ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_E
     playerTest->unknown312 = 0;
     nearest = refreshNearCar(playerTest);
     return false;
+}
+
+extern "C" void _ZN3irr4core8aabbox3dIfE14addInternalBoxERKS2_(irr::core::aabbox3d<float>*,
+    const irr::core::aabbox3d<float>&) __attribute__((weak));
+
+OctTreeAABB::OctTreeAABB(irr::scene::ISceneNode* node, unsigned int maxDepth)
+    : nodeId(0), nodeCount(0)
+{
+    roots = newPointerArray<RootNode>();
+    int count = CountRenderableNodes(node);
+    roots->reallocate(count);
+    BuildRootNodes(node, roots);
+    BuildSpawnPointNodes(roots);
+    irr::core::aabbox3d<float> box(irr::core::vector3d<float>(-1.0f, -1.0f, -1.0f));
+    box.MaxEdge = irr::core::vector3d<float>(1.0f, 1.0f, 1.0f);
+    irr::core::array<RootNode*>* storage = roots;
+    // Reading the count through a byte offset keeps the later null test, as in retail.
+    if (*reinterpret_cast<unsigned int*>(reinterpret_cast<char*>(storage) + 8) != 0) {
+        irr::core::vector3d<float> center = (roots->data[0]->bounds.MinEdge + roots->data[0]->bounds.MaxEdge) * 0.5f;
+        box.MaxEdge = center;
+        box.MinEdge = center;
+        for (unsigned int i = 0; i < roots->used; ++i)
+            _ZN3irr4core8aabbox3dIfE14addInternalBoxERKS2_(&box, roots->data[i]->bounds);
+        nodeCount = count;
+        root = new OctTreeAABBNode(nodeId, 0, roots, maxDepth, box);
+    } else if (storage) {
+        // Retail lays the data delete out as the fall-through path.
+        if (__builtin_expect(storage->free_when_destroyed, 1))
+            ::operator delete(storage->data);
+        ::operator delete(storage);
+    }
 }

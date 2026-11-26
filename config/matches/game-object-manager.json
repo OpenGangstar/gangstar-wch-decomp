@@ -532,7 +532,6 @@
         "_ZN12SoundManager11setPlaylistEi",
         "_ZNK5Menus8MainMenu12GameContinueEv",
         "_ZN19CCustomSceneManager12setBatchRootEPN3irr5scene10ISceneNodeE",
-        "_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj",
         "_ZNK6Weapon13getWeaponTypeEv",
         "_ZNK6Weapon8getRangeEv",
         "_ZN3NPC11isHostileToEP11LevelObject",

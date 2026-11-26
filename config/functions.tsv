@@ -9222,7 +9222,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002df605	0x24	GS3DStuff.cpp	game	rendering	matched	__tcf_10	__tcf_10
 0x002df629	0x2c	GS3DStuff.cpp	game	rendering	matched	_ZN12b2PolygonDefD0Ev	b2PolygonDef::~b2PolygonDef()
 0x002df655	0x340	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE	OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(int&, int, irr::core::array<OctTreeAABB::RootNode*, irr::core::irrAllocator<OctTreeAABB::RootNode*> >*, unsigned int, irr::core::aabbox3d<float>)
-0x002df995	0x180	GS3DStuff.cpp	game	rendering	pending	_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj	OctTreeAABB::OctTreeAABB(irr::scene::ISceneNode*, unsigned int)
+0x002df995	0x180	GS3DStuff.cpp	game	rendering	matched	_ZN11OctTreeAABBC1EPN3irr5scene10ISceneNodeEj	OctTreeAABB::OctTreeAABB(irr::scene::ISceneNode*, unsigned int)
 0x002dfb15	0xa10	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff4loadEiRi	GS3DStuff::load(int, int&)
 0x002e0524	0x14	GS3DStuff.cpp	game	rendering	matched	_ZThn4_N9GS3DStuffD0Ev	non-virtual thunk to GS3DStuff::~GS3DStuff()
 0x002e0539	0x54	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuffD0Ev	GS3DStuff::~GS3DStuff()
