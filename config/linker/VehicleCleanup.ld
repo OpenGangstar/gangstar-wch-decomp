@@ -297,6 +297,16 @@ SECTIONS
     .vehicle_is_looping 0x00307f84 : { *(.text._ZNK7Vehicle23isLoopingOnPathToFollowEv) }
     .vehicle_cleanup_0 0x00308014 : { *vehicle-cleanup.o(.text.__tcf_4) }
     .vehicle_cleanup_1 0x00308210 : { *vehicle-cleanup.o(.text.__tcf_3) }
+    .vehicle_create_wheels 0x0030d148 : { *vehicle-cleanup.o(.text._ZN7Vehicle12CreateWheelsEP13Box2DUserInfo) }
+    .vehicle_shape_def_d0 0x002db47c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
+    .vehicle_shape_def_d1 0x002db49c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
+    .vehicle_polygon_def_d1 0x002df3f4 : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
+    .vehicle_polygon_def_d0 0x002df628 : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
+    .vehicle_circle_def_d1 0x002f4440 : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN11b2CircleDefD1Ev) }
+    .vehicle_circle_def_d0 0x002f462c : { *vehicle-cleanup.o(.gnu.linkonce.t._ZN11b2CircleDefD0Ev) }
+    .vehicle_polygon_def_vtable 0x004a8ac8 : { *vehicle-cleanup.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
+    .vehicle_shape_def_vtable 0x004a8ad8 : { *vehicle-cleanup.o(.gnu.linkonce.d.rel.ro._ZTV10b2ShapeDef) }
+    .vehicle_circle_def_vtable 0x004aa168 : { *vehicle-cleanup.o(.gnu.linkonce.d.rel.ro._ZTV11b2CircleDef) }
     .vehicle_cleanup_2 0x0030b5dc : { *vehicle-cleanup.o(.text.__tcf_1) }
     .vehicle_cleanup_3 0x0030b624 : { *vehicle-cleanup.o(.text.__tcf_0) }
     .vehicle_empty_string 0x004b8724 (NOLOAD) : { *vehicle-cleanup.o(.bss._ZN3irr5scene6quake315irrEmptyStringcE) }
