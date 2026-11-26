@@ -70,7 +70,8 @@
         "_ZN16SceneNodeManager6manageEiP11LevelObjecti",
         "_ZNK16SceneNodeManager9getPoolIDEi",
         "_ZNK16SceneNodeManager6reportEv",
-        "_ZN16SceneNodeManager14reclaimGarbageEv"
+        "_ZN16SceneNodeManager14reclaimGarbageEv",
+        "_ZN16SceneNodeManager4dropEiPKN3irr5scene10ISceneNodeE"
     ],
     "sections": [
         ".sdk_startup_function_0",
@@ -83,7 +84,8 @@
         },
         ".scene_pool_id",
         ".scene_node_report_strings",
-        ".scene_node_reclaim_garbage"
+        ".scene_node_reclaim_garbage",
+        ".scene_node_drop"
     ],
     "retail_got": true,
     "external_thumb_functions": [
