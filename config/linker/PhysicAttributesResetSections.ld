@@ -10,6 +10,7 @@ PROVIDE(__aeabi_fcmple = 0x001c43ac);
 _ZdaPv = 0x001c461c;
 SECTIONS
 {
+    .physic_get_jump_height 0x0031a6fc : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi) }
     .physics_segment_height 0x0031da28 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_) }
     .physic_position_on_jump 0x0031a67c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes16IsPositionOnJumpERKN3irr4core8vector3dIfEE) }
     .physic_find_lower 0x0031a40c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes17FindLowerCostNodeEPN3irr4core5arrayI9AStarNodeNS1_12irrAllocatorIS3_EEEEPi) }

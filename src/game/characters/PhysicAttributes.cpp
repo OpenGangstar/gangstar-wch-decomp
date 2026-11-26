@@ -691,6 +691,56 @@ float PhysicAttributes::GetHeight(const irr::core::vector3d<float>& position, in
 }
 
 
+// Second, layout-equivalent view of jumpVertices.  Retail reloads vertices
+// 1 and 2 after the reciprocal while vertex 0 stays in registers; reading the
+// barycentric terms through a distinct access path keeps FRE/DOM from merging
+// them with the edge loads (the RTL CSE still merges vertex 0).
+struct JumpShapeView {
+    unsigned char unknown0[52];
+    irr::core::vector3d<float> vertices[5];
+};
+
+float _ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi(
+    PhysicAttributes* self, const irr::core::vector3d<float>& p, int)
+{
+    if (p.getDistanceFromSQ(self->jumpVertices[4]) < 2250000.0f) {
+        const float px = p.X;
+        const float py = p.Y;
+        for (int i = 0; i < 4; ++i) {
+            const irr::core::vector3d<float>& a = self->jumpVertices[i];
+            const irr::core::vector3d<float>& b = self->jumpVertices[(i + 1) % 4];
+            // Self-assignments keep TER from sinking the edge X term, the
+            // b.Y load and the point X term into the cross product
+            // (same-root-variable rule), matching retail evaluation order.
+            float ex = b.X - a.X;
+            float ey = b.Y;
+            ey -= a.Y;
+            float dx = px - a.X;
+            float dy = py - a.Y;
+            ex *= dy;
+            dx = ey * dx;
+            if (ex - dx < 0.0f)
+                return 999999.0f;
+        }
+        const irr::core::vector3d<float>& a = self->jumpVertices[0];
+        const irr::core::vector3d<float>& b = self->jumpVertices[1];
+        const irr::core::vector3d<float>& c = self->jumpVertices[2];
+        irr::core::vector3d<float> ab = b - a;
+        irr::core::vector3d<float> ca = a - c;
+        float inv = 1.0f / (ab.X * -ca.Y + ab.Y * ca.X);
+        const JumpShapeView* view = reinterpret_cast<const JumpShapeView*>(self);
+        const irr::core::vector3d<float>& vb = view->vertices[1];
+        const irr::core::vector3d<float>& vc = view->vertices[2];
+        float v = ((px - vb.X) * (vb.Y - vc.Y) - (vb.X - vc.X) * (py - vb.Y)) * inv;
+        float u = ((px - vc.X) * (vc.Y - a.Y) - (vc.X - a.X) * (py - vc.Y)) * inv;
+        ++self->unknown116;
+        return ab.Z * u + a.Z - ca.Z * (1.0f - u - v);
+    }
+    self->hasJumpShape = false;
+    self->unknown116 = 0;
+    return 999999.0f;
+}
+
 AStarNode PhysicAttributes::FindLowerCostNode(irr::core::array<AStarNode>* nodes, int* index)
 {
     AStarNode best;
@@ -748,3 +798,51 @@ float PhysicAttributes::IntersectSegmentWithHeightMap(const irr::core::vector3d<
     return (hit-start).getLength()/(end-start).getLength();
 }
 
+
+extern "C" long lrand48();
+extern "C" float fabsf(float);
+irr::core::vector3d<float> PhysicAttributes::GetRandomDestination(unsigned short material, unsigned short& surface,
+    const irr::core::vector3d<float>& origin, float minimum, float maximum)
+{
+    const int start = static_cast<int>(lrand48() % s_neighborsCnt[material]) / 3;
+    minimum *= minimum;
+    maximum *= maximum;
+    const float middle = (minimum + maximum) * 0.5f;
+    irr::core::vector3d<float> best(0.0f, 0.0f, 0.0f);
+    irr::core::vector3d<float> center;
+    float bestDistance = 1.0e9f;
+    if (start > 1) {
+        for (int i = start; i != start - 1; ++i) {
+            if (i >= static_cast<unsigned short>(s_neighborsCnt[material] / 3))
+                i = 0;
+            const unsigned short triangle = i * 3;
+            center = GetTriCenter(material, triangle);
+            const float distance = center.getDistanceFromSQ(origin);
+            if (minimum <= distance && maximum >= distance) {
+                surface = triangle;
+                return center;
+            }
+            if (fabsf(distance - middle) < bestDistance) {
+                surface = triangle;
+                bestDistance = fabsf(distance - middle);
+                best = center;
+            }
+        }
+    } else {
+        for (int i = 0; i < static_cast<unsigned short>(s_neighborsCnt[material] / 3); ++i) {
+            const unsigned short triangle = i * 3;
+            center = GetTriCenter(material, triangle);
+            const float distance = center.getDistanceFromSQ(origin);
+            if (minimum <= distance && maximum >= distance) {
+                surface = triangle;
+                return center;
+            }
+            if (fabsf(distance - middle) < bestDistance) {
+                surface = triangle;
+                bestDistance = fabsf(distance - middle);
+                best = center;
+            }
+        }
+    }
+    return best;
+}
