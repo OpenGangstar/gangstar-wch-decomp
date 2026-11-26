@@ -9183,7 +9183,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x002dc591	0x148	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff20parseSceneNodeForLODEPN3irr5scene10ISceneNodeEP12LODSceneNode	GS3DStuff::parseSceneNodeForLOD(irr::scene::ISceneNode*, LODSceneNode*)
 0x002dc6d9	0x3c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuffC1Ev	GS3DStuff::GS3DStuff()
 0x002dc6d9	0x3c	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuffC2Ev	GS3DStuff::GS3DStuff()
-0x002dc715	0x244	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE	GS3DStuff::checkVehicleProximity(std::vector<Vehicle*, std::allocator<Vehicle*> >&)
+0x002dc715	0x244	GS3DStuff.cpp	game	rendering	matched	_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE	GS3DStuff::checkVehicleProximity(std::vector<Vehicle*, std::allocator<Vehicle*> >&)
 0x002dc959	0x3a8	GS3DStuff.cpp	game	rendering	pending	_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE	GS3DStuff::DrawBody(b2Body*, irr::video::SColor)
 0x002dcd01	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP7VehicleSaIS1_EE8_M_clearEv	std::vector<Vehicle*, std::allocator<Vehicle*> >::_M_clear()
 0x002dcd15	0x12	GS3DStuff.cpp	stlport	-	matched	_ZNSt6vectorIP4ItemSaIS1_EE8_M_clearEv	std::vector<Item*, std::allocator<Item*> >::_M_clear()

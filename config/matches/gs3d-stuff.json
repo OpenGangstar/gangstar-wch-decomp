@@ -180,7 +180,8 @@
         "_ZNSs9_M_appendEPKcS0_",
         "_ZN9GS3DStuff8tearDownEv",
         "_ZN9GS3DStuff15checkForDespawnEP11LevelObject",
-        "_ZN9GS3DStuff6updateEP12StateMachine"
+        "_ZN9GS3DStuff6updateEP12StateMachine",
+        "_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE"
     ],
     "sections": [
         ".gs_print_node_properties",
@@ -470,9 +471,12 @@
         "_ZN7b2World4StepEfi",
         "_ZN8TrailMgr6UpdateEv",
         "_ZN9GS3DStuff16updateVisibilityEj",
-        "_ZN9GS3DStuff21checkVehicleProximityERSt6vectorIP7VehicleSaIS2_EE",
         "_ZN9GS3DStuff22checkPickableProximityERSt6vectorIP4ItemSaIS2_EE",
-        "_ZNK12StateMachine12getTimeStampEv"
+        "_ZNK12StateMachine12getTimeStampEv",
+        "_ZN11CHudManager10notNearCarEv",
+        "_ZN11CHudManager7nearCarEv",
+        "_ZNK11CHudManager10isNearShopEv",
+        "_ZNK7Vehicle11isDoorClearEbP6b2Body"
     ],
     "dependencies": [
         "stream",
