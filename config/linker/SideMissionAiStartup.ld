@@ -35,6 +35,7 @@ SECTIONS
  .side_mission_checkpoints_range 0x00346f54 : { *ai-startup-sidemission.o(.text._ZN11SideMission20isInCheckpointsRangeEN3irr4core8vector3dIfEERNS1_5arrayIP10CheckpointNS1_12irrAllocatorIS6_EEEE) }
  ASSERT(SIZEOF(.side_mission_checkpoints_range) == 72, "Native70 function plus proven2 byte padding")
     .side_mission_update 0x00347244 : { *ai-startup-sidemission.o(.text._ZN11SideMission6updateEi) }
+    .side_mission_enable_checkpoints 0x003470f8 : { *ai-startup-sidemission.o(.text._ZN11SideMission17enableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEENS1_8vector3dIfEE) }
     .side_mission_goal_format 0x0043487c : { *(.rodata.side_mission_goal_format) }
     .side_mission_update_switch 0x00434888 : { *(.rodata._ZN11SideMission6updateEi) }
     .add_checkpoint 0x00346dd0 : { *ai-startup-sidemission.o(.text._ZN11SideMission13addCheckpointEiN3irr4core8vector3dIfEEfftRt) }

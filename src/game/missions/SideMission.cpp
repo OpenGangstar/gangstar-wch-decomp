@@ -351,3 +351,21 @@ bool SideMission::isInCheckpointsRange(irr::core::vector3d<float> position,
     }
     return false;
 }
+Checkpoint* SideMission::enableCheckpoints(irr::core::array<Checkpoint*>& checkpoints,
+    irr::core::vector3d<float> position)
+{
+    int nearest = 0;
+    float best = (position - checkpoints.data[0]->GetPosition()).getLengthSQ();
+    checkpoints[0]->enable();
+    ScriptManager::displayOnMinimap(checkpoints[0], true, true);
+    for (int i = 0; static_cast<unsigned int>(i) < checkpoints.size(); ++i) {
+        checkpoints.data[i]->enable();
+        ScriptManager::displayOnMinimap(checkpoints.data[i], true, true);
+        float distance = position.getDistanceFromSQ(checkpoints.data[i]->GetPosition());
+        if (distance < best) {
+            best = distance;
+            nearest = i;
+        }
+    }
+    return checkpoints.data[nearest];
+}

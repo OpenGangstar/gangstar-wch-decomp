@@ -70,7 +70,8 @@
             "address": "0x00346d01",
             "compiled_name": "__tcf_1"
         },
-        "_ZN11SideMission20isInCheckpointsRangeEN3irr4core8vector3dIfEERNS1_5arrayIP10CheckpointNS1_12irrAllocatorIS6_EEEE"
+        "_ZN11SideMission20isInCheckpointsRangeEN3irr4core8vector3dIfEERNS1_5arrayIP10CheckpointNS1_12irrAllocatorIS6_EEEE",
+        "_ZN11SideMission17enableCheckpointsERN3irr4core5arrayIP10CheckpointNS1_12irrAllocatorIS4_EEEENS1_8vector3dIfEE"
     ],
     "sections": [
         ".side_mission_goal_format",
