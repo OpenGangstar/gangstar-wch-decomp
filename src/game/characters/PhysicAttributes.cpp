@@ -1580,3 +1580,185 @@ void ContactListener::Add(const b2ContactPoint* point)
             }
     }
 }
+#include "../core/PlacementNew.h"
+
+/*
+* Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
+*
+* This software is provided 'as-is', without any express or implied
+* warranty.  In no event will the authors be held liable for any damages
+* arising from the use of this software.
+* Permission is granted to anyone to use this software for any purpose,
+* including commercial applications, and to alter it and redistribute it
+* freely, subject to the following restrictions:
+* 1. The origin of this software must not be misrepresented; you must not
+* claim that you wrote the original software. If you use this software
+* in a product, an acknowledgment in the product documentation would be
+* appreciated but is not required.
+* 2. Altered source versions must be plainly marked as such, and must not be
+* misrepresented as being the original software.
+* 3. This notice may not be removed or altered from any source distribution.
+*/
+// Altered Box2D2.0.1 excerpts: call/definition layouts only, native-destructor imports.
+// Official Google Code archive URL recorded in this task's NOTES.md.
+#include "../core/PhysicsBodyDef.h"
+enum b2ShapeType {e_unknownShape=-1,e_circleShape,e_polygonShape,e_shapeTypeCount};
+enum b2JointType {e_unknownJoint,e_revoluteJoint,e_prismaticJoint,e_distanceJoint,e_pulleyJoint,e_mouseJoint,e_gearJoint};
+struct b2ShapeDef
+{
+	
+	b2ShapeDef()
+	{
+		type = e_unknownShape;
+		userData = 0;
+		friction = 0.2f;
+		restitution = 0.0f;
+		density = 0.0f;
+		filter.categoryBits = 0x0001;
+		filter.maskBits = 0xFFFF;
+		filter.groupIndex = 0;
+		isSensor = false;
+	}
+
+	virtual ~b2ShapeDef() {}
+
+	
+	b2ShapeType type;
+
+	
+	void* userData;
+
+	
+	float friction;
+
+	
+	float restitution;
+
+	
+	float density;
+
+	
+	
+	bool isSensor;
+
+	
+	b2FilterData filter;
+};
+struct b2PolygonDef : public b2ShapeDef
+{
+
+	b2PolygonDef()
+	{
+		type = e_polygonShape;
+		vertexCount = 0;
+	}
+
+	
+	
+	
+	void SetAsBox(float hx, float hy);
+
+	
+	
+	
+	
+	
+	void SetAsBox(float hx, float hy, const b2Vec2& center, float angle);
+
+	
+	b2Vec2 vertices[8];
+
+	
+	int vertexCount;
+};
+
+// Licensed b2Math.h by-value scalar maximum, retained source predicate.
+template <typename T>
+inline T b2Max(T a, T b)
+{
+    return a > b ? a : b;
+}
+
+
+extern "C" void _ZN12b2PolygonDefD1Ev(b2PolygonDef*) __attribute__((weak));
+void PhysicAttributes::AddCollisionShapes(int slot, unsigned short vertex)
+{
+    using irr::core::vector3d;
+    const struct {unsigned int value;} slotOffsetBox={static_cast<unsigned int>(slot)*sizeof(PhysicInfo)};
+    const unsigned int slotOffset=slotOffsetBox.value;
+    int count=s_cliffVertexKeyMap[vertex*2+1];
+    unsigned short start=s_cliffVertexKeyMap[vertex*2];
+    irr::scene::IMeshBuffer* buffer=static_cast<irr::scene::IMeshSceneNode*>(s_heightmap)->getMesh()->getMeshBuffer(MATERIAL_TYPE_CLIFF);
+    unsigned short* indices=buffer->getIndices();
+    vector3d<float> first,second,third,direction;
+    vector3d<float> normal;
+    irr::core::vector2d<float> pointA,pointB;
+    unsigned short triangle;
+    for(int t=0;t<count;++t){
+        triangle=s_cliffTriMap[start+t];
+        if(triangle==65535) continue;
+        int vertexIndex=0;
+        for(;vertexIndex<3;++vertexIndex) if(indices[triangle+vertexIndex]==vertex)break;
+        first=buffer->getPosition(indices[triangle+vertexIndex])+s_heightmap->getAbsolutePosition();
+        second=buffer->getPosition(indices[triangle+(vertexIndex+1)%3])+s_heightmap->getAbsolutePosition();
+        third=buffer->getPosition(indices[triangle+(vertexIndex+2)%3])+s_heightmap->getAbsolutePosition();
+        vector3d<float> edge1=first-second,edge2=third-second;
+        normal=vector3d<float>(-edge1.Y*edge2.Z+edge1.Z*edge2.Y,-edge1.Z*edge2.X+edge2.Z*edge1.X,-edge1.X*edge2.Y+edge1.Y*edge2.X).normalize();
+        vector3d<float> difference(reinterpret_cast<PhysicInfo*>(reinterpret_cast<char*>(info)+slotOffset)->unknown64.X-first.X,reinterpret_cast<PhysicInfo*>(reinterpret_cast<char*>(info)+slotOffset)->unknown64.Y-first.Y,0.0f);
+        if(normal.dotProduct(difference)<0.0f)continue;
+        b2Body* moving=*reinterpret_cast<b2Body**>(unknown4);
+        // Reading velocity.y first makes SRA emit the x load first (retail register order).
+        if(moving){const b2BodyDef zeroDef;const vector3d<float> c0(0.0f,0.0f,0.0f),c1(0.0f,0.0f,0.0f);const b2Vec2 velocity=moving->linearVelocity;const float vy=velocity.y;if(normal.dotProduct(vector3d<float>(velocity.x,vy,zeroDef.angle))>0.0f)continue;}
+        for(int edge=0;edge<2;++edge){
+            switch(edge){
+            case 0: direction=first-second;pointA.X=second.X;pointA.Y=second.Y;pointB.X=first.X;pointB.Y=first.Y;
+                if(s_neighbors[MATERIAL_TYPE_CLIFF][vertexIndex+3][static_cast<unsigned short>(triangle/3)]==MATERIAL_TYPE_CLIFF)continue;
+                break;
+            case 1: direction=third-first;pointA.X=first.X;pointA.Y=first.Y;pointB.X=third.X;pointB.Y=third.Y;
+                if(s_neighbors[MATERIAL_TYPE_CLIFF][(vertexIndex+2)%3+3][static_cast<unsigned short>(triangle/3)]==MATERIAL_TYPE_CLIFF)continue;
+                break;
+            }
+            b2Vec2 position(pointA.X/100.0f,pointA.Y/100.0f);
+            for(int i=0;i<infoCount;++i){
+                const PhysicInfo& entry=info[i];
+                for(int b=0;b<12;++b){b2Body* old=entry.bodies[b];if(!old)break;
+                    if(position.x==old->transform.position.x&&position.y==old->transform.position.y)goto nextEdge;}
+            }
+            {
+            direction=vector3d<float>(-direction.Y,direction.X,0.0f);
+            PhysicInfo* edgeInfo=info;
+            direction.normalize();
+            b2Vec2 delta(0.0f,0.0f);delta.x=pointB.X-pointA.X;delta.y=pointB.Y-pointA.Y;
+            float scale=infoCount>1?100.0f:10.0f;
+            if(!((delta.x*delta.x+delta.y*delta.y)/10000.0f>0.0064f))continue;
+            if(!(normal.X*direction.X+normal.Y*direction.Y+normal.Z*direction.Z>0.0f))continue;
+            b2BodyDef body;
+            body.position.x=position.x;body.position.y=position.y;body.angle=0.0f;
+            const float minimumHeight=irr::core::min_(irr::core::min_(second.Z,first.Z),third.Z);
+            // Reference keeps the max load a temporary, so out-of-SSA coalesces the result with it.
+            const float& inner=irr::core::max_(first.Z,second.Z);float maximumHeight=third.Z;if(third.Z<inner)maximumHeight=inner;
+            JumpShapeData* data=new JumpShapeData;
+            // Field-order stores (unknown0, heights, unknown24/flags) as in retail allocation.
+            *reinterpret_cast<unsigned int*>(&data->unknown0[0])=0;*reinterpret_cast<unsigned int*>(&data->unknown0[4])=0;data->heights[0]=minimumHeight;data->heights[1]=maximumHeight;data->heights[2]=0;data->heights[3]=0;data->unknown24=0;data->flags=0;body.userData=data;
+            b2Body* created=s_world->CreateBody(&body);
+            struct {unsigned int words[sizeof(b2PolygonDef)/4];} storage;
+            b2PolygonDef& shape=*new(storage.words)b2PolygonDef;
+            shape.vertices[0]=b2Vec2(0,0);shape.vertices[0].y=0;
+            shape.vertices[1].x=scale*-direction.X/100.0f;shape.vertices[1].y=scale*-direction.Y/100.0f;
+            shape.vertices[2].x=(delta.x-scale*direction.X)/100.0f;shape.vertices[2].y=(delta.y-scale*direction.Y)/100.0f;
+            shape.vertices[3].x=delta.x/100.0f;shape.vertices[3].y=delta.y/100.0f;
+            shape.vertexCount=4;shape.density=1.0f;shape.filter.categoryBits=0;shape.filter.maskBits=65535;shape.restitution=0;
+            shape.filter.groupIndex=index+1;created->CreateShape(&shape);
+            PhysicInfo* target=reinterpret_cast<PhysicInfo*>(reinterpret_cast<char*>(edgeInfo)+slotOffset);
+            // No-code hint: k1+k2-k3 always equals b; the extra IVs are removed by ivopts and
+            // their freed SSA names give the loop's address add retail's operand order.
+            for(int b=0,k1=1,k2=2,k3=3;b<12;++b,++k1,++k2,++k3)if(!target->bodies[k1+k2-k3]){target->bodies[b]=created;break;}
+            _ZN12b2PolygonDefD1Ev(&shape);
+            break;
+            }
+nextEdge:;
+        }
+    }
+}
+// No-code DECL_UID pad (86 enumerators): keeps ContactListener::Add temporaries ordered as in retail.
+enum { WCH_PAD0, WCH_PAD1, WCH_PAD2, WCH_PAD3, WCH_PAD4, WCH_PAD5, WCH_PAD6, WCH_PAD7, WCH_PAD8, WCH_PAD9, WCH_PAD10, WCH_PAD11, WCH_PAD12, WCH_PAD13, WCH_PAD14, WCH_PAD15, WCH_PAD16, WCH_PAD17, WCH_PAD18, WCH_PAD19, WCH_PAD20, WCH_PAD21, WCH_PAD22, WCH_PAD23, WCH_PAD24, WCH_PAD25, WCH_PAD26, WCH_PAD27, WCH_PAD28, WCH_PAD29, WCH_PAD30, WCH_PAD31, WCH_PAD32, WCH_PAD33, WCH_PAD34, WCH_PAD35, WCH_PAD36, WCH_PAD37, WCH_PAD38, WCH_PAD39, WCH_PAD40, WCH_PAD41, WCH_PAD42, WCH_PAD43, WCH_PAD44, WCH_PAD45, WCH_PAD46, WCH_PAD47, WCH_PAD48, WCH_PAD49, WCH_PAD50, WCH_PAD51, WCH_PAD52, WCH_PAD53, WCH_PAD54, WCH_PAD55, WCH_PAD56, WCH_PAD57, WCH_PAD58, WCH_PAD59, WCH_PAD60, WCH_PAD61, WCH_PAD62, WCH_PAD63, WCH_PAD64, WCH_PAD65, WCH_PAD66, WCH_PAD67, WCH_PAD68, WCH_PAD69, WCH_PAD70, WCH_PAD71, WCH_PAD72, WCH_PAD73, WCH_PAD74, WCH_PAD75, WCH_PAD76, WCH_PAD77, WCH_PAD78, WCH_PAD79, WCH_PAD80, WCH_PAD81, WCH_PAD82, WCH_PAD83, WCH_PAD84, WCH_PAD85 };
