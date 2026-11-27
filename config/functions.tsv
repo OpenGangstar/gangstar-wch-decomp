@@ -10897,7 +10897,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x0031da29	0x254	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes29IntersectSegmentWithHeightMapERKN3irr4core8vector3dIfEES5_RS3_S6_	PhysicAttributes::IntersectSegmentWithHeightMap(irr::core::vector3d<float> const&, irr::core::vector3d<float> const&, irr::core::vector3d<float>&, irr::core::vector3d<float>&)
 0x0031dc7d	0x44c	PhysicAttributes.cpp	game	characters	matched	_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_	ContactFilter::ShouldCollide(b2Shape*, b2Shape*)
 0x0031e0c9	0x1bc	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes5CleanEv	PhysicAttributes::Clean()
-0x0031e285	0x718	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes18AddCollisionShapesEit	PhysicAttributes::AddCollisionShapes(int, unsigned short)
+0x0031e285	0x718	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes18AddCollisionShapesEit	PhysicAttributes::AddCollisionShapes(int, unsigned short)
 0x0031e99d	0x178	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes21UpdateEdgesCollisionsEi	PhysicAttributes::UpdateEdgesCollisions(int)
 0x0031eb15	0x84	PhysicAttributes.cpp	game	characters	matched	_ZN16PhysicAttributes13SetPhysicInfoERK10PhysicInfoi	PhysicAttributes::SetPhysicInfo(PhysicInfo const&, int)
 0x0031eb99	0x13ae	PhysicAttributes.cpp	game	characters	pending	_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb	PhysicAttributes::GetHeight(int, irr::core::vector3d<float> const&, bool, bool)

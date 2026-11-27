@@ -86,7 +86,8 @@
         "_ZN16PhysicAttributesC1EiP6b2Body",
         "_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_",
         "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
-        "_ZN15ContactListener3AddEPK14b2ContactPoint"
+        "_ZN15ContactListener3AddEPK14b2ContactPoint",
+        "_ZN16PhysicAttributes18AddCollisionShapesEit"
     ],
     "sections": [
         ".physics_segment_height",
@@ -110,12 +111,12 @@
         ".physic_get_jump_height",
         ".physic_get_random_destination",
         ".contact_listener_add",
-        ".contact_listener_vtable"
+        ".contact_listener_vtable",
+        ".physic_add_collision_shapes"
     ],
     "retail_got": true,
     "external_thumb_functions": [
         "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_",
-        "_ZN16PhysicAttributes18AddCollisionShapesEit",
         "_ZN7b2World10CreateBodyEPK9b2BodyDef",
         "_ZN7b2World11DestroyBodyEP6b2Body",
         "_ZN7b2World16SetContactFilterEP15b2ContactFilter",
@@ -139,6 +140,7 @@
         "_ZN7Vehicle8playHornEv",
         "_ZN7Vehicle9collisionEN3irr4core8vector3dIfEEi",
         "_ZN9Character8hitByCarEifP11LevelObject",
-        "_ZNK9Character8isPlayerEv"
+        "_ZNK9Character8isPlayerEv",
+        "_ZN6b2Body11CreateShapeEP10b2ShapeDef"
     ]
 }

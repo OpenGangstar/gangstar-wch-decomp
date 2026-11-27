@@ -42,6 +42,13 @@ SECTIONS
     .contact_listener_delete 0x00320300 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN15ContactListenerD0Ev) }
     .contact_listener_destructor 0x0032032c : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN15ContactListenerD1Ev) }
     PROVIDE(sqrtf = 0x001c4184);
+    .physic_shape_def_delete 0x002db47c : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN10b2ShapeDefD0Ev) }
+    .physic_shape_def_dtor 0x002db49c : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN10b2ShapeDefD1Ev) }
+    .physic_shape_def_vtable 0x004a8ad8 : { *ai-startup-physicattributes.o(.gnu.linkonce.d.rel.ro._ZTV10b2ShapeDef) }
+    .physic_polygon_def_delete 0x002df628 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN12b2PolygonDefD0Ev) }
+    .physic_polygon_def_dtor 0x002df3f4 : { *ai-startup-physicattributes.o(.gnu.linkonce.t._ZN12b2PolygonDefD1Ev) }
+    .physic_polygon_def_vtable 0x004a8ac8 : { *ai-startup-physicattributes.o(.gnu.linkonce.d.rel.ro._ZTV12b2PolygonDef) }
+    .physic_add_collision_shapes 0x0031e284 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes18AddCollisionShapesEit) }
     .contact_listener_add 0x00320350 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener3AddEPK14b2ContactPoint) }
     .contact_listener_vtable 0x004abd18 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV15ContactListener) }
     .contact_listener_persist 0x0031d7a0 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener7PersistEPK14b2ContactPoint) }
