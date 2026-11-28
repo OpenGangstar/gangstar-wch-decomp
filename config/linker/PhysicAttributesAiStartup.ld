@@ -40,7 +40,6 @@ SECTIONS
     .contact_filter_vtable 0x004abd00 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV13ContactFilter) }
     .physic_get_random_destination 0x0031aa5c : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes20GetRandomDestinationEtRtRKN3irr4core8vector3dIfEEff) }
     .physic_set_height_attributes 0x0031ad30 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesERKN3irr4core8vector3dIfEEP10PhysicInfo) }
-    .physic_set_height_attributes_node 0x0031b3e8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo) }
     .physic_get_height 0x0031ff48 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9GetHeightERKN3irr4core8vector3dIfEEib) }
 
     .physic_jump_shape 0x0031ccf0 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetCurrentJumpShapeEP7b2Shape) }

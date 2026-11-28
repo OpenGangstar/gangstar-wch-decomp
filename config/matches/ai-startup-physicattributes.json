@@ -87,7 +87,8 @@
         "_ZN13ContactFilter13ShouldCollideEP7b2ShapeS1_",
         "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
         "_ZN15ContactListener3AddEPK14b2ContactPoint",
-        "_ZN16PhysicAttributes18AddCollisionShapesEit"
+        "_ZN16PhysicAttributes18AddCollisionShapesEit",
+        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb"
     ],
     "sections": [
         ".physics_segment_height",
@@ -112,7 +113,8 @@
         ".physic_get_random_destination",
         ".contact_listener_add",
         ".contact_listener_vtable",
-        ".physic_add_collision_shapes"
+        ".physic_add_collision_shapes",
+        ".physic_get_height"
     ],
     "retail_got": true,
     "external_thumb_functions": [
@@ -126,7 +128,6 @@
         "_ZNK3irr5scene10ISceneNode11getChildrenEv",
         "_Z21ekd_makestringfile255PKcPc",
         "_Z13ekd_debug_outPKcPc",
-        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb",
         "_ZN9Character13runToLocationERKN3irr4core8vector3dIfEE",
         "_ZN9Character14setDestinationERKN3irr4core8vector3dIfEEi",
         "_ZNK3NPC15getPathToFollowEv",

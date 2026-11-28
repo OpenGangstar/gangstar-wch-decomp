@@ -661,8 +661,219 @@ void PhysicAttributes::LoadArrays(char* filename)
 }
 
 
+// Overlap loop headers and indices per crossed edge.
+// No-code hint (edge 2): the extra induction variables k1/k2 (k2 - k1 + k == k + 1) are removed by
+// ivopts after this loop is rewritten; their released SSA names are reused for edge 1's k + 1 offset.
+#define GH_FOR_0 for (int k = 0; k < count; k += 2) {
+#define GH_I0_0 k
+#define GH_I1_0 k + 1
+#define GH_FOR_1 for (int k = 0; k < count; k += 2) {
+#define GH_I0_1 k
+#define GH_I1_1 k + 1
+#define GH_FOR_2 for (int k = 0, k1 = 0, k2 = 1; k < count; k += 2, k1 += 2, k2 += 2, gh_k += 2) {
+#define GH_I0_2 k
+#define GH_I1_2 (k2 - k1 + k)
+// Not declared in PhysicAttributes.h; defined through its mangled name.
+extern "C" void _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo(
+    PhysicAttributes* self, irr::scene::ISceneNode* node, const irr::core::vector3d<float>& position, PhysicInfo& info);
+
+// Pointer to element `index` (index <= used); forms no lvalue, so an empty array (null data, index 0) is fine.
+static inline const unsigned short* OverlapPtr(const irr::core::array<unsigned short>& overlap, unsigned int index)
+{
+    return overlap.data + index;
+}
+
+// Irrlicht array::operator[](u32), absent from the unsigned-short array view.
+static inline unsigned short& OverlapAt(irr::core::array<unsigned short>& overlap, unsigned int index)
+{
+    return overlap.data[index];
+}
+
+// Edge differences of the current triangle (a, b, c) = (vector12, vector24, vector36).
+#define GH_EDGE_DIFFS() \
+    pa = position - info.vector12; \
+    pb = position - info.vector24; \
+    pc = position - info.vector36; \
+    ab = info.vector24 - info.vector12; \
+    bc = info.vector36 - info.vector24; \
+    ca = info.vector12 - info.vector36
+
+// Loads triangle `index` of mesh buffer `buffer` into the slot vertices.
+#define GH_LOAD_TRIANGLE(offset) \
+    { \
+        irr::scene::IMeshBuffer* meshBuffer = static_cast<irr::scene::IMeshSceneNode*>(info.heightmap) \
+            ->getMesh()->getMeshBuffer(info.unknown0); \
+        unsigned short* indices = meshBuffer->getIndices(); \
+        const irr::core::vector3d<float> a = meshBuffer->getPosition(indices[info.unknown8]) + offset; \
+        info.vector12 = a; \
+        const irr::core::vector3d<float> b = meshBuffer->getPosition(indices[info.unknown8 + 1]) + offset; \
+        info.vector24 = b; \
+        const irr::core::vector3d<float> c = meshBuffer->getPosition(indices[info.unknown8 + 2]) + offset; \
+        info.vector36 = c; \
+    }
+
+// No-code hint (edge 2): gh_k mirrors k (+= 2 per pass, at most `used`) and is only read by a prefetch
+// after the loop, which emits no Thumb code. Its loop-closed PHI takes one released SSA name at loopinit,
+// and ivopts removes it as a third unused IV, releasing one more name before edge 1 is rewritten.
+#define GH_PRE_0 
+#define GH_IN_0 
+#define GH_POST_0 
+#define GH_PRE_1 
+#define GH_IN_1 
+#define GH_POST_1 
+#define GH_PRE_2 int gh_k = 0;
+#define GH_IN_2 
+#define GH_POST_2 __builtin_prefetch(OverlapPtr(s_overlapping[buffer][tri], gh_k));
+// Crosses edge `row` (0: ab, 1: bc, 2: ca) to the adjacent or an overlapping triangle.
+#define GH_CROSS_EDGE(row, CAST) \
+    { \
+        const irr::core::vector3d<float> offset = info.heightmap->getAbsolutePosition(); \
+        buffer = info.unknown0; \
+        unsigned short** const& rows = CAST PA::s_neighbors[buffer]; \
+        index = info.unknown8; \
+        const unsigned short tri = index / 3; \
+        const unsigned short next = rows[row][tri]; \
+        const unsigned short nextBuffer = rows[row + 3][tri]; \
+        if (next != 0xffff) { \
+            const unsigned short flags = s_neighbors[nextBuffer][7][(unsigned short)(next / 3)]; \
+            if ((flags & 3) != 1) \
+            if ((flags & 3) != 2) \
+            if ((flags & 0xfffc) != s_currentUsed) goto gh_cross_##row; \
+        } \
+        { \
+        const int count = PA::s_overlapping[buffer][tri].used - 2; \
+        GH_PRE_##row \
+        GH_FOR_##row \
+            info.unknown0 = OverlapAt(s_overlapping[buffer][tri], GH_I0_##row); \
+            info.unknown8 = OverlapAt(s_overlapping[buffer][tri], GH_I1_##row); \
+            GH_IN_##row \
+            const unsigned short overlapFlags = s_neighbors[info.unknown0][7][(unsigned short)(info.unknown8 / 3)]; \
+            if ((overlapFlags & 3) == 1 || (overlapFlags & 3) == 2) \
+                continue; \
+            if ((overlapFlags & 0xfffc) == s_currentUsed) \
+                continue; \
+            GH_LOAD_TRIANGLE(offset) \
+            GH_EDGE_DIFFS(); \
+            if (PA::SegmentsIntersect(info.unknown64, position, info.vector12, info.vector24) \
+                || PA::SegmentsIntersect(info.unknown64, position, info.vector24, info.vector36) \
+                || PA::SegmentsIntersect(info.unknown64, position, info.vector36, info.vector12)) \
+                return _ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb(self, slot, position, true, false); \
+            if (pa.Y * ab.X - pa.X * ab.Y >= 0.0f \
+                && pb.Y * bc.X - pb.X * bc.Y >= 0.0f \
+                && pc.Y * ca.X - pc.X * ca.Y >= 0.0f) \
+                return _ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb(self, slot, position, false, false); \
+        } \
+        GH_POST_##row \
+        if (slot == 0) { \
+            irr::scene::IMeshBuffer* meshBuffer = static_cast<irr::scene::IMeshSceneNode*>(info.heightmap) \
+                ->getMesh()->getMeshBuffer(buffer); \
+            unsigned short* indices = meshBuffer->getIndices(); \
+            /* Widened copy: its own gimple temporaries per edge keep index*2 a named value. */ \
+            const unsigned int gh_index = index; \
+            const irr::core::vector3d<float> a = meshBuffer->getPosition(indices[gh_index]); \
+            const irr::core::vector3d<float> b = meshBuffer->getPosition(indices[gh_index + 1]); \
+            const irr::core::vector3d<float> c = meshBuffer->getPosition(indices[gh_index + 2]); \
+            _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo( \
+                self, s_heightmap, position, info); \
+        } \
+        } \
+        goto gh_done_##row; \
+    gh_cross_##row: { \
+                info.unknown8 = next; \
+                info.unknown0 = nextBuffer; \
+                info.heightmap = s_heightmap; \
+                GH_LOAD_TRIANGLE(offset) \
+                const irr::core::vector3d<float> ba = info.vector12 - info.vector24; \
+                const irr::core::vector3d<float> bc2 = info.vector36 - info.vector24; \
+                info.vector48 = bc2.crossProduct(ba).normalize(); \
+                info.unknown60 = true; \
+                return _ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb(self, slot, position, useHeightmap, false); \
+            } \
+    gh_done_##row: ; \
+    }
+
 extern "C" float _ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb(
-    PhysicAttributes* self, int slot, const irr::core::vector3d<float>& position, bool useHeightmap, bool detailed);
+    PhysicAttributes* self, int slot, const irr::core::vector3d<float>& position, bool useHeightmap, bool detailed)
+{
+    using irr::core::vector3d;
+    typedef PhysicAttributes PA;
+    unsigned short*** const& s_neighbors = PA::s_neighbors;
+    irr::core::array<unsigned short>** const& s_overlapping = PA::s_overlapping;
+    unsigned short& s_currentUsed = PA::s_currentUsed;
+    irr::scene::ISceneNode* const& s_heightmap = PA::s_heightmap;
+
+    PhysicInfo& info = self->info[slot];
+    unsigned int buffer;
+    unsigned short index;
+    // No-code hint: this dead value is removed before scalar replacement; its 46 released
+    // SSA names are reused for the bc$X/bc$Y PHIs, so the loop-0 partition keeps bc as root.
+    const int gh_ssa_pad = slot ^ (slot >> 1) ^ (slot >> 2) ^ (slot >> 3) ^ (slot >> 4) ^ (slot >> 5)
+        ^ (slot >> 6) ^ (slot >> 7) ^ (slot >> 8) ^ (slot >> 9) ^ (slot >> 10) ^ (slot >> 11)
+        ^ (slot >> 12) ^ (slot >> 13) ^ (slot >> 14) ^ (slot >> 15) ^ (slot >> 16) ^ (slot >> 17)
+        ^ (slot >> 18) ^ (slot >> 19) ^ (slot >> 20) ^ (slot >> 21) ^ (slot >> 22) ^ (slot >> 23);
+    vector3d<float> pa = position - info.vector12, pb = position - info.vector24,
+        pc = position - info.vector36, ab = info.vector24 - info.vector12,
+        bc = info.vector36 - info.vector24, ca = info.vector12 - info.vector36;
+    // No-code hint: dead copies, scalarized then removed by dce3; their SRA names leave ba's copies fresh.
+    const vector3d<float> gh_e0 = pa;
+    const vector3d<float> gh_e1 = pb;
+    const vector3d<float> gh_e2 = pc;
+    const vector3d<float> gh_e3 = ab;
+    {
+        buffer = info.unknown0;
+        index = info.unknown8;
+        unsigned short& flags = s_neighbors[buffer][7][(unsigned short)(index / 3)];
+        flags = (flags & 3) | s_currentUsed;
+    }
+
+    if (pa.Y * ab.X - pa.X * ab.Y < 0.0f
+        && (!useHeightmap || PA::SegmentsIntersect(info.unknown64, position, info.vector12, info.vector24)))
+        GH_CROSS_EDGE(0, (unsigned short**))
+    if (pb.Y * bc.X - pb.X * bc.Y < 0.0f
+        && (!useHeightmap || PA::SegmentsIntersect(info.unknown64, position, info.vector24, info.vector36)))
+        GH_CROSS_EDGE(1, (unsigned short**))
+    if (pc.Y * ca.X - pc.X * ca.Y < 0.0f
+        && (!useHeightmap || PA::SegmentsIntersect(info.unknown64, position, info.vector36, info.vector12)))
+        GH_CROSS_EDGE(2, (unsigned short**))
+
+    if (info.unknown60 || (info.onGround && !info.wasOnGround))
+        self->UpdateEdgesCollisions(slot);
+    const float inverse = 1.0f / (ab.X * -ca.Y + ab.Y * ca.X);
+    const float u = ((position.X - info.vector24.X) * (info.vector24.Y - info.vector36.Y)
+        - (info.vector24.X - info.vector36.X) * (position.Y - info.vector24.Y)) * inverse;
+    const float v = ((position.X - info.vector36.X) * (info.vector36.Y - info.vector12.Y)
+        - (info.vector36.X - info.vector12.X) * (position.Y - info.vector36.Y)) * inverse;
+    const float w = 1.0f - v - u;
+    if (u < 0.0f || u > 1.0f || v < 0.0f || v > 1.0f || w < 0.0f || w > 1.0f) {
+        if (slot == 0 || !detailed)
+            _ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo(
+                self, s_heightmap, position, info);
+        return 999999.0f;
+    }
+    return ab.Z * v + info.vector12.Z - ca.Z * w;
+}
+
+#undef GH_CROSS_EDGE
+#undef GH_FOR_0
+#undef GH_I0_0
+#undef GH_I1_0
+#undef GH_FOR_1
+#undef GH_I0_1
+#undef GH_I1_1
+#undef GH_FOR_2
+#undef GH_I0_2
+#undef GH_I1_2
+#undef GH_LOAD_TRIANGLE
+#undef GH_EDGE_DIFFS
+#undef GH_PRE_0
+#undef GH_IN_0
+#undef GH_POST_0
+#undef GH_PRE_1
+#undef GH_IN_1
+#undef GH_POST_1
+#undef GH_PRE_2
+#undef GH_IN_2
+#undef GH_POST_2
 extern "C" float _ZN16PhysicAttributes13GetJumpHeightERKN3irr4core8vector3dIfEEi(
     PhysicAttributes* self, const irr::core::vector3d<float>& position, int slot);
 
@@ -1297,6 +1508,8 @@ bool ContactFilter::ShouldCollide(b2Shape* first, b2Shape* second)
 #include "../app/Application.h"
 #include "../core/EventManager.h"
 #include "../input/CControlManager.h"
+// No-code hint: DECL_UID padding keeps ContactListener::Add and GetNextRandomPos identical.
+enum { CL_PAD0 };
 extern "C" float sqrtf(float);
 // Probe views of private retail fields (Rocket +60/+92, Character +92, NPC +356/+428).
 struct ContactRocketView { unsigned char unknown0[60]; LevelObject* owner; unsigned char unknown64[28]; bool exploded; };
