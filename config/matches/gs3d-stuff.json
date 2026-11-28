@@ -188,7 +188,8 @@
         "_ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE",
         "_ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE",
         "_ZN9GS3DStuff16updateVisibilityEj",
-        "_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE"
+        "_ZN11OctTreeAABB15OctTreeAABBNodeC1ERiiPN3irr4core5arrayIPNS_8RootNodeENS3_12irrAllocatorIS6_EEEEjNS3_8aabbox3dIfEE",
+        "_ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_"
     ],
     "sections": [
         ".gs_print_node_properties",
@@ -336,7 +337,8 @@
         ".gs3d_string_m_append",
         ".gs3d_stuff_teardown",
         ".gs_update_visibility",
-        ".gs_oct_tree_node_ctor"
+        ".gs_oct_tree_node_ctor",
+        ".gs_create_static_bodies"
     ],
     "external_thumb_functions": [
         "_ZN12LODSceneNode6addLODEPN3irr5scene10ISceneNodeEf",
@@ -485,7 +487,6 @@
         "_ZN4Item6pickupEv",
         "_ZN12LODSceneNode19setLODNodesPositionERKN3irr4core8vector3dIfEE",
         "_ZN12LODSceneNode19setLODNodesRotationERKN3irr4core10quaternionE",
-        "_ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_",
         "_ZN10SpawnPoint6UpdateEi",
         "_ZN18BulletTraceManager10getImpactsEv",
         "_ZN6b2Body11CreateShapeEP10b2ShapeDef",
