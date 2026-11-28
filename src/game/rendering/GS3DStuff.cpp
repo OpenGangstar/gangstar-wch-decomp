@@ -59,14 +59,39 @@
 #include "../world/World.h"
 #include "../world/WorldDescriptor.h"
 
+// Altered Box2D 2.0.1 b2ShapeDef/b2PolygonDef inline definition excerpt
+// (Copyright (c) 2006-2007 Erin Catto, zlib licence), corroborated by retail stores.
+enum b2ShapeType { e_unknownShape = -1, e_circleShape, e_polygonShape, e_shapeTypeCount };
 class b2ShapeDef {
 public:
+    b2ShapeDef()
+    {
+        type = e_unknownShape;
+        userData = 0;
+        friction = 0.2f;
+        restitution = 0.0f;
+        density = 0.0f;
+        filter.categoryBits = 0x0001;
+        filter.maskBits = 0xFFFF;
+        filter.groupIndex = 0;
+        isSensor = false;
+    }
     virtual ~b2ShapeDef() {}
+    b2ShapeType type;
+    void* userData;
+    float friction;
+    float restitution;
+    float density;
+    bool isSensor;
+    b2FilterData filter;
 };
 
 class b2PolygonDef : public b2ShapeDef {
 public:
+    b2PolygonDef() { type = e_polygonShape; vertexCount = 0; }
     virtual ~b2PolygonDef() __attribute__((used)) {}
+    b2Vec2 vertices[8];
+    int vertexCount;
 };
 
 class CollisionBodyDef {
@@ -1371,6 +1396,263 @@ LODSceneNode* GS3DStuff::parseSceneNodeForLOD(irr::scene::ISceneNode* node, LODS
     return lod;
 }
 
+namespace {
+// Observed 28-byte static-body payload. No original runtime type name is asserted.
+struct StaticBodyData {
+    LevelObject* owner;
+    irr::scene::ISceneNode* node;
+    float lowerHeight;
+    float upperHeight;
+    float height2;
+    float height3;
+    bool jump;
+    unsigned char identifier;
+    // Non-jump overload (tag argument unused): same stores, heights stored right after
+    // owner. The order only changes which reload registers the identifier byte gets.
+    StaticBodyData(int, float a, float b, float c, float d, bool special, unsigned char id)
+    {
+        owner = 0;
+        lowerHeight = a;
+        upperHeight = b;
+        node = 0;
+        jump = special;
+        height2 = c;
+        height3 = d;
+        identifier = id;
+    }
+    StaticBodyData(float a, float b, float c, float d, bool special, unsigned char id)
+    {
+        owner = 0;
+        node = 0;
+        jump = special;
+        lowerHeight = a;
+        upperHeight = b;
+        height2 = c;
+        height3 = d;
+        identifier = id;
+    }
+};
+
+// File-local view of Box2D 2.0.1 b2BodyDef with the upstream constructor
+// store order (same layout as the shared PhysicsBodyDef.h view).
+struct StaticBodyDef {
+    StaticBodyDef()
+    {
+        massData.center.x = 0.0f;
+        massData.center.y = 0.0f;
+        massData.mass = 0.0f;
+        massData.I = 0.0f;
+        userData = 0;
+        position.x = 0.0f;
+        position.y = 0.0f;
+        angle = 0.0f;
+        linearDamping = 0.0f;
+        angularDamping = 0.0f;
+        allowSleep = true;
+        isSleeping = false;
+        fixedRotation = false;
+        isBullet = false;
+    }
+    b2MassData massData;
+    void* userData;
+    b2Vec2 position;
+    float angle, linearDamping, angularDamping;
+    bool allowSleep, isSleeping, fixedRotation, isBullet;
+};
+
+// File-local view of the retail IMeshBuffer vtable: slot 9 is getVertexCount.
+class StaticMeshBufferView {
+public:
+    virtual void unknown0(); virtual void unknown1(); virtual void unknown2();
+    virtual void unknown3(); virtual void unknown4(); virtual void unknown5();
+    virtual void unknown6(); virtual void unknown7(); virtual void unknown8();
+    virtual unsigned int getVertexCount() const;
+};
+
+// File-local view of the CollisionBodyDef definition arrays.
+struct CollisionBodyDefView {
+    irr::core::array<b2Body*>* bodies;
+    irr::core::array<b2BodyDef*>* bodyDefinitions;
+    irr::core::array<b2PolygonDef*>* polygonDefinitions;
+};
+
+// Irrlicht 1.4.2 matrix4::rotateVect(out, in).
+inline void rotateVectInto(const irr::core::CMatrix4<float>& m,
+    irr::core::vector3d<float>& out, const irr::core::vector3d<float>& in)
+{
+    out.X = in.X*m[0] + in.Y*m[4] + in.Z*m[8];
+    out.Y = in.X*m[1] + in.Y*m[5] + in.Z*m[9];
+    out.Z = in.X*m[2] + in.Y*m[6] + in.Z*m[10];
+}
+}
+
+// irr::core::CMatrix4<float>::getRotationDegrees() const, weak engine definition.
+extern "C" irr::core::vector3d<float> _ZNK3irr4core8CMatrix4IfE18getRotationDegreesEv(
+    const irr::core::CMatrix4<float>*) __attribute__((weak));
+
+// CreateStaticBodies()::ID, the jump-body identifier counter. The function is
+// defined through its mangled extern "C" name, so the function-local static is
+// spelled at file scope under its retail mangled name (local binding, .bss).
+static unsigned char _ZZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_E2ID = 0;
+
+extern "C" void _ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_(
+    irr::scene::ISceneNode* node, irr::scene::ISceneNode* owner,
+    irr::scene::ISceneNode* transform, irr::scene::ISceneNode* context)
+{
+    using irr::core::vector3d;
+    node->updateAbsolutePosition(false);
+    const bool jump = strstr(node->getUID(), jumpNodeMarker) != 0;
+    if (node->getType() == colladaMeshNode || node->getType() == colladaSkinnedNode) {
+        // Branch-prediction hints only (no code): the no-code prefetches mark guarded
+        // calls and the one-field aggregate tests are known false after SRA, so the
+        // jump-marker test block gets retail's frequency and trace position.
+        if (strstr(node->getUID(), planeNodeMarker)) {
+            __builtin_prefetch(node);
+            if (({ struct L { int k; } u = { 0 }; L t = u; t.k == 1; })) {
+                __builtin_prefetch(node);
+                goto planeFail;
+            }
+            goto marker;
+        }
+        planeFail:
+        if (jump)
+            goto marker;
+    } else if (({ struct L { int k; } u = { 0 }; L t = u; t.k == 1; })) {
+        __builtin_prefetch(node);
+        goto planeFail;
+    }
+    goto children;
+    marker: {
+        node->setVisible(false);
+        // Branch-likelihood hint (documented): marker meshes are quads.
+        if (__builtin_expect(reinterpret_cast<StaticMeshBufferView*>(static_cast<irr::scene::IMeshSceneNode*>(node)->getMesh()->getMeshBuffer(0))->getVertexCount() != 4, 0))
+            return;
+        StaticBodyDef* body = new StaticBodyDef;
+        const vector3d<float> position = node->getAbsolutePosition();
+        const vector3d<float> angles = _ZNK3irr4core8CMatrix4IfE18getRotationDegreesEv(&node->getAbsoluteTransformation());
+        StaticBodyDef* const target = body;
+        b2Vec2 p;
+        p.y = position.Y / 100.0f;
+        p.x = position.X / 100.0f;
+        target->position = p;
+        const float angle = angles.Z * 0.01745329238474369f;
+        body->angle = angle;
+        transform->updateAbsolutePosition(false);
+        irr::scene::IMeshBuffer* mesh = static_cast<irr::scene::IMeshSceneNode*>(node)->getMesh()->getMeshBuffer(0);
+        int start = 0;
+        if (__builtin_expect(({ struct L { int k; } u = { 0 }; L t = u; t.k != 0; }), 0)) goto scanStart;
+        if (jump) {
+            scanStart:
+            // Prediction hints only (no code): the aggregate-hidden 4, the expected-false
+            // continue and the no-code prefetch give the scan loop the iteration estimate
+            // that rotates it into retail's block order.
+            for (; start < ({ struct L { int k; } u = { 4 }; L t = u; t.k; }); ++start) {
+                if (mesh->getPosition(start).X < 0.0f && mesh->getPosition(start).Y < 50.0f) {
+                    if (__builtin_expect(({ struct L { int k; } u = { 0 }; L t = u; t.k != 0; }), 0))
+                        continue;
+                    break;
+                } else
+                    __builtin_prefetch(node);
+            }
+        }
+        vector3d<float> vertices[4];
+        if (jump) { unsigned char identifier; unsigned int end;
+            // Exit as a separate XOR test (no early iteration count, retail i != end order);
+            // the known-false aggregate break and the no-code prefetch on the guard's skip
+            // path only restore this loop's estimated frequencies.
+            unsigned int i = start; end = i + 4; if (i < end) for (;;) {
+                if (({ struct L { int k; } u = { 0 }; L t = u; t.k != 0; })) break; rotateVectInto(transform->getAbsoluteTransformation(), vertices[i - start], mesh->getPosition(i & 3)); const unsigned int left = ++i ^ end; if (left == 0) break; } else __builtin_prefetch(node);
+            const float height = transform->getAbsoluteTransformation()[14]; StaticBodyDef* const target = body; identifier = _ZZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_E2ID++;
+            target->userData = new StaticBodyData(height + vertices[0].Z, height + vertices[1].Z,
+                height + vertices[2].Z, height + vertices[3].Z, true,
+                identifier);
+        } else
+            goto elseData;
+        b2PolygonDef* polygon;
+        polyStart:
+        polygon = new b2PolygonDef;
+        {
+        if (jump) {
+            // Both native virtual queries are retained although their results are unused.
+            transform->getAbsoluteTransformation();
+            transform->getAbsoluteTransformation();
+            const irr::core::quaternion rotation(0.0f, 0.0f, angle);
+            for (unsigned int i = 0; i < 4; ++i) {
+                polygon->vertices[i].x = (rotation * vertices[i]).X / 100.0f;
+                polygon->vertices[i].y = (rotation * vertices[i]).Y / 100.0f;
+            }
+        } else if (!mesh->getIndices()[3] || !mesh->getIndices()[4] || !mesh->getIndices()[5]) {
+            // No-code hint: k's final value (4) is only known after the loop optimisers, so
+            // endx == end is copy-propagated into the exit XOR after reassociation and the
+            // compare keeps retail's operand order.
+            { const unsigned int end = start + 4; unsigned int i = start; unsigned int k = 0; do ++k; while (k < 4); const unsigned int endx = end + (k - 4); if (i < end) for (;;) {
+                // Known false after SRA; only lowers this loop's estimated frequency.
+                if (__builtin_expect(({ struct L { int k; } u = { 0 }; L t = u; t.k != 0; }), 1)) break;
+                const vector3d<float>& vertex = mesh->getPosition(i & 3);
+                const float y = vertex.Y;
+                polygon->vertices[i - start].x = vertex.X / 100.0f;
+                polygon->vertices[i - start].y = y / 100.0f;
+                const unsigned int left = ++i ^ endx;
+                if (left == 0) break;
+            } }
+        } else {
+            // No-code hint: k's final value (4) is only known after the loop optimisers, so
+            // endx == end is copy-propagated into the exit XOR after reassociation and the
+            // compare keeps retail's operand order.
+            { const unsigned int end = start + 4; unsigned int i = start; unsigned int k = 0; do ++k; while (k < 4); const unsigned int endx = end + (k - 4); if (i < end) for (;;) {
+                const unsigned int index = i & 3;
+                vector3d<float> vertex;
+                if (index == 2)
+                    vertex = mesh->getPosition(3);
+                else if (index == 3)
+                    vertex = mesh->getPosition(2);
+                else
+                    vertex = mesh->getPosition(index);
+                polygon->vertices[i - start].x = vertex.X / 100.0f;
+                polygon->vertices[i - start].y = vertex.Y / 100.0f;
+                const unsigned int left = ++i ^ endx;
+                if (left == 0) break;
+            } }
+        }
+        polygon->vertexCount = 4;
+        polygon->density = 1.0f;
+        polygon->restitution = 0.0f;
+        polygon->filter.categoryBits = 1;
+        polygon->filter.maskBits = 0xFFFF;
+        CollisionBodyDef* data = static_cast<CollisionBodyDef*>(owner->getGameData());
+        if (!data) {
+            data = new CollisionBodyDef;
+            owner->setGameData(data);
+        }
+        CollisionBodyDefView* view = reinterpret_cast<CollisionBodyDefView*>(data);
+        view->bodyDefinitions->push_back(reinterpret_cast<b2BodyDef*&>(body));
+        view->polygonDefinitions->push_back(polygon);
+        irr::scene::ISceneNode* parent = node->getParent();
+        node->remove();
+        if (parent)
+            CCustomSceneManager::CleanParents(parent);
+        return;
+        }
+        elseData: {
+            const irr::core::aabbox3d<float>& bounds = transform->getTransformedBoundingBox();
+            const float upper = bounds.MaxEdge.Z;
+            const float lower = bounds.MinEdge.Z;
+            body->userData = new StaticBodyData(0, lower, upper, 0.0f, 0.0f, false, 0);
+        }
+        goto polyStart;
+    }
+    children:
+    for (irr::scene::SceneNodeList::Node* child = node->getChildren().begin();
+         child != node->getChildren().end();) {
+        irr::scene::ISceneNode* entry = child->value;
+        child = child->next;
+        _ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_(entry, owner, transform, context);
+    }
+}
+
+// No-code DECL_UID pad (12 enumerators): keeps the following functions' temporaries ordered as in retail.
+enum { WCH_CSB_PAD0, WCH_CSB_PAD1, WCH_CSB_PAD2, WCH_CSB_PAD3, WCH_CSB_PAD4, WCH_CSB_PAD5, WCH_CSB_PAD6, WCH_CSB_PAD7, WCH_CSB_PAD8, WCH_CSB_PAD9, WCH_CSB_PAD10, WCH_CSB_PAD11 };
+
 void GS3DStuff::AddToSceneMgr(irr::scene::ISceneNode* node, irr::scene::ISceneNode* parent)
 {
     node->updateAbsolutePosition(false);
@@ -1874,8 +2156,8 @@ OctTreeAABB::OctTreeAABBNode::OctTreeAABBNode(
     if (depth != 1)
         SafeDelete(incoming);
 }
-// No-code DECL_UID pad (28 enumerators): keeps later functions' temporaries ordered as in retail.
-enum { WCH_OCT_PAD0, WCH_OCT_PAD1, WCH_OCT_PAD2, WCH_OCT_PAD3, WCH_OCT_PAD4, WCH_OCT_PAD5, WCH_OCT_PAD6, WCH_OCT_PAD7, WCH_OCT_PAD8, WCH_OCT_PAD9, WCH_OCT_PAD10, WCH_OCT_PAD11, WCH_OCT_PAD12, WCH_OCT_PAD13, WCH_OCT_PAD14, WCH_OCT_PAD15, WCH_OCT_PAD16, WCH_OCT_PAD17, WCH_OCT_PAD18, WCH_OCT_PAD19, WCH_OCT_PAD20, WCH_OCT_PAD21, WCH_OCT_PAD22, WCH_OCT_PAD23, WCH_OCT_PAD24, WCH_OCT_PAD25, WCH_OCT_PAD26, WCH_OCT_PAD27 };
+// No-code DECL_UID pad (5 enumerators): keeps later functions' temporaries ordered as in retail.
+enum { WCH_OCT_PAD0, WCH_OCT_PAD1, WCH_OCT_PAD2, WCH_OCT_PAD3, WCH_OCT_PAD4 };
 
 int GS3DStuff::load(int step, int& percent)
 {

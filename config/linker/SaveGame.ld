@@ -127,6 +127,8 @@ INCLUDE config/linker/LevelObjectNavigationSections.ld
 SECTIONS {
     .gs_add_xref 0x002deebc : { *gs3d-stuff.o(.text._ZN9GS3DStuff7AddXRefEPN3irr5scene10ISceneNodeE) }
     .gs_update_visibility 0x002dd7e0 : { *gs3d-stuff.o(.text._ZN9GS3DStuff16updateVisibilityEj) }
+    .gs_create_static_bodies 0x002ddf78 : { *gs3d-stuff.o(.text._ZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_) }
+    .gs_create_static_bodies_id 0x004b6a8c (NOLOAD) : { *gs3d-stuff.o(.bss._ZZN9GS3DStuff18CreateStaticBodiesEPN3irr5scene10ISceneNodeES3_S3_S3_E2ID) }
     .gs_get_polys_iter 0x002dd33c : { *gs3d-stuff.o(.text._ZNK11OctTreeAABB15OctTreeAABBNode12getPolysIterERKN3irr4core8aabbox3dIfEEPNS2_5arrayIP16CollisionBodyDefNS2_12irrAllocatorIS9_EEEEPNS7_IP10SpawnPointNSA_ISF_EEEEPNS7_IPNS1_5scene10ISceneNodeENSA_ISL_EEEE) }
     .gs_draw_body 0x002dc958 : { *gs3d-stuff.o(.text._ZN9GS3DStuff8DrawBodyEP6b2BodyN3irr5video6SColorE) }
     .ai_manager_singleton 0x002dbae8 : { *gs3d-stuff.o(.gnu.linkonce.t._ZN9AIManager11getInstanceEv) }
