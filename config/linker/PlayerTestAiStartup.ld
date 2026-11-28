@@ -48,8 +48,13 @@ INCLUDE config/linker/CHudManagerUpdateSections.ld
 INCLUDE config/linker/CHudManagerUpdateText.ld
 INCLUDE config/linker/PlayerTestDestructorSections.ld
 
+PROVIDE(atan2f = 0x001c4718);
+PROVIDE(sinf = 0x001c476c);
+PROVIDE(cosf = 0x001c4304);
+PROVIDE(sqrt = 0x001c401c);
 SECTIONS
 {
+    .playertest_move 0x003026b8 : { *ai-startup-playertest.o(.text._ZN10PlayerTest4moveEff) }
     .character_run_to_target 0x002f39e0 : { *ai-startup-character.o(.text._ZN9Character11runToTargetEi) }
     .npc_attack_target 0x002ff5d0 : { *ai-startup-npc.o(.text._ZN3NPC12attackTargetEv) }
     .npc_car_under_wheel 0x002fe784 : { *ai-startup-npc.o(.text._ZN3NPC24UpdateCarPosIfUnderWheelEv) }
