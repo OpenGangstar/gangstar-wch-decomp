@@ -2600,3 +2600,374 @@ extern "C" void _ZN8RenderFX11UpdateInputEii(RenderFX* self, int keys, int index
         }
     }
 }
+
+namespace {
+// Observed retail cursor record: position, rotation and button state.
+struct CursorState {
+    float x, y, rotation;
+    int buttons;
+};
+// Observed movie-definition frame bounds read by the cursor transform.
+struct CursorMovieDefinition {
+    unsigned char prefix[180];
+    float xMin, xMax, yMin, yMax;
+};
+// Observed native root fields read by the cursor transform.
+struct CursorRootView {
+    unsigned char prefix[12];
+    CursorMovieDefinition* definition;
+    gameswf::character* movie;
+    unsigned char unknown20[16];
+    int viewportX, viewportY, viewportWidth, viewportHeight;
+};
+struct CursorCharacterName {
+    unsigned char prefix[136];
+    gameswf::tu_string name;
+};
+// Local counted reference matching smart_ptr<character>(T*): add_ref on
+// construction, drop_ref on destruction.
+class CursorReference {
+public:
+    explicit CursorReference(gameswf::character* object) : value(object)
+    {
+        if (value)
+            _ZNK7gameswf11ref_counted7add_refEv(reinterpret_cast<gameswf::root*>(value));
+    }
+    ~CursorReference()
+    {
+        if (value)
+            reinterpret_cast<gameswf::ref_counted*>(value)->drop_ref();
+    }
+    CursorReference(const CursorReference& other) : value(other.value)
+    {
+        if (value)
+            _ZNK7gameswf11ref_counted7add_refEv(reinterpret_cast<gameswf::root*>(value));
+    }
+    gameswf::character* get() const { return value; }
+
+private:
+    gameswf::character* value;
+};
+struct CursorHitMethods {
+    void (*beforeHit[24])();
+    gameswf::character* (*hit)(gameswf::character*, float, float);
+};
+struct CursorHandlerMethods {
+    void (*beforeOrientation[41])();
+    int (*getOrientation)(gameswf::render_handler*);
+};
+// Header-free view of the private RenderFX fields used here (offsets as in RenderFX.h).
+struct CursorMovieFields {
+    unsigned char prefix[28];
+    gameswf::smart_ptr<gameswf::root> root;
+    gameswf::character* context;
+    RenderFX::Controller controllers[4];
+    int inputBehavior;
+    RenderFX::EventListener* listener;
+};
+}
+extern "C" void _ZN7gameswf4root18notify_mouse_stateEiii(gameswf::root* root, int x, int y, int buttons);
+
+static const char pressedAnimation[] = "pressed";
+static const char releasedAnimation[] = "released";
+// "clicked" is shared with UpdateInput (same retail GOT offset).
+
+#define self (reinterpret_cast<RenderFX*>(fields))
+extern "C" void _ZN8RenderFX12UpdateCursorERNS_6CursorEi(CursorMovieFields* const fields, CursorState& cursor, int index)
+{
+    gameswf::render_handler* handler = gameswf::get_render_handler();
+    const int orientation = (**reinterpret_cast<const CursorHandlerMethods* const*>(handler)).getOrientation(handler);
+    float viewWidth, viewHeight, width, height;
+    const CursorRootView* display;
+    if (orientation != 0 && orientation != 2) {
+        display = reinterpret_cast<CursorRootView*>(fields->root.get());
+        viewWidth = display->viewportWidth;
+        viewHeight = display->viewportHeight;
+        width = display->definition->yMax - display->definition->yMin;
+        height = display->definition->xMax - display->definition->xMin;
+    } else {
+        display = reinterpret_cast<CursorRootView*>(fields->root.get());
+        viewWidth = display->viewportWidth;
+        viewHeight = display->viewportHeight;
+        width = display->definition->xMax - display->definition->xMin;
+        height = display->definition->yMax - display->definition->yMin;
+    }
+    const float x = (cursor.x - reinterpret_cast<CursorRootView*>(fields->root.get())->viewportX) /
+        (viewWidth / (width / 20.0f));
+    const float y = (cursor.y - reinterpret_cast<CursorRootView*>(fields->root.get())->viewportY) /
+        (viewHeight / (height / 20.0f));
+    if (fields->controllers[index].third.get()) {
+        gameswf::matrix matrix;
+        matrix.concatenate_translation(x * 20.0f, y * 20.0f);
+        matrix.set_scale_rotation(1.0f, 1.0f, cursor.rotation);
+        CharacterTransform& transform = *reinterpret_cast<CharacterTransform*>(fields->controllers[index].third.get());
+        transform.placement = matrix;
+        transform.hasPlacement = true;
+    }
+    bool pressed = false, released = false;
+    // No-code DECL_UID pad: moving `moved`'s UID orders the out-of-SSA PHI-copy
+    // stores of pressed/released/moved as retail (0x1b6, 0x3a0, 0x464). Re-sweep
+    // the enumerator count after any declaration change in this function.
+    enum { kPad0, kPad1, kPad2, kPad3, kPad4, kPad5, kPad6, kPad7, kPad8, kPad9, kPad10, kPad11, kPad12, kPad13, kPad14, kPad15, kPad16, kPad17, kPad18, kPad19, kPad20, kPad21, kPad22, kPad23, kPad24, kPad25, kPad26, kPad27, kPad28, kPad29, kPad30, kPad31, kPad32, kPad33, kPad34, kPad35, kPad36, kPad37, kPad38, kPad39, kPad40, kPad41, kPad42, kPad43, kPad44, kPad45, kPad46, kPad47, kPad48, kPad49, kPad50, kPad51, kPad52, kPad53, kPad54, kPad55, kPad56, kPad57, kPad58, kPad59, kPad60, kPad61, kPad62, kPad63, kPad64, kPad65, kPad66, kPad67, kPad68, kPad69, kPad70, kPad71, kPad72, kPad73, kPad74, kPad75, kPad76, kPad77, kPad78, kPad79, kPad80, kPad81, kPad82, kPad83, kPad84 };
+    bool moved = false;
+    if (!fields->controllers[index].enabled || !fields->context ||
+        ((fields->inputBehavior & 16) && ({ struct { unsigned int k; } t = {reinterpret_cast<unsigned int>(fields->controllers[index].fourth.get())}; t.k != 0u; })))
+    {
+        return;
+    }
+    _ZN7gameswf4root18notify_mouse_stateEiii(fields->root.get(), static_cast<int>(x), static_cast<int>(y), 0);
+    if (({ struct { unsigned int k; } t = {static_cast<unsigned int>(static_cast<bool>(cursor.buttons != 0)) + 1u}; t.k == 2u; })) {
+    thenStart:
+        if (fields->controllers[index].unknown12 == 0) {
+            pressed = true;
+            
+        }
+        if ((static_cast<unsigned long>(index) >> 1) > 0x7ffffffful)
+            goto yTest;
+    xTest:
+        if (cursor.x == fields->controllers[index].unknown0)
+            goto yTest;
+        moved = true;
+        goto movedDone;
+    } else
+        goto elseArm;
+elseArm:
+    if (({ struct L { int k; } u = {10}; L t = u; t.k != 10; })) {
+        if (({ struct L { int k; } u = {11}; L t = u; t.k != 11; })) {
+            if (({ struct L { int k; } u = {12}; L t = u; t.k != 12; })) {
+                if (({ struct L { int k; } u = {13}; L t = u; t.k != 13; })) {
+                    __builtin_prefetch(&cursor);
+                    goto thenStart;
+                }
+            }
+        }
+    }
+    if (({ struct L { int k; } u = {14}; L t = u; t.k != 14; })) {
+        if (({ struct L { int k; } u = {15}; L t = u; t.k != 15; })) {
+            __builtin_prefetch(&cursor);
+            goto xTest;
+        }
+    }
+    released = fields->controllers[index].unknown12 != 0;
+    goto movedDone;
+yTest:
+    if (cursor.y != fields->controllers[index].unknown4)
+        moved = true;
+movedDone:
+    CursorReference target((fields->inputBehavior & 4) ? CursorReference(({ if (({ struct L { int k; } u = {5}; L t = u; t.k != 5; })) { __builtin_prefetch(&cursor); goto ctxArm; } reinterpret_cast<CursorRootView*>(fields->root.get())->movie; })) : CursorReference(({ ctxArm: fields->context; })));
+    union { int i; float f; } pz; 
+    CursorReference hit(
+        (**reinterpret_cast<const CursorHitMethods* const*>(target.get())).hit(target.get(), x * 20.0f, y * 20.0f));
+    CursorReference previousFocus(fields->controllers[index].first.get());
+    if (({ struct { unsigned int k; } t = {reinterpret_cast<unsigned int>(fields->controllers[index].fifth.get())}; t.k == 0u; })) {
+        const int behaviour = fields->inputBehavior;
+        if (pressed || !(behaviour & 8))
+            self->SetFocus(hit.get(), index);
+    }
+    if (pressed || released) {
+        if (({ struct S { int k; } u = { !(fields->controllers[index].first.get() != fields->controllers[index].fourth.get()) }; S t = u; t.k <= 0; }))
+            fields->controllers[index].fourth.set_ref(0);
+        else __builtin_prefetch(&cursor);
+    }
+    if (({ struct { unsigned int k; } t = {reinterpret_cast<unsigned int>(fields->controllers[index].fifth.get())}; t.k != 0u; }) && !CanHandleMouseEvent(fields->controllers[index].fifth.get()))
+        fields->controllers[index].fifth.set_ref(0);
+    RenderFX::Event event;
+    if (hit.get() != fields->controllers[index].second.get()) {
+        if (({ struct S { int k; } u = { !(fields->controllers[index].second.get() != 0) }; S t = u; t.k <= 0; }) && CanHandleMouseEvent(fields->controllers[index].second.get())) {
+            gameswf::point point = GetLocalPosition(fields->controllers[index].second.get(), x, y);
+            CursorCharacterName* const previous = reinterpret_cast<CursorCharacterName*>(fields->controllers[index].second.get());
+            *reinterpret_cast<CursorCharacterName**>(&event.character) = previous;
+            event.payload.y = 0.0f;
+            event.payload.x = 0.0f;
+            event.payload.z = 0.0f;
+            event.payload.unknown24 = 0;
+            event.type = 9;
+            event.characterName = previous->name.c_str();
+            event.characterPath[0] = 0;
+            event.consumed = false;
+            event.payload.controller = index;
+            event.payload.unknown24 = cursor.buttons;
+            event.payload.x = point.x;
+            event.payload.y = point.y;
+            self->SendEvent(event);
+        }
+        else __builtin_prefetch(&cursor);
+        if (({ struct { unsigned int k; } t = {reinterpret_cast<unsigned int>(hit.get())}; t.k != 0u; }) && ({ struct { unsigned int k; } t = {static_cast<unsigned int>(static_cast<bool>(CanHandleMouseEvent(hit.get()))) + 1u}; t.k == 2u; })) {
+            gameswf::point point = GetLocalPosition(hit.get(), x, y);
+            event.character = hit.get();
+            event.payload.y = 0.0f;
+            event.payload.x = 0.0f;
+            event.payload.z = 0.0f;
+            event.payload.unknown24 = 0;
+            event.type = 8;
+            event.characterName = reinterpret_cast<CursorCharacterName*>(hit.get())->name.c_str();
+            event.characterPath[0] = 0;
+            event.consumed = false;
+            event.payload.controller = index;
+            event.payload.unknown24 = cursor.buttons;
+            event.payload.x = point.x;
+            event.payload.y = point.y;
+            self->SendEvent(event);
+        }
+    }
+    fields->controllers[index].second.set_ref(hit.get());
+    CursorReference focus(fields->controllers[index].first.get());
+    if (focus.get() != 0 && CanHandleMouseEvent(focus.get())) {
+        gameswf::point input(x * 20.0f, y * 20.0f);
+        pz.i = static_cast<int>(reinterpret_cast<unsigned int>(&input) << 30);
+        void* pointRef;
+        gameswf::point point(pz.f, pz.f);
+        {
+            gameswf::matrix world = _ZN7gameswf9character16get_world_matrixEv(focus.get());
+            gameswf::matrix inverse;
+            inverse.set_inverse(world);
+            inverse.transform(&point, input);
+        }
+        if (__builtin_expect(({ struct L { int k; } u = {16}; L t = u; t.k != 16; }), 0)) goto finalElse;
+        // Opaque no-code alias of &point (frob_return_addr is the identity on ARM): one pointer value shared by
+        // the released-arm payload.x reads instead of a fresh frame-address pair per block.
+        pointRef = __builtin_frob_return_addr(&point);
+        if (pressed) {
+            if ((static_cast<int>(static_cast<unsigned int>(fields->inputBehavior) << 31) < 0) || ({ struct { unsigned int k; } t = {(unsigned int)(hit.get())}; t.k != 0u; })) {
+                self->PlayAnim(focus.get(), pressedAnimation, 0);
+                event.payload.y = 0.0f;
+                event.payload.x = 0.0f;
+                event.payload.z = 0.0f;
+                event.payload.unknown24 = 0;
+                event.character = focus.get();
+                event.type = 4;
+                event.characterName = reinterpret_cast<CursorCharacterName*>(focus.get())->name.c_str();
+                event.characterPath[0] = 0;
+                event.consumed = false;
+                event.payload.controller = index;
+                event.payload.unknown24 = cursor.buttons;
+                event.payload.x = static_cast<gameswf::point*>(pointRef)->x;
+                event.payload.y = point.y;
+                reinterpret_cast<RenderFX*>(reinterpret_cast<unsigned long>(fields))->SendEvent(event);
+            } else {
+                self->ResetFocus(index);
+            }
+        } else if (moved) {
+            event.payload.y = pz.f;
+            event.payload.x = pz.f;
+            event.payload.z = pz.f;
+            event.payload.unknown24 = 0;
+            event.character = focus.get();
+            event.type = 5;
+            event.characterName = reinterpret_cast<CursorCharacterName*>(focus.get())->name.c_str();
+            event.characterPath[0] = 0;
+            event.consumed = false;
+            event.payload.controller = index;
+            event.payload.unknown24 = cursor.buttons;
+            event.payload.x = static_cast<gameswf::point*>(pointRef)->x;
+            event.payload.y = point.y;
+            self->SendEvent(event);
+            fields->controllers[index].fifth.set_ref(focus.get());
+        } else if (released) {
+            int behaviourBit;
+            if (previousFocus.get() == target.get()) {
+                behaviourBit = fields->inputBehavior & 1;
+                if (!behaviourBit)
+                    goto hitTest;
+            } else {
+                behaviourBit = fields->inputBehavior & 1;
+                if (!behaviourBit)
+                    goto hitTest;
+            }
+            {
+            ev6Arm:
+                event.payload.y = 0.0f;
+                event.payload.x = 0.0f;
+                event.payload.z = 0.0f;
+                event.payload.unknown24 = 0;
+                event.character = focus.get();
+                event.type = 6;
+                event.characterName = reinterpret_cast<CursorCharacterName*>(focus.get())->name.c_str();
+                event.characterPath[0] = 0;
+                event.consumed = false;
+                event.payload.controller = index;
+                event.payload.unknown24 = cursor.buttons;
+                event.payload.x = static_cast<gameswf::point*>(pointRef)->x;
+                event.payload.y = point.y;
+                if (({ struct { unsigned int k; } t = {static_cast<unsigned int>(static_cast<bool>(fields->listener->CanHandleEvent(event))) + 1u}; t.k != 1u; })) {
+                    bool animated = self->PlayAnim(focus.get(), releasedAnimation, 0);
+                    if (!animated) {
+                        animated = self->PlayAnim(focus.get(), inputClickedAnimation, 0);
+                        self->SendEvent(event);
+                        const int animatedAlias = animated;
+                        if ((static_cast<unsigned long>(index) & reinterpret_cast<unsigned long>(hit.get())) != 0ul) {
+                            if (animated)
+                                goto setFourth;
+                        } else {
+                            if (animated)
+                                goto setFourth;
+                        }
+                        RenderFX::Event click;
+                        void* const cp = __builtin_frob_return_addr(&click);
+                        click.payload.y = 0.0f;
+                        click.payload.x = 0.0f;
+                        click.payload.z = 0.0f;
+                        click.payload.unknown24 = animatedAlias;
+                        click.character = focus.get();
+                        click.type = 2;
+                        click.characterName = reinterpret_cast<const CursorCharacterName*>(focus.get())->name.c_str();
+                        static_cast<RenderFX::Event*>(cp)->characterPath[0] = 0;
+                        static_cast<RenderFX::Event*>(cp)->consumed = false;
+                        click.payload.controller = index;
+                        click.payload.x = point.x;
+                        click.payload.y = point.y;
+                        reinterpret_cast<RenderFX*>(reinterpret_cast<unsigned long>(fields))->SendEvent(*static_cast<RenderFX::Event*>(cp));
+                        goto clickDone;
+                    } else
+                        self->SendEvent(event);
+                setFourth:
+                    fields->controllers[index].fourth.set_ref(focus.get());
+                clickDone:;
+                }
+            }
+            goto releasedDone;
+        hitTest:
+            if (index > 1)
+                goto selA;
+        selA1:
+            if (hit.get() == focus.get())
+                goto ev6Arm;
+        ev7Code:
+            {
+                event.payload.y = pz.f;
+                event.payload.x = pz.f;
+                event.payload.z = pz.f;
+                event.payload.unknown24 = behaviourBit;
+                event.character = focus.get();
+                event.type = 7;
+                event.characterName = reinterpret_cast<CursorCharacterName*>(focus.get())->name.c_str();
+                event.characterPath[0] = 0;
+                event.consumed = false;
+                event.payload.controller = index;
+                event.payload.unknown24 = cursor.buttons;
+                event.payload.x = static_cast<gameswf::point*>(pointRef)->x;
+                event.payload.y = point.y;
+                self->SendEvent(event);
+                self->ResetFocus(index);
+            }
+            goto releasedDone;
+        selA:
+            if (__builtin_frob_return_addr(previousFocus.get()) == target.get())
+                goto selA1;
+            if (hit.get() == focus.get())
+                goto ev6Arm;
+            goto ev7Code;
+        releasedDone:
+            fields->controllers[index].fifth.set_ref(0);
+        } else {
+        finalElse:
+            if (!(static_cast<int>(static_cast<unsigned int>(fields->inputBehavior) << 31) < 0) && hit.get() == 0 && ({ struct { unsigned int k; } t = {reinterpret_cast<unsigned int>(fields->controllers[index].fifth.get())}; t.k == 0u; }))
+                self->ResetFocus(index);
+        }
+    }
+    // Retail stores the cursor record as one aggregate member of the controller.
+    struct CursorControllerView { CursorState last; unsigned char rest[24]; };
+    struct CursorControllerFields { unsigned char prefix[36]; CursorControllerView controllers[4]; };
+    reinterpret_cast<CursorControllerFields*>(fields)->controllers[index].last = cursor;
+}
+#undef self

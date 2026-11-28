@@ -17364,7 +17364,7 @@ address	size	source_file	origin	area	status	symbol	demangled
 0x003ef375	0x144	menufx.cpp	game	ui	matched	_ZN6MenuFX7PopMenuEv	MenuFX::PopMenu()
 0x003ef4b9	0x3c	menufx.cpp	game	ui	matched	_ZN6MenuFX15SetFocusDefaultEv	MenuFX::SetFocusDefault()
 0x003ef4f5	0x1a	menufx.cpp	game	rendering	matched	_ZN8RenderFX8SetFocusEPKci	RenderFX::SetFocus(char const*, int)
-0x003ef511	0x7dc	menufx.cpp	game	rendering	pending	_ZN8RenderFX12UpdateCursorERNS_6CursorEi	RenderFX::UpdateCursor(RenderFX::Cursor&, int)
+0x003ef511	0x7dc	menufx.cpp	game	rendering	matched	_ZN8RenderFX12UpdateCursorERNS_6CursorEi	RenderFX::UpdateCursor(RenderFX::Cursor&, int)
 0x003efced	0x354	menufx.cpp	game	rendering	matched	_ZN8RenderFX11UpdateInputEii	RenderFX::UpdateInput(int, int)
 0x003f0041	0xf8	menufx.cpp	game	rendering	matched	_ZN8RenderFX6UpdateEib	RenderFX::Update(int, bool)
 0x003f0139	0x96	menufx.cpp	game	ui	matched	_ZN6MenuFX6UpdateEib	MenuFX::Update(int, bool)

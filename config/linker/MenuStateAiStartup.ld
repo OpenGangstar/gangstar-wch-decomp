@@ -1,3 +1,4 @@
+PROVIDE(__stack_chk_fail = 0x001c42e0);
 strlen = 0x001c48bc;
 strrchr = 0x001c4340;
 strstr = 0x001c446c;
@@ -61,6 +62,7 @@ SECTIONS
     .menustate_service_missions_notify 0x002eb9dc : { *ai-startup-menustate.o(.text._ZN5Menus15ServiceMissions6NotifyEPK10MenuWidgeti) }
     .renderfx_invoke_as_callback 0x003eefac : { *renderfx-animation.o(.text._ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc) }
     .renderfx_update_input 0x003efcec : { *renderfx-animation.o(.text._ZN8RenderFX11UpdateInputEii) }
+    .renderfx_update_cursor 0x003ef510 : { *renderfx-animation.o(.text._ZN8RenderFX12UpdateCursorERNS_6CursorEi) }
     .menu_state_on_event 0x002e8550 : { *ai-startup-menustate.o(.text._ZN9MenuState7OnEventERN8RenderFX5EventE) }
     .service_weapon_shop_refresh 0x002e7ac4 : { *ai-startup-menustate.o(.text._ZN5Menus17ServiceWeaponShop7RefreshEv) }
     .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }

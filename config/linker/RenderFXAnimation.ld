@@ -23,7 +23,10 @@ SECTIONS
 {
     .renderfx_invoke_as_callback 0x003eefac : { *renderfx-animation.o(.text._ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc) }
     .renderfx_update_input 0x003efcec : { *renderfx-animation.o(.text._ZN8RenderFX11UpdateInputEii) }
+    .renderfx_update_cursor 0x003ef510 : { *renderfx-animation.o(.text._ZN8RenderFX12UpdateCursorERNS_6CursorEi) }
+    .renderfx_input_released 0x0044de88 : { *renderfx-animation.o(.rodata.releasedAnimation) }
     .renderfx_input_clicked 0x0044de94 : { *renderfx-animation.o(.rodata.inputClickedAnimation) }
+    .renderfx_input_pressed 0x0044de9c : { *renderfx-animation.o(.rodata.pressedAnimation) }
     .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }
     .renderfx_trace_context 0x003ed2f4 : { *renderfx-animation.o(.text._ZN8RenderFX27DBG_TraceContextInformationEPN7gameswf9characterE) }
