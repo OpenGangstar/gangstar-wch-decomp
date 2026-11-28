@@ -132,6 +132,7 @@ SECTIONS
 
     .vehicle_startup_wrapper 0x0030b59c : { *vehicle-cleanup.o(.text._GLOBAL__I__ZN7Vehicle19s_smallImpactSoundsE) }
     .shared_startup_empty_text 0x0044d91c : { *(.gnu.linkonce.r.localStartupEmptyText) }
+    .vehicle_step 0x0030c034 : { *vehicle-cleanup.o(.text._ZN7Vehicle4stepEv) }
     .vehicle_static_init 0x0030b310 : { *vehicle-cleanup.o(.text._Z41__static_initialization_and_destruction_0ii) }
     .vehicle_startup_objects 0x004b8744 (NOLOAD) : { *vehicle-cleanup.o(.bss._ZN3irr2ps5vHalfE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11civ_passiveE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai12npc_scriptedE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai13civ_agressiveE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11gang_memberE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai3copE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai4swatE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11civ_vehicleE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai11cop_vehicleE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai5guardE) *vehicle-cleanup.o(.bss._ZN8gameloft2ai16scripted_vehicleE) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles4car0E) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles4car1E) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles4car2E) *vehicle-cleanup.o(.bss._ZN8gameloft7vehicle13gear_profiles6truck1E) }
     .vehicle_grab_scene_node 0x00310498 : { *(.text._ZN7Vehicle13grabSceneNodeEiPPPv) }
