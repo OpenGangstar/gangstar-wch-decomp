@@ -1,3 +1,4 @@
+PROVIDE(__stack_chk_fail = 0x001c42e0);
 strlen = 0x001c48bc;
 strrchr = 0x001c4340;
 strstr = 0x001c446c;
@@ -39,6 +40,7 @@ SECTIONS
 {
     .renderfx_invoke_as_callback 0x003eefac : { *renderfx-animation.o(.text._ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc) }
     .renderfx_update_input 0x003efcec : { *renderfx-animation.o(.text._ZN8RenderFX11UpdateInputEii) }
+    .renderfx_update_cursor 0x003ef510 : { *renderfx-animation.o(.text._ZN8RenderFX12UpdateCursorERNS_6CursorEi) }
     .renderfx_search_index_init 0x003f02c4 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex4InitERS_) }
     .renderfx_search_index_clear 0x003ee720 : { *renderfx-animation.o(.text._ZN8RenderFX11SearchIndex5ClearEv) }
     .mission_map_name 0x0040b608 : { *ai-startup-menuwidget.o(.rodata.missionMapName) }

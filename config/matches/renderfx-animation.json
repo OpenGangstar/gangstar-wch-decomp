@@ -154,6 +154,7 @@
         "_ZN8RenderFX13PreloadGlyphsEv",
         "_ZN8RenderFX13PreloadGlyphsEPtiPKcibbPN7gameswf6filterE",
         "_ZN8RenderFX16InvokeASCallbackEPN7gameswf9characterEPKc",
+        "_ZN8RenderFX12UpdateCursorERNS_6CursorEi",
         "_ZN8RenderFX11UpdateInputEii"
     ],
     "sections": [
@@ -200,7 +201,9 @@
         ".renderfx_load",
         ".renderfx_search_index_clear",
         ".renderfx_search_index_init",
-        ".renderfx_input_clicked"
+        ".renderfx_input_released",
+        ".renderfx_input_clicked",
+        ".renderfx_input_pressed"
     ],
     "external_thumb_functions": [
         "_ZN7gameswf14as_environment9set_localERKNS_9tu_stringERKNS_8as_valueE",
@@ -264,7 +267,8 @@
         "_ZNK7gameswf4font9get_glyphEPNS_5glyphEti",
         "_ZN7gameswf11call_methodERKNS_8as_valueEPNS_14as_environmentES2_ii",
         "_ZN7gameswf8as_valueC1EPNS_9as_objectE",
-        "_ZN7gameswf8as_valueC1Ev"
+        "_ZN7gameswf8as_valueC1Ev",
+        "_ZN7gameswf4root18notify_mouse_stateEiii"
     ],
     "retail_got": true
 }
