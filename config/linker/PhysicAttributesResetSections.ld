@@ -51,6 +51,7 @@ SECTIONS
     .physic_add_collision_shapes 0x0031e284 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes18AddCollisionShapesEit) }
     .physic_get_height 0x0031eb98 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb) }
     .physic_set_height_attributes_node 0x0031b3e8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes19SetHeightAttributesEPN3irr5scene10ISceneNodeERKNS0_4core8vector3dIfEER10PhysicInfo) }
+    .physic_intersect_segment_heightmap 0x0031b9a8 : { *ai-startup-physicattributes.o(.text._ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_) }
     .contact_listener_add 0x00320350 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener3AddEPK14b2ContactPoint) }
     .contact_listener_vtable 0x004abd18 : { *ai-startup-physicattributes.o(.data.rel.ro._ZTV15ContactListener) }
     .contact_listener_persist 0x0031d7a0 : { *ai-startup-physicattributes.o(.text._ZN15ContactListener7PersistEPK14b2ContactPoint) }

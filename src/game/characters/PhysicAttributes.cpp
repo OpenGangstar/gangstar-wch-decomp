@@ -661,6 +661,252 @@ void PhysicAttributes::LoadArrays(char* filename)
 }
 
 
+namespace irr { namespace core {
+enum EIntersectionRelation3D { ISREL3D_FRONT = 0, ISREL3D_BACK, ISREL3D_PLANAR, ISREL3D_SPANNING, ISREL3D_CLIPPED };
+template<class T> class plane3d {
+public:
+    plane3d(const vector3d<T>& point,const vector3d<T>& normal): Normal(normal),D(-point.dotProduct(Normal)) {}
+    EIntersectionRelation3D classifyPointRelation(const vector3d<T>& point) const
+    {
+        const T d = Normal.dotProduct(point) + D;
+        if (d < -0.000001f)
+            return ISREL3D_BACK;
+        if (d > 0.000001f)
+            return ISREL3D_FRONT;
+        return ISREL3D_PLANAR;
+    }
+    vector3d<T> Normal;
+    T D;
+};
+} }
+
+// Weak retail template instance (st_info 0x22), called through the GOT.
+extern "C" bool _ZNK3irr4core10triangle3dIfE30getIntersectionWithLimitedLineERKNS0_6line3dIfEERNS0_8vector3dIfEE(
+    const irr::core::triangle3d<float>* triangle, const irr::core::line3d<float>& line,
+    irr::core::vector3d<float>& outIntersection) __attribute__((weak));
+
+// Element read through an index parameter (array operator[] shape).
+static inline unsigned short elementAt(const irr::core::array<unsigned short>& a, unsigned int index)
+{
+    return a.data[index];
+}
+
+// Component difference a - b written into out (vector3d::operator- shape).
+static inline void subTo(irr::core::vector3d<float>& out, const irr::core::vector3d<float>& a, const irr::core::vector3d<float>& b)
+{
+    out.X = a.X - b.X; out.Y = a.Y - b.Y;
+split:
+    out.Z = a.Z - b.Z;
+}
+
+// a - b (vector3d::operator- shape); steal also receives the Y difference.
+static inline irr::core::vector3d<float> subSteal(const irr::core::vector3d<float>& a, const irr::core::vector3d<float>& b, float& steal)
+{
+    return irr::core::vector3d<float>(a.X - b.X, steal = a.Y - b.Y, a.Z - b.Z);
+}
+
+// Loop 0 reads pa.Y into a local before the SegmentsIntersect calls (no code: the value is already in a
+// register). This drops one dead SRA copy from the tail-duplicated check, so one fewer SSA name sits on
+// the free list when ivopts runs and the loop-0 latch cast name lands above its used load (0xe74 order).
+#define WCH_PAY_DECL0 const float paY = pa.Y;
+#define WCH_PAY0 paY
+#define WCH_PAY_DECL1
+#define WCH_PAY1 pa.Y
+#define WCH_PAY_DECL2
+#define WCH_PAY2 pa.Y
+
+// Loop 1 only: a dead integer value used solely in a never-taken store ((buffer & 3) <= 3), so VRP deletes
+// the store and DCE the value (no code). Its released SSA names are reused by loop-header copying and
+// scalar replacement, so the loop-0 bc.X partition's representative PHI gets a version above the loop-1
+// bc.X definition and out-of-SSA gives bc$X's root variable to the loop-1 partition (retail slot order).
+#define WCH_SSA_PAD0(S)
+#define WCH_SSA_PAD1(S) { const int wch_pad = (S) ^ ((S) >> 1) ^ ((S) >> 2) ^ ((S) >> 3) ^ ((S) >> 4) ^ ((S) >> 5) ^ ((S) >> 6)     ^ ((S) >> 7) ^ ((S) >> 8) ^ ((S) >> 9) ^ ((S) >> 10) ^ ((S) >> 11) ^ ((S) >> 12);     if ((buffer & 3) > 3) info.unknown8 = wch_pad; }
+#define WCH_SSA_PAD2(S)
+
+// Loop 2 only (TAG2), no code: the body branches unconditionally to block wch_p2 (laid out after the
+// wch_nb2 block) and back to wch_rest2 after the pc difference; a never-taken branch at the top of the
+// body ((buffer & 3) <= 3) also enters wch_p2, so before VRP that block is a separate dominator child of
+// the body head, visited after the pb/pc differences. wch_p2 holds a dead integer value used only in a
+// never-taken store, so VRP deletes the store and the branch, DCE the value, and cfg cleanup merges the
+// blocks back in order. The released SSA names sit on top of the free list and become the loop-0 pb.X
+// PHI names, so out-of-SSA creates the pb.X temporaries (loop-2 def first) before the pc.X temporary
+// (retail spill slots 244/248/252). The loop counter is declared without an initializer and the
+// per-overlap locals are enclosed in a block so the jump back into the body crosses no initialization.
+#define WCH_IDECL0
+#define WCH_IDECL1
+#define WCH_IDECL2 int i;
+#define WCH_IINIT0 int i = 0
+#define WCH_IINIT1 int i = 0
+#define WCH_IINIT2 i = 0
+#define WCH_OB0
+#define WCH_OB1
+#define WCH_OB2 {
+#define WCH_CB0
+#define WCH_CB1
+#define WCH_CB2 }
+#define WCH_RL0
+#define WCH_RL1
+#define WCH_RL2 goto wch_p2; wch_rest2: ;
+#define WCH_GO0
+#define WCH_GO1
+#define WCH_GO2 if ((buffer & 3) > 3) goto wch_p2;
+#define WCH_PB0
+#define WCH_PB1
+#define WCH_PB2 wch_p2: { const int wch_pad2 = (buffer) ^ ((buffer) >> 1) ^ ((buffer) >> 2);     if ((buffer & 3) > 3) info.unknown8 = wch_pad2; } goto wch_rest2;
+// Each WCH_SPLIT label is never jumped to; it only closes a basic block so tree-sink
+// keeps the X differences ahead of the SegmentsIntersect calls (no code emitted).
+#define WCH_SEGMENT_EDGE(NEXT, NEXTBUFFER, TAG)                                                                  \
+    {                                                                                                       \
+        buffer = info.unknown0;                                                                             \
+        unsigned short** neighbors = s_neighbors[buffer];                                                   \
+        const unsigned short tri = info.unknown8 / 3;                                                       \
+        const unsigned short next = neighbors[NEXT][tri];                                                   \
+        const unsigned short nextBuffer = neighbors[NEXTBUFFER][tri];                                       \
+        if (next != 0xffff) {                                                                               \
+            const unsigned short flags = s_neighbors[nextBuffer][7][static_cast<unsigned short>(next / 3)]; \
+            const int kind = flags & 3;                                                                     \
+            if (kind != 1)                                                                              \
+            if (kind != 2)                                                                              \
+            if ((flags & 0xfffc) != s_currentUsed)                                                            \
+                goto wch_nb##TAG;                                                                             \
+        }                                                                                                   \
+        WCH_IDECL##TAG for (WCH_IINIT##TAG; static_cast<unsigned int>(i) < s_overlapping[buffer][tri].used; i += 2) {                           \
+            WCH_GO##TAG \
+            info.unknown0 = elementAt(s_overlapping[buffer][tri], i);                                                  \
+            info.unknown8 = elementAt(s_overlapping[buffer][tri], i + 1);                                              \
+            WCH_OB##TAG \
+            const unsigned short flags = s_neighbors[info.unknown0][7][static_cast<unsigned short>(info.unknown8 / 3)]; \
+            const int kind = flags & 3;                                                                     \
+            if (kind == 1 || kind == 2 || (flags & 0xfffc) == s_currentUsed)                                \
+                continue;                                                                                   \
+            IMeshBuffer* mesh = static_cast<IMeshSceneNode*>(info.heightmap)->getMesh()->getMeshBuffer(info.unknown0); \
+            unsigned short* indices = mesh->getIndices();                                                   \
+            info.vector12 = origin + mesh->getPosition(indices[info.unknown8]);                             \
+            info.vector24 = origin + mesh->getPosition(indices[info.unknown8 + 1]);                         \
+            info.vector36 = origin + mesh->getPosition(indices[info.unknown8 + 2]);                         \
+            WCH_CB##TAG \
+            subTo(pa, end, info.vector12);                                                 \
+            subTo(pb, end, info.vector24);                                                 \
+            subTo(pc, end, info.vector36);                                                 \
+            WCH_RL##TAG \
+            subTo(ab, info.vector24, info.vector12);                                      \
+            subTo(bc, info.vector36, info.vector24);                                      \
+            subTo(ca, info.vector12, info.vector36);                                      \
+            WCH_PAY_DECL##TAG if (SegmentsIntersect(start, end, info.vector12, info.vector24) || SegmentsIntersect(start, end, info.vector24, info.vector36) || SegmentsIntersect(start, end, info.vector36, info.vector12)) return IntersectSegmentWithHeightMap(info, plane, start, end, hit, normal); \
+            if (WCH_PAY##TAG * ab.X - pa.X * ab.Y >= 0.0f && pb.Y * bc.X - pb.X * bc.Y >= 0.0f && pc.Y * ca.X - pc.X * ca.Y >= 0.0f) return IntersectSegmentWithHeightMap(info, plane, start, end, hit, normal); \
+        }                                                                                                   \
+        WCH_SSA_PAD##TAG(buffer)                                                                            \
+        goto wch_done##TAG;                                                                                   \
+    wch_nb##TAG:                                                                                              \
+        {                                                                                                     \
+                info.unknown8 = next;                                                                       \
+                info.unknown0 = nextBuffer;                                                                 \
+                info.heightmap = s_heightmap;                                                               \
+                IMeshBuffer* mesh = static_cast<IMeshSceneNode*>(info.heightmap)->getMesh()->getMeshBuffer(info.unknown0); \
+                unsigned short* indices = mesh->getIndices();                                               \
+                info.vector12 = origin + mesh->getPosition(indices[info.unknown8]);                         \
+                info.vector24 = origin + mesh->getPosition(indices[info.unknown8 + 1]);                     \
+                info.vector36 = origin + mesh->getPosition(indices[info.unknown8 + 2]);                     \
+                const vector3d<float> ba = info.vector12 - info.vector24;                                           \
+                info.vector48 = (info.vector36 - info.vector24).crossProduct(ba).normalize();                       \
+                info.unknown60 = true;                                                                      \
+                return IntersectSegmentWithHeightMap(info, plane, start, end, hit, normal);                 \
+        }                                                                                                     \
+    WCH_PB##TAG \
+    wch_done##TAG: ;                                                                                          \
+    }
+
+bool PhysicAttributes::IntersectSegmentWithHeightMap(PhysicInfo& info, const irr::core::plane3d<float>& plane,
+    const irr::core::vector3d<float>& start, const irr::core::vector3d<float>& end,
+    irr::core::vector3d<float>& hit, irr::core::vector3d<float>& normal)
+{
+    using irr::core::vector3d;
+    using irr::scene::IMeshBuffer;
+    using irr::scene::IMeshSceneNode;
+
+    const vector3d<float> a = info.vector12;
+    const vector3d<float> b = info.vector24;
+    const vector3d<float> c = info.vector36;
+    vector3d<float> pa, pb, pc, ab, bc, ca;
+    // bc.Y first holds the TER'd end.Y - a.Y value (overwritten by bc = c - b below) so out-of-SSA
+    // gives bc$Y's root variable to that partition and the loop-carried bc.Y becomes a temporary.
+    pa = subSteal(end, a, bc.Y);
+    pb = end - b;
+    pc = end - c;
+    ab = b - a;
+    bc = c - b;
+    ca = a - c;
+    const vector3d<float> d = end - start;
+    const vector3d<float> sa = a - start;
+    const vector3d<float> sb = b - start;
+    const vector3d<float> sc = c - start;
+    const vector3d<float> origin = info.heightmap->getAbsolutePosition();
+    unsigned short buffer = info.unknown0;
+    // Never taken ((buffer & 3) <= 3): VRP deletes this block, emitting no code. Its SSA names only shift
+    // version numbering, which fixes the loop-2 latch reload rotation.
+    if ((buffer & 3) > 3) { normal = ab.crossProduct(bc).normalize(); return true; }
+
+    unsigned short& visited = s_neighbors[buffer][7][static_cast<unsigned short>(info.unknown8 / 3)];
+    visited = s_currentUsed | (visited & 3);
+
+    if (plane.classifyPointRelation(a) == irr::core::ISREL3D_FRONT
+        || plane.classifyPointRelation(b) == irr::core::ISREL3D_FRONT
+        || plane.classifyPointRelation(c) == irr::core::ISREL3D_FRONT) {
+        const irr::core::triangle3d<float> triangle(a, b, c);
+        const irr::core::line3d<float> line(start, end);
+        if (_ZNK3irr4core10triangle3dIfE30getIntersectionWithLimitedLineERKNS0_6line3dIfEERNS0_8vector3dIfEE(
+                &triangle, line, hit)) {
+            normal = ab.crossProduct(bc).normalize();
+            return true;
+        }
+    }
+
+    if (pa.Y * ab.X - pa.X * ab.Y < 0.0f
+        && (d.X * sa.Y - d.Y * sa.X) * (d.X * sb.Y - d.Y * sb.X) < 0.0f)
+        WCH_SEGMENT_EDGE(0, 3, 0)
+    if (pb.Y * bc.X - pb.X * bc.Y < 0.0f
+        && (d.X * sb.Y - d.Y * sb.X) * (d.X * sc.Y - d.Y * sc.X) < 0.0f)
+        WCH_SEGMENT_EDGE(1, 4, 1)
+    if (pc.Y * ca.X - pc.X * ca.Y < 0.0f
+        && (d.X * sc.Y - d.Y * sc.X) * (d.X * sa.Y - d.Y * sa.X) < 0.0f)
+        WCH_SEGMENT_EDGE(2, 5, 2)
+    return false;
+}
+#undef WCH_SEGMENT_EDGE
+#undef WCH_PAY_DECL0
+#undef WCH_PAY0
+#undef WCH_PAY_DECL1
+#undef WCH_PAY1
+#undef WCH_PAY_DECL2
+#undef WCH_PAY2
+#undef WCH_SSA_PAD0
+#undef WCH_SSA_PAD1
+#undef WCH_SSA_PAD2
+#undef WCH_IDECL0
+#undef WCH_IDECL1
+#undef WCH_IDECL2
+#undef WCH_IINIT0
+#undef WCH_IINIT1
+#undef WCH_IINIT2
+#undef WCH_OB0
+#undef WCH_OB1
+#undef WCH_OB2
+#undef WCH_CB0
+#undef WCH_CB1
+#undef WCH_CB2
+#undef WCH_RL0
+#undef WCH_RL1
+#undef WCH_RL2
+#undef WCH_GO0
+#undef WCH_GO1
+#undef WCH_GO2
+#undef WCH_PB0
+#undef WCH_PB1
+#undef WCH_PB2
+
+// No-code DECL_UID pad (8 enumerators): keeps later functions' UID-sensitive ordering (AddCollisionShapes,
+// FindLowerCostNode, GetNextRandomPos, ContactListener::Add). This block is placed before GetHeight (detailed).
+enum { WCH_ISEG_PAD0, WCH_ISEG_PAD1, WCH_ISEG_PAD2, WCH_ISEG_PAD3, WCH_ISEG_PAD4, WCH_ISEG_PAD5, WCH_ISEG_PAD6, WCH_ISEG_PAD7 };
 // Overlap loop headers and indices per crossed edge.
 // No-code hint (edge 2): the extra induction variables k1/k2 (k2 - k1 + k == k + 1) are removed by
 // ivopts after this loop is rewritten; their released SSA names are reused for edge 1's k + 1 offset.
@@ -978,14 +1224,6 @@ bool PhysicAttributes::IsPositionOnJump(const irr::core::vector3d<float>& p)
     return !outside;
 }
 
-namespace irr { namespace core {
-template<class T> class plane3d {
-public:
-    plane3d(const vector3d<T>& point,const vector3d<T>& normal): Normal(normal),D(-point.dotProduct(Normal)) {}
-    vector3d<T> Normal;
-    T D;
-};
-} }
 float PhysicAttributes::IntersectSegmentWithHeightMap(const irr::core::vector3d<float>& start,
     const irr::core::vector3d<float>& end,irr::core::vector3d<float>& hit,irr::core::vector3d<float>& normal)
 {

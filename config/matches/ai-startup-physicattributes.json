@@ -88,7 +88,8 @@
         "_ZN16PhysicAttributes16GetNextRandomPosEiiN3irr4core8vector3dIfEE",
         "_ZN15ContactListener3AddEPK14b2ContactPoint",
         "_ZN16PhysicAttributes18AddCollisionShapesEit",
-        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb"
+        "_ZN16PhysicAttributes9GetHeightEiRKN3irr4core8vector3dIfEEbb",
+        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_"
     ],
     "sections": [
         ".physics_segment_height",
@@ -114,11 +115,11 @@
         ".contact_listener_add",
         ".contact_listener_vtable",
         ".physic_add_collision_shapes",
-        ".physic_get_height"
+        ".physic_get_height",
+        ".physic_intersect_segment_heightmap"
     ],
     "retail_got": true,
     "external_thumb_functions": [
-        "_ZN16PhysicAttributes29IntersectSegmentWithHeightMapER10PhysicInfoRKN3irr4core7plane3dIfEERKNS3_8vector3dIfEESB_RS9_SC_",
         "_ZN7b2World10CreateBodyEPK9b2BodyDef",
         "_ZN7b2World11DestroyBodyEP6b2Body",
         "_ZN7b2World16SetContactFilterEP15b2ContactFilter",
