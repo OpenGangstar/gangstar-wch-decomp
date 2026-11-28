@@ -1435,6 +1435,349 @@ PlayerTest::~PlayerTest()
 // changes ServiceCarRental::Notify in ai-startup-menustate.
 extern "C" bool _ZN9Character15updateAnimationEf(Character*, float);
 
+extern "C" float atan2f(float, float);
+extern "C" float fabsf(float);
+extern "C" float cosf(float);
+extern "C" float sinf(float);
+void PlayerTest::move(float direction, float magnitude)
+{
+    Character* character = reinterpret_cast<Character*>(static_cast<SavePositionInterface*>(this));
+    const bool canInterrupt = character->canAnimationBeInterrupted(currentAnimation);
+    if (!canInterrupt)
+        return;
+    if (unknown372 == 14 || unknown372 == 15)
+        return;
+    unknown357 = false;
+    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; })) goto probeLbl;
+  probeLbl:;
+    const float multiplier = static_cast<float>(animationSpeedMultiplier);
+    const float walkLimit = multiplier * 0.5f;
+    // No-code frequency hint (canInterrupt is true, folded by DOM).
+    if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+        goto clampDone;
+    if (physicAttributes->info->unknown0 == PhysicAttributes::MATERIAL_TYPE_WATER)
+        magnitude = irr::core::clamp(magnitude, 0.0f, walkLimit);
+  clampDone:;
+    if (magnitude <= walkLimit) {
+        const float low = multiplier * 0.3f;
+        const float high = multiplier * 2.5f;
+        animationSpeed = magnitude * (high - low) + low;
+    } else {
+        const float low = multiplier * 0.75000006f;
+        const float high = multiplier * 1.25f;
+        animationSpeed = magnitude * (high - low) + low;
+    }
+
+    if (targetLocked && target) {
+        irr::core::vector3d<float> aim = (target->GetPosition() - character->GetPosition()).normalize();
+        irr::core::vector3d<float> front = character->GetFront();
+        irr::core::vector3d<float> right = character->GetRight();
+        float frontAngle = atan2f(front.Y, front.X);
+        float aimAngle = atan2f(aim.Y, aim.X);
+        sceneNode->setRotation(sceneNode->getRotation() * irr::core::quaternion(0.0f, 0.0f, frontAngle - aimAngle));
+        front = character->GetFront();
+        right = character->GetRight();
+        const bool forward = fabsf(direction) < 1.5707964f;
+        if (magnitude <= walkLimit) {
+            const unsigned int flags = flags240;
+            // No-code frequency hint (canInterrupt is true, folded by DOM).
+            if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+                goto walkLockedPlaying;
+            if (!(static_cast<int>(flags << 30) < 0)) {
+                // No-code prediction hint: the copied one-field aggregate delays the
+                // fold so the opcode-positive heuristic (79%) applies; folds to flags & 4.
+                if (({ struct S { int k; } u = { static_cast<int>(flags & 4u) }; S t = u; t.k > 0; })) {
+                    // No-code prediction hint: one-field aggregate inequality (71%);
+                    // folds back to the forward test.
+                    if (({ struct { unsigned int k; } fwd = { static_cast<unsigned int>(forward) + 1u }; fwd.k != 1u; })) {
+                        setAnim(character->getSpecificAnimation(200), false, true, true, 1.0f);
+                        // No-code frequency hint (canInterrupt is true, folded by DOM).
+                        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k < 1; }))
+                            goto walkLockedElse;
+                    } else
+                        setAnim(150, false, true, true, 1.0f);
+                } else {
+                walkLockedElse:
+                    // No-code frequency hint (canInterrupt is true, folded by DOM).
+                    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; }))
+                        goto walkLockedStore;
+                    // No-code hint: the dead tests below hide both calls from the call
+                    // heuristic.
+                    if (!forward) {
+                        if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+                            goto walkLockedStore;
+                        setAnim(150, false, true, true, 1.0f);
+                    } else {
+                        if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+                            goto walkLockedStore;
+                        setAnim(character->getSpecificAnimation(180), false, true, true, 1.0f);
+                    }
+                }
+              walkLockedStore:
+                {
+                    const int upperFlags = static_cast<int>(flags240) >> 8;
+                    flags240 = static_cast<unsigned int>(upperFlags) << 8 | 0x202u;
+                }
+                playCurAnimFromStart();
+            } else {
+            walkLockedPlaying:
+                // No-code prediction hint: an animation already playing is the
+                // expected case; folds to the plain bit test.
+                if (__builtin_expect(!(static_cast<int>(flags << 22) < 0), 0)) {
+                    if (forward) {
+                        setAnim(character->getSpecificAnimation(202), true, true, true, 1.0f);
+                    } else if (static_cast<SavePrimaryInterface*>(this)->getWeapon()
+                               && static_cast<SavePrimaryInterface*>(this)->getWeapon()->getWeaponType() == 7) {
+                        setAnim(155, true, true, true, 1.0f);
+                    } else {
+                        setAnim(154, true, true, true, 1.0f);
+                    }
+                }
+            }
+            if (unknown308 < 200.0f)
+                unknown308 += 100.0f;
+            else if (unknown308 > 200.0f)
+                unknown308 = 200.0f;
+        } else {
+            const unsigned int flags = flags240;
+            // No-code frequency hint (canInterrupt is true, folded by DOM).
+            if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k < 1; }))
+                goto runLockedPlaying;
+            if (!(static_cast<int>(flags << 29) < 0)) {
+                // No-code prediction hint: aggregate equality (29%); folds to the bit test.
+                if (({ struct S { int k; } u = { static_cast<int>(flags << 30) < 0 }; S t = u; t.k == 1; })) {
+                    // No-code frequency hints (canInterrupt is true, folded by DOM).
+                    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; }))
+                        goto runLockedStore;
+                    if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k != 2; }))
+                        goto runLockedSel156;
+                    if (forward) {
+                        // No-code frequency hint (canInterrupt is true, folded by DOM).
+                        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; }))
+                            goto runLockedStore;
+                        setAnim(character->getSpecificAnimation(0), false, true, true, 1.0f);
+                    } else {
+                    runLockedSel156:
+                        setAnim(156, false, true, true, 1.0f);
+                    }
+                } else {
+                    // No-code frequency hint (canInterrupt is true, folded by DOM).
+                    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k < 1; }))
+                        goto runLockedStore;
+                    // No-code prediction hint: opcode-positive aggregate (21%); folds to !forward.
+                    if (({ struct S { int k; } u = { forward }; S t = u; t.k < 1; })) {
+                        setAnim(173, false, true, true, 1.0f);
+                    } else {
+                        // No-code frequency hint (canInterrupt is true, folded by DOM).
+                        if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+                            goto runLockedStore;
+                        setAnim(character->getSpecificAnimation(179), false, true, true, 1.0f);
+                    }
+                }
+              runLockedStore:
+                {
+                    const int upperFlags = static_cast<int>(flags240) >> 8;
+                    flags240 = static_cast<unsigned int>(upperFlags) << 8 | 0x204u;
+                }
+                playCurAnimFromStart();
+            } else {
+            runLockedPlaying:
+                // No-code prediction hint: an animation already playing is the
+                // expected case; folds to the plain bit test.
+                if (__builtin_expect(!(static_cast<int>(flags << 22) < 0), 0)) {
+                    if (forward) {
+                        setAnim(character->getSpecificAnimation(188), true, true, true, 1.0f);
+                    } else if (static_cast<SavePrimaryInterface*>(this)->getWeapon()
+                               && static_cast<SavePrimaryInterface*>(this)->getWeapon()->getWeaponType() == 7) {
+                        setAnim(149, true, true, true, 1.0f);
+                    } else {
+                        setAnim(148, true, true, true, 1.0f);
+                    }
+                }
+            }
+            if (unknown308 < 625.0f)
+                unknown308 += 100.0f;
+            else if (unknown308 > 625.0f)
+                unknown308 = 625.0f;
+        }
+        const float angle = -direction;
+        irr::core::vector3d<float> offset = character->GetPosition() - target->GetPosition();
+        // No-code prediction hint: aggregate inequality (71%); folds to the length test.
+        const bool far = offset.getLength() >= 100.0f;
+        if (({ struct S { int k; } u = { far + 1 }; S t = u; t.k != 1; }) || cosf(angle) < 0.0f) {
+        } else {
+            // Close in front of the target: strafe only.
+            const irr::core::vector3d<float> strafe = right * sinf(angle);
+            facing.x = strafe.X;
+            facing.y = strafe.Y;
+            facing.z = strafe.Z;
+            return;
+        }
+        // No-code hint: the dead test hides the cosf call from the call heuristic.
+        if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+            goto moveDone;
+        const irr::core::vector3d<float> along = front * cosf(angle);
+        facing.x = along.X;
+        facing.y = along.Y;
+        facing.z = along.Z;
+        const irr::core::vector3d<float> strafe = right * sinf(angle);
+        facing.x += strafe.X;
+        facing.y += strafe.Y;
+        facing.z += strafe.Z;
+    } else {
+    irr::core::vector3d<float> toCamera = character->GetPosition() - CameraManager::getInstance()->getPosition();
+    if (target)
+        toCamera = target->GetPosition() - character->GetPosition();
+    toCamera = toCamera.normalize();
+    const irr::core::vector3d<float> up(0.0f, 0.0f, 1.0f);
+    irr::core::vector3d<float> side = up.crossProduct(toCamera);
+    side = side.normalize();
+    irr::core::quaternion rotation(0.0f, 0.0f, direction);
+    irr::core::vector3d<float> heading = rotation * character->LevelObject::GetFront();
+    const float dot = side.dotProduct(heading);
+    float turn;
+    // No-code layout hint: an int comparison against zero makes the second
+    // comparison the then-edge of the first test (same code).
+    const int greater = dot > 0.1f;
+    if (greater == 0) {
+    turnLess:
+        // No-code layout hint: both turn arms are emitted after the -0.1 arm.
+        if (({ struct S { int k; } u = { dot < -0.1f }; S t = u; t.k > 0; }))
+            goto turnArmP;
+        goto turnMid;
+    } else {
+        turn = (dot - 0.1f) * -90.0f * magnitude;
+        // No-code frequency hints (canInterrupt is true, DOM folds them).
+        if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+            goto turnLess;
+        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k == 0; }))
+            goto walkEntry;
+        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k == 0; }))
+            goto runEntry;
+        goto turnDone;
+    }
+  turnArmP:
+    turn = (dot + 0.1f) * -90.0f * magnitude;
+    // No-code frequency hints (canInterrupt is true, DOM folds them).
+    if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+        goto turnMid;
+    if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+        goto walkEntry;
+    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k == 0; }))
+        goto runEntry;
+    goto turnDone;
+  turnMid:
+    turn = dot * (-700.0f * magnitude * unknown336);
+    // No-code frequency hints (canInterrupt is true, DOM folds them).
+    if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k != 2; }))
+        goto walkEntry;
+    if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+        goto runEntry;
+  turnDone:
+    sceneNode->setRotation(sceneNode->getRotation() * irr::core::quaternion(0.0f, 0.0f, turn * -0.017453292519943295f));
+    if (magnitude <= walkLimit) {
+        unsigned int flags;
+    walkEntry:
+        // No-code frequency hint (71%, folded by DOM) into the playing test.
+        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k != 1; }))
+            goto walkPlaying;
+        ({ walkTest: void* const l = &&walkTest; (void)l; });
+        flags = flags240;
+
+        if (!(static_cast<int>(flags << 30) < 0)) {
+            // No-code frequency hint (canInterrupt is true, folded by DOM).
+            if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; }))
+                goto walkSel200;
+            if (static_cast<int>(flags << 29) < 0) {
+            walkSel200:
+                setAnim(character->getSpecificAnimation(200), false, true, false, 1.0f);
+            }
+            else
+                setAnim(character->getSpecificAnimation(180), false, true, false, 1.0f);
+            {
+                const int upperFlags = static_cast<int>(flags240) >> 8;
+                flags240 = static_cast<unsigned int>(upperFlags) << 8 | 0x202u;
+            }
+            playCurAnimFromStart();
+        } else {
+        walkPlaying:
+            // No-code prediction hint: the copied one-field aggregate hides the
+            // test from the opcode heuristic, so only the call heuristic (30%)
+            // applies; folds back to the plain bit test.
+            if (({ struct S { int k; } u = { static_cast<int>(flags << 22) < 0 }; S t = u; t.k < 1; }))
+                setAnim(character->getSpecificAnimation(202), true, true, false, 1.0f);
+        }
+        if (unknown308 < 200.0f)
+            unknown308 += 100.0f;
+        else if (unknown308 > 200.0f)
+            unknown308 = 200.0f;
+    } else {
+        unsigned int flags;
+    runEntry:
+        // No-code frequency hint (50%, folded by DOM) into the playing test.
+        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k == 0; }))
+            goto runPlaying;
+        // No-code hint: an unused user label keeps this block separate (own
+        // frequency) without forcing a preserved label, so RTL CSE still follows
+        // the magnitude-test jump and reuses its zero result for the setAnim flag.
+        runTest:;
+        flags = flags240;
+        // No-code frequency hints (canInterrupt is true, folded by DOM).
+        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k < 1; }))
+            goto runPlaying;
+        if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; }))
+            goto runSel0;
+        if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+            goto runSel0;
+
+        if (!(static_cast<int>(flags << 29) < 0)) {
+            // No-code frequency hint (canInterrupt is true, folded by DOM).
+            if (({ struct L { int k; } u = { canInterrupt + 1 }; L t = u; t.k == 1; }))
+                goto runSelDone;
+            if (static_cast<int>(flags << 30) < 0) {
+            runSel0:
+                setAnim(character->getSpecificAnimation(0), false, true, false, 1.0f);
+            } else
+                setAnim(character->getSpecificAnimation(179), false, true, false, 1.0f);
+          runSelDone:
+            {
+                const int upperFlags = static_cast<int>(flags240) >> 8;
+                flags240 = static_cast<unsigned int>(upperFlags) << 8 | 0x204u;
+            }
+            playCurAnimFromStart();
+        } else {
+        runPlaying:
+            // No-code prediction hint: the copied one-field aggregate hides the
+            // test from the opcode heuristic, so only the call heuristic (30%)
+            // applies; folds back to the plain bit test.
+            if (({ struct S { int k; } u = { static_cast<int>(flags << 22) < 0 }; S t = u; t.k == 0; }))
+                setAnim(character->getSpecificAnimation(188), true, true, false, 1.0f);
+        }
+        if (unknown308 < 625.0f)
+            unknown308 += 100.0f;
+        else if (unknown308 > 625.0f)
+            unknown308 = 625.0f;
+    }
+    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; })) goto probe1;
+  probe1:;
+    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; })) goto probe2;
+  probe2:;
+    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; })) goto probe3;
+  probe3:;
+    if (({ struct L { int k; } u = { canInterrupt }; L t = u; t.k > 1; })) goto probe4;
+  probe4:;
+    const irr::core::vector3d<float> front = character->GetFront();
+    const float fz = front.Z;
+    const float fy = front.Y;
+    const float fx = front.X;
+    cameraOffset += -front * (unknown308 / 600.0f) * unknown336;
+    cameraOffset.normalize();
+    facing.x = fx;
+    facing.y = fy;
+    facing.z = fz;
+    }
+  moveDone:;
+}
 void PlayerTest::updateAnim(float elapsed)
 {
     if (currentAnimation != -1 && unknown164Pointer) {

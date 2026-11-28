@@ -140,7 +140,8 @@
         "_ZN10PlayerTest6attackEb",
         "_ZN10PlayerTest20updateCarInteractionEv",
         "_ZN10PlayerTest15onTargetReachedEv",
-        "_ZN10PlayerTest7RespawnEv"
+        "_ZN10PlayerTest7RespawnEv",
+        "_ZN10PlayerTest4moveEff"
     ],
     "sections": [
         ".player_is_facing_target",
@@ -182,7 +183,8 @@
         ".player_test_update_anim",
         ".player_test_get_attackable_target",
         ".player_test_move_to",
-        ".player_test_attack"
+        ".player_test_attack",
+        ".playertest_move"
     ],
     "dependencies": [
         "ai-startup-physicattributes",
@@ -371,7 +373,6 @@
         "_ZN7Vehicle18getSeatedAnimationEv",
         "_ZNK7Vehicle10isLeftDoorEPKN3irr5scene10ISceneNodeE",
         "_ZNK7Vehicle16getCloseDoorAnimEv",
-        "_ZN10PlayerTest4moveEff",
         "_ZN15CControlManager6updateEv",
         "_ZN18WantedLevelManager19_processWantedLevelEv",
         "_ZN13ScriptManager19unlockFrozenScriptsEv",
@@ -403,6 +404,7 @@
         "_ZNK7Vehicle12getEnterAnimEv",
         "_ZN6Weapon4hideEv",
         "_ZN17GameObjectManager13getObjectListEi",
-        "_ZNK14GameObjectList8GetFirstEv"
+        "_ZNK14GameObjectList8GetFirstEv",
+        "_ZNK11LevelObject8GetFrontEv"
     ]
 }
