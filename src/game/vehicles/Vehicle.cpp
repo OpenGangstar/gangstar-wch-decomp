@@ -3239,6 +3239,141 @@ void Vehicle::collision(irr::core::vector3d<float> impact, int type)
     }
 }
 
+#include "../characters/PhysicInfo.h"
+namespace {
+inline irr::core::vector3d<float> wheelUp(const irr::core::matrix4& m)
+{
+    return irr::core::vector3d<float>(m[8], m[9], m[10]);
+}
+}
+void Vehicle::step()
+{
+    using irr::core::vector3d;
+    using irr::core::quaternion;
+    using irr::core::matrix4;
+    using irr::core::clamp;
+    if (!isEnabled()) return;
+    if (!(flags344 & 0x800)) UpdateCarTireTrails(1, 192);
+    // Codegen hint (no code): the earlier read of unknown124 is killed by the flag stores, so it is emitted first as in retail.
+    const float prevZ = unknown124;
+    // Codegen hint (no code): basisY.X is read here and written back unchanged below. The short-lived value takes r1 in local allocation, so prevZ gets retail r0; postreload deletes the redundant store and the dead load goes with it.
+    const float keep = basisY.X;
+    flags344 &= ~15u;
+    turnLeft = false;
+    turnAmount = 0.0f;
+    basisY.X = keep;
+    init112 = prevZ; init104 = unknown116; init108 = unknown120;
+    const float velocityX = collisionBody->linearVelocity.x;
+    const float velocityY = collisionBody->linearVelocity.y;
+    // Codegen hint (no code): no-op write-back. Its store stops velocityX from being substituted into the unknown116 store, so both velocity loads come before the stores in retail order (body r3, x r2, y r1).
+    basisY.X = basisY.X;
+    unknown116 = velocityX;
+    unknown120 = velocityY;
+    rotationZ = collisionBody->angle * -57.2957763671875f;
+    _setYaw(rotationZ * 0.01745329238474369f);
+    const vector3d<float> delta(unknown116-init104, unknown120-init108, unknown124-init112);
+    const float m = (float)mass;
+    const float weight = m * 1600.0f * 9.800000190734863f;
+    // Codegen hint (no code): no-op write-back. Its store separates m from the damping (float)mass read, so the two are merged only in RTL CSE and keep retail dot*mass operand order; postreload deletes the store.
+    basisY.X = basisY.X;
+    const float damping = delta.dotProduct(basisY) * (float)mass * 5000.0f;
+    const float front = (weight - damping) * 0.5f;
+    const float rear = (weight + damping) * 0.5f;
+    const float lateral = delta.dotProduct(basisX) * m * 5000.0f / (m * 9.800000190734863f * 2560000.0f);
+    // Codegen hint (no code): naming the pointer before left loads init748 once at retail position (callee-saved register) and restores retail spill-slot count.
+    const vector3d<float>* const wheels = init748;
+    const float left = lateral + 0.0003124999930150807f;
+    const float stiffness = init220 + init216;
+    const float right = 0.0003124999930150807f - lateral;
+    const float n1 = right * front / -9.800000190734863f + wheels[1].X;
+    const float d1 = stiffness * n1 / m / 3.0f;
+    const float n2 = rear * right / -9.800000190734863f + wheels[2].X;
+    const float d2 = stiffness * n2 / m / 3.0f;
+    const float n3 = rear * left / -9.800000190734863f + wheels[3].X;
+    const float d3 = stiffness * n3 / m / 3.0f;
+    const float n0 = left * front / -9.800000190734863f + wheels[0].X;
+    // Operand order n0 * stiffness (retail fmul(n0, stiffness)); the other three wheels use stiffness * nK.
+    init748[0].Y += n0 * stiffness / m / 3.0f;
+    init748[1].Y += d1; init748[2].Y += d2; init748[3].Y += d3;
+    init748[0].Y = clamp(init748[0].Y, -init220, init216);
+    init748[1].Y = clamp(init748[1].Y, -init220, init216);
+    init748[2].Y = clamp(init748[2].Y, -init220, init216);
+    init748[3].Y = clamp(init748[3].Y, -init220, init216);
+    const vector3d<float> frontMidpoint = (wheelUp(sceneNode->getAbsoluteTransformation()) * init748[0].Y + wheelPosition0
+        + wheelPosition1 + wheelUp(sceneNode->getAbsoluteTransformation()) * init748[1].Y) * 0.5f;
+    vector3d<float> forward = frontMidpoint - (wheelUp(sceneNode->getAbsoluteTransformation()) * init748[2].Y + wheelPosition3
+        + wheelPosition2 + wheelUp(sceneNode->getAbsoluteTransformation()) * init748[3].Y) * 0.5f;
+    forward.normalize();
+    const vector3d<float> sideMidpoint = (wheelUp(sceneNode->getAbsoluteTransformation()) * init748[1].Y + wheelPosition1
+        + wheelPosition3 + wheelUp(sceneNode->getAbsoluteTransformation()) * init748[2].Y) * 0.5f;
+    vector3d<float> side = sideMidpoint - (wheelUp(sceneNode->getAbsoluteTransformation()) * init748[0].Y + wheelPosition0
+        + wheelPosition2 + wheelUp(sceneNode->getAbsoluteTransformation()) * init748[3].Y) * 0.5f;
+    side.normalize();
+    vector3d<float> flatForward = (wheelPosition1 + wheelPosition0) * 0.5f - (wheelPosition3 + wheelPosition2) * 0.5f;
+    vector3d<float> flatSide = (wheelPosition1 + wheelPosition3) * 0.5f - (wheelPosition0 + wheelPosition2) * 0.5f;
+    flatForward.normalize(); flatSide.normalize();
+    vector3d<float> normal(-flatForward.Y * flatSide.Z + flatForward.Z * flatSide.Y,
+        -flatForward.Z * flatSide.X + flatSide.Z * flatForward.X,
+        flatSide.Y * -flatForward.X + flatForward.Y * flatSide.X);
+    normal.normalize();
+    rotationX = -acosf(clamp(forward.dotProduct(flatForward), -1.0f, 1.0f));
+    rotationY = acosf(clamp(side.dotProduct(flatSide), -1.0f, 1.0f));
+    if (normal.dotProduct(forward) < 0.0f) rotationX = -rotationX;
+    if (normal.dotProduct(side) < 0.0f) rotationY = -rotationY;
+    if (!isDead()) {
+        exterior->setPosition(vector3d<float>(0,0,(init748[0].Y+init748[1].Y+init748[2].Y+init748[3].Y)*0.25f));
+        float pitch;
+        float roll;
+        // Codegen hint (no code): the no-op write-back of basisY.X keeps the negated rotationX in the pitch variable, so the
+        // load is a word load feeding an integer sign flip into a float register; the two do not share a register (retail r3/r1).
+        // The write-back is dropped at expansion.
+        exterior->setRotation(quaternion((pitch = -rotationX, basisY.X = basisY.X, pitch),(roll = rotationY, roll = -roll),0));
+    } else {
+        exterior->setPosition(vector3d<float>(0,0,0));
+        exterior->setRotation(quaternion(0,0,0));
+    }
+    // Wheel offset (the ResetBodyWheelView members at 572) plus suspension height; operator+ gives retail operand order and keeps init700 in a register across the ui2f call.
+    wheelNodes[0]->setPosition(reinterpret_cast<const ResetBodyWheelView*>(this)->wheelOffsets[0] + vector3d<float>(0.0f, 0.0f, init700 + (float)static_cast<unsigned int>(init228)));
+    wheelNodes[1]->setPosition(reinterpret_cast<const ResetBodyWheelView*>(this)->wheelOffsets[1] + vector3d<float>(0.0f, 0.0f, init704 + (float)static_cast<unsigned int>(init228)));
+    wheelNodes[2]->setPosition(reinterpret_cast<const ResetBodyWheelView*>(this)->wheelOffsets[2] + vector3d<float>(0.0f, 0.0f, init708 + (float)static_cast<unsigned int>(init228)));
+    wheelNodes[3]->setPosition(reinterpret_cast<const ResetBodyWheelView*>(this)->wheelOffsets[3] + vector3d<float>(0.0f, 0.0f, init712 + (float)static_cast<unsigned int>(init228)));
+    vector3d<float> objectPosition = GetPosition();
+    objectPosition.Z = init652 + 3.0f;
+    enabledSceneNode->setPosition(objectPosition);
+    // Codegen hint (no code): copying the normal before the quaternion constructors puts its loads in registers ahead of them (retail order); rotationFromTo re-reads the member.
+    const vector3d<float> normal0 = unknown24->info->vector48;
+    // Declaration order (yaw before ground) gives retail stack slots: ground at sp+332, yaw at sp+348.
+    quaternion yaw;
+    quaternion ground;
+    vector3d<float> up;
+    if (normal0.dotProduct(vector3d<float>(0,0,1)) <= -1.0f)
+        ground.fromAngleAxis(3.1415927410125732f, vector3d<float>(0,0,1));
+    else
+        ground.rotationFromTo(unknown24->info->vector48,vector3d<float>(0,0,1));
+    yaw.fromAngleAxis(rotationZ * 0.01745329238474369f, vector3d<float>(0,0,1));
+    // Declaration order 1,0,3,2 follows the retail load order.
+    // Codegen hint (no code): scalar replacement of 'late', declared here among the ground points, gives the second normal's flatForward.Y a pseudo just above ground1's, so it spills to retail sp+204 instead of the gimplifier temporary it would otherwise share with the first normal.
+    vector3d<float> late;
+    const vector3d<float> ground1(wheelPosition1.X, wheelPosition1.Y, wheelGroundHeights[1]);
+    const vector3d<float> ground0(wheelPosition0.X, wheelPosition0.Y, wheelGroundHeights[0]);
+    const vector3d<float> ground3(wheelPosition3.X, wheelPosition3.Y, wheelGroundHeights[3]);
+    const vector3d<float> ground2(wheelPosition2.X, wheelPosition2.Y, wheelGroundHeights[2]);
+    flatForward = -(ground1 + ground0) * 0.5f + (ground3 + ground2) * 0.5f;
+    flatSide = -(ground1 + ground3) * 0.5f + (ground0 + ground2) * 0.5f;
+    flatForward.normalize(); flatSide.normalize();
+    late.Y = flatForward.Y;
+    normal = vector3d<float>(-late.Y*flatSide.Z+flatForward.Z*flatSide.Y,-flatForward.Z*flatSide.X+flatSide.Z*flatForward.X,flatSide.Y*-flatForward.X+late.Y*flatSide.X);
+    normal.normalize();
+    matrix4 orientation;
+    orientation.mutableElement(0)=flatSide.X; orientation.mutableElement(1)=flatSide.Y; orientation.mutableElement(2)=flatSide.Z; orientation.mutableElement(3)=0;
+    orientation.mutableElement(4)=flatForward.X; orientation.mutableElement(5)=flatForward.Y; orientation.mutableElement(6)=flatForward.Z; orientation.mutableElement(7)=0;
+    orientation.mutableElement(8)=normal.X; orientation.mutableElement(9)=normal.Y; orientation.mutableElement(10)=normal.Z; orientation.mutableElement(11)=0;
+    orientation.mutableElement(12)=0; orientation.mutableElement(13)=0; orientation.mutableElement(14)=0; orientation.mutableElement(15)=1;
+    enabledSceneNode->setRotation(quaternion(orientation));
+    // Separate stores in index order give retail spill-slot order for the offset constants.
+    wheelGroundHeights[0]=0; wheelGroundHeights[1]=0; wheelGroundHeights[2]=0; wheelGroundHeights[3]=0;
+}
+
 
 #include "../characters/PhysicInfo.h"
 #include "../meta/Achievements.h"

@@ -260,7 +260,8 @@
         {
             "name": "_Z41__static_initialization_and_destruction_0ii",
             "address": "0x0030b311"
-        }
+        },
+        "_ZN7Vehicle4stepEv"
     ],
     "sections": [
         ".vehicle_collision",
@@ -391,7 +392,8 @@
         ".vehicle_load",
         ".vehicle_load_explosion_asset",
         ".vehicle_process_ai_flags",
-        ".vehicle_is_door_clear"
+        ".vehicle_is_door_clear",
+        ".vehicle_step"
     ],
     "retail_got": true,
     "external_thumb_functions": [
